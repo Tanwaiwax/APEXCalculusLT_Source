@@ -34,6 +34,8 @@
 
 \newcommand{\apex}{A\kern -1pt \lower -2pt\hbox{P}\kern -4pt \lower .7ex\hbox{E}\kern -1pt X}
 
+\renewcommand{\partname}{}
+\renewcommand{\thepart}{}
 
 %%%%
 %% The portions of the header containing fancyheader commands
@@ -641,9 +643,11 @@
 										\closein\exsetread%
 								}%
 
-\def\printexercises #1 {%
+\def\printexercises#1{\printexercisesgeneric{#1}{Exercises \thesection}}
+\def\printexercisesreview#1{\printexercisesgeneric{#1}{Chapter \thechapter~Review Exercises}}
+\def\printexercisesgeneric#1#2 {%
 \ifthenelse{\equal{\expandafter\readsection\thesection}{1}}{\immediate\write\answrite{\noexpand \noindent {\noexpand\Large\noexpand\bf Chapter \thechapter} \noexpand \vskip \noexpand\baselineskip } \write\answrite{}}{}%
-\immediate\write\answrite{\noexpand\noindent {\noexpand\bf Section \thesection} \noexpand \vskip \baselineskip}%
+\immediate\write\answrite{\noexpand\noindent {\noexpand\bf #2} \noexpand \vskip \baselineskip}%
 \write\answrite{\noexpand\printanswers{#1}}%
 %\strictpagecheck%
 \setcounter{exercisecounter}{0}\setboolean{printquestions}{true}%
@@ -652,7 +656,7 @@
 \exercisegeometry%
 \exerciseheader%
 \small%
-\noindent\underline{\parbox{\textwidth}{\huge\textbf{Exercises \thesection} }}% 
+\noindent\underline{\parbox{\textwidth}{\huge\textbf{#2} }}% 
 \sffamily%
 \vskip\baselineskip%
 \begin{multicols}{2}%

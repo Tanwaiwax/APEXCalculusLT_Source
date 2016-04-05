@@ -1,0 +1,39 @@
+\Section{Differential Equations}
+
+% MAKE THIS USE TRANSCENDENTAL FUNCTIONS
+
+It's possible to think of antidifferentiation as a type of
+\emph{differential equation}.  The problem
+\[\frac\dy\dx=f(x)\]
+is a differential equation with \emph{general solution}
+$y=\int f(x)\dx=F(x)+C$.
+If we also specify an \emph{initial condition} $y(x_0)=y_0$, then we can figure
+out the value of $C$ that makes this a \emph{particular solution}.
+(A differential equation with initial conditions is sometimes called an
+\emph{initial value problem}.)
+
+To give another example,
+\[x^2y''+3xy'-8y=0\]
+% y=x^r y'=rx^{r-1} y''=r(r-1)x^{r-2}
+% r(r-1)+3r-8=0
+% r^2+2r-8=0
+% (r+4)(r-2)=0
+is also a differential equation.  It turns out that every solution to
+this differential equation (the general solution) can be written in the form
+$y=C_1x^2+C_2x^{-4}$, for some constants $C_1$ and $C_2$.
+It's not too hard to show that this is a solution:
+\[y'=2C_1x-4C_2x^{-5}\qquad\text{and}\qquad y''=2C_1+20C_2x^{-6}\]
+so that
+\begin{align*}
+ x^2y''+3xy'-8y
+ &=x^2(2C_1+20C_2x^{-6})+3x(2C_1x-4C_2x^{-5})-8(C_1x^2+C_2x^{-4})\\
+ &=C_1(2x^2+6x^2-8x^2)+C_2(20x^{-4}-12x^{-4}-8x^{-4})=0.
+\end{align*}
+If we also have initial conditions such as $y(1)=5$ and $y'(1)=-2$ to give an
+initial value problem, then we can
+show that $C_1=3$ and $C_2=2$, so that the particular solution is
+$y=3x^2+2x^{-4}$.
+
+That's all that it takes to show that you've found a solution to a differential
+equation.  The difficult part (and the entire point of a course like 266) is to
+figure out what that general solution should be in the first place.

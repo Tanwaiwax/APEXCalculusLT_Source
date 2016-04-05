@@ -1,0 +1,118 @@
+\section{Exponential Functions and Their Derivatives}
+
+Exponentials functions are functions of the form $f(x)=b^x$. Here
+the positive constant $b$ is called the \textbf{base}. We restrict
+ourselves to positive bases since if the base where negative, the
+definition of some powers of the base, such as $(-1)^{\frac12}$, would involve
+imaginary numbers, and we want to stick with real numbers in Calculus. 
+
+%\begin{wrapfigure}{r}{0pt}
+%\includegraphics{images/7_1_exponential}
+%\end{wrapfigure}
+You should recognize the characteristic shape of the graph of
+exponential functions $f(x)=b^x$. They all have a \emph{swoopy} sort of
+look that you probably picture when you hear someone use the phrase \emph{such and such is growing exponentially} (for example, population is
+growing exponentially, or the national debt is growing exponentially).
+
+Make sure that you are familiar with the laws of exponents presented here:
+\begin{align*}
+b^0&=1 & (b^x)^y&=b^{xy} & b^{1/n}&=\sqrt[n]{b}\\
+b^x b^y&=b^{x+y} & \frac{b^x}{b^y}&=b^{x-y} & b^{-x}&=\frac1{b^x}.
+\end{align*}
+If you can't work comfortably with these rules, this chapter will be quite
+difficult.
+The same can be said of logarithmic function, which we will see shortly.
+
+Actually, the \emph{swoopy up} picture is correct only if the constant $b$
+is greater than $1$. Of course, if $b=1$, then $b^x=1$ for all $x$, and
+so the graph is just a horizontal line, and if $0<b<1$, then the graph
+swoops down, approaching the positive $x$-axis as a horizontal
+asymptote.
+
+Now for some calculus of the exponential functions. What is the
+slope of the tangent line to the graph of the exponential function
+$f(x)=b^x$ at some point $(x,b^x)$ on the curve? The answer, of course, using the
+methods we learned in Calculus I, 
+is
+\[f'(x)=\lim_{h\to0}\frac{f(x+h)-f(x)}h=\lim_{h\to0}\frac{b^{x+h}-b^x}h.\]
+
+Just to practice a bit, let's compute the slope of the tangent line at
+$x=0$. That would be given by
+\[f'(0)=\lim_{h\to0}\frac{f(0+h)-f(0)}h=\lim_{h\to0}\frac{b^h-1}h.\]
+
+Well, that certainly looks like a tough limit to compute. So it seems hard
+even to find the slope of the tangent line at $x=0$. How about the derivative in
+general? In other words, suppose we wanted to compute
+\[f'(x)=\lim_{h\to0}\frac{f(x+h)-f(x)}h=\lim_{h\to0}\frac{b^{x+h}-b^x}h.\]
+
+To make a little more progress with this limit, we will make use of
+a property of exponents: $b^{t+u}=b^tb^u$. This, and other of the
+familiar properties you are used to for manipulating exponents can all
+be proved as theorems based on the definition of $b^x$ as a limit. In
+any case, using the property mentioned above, we find
+\[
+ f'(x)=\lim_{h\to0}\frac{b^{x+h}-b^x}h
+ =\lim_{h\to0}\frac{b^xb^h-b^x}h
+ =\lim_{h\to0}b^x\frac{b^h-1}h
+ =b^x\lim_{h\to0}\frac{b^h-1}h.
+\]
+Since the limit on the right is the formula for $f'(0)$, 
+we can write that, for every $x$, $f'(x)=f'(0)b^x$, and
+so to compute $f'(x)$, all we really need to do is determine the
+value of $f'(0)$.
+
+Unfortunately, for most choices of $b$, the value of the limit
+\[\lim_{h\to0}\frac{b^h-1}h\]
+is a number that is difficult to determine, and not very neat anyway. For example,
+when $b=10$ the value of the limit turns out to be (after a lot of work)
+$2.302585093\cdots$. Not a very nice number, and certainly a number that you don't
+want to have to memorize to use in computations. That's why the exponential
+function $y=10^x$ is not very popular in mathematics courses.
+(We'll find out in the next section that the limit is $\ln b$.)
+
+However, as demonstrated in the text on page 346, it seems reasonable that
+there is a 
+choice for the base $a$ somewhere between $2$ and $3$ for which
+$f'(0)=1$. This number is denoted by $e$ and it is called the
+base for the \textbf{natural exponential function}. It is an irrational
+number; its approximate value is $2.718281828459\cdots$, but just call it $e$ for
+short, and remember that it is about $2.7$. If the phrase
+\emph{exponential function} is used with no further explanation, it is
+safe to assume that $f(x)=e^x$ is the one that is meant.
+
+The important thing to keep in mind is that since $f'(0) = 1$ when
+$f(x)=e^x$, the computations above 
+show
+\[f'(x)=\left(e^x\right)'=e^xf'(0)=e^x\cdot1=e^x.\]
+In other words, we get the important formula
+\[\left(e^x\right)'=e^x.\]
+If someone refers to ``the'' exponential function, this is the one that they
+mean (and this is the reason why this base is the best choice).
+If someone only refers to some exponential function, they mean $b^x$ for some
+$b$ (although we can use logarithms to rewrite this as $e^{(\ln b)x}$).
+
+Every time a new differentiation formula is derived, a free integration formula comes along for the 
+ride:
+\[\int e^{x} dx=e^x+C.\]
+And of course, we can immediately write down more general versions of those formulas:
+\begin{align}
+\left(e^{mx+b}\right)&=m e^{mx+b}\\
+\int e^{mx+b}dx&=\frac1m e^{mx+b}+C.
+\end{align}
+%\equDesc{Derivative and integral of the natural exponential function}
+
+Exponential functions grow extremely quickly.
+The function $1.1^x$ is eventually bigger than $x^{100}$, once we take $x$
+large enough (we need $x\ge9624$ in this case).
+
+\subsection*{An Optional Side Note}
+
+The value of $b^x$ when $x$ is a rational number (fraction) is
+reasonably obvious. For example $3^{\frac35}$, means cube $3$ to get
+$27$, and now compute the $5$-th root of $27$, which we can do as
+accurately as we wish by a variety of algebraic techniques. However, it
+is not at all clear how we would ever compute $3^{\sqrt2}$. We
+\textbf{define} $b^x$, when $x$ is irrational, by the following rule:
+\[b^x=\lim_{r\to x}b^x,\qquad r\text{ rational.}\]
+So we base (pun intended!) the definition of $b^x$ for irrational $x$ on the sorts
+of powers we understand, namely \textbf{rational} powers of $b$.

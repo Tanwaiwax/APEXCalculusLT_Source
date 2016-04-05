@@ -1,0 +1,152 @@
+\chapter{Proofs}
+
+We now present some of the proofs of the theorems in the text.  If you need a reminder about sequences, you should (re)read section~\ref{sec:sequences}.  The first thing we will do is state some important properties of the real numbers.
+
+\theorem{thm:realscomplete}{Completeness of the Real Numbers}
+{\begin{itemize}
+\item Suppose that $A$ is a nonempty subset of the real numbers that is bounded above.  Then there is a unique real number $a^*$ that is the least upper bound of $A$: $A$ is bounded above by $a^*$, and any real number less than $a^*$ has some number from $A$ that is above $a^*$.
+\item Suppose that $a_n$ is a sequence of real numbers that converges to $a_\infty$.  Then $a_\infty$ is also a real number.
+\item These two properties are equivalent.
+\end{itemize}}
+
+The first thing you should think is that these properties are obviously true for the real numbers.  The next thing you should realize is that these properties do not hold for the rational numbers: the set $\{q\in\mathbb{Q}:q^2<2\}$ is nonempty and bounded above, but it does not have a least upper bound that is a rational number.  Similarly, we can find a sequence of rational numbers that approaches a limiting value that isn't rational (for example, 3, 3.1, 3.14, 3.141, 3.1415, 3.14159, \ldots approaches a limiting value that isn't rational).  This means that any of our theorems that use this property could fail if we use the rational numbers instead of the real numbers.  It turns out that proving this theorem is quite difficult, and depends on how you actually define the real numbers.  This theorem is usually proved in a more advanced course with an intimidating name like ``Real Analysis'' or ``Advanced Calculus''.
+
+\begin{proof}[Proof of the {\hyperref[thm:IVT]{Intermediate Value Theorem}}]
+\label{pf:IVT}
+Let $X$ be the subset of real numbers $x\in[a,b]$ so that $f(x)<y$.  Then $a\in X$ and $b$ is an upper bound for $X$.  Therefore, $X$ has a least upper bound, which we will show is the desired $c$.
+
+Given $\epsilon>0$, let $\delta$ be given by the continuity of $f$ at $c$.  Because $c-\delta$ is not an upper bound of $X$, there must be some $x\in(c-\delta,c]$ so that $f(x)<y$, so that $f(c)<f(x)+\epsilon<y+\epsilon$.  On the other hand, $c+\delta/2\notin X$ so $f(c+\delta/2)\ge y$ and $f(c)>f(c+\delta/2)-\epsilon>y-\epsilon$.  Therefore, $\abs{f(c)-y}<\epsilon$.  But since $\epsilon$ is arbitrary, this means that $f(c)=y$.
+\end{proof}
+
+The theorem (and the proof) do not hold if we use the rational numbers in place of the real numbers.  For example, $f(x)=x^2-2$ on $[0,2]$ gives a counterexample.
+
+% product rule for derivatives currently in text
+
+\begin{proof}[Proof of {\hyperref[thm:chain_rule]{The Chain Rule}}]
+\label{pf:chain_rule}
+We'll start with an incorrect proof of the chain rule, see why it's wrong, and then back up to fix what we've written.  By the definition of the derivative,
+\begin{align*}
+ \yp
+ &= \lim_{h\to 0}\frac{f(g(x+h))-f(g(x))}h \\
+ &= \lim_{h\to 0}\frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)}\times\frac{g(x+h)-g(x)}h \\
+ &= \lim_{h\to 0}\frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)}\times
+ \lim_{h\to 0}\frac{g(x+h)-g(x)}h \\
+ &= \fp(g(x))\gp(x).
+\end{align*}
+The problem is that $g(x+h)-g(x)$ could be zero, which would mean we're multiplying and dividing by 0 and invalidating everything.  The solution is to rewrite everything so that we're no longer dividing.  Instead of showing
+\begin{equation}\label{eq:chain_rule_pf_org}
+ \lim_{h\to 0}\frac{f(g(x+h))-f(g(x))}h=\fp(g(x))\gp(x),
+\end{equation}
+we will rearrange the equation and show that
+\[f(g(x+h))-f(g(x))-h\fp(g(x))\gp(x)=h\epsilon(h)\]
+where \eqref{eq:chain_rule_pf_org} means that $\epsilon(h)\to0$ as $h\to0$.  The proof continues\ldots.
+\end{proof}
+
+Before proving our next theorem, we'll first define an extension of an idea we saw (or will see) in Section~.
+
+\definition{def:subsequence}{Subsequence}%
+{Suppose that $\{x_n\}$ is a sequence of numbers.  Then $\{y_n\}$ is a \textbf{subsequence} if $g:\mathbb{N}^+\to\mathbb{N}^+$ is a strictly increasing function and $y_n=x_{g(n)}$.}
+
+The idea may best be explained by a diagram:
+\[
+\begin{array}{ccccccccccccccc}
+ x_1 & x_2 & x_3 & x_4 & x_5 & x_6 & x_7 & x_8 & x_9 & x_{10} & x_{11} & x_{12} & x_{13} & x_{14} & x_{15} \\
+ & y_1 & y_2 & & y_3 & & y_4 & & & & y_5 & & y_6 & &
+\end{array}
+\]
+In words, the subsequence is a thinning of the original sequence.  We keep everything in order (and still have infinitely many terms), but may skip over a few terms of the original sequence.
+
+We can take a subsequence of a subsequence, which is sometimes called a subsubsequence.  We could also talk about subsubsubsequences, but that starts to get annoying.
+
+If the original sequence converges, then so does any subsequence.  On the other hand, if the original sequence diverges, then we may be able to find a subsequence that still converges.  For example, $\{(-1)^n\}$ diverges, but if we take every other term, then we get a subsequence that converges.  Our next theorem is a powerful tool that gives conditions to guarantee that we'll be able to find a convergent subsequence.
+
+\theorem{thm:bolzano_weierstrass}{The Bolzano-Weierstrass Theorem}
+{Suppose that $\{x_n\}$ is a bounded sequence or real numbers.  Then $\{x_n\}$ has a subsequence that converges.}
+
+\begin{proof}
+Because the sequence is bounded, it is contained in some segment $[-M,M]$.
+Partition this segment into $2M$ subsegments that are each 1 unit in length.  One of these segments must have infinitely many elements of the original sequence $\{x_n\}$.  Taking these elements as our subsequence, we have a subsequence $\{x_n^{(0)}\}$ where all of the elements are in the same unit length interval.  Now divide this interval in half.  One of these halves must have infinitely many elements of $\{x_n^{(0)}\}$, and we call this subsequence $\{x_n^{(1)}\}$.  We can continue this process of dividing the half segment and always taking the semi-segment with infinitely many points.  In this way, we get an infinite sequence of sequences $\{x_n^{(k)}\}$ where each $\{x_n^{(k)}\}$ is contained in an interval of length $2^{-k}$.  This means that $\{x_n^{(n)}\}$ is a sequence that must converge.
+\end{proof}
+
+The temptation in the previous proof is to just take the ``last'' subsequence.  But there are an infinite number of subsequences, so we can't talk about the ``last'' one.  Instead, we take the first element from the first subsequence, the second element from the second subsequence, and so on.
+
+By Theorem~\ref{thm:realscomplete}, this limit must be a real number.
+
+% Let $f$ be a continuous function defined on a closed interval $I$. Then $f$ has both a maximum and minimum value on $I$.
+\begin{proof}[Proof of {\hyperref[thm:extreme_val]{The Extreme Value Theorem}}]
+\label{pf:extreme_val}
+We will prove that $f$ has a maximum.  The proof that $f$ has a minimum is identical.  Let $M$ be the least upper bound of the range of $f$, and choose $x_n\in[a,b]$ so that $f(x_n)\to M$.  By Theorem~\ref{thm:bolzano_weierstrass}, we can find a subsequence $y_n$ that converges to a limit $y$.  Because each $y_n\in[a,b]$, their limit $y\in[a,b]$.  Then
+\[
+ f(y)=f(\lim_{n\to\infty}y_n)=\lim_{n\to\infty} f(y_n)=M.
+\]
+\end{proof}
+
+This theorem (and the proof) do not hold if we have a function from rational numbers to rational numbers.  For example, $f(x)=x^3-6x$ on $[-2,2]$ gives a counterexample.
+
+% Let a function $f$ have a relative extrema at the point $(c,f(c))$. Then $c$ is a critical number of $f$.
+\begin{proof}[Proof of {\hyperref[thm:criticalpts]{Relative Extreme and Critical Points}}]\label{pf:criticalpts}
+If $\fp(c)$ does not exist, then $c$ is a critical number of $f$.  Therefore, we may assume that $\fp(c)$ exists.  Without loss of generality, we will assume that $f(c)$ is a relative maximum.  This means that $\dfrac{f(c+h)-f(c)}h$ is positive when $h<0$ and negative when $h>0$.  Since we know that the limit as $h\to0$ exists, it must be zero because it is a limit of both positive and negative numbers.  Therefore, $\fp(c)=0$, and $c$ is a critical number of $f$.
+\end{proof}
+
+% proof of Rolle's Theorem is currently in the text
+
+% proof of the mean value theorem is currently in the text
+
+%Let $f$ be continuous on the closed interval $[a,b]$  and let $S_L(n)$, $S_R(n)$ and $S_M(n)$ be defined as before. Then:
+%\begin{enumerate}
+%\item $\ds \lim_{n\to\infty} S_L(n) = \lim_{n\to\infty} S_R(n) = \lim_{n\to\infty} S_M(n) = \lim_{n\to\infty}\sum_{i=1}^n f(c_i)\Delta x$, 
+%\item $\ds \lim_{n\to\infty}\sum_{i=1}^n f(c_i)\Delta x = \int_a^b f(x)\ dx$, and %$\ds \lim_{n\to\infty} S_L(n) = \int_a^b f(x)\ dx$.
+%\item $\ds \lim_{\|\Delta x\|\to 0} \sum_{i=1}^n f(c_i)\Delta x_i = \int_a^b f(x)\ dx$.%, where the latter sum is any Riemann sum of $f$ on $[a,b]$, and
+%\end{enumerate}
+\begin{proof}[Proof of {\hyperref[thm:riemann_sum]{Definite Integrals and the Limit of Riemann Sums}}]\label{pf:riemann_sum}
+On the $i^\text{th}$ subinterval $[x_i,x_{i+1}]$, let $m_i$ be the extreme minimum of $f$, and let $M_i$ be the extreme maximum.  Then the signed area over $[x_i,x_{i+1}]$ is between $m_i\Delta x_i$ and $M_i\Delta x_i$.  Therefore, every expression in the theorem is bounded below by $\sum_{i=1}^n m_i\Delta x_i$ and bounded above by $\sum_{i=1}^n M_i\Delta x_i$.
+
+Given $\epsilon>0$, we want to find a $\delta$ so that $\abs{x-y}<\delta$ implies $\abs{f(x)-f(y)}<\epsilon/(b-a)$.  This is stronger than our usual notion of continuity, since we want the same $\delta$ to work for all possible values of $x$ and $y$.
+
+Because $f$ is continuous, for each $x$, we can find a $\delta$ that depends on $x$ so that $\abs{x-y}<\frac\delta2$ implies $\abs{f(x)-f(y)}<\frac\epsilon{2(b-a)}$.  Let $\delta(x)$ be the largest value of $\delta$ that makes this statement work for a particular $x$, so that there is some $y$ so that $\abs{x-y}<\frac\delta2$ but $\abs{f(x)-f(y)}\ge\frac\epsilon{2(b-a)}$.  We want to show that there is a $\delta>0$ that is smaller than all the $\delta(x)$.
+
+Let's suppose for this paragraph that there is no such $\delta$.  This means that there is a sequence $\{x_n\}$ so that $\delta(x_n)\to0$.  By Theorem~\ref{thm:bolzano_weierstrass}, there is a subsequence that converges to a limit $x^*$.  Now let $\delta^*=\delta(x^*)$.  Because $f$ is continuous at $x^*$, $\delta^*>0$.  But then if we take $x_n$ within $\frac{\delta^*}2$ of $x^*$ so that $\delta(x_n)<\frac{\delta^*}2$, we can find a $y$ so that $\abs{x_n-y}<\delta(x_n)$ but $\abs{f(x_n)-f(y)}\ge\frac\epsilon{2(b-a)}$.  But this means
+\[
+ \frac\epsilon{2(b-a)}\le\abs{f(x_n)-f(y)}<\abs{f(x_n)-f(x^*)}+\abs{f(x^*)-f(y)}
+ <\frac\epsilon{2(b-a)}+\frac\epsilon{2(b-a)}.
+\]
+But this can't be true, which means that this entire paragraph is one giant contradiction.  Therefore, our beginning assumption must be wrong, and we can find such a $\delta$.
+
+Then once $\abs{\Delta x}<\delta$, the $x$-coordinates of the extreme values will be within $\delta$, and $\abs{M_i-m_i}<\epsilon/(b-a)$.  This will mean that
+\[
+ \abs{\sum_{i=1}^n M_i\Delta x_i-\sum_{i=1}^n m_i\Delta x_i}
+ =\abs{\sum_{i=1}^n(M_i-m_i)\Delta x_i}
+ <\abs{\sum_{i=1}^n\frac{\epsilon\Delta x_i}{b-a}}
+ =\epsilon.
+\]
+Therefore, as $\abs{\Delta x}\to 0$ (and $n\to\infty$), every summation approaches the same value, which must be equal to the signed area.
+\end{proof}
+
+% Let $f$ be continuous on $[a,b]$ and let $F(x) = \int_a^x f(t)\ dt$. Then $F$ is a differentiable function on $(a,b)$, and $$\Fp(x)=f(x).$$
+\begin{proof}[Proof of {\hyperref[thm:FTC1]{The Fundamental Theorem of Calculus, Part 1}}]
+\label{pf:FTC1}
+We have that
+\begin{align*}
+ \Fp(x)
+ &= \lim_{h\to 0}\frac{F(x+h)-F(x)}h \\
+ &= \lim_{h\to 0}\frac{\int_a^{x+h}f(t)dt-\int_a^x f(t)dt}h \\
+ &= \lim_{h\to 0}\frac{\int_x^{x+h}f(t)dt}h \\
+ &= f(x)+\lim_{h\to 0}\frac{\int_x^{x+h}f(t)-f(x)dt}h.
+\end{align*}
+Let $\epsilon>0$, and let $\delta$ be given by the continuity of $f$ at $x$.
+Then once $h<\delta$, we have $\abs{f(t)-f(x)}<\epsilon$ and
+\[
+ \abs{\frac{\int_x^{x+h}f(t)-f(x)dt}h}\le\frac{\int_x^{x+h}\abs{f(t)-f(x)}}h
+ <\frac{\int_x^{x+h}\epsilon}h=\epsilon.
+\]
+Therefore, $\Fp(x)=f(x)$.
+\end{proof}
+
+% \theorem{thm:FTC2}{The Fundamental Theorem of Calculus, Part 2}
+% Let $f$ be continuous on $[a,b]$ and let $F$ be \textit{any} antiderivative of $f$. Then $$\int_a^b f(x)\ dx = F(b) - F(a).$$
+\begin{proof}[Proof of {\hyperref[thm:FTC2]{The Fundamental Theorem of Calculus, Part 2}}]
+\label{pf:FTC2}
+We know that any two antiderivatives differ only by a constant.  This means that $F(b)-F(a)$ will always have the same value, since that constant is subtracted from itself.  Therefore, let $F(t)$ be defined by the antiderivative $\int_a^t f(x) dx$.  Then $F(a)=\int_a^a f(x) dx=0$ and $F(b)-F(a)=\int_a^b f(x) dx$, as desired.
+\end{proof}
+
+% ratio & root tests

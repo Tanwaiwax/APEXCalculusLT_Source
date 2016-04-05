@@ -1,0 +1,104 @@
+\section{Derivatives of Logarithmic Functions}
+
+The derivation of the formula for the derivative of $y=\ln x$
+%given on the bottom of page 360
+is a quick exercise in implicit
+differentiation. The result is $(\ln x)'=\frac1x$.
+When that is teamed up with the chain rule,
+you can now differentiate some pretty
+spectacular functions without much effort. Imagine trying to find the
+derivative of $f(x) = \ln(\sec^2x)$ by taking a limit of a difference
+quotient! But, using the chain rule, we quickly find
+\[
+ \left(\ln(\sec^2x)\right)'=\frac1{\sec^2x}\cdot2(\sec x)\cdot\sec x\tan x
+ =2\tan x.
+\]
+Now that was pretty easy!
+
+Recall that $\ln x$ is defined only for positive values of $x$.
+The function $f(x)=\ln\lvert x\rvert$ on the other hand, is defined for \textbf{all}
+non-zero values of $x$. The graph of this function is, of course,
+identical to the graph of $y=\ln x$ on the right side of the $y$-axis,
+and is the mirror image of that on the left side of the $y$-axis.
+Another way to express the function $f$ is as
+\[
+ f(x)=\begin{cases}
+  \ln x, &\text{ if }x>0,\\
+  \ln (-x), &\text{ if }x<0.
+ \end{cases}
+\]
+Differentiating that, and remembering to use the chain rule in the second
+line, we see
+\[
+ f'(x)=\begin{cases}
+  \frac1x, &\text{ if }x>0,\\
+  \frac1{-x}\cdot(-1)=\frac1x, &\text{ if }x<0.
+ \end{cases}
+\]
+Thus, for all non-zero $x$,
+\begin{equation}
+ (\ln\lvert x\rvert)'=\frac1x\qquad\text{and}\qquad\int\frac1x dx=\ln\lvert x\rvert+C.
+\end{equation}
+%\equDesc{Derivative and integral with the natural logarithmic function}
+
+Finding derivatives of logarithms to bases besides $e$ (that is,
+besides the natural logarithm) is best done by converting all logs to
+natural logs. Recall that
+$\log_b x=\dfrac{\ln x}{\ln b}=\dfrac1{\ln b}\cdot\ln x$.
+Thus
+\begin{equation}(\log_b x)'=\frac1{\ln b}\frac1x=\frac1{x\ln b}.\end{equation}
+%\equDesc{Derivative of logarithmic function in other bases}
+
+Another important differentiation formula we can now derive is for
+the general exponential functions. Of course we already know
+$(e^x)'=e^x.$ But what is the derivative of $2^x$ for example?
+Well, for any positive value of $b$ notice that
+\[e^{x\ln b}=\left(e^{\ln b}\right)^x = b^x,\]
+where we used $e^{\ln b}=b$, which is a consequence of the fact that
+the natural exponential function and the natural logarithm are
+functional inverses for each other.
+Thus we see the useful formula
+\[b^x=e^{x\ln b}.\]
+In other words, there is really no reason to use bases in exponential
+functions other than base $e$ since all other bases can be replaced by
+$e$ (by changing the exponent appropriately of course). This idea makes
+it a snap to compute the derivative for exponentials using bases
+besides $e$. Thus
+\begin{equation}
+ (b^x)'=\left(e^{x\ln b}\right)'=e^{x\ln b}\ln b=b^x\ln b,
+\end{equation}
+%\equDesc{Derivative of exponential function with other bases}
+where we had to remember to use the chain rule.
+
+If you encounter a derivative of complicated products, quotients or powers,
+you may want to try the algebra saving technique of logarithmic differentiation.
+Since $(\ln f(x))'=\frac{f'(x)}{f(x)}$, we find that
+$f'(x)=f(x)(\ln f(x))'$.  For example, if we wanted to find the derivative of
+$x^x$, we could take its logarithm to get $x\ln x$, differentiate this to get
+$1+\ln x$, and then multiply by the original $x^x$ to get that the derivative is
+$x^x(1+\ln x)$.
+If we didn't want to use logarithmic differentiation, we would have to
+write $x^x=e^{x\ln x}$, and then take the derivative to get
+$e^{x\ln x}(x\ln x)'=e^{x\ln x}(1+\ln x)=x^x(1+\ln x)$.
+This technique works best when the logarithm is much simpler than the original
+function.
+
+\subsection*{An Optional Approach}
+There are two basic approaches to the previous three sections. Our approach was
+\begin{enumerate}
+ \item define $a^x$ for constant $a$,
+ \item decide that $a=e$ is the best constant,
+ \item define $\log_a x$ to be the inverse of $a^x$, and
+ \item find the derivative of $\log_a x$ using the theorem from
+  Section \ref{sec:deriv_inverse_function}.
+\end{enumerate}
+A different approach is:
+\begin{enumerate}
+ \item define $\ln x=\int_1^x\frac1x dx$,
+ \item define $e^x$ to be the inverse of $\ln x$,
+ \item find the derivative of $e^x$ using the theorem from
+  Section \ref{sec:deriv_inverse_function}
+ \item define $a^x=e^{x\ln a}$, and
+ \item define $\log_a x$ to be the inverse of $a^x$.
+\end{enumerate}
+Both approaches have their merits.  The first approach forces us to define $a^x$ as a limiting process.  The second approach forces us to define a commonly used function as a definite integral.

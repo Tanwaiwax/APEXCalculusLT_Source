@@ -44,7 +44,30 @@ $$A = P(1,\pi/4)\quad B=P(1.5,\pi)\quad C = P(2,-\pi/3)\quad D = P(-1,\pi/4)$$
 	%\draw [rotate=27.5] (1,0) node {$\theta$};
 \end{tikzpicture}					
 					}}
-To aid in the drawing, a polar grid is provided at the bottom of this page. To place the point $A$, go out 1 unit along the initial ray (putting you on the inner circle shown on the grid), then rotate counter-clockwise $\pi/4$ radians (or $45^\circ$).  Alternately, one can consider the rotation first: think about the ray from $O$ that forms an angle of $\pi/4$ with the initial ray, then move out 1 unit along this ray (again placing you on the inner circle of the grid).
+To aid in the drawing, a polar grid is provided
+\iflatexml
+here.\mnote{.5}{% copy and paste the above
+\begin{tikzpicture}[scale=.8]
+	\draw [dashed,gray] (-3.1,0) -- (0,0);
+	\draw[thick,->,>=stealth] (0,0) node [below] {$O$} -- (3.5,0) ;
+	\filldraw (0,0) circle (1.5pt);
+	\foreach \x in {1,2,3}
+	{\draw (0,0) circle (\x cm);
+	\draw (\x,0) node [below right] {\x};
+	}
+	\foreach \x in {30,45,60,90,120,135,150}
+	{\draw [rotate=\x,dashed,gray] (-3.1,0) -- (3.1,0);
+	}
+	%\filldraw [rotate=55] (2,0) circle (1.5pt);
+	%\draw [thick,rotate=55] (0,0)-- node [rotate=55,pos=.5,above] {$r$} (2,0) node [above] {$P=P(r,\theta)$};
+	%\draw [->] (.75,0) arc(0:55:.75); 
+	%\draw [rotate=27.5] (1,0) node {$\theta$};
+\end{tikzpicture}
+}
+\else
+at the bottom of this page.
+\fi
+To place the point $A$, go out 1 unit along the initial ray (putting you on the inner circle shown on the grid), then rotate counter-clockwise $\pi/4$ radians (or $45^\circ$).  Alternately, one can consider the rotation first: think about the ray from $O$ that forms an angle of $\pi/4$ with the initial ray, then move out 1 unit along this ray (again placing you on the inner circle of the grid).
 
 To plot $B$, go out $1.5$ units along the initial ray and rotate $\pi$ radians ($180^\circ$). 
 
@@ -139,7 +162,7 @@ We can consider the rectangular equivalent of this equation; using $r^2=x^2+y^2$
 \item		The equation $\theta = \pi/4$ describes all points such that the line through them and the pole make an angle of $\pi/4$ with the initial ray. As the radius $r$ is not specified, it can be any value (even negative). Thus $\theta = \pi/4$ describes the line through the pole that makes an angle of $\pi/4 = 45^\circ$ with the initial ray.
 
 We can again consider the rectangular equivalent of this equation. Combine $\tan \theta =y/x$ and $\theta =\pi/4$:
-$$\tan \pi/4 = y/x \quad \Rightarrow x\tan \pi/4 = y \quad \Rightarrow y = x.$$ 
+$$\tan \pi/4 = y/x \quad \Rightarrow \quad x\tan \pi/4 = y \quad \Rightarrow \quad y = x.$$ 
 This graph is also plotted in Figure \ref{fig:polar3}.
 \mfigure{.5}{Plotting standard polar plots.}{fig:polar3}{figures/figpolar3}
 \end{enumerate}
@@ -180,8 +203,8 @@ Sketch the polar function $r=\cos (2\theta)$ on $[0,2\pi]$ by plotting points.}
 {We start by making a table of $\cos (2\theta)$ evaluated at common angles $\theta$, as shown in Figure \ref{fig:polar5table}. These points are then plotted in Figure \ref{fig:polar5} (a). This particular graph ``moves'' around quite a bit and one can easily forget which points should be connected to each other. To help us with this, we numbered each point in the table and on the graph. 
 \clearpage
 
-\begin{center}
-\begin{minipage}[t]{125pt} \vskip0pt
+\begin{figure}[!ht]%{center}
+%\begin{minipage}[t]{125pt} \vskip0pt
 $\begin{array}{ccc}
 \text{Pt.} & \theta & \cos (2\theta)\\ \hline
  1 & 0 & 1. \\
@@ -193,10 +216,13 @@ $\begin{array}{ccc}
  7 & 3 \pi /4 & 0. \\
  8 & 5 \pi /6 & 0.5 \\
  9 & \pi  & 1. \\
-\end{array}$
-\end{minipage}
-\begin{minipage}[t]{125pt} \vskip 0pt
-$\begin{array}{ccc}
+\end{array}
+\qquad
+%$
+%\end{minipage}
+%\begin{minipage}[t]{125pt} \vskip 0pt
+%$
+\begin{array}{ccc}
 \text{Pt.} & \theta & \cos (2\theta)\\ \hline
  10 & 7 \pi /6 & 0.5 \\
  11 & 5 \pi /4 & 0. \\
@@ -207,10 +233,10 @@ $\begin{array}{ccc}
  16 & 11 \pi /6 & 0.5 \\
  17 & 2 \pi  & 1. \\
 \end{array}$
-\end{minipage}
+%\end{minipage}
 \captionsetup{type=figure}
 \caption{Tables of points for plotting a polar curve.}\label{fig:polar5table}
-\end{center}
+\end{figure}%{center}
 Using more points (and the aid of technology) a smoother plot can be made as shown in Figure \ref{fig:polar5} (b). This plot is an example of a \textit{rose curve}.
 \mtable{.72}{Polar plots from Example \ref{ex_polar5}.}{fig:polar5}{%
 \begin{tabular}{c}

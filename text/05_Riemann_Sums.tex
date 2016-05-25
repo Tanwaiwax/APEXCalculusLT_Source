@@ -63,14 +63,16 @@ Our three methods provide two approximations of $\int_0^4(4x-x^2)\ dx$: 10 and 1
 \vskip\baselineskip
 It is hard to tell at this moment which is a better approximation: 10 or 11? We can continue to refine our approximation by using more rectangles. The notation can become unwieldy, though, as we add up longer and longer lists of numbers. We introduce \textbf{summation notation} to ameliorate this problem. \index{summation!notation}
 
-\clearpage
+%\clearpage
 
-Suppose we wish to add up a list of numbers $a_1$, $a_2$, $a_3$, \ldots, $a_9$. Instead of writing $$a_1+a_2+a_3+a_4+a_5+a_6+a_7+a_8+a_9,$$ we use summation notation and write 
+Suppose we wish to add up a list of numbers $a_1$, $a_2$, $a_3$, \ldots, $a_9$. Instead of writing $$a_1+a_2+a_3+a_4+a_5+a_6+a_7+a_8+a_9,$$ we use summation notation and write
+\begin{figure}[!hb]
 \begin{center}
 \myincludegraphics{figures/figrie_notation}
 \captionsetup{type=figure}%
 \caption{Understanding summation notation.}\label{fig:rie_notation}
 \end{center}
+\end{figure}
 
 The upper case sigma represents the term ``sum.'' The index of summation in this example is $i$; any symbol can be used. By convention, the index takes on only the integer values between (and including) the lower and upper bounds. 
 
@@ -109,7 +111,7 @@ It might seem odd to stress a new, concise way of writing summations only to wri
 \setboxwidth{75pt}
 \theorem{thm:summation}{Properties of Summations}
 {\noindent\begin{minipage}[t]{200pt}\index{summation!properties}
-\begin{enumerate}
+\begin{enumerate}[series=summationprop]
 		\item		$\ds \sum_{i=1}^n c = c\cdot n$, where $c$ is a constant.
 		\item		$\ds \sum_{i=m}^n (a_i\pm b_i) = \sum_{i=m}^n a_i \pm \sum_{i=m}^n b_i$
 		\item		$\ds \sum_{i=m}^n c\cdot a_i = c\cdot\sum_{i=m}^n a_i$
@@ -120,7 +122,7 @@ It might seem odd to stress a new, concise way of writing summations only to wri
 	\end{enumerate}
 \end{minipage}
 \begin{minipage}[t]{200pt}
-\begin{enumerate}\addtocounter{enumi}{4}
+\begin{enumerate}[resume=summationprop]
 %		\item		$\ds \sum_{i=1}^n c = c\cdot n$, where $c$ is a constant.
 %		\item		$\ds \sum_{i=m}^n (a_i\pm b_i) = \sum_{i=m}^n a_i \pm \sum_{i=m}^n b_i$
 %		\item		$\ds \sum_{i=1}^n c\cdot a_i = c\cdot\sum_{i=1}^n a_i$
@@ -212,6 +214,8 @@ We use these formulas in the next two examples.
 %
 %One of the advantages of using a computer is that it can do a large number of calculations very quickly. Using 10,000 subintervals and the Left Hand Rule, \textit{Mathematica} took approximately $1/5^\text{ th}$ of a second to compute an approximation 10.66666656. It is worthwhile to ascertain what technology is available to you and to understand how to use it appropriately.
 The following example lets us practice using the Right Hand Rule and the summation formulas introduced in Theorem \ref{thm:summation}.\\
+
+\youtubeVideo{gFpHHTxsDkI}{Calculating a Definite Integral Using Riemann Sums --- Part 1}
 
 \example{ex_rie7}{Approximating definite integrals using sums}{
 Approximate $\int_0^4(4x-x^2)\ dx$ using the Right Hand Rule and summation formulas with 16 and 1000 equally spaced intervals.}
@@ -434,7 +438,7 @@ Recall the definition of a limit as $n\to\infty$:
 The following theorem states that we can use any of our three rules to find the exact value of a definite integral $\int_a^b f(x)\ dx$. It also goes two steps further. The theorem states that the height of each rectangle doesn't have to be determined following a specific rule, but could be $f(c_i)$, where $c_i$ is any point in the $i^\text{ th}$ subinterval, as discussed before Riemann Sums where defined in Definition \ref{def:rie_sum}.
 
 The theorem goes on to state that the rectangles do not need to be of the same width. Using the notation of Definition \ref{def:rie_sum}, let $\Delta x_i$ denote the length of the $i^\text{ th}$ subinterval in a partition of $[a,b]$. Now let $||\Delta x||$ represent the length of the largest subinterval in the partition: that is, $||\Delta x||$ is the largest of all the $\Delta x_i$'s. If $||\Delta x||$ is small, then $[a,b]$ must be partitioned into many subintervals, since all subintervals must have small lengths. ``Taking the limit as $||\Delta x||$ goes to zero'' implies that the number $n$ of subintervals in the partition is growing to infinity, as the largest subinterval length is becoming arbitrarily small. We then interpret the expression 
-$$\lim_{||\Delta x||\to 0}\sum_{i=1}^nf(c_i)\Delta x_i$$
+\[\lim_{\norm{\Delta x}\to 0}\sum_{i=1}^nf(c_i)\Delta x_i\]
 as ``the limit of the sum of rectangles, where the width of each rectangle can be different but getting small, and the height of each rectangle is not necessarily determined by a particular rule.'' The theorem states that this Riemann Sum also gives the value of the definite integral of $f$ over $[a,b]$.
 
 %Let $\Delta x$ represent \textit{any} partition of $[a,b]$, and let $\|\Delta x\|$ denote the length of the longest subinterval of this partition. The theorem also states that limit of \textit{any} Riemann sum of the form $\sum_{i=1}^n f(c_i)\Delta x_i$, as $\|\Delta x\|\to 0$, also gives the exact value of the definite integral.
@@ -442,7 +446,7 @@ as ``the limit of the sum of rectangles, where the width of each rectangle can b
 %\setboxwidth{5pt}
 %\noindent\hskip-5pt
 %\begin{minipage}{\specialboxlength}
-\theorem{thm:riemann_sum}{Definite Integrals and the Limit of Riemann Sums}
+\theorem{thm:riemannSum}{Definite Integrals and the Limit of Riemann Sums}
 {Let $f$ be continuous on the closed interval $[a,b]$  and let $S_L(n)$, $S_R(n)$ and $S_M(n)$ be defined as before. Then:\index{Riemann Sum!and definite integral}\index{integration!definite!Riemann Sums}
 \begin{enumerate}
 	\item		$\ds \lim_{n\to\infty} S_L(n) = \lim_{n\to\infty} S_R(n) = \lim_{n\to\infty} S_M(n) = \lim_{n\to\infty}\sum_{i=1}^n f(c_i)\Delta x$, 
@@ -450,7 +454,7 @@ as ``the limit of the sum of rectangles, where the width of each rectangle can b
 	\item		$\ds \lim_{n\to\infty}\sum_{i=1}^n f(c_i)\Delta x = \int_a^b f(x)\ dx$, and %$\ds \lim_{n\to\infty} S_L(n) = \int_a^b f(x)\ dx$.
 	\item		$\ds \lim_{\|\Delta x\|\to 0} \sum_{i=1}^n f(c_i)\Delta x_i = \int_a^b f(x)\ dx$.%, where the latter sum is any Riemann sum of $f$ on $[a,b]$, and
 \end{enumerate}
-\hfill\hyperref[pf:riemann_sum]{(See the proof.)}
+\hfill\hyperref[pf:riemannSum]{(See the proof.)}
 }
 %\end{minipage}
 %\restoreboxwidth

@@ -1,0 +1,155 @@
+# -*- mode: Perl -*-
+# /=====================================================================\ #
+# |  APEX_format                                                        | #
+# | Implementation for LaTeXML                                          | #
+# |=====================================================================| #
+# | Timothy Prescott <timothy.prescott.und@gmail.com>                   | #
+# | License:     Creative Commons Attribution 4.0 Unported License      | #
+# |    http://creativecommons.org/licenses/by/4.0/                      | #
+# \=====================================================================/ #
+use strict;
+use warnings;
+use LaTeXML::Package;
+use Data::Dumper;
+
+#RequirePackage('ifluatex'); # can't find the binding
+DefConditional('\ifluatex'); # the only content of the binding
+
+#DefConstructor('\embedVideo Semiverbatim',
+#	       '<ltx:rawhtml><ltx:ref class="video" href="#1" /></ltx:rawhtml>');
+
+DefMacro('\embedVideo Semiverbatim','\iframe{#1}{560}{355}');
+
+DefConstructor('\iframe Semiverbatim {}{}',
+	       '<ltx:rawhtml>'.
+	       '<ltx:block class="iframe" width="#2" height="#3">'.
+	       '<ltx:ref class="iframe" href="#1" />'.
+	       '</ltx:block>'.
+	       '</ltx:rawhtml>');
+
+DefMacro('\isOnePageLong{}','\boolean{true}');
+
+DefMacro('\isOddPage{}','\boolean{false}');
+
+DefMacro('\coloredbox{}{}{}{}','\begin{quote}\lxAddClass{#4box}#3\end{quote}');
+
+DefConstructor('\makeenv{}{}',
+	       '<ltx:resource type="text/css">'.
+	       '#selector #styles'.
+	       '</ltx:resource>',
+	       properties => sub {
+		   return (
+		       selector => '.'.UnTeX($_[1]).'box',
+		       styles => &boxStyles(UnTeX($_[2]))
+		       );
+	       }
+    );
+
+sub boxStyles {
+    my $hue = shift;
+    my $start = start($hue);
+    my $stop = stop($hue);
+    return "{
+      padding: 1ex 1em;
+      text-indent:0;
+      border-width: 1px;
+      border-style: solid;
+      border-color: hsl($hue,100%,68%);
+      background: hsl($hue,100%,91%); /* old browsers */
+      background: -moz-linear-gradient(top,$start 0%,$stop); /* FF 3.6+ */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start), color-stop(100%,$stop)); /* Chrome, Safari 4+ */
+      background: -webkit-linear-gradient(top,$start 0%,$stop 100%); /* Chrome 10+, Safari 5.1+ */
+      background: -o-linear-gradient(top,$start 0%,$stop 100%); /* Opera 11.10+ */
+      background: -ms-linear-gradient(top,$start 0%,$stop 100%); /* IE 10+ */
+      background: linear-gradient(to bottom,$start 0%,$stop 100%); /* W3C */
+    }";
+}
+
+sub start { return "hsl($_[0],100%,97%)"; }
+
+sub stop  { return "hsl($_[0],100%,84%)"; }
+
+DefMacro('\mfigure[]{}{}{} Semiverbatim',
+	 '\begin{figure}'.
+	 '\lxAddClass{mfigure}'.
+	 '\lxAddClass{marginbox}'.
+	 '\myincludegraphics[#1]{#5}\caption{#3}\label{#4}'.
+	 '\end{figure}');
+
+DefMacro('\mtable{}{}{}{}',
+	 '\begin{figure}'.
+	 '\lxAddClass{mtable}'.
+	 '\lxAddClass{marginbox}'.
+	 '#4\caption{#2}\label{#3}'.
+	 '\end{figure}');
+
+DefMacro('\mnote{}{}',
+	 '\begin{quote}'.
+	 '\lxAddClass{mnote}'.
+	 '\lxAddClass{marginbox}'.
+	 '#2\end{quote}');
+
+DefMacro('\mfigurethree{}{}{}{}{} Semiverbatim',
+	 '\begin{figure}'.
+	 '\lxAddClass{mfigurethree}'.
+	 '\lxAddClass{marginbox}'.
+	 '\myincludegraphics[#2]{#6_3D}\caption{#4}\label{#5}'.
+	 '\end{figure}');
+
+DefMacro('\myincludegraphicsthree{}{} Semiverbatim',
+	 '\myincludegraphics[#2]{#3_3D}');
+
+DefMacro('\AddToShipoutPicture OptionalMatch:* {}','');
+
+DefMacro('\vv {}','\vec #1');
+
+NewCounter('fakechapter');
+NewCounter('fakesection','fakechapter');
+
+sub TheFakeSection {
+    return CounterValue('fakechapter')->toString . '.' . CounterValue('fakesection')->toString;
+}
+sub TheFakeChapter {
+    return CounterValue('fakechapter')->toString;
+}
+
+DefMacro('\printexercises {}', sub {
+    if ( CounterValue('section')->toString eq '1' ) {
+	StepCounter('fakechapter');
+    }
+    StepCounter('fakesection');
+    my $label = TheFakeSection();
+    Invocation(T_CS('\printexercisesgeneric'),$_[1],"Exercises $label",$label);
+	 });
+
+DefMacro('\printexercisesreview {}','\printexercisesgeneric{#1}{Chapter '.TheFakeChapter().' Review Exercises}{'.TheFakeChapter().'}');
+
+DefMacro('\writeToAnsFile {}{}{}', sub {
+    my @ret;
+    if ( CounterValue('section')->toString eq '1' ) {
+	@ret = Tokenize('\immediate\write\answrite{}\write\answrite{\noindent {\Large\textbf{Chapter '.TheFakeChapter().'}} \vskip\baselineskip}');
+    }
+    push(@ret,
+	 Tokenize('\immediate\write\answrite{\noindent {\hyperref[exer'),
+	 $_[3],
+	 Tokenize(']{\textbf{'),
+	 $_[2],
+	 Tokenize('}}\label{sol'),
+	 $_[3],
+	 Tokenize('}}\vskip\baselineskip}\write\answrite{\printanswers{'),
+	 $_[1],
+	 Tokenize('}}'));
+    @ret;
+	 });
+
+DefPrimitive('\showans Number',sub {
+    my ($stomach,$port) = @_;
+    $port = ToString($port);
+    my $filename = LookupValue('output_file:' . $port);
+    my $handle   = $filename . '_contents';
+    my $contents = LookupValue($handle);
+    print STDERR "$filename contents:\n$contents\n\n";
+    return;
+	     });
+
+1;

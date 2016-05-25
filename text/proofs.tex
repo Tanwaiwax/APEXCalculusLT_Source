@@ -22,27 +22,27 @@ The theorem (and the proof) do not hold if we use the rational numbers in place 
 
 % product rule for derivatives currently in text
 
-\begin{proof}[Proof of {\hyperref[thm:chain_rule]{The Chain Rule}}]
-\label{pf:chain_rule}
-We'll start with an incorrect proof of the chain rule, see why it's wrong, and then back up to fix what we've written.  By the definition of the derivative,
-\begin{align*}
- \yp
- &= \lim_{h\to 0}\frac{f(g(x+h))-f(g(x))}h \\
- &= \lim_{h\to 0}\frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)}\times\frac{g(x+h)-g(x)}h \\
- &= \lim_{h\to 0}\frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)}\times
- \lim_{h\to 0}\frac{g(x+h)-g(x)}h \\
- &= \fp(g(x))\gp(x).
-\end{align*}
-The problem is that $g(x+h)-g(x)$ could be zero, which would mean we're multiplying and dividing by 0 and invalidating everything.  The solution is to rewrite everything so that we're no longer dividing.  Instead of showing
-\begin{equation}\label{eq:chain_rule_pf_org}
- \lim_{h\to 0}\frac{f(g(x+h))-f(g(x))}h=\fp(g(x))\gp(x),
-\end{equation}
-we will rearrange the equation and show that
-\[f(g(x+h))-f(g(x))-h\fp(g(x))\gp(x)=h\epsilon(h)\]
-where \eqref{eq:chain_rule_pf_org} means that $\epsilon(h)\to0$ as $h\to0$.  The proof continues\ldots.
-\end{proof}
+%\begin{proof}[Proof of {\hyperref[thm:chainRule]{The Chain Rule}}]
+%\label{pf:chainRule}
+%We'll start with an incorrect proof of the chain rule, see why it's wrong, and then back up to fix what we've written.  By the definition of the derivative,
+%\begin{align*}
+% \yp
+% &= \lim_{h\to 0}\frac{f(g(x+h))-f(g(x))}h \\
+% &= \lim_{h\to 0}\frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)}\times\frac{g(x+h)-g(x)}h \\
+% &= \lim_{h\to 0}\frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)}\times
+% \lim_{h\to 0}\frac{g(x+h)-g(x)}h \\
+% &= \fp(g(x))\gp(x).
+%\end{align*}
+%The problem is that $g(x+h)-g(x)$ could be zero, which would mean we're multiplying and dividing by 0 and invalidating everything.  The solution is to rewrite everything so that we're no longer dividing.  Instead of showing
+%\begin{equation}\label{eq:chainRulePfOrg}
+% \lim_{h\to 0}\frac{f(g(x+h))-f(g(x))}h=\fp(g(x))\gp(x),
+%\end{equation}
+%we will rearrange the equation and show that
+%\[f(g(x+h))-f(g(x))-h\fp(g(x))\gp(x)=h\epsilon(h)\]
+%where \eqref{eq:chainRulePfOrg} means that $\epsilon(h)\to0$ as $h\to0$.  The proof continues\ldots.
+%\end{proof}
 
-Before proving our next theorem, we'll first define an extension of an idea we saw (or will see) in Section~.
+Before proving our next theorem, we'll first define an extension of an idea we saw (or will see) in Section~\ref{sec:sequences}.
 
 \definition{def:subsequence}{Subsequence}%
 {Suppose that $\{x_n\}$ is a sequence of numbers.  Then $\{y_n\}$ is a \textbf{subsequence} if $g:\mathbb{N}^+\to\mathbb{N}^+$ is a strictly increasing function and $y_n=x_{g(n)}$.}
@@ -60,12 +60,12 @@ We can take a subsequence of a subsequence, which is sometimes called a subsubse
 
 If the original sequence converges, then so does any subsequence.  On the other hand, if the original sequence diverges, then we may be able to find a subsequence that still converges.  For example, $\{(-1)^n\}$ diverges, but if we take every other term, then we get a subsequence that converges.  Our next theorem is a powerful tool that gives conditions to guarantee that we'll be able to find a convergent subsequence.
 
-\theorem{thm:bolzano_weierstrass}{The Bolzano-Weierstrass Theorem}
+\theorem{thm:bolzanoWeierstrass}{The Bolzano-Weierstrass Theorem}
 {Suppose that $\{x_n\}$ is a bounded sequence or real numbers.  Then $\{x_n\}$ has a subsequence that converges.}
 
 \begin{proof}
 Because the sequence is bounded, it is contained in some segment $[-M,M]$.
-Partition this segment into $2M$ subsegments that are each 1 unit in length.  One of these segments must have infinitely many elements of the original sequence $\{x_n\}$.  Taking these elements as our subsequence, we have a subsequence $\{x_n^{(0)}\}$ where all of the elements are in the same unit length interval.  Now divide this interval in half.  One of these halves must have infinitely many elements of $\{x_n^{(0)}\}$, and we call this subsequence $\{x_n^{(1)}\}$.  We can continue this process of dividing the half segment and always taking the semi-segment with infinitely many points.  In this way, we get an infinite sequence of sequences $\{x_n^{(k)}\}$ where each $\{x_n^{(k)}\}$ is contained in an interval of length $2^{-k}$.  This means that $\{x_n^{(n)}\}$ is a sequence that must converge.
+Partition this segment into $2M$ subsegments that are each 1 unit in length.  One of these segments must have infinitely many elements of the original sequence $\{x_n\}$.  Taking these elements as our subsequence, we have a subsequence $\{x_n^{(0)}\}$ where all of the elements are in the same unit length interval.  Now divide this interval in half.  One of these halves must have infinitely many elements of $\{x_n^{(0)}\}$, and we call this subsequence $\{x_n^{(1)}\}$.  We can continue this process of dividing the half segment and always taking the semi-segment with infinitely many points.  In this way, we get an infinite sequence of sequences $\{x_n^{(k)}\}$ where each $\{x_n^{(k)}\}$ is contained in an interval of length $2^{-k}$.  This means that $\{x_n^{(n)}\}$ is a subsequence that must converge.
 \end{proof}
 
 The temptation in the previous proof is to just take the ``last'' subsequence.  But there are an infinite number of subsequences, so we can't talk about the ``last'' one.  Instead, we take the first element from the first subsequence, the second element from the second subsequence, and so on.
@@ -73,11 +73,12 @@ The temptation in the previous proof is to just take the ``last'' subsequence.  
 By Theorem~\ref{thm:realscomplete}, this limit must be a real number.
 
 % Let $f$ be a continuous function defined on a closed interval $I$. Then $f$ has both a maximum and minimum value on $I$.
-\begin{proof}[Proof of {\hyperref[thm:extreme_val]{The Extreme Value Theorem}}]
-\label{pf:extreme_val}
-We will prove that $f$ has a maximum.  The proof that $f$ has a minimum is identical.  Let $M$ be the least upper bound of the range of $f$, and choose $x_n\in[a,b]$ so that $f(x_n)\to M$.  By Theorem~\ref{thm:bolzano_weierstrass}, we can find a subsequence $y_n$ that converges to a limit $y$.  Because each $y_n\in[a,b]$, their limit $y\in[a,b]$.  Then
+\begin{proof}[Proof of {\hyperref[thm:extremeVal]{The Extreme Value Theorem}}]
+\label{pf:extremeVal}
+We will prove that $f$ has a maximum.  The proof that $f$ has a minimum is identical.  Let $M$ be the least upper bound of the range of $f$, and choose $x_n\in[a,b]$ so that $f(x_n)\to M$.  By Theorem~\ref{thm:bolzanoWeierstrass}, we can find a subsequence $y_n$ that converges to a limit $y$.  Because each $y_n\in[a,b]$, their limit $y\in[a,b]$.  Then
 \[
- f(y)=f(\lim_{n\to\infty}y_n)=\lim_{n\to\infty} f(y_n)=M.
+ f(y)=f(\lim_{n\to\infty}y_n)=\lim_{n\to\infty} f(y_n)=M
+ \iflatexml\else\qedhere\fi
 \]
 \end{proof}
 
@@ -98,19 +99,12 @@ If $\fp(c)$ does not exist, then $c$ is a critical number of $f$.  Therefore, we
 %\item $\ds \lim_{n\to\infty}\sum_{i=1}^n f(c_i)\Delta x = \int_a^b f(x)\ dx$, and %$\ds \lim_{n\to\infty} S_L(n) = \int_a^b f(x)\ dx$.
 %\item $\ds \lim_{\|\Delta x\|\to 0} \sum_{i=1}^n f(c_i)\Delta x_i = \int_a^b f(x)\ dx$.%, where the latter sum is any Riemann sum of $f$ on $[a,b]$, and
 %\end{enumerate}
-\begin{proof}[Proof of {\hyperref[thm:riemann_sum]{Definite Integrals and the Limit of Riemann Sums}}]\label{pf:riemann_sum}
+\begin{proof}[Proof of {\hyperref[thm:riemannSum]{Definite Integrals and the Limit of Riemann Sums}}]\label{pf:riemannSum}
 On the $i^\text{th}$ subinterval $[x_i,x_{i+1}]$, let $m_i$ be the extreme minimum of $f$, and let $M_i$ be the extreme maximum.  Then the signed area over $[x_i,x_{i+1}]$ is between $m_i\Delta x_i$ and $M_i\Delta x_i$.  Therefore, every expression in the theorem is bounded below by $\sum_{i=1}^n m_i\Delta x_i$ and bounded above by $\sum_{i=1}^n M_i\Delta x_i$.
 
-Given $\epsilon>0$, we want to find a $\delta$ so that $\abs{x-y}<\delta$ implies $\abs{f(x)-f(y)}<\epsilon/(b-a)$.  This is stronger than our usual notion of continuity, since we want the same $\delta$ to work for all possible values of $x$ and $y$.
+Given $\epsilon>0$, we want to find a $\delta$ so that $\abs{x-y}<\delta$ implies $\abs{f(x)-f(y)}<\epsilon/(b-a)$.  (This is stronger than our usual notion of continuity, since we want the same $\delta$ to work for all possible values of $x$ and $y$.)  Because $f$ is continuous, for each $x$, we can find a $\delta$ that depends on $x$ so that $\abs{x-y}<\delta$ implies $\abs{f(x)-f(y)}<\frac\epsilon{b-a}$.  Let $\delta(x)$ be the largest value of $\delta$ that makes this statement work for a particular $x$, so that there is some $y$ so that $\abs{x-y}<\delta$ but $\abs{f(x)-f(y)}\ge\frac\epsilon{b-a}$.  We want to show that there is a $\delta>0$ that is smaller than all the $\delta(x)$.
 
-Because $f$ is continuous, for each $x$, we can find a $\delta$ that depends on $x$ so that $\abs{x-y}<\frac\delta2$ implies $\abs{f(x)-f(y)}<\frac\epsilon{2(b-a)}$.  Let $\delta(x)$ be the largest value of $\delta$ that makes this statement work for a particular $x$, so that there is some $y$ so that $\abs{x-y}<\frac\delta2$ but $\abs{f(x)-f(y)}\ge\frac\epsilon{2(b-a)}$.  We want to show that there is a $\delta>0$ that is smaller than all the $\delta(x)$.
-
-Let's suppose for this paragraph that there is no such $\delta$.  This means that there is a sequence $\{x_n\}$ so that $\delta(x_n)\to0$.  By Theorem~\ref{thm:bolzano_weierstrass}, there is a subsequence that converges to a limit $x^*$.  Now let $\delta^*=\delta(x^*)$.  Because $f$ is continuous at $x^*$, $\delta^*>0$.  But then if we take $x_n$ within $\frac{\delta^*}2$ of $x^*$ so that $\delta(x_n)<\frac{\delta^*}2$, we can find a $y$ so that $\abs{x_n-y}<\delta(x_n)$ but $\abs{f(x_n)-f(y)}\ge\frac\epsilon{2(b-a)}$.  But this means
-\[
- \frac\epsilon{2(b-a)}\le\abs{f(x_n)-f(y)}<\abs{f(x_n)-f(x^*)}+\abs{f(x^*)-f(y)}
- <\frac\epsilon{2(b-a)}+\frac\epsilon{2(b-a)}.
-\]
-But this can't be true, which means that this entire paragraph is one giant contradiction.  Therefore, our beginning assumption must be wrong, and we can find such a $\delta$.
+Let's suppose for this paragraph that there is no such $\delta$.  This means that there is a sequence $\{x_n\}$ so that $\delta(x_n)\to0$.  By Theorem~\ref{thm:bolzanoWeierstrass}, there is a subsequence that converges to a limit $x^*$.  Now let $\delta^*=\delta(x^*)$ and take $x_n$ within $\frac{\delta^*}2$ of $x^*$ so that $\delta(x_n)<\delta^*$.  Then for any $y$ within $\delta(x_n)$ of $x_n$, $\abs{x^*-y}<\abs{x^*-x_n}+\abs{x_n-y}<\frac{\delta^*}2+\delta(x_n)=\delta^*$ and $\abs{f(x_n)-f(y)}<\abs{f(x_n)-f(x^*)}+\abs{f(x^*)-f(y)}<\frac\epsilon{2(b-a)}+\frac\epsilon{2(b-a)}$.  But we chose $\delta(x_n)$ so that there is a $y$ where this doesn't happen.  This means that this entire paragraph is one giant contradiction.  Therefore, our beginning assumption must be wrong, and we can find such a $\delta$. NOT YET.
 
 Then once $\abs{\Delta x}<\delta$, the $x$-coordinates of the extreme values will be within $\delta$, and $\abs{M_i-m_i}<\epsilon/(b-a)$.  This will mean that
 \[

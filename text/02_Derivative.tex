@@ -1,3 +1,5 @@
+\iflatexml\section*{Chapter Introduction}\fi
+
 The previous chapter introduced the most fundamental of calculus topics: the limit. This chapter introduces the second most fundamental of calculus topics: the derivative. Limits describe \textit{where} a function is going; derivatives describe \textit{how fast} the function is going.
 
 \section{Instantaneous Rates of Change: The Derivative}\label{sec:derivative}
@@ -51,7 +53,8 @@ Graphically, we can view the average velocities we computed numerically as the s
 
 As $h\to 0$, these secant lines approach the \textit{tangent line}, a line that goes through the point $(2,f(2))$ with the special slope of $-64$. In parts (c) and (d) of Figure \ref{fig:derivfalling}, we zoom in around the point $(2,86)$. In (c) we see the secant line, which approximates $f$ well, but not as well the tangent line shown in (d).\\
 
-			\noindent%
+%			\noindent%
+\begin{figure}[!ht]
 			\ifthenelse{\boolean{longpage}}{\hskip -30pt}{}%
 			\begin{minipage}{\textwidth}\centering
 			\begin{tabular}{cc}
@@ -62,15 +65,17 @@ As $h\to 0$, these secant lines approach the \textit{tangent line}, a line that 
 			\captionsetup{type=figure}%
 			\caption{Parts (a), (b) and (c) show the secant line to $f(x)$ with $h=1$, zoomed in different amounts. Part (d) shows the tangent line to $f$ at $x=2$.}\label{fig:derivfalling}
 			\end{minipage}
+			\end{figure}
 			\vskip 2\baselineskip
 
 We have just introduced a number of important concepts that we will flesh out more within this section. First, we formally define two of them.
 
-\definition{def:derivative_at_a_point}{Derivative at a Point}{Let $f$ be a continuous function on an open interval $I$ and let $c$ be in $I$.\index{derivative!at a point} The \sword{derivative of $f$ at $c$}, denoted $\fp(c)$, is $$\lim_{h\to 0}\frac{f(c+h)-f(c)}{h},$$ provided the limit exists. If the limit exists, we say that \sword{$f$ is differentiable at $c$}; if the limit does not exist, then \sword{$f$ is not differentiable at $c$}. If $f$ is differentiable at every point in $I$, then \sword{$f$ is differentiable on $I$}.\index{differentiable}
+\definition{def:derivative_at_a_point}{Derivative at a Point}{Let $f$ be a continuous function on an open interval $I$ and let $c$ be in $I$.\index{derivative!at a point} The \sword{derivative of $f$ at $c$}, denoted $\fp(c)$, is \[\lim_{h\to 0}\frac{f(c+h)-f(c)}{h},\] provided the limit exists. If the limit exists, we say that \sword{$f$ is differentiable at $c$}; if the limit does not exist, then \sword{$f$ is not differentiable at $c$}. If $f$ is differentiable at every point in $I$, then \sword{$f$ is differentiable on $I$}.\index{differentiable}
 }
 
 \definition{def:tangent_line}{Tangent Line}{Let $f$ be continuous on an open interval $I$ and differentiable at $c$, for some $c$ in $I$. The line with equation $\ell(x) = \fp(c)(x-c)+f(c)$ is the \textbf{tangent line} to the graph of $f$ at $c$; that is, it is the line through $(c,f(c))$ whose slope is the derivative of $f$ at $c$.\index{tangent line}\index{derivative!tangent line}}
 
+\jmtVideo{1O5NEI8UuHM}{the-difference-quotient-example-1}{The Difference Quotient --- Example 1}
 
 \enlargethispage{1\baselineskip}
 Some examples will help us understand these definitions.\\
@@ -125,7 +130,7 @@ Another important line that can be created using information from the derivative
 
 \definition{def:normal_line}{Normal Line}
 {Let $f$ be continuous on an open interval $I$ and differentiable at $c$, for some $c$ in $I$. The \textbf{normal line} to the graph of $f$ at $c$ is the line with equation
-$$n(x) =\frac{-1}{\fp(c)}(x-c)+f(c),$$ where $\fp(c)\neq 0$. When $\fp(c)=0$, the normal line is the vertical line through $\big(c,f(c)\big)$; that is, $x=c$.\index{derivative!normal line}\index{normal line}
+\[n(x) =\frac{-1}{\fp(c)}(x-c)+f(c),\] where $\fp(c)\neq 0$. When $\fp(c)=0$, the normal line is the vertical line through $\big(c,f(c)\big)$; that is, $x=c$.\index{derivative!normal line}\index{normal line}
 }
 
 \example{ex_normal1}{Finding equations of normal lines}{
@@ -206,7 +211,7 @@ The output is the ``derivative function,'' $\fp(x)$. The $\fp(x)$ function will 
 \sword{Notation:} 
 
 Let $y = f(x)$. The following notations all represent the derivative:
-$$\fp(x)\ =\ y'\ =\ \frac{dy}{dx}\ =\ \frac{df}{dx}\ =\ \frac{d}{dx}(f)\ =\ \frac{d}{dx}(y). $$}
+\[\fp(x)\ =\ y'\ =\ \frac{dy}{dx}\ =\ \frac{df}{dx}\ =\ \frac{d}{dx}(f)\ =\ \frac{d}{dx}(y).\]}
 \setlength{\specialboxlength}{\textwidth-2\specialboxinnerseplength}
 
 \noindent\textbf{Important:} The notation $\ds \frac{dy}{dx}$ is one symbol; it is \textbf{not} the fraction ``$dy/dx$''. The notation, while somewhat confusing at first, was chosen with care. A fraction--looking symbol was chosen because the derivative has many fraction--like properties. Among other places, we see these properties at work when we talk about the units of the derivative, when we discuss the Chain Rule, and when we learn about integration (topics that appear in later sections and chapters).\\
@@ -307,7 +312,7 @@ We need to also find the derivative at $x=0$. By the definition of the derivativ
 %		
 \mfigure{.45}{A graph of the derivative of $f(x) = |x|$.}{fig:absolutevalueprime}{figures/figabsolutevalueprime}			
 The last lines of each column tell the story: the left and right hand limits are not equal. Therefore the limit does not exist at 0, and $f$ is not differentiable at 0.
-So we have $$\fp(x) = \left\{\begin{array}{cc} -1 & x<0 \\ 1 & x>0\end{array}.\right.$$ 
+So we have $$\fp(x) = \begin{cases} -1 & x<0 \\ 1 & x>0\end{cases}.$$ 
 At $x=0$, $\fp(x)$ does not exist; there is a jump discontinuity at 0; see Figure \ref{fig:absolutevalueprime}. So $f(x) = |x|$ is differentiable everywhere except at 0. 
 }\\
 
@@ -358,10 +363,15 @@ Being more rigorous, we can again evaluate the difference quotient limit at $x=\
 %		 0 &=0\\
 %\end{align*}
 \mfigure{.55}{A graph of $\fp(x)$ in Example \ref{ex_diff_piecewise}.}{fig:piecewisecosx1}{figures/figpiecewisecosx1}
-Since both the left and right hand limits are 0 at $x=\pi/2$, the limit exists and $\fp(\pi/2)$ exists (and is 0). Therefore we can fully write $\fp$ as $$\fp(x) = \left\{\begin{array}{cc} \cos x & x\leq\pi/2\\ 0 & x>\pi/2\end{array}.\right.$$ See Figure \ref{fig:piecewisecosx1} for a graph of this function.
+Since both the left and right hand limits are 0 at $x=\pi/2$, the limit exists and $\fp(\pi/2)$ exists (and is 0). Therefore we can fully write $\fp$ as $$\fp(x) = \begin{cases}\cos x & x\leq\pi/2\\ 0 & x>\pi/2\end{cases}.$$ See Figure \ref{fig:piecewisecosx1} for a graph of this function.
 }\\
 
 Recall we pseudo--defined a continuous function as one in which we could sketch its graph without lifting our pencil. We can give a pseudo--definition for differentiability as well: it is a continuous function that does not have any ``sharp corners.'' One such sharp corner is shown in Figure \ref{fig:absolutevalue}. Even though the function $f$ in Example \ref{ex_diff_piecewise} is piecewise--defined, the transition is ``smooth'' hence it is differentiable. Note how in the graph of $f$ in Figure \ref{fig:piecewisesinx1} it is difficult to tell when $f$ switches from one piece to the other; there is no ``corner.''
+
+To better understand the definition of a derivative, experiment with the Geogebra app
+at \url{http://mathinsight.org/applet/secant_line_slope}.
+
+% TODO: iframe ?
 
 This section defined the derivative; in some sense, it answers the question of ``What \textit{is} the derivative?'' The next section addresses the question ``What does the derivative \textit{mean}?''
 

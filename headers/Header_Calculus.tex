@@ -2,14 +2,15 @@
 % Additional packages to support the book, not part of the APEX style.
 %%%%
 \usepackage{fancyhdr}
-\usepackage{eso-pic}
-\usepackage{lipsum}
 %\usepackage{pgfplots}
 %\pgfplotsset{width=\marginparwidth+1pt,compat=1.3}
 \usepackage[font=small]{caption}
 %,justification=centering
 
 \usepackage{wrapfig}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
 
 %%%%
 %% These are low level LaTeX commands that determine the 
@@ -126,198 +127,7 @@ Notes:
 %%%\makeatletter
 %%\def\@makesectionhead#1{%
 %%	 {\reset@font\LARGE\itshape\bfseries\strut #1 \thechapter.\thesection \ #1
-%%	 }}
-
-%%%%
-%%
-%%  For figures in the margin
-%%
-%%%%
-
-%%\usepackage{wrapfig}
-%%
-%%\setlength{\marginparsep}{10pt}
-%%\setlength{\wrapoverhang}{\marginparwidth}
-%%\addtolength{\wrapoverhang}{\marginparsep}
-%%
-%%%\newenvironment{mfigure}[1]{%
-%%%    \wrapfigure{#1}{0pt}%
-%%%    \begin{minipage}{\marginparwidth}%
-%%%    \centering%
-%%%}{%
-%%%    \end{minipage}%
-%%%    \endwrapfigure%
-%%%}
-
-
-\ifthenelse{\boolean{longpage}}%
-		{\newcommand{\mfigure}[5][]{%
-		\vskip \baselineskip%
-			\noindent\begin{minipage}{\textwidth}
-  			\centering
-  			\myincludegraphics{#5}
-  			#1%
-  			\captionsetup{type=figure}
-	  		\caption{#3}\label{#4}
-  		\end{minipage}
-		}}
-		{\newcommand{\mfigure}[5][]{%
-		\ifthenelse{\isodd{\thepage}}%
-			{\AddToShipoutPicture*{\put(427,\LenToUnit{#2\paperheight}){%
-			\begin{minipage}{\marginparwidth}%
-				\centering%
-	  		\myincludegraphics[#1]{#5}%
-  			\captionsetup{type=figure}%
-  			%#1%
-	  		\caption{#3}\label{#4}%
-  		\end{minipage}}}}%
-			{\AddToShipoutPicture*{\put(36,\LenToUnit{#2\paperheight}){%
-			\begin{minipage}{\marginparwidth}%
-			  \centering%
-  			\myincludegraphics[#1]{#5}%
-  			\captionsetup{type=figure}%
-  			%#1%
-	  		\caption{#3}\label{#4}%
-  		\end{minipage}}}}%
-		}}%
-
-\ifthenelse{\boolean{longpage}}%
-		{\newcommand{\mtable}[4]{
-					\vskip \baselineskip%
-					\noindent\begin{minipage}{\textwidth}
-  					\centering\small
-  					#4
-  					\captionsetup{type=figure}
-	  				\caption{#2}\label{#3}
-  				\end{minipage}
-  				\vskip\baselineskip}
-  	}
-		{\newcommand{\mtable}[4]{%
-			\ifthenelse{\isodd{\thepage}}%
-				{\AddToShipoutPicture*{\put(427,\LenToUnit{#1\paperheight}){%
-					\begin{minipage}{\marginparwidth}%
-  					\centering\small%
-  					#4%
-  					\captionsetup{type=figure}%
-	  				\caption{#2}\label{#3}%
-  				\end{minipage}}}}%
-				{\AddToShipoutPicture*{\put(36,\LenToUnit{#1\paperheight}){%
-					\begin{minipage}{\marginparwidth}%
- 						 \centering\small%
- 						 #4%
-						  \captionsetup{type=figure}%
-	  					\caption{#2}\label{#3}%
- 					 \end{minipage}}}}%
-		}}%
-
-\ifthenelse{\boolean{longpage}}%
-		{\newcommand{\mnote}[2]{%
-					\hskip 25pt%
-					\begin{minipage}{250pt}%
-					\small%
-					#2%
-					\end{minipage}%
-					\vskip\baselineskip%
-		}%
-		}%
-		{\newcommand{\mnote}[2]{%
-			\ifthenelse{\isodd{\thepage}}%
-				{\AddToShipoutPicture*{\put(427,\LenToUnit{#1\paperheight}){%
-					\begin{minipage}{\marginparwidth}
-  					\small
-  					#2
-  				\end{minipage}}}}%
-				{\AddToShipoutPicture*{\put(36,\LenToUnit{#1\paperheight}){%
-					\begin{minipage}{\marginparwidth}
- 						 \small
- 						 #2
-					\end{minipage}}}}
-		}}
-
-%\ifthenelse{\boolean{longpage}}%
-		%{}
-		%{\newcommand{\mfigurethree}[5][]{%
-		%\ifthenelse{\isodd{\thepage}}%
-			%{\AddToShipoutPicture*{\put(427,\LenToUnit{#2\paperheight}){%
-			%\begin{minipage}{\marginparwidth}%
-				%\centering%
-	  		%\includemedia[#1]{\includegraphics{#5}}{#5.prc}%
-  			%\captionsetup{type=figure}%
-  			%%#1%
-	  		%\caption{#3}\label{#4}%
-  		%\end{minipage}}}}%
-			%{\AddToShipoutPicture*{\put(36,\LenToUnit{#2\paperheight}){%
-			%\begin{minipage}{\marginparwidth}%
-			  %\centering%
-  			%\includemedia[#1]{\includegraphics{#5}}{#5.prc}%
-  			%\captionsetup{type=figure}%
-  			%%#1%
-	  		%\caption{#3}\label{#4}%
-  		%\end{minipage}}}}%
-		%}}%
-		
-		\newcommand{\mfigurethree}[6]{%
-		\ifthenelse{\isodd{\thepage}}%
-			{\AddToShipoutPicture*{\put(427,\LenToUnit{#3\paperheight}){%
-			\begin{minipage}{\marginparwidth}%
-				\centering%
-				\ifthenelse{\boolean{in_threeD}}{% in 3D
-	  		\includemedia[#1]{\includegraphics{#6_3D\colornamesuffix}}{#6_3D.prc}}%now not in 3D
-				{\myincludegraphics[#2]{#6}}%
-  			\captionsetup{type=figure}%
-  			%#1%
-	  		\caption{#4}\label{#5}%
-  		\end{minipage}}}}%
-			{\AddToShipoutPicture*{\put(36,\LenToUnit{#3\paperheight}){%
-			\begin{minipage}{\marginparwidth}%
-			  \centering%
-  			\ifthenelse{\boolean{in_threeD}}{% in 3D
-	  		\includemedia[#1]{\includegraphics{#6_3D\colornamesuffix}}{#6_3D.prc}}%now not in 3D
-				{\myincludegraphics[#2]{#6}}%
-  			\captionsetup{type=figure}%
-  			%#1%
-	  		\caption{#4}\label{#5}%
-  		\end{minipage}}}}%
-		}
-
-%\AddToShipoutPicture{\ifthenelse{\ifodd{\thepage}}%
-%{\put(10,10){\begin{tikzpicture}\draw (0,0) circle (5pt);\end{tikzpicture}}}%
-%{\put(100,100){\begin{tikzpicture}\draw (0,0) circle (5pt);\end{tikzpicture}}}}%
-%
-
-%\AddToShipoutPictureBG{%
-% \AtPageLowerLeft{\hspace{1cm}A small logo: \rule{2cm}{3cm}}}
-% 
-%}{\AddToShipoutPicture*{\put(36,\LenToUnit{#2\paperheight})}}%
-%{%
-%\begin{minipage}{\marginparwidth}
-%  \centering
-%  \includegraphics{#1}
-%  \captionof{figure}{#3}
-%  \end{minipage}}}
-%\AddToShipoutPicture*{\put(\LenToUnit{.5\paperwidth},\LenToUnit{.75\paperheight}){%
-%  \begin{minipage}{100pt}
-%  \centering
-%  \includegraphics{test-figure2.pdf}
-%  \captionof{figure}{Test caption}
-%  \end{minipage}}}
-
-
-%\newenvironment{mfigurefile}[2]{%
-%\begin{tikzpicture}[remember picture,overlay]%
-%\ifthenelse{\isodd{\thepage}}{\node [xshift=-36pt-.5\marginparwidth,yshift=#2\paperheight] at (current page.south east) }{\node [xshift=36pt+.5\marginparwidth,yshift=#2\paperheight] at (current page.south west) }%
-%{\input{#1}};}%
-%{\end{tikzpicture}%
-%}
-
-%\DeclareCaptionType{mytype}[Typename][List of mytype]
-
-
-    
-%%%%
-%% End margin figure 
-%%%%    
-    
+%%	 }}    
 
 \newcommand{\bmx}[1]{\left[\hskip -3pt\begin{array}{#1} }
 \newcommand{\emx}{\end{array}\hskip -3pt\right]}
@@ -342,17 +152,19 @@ Notes:
 \newcommand{\ddz}{\ensuremath{\Delta z}}
 
 \newcommand{\thet}{\ensuremath{\theta}}
-\newcommand{\abs}[1]{\ensuremath{\left\lvert\ #1\ \right\rvert}}
-\newcommand{\norm}[1]{\ensuremath{||\ #1\ ||}}
+\newcommand{\abs}[1]{\ensuremath{%
+\left\iflatexml\vert\else\lvert\fi\ #1\ \right\iflatexml\vert\else\rvert\fi}}
+\newcommand{\norm}[1]{\ensuremath{%
+\left\iflatexml\Vert\else\lVert\fi\ #1\ \right\iflatexml\Vert\else\rVert\fi}}
 \newcommand{\vnorm}[1]{\ensuremath{\norm{\vec #1}}}
-\newcommand{\snorm}[1]{\ensuremath{\left|\left|\ #1\ \right|\right|}}
+\newcommand{\snorm}[1]{\norm{#1}}%{\ensuremath{\left\lVert\ #1\ \right\rVert}}
 \newcommand{\la}{\left\langle}
 \newcommand{\ra}{\right\rangle}
 \newcommand{\dotp}[2]{\ensuremath{\vec #1 \cdot \vec #2}}
 \newcommand{\proj}[2]{\ensuremath{\text{proj}_{\,\vec #2}{\,\vec #1}}}
 \newcommand{\crossp}[2]{\ensuremath{\vec #1 \times \vec #2}}
-\newcommand{\veci}{\ensuremath{\vec i}}
-\newcommand{\vecj}{\ensuremath{\vec j}}
+\newcommand{\veci}{\ensuremath{\vec\imath}}
+\newcommand{\vecj}{\ensuremath{\vec\jmath}}
 \newcommand{\veck}{\ensuremath{\vec k}}
 \newcommand{\vecu}{\ensuremath{\vec u}}
 \newcommand{\vecv}{\ensuremath{\vec v}}
@@ -376,8 +188,8 @@ Notes:
 \newcommand{\zerooverzero}{\ensuremath{\ds \raisebox{8pt}{\text{``\ }}\frac{0}{0}\raisebox{8pt}{\text{\ ''}}}}
 
 
-\newcommand{\myrule}{\rule[-4pt]{0pt}{13pt}}
-\newcommand{\mmrule}{\rule[-10pt]{0pt}{15pt}}
+\newcommand{\myrule}{\iflatexml\else\rule[-4pt]{0pt}{13pt}\fi}
+\newcommand{\mmrule}{\iflatexml\else\rule[-10pt]{0pt}{15pt}\fi}
 \newcommand{\myds}{\ds\mmrule}
 \newcommand{\deriv}[2]{\ensuremath{\myds\frac{d}{dx}\left(#1\right)=#2}}
 \newcommand{\myint}[2]{\ensuremath{\myds\int #1\ dx=} \ensuremath{\ds #2}}
@@ -443,7 +255,7 @@ Notes:
 %%%%
 
 \newcommand{\asyouread}[1]{\begin{tikzpicture}
-\ifthenelse{\boolean{in_color}}{\node [preaction={fill=black,opacity=.5,transform canvas={xshift=1mm,yshift=-1mm}}, right color=blue!80!black!30, left color=blue!80] at (0,0) {\textcolor{white}{\textsf{\textit{AS YOU READ $\ldots$}}}};}
+\ifthenelse{\boolean{inColor}}{\node [preaction={fill=black,opacity=.5,transform canvas={xshift=1mm,yshift=-1mm}}, right color=blue!80!black!30, left color=blue!80] at (0,0) {\textcolor{white}{\textsf{\textit{AS YOU READ $\ldots$}}}};}
 {\node [preaction={fill=black,opacity=.5,transform canvas={xshift=1mm,yshift=-1mm}}, right color=black!30, left color=black!10] at (0,0) {\textcolor{white}{\textsf{\textit{AS YOU READ $\ldots$}}}};}
 \end{tikzpicture}
 \begin{enumerate}
@@ -467,3 +279,47 @@ Notes:
 \end{tikzpicture}%
 \end{center}%
 }
+
+\newcommand{\video}[3]{\noindent Watch the video:\\%
+ \href{#2}{#3 at \nolinkurl{#2}}%
+ \embedVideo{https://www.youtube.com/v/#1?rel=0}%
+}
+
+\newcommand{\youtubeVideo}[2]{\video{#1}{https://youtu.be/#1}{#2}}
+
+\newcommand{\jmtVideo}[3]{\noindent Watch the video:\\%
+ \href{http://patrickjmt.com/#2/}{#3 at \nolinkurl{http://patrickjmt.com/#2/}}%
+ \embedVideo{https://www.youtube.com/v/#1?rel=0}%
+}
+
+\newcommand{\khanVideo}[4]{\noindent Watch the video:\\%
+ \href{https://www.khanacademy.org/video/#2?utm_campaign=embed}{#3 at \nolinkurl{https://www.khanacademy.org/video/#2}}%
+ \embedVideo{https://www.youtube.com/v/#1?rel=0}%
+}
+
+\ifthenelse{\boolean{xetex}}%
+	{%
+	\sffamily
+	%%\usepackage{fontspec}
+	\usepackage{mathspec}
+	\setallmainfonts[Mapping=tex-text]{Calibri}
+	\setmainfont[Mapping=tex-text]{Calibri}
+	\setsansfont[Mapping=tex-text]{Calibri}
+	\setmathsfont(Greek){[cmmi10]}}
+	{}
+	
+\ifthenelse{\boolean{luatex}}%
+	{%
+	\sffamily
+	\usepackage{fontspec}
+	\usepackage{unicode-math}
+	%\usepackage{mathspec}
+	%\setallmainfonts[Mapping=tex-text]{Calibri}
+	\setmainfont{Calibri}
+	%\setsansfont[Mapping=tex-text]{Calibri}
+	\setmathfont[range=\mathup]{Calibri}
+	\setmathfont[range=\mathit]{Calibri Italic}
+	}
+	{}
+
+\RequirePackage[bookmarksnumbered,hidelinks,pdfstartview=FitH]{hyperref}

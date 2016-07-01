@@ -1,16 +1,16 @@
-\pagebreak
-\section{Trigonometric Integrals}\label{sec:trigint}
-%\thispagestyle{empty}
-Functions involving trigonometric functions are useful as they are good at describing periodic behavior. % Learning techniques to integrate such functions helps solve problems involving periodic behavior and also helps build general problem solving skills.
- This section describes several techniques for finding antiderivatives of certain combinations of trigonometric functions.\\
 
-\noindent\textbf{\large Integrals of the form $\ds \int \sin^m x\cos^n x\ dx$}
+% this section gets 06_01_ex_27 ?
+
+\section{Trigonometric Integrals}\label{sec:trigint}
+
+Functions involving trigonometric functions are useful as they are good at describing periodic behavior. This section describes several techniques for finding antiderivatives of certain combinations of trigonometric functions.\\
+
+\subsection*{Integrals of the form $\ds \int \sin^m x\cos^n x\ dx$}
 
 In learning the technique of Substitution, we saw the integral $\int \sin x\cos x\ dx$ in Example \ref{ex_sub10}. The integration was not difficult, and one could easily evaluate the indefinite integral by letting $u=\sin x$ or by letting $u = \cos x$. This integral is easy since the power of both sine and cosine is 1.
 
 We generalize this integral and consider integrals of the form $\int \sin^mx\cos^nx\ dx$, where $m,n$ are nonnegative integers. Our strategy for evaluating these integrals is to use the identity $\cos^2x+\sin^2x=1$ to convert high powers of one trigonometric function into the other, leaving a single sine or cosine term in the integrand. We summarize the general technique in the following Key Idea.
 
-\enlargethispage{2\baselineskip}
 \setboxwidth{60pt}
 \noindent\ifthenelse{\isodd{\thepage}}{}{\hskip -60pt}
 \begin{minipage}{\specialboxlength}
@@ -85,20 +85,42 @@ $\ds \int\sin^5x\big(1-4\sin^2x+6\sin^4x-4\sin^6x+\sin^8x\big)\cos x\ dx =$% \\
    x)}{49152}+\frac{\cos (8 x)}{4096}-\frac{\cos (10 x)}{81920}-\frac{\cos (12
    x)}{24576}-\frac{\cos (14 x)}{114688},$$\normalsize
 which clearly has a different form than our answer in Example \ref{ex_trigint2}, which is
-$$g(x)=\frac16\sin^6 x-\frac12\sin^8 x+\frac35\sin^{10} x-\frac13\sin^{12} x+\frac{1}{14}\sin^{14} x.$$ Figure \ref{fig:trigint2} shows a graph of $f$ and $g$; they are clearly not equal, but they differ \emph{only by a constant}. That is $g(x) = f(x) + C$ for some constant $C$. So we have two different antiderivatives of the same function, meaning both answers are correct. \\%We leave it to the reader to recognize why both answers are correct.\\
-\enlargethispage{\baselineskip}
+$$g(x)=\frac16\sin^6 x-\frac12\sin^8 x+\frac35\sin^{10} x-\frac13\sin^{12} x+\frac{1}{14}\sin^{14} x.$$ Figure \ref{fig:trigint2} shows a graph of $f$ and $g$; they are clearly not equal, but they differ \emph{only by a constant}. That is $g(x) = f(x) + C$ for some constant $C$. So we have two different antiderivatives of the same function, meaning both answers are correct.\bigskip
 
-\mfigure{.65}{A plot of $f(x)$ and $g(x)$ from Example \ref{ex_trigint2} and the Technology Note.}{fig:trigint2}{figures/figtrigint2}
+\mfigure{0in}{A plot of $f(x)$ and $g(x)$ from Example \ref{ex_trigint2} and the Technology Note.}{fig:trigint2}{figures/figtrigint2}
+
+This is a common trigonometric integral.\bigskip
+
+\example{ex_sub8}{Integration by substitution: powers of $\cos x$ and $\sin x$}{
+Evaluate $\ds \int \cos^2x\ dx$.}
+{We have a composition of functions as $\cos^2x = \big(\cos x\big)^2$. However, setting $u = \cos x$ means $du = -\sin x\ dx$, which we do not have in the integral. Another technique is needed.
+
+The process we'll employ is to use a half angle formula for $\cos^2x$, which states 
+\[\cos ^2x = \frac{1+\cos(2x)}{2}.\]
+The right hand side of this equation is not difficult to integrate. We have:
+\begin{align*}
+	\int \cos^2x\ dx
+	&= \int \frac{1+\cos(2x)}2\ dx \\
+	&= \int \left( \frac12 + \frac12\cos(2x)\right)\ dx. \\
+%\intertext{Now use Key Idea \ref{idea:linearsub}:}
+	&= \frac12x + \frac12\frac{\sin(2x)}{2} + C \rule[-10pt]{0pt}{5pt}\\
+	&= \frac12x + \frac{\sin(2x)}4 + C.
+\end{align*}%
+%We'll make significant use of this power--reducing technique in future sections.
+}
 
 \example{ex_trigint3}{Integrating powers of sine and cosine}{
 Evaluate $\ds\int\cos^4x\sin^2x\ dx$.}
 {The powers of sine and cosine are both even, so we employ the power--reducing formulas and algebra as follows.
 \begin{align*}
-\int \cos^4x\sin^2x\ dx &= \int\left(\frac{1+\cos(2x)}{2}\right)^2\left(\frac{1-\cos(2x)}2\right)\ dx \\
-				&= \int\frac{1+2\cos(2x)+\cos^2(2x)}4\cdot\frac{1-\cos(2x)}2\ dx\\
-				&=	\int \frac18\big(1+\cos(2x)-\cos^2(2x)-\cos^3(2x)\big)\ dx
+	\int \cos^4x\sin^2x\ dx
+	&= \int\left(\frac{1+\cos(2x)}{2}\right)^2\left(\frac{1-\cos(2x)}2\right)\ dx \\
+	&= \int\frac{1+2\cos(2x)+\cos^2(2x)}4\cdot\frac{1-\cos(2x)}2\ dx\\
+	&=	\int \frac18\big(1+\cos(2x)-\cos^2(2x)-\cos^3(2x)\big)\ dx
 \end{align*}
-The $\cos(2x)$ term is easy to integrate, especially with Key Idea \ref{idea:linearsub}. The $\cos^2(2x)$ term is another trigonometric integral with an even power, requiring the power--reducing formula again. The $\cos^3(2x)$ term is a cosine function with an odd power, requiring a substitution as done before. We integrate each in turn below.
+The $\cos(2x)$ term is easy to integrate.
+%, especially with Key Idea \ref{idea:linearsub}.
+The $\cos^2(2x)$ term is another trigonometric integral with an even power, requiring the power--reducing formula again. The $\cos^3(2x)$ term is a cosine function with an odd power, requiring a substitution as done before. We integrate each in turn below.
 
 $$\int\cos(2x)\ dx = \frac12\sin(2x)+C.$$
 

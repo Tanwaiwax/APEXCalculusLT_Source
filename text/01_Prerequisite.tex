@@ -1,0 +1,219 @@
+\addtocounter{section}{-1}
+\section{Chapter Prerequisites}
+\prereqIntro
+
+A \textbf{function} $f$ is a rule that assigns each element $x$ from a set (called the domain) to exactly one element, called $f(x)$, in another set. Unless we say otherwise, the \textbf{domain} is the set of all real numbers for which the rule makes sense and defines a real number. All possible values of $f(x)$ are called the \textbf{range} of $f$. We use four ways to represent a function.\\
+\begin{minipage}{.5\linewidth}
+\begin{itemize}
+\item By a graph
+\item By an explicit formula
+\end{itemize}
+\end{minipage}%
+\begin{minipage}{.5\linewidth}
+\begin{itemize}
+\item By a table of values
+\item By a verbal description
+\end{itemize}
+\end{minipage}
+
+Throughout the book we will use several representations of any given function to help give us a better understanding of the problem. The graphs in Figure \ref{prereq_basic_graphs} contain most of the base functions we can use to build other functions using transformations.
+
+\ifthenelse{\boolean{latexml}\OR\isodd{\thepage}}{%
+% do nothing
+}{%
+\hspace{-70pt}%
+}%
+\begin{figure}[!ht]
+\begin{center}
+\begin{tabular}{c c c}
+\begin{tikzpicture}[scale = .3]
+\begin{axis}[axis y line=middle, axis x line=middle, xmin=-2.2, xmax=2.2, ymin=-.5, ymax=2.2,name=myplot]
+\addplot[{\colorone}, domain=-2:2, thick, smooth]{x*x};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+&
+\begin{tikzpicture}[scale = .3]
+\begin{axis}[axis y line=middle, axis x line=middle, xmin=-.5, xmax=3.2, ymin=-.5, ymax=2.2,name=myplot, ytick={0, 1,2}, xtick={0,1,2,3}]
+\addplot[{\colorone}, domain=-0:3, thick, smooth,samples=100]{sqrt x};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+&
+\begin{tikzpicture}[scale = .3]
+\begin{axis}[axis y line=middle, axis x line=middle, xmin=-2.2, xmax=2.2, ymin=-.5, ymax=2.2,name=myplot, ytick={0, 1,2}]
+\addplot[{\colorone}, domain=-2:2, thick, smooth]{abs x};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture} \\
+$y=x^2$ & $y=\sqrt x$& $y=|x|$
+\\
+%\end{tabular}
+%
+%\begin{tabular}{ccc}
+\begin{tikzpicture}[scale = .3]
+\begin{axis}[axis y line=middle, axis x line=middle, xmin=-2.2, xmax=2.2, ymin=-2.2, ymax=2.2,name=myplot]
+\addplot[{\colorone}, domain=-2:2, thick, smooth]{x*x*x};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+&
+\begin{tikzpicture}[scale = .3]
+\begin{axis}[axis y line=middle, axis x line=middle, xmin=-2.2, xmax=2.2, ymin=-.5, ymax=3.2,name=myplot, ytick={0, 1,2,3}]
+\addplot[{\colorone}, domain=-2:2, thick, smooth]{e^x};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+&
+\begin{tikzpicture}[scale = .3]
+\begin{axis}[axis y line=middle, axis x line=middle, xmin=-.5, xmax=3.2, ymin=-2.2, ymax=2.2,name=myplot, ytick={-2,-1,0, 1,2},xtick={0,1,2,3}]
+\addplot[{\colorone}, domain=0:3, thick, smooth]{ln x};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture} \\
+$y=x^3$ & $y=e^x$& $y=\ln x$
+\\
+%\end{tabular}
+%
+%\begin{tabular}{ccc}
+\begin{tikzpicture}[scale = .3]
+\begin{axis}[axis y line=middle, axis x line=middle, xmin=-.5, xmax=6.5, ymin=-1.2, ymax=1.2,name=myplot, ytick={-1,0,1}, xtick={-6.28318, -4.7123889, -3.14159, -1.5708, 1.5708, 3.14159, 4.7123889, 6.28318}, xticklabels={-$2\pi$, $-\frac{3\pi}{2}$,$-\pi$, $-\frac{\pi}{2}$, $\frac{\pi}{2}$,$\pi$, $\frac{3\pi}{2}$, $2\pi$}]
+\addplot[{\colorone}, domain=-.5:6.4, thick, smooth]{sin deg(x)};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+&
+\begin{tikzpicture}[scale = .3]
+\begin{axis}[axis y line=middle, axis x line=middle, xmin=-.5, xmax=6.5, ymin=-1.2, ymax=1.2,name=myplot, ytick={-1,0,1}, xtick={-6.28318, -4.7123889, -3.14159, -1.5708, 1.5708, 3.14159, 4.7123889, 6.28318}, xticklabels={-$2\pi$, $-\frac{3\pi}{2}$,$-\pi$, $-\frac{\pi}{2}$, $\frac{\pi}{2}$,$\pi$, $\frac{3\pi}{2}$, $2\pi$}]
+\addplot[{\colorone}, domain=-.5:6.4, thick, smooth]{cos deg(x)};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+&
+\begin{tikzpicture}[scale = .3]
+\begin{axis}[axis y line=middle, axis x line=middle, xmin=-3.2, xmax=3.2, ymin=-3.2, ymax=3.2,name=myplot, ytick={-3,-2,-1,...,3}]
+\addplot[{\colorone}, domain=0:3, thick, smooth]{1/x};
+\addplot[{\colorone}, domain=-3:0, thick, smooth]{1/x};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}\\
+$y=\sin x$ & $y=\cos x$ & $y=\dfrac{1}{x}$
+\end{tabular}
+\caption{Basic Function Graphs}\label{prereq_basic_graphs}
+\end{center}
+\end{figure}
+
+We will often transform these functions into other functions as given in the next two figures.
+\begin{figure}[!ht]
+\begin{center}
+\begin{tabular}{l c}
+The function & shifts $f(x)$\\\hline
+$y=f(x)+c$ & $$c units upward\\
+$y=f(x)-c$ & $c$ units downward\\
+$y=f(x+c)$ & $c$ units left\\
+$y=f(x-c)$ & $c$ units right\\
+\end{tabular}
+\caption{Translations of Basic Functions with $c>0$}
+\end{center}
+\end{figure}
+
+\begin{figure}[!ht]
+\begin{center}
+\begin{tabular}{l c}
+The function &  transforms $f(x)$ by\\\hline
+$y=cf(x)$ & stretching vertically by a factor of $c$\\
+$y=\frac{1}{c} f(x)$ & shrinking vertically by a factor of $c$\\
+$y=f(cx)$ & shrinking horizontally by a factor of $c$\\
+$y=f(\frac{x}{c})$ & stretching horizontally by a factor of $c$\\
+$y=-f(x)$ & reflecting about the $x$-axis\\
+$y=f(-x)$ & reflecting about the $y$-axis\\
+\end{tabular}
+\caption{Scaling Basic Functions with $c>1$}
+\end{center}
+\end{figure}
+
+%\example{ex_prereq_sketch}{Sketching with basic transformations}{Sketch the graph of the following functions using the base function and the appropriate transformations.
+%\begin{enumerate}
+%\begin{multicols}{2}
+%\item $y=\displaystyle \frac{1}{x+3}$
+%\item $y=\sqrt{x+3}+1$
+%\item $y=\abs{x-4}$
+%\item $y=3\cos x+2$
+%\item $y=4\abs{x}+1$
+%\item $y=-\frac{1}{3}(x-2)^2+3$
+%\item $y=(x-3)^3$
+%\item$y=\abs{\sin 2x}$
+%\end{multicols}
+%\end{enumerate}}{\ifthenelse{\boolean{latexml}\OR\isodd{\thepage}}{%
+%% do nothing
+%}{%
+%\hspace{-100pt}%
+%}%
+%\begin{tabular}{cccc}
+%\begin{tikzpicture}[scale = .5]
+%\begin{axis}[axis y line=middle, axis x line=middle, xmin=-4, xmax=4, ymin=-4, ymax=4,name=myplot, ytick={0, 1,2}, xtick={0,1,2,3}]
+%\addplot[{\colorone}, domain=-3:4, thick, smooth,samples=100]{1/(x+3)};
+%\addplot[{\colorone}, domain=-4:-3, thick, smooth,samples=100]{1/(x+3)};
+%\end{axis}
+%\node [right] at (myplot.right of origin) {\scriptsize $x$};
+%\node [above] at (myplot.above origin) {\scriptsize $y$};
+%\end{tikzpicture}
+%&
+%\begin{tikzpicture}[scale = .5]
+%\begin{axis}[axis y line=middle, axis x line=middle, xmin=-4, xmax=4, ymin=-4, ymax=4,name=myplot, ytick={0, 1,2}, xtick={0,1,2,3}]
+%\addplot[{\colorone}, domain=-3:4, thick, smooth,samples=100]{sqrt(x+3)+1};
+%\end{axis}
+%\node [right] at (myplot.right of origin) {\scriptsize $x$};
+%\node [above] at (myplot.above origin) {\scriptsize $y$};
+%\end{tikzpicture}
+%&
+%\begin{tikzpicture}[scale = .5]
+%\begin{axis}[axis y line=middle, axis x line=middle, xmin=-5, xmax=5, ymin=-5, ymax=5,name=myplot, ytick={0, 1,2}, xtick={0,1,2,3}]
+%\addplot[{\colorone}, domain=-5:5, thick, smooth,samples=100]{abs(x-4)};
+%\end{axis}
+%\node [right] at (myplot.right of origin) {\scriptsize $x$};
+%\node [above] at (myplot.above origin) {\scriptsize $y$};
+%\end{tikzpicture}
+%\end{tabular}
+%}
+
+We said above that domain is the set of real numbers for which the function (rule) defines a real number and makes sense. Ask yourself, "what values can I put into the function and get a real value out?" There are generally two key expressions that will limit the domain of a function from all real numbers. We may not divide by zero and we may not have a negative number underneath an even root. The following examples illustrate how we restrict the domain when we see these expressions.
+
+\example{prereq_domain_1}{Finding a domain}{Find the domain of the function $f(x)=\sqrt{x-4}$.}{The square root of a negative number is not defined as a real number so the domain of $f$ will be all real numbers for which $x-4\geq 0$ which is $x \geq 4$. In interval notation, this is $[ 4,\infty)$.}
+
+\example{prereq_domain_2}{Finding a domain}{Find the domain of the function $g(x)= \dfrac{3}{x^2-9}$.}{We cannot divide by zero so we factor the denominator of $g$ and exclude those values where the denominator is zero.
+\[g(x)=\frac3{x^2-9}=\frac3{(x-3)(x+3)}\]
+We see that $x\neq 3,-3$ for $g$ to be defined, which is written in interval notation as $(-\infty,-3)\cup (-3,3)\cup (3,\infty)$.}
+
+\example{prereq_domain_3}{Finding a domain}{Find the domain of the function $h(x)=\dfrac1{\sqrt{x^2-4}}$}{For $h$ to be defined as a real number we must have $x^2-4>0$. This is equivalent to $(x-2)(x+2)>0$. From the sign chart below, we can see that $x^2-4$ will be greater than zero on $(-\infty,-2)\cup(2,\infty)$.
+
+\begin{center}
+\setlength{\unitlength}{4.6em}
+\begin{picture}(6,1)
+\scriptsize
+\put(3,.55){\vector(1,0){3}}
+\put(3,.55){\vector(-1,0){3}}
+\put(0,.7){$x^2-4$}
+\put(.1,.2){$x$}
+\put(2.1,.45){\line(0,1){.2}}
+\put(4.14,.45){\line(0,1){.2}}
+\put(1.95,.2){$-2$}
+\put(2.05,.7){$U$}
+\put(4.1,.2){$2$}
+\put(4.1,.7){$U$}
+\put(.5,.7){$+  +  +  +  +  +  +  +  + $}
+\put(2.25,.7){$-  -  -  -  -  -  -  -  -  -  -$}
+\put(4.3,.7){$+  +  +  +  +  +  +  +  + $}
+\end{picture}
+\end{center}	}
+
+\printexercises{exercises/01_00_exercises}

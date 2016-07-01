@@ -1,0 +1,89 @@
+% move this to Calc 2
+
+The Chain Rule also has theoretic value. That is, it can be used to find the derivatives of functions that we have not yet learned as we do in the following example.\\
+
+\example{ex_chain8}{The Chain Rule and exponential functions}{
+Use the Chain Rule to find the derivative of $y= a^x$ where $a>0$, $a\neq 1$ is constant.}
+{We only know how to find the derivative of one exponential function: $y = e^x$; this problem is asking us to find the derivative of functions such as $y = 2^x$. 
+
+This can be accomplished by rewriting $a^x$ in terms of $e$.  Recalling that $e^x$ and $\ln x$ are inverse functions, we can write
+\[a = e^{\ln a} \qquad \text{and so} \qquad y = a^x = e^{\ln (a^x)}.\]
+
+By the exponent property of logarithms, we can ``bring down'' the power to get 
+\[y = a^x = e^{x (\ln a)}.\]
+
+The function is now the composition $y=f(g(x))$, with $f(x) = e^x$ and $g(x) = x(\ln a)$.  Since $\fp(x) = e^x$ and $g\primeskip'(x) = \ln a$, the Chain Rule  gives 
+\[y\primeskip' = e^{x (\ln a)} \cdot \ln a.\]
+Recall that the $e^{x(\ln a)}$ term on the right hand side is just $a^x$, our original function. Thus, the derivative contains the original function itself. We have
+\[y\primeskip' = y \cdot \ln a = a^x\cdot \ln a.\]
+The Chain Rule, coupled with the derivative rule of $e^x$, allows us to find the derivatives of all exponential functions.}\\
+
+The previous example produced a result worthy of its own ``box.''
+
+\theorem{thm:exponentials}{Derivatives of Exponential Functions}
+{Let $f(x)=a^x$, for $a>0, a\neq 1$.\index{derivative!exponential functions} Then $f$ is differentiable for all real numbers and \[\fp(x) = \ln a\cdot a^x.\]}
+
+%% possibly end the move to Calc 2 part, the below was originally commented out
+
+%{\bf Hard Examples:} For constants $a$ and $\nu,$ find the derivatives of 
+%\begin{eqnarray*}
+%y(x) &=& a\ln\left(\frac{a+\sqrt{a^2-x^2}}{x}\right) - \sqrt{a^2-x^2}\\
+%f(t) &=& \frac{\Gamma(\frac{\nu + 1}{2})}{\sqrt{\nu \pi} \Gamma(\frac{\nu}{2})}
+%\left(1+\frac{t^2}{\nu}\right)^{-\frac{\nu+1}{2}}, \\
+%E(x) &=& \frac{2}{\sqrt{\pi}}\int_0^{\frac{x}{\sqrt{2}}} e^{\frac{-t^2}{2}} \; dt
+%\end{eqnarray*}
+%where $y$ is the equation of a tractrix (important in the study of a certain motion), $f$ is the probability density function of the student's $t$-distribution (in statistics) and $E$ is related to the error function, which is defined as
+%erf$\displaystyle (x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{\frac{-t^2}{2}} \; dt$, and to the normal cummulative distribution 
+%$\Phi(x) = \frac{1}{2} \left[ 1 + \textrm{erf}\left(\frac{x}{\sqrt{2}}  \right)\right]$  ***.  \\
+%\\
+%------------------------\\
+%FOOTNOTE ***: 
+%Yes, feel free to Google these functions and plot them on WolframAlpha - we would!\\
+%------------------------\\
+%\\
+%To compute the derivative of $y(x)$, rewrite it as
+%$$
+%y(x) = a\ln\left(\frac{a+(a^2-x^2)^{\frac{1}{2}}}{x}\right) - (a^2-x^2)^\frac{1}{2}
+%$$
+%and use the constant multiple, chain, and quotient rules:
+%$$
+%y^{\, \prime}(x) 
+%= 
+%a\left(\frac{x}{a+(a^2-x^2)^{\frac{1}{2}}}\right)
+%\cdot
+%\frac{1}{2} (a^2-x^2)^{-\frac{1}{2}} \cdot (-2x)
+%- 
+%\frac{1}{2} (a^2-x^2)^{-\frac{1}{2}} \cdot (-2x).
+%$$
+%With a little algebra, this simplifies to
+%$$
+%y^{\, \prime}(x) 
+%= 
+%-\frac{a\sqrt{a^2-x^2}+a^2-x^2}{x\sqrt{a^2-x^2}+ax}.
+%$$
+%The derivative of $f(t)$ isn't actually too bad, since the leading fraction is a constant, so we only need to use the constant multiple and chain rules:
+%$$
+%f^{\, \prime}(t) 
+%= 
+%\frac{\Gamma(\frac{\nu + 1}{2})}{\sqrt{\nu \pi} \Gamma(\frac{\nu}{2})}
+%\cdot
+%\left(-\frac{\nu+1}{2}\right)
+%\left(1+\frac{t^2}{\nu}\right)^{-\frac{\nu+3}{2}}
+%\cdot
+%\frac{2t}{\nu}
+%=
+%-\frac{\Gamma(\frac{\nu + 1}{2})}{\sqrt{\nu \pi} \Gamma(\frac{\nu}{2})}
+%\left(\frac{\nu+1}{\nu}\right)
+%\cdot
+%t\left(1+\frac{t^2}{\nu}\right)^{-\frac{\nu+3}{2}}.
+%$$
+%The derivative of $E(x)$ primarily uses the 1st Fundamental Theorem of Calculus as well as the chain rule
+%$$
+%E^{\, \prime}(x) 
+%= 
+%\frac{2}{\sqrt{\pi}} e^{\frac{-\left(\frac{x}{\sqrt{2}}\right)^2}{2}} 
+%\cdot
+%\frac{1}{\sqrt{2}}
+%=
+%\sqrt{\frac{2}{\pi}} \, e^{\frac{-x^2}{4}}. 
+%$$

@@ -1,0 +1,76 @@
+\documentclass[10pt]{article}
+
+
+\usepackage{ifthen}
+
+\usepackage{lipsum}
+\usepackage{pgfplots}
+
+\usepackage{eso-pic,calc}
+\usepackage[font=small]{caption}
+\usepgfplotslibrary{external}
+\usetikzlibrary{calc}
+\usetikzlibrary{shadings}
+\usepackage{tikz}
+\usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows, petri, topaths}
+\usepackage{tkz-berge}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage[h]{esvect}
+\usepackage[normalem]{ulem}
+
+\pgfplotsset{compat=1.8}
+\usepackage{amssymb}
+
+\usepackage{amsmath}
+
+\newcommand{\ds}{\displaystyle}
+
+\begin{document} 
+
+%%%%% Insert the following text right before example 128.
+
+How would we measure total distance traveled? We have to consider the intervals when $v(t)\geq 0$ and when $v(t)\leq 0$. Therefore, $$\text{total distance traveled}=\int_a^b |v(t)| ~dt$$.
+
+Change the title of Example 128 to be Finding displacement and total distance traveled
+
+Change the last sentence of the directions to Example 128 to read:  Find and interpret, 1. $\ds \int_0^1 v(t) ~dt$ and 2. $\ds\int_ 0^1 |v(t)| ~dt$.
+
+Solution to part 1. reads:
+
+{Using the Fundamental Theorem of Calculus, we have 
+\begin{align*}
+\int_0^1 v(t)\ dt &= \int_0^1 (-32t+20)\ dt \\
+			&= -16t^2 + 20t\Big|_0^1 \\
+			&= 4 \text{\ ft}.
+\end{align*}
+Thus if a ball is thrown straight up into the air with velocity $v(t) = -32t+20$, the height of the ball, 1 second later, will be 4 feet above the initial height. We will see in part 2. that the \textit{distance traveled} is much farther. It has gone up to its peak and is falling down, but the difference between its height at $t=0$ and $t=1$ is 4 ft.}\\
+
+Solution to part 2. reads: Here we are trying to find the total distance traveled by the ball. We must first consider where $v(t)>0$ and $v(t)<0$.  
+\begin{align*}
+v(t)=-32t+20&=0\\
+-32t&=-20\\
+t&=\frac{5}{8}
+\end{align*}
+
+$v(t)>0$ for $t<\frac{5}{8}$ and $v(t)<0$ for $t>\frac{5}{8}$ so we have 
+\begin{align*}
+\int_0^1 |v(t)|~dt&=\int_0^{5/8} v(t)~dt + \int_{5/8}^1 -v(t)~dt\\
+&=\int_0^{5/8} -32t+20~dt + \int_{5/8}^1 32t-20 ~dt\\
+&=\frac{34}{4}=8.5 \text{\ ft}.
+\end{align*}
+
+Add the following two exercises after 28.
+
+$\ds \int_0^2 |x^2-1|~dx$   Solution: 2
+
+$\ds \int_0^3|1-2x|~dx$  Solution:  $\frac{7}{2}$
+
+Change directions for 40-44 to read:  ..... Find a) the displacement of the object over the given time interval and b) the total distance traveled by the object over the given time interval. \\
+
+
+49-52 should be moved to the Area between curves section.
+
+\end{document}

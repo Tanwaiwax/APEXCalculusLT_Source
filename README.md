@@ -11,7 +11,14 @@ using make.py (a Python script) which calls latexmk.
 Running `./make.py` will give the various options.
 Compiling with a single set of options will take two to three
 minutes.  Running `./make.py -a` will create sixteen different pdfs
-after about twenty to thirty minutes.
+after about twenty to thirty minutes.  Running `./make.py -n` will
+use latexml to make a complete website version of the book after
+about thirty to forty minutes.
+
+The current released versions for latexml have a bug that makes
+`\hyperref[label]{text}` format incorrectly. The most recent version
+of the files `hyperref.sty.ltxml` and `nameref.sty.ltxml` are included
+to fix that bug.  
 
 This work is covered with a Creative Commons 3.0 By-NC copyright.
 

@@ -5,23 +5,29 @@
 {\documentclass[10pt]{article}}%
 {\documentclass[10pt]{book}}
 
+\RequirePackage[HTML]{xcolor} % must occur before eso-pic in apex_style
+
 \usepackage{apex_style}
 
 \input{headers/Page_Size_Calculus}
 \input{headers/APEX_format}
 \input{headers/Header_Calculus}
 
-\lxDocumentID{APEX}
+\lxDocumentID{apex}
 
 \input{options}
 
 \begin{document}
+
+\pagestyle{empty}
 
 \frontmatter
 
 \input{text/front_matter_and_cover}
 
 \mainmatter
+
+\pagestyle{fancy}
 
 \include{CalculusI}
 
@@ -31,19 +37,17 @@
 
 \appendix
 
-\clearpage{\pagestyle{empty}\cleardoublepage}
-
 \pagenumbering{arabic}\renewcommand{\thepage}{A.\arabic{page}}
 
-\input{text/proofs}
+%\input{text/proofs}
 
 \makeexercisesection{Solutions To Selected Problems}
 
-\qendheader
+\pagestyle{empty}
 \eendgeometry
 
-\phantomsection
 \cleardoublepage
+\phantomsection
 \addcontentsline{toc}{chapter}{\indexname}
 \printindex
 

@@ -1,3 +1,26 @@
+% this was orphaned from u-substitution
+
+%\example{ex_sub9}{Integration by substitution: simplifying first}{
+%Evaluate $\ds\int \frac{x^3+4x^2+8x+5}{x^2+2x+1}\ dx$.}
+%{One may try to start by setting $u$ equal to either the numerator or denominator; in each instance, the result is not workable. 
+%
+%When dealing with rational functions (i.e., quotients made up of polynomial functions), it is an almost universal rule that everything works better when the degree of the numerator is less than the degree of the denominator. Hence we use polynomial division.
+%
+%We skip the specifics of the steps, but note that when $x^2+2x+1$ is divided into $x^3+4x^2+8x+5$, it goes in $x+2$ times with a remainder of $3x+3$. Thus 
+%$$\frac{x^3+4x^2+8x+5}{x^2+2x+1} = x+2 + \frac{3x+3}{x^2+2x+1}.$$
+%Integrating $x+2$ is simple. The fraction can be integrated by setting $u = x^2+2x+1$, giving $du = (2x+2)\ dx$. This is very similar to the numerator. Note that $du/2 = (x+1)\ dx$ and then consider the following:
+%\begin{align*}
+%\int \frac{x^3+4x^2+8x+5}{x^2+2x+1}\ dx & = \int \left(x+2 + \frac{3x+3}{x^2+2x+1}\right)\ dx  \rule[-13pt]{0pt}{5pt} \\
+%					&= \int (x+2)\ dx + \int \frac{3(x+1)}{x^2+2x+1}\ dx  \rule[-13pt]{0pt}{5pt}\\
+%					& = \frac12x^2+2x+C_1 + \int \frac{3}{u}\frac{du}{2}  \rule[-13pt]{0pt}{5pt}\\
+%					&= \frac12x^2+2x+C_1 + \frac32\ln|u| + C_2 \rule[-13pt]{0pt}{5pt}\\
+%					&= \frac12x^2+2x+\frac32\ln|x^2+2x+1| + C.
+%\end{align*}
+%In some ways, we ``lucked out'' in that after dividing, substitution was able to be done. In later sections we'll develop techniques for handling rational functions where substitution is not directly feasible.
+%}\\
+
+
+
 \section{Partial Fraction Decomposition}\label{sec:partial_fraction}
 
 In this section we investigate the antiderivatives of rational functions. Recall that rational functions are functions of the form $f(x)= \frac{p(x)}{q(x)}$, where $p(x)$ and $q(x)$ are polynomials and $q(x)\neq 0$. Such functions arise in many contexts, one of which is the solving of certain fundamental differential equations.
@@ -88,7 +111,7 @@ To solve for $A$, $B$ and $C$, we multiply both sides by $(x-1)(x+2)^2$ and coll
 	&= Ax^2+4Ax+4A + Bx^2 + Bx-2B + Cx-C \notag \\
 	&= (A+B)x^2 + (4A+B+C)x + (4A-2B-C)\notag
 \end{align}
-\mnote{.5}{\textbf{Note:} Equation \ref{eq:pf3} offers a direct route to finding the values of $A$, $B$ and $C$. Since the equation holds for all values of $x$, it holds in particular when $x=1$. However, when $x=1$, the right hand side simplifies to $A(1+2)^2 = 9A$. Since the left hand side is still 1, we have $1 = 9A$. Hence $A = 1/9$.
+\mnote{\textbf{Note:} Equation \ref{eq:pf3} offers a direct route to finding the values of $A$, $B$ and $C$. Since the equation holds for all values of $x$, it holds in particular when $x=1$. However, when $x=1$, the right hand side simplifies to $A(1+2)^2 = 9A$. Since the left hand side is still 1, we have $1 = 9A$. Hence $A = 1/9$.
 
 Likewise, the equality holds when $x=-2$; this leads to the equation $1=-3C$. Thus $C = -1/3$.
 
@@ -101,18 +124,19 @@ $$A = 1/9,\quad B = -1/9 \quad \text{and} \quad C = -1/3.$$
 Thus 
 $$\int\frac{1}{(x-1)(x+2)^2}\ dx = \int \frac{1/9}{x-1}\ dx + \int \frac{-1/9}{x+2}\ dx + \int \frac{-1/3}{(x+2)^2}\ dx.$$
 
-Each can be integrated with a simple substitution with $u=x-1$ or $u=x+2$ (or by directly applying Key Idea \ref{idea:linearsub} as the denominators are linear functions). The end result is
+Each can be integrated with a simple substitution with $u=x-1$ or $u=x+2$.
+% (or by directly applying Key Idea \ref{idea:linearsub} as the denominators are linear functions).
+The end result is
 $$\int\frac{1}{(x-1)(x+2)^2}\ dx = \frac19\ln|x-1| -\frac19\ln|x+2| +\frac1{3(x+2)}+C.$$
 \vskip-\baselineskip}\\
 
-%\enlargethispage{\baselineskip}
 \example{ex_pf4}{Integrating using partial fractions}{
 Use partial fraction decomposition to integrate $\ds \int \frac{x^3}{(x-5)(x+3)}\ dx$.}
 {Key Idea \ref{idea:partial_fraction} presumes that the degree of the numerator is less than the degree of the denominator. Since this is not the case here, we begin by using polynomial division to reduce the degree of the numerator. We omit the steps, but encourage the reader to verify that $$\frac{x^3}{(x-5)(x+3)} = x+2+\frac{19x+30}{(x-5)(x+3)}.$$
 Using Key Idea \ref{idea:partial_fraction}, we can rewrite the new rational function as:
 $$\frac{19x+30}{(x-5)(x+3)} = \frac{A}{x-5} + \frac{B}{x+3}$$ for appropriate values of $A$ and $B$. Clearing denominators, we have 
 
-\mnote{.6}{\textbf{Note:} The values of $A$ and $B$ can be quickly found using the technique described in the margin of Example \ref{ex_pf3}.}
+\mnote{\textbf{Note:} The values of $A$ and $B$ can be quickly found using the technique described in the margin of Example \ref{ex_pf3}.}
 
 \begin{align*}
 19x+30 &= A(x+3) + B(x-5)\\

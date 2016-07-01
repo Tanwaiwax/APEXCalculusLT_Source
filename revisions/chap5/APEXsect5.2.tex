@@ -1,0 +1,103 @@
+\documentclass[11pt]{report}
+\usepackage{mathtools, amsthm, mathpazo, epic, eepic, color, paralist}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\typo}[4]{\item Typo: on line #2 of page #1: \emph{#3} should be \emph{#4}.}
+\newcommand{\funcleft}[2]{\item Example #1 on page #2.}
+
+
+\begin{document}
+
+\chapter*{APEX Section 5.2 Changes}
+
+{\slshape Note: throughout, a positive line number refers to a line that far from the top of the page, a negative line number refers to a line that far from the bottom of the page.}
+
+\section*{Text}
+
+\begin{enumerate}
+\typo{201}{9}{but it does imply a relationship exists}{but it does indicate that there may be a relationship}
+
+\typo{201}{16 (in Definition 20)}{Let $y=f(x)$ be defined on}{Let $y=f(x)$ be continuous on}
+
+\typo{201}{-7}{which related to}{which is related to}
+
+\typo{201}{-5}{under a function}{under a curve}
+
+\item On the last line of page 202, replace \emph{given here} with \emph{given in Theorem 36}
+
+\item On pages 203-204, replace the statement of Theorem 36 and the discussion immediately following it with the following.
+
+
+{\slshape 
+So far, when we have computed a definite integral $\int_a^b f(x)\,dx$, we have required that $a\leq b$. In practice, it is sometimes convenient to be able to compute $\int_a^b f(x)\,dx$ for $a>b$. To do so, we introduce the convention that for any $a$ and $b$, $\int_a^b f(x)\,dx=-\int_b^a f(x)\,dx$. It will be clear why this makes sense after we introduce Riemann sums.
+
+{\bfseries Theorem 36 \quad Properties of the Definite Integral}
+
+Let $f$ and $g$ be continuous on a closed interval $I$ that contains the values $a$, $b$, and $c$, and let $k$ be a constant. The following hold:
+\begin{enumerate}
+\item $\displaystyle\int_a^a f(x)\,dx=0$
+\item $\displaystyle\int_a^b f(x)\,dx=-\int_b^a f(x)\,dx$
+\item $\displaystyle\int_a^b f(x)\,dx+\int_b^c f(x)\,dx=\int_a^c f(x)\,dx$
+\item $\displaystyle\int_a^b (f(x)\pm g(x))\,dx =\int_a^b f(x)\,dx \pm \int_a^b g(x)\,dx$
+\item $\displaystyle\int_a^b k\cdot f(x)\,dx =k\cdot \int_a^b f(x)\,dx$
+\end{enumerate}
+
+We will justify these properties after introducing Riemann sums. For now, we note that properties 1 and 5 are illustrated in Example 114 and property 2 is our convention from above. To see why property 3 makes sense geometrically, consider the figure below:
+
+
+%\begin{tikzpicture}
+%\begin{axis}[width=\marginparwidth, ticks=none, axis y line=middle,axis x line=middle, ymin=-1.5, ymax=4.5,xmin=-1, xmax=7.5, name=myplot]
+%\addplot [{\colorone},domain=1:5,thick] {x-1};
+%\addplot [{\colorone},domain=5:7,thick] {(x-7)^2};
+%\draw (5,-.1) -- (8,4);
+%\filldraw [black] (axis cs:2,86) circle (1pt);
+%\filldraw [black] (axis cs:3,6) circle (1pt);
+%\end{axis}
+%
+%\node [below] at (0.9,.5) {$\scriptstyle a$};
+%\node [below] at (2.6,.53) {$\scriptstyle b$};
+%\node [below] at (3.3,.5) {$\scriptstyle c$};
+%\node [right] at (myplot.right of origin) {\scriptsize $x$};
+%\node [above] at (myplot.above origin) {\scriptsize $y$};
+%\end{tikzpicture}
+
+Property 3 says that the total area under this curve should be the sum of the area under the curve from $a$ to $b$ and the area under the curve from $b$ to $c$.
+
+What if the picture were like the following?
+
+
+%\begin{tikzpicture}
+%\begin{axis}[width=\marginparwidth, ticks=none, axis y line=middle,axis x line=middle, ymin=-1.5, ymax=4.5,xmin=-1, xmax=7.5, name=myplot]
+%\addplot [{\colorone},domain=1:5,thick] {x-1};
+%\addplot [{\colorone},domain=5:7,thick] {(x-7)^2};
+%\draw (5,-.1) -- (8,4);
+%\filldraw [black] (axis cs:2,86) circle (1pt);
+%\filldraw [black] (axis cs:3,6) circle (1pt);
+%\end{axis}
+%
+%\node [below] at (0.9,.5) {$\scriptstyle a$};
+%\node [below] at (2.6,.5) {$\scriptstyle c$};
+%\node [below] at (3.3,.53) {$\scriptstyle b$};
+%\node [right] at (myplot.right of origin) {\scriptsize $x$};
+%\node [above] at (myplot.above origin) {\scriptsize $y$};
+%\end{tikzpicture}
+
+Then we have \[ \int_a^b f(x)\,dx =\int_a^c f(x)\,dx+\int_c^b f(x)\,dx\] and we can apply property 2.
+\begin{equation*}
+\begin{split}
+\int_a^c f(x)\,dx &=\int_a^b f(x)\,dx-\int_c^b f(x)\,dx  \text{,\qquad so property 2 yields}\\
+\int_a^c f(x)\,dx &=\int_a^b f(x)\,dx+\int_b^c f(x)\,dx 
+\end{split}
+\end{equation*}
+
+}
+
+\typo{205}{1}{geometry compute}{geometry to compute}
+
+\item This note should follow Example 117.
+
+(Note: The \emph{displacement} of the object is different from the distance travelled since the object moves backwards and forwards at different times in this example. The displacement measures how far the object is from where it started, without regard for how far it actually travelled to get there.)
+
+\end{enumerate}
+\end{document}

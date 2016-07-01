@@ -1,0 +1,102 @@
+\documentclass[10pt]{article}
+
+
+\usepackage{ifthen}
+
+\usepackage{lipsum}
+\usepackage{pgfplots}
+
+\usepackage{eso-pic,calc}
+\usepackage[font=small]{caption}
+\usepgfplotslibrary{external}
+\usetikzlibrary{calc}
+\usetikzlibrary{shadings}
+\usepackage{tikz}
+\usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows, petri, topaths}
+\usepackage{tkz-berge}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage[h]{esvect}
+\usepackage[normalem]{ulem}
+
+\pgfplotsset{compat=1.8}
+
+
+\usepackage{amsmath}
+
+\newcommand{\ds}{\displaystyle}
+
+
+\begin{document}
+
+This section will becom Section 1.5.
+
+p 47. Make a definition box titled Vertical Aymptote with the following definition
+	The function $f(x)$ has a \textbf{vertical asymptote at} $\mathbf{x=c}$ if any one of the following is true: $$\lim_{x\to c^-} f(x)=\pm \infty, \quad \lim_{x\to c^+} f(x)=\pm \infty, \quad \text{or} \quad \lim_{x\to c} f(x)=\pm \infty$$
+
+p 48 Second paragraph:  Change Canceling the common term to Dividing out the common term.
+
+	Paragraph below that change No simple algebraic cancellation to No simple algebraic manipulation
+
+p 49 Second sentence in parentheses, change such as factoring and canceling to such as factoring and dividing
+
+Changes to Definition 6:
+	Definition 6 changed to Limits at Infinity and will just have 1. and 2.\\
+	Definition 7 will be Horizontal Asymptote and is defined below.\\
+		The function $f(x)$ has a \textbf{horizontal asymptote at} $\mathbf{y=L}$ if either $$\lim_{x\to \infty} f(x)=L \quad \text{or} \quad \lim_{x\to -\infty} f(x)=L$$
+
+p 51 top of page:   Make new Theorem titled: Limits of $\ds \frac{1}{x^n}$  whcih reads:  For any $n>0$, $$\lim_{x\to \infty}\frac{1}{x^n}=0 \quad \text{and}\quad  \lim_{x\to -\infty} \frac{1}{x^n}=0$$
+
+In the example on p. 51,  the equation part to right before Theorem 11 should read:  
+\begin{align*}
+\lim_{x\rightarrow\infty}\frac{x^3+2x+1}{4x^3-2x^2+9} &=
+\lim_{x\rightarrow\infty}\frac{1/x^3}{1/x^3}\cdot\frac{x^3+2x+1}{4x^3-2x^2+9}\\ &=\lim_{x\rightarrow\infty}\frac{x^3/x^3+2x/x^3+1/x^3}{4x^3/x^3-2x^2/x^3+9/x^3}\\ &= \lim_{x\rightarrow\infty}\frac{1+2/x^2+1/x^3}{4-2/x+9/x^3}\\
+&=\frac{1+0+0}{4-0+0}=\frac{1}{4}.
+\end{align*}
+We used the rules for limits (which also hold for limits at infinity), as well as the fact about limits of $1/x^n$. This procedure works for any rational function and is highlighted in the following Key Idea.
+
+Insert Key Idea:  Finding Limits of Rational Functions at Infinity.  
+Let $f(x)$ be a rational function of the following form:
+$$f(x)=\frac{a_nx^n + a_{n-1}x^{n-1}+\dots + a_1x + a_0}{b_mx^m + b_{m-1}x^{m-1} + \dots + b_1x + b_0},$$
+where any of the coefficients may be 0 except for $a_n$ and $b_m$.\\
+To determine $\ds \lim_{x\to \infty} f(x)$ or $\ds \lim_{x\to -\infty} f(x)$ :
+\begin{enumerate}
+\item Divide the numerator and denominator by $x^m$.
+\item Simplify as much as possible.
+\item Use Theorem \ref{Theorem from above} to find the limit.
+\end{enumerate}
+
+Move Theorem 11 and call it Key Idea Some number \\
+
+It should come after the text on page 52. Delete the first sentence "We can see why this is true" and insert Theorem 11 (with name changed to Key idea) after the second paragraph on page 52. \\
+
+Changes to Example 31: 
+Directions should read: a) Analytically evaluate the following limits, and b) Use Key Idea ????? to evaluate each limit.\\
+
+Solution for each part:  Will need to add part a) and part b) is the solution given in the text. \\
+
+1. a) Divide numerator and denominator by $x^3$. 
+\begin{align*}
+\lim_{x\to -\infty} \frac{x^2+2x-1}{x^3+1}&= \lim_{x\to -\infty} \frac{x^2/x^3+2x/x^3-1/x^3}{x^3/x^3+1/x^3}\\
+&=\lim_{x\to -\infty} \frac{1/x+2/x^2-1/x^3}{1+1/x^3}\\
+&=\frac{0+0+0}{1+0}=0
+\end{align*}
+
+
+2. a) Divide numerator and denominator by $x^2$.
+\begin{align*}
+\lim_{x\to \infty} \frac{x^2+2x-1}{1-x-3x^2}&=\lim_{x\to \infty} \frac{x^2/x^2+2x/x^2-1/x^2}{1/x^2-x/x^2-3x^2/x^2}\\
+&=\lim_{x\to \infty} \frac{1+2/x-1/x^2}{1/x^2-1/x-3}\\
+&=\frac{1+0-0}{0-0-3}=-\frac{1}{3}
+\end{align*}
+
+3. a) Divide numerator and denominator by $x$.
+\begin{align*}
+\lim_{x\to \infty}\frac{x^2-1}{3-x}&=\lim_{x\to \infty}\frac{x^2/x-1/x}{3/x-x/x}\\
+&=\lim_{x\to \infty}\frac{x-1/x}{3/x-1}\\
+&=\infty
+\end{align*}
+
+\end{document}

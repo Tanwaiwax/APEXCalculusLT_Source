@@ -1,17 +1,26 @@
 \section{The Mean Value Theorem}\label{sec:mvt}
 
-We motivate this section with the following question: Suppose you leave your house and drive to your friend's house in a city 100 miles away, completing the trip in two hours.  At any point during the trip do you necessarily have to be going 50 miles per hour?
+We motivate this section with the following question: Suppose you leave your house and drive to your friend's house in a city 100 miles away, completing the trip in two hours.  Is there necessarily a moment during the trip when you are going 50 miles per hour?
 
 In answering this question, it is clear that the \textit{average} speed for the entire trip is 50 mph (i.e. 100 miles in 2 hours), but the question is whether or not your \textit{instantaneous} speed is ever exactly 50 mph. More simply, does your speedometer ever read exactly 50 mph?.  The answer, under some very reasonable assumptions, is ``yes.''
 
+\mtable{Distance traveled as a function of time.  Must a tangent line parallel the average slope?}{fig:mvt_ex}{\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth, tick label style={font=\scriptsize},
+			ymajorgrids=true, xmajorgrids=true, xmin=0, xmax=2, ymin=0, ymax=100,
+			xlabel={Time (hours)}, ylabel={Distance (miles)}]
+\addplot [{\colorone},thick,smooth] coordinates {(0,0)(.5,10)(1,50)(1.5,90)(2,100)};
+\addplot [{\colortwo},thick,smooth] coordinates {(0,0)(2,100)};
+\end{axis}
+\end{tikzpicture}}
+
 Let's now see why this situation is in a calculus text by translating it into mathematical symbols.\\
 
-First assume that the function $y = f(t)$ gives the distance (in miles) traveled from your home at time $t$ (in hours) where $0\le t\le 2$.  In particular, this gives $f(0)=0$ and $f(2)=100$.  The slope of the secant line connecting the starting and ending points $(0,f(0))$ and $(2,f(2))$ is therefore 
+First assume that the function $y = f(t)$ gives the distance (in miles) traveled from your home at time $t$ (in hours) where $0\le t\le 2$.  In particular, this gives $f(0)=0$ and $f(2)=100$.  The slope of the secant line (average velocity) connecting the starting and ending points $(0,f(0))$ and $(2,f(2))$ is therefore 
 $$
 \frac{\Delta f}{\Delta t} = \frac{f(2)-f(0)}{2-0} = \frac{100-0}{2} = 50 \, \text{mph}.
 $$
 
-The slope at any point on the graph itself is given by the derivative $\fp(t)$.  So, since the answer to the question above is ``yes,'' this means that at some time during the trip, the derivative takes on the value of 50 mph.  Symbolically, 
+The slope at any point on the graph itself (instantaneous velocity) is given by the derivative $\fp(t)$.  So, since the answer to the question above is ``yes,'' this means that at some time during the trip, the derivative takes on the value of 50 mph.  Symbolically, 
 $$
 \fp(c) = \frac{f(2)-f(0)}{2-0} = 50
 $$
@@ -34,7 +43,7 @@ Let's look at two functions in an example.\\
 %\captionsetup{type=figure}%
 			%\caption{A  graph of $f_1(x) = 1/x^2$ and $f_2(x) = |x|$ in Example \ref{ex_mvt1}.}\label{fig:mvt1}
 %\end{minipage}}%
-\mtable{.7}{A graph of $f_1(x) = 1/x^2$ and $f_2(x) = |x|$ in Example \ref{ex_mvt1}.}{fig:mvt1}%
+\mtable[1in]{A graph of $f_1(x) = 1/x^2$ and $f_2(x) = |x|$ in Example \ref{ex_mvt1}.}{fig:mvt1}%
 {\begin{tabular}{c}
 \myincludegraphics{figures/figmvt1}\\
 (a)\\[10pt]
@@ -42,9 +51,9 @@ Let's look at two functions in an example.\\
 (b)
 \end{tabular}}%  else, not longpage
 %
-%\mfigure{.8}{A graph of $f_1(x) = 1/x^2$ in Example \ref{ex_mvt1}.}{fig:mvt1}{figures/figmvt1}
+%\mfigure{0in}{A graph of $f_1(x) = 1/x^2$ in Example \ref{ex_mvt1}.}{fig:mvt1}{figures/figmvt1}
 %
-%\mfigure{.55}{A graph of $f_2(x) = |x|$ in Example \ref{ex_mvt1}.}{fig:mvt2}{figures/figmvt2}
+%\mfigure{0in}{A graph of $f_2(x) = |x|$ in Example \ref{ex_mvt1}.}{fig:mvt2}{figures/figmvt2}
 \vskip-\baselineskip}\\
 
 So what went ``wrong\primeskip''?  It may not be surprising to find that the discontinuity of $f_1$ and the corner of $f_2$ play a role.  If our functions had been continuous and differentiable, would we have been able to find that special value $c$? This is our motivation for the following theorem.
@@ -63,25 +72,46 @@ We will give a proof of the Mean Value Theorem below. To do so, we use a fact, c
 \theorem{thm:rolles}{Rolle's Theorem}
 {Let $f$ be continuous on $[a,b]$ and differentiable on $(a,b)$, where $f(a) = f(b)$. There is some $c$ in $(a,b)$ such that $\fp(c) = 0.$\index{Rolle's Theorem}}
 
+\mfigure{0in}{A graph of $f(x) = x^3-5x^2+3x+5$, where $f(a) = f(b)$. Note the existence of $c$, where $a<c<b$, where $\fp(c)=0$.}{fig:mvt3}{figures/figmvt3}
+
 Consider Figure \ref{fig:mvt3} where the graph of a function $f$ is given, where $f(a) = f(b)$. It should make intuitive sense that if $f$ is differentiable (and hence, continuous) that there would be a value $c$ in $(a,b)$ where $\fp(c)=0$; that is, there would be a relative maximum or minimum of $f$ in $(a,b)$. Rolle's Theorem guarantees at least one; there may be more. 
 
-\mfigure{.34}{A graph of $f(x) = x^3-5x^2+3x+5$, where $f(a) = f(b)$. Note the existence of $c$, where $a<c<b$, where $\fp(c)=0$.}{fig:mvt3}{figures/figmvt3}
+An interesting use of Rolle's Theorem is to prove that a function cannot have too many roots, as in our next example.
 
-Rolle's Theorem is really just a special case of the Mean Value Theorem. If $f(a) = f(b)$, then the \textit{average} rate of change on $(a,b)$ is $0$, and the theorem guarantees some $c$ where $\fp(c)=0$. We will prove Rolle's Theorem, then use it to prove the Mean Value Theorem.\\
+\example{ex_rolle1}{Exactly One Root}{Show that $f(x)=2+3x+x^3+8x^7$ has exactly one real root.}{We'll do this in two steps.  The first step is to use the Intermediate Value Theorem to show that there is at least one root.  The second step is to use Rolle's Theorem to show that there is at most one root.  (Because $f$ is a polynomial, it is continuous and differentiable, so both of these theorems apply.)
 
-\noindent\textbf{Proof of Rolle's Theorem}
+We can apply the Intermediate Value Theorem on the interval $[-1,0]$.  Since $f(-1)=-10<0<f(0)=2$, the Intermediate Value Theorem tells us that there is at least one place in $[-1,0]$ where $f(x)=0$.  This means that there is at least one root, but there may be more in the interval (and there may be more outside the interval where we haven't even looked).
 
+Suppose for this paragraph that $f$ had two (or more) roots.  Then by Rolle's Theorem, there is some $c$ in between the roots so that $0=\fp(c)=3+3x^2+56x^6$.  But this cannot happen, since $\fp$ is always at least 3.
+
+Therefore, $f$ has at most one root.  Combining this with ``there is at least one root'', we see that $f$ has exactly one root.  (Notice that because both the Intermediate Value Theorem and Rolle's Theorem are existential theorems, we don't know what the root is, only that it must exist.)}
+
+Rolle's Theorem is really just a special case of the Mean Value Theorem. If $f(a) = f(b)$, then the \textit{average} rate of change on $(a,b)$ is $0$, and the theorem guarantees some $c$ where $\fp(c)=0$. We will prove Rolle's Theorem, then use it to prove the Mean Value Theorem.
+
+\begin{proof}[Proof of Rolle's Theorem]
 Let $f$ be differentiable on $(a,b)$ where $f(a)=f(b)$. We consider two cases. 
 
-\noindent\textbf{Case 1:} Consider the case when $f$ is constant on $[a,b]$; that is, $f(x) = f(a) = f(b)$ for all $x$ in $[a,b]$. Then $\fp(x) = 0$ for all $x$ in $[a,b]$, showing there is at least one value $c$ in $(a,b)$ where $\fp(c)=0$.
+\iflatexml\begin{description}\else\begin{description}[leftmargin=0pt]\fi
+\item[Case 1:] Consider the case when $f$ is constant on $[a,b]$; that is, $f(x) = f(a) = f(b)$ for all $x$ in $[a,b]$. Then $\fp(x) = 0$ for all $x$ in $[a,b]$, showing there is at least one value $c$ in $(a,b)$ where $\fp(c)=0$.
 
-\noindent\textbf{Case 2:} Now assume that $f$ is not constant on $[a,b]$. The Extreme Value Theorem guarantees that $f$ has a maximal and minimal value on $[a,b]$, found either at the endpoints or at a critical value in $(a,b)$. Since $f(a)=f(b)$ and $f$ is not constant, it is clear that the maximum and minimum cannot \textit{both} be found at the endpoints. Assume, without loss of generality, that the maximum of $f$ is not found at the endpoints. Therefore there is a $c$ in $(a,b)$ such that $f(c)$ is the maximum value of $f$. By Theorem \ref{thm:criticalpts}, $c$ must be a critical number of $f$; since $f$ is differentiable, we have that $\fp(c) = 0$, completing the proof of the theorem. \hfill $\square$\\
+\item[Case 2:] Now assume that $f$ is not constant on $[a,b]$. The Extreme Value Theorem guarantees that $f$ has a maximal and minimal value on $[a,b]$, found either at the endpoints or at a critical value in $(a,b)$. Since $f(a)=f(b)$ and $f$ is not constant, it is clear that the maximum and minimum cannot \textit{both} be found at the endpoints. Assume, without loss of generality, that the maximum of $f$ is not found at the endpoints. Therefore there is a $c$ in $(a,b)$ such that $f(c)$ is the maximum value of $f$. By Theorem \ref{thm:criticalpts}, $c$ must be a critical number of $f$; since $f$ is differentiable, we have that $\fp(c) = 0$, completing the proof of the theorem.\qedhere
+\end{description}
+\end{proof}
 
-We can now prove the Mean Value Theorem.\\
+We can now prove the Mean Value Theorem.
 
-\noindent\textbf{Proof of the Mean Value Theorem}
-
-Define the function $$g(x) = f(x) - \frac{f(b)-f(a)}{b-a}x.$$  We know $g$ is differentiable on $(a,b)$ and  continuous on $[a,b]$ since $f$ is. We can show $g(a)=g(b)$ (it is actually easier to show $g(b)-g(a)=0$, which suffices). We can then apply Rolle's theorem to guarantee the existence of $c \in (a,b)$ such that $g\primeskip'(c) = 0$.  But note that $$0= g\primeskip'(c) = \fp(c) - \frac{f(b)-f(a)}{b-a} \ ;$$ hence $$\fp(c) = \frac{f(b)-f(a)}{b-a},$$ which is what we sought to prove.\hfill $\square$\\
+\begin{proof}[Proof of the Mean Value Theorem]
+Define the function $$g(x) = f(x) - \frac{f(b)-f(a)}{b-a}x.$$  We know $g$ is differentiable on $(a,b)$ and  continuous on $[a,b]$ since $f$ is.  We also see that
+\begin{align*}
+g(b)-g(a)&=f(b)-\frac{f(b)-f(a)}{b-a}b-f(a)+\frac{f(b)-f(a)}{b-a}a\\
+&=\bigl(f(b)-f(a)\bigr)-\frac{f(b)-f(a)}{b-a}(b-a)=0
+\end{align*}
+which shows that $g(a)=g(b)$. We can then apply Rolle's theorem to guarantee the existence of $c \in (a,b)$ such that $g\primeskip'(c) = 0$.  But note that
+$$0= g\primeskip'(c) = \fp(c) - \frac{f(b)-f(a)}{b-a} \ ;$$
+hence
+$$\fp(c) = \frac{f(b)-f(a)}{b-a},$$
+which is what we sought to prove.
+\end{proof}
 
 Going back to the very beginning of the section, we see that the only assumption we would need about our distance function $f(t)$ is that it be continuous and differentiable for $t$ from 0 to 2 hours (both reasonable assumptions).  By the Mean Value Theorem, we are guaranteed a time during the trip where our instantaneous speed is 50 mph. This fact is used in practice. Some law enforcement agencies monitor traffic speeds while in aircraft. They do not measure speed with radar, but rather by timing individual cars as they pass over lines painted on the highway whose distances apart are known. The officer is able to measure the \textit{average} speed of a car between the painted lines; if that average speed is greater than the posted speed limit, the officer is assured that the driver exceeded the speed limit at some time.
 
@@ -103,16 +133,14 @@ We want to find $c$ such that $\fp(c) = 14$. We find $\fp(x) = 3x^2+5$. We set t
 		\end{align*}
 		
 We have found 2 values $c$ in $[-3,3]$ where the instantaneous rate of change is equal to the average rate of change; the Mean Value Theorem guaranteed at least one. In Figure \ref{fig:mvt4} $f$ is graphed with a dashed line representing the average rate of change; the lines tangent to $f$ at $x=\pm \sqrt{3}$ are also given. Note how these lines are parallel (i.e., have the same slope) as the dashed line.
-\mfigure{.55}{Demonstrating the Mean Value Theorem in Example \ref{ex_mvt2}.}{fig:mvt4}{figures/figmvt4}
+\mfigure{0in}{Demonstrating the Mean Value Theorem in Example \ref{ex_mvt2}.}{fig:mvt4}{figures/figmvt4}
 }\\
 
 While the Mean Value Theorem has practical use (for instance, the speed monitoring application mentioned before), it is mostly used to advance other theory. We will use it in the next section to relate  the shape of a graph to its derivative.\\
 
 %
-%{\bf EXERCISES} 
-%\begin{description} 
-%\item[1.] Draw a couple of possible graphs of time versus distance traveled for the situation at the beginning of the section (traveling to your friend's house).  Also, mark on your graphs the times at which you are traveling exactly 50 mph.
-%\item[2.] Estimate the values of $x$ for which the speed matches the overall average speed for the entire trip (with picture).
-%\end{description}
+%EXERCISES
+%1. Draw a couple of possible graphs of time versus distance traveled for the situation at the beginning of the section (traveling to your friend's house).  Also, mark on your graphs the times at which you are traveling exactly 50 mph.
+%2. Estimate the values of $x$ for which the speed matches the overall average speed for the entire trip (with picture).
 
 \printexercises{exercises/03_02_exercises}

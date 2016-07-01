@@ -1,3 +1,95 @@
+% the following was taken from u-substitution
+
+%\subsection*{Substitution and Inverse Trigonometric Functions}
+%
+%%In Section \ref{sec:deriv_inverse_function} 
+%When studying derivatives of inverse functions, we learned that $$\frac{d}{dx}\big(\tan^{-1}x\big) = \frac{1}{1+x^2}.$$ Applying the Chain Rule to this is not difficult; for instance, $$\frac{d}{dx}\big(\tan^{-1}5x\big) = \frac{5}{1+25x^2}.$$ We now explore how Substitution can be used to ``undo'' certain derivatives that are the result of the Chain Rule applied to Inverse Trigonometric functions. We begin with an example.\\
+%
+%\example{ex_subst14}{Integrating by substitution: inverse trigonometric functions}{
+%Evaluate $\ds \int \frac{1}{25+x^2}\ dx$.}
+%{The integrand looks similar to the derivative of the arctangent function. Note:
+%\begin{align*}
+%\frac{1}{25+x^2} &= \frac{1}{25(1+\frac{x^2}{25})}\\
+%							&= \frac{1}{25(1+\left(\frac{x}{5}\right)^2)} \\
+%							&= \frac{1}{25}\frac{1}{1+\left(\frac{x}{5}\right)^2}\ .
+%\end{align*}
+%Thus $$\int\frac{1}{25+x^2}\ dx = \frac{1}{25}\int \frac{1}{1+\left(\frac{x}{5}\right)^2}\ dx.$$ This can be integrated using Substitution. Set $u = x/5$, hence $du = dx/5$ or $dx=5du$. Thus
+%\begin{align*}
+%	\int\frac{1}{25+x^2}\ dx
+%	&= \frac{1}{25}\int \frac{1}{1+\left(\frac{x}{5}\right)^2}\ dx \\
+%	&= \frac15\int \frac{1}{1+u^2}\ du \\
+%	&= \frac15\tan^{-1}u + C \\
+%	&= \frac15\tan^{-1}\left(\frac x5\right)+C
+%\end{align*}}
+%
+%Example \ref{ex_subst14} demonstrates a general technique that can be applied to other integrands that result in inverse trigonometric functions. The results are summarized here.
+%
+%\theorem{thm:int_inverse_trig}{Integrals Involving Inverse Trigonomentric Functions}
+%{Let $a>0$.
+%\begin{enumerate}
+%	\item	$\ds \int \frac{1}{a^2+x^2}\ dx = \frac1a\tan^{-1}\left(\frac{x}{a}\right) + C$
+%	\item	$\ds \int \frac{1}{\sqrt{a^2-x^2}}\ dx = \sin^{-1}\left(\frac{x}{a}\right)+C$
+%	\item	$\ds \int \frac{1}{x\sqrt{x^2-a^2}}\ dx = \frac1a\sec^{-1}\left(\frac{|x|}{a}\right)+C$
+%\end{enumerate}}
+%
+%Let's practice using Theorem \ref{thm:int_inverse_trig}.\bigskip
+%
+%\example{ex_subst15}{Integrating by substitution: inverse trigonometric functions}{Evaluate the given indefinite integrals.
+%$$\int \frac{1}{9+x^2}\ dx,\quad \int \frac{1}{x\sqrt{x^2-\frac{1}{100}}}\ dx\quad \text{ and }\quad  \int \frac{1}{\sqrt{5-x^2}}\ dx.$$}
+%{Each can be answered using a straightforward application of Theorem \ref{thm:int_inverse_trig}.
+%\begin{gather*}
+%\int \frac{1}{9+x^2}\ dx = \frac13\tan^{-1} \frac x3 + C,\text{ as }a=3.
+%\int\frac1{x\sqrt{x^2-\frac1{100}}}\ dx=10\sec^{-1}10x+C,\text{ as }a=\frac1{10}.
+%\int \frac{1}{\sqrt{5-x^2}} = \sin^{-1}\frac{x}{\sqrt{5}}+C,\text{ as }a = \sqrt{5}.}
+%
+%Most applications of Theorem \ref{thm:int_inverse_trig} are not as straightforward. The next examples show some common integrals that can still be approached with this theorem.\\
+%
+%\example{ex_subst16}{Integrating by substitution: completing the square}{Evaluate $\ds \int\frac{1}{x^2-4x+13}\ dx$.}
+%{Initially, this integral seems to have nothing in common with the integrals in Theorem \ref{thm:int_inverse_trig}. As it lacks a square root, it almost certainly is not related to arcsine or arcsecant. It is, however, related to the arctangent function.
+%
+%We see this by \textit{completing the square} in the denominator. We give a brief reminder of the process here. 
+%
+%Start with a quadratic with a leading coefficient of 1. It will have the form of $x^2 + bx + c$. Take 1/2 of $b$, square it, and add/subtract it back into the expression. I.e., 
+%\begin{align*}
+%	x^2+bx+ c
+%	&= \underbrace{x^2 + bx + \frac{b^2}4}_{(x+b/2)^2} - \frac{b^2}4 + c\\
+%	&= \left(x+\frac b2\right)^2 + c-\frac{b^2}4
+%\end{align*}
+%In our example, we take half of $-4$ and square it, getting $4$. We add/subtract it into the denominator as follows:
+%
+%\begin{align*}
+%	\frac{1}{x^2-4x+13}
+%	&= \frac{1}{\underbrace{x^2-4x+4}_{(x-2)^2}-4+13}\\
+%	&=\frac{1}{(x-2)^2 + 9}
+%\end{align*}
+%We can now integrate this using the arctangent rule. Technically, we need to substitute first with $u=x-2$, but by now we can do this easily. Thus we have 
+%\[
+%\int \frac{1}{x^2-4x+13}\ dx
+%= \int \frac{1}{(x-2)^2+9}\ dx
+%= \frac13\tan^{-1}\frac{x-2}{3}+C.
+%\]}
+%
+%\example{ex_subst17}{Integrals requiring multiple methods}{
+%Evaluate $\ds \int \frac{4-x}{\sqrt{16-x^2}}\ dx$.}
+%{This integral requires two different methods to evaluate it. We get to those methods by splitting up the integral: 
+%\[
+%\int \frac{4-x}{\sqrt{16-x^2}}\ dx
+%= \int \frac{4}{\sqrt{16-x^2}}\ dx - \int \frac{x}{\sqrt{16-x^2}}\ dx.
+%\]
+%The first integral is handled using a straightforward application of Theorem \ref{thm:int_inverse_trig}; the second integral is handled by substitution, with $u = 16-x^2$. We handle each separately.
+%\[\int \frac{4}{\sqrt{16-x^2}}\ dx = 4\sin^{-1}\frac{x}{4} + C.\]
+%For $\ds \int\frac{x}{\sqrt{16-x^2}}\ dx$, we set $u = 16-x^2$, so $du = -2xdx$ and $xdx = -du/2$. We have
+%\begin{align*}
+%	\int\frac{x}{\sqrt{16-x^2}}\ dx
+%	&= \int\frac{-du/2}{\sqrt{u}}\\
+%	&= -\frac12\int \frac{1}{\sqrt{u}}\ du \\
+%	&= - \sqrt{u} + C\\
+%	&= -\sqrt{16-x^2} + C.
+%\end{align*}
+%Combining these together, we have 
+%\[\int \frac{4-x}{\sqrt{16-x^2}}\ dx = 4\sin^{-1}\frac x4 + \sqrt{16-x^2}+C.\]}
+
+
 \section{Trigonometric Substitution}\label{sec:trig_sub}
 
 In Section \ref{sec:def_int} we defined the definite integral as the ``signed area under the curve.'' In that section we had not yet learned the Fundamental Theorem of Calculus, so we evaluated special definite integrals which described nice, geometric shapes. For instance, we were able to evaluate
@@ -9,7 +101,6 @@ In Section \ref{sec:def_int} we defined the definite integral as the ``signed ar
 We have since learned a number of integration techniques, including Substitution and Integration by Parts, yet we are still unable to evaluate the above integral without resorting to a geometric interpretation. This section introduces Trigonometric Substitution, a method of integration that fills this gap in our integration skill. This technique works on the same principle as Substitution as found in Section \ref{sec:substitution}, though it can feel ``backward.'' In Section \ref{sec:substitution}, we set $u=f(x)$, for some function $f$, and replaced $f(x)$ with $u$. In this section, we will set $x=f(\theta)$, where $f$ is a trigonometric function, then replace $x$ with $f(\theta)$. 
 
 We start by demonstrating this method in evaluating the integral in \eqref{eq:trigsub1}. After the example, we will generalize the method and give more examples.\\
-\enlargethispage{3\baselineskip}
 
 \example{ex_trigsub1}{Using Trigonometric Substitution}{
 Evaluate $\ds \int_{-3}^3\sqrt{9-x^2}\ dx$.}
@@ -31,7 +122,6 @@ This matches our answer from before.
 }\\
 
 We now describe in detail Trigonometric Substitution. This method excels when dealing with integrands that contain $\sqrt{a^2-x^2}$, $\sqrt{x^2-a^2}$ and $\sqrt{x^2+a^2}$. The following Key Idea outlines the procedure for each case, followed by more examples. Each right triangle acts as a reference to help us understand the relationships between $x$ and $\theta$.
-\enlargethispage{2\baselineskip}
 
 \setboxwidth{100pt}
 %\hskip-100pt%
@@ -127,7 +217,6 @@ We now rewrite the integral with these substitutions:
 \end{align*}
 We integrated $\sec^3\theta$ in Example \ref{ex_trigint6}, finding its antiderivatives to be
 $$\int \sec^3\theta\ d\theta = \frac12\Big(\sec \theta\tan \theta + \ln|\sec \theta+\tan \theta|\Big)+C.$$
-\enlargethispage{2\baselineskip}
 Thus
 \begin{align*}
 \int \sqrt{4x^2-1}\ dx &=\frac12\int \big(\sec^3\theta - \sec\theta\big)\ d\theta\\
@@ -230,7 +319,6 @@ So
 \vskip-1.5\baselineskip
 }\\
 
-\enlargethispage{3\baselineskip}
 The following equalities are very useful when evaluating integrals using Trigonometric Substitution. 
 
 \keyidea{idea:useful_trigsub}{Useful Equalities with Trigonometric Substitution}

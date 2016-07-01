@@ -1,0 +1,16 @@
+{$f(x)=\begin{cases} x+3 & x<-2\\
+x^2+4 & -2\leq x\leq 3\\
+e^{-x} & x>3 \end{cases}$}
+{\begin{tikzpicture}
+\begin{axis}[axis y line=middle, axis x line=middle, xmin=-6, xmax=6, ymin=-6, ymax=6,name=myplot]
+\addplot[{\colorone}, domain=-6:-2, thick, smooth]{3+x};
+\draw[{\colorone}] (axis cs:-2,1) circle (2pt);
+\draw[fill=white,{\colorone}] (axis cs:-2,8) circle (2pt);
+\addplot[{\colorone}, domain=-2:3, thick, smooth]{x*x+4};
+\draw[{\colorone}] (axis cs:3,13) circle (2pt);
+\draw[{\colorone}] (axis cs:3,.05) circle (2pt);
+\addplot[fill=white,{\colorone}, domain=3:6, thick, smooth]{e^(-x)};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}

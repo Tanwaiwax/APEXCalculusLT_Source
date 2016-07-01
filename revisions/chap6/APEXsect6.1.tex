@@ -1,0 +1,100 @@
+\documentclass[11pt]{report}
+\usepackage{mathtools, amsthm, mathpazo, epic, eepic, color, paralist}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\typo}[4]{\item Typo: on line #2 of page #1: \emph{#3} should be \emph{#4}.}
+\newcommand{\funcleft}[2]{\item Example #1 on page #2.}
+
+
+\begin{document}
+
+\chapter*{APEX Section 6.1 Changes}
+
+{\slshape Note: throughout, a positive line number refers to a line that far from the top of the page, a negative line number refers to a line that far from the bottom of the page.}
+
+\section*{Text}
+
+\begin{enumerate}
+
+\item This entire section should replace the current section 5.5, which moves to Calc II. I assume section numbers and references will change automatically?
+
+\item In lines 2-3 of the intro, replace \emph{The next chapter explores} with \emph{Chapter 8 explores}
+
+\item Insert the following marginal note near the bottom of page 255: {\slshape Recall from section 4.4 that the differentil of $x$, denoted $dx$, is any nonzero real number.  If $u$ is a function of $x$, then the differential of $u$, denoted $du$, is defined by $du=u'(x)\,dx$.}
+
+\item On lines 10-11 of page 257, change \emph{that one can memorize; rather, experience will be one's guide} to \emph{to memorize; rather, experience will be your guide}
+
+\item Key Idea 10 on page 258 is not really a key idea. Remove the box and title and add the text to the previous paragraph.
+
+\item In the Solution to Example 144:
+\begin{itemize}
+\item The solution should start with \emph{View this as a composition} - ``as'' is missing.
+\item In the first line of the multiline equation, replace $\displaystyle\int \frac 7u\frac {du}{-3}$ with $\displaystyle \int\left(\frac 7u\right)\left(\frac{du}{-3}\right)$
+\end{itemize}
+
+\item Remove Examples 150 \& 151 from here, they belong in a later chapter.
+
+\item In Example 152 on the last line of page 265, replace \emph{Since $u=x^{\frac12}$, $u^2=x$, etc.} with \emph{Since $u=x^{\frac12}$, we have $u^2=x$ and $u^4=x^2$.}
+
+\item The entire subsection about inverse trig functions should be moved to Calc II: pages 266-269.
+
+\item In the subsection itled {\bfseries Substitution and Definite Integration}, replace the first paragraph on pages 269-270 (through the \emph{workflow} sentence) with the following: {\slshape So far this section has focused on learning a new technique for finding antiderivatives. In practice, we will frequently be interested in finding definite integrals. We can use this antiderivative to evaluate the definite integral, but there is a more efficient method.}
+
+\item Remove the approximation from the last line of the solution of Example 157.
+
+\item Add the following example after Example 158:
+
+{\slshape {\bfseries Example 159 \qquad Definite integrals and substitution: changing the bounds}
+
+Evaluate $\displaystyle \int_0^2 xe^{x^2+1}\,dx$ using Theorem 47.
+
+{\bfseries Solution} \qquad We note the composition of functions and let $u=x^2+1$, hence $du=2x\,dx$. We divide the differential by 2 to get $\frac{du}2=x\,dx$.
+
+Setting $g(x)=u=x^2+1$, we find that the new lower bound is $g(0)=1$; the new upper bound is $g(2)=5$. We now evaluate:
+\begin{equation*}
+\begin{split}
+\int_0^2 xe^{x^2+1}\,dx &= \int_1^5 e^u \frac{du}2\\
+&=\frac12 e^u\biggr|_1^5\\
+&=\frac12(e^5-e^0)\approx 147.41316\\
+\end{split}
+\end{equation*}
+}
+
+\item On line -4 of page 271, replace \emph{The nect section} with \emph{Chapter 8}
+
+\end{enumerate}
+
+
+\section*{Problems}
+\begin{enumerate}
+
+\item Remove current problems 21, 23, 29, 30, 35-50, 61-73, 81-83
+
+\item Remove current instructions before problems 3, 15, 24, 31, 35, 41, 51
+
+\item Add the following instructions before problem 3: {\bfseries Evaluate the following indefinite integrals.}
+
+\item Mix the order of the remaining indefinite integrals.
+
+\item Add the following indefinite integral:
+
+\begin{itemize}
+\item $\int \frac{\cos\sqrt x}{\sqrt x}\,dx$ \qquad ANS: $2\sin\sqrt x+C$
+\item $\int \sec^2\theta\tan\theta\,d\theta$ \qquad ANS: $\frac12\sec^2\theta +C$
+\end{itemize}
+
+\item Add the following definite integrals:
+
+\begin{itemize}
+\item $\int_0^{\pi/4} e^{\tan x}\sec^2x\,dx$  \qquad ANS: $e-1$
+\item $\int_{-1}^1 \frac{x}{1+x^2}\,dx$ \qquad ANS: $0$
+\item $\int_1^{\ln 3} \frac{e^x}{1+e^x}\,dx$  \qquad ANS: $\ln\left( \frac{4}{1+e}\right)$ 
+\item $\int_0^1 \frac{2x^2+1}{(2x^3+3x+2)^3}\,dx$  \qquad ANS: $\frac{15}{392}$
+\item $\int_{-1}^2 \frac{x}{\sqrt{x+2}}\,dx$  \qquad ANS: $\frac23$
+\item $\int_0^{\frac\pi4} \cos^5(2x)\sin(2x)\,dx$  \qquad ANS: $\frac{1}{12}$
+\end{itemize}
+
+\end{enumerate}
+
+\end{document}

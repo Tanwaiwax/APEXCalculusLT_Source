@@ -15,28 +15,25 @@ The following Key Idea summarizes what we have learned so far that is applicable
 %\small
 \keyidea{idea:sketch}{Curve Sketching}
 {To produce an accurate sketch a given function $f$, consider the following steps.\index{curve sketching}
-\begin{enumerate}[series=curvesketching]
+\iflatexml\begin{enumerate}\else\begin{enumerate}[series=curvesketching]\fi
 \item		Find the domain of $f$. Generally, we assume that the domain is the entire real line then find restrictions, such as where a denominator is 0 or where negatives appear under the radical.
-\item		Find the critical values of $f$.
-\item		Find the possible points of inflection of $f$.
-%\item		Find the location of any vertical asymptotes of $f$ (usually done in conjunction with item 1 above).
-%\item		Consider the limits $\ds\lim_{x\to-\infty}f(x)$ and $\ds\lim_{x\to\infty}f(x)$ to determine the end behavior of the function.
-%\item		Create a number line that includes all critical points, possible points of inflection, and locations of vertical asymptotes. For each interval created, determine whether $f$ is increasing or decreasing, concave up or down.
-%\item		Evaluate $f$ at each critical point and possible point of inflection. Plot these points on a set of axes. Connect these points with curves exhibiting the proper concavity. Sketch asymptotes and $x$ and $y$ intercepts where applicable.
+\item		Find the location of any vertical asymptotes of $f$ (usually done in conjunction with the previous).
+\item		Find the $x$ and $y$-intercepts of $f$, and any symmetry.
+\iflatexml\else
 \end{enumerate}
 \small\textit{(continued)}\normalsize
 }
-\addtocounter{keyideacounter}{-1}
-\keyidea{idea:sketchb}{Curve Sketching -- Continued}
-{%To produce an accurate sketch a given function $f$, consider the following steps.
-\begin{enumerate}[resume=curvesketching] % just resume doesn't cut it
-%\item		Find the domain of $f$. Generally, we assume that the domain is the entire real line then find restrictions, such as where a denominator is 0 or where negatives appear under the radical.
-%\item		Find the critical values of $f$.
-%\item		Find the possible points of inflection of $f$.
-\item		Find the location of any vertical asymptotes of $f$ (usually done in conjunction with item 1 above).
-\item		Consider the limits $\lim_{x\to-\infty}f(x)$ and $\lim_{x\to\infty}f(x)$ to determine the end behavior of the function.
+
+\renewcommand{\thmcontinues}[1]{Curve Sketching --- Continued}
+%\addtocounter{keyideacounter}{-1}
+\keyidea[,continues=idea:sketch]{idea:sketchb}{Curve Sketching --- Continued}
+{\hspace{0pt}\begin{enumerate}[resume=curvesketching] % just resume doesn't cut it
+\fi
+\item		Consider the limits $\ds\lim_{x\to-\infty}f(x)$ and $\ds\lim_{x\to\infty}f(x)$ to determine the end behavior of the function.
+\item		Find the critical values of $f$.
+\item		Find the possible points of inflection of $f$.
 \item		Create a number line that includes all critical points, possible points of inflection, and locations of vertical asymptotes. For each interval created, determine whether $f$ is increasing or decreasing, concave up or down.
-\item		Evaluate $f$ at each critical point and possible point of inflection. Plot these points on a set of axes. Connect these points with curves exhibiting the proper concavity. Sketch asymptotes and $x$ and $y$ intercepts where applicable.
+\item		Evaluate $f$ at each critical point and possible point of inflection. Plot these points on a set of axes. Connect these points with curves exhibiting the proper concavity. Sketch asymptotes and $x$ and $y$-intercepts where applicable.
 \end{enumerate}
 }
 %\restoreboxwidth
@@ -45,54 +42,67 @@ The following Key Idea summarizes what we have learned so far that is applicable
 \youtubeVideo{DMYUsv8ZaoY}{Summary of Curve Sketching --- Example 2, Part 1 of 4}
 
 \example{ex_sketch1}{Curve sketching}{
-Use Key Idea \ref{idea:sketch} to sketch $f(x) = 3x^3-10x^2+7x+5$.}
+Use Key Idea \ref{idea:sketch} to sketch $f(x) = 3x^3-10x^2+4x+10$.}
 {We follow the steps outlined in the Key Idea.
 \begin{enumerate}
 \item		The domain of $f$ is the entire real line; there are no values $x$ for which $f(x)$ is not defined.
-\item		Find the critical values of $f$. We compute $\fp(x) = 9x^2-20x+7$. Use the Quadratic Formula to find the roots of $\fp$:
-				$$x = \frac{20\pm \sqrt{(-20)^2-4(9)(7)}}{2(9)} = \frac19\left(10\pm\sqrt{37}\right) \Rightarrow x\approx 0.435, 1.787.$$
-\item		Find the possible points of inflection of $f$. Compute $\fpp(x) = 18x-20$. We have $$\fpp(x) = 0 \Rightarrow x= 10/9 \approx 1.111.$$
 \item		There are no vertical asymptotes.
+\item		We see that $f(0)=10$, and $f$ does not appear to factor easily (so we skip finding the roots).  It has no symmetry.
 \item		We determine the end behavior using limits as $x$ approaches $\pm$infinity.				
-			$$\lim_{x\to -\infty} f(x) = -\infty \qquad \lim_{x\to \infty}f(x) = \infty.$$
+			$$\lim_{x\to-\infty}f(x)=-\infty\qquad\lim_{x\to\infty}f(x)=\infty.$$
 			We do not have any horizontal asymptotes.
-\item		We place the values $x=(10\pm\sqrt{37})/9$ and $x=10/9$ on a number line, as shown in Figure \ref{fig:sketchline1}. We mark each subinterval as increasing or decreasing, concave up or down, using the techniques used in Sections \ref{sec:incr_decr} and \ref{sec:concavity}.
+\item		Find the critical values of $f$. We compute $\fp(x) = 9x^2-20x+4=(9x-2)(x-2)$, so that $x=\frac29,2$.
+\item		Find the possible points of inflection of $f$. We see $\fpp(x) = 18x-20$, so that $$\fpp(x) = 0 \Rightarrow x= 10/9 \approx 1.111.$$
+\item		We place the values $x=\frac29,\frac{10}9,2$ on a number line, as shown in Figure \ref{fig:sketchline1}. We mark each subinterval as increasing or decreasing, concave up or down, using the techniques used in Sections \ref{sec:incr_decr} and \ref{sec:concavity}.
 
-\vskip \baselineskip
-%\noindent\ifthenelse{\boolean{longpage}}% in longpage form
-%			{% is longpage
-%\noindent\begin{minipage}{\textwidth}}% else isn't longpage
-%			{%
-%%\ifthenelse{\isodd{\thepage}}{}{\noindent\hskip -\marginparwidth \hskip -\marginparsep}
-%%\noindent\begin{minipage}{\textwidth+\marginparwidth+\marginparsep}
-%}%
 \begin{figure}[!ht]
-%\noindent\begin{minipage}{\textwidth}
 \centering
-%\hskip-30pt
-\myincludegraphics{figures/figsketchline1}
-\captionsetup{type=figure}%
-\caption{Number line for $f$ in Example \ref{ex_sketch1}.}\label{fig:sketchline1}
-\end{figure}%{minipage}
-
-\item		We plot the appropriate points on axes as shown in Figure \ref{fig:sketch1}(a) and connect the points with straight lines. In Figure \ref{fig:sketch1}(b) we adjust these lines to demonstrate the proper concavity. Our curve crosses the $y$ axis at $y=5$ and crosses the $x$ axis near $x=-0.424$. In Figure \ref{fig:sketch1}(c) we show a graph of $f$ drawn with a computer program, verifying the accuracy of our sketch.
-\end{enumerate}
-
-\mtable{.6}{Sketching $f$ in Example \ref{ex_sketch1}.}{fig:sketch1}{%
-\begin{tabular}{c}
-\myincludegraphics{figures/figsketch1a}\\
-(a)\\[10pt]
-\myincludegraphics{figures/figsketch1b}\\
-(b)\\[10pt]
-\myincludegraphics{figures/figsketch1}\\
-(c)
+\scriptsize
+\begin{tabular}{c p{2.2em} p{2.2em} p{2.2em} p{2.2em} p{2.2em} p{2.2em} p{2.2em} p{2.2em} p{2.2em} p{2.2em}}
+\multicolumn{3}{c|}{ } & \multicolumn{3}{c|}{ } & \multicolumn{3}{c|}{ } & \multicolumn{2}{c}{ } \\\hline
+\multicolumn{3}{c|}{ } & \multicolumn{3}{c|}{ } & \multicolumn{3}{c|}{ } & \multicolumn{2}{c}{ } \\[.6ex]
+\vphantom{\big|}$x$ & & \multicolumn{2}{c}{\zbox{$\frac29\approx0.222$}} & & \multicolumn{2}{c}{\zbox{$\frac{10}9\approx1.111$}} & & \multicolumn{2}{c}{$2$} & \\[.5ex]
+$\fp$  & \multicolumn{2}{|c|}{$>0$} & \multicolumn{3}{c|}{$<0$} & \multicolumn{3}{c|}{$<0$} & \multicolumn{2}{c}{$>0$} \\[.5ex]\hline
+\vphantom{\big|}$\fpp$ & \multicolumn{2}{|c|}{$<0$} & \multicolumn{3}{c|}{$<0$} & \multicolumn{3}{c|}{$>0$} & \multicolumn{2}{c}{$>0$} \\[.5ex]\hline
+\multicolumn{1}{c|}{\vphantom{\big|}$f$} & ~\qquad\zbox{\begin{tabular}{c}incr\\c.\ down\end{tabular}} & \multicolumn{2}{c}{\zbox{10.428}} & \quad\zbox{\begin{tabular}{c}decr\\c.\ down\end{tabular}} & \multicolumn{2}{c}{\zbox{6.214}} & \quad\zbox{\begin{tabular}{c}decr\\c.\ up\end{tabular}} & \multicolumn{2}{c}{2} & \zbox{\begin{tabular}{c}incr\\c.\ up\end{tabular}} \\
+&&&&&&&&&&
 \end{tabular}
-%}
-%\mfigure{.8}{Beginning to sketch $f$ in Example \ref{ex_sketch1}.}{fig:sketch1a}{figures/figsketch1a}
-%\mfigure{.57}{Adding concavity to the  sketch $f$ in Example \ref{ex_sketch1}.}{fig:sketch1b}{figures/figsketch1b}
-%\mfigure{.34}{A computer generated graph of $f$ in Example \ref{ex_sketch1}.}{fig:sketch1}{figures/figsketch1}
-}
+\caption{Number line for $f$ in Example \ref{ex_sketch1}.}\label{fig:sketchline1}
+\end{figure}
+
+\item		We plot the appropriate points on axes as shown in Figure \ref{fig:sketch1}(a) and connect the points with the proper concavity. Our curve crosses the $y$ axis at $y=10$ and crosses the $x$ axis near $x=-0.75$. In Figure \ref{fig:sketch1}(b) we show a graph of $f$ drawn with a computer program, verifying the accuracy of our sketch.
+\end{enumerate}
 \vskip-\baselineskip}\\
+
+\mtable{Sketching $f$ in Example \ref{ex_sketch1}.}{fig:sketch1}{%
+\begin{tabular}{c}
+\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},minor x tick num=1,axis y line=middle,axis x line=middle,ymin=-.5,ymax=10.9,xmin=-1.2,xmax=3.2,name=myplot]
+\addplot [{\colorone},thick,smooth] coordinates {(-.75,.109)(.222,10.428)(1.111,6.214)(2,2)(2.8,8.656)};
+%\draw [{\colorone},thick](axis cs:-.75,.109) parabola [bend at end] (axis cs:0.222,10.428);
+%\draw [{\colorone},thick](axis cs:0.222,10.428) parabola [] (axis cs:1.111,6.214);
+%\draw [{\colorone},thick](axis cs:1.111,6.214) parabola [bend at end] (axis cs:2,2);
+%\draw [{\colorone},thick](axis cs:2,2) parabola [] (axis cs:2.8,8.656);
+\filldraw [{\colorone}] (axis cs:0.222,10.428) circle (1pt);
+\filldraw [{\colorone}] (axis cs:1.111,6.214) circle (1pt);
+\filldraw [{\colorone}] (axis cs:2,2) circle (1pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}\\
+(a)\\[10pt]
+\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},minor x tick num=1,axis y line=middle,axis x line=middle,ymin=-.5,ymax=10.9,xmin=-1.2,xmax=3.2,name=myplot]
+\addplot [{\colorone},smooth,thick,domain=-.75:2.8] {3*x^3-10*x^2+4*x+10};
+\filldraw [{\colorone}] (axis cs:0.222,10.428) circle (1pt);
+\filldraw [{\colorone}] (axis cs:1.111,6.214) circle (1pt);
+\filldraw [{\colorone}] (axis cs:2,2) circle (1pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}\\
+(b)
+\end{tabular}}
 
 \example{ex_sketch2}{Curve sketching}{
 Sketch $\ds f(x) = \frac{x^2-x-2}{x^2-x-6}$.}
@@ -100,22 +110,23 @@ Sketch $\ds f(x) = \frac{x^2-x-2}{x^2-x-6}$.}
 
 \begin{enumerate}
 		\item	In determining the domain, we assume it is all real numbers and looks for restrictions. We find that at $x=-2$ and $x=3$, $f(x)$ is not defined. So the domain of $f$ is $D = \{\text{real numbers } x\ | \ x\neq -2,3\}$.
+		
+		\item	The vertical asymptotes of $f$ are at $x=-2$ and $x=3$, the places where $f$ is undefined.  We see that $\ds\lim_{x\to-2^-}f(x)=\infty$, $\ds\lim_{x\to-2^+}f(x)=-\infty$, $\ds\lim_{x\to3^-}f(x)=-\infty$, and $\ds\lim_{x\to3^+}f(x)=\infty$.
+		
+		\item	We see that $f(0)=\frac13$ and that $f(x)=0$ when $0=x^2-x-2=(x-2)(x+1)$ so that $x=-1,2$.  There is no symmetry.
 
-		\item		To find the critical values of $f$, we first find $\fp(x)$. Using the Quotient Rule, we find $$\fp(x) = \frac{-8x+4}{(x^2+x-6)^2} = \frac{-8x+4}{(x-3)^2(x+2)^2}.$$
+		\item	There is a horizontal asymptote of $y=1$, as $\ds \lim_{x\to -\infty}f(x) = 1$ and $\ds\lim_{x\to\infty}f(x) =1$.
+		
+		\item	To find the critical values of $f$, we first find $\fp(x)$. Using the Quotient Rule, we find $$\fp(x) = \frac{-8x+4}{(x^2+x-6)^2} = \frac{-8x+4}{(x-3)^2(x+2)^2}.$$
 		
 		$\fp(x) = 0$ when $x = 1/2$, and $\fp$ is undefined when $x=-2,3$. Since \fp\ is undefined only when $f$ is, these are not critical values. The only critical value is $x=1/2$.
 		
-		\item		To find the possible points of inflection, we find $\fpp(x)$, again employing the Quotient Rule: $$\fpp(x) = \frac{24x^2-24x+56}{(x-3)^3(x+2)^3}.$$
+		\item	To find the possible points of inflection, we find $\fpp(x)$, again employing the Quotient Rule: $$\fpp(x) = \frac{24x^2-24x+56}{(x-3)^3(x+2)^3}.$$
 		
-		We find that $\fpp(x)$ is never 0 (setting the numerator equal to 0 and solving for $x$, we find the only roots to this quadratic are imaginary) and \fpp\ is undefined when $x=-2,3$. Thus concavity will possibly only change at $x=-2$ and $x=3$.
+		We find that $\fpp(x)$ is never 0 (setting the numerator equal to 0 and solving for $x$, we find the only roots to this quadratic are imaginary) and \fpp\ is undefined when $x=-2,3$. Thus concavity will possibly only change at $x=-2$ and $x=3$ (although these are not inflection points, since $f$ is not defined there).
 		
-		\item		The vertical asymptotes of $f$ are at $x=-2$ and $x=3$, the places where $f$ is undefined.
+		\item	We place the values $x=1/2$, $x=-2$ and $x=3$ on a number line as shown in Figure \ref{fig:sketchline2}. We mark in each interval whether $f$ is increasing or decreasing, concave up or down. We see that $f$ has a relative maximum at $x=1/2$; concavity changes only at the vertical asymptotes.
 		
-		\item		There is a horizontal asymptote of $y=1$, as $\ds \lim_{x\to -\infty}f(x) = 1$ and $\ds\lim_{x\to\infty}f(x) =1$.
-		
-		\item		We place the values $x=1/2$, $x=-2$ and $x=3$ on a number line as shown in Figure \ref{fig:sketchline2}. We mark in each interval whether $f$ is increasing or decreasing, concave up or down. We see that $f$ has a relative maximum at $x=1/2$; concavity changes only at the vertical asymptotes.
-		
-		\vskip \baselineskip
 %\noindent\ifthenelse{\boolean{longpage}}% in longpage form
 %			{% is longpage
 %\noindent\begin{minipage}{\textwidth}}% else isn't longpage
@@ -124,83 +135,139 @@ Sketch $\ds f(x) = \frac{x^2-x-2}{x^2-x-6}$.}
 %%\noindent\begin{minipage}{\textwidth+\marginparwidth+\marginparsep}
 %}%
 \begin{figure}[!ht]
-%\noindent\begin{minipage}{\textwidth}
 \centering
-%\hskip-30pt
-\myincludegraphics{figures/figsketchline2}
-\captionsetup{type=figure}%
-			\caption{Number line for $f$ in Example \ref{ex_sketch2}.}\label{fig:sketchline2}
-\end{figure}%{minipage}
+\setlength{\unitlength}{3.5em}
+\begin{picture}(8,2.5)
+\scriptsize
+\put(4,2.15){\vector(1,0){4}}
+\put(4,2.15){\vector(-1,0){4}}
+\multiput(2,1.9)(2,0){3}{\line(0,1){.5}}
+\put(.5,0){\line(0,1){1.3}}
+\multiput(2,.5)(2,0){3}{\line(0,1){.8}}
+\multiput(0,.5)(0,.5){2}{\line(1,0){8}}
+\put(.1,1.6){$x$}
+\put(1.85,1.6){$-2$}
+\put(3.92,1.6){$\frac12$}
+\put(5.95,1.6){$3$}
+\put(.1,1.1){$\fp$}
+\put(1,1.1){$>0$}
+\put(2.8,1.1){$>0$}
+\put(4.9,1.1){$<0$}
+\put(6.9,1.1){$<0$}
+\put(.1,.6){$\fpp$}
+\put(1,.6){$>0$}
+\put(2.8,.6){$<0$}
+\put(4.9,.6){$<0$}
+\put(6.9,.6){$>0$}
+\put(.1,.1){$f$}
+\put(.6,.1){\begin{tabular}{c}incr\\c.\ up\end{tabular}}
+\put(1.8,.1){undef}
+\put(2.6,.1){\begin{tabular}{c}incr\\c.\ down\end{tabular}}
+\put(3.8,.1){$.36$}
+\put(4.4,.1){\begin{tabular}{c}decr\\c.\ down\end{tabular}}
+\put(5.8,.1){undef}
+\put(6.8,.1){\begin{tabular}{c}decr\\c.\ up\end{tabular}}
+\end{picture}
+\caption{Number line for $f$ in Example \ref{ex_sketch2}.}\label{fig:sketchline2}
+\end{figure}
 		
-		\item		In Figure \ref{fig:sketch2}(a), we plot the points from the number line on a set of axes and connect the points with straight lines to get a general idea of what the function looks like (these lines effectively only convey increasing/decreasing information). In Figure \ref{fig:sketch2}(b), we adjust the graph with the appropriate concavity. We also show $f$ crossing the $x$ axis at $x=-1$ and $x=2$.
+		\item		In Figure \ref{fig:sketch2}(a), we plot the points from the number line on a set of axes and connect the points with the appropriate concavity. We also show $f$ crossing the $x$ axis at $x=-1$ and $x=2$.
 \end{enumerate}
-Figure \ref{fig:sketch2}(c) shows a computer generated graph of $f$, which verifies the accuracy of our sketch.
-
-
-\mtable{.6}{Sketching $f$ in Example \ref{ex_sketch2}.}{fig:sketch2}{%
-\begin{tabular}{c}
-\myincludegraphics{figures/figsketch2a}\\[10pt]
-(a)\\[10pt]
-\myincludegraphics{figures/figsketch2b}\\[10pt]
-(b)\\[10pt]
-\myincludegraphics{figures/figsketch2}\\[10pt]
-(c)
-\end{tabular}
-%\mfigure{.8}{Beginning to sketch $f$ in Example \ref{ex_sketch2}.}{fig:sketch2a}{figures/figsketch2a}
-%\mfigure{.57}{Adding concavity to the  sketch $f$ in Example \ref{ex_sketch2}.}{fig:sketch2b}{figures/figsketch2b}
-%\mfigure{.34}{A computer generated graph of $f$ in Example \ref{ex_sketch2}.}{fig:sketch2}{figures/figsketch2}
-}% ends if/then/else
+Figure \ref{fig:sketch2}(b) shows a computer generated graph of $f$, which verifies the accuracy of our sketch.
 \vskip-\baselineskip}\\
+
+\mtable[-4in]{Sketching $f$ in Example \ref{ex_sketch2}.}{fig:sketch2}{%
+\begin{tabular}{c}
+\myincludegraphics{figures/figsketch2b}\\[10pt]
+(a)\\[10pt]
+\myincludegraphics{figures/figsketch2}\\[10pt]
+(b)
+%\\[10pt]
+%\myincludegraphics{figures/figsketch2a}\\[10pt]
+%(c)
+\end{tabular}
+}
 
 \example{ex_sketch3}{Curve sketching}{
 Sketch $\ds f(x) = \frac{5(x-2)(x+1)}{x^2+2x+4}.$}
 {We again follow Key Idea \ref{idea:sketch}.
 	\begin{enumerate}
 	\item		We assume that the domain of $f$ is all real numbers and consider restrictions. The only restrictions come when the denominator is 0, but this never occurs. Therefore the domain of $f$ is all real numbers, $\mathbb{R}$.
+	\item		There are no vertical asymptotes.
+	\item		We see that $f(0)=-\dfrac52$ and that $f(x)=0$ when $x=-1,2$.
+	\item		We have a horizontal asymptote of $y=5$, as
+	\[\lim_{x\to\pm\infty}f(x)=\lim_{x\to\pm\infty}\frac{5(1-\frac2x)(1+\frac1x)}{1+\frac2x+\frac4{x^2}}=5.\]
 	\item		We find the critical values of $f$ by setting $\fp(x)=0$ and solving for $x$. We find 
 				$$\fp(x) = \frac{15x(x+4)}{(x^2+2x+4)^2} \quad \Rightarrow \quad \fp(x) = 0 \text{ when } \ x=-4,0.$$
 	\item		We find the possible points of inflection by solving $\fpp(x) = 0$ for $x$. We find
-			$$\fpp(x) = -\frac{30x^3+180x^2-240}{(x^2+2x+4)^3} .$$ The cubic in the numerator does not factor very ``nicely.'' We instead approximate the roots at $x= -5.759$, $x=-1.305$ and $x=1.064$.
+			$$\fpp(x) = -\frac{30x^3+180x^2-240}{(x^2+2x+4)^3}.$$ The cubic in the numerator does not factor very ``nicely.'' We instead approximate the roots at $x= -5.759$, $x=-1.305$ and $x=1.064$.
 			
-	\item		There are no vertical asymptotes.
-	\item		We have a horizontal asymptote of $y=5$, as $\ds \lim_{x\to-\infty}f(x) = \lim_{x\to\infty}f(x) = 5$.
-	\item		We place the critical points and possible points on a number line as shown in Figure \ref{fig:sketchline3} and mark each interval as increasing/decreasing, concave up/down appropriately.
+	\item		We place the critical points and possible inflection points on a number line as shown in Figure \ref{fig:sketchline3} and mark each interval as increasing/decreasing, concave up/down appropriately.
 	
-			
-		\vskip \baselineskip
-%\noindent\ifthenelse{\boolean{longpage}}% in longpage form
-%			{% is longpage
-%\noindent\begin{minipage}{\textwidth}}% else isn't longpage
-%			{%
-%%\ifthenelse{\isodd{\thepage}}{}{\noindent\hskip -\marginparwidth \hskip -\marginparsep}
-%%\noindent\begin{minipage}{\textwidth+\marginparwidth+\marginparsep}
-%}%
 \begin{figure}[!ht]
-%\noindent\begin{minipage}{\textwidth}
 \centering
-%\hskip-30pt
-\myincludegraphics{figures/figsketchline3}
-\captionsetup{type=figure}%
+\setlength{\unitlength}{4.6em}
+\begin{picture}(6,2.5)
+\scriptsize
+\put(3,2.15){\vector(1,0){3}}
+\put(3,2.15){\vector(-1,0){3}}
+\multiput(1.1,1.9)(1,0){5}{\line(0,1){.5}}
+\put(.4,0){\line(0,1){1.3}}
+\multiput(1.1,.5)(1,0){5}{\line(0,1){.8}}
+\multiput(0,.5)(0,.5){2}{\line(1,0){6}}
+\put(.1,1.6){$x$}
+\put(.8,1.6){$-5.579$}
+\put(1.95,1.6){$-4$}
+\put(2.95,1.6){$-1.305$}
+\put(4.1,1.6){$0$}
+\put(4.95,1.6){$1.064$}
+\put(.1,1.1){$f'$}
+\put(.55,1.1){$>0$}
+\put(1.4,1.1){$>0$}
+\put(2.5,1.1){$<0$}
+\put(3.5,1.1){$<0$}
+\put(4.5,1.1){$>0$}
+\put(5.5,1.1){$>0$}
+\put(.1,.6){$f''$}
+\put(.55,.6){$>0$}
+\put(1.4,.6){$<0$}
+\put(2.5,.6){$<0$}
+\put(3.5,.6){$>0$}
+\put(4.5,.6){$>0$}
+\put(5.5,.6){$<0$}
+\put(.1,.1){$f$}
+\put(.35,.1){\begin{tabular}{c}incr\\c.\ up\end{tabular}}
+\put(.95,.1){$7.198$}
+\put(1.3,.1){\begin{tabular}{c}incr\\c.\ down\end{tabular}}
+\put(2.1,.1){$\frac{15}2$}
+\put(2.25,.1){\begin{tabular}{c}decr\\c.\ down\end{tabular}}
+\put(3,.1){$1.632$}
+\put(3.35,.1){\begin{tabular}{c}decr\\c.\ up\end{tabular}}
+\put(3.95,.1){$-\frac52$}
+\put(4.2,.1){\begin{tabular}{c}incr\\c.\ up\end{tabular}}
+\put(4.8,.1){$-1.33$}
+\put(5.25,.1){\begin{tabular}{c}incr\\c.\ down\end{tabular}}
+\end{picture}
 \caption{Number line for $f$ in Example \ref{ex_sketch3}.}\label{fig:sketchline3}
-\end{figure}%{minipage}
+\end{figure}	
 	
-	\item		In Figure \ref{fig:sketch3}(a) we plot the significant points from the number line as well as the two roots of $f$, $x=-1$ and $x=2$, and connect the points with straight lines to get a general impression about the graph. In Figure \ref{fig:sketch3}(b), we add concavity. Figure \ref{fig:sketch3}(c) shows a computer generated graph of $f$, affirming our results.		
-	\end{enumerate}
-	
-\mtable{.6}{Sketching $f$ in Example \ref{ex_sketch3}.}{fig:sketch3}{%
+\mtable{Sketching $f$ in Example \ref{ex_sketch3}.}{fig:sketch3}{%
 \begin{tabular}{c}
-\myincludegraphics{figures/figsketch3a}\\[10pt]
-(a)\\[10pt]
 \myincludegraphics{figures/figsketch3b}\\[10pt]
-(b)\\[10pt]
+(a)\\[10pt]
 \myincludegraphics{figures/figsketch3}\\[10pt]
-(c)
+(b)
+%\\[10pt]
+%\myincludegraphics{figures/figsketch3a}\\[10pt]
+%(c)
 \end{tabular}
-%\mfigure{.8}{Beginning to sketch $f$ in Example \ref{ex_sketch3}.}{fig:sketch3a}{figures/figsketch3a}
-%\mfigure{.57}{Adding concavity to the  sketch $f$ in Example \ref{ex_sketch3}.}{fig:sketch3b}{figures/figsketch3b}
-%\mfigure{.34}{A computer generated graph of $f$ in Example \ref{ex_sketch3}.}{fig:sketch3}{figures/figsketch3}
+%\mfigure{0in}{Beginning to sketch $f$ in Example \ref{ex_sketch3}.}{fig:sketch3a}{figures/figsketch3a}
+%\mfigure{0in}{Adding concavity to the  sketch $f$ in Example \ref{ex_sketch3}.}{fig:sketch3b}{figures/figsketch3b}
+%\mfigure{0in}{A computer generated graph of $f$ in Example \ref{ex_sketch3}.}{fig:sketch3}{figures/figsketch3}
 }% ends if/then/else
-\vskip-\baselineskip}\\
+
+	\item	In Figure \ref{fig:sketch3}(a) we plot the significant points from the number line as well as the two roots of $f$, $x=-1$ and $x=2$, and connect the points with the appropriate concavity. Figure \ref{fig:sketch3}(b) shows a computer generated graph of $f$, affirming our results (but the top left was slightly off).
+	\end{enumerate}\vskip-\baselineskip}\\
 
 In each of our examples, we found a few, significant points on the graph of $f$ that corresponded to changes in increasing/decreasing or concavity. We connected these points with straight lines, then adjusted for concavity, and finished by showing a very accurate, computer generated graph. 
 
@@ -210,7 +277,7 @@ This does a fine job of graphing in most cases (in fact, this is the method used
 
 In Figure \ref{fig:mathematica_sinx}, a graph of $y=\sin x$ is given, generated by \textit{Mathematica}. The small points represent each of the places \textit{Mathematica} sampled the function. Notice how at the ``bends'' of $\sin x$, lots of points are used; where $\sin x$ is relatively straight, fewer points are used. (Many points are also used at the endpoints to ensure the ``end behavior'' is accurate.) 
 
-\begin{figure}[!hb]
+\begin{figure}[!ht]
 %\vskip\baselineskip
 %\noindent%
 %\begin{minipage}{\textwidth}

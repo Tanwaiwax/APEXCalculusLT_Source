@@ -1,0 +1,20 @@
+{Use the graph below of $f$ to find a number $\delta$ such that if $0<|x-2|<\delta$, then $|f(x)-1|<0.3$.\\
+\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},minor x tick num=1,axis y line=middle,axis x line=middle,ymin=-.1,ymax=1.7,xmin=-.1,xmax=3,xtick={1,1.29,2,2.95},ytick={.7,1,1.3},name=myplot]
+\addplot [{\colorone},smooth,thick] {ln(x+.718)};
+\draw[thin,\colortwo] (axis cs:0,1.3) -- (axis cs:2.95,1.3);
+\draw[thin,\colortwo] (axis cs:0,.7) -- (axis cs:1.29,.7);
+\draw[thin,{\colortwo}] (axis cs:2.95,0) -- (axis cs:2.95,1.3);
+\draw[thin,{\colortwo}] (axis cs:1.26,0) -- (axis cs:1.29,.7);
+\draw[thin,dashed] (axis cs:0,1) -- (axis cs: 2,1);
+\draw[thin,dashed] (axis cs:2,0) -- (axis cs: 2,1);
+\fill[{\colortwo}] (axis cs:2.95,1.3) circle (1pt);
+\fill[{\colortwo}] (axis cs:1.29,.7) circle (1pt);
+\fill[black](axis cs:(2,1) circle (1pt);
+%\addplot[mark=*,fill=white, only marks] coordinates {(2,1)};
+%\fill[white](axis cs:(2,1) circle (3pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
+{$\delta\le0.71$}

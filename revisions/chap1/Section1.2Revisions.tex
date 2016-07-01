@@ -1,0 +1,261 @@
+\documentclass[10pt]{article}
+
+
+\usepackage{ifthen}
+
+\usepackage{lipsum}
+\usepackage{pgfplots}
+
+\usepackage{eso-pic,calc}
+\usepackage[font=small]{caption}
+\usepgfplotslibrary{external}
+\usetikzlibrary{calc}
+\usetikzlibrary{shadings}
+\usepackage{tikz}
+\usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows, petri, topaths}
+\usepackage{tkz-berge}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage[h]{esvect}
+
+\pgfplotsset{compat=1.8}
+
+
+\usepackage{amsmath}
+
+\newcommand{\ds}{\displaystyle}
+
+
+\begin{document}
+
+Page 12: The current Example 7 will be moved to after the linear examples that follow and after the text that is on the bottom of page 13. Solution to the current example 7 should be changed to read:  
+%%%%%%Something about the \label and \eqref isn't working right when I TeX this, I'm hoping it is some random thing in his preamble.
+
+Scratch-Work:
+We start our scratch-work by considering $|f(x)-4| < \epsilon$:
+\begin{align}
+|f(x)-4| &< \epsilon \notag\\
+|x^2-4|&< \epsilon & \text{(Now factor)}\notag\\
+|(x-2)(x+2)|&< \epsilon \notag\\
+|x-2| &<\frac{\epsilon}{|x+2|}.\label{eq:lim1}
+\end{align}
+We are at the phase of saying that $|x-2|<$ \textit{something}, where \textit{something}$=\epsilon/|x+2|$. We want to turn that \textit{something} into $\delta$. Could we not set $\displaystyle \delta = \frac{\epsilon}{|x+2|}$?  
+
+We are close to an answer, but the catch is that $\delta$ must be a \textit{constant} value (so it can't contain $x$).  There is a way to work around this, but we do have to make an assumption.  Remember that $\epsilon$ is supposed to be a small number, which implies that $\delta$ will also be a small value.  In particular, we can (probably) assume that $\delta < 1$.  If this is true, then $|x-2| < \delta$ would imply that $|x-2| < 1$, giving $1 < x < 3$.  
+
+Now, back to the fraction $\displaystyle \frac{\epsilon}{|x+2|}$.  If $1<x<3$, then $3<x+2<5$ (add 2 to all terms in the inequality).  Taking reciprocals, we have 
+\begin{align}
+\frac15 <& \frac1{|x+2|} < \frac 13 & \text{which implies}\notag\\
+\frac15 <& \frac1{|x+2|} & \text{which implies}\notag\\
+\frac\epsilon5<&\frac{\epsilon}{|x+2|}\text{.} \label{eq:lim2}
+\end{align}
+
+This suggests that we set $\ds \delta \leq \frac{\epsilon}{5}$. This ends our scratch--work, and we begin the formal proof (which also helps us understand why this was a good choice of $\delta$).
+
+Proof:
+
+Given $\epsilon$, let $\delta \leq \epsilon/5$. We want to show that when $|x-2|<\delta$, then $|x^2-4|<\epsilon$. We start with $|x-2|<\delta$:
+\begin{align*}
+|x-2| &< \delta \\
+|x-2| &< \frac{\epsilon}5\\
+|x-2| &< \frac\epsilon5 < \frac{\epsilon}{|x+2|} & \text{(for $x$ near 2, from Equation \eqref{eq:lim2})}\\
+% eqref causes latexml warning, but it comes out just fine
+|x-2|\cdot |x+2| &< \epsilon\\
+|(x-2)(x+2)| &< \epsilon\\
+|x^2-4| &<\epsilon,
+\end{align*}
+which is what we wanted to show. Thus $\ds \lim_{x\to 2}x^2 = 4$.
+\\
+We have arrived at $|x^2 - 4|<\epsilon$ as desired.  Note again, in order to make this happen we needed $\delta$ to first be less than 1.  That is a safe assumption; we want $\epsilon$ to be arbitrarily small, forcing $\delta$ to also be small. 
+
+We have also picked $\delta$ to be smaller than ``necessary.'' We could get by with a slightly larger $\delta$, as shown in Figure \ref{fig:limit_eover5}. The dashed outer lines show the boundaries defined by our choice of $\epsilon$. The dotted inner lines show the boundaries defined by setting $\delta = \epsilon/5$. Note how these dotted lines are within the dashed lines. That is perfectly fine; by choosing $x$ within the dotted lines we are guaranteed that $f(x)$ will be within $\epsilon$ of 4.%If the value we eventually used for $\delta$, namely $\epsilon/5$, is not less than 1, this proof won't work.  For the final fix, we instead set $\delta$ to be the minimum of 1 and $\epsilon/5$. This way all calculations above work.  
+
+
+%%%%%  I commented out the figure below because I didn't have the correct files to input%%%%%%%%%%
+
+%\mfigure{.8}{Choosing $\delta = \epsilon/5$ in Example \ref{ex_compute_lim2}.}{fig:limit_eover5}{figures/figlimit_proof2a}
+
+In summary, given $\epsilon > 0$, set $\delta\leq\epsilon/5$.  Then $|x - 2| < \delta$ implies 
+$|x^2 - 4|< \epsilon$ (i.e. $|y - 4|< \epsilon$) as desired.  This shows that $\displaystyle \lim_{x\rightarrow 2} x^2 = 4 $. Figure \ref{fig:limit_eover5} gives a visualization of this; by restricting $x$ to values within $\delta = \epsilon/5$ of 2, we see that $f(x)$ is within $\epsilon$ of $4$.
+
+
+NEW EXAMPLE 7:
+
+Show that $\ds \lim_{x\to 1} {3x-5}=-2$
+
+Solution    Let's do this example symbolically from the start.
+
+Scratch-Work:
+ 
+We start our scratch-work by considering $|f(x)-(-2)|<\epsilon$:
+
+\begin{align*}
+|f(x)-(-2)|&<\epsilon \\
+|3x-5+2|&<\epsilon \\
+|3x-3|&<\epsilon\\
+3|x-1|&<\epsilon \\
+|x-1|&<\frac{\epsilon}{3}\\
+\end{align*}
+
+This suggests that we set $\delta=\frac{\epsilon}{3}$,
+
+Proof:
+Given $\epsilon>0$, choose $\ds \delta=\frac{\epsilon}{3}$. We assume $|x-1|<\delta$
+
+\small
+\begin{align*}
+|x - 1| &< \delta &\\
+|x - 1| &< \frac{\epsilon}{3}&  \text{\small(Our choice of $\delta$)}\\
+3|x - 1| &< \frac{\epsilon}{3}\cdot 3 &  \text{\small(Multiply by 3)}\\
+|3x-3|&< \epsilon &  \text{\small(Simplify)}\\
+|3x-5+2|&< \epsilon & \\
+|3x-5-(-2)|&< \epsilon, & \\
+\end{align*}
+\normalsize
+which is what we wanted to show. Thus  $\ds \lim_{x\to 1} {3x-5}=-2$.
+
+NEW EXAMPLE 8:
+
+Show that $\ds \lim_{x\to 2} 4-\frac{3}{2}x=1$.
+
+Solution   
+
+Scratch-Work:
+ 
+We start our scratch-work by considering $|f(x)-1|<\epsilon$:
+
+\begin{align*}
+|f(x)-1|&<\epsilon \\
+|4-\frac{3}{2}x-1|&<\epsilon \\
+|3-\frac{3}{2}x|&<\epsilon\\
+|-\frac{3}{2}(-2+x)|&<\epsilon \\
+\frac{3}{2}|x-2|&<\epsilon \\
+|x-2|&<\frac{2\epsilon}{3}\\
+\end{align*}
+
+This suggests that we set $\delta=\frac{2\epsilon}{3}$,
+
+Proof:
+Given $\epsilon>0$, choose $\ds \delta=\frac{2\epsilon}{3}$. We assume $|x-2|<\delta$
+
+\begin{align*}
+|x - 2| &< \delta \\
+|x - 2| &< \frac{2\epsilon}{3}\\
+\frac{3}{2}|x - 2| &< \frac{2\epsilon}{3}\cdot \frac{3}{2}\\
+|-\frac{3}{2}(x-2)|&< \epsilon \\
+|-\frac{3}{2}x+3|&< \epsilon  \\
+|4-\frac{3}{2}x-1|&< \epsilon,  \\
+\end{align*}
+
+which is what we wanted to show. Thus  $\ds \lim_{x\to 2} 4-\frac{3}{2}x=1$.
+
+DELETE the current example 8 and example 9.
+
+
+
+EXERCISES:
+
+I am also adding two questions with graphs.  I will attach each of those in a separte file...I am still working on making them work.
+
+NEW 6???????.
+
+$\ds \lim_{x\to{-3}} 7x+10=-11$
+
+Solution   
+
+Scratch-Work:
+ \small
+\begin{align*}
+|f(x)-(-11)|&<\epsilon \\
+|7x+10+11|&<\epsilon \\
+|7x+21|&<\epsilon\\
+7|x+3|&<\epsilon \\
+|x+3|&<\frac{\epsilon}{7}\\
+\end{align*}
+\normalsize
+This suggests that we set $\delta=\frac{\epsilon}{7}$,
+
+Proof:
+Given $\epsilon>0$, choose $\ds \delta=\frac{\epsilon}{7}$. We assume $|x+3|<\delta$
+
+\small
+\begin{align*}
+|x+3| &< \delta \\
+|x+3| &< \frac{\epsilon}{7} \\
+7|x +3| &< \frac{\epsilon}{7}\cdot 7\\
+|7x+21|&< \epsilon \\
+|7x+10+11|&< \epsilon  \\
+\end{align*}
+\normalsize
+Thus  $\ds \lim_{x\to{-3}} 7x+10=-11$.
+
+
+NEW 7.
+
+$\ds \lim_{x\to 5} {4x-12}=8$
+
+Solution   
+
+Scratch-Work:
+ \small
+\begin{align*}
+|f(x)-8|&<\epsilon \\
+|4x-12-8|&<\epsilon \\
+|4x-20|&<\epsilon\\
+4|x-5|&<\epsilon \\
+|x-1|&<\frac{\epsilon}{4}\\
+\end{align*}
+\normalsize
+This suggests that we set $\delta=\frac{\epsilon}{4}$,
+
+Proof:
+Given $\epsilon>0$, choose $\ds \delta=\frac{\epsilon}{4}$. We assume $|x-5|<\delta$
+
+\small
+\begin{align*}
+|x - 5| &< \delta \\
+|x - 5| &< \frac{\epsilon}{4} \\
+4|x - 5| &< \frac{\epsilon}{4}\cdot 4\\
+|4x-20|&< \epsilon \\
+|4x-12-8|&< \epsilon  \\
+\end{align*}
+\normalsize
+Thus  $\ds \lim_{x\to 5} {4x-12}=8$.
+
+NEW 8.
+$\ds \lim_{x\to 3} 5-2x=-1$
+
+Solution   
+
+Scratch-Work:
+ \small
+\begin{align*}
+|f(x)-(-1)|&<\epsilon \\
+|5-2x+1|&<\epsilon \\
+|-2x+6|&<\epsilon\\
+2|x-3|&<\epsilon \\
+|x-3|&<\frac{\epsilon}{2}\\
+\end{align*}
+\normalsize
+This suggests that we set $\delta=\frac{\epsilon}{2}$,
+
+Proof:
+Given $\epsilon>0$, choose $\ds \delta=\frac{\epsilon}{2}$. We assume $|x-3|<\delta$
+
+\small
+\begin{align*}
+|x - 3| &< \delta \\
+|x - 3| &< \frac{\epsilon}{2} \\
+2|x - 3| &< \frac{\epsilon}{2}\cdot 2\\
+|-2x+6|&< \epsilon \\
+|5-2x+1|&< \epsilon  \\
+\end{align*}
+\normalsize
+Thus  $\ds \lim_{x\to 3} 5-2x=-1$.
+
+DELETE current exercise 10.
+
+
+\end{document}

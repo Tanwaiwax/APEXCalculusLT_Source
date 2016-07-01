@@ -6,7 +6,7 @@ The topic of \sword{related rates} takes this one step further: knowing the \tex
 
 \youtubeVideo{tZl5h7590go}{Related Rates \#6 --- Rate at Which the Circumference of a Circle is Changing}
 
-\mnote{.5}{\textbf{Note:} This section relies heavily on implicit differentiation, so referring back to Section \ref{sec:imp_deriv} may help.}
+\mnote{\textbf{Note:} This section relies heavily on implicit differentiation, so referring back to Section \ref{sec:imp_deriv} may help.}
 
 We demonstrate the concepts of related rates through examples.\\
 
@@ -23,7 +23,18 @@ C 	&= 2\pi r\\
 As we know $\frac{dr}{dt} = 5$in/hr, we know $$\frac{dC}{dt} = 2\pi 5 = 10\pi \approx 31.4\text{in/hr.}$$
 \vskip-\baselineskip}\\
 
-Consider another, similar example.\\
+Before we look at another example, we'll state a few ideas on approaching these problems.
+
+\keyidea{idea:related_rates}{Solving Related Rates Problems}
+{~\\[-\baselineskip]
+\begin{enumerate}
+	\item	Understand the problem. Clearly identify what quantity is to be found. Make a sketch if helpful.
+	\item	Create equations relevant to the context of the problem, using the information given.
+	\item	Differentiate the equations from the previous item.
+	\item	Substitute the known quantities, and solve for the missing one.
+\end{enumerate}}
+
+The important thing to remember is that you must differentiate before you substitute values.  Otherwise, you'll substitute a constant for what should be a variable, and it's derivative will be zero.  Consider another example.\\
 
 \example{ex_rr2}{Finding related rates}{
 Water streams out of a faucet at a rate of $2$in$^3$/s onto a flat surface at a constant rate, forming a circular puddle that is $1/8$in deep. 
@@ -46,16 +57,27 @@ V &= \frac18A\\
 As $\frac{dV}{dt} = 2$, we know $2 = \frac18\frac{dA}{dt}$, and hence $\frac{dA}{dt} = 16$. Thus the area is growing by 16in$^2$/s.
 
 \drawexampleline
-\item		To start, we need an equation that relates what we know to the radius. We just learned something about the surface area of the circular puddle, and we know $A = \pi r^2$. We should be able to learn about the rate at which the radius is growing with this information. 
-
-Implicitly derive both sides of $A=\pi r^2$ with respect to $t$:
+\item		To start, we need an equation that relates what we know to the radius.
+We know that $V=\pi r^2h$.  Implicitly derive both sides with respect to $t$:
 \begin{align*}
-	A 	&= \pi r^2 \\
-	\frac{d}{dt}\big(A\big) &= \frac{d}{dt}\big(\pi r^2\big)\\
-	\frac{dA}{dt} &= 2\pi r\frac{dr}{dt}
+ V &= \pi r^2 h \\
+ \frac{d}{dt}\big(V\big) &= \frac{d}{dt}\big(\pi r^2 h\big) \\
+ \frac{dV}{dt} &= 2\pi r h \frac{dr}{dt} \qquad\qquad\text{(because $h$ is constant)}
 \end{align*}
-
-Our work above told us that $\frac{dA}{dt} = 16$in$^2$/s. Solving for $\frac{dr}{dt}$, we have $$\frac{dr}{dt} = \frac{8}{\pi r}.$$
+Solving for $\frac{dr}{dt}$, we have
+\[
+\frac{dr}{dt}=\frac{\frac{dV}{dt}}{2\pi r h}=\frac{2}{2\pi r\cdot\frac18}=\frac8{\pi r}.
+\]
+% We just learned something about the surface area of the circular puddle, and we know $A = \pi r^2$. We should be able to learn about the rate at which the radius is growing with this information. 
+%
+%Implicitly derive both sides of $A=\pi r^2$ with respect to $t$:
+%\begin{align*}
+%	A 	&= \pi r^2 \\
+%	\frac{d}{dt}\big(A\big) &= \frac{d}{dt}\big(\pi r^2\big)\\
+%	\frac{dA}{dt} &= 2\pi r\frac{dr}{dt}
+%\end{align*}
+%
+%Our work above told us that $\frac{dA}{dt} = 16$in$^2$/s. Solving for $\frac{dr}{dt}$, we have $$\frac{dr}{dt} = \frac{8}{\pi r}.$$
 
 Note how our answer is not a number, but rather a function of $r$. In other words, \textit{the rate at which the radius is growing depends on how big the circle already is.} If the circle is very large, adding 2in$^3$ of water will not make the circle much bigger at all. If the circle dime--sized, adding the same amount of water will make a radical change in the radius of the circle.
 
@@ -73,7 +95,7 @@ If the radar gun is moving (say, attached to a police car) then radar readouts a
 
 Suppose an officer is driving due north at 30 mph and sees a car moving due east, as shown in Figure \ref{fig:rr3}. Using his radar gun, he measures a reading of 20mph. By using landmarks, he believes both he and the other car are about 1/2 mile from the intersection of their two roads. 
 
-\mfigure{.35}{A sketch of a police car (at bottom) attempting to measure the speed of a car (at right) in Example \ref{ex_rr3}.}{fig:rr3}{figures/figrr3}
+\mfigure{0in}{A sketch of a police car (at bottom) attempting to measure the speed of a car (at right) in Example \ref{ex_rr3}.}{fig:rr3}{figures/figrr3}
 
 If the speed limit on the other road is 55mph, is the other driver speeding?}
 {Using the diagram in Figure \ref{fig:rr3}, let's label what we know about the situation. As both the police officer and other driver are 1/2 mile from the intersection, we have $A = 1/2$, $B = 1/2$, and through the Pythagorean Theorem, $C = 1/\sqrt{2}\approx 0.707$. 
@@ -93,14 +115,14 @@ We have values for everything except $\frac{dB}{dt}$. Solving for this we have
 The other driver appears to be speeding slightly.		
 }\\
 
-\mnote{.8}{\textbf{Note:} Example \ref{ex_rr3} is both interesting and impractical. It highlights the difficulty in using radar in a non--linear fashion, and explains why ``in real life'' the police officer would follow the other driver to determine their speed, and not pull out pencil and paper.
+\mnote{\textbf{Note:} Example \ref{ex_rr3} is both interesting and impractical. It highlights the difficulty in using radar in a non--linear fashion, and explains why ``in real life'' the police officer would follow the other driver to determine their speed, and not pull out pencil and paper.
 
 The principles here are important, though. Many automated vehicles make judgments about other moving objects based on perceived distances, radar--like measurements and the concepts of related rates.}
 
 \example{ex_rr4}{Studying related rates}{
 A camera is placed on a tripod 10ft from the side of a road. The camera is to turn to track a car that is to drive by at 100mph for a promotional video. The video's planners want to know what kind of motor the tripod should be equipped with in order to properly track the car as it passes by.  Figure \ref{fig:rr4} shows the proposed setup.
 
-\mfigure{.5}{Tracking a speeding car (at left) with a rotating camera.}{fig:rr4}{figures/figrr4}
+\mfigure{1in}{Tracking a speeding car (at left) with a rotating camera.}{fig:rr4}{figures/figrr4}
 
 How fast must the camera be able to turn to track the car?
 }
@@ -124,8 +146,19 @@ We find that $\frac{d\theta}{dt}$ is negative; this matches our diagram in Figur
 What is the practical meaning of $-14.667$radians/s? Recall that 1 circular revolution goes through $2\pi$ radians, thus $14.667$rad/s means $14.667/(2\pi)\approx 2.33$ revolutions per second. The negative sign indicates the camera is rotating in a clockwise fashion.
 }\\
 
-We introduced the derivative as a function that gives the slopes of tangent lines of functions. This chapter emphasizes using the derivative in other ways. Newton's Method uses the derivative to approximate roots of functions; this section stresses the ``rate of change'' aspect of the derivative to find a relationship between the rates of change of two related quantities. 
+% TODO: an example with similar triangles
 
+We introduced the derivative as a function that gives the slopes of tangent lines of functions. This 
+%chapter emphasizes using the derivative in other ways. Newton's Method uses the derivative to approximate roots of functions; this
+section stresses the ``rate of change'' aspect of the derivative to find a relationship between the rates of change of two related quantities. 
 In the next section we use Extreme Value concepts to \textit{optimize} quantities. 
+
+% TODO: exercises from below
+
+% problem with water in & water out
+% problem with isosceles triangle
+% problem with person, light & shadow
+% television camera & rocket?
+% lighthouse beam?
 
 \printexercises{exercises/04_02_exercises}

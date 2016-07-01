@@ -1,16 +1,11 @@
-%%%%
-% Additional packages to support the book, not part of the APEX style.
-%%%%
 \usepackage{fancyhdr}
-%\usepackage{pgfplots}
 %\pgfplotsset{width=\marginparwidth+1pt,compat=1.3}
 \usepackage[font=small]{caption}
 %,justification=centering
 
 \usepackage{wrapfig}
 
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.8}
+\usepackage{qrcode}
 
 %%%%
 %% These are low level LaTeX commands that determine the 
@@ -102,10 +97,10 @@ Notes:
 \fancyhfoffset[LE,RO]{\marginparsep+\marginparwidth}
 }
 
-\newcommand{\qendheader}{%
-		\fancyhead{}%
-		\fancyfoot{}%
-		}
+%\newcommand{\qendheader}{%
+%		\fancyhead{}%
+%		\fancyfoot{}%
+%		}
 }% ends if/then/else exercise/regular headers
 
 
@@ -127,7 +122,8 @@ Notes:
 %%%\makeatletter
 %%\def\@makesectionhead#1{%
 %%	 {\reset@font\LARGE\itshape\bfseries\strut #1 \thechapter.\thesection \ #1
-%%	 }}    
+%%	 }}
+\makeatother 
 
 \newcommand{\bmx}[1]{\left[\hskip -3pt\begin{array}{#1} }
 \newcommand{\emx}{\end{array}\hskip -3pt\right]}
@@ -194,6 +190,8 @@ Notes:
 \newcommand{\deriv}[2]{\ensuremath{\myds\frac{d}{dx}\left(#1\right)=#2}}
 \newcommand{\myint}[2]{\ensuremath{\myds\int #1\ dx=} \ensuremath{\ds #2}}
 
+\newcommand{\zbox}[1]{\makebox[0pt][c]{#1}} % a zero width box
+
 \DeclareMathOperator{\sech}{sech}
 \DeclareMathOperator{\csch}{csch}
 
@@ -254,48 +252,86 @@ Notes:
 %%%%
 %%%%
 
-\newcommand{\asyouread}[1]{\begin{tikzpicture}
-\ifthenelse{\boolean{inColor}}{\node [preaction={fill=black,opacity=.5,transform canvas={xshift=1mm,yshift=-1mm}}, right color=blue!80!black!30, left color=blue!80] at (0,0) {\textcolor{white}{\textsf{\textit{AS YOU READ $\ldots$}}}};}
-{\node [preaction={fill=black,opacity=.5,transform canvas={xshift=1mm,yshift=-1mm}}, right color=black!30, left color=black!10] at (0,0) {\textcolor{white}{\textsf{\textit{AS YOU READ $\ldots$}}}};}
-\end{tikzpicture}
-\begin{enumerate}
-#1
-\end{enumerate}
-\vskip 20pt}
+%\newcommand{\asyouread}[1]{\begin{tikzpicture}
+%\ifthenelse{\boolean{inColor}}{\node [preaction={fill=black,opacity=.5,transform canvas={xshift=1mm,yshift=-1mm}}, right color=blue!80!black!30, left color=blue!80] at (0,0) {\textcolor{white}{\textsf{\textit{AS YOU READ $\ldots$}}}};}
+%{\node [preaction={fill=black,opacity=.5,transform canvas={xshift=1mm,yshift=-1mm}}, right color=black!30, left color=black!10] at (0,0) {\textcolor{white}{\textsf{\textit{AS YOU READ $\ldots$}}}};}
+%\end{tikzpicture}
+%\begin{enumerate}
+%#1
+%\end{enumerate}
+%\vskip 20pt}
 
 %%%%
 %%  A new figure environment, trying to fix the float problem.
 %%
 %%%%
 
-\newcounter{myfigurecounter}[chapter]
-\renewcommand\themyfigurecounter{\thechapter.\arabic{myfigurecounter}}
-\newenvironment{myfigure}{\refstepcounter{myfigurecounter}}{}
-\newcommand{\mycaption}[1]{%
-\begin{center}%
-\vskip -1.5\baselineskip
-\begin{tikzpicture}%
-\draw (0,0) node [text width=\textwidth,align=center] {Figure \themyfigurecounter: #1};%
-\end{tikzpicture}%
-\end{center}%
-}
+%\newcounter{myfigurecounter}[chapter]
+%\renewcommand\themyfigurecounter{\thechapter.\arabic{myfigurecounter}}
+%\newenvironment{myfigure}{\refstepcounter{myfigurecounter}}{}
+%\newcommand{\mycaption}[1]{%
+%\begin{center}%
+%\vskip -1.5\baselineskip
+%\begin{tikzpicture}%
+%\draw (0,0) node [text width=\textwidth,align=center] {Figure \themyfigurecounter: #1};%
+%\end{tikzpicture}%
+%\end{center}%
+%}
 
-\newcommand{\video}[3]{\noindent Watch the video:\\%
- \href{#2}{#3 at \nolinkurl{#2}}%
- \embedVideo{https://www.youtube.com/v/#1?rel=0}%
-}
 
-\newcommand{\youtubeVideo}[2]{\video{#1}{https://youtu.be/#1}{#2}}
+\newspecialbox[notempty]{exvideo}{ignored}{240}
 
-\newcommand{\jmtVideo}[3]{\noindent Watch the video:\\%
- \href{http://patrickjmt.com/#2/}{#3 at \nolinkurl{http://patrickjmt.com/#2/}}%
- \embedVideo{https://www.youtube.com/v/#1?rel=0}%
-}
+\newcommand{\genVideo}[4][]{\exvideo{%
+ \ifthenelse{\boolean{latexml}}{%
+  \noindent Watch the video:\\%
+  \href{#3#1}{#4 from \nolinkurl{#3}}%
+  \embedVideo{https://www.youtube.com/v/#2?rel=0}%
+ }{%
+  \begin{minipage}[t]{2cm}%
+  \vspace{-.5\baselineskip}\qrcode{#3}%
+  \end{minipage}
+  \quad
+  \begin{minipage}[t]{.74\linewidth}%
+   \noindent Watch the video:\\%
+   \href{#3}{#4 at\\\nolinkurl{#3}}%
+  \end{minipage}%
+ }%
+}}
 
-\newcommand{\khanVideo}[4]{\noindent Watch the video:\\%
- \href{https://www.khanacademy.org/video/#2?utm_campaign=embed}{#3 at \nolinkurl{https://www.khanacademy.org/video/#2}}%
- \embedVideo{https://www.youtube.com/v/#1?rel=0}%
-}
+\newcommand{\youtubeVideo}[2]{\genVideo{#1}{https://youtu.be/#1}{#2}}
+
+\newcommand{\jmtVideo}[3]{\genVideo{#1}{http://patrickjmt.com/#2/}{#3}}
+
+\newcommand{\khanVideo}[3]{\genVideo[?utm_campaign=embed]{#1}{https://www.khanacademy.org/video/#2}{#3}}
+
+
+% \mfigure[options]{offset}{caption}{label}{file}
+\newcommand{\mfigure}[5][]%
+		{\mnote[#2]{\centering\myincludegraphics[#1]{#5}
+		\captionof{figure}{#3}\label{#4}}}
+
+% \mtable[offset=0]{caption}{label}{contents}
+\newcommand{\mtable}[4][0ex]%
+		{\mnote[#1]{\centering\small#4\captionof{figure}{#2}\label{#3}}}
+
+% \mnote[offset=0]{contents}
+\newcommand{\mnote}[2][0ex]{\marginpar{\vspace{#1}
+		\begin{minipage}[c][0pt]{.99\marginparwidth}
+		#2
+		\end{minipage}}}
+
+\newcommand{\prereqIntro}{The material in this section provides a basic review of and practice problems for pre-calculus skills essential to your success in Calculus. You should take time to review this section and work the suggested problems (checking your answers against those in the back of the book). Since this content is a pre-requisite for Calculus, reviewing and mastering these skills are considered your responsibility. This means that minimal, and in some cases no, class time will be devoted to this section. When you identify areas that you need help with we strongly urge you to seek assistance outside of class from your instructor or other student tutoring service.\bigskip}
+
+% \mfigurethree{mediaoptions}{graphicsoptions}{offset}{caption}{label}{file}
+\newcommand{\mfigurethree}[6]%
+		{\marginpar{\vspace{#3}
+		\begin{minipage}[c][0pt]{.99\marginparwidth}
+		\centering%
+		\ifthenelse{\boolean{in_threeD}}{% in 3D
+		\includemedia[#1]{\includegraphics{#6_3D\colornamesuffix}}{#6_3D.prc}}{% not
+		\myincludegraphics[#2]{#6}}%
+		\captionof{figure}{#4}\label{#5}
+		\end{minipage}}}
 
 \ifthenelse{\boolean{xetex}}%
 	{%
@@ -306,20 +342,20 @@ Notes:
 	\setmainfont[Mapping=tex-text]{Calibri}
 	\setsansfont[Mapping=tex-text]{Calibri}
 	\setmathsfont(Greek){[cmmi10]}}
-	{}
+	{\ifthenelse{\boolean{latexml}}{}{Please compile with XeLaTeX}}
 	
-\ifthenelse{\boolean{luatex}}%
-	{%
-	\sffamily
-	\usepackage{fontspec}
-	\usepackage{unicode-math}
-	%\usepackage{mathspec}
-	%\setallmainfonts[Mapping=tex-text]{Calibri}
-	\setmainfont{Calibri}
-	%\setsansfont[Mapping=tex-text]{Calibri}
-	\setmathfont[range=\mathup]{Calibri}
-	\setmathfont[range=\mathit]{Calibri Italic}
-	}
-	{}
+%\ifthenelse{\boolean{luatex}}%
+%	{%
+%	\sffamily
+%	\usepackage{fontspec}
+%	\usepackage{unicode-math}
+%	%\usepackage{mathspec}
+%	%\setallmainfonts[Mapping=tex-text]{Calibri}
+%	\setmainfont{Calibri}
+%	%\setsansfont[Mapping=tex-text]{Calibri}
+%	\setmathfont[range=\mathup]{Calibri}
+%	\setmathfont[range=\mathit]{Calibri Italic}
+%	}
+%	{}
 
-\RequirePackage[bookmarksnumbered,hidelinks,pdfstartview=FitH]{hyperref}
+\usepackage[bookmarksnumbered,hidelinks,pdfstartview=FitH]{hyperref}

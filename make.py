@@ -3,6 +3,7 @@
 import os
 import sys
 import time
+import shutil
 import argparse
 import platform
 import itertools
@@ -25,14 +26,17 @@ parser.add_argument("-i","--instructor", action="store_true",
                     help="Instructor version "
                     "(prints all answers; default is student; ignores sb).")
 
+parser.add_argument("-n","--internet", action="store_true",
+                    help="Create interNet version (options x, w, & t).")
+
 parser.add_argument("-x","--xml", action="store_true",
                     help="Create xml version. (2 min)");
 
-parser.add_argument("-n","--internet", action="store_true",
-                    help="Create interNet version (options m & w).")
-
 parser.add_argument("-w","--web", action="store_true",
                     help="Convert xml version to html. (40 min)");
+
+parser.add_argument("-t","--toc", action="store_true",
+                    help="Create tocFrame.html.")
 
 parser.add_argument("-q","--quit", action="store_true",
                     help="Write options.tex and quit.")
@@ -78,11 +82,9 @@ def compilewith(commands=False):
         options.write(r"\newcommand{\thetitle}{"+title+"}\n")
         if args.instructor:
             options.write("\\printallanswers\n")
-            options.write("\\printinblackandwhite\n")
-            options.write("\\usetwoDgraphics\n")
             options.write("\\printexercisenames\n")
             newsuffix += "_instr"
-        elif args.blackwhite:
+        if args.blackwhite:
             options.write("\\printinblackandwhite\n")
             options.write("\\usetwoDgraphics\n")
             newsuffix += "_BW"
@@ -97,8 +99,8 @@ def compilewith(commands=False):
     commandline = []
     if args.quit:
         return
-    if args.xml or args.web:
-        compilewith("-qc1")
+    if args.xml or args.web or args.toc:
+        compilewith("-qsc1")
     if args.xml:
         newsuffix = "_xml"
         commandline = ['latexml','--quiet',
@@ -108,18 +110,42 @@ def compilewith(commands=False):
             commandline = ['caffeinate','-s'] + commandline
             # prevent sleeping, if plugged in, until command finished
     elif args.web:
+#        shutil.copy('web/style.css','.')
+#        shutil.copy('web/script.js','.')
         newsuffix = "_web"
         commandline = ['latexmlpost','--quiet','--split',
                        '--stylesheet=apex.xsl',
                        '--destination=web/index.html',
-                       '--css=web/style.css',
+                       '--css=style.css',
                        '--javascript=https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js',
-                       '--javascript=https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML',
-                       '--javascript=web/script.js',
+                       '--javascript=LaTeXML-maybeMathJax.js',
+                       '--javascript=script.js',
+#                       '--javascript=https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML',
                        'calculus.xml']
+    elif args.toc:
+        tocFile = None
+        prevLine = None
+        with open('logs/compilation_web.log') as weblog:
+            for line in weblog:
+                if "TOC is in file named above" in line:
+                    tocFile = 'web/'+prevLine.split()[-1]
+                    break
+                prevLine = line
+        if not tocFile:
+            print("tocFile not found")
+            return
+        with open(tocFile) as tocFile, open('web/tocFrame.html','w') as tocFrame:
+            for line in tocFile:
+                if '<body class="hasIframe">' in line:
+                    tocFrame.write('<body class="inIframe">\n');
+                elif 'iframe' not in line:
+                    tocFrame.write(line)
+        print("Command line: -t finished");
+        return
     elif args.internet:
         compilewith("-x")
         compilewith("-w")
+        compilewith("-t")
         return
     else:
         commandline = ['latexmk','-xelatex','Calculus']
@@ -139,9 +165,10 @@ def compilewith(commands=False):
         os.rename("Calculus.pdf","ApexPDFs/Calculus"+newsuffix+".pdf")
 
 if args.all:
-    for part,size in itertools.product('0123',["","s","b","ib"]):
+    for part,size in itertools.product('0123',["","s","b"]):
         # switch the order so that all parts are compiled together to speed
         # up compilation, since the index shouldn't need to be recommputed
         compilewith('-'+size+'c'+part)
+    compilewith('-ic0')
 else:
     compilewith()

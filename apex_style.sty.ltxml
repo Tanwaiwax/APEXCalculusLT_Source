@@ -15,9 +15,6 @@ use Data::Dumper;
 #RequirePackage('ifluatex'); # can't find the binding
 DefConditional('\ifluatex'); # the only content of the binding
 
-#DefConstructor('\embedVideo Semiverbatim',
-#	       '<ltx:rawhtml><ltx:ref class="video" href="#1" /></ltx:rawhtml>');
-
 DefMacro('\embedVideo Semiverbatim','\iframe{#1}{560}{355}');
 
 DefConstructor('\iframe Semiverbatim {}{}',
@@ -27,19 +24,15 @@ DefConstructor('\iframe Semiverbatim {}{}',
 	       '</ltx:block>'.
 	       '</ltx:rawhtml>');
 
-DefMacro('\isOnePageLong{}','\boolean{true}');
+DefMacro('\coloredbox{}{}{}','#3'); # only in .sty
 
-DefMacro('\isOddPage{}','\boolean{false}');
-
-DefMacro('\coloredbox{}{}{}{}','\begin{quote}\lxAddClass{#4box}#3\end{quote}');
-
-DefConstructor('\makeenv{}{}',
+DefConstructor('\makeStyles{}{}',
 	       '<ltx:resource type="text/css">'.
 	       '#selector #styles'.
 	       '</ltx:resource>',
 	       properties => sub {
 		   return (
-		       selector => '.'.UnTeX($_[1]).'box',
+		       selector => '.ltx_theorem_'.UnTeX($_[1]).'Env',
 		       styles => &boxStyles(UnTeX($_[2]))
 		       );
 	       }
@@ -47,54 +40,25 @@ DefConstructor('\makeenv{}{}',
 
 sub boxStyles {
     my $hue = shift;
-    my $start = start($hue);
-    my $stop = stop($hue);
+    my $border = "hsl($hue,100%,68%)";
+    my $start = "hsl($hue,100%,97%)";
+    my $middle = "hsl($hue,100%,91%)";
+    my $stop  = "hsl($hue,100%,84%)";
     return "{
       padding: 1ex 1em;
       text-indent:0;
       border-width: 1px;
       border-style: solid;
-      border-color: hsl($hue,100%,68%);
-      background: hsl($hue,100%,91%); /* old browsers */
-      background: -moz-linear-gradient(top,$start 0%,$stop); /* FF 3.6+ */
-      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start), color-stop(100%,$stop)); /* Chrome, Safari 4+ */
-      background: -webkit-linear-gradient(top,$start 0%,$stop 100%); /* Chrome 10+, Safari 5.1+ */
-      background: -o-linear-gradient(top,$start 0%,$stop 100%); /* Opera 11.10+ */
-      background: -ms-linear-gradient(top,$start 0%,$stop 100%); /* IE 10+ */
-      background: linear-gradient(to bottom,$start 0%,$stop 100%); /* W3C */
+      border-color: $border;
+      background-color: $middle; /* old browsers */
+      background-image: -moz-linear-gradient(top,$start 0%,$stop); /* FF 3.6+ */
+      background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start), color-stop(100%,$stop)); /* Chrome, Safari 4+ */
+      background-image: -webkit-linear-gradient(top,$start 0%,$stop 100%); /* Chrome 10+, Safari 5.1+ */
+      background-image: -o-linear-gradient(top,$start 0%,$stop 100%); /* Opera 11.10+ */
+      background-image: -ms-linear-gradient(top,$start 0%,$stop 100%); /* IE 10+ */
+      background-image: linear-gradient(to bottom,$start 0%,$stop 100%); /* W3C */
     }";
 }
-
-sub start { return "hsl($_[0],100%,97%)"; }
-
-sub stop  { return "hsl($_[0],100%,84%)"; }
-
-DefMacro('\mfigure[]{}{}{} Semiverbatim',
-	 '\begin{figure}'.
-	 '\lxAddClass{mfigure}'.
-	 '\lxAddClass{marginbox}'.
-	 '\myincludegraphics[#1]{#5}\caption{#3}\label{#4}'.
-	 '\end{figure}');
-
-DefMacro('\mtable{}{}{}{}',
-	 '\begin{figure}'.
-	 '\lxAddClass{mtable}'.
-	 '\lxAddClass{marginbox}'.
-	 '#4\caption{#2}\label{#3}'.
-	 '\end{figure}');
-
-DefMacro('\mnote{}{}',
-	 '\begin{quote}'.
-	 '\lxAddClass{mnote}'.
-	 '\lxAddClass{marginbox}'.
-	 '#2\end{quote}');
-
-DefMacro('\mfigurethree{}{}{}{}{} Semiverbatim',
-	 '\begin{figure}'.
-	 '\lxAddClass{mfigurethree}'.
-	 '\lxAddClass{marginbox}'.
-	 '\myincludegraphics[#2]{#6_3D}\caption{#4}\label{#5}'.
-	 '\end{figure}');
 
 DefMacro('\myincludegraphicsthree{}{} Semiverbatim',
 	 '\myincludegraphics[#2]{#3_3D}');
@@ -122,21 +86,24 @@ DefMacro('\printexercises {}', sub {
     Invocation(T_CS('\printexercisesgeneric'),$_[1],"Exercises $label",$label);
 	 });
 
-DefMacro('\printexercisesreview {}','\printexercisesgeneric{#1}{Chapter '.TheFakeChapter().' Review Exercises}{'.TheFakeChapter().'}');
+DefMacro('\printexercisesreview {}', sub {
+    my $label = TheFakeChapter();
+    Invocation(T_CS('\printexercisesgeneric'),$_[1],"Chapter $label Review Exercises",$label);
+	 });
 
 DefMacro('\writeToAnsFile {}{}{}', sub {
     my @ret;
     if ( CounterValue('section')->toString eq '1' ) {
-	@ret = Tokenize('\immediate\write\answrite{}\write\answrite{\noindent {\Large\textbf{Chapter '.TheFakeChapter().'}} \vskip\baselineskip}');
+	@ret = Tokenize('\immediate\write\answrite{}\write\answrite{\section*{Chapter '.TheFakeChapter().'}}');
     }
     push(@ret,
-	 Tokenize('\immediate\write\answrite{\noindent {\hyperref[exer'),
+	 Tokenize('\immediate\write\answrite{\subsection*{\hyperref[exer'),
 	 $_[3],
-	 Tokenize(']{\textbf{'),
+	 Tokenize(']{'),
 	 $_[2],
 	 Tokenize('}}\label{sol'),
 	 $_[3],
-	 Tokenize('}}\vskip\baselineskip}\write\answrite{\printanswers{'),
+	 Tokenize('}\vskip\baselineskip}\write\answrite{\lxAddClass{solutions}\printanswers{'),
 	 $_[1],
 	 Tokenize('}}'));
     @ret;
@@ -148,7 +115,7 @@ DefPrimitive('\showans Number',sub {
     my $filename = LookupValue('output_file:' . $port);
     my $handle   = $filename . '_contents';
     my $contents = LookupValue($handle);
-    print STDERR "$filename contents:\n$contents\n\n";
+    print STDERR "Current $filename contents:\n$contents\n\n";
     return;
 	     });
 

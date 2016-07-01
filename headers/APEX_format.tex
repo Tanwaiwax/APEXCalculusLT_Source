@@ -25,20 +25,74 @@
 \RequirePackage{makeidx}
 
 \RequirePackage[normalem]{ulem}
-\RequirePackage{xcolor}
+
 %linkbordercolor=white
 %\RequirePackage{fancyhdr}
 \RequirePackage{calc}
 
+\RequirePackage{thmtools}
+
 \RequirePackage{latexml}
+
+\newtheoremstyle{apex}% name
+  {0pt}% Space above, empty = `usual value'
+  {}% Space below
+  {}% Body font
+  {}% Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {}% Punctuation after thm head
+  {\newline}% Space after thm head: " " = normal interword space; \newline = linebreak
+  {\thmname{\textbf{#1}}\thmnumber{ \textbf{#2}}\thmnote{\hskip 20pt \textbf{#3}}}% Thm head spec
+
+\theoremstyle{apex}
+\newtheorem{exampleEnv}{Example}[section]
+
+
+% http://tex.stackexchange.com/q/74857/107497
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\thmtlo@chaptervspacehack
+  {\addtocontents{loe}{\protect\addvspace{10\p@}}}
+  {\addtocontents{loe}{\protect\thmlopatch@endchapter\protect\thmlopatch@chapter{\thechapter}}}
+  {}{failed thmtlo@chaptervspacehack}
+\AtEndDocument{\addtocontents{loe}{\protect\thmlopatch@endchapter}}
+\long\def\thmlopatch@chapter#1#2\thmlopatch@endchapter{%
+  \setbox\z@=\vbox{#2}%
+  \ifdim\ht\z@>\z@
+    \hbox{\bfseries\chaptername\ #1}\nobreak
+    #2
+    \addvspace{10\p@}
+  \fi
+}
+\def\thmlopatch@endchapter{}
+\patchcmd\thmt@mklistcmd
+  {\protect\numberline{\csname the\thmt@envname\endcsname}%
+      \thmt@thmname}{}{}{failed thmt@mklistcmd}
+%\makeatother
+\renewcommand\thmtformatoptarg[1]{#1}
+
+%\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+        \bfseries
+    #1]\indent\par % I don't understand why \indent is needed to get a newline
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+\renewcommand{\qedsymbol}{\ensuremath{\square}}
 
 
 \makeindex
 
 \newcommand{\apex}{A\kern -1pt \lower -2pt\hbox{P}\kern -4pt \lower .7ex\hbox{E}\kern -1pt X}
 
-\renewcommand{\partname}{}
+\renewcommand{\partname}{\protect\thispagestyle{empty}}
 \renewcommand{\thepart}{}
+
 
 %%%%
 %%  Create boolean for whether or not to print 3D graphics. 
@@ -49,12 +103,37 @@
 \newcommand{\usethreeDgraphics}{\setboolean{in_threeD}{true}}
 \newcommand{\usetwoDgraphics}{\setboolean{in_threeD}{false}}
 
+
 %%%%
 %% Commands to determine whether we print in color or 
 %% black and white
 %%%%
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+
 \newboolean{inColor}
 \setboolean{inColor}{true}
+
+\pgfplotsset{colormap={coloronemap}{rgb=(.4,.4,1); rgb=(.8,.8,1)}}
+\pgfplotsset{colormap={colortwomap}{rgb=(1,.4,.4); rgb=(1,.8,.8)}}
+\usepgfplotslibrary{external}
+\usetikzlibrary{calc}
+\usetikzlibrary{shadings}
+
+% these will be renewcommanded
+\newcommand{\colorone}{blue}
+\newcommand{\colortwo}{red}
+\newcommand{\colorthree}{green}
+\newcommand{\coloronefill}{blue!15!white}
+\newcommand{\colortwofill}{red!15!white}
+\newcommand{\colormapone}{rgb=(.4,.4,1); rgb=(.8,.8,1)}
+\newcommand{\colormaptwo}{rgb=(1,.4,.4); rgb=(1,.8,.8)}
+\newcommand{\colormapplaneone}{rgb=(.7,.7,1); rgb=(.9,.9,1)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,1}
+\definecolor{colormaponetop}{rgb}{.8,.8,1}
+\definecolor{colormaptwobottom}{rgb}{1,.4,.4}
+\definecolor{colormaptwotop}{rgb}{1,.8,.8}
 
 % determines the line colors for color and black and white lines.
 \newcommand{\colorlinecolor}{blue!95!black!30}
@@ -75,12 +154,42 @@
 \newcommand{\printincolor}{\setboolean{inColor}{true}%
 \renewcommand{\thelinecolor}{\colorlinecolor}
 \renewcommand{\colornamesuffix}{}
+% aforementioned renewcommanding
+\renewcommand{\colorone}{blue}
+\renewcommand{\colortwo}{red}
+\renewcommand{\colorthree}{green}
+\renewcommand{\coloronefill}{blue!15!white}
+\renewcommand{\colortwofill}{red!15!white}
+\renewcommand{\colormapone}{rgb=(.4,.4,1); rgb=(.8,.8,1)}
+\renewcommand{\colormaptwo}{rgb=(1,.4,.4); rgb=(1,.8,.8)}
+\renewcommand{\colormapplaneone}{rgb=(.7,.7,1); rgb=(.9,.9,1)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,1}
+\definecolor{colormaponetop}{rgb}{.8,.8,1}
+\definecolor{colormaptwobottom}{rgb}{1,.4,.4}
+\definecolor{colormaptwotop}{rgb}{1,.8,.8}
 }
 
 \newcommand{\printinblackandwhite}{\setboolean{inColor}{false}%
 \renewcommand{\thelinecolor}{\bwlinecolor}
 \renewcommand{\colornamesuffix}{BW}
+% the counter to the above renewcommanding
+\renewcommand{\colorone}{black}
+\renewcommand{\colortwo}{black!50!white}
+\renewcommand{\colorthree}{black!25!white}
+\renewcommand{\coloronefill}{black!15!white}
+\renewcommand{\colortwofill}{black!05!white}
+\renewcommand{\colormapone}{rgb=(.4,.4,.4); rgb=(.7,.7,.7)}
+\renewcommand{\colormaptwo}{rgb=(.6,.6,.6); rgb=(.9,.9,.9)}
+\renewcommand{\colormapplaneone}{rgb=(.8,.8,.8); rgb=(.95,.95,.95)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,.4}
+\definecolor{colormaponetop}{rgb}{.7,.7,.7}
+\definecolor{colormaptwobottom}{rgb}{.6,.6,.6}
+\definecolor{colormaptwotop}{rgb}{.9,.9,.9}
 }
+
+\newcommand{\threedlines}[4][]{\draw [dashed,#1] (axis cs: #2,#3,#4) -- (axis cs: #2,#3,0) -- (axis cs: #2,0,0)  (axis cs: #2,#3,0)--(axis cs:0,#3,0);}
+
+\newcommand{\mydraw}{\draw (axis cs:0,0,0) -- (axis cs:1,1,0);}
 
 \newcommand{\myincludegraphics}[2][]{\includegraphics[#1]{#2\colornamesuffix}}
 
@@ -120,6 +229,10 @@
 \setlength{\evenpagemarginlength}{1in+\hoffset+\evensidemargin-2\marginlinelength}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Things related to the vertical line to the left of examples
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % creates a generic style for the lines. You can add lots
 % of things here, all separated by commas.
 \newcommand{\linestyle}{[thick, \thelinecolor]}
@@ -136,7 +249,6 @@
 
 % by default the lines around the examples are drawn
 \drawexamplelines
-
 
 % This is more a debugging tool than a stylistic one.
 % This draws a small circle in the margin at the the
@@ -158,7 +270,7 @@
 \newcommand{\exampleintext}{\setboolean{exampleisintext}{true}}
 \exampleintext
 
-\newcounter{examplecounter}
+\newcounter{examplecounter}[section]
 \setcounter{examplecounter}{0}
 
 % the example environment has a regular and starred version.
@@ -357,9 +469,6 @@
 % Takes no arguments; figures out if you 
 % are on an even or odd numbered page for
 % correct margin calculation
-\ifthenelse{\boolean{latexml}}{%
-\newcommand{\drawexampleline}{}
-}{%
 \newcommand{\drawexampleline}{%
 \begin{tikzpicture}[remember picture,overlay]
 				\ifthenelse{\isodd{\thepage}}{%
@@ -367,108 +476,143 @@
 				{\node [xshift=\evenpagemarginlength,yshift=\topmarginlength](tleft) at (current page.north west)  {};}
         \draw \linestyle (tleft) -- ++(0,\bottommarginlength+1in);
         \end{tikzpicture}%
-}}
+}
+
+
+\renewcommand{\examplenostar}[4]{\examplestarred{#1}{#2}{#3\bigskip
+
+\ifthenelse{\boolean{exampleisintext}}
+{%solution is in text
+\parbox{65pt}{\textsc{\small\textbf{Solution\lxAddClass{solutionTag}}}}% 
+}% solution is in margin
+{\hskip -80pt%
+\parbox{65pt}{\textsc{\small\textbf{Solution\lxAddClass{solutionTag}}}}% 
+\hskip 15pt%
+}% end solution in margin
+\nopagebreak%
+#4\vspace{-\baselineskip}\nopagebreak}\bigskip}
+
+
+\ifthenelse{\boolean{latexml}}{
 
 % the regular version takes 4 arguments: label, title, problem, solution.
 % The starred version only has 3: label, title, problem/solution.
-\ifthenelse{\boolean{latexml}}{%
-\renewcommand{\examplenostar}[4]{%
-\textbf{Example~\refstepcounter{examplecounter}\label{#1}\theexamplecounter%
-\lxAddClass{exampleNum}}%
-~\textbf{#2}
+%\renewcommand{\examplenostar}[4]{%
+%\begin{exampleEnv}[#2]\label{#1}
+%\lxAddClass{inExample}
+%#3\vskip \baselineskip%
+%\textsc{\small\bfseries Solution\lxAddClass{solutionTag}}
+%#4
+%\end{exampleEnv}~}
 
-The example:\lxAddClass{beginExample}
-
-#3\vskip \baselineskip%
-\textsc{\small\bfseries Solution\lxAddClass{solutionTag}}%
-#4
-
-QED.\lxAddClass{endExample}%
-}%
 \renewcommand{\examplestarred}[3]{%
-\textbf{Example~\refstepcounter{examplecounter}\label{#1}\theexamplecounter%
-\lxAddClass{exampleNum}}%
-~\textbf{#2}
-
-The example:\lxAddClass{beginExample}
-
+\begin{exampleEnv}[#2]\label{#1}
+\lxAddClass{inExample}
 #3
+\end{exampleEnv}~}
 
-QED.\lxAddClass{endExample}%
-}%
-}{}
+\renewcommand{\drawexampleline}{}
+
+}{} % end latexml
 
 % black: hsl(x,x,0)
 % white: hsl(x,x,100)
 % blue: hsl(240,100,50)
-% line color: blue!95!black!30: blue!95!black!30!white:
-%   hsl(240,100,50)!95!black!30!white: hsl(240,100,48)!30!white: hsl(240,100,84)
+% line color: blue!95!black!30 = Hsb(240,.29,.98) = hsl(240,87.7,83.8)
 
 
-%
-%Define style for Definitions, Theorems and Key Ideas  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
+%% Define style for Definitions, Theorems and Key Ideas
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \newlength{\specialboxlength}
-\newlength{\specialboxtitlelength}
 \newlength{\specialboxinnerseplength}
 \newlength{\specialboxinnerseplengthx}
 \newlength{\specialboxinnerseplengthy}
 
-\setlength{\specialboxtitlelength}{75pt}
 \setlength{\specialboxinnerseplength}{15pt}
 \setlength{\specialboxinnerseplengthx}{15pt}
 \setlength{\specialboxinnerseplengthy}{10pt}
-\setlength{\specialboxlength}{\textwidth-2\specialboxinnerseplength}
 
-\newcommand{\setboxwidth}[1]{\setlength{\specialboxlength}{\textwidth+#1-2\specialboxinnerseplength}}
-\newcommand{\restoreboxwidth}{\setlength{\specialboxlength}{\textwidth-2\specialboxinnerseplength}}
+\newcommand{\setboxwidth}[1]{%
+\setlength{\specialboxlength}{\textwidth+#1-2.2\specialboxinnerseplength}}
 
-\long\def\newspecialbox#1#2#3#4#5{%
-\iflatexml\makeenv{#1}{#5}\fi%
-\newcounter{#1counter}%
-\expandafter\long\expandafter\def\csname #1\endcsname ##1##2##3{%
-\vskip\baselineskip%
-\noindent\refstepcounter{#1counter}\label{##1}%
-\coloredbox
-{rectangle,text width = \specialboxlength, inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy, anchor=north west,yshift=\specialboxinnerseplengthy,#3}
-{draw=black,thick,rectangle,text width = \specialboxlength, inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy, anchor=north west,yshift=\specialboxinnerseplengthy,#4}
-{\textbf{#2~\arabic{#1counter}\hskip 20pt ##2}\vskip.5\baselineskip\iflatexml\\\fi
+\newcommand{\restoreboxwidth}{%
+\setlength{\specialboxlength}{\textwidth-2.2\specialboxinnerseplength}}
 
-##3}
-{#1}
-}%
+\restoreboxwidth
+
+\newcommand{\newspecialbox}[4][]{%
+ \makeStyles{#2}{#4}%
+ \definecolor{top#2}{Hsb}{#4,.05,1}% = hsl(#4,100,97.5)
+ \ifthenelse{#4=60}{%
+  \definecolor{border#2}{Hsb}{#4,.59,.97}% = hsl(#4,90.5,68.4)
+  \definecolor{bottom#2}{Hsb}{#4,.28,.97}% = hsl(#4,81.9,83.4)
+ }{%
+  \definecolor{border#2}{Hsb}{#4,.23,.65}% = hsl(#4,17.6,57.5)
+  \definecolor{bottom#2}{Hsb}{#4,.13,.92}% = hsl(#4,42.8,86)
+ }%
+ \ifthenelse{\equal{#1}{}}{%
+  \newtheorem{#2Env}{#3}%
+  \expandafter\newcommand\csname #2\endcsname[4][]{%
+   \noindent\coloredbox{
+    rectangle, text width = \specialboxlength,
+    inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
+    draw=border#2, top color=top#2, bottom color=bottom#2,
+    text justified, very thick
+   }{
+    draw=black, thick, rectangle, text width=\specialboxlength,
+    inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
+    draw, text justified, very thick
+   }{%
+    \begin{#2Env}[{##3}##1]\label{##2}##4\end{#2Env}%
+   }%
+  }%
+ }{% else #1 != ''
+  \expandafter\newcommand\csname #2\endcsname[1]{%
+   \noindent\coloredbox{ % same options as above
+    rectangle, text width = \specialboxlength,
+    inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
+    draw=border#2, top color=top#2, bottom color=bottom#2,
+    text justified, very thick
+   }{
+    draw=black, thick, rectangle, text width=\specialboxlength,
+    inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
+    draw, text justified, very thick
+   }{##1}%
+  }%
+ }% ends ifthenelse #1=''
 }
 
-% black: hsl(x,x,0)
-% white: hsl(x,x,100)
-% yellow: hsl(60,100,50)
-% green: hsl(120,100,50)
-% red: hsl(0,100,50)
+\newspecialbox{definition}{Definition}{60}
+% draw = yellow!95!black!60 = Hsb( 60,.59,.97)
+% topc = white!95!yellow    = Hsb( 60,.05,1)
+% botc = yellow!90!black!30 = Hsb( 60,.28,.97)
 
-\newspecialbox{definition}{Definition}{draw = yellow!95!black!60,top color = white!95!yellow, bottom color = yellow!90!black!30, text justified, very thick}{draw, text justified, very thick}{60}
-% yellow!95!black!60 : hsl(60,100,47)!60 : hsl(60,100,68)
-% white!95!yellow : hsl(60,100,97)
-% yellow!90!black!30 : hsl(60,100,45)!30 : hsl(60,100,84)
+\newspecialbox{theorem}{Theorem}{120}
+% draw = green!30!black!50  = Hsb(120,.23,.65)
+% topc = white!95!green     = Hsb(120,.05,1)
+% botc = green!60!black!20  = Hsb(120,.13,.92)
 
-\newspecialbox{theorem}{Theorem}{draw = green!30!black!50,top color = white!95!green, bottom color = green!60!black!20, text justified, very thick}{draw, text justified, very thick}{120}
-% green!30!black!50 : hsl(120,100,15)!50 : hsl(120,100,68)
-% white!95!green : hsl(120,100,97)
-% green!60!black!20 : hsl(120,100,30)!20 : hsl(120,100,86)
+\newspecialbox{keyidea}{Key Idea}{0}
+% draw = red!30!black!50    = Hsb(  0,.23,.65)
+% topc = white!95!red       = Hsb(  0,.05,1)
+% botc = red!60!black!20    = Hsb(  0,.13,.92)
 
-\newspecialbox{keyidea}{Key Idea}{draw = red!30!black!50,top color = white!95!red, bottom color = red!60!black!20, text justified, very thick}{draw, text justified, very thick}{0}
-% red!30!black!50 : hsl(0,100,15)!50 : hsl(0,100,68)
-% white!95!red : hsl(0,100,97)
-% red!60!black!20 : hsl(0,100,30)!20 : hsl(0,100,86)
+%\newcommand{\showcolor}[1]{#1 is
+%  \extractcolorspecs{#1}{\model}{\mycolor}
+%  \convertcolorspec{\model}{\mycolor}{Hsb}{\converted}\converted\ in Hsb}
 
 
 
-%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Begins the exercise section, containing all commands
 %% related to creating problem sections.
-%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\exc}{\addtocounter{excounter}{2}\arabic{excounter}}
 
@@ -715,15 +859,18 @@ QED.\lxAddClass{endExample}%
 }%
 
 \def \writeexercisestofile #1{%
-\write\answrite{\noexpand\printanswers{exercises/0\thechapter_0\expandafter\readsection #1_exercises.tex} \noexpand \vskip \baselineskip } \write\answrite{} }
+\write\answrite{\noexpand\printanswers{exercises/0\thechapter_0\expandafter\readsection #1_exercises.tex} \noexpand \vskip \baselineskip }%
+\write\answrite{}%
+}
 
 \def \makeexercisesection #1{%
 \ifthenelse{\boolean{latexml}}{%
-\immediate\write\answrite{\end{multicols}\normalsize}%\showans\answrite%
+\immediate\write\answrite{\end{multicols}\normalsize}\showans\answrite%
 }{%
 \immediate\write\answrite{\noexpand\end{multicols}\noexpand\normalsize}%
 }
-\immediate\closeout\answrite\inanswersection\exercisegeometry\exerciseheader\chapter{#1}%
+\immediate\closeout\answrite\inanswersection\exercisegeometry\exerciseheader%
+\chapter{#1}\thispagestyle{empty}%
 \input{\jobname.answers}\restoregeometry\regularheader%
 \setlength{\hoffset}{0pt}\rmfamily\normalsize}%
 

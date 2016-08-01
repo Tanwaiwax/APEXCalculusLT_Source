@@ -1,23 +1,13 @@
 \section{One Sided Limits}\label{sec:limit_continuity}
 
-%\noindent\hskip-50pt\hskip-45pt\parbox{45pt}{\textbf{\itshape Review:}}
-%\begin{minipage}[t]{\textwidth+50pt}
-%We introduced the concept of a limit gently, approximating their values graphically and numerically. Next came the rigorous definition of the limit, along with an admittedly tedious method for computing them. The previous section gave us tools (which we call theorems) that allow us to compute limits with greater ease. Chief among the results were the facts that polynomials and rational, trigonometric, exponential and logarithmic functions (and their sums, products, etc.) all behave ``nicely.'' In this section we rigorously define what we mean by ``nicely.''
-%\end{minipage}\\
-%
-%\vskip \baselineskip
-
-%We introduced the concept of a limit gently, approximating their values graphically and numerically. Next came the rigorous definition of the limit, along with an admittedly tedious method for evaluating them. The previous section gave us tools (which we call theorems) that allow us to compute limits with greater ease. Chief among the results were the facts that polynomials and rational, trigonometric, exponential and logarithmic functions (and their sums, products, etc.) all behave ``nicely.'' In this section we rigorously define what we mean by ``nicely.''
-
-In Section \ref{sec:limit_intro} we explored the three ways in which limits of functions failed to exist: 
+In \autoref{sec:limit_intro} we explored the three ways in which limits of functions failed to exist: 
 	\begin{enumerate}
 	\item	The function approached different values from the left and right,
 	\item	The function grows without bound, and 
 	\item	The function oscillates.
 	\end{enumerate}
 	
-In this section we explore in depth the concepts behind \#1 by introducing the \textit{one-sided limit}. We begin with formal definitions that are very similar to the definition of the limit given in Section \ref{sec:limit_def}, but the notation is slightly different and ``$x\neq c$'' is replaced with either ``$x<c$'' or ``$x>c$.'' We will consider \#2 in more detail in Section \ref{sec:limits_infty}.
-%\small
+In this section we explore in depth the concepts behind \#1 by introducing the \textit{one-sided limit}. We begin with formal definitions that are very similar to the definition of the limit given in \autoref{sec:limit_def}, but the notation is slightly different and ``$x\neq c$'' is replaced with either ``$x<c$'' or ``$x>c$.'' We will consider \#2 in more detail in \autoref{sec:limits_infty}.
 
 \definition{def:onesidedlimit}{One Sided Limits}
 {\textbf{Left-Hand Limit} \index{limit!one sided}\index{limit!right handed}\index{limit!left handed}
@@ -43,9 +33,6 @@ if  $\abs{x-c}<\delta$, then $\abs{f(x)-L}<\epsilon$.
 %means that given any $\epsilon > 0$, there exists $\delta > 0$ such that 
 %$|x - c| < \delta$ implies $|f(x) - L| < \epsilon$, for all $x>c$.
 }
-%\end{minipage}
-\restoreboxwidth
-\normalsize
 
 Practically speaking, when evaluating a left-hand limit, we consider only values of $x$ ``to the left of $c$,'' i.e., where $x<c$. The admittedly imperfect notation $x\to c^-$ is used to imply that we look at values of $x$ to the left of $c$. The notation has nothing to do with positive or negative values of either $x$ or $c$. A similar statement holds for evaluating right-hand limits; there we consider only values of $x$ to the right of $c$, i.e., $x>c$. We can use the theorems from previous sections to help us evaluate these limits; we just restrict our view to one side of $c$.
 
@@ -53,10 +40,9 @@ Practically speaking, when evaluating a left-hand limit, we consider only values
 
 We practice evaluating left and right-hand limits through a series of examples.\\
 
-\example{ex_onesidea}{Evaluating one sided limits}{
-Let $\ds f(x) = \begin{cases} 2x & 0\leq x\leq 1 \\ 6-2x & 1<x<2\end{cases},$ as shown in Figure \ref{fig:onesided1}. Find each of the following: 
+\example{ex_onesidea}{Evaluating one sided limits}{Let $\ds f(x) = \begin{cases} 2x & 0\leq x\leq 1 \\ 6-2x & 1<x<2\end{cases},$ as shown in \autoref{fig:onesided1}. Find each of the following: 
 
-\mtable{A graph of $f$ in Example \ref{ex_onesidea}.}{fig:onesided1}{\begin{tikzpicture}
+\mtable{A graph of $f$ in \autoref{ex_onesidea}.}{fig:onesided1}{\begin{tikzpicture}
 \begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},minor x tick num=1,axis y line=middle,axis x line=middle,ymin=-.4,ymax=4.4,xmin=-.4,xmax=2.4,name=myplot]
 \addplot [{\colorone},smooth,thick] coordinates {(0,0) (1,2)};
 \fill[black,draw=black] (axis cs:1,2) circle (1.5pt);
@@ -95,9 +81,8 @@ Let $\ds f(x) = \begin{cases} 2x & 0\leq x\leq 1 \\ 6-2x & 1<x<2\end{cases},$ as
 	\item	As $x$ goes to 0 from the right, we see that $f(x)$ is also approaching 0. Therefore $\ds \lim_{x\to 0^+} f(x)=0$. Note we cannot consider a left-hand limit at 0 as $f$ is not defined for values of $x<0$.
 	\item	Using the definition and the graph, $f(0) = 0$.
 	\item	As $x$ goes to 2 from the left, we see that $f(x)$ is approaching the value of 2. Therefore $\ds \lim_{x\to 2^-} f(x)=2.$
-	\item	The graph and the definition of the function show that $f(2)$ is not defined.
-\end{enumerate}
-\vskip -\baselineskip}\\
+	\item	The graph and the definition of the function show that $f(2)$ is not defined.\eoehere
+\end{enumerate}}
 
 Note how the left and right-hand limits were different at $x=1$. This, of course, causes \textit{the} limit to not exist. The following theorem states what is fairly intuitive: \textit{the} limit exists precisely when the left and right-hand limits are equal.
 
@@ -108,9 +93,7 @@ The phrase ``if, and only if'' means the two statements are \textit{equivalent}:
 			
 One thing to consider in Examples \ref{ex_onesidea} -- \ref{ex_onesided} is that the value of the function may/may not be equal to the value(s) of its left/right-hand limits, even when these limits agree. \\
 
-\example{ex_onesideb}{Evaluating limits of a piecewise--defined function}{
-Let $f(x) = \begin{cases} 2-x & 0<x<1 \\ (x-2)^2 & 1<x<2 \end{cases},$ as shown in Figure \ref{fig:onesidedb}. Evaluate the following. 
-
+\example{ex_onesideb}{Evaluating limits of a piecewise--defined function}{Let $f(x) = \begin{cases} 2-x & 0<x<1 \\ (x-2)^2 & 1<x<2 \end{cases},$ as shown in \autoref{fig:onesidedb}. Evaluate the following.\\
 \noindent
 \begin{minipage}[t]{.5\textwidth}
 	\begin{enumerate}
@@ -128,8 +111,7 @@ Let $f(x) = \begin{cases} 2-x & 0<x<1 \\ (x-2)^2 & 1<x<2 \end{cases},$ as shown 
 		\item	$f(2)$
 	\end{enumerate}	
 \end{minipage}
-		
-\mfigure{1in}{A graph of $f$ from Example \ref{ex_onesideb}}{fig:onesidedb}{figures/figOneSidedLimits2}}
+\mfigure{1in}{A graph of $f$ from \autoref{ex_onesideb}}{fig:onesidedb}{figures/figOneSidedLimits2}}
 {Again we will evaluate each using both the definition of $f$ and its graph.
 \begin{enumerate}
 	\item	As $x$ approaches 1 from the left, we see that $f(x)$ approaches 1. Therefore $\ds \lim_{x\to 1^-} f(x)=1.$
@@ -139,12 +121,13 @@ Let $f(x) = \begin{cases} 2-x & 0<x<1 \\ (x-2)^2 & 1<x<2 \end{cases},$ as shown 
 	\item	As $x$ goes to 0 from the right, $f(x)$ approaches 2. So $\ds \lim_{x\to 0^+} f(x)=2$.
 	\item	$f(0)$  is not defined as $0$ is not in the domain of $f$.
 	\item	As $x$ goes to 2 from the left, $f(x)$ approaches 0. So $\ds \lim_{x\to 2^-} f(x)=0$.
-	\item	$f(2)$  is not defined as 2 is not in the domain of $f$.
+	\item	$f(2)$  is not defined as 2 is not in the domain of $f$.\eoehere
 \end{enumerate}}
 
-\example{ex_onesidec}{Evaluating limits of a piecewise--defined function}{
-Let $f(x) = \begin{cases} (x-1)^2 & 0\leq x\leq 2, x\neq 1\\ 1 & x=1\end{cases},$ as shown in Figure \ref{fig:onesidedc}. Evaluate the following.
-
+\example{ex_onesidec}{Evaluating limits of a piecewise--defined function}{Let $f(x) = \begin{cases} (x-1)^2 & 0\leq x\leq 2, x\neq 1\\ 1 & x=1\end{cases},$ as shown in \autoref{fig:onesidedc}. Evaluate the following.\\
+%
+\mfigure{-1in}{Graphing $f$ in \autoref{ex_onesidec}}{fig:onesidedc}{figures/figOneSidedLimits3}
+%
 \noindent
 \begin{minipage}[t]{.5\textwidth}
 	\begin{enumerate}
@@ -154,21 +137,13 @@ Let $f(x) = \begin{cases} (x-1)^2 & 0\leq x\leq 2, x\neq 1\\ 1 & x=1\end{cases},
 \end{minipage}%
 \begin{minipage}[t]{.5\textwidth}
 	\begin{enumerate}\addtocounter{enumi}{2}
-		\item	$\ds \lim_{xex_onesideb\to 1} f(x)$
+		\item	$\ds \lim_{x\to 1} f(x)$
 		\item	$f(1)$
 	\end{enumerate}
-\end{minipage}
-		
-\mfigure{0in}{Graphing $f$ in Example \ref{ex_onesidec}}{fig:onesidedc}{figures/figOneSidedLimits3}		
-}
-{		It is clear by looking at the graph that both the left and right-hand limits of $f$, as $x$ approaches 1, is 0. Thus it is also clear that \textit{the} limit is 0; i.e., $\ds \lim_{x\to 1} f(x) = 0$. It is also clearly stated that $f(1) = 1$. \vskip .4\baselineskip
-}\\
+\end{minipage}}
+{It is clear by looking at the graph that both the left and right-hand limits of $f$, as $x$ approaches 1, is 0. Thus it is also clear that \textit{the} limit is 0; i.e., $\ds \lim_{x\to 1} f(x) = 0$. It is also clearly stated that $f(1) = 1$.}
 
-%\vskip .5\baselineskip
-
-\example{ex_onesided}{Evaluating limits of a piecewise--defined function}{
-Let $f(x) = \begin{cases} x^2 & 0\leq x\leq 1 \\ 2-x & 1<x\leq 2\end{cases}.$ Evaluate the following.
-
+\example{ex_onesided}{Evaluating limits of a piecewise--defined function}{Let $f(x) = \begin{cases} x^2 & 0\leq x\leq 1 \\ 2-x & 1<x\leq 2\end{cases}.$ Evaluate the following.\\
 \noindent
 \begin{minipage}[t]{.5\textwidth}
 	\begin{enumerate}
@@ -187,24 +162,25 @@ Let $f(x) = \begin{cases} x^2 & 0\leq x\leq 1 \\ 2-x & 1<x\leq 2\end{cases}.$ Ev
 	\item	As $x$ approaches 1 from the left, $f(x)$ is defined to be $x^2$. Therefore \[\lim_{x\to1^-} f(x)=\lim_{x\to1^-} x^2=1.\]
 	\item	As $x$ approaches 1 from the right, $f(x)$ is defined to be $2-x$. Therefore \[\lim_{x\to 1+} f(x)=\lim_{x\to 1+} 2-x=1.\]
 	\item	Since the right and left hand limits are equal at $x=1$, i.e., $\ds \lim_{x\to1^-} f(x)=\ds \lim_{x\to1^+} f(x)=1$, this tells us $\ds \lim_{x\to1} f(x)=1$.
-	\item	To find $f(1)$, we use the $x^2$ piece of our function, so $f(1)=1$ 		
+	\item	To find $f(1)$, we use the $x^2$ piece of our function, so $f(1)=1$.\eoehere
 \end{enumerate}
 %It is clear from the definition of the function and its graph that all of the following are equal:
-%\mfigure{0in}{Graphing $f$ in Example \ref{ex_onesided}}{fig:onesidedd}{figures/figOneSidedLimits4}
+%\mfigure{0in}{Graphing $f$ in \autoref{ex_onesided}}{fig:onesidedd}{figures/figOneSidedLimits4}
 %$$ \lim_{x\to 1^-} f(x) = \lim_{x\to 1^+} f(x) =\lim_{x\to 1} f(x) =f(1) = 1.$$
-}\\
+}
 
 In Examples \ref{ex_onesidea} -- \ref{ex_onesided} we were asked to find both $\ds \lim_{x\to 1}f(x)$ and $f(1)$. Consider the following table:
 \begin{center}
-\begin{tabular}{ccc} & $\ds \lim_{x\to 1}f(x)$ & $f(1)$ \vspace{2pt}\\ \hline
-Example \ref{ex_onesidea} & does not exist & 2 \\
-Example \ref{ex_onesideb} & 1 & not defined \\
-Example \ref{ex_onesidec} & 0 & 1 \\
-Example \ref{ex_onesided} & 1 & 1 \\
+\begin{tabular}{ccc}
+ & $\ds \lim_{x\to 1}f(x)$ & $f(1)$ \\ \midrule
+\autoref{ex_onesidea} & does not exist & 2 \\
+\autoref{ex_onesideb} & 1 & not defined \\
+\autoref{ex_onesidec} & 0 & 1 \\
+\autoref{ex_onesided} & 1 & 1 \\
 \end{tabular}
 \end{center}
 
-Only in Example \ref{ex_onesided} do both the function and the limit exist and agree. This seems ``nice;'' in fact, it seems ``normal.'' This is in fact an important situation which we explore in Section \ref{sec:continuity}, entitled ``Continuity.'' In short, a \textit{continuous function} is one in which when a function approaches a value as $x\rightarrow c$ (i.e., when $\ds \lim_{x\to c} f(x) = L$), it actually \textit{attains} that value at $c$. Such functions behave nicely as they are very predictable.
+Only in \autoref{ex_onesided} do both the function and the limit exist and agree. This seems ``nice;'' in fact, it seems ``normal.'' This is in fact an important situation which we explore in \autoref{sec:continuity}, entitled ``Continuity.'' In short, a \textit{continuous function} is one in which when a function approaches a value as $x\rightarrow c$ (i.e., when $\ds \lim_{x\to c} f(x) = L$), it actually \textit{attains} that value at $c$. Such functions behave nicely as they are very predictable.
 
 In the next section we examine one more aspect of limits: limits that involve infinity.
 

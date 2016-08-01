@@ -3,10 +3,13 @@
 %%% So we'll input this document as a header instead,
 %%% and save \usepackage{customstyle}
 %%% for things latexml is having trouble with.
+%%% This does mean that the distinction between APEX_format and Header_Calculus
+%%% is no longer important, and mostly historical.
+%%% The same could be said for Page_Size_Calculus, but it makes some sense to have
+%%% that specifically dealing with the page size geometries and nothing else
 
-\newboolean{printlabelname}
-\setboolean{printlabelname}{false}
-\ifthenelse{\boolean{printlabelname}}{\usepackage[notref,notcite]{showkeys}}{}
+% do we want to print the keys for the labels? if so, uncomment
+%\usepackage[notref,notcite]{showkeys}
 
 %%%%
 %% Begins the usepackage section
@@ -15,8 +18,6 @@
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
 \RequirePackage{amsthm}
-
-\RequirePackage{ifthen}
 
 \RequirePackage{graphicx}
 \RequirePackage{multicol}
@@ -30,13 +31,27 @@
 %\RequirePackage{fancyhdr}
 \RequirePackage{calc}
 
-\RequirePackage{thmtools}
-
 \RequirePackage{latexml}
+\lxDocumentID{apex}
+
+%\newcounter{examplecounter}[section]
+%\renewcommand{\theexamplecounter}{\arabic{examplecounter}}
+%\setcounter{examplecounter}{0}
+
+\newtheoremstyle{apexExample}% name
+  {0pt}% Space above, empty = `usual value'
+  {0pt}% Space below
+  {}% Body font
+  {}% Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {}% Punctuation after thm head
+  {\newline}% Space after thm head: " " = normal interword space; \newline = linebreak
+%  {\makebox[80pt][l]{\textbf{#1 \arabic{examplecounter}}}\thmnote{\textbf{#3}}}% Thm head spec
+  {\makebox[80pt][l]{\textbf{#1 #2}}\thmnote{\textbf{#3}}}% Thm head spec
 
 \newtheoremstyle{apex}% name
   {0pt}% Space above, empty = `usual value'
-  {}% Space below
+  {0pt}% Space below
   {}% Body font
   {}% Indent amount (empty = no indent, \parindent = para indent)
   {\bfseries}% Thm head font
@@ -44,41 +59,23 @@
   {\newline}% Space after thm head: " " = normal interword space; \newline = linebreak
   {\thmname{\textbf{#1}}\thmnumber{ \textbf{#2}}\thmnote{\hskip 20pt \textbf{#3}}}% Thm head spec
 
-\theoremstyle{apex}
+\theoremstyle{apexExample}
 \newtheorem{exampleEnv}{Example}[section]
+%\renewcommand{\theexampleEnv}{\arabic{exampleEnv}}
+\newcommand{\exampleEnvautorefname}{Example}
+\theoremstyle{apex}
+
+\newcommand{\sectionautorefname}{Section} % the default is lowercase
 
 
-% http://tex.stackexchange.com/q/74857/107497
-\usepackage{etoolbox}
 \makeatletter
-\patchcmd\thmtlo@chaptervspacehack
-  {\addtocontents{loe}{\protect\addvspace{10\p@}}}
-  {\addtocontents{loe}{\protect\thmlopatch@endchapter\protect\thmlopatch@chapter{\thechapter}}}
-  {}{failed thmtlo@chaptervspacehack}
-\AtEndDocument{\addtocontents{loe}{\protect\thmlopatch@endchapter}}
-\long\def\thmlopatch@chapter#1#2\thmlopatch@endchapter{%
-  \setbox\z@=\vbox{#2}%
-  \ifdim\ht\z@>\z@
-    \hbox{\bfseries\chaptername\ #1}\nobreak
-    #2
-    \addvspace{10\p@}
-  \fi
-}
-\def\thmlopatch@endchapter{}
-\patchcmd\thmt@mklistcmd
-  {\protect\numberline{\csname the\thmt@envname\endcsname}%
-      \thmt@thmname}{}{}{failed thmt@mklistcmd}
-%\makeatother
-\renewcommand\thmtformatoptarg[1]{#1}
-
-%\makeatletter
 \renewenvironment{proof}[1][\proofname]{\par
   \pushQED{\qed}%
   \normalfont \topsep6\p@\@plus6\p@\relax
   \trivlist
   \item[\hskip\labelsep
         \bfseries
-    #1]\indent\par % I don't understand why \indent is needed to get a newline
+    #1]~\\* % something is needed to be able to get a newline
 }{%
   \popQED\endtrivlist\@endpefalse
 }
@@ -105,8 +102,7 @@
 
 
 %%%%
-%% Commands to determine whether we print in color or 
-%% black and white
+%% Commands to determine whether we print in color or black and white
 %%%%
 
 \usepackage{pgfplots}
@@ -208,6 +204,7 @@
 \newlength{\oddpagemarginlength}
 \newlength{\evenpagemarginlength}
 \newlength{\marginlinelength}
+\newlength{\innerpagemarginlength}
 
 
 % measures how far from the text the example line is to be drawn
@@ -228,50 +225,9 @@
 % the length of the left hand margin of an even page
 \setlength{\evenpagemarginlength}{1in+\hoffset+\evensidemargin-2\marginlinelength}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Things related to the vertical line to the left of examples
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% creates a generic style for the lines. You can add lots
-% of things here, all separated by commas.
-\newcommand{\linestyle}{[thick, \thelinecolor]}
-
-\newcommand{\setlinestyle}[1]{\renewcommand{\linestyle}{[#1, \thelinecolor]}}
-
-% Do you want to draw the lines for examples? If so,
-% use the first command. Otherwise, use the second. 
-% The first is the default, but you can override it
-% by using the second in your main file.
-\newboolean{showexamplelines}
-\newcommand{\drawexamplelines}{\setboolean{showexamplelines}{true}}
-\newcommand{\nodrawexamplelines}{\setboolean{showexamplelines}{false}}
-
-% by default the lines around the examples are drawn
-\drawexamplelines
-
-% This is more a debugging tool than a stylistic one.
-% This draws a small circle in the margin at the the
-% beginning of an example and another immediately following
-% the end of the example, in the text. Sometimes it is useful
-% to figure out why there seems to be a lot of space between
-% the end of the example and the end of the drawn line.
-% Too much space can occur, for instance, if the example ends with
-% with a ``$$ maths $$'' type environment. You can correct for this
-% with a \vskip -\baselineskip command.
-\newboolean{showexamplemarks}
-\newcommand{\drawexamplemarks}{\setboolean{showexamplemarks}{true}}
-\newcommand{\nodrawexamplemarks}{\setboolean{showexamplemarks}{false}}
-%\drawexamplemarks
-\nodrawexamplemarks
-
-\newboolean{exampleisintext}
-\newcommand{\exampleinmargin}{\setboolean{exampleisintext}{false}}
-\newcommand{\exampleintext}{\setboolean{exampleisintext}{true}}
-\exampleintext
-
-\newcounter{examplecounter}[section]
-\setcounter{examplecounter}{0}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % the example environment has a regular and starred version.
 % the regular version takes 4 arguments: label, title, problem, solution.
@@ -282,238 +238,12 @@
 \newcommand{\restoreexampledefault}{\renewcommand{\example}{\@ifstar \examplestarred \examplenostar}}
 \makeatother
 
-%% This is the no-star (regular) version of
-%% the example command.
-\newcommand{\examplenostar}[4]{%
-%\ifthenelse{\boolean{inColor}}{renewcommand{\thelinecolor}{\colorlinecolor}}{\renewcommand{\thelinecolor}{\bwlinecolor}}%
-\noindent%
-\ifthenelse{\boolean{exampleisintext}}
-{% default: the Example word is in text
-\hskip -2\marginlinelength%
-\parbox{\marginlinelength}{%
-\begin{tikzpicture}[remember picture,overlay]%
-\ifthenelse{\boolean{showexamplelines}}{\ifthenelse{\boolean{showexamplemarks}}
-{\draw (0,0) circle (1pt) node (#1) {};}%
-{\draw (0,0) node (#1) {};}
-}
-{}% ends the ``Draw example lines and marks?'' booleans
-\end{tikzpicture}%
-}% ends parbox where line begins
-\hskip \marginlinelength% puts us back in line
-\parbox{80pt}{\textbf{Example~\refstepcounter{examplecounter}\theexamplecounter\label{#1}}}% ends parbox
-%\ifthenelse{\boolean{printlabelname}}%
-%{\hskip -35pt%
-%\parbox{35pt}{\tiny\texttt{\detokenize{#1}}}%
-%}%
-%{}%
-}% ends the if example in text; next do if not in text
-{%
-%\hskip -\marginlinelength%
-\hskip -70pt%
-\parbox{\marginlinelength}{%
-\begin{tikzpicture}[remember picture,overlay]%
-\ifthenelse{\boolean{showexamplelines}}{\ifthenelse{\boolean{showexamplemarks}}
-{\draw (0,0) circle (1pt) node (#1) {};}%
-{\draw (0,0) node (#1) {};}
-}%
-{}% ends the ``Draw example lines and marks?'' booleans
-\end{tikzpicture}%
-}%
-\hskip -\marginlinelength
-\parbox{70pt}{\textbf{Example~\refstepcounter{examplecounter}\theexamplecounter\label{#1}}}% ends parbox
-}% ends if example in text
-\ifthenelse{\isOnePageLong{#1}}%
-{%
-\textbf{#2}\\
-#3 \vskip \baselineskip%
-\ifthenelse{\boolean{exampleisintext}}
-{%solution is in text
-\parbox{65pt}{\textsc{\small\bfseries Solution}}% 
-}% solution is in margin
-{\hskip -80pt%
-\parbox{65pt}{\textsc{\small\bfseries Solution}}% 
-\hskip 15pt%
-}% end solution in margin
-#4\nopagebreak\label{e#1}% writes the full example then draws the lines
-\ifthenelse{\boolean{showexamplelines}}{%
-\begin{tikzpicture}[remember picture,overlay]%
-\ifthenelse{\boolean{showexamplemarks}}
-{\draw (0,0) circle (1pt) node (e#1) {};}%
-{\draw (0,0) node (e#1) {};}%
-\ifthenelse{\boolean{exampleisintext}}
-{\draw \linestyle (#1) -- (#1.south |- e#1.south) -- ++(10pt,0);}
-{\draw \linestyle ([yshift=-3pt]#1.south) -- ++(70pt-2\marginlinelength,0) node (f#1) {} -- (f#1 |- e#1.south) -- ++(10pt,0);} 
-\end{tikzpicture}
-}{}% ends if/then/else show lines
-}% ends if beginning and end are on same page.
-% next is if they are on different pages
-{% first draw line from start to bottom of page
-\ifthenelse{\boolean{showexamplelines}}{%
-\begin{tikzpicture}[remember picture,overlay]% 
-\ifthenelse{\isOddPage{#1}}% draws lines based on whether on an even or odd page %
-{\node [xshift=\oddpagemarginlength,yshift=\bottommarginlength](bottomleft) at (current page.north west)  {};}%
-{\node [xshift=\evenpagemarginlength,yshift=\bottommarginlength](bottomleft) at (current page.north west)  {};}%
-\ifthenelse{\boolean{exampleisintext}}% is example in text?
-{\draw \linestyle (#1) -- (bottomleft);}%
-{\draw \linestyle ([yshift=-3pt]#1.south) -- ++(70pt-2\marginlinelength,0) --(bottomleft);}% 
-\end{tikzpicture}%
-}{}% ends if/then/else show lines
-% end drawing of line
-\textbf{#2}\\
-#3 \vskip \baselineskip%
-\ifthenelse{\boolean{exampleisintext}}%
-{%solution is in text
-\parbox{65pt}{\textsc{\small\bfseries Solution}}% 
-}% solution is in margin
-{\hskip -80pt%
-\parbox{65pt}{\textsc{\small\bfseries Solution}}% 
-\hskip 15pt%
-}% end solution in margin
-#4\label{e#1}% now write out full example
-% now draw line from end to top of page
-\ifthenelse{\boolean{showexamplelines}}{%
-\begin{tikzpicture}[remember picture,overlay] 
-\ifthenelse{\boolean{showexamplemarks}}
-{\draw (0,0) circle (1pt) node (e#1) {};}%
-{\draw (0,0) node (e#1) {};}%
-\ifthenelse{\isOddPage{e#1}}% draws lines based on whether on an even or odd page %
-{\node [xshift=\oddpagemarginlength,yshift=\topmarginlength](topleft) at (current page.north west)  {};}
-{\node [xshift=\evenpagemarginlength,yshift=\topmarginlength](topleft) at (current page.north west)  {};}
-\draw \linestyle (topleft)--(e#1.south -| topleft) -- ++(10pt,0);
-\end{tikzpicture}%
-}{}% ends if/then/else show lines
-}% ends the check for same page or not
-%
-}%ends the definition of example
+% This is the no-star (regular) version of the example command.
+\newcommand{\examplenostar}[4]{\examplestarred{#1}{#2}{#3\bigskip
 
+\makebox[65pt][l]{\textsc{\small\textbf{Solution\lxAddClass{solutionTag}}}}% 
+#4}}
 
-\newcommand{\examplestarred}[3]{%
-\noindent%
-\ifthenelse{\boolean{exampleisintext}}
-{% default: the Example word is in text
-\hskip -2\marginlinelength%
-\parbox{\marginlinelength}{%
-\begin{tikzpicture}[remember picture,overlay]%
-\ifthenelse{\boolean{showexamplelines}}{\ifthenelse{\boolean{showexamplemarks}}
-{\draw (0,0) circle (1pt) node (#1) {};}%
-{\draw (0,0) node (#1) {};}
-}
-{}% ends the ``Draw example lines and marks?'' booleans
-\end{tikzpicture}%
-}% ends parbox where line begins
-\hskip \marginlinelength% puts us back in line
-\parbox{80pt}{\textbf{Example~\refstepcounter{examplecounter}\theexamplecounter\label{#1}}}% ends parbox
-}% ends the if example in text; next do if not in text
-{%
-\hskip -70pt%
-\parbox{\marginlinelength}{%
-\begin{tikzpicture}[remember picture,overlay]%
-\ifthenelse{\boolean{showexamplelines}}{\ifthenelse{\boolean{showexamplemarks}}
-{\draw (0,0) circle (1pt) node (#1) {};}%
-{\draw (0,0) node (#1) {};}
-}%
-{}% ends the ``Draw example lines and marks?'' booleans
-\end{tikzpicture}%
-}%
-\hskip -\marginlinelength
-\parbox{70pt}{\textbf{Example~\refstepcounter{examplecounter}\theexamplecounter\label{#1}}}% ends parbox
-}% ends if example in text
-\ifthenelse{\isOnePageLong{#1}}%
-{%
-\textbf{#2}\\
-#3 \label{e#1}% writes the full example then draws the lines
-\ifthenelse{\boolean{showexamplelines}}{%
-\begin{tikzpicture}[remember picture,overlay]%
-\ifthenelse{\boolean{showexamplemarks}}
-{\draw (0,0) circle (1pt) node (e#1) {};}%
-{\draw (0,0) node (e#1) {};}%
-\ifthenelse{\boolean{exampleisintext}}
-{\draw \linestyle (#1) -- (#1.south |- e#1.south) -- ++(10pt,0);}
-{\draw \linestyle ([yshift=-3pt]#1.south) -- ++(70pt-2\marginlinelength,0) node (f#1) {} -- (f#1 |- e#1.south) -- ++(10pt,0);}%
-\end{tikzpicture}%
-}{}% ends if/then/else show lines
-}% ends if beginning and end are on same page.
-% next is if they are on different pages
-{% first draw line from start to bottom of page
-\ifthenelse{\boolean{showexamplelines}}{%
-\begin{tikzpicture}[remember picture,overlay]% 
-\ifthenelse{\isOddPage{#1}}% draws lines based on whether on an even or odd page %
-{\node [xshift=\oddpagemarginlength,yshift=\bottommarginlength](bottomleft) at (current page.north west)  {};}%
-{\node [xshift=\evenpagemarginlength,yshift=\bottommarginlength](bottomleft) at (current page.north west)  {};}%
-\ifthenelse{\boolean{exampleisintext}}% is example in text?
-{\draw \linestyle (#1) -- (bottomleft);}%
-{\draw \linestyle ([yshift=-3pt]#1.south) -- ++(70pt-2\marginlinelength,0) --(bottomleft);}%
-\end{tikzpicture}%
-}{}% ends if/then/else show lines
-% end drawing of line
-\textbf{#2}\\
-#3 \label{e#1}% now write out full example
-% now draw line from end to top of page
-\ifthenelse{\boolean{showexamplelines}}{%
-\begin{tikzpicture}[remember picture,overlay] 
-\ifthenelse{\boolean{showexamplemarks}}
-{\draw (0,0) circle (1pt) node (e#1) {};}%
-{\draw (0,0) node (e#1) {};}%
-\ifthenelse{\isOddPage{e#1}}% draws lines based on whether on an even or odd page %
-{\node [xshift=\oddpagemarginlength,yshift=\topmarginlength](topleft) at (current page.north west)  {};}
-{\node [xshift=\evenpagemarginlength,yshift=\topmarginlength](topleft) at (current page.north west)  {};}
-\draw \linestyle (topleft)--(e#1.south -| topleft) -- ++(10pt,0);
-\end{tikzpicture}%
-}{}% ends if/then/else show lines
-}% ends the check for same page or not
-%
-}%ends the definition of examplestarred
-
-% Draws a line on a page that doesn't contain either
-% the beginning or end of an example.
-% Takes no arguments; figures out if you 
-% are on an even or odd numbered page for
-% correct margin calculation
-\newcommand{\drawexampleline}{%
-\begin{tikzpicture}[remember picture,overlay]
-				\ifthenelse{\isodd{\thepage}}{%
-				\node [xshift=\oddpagemarginlength,yshift=\topmarginlength](tleft) at (current page.north west)  {};}
-				{\node [xshift=\evenpagemarginlength,yshift=\topmarginlength](tleft) at (current page.north west)  {};}
-        \draw \linestyle (tleft) -- ++(0,\bottommarginlength+1in);
-        \end{tikzpicture}%
-}
-
-
-\renewcommand{\examplenostar}[4]{\examplestarred{#1}{#2}{#3\bigskip
-
-\ifthenelse{\boolean{exampleisintext}}
-{%solution is in text
-\parbox{65pt}{\textsc{\small\textbf{Solution\lxAddClass{solutionTag}}}}% 
-}% solution is in margin
-{\hskip -80pt%
-\parbox{65pt}{\textsc{\small\textbf{Solution\lxAddClass{solutionTag}}}}% 
-\hskip 15pt%
-}% end solution in margin
-\nopagebreak%
-#4\vspace{-\baselineskip}\nopagebreak}\bigskip}
-
-
-\ifthenelse{\boolean{latexml}}{
-
-% the regular version takes 4 arguments: label, title, problem, solution.
-% The starred version only has 3: label, title, problem/solution.
-%\renewcommand{\examplenostar}[4]{%
-%\begin{exampleEnv}[#2]\label{#1}
-%\lxAddClass{inExample}
-%#3\vskip \baselineskip%
-%\textsc{\small\bfseries Solution\lxAddClass{solutionTag}}
-%#4
-%\end{exampleEnv}~}
-
-\renewcommand{\examplestarred}[3]{%
-\begin{exampleEnv}[#2]\label{#1}
-\lxAddClass{inExample}
-#3
-\end{exampleEnv}~}
-
-\renewcommand{\drawexampleline}{}
-
-}{} % end latexml
 
 % black: hsl(x,x,0)
 % white: hsl(x,x,100)
@@ -523,9 +253,9 @@
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Define style for Definitions, Theorems and Key Ideas
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \newlength{\specialboxlength}
@@ -538,51 +268,66 @@
 \setlength{\specialboxinnerseplengthy}{10pt}
 
 \newcommand{\setboxwidth}[1]{%
-\setlength{\specialboxlength}{\textwidth+#1-2.2\specialboxinnerseplength}}
+\setlength{\specialboxlength}{\textwidth+#1-2.3\specialboxinnerseplength}}
 
-\newcommand{\restoreboxwidth}{%
-\setlength{\specialboxlength}{\textwidth-2.2\specialboxinnerseplength}}
-
+\newcommand{\restoreboxwidth}{\setboxwidth{0pt}}
 \restoreboxwidth
 
 \newcommand{\newspecialbox}[4][]{%
  \makeStyles{#2}{#4}%
- \definecolor{top#2}{Hsb}{#4,.05,1}% = hsl(#4,100,97.5)
- \ifthenelse{#4=60}{%
-  \definecolor{border#2}{Hsb}{#4,.59,.97}% = hsl(#4,90.5,68.4)
-  \definecolor{bottom#2}{Hsb}{#4,.28,.97}% = hsl(#4,81.9,83.4)
- }{%
-  \definecolor{border#2}{Hsb}{#4,.23,.65}% = hsl(#4,17.6,57.5)
-  \definecolor{bottom#2}{Hsb}{#4,.13,.92}% = hsl(#4,42.8,86)
- }%
  \ifthenelse{\equal{#1}{}}{%
-  \newtheorem{#2Env}{#3}%
-  \expandafter\newcommand\csname #2\endcsname[4][]{%
-   \noindent\coloredbox{
-    rectangle, text width = \specialboxlength,
-    inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
-    draw=border#2, top color=top#2, bottom color=bottom#2,
-    text justified, very thick
-   }{
-    draw=black, thick, rectangle, text width=\specialboxlength,
-    inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
-    draw, text justified, very thick
-   }{%
-    \begin{#2Env}[{##3}##1]\label{##2}##4\end{#2Env}%
-   }%
+  \definecolor{top#2}{Hsb}{#4,.05,1}% = hsl(#4,100,97.5)
+  \ifthenelse{#4=60}{%
+   \definecolor{border#2}{Hsb}{#4,.59,.97}% = hsl(#4,90.5,68.4)
+   \definecolor{bottom#2}{Hsb}{#4,.28,.97}% = hsl(#4,81.9,83.4)
+  }{%
+   \definecolor{border#2}{Hsb}{#4,.23,.65}% = hsl(#4,17.6,57.5)
+   \definecolor{bottom#2}{Hsb}{#4,.13,.92}% = hsl(#4,42.8,86)
   }%
- }{% else #1 != ''
+  \newtheorem{#2Env}{#3}%
+  \expandafter\newcommand\csname #2Envautorefname\endcsname{#3}
+  \expandafter\newcommand\csname #2\endcsname[4][]{%
+   \vspace{\baselineskip}%
+   \noindent%
+   \flushinner{%
+    \noindent%
+    \coloredbox{%
+     rectangle, text width = \specialboxlength,
+     inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
+     draw=border#2, top color=top#2, bottom color=bottom#2,
+     text justified, very thick
+    }{%
+     draw=black, thick, rectangle, text width=\specialboxlength,
+     inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
+     draw, text justified, very thick
+    }{%
+     \noindent\begin{#2Env}[{##3}##1]\label{##2}\noindent ##4\end{#2Env}%
+    }%
+   }%
+   \vspace{\baselineskip}%
+   \restoreboxwidth%
+  }%
+ }{% else #1 != '' means we're in exvideo (aka, a qr code to youtube)
+  \definecolor{top#2}{Hsb}{#4,.05,1}% %= hsl(#4,100,97.5)
+  \definecolor{border#2}{Hsb}{#4,.3,1}% %= hsl(#4,90.5,68.4)
+  \definecolor{bottom#2}{Hsb}{#4,.15,1}% %= hsl(#4,81.9,83.4)
   \expandafter\newcommand\csname #2\endcsname[1]{%
-   \noindent\coloredbox{ % same options as above
-    rectangle, text width = \specialboxlength,
-    inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
-    draw=border#2, top color=top#2, bottom color=bottom#2,
-    text justified, very thick
-   }{
-    draw=black, thick, rectangle, text width=\specialboxlength,
-    inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
-    draw, text justified, very thick
-   }{##1}%
+   \vspace{\baselineskip}%
+   \noindent%
+   \flushinner{%
+    \noindent%
+    \coloredbox{% same options as above
+     rectangle, text width = \specialboxlength,
+     inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
+     draw=border#2, top color=top#2, bottom color=bottom#2,
+     text justified, very thick
+    }{%
+     draw=black, thick, rectangle, text width=\specialboxlength,
+     inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
+     draw, text justified, very thick
+    }{\noindent ##1}%
+   }%
+   \vspace{\baselineskip}%
   }%
  }% ends ifthenelse #1=''
 }
@@ -605,7 +350,10 @@
 %\newcommand{\showcolor}[1]{#1 is
 %  \extractcolorspecs{#1}{\model}{\mycolor}
 %  \convertcolorspec{\model}{\mycolor}{Hsb}{\converted}\converted\ in Hsb}
-
+%
+%\begin{document}
+%\showcolor{blue!95!black!30}
+%\end{document}
 
 
 
@@ -614,7 +362,7 @@
 %% related to creating problem sections.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\exc}{\addtocounter{excounter}{2}\arabic{excounter}}
+%\newcommand{\exc}{\addtocounter{excounter}{2}\arabic{excounter}}
 
 \newif\ifmore
 
@@ -648,7 +396,6 @@
 \setboolean{printoddanswersonly}{true}
 \newcommand{\printallanswers}{\setboolean{printoddanswersonly}{false}}
 
-
 \newcount\numberofexercises
 
 \newcounter{numofexer}
@@ -659,8 +406,8 @@
 \setcounter{debug}{0}
 
 \newcounter{exercisecounter}
-\newcounter{IMTcount}
-\newcounter{IMTcount_temp}
+%\newcounter{IMTcount}
+%\newcounter{IMTcount_temp}
 
 % the exercise names can be printed next to the problem
 % using these commands. The default is to not print them.
@@ -682,113 +429,105 @@
 \openout\answrite=\jobname.answers
 
 \def\exinput #1 {\ifthenelse{\boolean{printquestions}}{% 
-												\openin\exread=#1 
-												\read\exread to \tempp%
-%												\begin{adjustwidth*}{}{-100pt}% 
-												\iflatexml\begin{enumerate}\else\begin{enumerate}[leftmargin=*,topsep=10pt]\fi% 
-													\addtocounter{enumi}{\theexercisecounter}%
-													\item% 
-													\ifthenelse{\boolean{showexercisenames}}%
-													{\tiny{\hskip -60pt}% This line too
-												  \makebox[60pt][l]{\printexercisename #1 }%  
-												  \small%
-												  }{}%
-													\tempp 
-													\addtocounter{exercisecounter}{1}
-												\end{enumerate}
-%												\end{adjustwidth*}%
-												\closein\exread}% end print questions 
-									{% else: print answers
-									\ifthenelse{\boolean{printoddanswersonly}}{%i.e, we are printing odd answers, not questions 
-												\openin\exread=#1 
-												\read\exread to \tempp % read in the question - we ignore it.
-												\addtocounter{exercisecounter}{1}
-												\read\exread to \tempp % reads in the answer
-												\ifodd \theexercisecounter
-												%\else
-													\iflatexml\begin{enumerate}\else\begin{enumerate}[leftmargin=*]\fi 
-													\addtocounter{enumi}{\theexercisecounter}
-													\addtocounter{enumi}{-1}
-													\item 
-													\ifthenelse{\boolean{showexercisenames}}
-													{\tiny{\hskip -60pt}% This line too
-												  \makebox[60pt][l]{\printexercisename #1 }%
-												  \small%
-												  }{}
-													\tempp 
-													%\addtocounter{exercisecounter}{1}
-													\end{enumerate} 
-												\fi
-												\closein\exread 
-												}  %ends the \ifnum \showexercises = 2 if statement
-												{% print all answers
-												\openin\exread=#1 
-												\read\exread to \tempp %reads in the question, which is ignored 
-												\read\exread to \tempp %reads in the answer
-												\iflatexml\begin{enumerate}\else\begin{enumerate}[leftmargin=*]\fi 
-													\addtocounter{enumi}{\theexercisecounter}
-													\item% 
-													\ifthenelse{\boolean{showexercisenames}}
-													{\tiny{\hskip -60pt}% This line too
-												  \makebox[60pt][l]{\printexercisename #1 }%
-												  \small%
-												  }{}
-													\tempp 
-													\addtocounter{exercisecounter}{1}
-												\end{enumerate}
-												\closein\exread
-												} % ends the \ifnum \showexercises=3 if statement
-									}
-								}
+	\openin\exread=#1 
+	\read\exread to \tempp%
+%	\begin{adjustwidth*}{}{-100pt}% 
+	\iflatexml\begin{enumerate}\else\begin{enumerate}[leftmargin=*,topsep=10pt]\fi% 
+		\addtocounter{enumi}{\theexercisecounter}%
+		\item% 
+		\ifthenelse{\boolean{showexercisenames}}{%
+		 \noindent\makebox[0pt][l]{\noindent\tiny\hspace{-60pt}\printexercisename #1 }%
+	    }{}%
+		\tempp 
+		\addtocounter{exercisecounter}{1}
+	\end{enumerate}
+%	\end{adjustwidth*}%
+	\closein\exread}% end print questions 
+	{% else: print answers
+		\ifthenelse{\boolean{printoddanswersonly}}{%
+			\openin\exread=#1 
+			\read\exread to \tempp % read in the question - we ignore it.
+			\addtocounter{exercisecounter}{1}
+			\read\exread to \tempp % reads in the answer
+			\ifodd \theexercisecounter
+				%\else
+				\iflatexml\begin{enumerate}\else\begin{enumerate}[leftmargin=*]\fi 
+					\addtocounter{enumi}{\theexercisecounter}
+					\addtocounter{enumi}{-1}
+					\item 
+					\ifthenelse{\boolean{showexercisenames}}{%
+					 \noindent\makebox[0pt][l]{\noindent\tiny\hspace{-60pt}\printexercisename #1 }%
+					}{}
+					\tempp 
+					%\addtocounter{exercisecounter}{1}
+				\end{enumerate} 
+			\fi
+			\closein\exread 
+		}  %ends print odd answers only
+		{% print all answers
+			\openin\exread=#1 
+			\read\exread to \tempp %reads in the question, which is ignored 
+			\read\exread to \tempp %reads in the answer
+			\iflatexml\begin{enumerate}\else\begin{enumerate}[leftmargin=*]\fi 
+				\addtocounter{enumi}{\theexercisecounter}
+				\item% 
+				\ifthenelse{\boolean{showexercisenames}}{%
+				 \noindent\makebox[0pt][l]{\noindent\tiny\hspace{-60pt}\printexercisename #1 }%
+				}{}
+				\tempp 
+				\addtocounter{exercisecounter}{1}
+			\end{enumerate}
+			\closein\exread
+		} % ends print all answers
+	}
+}
 
 \def\exsetinput #1 {\openin\exsetread=#1%
-										\setcounter{numofexer}{0}%
-										\setcounter{negnumofexer}{0}% 
-										\read\exsetread to \exsettemp%
-										\read\exsetread to \exsettemp%
-										{\loop%
-												\read\exsetread to \exsettemp%
-												\ifeof \exsetread \exsetmorefalse \else \exsetmoretrue \fi%
-												\ifexsetmore%
-														\addtocounter{numofexer}{1}%
-														\addtocounter{negnumofexer}{-1}%
-											\repeat}%							
-										\closein\exsetread%
-										\openin\exsetread=#1%
-										\ifthenelse{\boolean{printquestions}}{% 
-											\read\exsetread to \exsettemp%
-											\setcounter{enumi}{\theexercisecounter} %
-											\addtocounter{enumi}{1}%
-											\ifthenelse{\boolean{showexercisenames}}%
-													{\tiny{\hskip -60pt}% This line too
-												  \makebox[60pt][l]{\printexercisename #1 }%
-												  \small%
-												  }{}% end show exercise names
-%											\begin{adjustwidth*}{}{-100pt}%
-											\noindent\textbf{\exsettemp\theenumi\addtocounter{enumi}{-1}%
-											\addtocounter{enumi}{\thenumofexer}{ -- }\theenumi%
-											\addtocounter{enumi}{\thenegnumofexer}%
-											\read\exsetread to \exsettemp \exsettemp}%
-%											\end{adjustwidth*}%
-											
-											{\loop%
-													\read\exsetread to \exsettemp%
-													\ifeof \exsetread \exsetmorefalse \else \exsetmoretrue \fi%
-													\ifexsetmore%
-															\exsettemp%
-											\repeat}%
-										}% ends print exercises; on to print answers
-										{	\read\exsetread to \exsettemp%
-											\read\exsetread to \exsettemp%
-											{\loop%
-													\read\exsetread to \exsettemp%
-													\ifeof \exsetread \exsetmorefalse \else \exsetmoretrue \fi%
-													\ifexsetmore%
-															\exsettemp%
-											\repeat}%
-										}%ends else printing asnwers
-										\closein\exsetread%
-								}%
+	\setcounter{numofexer}{0}%
+	\setcounter{negnumofexer}{0}% 
+	\read\exsetread to \exsettemp%
+	\read\exsetread to \exsettemp%
+	{\loop%
+			\read\exsetread to \exsettemp%
+			\ifeof \exsetread \exsetmorefalse \else \exsetmoretrue \fi%
+			\ifexsetmore%
+					\addtocounter{numofexer}{1}%
+					\addtocounter{negnumofexer}{-1}%
+		\repeat}%							
+	\closein\exsetread%
+	\openin\exsetread=#1%
+	\ifthenelse{\boolean{printquestions}}{% 
+		\read\exsetread to \exsettemp%
+		\setcounter{enumi}{\theexercisecounter} %
+		\addtocounter{enumi}{1}%
+		\ifthenelse{\boolean{showexercisenames}}{%
+		 \noindent\makebox[0pt][l]{\noindent\tiny\hspace{-60pt}\printexercisename #1 }%
+		}{}% end show exercise names
+%		\begin{adjustwidth*}{}{-100pt}%
+		\noindent\textbf{\exsettemp\theenumi\addtocounter{enumi}{-1}%
+		\addtocounter{enumi}{\thenumofexer}{ -- }\theenumi%
+		\addtocounter{enumi}{\thenegnumofexer}%
+		\read\exsetread to \exsettemp \exsettemp}%
+%		\end{adjustwidth*}%
+
+		{\loop%
+				\read\exsetread to \exsettemp%
+				\ifeof \exsetread \exsetmorefalse \else \exsetmoretrue \fi%
+				\ifexsetmore%
+						\exsettemp%
+		\repeat}%
+	}% ends print exercises; on to print answers
+	{	\read\exsetread to \exsettemp%
+		\read\exsetread to \exsettemp%
+		{\loop%
+				\read\exsetread to \exsettemp%
+				\ifeof \exsetread \exsetmorefalse \else \exsetmoretrue \fi%
+				\ifexsetmore%
+						\exsettemp%
+		\repeat}%
+	}%ends else printing asnwers
+	\closein\exsetread%
+}%
 
 % \writeToAnsFile in the style file b/c latexml was copying in ``noexpand''
 
@@ -805,46 +544,43 @@
 \sffamily%
 \vskip\baselineskip%
 \begin{multicols}{2}%
-				\openin\exansread=#1 
-				\ifeof \exansread 
-					{No problems written.} 
-				\else 
-					\loop \read\exansread to \extemp  
-							\ifeof \exansread \morefalse \else \moretrue \fi 
-							\ifmore 
-									\extemp
-							\repeat 
-				\fi 
-				\closein\exansread 
-				\end{multicols}
-%				\end{adjustwidth*}%
-				\restoregeometry
-				\regularheader
-%				\easypagecheck
-				\setlength{\hoffset}{0pt} \rmfamily\normalsize \vskip \baselineskip%
-				} % ends printexercisesgeneric
-				
+	\openin\exansread=#1 
+	\ifeof \exansread 
+		{No problems written.} 
+	\else 
+		\loop \read\exansread to \extemp  
+			\ifeof \exansread \morefalse \else \moretrue \fi 
+			\ifmore \extemp
+				\repeat 
+	\fi 
+	\closein\exansread 
+	\end{multicols}
+%	\end{adjustwidth*}%
+	\restoregeometry
+	\regularheader
+%	\easypagecheck
+	\setlength{\hoffset}{0pt} \rmfamily\normalsize \bigskip%
+	} % ends printexercisesgeneric
+
 
 
 % The following prints the answers. To print all answers, use command \printallanswers.
 % 
 \def\printanswers #1 {\setcounter{exercisecounter}{0} \footnotesize \setboolean{printquestions}{false} \openin\printansread=#1 
-				\ifeof \printansread 
-					{No problems written.} 
-				\else 
-					\loop \read\printansread to \extemp  
-							\ifeof \printansread \morefalse \else \moretrue \fi 
-							\ifmore 
-									\extemp
-							\fi 
-							\ifeof \printansread \morefalse \else \moretrue \fi 
-							\ifmore 
-					\repeat 
-				\fi 
-				\closein\printansread
-				\small}
+	\ifeof \printansread 
+		{No problems written.} 
+	\else 
+		\loop \read\printansread to \extemp  
+			\ifeof \printansread \morefalse \else \moretrue \fi 
+			\ifmore \extemp \fi 
+			\ifeof \printansread \morefalse \else \moretrue \fi 
+			\ifmore 
+				\repeat 
+	\fi 
+	\closein\printansread
+	\small}
 
-								
+
 \def \printexercisename exercises/#1_#2_#3_#4 {#1 #2 #3 #4}
 
 %%%%%%%%%%%%% Used to automate the answer production at
@@ -859,13 +595,17 @@
 }%
 
 \def \writeexercisestofile #1{%
-\write\answrite{\noexpand\printanswers{exercises/0\thechapter_0\expandafter\readsection #1_exercises.tex} \noexpand \vskip \baselineskip }%
+\write\answrite{%
+\noexpand\printanswers{%
+exercises/0\thechapter_0\expandafter\readsection #1_exercises.tex}%
+\noexpand\bigskip}%
 \write\answrite{}%
 }
 
 \def \makeexercisesection #1{%
 \ifthenelse{\boolean{latexml}}{%
-\immediate\write\answrite{\end{multicols}\normalsize}\showans\answrite%
+\immediate\write\answrite{\end{multicols}\normalsize}%
+%\showans\answrite% showans will write the contents of Calculus.ans to the log
 }{%
 \immediate\write\answrite{\noexpand\end{multicols}\noexpand\normalsize}%
 }

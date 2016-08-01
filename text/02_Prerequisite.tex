@@ -2,6 +2,114 @@
 \section{Chapter Prerequisites}
 \prereqIntro
 
-\emph{This part is still being written.}
+\subsection*{Rules of Exponents}
 
-\clearpage
+We will briefly summarize the laws of exponents and equivalent forms of exponent expressions commonly used in this chapter.  The laws of exponents are only valid for the values of x and y for which the expression is defined (i.e., nonzero real numbers in the denominator and nonnegative real numbers when roots are even.) Our first is the product of exponents.  If $m$ and $n$ are real numbers, then
+\[x^m\cdot x^n=x^{m+n}.\]
+
+\example*{prereq_exp_prod}{Product Law of Exponents}{%
+\vspace{-\baselineskip}
+\begin{align*}
+ x^5 \cdot x^7 &= x^{5+7}=x^{12} \\
+ x^{-3}\cdot x^{-4} &= x^{-3+(-4)}=x^{-7}=\frac1{x^7} \\
+ x^{-1/2}\cdot x^{2/3} &= x^{-1/2+2/3}=x^{1/6}=\sqrt[6]{x}.\eoehere
+\end{align*}}
+
+Our next is the quotient of exponents.  If $m$ and $n$ are real numbers, then
+\[\frac{x^m}{x^n}=x^{m-n}.\]
+
+\example*{prereq_exp_quot}{Quotient Law of Exponents}{%
+\vspace{-\baselineskip}
+\begin{align*}
+ \frac{x^5}{x^7} &= x^{5-7}=x^{-2}=\dfrac1{x^2} \\
+ \frac{x^{-3}}{x^{-4}} &= x^{-3-(-4)}=x^{1}=x \\
+ \frac{x^{2/3}}{x^{-1/2}}
+ &= x^{2/3-(-1/2)}=x^{7/6}=\sqrt[6]{x^7}=x\sqrt[6]{x}.\eoehere
+\end{align*}}
+
+Our third is when a power is raised to a power.  Once again, we assume $m$ and $n$ are real numbers.  In that case,
+\[(x^m)^n=x^{m\cdot n}.\]
+
+\example*{prereq_exp_pow}{Power Law of Exponents}{%
+\vspace{-\baselineskip}
+\begin{align*}
+ (x^5)^7 &= x^{5\cdot 7}=x^{35} \\
+ x^{-3}\cdot x^{4} &= x^{-3\cdot4}=x^{-12}=\dfrac1{x^{12}} \\
+ x^{-1/2}\cdot x^{2/3} &= x^{-1/2\cdot2/3}=x^{-1/3}=\frac1{\sqrt[3]{x}}.\eoehere
+\end{align*}}
+
+Our final law tells us how to distribute a power over a product and a quotient.  If $m$ is a real number, then
+\[(xy)^m = x^m y^m\qquad\text{and}\qquad\left(\frac{x}{y}\right)^m=\frac{x^m}{y^m}.\]
+
+\example*{prereq_exp_dist}{Product and Quotient Raised to a Power}{%
+\vspace{-\baselineskip}
+\begin{align*}
+ (xyz)^7 &= x^7y^7z^7 \\
+ \left(\frac{x}{y}\right)^{-4} &= \frac{x^{-4}}{y^{-4}}=\frac{y^{4}}{x^{4}}.\eoehere
+\end{align*}}
+
+\subsection*{Factoring and Simplifying Complex Fractions}
+
+The following examples demonstrate an efficient factoring technique that can be used to create the various equivalent expressions often needed to complete problems that arise in Calculus. The ability to move flexibly and efficiently among different representations of an expression is an important skill to have.
+
+\example{ex_prereq_gcf}{Factoring out the common factor}{Factor completely to write an equivalent expression:
+\[
+ 1.\quad x^{7/3}-5x^{2/3} \qquad
+ 2.\quad \frac12 x(x-3)^{-2/5}+(x-3)^{3/5}
+\]}{\begin{enumerate}
+\item\qquad
+$x^{7/3}-4x^{2/3}=x^{2/3}(x^{5/3}-4)=\sqrt[3]{x^2}(\sqrt[3]{x^5}-4)$.\medskip
+\item~\\[-2\baselineskip]
+\begin{align*}
+ \dfrac12 x(x-3)^{-2/5}+(x-3)^{3/5}
+ &= \frac12 (x-3)^{-2/5}\bigl(1 + 2(x -3)\bigr)\\
+ &= \frac12 (x-3)^{-2/5}(1 + 2x -6)\\
+ &= \frac12 (x-3)^{-2/5}(2x -5) \\
+ &= \frac{2x-5}{2(x-3)^{2/5}} \qquad\text{or} \\
+ &= \frac{2x-5}{2\sqrt[5]{(x-3)^2}}\eoehere
+\end{align*}
+\end{enumerate}}
+
+\example{ex_prereq_fraction}{Simplifying complex fractions}{Factor out the lowest power of the common factor to simplify the complex fraction
+\[\frac{\frac23 x(x-2)^{-\frac13}+(x-2)^{\frac23}}{x^2}.\]}{
+\begin{align*}
+ \frac{\frac23 x(x-2)^{-1/3}+(x-2)^{2/3}}{x^2}
+ &= \frac{\frac13 (x-2)^{-1/3}\bigl(2x + 3(x-2)\bigr)}{x^2} \\
+ &= \frac{2x+3x-6}{3x^2(x-2)^{1/3}}\\
+ &= \frac{5x-6}{3x^2\sqrt[3]{x-2}}\eoehere
+\end{align*}}
+
+\subsection*{Function Composition}
+
+\textbf{Function composition} refers to combining functions in a way that the output from one function becomes the input for the next function. In other words, the range ($y$-values) of one function become the domain ($x$-values) of the next function. We denote this as $(f \circ g)(x) = f(g(x))$, where the output of $g(x)$ becomes the input of $f(x)$.
+
+\example{ex_prereq_comp_of_two}{Composition of two functions}{Given $f(x)=\dfrac1{x^2}$ and $g(x)=\sqrt{x+4}$, find $(f \circ g)(x)$ and $(g \circ f)(x)$.}{To find $(f\circ g)(x)=f(g(x))$, we substitute the function $g(x)$ into the function $f(x)$. Thus,
+\[f(g(x))=f\left(\sqrt{x+4}\right)=\frac1{(\sqrt{x+4})^2}=\frac1{x+4}.\]
+For $(g\circ f)(x)=g(f(x))$, we substitute the function $f(x)$ into the function $g(x)$. Thus,
+\[
+ g(f(x))=g\left(\frac1{x^2}\right)=\sqrt{\frac1{x^2}+4}
+ =\sqrt{\frac{1+4x^2}{x^2}}=\frac{\sqrt{1+4x^2}}x.\eoehere
+\]}
+
+\example{ex_prereq_comp_of_three}{Composition of three functions}{Given $f(x)=x^2$, $g(x)=\sqrt{4-x}$ and $h(x)=3x-5$, find $(f\circ g\circ h)(x)$ and $(g\circ f\circ h)(x)$.}{To find $(f\circ g\circ h)(x)$ we must start with the inside and work our way out. 
+\begin{align*}
+(f\circ g\circ h)(x)&=f(g(h(x)))\\
+&=f(g(3x-5))\\
+&=f\left(\sqrt{4-(3x-5)}\right)=f\left(\sqrt{9-3x}\right)\\
+&=\left(\sqrt{9-3x}\right)^2=9-3x
+\end{align*}
+
+For $(g\circ f\circ h)(x)$, we have
+\begin{align*}
+(g\circ f\circ h)(x)&=g(f(h(x)))\\
+&=g(f(3x-5))\\
+&=g((3x-5)^2)=g(9x^2-30x+25)\\
+&=\sqrt{4-(9x^2-30x+25)}=\sqrt{30x-9x^2-21}\eoehere
+\end{align*}}
+
+In this chapter we will also need to decompose a given function into two or more, less complex functions. For any one function there is often more than one way to write the decomposition. The following examples demonstrate this.
+
+\example{ex_prereq_decomp}{Decomposing a function}{Given $F(x)=\sin(3x^2+5)$, find $f(x)$ and $g(x)$ so that $F(x) = f(g(x))$.}{One solution is $f(x)=\sin x$ and $g(x)=3x^2+5$.\\
+Another possible solution is $f(x)=\sin (x+5)$ and $g(x)=3x^2$.}
+
+\printexercises{exercises/02_00_exercises}

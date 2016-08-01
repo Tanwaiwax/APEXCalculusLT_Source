@@ -3,9 +3,9 @@
 \usepackage[font=small]{caption}
 %,justification=centering
 
-\usepackage{wrapfig}
+%\usepackage{wrapfig}
 
-\usepackage{qrcode}
+\usepackage{booktabs}
 
 %%%%
 %% These are low level LaTeX commands that determine the 
@@ -70,19 +70,22 @@ Notes:
 }% i.e, the above does nothing
 {% now for a real change
 \newcommand{\exerciseheader}{%
-				\fancyhfoffset[LE,RO]{32pt}%
-				\fancyfoot[LE]{\textbf{\thepage}}% 
-				\fancyfoot[RO]{\textbf{\thepage}}
-				\fancyhead{}% 
+	\fancyhfoffset[LE,RO]{32pt}%
+	\fancyfoot[LE]{\textbf{\thepage}}% 
+	\fancyfoot[RO]{\textbf{\thepage}}
+	\fancyhead{}% 
 }
 
 \newcommand{\regularheader}{%
 \fancyhead[LE]{\nouppercase{\leftmark}}%
 \fancyhead[RO]{\rightmark}%
 \fancyfoot[LE]{\begin{minipage}{\textwidth}%
-\noindent\hskip\marginparwidth\hskip\marginparsep\hskip-4pt\rule{\textwidth}{.4pt}
-\vskip.2\baselineskip
-\noindent\hskip\marginparwidth\hskip\marginparsep\hskip-4pt%
+\noindent\hspace{\marginparwidth}\hspace{\marginparsep}\hspace{-4pt}\rule{\textwidth}{.4pt}
+\vspace{.2\baselineskip}
+\noindent\hspace{\marginparwidth}\hspace{\marginparsep}\hspace{-4pt}%
+%\noindent\hskip\marginparwidth\hskip\marginparsep\hskip-4pt\rule{\textwidth}{.4pt}
+%\vskip.2\baselineskip
+%\noindent\hskip\marginparwidth\hskip\marginparsep\hskip-4pt%
 Notes:
 \vskip 1.5in\textbf{\thepage}
 \end{minipage}} 
@@ -125,9 +128,6 @@ Notes:
 %%	 }}
 \makeatother 
 
-\newcommand{\bmx}[1]{\left[\hskip -3pt\begin{array}{#1} }
-\newcommand{\emx}{\end{array}\hskip -3pt\right]}
-
 \newcommand{\btz}{\begin{center}\begin{tikzpicture}}
 \newcommand{\etz}{\end{tikzpicture}\end{center}}
 
@@ -147,18 +147,16 @@ Notes:
 %\newcommand{\dz}{\ensuremath{\Delta z}}
 \newcommand{\ddz}{\ensuremath{\Delta z}}
 
-\newcommand{\thet}{\ensuremath{\theta}}
-\newcommand{\abs}[1]{\ensuremath{%
-\left\iflatexml\vert\else\lvert\fi\ #1\ \right\iflatexml\vert\else\rvert\fi}}
-\newcommand{\norm}[1]{\ensuremath{%
-\left\iflatexml\Vert\else\lVert\fi\ #1\ \right\iflatexml\Vert\else\rVert\fi}}
-\newcommand{\vnorm}[1]{\ensuremath{\norm{\vec #1}}}
-\newcommand{\snorm}[1]{\norm{#1}}%{\ensuremath{\left\lVert\ #1\ \right\rVert}}
+%\newcommand{\thet}{\ensuremath{\theta}}
+\newcommand*{\abs}[1]{\ensuremath{\left\lvert #1 \right\rvert}}
+\newcommand*{\norm}[1]{\ensuremath{\left\lVert #1 \right\rVert}}
+\newcommand*{\vnorm}[1]{\ensuremath{\norm{\vec #1}}}
+\newcommand*{\snorm}[1]{\norm{#1}}%{\ensuremath{\left\lVert\ #1\ \right\rVert}}
 \newcommand{\la}{\left\langle}
 \newcommand{\ra}{\right\rangle}
-\newcommand{\dotp}[2]{\ensuremath{\vec #1 \cdot \vec #2}}
-\newcommand{\proj}[2]{\ensuremath{\text{proj}_{\,\vec #2}{\,\vec #1}}}
-\newcommand{\crossp}[2]{\ensuremath{\vec #1 \times \vec #2}}
+\newcommand*{\dotp}[2]{\ensuremath{\vec #1 \cdot \vec #2}}
+\newcommand*{\proj}[2]{\ensuremath{\text{proj}_{\,\vec #2}{\,\vec #1}}}
+\newcommand*{\crossp}[2]{\ensuremath{\vec #1 \times \vec #2}}
 \newcommand{\veci}{\ensuremath{\vec\imath}}
 \newcommand{\vecj}{\ensuremath{\vec\jmath}}
 \newcommand{\veck}{\ensuremath{\vec k}}
@@ -167,8 +165,8 @@ Notes:
 \newcommand{\vecw}{\ensuremath{\vec w}}
 \newcommand{\vecx}{\ensuremath{\vec x}}
 \newcommand{\vecy}{\ensuremath{\vec y}}
-\newcommand{\vrp}{\ensuremath{\vec r\, '}}
-\newcommand{\vsp}{\ensuremath{\vec s\, '}}
+\newcommand{\vrp}{\ensuremath{\vec r\primeskip '}}
+\newcommand{\vsp}{\ensuremath{\vec s\primeskip '}}
 \newcommand{\vrt}{\ensuremath{\vec r(t)}}
 \newcommand{\vst}{\ensuremath{\vec s(t)}}
 \newcommand{\vvt}{\ensuremath{\vec v(t)}}
@@ -187,15 +185,14 @@ Notes:
 \newcommand{\myrule}{\iflatexml\else\rule[-4pt]{0pt}{13pt}\fi}
 \newcommand{\mmrule}{\iflatexml\else\rule[-10pt]{0pt}{15pt}\fi}
 \newcommand{\myds}{\ds\mmrule}
-\newcommand{\deriv}[2]{\ensuremath{\myds\frac{d}{dx}\left(#1\right)=#2}}
-\newcommand{\myint}[2]{\ensuremath{\myds\int #1\ dx=} \ensuremath{\ds #2}}
+\newcommand*{\deriv}[2]{\ensuremath{\myds\frac{d}{dx}\left(#1\right)=#2}}
+\newcommand*{\myint}[2]{\ensuremath{\myds\int #1\ dx=} \ensuremath{\ds #2}}
 
-\newcommand{\zbox}[1]{\makebox[0pt][c]{#1}} % a zero width box
 
 \DeclareMathOperator{\sech}{sech}
 \DeclareMathOperator{\csch}{csch}
 
-\newcommand{\sword}[1]{\textbf{#1}}
+\newcommand*{\sword}[1]{\textbf{#1}}
 
 \newcommand{\primeskip}{\hskip.75pt}
 
@@ -252,33 +249,6 @@ Notes:
 %%%%
 %%%%
 
-%\newcommand{\asyouread}[1]{\begin{tikzpicture}
-%\ifthenelse{\boolean{inColor}}{\node [preaction={fill=black,opacity=.5,transform canvas={xshift=1mm,yshift=-1mm}}, right color=blue!80!black!30, left color=blue!80] at (0,0) {\textcolor{white}{\textsf{\textit{AS YOU READ $\ldots$}}}};}
-%{\node [preaction={fill=black,opacity=.5,transform canvas={xshift=1mm,yshift=-1mm}}, right color=black!30, left color=black!10] at (0,0) {\textcolor{white}{\textsf{\textit{AS YOU READ $\ldots$}}}};}
-%\end{tikzpicture}
-%\begin{enumerate}
-%#1
-%\end{enumerate}
-%\vskip 20pt}
-
-%%%%
-%%  A new figure environment, trying to fix the float problem.
-%%
-%%%%
-
-%\newcounter{myfigurecounter}[chapter]
-%\renewcommand\themyfigurecounter{\thechapter.\arabic{myfigurecounter}}
-%\newenvironment{myfigure}{\refstepcounter{myfigurecounter}}{}
-%\newcommand{\mycaption}[1]{%
-%\begin{center}%
-%\vskip -1.5\baselineskip
-%\begin{tikzpicture}%
-%\draw (0,0) node [text width=\textwidth,align=center] {Figure \themyfigurecounter: #1};%
-%\end{tikzpicture}%
-%\end{center}%
-%}
-
-
 \newspecialbox[notempty]{exvideo}{ignored}{240}
 
 \newcommand{\genVideo}[4][]{\exvideo{%
@@ -305,33 +275,85 @@ Notes:
 \newcommand{\khanVideo}[3]{\genVideo[?utm_campaign=embed]{#1}{https://www.khanacademy.org/video/#2}{#3}}
 
 
-% \mfigure[options]{offset}{caption}{label}{file}
-\newcommand{\mfigure}[5][]%
-		{\mnote[#2]{\centering\myincludegraphics[#1]{#5}
-		\captionof{figure}{#3}\label{#4}}}
+% \mfigure[graphicsoptions]{offset}{caption}{label}{file}
+\newcommand{\mfigure}[5][]{
+	\mnote[#2]{\lxfigure{%
+		\centering\myincludegraphics[#1]{#5}%
+		\captionof{figure}{#3}\label{#4}}%
+	}}
 
 % \mtable[offset=0]{caption}{label}{contents}
-\newcommand{\mtable}[4][0ex]%
-		{\mnote[#1]{\centering\small#4\captionof{figure}{#2}\label{#3}}}
+\newcommand{\mtable}[4][0ex]{
+	\mnote[#1]{\lxfigure{%
+		\centering\small#4\captionof{figure}{#2}\label{#3}}%
+	}}
 
 % \mnote[offset=0]{contents}
-\newcommand{\mnote}[2][0ex]{\marginpar{\vspace{#1}
-		\begin{minipage}[c][0pt]{.99\marginparwidth}
+\newcommand{\mnote}[2][0ex]{%
+	\marginpar{\vspace{#1}%
+		\begin{minipage}[c]{\marginparwidth}
 		#2
-		\end{minipage}}}
-
-\newcommand{\prereqIntro}{The material in this section provides a basic review of and practice problems for pre-calculus skills essential to your success in Calculus. You should take time to review this section and work the suggested problems (checking your answers against those in the back of the book). Since this content is a pre-requisite for Calculus, reviewing and mastering these skills are considered your responsibility. This means that minimal, and in some cases no, class time will be devoted to this section. When you identify areas that you need help with we strongly urge you to seek assistance outside of class from your instructor or other student tutoring service.\bigskip}
+		\end{minipage}%
+	}}
 
 % \mfigurethree{mediaoptions}{graphicsoptions}{offset}{caption}{label}{file}
 \newcommand{\mfigurethree}[6]%
-		{\marginpar{\vspace{#3}
-		\begin{minipage}[c][0pt]{.99\marginparwidth}
-		\centering%
+	{\mnote[#3]{\lxfigure{\centering%
 		\ifthenelse{\boolean{in_threeD}}{% in 3D
-		\includemedia[#1]{\includegraphics{#6_3D\colornamesuffix}}{#6_3D.prc}}{% not
-		\myincludegraphics[#2]{#6}}%
+			\includemedia[#1]{\includegraphics{#6_3D\colornamesuffix}}{#6_3D.prc}
+		}{% not
+			\myincludegraphics[#2]{#6}
+		}%
 		\captionof{figure}{#4}\label{#5}
-		\end{minipage}}}
+	}}}
+
+
+\newenvironment{lxfigure}{%
+	\iflatexml\begin{figure}[!h]\else\vspace{\baselineskip}\fi%
+}{%
+	\iflatexml\end{figure}\else\vspace{\baselineskip}\fi
+}
+
+\newcommand{\tbox}[1]{\begin{tabular}{c}#1\end{tabular}} % a tall box
+\newcommand*{\zbox}[1]{\makebox[0pt][c]{#1}} % a zero width box
+
+
+\newboolean{chapter_already_has_exercises}
+
+\newcommand*{\apexchapter}[2]{
+ \clearpage\thispagestyle{empty}\cleardoublepage
+ \chapter{#1}\label{#2}
+ \thispagestyle{empty}
+ \setboolean{chapter_already_has_exercises}{false}
+ \ifthenelse{\boolean{latexml}}{\section*{Chapter Introduction}}{}
+}
+
+
+\newcounter{flushcounter}
+\newcommand{\flushinner}[1]{%
+	\stepcounter{flushcounter}%
+	\makebox[0pt]{\label{label\theflushcounter}}%
+	\ifthenelse{\boolean{latexml}\OR\isodd{\pageref{label\theflushcounter}}}{%
+%		\makebox[.99\linewidth][l]{#1}%
+%		\makebox[.99\linewidth][l]{\parbox{.99\linewidth}{#1}}%
+		\makebox[.99\linewidth][l]{\begin{tabular}{c}#1\end{tabular}}%
+}{%
+%		\makebox[.99\linewidth][r]{#1}%
+%		\makebox[.99\linewidth][r]{\parbox{\textwidth}{#1}}%
+		\makebox[.99\linewidth][r]{\begin{tabular}{c}#1\end{tabular}}%
+	}}
+\newcommand{\flushouter}[1]{%
+	\stepcounter{flushcounter}%
+	\makebox[0pt]{\label{label\theflushcounter}}%
+	\ifthenelse{\boolean{latexml}\OR\isodd{\pageref{label\theflushcounter}}}{%
+		\makebox[.99\linewidth][r]{\begin{tabular}{c}#1\end{tabular}}%
+	}{%
+		\makebox[.99\linewidth][l]{\begin{tabular}{c}#1\end{tabular}}%
+	}}
+\newcommand{\flushinnerequ}[1]{\flushinner{\vtop{#1}}}
+
+\newcommand{\prereqIntro}{The material in this section provides a basic review of and practice problems for pre-calculus skills essential to your success in Calculus. You should take time to review this section and work the suggested problems (checking your answers against those in the back of the book). Since this content is a pre-requisite for Calculus, reviewing and mastering these skills are considered your responsibility. This means that minimal, and in some cases no, class time will be devoted to this section. When you identify areas that you need help with we strongly urge you to seek assistance outside of class from your instructor or other student tutoring service.\bigskip}
+
 
 \ifthenelse{\boolean{xetex}}%
 	{%

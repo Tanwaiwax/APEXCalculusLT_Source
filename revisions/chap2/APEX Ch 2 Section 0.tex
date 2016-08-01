@@ -1,0 +1,259 @@
+\documentclass[11pt]{report}
+\usepackage[letterpaper, total={6.5in, 10in}]{geometry}
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+\usepackage{amsmath, amsthm, mathpazo, epic, eepic, color, array}
+\usepackage{amssymb}
+%\usepackage{graphicx}
+\usepackage{cancel}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\pgfplotsset{compat=1.13}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+\usepackage{hyperref}
+
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows, petri, topaths}
+\usepackage{tkz-berge}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+
+\newboolean{colorprint}
+\setboolean{colorprint}{true}
+%\setboolean{colorprint}{false}
+
+\ifthenelse{\boolean{colorprint}}{%
+\newcommand{\colorone}{blue}
+\newcommand{\colortwo}{red}
+\newcommand{\coloronefill}{blue!15!white}
+\newcommand{\colortwofill}{red!15!white}
+\newcommand{\colormapone}{rgb=(.4,.4,1); rgb=(.8,.8,1)}
+\newcommand{\colormaptwo}{rgb=(1,.4,.4); rgb=(1,.8,.8)}
+\newcommand{\colormapplaneone}{rgb=(.7,.7,1); rgb=(.9,.9,1)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,1}
+\definecolor{colormaponetop}{rgb}{.8,.8,1}
+\definecolor{colormaptwobottom}{rgb}{1,.4,.4}
+\definecolor{colormaptwotop}{rgb}{1,.8,.8}
+}% ends color
+{% not color
+\newcommand{\colorone}{black}
+\newcommand{\colortwo}{black!50!white}
+\newcommand{\coloronefill}{black!15!white}
+\newcommand{\colortwofill}{black!05!white}
+\newcommand{\colormapone}{rgb=(.4,.4,.4); rgb=(.7,.7,.7)}
+\newcommand{\colormaptwo}{rgb=(.6,.6,.6); rgb=(.9,.9,.9)}
+\newcommand{\colormapplaneone}{rgb=(.8,.8,.8); rgb=(.95,.95,.95)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,.4}
+\definecolor{colormaponetop}{rgb}{.7,.7,.7}
+\definecolor{colormaptwobottom}{rgb}{.6,.6,.6}
+\definecolor{colormaptwotop}{rgb}{.9,.9,.9}
+}%
+
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+\pgfplotsset{my style/.append style={axis x line=middle, axis y line=
+middle, xlabel={$x$}, ylabel={$y$}, axis equal }}
+
+\pgfplotsset{compat=1.13}
+\newcommand{\ds}{\displaystyle}
+\begin{document}
+
+
+\textbf{Chapter 2 Prerequisite Topics}\\
+\vskip .5 truecm
+
+\textbf{Rules of Exponents}  \\
+The following table summarizes the laws of exponents and equivalent forms of exponent expressions commonly used in this chapter. Let $m$ and $n$ be any real numbers and let $x, y$ and $z$ take on any values for which the expression is defined.
+
+\begin{center}
+\bgroup
+\def\arraystretch{1.7}
+ \begin{tabular}{m{5cm}| m{8cm}} 
+   Laws of Exponents & Examples \\
+\hline
+Products: & $x^5 \cdot x^7 = x^{5+7}=x^{12}$  \\  
+$x^m \cdot x^n = x^{m+n}$&  $\displaystyle x^{-3} \cdot x^{-4} = x^{-3+(-4)}=x^{-7}= \frac{1}{x^7}$  \\
+ &  $\displaystyle x^{-\frac{1}{2}} \cdot x^{\frac {2}{3}} = x^{-\frac{1}{2} + \frac {2}{3}}=x^{\frac {1}{6}}= \root 6 \of {x}$  \\ 
+ \hline
+Quotients: & $\frac{x^5}{x^7} = x^{5-7}=x^{-2}=\frac{1}{x^2}$  \\  
+$\displaystyle \frac{x^m}{x^n} = x^{m-n}$ &  $\displaystyle \frac{x^{-3}}{x^{-4}} = x^{-3-(-4)}=x^{1}= x$  \\
+ &  $\displaystyle \frac{x^{\frac{2}{3}}}{x^{-\frac {1}{2}}} = x^{\frac{2}{3} - (-\frac {1}{2})}=x^{\frac {7}{6}}= \root 6 \of {x^7} = x\root 6 \of {x}$  \\ 
+\hline
+Power raised to a power: & $(x^5)^7 = x^{5\cdot 7}=x^{35}$  \\  
+$(x^m )^n = x^{m\cdot n}$ &  $\displaystyle x^{-3} \cdot x^{4} = x^{-3 \cdot 4}=x^{-12}= \frac{1}{x^{12}}$  \\
+ &  $\displaystyle x^{-\frac{1}{2}} \cdot x^{\frac {2}{3}} = x^{-\frac{1}{2} \cdot \frac {2}{3}}=x^{-\frac {1}{3}}= \frac{1}{\root 3 \of {x}}$  \\
+ \hline
+Product and quotient raised to a power: &   \\  
+$(xy)^m = x^my^m$ ~and  & $(xyz)^7 = x^7y^7z^7$ \\
+$\ds \bigl(\frac{x}{y}\bigr)^m = \frac{x^m}{y^m}$ & $\ds  \bigl(\frac{x}{y}\bigr)^{-4} = \frac{x^{-4}}{y^{-4}} = \frac{y^{4}}{x^{4}} $  \\ 
+\\
+\end{tabular}
+\egroup
+\end{center}
+\vskip 1 truecm
+
+
+\textbf{Factoring and Simplifying Complex Fractions}\\
+The following examples demonstrate an efficient factoring technique that can be used to create the various equivalent expressions often needed to complete problems that arise in Calculus. The ability to move flexibly and efficiently among different representations of an expression is an important skill to have.\\ \\
+
+\textbf{Example 1: Factoring out the lowest power of the common factor among the terms}
+
+Factor completely to write an equivalent expression:\\ \\
+
+1.~  $\displaystyle x^{\frac{7}{3}} -5x^{\frac{2}{3}}$\\
+
+\indent \textbf{Solution:} 
+
+\begin{center} $\displaystyle x^{\frac{7}{3}} - 4x^{\frac{2}{3}} = x^{\frac{2}{3}} (x^{\frac{5}{3}} - 4)$ \end{center}
+Note: $\root 3 \of {x^2} (\root 3 \of {x^5} - 4)$ is also equivalent to this expression. \\ \\
+
+2.~	$\displaystyle \frac {1}{2}x(x-3)^{-\frac{2}{5}} + (x-3)^{\frac{3}{5}}$\\
+\begin{flalign*}
+\begin{aligned}
+\displaystyle \frac {1}{2}x(x-3)^{-\frac{2}{5}} + (x-3)^{\frac{3}{5}} &=  \frac {1}{2} (x-3)^{-\frac{2}{5}}\bigl(1 + 2(x -3)\bigr)\\
+ &= \frac {1}{2} (x-3)^{-\frac{2}{5}}(1 + 2x -6)\\
+ &= \frac {1}{2} (x-3)^{-\frac{2}{5}}(2x -5) \\
+ &= \frac {2x -5}{2(x-3)^{\frac{2}{5}}}  \\
+\end{aligned}
+\end{flalign*}
+\vskip .5 truecm
+Note: $\displaystyle \frac {2x -5}{2 \root 5 \of {(x-3)^2}} $ is also equivalent to this expression. \\ \\
+
+\textbf{Example 2: Simplifying complex fractions} Factoring out the lowest power of the common factor can also be used to simplify complex fractions. \\ \\
+\begin{align*}
+\ds \frac{\frac {2}{3}x(x-2)^{-\frac{1}{3}} + (x-2)^{\frac{2}{3}}}{x^2} &=  \frac{\frac {1}{3} (x-2)^{-\frac{1}{3}}\bigl(2x + 3(x-2)\bigr)}{x^2}\\
+ &= \frac{2x + 3x-6}{3 x^2(x-2)^{\frac{1}{3}}}\\
+ &= \frac{5x-6}{3 x^2 \root 3 \of {x-2}}\\
+\end{align*}
+
+\vskip 1 truecm
+
+\textbf{\large{Function Composition}} \\
+
+\textbf{Function composition} refers to combining functions in a way that the output from one function becomes the input for the next function. In other words, the range ($y$-values) of one function become the domain ($x$-values) of the next function. We deonte this as $(f \circ g)(x) = f(g(x))$, where the output of $g(x)$ becomes the input of $f(x)$\\ \\
+
+\textbf{Example 3: Composition of two functions}\\
+Given $\displaystyle f(x) = \frac{1}{x^2}$ and $g(x) = \sqrt{x+4}$, find $(f \circ g)(x)$ and $(g \circ f)(x)$.\\ \\
+
+To find $(f \circ g)(x) = f(g(x))$, we substitute the function $g(x)$ into the function $f(x)$. Thus, \\
+\begin{center} $\displaystyle f(g(x)) = f\bigl(\sqrt{x+4}\bigr) = \frac {1}{(\sqrt{x+4})^2} = \frac {1}{x+4}$. \end{center} 
+\vskip .5 truecm
+
+For $(g \circ f)(x) = g(f(x))$, we substitute the function $f(x)$ into the function $g(x)$. Thus, \\
+\begin{center} $\displaystyle g(f(x)) = g\Bigl(\frac{1}{x^2}\Bigr) = \sqrt{\frac{1}{x^2} +4} =  \sqrt{\frac{1+4x^2}{x^2}}$. \end{center} 
+\vskip 1 truecm
+
+\textbf{Example 4: Composition of three functions}\\
+Given $f(x)=x^2$, $g(x)=\sqrt{4-x}$ and $h(x)=3x-5$, find $(f\circ g\circ h)(x)$ and $(g\circ f\circ h)(x)$.\\ \\
+
+To find $(f\circ g\circ h)(x)$ we must start with the inside and work our way out. 
+\begin{align*}
+(f\circ g\circ h)(x)&=f(g(h(x)))\\
+&=f(g(3x-5))\\
+&=f\Bigl(\sqrt{4-(3x-5)}\Bigr)=f(\sqrt{9-3x})\\
+&=\bigl(\sqrt{9-3x}\bigr)^2=9-3x
+\end{align*}
+
+For $(g\circ f\circ h)(x)$, we have
+\begin{align*}
+(g\circ f\circ h)(x)&=g(f(h(x)))\\
+&=g(f(3x-5))\\
+&=g((3x-5)^2)=g(9x^2-30x+25)\\
+&=\sqrt{4-(9x^2-30x+25)}=\sqrt{30x-9x^2-21}
+\end{align*}
+\vskip .5 truecm
+
+In this chapter we will also need to decompose a given function into two or more, less complex functions. For any one function there is often more than one way to write the decomposition. The following examples demonstrate this. \\
+
+\textbf{Example 5: Decomposing a function}
+Given $F(x)=\sin(3x^2+5)$, find $f(x)$ and $g(x)$ so that $F(x) = f(g(x))$.\\
+
+\indent One solution is $f(x)=\sin x$ and let $g(x)=3x^2+5$. \\ \\
+\indent Another possible solution is $f(x)=\sin (x+5)$ and $g(x)=3x^2$. 
+\vskip 1 truecm
+
+\textbf{Exercises}\\
+
+Exponents\\
+
+Simplify each expression. Write your answer so that all exponents are positive. \\ \\
+\begin{enumerate}
+\item $(5x^4 y^5)(2x^2y^3)^4$	Solution: $80x^{12}y^{17}$
+\item $\displaystyle \Biggl(\frac{4a^{3/2} b^3}{a^2 b^{-1/2}}\Biggr)^{-2}$	Solution: $\displaystyle \frac{a}{16b^7}$
+\item $\displaystyle \frac {\bigl(-2x^{-3}y^7z^5 \bigr)^{-4}}{\bigl(x^3y^{-2}z^5\bigr)^3}$ 	Solution: $\displaystyle \frac{-x^3}{16y^{22}z^{35}}$
+\item  $\displaystyle \root 4 \of {x^8y^{16}z^{21}}$  Solution: $x^2y^4z^5\root 4 \of z=x^2y^4z^{5/4}$
+\end{enumerate}
+\vskip .5 truecm
+
+Factor to write equivalent expressions.
+\begin{enumerate}
+\item $\displaystyle \frac {5}{3} x^{\frac{2}{3}} -\frac {5}{3} x^{-\frac{1}{3}}$\\
+Solution: $\displaystyle \frac {5}{3} x^{\frac{2}{3}} - \frac {5}{3} x^{-\frac{1}{3}} = \frac {5}{3} x^{-\frac{1}{3}} (x - 1) = \frac {5(x-1)}{3x^{\frac{1}{3}}} = \frac {5(x-1)}{3 \root 3 \of x}$\\
+\item $\ds \frac{{\frac {1}{2}} x^{-\frac{1}{2}}(x+4) -3x^{\frac{1}{2}}}{(x+4)^2}$\\ \\
+Solution: $\ds \frac{{\frac {1}{2}} x^{-\frac{1}{2}}(x+4) -3x^{\frac{1}{2}}}{(x+4)^2}=\frac{{\frac {1}{2}} x^{-\frac{1}{2}}\bigl((x+4) -6x\bigr)}{(x+4)^2}= \frac{-5x+4}{2x^{\frac{1}{2}}(x+4)^2}=\frac{-5x+4}{2 \sqrt x (x+4)^2}$\\ \\
+\item $6x(3x^2+2)^4(x^2 - 5)^2 + 24x(3x^2+2)^3(x^2 - 5)^3$ \\ \\
+Solution: $6x(3x^2+2)^4(x^2 - 5)^2 + 24x(3x^2+2)^3(x^2 - 5)^3 = 6x(3x^2+2)^3(x^2 - 5)^2\bigl((3x^2+2) + 4(x^2 - 5) \bigr) =  6x(3x^2+2)^3(x^2 - 5)^2(3x^2+2 + 4x^2 - 20)  = 6x(3x^2+2)^3(x^2 - 5)^2(7x^2 - 18)  $\\\end{enumerate}
+\vskip .5 truecm
+
+Function Composition:
+\begin{enumerate}
+\item If $f(x)=x^2+2x$ and $g(x)=x-4$ find
+\begin{enumerate}[label=\alph*.]
+\item $(f \circ g)(6)$      Solution: 8
+\item $(g \circ f)(6)$      Solution: 44
+\item $(f \circ g)(x)$	Solution: $x^2-6x+8$
+\item $(g \circ f)(x)$	Solution: $x^2+2x-4$
+\end{enumerate}
+
+\item If $\displaystyle{f(x)=\frac{1}{x-5}}$ and $g(x)=\sqrt {x-2}$ find
+\begin{enumerate}[label=\alph*.]
+\item $f(g(6))$	Solution: $-\frac{1}{3}$
+\item $g(f(6))$	Solution: Not defined
+\item $f(g(x))$	Solution: $\displaystyle \frac{1}{\sqrt{x-2}-5}$
+\item $g(f(x))$	Solution: $\displaystyle \sqrt{\frac{1}{x-5}-2}$
+\end{enumerate}
+
+\item $F(x) = f(g(x))$ identify $f(x)$ and $g(x)$.
+\begin{enumerate}[label=\alph*.]
+\item $F(x) = \frac {5}{x+4}$	Possible solution: $f(x)=\frac{5}{x}$ and $g(x)=x+4$
+\item $F(x) =  |{4-x^2}|$		Possible solution: $f(x)=|x|$ and $g(x)=4-x^2$
+\item $\displaystyle F(x) = \sqrt {x+h - 5}$	Possible solution: $f(x)=\sqrt{x+h}$ and $g(x)=x-5$
+\end{enumerate}
+
+\item $F(x) = f(g(h(x)))$ identify $f(x), g(x)$ and $h(x)$.
+\begin{enumerate}[label=\alph*.]
+\item $\displaystyle F(x) = \root 3 \of {(2x+1)^2}$	Possible solution: $f(x)=\root 3 \of {x}$, $g(x)=x^2$, and $h(x)=2x+1$
+\item $\displaystyle F(x) = 2 \root 3 \of{x^2} +1$ 	Possible solution: $f(x)=2x+1$, $g(x)=\root 3 \of {x}$, and $h(x)=x^2$
+\end{enumerate}
+\end{enumerate}
+
+
+
+
+
+
+
+\end {document}
+
+%Domain stuff I cut from composition section.
+ and state the domain of each composition.
+
+\vskip .25 truecm
+
+To find the domain of $f(g(x))$ we first think about the domain of $g(x)$. In this case $g(x)=\sqrt{x+4}$ has a domain $[-4, \infty)$. Next we consider $f(x)=\frac{1}{x^2}$ whose domain is all real numbers except 0. Since we substitute $g(x)$ into $f(x)$ the domain of $f(g(x))$ must exclude all $x-$values that make $g(x)= 0$. Thus, $x \neq 4$. Consequently, the domain of $f(g(x))$ is $(4, \infty)$.
+
+\vskip .25 truecm
+
+To find the domain of $g(f(x))$ we first think about the domain of $f(x)$. In this case $\displaystyle f(x)=\frac{1}{x^2}$ has a domain of all real numbers, except $0$. Next we consider $g(x) = \sqrt{x+4}$ whose domain is $[-4, \infty)$. Since we substitute $f(x)$ into $g(x)$ the domain of $g(f(x))$ must exclude all $x-$values that make $\displaystyle \frac{1}{x^2} < -4$ (outside of $g$'s domain). There are no such $x-$values to exclude, thus the domain of $f(g(x))$ is $(-\infty, 0) \cup (0, \infty)$.
+

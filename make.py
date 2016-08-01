@@ -24,7 +24,11 @@ parser.add_argument("-c","--calculus", type=int, choices=[0,1,2,3,4],
 
 parser.add_argument("-i","--instructor", action="store_true",
                     help="Instructor version "
-                    "(prints all answers; default is student; ignores sb).")
+                    "(prints all answers; default is student).")
+
+parser.add_argument("-p","--programmer", action="store_true",
+                    help="Programmer version "
+                    "(prints question/answer source; default is no; implies -i).")
 
 parser.add_argument("-n","--internet", action="store_true",
                     help="Create interNet version (options x, w, & t).")
@@ -80,10 +84,11 @@ def compilewith(commands=False):
             title += " "+iii
             newsuffix += "_"+iii
         options.write(r"\newcommand{\thetitle}{"+title+"}\n")
-        if args.instructor:
+        if args.instructor or args.programmer:
             options.write("\\printallanswers\n")
-            options.write("\\printexercisenames\n")
             newsuffix += "_instr"
+        if args.programmer:
+            options.write("\\printexercisenames\n")
         if args.blackwhite:
             options.write("\\printinblackandwhite\n")
             options.write("\\usetwoDgraphics\n")

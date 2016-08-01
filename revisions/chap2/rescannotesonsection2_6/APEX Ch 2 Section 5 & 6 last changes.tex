@@ -1,0 +1,107 @@
+\documentclass[11pt]{report}
+\usepackage[letterpaper, total={6.5in, 10in}]{geometry}
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+\usepackage{amsmath, amsthm, mathpazo, epic, eepic, color, array}
+\usepackage{amssymb}
+%\usepackage{graphicx}
+\usepackage{cancel}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\pgfplotsset{compat=1.13}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+\usepackage{hyperref}
+
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows, petri, topaths}
+\usepackage{tkz-berge}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+
+\newboolean{colorprint}
+\setboolean{colorprint}{true}
+%\setboolean{colorprint}{false}
+
+\ifthenelse{\boolean{colorprint}}{%
+\newcommand{\colorone}{blue}
+\newcommand{\colortwo}{red}
+\newcommand{\coloronefill}{blue!15!white}
+\newcommand{\colortwofill}{red!15!white}
+\newcommand{\colormapone}{rgb=(.4,.4,1); rgb=(.8,.8,1)}
+\newcommand{\colormaptwo}{rgb=(1,.4,.4); rgb=(1,.8,.8)}
+\newcommand{\colormapplaneone}{rgb=(.7,.7,1); rgb=(.9,.9,1)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,1}
+\definecolor{colormaponetop}{rgb}{.8,.8,1}
+\definecolor{colormaptwobottom}{rgb}{1,.4,.4}
+\definecolor{colormaptwotop}{rgb}{1,.8,.8}
+}% ends color
+{% not color
+\newcommand{\colorone}{black}
+\newcommand{\colortwo}{black!50!white}
+\newcommand{\coloronefill}{black!15!white}
+\newcommand{\colortwofill}{black!05!white}
+\newcommand{\colormapone}{rgb=(.4,.4,.4); rgb=(.7,.7,.7)}
+\newcommand{\colormaptwo}{rgb=(.6,.6,.6); rgb=(.9,.9,.9)}
+\newcommand{\colormapplaneone}{rgb=(.8,.8,.8); rgb=(.95,.95,.95)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,.4}
+\definecolor{colormaponetop}{rgb}{.7,.7,.7}
+\definecolor{colormaptwobottom}{rgb}{.6,.6,.6}
+\definecolor{colormaptwotop}{rgb}{.9,.9,.9}
+}%
+
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+\pgfplotsset{my style/.append style={axis x line=middle, axis y line=
+middle, xlabel={$x$}, ylabel={$y$}, axis equal }}
+
+\pgfplotsset{compat=1.13}
+
+\begin{document}
+
+\textbf{Chapter 2 Section 6}\\
+\vskip .5 truecm
+
+
+
+\textbf{Section 2.5 Example 6 solution rewrite}\\
+
+Recognize that we have the function $g(x)=\tan(6x^3-7x)$ "inside" the function $f(x) = x^5$; that is, we have $y=\left(\tan(6x^3-7x)\right)^5$. We use the Chain Rule multiple times, beginning with the Generalized Power Rule:
+\begin{align*}
+y' &= 5\bigl(\tan(6x^3-7x)\bigr)^4 \cdot \frac{d}{dx} \tan(6x^3-7x)\\
+&= 5\tan^4(6x^3-7x) \cdot \sec^2 (6x^3-7x) \cdot \frac{d}{dx}(6x^3-7x) \\
+&= 5\tan^4 (6x^3-7x) \cdot \sec^2 (6x^3-7x) \cdot (18x^2-7)\\
+&= 5(18x^2-7)\tan^4 (6x^3-7x) \sec^2 (6x^3-7x) \\
+\end{align*}
+\vskip .5 truecm
+
+\textbf{Section 2.6}\\
+%The repeated use of the phrase "just tack on the dy/dx" in PatrickJMTs video pushed me over the edge. There was no mention of the fact that y is a function of x! : )
+
+Please change the video to: https://www.khanacademy.org/math/differential-calculus/taking-derivatives/implicit-differentiation/v/showing-explicit-and-implicit-differentiation-give-same-result \\
+
+\textbf{Example 2.6.4 (formerly \#70)} I was supposed to add a few steps to the first part of the solution.\\
+
+\begin{align*}
+	\frac{d}{dx}\left(\sin (x^2y^2)\right)
+	&= \cos(x^2y^2) \cdot \frac{d}{dx} (x^2y^2)\\
+	&= \cos(x^2y^2) \cdot \left(x^2 \frac{d}{dx} (y^2)
+	+ \frac{d}{dx} (x^2) \cdot y^2\right)\\
+	&= \cos(x^2y^2) \cdot (x^2 \cdot 2yy'+2y^2)\\
+	&= 2(x^2yy'+y^2)\cos(x^2y^2). \\
+\end{align*}
+\vskip .5 truecm
+
+Thank you for graphing and adding a point to that "find the euqation of the tangent line" function I added. 
+
+\end {document}

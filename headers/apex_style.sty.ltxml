@@ -40,10 +40,17 @@ DefConstructor('\makeStyles{}{}',
 
 sub boxStyles {
     my $hue = shift;
-    my $border = "hsl($hue,100%,68%)";
     my $start = "hsl($hue,100%,97%)";
-    my $middle = "hsl($hue,100%,91%)";
-    my $stop  = "hsl($hue,100%,84%)";
+    my ($border,$middle,$stop);
+    if ( $hue eq '60' ) {
+	$border = "hsl($hue,90%,68%)";
+	$middle = "hsl($hue,91%,90%)";
+	$stop  = "hsl($hue,82%,83%)";
+    } else {
+	$border = "hsl($hue,18%,58%)";
+	$middle = "hsl($hue,72%,92%)";
+	$stop  = "hsl($hue,43%,86%)";
+    }
     return "{
       padding: 1ex 1em;
       text-indent:0;
@@ -60,16 +67,39 @@ sub boxStyles {
     }";
 }
 
+DefMacro('\examplestarred {}{}{}','\begin{exampleEnv}[#2]\label{#1}
+\lxAddClass{inExample}
+#3
+\end{exampleEnv}');
+
+
+DefMacro('\captionof{}{}','\caption{#2}');
+
 DefMacro('\myincludegraphicsthree{}{} Semiverbatim',
 	 '\myincludegraphics[#2]{#3_3D}');
 
-DefMacro('\AddToShipoutPicture OptionalMatch:* {}','');
-
 DefMacro('\vv {}','\vec #1');
 
+# some Macros we do need
+DefMacro('\lvert','\vert');
+DefMacro('\rvert','\vert');
+DefMacro('\lVert','\Vert');
+DefMacro('\rVert','\Vert');
+
+# some macros we don't need
+DefMacro('\drawexampleline');
+DefMacro('\eoehere');
+DefMacro('\longexample{}');
+DefMacro('\AddToShipoutPicture OptionalMatch:* {}');
+
+# some macros we don't need, but LaTeXML wants for plotting tikz pics
+DefMacro('\x');
+DefMacro('\y');
+
+
+# fake counters to help with numbering the answers
 NewCounter('fakechapter');
 NewCounter('fakesection','fakechapter');
-
 sub TheFakeSection {
     return CounterValue('fakechapter')->toString . '.' . CounterValue('fakesection')->toString;
 }
@@ -103,7 +133,7 @@ DefMacro('\writeToAnsFile {}{}{}', sub {
 	 $_[2],
 	 Tokenize('}}\label{sol'),
 	 $_[3],
-	 Tokenize('}\vskip\baselineskip}\write\answrite{\lxAddClass{solutions}\printanswers{'),
+	 Tokenize('}\bigskip}\write\answrite{\lxAddClass{solutions}\printanswers{'),
 	 $_[1],
 	 Tokenize('}}'));
     @ret;

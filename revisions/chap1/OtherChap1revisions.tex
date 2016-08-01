@@ -1,0 +1,152 @@
+\documentclass[10pt]{article}
+
+
+%%
+% HERE THERE BE DRAGONS
+%%
+
+\usepackage{ifthen}
+
+\usepackage{lipsum}
+\usepackage{pgfplots}
+\pgfplotsset{colormap={coloronemap}{rgb=(.4,.4,1); rgb=(.8,.8,1)}}
+\pgfplotsset{colormap={colortwomap}{rgb=(1,.4,.4); rgb=(1,.8,.8)}}
+%\pgfplotsset{compat=1.3}
+\usepackage{eso-pic,calc}
+\usepackage[font=small]{caption}
+\usepgfplotslibrary{external}
+\usetikzlibrary{calc}
+\usetikzlibrary{shadings}
+
+\usepackage[h]{esvect}
+
+\pgfplotsset{compat=1.8}
+
+\usepackage[paperheight=11in,paperwidth=6in,%inner=1in,includeheadfoot,
+textheight=10in,%textwidth=345pt,
+marginparwidth=150pt]{geometry}
+%% end detour
+%%
+
+\usepackage{amsmath}
+
+
+
+
+\ifthenelse{\boolean{xetex}}%
+	{\sffamily
+	%%\usepackage{fontspec}
+	\usepackage{mathspec}
+	\setallmainfonts[Mapping=tex-text]{Calibri}
+	\setmainfont[Mapping=tex-text]{Calibri}
+	\setsansfont[Mapping=tex-text]{Calibri}
+	\setmathsfont(Greek){[cmmi10]}}
+	{Please compile with XeLaTeX}
+
+\newboolean{colorprint}
+\setboolean{colorprint}{true}
+%\setboolean{colorprint}{false}
+
+\ifthenelse{\boolean{colorprint}}{%
+\newcommand{\colorone}{blue}
+\newcommand{\colortwo}{red}
+\newcommand{\coloronefill}{blue!15!white}
+\newcommand{\colortwofill}{red!15!white}
+\newcommand{\colormapone}{rgb=(.4,.4,1); rgb=(.8,.8,1)}
+\newcommand{\colormaptwo}{rgb=(1,.4,.4); rgb=(1,.8,.8)}
+\newcommand{\colormapplaneone}{rgb=(.7,.7,1); rgb=(.9,.9,1)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,1}
+\definecolor{colormaponetop}{rgb}{.8,.8,1}
+\definecolor{colormaptwobottom}{rgb}{1,.4,.4}
+\definecolor{colormaptwotop}{rgb}{1,.8,.8}
+}% ends color
+{% not color
+\newcommand{\colorone}{black}
+\newcommand{\colortwo}{black!50!white}
+\newcommand{\coloronefill}{black!15!white}
+\newcommand{\colortwofill}{black!05!white}
+\newcommand{\colormapone}{rgb=(.4,.4,.4); rgb=(.7,.7,.7)}
+\newcommand{\colormaptwo}{rgb=(.6,.6,.6); rgb=(.9,.9,.9)}
+\newcommand{\colormapplaneone}{rgb=(.8,.8,.8); rgb=(.95,.95,.95)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,.4}
+\definecolor{colormaponetop}{rgb}{.7,.7,.7}
+\definecolor{colormaptwobottom}{rgb}{.6,.6,.6}
+\definecolor{colormaptwotop}{rgb}{.9,.9,.9}
+}%
+\newcommand{\la}{\left\langle}
+\newcommand{\ra}{\right\rangle}
+\newcommand{\dotp}[2]{\ensuremath{\vec #1 \cdot \vec #2}}
+\newcommand{\proj}[2]{\ensuremath{\text{proj}_{\,\vec #2}{\,\vec #1}}}
+
+\newcommand{\fp}{\ensuremath{f\,'}}
+
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+
+\newcommand{\threedlines}[4][]{\draw [dashed,#1] (axis cs: #2,#3,#4) -- (axis cs: #2,#3,0) -- (axis cs: #2,0,0)  (axis cs: #2,#3,0)--(axis cs:0,#3,0);}
+
+\newcommand{\mydraw}{\draw (axis cs:0,0,0) -- (axis cs:1,1,0);}
+\newcommand{\ds}{\displaystyle}
+\usepackage{multicol}
+
+%% no more dragons.  type away %%
+
+% prefer color one for the main graph, and color two for secondary lines
+
+\begin{document}
+
+Move the text from old Page 21(included below with a new intro) to right before example 1.2.2. \\
+
+We will follow a general pattern to work through $\delta$-$\epsilon$ problems. In some sense, each starts out ``backwards.'' That is, while we want to
+\begin{enumerate}
+	\item start with $|x-c|<\delta$ and conclude that
+	\item $|f(x)-L|<\epsilon$,
+\end{enumerate}
+we actually start by assuming 
+\begin{enumerate}
+	\item $|f(x)-L|<\epsilon$, then perform some algebraic manipulations to give an inequality of the form
+	\item $|x-c|<$ \textit{something}.
+\end{enumerate} 
+When we have properly done this, the \textit{something} on the ``greater than'' side of the inequality becomes our $\delta$. We can refer to this as the ``scratch--work'' phase of our proof. Once we have $\delta$, we can formally start with $|x-c|<\delta$ and use algebraic manipulations to conclude that $|f(x)-L|<\epsilon$, usually by using the same steps of our ``scratch--work'' in reverse order.
+
+We will highlight this process in the following examples.\\
+
+New solution to Example 1.5.3:  \\
+
+Vertical asymptotes occur where the function grows without bound; this can occur at values of $c$ where the denominator is 0. When $x$ is near $c$, the denominator is small, which in turn can make the function take on large values.  In the case of the given function, the denominator is 0 at $x=\pm 2$.  We will consider the limits as $x$ appproaches $\pm 2$ from the left and right to determine the vertical asymptotes. 
+\begin{align*}
+\lim_{x\to 2^+} \frac {3x}{(x-2)(x+2)}&=\infty\\
+\lim_{x\to 2^-}\frac {3x}{(x-2)(x+2)}&=-\infty\\
+\lim_{x\to -2^+} \frac {3x}{(x-2)(x+2)}&=\infty\\
+\lim_{x\to -2^-}\frac {3x}{(x-2)(x+2)}&=-\infty\\
+\end{align*}
+ We can graphically confirm the limits above by looking at Figure \ref{fig:multipleasymptotes}. Thus the vertical asymptotes are at $x=\pm2$.
+
+
+Change the paragrpah right before Definition 8: Continuity on Closed Intervals to read as follows\\
+
+Our definition of continuity on an interval specifies the interval is an open interval. At endpoints or points of discontinuity we may consider continuity from the right or left. We say that $f$ is continuous from the right at $a$ if $\ds \lim_{x\to a^+} f(x)=f(a)$ and that $f$ is continuous from the left at $a$ if  $\ds \lim_{x\to a^-} f(x)=f(a)$. We can extend the definition of continuity to closed intervals by considering the appropriate one-sided limits at the endpoints. 
+
+
+Change text right before Theorem 10 to read:\\
+
+
+Continuity is inherently tied to the properties of limits. Because of this, the properties of limits found in Theorems \ref{thm:limit_algebra} and \ref{thm:poly_rat} apply to continuity as well.  The following theorem states how continuous functions can be combined to form other continuous functions.
+\\
+
+Change text after Theorem 10 to read:\\
+ %%%%% The appropriate references to Theorems will need to be inserted%%%%%%%%%%
+The proofs of each of the parts of  Theorem 10 follow from the Basic Limit Properties given in Theorem 1.
+We will prove the product of two continuous functions is continuous now. \\
+
+
+Right after Theorem 11 add the following text:\\
+
+Now knowing the definition of continuity we can re--read Theorem \ref{thm:lim_continuous} as giving a list of functions that are continuous on their domains. \\
+
+
+Delete the text after theorem 12 except leave:\\
+
+  In the following example, we will show how we apply the previous theorems.
+
+\end{document}

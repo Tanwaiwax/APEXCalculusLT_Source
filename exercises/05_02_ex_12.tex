@@ -1,22 +1,35 @@
 {\noindent
 \begin{minipage}{\linewidth}
-\myincludegraphics[scale=.8]{figures/fig05_02_ex_12}
+ \begin{tikzpicture}
+  \begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+    axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={-2,-1,1,2},
+    ymin=-5.5,ymax=11,xmin=-2.5,xmax=2.5]
+   \addplot [{\coloronefill},fill={\coloronefill},domain=-2:2,area style]
+    {3*x^2-3} |- (axis cs:-2,0) --cycle;
+   \addplot [thick, {\colorone},smooth,samples=40,domain=-2:2] {3*x^2-3};
+   \draw (axis cs:1.5,10) node {\scriptsize $f(x)=3x^2-3$};
+   \draw (axis cs:-1.5,1) node {\scriptsize $4$};
+   \draw (axis cs:1.5,1) node {\scriptsize $4$};
+   \draw (axis cs:.3,-1) node {\scriptsize $4$};
+  \end{axis}
+  \node [right] at (myplot.right of origin) {\scriptsize $x$};
+  \node [above] at (myplot.above origin) {\scriptsize $y$};
+ \end{tikzpicture}
 \end{minipage}
-\noindent\begin{minipage}[t]{.49\linewidth}
+\noindent\begin{minipage}[t]{.5\linewidth}
 \begin{enumerate}
 \item		$\ds \int_{-2}^{-1} f(x)\ dx$
 \item		$\ds \int_1^2 f(x)\ dx$
 \item		$\ds \int_{-1}^1 f(x)\ dx$
 \end{enumerate}
-\end{minipage}
-\begin{minipage}[t]{.49\linewidth}
+\end{minipage}%
+\begin{minipage}[t]{.5\linewidth}
 \begin{enumerate}\addtocounter{enumii}{3}
 \item		$\ds \int_0^1 f(x)\ dx$
 \item		$\ds \int_0^2 \abs{f(x)}\ dx$
 \item		$\ds \int_0^1 \abs{f(x)}\ dx$
 \end{enumerate}
 \end{minipage}
-\ifthenelse{\boolean{printquestions}}{\vskip1in\ \columnbreak}{}
 }
 {\begin{enumerate}
 \item		$4$

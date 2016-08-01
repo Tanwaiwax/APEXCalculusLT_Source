@@ -5,18 +5,19 @@ The derivative is a powerful tool but is admittedly awkward given its reliance o
 Let's practice abstraction on linear functions, $y=mx+b$. What is $y\primeskip'$? Without limits, recognize that linear function are characterized by being functions with a constant rate of change (the slope). The derivative, $y\primeskip'$, gives the instantaneous rate of change; with a linear function, this is constant, $m$. Thus $y\primeskip'=m$. 
 
 Let's abstract once more. Let's find the derivative of the general quadratic function, $f(x) = ax^2+bx+c$. Using the definition of the derivative, we have:
-		\begin{align*}
-		\fp(x) 	&=	\lim_{h\to 0}\frac{a(x+h)^2+b(x+h)+c-(ax^2+bx+c)}{h} \\
-						&=	\lim_{h\to 0} \frac{ah^2+2ahx+bh}{h} \\
-						&=	\lim_{h\to 0} ah+2ax+b\\
-						&= 2ax+b.
-		\end{align*}
+\begin{align*}
+	\fp(x)
+	&=	\lim_{h\to 0}\frac{a(x+h)^2+b(x+h)+c-(ax^2+bx+c)}{h} \\
+	&=	\lim_{h\to 0} \frac{ah^2+2ahx+bh}{h} \\
+	&=	\lim_{h\to 0} ah+2ax+b\\
+	&= 2ax+b.
+\end{align*}
 		
-So if $y = 6x^2+11x-13$, we can immediately compute $y\primeskip' = 12x+11$. \\
+So if $y = 6x^2+11x-13$, we can immediately compute $y\primeskip' = 12x+11$.\bigskip
 
 In this section (and in some sections to follow) we will learn some of what mathematicians have already discovered about the derivatives of certain functions and how derivatives interact with arithmetic operations. We start with a theorem.
 
-\theorem{thm:deriv_common}{Derivatives of Common Functions}{
+\theorem{thm:deriv_common}{Derivatives of Common Functions}{~\smallskip\\[-\baselineskip]
 \iflatexml\begin{enumerate}\else\begin{enumerate*}\fi\noindent
 \lxAddClass{twoColumnListByRows}
 \item \parbox[t]{13em}{\sword{Constant Rule:}\index{derivative!Constant Rule}
@@ -26,39 +27,42 @@ In this section (and in some sections to follow) we will learn some of what math
 	$\ds \frac{d}{dx}\left(x^n\right) = nx^{n-1}$,\\
 	\phantom{.}~where $n$ is any real number.} \iflatexml\else\\[1ex]\fi
 \item \parbox{13em}{$\ds \frac{d}{dx}(\sin x) = \cos x$}
-\item \parbox{13em}{$\ds \frac{d}{dx}(\cos x) = -\sin x$} \iflatexml\else\\[1ex]\fi
+\item \parbox{13em}{$\ds \frac{d}{dx}(\cos x) = -\sin x$} \iflatexml\else\\[1.5ex]\fi
 \item \parbox{13em}{$\ds \frac{d}{dx}\left(e^x\right) = e^x$}
 \item \parbox{13em}{$\ds \frac{d}{dx}(\ln x) = \frac{1}{x}$}
 \iflatexml\end{enumerate}\else\end{enumerate*}\fi\index{derivative!basic rules}}
 
 This theorem starts by stating an intuitive fact: constant functions have a rate of change of zero, as they are \textit{constant}. Therefore their derivative is 0. The proof is left as an exercise.
 
-The theorem then states some fairly amazing things.\\
-In Part 2, the Power Rule states that the derivatives of functions of the form $y=x^n$ where $\mathbf{n}$ \textbf{is ANY real number} are very straightforward: multiply by the power, then subtract 1 from the power. This allows us to differentiate Power Functions, Root Functions, and functions with irrational exponents. The work we have done so far only allows us to prove the Power Rule when $n$ is a positive integer, which is presented here. We will provide proofs for other values of $n$ as we add the necessary tools to our knowledge of calculus.
+The theorem then states some fairly amazing things.
 
-\begin{proof}[Proof of Differentiation Power Rule when $n$ is a positive integer]
-Let $f(x)= x^n$, where $n \in \mathbb{Z}^+$. By the definition of derivative,\\
+In Part 2, the Power Rule states that the derivatives of functions of the form $y=x^n$ where $\mathbf{n}$ \textbf{is ANY real number} are very straightforward: multiply by the power, then subtract 1 from the power. This allows us to differentiate Power Functions, Root Functions, and functions with irrational exponents. The work we have done so far only allows us to prove the Power Rule when $n$ is a non-negative integer, which is presented here. We will provide proofs for other values of $n$ as we add the necessary tools to our knowledge of calculus.
+
+\begin{proof}[Proof of Differentiation Power Rule when $n$ is a non-negative integer]
+If $n=0$, then $f(x)=x^0=1$ (except when $x=0$, when the expression is indeterminate).  This means that
+\[\fp(x)=\lim_{h\to0}\frac{1-1}h=\lim_{h\to0}\frac0h=0=0x^{0-1}\]
+as claimed.  Now let $f(x)= x^n$, where $n \in \mathbb{Z}^+$. By the definition of derivative,
+%\flushinner{%
 \begin{align*}
-\small
-\fp(x) &= \lim_{h\to 0} \frac{(x+h)^n - x^n}{h} \\
-&= \lim_{h\to 0} \frac{(x+h)^n - x^n}{h} \quad\text{\tiny use the Binomial Theorem to expand } (x+h)^n\\  
-&=\lim_{h\to 0} \frac{x^n + \binom{n}{1} hx^{n-1} + \binom{n}{2} h^2x^{n-2}+ ... +\binom{n}{n-1} h^{n-1}x + \binom {n}{n} h^n)   -x^n}{h} \\
-&= \lim_{h\to 0} \frac{\binom{n}{1} hx^{n-1} + \binom{n}{2} h^2x^{n-2}+ ... +\binom{n}{n-1} h^{n-1}x + \binom {n}{n}  h^n}{h} \\
-&= \lim_{h\to 0} \frac{\binom{n}{1} hx^{n-1} + \binom{n}{2} h^2x^{n-2}+ ... +\binom{n}{n-1} h^{n-1}x + \binom {n}{n}  h^n}{h} \\
-&= \lim_{h\to 0} \frac{h\left[\binom{n}{1} x^{n-1} + \binom{n}{2} h x^{n-2}+ ... +\binom{n}{n-1} h^{n-2}x + \binom {n}{n} h^{n-1}\right]}{h},{\tiny\text{ divide out}~h}\\
-&= \lim_{h\to 0}~ \binom{n}{1} x^{n-1} + \binom{n}{2} h x^{n-2}+ ... +\binom{n}{n-1} h^{n-2}x + \binom {n}{n} h^{n-1},\\
-&=  n x^{n-1} \text{ since } \binom{n}{1} = n \qedhere
-\end{align*}
+\fp(x)
+&= \lim_{h\to 0} \dfrac{(x+h)^n - x^n}{h} \\
+&= \lim_{h\to 0} \dfrac{(x+h)^n - x^n}{h} \qquad\text{\small use the Binomial Theorem to expand $(x+h)^n$} \\
+&=\lim_{h\to 0} \dfrac{\binom{n}{0}x^n + \binom{n}{1} hx^{n-1} + \binom{n}{2} h^2x^{n-2}+ \dotsb +\binom{n}{n-1} h^{n-1}x + \binom {n}{n} h^n  -x^n}{h} \\
+&= \lim_{h\to 0} \dfrac{\binom{n}{1} hx^{n-1} + \binom{n}{2} h^2x^{n-2}+ \dotsb +\binom{n}{n-1} h^{n-1}x + \binom{n}{n} h^n}{h} \\
+&= \lim_{h\to 0} \dfrac{h\left[\binom{n}{1} x^{n-1} + \binom{n}{2} h x^{n-2}+ \dotsb +\binom{n}{n-1} h^{n-2}x + \binom {n}{n} h^{n-1}\right]}{h},\text{\small~divide $h$}\\
+&= \lim_{h\to 0}~ \dbinom{n}{1} x^{n-1} + \dbinom{n}{2} h x^{n-2}+ \dotsb +\dbinom{n}{n-1} h^{n-2}x + \dbinom {n}{n} h^{n-1},\\
+&=  n x^{n-1} \qquad\text{\small since } \dbinom{n}{1} = n \qedhere
+\end{align*}%}
 \end{proof}
 
-We proved Theorem \ref{thm:deriv_common} part 3 in a previous section and part 4 is left as an exercise.  In parts 5 and 6 we see something incredible about the functions $y=e^x$ and $y=\ln x$. We will use these rules freely, unfortunately their proofs will have to wait until we know a few more calculus techniques.
+We proved \autoref{thm:deriv_common} part 3 in \autoref{sec:derivative} and part 4 is left as an exercise.  In parts 5 and 6 we see something incredible about the functions $y=e^x$ and $y=\ln x$. We will use these rules freely, unfortunately their proofs will have to wait until we know a few more calculus techniques.
 % it is its own derivative.
 
 %One special case of the Power Rule is when $n=1$, i.e., when $f(x) = x$. What is $\fp(x)$? According to the Power Rule, $$\fp(x) = \frac{d}{dx}\big(x\big) = \frac{d}{dx}\big(x^1\big) = 1\cdot x^0 = 1.$$ In words, we are asking ``At what rate does $f$ change with respect to $x$?'' Since $f$ \textit{is} $x$, we are asking ``At what rate does $x$ change with respect to $x$?'' The answer is: 1. They change at the same rate.\\
 
-Let's practice using this theorem.\\
+Let's practice using this theorem.
 
-\example{ex_deriv_rule1}{Using Theorem \ref{thm:deriv_common} to find, and use, derivatives}
+\example{ex_deriv_rule1}{Using \autoref{thm:deriv_common} to find, and use, derivatives}
 {Let $f(x)=x^3$. 
 \begin{enumerate}
 	\item	Find $\fp(x)$.
@@ -69,26 +73,23 @@ Let's practice using this theorem.\\
 {\begin{enumerate}
 	\item	The Power Rule states that if $f(x) = x^3$, then $\fp(x) = 3x^2$. 
 	\item	To find the equation of the line tangent to the graph of $f$ at $x=-1$, we need a point and the slope. The point is $(-1,f(-1)) = (-1, -1)$. The slope is $\fp(-1)= 3$. Thus the tangent line has equation $y = 3(x-(-1))+(-1) = 3x+2$. 
-	\item	We can use the tangent line to approximate $(-1.1)^3$ as $-1.1$ is close to $-1$. We have
+
+	\mfigure{0in}{A graph of $f(x) = x^3$, along with its derivative $\fp(x) = 3x^2$ and its tangent line at $x=-1$.}{fig:xcubedwithderiv}{figures/figxcubedwithderiv}	\item	We can use the tangent line to approximate $(-1.1)^3$ as $-1.1$ is close to $-1$. We have
 	\[(-1.1)^3 \approx (-1)^3+3(-1.1-(-1))=-1+3(-.1)= -1.3.\]
 	We can easily find the actual answer; $(-1.1)^3 = -1.331$. 
-	\item	See Figure \ref{fig:xcubedwithderiv}.
-	\mfigure{0in}{A graph of $f(x) = x^3$, along with its derivative $\fp(x) = 3x^2$ and its tangent line at $x=-1$.}{fig:xcubedwithderiv}{figures/figxcubedwithderiv}
-\end{enumerate}
-\vskip-1.5\baselineskip
-}\\
-%\clearpage
+	\item	See \autoref{fig:xcubedwithderiv}.\eoehere
+\end{enumerate}}
 
-Theorem \ref{thm:deriv_common} gives useful information, but we will need much more. For instance, using the theorem, we can easily find the derivative of $y=x^3$, but it does not tell how to compute the derivative of $y=2x^3$, $y=x^3+\sin x$, nor $y=x^3\sin x$. The following theorem helps with the first two of these examples (the third is answered in the next section).
+\autoref{thm:deriv_common} gives useful information, but we will need much more. For instance, using the theorem, we can easily find the derivative of $y=x^3$, but it does not tell how to compute the derivative of $y=2x^3$, $y=x^3+\sin x$, nor $y=x^3\sin x$. The following theorem helps with the first two of these examples (the third is answered in the next section).
 
 \theorem{thm:deriv_prop}{Properties of the Derivative}
 {Let $f$ and $g$ be differentiable on an open interval $I$ and let $c$ be a real number. Then:
 \begin{enumerate}
-	\item	\sword{Sum/Difference Rule:}
-	$\ds \frac{d}{dx}\Big(f(x) \pm g(x)\Big) = \frac{d}{dx}\Big(f(x)\Big) \pm \frac{d}{dx}\Big(g(x)\Big)=\fp(x)\pm g\primeskip'(x)$
+	\item	\sword{Sum/Difference Rule:}\\
+	\qquad$\ds \frac{d}{dx}\Big(f(x) \pm g(x)\Big) = \frac{d}{dx}\Big(f(x)\Big) \pm \frac{d}{dx}\Big(g(x)\Big)=\fp(x)\pm g\primeskip'(x)$
 	\index{derivative!Sum/Difference Rule}\index{Sum/Difference Rule!of derivatives}
-	\item	\sword{Constant Multiple Rule:}
-	$\ds \frac{d}{dx}\Big(c\cdot f(x)\Big) = c\cdot\frac{d}{dx}\Big(f(x)\Big) = c\cdot\fp(x)$.\index{derivative!Constant Multiple Rule}\index{Constant Multiple Rule!of derivatives}
+	\item	\sword{Constant Multiple Rule:}\\
+	\qquad$\ds \frac{d}{dx}\Big(c\cdot f(x)\Big) = c\cdot\frac{d}{dx}\Big(f(x)\Big) = c\cdot\fp(x)$.\index{derivative!Constant Multiple Rule}\index{Constant Multiple Rule!of derivatives}
 \end{enumerate}}
 
 \begin{proof}[Proof of Sum Rule for Differentiation]
@@ -103,10 +104,9 @@ Let $f$ and $g$ be differentiable on an open interval $I$ and let $c$ be a real 
 \end{align*}
 \end{proof}
 
-\jmtVideo{3dJepii_rJ0}{basic-derivative-examples}{
-Derivatives --- Basic Examples}
+\jmtVideo{3dJepii_rJ0}{basic-derivative-examples}{Derivatives --- Basic Examples}
 
-Theorem \ref{thm:deriv_prop} allows us to find the derivatives of a wide variety of functions. It can be used in conjunction with the Power Rule to find the derivatives of any polynomial. Recall in Example \ref{ex_deriv1} that we found, using the limit definition, the derivative of $f(x) = 3x^2+5x-7$. We can now find its derivative without expressly using limits:
+\autoref{thm:deriv_prop} allows us to find the derivatives of a wide variety of functions. It can be used in conjunction with the Power Rule to find the derivatives of any polynomial. Recall in \autoref{ex_deriv1} that we found, using the limit definition, the derivative of $f(x) = 3x^2+5x-7$. We can now find its derivative without expressly using limits:
 \begin{align*}
 	\frac{d}{dx}\Big(3x^2+5x+7\Big)
 	&= 3\frac{d}{dx}\Big(x^2\Big) + 5\frac{d}{dx}\Big(x\Big) + \frac{d}{dx}\Big(7\Big) \\
@@ -117,7 +117,7 @@ Theorem \ref{thm:deriv_prop} allows us to find the derivatives of a wide variety
 We were a bit pedantic here, showing every step. Normally we would do all the arithmetic and steps in our head and readily find $\ds \frac{d}{dx}\Big(3x^2+5x+7\Big) = 6x+5$.
 
 \example{ex_der15}{Using Theorems \ref{thm:deriv_common} and \ref{thm:deriv_prop} to find derivatives}{Use Theorems \ref{thm:deriv_common} and \ref{thm:deriv_prop} to differentiate
-\[\text{1. }g(x)=(x^2+1)^3\qquad\qquad\text{2. }f(x)=\ln\frac{\sqrt{x}}8\]}%
+\[\text{1.~~}g(x)=(x^2+1)^3\qquad\qquad\text{2.~~}f(x)=\ln\frac{\sqrt{x}}8\]}%
 {Given the differentiation rules we have thus far, our only option for finding $g'(x)$ is to first multiply $g(x)$ out and then apply the sum and power rules. We see that
 \[g(x) = x^6 + 3x^4 + 3x^2 + 1\]
 thus,
@@ -131,23 +131,20 @@ f(x)
 &= \frac12\ln x - \ln 8 \\
 \end{align*}
 so that,
-\[\fp(x)=\frac12\cdot\frac1x-0=\frac12x.\]
-\vspace{-\baselineskip}}\\
+\[\fp(x)=\frac12\cdot\frac1x-0=\frac12x.\eoehere\]}
 
-\example{ex_der2}{Using the tangent line to approximate a function value}{
-Let $f(x) = \sin x + 2x+1$. Approximate $f(3)$ using an appropriate tangent line.}
+\example{ex_der2}{Using the tangent line to approximate a function value}{Let $f(x) = \sin x + 2x+1$. Approximate $f(3)$ using an appropriate tangent line.}
 {This problem is intentionally ambiguous; we are to \textit{approximate} using an \textit{appropriate} tangent line. How good of an approximation are we seeking? What does appropriate mean?
 
 In the ``real world,'' people solving problems deal with these issues all time. One must make a judgment using whatever seems reasonable. In this example, the actual answer is $f(3) = \sin 3 + 7$, where the real problem spot is $\sin 3$. What is $\sin 3$?
 
 Since $3$ is close to $\pi$, we can assume $\sin 3\approx \sin \pi = 0$. Thus one guess is $f(3) \approx 7$. Can we do better? Let's use a tangent line as instructed and examine the results; it seems best to find the tangent line at $x=\pi$. 
 
-Using Theorem \ref{thm:deriv_common} we find $\fp(x) = \cos x + 2$. The slope of the tangent line is thus $\fp(\pi) = \cos \pi + 2 =1$. Also, $f(\pi) = 2\pi+1 \approx 7.28$. So the tangent line to the graph of $f$ at $x=\pi$ is $y=1(x-\pi)+ 2\pi+1 =x+\pi+1 \approx x+4.14$. Evaluated at $x=3$, our tangent line gives $y=3+4.14 = 7.14$. Using the tangent line, our final approximation is that $f(3) \approx 7.14$.
+Using \autoref{thm:deriv_common} we find $\fp(x) = \cos x + 2$. The slope of the tangent line is thus $\fp(\pi) = \cos \pi + 2 =1$. Also, $f(\pi) = 2\pi+1 \approx 7.28$. So the tangent line to the graph of $f$ at $x=\pi$ is $y=1(x-\pi)+ 2\pi+1 =x+\pi+1 \approx x+4.14$. Evaluated at $x=3$, our tangent line gives $y=3+4.14 = 7.14$. Using the tangent line, our final approximation is that $f(3) \approx 7.14$.
 
 Using a calculator, we get an answer accurate to 4 places after the decimal: $f(3) = 7.1411$. Our initial guess was $7$; our tangent line approximation was more accurate, at $7.14$.
 
-The point is \textit{not} ``Here's a cool way to do some math without a calculator.'' Sure, that might be handy sometime, but your phone could probably give you the answer. Rather, the point is to say that tangent lines are a good way of approximating, and many scientists, engineers and mathematicians often face problems too hard to solve directly. So they approximate.
-}\\
+The point is \textit{not} ``Here's a cool way to do some math without a calculator.'' Sure, that might be handy sometime, but your phone could probably give you the answer. Rather, the point is to say that tangent lines are a good way of approximating, and many scientists, engineers and mathematicians often face problems too hard to solve directly. So they approximate.}
 
 \subsection*{Higher Order Derivatives}
 
@@ -161,38 +158,26 @@ The derivative of a function $f$ is itself a function, therefore we can take its
 						\[ \fp''(x) = \frac{d}{dx}\Big(\fp'(x)\Big) = \frac{d}{dx}\left(\frac{d\primeskip^2y}{dx^2}\right) = \frac{d\primeskip^3y}{dx^3}=y\primeskip'''.\]
 				\item		The \textit{n$^{\text{th}}$ derivative} of $f$ is:
 						\[ f\,^{(n)}(x) = \frac{d}{dx}\left(f\,^{(n-1)}(x)\right) = \frac{d}{dx}\left(\frac{d\primeskip^{n-1}y}{dx^{n-1}}\right) = \frac{d\primeskip^ny}{dx^n}=y^{(n)}.\]
-		\end{enumerate}
-}
-\mnote{\textbf{Note:} Definition \ref{def:Higher_Deriv} comes with the caveat ``Where the corresponding limits exist.'' With $f$ differentiable on $I$, it is possible that $\fp$ is \textit{not} differentiable on all of $I$, and so on.}
+		\end{enumerate}}
+\mnote[-1in]{\textbf{Note:} \autoref{def:Higher_Deriv} comes with the caveat ``Where the corresponding limits exist.'' With $f$ differentiable on $I$, it is possible that $\fp$ is \textit{not} differentiable on all of $I$, and so on.}
 
-In general, when finding the fourth derivative and on, we resort to the $f\,^{(4)}(x)$ notation, not $\fp'''(x)$; after a while, too many ticks is too confusing.\\
+In general, when finding the fourth derivative and on, we resort to the $f\,^{(4)}(x)$ notation, not $\fp'''(x)$; after a while, too many ticks is too confusing.\bigskip
 
-Let's practice using this new concept.\\
+Let's practice using this new concept.
 
-\example{ex_high_order}{Finding higher order derivatives}{
-Find the first four derivatives of the following functions:\\	
-\begin{minipage}[t]{.5\textwidth}
-	\begin{enumerate}
-		\item	$f(x) = 4x^2$
-		\item	$f(x) = \sin x$
-	\end{enumerate}
-\end{minipage}%
-\begin{minipage}[t]{.5\textwidth}
-	\begin{enumerate}\addtocounter{enumi}{2}
-		\item	$f(x) = 5e^x$
-	\end{enumerate}
-\end{minipage}}
+\clearpage
+
+\example{ex_high_order}{Finding higher order derivatives}{Find the first four derivatives of the following functions:
+\[1.\ f(x) = 4x^2\qquad 2.\ f(x) = \sin x\qquad 3.\ f(x) = 5e^x\]}
 {\begin{enumerate}
 	\item	Using the Power and Constant Multiple Rules, we have: $\fp(x) = 8x$. Continuing on, we have 
 	$$\fpp(x) = \frac{d}{dx}\big(8x\big) = 8;\qquad \fp''(x) = 0;\qquad f\,^{(4)}(x) = 0.$$
 Notice how all successive derivatives will also be 0.
-	\item	We employ Theorem \ref{thm:deriv_common} repeatedly.
+	\item	We employ \autoref{thm:deriv_common} repeatedly.
 	$$\fp(x) = \cos x;\quad \fp'(x) = -\sin x;\quad \fp''(x) = -\cos x;\quad f\,^{(4)}(x) = \sin x.$$
 	Note how we have come right back to $f(x)$ again. (Can you quickly figure what $f\,^{(23)}(x)$ is?)
-	\item	Employing Theorem \ref{thm:deriv_common} and the Constant Multiple Rule, we can see that $$\fp(x) = \fp'(x) = \fp''(x) = f\,^{(4)}(x) = 5e^x.$$
-	\end{enumerate}
-\vskip-1.5\baselineskip
-}
+	\item	Employing \autoref{thm:deriv_common} and the Constant Multiple Rule, we can see that $$\fp(x) = \fp'(x) = \fp''(x) = f\,^{(4)}(x) = 5e^x.\eoehere$$
+	\end{enumerate}}
 
 \subsection*{Interpreting Higher Order Derivatives}
 
@@ -203,7 +188,7 @@ Our first answer is a bit wordy, but is technically correct and beneficial to un
 	The second derivative of a function $f$ is the rate of change of the rate of change of $f$.
 	\end{quote}
 
-One way to grasp this concept is to let $f$ describe a position function. Then, as stated in Key Idea \ref{idea:motion}, $\fp$ describes the rate of position change: velocity. We now consider $\fp'$, which describes the rate of velocity change. Sports car enthusiasts talk of how fast a car can go from 0 to 60 mph; they are bragging about the \textit{acceleration} of the car.
+One way to grasp this concept is to let $f$ describe a position function. Then, as stated in \autoref{idea:motion}, $\fp$ describes the rate of position change: velocity. We now consider $\fp'$, which describes the rate of velocity change. Sports car enthusiasts talk of how fast a car can go from 0 to 60 mph; they are bragging about the \textit{acceleration} of the car.
 
 We started this chapter with amusement--park riders free--falling with position function $f(t) = -16t^2+150$. It is easy to compute $\fp(t)=-32t$ ft/s and $\fp'(t) = -32$ (ft/s)/s. We may recognize this latter constant; it is the acceleration due to gravity. In keeping with the unit notation introduced in the previous section, we say the units are ``feet per second per second.'' This is usually shortened to ``feet per second squared,'' written as ``ft/s$^2$.''
 

@@ -1,0 +1,15 @@
+{\begin{minipage}{\linewidth}\centering
+\begin{tikzpicture}
+ \begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+   axis y line=middle,axis x line=middle,name=myplot,axis on top,
+   ymin=-.1,ymax=8.5,xmin=-.1,xmax=2.5]
+  \addplot [ {\coloronefill},fill={\coloronefill}, samples=50,domain=0:2]
+   {x^3}--(axis cs:0,8);
+  \addplot[smooth,thick,{\colorone}, samples=50, domain=-.1:2.1] {8};
+  \addplot [smooth,thick, {\colorone}, samples=50,domain=0:2.1] {x^3}
+   node [pos=.5,below right, black] {\scriptsize $y=x^3$};
+ \end{axis}
+ \node [right] at (myplot.right of origin) {\scriptsize $x$};
+ \node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}\end{minipage}}
+{$\dfrac{96\pi}{5}$}

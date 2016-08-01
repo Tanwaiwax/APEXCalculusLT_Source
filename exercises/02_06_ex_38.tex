@@ -1,0 +1,26 @@
+{$x^2+2xy-y^2+x=2$
+\begin{enumerate}
+\item	At $(-2,0)$.
+\item	At $(1,2)$.
+\end{enumerate}
+\begin{tikzpicture}%[baseline=10pt]
+\begin{axis}[width=.7\linewidth,tick label style={font=\scriptsize},axis y line=middle,axis x line=middle,name=myplot,%
+                        ymin=-2,ymax=3,%
+                        xmin=-3,xmax=2,%
+]
+\addplot [thick,{\colorone},smooth,domain=-89:89]
+		({sec(x)*sqrt(17)/4-.25},{(sec(x)+tan(x)*sqrt(2))*sqrt(17)/4-.25});
+\addplot [thick,{\colorone},smooth,domain=91:269]
+		({sec(x)*sqrt(17)/4-.25},{(sec(x)+tan(x)*sqrt(2))*sqrt(17)/4-.25});
+\filldraw (axis cs:-2,0) node [above right] {\scriptsize $(-2,0)$} circle (1pt);
+\filldraw (axis cs:1,2) node [below right] {\scriptsize $(1,2)$} circle (1pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+}
+{\begin{enumerate}
+\item	$y=-\dfrac{3x}4-\dfrac32$
+\item	$y=\dfrac72x-\dfrac32$
+\end{enumerate}
+}

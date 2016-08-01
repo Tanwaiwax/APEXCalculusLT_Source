@@ -34,8 +34,6 @@ As we use more and more derivatives, our polynomial approximation to $f$ gets be
 The polynomials we have created are examples of \emph{Taylor polynomials}, named after the British mathematician Brook Taylor who made important discoveries about such functions. While we created the above Taylor polynomials by solving initial--value problems, it can be shown that Taylor polynomials follow a general pattern that make their formation much more direct. This is described in the following definition.
 
 \setboxwidth{50pt}
-\noindent\hskip-50pt
-\begin{minipage}{\specialboxlength}
 \definition{def:taypoly}{Taylor Polynomial, Maclaurin Polynomial}
 {Let $f$ be a function whose first $n$ derivatives exist at $x=c$.
 \index{Taylor Polynomial!definition}\index{Maclaurin Polynomial!definition} \index{Maclaurin Polynomial|see{Taylor Polynomial}}
@@ -45,12 +43,9 @@ The polynomials we have created are examples of \emph{Taylor polynomials}, named
 
 \item		A special case of the Taylor polynomial is the Maclaurin polynomial, where $c=0$. That is, the \textbf{Maclaurin polynomial of degree $n$ of $f$} is 
 {$$p_n(x) = f(0) + \fp(0)x + \frac{\fpp(0)}{2!}x^2+\frac{\fp''(0)}{3!}x^3+\cdots+\frac{f\,^{(n)}(0)}{n!}x^n.$$}
-\end{enumerate}
-}
-\end{minipage}
-\restoreboxwidth
+\end{enumerate}}
 
-We will practice creating Taylor and Maclaurin polynomials in the following examples.\\
+We will practice creating Taylor and Maclaurin polynomials in the following examples.
 
 \example{ex_taypoly1}{Finding and using Maclaurin polynomials}{
 \begin{enumerate}
@@ -81,9 +76,7 @@ $$p_5(1) = 1+1+\frac12+\frac16+\frac1{24}+\frac1{120} = \frac{163}{60} \approx 2
 
 A plot of $f(x)=e^x$ and $p_5(x)$ is given in Figure \ref{fig:taypoly1b}.
 \mfigure{0in}{A plot of $f(x)=e^x$ and its 5$^\text{th}$ degree Maclaurin polynomial $p_5(x)$.}{fig:taypoly1b}{figures/figtaypoly1b}
-\end{enumerate}
-\vskip-1.5\baselineskip
-}\\
+\end{enumerate}}
 
 \example{ex_taypoly2}{Finding and using Taylor polynomials}{
 \begin{enumerate}
@@ -145,9 +138,7 @@ This approximation is not terribly impressive: a hand held calculator shows that
 
 Surprisingly enough, even the 20$^\text{th}$ degree Taylor polynomial fails to approximate $\ln x$ for $x>2$, as shown in Figure \ref{fig:taypoly2c}. We'll soon discuss why this is.
 \mfigure{0in}{A plot of $y=\ln x$ and its 20$^\text{th}$ degree Taylor polynomial at $x=1$.}{fig:taypoly2c}{figures/figtaypoly2c}
-\end{enumerate}
-\vskip-1.5\baselineskip
-}\\
+\end{enumerate}}
 
 Taylor polynomials are used to approximate functions $f(x)$ in mainly two situations:
 	\begin{enumerate}
@@ -163,8 +154,6 @@ In both situations, a critical piece of information to have is ``How good is my 
 We had the same problem when studying Numerical Integration. Theorem \ref{thm:numerical_error} provided bounds on the error when using, say, Simpson's Rule to approximate a definite integral. These bounds allowed us to determine that, for instance, using $10$ subintervals provided an approximation within $\pm .01$ of the exact value. The following theorem gives similar bounds for Taylor (and hence Maclaurin) polynomials.
 
 \setboxwidth{65pt}
-%\noindent\hskip-65pt
-%\begin{minipage}[t]{\specialboxlength}
 \theorem{thm:taylorthm}{Taylor's Theorem}
 {\begin{enumerate}
 \item	Let $f$ be a function whose $n+1^\text{th}$ derivative exists on an interval $I$ and let $c$ be in $I$. Then, for each $x$ in $I$, there exists $z_x$ between $x$ and $c$ such that
@@ -173,10 +162,7 @@ where $\ds R_n(x) = \frac{f\,^{(n+1)}(z_x)}{(n+1)!}(x-c)^{(n+1)}.$
 \index{Taylor Polynomial!Taylor's Theorem}\index{Taylor's Theorem}
 
 \item		$\ds \big|R_n(x)\big| \leq \frac{\max\left|\,f\,^{(n+1)}(z)\right|}{(n+1)!}\big|(x-c)^{(n+1)}\big|$
-\end{enumerate}
-}
-%\end{minipage}
-\restoreboxwidth
+\end{enumerate}}
 
 The first part of Taylor's Theorem states that $f(x) = p_n(x) + R_n(x)$, where $p_n(x)$ is the $n^\text{th}$ order Taylor polynomial and $R_n(x)$ is the remainder, or error, in the Taylor approximation. The second part gives bounds on how big that error can be. If the $(n+1)^\text{th}$ derivative is large, the error may be large; if $x$ is far from $c$, the error may also be large. However, the $(n+1)!$ term in the denominator tends to ensure that the error gets smaller as $n$ increases.
 
@@ -193,7 +179,6 @@ The theorem references $\max\big|f\,^{(n+1)}(z)\big|$. In our situation, this is
 					&\leq \frac{1506}{5040}\cdot\frac1{2^7}\\
 					&\approx 0.0023.
 \end{align*}
-\noindent%\drawexampleline
 We computed $p_6(1.5) = 0.404688$; using a calculator, we find $\ln 1.5 \approx 0.405465$, so the actual error is about $0.000778$, which is less than our bound of $0.0023$. This affirms Taylor's Theorem; the theorem states that our approximation would be within about 2 thousandths of the actual value, whereas the approximation was actually closer.
 
 \item		We again find an interval $I$ that contains both $c=1$ and $x=2$; we choose $I = (0.9,2.1)$. The maximum value of the seventh derivative of $f$ on this interval is again about 1506 (as the largest values come near $x=0.9$). Thus 
@@ -277,12 +262,9 @@ $$p_4(x) = 2 + \frac14(x-4) +\frac{-1/32}{2!}(x-4)^2+\frac{3/256}{3!}(x-4)^3+\fr
 $$\big|R_4(3)\big| \leq \frac{0.0273}{5!}\big|(3-4)^5\big| \approx 0.00023.$$
 This shows our approximation is accurate to at least the first 2 places after the decimal. (It turns out that our approximation is actually accurate to 4 places after the decimal.) A graph of $f(x)=\sqrt x$ and $p_4(x)$ is given in Figure \ref{fig:taypoly5b}. Note how the two functions are nearly indistinguishable on $(2,7)$.
 \mfigure{0in}{A graph of $f(x)=\sqrt{x}$ and its degree 4 Taylor polynomial at $x=4$.}{fig:taypoly5b}{figures/figtaypoly5}
-\end{enumerate}
-\vskip-1.5\baselineskip
-}\\
-%\clearpage
+\end{enumerate}}
 
-Our final example gives a brief introduction to using Taylor polynomials to solve differential equations.\\
+Our final example gives a brief introduction to using Taylor polynomials to solve differential equations.
 
 \example{ex_taypoly6}{Approximating an unknown function}{
 A function $y=f(x)$ is unknown save for the following two facts.
@@ -298,7 +280,6 @@ Find the degree 3 Maclaurin polynomial $p_3(x)$ of $y=f(x)$.
 $$y\primeskip' = y^2 \Rightarrow y\primeskip'(0) = y^2(0).$$
 Since $y(0) = 1$, we conclude that $y\primeskip'(0) = 1$.
 
-%\drawexampleline
 Now we find information about $y\primeskip''$. Starting with $y\primeskip'=y^2$, take derivatives of both sides, \emph{with respect to $x$}. That means we must use implicit differentiation.
 \begin{align*}
 y\primeskip' &= y^2\\
@@ -324,9 +305,7 @@ p_3(x) &= 1 + x + \frac{2}{2!}x^2 + \frac{6}{3!}x^3\\
 				&= 1+x+x^2+x^3.
 \end{align*}
 \mfigure{0in}{A graph of $y=-1/(x-1)$ and $y=p_3(x)$ from Example \ref{ex_taypoly6}.}{fig:taypoly6}{figures/figtaypoly6}
-It turns out that the differential equation we started with, $y\primeskip'=y^2$, where $y(0)=1$, can be solved without too much difficulty: $\ds y = \frac{1}{1-x}$. Figure \ref{fig:taypoly6} shows this function plotted with $p_3(x)$. Note how similar they are near $x=0$.
-}\\\clearpage
-
+It turns out that the differential equation we started with, $y\primeskip'=y^2$, where $y(0)=1$, can be solved without too much difficulty: $\ds y = \frac{1}{1-x}$. Figure \ref{fig:taypoly6} shows this function plotted with $p_3(x)$. Note how similar they are near $x=0$.}
 
 It is beyond the scope of this text to pursue error analysis when using Taylor polynomials to approximate solutions to differential equations. This topic is often broached in introductory Differential Equations courses and usually covered in depth in Numerical Analysis courses. Such an analysis is very important; one needs to know how good their approximation is. We explored this example simply to demonstrate the usefulness of Taylor polynomials. \\
 

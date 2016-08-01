@@ -4,7 +4,7 @@ Knowing whether or not a series converges is very important, especially when we 
 
 %\mnote{\textbf{Note:} Recall we often use $\sum a_n$ to write $\ds \sum_{n=1}^\infty a_n$.}
 
-\noindent\textbf{\large Integral Test}\\
+\subsection*{Integral Test}
 
 We stated in Section \ref{sec:sequences} that a sequence $\{a_n\}$ is a function $a(n)$ whose domain is $\mathN$, the set of natural numbers. If we can extend $a(n)$ to $\mathbb{R}$, the real numbers, and it is both positive and decreasing on $[1,\infty)$, then the convergence of $\ds \sum_{n=1}^\infty a_n$ is the same as $\ds\int_1^\infty a(x)\ dx$. 
 
@@ -58,13 +58,12 @@ Applying the Integral Test, we test the convergence of $\ds \int_1^\infty \frac{
 				&= 1.
 \end{align*}
 Since $\ds \int_1^\infty \frac{\ln x}{x^2}\ dx$ converges, so does $\ds \sum_{n=1}^\infty \frac{\ln n}{n^2}$.
-\vskip.5\baselineskip
 %
 %
 %Note how the sequence $\{a_n\}$ is not strictly decreasing; it increases from $n=1$ to $n=2$. However, this does not keep us from applying the Integral Test as the sequence in positive and decreasing on $[2,\infty)$.
-}\\
+}
 
-Theorem \ref{thm:pseries} was given without justification, stating that the general $p$-series $\ds \sum_{n=1}^\infty \frac 1{(an+b)^p}$ converges if, and only if, $p>1$. In the following example, we prove this to be true by applying the Integral Test.\\
+Theorem \ref{thm:pseries} was given without justification, stating that the general $p$-series $\ds \sum_{n=1}^\infty \frac 1{(an+b)^p}$ converges if, and only if, $p>1$. In the following example, we prove this to be true by applying the Integral Test.
 
 \example{ex_itest2}{Using the Integral Test to establish Theorem \ref{thm:pseries}.}
 {
@@ -78,14 +77,11 @@ Use the Integral Test to prove that $\ds \sum_{n=1}^\infty \frac1{(an+b)^p}$ con
 \end{align*}
 This limit converges if, and only if, $p>1$. It is easy to show that the integral also diverges in the case of $p=1$. (This result is similar to the work preceding Key Idea \ref{idea:impint1}.)
 
-Therefore $\ds \sum_{n=1}^\infty \frac 1{(an+b)^p}$ converges if, and only if, $p>1$.
-\vskip.25\baselineskip
-}\\
+Therefore $\ds \sum_{n=1}^\infty \frac 1{(an+b)^p}$ converges if, and only if, $p>1$.}
 
 We consider two more convergence tests in this section, both \textit{comparison} tests. That is, we determine the convergence of one series by  comparing it to another series with known convergence. 
-\clearpage
 
-\noindent\textbf{\large Direct Comparison Test}\\
+\subsection*{Direct Comparison Test}
 
 \theorem{thm:series_direct_compare}{Direct Comparison Test}
 {Let $\{a_n\}$ and $\{b_n\}$ be positive sequences where $a_n\leq b_n$ for all $n\geq N$, for some $N\geq 1$. 
@@ -107,8 +103,7 @@ Determine the convergence of $\ds\sum_{n=1}^\infty \frac1{3^n+n^2}$.
 }
 {This series is neither a geometric or $p$-series, but seems related. We predict it will converge, so we look for a series with larger terms that converges. (Note too that the Integral Test seems difficult to apply here.)
 
-Since $3^n < 3^n+n^2$, $\ds \frac1{3^n}> \frac1{3^n+n^2}$ for all $n\geq1$. The series $\ds\sum_{n=1}^\infty \frac{1}{3^n}$ is a convergent geometric series; by Theorem \ref{thm:series_direct_compare}, $\ds \sum_{n=1}^\infty \frac1{3^n+n^2}$ converges.
-}\\
+Since $3^n < 3^n+n^2$, $\ds \frac1{3^n}> \frac1{3^n+n^2}$ for all $n\geq1$. The series $\ds\sum_{n=1}^\infty \frac{1}{3^n}$ is a convergent geometric series; by Theorem \ref{thm:series_direct_compare}, $\ds \sum_{n=1}^\infty \frac1{3^n+n^2}$ converges.}
 
 \example{ex_dct2}{Applying the Direct Comparison Test}{
 Determine the convergence of $\ds\sum_{n=1}^\infty \frac{1}{n-\ln n}$.}
@@ -116,10 +111,9 @@ Determine the convergence of $\ds\sum_{n=1}^\infty \frac{1}{n-\ln n}$.}
 
 Since $n\geq n-\ln n$ for all $n\geq 1$, $\ds \frac1n \leq \frac1{n-\ln n}$ for all $n\geq 1$. 
 
-The Harmonic Series diverges, so we conclude that $\ds\sum_{n=1}^\infty \frac{1}{n-\ln n}$ diverges as well.
-}\\
+The Harmonic Series diverges, so we conclude that $\ds\sum_{n=1}^\infty \frac{1}{n-\ln n}$ diverges as well.}
 
-The concept of direct comparison is powerful and often relatively easy to apply. Practice helps one develop the necessary intuition to quickly pick a proper series with which to compare. However, it is easy to construct a series for which it is difficult to apply the Direct Comparison Test. 
+The concept of direct comparison is powerful and often relatively easy to apply. Practice helps one develop the necessary intuition to quickly pick a proper series with which to compare. However, it is easy to construct a series for which it is difficult to apply the Direct Comparison Test.
 
 Consider $\ds\sum_{n=1}^\infty \frac1{n+\ln n}$. It is very similar to the divergent series given in Example \ref{ex_dct2}. We suspect that it also diverges, as $\ds \frac 1n \approx \frac1{n+\ln n}$ for large $n$. However, the inequality that we naturally want to use ``goes the wrong way'': since $n\leq n+\ln n$ for all $n\geq 1$, $\ds\frac1n \geq \frac{1}{n+\ln n}$ for all $n\geq 1$. The given series has terms \textit{less than} the terms of a divergent series, and we cannot conclude anything from this.
 
@@ -134,8 +128,7 @@ Fortunately, we can apply another test to the given series to determine its conv
 		\item If $\ds\lim_{n\to\infty} \frac{a_n}{b_n} = L$, where $L$ is a positive real number, then $\ds \sum_{n=1}^\infty a_n$ and $\ds \sum_{n=1}^\infty b_n$ either both converge or both diverge.
 		\item	If $\ds\lim_{n\to\infty} \frac{a_n}{b_n} = 0$, then if $\ds \sum_{n=1}^\infty b_n$ converges, then so does $\ds \sum_{n=1}^\infty a_n$.
 		\item	If $\ds\lim_{n\to\infty} \frac{a_n}{b_n} = \infty$, then if $\ds \sum_{n=1}^\infty b_n$ diverges, then so does $\ds \sum_{n=1}^\infty a_n$.
-	\end{enumerate}
-}\\
+	\end{enumerate}}
 
 %It is helpful to remember that when using Theorem \ref{thm:series_limit_compare}, the terms of the series with known convergence go in the denominator of the fraction.
 
@@ -150,8 +143,7 @@ Determine the convergence of $\ds\sum_{n=1}^\infty \frac1{n+\ln n}$ using the Li
 \lim_{n\to\infty}\frac{1/(n+\ln n)}{1/n} &= \lim_{n\to\infty} \frac{n}{n+\ln n} \\
 			&= 1\quad \text{(after applying L'H\^opital's Rule)}.
 \end{align*}
-Since the Harmonic Series diverges, we conclude that $\ds\sum_{n=1}^\infty \frac1{n+\ln n}$ diverges as well.
-}\\
+Since the Harmonic Series diverges, we conclude that $\ds\sum_{n=1}^\infty \frac1{n+\ln n}$ diverges as well.}
 
 \example{ex_lct2}{Applying the Limit Comparison Test}{
 Determine the convergence of $\ds\sum_{n=1}^\infty \frac1{3^n-n^2}$}
@@ -162,10 +154,9 @@ Instead, we use the Limit Comparison Test and compare with the series $\ds\sum_{
 \lim_{n\to\infty}\frac{1/(3^n-n^2)}{1/3^n} &= \lim_{n\to\infty}\frac{3^n}{3^n-n^2} \\
 		&= 1 \quad \text{(after applying L'H\^opital's Rule twice)}.
 \end{align*}
-We know $\ds\sum_{n=1}^\infty \frac1{3^n}$ is a convergent geometric series, hence $\ds\sum_{n=1}^\infty \frac1{3^n-n^2}$ converges as well.
-}\\
+We know $\ds\sum_{n=1}^\infty \frac1{3^n}$ is a convergent geometric series, hence $\ds\sum_{n=1}^\infty \frac1{3^n-n^2}$ converges as well.}
 
-As mentioned before, practice helps one develop the intuition to quickly choose a series with which to compare. A general rule of thumb is to pick a series based on the dominant term in the expression of $\{a_n\}$. It is also helpful to note that factorials dominate exponentials, which dominate algebraic functions (e.g., polynomials), which dominate logarithms. In the previous example, the dominant term of $\ds\frac{1}{3^n-n^2}$ was $3^n$, so we compared the series to $\ds \sum_{n=1}^\infty \frac1{3^n}$. It is hard to apply the Limit Comparison Test to series containing factorials, though, as we have not learned how to apply L'H\^opital's Rule to $n!$.\\
+As mentioned before, practice helps one develop the intuition to quickly choose a series with which to compare. A general rule of thumb is to pick a series based on the dominant term in the expression of $\{a_n\}$. It is also helpful to note that factorials dominate exponentials, which dominate algebraic functions (e.g., polynomials), which dominate logarithms. In the previous example, the dominant term of $\ds\frac{1}{3^n-n^2}$ was $3^n$, so we compared the series to $\ds \sum_{n=1}^\infty \frac1{3^n}$. It is hard to apply the Limit Comparison Test to series containing factorials, though, as we have not learned how to apply L'H\^opital's Rule to $n!$.
 
 \example{ex_lct3}{Applying the Limit Comparison Test}{
 Determine the convergence of $\ds\sum_{n=1}^\infty \frac{\sqrt{n}+3}{n^2-n+1}$.}
@@ -184,8 +175,7 @@ The dominant term of the numerator is $n^{1/2}$ and the dominant term of the den
 \lim_{n\to\infty}\frac{(\sqrt{n}+3)/(n^2-n+1)}{1/n^{3/2}} &= \lim_{n\to \infty} \frac{n^{3/2}(\sqrt n+3)}{n^2-n+1} \\
 		&= 1\quad \text{(Apply L'H\^opital's Rule)}.
 \end{align*}
-Since the  $p$-series $\ds\sum_{n=1}^\infty \frac1{n^{3/2}}$ converges, we conclude that $\ds\sum_{n=1}^\infty \frac{\sqrt{n}+3}{n^2-n+1}$ converges as well.
-}\\
+Since the  $p$-series $\ds\sum_{n=1}^\infty \frac1{n^{3/2}}$ converges, we conclude that $\ds\sum_{n=1}^\infty \frac{\sqrt{n}+3}{n^2-n+1}$ converges as well.}
 
 We mentioned earlier that the Integral Test did not work well with series containing factorial terms. The next section introduces the Ratio Test, which does handle such series well. We also introduce the Root Test, which is good for series where each term is raised to a power.
 

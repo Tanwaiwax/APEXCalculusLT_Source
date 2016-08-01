@@ -1,6 +1,6 @@
 \section{Differentials}\label{sec:differentials}
 
-In Section \ref{sec:interp_deriv} we explored the meaning and use of the derivative. This section starts by revisiting some of those ideas.
+In \autoref{sec:interp_deriv} we explored the meaning and use of the derivative. This section starts by revisiting some of those ideas.
 
 Recall that the derivative of a function $f$ can be used to find the slopes of lines tangent to the graph of $f$. At $x=c$, the tangent line to the graph of $f$ has equation $$y = \fp(c)(x-c)+f(c).$$
 The tangent line can be used to find good approximations of $f(x)$ for values of $x$ near $c$. 
@@ -23,14 +23,15 @@ For instance, we can approximate $\sin 1.1$ using the tangent line to the graph 
 \end{minipage}
 }
 {\mtable{Graphing $f(x) = \sin x$ and its tangent line at $x=\pi/3$ in order to estimate $\sin 1.1$.}{fig:diffal1}{\begin{tabular}{c}
-\myincludegraphics{figures/figdiffal1a}\\[10pt]
-(a)\\[10pt]
-\myincludegraphics{figures/figdiffal1} \\[10pt]
- (b)\end{tabular}
+ \myincludegraphics{figures/figdiffal1a}\\
+ (a)\\\addlinespace
+ \myincludegraphics{figures/figdiffal1} \\
+ (b)
+\end{tabular}
 }
 }
 
-In Figure \ref{fig:diffal1}(a), we see a graph of $f(x) = \sin x$ graphed along with its tangent line at $x=\pi/3$. The small rectangle shows the region that is displayed in Figure \ref{fig:diffal1}(b). In this figure, we see how we are approximating $\sin 1.1$ with the tangent line, evaluated at $1.1$. Together, the two figures show how close these values are.
+In \autoref{fig:diffal1}(a), we see a graph of $f(x) = \sin x$ graphed along with its tangent line at $x=\pi/3$. The small rectangle shows the region that is displayed in \autoref{fig:diffal1}(b). In this figure, we see how we are approximating $\sin 1.1$ with the tangent line, evaluated at $1.1$. Together, the two figures show how close these values are.
 
 Using this line to approximate $\sin 1.1$, we have:
 \begin{align*}
@@ -50,7 +51,7 @@ Replacing $f(c+\dx)$ with its tangent line approximation, we have
 								&=\fp(c)\dx		\label{eq:differential}
 \end{align}
 
-This final equation is important; we'll come back to it in Key Idea \ref{idea:differential}.
+This final equation is important; we'll come back to it in \autoref{idea:differential}.
 
 We introduce two new variables, $dx$ and $dy$ in the context of a formal definition. %We defined $dx = \dx$; that is, it is a small change in $x$. We define
 
@@ -68,7 +69,7 @@ It is helpful to organize our new concepts and notations in one place.
 	\item $\dx$ represents a small, nonzero change in $x$ value.
 	\item	$dx$ represents a small, nonzero change in $x$ value (i.e., $\dx = dx$).
 	\item	$\dy$ is the change in $y$ value as $x$ changes by $\dx$; hence $$\dy = f(x+\dx)-f(x).$$
-	\item		$dy = \fp(x)dx$ which, by Equation (\ref{eq:differential}), is an \textit{approximation} of the change in $y$ value as $x$ changes by $\dx$; $dy \approx \dy$.
+	\item		$dy = \fp(x)dx$ which, by \autoref{eq:differential}, is an \textit{approximation} of the change in $y$ value as $x$ changes by $\dx$; $dy \approx \dy$.
 \end{enumerate}
 }
 
@@ -79,15 +80,15 @@ What is the value of differentials? Like many mathematical concepts, differentia
 \example{ex_diffal1}{Finding and using differentials}{
 Consider $f(x) = x^2$. Knowing $f(3) = 9$, approximate $f(3.1)$.}
 {The $x$ value is changing from $x=3$ to $x=3.1$; therefore, we see that $dx=0.1$. If we know how much the $y$ value changes from $f(3)$ to $f(3.1)$ (i.e., if we know $\dy$), we will know exactly what $f(3.1)$ is (since we already know $f(3)$). We can approximate \dy\ with $dy$.
-\begin{align*} \dy &\approx dy \\
-								  &= \fp(3)dx \\
-								  &= 2\cdot 3\cdot 0.1 = 0.6.
+\begin{align*}
+	\dy &\approx dy \\
+	&= \fp(3)dx \\
+	&= 2\cdot 3\cdot 0.1 = 0.6.
 \end{align*}
 
 We expect the $y$ value to change by about $0.6$, so we approximate $f(3.1) \approx 9.6.$
 
-We leave it to the reader to verify this, but the preceding discussion links the differential to the tangent line of $f(x)$ at $x=3$. One can verify that the tangent line, evaluated at $x=3.1$, also gives $y=9.6$.
-}\\
+We leave it to the reader to verify this, but the preceding discussion links the differential to the tangent line of $f(x)$ at $x=3$. One can verify that the tangent line, evaluated at $x=3.1$, also gives $y=9.6$.}
 
 Of course, it is easy to compute the actual answer (by hand or with a calculator): $3.1^2 = 9.61.$ (Before we get too cynical and say ``Then why bother?'', note our approximation is \textit{really} good!)
 
@@ -100,41 +101,33 @@ Imagine water flowing down a winding channel. It is easy to measure the speed an
 We use differentials once more to approximate the value of a function. Even though calculators are very accessible, it is neat to see how these techniques can sometimes be used to easily compute something that looks rather hard.\\
 
 
-\example{ex_diffal2}{Using differentials to approximate a function value}{
-Approximate $\sqrt{4.5}$.}
+\example{ex_diffal2}{Using differentials to approximate a function value}{Approximate $\sqrt{4.5}$.}
 {We expect $\sqrt{4.5} \approx 2$, yet we can do better. Let $f(x) = \sqrt{x}$, and let $c=4$. Thus $f(4) = 2$. We can compute $\fp(x) = 1/(2\sqrt{x})$, so $\fp(4) = 1/4$. 
 
 We approximate the difference between $f(4.5)$ and $f(4)$ using differentials, with $dx = 0.5$:
 $$f(4.5)-f(4) = \dy \approx dy = \fp(4)\cdot dx = 1/4 \cdot 1/2 = 1/8 = 0.125.$$
-The approximate change in $f$ from $x=4$ to $x=4.5$ is $0.125$, so we approximate $\sqrt{4.5} \approx 2.125.$
-}\\
+The approximate change in $f$ from $x=4$ to $x=4.5$ is $0.125$, so we approximate $\sqrt{4.5} \approx 2.125.$}
 
 Differentials are important when we discuss \textit{integration}. When we study that topic, we will use notation such as $$\int f(x)\ dx$$ quite often. While we don't discuss here what all of that notation means, note the existence of the differential $dx$. Proper handling of \textit{integrals} comes with proper handling of differentials. 
 
-In light of that, we practice finding differentials in general.\\
+In light of that, we practice finding differentials in general.
 
-\example{ex_diffal3}{Finding differentials}{
-In each of the following, find the differential $dy$.
-
+\example{ex_diffal3}{Finding differentials}{In each of the following, find the differential $dy$.
 \begin{center}
 1. $y = \sin x$ \qquad\quad 2. $y = e^x(x^2+2)$ \quad\qquad 3. $y = \sqrt{x^2+3x-1}$
 \end{center}
 }
 {\begin{enumerate}
-\item		$y = \sin x$:	\quad As $f(x) = \sin x$, $\fp(x) = \cos x$. Thus $$dy = \cos (x)dx.$$
-
-\item		$y = e^x(x^2+2)$:\quad Let $f(x) = e^x(x^2+2)$. We need $\fp(x)$, requiring the Product Rule. 
+	\item	$y = \sin x$:	\quad As $f(x) = \sin x$, $\fp(x) = \cos x$. Thus $$dy = \cos (x)dx.$$
+	\item	$y = e^x(x^2+2)$:\quad Let $f(x) = e^x(x^2+2)$. We need $\fp(x)$, requiring the Product Rule. 
 
 We have $\fp(x) = e^x(x^2+2) + 2xe^x$, so $$dy = \big(e^x(x^2+2) + 2xe^x\big)dx.$$
 
-\item		$y = \sqrt{x^2+3x-1}$:\quad	Let $f(x) = \sqrt{x^2+3x-1}$; we need $\fp(x)$, requiring the Chain Rule.
+	\item	$y = \sqrt{x^2+3x-1}$:\quad	Let $f(x) = \sqrt{x^2+3x-1}$; we need $\fp(x)$, requiring the Chain Rule.
 
 We have $\ds \fp(x) = \frac{1}{2}(x^2+3x-1)^{-\frac12}(2x+3) = \frac{2x+3}{2\sqrt{x^2+3x-1}}.$ Thus 
-$$ dy = \frac{(2x+3)dx}{2\sqrt{x^2+3x-1}}.$$
-\end{enumerate}
-\vskip-\baselineskip
-}\\
-%\clearpage
+\[dy = \frac{(2x+3)dx}{2\sqrt{x^2+3x-1}}.\eoehere\]
+\end{enumerate}}
 
 Finding the differential $dy$ of $y=f(x)$ is really no harder than finding the derivative of $f$; we just \textit{multiply} $\fp(x)$ by $dx$. It is important to remember that we are not simply adding the symbol ``$dx$'' at the end.\\
 
@@ -142,8 +135,7 @@ We have seen a practical use of differentials as they offer a good method of mak
 
 How close are $f(x)$ and $f(x+\dx)$? This is a difference in ``y'' values; $$f(x+\dx)-f(x) = \dy \approx dy.$$ We can approximate the propagated error using differentials.\\
 
-\example{ex_diffal4}{Using differentials to approximate propagated error}{
-A steel ball bearing is to be manufactured with a diameter of 2cm. The manufacturing process has a tolerance of $\pm 0.1$mm in the diameter. Given that the density of steel is about 7.85g/cm$^3$, estimate the propagated error in the mass of the ball bearing.}
+\example{ex_diffal4}{Using differentials to approximate propagated error}{A steel ball bearing is to be manufactured with a diameter of 2cm. The manufacturing process has a tolerance of $\pm 0.1$mm in the diameter. Given that the density of steel is about 7.85g/cm$^3$, estimate the propagated error in the mass of the ball bearing.}
 {The mass of a ball bearing is found using the equation ``mass = volume $\times$ density.'' In this situation the mass function is a product of the radius of the ball bearing, hence it is $m = 7.85\frac43\pi r^3$. The differential of the mass is $$dm = 31.4\pi r^2 dr.$$ The radius is to be 1cm; the manufacturing tolerance in the radius is $\pm 0.05$mm, or $\pm 0.005$cm. The propagated error is approximately:
 \begin{align*}
 \Delta m & \approx dm \\
@@ -159,20 +151,6 @@ Is this error significant? It certainly depends on the application, but we can g
 or $\pm 1.5$\%. 
 
 
-We leave it to the reader to confirm this, but if the diameter of the ball was supposed to be 10cm, the same manufacturing tolerance would give a propagated error in mass of $\pm12.33$g, which corresponds to a \textit{percent error} of $\pm0.188$\%. While the amount of error is much greater ($12.33 > 0.493$), the percent error is much lower.
-}\\
-
-%\refstepcounter{definitioncounter}
-%\label{lastdefcount1}
-%\refstepcounter{theoremcounter}
-%\label{lastthmcount1}
-%\refstepcounter{keyideacounter}
-%\label{lastideacount1}
-%\addtocounter{definitioncounter}{-1}
-%\addtocounter{theoremcounter}{-1}
-%\addtocounter{keyideacounter}{-1}
-%\refstepcounter{examplecounter}
-%\label{lastexamplecount1}
-%\addtocounter{examplecounter}{-1}
+We leave it to the reader to confirm this, but if the diameter of the ball was supposed to be 10cm, the same manufacturing tolerance would give a propagated error in mass of $\pm12.33$g, which corresponds to a \textit{percent error} of $\pm0.188$\%. While the amount of error is much greater ($12.33 > 0.493$), the percent error is much lower.}
 
 \printexercises{exercises/04_04_exercises}

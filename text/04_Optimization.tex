@@ -1,25 +1,24 @@
 \section{Optimization}\label{sec:optimization}
 
-In Section \ref{sec:extreme_values} we learned about extreme values -- the largest and smallest values a function attains on an interval. We motivated our interest in such values by discussing how it made sense to want to know the highest/lowest values of a stock, or the fastest/slowest an object was moving. In this section we apply the concepts of extreme values to solve ``word problems,'' i.e., problems stated in terms of situations that require us to create the appropriate mathematical framework in which to solve the problem.\index{optimization}
+In \autoref{sec:extreme_values} we learned about extreme values -- the largest and smallest values a function attains on an interval. We motivated our interest in such values by discussing how it made sense to want to know the highest/lowest values of a stock, or the fastest/slowest an object was moving. In this section we apply the concepts of extreme values to solve ``word problems,'' i.e., problems stated in terms of situations that require us to create the appropriate mathematical framework in which to solve the problem.\index{optimization}
 
 \youtubeVideo{BbTwa4Dbmmo}{Optimization Problem \#7 --- Minimizing the Area of Two Squares With Total Perimeter of Fixed Length}
 
-We start with a classic example which is followed by a discussion of the topic of optimization.\\
+We start with a classic example which is followed by a discussion of the topic of optimization.
 
-\example{ex_opt1}{Optimization: perimeter and area}{
-A man has 100 feet of fencing, a large yard, and a small dog. He wants to create a rectangular enclosure for his dog with the fencing that provides the maximal area. What dimensions provide the maximal area?}
+\example{ex_opt1}{Optimization: perimeter and area}{A man has 100 feet of fencing, a large yard, and a small dog. He wants to create a rectangular enclosure for his dog with the fencing that provides the maximal area. What dimensions provide the maximal area?}
 {One can likely guess the correct answer -- that is great. We will proceed to show how calculus can provide this answer in a context that proves this answer is correct.
 
-It helps to make a sketch of the situation. Our enclosure is sketched twice in Figure \ref{fig:opt1}, either with green grass and nice fence boards or as a simple rectangle. Either way, drawing a rectangle forces us to realize that we need to know the dimensions of this rectangle so we can create an area function -- after all, we are trying to maximize the area.
+It helps to make a sketch of the situation. Our enclosure is sketched twice in \autoref{fig:opt1}, either with green grass and nice fence boards or as a simple rectangle. Either way, drawing a rectangle forces us to realize that we need to know the dimensions of this rectangle so we can create an area function -- after all, we are trying to maximize the area.
 
 \ifthenelse{\boolean{longpage}}% longpage
 {\noindent\begin{center}
 \myincludegraphics{figures/figopt1b}
 \captionsetup{type=figure}%
-\caption{A sketch of the enclosure in Example \ref{ex_opt1}.}\label{fig:opt1}
+\caption{A sketch of the enclosure in \autoref{ex_opt1}.}\label{fig:opt1}
 \end{center}
 } % end longpage
-{\mfigure{0in}{A sketch of the enclosure in Example \ref{ex_opt1}.}{fig:opt1}{figures/figopt1a}
+{\mfigure{-1in}{A sketch of the enclosure in \autoref{ex_opt1}.}{fig:opt1}{figures/figopt1a}
 } %end regular page
 
 
@@ -41,8 +40,7 @@ A'(x) 	&= 50-2x
 \end{align*}
 We solve $50-2x=0$ to find $x=25$; this is the only critical point. We evaluate $A(x)$ at the endpoints of our interval and at this critical point to find the extreme values; in this case, all we care about is the maximum.
 
-Clearly $A(0)=0$ and $A(50)=0$, whereas $A(25) = 625 \text{ft}^2$. This is the maximum. Since we earlier found $y = 50-x$, we find that $y$ is also $25$. Thus the dimensions of the rectangular enclosure with perimeter of 100 ft. with maximum area is a square, with sides of length 25 ft.
-}\\
+Clearly $A(0)=0$ and $A(50)=0$, whereas $A(25) = 625 \text{ ft}^2$. This is the maximum. Since we earlier found $y = 50-x$, we find that $y$ is also $25$. Thus the dimensions of the rectangular enclosure with perimeter of 100 ft. with maximum area is a square, with sides of length 25 ft.}
 
 This example is very simplistic and a bit contrived. (After all, most people create a design then buy fencing to meet their needs, and not buy fencing and plan later.) But it models well the necessary process: create equations that describe a situation, reduce an equation to a single variable, then find the needed extreme value.
 
@@ -68,15 +66,13 @@ We outline here the basic process of solving these optimization problems.
 	\item	Identify the values of all relevant quantities of the problem.
 \end{enumerate}}
 
-We will use Key Idea \ref{idea:optimization} in a variety of examples.\\
+We will use \autoref{idea:optimization} in a variety of examples.
 
-\example{ex_opt2}{Optimization: perimeter and area}{
-Here is another classic calculus problem: A woman has a 100 feet of fencing, a small dog, and a large yard that contains a stream (that is mostly straight). She wants to create a rectangular enclosure with maximal area that uses the stream as one side. (Apparently her dog won't swim away.) What dimensions provide the maximal area?}
-{We will follow the steps outlined by Key Idea \ref{idea:optimization}. 
-	\begin{enumerate}
-	\item		We are maximizing \textit{area}. A sketch of the region will help; Figure \ref{fig:opt2} gives two sketches of the proposed enclosed area. A key feature of the sketches is to acknowledge that one side is not fenced. 
-	
-\mfigure{0in}{A sketch of the enclosure in Example \ref{ex_opt2}.}{fig:opt2}{figures/figopt2a}
+\example{ex_opt2}{Optimization: perimeter and area}{Here is another classic calculus problem: A woman has a 100 feet of fencing, a small dog, and a large yard that contains a stream (that is mostly straight). She wants to create a rectangular enclosure with maximal area that uses the stream as one side. (Apparently her dog won't swim away.) What dimensions provide the maximal area?}
+{We will follow the steps outlined by \autoref{idea:optimization}. 
+\mfigure{-1in}{A sketch of the enclosure in \autoref{ex_opt2}.}{fig:opt2}{figures/figopt2a}
+\begin{enumerate}
+	\item		We are maximizing \textit{area}. A sketch of the region will help; \autoref{fig:opt2} gives two sketches of the proposed enclosed area. A key feature of the sketches is to acknowledge that one side is not fenced. 
 	
 	\item		We want to maximize the area; as in the example before, $$\text{Area} = xy.$$ This is our fundamental equation. This defines area as a function of two variables, so we need another equation to  reduce it to one variable. 
 	
@@ -86,45 +82,40 @@ Here is another classic calculus problem: A woman has a 100 feet of fencing, a s
 	\item		We now find the extreme values. At the endpoints, the minimum is found, giving an area of 0. 
 	
 	Find the critical points. We have $A'(x) = 50-x$; setting this equal to 0 and solving for $x$ returns $x=50$. This gives an area of $$A(50) = 50(25) = 1250.$$
-	\item		We earlier set $y = 50-x/2$; thus $y = 25$. Thus our rectangle will have two sides of length 25 and one side of length 50, with a total area of 1250 ft$^2$.
-	\end{enumerate}
-\vskip-\baselineskip
-}\\
+	\item		We earlier set $y = 50-x/2$; thus $y = 25$. Thus our rectangle will have two sides of length 25 and one side of length 50, with a total area of 1250~ft$^2$.\eoehere
+\end{enumerate}}
 
-Keep in mind as we do these problems that we are practicing a \textit{process}; that is, we are learning to turn a situation into a system of equations. These equations allow us to write a certain quantity as a function of one variable, which we then optimize.\\
+Keep in mind as we do these problems that we are practicing a \textit{process}; that is, we are learning to turn a situation into a system of equations. These equations allow us to write a certain quantity as a function of one variable, which we then optimize.
 
-%\mnote{\textbf{Note:} Example \ref{ex_opt3} is another classic calculus example. The underlying principle is given in a variety of contexts; Google ``calculus dog'' to find articles where 
+%\mnote{\textbf{Note:} \autoref{ex_opt3} is another classic calculus example. The underlying principle is given in a variety of contexts; Google ``calculus dog'' to find articles where 
 
-\example{ex_opt3}{Optimization: minimizing cost}{
-A power line needs to be run from an power station located on the beach to an offshore facility. Figure \ref{fig:opt3b} shows the distances between the power station to the facility.
+\example{ex_opt3}{Optimization: minimizing cost}{A power line needs to be run from an power station located on the beach to an offshore facility. \autoref{fig:opt3b} shows the distances between the power station to the facility.
+\mfigure{0in}{Running a power line from the power station to an offshore facility with minimal cost in \autoref{ex_opt3}.}{fig:opt3b}{figures/figopt3b}
 
-It costs \$50/ft. to run a power line along the land, and \$130/ft. to run a power line under water. How much of the power line should be run along the land to minimize the overall cost? What is the minimal cost?
-
-\mfigure{0in}{Running a power line from the power station to an offshore facility with minimal cost in Example \ref{ex_opt3}.}{fig:opt3b}{figures/figopt3b}
-}
-{We will follow the strategy of Key Idea \ref{idea:optimization} implicitly, without specifically numbering steps.
+It costs \$50/ft. to run a power line along the land, and \$130/ft. to run a power line under water. How much of the power line should be run along the land to minimize the overall cost? What is the minimal cost?}
+{We will follow the strategy of \autoref{idea:optimization} implicitly, without specifically numbering steps.
 
 There are two immediate solutions that we could consider, each of which we will reject through ``common sense.'' First, we could minimize the distance by directly connecting the two locations with a straight line. However, this requires that all the wire be laid underwater, the most costly option. Second, we could minimize the underwater length by running a wire all 5000 ft. along the beach, directly across from the offshore facility. This has the undesired effect of having the longest distance of all, probably ensuring a non--minimal cost.
 
-The optimal solution likely has the line being run along the ground for a while, then underwater, as the figure implies. We need to label our unknown distances -- the distance run along the ground and the distance run underwater. Recognizing that the underwater distance can be measured as the hypotenuse of a right triangle, we choose to label the distances as shown in Figure \ref{fig:opt3c}.
+The optimal solution likely has the line being run along the ground for a while, then underwater, as the figure implies. We need to label our unknown distances -- the distance run along the ground and the distance run underwater. Recognizing that the underwater distance can be measured as the hypotenuse of a right triangle, we choose to label the distances as shown in \autoref{fig:opt3c}.
 
-\mfigure{0in}{Labeling unknown distances in Example \ref{ex_opt3}.}{fig:opt3c}{figures/figopt3c}
+\mfigure{0in}{Labeling unknown distances in \autoref{ex_opt3}.}{fig:opt3c}{figures/figopt3c}
 
 By choosing $x$ as we did, we make the expression under the square root simple. We now create the cost function. 
 
-$$
+\[
 \begin{array}{ccccc}
-\text{Cost} &=&  \text{land cost} &+ & \text{water cost} \\
-						&	& \text{\$50}\times \text{land distance} &+& \text{\$130}\times \text{water distance} \\
-						&	& 50(5000-x) &+& 130\sqrt{x^2+1000^2}.\\
+	\text{Cost} &=&  \text{land cost} &+ & \text{water cost} \\
+	&=& \text{\$50}\times \text{land distance} &+& \text{\$130}\times \text{water distance} \\
+	&=& 50(5000-x) &+& 130\sqrt{x^2+1000^2}.\\
 \end{array}
-$$
+\]
 
 So we have $c(x) = 50(5000-x)+ 130\sqrt{x^2+1000^2}$. This function only makes sense on the interval $[0,5000]$. While we are fairly certain the endpoints will not give a minimal cost, we still evaluate $c(x)$ at each to verify.
-$$c(0) = 380,000 \quad\quad c(5000) \approx 662,873.$$
+\[c(0) = 380,000 \quad\quad c(5000) \approx 662,873.\]
 
 We now find the critical values of $c(x)$. We compute $c\primeskip'(x)$ as 
-$$c\primeskip'(x) = -50+\frac{130x}{\sqrt{x^2+1000^2}}.$$
+\[c\primeskip'(x) = -50+\frac{130x}{\sqrt{x^2+1000^2}}.\]
 
 Recognize that this is never undefined. Setting $c\primeskip'(x)=0$ and solving for $x$, we have:
 \begin{align*}
@@ -140,16 +131,60 @@ x & = \frac{50,000}{120} =\frac{1250}{3} %=416+\frac23
 \approx 416.67.
 \end{align*}
 
-Evaluating $c(x)$ at $x=416.67$ gives a cost of about \$370,000. The distance the power line is laid along land is $5000-416.67 = 4583.33$ ft., and the underwater distance is $\sqrt{416.67^2+1000^2} \approx 1083$ ft.}\\
+Evaluating $c(x)$ at $x=416.67$ gives a cost of about \$370,000. The distance the power line is laid along land is $5000-416.67 = 4583.33$ ft., and the underwater distance is $\sqrt{416.67^2+1000^2} \approx 1083$ ft.}
+
+\example{ex_min_surf_area}{Optimization: Minimizing Surface Area}{Design a closed cylindrical can of volume $8$ ft$^3$ so that it uses the least amount of metal. In other words, minimize the surface area of the can.}{
+
+\mtable{A sketch for \autoref{ex_min_surf_area}.}{fig:min_surf_area}{
+\begin{tikzpicture}[scale=.67]
+ \draw [{\colorone},left color=\colorone!60,right color=\colorone!20,thick]
+  (0,0) ellipse [x radius=1.5cm, y radius=1cm];
+ \begin{scope}[xscale=1.5]
+  \draw [{\colorone},left color=\colorone!60,right color=\colorone!20,thick]
+   (-1,0) -- node [pos=.5,left,color=black] {\scriptsize $h$} (-1,-3.5) arc (180:360:1) -- (1,0) arc (360:180:1);
+%  \draw [{\colorone},left color=\colorone!60,right color=\colorone!20]
+%   (-1,-.2) -- (-1,-3.3)
+%   arc (180:360:1) -- (1,-.2) arc (360:180:1);
+ \end{scope}
+ \draw (0,0) -- node [pos=.5,above] {\scriptsize $r$} (1.5,0);
+\end{tikzpicture}}
+
+Following the strategy of \autoref{idea:optimization}, we make a sketch in \autoref{fig:min_surf_area} and identify the quantity to be minimized as the surface area of the cylinder. The formula for the surface area is our fundamental equation  since it relates all of our relevant quantities.
+\[
+ A
+ =\underbrace{\pi r^2}_{\text{Top}}
+ +\underbrace{\pi r^2}_{\text{Bottom}}
+ +\underbrace{2\pi rh}_{\text{Side}}
+ =2\pi r^2+2\pi rh
+\]
+
+Our surface area is now defined in terms of two variables. To reduce this to a single variable we use the volume of a can, $V=\pi r^2h$. Since the can must have $V=8$ ft$^3$, we set $\pi r^2h=8$. Thus $h=\dfrac8{\pi r^2}$ and
+\[A(r)=2\pi r^2+2\pi r\frac8{\pi r^2}=2\pi r^2+\frac{16}{r}\]
+
+Next we find the critical values of $A(r)$. We compute
+\[A'(r)=4\pi r-\dfrac{16}{r^2}=\dfrac{4\pi r^3-16}{r^2}\]
+and find that $A'(r)=0$ when $r^3=\dfrac4\pi$, that is, $r=\left(\dfrac4\pi\right)^{1/3}\approx 1.08$ ft.
+
+Looking back at $A(r)$, we notice that $r$ is not restricted to a closed interval. The radius can take on any positive value making the interval of optimization $(0, \infty)$. Since we do not have endpoints to test in $A(r)$ we consider what happens to $A(r)$ as $r$ approaches the endpoints of $(0, \infty)$. We see that
+\begin{align*}
+	A(r) &\to\infty\text{ as }r\to\infty&&\text{ (because of the $r^2$ term) and}\\
+	A(r) &\to\infty\text{ as }r\to0&&\text{ (because of the $\frac{16}{r}$ term)}
+\end{align*}
+Thus, the surface area must be minimized at the critical value we found. Finally, we determine the height of the cylinder.
+\[
+ h
+ =\frac8{\pi r^2}
+ =\frac8\pi r^{-2}
+% =\frac8\pi\left(\left(\frac4\pi\right)^{1/3}\right)^{-2} \\
+ =2\left(\frac4\pi\right)\left(\frac4\pi\right)^{-2/3}
+ =2\left(\frac4\pi\right)^{1/3}
+ \approx 2.17\text{ ft.}
+\]
+
+Notice that the height is twice the length of the radius. This means that the surface area is minimized when the can is as tall as it is wide.}
 
 In the exercises you will see a variety of situations that require you to combine problem--solving skills with calculus. Focus on the \textit{process}; learn how to form equations from situations that can be manipulated into what you need. Eschew memorizing how to do ``this kind of problem'' as opposed to ``that kind of problem.'' Learning a process will benefit one far longer than memorizing a specific technique.
 
 The next section introduces another application of the derivative: \textit{differentials}. Given $y=f(x)$, they offer a method of approximating the change in $y$ after $x$ changes by a small amount. 
-
-% TODO: the following exercises
-
-% volume of box given surface area
-% cut squares from rectangle - box with max volume
-% cost of box when cost of materials differ
 
 \printexercises{exercises/04_03_exercises}

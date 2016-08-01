@@ -1,0 +1,221 @@
+\documentclass[10pt]{article}
+
+
+%%
+% HERE THERE BE DRAGONS
+%%
+
+\usepackage{ifthen}
+
+\usepackage{lipsum}
+\usepackage{pgfplots}
+\pgfplotsset{colormap={coloronemap}{rgb=(.4,.4,1); rgb=(.8,.8,1)}}
+\pgfplotsset{colormap={colortwomap}{rgb=(1,.4,.4); rgb=(1,.8,.8)}}
+%\pgfplotsset{compat=1.3}
+\usepackage{eso-pic,calc}
+\usepackage[font=small]{caption}
+\usepgfplotslibrary{external}
+\usetikzlibrary{calc}
+\usetikzlibrary{shadings}
+
+\usepackage[h]{esvect}
+
+\pgfplotsset{compat=1.8}
+
+\usepackage[paperheight=11in,paperwidth=3in,%inner=1in,includeheadfoot,
+textheight=10in,%textwidth=345pt,
+marginparwidth=150pt]{geometry}
+%% end detour
+%%
+
+\usepackage{amsmath}
+
+
+
+
+\ifthenelse{\boolean{xetex}}%
+	{\sffamily
+	%%\usepackage{fontspec}
+	\usepackage{mathspec}
+	\setallmainfonts[Mapping=tex-text]{Calibri}
+	\setmainfont[Mapping=tex-text]{Calibri}
+	\setsansfont[Mapping=tex-text]{Calibri}
+	\setmathsfont(Greek){[cmmi10]}}
+	{Please compile with XeLaTeX}
+
+\newboolean{colorprint}
+\setboolean{colorprint}{true}
+%\setboolean{colorprint}{false}
+
+\ifthenelse{\boolean{colorprint}}{%
+\newcommand{\colorone}{blue}
+\newcommand{\colortwo}{red}
+\newcommand{\coloronefill}{blue!15!white}
+\newcommand{\colortwofill}{red!15!white}
+\newcommand{\colormapone}{rgb=(.4,.4,1); rgb=(.8,.8,1)}
+\newcommand{\colormaptwo}{rgb=(1,.4,.4); rgb=(1,.8,.8)}
+\newcommand{\colormapplaneone}{rgb=(.7,.7,1); rgb=(.9,.9,1)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,1}
+\definecolor{colormaponetop}{rgb}{.8,.8,1}
+\definecolor{colormaptwobottom}{rgb}{1,.4,.4}
+\definecolor{colormaptwotop}{rgb}{1,.8,.8}
+}% ends color
+{% not color
+\newcommand{\colorone}{black}
+\newcommand{\colortwo}{black!50!white}
+\newcommand{\coloronefill}{black!15!white}
+\newcommand{\colortwofill}{black!05!white}
+\newcommand{\colormapone}{rgb=(.4,.4,.4); rgb=(.7,.7,.7)}
+\newcommand{\colormaptwo}{rgb=(.6,.6,.6); rgb=(.9,.9,.9)}
+\newcommand{\colormapplaneone}{rgb=(.8,.8,.8); rgb=(.95,.95,.95)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,.4}
+\definecolor{colormaponetop}{rgb}{.7,.7,.7}
+\definecolor{colormaptwobottom}{rgb}{.6,.6,.6}
+\definecolor{colormaptwotop}{rgb}{.9,.9,.9}
+}%
+\newcommand{\la}{\left\langle}
+\newcommand{\ra}{\right\rangle}
+\newcommand{\dotp}[2]{\ensuremath{\vec #1 \cdot \vec #2}}
+\newcommand{\proj}[2]{\ensuremath{\text{proj}_{\,\vec #2}{\,\vec #1}}}
+
+\newcommand{\fp}{\ensuremath{f\,'}}
+
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+
+\newcommand{\threedlines}[4][]{\draw [dashed,#1] (axis cs: #2,#3,#4) -- (axis cs: #2,#3,0) -- (axis cs: #2,0,0)  (axis cs: #2,#3,0)--(axis cs:0,#3,0);}
+
+\newcommand{\mydraw}{\draw (axis cs:0,0,0) -- (axis cs:1,1,0);}
+\newcommand{\ds}{\displaystyle}
+
+
+%% no more dragons.  type away %%
+
+% prefer color one for the main graph, and color two for secondary lines
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%% GRaph ONE    This is NeW Shell Example 212 part A %%%%%%%%%
+\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth+25pt,
+tick label style={font=\scriptsize},axis y line=middle,axis x line=middle,name=myplot,axis on top,
+			xtick=\empty, 
+			extra x ticks={1,2,3},
+			ytick={1,2},
+			ymin=-.2,ymax=2.5,
+			xmin=-.1,xmax=3.5]
+
+\addplot [{\coloronefill},fill={\coloronefill},domain=0:2] {3*x-x^2};
+\addplot [{\colorone},smooth,thick,domain=0:3] {3*x-x^2};
+\addplot[{\colorone},smooth,thick,domain=0:3] {x};
+
+\draw [thick,{\colortwo}] (axis cs: 1,1) -- (axis cs:1,2);
+\draw (axis cs: .9,1.5) node[right]{\scriptsize$ \left.\rule{0pt}{22pt}\right\} h(x)$};
+\draw (axis cs:.5,1.1) node [below] {$\underbrace{\rule{35pt}{0pt}}_{r(x)}$} ;
+\end{axis}
+
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+
+
+
+\begin{tikzpicture}
+\begin{axis}%
+[
+width=\marginparwidth+25pt,%
+tick label style={font=\scriptsize},axis on top,
+			axis y line=none,
+			axis lines=center,
+			y dir=reverse,
+%			view={125}{30},
+			name=myplot,
+			xtick={-3,-2,...,1,2,3},
+			ztick={1,2,3},% 
+			ymin=-3,ymax=3,%
+			xmin=-.2,xmax=6.2,
+tick label style={font=\scriptsize},axis on top,
+			axis y line=none,
+			axis lines=center,
+			y dir=reverse,
+%			view={125}{30},
+			name=myplot,
+			xtick={1,2,3},
+			ztick={1,2,3},% 
+			ymin=-3,ymax=3,%
+			xmin=-3,xmax=3,
+			zmin=-.1,zmax=3.2%
+]
+\addplot3[domain=1:2,y domain=160:340,surf,colormap={mp2}{\colormaptwo},opacity=.6,faceted color=black!60,very thin,z buffer=sort,samples=6,samples y=16] ({cos(y)},{sin(y)},{x});
+\addplot3[domain=0:3,samples y=0,thick,black] (x,0,{3*x-x^2});
+\addplot3[domain=0:3,samples y=0,thick,black] (x,0,{x});
+
+
+\addplot3[domain=1:2,y domain=-20:160,surf,colormap={mp2}{\colormaptwo},opacity=.6,faceted color=black!60,very thin,z buffer=sort,samples=6,samples y=16] ({cos(y)},{sin(y)},{x});
+
+
+\addplot3[domain=0:360,samples y=0,black,thick,smooth,] ({cos(x)},{sin(x)},{2});
+
+\addplot3[domain=160:340,samples y=0,black,thick,dashed,smooth,] ({cos(x)},{sin(x)},{1});
+
+\addplot3[domain=-20:160,samples y=0,black,thick,smooth,] ({cos(x)},{sin(x)},{1});
+
+
+\draw [thick,{\colortwo}] (axis cs: 1,0,1) -- (axis cs:1,0,2);
+
+\end{axis}
+
+\node [right] at (myplot.right of origin)[shift={(-20pt,-16pt)}] {\scriptsize $x$};
+\node [above] at (myplot.above origin) [shift={(0,-15pt)}] {\scriptsize $y$};
+\end{tikzpicture}
+
+%%%%%%%%%%%%%%%% Graph FOUR Shell example 212 b  %%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{tikzpicture}
+\begin{axis}%
+[
+width=\marginparwidth+25pt,%
+tick label style={font=\scriptsize},axis on top,
+			axis y line=none,
+			axis lines=center,
+			y dir=reverse,
+%			view={125}{30},
+			name=myplot,
+			xtick={-3,-2,...,1,2,3},
+			ztick={1,2,3},% 
+			ymin=-3,ymax=3,%
+			xmin=-.2,xmax=6.2,
+tick label style={font=\scriptsize},axis on top,
+			axis y line=none,
+			axis lines=center,
+			y dir=reverse,
+%			view={125}{30},
+			name=myplot,
+			xtick={1,2,3},
+			ztick={1,2,3},% 
+			ymin=-3,ymax=3,%
+			xmin=-3,xmax=3,
+			zmin=-.1,zmax=3.2%
+]
+
+\addplot3[domain=0:2,y domain=150:325,surf,colormap={mp2}{\colormapplaneone},opacity=.6,faceted color=black!40,samples=8,samples y=36,very thin,z buffer=sort] ({x*cos(y)},{x*sin(y)},{(3*x-x^2)});
+
+\addplot3[domain=0:2,y domain=0:360,surf,colormap={mp2}{\colormapplaneone},opacity=.6,faceted color=black!40,samples=8,samples y=36,very thin,z buffer=sort] ({(x)*cos(y)},{(x)*sin(y)},{3*x-x^2});
+
+\addplot3[domain=0:2,y domain=-35:150,surf,colormap={mp2}{\colormapplaneone},opacity=.6,faceted color=black!40,samples=8,samples y=36,very thin,z buffer=sort] ({x*cos(y)},{x*sin(y)},{(3*x-x^2)});
+
+\addplot3[domain=0:2,y domain=0:125,surf,colormap={mp2}{\colormapplaneone},opacity=.6,faceted color=black!40,samples=8,samples y=36,very thin,z buffer=sort] ({(3*x-x^2)*cos(y)},{(3*x-x^2)*sin(y)},{3*x-x^2});
+
+\addplot3[domain=1.4:2,samples y=0,thick,black] (x,0,{3*x-x^2});
+\addplot3[domain=0:1.4,samples y=0,thick,black,dashed] (x,0,{3*x-x^2});
+\addplot3[domain=0:2,samples y=0,thick,black] (x,0,{x});
+
+\end{axis}
+
+\node [right] at (myplot.right of origin)[shift={(-20pt,-16pt)}] {\scriptsize $x$};
+\node [above] at (myplot.above origin) [shift={(0,-15pt)}] {\scriptsize $y$};
+\end{tikzpicture}
+
+
+
+
+\end{document}

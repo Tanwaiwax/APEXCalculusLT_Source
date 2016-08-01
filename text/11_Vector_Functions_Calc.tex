@@ -1,8 +1,8 @@
 \section{Calculus and Vector--Valued Functions}\label{sec:vvf_calc}
 
-The previous section introduced us to a new mathematical object, the vector--valued function. We now apply calculus concepts to these functions. We start with the limit, then work our way through derivatives to integrals.\\
+The previous section introduced us to a new mathematical object, the vector--valued function. We now apply calculus concepts to these functions. We start with the limit, then work our way through derivatives to integrals.
 
-\noindent\textbf{\large Limits of Vector--Valued Functions}\\
+\subsection*{Limits of Vector--Valued Functions}
 
 The initial definition of the limit of a vector--valued function is a bit intimidating, as was the definition of the limit in Definition \ref{def:limit}. The theorem following the definition shows that in practice, taking limits of vector--valued functions is no more difficult than taking limits of real--valued functions.
 
@@ -10,8 +10,7 @@ The initial definition of the limit of a vector--valued function is a bit intimi
 {Let $I$ be an open interval containing $c$, and let $\vec r(t)$ be a vector--valued function defined on $I$, except possibly at $c$. %Let a vector--valued function $\vec r(t)$ be given, defined on an open interval $I$ containing $c$. 
 The \textbf{limit of $\vec r(t)$, as $t$ approaches $c$, is $\vec L$}, expressed as 
 $$\lim_{t\to c} \vec r(t) = \vec L,$$ means that given any $\epsilon>0$, there exists a $\delta>0$ such that for all $t\neq c$, if $|t-c| <\delta$, we have $\norm{\vec r(t) - \vec L} < \epsilon.$
-\index{vector--valued function!limits}\index{limit!of vector--valued functions}
-}\\
+\index{vector--valued function!limits}\index{limit!of vector--valued functions}}
 
 Note how the measurement of distance between real numbers is the absolute value of their difference; the measure of distance between vectors is the vector norm, or magnitude, of their difference.
 
@@ -22,9 +21,8 @@ Note how the measurement of distance between real numbers is the absolute value 
 	$$\lim_{t\to c} \vec r(t) = \la \lim_{t\to c}f(t)\, , \,\lim_{t\to c} g(t)\ra.$$
 	\item Let $\vec r(t) = \la \,f(t),g(t),h(t)\,\ra$ be a vector--valued function in $\mathbb{R}^3$ defined on an open interval $I$ containing $c$. Then 
 	$$\lim_{t\to c} \vec r(t) = \la \lim_{t\to c}f(t)\, , \,\lim_{t\to c} g(t)\,, \,\lim_{t\to c} h(t)\ra$$
-\end{enumerate}
-}
-Theorem \ref{thm:vvf_limit} states that we compute limits component--wise.\\
+\end{enumerate}}
+Theorem \ref{thm:vvf_limit} states that we compute limits component--wise.
 
 \example{ex_vvflimit1}{Finding limits of vector--valued functions}{
 Let $\ds\vec r(t) = \la \frac{\sin t}{t},\, t^2-3t+3,\,\cos t\ra.$ Find $\ds \lim_{t\to 0}\vec r(t)$.
@@ -33,11 +31,9 @@ Let $\ds\vec r(t) = \la \frac{\sin t}{t},\, t^2-3t+3,\,\cos t\ra.$ Find $\ds \li
 \begin{align*}
 \lim_{t\to0} \vec r(t) &= \la \lim_{t\to 0}\frac{\sin t}{t}\, , \, \lim_{t\to 0} t^2-3t+3\, , \, \lim_{t\to 0} \cos t\ra \\
 			&= \la 1,3,1\ra.
-\end{align*}
-\vskip-1.5\baselineskip
-}\\
+\end{align*}}
 
-\noindent\textbf{\large Continuity}\\
+\subsection*{Continuity}
 
 \definition{def:vvf_continuity}{Continuity of Vector--Valued Functions}
 {Let $\vec r(t)$ be a vector--valued function defined on an open interval $I$ containing $c$.
@@ -45,24 +41,22 @@ Let $\ds\vec r(t) = \la \frac{\sin t}{t},\, t^2-3t+3,\,\cos t\ra.$ Find $\ds \li
 \begin{enumerate}
 	\item $\vec r(t)$ is \textbf{continuous at $c$} if $\ds \lim_{t\to c} \vec r(t) = r(c)$.
 	\item	If $\vec r(t)$ is continuous at all $c$ in $I$, then $\vec r(t)$ is \textbf{continuous on $I$.}
-\end{enumerate}
-}
+\end{enumerate}}
 
 We again have a theorem that lets us evaluate continuity component--wise.
 
 \theorem{thm:vvf_continuity}{Continuity of Vector--Valued Functions}
-{Let $\vec r(t)$ be a vector--valued function defined on an open interval $I$ containing $c$. $\vec r(t)$ is continuous at $c$ if, and only if, each of its component functions is continuous at $c$.
+{Let $\vec r(t)$ be a vector--valued function defined on an open interval $I$ containing $c$. Then $\vec r(t)$ is continuous at $c$ if, and only if, each of its component functions is continuous at $c$.
 \index{vector--valued function!continuity}\index{continuous function!vector--valued}
-}\\
+}
 
 \example{ex_vvflimit2}{Evaluating continuity of vector--valued functions}{
 Let $\ds\vec r(t) = \la \frac{\sin t}{t},\, t^2-3t+3,\,\cos t\ra.$ Determine whether $\vec r$ is continuous at $t=0$ and $t=1$.}
 {While the second and third components of $\vec r(t)$ are defined at $t=0$, the first component, $(\sin t)/t$, is not. Since the first component is not even defined at $t=0$, $\vec r(t)$ is not defined at $t=0$, and hence it is not continuous at $t=0$.
 
-At $t=1$ each of the component functions is continuous. Therefore $\vec r(t)$ is continuous at $t=1$.
-}\\
+At $t=1$ each of the component functions is continuous. Therefore $\vec r(t)$ is continuous at $t=1$.}
 
-\noindent\textbf{\large Derivatives}\\
+\subsection*{Derivatives}
 
 Consider a vector--valued function $\vec r$ defined on an open interval $I$ containing $t_0$ and $t_1$. We can compute the displacement of $\vec r$ on $[t_0,t_1]$, as shown in Figure \ref{fig:vvfderiv_intro}(a). Recall that dividing the displacement vector by $t_1-t_0$ gives the average rate of change on $[t_0,t_1]$, as shown in (b). \\
 
@@ -92,9 +86,7 @@ $$\frac{\vec r(c+h)-\vec r(c)}{h}$$ for any value of $h\neq0$. We take the limit
 	$$ \vrp (c) = \lim_{h\to 0} \frac{\vec r(c+h) - \vec r(c)}{h}.$$
 	\item	The derivative of $\vec r$ is
 	$$ \vrp (t) = \lim_{h\to 0} \frac{\vec r(t+h) - \vec r(t)}{h}.$$
-\end{enumerate}
-\vskip-\baselineskip
-}\\
+\end{enumerate}}
 
 \mnote{Alternate notations for the derivative of $\vec r$ include: $$\vrp(t) = \frac{d}{dt}\big(\,\vec r(t)\,\big) = \frac{d\vec r}{dt}.$$}
 %}\\
@@ -110,8 +102,7 @@ Once again we might view this definition as intimidating, but recall that we can
 	\item Let $\vec r(t) = \la \, f(t), g(t), h(t)\,\ra$. Then
 	\index{vector--valued function!derivatives}\index{derivative!vector--valued functions}
 	$$\vrp(t) = \la\, \fp(t), g\primeskip'(t), h\primeskip'(t)\, \ra.$$
-\end{enumerate}
-}\\
+\end{enumerate}}
 
 \example{ex_vvflimit3}{Derivatives of vector--valued functions}{
 Let $\vec r(t) = \la t^2,t\ra$. 
@@ -134,10 +125,7 @@ $$\vrp(t) = \la 2t, 1\ra.$$ $\vec r(t)$ and $\vrp(t)$ are graphed together in Fi
 \end{tabular}
 }
 
-\end{enumerate}
-\vskip-1.5\baselineskip
-}\\
-\clearpage
+\end{enumerate}}
 
 \example{ex_vvflimit4}{Derivatives of vector--valued functions}{
 Let $\vec r(t) = \la \cos t, \sin t, t\ra$. Compute $\vrp(t)$ and $\vrp(\pi/2)$. Sketch $\vrp(\pi/2)$ with its initial point at the origin and at $\vec r(\pi/2)$.
@@ -167,7 +155,7 @@ Let $\vec r(t) = \la \cos t, \sin t, t\ra$. Compute $\vrp(t)$ and $\vrp(\pi/2)$.
 \end{tabular}}
 }% ends whole if-then-else
 %\vskip-1.5\baselineskip
-}\\  %ends example
+}  %ends example
 
 \ifthenelse{\boolean{in_threeD}}{\vskip\baselineskip}{}
 In Examples \ref{ex_vvflimit3} and \ref{ex_vvflimit4}, sketching a particular derivative with its initial point at the origin did not seem to reveal anything significant. However, when we sketched the vector with its initial point on the corresponding point on the graph, we did see something significant: the vector appeared to be \textit{tangent} to the graph. We have not yet defined what ``tangent'' means in terms of curves in space; in fact, we use the derivative to define this term.
@@ -179,8 +167,7 @@ In Examples \ref{ex_vvflimit3} and \ref{ex_vvflimit4}, sketching a particular de
 	\item A vector $\vec v$ is \textbf{tangent to the graph of $\vec r(t)$ at $t=c$} if $\vec v$ is parallel to $\vrp(c)$.
 	\item	The \textbf{tangent line}  to the graph of $\vec r(t)$ at $t=c$ is the line through $\vec r(c)$ with direction parallel to $\vrp(c)$. An equation of the tangent line is 
 	$$\vec \ell(t) = \vec r(c) + t\,\vrp(c).$$
-\end{enumerate}
-}\\
+\end{enumerate}}
 
 \example{ex_vvfderiv1}{Finding tangent lines to curves in space}{
 Let $\vec r(t) = \la t,t^2,t^3\ra$ on $[-1.5,1.5]$. Find the vector equation of the line tangent to the graph of $\vec r$ at $t=-1$. }
@@ -209,8 +196,7 @@ The direction comes from $\vrp(-1)$. We compute, component--wise, $\vrp(t) = \la
 \end{tabular}
 }% end mtable
 }% ends all of the if-then-else statements
-The vector equation of the line is $\ell(t) = \la -1,1,-1\ra + t\la 1,-2,3\ra$. \ifthenelse{\boolean{in_threeD}}{This line and $\vec r(t)$ are sketched in Figure \ref{fig:vvfderiv1}.}{This line and $\vec r(t)$ are sketched, from two perspectives, in Figure \ref{fig:vvfderiv1} (a) and (b).}
-}\\
+The vector equation of the line is $\ell(t) = \la -1,1,-1\ra + t\la 1,-2,3\ra$. \ifthenelse{\boolean{in_threeD}}{This line and $\vec r(t)$ are sketched in Figure \ref{fig:vvfderiv1}.}{This line and $\vec r(t)$ are sketched, from two perspectives, in Figure \ref{fig:vvfderiv1} (a) and (b).}}
 
 \example{ex_vvfderiv3}{Finding tangent lines to curves}{
 Find the equations of the lines tangent to $\vec r(t) = \la t^3,t^2\ra$ at $t=-1$ and $t=0$.}
@@ -220,13 +206,12 @@ so the equation of the line tangent to the graph of $\vec r(t)$ at $t=-1$ is
 $$\ell(t) = \la -1,1\ra + t\la 3,-2\ra.$$ This line is graphed with $\vec r(t)$ in Figure \ref{fig:vvfderiv3}.
 
 \mfigure{0in}{Graphing $\vec r(t)$ and its tangent line in Example \ref{ex_vvfderiv3}.}{fig:vvfderiv3}{figures/figvvfderiv3}
-At $t=0$, we have $\vrp(0) = \la 0,0\ra=\vec 0$! This implies that the tangent line ``has no direction.'' We cannot apply Definition \ref{def:vector_tangent}, hence cannot find the equation of the tangent line.
-}\\
+At $t=0$, we have $\vrp(0) = \la 0,0\ra=\vec 0$! This implies that the tangent line ``has no direction.'' We cannot apply Definition \ref{def:vector_tangent}, hence cannot find the equation of the tangent line.}
 
 We were unable to compute the equation of the tangent line to $\vec r(t)= \la t^3,t^2\ra$ at $t=0$ because $\vrp(0) = \vec 0$. The graph in Figure \ref{fig:vvfderiv3} shows that there is a cusp at this point. This leads us to another definition of \textbf{smooth}, previously defined by Definition \ref{def:smooth} in Section \ref{sec:param_eqs}.
 
 \definition{def:vector_smooth}{Smooth Vector--Valued Functions}
-{Let $\vec r(t)$ be a differentiable vector--valued function on an open interval $I$. $\vec r(t)$ is \textbf{smooth} on $I$ if $\vrp(t)\neq \vec 0$ on $I$.
+{Let $\vec r(t)$ be a differentiable vector--valued function on an open interval $I$. Then $\vec r(t)$ is \textbf{smooth} on $I$ if $\vrp(t)\neq \vec 0$ on $I$.
 \index{smooth}\index{vector--valued function!smooth}
 }
 
@@ -259,7 +244,6 @@ Let $\vec r(t) = \la t, t^2-1\ra$ and let $\vec u(t)$ be the unit vector that po
 	
 	$\vec r(t)$ and $\vec u(t)$ are graphed in Figure \ref{fig:vvfderiv2a}. Note how the graph of $\vec u(t)$ forms part of a circle; this must be the case, as the length of $\vec u(t)$ is 1 for all $t$.
 	\mfigure{0in}{Graphing $\vec r(t)$ and $\vec u(t)$ in Example \ref{ex_vvfderiv2}.}{fig:vvfderiv2a}{figures/figvvfderiv2a}
-	%\drawexampleline
 	
 	\item		To compute $\vec u\,'(t)$, we use Theorem \ref{thm:vvf_deriv_prop}, writing $$\vec u(t) = f(t)\vec r(t),\quad  \text{where}\quad f(t) = \frac{1}{\sqrt{t^2+(t^2-1)^2}}=\big(t^2+(t^2-1)^2\big)^{-1/2}.$$ (We \emph{could} write $$\vec u(t) = \la \frac{t}{\sqrt{t^2+(t^2-1)^2}}, \frac{t^2-1}{\sqrt{t^2+(t^2-1)^2}}\ra$$ and then take the derivative. It is a matter of preference; this latter method requires two applications of the Quotient Rule where our method uses the Product and Chain Rules.)
 	

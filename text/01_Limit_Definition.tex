@@ -52,10 +52,9 @@ Note the order in which $\epsilon$ and $\delta$ are given.  In the definition, t
 
 \youtubeVideo{v5zsbgYrunM}{Limits 1b --- Delta-Epsilon Formulation}
 
-An example will help us understand this definition.  Note that the explanation is long, but it will go through all steps necessary to understand the ideas.\\
+An example will help us understand this definition.  Note that the explanation is long, but it will go through all steps necessary to understand the ideas.
 
-\example{ex_compute_lim1}{Evaluating a limit using the definition}{
-Show that $\displaystyle \lim_{x\rightarrow 4} \sqrt{x} = 2 $.}
+\example{ex_compute_lim1}{Evaluating a limit using the definition}{Show that $\displaystyle \lim_{x\rightarrow 4} \sqrt{x} = 2 $.}
 {Before we use the formal definition, let's try some numerical tolerances.  What if the $y$ tolerance is 0.5, or $\epsilon =0.5$?  How close to 4 does $x$ have to be so that $y$ is within 0.5 units of 2, i.e., $1.5 < y < 2.5$?  In this case, we can proceed as follows:
 \begin{align*}
 1.5 &< \parbox{15pt}{\centering $y$} < 2.5 \\
@@ -65,7 +64,7 @@ Show that $\displaystyle \lim_{x\rightarrow 4} \sqrt{x} = 2 $.}
 \end{align*}
 
 So, what is the desired $x$ tolerance?  Remember, we want to find a symmetric interval of $x$ values, namely
-$4 - \delta < x < 4 + \delta$.  The lower bound of $2.25$ is $1.75$ units from 4; the upper bound of 6.25 is 2.25 units from 4. We need the smaller of these two distances; we must have $\delta \leq 1.75$. See Figure \ref{fig:choose_e_d}.\\
+$4 - \delta < x < 4 + \delta$.  The lower bound of $2.25$ is $1.75$ units from 4; the upper bound of 6.25 is 2.25 units from 4. We need the smaller of these two distances; we must have $\delta \leq 1.75$. See \autoref{fig:choose_e_d}.\bigskip
 
 %\ifthenelse{\boolean{longpage}}%
 %{\mtable{Illustrating the $\epsilon-\delta$ process.}{fig:choose_e_d}{%
@@ -73,11 +72,11 @@ $4 - \delta < x < 4 + \delta$.  The lower bound of $2.25$ is $1.75$ units from 4
 		%\myincludegraphics{figures/figLimitProof1a}&
 		%\myincludegraphics{figures/figLimitProof1b}
 		%\end{tabular}
-		%\vskip \baselineskip
+		%\bigskip
 		%\parbox{200pt}{\centering With $\epsilon=0.5$, we pick any $\delta < 1.75$.}
 		%}
 %}
-\mtable[2in]{Illustrating the $\epsilon-\delta$ process.}{fig:choose_e_d}{%
+\mtable{Illustrating the $\epsilon-\delta$ process.}{fig:choose_e_d}{%
 %		\begin{tabular}{c} 
 		\myincludegraphics{figures/figLimitProof1a}\\
 		\myincludegraphics{figures/figLimitProof1b}\\
@@ -90,42 +89,56 @@ $4 - \delta < x < 4 + \delta$.  The lower bound of $2.25$ is $1.75$ units from 4
 
 		
 
-Given the $y$ tolerance $\epsilon =0.5$, we have found an $x$ tolerance, $\delta \leq 1.75$, such that whenever $x$ is within $\delta$ units of 4, then $y$ is within $\epsilon$ units of 2.  That's what we were trying to find.\\
+Given the $y$ tolerance $\epsilon =0.5$, we have found an $x$ tolerance, $\delta \leq 1.75$, such that whenever $x$ is within $\delta$ units of 4, then $y$ is within $\epsilon$ units of 2.  That's what we were trying to find.\bigskip
   
-Let's try another value of $\epsilon$.\\
+Let's try another value of $\epsilon$.\bigskip
 
 What if the $y$ tolerance is 0.01, i.e.,  $\epsilon =0.01$?  How close to 4 does $x$ have to be in order for $y$ to be within 0.01 units of 2 (or $1.99 < y < 2.01$)?  Again, we just square these values to get
 $1.99^2 < x < 2.01^2$, or 
 \[3.9601 < x < 4.0401\text{.}\]
 What is the desired $x$ tolerance?  In this case we must have $\delta \leq 0.0399$, which is the minimum distance from 4 of the two bounds given above.  %Note that in some sense, it looks like there are two tolerances (below 4 of 0.0399 units and above 4 of 0.0401 units).  However, we couldn't use the larger value of $0.0401$ for $\delta$ since then the interval for $x$ would be  $3.9599 < x < 4.0401$ resulting in $y$ values of $1.98995 < y < 2.01$ (which contains values NOT within 0.01 units of 2).\\
 
-What we have so far: if $\epsilon =0.5$, then $\delta \leq 1.75$ and if $\epsilon = 0.01$, then $\delta \leq 0.0399$. A pattern is not easy to see, so we switch to general $\epsilon$ try to determine $\delta$ symbolically.  We start by assuming $y=\sqrt{x}$ is within $\epsilon$ units of 2:
-
 \drawexampleline
 
-\begin{eqnarray*}
-|y - 2| < \epsilon &\\
--\epsilon < y - 2 < \epsilon& \qquad \textrm{(Definition of absolute value)}\\
+What we have so far: if $\epsilon =0.5$, then $\delta \leq 1.75$ and if $\epsilon = 0.01$, then $\delta \leq 0.0399$. A pattern is not easy to see, so we switch to general $\epsilon$ try to determine $\delta$ symbolically.  We start by assuming $y=\sqrt{x}$ is within $\epsilon$ units of 2:
+
+\begin{align*}
+\abs{y - 2} < \epsilon \\
+-\epsilon < y - 2 < \epsilon & \qquad \textrm{(Definition of absolute value)}\\
 -\epsilon < \sqrt{x} - 2 < \epsilon  &\qquad\text{($y=\sqrt{x}$)}\\
 2 - \epsilon < \sqrt{x} < 2+ \epsilon &\qquad \textrm{ (Add 2)}\\
 (2 - \epsilon)^2 < x < (2+ \epsilon) ^2 &\qquad \textrm{ (Square all)}\\
 4 - 4\epsilon + \epsilon^2 < x < 4 + 4\epsilon + \epsilon^2 &\qquad \textrm{ (Expand)}\\
-4 - (4\epsilon - \epsilon^2) < x < 4 + (4\epsilon + \epsilon^2)\text{.} &\qquad \textrm{ (Rewrite in the desired form)}
-\end{eqnarray*}
+4 - (4\epsilon - \epsilon^2) < x < 4 + (4\epsilon + \epsilon^2) &\qquad \textrm{ (Rewrite in the desired form)} \\
+- (4\epsilon - \epsilon^2) < x-4 < (4\epsilon + \epsilon^2) &\qquad \textrm{ (Rewrite in the desired form)}
+\end{align*}
 
-The ``desired form'' in the last step is ``$4-\textit{something} < x < 4 +\textit{something}$.''
+The ``desired form'' in the last step is ``$-\textit{something} < x-4 < \textit{something}$.''
 Since we want this last interval to describe an $x$ tolerance around 4, we have that either $\delta \leq 4\epsilon - \epsilon^2$ or $\delta \leq 4\epsilon + \epsilon^2$, whichever is smaller: \[\delta \leq \min\{4\epsilon - \epsilon^2, 4\epsilon + \epsilon^2\}\text{.}\]  Since $\epsilon > 0$, the minimum is $\delta \leq 4\epsilon - \epsilon^2$.  That's the formula: given an $\epsilon$, set $\delta \leq 4\epsilon-\epsilon^2$. 
 
 We can check this for our previous values.  If $\epsilon=0.5$, the formula gives
 $\delta \leq 4(0.5) - (0.5)^2 = 1.75$ and when $\epsilon=0.01$, the formula gives $\delta \leq 4(0.01) - (0.01)^2 = 0.399$.
-%\drawexampleline
 
-So given any $\epsilon >0$, set $\delta \leq 4\epsilon - \epsilon^2$. Then if $|x-4|<\delta$ (and $x\neq 4$), then $|f(x) - 2| < \epsilon$,  satisfying the definition of the limit.  We have shown formally (and finally!) that $\displaystyle \lim_{x\rightarrow 4} \sqrt{x} = 2 $.
-}\\
+So given any $\epsilon >0$, set $\delta \leq 4\epsilon - \epsilon^2$. Then if $|x-4|<\delta$ (and $x\neq 4$), then $|f(x) - 2| < \epsilon$,  satisfying the definition of the limit.  We have shown formally (and finally!) that $\displaystyle \lim_{x\rightarrow 4} \sqrt{x} = 2 $.}
 
 %FOOTNOTE $**$: Actually, it is a pain, but this won't work if $\epsilon \ge 4$.  This shouldn't really occur since $\epsilon$ is supposed to be small, but it could happen.  In the cases where $\epsilon \ge 4$, just take $\delta = 1$ and you'll be fine.
-The previous example was a little long in that we sampled a few specific cases of $\epsilon$ before handling the general case. Normally this is not done.  The previous example is also a bit unsatisfying in that $\sqrt{4}=2$; why work so hard to prove something so obvious? Many $\epsilon$-$\delta$ proofs are long and difficult to do. In this section, we will focus on examples where the answer is, frankly, obvious, because the non--obvious examples are even harder. In the next section we will learn some theorems that allow us to evaluate limits \textit{analytically}, that is, without using the $\epsilon$-$\delta$ definition.\\
+The previous example was a little long in that we sampled a few specific cases of $\epsilon$ before handling the general case. Normally this is not done.  The previous example is also a bit unsatisfying in that $\sqrt{4}=2$; why work so hard to prove something so obvious? Many $\epsilon$-$\delta$ proofs are long and difficult to do. In this section, we will focus on examples where the answer is, frankly, obvious, because the non--obvious examples are even harder. In the next section we will learn some theorems that allow us to evaluate limits \textit{analytically}, that is, without using the $\epsilon$-$\delta$ definition.
 %That is why theorems about limits are so useful! After doing a few more $\epsilon$--$\delta$ proofs, you will really appreciate the analytical ``short cuts'' found in the next section.\\
+
+We will follow a general pattern to work through $\delta$-$\epsilon$ problems. In some sense, each starts out ``backwards.'' That is, while we want to
+\begin{enumerate}
+	\item start with $\abs{x-c}<\delta$ and conclude that
+	\item $\abs{f(x)-L}<\epsilon$,
+\end{enumerate}
+we actually start by assuming 
+\begin{enumerate}
+	\item $\abs{f(x)-L}<\epsilon$, then perform some algebraic manipulations to give an inequality of the form
+	\item $\abs{x-c}<$ \textit{something}.
+\end{enumerate} 
+%then perform some algebraic manipulations to transform that inequality into an inequality where the ``less than'' side is $|x-c|$. 
+When we have properly done this, the \textit{something} on the ``greater than'' side of the inequality becomes our $\delta$. We can refer to this as the ``scratch--work'' phase of our proof. Once we have $\delta$, we can formally start with $|x-c|<\delta$ and use algebraic manipulations to conclude that $|f(x)-L|<\epsilon$, usually by using the same steps of our ``scratch--work'' in reverse order.
+
+We will highlight this process in the following examples.
 
 \example{ex_compute_limNew7}{Evaluating a limit using the definition}{Show that $\ds \lim_{x\to 1} 3x-5=-2$}{Let's do this example symbolically from the start.
 
@@ -156,7 +169,7 @@ Given $\epsilon>0$, choose $\ds \delta=\frac{\epsilon}{3}$. We assume $|x-1|<\de
 \abs{3x-5-(-2)}&< \epsilon, &
 \end{align*}
 \normalsize
-which is what we wanted to show. Thus  $\ds \lim_{x\to 1} {3x-5}=-2$.\qedhere
+which is what we wanted to show. Thus  $\ds \lim_{x\to 1} {3x-5}=-2$.\qedhere\eoehere
 \end{proof}}
 
 \example{ex_compute_limNew8}{Evaluating a limit using the definition}{Show that $\ds \lim_{x\to 2} 4-\frac{3}{2}x=1$.}{Scratch-Work:
@@ -169,45 +182,29 @@ We start our scratch-work by considering $\abs{f(x)-1}<\epsilon$:
 \abs{3-\frac{3}{2}x}&<\epsilon\\
 \abs{-\frac{3}{2}(-2+x)}&<\epsilon \\
 \frac{3}{2}\abs{x-2}&<\epsilon \\
-\abs{x-2}&<\frac{2\epsilon}{3}\\
+\abs{x-2}&<\frac{2\epsilon}{3}
 \end{align*}
 
 This suggests that we set $\delta=\frac{2\epsilon}{3}$,
 
 \begin{proof}
 Given $\epsilon>0$, choose $\delta=\dfrac{2\epsilon}{3}$. We assume $\abs{x-2}<\delta$
-
+%
 \begin{align*}
 \abs{x - 2} &< \delta \\
 \abs{x - 2} &< \frac{2\epsilon}{3}\\
 \frac{3}{2}\abs{x - 2} &< \frac{2\epsilon}{3}\cdot \frac{3}{2}\\
 \abs{-\frac{3}{2}(x-2)}&< \epsilon \\
 \abs{-\frac{3}{2}x+3}&< \epsilon  \\
-\abs{4-\frac{3}{2}x-1}&< \epsilon,  \\
+\abs{4-\frac{3}{2}x-1}&< \epsilon,
 \end{align*}
-
-which is what we wanted to show. Thus  $\ds \lim_{x\to 2} 4-\frac{3}{2}x=1$.\qedhere
+%
+which is what we wanted to show. Thus  $\ds \lim_{x\to 2} 4-\frac{3}{2}x=1$.\qedhere\eoehere
 \end{proof}}
 
-Make note of the general pattern exhibited in these last two examples. In some sense, each starts out ``backwards.'' That is, while we want to
-\begin{enumerate}
-	\item start with $|x-c|<\delta$ and conclude that
-	\item $|f(x)-L|<\epsilon$,
-\end{enumerate}
-we actually start by assuming 
-\begin{enumerate}
-	\item $|f(x)-L|<\epsilon$, then perform some algebraic manipulations to give an inequality of the form
-	\item $|x-c|<$ \textit{something}.
-\end{enumerate} 
-%then perform some algebraic manipulations to transform that inequality into an inequality where the ``less than'' side is $|x-c|$. 
-When we have properly done this, the \textit{something} on the ``greater than'' side of the inequality becomes our $\delta$. We can refer to this as the ``scratch--work'' phase of our proof. Once we have $\delta$, we can formally start with $|x-c|<\delta$ and use algebraic manipulations to conclude that $|f(x)-L|<\epsilon$, usually by using the same steps of our ``scratch--work'' in reverse order.
-
-We highlight this process in the following example.\\
-
-\example{ex_compute_lim2}{Evaluating a limit using the definition}{
-Show that $\displaystyle \lim_{x\rightarrow 2} x^2 = 4$.}
+\example{ex_compute_lim2}{Evaluating a limit using the definition}{Show that $\ds\lim_{x\to2} x^2 = 4$.}
 {Scratch-Work:
-We start our scratch-work by considering $|f(x)-4| < \epsilon$:
+We start our scratch-work by considering $\abs{f(x)-4}<\epsilon$:
 \begin{align}
 \abs{f(x)-4} &< \epsilon \notag\\
 \abs{x^2-4} &< \epsilon & \text{(Now factor)}\notag\\
@@ -228,7 +225,6 @@ Now, back to the fraction $\dfrac{\epsilon}{\abs{x+2}}$.  If $1<x<3$, then $3<x+
 This suggests that we set 
 $\delta \leq \dfrac{\epsilon}{5}$. This ends our scratch--work, and we begin the formal proof (which also helps us understand why this was a good choice of $\delta$).
 
-\drawexampleline
 \begin{proof}
 Given $\epsilon$, let $\delta \leq \epsilon/5$. We want to show that when $\abs{x-2}<\delta$, then $\abs{x^2-4}<\epsilon$. We start with $\abs{x-2}<\delta$:
 \begin{align*}
@@ -246,13 +242,12 @@ which is what we wanted to show. Thus $\ds \lim_{x\to 2}x^2 = 4$.
 \noindent
 We have arrived at $\abs{x^2 - 4}<\epsilon$ as desired.  Note again, in order to make this happen we needed $\delta$ to first be less than 1.  That is a safe assumption; we want $\epsilon$ to be arbitrarily small, forcing $\delta$ to also be small. 
 
-We have also picked $\delta$ to be smaller than ``necessary.'' We could get by with a slightly larger $\delta$, as shown in Figure \ref{fig:limit_eover5}. The dashed outer lines show the boundaries defined by our choice of $\epsilon$. The dotted inner lines show the boundaries defined by setting $\delta = \epsilon/5$. Note how these dotted lines are within the dashed lines. That is perfectly fine; by choosing $x$ within the dotted lines we are guaranteed that $f(x)$ will be within $\epsilon$ of 4.%If the value we eventually used for $\delta$, namely $\epsilon/5$, is not less than 1, this proof won't work.  For the final fix, we instead set $\delta$ to be the minimum of 1 and $\epsilon/5$. This way all calculations above work.  
+We have also picked $\delta$ to be smaller than ``necessary.'' We could get by with a slightly larger $\delta$, as shown in \autoref{fig:limit_eover5}. The dashed outer lines show the boundaries defined by our choice of $\epsilon$. The dotted inner lines show the boundaries defined by setting $\delta = \epsilon/5$. Note how these dotted lines are within the dashed lines. That is perfectly fine; by choosing $x$ within the dotted lines we are guaranteed that $f(x)$ will be within $\epsilon$ of 4.%If the value we eventually used for $\delta$, namely $\epsilon/5$, is not less than 1, this proof won't work.  For the final fix, we instead set $\delta$ to be the minimum of 1 and $\epsilon/5$. This way all calculations above work.  
 
-\mfigure{0in}{Choosing $\delta = \epsilon/5$ in Example \ref{ex_compute_lim2}.}{fig:limit_eover5}{figures/figlimit_proof2a}
+\mfigure{0in}{Choosing $\delta = \epsilon/5$ in \autoref{ex_compute_lim2}.}{fig:limit_eover5}{figures/figlimit_proof2a}
 
 In summary, given $\epsilon > 0$, set $\delta\leq\epsilon/5$.  Then $|x - 2| < \delta$ implies 
-$|x^2 - 4|< \epsilon$ (i.e.\ $|y - 4|< \epsilon$) as desired.  This shows that $\displaystyle \lim_{x\rightarrow 2} x^2 = 4 $. Figure \ref{fig:limit_eover5} gives a visualization of this; by restricting $x$ to values within $\delta = \epsilon/5$ of 2, we see that $f(x)$ is within $\epsilon$ of $4$.
-}\\
+$|x^2 - 4|< \epsilon$ (i.e.\ $|y - 4|< \epsilon$) as desired.  This shows that $\displaystyle \lim_{x\rightarrow 2} x^2 = 4 $. \autoref{fig:limit_eover5} gives a visualization of this; by restricting $x$ to values within $\delta = \epsilon/5$ of 2, we see that $f(x)$ is within $\epsilon$ of $4$.}
 
 %Examples \ref{ex_compute_lim1} and \ref{ex_compute_lim2} determine $\delta$ by using logic that is difficult to recreate as one learns this topic. For instance, Equation \eqref{eq:limit2} is used based on the following facts:
 %	\begin{enumerate}
@@ -273,16 +268,16 @@ $|x^2 - 4|< \epsilon$ (i.e.\ $|y - 4|< \epsilon$) as desired.  This shows that $
 %\end{itemize}
 %}
 %
-%We revisit the limit found in Example \ref{ex_compute_lim2} to demonstrate the use of Theorem \ref{thm:power_ineq}.
+%We revisit the limit found in \autoref{ex_compute_lim2} to demonstrate the use of \autoref{thm:power_ineq}.
 %
-%\example{ex_compute_lim2b}{Show that $\ds \lim_{x\to 2} x^2=4$ using Theorem \ref{thm:power_ineq}.}
+%\example{ex_compute_lim2b}{Show that $\ds \lim_{x\to 2} x^2=4$ using \autoref{thm:power_ineq}.}
 %{We start the same as before; let $\epsilon >0$ be given. We want to find $\delta>0$ such that $|x^2-4|<\epsilon$ whenever $|x-2|<\delta$. Consider the following inequalities:
 %\begin{align*}
 %|x^2-4|<\epsilon & \\
 %-\epsilon < x^2-4 < \epsilon & \qquad \text{\small (Definition of abs. value)}\\
 %4-\epsilon < x^2 < 4+\epsilon & \qquad \text{\small (add 4)}\\
 %\sqrt{4-\epsilon} < x < \sqrt{4+\epsilon} & \qquad \text{\small (Take square roots)}\\
-%\sqrt{4}-\sqrt{\epsilon} < \sqrt{4-\epsilon} < x < \sqrt{4+\epsilon}< \sqrt{4}+\sqrt{\epsilon} & \qquad \text{\small (apply Theorem \ref{thm:power_ineq})}\\
+%\sqrt{4}-\sqrt{\epsilon} < \sqrt{4-\epsilon} < x < \sqrt{4+\epsilon}< \sqrt{4}+\sqrt{\epsilon} & \qquad \text{\small (apply \autoref{thm:power_ineq})}\\
 %2-\sqrt{\epsilon} < x < 2 + \sqrt{\epsilon} & \text{\small (Simplify)}
 %\end{align*}
 %This implies that when $x$ is within $\sqrt{\epsilon}$ of $2$, $x^2$ will be within $\epsilon$ of $4$. Thus set $\delta = \sqrt{\epsilon}$. We can now start with $|x-2|<\delta$ and reverse the above steps:
@@ -365,14 +360,27 @@ $|x^2 - 4|< \epsilon$ (i.e.\ $|y - 4|< \epsilon$) as desired.  This shows that $
 %In summary, given $\epsilon > 0$, let $\delta = \ln(1+\epsilon)$. Then $|x - 0| < \delta$ implies $|e^x - 1|< \epsilon$ as desired.  We have shown that $\displaystyle \lim_{x\rightarrow 0} e^x = 1 $.
 %}\\
 %
-%We note that we could actually show that $\ds\lim_{x\to c} e^x = e^c $ for any constant $c$.  We do this by factoring out $e^c$ from both sides, leaving us to show $\ds\lim_{x\to c} e^{x-c} = 1 $ instead.  By using the substitution $u=x-c$, this reduces to showing $\ds\lim_{u\to 0} e^u = 1 $ which we just did in the last example.  As an added benefit, this shows that in fact the function $f(x)=e^x$ is \textit{continuous} at all values of $x$, an important concept we will define in Section \ref{sec:continuity}.\\
+%We note that we could actually show that $\ds\lim_{x\to c} e^x = e^c $ for any constant $c$.  We do this by factoring out $e^c$ from both sides, leaving us to show $\ds\lim_{x\to c} e^{x-c} = 1 $ instead.  By using the substitution $u=x-c$, this reduces to showing $\ds\lim_{u\to 0} e^u = 1 $ which we just did in the last example.  As an added benefit, this shows that in fact the function $f(x)=e^x$ is \textit{continuous} at all values of $x$, an important concept we will define in \autoref{sec:continuity}.\\
 
-To better understand the definition of a limit, experiment with the Geogebra app
+\ifthenelse{\boolean{latexml}}{%
+ To better understand the definition of a limit, experiment with the Geogebra app
 at \url{http://ggbm.at/RtY27ybS}.
 
-\iframe{https://www.geogebra.org/material/iframe/id/83655/width/1028/height/600/border/888888/rc/false/ai/true/sdz/true/smb/false/stb/false/stbh/true/ld/false/sri/true/at/auto}{1028}{600}
+ \iframe{https://www.geogebra.org/material/iframe/id/83655/width/1028/height/600/border/888888/rc/false/ai/true/sdz/true/smb/false/stb/false/stbh/true/ld/false/sri/true/at/auto}{1028}{600}
 
-\ifthenelse{\boolean{latexml}}{The portions of the graph outside of the $\epsilon$ tolerance are highlighted in red.  If you get everything within $\epsilon$, then the graph turns green.  You can also put in a piecewise defined function using \texttt{If[~condition~,~then~,~else~]}, such as \texttt{If[~x>0~,~x\^{}2~,~-x~]}.  (If you have trouble moving $L$ around, you may need to use the up and down arrows on your keyboard.)}{\mnote{\hfill\qrcode{http://ggbm.at/RtY27ybS}\hfill}}
+ The portions of the graph outside of the $\epsilon$ tolerance are highlighted in red.  If you get everything within $\epsilon$, then the graph turns green.  You can also put in a piecewise defined function using \texttt{If[~condition~,~then~,~else~]}, such as \texttt{If[~x>0~,~x\^{}2~,~-x~]}.  (If you have trouble moving $L$ around, you may need to use the up and down arrows on your keyboard.)%
+}{%
+ \exvideo{%
+  \begin{minipage}[t]{2cm}%
+   \vspace{-.5\baselineskip}\qrcode{http://ggbm.at/RtY27ybS}%
+  \end{minipage}
+  \quad
+  \begin{minipage}[t]{.74\linewidth}%
+   To better understand the definition of a limit, experiment with the Geogebra app at\\
+   \url{http://ggbm.at/RtY27ybS}.%
+  \end{minipage}%
+ }%
+}
 
 This formal definition of the limit is not an easy concept grasp. Our examples are actually ``easy'' examples, using ``simple'' functions like polynomials, square--roots and exponentials. It is very difficult to prove, using the techniques given above, that $\ds \lim_{x\to 0}(\sin x)/x = 1$, as we approximated in the previous section.
 

@@ -1,0 +1,235 @@
+\RequirePackage{changepage}
+\RequirePackage[inline]{enumitem}
+\RequirePackage{layout}
+\RequirePackage[h]{esvect}
+\RequirePackage[noplaybutton]{media9}
+\RequirePackage{qrcode}
+\RequirePackage{everypage} % helps put the blue example line on long examples
+\RequirePackage{eso-pic} % AddToShipOut (only once in Ch.9)
+%\RequirePackage{thmtools} % continuing theorems and ``List of Theorems''
+%\usepackage{lipsum} % not used
+
+% The following helps create a ``List of Theorems'', ``Definitions'', and ``Key Ideas''.  See http://tex.stackexchange.com/q/74857/107497
+%\usepackage{etoolbox}
+%\patchcmd\thmtlo@chaptervspacehack
+%  {\addtocontents{loe}{\protect\addvspace{10\p@}}}
+%  {\addtocontents{loe}{\protect\thmlopatch@endchapter\protect\thmlopatch@chapter{\thechapter}}}
+%  {}{failed thmtlo@chaptervspacehack}
+%\AtEndDocument{\addtocontents{loe}{\protect\thmlopatch@endchapter}}
+%\long\def\thmlopatch@chapter#1#2\thmlopatch@endchapter{%
+%  \setbox\z@=\vbox{#2}%
+%  \ifdim\ht\z@>\z@
+%    \hbox{\bfseries\chaptername\ #1}\nobreak
+%    #2
+%    \addvspace{10\p@}
+%  \fi
+%}
+%\def\thmlopatch@endchapter{}
+%\patchcmd\thmt@mklistcmd
+%  {\protect\numberline{\csname the\thmt@envname\endcsname}%
+%      \thmt@thmname}{}{}{failed thmt@mklistcmd}
+%%\makeatother
+%\renewcommand\thmtformatoptarg[1]{#1}
+
+\newcommand{\embedVideo}[1]{}
+%\def \embedVideo#1{\fbox{%
+%  \includemedia[%
+%    width=.96\linewidth,%
+%    height=0.54\linewidth,% 16:9
+%    activate=pageopen,%
+%    flashvars={%
+%      modestbranding=1% no YT logo in control bar
+%     &autohide=1% controlbar autohide
+%     &showinfo=0% no title and other info before start
+%     &rel=0% no related videos after end
+%    }%
+%   ]{%
+%    %\href{https://www.youtube.com/v/#1?rel=0}{#1}% alt text
+%   }{%
+%    #1%https://www.youtube.com/v/#1?rel=0%
+%   }%
+%}}
+
+\newcommand{\iframe}[3]{}
+
+\newcommand{\makeStyles}[2]{} % only in .ltxml
+
+\newcommand{\coloredbox}[3]{%
+\noindent%
+\begin{tikzpicture}%
+\ifthenelse{\boolean{inColor}}%
+{\draw (0,0) node[#1] {#3};}% was (\specialboxtitlelength,0)
+{\draw (0,0) node[#2] {#3};}% ditto
+\end{tikzpicture}%
+}
+
+
+%%%%%%%%% the line to the left of examples
+
+% creates a generic style for the lines. You can add lots
+% of things here, all separated by commas.
+\newcommand{\linestyle}{[thick, \thelinecolor]}
+
+\newcommand{\setlinestyle}[1]{\renewcommand{\linestyle}{[#1, \thelinecolor]}}
+
+% This is more a debugging tool than a stylistic one.
+% showexamplemarks will draw a small circle in the margin at the the
+% beginning of an example and another immediately following
+% the end of the example in the text. Sometimes this is useful
+% to figure out why there seems to be a lot of space between
+% the end of the example and the end of the drawn line.
+% Too much space can occur, for instance, if the example ends with
+% with a ``$$ maths $$'' type environment. You can correct for this
+% with a \eoehere command ( End Of Example here ).
+\newboolean{showexamplemarks}
+%\setboolean{showexamplemarks}{true}
+\setboolean{showexamplemarks}{false}
+
+% Do you want to draw the blue lines for examples?
+\newboolean{showexamplelines}
+\setboolean{showexamplelines}{true}
+%\setboolean{showexamplelines}{false}
+
+\newcommand*{\currentExampleLabel}{\undefined}
+
+\newboolean{eoeencountered}
+\newcommand{\currentLabel}{notinexample}
+
+% thanks to Steven B. Segletes and egreg at
+% http://tex.stackexchange.com/a/320586/107497
+\newcommand{\eoehere}{%
+ \ifthenelse{\boolean{eoeencountered}}{%
+  \vspace{-\baselineskip}\nopagebreak%
+ }{%
+  \drawnode{e\currentLabel}{0}{0}%
+  \ltx@label{e\currentLabel}%
+ % \gdef\currentLabel{notinexample}%
+  \ifthenelse{\boolean{measuring@}}{}{\global\eoeencounteredtrue}%
+ }%
+}
+
+\newcounter{pagebeforeend}
+
+\newcommand{\examplestarred}[3]{%
+%\stepcounter{examplecounter}%
+\setboolean{eoeencountered}{false}%
+\renewcommand{\currentLabel}{#1}%
+\vspace{\baselineskip}%
+\noindent%
+\begin{exampleEnv}[#2]\label{#1}%
+ \drawnode{#1}{-2\marginlinelength}{\baselineskip}%
+ \ifthenelse{\pageref{#1}=\pageref{e#1}}{}{%
+  % if different pages, we need to draw start to bottom before leaving the page
+  \ifthenelse{\boolean{showexamplelines}}{%
+   \begin{tikzpicture}[remember picture,overlay]%
+    \node [yshift=\bottommarginlength](bottom) at (current page.north) {};%
+    \draw \linestyle (#1) -- ( #1 |- bottom);% from start to bottom of page
+   \end{tikzpicture}%
+  }{}%
+ }%
+ \noindent%
+ #3%
+ \eoehere%
+ \ifthenelse{\boolean{showexamplelines}}{%
+  \ifthenelse{\pageref{#1}=\pageref{e#1}}{%
+   \begin{tikzpicture}[remember picture,overlay]
+    \draw \linestyle (#1) -- (#1.south |- e#1.south) -- ++(10pt,0);
+   \end{tikzpicture}%
+  }{% if different pages (start to bottom already happened)
+   \ifthenelse{\isodd{\pageref{e#1}}}{
+    \setlength{\innerpagemarginlength}{\oddpagemarginlength}
+   }{
+    \setlength{\innerpagemarginlength}{\evenpagemarginlength}
+   }
+   \begin{tikzpicture}[remember picture,overlay]
+    \node [xshift=\innerpagemarginlength,yshift=\topmarginlength](topleft) at (current page.north west)  {};
+    \draw \linestyle (topleft)--(e#1.south -| topleft) -- ++(10pt,0);
+   \end{tikzpicture}%
+   \setcounter{pagebeforeend}{\thepage}%
+   \addtocounter{pagebeforeend}{-1}%
+   \ifthenelse{\pageref{#1}<\value{pagebeforeend}}{%
+    \write\@auxout{\noexpand\longexample{#1}}%
+   }{}% end long example
+  }
+ }{}% ends if example lines
+\end{exampleEnv}%
+\vspace{\baselineskip}%
+}%ends the definition of examplestarred
+
+\newcommand*{\drawnode}[3]{%
+\parbox[l]{0pt}{%
+ \ifthenelse{\boolean{showexamplelines}}{%
+  \begin{tikzpicture}[remember picture,overlay]
+   \ifthenelse{\boolean{showexamplemarks}}{
+    \draw (#2,#3) circle (1pt) node (#1) {};
+%    \draw (#2,#3) circle (1pt) node (#1) {\nolinkurl{#1}};
+   }{
+    \draw (#2,#3) node (#1) {};
+   }
+  \end{tikzpicture}%
+ }{}%
+}}
+
+\newcommand*{\longexample}[1]{
+ \AddEverypageHook{%
+  \ifthenelse{ \pageref{#1}<\value{page} \AND \value{page}<\pageref{e#1} \AND%
+               \boolean{@mainmatter} \AND \boolean{printquestions} }{%
+   \drawexampleline%
+  }{%
+  }%
+ }%
+}
+
+% Draws a line on a page that doesn't contain either
+% the beginning or end of an example.
+% Takes no arguments; figures out if you 
+% are on an even or odd numbered page for
+% correct margin calculation
+\newcommand{\drawexampleline}{%
+\ifthenelse{\isodd{\thepage}}{%
+ \setlength{\innerpagemarginlength}{\oddpagemarginlength}%
+}{%
+ \setlength{\innerpagemarginlength}{\evenpagemarginlength}%
+}%
+\begin{tikzpicture}[remember picture,overlay]
+	\node [xshift=\innerpagemarginlength,yshift=\topmarginlength](tleft) at (current page.north west)  {};
+	\draw \linestyle (tleft) -- ++(0,\bottommarginlength+1in);
+\end{tikzpicture}}
+
+
+
+
+\newcommand{\myincludegraphicsthree}{\@ifstar \myincludegraphicsthreestarred \myincludegraphicsthreenostar}
+
+\newcommand{\myincludegraphicsthreenostar}[3]{{%
+	\ifthenelse{\boolean{in_threeD}}{% in 3D
+	\includemedia[#1]{\includegraphics{#3_3D\colornamesuffix}}{#3_3D.prc}}% now not in 3D
+	{\myincludegraphics[#2]{#3}}}}
+
+\newcommand{\myincludegraphicsthreestarred}[3]{{%
+	\ifthenelse{\boolean{in_threeD}}{% in 3D
+	\includemedia[#1]{\includegraphics{#3\colornamesuffix}}{#3_3D.prc}}% now not in 3D
+	{\myincludegraphics[#2]{#3}}}}
+
+
+% some exercise / answer related commands
+
+\def\printexercises#1{\printexercisesgeneric{#1}{Exercises \arabic{chapter}.\arabic{section}}{\arabic{chapter}.\arabic{section}}}
+
+\def\printexercisesreview#1{\printexercisesgeneric{#1}{Chapter \arabic{chapter} Review Exercises}{\arabic{chapter}}}
+
+% {chapter_already_has_exercises}
+\newcommand{\writeToAnsFile}[3]{%
+%old if: {\equal{\expandafter\readsection\thesection}{1}}{}%
+\ifthenelse{\boolean{chapter_already_has_exercises}}{%
+% do nothing
+}{% else
+\setboolean{chapter_already_has_exercises}{true}
+\immediate\write\answrite{}%
+\immediate\write\answrite{\noexpand\noindent{\noexpand\Large\noexpand\textbf{Chapter \thechapter}}\noexpand\vskip\noexpand\baselineskip}%
+}%{%
+% else do nothing
+%}% ends ifthenelse
+\immediate\write\answrite{\noexpand\noindent {\noexpand\hyperref[exer#3]{\noexpand\textbf{#2}}\noexpand\label{sol#3}} \noexpand \vskip \baselineskip}%
+\write\answrite{\noexpand\printanswers{#1}}%
+}

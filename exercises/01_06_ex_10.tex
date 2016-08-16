@@ -13,9 +13,22 @@
 \item		$\ds \lim_{x\to 5^+} f(x)$
 \item		$\ds \lim_{x\to 5} f(x)$
 \end{enumerate}
-\end{minipage}
-
-\myincludegraphics[scale=.8]{figures/fig01_06_ex_10}
+\end{minipage}\\
+\begin{tikzpicture}
+ \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
+   axis y line=middle,axis x line=middle,name=myplot,
+   ymin=-55,ymax=55,xmin=1.5,xmax=6.5]
+  \addplot [thick,{\colorone},domain=1.5:2.995,samples=50] {1/((x-3)*(x-5)^2)};
+  \addplot [thick,{\colorone},domain=3.005:4.902,samples=50] {1/((x-3)*(x-5)^2)};
+  \addplot [thick,{\colorone},domain=5.094:6.5,samples=50] {1/((x-3)*(x-5)^2)};
+  \draw [{\colorone},dashed] (axis cs:3,55) -- (axis cs:3,-55);
+  \draw [{\colorone},dashed] (axis cs:5,55) -- (axis cs:5,-55);
+ \end{axis}
+ \node [right] at (myplot.right of origin) {\scriptsize $x$};
+ \node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+%
+%\myincludegraphics[scale=.8]{figures/fig01_06_ex_10}
 }
 {\begin{enumerate}
 \item	$-\infty$

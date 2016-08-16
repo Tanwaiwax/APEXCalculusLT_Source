@@ -13,9 +13,6 @@ Compiling with a single set of options will take two to three minutes.
 Running `./make.py -a` will create sixteen different pdfs after about twenty to thirty minutes.  Running `./make.py -n` will use latexml to make a complete website version of the book after about thirty to forty minutes.
 (Unfortunately, latexmk appears to be a little too agressive in ignoring compilation errors.  I recommend compiling using your regular method first, and once you know it compiles, then use latexmk.)
 
-The 0.8.1 version for latexml has a bug that makes `\hyperref[label]{text}` format incorrectly.
-The 0.8.2 version of the files `hyperref.sty.ltxml` and `nameref.sty.ltxml` are included to fix that bug.  
-
 This work is covered with a Creative Commons 4.0 By-NC copyright.
 
 ####Incompatabilities with the original APEX Calculus:####

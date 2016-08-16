@@ -165,7 +165,24 @@ The important $x$-values at which concavity might switch are $x=-1$, $x=0$ and $
 \item[Interval 4,] $(1,\infty)$: Choose a large value for $c$. It is evident that $\fpp(c)>0$, so we conclude that $f$ is concave up on $(1,\infty)$.
 \end{description}
 
-\mfigure{0in}{A graph of $f(x)$ and $\fpp(x)$ in \autoref{ex_conc2}.}{fig:conc2}{figures/figconc2}
+\mtable{A graph of $f(x)$ and $\fpp(x)$ in \autoref{ex_conc2}.}{fig:conc2}{\begin{tikzpicture}
+ \begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+   axis y line=middle,axis x line=middle,name=myplot,
+   ymin=-11,ymax=11,xmin=-3.2,xmax=3.2]
+  \addplot [thick, {\colorone},smooth,samples=25,domain=-3.2:-1.047] {x/(x^2-1)};
+  \addplot [thick, {\colorone},smooth,samples=25,domain=-.955:.955] {x/(x^2-1)};
+  \addplot [thick, {\colorone},smooth,samples=25,domain=1.047:3.2] {x/(x^2-1)}
+   node[pos=.5,left,color=black] {\scriptsize $f(x)$};
+  \addplot [{\colortwo},thick,smooth,samples=25,domain=-3.2:-1.45]
+   {(2*x*(x^2+3))/((x^2-1)^3)};
+  \addplot [{\colortwo},thick,smooth,samples=25,domain=-.553:.553]
+   {(2*x*(x^2+3))/((x^2-1)^3)};
+  \addplot [{\colortwo},smooth,thick,samples=25,domain=1.45:3.2]
+   {(2*x*(x^2+3))/((x^2-1)^3)} node[pos=.5,right,color=black] {\scriptsize $\fpp(x)$};
+ \end{axis}
+ \node [right] at (myplot.right of origin) {\scriptsize $x$};
+ \node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 \begin{center}
 \begin{tikzpicture}
@@ -236,7 +253,17 @@ Not every critical point corresponds to a relative extrema; $f(x)=x^3$ has a cri
 
 The first derivative of a function gave us a test to find if a critical value corresponded to a relative maximum, minimum, or neither. The second derivative gives us another way to test if a critical point is a local maximum or minimum. The following theorem officially states something that is intuitive: if a critical value occurs in a region where a function $f$ is concave up, then that critical value must correspond to a relative minimum of $f$, etc. See \autoref{fig:concavity6} for a visualization of this.
 
-\mfigure{0in}{Demonstrating the fact that relative maxima occur when the graph is concave down and relative minima occur when the graph is concave up.}{fig:concavity6}{figures/figconcavity6}
+\mtable{Demonstrating the fact that relative maxima occur when the graph is concave down and relative minima occur when the graph is concave up.}{fig:concavity6}{\begin{tikzpicture}
+ \begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+   axis y line=middle,axis x line=middle,name=myplot,
+   ymin=-11,ymax=11,xmin=-2.1,xmax=2.1]
+  \addplot [thick, {\colorone},smooth,domain=-2.021:2.021] {5*x^3-15*x};
+  \filldraw (axis cs:-1,10) node [shift={(0pt,-20pt)}] {\tiny \parbox{50pt}{\centering c. down \vskip 2pt $\Rightarrow$ rel. max}} circle (1pt);
+  \filldraw (axis cs:1,-10) node [shift={(0pt,20pt)}] {\tiny \parbox{50pt}{\centering c. up \vskip 2pt $\Rightarrow$ rel. min}} circle (1pt);
+ \end{axis}
+ \node [right] at (myplot.right of origin) {\scriptsize $x$};
+ \node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 \theorem{thm:second_der}{The Second Derivative Test}%
 {Let $c$ be a critical value of $f$ where $\fpp(c)$ is defined. \index{derivative!Second Deriv.\ Test}\index{Second Derivative Test}\index{extrema!and Second Deriv.\ Test}\index{maximum!and Second Deriv.\ Test}\index{minimum!and First Deriv.\ Test}

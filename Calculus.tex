@@ -7,6 +7,8 @@
 {\documentclass[10pt]{article}}%
 {\documentclass[10pt]{book}}
 
+%\usepackage{syntonly}\syntaxonly % check syntax only; produce no output
+
 \RequirePackage[HTML]{xcolor} % must occur before eso-pic in apex_style
 
 \usepackage{headers/apex_style}
@@ -14,6 +16,11 @@
 \input{headers/Page_Size_Calculus}
 \input{headers/APEX_format}
 \input{headers/Header_Calculus}
+
+\iflatexml % fix some bugs
+\renewcommand{\marginparlength}{150pt}
+\renewcommand{\matrix}[2][]{}
+\fi
 
 \input{options}
 
@@ -38,8 +45,6 @@
 \appendix
 
 \pagenumbering{arabic}\renewcommand{\thepage}{A.\arabic{page}}
-
-%\input{text/proofs}
 
 \makeexercisesection{Solutions To Selected Problems}
 

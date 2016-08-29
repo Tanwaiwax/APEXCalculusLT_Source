@@ -78,10 +78,11 @@ Certainly, using this formula from geometry is faster than our new method, but t
 
 An important special case of \autoref{thm:volume_by_cross_section} is when the solid is a \textbf{solid of revolution}, that is, when the solid is formed by rotating a shape around an axis.
 
-Start with a function $y=f(x)$ from $x=a$ to $x=b$. Revolving this curve about a horizontal axis creates a three-dimensional solid whose cross sections are disks (thin circles), perpendicular to the axis of rotation. Let $R(x)$ represent the radius of the cross-sectional disk at $x$; the area of this disk is $\pi [R(x)]^2$. Applying \autoref{thm:volume_by_cross_section} gives the Disk Method.
+% todo double check phrasing
+Start with a function $y=f(x)$ from $x=a$ to $x=b$. Revolving this curve about a horizontal axis encloses a three-dimensional solid whose cross sections are disks (thin circles), perpendicular to the axis of rotation. Let $R(x)$ represent the radius of the cross-sectional disk at $x$; the area of this disk is $\pi [R(x)]^2$. Applying \autoref{thm:volume_by_cross_section} gives the Disk Method.
 
 \keyidea{idea:disk_method}{The Disk Method}
-{Let a solid be formed by revolving the curve $y=f(x)$ from $x=a$ to $x=b$ around a horizontal axis, and let $R(x)$ be the radius of the cross-sectional disk at $x$. The volume of the solid is
+{Let a solid be enclosed by revolving the curve $y=f(x)$ from $x=a$ to $x=b$ around a horizontal axis, and let $R(x)$ be the radius of the cross-sectional disk at $x$. The volume of the solid is
 \index{integration!volume!Disk Method}\index{Disk Method}
 \[V = \pi \int_a^b [R(x)]^2\ dx.\]}
 
@@ -126,8 +127,8 @@ Start with a function $y=f(x)$ from $x=a$ to $x=b$. Revolving this curve about a
 	(c) 
 \end{tabular}}
 
-\example{ex_disk1}{Finding volume using the Disk Method}{Find the volume of the solid formed by revolving the curve $y=1/x$, from $x=1$ to $x=2$, around the $x$-axis.}
-{A sketch can help us understand this problem. In \autoref{fig:disk1}(a) we have sketched the region we will be rotating.  In \autoref{fig:disk1}(b), the curve $y=1/x$ is sketched along with the sample slice -- a disk -- at $x$ with radius $R(x)=1/x$. In \autoref{fig:disk1}(c) the whole solid is pictured, along with the sample slice.
+\example{ex_disk1}{Finding volume using the Disk Method}{Find the volume of the solid formed by revolving about the $x$-axis the region bounded by the curves $y=1/x$, $x=1$, $x=2$ and the $x$-axis.}
+{A sketch can help us understand this problem. In \autoref{fig:disk1}(a) we have sketched the region we will be rotating.  In \autoref{fig:disk1}(b), the curve $y=1/x$ is sketched along with the sample slice, a disk, at $x$ with radius $R(x)=1/x$. In \autoref{fig:disk1}(c) the whole solid is pictured, along with the sample slice.
 
 The volume of the sample slice shown in part (b) of the figure is approximately $\pi R(x_i)^2\Delta x$, where $R(x_i)$ is the radius of the disk shown and $\Delta x$ is the thickness of that slice. The radius $R(x_i)$ is the distance from the $x$-axis to the curve, hence $R(x_i) = 1/x_i$.
 
@@ -140,13 +141,15 @@ Taking the limit of the above sum as $n\to\infty$ gives the actual volume; recog
 \begin{align*}
 	V &= \lim_{n\to\infty}\sum_{i=1}^n \pi \left(\frac1{x_i}\right)^2\Delta x\\
 		&= \pi\int_1^2 \left(\frac1x\right)^2\ dx \\
-		&= \pi\int_1^2 \frac1{x^2}\ dx
-		\end{align*}
-\begin{align*}
+		&= \pi\int_1^2 \frac1{x^2}\ dx \\
+%		\end{align*} % TODO remove the break
+%\begin{align*}
 		&= \pi\left[-\frac1x\right]\Big|_1^2 \\
 		&= \pi \left[-\frac12 - \left(-1\right)\right] \\
 		&= \frac{\pi}{2}\ \text{units}^3.\eoehere
 \end{align*}}
+
+\pagebreak
 
 While \autoref{idea:disk_method} is given in terms of functions of $x$, the principle involved can be applied to functions of $y$ when the axis of rotation is vertical, not horizontal. We demonstrate this in the next example.
 
@@ -187,17 +190,20 @@ While \autoref{idea:disk_method} is given in terms of functions of $x$, the prin
 	(c)
 	\end{tabular}}
 
-\example{ex_disk2}{Finding volume using the Disk Method}{Find the volume of the solid formed by revolving the curve $y=1/x$, from $x=1$ to $x=2$, about the $y$-axis.}
-{Since the axis of rotation is vertical, our perpendicular cross sections have thickness $\Delta y$ and radius $x=R(y)$. We need to convert the function into a function of $y$ and convert the $x$-bounds to $y$-bounds. Since $y=1/x$ defines the curve, we rewrite it as $x=1/y$. The bound $x=1$ corresponds to the $y$-bound $y=1$, and the bound $x=2$ corresponds to the $y$-bound $y=1/2$. 
+% todo double check the phrasing of the solution
+\example{ex_disk2}{Finding volume using the Disk Method}{Find the volume of the solid formed by revolving about the $y$-axis the region bounded by the curves $y=1/x$, $y=1$, $y=0.5$, and the $y$-axis.}
+{Since the axis of rotation is vertical, our perpendicular cross sections have thickness $\Delta y$ and radius $x=R(y)$. We need to convert the function into a function of $y$. % and convert the $x$-bounds to $y$-bounds.
+Since $y=1/x$ defines the curve, we rewrite it as $x=1/y$.% The bound $x=1$ corresponds to the $y$-bound $y=1$, and the bound $x=2$ corresponds to the $y$-bound $y=1/2$. 
 
-Thus we are rotating the curve $x=1/y$, from $y=1/2$ to $y=1$ about the $y$-axis to form a solid. The region of revolution is sketched in \autoref{fig:disk2}(a), the curve and sample sample disk are sketched in \autoref{fig:disk2}(b), and a full sketch of the solid is in \autoref{fig:disk2}(b). We integrate to find the volume:
+Thus we are rotating about the $y$-axis the region bounded by the curves $x=1/y$, $y=1/2$, $y=1$, and the $y$-axis to form a solid. The region of revolution is sketched in \autoref{fig:disk2}(a), the curve and sample sample disk are sketched in \autoref{fig:disk2}(b), and a full sketch of the solid is in \autoref{fig:disk2}(b). We integrate to find the volume:
 \begin{align*}
 	V &= \pi\int_{1/2}^1 \frac{1}{y^2}\ dy \\
 	&= -\frac{\pi}y\Big|_{1/2}^1 \\
 	&= \pi\ \text{units}^3.\eoehere
 \end{align*}}
 
-The previous two examples demonstrate how taking the same region and rotating it about two different axes will result in different solids and thus volumes.
+% todo: not the same region
+%The previous two examples demonstrate how taking the same region and rotating it about two different axes will result in different solids and thus volumes.
 
 We can also compute the volume of solids of revolution that have a hole in the center. The general principle is simple: compute the volume of the solid irrespective of the hole, then subtract the volume of the hole. If the outside radius of the solid is $R(x)$ and the inside radius (defining the hole) is $r(x)$, then the volume is 
 \[

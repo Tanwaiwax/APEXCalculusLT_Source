@@ -108,7 +108,7 @@ def compilewith(commands=False):
         compilewith("-qsc1")
     if args.xml:
         newsuffix = "_xml"
-        commandline = ['latexml','--quiet',
+        commandline = ['latexml',#'--verbose','--verbose',#'--quiet',#
                        '--destination=calculus.xml',
                        'Calculus']
         if platform.mac_ver()[0] is not '':

@@ -111,11 +111,17 @@
 \newboolean{inColor}
 \setboolean{inColor}{true}
 
+\message{message at 114}
+
 \pgfplotsset{colormap={coloronemap}{rgb=(.4,.4,1); rgb=(.8,.8,1)}}
 \pgfplotsset{colormap={colortwomap}{rgb=(1,.4,.4); rgb=(1,.8,.8)}}
-\usepgfplotslibrary{external}
+%\usepgfplotslibrary{external}
+% only needed for external tikz pictures (and not liked by latexml)
+% see http://tex.stackexchange.com/a/1475/107497
 \usetikzlibrary{calc}
 \usetikzlibrary{shadings}
+
+\message{message at 122}
 
 % these will be renewcommanded
 \newcommand{\colorone}{blue}
@@ -602,28 +608,16 @@ exercises/0\thechapter_0\expandafter\readsection #1_exercises.tex}%
 \write\answrite{}%
 }
 
-\def \makeexercisesection #1{%
-\ifthenelse{\boolean{latexml}}{%
-\immediate\write\answrite{\end{multicols}\normalsize}%
-%\showans\answrite% showans will write the contents of Calculus.ans to the log
-}{%
-\immediate\write\answrite{\noexpand\end{multicols}\noexpand\normalsize}%
-}
-\immediate\closeout\answrite\inanswersection\exercisegeometry\exerciseheader%
-\chapter{#1}\thispagestyle{empty}%
-\input{\jobname.answers}\restoregeometry\regularheader%
-\setlength{\hoffset}{0pt}\rmfamily\normalsize}%
-
-%
-% The following is a line of code, not a definition. 
-% It writes the first line of the ``.answers'' file
-% to set up the proper formatting of that file.
-%
-
-\ifthenelse{\boolean{latexml}}{
-\write\answrite{\small\raggedright\begin{multicols}{2}}
-\write\answrite{\thispagestyle{empty}}
-}{
-\write\answrite{\noexpand\small\noexpand\raggedright\noexpand\begin{multicols}{2}}
-\write\answrite{\noexpand\thispagestyle{empty}}
-}
+\newcommand{\makeexercisesection}[2][\jobname]{%
+\iflatexml\showans\answrite\fi
+% showans will write the contents of Calculus.answers to the log
+% in latexml, this needs to happen before closing
+\immediate\closeout\answrite%
+\inanswersection\exercisegeometry\exerciseheader%
+\chapter{#2}\thispagestyle{empty}%
+\begin{multicols}{2}%
+\small\raggedright%
+\input{#1.answers}%
+\end{multicols}%
+\restoregeometry\regularheader%
+\setlength{\hoffset}{0pt}\rmfamily}%

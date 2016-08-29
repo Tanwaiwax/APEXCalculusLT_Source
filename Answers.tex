@@ -20,15 +20,9 @@
 \usetwoDgraphics
 %\printexercisenames
 
-\renewcommand{\makeexercisesection}[1]{%
-\immediate\closeout\answrite%
-\inanswersection\exercisegeometry\exerciseheader%
-\chapter{#1}\thispagestyle{empty}%
 \immediate\write18{rm -f \jobname.answers}% might work, probably not
-\input{Calculus.answers}\restoregeometry\regularheader%
-\setlength{\hoffset}{0pt}\rmfamily\normalsize}%
 
-\includeonly{}
+\includeonly{} % include(only) means we get the aux files, but not the tex files
 
 \begin{document}
 
@@ -42,6 +36,6 @@
 
 \pagenumbering{arabic}\renewcommand{\thepage}{A.\arabic{page}}
 
-\makeexercisesection{Instructor Solutions To All Problems}
+\makeexercisesection[Calculus]{Instructor Solutions To All Problems}
 
 \end{document}

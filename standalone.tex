@@ -1,0 +1,31 @@
+\errorcontextlines 10000
+
+\RequirePackage{ifthen}
+\newboolean{longpage}
+\setboolean{longpage}{false}
+\documentclass[10pt]{book}
+
+\usepackage[HTML]{xcolor} % must occur before eso-pic in apex_style
+
+\usepackage{headers/apex_style}
+
+\input{headers/Page_Size_Calculus}
+\input{headers/APEX_format}
+\input{headers/Header_Calculus}
+
+\printallanswers
+\printexercisenames
+\printincolor
+\usetwoDgraphics
+
+\begin{document}
+
+\input{text/07_Exp_Log_Functions}
+
+\appendix
+
+\pagenumbering{arabic}\renewcommand{\thepage}{A.\arabic{page}}
+
+\makeexercisesection{Standalone Solutions To All Problems}
+
+\end{document}

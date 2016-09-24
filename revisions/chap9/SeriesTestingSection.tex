@@ -1,0 +1,121 @@
+\documentclass[10pt]{article}
+
+
+\usepackage{ifthen}
+
+\usepackage{lipsum}
+\usepackage{pgfplots}
+
+\usepackage{eso-pic,calc}
+\usepackage[font=small]{caption}
+\usepgfplotslibrary{external}
+\usetikzlibrary{calc}
+\usetikzlibrary{shadings}
+\usepackage{tikz}
+\usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows, petri, topaths}
+\usepackage{tkz-berge}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage[h]{esvect}
+\usepackage[normalem]{ulem}
+
+\pgfplotsset{compat=1.8}
+\usepackage{amssymb}
+
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{mathtools}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\fp}{\ensuremath{f\,'}}
+\newcommand{\sword}[1]{\textbf{#1}}
+
+\newcommand{\primeskip}{\hskip.75pt}
+
+
+\begin{document}
+
+Title section: Strategy for testing series:
+
+
+We have now covered all of the tests for determining the convergence or divergence of a series. We will consider a set of general guidelines to help us determine the convergence or divergence of a series. Note that these are a general set of guidelines and because some series can have more than one test applied to them we will get a different result depending on the path that we take through this set of guidelines. In fact, because more than one test may apply, you should always go completely through the guidelines and identigy all possible tests that can be used on a given series. Once this has been done you can identify the test that you feel will be the easiest for you to use.
+
+\begin{enumerate}
+\item With a quick glance does it look like the series terms don't converge to zero in the limit, i.e. does $\ds \lim_{n\to \infty}a_n \not= 0$? If so, use the Test for Divergence. Note that you should only use the Test for Divergence if a quick glance suggests that the series terms may not converge to zero in the limit.
+
+\item Is the series a $p$-series $\biggl(\ds \sum_{n=1}^\infty \frac{1}{n^p}\biggr)$ or a geometric series $\ds \biggl( \sum_{n=0}^\infty ar^n\biggr)$? If so, use the fact that $p$-series will converge only  if $p>1$ and a geometric series will only converge if $|r|<1$. Remember as well that often some algebraic manipulation is required to get a geometric series into the correct form.
+
+\item Is the series similar to a $p$-series or a geometric series? If so, try the Comparison Test.
+
+\item Is the series a rational expression involving only polynomials or polynomials under radicals? If so, try the Comparison test or the Limit Comparison Test. Remember however, that in order to use the Comparison Test and the Limit Comparison Test the series terms all need to be positive.
+
+\item Does the series contain factorials or constants raised to powers involving $n$? If so, then the Ratio Test may work. Note that if the series term contains a factorial then the only test that we have that will work is the Ratio Test.
+
+\item Is the series of the form $\ds \sum (-1)^n a_n$ or $\sum (-1)^{n+1} a_n$? If so, then the Alternating Series Test may work.
+
+\item Can the series terms be written in the form $a_n=(b_n)^n$? If so, then the Root Test may work.
+
+\item
+If $a_n=f(n)$ for some positive, decreasing function and $\ds \int_a^\infty f(x)~dx$ is easy to evaluate then the Integral Test may work.
+\end{enumerate}
+
+Again, remember that these are only a set of guidelines and not a set of hard and fast rules to use when trying to determine the best test to use on a series. If more that one test can be used, try to use the test that will be the easiest for you to use.
+
+
+
+$\ds \sum_{n=1}^\infty \frac{1}{\root 3 \of {n(n+2)(n+4)}}$  		Solution: Diverges
+
+$\ds \sum_{n=1}^\infty \biggl( -\frac23\biggr)^{n-1}$			Solution: Absolutely converges
+
+$\ds \sum_{n=1}^\infty \frac{3^{2n+1}}{n5^{n-1}}$			Solution: Diverges
+
+$\ds \sum_{n=1}^\infty n^{-2}e^{\frac{1}{n}}$				Solution: Absolutely converges
+
+$\ds \sum_{n=1}^\infty \frac{n!}{\ln (n+2)}$					Solution: Diverges
+
+$\ds \sum_{n=1}^\infty(n^2+4)(-2)^{1-n}$					Solution: Absolutely converges
+
+$\ds \sum_{n=1}^\infty \frac{2}{n+4^n}$					Solution: Absolutely converges
+
+$\ds \sum_{n=1}^\infty \frac{e^n}{n^e}$					Solution: Diverges
+
+$\ds \sum_{n=1}^\infty \frac{(-1)^n}{\root 4 \of n}$			Solution: Diverges
+
+$\ds \sum_{n=1}^\infty \frac{\sin( \frac{4\pi n}{3})}{n^{4\pi/3}}$	Solution: Absolutely converges 
+
+$\ds \sum_{n=1}^\infty \frac{3^n n!}{(n+2)!}$				Solution: Diverges
+
+$\ds \sum_{n=1}^\infty (-1)^n \frac{\sqrt n}{n+1}$			Solution: Conditionally converges
+
+$\ds \sum_{n=1}^\infty {1-\cos n}{n^3}$					Solution: Absolutely converges
+
+$\ds \sum_{n=1}^\infty \frac{4+3n-5n^3}{2+n^3}$			Solution: Diverges
+
+$\ds \sum_{n=1}^\infty (-1)^n \frac{n^2+1}{n^4+1}$			Solution: Conditionally converges 
+
+$\ds \sum_{n=1}^\infty \frac{(3n)^n}{n^{3n}}$				Soltuion: Absolutely converges
+
+$\ds \sum_{n=1}^\infty \frac{e^{2n}}{(2n-1)!}$				Solution: Absolutely converges
+
+$\ds \sum_{n=1}^\infty \frac{1}{x\sqrt{\ln x}}$				Solution: Diverges
+
+$\ds \sum_{n=2}^\infty (-1)^{n-1}\frac{\sqrt{\ln n}}{n}$			Soltuion: Conditionally converges
+
+
+Also MOVE (delete from previous sections) the following problems:
+
+Section 8.3    33-40
+
+Section 8.4     25-34
+
+
+
+
+
+
+
+
+\end{document}

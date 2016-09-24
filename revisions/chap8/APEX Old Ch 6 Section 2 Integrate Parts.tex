@@ -1,0 +1,171 @@
+\documentclass[11pt]{report}
+\usepackage[letterpaper, total={6.5in, 10in}]{geometry}
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+\usepackage{amsmath, amsthm, mathpazo, epic, eepic, color, array}
+\usepackage{amssymb}
+%\usepackage{graphicx}
+\usepackage{cancel}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\pgfplotsset{compat=1.13}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+\usepackage{hyperref}
+\usepackage[normalem]{ulem}
+
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows, petri, topaths}
+\usepackage{tkz-berge}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+
+\newboolean{colorprint}
+\setboolean{colorprint}{true}
+%\setboolean{colorprint}{false}
+
+\ifthenelse{\boolean{colorprint}}{%
+\newcommand{\colorone}{blue}
+\newcommand{\colortwo}{red}
+\newcommand{\coloronefill}{blue!15!white}
+\newcommand{\colortwofill}{red!15!white}
+\newcommand{\colormapone}{rgb=(.4,.4,1); rgb=(.8,.8,1)}
+\newcommand{\colormaptwo}{rgb=(1,.4,.4); rgb=(1,.8,.8)}
+\newcommand{\colormapplaneone}{rgb=(.7,.7,1); rgb=(.9,.9,1)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,1}
+\definecolor{colormaponetop}{rgb}{.8,.8,1}
+\definecolor{colormaptwobottom}{rgb}{1,.4,.4}
+\definecolor{colormaptwotop}{rgb}{1,.8,.8}
+}% ends color
+{% not color
+\newcommand{\colorone}{black}
+\newcommand{\colortwo}{black!50!white}
+\newcommand{\coloronefill}{black!15!white}
+\newcommand{\colortwofill}{black!05!white}
+\newcommand{\colormapone}{rgb=(.4,.4,.4); rgb=(.7,.7,.7)}
+\newcommand{\colormaptwo}{rgb=(.6,.6,.6); rgb=(.9,.9,.9)}
+\newcommand{\colormapplaneone}{rgb=(.8,.8,.8); rgb=(.95,.95,.95)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,.4}
+\definecolor{colormaponetop}{rgb}{.7,.7,.7}
+\definecolor{colormaptwobottom}{rgb}{.6,.6,.6}
+\definecolor{colormaptwotop}{rgb}{.9,.9,.9}
+}%
+
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+\pgfplotsset{my style/.append style={axis x line=middle, axis y line=
+middle, xlabel={$x$}, ylabel={$y$}, axis equal }}
+
+\pgfplotsset{compat=1.13}
+\newcommand{\ds}{\displaystyle}
+\begin{document}
+
+
+\textbf{OLD 6.2 Integration by Parts}\\
+\vskip .5 truecm
+
+All page numbers are from the original APEX text. If that's not helpful let me know how to better reference the location of the changes to be made.\\ \\
+
+
+\textbf{p. 275, mid page}\
+
+Using differential notation, we can write
+\begin{center}
+$$u' = \frac{du}{dx} \implies du = u' dx$$
+$$v' = \frac{dv}{dx} \implies dv = v' dx$$.
+\end{center}
+
+Thus, the equation above can be written as follows:...\\
+
+
+\textbf{p. 275, Theorem 48 box}\
+
+...and applying FTC part 2 we have...\\
+
+\textbf{p. 276, Example 159}.\\
+...$v$ is an antiderivative of $\cos x$, \sout{. We choose} so $v= \sin x$. \\
+
+\textbf{At the end of Example 159}\\
+Replace "...Note how the..." with:\\ 
+We have two important notes here: 1) notice how the antiderivative contains the product, $x\sin x$. This product is what makes integration by parts necessary. And 2) antidifferentiating $dv$ does result in $v+C$. The intermediate $+C$s are all added together and represented by one $+C$ in the final answer. 
+
+\textbf{In examples 159 - 163}, change the order of all
+\begin{align} 
+v &= ? \cr
+v &= <\text{appropriate function}>
+\end{align} 
+\indent to \
+\begin{align}
+dv &= <\text{appropriate function}> \cr 
+v &= ?
+\end{align}
+
+After the paragraph, "In the example above, we chose $u = x$...which we knew how to do." insert:\\ \\
+\textbf{If we had chosen} $u=\cos x$ and $dv= x$ then $du = -\sin x$ and $v = \frac{1}{2} x^2$ then \begin{center}
+
+$$\int x\cos x~dx = \frac{1}{2} x^2 \cos x - \bigl(-\frac{1}{2}\bigr) \int  x^2 \sin x~dx$$
+\end{center}
+We then need to integragte $x^2 \sin x$, which is more complicated than our original integral, making this an unproductive choice. \\ \\
+\textbf{Still on p. 276}\\
+Cut mnemonic and all future references to it. I will try to point them all out.\\ \\
+
+\textbf{p. 277, Example 160}.\\
+Replace the mnemnic references to: Notice that $x$ becomes simpler when differentiatied and $e^x$ is unchanged by differentiation or integration. This suggests that we should let $u = x$ and $dv = e^x$:\\ \\
+Cut "We see $du$ is simpler....This is good."\\ \\
+
+\textbf{Example 161}\\
+Replace "The mnemonic suggests" with "Let..." \\ \\
+
+\textbf{p. 278, Example 162}\\
+Cut "Our mnemonic suggests letting $u$ be the ... of the exponential"  and "to demonstrate... LIATE" (Tim, you may need to replace some "," with "." to make it read correctly.) \\ \\
+
+\textbf{p. 279, Example 162}\\
+After "The integral... to the new integral." Insert "So what should we use for $u$ and $dv$ this time? We may feel like letting the trigonometric function be $dv$ and the exponential be $dv$ was a bad choice last time since we still can't integrate the new integral. However, if we let $u = \sin x$ and $dv = e^x$ this time we will reverse what we just did, taking us back to the beginning. So, we let $u=e^x$..."\\ \\
+
+\textbf{p. 280, Example 163}\\
+clever application of...This is a good \sout{sneaky trick} strategy to learn... \\
+
+Putting this all together...very nicely:
+\begin{align}
+\int \ln x ~dx &= x \ln x - \int x~ \frac{1}{x}~dx \cr
+&= x\ln x - \int 1~dx \cr
+&= x\ln x + C. \cr
+\end{align}
+
+\sout{The new integral...our answer is...+C}\\ \\
+
+\textbf{p. 280, Example 164}\\
+SOLUTION  The same strategy \sout{sneaky trick} we used...\\ \\
+
+After the answer insert: Since $1 + x^2 > 0$ we do not need to include the absolute value in $\ln 1+x^2$ term.\\ \\  
+
+\textbf{p. 281, Example 165}\\
+Since $u = \ln x$ we can use inverse functions \sout{and conclude that} to solve for...\\ \\
+
+\textbf{p. 282, Example 166}\\
+SOLUTION \sout{Our mnemonic suggests letting} To simplify the integral we let $u = \ln x$ and $dv = x^2$. This may seem counterintuitive since the power on the algebraic factor has increased ($v=x^3/3$), but as we see below this is a wise choice:\\ \\
+
+Delete the approximation of 1.07.\\ \\
+
+\textbf{still on p. 282, last paragraph:} Replace "derivation" with "differentiation". \\ \\
+
+\textbf{p. 283,first paragraph:} While the first is calculated easily...the third integral cannot be calculated with techniques in this chapter. We will learn how to evaluate this integral in Chapter <POWER SERIES>. \sout{has not answer ...exact answer}\\ \\
+
+\textbf{p. 284,Exercises:}\\
+Delete \#3\\
+
+Add problem after current \#38 (in section on u-sub before integration by parts):
+$$\int x^3 e^{x^2}~dx$$
+
+\end{document}
+

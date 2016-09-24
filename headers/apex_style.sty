@@ -5,7 +5,7 @@
 \RequirePackage[noplaybutton]{media9}
 \RequirePackage{qrcode}
 \RequirePackage{everypage} % helps put the blue example line on long examples
-\RequirePackage{eso-pic} % AddToShipOut (only once in Ch.9)
+%\RequirePackage{eso-pic} % AddToShipOut (only once in Ch.9)
 %\RequirePackage{thmtools} % continuing theorems and ``List of Theorems''
 %\usepackage{lipsum} % not used
 
@@ -201,15 +201,18 @@
 
 \newcommand{\myincludegraphicsthree}{\@ifstar \myincludegraphicsthreestarred \myincludegraphicsthreenostar}
 
-\newcommand{\myincludegraphicsthreenostar}[3]{{%
-	\ifthenelse{\boolean{in_threeD}}{% in 3D
-	\includemedia[#1]{\includegraphics{#3_3D\colornamesuffix}}{#3_3D.prc}}% now not in 3D
-	{\myincludegraphics[#2]{#3}}}}
+\newcommand{\myincludegraphicsthreenostar}[3]{\ifthenelse{\boolean{in_threeD}}{%
+	\includemedia[#1]{\includegraphics{#3_3D\colornamesuffix}}{#3_3D.prc}%
+}{%
+	\myincludegraphics[#2]{#3}
+}}
 
-\newcommand{\myincludegraphicsthreestarred}[3]{{%
-	\ifthenelse{\boolean{in_threeD}}{% in 3D
-	\includemedia[#1]{\includegraphics{#3\colornamesuffix}}{#3_3D.prc}}% now not in 3D
-	{\myincludegraphics[#2]{#3}}}}
+\newcommand{\myincludegraphicsthreestarred}[3]{\ifthenelse{\boolean{in_threeD}}{%
+	\includemedia[#1]{\includegraphics{#3\colornamesuffix}}{#3_3D.prc}%
+}{%
+	\myincludegraphics[#2]{#3}
+}}
+
 
 
 % some exercise / answer related commands
@@ -218,18 +221,25 @@
 
 \def\printexercisesreview#1{\printexercisesgeneric{#1}{Chapter \arabic{chapter} Review Exercises}{\arabic{chapter}}}
 
-% {chapter_already_has_exercises}
 \newcommand{\writeToAnsFile}[3]{%
-%old if: {\equal{\expandafter\readsection\thesection}{1}}{}%
-\ifthenelse{\boolean{chapter_already_has_exercises}}{%
-% do nothing
-}{% else
-\setboolean{chapter_already_has_exercises}{true}
-\immediate\write\answrite{}%
-\immediate\write\answrite{\noexpand\noindent{\noexpand\Large\noexpand\textbf{Chapter \thechapter}}\noexpand\vskip\noexpand\baselineskip}%
-}%{%
-% else do nothing
-%}% ends ifthenelse
-\immediate\write\answrite{\noexpand\noindent {\noexpand\hyperref[exer#3]{\noexpand\textbf{#2}}\noexpand\label{sol#3}} \noexpand \vskip \baselineskip}%
+\ifthenelse{\boolean{chapter_already_has_exercises}}{}{% else
+ \setboolean{chapter_already_has_exercises}{true}
+ \immediate\write\answrite{}%
+ \immediate\write\answrite{%
+  \noexpand\noindent{%
+   \noexpand\Large%
+   \noexpand\textbf{Chapter \arabic{chapter}}%
+  }%
+  \noexpand\bigskip%
+  \noexpand\newline%
+ }%
+}%
+\immediate\write\answrite{%
+ \noexpand\noindent%
+ \noexpand\hyperref[exer#3]{\noexpand\textbf{#2}}%
+ \noexpand\label{sol#3}%
+ \noexpand\bigskip%
+% \noexpand\newline%
+}%
 \write\answrite{\noexpand\printanswers{#1}}%
 }

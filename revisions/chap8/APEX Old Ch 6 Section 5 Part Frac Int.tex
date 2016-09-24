@@ -1,0 +1,193 @@
+\documentclass[11pt]{report}
+\usepackage[letterpaper, total={6.5in, 10in}]{geometry}
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+\usepackage{amsmath, amsthm, mathpazo, epic, eepic, color, array}
+\usepackage{amssymb}
+%\usepackage{graphicx}
+\usepackage{cancel}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\pgfplotsset{compat=1.13}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+\usepackage{hyperref}
+\usepackage[normalem]{ulem}
+
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows, petri, topaths}
+\usepackage{tkz-berge}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+
+\newboolean{colorprint}
+\setboolean{colorprint}{true}
+%\setboolean{colorprint}{false}
+
+\ifthenelse{\boolean{colorprint}}{%
+\newcommand{\colorone}{blue}
+\newcommand{\colortwo}{red}
+\newcommand{\coloronefill}{blue!15!white}
+\newcommand{\colortwofill}{red!15!white}
+\newcommand{\colormapone}{rgb=(.4,.4,1); rgb=(.8,.8,1)}
+\newcommand{\colormaptwo}{rgb=(1,.4,.4); rgb=(1,.8,.8)}
+\newcommand{\colormapplaneone}{rgb=(.7,.7,1); rgb=(.9,.9,1)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,1}
+\definecolor{colormaponetop}{rgb}{.8,.8,1}
+\definecolor{colormaptwobottom}{rgb}{1,.4,.4}
+\definecolor{colormaptwotop}{rgb}{1,.8,.8}
+}% ends color
+{% not color
+\newcommand{\colorone}{black}
+\newcommand{\colortwo}{black!50!white}
+\newcommand{\coloronefill}{black!15!white}
+\newcommand{\colortwofill}{black!05!white}
+\newcommand{\colormapone}{rgb=(.4,.4,.4); rgb=(.7,.7,.7)}
+\newcommand{\colormaptwo}{rgb=(.6,.6,.6); rgb=(.9,.9,.9)}
+\newcommand{\colormapplaneone}{rgb=(.8,.8,.8); rgb=(.95,.95,.95)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,.4}
+\definecolor{colormaponetop}{rgb}{.7,.7,.7}
+\definecolor{colormaptwobottom}{rgb}{.6,.6,.6}
+\definecolor{colormaptwotop}{rgb}{.9,.9,.9}
+}%
+
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+\pgfplotsset{my style/.append style={axis x line=middle, axis y line=
+middle, xlabel={$x$}, ylabel={$y$}, axis equal }}
+
+\pgfplotsset{compat=1.13}
+\newcommand{\ds}{\displaystyle}
+\begin{document}
+
+
+\textbf{OLD 6.5 Partial Fraction Decomposition}\\
+\vskip .25 truecm
+
+All page numbers are from the original APEX text. If that's not helpful let me know how to better reference the location of the changes to be made.\\ \\
+
+\textbf{p. 305}\\
+Replace the last paragraph with: \\
+We start with a rational function $\ds f(x) = \frac{p(x)}{q(x)}$, where $p$ and $q$ do not have any common factors. We first consider the degree of $p$ and $q$. 
+\begin{itemize}
+\item If the deg$(p) \geq$ deg$(q)$ then we use polynomial long division to divide $q$ into $p$ to determine remainder $r(x)$ where deg$(r) < $ deg$(q)$. We then write $\ds f(x) = s(x) + \frac{r(x)}{q(x)}$ and apply partial fraction decomposition to $\ds\frac{r(x)}{q(x)}$ .
+\item If the deg$(p) <$ deg$(q)$ we can apply partial fraction decomposition to $\ds\frac{p(x)}{q(x)}$ without additional work.
+\end{itemize}
+
+Partial fraction decomposition is based on an algebraic theorem that guarantees that any polynomial, and hence $q$, can be factored into the product of linear and irreducible quadratics factors. The following Key Idea states how to decompose a rational function into a sum of rational fucntions whose denominators are all of lower degree than $q$. \\ \\
+
+\textbf{p. 306}\\
+\textbf{Key Idea \# \indent Partial Fraction Decomposition}\\
+Let $\ds \frac {p(x)}{q(x)}$ be a rational function, where deg$(p) <$ deg$(q)$.
+\begin{enumerate}
+\item \textbf {Factor} $\mathbf{q(x):}$ Write $q(x)$ as the product of its linear and irreducible quadratic factors of the form $(ax+b)^m$ and $(ax^2+bx+c)^n$ where $m$ and $n$ are the highest powers of each factor that divide $q$.
+\begin{itemize}
+\item \textbf{Linear Terms:} For each linear factor of $q(x)$ the decomposition of $\ds \frac {p(x)}{q(x)}$ will contain the following terms:
+$$\ds \frac {A_1}{(ax+b)} + \frac {A_2}{(ax+b)^2}+ \cdots \frac {A_m}{(ax+b)^m}$$
+\item \textbf{Irreducible Quadratic Terms:}  For each irreducible quadratic factor of $q(x)$ the decomposition of $\ds \frac {p(x)}{q(x)}$ will contain the following terms:
+$$\ds \frac {B_1x+C_1}{(ax^2+bx+c)} + \frac {B_2x+C_2}{(ax^2+bx+c)^2}+ \cdots \frac {B_nx+C_n}{(ax^2+bx+c)^n}$$
+\end{itemize}
+\item \textbf{Finding the Coefficients }$\mathbf{A_i, B_i, \textbf{and} C_i:}$
+\begin{itemize}
+\item Set $\ds \frac {p(x)}{q(x)}$ equal to the sum of its linear and irreducible quadratic terms.
+$$\ds \frac{p(x)}{q(x)} =\frac {A_1}{(ax+b)} + \cdots \frac {A_m}{(ax+b)^m} + \frac {B_1x+C_1}{(ax^2+bx+c)} + \cdots \frac {B_nx+C_n}{(ax^2+bx+c)^n}$$
+\item Multiply this equation by the factored form of $q(x)$ and simplify to clear the denominators. 
+\item Solve for the coefficients $A_i, B_i,$ and $C_i$ by
+%\begin{itemize}
+\begin{enumerate}[label=\alph*)]
+\item multiplying out the remaining terms and collecting like powers of $x$, equating the resulting coefficients and solving the resulting system of linear equations, \textbf{or}
+\item Substituting in values for $x$ that eliminate terms so the simplified equation can be solved for a coefficient.
+\end{enumerate}
+\end{itemize}
+\end{enumerate}
+\vskip .5 truecm
+Replace paragraph just below Key Idea box with the following: \\
+"The following examples will demonstrate how to put this Key Idea into practice. In Example 181 we focus on the setting up the decomposition of a rational function."\\
+
+\textbf{In Example 181}\\
+SOLUTION \indent "The denominator...\sout{cannot be factored} are irreducible quadratics...is a linear \sout{term} factor that divides.."\\ \\
+
+\textbf{p. 308}\\
+
+\textbf{Example 181 continued} - Add a sentence after "Solving ... not hard." In the next example we demonstrate solving for the coefficients using both methods given in Key Idea \#." \\
+
+\textbf{Exercise 182}\\
+SOLUTION \indent "The denominator \sout{factors into two linear terms} can be written as the product of two linear factors: ..."\\
+
+\sout{To solve for A and B...} and replace with: "Using the method described in Key Idea \# 2a) to solve for A and B, first multiply..."\\
+
+After solution with method 2a) add:\\
+"Using the method described in Key Idea \# 2b) to solve for A and B, we choose values for $x$ that eliminate terms in the equation:
+$$1=A(x+1) + B(x-1)$$
+
+If we choose $x=-1$
+$$1=A(0) + B(-2)$$
+$$B= -\frac{1}{2}.$$ 
+
+Next choose  $x=1$
+$$1=A(2) + B(0)$$
+$$B= \frac{1}{2}.$$ 
+
+Resulting in the same decomposition as above.\\
+
+\textbf{Between Examples 182 \& 183 add:}\\
+In Example 183 we solve for the decomposition coefficients using the system of linear equations (method 2a). The margin note explains how to solve using substitution (method 2b).\\ 
+
+\textbf{p. 309}\\
+Example 184 - Delete system of equation process for solving for A \& B and use the following after 
+$$19x+30=A(x+3) + B(x-5)$$
+
+If we choose $x=-3$
+$$19(-3)+30=A(0) + B(-8)$$
+$$B= \frac{27}{8}.$$ 
+
+Next choose  $x=5$
+$$19(5)+30=A(8) + B(0)$$
+$$A= \frac{125}{8}.$$ 
+\\
+
+\textbf{p. 310}\\
+\textbf{Between Example 184 \& 185} insert the reminder about $\tan^{-1} x$:\\
+"Before the next example we remind the reader of a rational integrand evaluated by trigonometric substitution.
+$$\int \frac{1}{x^2+a^2}~dx = \frac{1}{a} \tan^{-1} \bigl(\frac{x}{a}\bigr) + C"$$
+\\
+
+Example 185 - Delete system of equation process for solving for A, B \& C and use the following after $$7x^2+31x+54 =A(x^2+6x+11) + (Bx+C)(x+1)$$.
+
+If we choose $x=-1$
+$$30 =6A + (-B+C)(0)$$
+$$A= 5.$$ 
+
+Eventhough none of the other terms can be zeroed out, we continue by letting $A=5$ and substituting helpful values of $x$. 
+Choosing  $x=0$ we notice
+$$54 = 55 +C$$
+$$C= -1.$$ 
+Finally, choose $x=1$ (any value other than -1 and 0 can be used, 1 is easy to work with)
+$$92 =90 + (B-1)(2)$$
+$$B= 2.$$ 
+
+\sout{Solving the system... }"Thus,...\\ \\
+
+
+\textbf{p. 311}\\
+
+We could add the following sentence to the end of the 2nd to last paragraph: "The next section will require the reader to determine an appropriate method for evaluating a variety of integrals."\\
+Delete the last paragraph.\\ \\
+
+
+\textbf{p. 312, Exercises:}\\
+
+NO CHANGES!!
+
+\end{document}
+

@@ -1,0 +1,112 @@
+\documentclass[11pt]{report}
+\usepackage[letterpaper, total={6.5in, 10in}]{geometry}
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+\usepackage{amsmath, amsthm, mathpazo, epic, eepic, color, array}
+\usepackage{amssymb}
+%\usepackage{graphicx}
+\usepackage{cancel}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\pgfplotsset{compat=1.13}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+\usepackage{hyperref}
+\usepackage[normalem]{ulem}
+
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows, petri, topaths}
+\usepackage{tkz-berge}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+
+\newboolean{colorprint}
+\setboolean{colorprint}{true}
+%\setboolean{colorprint}{false}
+
+\ifthenelse{\boolean{colorprint}}{%
+\newcommand{\colorone}{blue}
+\newcommand{\colortwo}{red}
+\newcommand{\coloronefill}{blue!15!white}
+\newcommand{\colortwofill}{red!15!white}
+\newcommand{\colormapone}{rgb=(.4,.4,1); rgb=(.8,.8,1)}
+\newcommand{\colormaptwo}{rgb=(1,.4,.4); rgb=(1,.8,.8)}
+\newcommand{\colormapplaneone}{rgb=(.7,.7,1); rgb=(.9,.9,1)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,1}
+\definecolor{colormaponetop}{rgb}{.8,.8,1}
+\definecolor{colormaptwobottom}{rgb}{1,.4,.4}
+\definecolor{colormaptwotop}{rgb}{1,.8,.8}
+}% ends color
+{% not color
+\newcommand{\colorone}{black}
+\newcommand{\colortwo}{black!50!white}
+\newcommand{\coloronefill}{black!15!white}
+\newcommand{\colortwofill}{black!05!white}
+\newcommand{\colormapone}{rgb=(.4,.4,.4); rgb=(.7,.7,.7)}
+\newcommand{\colormaptwo}{rgb=(.6,.6,.6); rgb=(.9,.9,.9)}
+\newcommand{\colormapplaneone}{rgb=(.8,.8,.8); rgb=(.95,.95,.95)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,.4}
+\definecolor{colormaponetop}{rgb}{.7,.7,.7}
+\definecolor{colormaptwobottom}{rgb}{.6,.6,.6}
+\definecolor{colormaptwotop}{rgb}{.9,.9,.9}
+}%
+
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+\pgfplotsset{my style/.append style={axis x line=middle, axis y line=
+middle, xlabel={$x$}, ylabel={$y$}, axis equal }}
+
+\pgfplotsset{compat=1.13}
+\newcommand{\ds}{\displaystyle}
+\begin{document}
+
+
+\textbf{OLD 6.8 Improper Integration}\\
+\vskip .25 truecm
+
+All page numbers are from the original APEX text. If that's not helpful let me know how to better reference the location of the changes to be made.\\
+
+\textbf{p. 334}\\
+In Definition \# Improper Integrals with Infinite Bounds \sout{;Converge, Diverge}\\
+
+Improper Integral Definition part 1: "Let $f$...\sout{Define} For $t \geq a$ let" and change upper bound on integral to $t$.\\
+
+Improper Integral Definition part 2: "Let $f$...\sout{Define} For $t \leq b$ let" and change lower bound on integral to $t$.\\
+
+Move "An improper integral is ... of its limits exist." to just below the box as general text.\\ \\
+
+\textbf{p. 335}\\
+Example 193, part 4 \sout{Each limit exists..value:} and move $\pi$ to end of solution.\\ \\
+
+\textbf{p. 337}\\
+Move margin note about Definition 25 from the margin to the text just below the Definition 25 box.\\
+
+Example 195 part 2: remove the ! after $-2$ in the answer.\\
+
+\textbf{p. 338}\\
+First paragraph: "Clearly the area ...negative! \sout{Why does our answer...intuition?} In this example we noted the discontinuity of the integrand on $[-1,1]$ (its improper nature) but continued anyway to apply with the Fundamental Theorem of Calculus. Violating the hypothesis of the FTC led us to an incorrect area of $-2$. If we now evaluate the integral using Definition 25 we will see that the area is unbounded."\\
+
+Delete last line of the solution"$=(\infty -1) + (1+\infty)$"
+\\ \\
+\textbf{p. 342}\\
+Second paragraph - replace it with the following:\\
+"This chapter has explored many integration techniques. We learned Substitution, which reverses the Chain Rule of differentiation, as well as Integration by Parts, which reverses the Product Rule. We learned specialized techniques for handling trigonometric and rational functions. All techniques effetively have this goal in common: rewrite the integrand in a new way so that the integration step is easier to see and implement." \\
+
+Tim, I can't remember what is happening with numerical integration since I'm not responsible for that part (thank you). Other paragraphs in the conclusion for this chapter may also need to change.\\
+
+\textbf{p. 312, Exercises:}\\
+
+NO CHANGES!!
+
+\end{document}
+

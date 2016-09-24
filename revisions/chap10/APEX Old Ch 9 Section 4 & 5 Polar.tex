@@ -1,0 +1,167 @@
+\documentclass[11pt]{report}
+\usepackage[letterpaper, total={6.5in, 10in}]{geometry}
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+\usepackage{amsmath, amsthm, mathpazo, epic, eepic, color, array}
+\usepackage{amssymb}
+%\usepackage{graphicx}
+\usepackage{cancel}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\pgfplotsset{compat=1.13}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+\usepackage{hyperref}
+\usepackage[normalem]{ulem}
+
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows, petri, topaths}
+\usepackage{tkz-berge}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+
+\newboolean{colorprint}
+\setboolean{colorprint}{true}
+%\setboolean{colorprint}{false}
+
+\ifthenelse{\boolean{colorprint}}{%
+\newcommand{\colorone}{blue}
+\newcommand{\colortwo}{red}
+\newcommand{\coloronefill}{blue!15!white}
+\newcommand{\colortwofill}{red!15!white}
+\newcommand{\colormapone}{rgb=(.4,.4,1); rgb=(.8,.8,1)}
+\newcommand{\colormaptwo}{rgb=(1,.4,.4); rgb=(1,.8,.8)}
+\newcommand{\colormapplaneone}{rgb=(.7,.7,1); rgb=(.9,.9,1)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,1}
+\definecolor{colormaponetop}{rgb}{.8,.8,1}
+\definecolor{colormaptwobottom}{rgb}{1,.4,.4}
+\definecolor{colormaptwotop}{rgb}{1,.8,.8}
+}% ends color
+{% not color
+\newcommand{\colorone}{black}
+\newcommand{\colortwo}{black!50!white}
+\newcommand{\coloronefill}{black!15!white}
+\newcommand{\colortwofill}{black!05!white}
+\newcommand{\colormapone}{rgb=(.4,.4,.4); rgb=(.7,.7,.7)}
+\newcommand{\colormaptwo}{rgb=(.6,.6,.6); rgb=(.9,.9,.9)}
+\newcommand{\colormapplaneone}{rgb=(.8,.8,.8); rgb=(.95,.95,.95)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,.4}
+\definecolor{colormaponetop}{rgb}{.7,.7,.7}
+\definecolor{colormaptwobottom}{rgb}{.6,.6,.6}
+\definecolor{colormaptwotop}{rgb}{.9,.9,.9}
+}%
+
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+\pgfplotsset{my style/.append style={axis x line=middle, axis y line=
+middle, xlabel={$x$}, ylabel={$y$}, axis equal }}
+
+\pgfplotsset{compat=1.13}
+\newcommand{\ds}{\displaystyle}
+\begin{document}
+
+All page numbers are from the original APEX text. If that's not helpful let me know how to better reference the location of the changes to be made.\\ \\
+
+
+\textbf{OLD 9.4 Introduction to Polar Coordinates}
+\vskip .5 truecm
+
+\textbf{pp. 526 - 527}\\
+\textbf{Example 299} SOLUTION to 2 part b. Delete the 45 degrees from end of answer (i.e. end with $\pi/4$).\\
+
+\textbf{p. 528}\\
+Figure 9.40 - make the concentric circles a little lighter.\\
+
+\textbf{p. 529}\\
+\textbf{Example 301} SOLUTION ~~~~ First paragraph change choose to chose in the sentence "A common question... With rectangular equations, we often \sout{choose} chose..."\\
+
+Delete 3rd pargraph: \sout "The graph shown uses more points... graph looks like."\\
+
+Delete the Technology Note.
+
+Delete Figure 9.41. \\
+On Figure 9.42 label the points shown in the table and on the deleted Figure 9.41. \\
+Change the caption on Figure 9.42 to "Graph of the polar function in Example 301."\\
+
+\textbf{p. 529 - 530}\\
+On Figures 9.42 and 9.44 make the concentric circles a little lighter.\\
+Delete Figure 9.44 (a). If possible label the points from Figure 9.43 (table in the text) on Figure 9.55 (b).\\
+Delete the Figure number \& table title from Figure 9.43 - Or do whatever is consistent with what you did in Calculus I text for these "in text" tables.\\
+
+\textbf{p. 532}\\
+Third paragraph insert the word "to": "Some curves have very simple... (a shape important \textbf {to} the sensitivity..."\\
+
+\textbf{OLD 9.5 Calculus and Polar Coordinates}
+\vskip .5 truecm
+
+\textbf{p. 538}\\
+Third paragraph insert the word "to": "We are interested in the lines tangent \textbf{to} a given graph..."\\
+
+\textbf{p. 539}\\
+Example 305 SOLUTION part 2:\\
+Add boldfaced text to "To find the vertical ..., we \textbf{determine where $\frac{dy}{dx}$ is undefined by setting} \sout{set} the denominator \sout{ $\frac{dy}{dx}=0$} equal to zero."\\
+
+\textbf{p. 539}\\
+In the Area section - 4th paragraph - Change indexing on $\theta$:\\ 
+$\theta_1$ becomes $\theta_0$\\
+$\theta_{n+1}$ becomes $\theta_n$\\
+$\theta_i$ becomes $\theta_{i-1}$\\
+$\theta_{i+1}$ becomes $\theta_i$\\
+There are 2 $f(c_i)^2$ that need to become $[f(c_i)]^2$ in this paragraph and the Area approximation that follows it.\\
+
+\textbf{p. 540}\\
+Theorem 83 has an $f(\theta)^2$ that needs to become $[f(\theta)]^2$\\
+In margin note next to Theorem 83 change "power reducing" to "half angle".\\
+
+\textbf{p. 543}\\
+Example 308 SOLUTION - delete the approximation at end of solution.
+
+Key Idea 42: Add the $f_1, f_2$ version of the integral: $$A = \frac{1}{2} \int_\alpha^\beta [f_1(\theta)]^2 - [f_2(\theta)]^2~d\theta = \frac{1}{2} \int_\alpha^\beta r_1^2 - r_2^2~d\theta$$
+
+\textbf{p. 543 Arc Length}\\
+All total there are 10 $f'(t)^2, g'(t)^2, f(\theta)^2, x'(\theta)^2, y'(\theta)^2$ etc. that need brackets.\\
+
+\textbf{p. 544}\\
+Add Example in Arc Length section before 311\\
+
+\textbf{Example \#~~~~~ Arc Length of Polar Curves}\\
+Find the arc length of the cardiord $r=1+\cos \theta$.\\
+\textbf{SOLUTION} \indent With $r=1+\cos \theta$, we have $r' = -\sin \theta$. The cardiod is traced out once on $[0,2\pi]$, giving us our bounds of integration. Applying Key Idea 43?? we have\\
+
+\begin{align}
+L & = \int_0^{2\pi} \sqrt{(-\sin \theta)^2  + (1 + \cos \theta)^2}~d\theta \\
+& = \int_0^{2\pi} \sqrt{\sin^2 \theta + (1 + 2\cos \theta + \cos \theta)}~d\theta\\
+& = \int_0^{2\pi} \sqrt{2 + 2\cos \theta}~d\theta\\
+& = \int_0^{2\pi} \sqrt{2 + 2\cos \theta}~\frac{\sqrt {2-2\cos \theta}}{\sqrt {2-2\cos \theta}}~d\theta\\
+& = \int_0^{2\pi} \frac{\sqrt{4 - 4\cos^2 \theta}}{\sqrt {2-2\cos \theta}}~d\theta\\
+& = 2\int_0^{2\pi} \frac{\sqrt{1 - \cos^2 \theta}}{\sqrt {2-2\cos \theta}}~d\theta\\
+& = 2\int_0^{2\pi} \frac{|\sin \theta|}{\sqrt {2-2\cos \theta}}~d\theta\\
+\end{align}
+Since the $\sin \theta > 0$ on $[0, \pi]$ and $\sin \theta < 0$ on $[\pi, 2\pi]$ we separate the integral into two parts\\
+$$2\int_0^{\pi} \frac{\sin \theta}{\sqrt {2-2\cos \theta}}~d\theta - 2\int_{\pi}^{2\pi} \frac{\sin \theta}{\sqrt {2-2\cos \theta}}~d\theta$$
+Using the symmetry of the cardiod and $u$-substitution ($u = 2 - 2\cos \theta$) we simplify the integration to\\
+\begin{align}
+& = 4\int_0^{\pi} \frac{\sin \theta}{\sqrt {2-2\cos \theta}}~d\theta\\
+& = 2\int_0^4 \frac{1}{\sqrt u}~du\\
+& = 4  u^{1/2}\biggr|_0^4 = 8\\
+\end{align}
+
+
+
+
+
+
+
+
+
+\end{document}

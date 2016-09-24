@@ -1,0 +1,216 @@
+\documentclass[10pt]{article}
+
+
+\usepackage{ifthen}
+
+\usepackage{lipsum}
+\usepackage{pgfplots}
+
+\usepackage{eso-pic,calc}
+\usepackage[font=small]{caption}
+\usepgfplotslibrary{external}
+\usetikzlibrary{calc}
+\usetikzlibrary{shadings}
+\usepackage{tikz}
+\usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows, petri, topaths}
+\usepackage{tkz-berge}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage[h]{esvect}
+\usepackage[normalem]{ulem}
+
+\pgfplotsset{compat=1.8}
+\usepackage{amssymb}
+
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{mathtools}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\fp}{\ensuremath{f\,'}}
+\newcommand{\sword}[1]{\textbf{#1}}
+
+\newcommand{\primeskip}{\hskip.75pt}
+\newcommand{\answer}{\vrule height.5pt depth0pt width.5in}
+\newcommand {\ul}{\underline}
+\newcommand {\cl}{\centerline}
+\newcommand{\ub}{\underbar}
+\newcommand {\name}{NAME \vrule width1in depth1pt height0pt}
+\newcommand{\bs}{\bigskip}
+%\newcommand{\ss}{\smallskip}
+
+\begin{document}
+
+
+%%%  Tim:  I am not sure if this should be a new section or should go at the end of the power series section. Thoughts????
+
+Representations of Functions with power series
+
+
+We opened the last section by saying that we were going to start thinking about applications of series and then promptly spent the section talking about convergence again.  It's now time to actually start with the applications of series. With this section  we will start talking about how to represent functios with power series.  The natural question of why we might want to do this will be answered later once we actually learn how to do this.  
+
+Let's start off with a series we already know how to do, although when we first ran across this series we didn't think of it as a power series nor did we acknowledge that it represented a function. Recall that the geometric series is
+$$\sum\limits_{n=0}^{\infty}ar^n = \frac{a}{1-r} \qquad {\rm provided} \ |r|<1$$
+
+We also know that if $|r|\geq 1$ the series diverges. Now, if we take $a=1$ and $r=x$ this becomes,
+\begin{align}
+\sum\limits_{n=0}^{\infty}x^n = \frac{1}{1-x} \qquad {\rm provided} \ |x|<1
+\end{align}
+
+Turning this around we can see that we can represent the function
+\begin{align}
+f(x) = \frac{1}{1-x}
+\end{align}
+
+with the power series
+\begin{align}
+\sum\limits_{n=0}^{\infty}x^n \qquad {\rm provided} \ |x|<1
+\end{align}
+
+This provision is important.  We can clearly plug any number other than $x=1$ into the function, however, we will only get a convergent power series if $|x|<1$.  This means the equality in (1) will only hold if $|x|<1$.  For any other value of $x$ the equality won't hold.  Note as well that we can also use this to acknowledge that the radius of convergence of this power series is $R=1$ and the interval of convergence if $|x|<1$.
+
+This idea of convergence is important here.  We will be representing many functions as power series and it will be important to recognize that the representations will often only be valid for a range of $x$'s and that there may be values of $x$ that we can plug into the function that we can't plug into the power series representation.
+
+
+In this section we are going to concentate on representing functions with power series where the function can be related back to (2).  
+
+
+In this way we will hopefully become familiar with some of the kinds of manipulations that we will soemtimes need when working with power series. We now consider several examples.
+
+{\bf Example 1}  Find a power series representation for $\ds g(x) = \frac{1}{1+x^3}$ and determine its interval of convergence.  
+
+{\bf Solution} 
+
+We want to relate this function back to (2).  This is actually easier than it might look.  Recall that the $x$ in (2) is simply a variable and can represent anything.  So, a quick rewrite of $g(x)$ gives,
+$$g(x) = \frac{1}{1-(-x^3)}$$
+
+and so the $-x^3$ holds the same place as the $x$ in (2).  Therefore, all we need to do is replace the $x$ in (3) and we've got a power series representation for $g(x)$.  
+$$g(x) = \sum\limits_{n=0}^{\infty}\left( -x^3 \right)^n \qquad {\rm provided} \ |-x^3|<1$$
+
+Notice that we replaced both the $x$ in the power series and in the interval of convergence. All we need to do now is a little simplification.
+$$g(x) = \sum\limits_{n=0}^{\infty}\left( -1 \right)^n x^{3n} \qquad {\rm provided} \ |x|^3<1 \qquad \Rightarrow \qquad |x|<1$$
+So, in this case the interval of convergence is the same as the original power series.  This usually won't happen.  More often than not the new interval of convergence will be different from the original interval of convergence.  
+
+
+{\bf Example 2}  Find a power series representation for $\ds h(x) = \frac{2x^2}{1+x^3}$ and determine its interval of convergence.  
+
+{\bf Solution}
+
+This function is similar to the previous function, however the numerator is different.  Since (2) doesn't have an $x$ in the numerator it appears that we can't relate this function back to that.  However, now that we've worked the first example this one is actually very simple since we can use the result of the anwer from that example.  To see how to do this let's first rewrite the function a little. 
+$$ h(x) = 2x^2 \frac{1}{1+x^3}$$ Now, from the first example we've already got a power series for the second term so let's use that to write the function as, 
+$$ h(x) = 2x^2 \sum\limits_{n=0}^{\infty}\left( -1 \right)^n x^{3n} \qquad {\rm provided} \ |x|<1$$
+
+Notice that the presence of $x$'s outside of the series will NOT affect its convergence and so the interval of convergence remains the same.  
+The last step is to bring the coefficient into the series and we'll be done.  When we do this make sure and combine the $x$'s as well.  We typically only want a single $x$ in a power series.  
+$$ h(x) = \sum\limits_{n=0}^{\infty}2\left( -1 \right)^n x^{3n+2} \qquad {\rm provided} \ |x|<1$$
+As we saw in the previous example we can often use previous results to help us out.  This is an important idea to remember as it can often greatly simplify our work.  
+
+
+{\bf Example 3}  Find a power series representation for $\ds f(x) = \frac{x}{5-x}$ and determine its interval of convergence.  
+
+{\bf Solution}
+
+So again, we have an $x$ in the numerator. As with the last example factor $x$ out and we have $\ds f(x) = x\frac{1}{5-x}$.
+If we had a power series representation for $\ds g(x) = \frac{1}{5-x}$ we could get a power series representation for $f(x)$.  
+We need the number in the denominator to be a one so we rewrite the denominator.  
+$$g(x) = \frac{1}{5} \frac{1}{1 - \frac{x}{5}}$$
+
+Now all we need to do to get a power series representation is to replace the $x$ in (3) with $\frac{x}{5}$.  Doing this gives, 
+$$g(x) = \frac{1}{5}\sum\limits_{n=0}^{\infty}\bigg(\frac{x}{5}\bigg)^n \qquad {\rm provided} \ \bigg| \frac{x}{5} \bigg|<1$$
+
+
+Now simplify the series.
+\begin{align*}
+g(x) & = \frac{1}{5}\sum\limits_{n=0}^{\infty} \frac{x^n}{5^n} \\
+                       & = \sum\limits_{n=0}^{\infty} \frac{x^n}{5^{n+1}} 
+\end{align*}
+
+The interval of convergence for this series is,
+$$\bigg|\frac{x}{5}\bigg|<1 \qquad \Rightarrow \qquad \frac{1}{5}|x|<1 \qquad \Rightarrow \qquad |x|<5$$
+
+We now have a power series representation for $g(x)$ but we need to find a power series representation for the original function.  All we need to do for this is to multiply the power series representative for $g(x)$ by $x$ and we'll have it.  
+\begin{align*}
+f(x) &=  x \frac{1}{5-x} \\
+      & =  x \sum\limits_{n=0}^{\infty} \frac{x^n}{5^{n+1}}\\ 
+                      & = \sum\limits_{n=0}^{\infty} \frac{x^{n+1}}{5^{n+1}}
+\end{align*}
+The interval of convergence doesn't change and so it will be $|x|<5$.
+
+We now consider several examples using differentiation and integration of power series from Theorem \ref{} in Section \ref{Section 8.6}
+
+{\bf Example 4}  Find a power series representation for $\ds g(x) = \frac{1}{(1-x)^2}$ and determine its interval of convergence.  
+
+{\bf Solution}
+We know that
+$$\frac{1}{(1-x)^2} = \frac{d}{dx} \left( \frac{1}{1-x} \right)$$
+Since we have a power series  representation for $\ds \frac{1}{1-x}$, we can differentiate that power series to get a power series representation for $g(x)$.  
+
+\begin{align*}
+ g(x) & = \frac{1}{1-x} \\
+                       & = \frac{d}{dx} \left( \frac{1}{1-x} \right) \\
+                       & =  \frac{d}{dx} \left( \sum\limits_{n=0}^{\infty} x^n \right)\\
+                       & =  \sum\limits_{n=1}^{\infty} nx^{n-1}
+\end{align*}
+
+Since the original power series had a radius of convergence of $R=1$ the derivative, and hence $g(x)$, will also have a radius of convergence of $R=1$.  
+
+
+{\bf Example 5}  Find a power series representation for$h(x) = \ln(5-x)$ and determine its interval of convergence.  
+
+{\bf Solution}
+
+In this case we need the fact that $$\ds\int \frac{1}{5-x} dx = -\ln(5-x)$$
+Recall that we found a power series representation for $\ds\frac{1}{5-x}$ in Example \ref{}
+We now have
+\begin{align*}\ln(5-x) & =  -\ds\int \frac{1}{5-x} dx \\
+                                    & =  -\ds\int \sum\limits_{n=0}^{\infty} \frac{x^n}{5^{n+1}} dx \\
+                                    & =  C - \sum\limits_{n=0}^{\infty} \frac{x^{n+1}}{(n+1)5^{n+1}}
+\end{align*}
+
+                                  
+We can find the constant of integration, $C$, by substituting in a value of $x$.  A good choice is $x=0$ as the series is usually easy to evaluate there.  
+\begin{align*}
+\ln(5-0) & = C - \sum\limits_{n=0}^{\infty} \frac{0^{n+1}}{(n+1)5^{n+1}} \\
+                 \ln (5-0) & =  C 
+\end{align*}
+                 
+So, the final answer is, 
+$$\ln(5-x) =\ln(5) - \sum\limits_{n=0}^{\infty} \frac{x^{n+1}}{(n+1)5^{n+1}}$$
+
+%%%%% There needs to be some sort of transition paragraph here. I'm not sure if this will all go into one Power series section so have not written this paragraph yet.
+
+
+
+Exercises:
+
+Write the following functions as a power series and give the interval of convergence.
+
+$\ds f(x)=\frac{x}{1-8x}$
+
+$\ds f(x)=\frac{x^7}{8+x^3}$
+
+$\ds f(x)=\frac{6}{1+7x^4}$  		Solution: $\ds \sum_{n=0}^\infty 6(-7)^nx^{4n}$,  $(-1/\root 4 \of 7 ,1/\root 4 \of 7)$\\
+
+
+$\ds f(x)=\frac{x^3}{3-x^2}$		Solution: $\ds \sum_{n=0}^\infty \frac{x^{2n+3}}{3^{n+1}}$, $(-\sqrt3,\sqrt3)$\\
+
+$\ds f(x)=\frac{3x^2}{5-2\root 3 \of x}$		Solution: $\ds \sum_{n=0}^\infty \frac{3\cdot2^n x^{n/3+2}}{5^{n+1}}$, $(-125/8,125/8)$
+
+$ \ds f(x)=\frac{1}{(1+x)^2}$
+
+$ \ds f(x)=\frac{1}{(1+x)^3}$
+
+$\ds f(x)=\ln(3-x)$
+
+$\ds f(x)=\frac {x}{(1+9x^2)^2}$
+
+$\ds f(x)=\ln\biggl(\frac{1+x}{1-x}\biggr)$
+
+
+
+
+
+\end{document}

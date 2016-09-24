@@ -1,0 +1,146 @@
+\documentclass[11pt]{report}
+\usepackage[letterpaper, total={6.5in, 10in}]{geometry}
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+\usepackage{amsmath, amsthm, mathpazo, epic, eepic, color, array}
+\usepackage{amssymb}
+%\usepackage{graphicx}
+\usepackage{cancel}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\pgfplotsset{compat=1.13}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+\usepackage{hyperref}
+\usepackage[normalem]{ulem}
+
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows, petri, topaths}
+\usepackage{tkz-berge}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+
+\newboolean{colorprint}
+\setboolean{colorprint}{true}
+%\setboolean{colorprint}{false}
+
+\ifthenelse{\boolean{colorprint}}{%
+\newcommand{\colorone}{blue}
+\newcommand{\colortwo}{red}
+\newcommand{\coloronefill}{blue!15!white}
+\newcommand{\colortwofill}{red!15!white}
+\newcommand{\colormapone}{rgb=(.4,.4,1); rgb=(.8,.8,1)}
+\newcommand{\colormaptwo}{rgb=(1,.4,.4); rgb=(1,.8,.8)}
+\newcommand{\colormapplaneone}{rgb=(.7,.7,1); rgb=(.9,.9,1)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,1}
+\definecolor{colormaponetop}{rgb}{.8,.8,1}
+\definecolor{colormaptwobottom}{rgb}{1,.4,.4}
+\definecolor{colormaptwotop}{rgb}{1,.8,.8}
+}% ends color
+{% not color
+\newcommand{\colorone}{black}
+\newcommand{\colortwo}{black!50!white}
+\newcommand{\coloronefill}{black!15!white}
+\newcommand{\colortwofill}{black!05!white}
+\newcommand{\colormapone}{rgb=(.4,.4,.4); rgb=(.7,.7,.7)}
+\newcommand{\colormaptwo}{rgb=(.6,.6,.6); rgb=(.9,.9,.9)}
+\newcommand{\colormapplaneone}{rgb=(.8,.8,.8); rgb=(.95,.95,.95)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,.4}
+\definecolor{colormaponetop}{rgb}{.7,.7,.7}
+\definecolor{colormaptwobottom}{rgb}{.6,.6,.6}
+\definecolor{colormaptwotop}{rgb}{.9,.9,.9}
+}%
+
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+\pgfplotsset{my style/.append style={axis x line=middle, axis y line=
+middle, xlabel={$x$}, ylabel={$y$}, axis equal }}
+
+\pgfplotsset{compat=1.13}
+\newcommand{\ds}{\displaystyle}
+\begin{document}
+
+All page numbers are from the original APEX text. If that's not helpful let me know how to better reference the location of the changes to be made.\\ \\
+
+\textbf{Chapter 9 Introduction}\\
+Does NOT need to be rewritten.\\
+
+\textbf{Section 9.1 is now 12.0}\\
+
+\textbf{OLD 9.2 Parametric Equations}
+\vskip .5 truecm
+
+\textbf{p. 503}\\
+2nd paragraph: "The rectangular equation...symmetry. \sout{but in the previous section}..." Replace this phrase with "In precalculus and the review of conic sections in section 9.0..."\\
+
+
+\textbf{p. 504}\\
+Example 282 You noted that the "often" needed to be added to 2nd paragraph: "...In Example 281... this portion of the parabola would be traced and re-traced, infinitely often..."\\
+
+Delete Technology Note\\
+
+\textbf{p. 505, Example 283}\\
+"Sketch the graph of ... shift this graph to the right 3 \sout{places} units..."\\
+
+"SOLUTION \indent The graph of ....a parabola with \sout{a} an axis of symmetry..." 
+ADD: It should be noted that finding the vertex is not a trivial matter and not something you will be asked to do in this text.\\
+
+\textbf{p. 506}\\
+Line right before Example 286: "We sometimes chose..." chose should be choose.\\
+
+\textbf{p. 509}\\
+Add mention of witch of Agnessi and folium of Descartes: "Figure 9.27 gives a small ...them. Interested readers can begin learning more about these curves and others (witch of Agnessi, folium of Descartes, etc.) through internet searches."\\
+
+\textbf{p. 510}\\
+First paragraph: "It is clear that each is 0... in the figure. However, by restricting the domain of the astroid to all reals except $t = \frac{k\pi}{2}$ for $k \in Z$  we have a piecewise smooth curve."\\
+
+\textbf{Example 289}\\
+Paragraph at end of solution: "\sout{We see at... are 0} We consider only the value of $t=2$ Since both $x'$ and $y'$ must be 0. Thus $C$ is not... $(1,4)$."\\
+
+\textbf{OLD Section 9.3}\\
+
+\textbf{p. 513-514}\\
+\textbf{Definition 47} - separate definitions of tangent and normal lines into two boxes:\\
+\textbf{Tangent Lines}\\
+Let a curve $C$ be parameterized by $x=f(t)$ and $y=g(t)$, where $f$ and $g$ are differentiable functions on some interval $I$ containing $t=t_0$. The 
+\textbf{tangent line} to $C$ at $t=t_0$ is the line through $f((t_0),g(t_0))$ with slope $m=\frac{g'(t_0)}{f'(t_0)}$, provided $f'(t_0) \neq 0$.\\
+
+\textbf{Insert this paragraph below the definition box:}\\
+It is possible for parametric curves to have horizontal and vertical tangents. As expected a horizontal tangent occurs whenever $\frac{dy}{dx} = 0$ or when $\frac{dy}{dt} = 0$ (provided $\frac{dx}{dt} \neq 0$). Similarly, a vertical tangent occurs whenever $\frac{dy}{dx}$ is undefined or when $\frac{dx}{dt} = 0$ (provided $\frac{dy}{dt} \neq 0$).\\
+
+Definition of \textbf{Normal Lines}\\
+The \textbf{normal line} to a curve $C$ at a point $P$ is the line through $P$ and perpendicular to the tangent line at $P$. For $t=t_0$ the normal line is the line through $f((t_0), g(t_0))$ with slope $m=-\frac{f'(t_0)}{g'(t_0)}$, provided $g'(t_0) \neq 0$.\\
+
+\textbf{Delete the paragraph (plus some) under Definition 47 box}: \sout{"The definition...2. If the normal line...$x=f(t_0)$}." \\
+
+\textbf{Replace the deleted paragraph (plus some) with:}\\
+As with the tangent line we note that it is possible for a normal line to be vertical or horizontal. A horizontal normal line occurs whenever $\frac{dy}{dx}$ is undefined or when $\frac{dx}{dt} = 0$ (provided $\frac{dy}{dt} \neq 0$). Similarly, a vertical normal line occurs whenever $\frac{dy}{dx} = 0$ or when $\frac{dy}{dt} = 0$ (provided $\frac{dx}{dt} \neq 0$). In other words, if the curve $C$ has a vertical tangent  at $f((t_0), g(t_0))$ the normal line will be horizontal and if the tangent is horizontal the normal line will be a vertical line.\\
+
+\textbf{p. 514 - 515}\\
+Figures 9.29 \& 9.30 the normal and tangent lines are not dark enough. \\
+
+\textbf{p. 516}\\
+The function in Example 292, which is also used in section 9.2 does not have an easy 9.2 reference. It is not an example. I'm not sure how to reference it in this example.\\
+
+\textbf{p. 519}\\
+In the arc length section there are 8 $f'(t)^2$ and $g'(t)^2$ that need brackets to become  $[f'(t)]^2$ and $[g'(t)]^2$.\\ 
+
+\textbf{p. 521}\\
+In the Key Idea 39 there are 2 pairs of $f'(t)^2$ and $g'(t)^2$ that need brackets to become  $[f'(t)]^2$ and $[g'(t)]^2$.\\
+
+
+
+
+
+\end{document}
+

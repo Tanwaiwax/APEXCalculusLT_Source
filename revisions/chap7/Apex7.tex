@@ -1,0 +1,396 @@
+\documentclass[12pt]{report}
+\usepackage{mathtools, amsthm, mathpazo, epic, eepic, color, paralist}
+\usepackage[margin=1in]{geometry}
+\usepackage{tikz}
+\pagestyle{empty}
+
+\begin{document}
+
+
+\section{Inverse Functions}
+
+We say that two functions $f$ and $g$ are \emph{inverses} if $g(f(x))=x$ for all $x$ in the domain of $f$ and $f(g(x))=x$ for all $x$ in the domain of $g$. A function can only have an inverse if it is one-to-one, i.e. if we never have $f(x_1)=f(x_2)$ for different elements $x_1$ and $x_2$ of the domain. This is equivalent to saying that the graph of the function passes the horizontal line test. Functions that are not one-to-one may sometimes have partial inverses obtained by restricting the domain of the function.
+
+If $f$ and $g$ are inverses, the domain of $g$ will be the range of $f$ and the range of $g$ will be the domain of $f$. The graphs of $f$ and $g$ will be reflections of each other across the line $y=x$ since $y=f(x)$ if and only if $x=g(y)$ (since the point $(y,x)$ is on the graph of $g$ whenever $(x,y)$ is on the graph of $f$.)  The inverse of $f$ is usually denoted $f^{-1}$, which should not be confused with the function $1/f(x)$.
+
+To determine whether or not two functions are inverses, we check to see whether or not the composition of those functions is the identity, i.e. whether or not $g(f(x))=x$ for all $x$. 
+
+\paragraph{Example.} Determine whether or not the following pairs of functions are inverses:
+\begin{itemize}
+\item[(a)] $f(x)=3x+1$; $\displaystyle g(x)=\frac{x-1}3$
+\item [(b)]$f(x)=x^3+1$; $g(x)=x^{1/3}-1$
+\end{itemize}
+
+\paragraph{Solution.}
+\begin{itemize}
+\item [(a)] To check the composition we plug $f(x)$ in for $x$ in the definition of $g$ as follows: \[ g(f(x))=\frac{f(x)-1}3=\frac{(3x+1)-1}3=\frac{3x}3=x\] Since $g(f(x))=x$ for all $x$, $f$ and $g$ are inverses.
+\item [(b)] If we try to proceed as beforewe find that: \[ g(f(x))=(f(x))^{1/3}-1 =(x^3+1)^{1/3}-1\] This doesn't seem to be the same as the identity function $x$. To verify this, we find a number $a$ in the domain of $f$ and show that $g(f(a))\neq a$ for that value. Let's try $x=1$. Since $f(1)=1^3+1=2$, we find that $g(f(1))=g(2)=2^{1/3}-1\approx 0.26$. Since $g(f(1))\neq 1$, these functions are not inverses.
+\end{itemize}
+
+To find the inverse $f^{-1}$ of a given function $y=f(x)$, we follow these steps (when possible):
+\begin{enumerate}
+\item In the equation defining $f$, solve for $x$.
+\item Interchange $x$ and $y$.
+\item The equation now defines $y=f^{-1}(x)$.
+\end{enumerate}
+
+\paragraph{Example.} Find the inverses of the following functions.
+\begin{itemize}
+\item [(a)] $f(x)=5x+3$
+\item [(b)] $g(x)=x^3+1$
+\end{itemize}
+
+\paragraph{Solution.} 
+\begin{itemize}
+\item [(a)] Start with the equation $y=5x+3$ and solve for $x$:
+\begin{equation*}
+\begin{split}
+y&=5x+3\\
+y-3&=5x\\
+\frac{y}5 &=x\\
+\end{split}
+\end{equation*}
+Next interchange $x$ and $y$ to get $\displaystyle y=\frac{x-3}5$. The inverse of $f$ is: \[ f^{-1}(x)=\frac{x-3}5 \]
+\item [(b)] Proceeding as before, we get:
+\begin{equation*}
+\begin{split}
+y&=x^3+1\\
+y-1&=x^3\\
+(y-1)^{1/3}&=x\\
+\end{split}
+\end{equation*}
+Interchanging $x$ and $y$ yields $y=(x-1)^{1/3}$, so \[g^{-1}(x)=(x-1)^{1/3}\]
+\end{itemize}
+
+Let's consider a familar function that is not one-to-one. Let $f(x)=x^2$. This function is not one-to-one because, for example, $f(-2)=f(2)=4$. If we were to try and find an inverse function $g$ for $f$, we encounter a problem. We want $g(f(2))=2$, so we should define $g(4)=2$. On the other hand, we also want $g(f(-2))=-2$, so we should define $g(4)=-2$. Both of these statements cannot be true since we want $g$ to be a function. However, if we restrict the domain of $f$ to the set of nonnegative real numbers, then the function will be one-to-one. The inverse of this function is the familar principle square root function $g(x)=\sqrt x$. Since $-2$ is no longer in the domain of $f$, we don't need to worry about $g(f(-2))$ anymore. The function $g(x)=\sqrt x$ is called a partial inverse for $f(x)=x^2$ because it only acts as an inverse on part of the domain of $f$.
+
+\paragraph{The inverse sine function.} We consider the function $f(x)=\sin x$, which is not one-to-one. A piece of the graph of $f$ is given below.
+
+\begin{center}
+\begin{tikzpicture}
+\draw[<->,thick] (-3.2,0) -- (3.2,0) node[right] {$x$};
+\draw[<->,thick] (0,-1.5) -- (0,1.5) node[above] {$y$};
+\draw [domain=-3.2:3.2] plot (\x, {sin(\x r)});
+\end{tikzpicture}
+\end{center}
+
+In order to find an appropriate restriction of the domain of $f$, we look for consecutive critical points where $f$ takes on its minimum and maximum values. In this case, we use the interval $[-\pi/2,\pi/2]$. The graph of $f$ over this interval is sketched below.
+
+\begin{center}
+\begin{tikzpicture}
+\draw[<->,thick] (-2,0) -- (2,0) node[right] {$x$};
+\draw[<->,thick] (0,-1.5) -- (0,1.5) node[above] {$y$};
+\draw [domain=-pi/2:pi/2] plot (\x, {sin(\x r)});
+\end{tikzpicture}
+\end{center}
+
+We define the inverse of $f$ on this restricted range by $y=\arcsin x$ if and only if $\sin y=x$ and $-\pi/2\leq y\leq \pi/2$. The graph is a reflection of the graph of $g$ across the line $y=x$:
+
+\begin{center}
+\begin{tikzpicture}
+\draw[<->,thick] (-1.5,0) -- (1.5,0) node[right] {$x$};
+\draw[<->,thick] (0,-2) -- (0,2) node[above] {$y$};
+\draw [domain=-1:1] plot (\x, {rad(asin(\x))});
+\end{tikzpicture}
+\end{center}
+
+\paragraph{The inverse tangent function.} Next we consider the function $g(x)=\tan x$, which is also not one-to-one. A piece of the graph of $g$ is given below.
+
+\begin{center}
+\begin{tikzpicture}
+\draw[<->,thick] (-5,0) -- (5,0) node[right] {$x$};
+\draw[<->,thick] (0,-3) -- (0,3) node[above] {$y$};
+\draw [domain=-1.25:1.25] plot (\x, {tan(\x r)});
+\draw [domain=-1.25:1.25] plot (\x-pi, {tan(\x r)});
+\draw [domain=-1.25:1.25] plot (\x+pi, {tan(\x r)});
+\end{tikzpicture}
+\end{center}
+
+In order to find an interval on which the function is one-to-one and on which the function takes on all values in the range, we use an interval between consecutive vertical asymptotes. Traditionally, the interval $(-\pi/2,\pi/2)$ is chosen. Note that we choose the open interval in this case because the function $g$ is not defined at the endpoints. So we define $y=\arctan x$ if and only if $\tan y=x$ and $-\pi/2< y<\pi/2$. The graph of $y=\arctan x$ is shown below. Note that the vertical asymptotes of the original function are reflected to become horizontal asymptotes of the inverse function.
+
+\begin{center}
+\begin{tikzpicture}
+\draw[<->,thick] (-4,0) -- (4,0) node[right] {$x$};
+\draw[<->,thick] (0,-2) -- (0,2) node[above] {$y$};
+\draw [domain=-4:4] plot (\x, {rad(atan(\x))});
+\end{tikzpicture}
+\end{center}
+
+{\bfseries Insert problems here.} Problems 1-3 and 5-8 from the previous section 2.7 fit here. In addition, add the following:
+In exercises ??-??, find the inverse of the given function. Indicate how the domain should be restricted if necessary.
+\begin{itemize}
+\item $f(x)=7x-2$
+\item $g(x)=\sqrt{9-x^2}$
+\item $r(t)=t^2-6t+9$
+\item $f(x)=\cos x$
+\end{itemize}
+
+\section{Derivatives of Inverse Functions}
+
+In this section we will figure out how to differentiate the inverse of a function. To do so, we recall that if $f$ and $g$ are inverses, then $f(g(x))=x$ for all $x$ in the domain of $f$. Differentiating and simplifying yields:
+\begin{equation*}
+\begin{split}
+f(g(x))&=x\\
+f'(g(x))g'(x)&=1\\
+g'(x)&=\frac 1{f'(g(x))} \quad\text{assuming $f'(x)$ is nonzero}\\
+\end{split}
+\end{equation*}
+So we have the following theorem.
+
+{\color{blue} \bfseries Begin with Theorem 22 here, continue through Theorem 23 with changes as noted.}
+
+\section{Exponential and Logarithmic Functions}
+
+In this section we will define general exponential and logarithmic functions and find their derivatives. 
+
+\paragraph{General exponential functions.} Consider first the function $f(x)=2^x$. If $x$ is rational, then we know how to compute $2^x$. What do we mean by $2^\pi$ though? We compute this by first looking at $2^r$ for rational numbers $r$ that are very close to $\pi$, then finding a limit. In our case we might compute $2^3$, $2^{3.1}$, $2^{3.14}$, etc. We then define $2^\pi$ to be the limit of these numbers. Note that this is actually a different kind of limit than we have dealt with before since we only consider rational number close to $\pi$, not all real numbers close to $\pi$. We will see one way to make this more precise in Chapter ???. Graphically, we can plot the values of $2^x$ for $x$ rational and get something like the dotted curve in the figure below. In order to define the remaining values, we are ``connecting the dots'' in a way that makes the function continuous.
+
+\begin{center}
+\begin{tikzpicture}
+\draw[<->,thick] (-4,0) -- (4,0) node[right] {$x$};
+\draw[<->,thick] (0,-1) -- (0,5) node[above] {$y$};
+\draw [domain=-3:2,color=blue,dashed] plot (\x, {2^(\x)});
+\end{tikzpicture}
+\end{center}
+
+It follows from continuity and the properties of limits that exponential functions will satisfy the familiar properties of exponents (see section 2.0).  This implies that \[\left(\frac12\right)^x =(2^{-1})^x=2^{-x}\text{,}\] so the graph of $g(x)=(1/2)^x$ is the reflection of $f$ across the $y$-axis.
+
+\begin{center}
+\begin{tikzpicture}
+\draw[<->,thick] (-4,0) -- (4,0) node[right] {$x$};
+\draw[<->,thick] (0,-1) -- (0,5) node[above] {$y$};
+\draw [domain=-3:2,color=blue] plot (\x, {2^(\x)});
+\draw [domain=-2:3,color=red] plot (\x, {.5^(\x)});
+\end{tikzpicture}
+\end{center}
+
+We can go through the same process as above for any base $a>0$, though we are not usually interested in the constant function $1^x$. In addition to the standard properties of exponents, exponential functions satisfy the following:
+
+\begin{center}
+\begin{tabular}{| l | l |}
+\hline
+$ a^0=1$ & $a^x>0$ for all $x$\\
+\hline
+$\displaystyle\lim_{x\to\infty}a^x=\infty$ if $a>1$ & $\displaystyle\lim_{x\to-\infty}a^x=0$ if $a>1$\\
+\hline
+$\displaystyle\lim_{x\to\infty}a^x=0$ if $a<1$ & $\displaystyle\lim_{x\to-\infty}a^x=\infty$ if $a<1$\\
+\hline
+\end{tabular}
+\end{center}
+
+\paragraph{Derivatives of exponential functions.} Suppose $f(x)=a^x$ for some $a>0$, then we can use the rules of exponents to find the derivative of $f$:
+\begin{equation*}
+\begin{split}
+f'(x)&=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}\\
+&=\lim_{h\to 0}\frac{a^{x+h}-a^x}{h}\\
+&=\lim_{h\to 0}\frac{a^xa^h-a^x}{h}\\
+&=\lim_{h\to 0}\frac{a^x(a^h-1)}{h}\\
+&=a^x\lim_{h\to 0}\frac{a^h-1}{h} \qquad\text{(since $a^x$ does not depend on $h$)}\\
+\end{split}
+\end{equation*}
+So we know that $f'(x)=\displaystyle a^x \lim_{h\to 0}\frac{a^h-1}{h}$, but can we say anything about that remaining limit? First we note that \[f'(0)=\lim_{h\to 0}\frac  {a^{0+h}-a^0}{h}=\lim_{h\to 0}\frac{a^h-1}{h}\text{,}\] so we have $f'(x)=a^xf'(0)$. The actual value of the limit $\displaystyle \lim_{h\to 0}\frac{a^h-1}{h}$ depends on the base $a$, but it can be proved that it does exist. We will figure out just what this limit is later, but for now we note that the easiest differentiation formulas come from using a base $a$ that makes $\displaystyle \lim_{h\to 0}\frac{a^h-1}{h}=1$. This base is the number $e\approx 2.71828$ and the exponential function $e^x$ is called the natural exponential function. This leads to the following result.
+
+\paragraph{Theorem.} For any base $a>0$, the exponential function $f(x)=a^x$ has derivative $f'(x)=a^xf'(0)$. The natural exponential function $g(x)=e^x$ has derivative $g'(x)=e^x$.
+
+\paragraph{Example.} Find derivatives of the following functions.
+\begin{enumerate}
+\item $f(x)=e^{x^2}$
+\item $g(t)=t e^t$
+\end{enumerate}
+
+\paragraph{Solution.}
+\begin{enumerate}
+\item We note that this is a composition of functions where the \emph{inside} function is $x^2$. Hence we can apply the Chain Rule to see that: \[f'(x)=\left(e^{x^2}\right) (2x)\]
+\item In this case we apply the Product Rule for derivatives to find: \[g'(t)=e^t+te^t=e^t(t+1)\]
+\end{enumerate}
+
+\paragraph{General logarithmic functions.} Let us consider the function $f(x)=a^x$ where $a\neq1$. We know that $f'(x)=f'(0)a^x$, where $f'(0)$ is a constant that depends on the base $a$. Since $a^x>0$ for all $x$, this implies that $f'(x)$ is either always positive or always negative, depending on the sign of $f'(0)$. This in turn implies that $f$ is strictly monotonic, so $f$ is one-to-one. We can now say that $f$ has an inverse. We call this inverse the logarithm with base $a$, denoted $f^{-1}(x)=\log_ax$. When $a=e$, this is the natural logarithm function $\ln x$. So we can say that $y=\log_a x$ if and only if $a^y=x$. Since the range of the exponential function is the set of positive real numbers, the domain of the logarithm function is also the set of positive real numbers. Reflecting the graph of $y=a^x$ across the line $y=x$ we find that (for $a>1$) the graph of the logarithm looks like:
+
+\begin{center}
+\begin{tikzpicture}
+\draw[<->,thick] (-2.3,0) -- (4,0) node[right] {$x$};
+\draw[<->,thick] (0,-3) -- (0,3) node[above] {$y$};
+\draw [domain=-2:1.3,color=blue] plot (\x, {exp(\x)});
+\draw [dashed] (-2,-2) -- (3,3);
+\draw [domain=0.1:3.5,color=red] plot (\x, {ln(\x)});
+\end{tikzpicture}
+\end{center}
+
+Using the inverse of the natural exponential function, we can determine what the value of $f'(0)$ is in the statement of the previous theorem. To do so, we note that $a=e^{\ln a}$ since the exponential and logarithm functions are inverses. Hence we can write: \[a^x=\left(e^{\ln a}\right)^x=e^{x\ln a}\] Now since $\ln a$ is a constant, we can use the Chain Rule to see that: \[\frac d{dx} a^x=\frac d{dx} e^{x\ln a} =e^{x\ln a}(\ln a) =a^x\ln a\] Comparing this to our previous result, we can restate our theorem:
+
+\paragraph{Theorem.} For any base $a>0$, the exponential function $f(x)=a^x$ has derivative $f'(x)=a^x\ln a$. The natural exponential function $g(x)=e^x$ has derivative $g'(x)=e^x$.
+
+\paragraph{Change of base.} In the previous computation, we found it convenient to rewrite the general exponential function in terms of the natural exponential function. A related formula allows us to rewrite the general logarithmic function in terms of the natural logarithm.  To see how this works, suppose that $y=\log_ax$, then we have:
+\begin{equation*}
+\begin{split}
+a^y&=x \\
+\ln(a^y)&=\ln x\\
+y\ln a&=\ln x\\
+y&=\frac{\ln x}{\ln a}\\
+\log_a x&=\frac{\ln x}{\ln a}\\
+\end{split}
+\end{equation*}
+This change of base formula allows us to use facts about the natural logarithm to derive facts about the general logarithm.
+
+\paragraph{Derivatives of logarithmic function.} Since the natural logarithm function is the inverse of the natural exponential function, we can use the formula from the preceeding section to find the derivative of $y=\ln x$. We know that $\frac d{dx}e^x=e^x$, so we get: \[\frac{d}{dx}\ln x=\frac 1{e^y}=\frac 1{e^{\ln x}}=\frac1x.\] Now we can apply the change of base formula to find the derivative of a general logarithmic function: \[\frac{d}{dx}\log_ax=\frac{d}{dx}\left(\frac{\ln x}{\ln a}\right) =\frac 1{\ln a}\left(\frac{d}{dx}\ln x\right)=\frac 1{x\ln a}.\]
+
+\paragraph{Example.} Find derivatives of the following functions.
+\begin{enumerate}
+\item $f(x)=x3^{4x-7}$
+\item $g(x)=e^{x^3}\ln x$
+\item $h(x)=\frac x{\log_5x}$
+\end{enumerate}
+
+\paragraph{Solution.}
+\begin{enumerate}
+\item We apply both the Product and Chain Rules: \[f'(x)=3^{4x-7}+x\left(3^{4x-7}\ln 3\right)(4)=(1+4x\ln 3)3^{4x-7}\]
+\item Once again apply both the Product and Chain Rules: \[g'(x)=e^{x^3}(3x^2)\ln x+e^{x^3}(1/x)=(3x^2\ln x+1/x)e^{x^3}\]
+\item Applying the Quotient Rule: \[h'(x)=\frac{\log_5x-x\left(\frac1{x\ln 5}\right)}{(\log_5x)^2}=\frac{(\log_5x)(\ln 5)-1}{(\log_5x)^2\ln 5}\]
+\end{enumerate}
+
+\paragraph{Example.} Find the derivative of the function $y=\ln|x|$. We can rewrite our function as \[y=\begin{cases} \ln x & \text{if $x>0$}\\ \ln(-x) & \text{if $x<0$}\\ \end{cases}\]
+Applying the Chain Rule, we see that $\frac{dy}{dx}=\frac 1x$ for $x>0$, and $\frac{dy}{dx}=\frac{-1}{-x}=\frac 1x$ for $x<0$. Hence we have \[\frac{d}{dx}\ln |x|=\frac 1x \quad\text{ for $x\neq0$.}\]
+
+\paragraph{Antiderivatives.} Using the previous differentiation formulas, we arrive at the following antidifferentiation formulas:
+
+\paragraph{Theorem.} Given a base $a>0$ and $a\neq 1$, the following hold:
+\begin{itemize}
+\item $\int e^x\,dx=e^x+C$
+\item $\int a^x\,dx=\frac{a^x}{\ln a}+C$
+\item $\int \frac{dx}{x}=\ln|x|+C$
+\end{itemize}
+
+\paragraph{Example.} Find the following antiderivatives.
+\begin{enumerate}
+\item $\int 3^x\,dx$
+\item $\int x^2 e^{x^3}\,dx$
+\item $\int \frac{x\,dx}{x^2+1}$
+\end{enumerate}
+
+\paragraph{Solution.}
+\begin{enumerate}
+\item Applying our theorem, \[\int 3^x\, dx=\frac{3^x}{\ln 3}+C\]
+\item We use the substitution $u=x^3$, $du=3x^2\,dx$:
+\begin{equation*}
+\begin{split}
+\int x^2e^{x^3}\,dx &=\frac13 \int e^u\,du\\
+&=\frac 13 e^u+C\\
+&=\frac 13 e^{x^3}+C\\
+\end{split}
+\end{equation*}
+\item Using the substitution $u=x^2+1$, $du=2x\,dx$:
+\begin{equation*}
+\begin{split}
+\int \frac{x\,dx}{x^2+1}&=\frac 12 \int \frac{du}{u}\\
+&=\frac 12 \ln|u|+C\\
+&=\frac 12 \ln|x^2+1|+C\\
+&=\frac 12 \ln(x^2+1)+C\\
+\end{split}
+\end{equation*}
+\end{enumerate}
+
+Note that we do not yet have an antiderivative for the function $f(x)=\ln x$. We remidy this with the following example.
+
+\paragraph{Example.} Compute $\int \ln x\,dx$.
+
+\paragraph{Solution.} While this does not look like a product of functions, we find integration by parts useful. In particular we use $u=\ln x$, $du=dx/x$, $dv=dx$, and $v=x$:
+\begin{equation*}
+\begin{split}
+\int \ln x\,dx &=x\ln x-\int (x)\left(\frac{dx}x\right)\\
+&=x\ln x-\int dx\\
+&=x\ln x-x+C\\
+\end{split}
+\end{equation*}
+
+\section{Hyperbolic Funtions}
+
+\begin{enumerate}
+\item Relabel graphs in Figure 6.13 on page 313 to be clear that the areas are each $A=\frac\theta2$.
+
+\item Insert before Key Idea 16:
+
+{\slshape \paragraph{Example: The derivative of $f(x)=\cosh x$.} We use Definition 23 and the our previous differentiation formulas to find that:
+\[\frac d{dx}\cosh x=\frac d{dx}\left( \frac{e^x+e^{-x}}2\right)=\frac{e^x-e^{-x}}2=\sinh x\]
+The derivatives of the other hyperbolic functions can be found in a similar manner.
+}
+\item Insert before Key Idea 17: 
+
+{\slshape Now let's consider the inverses of the hyperbolic functions.We begin with the function $f(x)=\sinh x$. Since $f'(x)=\cosh x>0$ for all real $x$, $f$ is increasing and must be one-to-one. We proceed as in Section 7.1:
+\begin{equation*}
+\begin{split}
+y&=\frac{e^x-e^{-x}}2\\
+2y&=e^x-e^{-x} \qquad\text{(now multiply by $e^x$)}\\
+2ye^x&=e^{2x}-1 \qquad\text{(a quadratic form )}\\
+\left(e^x\right)^2-2ye^x-1&=0 \qquad\text{(use the quadratic formula)}\\
+e^x&=\frac{2y\pm\sqrt{4y^2-4}}2\\
+e^x&=y\pm\sqrt{y^2+1} \qquad\text{(use the fact that $e^x>0$)}\\
+e^x&=y+\sqrt{y^2+1}\\
+x&=\ln(y+\sqrt{y^2+1})\\
+\end{split}
+\end{equation*}
+Finally, interchange the variable to find that \[\sinh^{-1} x=\ln(x+\sqrt{x^2+1}).\] In a similar manner we find that the inverses of the other hyperbolic functions are given by:}
+\end{enumerate}
+
+\section{L'Hopital's Rule}
+
+\begin{itemize}
+
+\item Replace the first paragraph with: {\slshape This section is concerned with a technique for evaluating certain limits that will be useful in later chapters.}
+
+\item Replace Theorems 49 and 50 with the single theorem:
+
+{\slshape\paragraph{Theorem. L'H\^opital's Rule}  
+\begin{enumerate}
+\item Let $f$ and $g$ be differentiable functions on an open interval $I$ containing $a$.
+\begin{enumerate}
+\item If $\displaystyle\lim_{x\to a}f(x)=0$, $\displaystyle\lim_{x\to a}g(x)=0$, and $g'(x)\neq 0$ except possibly at $x=c$, then \[\lim_{x\to a}\frac{f(x)}{g(x)}=\lim_{x\to a} \frac{f'(x)}{g'(x)}.\]
+\item If  $\displaystyle\lim_{x\to a}f(x)=\pm\infty$ and $\displaystyle\lim_{x\to a}g(x)=\pm\infty$, then \[\lim_{x\to a}\frac{f(x)}{g(x)}=\lim_{x\to a} \frac{f'(x)}{g'(x)}.\]
+\end{enumerate}
+\item Let $f$ and $g$ be differentiable functions on the open interval $(c,\infty)$ for some value $c$ and $g'(x)\neq0$ on $(c,\infty)$.
+\begin{enumerate}
+\item If $\displaystyle\lim_{x\to \infty}f(x)=0$ and $\displaystyle\lim_{x\to \infty}g(x)=0$, then \[\lim_{x\to a}\frac{f(x)}{g(x)}=\lim_{x\to a} \frac{f'(x)}{g'(x)}.\]
+\item If  $\displaystyle\lim_{x\to \infty}f(x)=\pm\infty$ and $\displaystyle\lim_{x\to \infty}g(x)=\pm\infty$, then \[\lim_{x\to a}\frac{f(x)}{g(x)}=\lim_{x\to a} \frac{f'(x)}{g'(x)}.\] Note:  Similar statements can be made where $x$ approaches $-\infty$.
+\end{enumerate}
+\end{enumerate}
+}
+\item Make the following changes in Example 189.
+\begin{itemize}
+\item In the solution to part 1, add a comment that the initial limit returns the indeterminant form $0/0$.
+
+\item At the end of the solution to part 1, add the comment \emph{While this seems easier than using the Squeeze Theorem to find this limit, we note that applying L'Hopital's Rule here requires us to know the derivative of $\sin x$. We originally encountered this limit when we were trying to find that derivative.}
+
+\item In the solution to part 3, add a comment that the initial limit returns the indeterminant form $0/0$. Also, add $\lim_{x\to 0}$ after the first equal sign in this solution.
+
+\item Change part 4 to $\displaystyle\lim_{x\to-3}\frac{x^3+27}{x^2+9}$.
+
+\item Replace the current solution to part 4 with the following: 
+{\itshape \[\lim_{x\to-3}\frac{x^3+27}{x^2+9} =\frac 0{18}=0\] We cannot use L'Hopital's Rule in this case because the original limit does not return an indeterminate form, so L'Hopital's Rule does not apply.
+
+\item Remove the material between Examples 189 and 190 in the current text and collapse Examples 189 and 190 into a single example with 6 parts.
+}
+\end{itemize}
+
+\item Make the following changes involving Example 191.
+\begin{itemize}
+\item In the solution to part 1, change the first sentence to read \emph{As $x\to 0^+$, note that $x\to 0$ and $e^{1/x}\to \infty$.}
+
+\item In the solution to part 2, change the first sentence to read \emph{As $x\to 0^-$, note that $x\to 0$ and $e^{1/x}\to 0$.}
+
+\item In the solution to part 3 there's a set of parenthesis missing inside the first limit. Also, change \emph{argument of the $\ln$ term} to \emph{argument of the natural logarithm}. Finally, there should be a $\lim_{x\to\infty}$ after the first equal sign in the last line.
+\end{itemize}
+
+\item Replace the first sentence of the paragraph before Key Idea 20 with: \emph{When faced with a limit that returns one of the indeterminate forms $0^0$, $1^\infty$, or $\infty^0$, it  is often useful to use the natural logarithm to convert to an indeterminate form we already know how to find the limit of, then use the natural exponential function find the original limit. This is possible because the natural logarithm and natural exponential functions are inverses and because they are both continuous.}
+
+\item Make the following changes related to Example 192.
+\begin{itemize}
+\item The solution to part 1 should start ``This \emph{is} equivalent to..'' At the end of this part of the solution, add a comment about the fact that this is another way to determine the value of the number $e$.
+
+\item In the solution to part 2 there should be a comment after the line $=\lim_{x\to0^+} x\ln x$ noting that this produces the indeterminant form $0(-\infty)$, so we rewrite it in order to apply L'Hopital's Rule.
+\end{itemize}
+
+\item Remove the last paragraph of the section (after the solution to Example 192).
+
+
+\end{itemize}
+
+\end{document}

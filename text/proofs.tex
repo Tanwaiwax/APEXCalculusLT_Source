@@ -2,7 +2,7 @@
 
 \chapter{Selected Proofs}\thispagestyle{empty}
 
-We now present some of the proofs of the theorems in the text.  If you need a reminder about sequences, you should (re)read section~\ref{sec:sequences}.  The first thing we will do is state some important properties of the real numbers.
+We now present some of the proofs of the theorems in the text.  If you need a reminder about sequences, you should (re)read \autoref{sec:sequences}.  The first thing we will do is state some important properties of the real numbers.
 
 \theorem{thm:realscomplete}{Completeness of the Real Numbers}
 {\hspace{0pt}\\[-5ex]\begin{itemize}
@@ -44,7 +44,7 @@ The theorem (and the proof) do not hold if we use the rational numbers in place 
 %where \eqref{eq:chainRulePfOrg} means that $\epsilon(h)\to0$ as $h\to0$.  The proof continues\ldots.
 %\end{proof}
 
-Before proving our next theorem, we'll first define an extension of an idea we saw (or will see) in Section~\ref{sec:sequences}.
+Before proving our next theorem, we'll first define an extension of an idea we saw (or will see) in \autoref{sec:sequences}.
 
 \definition{def:subsequence}{Subsequence}%
 {Suppose that $\{x_n\}$ is a sequence of numbers.  Then $\{y_n\}$ is a \textbf{subsequence} if $g:\mathbb{N}^+\to\mathbb{N}^+$ is a strictly increasing function and $y_n=x_{g(n)}$.}
@@ -72,12 +72,12 @@ Partition this segment into $2M$ subsegments that are each 1 unit in length.  On
 
 The temptation in the previous proof is to just take the ``last'' subsequence.  But there are an infinite number of subsequences, so we can't talk about the ``last'' one.  Instead, we take the first element from the first subsequence, the second element from the second subsequence, and so on.
 
-By Theorem~\ref{thm:realscomplete}, this limit must be a real number.
+By \autoref{thm:realscomplete}, this limit must be a real number.
 
 % Let $f$ be a continuous function defined on a closed interval $I$. Then $f$ has both a maximum and minimum value on $I$.
 \begin{proof}[Proof of {\hyperref[thm:extremeVal]{The Extreme Value Theorem}}]
 \label{pf:extremeVal}
-We will prove that $f$ has a maximum.  The proof that $f$ has a minimum is identical.  Let $M$ be the least upper bound of the range of $f$, and choose $x_n\in[a,b]$ so that $f(x_n)\to M$.  By Theorem~\ref{thm:bolzanoWeierstrass}, we can find a subsequence $y_n$ that converges to a limit $y$.  Because each $y_n\in[a,b]$, their limit $y\in[a,b]$.  Then
+We will prove that $f$ has a maximum.  The proof that $f$ has a minimum is identical.  Let $M$ be the least upper bound of the range of $f$, and choose $x_n\in[a,b]$ so that $f(x_n)\to M$.  By \autoref{thm:bolzanoWeierstrass}, we can find a subsequence $y_n$ that converges to a limit $y$.  Because each $y_n\in[a,b]$, their limit $y\in[a,b]$.  Then
 \[
  f(y)=f(\lim_{n\to\infty}y_n)=\lim_{n\to\infty} f(y_n)=M
  \iflatexml\else\qedhere\fi
@@ -106,7 +106,7 @@ If $\fp(c)$ does not exist, then $c$ is a critical number of $f$.  Therefore, we
 %
 %Given $\epsilon>0$, we want to find a $\delta$ so that $\abs{x-y}<\delta$ implies $\abs{f(x)-f(y)}<\epsilon/(b-a)$.  (This is stronger than our usual notion of continuity, since we want the same $\delta$ to work for all possible values of $x$ and $y$.)  Because $f$ is continuous, for each $x$, we can find a $\delta$ that depends on $x$ so that $\abs{x-y}<\delta$ implies $\abs{f(x)-f(y)}<\frac\epsilon{b-a}$.  Let $\delta(x)$ be the largest value of $\delta$ that makes this statement work for a particular $x$, so that there is some $y$ so that $\abs{x-y}<\delta$ but $\abs{f(x)-f(y)}\ge\frac\epsilon{b-a}$.  We want to show that there is a $\delta>0$ that is smaller than all the $\delta(x)$.
 %
-%Let's suppose for this paragraph that there is no such $\delta$.  This means that there is a sequence $\{x_n\}$ so that $\delta(x_n)\to0$.  By Theorem~\ref{thm:bolzanoWeierstrass}, there is a subsequence that converges to a limit $x^*$.  Now let $\delta^*=\delta(x^*)$ and take $x_n$ within $\frac{\delta^*}2$ of $x^*$ so that $\delta(x_n)<\delta^*$.  Then for any $y$ within $\delta(x_n)$ of $x_n$, $\abs{x^*-y}<\abs{x^*-x_n}+\abs{x_n-y}<\frac{\delta^*}2+\delta(x_n)=\delta^*$ and $\abs{f(x_n)-f(y)}<\abs{f(x_n)-f(x^*)}+\abs{f(x^*)-f(y)}<\frac\epsilon{2(b-a)}+\frac\epsilon{2(b-a)}$.  But we chose $\delta(x_n)$ so that there is a $y$ where this doesn't happen.  This means that this entire paragraph is one giant contradiction.  Therefore, our beginning assumption must be wrong, and we can find such a $\delta$. NOT YET.
+%Let's suppose for this paragraph that there is no such $\delta$.  This means that there is a sequence $\{x_n\}$ so that $\delta(x_n)\to0$.  By \autoref{thm:bolzanoWeierstrass}, there is a subsequence that converges to a limit $x^*$.  Now let $\delta^*=\delta(x^*)$ and take $x_n$ within $\frac{\delta^*}2$ of $x^*$ so that $\delta(x_n)<\delta^*$.  Then for any $y$ within $\delta(x_n)$ of $x_n$, $\abs{x^*-y}<\abs{x^*-x_n}+\abs{x_n-y}<\frac{\delta^*}2+\delta(x_n)=\delta^*$ and $\abs{f(x_n)-f(y)}<\abs{f(x_n)-f(x^*)}+\abs{f(x^*)-f(y)}<\frac\epsilon{2(b-a)}+\frac\epsilon{2(b-a)}$.  But we chose $\delta(x_n)$ so that there is a $y$ where this doesn't happen.  This means that this entire paragraph is one giant contradiction.  Therefore, our beginning assumption must be wrong, and we can find such a $\delta$. NOT YET.
 %
 %Then once $\abs{\Delta x}<\delta$, the $x$-coordinates of the extreme values will be within $\delta$, and $\abs{M_i-m_i}<\epsilon/(b-a)$.  This will mean that
 %\[

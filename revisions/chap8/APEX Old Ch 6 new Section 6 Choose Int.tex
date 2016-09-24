@@ -1,0 +1,357 @@
+\documentclass[11pt]{report}
+\usepackage[letterpaper, total={6.5in, 10in}]{geometry}
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+\usepackage{amsmath, amsthm, mathpazo, epic, eepic, color, array}
+\usepackage{amssymb}
+%\usepackage{graphicx}
+\usepackage{cancel}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\pgfplotsset{compat=1.13}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+\usepackage{hyperref}
+\usepackage[normalem]{ulem}
+
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows, petri, topaths}
+\usepackage{tkz-berge}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+
+\newboolean{colorprint}
+\setboolean{colorprint}{true}
+%\setboolean{colorprint}{false}
+
+\ifthenelse{\boolean{colorprint}}{%
+\newcommand{\colorone}{blue}
+\newcommand{\colortwo}{red}
+\newcommand{\coloronefill}{blue!15!white}
+\newcommand{\colortwofill}{red!15!white}
+\newcommand{\colormapone}{rgb=(.4,.4,1); rgb=(.8,.8,1)}
+\newcommand{\colormaptwo}{rgb=(1,.4,.4); rgb=(1,.8,.8)}
+\newcommand{\colormapplaneone}{rgb=(.7,.7,1); rgb=(.9,.9,1)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,1}
+\definecolor{colormaponetop}{rgb}{.8,.8,1}
+\definecolor{colormaptwobottom}{rgb}{1,.4,.4}
+\definecolor{colormaptwotop}{rgb}{1,.8,.8}
+}% ends color
+{% not color
+\newcommand{\colorone}{black}
+\newcommand{\colortwo}{black!50!white}
+\newcommand{\coloronefill}{black!15!white}
+\newcommand{\colortwofill}{black!05!white}
+\newcommand{\colormapone}{rgb=(.4,.4,.4); rgb=(.7,.7,.7)}
+\newcommand{\colormaptwo}{rgb=(.6,.6,.6); rgb=(.9,.9,.9)}
+\newcommand{\colormapplaneone}{rgb=(.8,.8,.8); rgb=(.95,.95,.95)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,.4}
+\definecolor{colormaponetop}{rgb}{.7,.7,.7}
+\definecolor{colormaptwobottom}{rgb}{.6,.6,.6}
+\definecolor{colormaptwotop}{rgb}{.9,.9,.9}
+}%
+
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+\pgfplotsset{my style/.append style={axis x line=middle, axis y line=
+middle, xlabel={$x$}, ylabel={$y$}, axis equal }}
+
+\pgfplotsset{compat=1.13}
+\newcommand{\ds}{\displaystyle}
+
+\DeclareMathOperator{\sech}{sech}
+
+\begin{document}
+
+
+\textbf{OLD Chapter 6 NEW Section 6 - Choosing the Right Technique}\\
+\vskip .25 truecm
+
+\indent We've now seen a fair number of different integration techniques and so we should probably pause at this point to talk a little bit about a strategy to use for determining the correct technique to use when faced with an integral.\\
+
+\indent There are a couple of points that need to be made about this strategy. First, it isn't a hard and fast set of rules for determining the method that should be used. It is really nothing more than a general set of guidelines that will help us to identify techniques that may work. Some integrals can be done in more than one way and so depending on the path you take through the strategy you may end up with a different technique than someone else who also went through this strategy. \\
+
+\indent Second, while the strategy is presented as a way to identify the technique that could be used on an integral keep in mind that, for many integrals, it can also automatically exclude certain techniques as well. When going through the strategy keep two lists in mind. The first list is integration techniques that simply won't work and the second list is techniques that look like they might work. After going through the strategy, if the second list has only one entry then that is the technique to use. If on the other hand, there is more than one possible technique to use we will have to decide on which is liable to be the best for us to use. Unfortunately there is no way to teach which technique is the best as that usually depends upon the person and which technique they find to be the easiest.\\
+
+\indent Third, don't forget that many integrals can be evaluated in multiple ways and so more than one technique may be used on it. This has already been mentioned in each of the previous points, but is important enough to warrant a separate mention. Sometimes one technique will be significantly easier than the others and so don't just stop at the first technique that appears to work. Always identify all possible techniques and then go back and determine which you feel will be the easies for you to use.\\
+
+\indent Next, it's entirely possible that you will need to use more than one method to completely evaluate an integral. For instance a substitution may lead to using integration by parts or partial fractions integral.\\
+
+\textbf{Key Idea 100,056 \indent Guidelines for Choosing an Integration Strategy}
+
+\begin{enumerate}
+\item \textbf{Simplify the integrand, if possible.} This step is very important in the integration process. Many integrals can be taken from impossible or very difficult to very easy with a little simplification or manipulation. Don't forget basic trig and algebraic identities as these can often be used to simplify the integral.\\ \\
+We used this idea when we were looking at integrals involving trig functions. For example consider the following integral. $$\int \cos^2 x~dx$$ the integral can't be done as it is, however by recalling the identity, $$\cos^2 x = \frac{1}{2}(1 + \cos 2x)$$ the integral becomes very easy to do.\\ \\
+Note that this example also shows that simplifications does not necessarily mean that we'll write the integrand in a "simpler" form. It ony means that we'll write the integrand into a form that we can deal with and this is often longer and/or "messier" than the original integral.
+
+\item \textbf{See if a "simple" substitution will work.}Look to see if a simple substitution can be used instead of the often for complicated methods from Calculus II. For example consider both of the following integrals. $$\int \frac{x}{x^2-1}~dx \hskip 1 truein \int x\sqrt{x^2 -1}~dx$$
+The first integral can be done with partial fractions and the second could be done with a trig substitution.\\ \\
+However, both could also be evaluated using the substitution $u=x^2 -1$ and the work involved in the substitution would be significantly less than the work involved in either partial fractions or trig substitution.\\ \\
+So, always look for quick, simple substitutions before moving on to the more complicated Calculus II techniques.
+
+\item \textbf{Identify the type of integral.} Note that any integral may fall into more than 
+one of these types. Because of this fact it's usually best to go all the way through the list and identify all possible types since one may be easier than the other and it's entirely possible that the easier type is listed lower in the list.
+
+\begin{enumerate}[label= \alph*.]
+\item Is the integrand a rational expression (i.e. is the integrand a polynomial divided by a polynomial)? If so then partial fractions \textbf{(Section 8.?)} may work on the integral.
+
+\item Is the integrand a polynomial times a trig function, exponential, or logarithm? If so, then integration by parts \textbf{(Section 8.?)} may work.
+
+\item Is the integrand a product of sines and cosines, secans and tangents or cosecants and cotangents? If so, then the \textbf{topics from Section 8.?} may work. Likewise, don't forget that some quotients involving these functions can also be done using these techniques.
+
+\item Does the integrand involve $\sqrt {b^2x^2 + a^2}, \sqrt {b^2x^2 - a^2}, \text{or} \sqrt { a^2-b^2x^2}$? If so, then a trig substitution \textbf{(Section 8.?)} might work nicely.
+
+\item Does the integrand have roots other than those listed above in it? If so then the substitution $u = \root n \of {g(x)}$ might work.
+
+\item Does the integrand have a quadratic in it? If so then completing the square on the quadratic might put it into a form that we can deal with. 
+\end{enumerate}
+
+\item \textbf{Can we relate the integral to an integral we already know how to do?} In other words, can we us a substitution or manipulation to write the integrand into a  form that does fit into the forms we've looked at previously in this chapter. A typical example is the following integral.$$\int \cos x\sqrt{1 + \sin^2 x}~dx$$
+This integral doesn't obviously fit into any of the forms we looked at in this chapter. However, with the substitution $u = \sin x$ we can reduce the integral to the form $$\int \sqrt{1+u^2}~dx$$ which is a trig substitution problem.
+
+\item \textbf{Do we need to use multiple techniques?} In this step we need to ask ourselves if it is possible that we'll need to use multiple techniques. The example in the previous part is a good example. Using a substitution didn't allow us to actually do the integral. All it did was put the integral into a form that we could use a different technique on.\\ \\
+Don't ever get locked into the idea that an integral will only required one step to completely evaluate it. Many will require more than one step.
+
+\item \textbf{Try again.} If everything that you've tried to this point doesn't work then go back through the process again. This time try a technique that you didn't use the first time around.
+\end{enumerate}
+%%%%%%That's the end of Key Idea 100,056%%%%%
+
+As noted above, this strategy is not a hard and fast set of rule. It is only intended to guide you through the process of best determining how to do any given integral. Note as well that the only place Calculus II actually arises is the third step. Steps 1, 2, and 4 involve nothing more than manipulation of the integrand either through direct manipulation of the integrand or by using a substitution. The last two steps are simply ideas to think about in going through this strategy.\\
+
+Many students go through this process and concentrate almost exclusively on Step 3 (after all this is Calculus II, so it's easy to see why they might do that...) to the exclusion of the other steps. One very large consequence of that exclusion is that often a simple manipulation or substitution is overlooked that could make the integral very easy to do.\\
+
+Before moving on to the next section we will work a couple of examples illustrating a couple of not so obvious simplifications/manipulations and a not so obvious substitution.\\
+
+\textbf{Example 1,000,001} Evaluate the following integral. $$\int \frac{\tan x}{\sec^4 x}~dx$$
+\textbf{SOLUTION} \indent This integral almost falls into the form given in 3c. It is a quotient of tangent and secant and we know that sometimes we can use the same methods for products of tangents and secants on quotients.\\ \\
+The process from \textbf{Section 8.?} tells us that if we have even powers of secant to save two of them and convert the rest to tangents. That won't work here. We can save two secants, but they would be in the denominator and they won't do us any good here. Remeber that the point of saving them is so they could be there for the substitution $u = \tan x$. That requires them to be in the numerator. So, that won't work. We need to find another solution method.\\ \\
+There are in fact two solution methods to this integral depending on how you want to go about it.\\ \\
+\textbf{Solution 1} \indent In this solution method we could just convert everything to sines and cosines and see if that gives us an integral we can deal with.
+\begin{align*}
+\int \frac{\tan x}{\sec^4 x}~dx &= \int \frac{\sin x}{\cos x} \cos^4 x ~dx\\
+&= \int \sin x \cos^3 x ~dx \hskip 1 truein u = \cos x\\
+&= -\int u^3 ~du \\
+&=-\frac{1}{4} \cos^4 x +C
+\end{align*}
+
+Note that just converting to sines and cosines won't always work and if it does it won't always work this nicely. Often there will be a lot more work that would need to be done to complete the integral.\\
+
+\textbf{Solution 2} \indent This solution method goes back to dealing with secants and tangents. Let's notice that if we had a secant in the numerator we could just use $u = \sec x$ as a substitution and it would be a fairly quick and simple substitution to use. We don't have a secant in the numerator. However we could very easily get a secant in the numerator by multiplying the numerator and denominator by secant (i.e. we multiply the integrand by “1”). 
+\begin{align*}
+\int \frac{\tan x}{\sec^4 x}~dx &= \int \frac{\tan x \sec x}{\sec^5 x}~dx \hskip 1 truein u = \sec x\\
+&= -\int \frac{1}{u^5} ~du \\
+&=-\frac{1}{4} \frac{1}{\sec^4 x}+C\\
+&=-\frac{1}{4} \cos^4 x +C
+\end{align*}
+
+In the previous example we saw two "simplifications" that allowed us to evaluate the integral. The first was using identities to rewrite the integral into terms we could deal with and the second involved multiplying the numerator and denominator by something to again put the integral into terms we could deal with.\\
+
+Using identities to rewrite an integral is an important "simplification" and we should not forget about it. Integrals can often be greatly simplified or at least put into a form that can be dealt with by using an identity.\\
+
+The second "simplification" is not used as often, but does show up on occassion so again, it's best to remember it. In fact, let's take another look at an example in which multiplying the integrand by "1" will allow us to evaluate an integral.\\
+
+\textbf{Example 1,000,002} \indent Evaluate the following integral
+$$\int \frac{1}{1+\sin x}~dx$$
+\textbf{SOLUTION} \indent This is an integral which if we just concentrate on the third step we won't get anywhere. This integral doesn't appear to be any of the kinds of integrals that we worked on in this chapter. We can evaluate the integral however, if we do the following,
+\begin{align*}
+\int \frac{1}{1+\sin x}~dx &= \int \frac{1}{1+\sin x} \frac{1-\sin x}{1-\sin x}~dx \\
+&= \int \frac{1-\sin x}{1-\sin^2 x}~dx 
+\end{align*}
+
+This does not appear to have done anything for us. However, if we now remember the first "simplification" we looked at above we will notice that we can use an identity to rewrite the denominator. Once we do that we can further manipulate the integrand into something we can evaluate.
+\begin{align*}
+\int \frac{1}{1+\sin x}~dx &= \int \frac{1-\sin x}{\cos^2 x}~dx \\
+&= \int \frac{1}{\cos^2 x} - \frac{\sin x}{\cos x}\frac{1}{\cos x}~dx \\
+&= \int \sec^2 x - \tan x \sec x~dx \\
+&= \tan x - \sec x +C
+\end{align*}
+
+So, we've just seen once again that multiplying by a helpful form of "1" can put the integral into a form we can integrate. Notice as well that this example also showed that "simplifications" do not necessarily put an integral into a simpler form. They only put the integrand into a form that is easier to integrate.\\
+
+Let's now take a quick look at an example of a substitution that is not so obvious.\\
+
+\textbf{Example 1,000,003} \indent Evaluate the following integral
+$$\int \cos \sqrt x~dx$$
+\textbf{SOLUTION} \indent We introduced this integral by saying that the substitution was not so obvious. However, this is really an integral that falls into the form given by 3e in Key Idea 100,056. Many people miss that form and so don't think about it. So, let's try the following substitution.
+$$u = \sqrt x \hskip 1 truein x=u^2 \hskip 1 truein dx=2u~du$$
+With this substition the integral becomes,
+$$\int \cos \sqrt x~dx = 2\int u \cos u~du$$
+This is now an integration by parts. Remember that often we will need to use more than one technique to completely do the integral. This is a fairly simple integration by parts problem so we'll leave the remainder of the details for you to check.
+$$\int \cos \sqrt x~dx =2(\cos \sqrt x + \sqrt x \sin \sqrt x) + C$$
+
+It will be possible to integrate every integral given in this class, but it is important to note that there are integrals that just can't be evaluated. We should also note that after we look at series in Chapter 13 we will be able to write down a series representation of many of these types of integrals.\\
+
+\textbf{Exercises:}\\
+
+\begin{enumerate}
+\item $\ds \int \sin^{-1}x~dx$\\
+Answer: $\ds\frac{x^2}{2} \sin^{-1}x - \frac{1}{4} \sin^{-1}x + \frac{x}{4} \sqrt{1-x^2}+C$\\
+
+\item $\ds \int_0^4 \ln (1+x)~dx$\\
+Answer: $\ds 5\ln 5 - 4$\\
+
+\item $\ds \int \cos^3 2x~\sin^2 2x~dx$\\
+Answer: $\ds\frac{1}{6} \sin^3 2x - \frac{1}{10} \sin^5 2x +C$\\
+
+\item $\ds \int \frac{4x^2-12x-10}{(x-2)(x^2-4x+3)}~dx$\\
+Answer: $\ds 18\ln |x-2| - 9\ln|x-1|- 5\ln|x-3|+C$\\
+
+\item $\ds \int \tan x~\sec^5 x~dx$\\
+Answer: $\ds\frac{1}{5} \sec^5 x+C$\\
+
+\item $\ds \int \frac{1}{(x^2+25)^{3/2}}~dx$\\
+Answer: $\ds\frac{x}{25} \sqrt{x^2+25}+C$\\
+
+\item $\ds \int \frac{\sqrt{4-x^2}}{x}~dx$\\
+Answer: $\ds 2 \ln \biggl|\frac{2-\sqrt{4-x^2}}{x}\biggr| + \sqrt{4-x^2}+C$\\
+
+\item $\ds \int \frac{x^3+1}{x(x-1)^3}~dx$\\
+Answer: $\ds 2 \ln |x-1| - \ln |x| - \frac{x}{(x-1)^2}+C$\\
+
+\item $\ds \int \frac{x}{\sqrt{4+4x-x^2}}~dx$\\
+Answer: $\ds -\sqrt{4+4x-x^2} + 2 \sin^{-1}\bigl(\frac{x-2}{\sqrt 8}\bigr)+C$\\
+
+\item $\ds \int x^3 e^{x^2} ~dx$\\
+Answer: $\ds \frac{1}{2} e^{x^2}(x^2-1)+C$\\
+
+\item $\ds \int \frac{\root 3 \of{x+8}}{x}~dx$\\
+Answer: $\ds 3 \root 3 \of{x+8} +\ln [\root 3 \of{x+8}-2]^2 - \ln |\root 3 \of{(x+8)^2}+2\root 3 \of{x+8} +4| -\frac{6}{\sqrt 3} \tan^{-1} \frac{\root 3 \of{x+8} +1}{\sqrt 3} +C$\\
+
+\item $\ds \int e^{2x}~\sin^2 3x~dx$\\
+Answer: $\ds\frac{1}{13} e^{2x}(2 \sin 3x - 3\cos 3x) +C$\\
+
+\item $\ds \int \cos^3 x~\sin^3 x~dx$\\
+Answer: $\ds\frac{1}{4} \sin^4 x - \frac{1}{6} \sin^6 x +C$\\
+
+\item $\ds \int \frac{x}{\sqrt{4-x^2}}~dx$\\
+Answer: $\ds -\sqrt{4-x^2}+C$\\
+
+\item $\ds \int \frac{x^5-x^3+1}{x^3+2x^2}~dx$\\
+Answer: $\ds \frac{1}{3} x^3 -x^2 + 3x - \frac{1}{2x} - \frac{1}{4}\ln |x| - \frac{23}{4}\ln|x+2|+C$\\
+
+\item $\ds \int \frac{1}{x^{3/2}+x^{1/2}}~dx$\\
+Answer: $\ds 2\tan^{-1} \sqrt x +C$\\
+
+\item $\ds \int e^x~\sec e^x~dx$\\
+Answer: $\ds\ln |\sec e^x + \tan e^x| +C$\\
+
+\item $\ds \int x^2~\sin 3x~dx$\\
+Answer: $\ds\frac{1}{27}[6x\sin 3x -(9x^2 -2)\cos 3x] +C$\\
+
+\item $\ds \int \sin^3 x \sqrt{\cos x}~dx$\\
+Answer: $\ds\frac{2}{7} \cos^{7/2} x - \frac{2}{3} \cos^{3/2} x +C$\\
+
+\item $\ds \int e^x \sqrt{e^x+1}~dx$\\
+Answer: $\ds \frac{2}{3} (1+e^x)^{2/3}+C$\\
+
+\item $\ds \int \frac{x^2}{\sqrt{4x^2+9}}~dx$\\
+Answer: $\ds \frac{1}{16}[2x\sqrt{4x^2+9} - 9\ln(2x + \sqrt{4x^2+9}]+C$\\
+
+\item $\ds \int \sec^2 x \tan^2 x~dx$\\
+Answer: $\ds\frac{1}{3} \tan^3 x +C$\\
+
+\item $\ds \int x\csc x \cot x~dx$\\
+Answer: $\ds -x\csc x + \ln |\csc x - \cot x| +C$\\
+
+\item $\ds \int x^2 (8-x^3)^{1/3}~dx$\\
+Answer: $\ds -\frac{1}{4}(8-x^3)^{4/3}+C$\\
+
+\item $\ds \int \sin \sqrt{x}~dx$\\
+Answer: $\ds 2 \sin \sqrt{x} -2 \sqrt{x} \cos\sqrt{x} +C$\\
+
+\item $\ds \int x \sqrt{3-2x}~dx$\\
+Answer: $\ds \frac{1}{10} (3-2x)^{5/2} -\frac{1}{2} (3-2x)^{3/2}+C$\\
+
+\item $\ds \int\frac{e^{3x}}{1+e^x}~dx$\\
+Answer: $\ds \frac{1}{2} e^{2x} - e^x +\ln(1+e^x)+C$\\
+
+\item $\ds \int\frac{x^2-4x+3}{\sqrt x}~dx$\\
+Answer: $\ds \frac{2}{5} x^{5/2} - \frac{8}{3} x^{3/2}+ 6 x^{1/2}C$\\
+
+\item $\ds \int \frac{x^3}{\sqrt{16-x^2}}~dx$\\
+Answer: $\ds \frac{1}{3}(16-x^2)^{3/2} - 16(16-x^2)^{1/2}+C$\\
+
+\item $\ds \int \frac{1-2x}{x^2+12x+35}~dx$\\
+Answer: $\ds \frac{11}{2}\ln |x+5| - \frac{15}{2}\ln|x+7|+C$\\
+
+\item $\ds \int \tan^{-1} 5x~dx$\\
+Answer: $\ds x \tan^{-1} 5x -\frac{1}{10}\ln (1+25x^2) +C$\\
+
+\item $\ds \int\frac{e^{\tan x}}{\cos ^2 x}~dx$\\
+Answer: $\ds e^{\tan x} + C$\\
+
+\item $\ds \int \frac{1}{\sqrt{7+5x^2}}~dx$\\
+Answer: $\ds \frac{1}{\sqrt 5}\ln |\sqrt 5 x + \sqrt {7+5x^2}|+C$\\
+
+\item $\ds \int \cot^6 x~dx$\\
+Answer: $\ds -\frac{1}{5} \cot^5 x -\frac{1}{3} \cot^3 x - \cot x - x +C$\\
+
+\item $\ds \int x^3\sqrt{x^2-25}~dx$\\
+Answer: $\ds \frac{1}{5}(x^2-25)^{5/2} + \frac{25}{3}(x^2-25)^{3/2} +C$\\
+
+\item $\ds \int (x^2 - \sech^2 4x)~dx$\\
+Answer: $\ds \frac{1}{3} x^3 -\frac{1}{4} \tanh 4x +C$\\
+
+\item $\ds \int x^2 e^{-4x} ~dx$\\
+Answer: $\ds -\frac{1}{4} x^2 e^{-4x} -\frac{1}{8} xe^{-4x} -\frac{1}{32} e^{-4x}+C$\\
+
+\item $\ds \int \frac{3}{\sqrt{11-10x-x^2}}~dx$\\
+Answer: $\ds 3\sin^{-1} \bigl(\frac{x+5}{6}\bigr)+C$\\
+
+\item $\ds \int \frac{x^3-20x^2-63x-198}{x^4-1}~dx$\\
+Answer: $\ds  \ln \frac{(x+3)^2(x^2+9)^2}{|x-3|^5} +\frac{1}{3} \tan^{-1} \frac{x}{3}+C$\\
+
+\item $\ds \int \tan 7x \cos 7x~dx$\\
+Answer: $\ds -\frac{1}{7} \cos 7x +C$\\
+
+\item $\ds \int \tan^3 x \sec x~dx$\\
+Answer: $\ds \frac{1}{3}\sec^3 x  - \sec x +C$\\
+
+\item $\ds \int (x^3+1)\cos x~dx$\\
+Answer: $\ds x^3 \sin x + 3x^2 \cos x - 6x \sin x -6 \cos x + \sin x+C$\\
+
+\item $\ds \int \frac{\sqrt{9-4x^2}}{x^2}~dx$\\
+Answer: $\ds -2\sin^{-1} \bigl(\frac{2x}{3}\bigr) -\frac{1}{x}\sqrt{9-4x^2}+C$\\
+
+\item $\ds \int (x- \cot 3x)^2~dx$\\
+Answer: $\ds 24x -\frac{10}{3} \ln |\sin 3x| -\frac{1}{3}\cot 3x+C$\\
+
+\item $\ds \int \frac{1}{x(\sqrt{x}-\root 4 \of x)}~dx$\\
+Answer: $\ds -\ln x -\frac{4}{\root 4 \of x} +4\ln (1+\root 4 \of x)+C$\\
+
+\item $\ds \int \frac{\sin x}{\sqrt{1+\cos x}}~dx$\\
+Answer: $\ds-2\sqrt{1+\cos x} +C$\\
+
+\item $\ds \int \frac{x^2}{(25+x^2)^2}~dx$\\
+Answer: $\ds \frac{x}{2}(25+x^2) + \frac{1}{10}\tan^{-1}\bigl(\frac{x}{5}\bigr) +C$\\
+
+\item $\ds \int \frac{2x^3+4x^2+10x+13}{x^4+9x^2+20}~dx$\\
+Answer: $\ds \ln (x^2+4) - \frac{3}{2} \tan^{-1} \frac{x}{2}+\frac{7}{\sqrt 5} \tan^{-1} \frac{x}{\sqrt 5} +C$\\
+
+\item $\ds \int \frac{(x^2-2)^2}{x}~dx$\\
+Answer: $\ds \frac{1}{4}x^4 -2x^2 +4 \ln|x|+C$\\
+
+\item $\ds \int x^{3/2}\ln x~dx$\\
+Answer: $\ds \frac{2}{5}x^{5/2}\ln x -\frac{4}{25}x^{5/2}+C$\\
+
+\item $\ds \int \frac{x^2}{\root 3 \of{2x+3}}~dx$\\
+Answer: $\ds \frac{3}{64}(2x+3)^{8/3} -\frac{9}{20}(2x+3)^{5/3}+\frac{27}{16}(2x+3)^{2/3}+C$\\
+
+
+
+
+\end{enumerate}
+
+
+\end{document}
+

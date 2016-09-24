@@ -1,0 +1,149 @@
+\section{The Integral Test}\label{sec:int_tests}
+
+Knowing whether or not a series converges is very important, especially when we discuss Power Series in \autoref{sec:power_series}. \autoref{thm:geom_series} gives criteria for when Geometric series converge and \autoref{thm:series_nth_term} gives a quick test to determine if a series diverges. There are many important series whose convergence cannot be determined by these theorems, though, so we introduce a set of tests that allow us to handle a broad range of series. We start with the Integral Test.
+
+
+\subsection*{Integral Test}
+
+We stated in \autoref{sec:sequences} that a sequence $\{a_n\}$ is a function $a(n)$ whose domain is $\mathbb{N}$, the set of natural numbers. If we can extend $a(n)$ to have the domain of $\mathbb{R}$, the real numbers, and it is both positive and decreasing on $[1,\infty)$, then the convergence of $\ds \sum_{n=1}^\infty a_n$ is the same as $\ds\int_1^\infty a(x)\ dx$. 
+
+\theorem{thm:integral_test}{Integral Test}
+{Let a sequence $\{a_n\}$ be defined by $a_n=a(n)$, where $a(n)$ is continuous, positive and decreasing on $[1,\infty)$. Then $\ds \sum_{n=1}^\infty a_n$ converges, if, and only if, $\ds\int_1^\infty a(x)\ dx$ converges. In other words:
+\begin{enumerate}
+\item If $\ds \int_1^\infty a(x) ~dx$ is convergent, then $\ds \sum_{n=1}^\infty a_n$ is convergent.
+\item If $\ds \int_1^\infty a(x) ~dx$ is divergent, then $\ds \sum_{n=1}^\infty a_n$ is divergent.
+\end{enumerate}
+\index{series!Integral Test}\index{Integral Test}\index{convergence!Integral Test}\index{divergence!Integral Test}}
+\mnote{\textbf{Note:} \autoref{thm:integral_test} does not state that the integral and the summation have the same value.}
+
+Note that it is not necessary to start the series or the integral at $n=1$. We may use any interval $[n,\infty]$ on which $a(n)$ is continuous, positive and decreasing. Also the sequence $\{a_n\}$ does not have to be strictly decreasing. It must be \textit{ultimately decreasing} which means it is decreasing for all $n$ larger than some number $N$.\bigskip
+
+
+
+We can demonstrate the truth of the Integral Test with two simple graphs. In \autoref{fig:integral_test}(a), the height of each rectangle is $a(n)=a_n$ for $n=1,2,\ldots$, and clearly the rectangles enclose more area than the area under $y=a(x)$. Therefore we can conclude that
+\begin{equation}
+\int_1^\infty a(x)\ dx < \sum_{n=1}^\infty a_n.\label{eq:integral_testa}
+\end{equation}
+\mtable{Illustrating the truth of the Integral Test.}{fig:integral_test}{%
+\begin{tabular}{c}
+\myincludegraphics{figures/figintegral_test_a}\\
+(a)\\
+\myincludegraphics{figures/figintegral_test_b}\\
+(b)
+\end{tabular}} 
+In \autoref{fig:integral_test}(b), we draw rectangles under $y=a(x)$ with the Right-Hand rule, starting with $n=2$. This time, the area of the rectangles is less than the area under $y=a(x)$, so $\ds\sum_{n=2}^\infty a_n < \int_1^\infty a(x)\ dx$. Note how this summation starts with $n=2$; adding $a_1$ to both sides lets us rewrite the summation starting with $n=1$:
+\begin{equation}\sum_{n=1}^\infty a_n < a_1 +\int_1^\infty a(x)\ dx.\label{eq:integral_testb}
+\end{equation} 
+
+
+Combining Equations \eqref{eq:integral_testa} and \eqref{eq:integral_testb}, we have
+\begin{equation}\sum_{n=1}^\infty a_n< a_1 +\int_1^\infty a(x)\ dx < a_1 + \sum_{n=1}^\infty a_n.\label{eq:integral_testc}\end{equation}
+From Equation \eqref{eq:integral_testc} we can make the following two statements:
+\begin{enumerate}
+	\item If $\ds \sum_{n=1}^\infty a_n$ diverges, so does $\ds\int_1^\infty a(x)\ dx$ \quad (because $\ds \sum_{n=1}^\infty a_n < a_1 +\int_1^\infty a(x)\ dx$)
+	\item	If $\ds \sum_{n=1}^\infty a_n$ converges, so does $\ds\int_1^\infty a(x)\ dx$ \quad (because $\ds \ds \int_1^\infty a(x)\ dx < \sum_{n=1}^\infty a_n$.)
+\end{enumerate}
+Therefore the series and integral either both converge or both diverge. \autoref{thm:series_behavior} allows us to extend this theorem to series where $a(n)$ is positive and decreasing on $[b,\infty)$ for some $b>1$.
+
+\youtubeVideo{ObiRjUFHJHo}{Integral Test for Series: Why It Works}
+
+\example{ex_itest1}{Using the Integral Test}
+{Determine the convergence of $\ds\sum_{n=1}^\infty \frac{\ln n}{n^2}$.  (The terms of the sequence $\{a_n\} = \{\ln n/n^2\}$ and the n$^{\text{th}}$ partial sums are given in \autoref{fig:itest1}.)}
+{\autoref{fig:itest1}
+\mfigure{0in}{Plotting the sequence and series in \autoref{ex_itest1}.}{fig:itest1}{figures/figitest1} 
+implies that $a(n) = (\ln n)/n^2$ is positive and decreasing on $[2,\infty)$. We can determine this analytically, too. We know $a(n)$ is positive as both $\ln n$ and $n^2$ are positive on $[2,\infty)$. To determine that $a(n)$ is decreasing, consider $a'(n) = (1-2\ln n)/n^3$, which is negative for $n\geq 2$. Since $a'(n)$ is negative, $a(n)$ is decreasing.
+
+Applying the Integral Test, we test the convergence of $\ds \int_1^\infty \frac{\ln x}{x^2}\ dx$. Integrating this improper integral requires the use of Integration by Parts, with $u = \ln x$ and $dv = 1/x^2\ dx$. 
+\begin{align*}
+	\int_1^\infty \frac{\ln x}{x^2}\ dx
+	&= \lim_{t\to\infty} \int_1^t \frac{\ln x}{x^2}\ dx\\
+	&= \lim_{t\to\infty}\biggl( -\frac1x\ln x\Big|_1^t + \int_1^t\frac1{x^2}\ dx \biggr)%\\
+\end{align*}
+\begin{align*}
+	&= \lim_{t\to\infty} \biggl( -\frac1x\ln x -\frac 1x\Big|_1^t\biggr)\\
+	&= \lim_{t\to\infty}\biggl(1-\frac1t-\frac{\ln t}{t}\biggr).\quad \text{Apply L'H\^opital's Rule:}\\
+	&= 1-0- \lim_{t\to\infty} \frac1t\\
+	&=1
+\end{align*}
+Since $\ds \int_1^\infty \frac{\ln x}{x^2}\ dx$ converges, so does $\ds \sum_{n=1}^\infty \frac{\ln n}{n^2}$.}
+
+\clearpage
+
+\subsection*{$p$--Series}
+
+Another important type of series is the \emph{p-series}.
+
+\definition{def:pseries}{$p$--Series, General $p$--Series}
+{\begin{enumerate}
+\item	A \textbf{$p$--series} is a series of the form $$\sum_{n=1}^\infty \frac{1}{n^p}, \qquad \text{where $p>0$.}$$
+
+\item	A \textbf{general $p$--series} is a series of the form 
+\index{series!p@$p$-series}\index{p@$p$-series}
+$$\sum_{n=1}^\infty \frac{1}{(an+b)^p},$$
+where $p>0$, $a$ and $b$ are real numbers, and $an+b\neq 0$ for all $n$.
+\end{enumerate}}
+
+Like geometric series, one of the nice things about p--series is that they have easy to determine convergence properties.
+
+\theorem{thm:pseries}{Convergence of General $p$--Series}
+{Assume $a$ and $b$ are real numbers and  $an+b\neq 0$ for all $n$. \\ A general $p$--series $\ds\sum_{n=1}^\infty \frac{1}{(an+b)^p}$ will converge if and only if, $p>1$.
+\index{series!p@$p$-series}\index{p@$p$-series}
+\index{convergence!of p@of $p$-series}\index{divergence!of p@of $p$-series}
+}
+
+\begin{proof}
+Consider the integral $\ds\int_1^\infty \frac1{(ax+b)^p}\ dx$; assuming $p\neq 1$,
+\begin{align*}
+	\int_1^\infty \frac1{(ax+b)^p}\ dx
+	&= \lim_{t\to\infty} \int_1^t \frac1{(ax+b)^p}\ dx \\
+	&= \lim_{t\to\infty} \frac{1}{a(1-p)}(ax+b)^{1-p}\Big|_1^t\\
+	&= \lim_{t\to\infty} \frac{1}{a(1-p)}\big((at+b)^{1-p}-(a+b)^{1-p}\big).
+\end{align*}
+This limit converges if and only if, $p>1$. It is easy to show that the integral also diverges in the case of $p=1$. (This result is similar to the work preceding \autoref{idea:impint1}.)
+
+Therefore $\ds \sum_{n=1}^\infty \frac 1{(an+b)^p}$ converges if, and only if, $p>1$.
+\end{proof}
+
+\example{ex_series6}{Determining convergence of series}
+{Determine the convergence of the following series.\\
+
+\noindent\begin{minipage}[t]{.33\linewidth}
+\begin{enumerate}
+\item		$\ds\sum_{n=1}^\infty \frac{1}{n}$
+\item		$\ds\sum_{n=1}^\infty \frac{1}{n^2}$
+\end{enumerate}
+\end{minipage}%
+\begin{minipage}[t]{.33\linewidth}
+\begin{enumerate}\addtocounter{enumi}{2}
+\item		$\ds\sum_{n=1}^\infty \frac{1}{\sqrt{n}}$
+\item		$\ds\sum_{n=1}^\infty \frac{(-1)^n}{n}$
+\end{enumerate}
+\end{minipage}%
+\begin{minipage}[t]{.33\linewidth}
+\begin{enumerate}\addtocounter{enumi}{4}
+\item		$\ds\sum_{n=11}^\infty \frac{1}{(\frac12n-5)^3}$
+\item		$\ds\sum_{n=1}^\infty \frac{1}{2^n}$
+\end{enumerate}
+\end{minipage}
+}
+{\begin{enumerate}
+\item	This is a $p$--series with $p=1$. By \autoref{thm:pseries}, this series diverges.
+
+This series is a famous series, called the \emph{Harmonic Series}, so named because of its relationship to \emph{harmonics} in the study of music and sound. 
+
+\item	This is a $p$--series with $p=2$. By \autoref{thm:pseries}, it converges. Note that the theorem does not give a formula by which we can determine \emph{what} the series converges to; we just know it converges. A famous, unexpected result is that this series converges to $\ds{\pi^2}/{6}$.
+
+\item	This is a $p$--series with $p=1/2$; the theorem states that it diverges.
+
+\item	This is not a $p$--series; the definition does not allow for alternating signs. Therefore we cannot apply \autoref{thm:pseries}. We will consider this series again in \autoref{sec:alt_series}.
+(Another famous result states that this series, the \emph{Alternating Harmonic Series}, converges to $\ln 2$.)
+
+\item	This is a general $p$--series with $p=3$, therefore it converges.
+
+\item	This is not a $p$--series, but a geometric series with $r=1/2$. It converges.
+\eoehere
+\end{enumerate}}
+
+In the next section we consider two more convergence tests, both comparison tests. That is, we determine the convergence of one series by  comparing it to another series with known convergence. 
+
+\printexercises{exercises/08_03_exercises}

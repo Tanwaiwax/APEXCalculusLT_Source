@@ -1,0 +1,118 @@
+\documentclass[10pt]{article}
+
+
+\usepackage{ifthen}
+
+\usepackage{lipsum}
+\usepackage{pgfplots}
+
+\usepackage{eso-pic,calc}
+\usepackage[font=small]{caption}
+\usepgfplotslibrary{external}
+\usetikzlibrary{calc}
+\usetikzlibrary{shadings}
+\usepackage{tikz}
+\usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows, petri, topaths}
+\usepackage{tkz-berge}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage[h]{esvect}
+\usepackage[normalem]{ulem}
+\usepackage{enumerate}
+
+\pgfplotsset{compat=1.8}
+\usepackage{amssymb}
+
+\usepackage{amsmath}
+
+\newcommand{\ds}{\displaystyle}
+\newcommand{\fp}{\ensuremath{f\,'}}
+
+\begin{document}
+
+
+p 453 last sentence should read:
+	A series may or may not converge at these endpoints.
+
+
+p 457 in the notes about Theorem 75 3. shoudld read:
+
+	Differentiation and integration are simply calculated term-by-term using previous rules of integration and differentiation.
+
+Change Example 258 and its solution to read as follows:
+
+{Let $\ds f(x) = \sum_{n=0}^\infty x^n$. Find the following along with their repective intervals of convergence.
+\begin{center}
+1. $\fp(x)$ \quad and \quad 2. $\ds F(x) =\int f(x)\ dx$ \end{center}
+
+{We find the derivative and indefinite integral of $f(x)$, following Theorem \ref{thm:calc_power_series}.\\
+
+\begin{enumerate}
+\item \begin{align*}
+f(x)&=1+x+~x^2+~x^3+~x^4+\cdots = \sum_{n=0}^\infty x^n\\
+\fp(x) &= 0+1+2x+3x^2+4x^3+\cdots=\sum_{n=1}^\infty nx^{n-1} 
+\end{align*}
+
+In Example \ref{ex_ps1}, we recognized that $\ds \sum_{n=0}^\infty x^n$ is a geometric series in $x$. We know that such a geometric series converges when $|x|<1$; that is, the interval of convergence is $(-1,1)$.
+
+To determine the interval of convergence of $\fp(x)$, we consider the endpoints of $(-1,1)$.
+When $x=-1$ we have $$\fp(-1) = \sum_{n=1}^\infty n(-1)^{n-1}$$
+which diverges by the Test for Divergence
+and when $x=1$ we have
+$$\fp(1) = \sum_{n=1}^\infty n$$
+which also diverges by the Test for Divergence. Therefore, the interval of convergence of $\fp(x)$ is $(-1,1)$. 
+
+\item  \begin{align*}
+f(x)&=~~~~~~1+~x~+~x^2+~x^3+\cdots = \sum_{n=0}^\infty x^n\\
+F(x) = \int f(x)\ dx &= C+ x+\frac{x^2}{2}+\frac{x^3}3+\frac{x^4}4+\cdots= C+\sum_{n=0}^\infty \frac{x^{n+1}}{n+1}=C+\sum_{n=1}^\infty \frac{x^{n}}{n}  
+\end{align*}
+
+To find the interval of convergence of $F(x)$, we again consider the endpoints of $(-1,1)$.
+When $x=-1$ we have
+$$F(-1) = C+\sum_{n=1}^\infty \frac{(-1)^{n}}{n}$$
+The value of $C$ is irrelevant; notice that the rest of the series is an Alternating Series that whose terms converge to 0. By the Alternating Series Test, this series converges. (In fact, we can recognize that the terms of the series after $C$ are the opposite of the Alternating Harmonic Series. We can thus say that $F(-1) = C-\ln 2$.)
+$$F(1) = C+\sum_{n=1}^\infty \frac{1}{n} $$
+Notice that this summation is $C\ +$ the Harmonic Series, which diverges. Since $F$ converges for $x=-1$ and diverges for $x=1$, the interval of convergence of $F(x)$ is $[-1,1)$.
+\end{enumerate}
+
+\vskip-1.5\baselineskip
+}
+
+
+\vskip 1 in
+p 459 middle of page: Change paragraph the says Important: to read as follows:
+
+	In Example \ref{ex_alt1} of Section \ref{sec:alt_series} we said the Alernating Harmonic Series converges to $\ln 2$, but did not show why this was the case. The work above shows how we conclude that the Alternating Harmonic Series Converges to $\ln 2$. \\ \\
+
+
+p 461: Delete Example 260 and the sentence directly before it. \\ \\
+
+TIM:
+   The paragraph after example 260 will need to change. There is no section of representations of functions as power series. I could add a few examples here or do we want a whole section? What are your thoughts?   Michele wrote to Paul's online math notes guy to see if we can use some of his material in the book. This would be one place i would add his stuff.
+
+
+
+Add to exercises 9-24:
+
+$\ds \sum_{n=1}^\infty \frac{(3x-2)^n}{n3^n}$		Solution: (a) $R=\frac19$   (b) $IC=[\frac59,\frac79]$ \\
+
+$\ds \sum_{n=1}^\infty \frac{x^n}{5^nn^5}$		Solution:  (a) $R=5$   (b) $IC=[-5,5]$  \\
+
+$\ds \sum_{n=2}^\infty \frac{x^n}{(\ln n)^n}$		Solution:  (a) $R=\infty$  (b) $IC=(-\infty,\infty)$  \\
+
+$\ds \sum_{n=1}^\infty (-1)^n\frac{x^{2n+1}}{(2n+1)!}$		Solution: (a) $R=\infty$  (b) $IC=(-\infty,\infty)$ \\
+
+
+Delete Exercises 31-36 and replace with the following problem.  \\
+
+Suppose that $\ds \sum_{n=0}^\infty c_nx^n$ converges for $x=-3$ and diverges when $x=7$. What can you say about the convergence or divergence of the following series?
+\begin{enumerate}[a)]
+ \item  $\ds \sum_{n=0}^\infty c_n$	Solution: Converges
+\item  $\ds \sum_{n=0}^\infty c_n9^n$	Solution: Diverges
+\item  $\ds \sum_{n=0}^\infty c_n(-2)^n$	Solution: Converges
+\item  $\ds \sum_{n=0}^\infty (-1)^nc_n8^n$	Solution: Diverges
+\end{enumerate}
+
+\end{document} 

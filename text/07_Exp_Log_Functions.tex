@@ -1,0 +1,172 @@
+\section{Exponential and Logarithmic Functions}\label{sec:exp_log}
+
+In this section we will define general exponential and logarithmic functions and find their derivatives. 
+
+\subsection*{General exponential functions}
+
+Consider first the function $f(x)=2^x$. If $x$ is rational, then we know how to compute $2^x$. What do we mean by $2^\pi$ though? We compute this by first looking at $2^r$ for rational numbers $r$ that are very close to $\pi$, then finding a limit. In our case we might compute $2^3$, $2^{3.1}$, $2^{3.14}$, etc. We then define $2^\pi$ to be the limit of these numbers. Note that this is actually a different kind of limit than we have dealt with before since we only consider rational number close to $\pi$, not all real numbers close to $\pi$. We will see one way to make this more precise in \autoref{chapter:sequences_series}. Graphically, we can plot the values of $2^x$ for $x$ rational and get something like the dotted curve in \autoref{fig:two_to_x}. In order to define the remaining values, we are ``connecting the dots'' in a way that makes the function continuous.
+
+\begin{figure}[h]
+\begin{center}
+\begin{tikzpicture}
+\draw[<->,thick] (-4,0) -- (4,0) node[right] {$x$};
+\draw[<->,thick] (0,-1) -- (0,5) node[above] {$y$};
+\draw [domain=-3:2,color=blue,dashed] plot (\x, {2^(\x)});
+\end{tikzpicture}
+\caption{The function $2^x$ for rational values of $x$.}\label{fig:two_to_x}
+\end{center}
+\end{figure}
+
+It follows from continuity and the properties of limits that exponential functions will satisfy the familiar properties of exponents (see \autoref{sec:deriv_prereqs}).  This implies that
+\[\left(\frac12\right)^x =(2^{-1})^x=2^{-x},\]
+so the graph of $g(x)=(1/2)^x$ is the reflection of $f$ across the $y$-axis.
+
+\begin{center}
+\begin{tikzpicture}
+\draw[<->,thick] (-4,0) -- (4,0) node[right] {$x$};
+\draw[<->,thick] (0,-1) -- (0,5) node[above] {$y$};
+\draw [domain=-3:2,color=blue] plot (\x, {2^(\x)});
+\draw [domain=-2:3,color=red] plot (\x, {.5^(\x)});
+\end{tikzpicture}
+\end{center}
+
+We can go through the same process as above for any base $a>0$, though we are not usually interested in the constant function $1^x$. In addition to the standard properties of exponents, exponential functions satisfy the following:
+\begin{align*}
+ a^0 &= 1 \\
+ a^x &>0 \text{ for all $x$} \\
+ \lim_{x\to\infty}a^x &=\begin{cases}\infty&a>1\\0&a<1\end{cases}\\
+ \lim_{x\to-\infty}a^x &=\begin{cases}0&a>1\\\infty&a<1\end{cases}
+\end{align*}
+
+\subsection*{Derivatives of exponential functions}
+
+Suppose $f(x)=a^x$ for some $a>0$, then we can use the rules of exponents to find the derivative of $f$:
+\begin{align*}
+	\fp(x)
+	&=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}\\
+	&=\lim_{h\to 0}\frac{a^{x+h}-a^x}{h}\\
+	&=\lim_{h\to 0}\frac{a^xa^h-a^x}{h}\\
+	&=\lim_{h\to 0}\frac{a^x(a^h-1)}{h}\\
+	&=a^x\lim_{h\to 0}\frac{a^h-1}{h} \qquad\text{(since $a^x$ does not depend on $h$)}\\
+\end{align*}
+So we know that $\fp(x)=\ds a^x \lim_{h\to 0}\frac{a^h-1}{h}$, but can we say anything about that remaining limit? First we note that
+\[\fp(0)=\lim_{h\to 0}\frac  {a^{0+h}-a^0}{h}=\lim_{h\to 0}\frac{a^h-1}{h},\]
+so we have $\fp(x)=a^x\fp(0)$. The actual value of the limit $\ds\lim_{h\to 0}\frac{a^h-1}{h}$ depends on the base $a$, but it can be proved that it does exist. We will figure out just what this limit is later, but for now we note that the easiest differentiation formulas come from using a base $a$ that makes $\ds\lim_{h\to 0}\frac{a^h-1}{h}=1$. This base is the number $e\approx 2.71828$ and the exponential function $e^x$ is called the natural exponential function. This leads to the following result.
+
+\theorem{thm_baby_exp_deriv}{Derivative of Exponential Functions}{For any base $a>0$, the exponential function $f(x)=a^x$ has derivative $\fp(x)=a^x\fp(0)$. The natural exponential function $g(x)=e^x$ has derivative $g\primeskip'(x)=e^x$.}
+
+\youtubeVideo{U3PyUcEd7IU}{Derivatives of Exponential Functions}
+
+\example{ex_exp_derivs}{Finding Exponential Derivatives}{Find derivatives of the following functions.
+\[\text{1. }f(x)=e^{x^2}\qquad\text{2. }g(t)=t e^t\]}
+{\begin{enumerate}
+\item We note that this is a composition of functions where the \emph{inside} function is $x^2$. Hence we can apply the Chain Rule to see that: \[\fp(x)=\left(e^{x^2}\right) (2x)\]
+\item In this case we apply the Product Rule for derivatives to find: \[g\primeskip'(t)=e^t+te^t=e^t(t+1).\eoehere\]
+\end{enumerate}}
+
+\subsection*{General logarithmic functions}
+
+Let us consider the function $f(x)=a^x$ where $a\neq1$. We know that $\fp(x)=\fp(0)a^x$, where $\fp(0)$ is a constant that depends on the base $a$. Since $a^x>0$ for all $x$, this implies that $\fp(x)$ is either always positive or always negative, depending on the sign of $\fp(0)$. This in turn implies that $f$ is strictly monotonic, so $f$ is one-to-one. We can now say that $f$ has an inverse. We call this inverse the logarithm with base $a$, denoted $f^{-1}(x)=\log_ax$. When $a=e$, this is the natural logarithm function $\ln x$. So we can say that $y=\log_a x$ if and only if $a^y=x$. Since the range of the exponential function is the set of positive real numbers, the domain of the logarithm function is also the set of positive real numbers. Reflecting the graph of $y=a^x$ across the line $y=x$ we find that (for $a>1$) the graph of the logarithm looks like:
+
+\begin{center}
+\begin{tikzpicture}
+\draw[<->,thick] (-2.3,0) -- (4,0) node[right] {$x$};
+\draw[<->,thick] (0,-3) -- (0,3) node[above] {$y$};
+\draw [domain=-2:1.3,color=blue] plot (\x, {exp(\x)});
+\draw [dashed] (-2,-2) -- (3,3);
+\draw [domain=0.1:3.5,color=red] plot (\x, {ln(\x)});
+\end{tikzpicture}
+\end{center}
+
+Using the inverse of the natural exponential function, we can determine what the value of $\fp(0)$ is in the statement of the previous theorem. To do so, we note that $a=e^{\ln a}$ since the exponential and logarithm functions are inverses. Hence we can write:
+\[a^x=\left(e^{\ln a}\right)^x=e^{x\ln a}\]
+Now since $\ln a$ is a constant, we can use the Chain Rule to see that:
+\[\frac d{dx} a^x=\frac d{dx} e^{x\ln a} =e^{x\ln a}(\ln a) =a^x\ln a\]
+Comparing this to our previous result, we can restate our theorem:
+
+\theorem{thm_exp_deriv}{Derivative of Exponential Functions}{For any base $a>0$, the exponential function $f(x)=a^x$ has derivative $\fp(x)=a^x\ln a$. The natural exponential function $g(x)=e^x$ has derivative $g\primeskip'(x)=e^x$.}
+
+\subsection*{Change of base}
+
+In the previous computation, we found it convenient to rewrite the general exponential function in terms of the natural exponential function. A related formula allows us to rewrite the general logarithmic function in terms of the natural logarithm.  To see how this works, suppose that $y=\log_ax$, then we have:
+\begin{align*}
+a^y&=x \\
+\ln(a^y)&=\ln x\\
+y\ln a&=\ln x\\
+y&=\frac{\ln x}{\ln a}\\
+\log_a x&=\frac{\ln x}{\ln a}
+\end{align*}
+This change of base formula allows us to use facts about the natural logarithm to derive facts about the general logarithm.
+
+\subsection*{Derivatives of logarithmic function}
+
+Since the natural logarithm function is the inverse of the natural exponential function, we can use the formula from the preceeding section to find the derivative of $y=\ln x$. We know that $\frac d{dx}e^x=e^x$, so we get:
+\[\frac{d}{dx}\ln x=\frac 1{e^y}=\frac 1{e^{\ln x}}=\frac1x.\]
+Now we can apply the change of base formula to find the derivative of a general logarithmic function:
+\[\frac{d}{dx}\log_ax=\frac{d}{dx}\left(\frac{\ln x}{\ln a}\right) =\frac 1{\ln a}\left(\frac{d}{dx}\ln x\right)=\frac 1{x\ln a}.\]
+
+\example{ex_find_d_exp_log}{Finding Derivatives of Logs and Exponentials}{Find derivatives of the following functions.
+\[\text{1. }f(x)=x3^{4x-7}\qquad\text{2. }g(x)=e^{x^3}\ln x\qquad\text{3. }h(x)=\frac x{\log_5x}\]}
+{\begin{enumerate}
+\item We apply both the Product and Chain Rules:
+\[\fp(x)=3^{4x-7}+x\left(3^{4x-7}\ln 3\right)(4)=(1+4x\ln 3)3^{4x-7}\]
+\item Once again apply both the Product and Chain Rules:
+\[g\primeskip'(x)=e^{x^3}(3x^2)\ln x+e^{x^3}(1/x)=(3x^2\ln x+1/x)e^{x^3}\]
+\item Applying the Quotient Rule:
+\[h\primeskip'(x)=\frac{\log_5x-x\left(\frac1{x\ln 5}\right)}{(\log_5x)^2}=\frac{(\log_5x)(\ln 5)-1}{(\log_5x)^2\ln 5}\eoehere\]
+\end{enumerate}}
+
+\example{ex_d_ln_abs_x}{The Derivative of the Natural Log}{Find the derivative of the function $y=\ln\abs x$.}{We can rewrite our function as
+\[y=\begin{cases} \ln x & \text{if $x>0$}\\ \ln(-x) & \text{if $x<0$}\\ \end{cases}\]
+Applying the Chain Rule, we see that $\frac{dy}{dx}=\frac 1x$ for $x>0$, and $\frac{dy}{dx}=\frac{-1}{-x}=\frac 1x$ for $x<0$. Hence we have
+\[\frac{d}{dx}\ln\abs x=\frac 1x \quad\text{ for $x\neq0$.}\eoehere\]}
+
+\subsection*{Antiderivatives}
+
+Using the previous differentiation formulas, we arrive at the following antidifferentiation formulas:
+
+\theorem{thm_int_exp_log}{Antidifferentating Exponentials and Logarithms}{Given a base $a>0$ and $a\neq 1$, the following hold:
+\begin{itemize}
+\item $\ds\int e^x\,dx=e^x+C$
+\item $\ds\int a^x\,dx=\frac{a^x}{\ln a}+C$
+\item $\ds\int \frac{dx}{x}=\ln\abs x+C$
+\end{itemize}}
+
+\example{ex_exp_log_anti}{Finding Antiderivatives}{Find the following antiderivatives.
+\[
+ \text{1. }\int 3^x\,dx\qquad
+ \text{2. }\int x^2 e^{x^3}\,dx\qquad
+ \text{3. }\int \frac{x\,dx}{x^2+1}
+\]}
+{\begin{enumerate}
+\item Applying our theorem, \[\int 3^x\, dx=\frac{3^x}{\ln 3}+C\]
+\item We use the substitution $u=x^3$, $du=3x^2\,dx$:
+\begin{align*}
+\int x^2e^{x^3}\,dx &=\frac13 \int e^u\,du\\
+&=\frac 13 e^u+C\\
+&=\frac 13 e^{x^3}+C\\
+\end{align*}
+\item Using the substitution $u=x^2+1$, $du=2x\,dx$:
+\begin{align*}
+\int \frac{x\,dx}{x^2+1}&=\frac 12 \int \frac{du}{u}\\
+&=\frac 12 \ln\abs u+C\\
+&=\frac 12 \ln\abs{x^2+1}+C\\
+&=\frac 12 \ln(x^2+1)+C\eoehere
+\end{align*}
+\end{enumerate}}
+
+Note that we do not yet have an antiderivative for the function $f(x)=\ln x$. We remedy this in \autoref{sec:IBP} with \autoref{ex_ibp5}.
+%with the following example.
+%
+%\paragraph{Example.} Compute $\int \ln x\,dx$.
+%
+%\paragraph{Solution.} While this does not look like a product of functions, we find integration by parts useful. In particular we use $u=\ln x$, $du=dx/x$, $dv=dx$, and $v=x$:
+%\begin{equation*}
+%\begin{split}
+%\int \ln x\,dx &=x\ln x-\int (x)\left(\frac{dx}x\right)\\
+%&=x\ln x-\int dx\\
+%&=x\ln x-x+C\\
+%\end{split}
+%\end{equation*}
+
+\inputexercises{exercises/07_exp_log_exercises}

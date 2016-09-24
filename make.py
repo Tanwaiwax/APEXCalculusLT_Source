@@ -39,9 +39,6 @@ parser.add_argument("-x","--xml", action="store_true",
 parser.add_argument("-w","--web", action="store_true",
                     help="Convert xml version to html. (40 min)");
 
-parser.add_argument("-t","--toc", action="store_true",
-                    help="Create tocFrame.html.")
-
 parser.add_argument("-q","--quit", action="store_true",
                     help="Write options.tex and quit.")
 
@@ -63,10 +60,10 @@ if len(sys.argv)==1:
 
 args = parser.parse_args()
 
-def printTime():
+def getTime():
     end = time.time()
     seconds = int(end-start)
-    print("Time taken:",(seconds//60),"min",(seconds%60),"sec")
+    return (seconds//60,seconds%60)
 
 def compilewith(commands=False):
     if commands:
@@ -84,9 +81,9 @@ def compilewith(commands=False):
             title += " "+iii
             newsuffix += "_"+iii
         options.write(r"\newcommand{\thetitle}{"+title+"}\n")
-        if args.instructor or args.programmer:
+        if args.programmer:
             options.write("\\printallanswers\n")
-            newsuffix += "_instr"
+            newsuffix += "_prg"
         if args.programmer:
             options.write("\\printexercisenames\n")
         if args.blackwhite:
@@ -104,8 +101,8 @@ def compilewith(commands=False):
     commandline = []
     if args.quit:
         return
-    if args.xml or args.web or args.toc:
-        compilewith("-qsc1")
+    if args.xml or args.web:
+        compilewith("-qsc0")
     if args.xml:
         newsuffix = "_xml"
         commandline = ['latexml',#'--verbose','--verbose',#'--quiet',#
@@ -125,33 +122,14 @@ def compilewith(commands=False):
                        '--javascript=https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js',
                        '--javascript=LaTeXML-maybeMathJax.js',
                        '--javascript=script.js',
-#                       '--javascript=https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_HTMLorMML',
                        'calculus.xml']
-    elif args.toc:
-        tocFile = None
-        prevLine = None
-        with open('logs/compilation_web.log') as weblog:
-            for line in weblog:
-                if "TOC is in file named above" in line:
-                    tocFile = 'web/'+prevLine.split()[-1]
-                    break
-                prevLine = line
-        if not tocFile:
-            print("tocFile not found")
-            return
-        with open(tocFile) as tocFile, open('web/tocFrame.html','w') as tocFrame:
-            for line in tocFile:
-                if '<body class="hasIframe">' in line:
-                    tocFrame.write('<body class="inIframe">\n');
-                elif 'iframe' not in line:
-                    tocFrame.write(line)
-        print("Command line: -t finished");
-        return
     elif args.internet:
         compilewith("-x")
         compilewith("-w")
-        compilewith("-t")
         return
+    elif args.instructor:
+        commandline = ['latexmk','-xelatex','Answers']
+        newsuffix = "_answers"
     else:
         commandline = ['latexmk','-xelatex','Calculus']
     with open('logs/compilation'+newsuffix+'.log','w') as mystdout:
@@ -161,12 +139,12 @@ def compilewith(commands=False):
         except:
             print("Failing command:",commands);
             raise
+    time = "{0[0]:02d}:{0[1]:02d}".format(getTime())
     if commands:
-        print("Command line:",commands,"finished.")
+        print("Command line:",commands,"finished at",time)
     else:
-        print("Command line finished.")
-    printTime()
-    if not args.xml and not args.web:
+        print("Command line finished at",time)
+    if not args.xml and not args.web and not args.instructor:
         os.rename("Calculus.pdf","ApexPDFs/Calculus"+newsuffix+".pdf")
 
 if args.all:
@@ -174,6 +152,6 @@ if args.all:
         # switch the order so that all parts are compiled together to speed
         # up compilation, since the index shouldn't need to be recommputed
         compilewith('-'+size+'c'+part)
-    compilewith('-ic0')
+    compilewith('-i')
 else:
     compilewith()

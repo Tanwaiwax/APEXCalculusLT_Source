@@ -1,0 +1,190 @@
+\documentclass[10pt]{article}
+
+
+\usepackage{ifthen}
+
+\usepackage{lipsum}
+\usepackage{pgfplots}
+
+\usepackage{eso-pic,calc}
+\usepackage[font=small]{caption}
+\usepgfplotslibrary{external}
+\usetikzlibrary{calc}
+\usetikzlibrary{shadings}
+\usepackage{tikz}
+\usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows, petri, topaths}
+\usepackage{tkz-berge}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage[h]{esvect}
+\usepackage[normalem]{ulem}
+
+\pgfplotsset{compat=1.8}
+\usepackage{amssymb}
+
+\usepackage{amsmath}
+
+\newcommand{\ds}{\displaystyle}
+
+
+\begin{document}
+
+
+p. 411    Under the given sums, replace In general, we can show that with \\ \\
+
+Later we will be able to show that    \\ \\
+
+In the solution to Example 37 add an $S_n$  to the following part:\\ \\
+
+$\ds S_n=\frac{n(n+1)(2n+1)}{6}$ \\ \\
+
+Definition 32 Geometric Series should be changed to read as follows:\\ \\ 
+
+A \textbf{geometric series} is a series of the form $$\ds \sum_{n=0}^\infty ar^n=a+ar+ar^2+ar^3+\cdots+ar^n+...$$
+Note that index above starts at $n=0$, if the index starts at $n=1$ we have $\ds \sum_{n=1}^\infty ar^{n-1}$. \\ \\
+
+Change Theorem 60 to read as follows:
+
+Consider the geometric series $\ds \sum_{n=0}^\infty ar^n$.
+\begin{enumerate}
+\item		The $n^\text{th}$ partial sum is: $\ds S_n = \frac{a(1-r)^{n+1}}{1-r}$.
+\item		The series converges if, and only if, $|r| < 1$. When $|r|<1$, 
+\index{series!geometric}\index{geometric series}\index{convergence!of geometric series}\index{divergence!of geometric series}
+$$\sum_{n=0}^\infty r^n = \frac{a}{1-r}.$$
+\end{enumerate}
+
+Add the following proof of Theorem 60.
+
+Proof:  If $r=1$, then $S_n=a+a+a+\cdots+a=na$. Since $\lim_{n\to \infty} S_n=\pm \infty$, the geometric series diverges.\\
+If $r\neq 1$, we have $$S_n=a+ar+ar^2+\cdots +ar^{n-1}$$. Multiply each term by $r$ and we have 
+$$rS_n=ar+ar^2+ar^3\cdots +ar^n$$.  Subtract these two equations and solve for $S_n$.
+\begin{align*}
+S_n-rS_n &=a-ar^n \\
+S_n &=\frac{a(1-r^n)}{1-r}\\
+\end{align*}
+From Theorem {(New Theorem that I added to Section 8.1)} we know that if $-1<r<1$, then $\ds \lim_{n\to \infty} r^n=0$ so
+$$\lim_{n\to \infty} S_n=\lim_{n\to \infty}=\frac{a(1-r^n)}{1-r}=\frac{a}{1-r}- \frac{a}{1-r}\lim_{n\to \infty}r^n=\frac{a}{1-r}.$$ So when $|r|<1$ the geometric series converges and its sum is $\ds \frac{a}{1-r}$. \\
+
+If either $r\leq -1$ or $r>1$, the sequence $\{r^n\}$ is divergent by Theorem {(New Theorem I added to Section 8.1)}. Thus $\ds \lim_{n\to \infty} S_n$ does not exist, so the geometric series diverges if $r\leq -1$ or $r>1$.  \\ \\
+
+Change the caption of Figure 8.8 to read:      Scatter plots relating to the series in Example 238 part 1.
+
+Change the caption of Figure 8.9 to read:     Scatter plots relating the series in Example 238 part 2 and 3.
+
+
+Move the material from p-series through the end of example 239 to section 8.3    %%%% (Haven't determined yet where!)
+ 	Delet the note on page 415.
+
+
+In the solution to Example 240:  First sentence after the list of partial sums change to: \\ \\
+
+		Note how most of the terms in each partial sum are subtracted out.
+
+
+The solution to example 241 part 2 should read as follows: \\ \\
+
+We begin by writing the first few partial sums of the series:
+
+\begin{align*}
+S_1 &= \ln\left(2\right) \\
+S_2 &= \ln\left(2\right)+\ln\left(\frac32\right) \\
+S_3 &= \ln\left(2\right)+\ln\left(\frac32\right)+\ln\left(\frac43\right) \\
+S_4 &= \ln\left(2\right)+\ln\left(\frac32\right)+\ln\left(\frac43\right)+\ln\left(\frac54\right) 
+\end{align*}
+At first, this does not seem helpful, but recall the logarithmic identity: $\ln x+\ln y = \ln (xy).$ Applying this to $S_4$ gives:
+$$S_4 = \ln\left(2\right)+\ln\left(\frac32\right)+\ln\left(\frac43\right)+\ln\left(\frac54\right) = \ln\left(\frac21\cdot\frac32\cdot\frac43\cdot\frac54\right) = \ln\left(5\right).$$
+We must generalize this for $S_n$.
+$$S_n=\ln\left(2\right)+\ln\left(\frac32\right)+\cdots +\ln \left(\frac{n+1}{n}\right)=\ln\left(\frac21\cdot\frac32 \cdots  \frac{n}{n-1}\cdot \frac{n+1}{n}\right)=\ln ( n+1)$$
+
+We can conclude that $\{S_n\} = \big\{\ln (n+1)\big\}$. This sequence  does not converge, as $\ds \lim_{n\to\infty}S_n=\infty$. Therefore  $\ds\sum_{n=1}^\infty  \ln\left(\frac{n+1}{n}\right)=\infty$; the series diverges. Note in Figure \ref{fig:series4}(b) how the sequence of partial sums grows slowly; after 100 terms, it is not yet over 5. Graphically we may be fooled into thinking the series converges, but our analysis above shows that it does not.     \\ \\
+%\mfigure{.35}{Scatter plots relating to the series of Example \ref{ex_series4} part 2.}{fig:series4b}{figures/figseries4b} 
+
+
+Delete Key Idea 31 and the sentence before it and example 242. Replace it with the following:\\ \\
+
+Before using this theorem, we will consider the harmonic series $\ds \sum_{n\to \infty} \frac{1}{n}$.
+
+Example:  Show that the harmonic series $\ds \sum_{n\to \infty} \frac{1}{n}$ diverges.
+
+Solution:   We will use a proof by contradiction here. Suppose the harmonic series converges to $S$. That is $$S=1+\frac12+ \frac13 +\frac14+\frac15+\frac16+\frac17+\frac18+\cdots$$
+We then have
+\begin{align*}
+S &\geq 1+\frac12+\frac14+\frac14+\frac16+\frac16+\frac18+\frac18+\cdots\\
+&=1+\frac12+~~~\frac12~~~ +~~~\frac13~~~+~~~\frac14~~~+\cdots\\
+&=\frac12+S
+\end{align*}
+This gives us $S\geq \frac12+S$ which can never be true, thus our assumption that the harmonic series converges must be false. Therefore, the harmonic series diverges.   \\ \\
+
+Delete Theorem 63 and replace with the following 2 theorems and proofs. \\ \\ 
+
+Theorem:  If the series $\ds \sum_{n\to\infty}a_n$ converges, then $\lim_{n\to\infty}a_n=0$.
+
+Proof:  Let $S_n=a_1+a_2+\cdots+a_n$. We have 
+\begin{align*}
+S_n&=a_1+a_2+\cdots+a_{n-1}+a_n\\
+S_n&=S_{n-1}+a_n\\
+a_n&=S_n-S_{n-1}
+\end{align*}
+Since  $\ds \sum_{n\to\infty}a_n$ converges, the sequence $\{ S_n\}$ converges.  Let $\ds \lim_{n\to\infty} S_n=S$. As $n\to \infty$ $n-1$ also goes to $\infty$, so $\ds \lim_{n\to\infty} S_{n-1}=S$. We now have
+\begin{align*}
+\lim_{n\to\infty} a_n&= \lim_{n\to\infty}(S_n-S_{n-1})\\
+&= \lim_{n\to\infty}S_n - \lim_{n\to\infty} S_{n-1}\\
+&=S-S=0
+\end{align*}
+
+
+Theorem titled:  Test for Divergence
+
+		If $ \ds \lim_{n\to\infty} a_n$ does not exist or $\ds  \lim_{n\to\infty}a_n\neq0$, then the series $\ds \sum_{n=1}^\infty a_n$ diverges.
+
+The Test for Divergence follows from Theorem {(WHatever the previous theorem is named)}. If the series does not diverge, it must converge and therefore $\ds  \lim_{n\to\infty}a_n=0$.  \\ \\
+
+Change text after Theorem to read: \\ \\
+
+Note that the two statements in Theorem \ref{thm:series_nth_term}% Change theorem ref to what above thrm is
+ and Theorem \ref{thm:something} %this is test for divergence from above
+are really the same. In order to converge, the limit of the terms of the sequence must approach 0; if they do not, the series will not converge. 
+
+Looking back, we can apply this theorem to the series in Example \ref{ex_series1}. In that example, we had $\{a_n\} = \{n^2\}$ and $\{b_n\} = \{(-1)^{n+1}\}$. $$ \lim_{n\to\infty} a_n=\lim_{n\to\infty} n^2=\infty$$ and  $$\lim_{n\to\infty} b_n=\lim_{n\to\infty}(-1)^{n+1}~\text{which does not exist.}$$ Thus by the Test for Divergence, both series will diverge.
+
+\textbf{Important} This theorem \emph{does not state} that if $\ds \lim_{n\to\infty} a_n = 0$ then $\ds \sum_{n=1}^\infty  a_n $ converges. The standard example of this is the Harmonic Series, as given in Example \ref{WHATEVER we call this example above}. The Harmonic Sequence, $\{1/n\}$, converges to 0; the Harmonic Series, $\ds \sum_{n=1}^\infty 1/n$, diverges. \\ \\
+
+
+The last two paragraphs on p 423 should read:\\ \\
+
+The equations below illustrate this. The first line shows the infinite sum of the Harmonic Series split into the sum of the first 10 million terms plus the sum of ``everything else.'' The next equation shows us subtracting these first 10 million terms from both sides. 
+\begin{align*}
+ \parbox{50pt}{\centering$\ds\sum_{n=1}^\infty \frac1n$} &= \parbox{50pt}{\centering$\ds\sum_{n=1}^{10,000,000}\frac1n$}\quad + \parbox{50pt}{\centering$\ds\sum_{n=10,000,001}^\infty \frac1n$} \rule[-20pt]{0pt}{1pt} \\
+ \parbox{50pt}{\centering$\ds\sum_{n=1}^\infty \frac1n$} - \parbox{50pt}{\centering$\ds\sum_{n=1}^{10,000,000}\frac1n$}&= \parbox{50pt}{\centering$\ds\sum_{n=10,000,001}^\infty \frac1n$} \rule[-20pt]{0pt}{1pt}\\
+\parbox{50pt}{\centering	very large number} - \parbox{50pt}{\centering $16.7$} &=  \parbox{50pt}{\centering very large number}
+\end{align*}													
+
+This section introduced us to series and defined a few special types of series whose convergence properties are well known. We know when a geometric series converges or diverges. Most series that we encounter are not one of these types, but we are still interested in knowing whether or not they converge. The next three sections introduce tests that help us determine whether or not a given series converges. 
+
+
+EXERCISES: \\ \\
+Combine problems 14-19 into 20-29. Not as one block as they all should use the test for divergence. the instructions should read: state wheter the given series converges or diverges and provide justification for your conclusion. \\ \\
+
+	Add to 20-29: $\ds \sum_{n=1}^\infty \root n \of 3$			Solution: Diverges by Test for Divergence  \\ \\
+
+Add to 30-34   $\ds \sum_{n=1}^\infty \biggl(\frac{2}{n(n+2)} +\frac{5}{4^n}\biggr)$  \\
+				Solution: part a) $S_n=1+\frac12-\frac{1}{n+1}-\frac{1}{n+2}+\frac{\frac54(1-(\frac14)^n)}{1-\frac14}$  \\
+					    part b) Converges to $\frac{19}{6}$  \\ \\
+
+Delete 45 and replace with the following group of problems.
+
+Instructions:  Find the values of $x$ for which the series converges.
+
+$\ds \sum_{n=1}^\infty \frac{x^n}{3^n}$			Solution: $(-3,3)$
+
+$\ds \sum_{n=1}^\infty \frac{(x+3)^n}{2^n}$		Solution: $(-5,-1)$
+
+$\ds \sum_{n=1}^\infty \frac{4^n}{x^n}$			Solution: $(-\infty,-4)\cup (4,\infty)$
+
+$\ds \sum_{n=1}^\infty (x+2)^n$				Solution: $(-3,-1)$
+
+
+
+\end{document}

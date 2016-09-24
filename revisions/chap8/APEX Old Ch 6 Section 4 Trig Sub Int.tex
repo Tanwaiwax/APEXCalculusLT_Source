@@ -1,0 +1,130 @@
+\documentclass[11pt]{report}
+\usepackage[letterpaper, total={6.5in, 10in}]{geometry}
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+\usepackage{amsmath, amsthm, mathpazo, epic, eepic, color, array}
+\usepackage{amssymb}
+%\usepackage{graphicx}
+\usepackage{cancel}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\pgfplotsset{compat=1.13}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+\usepackage{hyperref}
+\usepackage[normalem]{ulem}
+
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows, petri, topaths}
+\usepackage{tkz-berge}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+
+\newboolean{colorprint}
+\setboolean{colorprint}{true}
+%\setboolean{colorprint}{false}
+
+\ifthenelse{\boolean{colorprint}}{%
+\newcommand{\colorone}{blue}
+\newcommand{\colortwo}{red}
+\newcommand{\coloronefill}{blue!15!white}
+\newcommand{\colortwofill}{red!15!white}
+\newcommand{\colormapone}{rgb=(.4,.4,1); rgb=(.8,.8,1)}
+\newcommand{\colormaptwo}{rgb=(1,.4,.4); rgb=(1,.8,.8)}
+\newcommand{\colormapplaneone}{rgb=(.7,.7,1); rgb=(.9,.9,1)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,1}
+\definecolor{colormaponetop}{rgb}{.8,.8,1}
+\definecolor{colormaptwobottom}{rgb}{1,.4,.4}
+\definecolor{colormaptwotop}{rgb}{1,.8,.8}
+}% ends color
+{% not color
+\newcommand{\colorone}{black}
+\newcommand{\colortwo}{black!50!white}
+\newcommand{\coloronefill}{black!15!white}
+\newcommand{\colortwofill}{black!05!white}
+\newcommand{\colormapone}{rgb=(.4,.4,.4); rgb=(.7,.7,.7)}
+\newcommand{\colormaptwo}{rgb=(.6,.6,.6); rgb=(.9,.9,.9)}
+\newcommand{\colormapplaneone}{rgb=(.8,.8,.8); rgb=(.95,.95,.95)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,.4}
+\definecolor{colormaponetop}{rgb}{.7,.7,.7}
+\definecolor{colormaptwobottom}{rgb}{.6,.6,.6}
+\definecolor{colormaptwotop}{rgb}{.9,.9,.9}
+}%
+
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+\pgfplotsset{my style/.append style={axis x line=middle, axis y line=
+middle, xlabel={$x$}, ylabel={$y$}, axis equal }}
+
+\pgfplotsset{compat=1.13}
+\newcommand{\ds}{\displaystyle}
+\begin{document}
+
+
+\textbf{OLD 6.4 Trigonometric Integrals}\\
+\vskip .25 truecm
+
+All page numbers are from the original APEX text. If that's not helpful let me know how to better reference the location of the changes to be made.\\ \\
+
+\textbf{p. 296}\\
+Example 174, 2nd paragraph of solution: "... We also \sout{wish to} change our bound of integration..."\\
+
+Last line: replace "power-reducing" with "half-angle"\\ \\
+
+\textbf{p. 297}\\
+Key Idea 13 box - my notes say that this needs to be reorganized to minimize memorization. Here are my thoughts on how to do that:\\
+(a) delete "$dx = a\cos \theta~d\theta$. Thus $\theta = \sin^{-1} (x/a)$," \& move the triangle to the margin by example 177, and replace $a$ with $2$, as it is in the example.\\ \\
+(b)  delete "$dx = a\sec^2 \theta~d\theta$. Thus $\theta = \tan^{-1} (x/a)$," \& move the triangle to the margin by example 175, and replace $a$ with $\sqrt 5$, as it is in the example.\\ \\
+ delete "$dx = a\sec \theta \tan \theta ~d\theta$. Thus $\theta = \sec^{-1} (x/a)$," \& move the triangle to the margin by example 176, and replace $a$ with $1/2$, as it is in the example.\\ \\
+
+\textbf{p. 298}\\
+Example 175 replace the 2nd reference to "Key Idea 13(b)" with a reference to the figure number of the triangle moved to the margin.\\ \\
+
+\textbf{p. 300}\\
+Example 176 replace the reference to "Key Idea 13(c)" with a reference to the figure number of the triangle moved to the margin.\\ \\
+
+Example 176, first equation on page 300 rewrite equation: $\displaystyle \tan \theta = \frac{\sqrt{x^2 - \frac{1}{4}}}{\frac{1}{2}} = 2\sqrt{x^2 - \frac{1}{4}}$...\\ What do you think about changing all $1/4$ to $\frac{1}{4}$? Do what looks best.\\ \\
+
+Still in Example 176 add another form of final answer: $$=\frac{1}{4}\biggl(2x \sqrt{4x^2 -1} - \ln \bigl|2x + 2x \sqrt{4x^2 -1}\bigr|\biggr)+C$$
+
+\textbf{p. 300}\\
+Example 177 replace the 2nd reference to "Key Idea 13(a)" with a reference to the figure number of the triangle moved to the margin.\\ \\
+
+\textbf{p. 302}\\
+First line: replace "power reducing" with "half-angle".\\ \\
+Insert a margin note next to the paragraph, "We need to return to the variable x..."\\
+\textbf{Note:} Remember the sine and cosine double angle identities. \\ 
+\begin{flalign}
+\sin (2\theta) &= 2\sin \theta \cos \theta \cr
+\text{and} \cr
+\cos (2\theta) &= \cos^2 \theta - \sin^2 \theta \cr 
+&= 2\cos^2 \theta - 1 \cr
+&= 1 - 2\sin^2 \theta.
+\end{flalign} 
+They are often needed for writing your final answer in terms of $x$.\\ \\
+
+\textbf{p. 303}
+Delete Key Idea 14 and it's introductory sentence about "The following equalities..."\\ \\
+Example 180 in first paragraph of solution "Using Key Idea 13(b)...As we substitute, we \sout{can also}..." \\ \\
+
+
+
+\textbf{p. 304,Exercises:}\\
+
+Delete \#s 6, 7, 8, 10, 18 \& 20\\ \\
+
+Delete the "Note" from Exercises 27-32
+
+
+\end{document}
+

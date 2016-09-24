@@ -363,6 +363,8 @@
 
 
 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Begins the exercise section, containing all commands
 %% related to creating problem sections.
@@ -385,11 +387,12 @@
 
 \setlength{\columnsep}{20pt}
 
-\newcommand{\printconcepts}{\noindent\textit{\Large Terms and Concepts}\vskip \baselineskip}
-\newcommand{\printproblems}{\vskip \baselineskip\noindent\textit{\Large Problems}\vskip \baselineskip}
-\newcommand{\printreview}{\vskip \baselineskip\noindent\textit{\Large Review}\vskip \baselineskip}
+\newcommand{\printconcepts}{\noindent\textit{\Large Terms and Concepts}\bigskip}
+\newcommand{\printproblems}{\bigskip\noindent\textit{\Large Problems}\bigskip}
+\newcommand{\printreview}{\bigskip\noindent\textit{\Large Review}\bigskip}
 
 \newcommand{\inanswersection}{%
+	\setboolean{printquestions}{false}%
 	\renewcommand{\printconcepts}{}%
 	\renewcommand{\printproblems}{}%
 	\renewcommand{\printreview}{}%
@@ -548,7 +551,7 @@
 \small%
 \noindent\underline{\parbox{\textwidth}{\textbf{\huge#2} \hyperref[sol#3]{(solutions)}\refstepcounter{subsection}\label{exer#3}}}% 
 \sffamily%
-\vskip\baselineskip%
+\bigskip%
 \begin{multicols}{2}%
 	\openin\exansread=#1 
 	\ifeof \exansread 
@@ -600,16 +603,16 @@
 \def \readsection #1.#2{#2}
 }%
 
-\def \writeexercisestofile #1{%
-\write\answrite{%
-\noexpand\printanswers{%
-exercises/0\thechapter_0\expandafter\readsection #1_exercises.tex}%
-\noexpand\bigskip}%
-\write\answrite{}%
-}
+%\def \writeexercisestofile #1{%
+%\write\answrite{%
+%\noexpand\printanswers{%
+%exercises/0\thechapter_0\expandafter\readsection #1_exercises.tex}%
+%\noexpand\bigskip}%
+%\write\answrite{}%
+%}
 
 \newcommand{\makeexercisesection}[2][\jobname]{%
-\iflatexml\showans\answrite\fi
+%\iflatexml\showans\answrite\fi
 % showans will write the contents of Calculus.answers to the log
 % in latexml, this needs to happen before closing
 \immediate\closeout\answrite%
@@ -621,3 +624,91 @@ exercises/0\thechapter_0\expandafter\readsection #1_exercises.tex}%
 \end{multicols}%
 \restoregeometry\regularheader%
 \setlength{\hoffset}{0pt}\rmfamily}%
+
+
+\setboolean{printquestions}{true}%
+\newcounter{saveexerciseenum}[section]
+\newcounter{exerciseset}
+
+\newcommand{\inputexercises}[1]{\def\sectiontag{\arabic{chapter}.\arabic{section}}%
+\writeToAnsFileB{#1}{Exercises \sectiontag}{\sectiontag}%
+\exercisegeometry%
+\exerciseheader%
+\small%
+\noindent\underline{\parbox{\textwidth}{\textbf{\huge Exercises \sectiontag}
+\hyperref[\expandafter sol\sectiontag]{(solutions)}%
+\refstepcounter{subsection}\label{\expandafter exer\sectiontag}}}% 
+\sffamily%
+\bigskip%
+\begin{multicols}{2}%
+\input{#1}%
+\end{multicols}%
+\restoregeometry%
+\regularheader%
+%	\easypagecheck
+\setlength{\hoffset}{0pt} \rmfamily\normalsize \bigskip%
+}
+
+\newcommand{\writeToAnsFileB}[3]{%
+\ifthenelse{\boolean{chapter_already_has_exercises}}{}{% else
+ \setboolean{chapter_already_has_exercises}{true}
+ \immediate\write\answrite{}%
+ \immediate\write\answrite{%
+  \noexpand\noindent{%
+   \noexpand\Large%
+   \noexpand\textbf{Chapter \arabic{chapter}}%
+  }%
+  \noexpand\bigskip%
+  \noexpand\newline%
+  \noexpand\nopagebreak%
+ }%
+}%
+\immediate\write\answrite{%
+ \noexpand\bigskip%
+ \noexpand\noindent%
+ \noexpand\hyperref[exer#3]{\noexpand\textbf{#2}}%
+ \noexpand\label{sol#3}%
+% \noexpand\bigskip%
+% \noexpand\newline%
+% \noexpand\nopagebreak%
+}%
+\ifthenelse{\boolean{printoddanswersonly}\AND\(\value{section}=0\)}{%
+ \write\answrite{\noexpand\setboolean{printoddanswersonly}{false}}%
+ \write\answrite{\noexpand\begin{enumerate}[leftmargin=0pt]\noexpand\input{#1}\noexpand\end{enumerate}}%
+ \write\answrite{\noexpand\setboolean{printoddanswersonly}{true}}%
+}{%
+ \write\answrite{\noexpand\begin{enumerate}[leftmargin=0pt]\noexpand\input{#1}\noexpand\end{enumerate}}%
+}}
+
+\newcommand{\openenumerate}{\ifthenelse{\boolean{printquestions}}{%
+ \begin{enumerate}%
+ \setcounter{enumi}{\value{saveexerciseenum}}%
+}{}}
+
+\newcommand{\closeenumerate}{\ifthenelse{\boolean{printquestions}}{%
+ \setcounter{saveexerciseenum}{\value{enumi}}%
+ \end{enumerate}%
+}{}}
+
+\newcommand{\exerciseset}[3]{\ifthenelse{\boolean{printquestions}}{%
+ \stepcounter{saveexerciseenum}%
+ \stepcounter{exerciseset}%
+ \noindent#1 \arabic{saveexerciseenum}--\ref{enumiatendof\theexerciseset}#2%
+ \addtocounter{saveexerciseenum}{-1}%
+ \openenumerate%
+ #3
+ \label{enumiatendof\theexerciseset}%
+ \closeenumerate%
+}{
+ #3
+}}
+
+\newcommand{\exercise}[2]{\ifthenelse{\boolean{printquestions}}{%
+ \item #1
+}{%
+ \ifthenelse{\boolean{printoddanswersonly}\AND\isodd{\value{enumi}}}{%
+  \stepcounter{enumi}%
+ }{%
+  \item #2
+ }%
+}}

@@ -390,12 +390,18 @@
 \newcommand{\printconcepts}{\noindent\textit{\Large Terms and Concepts}\bigskip}
 \newcommand{\printproblems}{\bigskip\noindent\textit{\Large Problems}\bigskip}
 \newcommand{\printreview}{\bigskip\noindent\textit{\Large Review}\bigskip}
+\newcommand{\printconceptsB}{\closeenumerate\noindent\textit{\Large Terms and Concepts}\bigskip}
+\newcommand{\printproblemsB}{\closeenumerate\bigbreak\noindent\textit{\Large Problems}\bigskip}
+\newcommand{\printreviewB}{\closeenumerate\bigbreak\noindent\textit{\Large Review}\bigskip}
 
 \newcommand{\inanswersection}{%
 	\setboolean{printquestions}{false}%
 	\renewcommand{\printconcepts}{}%
 	\renewcommand{\printproblems}{}%
 	\renewcommand{\printreview}{}%
+	\renewcommand{\printconceptsB}{}%
+	\renewcommand{\printproblemsB}{}%
+	\renewcommand{\printreviewB}{}%
 }%
 
 %\newcount\showexercises % not used?
@@ -626,11 +632,15 @@
 \setlength{\hoffset}{0pt}\rmfamily}%
 
 
-\setboolean{printquestions}{true}%
+\setboolean{printquestions}{true}
 \newcounter{saveexerciseenum}[section]
 \newcounter{exerciseset}
+\newboolean{enumopen}
+\setboolean{enumopen}{false}
+\newcommand{\sectiontag}{undefined}
 
-\newcommand{\inputexercises}[1]{\def\sectiontag{\arabic{chapter}.\arabic{section}}%
+\newcommand{\inputexercises}[1]{%
+\renewcommand{\sectiontag}{\arabic{chapter}.\arabic{section}}%
 \writeToAnsFileB{#1}{Exercises \sectiontag}{\sectiontag}%
 \exercisegeometry%
 \exerciseheader%
@@ -642,6 +652,7 @@
 \bigskip%
 \begin{multicols}{2}%
 \input{#1}%
+\closeenumerate%
 \end{multicols}%
 \restoregeometry%
 \regularheader%
@@ -680,30 +691,34 @@
  \write\answrite{\noexpand\begin{enumerate}[leftmargin=0pt]\noexpand\input{#1}\noexpand\end{enumerate}}%
 }}
 
-\newcommand{\openenumerate}{\ifthenelse{\boolean{printquestions}}{%
+\newcommand{\openenumerate}{\ifthenelse{\boolean{printquestions}%
+										\AND\NOT\boolean{enumopen}}{%
+ \setboolean{enumopen}{true}%
  \begin{enumerate}%
  \setcounter{enumi}{\value{saveexerciseenum}}%
 }{}}
 
-\newcommand{\closeenumerate}{\ifthenelse{\boolean{printquestions}}{%
+\newcommand{\closeenumerate}{\ifthenelse{\boolean{printquestions}%
+										\AND\boolean{enumopen}}{%
  \setcounter{saveexerciseenum}{\value{enumi}}%
  \end{enumerate}%
+ \setboolean{enumopen}{false}%
 }{}}
 
 \newcommand{\exerciseset}[3]{\ifthenelse{\boolean{printquestions}}{%
+ \closeenumerate%
  \stepcounter{saveexerciseenum}%
  \stepcounter{exerciseset}%
  \noindent#1 \arabic{saveexerciseenum}--\ref{enumiatendof\theexerciseset}#2%
  \addtocounter{saveexerciseenum}{-1}%
- \openenumerate%
  #3
  \label{enumiatendof\theexerciseset}%
- \closeenumerate%
 }{
  #3
 }}
 
 \newcommand{\exercise}[2]{\ifthenelse{\boolean{printquestions}}{%
+ \openenumerate%
  \item #1
 }{%
  \ifthenelse{\boolean{printoddanswersonly}\AND\isodd{\value{enumi}}}{%

@@ -1,11 +1,94 @@
-{\noindent In Exercises}
-{, find the equation of the tangent line to  the graph of the  implicitly defined function at the indicated points. As a visual aid, each function is graphed.
+\exerciseset{In Exercises}{, find the equation of the tangent line to  the graph of the  implicitly defined function at the indicated points. As a visual aid, each function is graphed.
+}{
+
+\exercise{$x^{2/5}+y^{2/5} = 1$
+\begin{enumerate}
+\item	At $(1,0)$.
+\item	At $(0.1,0.281)$ (which does not \textit{exactly} lie on the curve, but is very close).
+\end{enumerate}
+\myincludegraphics[scale=.8]{figures/fig02_06_ex_23}
+}{\begin{enumerate}
+\item	$y=0$
+\item	$y = -1.859(x-0.1)+0.281$
+\end{enumerate}
 }
-\exinput{exercises/02_06_ex_23}
-\exinput{exercises/02_06_ex_24}
+
+\exercise{$x^{4}+y^{4} = 1$
+\begin{enumerate}
+\item	At $(1,0)$.
+\item	At $(\sqrt{0.6},\sqrt{0.8})$.
+\item	At $(0,1)$.
+\end{enumerate}
+\myincludegraphics[scale=.8]{figures/fig02_06_ex_24}
+}{\begin{enumerate}
+\item	$x=1$
+\item	$y = -\frac{3\sqrt{3}}{8}(x-\sqrt{.6})+\sqrt{.8} \approx -0.65(x-0.775)+0.894$
+\item	$y=1$
+\end{enumerate}
+}
+
 %\ifthenelse{\boolean{printquestions}}{\columnbreak}{}
-\exinput{exercises/02_06_ex_25}
-\exinput{exercises/02_06_ex_26}
-\exinput{exercises/02_06_ex_27}
+\exercise{$(x^2+y^2-4)^3 = 108y^2$
+\begin{enumerate}
+\item	At $(0,4)$.
+\item	At $(2,-\sqrt[4]{108})$.
+\end{enumerate}
+\myincludegraphics[scale=.8]{figures/fig02_06_ex_25}
+}{\begin{enumerate}
+\item	$y=4$
+\item	$y = 0.93(x-2)+\sqrt[4]{108}$
+\end{enumerate}
+}
+
+\exercise{$(x^2+y^2+x)^2 = x^2+y^2$
+\begin{enumerate}
+\item	At $(0,1)$.
+\item	At $\ds \left(-\frac34, \frac{3 \sqrt{3}}{4}\right)$.
+\end{enumerate}
+\myincludegraphics[scale=.8]{figures/fig02_06_ex_26}
+}{\begin{enumerate}
+\item	$y=-1/3x+1$
+\item	$y = 3\sqrt{3}/4$
+\end{enumerate}
+}
+
+\exercise{$(x-2)^2+(y-3)^2=9$
+\begin{enumerate}
+\item	At $\ds \left(\frac72,\frac{6+3\sqrt{3}}{2}\right)$.
+\item	At $\ds\left(\frac{4+3\sqrt{3}}{2}, \frac32\right)$.
+\end{enumerate}
+\myincludegraphics[scale=.8]{figures/fig02_06_ex_27}
+}{\begin{enumerate}
+\item	$y=-\frac{1}{\sqrt{3}}(x-\frac72)+\frac{6+3\sqrt{3}}{2}$
+\item	$y = \sqrt{3}(x-\frac{4+3\sqrt{3}}2)+\frac32$
+\end{enumerate}
+}
+
 %\ifthenelse{\boolean{printquestions}}{\columnbreak}{}
-\exinput{exercises/02_06_ex_38}
+\exercise{$x^2+2xy-y^2+x=2$
+\begin{enumerate}
+\item	At $(-2,0)$.
+\item	At $(1,2)$.
+\end{enumerate}
+\begin{tikzpicture}%[baseline=10pt]
+\begin{axis}[width=.7\linewidth,tick label style={font=\scriptsize},axis y line=middle,axis x line=middle,name=myplot,%
+                        ymin=-2,ymax=3,%
+                        xmin=-3,xmax=2,%
+]
+\addplot [thick,{\colorone},smooth,domain=-89:89]
+		({sec(x)*sqrt(17)/4-.25},{(sec(x)+tan(x)*sqrt(2))*sqrt(17)/4-.25});
+\addplot [thick,{\colorone},smooth,domain=91:269]
+		({sec(x)*sqrt(17)/4-.25},{(sec(x)+tan(x)*sqrt(2))*sqrt(17)/4-.25});
+\filldraw (axis cs:-2,0) node [above right] {\scriptsize $(-2,0)$} circle (1pt);
+\filldraw (axis cs:1,2) node [below right] {\scriptsize $(1,2)$} circle (1pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+}{\begin{enumerate}
+\item	$y=-\dfrac{3x}4-\dfrac32$
+\item	$y=\dfrac72x-\dfrac32$
+\end{enumerate}
+}
+
+}

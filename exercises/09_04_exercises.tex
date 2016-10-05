@@ -1,19 +1,160 @@
 \printconcepts
-\exinput{exercises/09_04_ex_01}
-\exinput{exercises/09_04_ex_02}
-\exinput{exercises/09_04_ex_03}
-\exinput{exercises/09_04_ex_04}
+
+\exercise{In your own words, describe how to plot the polar point $P(r,\theta)$.}{Answers will vary.}
+
+\exercise{T/F: When plotting a point with polar coordinate $P(r,\theta)$, $r$ must be positive.}{F}
+
+\exercise{T/F: Every point in the Cartesian plane can be represented by a polar coordinate.}{T}
+
+\exercise{T/F: Every point in the Cartesian plane can be represented uniquely by a polar coordinate.}{F}
+
 \printproblems
-\exinput{exercises/09_04_ex_05}
-\exinput{exercises/09_04_ex_06}
-\exinput{exercises/09_04_ex_07}
-\exinput{exercises/09_04_ex_08}
-\exinput{exercises/09_04_ex_09}
-\exinput{exercises/09_04_ex_10}
-\exsetinput{exercises/09_04_exset_01}
-\exsetinput{exercises/09_04_exset_02}
+
+\exercise{Plot the points with the given polar coordinates.\\
+\begin{minipage}[t]{.5\linewidth}
+\begin{enumerate}
+	\item $A=P(2,0)$
+	\item	$B=P(1,\pi)$
+\end{enumerate}
+\end{minipage}%
+\begin{minipage}[t]{.5\linewidth}
+\begin{enumerate}\addtocounter{enumii}{2}
+	\item $C=P(-2,\pi/2)$
+	\item	$D=P(1,\pi/4)$
+\end{enumerate}
+\end{minipage}
+}{\begin{minipage}[m]{\linewidth}
+\begin{tikzpicture}[scale=.5]
+	\foreach \x in {1,2}
+	{\draw (0,0) circle (\x);
+		\draw (\x,0) node [below right] {\scriptsize $\x$};
+	}
+	\draw [thick,->,>=stealth] (0,0) node [below] {\scriptsize $O$} -- (2.5,0);
+	\filldraw (xyz polar cs: angle=0,radius=2) circle (2pt) node [above right] {\scriptsize $A$}
+	      (xyz polar cs: angle=180,radius=1)circle (2pt) node [right] {\scriptsize $B$}
+				(xyz polar cs: angle=90,radius=-2)circle (2pt) node [right] {\scriptsize $C$}
+				(xyz polar cs: angle=45,radius=1)circle (2pt) node [right] {\scriptsize $D$};
+	\end{tikzpicture}
+\end{minipage}}
+
+\exercise{Plot the points with the given polar coordinates.\\
+\begin{minipage}[t]{.5\linewidth}
+\begin{enumerate}
+	\item $A=P(2,3\pi)$
+	\item	$B=P(1,-\pi)$
+\end{enumerate}
+\end{minipage}%
+\begin{minipage}[t]{.5\linewidth}
+\begin{enumerate}\addtocounter{enumii}{2}
+	\item $C=P(1,2)$
+	\item	$D=P(1/2,5\pi/6)$
+\end{enumerate}
+\end{minipage}
+}{\begin{minipage}[m]{\linewidth}
+\begin{tikzpicture}[scale=.5]
+	\foreach \x in {1,2}
+	{\draw (0,0) circle (\x);
+		\draw (\x,0) node [below right] {\scriptsize $\x$};
+	}
+	\draw [thick,->,>=stealth] (0,0) node [below] {\scriptsize $O$} -- (2.5,0);
+	\filldraw (xyz polar cs: angle=180,radius=2) circle (2pt) node [above] {\scriptsize $A$}
+	      (xyz polar cs: angle=180,radius=1)circle (2pt) node [above] {\scriptsize $B$}
+				(xyz polar cs: angle=114.6,radius=1)circle (2pt) node [right] {\scriptsize $C$}
+				(xyz polar cs: angle=150,radius=.5)circle (2pt) node [right] {\scriptsize $D$};
+	\end{tikzpicture}
+\end{minipage}}
+
+\exercise{For each of the given points give two sets of polar coordinates that identify it, where $0\leq \theta\leq 2\pi$.
+
+\begin{tikzpicture}[scale=.5]
+	\draw [dashed,gray] (-3.1,0) -- (0,0);
+	\draw[thick,->,>=stealth] (0,0) node [below] {$O$} -- (3.5,0) ;
+	\filldraw (0,0) circle (1.5pt);
+	\foreach \x in {1,2,3}
+	{\draw (0,0) circle (\x cm);
+	\draw (\x,0) node [below right] {\x};
+	}
+	\foreach \x in {30,45,60,90,120,135,150}
+	{\draw [rotate=\x,dashed,gray] (-3.1,0) -- (3.1,0);
+	}
+	\filldraw (xyz polar cs: angle=45,radius=2.5) circle (2pt) node [above] {\scriptsize $A$}
+	      (xyz polar cs: angle=-30,radius=1)circle (2pt) node [below] {\scriptsize $B$}
+				(xyz polar cs: angle=240,radius=3)circle (2pt) node [right] {\scriptsize $C$}
+				(xyz polar cs: angle=120,radius=1.5)circle (2pt) node [right] {\scriptsize $D$};
+	
+\end{tikzpicture}	
+}{$A=P(2.5,\pi/4)$ and $P(-2.5,5\pi/4)$;\\
+$B=P(-1,5\pi/6)$ and $P(1,11\pi/6)$;\\
+$C=P(3,4\pi/3)$ and $P(-3,\pi/3)$;\\
+$D=P(1.5,2\pi/3)$ and $P(-1.5,5\pi/3)$}
+
+\exercise{For each of the given points give two sets of polar coordinates that identify it, where $-\pi\leq \theta\leq \pi$.
+
+\begin{tikzpicture}[scale=.5]
+	\draw [dashed,gray] (-3.1,0) -- (0,0);
+	\draw[thick,->,>=stealth] (0,0) node [below] {$O$} -- (3.5,0) ;
+	\filldraw (0,0) circle (1.5pt);
+	\foreach \x in {1,2,3}
+	{\draw (0,0) circle (\x cm);
+	\draw (\x,0) node [below right] {\x};
+	}
+	\foreach \x in {30,45,60,90,120,135,150}
+	{\draw [rotate=\x,dashed,gray] (-3.1,0) -- (3.1,0);
+	}
+	\filldraw (xyz polar cs: angle=30,radius=2) circle (2pt) node [above] {\scriptsize $A$}
+	      (xyz polar cs: angle=-60,radius=1)circle (2pt) node [below] {\scriptsize $B$}
+				(xyz polar cs: angle=135,radius=2)circle (2pt) node [right] {\scriptsize $C$}
+				(xyz polar cs: angle=180,radius=2.5)circle (2pt) node [below] {\scriptsize $D$};
+	
+\end{tikzpicture}	
+}{$A=P(2,\pi/6)$ and $P(-2,-5\pi/6)$;\\
+$B=P(1,-\pi/3)$ and $P(-1,2\pi/3)$;\\
+$C=P(2,3\pi/4)$ and $P(-2,-\pi/4)$;\\
+$D=P(2.5,\pi)$ and $P(2.5,-\pi)$}
+
+\exercise{Convert each of the following polar coordinates to rectangular, and each of the following rectangular coordinates to polar.\\
+\begin{minipage}[t]{.5\linewidth}
+\begin{enumerate}
+	\item $A=P(2,\pi/4)$
+	\item $B=P(2,-\pi/4)$
+\end{enumerate}
+\end{minipage}%
+\begin{minipage}[t]{.5\linewidth}
+\begin{enumerate}\addtocounter{enumii}{2}
+	\item $C=(2,-1)$
+	\item $D=(-2,1)$
+\end{enumerate}
+\end{minipage}
+}{$A=(\sqrt{2},\sqrt{2})$;\\
+$B=(\sqrt{2},-\sqrt{2})$;\\
+$C=P(\sqrt{5},-0.46)$;\\
+$D=P(\sqrt{5},2.68)$}
+
+\exercise{Convert each of the following polar coordinates to rectangular, and each of the following rectangular coordinates to polar.\\
+\begin{minipage}[t]{.5\linewidth}
+\begin{enumerate}
+	\item $A=P(3,\pi)$
+	\item $B=P(1,2\pi/3)$
+\end{enumerate}
+\end{minipage}%
+\begin{minipage}[t]{.5\linewidth}
+\begin{enumerate}\addtocounter{enumii}{2}
+	\item $C=(0,4)$
+	\item $D=(1,-\sqrt{3})$
+\end{enumerate}
+\end{minipage}
+}{$A=(-3,0)$;\\
+$B=(-1/2,\sqrt{3}/2)$;\\
+$C=P(4,\pi/2)$;\\
+$D=P(2,-\pi/3)$}
+
+\input{exercises/09_04_exset_01}
+\input{exercises/09_04_exset_02}
 %\ifthenelse{\boolean{printquestions}}{\columnbreak}{}
-\exsetinput{exercises/09_04_exset_03}
-\exsetinput{exercises/09_04_exset_04}
-\exinput{exercises/09_04_ex_55}
-\exinput{exercises/09_04_ex_56}
+\input{exercises/09_04_exset_03}
+\input{exercises/09_04_exset_04}
+\exercise{Pick a integer value for $n$, where $n\neq 2,3$, and use technology to plot $\ds r=\sin\left(\frac mn\theta\right)$ for three different integer values of $m$. Sketch these and determine a minimal interval on which the entire graph is shown.}{Answers will vary. If $m$ and $n$ do not have any common factors, then an interval of $2n\pi$ is needed to sketch the entire graph.
+}
+
+\exercise{Create your own polar function, $r=f(\theta)$ and sketch it. Describe why the graph looks as it does.}{Answers will vary.
+}

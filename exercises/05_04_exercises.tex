@@ -1,18 +1,79 @@
 \printconcepts
-\exinput{exercises/05_04_ex_01}
-\exinput{exercises/05_04_ex_02}
-\exinput{exercises/05_04_ex_03}
-\exinput{exercises/05_04_ex_04}
+\exercise{How are definite and indefinite integrals related?
+}{Answers will vary.
+}
+
+\exercise{What constant of integration is most commonly used when evaluating definite integrals?
+}{0
+}
+
+\exercise{T/F: If $f$ is a continuous function, then $\ds F(x) = \int_a^x f(t)\ dt$ is also a continuous function.
+}{T
+}
+
+\exercise{The definite integral can be used to find ``the area under a curve.'' Give two other uses for definite integrals.
+}{Answers will vary.
+}
+
 \printproblems
-\exsetinput{exercises/05_04_exset_01}
-\exinput{exercises/05_04_ex_28}
-\exsetinput{exercises/05_04_exset_02}
-\exsetinput{exercises/05_04_exset_03}
-\exsetinput{exercises/05_04_exset_04}
+\input{exercises/05_04_exset_01}
+\exercise{Explain why:
+\begin{enumerate}
+\item		$\ds \int_{-1}^1 x^n\ dx=0$, when $n$ is a positive, odd integer, and 
+\item		$\ds \int_{-1}^1 x^n\ dx = 2\int_{0}^1 x^n\ dx$ when $n$ is a positive, even integer.
+\end{enumerate}
+}{Explanations will vary. A sketch will help.
+}
+
+\input{exercises/05_04_exset_02}
+\input{exercises/05_04_exset_03}
+\input{exercises/05_04_exset_04}
 %\ifthenelse{\boolean{printquestions}}{\columnbreak}{}
-\exsetinput{exercises/05_04_exset_05}
-%\exsetinput{exercises/05_04_exset_06}
-\exsetinput{exercises/05_04_exset_07}
-\exinput{exercises/05_04_ex_59}
+\input{exercises/05_04_exset_05}
+%\input{exercises/05_04_exset_06}
+\input{exercises/05_04_exset_07}
+\exercise{Let $g(x)=\int_0^x f(t)\,dt$ where $f$ is the function whose graph is shown below.
+\begin{enumerate}
+\item Evaluate $g(x)$ for $x=0,1,2,3,4,5,6$.
+\item Estimate $g(7)$.
+\item Where does $g$ have a minimum value? a maximum value?
+\item Sketch the graph of $g$.
+\end{enumerate}
+
+\begin{tikzpicture}
+ \begin{axis}[width=.5\textwidth,tick label style={font=\scriptsize},
+  axis y line=middle, axis x line=middle, name=myplot, axis on top,
+  xmin=-1,xmax=7,ymin=-2,ymax=4, smooth]
+  \addplot [smooth,thick,{\colorone},domain=0:2] {1-x};
+  \addplot [smooth,thick,{\colorone},domain=2:6] {x-3};
+  \addplot [smooth,thick,{\colorone},domain=6:7] {10*x-x*x-21};
+  \draw [help lines,step=100] (axis cs:0,-2) grid (axis cs:7,4);
+  % why steps=100?  I have no idea
+ \end{axis}
+ \node [right] at (myplot.right of origin) {\scriptsize $x$};
+ \node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}{\begin{enumerate}
+\item
+\begin{tabular}{|c||c|c|c|c|c|c|c|}\hline
+x & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\\hline
+g(x) & 0 & .5 & 0 & -.5 & 0 & 1.5 & 4 \\\hline
+\end{tabular}
+\item $g(7)\approx 5.7$
+\item min at $x=3$; max at $x=7$
+\item Approximately
+\begin{tikzpicture}
+ \begin{axis}[width=.4\textwidth,tick label style={font=\scriptsize},
+  axis y line=middle, axis x line=middle, name=myplot, axis on top,
+  xmin=-1,xmax=7,ymin=-1,ymax=6, smooth]
+  \addplot [smooth,thick,{\colorone},domain=0:2] {x-x*x/2};
+  \addplot [smooth,thick,{\colorone},domain=2:6] {x*x/2-3*x+4};
+  \addplot [smooth,thick,{\colorone},domain=6:7] {5*x*x-x*x*x/3-21*x+22};
+%  \draw [help lines,step=100] (axis cs:0,-1) grid (axis cs:7,6);
+ \end{axis}
+ \node [right] at (myplot.right of origin) {\scriptsize $x$};
+ \node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\end{enumerate}}
+
 %\printreview
-%\exsetinput{exercises/05_04_exset_07}
+%\input{exercises/05_04_exset_07}

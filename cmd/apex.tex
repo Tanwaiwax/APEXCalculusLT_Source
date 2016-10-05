@@ -1,0 +1,38 @@
+\documentclass{amsart}
+
+\usepackage{graphics}
+
+\newcommand{\oldapex}{A\kern -1pt \lower -2pt\hbox{P}\kern -4pt \lower .7ex\hbox{E}\kern -1pt X}
+\newcommand{\control}{\resizebox{!}{.5in}{\oldapex}}
+
+\newcommand{\apex}{A\kern -.1em \lower -.5ex\hbox{P}\kern -.35em\lower .5ex\hbox{E}\kern -.1em X}
+
+% TeX: T\kern -.1667em\lower .5ex\hbox {E}\kern -.125emX
+
+%\ifxetex%
+	\sffamily
+	%%\usepackage{fontspec}
+	\usepackage{mathspec}
+	\setallmainfonts[Mapping=tex-text]{Calibri}
+	\setmainfont[Mapping=tex-text]{Calibri}
+	\setsansfont[Mapping=tex-text]{Calibri}
+	\setmathsfont(Greek){[cmmi10]}
+%\else
+%	Please compile with XeLaTeX
+%\fi
+
+\begin{document}
+
+\begin{tabular}{llll}
+size & TeX & New Apex & Old Apex\\\hline
+small & \resizebox{!}{.5in}{\small\TeX} & \resizebox{!}{.5in}{\small\apex} & \control \\
+normal & \resizebox{!}{.5in}{\TeX} & \resizebox{!}{.5in}{\apex} & \control \\
+large & \resizebox{!}{.5in}{\large\TeX} & \resizebox{!}{.5in}{\large\apex} & \control \\
+Large & \resizebox{!}{.5in}{\Large\TeX} & \resizebox{!}{.5in}{\Large\apex} & \control \\
+LARGE & \resizebox{!}{.5in}{\LARGE\TeX} & \resizebox{!}{.5in}{\LARGE\apex} & \control \\
+huge & \resizebox{!}{.5in}{\huge\TeX} & \resizebox{!}{.5in}{\huge\apex} & \control \\
+Huge & \resizebox{!}{.5in}{\Huge\TeX} & \resizebox{!}{.5in}{\Huge\apex} & \control \\
+small & \resizebox{!}{.5in}{\small\TeX} & \resizebox{!}{.5in}{\small\apex} & \control
+\end{tabular}
+
+\end{document}

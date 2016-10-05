@@ -1,10 +1,188 @@
-{\noindent In Exercises}
-{, prove the given limit using an $\epsilon - \delta$ proof.}
-\exinput{exercises/01_02_ex_04}
-\exinput{exercises/01_02_ex_12}
-\exinput{exercises/01_02_ex_13}
-\exinput{exercises/01_02_ex_05}
-\exinput{exercises/01_02_ex_11}
-\exinput{exercises/01_02_ex_06}
-\exinput{exercises/01_02_ex_03}
-\exinput{exercises/01_02_ex_08}
+\exerciseset{In Exercises}{, prove the given limit using an $\epsilon - \delta$ proof.}{
+
+\exercise{$\ds\lim_{x\to 5} 3-x = -2$}{Let $\epsilon >0$ be given. We wish to find $\delta >0$ such that when $|x-5|<\delta$, $|f(x)-(-2)|<\epsilon$. 
+
+Scratch-Work:
+Consider $|f(x)-(-2)|<\epsilon$:
+\begin{gather*}
+|f(x) + 2 | < \epsilon \\
+|(3-x) + 2 |<\epsilon \\
+| 5-x | < \epsilon \\
+-\epsilon < 5-x < \epsilon \\
+-\epsilon < x-5 < \epsilon. \\
+\end{gather*}
+This implies we can let $\delta =\epsilon$.
+
+Proof: Given $\epsilon>0$, choose $\delta=\epsilon$.
+\begin{gather*}
+|x-5|<\delta \\
+-\delta < x-5 < \delta\\
+-\epsilon < x-5 < \epsilon\\
+-\epsilon < (x-3)-2 < \epsilon \\
+-\epsilon < (-x+3)-(-2) < \epsilon \\
+|3-x - (-2)| < \epsilon.
+\end{gather*}
+Thus $\ds\lim_{x\to 5} 3-x = -2$.}
+
+\exercise{$\ds\lim_{x\to 5} 4x-12=8$}{Let $\epsilon >0$ be given. We wish to find $\delta >0$ such that when $|x-5|<\delta$, $|f(x)-8|<\epsilon$. 
+
+Scratch-Work:
+Consider $|f(x)-8|<\epsilon$, keeping in  mind we want to make a statement about $|x-5|$:
+\begin{align*}
+|f(x)-8|&<\epsilon \\
+|4x-12-8|&<\epsilon \\
+|4x-20|&<\epsilon\\
+4|x-5|&<\epsilon \\
+|x-5|&<\frac{\epsilon}{4}\\
+\end{align*}
+suggesting $\delta =\frac{\epsilon}4$.
+
+Proof: Given $\epsilon>0$, let $\delta =\dfrac{\epsilon}4$. Then:
+\begin{align*}
+|x - 5| &< \delta \\
+|x - 5| &< \frac{\epsilon}{4} \\
+4|x - 5| &< \frac{\epsilon}{4}\cdot 4\\
+|4x-20|&< \epsilon \\
+|4x-12-8|&< \epsilon  \\
+\end{align*}
+Thus  $\ds \lim_{x\to 5}4x-12=8$.}
+
+\exercise{$\ds \lim_{x\to 3} 5-2x=-1$}{Let $\epsilon >0$ be given. We wish to find $\delta >0$ such that when $|x-3|<\delta$, $|f(x)-(-1)|<\epsilon$. 
+
+Scratch-Work:
+Consider $|f(x)-(-1)|<\epsilon$, keeping in  mind we want to make a statement about $|x-3|$:
+\begin{align*}
+|f(x)-(-1)|&<\epsilon \\
+|5-2x+1|&<\epsilon \\
+|-2x+6|&<\epsilon\\
+2|x-3|&<\epsilon \\
+|x-3|&<\frac{\epsilon}{2}\\
+\end{align*}
+suggesting $\delta=\frac{\epsilon}{2}$.
+
+Proof: Given $\epsilon>0$, let $\delta =\dfrac{\epsilon}2$. Then:
+\begin{align*}
+|x - 3| &< \delta \\
+|x - 3| &< \frac{\epsilon}{2} \\
+2|x - 3| &< \frac{\epsilon}{2}\cdot 2\\
+|-2x+6|&< \epsilon \\
+|5-2x+1|&< \epsilon  \\
+\end{align*}
+Thus  $\ds \lim_{x\to 3} 5-2x=-1$.}
+
+\exercise{$\ds\lim_{x\to 3} x^2-3 = 6$}{Let $\epsilon >0$ be given. We wish to find $\delta >0$ such that when $|x-3|<\delta$, $|f(x)-6|<\epsilon$. 
+
+Scratch-Work:
+Consider $|f(x)-6|<\epsilon$, keeping in  mind we want to make a statement about $|x-3|$:
+\begin{gather*}
+|f(x) -6 | < \epsilon \\
+|x^2-3 -6 |<\epsilon \\
+| x^2-9 | < \epsilon \\
+| x-3 |\cdot|x+3| < \epsilon \\
+| x-3 | < \epsilon/|x+3| \\
+\end{gather*}
+Since $x$ is near 3, we can safely assume that, for instance, $2<x<4$. Thus
+\begin{gather*}
+2+3<x+3<4+3 \\
+5 < x+3 < 7 \\
+\frac{1}{7} < \frac{1}{x+3} < \frac{1}{5} \\
+\frac{\epsilon}{7} < \frac{\epsilon}{x+3} < \frac{\epsilon}{5} \\
+\end{gather*}
+This suggests $\delta =\frac{\epsilon}{7}$.
+
+Proof: Given $\epsilon>0$, let $\delta =\frac{\epsilon}{7}$.
+\begin{gather*}
+|x-3|<\delta \\
+|x-3| < \frac{\epsilon}7\\
+|x-3| < \frac{\epsilon}{x+3}\\
+|x-3|\cdot|x+3| < \frac{\epsilon}{x+3}\cdot|x+3|\\
+\end{gather*}
+Assuming $x$ is near 3, $x+3$ is positive and we can drop the absolute value signs on the right.
+\begin{gather*}
+|x-3|\cdot|x+3| < \frac{\epsilon}{x+3}\cdot(x+3)\\
+|x^2-9| < \epsilon\\
+|(x^2-3) - 6| < \epsilon.
+\end{gather*}
+Thus, $\ds\lim_{x\to 3} x^2-3 = 6$.
+}
+
+\exercise{$\ds\lim_{x\to 4} x^2+x-5 = 15$}{Let $\epsilon >0$ be given. We wish to find $\delta >0$ such that when $|x-4|<\delta$, $|f(x)-15|<\epsilon$. 
+
+Scratch-Work:
+Consider $|f(x)-15|<\epsilon$, keeping in  mind we want to make a statement about $|x-4|$:
+\begin{gather*}
+|f(x) -15 | < \epsilon \\
+|x^2+x-5 -15 |<\epsilon \\
+| x^2+x-20 | < \epsilon \\
+| x-4 |\cdot|x+5| < \epsilon \\
+| x-4 | < \epsilon/|x+5| \\
+\end{gather*}
+Since $x$ is near 4, we can safely assume that, for instance, $3<x<5$. Thus
+\begin{gather*}
+3+5<x+5<5+5 \\
+8 < x+5 < 10 \\
+\frac{1}{10} < \frac{1}{x+5} < \frac{1}{8} \\
+\frac{\epsilon}{10} < \frac{\epsilon}{x+5} < \frac{\epsilon}{8} \\
+\end{gather*}
+suggesting $\delta =\frac{\epsilon}{10}$.
+
+Proof: Given $\epsilon>0$, let $\delta =\frac{\epsilon}{10}$. Then:
+\begin{gather*}
+|x-4|<\delta \\
+|x-4| < \frac{\epsilon}{10}\\
+|x-4| < \frac{\epsilon}{x+5}\\
+|x-4|\cdot|x+5| < \frac{\epsilon}{x+5}\cdot|x+5|\\
+\end{gather*}
+Assuming $x$ is near 4, $x+5$ is positive and we can drop the absolute value signs on the right.
+\begin{gather*}
+|x-4|\cdot|x+5| < \frac{\epsilon}{x+5}\cdot(x+5)\\
+|x^2+x-20| < \epsilon\\
+|(x^2+x-5) -15| < \epsilon.
+\end{gather*}
+Thus, $\ds\lim_{x\to 4} x^2+x-5 = 15$.}
+
+\exercise{$\displaystyle \lim_{x\to 2} x^3-1 = 7$}{Let $\epsilon >0$ be given. We wish to find $\delta >0$ such that when $|x-2|<\delta$, $|f(x)-7|<\epsilon$. 
+
+Scratch-Work:
+Consider $|f(x)-7|<\epsilon$, keeping in  mind we want to make a statement about $|x-2|$:
+\begin{gather*}
+|f(x) -7 | < \epsilon \\
+|x^3-1 -7 |<\epsilon \\
+| x^3-8 | < \epsilon \\
+| x-2 |\cdot|x^2+2x+4| < \epsilon \\
+| x-3 | < \epsilon/|x^2+2x+4| \\
+\end{gather*}
+Since $x$ is near 2, we can safely assume that, for instance, $1<x<3$. Thus
+\begin{gather*}
+1^2+2\cdot1+4<x^2+2x+4<3^2+2\cdot3+4 \\
+7 < x^2+2x+4 < 19 \\
+\frac{1}{19} < \frac{1}{x^2+2x+4} < \frac{1}{7} \\
+\frac{\epsilon}{19} < \frac{\epsilon}{x^2+2x+4} < \frac{\epsilon}{7}, \\
+\end{gather*}
+suggesting $\delta =\frac{\epsilon}{19}$.
+
+Proof: Given $\epsilon>0$, let $\delta =\frac{\epsilon}{19}$.
+\begin{gather*}
+|x-2|<\delta \\
+|x-2| < \frac{\epsilon}{19}\\
+|x-2| < \frac{\epsilon}{x^2+2x+4}\\
+|x-2|\cdot|x^2+2x+4| < \frac{\epsilon}{x^2+2x+4}\cdot|x^2+2x+4|\\
+\end{gather*}
+Assuming $x$ is near 2, $x^2+2x+4$ is positive and we can drop the absolute value signs on the right.
+\begin{gather*}
+|x-2|\cdot|x^2+2x+4| < \frac{\epsilon}{x^2+2x+4}\cdot(x^2+2x+4)\\
+|x^3-8| < \epsilon\\
+|(x^3-1) - 7| < \epsilon,
+\end{gather*}
+which is what we wanted to prove.
+}
+
+\exercise{$\displaystyle \lim_{x\to 2} 5 = 5$}{Let $\epsilon >0$ be given. We wish to find $\delta >0$ such that when $|x-2|<\delta$, $|f(x)-5|<\epsilon$. However, since $f(x)=5$, a constant function, the latter inequality is simply $|5-5|<\epsilon$, which is always true. Thus we can choose any $\delta$ we like; we arbitrarily choose $\delta =\epsilon$. 
+}
+
+\exercise{$\displaystyle \lim_{x\to 0} \sin x= 0$ (Hint: use the fact that $|\sin x| \leq |x|$, with equality only when $x=0$.)}{Let $\epsilon >0$ be given. We wish to find $\delta >0$ such that when $|x-0|<\delta$, $|f(x)-0|<\epsilon$. In simpler terms, we want to show that when $|x|<\delta$, $|\sin x| < \epsilon$. 
+
+Set $\delta = \epsilon$. We start with assuming that $|x|<\delta$. Using the hint, we have that $|\sin x | < |x| < \delta = \epsilon$. Hence if $|x|<\delta$, we know immediately that $|\sin x| < \epsilon$.
+}
+
+}

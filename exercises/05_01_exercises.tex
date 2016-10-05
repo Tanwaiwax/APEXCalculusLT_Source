@@ -1,21 +1,92 @@
 \printconcepts
-\exinput{exercises/05_01_ex_01}
-\exinput{exercises/05_01_ex_02}
-\exinput{exercises/05_01_ex_03}
-\exinput{exercises/05_01_ex_04}
-\exinput{exercises/05_01_ex_05}
-\exinput{exercises/05_01_ex_06}
-\exinput{exercises/05_01_ex_07}
+
+\exercise{Define the term ``antiderivative'' in your own words.}{Answers will vary.}
+
+\exercise{Is it more accurate to refer to ``the'' antiderivative of $f(x)$ or ``an'' antiderivative of $f(x)$?}{``an''}
+
+\exercise{Use your own words to define the indefinite integral of $f(x)$.}{Answers will vary.}
+
+\exercise{Fill in the blanks: ``Inverse operations do the \underline{\hskip .5in} things in the \underline{\hskip .5in} order.''}{opposite; opposite}
+
+\exercise{What is an ``initial value problem''?}{Answers will vary.}
+
+\exercise{The derivative of a position function is a \underline{\hskip .5in} function.}{velocity}
+
+\exercise{The antiderivative of an acceleration function is a \underline{\hskip .5in} function.}{velocity}
+
 \printproblems
-\exsetinput{exercises/05_01_exset_01}
-\exinput{exercises/05_01_ex_39}
-\exsetinput{exercises/05_01_exset_02}
+
+\input{exercises/05_01_exset_01}
+
+\exercise{This problem investigates why Theorem \ref{thm:indef_alg} states that $\ds \int \frac1x\ dx = \ln |x| + C$.
+\begin{enumerate}
+	\item		What is the domain of $y = \ln x$?
+	\item		Find $\frac{d}{dx}\big(\ln x\big)$. 
+	\item		What is the domain of $y = \ln (-x)$?
+	\item		Find $\frac{d}{dx}\big(\ln (-x)\big)$. 
+	\item		You should find that $1/x$ has two types of antiderivatives, depending on whether $x>0$ or $x<0$. In one expression, give a formula for $\ds \int \frac{1}{x}\ dx$ that takes these different domains into account, and explain your answer.
+	\end{enumerate}
+}{\begin{enumerate}
+\item		$x>0$
+\item		$1/x$
+\item		$x<0$
+\item		$1/x$
+\item		$\ln |x|+C$. Explanations will vary.
+\end{enumerate}}
+
+\input{exercises/05_01_exset_02}
+
 %\ifthenelse{\boolean{printquestions}}{\columnbreak}{}
-\exinput{exercises/05_01_ex_48}
-\exinput{exercises/05_01_ex_49}
+
+\exercise{An object is moving so that its velocity at time $t$ is given by $v(t)=3\sqrt t$. If the object was at the origin at time $t=0$, find it's position $s(t)$ at time $t$.}{$s(t)=2t^{3/2}$.}
+
+\exercise{A nickel dropped from the top of the North Dakota State Capital Building has acceleration $a(t)=-32$ ft/sec$^2$ (ignoring air resistance), initial velocity $v(0)=0$, and initial height $s(0)=241.67$ ft. How long will it take the nickel to hit the ground?}{$s(t)=241.67-16t^2$ ft, so $s(t)=0$ at $t=3.89$sec.}
+
 \ifthenelse{\boolean{printquestions}}{\columnbreak}{}
-\exinput{exercises/05_01_ex_50}
-\exinput{exercises/05_01_ex_51}
+
+\exercise{Given the graph of $f$ below, sketch the graph of the antiderivative $F$ of $f$ that passes through the origin. What do the graphs of the other antiderivatives of $f$ look like?
+
+\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},minor x tick num=1, minor y tick num=1, axis y line=middle,axis x line=middle,ymin=-1,ymax=5.9,xmin=-1,xmax=5.9,name=myplot]
+\addplot [{\colorone},domain=0:5,thick] {abs(x-1)+1};
+\end{axis}
+
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}{\mbox{}\\\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},minor x tick num=1, minor y tick num=1, axis y line=middle,axis x line=middle,ymin=-1,ymax=5.9,xmin=-1,xmax=5.9,name=myplot]
+\addplot [{\colorone},domain=0:1,thick] {2*x-(x^2)/2};
+\addplot [{\colorone},domain=1:5,thick] {(x^2)/2+1};
+\end{axis}
+
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}\\
+Other antiderivatives are vertical shifts of this one.}
+
+\exercise{Given the graph of $f$ below, sketch the graph of the antiderivative $F$ of $f$ that passes through the origin. What do the graphs of the other antiderivatives of $f$ look like?
+
+\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},minor x tick num=1, minor y tick num=1, axis y line=middle,axis x line=middle,ymin=-3,ymax=4.9,xmin=-1,xmax=5.9,name=myplot]
+\addplot [{\colorone},domain=0:2,thick] {2-x*x};
+\addplot [{\colorone},domain=2:5,thick] {((x*x)/4)-3};
+\end{axis}
+
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}{\mbox{}\\\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},minor x tick num=1, minor y tick num=1, axis y line=middle,axis x line=middle,ymin=-3,ymax=4.9,xmin=-1,xmax=5.9,name=myplot]
+\addplot [{\colorone},domain=0:2,thick] {2*x-x*x*x/3}; % @x=2: =4/3
+\addplot [{\colorone},domain=2:5,thick] {((x*x*x)/12)-3*x+20/3}; % @x=2: -16/3
+\end{axis}
+
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}\\
+Other antiderivatives are vertical shifts of this one.}
+
 \printreview
-\exinput{exercises/05_01_ex_40}
-\exinput{exercises/05_01_ex_41}
+
+\exercise{Use information gained from the first and second derivatives to sketch $\ds f(x) = \frac{1}{e^x+1}$.}{No answer provided.}
+
+\exercise{Given $y = x^2e^x\cos x$, find $dy$.}{$dy = (2xe^x\cos x+ x^2e^x\cos x- x^2e^x\sin x)dx$}

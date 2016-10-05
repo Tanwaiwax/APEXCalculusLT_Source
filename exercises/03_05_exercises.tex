@@ -1,15 +1,74 @@
 \printconcepts
-\exinput{exercises/03_05_ex_01}
-\exinput{exercises/03_05_ex_03}
-\exinput{exercises/03_05_ex_04}
-\exinput{exercises/03_05_ex_05}
+\exercise{Why is sketching curves by hand beneficial even though technology is readily available?
+}{Answers will vary.
+}
+
+\exercise{T/F: When sketching graphs of functions, it is useful to find the critical points.
+}{T
+}
+
+\exercise{T/F: When sketching graphs of functions, it is useful to find the possible points of inflection.
+}{T
+}
+
+\exercise{T/F: When sketching graphs of functions, it is useful to find the horizontal and vertical asymptotes.
+}{T
+}
+
 \printproblems
-\exinput{exercises/03_05_ex_35}
-\exinput{exercises/03_05_ex_36}
-\exinput{exercises/03_05_ex_37}
+\exercise{Given the graph of $f$, identify the concavity of $f$, its inflection points, its regions of increasing and decreasing, and its relative extrema.\\
+\begin{tikzpicture}
+\begin{axis}[width=.4\textwidth,tick label style={font=\scriptsize },
+	axis y line=middle,axis x line=middle,
+    ymin=-5,ymax=5,
+	xmin=-3,xmax=3,name=myplot]
+\addplot [{\colorone},smooth,thick,domain=-3:3] {x^2*(x^2-6)+4};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+}{concave up on $(-\infty,-1)\cup(1,\infty)$\\
+concave down on $(-1,1)$\\
+inflection points when $x=\pm1$\\
+increasing on $(-2,0)\cup(2,\infty)$\\
+decreasing on $(-\infty,-2)\cup(0,2)$\\
+relative maximum when $x=0$\\
+relative minima when $x=\pm2$
+}
+
+\exercise{Given the graph of $\fp$, identify the concavity of $f$, its inflection points, its regions of increasing and decreasing, and its relative extrema.\\
+\begin{tikzpicture}
+\begin{axis}[width=.4\textwidth,tick label style={font=\scriptsize },
+	axis y line=middle,axis x line=middle,
+    ymin=-5,ymax=5,
+	xmin=-3,xmax=3,name=myplot]
+\addplot [{\colorone},smooth,thick,domain=-3:3] {x^2*(x^2-6)+4};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+}{concave up on $(-2,0)\cup(2,\infty)$\\
+concave down on $(-\infty,-2)\cup(0,2)$\\
+inflection points when $x=0,\pm2$\\
+increasing on $(-\infty,-2.3)\cup(-1,1)\cup(2.3,\infty)$\\
+decreasing on $(-2.3,-1)\cup(1,2.3)$\\
+relative maximum when $x=-2.3,1$\\
+relative minima when $x=-1,2.3$}
+
+\exercise{Sketch the graph of a function that is\\
+concave up on $(-\infty,-1)\cup(1,\infty)$;\\
+concave down on $(-1,1)$;\\
+increasing on $(-\infty,0)$; and\\
+decreasing on $(0,\infty)$.}{various possibilities}
+
 \ifthenelse{\boolean{printquestions}}{\columnbreak}{}
-\exsetinput{exercises/03_05_exset_01}
-\exsetinput{exercises/03_05_exset_02}
+\input{exercises/03_05_exset_01}
+\input{exercises/03_05_exset_02}
 \ifthenelse{\boolean{printquestions}}{\columnbreak}{}
-\exsetinput{exercises/03_05_exset_03}
-\exinput{exercises/03_05_ex_29}
+\input{exercises/03_05_exset_03}
+\exercise{Given $x^2+y^2=1$, use implicit differentiation to find $\dfrac{dy}{dx}$ and $\dfrac{d^2y}{dx^2}$. Use this information to justify the sketch of the unit circle.
+}{$\dfrac{dy}{dx} = -x/y$, so the function is increasing in second and fourth quadrants, decreasing in the first and third quadrants.
+
+$\dfrac{d^2y}{dx^2} = -1/y^3$, which is positive when $y<0$ and is negative when $y>0$. Hence the function is concave down in the first and second quadrants and concave up in the third and fourth quadrants.
+}
+

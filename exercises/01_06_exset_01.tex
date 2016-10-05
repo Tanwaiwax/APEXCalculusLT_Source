@@ -1,8 +1,123 @@
-{\noindent In Exercises}
-{, evaluate the given limits using the graph of the function.}
-\exinput{exercises/01_06_ex_09}
-\exinput{exercises/01_06_ex_10}
-\exinput{exercises/01_06_ex_11}
-\exinput{exercises/01_06_ex_12}
-\exinput{exercises/01_06_ex_13}
-\exinput{exercises/01_06_ex_40}
+\exerciseset{In Exercises}{, evaluate the given limits using the graph of the function.}{
+
+\exercise{$\ds f(x) = \frac{1}{(x+1)^2}$
+\begin{enumerate}
+\item		$\ds \lim_{x\to -1^-} f(x)$
+\item		$\ds \lim_{x\to -1^+} f(x)$
+\end{enumerate}
+
+\myincludegraphics[scale=.8]{figures/fig01_06_ex_09}
+\ifthenelse{\boolean{printquestions}}{\columnbreak}{}
+}{\begin{enumerate}
+\item	$\infty$
+\item	$\infty$
+\end{enumerate}
+}
+
+\exercise{$\ds f(x) = \frac{1}{(x-3)(x-5)^2}$.
+
+\begin{minipage}[t]{.49\linewidth}
+\begin{enumerate}
+\item		$\ds \lim_{x\to 3^-} f(x)$
+\item		$\ds \lim_{x\to 3^+} f(x)$
+\item		$\ds \lim_{x\to 3} f(x)$
+\end{enumerate}
+\end{minipage}
+\begin{minipage}[t]{.49\linewidth}
+\begin{enumerate}\addtocounter{enumii}{3}
+\item		$\ds \lim_{x\to 5^-} f(x)$
+\item		$\ds \lim_{x\to 5^+} f(x)$
+\item		$\ds \lim_{x\to 5} f(x)$
+\end{enumerate}
+\end{minipage}\\
+\begin{tikzpicture}
+ \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
+   axis y line=middle,axis x line=middle,name=myplot,
+   ymin=-55,ymax=55,xmin=1.5,xmax=6.5]
+  \addplot [thick,{\colorone},domain=1.5:2.995,samples=50] {1/((x-3)*(x-5)^2)};
+  \addplot [thick,{\colorone},domain=3.005:4.902,samples=50] {1/((x-3)*(x-5)^2)};
+  \addplot [thick,{\colorone},domain=5.094:6.5,samples=50] {1/((x-3)*(x-5)^2)};
+  \draw [{\colorone},dashed] (axis cs:3,55) -- (axis cs:3,-55);
+  \draw [{\colorone},dashed] (axis cs:5,55) -- (axis cs:5,-55);
+ \end{axis}
+ \node [right] at (myplot.right of origin) {\scriptsize $x$};
+ \node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+%
+%\myincludegraphics[scale=.8]{figures/fig01_06_ex_10}
+}{\begin{enumerate}
+\item	$-\infty$
+\item	$\infty$
+\item	Limit does not exist
+\item	$\infty$
+\item	$\infty$
+\item	$\infty$
+\end{enumerate}
+}
+
+\exercise{$\ds f(x) = \frac{1}{e^x+1}$
+
+\begin{minipage}[t]{.49\linewidth}
+\begin{enumerate}
+\item		$\ds \lim_{x\to -\infty} f(x)$
+\item		$\ds \lim_{x\to \infty} f(x)$
+\end{enumerate}
+\end{minipage}
+\begin{minipage}[t]{.49\linewidth}
+\begin{enumerate}\addtocounter{enumii}{2}
+\item		$\ds \lim_{x\to 0^-} f(x)$
+\item		$\ds \lim_{x\to 0^+} f(x)$
+\end{enumerate}
+\end{minipage}
+
+\myincludegraphics[scale=.8]{figures/fig01_06_ex_11}
+}{\begin{enumerate}
+\item	$1$
+\item	$0$
+\item	$1/2$
+\item	$1/2$
+\end{enumerate}
+}
+
+\exercise{$\ds f(x) = x^2\sin (\pi x)$
+
+\begin{enumerate}
+\item		$\ds \lim_{x\to -\infty} f(x)$
+\item		$\ds \lim_{x\to \infty} f(x)$
+\end{enumerate}
+
+\myincludegraphics[scale=.8]{figures/fig01_06_ex_12}
+\ifthenelse{\boolean{printquestions}}{\columnbreak}{}
+}{\begin{enumerate}
+\item	Limit does not exist
+\item	Limit does not exist
+\end{enumerate}
+}
+
+\exercise{$\ds f(x) = \cos (x)$
+
+\begin{enumerate}
+\item		$\ds \lim_{x\to -\infty} f(x)$
+\item		$\ds \lim_{x\to \infty} f(x)$
+\end{enumerate}
+
+\myincludegraphics[scale=.8]{figures/fig01_06_ex_13}
+}{\begin{enumerate}
+\item	Limit does not exist
+\item	Limit does not exist
+\end{enumerate}
+}
+
+\exercise{$\ds f(x) = 2^x+10$
+\begin{enumerate}
+\item		$\ds \lim_{x\to -\infty} f(x)$
+\item		$\ds \lim_{x\to \infty} f(x)$
+\end{enumerate}
+
+\myincludegraphics[scale=.8]{figures/fig01_06_ex_40}
+}{\begin{enumerate}
+\item	$10$
+\item	$\infty$
+\end{enumerate}
+}
+}

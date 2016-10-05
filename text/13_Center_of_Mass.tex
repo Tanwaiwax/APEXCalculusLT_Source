@@ -6,11 +6,11 @@ To find the area of a planar region, we evaluated the double integral $\iint_R\ 
 
 To find the signed volume under a surface, we evaluated the double integral $\iint_R f(x,y)\ dA$. Recall that the ``$dA$'' is not just a ``bookend'' at the end of an integral; rather, it is multiplied by $f(x,y)$. We regard $f(x,y)$ as giving a height, and $dA$ still giving an area: $f(x,y)\ dA$ gives a volume. Thus, informally, $\iint_Rf(x,y)\ dA$ means ``sum up lots of little volumes over $R$.''
 
-We now extend these ideas to other contexts.\\
+We now extend these ideas to other contexts.
 
-\noindent\textbf{\large Mass and Weight}\\
+\subsection*{Mass and Weight}
 
-Consider a thin sheet of material with constant thickness and finite area. Mathematicians (and physicists and engineers) call such a sheet a \textbf{lamina}. So consider a lamina, as shown in Figure \ref{fig:mass_intro}(a),  with the shape of some planar region $R$, as shown in part (b).
+Consider a thin sheet of material with constant thickness and finite area. Mathematicians (and physicists and engineers) call such a sheet a \textbf{lamina}. So consider a lamina, as shown in \autoref{fig:mass_intro}(a),  with the shape of some planar region $R$, as shown in part (b).
 \index{lamina}\index{mass}
 \mtable{Illustrating the concept of a lamina.}{fig:mass_intro}{%
 \begin{tabular}{c}
@@ -43,18 +43,17 @@ $$\text{mass } M = \iint_R\ dm = \iint_R \delta(x,y)\ dA.$$
 
 \example{ex_mass1}{Finding the mass of a lamina with constant density}{
 Find the mass of a square lamina, with side length 1, with a density of $\delta = 3$gm/cm$^2$.}
-{We represent the lamina with a square region in the plane as shown in Figure \ref{fig:mass1}. As the density is constant, it does not matter where we place the square.
-\mfigure{0in}{A region $R$ representing a lamina in Example \ref{ex_mass1}.}{fig:mass1}{figures/figmass1}
+{We represent the lamina with a square region in the plane as shown in \autoref{fig:mass1}. As the density is constant, it does not matter where we place the square.
+\mfigure{0in}{A region $R$ representing a lamina in \autoref{ex_mass1}.}{fig:mass1}{figures/figmass1}
 
-Following Definition \ref{def:mass}, the mass $M$ of the lamina is
+Following \autoref{def:mass}, the mass $M$ of the lamina is
 $$M = \iint_R 3\ dA = \int_0^1\int_0^1 3\ dx\ dy = 3\int_0^1\int_0^1 \ dx\ dy=3\text{gm}.$$
 
-This is all very straightforward; note that all we really did was find the area of the lamina and multiply it by the constant density of 3gm/cm$^2$.
-}\\
+This is all very straightforward; note that all we really did was find the area of the lamina and multiply it by the constant density of 3gm/cm$^2$.}
 
 \example{ex_mass2}{Finding the mass of a lamina with variable density}{
-Find the mass of a square lamina, represented by the unit square with lower lefthand corner at the origin (see Figure \ref{fig:mass1}), with variable density $\delta(x,y) = (x+y+2)$gm/cm$^2$.}
-{The variable density $\delta$, in this example, is very uniform, giving a density of 3 in the center of the square and changing linearly. A graph of $\delta(x,y)$ can be seen in Figure \ref{fig:mass2}; notice how ``same amount'' of density is above $z=3$ as below. We'll comment on the significance of this momentarily.
+Find the mass of a square lamina, represented by the unit square with lower lefthand corner at the origin (see \autoref{fig:mass1}), with variable density $\delta(x,y) = (x+y+2)$gm/cm$^2$.}
+{The variable density $\delta$, in this example, is very uniform, giving a density of 3 in the center of the square and changing linearly. A graph of $\delta(x,y)$ can be seen in \autoref{fig:mass2}; notice how ``same amount'' of density is above $z=3$ as below. We'll comment on the significance of this momentarily.
 
 The mass $M$ is found by integrating $\delta(x,y)$ over $R$. The order of integration is not important; we choose $dx\ dy$ arbitrarily. Thus:
 \begin{align*}
@@ -71,13 +70,12 @@ M = \iint_R(x+y+2)\ dA &= \int_0^1\int_0^1 (x+y+2)\ dx\ dy\\
 3Dcoo=26.242107391357422 100.81001281738281 52.60980224609375,
 3Droo=149.9999999399336,
 3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.25}{0in}{Graphing the density functions in Examples \ref{ex_mass1} and \ref{ex_mass2}.}{fig:mass2}{figures/figmass2}
-%\mfigure[scale=1.25]{0in}{Graphing the density function in Example \ref{ex_mass2}.}{fig:mass2}{figures/figmass2}
-It turns out that since since the density of the lamina is so uniformly distributed ``above and below'' $z=3$ that the mass of the lamina is the same as if it had a constant density of 3. The density functions in Examples \ref{ex_mass1} and \ref{ex_mass2} are graphed in Figure \ref{fig:mass2}, which illustrates this concept.
-}\\
+%\mfigure[scale=1.25]{0in}{Graphing the density function in \autoref{ex_mass2}.}{fig:mass2}{figures/figmass2}
+It turns out that since since the density of the lamina is so uniformly distributed ``above and below'' $z=3$ that the mass of the lamina is the same as if it had a constant density of 3. The density functions in Examples \ref{ex_mass1} and \ref{ex_mass2} are graphed in \autoref{fig:mass2}, which illustrates this concept.}
 
 \example{ex_mass3}{Finding the weight of a lamina with variable density}{
 Find the weight of the lamina represented by the circle with radius 2ft, centered at the origin, with density function $\delta(x,y) = (x^2+y^2+1)$lb/ft$^2$. Compare this to the weight of the same lamina with density $\delta(x,y) = (2\sqrt{x^2+y^2}+1)$lb/ft$^2$.}
-{A direct application of Definition \ref{def:mass} states that the weight of the lamina is $\iint_R\delta(x,y)\ dA$. Since our lamina is in the shape of a circle, it makes sense to approach the double integral using polar coordinates.
+{A direct application of \autoref{def:mass} states that the weight of the lamina is $\iint_R\delta(x,y)\ dA$. Since our lamina is in the shape of a circle, it makes sense to approach the double integral using polar coordinates.
 
 The density function $\delta(x,y) = x^2+y^2+1$ becomes $\delta(r,\theta) = (r\cos\theta)^2+(r\sin\theta)^2+1 = r^2+1$. The circle is bounded by $0\leq r\leq 2$ and $0\leq\theta\leq2\pi$. Thus the weight $W$ is:
 \begin{align*}
@@ -94,8 +92,8 @@ W &= \int_0^{2\pi}\int_0^2 (2r+1)r\ dr\ d\theta\\
 	&= \int_0^{2\pi} \left(\frac{22}3\right)\ d\theta\\
 	&= \frac{44}3\pi \approx 46.08\text{lb}.
 \end{align*}
-One would expect different density functions to return different weights, as we have here. The density functions were chosen, though, to be similar: each gives a density of 1 at the origin and a density of 5 at the outside edge of the circle, as seen in Figure \ref{fig:mass3}.\\
-%\mtable{Graphing the density functions in Example \ref{ex_mass3}. In (a) is the density function $\delta(x,y) = x^2+y^2+1$; in (b) is $\delta(x,y) = 2\sqrt{x^2+y^2}+1$.}{fig:mass3}{%
+One would expect different density functions to return different weights, as we have here. The density functions were chosen, though, to be similar: each gives a density of 1 at the origin and a density of 5 at the outside edge of the circle, as seen in \autoref{fig:mass3}.\\
+%\mtable{Graphing the density functions in \autoref{ex_mass3}. In (a) is the density function $\delta(x,y) = x^2+y^2+1$; in (b) is $\delta(x,y) = 2\sqrt{x^2+y^2}+1$.}{fig:mass3}{%
 %\begin{tabular}{c}
 %\myincludegraphics[scale=1.25,trim=1mm 0mm 1mm 0mm,clip]{figures/figmass3a}\\
 %(a)\\
@@ -127,17 +125,16 @@ One would expect different density functions to return different weights, as we 
 (a) & & (b) 
 \end{tabular}%
 \captionsetup{type=figure}%
-\caption{Graphing the density functions in Example \ref{ex_mass3}. In (a) is the density function $\delta(x,y) = x^2+y^2+1$; in (b) is $\delta(x,y) = 2\sqrt{x^2+y^2}+1$.}\label{fig:mass3}
+\caption{Graphing the density functions in \autoref{ex_mass3}. In (a) is the density function $\delta(x,y) = x^2+y^2+1$; in (b) is $\delta(x,y) = 2\sqrt{x^2+y^2}+1$.}\label{fig:mass3}
 \end{figure}%{minipage}\\
 
-Notice how $x^2+y^2+1 \leq 2\sqrt{x^2+y^2}+1$ over the circle; this results in less weight.
-}\\
+Notice how $x^2+y^2+1 \leq 2\sqrt{x^2+y^2}+1$ over the circle; this results in less weight.}
 
 Plotting the density functions can be useful as our understanding of mass can be related to our understanding of ``volume under a surface.'' We interpreted $\iint_R f(x,y)\ dA$ as giving the volume under $f$ over $R$; we can understand $\iint_R\delta(x,y)\ dA$ in the same way. The ``volume'' under $\delta$ over $R$ is actually mass; by compressing the ``volume'' under $\delta$ onto the $x$-$y$ plane, we get ``more mass'' in some areas than others -- i.e., areas of greater density.
 
-Knowing the mass of a lamina is one of several important measures. Another is the \textbf{center of mass}, which we discuss next.\\
+Knowing the mass of a lamina is one of several important measures. Another is the \textbf{center of mass}, which we discuss next.
 
-\noindent\textbf{\large Center of Mass}\\
+\subsection*{Center of Mass}
 
 Consider a disk of radius 1 with uniform density. It is common knowledge that the disk will balance on a point if the point is placed at the center of the disk. What if the disk does not have a uniform density? Through trial-and-error, we should still be able to find a spot on the disk at which the disk will balance on a point. This balance point is referred to as the \textbf{center of mass}, or \textbf{center of gravity}. It is though all the mass is ``centered'' there. In fact, if the disk has a mass of 3kg, the disk will behave physically as though it were a point-mass of 3kg located at its center of mass. For instance, the disk will naturally spin with an axis through its center of mass (which is why it is important to ``balance'' the tires of your car: if they are ``out of balance'', their center of mass will be outside of the axle and it will shake terribly).
 \index{center of mass}\index{mass!center of}
@@ -158,8 +155,7 @@ How this relates to center of mass is given in the following theorem.
 \theorem{thm:center_mass_points}{Center of Mass of Discrete Linear System}
 {Let point masses $m_1,m_2,\ldots,m_n$ be distributed along the $x$-axis at locations $x_1,x_2,\ldots,x_n$, respectively. The center of mass $\overline{x}$ of the system is located at
 \index{center of mass}
-$$\overline{x} = \sum_{i=1}^nm_ix_i\Bigg/\sum_{i=1}^n m_i.$$
-}
+$$\overline{x} = \sum_{i=1}^nm_ix_i\Bigg/\sum_{i=1}^n m_i.$$}
 
 \example{ex_mass4}{Finding the center of mass of a discrete linear system}{
 \begin{enumerate}
@@ -168,9 +164,9 @@ $$\overline{x} = \sum_{i=1}^nm_ix_i\Bigg/\sum_{i=1}^n m_i.$$
 \end{enumerate}
 }
 {\begin{enumerate}
-	\item Following Theorem \ref{thm:center_mass_points}, we compute the center of mass as:
+	\item Following \autoref{thm:center_mass_points}, we compute the center of mass as:
 	$$\overline{x}=\frac{2(-1) + 2(2)+2(3)}{2+2+2} = \frac43 = 1.\overline{3}.$$
-	So the system would balance on a point placed at $x=4/3$, as illustrated in Figure \ref{fig:mass4}(a).
+	So the system would balance on a point placed at $x=4/3$, as illustrated in \autoref{fig:mass4}(a).
 	\mtable{Illustrating point masses along a thin rod and the center of mass.}{fig:mass4}{%
 	\begin{tabular}{c}
 	\myincludegraphics[trim=0mm 10mm 0mm 3mm,clip]{figures/figmass4a}\\
@@ -180,14 +176,12 @@ $$\overline{x} = \sum_{i=1}^nm_ix_i\Bigg/\sum_{i=1}^n m_i.$$
 	\end{tabular}
 	}
 	
-	\item	Again following Theorem \ref{thm:center_mass_points}, we find:
+	\item	Again following \autoref{thm:center_mass_points}, we find:
 	$$\overline{x} = \frac{10(-1)+2(2)+1(3)}{10+2+1} = \frac{-3}{13} \approx -0.23.$$
-	Placing a large weight at the left hand side of the system moves the center of mass left, as shown in Figure \ref{fig:mass4}(b).
-\end{enumerate}
-\vskip-1.5\baselineskip
-}\\
+	Placing a large weight at the left hand side of the system moves the center of mass left, as shown in \autoref{fig:mass4}(b).
+\end{enumerate}}
 
-In a discrete system (i.e., mass is located at individual points, not along a continuum) we find the center of mass by dividing the mass into a \textbf{moment} of the system. In general, a moment is a weighted measure of distance from a particular point or line. In the case described by Theorem \ref{thm:center_mass_points}, we are finding a weighted measure of distances from the $y$-axis, so we refer to this as \textbf{the moment about the $y$-axis}, represented by $M_y$.  Letting $M$ be the total mass of the system, we have  $\overline{x} = M_y/M$. 
+In a discrete system (i.e., mass is located at individual points, not along a continuum) we find the center of mass by dividing the mass into a \textbf{moment} of the system. In general, a moment is a weighted measure of distance from a particular point or line. In the case described by \autoref{thm:center_mass_points}, we are finding a weighted measure of distances from the $y$-axis, so we refer to this as \textbf{the moment about the $y$-axis}, represented by $M_y$.  Letting $M$ be the total mass of the system, we have  $\overline{x} = M_y/M$. 
 
 We can extend the concept of the center of mass of discrete points along a line to the center of mass of discrete points in the plane rather easily. To do so, we define some terms then give a theorem.
 
@@ -215,7 +209,7 @@ $$\overline{x}= \frac{M_y}{M}\quad \text{and}\quad \overline{y} = \frac{M_x}{M}.
 
 \example{ex_mass5}{Finding the center of mass of a discrete planar system}{
 Let point masses of 1kg, 2kg and 5kg be located at points $(2,0)$, $(1,1)$ and $(3,1)$, respectively, and are connected by thin rods of negligible weight. Find the center of mass of the system.}
-{We follow Theorem \ref{thm:center_mass_points_plane} and Definition \ref{def:moment} to find $M$, $M_x$ and $M_y$:
+{We follow \autoref{thm:center_mass_points_plane} and \autoref{def:moment} to find $M$, $M_x$ and $M_y$:
 
 $M = 1+2+5 = 8$kg.
 
@@ -233,10 +227,9 @@ M_y &=  \sum_{i=1}^n m_ix_i \\
 		&= 19.
 \end{align*}
 \end{minipage}
-\mfigure{0in}{Illustrating the center of mass of a discrete planar system in Example \ref{ex_mass5}.}{fig:mass5}{figures/figmass5}
+\mfigure{0in}{Illustrating the center of mass of a discrete planar system in \autoref{ex_mass5}.}{fig:mass5}{figures/figmass5}
 \vskip .5\baselineskip
-Thus the center of mass is $\ds (\overline{x},\overline{y}) = \left(\frac{M_y}{M},\frac{M_x}M\right) = \left(\frac{{19}}8,\frac78\right)  =(2.375,0.875),$ illustrated in Figure \ref{fig:mass5}.
-}\\
+Thus the center of mass is $\ds (\overline{x},\overline{y}) = \left(\frac{M_y}{M},\frac{M_x}M\right) = \left(\frac{{19}}8,\frac78\right)  =(2.375,0.875),$ illustrated in \autoref{fig:mass5}.}
 
 We finally arrive at our true goal of this section: finding the center of mass of a lamina with variable density. While the above measurement of center of mass is interesting, it does not directly answer more realistic situations where we need to find the center of mass of a contiguous region. However, understanding the discrete case allows us to approximate the center of mass of a planar lamina; using calculus, we can refine the approximation to an exact value.
 
@@ -260,56 +253,52 @@ By taking limits, where size of each subregion shrinks to 0 in both the $x$ and 
 \end{enumerate}
 }
 
-We start our practice of finding centers of mass by revisiting some of the lamina used previously in this section when finding mass. We will  just set up the integrals needed to compute $M$, $M_x$ and $M_y$ and leave the details of the integration to the reader.\\
+We start our practice of finding centers of mass by revisiting some of the lamina used previously in this section when finding mass. We will  just set up the integrals needed to compute $M$, $M_x$ and $M_y$ and leave the details of the integration to the reader.
 
 \example{ex_mass6}{Finding the center of mass of a lamina}{
-Find the center mass of a square lamina, with side length 1, with a density of $\delta = 3$gm/cm$^2$. (Note: this is the lamina from Example \ref{ex_mass1}.)}
-{We represent the lamina with a square region in the plane as shown in Figure \ref{fig:mass6} as done previously. 
-\mfigure{0in}{A region $R$ representing a lamina in Example \ref{ex_mass1}.}{fig:mass6}{figures/figmass1}
+Find the center mass of a square lamina, with side length 1, with a density of $\delta = 3$gm/cm$^2$. (Note: this is the lamina from \autoref{ex_mass1}.)}
+{We represent the lamina with a square region in the plane as shown in \autoref{fig:mass6} as done previously. 
+\mfigure{0in}{A region $R$ representing a lamina in \autoref{ex_mass1}.}{fig:mass6}{figures/figmass1}
 
-Following Theorem \ref{thm:center_of_mass}, we find $M$, $M_x$ and $M_y$:
+Following \autoref{thm:center_of_mass}, we find $M$, $M_x$ and $M_y$:
 \begin{align*}
 M &= \iint_R 3\ dA = \int_0^1\int_0^1 3\ dx\ dy =3\text{gm}.\\
 M_x &= \iint_R 3y\ dA = \int_0^1\int_0^1 3y\ dx\ dy =3/2 = 1.5.\\
 M_y &= \iint_R 3x\ dA = \int_0^1\int_0^1 3x\ dx\ dy =3/2 = 1.5.
 \end{align*}
-Thus the center of mass is $\ds (\overline{x},\overline{y}) = \left(\frac{M_y}M,\frac{M_x}M\right) = (1.5/3,1.5/3) = (0.5,0.5).$ This is what we should have expected: the center of mass of a square with constant density is the center of the square.
-}\\
+Thus the center of mass is $\ds (\overline{x},\overline{y}) = \left(\frac{M_y}M,\frac{M_x}M\right) = (1.5/3,1.5/3) = (0.5,0.5).$ This is what we should have expected: the center of mass of a square with constant density is the center of the square.}
 
 \example{ex_mass7}{Finding the center of mass of a lamina}{
-Find the center of mass of a square lamina, represented by the unit square with lower lefthand corner at the origin (see Figure \ref{fig:mass6}), with variable density $\delta(x,y) = (x+y+2)$gm/cm$^2$. (Note: this is the lamina from Example \ref{ex_mass2}.)}
-{We follow Theorem \ref{thm:center_of_mass}, to find $M$, $M_x$ and $M_y$:
+Find the center of mass of a square lamina, represented by the unit square with lower lefthand corner at the origin (see \autoref{fig:mass6}), with variable density $\delta(x,y) = (x+y+2)$gm/cm$^2$. (Note: this is the lamina from \autoref{ex_mass2}.)}
+{We follow \autoref{thm:center_of_mass}, to find $M$, $M_x$ and $M_y$:
 \begin{align*}
 M &= \iint_R (x+y+2)\ dA = \int_0^1\int_0^1 (x+y+2)\ dx\ dy =3\text{gm}.\\
 M_x &= \iint_R y(x+y+2)\ dA = \int_0^1\int_0^1 y(x+y+2)\ dx\ dy =\frac{19}{12}.\\
 M_y &= \iint_R x(x+y+2)\ dA = \int_0^1\int_0^1 x(x+y+2)\ dx\ dy =\frac{19}{12}.
 \end{align*}
-Thus the center of mass is $\ds (\overline{x},\overline{y}) = \left(\frac{M_y}M,\frac{M_x}M\right) = \left(\frac{19}{36},\frac{19}{36}\right) \approx (0.528,0.528).$ While the mass of this lamina is the same as the lamina in the previous example, the greater density found with greater $x$ and $y$ values pulls the center of mass from the center slightly towards the upper righthand corner.
-}\\
+Thus the center of mass is $\ds (\overline{x},\overline{y}) = \left(\frac{M_y}M,\frac{M_x}M\right) = \left(\frac{19}{36},\frac{19}{36}\right) \approx (0.528,0.528).$ While the mass of this lamina is the same as the lamina in the previous example, the greater density found with greater $x$ and $y$ values pulls the center of mass from the center slightly towards the upper righthand corner.}
 
 \example{ex_mass8}{Finding the center of mass of a lamina}{
-Find the center of mass of the lamina represented by the circle with radius 2ft, centered at the origin, with density function $\delta(x,y) = (x^2+y^2+1)$lb/ft$^2$. (Note: this is one of the lamina used in Example \ref{ex_mass3}.)}
-{As done in Example \ref{ex_mass3}, it is best to describe $R$ using polar coordinates.
+Find the center of mass of the lamina represented by the circle with radius 2ft, centered at the origin, with density function $\delta(x,y) = (x^2+y^2+1)$lb/ft$^2$. (Note: this is one of the lamina used in \autoref{ex_mass3}.)}
+{As done in \autoref{ex_mass3}, it is best to describe $R$ using polar coordinates.
 Thus when we compute $M_y$, we will integrate not $x\delta(x,y) = x(x^2+y^2+1)$, but rather $\big(r\cos\theta\big)\delta(r\cos\theta,r\sin\theta) = \big(r\cos\theta\big)\big(r^2+1\big).$ We compute $M$, $M_x$ and $M_y$:
 \begin{align*}
 M &= \int_0^{2\pi}\int_0^2 (r^2+1)r\ dr\ d\theta = 12\pi\approx 37.7\text{lb}.\\
 M_x &= \int_0^{2\pi}\int_0^2 (r\sin\theta)(r^2+1)r \ dr\ d\theta = 0.\\
 M_y &= \int_0^{2\pi}\int_0^2 (r\cos\theta)(r^2+1)r \ dr\ d\theta = 0.\\
 \end{align*}
-Since $R$ and the density of $R$ are both symmetric about the $x$ and $y$ axes, it should come as no big surprise that the moments about each axis is 0. Thus the center of mass is $(\overline{x},\overline{y})=(0,0)$. 
-}\\
+Since $R$ and the density of $R$ are both symmetric about the $x$ and $y$ axes, it should come as no big surprise that the moments about each axis is 0. Thus the center of mass is $(\overline{x},\overline{y})=(0,0)$. }
 
 \example{ex_mass9}{Finding the center of mass of a lamina}{
-Find the center of mass of the lamina represented by the region $R$ shown in Figure \ref{fig:mass9}, half an annulus with outer radius 6 and inner radius 5, with constant density 2lb/ft$^{2}$.}
+Find the center of mass of the lamina represented by the region $R$ shown in \autoref{fig:mass9}, half an annulus with outer radius 6 and inner radius 5, with constant density 2lb/ft$^{2}$.}
 {Once again it will be useful to represent $R$ in polar coordinates. Using the description of $R$ and/or the illustration, we see that $R$ is bounded by $5\leq r\leq 6$ and $0\leq\theta\leq\pi$. As the lamina is symmetric about the $y$-axis, we should expect $M_y=0$. We compute $M$, $M_x$ and $M_y$:
 \begin{align*}
 M &= \int_0^{\pi}\int_5^6 (2)r\ dr\ d\theta = 11\pi\text{lb}.\\
 M_x &= \int_0^{\pi}\int_5^6 (r\sin\theta)(2)r\ dr\ d\theta = \frac{364}3\approx 121.33 .\\
 M_y &= \int_0^{\pi}\int_5^6 (r\cos\theta)(2)r\ dr\ d\theta = 0.\\
 \end{align*}
-\mfigure{0in}{Illustrating the region $R$ in Example \ref{ex_mass9}.}{fig:mass9}{figures/figmass9}
-Thus the center of mass is $(\overline{x},\overline{y}) = \left(0,\frac{364}{33\pi}\right) \approx (0,3.51).$ The center of mass is indicated in Figure \ref{fig:mass9}; note how it lies outside of $R$!
-}\\
+\mfigure{0in}{Illustrating the region $R$ in \autoref{ex_mass9}.}{fig:mass9}{figures/figmass9}
+Thus the center of mass is $(\overline{x},\overline{y}) = \left(0,\frac{364}{33\pi}\right) \approx (0,3.51).$ The center of mass is indicated in \autoref{fig:mass9}; note how it lies outside of $R$.}
 
 This section has shown us another use for iterated integrals beyond finding area or signed volume under the curve. While there are many uses for iterated integrals, we give one more application in the following section: computing surface area.
 

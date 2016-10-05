@@ -1,0 +1,402 @@
+\section{Gradient, Divergence, Curl and Laplacian}
+
+In this final section we will establish some relationships between the gradient, divergence and curl, and we will also introduce a new quantity called the \emph{Laplacian}. We will then show how to write these quantities in cylindrical and spherical coordinates.
+
+For a real-valued function $f(x,y,z)$ on $\Real{3}$, the gradient $\nabla f(x,y,z)$ is a vector-valued function on $\Real{3}$, that is, its value at a point $(x,y,z)$ is the vector
+\[
+ \nabla f(x,y,z) = \left( \frac{\partial f}{\partial x},\frac{\partial f}{\partial y},\frac{\partial f}{\partial z}
+  \right) =
+ \frac{\partial f}{\partial x}\,\textbf{i} + \frac{\partial f}{\partial y}\,\textbf{j} +
+ \frac{\partial f}{\partial z}\,\textbf{k}
+\]
+in $\Real{3}$, where each of the partial derivatives is evaluated at the point $(x,y,z)$. So in this way, you can think of the \emph{symbol} $\nabla$ as being ``applied'' to a real-valued function $f$ to produce a vector $\nabla f$.
+
+It turns out that the divergence and curl can also be expressed in terms of the symbol $\nabla$. This is done by thinking of $\nabla$ as a \emph{vector} in $\Real{3}$, namely\index{$\nabla$}
+\begin{equation}\label{eqn:del}
+ \nabla = \frac{\partial}{\partial x}\,\textbf{i} + \frac{\partial}{\partial y}\,\textbf{j} +
+   \frac{\partial}{\partial z}\,\textbf{k} .
+\end{equation}
+Here, the symbols $\frac{\partial}{\partial x}$, $ \frac{\partial}{\partial y}$ and $\frac{\partial}{\partial z}$ are to be thought of as ``partial derivative operators'' that will get ``applied'' to a real-valued function, say $f(x,y,z)$, to produce the partial derivatives $\frac{\partial f}{\partial x}$, $\frac{\partial f}{\partial y}$ and $\frac{\partial f}{\partial z}$. For instance, $\frac{\partial}{\partial x}$ ``applied'' to $f(x,y,z)$ produces $\frac{\partial f}{\partial x}$.
+
+Is $\nabla$ \emph{really} a vector? Strictly speaking, no, since $\frac{\partial}{\partial x}$, $\frac{\partial}{\partial y}$ and $\frac{\partial}{\partial z}$ are not actual numbers. But it helps to \emph{think} of $\nabla$ as a vector, especially with the divergence and curl, as we will soon see. The process of ``applying'' $\frac{\partial}{\partial x}$, $\frac{\partial}{\partial y}$, $\frac{\partial}{\partial z}$ to a real-valued function $f(x,y,z)$ is normally thought of as \emph{multiplying} the quantities:
+\[
+ \left( \frac{\partial}{\partial x} \right) (f) = \frac{\partial f}{\partial x} ,\quad
+ \left( \frac{\partial}{\partial y} \right) (f) = \frac{\partial f}{\partial y} ,\quad
+ \left( \frac{\partial}{\partial z} \right) (f) = \frac{\partial f}{\partial z}
+\]
+For this reason, $\nabla$ is often referred to as the ``del operator'', since it ``operates'' on functions.
+ 
+For example, it is often convenient to write the divergence $\text{div }\textbf{f}$ as $\Dotprod{\nabla}{\textbf{f}}$, since for a vector field $\textbf{f}(x,y,z) = \ssub{f}{1}(x,y,z)\textbf{i} + \ssub{f}{2}(x,y,z) \textbf{j} + \ssub{f}{3}(x,y,z) \textbf{k}$, the dot product of \textbf{f} with $\nabla$ (thought of as a vector) makes sense:\index{divergence}
+\begin{align*}
+ \Dotprod{\nabla}{\textbf{f}} &= \Dotprod{ \left( \frac{\partial}{\partial x}\,\textbf{i} +
+  \frac{\partial}{\partial y}\,\textbf{j} + \frac{\partial}{\partial z}\,\textbf{k} \right) }{\left( \ssub{f}{1}(x,y,z)
+  \textbf{i} + \ssub{f}{2}(x,y,z) \textbf{j} + \ssub{f}{3}(x,y,z) \textbf{k} \right) }\\
+   &= \left( \frac{\partial}{\partial x} \right) (\ssub{f}{1}) +
+    \left( \frac{\partial}{\partial y} \right) (\ssub{f}{2}) +
+    \left( \frac{\partial}{\partial z} \right) (\ssub{f}{3})\\
+   &= \frac{\partial \ssub{f}{1}}{\partial x} + \frac{\partial \ssub{f}{2}}{\partial y} +
+  \frac{\partial \ssub{f}{3}}{\partial z}\\
+   &= \text{div }\textbf{f}
+\end{align*}
+
+We can also write $\text{curl }\textbf{f}$ in terms of $\nabla$, namely as $\Crossprod{\nabla}{\textbf{f}}$, since for a vector field $\textbf{f}(x,y,z) = P(x,y,z)\textbf{i} + Q(x,y,z)\textbf{j} + R(x,y,z)\textbf{k}$, we have:
+\begin{align*}
+ \Crossprod{\nabla}{\textbf{f}} &=
+ \begin{vmatrix}
+  \textbf{i} & \textbf{j} & \textbf{k} \vspace{1mm}\\ \dfrac{\partial}{\partial x} & \dfrac{\partial}{\partial y} &
+   \dfrac{\partial}{\partial z} \vspace{1mm}\\
+  P(x,y,z) & Q(x,y,z) & R(x,y,z)
+ \end{vmatrix}\\
+ &= \left( \frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z} \right) \textbf{i} -
+    \left( \frac{\partial R}{\partial x} - \frac{\partial P}{\partial z} \right) \textbf{j} +
+    \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) \textbf{k}\\
+ &= \left( \frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z} \right) \textbf{i} +
+    \left( \frac{\partial P}{\partial z} - \frac{\partial R}{\partial x} \right) \textbf{j} +
+    \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) \textbf{k}\\
+ &= \text{curl }\textbf{f}
+\end{align*}
+
+For a real-valued function $f(x,y,z)$, the gradient $\nabla f(x,y,z) =\frac{\partial f}{\partial x}\,\textbf{i} + \frac{\partial f}{\partial y}\,\textbf{j} + \frac{\partial f}{\partial z}\,\textbf{k}$ is a vector field, so we can take its divergence:\index{curl}
+\begin{align*}
+ \text{div }\nabla f &= \Dotprod{\nabla}{\nabla f}\\
+  &= \Dotprod{ \left( \frac{\partial}{\partial x}\,\textbf{i} + \frac{\partial}{\partial y}\,\textbf{j} +
+  \frac{\partial}{\partial z}\,\textbf{k} \right) }{\left( \frac{\partial f}{\partial x}\,\textbf{i} +
+  \frac{\partial f}{\partial y}\,\textbf{j} + \frac{\partial f}{\partial z}\,\textbf{k} \right) }\\
+  &= \frac{\partial}{\partial x}\left( \frac{\partial f}{\partial x} \right) +
+   \frac{\partial}{\partial y}\left( \frac{\partial f}{\partial y} \right) +
+   \frac{\partial}{\partial z}\left( \frac{\partial f}{\partial z} \right)\\
+  &= \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} + \frac{\partial^2 f}{\partial z^2}
+\end{align*}
+Note that this is a real-valued function, to which we will give a special name:
+
+\definition{defn:laplacian}{Laplacian}{For a real-valued function $f(x,y,z)$, the \textbf{Laplacian} of $f$, denoted by $\Delta f$, is given by
+  \begin{equation}\label{eqn:laplacian}
+   \Delta f(x,y,z) = \Dotprod{\nabla}{\nabla f} = \frac{\partial^2 f}{\partial x^2} +
+   \frac{\partial^2 f}{\partial y^2} + \frac{\partial^2 f}{\partial z^2} .
+  \end{equation}}
+
+Often the notation $\nabla^2 f$ is used for the Laplacian instead of $\Delta f$, using the convention $\nabla^2 = \Dotprod{\nabla}{\nabla}$.\index{Laplacian}\index{$\Delta$}\index{$\nabla^2$}
+
+\example{exmp_laplposition}{Computing a Laplacian}{Let $\textbf{r}(x,y,z) = x\,\textbf{i} + y\,\textbf{j} + z\,\textbf{k}$ be the position vector field on  $\Real{3}$. Then $\norm{\textbf{r}(x,y,z)}^2 = \Dotprod{\textbf{r}}{\textbf{r}} = x^2 + y^2 + z^2$ is a real-valued function. Find
+ \begin{enumerate}
+  \item the gradient of $\norm{\textbf{r}}^2$
+  \item the divergence of $\textbf{r}$
+  \item the curl of $\textbf{r}$
+  \item the Laplacian of $\norm{\textbf{r}}^2$
+ \end{enumerate}}{\mbox{}\\[-2\baselineskip]\begin{enumerate}
+\item $\nabla \norm{\textbf{r}}^2 = 2x\,\textbf{i} + 2y\,\textbf{j} + 2z\,\textbf{k}
+  = 2\,\textbf{r}$\vspace{2mm}
+\item $\Dotprod{\nabla}{\textbf{r}} = \frac{\partial}{\partial x}(x) + \frac{\partial}{\partial y}(y) + \frac{\partial}{\partial z}(z) = 1+1+1=3$
+\item
+ \[
+  \Crossprod{\nabla}{\textbf{r}} = \begin{vmatrix}
+  \textbf{i} & \textbf{j} & \textbf{k} \vspace{1mm}\\ \dfrac{\partial}{\partial x} & \dfrac{\partial}{\partial y} &
+   \dfrac{\partial}{\partial z} \\
+  x & y & z
+ \end{vmatrix} = (0-0)\,\textbf{i} - (0-0)\,\textbf{j} + (0-0)\,\textbf{k} = \textbf{0}
+ \]
+\item $\Delta \norm{\textbf{r}}^2 = \frac{\partial^2}{\partial x^2}(x^2 + y^2 + z^2 ) +
+  \frac{\partial^2}{\partial y^2}(x^2 + y^2 + z^2 ) + \frac{\partial^2}{\partial z^2}(x^2 + y^2 + z^2 ) =
+  2+2+2=6$.\\
+  Note that we could have calculated $\Delta \norm{\textbf{r}}^2$ another way, using the $\nabla$ notation along with the first two parts:
+  \[
+   \Delta \norm{\textbf{r}}^2 = \Dotprod{\nabla}{\nabla \norm{\textbf{r}}^2} = \Dotprod{\nabla}{2\,\textbf{r}} =
+   2\,\Dotprod{\nabla}{\textbf{r}} = 2(3) = 6\eoehere
+  \]
+\end{enumerate}}
+
+Notice that in \autoref{exmp_laplposition} if we take the curl of the gradient of $\norm{\textbf{r}}^2$ we get
+\begin{displaymath}
+ \Crossprod{\nabla}{( \nabla \norm{\textbf{r}}^2 )} = \Crossprod{\nabla}{2\,\textbf{r}} =
+ 2\,\Crossprod{\nabla}{\textbf{r}} = 2\,\textbf{0} = \textbf{0} .
+\end{displaymath}
+The following theorem shows that this will be the case in general:
+
+\theorem{thm:curlgrad0}{Gradient is Irrotational}{For any smooth real-valued function $f(x,y,z)$, $\Crossprod{\nabla}{(\nabla f)} = \textbf{0}$.}
+
+\begin{proof}
+ We see by the smoothness of $f$ that
+ \begin{align*}
+  \Crossprod{\nabla}{(\nabla f)} &= \begin{vmatrix}
+   \textbf{i} & \textbf{j} & \textbf{k} \vspace{1mm}\\ \dfrac{\partial}{\partial x} & \dfrac{\partial}{\partial y} &
+    \dfrac{\partial}{\partial z} \vspace{1mm}\\
+   \dfrac{\partial f}{\partial x} & \dfrac{\partial f}{\partial y} & \dfrac{\partial f}{\partial z}
+   \end{vmatrix}\\
+  &= \left( \frac{\partial^2 f}{\partial y\,\partial z}-\frac{\partial^2 f}{\partial z\,\partial y} \right) \,\textbf{i}
+   - \left( \frac{\partial^2 f}{\partial x\,\partial z}-\frac{\partial^2 f}{\partial z\,\partial x} \right) \,\textbf{j}
+   + \left( \frac{\partial^2 f}{\partial x\,\partial y}-\frac{\partial^2 f}{\partial y\,\partial x} \right) \,\textbf{k}
+  = \textbf{0} ,
+ \end{align*}
+ since the mixed partial derivatives in each component are equal.
+\end{proof}
+
+\theorem{cor:curlgrad0}{Potentials are Irrotational}{If a vector field $\textbf{f}(x,y,z)$ has a potential, then $\text{curl }\textbf{f} = \textbf{0}$.}
+
+Another way of stating \autoref{thm:curlgrad0} is that gradients are irrotational. Also, notice that in \autoref{exmp_laplposition} if we take the divergence of the curl of $\textbf{r}$ we trivially get
+\[
+ \Dotprod{\nabla}{(\Crossprod{\nabla}{\textbf{r}})} = \Dotprod{\nabla}{\textbf{0}} = 0 .
+\]
+The following theorem shows that this will be the case in general:
+
+\theorem{thm:divcurl0}{Curl is Divergence Free}{For any smooth vector field $\textbf{f}(x,y,z)$, $\Dotprod{\nabla}{(\Crossprod{\nabla}{\textbf{f}})} = 0$.}
+
+The proof is straightforward and left as an exercise for the reader.
+
+\theorem{cor:divcurl0}{Flux of a Curl Through a Closed Surface}{The flux of the curl of a smooth vector field $\textbf{f}(x,y,z)$ through any closed surface is zero.}
+
+\begin{proof}
+ Let $\Sigma$ be a closed surface which bounds a solid $S$. The flux of $\Crossprod{\nabla}{\textbf{f}}$ through $\Sigma$ is
+ \begin{align*}
+  \iint_{\Sigma} \Dotprod{(\Crossprod{\nabla}{\textbf{f}}\,)}{d\sigma} &=
+   \iiint_{S} \Dotprod{\nabla}{(\Crossprod{\nabla}{\textbf{f}}\,)} dV\quad\text{(by the Divergence Theorem)}\\
+   &= \iiint_{S} 0 dV \quad\text{(by \autoref{thm:divcurl0})}\\
+   &= 0 .\qedhere
+ \end{align*}
+\end{proof}
+
+There is another method for proving \autoref{thm:curlgrad0} which can be useful, and is often used in physics. Namely, if the surface integral $\ds\iint_{\Sigma} f(x,y,z)\,d\sigma = 0$ for \emph{all} surfaces $\Sigma$ in some solid region (usually all of $\Real{3}$), then we must have $f(x,y,z) = 0$ throughout that region. The proof is not trivial, and physicists do not usually bother to prove it. But the result is true, and can also be applied to double and triple integrals.
+
+For instance, to prove \autoref{thm:curlgrad0}, assume that $f(x,y,z)$ is a smooth real-valued function on $\Real{3}$. Let $C$ be a simple closed curve in $\Real{3}$ and let $\Sigma$ be any capping surface for $C$ (i.e., $\Sigma$ is orientable and its boundary is $C$). Since $\nabla f$ is a vector field, then
+\begin{align*}
+ \iint_{\Sigma} \Dotprod{\left( \Crossprod{\nabla}{(\nabla f)} \right) }{\textbf{n}}\,d\sigma &=
+  \oint_{C}\Dotprod{\nabla f}{d\textbf{r}} \quad\text{by Stokes' Theorem, so}\\
+ &= 0 \quad\text{by \autoref{cor:lineintsuffpath3}.}
+\end{align*}
+Since the choice of $\Sigma$ was arbitrary, then we must have $\Dotprod{(\Crossprod{\nabla}{(\nabla f)})}{\textbf{n}} = 0$ throughout $\Real{3}$, where \textbf{n} is any unit vector. Using \textbf{i}, \textbf{j} and \textbf{k} in place of \textbf{n}, we see that we must have $\Crossprod{\nabla}{(\nabla f)} = \textbf{0}$ in $\Real{3}$, which completes the proof.
+
+\example{ex_max_eq}{Maxwell's Equation}{A system of electric charges has a \emph{charge density} $\rho (x,y,z)$ and produces an electrostatic field $\textbf{E}(x,y,z)$ at points $(x,y,z)$ in space. \emph{Gauss' Law} states that
+\[
+  \iint_{\Sigma} \Dotprod{\textbf{E}}{d\sigma} = 4\pi\,\iiint_{S} \rho dV
+ \]
+ for any closed surface $\Sigma$ which encloses the charges, with $S$ being the solid region enclosed by $\Sigma$. Show that $\Dotprod{\nabla}{\textbf{E}} = 4\pi\rho$. This is one of \emph{Maxwell's Equations}.\footnote{In Gaussian (or CGS) units.}}{By the Divergence Theorem, we have
+ \begin{align*}
+  \iiint_{S} \Dotprod{\nabla}{\textbf{E}} dV &= \iint_{\Sigma} \Dotprod{\textbf{E}}{d\sigma}\\
+   &= 4\pi\,\iiint_{S} \rho dV \quad\text{by Gauss' Law, so combining the integrals gives}\\
+   \iiint_{S} ( \Dotprod{\nabla}{\textbf{E}} - 4\pi\rho ) dV &= 0 \quad\text{, so}\\
+   \Dotprod{\nabla}{\textbf{E}} - 4\pi\rho &= 0 \quad\text{since $\Sigma$ and hence $S$ was arbitrary, so}\\
+   \Dotprod{\nabla}{\textbf{E}} &= 4\pi\rho .\eoehere
+ \end{align*}}
+
+Often (especially in physics) it is convenient to use other coordinate systems when dealing with quantities such as the gradient, divergence, curl and Laplacian. We will present the formulas for these in cylindrical and spherical coordinates.
+
+Recall from \autoref{sec:other_systems} that a point $(x,y,z)$ can be represented in cylindrical coordinates $(r, \theta , z)$, where $x=r\cos \theta$, $y=r\sin \theta$, $z=z$. At each point $(r, \theta , z)$, let $\textbf{e}_{r}$, $\textbf{e}_{\theta}$, $\textbf{e}_{z}$ be unit vectors in the direction of increasing $r$, $\theta$, $z$, respectively (see \autoref{fig:on_cyl_sph}(a)). Then $\textbf{e}_{r}$, $\textbf{e}_{\theta}$, $\textbf{e}_{z}$ form an orthonormal set of vectors. Note, by the right-hand rule, that $\Crossprod{\textbf{e}_{z}}{\textbf{e}_{r}}=\textbf{e}_{\theta}$.
+
+\begin{lxfigure}
+ \begin{center}
+ \begin{tabular}{cc}
+  todo make the figure &
+  todo make the figure
+  \\
+  (a)
+  &
+  (b)
+  \end{tabular}
+  \captionof{figure}{Orthonormal vectors in cylindrical (a) and spherical (b) coordinates}
+  \label{fig:on_cyl_sph}
+  \end{center}
+\end{lxfigure}
+
+Similarly, a point $(x,y,z)$ can be represented in spherical coordinates $(\rho, \theta , \phi)$, where $x=\rho\sin \phi \cos \theta$, $y=\rho\sin \phi \sin \theta$, $z=\rho\cos \phi$. At each point $(\rho, \theta , \phi)$, let $\textbf{e}_{\rho}$, $\textbf{e}_{\theta}$, $\textbf{e}_{\phi}$ be unit vectors in the direction of increasing $\rho$, $\theta$, $\phi$, respectively (see \autoref{fig:on_cyl_sph}(b)). Then the vectors $\textbf{e}_{\rho}$, $\textbf{e}_{\theta}$, $\textbf{e}_{\phi}$ are orthonormal.\index{$\textbf{e}_{r}$, $\textbf{e}_{\theta}$, $\textbf{e}_{z}$, $\textbf{e}_{\rho}$, $\textbf{e}_{\phi}$} By the right-hand rule, we see that $\Crossprod{\textbf{e}_{\theta}}{\textbf{e}_{\rho}}=\textbf{e}_{\phi}$.
+
+We can now summarize the expressions for the gradient, divergence, curl and Laplacian in Cartesian, cylindrical and spherical coordinates in the following tables:
+
+\keyidea{ki_cart_sys}{Vector Calculus in Cartesian Coordinates}{For the scalar function $F$ or vector field $\textbf{f} = \ssub{f}{1}\,\textbf{i} + \ssub{f}{2}\,\textbf{j} + \ssub{f}{3}\,\textbf{k}$,
+ \begin{alignat*}{2}
+  \text{gradient} &: & \nabla F
+  &= \frac{\partial F}{\partial x}\,\textbf{i} + \frac{\partial F}{\partial y}\,\textbf{j}
+   + \frac{\partial F}{\partial z}\,\textbf{k}\\
+  \text{divergence} &: & \Dotprod{\nabla}{\textbf{f}}
+  &= \frac{\partial \ssub{f}{1}}{\partial x} +
+   \frac{\partial \ssub{f}{2}}{\partial y} + \frac{\partial \ssub{f}{3}}{\partial z}\\
+  \text{curl} &:  & \Crossprod{\nabla}{\textbf{f}}
+  &=
+   \left( \frac{\partial \ssub{f}{3}}{\partial y} - \frac{\partial \ssub{f}{2}}{\partial z} \right) \textbf{i} +
+   \left( \frac{\partial \ssub{f}{1}}{\partial z} - \frac{\partial \ssub{f}{3}}{\partial x} \right) \textbf{j} +
+   \left( \frac{\partial \ssub{f}{2}}{\partial x} - \frac{\partial \ssub{f}{1}}{\partial y} \right) \textbf{k}\\
+  \text{Laplacian} &: & \Delta\,F
+  &= \frac{\partial^2 F}{\partial x^2} +
+   \frac{\partial^2 F}{\partial y^2} + \frac{\partial^2 F}{\partial z^2}
+ \end{alignat*}}
+
+\keyidea{ki_cyl_sys}{Vector Calculus in Cylindrical Coordinates}{For the scalar function $F$ or vector field $\textbf{f} = f_{r}\,\textbf{e}_{r} + f_{\theta}\,\textbf{e}_{\theta} + f_{z}\,\textbf{e}_{z}$,
+ \begin{alignat*}{2}
+  \text{gradient} &: & \nabla F &= \frac{\partial F}{\partial r}\,\textbf{e}_{r} +
+   \frac{1}{r}\,\frac{\partial F}{\partial \theta}\,\textbf{e}_{\theta} + \frac{\partial F}{\partial z}\,\textbf{e}_{z}\\
+  \text{divergence} &: & \Dotprod{\nabla}{\textbf{f}} &= \frac{1}{r}\,\frac{\partial}{\partial r}(rf_{r}) +
+   \frac{1}{r}\,\frac{\partial f_{\theta}}{\partial \theta} + \frac{\partial f_{z}}{\partial z}\\
+  \text{curl} &:  & \Crossprod{\nabla}{\textbf{f}} &=
+   \left( \frac{1}{r}\,\frac{\partial f_{z}}{\partial \theta} - \frac{\partial f_{\theta}}{\partial z} \right)
+   \textbf{e}_{r} +
+   \left( \frac{\partial f_{r}}{\partial z} - \frac{\partial f_{z}}{\partial r} \right) \textbf{e}_{\theta} +
+   \frac{1}{r} \left( \frac{\partial}{\partial r}(rf_{\theta}) - \frac{\partial f_{r}}{\partial \theta}
+   \right) \textbf{e}_{z}\\
+  \text{Laplacian} &: & \Delta\,F &= \frac{1}{r}\,\frac{\partial}{\partial r} \left( r\frac{\partial F}{\partial r}
+   \right) + \frac{1}{r^2}\frac{\partial^2 F}{\partial \theta^2} + \frac{\partial^2 F}{\partial z^2}
+ \end{alignat*}}
+
+\keyidea{ki_sph_sys}{Vector Calculus in Spherical Coordinates}{For the scalar function $F$ or vector field $\textbf{f} = f_{\rho}\,\textbf{e}_{\rho} + f_{\theta}\,\textbf{e}_{\theta} + f_{\phi}\,\textbf{e}_{\phi}$
+ \begin{alignat*}{2}
+  \text{gradient} &: & \nabla F &= \frac{\partial F}{\partial \rho}\,\textbf{e}_{\rho} +
+   \frac{1}{\rho \sin \phi}\,\frac{\partial F}{\partial \theta}\,\textbf{e}_{\theta} +
+   \frac{1}{\rho}\,\frac{\partial F}{\partial \phi}\,\textbf{e}_{\phi}\\
+  \text{divergence} &: & \Dotprod{\nabla}{\textbf{f}} &= \frac{1}{\rho^2}\,\frac{\partial}{\partial \rho}(\rho^2
+   f_{\rho}) + \frac{1}{\rho \sin \phi}\,\frac{\partial f_{\theta}}{\partial \theta} +
+   \frac{1}{\rho \sin \phi}\,\frac{\partial}{\partial \phi}(\sin \phi \,f_{\theta})\\
+  \text{curl} &:  & \Crossprod{\nabla}{\textbf{f}} &=
+   \frac{1}{\rho \sin \phi} \left( \frac{\partial}{\partial \phi}(\sin \phi\,f_{\theta}) -
+    \frac{\partial f_{\phi}}{\partial \theta} \right) \textbf{e}_{\rho} +
+   \frac{1}{\rho} \left( \frac{\partial}{\partial \rho}(\rho f_{\phi}) - \frac{\partial f_{\rho}}{\partial \phi}
+    \right) \textbf{e}_{\theta}\\
+    &\mathrel{\phantom{:}}  & &\mathrel{\phantom{=}} {} +
+    \left( \frac{1}{\rho \sin \phi}\,\frac{\partial f_{\rho}}{\partial \theta} -
+    \frac{1}{\rho}\,\frac{\partial}{\partial \rho}(\rho f_{\theta}) \right) \textbf{e}_{\phi}\\
+  \text{Laplacian} &: & \Delta\,F &= \frac{1}{\rho^2}\,\frac{\partial}{\partial \rho} \left( \rho^2 \,
+   \frac{\partial F}{\partial \rho} \right) + \frac{1}{\rho^2 \sin^2 \phi}\,\frac{\partial^2 F}{\partial \theta^2} +
+   \frac{1}{\rho^2 \sin \phi}\,\frac{\partial}{\partial \phi} \left( \sin \phi \,\frac{\partial F}{\partial \phi}
+   \right)
+ \end{alignat*}}
+
+The derivation of the above formulas for cylindrical and spherical coordinates is straightforward but extremely tedious. The basic idea is to take the Cartesian equivalent of the quantity in question and to substitute into that formula\index{coordinates!cylindrical}\index{coordinates!spherical} using the appropriate coordinate transformation. As an example, we will derive the formula for the gradient in spherical coordinates.\index{gradient}\index{divergence}\index{curl}\index{Laplacian}
+
+\example{ex_sph_grad}{Spherical Coordinates Gradient}{Show that the gradient of a real-valued function $F(\rho,\theta,\phi)$ in spherical coordinates is:
+\[
+ \nabla F = \frac{\partial F}{\partial \rho}\,\textbf{e}_{\rho} +
+  \frac{1}{\rho \sin \phi}\,\frac{\partial F}{\partial \theta}\,\textbf{e}_{\theta} +
+  \frac{1}{\rho}\,\frac{\partial F}{\partial \phi}\,\textbf{e}_{\phi}
+\]}{The idea is that in the Cartesian gradient formula $\nabla F(x,y,z) = \frac{\partial F}{\partial x}\,\textbf{i} + \frac{\partial F}{\partial y}\,\textbf{j} + \frac{\partial F}{\partial z}\,\textbf{k}$, we want to put the Cartesian basis vectors \textbf{i}, \textbf{j}, \textbf{k} in terms of the spherical coordinate basis vectors $\textbf{e}_{\rho}$, $\textbf{e}_{\theta}$, $\textbf{e}_{\phi}$ and functions of $\rho$, $\theta$ and $\phi$. Then put the partial derivatives $\frac{\partial F}{\partial x}$, $\frac{\partial F}{\partial y}$, $\frac{\partial F}{\partial z}$ in terms of $\frac{\partial F}{\partial \rho}$, $\frac{\partial F}{\partial \theta}$, $\frac{\partial F}{\partial \phi}$ and functions of $\rho$, $\theta$ and $\phi$.
+
+Our first step is to get formulas for $\textbf{e}_{\rho}$, $\textbf{e}_{\theta}$, $\textbf{e}_{\phi}$ in terms of \textbf{i}, \textbf{j}, \textbf{k}.
+
+We can see from \autoref{fig:on_cyl_sph}(b) that the unit vector $\textbf{e}_{\rho}$ in the $\rho$ direction at a general point $(\rho,\theta,\phi)$ is $\textbf{e}_{\rho} = \frac{\textbf{r}}{\norm{\textbf{r}}}$, where $\textbf{r} = x\,\textbf{i} + y\,\textbf{j} + z\,\textbf{k}$ is the position vector of the point in Cartesian coordinates. Thus,
+\[
+ \textbf{e}_{\rho} = \frac{\textbf{r}}{\norm{\textbf{r}}}
+  = \frac{x\,\textbf{i} + y\,\textbf{j} + z\,\textbf{k}}{\sqrt{x^2 + y^2 + z^2}} ,
+\]
+so using $x=\rho\sin \phi \cos \theta$, $y=\rho\sin \phi \sin \theta$, $z=\rho\cos \phi$, and $\rho = \sqrt{x^2 + y^2 + z^2}$, we get:
+\begin{equation}
+ \textbf{e}_{\rho} = \sin\phi\,\cos\theta\,\textbf{i} + \sin\phi\,\sin\theta\,\textbf{j} + \cos\phi\,\textbf{k}
+\end{equation}
+
+Now, since the angle $\theta$ is measured in the $xy$-plane, then the unit vector $\textbf{e}_{\theta}$ in the $\theta$ direction must be parallel to the $xy$-plane. That is, $\textbf{e}_{\theta}$ is of the form $a\,\textbf{i} + b\,\textbf{j} + 0\,\textbf{k}$. To figure out what $a$ and $b$ are, note that since $\textbf{e}_{\theta} \perp \textbf{e}_{\rho}$, then in particular $\textbf{e}_{\theta} \perp \textbf{e}_{\rho}$ when $\textbf{e}_{\rho}$ is in the $xy$-plane. That occurs when the angle $\phi$ is $\pi/2$. Putting $\phi = \pi/2$ into the formula for $\textbf{e}_{\rho}$ gives $\textbf{e}_{\rho} = \cos\theta\,\textbf{i} + \sin\theta\,\textbf{j} + 0\,\textbf{k}$, and we see that a vector perpendicular to that is $-\sin\theta\,\textbf{i} + \cos\theta\,\textbf{j} + 0\,\textbf{k}$. Since this vector is also a unit vector and points in the (positive) $\theta$ direction, it must be $\textbf{e}_{\theta}$:
+\begin{equation}
+ \textbf{e}_{\theta} = -\sin\theta\,\textbf{i} + \cos\theta\,\textbf{j} + 0\,\textbf{k}
+\end{equation}
+
+Lastly, since $\textbf{e}_{\phi}=\Crossprod{\textbf{e}_{\theta}}{\textbf{e}_{\rho}}$, we get:
+\begin{equation}
+ \textbf{e}_{\phi} = \cos\phi\,\cos\theta\,\textbf{i} + \cos\phi\,\sin\theta\,\textbf{j} - \sin\phi\,\textbf{k}
+\end{equation}
+
+Now that we have formulas for the three spherical unit vectors, our next step is to solve those for \textbf{i}, \textbf{j}, \textbf{k} in terms of $\textbf{e}_{\rho}$, $\textbf{e}_{\theta}$, $\textbf{e}_{\phi}$.
+
+This comes down to solving a system of three equations in three unknowns. There are many ways of doing this, but we will do it by combining the formulas for $\textbf{e}_{\rho}$ and $\textbf{e}_{\phi}$ to eliminate \textbf{k}, which will give us an equation involving just \textbf{i} and \textbf{j}. This, with the formula for $\textbf{e}_{\theta}$, will then leave us with a system of two equations in two unknowns (\textbf{i} and \textbf{j}), which we will use to solve first for \textbf{j} then for \textbf{i}. Lastly, we will solve for \textbf{k}.
+
+First, note that
+\[
+ \sin\phi\,\textbf{e}_{\rho} + \cos\phi\,\textbf{e}_{\phi} = \cos\theta\,\textbf{i} + \sin\theta\,\textbf{j}
+\]
+so that
+\[
+ \sin\theta\,(\sin\phi\,\textbf{e}_{\rho} + \cos\phi\,\textbf{e}_{\phi}) + \cos\theta\,\textbf{e}_{\theta} =
+  (\sin^2 \theta + \cos^2 \theta)\textbf{j} = \textbf{j} ,
+\]
+and so:
+\begin{equation}\label{j_sphere}
+ \textbf{j} = \sin\phi\,\sin\theta\,\textbf{e}_{\rho} + \cos\theta\,\textbf{e}_{\theta} + \cos\phi\,\sin\theta\,\textbf{e}_{\phi}
+\end{equation}
+
+Likewise, we see that
+\[
+ \cos\theta\,(\sin\phi\,\textbf{e}_{\rho} + \cos\phi\,\textbf{e}_{\phi}) - \sin\theta\,\textbf{e}_{\theta} =
+  (\cos^2 \theta + \sin^2 \theta)\textbf{i} = \textbf{i} ,
+\]
+and so:
+\begin{equation}\label{i_sphere}
+ \textbf{i} = \sin\phi\,\cos\theta\,\textbf{e}_{\rho} - \sin\theta\,\textbf{e}_{\theta} + \cos\phi\,\cos\theta\,\textbf{e}_{\phi}
+\end{equation}
+
+Lastly, we see that:
+\begin{equation}\label{k_sphere}
+ \textbf{k} = \cos\phi\,\textbf{e}_{\rho} - \sin\phi\,\textbf{e}_{\phi}
+\end{equation}
+
+Now that we have formulas for the three Cartesian unit vectors, our next step is to get formulas for $\frac{\partial F}{\partial \rho}$, $\frac{\partial F}{\partial \theta}$, $\frac{\partial F}{\partial \phi}$ in terms of $\frac{\partial F}{\partial x}$, $\frac{\partial F}{\partial y}$, $\frac{\partial F}{\partial z}$.
+
+By the Chain Rule, we have
+\begin{align*}
+ \frac{\partial F}{\partial \rho} &= \frac{\partial F}{\partial x}\,\frac{\partial x}{\partial \rho} +
+  \frac{\partial F}{\partial y}\,\frac{\partial y}{\partial \rho} +
+  \frac{\partial F}{\partial z}\,\frac{\partial z}{\partial \rho} ,\\
+ \frac{\partial F}{\partial \theta} &= \frac{\partial F}{\partial x}\,\frac{\partial x}{\partial \theta} +
+  \frac{\partial F}{\partial y}\,\frac{\partial y}{\partial \theta} +
+  \frac{\partial F}{\partial z}\,\frac{\partial z}{\partial \theta} ,\\
+ \frac{\partial F}{\partial \phi} &= \frac{\partial F}{\partial x}\,\frac{\partial x}{\partial \phi} +
+  \frac{\partial F}{\partial y}\,\frac{\partial y}{\partial \phi} +
+  \frac{\partial F}{\partial z}\,\frac{\partial z}{\partial \phi} ,
+\end{align*}
+which yields:
+\begin{align}
+ \frac{\partial F}{\partial \rho} &= \sin\phi\,\cos\theta\,\frac{\partial F}{\partial x} +
+  \sin\phi\,\sin\theta\,\frac{\partial F}{\partial y} + \cos\phi\,\frac{\partial F}{\partial z}\\
+ \frac{\partial F}{\partial \theta} &= -\rho\sin\phi\,\sin\theta\,\frac{\partial F}{\partial x} +
+  \rho\sin\phi\,\cos\theta\,\frac{\partial F}{\partial y}\\
+ \frac{\partial F}{\partial \phi} &= \rho\cos\phi\,\cos\theta\,\frac{\partial F}{\partial x} +
+  \rho\cos\phi\,\sin\theta\,\frac{\partial F}{\partial y} - \rho\sin\phi\,\frac{\partial F}{\partial z}
+\end{align}
+
+Our next step is to invert the previous relation to solve for $\frac{\partial F}{\partial x}$, $\frac{\partial F}{\partial y}$, $\frac{\partial F}{\partial z}$ in terms of $\frac{\partial F}{\partial \rho}$, $\frac{\partial F}{\partial \theta}$, $\frac{\partial F}{\partial \phi}$.
+
+Again, this involves solving a system of three equations in three unknowns. Using a similar process of elimination as before, we get:
+\begin{align}
+ \frac{\partial F}{\partial x} &= \frac{1}{\rho\sin\phi}\left( \rho\sin^2\phi\,\cos\theta\,
+  \frac{\partial F}{\partial \rho} - \sin\theta\,\frac{\partial F}{\partial \theta} + \sin\phi\,\cos\phi\,\cos\theta\,
+  \frac{\partial F}{\partial \phi} \right)\\
+ \frac{\partial F}{\partial y} &= \frac{1}{\rho\sin\phi}\left( \rho\sin^2\phi\,\sin\theta\,
+  \frac{\partial F}{\partial \rho} + \cos\theta\,\frac{\partial F}{\partial \theta} + \sin\phi\,\cos\phi\,\sin\theta\,
+  \frac{\partial F}{\partial \phi} \right)\\
+ \frac{\partial F}{\partial z} &= \frac{1}{\rho}\left( \rho\cos\phi\,\frac{\partial F}{\partial \rho} -
+  \sin\phi\,\frac{\partial F}{\partial \phi} \right)\label{partials_cart_sphere}
+\end{align}
+
+Finally, we substitute the Equations \eqref{j_sphere}, \eqref{i_sphere}, \eqref{k_sphere}, and \eqref{partials_cart_sphere} into the Cartesian gradient formula $\nabla F(x,y,z) = \frac{\partial F}{\partial x}\,\textbf{i} + \frac{\partial F}{\partial y}\,\textbf{j} + \frac{\partial F}{\partial z}\,\textbf{k}$.
+
+Doing this last step is perhaps the most tedious, since it involves simplifying $3 \times 3 + 3 \times 3 + 2 \times 2 = 22$ terms! Namely,
+\begin{align*}
+ \nabla F &= \frac{1}{\rho\sin\phi}\left( \rho\sin^2\phi\,\cos\theta\,
+  \frac{\partial F}{\partial \rho} - \sin\theta\,\frac{\partial F}{\partial \theta} + \sin\phi\,\cos\phi\,\cos\theta\,
+  \frac{\partial F}{\partial \phi} \right) (\sin\phi\,\cos\theta\,\textbf{e}_{\rho} - \sin\theta\,\textbf{e}_{\theta}\\
+  &\mathrel{\phantom{=}} {} + \cos\phi\,\cos\theta\,\textbf{e}_{\phi})\\
+  &+ \frac{1}{\rho\sin\phi}\left( \rho\sin^2\phi\,\sin\theta\,
+  \frac{\partial F}{\partial \rho} + \cos\theta\,\frac{\partial F}{\partial \theta} + \sin\phi\,\cos\phi\,\sin\theta\,
+  \frac{\partial F}{\partial \phi} \right) (\sin\phi\,\sin\theta\,\textbf{e}_{\rho} + \cos\theta\,\textbf{e}_{\theta}\\
+  &\mathrel{\phantom{=}} {} + \cos\phi\,\sin\theta\,\textbf{e}_{\phi})\\
+  &+ \frac{1}{\rho}\left( \rho\cos\phi\,\frac{\partial F}{\partial \rho} -
+  \sin\phi\,\frac{\partial F}{\partial \phi} \right) (\cos\phi\,\textbf{e}_{\rho} - \sin\phi\,\textbf{e}_{\phi}) ,
+\end{align*}
+which we see has $8$ terms involving $\textbf{e}_{\rho}$, $6$ terms involving $\textbf{e}_{\theta}$, and $8$ terms involving $\textbf{e}_{\phi}$. But the algebra is straightforward and yields the desired result:
+\[
+ \nabla F = \frac{\partial F}{\partial \rho}\,\textbf{e}_{\rho} +
+  \frac{1}{\rho \sin \phi}\,\frac{\partial F}{\partial \theta}\,\textbf{e}_{\theta} +
+  \frac{1}{\rho}\,\frac{\partial F}{\partial \phi}\,\textbf{e}_{\phi}\eoehere
+\]}
+
+\example{ex_laplpos_sphere}{Practicing in Spherical Coordinates}{In \autoref{exmp_laplposition} we showed that $\nabla \norm{\textbf{r}}^2 = 2\,\textbf{r}$ and $\Delta \norm{\textbf{r}}^2 = 6$, where $\textbf{r}(x,y,z) = x\,\textbf{i} + y\,\textbf{j} + z\,\textbf{k}$ in Cartesian coordinates. Verify that we get the same answers if we switch to spherical coordinates.}{Since $\norm{\textbf{r}}^2 = x^2 + y^2 + z^2 = \rho^2$ in spherical coordinates, let $F(\rho,\theta,\phi) = \rho^2$ (so that $F(\rho,\theta,\phi) = \norm{\textbf{r}}^2$). The gradient of $F$ in spherical coordinates is
+ \begin{align*}
+  \nabla F &= \frac{\partial F}{\partial \rho}\,\textbf{e}_{\rho} +
+   \frac{1}{\rho \sin \phi}\,\frac{\partial F}{\partial \theta}\,\textbf{e}_{\theta} +
+   \frac{1}{\rho}\,\frac{\partial F}{\partial \phi}\,\textbf{e}_{\phi}\\
+   &= 2\rho\,\textbf{e}_{\rho} + \frac{1}{\rho \sin \phi}\,(0)\,\textbf{e}_{\theta} +
+    \frac{1}{\rho}\,(0)\,\textbf{e}_{\phi}\\
+   &= 2\rho\,\textbf{e}_{\rho} = 2\rho\,\frac{\textbf{r}}{\norm{\textbf{r}}} ,\text{ as we showed earlier, so}\\
+   &= 2\rho\,\frac{\textbf{r}}{\rho} = 2\,\textbf{r} ,\text{ as expected. And the Laplacian is}\\
+  \Delta\,F &= \frac{1}{\rho^2}\,\frac{\partial}{\partial \rho} \left( \rho^2 \,
+   \frac{\partial F}{\partial \rho} \right) + \frac{1}{\rho^2 \sin^2 \phi}\,\frac{\partial^2 F}{\partial \theta^2} +
+   \frac{1}{\rho^2 \sin \phi}\,\frac{\partial}{\partial \phi} \left( \sin \phi \,\frac{\partial F}{\partial \phi}
+   \right)\\
+   &= \frac{1}{\rho^2}\,\frac{\partial}{\partial \rho} ( \rho^2 \,2\rho ) + \frac{1}{\rho^2 \sin \phi}\,(0) +
+    \frac{1}{\rho^2 \sin \phi}\,\frac{\partial}{\partial \phi} \left( \sin \phi \,(0) \right)\\
+   &= \frac{1}{\rho^2}\,\frac{\partial}{\partial \rho} ( 2\rho^3 ) + 0 + 0\\
+   &= \frac{1}{\rho^2}\,(6\rho^2 ) = 6 ,\text{ as expected.}\eoehere
+ \end{align*}}
+
+\printexercises{exercises/14_Div_Grad_Culr_exercises}

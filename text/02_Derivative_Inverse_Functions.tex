@@ -1,8 +1,8 @@
 \section{Derivatives of Inverse Functions}\label{sec:deriv_inverse_function}
 
-%Recall that a function $y=f(x)$ is said to be \textit{one to one} if it passes the horizontal line test; that is, for two different $x$ values $x_1$ and $x_2$, we do \textit{not} have $f(x_1)=f(x_2)$. In some cases the domain of $f$ must be restricted so that it is one to one. For instance, consider $f(x)=x^2$. Clearly, $f(-1)= f(1)$, so $f$ is not one to one on its regular domain, but by restricting $f$ to $(0,\infty)$, $f$ is one to one.\index{derivative!inverse function}
+%Recall that a function $y=f(x)$ is said to be \textit{one-to-one} if it passes the horizontal line test; that is, for two different $x$ values $x_1$ and $x_2$, we do \textit{not} have $f(x_1)=f(x_2)$. In some cases the domain of $f$ must be restricted so that it is one-to-one. For instance, consider $f(x)=x^2$. Clearly, $f(-1)= f(1)$, so $f$ is not one-to-one on its regular domain, but by restricting $f$ to $(0,\infty)$, $f$ is one-to-one.\index{derivative!inverse function}
 %
-%Now recall that one to one functions have \textit{inverses}. That is, if $f$ is one to one, it has an inverse function, denoted by $f\primeskip^{-1}$, such that if $f(a)=b$, then $f\primeskip^{-1}(b) = a$. The domain of $f\primeskip^{-1}$ is the range of $f$, and vice-versa. For ease of notation, we set $g=f\primeskip^{-1}$ and treat $g$ as a function of $x$.
+%Now recall that one-to-one functions have \textit{inverses}. That is, if $f$ is one-to-one, it has an inverse function, denoted by $f\primeskip^{-1}$, such that if $f(a)=b$, then $f\primeskip^{-1}(b) = a$. The domain of $f\primeskip^{-1}$ is the range of $f$, and vice-versa. For ease of notation, we set $g=f\primeskip^{-1}$ and treat $g$ as a function of $x$.
 %
 %Since $f(a)=b$ implies $g(b)=a$, when we compose $f$ and $g$ we get a nice result: $$f\big(g(b)\big) = f(a) = b.$$ In general, $f\big(g(x)\big) =x$ and $g\big(f(x)\big) = x$. This gives us a convenient way to check if two functions are inverses of each other: compose them and if the result is $x$, then they are inverses (on the appropriate domains.)
 %
@@ -40,10 +40,10 @@ f(g(x))&=x\\
 \fp(g(x))g\primeskip'(x)&=1\\
 g\primeskip'(x)&=\frac 1{\fp(g(x))} \quad\text{assuming $\fp(x)$ is nonzero}
 \end{align*}
-So we have the following theorem.
+Note that the derivation above assumes that the function $g$ is differentiable. It is possible to prove that $g$ must be differentiable if $\fp$ is nonzero, but the proof is beyond the scope of this text. However, assuming this fact we have shown the following:
 
 \theorem{thm:deriv_inverse_functions}{Derivatives of Inverse Functions}
-{Let $f$ be differentiable and one to one on an open interval $I$, where $\fp(x) \neq 0$ for all $x$ in $I$, let $J$ be the range of $f$ on $I$, let $g$ be the inverse function of $f$, and let $f(a) = b$ for some $a$ in $I$. Then $g$ is a differentiable function on $J$, and in particular,
+{Let $f$ be differentiable and one-to-one on an open interval $I$, where $\fp(x) \neq 0$ for all $x$ in $I$, let $J$ be the range of $f$ on $I$, let $g$ be the inverse function of $f$, and let $f(a) = b$ for some $a$ in $I$. Then $g$ is a differentiable function on $J$, and in particular,
 \begin{align*}
  \left(f\primeskip^{-1}\right)'(b) &=g\primeskip'(b) = \frac{1}{\fp(a)} \\
  \left(f\primeskip^{-1}\right)'(x) &=g\primeskip'(x) = \frac{1}{\fp(g(x))}
@@ -56,7 +56,7 @@ The results of \autoref{thm:deriv_inverse_functions} are not trivial; the notati
 In the next example we apply \autoref{thm:deriv_inverse_functions} to the arcsine function.
 
 \example{ex_deriv_arcsin}{Finding the derivative of an inverse trigonometric function}{Let $y = \arcsin x = \sin^{-1} x$. Find $y\primeskip'$ using \autoref{thm:deriv_inverse_functions}.}
-{Adopting our previously defined notation, let $g(x) = \arcsin x$ and $f(x) = \sin x$. Thus $\fp(x) = \cos x$. Applying the theorem, we have 
+{Adopting our previously defined notation, let $g(x) = \arcsin x$ and $f(x) = \sin x$. Thus $\fp(x) = \cos x$. Applying \autoref{thm:deriv_inverse_functions}, we have 
 \begin{align*}
 	g\primeskip'(x) &= \frac{1}{\fp(g(x))} \\
 	&= \frac{1}{\cos(\arcsin x)}.
@@ -69,43 +69,35 @@ This last expression is not immediately illuminating. Drawing a figure will help
 
 Therefore $\cos (\sin^{-1} x) = \cos y = \sqrt{1-x^2}/1 = \sqrt{1-x^2}$, resulting in $$\frac d{dx}\big(\arcsin x\big)=g\primeskip'(x)=\frac1{\sqrt{1-x^2}}.\eoehere$$}
 
-Remember that the input $x$ of the arcsine function is a ratio of a side of a right triangle to its hypotenuse; the absolute value of this ratio will never be greater than 1. Therefore the inside of the square root will never be negative.
+Remember that the input $x$ of the arcsine function is a ratio of a side of a right triangle to its hypotenuse; the absolute value of this ratio will be less than 1. Therefore $1-x^2$ will be positive.
 
-In order to make $y=\sin x$ one to one, we restrict its domain to $[-\pi/2,\pi/2]$; on this domain, the range is $[-1,1]$. Therefore the domain of $y=\arcsin x$ is $[-1,1]$ and the range is $[-\pi/2,\pi/2]$. When $x=\pm 1$, note how the derivative of the arcsine function is undefined; this corresponds to the fact that as $x\to \pm1$, the tangent lines to arcsine approach vertical lines with undefined slopes.
+In order to make $y=\sin x$ one-to-one, we restrict its domain to $[-\pi/2,\pi/2]$; on this domain, the range is $[-1,1]$. Therefore the domain of $y=\arcsin x$ is $[-1,1]$ and the range is $[-\pi/2,\pi/2]$. When $x=\pm 1$, note how the derivative of the arcsine function is undefined; this corresponds to the fact that as $x\to \pm1$, the tangent lines to arcsine approach vertical lines with undefined slopes.
 
 
 \mfigure{0in}{Graphs of $\sin x$ and $\sin^{-1}x$ along with corresponding tangent lines.}{fig:inverse4}{figures/figinverse4}
 
 %\mfigure{0in}{Graphs of $\sin x$ and $\sin^{-1}x$}{fig:inverse4b}{figures/figinverse4}
 
-In \autoref{fig:inverse4} we see $f(x) = \sin x$ and $f\primeskip^{-1} = \sin^{-1} x$ graphed on their respective domains. The line tangent to $\sin x$ at the point $(\pi/3, \sqrt{3}/2)$ has slope $\cos \pi/3 = 1/2$. The slope of the corresponding point on $\sin^{-1}x$, the point $(\sqrt{3}/2,\pi/3)$, is $$\frac{1}{\sqrt{1-(\sqrt{3}/2)^2}} = \frac{1}{\sqrt{1-3/4}} = \frac{1}{\sqrt{1/4}} = \frac{1}{1/2}=2,$$ verifying yet again that at corresponding points, a function and its inverse have reciprocal slopes.\\
+In \autoref{fig:inverse4} we see $f(x) = \sin x$ and $f\primeskip^{-1} = \sin^{-1} x$ graphed on their respective domains. The line tangent to $\sin x$ at the point $(\pi/3, \sqrt{3}/2)$ has slope $\cos \pi/3 = 1/2$. The slope of the corresponding point on $\sin^{-1}x$, the point $(\sqrt{3}/2,\pi/3)$, is $$\frac{1}{\sqrt{1-(\sqrt{3}/2)^2}} = \frac{1}{\sqrt{1-3/4}} = \frac{1}{\sqrt{1/4}} = \frac{1}{1/2}=2,$$ verifying yet again that at corresponding points.\bigskip
+%, a function and its inverse have reciprocal slopes.\\
 
-Using similar techniques, we can find the derivatives of all the inverse trigonometric functions. In \autoref{fig:domain_trig} we show the restrictions of the domains of the standard trigonometric functions that allow them to be invertible.\\
+Using similar techniques, we can find the derivatives of all the inverse trig\-o\-no\-metric functions. In \autoref{fig:domain_trig} we show the restrictions of the domains of the standard trigonometric functions that allow them to be invertible.
 
-\noindent\hskip-120pt%
-\begin{figure}[!ht]
-%\noindent\begin{minipage}{\textwidth+200pt}
+\begin{lxfigure}
 \small\noindent
-%\centering%\begin{center}
-%\noindent\begin{minipage}[t]{.5\textwidth}%
-\begin{tabular}{cccccc}
-Function & Domain & Range &\parbox[b]{40pt}{\centering Inverse Function} & Domain & Range\\ \hline
-\rule{0pt}{12pt} $\sin x$ & $[-\pi/2, \pi/2]$ & $[-1,1]$&$\sin^{-1} x$ & $[-1,1]$ & $[-\pi/2, \pi/2]$ \\
-\rule{0pt}{12pt}$\cos x$ & $[0,\pi]$ & $[-1,1]$&$\cos^{-1}(x)$ & $[-1,1]$ & $[0,\pi]$ \\
-\rule{0pt}{12pt}$\tan x$ & $(-\pi/2,\pi/2)$ & $(-\infty,\infty)$&$\tan^{-1}(x)$ & $(-\infty,\infty)$ & $(-\pi/2,\pi/2)$	\\
-\rule{0pt}{12pt} $\csc x$ & $[-\pi/2,0)\cup (0, \pi/2]$ & $(-\infty,-1]\cup [1,\infty)$&$\csc^{-1} x$ & $(-\infty,-1]\cup [1,\infty)$ & $[-\pi/2,0)\cup (0, \pi/2]$  \\
-\rule{0pt}{12pt}$\sec x$ & $[0,\pi/2)\cup (\pi/2,\pi]$ & $(-\infty,-1]\cup [1,\infty)$&$\sec^{-1}(x)$ & $(-\infty,-1]\cup [1,\infty)$ & $[0,\pi/2)\cup (\pi/2,\pi]$ \\
-\rule{0pt}{12pt}$\cot x$ & $(0,\pi)$ & $(-\infty,\infty)$&$\cot^{-1}(x)$ &  $ (-\infty,\infty)$ & $(0,\pi)$	
-\end{tabular}
+\flushinner{%
+\begin{tabular}{ccc @{\hspace{2em}} ccc}
+Function & Domain & Range &\parbox[b]{40pt}{\centering Inverse Function} & Domain & Range\\ \cmidrule(r{2em}){1-3}\cmidrule(l{-1em}){4-6}
+$\sin x$ & $[-\pi/2,\pi/2]$ & $[-1,1]$&$\sin^{-1}x$ & $[-1,1]$ & $[-\pi/2,\pi/2]$ \\
+$\cos x$ & $[0,\pi]$ & $[-1,1]$&$\cos^{-1}(x)$ & $[-1,1]$ & $[0,\pi]$ \\
+$\tan x$ & $(-\pi/2,\pi/2)$ & $(-\infty,\infty)$&$\tan^{-1}(x)$ & $(-\infty,\infty)$ & $(-\pi/2,\pi/2)$	\\
+$\csc x$ & $[-\pi/2,0)\cup (0, \pi/2]$ & $(-\infty,-1]\cup [1,\infty)$&$\csc^{-1} x$ & $(-\infty,-1]\cup [1,\infty)$ & $[-\pi/2,0)\cup (0, \pi/2]$  \\
+$\sec x$ & $[0,\pi/2)\cup (\pi/2,\pi]$ & $(-\infty,-1]\cup [1,\infty)$&$\sec^{-1}(x)$ & $(-\infty,-1]\cup [1,\infty)$ & $[0,\pi/2)\cup (\pi/2,\pi]$ \\
+$\cot x$ & $(0,\pi)$ & $(-\infty,\infty)$&$\cot^{-1}(x)$ &  $ (-\infty,\infty)$ & $(0,\pi)$	
+\end{tabular}}
 \captionsetup{type=figure}
 \caption{Domains and ranges of the trigonometric and inverse trigonometric functions.}\label{fig:domain_trig}
-%\end{center}
-%\normalsize
-\end{figure}%{minipage}
-%\captionsetup{type=figure}%
-%\caption{Domains and ranges of the trigonometric and inverse trigonometric functions.}\label{fig:domain_trig}
-%\end{minipage}
-%}
+\end{lxfigure}
 
 %%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%
@@ -138,25 +130,23 @@ Function & Domain & Range &\parbox[b]{40pt}{\centering Inverse Function} & Domai
 
 \theorem{thm:deriv_inverse_trig}{Derivatives of Inverse Trigonometric Functions}
 {The inverse trigonometric functions are differentiable on all open sets contained in their domains (as listed in \autoref{fig:domain_trig}) and their derivatives are as follows:\\
-
-\noindent	\begin{minipage}{.5\specialboxlength}\small
+\begin{minipage}{.5\specialboxlength}\small
 	\begin{enumerate}
-	\item		$\ds \frac{d}{dx}\big(\sin^{-1}(x)\big) = \frac{1}{\sqrt{1-x^2}}$ 
-	\item		$\ds \frac{d}{dx}\big(\sec^{-1}(x)\big) = \frac{1}{|x|\sqrt{x^2-1}}$
-	\item		$\ds \frac{d}{dx}\big(\tan^{-1}(x)\big) = \frac{1}{1+x^2}$
+		\item	$\ds \frac{d}{dx}\big(\sin^{-1}(x)\big) = \frac{1}{\sqrt{1-x^2}}$ 
+		\item	$\ds \frac{d}{dx}\big(\sec^{-1}(x)\big) = \frac{1}{|x|\sqrt{x^2-1}}$
+		\item	$\ds \frac{d}{dx}\big(\tan^{-1}(x)\big) = \frac{1}{1+x^2}$
 	\end{enumerate}
-	\end{minipage}
+	\end{minipage}%
 	\begin{minipage}{.5\specialboxlength}\small
 	\begin{enumerate}\addtocounter{enumi}{3}
-	\item		$\ds \frac{d}{dx}\big(\cos^{-1}(x)\big) = -\frac{1}{\sqrt{1-x^2}}$ 
-	\item		$\ds \frac{d}{dx}\big(\csc^{-1}(x)\big) = -\frac{1}{|x|\sqrt{x^2-1}}$
-	\item		$\ds \frac{d}{dx}\big(\cot^{-1}(x)\big) = -\frac{1}{1+x^2}$
+		\item	$\ds \frac{d}{dx}\big(\cos^{-1}(x)\big) = -\frac{1}{\sqrt{1-x^2}}$ 
+		\item	$\ds \frac{d}{dx}\big(\csc^{-1}(x)\big) = -\frac{1}{|x|\sqrt{x^2-1}}$
+		\item	$\ds \frac{d}{dx}\big(\cot^{-1}(x)\big) = -\frac{1}{1+x^2}$
 	\end{enumerate}\index{derivative!inverse trig.}
 	\normalsize
-	\end{minipage}
-}			
+\end{minipage}}			
 
-Note how the last three derivatives are merely the opposites of the first three, respectively. Because of this, the first three are used almost exclusively throughout this text.\bigskip
+Note how the last three derivatives are merely the negatives of the first three, respectively. Because of this, the first three are used almost exclusively throughout this text.\bigskip % ``negatives'' was ``opposites''
 
 In \autoref{sec:basic_diff_rules}, we stated without proof or explanation that $\ds \frac{d}{dx}\big(\ln x\big) = \frac{1}{x}$. We can justify that now using \autoref{thm:deriv_inverse_functions}, as shown in the example.
 

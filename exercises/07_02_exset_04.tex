@@ -1,7 +1,62 @@
-{\noindent In Exercises}
-{, a solid is described. Orient the solid along the $x$-axis such that a cross-sectional area function $A(x)$ can be obtained, then apply Theorem \ref{thm:volume_by_cross_section} to find the volume of the solid.
+\exerciseset{In Exercises}{, a solid is described. Orient the solid along the $x$-axis such that a cross-sectional area function $A(x)$ can be obtained, then apply Theorem \ref{thm:volume_by_cross_section} to find the volume of the solid.
+}{
+
+\exercise{A right circular cone with height of 10 and base radius of 5. \label{ex_07_02_ex_18}
+
+\begin{tikzpicture}[scale=.5]
+\begin{scope}[xscale=2]
+%\draw [thick](0,0) circle (1);
+\draw [thick] (-1,0) arc (180:360:1);
+\draw [thick,dashed] (1,0) arc (0:180:1);
+\end{scope}
+
+\draw [fill=black] (0,0) circle (1pt) -- node [pos=.5,above] {\small 5} (2,0);
+\draw (0,0) -- node [pos=.5,rotate=90,above] {\small 10} (0,4);
+\draw [thick] (-2,0) -- (0,4)-- (2,0);
+\end{tikzpicture}
+}{Placing the tip of the cone at the origin such that the $x$-axis runs through the center of the circular base, we have $A(x)=\pi x^2/4$. Thus the volume is $250\pi/3$ units$^3$.
 }
-\exinput{exercises/07_02_ex_18}
-\exinput{exercises/07_02_ex_19}
-\exinput{exercises/07_02_ex_20}
-\exinput{exercises/07_02_ex_21}
+
+\exercise{A skew right circular cone with height of 10 and base radius of 5. (Hint: all cross-sections are circles.)
+
+\begin{tikzpicture}[scale=.5]
+\begin{scope}[xscale=2]
+%\draw [thick](0,0) circle (1);
+\draw [thick] (-1,0) arc (180:360:1);
+\draw [thick,dashed] (1,0) arc (0:180:1);
+\draw [dashed] (.4,1.7) circle (.6);
+\end{scope}
+
+\draw [fill=black] (0,0) circle (1pt) -- node [pos=.5,above] {\small 5} (2,0);
+%\draw (0,0) -- node [pos=.5,rotate=90,above] {\small 10} (0,4);
+\draw [thick] (-2,0.2) -- (2,4)-- node [pos=.5,rotate=-90,above] {\small 10}(2,0);
+\end{tikzpicture}
+}{The cross--sections of this cone are the same as the cone in Exercise \ref{ex_07_02_ex_18}. Thus they have the same volume of $250\pi/3$ units$^3$.
+}
+
+\exercise{A right triangular cone with height of 10 and whose base is a right, isosceles triangle with side length 4.
+
+\begin{tikzpicture}[scale=.75]
+\draw [thick](-1,0) -- (1,0) -- (0,3)--cycle;
+\draw [thick,dashed] (-1,0) --  node [pos=.5,above] {\small 4} (0,.5) -- node [pos=.5,above] {\small 4} (1,0)
+											(0,.5)-- node [pos=.3,above,rotate=90] {\small 10} (0,3);
+\draw (-.2,.4) -- (0,.3) -- (.2,.4);
+\end{tikzpicture}
+}{Orient the cone such that the tip is at the origin and the $x$-axis is perpendicular to the base. The cross--sections of this cone are right, isosceles triangles with side length $2x/5$; thus the cross--sectional areas are $A(x) = 2x^2/25$, giving a volume of $80/3$ units$^3$.
+}
+
+\exercise{A solid with length 10 with a rectangular base and triangular top, wherein one end is a square with side length 5 and the other end is a triangle with base and height of 5.
+
+\begin{tikzpicture}[x={(1,0)},z={(0,1)},y={(.5,.87)},scale=.4]
+
+\draw [thick] (0,0,0) -- node[pos=.5,below] {\small 10} (10,0,0) -- (10,2.5,5) -- (10,5,0) -- node [pos=.5,below right] {\small 5} (10,0,0)
+							(0,0,0) -- node [pos=.5,left] {\small 5} (0,0,5) -- (10,2.5,5) -- (0,5,5) -- node [pos=.5,left] {\small 5} (0,0,5);
+							
+\draw [thick,dashed] (0,0,0) -- (0,5,0) -- (0,5,5)
+										(0,5,0) -- (10,5,0);
+
+
+
+\end{tikzpicture}}{Orient the solid so that the $x$-axis is parallel to long side of the base. All cross--sections are trapezoids (at the far left, the trapezoid is a square; at the far right, the trapezoid has a top length of 0, making it a triangle). The area of the trapezoid at $x$ is $A(x) = 1/2(-1/2x+5+5)(5) = -5/4x+25$. The volume is $187.5$ units$^3$.
+}
+}

@@ -1,22 +1,71 @@
 \printconcepts
-\exinput{exercises/09_01_ex_01}
-\exinput{exercises/09_01_ex_03}
-\exinput{exercises/09_01_ex_02}
-\exinput{exercises/09_01_ex_44}
-\exinput{exercises/09_01_ex_45}
+
+\exercise{What is the difference between degenerate and nondegenerate conics?}{When defining the conics as the intersections of a plane and a double napped cone, degenerate conics are created when the plane intersects the tips of the cones (usually taken as the origin). Nondegenerate conics are formed when this plane does not contain the origin.}
+
+\exercise{Use your own words to explain what the eccentricity of an ellipse measures.}{Answers will vary.}
+
+\exercise{What has the largest eccentricity: an ellipse or a hyperbola?}{Hyperbola}
+
+\exercise{Explain why the following is true: ``If the coefficient of the $x^2$ term in the equation of an ellipse in standard form is smaller than the coefficient of the $y^2$ term, then the ellipse has a horizontal major axis.''}{With the equation $\frac{(x-h)^2}{a^2}+\frac{(y-k)^2}{b^2}=1$, the ellipse has a horizontal major axis if $a>b$. But the coefficient of the $x^2$ term is $1/a^2$ (not $a^2$), so if $1/a^2<1/b^2$, then $a>b$ and the major axis is horizontal.}
+
+\exercise{Explain how one can quickly look at the equation of a hyperbola in standard form and determine whether the transverse axis is horizontal or vertical.}{With a horizontal transverse axis, the $x^2$ term has a positive coefficient; with a vertical transverse axis, the $y^2$ term has a positive coefficient.}
+
 \printproblems
-\exsetinput{exercises/09_01_exset_01}
-\exsetinput{exercises/09_01_exset_02}
-\exsetinput{exercises/09_01_exset_03}
-\exsetinput{exercises/09_01_exset_05}
-\exsetinput{exercises/09_01_exset_04}
-\exsetinput{exercises/09_01_exset_06}
-\exinput{exercises/09_01_ex_26}
+
+\input{exercises/09_01_exset_01}
+\input{exercises/09_01_exset_02}
+\input{exercises/09_01_exset_03}
+\input{exercises/09_01_exset_05}
+\input{exercises/09_01_exset_04}
+\input{exercises/09_01_exset_06}
+\exercise{Consider the ellipse given by $\ds \frac{(x-1)^2}{4}+\frac{(y-3)^2}{12}=1$.
+\begin{enumerate}
+\item		Verify that the foci are located at $(1,3\pm 2\sqrt{2})$.
+\item		The points $P_1 = (2,6)$ and $P_2 = (1+\sqrt{2},3+\sqrt{6}) \approx (2.414,5.449)$ lie on the ellipse. Verify that the sum of distances from each point to the foci is the same.
+\end{enumerate}
+}{\begin{enumerate}
+\item		$c=\sqrt{12-4} = 2\sqrt{2}$.
+\item		The sum of distances for each point is $2\sqrt{12}\approx 6.9282$. 
+\end{enumerate}}
+
 \ifthenelse{\boolean{printquestions}}{\columnbreak}{}
-\exsetinput{exercises/09_01_exset_07}
-\exsetinput{exercises/09_01_exset_08}
+\input{exercises/09_01_exset_07}
+\input{exercises/09_01_exset_08}
 \ifthenelse{\boolean{printquestions}}{\columnbreak}{}
-\exsetinput{exercises/09_01_exset_09}
-\exsetinput{exercises/09_01_exset_10}
-\exinput{exercises/09_01_ex_42}
-\exinput{exercises/09_01_ex_43}
+\input{exercises/09_01_exset_09}
+\input{exercises/09_01_exset_10}
+
+\exercise{Johannes Kepler discovered that the planets of our solar system have elliptical orbits with the Sun at one focus. The Earth's elliptical orbit is used as a standard unit of distance; the distance from the center of Earth's elliptical orbit to one vertex is 1 Astronomical Unit, or A.U. 
+
+The following table gives information about the orbits of three planets.
+
+\begin{tabular}{ccc}
+ & \parbox{70pt}{\centering Distance from \\ center to vertex\\}\rule[-9pt]{0pt}{5pt} & eccentricity \\ \hline 
+Mercury & 0.387 A.U. & 0.2056 \\
+Earth & 1 A.U. & 0.0167 \\
+Mars & 1.524 A.U. & 0.0934 
+\end{tabular}
+
+\begin{enumerate}
+\item		In an ellipse, knowing $c^2=a^2-b^2$ and $e=c/a$ allows us to find $b$ in terms of $a$ and $e$. Show $b=a\sqrt{1-e^2}$. 
+\item		For each planet, find equations of their elliptical orbit of the form $\ds\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$. (This places the center at $(0,0)$, but the Sun is in a different location for each planet.)
+\item		Shift the equations so that the Sun lies at the origin. Plot the three elliptical orbits.
+\end{enumerate}
+}{\begin{enumerate}
+\item		Solve for $c$ in $e=c/a$: $c=ae$. Thus $a^2e^2=a^2-b^2$, and $b^2=a^2-a^2e^2$. The result follows.
+\item		Mercury: $x^2/(0.387)^2 + y^2/(0.3787)^2=1$	\\
+				Earth:	$x^2+y^2/(0.99986)^2 = 1$\\
+				Mars:   $x^2/(1.524)^2+y^2/(1.517)^2=1$
+\item		Mercury: $(x-0.08)^2/(0.387)^2 + y^2/(0.3787)^2=1$	\\
+				Earth:  $(x-0.0167)^2+y^2/(0.99986)^2 = 1$\\
+				Mars:   $(x-0.1423)^2/(1.524)^2+y^2/(1.517)^2=1$
+\end{enumerate}
+}
+
+\exercise{A loud sound is recorded at three stations that lie on a line as shown in the figure below. Station $A$ recorded the sound 1 second after Station $B$, and Station $C$ recorded the sound 3 seconds after $B$. Using the speed of sound as 340m/s, determine the location of the sound's origination.
+
+\hfill \begin{tikzpicture}
+\draw [fill=black] (0,0) circle (1.5pt) node [below] {$A$}  -- node [pos=.5,below] {1000m} (1.5,0) circle (1.5pt) node [below] {$B$} -- node [pos=.5,below] {2000m} (4.5,0) circle (1.5pt) node [below] {$C$};
+\end{tikzpicture} \hfill \null
+}{The sound originated from a point approximately 31m to the left of $B$ and 1340m above it.
+}

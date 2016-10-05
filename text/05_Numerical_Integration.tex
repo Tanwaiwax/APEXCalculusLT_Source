@@ -151,7 +151,7 @@ This is the heart of the \textbf{Trapezoidal Rule}, wherein a definite integral 
 and approximate $\ds\int_{-\frac{\pi}{4}}^{\frac{\pi}{2}} \sin (x^3)\ dx$ using the Trapezoidal Rule and 10 equally spaced subintervals.}
 {We refer back to \autoref{fig:num2a} for the table of values of $\sin(x^3)$. Recall that $\dx = 3\pi/40 \approx 0.236$. Thus we have:\small
 \begin{align*}
-	\int_{-\frac{\pi}4}^{\frac{\pi}2} \sin (x^3)\ dx
+	\int_{-\frac{\pi}4}^{\frac{\pi}2} & \sin (x^3)\ dx \\
 	&\approx \frac{0.236}{2}\Big[-0.466 + 2\Big(-0.165+(-0.031)+\dotsb+%0.971+
 0.69\Big)+(-0.67)\Big]\\
 	&= 0.4275.\eoehere
@@ -172,7 +172,7 @@ So we have a progression: we start by approximating $f$ with a constant function
 
 Given one point, we can create a constant function that goes through that point. Given two points, we can create a linear function that goes through those points. Given three points, we can create a quadratic function that goes through those three points (given that no two have the same $x$--value).\index{Simpson's Rule}\index{numerical integration!Simpson's Rule}\index{integration!numerical!Simpson's Rule}
 
-Consider three points $(x_1,y_1)$, $(x_2,y_2)$ and $(x_3,y_3)$ whose $x$--values are equally spaced and $x_1<x_2<x_3$. Let $f$ be the quadratic function that goes through these three points. An exercise will ask you to show that 
+Consider three points $(x_1,y_1)$, $(x_2,y_2)$ and $(x_3,y_3)$ whose $x$--values are equ\-ally spaced and $x_1<x_2<x_3$. Let $f$ be the quadratic function that goes through these three points. An exercise will ask you to show that 
 \begin{equation}
 \int_{x_1}^{x_3} f(x)\ dx = \frac{x_3-x_1}{6}\big(y_1+4y_2+y_3\big).\label{eq:simpsons}
 \end{equation}
@@ -184,11 +184,12 @@ Consider \autoref{fig:numsimpsons}. A function $f$ goes through the 3 points sho
 Notice how the interval $[1,3]$ was split into two subintervals as we needed 3 points. Because of this, whenever we use Simpson's Rule, we need to break the interval into an even number of subintervals. 
 
 In general, to approximate $\ds \int_a^b f(x)\ dx$ using Simpson's Rule, subdivide $[a,b]$ into $n$ subintervals, where $n$ is even and each subinterval has width $\dx = (b-a)/n$. We approximate $f$ with $n/2$ parabolic curves, using Equation \eqref{eq:simpsons} to compute the area under these parabolas. Adding up these areas gives the formula:
+\flushinnerequ{%
 \[
 \int_a^b f(x) \ dx
 \approx \frac{\dx}3
 \left[f(x_0)+4f(x_1)+2f(x_2)+4f(x_3)+\dotsb+2f(x_{n-2})+4f(x_{n-1})+f(x_n)\right].
-\]
+\]}
 Note how the coefficients of the terms in the summation have the pattern 1, 4, 2, 4, 2, 4, \ldots, 2, 4, 1.
 
 Let's demonstrate Simpson's Rule with a concrete example.
@@ -249,7 +250,7 @@ Recall that the actual value, accurate to 3 decimal places, is 0.460. Our approx
 
 We summarize the key concepts of this section thus far in the following Key Idea.
 
-\setboxwidth{120pt}%
+\setboxwidth{140pt}%
 \keyidea{idea:numerical}{Numerical Integration}
 {Let $f$ be a continuous function on $[a,b]$, let $n$ be a positive integer, and let $\ds\dx = \frac{b-a}{n}$.
 Set $x_0=a$, $x_1=a+\dx$, \ldots, $x_i = a+i\dx$, $x_n=b$.

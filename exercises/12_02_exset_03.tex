@@ -1,8 +1,87 @@
-{\noindent In Exercises}
-{, a limit is given. Evaluate the limit along the paths given, then state why these results show the given limit does not exist.}
-\exinput{exercises/12_02_ex_12}
-\exinput{exercises/12_02_ex_11}
-\exinput{exercises/12_02_ex_13}
-\exinput{exercises/12_02_ex_14}
-\exinput{exercises/12_02_ex_15}
-\exinput{exercises/12_02_ex_16}
+\exerciseset{In Exercises}{, a limit is given. Evaluate the limit along the paths given, then state why these results show the given limit does not exist.}{
+
+\exercise{$\ds \lim_{(x,y)\to(0,0)} \frac{x^2-y^2}{x^2+y^2}$
+\begin{enumerate}
+	\item Along the path $y=0$.
+	\item	Along the path $x=0$.
+\end{enumerate}}{\begin{enumerate}
+	\item Along $y=0$, the limit is 1.
+	\item	Along $x=0$, the limit is $-1$.
+\end{enumerate}
+Since the above limits are not equal, the limit does not exist.
+}
+\exercise{$\ds \lim_{(x,y)\to(0,0)} \frac{x+y}{x-y}$
+\begin{enumerate}
+	\item Along the path $y=mx$.
+\end{enumerate}}{\begin{enumerate}
+	\item Along $y=mx$, the limit is $\frac{m+1}{m-1}$.
+\end{enumerate}
+Since the above limit varies according to what $m$ is used, each limit is different, meaning the overall limit does not exist.
+}
+\exercise{$\ds \lim_{(x,y)\to(0,0)} \frac{xy-y^2}{y^2+x}$
+\begin{enumerate}
+	\item Along the path $y=mx$.
+	\item Along the path $x=0$.
+\end{enumerate}}{\begin{enumerate}
+	\item Along $y=mx$, the limit is $\ds\frac{mx(1-m)}{m^2x+1}$.
+	\item	Along $x=0$, the limit is $-1$.
+\end{enumerate}
+Since the above limits are not equal, the limit does not exist.
+}
+\exercise{$\ds \lim_{(x,y)\to(0,0)} \frac{\sin(x^2)}{y}$
+\begin{enumerate}
+	\item Along the path $y=mx$.
+	\item Along the path $y=x^2$.
+\end{enumerate}}{\begin{enumerate}
+	\item Along $y=mx$, the limit is: 
+	\begin{align*}
+	\lim_{(x,y)\to(0,0)} \frac{\sin(x^2)}{y} & =  \lim_{x\to 0} \frac{\sin(x^2)}{mx}
+					\intertext{apply L'H\^opital's Rule}
+							&= \lim_{x\to 0} \frac{2x\cos(x^2)}{m}\\
+							&= 0.
+			\end{align*}
+	\item	Along $x=0$, the limit is:
+   $$	\lim_{(x,y)\to(0,0)} \frac{\sin(x^2)}{y} =  \lim_{x\to 0} \frac{\sin(x^2)}{x^2}.$$
+	This can be evaluated with L'H\^opital's Rule or from known limits; it is 1.
+\end{enumerate}
+Since the limits along the lines $y=mx$ are not the same as the limit along $y=x^2$, the overall limit does not exist.
+}
+\exercise{$\ds \lim_{(x,y)\to(1,2)} \frac{x+y-3}{x^2-1}$
+\begin{enumerate}
+	\item Along the path $y=2$.
+	\item Along the path $y=x+1$.
+\end{enumerate}}{\begin{enumerate}
+	\item Along $y=2$, the limit is: 
+	\begin{align*}
+	\lim_{(x,y)\to(1,2)} \frac{x+y-3}{x^2-1} & =  \lim_{x\to 1} \frac{x-1}{x^2-1}\\
+							&= \lim_{x\to 1} \frac{1}{x+1}\\
+							&= 1/2.
+			\end{align*}
+	\item	Along $y=x+1$, the limit is:
+	\begin{align*}
+   \lim_{(x,y)\to(1,2)} \frac{x+y-3}{x^2-1} & =  \lim_{x\to 1} \frac{2(x-1)}{x^2-1}\\
+							&= \lim_{x\to 1} \frac{2}{x+1}\\
+							&= 1.
+			\end{align*}
+\end{enumerate}
+Since the limits along the lines $y=2$ and $y=x+1$ differ, the overall limit does not exist.
+}
+\exercise{$\ds \lim_{(x,y)\to(\pi,\pi/2)} \frac{\sin x}{\cos y}$
+\begin{enumerate}
+	\item Along the path $x=\pi$.
+	\item Along the path $y=x-\pi/2$.
+\end{enumerate}}{\begin{enumerate}
+	\item Along $x=\pi$, the limit is: 
+	\begin{align*}
+	\lim_{(x,y)\to(\pi,\pi/2)} \frac{\sin x}{\cos y} & =  \lim_{y\to \pi/2} \frac{0}{\cos y}\\
+							&= 0.
+			\end{align*}
+	\item	Along $y=x-\pi/2$, the limit is:
+	\begin{align*}
+   \lim_{(x,y)\to(\pi,\pi/2)} \frac{\sin x}{\cos y} & =  \lim_{x\to \pi} \frac{\sin x}{\cos(x-\pi/2)}\intertext{Apply L'H\^opital's Rule:}
+							&= \lim_{x\to \pi} \frac{\cos x}{\sin(x-\pi/2)}\\
+							&= -1.
+			\end{align*}
+\end{enumerate}
+Since the limits along the lines $x=\pi$ and $y=x-\pi$ differ, the overall limit does not exist.
+}}

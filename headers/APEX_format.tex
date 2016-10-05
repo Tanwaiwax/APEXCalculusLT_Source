@@ -66,6 +66,8 @@
 \theoremstyle{apex}
 
 \newcommand{\sectionautorefname}{Section} % the default is lowercase
+\newcommand{\chapterautorefname}{Chapter} % the default is lowercase
+\newcommand{\autoeqref}[1]{\hyperref[#1]{\equationautorefname\ (\ref*{#1})}}
 
 
 \makeatletter
@@ -85,7 +87,8 @@
 
 \makeindex
 
-\newcommand{\apex}{A\kern -1pt \lower -2pt\hbox{P}\kern -4pt \lower .7ex\hbox{E}\kern -1pt X}
+\newcommand{\apex}{A\kern -.1em \lower -.5ex\hbox{P}\kern -.25em\lower .5ex\hbox{E}\kern -.1em X}
+%\newcommand{\apex}{A\kern -1pt \lower -2pt\hbox{P}\kern -4pt \lower .7ex\hbox{E}\kern -1pt X}
 
 \renewcommand{\partname}{\protect\thispagestyle{empty}}
 \renewcommand{\thepart}{}
@@ -394,6 +397,10 @@
 \newcommand{\printproblemsB}{\closeenumerate\bigbreak\noindent\textit{\Large Problems}\bigskip}
 \newcommand{\printreviewB}{\closeenumerate\bigbreak\noindent\textit{\Large Review}\bigskip}
 
+\renewcommand{\printconcepts}{\printconceptsB}
+\renewcommand{\printproblems}{\printproblemsB}
+\renewcommand{\printreview}{\printreviewB}
+
 \newcommand{\inanswersection}{%
 	\setboolean{printquestions}{false}%
 	\renewcommand{\printconcepts}{}%
@@ -634,7 +641,7 @@
 
 \setboolean{printquestions}{true}
 \newcounter{saveexerciseenum}[section]
-\newcounter{exerciseset}
+\newcounter{exercisesetcounter}[chapter]
 \newboolean{enumopen}
 \setboolean{enumopen}{false}
 \newcommand{\sectiontag}{undefined}
@@ -665,6 +672,8 @@
  \setboolean{chapter_already_has_exercises}{true}
  \immediate\write\answrite{}%
  \immediate\write\answrite{%
+%  \noexpand\bigskip%
+%  \noexpand\newline%
   \noexpand\noindent{%
    \noexpand\Large%
    \noexpand\textbf{Chapter \arabic{chapter}}%
@@ -675,7 +684,7 @@
  }%
 }%
 \immediate\write\answrite{%
- \noexpand\bigskip%
+% \noexpand\bigskip%
  \noexpand\noindent%
  \noexpand\hyperref[exer#3]{\noexpand\textbf{#2}}%
  \noexpand\label{sol#3}%
@@ -684,17 +693,19 @@
 % \noexpand\nopagebreak%
 }%
 \ifthenelse{\boolean{printoddanswersonly}\AND\(\value{section}=0\)}{%
- \write\answrite{\noexpand\setboolean{printoddanswersonly}{false}}%
- \write\answrite{\noexpand\begin{enumerate}[leftmargin=0pt]\noexpand\input{#1}\noexpand\end{enumerate}}%
- \write\answrite{\noexpand\setboolean{printoddanswersonly}{true}}%
+ \immediate\write\answrite{\noexpand\setboolean{printoddanswersonly}{false}}%
+ \immediate\write\answrite{\noexpand\begin{enumerate}[leftmargin=1.5em]\noexpand\input{#1}\noexpand\end{enumerate}}%
+ \immediate\write\answrite{\noexpand\setboolean{printoddanswersonly}{true}}%
 }{%
- \write\answrite{\noexpand\begin{enumerate}[leftmargin=0pt]\noexpand\input{#1}\noexpand\end{enumerate}}%
-}}
+ \immediate\write\answrite{\noexpand\begin{enumerate}[leftmargin=1.5em]\noexpand\input{#1}\noexpand\end{enumerate}}%
+}%
+\immediate\write\answrite{\noexpand\bigbreak}%
+}
 
 \newcommand{\openenumerate}{\ifthenelse{\boolean{printquestions}%
 										\AND\NOT\boolean{enumopen}}{%
  \setboolean{enumopen}{true}%
- \begin{enumerate}%
+ \begin{enumerate}[leftmargin=1.5em]%
  \setcounter{enumi}{\value{saveexerciseenum}}%
 }{}}
 
@@ -708,11 +719,11 @@
 \newcommand{\exerciseset}[3]{\ifthenelse{\boolean{printquestions}}{%
  \closeenumerate%
  \stepcounter{saveexerciseenum}%
- \stepcounter{exerciseset}%
- \noindent#1 \arabic{saveexerciseenum}--\ref{enumiatendof\theexerciseset}#2%
+ \stepcounter{exercisesetcounter}%
+ \noindent#1 \arabic{saveexerciseenum}--\ref{enumiatendof\thechapter_\theexercisesetcounter}#2%
  \addtocounter{saveexerciseenum}{-1}%
  #3
- \label{enumiatendof\theexerciseset}%
+ \label{enumiatendof\thechapter_\theexercisesetcounter}%
 }{
  #3
 }}

@@ -37,8 +37,8 @@
 \begin{enumerate}\addtocounter{enumi}{18}
 \item	\deriv{\sin^{-1}x}{\frac{1}{\sqrt{1-x^2}}}
 \item	\deriv{\cos^{-1}x}{\frac{-1}{\sqrt{1-x^2}}}
-\item	\deriv{\csc^{-1}x}{\frac{-1}{|x|\sqrt{x^2-1}}}
-\item	\deriv{\sec^{-1}x}{\frac{1}{|x|\sqrt{x^2-1}}}
+\item	\deriv{\csc^{-1}x}{\frac{-1}{\abs{x}\sqrt{x^2-1}}}
+\item	\deriv{\sec^{-1}x}{\frac{1}{\abs{x}\sqrt{x^2-1}}}
 \item	\deriv{\tan^{-1}x}{\frac{1}{1+x^2}}
 \item	\deriv{\cot^{-1}x}{\frac{-1}{1+x^2}}
 \item	\deriv{\cosh x}{\sinh x}
@@ -54,7 +54,7 @@
 \item	\deriv{\cosh^{-1}x}{\frac1{\sqrt{x^2-1}}}
 \item	\deriv{\sinh^{-1}x}{\frac1{\sqrt{x^2+1}}}
 \item	\deriv{\sech^{-1}x}{\frac{-1}{x\sqrt{1-x^2}}}
-\item	\deriv{\csch^{-1}x}{\frac{-1}{|x|\sqrt{1+x^2}}}
+\item	\deriv{\csch^{-1}x}{\frac{-1}{\abs{x}\sqrt{1+x^2}}}
 \item	\deriv{\tanh^{-1}x}{\frac1{1-x^2}}
 \item	\deriv{\coth^{-1}x}{\frac1{1-x^2}}
 \end{enumerate}
@@ -74,17 +74,17 @@ $\ds \int f(x)\ dx \pm \int g(x)\ dx$
 $\ n\neq -1$
 \item	\myint{e^x}{e^x+C}
 \item	\myint{a^x}{\frac{1}{\ln a}\cdot a^x+C}
-\item	\myint{\frac{1}{x}}{\ln |x| + C}
+\item	\myint{\frac{1}{x}}{\ln \abs{x} + C}
 \item	\myint{\cos x}{\sin x+C}
 \item	\myint{\sin x}{-\cos x+C}
 \end{enumerate}
 \end{minipage}%
 \begin{minipage}[t]{.31\linewidth}
 \begin{enumerate}\addtocounter{enumi}{10}
-\item	\myint{\tan x}{-\ln |\cos x|+C}
-\item	\myint{\sec x}{\ln |\sec x+\tan x|+C}
-\item	\myint{\csc x}{-\ln |\csc x+\cot x|+C}
-\item	\myint{\cot x}{\ln |\sin x|+C}
+\item	\myint{\tan x}{-\ln \abs{\cos x}+C}
+\item	\myint{\sec x}{\ln \abs{\sec x+\tan x}+C}
+\item	\myint{\csc x}{-\ln \abs{\csc x+\cot x}+C}
+\item	\myint{\cot x}{\ln \abs{\sin x}+C}
 \item	\myint{\sec^2 x}{\tan x+C}
 \item	\myint{\csc^2x}{-\cot x+C}
 \item	\myint{\sec x\tan x}{\sec x+C}
@@ -97,16 +97,16 @@ $\ n\neq -1$
 \begin{minipage}[t]{.38\linewidth}
 \begin{enumerate}\addtocounter{enumi}{21}
 \item	\myint{\frac{1}{\sqrt{a^2-x^2}}}{\sin^{-1}\left(\frac xa\right)+C}
-\item	\myint{\frac{1}{x\sqrt{x^2-a^2}}}{\frac1a\sec^{-1}\left(\frac{|x|}{a}\right)+C}
+\item	\myint{\frac{1}{x\sqrt{x^2-a^2}}}{\frac1a\sec^{-1}\left(\frac{\abs x}{a}\right)+C}
 \item	\myint{\cosh x}{\sinh x+C}
 \item	\myint{\sinh x}{\cosh x+C}
 \item	\myint{\tanh x}{\ln(\cosh x)+C}
-\item	\myint{\coth x}{\ln |\sinh  x|+C}
-\item	\myint{\frac{1}{\sqrt{x^2-a^2}}}{\ln\big|x+\sqrt{x^2-a^2}\big|+C}
-\item	\myint{\frac{1}{\sqrt{x^2+a^2}}}{\ln\big|x+\sqrt{x^2+a^2}\big|+C}
-\item	\myint{\frac{1}{a^2-x^2}}{\frac1{2a}\ln\left|\frac{a+x}{a-x}\right|+C}
+\item	\myint{\coth x}{\ln \abs{\sinh  x}+C}
+\item	\myint{\frac{1}{\sqrt{x^2-a^2}}}{\ln\abs{x+\sqrt{x^2-a^2}}+C}
+\item	\myint{\frac{1}{\sqrt{x^2+a^2}}}{\ln\abs{x+\sqrt{x^2+a^2}}+C}
+\item	\myint{\frac{1}{a^2-x^2}}{\frac1{2a}\ln\abs{\frac{a+x}{a-x}}+C}
 \item	\myint{\frac{1}{x\sqrt{a^2-x^2}}}{\frac1a\ln\left(\frac{x}{a+\sqrt{a^2-x^2}}\right)+C}
-\item	\myint{\frac{1}{x\sqrt{x^2+a^2}}}{\frac1a\ln\left|\frac{x}{a+\sqrt{x^2+a^2}}\right|+C}
+\item	\myint{\frac{1}{x\sqrt{x^2+a^2}}}{\frac1a\ln\abs{\frac{x}{a+\sqrt{x^2+a^2}}}+C}
 \end{enumerate}
 \end{minipage}
 \normalsize
@@ -160,7 +160,7 @@ $\ n\neq -1$
 \noindent%
 \begin{minipage}{.56\linewidth}
 \centering
-\vskip 0in\begin{tikzpicture}[>=latex,scale=1.5,thick]
+\begin{tikzpicture}[>=latex,scale=1.5,thick]
 \draw [<->](-1.3,0)--(1.3,0) node [right] {$x$};
 \draw [<->] (0,-1.3) -- (0,1.3) node [above] {$y$};
 \draw (0,0) circle (1);
@@ -566,9 +566,9 @@ $ac x^3 + adx^2 + bcx + bd = ax^2(cs+d)+b(cx+d)=(ax^2+b)(cx+d)$
 &
 \sum^n_{i=1}{i} &= \frac{n(n+1)}{2}
 &
-\sum^n_{i=1}{i\hskip1pt^2} &= \frac{n(n+1)(2n+1)}{6}
+\sum^n_{i=1}{i^2} &= \frac{n(n+1)(2n+1)}{6}
 &
-\sum^n_{i=1}{i\hskip1pt^3} &= \left(\frac{n(n+1)}{2}\right)^2
+\sum^n_{i=1}{i^3} &= \left(\frac{n(n+1)}{2}\right)^2
 \end{align*}
 
 \subsection*{Trapezoidal Rule}

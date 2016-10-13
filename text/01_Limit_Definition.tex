@@ -1,7 +1,7 @@
 
 \section{Epsilon-Delta Definition of a Limit}\label{sec:limit_def}
 
-This section introduces the formal definition of a limit. Many refer to this as ``the epsilon--delta,'' definition, referring to the letters $\epsilon$ and $\delta$ of the Greek alphabet.\\
+This section introduces the formal definition of a limit. Many refer to this as ``the epsilon--delta,'' definition, referring to the letters $\epsilon$ and $\delta$ of the Greek alphabet.\bigskip
 
 Before we give the actual definition, let's consider a few informal ways of describing a limit.  Given a function $y=f(x)$ and an $x$-value, $c$, we say that ``the limit of the function $f$, as $x$ approaches $c$, is a value~$L$'': 
 
@@ -26,10 +26,10 @@ The traditional notation for the $x$-tolerance is the lowercase Greek letter del
 \end{description}
 
 We can write ``$x$ is within $\delta$ units of $c$'' mathematically as
-$$|x-c| < \delta, \qquad \text{which is equivalent to }\qquad c-\delta < x < c+\delta.$$
+$$\abs{x-c} < \delta, \qquad \text{which is equivalent to }\qquad c-\delta < x < c+\delta.$$
 Letting the symbol ``$\longrightarrow$'' represent the word ``implies,'' we can rewrite $\textbf{3}''$ as 
 $$
-|x - c| < \delta \longrightarrow  |y - L| < \epsilon 
+\abs{x - c} < \delta \longrightarrow  \abs{y - L} < \epsilon 
 \qquad \textrm{or} \qquad c - \delta < x < c + \delta \longrightarrow L - \epsilon < y < L + \epsilon.
 $$
 The point is that $\delta$ and $\epsilon$, being tolerances, can be any positive (but typically small) values.  Finally, we have the formal definition of the limit with the notation  seen in the previous section.
@@ -38,7 +38,7 @@ The point is that $\delta$ and $\epsilon$, being tolerances, can be any positive
 {Let $I$ be an open interval containing $c$, and let $f$ be a function defined on $I$, except possibly at $c$. The \sword{limit of $f(x)$, as $x$ approaches $c$, is $L$}, denoted by
 \[\ds\lim_{x\rightarrow c} f(x) = L,\]
 means that given any $\epsilon > 0$, there exists $\delta > 0$ such that for all $x\neq c$,  
-if  $|x - c| < \delta$, then $|f(x) - L| < \epsilon$.\index{limit!definition}
+if  $\abs{x - c} < \delta$, then $\abs{f(x) - L} < \epsilon$.\index{limit!definition}
 }
 
 (Mathematicians often enjoy writing ideas without using any words. Here is the wordless definition of the limit:
@@ -119,7 +119,7 @@ Since we want this last interval to describe an $x$ tolerance around 4, we have 
 We can check this for our previous values.  If $\epsilon=0.5$, the formula gives
 $\delta \leq 4(0.5) - (0.5)^2 = 1.75$ and when $\epsilon=0.01$, the formula gives $\delta \leq 4(0.01) - (0.01)^2 = 0.399$.
 
-So given any $\epsilon >0$, set $\delta \leq 4\epsilon - \epsilon^2$. Then if $|x-4|<\delta$ (and $x\neq 4$), then $|f(x) - 2| < \epsilon$,  satisfying the definition of the limit.  We have shown formally (and finally!) that $\displaystyle \lim_{x\rightarrow 4} \sqrt{x} = 2 $.}
+So given any $\epsilon >0$, set $\delta \leq 4\epsilon - \epsilon^2$. Then if $\abs{x-4}<\delta$ (and $x\neq 4$), then $\abs{f(x) - 2} < \epsilon$,  satisfying the definition of the limit.  We have shown formally (and finally!) that $\displaystyle \lim_{x\rightarrow 4} \sqrt{x} = 2 $.}
 
 %FOOTNOTE $**$: Actually, it is a pain, but this won't work if $\epsilon \ge 4$.  This shouldn't really occur since $\epsilon$ is supposed to be small, but it could happen.  In the cases where $\epsilon \ge 4$, just take $\delta = 1$ and you'll be fine.
 The previous example was a little long in that we sampled a few specific cases of $\epsilon$ before handling the general case. Normally this is not done.  The previous example is also a bit unsatisfying in that $\sqrt{4}=2$; why work so hard to prove something so obvious? Many $\epsilon$-$\delta$ proofs are long and difficult to do. In this section, we will focus on examples where the answer is, frankly, obvious, because the non--obvious examples are even harder. In the next section we will learn some theorems that allow us to evaluate limits \textit{analytically}, that is, without using the $\epsilon$-$\delta$ definition.
@@ -135,8 +135,8 @@ we actually start by assuming
 	\item $\abs{f(x)-L}<\epsilon$, then perform some algebraic manipulations to give an inequality of the form
 	\item $\abs{x-c}<$ \textit{something}.
 \end{enumerate} 
-%then perform some algebraic manipulations to transform that inequality into an inequality where the ``less than'' side is $|x-c|$. 
-When we have properly done this, the \textit{something} on the ``greater than'' side of the inequality becomes our $\delta$. We can refer to this as the ``scratch--work'' phase of our proof. Once we have $\delta$, we can formally start with $|x-c|<\delta$ and use algebraic manipulations to conclude that $|f(x)-L|<\epsilon$, usually by using the same steps of our ``scratch--work'' in reverse order.
+%then perform some algebraic manipulations to transform that inequality into an inequality where the ``less than'' side is $\abs{x-c}$. 
+When we have properly done this, the \textit{something} on the ``greater than'' side of the inequality becomes our $\delta$. We can refer to this as the ``scratch--work'' phase of our proof. Once we have $\delta$, we can formally start with $\abs{x-c}<\delta$ and use algebraic manipulations to conclude that $\abs{f(x)-L}<\epsilon$, usually by using the same steps of our ``scratch--work'' in reverse order.
 
 We will highlight this process in the following examples.
 
@@ -157,7 +157,7 @@ We start our scratch-work by considering $\abs{f(x)-(-2)}<\epsilon$:
 This suggests that we set $\delta=\frac{\epsilon}{3}$,
 
 \begin{proof}
-Given $\epsilon>0$, choose $\ds \delta=\frac{\epsilon}{3}$. We assume $|x-1|<\delta$
+Given $\epsilon>0$, choose $\ds \delta=\frac{\epsilon}{3}$. We assume $\abs{x-1}<\delta$
 
 \small
 \begin{align*}
@@ -209,9 +209,9 @@ We start our scratch-work by considering $\abs{f(x)-4}<\epsilon$:
 \abs{f(x)-4} &< \epsilon \notag\\
 \abs{x^2-4} &< \epsilon & \text{(Now factor)}\notag\\
 \abs{(x-2)(x+2)} &< \epsilon \notag\\
-\abs{x-2} &<\frac{\epsilon}{|x+2|}.\label{eq:lim1}
+\abs{x-2} &<\frac{\epsilon}{\abs{x+2}}.\label{eq:lim1}
 \end{align}
-We are at the phase of saying that $\abs{x-2}<$ \textit{something}, where \textit{something}$=\epsilon/|x+2|$. We want to turn that \textit{something} into $\delta$. Could we not set $\delta = \dfrac{\epsilon}{\abs{x+2}}$?  
+We are at the phase of saying that $\abs{x-2}<$ \textit{something}, where \textit{something}$=\epsilon/\abs{x+2}$. We want to turn that \textit{something} into $\delta$. Could we not set $\delta = \dfrac{\epsilon}{\abs{x+2}}$?  
 
 We are close to an answer, but the catch is that $\delta$ must be a \textit{constant} value (so it can't contain $x$).  There is a way to work around this, but we do have to make an assumption.  Remember that $\epsilon$ is supposed to be a small number, which implies that $\delta$ will also be a small value.  In particular, we can (probably) assume that $\delta < 1$.  If this is true, then $\abs{x-2}< \delta$ would imply that $\abs{x-2}< 1$, giving $1 < x < 3$.  
 
@@ -230,7 +230,7 @@ Given $\epsilon$, let $\delta \leq \epsilon/5$. We want to show that when $\abs{
 \begin{align*}
 \abs{x-2} &< \delta \\
 \abs{x-2} &< \frac{\epsilon}5\\
-\abs{x-2} &< \frac\epsilon5 < \frac{\epsilon}{\abs{x+2}} & \text{(for $x$ near 2, from Equation \eqref{eq:limit2})}\\
+\abs{x-2} &< \frac\epsilon5 < \frac{\epsilon}{\abs{x+2}} & \text{(for $x$ near 2, from \autoeqref{eq:limit2})}\\
 % eqref causes latexml warning, but it comes out just fine
 \abs{x-2}\cdot\abs{x+2} &< \epsilon\\
 \abs{(x-2)(x+2)} &< \epsilon\\
@@ -246,14 +246,14 @@ We have also picked $\delta$ to be smaller than ``necessary.'' We could get by w
 
 \mfigure{0in}{Choosing $\delta = \epsilon/5$ in \autoref{ex_compute_lim2}.}{fig:limit_eover5}{figures/figlimit_proof2a}
 
-In summary, given $\epsilon > 0$, set $\delta\leq\epsilon/5$.  Then $|x - 2| < \delta$ implies 
-$|x^2 - 4|< \epsilon$ (i.e.\ $|y - 4|< \epsilon$) as desired.  This shows that $\displaystyle \lim_{x\rightarrow 2} x^2 = 4 $. \autoref{fig:limit_eover5} gives a visualization of this; by restricting $x$ to values within $\delta = \epsilon/5$ of 2, we see that $f(x)$ is within $\epsilon$ of $4$.}
+In summary, given $\epsilon > 0$, set $\delta\leq\epsilon/5$.  Then $\abs{x - 2} < \delta$ implies 
+$\abs{x^2 - 4}< \epsilon$ (i.e.\ $\abs{y - 4}< \epsilon$) as desired.  This shows that $\displaystyle \lim_{x\rightarrow 2} x^2 = 4 $. \autoref{fig:limit_eover5} gives a visualization of this; by restricting $x$ to values within $\delta = \epsilon/5$ of 2, we see that $f(x)$ is within $\epsilon$ of $4$.}
 
-%Examples \ref{ex_compute_lim1} and \ref{ex_compute_lim2} determine $\delta$ by using logic that is difficult to recreate as one learns this topic. For instance, Equation \eqref{eq:limit2} is used based on the following facts:
+%Examples \ref{ex_compute_lim1} and \ref{ex_compute_lim2} determine $\delta$ by using logic that is difficult to recreate as one learns this topic. For instance, \autoeqref{eq:limit2} is used based on the following facts:
 %	\begin{enumerate}
-%	\item		We want $\delta \leq \frac{\epsilon}{|x+2|}$. Since we cannot let $\delta$ vary according to $x$,
-%	\item		we notice that $|x+2|<5$ for the values we are interested in, so
-%	\item		$\frac{\epsilon}{5} < \frac{\epsilon}{|x+2|}$ and setting $\delta<\frac{\epsilon}{5}$ ensures that $\delta<\frac{\epsilon}{|x+2|}$.
+%	\item		We want $\delta \leq \frac{\epsilon}{\abs{x+2}}$. Since we cannot let $\delta$ vary according to $x$,
+%	\item		we notice that $\abs{x+2}<5$ for the values we are interested in, so
+%	\item		$\frac{\epsilon}{5} < \frac{\epsilon}{\abs{x+2}}$ and setting $\delta<\frac{\epsilon}{5}$ ensures that $\delta<\frac{\epsilon}{\abs{x+2}}$.
 %	\end{enumerate}
 %
 %The following theorem offers some inequalities that are useful when creating $\delta$--$\epsilon$ proofs.
@@ -271,18 +271,18 @@ $|x^2 - 4|< \epsilon$ (i.e.\ $|y - 4|< \epsilon$) as desired.  This shows that $
 %We revisit the limit found in \autoref{ex_compute_lim2} to demonstrate the use of \autoref{thm:power_ineq}.
 %
 %\example{ex_compute_lim2b}{Show that $\ds \lim_{x\to 2} x^2=4$ using \autoref{thm:power_ineq}.}
-%{We start the same as before; let $\epsilon >0$ be given. We want to find $\delta>0$ such that $|x^2-4|<\epsilon$ whenever $|x-2|<\delta$. Consider the following inequalities:
+%{We start the same as before; let $\epsilon >0$ be given. We want to find $\delta>0$ such that $\abs{x^2-4}<\epsilon$ whenever $\abs{x-2}<\delta$. Consider the following inequalities:
 %\begin{align*}
-%|x^2-4|<\epsilon & \\
+%\abs{x^2-4}<\epsilon & \\
 %-\epsilon < x^2-4 < \epsilon & \qquad \text{\small (Definition of abs. value)}\\
 %4-\epsilon < x^2 < 4+\epsilon & \qquad \text{\small (add 4)}\\
 %\sqrt{4-\epsilon} < x < \sqrt{4+\epsilon} & \qquad \text{\small (Take square roots)}\\
 %\sqrt{4}-\sqrt{\epsilon} < \sqrt{4-\epsilon} < x < \sqrt{4+\epsilon}< \sqrt{4}+\sqrt{\epsilon} & \qquad \text{\small (apply \autoref{thm:power_ineq})}\\
 %2-\sqrt{\epsilon} < x < 2 + \sqrt{\epsilon} & \text{\small (Simplify)}
 %\end{align*}
-%This implies that when $x$ is within $\sqrt{\epsilon}$ of $2$, $x^2$ will be within $\epsilon$ of $4$. Thus set $\delta = \sqrt{\epsilon}$. We can now start with $|x-2|<\delta$ and reverse the above steps:
+%This implies that when $x$ is within $\sqrt{\epsilon}$ of $2$, $x^2$ will be within $\epsilon$ of $4$. Thus set $\delta = \sqrt{\epsilon}$. We can now start with $\abs{x-2}<\delta$ and reverse the above steps:
 %\begin{align*}
-%|x-2| < \delta & \\
+%\abs{x-2} < \delta & \\
 %-\delta < x-2 < \delta & \qquad \text{\small (Definition of abs. value)}\\
 %2-\delta < x < 2+ \delta & \\
 %2-\sqrt{\epsilon} < x < 2+\sqrt{\epsilon} & \\
@@ -290,14 +290,14 @@ $|x^2 - 4|< \epsilon$ (i.e.\ $|y - 4|< \epsilon$) as desired.  This shows that $
 %}
 
 %\example{ex_compute_lim4}{Evaluating a limit using the definition}{Prove that $\ds \lim_{x\rightarrow 1}x^3-2x = -1$.}
-%{We start our scratch--work by considering $|f(x) - (-1)| < \epsilon$:
+%{We start our scratch--work by considering $\abs{f(x) - (-1)} < \epsilon$:
 %\begin{align}
-%|f(x)-(-1)| &< \epsilon \notag\\
-%|x^3-2x + 1|&< \epsilon & \text{(Now factor)}\notag\\
-%|(x-1)(x^2+x-1)|&< \epsilon \notag\\
-%|x-1| &<\frac{\epsilon}{|x^2+x-1|}.\label{eq:lim4}
+%\abs{f(x)-(-1)} &< \epsilon \notag\\
+%\abs{x^3-2x + 1}&< \epsilon & \text{(Now factor)}\notag\\
+%\abs{(x-1)(x^2+x-1)}&< \epsilon \notag\\
+%\abs{x-1} &<\frac{\epsilon}{\abs{x^2+x-1}}.\label{eq:lim4}
 %\end{align}
-%We are at the phase of saying that $|x-1|<$ \textit{something}, where \textit{something}$=\epsilon/|x^2+x-1|$. We want to turn that \textit{something} into $\delta$.
+%We are at the phase of saying that $\abs{x-1}<$ \textit{something}, where \textit{something}$=\epsilon/\abs{x^2+x-1}$. We want to turn that \textit{something} into $\delta$.
 %
 %Since $x$ is approaching 1, we are safe to assume that $x$ is between 0 and 2. So
 %\begin{align*}
@@ -308,7 +308,7 @@ $|x^2 - 4|< \epsilon$ (i.e.\ $|y - 4|< \epsilon$) as desired.  This shows that $
 %-1&< x^2+x-1<5.&\text{(subtracted 1 from each part)}
 %\end{align*}
 %
-%In Equation \eqref{eq:lim4}, we wanted $|x-1|<\epsilon/|x^2+x-1|$. The above shows that given any $x$ in $[0,2]$, we know that 
+%In \autoeqref{eq:lim4}, we wanted $\abs{x-1}<\epsilon/\abs{x^2+x-1}$. The above shows that given any $x$ in $[0,2]$, we know that 
 %\begin{align}
 %x^2+x-1 &< 5 &\text{which implies that}\notag\\
 %\frac15 &< \frac{1}{x^2+x-1} &\text{which implies that}\notag\\
@@ -316,15 +316,15 @@ $|x^2 - 4|< \epsilon$ (i.e.\ $|y - 4|< \epsilon$) as desired.  This shows that $
 %\end{align}
 % So we set $\delta \leq \epsilon/5$. This ends our scratch--work, and we begin the formal proof (which also helps us understand why this was a good choice of $\delta$).
 %
-%Given $\epsilon$, let $\delta \leq \epsilon/5$. We want to show that when $|x-1|<\delta$, then $|(x^3-2x)-(-1)|<\epsilon$. We start with $|x-1|<\delta$:
+%Given $\epsilon$, let $\delta \leq \epsilon/5$. We want to show that when $\abs{x-1}<\delta$, then $\abs{(x^3-2x)-(-1)}<\epsilon$. We start with $\abs{x-1}<\delta$:
 %\begin{align*}
-%|x-1| &< \delta \\
-%|x-1| &< \frac{\epsilon}5\\
-%|x-1| &< \frac\epsilon5 < \frac{\epsilon}{|x^2+x-1|} & \text{(for $x$ near 1, from Equation \eqref{eq:lim4b})}\\
+%\abs{x-1} &< \delta \\
+%\abs{x-1} &< \frac{\epsilon}5\\
+%\abs{x-1} &< \frac\epsilon5 < \frac{\epsilon}{\abs{x^2+x-1}} & \text{(for $x$ near 1, from \autoeqref{eq:lim4b})}\\
 %% eqref causes latexml warning, but it comes out just fine
-%|x-1|\cdot |x^2+x-1| &< \epsilon\\
-%|x^3-2x+1| &< \epsilon\\
-%|(x^3-2x)-(-1)| &<\epsilon,
+%\abs{x-1}\cdot \abs{x^2+x-1} &< \epsilon\\
+%\abs{x^3-2x+1} &< \epsilon\\
+%\abs{(x^3-2x)-(-1)} &<\epsilon,
 %\end{align*}
 %which is what we wanted to show. Thus $\ds \lim_{x\to 1}x^3-2x = -1$.
 %}\\
@@ -332,32 +332,32 @@ $|x^2 - 4|< \epsilon$ (i.e.\ $|y - 4|< \epsilon$) as desired.  This shows that $
 %We illustrate evaluating limits once more.\\
 %
 %\example{ex_compute_lim3}{Evaluating a limit using the definition}{Prove that $\displaystyle \lim_{x\rightarrow 0} e^x = 1 $.}
-%{Symbolically, we want to take the equation $|e^x - 1| < \epsilon$ and unravel it to the form $|x-0| < \delta$.  Here is our scratch--work:
+%{Symbolically, we want to take the equation $\abs{e^x - 1} < \epsilon$ and unravel it to the form $\abs{x-0} < \delta$.  Here is our scratch--work:
 %\begin{eqnarray*}
-%|e^x - 1| < \epsilon&\\
+%\abs{e^x - 1} < \epsilon&\\
 %-\epsilon < e^x - 1 < \epsilon& \qquad \textrm{(Definition of absolute value)}\\
 %1-\epsilon < e^x < 1+\epsilon & \qquad \textrm{(Add 1)}\\
 %\ln(1-\epsilon) < x < \ln(1+\epsilon) & \qquad \textrm{(Take natural logs)}\\
 %\end{eqnarray*}
-%Making the safe assumption that $\epsilon<1$ ensures the last inequality is valid (i.e., so that $\ln (1-\epsilon)$ is defined). We can then set $\delta$ to be the minimum of $|\ln(1-\epsilon)|$ and $\ln(1+\epsilon)$; i.e.,  %  Well, there is a catch.  The value of $\epsilon$ is supposed to be small, but if it happens that $\epsilon \ge 1$, then $\ln(1-\epsilon)$ would be undefined!  The way to work around this is to simply define a new epsilon that is guaranteed to be smaller than the original epsilon \textit{and} less than 1 (let's say less than 1/2 just to be on the safe side).  Let's call this new value $\epsilon_1$ and define it to be $\epsilon_1 = \min\{\epsilon, 1/2\}$.  Then we can use the calculations above to define 
-%$$\delta = \min\{|\ln(1-\epsilon)|, \ln(1+\epsilon)\} = \ln(1+\epsilon).$$  
+%Making the safe assumption that $\epsilon<1$ ensures the last inequality is valid (i.e., so that $\ln (1-\epsilon)$ is defined). We can then set $\delta$ to be the minimum of $\abs{\ln(1-\epsilon)}$ and $\ln(1+\epsilon)$; i.e.,  %  Well, there is a catch.  The value of $\epsilon$ is supposed to be small, but if it happens that $\epsilon \ge 1$, then $\ln(1-\epsilon)$ would be undefined!  The way to work around this is to simply define a new epsilon that is guaranteed to be smaller than the original epsilon \textit{and} less than 1 (let's say less than 1/2 just to be on the safe side).  Let's call this new value $\epsilon_1$ and define it to be $\epsilon_1 = \min\{\epsilon, 1/2\}$.  Then we can use the calculations above to define 
+%$$\delta = \min\{\abs{\ln(1-\epsilon)}, \ln(1+\epsilon)\} = \ln(1+\epsilon).$$  
 %\mnote{\textbf{Note:} Recall $\ln 1= 0$ and $\ln x<0$ when $0<x<1$. So $\ln (1-\epsilon) <0$, hence we consider its absolute value.}
 %
 %Now, we work through the actual the proof:
 %
 %
 %\begin{align*}
-%|x - 0|&<\delta\\
+%\abs{x - 0}&<\delta\\
 %-\delta &< x < \delta &  \textrm{(Definition of absolute value)}\\
 %-\ln(1+\epsilon) &< x < \ln(1+\epsilon). &\\  
 %\ln(1-\epsilon) &< x < \ln(1+\epsilon). & \text{(since $\ln(1-\epsilon) < -\ln(1+\epsilon)$)}\\ 
-%\intertext{The above line is true by our choice of $\delta$ and by the fact that since $|\ln(1-\epsilon)|>\ln(1+\epsilon)$ and $\ln(1-\epsilon)<0$, we know $\ln(1-\epsilon) < -\ln(1+\epsilon )$.} %\textrm{(By our choice of}\; \delta)\\
+%\intertext{The above line is true by our choice of $\delta$ and by the fact that since $\abs{\ln(1-\epsilon)}>\ln(1+\epsilon)$ and $\ln(1-\epsilon)<0$, we know $\ln(1-\epsilon) < -\ln(1+\epsilon )$.} %\textrm{(By our choice of}\; \delta)\\
 %1-\epsilon &< e^x < 1+\epsilon &  \textrm{(Exponentiate)}\\
 %-\epsilon &< e^x - 1 < \epsilon &  \textrm{(Subtract 1)}\\
 %%-\epsilon < e^x - 1 < \epsilon & \qquad \textrm{(Since}\; \epsilon_1 \le \epsilon)\\
 %\end{align*}
 %
-%In summary, given $\epsilon > 0$, let $\delta = \ln(1+\epsilon)$. Then $|x - 0| < \delta$ implies $|e^x - 1|< \epsilon$ as desired.  We have shown that $\displaystyle \lim_{x\rightarrow 0} e^x = 1 $.
+%In summary, given $\epsilon > 0$, let $\delta = \ln(1+\epsilon)$. Then $\abs{x - 0} < \delta$ implies $\abs{e^x - 1}< \epsilon$ as desired.  We have shown that $\displaystyle \lim_{x\rightarrow 0} e^x = 1 $.
 %}\\
 %
 %We note that we could actually show that $\ds\lim_{x\to c} e^x = e^c $ for any constant $c$.  We do this by factoring out $e^c$ from both sides, leaving us to show $\ds\lim_{x\to c} e^{x-c} = 1 $ instead.  By using the substitution $u=x-c$, this reduces to showing $\ds\lim_{u\to 0} e^u = 1 $ which we just did in the last example.  As an added benefit, this shows that in fact the function $f(x)=e^x$ is \textit{continuous} at all values of $x$, an important concept we will define in \autoref{sec:continuity}.\\

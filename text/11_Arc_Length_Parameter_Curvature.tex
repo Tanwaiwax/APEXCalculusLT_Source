@@ -23,7 +23,7 @@ s(t) = \int_0^t \norm{\vec r\,'(u)}\ du.\label{eq:vvfarc}
 This establishes a relationship between $s$ and $t$. Knowing this relationship explicitly, we can rewrite $\vec r(t)$ as a function of $s$: $\vec r(s)$. We demonstrate this in an example.
 
 \example{ex_vvfarc1}{Finding the arc length parameter}{Let $\vec r(t) = \la 3t-1,4t+2\ra$. Parametrize $\vec r$ with the arc length parameter $s$.}
-{Using Equation \eqref{eq:vvfarc}, we write
+{Using \autoeqref{eq:vvfarc}, we write
 $$s(t) = \int_0^t \norm{\vec r\,'(u)}\ du.$$
 We can integrate this, explicitly finding a relationship between $s$ and $t$:
 \begin{align*}
@@ -41,9 +41,9 @@ Is the point $(1/5,18/5)$ really 2 units away from $(-1,2)$? We use the Distance
 $$d = \sqrt{\left(\frac15-(-1)\right)^2+ \left(\frac{18}5-2\right)^2} = \sqrt{\frac{36}{25}+\frac{64}{25}} = \sqrt{4}=2.$$
 Yes, $s(2)$ is indeed 2 units away, in the direction of travel, from the initial point.}
 
-Things worked out very nicely in \autoref{ex_vvfarc1}; we were able to establish directly that $s=5t$. Usually, the arc length parameter is much more difficult to describe in terms of $t$, a result of integrating a square--root. There are a number of things that we can learn about the arc length parameter from Equation \eqref{eq:vvfarc}, though, that are incredibly useful.
+Things worked out very nicely in \autoref{ex_vvfarc1}; we were able to establish directly that $s=5t$. Usually, the arc length parameter is much more difficult to describe in terms of $t$, a result of integrating a square--root. There are a number of things that we can learn about the arc length parameter from \autoeqref{eq:vvfarc}, though, that are incredibly useful.
 
-First, %consider Equation \eqref{eq:vvfarc} and 
+First, %consider \autoeqref{eq:vvfarc} and 
 take the derivative of $s$ with respect to $t$. The Fundamental Theorem of Calculus (see \autoref{thm:FTC1}) states that
 \begin{equation}
 \frac{ds}{dt}=s\,'(t) = \norm{\vrp(t)}.\label{eq:vvfarc3}
@@ -59,7 +59,7 @@ Solving for $\vrp(s)$, we have
 \begin{equation}
 \vrp(s) = \frac{\vrp(t)}{\norm{\vrp(t)}} = \vec T(t),\label{eq:vvfarc2}
 \end{equation}
-where $\vec T(t)$ is the unit tangent vector. Equation \eqref{eq:vvfarc2} is often misinterpreted, as one is tempted to think it states $\vrp(t) = \vec T(t)$, but there is a big difference between $\vrp(s)$ and $\vrp(t)$. The key to take from it is that $\vrp(s)$ is a unit vector. In fact, the following theorem states that this characterizes the arc length parameter.
+where $\vec T(t)$ is the unit tangent vector. \autoeqref{eq:vvfarc2} is often misinterpreted, as one is tempted to think it states $\vrp(t) = \vec T(t)$, but there is a big difference between $\vrp(s)$ and $\vrp(t)$. The key to take from it is that $\vrp(s)$ is a unit vector. In fact, the following theorem states that this characterizes the arc length parameter.
 
 \theorem{thm:arclengthparam}{Arc Length Parameter}
 {Let $\vec r(s)$ be a vector--valued function. The parameter $s$ is the arc length parameter if, and only if, $\norm{\vrp(s)} = 1.$\index{arc length parameter}}
@@ -80,7 +80,7 @@ We derive this number in the following way. Consider \autoref{fig:curvatureintro
 \definition{def:curvature}{Curvature}
 {Let $\vec r(s)$ be a vector--valued function where $s$ is the arc length parameter. The curvature $\kappa$ of the graph of $\vec r(s)$ is
 \index{curvature}\index{unit tangent vector!and curvature}
-$$\kappa = \snorm{\frac{d\vec T}{ds}} = \snorm{\vec T\,'(s)}.$$}
+$$\kappa = \norm{\frac{d\vec T}{ds}} = \norm{\vec T\,'(s)}.$$}
 
 If $\vec r(s)$ is parametrized by the arc length parameter, then 
 $$\vec T(s) = \frac{\vrp(s)}{\norm{\vrp(s)}} \quad \text{and}\quad \vec N(s) = \frac{\vec T\,'(s)}{\norm{\vec T\,'(s)}}.$$
@@ -101,7 +101,7 @@ We use  \autoref{def:curvature}  to find the curvature of the line in \autoref{e
 \intertext{Therefore}
 \vec T\,'(s) &= \la 0,0\ra
 \intertext{and}
-\kappa&=\snorm{\vec T\,'(s)} = 0.
+\kappa&=\norm{\vec T\,'(s)} = 0.
 \end{align*}
 It probably comes as no surprise that the curvature of a line is 0. (How ``curvy\primeskip'' is a line? It is not curvy at all.)}
 
@@ -194,7 +194,7 @@ $$a_\text{T} = \frac{d}{dt}\Big(\norm{\vvt}\Big) \quad \text{and} \quad a_\text{
 We understood that the amount of acceleration in the direction of $\vec T$ relates only to how the speed of the object is changing, and that the amount of acceleration in the direction of $\vec N$ relates to how the direction of travel of the object is changing. (That is, if the object travels at constant speed, $a_\text{T}=0$; if the object travels in a constant direction, $a_\text{N}=0$.)
 
 
-In Equation \eqref{eq:vvfarc3} at the beginning of this section, we found
+In \autoeqref{eq:vvfarc3} at the beginning of this section, we found
 $s\,'(t) = \norm{\vvt}$. We can combine this fact with the above formula for $a_\text{T}$ to write
 $$a_\text{T} = \frac{d}{dt}\Big(\norm{\vvt}\Big) = \frac{d}{dt}\big( s\,'(t)\big) = s\,''(t).$$
 Since $s\,'(t)$ is speed, $s\,''(t)$ is the rate at which speed is changing with respect to time. We see once more that the component of acceleration in the direction of travel relates only to speed, not to a change in direction.
@@ -202,10 +202,9 @@ Since $s\,'(t)$ is speed, $s\,''(t)$ is the rate at which speed is changing with
 Now compare the formula for $a_\text{N}$ above to the formula for curvature in \autoref{thm:curvature_formulas}:
 $$a_\text{N} = \frac{\norm{\vvt\times \vat}}{\norm{\vvt}}\quad \text{and}\quad \kappa = \frac{\norm{\vrp(t)\times\vrp'(t)}}{\norm{\vrp(t)}^3}=\frac{\norm{\vvt\times \vat}}{\norm{\vvt}^3} .$$
 Thus 
-\begin{align}
-a_\text{N} &= \kappa \norm{\vvt}^2 \label{eq:curvature_an}\\
-				&= \kappa\Big(s\,'(t)\Big)^2\notag
-\end{align}
+\begin{equation}\label{eq:curvature_an}
+a_\text{N} = \kappa \norm{\vvt}^2 = \kappa\Big(s\,'(t)\Big)^2
+\end{equation}
 
 This last equation shows that the component of acceleration that changes the object's direction is dependent on two things: the curvature of the path and the speed of the object.
 
@@ -218,12 +217,12 @@ This is not a particularly practical way of finding $a_\text{T}$ and $a_\text{N}
 \example{ex_curvature5}{Curvature and road design}{The minimum radius of the curve in a highway cloverleaf is determined by the operating speed, as given in the table in \autoref{fig:curvature5}. For each curve and speed, compute $a_\text{N}$.}
 {\mtable{Operating speed and minimum radius in highway cloverleaf design.}{fig:curvature5}{%
 \begin{tabular}{cc}
-\parbox{50pt}{\centering Operating\\Speed (mph)} & \parbox{50pt}{\centering Minimum\\Radius (ft)} \\ \hline
+\parbox{50pt}{\centering Operating\\Speed (mph)} & \parbox{50pt}{\centering Minimum\\Radius (ft)} \\ \midrule
 35 & 310\\
 40 & 430\\
 45 & 540
 \end{tabular}}
-Using Equation \eqref{eq:curvature_an}, we can compute the acceleration normal to the curve in each case. We start by converting each speed from ``miles per hour'' to ``feet per second'' by multiplying by $5280/3600$.
+Using \autoeqref{eq:curvature_an}, we can compute the acceleration normal to the curve in each case. We start by converting each speed from ``miles per hour'' to ``feet per second'' by multiplying by $5280/3600$.
 
 \begin{align*}
 \text{35mph, 310ft } &\Rightarrow 51.33\text{ft/s},\quad \kappa = 1/310 \\

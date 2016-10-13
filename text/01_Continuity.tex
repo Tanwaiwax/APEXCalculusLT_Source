@@ -94,15 +94,19 @@ Give the intervals on which $f$ is continuous.
 We conclude that $f$ is continuous everywhere except at integer values of $c$. So the intervals on which $f$ is continuous are
 \[\dotsc, (-2,-1), (-1,0), (0,1), (1,2), \dotsc.\eoehere\]}
 		
-Our definition of continuity on an interval specifies the interval is an open interval. At endpoints or points of discontinuity we may consider continuity from the right or left. We say that $f$ is continuous from the right at $a$ if $\ds \lim_{x\to a^+} f(x)=f(a)$ and that $f$ is continuous from the left at $a$ if  $\ds \lim_{x\to a^-} f(x)=f(a)$. We can extend the definition of continuity to closed intervals by considering the appropriate one-sided limits at the endpoints.
+Our definition of continuity on an interval specifies the interval is an open interval. At endpoints or points of discontinuity we may consider continuity from the right or left.
+
+\definition{def:left_right_cont}{Left and Right Continuity}{Let $f$ be defined on an open interval that contains $a$.  We say that $f$ is \textbf{continuous from the right at $a$} (or \textbf{right continuous at $a$}) if $\ds \lim_{x\to a^+} f(x)=f(a)$.  We say that $f$ is \textbf{continuous from the left at $a$} (or \textbf{left continuous at $a$}) if  $\ds \lim_{x\to a^-} f(x)=f(a)$.}
 \index{continuity!right}\index{continuity!left}
+
+We can then extend the definition of continuity to closed intervals by considering the appropriate one-sided limits at the endpoints.
 
 \definition{def:closed_continuity}{Continuity on Closed Intervals}
 {Let $f$ be defined on the closed interval $[a,b]$ for some real numbers $a,b$. Then $f$ is \textbf{continuous on $[a,b]$} if:
 \begin{enumerate}
 	\item	$f$ is continuous on $(a,b)$,
-	\item	$\ds \lim_{x\to a^+} f(x) = f(a)$ and 
-	\item	$\ds \lim_{x\to b^-} f(x) = f(b)$.
+	\item	$f$ is left continuous at $a$ and 
+	\item	$f$ is right continuous at $b$.
 \end{enumerate}}
 		
 We can make the appropriate adjustments to talk about continuity on half--open intervals such as $[a,b)$ or $(a,b]$ if necessary.\bigskip
@@ -127,7 +131,7 @@ apply to continuity as well. We will utilize these properties in the following e
 \begin{minipage}[t]{.5\textwidth}
 	\begin{enumerate}\addtocounter{enumi}{3}
 		\item	$f(x) = \sqrt{1-x^2}$
-		\item	$f(x) = |x|$
+		\item	$f(x) = \abs x$
 	\end{enumerate}
 \end{minipage}}
 {We examine each in turn.
@@ -136,7 +140,7 @@ apply to continuity as well. We will utilize these properties in the following e
 	\item	The domain of $f(x) = \sin x$ is all real numbers, or $(-\infty,\infty)$. Applying \autoref{thm:lim_continuous} shows that $\sin x$ is continuous everywhere.
 	\item	The domain of $f(x) = \sqrt{x}$ is $[0,\infty)$. Applying \autoref{thm:lim_continuous} shows that $f(x) = \sqrt{x}$ is continuous on its domain of $[0,\infty)$.
 	\item	The domain of $f(x) = \sqrt{1-x^2}$ is $[-1,1]$. Applying Theorems \ref{thm:limit_algebra} and \ref{thm:lim_continuous} shows that $f$ is continuous on all of its domain, $[-1,1]$.
-	\item	The domain of $f(x) = |x|$ is $(-\infty,\infty)$. We can define the absolute value function as $\ds f(x) = \left\{\begin{array}{cc} -x & x<0 \\ x & x\geq 0\end{array}\right.$. Each ``piece'' of this piecewise defined function is continuous on all of its domain, giving that $f$ is continuous on $(-\infty,0)$ and $[0,\infty)$. We cannot assume this implies that $f$ is continuous on $(-\infty,\infty)$; we need to check that $\ds \lim_{x\to 0}f(x) = f(0)$, as $x=0$ is the point where $f$ transitions from one ``piece'' of its definition to the other. It is easy to verify that this is indeed true, hence we conclude that $f(x) = \abs{x}$ is continuous everywhere.\eoehere
+	\item	The domain of $f(x) = \abs x$ is $(-\infty,\infty)$. We can define the absolute value function as $\ds f(x) = \left\{\begin{array}{cc} -x & x<0 \\ x & x\geq 0\end{array}\right.$. Each ``piece'' of this piecewise defined function is continuous on all of its domain, giving that $f$ is continuous on $(-\infty,0)$ and $[0,\infty)$. We cannot assume this implies that $f$ is continuous on $(-\infty,\infty)$; we need to check that $\ds \lim_{x\to 0}f(x) = f(0)$, as $x=0$ is the point where $f$ transitions from one ``piece'' of its definition to the other. It is easy to verify that this is indeed true, hence we conclude that $f(x) = \abs{x}$ is continuous everywhere.\eoehere
 \end{enumerate}}
 
 The following theorem states how continuous functions can be combined to form other continuous functions.
@@ -223,14 +227,13 @@ In the following example, we will show how we apply the previous theorems.
 	\item	The functions $y=x$ and $y=\sin x$ are each continuous everywhere, hence their product is, too.
 	\item	\autoref{thm:continuous_functions} states that $f(x) = \tan x$ is continuous ``on its domain.'' Its domain includes all real numbers except odd multiples of $\pi/2$. Thus $f(x) = \tan x$ is continuous on
 	\[\ldots \left(-\frac{3\pi}{2},-\frac{\pi}2\right),\ \left(-\frac{\pi}2,\frac{\pi}2\right),\ \left(\frac{\pi}2,\frac{3\pi}2\right),\ldots,\]
-	or, equivalently, on $D = \{x\in \mathbb{R}\ |\ x\neq \frac{(2n+1)\pi}2,\ n\in\mathbb{Z}\}$.
+	or, equivalently, on $D = \{x\in \mathbb{R}\ \vert\ x\neq \frac{(2n+1)\pi}2,\ n\in\mathbb{Z}\}$.
 	\item	The domain of $y = \sqrt{x}$ is $[0,\infty)$. The range of $y=\ln x$ is $(-\infty,\infty)$, but if we restrict its domain to $[1,\infty)$ its range is $[0,\infty)$. So restricting $y = \ln x$ to the domain of $[1,\infty)$ restricts its output is $[0,\infty)$, on which $y = \sqrt{x}$ is defined. Thus the domain of $f(x) = \sqrt{\ln x}$ is $[1,\infty)$.\eoehere
 \end{enumerate}}
 
-A common way of thinking of a continuous function is that ``its graph can be sketched without lifting your pencil.'' That is, its graph forms a ``continuous'' curve, without holes, breaks or jumps. 
-While beyond the scope of this text, this pseudo--definition glosses over some of the finer points of continuity. Very strange functions are continuous that one would be hard pressed to actually sketch by hand. 
+A common way of thinking of a continuous function is that ``its graph can be sketched without lifting your pencil.'' That is, its graph forms a ``continuous'' curve, without holes, breaks or jumps. While beyond the scope of this text, this pseudo--definition glosses over some of the finer points of continuity. Very strange functions are continuous that one would be hard pressed to actually sketch by hand. 
 
-This intuitive notion of continuity does help us understand another important concept as follows. Suppose $f$ is defined on $[1,2]$ and $f(1) = -10$ and $f(2) = 5$. If $f$ is continuous on $[1,2]$ (i.e., its graph can be sketched as a continuous curve from $(1,-10)$ to $(2,5)$) then we know intuitively that somewhere on $[1,2]$ $f$ must be equal to $-9$, and $-8$, and $-7,\ -6,\ \ldots,\ 0,\ 1/2,$ etc. In short, $f$ takes on all \textit{intermediate} values between $-10$ and $5$. It may take on more values; $f$ may actually equal 6 at some time, for instance, but we are guaranteed all values between $-10$ and 5. 
+This intuitive notion of continuity does help us understand another important concept as follows. Suppose $f$ is defined on $[1,2]$ and $f(1) = -10$ and $f(2) = 5$. If $f$ is continuous on $[1,2]$ (i.e., its graph can be sketched as a continuous curve from $(1,-10)$ to $(2,5)$) then we know intuitively that somewhere on $[1,2]$ $f$ must be equal to $-9$, and $-8$, and $-7,\ -6,\ \dotsc,\ 0,\ 1/2,$ etc. In short, $f$ takes on all \textit{intermediate} values between $-10$ and $5$. It may take on more values; $f$ may actually equal 6 at some time, for instance, but we are guaranteed all values between $-10$ and 5. 
 
 While this notion seems intuitive, it is not trivial to prove and its importance is profound. Therefore the concept is stated in the form of a theorem and illustrated in \autoref{fig_ivt}.
 

@@ -38,7 +38,7 @@ A common use of vector--valued functions is to describe the motion of an object 
 	\item		The object's speed is given by 
 	$$\norm{\vvt} = \sqrt{(2t-1)^2+(2t+1)^2} =\sqrt{8t^2+2}.$$ To find the minimal speed, we could apply calculus techniques (such as set the derivative equal to 0 and solve for $t$, etc.) but we can find it by inspection. Inside the square root we have a quadratic which is minimized when $t=0$. Thus the speed is minimized at $t=0$, with a speed of $\sqrt{2}$ ft/s.
 	
-	The graph in \autoref{fig:motion1}(b) also implies speed is minimized here. The filled dots on the graph are located at integer values of $t$ between $-3$ and 3. Dots that are far apart imply the object traveled a far distance in 1 second, indicating high speed; dots that are close together imply the object did not travel far in 1 second, indicating a low speed. The dots are closest together near $t=0$, implying the speed is minimized near that value.
+	The graph in \autoref{fig:motion1}(b) also implies speed is minimized here. The filled dots on the graph are located at integer values of $t$ between $-3$ and 3. Dots that are far apart imply the object traveled a far distance in 1 second, indicating high speed; dots that are close together imply the object did not travel far in 1 second, indicating a low speed. The dots are closest together near $t=0$, implying the speed is minimized near that value.\eoehere
 \end{enumerate}}
 
 \example{ex_motion2}{Analyzing Motion}{Two objects follow an identical path at different rates on $[-1,1]$. The position function for Object 1 is $\vec r_1(t) = \la t, t^2\ra$; the position function for Object 2 is $\vec r_2(t) = \la t^3, t^6\ra$, where distances are measured in feet and time is measured in seconds. Compare the velocity, speed and acceleration of the two objects on the path.}
@@ -108,7 +108,7 @@ Since the objects begin and end at the same location, the have the same displace
 	4\pi t_0 &\approx 0.2 + 2\pi n,\intertext{where $n$ is an integer. Solving for $t_0$ we have:}
 	t_0 &\approx 0.016 + n/2
 	\end{align*}
-	This is a wonderful formula. Every 1/2 second after $t=0.016$s the boy can release the string (since the ball makes 2 revolutions per second, he has two chances each second to release the ball).
+	This is a wonderful formula. Every 1/2 second after $t=0.016$s the boy can release the string (since the ball makes 2 revolutions per second, he has two chances each second to release the ball).\eoehere
 \end{enumerate}}
 
 \example{ex_motion4}{Analyzing motion in space}{An object moves in a spiral with position function $\vrt = \la \cos t, \sin t, t\ra$, where distances are measured in meters and time is in minutes. Describe the object's speed and acceleration at time $t$.}
@@ -137,7 +137,7 @@ An important application of vector--valued position functions is \emph{projectil
 Suppose an object has initial position $\vec r(0) = \la x_0,y_0\ra$ and initial velocity $\vec v(0) = \la v_x,v_y\ra$. It is customary to rewrite $\vec v(0)$ in terms of its speed $v_0$ and direction $\vec u$, where $\vec u$ is a unit vector. Recall all unit vectors in $\mathbb{R}^2$ can be written as $\la \cos \theta,\sin \theta\ra$, where $\theta$ is an angle measure counter--clockwise from the $x$-axis. (We refer to $\theta$ as the \textbf{angle of elevation.}\index{angle of elevation}) Thus $\vec v(0) = v_0\la \cos \theta,\sin \theta\ra.$ 
 
 Since the acceleration of the object is known, namely $\vat = \la 0,-g\ra$, where $g$ is the gravitational constant, we can find $\vrt$ knowing our two initial conditions. We first find $\vvt$:
-\mnote{\textbf{Note:} In this text we use $g=32$ft/s when using Imperial units, and $g=9.8$m/s when using SI units.}
+\mnote{\textbf{Note:} In this text we use $g=32$ft/s$^2$ when using Imperial units, and $g=9.8$m/s$^2$ when using SI units.}
 \begin{align*}
 \vec v(t) &= \int \vat \ dt\\
 \vvt &= \int \la 0,-g\ra \ dt\\
@@ -188,14 +188,14 @@ $$(350\cos\theta)t = 25 \quad \text{and}\quad -16t^2+(350\sin\theta)t+3 = 6.$$
 This is not trivial (though not ``hard''). We start by solving each equation for $\cos\theta$ and $\sin \theta$, respectively.
 $$\cos\theta = \frac{25}{350t} \quad \text{and} \quad \sin\theta = \frac{3+16t^2}{350t}.$$
 Using the Pythagorean Identity $\cos^2\theta+\sin^2\theta=1$, we have
+\[\left(\frac{25}{350t}\right)^2 + \left(\frac{3+16t^2}{350t}\right)^2 =1\]
+Multiply both sides by $(350t)^2$:
 \begin{align*}
-\left(\frac{25}{350t}\right)^2 + \left(\frac{3+16t^2}{350t}\right)^2 &=1
-\intertext{Multiply both sides by $(350t)^2$:}
 25^2 + (3+16t^2)^2 &=350^2t^2\\
 256t^4-122,404t^2+634 &=0.
-%\end{align*}
-\intertext{This is a quadratic \emph{in} $t^2$. That is, we can apply the quadratic formula  to find $t^2$, then solve for $t$ itself.}
-%\begin{align*}
+\end{align*}
+This is a quadratic \emph{in} $t^2$. That is, we can apply the quadratic formula  to find $t^2$, then solve for $t$ itself.
+\begin{align*}
 t^2 &= \frac{122,404\pm\sqrt{122,404^2-4(256)(634)}}{512}\\
 t^2 &= 0.0052,\ 478.135\\
 t &=  \pm 0.072,\ \pm 21.866
@@ -222,6 +222,7 @@ This highlights an important fact: to compute distance traveled, we need only to
 {Let $\vvt$ be a velocity function for a moving object. The distance traveled by the object on $[a,b]$ is:
 \index{distance!traveled}\index{vector--valued function!distance traveled}\index{integration!distance traveled}
 $$\text{distance traveled} = \int_a^b \norm{\vvt}\ dt.$$}
+
 Note that this is just a restatement of \autoref{thm:vvf_arc_length}: arc length is the same as distance traveled, just viewed in a different context.
 
 %Given a position function $\vrt = \la f(t),g(t)\ra$, \autoref{thm:distance_traveled}
@@ -244,9 +245,6 @@ Note that this is just a restatement of \autoref{thm:vvf_arc_length}: arc length
 	This cannot be solved in terms of elementary functions so we turn to numerical integration, finding the distance to be 12.88m.
 		
 	\item		The displacement is the vector $$\vec r(2)-\vec r(-2) = \la 2,4,0\ra - \la -2,4,0\ra = \la 4,0,0\ra.$$ That is, the particle ends with an $x$-value increased by 4 and with $y$- and $z$-values the same (see \autoref{fig:motion6}).
-	
-	\item		We found above that the particle traveled 12.88m over 4 seconds. We can compute average speed by dividing: 12.88/4 = 3.22m/s. 
-	
 	%%
 	%% Using a boolean to give different graphics for 2D and 3D versions.
 	\ifthenelse{\boolean{in_threeD}}{% if in three D
@@ -260,17 +258,18 @@ Note that this is just a restatement of \autoref{thm:vvf_arc_length}: arc length
 	}%ends in 3D
 	{% now in 2D	
 	\mtable{The path of the particle, from two perspectives, in \autoref{ex_motion6}.}{fig:motion6}{%
-	\begin{tabular}{c}
 	\myincludegraphics[scale=1.25]{figures/figmotion6}\\[-20pt]
 	(a)\\[20pt]
 	\myincludegraphics[scale=1.25]{figures/figmotion6b}\\[-20pt]
 	(b)
-	\end{tabular}
 	}% ends \mtable
 	}% ends 2D, also ends all of if-then-else
+	
+	\item		We found above that the particle traveled 12.88m over 4 seconds. We can compute average speed by dividing: 12.88/4 = 3.22m/s. 
+	
 	We should also consider \autoref{def:av_val} of \autoref{sec:FTC}, which says that the average value of a function $f$ on $[a,b]$ is $\frac{1}{b-a}\int_a^b f(x)\ dx$. In our context, the average value of the speed is
 	$$\text{average speed} = \frac{1}{2-(-2)}\int_{-2}^2 \norm{\vvt}\ dt \approx \frac14 12.88 = 3.22\text{m/s}.$$
-	Note how the physical context of a particle traveling gives meaning to a more abstract concept learned earlier.
+	Note how the physical context of a particle traveling gives meaning to a more abstract concept learned earlier.\eoehere
 \end{enumerate}}
 
 In \autoref{def:av_val} of \autoref{chapter:integration} we defined the average value of a function $f(x)$ on $[a,b]$ to be $$ \frac{1}{b-a}\int_a^bf(x)\ dx.$$

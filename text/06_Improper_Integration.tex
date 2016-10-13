@@ -174,36 +174,36 @@ Neither limit converges hence the original improper integral diverges. The nonse
 
 Oftentimes we are interested in knowing simply whether or not an improper integral converges, and not necessarily the value of a convergent integral. We provide here several tools that help determine the convergence or divergence of improper integrals without integrating.
 
-Our first tool is to understand the behavior of functions of the form $\ds \frac1{x\hskip1pt ^p}$.
+Our first tool is to understand the behavior of functions of the form $\ds \frac1{x\primeskip^p}$.
 
-\example{ex_impint4}{Improper integration of $1/x^p$}{Determine the values of $p$ for which $\ds \int_1^\infty \frac1{x\hskip1pt ^p}\ dx$ converges.}
+\example{ex_impint4}{Improper integration of $1/x^p$}{Determine the values of $p$ for which $\ds \int_1^\infty \frac1{x^p}\ dx$ converges.}
 {We begin by integrating and then evaluating the limit.
 \begin{align*}
-	\int_1^\infty \frac1{x\hskip1pt ^p}\ dx
-	&= \lim_{b\to\infty}\int_1^b\frac1{x\hskip1pt ^p}\ dx\\
+	\int_1^\infty \frac1{x\primeskip^p}\ dx
+	&= \lim_{b\to\infty}\int_1^b\frac1{x\primeskip^p}\ dx\\
 	&= \lim_{b\to\infty}\int_1^b x^{-p}\ dx \qquad \text{\small (assume $p\neq 1$)}\\
 	&= \lim_{b\to\infty} \frac{1}{-p+1}x^{-p+1}\Big|_1^b\\
-	&= \lim_{b\to\infty} \frac{1}{1-p}\big(b\hskip1pt^{1-p}-1^{1-p}\big).\\
+	&= \lim_{b\to\infty} \frac{1}{1-p}\big(b^{1-p}-1^{1-p}\big).\\
 \end{align*}
 When does this limit converge -- i.e., when is this limit \textit{not} $\infty$? This limit converges precisely when the power of $b$ is less than 0: when $1-p<0 \Rightarrow 1<p$. 
 
 \mfigure{0in}{Plotting functions of the form $1/x\,^p$ in \autoref{ex_impint4}.}{fig:impint4}{figures/figimpint4}
 
-Our analysis shows that if $p>1$, then $\ds\int_1^\infty \frac1{x\hskip1pt ^p}\ dx $ converges. When $p<1$ the improper integral diverges; we showed in \autoref{ex_impint1} that when $p=1$ the integral also diverges. 
+Our analysis shows that if $p>1$, then $\ds\int_1^\infty \frac1{x\primeskip^p}\ dx $ converges. When $p<1$ the improper integral diverges; we showed in \autoref{ex_impint1} that when $p=1$ the integral also diverges. 
 
 \autoref{fig:impint4} graphs $y=1/x$ with a dashed line, along with graphs of $y=1/x^p$, $p<1$, and $y=1/x^q$, $q>1$. Somehow the dashed line forms a dividing line between convergence and divergence. %A function of the form $1/x^q$ will be under the dashed line on $[1,\infty)$ when $q>1$. Even if $q$ is ``very close'' to 1, the difference will be enough to force convergence.
 }
 
-The result of \autoref{ex_impint4} provides an important tool in determining the convergence of other integrals. A similar result is proved in the exercises about improper integrals of the form $\ds \int_0^1\frac1{x\hskip1pt ^p}\ dx$. These results are summarized in the following Key Idea.
+The result of \autoref{ex_impint4} provides an important tool in determining the convergence of other integrals. A similar result is proved in the exercises about improper integrals of the form $\ds \int_0^1\frac1{x\primeskip^p}\ dx$. These results are summarized in the following Key Idea.
 
 \setboxwidth{80pt}
-\keyidea{idea:impint1}{Convergence of Improper Integrals $\ds \int_1^\infty\frac1{x\hskip1pt ^p}\ dx$ and $\ds \int_0^1\frac1{x\hskip1pt ^p}\ dx$.}
+\keyidea{idea:impint1}{Convergence of Improper Integrals $\ds \int_1^\infty\frac1{x\primeskip^p}\ dx$ and $\ds \int_0^1\frac1{x\primeskip^p}\ dx$.}
 {\begin{enumerate}
-\item		The improper integral $\ds \int_1^\infty\frac1{x\hskip1pt ^p}\ dx$ converges when $p>1$ and diverges when $p\leq 1.$\index{convergence!of improper int.}\index{divergence!of improper int.}
-\item		The improper integral $\ds \int_0^1\frac1{x\hskip1pt ^p}\ dx$ converges when $p<1$ and diverges when $p\geq 1.$
+\item		The improper integral $\ds \int_1^\infty\frac1{x\primeskip^p}\ dx$ converges when $p>1$ and diverges when $p\leq 1.$\index{convergence!of improper int.}\index{divergence!of improper int.}
+\item		The improper integral $\ds \int_0^1\frac1{x\primeskip^p}\ dx$ converges when $p<1$ and diverges when $p\geq 1.$
 \end{enumerate}}
 
-A basic technique in determining convergence of improper integrals is to compare an integrand whose convergence is unknown to an integrand whose convergence is known. We often use integrands of the form $1/x\hskip1pt ^p$ to compare to as their convergence on certain intervals is known. This is described in the following theorem.
+A basic technique in determining convergence of improper integrals is to compare an integrand whose convergence is unknown to an integrand whose convergence is known. We often use integrands of the form $1/x\primeskip^p$ to compare to as their convergence on certain intervals is known. This is described in the following theorem.
 
 \mnote{\textbf{Note:} We used the upper and lower bound of ``1'' in \autoref{idea:impint1} for convenience. It can be replaced by any $a$ where $a>0$. }
 
@@ -255,21 +255,19 @@ In cases like this (and many more) it is useful to employ the following theorem.
 
 \example{ex_impint6}{Determining convergence of improper integrals}{Determine the convergence of $\ds \int_3^{\infty} \frac{1}{\sqrt{x^2+2x+5}}\ dx$.}
 {As $x$ gets large, the quadratic inside the square root function will begin to behave much like $y=x$. So we compare \small$\ds\frac{1}{\sqrt{x^2+2x+5}}$\normalsize\ to \small$\ds\frac1x$\normalsize\ with the Limit Comparison Test:
-
-$$
-\lim_{x\to\infty} \frac{1/\sqrt{x^2+2x+5}}{1/x} = \lim_{x\to\infty}\frac{x}{\sqrt{x^2+2x+5}}.$$
+\[
+\lim_{x\to\infty} \frac{1/\sqrt{x^2+2x+5}}{1/x}
+= \lim_{x\to\infty}\frac{x}{\sqrt{x^2+2x+5}}.
+\]
 
 The immediate evaluation of this limit returns $\infty/\infty$, an indeterminate form. Using l'H\^opital's Rule seems appropriate, but in this situation, it does not lead to useful results. (We encourage the reader to employ l'H\^opital's Rule at least once to verify this.)
 
 The trouble is the square root function. To get rid of it, we employ the following fact: If $\ds \lim_{x\to c} f(x) = L$, then $\ds\lim_{x\to c} f(x)^2 = L^2.$ (This is true when either $c$ or $L$ is $\infty$.) So we consider now the limit
-$$\lim_{x\to\infty} \frac{x^2}{x^2+2x+5}.$$ This converges to 1, meaning the original limit also converged to 1. As $x$ gets very large, the function 
-\small$\ds\frac{1}{\sqrt{x^2+2x+5}}$\normalsize\ looks very much like \small$\ds\frac1x.$\normalsize\ 
-Since we know that \small$\ds\int_3^{\infty} \frac1x\ dx$\normalsize\ diverges, by the Limit Comparison Test we know that \small$\ds\int_3^\infty\frac{1}{\sqrt{x^2+2x+5}}\ dx$\normalsize\ also diverges. \autoref{fig:impint6} graphs $f(x)=1/\sqrt{x^2+2x+5}$ and $f(x)=1/x$, illustrating that as $x$ gets large, the functions become indistinguishable.
-\mfigure{0in}{Graphing $f(x)=\frac{1}{\sqrt{x^2+2x+5}}$ and $f(x)=\frac1x$ in \autoref{ex_impint6}.}{fig:impint6}{figures/figimpint6}}
+\mfigure{0in}{Graphing $f(x)=\frac{1}{\sqrt{x^2+2x+5}}$ and $f(x)=\frac1x$ in \autoref{ex_impint6}.}{fig:impint6}{figures/figimpint6}
+\[\lim_{x\to\infty} \frac{x^2}{x^2+2x+5}.\]
+This converges to 1, meaning the original limit also converged to 1. As $x$ gets very large, the function $\frac1{\sqrt{x^2+2x+5}}$ looks very much like $\frac1x$. Since we know that $\ds\int_3^{\infty} \tfrac1x\ dx$ diverges, by the Limit Comparison Test we know that $\ds\int_3^\infty\tfrac1{\sqrt{x^2+2x+5}}\ dx$ also diverges. \autoref{fig:impint6} graphs $f(x)=1/\sqrt{x^2+2x+5}$ and $f(x)=1/x$, illustrating that as $x$ gets large, the functions become indistinguishable.}
 
 Both the Direct and Limit Comparison Tests were given in terms of integrals over an infinite interval. There are versions that apply to improper integrals with an infinite range, but as they are a bit wordy and a little more difficult to employ, they are omitted from this text.\bigskip
-
-\enlargethispage{\baselineskip}
 
 This chapter has explored many integration techniques. We learned Substitution, which reverses the Chain Rule of differentiation, as well as Integration by Parts, which reverses the Product Rule. We learned specialized techniques for handling trigonometric and rational functions. All techniques effectively have this goal in common: rewrite the integrand in a new way so that the integration step is easier to see and implement.
 

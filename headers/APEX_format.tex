@@ -57,17 +57,19 @@
   {\bfseries}% Thm head font
   {}% Punctuation after thm head
   {\newline}% Space after thm head: " " = normal interword space; \newline = linebreak
-  {\thmname{\textbf{#1}}\thmnumber{ \textbf{#2}}\thmnote{\hskip 20pt \textbf{#3}}}% Thm head spec
+  {\thmname{\textbf{#1}}\thmnumber{ \textbf{#2}}\thmnote{\hspace{20pt}\textbf{#3}}}% Thm head spec
 
 \theoremstyle{apexExample}
 \newtheorem{exampleEnv}{Example}[section]
-%\renewcommand{\theexampleEnv}{\arabic{exampleEnv}}
-\newcommand{\exampleEnvautorefname}{Example}
+\let\theHexampleEnv\theexampleEnv
+\renewcommand{\theexampleEnv}{\arabic{exampleEnv}}
 \theoremstyle{apex}
 
+\newcommand{\exampleEnvautorefname}{Example}
 \newcommand{\sectionautorefname}{Section} % the default is lowercase
 \newcommand{\chapterautorefname}{Chapter} % the default is lowercase
 \newcommand{\autoeqref}[1]{\hyperref[#1]{\equationautorefname\ (\ref*{#1})}}
+% autoref doesn't use parentheses
 
 
 \makeatletter
@@ -77,7 +79,7 @@
   \trivlist
   \item[\hskip\labelsep
         \bfseries
-    #1]~\\* % something is needed to be able to get a newline
+    #1]\mbox{}\\* % something is needed to be able to get a newline
 }{%
   \popQED\endtrivlist\@endpefalse
 }
@@ -248,7 +250,7 @@
 \makeatother
 
 % This is the no-star (regular) version of the example command.
-\newcommand{\examplenostar}[4]{\examplestarred{#1}{#2}{#3\bigskip
+\newcommand{\examplenostar}[4]{\examplestarred{#1}{#2}{#3\bigbreak
 
 \makebox[65pt][l]{\textsc{\small\textbf{Solution\lxAddClass{solutionTag}}}}% 
 #4}}
@@ -296,7 +298,8 @@
   \newtheorem{#2Env}{#3}%
   \expandafter\newcommand\csname #2Envautorefname\endcsname{#3}
   \expandafter\newcommand\csname #2\endcsname[4][]{%
-   \vspace{\baselineskip}%
+   \bigbreak%
+%   \vspace{\baselineskip}%
    \noindent%
    \flushinner{%
     \noindent%
@@ -313,7 +316,8 @@
      \noindent\begin{#2Env}[{##3}##1]\label{##2}\noindent ##4\end{#2Env}%
     }%
    }%
-   \vspace{\baselineskip}%
+   \bigbreak%
+%   \vspace{\baselineskip}%
    \restoreboxwidth%
   }%
  }{% else #1 != '' means we're in exvideo (aka, a qr code to youtube)
@@ -321,7 +325,8 @@
   \definecolor{border#2}{Hsb}{#4,.3,1}% %= hsl(#4,90.5,68.4)
   \definecolor{bottom#2}{Hsb}{#4,.15,1}% %= hsl(#4,81.9,83.4)
   \expandafter\newcommand\csname #2\endcsname[1]{%
-   \vspace{\baselineskip}%
+   \bigbreak%
+%   \vspace{\baselineskip}%
    \noindent%
    \flushinner{%
     \noindent%
@@ -336,7 +341,8 @@
      draw, text justified, very thick
     }{\noindent ##1}%
    }%
-   \vspace{\baselineskip}%
+   \bigbreak%
+%   \vspace{\baselineskip}%
   }%
  }% ends ifthenelse #1=''
 }
@@ -391,8 +397,8 @@
 \setlength{\columnsep}{20pt}
 
 \newcommand{\printconcepts}{\noindent\textit{\Large Terms and Concepts}\bigskip}
-\newcommand{\printproblems}{\bigskip\noindent\textit{\Large Problems}\bigskip}
-\newcommand{\printreview}{\bigskip\noindent\textit{\Large Review}\bigskip}
+\newcommand{\printproblems}{\bigbreak\noindent\textit{\Large Problems}\bigskip}
+\newcommand{\printreview}{\bigbreak\noindent\textit{\Large Review}\bigskip}
 \newcommand{\printconceptsB}{\closeenumerate\noindent\textit{\Large Terms and Concepts}\bigskip}
 \newcommand{\printproblemsB}{\closeenumerate\bigbreak\noindent\textit{\Large Problems}\bigskip}
 \newcommand{\printreviewB}{\closeenumerate\bigbreak\noindent\textit{\Large Review}\bigskip}
@@ -664,7 +670,7 @@
 \restoregeometry%
 \regularheader%
 %	\easypagecheck
-\setlength{\hoffset}{0pt} \rmfamily\normalsize \bigskip%
+\setlength{\hoffset}{0pt} \rmfamily\normalsize \bigbreak%
 }
 
 \newcommand{\writeToAnsFileB}[3]{%

@@ -133,8 +133,8 @@ Notes:
 %%	 }}
 \makeatother 
 
-\newcommand{\btz}{\begin{center}\begin{tikzpicture}}
-\newcommand{\etz}{\end{tikzpicture}\end{center}}
+%\newcommand{\btz}{\begin{center}\begin{tikzpicture}}
+%\newcommand{\etz}{\end{tikzpicture}\end{center}}
 
 \newcommand{\ds}{\displaystyle}
 
@@ -156,7 +156,7 @@ Notes:
 \newcommand*{\abs}[1]{\ensuremath{\left\lvert #1 \right\rvert}}
 \newcommand*{\norm}[1]{\ensuremath{\left\lVert #1 \right\rVert}}
 \newcommand*{\vnorm}[1]{\ensuremath{\norm{\vec #1}}}
-\newcommand*{\snorm}[1]{\norm{#1}}%{\ensuremath{\left\lVert\ #1\ \right\rVert}}
+%\newcommand*{\snorm}[1]{\norm{#1}}%{\ensuremath{\left\lVert\ #1\ \right\rVert}}
 \newcommand{\bracket}[1]{\left\langle #1\right\rangle}
 \newcommand{\la}{\left\langle}
 \newcommand{\ra}{\right\rangle}
@@ -183,7 +183,7 @@ Notes:
 \newcommand{\pf}{\ensuremath{\partial f}}
 \newcommand{\underlinespace}{\underline{\phantom{xxxxxx}}}
 
-\newcommand{\mathN}{\ensuremath{\mathbb{N}}}
+%\newcommand{\mathN}{\ensuremath{\mathbb{N}}}
 
 \newcommand{\zerooverzero}{\ensuremath{\ds \raisebox{8pt}{\text{``\ }}\frac{0}{0}\raisebox{8pt}{\text{\ ''}}}}
 
@@ -215,42 +215,42 @@ Notes:
 %
 % Draw x and y tick marks
 %
-\newcommand{\drawxticks}[1]
-{\foreach \x in {#1}
-		{\draw  (\x,-.1)--(\x,.1);
-			};
-}
-\newcommand{\drawyticks}[1]
-{\foreach \x in {#1}
-		{\draw  (-.1,\x)--(.1,\x);
-			};
-}
+%\newcommand{\drawxticks}[1]
+%{\foreach \x in {#1}
+%		{\draw  (\x,-.1)--(\x,.1);
+%			};
+%}
+%\newcommand{\drawyticks}[1]
+%{\foreach \x in {#1}
+%		{\draw  (-.1,\x)--(.1,\x);
+%			};
+%}
 
-\newcommand{\drawxlines}[3]
-{\draw[<->] (#1,0) -- (#2,0) node [right] {$x$};
-\foreach \x in {#3}
-		{\draw  (\x,-.1)--(\x,.1);
-			};
-}
+%\newcommand{\drawxlines}[3]
+%{\draw[<->] (#1,0) -- (#2,0) node [right] {$x$};
+%\foreach \x in {#3}
+%		{\draw  (\x,-.1)--(\x,.1);
+%			};
+%}
 
-\newcommand{\drawylines}[3]
-{\draw[<->] (0,#1) -- (0,#2) node [above] {$y$};
-\foreach \x in {#3}
-		{\draw  (-.1,\x)--(.1,\x);
-			};
-}
+%\newcommand{\drawylines}[3]
+%{\draw[<->] (0,#1) -- (0,#2) node [above] {$y$};
+%\foreach \x in {#3}
+%		{\draw  (-.1,\x)--(.1,\x);
+%			};
+%}
 
-\newcommand{\drawxlabels}[1]
-{\foreach \x in {#1}
-		{\draw  (\x,-.1) node [below] {\scriptsize $\x$};
-		};
-}
+%\newcommand{\drawxlabels}[1]
+%{\foreach \x in {#1}
+%		{\draw  (\x,-.1) node [below] {\scriptsize $\x$};
+%		};
+%}
 
-\newcommand{\drawylabels}[1]
-{\foreach \x in {#1}
-		{\draw  (-.1,\x) node [left] {\scriptsize $\x$};
-		};
-}
+%\newcommand{\drawylabels}[1]
+%{\foreach \x in {#1}
+%		{\draw  (-.1,\x) node [left] {\scriptsize $\x$};
+%		};
+%}
 
 %% draw a box of margin width size to see if figure is properly contained within
 \newcommand{\marginsizebox}{\draw (0,0)--(\marginparwidth,0)--(\marginparwidth,3)--(0,3)--cycle;}
@@ -320,9 +320,9 @@ Notes:
 
 
 \newenvironment{lxfigure}{%
-	\iflatexml\begin{figure}[!h]\else\vspace{\baselineskip}\fi%
+	\iflatexml\begin{figure}[!h]\else\bigbreak\fi%
 }{%
-	\iflatexml\end{figure}\else\vspace{\baselineskip}\fi
+	\iflatexml\end{figure}\else\bigbreak\fi
 }
 
 \newcommand{\tbox}[1]{\begin{tabular}{c}#1\end{tabular}} % a tall box
@@ -367,13 +367,8 @@ Notes:
 
 % mecmath commands to remove
 
-\newcommand{\Real}[1]{\mathbb{R}^{#1}}
-\newcommand{\ival}[2]{[#1,#2]}
-\newcommand{\Crossprod}[2]{#1\times#2}
-\newcommand{\ssub}[2]{#1_#2}
-\newcommand{\Dotprod}[2]{#1\cdot#2}
-\newcommand{\lineintvec}[3]{\int_#1 #2\cdot d #3}
-\newcommand{\olineintvec}[3]{\oint_#1 #2\cdot d#3}
+\newcommand{\Crossprod}[2]{ #1 \times #2 }
+\newcommand{\Dotprod}[2]{ #1 \cdot #2 }
 
 % end mecmath
 

@@ -182,12 +182,38 @@ Note that we do not yet have an antiderivative for the function $f(x)=\ln x$. We
 %\paragraph{Example.} Compute $\int \ln x\,dx$.
 %
 %\paragraph{Solution.} While this does not look like a product of functions, we find integration by parts useful. In particular we use $u=\ln x$, $du=dx/x$, $dv=dx$, and $v=x$:
-%\begin{equation*}
-%\begin{split}
+%\begin{align*}
 %\int \ln x\,dx &=x\ln x-\int (x)\left(\frac{dx}x\right)\\
 %&=x\ln x-\int dx\\
 %&=x\ln x-x+C\\
-%\end{split}
-%\end{equation*}
+%\end{align*}
+
+\subsection*{Logarithmic Differentiation}
+
+\mfigure{0in}{A plot of $y=x^x$.}{fig:logdiffa}{figures/figlogdiffa}
+Consider the function $y=x^x$; it is graphed in \autoref{fig:logdiffa}. It is well--defined for $x>0$ and we might be interested in finding equations of lines tangent and normal to its graph. How do we take its derivative?\index{logarithmic differentiation}
+
+The function is not a power function: it has a ``power'' of $x$, not a constant. It is not an exponential function: it has a ``base'' of $x$, not a constant. 
+
+A differentiation technique known as \emph{logarithmic differentiation} becomes useful here. The basic principle is this: take the natural log of both sides of an equation $y=f(x)$, then use implicit differentiation to find $y\primeskip'$. We demonstrate this in the following example.
+
+\example{ex_implicit10}{Using Logarithmic Differentiation}{Given $y=x^x$, use logarithmic differentiation to find $y\primeskip'$.}
+{As suggested above, we start by taking the natural log of both sides then applying implicit differentiation.
+\begin{align*}
+y &= x^x \\
+\ln (y) &= \ln (x^x) && \text{\small (apply logarithm rule)}\\
+\ln (y) &= x\ln x && \text{\small (now use implicit differentiation)}\\
+\frac{d}{dx}\Big(\ln (y)\Big) &= \frac{d}{dx}\Big(x\ln x\Big) \\
+\frac{y\primeskip'}{y} &= \ln x + x\cdot\frac1x\\
+\frac{y\primeskip'}{y} &= \ln x + 1\\
+y\primeskip'
+&= y\big(\ln x+1\big) && \text{\small (substitute $y=x^x$)}\\
+y\primeskip' &= x^x\big(\ln x+1\big).
+\end{align*} 
+
+\mfigure{0in}{A graph of $y=x^x$ and its tangent line at $x=1.5$.}{fig:implicit10}{figures/figimplicit10}
+To ``test'' our answer, let's use it to find the equation of the tangent line at $x=1.5$. The point on the graph our tangent line must pass through is $(1.5, 1.5^{1.5}) \approx (1.5, 1.837)$. Using the equation for $y\primeskip'$, we find the slope as
+$$y\primeskip' = 1.5^{1.5}\big(\ln 1.5+1\big) \approx 1.837(1.405) \approx 2.582.$$
+Thus the equation of the tangent line is $y = 1.6833(x-1.5)+1.837$. \autoref{fig:implicit10} graphs $y=x^x$ along with this tangent line.}
 
 \inputexercises{exercises/07_exp_log_exercises}

@@ -37,10 +37,15 @@ It is instructive to consider each of three directions given in the definition i
 %Note how the tangent line in the direction of $x$ has a constant $y$-value and only the $x$- and $z$-values change. 
 \autoref{def:directional_tangent_line} leads to the following parametric equations of directional tangent lines:
 
-\noindent\hskip -120pt 
-\begin{minipage}{1.2\linewidth}
-$$\ell_x(t) = \left\{\begin{array}{l} x=x_0+t \\ y=y_0\\z=z_0+f_x(x_0,y_0)t \end{array}\right. \ \text{,}\quad \ell_y(t)=\left\{\begin{array}{l} x=x_0 \\ y=y_0+t\\z=z_0+f_y(x_0,y_0)t \end{array}\right.\  \text{and}\quad \ell_{\vec u}(t)=\left\{\begin{array}{l} x=x_0+u_1t \\ y=y_0+u_2t\\z=z_0+D_{\vec u\,}f(x_0,y_0)t \end{array}\right..$$
-\end{minipage}
+\flushinnerequ{%
+\[
+ \ell_x(t)
+ =\begin{cases}x=x_0+t \\ y=y_0\\z=z_0+f_x(x_0,y_0)t \end{cases}\ \text{,}\quad
+ \ell_y(t)
+ =\begin{cases}x=x_0 \\ y=y_0+t\\z=z_0+f_y(x_0,y_0)t \end{cases}\ \text{and}\quad
+ \ell_{\vec u}(t)
+ =\begin{cases}x=x_0+u_1t \\ y=y_0+u_2t\\z=z_0+D_{\vec u\,}f(x_0,y_0)t\end{cases}
+\]}
 
 \example{ex_tpl1}{Finding directional tangent lines}{Find the lines tangent to the surface $z=\sin x\cos y$ at $(\pi/2,\pi/2)$ in the $x$ and $y$ directions and also in the direction of $\vec v = \la -1,1\ra.$}
 {The partial derivatives with respect to $x$ and $y$ are:
@@ -123,12 +128,11 @@ are defined.\index{normal line}\index{orthogonal}
 \end{enumerate}}
 
 Thus the parametric equations of the normal line to a surface $f$ at $\big(x_0,y_0,f(x_0,y_0)\big)$ is:
-$$\ell_{n}(t) = \left\{\begin{array}{l} x= x_0+at\\ y = y_0 + bt \\ z = f(x_0,y_0) - t\end{array}\right..$$
+$$\ell_{n}(t) = \begin{cases}x= x_0+at\\ y = y_0 + bt \\ z = f(x_0,y_0) - t\end{cases}.$$
 
-\example{ex_tpl3}{Finding a normal line}{Find the equation of the normal line to $z=-x^2-y^2+2$ at $(0,1)$.
-}
+\example{ex_tpl3}{Finding a normal line}{Find the equation of the normal line to $z=-x^2-y^2+2$ at $(0,1)$.}
 {We find $z_x(x,y) = -2x$ and $z_y(x,y) = -2y$; at $(0,1)$, we have $z_x = 0$ and $z_y = -2$. We take the direction of the normal line, following \autoref{def:normal_line_space}, to be $\vec n=\la 0,-2,-1\ra$. The line with this direction going through the point $(0,1,1)$ is 
-$$\ell_n(t) = \left\{\begin{array}{l} x=0\\y=-2t+1\\z=-t+1\end{array}\right.\quad \text{or}\quad \ell_n(t)=\la 0,-2,-1\ra t+\la 0,1,1\ra.$$
+$$\ell_n(t) = \begin{cases}x=0\\y=-2t+1\\z=-t+1\end{cases}\quad \text{or}\quad \ell_n(t)=\la 0,-2,-1\ra t+\la 0,1,1\ra.$$
 
 \mfigurethree{width=150pt,3Dmenu,activate=onclick,deactivate=onclick,
 3Droll=0,
@@ -163,7 +167,7 @@ The first two fractions imply $x=y$, and so the last fraction can be rewritten a
 4x^3+x-2 &=0.
 \end{align*}
 This last equation is a cubic, which is not difficult to solve with a numeric solver. We find that $x= 0.689$, hence $P = (0.689,0.689, 1.051)$. We find the distance from $Q$ to the surface of $f$ is 
-$$\norm{\vv{PQ}} = \sqrt{(2-0.689)^2 +(2-0.689)^2+(2-1.051)^2} = 2.083.$$}
+$$\norm{\vv{PQ}} = \sqrt{(2-0.689)^2 +(2-0.689)^2+(2-1.051)^2} = 2.083.\eoehere$$}
 
 We can take the concept of measuring the distance from a point to a surface to find a point $Q$ a particular distance from a surface at a given point $P$ on the surface.
 
@@ -202,12 +206,9 @@ $a = f_x(x_0,y_0)$, $b=f_y(x_0,y_0)$, $\vec n= \la a,b,-1\ra$ and $P=\big(x_0,y_
 
 The plane through $P$ with normal vector $\vec n$ is the \textbf{tangent plane to $f$ at $P$}. The standard form of this plane is 
 \index{tangent plane}\index{planes!tangent}
-$$a(x-x_0) + b(y-y_0) - \big(z-f(x_0,y_0)\big) = 0.$$
-}
-%\clearpage
+$$a(x-x_0) + b(y-y_0) - \big(z-f(x_0,y_0)\big) = 0.$$}
 
-\example{ex_tpl6}{Finding tangent planes}{Find the equation of the tangent plane to $z=-x^2-y^2+2$ at $(0,1)$.
-}
+\example{ex_tpl6}{Finding tangent planes}{Find the equation of the tangent plane to $z=-x^2-y^2+2$ at $(0,1)$.}
 {Note that this is the same surface and point used in \autoref{ex_tpl3}. There we found $\vec n = \la 0,-2,-1\ra$ and $P = (0,1,1)$. Therefore the equation of the tangent plane is 
 $$-2(y-1)-(z-1)=0.$$
 \mfigurethree{width=150pt,3Dmenu,activate=onclick,deactivate=onclick,
@@ -221,14 +222,13 @@ $$-2(y-1)-(z-1)=0.$$
 
 The surface $z=-x^2+y^2$ and tangent plane are graphed in \autoref{fig:tpl6}.}
 
-\example{ex_tpl7}{Using the tangent plane to approximate function values}{
-The point $(3,-1,4)$ lies on the surface of an unknown differentiable function $f$ where $f_x(3,-1) = 2$ and $f_y(3,-1) = -1/2$. Find the equation of the tangent plane to $f$ at $P$, and use this to approximate the value of $f(2.9,-0.8)$.}
+\example{ex_tpl7}{Using the tangent plane to approximate function values}{The point $(3,-1,4)$ lies on the surface of an unknown differentiable function $f$ where $f_x(3,-1) = 2$ and $f_y(3,-1) = -1/2$. Find the equation of the tangent plane to $f$ at $P$, and use this to approximate the value of $f(2.9,-0.8)$.}
 {Knowing the partial derivatives at $(3,-1)$ allows us to form the normal vector to the tangent plane, $\vec n = \la 2,-1/2,-1\ra$. Thus the equation of the tangent line to $f$ at $P$ is:
 \begin{equation}
 2(x-3)-1/2(y+1) - (z-4) = 0 \quad \Rightarrow \quad z = 2(x-3)-1/2(y+1)+4.\label{eq:tpl7}\end{equation}
 Just as tangent lines provide excellent approximations of curves near their point of intersection, tangent planes provide excellent approximations of surfaces near their point of intersection. So $f(2.9,-0.8) \approx z(2.9,-0.8) = 3.7.$
 
-This is not a new method of approximation. Compare the right hand expression for $z$ in Equation \eqref{eq:tpl7} to the total differential:
+This is not a new method of approximation. Compare the right hand expression for $z$ in \autoeqref{eq:tpl7} to the total differential:
 $$dz = f_xdx + f_ydy \quad \text{and} \quad z = \underbrace{\underbrace{2}_{f_x}\underbrace{(x-3)}_{dx}+\underbrace{-1/2}_{f_y}\underbrace{(y+1)}_{dy}}_{dz}+4.$$
 Thus the ``new $z$-value'' is the sum of the change in $z$ (i.e., $dz$) and the old $z$-value (4). As mentioned when studying the total differential, it is not uncommon to know partial derivative information about a unknown function, and tangent planes are used to give accurate approximations of the function.}
 
@@ -250,13 +250,11 @@ Recall that when $z=f(x,y)$, the gradient $\nabla f = \la f_x,f_y\ra$ is orthogo
 {Let $w=F(x,y,z)$ be differentiable on an open ball $B$ containing $(x_0,y_0,z_0)$ with gradient $\nabla F$, where $F(x_0,y_0,z_0) = c$. \\
 
 The vector $\nabla F(x_0,y_0,z_0)$ is orthogonal to the level surface $F(x,y,z)=c$ at $(x_0,y_0,z_0)$.
-\index{gradient!and level surfaces}\index{level surface}
-}
+\index{gradient!and level surfaces}\index{level surface}}
 
 The gradient at a point gives a vector orthogonal to the surface at that point. This direction can be used to find tangent planes and normal lines.
 
-\example{ex_tpl8}{Using the gradient to find a tangent plane}{
-Find the equation of the plane tangent to the ellipsoid $\ds \frac{x^2}{12} +\frac{y^2}{6}+\frac{z^2}{4}=1$ at $P = (1,2,1)$.}
+\example{ex_tpl8}{Using the gradient to find a tangent plane}{Find the equation of the plane tangent to the ellipsoid $\ds \frac{x^2}{12} +\frac{y^2}{6}+\frac{z^2}{4}=1$ at $P = (1,2,1)$.}
 {We consider the equation of the ellipsoid as a level surface of a function $F$ of three variables, where $F(x,y,z) = \frac{x^2}{12} +\frac{y^2}{6}+\frac{z^2}{4}$.  The gradient is:
 \begin{align*}
 \nabla F(x,y,z) &= \la F_x, F_y,F_z\ra \\

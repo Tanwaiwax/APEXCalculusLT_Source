@@ -45,7 +45,7 @@ then performing the substitution as we did earlier gives
 
 In general, if $x = g(u)$ is a one-to-one, differentiable function from an interval $\lbrack c,d \rbrack$ (which you can think of as being on the ``$u$-axis'') onto an interval $\lbrack a,b \rbrack$ (on the $x$-axis), which means that $g\primeskip'(u) \ne 0$ on the interval $(c,d)$, so that $a=g(c)$ and $b=g(d)$, then $c=g^{-1}(a)$ and $d=g^{-1}(b)$, and
 \[\int_a^b f(x)\,dx = \int_{g^{-1}(a)}^{g^{-1}(b)} f(g(u))\,g\primeskip'(u)\,du .\]
-This is called the \emph{change of variable} formula for integrals of single-variable functions, and it is what you were implicitly using when doing integration by substitution. This formula turns out to be a special case of a more general formula which can be used to evaluate multiple integrals. We will state the formulas for double and triple integrals involving real-valued functions of two and three variables, respectively. We will assume that all the functions involved are continuously differentiable and that the regions and solids involved all have ``reasonable'' boundaries. The proof of the following theorem is beyond the scope of the text.\footnote{See \cite[\S\,15.32 and \S\,15.62]{tm} for all the details.}
+This is called the \emph{change of variable} formula for integrals of single-variable functions, and it is what you were implicitly using when doing integration by substitution. This formula turns out to be a special case of a more general formula which can be used to evaluate multiple integrals. We will state the formulas for double and triple integrals involving real-valued functions of two and three variables, respectively. We will assume that all the functions involved are continuously differentiable and that the regions and solids involved all have ``reasonable'' boundaries. The proof of the following theorem is beyond the scope of the text.%\footnote{See \cite[\S\,15.32 and \S\,15.62]{tm} for all the details.}
 
 \theorem{thm:changevarint}{Change of Variables Formula for Multiple Integrals}{Let $x=x(u,v)$ and $y=y(u,v)$ define a one-to-one mapping of a region $R'$ in the $uv$-plane onto a region $R$ in the $xy$-plane such that the determinant\index{change of variable}
   \begin{equation}\label{eqn:jacob2}
@@ -57,8 +57,8 @@ This is called the \emph{change of variable} formula for integrals of single-var
   \end{equation}
   is never $0$ in $R'$. Then
   \begin{equation}\label{eqn:changevarint2}
-   \iint\limits_{R} f(x,y)\,dA(x,y)
-   = \iint\limits_{R'} f(x(u,v),y(u,v))\,\abs{J(u,v)}\,dA(u,v) .
+   \iint_{R} f(x,y)\,dA(x,y)
+   = \iint_{R'} f(x(u,v),y(u,v))\,\abs{J(u,v)}\,dA(u,v) .
   \end{equation}
   We use the notation $dA(x,y)$ and $dA(u,v)$ to denote the area element in the $(x,y)$ and $(u,v)$ coordinates, respectively.
   
@@ -73,20 +73,20 @@ This is called the \emph{change of variable} formula for integrals of single-var
   \end{equation}
   is never $0$ in $S'$, then
   \begin{multline}\label{eqn:changevarint3}
-   \iiint\limits_{S} f(x,y,z)\,dV(x,y,z) =\\
-   \iiint\limits_{S'} f(x(u,v,w),y(u,v,w),z(u,v,w))\,\abs{J(u,v,w)}\,dV(u,v,w).
+   \iiint_{S} f(x,y,z)\,dV(x,y,z) =\\
+   \iiint_{S'} f(x(u,v,w),y(u,v,w),z(u,v,w))\,\abs{J(u,v,w)}\,dV(u,v,w).
   \end{multline}}
 
-The determinant $J(u,v)$ in Equation \eqref{eqn:jacob2} is called the \textbf{Jacobian} of $x$ and $y$ with respect to $u$ and $v$, and is sometimes written as\index{Jacobian}
+The determinant $J(u,v)$ in \autoeqref{eqn:jacob2} is called the \textbf{Jacobian} of $x$ and $y$ with respect to $u$ and $v$, and is sometimes written as\index{Jacobian}
 \[J(u,v) = \frac{\partial (x,y)}{\partial (u,v)} .\]
 Similarly, the Jacobian $J(u,v,w)$ of three variables is sometimes written as
 \[J(u,v,w) = \frac{\partial (x,y,z)}{\partial (u,v,w)} .\]
-Notice that Equation \eqref{eqn:changevarint2} is saying that $dA(x,y) = \abs{J(u,v)}\,dA(u,v)$, which you can think of as a two-variable version of the relation $dx = g\primeskip'(u)\,du$ in the single-variable case.
+Notice that \autoeqref{eqn:changevarint2} is saying that $dA(x,y) = \abs{J(u,v)}\,dA(u,v)$, which you can think of as a two-variable version of the relation $dx = g\primeskip'(u)\,du$ in the single-variable case.
 
 The following example shows how the change of variables formula is used.\index{$\dfrac{\partial (x,y,z)}{\partial (u,v,w)}$}
 
-\example{ex_simple_Jacobian}{Change of Variables}{Evaluate $\ds\iint\limits_{R} e^{\frac{x-y}{x+y}} \,dA$, where $R= \lbrace (x,y): x \ge 0, y \ge 0,
- x + y \le 1 \rbrace$.}{First, note that evaluating this double integral \emph{without} using substitution is probably impossible, at least in a closed form. By looking at the numerator and denominator of the exponent of $e$, we will try the substitution $u=x-y$ and $v=x+y$. To use the change of variables Equation \eqref{eqn:changevarint2}, we need to write both $x$ and $y$ in terms of $u$ and $v$. So solving for $x$ and $y$ gives $x=\frac12(u+v)$ and $y=\frac12(v-u)$. In \autoref{fig:exyint} below, we see how the mapping $x=x(u,v)=\frac12(u+v)$,
+\example{ex_simple_Jacobian}{Change of Variables}{Evaluate $\ds\iint_{R} e^{\frac{x-y}{x+y}} \,dA$, where $R= \lbrace (x,y): x \ge 0, y \ge 0,
+ x + y \le 1 \rbrace$.}{First, note that evaluating this double integral \emph{without} using substitution is probably impossible, at least in a closed form. By looking at the numerator and denominator of the exponent of $e$, we will try the substitution $u=x-y$ and $v=x+y$. To use the change of variables \autoeqref{eqn:changevarint2}, we need to write both $x$ and $y$ in terms of $u$ and $v$. So solving for $x$ and $y$ gives $x=\frac12(u+v)$ and $y=\frac12(v-u)$. In \autoref{fig:exyint} below, we see how the mapping $x=x(u,v)=\frac12(u+v)$,
  $y=y(u,v)=\frac12(v-u)$ maps the region $R'$ onto $R$ in a one-to-one manner.
  
 \begin{lxfigure}
@@ -140,7 +140,7 @@ The following example shows how the change of variables formula is used.\index{$
  \]
  so using horizontal slices in $R'$, we have
  \begin{align*}
-  \iint\limits_{R} e^{\frac{x-y}{x+y}} \,dA &= \iint\limits_{R'} f(x(u,v),y(u,v))\,\abs{J(u,v)}\,dA\\
+  \iint_{R} e^{\frac{x-y}{x+y}} \,dA &= \iint_{R'} f(x(u,v),y(u,v))\,\abs{J(u,v)}\,dA\\
   &= \int_0^1 \int_{-v}^v e^{\frac uv} \, \frac12\,du\,dv\\
   &= \int_0^1 \left(\left. \frac v2 e^{\frac uv} \,\right|_{u=-v}^{u=v} \right) \,dv\\
   &= \int_0^1 \frac v2 (e - e^{-1})\,dv\\
@@ -169,8 +169,8 @@ so we have the following formula:
 
 \keyidea{idea_polar_int}{Double Integral in Polar Coordinates}{
  \begin{equation}\label{eqn:polarint}
-  \iint\limits_{R} f(x,y)\,dx\,dy
-  = \iint\limits_{R'} f(r\cos \theta,r\sin \theta)\,r\,dr\,d\theta ,
+  \iint_{R} f(x,y)\,dx\,dy
+  = \iint_{R'} f(r\cos \theta,r\sin \theta)\,r\,dr\,d\theta ,
  \end{equation}\index{double integral!polar coordinates}\index{coordinates!polar}
  where the mapping $x=r\cos \theta$, $y=r\sin \theta$ maps the region $R'$ in the $r\theta$-plane onto the region $R$ in the $xy$-plane in a one-to-one manner.}
 
@@ -202,7 +202,7 @@ so we have the following formula:
  \end{tikzpicture}
  }
  Using vertical slices, we see that
- \[V = \iint\limits_{R} (1 - z)\,dA = \iint\limits_{R} (1 - (x^2 + y^2 ))\,dA ,\]
+ \[V = \iint_{R} (1 - z)\,dA = \iint_{R} (1 - (x^2 + y^2 ))\,dA ,\]
  where $R = \lbrace (x,y): x^2 + y^2 \le 1 \rbrace$ is the unit disk in $\mathbb{R}^2$ (see \autoref{fig_parab}). In polar coordinates $(r,\theta)$ we know that $x^2 + y^2 = r^2$ and that the unit disk $R$ is the set $R' = \lbrace (r,\theta):0 \le r \le 1, 0 \le \theta \le 2\pi \rbrace$. Thus,
  \begin{align*}
   V &= \int_0^{2\pi} \int_0^1 (1 - r^2 )\,r\,dr\,d\theta\\
@@ -237,8 +237,8 @@ so we have the following formula:
  }
  Using vertical slices, we see that
  \[
-  V = \iint\limits_{R} (1 - z)\,dA
-  = \iint\limits_{R} \left( 1 - \sqrt{x^2 + y^2} \right) \,dA ,
+  V = \iint_{R} (1 - z)\,dA
+  = \iint_{R} \left( 1 - \sqrt{x^2 + y^2} \right) \,dA ,
  \]
  where $R = \lbrace (x,y): x^2 + y^2 \le 1 \rbrace$ is the unit disk in $\mathbb{R}^2$ (see \autoref{fig_cone}). In polar coordinates $(r,\theta)$ we know\\that $\sqrt{x^2 + y^2} = r$ and that the unit disk $R$ is the set\\$R' = \lbrace (r,\theta):0 \le r \le 1, 0 \le \theta \le 2\pi \rbrace$. Thus,
  \begin{align*}
@@ -249,25 +249,25 @@ so we have the following formula:
    &= \frac\pi3.\eoehere
  \end{align*}}
 
-In a similar fashion, it can be shown (see Exercises 5-6) that triple integrals in cylindrical and spherical coordinates take the following forms:
+In a similar fashion, it can be shown (see Exercises \ref{pr_cyl_jac}--\ref{pr_sph_jac}) that triple integrals in cylindrical and spherical coordinates take the following forms:
 
 \keyidea{idea_cylin_int}{Triple Integral in Cylindrical Coordinates}{%
  \begin{equation}\label{eqn:cylinderint}
-  \iiint\limits_{S} f(x,y,z)\,dx\,dy\,dz = \iiint\limits_{S'} f(r\cos \theta,r\sin \theta,z)\,r\,dr\,d\theta\,dz ,
+  \iiint_{S} f(x,y,z)\,dx\,dy\,dz = \iiint_{S'} f(r\cos \theta,r\sin \theta,z)\,r\,dr\,d\theta\,dz ,
  \end{equation}\index{triple integral!cylindrical coordinates}
  where the mapping $x=r\cos \theta$, $y=r\sin \theta$, $z=z$ maps the solid $S'$ in  $r\theta z$-space onto the solid $S$ in $xyz$-space in a one-to-one manner.}
 
 \keyidea{idea_sphere_int}{Triple Integral in Spherical Coordinates}{\mbox{}\\[-2\baselineskip]
  \begin{multline}\label{eqn:sphereint}
-  \iiint\limits_S f(x,y,z)\,dx\,dy\,dz =\\
-  \iiint\limits_{S'} f(\rho\sin \phi\,\cos \theta,\rho\sin \phi\,\sin \theta,\rho\cos \phi)
+  \iiint_S f(x,y,z)\,dx\,dy\,dz =\\
+  \iiint_{S'} f(\rho\sin \phi\,\cos \theta,\rho\sin \phi\,\sin \theta,\rho\cos \phi)
   \,\rho^2 \,\sin \phi \,d\rho\,d\phi\,d\theta ,
  \end{multline}\index{triple integral!spherical coordinates}
  where the mapping $x=\rho\sin \phi\,\cos \theta$, $y=\rho\sin \phi\,\sin \theta$, $z=\rho\cos \phi$ maps the solid $S'$ in $\rho\phi\theta$-space onto the solid $S$ in $xyz$-space in a one-to-one manner.}
  
 \example{exmp_volsphere}{Finding the Volume of a Sphere}{For $a > 0$, find the volume $V$ inside the sphere $S = x^2 + y^2 + z^2 = a^2$.}{We see that $S$ is the set $\rho = a$ in spherical coordinates, so
  \begin{align*}
-  V &= \iiint\limits_S 1\,dV
+  V &= \iiint_S 1\,dV
    = \int_0^{2\pi} \int_0^\pi \int_0^a 1 \,\rho^2 \,\sin \phi \,d\rho\,d\phi\,d\theta\\
    &= \int_0^{2\pi} \int_0^\pi \left( \left.\frac{\rho^3}3\,\right|_{\rho=0}^{\rho=a}\right)\,\sin \phi \,d\phi\,d\theta
    = \int_0^{2\pi} \int_0^{\pi} \frac{a^3}3\,\sin \phi\,d\phi\,d\theta\\

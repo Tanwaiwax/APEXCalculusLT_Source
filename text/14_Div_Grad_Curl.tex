@@ -2,20 +2,20 @@
 
 In this final section we will establish some relationships between the gradient, divergence and curl, and we will also introduce a new quantity called the \emph{Laplacian}. We will then show how to write these quantities in cylindrical and spherical coordinates.
 
-For a real-valued function $f(x,y,z)$ on $\Real{3}$, the gradient $\nabla f(x,y,z)$ is a vector-valued function on $\Real{3}$, that is, its value at a point $(x,y,z)$ is the vector
+For a real-valued function $f(x,y,z)$ on $\mathbb{R}^{3}$, the gradient $\nabla f(x,y,z)$ is a vector-valued function on $\mathbb{R}^{3}$, that is, its value at a point $(x,y,z)$ is the vector
 \[
  \nabla f(x,y,z) = \left( \frac{\partial f}{\partial x},\frac{\partial f}{\partial y},\frac{\partial f}{\partial z}
   \right) =
  \frac{\partial f}{\partial x}\,\textbf{i} + \frac{\partial f}{\partial y}\,\textbf{j} +
  \frac{\partial f}{\partial z}\,\textbf{k}
 \]
-in $\Real{3}$, where each of the partial derivatives is evaluated at the point $(x,y,z)$. So in this way, you can think of the \emph{symbol} $\nabla$ as being ``applied'' to a real-valued function $f$ to produce a vector $\nabla f$.
+in $\mathbb{R}^{3}$, where each of the partial derivatives is evaluated at the point $(x,y,z)$. So in this way, you can think of the \emph{symbol} $\nabla$ as being ``applied'' to a real-valued function $f$ to produce a vector $\nabla f$.
 
-It turns out that the divergence and curl can also be expressed in terms of the symbol $\nabla$. This is done by thinking of $\nabla$ as a \emph{vector} in $\Real{3}$, namely\index{$\nabla$}
-\begin{equation}\label{eqn:del}
+It turns out that the divergence and curl can also be expressed in terms of the symbol $\nabla$. This is done by thinking of $\nabla$ as a \emph{vector} in $\mathbb{R}^{3}$, namely\index{$\nabla$}
+\[
  \nabla = \frac{\partial}{\partial x}\,\textbf{i} + \frac{\partial}{\partial y}\,\textbf{j} +
    \frac{\partial}{\partial z}\,\textbf{k} .
-\end{equation}
+\]
 Here, the symbols $\frac{\partial}{\partial x}$, $ \frac{\partial}{\partial y}$ and $\frac{\partial}{\partial z}$ are to be thought of as ``partial derivative operators'' that will get ``applied'' to a real-valued function, say $f(x,y,z)$, to produce the partial derivatives $\frac{\partial f}{\partial x}$, $\frac{\partial f}{\partial y}$ and $\frac{\partial f}{\partial z}$. For instance, $\frac{\partial}{\partial x}$ ``applied'' to $f(x,y,z)$ produces $\frac{\partial f}{\partial x}$.
 
 Is $\nabla$ \emph{really} a vector? Strictly speaking, no, since $\frac{\partial}{\partial x}$, $\frac{\partial}{\partial y}$ and $\frac{\partial}{\partial z}$ are not actual numbers. But it helps to \emph{think} of $\nabla$ as a vector, especially with the divergence and curl, as we will soon see. The process of ``applying'' $\frac{\partial}{\partial x}$, $\frac{\partial}{\partial y}$, $\frac{\partial}{\partial z}$ to a real-valued function $f(x,y,z)$ is normally thought of as \emph{multiplying} the quantities:
@@ -26,16 +26,16 @@ Is $\nabla$ \emph{really} a vector? Strictly speaking, no, since $\frac{\partial
 \]
 For this reason, $\nabla$ is often referred to as the ``del operator'', since it ``operates'' on functions.
  
-For example, it is often convenient to write the divergence $\text{div }\textbf{f}$ as $\Dotprod{\nabla}{\textbf{f}}$, since for a vector field $\textbf{f}(x,y,z) = \ssub{f}{1}(x,y,z)\textbf{i} + \ssub{f}{2}(x,y,z) \textbf{j} + \ssub{f}{3}(x,y,z) \textbf{k}$, the dot product of \textbf{f} with $\nabla$ (thought of as a vector) makes sense:\index{divergence}
+For example, it is often convenient to write the divergence $\text{div }\textbf{f}$ as $\Dotprod{\nabla}{\textbf{f}}$, since for a vector field $\textbf{f}(x,y,z) = f_1(x,y,z)\textbf{i} + f_2(x,y,z) \textbf{j} + f_3(x,y,z) \textbf{k}$, the dot product of \textbf{f} with $\nabla$ (thought of as a vector) makes sense:\index{divergence}
 \begin{align*}
  \Dotprod{\nabla}{\textbf{f}} &= \Dotprod{ \left( \frac{\partial}{\partial x}\,\textbf{i} +
-  \frac{\partial}{\partial y}\,\textbf{j} + \frac{\partial}{\partial z}\,\textbf{k} \right) }{\left( \ssub{f}{1}(x,y,z)
-  \textbf{i} + \ssub{f}{2}(x,y,z) \textbf{j} + \ssub{f}{3}(x,y,z) \textbf{k} \right) }\\
-   &= \left( \frac{\partial}{\partial x} \right) (\ssub{f}{1}) +
-    \left( \frac{\partial}{\partial y} \right) (\ssub{f}{2}) +
-    \left( \frac{\partial}{\partial z} \right) (\ssub{f}{3})\\
-   &= \frac{\partial \ssub{f}{1}}{\partial x} + \frac{\partial \ssub{f}{2}}{\partial y} +
-  \frac{\partial \ssub{f}{3}}{\partial z}\\
+  \frac{\partial}{\partial y}\,\textbf{j} + \frac{\partial}{\partial z}\,\textbf{k} \right) }{\left( f_1(x,y,z)
+  \textbf{i} + f_2(x,y,z) \textbf{j} + f_3(x,y,z) \textbf{k} \right) }\\
+   &= \left( \frac{\partial}{\partial x} \right) (f_1) +
+    \left( \frac{\partial}{\partial y} \right) (f_2) +
+    \left( \frac{\partial}{\partial z} \right) (f_3)\\
+   &= \frac{\partial f_1}{\partial x} + \frac{\partial f_2}{\partial y} +
+  \frac{\partial f_3}{\partial z}\\
    &= \text{div }\textbf{f}
 \end{align*}
 
@@ -70,24 +70,24 @@ For a real-valued function $f(x,y,z)$, the gradient $\nabla f(x,y,z) =\frac{\par
 Note that this is a real-valued function, to which we will give a special name:
 
 \definition{defn:laplacian}{Laplacian}{For a real-valued function $f(x,y,z)$, the \textbf{Laplacian} of $f$, denoted by $\Delta f$, is given by
-  \begin{equation}\label{eqn:laplacian}
+  \[
    \Delta f(x,y,z) = \Dotprod{\nabla}{\nabla f} = \frac{\partial^2 f}{\partial x^2} +
    \frac{\partial^2 f}{\partial y^2} + \frac{\partial^2 f}{\partial z^2} .
-  \end{equation}}
+  \]}
 
 Often the notation $\nabla^2 f$ is used for the Laplacian instead of $\Delta f$, using the convention $\nabla^2 = \Dotprod{\nabla}{\nabla}$.\index{Laplacian}\index{$\Delta$}\index{$\nabla^2$}
 
-\example{exmp_laplposition}{Computing a Laplacian}{Let $\textbf{r}(x,y,z) = x\,\textbf{i} + y\,\textbf{j} + z\,\textbf{k}$ be the position vector field on  $\Real{3}$. Then $\norm{\textbf{r}(x,y,z)}^2 = \Dotprod{\textbf{r}}{\textbf{r}} = x^2 + y^2 + z^2$ is a real-valued function. Find
+\example{exmp_laplposition}{Computing a Laplacian}{Let $\textbf{r}(x,y,z) = x\,\textbf{i} + y\,\textbf{j} + z\,\textbf{k}$ be the position vector field on  $\mathbb{R}^{3}$. Then $\norm{\textbf{r}(x,y,z)}^2 = \Dotprod{\textbf{r}}{\textbf{r}} = x^2 + y^2 + z^2$ is a real-valued function. Find
  \begin{enumerate}
   \item the gradient of $\norm{\textbf{r}}^2$
   \item the divergence of $\textbf{r}$
   \item the curl of $\textbf{r}$
   \item the Laplacian of $\norm{\textbf{r}}^2$
- \end{enumerate}}{\mbox{}\\[-2\baselineskip]\begin{enumerate}
+ \end{enumerate}}{\mbox{}\\[-1.5\baselineskip]\begin{enumerate}
 \item $\nabla \norm{\textbf{r}}^2 = 2x\,\textbf{i} + 2y\,\textbf{j} + 2z\,\textbf{k}
   = 2\,\textbf{r}$\vspace{2mm}
 \item $\Dotprod{\nabla}{\textbf{r}} = \frac{\partial}{\partial x}(x) + \frac{\partial}{\partial y}(y) + \frac{\partial}{\partial z}(z) = 1+1+1=3$
-\item
+\item\mbox{}\\[-2\baselineskip]
  \[
   \Crossprod{\nabla}{\textbf{r}} = \begin{vmatrix}
   \textbf{i} & \textbf{j} & \textbf{k} \vspace{1mm}\\ \dfrac{\partial}{\partial x} & \dfrac{\partial}{\partial y} &
@@ -140,7 +140,7 @@ The following theorem shows that this will be the case in general:
 
 \theorem{thm:divcurl0}{Curl is Divergence Free}{For any smooth vector field $\textbf{f}(x,y,z)$, $\Dotprod{\nabla}{(\Crossprod{\nabla}{\textbf{f}})} = 0$.}
 
-The proof is straightforward and left as an exercise for the reader.
+The proof is straightforward and left as Exercise \ref{pr_div_curl_null}.
 
 \theorem{cor:divcurl0}{Flux of a Curl Through a Closed Surface}{The flux of the curl of a smooth vector field $\textbf{f}(x,y,z)$ through any closed surface is zero.}
 
@@ -154,21 +154,22 @@ The proof is straightforward and left as an exercise for the reader.
  \end{align*}
 \end{proof}
 
-There is another method for proving \autoref{thm:curlgrad0} which can be useful, and is often used in physics. Namely, if the surface integral $\ds\iint_{\Sigma} f(x,y,z)\,d\sigma = 0$ for \emph{all} surfaces $\Sigma$ in some solid region (usually all of $\Real{3}$), then we must have $f(x,y,z) = 0$ throughout that region. The proof is not trivial, and physicists do not usually bother to prove it. But the result is true, and can also be applied to double and triple integrals.
+There is another method for proving \autoref{thm:curlgrad0} which can be useful, and is often used in physics. Namely, if the surface integral $\ds\iint_{\Sigma} f(x,y,z)\,d\sigma = 0$ for \emph{all} surfaces $\Sigma$ in some solid region (usually all of $\mathbb{R}^{3}$), then we must have $f(x,y,z) = 0$ throughout that region. The proof is not trivial, and physicists do not usually bother to prove it. But the result is true, and can also be applied to double and triple integrals.
 
-For instance, to prove \autoref{thm:curlgrad0}, assume that $f(x,y,z)$ is a smooth real-valued function on $\Real{3}$. Let $C$ be a simple closed curve in $\Real{3}$ and let $\Sigma$ be any capping surface for $C$ (i.e., $\Sigma$ is orientable and its boundary is $C$). Since $\nabla f$ is a vector field, then
+For instance, to prove \autoref{thm:curlgrad0}, assume that $f(x,y,z)$ is a smooth real-valued function on $\mathbb{R}^{3}$. Let $C$ be a simple closed curve in $\mathbb{R}^{3}$ and let $\Sigma$ be any capping surface for $C$ (i.e., $\Sigma$ is orientable and its boundary is $C$). Since $\nabla f$ is a vector field, then
 \begin{align*}
  \iint_{\Sigma} \Dotprod{\left( \Crossprod{\nabla}{(\nabla f)} \right) }{\textbf{n}}\,d\sigma &=
   \oint_{C}\Dotprod{\nabla f}{d\textbf{r}} \quad\text{by Stokes' Theorem, so}\\
  &= 0 \quad\text{by \autoref{cor:lineintsuffpath3}.}
 \end{align*}
-Since the choice of $\Sigma$ was arbitrary, then we must have $\Dotprod{(\Crossprod{\nabla}{(\nabla f)})}{\textbf{n}} = 0$ throughout $\Real{3}$, where \textbf{n} is any unit vector. Using \textbf{i}, \textbf{j} and \textbf{k} in place of \textbf{n}, we see that we must have $\Crossprod{\nabla}{(\nabla f)} = \textbf{0}$ in $\Real{3}$, which completes the proof.
+Since the choice of $\Sigma$ was arbitrary, then we must have $\Dotprod{(\Crossprod{\nabla}{(\nabla f)})}{\textbf{n}} = 0$ throughout $\mathbb{R}^{3}$, where \textbf{n} is any unit vector. Using \textbf{i}, \textbf{j} and \textbf{k} in place of \textbf{n}, we see that we must have $\Crossprod{\nabla}{(\nabla f)} = \textbf{0}$ in $\mathbb{R}^{3}$, which completes the proof.
 
 \example{ex_max_eq}{Maxwell's Equation}{A system of electric charges has a \emph{charge density} $\rho (x,y,z)$ and produces an electrostatic field $\textbf{E}(x,y,z)$ at points $(x,y,z)$ in space. \emph{Gauss' Law} states that
 \[
   \iint_{\Sigma} \Dotprod{\textbf{E}}{d\sigma} = 4\pi\,\iiint_{S} \rho dV
  \]
- for any closed surface $\Sigma$ which encloses the charges, with $S$ being the solid region enclosed by $\Sigma$. Show that $\Dotprod{\nabla}{\textbf{E}} = 4\pi\rho$. This is one of \emph{Maxwell's Equations}.\footnote{In Gaussian (or CGS) units.}}{By the Divergence Theorem, we have
+ for any closed surface $\Sigma$ which encloses the charges, with $S$ being the solid region enclosed by $\Sigma$. Show that $\Dotprod{\nabla}{\textbf{E}} = 4\pi\rho$. This is one of \emph{Maxwell's Equations}.%\footnote{In Gaussian (or CGS) units.}
+}{By the Divergence Theorem, we have
  \begin{align*}
   \iiint_{S} \Dotprod{\nabla}{\textbf{E}} dV &= \iint_{\Sigma} \Dotprod{\textbf{E}}{d\sigma}\\
    &= 4\pi\,\iiint_{S} \rho dV \quad\text{by Gauss' Law, so combining the integrals gives}\\
@@ -200,19 +201,19 @@ Similarly, a point $(x,y,z)$ can be represented in spherical coordinates $(\rho,
 
 We can now summarize the expressions for the gradient, divergence, curl and Laplacian in Cartesian, cylindrical and spherical coordinates in the following tables:
 
-\keyidea{ki_cart_sys}{Vector Calculus in Cartesian Coordinates}{For the scalar function $F$ or vector field $\textbf{f} = \ssub{f}{1}\,\textbf{i} + \ssub{f}{2}\,\textbf{j} + \ssub{f}{3}\,\textbf{k}$,
+\keyidea{ki_cart_sys}{Vector Calculus in Cartesian Coordinates}{For the scalar function $F$ or vector field $\textbf{f} = f_1\,\textbf{i} + f_2\,\textbf{j} + f_3\,\textbf{k}$,
  \begin{alignat*}{2}
   \text{gradient} &: & \nabla F
   &= \frac{\partial F}{\partial x}\,\textbf{i} + \frac{\partial F}{\partial y}\,\textbf{j}
    + \frac{\partial F}{\partial z}\,\textbf{k}\\
   \text{divergence} &: & \Dotprod{\nabla}{\textbf{f}}
-  &= \frac{\partial \ssub{f}{1}}{\partial x} +
-   \frac{\partial \ssub{f}{2}}{\partial y} + \frac{\partial \ssub{f}{3}}{\partial z}\\
+  &= \frac{\partial f_1}{\partial x} +
+   \frac{\partial f_2}{\partial y} + \frac{\partial f_3}{\partial z}\\
   \text{curl} &:  & \Crossprod{\nabla}{\textbf{f}}
   &=
-   \left( \frac{\partial \ssub{f}{3}}{\partial y} - \frac{\partial \ssub{f}{2}}{\partial z} \right) \textbf{i} +
-   \left( \frac{\partial \ssub{f}{1}}{\partial z} - \frac{\partial \ssub{f}{3}}{\partial x} \right) \textbf{j} +
-   \left( \frac{\partial \ssub{f}{2}}{\partial x} - \frac{\partial \ssub{f}{1}}{\partial y} \right) \textbf{k}\\
+   \left( \frac{\partial f_3}{\partial y} - \frac{\partial f_2}{\partial z} \right) \textbf{i} +
+   \left( \frac{\partial f_1}{\partial z} - \frac{\partial f_3}{\partial x} \right) \textbf{j} +
+   \left( \frac{\partial f_2}{\partial x} - \frac{\partial f_1}{\partial y} \right) \textbf{k}\\
   \text{Laplacian} &: & \Delta\,F
   &= \frac{\partial^2 F}{\partial x^2} +
    \frac{\partial^2 F}{\partial y^2} + \frac{\partial^2 F}{\partial z^2}
@@ -399,4 +400,4 @@ which we see has $8$ terms involving $\textbf{e}_{\rho}$, $6$ terms involving $\
    &= \frac{1}{\rho^2}\,(6\rho^2 ) = 6 ,\text{ as expected.}\eoehere
  \end{align*}}
 
-\printexercises{exercises/14_Div_Grad_Culr_exercises}
+\printexercises{exercises/14_Div_Grad_Curl_exercises}

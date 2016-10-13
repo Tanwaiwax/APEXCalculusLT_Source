@@ -2,25 +2,31 @@
 
 \exercise{\begin{minipage}{\linewidth}
 \myincludegraphics[scale=.8]{figures/fig02_02_ex_15}
-\end{minipage}
-}{$f(x) = g'(x)$
-}
+\end{minipage}}{$f(x) = g'(x)$}
 
 \exercise{\begin{minipage}{\linewidth}
 \myincludegraphics[scale=.8]{figures/fig02_02_ex_16}
-\end{minipage}
-}{$g(x) = \fp(x)$
-}
+\end{minipage}}{$g(x) = \fp(x)$}
 
 \exercise{\begin{minipage}{\linewidth}
-\myincludegraphics[scale=.8]{figures/fig02_02_ex_17}
-\end{minipage}
-}{Either $g(x) = \fp(x)$ or $f(x) = g'(x)$ is acceptable. The actual answer is $g(x) = \fp(x)$, but is very hard to show that $f(x)\neq g'(x)$ given the level of detail given in the graph. 
-}
+ \begin{tikzpicture}[baseline=10pt]
+  \begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+    axis y line=middle,axis x line=middle,name=myplot,
+    ymin=-5.5,ymax=5.5,xmin=-5.5,xmax=5.5]
+   \addplot [thick,{\colorone},smooth,domain=-5.5:-.1,samples=40] {2+1/x};
+   \addplot [thick,{\colorone},smooth,domain=.1:5.5,samples=40] {2+1/x}
+    node[above,pos=.8,color=black]{\scriptsize$f(x)$};
+   \addplot [thick,{\colortwo},smooth,domain=-5.5:-.1,samples=40] {-1/x^2};
+   \addplot [thick,{\colortwo},smooth,domain=.4:5.5,samples=40] {-1/x^2}
+    node[below,pos=.7,color=black]{\scriptsize$g(x)$};
+  \end{axis}
+  \node [right] at (myplot.right of origin) {\scriptsize $x$};
+  \node [above] at (myplot.above origin) {\scriptsize $y$};
+ \end{tikzpicture}
+\end{minipage}}{$g(x) = \fp(x)$}
 
 \exercise{\begin{minipage}{\linewidth}
 \myincludegraphics[scale=.8]{figures/fig02_02_ex_18}
-\end{minipage}
-}{$g(x) = \fp(x)$
-}
+\end{minipage}}{$g(x) = \fp(x)$}
+
 }

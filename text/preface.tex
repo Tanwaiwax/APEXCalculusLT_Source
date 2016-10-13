@@ -9,7 +9,7 @@
 Thank you for reading this short preface. Allow us to share a few key points about the text so that you may better understand what you will find beyond this page.
 
 This text comprises a three--volume series on Calculus.
-The first part covers material taught in many ``Calculus 1'' courses: limits, derivatives, and the basics of integration, found in Chapters 1 through \ref{chapter:app_of_int}. The second text covers material often taught in ``Calculus 2'': integration and its applications, along with an introduction to sequences, series and Taylor Polynomials, found in Chapters 7 through 10. The third text covers topics common in ``Calculus 3'' or ``Multivariable Calculus'': parametric equations, polar coordinates, vector--valued functions, and functions of more than one variable, found in Chapters 11 through 13. All three are available separately for free.% at \texttt{\href{http://apexcalculus.com}{www.apexcalculus.com}}.
+The first part covers material taught in many ``Calculus 1'' courses: limits, derivatives, and the basics of integration, found in Chapters 1 through \ref{chapter:app_of_int}. The second text covers material often taught in ``Calculus 2'': integration and its applications, along with an introduction to sequences, series and Taylor Polynomials, found in Chapters \ref{chapter:diff_conc} through \ref{chapter:planar_curves}. The third text covers topics common in ``Calculus 3'' or ``Multivariable Calculus'': parametric equations, polar coordinates, vector--valued functions, and functions of more than one variable, found in Chapters \ref{chapter:vectors} through \ref{chapter:vect_calc}. All three are available separately for free.% at \texttt{\href{http://apexcalculus.com}{www.apexcalculus.com}}.
 %These three texts are intended to work together and make one cohesive text, \textit{APEX Calculus}, which can also be downloaded from the website. 
 
 Printing the entire text as one volume makes for a large, heavy, cumbersome book. One can certainly only print the pages they currently need, but some prefer to have a nice, bound copy of the text. Therefore this text has been split into these three manageable parts, each of which can be purchased separately.%for under \$15 at \href{http://amazon.com}{Amazon.com}.
@@ -71,10 +71,134 @@ You can learn more at \texttt{\href{http://www.vmi.edu/APEX}{www.vmi.edu/APEX}}.
 \subsection*{Creating \apex~LT}
 
 Starting with the source at \url{https://github.com/APEXCalculus},
-faculty at the University of North Dakota made several substantial changes to create \apex\ Late Transcendentals.  The most obvious change was to rearrange the text to delay proving the derivative of transcendental functions until Calculus 2.  UND also added material from Vector Calculus, by Michael Corral, available at \texttt{\href{http://www.mecmath.net/}{www.mecmath.net/}} (specifically, Sections \ref{sec:other_systems}, \ref{sec:lagrange}, and \ref{sec:jacobian}, and \autoref{chapter:vect_calc}).  UND also created the prerequisite sections, included links to videos and Geogebra, and added several examples and exercises.  In the end, nearly every section had some changes, resulting in a document that is about 20\% longer. The source files can now be found at
+faculty at the University of North Dakota made several substantial changes to create \apex\ Late Transcendentals.  The most obvious change was to rearrange the text to delay proving the derivative of transcendental functions until Calculus 2.  UND added Sections \ref{sec:inv_funcs} and \ref{sec:exp_log}, adapted several sections from other resources, created the prerequisite sections, included links to videos and Geogebra, and added several examples and exercises.  In the end, every section had some changes (some more substantial than others), resulting in a document that is about 20\% longer. The source files can now be found at
 \url{https://github.com/teepeemm/APEXCalculusLT_Source}.
 %Jerry Metzger provided many of the links to the videos.
 
-Extra thanks are also due to Paul Dawkins for allowing us to use portions of his online math notes from \texttt{\href{http://tutorial.math.lamar.edu/}{tutorial.math.lamar.edu/}}.
+Extra thanks are due
+to Michael Corral for allowing us to use portions of his Vector Calculus, available at \texttt{\href{http://www.mecmath.net/}{www.mecmath.net/}} (specifically, Sections \ref{sec:other_systems}, \ref{sec:lagrange}, and \ref{sec:jacobian}, and \autoref{chapter:vect_calc}) and
+to Paul Dawkins for allowing us to use portions of his online math notes from \texttt{\href{http://tutorial.math.lamar.edu/}{tutorial.math.lamar.edu/}} (specifically, Sections \ref{sec:int_techniques} and \ref{sec:series_techniques}).
 
 \restoregeometry
+
+\iffalse
+
+Michael Corral's permission for Vector Calc:
+
+Delivered-To: teepeemm+und@gmail.com
+Received: by 10.12.137.196 with SMTP id 4csp206633qvs;
+        Tue, 11 Oct 2016 21:50:21 -0700 (PDT)
+X-Received: by 10.28.208.204 with SMTP id h195mr902815wmg.25.1476247821239;
+        Tue, 11 Oct 2016 21:50:21 -0700 (PDT)
+Return-Path: <timothy.prescott.und+caf_=teepeemm+und=gmail.com@gmail.com>
+Received: from mail-wm0-f46.google.com (mail-wm0-f46.google.com. [74.125.82.46])
+        by mx.google.com with ESMTPS id iu2si7937925wjb.79.2016.10.11.21.50.20
+        for <teepeemm+und@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 11 Oct 2016 21:50:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of timothy.prescott.und+caf_=teepeemm+und=gmail.com@gmail.com designates 74.125.82.46 as permitted sender) client-ip=74.125.82.46;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of timothy.prescott.und+caf_=teepeemm+und=gmail.com@gmail.com designates 74.125.82.46 as permitted sender) smtp.mailfrom=timothy.prescott.und+caf_=teepeemm+und=gmail.com@gmail.com
+Received: by mail-wm0-f46.google.com with SMTP id c78so5170585wme.1
+        for <teepeemm+und@gmail.com>; Tue, 11 Oct 2016 21:50:20 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-original-authentication-results:x-gm-message-state:delivered-to
+         :date:from:to:subject:in-reply-to:message-id:references:user-agent
+         :mime-version;
+        bh=4QZTTpi4S0EQNJbS8tptvA7JD1EZlV+X7XZHmQ8AkGM=;
+        b=gnrdxJXm28XRjisuz3lkoHQGazVvxlHaU9qMt5eZbcjAVXe3KQXotfrPD/BI7qlcBv
+         326C0dy43JJCte8GViUowUtK760ErySLnTcijMjJ5mALRmfugtcqjk+jYXN457iLlWIz
+         P/dyAn1gAUp8dU7n3nNc0J1wlMBKNAobVHEg/pDKMPBLC76Rx6A0vkcDrU/VxjtaNoJf
+         Pm/rzcGxcSRxVkWdRTFtw7lJYTae7BV3gHd2ptASaSglpGvZCyE/Q0wRCGfZZ9WdRtz2
+         cBmqwpId+BSIxAzhqicY+PcVj8b4/Dt1JIg6KRamlb72cKizaAREBTUsTYuMRp58QRn8
+         GIwg==
+X-Original-Authentication-Results: mx.google.com;
+       spf=neutral (google.com: 173.247.247.235 is neither permitted nor denied by best guess record for domain of mcorral@mecmath.net) smtp.mailfrom=mcorral@mecmath.net
+X-Gm-Message-State: AA6/9RmAB4vzE4sB8058XycdVu6s2+1v2SYnRZQBET7qioZ9UKk72GLVyunHUnk/NPDHWdnr+q+aEOQG//nqrkZ3aEE3/QM=
+X-Received: by 10.194.157.193 with SMTP id wo1mr8038181wjb.22.1476247820810;
+        Tue, 11 Oct 2016 21:50:20 -0700 (PDT)
+X-Forwarded-To: teepeemm+und@gmail.com
+X-Forwarded-For: timothy.prescott.und@gmail.com teepeemm+und@gmail.com
+Delivered-To: timothy.prescott.und@gmail.com
+Received: by 10.80.183.175 with SMTP id h44csp359244ede;
+        Tue, 11 Oct 2016 21:50:19 -0700 (PDT)
+X-Received: by 10.99.110.78 with SMTP id j75mr6174565pgc.2.1476247819627;
+        Tue, 11 Oct 2016 21:50:19 -0700 (PDT)
+Return-Path: <mcorral@mecmath.net>
+Received: from biz104.inmotionhosting.com (biz104.inmotionhosting.com. [173.247.247.235])
+        by mx.google.com with ESMTPS id t5si3802730pgb.173.2016.10.11.21.50.18
+        for <timothy.prescott.und@gmail.com>
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Tue, 11 Oct 2016 21:50:19 -0700 (PDT)
+Received-SPF: neutral (google.com: 173.247.247.235 is neither permitted nor denied by best guess record for domain of mcorral@mecmath.net) client-ip=173.247.247.235;
+Received: from c-73-191-129-108.hsd1.mi.comcast.net ([73.191.129.108]:35732 helo=banana.sluggo.net) by biz104.inmotionhosting.com with esmtpa (Exim 4.87) (envelope-from <mcorral@mecmath.net>) id 1buBUe-0006uW-AF for timothy.prescott.und@gmail.com; Tue, 11 Oct 2016 21:50:17 -0700
+Date: Wed, 12 Oct 2016 00:56:58 -0400 (EDT)
+From: Michael Corral <mcorral@mecmath.net>
+X-X-Sender: mcorral@banana.sluggo.net
+To: Timothy Prescott <timothy.prescott.und@gmail.com>
+Subject: Re: using Vector Calculus with a different open license
+In-Reply-To: <CAJv=1OksH0MhTddy9Yu4=BoHo8733_oCjHU8aCUbjv2ZxdY=Rg@mail.gmail.com>
+Message-ID: <alpine.LFD.2.20.1610120051340.7844@banana.sluggo.net>
+References: <CAJv=1OksH0MhTddy9Yu4=BoHo8733_oCjHU8aCUbjv2ZxdY=Rg@mail.gmail.com>
+User-Agent: Alpine 2.20 (LFD 67 2015-01-07)
+X-Mailer: Alpine 2.02 <Fedora 15 x86_64>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; BOUNDARY="-1463747071-1550951339-1476248223=:7844"
+X-OutGoing-Spam-Status: No, score=-1.0
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - biz104.inmotionhosting.com
+X-AntiAbuse: Original Domain - gmail.com
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - mecmath.net
+X-Get-Message-Sender-Via: biz104.inmotionhosting.com: authenticated_id: mcorral@mecmath.net
+X-Authenticated-Sender: biz104.inmotionhosting.com: mcorral@mecmath.net
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+
+---1463747071-1550951339-1476248223=:7844
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
+
+Hello Professor Prescott,
+
+Sorry for the delay in replying, my mailbox gets bombarded with
+spam and it often takes me a while to sift through it all.
+
+Yes, you have my permission to use those sections from my Vector
+Calculus book with the same license as the Apex book.
+
+I'm glad you found that material useful.
+
+Thanks,
+
+Michael Corral
+Schoolcraft College
+
+On 09/28/16, Timothy Prescott wrote:
+> Professor Corral,
+> 
+> The University of North Dakota is in the process of adopting Apex Calculus
+> for our entire calculus sequence.  Unfortunately for us, it does not
+> currently have a chapter on Line and Surface Integrals (it is also missing a
+> section on Lagrange multipliers, and the change of variables formula for
+> multiple integration).  We were wondering if we would be able to use those
+> sections from your Vector Calculus book (along with some of the exercises as
+> well, probably).
+> 
+> I realize that this is currently allowed under the book?s GNU Free
+> Documentation License.  But Apex Calculus uses a CC-BY-NC 4.0 license. 
+> Would you be willing to allow us to use your material with the same license
+> as Apex?
+> 
+> Thank you for your time,
+> 
+> Tim Prescott
+> Associate Professor of Mathematics
+> University of North Dakota
+> 
+>
+---1463747071-1550951339-1476248223=:7844--
+
+\fi

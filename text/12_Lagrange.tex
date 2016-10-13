@@ -27,9 +27,13 @@ The Lagrange multiplier method for solving such problems can now be stated:
  \end{align*}
  find the points $(x,y)$ that solve the equation $\nabla f(x,y) = \lambda \nabla g(x,y)$ for some constant $\lambda$ (the number $\lambda$ is called the \emph{Lagrange multiplier}). If there is a constrained maximum or minimum, then it must be such a point.}
 
-A rigorous proof of the above theorem requires use of the Implicit Function Theorem, which is beyond the scope of this text.\footnote{See \cite[\S\,6.8]{tm} for more detail.} Note that the theorem only gives a \emph{necessary} condition for a point to be a constrained maximum or minimum. Whether a point $(x,y)$ that satisfies $\nabla f(x,y) = \lambda \nabla g(x,y)$ for some $\lambda$ actually \emph{is} a constrained maximum or minimum can \emph{sometimes} be determined by the nature of the problem itself. For instance, in \autoref{exmp_consimple} it was clear that there had to be a global maximum.
+A rigorous proof of the above theorem is well beyond the scope of this text.
+%requires use of the Implicit Function Theorem, which is beyond the scope of this text.\footnote{See \cite[\S\,6.8]{tm} for more detail.}
+Note that the theorem only gives a \emph{necessary} condition for a point to be a constrained maximum or minimum. Whether a point $(x,y)$ that satisfies $\nabla f(x,y) = \lambda \nabla g(x,y)$ for some $\lambda$ actually \emph{is} a constrained maximum or minimum can \emph{sometimes} be determined by the nature of the problem itself. For instance, in \autoref{exmp_consimple} it was clear that there had to be a global maximum.
 
-So how can you tell when a point that satisfies the condition in \autoref{thm:lagrange} really is a constrained maximum or minimum? The answer is that it depends on the constraint function $g(x,y)$, together with any implicit constraints. It can be shown\footnote{Again, see \cite{tm}.} that if the constraint equation $g(x,y)=c$ (plus any hidden constraints) describes a \emph{bounded} set $B$ in $\mathbb{R}^2$, then the constrained maximum or minimum of $f(x,y)$ will occur either at a point $(x,y)$ satisfying $\nabla f(x,y) = \lambda \nabla g(x,y)$ or at a ``boundary'' point of the set $B$.
+So how can you tell when a point that satisfies the condition in \autoref{thm:lagrange} really is a constrained maximum or minimum? The answer is that it depends on the constraint function $g(x,y)$, together with any implicit constraints. It can be shown
+%\footnote{Again, see \cite{tm}.}
+that if the constraint equation $g(x,y)=c$ (plus any hidden constraints) describes a \emph{bounded} set $B$ in $\mathbb{R}^2$, then the constrained maximum or minimum of $f(x,y)$ will occur either at a point $(x,y)$ satisfying $\nabla f(x,y) = \lambda \nabla g(x,y)$ or at a ``boundary'' point of the set $B$.
 
 In \autoref{exmp_consimple} the constraint equation $2x+2y=20$ describes a line in $\mathbb{R}^2$, which by itself is not bounded. However, there are ``hidden'' constraints, due to the nature of the problem, namely $0\le x,y \le 10$, which cause that line to be restricted to a \emph{line segment} in $\mathbb{R}^2$ (including the endpoints of that line segment), which \emph{is} bounded.
 
@@ -114,6 +118,6 @@ $f(5,5)=25$ to $f(5.25,5.25)=27.5625$, i.e. it increased by $2.5625$ when we inc
 equation $g(x,y)=c$ from $c=20$ to $c=21$. Notice that $\lambda = 2.5$ is close to $2.5625$, that is,
 \[\lambda\approx\Delta f=f(\text{new max. pt})-f(\text{old max. pt}).\]
 
-Finally, note that solving the equation $\nabla f(x,y) = \lambda \nabla g(x,y)$ means having to solve a system of two (possibly nonlinear) equations in three unknowns, which as we have seen before, may not be possible to do. And the 3-variable case can get even more complicated. All of this somewhat restricts the usefulness of Lagrange's method to relatively simple functions. Luckily there are many numerical methods for solving constrained optimization problems, though we will not discuss them here.\footnote{See \cite{bss}.}
+Finally, note that solving the equation $\nabla f(x,y) = \lambda \nabla g(x,y)$ means having to solve a system of two (possibly nonlinear) equations in three unknowns, which as we have seen before, may not be possible to do. And the 3-variable case can get even more complicated. All of this somewhat restricts the usefulness of Lagrange's method to relatively simple functions. Luckily there are many numerical methods for solving constrained optimization problems, though we will not discuss them here.%\footnote{See \cite{bss}.}
 
 \printexercises{exercises/12_Lagrange_exercises}

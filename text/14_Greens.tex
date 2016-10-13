@@ -62,7 +62,7 @@ We will now see a way of evaluating the line integral of a \emph{smooth} vector 
  \end{center}
  \end{lxfigure}
  %
- Integrate $P(x,y)$ around $C$ using the representation $C = C_1 \cup C_2$ given by \eqref{green_bottom} and \eqref{green_top}. Since $y = y_1(x)$ along $C_1$ (as $x$ goes from $a$ to $b$) and $y = y_2(x)$ along $C_2$ (as $x$ goes from $b$ to $a$), as we see from \autoref{fig_green_simple}, then we have
+ Integrate $P(x,y)$ around $C$ using the representation $C = C_1 \cup C_2$ given by Equations \eqref{green_bottom} and \eqref{green_top}. Since $y = y_1(x)$ along $C_1$ (as $x$ goes from $a$ to $b$) and $y = y_2(x)$ along $C_2$ (as $x$ goes from $b$ to $a$), as we see from \autoref{fig_green_simple}, then we have
  \begin{align*}
   \oint_C P(x,y)\,dx &= \int_{C_1} P(x,y)\,dx + \int_{C_2} P(x,y)\,dx\\
    &= \int_a^b P(x,y_1(x))\,dx + \int_b^a P(x,y_2(x))\,dx\\
@@ -72,7 +72,7 @@ We will now see a way of evaluating the line integral of a \emph{smooth} vector 
    &= -\int_a^b \int_{y_1(x)}^{y_2(x)} \frac{\partial P(x,y)}{\partial y}\,dy\,dx \text{ (by the Fundamental Theorem of Calculus)}\\[6pt]
    &= -\iint_{R} \frac{\partial P}{\partial y}\,dA .
  \end{align*}
- Likewise, integrate $Q(x,y)$ around $C$ using the representation $C = C_1 \cup C_2$ given by \eqref{green_left} and \eqref{green_right}. Since $x = x_1(y)$ along $C_1$ (as $y$ goes from $d$ to $c$) and $x = x_2(y)$ along $C_2$ (as $y$ goes from $c$ to $d$), as we see from \autoref{fig_green_simple}, then we have
+ Likewise, integrate $Q(x,y)$ around $C$ using the representation $C = C_1 \cup C_2$ given by Equations \eqref{green_left} and \eqref{green_right}. Since $x = x_1(y)$ along $C_1$ (as $y$ goes from $d$ to $c$) and $x = x_2(y)$ along $C_2$ (as $y$ goes from $c$ to $d$), as we see from \autoref{fig_green_simple}, then we have
  \begin{align*}
   \oint_C Q(x,y)\,dy &= \int_{C_1} Q(x,y)\,dy + \int_{C_2} Q(x,y)\,dy\\
    &= \int_d^c Q(x_1(y),y)\,dy + \int_c^d Q(x_2(y),y)\,dy\\
@@ -86,11 +86,11 @@ Putting this together, we have
  \begin{align*}
   \oint_{C}\dotp{f}{dr} &= \oint_C P(x,y)\,dx + \oint_C Q(x,y)\,dy\\[6pt]
    &= -\iint_{R} \frac{\partial P}{\partial y}\,dA + \iint_{R} \frac{\partial Q}{\partial x}\,dA\\[6pt]
-   &= \iint_{R} \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)\,dA .
+   &= \iint_{R} \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)\,dA .\qedhere
  \end{align*}
 \end{proof}
 
-Though we proved Green's Theorem only for a simple region $R$, the theorem can also be proved for more general regions (say, a union of simple regions).\footnote{See \cite[\S\,15.31]{tm} for a discussion of some of the difficulties involved when the boundary curve is ``complicated''.}
+Though we proved Green's Theorem only for a simple region $R$, the theorem can also be proved for more general regions (say, a union of simple regions).%\footnote{See \cite[\S\,15.31]{tm} for a discussion of some of the difficulties involved when the boundary curve is ``complicated''.}
 
 \example{exmp_greenexmp}{Using Green's Theorem}{Evaluate $\oint_{C} (x^2 + y^2 )\,dx + 2xy\,dy$, where $C$ is the boundary (traversed counterclockwise) of the region
   $R = \lbrace\,(x,y): 0 \le x \le 1,2x^2 \le y \le 2x \,\rbrace$.}{%
@@ -128,7 +128,7 @@ Though we proved Green's Theorem only for a simple region $R$, the theorem can a
  \[
   P(x,y) = \frac{-y}{x^2 + y^2} \quad\text{and}\quad Q(x,y) = \frac{x}{x^2 + y^2} ,
  \]
- and let $R =\lbrace\,(x,y): 0 < x^2 + y^2 \le 1\,\rbrace$. For the boundary curve $C:x^2 + y^2 = 1$, traversed counterclockwise, it was shown in Exercise 9(b) in \autoref{sec:line_int_props} that $\oint_{C}\dotp{f}{dr} = 2\pi$. But
+ and let $R =\lbrace\,(x,y): 0 < x^2 + y^2 \le 1\,\rbrace$. For the boundary curve $C:x^2 + y^2 = 1$, traversed counterclockwise, it was shown in Exercise \ref{contra_green}(b) in \autoref{sec:line_int_props} that $\oint_{C}\dotp{f}{dr} = 2\pi$. But
  \[
   \frac{\partial Q}{\partial x} = \frac{y^2 - x^2}{(x^2 + y^2 )^2} = \frac{\partial P}{\partial y} 
   \Rightarrow 
@@ -157,7 +157,7 @@ This would seem to contradict Green's Theorem. However, note that $R$ is not the
  \node [rotate=45] at (-0.3536,0.3536) {\Large $\blacktriangleright$};
  \node [rotate=-45] at (1.4142,1.4142) {\Large $\blacktriangleleft$};
 \end{tikzpicture}}
-If we modify the region $R$ to be the \emph{annulus} $R =\lbrace\,(x,y): 1/4 \le x^2 + y^2 \le 1\,\rbrace$ (see \autoref{fig_annulus}), and take the ``boundary'' $C$ of $R$ to be $C = C_1 \cup C_2$, where $C_1$ is\index{annulus} the unit circle $x^2 + y^2 = 1$ traversed counterclockwise and $C_2$ is the circle $x^2 + y^2 = 1/4$ traversed \emph{clockwise}, then it can be shown (see Exercise 8) that
+If we modify the region $R$ to be the \emph{annulus} $R =\lbrace\,(x,y): 1/4 \le x^2 + y^2 \le 1\,\rbrace$ (see \autoref{fig_annulus}), and take the ``boundary'' $C$ of $R$ to be $C = C_1 \cup C_2$, where $C_1$ is\index{annulus} the unit circle $x^2 + y^2 = 1$ traversed counterclockwise and $C_2$ is the circle $x^2 + y^2 = 1/4$ traversed \emph{clockwise}, then it can be shown (see Exercise \ref{const_closed_int}) that
 \[\oint_{C}\dotp{f}{dr} = 0 .\]
 We would still have $\iint_{R} \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)\,dA= 0$, so for this $R$ we would have
 \[

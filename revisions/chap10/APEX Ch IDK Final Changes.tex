@@ -1,0 +1,134 @@
+\documentclass[11pt]{report}
+\usepackage[letterpaper, total={6.5in, 10in}]{geometry}
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+\usepackage{amsmath, amsthm, mathpazo, epic, eepic, color, array}
+\usepackage{amssymb}
+%\usepackage{graphicx}
+\usepackage{cancel}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\pgfplotsset{compat=1.13}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+\usepackage{hyperref}
+\usepackage[normalem]{ulem}
+
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows, petri, topaths}
+\usepackage{tkz-berge}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+
+\newboolean{colorprint}
+\setboolean{colorprint}{true}
+%\setboolean{colorprint}{false}
+
+\ifthenelse{\boolean{colorprint}}{%
+\newcommand{\colorone}{blue}
+\newcommand{\colortwo}{red}
+\newcommand{\coloronefill}{blue!15!white}
+\newcommand{\colortwofill}{red!15!white}
+\newcommand{\colormapone}{rgb=(.4,.4,1); rgb=(.8,.8,1)}
+\newcommand{\colormaptwo}{rgb=(1,.4,.4); rgb=(1,.8,.8)}
+\newcommand{\colormapplaneone}{rgb=(.7,.7,1); rgb=(.9,.9,1)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,1}
+\definecolor{colormaponetop}{rgb}{.8,.8,1}
+\definecolor{colormaptwobottom}{rgb}{1,.4,.4}
+\definecolor{colormaptwotop}{rgb}{1,.8,.8}
+}% ends color
+{% not color
+\newcommand{\colorone}{black}
+\newcommand{\colortwo}{black!50!white}
+\newcommand{\coloronefill}{black!15!white}
+\newcommand{\colortwofill}{black!05!white}
+\newcommand{\colormapone}{rgb=(.4,.4,.4); rgb=(.7,.7,.7)}
+\newcommand{\colormaptwo}{rgb=(.6,.6,.6); rgb=(.9,.9,.9)}
+\newcommand{\colormapplaneone}{rgb=(.8,.8,.8); rgb=(.95,.95,.95)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,.4}
+\definecolor{colormaponetop}{rgb}{.7,.7,.7}
+\definecolor{colormaptwobottom}{rgb}{.6,.6,.6}
+\definecolor{colormaptwotop}{rgb}{.9,.9,.9}
+}%
+
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+\pgfplotsset{my style/.append style={axis x line=middle, axis y line=
+middle, xlabel={$x$}, ylabel={$y$}, axis equal }}
+
+\pgfplotsset{compat=1.13}
+\newcommand{\ds}{\displaystyle}
+\begin{document}
+
+All page numbers refer to the standalone version of Chapter 10 that you sent me this week.\\
+
+\textbf{Section 1}\\ \\
+
+\textbf{p. 5, line -3}. The text about $r_{avg}$ is better. Could the diagram radii be labeled $R_1 ~\&~ R_2$ and the text read "where $r_{avg}$ is the average of $R_1 ~\&~ R_2$" \sout{of the two radii}?\\
+
+
+\textbf{Section 2}\\ \\
+
+\textbf{p. 12}
+Figure 10.10 \& 10.11 tables: Is it possible to make the vertical line column break a double line or thicker to separate $t$ from $x$ and $y$.\\
+
+\textbf{p. 13, line 2}: first word should be "in" instead of "into".\\
+
+\textbf{p. 12, last line}: $whichisthevertexoff(x)$ should be "which is the vertexof $f(x).$\\
+
+\textbf{pp. 13-14, Examples 3 and 4}: Format the "Solution 1", "Solution 2", etc. like it is in Example 1 of Chapter 8.5.\\
+
+\textbf{p. 14, Example 4}:\\
+In solution 1 is ther a way to force the equation $\ds \biggl(\frac{x}{2}\biggr)^2+ \biggl(\frac{y}{2}\biggr)^2=1$ to all be on one line. The reformatting of the solutions might fix this, otherwise consder $$\biggl(\frac{x}{2}\biggr)^2+ \biggl(\frac{y}{2}\biggr)^2=1$$
+
+In solution 3: delete also in, "We could \sout{also}..."\\
+
+\textbf{p. 14, Example 5}: There is an error in the solution - this is the new solution\\
+Applying the Pythagorean Identity, $\cos^2t+\sin^2t=1$, we set $\ds \cos^2 t =\frac{(x-2)^2}{9}$ and $\ds \sin^2 t=\frac{(y+3)^2}{4}$. Solving these equations for $x$ and $y$ we set $x=-3\cos t+2$ and $y=2\sin t-3$  for $0\leq t\leq 2\pi$.\\ \\
+
+\textbf{p. 14, Example 6}: $\tan^2 t=\frac{(y-3)^2}{4}$ should be in displaystyle $\ds \tan^2 t=\frac{(y-3)^2}{4}$\\
+
+\textbf{p. 21}: I don't think the cycloid section qualifies as an example. Would it be better to put the cyclloid explanation in with Paul's notes on parametric area in section 3?\\
+
+\textbf{Section ?.2, Exercises - reorganized}\\
+If we want the order of the exercises to reflect the order the topics are covered in the text then I suggest the following changes:\\
+The current \#34-46 and 55-63 should all come before the set from \#20-29 with the current \#41-42 inserted between the current \#57 \& 58.\\
+
+
+\textbf{Section 3 LOOKS AWESOME!}
+\vskip .5 truein
+
+\textbf{Section 4, Cleaning up the P's}\\
+
+\textbf{p. 37, end of paragraph 1}: Should the first line be indented?\\
+
+\textbf{p. 37, end of paragraph 3}: \sout{To avoid confusion...Figure 10.27.}\\
+
+\textbf{pp. 38-40, "Polar to Rectangular" section}:\\
+ Delete P in 1st paragraph of this section.\\
+
+In Example 2 part 1 replace P with a point name, $A(2, 2\pi/3)$ and $B(-1, 5\pi/4)$. Use these names in the solution and in Figure 10.30(a).\\ 
+
+In Example 2 part 2 delete the Ps that indicate points - the points are not named with a letter in Figure 10.30(b) so I think just deleting the Ps is ok.\\
+
+\textbf{p. 41, Example 4} has one P to delete. If you think clarification is needed about 
+the point $(2,0)$ being polar you could insert "polar" in that sentence.\\
+
+\textbf{p. 47, Example 7}: I missed an = that needs to be an $\approx$ in the last line of the solution, should be $\approx 250.53^\circ$\\
+
+\textbf{p. 48, Cleaning up the P's in the Exercises}: In \#5-6 \& 9-10 use A, B, C, D to label points without the $P=$\\
+
+\textbf{Section ?.4, p. 53}: The first paragraph is (or was it you already cut it) a repeat of the last paragraph on p. 52.\\
+
+\end{document}
+

@@ -36,14 +36,14 @@ if  $\abs{x-c}<\delta$, then $\abs{f(x)-L}<\epsilon$.
 
 Practically speaking, when evaluating a left-hand limit, we consider only values of $x$ ``to the left of $c$,'' i.e., where $x<c$. The admittedly imperfect notation $x\to c^-$ is used to imply that we look at values of $x$ to the left of $c$. The notation has nothing to do with positive or negative values of either $x$ or $c$. A similar statement holds for evaluating right-hand limits; there we consider only values of $x$ to the right of $c$, i.e., $x>c$. We can use the theorems from previous sections to help us evaluate these limits; we just restrict our view to one side of $c$.
 
-\khanVideo{nOnd3SiYZqM}{one-sided-limits-from-graphs}{\textbf{One-sided limits from graphs:} Here we use graphs to find the limit of a function as you approach a point from just one side}
+\youtubeVideo{nOnd3SiYZqM}{One-sided limits from graphs}
 
-We practice evaluating left and right-hand limits through a series of examples.\\
+We practice evaluating left and right-hand limits through a series of ex\-am\-ples.
 
 \example{ex_onesidea}{Evaluating one sided limits}{Let $\ds f(x) = \begin{cases} 2x & 0\leq x\leq 1 \\ 6-2x & 1<x<2\end{cases},$ as shown in \autoref{fig:onesided1}. Find each of the following: 
 
 \mtable{A graph of $f$ in \autoref{ex_onesidea}.}{fig:onesided1}{\begin{tikzpicture}
-\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},minor x tick num=1,axis y line=middle,axis x line=middle,ymin=-.4,ymax=4.4,xmin=-.4,xmax=2.4,name=myplot]
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},minor x tick num=1,axis y line=middle,axis x line=middle,ymin=-.4,ymax=4.4,xmin=-.4,xmax=2.4,name=myplot]
 \addplot [{\colorone},smooth,thick] coordinates {(0,0) (1,2)};
 \fill[black,draw=black] (axis cs:1,2) circle (1.5pt);
 \fill[black,draw=black] (axis cs:0,0) circle (1.5pt);
@@ -91,7 +91,7 @@ Note how the left and right-hand limits were different at $x=1$. This, of course
 
 The phrase ``if, and only if'' means the two statements are \textit{equivalent}: they are either both true or both false. If the limit equals $L$, then the left and right hand limits both equal $L$. If the limit is not equal to $L$, then at least one of the left and right-hand limits is not equal to $L$ (it may not even exist).
 			
-One thing to consider in Examples \ref{ex_onesidea} -- \ref{ex_onesided} is that the value of the function may/may not be equal to the value(s) of its left/right-hand limits, even when these limits agree. \\
+One thing to consider in Examples \ref{ex_onesidea} -- \ref{ex_onesided} is that the value of the function may or may not be equal to the value(s) of its left- or right-hand limits, even when these limits agree.
 
 \example{ex_onesideb}{Evaluating limits of a piecewise--defined function}{Let $f(x) = \begin{cases} 2-x & 0<x<1 \\ (x-2)^2 & 1<x<2 \end{cases},$ as shown in \autoref{fig:onesidedb}. Evaluate the following.\\
 \noindent
@@ -163,13 +163,36 @@ One thing to consider in Examples \ref{ex_onesidea} -- \ref{ex_onesided} is that
 	\item	As $x$ approaches 1 from the right, $f(x)$ is defined to be $2-x$. Therefore \[\lim_{x\to 1+} f(x)=\lim_{x\to 1+} 2-x=1.\]
 	\item	Since the right and left hand limits are equal at $x=1$, i.e., $\ds \lim_{x\to1^-} f(x)=\ds \lim_{x\to1^+} f(x)=1$, this tells us $\ds \lim_{x\to1} f(x)=1$.
 	\item	To find $f(1)$, we use the $x^2$ piece of our function, so $f(1)=1$.\eoehere
-\end{enumerate}
+\end{enumerate}%
 %It is clear from the definition of the function and its graph that all of the following are equal:
 %\mfigure{0in}{Graphing $f$ in \autoref{ex_onesided}}{fig:onesidedd}{figures/figOneSidedLimits4}
 %$$ \lim_{x\to 1^-} f(x) = \lim_{x\to 1^+} f(x) =\lim_{x\to 1} f(x) =f(1) = 1.$$
 }
 
-In Examples \ref{ex_onesidea} -- \ref{ex_onesided} we were asked to find both $\ds \lim_{x\to 1}f(x)$ and $f(1)$. Consider the following table:
+\example{ex_absvalue}{Evaluating limits of an absolute value function}
+{Let $f(x) =\dfrac{\abs{x-1}}{x-1}.$ Evaluate the following.\\
+\begin{minipage}[t]{.5\textwidth}
+	\begin{enumerate}
+		\item	$\ds \lim_{x\to 1^-} f(x)$
+		\item	$\ds \lim_{x\to 1^+} f(x)$
+	\end{enumerate}
+\end{minipage}%
+\begin{minipage}[t]{.5\textwidth}
+	\begin{enumerate}\addtocounter{enumi}{2}
+		\item	$\ds \lim_{x\to 1} f(x)$
+		\item	$f(1)$
+	\end{enumerate}
+\end{minipage}}
+{We begin by rewriting $\abs{x-1}$ as a piecewise function.
+\[\abs{x-1}=\begin{cases}x-1 & x\geq 1 \\ -(x-1) & x\leq 1\end{cases}\]
+\begin{enumerate}
+\item	$\ds \lim_{x\to 1^-} f(x)=\lim_{x\to 1^-}\frac{-(x-1)}{x-1}=\lim_{x\to 1^-}-1=-1$
+\item	$\ds \lim_{x\to 1^+} f(x)=\lim_{x\to 1^+}\frac{x-1}{x-1}=\lim_{x\to 1^+}1=1$
+\item 	$\ds \lim_{x\to 1} f(x)$ does not exist because the left and right hand limits are not equal.
+\item $f(1)$ is undefined.\eoehere
+\end{enumerate}}
+
+In Examples \ref{ex_onesidea} -- \ref{ex_absvalue} we were asked to find both $\ds \lim_{x\to 1}f(x)$ and $f(1)$. Consider the following table:
 \begin{center}
 \begin{tabular}{ccc}
  & $\ds \lim_{x\to 1}f(x)$ & $f(1)$ \\ \midrule
@@ -177,6 +200,7 @@ In Examples \ref{ex_onesidea} -- \ref{ex_onesided} we were asked to find both $\
 \autoref{ex_onesideb} & 1 & not defined \\
 \autoref{ex_onesidec} & 0 & 1 \\
 \autoref{ex_onesided} & 1 & 1 \\
+\autoref{ex_absvalue} & does not exist & not defined
 \end{tabular}
 \end{center}
 

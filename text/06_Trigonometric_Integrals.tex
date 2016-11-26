@@ -9,9 +9,9 @@ Trigonometric functions are useful for describing periodic behavior. This sectio
 
 In learning the technique of Substitution, we saw the integral $\int \sin x\cos x\ dx$ in \autoref{ex_sub10}. The integration was not difficult, and one could easily evaluate the indefinite integral by letting $u=\sin x$ or by letting $u = \cos x$. This integral is easy since the power of both sine and cosine is 1.
 
-%\enlargethispage{2\baselineskip}
-
 We generalize this integral and consider integrals of the form $\int \sin^mx\cos^nx\ dx$, where $m,n$ are nonnegative integers. Our strategy for evaluating these integrals is to use the identity $\cos^2x+\sin^2x=1$ to convert high powers of one trigonometric function into the other, leaving a single sine or cosine term in the integrand. We summarize the general technique in the following Key Idea.
+
+\youtubeVideo{zyg9k1je7Fg}{Trigonometric Integrals --- Part 2 of 6}
 
 \setboxwidth{60pt}
 \keyidea{idea:trig_int_1}{Integrals Involving Powers of Sine and Cosine}
@@ -31,8 +31,6 @@ We generalize this integral and consider integrals of the form $\int \sin^mx\cos
 	to reduce the degree of the integrand. Expand the result and apply the principles of this Key Idea again.
 	\end{enumerate}}
 
-\youtubeVideo{zyg9k1je7Fg}{Trigonometric Integrals --- Part 2 of 6}
-
 We practice applying \autoref{idea:trig_int_1} in the next examples.
 
 \example{ex_trigint1}{Integrating powers of sine and cosine}{Evaluate $\ds\int\sin^5x\cos^8x\ dx$.}
@@ -40,7 +38,7 @@ We practice applying \autoref{idea:trig_int_1} in the next examples.
 
 Our integral is now $\ds \int (1-\cos^2x)^2\cos^8x\sin x\ dx$. Let $u = \cos x$, hence $du = -\sin x\ dx$. Making the substitution and expanding the integrand gives
 \begin{align*}
- \int (1-\cos^2)^2\cos^8x\sin x\ dx
+ \int (1-\cos^2x)^2\cos^8x\sin x\ dx
  &= -\int (1-u^2)^2u^8\ du \\
  &= -\int \big(1-2u^2+u^4\big)u^8\ du \\
  &= -\int \big(u^8-2u^{10}+u^{12}\big)\ du \\
@@ -70,13 +68,13 @@ Now substitute and integrate, using $u = \sin x $ and $du = \cos x\ dx$.
  &= \frac16\sin^6 x-\frac12\sin^8 x+\frac35\sin^{10} x-\frac13\sin^{12} x+\frac{1}{14}\sin^{14} x+C.\eoehere
 \end{align*}}
 
-\paragraph{Technology Note:} The work we are doing here can be a bit tedious, but the skills developed (problem solving, algebraic manipulation, etc.) are important. Nowadays problems of this sort are often solved using a computer algebra system. The powerful program \textit{Mathematica}\textsuperscript{\textregistered} integrates $\int \sin^5x\cos^9x\ dx$ as
+\paragraph{Technology Note:} The work we are doing here can be a bit tedious, but the skills developed (problem solving, algebraic manipulation, etc.) are important. Nowadays problems of this sort are often solved using a computer algebra system. The powerful program \textit{Mathematica}\textsuperscript{\textregistered} integrates $\int \sin^5x\cos^9x\ dx$ as\\
 \flushinnerequ{\small$$
  f(x)
  =-\frac{45 \cos (2 x)}{16384}-\frac{5 \cos (4 x)}{8192}+\frac{19 \cos (6
    x)}{49152}+\frac{\cos (8 x)}{4096}-\frac{\cos (10 x)}{81920}-\frac{\cos (12
    x)}{24576}-\frac{\cos (14 x)}{114688},
-$$\normalsize}
+$$\normalsize}\\
 which clearly has a different form than our answer in \autoref{ex_trigint2}, which is
 \[
  g(x)=\frac16\sin^6 x-\frac12\sin^8 x+\frac35\sin^{10} x-\frac13\sin^{12} x+\frac{1}{14}\sin^{14} x.
@@ -91,7 +89,7 @@ which clearly has a different form than our answer in \autoref{ex_trigint2}, whi
 \begin{align*}
 	\int \sin^2x\ dx
 	&= \int \frac{1-\cos(2x)}2\ dx \\
-	&= \frac12\int 1-\sin(2x)\ dx \\
+	&= \frac12\int 1-\cos(2x)\ dx \\
 	&= \frac12\left(x - \frac12\sin(2x)\right)+C \\
 	&= \frac12x - \frac14\sin(2x) + C.\eoehere
 \end{align*}}
@@ -207,7 +205,7 @@ u&= \sec x & dv&=\sec^2 x\ dx\\
 du&= \sec x\tan x\ dx & v&=\tan x
 \end{aligned}
 \]
-\captionof{figure}{Setting up Integration by Parts.}\label{fig:trigint1}
+\caption{Setting up Integration by Parts.}\label{fig:trigint1}
 \end{lxfigure}
 
 Employing Integration by Parts, we have

@@ -55,108 +55,128 @@ The results of \autoref{thm:deriv_inverse_functions} are not trivial; the notati
 
 In the next example we apply \autoref{thm:deriv_inverse_functions} to the arcsine function.
 
-\example{ex_deriv_arcsin}{Finding the derivative of an inverse trigonometric function}{Let $y = \arcsin x = \sin^{-1} x$. Find $y\primeskip'$ using \autoref{thm:deriv_inverse_functions}.}
-{Adopting our previously defined notation, let $g(x) = \arcsin x$ and $f(x) = \sin x$. Thus $\fp(x) = \cos x$. Applying \autoref{thm:deriv_inverse_functions}, we have 
+\example{ex_deriv_arcsin}{Finding the derivative of an inverse trigonometric function}{Let $y = \sin^{-1} x$. Find $y\primeskip'$ using \autoref{thm:deriv_inverse_functions}.}
+{Adopting our previously defined notation, let $g(x) = \sin^{-1} x$ and $f(x) = \sin x$. Thus $\fp(x) = \cos x$. Applying \autoref{thm:deriv_inverse_functions}, we have 
 \begin{align*}
 	g\primeskip'(x) &= \frac{1}{\fp(g(x))} \\
-	&= \frac{1}{\cos(\arcsin x)}.
+	&= \frac{1}{\cos(\sin^{-1}x)}.
 \end{align*}
 			
-This last expression is not immediately illuminating. Drawing a figure will help, as shown in \autoref{fig:inverse3}. Recall that the sine function can be viewed as taking in an angle and returning a ratio of sides of a right triangle, specifically, the ratio ``opposite over hypotenuse.'' This means that the arcsine function takes as input a ratio of sides and returns an angle. The equation $y=\arcsin x$ can be rewritten as $y=\arcsin (x/1)$; that is, consider a right triangle where the hypotenuse has length 1 and the side opposite of the angle with measure $y$ has length $x$. This means the final side has length $\sqrt{1-x^2}$, using the Pythagorean Theorem.
-
-\bigskip
 \mfigure{0in}{A right triangle defined by $y=\sin ^{-1}(x/1)$ with the length of the third leg found using the Pythagorean Theorem.}{fig:inverse3}{figures/figinverse3}
 
-Therefore $\cos (\sin^{-1} x) = \cos y = \sqrt{1-x^2}/1 = \sqrt{1-x^2}$, resulting in $$\frac d{dx}\big(\arcsin x\big)=g\primeskip'(x)=\frac1{\sqrt{1-x^2}}.\eoehere$$}
+This last expression is not immediately illuminating. Drawing a figure will help, as shown in \autoref{fig:inverse3}. Recall that the sine function can be viewed as taking in an angle and returning a ratio of sides of a right triangle, specifically, the ratio ``opposite over hypotenuse.'' This means that the arcsine function takes as input a ratio of sides and returns an angle. The equation $y=\sin^{-1} x$ can be rewritten as $y=\sin^{-1}(x/1)$; that is, consider a right triangle where the hypotenuse has length 1 and the side opposite of the angle with measure $y$ has length $x$. This means the final side has length $\sqrt{1-x^2}$, using the Pythagorean Theorem.
+
+Therefore $\cos (\sin^{-1} x) = \cos y = \sqrt{1-x^2}/1 = \sqrt{1-x^2}$, resulting in $$\frac d{dx}\big(\sin^{-1}x\big)=g\primeskip'(x)=\frac1{\sqrt{1-x^2}}.\eoehere$$}
 
 Remember that the input $x$ of the arcsine function is a ratio of a side of a right triangle to its hypotenuse; the absolute value of this ratio will be less than 1. Therefore $1-x^2$ will be positive.
 
-In order to make $y=\sin x$ one-to-one, we restrict its domain to $[-\pi/2,\pi/2]$; on this domain, the range is $[-1,1]$. Therefore the domain of $y=\arcsin x$ is $[-1,1]$ and the range is $[-\pi/2,\pi/2]$. When $x=\pm 1$, note how the derivative of the arcsine function is undefined; this corresponds to the fact that as $x\to \pm1$, the tangent lines to arcsine approach vertical lines with undefined slopes.
-
-
 \mfigure{0in}{Graphs of $\sin x$ and $\sin^{-1}x$ along with corresponding tangent lines.}{fig:inverse4}{figures/figinverse4}
+
+In order to make $y=\sin x$ one-to-one, we restrict its domain to $[-\pi/2,\pi/2]$; on this domain, the range is $[-1,1]$. Therefore the domain of $y=\sin^{-1}x$ is $[-1,1]$ and the range is $[-\pi/2,\pi/2]$. When $x=\pm 1$, note how the derivative of the arcsine function is undefined; this corresponds to the fact that as $x\to \pm1$, the tangent lines to arcsine approach vertical lines with undefined slopes.
 
 %\mfigure{0in}{Graphs of $\sin x$ and $\sin^{-1}x$}{fig:inverse4b}{figures/figinverse4}
 
-In \autoref{fig:inverse4} we see $f(x) = \sin x$ and $f\primeskip^{-1} = \sin^{-1} x$ graphed on their respective domains. The line tangent to $\sin x$ at the point $(\pi/3, \sqrt{3}/2)$ has slope $\cos \pi/3 = 1/2$. The slope of the corresponding point on $\sin^{-1}x$, the point $(\sqrt{3}/2,\pi/3)$, is $$\frac{1}{\sqrt{1-(\sqrt{3}/2)^2}} = \frac{1}{\sqrt{1-3/4}} = \frac{1}{\sqrt{1/4}} = \frac{1}{1/2}=2,$$ verifying yet again that at corresponding points.\bigskip
+In \autoref{fig:inverse4} we see $f(x) = \sin x$ and $f\primeskip^{-1}(x)=\sin^{-1} x$ graphed on their respective domains. The line tangent to $\sin x$ at the point $(\pi/3, \sqrt{3}/2)$ has slope $\cos \pi/3 = 1/2$. The slope of the corresponding point on $\sin^{-1}x$, the point $(\sqrt{3}/2,\pi/3)$, is $$\frac{1}{\sqrt{1-(\sqrt{3}/2)^2}} = \frac{1}{\sqrt{1-3/4}} = \frac{1}{\sqrt{1/4}} = \frac{1}{1/2}=2,$$ verifying yet again that at corresponding points.\bigskip
 %, a function and its inverse have reciprocal slopes.\\
+% todo not a sentence
 
-Using similar techniques, we can find the derivatives of all the inverse trig\-o\-no\-metric functions. In \autoref{fig:domain_trig} we show the restrictions of the domains of the standard trigonometric functions that allow them to be invertible.
-
-\begin{lxfigure}
-\small\noindent
-\flushinner{%
-\begin{tabular}{ccc @{\hspace{2em}} ccc}
-Function & Domain & Range &\parbox[b]{40pt}{\centering Inverse Function} & Domain & Range\\ \cmidrule(r{2em}){1-3}\cmidrule(l{-1em}){4-6}
-$\sin x$ & $[-\pi/2,\pi/2]$ & $[-1,1]$&$\sin^{-1}x$ & $[-1,1]$ & $[-\pi/2,\pi/2]$ \\
-$\cos x$ & $[0,\pi]$ & $[-1,1]$&$\cos^{-1}(x)$ & $[-1,1]$ & $[0,\pi]$ \\
-$\tan x$ & $(-\pi/2,\pi/2)$ & $(-\infty,\infty)$&$\tan^{-1}(x)$ & $(-\infty,\infty)$ & $(-\pi/2,\pi/2)$	\\
-$\csc x$ & $[-\pi/2,0)\cup (0, \pi/2]$ & $(-\infty,-1]\cup [1,\infty)$&$\csc^{-1} x$ & $(-\infty,-1]\cup [1,\infty)$ & $[-\pi/2,0)\cup (0, \pi/2]$  \\
-$\sec x$ & $[0,\pi/2)\cup (\pi/2,\pi]$ & $(-\infty,-1]\cup [1,\infty)$&$\sec^{-1}(x)$ & $(-\infty,-1]\cup [1,\infty)$ & $[0,\pi/2)\cup (\pi/2,\pi]$ \\
-$\cot x$ & $(0,\pi)$ & $(-\infty,\infty)$&$\cot^{-1}(x)$ &  $ (-\infty,\infty)$ & $(0,\pi)$	
-\end{tabular}}
-\captionsetup{type=figure}
-\caption{Domains and ranges of the trigonometric and inverse trigonometric functions.}\label{fig:domain_trig}
-\end{lxfigure}
-
-%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%
-%%% The following is for preservation for a longpage edition sometime
-%%%%%%%%%%%%%%%%%%%%
-%%\begin{tabular}{ccc}
-%%Function & Domain & Range \\ \hline
-%%\rule{0pt}{12pt} $\sin x$ & $[-\pi/2, \pi/2]$ & $[-1,1]$ \\
-%%\rule{0pt}{12pt}$\cos x$ & $[0,\pi]$ & $[-1,1]$ \\
-%%\rule{0pt}{12pt}$\tan x$ & $(-\pi/2,\pi/2)$ & $(-\infty,\infty)$	\\
-%%\rule{0pt}{12pt} $\csc x$ & $[-\pi/2,0)\cup (0, \pi/2]$ & $(-\infty,-1]\cup [1,\infty)$ \\
-%%\rule{0pt}{12pt}$\sec x$ & $[0,\pi/2)\cup (\pi/2,\pi]$ & $(-\infty,-1]\cup [1,\infty)$ \\
-%%\rule{0pt}{12pt}$\cot x$ & $(0,\pi)$ & $(-\infty,\infty)$	
-%%\end{tabular}
-%%%\end{minipage}
-%%%\begin{minipage}[t]{.5\textwidth}
-%%%\bigskip
-%%\h skip 10pt
-%%\begin{tabular}{ccc}
-%%\parbox[b]{40pt}{\centering Inverse Function} & Domain & Range \\ \hline
-%%\rule{0pt}{12pt} $\sin^{-1} x$ & $[-1,1]$ & $[-\pi/2, \pi/2]$ \\
-%%\rule{0pt}{12pt}$\cos^{-1}(x)$ & $[-1,1]$ & $[0,\pi]$\\
-%%\rule{0pt}{12pt}$\tan^{-1}(x)$ & $(-\infty,\infty)$ & $(-\pi/2,\pi/2)$\\
-%%\rule{0pt}{12pt} $\csc^{-1} x$ & $(-\infty,-1]\cup [1,\infty)$ & $[-\pi/2,0)\cup (0, \pi/2]$  \\
-%%\rule{0pt}{12pt}$\sec^{-1}(x)$ & $(-\infty,-1]\cup [1,\infty)$ & $[0,\pi/2)\cup (\pi/2,\pi]$\\
-%%\rule{0pt}{12pt}$\cot^{-1}(x)$ &  $ (-\infty,\infty)$ & $(0,\pi)$
-%%\end{tabular}
-
-
+Using similar techniques, we can find the derivatives of all the inverse trig\-o\-no\-metric functions after first restricting their domains according to \autoref{fig:domain_trig} to allow them to be invertible.
 
 \theorem{thm:deriv_inverse_trig}{Derivatives of Inverse Trigonometric Functions}
 {The inverse trigonometric functions are differentiable on all open sets contained in their domains (as listed in \autoref{fig:domain_trig}) and their derivatives are as follows:\\
 \begin{minipage}{.5\specialboxlength}\small
 	\begin{enumerate}
-		\item	$\ds \frac{d}{dx}\big(\sin^{-1}(x)\big) = \frac{1}{\sqrt{1-x^2}}$ 
-		\item	$\ds \frac{d}{dx}\big(\sec^{-1}(x)\big) = \frac{1}{\abs{x}\sqrt{x^2-1}}$
-		\item	$\ds \frac{d}{dx}\big(\tan^{-1}(x)\big) = \frac{1}{1+x^2}$
+		\item	$\ds\frac d{dx}\big(\sin^{-1}x\big)= \frac1{\sqrt{1-x^2}}$ 
+		\item	$\ds\frac d{dx}\big(\sec^{-1}x\big)= \frac1{\abs{x}\sqrt{x^2-1}}$
+		\item	$\ds\frac d{dx}\big(\tan^{-1}x\big)= \frac1{1+x^2}$
 	\end{enumerate}
 	\end{minipage}%
 	\begin{minipage}{.5\specialboxlength}\small
 	\begin{enumerate}\addtocounter{enumi}{3}
-		\item	$\ds \frac{d}{dx}\big(\cos^{-1}(x)\big) = -\frac{1}{\sqrt{1-x^2}}$ 
-		\item	$\ds \frac{d}{dx}\big(\csc^{-1}(x)\big) = -\frac{1}{\abs{x}\sqrt{x^2-1}}$
-		\item	$\ds \frac{d}{dx}\big(\cot^{-1}(x)\big) = -\frac{1}{1+x^2}$
+		\item	$\ds\frac d{dx}\big(\cos^{-1}x\big)=-\frac1{\sqrt{1-x^2}}$ 
+		\item	$\ds\frac d{dx}\big(\csc^{-1}x\big)=-\frac1{\abs{x}\sqrt{x^2-1}}$
+		\item	$\ds\frac d{dx}\big(\cot^{-1}x\big)=-\frac1{1+x^2}$
 	\end{enumerate}\index{derivative!inverse trig.}
 	\normalsize
 \end{minipage}}			
 
-Note how the last three derivatives are merely the negatives of the first three, respectively. Because of this, the first three are used almost exclusively throughout this text.\bigskip % ``negatives'' was ``opposites''
+Note how the last three derivatives are merely the negatives of the first three, respectively. Because of this, the first three are used almost exclusively throughout this text.
 
-In \autoref{sec:basic_diff_rules}, we stated without proof or explanation that $\ds \frac{d}{dx}\big(\ln x\big) = \frac{1}{x}$. We can justify that now using \autoref{thm:deriv_inverse_functions}, as shown in the example.
+%In \autoref{sec:basic_diff_rules}, we stated without proof or explanation that $\ds \frac{d}{dx}\bigl(\ln x\bigr) = \frac1x$. We can justify that now using \autoref{thm:deriv_inverse_functions}, as shown in the example.
+%
+%\example{ex_deriv_lnx}{Finding the derivative of $y=\ln x$}{Use \autoref{thm:deriv_inverse_functions} to compute $\ds \frac{d}{dx}\big(\ln x\big)$.}
+%{View $y= \ln x$ as the inverse of $y = e^x$. Therefore, using our standard notation, let $f(x) = e^x$ and $g(x) = \ln x$. We wish to find $g\primeskip'(x)$. \autoref{thm:deriv_inverse_functions} gives:
+%\begin{align*}
+%	g\primeskip'(x)
+%	&= \frac1{\fp(g(x))} \\
+%	&= \frac1{e^{\ln x}} \\
+%	&= \frac1x.\eoehere
+%\end{align*}}
 
-\example{ex_deriv_lnx}{Finding the derivative of $y=\ln x$}{Use \autoref{thm:deriv_inverse_functions} to compute $\ds \frac{d}{dx}\big(\ln x\big)$.}
-{View $y= \ln x$ as the inverse of $y = e^x$. Therefore, using our standard notation, let $f(x) = e^x$ and $g(x) = \ln x$. We wish to find $g\primeskip'(x)$. \autoref{thm:deriv_inverse_functions} gives:
+\example{eg_inv_derivs}{Finding derivatives of inverse functions}{Find the derivatives of the following functions:
+\[
+ \text{1.}\quad f(x)=\cos^{-1}(x^2)\qquad
+ \text{2.}\quad g(x)=\frac{\sin^{-1}x}{\sqrt{1-x^2}}\qquad
+ \text{3.}\quad f(x)=\sin^{-1}(\cos x)
+\]}{\begin{enumerate}
+\item We use \autoref{thm:deriv_inverse_trig} and the Chain Rule to find: % todo
+\[\fp(x)=-\frac{1}{\sqrt{1-x^2}}(2x)=- \frac{2x}{\sqrt{1-x^2}}\]
+\item We use \autoref{thm:deriv_inverse_trig} and the Quotient Rule to compute: 
 \begin{align*}
-	g\primeskip'(x) &= \frac{1}{\fp(g(x))} \\
-	&=	\frac{1}{e^{\ln x}}\rule{0pt}{15pt} \\
-	&= \frac{1}{x}.\rule{0pt}{17pt}\eoehere
-\end{align*}}
+ g\primeskip'(x)
+ &=\frac{\left(\frac 1{\sqrt{1-x^2}}\right)\sqrt{1-x^2} - (\sin^{-1} x)\left( \frac 1{2\sqrt{1-x^2}} (-2x)\right)}{\sqrt{1-x^2}^2}\\
+ &=\frac{\sqrt{1-x^2}+x\sin^{-1}x}{\sqrt{1-x^2}^3}
+\end{align*}
+\item We apply \autoref{thm:deriv_inverse_trig} and the Chain Rule again to compute:
+\begin{align*}
+ \fp(x)&=\frac{1}{\sqrt{1-\cos^2x}}(-\sin x)\\
+ &=\frac{-\sin x}{\sqrt{\sin^2x}}\\
+ &=\frac{-\sin x}{\sin x}\\
+ &=-1.\eoehere
+\end{align*}
+\end{enumerate}}
+
+\autoref{thm:deriv_inverse_trig} allows us to integrate some functions that we could not integrate before. For example,
+\[\int\frac{dx}{\sqrt{1-x^2}}=\sin^{-1}x+C.\]
+Combining these formulas with $u$-substitution yields the following:
+
+\theorem{thm:int_inverse_trig}{Integrals Involving Inverse Trigonometric Functions}
+{Let $a>0$.
+\begin{enumerate}
+	\item	$\ds\int\frac1{a^2+x^2}\ dx=\frac1a\tan^{-1}\left(\frac xa\right) + C$
+	\item	$\ds\int\frac1{\sqrt{a^2-x^2}}\ dx=\sin^{-1}\left(\frac xa\right)+C$
+	\item	$\ds\int\frac1{x\sqrt{x^2-a^2}}\ dx=\frac1a\sec^{-1}\left(\frac{\abs x}a\right)+C$
+\end{enumerate}}
+
+We will look at the second part of this theorem. The other parts are similar and are left as exercises.
+
+First we note that the integrand involves the number $a^2$, but does not explicitly involve $a$. We make the assumption that $a>0$ in order to simplify what follows. We can rewrite the integral as follows:
+\[\int\frac{dx}{\sqrt{a^2-x^2}}=\int\frac{dx}{\sqrt{a^2(1-(x/a)^2)}}=\int\frac{dx}{a\sqrt{1-(x/a)^2}}\]
+We next use the substitution $u=x/a$ and $du=dx/a$ to find: 
+\begin{align*}
+\int\frac{dx}{a\sqrt{1-(x/a)^2}}
+&=\int\frac{a}{a\sqrt{1-u^2}}\ du\\
+&=\int \frac{du}{\sqrt{1-u^2}}\\
+&=\sin^{-1}u+C\\
+&=\sin^{-1}(x/a)+C
+\end{align*}
+
+We conclude this section with several examples.
+
+\example{eg_inv_deriv_harder}{Finding antiderivatives involving inverse functions}{Find the following integrals.
+\[
+ \text{1.}\quad\int\frac{dx}{100+x^2}\qquad
+ \text{2.}\quad\int\frac{\sin^{-1} x}{\sqrt{1-x^2}}\ dx\qquad
+ \text{3.}\int\frac{dx}{x^2+2x+5}
+\]}{\begin{enumerate}
+\item $\ds\int\frac{dx}{100+x^2}=\int\frac{dx}{10^2+x^2}=\frac1{10}\tan^{-1}(x/10)+C$
+\item We use the substitution $u=\sin^{-1}x$ and $du=\frac{dx}{\sqrt{1-x^2}}$ to find:
+\[\int\frac{\sin^{-1}x}{\sqrt{1-x^2}}=\int u\ du=\frac12 u^2+C=\frac 12\sin^{-1}x+C\]
+\item This does not immediately look like one of the forms in \autoref{thm:int_inverse_trig}, but we can complete the square in the denominator to see that
+\[\int\frac{dx}{x^2+2x+5} =\int\frac{dx}{(x^2+2x+1)+4}=\int\frac{dx}{4+(x+1)^2}\]
+We now use the substitution $u=x+1$ and $du=dx$ to find:
+\[\int\frac{dx}{4+(x+1)^2} =\int\frac{du}{4+u^2}=\frac12 \tan^{-1}(u/2)+C =\frac 12\tan^{-1}\left(\frac{x+1}2\right)+C.\eoehere\]
+\end{enumerate}}
 
 % moved to end of implicit differentiation.  but do we want to give it again?
 %In this chapter we have defined the derivative, given rules to facilitate its computation, and given the derivatives of a number of standard functions. We restate the most important of these in the following theorem, intended to be a reference for further work.

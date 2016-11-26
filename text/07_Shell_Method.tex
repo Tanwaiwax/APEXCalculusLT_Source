@@ -7,7 +7,7 @@ The previous section introduced the Disk and Washer Methods, which computed the 
 \mtable[-.5in]{Introducing the Shell Method.}{fig:shell_intro}{%
 \noindent\begin{tabular}{c}
   \begin{tikzpicture}
-   \begin{axis}[width=\marginparwidth+25pt,
+   \begin{axis}[width=1.16\marginparwidth,
      tick label style={font=\scriptsize},axis y line=middle,
      axis x line=middle,name=myplot,axis on top,
      ymin=-.2,ymax=1.2,xmin=-.2,xmax=1.2]
@@ -126,7 +126,7 @@ Let's practice using the Shell Method.
 Find the volume of the solid formed by rotating the region bounded by $y=0$, $y=1/(1+x^2)$, $x=0$ and $x=1$ about the $y$-axis.}
 {This is the region used to introduce the Shell Method in \autoref{fig:shell_intro}, but is sketched again in \autoref{fig:shell1} for closer reference.
 %
-\mfigure{-1in}{Graphing a region in \autoref{ex_shell1}.}{fig:shell1}{figures/figshell1}
+\mfigure{-.5in}{Graphing a region in \autoref{ex_shell1}.}{fig:shell1}{figures/figshell1}
 %
 A line is drawn in the region parallel to the axis of rotation representing a shell that will be carved out as the region is rotated about the $y$-axis.
 
@@ -147,27 +147,25 @@ Note: in order to find this volume using the Disk Method, two integrals would be
 With the Shell Method, nothing special needs to be accounted for to compute the volume of a solid that has a hole in the middle, as demonstrated next.
 
 \mtable[-3in]{Graphing a region in \autoref{ex_shell2}.}{fig:shell2}{%
-\begin{tabular}{c}
-\myincludegraphics{figures/figshell2a}\\
-(a)\\ \\
+\myincludegraphics{figures/figshell2a}
+\\(a)\smallskip\\
 \myincludegraphicsthree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
 3Droll=138.26595091591264,
 3Dortho=0.0048407199792563915,
 3Dc2c=0.16831636428833008 0.19470007717609406 0.966313362121582,
 3Dcoo=74.36175537109375 71.21556854248047 -40.660457611083984,
 3Droo=149.9999886313645,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{}{figures/figshell2b}\\
-%\myincludegraphics{figures/figshell2b}\\
-(b)\\ \\
+3Dlights=Headlamp,add3Djscript=asylabels.js}{}{figures/figshell2b}
+%\myincludegraphics{figures/figshell2b}
+\\(b)\smallskip\\
 \myincludegraphicsthree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
 3Droll=138.26595091591264,
 3Dortho=0.0048407199792563915,
 3Dc2c=0.16831636428833008 0.19470007717609406 0.966313362121582,
 3Dcoo=74.36175537109375 71.21556854248047 -40.660457611083984,
 3Droo=149.9999886313645,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{}{figures/figshell2c}\\
-(c)
-\end{tabular}}
+3Dlights=Headlamp,add3Djscript=asylabels.js}{}{figures/figshell2c}
+\\(c)}
 
 \example{ex_shell2}{Finding volume using the Shell Method}{Find the volume of the solid formed by rotating the triangular region determined by the points $(0,1)$, $(1,1)$ and $(1,3)$ about the line $x=3$.}
 {The region is sketched in \autoref{fig:shell2}(a) along with a line within the region parallel to the axis of rotation. In part (b) of the figure, we see a sample shell, and in part (c) the whole solid is shown.
@@ -233,9 +231,8 @@ V&=2\pi \int_0^1 (2-y)(y-y^2)\ dy\\
 At the beginning of this section it was stated that ``it is good to have options.'' The next example finds the volume of a solid rather easily with the Shell Method, but using the Washer Method would be quite a chore.
 
 \mtable[-3in]{Graphing a region in \autoref{ex_shell4}.}{fig:shell4}{%
-\begin{tabular}{c}
 \begin{tikzpicture}
-\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 			axis y line=middle,axis x line=middle,name=myplot,axis on top,
 			xtick=\empty,extra x ticks={1,2,3},ytick={1,2},
 			ymin=-.2,ymax=2.5,xmin=-.1,xmax=3.5]
@@ -249,56 +246,64 @@ At the beginning of this section it was stated that ``it is good to have options
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}
-\\
-(a) \\
-\begin{tikzpicture}
-\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
-			axis on top,axis y line=none,axis lines=center,y dir=reverse,
-%			view={125}{30},
-			name=myplot,ztick={1,2,3},ymin=-3,ymax=3,xtick={1,2,3},
-			xmin=-3,xmax=3,zmin=-.1,zmax=3.2]
-\addplot3[domain=1:2,y domain=160:340,surf,colormap={mp2}{\colormaptwo},opacity=.6,faceted color=black!60,very thin,z buffer=sort,samples=6,samples y=16]
-	({cos(y)},{sin(y)},{x});
-\addplot3[domain=0:3,samples y=0,thick,black] (x,0,{3*x-x^2});
-\addplot3[domain=0:3,samples y=0,thick,black] (x,0,{x});
-\addplot3[domain=1:2,y domain=-20:160,surf,colormap={mp2}{\colormaptwo},opacity=.6,faceted color=black!60,very thin,z buffer=sort,samples=6,samples y=16]
-	({cos(y)},{sin(y)},{x});
-\addplot3[domain=0:360,samples y=0,black,thick,smooth,] ({cos(x)},{sin(x)},{2});
-\addplot3[domain=160:340,samples y=0,black,thick,dashed,smooth,]
-	({cos(x)},{sin(x)},{1});
-\addplot3[domain=-20:160,samples y=0,black,thick,smooth,] ({cos(x)},{sin(x)},{1});
-\draw [thick,{\colortwo}] (axis cs: 1,0,1) -- (axis cs:1,0,2);
-\end{axis}
-\node [right] at (myplot.right of origin)[shift={(-20pt,-16pt)}] {\scriptsize $x$};
-\node [above] at (myplot.above origin) [shift={(0,-15pt)}] {\scriptsize $y$};
-\end{tikzpicture}
-\\
-(b)\\
-\begin{tikzpicture}
-\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
-			tick label style={font=\scriptsize},axis on top,axis y line=none,
-			axis lines=center,y dir=reverse,
-%			view={125}{30},
-			name=myplot,xtick={1,2,3},ztick={1,2,3},
-			ymin=-3,ymax=3,xmin=-3,xmax=3,zmin=-.1,zmax=3.2]
-\addplot3[domain=0:2,y domain=150:325,surf,colormap={mp2}{\colormapplaneone},opacity=.6,faceted color=black!40,samples=8,samples y=36,very thin,z buffer=sort]
-	({x*cos(y)},{x*sin(y)},{(3*x-x^2)});
-\addplot3[domain=0:2,y domain=0:360,surf,colormap={mp2}{\colormapplaneone},opacity=.6,faceted color=black!40,samples=8,samples y=36,very thin,z buffer=sort]
-	({(x)*cos(y)},{(x)*sin(y)},{3*x-x^2});
-\addplot3[domain=0:2,y domain=-35:150,surf,colormap={mp2}{\colormapplaneone},opacity=.6,faceted color=black!40,samples=8,samples y=36,very thin,z buffer=sort]
-	({x*cos(y)},{x*sin(y)},{(3*x-x^2)});
-\addplot3[domain=0:2,y domain=0:125,surf,colormap={mp2}{\colormapplaneone},opacity=.6,faceted color=black!40,samples=8,samples y=36,very thin,z buffer=sort]
-	({(3*x-x^2)*cos(y)},{(3*x-x^2)*sin(y)},{3*x-x^2});
-\addplot3[domain=1.4:2,samples y=0,thick,black] (x,0,{3*x-x^2});
-\addplot3[domain=0:1.4,samples y=0,thick,black,dashed] (x,0,{3*x-x^2});
-\addplot3[domain=0:2,samples y=0,thick,black] (x,0,{x});
-\end{axis}
-\node [right] at (myplot.right of origin)[shift={(-20pt,-16pt)}] {\scriptsize $x$};
-\node [above] at (myplot.above origin) [shift={(0,-15pt)}] {\scriptsize $y$};
-\end{tikzpicture}
-\\
-(c)
-\end{tabular}}
+\\(a)\smallskip\\
+\myincludeasythree{width=\marginparwidth,
+3Droll=126.0060482236849,
+3Dortho=0.004875946324318647,
+3Dc2c=0.44462037086486816 0.39410829544067383 0.8043577671051025,
+3Dcoo=67.21983337402344 3.5258262157440186 -29.566415786743164,
+3Droo=150.00000160608386}{width=\marginparwidth}{figures/figshellparab_3D}
+%\begin{tikzpicture}
+%\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+%			axis on top,axis y line=none,axis lines=center,y dir=reverse,
+%%			view={125}{30},
+%			name=myplot,ztick={1,2,3},ymin=-3,ymax=3,xtick={1,2,3},
+%			xmin=-3,xmax=3,zmin=-.1,zmax=3.2]
+%\addplot3[domain=1:2,y domain=160:340,surf,colormap={mp2}{\colormaptwo},opacity=.6,faceted color=black!60,very thin,z buffer=sort,samples=6,samples y=16]
+%	({cos(y)},{sin(y)},{x});
+%\addplot3[domain=0:3,samples y=0,thick,black] (x,0,{3*x-x^2});
+%\addplot3[domain=0:3,samples y=0,thick,black] (x,0,{x});
+%\addplot3[domain=1:2,y domain=-20:160,surf,colormap={mp2}{\colormaptwo},opacity=.6,faceted color=black!60,very thin,z buffer=sort,samples=6,samples y=16]
+%	({cos(y)},{sin(y)},{x});
+%\addplot3[domain=0:360,samples y=0,black,thick,smooth,] ({cos(x)},{sin(x)},{2});
+%\addplot3[domain=160:340,samples y=0,black,thick,dashed,smooth,]
+%	({cos(x)},{sin(x)},{1});
+%\addplot3[domain=-20:160,samples y=0,black,thick,smooth,] ({cos(x)},{sin(x)},{1});
+%\draw [thick,{\colortwo}] (axis cs: 1,0,1) -- (axis cs:1,0,2);
+%\end{axis}
+%\node [right] at (myplot.right of origin)[shift={(-20pt,-16pt)}] {\scriptsize $x$};
+%\node [above] at (myplot.above origin) [shift={(0,-15pt)}] {\scriptsize $y$};
+%\end{tikzpicture}
+\\(b)\smallskip\\
+\myincludeasythree{width=\marginparwidth,
+3Droll=126.0060482236849,
+3Dortho=0.004875946324318647,
+3Dc2c=0.44462037086486816 0.39410829544067383 0.8043577671051025,
+3Dcoo=67.21983337402344 3.5258262157440186 -29.566415786743164,
+3Droo=150.00000160608386}{width=\marginparwidth}{figures/figshellparab_b_3D}
+%\begin{tikzpicture}
+%\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+%			tick label style={font=\scriptsize},axis on top,axis y line=none,
+%			axis lines=center,y dir=reverse,
+%%			view={125}{30},
+%			name=myplot,xtick={1,2,3},ztick={1,2,3},
+%			ymin=-3,ymax=3,xmin=-3,xmax=3,zmin=-.1,zmax=3.2]
+%\addplot3[domain=0:2,y domain=150:325,surf,colormap={mp2}{\colormapplaneone},opacity=.6,faceted color=black!40,samples=8,samples y=36,very thin,z buffer=sort]
+%	({x*cos(y)},{x*sin(y)},{(3*x-x^2)});
+%\addplot3[domain=0:2,y domain=0:360,surf,colormap={mp2}{\colormapplaneone},opacity=.6,faceted color=black!40,samples=8,samples y=36,very thin,z buffer=sort]
+%	({(x)*cos(y)},{(x)*sin(y)},{3*x-x^2});
+%\addplot3[domain=0:2,y domain=-35:150,surf,colormap={mp2}{\colormapplaneone},opacity=.6,faceted color=black!40,samples=8,samples y=36,very thin,z buffer=sort]
+%	({x*cos(y)},{x*sin(y)},{(3*x-x^2)});
+%\addplot3[domain=0:2,y domain=0:125,surf,colormap={mp2}{\colormapplaneone},opacity=.6,faceted color=black!40,samples=8,samples y=36,very thin,z buffer=sort]
+%	({(3*x-x^2)*cos(y)},{(3*x-x^2)*sin(y)},{3*x-x^2});
+%\addplot3[domain=1.4:2,samples y=0,thick,black] (x,0,{3*x-x^2});
+%\addplot3[domain=0:1.4,samples y=0,thick,black,dashed] (x,0,{3*x-x^2});
+%\addplot3[domain=0:2,samples y=0,thick,black] (x,0,{x});
+%\end{axis}
+%\node [right] at (myplot.right of origin)[shift={(-20pt,-16pt)}] {\scriptsize $x$};
+%\node [above] at (myplot.above origin) [shift={(0,-15pt)}] {\scriptsize $y$};
+%\end{tikzpicture}
+\\(c)}
 
 \example{ex_shell4}{Finding volume using the Shell Method}{Find the volume of the solid formed by rotating the region bounded by $y=3x-x^2$ and $y=x$ about the $y$-axis.}
 {The region, a sample shell, and the resulting solid are shown in \autoref{fig:shell4}. The radius of a sample shell is $r(x)=x$; the height of a sample shell is $h(x)=(3x-x^2)-x=2x-x^2$. The $x$ bounds on the region are $x=0$ to $x=2$ leading to the integral

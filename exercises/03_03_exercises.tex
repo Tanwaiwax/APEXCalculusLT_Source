@@ -1,24 +1,14 @@
 \printconcepts
 
-\exercise{In your own words describe what it means for a function to be increasing.
-}{Answers will vary.
-}
+\exercise{In your own words describe what it means for a function to be increasing.}{Answers will vary.}
 
-\exercise{What does a decreasing function ``look like''?
-}{Answers will vary.
-}
+\exercise{What does a decreasing function ``look like''?}{Answers will vary.}
 
-\exercise{Sketch a graph of a function on $[0,2]$ that is increasing but not strictly increasing.
-}{Answers will vary.
-}
+\exercise{Sketch a graph of a function on $[0,2]$ that is increasing but not strictly increasing.}{Answers will vary.}
 
-\exercise{Give an example of a function describing a situation where it is ``bad'' to be increasing and ``good'' to be decreasing.
-}{Answers will vary.
-}
+\exercise{Give an example of a function describing a situation where it is ``bad'' to be increasing and ``good'' to be decreasing.}{Answers will vary.}
 
-\exercise{A function $f$ has derivative $\fp(x) = (\sin x+2)e^{x^2+1}$, where $\fp(x) >1 $ for all $x$. Is $f$ increasing, decreasing, or can we not tell from the given information?
-}{Increasing
-}
+\exercise{A function $f$ has derivative $\fp(x) = (\sin x+2)e^{x^2+1}$, where $\fp(x) >1 $ for all $x$. Is $f$ increasing, decreasing, or can we not tell from the given information?}{Increasing}
 
 \printproblems
 
@@ -28,12 +18,12 @@
 	axis y line=middle,axis x line=middle,
     ymin=-25,ymax=25,
 	xmin=-4,xmax=4,name=myplot]
-\addplot [{\colorone},smooth,thick,domain=-4:4] {9*x-(10*x^3)/3+x^5/5};
+\addplot [{\colorone},smooth,thick,domain=-4:4] {9*x-(10*x*x*x)/3+x*x*x*x*x/5};
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{decreasing on $(-3,-1)\cup(1,3)$,\\
-increasing on $(-\infty,-3)\cup(-1,1)\cup(3,\infty)$;\\
+\end{tikzpicture}}{decreasing on $(-3,-1)$; $(1,3)$,\\
+increasing on $(-\infty,-3)$; $(-1,1)$; $(3,\infty)$;\\
 local maxima when $x=-3,1$,\\
 local minima when $x=-1,3$.}
 
@@ -45,27 +35,28 @@ local minima when $x=-1,3$.}
 	xticklabels={,$\frac\pi3$,,$\frac{2\pi}3$,,$\pi$,,$\frac{4\pi}3$,,$\frac{5\pi}3$,,$2\pi$},
     ymin=-.5,ymax=2.5,
 	xmin=-.1,xmax=6.5,name=myplot]
-\addplot [{\colorone},smooth,thick,domain=0:6.28] {(sin(deg(x)))^2-sin(deg(x))};
+\addplot [{\colorone},smooth,thick,domain=0:6.28] {sin(deg(x))*(sin(deg(x))-1)};
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{decreasing on $(0,\frac\pi6)\cup(\frac\pi2,\frac{5\pi6})\cup(\frac{3\pi}2,2\pi)$,\\
-increasing on $(\frac\pi6,\frac\pi2)\cup(\frac{5\pi}6,\frac{3\pi}2)$;\\
+\end{tikzpicture}}{decreasing on $(0,\frac\pi6)$; $(\frac\pi2,\frac{5\pi6})$; $(\frac{3\pi}2,2\pi)$,\\
+increasing on $(\frac\pi6,\frac\pi2)$; $(\frac{5\pi}6,\frac{3\pi}2)$;\\
 local maxima when $x=\frac\pi2,\frac{3\pi}2$,\\
 local minima when $x=\frac\pi6,\frac{5\pi}6$.}
 
-\ifthenelse{\boolean{printquestions}}{\columnbreak}{}
+%\ifthenelse{\boolean{printquestions}}{\columnbreak}{}
+
 \exercise{Given the graph of $\fp$, identify the intervals of increasing and decreasing as well as the $x$ coordinates of the relative extrema.\\
 \begin{tikzpicture}
 \begin{axis}[width=.4\textwidth,tick label style={font=\scriptsize },
 	axis y line=middle,axis x line=middle,
     ymin=-5,ymax=5,
 	xmin=-3,xmax=3,name=myplot]
-\addplot [{\colorone},smooth,thick,domain=-3:3] {4-x^2};
+\addplot [{\colorone},smooth,thick,domain=-3:3] {4-x*x};
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{decreasing on $(-\infty,-2)\cup(2,\infty)$,\\
+\end{tikzpicture}}{decreasing on $(-\infty,-2)$; $(2,\infty)$,\\
 increasing on $(-2,2)$;\\
 local maxima when $x=2$,\\
 local minima when $x=-2$.}
@@ -76,26 +67,24 @@ local minima when $x=-2$.}
 	axis y line=middle,axis x line=middle,
     ymin=-1.5,ymax=2,
 	xmin=-1.5,xmax=1.5,name=myplot]
-\addplot [{\colorone},smooth,thick,domain=-1.5:1.5] {4*x^2*(x^2-1)};
+\addplot [{\colorone},smooth,thick,domain=-1.5:1.5] {4*x*x*(x*x-1)};
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}{decreasing on $(-1,1)$,\\
-increasing on $(-\infty,-1)\cup(1,\infty)$;\\
+increasing on $(-\infty,-1)$; $(1,\infty)$;\\
 local maxima when $x=-1$,\\
 local minima when $x=1$.}
 
 \input{exercises/03_03_exset_01}
+
 \ifthenelse{\boolean{printquestions}}{\columnbreak}{}
+
 \input{exercises/03_03_exset_02}
 
 \printreview
 
-\exercise{Consider $f(x) = x^2-3x+5$ on $[-1,2]$; find $c$ guaranteed by the Mean Value Theorem.
-}{$c=1/2$
-}
+\exercise{Consider $f(x) = x^2-3x+5$ on $[-1,2]$; find $c$ guaranteed by the Mean Value Theorem.}{$c=1/2$}
 
-\exercise{Consider $f(x) = \sin x$ on $[-\pi/2,\pi/2]$; find $c$ guaranteed by the Mean Value Theorem.
-}{$c=\pm \cos^{-1}(2/\pi)$
-}
+\exercise{Consider $f(x) = \sin x$ on $[-\pi/2,\pi/2]$; find $c$ guaranteed by the Mean Value Theorem.}{$c=\pm \cos^{-1}(2/\pi)$}
 

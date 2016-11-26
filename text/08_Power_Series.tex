@@ -25,11 +25,11 @@ So far, our study of series has examined the question of ``Is the sum of these i
 	$$\sum_{n=0}^\infty x^n = 1+x+x^2+x^3+x^4+\dotsb$$
 	This is a geometric series in $x$.
 	
-	\item	This series is centered at $c=-1$. Note how this series starts with $n=1$. We could rewrite this series starting at $n=0$ with the understanding that $a_0=0$, and hence the first term is $0$.
+	\item	This series is centered at $c=-1$. Note how this series starts with $n=1$. We could rewrite this series starting at $n=0$ with the understanding that $a_0=0$, and hence the first term is $0$.\\
 	\flushinnerequ{%
 	$$\sum_{n=1}^\infty (-1)^{n+1}\frac{(x+1)^n}n = (x+1) - \frac{(x+1)^2}{2} + \frac{(x+1)^3}{3} - \frac{(x+1)^4}{4}+\frac{(x+1)^5}{5}\dotsb$$}
 	
-	\item		This series is centered at $c=\pi$. Recall that $0!=1$.
+	\item		This series is centered at $c=\pi$. Recall that $0!=1$.\\
 	\flushinnerequ{%
 	$$\sum_{n=0}^\infty (-1)^{n+1} \frac{(x-\pi)^{2n}}{(2n)!} = -1+\frac{(x-\pi)^2}{2} - \frac{(x-\pi)^4}{24}+ \frac{(x-\pi)^6}{6!}-\frac{(x-\pi)^8}{8!}\dotsb\eoehere $$}
 \end{enumerate}}
@@ -59,7 +59,7 @@ This raises the question: ``For what values of $x$ will a given power series con
 The value of $R$ is important when understanding a power series, hence it is given a name in the following definition. Also, note that part 2 of \autoref{thm:radius_converge} makes a statement about the interval $(c-R,c+R)$, but the not the endpoints of that interval. A series may or may not converge at these endpoints.
 	
 \definition{def:radius_converge}{Radius and Interval of Convergence}
-{ \begin{enumerate}
+{\mbox{}\\[-2\baselineskip]\begin{enumerate}
 	\item The number $R$ given in \autoref{thm:radius_converge} is the \sword{radius of convergence} of a given series. When a series converges for only $x=c$, we say the radius of convergence is 0, i.e.,  $R=0$. When a series converges for all $x$, we say the series has an infinite radius of convergence, i.e., $R=\infty$.
 	\item	The \sword{interval of convergence} is the set of all values of $x$ for which the series converges.
 	\index{convergence!radius of}\index{convergence!interval of}\index{radius of convergence}\index{interval of convergence}\index{series!radius of convergence}\index{series!interval of convergence}
@@ -71,13 +71,13 @@ To find the values of $x$ for which a given series converges, we will use the co
 {%{\begin{itemize}
 	%\item The series $\ds \sum_{n=0}^\infty a_nx^n$ and $\ds \sum_{n=0}^\infty \big|a_nx^n\big|$ have the same radius of convergence $R$.
 	%\item 
-	The series $\ds \sum_{n=0}^\infty a_n(x-c)^n$ and $\ds \sum_{n=0}^\infty \big|a_n(x-c)^n\big|$ have the same radius of convergence $R$.
+	The series $\ds \sum_{n=0}^\infty a_n(x-c)^n$ and $\ds \sum_{n=0}^\infty \abs{a_n(x-c)^n}$ have the same radius of convergence $R$.
 %\end{itemize}
 }
 
-\youtubeVideo{01LzAU__J-0}{Power Series --- Finding the Interval of Convergence}
-
 \autoref{thm:abs_power} allows us to find the radius of convergence $R$ of a series by applying the Ratio Test (or any applicable test) to the absolute value of the terms of the series. We practice this in the following example.
+
+\youtubeVideo{01LzAU__J-0}{Power Series --- Finding the Interval of Convergence}
 
 \clearpage
 
@@ -107,8 +107,10 @@ To find the values of $x$ for which a given series converges, we will use the co
 	
 	To determine the interval of convergence, we need to check the endpoints of $(-1,1)$. When $x=-1$, we have the opposite of the Harmonic Series:
 	\begin{align*}
-	\sum_{n=1}^\infty (-1)^{n+1}\frac{(-1)^n}{n} &= \sum_{n=1}^\infty \frac{-1}{n}\\
-				&= -\infty.
+	\sum_{n=1}^\infty (-1)^{n+1}\frac{(-1)^n}{n}
+	&= \sum_{n=1}^\infty \frac{(-1)^{2n+1}}{n}\\
+	&= \sum_{n=1}^\infty \frac{-1}{n}\\
+	&= -\infty.
 	\end{align*}
 	The series diverges when $x=-1$.
 	
@@ -138,6 +140,8 @@ which diverges. A similar process shows that the series also diverges at $x=3.5$
 The Ratio Test shows that the series diverges for all $x$ except $x=0$. Therefore the radius of convergence is $R=0$.\eoehere
 \end{enumerate}}
 
+\subsection*{Power Series as Functions}
+
 We can use a power series to define a function:
 $$f(x) = \sum_{n=0}^\infty a_nx^n$$
 where the domain of $f$ is a subset of the interval of convergence of the power series. One can apply calculus techniques to such functions; in particular, we can find derivatives and antiderivatives. 
@@ -159,7 +163,11 @@ A few notes about \autoref{thm:calc_power_series}:
 \end{enumerate}
 
 \example{ex_ps3}{Derivatives and indefinite integrals of power series}{Let $\ds f(x) = \sum_{n=0}^\infty x^n$. Find the following along with their respective intervals of convergence.
-\[\text{1. }\fp(x) \qquad\text{and}\qquad\text{2. }\ds F(x) =\int f(x)\ dx\]}
+\[
+ \text{1.}\quad\fp(x)
+ \qquad\text{and}\qquad
+ \text{2.}\quad\ds F(x) =\int f(x)\ dx
+\]}
 {We find the derivative and indefinite integral of $f(x)$, following \autoref{thm:calc_power_series}.
 
 \begin{enumerate}
@@ -207,7 +215,7 @@ Equating Equations \eqref{eq:ps3a} and \eqref{eq:ps3b}, we have
 $$F(x) = C_1+\sum_{n=0}^\infty \frac{x^{n+1}}{n+1} = -\ln\abs{1-x} + C_2.$$
 Letting $x=0$, we have $F(0) = C_1 = C_2$. This implies that we can drop the constants and conclude
 $$\sum_{n=0}^\infty \frac{x^{n+1}}{n+1} = -\ln\abs{1-x}.$$
-We established in \autoref{ex_ps3} that the series on the left converges at $x=-1$; substituting $x=-1$ on both sides of the above equality gives
+We established in \autoref{ex_ps3} that the series $\ds\sum_{n=0}^\infty \frac{x^{n+1}}{n+1}$ converges at $x=-1$; substituting $x=-1$ on both sides of the above equality gives
 $$-1+\frac12-\frac13+\frac14-\frac15+\dotsb = -\ln 2.$$
 On the left we have the opposite of the Alternating Harmonic Series; on the right, we have $-\ln 2$. We conclude that 
 $$1-\frac12+\frac13-\frac14+\dotsb = \ln 2.$$
@@ -299,13 +307,15 @@ with the power series
 \sum_{n=0}^{\infty}x^n \qquad \text{provided }\abs x<1.
 \end{equation}
 
-This provision is important.  We can clearly plug any number other than $x=1$ into the function, however, we will only get a convergent power series if $\abs x<1$.  This means the equality in \autoeqref{eq_power_eq} will only hold if $\abs x<1$.  For any other value of $x$ the equality won't hold.  Note as well that we can also use this to acknowledge that the radius of convergence of this power series is $R=1$ and the interval of convergence if $\abs x<1$.
+This provision is important.  We can clearly plug any number other than $x=1$ into the function, however, we will only get a convergent power series if $\abs x<1$.  This means the equality in \autoeqref{eq_power_eq} will only hold if $\abs x<1$.  For any other value of $x$ the equality won't hold.  Note as well that we can also use this to acknowledge that the radius of convergence of this power series is $R=1$ and the interval of convergence is $\abs x<1$.
 
 This idea of convergence is important here.  We will be representing many functions as power series and it will be important to recognize that the representations will often only be valid for a range of $x$'s and that there may be values of $x$ that we can plug into the function that we can't plug into the power series representation.
 
-In this section we are going to concentrate on representing functions with power series where the function can be related back to \autoeqref{eq_power_func}.  
+In this section we are going to concentrate on representing functions with power series where the function can be related back to a geometric series. In this way we will hopefully become familiar with some of the kinds of manipulations that we will sometimes need when working with power series. We will see in \autoref{sec:taylor_series} that this strategy is useful for integrating functions that don't have elementary derivatives.
 
-In this way we will hopefully become familiar with some of the kinds of manipulations that we will sometimes need when working with power series. We now consider several examples.
+%In this section we are going to concentrate on representing functions with power series where the function can be related back to \autoeqref{eq_power_func}.  
+
+%In this way we will hopefully become familiar with some of the kinds of manipulations that we will sometimes need when working with power series. We now consider several examples.
 
 \example{ex_power_cube}{Finding a Power Series}{Find a power series representation for $g(x) = \dfrac1{1+x^3}$ and determine its interval of convergence.}{We want to relate this function back to \autoeqref{eq_power_func}.  This is actually easier than it might look.  Recall that the $x$ in \autoeqref{eq_power_func} is simply a variable and can represent anything.  So, a quick rewrite of $g(x)$ gives,
 $$g(x)=\frac1{1-(-x^3)}$$
@@ -351,7 +361,7 @@ We now have a power series representation for $g(x)$ but we need to find a power
 \end{align*}
 The interval of convergence doesn't change and so it will be $\abs x<5$.}
 
-We now consider several examples using differentiation and integration of power series from \autoref{thm:calc_power_series}. % in \autoref{sec:power_series}.
+We now consider several examples where differentiation and integration of power series from \autoref{thm:calc_power_series} are used to write the power series for a function. % in \autoref{sec:power_series}.
 
 \example{ex_power_deriv}{Differentiating a Power Series}{Find a power series representation for $g(x)=\dfrac1{(1-x)^2}$ and determine its radius of convergence.}{We know that
 $$\frac1{(1-x)^2} = \frac{d}{dx} \left( \frac{1}{1-x} \right).$$
@@ -371,9 +381,9 @@ $$\int\frac1{5-x}\ dx=-\ln(5-x).$$
 Recall that we found a power series representation for $\dfrac1{5-x}$ in \autoref{ex_power_five}. We now have
 \begin{align*}
 	\ln(5-x)
-	& =  -\ds\int \frac{1}{5-x} dx \\
-    & =  -\ds\int \sum_{n=0}^{\infty} \frac{x^n}{5^{n+1}} dx \\
-	& =  C - \sum_{n=0}^{\infty} \frac{x^{n+1}}{(n+1)5^{n+1}}
+	& =  -\ds\int \frac{1}{5-x}\ dx \\
+    & =  -\ds\int \sum_{n=0}^{\infty} \frac{x^n}{5^{n+1}}\ dx \qquad\text{where $\abs x<5$}\\
+	& =  C - \sum_{n=0}^{\infty} \frac{x^{n+1}}{(n+1)5^{n+1}} \qquad\text{where $\abs x<5$}
 \end{align*}
 
 We can find the constant of integration, $C$, by substituting in a value of $x$.  A good choice is $x=0$ as the series is usually easy to evaluate there.  
@@ -384,10 +394,8 @@ We can find the constant of integration, $C$, by substituting in a value of $x$.
 
 So, the final answer is, 
 $$\ln(5-x) =\ln(5) - \sum_{n=0}^{\infty} \frac{x^{n+1}}{(n+1)5^{n+1}},$$
-and the radius of convergence is 5.}
+and the radius of convergence is 5. Notice that $x=-5$ allows for convergence so the interval of convergence is $[-5,5)$.}
 
 % todo transition paragraph?
 
-% todo exercise solutions
-
-\inputexercises{exercises/08_06_exercises}
+\printexercises{exercises/08_06_exercises}

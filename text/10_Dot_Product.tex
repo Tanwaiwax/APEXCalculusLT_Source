@@ -67,7 +67,7 @@ When $\theta$ is an acute angle (i.e., $0\leq \theta <\pi/2$), $\cos \theta$ is 
 \begin{lxfigure}
 \begin{center}
 \includegraphics{figures/figdotpanglesign}
-\captionof{figure}{Illustrating the relationship between the angle between vectors and the sign of their dot product.}
+\caption{Illustrating the relationship between the angle between vectors and the sign of their dot product.}
 \label{fig:dotpsign}
 \end{center}
 \end{lxfigure}
@@ -161,6 +161,12 @@ All three angles between these vectors was $\pi/2$, or $90^\circ$. We know from 
 	Clearly $\vec v_1$ and $\vec v_2$ are not parallel.\eoehere
 \end{enumerate}}
 
+\mtable{Developing the construction of the \emph{orthogonal projection}.}{fig:dotpproj}{%
+\includegraphics{figures/figdotpproja}\\
+(a)\\[15pt]
+\includegraphics{figures/figdotpprojb}\\
+(b)}
+
 An important construction is illustrated in \autoref{fig:dotpproj}, where vectors $\vec u$ and $\vec v$ are sketched. In part (a), a dotted line is drawn from the tip of $\vec u$ to the line containing $\vec v$, where the dotted line is orthogonal to $\vec v$. In part (b), the dotted line is replaced with the vector $\vec z$ and  $\vec w$ is formed, parallel to $\vec v$. It is clear by the diagram that $\vec u = \vec w+\vec z$. What is important about this construction is this: $\vec u$ is \emph{decomposed} as the sum of two vectors, one of which is parallel to $\vec v$ and one that is perpendicular to $\vec v$. It is hard to overstate the importance of this construction (as we'll see in upcoming examples). 
 
 The vectors $\vec w$, $\vec z$ and $\vec u$ as shown in \autoref{fig:dotpproj} (b) form a right triangle, where the angle between $\vec v$ and $\vec u$ is labeled $\theta$. We can find $\vec w$ in terms of $\vec v$ and $\vec u$.
@@ -169,12 +175,6 @@ Using trigonometry, we can state that
 \begin{equation}
 \norm{\vec w} = \norm{\vec u}\cos \theta. \label{eq:proj1}
 \end{equation}
-
-\mtable{Developing the construction of the \emph{orthogonal projection}.}{fig:dotpproj}{%
-\includegraphics{figures/figdotpproja}\\
-(a)\\[15pt]
-\includegraphics{figures/figdotpprojb}\\
-(b)}
 
 We also know that $\vec w$ is parallel to to $\vec v$\,; that is, the direction of $\vec w$ is the direction of $\vec v$, described by the unit vector $\frac{1}{\norm{\vec v}}\vec v$. The vector $\vec w$ is the vector in the direction $\frac{1}{\norm{\vec v}}\vec v$ with magnitude $\norm{\vec u}\cos \theta$:
 \begin{align*}
@@ -193,19 +193,6 @@ Since this construction is so important, it is given a special name.
 \index{orthogonal projection}\index{vectors!orthogonal projection}
 $$\proj uv = \frac{\dotp uv}{\dotp vv}\vec v.$$}
 
-\example{ex_dotp4}{Computing the orthogonal projection}{\mbox{}\\[-2\baselineskip]\begin{enumerate}
-	\item Let $\vec u= \la -2,1\ra$ and $\vec v=\la 3,1\ra$. Find $\proj uv$, and sketch all three vectors with initial points at the origin.
-	\item	Let $\vec w = \la 2,1,3\ra$ and $\vec x = \la 1,1,1\ra$. Find $\proj wx$, and sketch all three vectors with initial points at the origin.
-\end{enumerate}}
-{\mbox{}\\[-\baselineskip]\begin{enumerate}
-	\item Applying \autoref{def:orthogonal_projection}, we have
-	\begin{align*}
-	\proj uv &= \frac{\dotp uv}{\dotp vv}\vec v \\
-					&= \frac{-5}{10}\la 3,1\ra\\
-					&= \la -\frac32,-\frac12\ra.
-	\end{align*}
-	Vectors $\vec u$, $\vec v$ and $\proj uv$ are sketched in \autoref{fig:dotp4}(a). Note how the projection is parallel to $\vec v$; that is, it lies on the same line through the origin as $\vec v$, although it points in the opposite direction. That is because the angle between $\vec u$ and $\vec v$ is obtuse (i.e., greater than $90^\circ$).
-	
 \mtable{Graphing the vectors used in \autoref{ex_dotp4}.}{fig:dotp4}{%
 \includegraphics{figures/figdotp4a}\\
 (a)\\[15pt]
@@ -228,6 +215,19 @@ $$\proj uv = \frac{\dotp uv}{\dotp vv}\vec v.$$}
 %\includegraphics{figures/figdotp4c}\\
 (c)}	
 
+\example{ex_dotp4}{Computing the orthogonal projection}{\mbox{}\\[-2\baselineskip]\begin{enumerate}
+	\item Let $\vec u= \la -2,1\ra$ and $\vec v=\la 3,1\ra$. Find $\proj uv$, and sketch all three vectors with initial points at the origin.
+	\item	Let $\vec w = \la 2,1,3\ra$ and $\vec x = \la 1,1,1\ra$. Find $\proj wx$, and sketch all three vectors with initial points at the origin.
+\end{enumerate}}
+{\mbox{}\\[-\baselineskip]\begin{enumerate}
+	\item Applying \autoref{def:orthogonal_projection}, we have
+	\begin{align*}
+	\proj uv &= \frac{\dotp uv}{\dotp vv}\vec v \\
+					&= \frac{-5}{10}\la 3,1\ra\\
+					&= \la -\frac32,-\frac12\ra.
+	\end{align*}
+	Vectors $\vec u$, $\vec v$ and $\proj uv$ are sketched in \autoref{fig:dotp4}(a). Note how the projection is parallel to $\vec v$; that is, it lies on the same line through the origin as $\vec v$, although it points in the opposite direction. That is because the angle between $\vec u$ and $\vec v$ is obtuse (i.e., greater than $90^\circ$).
+	
 	\item		Apply the definition:
 	\begin{align*}
 	\proj wx &= \frac{\dotp wx}{\dotp xx}\vec x \\

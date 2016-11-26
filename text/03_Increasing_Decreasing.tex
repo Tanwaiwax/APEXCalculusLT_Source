@@ -134,7 +134,7 @@ In \autoref{sec:extreme_values} we learned the definition of relative maxima and
 axis y line=none,axis x line=none,
 name=myplot,ymin=-1,ymax=.5,xmin=-1,xmax=1
 ]
-\addplot[thick,{\colorone},smooth,domain=-1:1] { -x^2 };
+\addplot[thick,{\colorone},smooth,domain=-1:1] { -x*x };
 \filldraw (axis cs:0,0) node [below] {\small$c$} circle (1pt);
 \end{axis}
 \end{tikzpicture}
@@ -144,7 +144,7 @@ name=myplot,ymin=-1,ymax=.5,xmin=-1,xmax=1
 axis y line=none,axis x line=none,
 name=myplot,ymin=-.5,ymax=1,xmin=-1,xmax=1%
 ]
-\addplot[thick,{\colorone},smooth,domain=-1:1] { x^2 };
+\addplot[thick,{\colorone},smooth,domain=-1:1] { x*x };
 \filldraw (axis cs:0,0) node [above] {\small$c$} circle (1pt);
 \end{axis}
 \end{tikzpicture}
@@ -155,7 +155,7 @@ Case 1 & Case 2 \\
 axis y line=none,axis x line=none,
 name=myplot,ymin=-1,ymax=1,xmin=-1,xmax=1%
 ]
-\addplot[thick,{\colorone},smooth,domain=-1:1] { x^3 };
+\addplot[thick,{\colorone},smooth,domain=-1:1] { x*x*x };
 \filldraw (axis cs:0,0) node [below] {\small$c$} circle (1pt);
 \end{axis}
 \end{tikzpicture}
@@ -165,7 +165,7 @@ name=myplot,ymin=-1,ymax=1,xmin=-1,xmax=1%
 axis y line=none,axis x line=none,
 name=myplot,ymin=-1,ymax=1,xmin=-1,xmax=1%
 ]
-\addplot[thick,{\colorone},smooth,domain=-1:1] { -x^3 };
+\addplot[thick,{\colorone},smooth,domain=-1:1] { -x*x*x };
 \filldraw (axis cs:0,0) node [below] {\small$c$} circle (1pt);
 \end{axis}
 \end{tikzpicture}
@@ -209,7 +209,7 @@ We have found that $f$ has two critical numbers, $x=-1,3$, and at $x=1$ somethin
 \item[Interval 4,] $(3,\infty)$:\quad Choosing a very large number $p$ from this subinterval will give a positive numerator and (of course) a positive denominator. So $f$ is increasing on $(3,\infty)$.
 \end{description}
 
-In summary, $f$ is increasing on the set $(-\infty,-1)\cup (3,\infty)$ and is decreasing on the set $(-1,1)\cup (1,3)$. Since at $x=-1$, the sign of \fp\ switched from positive to negative, \autoref{thm:first_der} states that $f(-1)$ is a relative maximum of $f$. At $x=3$, the sign of \fp\ switched from negative to positive, meaning $f(3)$ is a relative minimum. At $x=1$, $f$ is not defined, so there is no relative extrema at $x=1$.
+In summary, $f$ is increasing on $(-\infty,-1)$ and $(3,\infty)$ and is decreasing on $(-1,1)$ and $(1,3)$. Since at $x=-1$, the sign of \fp\ switched from positive to negative, \autoref{thm:first_der} states that $f(-1)$ is a relative maximum of $f$. At $x=3$, the sign of \fp\ switched from negative to positive, meaning $f(3)$ is a relative minimum. At $x=1$, $f$ is not defined, so there is no relative extrema at $x=1$.
 
 \begin{center}
 \begin{tikzpicture}
@@ -253,7 +253,7 @@ This derivation of $\fp$ shows that $\fp(x) = 0$ when $x=\pm 1$ and \fp\ is not 
 \item[Interval 1,] $(\infty,-1)$: We choose $p=-2$; we can easily verify that $\fp(-2)<0$. So $f$ is decreasing on $(-\infty,-1)$.
 
 \item[Interval 2,] $(-1,0)$: Choose $p=-1/2$. Once more we practice finding the sign of $\fp(p)$ without computing an actual value. We have $\fp(p) = (8/3)p^{-1/3}(p-1)(p+1)$; find the sign of each of the three terms. 
-	$$\fp(p) = \frac 83 \cdot \underbrace{p^{-\frac13}}_{<0}\cdot \underbrace{(p-1)}_{<0}\underbrace{(p+1)}_{>0}.$$
+	\[\fp(p) = \frac 83 \cdot \underbrace{p^{-\frac13}}_{<0}\cdot \underbrace{(p-1)}_{<0}\underbrace{(p+1)}_{>0}.\]
 	We have a ``negative $\times$ negative $\times$ positive'' giving a positive number; $f$ is increasing on $(-1,0)$.
 
 \item[Interval 3,] $(0,1)$: We do a similar sign analysis as before, using $p$ in $(0,1)$.
@@ -282,7 +282,7 @@ This derivation of $\fp$ shows that $\fp(x) = 0$ when $x=\pm 1$ and \fp\ is not 
 
 \mfigure{0in}{A graph of $f(x)$ in \autoref{ex_incr3}, showing where $f$ is increasing and decreasing.}{fig:incr3}{figures/figincr3}
 
-We conclude by stating that $f$ is increasing on $(-1,0) \cup (1,\infty)$ and decreasing on $(-\infty,-1) \cup (0,1)$. The sign of \fp\ changes from negative to positive around $x=-1$ and $x=1$, meaning by \autoref{thm:first_der} that $f(-1)$ and $f(1)$ are relative minima of $f$. As the sign of \fp\ changes from positive to negative at $x=0$, we have a relative maximum at $f(0)$. \autoref{fig:incr3} shows a graph of $f$, confirming our result. We also graph $\fp$, highlighting once more that $f$ is increasing when $\fp>0$ and is decreasing when $\fp<0$.}
+We conclude by stating that $f$ is increasing on $(-1,0)$ and $(1,\infty)$ and decreasing on $(-\infty,-1)$ and $(0,1)$. The sign of \fp\ changes from negative to positive around $x=-1$ and $x=1$, meaning by \autoref{thm:first_der} that $f(-1)$ and $f(1)$ are relative minima of $f$. As the sign of \fp\ changes from positive to negative at $x=0$, we have a relative maximum at $f(0)$. \autoref{fig:incr3} shows a graph of $f$, confirming our result. We also graph $\fp$, highlighting once more that $f$ is increasing when $\fp>0$ and is decreasing when $\fp<0$.}
 
 We examine one more example.
 
@@ -312,7 +312,7 @@ We examine one more example.
 \end{tikzpicture}
 \end{center}
 
-This means that $f$ is increasing on $(0,\frac\pi3)\cup(\pi,\frac{5\pi}3)$ and decreasing on $(\frac\pi3,\pi)\cup(\frac{5\pi}3,2\pi)$, so that the relative maxima are $f(\frac\pi3)$ and $f(\frac{5\pi}3)$ and the relative minimum is $f(\pi)$.  (The values $f(0)$ and $f(2\pi)$ would also be relative minima, but relative extrema are not allowed to occur at the endpoints of an interval.)}
+This means that $f$ is increasing on $(0,\frac\pi3)$ and $(\pi,\frac{5\pi}3)$ and decreasing on $(\frac\pi3,\pi)$ and $(\frac{5\pi}3,2\pi)$, so that the relative maxima are $f(\frac\pi3)$ and $f(\frac{5\pi}3)$ and the relative minimum is $f(\pi)$.  (The values $f(0)$ and $f(2\pi)$ would also be relative minima, but relative extrema are not allowed to occur at the endpoints of an interval.)}
 
 We have seen how the first derivative of a function helps determine when the function is going ``up'' or ``down.'' In the next section, we will see how the second derivative helps determine how the graph of a function curves.
 

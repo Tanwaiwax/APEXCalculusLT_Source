@@ -1,0 +1,125 @@
+\documentclass[11pt]{report}
+\usepackage[letterpaper, total={6.5in, 10in}]{geometry}
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+\usepackage{amsmath, amsthm, mathpazo, epic, eepic, color, array}
+\usepackage{amssymb}
+%\usepackage{graphicx}
+\usepackage{cancel}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\pgfplotsset{compat=1.13}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+\usepackage{hyperref}
+\usepackage[normalem]{ulem}
+
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows, petri, topaths}
+\usepackage{tkz-berge}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+
+\newboolean{colorprint}
+\setboolean{colorprint}{true}
+%\setboolean{colorprint}{false}
+
+\ifthenelse{\boolean{colorprint}}{%
+\newcommand{\colorone}{blue}
+\newcommand{\colortwo}{red}
+\newcommand{\coloronefill}{blue!15!white}
+\newcommand{\colortwofill}{red!15!white}
+\newcommand{\colormapone}{rgb=(.4,.4,1); rgb=(.8,.8,1)}
+\newcommand{\colormaptwo}{rgb=(1,.4,.4); rgb=(1,.8,.8)}
+\newcommand{\colormapplaneone}{rgb=(.7,.7,1); rgb=(.9,.9,1)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,1}
+\definecolor{colormaponetop}{rgb}{.8,.8,1}
+\definecolor{colormaptwobottom}{rgb}{1,.4,.4}
+\definecolor{colormaptwotop}{rgb}{1,.8,.8}
+}% ends color
+{% not color
+\newcommand{\colorone}{black}
+\newcommand{\colortwo}{black!50!white}
+\newcommand{\coloronefill}{black!15!white}
+\newcommand{\colortwofill}{black!05!white}
+\newcommand{\colormapone}{rgb=(.4,.4,.4); rgb=(.7,.7,.7)}
+\newcommand{\colormaptwo}{rgb=(.6,.6,.6); rgb=(.9,.9,.9)}
+\newcommand{\colormapplaneone}{rgb=(.8,.8,.8); rgb=(.95,.95,.95)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,.4}
+\definecolor{colormaponetop}{rgb}{.7,.7,.7}
+\definecolor{colormaptwobottom}{rgb}{.6,.6,.6}
+\definecolor{colormaptwotop}{rgb}{.9,.9,.9}
+}%
+
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+\pgfplotsset{my style/.append style={axis x line=middle, axis y line=
+middle, xlabel={$x$}, ylabel={$y$}, axis equal }}
+
+\pgfplotsset{compat=1.13}
+\newcommand{\ds}{\displaystyle}
+\begin{document}
+
+\textbf{Section ?.3 Calculus \& Parametric Equations}\\
+
+This is the section where Dave asked about Cycloids and area under parametricallly defined curves. Did you ask Dave about writing this and/or take this from Paul's notes?\\
+
+\textbf{p. 610, line 1}\\
+Add the word possible: "The possible points of inflection..."\\
+
+
+\textbf{pp. 615-616, Exercises}\\
+
+Here are additional Arc Length and Surface Area exercises.\\
+
+In set of \#33-36 add the following exercises:\\
+
+$\ds x=\cos t,~~~ y=\sin t$ on $\ds [0,2\pi]$\\
+
+Answer: $4\pi$\\
+
+$\ds x=1+3t^2,~~~ y=4+2t^3$ on $\ds [0,1]$\\
+
+Answer: $4\sqrt{2} -2$\\
+
+$\ds x=\frac{t}{1+t},~~~ y=\ln (1+t)$ on $\ds [0,2]$\\
+
+Answer: $\ds -\frac{\sqrt{10}}{3} + \ln(3+\sqrt {10}) + \sqrt 2 - \ln (1+\sqrt 2)$\\
+
+$\ds x=e^t-t,~~~ y=4e^{-t/2}$ on $\ds [-8,3]$\\
+
+Answer: $4e^3 + 11 - e^{-8}$\\ \\
+
+
+In set of \#41-44 add the following exercises:\\
+
+$\ds x=a\cos^3 \theta,~~~ y=a\sin^3 \theta$ on $\ds [0,\pi/2]$ about the $x-$axis \\
+
+Answer: $\frac{6\pi a^2}{5}$\\
+
+$\ds x=t^3,~~~ y=t^2$ on $\ds [0,1]$ about the $x-$axis\\
+
+Answer: $\frac{2\pi (247\sqrt{13}+64)}{1215}$\\
+
+$\ds x=3t^2,~~~ y=2t^3$ on $\ds [0,5]$ about the $y-$axis\\
+
+Answer: $\frac{24\pi (949\sqrt{26}+1)}{5}$\\
+
+
+
+If cycloids and areas of parametric curves are added to this section then exercises for these will also need to be added.
+
+
+
+\end{document}
+

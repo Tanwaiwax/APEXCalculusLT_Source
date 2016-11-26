@@ -64,7 +64,7 @@ Consider a vector--valued function $\vec r$ defined on an open interval $I$ cont
 \myincludegraphics[scale=.9]{figures/figvvfderiv_intro}&\myincludegraphics[scale=.9]{figures/figvvfderiv_introb}\\
 (a) & (b)
 \end{tabular}}
-\captionof{figure}{Illustrating displacement, leading to an understanding of the derivative of vector--valued functions.}
+\caption{Illustrating displacement, leading to an understanding of the derivative of vector--valued functions.}
 \label{fig:vvfderiv_intro}
 \end{lxfigure}
 
@@ -100,17 +100,17 @@ Once again we might view this definition as intimidating, but recall that we can
 \end{enumerate}}
 
 \example{ex_vvflimit3}{Derivatives of vector--valued functions}{Let $\vec r(t) = \la t^2,t\ra$. 
+\mtable{Graphing the derivative of a vector--valued function in \autoref{ex_vvflimit3}.}{fig:vvflimit3}{%
+\myincludegraphics{figures/figvvflimit3a}\\[5pt]
+(a)\\[10pt]
+\myincludegraphics{figures/figvvflimit3}\\[5pt]
+(b)}
 \begin{enumerate}
 	\item Sketch $\vec r(t)$ and $\vrp(t)$ on the same axes.
 	\item	Compute $\vrp(1)$ and sketch this vector with its initial point at the origin and at $\vec r(1)$.
 \end{enumerate}}
 {\begin{enumerate}
 \item	\autoref{thm:vvf_deriv} allows us to compute derivatives component--wise, so
-\mtable{Graphing the derivative of a vector--valued function in \autoref{ex_vvflimit3}.}{fig:vvflimit3}{%
-myincludegraphics{figures/figvvflimit3a}\\[5pt]
-(a)\\[10pt]
-\myincludegraphics{figures/figvvflimit3}\\[5pt]
-(b)}
 $$\vrp(t) = \la 2t, 1\ra.$$
 $\vec r(t)$ and $\vrp(t)$ are graphed together in \autoref{fig:vvflimit3}(a). Note how plotting the two of these together, in this way, is not very illuminating. When dealing with real--valued functions, plotting $f(x)$ with $\fp(x)$ gave us useful information as we were able to compare $f$ and $\fp$ at the same $x$-values. When dealing with vector--valued functions, it is hard to tell which points on the graph of $\vrp$ correspond to which points on the graph of $\vec r$.
 
@@ -133,13 +133,11 @@ $\vec r(t)$ and $\vrp(t)$ are graphed together in \autoref{fig:vvflimit3}(a). No
 3Droo=150.0000027221829,3Dlights=Headlamp,add3Djscript=asylabels.js}{}{0in}{Viewing a vector--valued function and its derivative at one point.}{fig:vvflimit4}{figures/figvvflimit4}
 }%% ends "if in threeD"
 { % begins "else, not in threeD
-\mtable{Viewing a vector--valued function, and its derivative at one point, from two different perspectives.}{fig:vvflimit4}{
-\begin{tabular}{c}
+\mtable{Viewing a vector--valued function, and its derivative at one point, from two different perspectives.}{fig:vvflimit4}{%
 \myincludegraphics[scale=1.25]{figures/figvvflimit4} \\
 (a)\\
 \myincludegraphics[scale=1.25]{figures/figvvflimit4a} \\
-(b)
-\end{tabular}}
+(b)}
 }% ends whole if-then-else
 We compute $\vrp$ as $\vrp(t) = \la -\sin t, \cos t, 1\ra$. At $t= \pi/2$, we have $\vrp(\pi/2) = \la -1,0,1\ra$. \autoref{fig:vvflimit4} \ifthenelse{\boolean{in_threeD}}{shows a graph of $\vec r(t)$,}{shows two graphs of $\vec r(t)$, from different perspectives,} with $\vrp(\pi/2)$ plotted with its initial point at the origin and at $\vec r(\pi/2)$.}
 
@@ -154,8 +152,7 @@ In Examples \ref{ex_vvflimit3} and \ref{ex_vvflimit4}, sketching a particular de
 	$$\vec \ell(t) = \vec r(c) + t\,\vrp(c).$$
 \end{enumerate}}
 
-\example{ex_vvfderiv1}{Finding tangent lines to curves in space}{Let $\vec r(t) = \la t,t^2,t^3\ra$ on $[-1.5,1.5]$. Find the vector equation of the line tangent to the graph of $\vec r$ at $t=-1$. }
-{%%%
+%%%
 %%%   Long figure statements follow for if in/not in 3D
 \ifthenelse{\boolean{in_threeD}}{% in threeD
 \mfigurethree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
@@ -168,19 +165,20 @@ In Examples \ref{ex_vvflimit3} and \ref{ex_vvflimit4}, sketching a particular de
 }%end in threeD
 {% begin else, not in three D
 \mtable{Graphing a curve in space with its tangent line.}{fig:vvfderiv1}{%
-\begin{tabular}{c}
 \myincludegraphics[scale=1.25,trim=5mm 5mm 5mm 5mm,clip]{figures/figvvfderiv1}\\
 (a)\\[10pt]
 \myincludegraphics{figures/figvvfderiv1b}\\
-(b)
-\end{tabular}
-}% end mtable
+(b)}% end mtable
 }% ends all of the if-then-else statements
-To find the equation of a line, we need a point on the line and the line's direction. The point is given by $\vec r(-1) = \la -1,1,-1\ra$. (To be clear, $\la -1,1,-1\ra$ is a \emph{vector}, not a point, but we use the point ``pointed to'' by this vector.)
+
+\example{ex_vvfderiv1}{Finding tangent lines to curves in space}{Let $\vec r(t) = \la t,t^2,t^3\ra$ on $[-1.5,1.5]$. Find the vector equation of the line tangent to the graph of $\vec r$ at $t=-1$. }
+{To find the equation of a line, we need a point on the line and the line's direction. The point is given by $\vec r(-1) = \la -1,1,-1\ra$. (To be clear, $\la -1,1,-1\ra$ is a \emph{vector}, not a point, but we use the point ``pointed to'' by this vector.)
 
 The direction comes from $\vrp(-1)$. We compute, component--wise, $\vrp(t) = \la 1,2t, 3t^2\ra$. Thus $\vrp(-1) = \la 1,-2,3\ra$. 
 
 The vector equation of the line is $\ell(t) = \la -1,1,-1\ra + t\la 1,-2,3\ra$. \ifthenelse{\boolean{in_threeD}}{This line and $\vec r(t)$ are sketched in \autoref{fig:vvfderiv1}.}{This line and $\vec r(t)$ are sketched, from two perspectives, in \autoref{fig:vvfderiv1} (a) and (b).}}
+
+\mfigure{0in}{Graphing $\vec r(t)$ and its tangent line in \autoref{ex_vvfderiv3}.}{fig:vvfderiv3}{figures/figvvfderiv3}
 
 \example{ex_vvfderiv3}{Finding tangent lines to curves}{Find the equations of the lines tangent to $\vec r(t) = \la t^3,t^2\ra$ at $t=-1$ and $t=0$.}
 {We find that $\vrp(t) = \la 3t^2,2t\ra$. At $t=-1$, we have
@@ -188,8 +186,7 @@ $$\vec r(-1) = \la -1,1\ra\quad \text{and}\quad \vrp(-1) = \la 3,-2\ra,$$
 so the equation of the line tangent to the graph of $\vec r(t)$ at $t=-1$ is
 $$\ell(t) = \la -1,1\ra + t\la 3,-2\ra.$$ This line is graphed with $\vec r(t)$ in \autoref{fig:vvfderiv3}.
 
-\mfigure{0in}{Graphing $\vec r(t)$ and its tangent line in \autoref{ex_vvfderiv3}.}{fig:vvfderiv3}{figures/figvvfderiv3}
-At $t=0$, we have $\vrp(0) = \la 0,0\ra=\vec 0$! This implies that the tangent line ``has no direction.'' We cannot apply \autoref{def:vector_tangent}, hence cannot find the equation of the tangent line.}
+At $t=0$, we have $\vrp(0) = \la 0,0\ra=\vec 0$. This implies that the tangent line ``has no direction.'' We cannot apply \autoref{def:vector_tangent}, hence cannot find the equation of the tangent line.}
 
 We were unable to compute the equation of the tangent line to $\vec r(t)= \la t^3,t^2\ra$ at $t=0$ because $\vrp(0) = \vec 0$. The graph in \autoref{fig:vvfderiv3} shows that there is a cusp at this point. This leads us to another definition of \textbf{smooth}, previously defined by \autoref{def:smooth} in \autoref{sec:param_eqs}.
 

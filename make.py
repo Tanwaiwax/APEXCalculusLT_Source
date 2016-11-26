@@ -2,6 +2,7 @@
 
 import os
 import sys
+import glob
 import time
 import shutil
 import argparse
@@ -10,6 +11,10 @@ import itertools
 import subprocess
 
 start = time.time()
+
+asyfiles = ['figdisk1_3D','figwash1c_3D','figsq_rt_3D','figsq_rt_b_3D',
+            'figwash4_3D','figwash4b_3D','figshellparab_3D',
+            'figshellparab_b_3D','figarc4_3D','figarc4_b_3D']
 
 parser = argparse.ArgumentParser(description='Compile document to a pdf.',
                                  epilog="If no options are given, "
@@ -20,24 +25,23 @@ parser.add_argument("-a","--all", action="store_true",
 
 parser.add_argument("-c","--calculus", type=int, choices=[0,1,2,3,4],
                     default=0,
-                    help="Calculus semester 1, 2, 3, or (default) all. (3 or 5 min).")
+                    help="Calculus semester 1, 2, 3, or (default) all. (1 or 4 min)")
+
+parser.add_argument("-f","--figures", action="store_true",
+                    help="Create 3D figures using Asymptote.")
 
 parser.add_argument("-i","--instructor", action="store_true",
                     help="Instructor version "
                     "(prints all answers; default is student).")
 
-parser.add_argument("-p","--programmer", action="store_true",
-                    help="Programmer version "
-                    "(prints question/answer source; default is no; implies -i).")
-
 parser.add_argument("-n","--internet", action="store_true",
-                    help="Create interNet version (options x, w, & t).")
+                    help="Create interNet version (options x & w).")
 
 parser.add_argument("-x","--xml", action="store_true",
-                    help="Create xml version. (2 min)");
+                    help="Create xml version. (40 min)");
 
 parser.add_argument("-w","--web", action="store_true",
-                    help="Convert xml version to html. (40 min)");
+                    help="Convert xml version to html.");
 
 parser.add_argument("-q","--quit", action="store_true",
                     help="Write options.tex and quit.")
@@ -65,47 +69,74 @@ def getTime():
     seconds = int(end-start)
     return (seconds//60,seconds%60)
 
+def makefigs():
+    try:
+        os.chdir('figures')
+        for asyfile in asyfiles:
+            exts = ('.pdf','.prc','BW.pdf','BW.prc')
+            try:
+                oldest_bin_time = min(os.path.getmtime(asyfile+ext) for ext in exts)
+            except FileNotFoundError:
+                oldest_bin_time = -float("infinity")
+            if ( os.path.getmtime(asyfile+'.asy') < oldest_bin_time ):
+                continue
+            # -user apexbw=true runs that command in apexconfig.asy
+            # using -bw causes the figure to be blacked out (?!)
+            bwopts = ( [], ['-user','apexbw=true','-outname',asyfile+'BW'] )
+            prcopts = ( [], ['-noprc'] )
+            for prcopt,bwopt in itertools.product(prcopts,bwopts):
+                subprocess.check_call(['asy']+prcopt+bwopt+[asyfile])
+        for outfile in glob.iglob("*.out"):
+            if ( os.path.getsize(outfile) == 0 ):
+                os.remove(outfile)
+    finally:
+        os.chdir('..')
+
+def writeoptions(args):
+    with open('options.tex','w') as options:
+        title = "Calculus"
+        if args.calculus in (1,2,3):
+            iii = "I"*args.calculus
+            title += " "+iii
+            options.write(r"\includeonly{Calculus"+iii+"}\n")
+        options.write(r"\newcommand{\thetitle}{"+title+"}\n")
+        if args.blackwhite:
+            options.write("\\printinblackandwhite\n")
+            options.write("\\usetwoDgraphics\n")
+        elif args.static:
+            options.write("\\printincolor\n")
+            options.write("\\usetwoDgraphics\n")
+        else:
+            options.write("\\printincolor\n")
+            options.write("\\usethreeDgraphics\n")
+            
 def compilewith(commands=False):
     if commands:
         args = parser.parse_args([''.join(commands)])
     else:
         args = parser.parse_args()
     newsuffix = ''
-    with open('options.tex','w') as options:
-        if args.calculus == 4:
-            args.calculus = 0
-        title = "Calculus"
-        if args.calculus in (1,2,3):
-            iii = "I"*args.calculus
-            options.write(r"\includeonly{Calculus"+iii+"}\n")
-            title += " "+iii
-            newsuffix += "_"+iii
-        options.write(r"\newcommand{\thetitle}{"+title+"}\n")
-        if args.programmer:
-            options.write("\\printallanswers\n")
-            newsuffix += "_prg"
-        if args.programmer:
-            options.write("\\printexercisenames\n")
-        if args.blackwhite:
-            options.write("\\printinblackandwhite\n")
-            options.write("\\usetwoDgraphics\n")
-            newsuffix += "_BW"
-        elif args.static:
-            options.write("\\printincolor\n")
-            options.write("\\usetwoDgraphics\n")
-            newsuffix += "_small"
-        else:
-            options.write("\\printincolor\n")
-            options.write("\\usethreeDgraphics\n")
-        #print("options written:",commands)
-    commandline = []
+    if args.calculus == 4:
+        args.calculus = 0
+    writeoptions(args)
     if args.quit:
         return
-    if args.xml or args.web:
+    if args.figures:
+        makefigs()
+        return
+    if args.calculus in (1,2,3):
+        iii = "I"*args.calculus
+        newsuffix += "_"+iii
+    if args.blackwhite:
+        newsuffix += "_BW"
+    elif args.static:
+        newsuffix += "_small"
+    if args.xml or args.web or args.instructor:
         compilewith("-qsc0")
+    commandline = []
     if args.xml:
         newsuffix = "_xml"
-        commandline = ['latexml',#'--verbose','--verbose',#'--quiet',#
+        commandline = ['latexml','--quiet','--quiet',#'--verbose','--verbose',#
                        '--destination=calculus.xml',
                        'Calculus']
         if platform.mac_ver()[0] is not '':
@@ -134,10 +165,11 @@ def compilewith(commands=False):
         commandline = ['latexmk','-xelatex','Calculus']
     with open('logs/compilation'+newsuffix+'.log','w') as mystdout:
         try:
-            print("running",commandline)
+#            print("running",commandline)
             subprocess.check_call(commandline,stdout=mystdout,stderr=subprocess.STDOUT)
         except:
-            print("Failing command:",commands);
+            time = "{0[0]:02d}:{0[1]:02d}".format(getTime())
+            print("At",time,"failing command:",commands);
             raise
     time = "{0[0]:02d}:{0[1]:02d}".format(getTime())
     if commands:
@@ -148,6 +180,7 @@ def compilewith(commands=False):
         os.rename("Calculus.pdf","ApexPDFs/Calculus"+newsuffix+".pdf")
 
 if args.all:
+    compilewith('-f')
     for part,size in itertools.product('0123',["","s","b"]):
         # switch the order so that all parts are compiled together to speed
         # up compilation, since the index shouldn't need to be recommputed

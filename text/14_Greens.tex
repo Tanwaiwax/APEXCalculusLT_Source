@@ -1,10 +1,10 @@
 \section{Green's Theorem}\label{sec:greens}
 
-We will now see a way of evaluating the line integral of a \emph{smooth} vector field around a simple closed curve. A vector field $\textbf{f}(x,y) = P(x,y)\,\textbf{i} + Q(x,y)\,\textbf{j}$ is \textbf{smooth} if its component functions $P(x,y)$ and $Q(x,y)$ are smooth.\index{vector field!smooth} We will use \emph{Green's Theorem} (sometimes called \emph{Green's Theorem in the plane}) to relate the \emph{line} integral around a closed curve with a \emph{double} integral over the region inside the curve:\index{Green's Theorem}
+We will now see a way of evaluating the line integral of a \emph{smooth} vector field around a simple closed curve. A vector field $\vecf(x,y) = P(x,y)\,\veci + Q(x,y)\,\vecj$ is \textbf{smooth} if its component functions $P(x,y)$ and $Q(x,y)$ are smooth.\index{vector field!smooth} We will use \emph{Green's Theorem} (sometimes called \emph{Green's Theorem in the plane}) to relate the \emph{line} integral around a closed curve with a \emph{double} integral over the region inside the curve:\index{Green's Theorem}
 
-\theorem{thm:green}{Green's Theorem}{Let $R$ be a region in $\mathbb{R}^2$ whose boundary is a simple closed curve $C$ which is piecewise smooth. Let $\textbf{f}(x,y) = P(x,y)\,\textbf{i} + Q(x,y)\,\textbf{j}$ be a smooth vector field defined on both $R$ and $C$. Then
+\theorem{thm:green}{Green's Theorem}{Let $R$ be a region in $\mathbb{R}^2$ whose boundary is a simple closed curve $C$ which is piecewise smooth. Let $\vecf(x,y) = P(x,y)\,\veci + Q(x,y)\,\vecj$ be a smooth vector field defined on both $R$ and $C$. Then
   \begin{equation}\label{eqn:green}
-   \oint_{C}\dotp{f}{dr}
+   \oint_{C}\vecf\cdot d\vecr
    = \iint_{R} \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)\,dA ,
   \end{equation}
   where $C$ is traversed so that $R$ is always on the left side of $C$.}
@@ -57,7 +57,7 @@ We will now see a way of evaluating the line integral of a \emph{smooth} vector 
   \fill (4.2,3) circle (2pt);
   \fill (2,1) circle (2pt);
  \end{tikzpicture}
- \captionof{figure}{Figure for Green's Theorem on a simple region.}
+ \caption{Figure for Green's Theorem on a simple region.}
  \label{fig_green_simple}
  \end{center}
  \end{lxfigure}
@@ -84,7 +84,7 @@ We will now see a way of evaluating the line integral of a \emph{smooth} vector 
  \end{align*}
 Putting this together, we have
  \begin{align*}
-  \oint_{C}\dotp{f}{dr} &= \oint_C P(x,y)\,dx + \oint_C Q(x,y)\,dy\\[6pt]
+  \oint_{C}\vecf\cdot d\vecr &= \oint_C P(x,y)\,dx + \oint_C Q(x,y)\,dy\\[6pt]
    &= -\iint_{R} \frac{\partial P}{\partial y}\,dA + \iint_{R} \frac{\partial Q}{\partial x}\,dA\\[6pt]
    &= \iint_{R} \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)\,dA .\qedhere
  \end{align*}
@@ -122,13 +122,13 @@ Though we proved Green's Theorem only for a simple region $R$, the theorem can a
    &= \iint_{R} (2y - 2y)\,dA
    = \iint_{R} 0\,dA = 0 .
  \end{align*}
- We actually already knew that the answer was zero. Recall from \autoref{exmp_lineintexmpclosed} in \autoref{sec:line_int_props} that the vector field $\textbf{f}(x,y) = ( x^2 + y^2 )\,\textbf{i} + 2xy\,\textbf{j}$ has a potential function $F(x,y)=\frac{1}{3}x^3 + xy^2$, and so $\oint_{C}\dotp{f}{dr} = 0$ by \autoref{cor:lineintsuffpath}.}
+ We actually already knew that the answer was zero. Recall from \autoref{exmp_lineintexmpclosed} in \autoref{sec:line_int_props} that the vector field $\vecf(x,y) = ( x^2 + y^2 )\,\veci + 2xy\,\vecj$ has a potential function $F(x,y)=\frac{1}{3}x^3 + xy^2$, and so $\oint_{C}\vecf\cdot d\vecr = 0$ by \autoref{cor:lineintsuffpath}.}
 
-\example*{exmp_greenhole}{Green's Theorem with a Hole}{Let $\textbf{f}(x,y) = P(x,y)\,\textbf{i} + Q(x,y)\,\textbf{j}$, where
+\example*{exmp_greenhole}{Green's Theorem with a Hole}{Let $\vecf(x,y) = P(x,y)\,\veci + Q(x,y)\,\vecj$, where
  \[
   P(x,y) = \frac{-y}{x^2 + y^2} \quad\text{and}\quad Q(x,y) = \frac{x}{x^2 + y^2} ,
  \]
- and let $R =\lbrace\,(x,y): 0 < x^2 + y^2 \le 1\,\rbrace$. For the boundary curve $C:x^2 + y^2 = 1$, traversed counterclockwise, it was shown in Exercise \ref{contra_green}(b) in \autoref{sec:line_int_props} that $\oint_{C}\dotp{f}{dr} = 2\pi$. But
+ and let $R =\lbrace\,(x,y): 0 < x^2 + y^2 \le 1\,\rbrace$. For the boundary curve $C:x^2 + y^2 = 1$, traversed counterclockwise, it was shown in Exercise \ref{contra_green}(b) in \autoref{sec:line_int_props} that $\oint_{C}\vecf\cdot d\vecr = 2\pi$. But
  \[
   \frac{\partial Q}{\partial x} = \frac{y^2 - x^2}{(x^2 + y^2 )^2} = \frac{\partial P}{\partial y} 
   \Rightarrow 
@@ -158,10 +158,10 @@ This would seem to contradict Green's Theorem. However, note that $R$ is not the
  \node [rotate=-45] at (1.4142,1.4142) {\Large $\blacktriangleleft$};
 \end{tikzpicture}}
 If we modify the region $R$ to be the \emph{annulus} $R =\lbrace\,(x,y): 1/4 \le x^2 + y^2 \le 1\,\rbrace$ (see \autoref{fig_annulus}), and take the ``boundary'' $C$ of $R$ to be $C = C_1 \cup C_2$, where $C_1$ is\index{annulus} the unit circle $x^2 + y^2 = 1$ traversed counterclockwise and $C_2$ is the circle $x^2 + y^2 = 1/4$ traversed \emph{clockwise}, then it can be shown (see Exercise \ref{const_closed_int}) that
-\[\oint_{C}\dotp{f}{dr} = 0 .\]
+\[\oint_{C}\vecf\cdot d\vecr = 0 .\]
 We would still have $\iint_{R} \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)\,dA= 0$, so for this $R$ we would have
 \[
- \oint_{C}\dotp{f}{dr} =
+ \oint_{C}\vecf\cdot d\vecr =
  \iint_{R} \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)\,dA ,
 \]
 which shows that Green's Theorem holds for the annular region $R$.\bigskip
@@ -219,49 +219,49 @@ It turns out that Green's Theorem can be extended to \emph{multiply connected} r
  \end{tikzpicture} \\
  Region $R$ with one hole & Region $R$ with two holes
  \end{tabular}
- \captionof{figure}{Multiply connected regions}
+ \caption{Multiply connected regions}
  \label{fig:multconn}
 \end{lxfigure}
 
-The intuitive idea for why Green's Theorem holds for multiply connected regions is shown in \autoref{fig:multconn} above. The idea is to cut ``slits'' between the boundaries of a multiply connected region $R$ so that $R$ is divided into subregions which do \emph{not} have any ``holes''. For example, in \autoref{fig:multconn}(a) the region $R$ is the union of the regions $R_1$ and $R_2$, which are divided by the slits indicated by the dashed lines. Those slits are part of the boundary of both $R_1$ and $R_2$, and we traverse then in the manner indicated by the arrows. Notice that along each slit the boundary of $R_1$ is traversed in the opposite direction as that of $R_2$, which means that the line integrals of \textbf{f} along those slits cancel each other out. Since $R_1$ and $R_2$ do not have holes in them, then Green's Theorem holds in each subregion, so that
+The intuitive idea for why Green's Theorem holds for multiply connected regions is shown in \autoref{fig:multconn} above. The idea is to cut ``slits'' between the boundaries of a multiply connected region $R$ so that $R$ is divided into subregions which do \emph{not} have any ``holes''. For example, in \autoref{fig:multconn}(a) the region $R$ is the union of the regions $R_1$ and $R_2$, which are divided by the slits indicated by the dashed lines. Those slits are part of the boundary of both $R_1$ and $R_2$, and we traverse then in the manner indicated by the arrows. Notice that along each slit the boundary of $R_1$ is traversed in the opposite direction as that of $R_2$, which means that the line integrals of \vecf\ along those slits add to 0. Since $R_1$ and $R_2$ do not have holes in them, then Green's Theorem holds in each subregion, so that
 \[
- \oint_{\substack{\text{bdy}\\\text{of }R_1}}\dotp{f}{dr} = \iint_{R_1}
+ \oint_{\substack{\text{bdy}\\\text{of }R_1}}\vecf\cdot d\vecr = \iint_{R_1}
   \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)\,dA \quad\text{and}\quad
- \oint_{\substack{\text{bdy}\\\text{of }R_2}}\dotp{f}{dr} = \iint_{R_2}
+ \oint_{\substack{\text{bdy}\\\text{of }R_2}}\vecf\cdot d\vecr = \iint_{R_2}
   \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)\,dA .
 \]
-But since the line integrals along the slits cancel out, we have
+But since the line integrals along the slits are opposite each other, we have
 \[
- \oint_{C_1 \cup C_2}\dotp{f}{dr} =
- \oint_{\substack{\text{bdy}\\\text{of }R_1}}\dotp{f}{dr} +
- \oint_{\substack{\text{bdy}\\\text{of }R_2}}\dotp{f}{dr} ,
+ \oint_{C_1 \cup C_2}\vecf\cdot d\vecr =
+ \oint_{\substack{\text{bdy}\\\text{of }R_1}}\vecf\cdot d\vecr +
+ \oint_{\substack{\text{bdy}\\\text{of }R_2}}\vecf\cdot d\vecr ,
 \]
 and so
 \[
- \oint_{C_1 \cup C_2}\dotp{f}{dr} = \iint_{R_1}
+ \oint_{C_1 \cup C_2}\vecf\cdot d\vecr = \iint_{R_1}
   \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)\,dA + \iint_{R_2}
   \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)\,dA = \iint_{R}
   \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)\,dA ,
 \]
 which shows that Green's Theorem holds in the region $R$. A similar argument shows that the theorem holds in the region with two holes shown in \autoref{fig:multconn}(b).
 
-We know from \autoref{cor:lineintsuffpath} that when a smooth vector field $\textbf{f}(x,y) = P(x,y)\,\textbf{i} + Q(x,y)\,\textbf{j}$ on a region $R$ (whose boundary is a piecewise smooth, simple closed curve $C$) has a potential in $R$, then $\oint_{C}\dotp{f}{dr} = 0$. And if the potential $F(x,y)$ is smooth in $R$, then $\frac{\partial F}{\partial x} = P$ and $\frac{\partial F}{\partial y} = Q$, and so we know that
+We know from \autoref{cor:lineintsuffpath} that when a smooth vector field $\vecf(x,y) = P(x,y)\,\veci + Q(x,y)\,\vecj$ on a region $R$ (whose boundary is a piecewise smooth, simple closed curve $C$) has a potential in $R$, then $\oint_{C}\vecf\cdot d\vecr = 0$. And if the potential $F(x,y)$ is smooth in $R$, then $\frac{\partial F}{\partial x} = P$ and $\frac{\partial F}{\partial y} = Q$, and so we know that
 \[
  \frac{\partial^2 F}{\partial y \,\partial x} = \frac{\partial^2 F}{\partial x \,\partial y} \Rightarrow
  \frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x} \text{ in $R$.}
 \]
 Conversely, if $\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x}$ in $R$ then
 \[
- \oint_{C}\dotp{f}{dr} = \iint_{R} \left( \frac{\partial Q}{\partial x} -
+ \oint_{C}\vecf\cdot d\vecr = \iint_{R} \left( \frac{\partial Q}{\partial x} -
    \frac{\partial P}{\partial y} \right)\,dA = \iint_{R} 0\,dA = 0 .
 \]
 For a \textbf{simply connected}\index{simply connected} region $R$ (i.e. a region with no holes), the following can be shown:\index{path independence}
 
 \theorem{thm_equiv_path_indep}{Equivalence of Path Independence}{The following statements are equivalent for a simply connected region $R$ in $\mathbb{R}^2$:
   \begin{enumerate}
-  \item $\textbf{f}(x,y) = P(x,y)\,\textbf{i} + Q(x,y)\,\textbf{j}$ has a smooth potential $F(x,y)$ in $R$
-  \item $\ds{\int_{C}\dotp{f}{dr}}$ is independent of the path for any curve $C$ in $R$
-  \item $\ds{\oint_{C}\dotp{f}{dr}} = 0$ for every simple closed curve $C$ in $R$
+  \item $\vecf(x,y) = P(x,y)\,\veci + Q(x,y)\,\vecj$ has a smooth potential $F(x,y)$ in $R$
+  \item $\ds{\int_{C}\vecf\cdot d\vecr}$ is independent of the path for any curve $C$ in $R$
+  \item $\ds{\oint_{C}\vecf\cdot d\vecr} = 0$ for every simple closed curve $C$ in $R$
   \item $\dfrac{\partial P}{\partial y} = \dfrac{\partial Q}{\partial x}$ in $R$\quad
    (in this case, the differential form $P\,dx + Q\,dy$ is exact)\index{exact differential form}
  \end{enumerate}}

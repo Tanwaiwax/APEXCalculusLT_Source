@@ -45,7 +45,8 @@ We can plot the terms of a sequence with a scatter plot. The ``$x$''-axis is use
 
 \item		$a_1= 4+(-1)^1 = 3$;\qquad $a_2 = 4+(-1)^2 = 5$; 
 
-\noindent $a_3=4+(-1)^3 = 3$; \qquad $a_4 = 4+(-1)^4 = 5$. Note that the range of this sequence is finite, consisting of only the values 3 and 5. This sequence is plotted in \autoref{fig:seq1b}(b).
+\noindent $a_3=4+(-1)^3 = 3$; \qquad $a_4 = 4+(-1)^4 = 5$.\\
+Note that the range of this sequence is finite, consisting of only the values 3 and 5. This sequence is plotted in \autoref{fig:seq1b}(b).
 
 \item		$\ds a_1= \frac{(-1)^{1(2)/2}}{1^2} = -1$; \qquad $\ds a_2 = \frac{(-1)^{2(3)/2}}{2^2} =-\frac14$
 
@@ -125,14 +126,22 @@ If $\ds \lim_{x\to\infty} f(x) = L$, then $\ds\lim_{n\to\infty} a_n = L$.
 \example{ex_seq4}{Determining convergence/divergence of a sequence}{Determine the convergence or divergence of the following sequences.
 %
 \mtable{Scatter plots of the sequences in \autoref{ex_seq4}.}{fig:seq4}{%
-\begin{tabular}{c}
-\myincludegraphics{figures/figseq4a} \\
-(a)\rule[-25pt]{0pt}{1pt}\\
-\myincludegraphics{figures/figseq4b} \\
-(b)\rule[-25pt]{0pt}{1pt}\\
-\myincludegraphics{figures/figseq4c} \\
-(c)
-\end{tabular}}
+ \begin{tikzpicture}
+  \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+    axis y line=middle,axis x line=middle,name=myplot,axis on top,%
+    xtick={20,40,60,80,100},ymin=-11,ymax=11,xmin=-.1,xmax=110]
+   \addplot [only marks,{\colorone},mark size={.75pt},domain=1:100,samples=21]
+    {(3*x^2 - 2*x + 1)/(x^2 - 1000)};
+   \draw (axis cs:60,-8) node {\scriptsize $a_n=\dfrac{3n^2-2n+1}{n^2-1000}$};
+  \end{axis}
+  \node [right] at (myplot.right of origin) {\scriptsize $n$};
+  \node [above] at (myplot.above origin) {\scriptsize $y$};
+ \end{tikzpicture}
+\\(a)\\
+\myincludegraphics{figures/figseq4b}
+\\(b)\\
+\myincludegraphics{figures/figseq4c}
+\\(c)}
 %
 \[
  \text{1. }\{a_n\} = \left\{\frac{3n^2-2n+1}{n^2-1000}\right\}\qquad
@@ -140,7 +149,7 @@ If $\ds \lim_{x\to\infty} f(x) = L$, then $\ds\lim_{n\to\infty} a_n = L$.
  \text{3. }\{a_n\} = \left\{\frac{(-1)^n}{n}\right\}
 \]}
 {\begin{enumerate}
-\item		Using \autoref{thm:lim_rational_fn_at_infty}, we can state that $\ds\lim_{x\to\infty} \frac{3x^2-2x+1}{x^2-1000} = 3$. (We could have also directly applied l'H\^opital's Rule.) Thus the sequence $\{a_n\}$ converges, and its limit is 3. A scatter plot of every 5 values of $a_n$ is given in \autoref{fig:seq4} (a). The values of $a_n$ vary widely near $n=30$, ranging from about $-73$ to $125$, but as $n$ grows, the values approach 3.
+\item		Using \autoref{thm:lim_rational_fn_at_infty}, we can state that $\ds\lim_{x\to\infty} \frac{3x^2-2x+1}{x^2-1000} = 3$. (We could have also directly applied L'H\^opital's Rule.) Thus the sequence $\{a_n\}$ converges, and its limit is 3. A scatter plot of every 5 values of $a_n$ is given in \autoref{fig:seq4} (a). The values of $a_n$ vary widely near $n=30$, ranging from about $-73$ to $125$, but as $n$ grows, the values approach 3.
 
 \item		The limit $\ds\lim_{x\to\infty}\cos x$ does not exist, as $\cos x$ oscillates (and takes on every value in $[-1,1]$ infinitely many times). Thus we cannot apply \autoref{thm:seq_limit}. 
 
@@ -210,17 +219,17 @@ We continue our study of the limits of sequences by considering some of the prop
 \end{minipage}}
 
 \example{ex_seq6}{Applying properties of limits of sequences}{Let the following limits be given:
-
 \begin{itemize}
 \item	 	$\ds \lim_{n\to\infty} a_n = 0$;
 \item		$\ds \lim_{n\to\infty} b_n = e$; and
 \item	  $\ds \lim_{n\to\infty} c_n = 5$.
 \end{itemize}
-
-Evaluate the following limits.\\
-
-\hfill 1. $\ds \lim_{n\to\infty} (a_n+b_n)$ \qquad 2. $\ds \lim_{n\to\infty} (b_n\cdot c_n)$ \qquad 3. $\ds \lim_{n\to\infty} (1000\cdot a_n)$\hfill\null
-}
+Evaluate the following limits.
+\[
+ \text{1.}\quad\lim_{n\to\infty} (a_n+b_n)\qquad
+ \text{2.}\quad\lim_{n\to\infty} (b_n\cdot c_n)\qquad
+ \text{3.}\quad\lim_{n\to\infty} (1000\cdot a_n)
+\]}
 {We will use \autoref{thm:seq_properties} to answer each of these.
 \begin{enumerate} 
 \item		Since $\ds \lim_{n\to\infty} a_n = 0$ and $\ds \lim_{n\to\infty} b_n = e$, we conclude that $\ds \lim_{n\to\infty} (a_n+b_n) = 0+e = e.$ So even though we are adding something to each term of the sequence $b_n$, we are adding something so small that the final limit is the same as before.
@@ -263,25 +272,20 @@ A sequence $\{a_n\}$ is said to be \textbf{bounded above} if there exists an $M$
 
 It follows from this definition that an unbounded sequence may be bounded above or bounded below; a sequence that is both bounded above and below is simply a bounded sequence.
 
-\example{ex_seq3}{Determining boundedness of sequences}{Determine the boundedness of the following sequences.\\
+\example{ex_seq3}{Determining boundedness of sequences}{Determine the boundedness of the following sequences.
+\[
+ \text{1.}\quad\{a_n\} = \left\{\frac1n\right\}\qquad\qquad
+ \text{2.}\quad\{a_n\} = \{2^n\}
+\]
 %
-\mtable{A plot of $\{a_n\} = \{1/n\}$ and $\{a_n\} = \{2^n\}$ from \autoref{ex_seq3}.}{fig:seq3}{
-\begin{tabular}{c}
-\myincludegraphics{figures/figseq3a}\\
+\mtable{A plot of $\{a_n\} = \{1/n\}$ and $\{a_n\} = \{2^n\}$ from \autoref{ex_seq3}.}{fig:seq3}{\myincludegraphics{figures/figseq3a}\\
 (a)\\[10pt]
 \myincludegraphics{figures/figseq3b}\\
-(b)
-\end{tabular}}
-%
-\hfill
-1. $\ds\{a_n\}  = \left\{\frac1n\right\}$ \qquad 2. 	$\{a_n\} = \{2^n\}$
-\hfill \null
-}
+(b)}}
 {\begin{enumerate}
-\item		The
-terms of this sequence are always positive but are decreasing, so we have $0<a_n<2$ for all $n$. Thus this sequence is bounded. \autoref{fig:seq3}(a) illustrates this.
+\item	The terms of this sequence are always positive but are decreasing, so we have $0<a_n<2$ for all $n$. Thus this sequence is bounded. \autoref{fig:seq3}(a) illustrates this.
 
-\item		The terms of this sequence obviously grow without bound. However, it is also true that these terms are all positive, meaning $0<a_n$. Thus we can say the sequence is unbounded, but also bounded below. \autoref{fig:seq3}(b) illustrates this.\eoehere
+\item	The terms of this sequence obviously grow without bound. However, it is also true that these terms are all positive, meaning $0<a_n$. Thus we can say the sequence is unbounded, but also bounded below. \autoref{fig:seq3}(b) illustrates this.\eoehere
 \end{enumerate}}
 
 The previous example produces some interesting concepts. First, we can recognize that the sequence $\ds\left\{1/n\right\}$ converges to 0. This says, informally, that ``most'' of the terms of the sequence are ``really close'' to 0. This implies that the sequence is bounded, using the following logic. First, ``most'' terms are near 0, so we could find some sort of bound on these terms (using \autoref{def:seq_limit}, the bound is $\epsilon$). That leaves a ``few'' terms that are not near 0 (i.e., a \emph{finite} number of terms). A finite list of numbers is always bounded. 
@@ -295,7 +299,7 @@ This logic suggests that if a sequence converges, it must be bounded. This is in
 
 \mnote{\textbf{Note:} Keep in mind what \autoref{thm:converge_bounded} does \emph{not} say. It does not say that bounded sequences must converge, nor does it say that if a sequence does not converge, it is not bounded.}
 
-In \autoref{ex_seq6} we saw the sequence $\ds \{b_n\} = \left\{\left(1+1/n\right)^{n}\right\}$, where it was stated that $\ds \lim_{n\to\infty} b_n = e$. (Note that this is simply restating part of \autoref{thm:special_limits}.) Even though it may be difficult to intuitively grasp the behavior of this sequence, we know immediately that it is bounded.
+In \autoref{sec:lhopitals_rule} \autoref{ex_LHR4} part 1, we found that $\ds \lim_{x\to \infty} (1+1/x)^x=e$. If we consider the sequence $\ds \{b_n\}=\{(1+1/n)^n\}$, we see that $\ds \lim_{n\to \infty}=e$. Even though it may be difficult to intuitively grasp the behavior of this sequence, we know immediately that it is bounded.
 
 Another interesting concept to come out of \autoref{ex_seq3} again involves the sequence $\{1/n\}$. We stated, without proof, that the terms of the sequence were decreasing. That is, that $a_{n+1} < a_n$ for all $n$. (This is easy to show. Clearly $n < n+1$. Taking reciprocals flips the inequality: $1/n > 1/(n+1)$. This is the same as $a_n > a_{n+1}$.) Sequences that either steadily increase or decrease are important, so we give this property a name.
 

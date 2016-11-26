@@ -69,11 +69,11 @@ As with the tangent line we note that it is possible for a normal line to be ver
 
 	The normal line is horizontal (and hence, the tangent line is vertical) when $\sin t=0$; that is, when $t= 0,\ \pi,\ 2\pi$, corresponding to the points $(-1,0)$ and $(0,1)$ on the circle. These results should make intuitive sense.
 	\item	The slope of the normal line at $t=t_0$ is $\ds m=\frac{\sin t_0}{\cos t_0} = \tan t_0$. This normal line goes through the point $(\cos t_0,\sin t_0)$, giving the line
-\mfigure{0in}{Illustrating how a circle's normal lines pass through its center.}{fig:parcalc2}{figures/figparcalc2}%
 \begin{align*}
 	y &=\frac{\sin t_0}{\cos t_0}(x-\cos t_0) + \sin t_0\\	
 	&= (\tan t_0)x,
 \end{align*}%
+\mfigure{0in}{Illustrating how a circle's normal lines pass through its center.}{fig:parcalc2}{figures/figparcalc2}%
 as long as $\cos t_0\neq 0$. It is an important fact to recognize that the normal lines to a circle pass through its center, as illustrated in \autoref{fig:parcalc2}. Stated in another way, any line that passes through the center of a circle intersects the circle at right angles.\eoehere
 % todo the tangent and normal lines aren't dark enough?
 \end{enumerate}}
@@ -91,9 +91,11 @@ Note that both of these are 0 at $t=0$; the curve is not smooth at $t=0$ forming
 
 We can, however, examine the slopes of tangent lines near $t=0$, and take the limit as $t\to 0$. 
 \begin{align*}
-\lim_{t\to0} \frac{y\primeskip'(t)}{x\primeskip'(t)} &=\lim_{t\to0} \frac{3\cos t\sin^2t}{-3\sin t\cos^2t} \quad \text{\small (We can cancel as $t\neq 0$.)}\\
-					&= \lim_{t\to0} -\frac{\sin t}{\cos t}\\
-					&= 0.
+	\lim_{t\to0} \frac{y\primeskip'(t)}{x\primeskip'(t)}
+	&=\lim_{t\to0} \frac{3\cos t\sin^2t}{-3\sin t\cos^2t}
+	\quad \text{\small (We can reduce as $t\neq 0$.)}\\
+	&= \lim_{t\to0} -\frac{\sin t}{\cos t}\\
+	&= 0.
 \end{align*}
 We have accomplished something significant. When the derivative $\frac{dy}{dx}$ returns an indeterminate form at $t=t_0$, we can define its value by setting it to be $\ds \lim_{t\to t_0} $$\frac{dy}{dx}$, if that limit exists. This allows us to find slopes of tangent lines at cusps, which can be very beneficial. 
 
@@ -153,7 +155,7 @@ Reviewing \autoref{ex_parcalc1}, we see that when $t=3/5=0.6$, the graph of the 
 {We need to compute $\frac{dy}{dx}$ and $\frac{d^2y}{dx^2}$. 
 $$\frac{dy}{dx} = \frac{y\primeskip'(t)}{x\primeskip'(t)} = \frac{\cos t}{1/(2\sqrt{t})} = 2\sqrt{t}\cos t.$$
 $$\frac{d^2y}{dx^2} = \frac{\frac{d}{dt}\left[\frac{dy}{dx}\right]}{x\primeskip'(t)} = \frac{\cos t/\sqrt{t}-2\sqrt{t}\sin t}{1/(2\sqrt{t})}=2\cos t-4t\sin t.$$
-The points of inflection are found by setting $\frac{d^2y}{dx^2}=0$. This is not trivial, as equations that mix polynomials and trigonometric functions generally do not have ``nice'' solutions. 
+The possible points of inflection are found by setting $\frac{d^2y}{dx^2}=0$. This is not trivial, as equations that mix polynomials and trigonometric functions generally do not have ``nice'' solutions. 
 
 \mtable{In (a), a graph of $\frac{d^2y}{dx^2}$, showing where it is approximately 0. In (b), graph of the parametric equations in \autoref{ex_parcalc5} along with the points of inflection.}{fig:parcalc5}{%
 \myincludegraphics{figures/figparcalc5b}\\(a)\\
@@ -161,6 +163,50 @@ The points of inflection are found by setting $\frac{d^2y}{dx^2}=0$. This is not
 In \autoref{fig:parcalc5}(a) we see a plot of the second derivative. It shows that it has zeros at approximately $t=0.5,\ 3.5,\ 6.5,\ 9.5,\ 12.5$ and $16$. These approximations are not very good, made only by looking at the graph. Newton's Method provides more accurate approximations. Accurate to 2 decimal places, we have:
 $$t=0.65,\ 3.29,\ 6.36,\ 9.48,\ 12.61\ \text{and}\ 15.74.$$
 The corresponding points have been plotted on the graph of the parametric equations in \autoref{fig:parcalc5}(b). Note how most occur near the $x$-axis, but not exactly on the axis.}
+
+
+\subsection*{Area with Parametric Equations}
+
+We will now find a formula for determining the area under a parametric curve given by the parametric equations
+\[x=f(t)\qquad y=g(t).\]
+We will also need to further add in the assumption that the curve is traced out exactly once as t increases from $\alpha$ to $\beta$.
+%
+%We will do this in much the same way that we found the first derivative.  We will
+First, recall how to find the area under $y=F(x)$ on $a\le x\le b$:
+\[A=\int_a^b F(x)\ dx.\]
+Now think of the parametric equation $x=f(t)$ as a substitution in the integral, assuming that $a=f(\alpha)$ and $b=f(\beta)$ for the purposes of this formula.  (There is actually no reason to assume that this will always be the case and so we'll give a corresponding formula later if it's the opposite case ($b=f(\alpha)$ and $a=f(\beta)$).)
+
+In order to substitute, we'll need $dx=\fp(t)\ dt$. Plugging this into the area formula above and making sure to change the limits to their corresponding $t$ values gives us
+\[A=\int_\alpha^\beta F(f(t))\fp(t)\ dt.\]
+Since we don't know what $F(x)$ is, we'll use the fact that
+\[y=F(x)=F(f(t))=g(t)\]
+and arrive at the formula that we want.
+
+\keyidea{ki_param_area}{Area Under a Parametric Curve}{The area under the parametric curve given by $x=f(t)$, $y=g(t)$, for $f(\alpha)=a<x<b=f(\beta)$ is
+\[A=\int_\alpha^\beta g(t)\fp(t)\ dt.\]}
+
+On the other hand, if we should happen to have $b=f(\alpha)$ and $a=f(\beta)$, then the formula would be
+\[A=\int_\beta^\alpha g(t)\fp(t)\ dt.\]
+
+Let's work an example.
+
+\example{eg_cycloid_area}{Finding the area under a parametric curve}{Determine the area under the cycloid given by the parametric equations
+\[x=6(\theta-\sin\theta)\qquad y=6(1-\cos\theta)\qquad 0\le\theta\le2\pi.\]}{First, notice that we've switched the parameter to $\theta$ for this problem.  This is to make sure that we don't get too locked into always having $t$ as the parameter.
+ 
+Now, we could graph this to verify that the curve is traced out exactly once for the given range if we wanted to.
+ 
+There really isn't too much to this example other than plugging the parametric equations into the formula.  We'll first need the derivative of the parametric equation for $x$ however.
+\[\frac{dx}{d\theta}=6(1-\cos\theta).\]
+The area is then
+\begin{align*}
+A
+&=\int_0^{2\pi}36(1-\cos\theta)^2\ d\theta\\
+&=36\int_0^{2\pi}1-2\cos\theta+\cos^2\theta\ d\theta\\
+&=36\int_0^{2\pi}\frac32-2\cos\theta+\frac12\cos(2\theta)\ d\theta\\
+&=36\left[\frac32\theta-2\sin\theta+\frac14\sin(2\theta)\right]_0^{2\pi}\\
+&=108\pi.\eoehere
+\end{align*}}
+
 
 \subsection*{Arc Length}
 
@@ -199,12 +245,13 @@ This should make sense; we know from geometry that the circumference of a circle
 
 \example{ex_parcalc7}{Arc Length of a Parametric Curve}{The graph of the parametric equations $x=t(t^2-1)$, $y=t^2-1$ crosses itself as shown in \autoref{fig:parcalc7}, forming a ``teardrop.'' Find the arc length of the teardrop.
 \mfigure{0in}{A graph of the parametric equations in \autoref{ex_parcalc7}, where the arc length of the teardrop is calculated.}{fig:parcalc7}{figures/figparcalc7}}
-{We can see by the parametrizations of $x$ and $y$ that when $t=\pm 1$, $x=0$ and $y=0$. This means we'll integrate from $t=-1$ to $t=1$. Applying \autoref{thm:arc_length_parametric}, we have
+{We can see by the parameterizations of $x$ and $y$ that when $t=\pm 1$, $x=0$ and $y=0$. This means we'll integrate from $t=-1$ to $t=1$. Applying \autoref{thm:arc_length_parametric}, we have
 \begin{align*}
 L 	&= \int_{-1}^1\sqrt{(3t^2-1)^2+(2t)^2}\ dt\\
 		&=	\int_{-1}^1 \sqrt{9t^4-2t^2+1} \ dt.
 \end{align*}
 Unfortunately, the integrand does not have an antiderivative expressible by elementary functions. We turn to numerical integration to approximate its value. Using 4 subintervals, Simpson's Rule approximates the value of the integral as $2.65051$. Using a computer, more subintervals are easy to employ, and $n=20$ gives a value of $2.71559$. Increasing $n$ shows that this value is stable and a good approximation of the actual value.}
+
 
 \subsection*{Surface Area of a Solid of Revolution}
 

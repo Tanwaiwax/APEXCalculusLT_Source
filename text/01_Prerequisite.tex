@@ -1,5 +1,4 @@
-\addtocounter{section}{-1}
-\section{Chapter Prerequisites}
+\section*{\thesection\quad Chapter Prerequisites}
 \prereqIntro
 
 \subsection*{Functions}
@@ -26,10 +25,10 @@ Throughout the book we will use several representations of any given function to
 %\hspace{-70pt}%
 %}%
 \begin{lxfigure}
-\begin{center}
-\begin{tabular}{c c c}
+\flushinner{%
+\begin{tabular}{c c c c c}
 \begin{tikzpicture}[scale = .3]
-\begin{axis}[axis y line=middle, axis x line=middle, xmin=-2.2, xmax=2.2, ymin=-.5, ymax=2.2,name=myplot]
+\begin{axis}[axis y line=middle, axis x line=middle, xmin=-2.2, xmax=2.2, ymin=-.5, ymax=2.2,name=myplot, ytick={0,1,2},axis equal]
 \addplot[{\colorone}, domain=-2:2, thick, smooth]{x*x};
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
@@ -37,24 +36,7 @@ Throughout the book we will use several representations of any given function to
 \end{tikzpicture}
 &
 \begin{tikzpicture}[scale = .3]
-\begin{axis}[axis y line=middle, axis x line=middle, xmin=-.5, xmax=3.2, ymin=-.5, ymax=2.2,name=myplot, ytick={0, 1,2}, xtick={0,1,2,3}]
-\addplot[{\colorone}, domain=-0:3, thick, smooth,samples=100]{sqrt x};
-\end{axis}
-\node [right] at (myplot.right of origin) {\scriptsize $x$};
-\node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}
-&
-\begin{tikzpicture}[scale = .3]
-\begin{axis}[axis y line=middle, axis x line=middle, xmin=-2.2, xmax=2.2, ymin=-.5, ymax=2.2,name=myplot, ytick={0, 1,2}]
-\addplot[{\colorone}, domain=-2:2, thick, smooth]{abs x};
-\end{axis}
-\node [right] at (myplot.right of origin) {\scriptsize $x$};
-\node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture} \\
-$y=x^2$ & $y=\sqrt x$& $y=\abs{x}$
-\\
-\begin{tikzpicture}[scale = .3]
-\begin{axis}[axis y line=middle, axis x line=middle, xmin=-2.2, xmax=2.2, ymin=-2.2, ymax=2.2,name=myplot]
+\begin{axis}[axis y line=middle, axis x line=middle, xmin=-2.2, xmax=2.2, ymin=-2.2, ymax=2.2,name=myplot,axis equal]
 \addplot[{\colorone}, domain=-2:2, thick, smooth]{x*x*x};
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
@@ -62,24 +44,15 @@ $y=x^2$ & $y=\sqrt x$& $y=\abs{x}$
 \end{tikzpicture}
 &
 \begin{tikzpicture}[scale = .3]
-\begin{axis}[axis y line=middle, axis x line=middle, xmin=-2.2, xmax=2.2, ymin=-.5, ymax=3.2,name=myplot, ytick={0, 1,2,3}]
-\addplot[{\colorone}, domain=-2:2, thick, smooth]{e^x};
+\begin{axis}[axis y line=middle, axis x line=middle, xmin=-2.2, xmax=2.2, ymin=-.5, ymax=3.2,name=myplot, ytick={0, 1,2,3},axis equal]
+\addplot[{\colorone}, domain=-2:2, thick, smooth]{exp(x)};
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}
 &
 \begin{tikzpicture}[scale = .3]
-\begin{axis}[axis y line=middle, axis x line=middle, xmin=-.5, xmax=3.2, ymin=-2.2, ymax=2.2,name=myplot, ytick={-2,-1,0, 1,2},xtick={0,1,2,3}]
-\addplot[{\colorone}, domain=.01:3, thick, smooth]{ln x};
-\end{axis}
-\node [right] at (myplot.right of origin) {\scriptsize $x$};
-\node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture} \\
-$y=x^3$ & $y=e^x$& $y=\ln x$
-\\
-\begin{tikzpicture}[scale = .3]
-\begin{axis}[axis y line=middle, axis x line=middle, xmin=-.5, xmax=6.5, ymin=-1.2, ymax=1.2,name=myplot, ytick={-1,0,1}, xtick={-6.28318, -4.7123889, -3.14159, -1.5708, 1.5708, 3.14159, 4.7123889, 6.28318}, xticklabels={-$2\pi$, $-\frac{3\pi}{2}$,$-\pi$, $-\frac{\pi}{2}$, $\frac{\pi}{2}$,$\pi$, $\frac{3\pi}{2}$, $2\pi$}]
+\begin{axis}[axis y line=middle, axis x line=middle, xmin=-.5, xmax=6.5, ymin=-1.2, ymax=1.2,name=myplot, ytick={-1,0,1}, xtick={-6.28318, -4.7123889, -3.14159, -1.5708, 1.5708, 3.14159, 4.7123889, 6.28318}, xticklabels={-$2\pi$, $-\frac{3\pi}{2}$,$-\pi$, $-\frac{\pi}{2}$, $\frac{\pi}{2}$,$\pi$, $\frac{3\pi}{2}$, $2\pi$},axis equal]
 \addplot[{\colorone}, domain=-.5:6.4, thick, smooth]{sin deg(x)};
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
@@ -87,7 +60,39 @@ $y=x^3$ & $y=e^x$& $y=\ln x$
 \end{tikzpicture}
 &
 \begin{tikzpicture}[scale = .3]
-\begin{axis}[axis y line=middle, axis x line=middle, xmin=-.5, xmax=6.5, ymin=-1.2, ymax=1.2,name=myplot, ytick={-1,0,1}, xtick={-6.28318, -4.7123889, -3.14159, -1.5708, 1.5708, 3.14159, 4.7123889, 6.28318}, xticklabels={-$2\pi$, $-\frac{3\pi}{2}$,$-\pi$, $-\frac{\pi}{2}$, $\frac{\pi}{2}$,$\pi$, $\frac{3\pi}{2}$, $2\pi$}]
+\begin{axis}[axis y line=middle, axis x line=middle, xmin=-2.2, xmax=2.2, ymin=-.5, ymax=2.2,name=myplot, ytick={0,1,2},axis equal]
+\addplot[{\colorone}, domain=-2:2, thick, smooth]{abs x};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\ $y=x^2$ & $y=x^3$ & $y=e^x$ & $y=\sin x$ & $y=\abs{x}$ \\
+\begin{tikzpicture}[scale = .3]
+\begin{axis}[axis y line=middle, axis x line=middle, xmin=-.5, xmax=3.2, ymin=-.5, ymax=2.2,name=myplot, ytick={0,1,2}, xtick={0,1,2,3},axis equal]
+\addplot[{\colorone}, domain=-0:3, thick, smooth,samples=100]{sqrt x};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+&
+\begin{tikzpicture}[scale = .3]
+\begin{axis}[axis y line=middle, axis x line=middle, xmin=-2.2, xmax=2.2, ymin=-2.2, ymax=2.2,name=myplot,axis equal]
+\addplot[{\colorone}, domain=-2:2, thick, smooth,samples=100]({x*x*x},{x});
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+&
+\begin{tikzpicture}[scale = .3]
+\begin{axis}[axis y line=middle, axis x line=middle, xmin=-.5, xmax=3.2, ymin=-2.2, ymax=2.2,name=myplot, ytick={-2,-1,0, 1,2},xtick={0,1,2,3},axis equal]
+\addplot[{\colorone}, domain=.01:3, thick, smooth]{ln x};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+&
+\begin{tikzpicture}[scale = .3]
+\begin{axis}[axis y line=middle, axis x line=middle, xmin=-.5, xmax=6.5, ymin=-1.2, ymax=1.2,name=myplot, ytick={-1,0,1}, xtick={-6.28318, -4.7123889, -3.14159, -1.5708, 1.5708, 3.14159, 4.7123889, 6.28318}, xticklabels={-$2\pi$, $-\frac{3\pi}{2}$,$-\pi$, $-\frac{\pi}{2}$, $\frac{\pi}{2}$,$\pi$, $\frac{3\pi}{2}$, $2\pi$},axis equal]
 \addplot[{\colorone}, domain=-.5:6.4, thick, smooth]{cos deg(x)};
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
@@ -95,17 +100,17 @@ $y=x^3$ & $y=e^x$& $y=\ln x$
 \end{tikzpicture}
 &
 \begin{tikzpicture}[scale = .3]
-\begin{axis}[axis y line=middle, axis x line=middle, xmin=-3.2, xmax=3.2, ymin=-3.2, ymax=3.2,name=myplot, ytick={-3,-2,-1,...,3}]
+\begin{axis}[axis y line=middle, axis x line=middle, xmin=-3.2, xmax=3.2, ymin=-3.2, ymax=3.2,name=myplot, ytick={-3,-2,-1,...,3},axis equal]
 \addplot[{\colorone}, domain=-3:-0.2, thick, smooth]{1/x};
 \addplot[{\colorone}, domain=0.2:3, thick, smooth]{1/x};
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}\\
-$y=\sin x$ & $y=\cos x$ & $y=\dfrac{1}{x}$
+$y=\sqrt x$ & $y=\sqrt[3]x$ & $y=\ln x$ & $y=\cos x$ & $y=\dfrac{1}{x}$
 \end{tabular}
-\captionof{figure}{Basic Function Graphs}\label{prereq_basic_graphs}
-\end{center}
+}%
+\caption{Basic Function Graphs}\label{prereq_basic_graphs}
 \end{lxfigure}
 
 We will often transform these functions into other functions as given in the next two figures.
@@ -118,7 +123,7 @@ $y=f(x)-c$ & $c$ units downward\\
 $y=f(x+c)$ & $c$ units left\\
 $y=f(x-c)$ & $c$ units right\\
 \end{tabular}
-\captionof{figure}{Translations of Basic Functions with $c>0$}
+\caption{Translations of Basic Functions with $c>0$}
 \end{center}
 \end{lxfigure}
 
@@ -133,7 +138,7 @@ $y=f(\frac{x}{c})$ & stretching horizontally by a factor of $c$\\
 $y=-f(x)$ & reflecting about the $x$-axis\\
 $y=f(-x)$ & reflecting about the $y$-axis\\
 \end{tabular}
-\captionof{figure}{Scaling Basic Functions with $c>1$}
+\caption{Scaling Basic Functions with $c>1$}
 \end{center}
 \end{lxfigure}
 
@@ -192,11 +197,11 @@ We said above that domain is the set of real numbers for which the function (rul
 \[g(x)=\frac3{x^2-9}=\frac3{(x-3)(x+3)}\]
 We see that $x\neq 3,-3$ for $g$ to be defined, which is written in interval notation as $(-\infty,-3)\cup (-3,3)\cup (3,\infty)$.}
 
-\example{prereq_domain_3}{Finding a domain}{Find the domain of the function $h(x)=\dfrac1{\sqrt{x^2-4}}$}{For $h$ to be defined as a real number we must have $x^2-4>0$. This is equivalent to $(x-2)(x+2)>0$. From the sign chart below, we can see that $x^2-4$ will be greater than zero on $(-\infty,-2)\cup(2,\infty)$.
+\example{prereq_domain_3}{Finding a domain}{Find the domain of the function $h(x)=\dfrac1{\sqrt{x^2-4}}$}{For $h$ to be defined as a real number we must have $x^2-4>0$. This is equivalent to $(x-2)(x+2)>0$ and we create a sign chart:
 
 \begin{center}
 \begin{tikzpicture}
-  \matrix[row sep=1mm,column sep=3mm,ampersand replacement=\&] {
+  \matrix[row sep=1mm,column sep=3mm,ampersand replacement=\&]{
     \&\&\& \node (tp1) {$-2$}; \&\& \node (tp2) {$2$}; \\[-1ex]
     \node(linestart) {$x$}; \&\&\&\&\&\&\& \node(lineend) {}; \\[-1ex]
     \&\node (fstart) {$x^2-4$}; \& \node {$+$}; \&\& \node {$-$}; \&\& \node {$+$}; \\
@@ -207,7 +212,9 @@ We see that $x\neq 3,-3$ for $g$ to be defined, which is written in interval not
   \foreach \x in {1,2} {
     \draw (tp\x|-linestart)+(0,5pt) -- (tp\x |- fstart.south);
   };
-\end{tikzpicture}\eoehere
-\end{center}}
+\end{tikzpicture}
+\end{center}
+
+This shows that $x^2-4$ will be greater than zero on $(-\infty,-2)\cup(2,\infty)$.}
 
 \printexercises{exercises/01_00_exercises}

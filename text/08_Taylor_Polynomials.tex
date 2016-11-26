@@ -2,19 +2,14 @@
 
 Consider a function $y=f(x)$ and a point $\big(c,f(c)\big)$. The derivative, $\fp(c)$, gives the instantaneous rate of change of $f$ at $x=c$. Of all lines that pass through the point $\big(c,f(c)\big)$, the line that best approximates $f$ at this point is the tangent line; that is, the line whose slope (rate of change) is $\fp(c)$.
 
-In \autoref{fig:taypolyintroa}, we see a function $y=f(x)$ graphed. The table below the graph shows that $f(0)=2$ and $\fp(0) = 1$; therefore, the tangent line to $f$ at $x=0$ is $p_1(x) = 1(x-0)+2 = x+2$. The tangent line is also given in the figure. Note that ``near'' $x=0$, $p_1(x) \approx f(x)$; that is, the tangent line approximates $f$ well.
-
-\mtable{Plotting $y=f(x)$ and a table of derivatives of $f$ evaluated at 0.}{fig:taypolyintroa}{%
-\begin{tabular}{c}
-\myincludegraphics{figures/figtaypolyintroa}\\
-\\
+\mtable{Plotting $y=f(x)$ and a table of derivatives of $f$ evaluated at 0.}{fig:taypolyintroa}{\myincludegraphics{figures/figtaypolyintroa}\smallskip\\
 \begin{tabular}{lll}
 $f(0) = 2$ & &$\fp''(0) = -1$\\
 $\fp(0) = 1$ &&	$f\,^{(4)}(0)=-12$ \\
 $\fpp(0) = 2$ && $f\,^{(5)}(0)=-19$
-\end{tabular}
-\end{tabular}
-}
+\end{tabular}}
+
+In \autoref{fig:taypolyintroa}, we see a function $y=f(x)$ graphed. The table below the graph shows that $f(0)=2$ and $\fp(0) = 1$; therefore, the tangent line to $f$ at $x=0$ is $p_1(x) = 1(x-0)+2 = x+2$. The tangent line is also given in the figure. Note that ``near'' $x=0$, $p_1(x) \approx f(x)$; that is, the tangent line approximates $f$ well.
 
 One shortcoming of this approximation is that the tangent line only matches the slope of $f$; it does not, for instance, match the concavity of $f$. We can find a polynomial, $p_2(x)$, that does match the concavity without much difficulty, though. The table in \autoref{fig:taypolyintroa} gives the following information:
 $$f(0) = 2 \qquad \fp(0) = 1\qquad \fp'(0) = 2.$$
@@ -22,14 +17,14 @@ Therefore, we want our polynomial $p_2(x)$ to have these same properties. That i
 
 This is simply an initial--value problem. We can solve this using the techniques first described in \autoref{sec:antider}. To keep $p_2(x)$ as simple as possible, we'll assume that not only  $p_2''(0)=2$, but that $p_2''(x)=2$. That is, the second derivative of $p_2$ is  constant.
 
-If $p_2''(x) = 2$, then $p_2'(x) = 2x+C$ for some constant $C$. Since we have determined that $p_2'(0) = 1$, we find that $C=1$ and so $p_2'(x) = 2x+1$. Finally, we can compute $p_2(x) = x^2+x+C$. Using our initial values, we know $p_2(0) = 2$ so $C=2.$ We conclude that $p_2(x) = x^2+x+2.$ This function is plotted with $f$ in \autoref{fig:taypolyintrob}.
-
 \mfigure{0in}{Plotting $f$, $p_2$ and $p_4$.}{fig:taypolyintrob}{figures/figtaypolyintrob}
 \mfigure{0in}{Plotting $f$ and $p_{13}$.}{fig:taypolyintroc}{figures/figtaypolyintroc}
 
+If $p_2''(x) = 2$, then $p_2'(x) = 2x+C$ for some constant $C$. Since we have determined that $p_2'(0) = 1$, we find that $C=1$ and so $p_2'(x) = 2x+1$. Finally, we can compute $p_2(x) = x^2+x+C$. Using our initial values, we know $p_2(0) = 2$ so $C=2.$ We conclude that $p_2(x) = x^2+x+2.$ This function is plotted with $f$ in \autoref{fig:taypolyintrob}.
+
 We can repeat this approximation process by creating polynomials of higher degree that match more of the derivatives of $f$ at $x=0$. In general, a polynomial of degree $n$ can be created to match the first $n$ derivatives of $f$. \autoref{fig:taypolyintrob} also shows $p_4(x)= -x^4/2-x^3/6+x^2+x+2$, whose first four derivatives at 0 match those of $f$. (Using the table in \autoref{fig:taypolyintroa}, start with $p_4^{(4)}(x)=-12$ and solve the related initial--value problem.)
 
-As we use more and more derivatives, our polynomial approximation to $f$ gets better and better. In this example, the interval on which the approximation is ``good'' gets bigger and bigger. \autoref{fig:taypolyintroc} shows $p_{13}(x)$; we can visually affirm that this polynomial approximates $f$ very well on $[-2,3]$. The polynomial $p_{13}(x)$ is fairly complicated:
+As we use more and more derivatives, our polynomial approximation to $f$ gets better and better. In this example, the interval on which the approximation is ``good'' gets bigger and bigger. \autoref{fig:taypolyintroc} shows $p_{13}(x)$; we can visually affirm that this polynomial approximates $f$ very well on $[-2,3]$. The polynomial $p_{13}(x)$ is fairly complicated:\\
 \flushinnerequ{\scriptsize $$\frac{16901x^{13}}{6227020800}+\frac{13x^{12}}{1209600}-\frac{1321x^{11}}{39916800}-\frac{779x^{10}}{1814400}-\frac{359x^9}{362880}+\frac{x^8}{240}+\frac{139x^7}{5040}+\frac{11 x^6}{360}-\frac{19x^5}{120}-\frac{x^4}{2}-\frac{x^3}{6}+x^2+x+2.$$}
 
 The polynomials we have created are examples of \emph{Taylor polynomials}, named after the British mathematician Brook Taylor who made important discoveries about such functions. While we created the above Taylor polynomials by solving initial--value problems, it can be shown that Taylor polynomials follow a general pattern that make their formation much more direct. This is described in the following definition.
@@ -82,9 +77,11 @@ By the definition of the Maclaurin series, we have
 	=\sum_{k=0}^n\frac1{k!}x^k.
 \]
 
-\item	Using our answer from part 1, we have $$p_5 = 1+x+\frac{1}{2}x^2+\frac{1}{6}x^3 + \frac{1}{24}x^4 + \frac{1}{120}x^5.$$ To approximate the value of $e$, note that $e = e^1 = f(1) \approx p_5(1).$ It is very straightforward to evaluate $p_5(1)$:
+\item	Using our answer from part 1, we have
+\[p_5(x) = 1+x+\frac{1}{2}x^2+\frac{1}{6}x^3 + \frac{1}{24}x^4 + \frac{1}{120}x^5.\]
+To approximate the value of $e$, note that $e = e^1 = f(1) \approx p_5(1).$ It is very straightforward to evaluate $p_5(1)$:
 $$p_5(1) = 1+1+\frac12+\frac16+\frac1{24}+\frac1{120} = \frac{163}{60} \approx 2.71667.$$
-This is an error of $0.0016$, or about $0.06\%$.
+This is an error of about $0.0016$, or $0.06\%$.
 
 A plot of $f(x)=e^x$ and $p_5(x)$ is given in \autoref{fig:taypoly1b}.\eoehere
 \mfigure{0in}{A plot of $f(x)=e^x$ and its 5$^\text{th}$ degree Maclaurin polynomial $p_5(x)$.}{fig:taypoly1b}{figures/figtaypoly1b}
@@ -97,7 +94,16 @@ A plot of $f(x)=e^x$ and $p_5(x)$ is given in \autoref{fig:taypoly1b}.\eoehere
 \end{enumerate}}
 {\begin{enumerate}
 \item	We begin by creating a table of derivatives of $\ln x$ evaluated at $x=1$. While this is not as straightforward as it was in the previous example, a pattern does emerge, as shown in \autoref{fig:taypoly2a}.
-\mtable{Derivatives of $\ln x$ evaluated at $x=1$.}{fig:taypoly2a}{%
+
+Using \autoref{def:taypoly}, we have
+\[
+	p_n(x)
+	= \sum_{k=0}^n\frac{f\,^{(k)}(c)}{k!}(x-c)^k
+	= \sum_{k=1}^n\frac1k(x-1)^k.
+\]
+
+\item	We can compute $p_6(x)$ using our work above:
+\mtable[-5\baselineskip]{Derivatives of $\ln x$ evaluated at $x=1$.}{fig:taypoly2a}{%
 \begin{tabular}{lll}
 $f(x) = \ln x $&$\Rightarrow $&$f(1) = 0$\\
 $\fp(x) = 1/x $&$\Rightarrow $&$\fp(1) = 1$\\
@@ -108,15 +114,6 @@ $\ \vdots $& &$\ \vdots$\\
 $f\,^{(n)}(x) = $ &$\Rightarrow$ & $f\,^{(n)}(1) = $\\
 $\ds \rule{0pt}{15pt}\frac{(-1)^{n+1}(n-1)!}{x^n} $ & & $(-1)^{n+1}(n-1)!$
 \end{tabular}}
-
-Using \autoref{def:taypoly}, we have
-\[
-	p_n(x)
-	= \sum_{k=0}^n\frac{f\,^{(k)}(c)}{k!}(x-c)^k
-	= \sum_{k=1}^n\frac1k(x-1)^k.
-\]
-
-\item	We can compute $p_6(x)$ using our work above:
 $$p_6(x) = (x-1)-\frac12(x-1)^2+\frac13(x-1)^3-\frac14(x-1)^4+\frac15(x-1)^5-\frac16(x-1)^6.$$
 Since $p_6(x)$ approximates $\ln x$ well near $x=1$, we approximate $\ln 1.5 \approx p_6(1.5)$:
 \begin{align*}
@@ -126,10 +123,10 @@ Since $p_6(x)$ approximates $\ln x$ well near $x=1$, we approximate $\ln 1.5 \ap
 	&=\frac{259}{640}\\
 	&\approx 0.404688.
 \end{align*}
+\mfigure{0in}{A plot of $y=\ln x$ and its 6$^\text{th}$ degree Taylor polynomial at $x=1$.}{fig:taypoly2b}{figures/figtaypoly2b}
 This is a good approximation as a calculator shows that $\ln 1.5 \approx 0.4055.$  %This is an error of $0.0008$, or $0.2\%$. % this is in next example
 \autoref{fig:taypoly2b} plots $y=\ln x$ with $y=p_6(x)$. We can see that $\ln 1.5\approx p_6(1.5)$.
 
-\mfigure{0in}{A plot of $y=\ln x$ and its 6$^\text{th}$ degree Taylor polynomial at $x=1$.}{fig:taypoly2b}{figures/figtaypoly2b}
 \item	
 We approximate $\ln 2$ with $ p_6(2)$:
 \begin{align*}
@@ -210,22 +207,19 @@ We practice again. This time, we use Taylor's theorem to find $n$ that guarantee
 \end{align*}
 We find an $n$ that satisfies this last inequality with trial--and--error. When $n=8$, we have $\ds \frac{2^{8+1}}{(8+1)!} \approx 0.0014$; when $n=9$, we have $\ds \frac{2^{9+1}}{(9+1)!} \approx 0.000282 <0.001$. Thus we want to approximate $\cos 2$ with $p_9(2)$.\\
 
-We now set out to compute $p_9(x)$. We again need a table of the derivatives of $f(x)=\cos x$ evaluated at $x=0$. A table of these values is given in \autoref{fig:taypoly4a}.
-\mtable[-1in]{A table of the derivatives of $f(x)=\cos x$ evaluated at $x=0$.}{fig:taypoly4a}{%
-\begin{tabular}{lll}
-$f(x) = \cos x $&$\Rightarrow $&$f(0) = 1$\\
-$\fp(x) = -\sin x $&$\Rightarrow $&$\fp(0) = 0$\\
-$\fp'(x) = -\cos x $&$\Rightarrow $&$\fp'(0) = -1$\\
-$\fp''(x) = \sin x $&$\Rightarrow $&$\fp''(0) = 0$\\
-$f\,^{(4)}(x) = \cos x $&$\Rightarrow $&$f\,^{(4)}(0) = 1$\\
-$f\,^{(5)}(x) = -\sin x $&$\Rightarrow $&$f\,^{(5)}(0) = 0$\\
-$f\,^{(6)}(x) = -\cos x $&$\Rightarrow $&$f\,^{(6)}(0) = -1$\\
-$f\,^{(7)}(x) = \sin x $&$\Rightarrow $&$f\,^{(7)}(0) = 0$\\
-$f\,^{(8)}(x) = \cos x $&$\Rightarrow $&$f\,^{(8)}(0) = 1$\\
-$f\,^{(9)}(x) = -\sin x $&$\Rightarrow $&$f\,^{(9)}(0) = 0$
-\end{tabular}
-}
-Notice how the derivatives, evaluated at $x=0$, follow a certain pattern. All the odd powers of $x$ in the Taylor polynomial will disappear as their coefficient is 0. While our error bounds state that we need $p_9(x)$, our work shows that this will be the same as $p_8(x)$. 
+We now set out to compute $p_9(x)$. We again need a table of the derivatives of $f(x)=\cos x$ evaluated at $x=0$. A table of these values is given in \autoref{fig:taypoly4a}. Notice how the derivatives, evaluated at $x=0$, follow a certain pattern. All the odd powers of $x$ in the Taylor polynomial will disappear as their coefficient is 0. While our error bounds state that we need $p_9(x)$, our work shows that this will be the same as $p_8(x)$. 
+\mtable{A table of the derivatives of $f(x)=\cos x$ evaluated at $x=0$.}{fig:taypoly4a}{\begin{tabular}{lll}
+$f(x) = \cos x$ & $\Rightarrow$ & $f(0) = 1$\\
+$\fp(x) = -\sin x$ & $\Rightarrow$ & $\fp(0) = 0$\\
+$\fp'(x) = -\cos x$ & $\Rightarrow$ & $\fp'(0) = -1$\\
+$\fp''(x) = \sin x$ & $\Rightarrow$ & $\fp''(0) = 0$\\
+$f\,^{(4)}(x) = \cos x$ & $\Rightarrow$ & $f\,^{(4)}(0) = 1$\\
+$f\,^{(5)}(x) = -\sin x$ & $\Rightarrow$ & $f\,^{(5)}(0) = 0$\\
+$f\,^{(6)}(x) = -\cos x$ & $\Rightarrow$ & $f\,^{(6)}(0) = -1$\\
+$f\,^{(7)}(x) = \sin x$ & $\Rightarrow$ & $f\,^{(7)}(0) = 0$\\
+$f\,^{(8)}(x) = \cos x$ & $\Rightarrow$ & $f\,^{(8)}(0) = 1$\\
+$f\,^{(9)}(x) = -\sin x$ & $\Rightarrow$ & $f\,^{(9)}(0) = 0$
+\end{tabular}}
 
 Since we are forming our polynomial at $x=0$, we are creating a Maclaurin polynomial, and:
 \[
@@ -245,9 +239,6 @@ Our error bound guarantee that this approximation is within $0.001$ of the corre
 	\item	Find the degree 4 Taylor polynomial, $p_4(x)$, for $f(x)=\sqrt{x}$ at $x=4.$
 	\item	Use $p_4(x)$ to approximate $\sqrt{3}$.
 	\item	Find bounds on the error when approximating $\sqrt{3}$ with $p_4(3)$.
-\end{enumerate}}
-{\begin{enumerate}
-	\item	We begin by evaluating the derivatives of $f$ at $x=4$. This is done in \autoref{fig:taypoly5a}.
 \mtable{A table of the derivatives of $f(x)=\sqrt{x}$ evaluated at $x=4$.}{fig:taypoly5a}{%
 \begin{tabular}{lll}
 $f(x) = \sqrt{x} $&$\Rightarrow $&$f(4) = 2$\rule[-12pt]{0pt}{5pt}\\
@@ -256,7 +247,9 @@ $\ds\fp'(x) = \frac{-1}{4x^{3/2}} $&$\Rightarrow $&$\ds\fp'(4) = \frac{-1}{32}$\
 $\ds\fp''(x) = \frac3{8x^{5/2}} $&$\Rightarrow $&$\ds\fp''(4) = \frac{3}{256}$\rule[-12pt]{0pt}{5pt}\\
 $\ds f\,^{(4)}(x) = \frac{-15}{16x^{7/2}} $&$\Rightarrow $&$\ds f\,^{(4)}(4) = \frac{-15}{2048}$
 \end{tabular}}
-These values allow us to form the Taylor polynomial $p_4(x)$:
+\end{enumerate}}
+{\begin{enumerate}
+	\item	We begin by evaluating the derivatives of $f$ at $x=4$. This is done in \autoref{fig:taypoly5a}. These values allow us to form the Taylor polynomial $p_4(x)$:
 \flushinnerequ{%
 \[p_4(x) = 2 + \frac14(x-4) +\frac{-1/32}{2!}(x-4)^2+\frac{3/256}{3!}(x-4)^3+\frac{-15/2048}{4!}(x-4)^4.\]}
 

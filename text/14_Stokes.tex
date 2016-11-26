@@ -23,22 +23,22 @@ Similar to the two-variable case, if $f(x,y,z) \ge 0$ then the line integral $\i
 
 Vector fields in $\mathbb{R}^{3}$ are defined in a similar fashion to those in $\mathbb{R}^{2}$, which allows us to define the line integral of a vector field along a curve in $\mathbb{R}^{3}$.
 
-\definition{defn:lineintvec3}{Vector Line Integral}{For a vector field $\textbf{f}(x,y,z) = P(x,y,z)\,\textbf{i} + Q(x,y,z)\,\textbf{j} + R(x,y,z)\,\textbf{k}$ and a curve $C$ in $\mathbb{R}^{3}$ with a smooth parametrization $x=x(t)$, $y=y(t)$, $z=z(t)$, $a \le t \le b$, the \textbf{line integral of f along} $C$ is
+\definition{defn:lineintvec3}{Vector Line Integral}{For a vector field $\vecf(x,y,z) = P(x,y,z)\,\veci + Q(x,y,z)\,\vecj + R(x,y,z)\,\veck$ and a curve $C$ in $\mathbb{R}^{3}$ with a smooth parametrization $x=x(t)$, $y=y(t)$, $z=z(t)$, $a \le t \le b$, the \textbf{line integral of f along} $C$ is
  \begin{align*}
-  \int_C \Dotprod{\textbf{f}}{d\textbf{r}} &= \int_C P(x,y,z)\,dx + \int_C Q(x,y,z)\,dy + \int_C R(x,y,z)\,dz\\
-   &= \int_a^b \Dotprod{\textbf{f}(x(t),y(t),z(t))}{\textbf{r}\primeskip'(t)}\,dt ,
+  \int_C \Dotprod{\vecf}{d\vecr} &= \int_C P(x,y,z)\,dx + \int_C Q(x,y,z)\,dy + \int_C R(x,y,z)\,dz\\
+   &= \int_a^b \Dotprod{\vecf(x(t),y(t),z(t))}{\vecr\primeskip'(t)}\,dt ,
  \end{align*}
- where $\textbf{r}(t)= x(t)\,\textbf{i} + y(t)\,\textbf{j} + z(t)\,\textbf{k}$ is the position vector for points on $C$.}
+ where $\vecr(t)= x(t)\,\veci + y(t)\,\vecj + z(t)\,\veck$ is the position vector for points on $C$.}
 
-Similar to the two-variable case, if $\textbf{f}(x,y,z)$ represents the force applied to an object at a point $(x,y,z)$ then the line integral $\int_{C}{f}\cdot d\vec{r}$ represents the work done by that force in moving the object along the curve $C$ in $\mathbb{R}^{3}$.\index{work}
+Similar to the two-variable case, if $\vecf(x,y,z)$ represents the force applied to an object at a point $(x,y,z)$ then the line integral $\int_{C}{f}\cdot d\vec{r}$ represents the work done by that force in moving the object along the curve $C$ in $\mathbb{R}^{3}$.\index{work}
 
 Some of the most important results we will need for line integrals in $\mathbb{R}^{3}$ are stated below without proof (the proofs are similar to their two-variable equivalents).
 
-\theorem{thm:lineinttangent3}{Vector Line Integral Along a Curve}{For a vector field $\textbf{f}(x,y,z) = P(x,y,z)\,\textbf{i} + Q(x,y,z)\,\textbf{j} + R(x,y,z)\,\textbf{k}$ and a curve $C$ with a smooth parametrization $x=x(t)$, $y=y(t)$, $z=z(t)$, $a \le t \le b$ and position vector $\textbf{r}(t) = x(t)\,\textbf{i} + y(t)\,\textbf{j} + z(t)\,\textbf{k}$,
+\theorem{thm:lineinttangent3}{Vector Line Integral Along a Curve}{For a vector field $\vecf(x,y,z) = P(x,y,z)\,\veci + Q(x,y,z)\,\vecj + R(x,y,z)\,\veck$ and a curve $C$ with a smooth parametrization $x=x(t)$, $y=y(t)$, $z=z(t)$, $a \le t \le b$ and position vector $\vecr(t) = x(t)\,\veci + y(t)\,\vecj + z(t)\,\veck$,
  \[
-  \int_C \Dotprod{\textbf{f}}{d\textbf{r}} = \int_C \Dotprod{\textbf{f}}{\textbf{T}}\,ds ,
+  \int_C \Dotprod{\vecf}{d\vecr} = \int_C \Dotprod{\vecf}{\vecT}\,ds ,
  \]
- where $\textbf{T}(t) = \frac{\textbf{r}\primeskip'(t)}{\norm{\textbf{r}\primeskip'(t)}}$ is the unit tangent vector to $C$ at $(x(t),y(t),z(t))$.}
+ where $\vecT(t) = \frac{\vecr\primeskip'(t)}{\norm{\vecr\primeskip'(t)}}$ is the unit tangent vector to $C$ at $(x(t),y(t),z(t))$.}
 
 % use thm:multi_chain2 instead
 
@@ -61,18 +61,29 @@ Some of the most important results we will need for line integrals in $\mathbb{R
 % \]}
 % %\footnotetext{See \cite[\S\,6.5]{tm} for a proof.}
 
-\theorem{thm:lineintsuffpath3}{Fundamental Theorem of Line Integrals in Three Dimensions}{Let $\textbf{f}(x,y,z) = P(x,y,z)\,\textbf{i} + Q(x,y,z)\,\textbf{j} + R(x,y,z)\,\textbf{k}$ be a vector field in some solid $S$, with $P$, $Q$ and $R$ continuously differentiable functions on $S$. Let $C$ be a smooth curve in $S$ parametrized by $x=x(t)$, $y=y(t)$, $z=z(t)$, $a \le t \le b$. Suppose that there is a real-valued function $F(x,y,z)$ such that $\nabla F = \textbf{f}$ on $S$. Then
+\theorem{thm:lineintsuffpath3}{Fundamental Theorem of Line Integrals in Three Dimensions}{Let $\vecf(x,y,z) = P(x,y,z)\,\veci + Q(x,y,z)\,\vecj + R(x,y,z)\,\veck$ be a vector field in some solid $S$, with $P$, $Q$ and $R$ continuously differentiable functions on $S$. Let $C$ be a smooth curve in $S$ parametrized by $x=x(t)$, $y=y(t)$, $z=z(t)$, $a \le t \le b$. Suppose that there is a real-valued function $F(x,y,z)$ such that $\nabla F = \vecf$ on $S$. Then
  \begin{equation}\label{eqn:lineintsuffpath3}
   \int_{C}{f}\cdot d\vec{r} = F(B) - F(A) ,
  \end{equation}
  where $A=(x(a),y(a),z(a))$ and $B=(x(b),y(b),z(b))$ are the endpoints of $C$.}
 
-\theorem{cor:lineintsuffpath3}{Zero Line Integral}{If a vector field $\textbf{f}$ has a potential in a solid $S$, then $\ds\oint_{C}{f}\cdot d\vec{r} = 0$ for any closed curve $C$ in $S$ (i.e. $\ds\oint_{C}\Dotprod{\nabla F}{d\textbf{r}} = 0$ for any real-valued function $F(x,y,z)$).}
+\theorem{cor:lineintsuffpath3}{Zero Line Integral}{If a vector field $\vecf$ has a potential in a solid $S$, then $\ds\oint_{C}{f}\cdot d\vec{r} = 0$ for any closed curve $C$ in $S$ (i.e., $\ds\oint_{C}\Dotprod{\nabla F}{d\vecr} = 0$ for any real-valued function $F(x,y,z)$).}
 
 \example{exmp_conhelix}{Evaluating a Line Integral}{Let $f(x,y,z) = z$ and let $C$ be the curve in $\mathbb{R}^{3}$ parametrized by
- \[x=t\sin t ,\quad y=t\cos t ,\quad z=t ,\quad 0\le t \le 8\pi .\]
- Evaluate $\int_C f(x,y,z)\,ds$. (Note: $C$ is called a \emph{conical helix}\index{conical helix}\index{helix}. See \autoref{fig:conhelix}).%
-  \mtable{Conical helix $C$ for \autoref{exmp_conhelix}.}{fig:conhelix}{todo make the picture}%
+\[x=t\sin t ,\quad y=t\cos t ,\quad z=t ,\quad 0\le t \le 8\pi .\]
+Evaluate $\int_C f(x,y,z)\,ds$. (Note: $C$ is called a \emph{conical helix}\index{conical helix}\index{helix}. See \autoref{fig:conhelix}).%
+\mtable{Conical helix $C$ for \autoref{exmp_conhelix}.}{fig:conhelix}{%
+ \begin{tikzpicture}[scale=1.6]
+  \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},axis on top,
+				axis lines=center,y dir=reverse,name=myplot,
+				ymin=-30,ymax=30,xmin=-30,xmax=30,zmin=0,zmax=30]
+   \addplot3[{\colorone},domain=0:8*pi,samples=100,samples y=0]
+    ({x*cos(deg(x))},{x*sin(deg(x))},{x});
+  \end{axis}
+  \node [left] at (myplot.below origin) [shift={(-30pt,0pt)}] {$x$};
+  \node [below left] at (myplot.right of origin) [shift={(-10pt,-6pt)}] {$y$};
+  \node [below] at (myplot.above origin) [shift={(0,-10pt)}] {$z$};
+ \end{tikzpicture}}%
 }{Since $x\primeskip'(t)=\sin t + t\cos t$, $y\primeskip'(t)=\cos t - t\sin t$, and $z\primeskip'(t)=1$, we have
  \begin{align*}
   x\primeskip'(t)^2 + y\primeskip'(t)^2 + z\primeskip'(t)^2 &= (\sin^2 t + 2t\sin t \cos t + t^2 \cos^2 t) + (\cos^2 t - 2t\sin t \cos t +
@@ -88,7 +99,7 @@ Some of the most important results we will need for line integrals in $\mathbb{R
    = \frac{1}{3} \left( (64\pi^2 + 2)^{3/2} - 2\sqrt{2} \right) .\eoehere
  \end{align*}}
 
-\example{exmp_conhelix2}{Evaluating a Line Integral}{Let $\textbf{f}(x,y,z) = x\,\textbf{i} + y\,\textbf{j} + 2z\,\textbf{k}$ be a vector field in $\mathbb{R}^{3}$. Using the same curve $C$ from \autoref{exmp_conhelix}, evaluate $\int_{C}{f}\cdot d\vec{r}$.}{It is easy to see that $F(x,y,z)=\frac{x^2}{2}+\frac{y^2}{2}+z^2$ is a potential for $\textbf{f}(x,y,z)$ (i.e. $\nabla F = \textbf{f}$). So by \autoref{thm:lineintsuffpath3} we know that
+\example{exmp_conhelix2}{Evaluating a Line Integral}{Let $\vecf(x,y,z) = x\,\veci + y\,\vecj + 2z\,\veck$ be a vector field in $\mathbb{R}^{3}$. Using the same curve $C$ from \autoref{exmp_conhelix}, evaluate $\int_{C}{f}\cdot d\vec{r}$.}{It is easy to see that $F(x,y,z)=\frac{x^2}{2}+\frac{y^2}{2}+z^2$ is a potential for $\vecf(x,y,z)$ (i.e., $\nabla F = \vecf$). So by \autoref{thm:lineintsuffpath3} we know that
  \begin{align*}
   \int_{C}{f}\cdot d\vec{r} &= F(B) - F(A) ,\text{ where $A=(x(0),y(0),z(0))$ and $B=(x(8\pi),y(8\pi),z(8\pi))$, so}\\
    &= F(8\pi\sin 8\pi,8\pi\cos 8\pi,8\pi) - F(0\sin 0,0\cos 0,0)\\
@@ -97,7 +108,7 @@ Some of the most important results we will need for line integrals in $\mathbb{R
    = 96\pi^2 .\eoehere
  \end{align*}}
 
-We will now discuss a generalization of Green's Theorem in $\mathbb{R}^{2}$ to \emph{orientable} surfaces in $\mathbb{R}^{3}$, called \emph{Stokes' Theorem}.\index{Stokes' Theorem}\index{orientable}\index{surface!orientable} A surface $\Sigma$ in $\mathbb{R}^{3}$ is \textbf{orientable} if there is a continuous vector field \textbf{N} in $\mathbb{R}^{3}$ such that \textbf{N} is nonzero and normal to $\Sigma$ (i.e. perpendicular to the tangent plane) at each point of $\Sigma$. We say that such an \textbf{N} is a \emph{normal vector field}.\index{normal vector field}\index{vector field!normal}
+We will now discuss a generalization of Green's Theorem in $\mathbb{R}^{2}$ to \emph{orientable} surfaces in $\mathbb{R}^{3}$, called \emph{Stokes' Theorem}.\index{Stokes' Theorem}\index{orientable}\index{surface!orientable} A surface $\Sigma$ in $\mathbb{R}^{3}$ is \textbf{orientable} if there is a continuous vector field \vecn in $\mathbb{R}^{3}$ such that \vecn is nonzero and normal to $\Sigma$ (i.e. perpendicular to the tangent plane) at each point of $\Sigma$. We say that such an \vecn is a \emph{normal vector field}.\index{normal vector field}\index{vector field!normal}
 
 \mtable{An orientation of the sphere.}{fig:or_sph}{\begin{tikzpicture}
  \usetikzlibrary{arrows}
@@ -114,12 +125,12 @@ We will now discuss a generalization of Green's Theorem in $\mathbb{R}^{2}$ to \
  \draw [dashed,line width=0.2pt] (1.5,0) arc (0:180:1.5 and 0.4);
  \fill (0.98,0.98) circle (2pt);
  \draw [line width=1.2pt,-latex] (0.98,0.98) -- (1.5,1.5);
- \node [right] at (1.5,1.5) {\small $\textbf{N}$};
+ \node [right] at (1.5,1.5) {\small $\vecn$};
  \draw [dashed,line width=1.2pt,-latex] (0.98,0.98) -- (0.46,0.46);
- \node [above] at (0.4,0.58) {\small $-\textbf{N}$};
+ \node [above] at (0.4,0.58) {\small $-\vecn$};
 \end{tikzpicture}}
 
-For example, the unit sphere $x^2 + y^2 + z^2 = 1$ is orientable, since the continuous vector field $\textbf{N}(x,y,z) = x\,\textbf{i} + y\,\textbf{j} + z\,\textbf{k}$ is nonzero and normal to the sphere at each point. In fact, $-\textbf{N}(x,y,z)$ is another normal vector field (see \autoref{fig:or_sph}). We see in this case that $\textbf{N}(x,y,z)$ is what we have called an outward normal vector, and $-\textbf{N}(x,y,z)$ is an \emph{inward} normal vector. These ``outward'' and ``inward'' normal vector fields on the sphere correspond to an ``outer'' and ``inner'' side, respectively, of the sphere. That is, we say that the sphere is a \emph{two-sided} surface.\index{surface!two-sided} Roughly, ``two-sided'' means ``orientable''. Other examples of two-sided, and hence orientable, surfaces are cylinders, paraboloids, ellipsoids, and planes.
+For example, the unit sphere $x^2 + y^2 + z^2 = 1$ is orientable, since the continuous vector field $\vecn(x,y,z) = x\,\veci + y\,\vecj + z\,\veck$ is nonzero and normal to the sphere at each point. In fact, $-\vecn(x,y,z)$ is another normal vector field (see \autoref{fig:or_sph}). We see in this case that $\vecn(x,y,z)$ is what we have called an outward normal vector, and $-\vecn(x,y,z)$ is an \emph{inward} normal vector. These ``outward'' and ``inward'' normal vector fields on the sphere correspond to an ``outer'' and ``inner'' side, respectively, of the sphere. That is, we say that the sphere is a \emph{two-sided} surface.\index{surface!two-sided} Roughly, ``two-sided'' means ``orientable''. Other examples of two-sided, and hence orientable, surfaces are cylinders, paraboloids, ellipsoids, and planes.
 
 You may be wondering what kind of surface would \emph{not} have two sides. An example is the \textbf{M\"{o}bius strip},\index{moebius@M\"{o}bius strip} which is constructed by taking a thin rectangle and connecting its ends at the opposite corners, resulting in a ``twisted'' strip (see \autoref{fig:mobius}).
 
@@ -153,26 +164,26 @@ You may be wondering what kind of surface would \emph{not} have two sides. An ex
   \end{tikzpicture} \\
  Connect $A$ to $A$ and $B$ to $B$ along the ends & Not orientable
  \end{tabular}}
- \captionof{figure}{M\"{o}bius strip}
+ \caption{M\"{o}bius strip}
  \label{fig:mobius}
 \end{lxfigure}
 
 If you imagine walking along a line down the center of the M\"{o}bius strip, as in \autoref{fig:mobius}(b), then you arrive back at the same place from which you started but upside down! That is, your \emph{orientation} changed even though your motion was continuous along that center line. Informally, thinking of your vertical direction as a normal vector field along the strip, there is a discontinuity at your starting point (and, in fact, at every point) since your vertical direction takes two different values there. The M\"{o}bius strip has only \emph{one side}, and hence is nonorientable.%\footnote{For further discussion of orientability, see \cite[\S\,IV.7]{one}.}
 
-For an orientable surface $\Sigma$ which has a boundary curve $C$, pick a unit normal vector \textbf{n} such that if you walked along $C$ with your head pointing in the direction of \textbf{n}, then the surface would be on your left. We say in this situation that \textbf{n} is a \emph{positive unit normal vector}\index{vector!positive unit normal} and that $C$ is traversed \emph{\textbf{n}-positively}\index{n-positive@\textbf{n}-positive direction}. We can now state Stokes' Theorem:
+For an orientable surface $\Sigma$ which has a boundary curve $C$, pick a unit normal vector \vecn such that if you walked along $C$ with your head pointing in the direction of \vecn, then the surface would be on your left. We say in this situation that \vecn is a \emph{positive unit normal vector}\index{vector!positive unit normal} and that $C$ is traversed \emph{\vecn-positively}\index{n-positive@\vecn-positive direction}. We can now state Stokes' Theorem:
 
 \theorem{thm:stokes}{Stokes' Theorem}{\index{Stokes' Theorem}%
-Let $\Sigma$ be an orientable surface in $\mathbb{R}^{3}$ whose boundary is a simple closed curve $C$, and let $\textbf{f}(x,y,z) = P(x,y,z) \textbf{i} + Q(x,y,z) \textbf{j} + R(x,y,z) \textbf{k}$ be a smooth vector field defined on some subset of $\mathbb{R}^{3}$ that contains $\Sigma$. Then
+Let $\Sigma$ be an orientable surface in $\mathbb{R}^{3}$ whose boundary is a simple closed curve $C$, and let $\vecf(x,y,z) = P(x,y,z) \veci + Q(x,y,z) \vecj + R(x,y,z) \veck$ be a smooth vector field defined on some subset of $\mathbb{R}^{3}$ that contains $\Sigma$. Then
   \begin{equation}\label{eqn:stokes}
-   \oint_{C}{f}\cdot d\vec{r} = \iint_{\Sigma} \Dotprod{(\text{curl}{\textbf{f}}\,)}{\textbf{n}}\,d\sigma ,
+   \oint_{C}{f}\cdot d\vec{r} = \iint_{\Sigma} \Dotprod{(\curl{\vecf}\,)}{\vecn}\,d\sigma ,
   \end{equation}
   where
   \begin{equation}\label{eqn:curl}
-   \text{curl}\textbf{f} = \left( \frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z} \right) \textbf{i} +
-    \left( \frac{\partial P}{\partial z} - \frac{\partial R}{\partial x} \right) \textbf{j} +
-    \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) \textbf{k} ,\index{curl}
+   \curl\vecf = \left( \frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z} \right) \veci +
+    \left( \frac{\partial P}{\partial z} - \frac{\partial R}{\partial x} \right) \vecj +
+    \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) \veck ,\index{curl}
   \end{equation}
-  \textbf{n} is a positive unit normal vector over $\Sigma$, and $C$ is traversed \textbf{n}-positively.}
+  \vecn is a positive unit normal vector over $\Sigma$, and $C$ is traversed \vecn-positively.}
   
 \begin{proof}
  As the general case is beyond the scope of this text, we will prove the theorem only for the special case where $\Sigma$ is the graph of $z=z(x,y)$ for some smooth real-valued function $z(x,y)$, with $(x,y)$ varying over a region $D$ in $\mathbb{R}^{2}$. \mtable{A particular case of Stokes' Theorem}{fig_stokes_eg}{\begin{tikzpicture}
@@ -192,7 +203,7 @@ Let $\Sigma$ be an orientable surface in $\mathbb{R}^{3}$ whose boundary is a si
   \fill (2.3,-0.85) circle (1pt);
   \fill (2.3,1.7) circle (1.2pt);
   \draw [line width=1.2,-latex] (2.3,1.7) -- (2.7,2.3);
-  \node [right] at (2.7,2.3) {\small $\textbf{n}$};
+  \node [right] at (2.7,2.3) {\small $\vecn$};
   \node [above] at (2.5,-0.83) {\small $(x,y)$};
   \node at (1.8,-0.6) {\small $D$};
   \node [below] at (2,-1.1) {\small $C_D$};
@@ -282,23 +293,23 @@ Let $\Sigma$ be an orientable surface in $\mathbb{R}^{3}$ whose boundary is a si
  \end{equation}
  after factoring out a $-1$ from the terms in the first two products in \autoeqref{eqn:stokeslong}.
  
- Now, recall from \autoref{sec:multi_tangent} that the vector $\textbf{N} = -\frac{\partial z}{\partial x}\,\textbf{i} - \frac{\partial z}{\partial y}\,\textbf{j} + \textbf{k}$ is normal to the tangent plane to the surface $z=z(x,y)$ at each point of $\Sigma$. Thus,
+ Now, recall from \autoref{sec:multi_tangent} that the vector $\vecn = -\frac{\partial z}{\partial x}\,\veci - \frac{\partial z}{\partial y}\,\vecj + \veck$ is normal to the tangent plane to the surface $z=z(x,y)$ at each point of $\Sigma$. Thus,
  \[
-  \textbf{n} = \frac{\textbf{N}}{\norm{\textbf{N}}} =
-   \frac{-\frac{\partial z}{\partial x}\,\textbf{i} - \frac{\partial z}{\partial y}\,\textbf{j} +
-   \textbf{k}}{\sqrt{1 + \left( \tfrac{\partial z}{\partial x} \right)^2 +
+  \vecn = \frac{\vecn}{\norm{\vecn}} =
+   \frac{-\frac{\partial z}{\partial x}\,\veci - \frac{\partial z}{\partial y}\,\vecj +
+   \veck}{\sqrt{1 + \left( \tfrac{\partial z}{\partial x} \right)^2 +
    \left( \tfrac{\partial z}{\partial y} \right)^2}}
  \]
- is in fact a positive unit normal vector to $\Sigma$ (see \autoref{fig_stokes_eg}). Hence, using the parametrization $\textbf{r}(x,y) = x\,\textbf{i} + y\,\textbf{j} + z(x,y)\,\textbf{k}$, for $(x,y)$ in $D$, of the surface $\Sigma$, we have $\frac{\partial \textbf{r}}{\partial x} = \textbf{i} + \frac{\partial z}{\partial x}\,\textbf{k}$ and $\frac{\partial \textbf{r}}{\partial y} = \textbf{j} + \frac{\partial z}{\partial y}\,\textbf{k}$, and so $\norm{\Crossprod{\frac{\partial \textbf{r}}{\partial x}}{\frac{\partial \textbf{r}}{\partial y}}} = \sqrt{1 + \left( \tfrac{\partial z}{\partial x} \right)^2 + \left( \tfrac{\partial z}{\partial y} \right)^2}$. So we see that using \autoeqref{eqn:curl} for $\text{curl }{\textbf{f}}$, we have
+ is in fact a positive unit normal vector to $\Sigma$ (see \autoref{fig_stokes_eg}). Hence, using the parametrization $\vecr(x,y) = x\,\veci + y\,\vecj + z(x,y)\,\veck$, for $(x,y)$ in $D$, of the surface $\Sigma$, we have $\frac{\partial \vecr}{\partial x} = \veci + \frac{\partial z}{\partial x}\,\veck$ and $\frac{\partial \vecr}{\partial y} = \vecj + \frac{\partial z}{\partial y}\,\veck$, and so $\norm{\frac{\partial \vecr}{\partial x}\times\frac{\partial \vecr}{\partial y}} = \sqrt{1 + \left( \tfrac{\partial z}{\partial x} \right)^2 + \left( \tfrac{\partial z}{\partial y} \right)^2}$. So we see that using \autoeqref{eqn:curl} for $\curl{\vecf}$, we have
  \begin{align*}
-  \iint_{\Sigma} \Dotprod{(\text{curl}{\textbf{f}})}{\textbf{n}}\,d\sigma &=
-   \iint_{D} \Dotprod{(\text{curl}{\textbf{f}}\,)}{\textbf{n}}\,
-   \norm{\Crossprod{\frac{\partial \textbf{r}}{\partial x}}{\frac{\partial \textbf{r}}{\partial y}}}\,dA\\
+  \iint_{\Sigma} \Dotprod{(\curl{\vecf})}{\vecn}\,d\sigma &=
+   \iint_{D} \Dotprod{(\curl{\vecf}\,)}{\vecn}\,
+   \norm{\frac{\partial \vecr}{\partial x}\times\frac{\partial \vecr}{\partial y}}\,dA\\
    &= \iint_{D} \Dotprod{\left( \left( \frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z} \right)
-    \textbf{i} + \left( \frac{\partial P}{\partial z} - \frac{\partial R}{\partial x} \right) \textbf{j} +
-    \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) \textbf{k}
-    \right)}{\left( -\frac{\partial z}{\partial x}\textbf{i} - \frac{\partial z}{\partial y}\textbf{j} +
-    \textbf{k} \right)} dA\\
+    \veci + \left( \frac{\partial P}{\partial z} - \frac{\partial R}{\partial x} \right) \vecj +
+    \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) \veck
+    \right)}{\left( -\frac{\partial z}{\partial x}\veci - \frac{\partial z}{\partial y}\vecj +
+    \veck \right)} dA\\
    &= \iint_{D} \left(
     -\left( \frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z} \right) \frac{\partial z}{\partial x}
     -\left( \frac{\partial P}{\partial z} - \frac{\partial R}{\partial x} \right) \frac{\partial z}{\partial y}
@@ -307,11 +318,11 @@ Let $\Sigma$ be an orientable surface in $\mathbb{R}^{3}$ whose boundary is a si
  which, upon comparing to \autoeqref{eqn:stokespart1}, proves the Theorem.
 \end{proof}
 
-Note: The condition in Stokes' Theorem that the surface $\Sigma$ have a (continuously varying) positive unit normal vector \textbf{n} and a boundary curve $C$ traversed \textbf{n}-positively can be expressed more precisely as follows: if $\textbf{r}(t)$ is the position vector for $C$ and $\textbf{T}(t) = \textbf{r}\primeskip'(t)/\norm{\textbf{r}\primeskip'(t)}$ is the unit tangent vector to $C$, then the vectors \textbf{T}, \textbf{n}, $\Crossprod{\textbf{T}}{\textbf{n}}$ form a right-handed system.
+Note: The condition in Stokes' Theorem that the surface $\Sigma$ have a (continuously varying) positive unit normal vector \vecn and a boundary curve $C$ traversed \vecn-positively can be expressed more precisely as follows: if $\vecr(t)$ is the position vector for $C$ and $\vecT(t) = \vecr\primeskip'(t)/\norm{\vecr\primeskip'(t)}$ is the unit tangent vector to $C$, then the vectors \vecT, \vecn, $\vecT\times\vecn$ form a right-handed system.
 
 Also, it should be noted that Stokes' Theorem holds even when the boundary curve $C$ is piecewise smooth.
 
-\example{exmp_stokesparab}{Verifying Stokes' Theorem}{Verify Stokes' Theorem for $\textbf{f}(x,y,z) = z\,\textbf{i} + x\,\textbf{j} + y\,\textbf{k}$ when $\Sigma$ is the paraboloid $z=x^2 + y^2$ such that $z \le 1$ (see \autoref{fig_parab_stokes}).%
+\example{exmp_stokesparab}{Verifying Stokes' Theorem}{Verify Stokes' Theorem for $\vecf(x,y,z) = z\,\veci + x\,\vecj + y\,\veck$ when $\Sigma$ is the paraboloid $z=x^2 + y^2$ such that $z \le 1$ (see \autoref{fig_parab_stokes}).%
  \mtable{$z=x^2 + y^2$ for \autoref{exmp_stokesparab}.}{fig_parab_stokes}{\begin{tikzpicture}
   \usetikzlibrary{arrows}
   \definecolor{insideo}{HTML}{798084}
@@ -337,28 +348,28 @@ Also, it should be noted that Stokes' Theorem holds even when the boundary curve
   \pgfputat{\pgfpointxyz{0.2}{3.9}{0}}{\pgfbox[center,center]{\small $z$}};
   \pgfputat{\pgfpointxyz{0.2}{0}{1.8}}{\pgfbox[center,center]{\small $x$}};
   \pgfputat{\pgfpointxyz{0.05}{-0.2}{0}}{\pgfbox[center,center]{\small $0$}};
-  \node [right] at (0.7,3.15) {\small $\textbf{n}$};
+  \node [right] at (0.7,3.15) {\small $\vecn$};
   \node [right] at (1.5,3.7) {\small $C$};
   \node at (-1.3,0.7) {\small $\Sigma$};
   \node [above left] at (0,3) {\small $1$};
  \end{tikzpicture}}%
  }{The positive unit normal vector to the surface $z=z(x,y)=x^2 + y^2$ is
  \[
-  \textbf{n} =
-   \frac{-\frac{\partial z}{\partial x}\,\textbf{i} - \frac{\partial z}{\partial y}\,\textbf{j} +
-   \textbf{k}}{\sqrt{1 + \left( \tfrac{\partial z}{\partial x} \right)^2 +
+  \vecn =
+   \frac{-\frac{\partial z}{\partial x}\,\veci - \frac{\partial z}{\partial y}\,\vecj +
+   \veck}{\sqrt{1 + \left( \tfrac{\partial z}{\partial x} \right)^2 +
    \left( \tfrac{\partial z}{\partial y} \right)^2}} =
-   \frac{-2x\,\textbf{i} - 2y\,\textbf{j} + \textbf{k}}{\sqrt{1 + 4x^2 + 4y^2}} ,
+   \frac{-2x\,\veci - 2y\,\vecj + \veck}{\sqrt{1 + 4x^2 + 4y^2}} ,
  \]
- and $\text{curl}\textbf{f}= (1-0)\,\textbf{i}+(1-0)\,\textbf{j}+(1-0)\,\textbf{k} = \textbf{i}+\textbf{j}+\textbf{k}$, so
+ and $\curl\vecf= (1-0)\,\veci+(1-0)\,\vecj+(1-0)\,\veck = \veci+\vecj+\veck$, so
  \[
-  \Dotprod{(\text{curl }{\textbf{f}}\,)}{\textbf{n}} = (-2x-2y+1)/\sqrt{1 + 4x^2 + 4y^2} .
+  \Dotprod{(\curl{\vecf}\,)}{\vecn} = (-2x-2y+1)/\sqrt{1 + 4x^2 + 4y^2} .
  \]
- Since $\Sigma$ can be parametrized as $\textbf{r}(x,y) = x\,\textbf{i}+y\,\textbf{j}+(x^2 + y^2 )\,\textbf{k}$ for $(x,y)$ in the region $D = \lbrace \, (x,y):\,x^2 + y^2 \le 1 \,\rbrace$, then
+ Since $\Sigma$ can be parametrized as $\vecr(x,y) = x\,\veci+y\,\vecj+(x^2 + y^2 )\,\veck$ for $(x,y)$ in the region $D = \lbrace \, (x,y):\,x^2 + y^2 \le 1 \,\rbrace$, then
  \begin{align*}
-  \iint_{\Sigma} \Dotprod{(\text{curl }{\textbf{f}}\,)}{\textbf{n}}\,d\sigma &=
-   \iint_{D} \Dotprod{(\text{curl }{\textbf{f}}\,)}{\textbf{n}}\,
-   \norm{\Crossprod{\frac{\partial \textbf{r}}{\partial x}}{\frac{\partial \textbf{r}}{\partial y}}}\,dA\\
+  \iint_{\Sigma} \Dotprod{(\curl{\vecf}\,)}{\vecn}\,d\sigma &=
+   \iint_{D} \Dotprod{(\curl{\vecf}\,)}{\vecn}\,
+   \norm{\frac{\partial \vecr}{\partial x}\times\frac{\partial \vecr}{\partial y}}\,dA\\
    &= \iint_{D} \frac{-2x-2y+1}{\sqrt{1 + 4x^2 + 4y^2}}\,\sqrt{1 + 4x^2 + 4y^2}\,dA\\
    &= \iint_{D} (-2x-2y+1)\,dA ,\text{ so switching to polar coordinates gives}\\
    &= \int_0^{2\pi} \int_0^1 (-2r\cos \theta - 2r\sin \theta + 1)r\,dr\,d\theta\\
@@ -375,46 +386,46 @@ Also, it should be noted that Stokes' Theorem holds even when the boundary curve
    \frac{1+\cos 2t}{2}$} \right)\\
    &= \left.\cos t + \frac{t}{2} + \frac{\sin 2t}{4}\,\right|_0^{2\pi} = \pi .
  \end{align*}
- So we see that $\oint_{C}{f}\cdot d\vec{r}=\iint_{\Sigma} \Dotprod{(\text{curl }{\textbf{f}}\,)}{\textbf{n}} \,d\sigma$, as predicted by Stokes' Theorem.}
+ So we see that $\oint_{C}{f}\cdot d\vec{r}=\iint_{\Sigma} \Dotprod{(\curl{\vecf}\,)}{\vecn} \,d\sigma$, as predicted by Stokes' Theorem.}
 
 The line integral in the preceding example was far simpler to calculate than the surface integral, but this will not always be the case.
 
-\example{ex_use_stokes}{Using Stokes' Theorem}{Let $\Sigma$ be the elliptic paraboloid $z=\frac{x^2}{4}+\frac{y^2}{9}$ for $z \le 1$, and let $C$ be its boundary curve. Calculate $\oint_{C}{f}\cdot d\vec{r}$ for $\textbf{f}(x,y,z)=(9xz+2y)\textbf{i}+(2x+y^2 )\textbf{j}+(-2y^2 +2z)\textbf{k}$, where $C$ is traversed counterclockwise.}{The surface is similar to the one in \autoref{exmp_stokesparab}, except now the boundary curve $C$ is the ellipse $\frac{x^2}{4}+\frac{y^2}{9}=1$ laying in the plane $z=1$. In this case, using Stokes' Theorem is easier than computing the line integral directly. As in \autoref{exmp_stokesparab}, at each point $(x,y,z(x,y))$ on the surface $z=z(x,y)=\frac{x^2}{4}+\frac{y^2}{9}$ the vector
+\example{ex_use_stokes}{Using Stokes' Theorem}{Let $\Sigma$ be the elliptic paraboloid $z=\frac{x^2}{4}+\frac{y^2}{9}$ for $z \le 1$, and let $C$ be its boundary curve. Calculate $\oint_{C}{f}\cdot d\vec{r}$ for $\vecf(x,y,z)=(9xz+2y)\veci+(2x+y^2 )\vecj+(-2y^2 +2z)\veck$, where $C$ is traversed counterclockwise.}{The surface is similar to the one in \autoref{exmp_stokesparab}, except now the boundary curve $C$ is the ellipse $\frac{x^2}{4}+\frac{y^2}{9}=1$ laying in the plane $z=1$. In this case, using Stokes' Theorem is easier than computing the line integral directly. As in \autoref{exmp_stokesparab}, at each point $(x,y,z(x,y))$ on the surface $z=z(x,y)=\frac{x^2}{4}+\frac{y^2}{9}$ the vector
  \[
-  \textbf{n} =
-   \frac{-\frac{\partial z}{\partial x}\,\textbf{i} - \frac{\partial z}{\partial y}\,\textbf{j} +
-   \textbf{k}}{\sqrt{1 + \left( \tfrac{\partial z}{\partial x} \right)^2 +
+  \vecn =
+   \frac{-\frac{\partial z}{\partial x}\,\veci - \frac{\partial z}{\partial y}\,\vecj +
+   \veck}{\sqrt{1 + \left( \tfrac{\partial z}{\partial x} \right)^2 +
    \left( \tfrac{\partial z}{\partial y} \right)^2}} =
-   \frac{-\tfrac{x}{2}\,\textbf{i} - \tfrac{2y}{9}\,\textbf{j} + \textbf{k}}{\sqrt{1 +\tfrac{x^2}{4}+
+   \frac{-\tfrac{x}{2}\,\veci - \tfrac{2y}{9}\,\vecj + \veck}{\sqrt{1 +\tfrac{x^2}{4}+
     \tfrac{4y^2}{9}}} ,
  \]
- is a positive unit normal vector to $\Sigma$. And calculating the curl of \textbf{f} gives
+ is a positive unit normal vector to $\Sigma$. And calculating the curl of \vecf gives
  \[
-  \text{curl }\textbf{f} = (-4y-0)\textbf{i} + (9x-0)\textbf{j} + (2-2)\textbf{k} = -4y\,\textbf{i} + 9x\,\textbf{j} +
-   0\,\textbf{k},
+  \curl\vecf = (-4y-0)\veci + (9x-0)\vecj + (2-2)\veck = -4y\,\veci + 9x\,\vecj +
+   0\,\veck,
  \]
  so
  \[
-  \Dotprod{(\text{curl }{\textbf{f}}\,)}{\textbf{n}} = \frac{(-4y)(-\tfrac{x}{2})+(9x)(-\tfrac{2y}{9})+
+  \Dotprod{(\curl{\vecf}\,)}{\vecn} = \frac{(-4y)(-\tfrac{x}{2})+(9x)(-\tfrac{2y}{9})+
    (0)(1)}{\sqrt{1 +\tfrac{x^2}{4}+\tfrac{4y^2}{9}}} = \frac{2xy-2xy+0}{\sqrt{1 +\tfrac{x^2}{4}+\tfrac{4y^2}{9}}} = 0,
  \]
  and so by Stokes' Theorem
  \[
-  \oint_{C}{f}\cdot d\vec{r} = \iint_{\Sigma} \Dotprod{(\text{curl }{\textbf{f}}\,)}{\textbf{n}}\,d\sigma =
+  \oint_{C}{f}\cdot d\vec{r} = \iint_{\Sigma} \Dotprod{(\curl{\vecf}\,)}{\vecn}\,d\sigma =
    \iint_{\Sigma} 0\,d\sigma = 0 .\eoehere
  \]}
 
-In physical applications, for a simple closed curve $C$ the line integral $\oint_{C}{f}\cdot d\vec{r}$ is often called the \textbf{circulation}\index{circulation} of \textbf{f} around $C$. For example, if \textbf{E} represents the electrostatic field due to a point charge, then it turns out
+In physical applications, for a simple closed curve $C$ the line integral $\oint_{C}{f}\cdot d\vec{r}$ is often called the \textbf{circulation}\index{circulation} of \vecf around $C$. For example, if \vecE represents the electrostatic field due to a point charge, then it turns out
 %\footnote{See Ch. 2 in \cite{rmc}.}
-that $\text{curl }\textbf{E} = \textbf{0}$, which means that the circulation $\oint_{C}{E}\cdot d\vec{r}=0$ by Stokes' Theorem. Vector fields which have zero curl are often called \emph{irrotational}\index{irrotational} fields.
+that $\curl\vecE = \vec0$, which means that the circulation $\oint_{C}{E}\cdot d\vec{r}=0$ by Stokes' Theorem. Vector fields which have zero curl are often called \emph{irrotational}\index{irrotational} fields.
 
-In fact, the term curl was created by the 19\textsuperscript{th} century Scottish physicist James Clerk Maxwell in his study of electromagnetism, where it is used extensively. In physics, the curl is interpreted as a measure of \emph{circulation density}. This is best seen by using another definition of curl \textbf{f} which is equivalent
+In fact, the term curl was created by the 19\textsuperscript{th} century Scottish physicist James Clerk Maxwell in his study of electromagnetism, where it is used extensively. In physics, the curl is interpreted as a measure of \emph{circulation density}. This is best seen by using another definition of curl \vecf\ which is equivalent
 %\footnote{See \cite{sch}, p. 78-81, for the derivation.}
 to the definition given by \autoeqref{eqn:curl}. Namely, for a point $(x,y,z)$ in $\mathbb{R}^{3}$,
 \[
- \Dotprod{\textbf{n}}{(\text{curl }\textbf{f}\,)}(x,y,z) = \lim_{S \to 0} \frac{1}{S} \oint_{C}{f}\cdot d\vec{r} ,
+ \Dotprod{\vecn}{(\curl\vecf\,)}(x,y,z) = \lim_{S \to 0} \frac{1}{S} \oint_{C}{f}\cdot d\vec{r} ,
 \]
-where $S$ is the surface area of a surface $\Sigma$ containing the point $(x,y,z)$ and with a simple closed boundary curve $C$ and positive unit normal vector \textbf{n} at $(x,y,z)$. In the limit, think of the curve $C$ shrinking to the point $(x,y,z)$, which causes $\Sigma$, the surface it bounds, to have smaller and smaller surface area. That ratio of circulation to surface area in the limit is what makes the curl a rough measure of circulation density (i.e., circulation per unit area).
+where $S$ is the surface area of a surface $\Sigma$ containing the point $(x,y,z)$ and with a simple closed boundary curve $C$ and positive unit normal vector \vecn at $(x,y,z)$. In the limit, think of the curve $C$ shrinking to the point $(x,y,z)$, which causes $\Sigma$, the surface it bounds, to have smaller and smaller surface area. That ratio of circulation to surface area in the limit is what makes the curl a rough measure of circulation density (i.e., circulation per unit area).
 
 \begin{lxfigure}
 \begin{center}
@@ -444,30 +455,30 @@ where $S$ is the surface area of a surface $\Sigma$ containing the point $(x,y,z
  \draw (-1,3.5) -- (-1,3.8);
  \draw (-1,2.5) -- (-1,2.2);
  \draw [-latex] (-1,3) ++(165:0.8) arc (165:105:0.8);
- \node [right] at (2.25,2.77) {$\textbf{f}$};
+ \node [right] at (2.25,2.77) {$\vecf$};
 \end{tikzpicture}
-\captionof{figure}{Curl and rotation}\label{fig_curl_rot}
+\caption{Curl and rotation}\label{fig_curl_rot}
 \end{center}
 \end{lxfigure}
 
-An idea of how the curl of a vector field is related to rotation is shown in \autoref{fig_curl_rot}. Suppose we have a vector field $\textbf{f}(x,y,z)$ which is always parallel to the $xy$-plane at each point $(x,y,z)$ and that the vectors grow larger the further the point $(x,y,z)$ is from the $y$-axis. For example, $\textbf{f}(x,y,z) = (1+x^2 )\,\textbf{j}$. Think of the vector field as representing the flow of water, and imagine dropping two wheels with paddles into that water flow, as in Figure 4.5.6. Since the flow is stronger (i.e., the magnitude of \textbf{f} is larger) as you move away from the $y$-axis, then such a wheel would rotate counterclockwise if it were dropped to the right of the $y$-axis, and it would rotate clockwise if it were dropped to the left of the $y$-axis. In both cases the curl would be nonzero ($\text{curl }\textbf{f}(x,y,z) = 2x\,\textbf{k}$ in our example) and would obey the right-hand rule, that is, $\text{curl }\textbf{f}(x,y,z)$ points in the direction of your thumb as you cup your right hand in the direction of the rotation of the wheel. So the curl points outward (in the positive $z$-direction) if $x > 0$ and points inward (in the negative $z$-direction) if $x < 0$. Notice that if all the vectors had the same direction \emph{and} the same magnitude, then the wheels would not rotate and hence there would be no curl (which is why such fields are called irrotational, meaning no rotation).
+An idea of how the curl of a vector field is related to rotation is shown in \autoref{fig_curl_rot}. Suppose we have a vector field $\vecf(x,y,z)$ which is always parallel to the $xy$-plane at each point $(x,y,z)$ and that the vectors grow larger the further the point $(x,y,z)$ is from the $y$-axis. For example, $\vecf(x,y,z) = (1+x^2 )\,\vecj$. Think of the vector field as representing the flow of water, and imagine dropping two wheels with paddles into that water flow, as in Figure 4.5.6. Since the flow is stronger (i.e., the magnitude of \vecf is larger) as you move away from the $y$-axis, then such a wheel would rotate counterclockwise if it were dropped to the right of the $y$-axis, and it would rotate clockwise if it were dropped to the left of the $y$-axis. In both cases the curl would be nonzero ($\curl\vecf(x,y,z) = 2x\,\veck$ in our example) and would obey the right-hand rule, that is, $\curl\vecf(x,y,z)$ points in the direction of your thumb as you cup your right hand in the direction of the rotation of the wheel. So the curl points outward (in the positive $z$-direction) if $x > 0$ and points inward (in the negative $z$-direction) if $x < 0$. Notice that if all the vectors had the same direction \emph{and} the same magnitude, then the wheels would not rotate and hence there would be no curl (which is why such fields are called irrotational, meaning no rotation).
 
-Finally, by Stokes' Theorem, we know that if $C$ is a simple closed curve in some solid region $S$ in $\mathbb{R}^{3}$ and if $\textbf{f}(x,y,z)$ is a smooth vector field such that $\text{curl }\textbf{f} = \textbf{0}$ in $S$, then
+Finally, by Stokes' Theorem, we know that if $C$ is a simple closed curve in some solid region $S$ in $\mathbb{R}^{3}$ and if $\vecf(x,y,z)$ is a smooth vector field such that $\curl\vecf = \vec0$ in $S$, then
 \[
- \oint_{C}{f}\cdot d\vec{r} = \iint_{\Sigma} \Dotprod{(\text{curl }{\textbf{f}}\,)}{\textbf{n}}\,d\sigma =
-   \iint_{\Sigma} \Dotprod{\textbf{0}}{\textbf{n}}\,d\sigma = \iint_{\Sigma} 0\,d\sigma = 0 ,
+ \oint_{C}{f}\cdot d\vec{r} = \iint_{\Sigma} \Dotprod{(\curl{\vecf}\,)}{\vecn}\,d\sigma =
+   \iint_{\Sigma} \Dotprod{\vec0}{\vecn}\,d\sigma = \iint_{\Sigma} 0\,d\sigma = 0 ,
 \]
 where $\Sigma$ is any orientable surface inside $S$ whose boundary is $C$ (such a surface is sometimes called a \emph{capping surface} for $C$\index{capping surface}). So similar to the two-variable case, we have a three-dimensional version of a result from \autoref{sec:greens}, for solid regions in $\mathbb{R}^{3}$ which are \textbf{simply connected}\index{simply connected} (i.e. regions having no holes):\index{path independence}\index{exact differential form}
 
 \theorem{thm:irrot_equiv}{Irrotational Equivalences}{The following statements are equivalent for a simply connected solid region $S$ in $\mathbb{R}^{3}$:
   \begin{enumerate}
-  \item $\textbf{f}(x,y,z) = P(x,y,z)\,\textbf{i} + Q(x,y,z)\,\textbf{j} + R(x,y,z)\,\textbf{k}$ has a smooth potential $F(x,y,z)$ in $S$
+  \item $\vecf(x,y,z) = P(x,y,z)\,\veci + Q(x,y,z)\,\vecj + R(x,y,z)\,\veck$ has a smooth potential $F(x,y,z)$ in $S$
   \item $\displaystyle{\int_{C}{f}\cdot d\vec{r}}$ is independent of the path for any curve $C$ in $S$
   \item $\displaystyle{\oint_{C}{f}\cdot d\vec{r}} = 0$ for every simple closed curve $C$ in $S$
-  \item $\dfrac{\partial R}{\partial y} = \dfrac{\partial Q}{\partial z}$,   $\dfrac{\partial P}{\partial z} = \dfrac{\partial R}{\partial x}$, and   $\dfrac{\partial Q}{\partial x} = \dfrac{\partial P}{\partial y}$ in $S$ (i.e., $\text{curl }\textbf{f} = \textbf{0}$ in $S$, or the differential form $P\,dx + Q\,dy + R\,dz$ is exact)
+  \item $\dfrac{\partial R}{\partial y} = \dfrac{\partial Q}{\partial z}$,   $\dfrac{\partial P}{\partial z} = \dfrac{\partial R}{\partial x}$, and   $\dfrac{\partial Q}{\partial x} = \dfrac{\partial P}{\partial y}$ in $S$ (i.e., $\curl\vecf = \vec0$ in $S$, or the differential form $P\,dx + Q\,dy + R\,dz$ is exact)
  \end{enumerate}}
 
-\example{ex_check_irrot}{Determining Irrotation}{Determine if the vector field $\textbf{f}(x,y,z) = xyz\,\textbf{i} + xz\,\textbf{j} + xy\,\textbf{k}$ has a potential in $\mathbb{R}^{3}$.}{Since $\mathbb{R}^{3}$ is simply connected, we just need to check whether $\text{curl }\textbf{f} = \textbf{0}$ throughout $\mathbb{R}^{3}$, that is,
+\example{ex_check_irrot}{Determining Irrotation}{Determine if the vector field $\vecf(x,y,z) = xyz\,\veci + xz\,\vecj + xy\,\veck$ has a potential in $\mathbb{R}^{3}$.}{Since $\mathbb{R}^{3}$ is simply connected, we just need to check whether $\curl\vecf = \vec0$ throughout $\mathbb{R}^{3}$, that is,
  \[
   \frac{\partial R}{\partial y} = \frac{\partial Q}{\partial z},\quad
   \frac{\partial P}{\partial z} = \frac{\partial R}{\partial x},\quad\text{and}\quad
@@ -478,6 +489,6 @@ where $\Sigma$ is any orientable surface inside $S$ whose boundary is $C$ (such 
   \frac{\partial P}{\partial z} = xy , \frac{\partial R}{\partial x} = y \quad\Rightarrow\quad
   \frac{\partial P}{\partial z} \ne \frac{\partial R}{\partial x} \text{ for some $(x,y,z)$ in $\mathbb{R}^{3}$.}
  \]
- Thus, $\textbf{f}(x,y,z)$ does not have a potential in $\mathbb{R}^{3}$.}
+ Thus, $\vecf(x,y,z)$ does not have a potential in $\mathbb{R}^{3}$.}
 
 \printexercises{exercises/14_Stokes_exercises}

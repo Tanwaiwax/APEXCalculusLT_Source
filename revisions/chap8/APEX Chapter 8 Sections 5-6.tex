@@ -1,0 +1,164 @@
+\documentclass[11pt]{report}
+\usepackage[letterpaper, total={6.5in, 10in}]{geometry}
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+\usepackage{amsmath, amsthm, mathpazo, epic, eepic, color, array}
+\usepackage{amssymb}
+%\usepackage{graphicx}
+\usepackage{cancel}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\pgfplotsset{compat=1.13}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+\usepackage{hyperref}
+\usepackage[normalem]{ulem}
+
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows, petri, topaths}
+\usepackage{tkz-berge}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+
+\newboolean{colorprint}
+\setboolean{colorprint}{true}
+%\setboolean{colorprint}{false}
+
+\ifthenelse{\boolean{colorprint}}{%
+\newcommand{\colorone}{blue}
+\newcommand{\colortwo}{red}
+\newcommand{\coloronefill}{blue!15!white}
+\newcommand{\colortwofill}{red!15!white}
+\newcommand{\colormapone}{rgb=(.4,.4,1); rgb=(.8,.8,1)}
+\newcommand{\colormaptwo}{rgb=(1,.4,.4); rgb=(1,.8,.8)}
+\newcommand{\colormapplaneone}{rgb=(.7,.7,1); rgb=(.9,.9,1)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,1}
+\definecolor{colormaponetop}{rgb}{.8,.8,1}
+\definecolor{colormaptwobottom}{rgb}{1,.4,.4}
+\definecolor{colormaptwotop}{rgb}{1,.8,.8}
+}% ends color
+{% not color
+\newcommand{\colorone}{black}
+\newcommand{\colortwo}{black!50!white}
+\newcommand{\coloronefill}{black!15!white}
+\newcommand{\colortwofill}{black!05!white}
+\newcommand{\colormapone}{rgb=(.4,.4,.4); rgb=(.7,.7,.7)}
+\newcommand{\colormaptwo}{rgb=(.6,.6,.6); rgb=(.9,.9,.9)}
+\newcommand{\colormapplaneone}{rgb=(.8,.8,.8); rgb=(.95,.95,.95)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,.4}
+\definecolor{colormaponetop}{rgb}{.7,.7,.7}
+\definecolor{colormaptwobottom}{rgb}{.6,.6,.6}
+\definecolor{colormaptwotop}{rgb}{.9,.9,.9}
+}%
+
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+\pgfplotsset{my style/.append style={axis x line=middle, axis y line=
+middle, xlabel={$x$}, ylabel={$y$}, axis equal }}
+
+\pgfplotsset{compat=1.13}
+\newcommand{\ds}{\displaystyle}
+\begin{document}
+
+
+\textbf{Section 8.5 Integration Strategies}\\
+\vskip .25 truecm
+
+\textbf{p. 428 line -4}\\
+Should be easiest instead of easies\\ \\
+\textbf{p. 431, paragraph after \#6}\\
+First sentence, last word should be rules instead of rule. \\ \\
+
+\textbf{p. 414, Example 1, Solution 2}\\
+2nd line of equations delete the - in front of $\int \frac{1}{u^5}~du$. \\ \\
+
+\textbf{p. 435, Exercises}\\
+Delete the "(solutions)" after header. The directions need to be bolded. 
+\vskip 1 truecm
+
+\textbf{Section 8.6 Improper Integrals}\\
+\vskip .25 truecm
+
+\textbf{p. 438}\\
+Margin figure captions:\\
+In each caption the word Example is hyphenated. A reviewer asked for the word "Example" to be moved to the second line so it doesn't have to be hyphenated. : \} \\
+
+Example 1\\
+Replace all $a$ and $b$ with $t$ in solution steps.\\
+
+Example 1 Solution 2 paragraph after $=\infty$.\\
+"... Compare the graphs in Figures... how the \sout{graph} values of... \sout{is} are noticeably larger than those of $f(x) = 1/x^2$...."\\
+
+
+\textbf{p. 439, Example 2}\\
+Replace all $b$ with $t$ in solution steps.\\ \\
+Replace paragraph after solution steps with: "The $\ln 1 = 0$ and $1/t$ goes to 0, leaving $\displaystyle \lim_{t \to \infty} \frac{\ln t}{t}$ with l'H\^{o}pital's Rule. We have:" Change these $b$'s to $t$ also.\\ \\
+
+\textbf{pp. 440, Example 3}\\
+Solution 1 paragraph: "... asymptote at $x=0$. In some sense..."\\
+Replace all $a$ with $t$ in solution steps.\\ \\
+
+\textbf{p. 441}\\
+Example 3 solution 2 second paragraph: "Clearly the area...negative\sout{!}... continued anyway to apply \sout{with} the Fundamental..."\\
+
+In last line of solution 2 steps $\displaystyle \lim_{t \to 0^-} -\frac{1}{t}+ 1...$ (i.e. the -1 should be +1)\\
+
+last line on the page: "Our first tool is \sout{to understand} knowing... \\ \\
+
+\textbf{p. 442, Example 4}\\
+Replace all $b$ with $t$ in solution steps.\\
+In parapgraph right after solution steps: "When does this limit....less than $0$. \sout{: when $1-p<0 \implies 1<p$} This is true when $1-p < 0$ or when $1<p$."\\ \\
+
+\textbf{p. 443, line 3}\\
+Replace "to compare to" with "in comparisons".\\ \\
+
+\textbf{p. 444, Example 6}\\
+SOLUTION~~~~~"As $x$" gets large the square root of the quadratic \sout{inside the square root} function will..."\\ \\
+
+\textbf{p. 445, line 3}\\
+"The trouble is...function. \sout{To get rid of it...looks very much like 1/x.}"\\ \\
+Replace the deleted text with:\\
+We determine the limit by using a technique we learned in Calulus I:
+$$\lim_{x \to \infty} \frac{x}{\sqrt{x^2+2x+5}}=\lim_{x \to \infty} \frac{\frac{x}{x}}{{\sqrt{\frac{x^2+2x+5}{x^2}}}}=\lim_{x \to \infty} \frac{1}{\sqrt{1+\frac{2}{x}+ \frac{5}{x^2}}}=1$$
+Then continue with "Since we know that ..."\\
+
+\textbf{p. 445, 4th paragraph from the bottom}\\
+"This chapter has explored... We learned \sout{Substitution, which... of differentiation as well as} Integration by Parts...Product Rule" \textit{insert:} of differentiation. "We \textit{insert:} also learned..." \\
+
+\textbf{p. 445, line -2}\\
+Replace "a number of" with "several"\\ \\
+
+\textbf{Exercises}\\
+Add the following:\\
+
+\textbf{Insert after the current \#17}\\
+
+$\displaystyle \int_0^3 \frac{1}{x}~dx$\\
+
+Solution: Diverges\\
+
+$\displaystyle \int_2^5 \frac{dx}{\sqrt{x-2}}$\\
+
+Solution: $2\sqrt 3$\\
+
+$\displaystyle \int_1^9 \frac{dx}{\root 3 \of{9-x}}$\\
+
+Solution: $6$\\
+
+$\displaystyle \int_0^{\frac{\pi}{2}} \sec x~dx$\\
+
+Solution: Diverges\\
+
+
+\end{document}
+

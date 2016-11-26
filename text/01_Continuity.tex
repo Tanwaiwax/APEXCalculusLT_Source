@@ -54,7 +54,7 @@ If $f$ is defined near $c$ but is not continuous at $c$, then we say that $f$ is
 \\
 Removable & Infinite & Jump
 \end{tabular}
-\captionof{figure}{Three types of discontinuities}
+\caption{Three types of discontinuities}
 \label{fig:types_of_discont}
 \end{lxfigure}
 
@@ -77,14 +77,11 @@ Removable & Infinite & Jump
 
 We conclude that $f$ is continuous at every point of $(0,3)$ except at $x=1$. Therefore $f$ is continuous on $(0,1)\cup(1,3)$.}
 
+\mfigure{0in}{A graph of the step function in \autoref{ex_contint2}.}{fig:continuous2}{figures/figContinuous2}
 \example{ex_contint2}{Finding intervals of continuity}{The \textit{floor function},
 \index{floor function}
-%
-\mfigure{0in}{A graph of the step function in \autoref{ex_contint2}.}{fig:continuous2}{figures/figContinuous2}%
-%
 $f(x) = \lfloor x \rfloor$, returns the largest integer smaller than or equal to the input $x$. (For example, $f(\pi) = \lfloor \pi \rfloor = 3$.) The graph of $f$ in \autoref{fig:continuous2} demonstrates why this is often called a ``step function.'' \\
-Give the intervals on which $f$ is continuous.
-}
+Give the intervals on which $f$ is continuous.}
 {We examine the three criteria for continuity.
 \begin{enumerate}
 	\item	The limits $\lim_{x\to c} f(x)$ do not exist at the jumps from one ``step'' to the next, which occur at all integer values of $c$. Therefore the limits exist for all $c$ except when $c$ is an integer.
@@ -240,7 +237,7 @@ While this notion seems intuitive, it is not trivial to prove and its importance
 \mtable[-1in]{A situation where the Intermediate Value Theorem applies (top) and does not (bottom).}{fig_ivt}{\begin{tabular}{c}
 \begin{tikzpicture}
 \begin{axis}[width=\marginparwidth, xtick={.7, 1.5, 4.7}, xticklabels={\scriptsize{$a$},\scriptsize{$c$},\scriptsize{$b$}}, ytick={.54, 2.98,4.16},yticklabels={\scriptsize{$f(b)$},\scriptsize{$L$},\scriptsize{$f(a)$}}, axis y line=middle,axis x line=middle, ymin=-.5, ymax=5.5, xmin=-.5, xmax=5.2, name=myplot]
-\addplot[{\colorone}, domain=0:5, thick, smooth] {.2*(x-2)^3-2*(x-2)+2};
+\addplot[{\colorone}, domain=0:5, thick, smooth] {.2*(x-2)*(x-2)*(x-2)-2*(x-2)+2};
 \draw[{\colortwo},thick] (axis cs:1.5,0) -- (axis cs: 1.5,2.98);
 \draw[{\colortwo},thick] (axis cs:1.5,2.98) -- (axis cs: 0,2.98);
 \draw[dashed,thin](axis cs: .7,0)--(axis cs:.7,4.16);
@@ -291,14 +288,15 @@ There is a technique that produces a good approximation of $c$. Let $d$ be the m
 
 Successively applying this technique is called the \sword{Bisection Method} \index{Bisection Method} of root finding. We continue until the interval is sufficiently small. We demonstrate this in the following example.
 
-\mfigure{0in}{Graphing a root of $f(x) = x-\cos x$.}{fig:xminuscosx}{figures/figXMinusCosX}
+\mfigure{0in}{Graphing a root of\\
+$f(x) = x-\cos x$.}{fig:xminuscosx}{figures/figXMinusCosX}
 
 \example{ex_bisect_method}{Using the Bisection Method}{Approximate the root of $f(x) = x-\cos x$, accurate to three places after the decimal.}
 {Consider the graph of $f(x) = x-\cos x$, shown in \autoref{fig:xminuscosx}. It is clear that the graph crosses the $x$-axis somewhere near $x=0.8$. To start the Bisection Method, pick an interval that contains $0.8$. We choose $[0.7,0.9]$. Note that all we care about are signs of $f(x)$, not their actual value, so this is all we display.
 
 \begin{description}
 	\item[Iteration 1:] $f(0.7) < 0$, $f(0.9) > 0$, and $f(0.8) >0$. So replace $0.9$ with $0.8$ and repeat.
-	\item[Iteration 2:]	$f(0.7)<0$, $f(0.8) > 0$, and at the midpoint, $0.75$, we have $f(0.75) >0 $. So replace $0.8$ with $0.75$ and repeat. Note that we don't need to continue to check the endpoints, just the midpoint. Thus we put the rest of the iterations in \autoref{table:rootfinding}.
+	\item[Iteration 2:]	$f(0.7)<0$, $f(0.8) > 0$, and at the midpoint, $0.75$, we see that $f(0.75) >0 $. So replace $0.8$ with $0.75$ and repeat. Note that we don't need to continue to check the endpoints, just the midpoint. Thus we put the rest of the iterations in \autoref{table:rootfinding}.
 \end{description}
 		
 \mtable{Iterations of the Bisection Method of Root Finding}{table:rootfinding}%
@@ -317,7 +315,7 @@ Successively applying this technique is called the \sword{Bisection Method} \ind
 		11 & $[0.7389,0.7391]$ & $f(0.7390)<0$\\
 		12 & $[0.7390,0.7391]$
 	\end{tabular}}%
-			
+
 Notice that in the 12$^\text{th}$ iteration we have the endpoints of the interval each starting with $0.739$. Thus we have narrowed the zero down to an accuracy of the first three places after the decimal. Using a computer, we have 
 $$ f(0.7390) = -0.00014, \quad f(0.7391) = 0.000024.$$ Either endpoint of the interval gives a good approximation of where $f$ is 0. The Intermediate Value Theorem states that the actual zero is still within this interval. While we do not know its exact value, we know it starts with $0.739$. 
 

@@ -1,0 +1,153 @@
+\documentclass[10pt]{article}
+
+
+%%
+% HERE THERE BE DRAGONS
+%%
+
+\usepackage{ifthen}
+
+\usepackage{lipsum}
+\usepackage{pgfplots}
+\pgfplotsset{colormap={coloronemap}{rgb=(.4,.4,1); rgb=(.8,.8,1)}}
+\pgfplotsset{colormap={colortwomap}{rgb=(1,.4,.4); rgb=(1,.8,.8)}}
+%\pgfplotsset{compat=1.3}
+\usepackage{eso-pic,calc}
+\usepackage[font=small]{caption}
+\usepgfplotslibrary{external}
+\usetikzlibrary{calc}
+\usetikzlibrary{shadings}
+\usepackage{enumitem}
+
+\usepackage[h]{esvect}
+
+\pgfplotsset{compat=1.8}
+
+\usepackage[paperheight=11in,paperwidth=6in,%inner=1in,includeheadfoot,
+textheight=10in,%textwidth=345pt,
+marginparwidth=150pt]{geometry}
+%% end detour
+%%
+
+\usepackage{amsmath}
+
+
+
+
+\ifthenelse{\boolean{xetex}}%
+	{\sffamily
+	%%\usepackage{fontspec}
+	\usepackage{mathspec}
+	\setallmainfonts[Mapping=tex-text]{Calibri}
+	\setmainfont[Mapping=tex-text]{Calibri}
+	\setsansfont[Mapping=tex-text]{Calibri}
+	\setmathsfont(Greek){[cmmi10]}}
+	{Please compile with XeLaTeX}
+
+\newboolean{colorprint}
+\setboolean{colorprint}{true}
+%\setboolean{colorprint}{false}
+
+\ifthenelse{\boolean{colorprint}}{%
+\newcommand{\colorone}{blue}
+\newcommand{\colortwo}{red}
+\newcommand{\coloronefill}{blue!15!white}
+\newcommand{\colortwofill}{red!15!white}
+\newcommand{\colormapone}{rgb=(.4,.4,1); rgb=(.8,.8,1)}
+\newcommand{\colormaptwo}{rgb=(1,.4,.4); rgb=(1,.8,.8)}
+\newcommand{\colormapplaneone}{rgb=(.7,.7,1); rgb=(.9,.9,1)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,1}
+\definecolor{colormaponetop}{rgb}{.8,.8,1}
+\definecolor{colormaptwobottom}{rgb}{1,.4,.4}
+\definecolor{colormaptwotop}{rgb}{1,.8,.8}
+}% ends color
+{% not color
+\newcommand{\colorone}{black}
+\newcommand{\colortwo}{black!50!white}
+\newcommand{\coloronefill}{black!15!white}
+\newcommand{\colortwofill}{black!05!white}
+\newcommand{\colormapone}{rgb=(.4,.4,.4); rgb=(.7,.7,.7)}
+\newcommand{\colormaptwo}{rgb=(.6,.6,.6); rgb=(.9,.9,.9)}
+\newcommand{\colormapplaneone}{rgb=(.8,.8,.8); rgb=(.95,.95,.95)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,.4}
+\definecolor{colormaponetop}{rgb}{.7,.7,.7}
+\definecolor{colormaptwobottom}{rgb}{.6,.6,.6}
+\definecolor{colormaptwotop}{rgb}{.9,.9,.9}
+}%
+\newcommand{\la}{\left\langle}
+\newcommand{\ra}{\right\rangle}
+\newcommand{\dotp}[2]{\ensuremath{\vec #1 \cdot \vec #2}}
+\newcommand{\proj}[2]{\ensuremath{\text{proj}_{\,\vec #2}{\,\vec #1}}}
+
+\newcommand{\fp}{\ensuremath{f\,'}}
+
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+
+\newcommand{\threedlines}[4][]{\draw [dashed,#1] (axis cs: #2,#3,#4) -- (axis cs: #2,#3,0) -- (axis cs: #2,0,0)  (axis cs: #2,#3,0)--(axis cs:0,#3,0);}
+
+\newcommand{\mydraw}{\draw (axis cs:0,0,0) -- (axis cs:1,1,0);}
+\newcommand{\ds}{\displaystyle}
+\usepackage{multicol}
+
+%% no more dragons.  type away %%
+
+% prefer color one for the main graph, and color two for secondary lines
+
+\begin{document}
+
+ON page 530, move the paragraph at the bottom of the page to between Theorem 77 and the video link.\\
+
+Bottom of page 531 in Example 9.8.2 part 2:  Change the last equation to :
+
+\begin{align*} 
+\sum_{n=1}^{\infty} (-1)^{n+1}\frac{(-1)^n}{n} &=\sum_{n=1}^{\infty} \frac{(-1)^{2n+1}}{n}\\
+&=\sum_{n=1}^{\infty} \frac{-1}{n}=-\infty
+\end{align*}
+
+
+After Example 9.8.2 Make a new bold subsection header: Power Series as Functions
+
+
+On page 536 change the first part of the first sentence to:  We established in Example 9.8.3%%%Example reference needed here
+ that the series $\ds \sum_{n=0}^{\infty} \frac{x^{n+1}}{n+1}$ converges at $x=-1$; ...blah...blah
+
+ON page 538:  Middle of page at the end of paragraph under the equations should read the interval of convergence IS ...
+
+
+The two paragraphs right before example 9.8.5 should be changed to read:  In this section we are going to concentrate on representing functions with power series where the function can be related bac to a geometric series. In this way we will hopefully become familiar with some of the kinds of manipulations that we will sometimes need when working with power series. We will see in Section 9.??????%section reference needed here
+that this strategy is useful for integrating functions that don't have elementary derivatives.
+
+Change the text directly before 9.8.8 to read:  We now consider several examples where differentiation and integration of power series from Theorem 78 %%%%Theorem reference needed here
+are used to write the power series for a function.
+
+
+In Example 9.8.9 in the second line of the string of equations, add to the side of the second line: where $|x|<5$
+	Also at the end of this example add the text:  Notice that $x=-5$ allows for convergence so the interval of convergence is $[-5,5)$.
+
+
+Delete current problem 34 and 35
+Add a new problem 34:
+
+it will have parts: 
+\begin{enumerate}[label=(\alph*)]
+\item Use differentiation to find a power series representation for $$ f(x)=\frac{1}{(1+x)^2}$$ What is the radius of convergence?
+\item Use part (a) to find a power series for $$f(x)=\frac{1}{(1+x)^3}$$
+\item Use part (b) to find a power series for $$f(x)=\frac{x^2}{(1+x)^3}$$
+\end{enumerate}
+
+ Directions for new problems 35-41:  Find a power series representation for the function and determine the radius of convergence.  
+
+Use current problems 36-38 and add the following:
+
+$ f(x)=\tan^{-1}x$ 				Solution: $\ds \sum_{n=0}^{\infty}(-1)^n \frac{x^{2n+1}}{2n+1}$  $R=1$
+
+$f(x)=x^2\tan^{-1}(x^3)$			Solution: $\ds \sum_{n=0}^{\infty}(-1)^n \frac{x^{6n+5}}{2n+1}$  $R=1$
+
+$\ds f(x)=\frac{1+x}{(1-x)^2}$			Solution: $\ds \sum_{n=0}^{\infty} (2n+1)x^n$  $R=1$
+
+$\ds f(x)=\biggl(\frac{x}{2-x}\biggr)^3$	Solution: $\ds \sum_{n=0}^{\infty} \frac{(n+2)(n+1)}{2^{n+4}}x^{n+3}$  $R=2$
+
+
+Current problem 37 has a typo and should read:  $\ds f(x)=\frac{x}{(1+9x)^2}$   
+\end{document}

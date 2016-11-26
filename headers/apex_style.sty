@@ -1,11 +1,13 @@
+\RequirePackage{pst-fun} % for psBill in 14_Stokes
+
+% required only for what happens in this file
 \RequirePackage{changepage}
 \RequirePackage[inline]{enumitem}
 \RequirePackage{layout}
 \RequirePackage[h]{esvect}
-\RequirePackage[noplaybutton]{media9}
+\RequirePackage[noplaybutton]{media9} % for embedding 3d images
 \RequirePackage{qrcode}
 \RequirePackage{everypage} % helps put the blue example line on long examples
-%\RequirePackage{eso-pic} % AddToShipOut (only once in Ch.9)
 %\RequirePackage{thmtools} % continuing theorems and ``List of Theorems''
 %\usepackage{lipsum} % not used
 
@@ -198,49 +200,116 @@
 
 
 
+% thanks to David Carlisle at http://tex.stackexchange.com/a/336910/107497
+% the height cut offs have been empirically determined
+\newcommand{\testmargintop}{%
+	\strut\pdfsavepos%
+	\write\@auxout{\string\testmargintopwith{\the\pdflastxpos}{\the\pdflastypos}{\thepage}}%
+}
+\newcommand{\testmargintopwith}[3]{%
+	\ifthenelse{ #2 > 46800000 }{% 468e5
+		\PackageWarningNoLine{apex}{mnote too high on page #3}%
+	}{}%
+	\ifthenelse{ #1 < 0 }{%
+		\PackageWarningNoLine{apex}{mnote on left inner margin on page #3}%
+	}{}%
+	\ifthenelse{ #1 > 33000000 }{% 33e6
+		\PackageWarningNoLine{apex}{mnote on right inner margin on page #3: #1}%
+	}{}%
+}
+\newcommand{\testmarginbottom}{%
+	\strut\pdfsavepos%
+	\write\@auxout{\string\testmarginbottomwith{\the\pdflastypos}{\thepage}}%
+}
+\newcommand{\testmarginbottomwith}[2]{%
+	\ifthenelse{ #1 < 2700000 }{% 27e5
+		\PackageWarningNoLine{apex}{mnote too low on page #2}%
+	}{%
+		\ifthenelse{ #1 < 10000000 }{% 1e7
+			\PackageInfo{apex}{mnote below Notes line on page #2 (ignore line number)}%
+		}{}%
+	}%
+}
+
+
+
+
+\newcommand{\myincludeasythree}[3]{\ifthenelse{\boolean{in_threeD}}{%
+	\includemedia[3Dmenu,activate=onclick,deactivate=onclick,3Dlights=Headlamp,
+	 add3Djscript=asylabels.js,#1
+	]{\myincludegraphics{#3}}{#3\colornamesuffix.prc}%
+}{%
+	\myincludegraphics[#2]{#3}
+}}
 
 \newcommand{\myincludegraphicsthree}{\@ifstar \myincludegraphicsthreestarred \myincludegraphicsthreenostar}
 
 \newcommand{\myincludegraphicsthreenostar}[3]{\ifthenelse{\boolean{in_threeD}}{%
-	\includemedia[#1]{\includegraphics{#3_3D\colornamesuffix}}{#3_3D.prc}%
+	\includemedia[#1]{\myincludegraphics{#3_3D}}{#3_3D.prc}%
 }{%
 	\myincludegraphics[#2]{#3}
 }}
 
 \newcommand{\myincludegraphicsthreestarred}[3]{\ifthenelse{\boolean{in_threeD}}{%
-	\includemedia[#1]{\includegraphics{#3\colornamesuffix}}{#3_3D.prc}%
+	\includemedia[#1]{\myincludegraphics{#3}}{#3_3D.prc}%
 }{%
 	\myincludegraphics[#2]{#3}
 }}
+
+
+
+\newcounter{flushcounter}
+\newcommand{\flushinner}[1]{%
+	\stepcounter{flushcounter}%
+	\makebox[0pt]{\label{label\theflushcounter}}%
+	\ifthenelse{\boolean{latexml}\OR\isodd{\pageref{label\theflushcounter}}}{%
+%		\makebox[.99\linewidth][l]{#1}%
+%		\makebox[.99\linewidth][l]{\parbox{.99\linewidth}{#1}}%
+		\makebox[.99\linewidth][l]{\begin{tabular}{c}#1\end{tabular}}%
+}{%
+%		\makebox[.99\linewidth][r]{#1}%
+%		\makebox[.99\linewidth][r]{\parbox{\textwidth}{#1}}%
+		\makebox[.99\linewidth][r]{\begin{tabular}{c}#1\end{tabular}}%
+	}}
+\newcommand{\flushouter}[1]{%
+	\stepcounter{flushcounter}%
+	\makebox[0pt]{\label{label\theflushcounter}}%
+	\ifthenelse{\boolean{latexml}\OR\isodd{\pageref{label\theflushcounter}}}{%
+		\makebox[.99\linewidth][r]{\begin{tabular}{c}#1\end{tabular}}%
+	}{%
+		\makebox[.99\linewidth][l]{\begin{tabular}{c}#1\end{tabular}}%
+	}}
+\newcommand{\flushinnerequ}[1]{\flushinner{\vtop{#1}}}
+\newcommand{\flushouterequ}[1]{\flushouter{\vtop{#1}}}
 
 
 
 % some exercise / answer related commands
 
 %\def\printexercises#1{\printexercisesgeneric{#1}{Exercises \arabic{chapter}.\arabic{section}}{\arabic{chapter}.\arabic{section}}}
-\newcommand{\printexercises}[1]{\inputexercises{#1}}
+%\newcommand{\printexercises}[1]{\inputexercises{#1}}
 
-\def\printexercisesreview#1{\printexercisesgeneric{#1}{Chapter \arabic{chapter} Review Exercises}{\arabic{chapter}}}
+%\def\printexercisesreview#1{\printexercisesgeneric{#1}{Chapter \arabic{chapter} Review Exercises}{\arabic{chapter}}}
 
-\newcommand{\writeToAnsFile}[3]{%
-\ifthenelse{\boolean{chapter_already_has_exercises}}{}{% else
- \setboolean{chapter_already_has_exercises}{true}
- \immediate\write\answrite{}%
- \immediate\write\answrite{%
-  \noexpand\noindent{%
-   \noexpand\Large%
-   \noexpand\textbf{Chapter \arabic{chapter}}%
-  }%
-  \noexpand\bigskip%
-  \noexpand\newline%
- }%
-}%
-\immediate\write\answrite{%
- \noexpand\noindent%
- \noexpand\hyperref[exer#3]{\noexpand\textbf{#2}}%
- \noexpand\label{sol#3}%
- \noexpand\bigskip%
-% \noexpand\newline%
-}%
-\write\answrite{\noexpand\printanswers{#1}}%
-}
+%\newcommand{\writeToAnsFile}[3]{%
+%\ifthenelse{\boolean{chapter_already_has_exercises}}{}{% else
+% \setboolean{chapter_already_has_exercises}{true}
+% \immediate\write\answrite{}%
+% \immediate\write\answrite{%
+%  \noexpand\noindent{%
+%   \noexpand\Large%
+%   \noexpand\textbf{Chapter \arabic{chapter}}%
+%  }%
+%  \noexpand\bigskip%
+%  \noexpand\newline%
+% }%
+%}%
+%\immediate\write\answrite{%
+% \noexpand\noindent%
+% \noexpand\hyperref[exer#3]{\noexpand\textbf{#2}}%
+% \noexpand\label{sol#3}%
+% \noexpand\bigskip%
+%% \noexpand\newline%
+%}%
+%\write\answrite{\noexpand\printanswers{#1}}%
+%}

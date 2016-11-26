@@ -8,12 +8,16 @@ We now turn our attention to answering other questions, whose solutions require 
 
 We are interested in the lines tangent to a given graph, regardless of whether that graph is produced by rectangular, parametric, or polar equations. In each of these contexts, the slope of the tangent line is $\frac{dy}{dx}$. Given $r=f(\theta)$, we are generally \textit{not} concerned with $r\,'=\fp(\theta)$; that describes how fast $r$ changes with respect to $\theta$. Instead, we will use $x=f(\theta)\cos\theta$, $y=f(\theta)\sin\theta$ to compute $\frac{dy}{dx}$. 
 
-Using \autoref{idea:dydxpar} we have $$\frac{dy}{dx} = \frac{dy}{d\theta}\Big/\frac{dx}{d\theta}.$$ Each of the two derivatives on the right hand side of the equality requires the use of the Product Rule. We state the important result as a Key Idea.\\
+Using \autoref{idea:dydxpar} we have $$\frac{dy}{dx} = \frac{dy}{d\theta}\Big/\frac{dx}{d\theta}.$$ Each of the two derivatives on the right hand side of the equality requires the use of the Product Rule. We state the important result as a Key Idea.
 
 \keyidea{idea:dydxpol}{Finding $\frac{dy}{dx}$ with Polar Functions}
 {Let $r=f(\theta)$ be a polar function. With $x=f(\theta)\cos\theta$ and $y=f(\theta)\sin\theta$,
 \index{polar!functions!finding $\frac{dy}{dx}$}\index{tangent line}
-$$\frac{dy}{dx} = \frac{\fp(\theta)\sin\theta+f(\theta)\cos\theta}{\fp(\theta)\cos\theta-f(\theta)\sin\theta}.$$
+\[
+ \frac{dy}{dx}
+ =\frac{\frac{dy}{d\theta}}{\frac{dx}{d\theta}}
+ =\frac{\fp(\theta)\sin\theta+f(\theta)\cos\theta}{\fp(\theta)\cos\theta-f(\theta)\sin\theta}.
+\]
 }
 
 \youtubeVideo{QTa9OZ4iGPo}{The Slope of Tangent Lines to Polar Curves}
@@ -21,7 +25,7 @@ $$\frac{dy}{dx} = \frac{\fp(\theta)\sin\theta+f(\theta)\cos\theta}{\fp(\theta)\c
 \example{ex_polcalc1}{Finding $\frac{dy}{dx}$ with polar functions.}
 {Consider the lima\c con $r=1+2\sin\theta$ on $[0,2\pi]$.
 \begin{enumerate}
-	\item	Find the equations of the tangent and normal lines to the graph at $\theta=\pi/4$.
+	\item	Find the rectangular equations of the tangent and normal lines to the graph at $\theta=\pi/4$.
 	\item	Find where the graph has vertical and horizontal tangent lines.
 \end{enumerate}
 }
@@ -36,37 +40,45 @@ $$\frac{dy}{dx} = \frac{\fp(\theta)\sin\theta+f(\theta)\cos\theta}{\fp(\theta)\c
 	
 	The normal line has the opposite--reciprocal slope as the tangent line, so its equation is 
 	$$y \approx \frac{1}{3.83}x+1.26.$$
-	\mfigure{0in}{The lima\c con in \autoref{ex_polcalc1} with its tangent line at $\theta=\pi/4$ and points of vertical and horizontal tangency.}{fig:polcalc1}{figures/figpolcalc1}
 	
-	\item		To find the horizontal lines of tangency, we find where $\frac{dy}{dx}=0$; thus we find where the numerator of our equation for $\frac{dy}{dx}$ is 0.
+	\item		To find the horizontal lines of tangency, we find where $\frac{dy}{dx}=0$ (when the denominator does not equal 0); thus we find where the numerator of our equation for $\frac{dy}{dx}$ is 0.
 	$$\cos\theta(4\sin\theta+1)=0\quad \Rightarrow \quad \cos\theta=0 \quad \text{or}\quad 4\sin\theta+1=0.$$
 	On $[0,2\pi]$, $\cos\theta=0$ when $\theta=\pi/2,\ 3\pi/2$. 
 
 Setting $4\sin\theta+1=0$ gives $\theta=\sin^{-1}(-1/4)\approx -0.2527 = -14.48^\circ$. We want the results in $[0,2\pi]$; we also recognize there are two solutions, one in the 3$^\text{rd}$ quadrant and one in the 4$^\text{th}$. Using reference angles, we have our two solutions as $\theta =3.39$ and $6.03$ radians. The four points we obtained where the lima\c con has a horizontal tangent line are given in \autoref{fig:polcalc1} with black--filled dots.\bigskip
 
-To find the vertical lines of tangency, we determine where $\frac{dy}{dx}$ is undefined by setting the denominator of $\frac{dy}{dx}=0$. 
+To find the vertical lines of tangency, we determine where $\frac{dy}{dx}$ is undefined by setting the denominator of $\frac{dy}{dx}=0$ (when the numerator does not equal 0).
 \begin{align*}
 2(\cos^2\theta -\sin^2\theta)-\sin\theta &= 0 .
 \intertext{Convert the $\cos^2\theta$ term to $1-\sin^2\theta$:}
 2(1-\sin^2\theta-\sin^2\theta)-\sin\theta &= 0\\
-4\sin^2\theta + \sin\theta -1 &= 0.
+4\sin^2\theta + \sin\theta -2 &= 0.
 \intertext{Recognize this as a quadratic in the variable $\sin\theta$. Using the quadratic formula, we have}
 \sin\theta &= \frac{-1\pm\sqrt{33}}{8}.
 \end{align*}
+\mfigure{0in}{The lima\c con in \autoref{ex_polcalc1} with its tangent line at $\theta=\pi/4$ and points of vertical and horizontal tangency.}{fig:polcalc1}{figures/figpolcalc1}
 We solve $\sin\theta = \frac{-1+\sqrt{33}}8$ and $\sin\theta = \frac{-1-\sqrt{33}}8$:
 \begin{align*}
 \sin\theta &=\frac{-1+\sqrt{33}}8 & \sin\theta &= \frac{-1-\sqrt{33}}{8}\\
 \theta &= \sin^{-1}\left(\frac{-1+\sqrt{33}}8\right) & \theta &= \sin^{-1}\left(\frac{-1-\sqrt{33}}8\right)\\
-\theta &= 0.6399 & \theta &= -1.0030
+\theta &\approx 0.6349 & \theta &\approx -1.0030
 \end{align*}
 In each of the solutions above, we only get one of the possible two solutions as $\sin^{-1}x$ only returns solutions in $[-\pi/2,\pi/2]$, the 4$^\text{th}$ and $1^\text{st}$ quadrants. Again using reference angles, we have:
-$$\sin\theta = \frac{-1+\sqrt{33}}8 \quad \Rightarrow \quad \theta = 0.6399,\ 3.7815 \text{ radians}$$
+$$\sin\theta = \frac{-1+\sqrt{33}}8 \quad \Rightarrow \quad \theta \approx 0.6349,\ 2.5067 \text{ radians}$$
 and 
-$$\sin\theta = \frac{-1-\sqrt{33}}8 \quad \Rightarrow \quad \theta = 4.1446,\ 5.2802 \text{ radians.}$$
+$$\sin\theta = \frac{-1-\sqrt{33}}8 \quad \Rightarrow \quad \theta \approx 4.1446,\ 5.2802 \text{ radians.}$$
 These points are also shown in \autoref{fig:polcalc1} with white--filled dots.\eoehere
 \end{enumerate}}
 
-When the graph of the polar function $r=f(\theta)$ intersects the pole, it means that $f(\alpha)=0$ for some angle $\alpha$. Thus the formula for $\frac{dy}{dx}$ in such instances is very simple, reducing simply to $$\frac{dy}{dx} = \tan \alpha.$$
+When the graph of the polar function $r=f(\theta)$ intersects the pole, it means that $f(\alpha) = 0$ for some angle $\alpha$. Making this substitution in the formula for $\dfrac{dy}{dx}$ given in \autoref{idea:dydxpol} we see
+\[
+ \frac{dy}{dx}
+ =\frac{f'(\alpha)\sin\alpha+f(\alpha)\cos\alpha}{f'(\alpha)\cos\alpha+f(\alpha)\sin\alpha}
+ =\frac{\sin\alpha}{\cos\alpha}
+ =\tan\alpha.
+\]
+%
+%When the graph of the polar function $r=f(\theta)$ intersects the pole, it means that $f(\alpha)=0$ for some angle $\alpha$. Thus the formula for $\frac{dy}{dx}$ in such instances is very simple, reducing simply to $$\frac{dy}{dx} = \tan \alpha.$$
 This equation makes an interesting point. It tells us the slope of the tangent line at the pole is $\tan \alpha$; some of our previous work (see, for instance, \autoref{ex_polar3}) shows us that the line through the pole with slope $\tan \alpha$ has polar equation $\theta=\alpha$. Thus when a polar graph touches the pole at $\theta=\alpha$, the equation of the tangent line at the pole is $\theta=\alpha$.
 
 \example{ex_polcalc2}{Finding tangent lines at the pole.}{
@@ -82,11 +94,7 @@ Thus the equations of the tangent lines, in polar, are $\theta = 7\pi/6$ and $\t
 
 \subsection*{Area}
 
-When using rectangular coordinates, the equations $x=h$ and $y=k$ defined vertical and horzontal lines, respectively, and combinations of these lines create rectangles (hence the name ``rectangular coordinates''). It is then somewhat natural to use rectangles to approximate area as we did when learning about the definite integral.\index{polar!functions!area}
-
-When using polar coordinates, the equations $\theta=\alpha$ and $r=c$ form lines through the origin and circles centered at the origin, respectively, and combinations of these curves form sectors of circles. It is then somewhat natural to calculate the area of regions defined by polar functions by first approximating with sectors of circles. 
-
-Consider \autoref{fig:polararea} (a) where a region defined by $r=f(\theta)$ on $[\alpha,\beta]$ is given. (Note how the ``sides'' of the region are the lines $\theta=\alpha$ and $\theta=\beta$, whereas in rectangular coordinates the ``sides'' of regions were often the vertical lines $x=a$ and $x=b$.)
+When using rectangular coordinates, the equations $x=h$ and $y=k$ defined vertical and horizontal lines, respectively, and combinations of these lines create rectangles (hence the name ``rectangular coordinates''). It is then somewhat natural to use rectangles to approximate area as we did when learning about the definite integral.\index{polar!functions!area}
 
 \mnote{\textbf{Note:} Recall that the area of a sector of a circle with radius $r$ subtended by an angle $\theta$ is $A = \frac12\theta r^2$.
 \[
@@ -99,13 +107,16 @@ Consider \autoref{fig:polararea} (a) where a region defined by $r=f(\theta)$ on 
 			\end{tikzpicture}
 \]}
 
-Partition the interval $[\alpha,\beta]$ into $n$ equally spaced subintervals as $\alpha=\theta_0<\theta_1<\dotso<\theta_n=\beta$. The length of each subinterval is $\Delta\theta = (\beta-\alpha)/n$, representing a small change in angle. The area of the region defined by the $i\,^\text{th}$ subinterval $[\theta_{i-1},\theta_i]$ can be approximated with a sector of a circle with radius $f(c_i)$, for some $c_i$ in $[\theta_{i-1},\theta_i]$. The area of this sector is $\frac12[f(c_i)]^2\Delta\theta$. This is shown in part (b) of the figure, where $[\alpha,\beta]$ has been divided into 4 subintervals. We approximate the area of the whole region by summing the areas of all sectors:
-$$\text{Area} \approx \sum_{i=1}^n \frac12[f(c_i)]^2\Delta\theta.$$
-This is a Riemann sum. By taking the limit of the sum as $n\to\infty$, we find the exact area of the region in the form of a definite integral.
+When using polar coordinates, the equations $\theta=\alpha$ and $r=c$ form lines through the origin and circles centered at the origin, respectively, and combinations of these curves form sectors of circles. It is then somewhat natural to calculate the area of regions defined by polar functions by first approximating with sectors of circles. 
 
+Consider \autoref{fig:polararea} (a) where a region defined by $r=f(\theta)$ on $[\alpha,\beta]$ is given. (Note how the ``sides'' of the region are the lines $\theta=\alpha$ and $\theta=\beta$, whereas in rectangular coordinates the ``sides'' of regions were often the vertical lines $x=a$ and $x=b$.)
+
+Partition the interval $[\alpha,\beta]$ into $n$ equally spaced subintervals as $\alpha=\theta_0<\theta_1<\dotso<\theta_n=\beta$. The radian of each subinterval is $\Delta\theta = (\beta-\alpha)/n$, representing a small change in angle. The area of the region defined by the $i\,^\text{th}$ subinterval $[\theta_{i-1},\theta_i]$ can be approximated with a sector of a circle with radius $f(c_i)$, for some $c_i$ in $[\theta_{i-1},\theta_i]$. The area of this sector is $\frac12[f(c_i)]^2\Delta\theta$. This is shown in part (b) of the figure, where $[\alpha,\beta]$ has been divided into 4 subintervals. We approximate the area of the whole region by summing the areas of all sectors:
 \mtable{Computing the area of a polar region.}{fig:polararea}{%
 \myincludegraphics{figures/figpolarea1}\\(a)\\
 \myincludegraphics{figures/figpolarea2}\\(b)}
+\[\text{Area} \approx \sum_{i=1}^n \frac12[f(c_i)]^2\Delta\theta.\]
+This is a Riemann sum. By taking the limit of the sum as $n\to\infty$, we find the exact area of the region in the form of a definite integral.
 
 \theorem{thm:polar_area}{Area of a Polar Region}
 {Let $f$ be continuous and non-negative on $[\alpha,\beta]$, where $0\leq \beta-\alpha\leq 2\pi$. The area  $A$ of the region bounded by the curve $r=f(\theta)$ and the lines $\theta=\alpha$ and $\theta=\beta$ is 
@@ -131,7 +142,7 @@ The theorem states that $0\leq \beta-\alpha\leq 2\pi$. This ensures that region 
 \end{align*}
 Of course, we already knew the area of a circle with radius $1/2$. We did this example to demonstrate that the area formula is correct.}
 
-\example{ex_polcalc4}{Area of a polar region}{Find the area of the cardiod $r=1+\cos\theta$ bound between $\theta=\pi/6$ and $\theta=\pi/3$, as shown in \autoref{fig:polcalc4}.}
+\example{ex_polcalc4}{Area of a polar region}{Find the area of the cardioid $r=1+\cos\theta$ bound between $\theta=\pi/6$ and $\theta=\pi/3$, as shown in \autoref{fig:polcalc4}.}
 {This is again a direct application of \autoref{thm:polar_area}. 
 \begin{align*}
 	\text{Area}
@@ -140,7 +151,7 @@ Of course, we already knew the area of a circle with radius $1/2$. We did this e
 	&= \frac12\left(\theta+2\sin\theta+\frac12\theta+\frac14\sin(2\theta)\right)\Bigg|_{\pi/6}^{\pi/3} \\
 	&= \frac18\big(\pi+4\sqrt{3}-4\big).\eoehere
 \end{align*}}
-\mfigure{-2in}{Finding the area of the shaded region of a cardiod in \autoref{ex_polcalc4}.}{fig:polcalc4}{figures/figpolcalc4}
+\mfigure{-2in}{Finding the area of the shaded region of a cardioid in \autoref{ex_polcalc4}.}{fig:polcalc4}{figures/figpolcalc4}
 
 \subsubsection*{Area Between Curves}
 
@@ -155,6 +166,7 @@ $$\text{Area}\ = \ \frac12\int_\alpha^\beta r_2^{\,2}\ d\theta - \frac12\int_\al
 $$A = \frac{1}{2} \int_\alpha^\beta [f_1(\theta)]^2 - [f_2(\theta)]^2\ d\theta= \frac12\int_\alpha^\beta \big(r_2^{\,2}-r_1^{\,2}\big)\ d\theta.$$}
 
 \mfigure{0in}{Finding the area between polar curves in \autoref{ex_polcalc5}.}{fig:polcalc5}{figures/figpolcalc5}
+
 \example{ex_polcalc5}{Area between polar curves}{Find the area bounded between the curves $r=1+\cos \theta$ and $r=3\cos\theta$, as shown in \autoref{fig:polcalc5}.}
 {We need to find the points of intersection between these two functions. Setting them equal to each other, we find:
 \begin{align*}
@@ -164,10 +176,11 @@ $$A = \frac{1}{2} \int_\alpha^\beta [f_1(\theta)]^2 - [f_2(\theta)]^2\ d\theta= 
 \end{align*}
 Thus we integrate $\frac12\big((3\cos\theta)^2-(1+\cos\theta)^2\big)$ on $[-\pi/3,\pi/3]$.
 \begin{align*}
-\text{Area} &= \frac12\int_{-\pi/3}^{\pi/3} \big((3\cos\theta)^2-(1+\cos\theta)^2\big)\ d\theta\\
-		&= \frac12\int_{-\pi/3}^{\pi/3} \big( 8\cos^2\theta-2\cos\theta-1\big)\ d\theta \\
-		&= \big(2\sin(2\theta) - 2\sin\theta+3\theta\big)\Bigg|_{-\pi/3}^{\pi/3}\\
-		&= 2\pi.
+	\text{Area}
+	&= \frac12\int_{-\pi/3}^{\pi/3} \big((3\cos\theta)^2-(1+\cos\theta)^2\big)\ d\theta\\
+	&= \frac12\int_{-\pi/3}^{\pi/3} \big( 8\cos^2\theta-2\cos\theta-1\big)\ d\theta \\
+	&= \frac12\big(2\sin(2\theta) - 2\sin\theta+3\theta\big)\Bigg|_{-\pi/3}^{\pi/3}\\
+	&= \pi.
 \end{align*}
 Amazingly enough, the area between these curves has a ``nice'' value.}
 
@@ -204,7 +217,7 @@ The expression $[x\primeskip'(\theta)]^2+[y\primeskip'(\theta)]^2$ can be simpli
 $$L = \int_\alpha^\beta \sqrt{[\fp(\theta)]^2+[f(\theta)]^2}\ d\theta = \int_\alpha^\beta\sqrt{(r\,')^2+ r^2}\ d\theta.$$
 }
 
-\example{ex_cardiod_length}{Arc Length of Polar Curves}{Find the arc length of the cardiord $r=1+\cos \theta$.}{With $r=1+\cos \theta$, we have $r' = -\sin \theta$. The cardiod is traced out once on $[0,2\pi]$, giving us our bounds of integration. Applying \autoref{idea:polar_arclength} we have
+\example{ex_cardiod_length}{Arc Length of Polar Curves}{Find the arc length of the cardioid $r=1+\cos \theta$.}{With $r=1+\cos \theta$, we have $r' = -\sin \theta$. The cardioid is traced out once on $[0,2\pi]$, giving us our bounds of integration. Applying \autoref{idea:polar_arclength} we have
 \begin{align*}
 	L
 	& = \int_0^{2\pi} \sqrt{(-\sin \theta)^2  + (1 + \cos \theta)^2}\ d\theta \\
@@ -219,7 +232,7 @@ Since the $\sin \theta > 0$ on $[0, \pi]$ and $\sin \theta < 0$ on $[\pi, 2\pi]$
 \[
 2\int_0^{\pi} \frac{\sin \theta}{\sqrt {2-2\cos \theta}}\ d\theta - 2\int_{\pi}^{2\pi} \frac{\sin \theta}{\sqrt {2-2\cos \theta}}\ d\theta
 \]
-Using the symmetry of the cardiod and $u$-substitution ($u = 2 - 2\cos \theta$) we simplify the integration to
+Using the symmetry of the cardioid and $u$-substitution ($u = 2 - 2\cos \theta$) we simplify the integration to
 \begin{align*}
 L
 & = 4\int_0^{\pi} \frac{\sin \theta}{\sqrt {2-2\cos \theta}}\ d\theta\\
@@ -229,7 +242,6 @@ L
 
 \example{ex_polcalc7}{Arc length of a lima\c con}{Find the arc length of the lima\c con $r=1+2\sin t$.}
 {With $r=1+2\sin t$, we have $r\,' = 2\cos t$. The lima\c con is traced out once on $[0,2\pi]$, giving us our bounds of integration. Applying \autoref{idea:polar_arclength}, we have
-\mfigure{0in}{The lima\c con in \autoref{ex_polcalc7} whose arc length is measured.}{fig:polcalc7}{figures/figpolcalc7}
 \begin{align*}
 	L
 	&= \int_0^{2\pi} \sqrt{(2\cos\theta)^2+(1+2\sin\theta)^2}\ d\theta \\
@@ -237,6 +249,7 @@ L
 	&=	\int_0^{2\pi} \sqrt{4\sin\theta+5}\ d\theta\\
 	&\approx 13.3649.
 \end{align*}
+\mfigure{0in}{The lima\c con in \autoref{ex_polcalc7} whose arc length is measured.}{fig:polcalc7}{figures/figpolcalc7}
 The final integral cannot be solved in terms of elementary functions, so we resorted to a numerical approximation. (Simpson's Rule, with $n=4$, approximates the value with $13.0608$. Using $n=22$ gives the value above, which is accurate to 4 places after the decimal.)}
 
 \subsection*{Surface Area}

@@ -1,0 +1,154 @@
+\documentclass[11pt]{report}
+\usepackage[letterpaper, total={6.5in, 10in}]{geometry}
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+\usepackage{amsmath, amsthm, mathpazo, epic, eepic, color, array}
+\usepackage{amssymb}
+%\usepackage{graphicx}
+\usepackage{cancel}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\pgfplotsset{compat=1.13}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+\usepackage{hyperref}
+\usepackage[normalem]{ulem}
+
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows, petri, topaths}
+\usepackage{tkz-berge}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+
+\newboolean{colorprint}
+\setboolean{colorprint}{true}
+%\setboolean{colorprint}{false}
+
+\ifthenelse{\boolean{colorprint}}{%
+\newcommand{\colorone}{blue}
+\newcommand{\colortwo}{red}
+\newcommand{\coloronefill}{blue!15!white}
+\newcommand{\colortwofill}{red!15!white}
+\newcommand{\colormapone}{rgb=(.4,.4,1); rgb=(.8,.8,1)}
+\newcommand{\colormaptwo}{rgb=(1,.4,.4); rgb=(1,.8,.8)}
+\newcommand{\colormapplaneone}{rgb=(.7,.7,1); rgb=(.9,.9,1)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,1}
+\definecolor{colormaponetop}{rgb}{.8,.8,1}
+\definecolor{colormaptwobottom}{rgb}{1,.4,.4}
+\definecolor{colormaptwotop}{rgb}{1,.8,.8}
+}% ends color
+{% not color
+\newcommand{\colorone}{black}
+\newcommand{\colortwo}{black!50!white}
+\newcommand{\coloronefill}{black!15!white}
+\newcommand{\colortwofill}{black!05!white}
+\newcommand{\colormapone}{rgb=(.4,.4,.4); rgb=(.7,.7,.7)}
+\newcommand{\colormaptwo}{rgb=(.6,.6,.6); rgb=(.9,.9,.9)}
+\newcommand{\colormapplaneone}{rgb=(.8,.8,.8); rgb=(.95,.95,.95)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,.4}
+\definecolor{colormaponetop}{rgb}{.7,.7,.7}
+\definecolor{colormaptwobottom}{rgb}{.6,.6,.6}
+\definecolor{colormaptwotop}{rgb}{.9,.9,.9}
+}%
+
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+\pgfplotsset{my style/.append style={axis x line=middle, axis y line=
+middle, xlabel={$x$}, ylabel={$y$}, axis equal }}
+
+\pgfplotsset{compat=1.13}
+\newcommand{\ds}{\displaystyle}
+\begin{document}
+
+\textbf{10.2 Parametric Equations}
+\vskip .5 truecm
+
+\textbf{p. 593}\\
+2nd paragraph: "In the rectangular coordinate system..."\\
+
+\textbf{p. 594, Example 1, 2nd paragraph of the solution}\\
+"...These values, along with...the \textbf{orientation} of the graph. This information \sout{helps us determine..."moving."} describes the \textbf{path} of a particle traveling along the curve."\\
+
+\textbf{NOW THE REORGANIZATION BEGINS!}\\
+
+\textbf{pp. 595-596}\\
+Starting with line 3: "These examples begin..." through the end of the solution to example 4, move this to "Special Curves" section.\\
+
+Now, the section \textbf{Converting between ... equations} is right after Example 2. 
+
+Change the example in the opening paragraph:\\
+It is sometimes useful to rewrite...As an example, given $y=x^2-x-6$, the parametric equations $x=t, y=t^2-t-6$ produce the same parabola. However, other parametrizations...possible alternative.\\
+
+Rewrite Example 5 (now Example 3) as follows:\\
+\textbf{Example 3~~~ Converting from rectangular to parametric}\\
+Find parametric equations for $f(x)=x^2-x-6$.\\
+
+\textbf{SOLUTION 1}~~~~ For any choice for $x$ we can determine the corresponding $y$ by substitution. If we choose $x=t-1$ then $y=(t-1)^2-(t-1)-6=t^2-3t-4$. Thus $f(x)$ can be represented by the parametric equations
+$$x=t-1 ~~~~y=t^2-3t-4$$
+On the graph of this parameterization (Figure 10.31) the points have been labeled with the corresponding $t-$values and arrows indicate the path of a particle traveling on this curve. The particle would move from the upper left, down to the vertex at $(.5,-5.75)$ and then up to the right.\\
+
+\textbf{SOLUTION 2}~~~~ If we choose $x=3-t$ then $y=(3-t)^2-(3-t)-6=t^2-5t$. Thus $f(x)$ can also be represented by the parametric equations
+$$x=3-t ~~~~y=t^2-5t$$
+On the graph of this parameterization (Figure 10.32) the points have been labeled with the corresponding $t-$values and arrows indicate the path of a particle traveling on this curve. The particle would move down from the upper right, to the vertex at $(.5,-5.75)$ and then up to the left.\\
+
+\textbf{SOLUTION 3}~~~~ We can also parameterize any $y=f(x)$ by setting $t=\frac{dy}{dx}$. That is, $t=a$ corresponds to the point on the graph whose tangent line has a slope $a$. Computing $\frac{dy}{dx}$, $f'(x) = 2x-1$ we set $t=2x-1$. Solving for $x$ we find $x=\frac{t+1}{2}$ and by substitution $y=\frac{1}{4}t^2 - \frac{25}{4}$. Thus $f(x)$ can be represented by the parametric equations
+$$x=\frac{t+1}{2} ~~~~y=\frac{1}{4}t^2 - \frac{25}{4}$$
+
+The graph of this parameterization is shown in Figure 10.33. To find the point where the tangent line has a slope of $0$, we set $t=0$. This gives us the point (-.5, -5.75)$ which is the vertex of $f(x).\\ \\
+
+\textbf{Example 4~~~ Converting from rectangular to parametric}\\
+Find parametric equations for the circle $x^2+y^2=4$.
+
+\textbf{SOLUTION 1:} ~~~~Consider the equivalent equation $\ds \biggl(\frac{x}{2}\biggr)^2+ \biggl(\frac{y}{2}\biggr)^2=1$ and the Pythagorean Identity, $\sin^2t+\cos^2 t=1$. We set $\cos t=\frac{x}{2}$ and $\sin t=\frac{y}{2}$, which gives $x=2\cos t$ and $y=2\sin t$. To trace the circle once, we must have $0\leq t \leq 2\pi$. Note that when $t=0$ a particle tracing the curve would be at the point $(2,0)$ and would move in a counterclockwise direction. \\
+
+\textbf{SOLUTION 2:} ~~~~Another parameterization of the same circle would be $x=2\sin t$ and $y=2\cos t$ for $0\leq t \leq 2\pi$. When $t=0$ a particle would be at the point $(0,2)$ and would move in a clockwise direction. \\
+
+\textbf{SOLUTION 3:} ~~~~We could also let $x=-2\sin t$ and $y=2
+\cos t$ for $0\leq t \leq 2\pi$. Also note that we could use $x=2\cos 2t$ and $y=2\sin 2t$ for $0\leq t \leq \pi$. \\ \\
+
+As we have shown in the previous examples, there are many different ways to parameterize any given curve. We sometimes choose the parameter to accurately model physical behavior.\\
+
+\textbf{Example 5~~~ Converting from rectangular to parametric}\\
+
+Find a parameterization that traces the ellipse $\ds \frac{(x-2)^2}{9}+\frac{(y+3)^2}{4}=1$ starting at the point $(-1,-3)$ in a clockwise direction.
+
+\textbf{SOLUTION}~~~~The Pythagorean Identity says $\cos^2t+\sin^2t=1$ so we set $\ds -\cos^2 t =\frac{(x-2)^2}{9}$ and $\ds -\sin^2 t=\frac{(y+3)^2}{4}$. Solving these equations for $x$ and $y$ we have $x=-3\cos t+2$ and $y=-2\sin t-3$  for $0\leq t\leq 2\pi$.\\ \\
+
+\textbf{Example 6~~~ Converting from rectangular to parametric}\\
+
+Find a parameterization for the hyperbola $\ds \frac{(x-2)^2}{9}-\frac{(y-3)^2}{4}=1$.\\
+
+\textbf{SOLUTION}~~~~ We use an alternative form of the Pythagorean Identity, $\sec^2t-\tan^2t=1$. We let  $\ds \sec^2 t=\frac{(x-2)^2}{9}$ and 
+$\tan^2 t=\frac{(y-3)^2}{4}$. Solving these equations for $x$ and $y$ we have $x=3\sec t +2$ and $y=2\tan t +3$ for $0\leq t\leq 2\pi$.\\ \\
+
+\textbf{pp. 596 - 597} Old Example 6 is now Example 7\\
+\textbf{pp. 597 - 598} Old Example 7 is now Example 8\\
+\textbf{pp. 598 - 599} Old Example 8 is now Example 9\\
+
+\textbf{p. 598, paragraph just before Old Example 8 (new 9)}\\
+The graphs of these functions \sout{is} are given in ..."\\
+
+\textbf{p. 599}\\
+Delete "The Pythagorean Theorem... following Key Idea." and Key Idea 35.\\
+
+\textbf{p. 599}\\
+Rename "Special Curves" section to "Graphs of Parametric Equations" Then insert text and examples cut from pp. 595 -596: "These examples begin..." through the end of the solution to old example 4.\\
+In the 2nd paragraph of the text from p. 595 the word counterintuitive is hyphenated. Delete the hyphen.\\
+
+Then continue on with "We now present a small gallery of "interesting" and "famous"..." to the end of the section.\\
+
+\textbf{Exercises}\\
+The problems I want to add are in a Calculus book in my office. I will send them to you tomorrow (Sunday).
+
+\end{document}
+

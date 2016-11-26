@@ -24,13 +24,7 @@
 %
 %\autoref{ex_subst14} demonstrates a general technique that can be applied to other integrands that result in inverse trigonometric functions. The results are summarized here.
 %
-%\theorem{thm:int_inverse_trig}{Integrals Involving Inverse Trigonomentric Functions}
-%{Let $a>0$.
-%\begin{enumerate}
-%	\item	$\ds \int \frac{1}{a^2+x^2}\ dx = \frac1a\tan^{-1}\left(\frac{x}{a}\right) + C$
-%	\item	$\ds \int \frac{1}{\sqrt{a^2-x^2}}\ dx = \sin^{-1}\left(\frac{x}{a}\right)+C$
-%	\item	$\ds \int \frac{1}{x\sqrt{x^2-a^2}}\ dx = \frac1a\sec^{-1}\left(\frac{|x|}{a}\right)+C$
-%\end{enumerate}}
+%% moved to 7.2
 %
 %Let's practice using \autoref{thm:int_inverse_trig}.\bigskip
 %
@@ -127,17 +121,17 @@ We now describe in detail Trigonometric Substitution. This method excels when de
 {\mbox{}\\[-2\baselineskip]\begin{enumerate}
 	\item[(a)] \noindent%
 		For integrands containing $\sqrt{a^2-x^2}$:\index{integration!trig. subst.}\smallskip\\
-		Let $x=a\sin\theta$, \quad for $-\pi/2\leq \theta\leq \pi/2$. \smallskip\\
+		Let $x=a\sin\theta$, \quad for $-\pi/2\leq \theta\leq \pi/2$ and $a>0$. \smallskip\\
 	On this interval, $\cos\theta\geq 0$, so	$\sqrt{a^2-x^2} = a\cos\theta$
 		
 	\item[(b)] \noindent
 		For integrands containing $\sqrt{x^2+a^2}$:\smallskip\\
-		Let $x=a\tan\theta$, \quad for $-\pi/2 < \theta < \pi/2$. \smallskip\\
+		Let $x=a\tan\theta$, \quad for $-\pi/2 < \theta < \pi/2$ and $a>0$. \smallskip\\
 	On this interval, $\sec\theta> 0$, so $\sqrt{x^2+a^2} = a\sec\theta$
 		
 	\item[(c)] \noindent
 		For integrands containing $\sqrt{x^2-a^2}$:\smallskip\\
-		Let $x=a\sec\theta$, \quad restricting our work to where $x\geq a$,\\
+		Let $x=a\sec\theta$, \quad restricting our work to where $x\geq a>0$,\\
 		so $x/a\geq 1$, and $0\leq\theta<\pi/2$. \smallskip\\
 	On this interval, $\tan\theta\geq 0$, so	$\sqrt{x^2-a^2} = a\tan\theta$
 \end{enumerate}}
@@ -159,7 +153,7 @@ While the integration steps are over, we are not yet done. The original problem 
     \draw [thick] (2.7,0) -- (2.7,.3) -- (3,.3);
 	\draw (.75,.25) node {$\theta$};
 \end{tikzpicture}}
-The reference triangle in \autoref{fig:tan_tri} will help. With $x=\sqrt{5}\tan\theta$, we have 
+The lengths of the sides of the reference triangle in \autoref{fig:tan_tri} are determined by the Pythagorean Theorem. With $x=\sqrt{5}\tan\theta$, we have 
 $$\tan \theta = \frac x{\sqrt{5}}\quad \text{and}\quad \sec\theta = \frac{\sqrt{x^2+5}}{\sqrt{5}}.$$
 This gives
 \begin{align*}
@@ -195,7 +189,7 @@ We now rewrite the integral with these substitutions:
 \end{align*}
 We integrated $\sec^3\theta$ in \autoref{ex_trigint6}, finding its antiderivatives to be
 $$\int \sec^3\theta\ d\theta = \frac12\Big(\sec \theta\tan \theta + \ln|\sec \theta+\tan \theta|\Big)+C.$$
-Thus
+Thus\\
 \flushinnerequ{%
 \begin{align*}
 \int \sqrt{4x^2-1}\ dx &=\frac12\int \big(\sec^3\theta - \sec\theta\big)\ d\theta\\
@@ -203,9 +197,9 @@ Thus
 			%\end{align*}
 			%\begin{align*}
 			&= \frac14\left(\sec\theta\tan\theta -\ln|\sec\theta+\tan\theta|\right)+C.
-\end{align*}}
-We are not yet done. Our original integral is given in terms of $x$, whereas our final answer, as given, is in terms of $\theta$. We need to rewrite our answer in terms of $x$. With $a=1/2$, and $x=\frac12\sec\theta$, the reference triangle in \autoref{fig:sec_tri} shows that
-\mtable{A reference triangle for \autoref{ex_trigsub2}}{fig:sec_tri}{\begin{tikzpicture}
+\end{align*}}\\
+We are not yet done. Our original integral is given in terms of $x$, whereas our final answer, as given, is in terms of $\theta$. We need to rewrite our answer in terms of $x$. With $a=1/2$, and $x=\frac12\sec\theta$, we use the Pythagorean Theorem to determine the lengths of the sides of the reference triangle in \autoref{fig:sec_tri}.
+\mtable[-\baselineskip]{A reference triangle for \autoref{ex_trigsub2}}{fig:sec_tri}{\begin{tikzpicture}
 	\draw [very thick] (0,0) -- node[below,pos=.5] {$1/2$} (3,0)
 	 -- node [right,pos=.5] {$\sqrt{x^2-1/4}$} (3,2)
 	 -- node [pos=.5,above] {$x$} cycle;
@@ -236,7 +230,7 @@ Therefore,
     \draw [thick] (2.7,0) -- (2.7,.3) -- (3,.3);
 	\draw (.75,.25) node {$\theta$};
 \end{tikzpicture}}
-We need to rewrite our answer in terms of $x$. Using the reference triangle found in \autoref{fig:sin_tri}, we have $\cot\theta = \sqrt{4-x^2}/x$ and $\theta = \sin^{-1}(x/2)$. Thus
+We need to rewrite our answer in terms of $x$. Using the Pythagorean Theorem we determine the lengths of the sides of the reference triangle in \autoref{fig:sin_tri}. We have $\cot\theta = \sqrt{4-x^2}/x$ and $\theta = \sin^{-1}(x/2)$. Thus
 $$\int \frac{\sqrt{4-x^2}}{x^2}\ dx = -\frac{\sqrt{4-x^2}}x-\sin^{-1}\left(\frac x2\right) + C.\eoehere$$}
 
 Trigonometric Substitution can be applied in many situations, even those not of the form $\sqrt{a^2-x^2}$, $\sqrt{x^2-a^2}$ or $\sqrt{x^2+a^2}$. In the following example, we apply it to an integral we already know how to handle.
@@ -256,16 +250,6 @@ The next example is similar to the previous one in that it does not involve a sq
 
 \example{ex_trigsub7}{Using Trigonometric Substitution}{Evaluate $\ds\int\frac1{(x^2+6x+10)^2}\ dx.$}
 {We start by completing the square, then make the substitution $u=x+3$, followed by the trigonometric substitution of $u=\tan\theta$:
-\begin{align}
-\int \frac1{(x^2+6x+10)^2}\ dx =\int \frac1{\big((x+3)^2+1\big)^2}\ dx&= \int \frac1{(u^2+1)^2}\ du. \notag
-\intertext{Now make the substitution $u=\tan\theta$, $du=\sec^2\theta\ d\theta$:}
-   &=	\int \frac1{(\tan^2\theta+1)^2}\sec^2\theta\ d\theta\notag\\
-	&= \int\frac 1{(\sec^2\theta)^2}\sec^2\theta\ d\theta\notag\\
-	&= \int \cos^2\theta\ d\theta.\notag
-	\intertext{Applying a half--angle formula, we have}
-	&= \int \left(\frac12 +\frac12\cos(2\theta)\right)\ d\theta \notag\\
-	&= \frac12\theta + \frac14\sin(2\theta) + C.\label{eq:extrigsub7}
-\end{align}
 \mnote{\textbf{Note:} Remember the sine and cosine double angle identities:
 \begin{align*}
  \sin2\theta &= 2\sin\theta\cos\theta\\
@@ -274,6 +258,16 @@ The next example is similar to the previous one in that it does not involve a sq
  &= 1-2\sin^2\theta
 \end{align*}
 They are often needed for writing your final answer in terms of $x$.}
+\begin{align}
+\int \frac1{(x^2+6x+10)^2}\ dx &=\int \frac1{\big((x+3)^2+1\big)^2}\ dx = \int \frac1{(u^2+1)^2}\ du. \notag
+\intertext{Now make the substitution $u=\tan\theta$, $du=\sec^2\theta\ d\theta$:}
+   &=	\int \frac1{(\tan^2\theta+1)^2}\sec^2\theta\ d\theta\notag\\
+	&= \int\frac 1{(\sec^2\theta)^2}\sec^2\theta\ d\theta\notag\\
+	&= \int \cos^2\theta\ d\theta.\notag
+	\intertext{Applying a half--angle formula, we have}
+	&= \int \left(\frac12 +\frac12\cos(2\theta)\right)\ d\theta \notag\\
+	&= \frac12\theta + \frac14\sin(2\theta) + C.\label{eq:extrigsub7}
+\end{align}
 We need to return to the variable $x$. As $u=\tan\theta$, $\theta = \tan^{-1}u$. Using the identity $\sin(2\theta) = 2\sin\theta\cos\theta$ and using the reference triangle found in \autoref{idea:trigsub}(b), we have 
 $$\frac14\sin(2\theta) = \frac12\frac u{\sqrt{u^2+1}}\cdot\frac 1{\sqrt{u^2+1}} = \frac12\frac u{u^2+1}.$$
 Finally, we return to $x$ with the substitution $u=x+3$. We start with the expression in \autoeqref{eq:extrigsub7}:

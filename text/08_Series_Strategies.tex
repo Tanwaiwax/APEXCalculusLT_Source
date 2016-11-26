@@ -1,11 +1,11 @@
 \section{Strategy for testing series}\label{sec:series_techniques}
 
-We have now covered all of the tests for determining the convergence or divergence of a series. We will consider a set of general guidelines to help us determine the convergence or divergence of a series. Note that these are a general set of guidelines and because some series can have more than one test applied to them we will get a different result depending on the path that we take through this set of guidelines. In fact, because more than one test may apply, you should always go completely through the guidelines and identify all possible tests that can be used on a given series. Once this has been done you can identify the test that you feel will be the easiest for you to use.
+We have now covered all of the tests for determining the convergence or divergence of a series, which we summarize here. Because more than one test may apply to a given series, you should always go completely through the guidelines and identify all possible tests that you can use. Once you've done this, you can identify the test that will be the easiest for you to use.
 
 \begin{enumerate}
 \item With a quick glance does it look like the series terms don't converge to zero in the limit, i.e. does $\ds \lim_{n\to \infty}a_n \neq 0$? If so, use the Test for Divergence. Note that you should only use the Test for Divergence if a quick glance suggests that the series terms may not converge to zero in the limit.
 
-\item Is the series a $p$-series $\left(\ds \sum_{n=1}^\infty \frac{1}{n^p}\right)$ or a geometric series $\ds \left( \sum_{n=0}^\infty ar^n\right)$? If so, use the fact that $p$-series will converge only  if $p>1$ and a geometric series will only converge if $\abs r<1$. Remember as well that often some algebraic manipulation is required to get a geometric series into the correct form.
+\item Is the series a $p$-series $\left(\ds\sum n^{-p}\right)$ or a geometric series $\ds \left( \sum ar^n\right)$? If so, use the fact that $p$-series will converge only  if $p>1$ and a geometric series will only converge if $\abs r<1$. Remember as well that often some algebraic manipulation is required to get a geometric series into the correct form.
 
 \item Is the series similar to a $p$-series or a geometric series? If so, try the Comparison Test.
 
@@ -13,15 +13,39 @@ We have now covered all of the tests for determining the convergence or divergen
 
 \item Does the series contain factorials or constants raised to powers involving $n$? If so, then the Ratio Test may work. Note that if the series term contains a factorial then the only test that we have that will work is the Ratio Test.
 
-\item Is the series of the form $\ds \sum (-1)^n a_n$ or $\ds\sum (-1)^{n+1} a_n$? If so, then the Alternating Series Test may work.
+\item Is the series of the form $\ds \sum (-1)^n a_n$? If so, then the Alternating Series Test may work.
 
 \item Can the series terms be written in the form $a_n=(b_n)^n$? If so, then the Root Test may work.
 
 \item If $a_n=f(n)$ for some positive, decreasing function and $\ds \int_a^\infty f(x)\ dx$ is easy to evaluate then the Integral Test may work.
 \end{enumerate}
 
-Again, remember that these are only a set of guidelines and not a set of hard and fast rules to use when trying to determine the best test to use on a series. If more that one test can be used, try to use the test that will be the easiest for you to use.
+Again, remember that these are only a set of guidelines and not a set of hard and fast rules to use when trying to determine the best test to use on a series. If more that one test can be used, try to use the test that will be the easiest for you to use.  These guidelines are also summarized in a table in the \hyperref[tab_series_tests]{back of the book}.
 
-\inputexercises{exercises/08_Series_Strategies}
+We now consider several examples.
+
+\example{eg_strat_test}{Testing Series}{Determine whether the given series converges absolutely, converges conditionally, or diverges.
+\begin{enumerate}
+\item $\ds \sum_{n=2}^{\infty} \frac{(-1)^nn}{n^2+3}$
+\item $\ds \sum_{n=1}^{\infty} \frac{n^2-3n}{4n^2-2n+1}$
+\item $\ds \sum_{n=2}^{\infty} \frac{e^n}{(n+3)!}$
+\end{enumerate}}{\begin{enumerate}
+\item We see that this series is alternating so we use the alternating series test. The underlying sequence is $\{a_n\}=\{\frac{n}{n^2+3}\}$ which is positive and decreasing since $a'(n)=\frac{3-n^2}{(n^2+3)^2}<0$ for $n\geq 2$. We also see $\ds \lim_{n\to \infty}\frac{n}{n^2+3}=0$ so by the Alternating Series Test $\ds \sum_{n=2}^{\infty} \frac{(-1)^nn}{n^2+3}$ converges. We now determine if it converges absolutely. Consider the sequence $\ds \sum_{n=2}^{\infty} \biggl|\frac{(-1)^nn}{n^2+3}\biggr|=\ds \sum_{n=2}^{\infty} \frac{n}{n^2+3}$. We compare this series to $\ds \sum_{n=2}^{\infty} \frac{n}{n^2}=\sum_{n=2}^{\infty} \frac{1}{n}$ which is a divergent $p$-series. We also have $\ds \frac{n}{n^2+3}>\frac{n}{n^2}=\frac{1}{n}$ so by the Comparison test, $\ds \sum_{n=2}^{\infty} \frac{n}{n^2+3}$ diverges. Therefore,  $\ds \sum_{n=2}^{\infty} \frac{(-1)^nn}{n^2+3}$ converges conditionally.
+
+\item $\ds \lim_{n\to\infty} \frac{n^2-3n}{4n^2-2n+1}=\frac{1}{4}$ so by the Test for Divergence $\ds \sum_{n=1}^{\infty} \frac{n^2-3n}{4n^2-2n+1}$ diverges.
+
+\item We see the factorial and use the Ratio Test. All terms of the series are positive so we consider 
+\begin{align*}
+\lim_{n\to\infty} \frac{a_{n+1}}{a_n}&=\lim_{n\to\infty} \frac{\frac{e^{n+1}}{(n+4)!}}{\frac{e^{n}}{(n+3)!}}\\
+&=\lim_{n\to\infty}\frac{e^{n+1}(n+3)!}{e^n(n+4)!}\\
+&=\lim_{n\to\infty}\frac{e\cdot e^n(n+3)!}{e^n(n+4)(n+3)!}\\
+&=\lim_{n\to\infty}\frac{e}{n+4}=0<1
+\end{align*}
+
+So by the Ratio Test, $\ds \sum_{n=2}^{\infty} \frac{e^n}{(n+3)!}$ converges. Because all of the series terms are positive it converges absolutely.\eoehere
+
+\end{enumerate}}
+
+\printexercises{exercises/08_Series_Strategies}
 
 % todo see note in exercises

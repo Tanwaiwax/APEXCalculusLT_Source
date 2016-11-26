@@ -19,7 +19,7 @@ Using differential notation, we can write
 \qquad\Rightarrow\qquad
 \begin{aligned}
  du&=u\primeskip'dx \\
- dv&=u\primeskip'dx.
+ dv&=v\primeskip'dx.
 \end{aligned}
 \]
 Thus, the equation above can be written as follows:
@@ -53,7 +53,7 @@ u&= x & dv&=\cos x\, dx\\
 du&= dx & v&=\sin x
 \end{aligned}
 \]
-\captionof{figure}{Setting up Integration by Parts.}\label{fig:ibp1}
+\caption{Setting up Integration by Parts.}\label{fig:ibp1}
 \end{lxfigure}
 
 Now substitute all of this into the Integration by Parts formula, giving
@@ -95,7 +95,7 @@ u&= x & dv&=e^x\, dx\\
 du&= dx & v&=e^x
 \end{aligned}
 \]
-\captionof{figure}{Setting up Integration by Parts.}\label{fig:ibp2}
+\caption{Setting up Integration by Parts.}\label{fig:ibp2}
 \end{lxfigure}
 
 %We see $du$ is simpler than $u$, while there is no change in going from $dv$ to $v$.  This is good.
@@ -120,7 +120,7 @@ u&= x^2 & dv&=\cos x\, dx\\
 du&= 2x\, dx & v&=\sin x
 \end{aligned}
 \]
-\captionof{figure}{Setting up Integration by Parts.}\label{fig:ibp3}
+\caption{Setting up Integration by Parts.}\label{fig:ibp3}
 \end{lxfigure}
 
 The Integration by Parts formula gives
@@ -139,7 +139,7 @@ u&= 2x & dv&=\sin x\, dx\\
 du&= 2\, dx & v&=-\cos x
 \end{aligned}
 \]
-\captionof{figure}{Setting up Integration by Parts (again).}\label{fig:ibp3b}
+\caption{Setting up Integration by Parts (again).}\label{fig:ibp3b}
 \end{lxfigure}
 
 $$\int x^2\cos x\,dx = x^2\sin x - \left(-2x\cos x - \int -2\cos x\,dx\right).$$
@@ -166,7 +166,7 @@ u&= e^x& dv&=\cos x\, dx\\
 du&= e^x\, dx & v&=\sin x
 \end{aligned}
 \]
-\captionof{figure}{Setting up Integration by Parts.}\label{fig:ibp4}
+\caption{Setting up Integration by Parts.}\label{fig:ibp4}
 \end{lxfigure}
 
 Notice that $du$ is no simpler than $u$, going against our general rule (but bear with us). The Integration by Parts formula yields
@@ -185,7 +185,7 @@ u&= e^x& dv&=\sin x\, dx\\
 du&= e^x\, dx & v&=-\cos x
 \end{aligned}
 \]
-\captionof{figure}{Setting up Integration by Parts (again).}\label{fig:ibp4a}
+\caption{Setting up Integration by Parts (again).}\label{fig:ibp4a}
 \end{lxfigure}
 
 The Integration by Parts formula then gives:
@@ -205,6 +205,7 @@ Add $\ds\int e^x\cos x\, dx$ to both sides. This gives
 Simplifying a little and adding the constant of integration, our answer is thus
 \[\int e^x\cos x\, dx = \frac12e^x\left(\sin x + \cos x\right)+C.\eoehere\]}
 
+% see Example 2.4.4.
 \example{ex_ibp5}{Integrating using Integration by Parts: antiderivative of $\ln x$}
 {Evaluate $\ds\int \ln x\,dx$.}
 {One may have noticed that we have rules for integrating the familiar trigonometric functions and $e^x$, but we have not yet given a rule for integrating $\ln x$.  That is because $\ln x$ can't easily be integrated with any of the rules we have learned up to this point.  But we can find its antiderivative by a clever application of Integration by Parts.  Set $u=\ln x$ and $dv=dx$.  This is a good strategy to learn as it can help in other situations. This determines $du=(1/x)\,dx$ and $v=x$ as shown below.
@@ -221,7 +222,7 @@ u&= \ln x& v&=x\\
 du&= 1/x\, dx & dv&=dx
 \end{aligned}
 \]
-\captionof{figure}{Setting up Integration by Parts.}\label{fig:ibp5}
+\caption{Setting up Integration by Parts.}\label{fig:ibp5}
 \end{lxfigure}
 Putting this all together in the Integration by Parts formula, things work out very nicely:
 \begin{align*}
@@ -231,14 +232,14 @@ Putting this all together in the Integration by Parts formula, things work out v
  &= x\ln{x} - x + C.\eoehere
 \end{align*}}
 
-\example{ex_ibp6}{Using Integration by Parts: antiderivative of $\arctan x$}
-{Evaluate $\displaystyle \int \arctan x  \,dx$.}
-{The same strategy we used above works here.  Let $u=\arctan x$ and $dv=dx$.  Then $du=1/(1+x^2)\,dx$ and $v=x$.  The Integration by Parts formula gives
-$$\int \arctan x \,dx = x\arctan x - \int \frac x{1+x^2}\,dx.$$
-The integral on the right can be solved by substitution.  Taking $u=1+x^2$, we get $du=2x\,dx$.  The integral then becomes
-$$\int \arctan x \,dx = x\arctan x - \frac12\int \frac 1{u}\,du.$$
-The integral on the right evaluates to $\ln|u|+C$, which becomes $\ln(1+x^2)+C$.  Therefore, the answer is
-\[\int \arctan x\, dx = x\arctan x - \ln(1+x^2) + C.\]
+\example{ex_ibp6}{Using Integration by Parts: antiderivative of $\tan^{-1} x$}
+{Evaluate $\displaystyle \int \tan^{-1} x  \,dx$.}
+{The same strategy we used above works here.  Let $u=\tan^{-1} x$ and $dv=dx$.  Then $du=1/(1+x^2)\,dx$ and $v=x$.  The Integration by Parts formula gives
+$$\int \tan^{-1} x \,dx = x\tan^{-1} x - \int \frac x{1+x^2}\,dx.$$
+The integral on the right can be solved by substitution.  Taking $t=1+x^2$, we get $dt=2x\,dx$.  The integral then becomes
+$$\int \tan^{-1} x \,dx = x\tan^{-1} x - \frac12\int \frac 1{t}\,dt.$$
+The integral on the right evaluates to $\ln\abs t+C$, which becomes $\ln(1+x^2)+C$.  Therefore, the answer is
+\[\int \tan^{-1} x\, dx = x\tan^{-1} x - \ln(1+x^2) + C.\]
 Since $1+x^2>0$, we do not need to include the absolute value in the $\ln(1+x^2)$ term.}
 
 \subsection*{Substitution Before Integration}
@@ -285,7 +286,7 @@ u&= \ln x& v&=x^3/3\\
 du&= 1/x\, dx & dv&=x^2\, dx
 \end{aligned}
 \]
-\captionof{figure}{Setting up Integration by Parts.}\label{fig:ibp7}
+\caption{Setting up Integration by Parts.}\label{fig:ibp7}
 \end{lxfigure}
 
 This may seem counterintuitive since the power on the algebraic factor has increased ($v=x^3/3$), but as we see this is a wise choice:

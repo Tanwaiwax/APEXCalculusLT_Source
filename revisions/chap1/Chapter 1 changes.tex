@@ -1,0 +1,220 @@
+\documentclass[10pt]{article}
+
+
+%%
+% HERE THERE BE DRAGONS
+%%
+
+\usepackage{ifthen}
+
+\usepackage{lipsum}
+\usepackage{pgfplots}
+\pgfplotsset{colormap={coloronemap}{rgb=(.4,.4,1); rgb=(.8,.8,1)}}
+\pgfplotsset{colormap={colortwomap}{rgb=(1,.4,.4); rgb=(1,.8,.8)}}
+%\pgfplotsset{compat=1.3}
+\usepackage{eso-pic,calc}
+\usepackage[font=small]{caption}
+\usepgfplotslibrary{external}
+\usetikzlibrary{calc}
+\usetikzlibrary{shadings}
+
+\usepackage[h]{esvect}
+
+\pgfplotsset{compat=1.8}
+
+\usepackage[paperheight=11in,paperwidth=6in,%inner=1in,includeheadfoot,
+textheight=10in,%textwidth=345pt,
+marginparwidth=150pt]{geometry}
+%% end detour
+%%
+
+\usepackage{amsmath}
+
+
+
+
+\ifthenelse{\boolean{xetex}}%
+	{\sffamily
+	%%\usepackage{fontspec}
+	\usepackage{mathspec}
+	\setallmainfonts[Mapping=tex-text]{Calibri}
+	\setmainfont[Mapping=tex-text]{Calibri}
+	\setsansfont[Mapping=tex-text]{Calibri}
+	\setmathsfont(Greek){[cmmi10]}}
+	{Please compile with XeLaTeX}
+
+\newboolean{colorprint}
+\setboolean{colorprint}{true}
+%\setboolean{colorprint}{false}
+
+\ifthenelse{\boolean{colorprint}}{%
+\newcommand{\colorone}{blue}
+\newcommand{\colortwo}{red}
+\newcommand{\coloronefill}{blue!15!white}
+\newcommand{\colortwofill}{red!15!white}
+\newcommand{\colormapone}{rgb=(.4,.4,1); rgb=(.8,.8,1)}
+\newcommand{\colormaptwo}{rgb=(1,.4,.4); rgb=(1,.8,.8)}
+\newcommand{\colormapplaneone}{rgb=(.7,.7,1); rgb=(.9,.9,1)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,1}
+\definecolor{colormaponetop}{rgb}{.8,.8,1}
+\definecolor{colormaptwobottom}{rgb}{1,.4,.4}
+\definecolor{colormaptwotop}{rgb}{1,.8,.8}
+}% ends color
+{% not color
+\newcommand{\colorone}{black}
+\newcommand{\colortwo}{black!50!white}
+\newcommand{\coloronefill}{black!15!white}
+\newcommand{\colortwofill}{black!05!white}
+\newcommand{\colormapone}{rgb=(.4,.4,.4); rgb=(.7,.7,.7)}
+\newcommand{\colormaptwo}{rgb=(.6,.6,.6); rgb=(.9,.9,.9)}
+\newcommand{\colormapplaneone}{rgb=(.8,.8,.8); rgb=(.95,.95,.95)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,.4}
+\definecolor{colormaponetop}{rgb}{.7,.7,.7}
+\definecolor{colormaptwobottom}{rgb}{.6,.6,.6}
+\definecolor{colormaptwotop}{rgb}{.9,.9,.9}
+}%
+\newcommand{\la}{\left\langle}
+\newcommand{\ra}{\right\rangle}
+\newcommand{\dotp}[2]{\ensuremath{\vec #1 \cdot \vec #2}}
+\newcommand{\proj}[2]{\ensuremath{\text{proj}_{\,\vec #2}{\,\vec #1}}}
+
+\newcommand{\fp}{\ensuremath{f\,'}}
+
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+
+\newcommand{\threedlines}[4][]{\draw [dashed,#1] (axis cs: #2,#3,#4) -- (axis cs: #2,#3,0) -- (axis cs: #2,0,0)  (axis cs: #2,#3,0)--(axis cs:0,#3,0);}
+
+\newcommand{\mydraw}{\draw (axis cs:0,0,0) -- (axis cs:1,1,0);}
+\newcommand{\ds}{\displaystyle}
+\usepackage{multicol}
+
+%% no more dragons.  type away %%
+
+% prefer color one for the main graph, and color two for secondary lines
+
+\begin{document}
+
+This new example will go after 1.4.4 and I also changed the table that will now go directly after 1.4.5
+
+%     \example{ex_absvalue}{Evaluating limits of an absolute value function}
+{
+Let $\ds f(x) =\frac{|x-1|}{x-1}.$ Evaluate the following. 
+
+		\noindent\begin{minipage}[t]{.5\textwidth}
+		\begin{enumerate}
+		\item		$\ds \lim_{x\to 1^-} f(x)$
+		\item		$\ds \lim_{x\to 1^+} f(x)$
+		\end{enumerate}
+		\end{minipage}
+				\noindent\begin{minipage}[t]{.5\textwidth}
+		\begin{enumerate}\addtocounter{enumi}{2}
+		\item		$\ds \lim_{x\to 1} f(x)$
+		\item		$f(1)$
+		\end{enumerate}
+		\end{minipage}
+		
+}
+{ We begin by rewriting $|x-1|$ as a piecewise function.$$ |x-1|=\left\{\begin{array}{cc} x-1 & x\geq 1 \\ -(x-1) & x\leq 1\end{array}\right.$$
+\begin{enumerate}
+\item		$\ds \lim_{x\to 1^-} f(x)=\lim_{x\to 1^-}\frac{-(x-1)}{x-1}=\lim_{x\to 1^-}-1=-1$
+\item		$\ds \lim_{x\to 1^+} f(x)=\lim_{x\to 1^+}\frac{x-1}{x-1}=\lim_{x\to 1^+}1=1$
+\item 		$\ds \lim_{x\to 1} f(x)$ does not exist because the left and right hand limits are not equal.
+\item $f(1)$ is undefined.
+\end{enumerate}
+}
+%\\
+
+In Examples \ref{ex_onesidea} -- \ref{ex_absvalue} we were asked to find both $\ds \lim_{x\to 1}f(x)$ and $f(1)$. Consider the following table:
+\begin{center}
+\begin{tabular}{ccc} & $\ds \lim_{x\to 1}f(x)$ & $f(1)$ \vspace{2pt}\\ \hline
+Example \ref{ex_onesidea} & does not exist & 1 \\
+Example \ref{ex_onesideb} & 1 & not defined \\
+Example \ref{ex_onesidec} & 0 & 1 \\
+Example \ref{ex_onesided} & 1 & 1 \\
+Example \ref{ex_absvalue} & does not exist & not defined
+\end{tabular}
+\end{center}
+
+
+Add to exercises 12-20:
+
+%%%% I copied the code below from GITHUB. Something isn't working with the enumerate....
+
+%%%%% PLEASE check my solutions!!! %%%
+
+{$\ds \lim_{x\to 4} \frac{|4-x|}{x-4}$
+
+\noindent\begin{minipage}[t]{.5\linewidth}
+\begin{enumerate}
+\item		$\ds \lim_{x\to 4^-} f(x)$
+\item		$\ds \lim_{x\to 4^+} f(x)$
+\end{enumerate}
+\end{minipage}
+\noindent\begin{minipage}[t]{.5\linewidth}
+\begin{enumerate}\addtocounter{enumii}{2}
+\item		$\ds \lim_{x\to 4} f(x)$
+\item		$f(4)$\end{enumerate}
+\end{minipage}
+}
+%%%% SOLUTION
+{\begin{enumerate}
+\item		$-1$
+\item		$1$
+\item		Does not exist.
+\item		undefined
+\end{enumerate}
+}
+
+{$\ds \lim_{x\to -2} \frac{x+2}{|x+2|}$
+
+\noindent\begin{minipage}[t]{.5\linewidth}
+\begin{enumerate}
+\item		$\ds \lim_{x\to -2^-} f(x)$
+\item		$\ds \lim_{x\to -2^+} f(x)$
+\end{enumerate}
+\end{minipage}
+\noindent\begin{minipage}[t]{.5\linewidth}
+\begin{enumerate}\addtocounter{enumii}{2}
+\item		$\ds \lim_{x\to -2} f(x)$
+\item		$f(-2)$\end{enumerate}
+\end{minipage}
+}
+%%%% SOLUTION
+{\begin{enumerate}
+\item		$-1$
+\item		$1$
+\item		Does not exist.
+\item		undefined
+\end{enumerate}
+}
+
+
+Eliminate text after Key Idea 2 and replace it with the following example.
+
+Example: Find the horizontal asymptotes of $\ds \frac{x}{\sqrt{x^2+1}}$.
+
+Solution:  We must consider the limits as $x\to \pm \infty$. When $x$ is very large, $x^2+1\approx x^2$ and thus $\sqrt{x^2+1}\approx \sqrt{x^2}= |x|$
+\begin{align*}
+\lim_{x\to\infty}\frac{x}{\sqrt{x^2+1}}&=\lim_{x\to\infty}\frac{x/x}{\sqrt{x^2/{x^2}+1/{x^2}}}\\
+&=\lim_{x\to\infty}\frac{1}{\sqrt{1+1/{x^2}}}\\
+&=1
+\end{align*}
+Therefore, $y=1$ is a horizontal asymptote.
+Similarly, 
+\begin{align*}
+\lim_{x\to-\infty}\frac{x}{\sqrt{x^2+1}}&=\lim_{x\to-\infty}\frac{x/{-x}}{\sqrt{x^2/{x^2}+1/{x^2}}}\\
+&=\lim_{x\to-\infty}\frac{-1}{\sqrt{1+1/{x^2}}}\\
+&=-1
+\end{align*}Therefore, $y=-1$ is also a horizontal asymptote.
+
+
+Add to the exercises 19-24:
+
+$\ds f(x)=\frac{2x^4+3}{\sqrt{x^8+9}}$		Solution: $y=2$ $y=-2$
+
+$\ds f(x)=\frac{3x^3+4}{\sqrt{x^6+3}}$		Solution: $y=3$ $y=-3$
+
+
+
+\end{document}

@@ -6,10 +6,10 @@ Consider the function $y = \frac{\sin x}{x}$. When $x$ is near the value 1, what
 
 While our question is not precisely formed (what constitutes ``near the value 1''?), the answer does not seem difficult to find. One might think first to look at a graph of this function to approximate the appropriate $y$ values. Consider \autoref{fig:sinx_over_x}(a), where $y = \frac{\sin x}{x}$ is graphed. For values of $x$ near 1, it seems that $y$ takes on values near $0.85$. In fact, when $x=1$, then $y=\frac{\sin 1}{1} \approx 0.84$, so it makes sense that when $x$ is ``near'' 1, $y$ will be ``near'' $0.84$.
 
-\mtable[1.5in]{$\sin(x)/x$ near $x=1$ (top) and $x=0$ (bottom).}{fig:sinx_over_x}%
+\mtable{$\sin(x)/x$ near $x=1$ (top) and $x=0$ (bottom).}{fig:sinx_over_x}%
 {\myincludegraphics{figures/figZoomSinXOverX}\\ (a)\\
 \begin{tikzpicture}
- \begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize },
+ \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize },
    minor x tick num=1,axis y line=middle,axis x line=middle,ytick={.8,.9,1},
    ymin=.75,ymax=1.05,extra y ticks={.1,.3,...,.9},extra y tick labels={},
    xmin=-1.1,xmax=1.2,name=myplot]
@@ -24,40 +24,74 @@ While our question is not precisely formed (what constitutes ``near the value 1'
 Consider this again at a different value for $x$. When $x$ is near 0, what value (if any) is $y$ near? By considering \autoref{fig:sinx_over_x}(b), one can see that it seems that $y$ takes on values near $1$. But what happens when $x=0$? We have $$ y \rightarrow \frac{\sin 0}{0} \rightarrow \raisebox{8pt}{\text{``\ }}\frac{0}{0}\raisebox{8pt}{\text{\ ''}}.$$ 
 The expression ``$0/0$'' has no value; it is \emph{indeterminate.} \index{limit!indeterminate form}\index{indeterminate form} Such an expression gives no information about what is going on with the function nearby. We cannot find out how $y$ behaves near $x=0$ for this function simply by letting $x=0$. 
 
-\emph{Finding a limit} entails understanding how a function behaves near a particular value of $x$. Before continuing, it will be useful to establish some notation. Let $y=f(x)$; that is, let $y$ be a function of $x$ for some function $f$. The expression ``the limit of $y$ as $x$ approaches 1'' describes a number, often referred to as $L$, that $y$ nears as $x$ nears 1. We write all this as $$\lim_{x\to 1} y = \lim_{x\to 1} f(x) = L.$$ This is not a complete definition (that will come in the next section); this is a pseudo-definition that will allow us to explore the idea of a limit. \index{limit!pseudo-definition}
+\emph{Finding a limit} entails understanding how a function behaves near a particular value of $x$. Before continuing, it will be useful to establish some notation. Let $y=f(x)$; that is, let $y$ be a function of $x$ for some function $f$. The expression ``the limit of $y$ as $x$ approaches 1'' describes a number, often referred to as $L$, that $y$ nears as $x$ nears 1. We write all this as
+\[\lim_{x\to 1} y = \lim_{x\to 1} f(x) = L.\]
+This is not a complete definition (that will come in the next section); this is a pseudo-definition that will allow us to explore the idea of a limit. \index{limit!pseudo-definition}
 
-Above, where $f(x) = \sin(x)/x$, we approximated $$\lim_{x\to 1} \frac{\sin x}{x} \approx 0.84 \quad \text{ and } \quad \lim_{x\to 0}\frac{\sin x}{x} \approx 1.$$ (We \textit{approximated} these limits, hence used the ``$\approx$'' symbol, since we are working with the pseudo-definition of a limit, not the actual definition.)
+Above, where $f(x) = \sin(x)/x$, we approximated
+\[\lim_{x\to 1} \frac{\sin x}{x} \approx 0.84 \quad \text{ and } \quad \lim_{x\to 0}\frac{\sin x}{x} \approx 1.\]
+(We \textit{approximated} these limits, hence used the ``$\approx$'' symbol, since we are working with the pseudo-definition of a limit, not the actual definition.)
+
+\mtable{Values of $\sin(x)/x$ with $x$ near 1 and near 0.}{table:sinx_1}{\begin{tabular}{lc}
+ $x$ & $\sin(x)/x$ \\ \midrule 
+ 0.9 & 0.870363 \\
+ 0.99 & 0.844471 \\
+ 0.999 & 0.841772 \\
+ \textbf{1} & \textbf{0.841471} \\
+ 1.001 & 0.841170 \\
+ 1.01 & 0.838447 \\
+ 1.1 & 0.810189
+\end{tabular}
+%\caption{Values of $\frac{\sin x}{x}$ for $x$ near 1.}\label{fig:sinx_1_table}
+\\ (a) \smallskip\\
+\begin{tabular}{lc}
+ $x$ & $\sin(x)/x$ \\ \midrule
+ -0.1 & 0.9983341665 \\
+ -0.01 & 0.9999833334 \\
+ -0.001 & 0.9999998333 \\
+ \phantom{-}\textbf{0} & \textbf{not defined} \\
+ \phantom{-}0.001 & 0.9999998333 \\
+ \phantom{-}0.01 & 0.9999833334 \\
+ \phantom{-}0.1 & 0.9983341665
+\end{tabular}
+% \caption{Values of $\frac{\sin x}{x}$ for $x$ near 0.}\label{fig:sinx_0_table}
+\\ (b)}
 
 Once we have the true definition of a limit, we will find limits \textit{analytically}; that is, exactly using a variety of mathematical tools. For now, we will \textit{approximate} limits both graphically and numerically. Graphing a function can provide a good approximation, though often not very precise. Numerical methods can provide a more accurate approximation. We have already approximated limits graphically, so we now turn our attention to numerical approximations.
 
-
 Consider again $\lim_{x\to 1}\sin (x)/x$. To approximate this limit numerically, we can create a table of $x$ and $f(x)$ values where $x$ is ``near'' 1. This is done in \autoref{table:sinx_1}(a).
-
-\mtable{Values of $\sin(x)/x$ with $x$ near 1 and near 0.}{table:sinx_1}{\begin{tabular}{c}
-\input{figures/sinx_over_x_table_1} \\
-(a) \\\addlinespace
-\input{figures/sinx_over_x_table_2} \\
-(b)
-\end{tabular}}
 
 Notice that for values of $x$ near $1$, we have $\sin (x)/x$ near $0.841$. The $x=1$ row is in bold to highlight the fact that when considering limits, we are \textit{not} concerned with the value of the function at that particular $x$ value; we are only concerned with the values of the function when $x$ is \textit{near} 1. 
 
 Now approximate $\lim_{x\to 0} \sin(x)/x$ numerically. We already approximated the value of this limit as 1 graphically in \autoref{fig:sinx_over_x}(b). The table in \autoref{table:sinx_1}(b) shows the value of $\sin(x)/x$ for values of $x$ near 0. Ten places after the decimal point are shown to highlight how close to 1 the value of $\sin(x)/x$ gets as $x$ takes on values very near 0. We include the $x=0$ row in bold again to stress that we are not concerned with the value of our function at $x=0$, only on the behavior of the function \textit{near} 0. 
 
-This numerical method gives confidence to say that 1 is a good approximation of $\lim_{x\to 0} \sin(x)/x$; that is, $$\lim_{x\to 0} \sin(x)/x \approx 1.$$ Later we will be able to prove that the limit is \textit{exactly} 1.
+This numerical method gives confidence to say that 1 is a good approximation of $\lim_{x\to 0} \sin(x)/x$; that is,
+\[\lim_{x\to 0} \sin(x)/x \approx 1.\]
+Later we will be able to prove that the limit is \textit{exactly} 1.
 
-\khanVideo{riXcZT2ICjA}{introduction-to-limits-hd}{\textbf{Intro to limits:} What are limits?}
+\youtubeVideo{riXcZT2ICjA}{Introduction to limits}
 
 We now consider several examples that allow us to explore different aspects of the limit concept.
 
+\mtable{Graphically and numerically approximating a limit in \autoref{ex_limit1}.}{fig:limit1}{\myincludegraphics{figures/figlimit1}
+\\ (a) \smallskip\\
+\begin{tabular}{lc}
+ $x$ & $\frac{x^2-x-6}{6x^2-19x+3}$ \\ \midrule
+ 2.9 & 0.298780 \\
+ 2.99 & 0.294569 \\
+ 2.999 & 0.294163 \\
+ \textbf{3} & \textbf{not defined}\\
+ 3.001 & 0.294073 \\
+ 3.01 & 0.293669 \\
+ 3.1 & 0.289773
+\end{tabular}
+\\ (b)}
+
 \example{ex_limit1}{Approximating the value of a limit}{Use graphical and numerical methods to approximate
 \[\lim_{x\to 3} \frac{x^2-x-6}{6x^2-19x+3}.\]}%
-{To graphically approximate the limit, graph \[y = (x^2-x-6)/(6x^2-19x+3)\] on a small interval that contains 3. To numerically approximate the limit, create a table of values where the $x$ values are near 3. This is done in \autoref{fig:limit1}.
-
-\mtable{Graphically and numerically approximating a limit in \autoref{ex_limit1}.}{fig:limit1}{\begin{tabular}{c}
-\myincludegraphics{figures/figlimit1} \\ (a) \\
-\input{figures/table_limit1} \\ (b)
-\end{tabular}}
+{To graphically approximate the limit, graph
+\[y = (x^2-x-6)/(6x^2-19x+3)\]
+on a small interval that contains 3. To numerically approximate the limit, create a table of values where the $x$ values are near 3. This is done in \autoref{fig:limit1}.
 
 The graph shows that when $x$ is near 3, the value of $y$ is very near $0.3$. By considering values of $x$ near 3, we see that $y=0.294$ is a better approximation. The graph and the table imply that
 \[\lim_{x\to 3} \frac{x^2-x-6}{6x^2-19x+3} \approx 0.294.\eoehere\]}
@@ -73,10 +107,17 @@ Graphs are useful since they give a visual understanding concerning the behavior
 
 Since tables and graphs are used only to \textit{approximate} the value of a limit, there is not a firm answer to how many data points are ``enough.'' Include enough so that a trend is clear, and use values (when possible) both less than and greater than the value in question. In \autoref{ex_limit1}, we used both values less than and greater than 3. Had we used just $x=3.001$, we might have been tempted to conclude that the limit had a value of $0.3$. While this is not far off, we could do better. Using values ``on both sides of 3'' helps us identify trends.
 
-\mtable{Graphically and numerically approximating a limit in \autoref{ex_limit2}.}{fig:limit2}{\begin{tabular}{c}
-\myincludegraphics{figures/figlimit2} \\ (a) \\
-\input{figures/table_limit2} \\ (b)
-\end{tabular}}
+\mtable{Graphically and numerically approximating a limit in \autoref{ex_limit2}.}{fig:limit2}{\myincludegraphics{figures/figlimit2} \\ (a) \\
+\begin{tabular}{ll}
+ $x$ & $f(x)$ \\ \midrule
+ $-0.1$ & $0.9$ \\
+ $-0.01$ & $0.99$ \\
+ $-0.001$ & $0.999$ \\
+ $\phantom{-}0.001$ & $0.999999$ \\
+ $\phantom{-}0.01$ & $0.9999$ \\
+ $\phantom{-}0.1$ & $0.99$
+\end{tabular}
+\\ (b)}
 
 \example{ex_limit2}{Approximating the value of a limit}{Graphically and numerically approximate the limit of $f(x)$ as $x$ approaches 0, where
 \[f(x) = \begin{cases} x+1 & x< 0 \\ -x^2+1 & x > 0 \end{cases}.\]}{Again we graph $f(x)$ and create a table of its values near $x=0$ to approximate the limit. Note that this is a piecewise defined function, so it behaves differently on either side of 0. \autoref{fig:limit2}(a) shows a graph of $f(x)$, and on either side of 0 it seems the $y$ values approach 1. Note that $f(0)$ is not actually defined, as indicated in the graph with the open circle.
@@ -87,7 +128,7 @@ The graph and table allow us to say that $\lim_{x\to 0}f(x) \approx 1$; in fact,
 
 \subsection*{Identifying When Limits Do Not Exist}
 
-A function may not have a limit for all values of $x$. That is, we cannot say $\ds\lim_{x\to c}f(x)=L$ for some numbers $L$ for all values of $c$, for there may not be a number that $f(x)$ is approaching. There are three ways in which a limit may fail to exist. \index{limit!does not exist}
+A function may not have a limit for all values of $x$. That is, we may not be able to say $\ds\lim_{x\to c}f(x)=L$ for some numbers $L$ for all values of $c$, because there may not be a number that $f(x)$ is approaching. There are three ways in which a limit may fail to exist. \index{limit!does not exist}
 \begin{enumerate}
 	\item	The function $f(x)$ may approach different values on either side of $c$.
 	\item	The function may grow without upper or lower bound as $x$ approaches $c$.
@@ -100,22 +141,39 @@ We'll explore each of these in turn.\bigskip
 Explore why $\ds\lim_{x\to 1} f(x)$ does not exist, where $$f(x) = \begin{cases} x^2-2x+3 & x\leq 1 \\ x & x>1 \end{cases}.$$}%
 {A graph of $f(x)$ around $x=1$ and a table are given in \autoref{fig:nolimit1}.
 %
-\mtable[-3in]{Graphically and numerically observing no limit as $x\to 1$ in \autoref{ex_no_limit1}.}{fig:nolimit1}{\begin{tabular}{c}
+\mtable[-3in]{Graphically and numerically observing no limit as $x\to 1$ in \autoref{ex_no_limit1}.}{fig:nolimit1}{%
 \myincludegraphics{figures/fignolimit1} \\ (a) \\
-\input{figures/table_nolimit1} \\ (b)
-\end{tabular}}
+\begin{tabular}{ll}
+ $x$ & $f(x)$ \\ \midrule
+ 0.9 & 2.01 \\
+ 0.99 & 2.0001 \\
+ 0.999 & 2.000001 \\
+ 1.001 & 1.001 \\
+ 1.01 & 1.01 \\
+ 1.1 & 1.1
+\end{tabular}
+\\ (b)}
 %
 It is clear that as $x$ approaches 1, $f(x)$ does not seem to approach a single number. Instead, it seems as though $f(x)$ approaches two different numbers. When considering values of $x$ less than 1 (approaching 1 from the left), it seems that $f(x)$ is approaching 2; when considering values of $x$ greater than 1 (approaching 1 from the right), it seems that $f(x)$ is approaching 1. Recognizing this behavior is important; we'll study this in greater depth later. Right now, it suffices to say that the limit does not exist since $f(x)$ is not approaching one value as $x$ approaches 1.}
+
+\mtable{Graphically and numerically observing no limit as $x\to 1$ in \autoref{ex_no_limit2}.}{fig:nolimit2}{\myincludegraphics{figures/fignolimit2}
+\\ (a) \smallskip\\
+\begin{tabular}{lr}
+ $x$ & $f(x)$ \\ \midrule
+ 0.9 & 100 \\
+ 0.99 & 10000 \\
+ 0.999 & $1\times 10^6$ \\
+ 1.001 & $1\times 10^6$ \\
+ 1.01 & 10000 \\
+ 1.1 & 100
+\end{tabular}
+\\ (b)}
 
 \example{ex_no_limit2}{The Function Grows Without Bound}{
 Explore why $\ds\lim_{x\to 1} 1/(x-1)^2$ does not exist.}%
 {A graph and table of $f(x) = 1/(x-1)^2$ are given in \autoref{fig:nolimit2}.
 Both show that as $x$ approaches 1, $f(x)$ grows larger and larger.
 
-\mtable{Graphically and numerically observing no limit as $x\to 1$ in \autoref{ex_no_limit2}.}{fig:nolimit2}{\begin{tabular}{c}
-\myincludegraphics{figures/fignolimit2} \\ (a) \\
-\input{figures/table_nolimit2} \\ (b)
-\end{tabular}}
 We can deduce this on our own, without the aid of the graph and table. If $x$ is near 1, then $(x-1)^2$ is very small, and: $$\frac{1}{\text{very small number}} = \text{very large number}.$$
 Since $f(x)$ is not approaching a single number, we conclude that $\ds\lim_{x\to 1}\frac{1}{(x-1)^2}$ does not exist.}
 
@@ -161,14 +219,14 @@ $\ds\lim_{x\to 0}\sin(1/x)$ does not exist.}
  \end{tabular}\\
 (a) & (b) & (c)
 \end{tabular}}%
-\captionof{figure}{Observing that $f(x) = \sin(1/x)$ has no limit as $x\to 0$ in \autoref{ex_no_limit3}.}%
+\caption{Observing that $f(x) = \sin(1/x)$ has no limit as $x\to 0$ in \autoref{ex_no_limit3}.}%
 \label{fig:nolimit3}%
 }%
 \end{lxfigure}
 
 \subsection*{Limits of Difference Quotients}
 
-\mfigure{-.75in}{Interpreting a difference quotient as the slope of a secant line.}{fig:diffquot1}{figures/figDiffQuot1}
+\mfigure{-.75in}{Interpreting a difference quo\-tient as the slope of a secant line.}{fig:diffquot1}{figures/figDiffQuot1}
 
 We have approximated limits of functions as $x$ approached a particular number. We will consider another important kind of limit after explaining a few key ideas.\index{limit!difference quotient}
 
@@ -177,27 +235,13 @@ Since the particle traveled 10 feet in 4 seconds, we can say the particle's \tex
 
 This difference quotient can be thought of as the familiar ``rise over run'' used to compute the slopes of lines. In fact, that is essentially what we are doing: given two points on the graph of $f$, we are finding the slope of the \textit{secant line} through those two points. See \autoref{fig:diffquot1}.
 
-\ifthenelse{\boolean{longpage}}% in longpage form
-{% is longpage
-	\noindent\begin{minipage}{\textwidth}\centering
-	\begin{tabular}{cc}
-		(a) \myincludegraphics{figures/figDiffQuotSmallha} & (b) \myincludegraphics{figures/figDiffQuotSmallhb}%
-	\end{tabular}
-	\begin{tabular}{c}
-		(c)\myincludegraphics{figures/figDiffQuotSmallhc}
-	\end{tabular}
-	\captionsetup{type=figure}%
-	\caption{Secant lines of $f(x)$ at $x=1$ and $x=1+h$, for shrinking values of $h$ (i.e., $h\rightarrow 0$).}\label{fig:diff_quot_small_h}
-	\end{minipage}
-	\bigskip\bigskip
-}% end longpage
-{% isn't longpage
-	\mtable[-1.5in]{Secant lines of $f(x)$ at $x=1$ and $x=1+h$, for shrinking values of $h$ (i.e., $h\rightarrow 0$).}{fig:diff_quot_small_h}{\begin{tabular}{c}
-		\myincludegraphics{figures/figDiffQuotSmallha}\\ (a)\\ \myincludegraphics{figures/figDiffQuotSmallhb} 
-		\\ (b)\\
-		\myincludegraphics{figures/figDiffQuotSmallhc}\\(c)\end{tabular}%
-	}
-}% ends isn't a longpage
+\mtable[-1.4in]{Secant lines of $f(x)$ at $x=1$ and $x=1+h$, for shrinking values of $h$ (i.e., $h\rightarrow 0$).}{fig:diff_quot_small_h}{%
+	\myincludegraphics{figures/figDiffQuotSmallha}
+	\\ (a) \\
+	\myincludegraphics{figures/figDiffQuotSmallhb} 
+	\\ (b) \\
+	\myincludegraphics{figures/figDiffQuotSmallhc}
+	\\(c)}
 
 Now consider finding the average speed on another time interval. We again start at $x=1$, but consider the position of the particle $h$ seconds later. That is, consider the positions of the particle when $x=1$ and when $x=1+h$. The difference quotient is now $$\frac{f(1+h)-f(1)}{(1+h)-1} = \frac{f(1+h)-f(1)}h.$$
 

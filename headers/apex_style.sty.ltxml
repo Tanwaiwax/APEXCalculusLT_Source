@@ -12,19 +12,43 @@ use warnings;
 use LaTeXML::Package;
 use Data::Dumper;
 
-RequirePackage('ifluatex'); # can't find the binding
-#DefConditional('\ifluatex'); # the only content of the binding
+# fix some bugs by completely discarding the input
+DefMacro('\matrix[]{}');
+#DefEnvironment('{tikzpicture}','<ltx:p>tikzpicture</ltx:p>');
+#DefEnvironment('{axis}','<ltx:p>axis</ltx:p>');
+#DefEnvironment('{scope}','<ltx:p>scope</ltx:p>');
+RequirePackage('comment');
+#RawTeX('\excludecomment{tikzpicture}');
+RawTeX('\excludecomment{axis}');
+#RawTeX('\excludecomment{scope}');
+#DefMacro('\addplot');
+#DefMacro('\node');
+#DefMacro('\draw');
+#DefMacro('\filldraw');
+#DefMacro('\closedcycle');
+#DefMacro('\shade');
+#DefMacro('\shadedraw');
 
-DefMacro('\embedVideo Semiverbatim','\iframe{#1}{560}{355}');
+# fix a bug
+RawTeX('\setlength{\marginparwidth}{150pt}');
 
-DefConstructor('\iframe Semiverbatim {}{}',
+RequirePackage('ifluatex');
+
+#DefMacro('\exvideo Verbatim','\bigbreak\noindent#1\bigbreak');
+
+DefMacro('\embedVideo Verbatim','\iframe{#1}{560}{355}');
+
+DefConstructor('\iframe Verbatim {}{}',
 	       '<ltx:rawhtml>'.
 	       '<ltx:block class="iframe" width="#2" height="#3">'.
 	       '<ltx:ref class="iframe" href="#1" />'.
 	       '</ltx:block>'.
 	       '</ltx:rawhtml>');
 
-DefMacro('\coloredbox{}{}{}','#3'); # only in .sty
+#DefMacro('\coloredbox{}{}{}','#3'); # causes problems
+DefMacro('\coloredbox{}{}'); # avoids problems?
+# exhibit problem:
+# \parbox{\linewidth} {\href{https://youtu.be/2CsQ_l1S2_Y}{has underscores}}
 
 DefConstructor('\makeStyles{}{}',
 	       '<ltx:resource type="text/css">'.
@@ -73,24 +97,39 @@ DefMacro('\examplestarred {}{}{}','\begin{exampleEnv}[#2]\label{#1}
 \end{exampleEnv}');
 
 
-DefMacro('\captionof{}{}','\caption{#2}');
-
 DefMacro('\myincludegraphicsthree{}{} Semiverbatim',
 	 '\myincludegraphics[#2]{#3_3D}');
 
 DefMacro('\vv {}','\vec #1');
 
+DefMacro('\flushinner{}','#1');
+DefMacro('\flushouter{}','#1');
+DefMacro('\flushinnerequ{}','#1');
+DefMacro('\flushouterequ{}','#1');
+
+# it'd be nice to have this.  instead, we have to enclose all fake figures in
+# an lxfigure environment
+#DefMacro('\captionsetup{}');
+#DefMacro('\captionof{}{}','\caption{#2}');
+
 # some Macros we do need
+DefConstructor('\textcent','&cent;');
 DefMacro('\lvert','\vert');
 DefMacro('\rvert','\vert');
 DefMacro('\lVert','\Vert');
 DefMacro('\rVert','\Vert');
+DefMacro('\psBill');
+# should be in hyperref
+DefMacro('\equationautorefname','Equation');
+DefMacro('\pageautorefname','Page');
+DefMacro('\autopageref{}','\hyperref[{#1}]{\pageautorefname\ \pageref*{#1}}');
 
 # some macros we don't need
 DefMacro('\drawexampleline');
 DefMacro('\eoehere');
 DefMacro('\longexample{}');
-DefMacro('\AddToShipoutPicture OptionalMatch:* {}');
+DefMacro('\testmargintop');
+DefMacro('\testmarginbottom');
 
 # some macros we don't need, but LaTeXML wants for plotting tikz pics
 DefMacro('\x');
@@ -107,37 +146,37 @@ sub TheFakeChapter {
     return CounterValue('fakechapter')->toString;
 }
 
-DefMacro('\printexercises {}', sub {
-    if ( CounterValue('section')->toString eq '1' ) {
-	StepCounter('fakechapter');
-    }
-    StepCounter('fakesection');
-    my $label = TheFakeSection();
-    Invocation(T_CS('\printexercisesgeneric'),$_[1],"Exercises $label",$label);
-	 });
+#DefMacro('\printexercises {}', sub {
+#    if ( CounterValue('section')->toString eq '1' ) {
+#	StepCounter('fakechapter');
+#    }
+#    StepCounter('fakesection');
+#    my $label = TheFakeSection();
+#    Invocation(T_CS('\printexercisesgeneric'),$_[1],"Exercises $label",$label);
+#	 });
 
-DefMacro('\printexercisesreview {}', sub {
-    my $label = TheFakeChapter();
-    Invocation(T_CS('\printexercisesgeneric'),$_[1],"Chapter $label Review Exercises",$label);
-	 });
+#DefMacro('\printexercisesreview {}', sub {
+#    my $label = TheFakeChapter();
+#    Invocation(T_CS('\printexercisesgeneric'),$_[1],"Chapter $label Review Exercises",$label);
+#	 });
 
-DefMacro('\writeToAnsFile {}{}{}', sub {
-    my @ret;
-    if ( CounterValue('section')->toString eq '1' ) {
-	@ret = Tokenize('\immediate\write\answrite{}\write\answrite{\section*{Chapter '.TheFakeChapter().'}}');
-    }
-    push(@ret,
-	 Tokenize('\immediate\write\answrite{\subsection*{\hyperref[exer'),
-	 $_[3],
-	 Tokenize(']{'),
-	 $_[2],
-	 Tokenize('}}\label{sol'),
-	 $_[3],
-	 Tokenize('}\bigskip}\write\answrite{\lxAddClass{solutions}\printanswers{'),
-	 $_[1],
-	 Tokenize('}}'));
-    @ret;
-	 });
+#DefMacro('\writeToAnsFile {}{}{}', sub {
+#    my @ret;
+#    if ( CounterValue('section')->toString eq '1' ) {
+#	@ret = Tokenize('\immediate\write\answrite{}\write\answrite{\section*{Chapter '.TheFakeChapter().'}}');
+#    }
+#    push(@ret,
+#	 Tokenize('\immediate\write\answrite{\subsection*{\hyperref[exer'),
+#	 $_[3],
+#	 Tokenize(']{'),
+#	 $_[2],
+#	 Tokenize('}}\label{sol'),
+#	 $_[3],
+#	 Tokenize('}\bigskip}\write\answrite{\lxAddClass{solutions}\printanswers{'),
+#	 $_[1],
+#	 Tokenize('}}'));
+#    @ret;
+#	 });
 
 DefPrimitive('\showans Number',sub {
     my ($stomach,$port) = @_;

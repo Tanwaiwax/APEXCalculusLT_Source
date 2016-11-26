@@ -4,32 +4,22 @@ In this section we will define general exponential and logarithmic functions and
 
 \subsection*{General exponential functions}
 
-Consider first the function $f(x)=2^x$. If $x$ is rational, then we know how to compute $2^x$. What do we mean by $2^\pi$ though? We compute this by first looking at $2^r$ for rational numbers $r$ that are very close to $\pi$, then finding a limit. In our case we might compute $2^3$, $2^{3.1}$, $2^{3.14}$, etc. We then define $2^\pi$ to be the limit of these numbers. Note that this is actually a different kind of limit than we have dealt with before since we only consider rational number close to $\pi$, not all real numbers close to $\pi$. We will see one way to make this more precise in \autoref{chapter:sequences_series}. Graphically, we can plot the values of $2^x$ for $x$ rational and get something like the dotted curve in \autoref{fig:two_to_x}. In order to define the remaining values, we are ``connecting the dots'' in a way that makes the function continuous.
-
-\begin{lxfigure}
-\begin{center}
+\mtable{The function $2^x$ for rational values of $x$.}{fig:two_to_x}{%
 \begin{tikzpicture}
-\begin{axis}[width=.8\linewidth, axis y line=middle,axis x line=middle,
+\begin{axis}[width=\marginparwidth, axis y line=middle,axis x line=middle,
 tick label style={font=\scriptsize},
 ymin=-1,ymax=5,xmin=-4,xmax=4,name=myplot,xtick={1},ytick={1,2}]
 \addplot[{\colorone},densely dotted,domain=-4:4]{2^x};
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}
-\captionof{figure}{The function $2^x$ for rational values of $x$.}
-\label{fig:two_to_x}
-\end{center}
-\end{lxfigure}
+\end{tikzpicture}}
+Consider first the function $f(x)=2^x$. If $x$ is rational, then we know how to compute $2^x$. What do we mean by $2^\pi$ though? We compute this by first looking at $2^r$ for rational numbers $r$ that are very close to $\pi$, then finding a limit. In our case we might compute $2^3$, $2^{3.1}$, $2^{3.14}$, etc. We then define $2^\pi$ to be the limit of these numbers. Note that this is actually a different kind of limit than we have dealt with before since we only consider rational number close to $\pi$, not all real numbers close to $\pi$. We will see one way to make this more precise in \autoref{chapter:sequences_series}. Graphically, we can plot the values of $2^x$ for $x$ rational and get something like the dotted curve in \autoref{fig:two_to_x}. In order to define the remaining values, we are ``connecting the dots'' in a way that makes the function continuous.
 
 It follows from continuity and the properties of limits that exponential functions will satisfy the familiar properties of exponents (see \autoref{sec:deriv_prereqs}).  This implies that
-\[\left(\frac12\right)^x =(2^{-1})^x=2^{-x},\]
-so the graph of $g(x)=(1/2)^x$ is the reflection of $f$ across the $y$-axis.
-
-\begin{lxfigure}
-\begin{center}
+\mtable{The functions $2^x$ and $2^{-x}$.}{fig:two_to_minus_x}{%
 \begin{tikzpicture}
-\begin{axis}[width=.8\linewidth, axis y line=middle,axis x line=middle,
+\begin{axis}[width=\marginparwidth, axis y line=middle,axis x line=middle,
 tick label style={font=\scriptsize},
 ymin=-1,ymax=5,xmin=-4,xmax=4,name=myplot,xtick={-1,1},ytick={.5,1,2}]
 \addplot[{\colorone},domain=-4:4]{2^x};
@@ -37,18 +27,26 @@ ymin=-1,ymax=5,xmin=-4,xmax=4,name=myplot,xtick={-1,1},ytick={.5,1,2}]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}
-\captionof{figure}{The functions $2^x$ and $2^{-x}$.}
-\end{center}
-\end{lxfigure}
+\end{tikzpicture}}
+\[\left(\frac12\right)^x =(2^{-1})^x=2^{-x},\]
+so the graph of $g(x)=(1/2)^x$ is the reflection of $f$ across the $y$-axis, as in \autoref{fig:two_to_minus_x}.
 
-We can go through the same process as above for any base $a>0$, though we are not usually interested in the constant function $1^x$. In addition to the standard properties of exponents, exponential functions satisfy the following:
-\begin{align*}
- a^0 &= 1 \\
- a^x &>0 \text{ for all $x$} \\
- \lim_{x\to\infty}a^x &=\begin{cases}\infty&a>1\\0&a<1\end{cases}\\
- \lim_{x\to-\infty}a^x &=\begin{cases}0&a>1\\\infty&a<1\end{cases}
-\end{align*}
+We can go through the same process as above for any base $a>0$, though we are not usually interested in the constant function $1^x$.
+
+\keyidea{ki_exp_func_props}{Properties of Exponential Functions}{For $a>0$ the exponential function $f(x)=a^x$ satisfies:\\
+\begin{minipage}[t]{.5\linewidth}
+\begin{enumerate}
+ \item $a^0=1$
+ \item $\ds\lim_{x\to\infty}a^x=\begin{cases}\infty&a>1\\0&a<1\end{cases}$
+\end{enumerate}
+\end{minipage}%
+\begin{minipage}[t]{.5\linewidth}
+\begin{enumerate}
+ \setcounter{enumi}{2}
+ \item $a^x>0$ for all $x$
+ \item $\ds\lim_{x\to-\infty}a^x=\begin{cases}0&a>1\\\infty&a<1\end{cases}$
+\end{enumerate}
+\end{minipage}}
 
 \subsection*{Derivatives of exponential functions}
 
@@ -70,34 +68,38 @@ so we have $\fp(x)=a^x\fp(0)$. The actual value of the limit $\ds\lim_{h\to 0}\f
 
 \youtubeVideo{U3PyUcEd7IU}{Derivatives of Exponential Functions}
 
-\example{ex_exp_derivs}{Finding Exponential Derivatives}{Find derivatives of the following functions.
-\[\text{1. }f(x)=e^{x^2}\qquad\text{2. }g(t)=t e^t\]}
-{\begin{enumerate}
-\item We note that this is a composition of functions where the \emph{inside} function is $x^2$. Hence we can apply the Chain Rule to see that: \[\fp(x)=\left(e^{x^2}\right) (2x)\]
-\item In this case we apply the Product Rule for derivatives to find: \[g\primeskip'(t)=e^t+te^t=e^t(t+1).\eoehere\]
-\end{enumerate}}
+%\example{ex_exp_derivs}{Finding Exponential Derivatives}{Find derivatives of the following functions.
+%\[\text{1. }f(x)=e^{x^2}\qquad\text{2. }g(t)=t e^t\]}
+%{\begin{enumerate}
+%\item We note that this is a composition of functions where the \emph{inside} function is $x^2$. Hence we can apply the Chain Rule to see that: \[\fp(x)=\left(e^{x^2}\right) (2x)\]
+%\item In this case we apply the Product Rule for derivatives to find: \[g\primeskip'(t)=e^t+te^t=e^t(t+1).\eoehere\]
+%\end{enumerate}}
 
 \subsection*{General logarithmic functions}
 
-Let us consider the function $f(x)=a^x$ where $a\neq1$. We know that $\fp(x)=\fp(0)a^x$, where $\fp(0)$ is a constant that depends on the base $a$. Since $a^x>0$ for all $x$, this implies that $\fp(x)$ is either always positive or always negative, depending on the sign of $\fp(0)$. This in turn implies that $f$ is strictly monotonic, so $f$ is one-to-one. We can now say that $f$ has an inverse. We call this inverse the logarithm with base $a$, denoted $f^{-1}(x)=\log_ax$. When $a=e$, this is the natural logarithm function $\ln x$. So we can say that $y=\log_a x$ if and only if $a^y=x$. Since the range of the exponential function is the set of positive real numbers, the domain of the logarithm function is also the set of positive real numbers. Reflecting the graph of $y=a^x$ across the line $y=x$ we find that (for $a>1$) the graph of the logarithm looks like:
-
-\begin{lxfigure}
-\begin{center}
+\mtable{The functions $y=a^x$ and $y=\log_a x$ for $a>1$.}{fig_exp_log}{%
 \begin{tikzpicture}
-\begin{axis}[height=.8\linewidth,width=.8\linewidth,name=myplot,
+\begin{axis}[width=\marginparwidth,name=myplot,axis equal,
 tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,ymin=-2,ymax=4,xmin=-2,xmax=4,
 xtick={1,2.718},xticklabels={1,$e$},
 ytick={1,2.718},yticklabels={1,$e$}]
 \addplot[{\colorone},domain=-4:1.4]{e^x};
 \addplot[{\colortwo},domain=.1:4]{ln(x)};
+\addplot[dashed,domain=-4:4]{x};
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}
-\captionof{figure}{The functions $y=e^x$ and $y=\ln x$.}
-\end{center}
-\end{lxfigure}
+\end{tikzpicture}}
+Let us consider the function $f(x)=a^x$ where $a\neq1$. We know that $\fp(x)=\fp(0)a^x$, where $\fp(0)$ is a constant that depends on the base $a$. Since $a^x>0$ for all $x$, this implies that $\fp(x)$ is either always positive or always negative, depending on the sign of $\fp(0)$. This in turn implies that $f$ is strictly monotonic, so $f$ is one-to-one. We can now say that $f$ has an inverse. We call this inverse the logarithm with base $a$, denoted $f^{-1}(x)=\log_ax$. When $a=e$, this is the natural logarithm function $\ln x$. So we can say that $y=\log_a x$ if and only if $a^y=x$. Since the range of the exponential function is the set of positive real numbers, the domain of the logarithm function is also the set of positive real numbers. Reflecting the graph of $y=a^x$ across the line $y=x$ we find that (for $a>1$) the graph of the logarithm looks like \autoref{fig_exp_log}.
+
+\keyidea{ki_log_func_props}{Properties of Logarithmic Functions}{For $a>0$ and $a\ne1$ the logarithmic function $f(x)=\log_a x$ satisfies:
+\begin{enumerate}
+\item The domain of $f(x)=log_a x$ is $(0,\infty)$ and the range is $(-\infty,\infty)$.
+\item $y=\log_a x$ if and only if $a^y=x$.
+\item $\ds\lim_{x\to\infty}\log_a x=\begin{cases}\infty&\text{ if $a>1$}\\-\infty&\text{ if $a<1$}\end{cases}$
+\item $\ds\lim_{x\to0^+}\log_a x=\begin{cases}-\infty&\text{ if $a>1$}\\\infty&\text{ if $a<1$}\end{cases}$
+\end{enumerate}}
 
 Using the inverse of the natural exponential function, we can determine what the value of $\fp(0)$ is in the formula $(a^x)'=\fp(0)a^x$. To do so, we note that $a=e^{\ln a}$ since the exponential and logarithm functions are inverses. Hence we can write:
 \[a^x=\left(e^{\ln a}\right)^x=e^{x\ln a}\]
@@ -115,24 +117,30 @@ a^y&=x \\
 \ln(a^y)&=\ln x\\
 y\ln a&=\ln x\\
 y&=\frac{\ln x}{\ln a}\\
-\log_a x&=\frac{\ln x}{\ln a}
+\log_a x&=\frac{\ln x}{\ln a}.
 \end{align*}
 This change of base formula allows us to use facts about the natural logarithm to derive facts about the general logarithm.
 
 \subsection*{Derivatives of logarithmic functions}
 
-Since the natural logarithm function is the inverse of the natural exponential function, we can use the formula $(f^{-1}(x))'=\frac1{\fp(f^{-1}(x))}$ to find the derivative of $y=\ln x$. We know that $\frac d{dx}e^x=e^x$, so we get:
-\[\frac{d}{dx}\ln x=\frac 1{e^y}=\frac 1{e^{\ln x}}=\frac1x.\]
-Now we can apply the change of base formula to find the derivative of a general logarithmic function:
+Since the natural logarithm function is the inverse of the natural exponential function, we can use the formula $(f^{-1}(x))'=\dfrac1{\fp(f^{-1}(x))}$ to find the derivative of $y=\ln x$. We know that $\dfrac d{dx}e^x=e^x$, so we get:
+\[\frac d{dx}\ln x=\frac1{e^y}=\frac1{e^{\ln x}}=\frac1x.\]
+Now we
+%In \autoref{sec:deriv_inverse_function}, \autoref{ex_deriv_lnx}, we found that $\frac{d}{dx}\ln x=\frac1x$. We
+can apply the change of base formula to find the derivative of a general logarithmic function:
 \[\frac{d}{dx}\log_ax=\frac{d}{dx}\left(\frac{\ln x}{\ln a}\right) =\frac 1{\ln a}\left(\frac{d}{dx}\ln x\right)=\frac 1{x\ln a}.\]
 
 \example{ex_find_d_exp_log}{Finding Derivatives of Logs and Exponentials}{Find derivatives of the following functions.
-\[\text{1. }f(x)=x3^{4x-7}\qquad\text{2. }g(x)=e^{x^3}\ln x\qquad\text{3. }h(x)=\frac x{\log_5x}\]}
+\[
+ \text{1.}\quad f(x)=x3^{4x-7}\qquad
+ \text{2.}\quad g(x)=2^{x^2}\qquad
+ \text{3.}\quad h(x)=\frac x{\log_5x}
+\]}
 {\begin{enumerate}
 \item We apply both the Product and Chain Rules:
 \[\fp(x)=3^{4x-7}+x\left(3^{4x-7}\ln 3\right)(4)=(1+4x\ln 3)3^{4x-7}\]
-\item Once again apply both the Product and Chain Rules:
-\[g\primeskip'(x)=e^{x^3}(3x^2)\ln x+e^{x^3}(1/x)=(3x^2\ln x+1/x)e^{x^3}\]
+\item We apply the Chain Rule:
+\[g\primeskip'(x)=2^{x^2}\ln 2(2x)=2^{x^2+1}x\ln2.\]
 \item Applying the Quotient Rule:
 \[h\primeskip'(x)=\frac{\log_5x-x\left(\frac1{x\ln 5}\right)}{(\log_5x)^2}=\frac{(\log_5x)(\ln 5)-1}{(\log_5x)^2\ln 5}\eoehere\]
 \end{enumerate}}
@@ -144,14 +152,24 @@ Applying the Chain Rule, we see that $\frac{dy}{dx}=\frac 1x$ for $x>0$, and $\f
 
 \subsection*{Antiderivatives}
 
-Using the previous differentiation formulas, we arrive at the following antidifferentiation formulas:
+Combining these new results, we arrive at the following theorem:
 
-\theorem{thm_int_exp_log}{Antidifferentating Exponentials and Logarithms}{Given a base $a>0$ and $a\neq 1$, the following hold:
+\theorem{thm_int_exp_log}{Derivatives and Antiderivatives of Exponentials and Logarithms}{Given a base $a>0$ and $a\neq 1$, the following hold:\\
+\begin{minipage}[t]{.5\textwidth}
+\begin{itemize}
+\item $\dfrac d{dx}e^x=e^x$
+\item $\dfrac d{dx}a^x=a^x\ln a$
+\item $\dfrac d{dx}\ln x=\dfrac1x$
+\item $\dfrac d{dx}\log_a x=\dfrac1{x\ln a}$
+\end{itemize}
+\end{minipage}%
+\begin{minipage}[t]{.5\textwidth}
 \begin{itemize}
 \item $\ds\int e^x\,dx=e^x+C$
 \item $\ds\int a^x\,dx=\frac{a^x}{\ln a}+C$
 \item $\ds\int \frac{dx}{x}=\ln\abs x+C$
-\end{itemize}}
+\end{itemize}
+\end{minipage}}
 
 \example{ex_exp_log_anti}{Finding Antiderivatives}{Find the following antiderivatives.
 \[
@@ -177,6 +195,8 @@ Using the previous differentiation formulas, we arrive at the following antidiff
 \end{enumerate}}
 
 Note that we do not yet have an antiderivative for the function $f(x)=\ln x$. We remedy this in \autoref{sec:IBP} with \autoref{ex_ibp5}.
+% although see Example 2.4.4
+
 %with the following example.
 %
 %\paragraph{Example.} Compute $\int \ln x\,dx$.
@@ -216,4 +236,4 @@ To ``test'' our answer, let's use it to find the equation of the tangent line at
 $$y\primeskip' = 1.5^{1.5}\big(\ln 1.5+1\big) \approx 1.837(1.405) \approx 2.582.$$
 Thus the equation of the tangent line is $y = 1.6833(x-1.5)+1.837$. \autoref{fig:implicit10} graphs $y=x^x$ along with this tangent line.}
 
-\inputexercises{exercises/07_exp_log_exercises}
+\printexercises{exercises/07_exp_log_exercises}

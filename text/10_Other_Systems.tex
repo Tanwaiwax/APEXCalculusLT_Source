@@ -2,30 +2,76 @@
 
 % originally from Schoolcraft
 
-\mtable{Cartesian Coordinates}{fig_cart_coord}{todo make the graph}
-%{\includegraphics{fig1.7.1.0}}
+\mtable{Cartesian Coordinates}{fig_cart_coord}{\begin{tikzpicture}[scale=3]
+ % these are weirdly ordered. pay attention
+ \draw[->](0,0) -- (1,0) node[right]{\scriptsize$y$};
+ \draw[->](0,0) -- (0,1) node[right]{\scriptsize$z$};
+ \draw[->](0,0) -- (xyz cs:z=1.5) node[right]{\scriptsize$x$};
+ \draw[{\colorone}] (0,0) node[color=black,below]{\scriptsize$0$}
+  -- node[pos=.5,color=black,left]{\scriptsize$x$}(xyz cs:z=1)
+  -- node[pos=.5,color=black,below]{\scriptsize$y$}(1,0,1)
+  -- node[pos=.7,color=black,right]{\scriptsize$z$}(1,1,1)
+     node[color=black,above right]{\scriptsize$(x,y,z)$};
+ \fill[{\colorone}](1,1,1) circle(.6pt);
+ \draw[dashed](0,0) -- (1,0,1);
+ \draw(.9,0,1)--(.9,.1,1)--(1,.1,1);
+\end{tikzpicture}}
 
 The Cartesian coordinates of a point $(x,y,z)$ are determined by following straight paths starting from the origin: first along the $x$-axis, then parallel to the $y$-axis, then parallel to the $z$-axis, as in \autoref{fig_cart_coord}. In \emph{curvilinear coordinate systems}\index{coordinates!curvilinear}, these paths can be curved. The two types of curvilinear coordinates which we will consider are cylindrical\index{coordinates!cylindrical} and spherical\index{coordinates!spherical} coordinates. Instead of referencing a point in terms of sides of a rectangular parallelepiped, as with Cartesian coordinates, we will think of the point as lying on a cylinder or sphere. Cylindrical coordinates are often used when there is symmetry around the $z$-axis; spherical coordinates are useful when there is symmetry about the origin.
 
-Let $P = (x,y,z)$ be a point in Cartesian coordinates in $\mathbb{R}^{3}$, and let $P_0 = (x,y,0)$ be the projection of $P$ upon the $xy$-plane. Treating $(x,y)$ as a point in $\mathbb{R}^{2}$, let $(r,\theta)$ be its polar coordinates (see \autoref{fig_cyl_coord}). Let\index{coordinates!polar} $\rho$ be the length of the line segment from the origin to $P$, and let $\phi$ be the angle between that line segment and the positive $z$-axis (see \autoref{fig_sph_coord}). $\phi$ is called the \emph{zenith angle}\index{zenith angle}. Then the \textbf{cylindrical coordinates} $(r,\theta,z)$  and the \textbf{spherical coordinates} $(\rho,\theta,\phi)$ of $P(x,y,z)$ are defined as follows:\footnote{This ``standard'' definition of spherical coordinates used by mathematicians results in a left-handed system. For this reason, physicists usually switch the definitions of $\theta$ and $\phi$ to make $(\rho,\theta,\phi)$ a right-handed system.}
+\mtable{Cylindrical coordinates}{fig_cyl_coord}{\begin{tikzpicture}[scale=3]
+ % these are weirdly ordered. pay attention
+ \draw[->](0,0) -- (1,0) node[right]{\scriptsize$y$};
+ \draw[->](0,0) -- (0,1) node[right]{\scriptsize$z$};
+ \draw[->](0,0) -- (xyz cs:z=1.5) node[right]{\scriptsize$x$};
+ \draw[dashed] (0,0) node[color=black,left]{\scriptsize$0$}
+  -- node[pos=.5,left]{\scriptsize$x$}(xyz cs:z=1)
+  -- node[pos=.5,below]{\scriptsize$y$}(1,0,1);
+ \draw[{\colorone}](1,0,1) node[color=black,below right]{\scriptsize$P_0(x,y,0)$}
+  -- node[pos=.7,color=black,right]{\scriptsize$z$}(1,1,1)
+     node[color=black,above right]{\scriptsize$P(x,y,z)$};
+ \fill[{\colorone}](1,1,1) circle(.6pt);
+ \draw[dashed,{\colorone}](0,0)
+  -- node[pos=.5,color=black,above right]{\scriptsize$r$} (1,0,1);
+ \draw(.9,0,.9)--(.9,.1,.9)--(1,.1,1);
+ \draw[->,{\colorone}](xyz cs:z=.3)
+     arc[start angle=225,end angle=315,y radius=.1,x radius=.2]
+     node[pos=.5,below,color=black]{\scriptsize$\theta$};
+\end{tikzpicture}}
 
-\mtable{Cylindrical coordinates}{fig_cyl_coord}{todo make the graph}
+Let $P = (x,y,z)$ be a point in Cartesian coordinates in $\mathbb{R}^{3}$, and let $P_0 = (x,y,0)$ be the projection of $P$ upon the $xy$-plane. Treating $(x,y)$ as a point in $\mathbb{R}^{2}$, let $(r,\theta)$ be its polar coordinates (see \autoref{fig_cyl_coord}). Let\index{coordinates!polar} $\rho$ be the length of the line segment from the origin to $P$, and let $\phi$ be the angle between that line segment and the positive $z$-axis (see \autoref{fig_sph_coord}), which is called the \emph{zenith angle}\index{zenith angle}. Then the \textbf{cylindrical coordinates} $(r,\theta,z)$  and the \textbf{spherical coordinates} $(\rho,\theta,\phi)$ of $P(x,y,z)$ are defined as follows:\footnote{This ``standard'' definition of spherical coordinates used by mathematicians results in a left-handed system. For this reason, physicists usually switch the definitions of $\theta$ and $\phi$ to make $(\rho,\theta,\phi)$ a right-handed system.}
 
-%{\includegraphics{fig1.7.2.0}}
+\mtable{Spherical coordinates}{fig_sph_coord}{\begin{tikzpicture}[scale=3]
+ % these are weirdly ordered. pay attention
+ \draw[->](0,0) -- (1,0) node[right]{\scriptsize$y$};
+ \draw[->](0,0) -- (0,1) node[right]{\scriptsize$z$};
+ \draw[->](0,0) -- (xyz cs:z=1.5) node[right]{\scriptsize$x$};
+ \draw[dashed] (0,0) node[left]{\scriptsize$0$}
+  -- node[pos=.5,left]{\scriptsize$x$}(xyz cs:z=1)
+  -- node[pos=.5,below]{\scriptsize$y$}(1,0,1);
+ \draw[dashed](1,0,1) node[below right]{\scriptsize$P_0(x,y,0)$}
+  -- node[pos=.7,right]{\scriptsize$z$}(1,1,1)
+     node[above right]{\scriptsize$P(x,y,z)$};
+ \fill[{\colorone}](1,1,1) circle(.6pt);
+ \draw[{\colorone}](0,0)--node[pos=.5,color=black,above]{\scriptsize$\rho$}(1,1,1);
+ \draw[dashed](0,0) -- (1,0,1);
+ \draw(.9,0,.9)--(.9,.1,.9)--(1,.1,1);
+ \draw[->,{\colorone}](xyz cs:z=.3)
+     arc[start angle=225,end angle=315,y radius=.1,x radius=.2]
+     node[pos=.5,below,color=black]{\scriptsize$\theta$};
+ \draw[->,{\colorone}](0,.2)
+     arc[start angle=90,end angle=45,y radius=.2,x radius=.2]
+     node[pos=.5,above,color=black]{\scriptsize$\phi$};
+\end{tikzpicture}}
 
-\keyidea{idea_cyl_coord}{Cylindrical coordinates $(r,\theta,z)$}{
- \begin{align*}
+\keyidea{idea_cyl_coord}{Cylindrical coordinates $(r,\theta,z)$}{\mbox{}\\[-2\baselineskip]\begin{align*}
   x &= r \cos \theta & r &= \sqrt{x^2 + y^2}\\
   y &= r \sin \theta & \theta &= \tan^{-1} \left( \tfrac{y}{x} \right)\\
   z &= z & z &= z
  \end{align*}
- \vspace{3mm}where $0 \le \theta \le \pi$ if $y \ge 0$ and $\pi < \theta < 2\pi$ if $y < 0$
-}
+ where $0 \le \theta \le \pi$ if $y \ge 0$ and $\pi < \theta < 2\pi$ if $y < 0$}
 
-\mtable{Spherical coordinates}{fig_sph_coord}{todo make the graph}
-%{\includegraphics{fig1.7.3.0}}
-
-\keyidea{idea_sph_coord}{Spherical coordinates $(\rho,\theta,\phi)$}{
+\keyidea{idea_sph_coord}{Spherical coordinates $(\rho,\theta,\phi)$}{\mbox{}
  \begin{align*}
   x &= \rho \sin \phi \,\cos \theta & \rho &= \sqrt{x^2 + y^2 + z^2}\\
   y &= \rho \sin \phi \,\sin \theta & \theta &= \tan^{-1} \left( \tfrac{y}{x} \right)\\
@@ -104,7 +150,7 @@ For cylindrical coordinates $(r,\theta,z)$, and constants $r_0$, $\theta_0$ and 
  \end{tikzpicture} \\
  (a) $r = r_0$ & (b) $\theta = \theta_0$ & (c) $z = z_0$
  \end{tabular}}
- \captionof{figure}{Cylindrical coordinate surfaces}
+ \caption{Cylindrical coordinate surfaces}
  \label{fig:cylcoordsurf}
 \end{lxfigure}
 
@@ -170,7 +216,7 @@ For spherical coordinates $(\rho,\theta,\phi)$, and constants $\rho_0$, $\theta_
  \end{tikzpicture} \\
   (a) $\rho = \rho_0$ & (b) $\theta = \theta_0$ & (c) $\phi = \phi_0$
   \end{tabular}}
- \captionof{figure}{Spherical coordinate surfaces}
+ \caption{Spherical coordinate surfaces}
  \label{fig:sphcoordsurf}
 \end{lxfigure}
 
@@ -193,9 +239,21 @@ Using spherical coordinates to write the equation of a sphere does not necessari
 \example{exmp_helicoid}{Identifying a Surface}{Describe the surface given by $\theta = z$ in cylindrical coordinates.}{This surface is called a \emph{helicoid}\index{helicoid}. As the (vertical) $z$ coordinate increases, so does the angle $\theta$, while the radius $r$ is unrestricted. So this sweeps out a (ruled!) surface shaped like a spiral staircase, where the spiral has an infinite radius. \autoref{fig:helicoid} shows a section of this surface restricted to $0 \le z \le 4\pi$ and $0 \le r \le 2$.
  \begin{lxfigure}
   \begin{center}
-   todo make the graph %\input{fig176}
+   \begin{tikzpicture}[scale=1.3]
+    \begin{axis}[width=\textwidth,tick label style={font=\scriptsize},axis on top,
+				axis lines=center,y dir=reverse,name=myplot,
+				ymin=-2,ymax=2,xmin=-2,xmax=2,zmin=0,zmax=14]
+     \addplot3[domain=0:2,y domain=0:720,surf,colormap={mp2}{\colormapplaneone},
+		opacity=.6,faceted color=black!40,samples=8,samples y=72,very thin,
+		z buffer=sort]
+		({x*sin(y)},{x*cos(y)},{rad(y)});
+    \end{axis}
+    \node [left] at (myplot.below origin) [shift={(-60pt,0pt)}] {$x$};
+    \node [below left] at (myplot.right of origin) [shift={(-30pt,-16pt)}] {$y$};
+    \node [below] at (myplot.above origin) [shift={(0,-40pt)}] {$z$};
+   \end{tikzpicture}
   \end{center}
- \captionof{figure}{Helicoid $\theta = z$}\eoehere
+ \caption{Helicoid $\theta = z$}\eoehere
  \label{fig:helicoid}
  \end{lxfigure}}
 

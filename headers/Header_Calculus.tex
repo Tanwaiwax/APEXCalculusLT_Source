@@ -7,8 +7,6 @@
 
 \usepackage{booktabs}
 
-\usepackage{pst-fun} % for psBill in 14_Stokes
-
 \usepackage{esint}
 % for oiint in 14_Div_Thm, oint[ctr]clockwise in 14_Line_Integrals_Props
 
@@ -17,6 +15,7 @@
 %% look of the Chapter and Section headings.
 %% Note the use in the chapter part of an external file
 %% that contains graphics for each chapter start.
+%% But not really?
 %%%%
 
 %%%%
@@ -133,9 +132,6 @@ Notes:
 %%	 }}
 \makeatother 
 
-%\newcommand{\btz}{\begin{center}\begin{tikzpicture}}
-%\newcommand{\etz}{\end{tikzpicture}\end{center}}
-
 \newcommand{\ds}{\displaystyle}
 
 \newcommand{\fp}{\ensuremath{f\,'}}
@@ -152,20 +148,28 @@ Notes:
 %\newcommand{\dz}{\ensuremath{\Delta z}}
 \newcommand{\ddz}{\ensuremath{\Delta z}}
 
-%\newcommand{\thet}{\ensuremath{\theta}}
 \newcommand*{\abs}[1]{\ensuremath{\left\lvert #1 \right\rvert}}
 \newcommand*{\norm}[1]{\ensuremath{\left\lVert #1 \right\rVert}}
 \newcommand*{\vnorm}[1]{\ensuremath{\norm{\vec #1}}}
-%\newcommand*{\snorm}[1]{\norm{#1}}%{\ensuremath{\left\lVert\ #1\ \right\rVert}}
 \newcommand{\bracket}[1]{\left\langle #1\right\rangle}
 \newcommand{\la}{\left\langle}
 \newcommand{\ra}{\right\rangle}
 \newcommand*{\dotp}[2]{\ensuremath{\vec #1 \cdot \vec #2}}
 \newcommand*{\proj}[2]{\ensuremath{\text{proj}_{\,\vec #2}{\,\vec #1}}}
 \newcommand*{\crossp}[2]{\ensuremath{\vec #1 \times \vec #2}}
+\newcommand{\vecE}{\ensuremath{\vec E}}
+\newcommand{\vecF}{\ensuremath{\vec F}}
+\newcommand{\vecG}{\ensuremath{\vec G}}
+\newcommand{\vecT}{\ensuremath{\vec T}}
+\newcommand{\vece}{\ensuremath{\vec e}}
+\newcommand{\vecf}{\ensuremath{\vec f}}
+\newcommand{\vecg}{\ensuremath{\vec g}}
 \newcommand{\veci}{\ensuremath{\vec\imath}}
 \newcommand{\vecj}{\ensuremath{\vec\jmath}}
 \newcommand{\veck}{\ensuremath{\vec k}}
+\newcommand{\vecl}{\ensuremath{\vec l}}
+\newcommand{\vecn}{\ensuremath{\vec n}}
+\newcommand{\vecr}{\ensuremath{\vec r}}
 \newcommand{\vecu}{\ensuremath{\vec u}}
 \newcommand{\vecv}{\ensuremath{\vec v}}
 \newcommand{\vecw}{\ensuremath{\vec w}}
@@ -210,7 +214,7 @@ Notes:
 %  Some TiKZ  shortcuts to help make drawing 3D vectors faster.
 %
 
-\newcommand{\plotlinecolor}{blue}
+%\newcommand{\plotlinecolor}{blue}
 
 %
 % Draw x and y tick marks
@@ -288,41 +292,48 @@ Notes:
 
 % \mfigure[graphicsoptions]{offset}{caption}{label}{file}
 \newcommand{\mfigure}[5][]{
-	\mnote[#2]{\lxfigure{%
+	\mnote[#2]{%
 		\centering\myincludegraphics[#1]{#5}%
 		\captionof{figure}{#3}\label{#4}}%
-	}}
+}
 
 % \mtable[offset=0]{caption}{label}{contents}
-\newcommand{\mtable}[4][0ex]{
-	\mnote[#1]{\lxfigure{%
-		\centering\small#4\captionof{figure}{#2}\label{#3}}%
-	}}
+\newcommand{\mtable}[4][0ex]{%
+	\mnote[#1]{\centering\small#4\captionof{figure}{#2}\label{#3}}
+}
 
 % \mnote[offset=0]{contents}
-\newcommand{\mnote}[2][0ex]{%
+\newcommand{\mnote}[2][0pt]{%
 	\marginpar{\vspace{#1}%
 		\begin{minipage}[c]{\marginparwidth}
-		#2
+			\captionsetup{type=figure}%
+			\testmargintop
+			#2\ifhmode\unskip\fi
+			\testmarginbottom
 		\end{minipage}%
-	}}
+}}
 
 % \mfigurethree{mediaoptions}{graphicsoptions}{offset}{caption}{label}{file}
 \newcommand{\mfigurethree}[6]%
-	{\mnote[#3]{\lxfigure{\centering%
+	{\mnote[#3]{\centering%
 		\ifthenelse{\boolean{in_threeD}}{% in 3D
 			\includemedia[#1]{\includegraphics{#6_3D\colornamesuffix}}{#6_3D.prc}
 		}{% not
 			\myincludegraphics[#2]{#6}
 		}%
 		\captionof{figure}{#4}\label{#5}
-	}}}
+}}
 
 
 \newenvironment{lxfigure}{%
-	\iflatexml\begin{figure}[!h]\else\bigbreak\fi%
+	\iflatexml%
+		\begin{figure}[!h]%
+	\else%
+		\noindent\begin{minipage}[t]{\linewidth}\noindent%
+	\fi%
+	\captionsetup{type=figure}%
 }{%
-	\iflatexml\end{figure}\else\bigbreak\fi
+	\iflatexml\end{figure}\else\end{minipage}\fi%
 }
 
 \newcommand{\tbox}[1]{\begin{tabular}{c}#1\end{tabular}} % a tall box
@@ -331,43 +342,28 @@ Notes:
 
 \newboolean{chapter_already_has_exercises}
 
-\newcommand*{\apexchapter}[2]{
- \clearpage\thispagestyle{empty}\cleardoublepage
- \chapter{#1}\label{#2}
- \thispagestyle{empty}
- \setboolean{chapter_already_has_exercises}{false}
- \ifthenelse{\boolean{latexml}}{\section*{Chapter Introduction}}{}
+\newcommand*{\apexchapter}[3][]{%
+ \clearpage\thispagestyle{empty}\cleardoublepage%
+ \setboolean{chapter_already_has_exercises}{false}%
+ \ifthenelse{\equal{#1}{}}{}{%
+  \stepcounter{chapter}%
+  \input{#1}%
+  \addtocounter{chapter}{-1}%
+  \setcounter{savefigure}{\value{figure}}%
+ }%
+ \chapter{#2}\label{#3}%
+ \thispagestyle{empty}%
+ \ifthenelse{\boolean{latexml}}{\section*{Chapter Introduction}}{}%
+ \ifthenelse{\equal{#1}{}}{}{%
+  \setcounter{figure}{\value{savefigure}}%
+ }%
 }
 
 
-\newcounter{flushcounter}
-\newcommand{\flushinner}[1]{%
-	\stepcounter{flushcounter}%
-	\makebox[0pt]{\label{label\theflushcounter}}%
-	\ifthenelse{\boolean{latexml}\OR\isodd{\pageref{label\theflushcounter}}}{%
-%		\makebox[.99\linewidth][l]{#1}%
-%		\makebox[.99\linewidth][l]{\parbox{.99\linewidth}{#1}}%
-		\makebox[.99\linewidth][l]{\begin{tabular}{c}#1\end{tabular}}%
-}{%
-%		\makebox[.99\linewidth][r]{#1}%
-%		\makebox[.99\linewidth][r]{\parbox{\textwidth}{#1}}%
-		\makebox[.99\linewidth][r]{\begin{tabular}{c}#1\end{tabular}}%
-	}}
-\newcommand{\flushouter}[1]{%
-	\stepcounter{flushcounter}%
-	\makebox[0pt]{\label{label\theflushcounter}}%
-	\ifthenelse{\boolean{latexml}\OR\isodd{\pageref{label\theflushcounter}}}{%
-		\makebox[.99\linewidth][r]{\begin{tabular}{c}#1\end{tabular}}%
-	}{%
-		\makebox[.99\linewidth][l]{\begin{tabular}{c}#1\end{tabular}}%
-	}}
-\newcommand{\flushinnerequ}[1]{\flushinner{\vtop{#1}}}
-
 %%%%%%%%%%%%%%%%%
 
-% mecmath commands to remove
+% mecmath command to remove
 
-\newcommand{\Crossprod}[2]{ #1 \times #2 }
 \newcommand{\Dotprod}[2]{ #1 \cdot #2 }
 
 % end mecmath
@@ -390,7 +386,7 @@ Notes:
 	\setmainfont[Mapping=tex-text]{Calibri}
 	\setsansfont[Mapping=tex-text]{Calibri}
 	\setmathsfont(Greek){[cmmi10]}}
-	{\ifthenelse{\boolean{latexml}}{}{Please compile with XeLaTeX}}
+	{\ifthenelse{\boolean{latexml}}{}{\PackageError{apex}{Please compile with XeLaTeX}{Enter x or q to stop.  You can also just continue and see what happens.}}}
 	
 %\ifthenelse{\boolean{luatex}}%
 %	{%

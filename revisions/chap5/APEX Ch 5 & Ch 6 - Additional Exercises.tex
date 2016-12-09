@@ -1,0 +1,98 @@
+\documentclass[11pt]{report}
+\usepackage[letterpaper, total={6.5in, 10in}]{geometry}
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+\usepackage{amsmath, amsthm, mathpazo, epic, eepic, color, array}
+\usepackage{amssymb}
+%\usepackage{graphicx}
+\usepackage{cancel}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\pgfplotsset{compat=1.13}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
+\usepackage{hyperref}
+
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns}
+\usepackage{tkz-graph}
+\usetikzlibrary{arrows, petri, topaths}
+\usepackage{tkz-berge}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+
+\newboolean{colorprint}
+\setboolean{colorprint}{true}
+%\setboolean{colorprint}{false}
+
+\ifthenelse{\boolean{colorprint}}{%
+\newcommand{\colorone}{blue}
+\newcommand{\colortwo}{red}
+\newcommand{\coloronefill}{blue!15!white}
+\newcommand{\colortwofill}{red!15!white}
+\newcommand{\colormapone}{rgb=(.4,.4,1); rgb=(.8,.8,1)}
+\newcommand{\colormaptwo}{rgb=(1,.4,.4); rgb=(1,.8,.8)}
+\newcommand{\colormapplaneone}{rgb=(.7,.7,1); rgb=(.9,.9,1)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,1}
+\definecolor{colormaponetop}{rgb}{.8,.8,1}
+\definecolor{colormaptwobottom}{rgb}{1,.4,.4}
+\definecolor{colormaptwotop}{rgb}{1,.8,.8}
+}% ends color
+{% not color
+\newcommand{\colorone}{black}
+\newcommand{\colortwo}{black!50!white}
+\newcommand{\coloronefill}{black!15!white}
+\newcommand{\colortwofill}{black!05!white}
+\newcommand{\colormapone}{rgb=(.4,.4,.4); rgb=(.7,.7,.7)}
+\newcommand{\colormaptwo}{rgb=(.6,.6,.6); rgb=(.9,.9,.9)}
+\newcommand{\colormapplaneone}{rgb=(.8,.8,.8); rgb=(.95,.95,.95)}
+\definecolor{colormaponebottom}{rgb}{.4,.4,.4}
+\definecolor{colormaponetop}{rgb}{.7,.7,.7}
+\definecolor{colormaptwobottom}{rgb}{.6,.6,.6}
+\definecolor{colormaptwotop}{rgb}{.9,.9,.9}
+}%
+
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+\pgfplotsset{my style/.append style={axis x line=middle, axis y line=
+middle, xlabel={$x$}, ylabel={$y$}, axis equal }}
+
+\pgfplotsset{compat=1.13}
+\newcommand{\ds}{\displaystyle}
+\begin{document}
+
+
+\textbf{Section 5.5 Additional Exercises}\\
+\vskip .5 truecm
+
+Add these problems to \#3 - 49\\ \\
+
+$\displaystyle \int \sin \bigl(\frac{x}{3}\bigr)~dx$ \hskip 1 truein Solution: $-3 \cos (\frac{x}{3}) + C$\\
+
+$\displaystyle \int \sin^5 \bigl(\frac{x}{4}\bigr) \cos \bigl(\frac{x}{4}\bigr)~dx$ \hskip 1 truein Solution: $\frac{2}{3} \sin^6 (\frac{x}{4}) + C$\\
+ 
+$\displaystyle \int x^{1/2} \cos (x^{3/2}+1)~dx$ \hskip 1 truein Solution: $ \frac{2}{3}\sin (x^{3/2}+1)  + C$\\
+\\
+
+\textbf{Section 6.1 Additional Exercises}\\
+\vskip .5 truecm
+
+Can we change the directions for \#10 - 15 to say: Find area of the region bounded by the given curves. 
+Add these after \#15\\ \\
+
+$x=2y^2, ~~ x+y=1$ \hskip 1 truein Solution: $\frac{9}{8}$ \\
+$x=y^2-1, ~~ x=1 - y^2$ \hskip 1 truein Solution: $\frac{8}{3}$ \\
+$4x+y^2=12, ~~ x=y$ \hskip 1 truein Solution: $\frac{64}{3}$ \\
+$x=y^2-4y, ~~ x=2y - y^2$ \hskip 1 truein Solution: $9$  \\
+
+
+\end{document}
+

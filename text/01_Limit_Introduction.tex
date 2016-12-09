@@ -7,7 +7,8 @@ Consider the function $y = \frac{\sin x}{x}$. When $x$ is near the value 1, what
 While our question is not precisely formed (what constitutes ``near the value 1''?), the answer does not seem difficult to find. One might think first to look at a graph of this function to approximate the appropriate $y$ values. Consider \autoref{fig:sinx_over_x}(a), where $y = \frac{\sin x}{x}$ is graphed. For values of $x$ near 1, it seems that $y$ takes on values near $0.85$. In fact, when $x=1$, then $y=\frac{\sin 1}{1} \approx 0.84$, so it makes sense that when $x$ is ``near'' 1, $y$ will be ``near'' $0.84$.
 
 \mtable{$\sin(x)/x$ near $x=1$ (top) and $x=0$ (bottom).}{fig:sinx_over_x}%
-{\myincludegraphics{figures/figZoomSinXOverX}\\ (a)\\
+{\myincludegraphics{figures/figZoomSinXOverX}
+\\ (a)\\
 \begin{tikzpicture}
  \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize },
    minor x tick num=1,axis y line=middle,axis x line=middle,ytick={.8,.9,1},
@@ -19,7 +20,8 @@ While our question is not precisely formed (what constitutes ``near the value 1'
  \end{axis}
  \node [right] at (myplot.right of origin) {\scriptsize $x$};
  \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture} \\ (b)}
+\end{tikzpicture}
+\\ (b)}
 
 Consider this again at a different value for $x$. When $x$ is near 0, what value (if any) is $y$ near? By considering \autoref{fig:sinx_over_x}(b), one can see that it seems that $y$ takes on values near $1$. But what happens when $x=0$? We have $$ y \rightarrow \frac{\sin 0}{0} \rightarrow \raisebox{8pt}{\text{``\ }}\frac{0}{0}\raisebox{8pt}{\text{\ ''}}.$$ 
 The expression ``$0/0$'' has no value; it is \emph{indeterminate.} \index{limit!indeterminate form}\index{indeterminate form} Such an expression gives no information about what is going on with the function nearby. We cannot find out how $y$ behaves near $x=0$ for this function simply by letting $x=0$. 
@@ -73,7 +75,14 @@ Later we will be able to prove that the limit is \textit{exactly} 1.
 
 We now consider several examples that allow us to explore different aspects of the limit concept.
 
-\mtable{Graphically and numerically approximating a limit in \autoref{ex_limit1}.}{fig:limit1}{\myincludegraphics{figures/figlimit1}
+\mtable{Graphically and numerically approximating a limit in \autoref{ex_limit1}.}{fig:limit1}{
+\begin{tikzpicture}
+\begin{axis}[clip=false,width=\marginparwidth+25pt,tick label style={font=\scriptsize},minor x tick num=1,axis y line=middle,axis x line=middle,ymin=.25,ymax=.35,extra y tick labels={},xmin=2.3,xmax=3.7,name=myplot]
+\addplot [{\colorone},thick,smooth] coordinates {(2.5,0.321429) (2.61,0.314461) (2.72,0.308094) (2.83,0.302253) (2.94,0.296875) (3.05,0.291908) (3.16,0.287305) (3.27,0.283029) (3.38,0.279046) (3.49,0.275326)};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
 \\ (a) \smallskip\\
 \begin{tabular}{lc}
  $x$ & $\frac{x^2-x-6}{6x^2-19x+3}$ \\ \midrule
@@ -107,7 +116,21 @@ Graphs are useful since they give a visual understanding concerning the behavior
 
 Since tables and graphs are used only to \textit{approximate} the value of a limit, there is not a firm answer to how many data points are ``enough.'' Include enough so that a trend is clear, and use values (when possible) both less than and greater than the value in question. In \autoref{ex_limit1}, we used both values less than and greater than 3. Had we used just $x=3.001$, we might have been tempted to conclude that the limit had a value of $0.3$. While this is not far off, we could do better. Using values ``on both sides of 3'' helps us identify trends.
 
-\mtable{Graphically and numerically approximating a limit in \autoref{ex_limit2}.}{fig:limit2}{\myincludegraphics{figures/figlimit2} \\ (a) \\
+\mtable{Graphically and numerically approximating a limit in \autoref{ex_limit2}.}{fig:limit2}{
+\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+minor x tick num=1,axis y line=middle,axis x line=middle,
+ymin=-.1,ymax=1.1,xmin=-1.1,xmax=1.1,name=myplot]
+\addplot [{\colorone},thick, smooth,domain=-1:0,samples=2] ({x},{x+1});
+\addplot [{\colorone},thick, smooth,domain=0:1,samples=15] ({x},{1-x*x});
+
+\filldraw [thick,fill=white] (axis cs:0,1) circle (1.5pt);
+
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\ (a) \\
 \begin{tabular}{ll}
  $x$ & $f(x)$ \\ \midrule
  $-0.1$ & $0.9$ \\
@@ -142,7 +165,21 @@ Explore why $\ds\lim_{x\to 1} f(x)$ does not exist, where $$f(x) = \begin{cases}
 {A graph of $f(x)$ around $x=1$ and a table are given in \autoref{fig:nolimit1}.
 %
 \mtable[-3in]{Graphically and numerically observing no limit as $x\to 1$ in \autoref{ex_no_limit1}.}{fig:nolimit1}{%
-\myincludegraphics{figures/fignolimit1} \\ (a) \\
+\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+minor x tick num=1,axis y line=middle,axis x line=middle,
+ymin=-.1,ymax=3.2,xmin=-.1,xmax=2.1,name=myplot]
+
+\addplot [{\colorone},smooth,thick] coordinates {(0.,3.) (0.1,2.81) (0.2,2.64) (0.3,2.49) (0.4,2.36) (0.5,2.25) (0.6,2.16) (0.7,2.09) (0.8,2.04) (0.9,2.01) (1,2)};
+\addplot [{\colorone},smooth,thick] coordinates {(1,1) (1.1,1.1) (1.2,1.2) (1.3,1.3) (1.4,1.4) (1.5,1.5) (1.6,1.6) (1.7,1.7) (1.8,1.8) (1.9,1.9) (2.,2.)
+};
+\filldraw [fill=white,draw={\colorone},thick] (axis cs:1,1) circle (1.5pt);
+\filldraw [fill={\colorone},{\colorone}] (axis cs:1,2) circle (1.5pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\ (a) \\
 \begin{tabular}{ll}
  $x$ & $f(x)$ \\ \midrule
  0.9 & 2.01 \\
@@ -156,7 +193,17 @@ Explore why $\ds\lim_{x\to 1} f(x)$ does not exist, where $$f(x) = \begin{cases}
 %
 It is clear that as $x$ approaches 1, $f(x)$ does not seem to approach a single number. Instead, it seems as though $f(x)$ approaches two different numbers. When considering values of $x$ less than 1 (approaching 1 from the left), it seems that $f(x)$ is approaching 2; when considering values of $x$ greater than 1 (approaching 1 from the right), it seems that $f(x)$ is approaching 1. Recognizing this behavior is important; we'll study this in greater depth later. Right now, it suffices to say that the limit does not exist since $f(x)$ is not approaching one value as $x$ approaches 1.}
 
-\mtable{Graphically and numerically observing no limit as $x\to 1$ in \autoref{ex_no_limit2}.}{fig:nolimit2}{\myincludegraphics{figures/fignolimit2}
+\mtable{Graphically and numerically observing no limit as $x\to 1$ in \autoref{ex_no_limit2}.}{fig:nolimit2}{
+\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},minor x tick num=1,axis y line=middle,axis x line=middle,ymin=-1,ymax=110,xmin=-.1,xmax=2.1,name=myplot]
+
+\addplot [{\colorone},smooth,thick] coordinates {(0.,1.) (0.05,1.10803) (0.1,1.23457) (0.15,1.38408) (0.2,1.5625)(0.25,1.77778) (0.3,2.04082) (0.35,2.36686) (0.4,2.77778)(0.45,3.30579) (0.5,4.) (0.55,4.93827) (0.6,6.25) (0.65,8.16327)(0.7,11.1111) (0.75,16.) (0.8,25.) (0.85,44.4444) (0.9,100.) };
+\addplot [{\colorone},smooth,thick] coordinates {(1.1,100.) (1.15,44.4444) (1.2,25.) (1.25,16.) (1.3,11.1111) (1.35,8.16327) (1.4,6.25) (1.45,4.93827) (1.5,4.) (1.55,3.30579) (1.6,2.77778) (1.65,2.36686) (1.7,2.04082) (1.75,1.77778) (1.8,1.5625) (1.85,1.38408) (1.9,1.23457) (1.95,1.10803) (2.,1.)};
+\draw [dashed,thick] (axis cs: 1,1) -- (axis cs: 1,100);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
 \\ (a) \smallskip\\
 \begin{tabular}{lr}
  $x$ & $f(x)$ \\ \midrule
@@ -169,8 +216,7 @@ It is clear that as $x$ approaches 1, $f(x)$ does not seem to approach a single 
 \end{tabular}
 \\ (b)}
 
-\example{ex_no_limit2}{The Function Grows Without Bound}{
-Explore why $\ds\lim_{x\to 1} 1/(x-1)^2$ does not exist.}%
+\example{ex_no_limit2}{The Function Grows Without Bound}{Explore why $\ds\lim_{x\to 1} 1/(x-1)^2$ does not exist.}%
 {A graph and table of $f(x) = 1/(x-1)^2$ are given in \autoref{fig:nolimit2}.
 Both show that as $x$ approaches 1, $f(x)$ grows larger and larger.
 
@@ -188,7 +234,9 @@ $\ds\lim_{x\to 0}\sin(1/x)$ does not exist.}
 {\bigskip
 \noindent\begin{minipage}{\textwidth}\centering
 \begin{tabular}{cc}
-(a) \myincludegraphics[scale=.9]{figures/figNoLimit3a} & (b) \myincludegraphics[scale=.9]{figures/figNoLimit3b}\end{tabular}
+(a) \myincludegraphics[scale=.9]{figures/figNoLimit3a} &
+(b) \myincludegraphics[scale=.9]{figures/figNoLimit3b}
+\end{tabular}
 \bigskip
 \begin{tabular}{c}
 (c)\begin{tabular}[b]{cc}
@@ -236,11 +284,38 @@ Since the particle traveled 10 feet in 4 seconds, we can say the particle's \tex
 This difference quotient can be thought of as the familiar ``rise over run'' used to compute the slopes of lines. In fact, that is essentially what we are doing: given two points on the graph of $f$, we are finding the slope of the \textit{secant line} through those two points. See \autoref{fig:diffquot1}.
 
 \mtable[-1.4in]{Secant lines of $f(x)$ at $x=1$ and $x=1+h$, for shrinking values of $h$ (i.e., $h\rightarrow 0$).}{fig:diff_quot_small_h}{%
-	\myincludegraphics{figures/figDiffQuotSmallha}
+\begin{tikzpicture}
+\begin{axis}[clip=false,width=\marginparwidth+25pt,tick label style={font=\scriptsize},minor x tick num=1,axis y line=middle,axis x line=middle,ymin=-1,ymax=25,extra y tick labels={},xmin=-1,xmax=6.5,name=myplot]
+\addplot [{\colorone},smooth,thick] coordinates {(0.,0.) (0.5,5.375) (1.,10.) (1.5,13.875) (2.,17.) (2.5,19.375)(3.,21.) (3.5,21.875) (4.,22.) (4.5,21.375) (5.,20.) (5.5,17.875)(6.,15.) };
+\addplot [{\colortwo},smooth,thick] coordinates {(0,4.5) (4,26.5)};
+\fill[black] (axis cs:1,10) circle (1pt);
+\fill[black] (axis cs:3,21) circle (1pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $f$};
+\end{tikzpicture}
 	\\ (a) \\
-	\myincludegraphics{figures/figDiffQuotSmallhb} 
+\begin{tikzpicture}
+\begin{axis}[clip=false,width=\marginparwidth+25pt,tick label style={font=\scriptsize},minor x tick num=1,axis y line=middle,axis x line=middle,ymin=-1,ymax=25,extra y tick labels={},xmin=-1,xmax=6.5,name=myplot]
+\addplot [{\colorone},smooth,thick] coordinates {(0.,0.) (0.5,5.375) (1.,10.) (1.5,13.875) (2.,17.) (2.5,19.375)(3.,21.) (3.5,21.875) (4.,22.) (4.5,21.375) (5.,20.) (5.5,17.875)(6.,15.) };
+\addplot [{\colortwo},smooth,thick] coordinates {(0,3) (3,24)};
+\fill[black] (axis cs:1,10) circle (1pt);
+\fill[black] (axis cs:2,17) circle (1pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $f$};
+\end{tikzpicture}
 	\\ (b) \\
-	\myincludegraphics{figures/figDiffQuotSmallhc}
+\begin{tikzpicture}
+\begin{axis}[clip=false,width=\marginparwidth+25pt,tick label style={font=\scriptsize},minor x tick num=1,axis y line=middle,axis x line=middle,ymin=-1,ymax=25,extra y tick labels={},xmin=-1,xmax=6.5,name=myplot]
+\addplot [{\colorone},smooth,thick] coordinates {(0.,0.) (0.5,5.375) (1.,10.) (1.5,13.875) (2.,17.) (2.5,19.375)(3.,21.) (3.5,21.875) (4.,22.) (4.5,21.375) (5.,20.) (5.5,17.875)(6.,15.) };
+\addplot [{\colortwo},smooth,thick] coordinates {(0,2.25) (2.5,21.625)};
+\fill[black] (axis cs:1,10) circle (1pt);
+\fill[black] (axis cs:1.5,13.875) circle (1pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $f$};
+\end{tikzpicture}
 	\\(c)}
 
 Now consider finding the average speed on another time interval. We again start at $x=1$, but consider the position of the particle $h$ seconds later. That is, consider the positions of the particle when $x=1$ and when $x=1+h$. The difference quotient is now $$\frac{f(1+h)-f(1)}{(1+h)-1} = \frac{f(1+h)-f(1)}h.$$

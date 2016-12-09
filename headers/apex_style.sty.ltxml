@@ -14,20 +14,22 @@ use Data::Dumper;
 
 # fix some bugs by completely discarding the input
 DefMacro('\matrix[]{}');
-#DefEnvironment('{tikzpicture}','<ltx:p>tikzpicture</ltx:p>');
-#DefEnvironment('{axis}','<ltx:p>axis</ltx:p>');
-#DefEnvironment('{scope}','<ltx:p>scope</ltx:p>');
-RequirePackage('comment');
+DefEnvironment('{tikzpicture}','<ltx:p>tikzpicture</ltx:p>');
+DefEnvironment('{axis}','<ltx:p>axis</ltx:p>');
+DefEnvironment('{scope}','<ltx:p>scope</ltx:p>');
+#RequirePackage('comment');
 #RawTeX('\excludecomment{tikzpicture}');
-RawTeX('\excludecomment{axis}');
+# doesn't work; gets confused by
+# unbalanced { after: \end{tikzpicture}}
+#RawTeX('\excludecomment{axis}');
 #RawTeX('\excludecomment{scope}');
-#DefMacro('\addplot');
-#DefMacro('\node');
-#DefMacro('\draw');
-#DefMacro('\filldraw');
-#DefMacro('\closedcycle');
-#DefMacro('\shade');
-#DefMacro('\shadedraw');
+DefMacro('\addplot');
+DefMacro('\node');
+DefMacro('\draw');
+DefMacro('\filldraw');
+DefMacro('\closedcycle');
+DefMacro('\shade');
+DefMacro('\shadedraw');
 
 # fix a bug
 RawTeX('\setlength{\marginparwidth}{150pt}');

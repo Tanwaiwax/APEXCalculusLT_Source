@@ -32,64 +32,31 @@
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
-\ifthenelse{\boolean{longpage}}%
-{}% end header of longpage
-{% begin header/footer of not longpage
-\fancyhfoffset[LE,RO]{\marginparwidth+\marginparsep}
-%\fancyfoot[LE,RO]{\textbf{\thepage}} %Displays the page number in bold in the header,
-
-\fancyfoot[LE]{\begin{minipage}{\textwidth}%
-\noindent\hskip\marginparwidth\hskip\marginparsep\hskip-4pt\rule{\textwidth}{.4pt}
-\vskip.2\baselineskip
-\noindent\hskip\marginparwidth\hskip\marginparsep\hskip-4pt%
-Notes:
-\vskip 1.5in\textbf{\thepage}
-\end{minipage}} 
-
-\fancyfoot[RO]{\begin{minipage}{\textwidth+\marginparwidth+\marginparsep}%
-\rule{\textwidth-\marginparwidth-\marginparsep}{.4pt}
-\vskip.2\baselineskip
-Notes:
-\vskip 1.5in
-\hfill\textbf{\thepage}
-\end{minipage}}       
-
-
-\fancyhead[LE]{\nouppercase{\leftmark}}
-      %Displays the upper-level (chapter) information---
-      % as determined above---in non-upper case in the header, 
-      %to the right on even pages.
-\fancyhead[RO]{\rightmark}
-			%Displays the lower-level (section) information---as
-      % determined above---in the header, to the left on odd pages.
-      
-}% End the ifthenelse{longpage}
-
 
 \ifthenelse{\boolean{longpage}}% for changing the header
 {% longpage
-\newcommand{\exerciseheader}{}
-\newcommand{\regularheader}{}
-\newcommand{\endmatheader}{}
+ \newcommand{\exerciseheader}{}
+ \newcommand{\regularheader}{}
 }% i.e, the above does nothing
 {% now for a real change
-\newcommand{\exerciseheader}{%
+ \newcommand{\exerciseheader}{%
 	\fancyhfoffset[LE,RO]{32pt}%
 	\fancyfoot[LE]{\textbf{\thepage}}% 
 	\fancyfoot[RO]{\textbf{\thepage}}
 	\fancyhead{}% 
-}
-
+ }
 \newcommand{\regularheader}{%
 \fancyhead[LE]{\nouppercase{\leftmark}}%
+    %Displays the upper-level (chapter) information---
+    % as determined above---in non-upper case in the header, 
+    %to the right on even pages.
 \fancyhead[RO]{\rightmark}%
+	%Displays the lower-level (section) information---as
+    % determined above---in the header, to the left on odd pages.
 \fancyfoot[LE]{\begin{minipage}{\textwidth}%
-\noindent\hspace{\marginparwidth}\hspace{\marginparsep}\hspace{-4pt}\rule{\textwidth}{.4pt}
-\vspace{.2\baselineskip}
+\noindent\hspace{\marginparwidth}\hspace{\marginparsep}\hspace{-4pt}\makebox[0pt][l]{\rule{\textwidth}{.4pt}}
+\vskip.2\baselineskip
 \noindent\hspace{\marginparwidth}\hspace{\marginparsep}\hspace{-4pt}%
-%\noindent\hskip\marginparwidth\hskip\marginparsep\hskip-4pt\rule{\textwidth}{.4pt}
-%\vskip.2\baselineskip
-%\noindent\hskip\marginparwidth\hskip\marginparsep\hskip-4pt%
 Notes:
 \vskip 1.5in\textbf{\thepage}
 \end{minipage}} 
@@ -103,11 +70,8 @@ Notes:
 \end{minipage}}
 \fancyhfoffset[LE,RO]{\marginparsep+\marginparwidth}
 }
+\regularheader % and execute
 
-%\newcommand{\qendheader}{%
-%		\fancyhead{}%
-%		\fancyfoot{}%
-%		}
 }% ends if/then/else exercise/regular headers
 
 

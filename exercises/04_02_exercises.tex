@@ -141,7 +141,23 @@ As the tank holds about 523.6ft$^3$, it will take about 52.36 minutes.}
 
 \noindent\begin{minipage}{\linewidth}
 \centering
-\myincludegraphics[scale=1.25]{figures/fig04_02_ex_12}
+\begin{tikzpicture}[>=latex,x=1pt,y=1pt,scale=1.25]
+
+\draw [thick](0,40) -- (55,40); % top line
+\draw [thick] (0,0) -- (55,0); % bottom line
+\draw (2,0) -- (12,0) -- (9,5) -- (5,5)--cycle; % weight
+\draw (7,5) -- (7,35) -- (33,5); % rope
+\draw (7,35) -- (7,40); % pulley rope
+\draw [fill=gray] (7,35) circle (2pt); % pulley
+\node [scale=.13] at (35,6) {\psBill};
+%\draw (35,10) circle (2pt); % head
+%\draw (35,8) -- (35,4) -- (33,0) (35,4) -- (37,0) (33,6) -- (37,6); % body, left, right, arms
+
+\draw (-4,5) -- (-1,5)  (-2.5,5) -- (-2.5,35) node [pos=.5,draw,fill=white,draw=white,rotate=90] {\scriptsize 30 ft}
+       (-4,35) -- (-1,35);
+       
+ \draw [thick,->](40,5) --(55,5) node[pos=.5,above] {\scriptsize 2 ft/s};
+\end{tikzpicture}
 \end{minipage}
 
 Suppose the man stands directly next to the weight (i.e., a total rope length of 60 ft) and begins to walk away at a rate of 2ft/s. How fast is the weight rising when the man has walked:

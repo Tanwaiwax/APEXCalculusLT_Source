@@ -1,10 +1,40 @@
-\exerciseset{In Exercises}{, a region of the Cartesian plane is shaded. Use the Shell Method to find the volume of the solid of revolution formed by revolving the region about the $y$-axis.
-}{
+\exerciseset{In Exercises}{, a region of the Cartesian plane is shaded. Use the Shell Method to find the volume of the solid of revolution formed by revolving the region about the $y$-axis.}{
 
-\exercise{\begin{minipage}{\linewidth}\centering\myincludegraphics{figures/fig07_02_ex_09}\end{minipage}}{$9\pi/2$ units$^3$}
+\exercise{\begin{minipage}{\linewidth}\centering
+\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,
+ymin=-.1,ymax=3.5,xmin=-2.1,xmax=2.1]
 
-\exercise{\begin{minipage}{\linewidth}\centering\myincludegraphics{figures/fig07_02_ex_06}\end{minipage}
-\ifthenelse{\boolean{printquestions}}{\columnbreak}{}}{$70\pi/3$ units$^3$}
+\addplot [ {\coloronefill},fill={\coloronefill}, samples=50,domain=0:1.73] {3-x^2}--(axis cs:0,0);
+
+\addplot [smooth,thick, {\colorone}, samples=50,domain=-1.73:1.73] {3-x^2} node [shift={(-10pt,80pt)} ,black] {\scriptsize $y=3-x^2$};
+
+\end{axis}
+
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\end{minipage}}{$9\pi/2$ units$^3$}
+
+\exercise{\begin{minipage}{\linewidth}\centering
+\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,
+ymin=-.1,ymax=11,xmin=-.1,xmax=2.1]
+
+\addplot [ {\coloronefill},fill={\coloronefill}, samples=50,domain=1:2] {5*x} -- (axis cs: 2,0) -- (axis cs:1,0) -- (axis cs: 1,5);
+
+\addplot [smooth,thick, {\colorone}, samples=50,domain=0:2.1] {5*x} node [shift={(-30pt,-10pt)} ,black] {\scriptsize $y=5x$};
+
+\end{axis}
+
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\end{minipage}
+%\ifthenelse{\boolean{printquestions}}{\columnbreak}{}
+}{$70\pi/3$ units$^3$}
 
 \exercise{\begin{minipage}{\linewidth}\centering
 \begin{tikzpicture}
@@ -21,5 +51,23 @@
  \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}\end{minipage}}{$\dfrac{96\pi}{5}$}
 
-\exercise{\begin{minipage}{\linewidth}\centering\myincludegraphics{figures/fig07_02_ex_08}\end{minipage}}{$2\pi/15$ units$^3$}
+\exercise{\begin{minipage}{\linewidth}\centering
+\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,
+ymin=-.1,ymax=1.1,xmin=-.1,xmax=1.1]
+
+\addplot [ {\coloronefill},fill={\coloronefill}, samples=50,domain=0:1] {sqrt(x)};
+
+\addplot [smooth,thick, {\colorone}, samples=60,domain=0:1] {sqrt(x)} node [shift={(-55pt,-15pt)} ,black] {\scriptsize $y=\sqrt{x}$};
+
+\draw [thick,{\colorone}] (axis cs:0,0) -- (axis cs:1,1) node [black, shift={(-30pt,-40pt)}] {\scriptsize $y=x$};
+
+\end{axis}
+
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\end{minipage}}{$2\pi/15$ units$^3$}
+
 }

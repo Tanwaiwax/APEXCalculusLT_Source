@@ -1,11 +1,36 @@
 \exerciseset{In Exercises}{, graphs of functions $f(x)$ and $g(x)$ are given. Identify which function is the derivative of the other.}{
 
 \exercise{\begin{minipage}{\linewidth}
-\myincludegraphics[scale=.8]{figures/fig02_02_ex_15}
+\begin{tikzpicture}[baseline=10pt,scale=.8]
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-5.1,ymax=5.1,xmin=-4.5,xmax=4.3]
+
+\addplot [thick,{\colortwo},smooth,domain=-4.5:4.5] {.25*(x-1)^2+2};
+\addplot [thick,{\colorone},smooth,domain=-4.5:4.5] {.5*(x-1)};
+\draw (axis cs:3.9,2) node {\scriptsize $f(x)$};
+\draw (axis cs:3,4) node[] {\scriptsize $g(x)$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
 \end{minipage}}{$f(x) = g'(x)$}
 
 \exercise{\begin{minipage}{\linewidth}
-\myincludegraphics[scale=.8]{figures/fig02_02_ex_16}
+\begin{tikzpicture}[baseline=10pt,scale=.8]
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-5.1,ymax=5.1,xmin=-1.5,xmax=3.5]
+
+\addplot [thick,{\colorone},smooth,domain=-1.5:3.5] {x*(x-1)*(x-2)};
+\addplot [thick,{\colortwo},smooth,domain=-1.5:3.5] {3*x^2-6*x+2};
+\draw (axis cs:3,3) node {\scriptsize $f(x)$};
+\draw (axis cs:1.85,3) node[] {\scriptsize $g(x)$};
+
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
 \end{minipage}}{$g(x) = \fp(x)$}
 
 \exercise{\begin{minipage}{\linewidth}
@@ -26,7 +51,19 @@
 \end{minipage}}{$g(x) = \fp(x)$}
 
 \exercise{\begin{minipage}{\linewidth}
-\myincludegraphics[scale=.8]{figures/fig02_02_ex_18}
+\begin{tikzpicture}[baseline=10pt,scale=.8]
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-1.5,ymax=1.5,xmin=-4.5,xmax=4.5]
+
+\addplot [thick,{\colorone},smooth,domain=-4.5:4.5,samples=40] {sin(deg(3.14*x/2))};
+\addplot [thick,{\colortwo},smooth,domain=-4.5:4.5,samples=40] {cos(deg(3.14*x/2))};
+\draw (axis cs:1,1) node[above] {\scriptsize $f(x)$};
+\draw (axis cs:2,-1) node[below] {\scriptsize $g(x)$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
 \end{minipage}}{$g(x) = \fp(x)$}
 
 }

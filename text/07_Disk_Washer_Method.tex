@@ -17,9 +17,9 @@ Given an arbitrary solid, we can \textit{approximate} its volume by cutting it i
 % (These slices are the differential elements.)
 
 By orienting a solid along the $x$-axis, we can let $A(x_i)$ represent the cross-sectional area
-of the $i\,^\text{th}$ slice, and let $\dx_i$ represent the thickness of this slice (the thickness is a small change in $x$). The total volume of the solid is approximately:
+of the $i\,^\text{th}$ slice, and let $\dx$ represent the thickness of the slices (the thickness is a small change in $x$). The total volume of the solid is approximately:
 	\begin{align*} \text{Volume} &\approx \sum_{i=1}^n \Big[\text{Area}\ \times\ \text{thickness}\Big] \\
-			&= \sum_{i=1}^n A(x_i)\dx_i.
+			&= \sum_{i=1}^n A(x_i)\dx.
 	\end{align*}
 	
 Recognize that this is a Riemann Sum. By taking a limit (as the thickness of the slices goes to 0) we can find the volume exactly. 
@@ -47,7 +47,7 @@ To determine its area $A(x)$, we need to determine the side lengths of the squar
 
 When $x=5$, the square has side length 10; when $x=0$, the square has side length 0. Since the edges of the pyramid are lines, it is easy to figure that each cross-sectional square has side length $2x$, giving $A(x) = (2x)^2=4x^2$. % 
 
-If one were to cut a slice out of the pyramid at $x=3$, as shown in \autoref{fig:disk0a}, one would have a shape with square bottom and top with sloped sides. If the slice were thin, both the bottom and top squares would have sides lengths of about 6, and thus the cross--sectional area of the bottom and top would be about 36in$^2$. Letting $\Delta x_i$ represent the thickness of the slice, the volume of this slice would then be about $36\Delta x_i$in$^3$. 
+If one were to cut a slice out of the pyramid at $x=3$, as shown in \autoref{fig:disk0a}, one would have a shape with square bottom and top with sloped sides. If the slice were thin, both the bottom and top squares would have sides lengths of about 6, and thus the cross--sectional area of the bottom and top would be about 36in$^2$. Letting $\Delta x$ represent the thickness of the slice, the volume of this slice would then be about $36\Delta x$in$^3$. 
 \mfigurethree{width=\marginparwidth,3Dmenu,activate=onclick,deactivate=onclick,
 3Droll=130.3044775136707,
 3Dortho=0.004594136495143175,
@@ -77,7 +77,7 @@ Certainly, using this formula from geometry is faster than our new method, but t
 
 An important special case of \autoref{thm:volume_by_cross_section} is when the solid is a \textbf{solid of revolution}, that is, when the solid is formed by rotating a shape around an axis.
 
-% todo double check phrasing
+% todo Tim double check phrasing
 Start with a function $y=f(x)$ from $x=a$ to $x=b$. Revolving this curve about a horizontal axis encloses a three-dimensional solid whose cross sections are disks (thin circles), perpendicular to the axis of rotation. Let $R(x)$ represent the radius of the cross-sectional disk at $x$; the area of this disk is $\pi [R(x)]^2$. Applying \autoref{thm:volume_by_cross_section} gives the Disk Method.
 
 \keyidea{idea:disk_method}{The Disk Method}
@@ -148,8 +148,6 @@ Taking the limit of the above sum as $n\to\infty$ gives the actual volume; recog
 	V &= \lim_{n\to\infty}\sum_{i=1}^n \pi \left(\frac1{x_i}\right)^2\Delta x\\
 		&= \pi\int_1^2 \left(\frac1x\right)^2\ dx \\
 		&= \pi\int_1^2 \frac1{x^2}\ dx \\
-%		\end{align*} % todo remove the break
-%\begin{align*}
 		&= \pi\left[-\frac1x\right]\Big|_1^2 \\
 		&= \pi \left[-\frac12 - \left(-1\right)\right] \\
 		&= \frac{\pi}{2}\ \text{units}^3.\eoehere
@@ -195,7 +193,7 @@ While \autoref{idea:disk_method} is given in terms of functions of $x$, the prin
 	(c)
 	\end{tabular}}
 
-% todo double check the phrasing of the solution
+% todo Tim double check the phrasing of the solution
 \example{ex_disk2}{Finding volume using the Disk Method}{Find the volume of the solid formed by revolving about the $y$-axis the region bounded by the curves $y=1/x$, $y=1$, $y=0.5$, and the $y$-axis.}
 {Since the axis of rotation is vertical, our perpendicular cross sections have thickness $\Delta y$ and radius $x=R(y)$. We need to convert the function into a function of $y$. % and convert the $x$-bounds to $y$-bounds.
 Since $y=1/x$ defines the curve, we rewrite it as $x=1/y$.% The bound $x=1$ corresponds to the $y$-bound $y=1$, and the bound $x=2$ corresponds to the $y$-bound $y=1/2$. 
@@ -207,7 +205,8 @@ Thus we are rotating about the $y$-axis the region bounded by the curves $x=1/y$
 	&= \pi\ \text{units}^3.\eoehere
 \end{align*}}
 
-% todo: not the same region
+% todo create and work out an example where the same region is rotated about the x axis and y axis but the disk method (for both) shows that they have different volumes
+% not the same region
 %The previous two examples demonstrate how taking the same region and rotating it about two different axes will result in different solids and thus volumes.
 
 We can also compute the volume of solids of revolution that have a hole in the center. The general principle is simple: compute the volume of the solid irrespective of the hole, then subtract the volume of the hole. If the outside radius of the solid is $R(x)$ and the inside radius (defining the hole) is $r(x)$, then the volume is 

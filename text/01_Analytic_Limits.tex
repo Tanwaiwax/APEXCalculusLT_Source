@@ -214,16 +214,33 @@ We use the Squeeze Theorem in the following example to finally prove that $\ds \
 
 \begin{center}
 \begin{tabular}{ccccc}
-\myincludegraphics{figures/figSqueeze1a} & &
-\myincludegraphics{figures/figSqueeze1b} & &
-\myincludegraphics{figures/figSqueeze1c} \\
+\begin{tikzpicture}[x=.5\marginparwidth,y=.5\marginparwidth,>=stealth]
+\fill [draw=black,thick,fill=blue!20] (0,0) node [shift={(10pt,4pt)}] {\scriptsize$\theta$} -- (1,.839) -- node [pos=.5,right] {\scriptsize$\tan \theta$} (1,0) -- cycle;
+\draw (.5,0) node [below] {\scriptsize$1$};
+\draw [black,dashed,thick] (1,0) arc (0:40:1);
+\draw [black,dashed,thick] (1,0) -- (.766,.643);
+\end{tikzpicture}
+& &
+\begin{tikzpicture}[x=.5\marginparwidth,y=.5\marginparwidth,>=stealth]
+\fill [draw=black,thick,fill=blue!20] (0,0) node [shift={(10pt,4pt)}] {\scriptsize$\theta$} -- (1,0) arc(0:40:1) -- cycle;
+\draw (.5,0) node [below] {\scriptsize$1$};
+\draw [black,dashed,thick] (1,0) arc (0:40:1);
+\draw [black,dashed,thick] (1,0) -- (.766,.643) -- (1,.839) -- cycle;
+\end{tikzpicture}
+& &
+\begin{tikzpicture}[x=.5\marginparwidth,y=.5\marginparwidth,>=stealth]
+\fill [draw=black,thick,fill=blue!20] (0,0) node [shift={(10pt,4pt)}] {\scriptsize$\theta$} -- (1,0) --(.766,.643) -- cycle;
+\draw [dashed,thick] (.766,0)  -- node [pos=.4,left] {\scriptsize$\sin \theta$}(.766,.643);
+\draw (.766,5pt) -- ++(5pt,0) -- ++(0,-5pt);
+\draw (.5,0) node [below] {\scriptsize$1$};
+\draw [black,dashed,thick] (1,0) arc(0:40:1) --  (1,.839) -- cycle;
+\end{tikzpicture}
+\\
 $\dfrac{\tan\theta}{2}$ & $\geq$ &
 $\dfrac{\theta}{2}$ & $\geq$ &
 $\dfrac{\sin\theta}{2}$
 \end{tabular}
 \end{center}
-
-%$$\frac{\tan\theta}{2} \geq \frac{\theta}{2} \geq \frac{\sin \theta}{2}.$$
 
 Multiply all terms by $\dfrac2{\sin\theta}$, giving
 \[\frac1{\cos\theta}\geq\frac{\theta}{\sin\theta}\geq 1.\]

@@ -1,19 +1,83 @@
-\exerciseset{In Exercises}{, find the equation of the hyperbola shown in the graph.
-}{
+\exerciseset{In Exercises}{, find the equation of the hyperbola shown in the graph.}{
 
-\exercise{\noindent\begin{minipage}{\linewidth}\centering \myincludegraphics[scale=.8]{figures/fig09_01_ex_27}\end{minipage}
-}{$x^2-\frac{y^2}{3}=1$
-}
+\exercise{\noindent\begin{minipage}{\linewidth}\centering
+\begin{tikzpicture}[scale=.8]
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+xtick={-1,1,2,-2},ymin=-3.5,ymax=3.5,xmin=-3.5,xmax=3.5]
 
-\exercise{\noindent\begin{minipage}{\linewidth}\centering \myincludegraphics[scale=.8]{figures/fig09_01_ex_28}\end{minipage}
-}{$y^2-\frac{x^2}{24}=1$
-}
+\addplot [thick, smooth,domain=-70:70,samples=30] ({sec(x)},{1.73*tan(x))});
+\addplot [thick, smooth,domain=-70:70,samples=30] ({-sec(x)},{1.73*tan(x))});
 
-\exercise{\noindent\begin{minipage}{\linewidth}\centering \myincludegraphics[scale=.8]{figures/fig09_01_ex_29}\end{minipage}
-}{$\frac{(y-3)^2}{4}-\frac{(x-1)^2}{9}=1$
-}
+\filldraw (axis cs: 2,0) circle (1.5pt) (axis cs: -2,0) circle (1.5pt);
 
-\exercise{\noindent\begin{minipage}{\linewidth}\centering \myincludegraphics[scale=.8]{figures/fig09_01_ex_30}\end{minipage}
-}{$\frac{(x-1)^2}{9}-\frac{(y-3)^2}{4}=1$
-}
+\end{axis}
+
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\end{minipage}}{$x^2-\frac{y^2}{3}=1$}
+
+\exercise{\noindent\begin{minipage}{\linewidth}\centering
+\begin{tikzpicture}[scale=.8]
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+minor x tick num=4,minor y tick num=4,ymin=-6.5,ymax=6.5,xmin=-8.5,xmax=8.5]
+
+\addplot [thick, smooth,domain=-70:70,samples=30] ({4.9*tan(x)},{sec(x))});
+\addplot [thick, smooth,domain=-70:70,samples=30] ({4.9*tan(x)},{-sec(x))});
+
+\filldraw (axis cs: 0,5) circle (1.5pt) (axis cs: 0,-5) circle (1.5pt);
+
+\end{axis}
+
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\end{minipage}}{$y^2-\frac{x^2}{24}=1$}
+
+\exercise{\noindent\begin{minipage}{\linewidth}\centering
+\begin{tikzpicture}[scale=.8]
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+minor x tick num=4,minor y tick num=1,ymin=-1.5,ymax=7.5,xmin=-4.5,xmax=6.5]
+
+\addplot [thick, smooth,domain=-70:70,samples=30] ({3*tan(x)+1},{2*sec(x)+3});
+\addplot [thick, smooth,domain=-70:70,samples=30] ({3*tan(x)+1},{-2*sec(x)+3});
+
+\draw [thick,dashed,gray] (axis cs: -2,5) -- (axis cs:4,5) -- (axis cs:4,1) -- (axis cs: -2,1) --cycle;
+
+\addplot[thick,dashed,domain=-8:8] (x,{2/3*(x-1)+3});
+\addplot[thick,dashed,domain=-8:8] (x,{-2/3*(x-1)+3});
+
+\filldraw (axis cs: 1,3) circle (1.5pt);
+\end{axis}
+
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\end{minipage}}{$\frac{(y-3)^2}{4}-\frac{(x-1)^2}{9}=1$}
+
+\exercise{\noindent\begin{minipage}{\linewidth}\centering
+\begin{tikzpicture}[scale=.8]
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+minor x tick num=4,minor y tick num=1,ymin=-1.5,ymax=7.5,xmin=-4.5,xmax=6.5]
+
+\addplot [thick, smooth,domain=-70:70,samples=30] ({3*sec(x)+1},{2*tan(x)+3});
+\addplot [thick, smooth,domain=-70:70,samples=30] ({-3*sec(x)+1},{2*tan(x)+3});
+
+\draw [thick,dashed,gray] (axis cs: -2,5) -- (axis cs:4,5) -- (axis cs:4,1) -- (axis cs: -2,1) --cycle;
+
+\addplot[thick,dashed,domain=-8:8] (x,{2/3*(x-1)+3});
+\addplot[thick,dashed,domain=-8:8] (x,{-2/3*(x-1)+3});
+
+\filldraw (axis cs: 1,3) circle (1.5pt);
+\end{axis}
+
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\end{minipage}}{$\frac{(x-1)^2}{9}-\frac{(y-3)^2}{4}=1$}
+
 }

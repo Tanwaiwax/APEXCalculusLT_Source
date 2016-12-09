@@ -194,7 +194,17 @@
 
 \newcommand{\mydraw}{\draw (axis cs:0,0,0) -- (axis cs:1,1,0);}
 
-\newcommand{\myincludegraphics}[2][]{\includegraphics[#1]{#2\colornamesuffix}}
+\newcommand{\myincludegraphics}[2][]{%
+ \IfFileExists{./#2\colornamesuffix.pdf}{%
+  \includegraphics[#1]{#2\colornamesuffix}%
+ }{%
+  \IfFileExists{./#2.pdf}{%
+   \includegraphics[#1]{#2}%
+  }{%
+   \includegraphics[#1]{#2\colornamesuffix}%
+  }%
+ }%
+}
 
 % the default is printing in color
 \printincolor
@@ -734,11 +744,11 @@
 
 \newcommand{\exercise}[2]{\ifthenelse{\boolean{printquestions}}{%
  \openenumerate%
- \item \parbox[t]{\linewidth}{#1}
+ \item \parbox[t]{\linewidth}{#1}%
 }{%
  \ifthenelse{\boolean{printoddanswersonly}\AND\isodd{\value{enumi}}}{%
   \stepcounter{enumi}%
  }{%
-  \item \parbox[t]{\linewidth}{#2}
+  \item \parbox[t]{\linewidth}{#2}%
  }%
 }}

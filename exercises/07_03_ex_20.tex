@@ -1,4 +1,20 @@
-{\begin{minipage}{\linewidth}\centering\myincludegraphics{figures/fig07_02_ex_07}\end{minipage}
+% this exercise is not used
+\exercise{\begin{minipage}{\linewidth}\centering
+\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,
+ymin=-.1,ymax=1.1,xmin=-.1,xmax=1.7]
+
+\addplot [ {\coloronefill},fill={\coloronefill}, samples=50,domain=0:1.57] {cos(deg(x))}--(axis cs:0,0);
+
+\addplot [smooth,thick, {\colorone}, samples=50,domain=0:1.57] {cos(deg(x)} node [shift={(-20pt,50pt)} ,black] {\scriptsize $y=\cos x$};
+
+\end{axis}
+
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\end{minipage}
 %\ifthenelse{\boolean{printquestions}}{\columnbreak}{}
 }
 {$\pi^2/4$ units$^3$}

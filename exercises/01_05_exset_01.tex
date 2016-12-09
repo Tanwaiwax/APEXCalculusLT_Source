@@ -1,43 +1,149 @@
 \exerciseset{In Exercises}{, a graph of a function $f$ is given along with a value $a$. Determine if $f$ is continuous at $a$; if it is not, state why it is not.}{
 
+% most of these are copies from the one sided limits section
+
 \exercise{\noindent $a = 1$
 
-\myincludegraphics[scale=.8]{figures/fig01_04_ex_05}
+\begin{tikzpicture}[scale=.8]
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-.1,ymax=2.1,xmin=-.1,xmax=2.1]
+
+\addplot [thick,{\colorone}] coordinates {(0.,1) (1,2)};
+\addplot [{\colorone},smooth,thick,domain=1:2] {2*(x-2)^2};
+
+\fill[black,draw=black] (axis cs:0,1) circle (1.5pt);
+\fill[white,draw=black] (axis cs:1,2) circle (1.5pt);
+\fill[black,draw=black] (axis cs:1,1) circle (1.5pt);
+\fill[black,draw=black] (axis cs:2,0) circle (1.5pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
 }{No; $\ds \lim_{x\to 1} f(x) = 2$, while $f(1) = 1$.}
 
 \exercise{\noindent $a = 1$
 
-\myincludegraphics[scale=.8]{figures/fig01_04_ex_06}
+\begin{tikzpicture}[scale=.8]
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-.1,ymax=2.1,xmin=-.1,xmax=2.1]
+
+\addplot [thick,{\colorone}] coordinates {(0.,0) (1,1)};
+\addplot [{\colorone},thick] coordinates {(1,2) (2,0)};
+
+\fill[black,draw=black] (axis cs:0,0) circle (1.5pt);
+\fill[white,draw=black] (axis cs:1,1) circle (1.5pt);
+\fill[black,draw=black] (axis cs:1,2) circle (1.5pt);
+\fill[black,draw=black] (axis cs:2,0) circle (1.5pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
 }{No; $\ds \lim_{x\to 1} f(x)$ does not exist.}
 
 \exercise{\noindent $a = 1$
 
-\myincludegraphics[scale=.8]{figures/fig01_04_ex_07}
+\begin{tikzpicture}[scale=.8]
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-.1,ymax=2.1,xmin=-.1,xmax=2.1]
+
+\draw [thick,{\colorone}] (axis cs:0,0) parabola (axis cs:1,3);
+\draw [thick,{\colorone}] (axis cs:2,0) parabola (axis cs:1,3);
+\draw [{\colorone},dashed] (axis cs: 1,2.1) -- (axis cs:1,-.1);
+
+\fill[black,draw=black] (axis cs:0,0) circle (1.5pt);
+\fill[black,draw=black] (axis cs:2,0) circle (1.5pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
 }{No; $f(1)$ does not exist.}
 
 \exercise{\noindent $a = 0$
 
-\myincludegraphics[scale=.8]{figures/fig01_04_ex_08}
+\begin{tikzpicture}[scale=.8]
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-.1,ymax=2.1,xmin=-.1,xmax=2.1]
+
+\draw [thick,{\colorone}] (axis cs:1,0) parabola (axis cs:2,2);
+\draw [thick,{\colorone}] (axis cs:0,1) -- (axis cs:1,2);
+
+\fill[black,draw=black] (axis cs:0,1) circle (1.5pt);
+\fill[white,draw=black] (axis cs:1,2) circle (1.5pt);
+\fill[black,draw=black] (axis cs:1,1) circle (1.5pt);
+\fill[black,draw=black] (axis cs:2,2) circle (1.5pt);
+\fill[white,draw=black] (axis cs:1,0) circle (1.5pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
 }{Yes}
 
 \exercise{\noindent $a = 1$
 
-\myincludegraphics[scale=.8]{figures/fig01_04_ex_09}
+\begin{tikzpicture}[scale=.8]
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-.1,ymax=2.1,xmin=-.1,xmax=2.1]
+
+\draw [thick,{\colorone}] (axis cs:1,2) parabola (axis cs:0,0);
+\draw [thick,{\colorone}] (axis cs:1,2) -- (axis cs:2,0);
+
+\fill[black,draw=black] (axis cs:0,0) circle (1.5pt);
+\fill[black,draw=black] (axis cs:1,2) circle (1.5pt);
+\fill[black,draw=black] (axis cs:2,0) circle (1.5pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
 }{Yes}
 
 \exercise{\noindent $a = 4$
 
-\myincludegraphics[scale=.8]{figures/fig01_04_ex_10}
+\begin{tikzpicture}[scale=.8]
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,xtick={-4,...,-1,1,2,...,4},
+ymin=-4.5,ymax=4.5,xmin=-4.5,xmax=4.5]
+
+\addplot [thick,{\colorone},domain=-4:0] {4*cos(deg(x)*3.14159/4};
+\addplot [thick,{\colorone},domain=0:4]  {-4*cos(deg(x)*3.14159/4};
+\fill[black,draw=black] (axis cs:0,0) circle (1.5pt);
+\fill[white,draw=black] (axis cs:0,4) circle (1.5pt);
+\fill[black,draw=black] (axis cs:-4,-4) circle (1.5pt);
+\fill[black,draw=black] (axis cs:4,4) circle (1.5pt);
+\fill[white,draw=black] (axis cs:0,-4) circle (1.5pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
 
 }{Yes}
 
-\exercise{\begin{enumerate}
+\exercise{\mbox{}\\[-2\baselineskip]\begin{enumerate}
 \item		$a = -2$
 \item		$a=0$
 \item		$a=2$
 \end{enumerate}
 
-\myincludegraphics[scale=.8]{figures/fig01_04_ex_11}
+\begin{tikzpicture}[scale=.8]
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,xtick={-4,...,-1,1,2,...,4},
+ymin=-4.5,ymax=4.5,xmin=-4.5,xmax=4.5]
+
+\addplot [thick,{\colorone}] coordinates {(-4,0) (-2,2) (0,0) (2,2) (4,0)}; 
+\fill[black,draw=black] (axis cs:0,0) circle (1.5pt);
+\fill[black,draw=black] (axis cs:-4,0) circle (1.5pt);
+\fill[black,draw=black] (axis cs:-2,0) circle (1.5pt);
+\fill[white,draw=black] (axis cs:-2,2) circle (1.5pt);
+\fill[white,draw=black] (axis cs:2,2) circle (1.5pt);
+\fill[black,draw=black] (axis cs:4,0) circle (1.5pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
 }{\begin{enumerate}
 \item		No; $\ds \lim_{x\to -2}f(x) \neq f(-2)$
 \item		Yes

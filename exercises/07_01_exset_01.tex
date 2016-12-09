@@ -1,22 +1,154 @@
 \exerciseset{In Exercises}{, find the area of the shaded region in the given graph.}{
 
-\exercise{\begin{minipage}{\linewidth}\centering\myincludegraphics{figures/fig07_01_ex_04}\end{minipage}}{$4\pi+\pi^2\approx 22.436$}
+\exercise{\begin{minipage}{\linewidth}\centering
+\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,
+xtick=\empty,extra x ticks={3.14,6.28},extra x tick labels={$\pi$,$2\pi$},
+ymin=-.2,ymax=6.5,xmin=-1,xmax=7]
 
-\exercise{\begin{minipage}{\linewidth}\centering\myincludegraphics{figures/fig07_01_ex_05}\end{minipage}%\ifthenelse{\boolean{printquestions}}{\columnbreak}{}
+\addplot [{\coloronefill},domain=0:6.28,stack plots=y,samples=40] {.5*cos(deg(x))+1};
+\addplot [{\coloronefill},thick,fill={\coloronefill},area style,domain=0:6.28,stack plots=y,samples=40] {.5*x+3-(.5*cos(deg(x))+1)} \closedcycle;
+\addplot [smooth,thick, {\colorone},domain=-.9:6.5,samples=40] {.5*cos(deg(x))+1} node [shift={(-25pt,7pt)} ,black] {\scriptsize $y=\frac12\cos x+1$};
+\addplot [smooth,thick, {\colorone},domain=-.9:6.5,samples=40] {.5*x+3}node [shift={(-30pt,0pt)} ,black] {\scriptsize $y=\frac12x+3$};
+
+\end{axis}
+
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\end{minipage}}{$4\pi+\pi^2\approx 22.436$}
+
+\exercise{\begin{minipage}{\linewidth}\centering
+\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,
+xtick={-1,1},ytick={-1,1,2,3},ymin=-1.5,ymax=3.5,xmin=-1.1,xmax=1.1]
+
+\addplot [{\coloronefill},domain=-1:1,stack plots=y,samples=40] {x^2+x-1};
+\addplot [{\coloronefill},thick,fill={\coloronefill},area style,domain=-1:1,stack plots=y,samples=40] {-3*x^3+3*x+2-(x^2+x-1)} \closedcycle;
+
+\addplot [smooth,thick, {\colorone},domain=-1.05:1.05,samples=40] {x^2+x-1} node [shift={(-23pt,-40pt)} ,black] {\scriptsize $y=x^2+x-1$};
+
+\addplot [smooth,thick, {\colorone},domain=-1.05:1.05,samples=40] {-3*x^3+3*x+2}node [shift={(-95pt,13pt)} ,black] {\scriptsize $y=-3x^3+3x+2$};
+
+\end{axis}
+
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\end{minipage}
+%\ifthenelse{\boolean{printquestions}}{\columnbreak}{}
 }{$16/3$}
 
-\exercise{\begin{minipage}{\linewidth}\centering\myincludegraphics{figures/fig07_01_ex_10}\end{minipage}
+\exercise{\begin{minipage}{\linewidth}\centering
+\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,
+xtick=\empty,extra x ticks={3.14,1.57},extra x tick labels={$\pi$,$\pi/2$},
+ytick={-1,1,2,3},ymin=-.5,ymax=2.2,xmin=-.1,xmax=3.5]
+
+\addplot [{\coloronefill},stack plots=y,samples=40,domain=0:3.14] {1};
+\addplot [{\coloronefill},thick,fill={\coloronefill},area style,stack plots=y,samples=40,domain=0:3.14] {1} \closedcycle;
+
+\addplot [smooth,thick, {\colorone},samples=40] {1} node [shift={(-70pt,-5pt)} ,black] {\scriptsize $y=1$};
+
+\addplot [smooth,thick, {\colorone},samples=40] {2} node [shift={(-70pt,5pt)} ,black] {\scriptsize $y=2$};
+
+\end{axis}
+
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\end{minipage}
 \ifthenelse{\boolean{printquestions}}{\columnbreak}{}
 }{$\pi$}
 
-\exercise{\begin{minipage}{\linewidth}\centering\myincludegraphics{figures/fig07_01_ex_06}\end{minipage}
+\exercise{\begin{minipage}{\linewidth}\centering
+\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,
+xtick=\empty,extra x ticks={3.14,1.57},extra x tick labels={$\pi$,$\pi/2$},
+ytick={-1,1,2,3},ymin=-.5,ymax=2.2,xmin=-.1,xmax=3.5]
+
+\addplot [{\coloronefill},stack plots=y,samples=40,domain=0:3.14] {sin(deg(x))};
+\addplot [{\coloronefill},thick,fill={\coloronefill},area style,stack plots=y,samples=40,domain=0:3.14] {sin(deg(x))+1-(sin(deg(x)))} \closedcycle;
+
+\addplot [smooth,thick, {\colorone},samples=40] {sin(deg(x))} node [shift={(-100pt,60pt)} ,black] {\scriptsize $y=\sin x$};
+
+\addplot [smooth,thick, {\colorone},samples=40] {sin(deg(x))+1} node [shift={(-75pt,80pt)} ,black] {\scriptsize $y=\sin x+1$};
+
+\end{axis}
+
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\end{minipage}
 %\ifthenelse{\boolean{printquestions}}{\columnbreak}{}
 }{$\pi$}
 
-\exercise{\begin{minipage}{\linewidth}\centering\myincludegraphics{figures/fig07_01_ex_07}\end{minipage}}{$1/2$}
+\exercise{\begin{minipage}{\linewidth}\centering
+\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,
+xtick=\empty,extra x ticks={.785,.392},extra x tick labels={$\pi/4$,$\pi/8$},
+ytick={-1,1,2,3},ymin=-.2,ymax=2.2,xmin=-.1,xmax=1]
 
-\exercise{\begin{minipage}{\linewidth}\centering\myincludegraphics{figures/fig07_01_ex_08}\end{minipage}}{$2\sqrt{2}$}
+\addplot [{\coloronefill},stack plots=y,samples=40,domain=0:.785] {sin(deg(4*x))};
+\addplot [{\coloronefill},thick,fill={\coloronefill},area style,stack plots=y,samples=40,domain=0:.785] {sec(deg(x))^2-(sin(deg(4*x)))} \closedcycle;
 
-%\exercise{\begin{minipage}{\linewidth}\centering\myincludegraphics{figures/fig07_01_ex_09}\end{minipage}}{$1/\ln 4$}
+\addplot [smooth,thick, {\colorone},domain=-.1:.9,samples=60] {sin(deg(4*x))} node [shift={(-65pt,40pt)} ,black] {\scriptsize $y=\sin (4x)$};
+
+\addplot [smooth,thick, {\colorone},domain=-.1:.9,samples=60] {sec(deg(x))^2} node [shift={(-35pt,-20pt)} ,black] {\scriptsize $y=\sec^2 x$};
+
+\end{axis}
+
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\end{minipage}}{$1/2$}
+
+\exercise{\begin{minipage}{\linewidth}\centering
+\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,
+xtick=\empty,extra x ticks={.785,1.57,2.36,3.14,3.92},
+extra x tick labels={$\pi/4$,$\pi/2$,$3\pi/4$,$\pi$,$5\pi/4$},
+ymin=-1.1,ymax=1.1,xmin=-.1,xmax=4.1]
+
+\addplot [{\coloronefill},stack plots=y,samples=40,domain=.785:3.92] {cos(deg(x))};
+\addplot [{\coloronefill},thick,fill={\coloronefill},area style,stack plots=y,samples=40,domain=.785:3.92] {sin(deg(x))-(cos(deg(x)))} \closedcycle;
+
+\addplot [smooth,thick, {\colorone},domain=-.1:4.1,samples=40] {sin(deg(x))} node [shift={(-25pt,70pt)} ,black] {\scriptsize $y=\sin x$};
+
+\addplot [smooth,thick, {\colorone},domain=-.1:4.1,samples=40] {cos(deg(x))} node [shift={(-75pt,0pt)} ,black] {\scriptsize $y=\cos x$};
+
+
+\end{axis}
+
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\end{minipage}}{$2\sqrt{2}$}
+
+%\exercise{\begin{minipage}{\linewidth}\centering
+%\begin{tikzpicture}
+%\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+%axis y line=middle,axis x line=middle,name=myplot,axis on top,
+%ymin=-.1,ymax=4.1,xmin=-.1,xmax=1.1]
+%
+%\addplot [{\coloronefill},stack plots=y,samples=40,domain=0:1] {2^x};
+%\addplot [{\coloronefill},thick,fill={\coloronefill},area style,stack plots=y,samples=40,domain=0:1] {4^x-(2^x)} \closedcycle;
+%
+%\addplot [smooth,thick, {\colorone},domain=-.1:1.1,samples=40] {2^x} node [shift={(-25pt,-20pt)} ,black] {\scriptsize $y=2^x$};
+%
+%\addplot [smooth,thick, {\colorone},domain=-.1:1.1,samples=40] {4^x} node [shift={(-40pt,-20pt)} ,black] {\scriptsize $y=4^x$};
+%
+%\end{axis}
+%
+%\node [right] at (myplot.right of origin) {\scriptsize $x$};
+%\node [above] at (myplot.above origin) {\scriptsize $y$};
+%\end{tikzpicture}
+%\end{minipage}}{$1/\ln 4$}
 
 }

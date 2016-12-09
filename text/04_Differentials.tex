@@ -2,8 +2,9 @@
 
 In \autoref{sec:interp_deriv} we explored the meaning and use of the derivative. This section starts by revisiting some of those ideas.
 
-Recall that the derivative of a function $f$ can be used to find the slopes of lines tangent to the graph of $f$. At $x=c$, the tangent line to the graph of $f$ has equation $$y = \fp(c)(x-c)+f(c).$$
-The tangent line can be used to find good approximations of $f(x)$ for values of $x$ near $c$. 
+Recall that the derivative of a function $f$ can be used to find the slopes of lines tangent to the graph of $f$. At $x=c$, the tangent line to the graph of $f$ has equation
+\[y = \fp(c)(x-c)+f(c).\]
+The tangent line can be used to find good approximations of $f(x)$ for values of $x$ near $c$. (This tangent line is also called the \emph{linearization} of $f$ at $c$.)\index{linearization}
 
 For instance, we can approximate $\sin 1.1$ using the tangent line to the graph of $f(x)=\sin x$ at $x=\pi/3 \approx 1.05.$ Recall that $\sin (\pi/3) = \sqrt{3}/2 \approx 0.866$, and $\cos (\pi/3) = 1/2$. Thus the tangent line to $f(x) = \sin x$ at $x=\pi/3$ is: $$ \ell(x) = \frac12(x-\pi/3)+0.866.$$
 
@@ -55,7 +56,23 @@ We introduce two new variables, $dx$ and $dy$ in the context of a formal definit
 
 We can solve for $\fp(x)$ in the above equation: $\fp(x) = dy/dx$. This states that the derivative of $f$ with respect to $x$ is the differential of $y$ divided by the differential of $x$; this is \textbf{not} the alternate notation for the derivative, $\frac{dy}{dx}$. This latter notation was chosen because of the fraction--like qualities of the derivative, but again, it is one symbol and not a fraction.
 
-It is helpful to organize our new concepts and notations in one place.
+It is helpful to organize our new concepts and notations in one place and an accompanying figure.
+
+\mtable{The distances involved in \autoref{idea:differential}.}{fig_differential_explain}{%
+\begin{tikzpicture}
+ \begin{axis}[width=\marginparwidth,axis y line=middle, axis x line=middle,
+   xmin=-.1, xmax=1.2, ymin=-.2, ymax=1,name=myplot, ytick=\empty,xtick=\empty]
+  \addplot[\colorone,domain=-.2:1,thick,smooth]{x*x};
+%  \draw(axis cs:.3,.09)circle(2pt);
+  \addplot[\colortwo,thick,domain=0:1]{.6*(x-.3)+.09};
+  \draw(axis cs:.3,.09)
+   --node[pos=.6,above,yshift=-.5ex]{\scriptsize $dx=\Delta x$}(axis cs:.8,.09)
+   --node[pos=.3,right,xshift=-.3em]{$\Big\}\scriptstyle dy$}
+     node[pos=.5,right,xshift=1em]{$\Bigg\}\scriptstyle \Delta y$}(axis cs:.8,.64);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 \keyidea{idea:differential}{Differential Notation}
 {Let $y = f(x)$ be a differentiable function. \index{differential!notation}
@@ -71,8 +88,7 @@ What is the value of differentials? Like many mathematical concepts, differentia
 
 \youtubeVideo{AvM8-LUdg84}{Differentials 2}
 
-\example{ex_diffal1}{Finding and using differentials}{
-Consider $f(x) = x^2$. Knowing $f(3) = 9$, approximate $f(3.1)$.}
+\example{ex_diffal1}{Finding and using differentials}{Consider $f(x) = x^2$. Knowing $f(3) = 9$, approximate $f(3.1)$.}
 {The $x$ value is changing from $x=3$ to $x=3.1$; therefore, we see that $dx=0.1$. If we know how much the $y$ value changes from $f(3)$ to $f(3.1)$ (i.e., if we know $\dy$), we will know exactly what $f(3.1)$ is (since we already know $f(3)$). We can approximate \dy\ with $dy$.
 \begin{align*}
 	\dy &\approx dy \\

@@ -43,7 +43,7 @@ for key,valarr in removalcandidates.copy().items():
 
 print('ready to remove:',len(removalcandidates))
 
-#for valarr in removalcandidates.values():
-#    for filename in valarr:
-#        newname = filename.replace('figures/','figures/hidden/')
-#        shutil.move(filename,newname)
+for valarr in removalcandidates.values():
+    for filename in valarr:
+        newname = filename.replace('figures/','figures/hidden/')
+        shutil.move(filename,newname)

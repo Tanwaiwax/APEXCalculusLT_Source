@@ -1,0 +1,14 @@
+\begin{tikzpicture}
+  \matrix[row sep=1mm,column sep=3mm,ampersand replacement=\&] {
+    \&\&\& \node (tp1) {$0$}; \\[-1ex]
+    \node(linestart) {$x$}; \&\&\&\&\& \node(lineend) {}; \\[-1ex]
+    \&\node (fppstart) {$\fpp$}; \& \node{$-$}; \&\& \node{$+$}; \\
+    \&\node (fstart) {$f$}; \& \node{CD}; \& \node{IP}; \& \node{CU}; \\
+  };
+  \draw [<->] (linestart.east) -- (lineend);
+  \draw (fppstart.south west) -- (lineend.west |- fppstart.south);
+  \draw (fppstart.east |- lineend) -- (fppstart.east|-fstart.south);
+  \foreach \x in {1} {
+    \draw (tp\x|-linestart)+(0,5pt) -- (tp\x |- fppstart.south);
+  };
+\end{tikzpicture}

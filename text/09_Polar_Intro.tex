@@ -196,7 +196,7 @@ We sketch these functions much like we sketch rectangular and parametric functio
    }
   \foreach \x in {30,45,60,90,120,135,150}
    {\draw [rotate=\x,dashed,gray] (-2.3,0) -- (2.3,0);}
-  \draw [thick,{\colorone},domain=0:360,samples=60,smooth] plot
+  \draw [thick,draw={\colorone},domain=0:360,samples=60,smooth] plot
    ({cos(\x)*(1+cos(\x))},{sin(\x)*(1+cos(\x))});
   \foreach \x in { 0,30,45,60, 90,120,135,150, 180,210,225,240, 270,300,315,330 }
    { \filldraw ({\x}:{1+cos(\x)}) circle (1pt); };
@@ -225,7 +225,7 @@ Consider the point $(2,0)$ determined by the first line of the table. The angle 
    {\draw[gray] (0,0) circle (\x cm);}
   \foreach \x in {30,45,60,90,120,135,150}
    {\draw [rotate=\x,dashed,gray] (-2.3,0) -- (2.3,0);}
-%  \draw [thick,{\colorone}] plot coordinates {(2.,0)(0.866,0.5)(0,0)(-0.5,-0.866)(0,-2.)(0.5,-0.866)(0,0)(-0.866,0.5)(-2.,0)(-0.866,-0.5)(0,0)(0.5,0.866)(0,2.)(-0.5,0.866)(0,0)(0.866,-0.5)(2,0)};
+%  \draw [thick,draw={\colorone}] plot coordinates {(2.,0)(0.866,0.5)(0,0)(-0.5,-0.866)(0,-2.)(0.5,-0.866)(0,0)(-0.866,0.5)(-2.,0)(-0.866,-0.5)(0,0)(0.5,0.866)(0,2.)(-0.5,0.866)(0,0)(0.866,-0.5)(2,0)};
   \foreach \x/\y/\z/\w in
    {2./0/1/{above right}, 0.866/0.5/2/above, 0/0/3/above, -0.5/-0.866/4/above,
     0/-2./5/above, 0.5/-0.866/6/above, 0/0/7/left, -0.866/0.5/8/above,
@@ -233,7 +233,7 @@ Consider the point $(2,0)$ determined by the first line of the table. The angle 
     0/2./13/above, -0.5/0.866/14/above, 0/0/15/below, 0.866/-0.5/16/above,
     2/0/17/{below right}}
    {\filldraw (\x,\y) circle (1.5pt) node [\w] {\scriptsize \z};}       
-  \draw [thick,{\colorone},domain=0:360,samples=60,smooth]
+  \draw [thick,draw={\colorone},domain=0:360,samples=60,smooth]
    plot ({\x}:{2*cos(2*\x)});
 \end{tikzpicture}}
 

@@ -232,7 +232,7 @@ Notes:
  \ifthenelse{\boolean{latexml}}{%
   \noindent Watch the video:\\%
   \href{#3#1}{#4 from \nolinkurl{#3}}%
-  \embedVideo{https://www.youtube.com/v/#2?rel=0}%
+  \embedVideo{https://www.youtube.com/embed/#2?rel=0}%
  }{%
   \begin{minipage}[t]{2cm}%
   \vspace{-.5\baselineskip}\qrcode{#3}%
@@ -306,22 +306,6 @@ Notes:
 
 \newboolean{chapter_already_has_exercises}
 
-\newcommand*{\apexchapter}[3][]{%
- \clearpage\thispagestyle{empty}\cleardoublepage%
- \setboolean{chapter_already_has_exercises}{false}%
- \ifthenelse{\equal{#1}{}}{}{%
-  \stepcounter{chapter}%
-  \input{#1}%
-  \addtocounter{chapter}{-1}%
-  \setcounter{savefigure}{\value{figure}}%
- }%
- \chapter{#2}\label{#3}%
- \thispagestyle{empty}%
- \ifthenelse{\boolean{latexml}}{\section*{Chapter Introduction}}{}%
- \ifthenelse{\equal{#1}{}}{}{%
-  \setcounter{figure}{\value{savefigure}}%
- }%
-}
 
 
 %%%%%%%%%%%%%%%%%
@@ -335,11 +319,6 @@ Notes:
 %%%%%%%%%%%%%%%%%
 
 \newcommand{\prereqIntro}{The material in this section provides a basic review of and practice problems for pre-calculus skills essential to your success in Calculus. You should take time to review this section and work the suggested problems (checking your answers against those in the back of the book). Since this content is a pre-requisite for Calculus, reviewing and mastering these skills are considered your responsibility. This means that minimal, and in some cases no, class time will be devoted to this section. When you identify areas that you need help with we strongly urge you to seek assistance outside of class from your instructor or other student tutoring service.\bigskip}
-
-\begin{lxNavbar}
-\lxRef{top}\\
-\lxContextTOC
-\end{lxNavbar}
 
 \ifthenelse{\boolean{xetex}}%
 	{%
@@ -367,3 +346,8 @@ Notes:
 %	{}
 
 \usepackage[bookmarksnumbered,hidelinks,pdfstartview=FitH]{hyperref}
+
+\begin{lxNavbar}
+%\lxRef{top}\\ % ? not sure what that was supposed to do
+\lxContextTOC
+\end{lxNavbar}

@@ -13,27 +13,14 @@
 
   <xsl:import href="/Users/tprescott/Documents/programming/github/LaTeXML/lib/LaTeXML/resources/XSLT/LaTeXML-html5.xsl" />
 
+  <!--
   <xsl:template match="/" mode="head-begin">
     <xsl:element name="base">
       <xsl:attribute name="target">_top</xsl:attribute>
     </xsl:element>
   </xsl:template>
 
-  <xsl:template match="/" mode="body-begin">
-    <xsl:if test="//ltx:TOC/@name">
-      <xsl:message>TOC is in file named above</xsl:message>
-    </xsl:if>
-    <xsl:attribute name="class">hasIframe</xsl:attribute>
-    <xsl:element name="iframe" namespace="{$html_ns}">
-      <xsl:attribute name="height">100%</xsl:attribute>
-      <xsl:attribute name="width">25%</xsl:attribute>
-      <xsl:attribute name="src">tocFrame.html</xsl:attribute>
-      <xsl:attribute name="id">toc</xsl:attribute>
-      <xsl:attribute name="frameborder">0</xsl:attribute>
-      <xsl:attribute name="seamless" />
-      <xsl:attribute name="name">toc_window</xsl:attribute>
-    </xsl:element>
-  </xsl:template>
+    -->
 
   <xsl:template match="ltx:rawhtml[ltx:block/@class='iframe']">
     <xsl:element name="br" namespace="{$html_ns}" />

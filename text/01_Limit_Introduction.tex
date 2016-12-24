@@ -14,8 +14,8 @@ While our question is not precisely formed (what constitutes ``near the value 1'
    minor x tick num=1,axis y line=middle,axis x line=middle,ytick={.8,.9,1},
    ymin=.75,ymax=1.05,extra y ticks={.1,.3,...,.9},extra y tick labels={},
    xmin=-1.1,xmax=1.2,name=myplot]
-  \addplot [{\colorone},smooth,thick,domain=-1:-.02] {sin(deg(x))/x};
-  \addplot [{\colorone},smooth,thick,domain=.02:1] {sin(deg(x))/x};
+  \addplot [draw={\colorone},smooth,thick,domain=-1:-.02] {sin(deg(x))/x};
+  \addplot [draw={\colorone},smooth,thick,domain=.02:1] {sin(deg(x))/x};
   \draw [fill=white] (axis cs:0,1) circle [radius=1.5pt];
  \end{axis}
  \node [right] at (myplot.right of origin) {\scriptsize $x$};
@@ -78,7 +78,7 @@ We now consider several examples that allow us to explore different aspects of t
 \mtable{Graphically and numerically approximating a limit in \autoref{ex_limit1}.}{fig:limit1}{
 \begin{tikzpicture}
 \begin{axis}[clip=false,width=\marginparwidth+25pt,tick label style={font=\scriptsize},minor x tick num=1,axis y line=middle,axis x line=middle,ymin=.25,ymax=.35,extra y tick labels={},xmin=2.3,xmax=3.7,name=myplot]
-\addplot [{\colorone},thick,smooth] coordinates {(2.5,0.321429) (2.61,0.314461) (2.72,0.308094) (2.83,0.302253) (2.94,0.296875) (3.05,0.291908) (3.16,0.287305) (3.27,0.283029) (3.38,0.279046) (3.49,0.275326)};
+\addplot [draw={\colorone},thick,smooth] coordinates {(2.5,0.321429) (2.61,0.314461) (2.72,0.308094) (2.83,0.302253) (2.94,0.296875) (3.05,0.291908) (3.16,0.287305) (3.27,0.283029) (3.38,0.279046) (3.49,0.275326)};
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
@@ -121,8 +121,8 @@ Since tables and graphs are used only to \textit{approximate} the value of a lim
 \begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
 minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-.1,ymax=1.1,xmin=-1.1,xmax=1.1,name=myplot]
-\addplot [{\colorone},thick, smooth,domain=-1:0,samples=2] ({x},{x+1});
-\addplot [{\colorone},thick, smooth,domain=0:1,samples=15] ({x},{1-x*x});
+\addplot [draw={\colorone},thick, smooth,domain=-1:0,samples=2] ({x},{x+1});
+\addplot [draw={\colorone},thick, smooth,domain=0:1,samples=15] ({x},{1-x*x});
 
 \filldraw [thick,fill=white] (axis cs:0,1) circle (1.5pt);
 
@@ -170,11 +170,11 @@ Explore why $\ds\lim_{x\to 1} f(x)$ does not exist, where $$f(x) = \begin{cases}
 minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-.1,ymax=3.2,xmin=-.1,xmax=2.1,name=myplot]
 
-\addplot [{\colorone},smooth,thick] coordinates {(0.,3.) (0.1,2.81) (0.2,2.64) (0.3,2.49) (0.4,2.36) (0.5,2.25) (0.6,2.16) (0.7,2.09) (0.8,2.04) (0.9,2.01) (1,2)};
-\addplot [{\colorone},smooth,thick] coordinates {(1,1) (1.1,1.1) (1.2,1.2) (1.3,1.3) (1.4,1.4) (1.5,1.5) (1.6,1.6) (1.7,1.7) (1.8,1.8) (1.9,1.9) (2.,2.)
+\addplot [draw={\colorone},smooth,thick] coordinates {(0.,3.) (0.1,2.81) (0.2,2.64) (0.3,2.49) (0.4,2.36) (0.5,2.25) (0.6,2.16) (0.7,2.09) (0.8,2.04) (0.9,2.01) (1,2)};
+\addplot [draw={\colorone},smooth,thick] coordinates {(1,1) (1.1,1.1) (1.2,1.2) (1.3,1.3) (1.4,1.4) (1.5,1.5) (1.6,1.6) (1.7,1.7) (1.8,1.8) (1.9,1.9) (2.,2.)
 };
 \filldraw [fill=white,draw={\colorone},thick] (axis cs:1,1) circle (1.5pt);
-\filldraw [fill={\colorone},{\colorone}] (axis cs:1,2) circle (1.5pt);
+\filldraw [fill=\colorone,draw={\colorone}] (axis cs:1,2) circle (1.5pt);
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
@@ -197,8 +197,8 @@ It is clear that as $x$ approaches 1, $f(x)$ does not seem to approach a single 
 \begin{tikzpicture}
 \begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},minor x tick num=1,axis y line=middle,axis x line=middle,ymin=-1,ymax=110,xmin=-.1,xmax=2.1,name=myplot]
 
-\addplot [{\colorone},smooth,thick] coordinates {(0.,1.) (0.05,1.10803) (0.1,1.23457) (0.15,1.38408) (0.2,1.5625)(0.25,1.77778) (0.3,2.04082) (0.35,2.36686) (0.4,2.77778)(0.45,3.30579) (0.5,4.) (0.55,4.93827) (0.6,6.25) (0.65,8.16327)(0.7,11.1111) (0.75,16.) (0.8,25.) (0.85,44.4444) (0.9,100.) };
-\addplot [{\colorone},smooth,thick] coordinates {(1.1,100.) (1.15,44.4444) (1.2,25.) (1.25,16.) (1.3,11.1111) (1.35,8.16327) (1.4,6.25) (1.45,4.93827) (1.5,4.) (1.55,3.30579) (1.6,2.77778) (1.65,2.36686) (1.7,2.04082) (1.75,1.77778) (1.8,1.5625) (1.85,1.38408) (1.9,1.23457) (1.95,1.10803) (2.,1.)};
+\addplot [draw={\colorone},smooth,thick] coordinates {(0.,1.) (0.05,1.10803) (0.1,1.23457) (0.15,1.38408) (0.2,1.5625)(0.25,1.77778) (0.3,2.04082) (0.35,2.36686) (0.4,2.77778)(0.45,3.30579) (0.5,4.) (0.55,4.93827) (0.6,6.25) (0.65,8.16327)(0.7,11.1111) (0.75,16.) (0.8,25.) (0.85,44.4444) (0.9,100.) };
+\addplot [draw={\colorone},smooth,thick] coordinates {(1.1,100.) (1.15,44.4444) (1.2,25.) (1.25,16.) (1.3,11.1111) (1.35,8.16327) (1.4,6.25) (1.45,4.93827) (1.5,4.) (1.55,3.30579) (1.6,2.77778) (1.65,2.36686) (1.7,2.04082) (1.75,1.77778) (1.8,1.5625) (1.85,1.38408) (1.9,1.23457) (1.95,1.10803) (2.,1.)};
 \draw [dashed,thick] (axis cs: 1,1) -- (axis cs: 1,100);
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
@@ -286,8 +286,8 @@ This difference quotient can be thought of as the familiar ``rise over run'' use
 \mtable[-1.4in]{Secant lines of $f(x)$ at $x=1$ and $x=1+h$, for shrinking values of $h$ (i.e., $h\rightarrow 0$).}{fig:diff_quot_small_h}{%
 \begin{tikzpicture}
 \begin{axis}[clip=false,width=\marginparwidth+25pt,tick label style={font=\scriptsize},minor x tick num=1,axis y line=middle,axis x line=middle,ymin=-1,ymax=25,extra y tick labels={},xmin=-1,xmax=6.5,name=myplot]
-\addplot [{\colorone},smooth,thick] coordinates {(0.,0.) (0.5,5.375) (1.,10.) (1.5,13.875) (2.,17.) (2.5,19.375)(3.,21.) (3.5,21.875) (4.,22.) (4.5,21.375) (5.,20.) (5.5,17.875)(6.,15.) };
-\addplot [{\colortwo},smooth,thick] coordinates {(0,4.5) (4,26.5)};
+\addplot [draw={\colorone},smooth,thick] coordinates {(0.,0.) (0.5,5.375) (1.,10.) (1.5,13.875) (2.,17.) (2.5,19.375)(3.,21.) (3.5,21.875) (4.,22.) (4.5,21.375) (5.,20.) (5.5,17.875)(6.,15.) };
+\addplot [draw={\colortwo},smooth,thick] coordinates {(0,4.5) (4,26.5)};
 \fill[black] (axis cs:1,10) circle (1pt);
 \fill[black] (axis cs:3,21) circle (1pt);
 \end{axis}
@@ -297,8 +297,8 @@ This difference quotient can be thought of as the familiar ``rise over run'' use
 	\\ (a) \\
 \begin{tikzpicture}
 \begin{axis}[clip=false,width=\marginparwidth+25pt,tick label style={font=\scriptsize},minor x tick num=1,axis y line=middle,axis x line=middle,ymin=-1,ymax=25,extra y tick labels={},xmin=-1,xmax=6.5,name=myplot]
-\addplot [{\colorone},smooth,thick] coordinates {(0.,0.) (0.5,5.375) (1.,10.) (1.5,13.875) (2.,17.) (2.5,19.375)(3.,21.) (3.5,21.875) (4.,22.) (4.5,21.375) (5.,20.) (5.5,17.875)(6.,15.) };
-\addplot [{\colortwo},smooth,thick] coordinates {(0,3) (3,24)};
+\addplot [draw={\colorone},smooth,thick] coordinates {(0.,0.) (0.5,5.375) (1.,10.) (1.5,13.875) (2.,17.) (2.5,19.375)(3.,21.) (3.5,21.875) (4.,22.) (4.5,21.375) (5.,20.) (5.5,17.875)(6.,15.) };
+\addplot [draw={\colortwo},smooth,thick] coordinates {(0,3) (3,24)};
 \fill[black] (axis cs:1,10) circle (1pt);
 \fill[black] (axis cs:2,17) circle (1pt);
 \end{axis}
@@ -308,8 +308,8 @@ This difference quotient can be thought of as the familiar ``rise over run'' use
 	\\ (b) \\
 \begin{tikzpicture}
 \begin{axis}[clip=false,width=\marginparwidth+25pt,tick label style={font=\scriptsize},minor x tick num=1,axis y line=middle,axis x line=middle,ymin=-1,ymax=25,extra y tick labels={},xmin=-1,xmax=6.5,name=myplot]
-\addplot [{\colorone},smooth,thick] coordinates {(0.,0.) (0.5,5.375) (1.,10.) (1.5,13.875) (2.,17.) (2.5,19.375)(3.,21.) (3.5,21.875) (4.,22.) (4.5,21.375) (5.,20.) (5.5,17.875)(6.,15.) };
-\addplot [{\colortwo},smooth,thick] coordinates {(0,2.25) (2.5,21.625)};
+\addplot [draw={\colorone},smooth,thick] coordinates {(0.,0.) (0.5,5.375) (1.,10.) (1.5,13.875) (2.,17.) (2.5,19.375)(3.,21.) (3.5,21.875) (4.,22.) (4.5,21.375) (5.,20.) (5.5,17.875)(6.,15.) };
+\addplot [draw={\colortwo},smooth,thick] coordinates {(0,2.25) (2.5,21.625)};
 \fill[black] (axis cs:1,10) circle (1pt);
 \fill[black] (axis cs:1.5,13.875) circle (1pt);
 \end{axis}

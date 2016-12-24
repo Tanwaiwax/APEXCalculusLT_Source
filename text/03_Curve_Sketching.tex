@@ -10,31 +10,45 @@ We are attempting to understand the behavior of a function $f$ based on the info
 
 The following Key Idea summarizes what we have learned so far that is applicable to sketching graphs of functions and gives a framework for putting that information together. It is followed by several examples.
 
+\ifthenelse{\boolean{latexml}}{%
+% the key idea is long enough that it needs to be broken over two pages
+% but not in html, where that doesn't matter
 \keyidea{idea:sketch}{Curve Sketching}
 {To produce an accurate sketch a given function $f$, consider the following steps.\index{curve sketching}
-\iflatexml\begin{enumerate}\else\begin{enumerate}[series=curvesketching]\fi
+\begin{enumerate}
 	\item	Find the domain of $f$. Generally, we assume that the domain is the entire real line then find restrictions, such as where a denominator is 0 or where negatives appear under the radical.
 	\item	Find the location of any vertical asymptotes of $f$ (usually done in conjunction with the previous step).
 	\item	Find the $x$ and $y$-intercepts of $f$, and any symmetry.
-\iflatexml\else
- \end{enumerate}
- \textit{\small(continued)}
- }
-
- \addtocounter{keyideaEnv}{-1}
- %\renewcommand{\thmcontinues}[1]{Curve Sketching --- Continued}
- %\keyidea[,continues=idea:sketch]{idea:sketchb}{Curve Sketching --- Continued}
- % thmtools should let this work, but no
- \keyidea{idea:sketchb}{Curve Sketching --- Continued}
- {~\\[-2\baselineskip]
- \hspace{0pt}\begin{enumerate}[resume=curvesketching] % just resume doesn't cut it
-\fi
 	\item	Consider the limits $\ds\lim_{x\to-\infty}f(x)$ and $\ds\lim_{x\to\infty}f(x)$ to determine the end behavior of the function.
 	\item	Find the critical values of $f$.
 	\item	Find the possible points of inflection of $f$.
 	\item	Create a number line that includes all critical points, possible points of inflection, and locations of vertical asymptotes. For each interval created, determine whether $f$ is increasing or decreasing, concave up or down.
 	\item	Evaluate $f$ at each critical point and possible point of inflection. Plot these points on a set of axes. Connect these points with curves exhibiting the proper concavity. Sketch asymptotes and $x$ and $y$-intercepts where applicable.
-\end{enumerate}}
+\end{enumerate}}%
+}{%
+\keyidea{idea:sketch}{Curve Sketching}
+{To produce an accurate sketch a given function $f$, consider the following steps.\index{curve sketching}
+\begin{enumerate}[series=curvesketching]
+	\item	Find the domain of $f$. Generally, we assume that the domain is the entire real line then find restrictions, such as where a denominator is 0 or where negatives appear under the radical.
+	\item	Find the location of any vertical asymptotes of $f$ (usually done in conjunction with the previous step).
+	\item	Find the $x$ and $y$-intercepts of $f$, and any symmetry.
+\end{enumerate}
+\textit{\small(continued)}
+}
+
+\addtocounter{keyideaEnv}{-1}
+%\renewcommand{\thmcontinues}[1]{Curve Sketching --- Continued}
+%\keyidea[,continues=idea:sketch]{idea:sketchb}{Curve Sketching --- Continued}
+\keyidea{idea:sketchb}{Curve Sketching --- Continued}
+{~\\[-2\baselineskip]
+\hspace{0pt}\begin{enumerate}[resume=curvesketching] % just resume doesn't cut it
+	\item	Consider the limits $\ds\lim_{x\to-\infty}f(x)$ and $\ds\lim_{x\to\infty}f(x)$ to determine the end behavior of the function.
+	\item	Find the critical values of $f$.
+	\item	Find the possible points of inflection of $f$.
+	\item	Create a number line that includes all critical points, possible points of inflection, and locations of vertical asymptotes. For each interval created, determine whether $f$ is increasing or decreasing, concave up or down.
+	\item	Evaluate $f$ at each critical point and possible point of inflection. Plot these points on a set of axes. Connect these points with curves exhibiting the proper concavity. Sketch asymptotes and $x$ and $y$-intercepts where applicable.
+\end{enumerate}}%
+}
 
 \youtubeVideo{DMYUsv8ZaoY}{Summary of Curve Sketching --- Example 2, Part 1 of 4}
 
@@ -53,10 +67,10 @@ The following Key Idea summarizes what we have learned so far that is applicable
 \mtable{Sketching $f$ in \autoref{ex_sketch1}.}{fig:sketch1}{%
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},minor x tick num=1,axis y line=middle,axis x line=middle,ymin=-.5,ymax=10.9,xmin=-1.2,xmax=3.2,name=myplot]
-\addplot [{\colorone},thick,smooth] coordinates {(-.75,.109)(.222,10.428)(1.111,6.214)(2,2)(2.8,8.656)};
-\filldraw [{\colorone}] (axis cs:0.222,10.428) circle (1pt);
-\filldraw [{\colorone}] (axis cs:1.111,6.214) circle (1pt);
-\filldraw [{\colorone}] (axis cs:2,2) circle (1pt);
+\addplot [draw={\colorone},thick,smooth] coordinates {(-.75,.109)(.222,10.428)(1.111,6.214)(2,2)(2.8,8.656)};
+\filldraw [draw={\colorone},fill={\colorone}] (axis cs:0.222,10.428) circle (1pt);
+\filldraw [draw={\colorone},fill={\colorone}] (axis cs:1.111,6.214) circle (1pt);
+\filldraw [draw={\colorone},fill={\colorone}] (axis cs:2,2) circle (1pt);
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
@@ -64,32 +78,17 @@ The following Key Idea summarizes what we have learned so far that is applicable
 (a)\\
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},minor x tick num=1,axis y line=middle,axis x line=middle,ymin=-.5,ymax=10.9,xmin=-1.2,xmax=3.2,name=myplot]
-\addplot [{\colorone},smooth,thick,domain=-.75:2.8] {3*x^3-10*x^2+4*x+10};
-\filldraw [{\colorone}] (axis cs:0.222,10.428) circle (1pt);
-\filldraw [{\colorone}] (axis cs:1.111,6.214) circle (1pt);
-\filldraw [{\colorone}] (axis cs:2,2) circle (1pt);
+\addplot [draw={\colorone},smooth,thick,domain=-.75:2.8] {3*x^3-10*x^2+4*x+10};
+\filldraw [draw={\colorone},fill={\colorone}] (axis cs:0.222,10.428) circle (1pt);
+\filldraw [draw={\colorone},fill={\colorone}] (axis cs:1.111,6.214) circle (1pt);
+\filldraw [draw={\colorone},fill={\colorone}] (axis cs:2,2) circle (1pt);
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}\\ (b)}
 
 \begin{center}
-\begin{tikzpicture}
-  \matrix[row sep=1mm,column sep=0.5mm,ampersand replacement=\&] {
-    \&\&\& \node (tp1) {$\frac29\approx0.2$}; \&\& \node (tp2) {$\frac{10}9\approx1.1$}; \&\& \node (tp3) {$2$}; \\[-1ex]
-    \node(linestart) {$x$}; \&\&\&\&\&\&\&\&\& \node(lineend) {}; \\[-1ex]
-    \&\node (fpstart) {$\fp$}; \& \node {$+$}; \&\& \node {$-$}; \&\& \node {$-$}; \&\& \node {$+$}; \\
-    \&\node (fppstart) {$\fpp$}; \& \node {$-$}; \&\& \node {$-$}; \&\& \node {$+$}; \&\& \node {$+$}; \\
-    \&\node (fstart) {$f$}; \& \node {\tbox{incr\\CD}}; \& \node {max}; \& \node {\tbox{decr\\CD}}; \& \node {IP}; \& \node {\tbox{decr\\CU}}; \& \node {min}; \& \node {\tbox{incr\\CU}}; \\
-  };
-  \draw [<->] (linestart.east) -- (lineend);
-  \draw (fpstart.south west) -- (lineend.west |- fpstart.south);
-  \draw (fppstart.south west) -- (lineend.west |- fppstart.south);
-  \draw (fppstart.east |- lineend) -- (fppstart.east|-fstart.south);
-  \foreach \x in {1,2,3} {
-    \draw (tp\x |- linestart)+(0,5pt) -- (tp\x |- fppstart.south);
-  };
-\end{tikzpicture}
+\includecodegraphics{figures/matrices/sketch1}
 \end{center}
 
 	\item	We plot the appropriate points on axes as shown in \autoref{fig:sketch1}(a) and connect the points with the proper concavity. Our curve crosses the $y$ axis at $y=10$ and crosses the $x$ axis near $x=-0.75$. In \autoref{fig:sketch1}(b) we show a graph of $f$ drawn with a computer program, verifying the accuracy of our sketch.\eoehere
@@ -126,22 +125,7 @@ The following Key Idea summarizes what we have learned so far that is applicable
 	\item	We place the values $x=1/2$, $x=-2$ and $x=3$ on a number line. We mark in each interval whether $f$ is increasing or decreasing, concave up or down. We see that $f$ has a relative maximum at $x=1/2$; concavity changes only at the vertical asymptotes.
 
 \begin{center}
-\begin{tikzpicture}
-  \matrix[row sep=1mm,column sep=2mm,ampersand replacement=\&] {
-    \&\&\& \node (tp1) {$-2$}; \&\& \node (tp2) {$\frac12$}; \&\& \node (tp3) {$3$}; \\[-1ex]
-    \node(linestart) {$x$}; \&\&\&\&\&\&\&\&\& \node(lineend) {}; \\[-1ex]
-    \&\node (fpstart) {$\fp$}; \& \node {$+$}; \&\& \node {$+$}; \&\& \node {$-$}; \&\& \node {$-$}; \\
-    \&\node (fppstart) {$\fpp$}; \& \node {$+$}; \&\& \node {$-$}; \&\& \node {$-$}; \&\& \node {$+$}; \\
-    \&\node (fstart) {$f$}; \& \node {\tbox{incr\\CU}}; \& \node {U}; \& \node {\tbox{incr\\CD}}; \& \node {max}; \& \node {\tbox{decr\\CD}}; \& \node {U}; \& \node {\tbox{decr\\CU}}; \\
-  };
-  \draw [<->] (linestart.east) -- (lineend);
-  \draw (fpstart.south west) -- (lineend.west |- fpstart.south);
-  \draw (fppstart.south west) -- (lineend.west |- fppstart.south);
-  \draw (fppstart.east |- lineend) -- (fppstart.east|-fstart.south);
-  \foreach \x in {1,2,3} {
-    \draw (tp\x |- linestart)+(0,5pt) -- (tp\x |- fppstart.south);
-  };
-\end{tikzpicture}
+\includecodegraphics{figures/matrices/sketch2}
 \end{center}
 		
 	\item	In \autoref{fig:sketch2}(a), we plot the points from the number line on a set of axes and connect the points with the appropriate concavity. We also show $f$ crossing the $x$ axis at $x=-1$ and $x=2$. \autoref{fig:sketch2}(b) shows a computer generated graph of $f$, which verifies the accuracy of our sketch.\eoehere
@@ -163,24 +147,7 @@ The following Key Idea summarizes what we have learned so far that is applicable
 	\item	We place the critical points and possible inflection points on a number line and mark each interval as increasing/decreasing, concave up/down appropriately.
 
 \begin{center}
-%\setlength{\unitlength}{4.6em}
-\scriptsize
-\begin{tikzpicture}
-  \matrix[row sep=1mm,column sep=0mm,ampersand replacement=\&] {
-    \&\&\& \node (tp1) {$-5.8$}; \&\& \node (tp2) {$-4$}; \&\& \node (tp3) {$-1.3$}; \&\& \node (tp4) {$0$}; \&\& \node (tp5) {$1.1$}; \\[-1ex]
-    \node(linestart) {$x$}; \&\&\&\&\&\&\&\&\&\&\&\&\& \node(lineend) {}; \\[-1ex]
-    \&\node (fpstart) {$\fp$}; \& \node {$+$}; \&\& \node {$+$}; \&\& \node {$-$}; \&\& \node {$-$}; \&\& \node {$+$}; \&\& \node {$+$}; \\
-    \&\node (fppstart) {$\fpp$}; \& \node {$+$}; \&\& \node {$-$}; \&\& \node {$-$}; \&\& \node {$+$}; \&\& \node {$+$}; \&\& \node {$-$}; \\
-    \&\node (fstart) {$f$}; \& \node {\tbox{incr\\CU}}; \& \node {IP}; \& \node {\tbox{incr\\CD}}; \& \node {max}; \& \node {\tbox{decr\\CD}}; \& \node {IP}; \& \node {\tbox{decr\\CU}}; \& \node {min}; \& \node {\tbox{incr\\CU}}; \& \node {IP}; \& \node {\tbox{incr\\CD}}; \\
-  };
-  \draw [<->] (linestart.east) -- (lineend);
-  \draw (fpstart.south west) -- (lineend.west |- fpstart.south);
-  \draw (fppstart.south west) -- (lineend.west |- fppstart.south);
-  \draw (fppstart.east |- lineend) -- (fppstart.east|-fstart.south);
-  \foreach \x in {1,2,3,4,5} {
-    \draw (tp\x |- linestart)+(0,5pt) -- (tp\x |- fppstart.south);
-  };
-\end{tikzpicture}
+\includecodegraphics{figures/matrices/sketch3}
 \end{center}	
 	
 \mtable{Sketching $f$ in \autoref{ex_sketch3}.}{fig:sketch3}{%

@@ -8,8 +8,8 @@ In answering this question, it is clear that the \textit{average} speed for the 
 \begin{axis}[width=\marginparwidth, tick label style={font=\scriptsize},
 			ymajorgrids=true, xmajorgrids=true, xmin=0, xmax=2, ymin=0, ymax=100,
 			xlabel={Time (hours)}, ylabel={Distance (miles)}]
-\addplot [{\colorone},thick,smooth] coordinates {(0,0)(.5,10)(1,50)(1.5,90)(2,100)};
-\addplot [{\colortwo},thick,smooth] coordinates {(0,0)(2,100)};
+\addplot [draw={\colorone},thick,smooth] coordinates {(0,0)(.5,10)(1,50)(1.5,90)(2,100)};
+\addplot [draw={\colortwo},thick,smooth] coordinates {(0,0)(2,100)};
 \end{axis}
 \end{tikzpicture}}
 
@@ -36,11 +36,11 @@ Let's look at two functions in an example.
  \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
    minor x tick num=1,axis y line=middle,axis x line=middle,
    ymin=-.6,ymax=3.9,xmin=-1.95,xmax=1.95,name=myplot]
-  \addplot[{\colorone},smooth,thick,domain=-1.95:-.507] {1/(x*x)};
-  \addplot[{\colorone},smooth,thick,domain=.507:1.95] {1/(x*x)};
+  \addplot[draw={\colorone},smooth,thick,domain=-1.95:-.507] {1/(x*x)};
+  \addplot[draw={\colorone},smooth,thick,domain=.507:1.95] {1/(x*x)};
   \filldraw [fill={\colorone},draw={\colorone},thick] (axis cs:-1,1) circle (1pt);
   \filldraw [fill={\colorone},draw={\colorone},thick] (axis cs:1,1) circle (1pt);
-  \draw [{\colorone},dashed,thick] (axis cs:-1,1) -- (axis cs:1,1);
+  \draw [draw={\colorone},dashed,thick] (axis cs:-1,1) -- (axis cs:1,1);
  \end{axis}
  \node [right] at (myplot.right of origin) {\scriptsize $x$};
  \node [above] at (myplot.above origin) {\scriptsize $y$};
@@ -65,11 +65,11 @@ So what went ``wrong\primeskip''?  It may not be surprising to find that the dis
   \draw (axis cs: .5,.3) .. controls (axis cs: 1,1.3) and
    (axis cs: 1.2,1.1) .. (axis cs: 2,.75);
   \addplot[mark=*, only marks] coordinates {(.5,.3)(2,.75)(1.1,1.02)};
-  \addplot[domain=.2:2.3, \colorone, smooth] {.3*x+.15}
+  \addplot[domain=.2:2.3, draw=\colorone, smooth] {.3*x+.15}
 	node [color=black,pos=.55,below right] {\scriptsize{secant line}};
-  \addplot[domain=.2:2.3, \colorone, dashed, smooth] {(.3*x+.15)+.54}
+  \addplot[domain=.2:2.3, draw=\colorone, dashed, smooth] {(.3*x+.15)+.54}
 	node[color=black,pos=.7,above left]{\scriptsize{tangent line}};
-  \draw[dashed, thin, \colortwo] (axis cs:1.1,0)-- (axis cs:1.1,1.02);
+  \draw[dashed, thin, draw=\colortwo] (axis cs:1.1,0)-- (axis cs:1.1,1.02);
  \end{axis}
  \node [right] at (myplot.right of origin) {$x$};
  \node [above] at (myplot.above origin) {$y$};

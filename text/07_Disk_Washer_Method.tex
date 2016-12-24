@@ -96,9 +96,9 @@ Start with a function $y=f(x)$ from $x=a$ to $x=b$. Revolving this curve about a
      tick label style={font=\scriptsize},axis y line=middle,
      axis x line=middle,name=myplot,axis on top,
      ymin=-.2,ymax=1.2,xmin=-.1,xmax=2.2]
-    \draw[{\colorone},fill={\coloronefill}] plot[smooth,domain=1:2]
+    \draw[draw={\colorone},fill={\coloronefill}] plot[smooth,domain=1:2]
      (axis cs:\x,1/\x) |- (axis cs:1,0) --(axis cs:2,0)--(axis cs:1,0)-- cycle;
-    \draw [thick,{\colortwo}] (axis cs: 1.5,0) --
+    \draw [thick,draw={\colortwo}] (axis cs: 1.5,0) --
       node[pos=.5,right,color=black]{\scriptsize$R(x)$} (axis cs: 1.5,.667);
    \end{axis}
    \node [right] at (myplot.right of origin) {\scriptsize $x$};
@@ -164,9 +164,9 @@ While \autoref{idea:disk_method} is given in terms of functions of $x$, the prin
      tick label style={font=\scriptsize},axis y line=middle,
      axis x line=middle,name=myplot,axis on top,
      ymin=-.2,ymax=1.2,xmin=-.1,xmax=2.2]
-    \draw[{\colorone},fill={\coloronefill}] plot[smooth,domain=1:2]
+    \draw[draw={\colorone},fill={\coloronefill}] plot[smooth,domain=1:2]
      (axis cs:\x,1/\x) -| (axis cs:0,.5) --(axis cs:0,.5)--(axis cs:0,1)-- cycle;
-    \draw [thick,{\colortwo}] (axis cs: 0,.75) --
+    \draw [thick,draw={\colortwo}] (axis cs: 0,.75) --
      node[pos=.5,below,color=black]{\scriptsize$R(y)$} (axis cs: 1.333,.75);
    \end{axis}
    \node [right] at (myplot.right of origin) {\scriptsize $x$};
@@ -225,7 +225,7 @@ One can generate a solid of revolution with a hole in the middle by revolving a 
      tick label style={font=\scriptsize},axis y line=middle,
      axis x line=middle,name=myplot,axis on top,
      ymin=-3.5,ymax=3.5,xmin=-.2,xmax=3.5]
-    \draw[{\colorone},fill={\coloronefill}]
+    \draw[draw={\colorone},fill={\coloronefill}]
      (axis cs:1,2.5) parabola bend (axis cs:2,3) (axis cs:3,2.5) --
      (axis cs:3,2) parabola bend (axis cs:2,1) (axis cs:1,2) -- cycle;
     \draw [dashed] (axis cs:-.2,.5) -- (axis cs:3.5,.5);
@@ -294,7 +294,7 @@ Even though we introduced it first, the Disk Method is just a special case of th
      tick label style={font=\scriptsize},axis y line=middle,
      axis x line=middle,name=myplot,axis on top,
      ymin=-.2,ymax=5.5,xmin=-.2,xmax=3.5]
-    \draw[{\colorone},fill={\coloronefill}]
+    \draw[draw={\colorone},fill={\coloronefill}]
      (axis cs:1,1) parabola bend (axis cs:1,1) (axis cs:3,5) -- cycle;
     \draw [{\colortwo}] (axis cs:2.5,0) --
      node [pos=.4,right,color=black] {\scriptsize $R(x)$} (axis cs:2.5,4);
@@ -355,13 +355,13 @@ When rotating about a vertical axis, the outside and inside radius functions mus
   \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
     axis equal,axis y line=middle,axis x line=middle,name=myplot,axis on top,
     xtick=\empty,extra x ticks={1},ytick={1},ymin=-.2,ymax=1.2,xmin=-.1,xmax=1.2]
-   \addplot [{\coloronefill},fill={\coloronefill},domain=0:1] {sqrt(x)};
-   \addplot [{\coloronefill},fill={\coloronefill},domain=0:1] {x^2};
-   \addplot [{\colorone},smooth,thick,domain=0:1] {x^2};
-   \addplot [{\colorone},smooth,thick,domain=0:1,samples=100] {sqrt x};
-   \draw [thick,{\colortwo}] (axis cs: 0,.81) --
+   \addplot [draw={\coloronefill},fill={\coloronefill},domain=0:1] {sqrt(x)};
+   \addplot [draw={\coloronefill},fill={\coloronefill},domain=0:1] {x^2};
+   \addplot [draw={\colorone},smooth,thick,domain=0:1] {x^2};
+   \addplot [draw={\colorone},smooth,thick,domain=0:1,samples=100] {sqrt x};
+   \draw [thick,draw={\colortwo}] (axis cs: 0,.81) --
     node[pos=.4,above,color=black]{\scriptsize $R(x)$}(axis cs:.9,.81);
-   \draw [thick,{\colortwo}] (axis cs: 0,.5) --
+   \draw [thick,draw={\colortwo}] (axis cs: 0,.5) --
     node[pos=.5,above,color=black]{\scriptsize $r(x)$} (axis cs:.25,.5);
   \end{axis}
   \node [right] at (myplot.right of origin) {\scriptsize $x$};
@@ -439,10 +439,10 @@ V&=\pi \int_0^1 \left((\sqrt y)^2-(y^2)^2\right) \ dy\\
   \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
     axis y line=middle,axis x line=middle,axis lines=center,name=myplot,
     xtick={1,2},ztick={1,2,3},ymin=-.2,ymax=3.2,xmin=-.2,xmax=2.2]
-    \draw[{\colorone},fill={\coloronefill}] (axis cs:1,1) -- (axis cs:2,1) --(axis cs:2,3)-- cycle;
-    \draw [thick,{\colortwo}] (axis cs: 0,2.6) --
+    \draw[draw={\colorone},fill={\coloronefill}] (axis cs:1,1) -- (axis cs:2,1) --(axis cs:2,3)-- cycle;
+    \draw [thick,draw={\colortwo}] (axis cs: 0,2.6) --
       node[pos=.4,below,color=black]{\scriptsize$r(x)$} (axis cs: 1.8,2.6);
-    \draw [thick,{\colortwo}] (axis cs: 0,1.2) --
+    \draw [thick,draw={\colortwo}] (axis cs: 0,1.2) --
       node[pos=.3,above,color=black]{\scriptsize$R(x)$} (axis cs: 2,1.2);
    \end{axis}
    \node [right] at (myplot.right of origin) {\scriptsize $x$};
@@ -503,14 +503,14 @@ In the previous examples, the axis of rotation has either been the $x$ or $y$ ax
      tick label style={font=\scriptsize},axis y line=middle,
      axis x line=middle,name=myplot,axis on top,
      ymin=-.5,ymax=2.5,xmin=-.2,xmax=1.2]
-   \addplot [{\coloronefill},fill={\coloronefill},domain=0:1] {sqrt(x)};
-   \addplot [{\coloronefill},fill={\coloronefill},domain=0:1] {x};
-   \addplot [{\colorone},smooth,thick,domain=0:1] {x};
-   \addplot [{\colorone},smooth,thick,domain=0:1,samples=100] {sqrt x};
+   \addplot [draw={\coloronefill},fill={\coloronefill},domain=0:1] {sqrt(x)};
+   \addplot [draw={\coloronefill},fill={\coloronefill},domain=0:1] {x};
+   \addplot [draw={\colorone},smooth,thick,domain=0:1] {x};
+   \addplot [draw={\colorone},smooth,thick,domain=0:1,samples=100] {sqrt x};
    \draw [dashed] (axis cs:-.2,2) -- (axis cs:2.2,2);
-   \draw [{\colortwo},thick] (axis cs:.81,2) --
+   \draw [draw={\colortwo},thick] (axis cs:.81,2) --
     node[pos=.5,right,color=black]{\scriptsize$r(x)$} (axis cs:.81,.9);
-   \draw [{\colortwo},thick] (axis cs:.3,2) --
+   \draw [draw={\colortwo},thick] (axis cs:.3,2) --
     node[pos=.5,right,color=black]{\scriptsize$R(x)$} (axis cs:.3,.3);
   \end{axis}
   \node [right] at (myplot.right of origin) {\scriptsize $x$};

@@ -29,14 +29,10 @@
 %\RequirePackage{fancyhdr}
 \RequirePackage{calc}
 
-\RequirePackage{latexml}
-\lxDocumentID{apex}
+\RequirePackage[nocomments]{latexml}
+\lxDocumentID{APEX}
 
 \newcounter{savefigure}
-
-%\newcounter{examplecounter}[section]
-%\renewcommand{\theexamplecounter}{\arabic{examplecounter}}
-%\setcounter{examplecounter}{0}
 
 \newtheoremstyle{apexExample}% name
   {0pt}% Space above, empty = `usual value'
@@ -291,7 +287,7 @@
 \restoreboxwidth
 
 \newcommand{\newspecialbox}[4][]{%
- \makeStyles{#2}{#4}%
+ \AtBeginDocument{\makeStyles{#2}{#4}}%
  \ifthenelse{\equal{#1}{}}{%
   \definecolor{top#2}{Hsb}{#4,.05,1}% = hsl(#4,100,97.5)
   \ifthenelse{#4=60}{%
@@ -425,201 +421,21 @@
 \setcounter{debug}{0}
 
 \newcounter{exercisecounter}
-%\newcounter{IMTcount}
-%\newcounter{IMTcount_temp}
 
-% the exercise names can be printed next to the problem
-% using these commands. The default is to not print them.
-%\newboolean{showexercisenames}
-%\newcommand{\printexercisenames}{\setboolean{showexercisenames}{true}}
-%\newcommand{\noprintexercisenames}{\setboolean{showexercisenames}{false}}
-%\noprintexercisenames
-
-
-% TeX uses a certain system to name input files that it reads from.
-% To prevent conflicts, we use the newread command.
-%\newread\exread %read an example
-%\newread\exsetread %read an example set
-%\newread\exansread %read the answer
-%\newread\printansread% read in the answers file
 
 \newwrite\answrite %write the answers file
 % give the answers file the name ``jobname.answers''
 \openout\answrite=\jobname.answers
 
-%\def\exinput #1 {\ifthenelse{\boolean{printquestions}}{% 
-%	\openin\exread=#1 
-%	\read\exread to \tempp%
-%%	\begin{adjustwidth*}{}{-100pt}% 
-%	\iflatexml\begin{enumerate}\else\begin{enumerate}[leftmargin=*,topsep=10pt]\fi% 
-%		\addtocounter{enumi}{\theexercisecounter}%
-%		\item% 
-%		\ifthenelse{\boolean{showexercisenames}}{%
-%		 \noindent\makebox[0pt][l]{\noindent\tiny\hspace{-60pt}\printexercisename #1 }%
-%	    }{}%
-%		\tempp 
-%		\addtocounter{exercisecounter}{1}
-%	\end{enumerate}
-%%	\end{adjustwidth*}%
-%	\closein\exread}% end print questions 
-%	{% else: print answers
-%		\ifthenelse{\boolean{printoddanswersonly}}{%
-%			\openin\exread=#1 
-%			\read\exread to \tempp % read in the question - we ignore it.
-%			\addtocounter{exercisecounter}{1}
-%			\read\exread to \tempp % reads in the answer
-%			\ifodd \theexercisecounter
-%				%\else
-%				\iflatexml\begin{enumerate}\else\begin{enumerate}[leftmargin=*]\fi 
-%					\addtocounter{enumi}{\theexercisecounter}
-%					\addtocounter{enumi}{-1}
-%					\item 
-%					\ifthenelse{\boolean{showexercisenames}}{%
-%					 \noindent\makebox[0pt][l]{\noindent\tiny\hspace{-60pt}\printexercisename #1 }%
-%					}{}
-%					\tempp 
-%					%\addtocounter{exercisecounter}{1}
-%				\end{enumerate} 
-%			\fi
-%			\closein\exread 
-%		}  %ends print odd answers only
-%		{% print all answers
-%			\openin\exread=#1 
-%			\read\exread to \tempp %reads in the question, which is ignored 
-%			\read\exread to \tempp %reads in the answer
-%			\iflatexml\begin{enumerate}\else\begin{enumerate}[leftmargin=*]\fi 
-%				\addtocounter{enumi}{\theexercisecounter}
-%				\item% 
-%				\ifthenelse{\boolean{showexercisenames}}{%
-%				 \noindent\makebox[0pt][l]{\noindent\tiny\hspace{-60pt}\printexercisename #1 }%
-%				}{}
-%				\tempp 
-%				\addtocounter{exercisecounter}{1}
-%			\end{enumerate}
-%			\closein\exread
-%		} % ends print all answers
-%	}
-%}
 
-%\def\exsetinput #1 {\openin\exsetread=#1%
-%	\setcounter{numofexer}{0}%
-%	\setcounter{negnumofexer}{0}% 
-%	\read\exsetread to \exsettemp%
-%	\read\exsetread to \exsettemp%
-%	{\loop%
-%			\read\exsetread to \exsettemp%
-%			\ifeof \exsetread \exsetmorefalse \else \exsetmoretrue \fi%
-%			\ifexsetmore%
-%					\addtocounter{numofexer}{1}%
-%					\addtocounter{negnumofexer}{-1}%
-%		\repeat}%							
-%	\closein\exsetread%
-%	\openin\exsetread=#1%
-%	\ifthenelse{\boolean{printquestions}}{% 
-%		\read\exsetread to \exsettemp%
-%		\setcounter{enumi}{\theexercisecounter} %
-%		\addtocounter{enumi}{1}%
-%		\ifthenelse{\boolean{showexercisenames}}{%
-%		 \noindent\makebox[0pt][l]{\noindent\tiny\hspace{-60pt}\printexercisename #1 }%
-%		}{}% end show exercise names
-%%		\begin{adjustwidth*}{}{-100pt}%
-%		\noindent\textbf{\exsettemp\theenumi\addtocounter{enumi}{-1}%
-%		\addtocounter{enumi}{\thenumofexer}{ -- }\theenumi%
-%		\addtocounter{enumi}{\thenegnumofexer}%
-%		\read\exsetread to \exsettemp \exsettemp}%
-%%		\end{adjustwidth*}%
-%
-%		{\loop%
-%				\read\exsetread to \exsettemp%
-%				\ifeof \exsetread \exsetmorefalse \else \exsetmoretrue \fi%
-%				\ifexsetmore%
-%						\exsettemp%
-%		\repeat}%
-%	}% ends print exercises; on to print answers
-%	{	\read\exsetread to \exsettemp%
-%		\read\exsetread to \exsettemp%
-%		{\loop%
-%				\read\exsetread to \exsettemp%
-%				\ifeof \exsetread \exsetmorefalse \else \exsetmoretrue \fi%
-%				\ifexsetmore%
-%						\exsettemp%
-%		\repeat}%
-%	}%ends else printing asnwers
-%	\closein\exsetread%
-%}%
 
 % \writeToAnsFile in the style file b/c latexml was copying in ``noexpand''
 
-%\def\printexercisesgeneric#1#2#3 {%
-%\writeToAnsFile{#1}{#2}{#3}%
-%%\strictpagecheck%
-%\setcounter{exercisecounter}{0}\setboolean{printquestions}{true}%
-%%\thispagestyle{empty}%
-%%\begin{adjustwidth*}{}{-100pt}%
-%\exercisegeometry%
-%\exerciseheader%
-%\small%
-%\noindent\underline{\parbox{\textwidth}{\hyperref[sol#3]{\textbf{\huge#2}}\refstepcounter{subsection}\label{exer#3}}}% 
-%\sffamily%
-%\bigskip%
-%\begin{multicols}{2}%
-%	\openin\exansread=#1 
-%	\ifeof \exansread 
-%		{No problems written.} 
-%	\else 
-%		\loop \read\exansread to \extemp  
-%			\ifeof \exansread \morefalse \else \moretrue \fi 
-%			\ifmore \extemp
-%				\repeat 
-%	\fi 
-%	\closein\exansread 
-%	\end{multicols}
-%%	\end{adjustwidth*}%
-%	\restoregeometry
-%	\regularheader
-%%	\easypagecheck
-%	\setlength{\hoffset}{0pt} \rmfamily\normalsize \bigskip%
-%	} % ends printexercisesgeneric
 
-
-
-% The following prints the answers. To print all answers, use command \printallanswers.
-% 
-%\def\printanswers #1 {\setcounter{exercisecounter}{0} \footnotesize \setboolean{printquestions}{false} \openin\printansread=#1 
-%	\ifeof \printansread 
-%		{No problems written.} 
-%	\else 
-%		\loop \read\printansread to \extemp  
-%			\ifeof \printansread \morefalse \else \moretrue \fi 
-%			\ifmore \extemp \fi 
-%			\ifeof \printansread \morefalse \else \moretrue \fi 
-%			\ifmore 
-%				\repeat 
-%	\fi 
-%	\closein\printansread
-%	\small}
-%
-%
-%\def \printexercisename exercises/#1_#2_#3_#4 {#1 #2 #3 #4}
 
 %%%%%%%%%%%%% Used to automate the answer production at
 %%%%%%%%%%%%% end the text.
 
-%\ifthenelse{\boolean{longpage}}%
-%{% if longpage, readsection does nothing, really
-%\def\readsection #1{#1}%
-%}%
-%{% not longpage: usual readsection
-%\def \readsection #1.#2{#2}
-%}%
-
-%\def \writeexercisestofile #1{%
-%\write\answrite{%
-%\noexpand\printanswers{%
-%exercises/0\thechapter_0\expandafter\readsection #1_exercises.tex}%
-%\noexpand\bigskip}%
-%\write\answrite{}%
-%}
 
 \newcommand{\makeexercisesection}[2][\jobname]{%
 %\iflatexml\showans\answrite\fi
@@ -641,7 +457,6 @@
 \newcounter{exercisesetcounter}
 \newboolean{enumopen}
 \setboolean{enumopen}{false}
-\newcommand{\sectiontag}{undefined}
 
 \makeatletter
 % the usual \subsection definition has stretchable space in arguments 3-5
@@ -653,15 +468,11 @@
 
 %\newcommand{\inputexercises}[1]{}%
 \newcommand{\printexercises}[1]{%
-\renewcommand{\sectiontag}{\arabic{chapter}.\arabic{section}}%
-\writeToAnsFileB{#1}{Exercises \sectiontag}{\sectiontag}%
+\writeToAnsFile{#1}%
 \exercisegeometry%
 \exerciseheader%
-\exercisesubsection{\sectiontag}%
-%\noindent\underline{\parbox{\textwidth}{%
-%\hyperref[sol\sectiontag]{\textbf{\huge Exercises \sectiontag}}%
-%\refstepcounter{subsection}}}%
-\label{exer\sectiontag}%
+\exercisesubsection{\thesection}%
+\label{exer\thesection}%
 \small%
 \bigskip%
 \begin{multicols}{2}%
@@ -674,34 +485,7 @@
 \setlength{\hoffset}{0pt} \rmfamily\normalsize \bigbreak%
 }
 
-\newcommand*{\lxenumerate}[1]{\iflatexml\begin{enumerate}\else\begin{enumerate}[#1]\fi}
-
-\newcommand{\writeToAnsFileB}[3]{%
-\ifthenelse{\boolean{chapter_already_has_exercises}}{}{% else
- \setboolean{chapter_already_has_exercises}{true}
- \immediate\write\answrite{}%
- \immediate\write\answrite{%
-  \noexpand\noindent{%
-   \noexpand\Large%
-   \noexpand\textbf{Chapter \arabic{chapter}}%
-  }%
-  \noexpand\bigskip%
-  \noexpand\newline%
-  \noexpand\nopagebreak%
- }%
-}%
-\immediate\write\answrite{%
- \noexpand\noindent%
- \noexpand\hyperref[exer#3]{\noexpand\textbf{#2}}%
- \noexpand\label{sol#3}%
-}%
-\ifthenelse{\value{section}=0}{%
- \immediate\write\answrite{\noexpand\loadAllAnswers{#1}}%
-}{%
- \immediate\write\answrite{\noexpand\loadAnswers{#1}}%
-}%
-\immediate\write\answrite{\noexpand\bigbreak}%
-}
+% writeToAnsFile in sty
 
 \newcommand*{\loadAllAnswers}[1]{%
 	\ifthenelse{\boolean{printoddanswersonly}}{%

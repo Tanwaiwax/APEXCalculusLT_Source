@@ -1,5 +1,6 @@
 #!/usr/local/bin/python3
 
+import re
 import os
 import sys
 import glob
@@ -31,17 +32,19 @@ parser.add_argument("-f","--figures", action="store_true",
                     help="Create 3D figures using Asymptote.")
 
 parser.add_argument("-i","--instructor", action="store_true",
-                    help="Instructor version "
-                    "(prints all answers; default is student).")
+                    help="Create instructor solution manual.")
 
 parser.add_argument("-n","--internet", action="store_true",
                     help="Create interNet version (options x & w).")
 
 parser.add_argument("-x","--xml", action="store_true",
-                    help="Create xml version. (40 min)");
+                    help="Create xml version. (120 min)");
 
 parser.add_argument("-w","--web", action="store_true",
-                    help="Convert xml version to html.");
+                    help="Convert xml version to html. (4 min)");
+
+parser.add_argument("-t","--todo", action="store_true",
+                    help="Update todo lists.");
 
 parser.add_argument("-q","--quit", action="store_true",
                     help="Write options.tex and quit.")
@@ -92,6 +95,30 @@ def makefigs():
     finally:
         os.chdir('..')
 
+def updatetodo():
+    output = subprocess.check_output(['grep','todo','-Ir','.'])
+    todos = output.decode('utf-8').split("\n")
+    todotim = []
+    todocalc1 = []
+    todocalc2 = []
+    for todo in todos:
+        if re.match('./make.py',todo) or re.match('./todo_',todo) or todo == '':
+            continue
+        if ' Tim ' in todo:
+            todotim.append(todo)
+        elif re.search('/0[1-4]',todo):
+            todocalc1.append(todo)
+        else:
+            todocalc2.append(todo)
+    todosin = {
+        'todo_tim.txt': todotim,
+        'todo_calc1.txt': todocalc1,
+        'todo_calc2.txt': todocalc2
+    }
+    for filename,todolist in todosin.items():
+        with open(filename,'w') as timfile:
+            print(*todolist,sep='\n',file=timfile)
+        
 def writeoptions(args):
     with open('options.tex','w') as options:
         title = "Calculus"
@@ -109,21 +136,15 @@ def writeoptions(args):
         else:
             options.write("\\printincolor\n")
             options.write("\\usethreeDgraphics\n")
-            
-def compilewith(commands=False):
-    if commands:
-        args = parser.parse_args([''.join(commands)])
-    else:
-        args = parser.parse_args()
+
+def getsuffix(args):
+    if args.xml:
+        return "_xml"
+    elif args.web:
+        return "_web"
+    elif args.instructor:
+        return "_answers"
     newsuffix = ''
-    if args.calculus == 4:
-        args.calculus = 0
-    writeoptions(args)
-    if args.quit:
-        return
-    if args.figures:
-        makefigs()
-        return
     if args.calculus in (1,2,3):
         iii = "I"*args.calculus
         newsuffix += "_"+iii
@@ -131,46 +152,68 @@ def compilewith(commands=False):
         newsuffix += "_BW"
     elif args.static:
         newsuffix += "_small"
-    if args.xml or args.web or args.instructor:
-        compilewith("-qsc0")
-    commandline = []
+    return newsuffix
+
+def getcommandline(args):
     if args.xml:
-        newsuffix = "_xml"
-        commandline = ['latexml','--quiet','--quiet',#'--verbose','--verbose',#
+        ret = ['latexml','--quiet',#'--quiet',#'--verbose','--verbose',#
                        '--destination=calculus.xml',
                        'Calculus']
-        if platform.mac_ver()[0] is not '':
-            commandline = ['caffeinate','-s'] + commandline
+        if platform.mac_ver()[0] is '':
+            return ret
+        else:
+            return ['caffeinate','-s'] + ret
             # prevent sleeping, if plugged in, until command finished
-    elif args.web:
-#        shutil.copy('web/style.css','.')
-#        shutil.copy('web/script.js','.')
-        newsuffix = "_web"
-        commandline = ['latexmlpost','--quiet','--split',
-                       '--stylesheet=apex.xsl',
-                       '--destination=web/index.html',
-                       '--css=style.css',
-                       '--javascript=https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js',
-                       '--javascript=LaTeXML-maybeMathJax.js',
-                       '--javascript=script.js',
-                       'calculus.xml']
+    if args.web:
+        #os.chdir('web')
+#        return
+        return ['latexmlpost','--quiet','--split','--stylesheet=web/apex.xsl',
+                    '--destination=web/index.html','--css=style.css',
+                    '--javascript=https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js',
+                    '--javascript=LaTeXML-maybeMathJax.js',
+                    '--javascript=script.js','calculus.xml']
+    if args.internet:
+        return
+    if args.instructor:
+        return ['latexmk','-xelatex','Answers']
+    return ['latexmk','-xelatex','Calculus']
+
+def compilewith(commands=False):
+    if commands:
+        args = parser.parse_args([''.join(commands)])
+    else:
+        args = parser.parse_args()
+    if args.figures:
+        makefigs()
+        return
+    if args.todo:
+        updatetodo()
+        return
+    if args.calculus == 4:
+        args.calculus = 0
+    writeoptions(args)
+    if args.quit:
+        return
+    newsuffix = getsuffix(args)
+    if args.xml or args.web or args.instructor:
+        compilewith("-qsc0")
     elif args.internet:
         compilewith("-x")
         compilewith("-w")
         return
-    elif args.instructor:
-        commandline = ['latexmk','-xelatex','Answers']
-        newsuffix = "_answers"
-    else:
-        commandline = ['latexmk','-xelatex','Calculus']
     with open('logs/compilation'+newsuffix+'.log','w') as mystdout:
         try:
+            commandline = getcommandline(args)
 #            print("running",commandline)
             subprocess.check_call(commandline,stdout=mystdout,stderr=subprocess.STDOUT)
         except:
             time = "{0[0]:02d}:{0[1]:02d}".format(getTime())
             print("At",time,"failing command:",commands);
             raise
+        finally:
+            if args.web:
+                #os.chdir('..')
+                pass
     time = "{0[0]:02d}:{0[1]:02d}".format(getTime())
     if commands:
         print("Command line:",commands,"finished at",time)

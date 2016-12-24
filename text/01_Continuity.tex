@@ -23,7 +23,7 @@ If $f$ is defined near $c$ but is not continuous at $c$, then we say that $f$ is
 \begin{tabular}{ccc}
 \begin{tikzpicture}
 \begin{axis}[width=.8\marginparwidth, axis y line=middle,axis x line=middle, ymin=-3, ymax=3, xmin=-3, xmax=3, name=myplot]
-\addplot[{\colorone}, domain=-3:3, thick, smooth] {(x+1)/2};
+\addplot[draw={\colorone}, domain=-3:3, thick, smooth] {(x+1)/2};
 \fill[thick] (axis cs:1,2) circle (1.5pt);
 \fill[white,draw=black,thick] (axis cs:1,1) circle (1.5pt);
 \end{axis}
@@ -33,8 +33,8 @@ If $f$ is defined near $c$ but is not continuous at $c$, then we say that $f$ is
 &
 \begin{tikzpicture}
 \begin{axis}[width=.8\marginparwidth, axis y line=middle,axis x line=middle, ymin=-3, ymax=3, xmin=-3, xmax=3, name=myplot]
-\addplot[{\colorone}, domain=-3:.9, thick, smooth] {1/(1-x)};
-\addplot[{\colorone}, domain=1:3, thick, smooth] {3-x};
+\addplot[draw={\colorone}, domain=-3:.9, thick, smooth] {1/(1-x)};
+\addplot[draw={\colorone}, domain=1:3, thick, smooth] {3-x};
 \fill[thick] (axis cs:1,2) circle (1.5pt);
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
@@ -43,8 +43,8 @@ If $f$ is defined near $c$ but is not continuous at $c$, then we say that $f$ is
 &
 \begin{tikzpicture}
 \begin{axis}[width=.8\marginparwidth, axis y line=middle,axis x line=middle, ymin=-3, ymax=3, xmin=-3, xmax=3, name=myplot]
-\addplot[{\colorone}, domain=-3:1, thick, smooth] {(x+1)/2};
-\addplot[{\colorone}, domain=1:3, thick, smooth] {3-x};
+\addplot[draw={\colorone}, domain=-3:1, thick, smooth] {(x+1)/2};
+\addplot[draw={\colorone}, domain=1:3, thick, smooth] {3-x};
 \fill[white,draw=black,thick] (axis cs:1,1) circle (1.5pt);
 \fill[thick] (axis cs:1,2) circle (1.5pt);
 \end{axis}
@@ -237,9 +237,9 @@ While this notion seems intuitive, it is not trivial to prove and its importance
 \mtable[-1in]{A situation where the Intermediate Value Theorem applies (top) and does not (bottom).}{fig_ivt}{\begin{tabular}{c}
 \begin{tikzpicture}
 \begin{axis}[width=\marginparwidth, xtick={.7, 1.5, 4.7}, xticklabels={\scriptsize{$a$},\scriptsize{$c$},\scriptsize{$b$}}, ytick={.54, 2.98,4.16},yticklabels={\scriptsize{$f(b)$},\scriptsize{$L$},\scriptsize{$f(a)$}}, axis y line=middle,axis x line=middle, ymin=-.5, ymax=5.5, xmin=-.5, xmax=5.2, name=myplot]
-\addplot[{\colorone}, domain=0:5, thick, smooth] {.2*(x-2)*(x-2)*(x-2)-2*(x-2)+2};
-\draw[{\colortwo},thick] (axis cs:1.5,0) -- (axis cs: 1.5,2.98);
-\draw[{\colortwo},thick] (axis cs:1.5,2.98) -- (axis cs: 0,2.98);
+\addplot[draw={\colorone}, domain=0:5, thick, smooth] {.2*(x-2)*(x-2)*(x-2)-2*(x-2)+2};
+\draw[draw={\colortwo},thick] (axis cs:1.5,0) -- (axis cs: 1.5,2.98);
+\draw[draw={\colortwo},thick] (axis cs:1.5,2.98) -- (axis cs: 0,2.98);
 \draw[dashed,thin](axis cs: .7,0)--(axis cs:.7,4.16);
 \draw[dashed,thin](axis cs: .7,4.16)--(axis cs:0,4.16);
 \draw[dashed,thin](axis cs: 4.7,0)--(axis cs:4.7,.54);
@@ -251,12 +251,12 @@ While this notion seems intuitive, it is not trivial to prove and its importance
 \end{tikzpicture} \\ (a) \\
 \begin{tikzpicture}
 \begin{axis}[width=\marginparwidth, axis y line=middle, axis x line=middle, name=myplot, ymin=-.5, ymax=5.5, xmin=-.5, xmax=4.2, xtick={1,2,3.5}, xticklabels={\scriptsize{$a$},\scriptsize{?},\scriptsize{$b$}}, ytick={.5,1.5,3.5},yticklabels={\scriptsize{$f(a)$}, \scriptsize{$L$}, \scriptsize{$f(b)$}}]
-\addplot[{\colorone}, domain=0:2, thick, smooth] {x/2};
-\addplot[{\colorone}, domain=2:4, thick, smooth] {x};
+\addplot[draw={\colorone}, domain=0:2, thick, smooth] {x/2};
+\addplot[draw={\colorone}, domain=2:4, thick, smooth] {x};
 \fill[thick] (axis cs:2,2) circle (1.5pt);
 \fill[white,draw=black,thick] (axis cs:2,1) circle (1.5pt);
-\draw[{\colortwo}, thick](axis cs: 2,0) -- (axis cs: 2,1.5);
-\draw[{\colortwo},thick](axis cs: 2,1.5)--(axis cs: 0,1.5);
+\draw[draw={\colortwo}, thick](axis cs: 2,0) -- (axis cs: 2,1.5);
+\draw[draw={\colortwo},thick](axis cs: 2,1.5)--(axis cs: 0,1.5);
 \draw[dashed,thin](axis cs: 1,0)--(axis cs:1,.5);
 \draw[dashed,thin](axis cs: 1,.5)--(axis cs:0,.5);
 \draw[dashed,thin](axis cs: 3.5,0)--(axis cs:3.5,3.5);

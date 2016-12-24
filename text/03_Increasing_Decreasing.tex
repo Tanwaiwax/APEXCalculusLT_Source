@@ -68,20 +68,7 @@ We demonstrate using \autoref{idea:incr_decr} in the following example.
 Since an interval was not specified for us to consider, we consider the entire domain of $f$ which is $(-\infty,\infty)$. We thus break the whole real line into three subintervals based on the two critical values we just found: $(-\infty,-1)$, $(-1,1/3)$ and $(1/3,\infty)$. This is shown in the following sign chart.
 
 \begin{center}
-\begin{tikzpicture}
-  \matrix[row sep=1mm,column sep=8mm,ampersand replacement=\&] {
-    \&\&\& \node (tp1) {$-1$}; \&\& \node (tp2) {$\frac13$}; \\[-1ex]
-    \node(linestart) {$x$}; \&\&\&\&\&\&\& \node(lineend) {}; \\[-1ex]
-    \&\node (fpstart) {$\fp$}; \\
-    \&\node (fstart) {$f$}; \\
-  };
-  \draw [<->] (linestart.east) -- (lineend);
-  \draw (fpstart.south west) -- (lineend.west |- fpstart.south);
-  \draw (fpstart.east |- lineend) -- (fpstart.east|-fstart.south);
-  \foreach \x in {1,2} {
-    \draw (tp\x|-linestart)+(0,5pt) -- (tp\x |- fpstart.south);
-  };
-\end{tikzpicture}
+\includecodegraphics{figures/matrices/incrdecr1}
 \end{center}
 
 We now pick a value $p$ in each subinterval and find the sign of $\fp(p)$. All we care about is the sign, so we do not actually have to fully compute $\fp(p)$; pick ``nice'' values that make this simple.
@@ -97,20 +84,7 @@ Note we can arrive at the same conclusion without computation. For instance, we 
 \end{description}
 
 \begin{center}
-\begin{tikzpicture}
-  \matrix[row sep=1mm,column sep=3mm,ampersand replacement=\&] {
-    \&\&\& \node (tp1) {$-1$}; \&\& \node (tp2) {$\frac13$}; \\[-1ex]
-    \node(linestart) {$x$}; \&\&\&\&\&\&\& \node(lineend) {}; \\[-1ex]
-    \&\node (fpstart) {$\fp$}; \& \node {$+$}; \&\& \node {$-$}; \&\& \node {$+$}; \\
-    \&\node (fstart) {$f$}; \& \node {incr}; \&\& \node {decr}; \&\& \node {incr}; \\
-  };
-  \draw [<->] (linestart.east) -- (lineend);
-  \draw (fpstart.south west) -- (lineend.west |- fpstart.south);
-  \draw (fpstart.east |- lineend) -- (fpstart.east|-fstart.south);
-  \foreach \x in {1,2} {
-    \draw (tp\x|-linestart)+(0,5pt) -- (tp\x |- fpstart.south);
-  };
-\end{tikzpicture}
+\includecodegraphics{figures/matrices/incrdecr1full}
 \end{center}
 
 \mfigure{1in}{A graph of $f(x)$ in \autoref{ex_incr1}, showing where $f$ is increasing and decreasing.}{fig:incr1}{figures/figincr1}
@@ -121,8 +95,7 @@ One is justified in wondering why so much work is done when the graph seems to m
 
 First, the points at which $f$ switches from increasing to decreasing are not precisely known given a graph. The graph shows us something significant happens near $x=-1$ and $x=0.3$, but we cannot determine exactly where from the graph. 
 
-One could argue that just finding critical values is important; once we know the significant points are $x=-1$ and $x=1/3$, the graph shows the increasing/decreasing traits just fine. That is true. However, the technique prescribed here helps reinforce the relationship between increasing/decreasing and the sign of $\fp$. Once mastery of this concept (and several others) is obtained, one finds that either (a) just the critical points are computed and the graph shows all else that is desired, or (b) a graph is never produced, because determining increasing/decreasing using $\fp$ is straightforward and the graph is unnecessary. 
-So our second reason why the above work is worthwhile is this: once mastery of a subject is gained, one has \textit{options} for finding needed information. We are working to develop mastery.
+One could argue that just finding critical values is important; once we know the significant points are $x=-1$ and $x=1/3$, the graph shows the increasing/decreasing traits just fine. That is true. However, the technique prescribed here helps reinforce the relationship between increasing/decreasing and the sign of $\fp$. Once mastery of this concept (and several others) is obtained, one finds that either (a) just the critical points are computed and the graph shows all else that is desired, or (b) a graph is never produced, because determining increasing/decreasing using $\fp$ is straightforward and the graph is unnecessary. So our second reason why the above work is worthwhile is this: once mastery of a subject is gained, one has \textit{options} for finding needed information. We are working to develop mastery.
 
 Finally, our third reason: many problems we face ``in the real world'' are very complex. Solutions are tractable only through the use of computers to do many calculations for us. Computers do not solve problems ``on their own,'' however; they need to be taught (i.e., \textit{programmed}) to do the right things. It would be beneficial to give a function to a computer and have it return maximum and minimum values, intervals on which the function is increasing and decreasing, the locations of relative maxima, etc. The work that we are doing here is easily programmable. It is hard to teach a computer to ``look at the graph and see if it is going up or down.'' It is easy to teach a computer to ``determine if a number is greater than or less than 0.''
 
@@ -134,7 +107,7 @@ In \autoref{sec:extreme_values} we learned the definition of relative maxima and
 axis y line=none,axis x line=none,
 name=myplot,ymin=-1,ymax=.5,xmin=-1,xmax=1
 ]
-\addplot[thick,{\colorone},smooth,domain=-1:1] { -x*x };
+\addplot[thick,draw={\colorone},smooth,domain=-1:1] { -x*x };
 \filldraw (axis cs:0,0) node [below] {\small$c$} circle (1pt);
 \end{axis}
 \end{tikzpicture}
@@ -144,7 +117,7 @@ name=myplot,ymin=-1,ymax=.5,xmin=-1,xmax=1
 axis y line=none,axis x line=none,
 name=myplot,ymin=-.5,ymax=1,xmin=-1,xmax=1%
 ]
-\addplot[thick,{\colorone},smooth,domain=-1:1] { x*x };
+\addplot[thick,draw={\colorone},smooth,domain=-1:1] { x*x };
 \filldraw (axis cs:0,0) node [above] {\small$c$} circle (1pt);
 \end{axis}
 \end{tikzpicture}
@@ -155,7 +128,7 @@ Case 1 & Case 2 \\
 axis y line=none,axis x line=none,
 name=myplot,ymin=-1,ymax=1,xmin=-1,xmax=1%
 ]
-\addplot[thick,{\colorone},smooth,domain=-1:1] { x*x*x };
+\addplot[thick,draw={\colorone},smooth,domain=-1:1] { x*x*x };
 \filldraw (axis cs:0,0) node [below] {\small$c$} circle (1pt);
 \end{axis}
 \end{tikzpicture}
@@ -165,7 +138,7 @@ name=myplot,ymin=-1,ymax=1,xmin=-1,xmax=1%
 axis y line=none,axis x line=none,
 name=myplot,ymin=-1,ymax=1,xmin=-1,xmax=1%
 ]
-\addplot[thick,{\colorone},smooth,domain=-1:1] { -x*x*x };
+\addplot[thick,draw={\colorone},smooth,domain=-1:1] { -x*x*x };
 \filldraw (axis cs:0,0) node [below] {\small$c$} circle (1pt);
 \end{axis}
 \end{tikzpicture}
@@ -212,20 +185,7 @@ We have found that $f$ has two critical numbers, $x=-1,3$, and at $x=1$ somethin
 In summary, $f$ is increasing on $(-\infty,-1)$ and $(3,\infty)$ and is decreasing on $(-1,1)$ and $(1,3)$. Since at $x=-1$, the sign of \fp\ switched from positive to negative, \autoref{thm:first_der} states that $f(-1)$ is a relative maximum of $f$. At $x=3$, the sign of \fp\ switched from negative to positive, meaning $f(3)$ is a relative minimum. At $x=1$, $f$ is not defined, so there is no relative extrema at $x=1$.
 
 \begin{center}
-\begin{tikzpicture}
-  \matrix[row sep=1mm,column sep=3mm,ampersand replacement=\&] {
-    \&\&\& \node(tp1){$-1$}; \&\& \node(tp2){$1$}; \&\& \node(tp3){$3$}; \\[-1ex]
-    \node(linestart){$x$}; \&\&\&\&\&\&\&\&\& \node(lineend) {}; \\[-1ex]
-    \&\node(fpstart){$\fp$}; \& \node{$+$}; \&\& \node{$-$}; \&\& \node{$-$}; \&\& \node{$+$}; \\
-    \&\node(fstart){$f$}; \& \node{incr}; \& \node{max}; \& \node{decr}; \& \node{U}; \& \node{decr}; \& \node{min}; \& \node{incr}; \\
-  };
-  \draw [<->] (linestart.east) -- (lineend);
-  \draw (fpstart.south west) -- (lineend.west |- fpstart.south);
-  \draw (fpstart.east |- lineend) -- (fpstart.east|-fstart.south);
-  \foreach \x in {1,2,3} {
-    \draw (tp\x|-linestart)+(0,5pt) -- (tp\x |- fpstart.south);
-  };
-\end{tikzpicture}
+\includecodegraphics{figures/matrices/incrdecr2}
 \end{center}
 
 \mnote{\textbf{Note:} In our sign charts, we will use ``U'' to indicate that something is undefined.}
@@ -264,20 +224,7 @@ This derivation of $\fp$ shows that $\fp(x) = 0$ when $x=\pm 1$ and \fp\ is not 
 \end{description}
 
 \begin{center}
-\begin{tikzpicture}
-  \matrix[row sep=1mm,column sep=3mm,ampersand replacement=\&] {
-    \&\&\& \node(tp1){$-1$}; \&\& \node(tp2){$0$}; \&\& \node(tp3){$1$}; \\[-1ex]
-    \node(linestart){$x$}; \&\&\&\&\&\&\&\&\& \node(lineend) {}; \\[-1ex]
-    \&\node(fpstart){$\fp$}; \& \node{$-$}; \&\& \node{$+$}; \&\& \node{$-$}; \&\& \node{$+$}; \\
-    \&\node(fstart){$f$}; \& \node{decr}; \& \node{min}; \& \node{incr}; \& \node{max}; \& \node{decr}; \& \node{min}; \& \node{incr}; \\
-  };
-  \draw [<->] (linestart.east) -- (lineend);
-  \draw (fpstart.south west) -- (lineend.west |- fpstart.south);
-  \draw (fpstart.east |- lineend) -- (fpstart.east|-fstart.south);
-  \foreach \x in {1,2,3} {
-    \draw (tp\x|-linestart)+(0,5pt) -- (tp\x |- fpstart.south);
-  };
-\end{tikzpicture}
+\includecodegraphics{figures/matrices/incrdecr3}
 \end{center}
 
 \mfigure{0in}{A graph of $f(x)$ in \autoref{ex_incr3}, showing where $f$ is increasing and decreasing.}{fig:incr3}{figures/figincr3}
@@ -296,20 +243,7 @@ We examine one more example.
 \end{description}
 
 \begin{center}
-\begin{tikzpicture}
-  \matrix[row sep=1mm,column sep=2mm,ampersand replacement=\&] {
-    \& \node(tp1){$0$}; \&\& \node(tp2){$\frac\pi3$}; \&\& \node(tp3){$\pi$}; \&\& \node(tp4){$\frac{5\pi}3$}; \&\& \node(tp5){$2\pi$}; \\[-1ex]
-    \node {$x$}; \& \node(linestart){}; \&\&\&\&\&\&\&\&\& \node(lineend) {}; \\[-1ex]
-    \node(fpstart){$\fp$}; \&\& \node{$+$}; \&\& \node{$-$}; \&\& \node{$+$}; \&\& \node{$-$}; \\
-    \node(fstart){$f$}; \&\& \node{incr}; \& \node{max}; \& \node{decr}; \& \node{min}; \& \node{incr}; \& \node{max}; \& \node{decr};\\
-  };
-  \draw (tp1 |- linestart) -- (tp5 |- lineend);
-  \draw (fpstart.south west) -- (tp5 |- fpstart.south);
-  \draw (tp1|-linestart)+(0,5pt) -- (tp1 |- fstart.south);
-  \foreach \x in {1,2,3,4,5} {
-    \draw (tp\x|-linestart)+(0,5pt) -- (tp\x |- fpstart.south);
-  };
-\end{tikzpicture}
+\includecodegraphics{figures/matrices/incrdecrTrig}
 \end{center}
 
 This means that $f$ is increasing on $(0,\frac\pi3)$ and $(\pi,\frac{5\pi}3)$ and decreasing on $(\frac\pi3,\pi)$ and $(\frac{5\pi}3,2\pi)$, so that the relative maxima are $f(\frac\pi3)$ and $f(\frac{5\pi}3)$ and the relative minimum is $f(\pi)$.  (The values $f(0)$ and $f(2\pi)$ would also be relative minima, but relative extrema are not allowed to occur at the endpoints of an interval.)}

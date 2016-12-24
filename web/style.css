@@ -3,12 +3,6 @@ html, body {
     width: 98%;
 }
 
-iframe#toc {
-    width: 25%;
-    height: 100%;
-    position: fixed;
-}
-
 iframe[seamless] {
     border:0;
 }
@@ -17,16 +11,9 @@ iframe.embeddedVideo {
     margin: 1ex 1em;
 }
 
-body.hasIframe .ltx_page_main {
+.ltx_page_content {
     max-width: 50em;
-    position: relative;
-    left: 26%;
     margin: 1ex 1em;
-    padding: 1ex 15em 1ex 1em;
-}
-
-iframe .ltx_page_main {
-    position: static;
 }
 
 .marginbox {
@@ -41,11 +28,6 @@ iframe .ltx_page_main {
 
 .ltx_tag_equation.ltx_align_right {
     position: static;
-}
-
-body.inIframe .ltx_TOC.ltx_role_contents ul {
-    padding-left: 1em;
-    text-indent: -2em;
 }
 
 .ltx_theorem_exampleEnv {
@@ -64,8 +46,8 @@ body.inIframe .ltx_TOC.ltx_role_contents ul {
 }
 
 .ltx_tag_theorem {
-    width: 7em;
-    display: inline-block;
+/*    width: 7em; */
+/*    display: inline-block; */
 }
 
 .ltx_theorem .ltx_title {
@@ -74,6 +56,11 @@ body.inIframe .ltx_TOC.ltx_role_contents ul {
 
 .ltx_theorem .ltx_title.ltx_font_bold {
     font-weight: bold;
+}
+
+div.ltx_theorem_exampleEnv > h6.ltx_title_theorem > span.ltx_text {
+    min-width: 9em;
+    display: inline-block;
 }
 
 .exampleNum, .solutionTag {
@@ -95,7 +82,7 @@ a.permaLink {
     margin-left: .5em;
 }
 
-*:hover > a.permaLink {
+*:hover > a.permaLink, a.permaLink:hover {
     visibility: visible;
 }
 
@@ -119,7 +106,8 @@ figcaption {
     font-size: smaller;
 }
 
-section.ltx_appendix .diffRules + .ltx_minipage , section.ltx_appendix .diffRules ~ * > .ltx_minipage {
+section.ltx_appendix .diffRules + .ltx_minipage ,
+section.ltx_appendix .diffRules ~ * > .ltx_minipage {
     width: 20%;
 }
 
@@ -129,7 +117,38 @@ section.ltx_appendix .diffRules + .ltx_minipage , section.ltx_appendix .diffRule
     margin-right: 5%;
 }
 
+/* adjust margin notes */
+.ltx_note .ltx_note_content {
+    display: block;
+    position: absolute;
+}
+.ltx_note_content {
+    left: 60em;
+}
+
+/* set up the left side navigation */
+nav.ltx_page_navbar {
+    font-size: 75%;
+    width: 20em;
+    position: fixed;
+}
+nav.ltx_page_navbar ul {
+    padding-left: 1em;
+}
+body > div.ltx_page_main {
+    position: absolute;
+    left: 15em; /* 20em * 75% */
+    padding: 1ex 1em;
+}
+
 /* the following things are hidden: */
+
+/* the footnotemark for margin notes */
+.ltx_note.ltx_role_margin sup.ltx_note_mark { display: none; }
+/* the word "margin" on margin notes */
+.ltx_note.ltx_role_margin > .ltx_note_outer > .ltx_note_content > .ltx_note_type {
+    display: none;
+}
 
 /* subsections in the table of contents */
 body.inIframe .ltx_TOC.ltx_role_contents ul ul ul ul { display: none; }

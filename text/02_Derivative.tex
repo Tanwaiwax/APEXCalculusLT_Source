@@ -49,10 +49,10 @@ We can approximate the value of this limit numerically with small values of $h$ 
 \begin{axis}[tick label style={font=\scriptsize},minor x tick num=1,
 axis y line=middle,axis x line=middle,ymin=-50,ymax=160,xmin=-.5,xmax=3.49,
 name=myplot, extra x ticks={2.4}, extra x tick labels={\begin{tabular}{c}$\uparrow$\\$2+h$\end{tabular}},width=\marginparwidth]
-\addplot [{\colorone},domain=0:3.5,thick] {150-16*x*x};
-\addplot [{\colortwo},domain=1:3.5,thick] {(90.75-28.16*x)/.4};
-\draw[{\colorthree}] (axis cs:2,0)--(axis cs:2,86);
-\draw[{\colorthree}] (axis cs:2.4,0)--(axis cs:2.4,57.84); 
+\addplot [draw={\colorone},domain=0:3.5,thick] {150-16*x*x};
+\addplot [draw={\colortwo},domain=1:3.5,thick] {(90.75-28.16*x)/.4};
+\draw[draw={\colorthree}] (axis cs:2,0)--(axis cs:2,86);
+\draw[draw={\colorthree}] (axis cs:2.4,0)--(axis cs:2.4,57.84); 
 \draw[gray] (axis cs:2,25)--(axis cs:2.4,25) node[pos=0.5, below]{\scriptsize $h$};
 \node[label={180:{\scriptsize $(2,f(2))$}},circle,fill,inner sep=1pt] at (axis cs:2,86) {};
 \node[label={180:{\scriptsize $(2+h,f(2+h))$}},circle,fill,inner sep=1pt] at (axis cs:2.4,57.84) {};
@@ -264,14 +264,14 @@ We have found that when $f(x) = \sin x$, $\fp(x) = \cos x$ (see \autoref{fig:sin
 \centering
 \begin{tikzpicture}
 \begin{axis}[tick label style={font=\scriptsize}, axis y line=middle,axis x line=middle, ymin=-1.15, ymax=1.15,xmin=-7,xmax=7,name=myplot,  xtick={-6.28318, -4.7123889, -3.14159, -1.5708, 1.5708, 3.14159, 4.7123889, 6.28318}, xticklabels={-$2\pi$, $-\frac{3\pi}{2}$,$-\pi$, $-\frac{\pi}{2}$, $\frac{\pi}{2}$,$\pi$, $\frac{3\pi}{2}$, $2\pi$}, xscale=1.4]
-\addplot [{\colorone}, smooth, domain=-6.28318:6.28318,thick] {sin(deg(x))} 
+\addplot [draw={\colorone}, smooth, domain=-6.28318:6.28318,thick] {sin(deg(x))} 
          node [pos=.7, above right] {\scriptsize $f(x)=\sin{x}$};
-\addplot [{\colortwo},smooth, domain=-6.28318:6.28318,thick] {cos(deg(x))}
+\addplot [draw={\colortwo},smooth, domain=-6.28318:6.28318,thick] {cos(deg(x))}
          node [pos=.45, above left] {\scriptsize $\fp(x)=\cos{x}$};
-\draw[\colortwo] (axis cs:-5.1,1.005)--(axis cs:-4.4,1.005);
-\draw[\colortwo] (axis cs:-2,-1.005)--(axis cs:-1.1,-1.005);
-\draw[\colortwo] (axis cs:5.1,-1.005)--(axis cs:4.4,-1.005);
-\draw[\colortwo] (axis cs:2,1.005)--(axis cs:1.1,1.005);  
+\draw[draw=\colortwo] (axis cs:-5.1,1.005)--(axis cs:-4.4,1.005);
+\draw[draw=\colortwo] (axis cs:-2,-1.005)--(axis cs:-1.1,-1.005);
+\draw[draw=\colortwo] (axis cs:5.1,-1.005)--(axis cs:4.4,-1.005);
+\draw[draw=\colortwo] (axis cs:2,1.005)--(axis cs:1.1,1.005);  
 \draw[gray] (axis cs:-4.7123889,0)--(axis cs:-4.7123889,1);
 \draw[gray] (axis cs:-1.5708,0)--(axis cs:-1.5708,-1);
 \draw[gray] (axis cs:1.5708,0)--(axis cs:1.5708,1);

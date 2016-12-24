@@ -6,86 +6,10 @@
 \input{headers/APEX_format}
 \input{headers/Header_Calculus}
 
-\printallanswers
-\printincolor
-\usetwoDgraphics
+\input{options}
 
 \begin{document}
 
-\begin{tikzpicture}
-  \matrix[row sep=1mm,column sep=8mm,ampersand replacement=\&] {
-    \&\&\& \node (tp1) {$-1$}; \&\& \node (tp2) {$\frac13$}; \\[-1ex]
-    \node(linestart) {$x$}; \&\&\&\&\&\&\& \node(lineend) {}; \\[-1ex]
-    \&\node (fpstart) {$f'$}; \\
-    \&\node (fstart) {$f$}; \\
-  };
-  \draw [<->] (linestart.east) -- (lineend);
-  \draw (fpstart.south west) -- (lineend.west |- fpstart.south);
-  \draw (fpstart.east |- lineend) -- (fpstart.east|-fstart.south);
-  \foreach \x in {1,2} {
-    \draw (tp\x|-linestart)+(0,5pt) -- (tp\x |- fpstart.south);
-  };
-\end{tikzpicture}
 
-
-\begin{tikzpicture}
- \matrix[row sep=4mm,column sep=15mm,ampersand replacement=\&]{
-  \& \node(start){0}; \\
-  \node(leftmost){}; \\
-  \& \node(middle1){}; \& \node(middle2){}; \\
-  \& \& \& \node(rightmost){}; \\
-  \& \& \node(end){16}; \\
- };
-% \draw [<->] (leftmost|-start) -- (rightmost|-start);
-% \draw[<->] ( left |- start ) -- ( rightmost |- start ); %+(0,3ex);
- \draw[fill=black](leftmost)circle(2pt);
- \draw[fill=black](rightmost)circle(2pt);
- \draw[>->](start)
-  to[out=180,in=90]node[pos=1,right]{$-11$}(leftmost)
-  to[out=270,in=180](middle1)
-  to[out=0,in=180](middle2)
-  to[out=0,in=90]node[pos=1,left]{$27$}(rightmost)
-  to[out=270,in=0](end);
-\end{tikzpicture}
-
-\begin{tikzpicture}[x=.7em,y=2.5em]
- \draw[<->](-12.9,1)--(28.9,1);
- \foreach\x in {-12,-11,...,28} { \draw(\x,.8)--(\x,1.2); };
- \draw[thick](0,.5)--(0,1.5);
- \draw(0,0)node(start){$0$};
- \draw(-11,-1)node(leftmost){};
- \draw(0,-2)node(middle1){};
- \draw(16,-2)node(middle2){};
- \draw(27,-3)node(rightmost){};
- \draw(16,-4)node(end){$16$};
- \draw[fill=black](leftmost)circle(2pt);
- \draw[fill=black](rightmost)circle(2pt);
- \draw[>->](start)
-  to[out=180,in=90]node[pos=1,right]{$-11$}(leftmost)
-  to[out=270,in=180](middle1)
-  to[out=0,in=180](middle2)
-  to[out=0,in=90]node[pos=1,left]{$27$}(rightmost)
-  to[out=270,in=0](end);
-\end{tikzpicture}
-
-%\begin{tikzpicture}
-% \begin{axis}[width=\marginparwidth,axis y line=middle, axis x line=middle,
-%   xmin=-.1, xmax=1.2, ymin=-.2, ymax=1,name=myplot, ytick=\empty,xtick=\empty]
-%  \addplot[\colorone,domain=-.2:1,thick,smooth]{x*x};
-%%  \draw(axis cs:.3,.09)circle(2pt);
-%  \addplot[\colortwo,thick,domain=0:1]{.6*(x-.3)+.09};
-%  \draw(axis cs:.3,.09)
-%   --node[pos=.6,above,yshift=-.5ex]{\scriptsize $dx=\Delta x$}(axis cs:.8,.09)
-%   --node[pos=.3,right,xshift=-.3em]{$\Big\}\scriptstyle dy$}node[pos=.5,right,xshift=1em]{$\Bigg\}\scriptstyle \Delta y$}(axis cs:.8,.64);
-%\end{axis}
-%\node [right] at (myplot.right of origin) {\scriptsize $x$};
-%\node [above] at (myplot.above origin) {\scriptsize $y$};
-%\end{tikzpicture}
-
-%\appendix
-
-%\pagenumbering{arabic}\renewcommand{\thepage}{A.\arabic{page}}
-
-%\makeexercisesection{Standalone Solutions To All Problems}
 
 \end{document}

@@ -1,0 +1,26 @@
+% !TEX program = XeLaTeX
+\documentclass{standalone}
+
+\usepackage{ifthen}
+\usepackage{tikz}
+
+\newcommand{\fp}{\ensuremath{f\,'}}
+\newcommand{\fpp}{\ensuremath{f\,''}}
+\newcommand{\tbox}[1]{\begin{tabular}{c}#1\end{tabular}} % a tall box
+
+\ifthenelse{\boolean{xetex}}%
+	{%
+	\sffamily
+	%%\usepackage{fontspec}
+	\usepackage{mathspec}
+	\setallmainfonts[Mapping=tex-text]{Calibri}
+	\setmainfont[Mapping=tex-text]{Calibri}
+	\setsansfont[Mapping=tex-text]{Calibri}
+	\setmathsfont(Greek){[cmmi10]}}
+	{\ifthenelse{\boolean{latexml}}{}{\PackageError{apex}{Please compile with XeLaTeX}{Enter x or q to stop.  You can also just continue and see what happens.}}}
+
+\begin{document}
+
+\input{\jobname Src}
+
+\end{document}

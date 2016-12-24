@@ -1,0 +1,14 @@
+\begin{tikzpicture}
+  \matrix[row sep=1mm,column sep=8mm,ampersand replacement=\&] {
+    \&\&\& \node (tp1) {$-1$}; \&\& \node (tp2) {$\frac13$}; \\[-1ex]
+    \node(linestart) {$x$}; \&\&\&\&\&\&\& \node(lineend) {}; \\[-1ex]
+    \&\node (fpstart) {$\fp$}; \\
+    \&\node (fstart) {$f$}; \\
+  };
+  \draw [<->] (linestart.east) -- (lineend);
+  \draw (fpstart.south west) -- (lineend.west |- fpstart.south);
+  \draw (fpstart.east |- lineend) -- (fpstart.east|-fstart.south);
+  \foreach \x in {1,2} {
+    \draw (tp\x|-linestart)+(0,5pt) -- (tp\x |- fpstart.south);
+  };
+\end{tikzpicture}

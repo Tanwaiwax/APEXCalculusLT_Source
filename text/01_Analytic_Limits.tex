@@ -172,9 +172,9 @@ Before stating this theorem formally, suppose we have functions $f$, $g$ and $h$
 
 \mtable[-1.5in]{The situation of the squeeze theorem}{fig:squeeze_thm}{\begin{tikzpicture}
 \begin{axis}[width=\marginparwidth, ticks=none, axis y line=middle,axis x line=middle,ymin=-1.5,ymax=1.5,xmin=-1,xmax=1.5,name=myplot]
-\addplot [black, dashed, domain=-1.5:1.5, thick,smooth] {cos(deg(x-.5))} ;
-\addplot[{\colortwo},domain=-1:1.5, thick, smooth] {cos(deg(2*(x-.5))};
-\addplot[{\colorone}, domain=-1:1.5, thick, smooth] {cos(deg(.5*(x-.5))};
+\addplot [draw=black, dashed, domain=-1.5:1.5, thick,smooth] {cos(deg(x-.5))} ;
+\addplot[draw={\colortwo},domain=-1:1.5, thick, smooth] {cos(deg(2*(x-.5))};
+\addplot[draw={\colorone}, domain=-1:1.5, thick, smooth] {cos(deg(.5*(x-.5))};
 \draw[thin,dashed] (axis cs:0.5,0) -- (axis cs: .5,1);
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
@@ -198,13 +198,13 @@ We use the Squeeze Theorem in the following example to finally prove that $\ds \
 
 \mtable[-1in]{The unit circle and related triangles.}{fig:squeeze_sinx}{
 \begin{tikzpicture}[x=.4\marginparwidth,y=.4\marginparwidth,>=stealth]
- \draw [{\colorone},thick] (0,0)
+ \draw [draw={\colorone},thick] (0,0)
   node [shift={(10pt,4pt)},color=black] {\scriptsize$\theta$} circle (1);
  \draw [<->,thick] (-1.1,0) -- (1.1,0);
  \draw [<->,thick] (0,-1.1) -- (0,1.1);
- \draw [{\colorone},thick] (0,0) -- (1,.839)
+ \draw [draw={\colorone},thick] (0,0) -- (1,.839)
   node [above,color=black] {\scriptsize$(1,\tan \theta)$}-- (1,0) -- (.766,.643);
- \fill [{\colorone}] (1,.839) circle (1.5pt);
+ \fill [fill={\colorone},draw={\colorone}] (1,.839) circle (1.5pt);
  \fill [black] (.766,.643)
   node [left] {\scriptsize$(\cos \theta,\sin \theta)$} circle (1.5pt);
  \fill [black] (1,0) node [below right] {\scriptsize$(1,0)$} circle (1.5pt);

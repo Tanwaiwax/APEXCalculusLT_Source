@@ -12,27 +12,13 @@ use warnings;
 use LaTeXML::Package;
 use Data::Dumper;
 
-# fix some bugs by completely discarding the input
-DefMacro('\matrix[]{}');
-DefEnvironment('{tikzpicture}','<ltx:p>tikzpicture</ltx:p>');
-DefEnvironment('{axis}','<ltx:p>axis</ltx:p>');
-DefEnvironment('{scope}','<ltx:p>scope</ltx:p>');
-#RequirePackage('comment');
-#RawTeX('\excludecomment{tikzpicture}');
-# doesn't work; gets confused by
-# unbalanced { after: \end{tikzpicture}}
-#RawTeX('\excludecomment{axis}');
-#RawTeX('\excludecomment{scope}');
-DefMacro('\addplot');
-DefMacro('\node');
-DefMacro('\draw');
-DefMacro('\filldraw');
-DefMacro('\closedcycle');
-DefMacro('\shade');
-DefMacro('\shadedraw');
-
-# fix a bug
+# fix some bugs
 RawTeX('\setlength{\marginparwidth}{150pt}');
+RawTeX('\setlength{\baselineskip}{12pt}');
+RawTeX('\newlength{\defaultaddspace}');
+RawTeX('\setlength{\defaultaddspace}{5pt}');
+
+DefMacro('\includecodegraphics{}','\includegraphics{#1}');
 
 RequirePackage('ifluatex');
 
@@ -99,8 +85,16 @@ DefMacro('\examplestarred {}{}{}','\begin{exampleEnv}[#2]\label{#1}
 \end{exampleEnv}');
 
 
+DefMacro('\apexchapter []{}{}',
+	 '\setboolean{chapter_already_has_exercises}{false}'
+	 .'\chapter{#2}\label{#3}'
+	 .'\if.#1.\else\input{#1}\fi'
+	 .'\section*{Chapter Introduction}');
+
+
 DefMacro('\myincludegraphicsthree{}{} Semiverbatim',
 	 '\myincludegraphics[#2]{#3_3D}');
+DefMacro('\myincludeasythree{}{} Semiverbatim','\myincludegraphics[#2]{#3}');
 
 DefMacro('\vv {}','\vec #1');
 
@@ -115,12 +109,15 @@ DefMacro('\flushouterequ{}','#1');
 #DefMacro('\captionof{}{}','\caption{#2}');
 
 # some Macros we do need
-DefConstructor('\textcent','&cent;');
+DefMacroI('\textcent',undef,"\x{00A2}");
 DefMacro('\lvert','\vert');
 DefMacro('\rvert','\vert');
 DefMacro('\lVert','\Vert');
 DefMacro('\rVert','\Vert');
+DefMacro('\lxenumerate{}','\begin{enumerate}');
 DefMacro('\psBill');
+
+
 # should be in hyperref
 DefMacro('\equationautorefname','Equation');
 DefMacro('\pageautorefname','Page');
@@ -138,47 +135,28 @@ DefMacro('\x');
 DefMacro('\y');
 
 
-# fake counters to help with numbering the answers
-NewCounter('fakechapter');
-NewCounter('fakesection','fakechapter');
-sub TheFakeSection {
-    return CounterValue('fakechapter')->toString . '.' . CounterValue('fakesection')->toString;
+sub TheChapter {
+    return CounterValue('chapter')->toString;
 }
-sub TheFakeChapter {
-    return CounterValue('fakechapter')->toString;
+sub TheSection {
+    return TheChapter() . '.' . CounterValue('section')->toString;
 }
 
-#DefMacro('\printexercises {}', sub {
-#    if ( CounterValue('section')->toString eq '1' ) {
-#	StepCounter('fakechapter');
-#    }
-#    StepCounter('fakesection');
-#    my $label = TheFakeSection();
-#    Invocation(T_CS('\printexercisesgeneric'),$_[1],"Exercises $label",$label);
-#	 });
-
-#DefMacro('\printexercisesreview {}', sub {
-#    my $label = TheFakeChapter();
-#    Invocation(T_CS('\printexercisesgeneric'),$_[1],"Chapter $label Review Exercises",$label);
-#	 });
-
-#DefMacro('\writeToAnsFile {}{}{}', sub {
-#    my @ret;
-#    if ( CounterValue('section')->toString eq '1' ) {
-#	@ret = Tokenize('\immediate\write\answrite{}\write\answrite{\section*{Chapter '.TheFakeChapter().'}}');
-#    }
-#    push(@ret,
-#	 Tokenize('\immediate\write\answrite{\subsection*{\hyperref[exer'),
-#	 $_[3],
-#	 Tokenize(']{'),
-#	 $_[2],
-#	 Tokenize('}}\label{sol'),
-#	 $_[3],
-#	 Tokenize('}\bigskip}\write\answrite{\lxAddClass{solutions}\printanswers{'),
-#	 $_[1],
-#	 Tokenize('}}'));
-#    @ret;
-#	 });
+my %foundChapter;
+DefMacro('\writeToAnsFile {}', sub {
+    my @ret;
+    if ( ! $foundChapter{TheChapter()} ) {
+	$foundChapter{TheChapter()} = 'true';
+	@ret = Tokenize('\immediate\write\answrite{}\write\answrite{\section*{Chapter '.TheChapter().'}}');
+    }
+    push(@ret,
+	 Tokenize('\immediate\write\answrite{\subsection*{\hyperref[exer'
+		  .TheSection().']{Exercises '.TheSection().'}}\label{sol'
+		  .TheSection().'}\bigskip}\write\answrite{\lxAddClass{solutions}\loadAnswers{'),
+	 $_[1],
+	 Tokenize('}}'));
+    @ret;
+	 });
 
 DefPrimitive('\showans Number',sub {
     my ($stomach,$port) = @_;

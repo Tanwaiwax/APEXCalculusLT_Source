@@ -129,7 +129,7 @@ If $\ds \lim_{x\to\infty} f(x) = L$, then $\ds\lim_{n\to\infty} a_n = L$.
   \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
     axis y line=middle,axis x line=middle,name=myplot,axis on top,%
     xtick={20,40,60,80,100},ymin=-11,ymax=11,xmin=-.1,xmax=110]
-   \addplot [only marks,{\colorone},mark size={.75pt},domain=1:100,samples=21]
+   \addplot [only marks,draw={\colorone},mark size={.75pt},domain=1:100,samples=21]
     {(3*x^2 - 2*x + 1)/(x^2 - 1000)};
    \draw (axis cs:60,-8) node {\scriptsize $a_n=\dfrac{3n^2-2n+1}{n^2-1000}$};
   \end{axis}
@@ -202,11 +202,11 @@ Since we know that the signs of the terms alternate \emph{and} we know that the 
 We continue our study of the limits of sequences by considering some of the properties of these limits.
 
 \theorem{thm:seq_properties}{Properties of the Limits of Sequences}
-{Let $\{a_n\}$ and $\{b_n\}$ be sequences such that $\ds \lim_{n\to\infty} a_n = L$, $\ds \lim_{n\to\infty} b_n = K$, and let $c$ be a real number.\\
+{Let $\{a_n\}$ and $\{b_n\}$ be sequences such that $\ds \lim_{n\to\infty} a_n = L$, $\ds \lim_{n\to\infty} b_n = K$, and let $c$ be a real number.\index{sequences!limit properties}
+\\
 \begin{minipage}[t]{.5\linewidth}
 \begin{enumerate}
 \item		$\ds \lim_{n\to\infty} (a_n\pm b_n) = L\pm K$
-\index{sequences!limit properties}
 \item		$\ds \lim_{n\to\infty} (a_n\cdot b_n) = L\cdot K$
 \end{enumerate}
 \end{minipage}%
@@ -303,13 +303,12 @@ In \autoref{sec:lhopitals_rule} \autoref{ex_LHR4} part 1, we found that $\ds \li
 Another interesting concept to come out of \autoref{ex_seq3} again involves the sequence $\{1/n\}$. We stated, without proof, that the terms of the sequence were decreasing. That is, that $a_{n+1} < a_n$ for all $n$. (This is easy to show. Clearly $n < n+1$. Taking reciprocals flips the inequality: $1/n > 1/(n+1)$. This is the same as $a_n > a_{n+1}$.) Sequences that either steadily increase or decrease are important, so we give this property a name.
 
 \definition{def:monotonic}{Monotonic Sequences}
-{\mbox{}\\[-2\baselineskip]\begin{enumerate}
+{\mbox{}\\[-2\baselineskip]\index{sequences!monotonic}\index{monotonic sequence}\begin{enumerate}
 \item		A sequence $\{a_n\}$ is \textbf{monotonically increasing} if $a_n \leq a_{n+1}$ for all $n$, i.e.,
  $$a_1 \leq a_2 \leq a_3 \leq \cdots a_n \leq a_{n+1} \cdots$$
  \item	A sequence $\{a_n\}$ is \textbf{monotonically decreasing} if $a_n \geq a_{n+1}$ for all $n$, i.e.,
  $$a_1 \geq a_2 \geq a_3 \geq \cdots a_n \geq a_{n+1} \cdots$$
  \item	A sequence is \textbf{monotonic} if it is monotonically increasing or monotonically decreasing.
-\index{sequences!monotonic}\index{monotonic sequence}
  \end{enumerate}}
 
 \mnote{\textbf{Note:} It is sometimes useful to call a monotonically increasing sequence \emph{strictly increasing} if $a_n < a_{n+1}$ for all $n$; i.e, we remove the possibility that subsequent terms are equal.

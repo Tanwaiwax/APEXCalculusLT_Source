@@ -3,13 +3,13 @@ $(setup);
 var lastMarginBoxBottom;
 
 function setup() {
-    MathJax.Hub.Register.StartupHook("End",spaceOutMarginBoxes);
+//    MathJax.Hub.Register.StartupHook("End",spaceOutMarginBoxes);
     spaceOutMarginBoxes();
     // onload, spaceOut is ok.  It needs to run after MathJax is done,
     // but that is noticeably longer.
     wrapSolutions();
     $("[id]:has(.ltx_font_bold+.ltx_font_bold)").each(addPermaLink);
-    removeTitlePageExtras();
+//    removeTitlePageExtras();
     fixFirefoxAnchorBug();
 }
 

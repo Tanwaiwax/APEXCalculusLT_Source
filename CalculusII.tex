@@ -1,6 +1,6 @@
 \part{Calculus II}
 
-
+\ifthenelse{\boolean{isEarlyTrans}}{}{%
 \apexchapter{Inverse Functions and L'H\^opital's Rule}{chapter:diff_conc}
 
 % todo write a better chapter intro for Inverse Functions
@@ -10,6 +10,7 @@ This chapter completes our differentiation toolkit.  The first and most importan
 \input{text/07_Exp_Log_Functions}
 \input{text/06_Hyperbolic_Functions}
 \input{text/06_LHopitals_Rule}
+}
 
 
 \apexchapter{Techniques of Integration}{chapter:anti_tech}
@@ -26,7 +27,11 @@ we can still find antiderivatives of a wide variety of functions.
 \input{text/06_Integration_Strategies}
 \input{text/06_Improper_Integration}
 \input{text/05_Numerical_Integration}
-%\printexercisesreview{exercises/06_cr_exercises}
+\ifthenelse{\boolean{isEarlyTrans}}{%
+ \input{text/06_Hyperbolic_Functions}
+ \input{text/06_LHopitals_Rule}%
+}{}
+
 
 
 \apexchapter{Sequences and Series}{chapter:sequences_series}
@@ -42,7 +47,6 @@ we can still find antiderivatives of a wide variety of functions.
 %\input{text/08_Series_Functions}
 \input{text/08_Taylor_Polynomials}
 \input{text/08_Taylor_Series}
-%\printexercisesreview{exercises/08_cr_exercises}
 
 
 \apexchapter[text/09_Conics_Abridged]{Curves in the Plane}{chapter:planar_curves}

@@ -5,25 +5,29 @@
 Given two non--parallel, nonzero vectors $\vec u$ and $\vec v$ in space, it is very useful to find a vector $\vec w$ that is perpendicular to both $\vec u$ and $\vec v$. There is a operation, called the \textbf{cross product}, that creates such a vector. This section defines the cross product, then explores its properties and applications.
 
 \definition{def:cross_product}{Cross Product}
-{Let $\vec u =\la u_1,u_2,u_3\ra$ and $\vec v = \la v_1,v_2,v_3\ra$ be vectors in $\mathbb{R}^3$. The \textbf{cross product of $\vec u$ and $\vec v$}, denoted $\crossp uv$, is the vector
+{Let $\vec u =\bracket{u_1,u_2,u_3}$ and $\vec v = \bracket{v_1,v_2,v_3}$ be vectors in $\mathbb{R}^3$. The \textbf{cross product of $\vec u$ and $\vec v$}, denoted $\crossp uv$, is the vector
 \index{vectors!cross product}\index{cross product!definition}
-$$\crossp uv = \la u_2v_3-u_3v_2,-(u_1v_3-u_3v_1),u_1v_2-u_2v_1\ra.$$}
+$$\crossp uv = \bracket{u_2v_3-u_3v_2,-(u_1v_3-u_3v_1),u_1v_2-u_2v_1}.$$}
 
 This definition can be a bit cumbersome to remember. After an example we will give a convenient method for computing the cross product. For now, careful examination of the products and differences given in the definition should reveal a pattern that is not too difficult to remember. (For instance, in the first component only 2 and 3 appear as subscripts; in the second component, only 1 and 3 appear as subscripts. Further study reveals the order in which they appear.)
 
+\youtubeVideo{qsgK1d-_8ik}{Cross Product}
+
 Let's practice using this definition by computing a cross product.
 
-\example{ex_crossp1}{Computing a cross product}{Let $\vec u = \la 2,-1,4\ra$ and $\vec v = \la 3,2,5\ra$. Find $\crossp uv$, and verify that it is orthogonal to both $\vec u$ and $\vec v$.}
+\example{ex_crossp1}{Computing a cross product}{Let $\vec u = \bracket{2,-1,4}$ and $\vec v = \bracket{3,2,5}$. Find $\crossp uv$, and verify that it is orthogonal to both $\vec u$ and $\vec v$.}
 {Using \autoref{def:cross_product}, we have
-$$\crossp uv = \la (-1)5-(4)2,-\big((2)5-(4)3\big), (2)2-(-1)3\ra = \la -13,2,7\ra.$$ 
+$$\crossp uv = \bracket{(-1)5-(4)2,-\big((2)5-(4)3\big), (2)2-(-1)3}=\bracket{-13,2,7}.$$ 
 (We encourage the reader to compute this product on their own, then verify their result.)
 
 We test whether or not $\crossp uv$ is orthogonal to $\vec u$ and $\vec v$ using the dot product:
-$$\big(\crossp uv\big) \cdot \vec u = \la -13,2,7\ra \cdot \la 2,-1,4\ra = 0,$$
-$$\big(\crossp uv\big) \cdot \vec v = \la -13,2,7\ra \cdot \la 3,2,5 \ra = 0.$$
+\begin{align*}
+\big(\crossp uv\big) \cdot \vec u &=\bracket{-13,2,7}\cdot\bracket{2,-1,4}=0, \\
+\big(\crossp uv\big) \cdot \vec v &=\bracket{-13,2,7}\cdot\bracket{3,2,5}=0.
+\end{align*}
 Since both dot products are zero, $\crossp uv$ is indeed orthogonal to both $\vec u$ and $\vec v$.}
 
-A convenient method of computing the cross product starts with forming a particular $3\times 3$ \emph{matrix}, or rectangular array. The first row comprises the standard unit vectors $\vec i$, $\vec j$, and $\vec k$. The second and third rows are the vectors $\vec u$ and $\vec v$, respectively. Using $\vec u$ and $\vec v$ from \autoref{ex_crossp1}, we begin with:
+A convenient method of computing the cross product starts with forming a particular $3\times 3$ \emph{matrix}, or rectangular array. The first row comprises the standard unit vectors $\veci$, $\vecj$, and $\vec k$. The second and third rows are the vectors $\vec u$ and $\vec v$, respectively. Using $\vec u$ and $\vec v$ from \autoref{ex_crossp1}, we begin with:
 \[
  \begin{matrix}
   \veci&\vecj&\veck \\
@@ -52,21 +56,21 @@ This gives three full ``upper left to lower right'' diagonals, and three full ``
 \draw[->, thin] (.7,.4) -- (-1.3,-.8) node[below left ] {8\veci};
 \draw[->, thin] (1.3,.4) -- (-.5,-.8) node[below left] {10\vecj};
 \end{tikzpicture}\end{center}
-$$\crossp uv = \big(-5\veci+12\vecj+4\veck\,\big) - \big(-3\veck+8\veci+10\vecj\,\big) = -13\veci+2\vecj+7\veck = \la -13,2,7\ra.$$
+$$\crossp uv = \big(-5\veci+12\vecj+4\veck\,\big) - \big(-3\veck+8\veci+10\vecj\,\big) = -13\veci+2\vecj+7\veck =\bracket{-13,2,7}.$$
 
 We practice using this method.
 
-\example{ex_crossp2}{Computing a cross product}{Let $\vecu=\la 1,3,6\ra$ and $\vec v = \la -1,2,1\ra$. Compute both $\crossp uv$ and $\crossp vu$.}
+\example{ex_crossp2}{Computing a cross product}{Let $\vecu=\bracket{1,3,6}$ and $\vec v = \bracket{-1,2,1}$. Compute both $\crossp uv$ and $\crossp vu$.}
 {To compute $\crossp uv$, we form the matrix as prescribed above, complete with repeated first columns:
 $$\begin{array}{ccccc} \ \veci\ &\ \vecj\ &\ \veck\ &\ \veci\ &\ \vecj\ \\  1&3&6&1&3\\-1&2&1&-1&2\end{array}$$
 We let the reader compute the products of the diagonals; we give the result:
-$$\crossp uv = \big(3\veci-6\vecj+2\veck\,\big) - \big(-3\veck + 12\veci+\vecj\,\big) = \la -9,-7,5\ra.$$
+$$\crossp uv = \big(3\veci-6\vecj+2\veck\,\big) - \big(-3\veck + 12\veci+\vecj\,\big) = \bracket{-9,-7,5}.$$
 
 To compute $\crossp vu$, we switch the second and third rows of the above matrix, then multiply along diagonals and subtract:
 
 $$\begin{array}{ccccc} \ \veci\ &\ \vecj\ &\ \veck\ &\ \veci\ &\ \vecj\ \\-1&2&1&-1&2\\  1&3&6&1&3\end{array}$$
 Note how with the rows being switched, the products that once appeared on the right now appear on the left, and vice--versa. Thus the result is:
-$$\crossp vu = \big(12\veci+\vecj-3\veck\,\big) - \big(2\veck + 3\veci-6\vecj\,\big) = \la 9,7,-5\ra,$$
+$$\crossp vu = \big(12\veci+\vecj-3\veck\,\big) - \big(2\veck + 3\veci-6\vecj\,\big) = \bracket{9,7,-5},$$
 which is the opposite of $\crossp uv$. We leave it to the reader to verify that each of these vectors is orthogonal to $\vec u$ and $\vec v$.}
 
 \subsection*{Properties of the Cross Product}
@@ -116,7 +120,7 @@ Note that this theorem makes a statement about the \emph{magnitude} of the cross
 
 We demonstrate the truth of this theorem in the following example.
 
-\example{ex_crossp3}{The cross product and angles}{Let $\vec u = \la 1,3,6\ra$ and $\vec v = \la -1,2,1\ra$ as in \autoref{ex_crossp2}. Verify \autoref{thm:cross_product} by finding $\theta$, the angle between $\vecu$ and $\vecv$, and the magnitude of $\crossp uv$.}
+\example{ex_crossp3}{The cross product and angles}{Let $\vec u =\bracket{1,3,6}$ and $\vec v = \bracket{-1,2,1}$ as in \autoref{ex_crossp2}. Verify \autoref{thm:cross_product} by finding $\theta$, the angle between $\vecu$ and $\vecv$, and the magnitude of $\crossp uv$.}
 {We use \autoref{thm:dot_product} to find the angle between $\vecu$ and $\vecv$. 
 \begin{align*}
 \theta &= \cos^{-1}\left(\frac{\dotp uv}{\vnorm u\, \vnorm v}\right) \\
@@ -124,7 +128,7 @@ We demonstrate the truth of this theorem in the following example.
 			&\approx 0.8471 = 48.54^\circ.
 \end{align*}
 
-Our work in \autoref{ex_crossp2} showed that $\crossp uv = \la -9,-7,5\ra$, hence $\norm{\crossp uv} = \sqrt{155}.$ Is $\norm{\crossp uv} = \vnorm u\, \vnorm v\sin\theta$? Using numerical approximations, we find:
+Our work in \autoref{ex_crossp2} showed that $\crossp uv = \bracket{-9,-7,5}$, hence $\norm{\crossp uv} = \sqrt{155}.$ Is $\norm{\crossp uv} = \vnorm u\, \vnorm v\sin\theta$? Using numerical approximations, we find:
 \begin{align*}
 \norm{\crossp uv} &=\sqrt{155}  & \vnorm u\,\vnorm v \sin\theta & = \sqrt{46}\sqrt{6}\sin 0.8471\\
 									&\approx 12.45. & &\approx 12.45.
@@ -168,12 +172,12 @@ We illustrate using \autoeqref{eq:crossp1} in the following example.
 \index{cross product!applications!area of parallelogram}
 
 \example{ex_crossp4}{Finding the area of a parallelogram}{\mbox{}\\[-2\baselineskip]\begin{enumerate}
-	\item Find the area of the parallelogram defined by the vectors $\vecu = \la 2,1\ra$ and $\vecv = \la 1,3\ra$.
+	\item Find the area of the parallelogram defined by the vectors $\vecu = \bracket{2,1}$ and $\vecv = \bracket{1,3}$.
 	\item	Verify that the points $A = (1,1,1)$, $B = (2,3,2)$, $C = (4,5,3)$ and $D = (3,3,2)$ are the vertices of a parallelogram. Find the area of the parallelogram.
 \end{enumerate}}
 {\mbox{}\\[-1.5\baselineskip]\begin{enumerate}
-	\item \autoref{fig:crossp4}(a) sketches the parallelogram defined by the vectors $\vec u$ and $\vec v$. We have a slight problem in that our vectors exist in $\mathbb{R}^2$, not $\mathbb{R}^3$, and the cross product is only defined on vectors in $\mathbb{R}^3$. We skirt this issue by viewing $\vec u$ and $\vecv$ as vectors in the $x-y$ plane of $\mathbb{R}^3$, and rewrite them as $\vec u = \la 2,1,0\ra$ and $\vecv =\la 1,3,0\ra$. We can now compute the cross product. 
-	It is easy to show that $\crossp uv = \la 0,0,5\ra$; therefore the area of the parallelogram is $A = \norm{\crossp uv} = 5$.
+	\item \autoref{fig:crossp4}(a) sketches the parallelogram defined by the vectors $\vec u$ and $\vec v$. We have a slight problem in that our vectors exist in $\mathbb{R}^2$, not $\mathbb{R}^3$, and the cross product is only defined on vectors in $\mathbb{R}^3$. We skirt this issue by viewing $\vec u$ and $\vecv$ as vectors in the $x-y$ plane of $\mathbb{R}^3$, and rewrite them as $\vec u = \bracket{2,1,0}$ and $\vecv =\bracket{1,3,0}$. We can now compute the cross product. 
+	It is easy to show that $\crossp uv = \bracket{0,0,5}$; therefore the area of the parallelogram is $A = \norm{\crossp uv} = 5$.
 	\mtable{Sketching the parallelograms in \autoref{ex_crossp4}.}{fig:crossp4}{%
 	\begin{tabular}{c}
 	\includegraphics{figures/figcrossp4b}\\
@@ -189,8 +193,8 @@ We illustrate using \autoeqref{eq:crossp1} in the following example.
 	(b)
 	\end{tabular}
 	}
-	\item		To show that the quadrilateral $ABCD$ is a parallelogram (shown in \autoref{fig:crossp4}(b)), we need to show that the opposite sides are parallel. We can quickly show that $\vv{AB} =\vv{DC} = \la 1,2,1\ra$ and $\vv{BC} = \vv{AD} = \la 2,2,1\ra$. We find the area by computing the magnitude of the cross product of $\vv{AB}$ and $\vv{BC}$:
-	$$\vv{AB} \times \vv{BC} = \la 0,1,-2\ra \quad \Rightarrow \quad \norm{\vv{AB}\times\vv{BC}} = \sqrt{5} \approx 2.236.\eoehere$$
+	\item		To show that the quadrilateral $ABCD$ is a parallelogram (shown in \autoref{fig:crossp4}(b)), we need to show that the opposite sides are parallel. We can quickly show that $\vv{AB} =\vv{DC} = \bracket{1,2,1}$ and $\vv{BC} = \vv{AD} = \bracket{2,2,1}$. We find the area by computing the magnitude of the cross product of $\vv{AB}$ and $\vv{BC}$:
+	$$\vv{AB} \times \vv{BC} = \bracket{0,1,-2}\quad \Rightarrow \quad \norm{\vv{AB}\times\vv{BC}} = \sqrt{5} \approx 2.236.\eoehere$$
 \end{enumerate}}
 
 This application is perhaps more useful in finding the area of a triangle (in short, triangles are used more often than parallelograms). We illustrate this in the following example.
@@ -199,8 +203,8 @@ This application is perhaps more useful in finding the area of a triangle (in sh
 {We found the area of this triangle in \autoref{ex_abc4} to be $1.5$ using integration. There we discussed the fact that finding the area of a triangle can be inconvenient using the ``$\frac12bh$'' formula as one has to compute the height, which generally involves finding angles, etc. Using a cross product is much more direct.
 \mfigure{0in}{Finding the area of a triangle in \autoref{ex_crossp5}.}{fig:crossp5}{figures/figcrossp5}
 
-We can choose any two sides of the triangle to use to form vectors; we choose $\vv{AB} = \la 1,1\ra$ and $\vv{AC}=\la 2,-1\ra$. As in the previous example, we will rewrite these vectors with a third component of 0 so that we can apply the cross product. The area of the triangle is
-$$\frac12\norm{\vv{AB}\times\vv{AC}} = \frac12\norm{\la 1,1,0\ra \times \la 2,-1,0\ra} = \frac12\norm{\la 0,0,-3\ra} = \frac32.$$
+We can choose any two sides of the triangle to use to form vectors; we choose $\vv{AB} = \bracket{1,1}$ and $\vv{AC}=\bracket{2,-1}$. As in the previous example, we will rewrite these vectors with a third component of 0 so that we can apply the cross product. The area of the triangle is
+$$\frac12\norm{\vv{AB}\times\vv{AC}} = \frac12\norm{\bracket{1,1,0}\times \bracket{2,-1,0}} = \frac12\norm{\bracket{0,0,-3}} = \frac32.$$
 We arrive at the same answer as before with less work.}
 
 \subsubsection*{Volume of a Parallelepiped}
@@ -224,9 +228,9 @@ V = \abs{\vecu\cdot (\crossp vw)}.\label{eq:crossp2}
 Note how this is the Triple Scalar Product, first seen in \autoref{thm:cross_prod_prop}. Applying the identities given in the theorem shows that we can apply the Triple Scalar Product in any ``order'' we choose to find the volume. That is,
 $$V = \abs{\vecu\cdot(\crossp vw)} = \abs{\vec u\cdot (\crossp wv)} = \abs{(\crossp uv)\cdot \vecw},\quad \text{etc.}$$
 
-\example{ex_crossp6}{Finding the volume of parallelepiped}{Find the volume of the parallepiped defined by the vectors $\vecu = \la 1,1,0\ra$, $\vecv = \la -1,1,0\ra$ and $\vecw = \la 0,1,1\ra$.}
-{We apply \autoeqref{eq:crossp2}. We first find $\crossp vw =\la 1,1,-1\ra$. Then
-$$\abs{\vec u\cdot(\crossp vw)} = \abs{\la 1,1,0\ra \cdot \la1,1,-1\ra} = 2.$$
+\example{ex_crossp6}{Finding the volume of parallelepiped}{Find the volume of the parallepiped defined by the vectors $\vecu = \bracket{1,1,0}$, $\vecv = \bracket{-1,1,0}$ and $\vecw = \bracket{0,1,1}$.}
+{We apply \autoeqref{eq:crossp2}. We first find $\crossp vw =\bracket{1,1,-1}$. Then
+$$\abs{\vec u\cdot(\crossp vw)} = \abs{\bracket{1,1,0}\cdot \bracket{1,1,-1}} = 2.$$
 So the volume of the parallelepiped is 2 cubic units.
 \mfigurethree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
 3Droll=0,
@@ -251,31 +255,31 @@ While a full understanding of torque is beyond the purposes of this book, when a
 	\item	the force makes an angle of $60^\circ$ with the lever, as shown in \autoref{fig:crossp7}.
 \end{enumerate}}
 {\begin{enumerate}
-	\item We start by determining vectors for the force and lever arm. Since the lever arm makes a $45^\circ$ angle with the horizontal and is 2ft long, we can state that $\vec \ell = 2\la \cos 45^\circ,\sin 45^\circ\ra = \la \sqrt2,\sqrt2\ra.$
+	\item We start by determining vectors for the force and lever arm. Since the lever arm makes a $45^\circ$ angle with the horizontal and is 2ft long, we can state that $\vec \ell = 2\bracket{\cos 45^\circ,\sin 45^\circ}= \bracket{\sqrt2,\sqrt2}.$
 	
-	Since the force vector is perpendicular to the lever arm (as seen in the left hand side of \autoref{fig:crossp7}), we can conclude it is making an angle of $-45^\circ$ with the horizontal. As it has a magnitude of 10lb, we can state $\vec F = 10\la \cos (-45^\circ), \sin(-45^\circ)\ra = \la 5\sqrt2,-5\sqrt2\ra.$
+	Since the force vector is perpendicular to the lever arm (as seen in the left hand side of \autoref{fig:crossp7}), we can conclude it is making an angle of $-45^\circ$ with the horizontal. As it has a magnitude of 10lb, we can state $\vec F = 10\bracket{\cos (-45^\circ), \sin(-45^\circ)}= \bracket{5\sqrt2,-5\sqrt2}.$
 	
 	Using \autoeqref{eq:crossp3} to find the torque requires a cross product. We again let the third component of each vector be 0  and compute the cross product:
 	\begin{align*}
 	\vec\tau &= \crossp \ell F \\
-				&= \la \sqrt2,\sqrt2,0\ra \times \la 5\sqrt2,-5\sqrt2,0\ra \\
-				&= \la 0,0,-20\ra
+				&= \bracket{\sqrt2,\sqrt2,0}\times \bracket{5\sqrt2,-5\sqrt2,0}\\
+				&= \bracket{0,0,-20}
 	\end{align*}
 	This clearly has a magnitude of 20 ft-lb.
 		
 	We can view the force and lever arm vectors as lying ``on the page''; our computation of $\vec\tau$ shows that the torque goes ``into the page.'' This follows the Right Hand Rule of the cross product, and it also matches well with the example of the wrench turning the bolt. Turning a bolt clockwise moves it in.
 	
-	\item		Our lever arm can still be represented by $\vec \ell = \la \sqrt2,\sqrt2\ra$. As our force vector makes a $60^\circ$ angle with $\vec \ell$, we can see (referencing the right hand side of the figure) that $\vec F$ makes a $-15^\circ$ angle with the horizontal. Thus 
+	\item		Our lever arm can still be represented by $\vec \ell = \bracket{\sqrt2,\sqrt2}$. As our force vector makes a $60^\circ$ angle with $\vec \ell$, we can see (referencing the right hand side of the figure) that $\vec F$ makes a $-15^\circ$ angle with the horizontal. Thus 
 	\begin{align*}
-	\vec F = 10\la \cos-15^\circ,\sin-15^\circ\ra &= \la \frac{5(1+\sqrt3)}{\sqrt2},-\frac{5(1+\sqrt3)}{\sqrt2}\ra \\
-	&\approx \la 9.659,-2.588\ra.\end{align*}
+	\vec F = 10\bracket{\cos-15^\circ,\sin-15^\circ}&= \bracket{\frac{5(1+\sqrt3)}{\sqrt2},-\frac{5(1+\sqrt3)}{\sqrt2}}\\
+	&\approx \bracket{9.659,-2.588}.\end{align*}
 	
 	We again make the third component 0 and take the cross product to find the torque:
 	\begin{align*}
 	\vec\tau &= \crossp \ell F\\
-					&= \la \sqrt2,\sqrt2,0\ra \times  \la \frac{5(1+\sqrt3)}{\sqrt2},-\frac{5(1+\sqrt3)}{\sqrt2},0\ra\\
-					&= \la 0,0,-10\sqrt3\ra\\
-					&\approx \la 0,0,-17.321\ra.
+					&= \bracket{\sqrt2,\sqrt2,0}\times  \bracket{\frac{5(1+\sqrt3)}{\sqrt2},-\frac{5(1+\sqrt3)}{\sqrt2},0}\\
+					&= \bracket{0,0,-10\sqrt3}\\
+					&\approx \bracket{0,0,-17.321}.
 	\end{align*}
 	As one might expect, when the force and lever arm vectors \textit{are} orthogonal, the magnitude of force is greater than when the vectors \textit{are not} orthogonal.\eoehere
 \end{enumerate}}

@@ -69,6 +69,8 @@ Some of the most important results we will need for line integrals in $\mathbb{R
 
 \theorem{cor:lineintsuffpath3}{Zero Line Integral}{If a vector field $\vecf$ has a potential in a solid $S$, then $\ds\oint_{C}{f}\cdot d\vec{r} = 0$ for any closed curve $C$ in $S$ (i.e., $\ds\oint_{C}\Dotprod{\nabla F}{d\vecr} = 0$ for any real-valued function $F(x,y,z)$).}
 
+\youtubeVideo{xVhHow_usMQ}{Fundamental Theorem for Line Integrals}
+
 \example{exmp_conhelix}{Evaluating a Line Integral}{Let $f(x,y,z) = z$ and let $C$ be the curve in $\mathbb{R}^{3}$ parametrized by
 \[x=t\sin t ,\quad y=t\cos t ,\quad z=t ,\quad 0\le t \le 8\pi .\]
 Evaluate $\int_C f(x,y,z)\,ds$. (Note: $C$ is called a \emph{conical helix}\index{conical helix}\index{helix}. See \autoref{fig:conhelix}).%
@@ -77,7 +79,7 @@ Evaluate $\int_C f(x,y,z)\,ds$. (Note: $C$ is called a \emph{conical helix}\inde
   \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},axis on top,
 				axis lines=center,y dir=reverse,name=myplot,
 				ymin=-30,ymax=30,xmin=-30,xmax=30,zmin=0,zmax=30]
-   \addplot3[{\colorone},domain=0:8*pi,samples=100,samples y=0]
+   \addplot3[draw={\colorone},domain=0:8*pi,samples=100,samples y=0]
     ({x*cos(deg(x))},{x*sin(deg(x))},{x});
   \end{axis}
   \node [left] at (myplot.below origin) [shift={(-30pt,0pt)}] {$x$};
@@ -86,14 +88,16 @@ Evaluate $\int_C f(x,y,z)\,ds$. (Note: $C$ is called a \emph{conical helix}\inde
  \end{tikzpicture}}%
 }{Since $x\primeskip'(t)=\sin t + t\cos t$, $y\primeskip'(t)=\cos t - t\sin t$, and $z\primeskip'(t)=1$, we have
  \begin{align*}
-  x\primeskip'(t)^2 + y\primeskip'(t)^2 + z\primeskip'(t)^2 &= (\sin^2 t + 2t\sin t \cos t + t^2 \cos^2 t) + (\cos^2 t - 2t\sin t \cos t +
-   t^2 \sin^2 t) + 1\\
+  x\primeskip'(t)^2 + y\primeskip'(t)^2 + z\primeskip'(t)^2
+   &= (\sin^2 t + 2t\sin t \cos t + t^2 \cos^2 t) \\
+   & \qquad {} + (\cos^2 t - 2t\sin t \cos t + t^2 \sin^2 t) + 1\\
    &= t^2 (\sin^2 t + \cos^2 t) + \sin^2 t + \cos^2 t + 1\\
    &= t^2 + 2 ,
  \end{align*}
  so since $f(x(t),y(t),z(t)) = z(t) = t$ along the curve $C$, then
  \begin{align*}
-  \int_C f(x,y,z)\,ds &= \int_0^{8\pi} f(x(t),y(t),z(t)) \,\sqrt{x\primeskip'(t)^2 + y\primeskip'(t)^2 + z\primeskip'(t)^2}\,\,dt\\
+  \int_C f(x,y,z)\,ds
+   &= \int_0^{8\pi} f(x(t),y(t),z(t)) \,\sqrt{x\primeskip'(t)^2 + y\primeskip'(t)^2 + z\primeskip'(t)^2}\,\,dt\\
    &= \int_0^{8\pi} t\,\sqrt{t^2 + 2}\,\,dt\\
    &= \left.\left( \frac{1}{3} (t^2 + 2)^{3/2} \right) \,\right|_0^{8\pi}
    = \frac{1}{3} \left( (64\pi^2 + 2)^{3/2} - 2\sqrt{2} \right) .\eoehere
@@ -108,26 +112,19 @@ Evaluate $\int_C f(x,y,z)\,ds$. (Note: $C$ is called a \emph{conical helix}\inde
    = 96\pi^2 .\eoehere
  \end{align*}}
 
-We will now discuss a generalization of Green's Theorem in $\mathbb{R}^{2}$ to \emph{orientable} surfaces in $\mathbb{R}^{3}$, called \emph{Stokes' Theorem}.\index{Stokes' Theorem}\index{orientable}\index{surface!orientable} A surface $\Sigma$ in $\mathbb{R}^{3}$ is \textbf{orientable} if there is a continuous vector field \vecn in $\mathbb{R}^{3}$ such that \vecn is nonzero and normal to $\Sigma$ (i.e. perpendicular to the tangent plane) at each point of $\Sigma$. We say that such an \vecn is a \emph{normal vector field}.\index{normal vector field}\index{vector field!normal}
+We will now discuss a generalization of Green's Theorem in $\mathbb{R}^{2}$ to \emph{orientable} surfaces in $\mathbb{R}^{3}$, called \emph{Stokes' Theorem}.\index{Stokes' Theorem}\index{orientable}\index{surface!orientable} A surface $\Sigma$ in $\mathbb{R}^{3}$ is \textbf{orientable} if there is a continuous vector field \vecn\ in $\mathbb{R}^{3}$ such that \vecn\ is nonzero and normal to $\Sigma$ (i.e. perpendicular to the tangent plane) at each point of $\Sigma$. We say that such an \vecn\ is a \emph{normal vector field}.\index{normal vector field}\index{vector field!normal}
 
 \mtable{An orientation of the sphere.}{fig:or_sph}{\begin{tikzpicture}
- \usetikzlibrary{arrows}
- \definecolor{spherecolor}{HTML}{80DCFF}
- \shade [ball color=spherecolor] (0,0) circle (1.5);
- \draw [black!60,line width=0.3pt,-latex] (0,0) -- (2,0,0);
- \draw [black!60,line width=0.3pt,-latex] (0,0) -- (0,2,0);
- \draw [black!60,line width=0.3pt,-latex] (0,0) -- (0,0,4);
- \pgfputat{\pgfpointxyz{1.9}{0.2}{0}}{\pgfbox[center,center]{\small $y$}};
- \pgfputat{\pgfpointxyz{0.2}{1.9}{0}}{\pgfbox[center,center]{\small $z$}};
- \pgfputat{\pgfpointxyz{0.2}{0}{3.8}}{\pgfbox[center,center]{\small $x$}};
- \pgfputat{\pgfpointxyz{0.05}{-0.2}{0}}{\pgfbox[center,center]{\small $0$}};
- \draw [line width=0.2pt] (-1.5,0) arc (180:360:1.5 and 0.4);
- \draw [dashed,line width=0.2pt] (1.5,0) arc (0:180:1.5 and 0.4);
+ \shade [ball color={\coloronefill!60!\colorone}] (0,0) circle (1.5);
+ \draw [->] (0,0)--node[pos=1,above]{\small$y$} (2,0);
+ \draw [->] (0,0)--node[pos=1,right]{\small$z$} (0,2);
+ \draw [->] (0,0)--node[pos=1,right]{\small$x$} (0,0,4);
+ \node[below]at(0,0){\small$0$};
+ \draw [draw={\colorone}] (-1.5,0) arc (180:360:1.5 and 0.4);
+ \draw [dashed,draw={\colorone}] (1.5,0) arc (0:180:1.5 and 0.4);
  \fill (0.98,0.98) circle (2pt);
- \draw [line width=1.2pt,-latex] (0.98,0.98) -- (1.5,1.5);
- \node [right] at (1.5,1.5) {\small $\vecn$};
- \draw [dashed,line width=1.2pt,-latex] (0.98,0.98) -- (0.46,0.46);
- \node [above] at (0.4,0.58) {\small $-\vecn$};
+ \draw [very thick,->] (0.98,0.98) -- (1.5,1.5)node[right]{\small $\vecn$};
+ \draw [dashed,very thick,->] (0.98,0.98) -- (0.46,0.46)node[above left]{\small $-\vecn$};
 \end{tikzpicture}}
 
 For example, the unit sphere $x^2 + y^2 + z^2 = 1$ is orientable, since the continuous vector field $\vecn(x,y,z) = x\,\veci + y\,\vecj + z\,\veck$ is nonzero and normal to the sphere at each point. In fact, $-\vecn(x,y,z)$ is another normal vector field (see \autoref{fig:or_sph}). We see in this case that $\vecn(x,y,z)$ is what we have called an outward normal vector, and $-\vecn(x,y,z)$ is an \emph{inward} normal vector. These ``outward'' and ``inward'' normal vector fields on the sphere correspond to an ``outer'' and ``inner'' side, respectively, of the sphere. That is, we say that the sphere is a \emph{two-sided} surface.\index{surface!two-sided} Roughly, ``two-sided'' means ``orientable''. Other examples of two-sided, and hence orientable, surfaces are cylinders, paraboloids, ellipsoids, and planes.
@@ -136,33 +133,32 @@ You may be wondering what kind of surface would \emph{not} have two sides. An ex
 
 \begin{lxfigure}
  \flushinner{%
- \begin{tabular}{cc}
+ \begin{tabular}{ccc}
   \begin{tikzpicture}
    \usetikzlibrary{arrows}
-   \filldraw [black,line width=1.2pt,fill=black!20] (0,0) -- (6,0) -- (6,1.4) -- (0,1.4) -- (0,0);
-   \draw [black,line width=1.2pt,-latex] (0,1.4) -- (0,0.6);
-   \draw [black,line width=1.2pt,-latex] (6,0) -- (6,0.8);
-   \node [left] at (0,1.4) {\small $A$};
-   \node [left] at (0,0) {\small $B$};
-   \node [right] at (6,0) {\small $A$};
-   \node [right] at (6,1.4) {\small $B$};
-   \node [right] at (6.5,0.7) {$\longrightarrow$};
+   \filldraw [draw={\colorone},fill={\coloronefill}]
+    (0,  0)node[ left]{\small$B$} -- (6,  0)node[right]{\small$A$}
+    --node[pos=.5,rotate=-90]{$\blacktriangleleft$}
+    (6,1.4)node[right]{\small$B$} -- (0,1.4)node[ left]{\small$A$}
+    --node[pos=.5,rotate= 90]{$\blacktriangleleft$} cycle;
   \end{tikzpicture}
- &
+ & \raisebox{.5in}{$\longrightarrow$} &
   \begin{tikzpicture}
    \usetikzlibrary{arrows}
-   \filldraw [black,line width=1.2pt,fill=black!7] (0,1.4) -- (0,0) to[controls=+(90:1.5) and +(90:1.5)] (6,0) --
-    (6,1.4) to[controls=+(90:1.5) and +(90:1.5)] (0,1.4);
-   \draw [dashed,black,line width=0.6pt] (0,0.7) to[out=-30,in=210,looseness=0.68] (6,0.7)
-    to[controls=+(90:1.5) and +(90:1.5)] (0,0.7);
-   \filldraw [fill opacity=0.3,black,line width=1.2pt,shading=radial,outer color=black!20,inner color=black!50] (0,0) -- (0,1.4)
-    to[out=-60,in=200,looseness=0.5] (6,0) -- (6,1.4) to[out=240,in=-20,looseness=0.5] (0,0);
+   \filldraw [thick,draw={\colorone},fill={\coloronefill!50}] (0,1.4)
+    -- (0,0) to[controls=+(90:1.5) and +(90:1.5)] (6,0)
+    -- (6,1.4) to[controls=+(90:1.5) and +(90:1.5)] (0,1.4);
+   \draw [dashed,draw={\colorone}] (0,0.7) to[out=-30,in=210,looseness=0.68]
+    (6,0.7) to[controls=+(90:1.5) and +(90:1.5)] (0,0.7);
+   \filldraw [fill opacity=0.3,draw={\colorone},thick,fill={\coloronefill}] (0,0)
+    -- (0,1.4) to[out=-60,in=200,looseness=0.5] (6,0)
+    -- (6,1.4) to[out=240,in=-20,looseness=0.5] (0,0);
    \node [scale=.13] at (3,2.2) {\psBill};
    \node at (3.5,2.2) {$\rightarrow$};
    \node [rotate=-180,cm={-1,0,0,1,(0,0)},scale=.13] at (2.4,1.5) {\psBill};
    \node at (1.9,1.4) {$\rightarrow$};
   \end{tikzpicture} \\
- Connect $A$ to $A$ and $B$ to $B$ along the ends & Not orientable
+ Connect $A$ to $A$ and $B$ to $B$ along the ends & & Not orientable
  \end{tabular}}
  \caption{M\"{o}bius strip}
  \label{fig:mobius}
@@ -170,7 +166,7 @@ You may be wondering what kind of surface would \emph{not} have two sides. An ex
 
 If you imagine walking along a line down the center of the M\"{o}bius strip, as in \autoref{fig:mobius}(b), then you arrive back at the same place from which you started but upside down! That is, your \emph{orientation} changed even though your motion was continuous along that center line. Informally, thinking of your vertical direction as a normal vector field along the strip, there is a discontinuity at your starting point (and, in fact, at every point) since your vertical direction takes two different values there. The M\"{o}bius strip has only \emph{one side}, and hence is nonorientable.%\footnote{For further discussion of orientability, see \cite[\S\,IV.7]{one}.}
 
-For an orientable surface $\Sigma$ which has a boundary curve $C$, pick a unit normal vector \vecn such that if you walked along $C$ with your head pointing in the direction of \vecn, then the surface would be on your left. We say in this situation that \vecn is a \emph{positive unit normal vector}\index{vector!positive unit normal} and that $C$ is traversed \emph{\vecn-positively}\index{n-positive@\vecn-positive direction}. We can now state Stokes' Theorem:
+For an orientable surface $\Sigma$ which has a boundary curve $C$, pick a unit normal vector \vecn\ such that if you walked along $C$ with your head pointing in the direction of \vecn, then the surface would be on your left. We say in this situation that \vecn\ is a \emph{positive unit normal vector}\index{vector!positive unit normal} and that $C$ is traversed \emph{\vecn-positively}\index{n-positive@\vecn-positive direction}. We can now state Stokes' Theorem:
 
 \theorem{thm:stokes}{Stokes' Theorem}{\index{Stokes' Theorem}%
 Let $\Sigma$ be an orientable surface in $\mathbb{R}^{3}$ whose boundary is a simple closed curve $C$, and let $\vecf(x,y,z) = P(x,y,z) \veci + Q(x,y,z) \vecj + R(x,y,z) \veck$ be a smooth vector field defined on some subset of $\mathbb{R}^{3}$ that contains $\Sigma$. Then
@@ -183,27 +179,23 @@ Let $\Sigma$ be an orientable surface in $\mathbb{R}^{3}$ whose boundary is a si
     \left( \frac{\partial P}{\partial z} - \frac{\partial R}{\partial x} \right) \vecj +
     \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) \veck ,\index{curl}
   \end{equation}
-  \vecn is a positive unit normal vector over $\Sigma$, and $C$ is traversed \vecn-positively.}
+  \vecn\ is a positive unit normal vector over $\Sigma$, and $C$ is traversed \vecn-positively.}
   
 \begin{proof}
  As the general case is beyond the scope of this text, we will prove the theorem only for the special case where $\Sigma$ is the graph of $z=z(x,y)$ for some smooth real-valued function $z(x,y)$, with $(x,y)$ varying over a region $D$ in $\mathbb{R}^{2}$. \mtable{A particular case of Stokes' Theorem}{fig_stokes_eg}{\begin{tikzpicture}
-  \usetikzlibrary{arrows}
-  \shade [ball color=green!40] [rotate around={-20:(2.0,1.5)}] (2.0,1.5) ellipse (1.58 and 0.6);
-  \draw [black!60,line width=0.3pt,-latex] (0,0) -- (4,0,0);
-  \draw [black!60,line width=0.3pt,-latex] (0,0) -- (0,3,0);
-  \draw [black!60,line width=0.3pt,-latex] (0,0) -- (0,0,3);
-  \pgfputat{\pgfpointxyz{3.9}{0.2}{0}}{\pgfbox[center,center]{\small $y$}};
-  \pgfputat{\pgfpointxyz{0.2}{2.9}{0}}{\pgfbox[center,center]{\small $z$}};
-  \pgfputat{\pgfpointxyz{0.2}{0}{2.8}}{\pgfbox[center,center]{\small $x$}};
-  \pgfputat{\pgfpointxyz{0.05}{-0.2}{0}}{\pgfbox[center,center]{\small $0$}};
-  \filldraw [black,line width=1pt,fill=black!10] (2,-0.7) ellipse (1.5 and 0.4);
-  \draw [line width=1pt,-latex] (0.5,-0.7) arc (180:270:1.5 and 0.4);
-  \draw [rotate around={-20:(2.0,1.5)},line width=1pt] (2.0,1.5) ellipse (1.58 and 0.6);
-  \draw [rotate around={-20:(2.0,1.5)},line width=1pt,-latex] (0.42,1.5) arc (180:270:1.58 and 0.6);
+%  \usetikzlibrary{arrows}
+  \shade [ball color=\coloronefill] [rotate around={-20:(2.0,1.5)}] (2.0,1.5) ellipse (1.58 and 0.6);
+  \draw [->] (0,0)--node[pos=1,above]{\small$y$} (4,0);
+  \draw [->] (0,0)--node[pos=1,right]{\small$z$} (0,3);
+  \draw [->] (0,0)--node[pos=1,right]{\small$x$} (0,0,3);
+  \node[below]at(0,0){\small$0$};
+  \filldraw [draw={\colorone},fill={\coloronefill}] (2,-0.7) ellipse (1.5 and 0.4);
+  \draw [thick,->] (0.5,-0.7) arc (180:270:1.5 and 0.4);
+  \draw [rotate around={-20:(2.0,1.5)}] (2.0,1.5) ellipse (1.58 and 0.6);
+  \draw [rotate around={-20:(2.0,1.5)},thick,->] (0.42,1.5) arc (180:270:1.58 and 0.6);
   \fill (2.3,-0.85) circle (1pt);
   \fill (2.3,1.7) circle (1.2pt);
-  \draw [line width=1.2,-latex] (2.3,1.7) -- (2.7,2.3);
-  \node [right] at (2.7,2.3) {\small $\vecn$};
+  \draw [very thick,->] (2.3,1.7) -- (2.7,2.3)node[right]{\small $\vecn$};
   \node [above] at (2.5,-0.83) {\small $(x,y)$};
   \node at (1.8,-0.6) {\small $D$};
   \node [below] at (2,-1.1) {\small $C_D$};
@@ -318,7 +310,7 @@ Let $\Sigma$ be an orientable surface in $\mathbb{R}^{3}$ whose boundary is a si
  which, upon comparing to \autoeqref{eqn:stokespart1}, proves the Theorem.
 \end{proof}
 
-Note: The condition in Stokes' Theorem that the surface $\Sigma$ have a (continuously varying) positive unit normal vector \vecn and a boundary curve $C$ traversed \vecn-positively can be expressed more precisely as follows: if $\vecr(t)$ is the position vector for $C$ and $\vecT(t) = \vecr\primeskip'(t)/\norm{\vecr\primeskip'(t)}$ is the unit tangent vector to $C$, then the vectors \vecT, \vecn, $\vecT\times\vecn$ form a right-handed system.
+Note: The condition in Stokes' Theorem that the surface $\Sigma$ have a (continuously varying) positive unit normal vector \vecn\ and a boundary curve $C$ traversed \vecn-positively can be expressed more precisely as follows: if $\vecr(t)$ is the position vector for $C$ and $\vecT(t) = \vecr\primeskip'(t)/\norm{\vecr\primeskip'(t)}$ is the unit tangent vector to $C$, then the vectors \vecT, \vecn, $\vecT\times\vecn$ form a right-handed system.
 
 Also, it should be noted that Stokes' Theorem holds even when the boundary curve $C$ is piecewise smooth.
 
@@ -338,17 +330,13 @@ Also, it should be noted that Stokes' Theorem holds even when the boundary curve
   \draw [dashed,line width=0.2pt] (0.66,3.66) parabola [bend at end] (0,0);
   \draw [line width=0.2pt] (-1.25,1.2) arc (180:360:1.25 and 0.4);
   \draw [dashed,line width=0.2pt] (-1.25,1.2) arc (180:0:1.25 and 0.4);
-  \draw [black!60,line width=0.3pt,-latex] (-2,0) -- (2,0,0);
-  \draw [black!60,line width=0.3pt,-latex] (0,0) -- (0,4,0);
-  \draw [black!60,line width=0.3pt,-latex] (0,0) -- (0,0,2);
-  \draw [black,line width=1.1pt,-latex] (0,2.3) arc (270:325:2 and 0.7);
-  \draw [black,line width=1.1pt,-latex] (0,3.7) arc (90:145:2 and 0.7);
-  \draw [black,line width=1.2pt,-latex] (1,2.3938) -- (0.7,3.1);
-  \pgfputat{\pgfpointxyz{1.9}{0.2}{0}}{\pgfbox[center,center]{\small $y$}};
-  \pgfputat{\pgfpointxyz{0.2}{3.9}{0}}{\pgfbox[center,center]{\small $z$}};
-  \pgfputat{\pgfpointxyz{0.2}{0}{1.8}}{\pgfbox[center,center]{\small $x$}};
-  \pgfputat{\pgfpointxyz{0.05}{-0.2}{0}}{\pgfbox[center,center]{\small $0$}};
-  \node [right] at (0.7,3.15) {\small $\vecn$};
+  \draw [->] (-2,0)--node[pos=1,above]{\small$y$} (2,0);
+  \draw [->] (0,0)--node[pos=1,right]{\small$z$} (0,4);
+  \draw [->] (0,0)--node[pos=1,right]{\small$x$} (0,0,2);
+  \draw [thick,->] (0,2.3) arc (270:325:2 and 0.7);
+  \draw [thick,->] (0,3.7) arc (90:145:2 and 0.7);
+  \draw [thick,->] (1,2.3938) -- (0.7,3.1)node[above]{\small $\vecn$};
+  \node[below]at(0,0){\small$0$};
   \node [right] at (1.5,3.7) {\small $C$};
   \node at (-1.3,0.7) {\small $\Sigma$};
   \node [above left] at (0,3) {\small $1$};
@@ -415,7 +403,7 @@ The line integral in the preceding example was far simpler to calculate than the
    \iint_{\Sigma} 0\,d\sigma = 0 .\eoehere
  \]}
 
-In physical applications, for a simple closed curve $C$ the line integral $\oint_{C}{f}\cdot d\vec{r}$ is often called the \textbf{circulation}\index{circulation} of \vecf around $C$. For example, if \vecE represents the electrostatic field due to a point charge, then it turns out
+In physical applications, for a simple closed curve $C$ the line integral $\oint_{C}{f}\cdot d\vec{r}$ is often called the \textbf{circulation}\index{circulation} of \vecf\ around $C$. For example, if \vecE\ represents the electrostatic field due to a point charge, then it turns out
 %\footnote{See Ch. 2 in \cite{rmc}.}
 that $\curl\vecE = \vec0$, which means that the circulation $\oint_{C}{E}\cdot d\vec{r}=0$ by Stokes' Theorem. Vector fields which have zero curl are often called \emph{irrotational}\index{irrotational} fields.
 
@@ -431,37 +419,32 @@ where $S$ is the surface area of a surface $\Sigma$ containing the point $(x,y,z
 \begin{center}
 \begin{tikzpicture}[scale=1.34]
  \usetikzlibrary{arrows}
- \draw [black!60,line width=0.3pt,-latex] (-2.5,0) -- (3,0);
- \draw [black!60,line width=0.3pt,-latex] (0,-0.5) -- (0,4);
- \node[above] at (2.9,0) {\small $x$};
- \node[right] at (0,3.9) {\small $y$};
- \node[below] at (0.1,0) {\small $0$};
- \draw [black,line width=1.5pt,-latex] (0,0) -- (0,1);
- \draw [black,line width=1.5pt,-latex] (1,0) -- (1,2);
- \draw [black,line width=1.5pt,-latex] (2,0) -- (2,3);
- \draw [black,line width=1.5pt,-latex] (-1,0) -- (-1,2);
- \draw [black,line width=1.5pt,-latex] (-2,0) -- (-2,3);
- \draw (1,3) circle (0.5);
- \draw (1,3) circle (0.25);
- \draw (1.5,3) -- (1.8,3);
- \draw (0.5,3) -- (0.2,3);
- \draw (1,3.5) -- (1,3.8);
- \draw (1,2.5) -- (1,2.2);
- \draw [-latex] (1,3) ++(15:0.8) arc (15:75:0.8);
- \draw (-1,3) circle (0.5);
- \draw (-1,3) circle (0.25);
- \draw (-1.5,3) -- (-1.8,3);
- \draw (-0.5,3) -- (-0.2,3);
- \draw (-1,3.5) -- (-1,3.8);
- \draw (-1,2.5) -- (-1,2.2);
- \draw [-latex] (-1,3) ++(165:0.8) arc (165:105:0.8);
- \node [right] at (2.25,2.77) {$\vecf$};
+ \draw [->] (-2.5,0) -- (3,0)node[above]{\small$x$};
+ \draw [->] (0,-0.5) -- (0,4)node[right]{\small$y$};
+ \node[below right] at (0,0) {\small $0$};
+ \draw [draw={\colorone},very thick,->] (-2,0) -- (-2,3);
+ \draw [draw={\colorone},very thick,->] (-1,0) -- (-1,2);
+ \draw [draw={\colorone},very thick,->] (0,0) -- (0,1);
+ \draw [draw={\colorone},very thick,->] (1,0) -- (1,2);
+ \draw [draw={\colorone},very thick,->] (2,0) -- (2,3) node[below right]{$\vecf$};
+ \draw [draw={\colorone}] (1,3) circle (0.5) circle(0.25);
+ \draw [draw={\colorone}] (1.5,3) -- (1.8,3);
+ \draw [draw={\colorone}] (0.5,3) -- (0.2,3);
+ \draw [draw={\colorone}] (1,3.5) -- (1,3.8);
+ \draw [draw={\colorone}] (1,2.5) -- (1,2.2);
+ \draw [draw={\colorone},->] (1,3) ++(15:0.8) arc (15:75:0.8);
+ \draw [draw={\colorone}] (-1,3) circle (0.5) circle (0.25);
+ \draw [draw={\colorone}] (-1.5,3) -- (-1.8,3);
+ \draw [draw={\colorone}] (-0.5,3) -- (-0.2,3);
+ \draw [draw={\colorone}] (-1,3.5) -- (-1,3.8);
+ \draw [draw={\colorone}] (-1,2.5) -- (-1,2.2);
+ \draw [draw={\colorone},->] (-1,3) ++(165:0.8) arc (165:105:0.8);
 \end{tikzpicture}
 \caption{Curl and rotation}\label{fig_curl_rot}
 \end{center}
 \end{lxfigure}
 
-An idea of how the curl of a vector field is related to rotation is shown in \autoref{fig_curl_rot}. Suppose we have a vector field $\vecf(x,y,z)$ which is always parallel to the $xy$-plane at each point $(x,y,z)$ and that the vectors grow larger the further the point $(x,y,z)$ is from the $y$-axis. For example, $\vecf(x,y,z) = (1+x^2 )\,\vecj$. Think of the vector field as representing the flow of water, and imagine dropping two wheels with paddles into that water flow, as in Figure 4.5.6. Since the flow is stronger (i.e., the magnitude of \vecf is larger) as you move away from the $y$-axis, then such a wheel would rotate counterclockwise if it were dropped to the right of the $y$-axis, and it would rotate clockwise if it were dropped to the left of the $y$-axis. In both cases the curl would be nonzero ($\curl\vecf(x,y,z) = 2x\,\veck$ in our example) and would obey the right-hand rule, that is, $\curl\vecf(x,y,z)$ points in the direction of your thumb as you cup your right hand in the direction of the rotation of the wheel. So the curl points outward (in the positive $z$-direction) if $x > 0$ and points inward (in the negative $z$-direction) if $x < 0$. Notice that if all the vectors had the same direction \emph{and} the same magnitude, then the wheels would not rotate and hence there would be no curl (which is why such fields are called irrotational, meaning no rotation).
+An idea of how the curl of a vector field is related to rotation is shown in \autoref{fig_curl_rot}. Suppose we have a vector field $\vecf(x,y,z)$ which is always parallel to the $xy$-plane at each point $(x,y,z)$ and that the vectors grow larger the further the point $(x,y,z)$ is from the $y$-axis. For example, $\vecf(x,y,z) = (1+x^2 )\,\vecj$. Think of the vector field as representing the flow of water, and imagine dropping two wheels with paddles into that water flow, as in Figure 4.5.6. Since the flow is stronger (i.e., the magnitude of \vecf\ is larger) as you move away from the $y$-axis, then such a wheel would rotate counterclockwise if it were dropped to the right of the $y$-axis, and it would rotate clockwise if it were dropped to the left of the $y$-axis. In both cases the curl would be nonzero ($\curl\vecf(x,y,z) = 2x\,\veck$ in our example) and would obey the right-hand rule, that is, $\curl\vecf(x,y,z)$ points in the direction of your thumb as you cup your right hand in the direction of the rotation of the wheel. So the curl points outward (in the positive $z$-direction) if $x > 0$ and points inward (in the negative $z$-direction) if $x < 0$. Notice that if all the vectors had the same direction \emph{and} the same magnitude, then the wheels would not rotate and hence there would be no curl (which is why such fields are called irrotational, meaning no rotation).
 
 Finally, by Stokes' Theorem, we know that if $C$ is a simple closed curve in some solid region $S$ in $\mathbb{R}^{3}$ and if $\vecf(x,y,z)$ is a smooth vector field such that $\curl\vecf = \vec0$ in $S$, then
 \[

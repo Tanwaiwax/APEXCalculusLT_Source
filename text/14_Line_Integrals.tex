@@ -12,28 +12,27 @@ Suppose that we want to find the total amount $W$ of work done in moving an obje
 \begin{lxfigure}
  \begin{center}
   \begin{tikzpicture}
-   \usetikzlibrary{arrows}
-   \draw [black!60,line width=0.3pt,-latex] (0,0) -- (6,0,0);
-   \draw [black!60,line width=0.3pt,-latex] (0,0) -- (0,2.8,0);
-   \pgfputat{\pgfpointxyz{5.9}{0.2}{0}}{\pgfbox[center,center]{\small $x$}};
-   \pgfputat{\pgfpointxyz{0.2}{2.7}{0}}{\pgfbox[center,center]{\small $y$}};
-   \pgfputat{\pgfpointxyz{0.05}{-0.2}{0}}{\pgfbox[center,center]{\small $0$}};
-   \draw [rounded corners,line width=1pt,-latex](0.75,2.1) .. controls (2.95,3) and (3.55,1.2) .. (4,0.75);
-   \draw [rounded corners,line width=1pt] (4,0.75) .. controls (4.3,0.45) and (4.9,0.3) .. (5.35,0.6);
-   \draw (2.2,2.3) -- (3.5,1.4) -- (2.2,1.4) -- (2.2,2.3);
-   \draw (2.2,1.6) -- (2.4,1.6) -- (2.4,1.4);
-   \node [left,above] at (1,2.2) {$C$};
-   \fill (0.75,2.1) circle (2pt);
-   \fill (5.35,0.6) circle (2pt);
-   \fill (2.2,2.32) circle (1.4pt);
-   \fill (3.5,1.4) circle (1.4pt);
-   \node [below] at (0.75,2.1) {$t=a$};
-   \node [above] at (5.35,0.6) {$t=b$};
-   \node [right,above] at (4.4,1.8) {$\Delta s_i\approx\sqrt{(\Delta x_i)^2 + (\Delta y_i)^2}$};
-   \node [above] at (2.2,2.35) {$t=t_{i-1}$};
-   \node [right] at (3.5,1.4) {$t=t_i$};
-   \node [left] at (2.2,1.85) {$\Delta y_i$};
-   \node [below] at (2.85,1.4) {$\Delta x_i$};
+   \draw [->] (0,0) --node[pos=1,above]{\small$x$} (6,0);
+   \draw [->] (0,0) --node[pos=1,right]{\small$y$} (0,2.8);
+   \node[below]at(0,0){\small$0$};
+   \draw [rounded corners,->,thick,draw={\colorone}]
+    (0.75,2.1) node[below]{$t=a$}node[above right]{$C$}
+    .. controls (2.95,3) and (3.55,1.2) .. (4,0.75);
+   \draw [rounded corners,thick,draw={\colorone}]
+    (4,0.75) .. controls (4.3,0.45) and (4.9,0.3)
+     .. (5.35,0.6) node[above]{$t=b$};
+   % now the triangle
+   \draw[draw={\colorone}] (2.2,2.3)node[above]{$t=t_{i-1}$}
+    --node[above right]{$\Delta s_i\approx\sqrt{(\Delta x_i)^2 + (\Delta y_i)^2}$} (3.5,1.4)
+    node[pos=1,right]{$t=t_i$}
+    --node[below]{$\Delta x_i$} (2.2,1.4)
+    --node[left]{$\Delta y_i$} cycle;
+   % right angle marker
+   \draw[draw={\colorone}] (2.2,1.6) -- (2.4,1.6) -- (2.4,1.4);
+   \fill[fill={\colorone},draw={\colorone}] (0.75,2.1) circle (2pt);
+   \fill[fill={\colorone},draw={\colorone}] (5.35,0.6) circle (2pt);
+   \fill[fill={\colorone},draw={\colorone}] (2.2,2.32) circle (1.4pt);
+   \fill[fill={\colorone},draw={\colorone}] (3.5,1.4) circle (1.4pt);
   \end{tikzpicture}
  \end{center}
  \caption{Curve $C:x=x(t),y=y(t)$ for $t$ in $[a,b]$}
@@ -93,32 +92,28 @@ For a general real-valued function $f(x,y)$, what does the line integral $\int_C
 \begin{lxfigure}
  \begin{center}
   \begin{tikzpicture}
-   \usetikzlibrary{arrows}
-   \draw [black!60,line width=0.3pt,-latex] (0,0) -- (6,0,0);
-   \draw [black!60,line width=0.3pt,-latex] (0,0) -- (0,3.5,0);
-   \pgfputat{\pgfpointxyz{5.9}{0.2}{0}}{\pgfbox[center,center]{\small $x$}};
-   \pgfputat{\pgfpointxyz{0.2}{3.4}{0}}{\pgfbox[center,center]{\small $y$}};
-   \pgfputat{\pgfpointxyz{0.05}{-0.2}{0}}{\pgfbox[center,center]{\small $0$}};
-   \filldraw [fill=black!10] (0.75,2.1) .. controls (2.95,3) and (3.55,1.2) .. (4,0.75) .. controls (4.3,0.45) and
-    (4.9,0.3) .. (5.35,0.6) -- (5.55,1.2) .. controls (4.9,0.9) and (4.3,1.1) .. (4,1.4) .. controls (3.65,2) and
-    (2.85,3.8) .. (0.55,2.8) -- (0.75,2.1);
-   \fill [fill=black!40] (1.9,2.35) -- (1.9,3.1) -- (1.7,3.1) -- (1.7,2.35) -- (1.9,2.35);
-   \draw (5.55,1.2) .. controls (4.9,0.9) and (4.3,1.1) .. (4,1.4) .. controls (3.65,2) and
-    (2.85,3.8) .. (0.55,2.8);
-   \draw [rounded corners,line width=1pt,-latex] (0.75,2.1) .. controls (2.95,3) and (3.55,1.2) .. (4,0.75);
-   \draw [rounded corners,line width=1pt](4,0.75) .. controls (4.3,0.45) and (4.9,0.3) .. (5.35,0.6);
-   \node [left,below] at (1,2.2) {$C$};
-   \node [below] at (1.8,2.3) {$ds$};
-   \draw (1.9,2.35) -- (1.9,3.1);
-   \draw (1.7,2.35) -- (1.7,3.1);
-   \node [left] at (1.8,2.7) {$f(x,y)$};
-   \fill (0.75,2.1) circle (1.7pt);
-   \fill (5.35,0.6) circle (1.7pt);
-  \end{tikzpicture}\vspace{-5mm}
+   \draw [->] (0,0)
+    --node[pos=1,above]{\small$x$} (6,0);
+   \draw [->] (0,0)
+    --node[pos=1,right]{\small$y$} (0,3.5);
+   \node[below]at(0,0){\small$0$};
+   \filldraw [fill={\coloronefill},draw={\colorone},->] (4,0.75)
+    .. controls (4.3,0.45) and (4.9,0.3)  .. (5.35,0.6) -- (5.55,1.2)
+    .. controls (4.9,0.9)  and (4.3,1.1)  .. (4,1.4)
+    .. controls (3.65,2)   and (2.85,3.8) .. (0.55,2.8) -- (0.75,2.1)
+    .. controls (2.95,3)   and (3.55,1.2) .. cycle;
+   \fill [fill={\colorone}] (1.9,2.35) -- (1.9,3.1) -- (1.7,3.1)
+    --node[pos=.5,left]{$f(x,y)$} (1.7,2.35)
+    --node[pos=.5,below]{$ds$} cycle;
+   \fill[draw={\colorone},fill={\colorone}] (0.75,2.1) circle (1.7pt)node[below right]{$C$};
+   \fill[draw={\colorone},fill={\colorone}] (5.35,0.6) circle (1.7pt);
+  \end{tikzpicture}
  \end{center}
  \caption{Area of shaded rectangle $= \text{height}\times\text{width} \approx f(x,y)\,ds$}
  \label{fig:picketfence}
 \end{lxfigure}
+
+\youtubeVideo{fjEvsinvtnw}{Line Integrals --- Evaluating a Line Integral}
 
 \example{exmp_lineintcyl}{Using the Line Integral}{Use a line integral to show that the lateral surface area $A$ of a right circular cylinder of radius $r$ and height $h$ is $2\pi r h$.}{%
  \mtable{Figure for \autoref{exmp_lineintcyl}}{fig_cyl_line_int}{\begin{tikzpicture}
@@ -134,13 +129,17 @@ For a general real-valued function $f(x,y)$, what does the line integral $\int_C
    \draw (1,2) arc (0:180:1 and .5);
    \draw [line width=1pt] (-1,0) arc (180:360:1 and .5);
    \draw [dashed,line width=1pt] (1,0) arc (0:180:1 and .5);
-   \draw [black!60,line width=0.3pt,-latex] (0,0) -- (2,0,0);
-   \draw [black!60,line width=0.3pt,-latex] (0,0) -- (0,3,0);
-   \draw [black!60,line width=0.3pt,-latex] (0,0) -- (0,0,2);
-   \pgfputat{\pgfpointxyz{1.9}{0.2}{0}}{\pgfbox[center,center]{\small $y$}};
-   \pgfputat{\pgfpointxyz{0.2}{2.9}{0}}{\pgfbox[center,center]{\small $z$}};
-   \pgfputat{\pgfpointxyz{0.2}{0}{1.8}}{\pgfbox[center,center]{\small $x$}};
-   \pgfputat{\pgfpointxyz{0.05}{-0.2}{0}}{\pgfbox[center,center]{\small $0$}};
+   \draw [black!60,line width=0.3pt,-latex] (0,0)
+    --node[pos=1,above]{\small$y$} (2,0);
+   \draw [black!60,line width=0.3pt,-latex] (0,0)
+    --node[pos=1,right]{\small$z$} (0,3);
+   \draw [black!60,line width=0.3pt,-latex] (0,0)
+    --node[pos=1,right]{\small$x$} (0,0,2);
+   \node[below right]at(0,0){\small$0$};
+%   \pgfputat{\pgfpointxyz{1.9}{0.2}{0}}{\pgfbox[center,center]{\small $y$}};
+%   \pgfputat{\pgfpointxyz{0.2}{2.9}{0}}{\pgfbox[center,center]{\small $z$}};
+%   \pgfputat{\pgfpointxyz{0.2}{0}{1.8}}{\pgfbox[center,center]{\small $x$}};
+%   \pgfputat{\pgfpointxyz{0.05}{-0.2}{0}}{\pgfbox[center,center]{\small $0$}};
    \draw [dashed,line width=0.2pt] (0,2) -- (1,2);
    \node [above] at (0.5,2) {\small $r$};
    \node [right] at (1,1) {\small $h=f(x,y)$};
@@ -234,21 +233,17 @@ If the vector field $\vecf(x,y)$ represents the force moving an object along a c
  \end{enumerate}}{%
 %
  \mtable{Figure for \autoref{exmp_lineintexmp}}{fig_line_ints}{\begin{tikzpicture}
-   \usetikzlibrary{arrows}
-   \draw [black!60,line width=0.3pt,-latex] (-0.5,0) -- (2,0);
-   \draw [black!60,line width=0.3pt,-latex] (0,-0.5) -- (0,2.5);
-   \pgfputat{\pgfpointxyz{1.9}{0.2}{0}}{\pgfbox[center,center]{\small $x$}}
-   \pgfputat{\pgfpointxyz{0.2}{2.4}{0}}{\pgfbox[center,center]{\small $y$}}
-   \pgfputat{\pgfpointxyz{-0.2}{-0.2}{0}}{\pgfbox[center,center]{\small $0$}}
-   \draw [line width=1pt] (0,0) parabola (1,2);
-   \draw [line width=1pt,-latex] (0,0) parabola (0.5,0.5);
-   \draw [line width=1pt] (0,0) -- (1,2);
-   \draw [line width=1pt,-latex] (0,0) -- (0.5,1);
-   \node [right,above] at (1,2) {\small $(1,2)$};
-   \node [left] at (0,2) {\small $2$};
-   \node [below] at (1,0) {\small $1$};
-   \fill (0,0) circle (1.7pt);
-   \fill (1,2) circle (1.7pt);
+   \draw [->] (-0.5,0) --node[pos=1,below]{\small$1$}(1,0)
+    --node[pos=1,above]{\small$x$} (2,0);
+   \draw [->] (0,-0.5) --node[pos=1,left]{\small$2$}(0,2)
+    --node[pos=1,right]{\small$y$} (0,2.5);
+   \node[below left]at(0,0){\small$0$};
+   \draw [draw={\colorone},thick] (0,0) parabola (1,2);
+   \draw [draw={\colorone},thick,->] (0,0) parabola (0.5,0.5);
+   \draw [draw={\colorone},thick] (0,0) -- (1,2)node[above right]{\small $(1,2)$};
+   \draw [draw={\colorone},thick,->] (0,0) -- (0.5,1);
+   \fill[draw={\colorone},fill={\colorone}] (0,0) circle (1.7pt);
+   \fill[draw={\colorone},fill={\colorone}] (1,2) circle (1.7pt);
   \end{tikzpicture}}
   %
  \autoref{fig_line_ints} shows both curves.
@@ -288,22 +283,16 @@ where each $\vecr_i$ is the position vector of the curve $C_i$.
 %
  \mtable{The Figure for \autoref{exmp_lineintexmppoly}}{fig_piece_line_int}{\begin{tikzpicture}
    \usetikzlibrary{arrows}
-   \draw [black!60,line width=0.3pt,-latex] (-0.5,0) -- (2,0);
-   \draw [black!60,line width=0.3pt,-latex] (0,-0.5) -- (0,2.5);
-   \pgfputat{\pgfpointxyz{1.9}{0.2}{0}}{\pgfbox[center,center]{\small $x$}}
-   \pgfputat{\pgfpointxyz{0.2}{2.4}{0}}{\pgfbox[center,center]{\small $y$}}
-   \pgfputat{\pgfpointxyz{-0.2}{-0.2}{0}}{\pgfbox[center,center]{\small $0$}}
-   \draw [line width=1pt] (0,0) -- (0,2);
-   \draw [line width=1pt,-latex] (0,0) -- (0,1);
-   \draw [line width=1pt] (0,2) -- (1,2);
-   \draw [line width=1pt,-latex] (0,2) -- (0.5,2);
-   \node [right] at (1,2) {\small $(1,2)$};
-   \node [left] at (0,2) {\small $2$};
-   \node [below] at (1,0) {\small $1$};
-   \node [right] at (0,1) {\small $C_1$};
-   \node [below] at (0.5,2) {\small $C_2$};
-   \fill (0,0) circle (1.7pt);
-   \fill (1,2) circle (1.7pt);
+   \draw [->] (-0.5,0) --node[pos=1,below]{\small$1$}(1,0)
+    --node[pos=1,above]{\small$x$} (2,0);
+   \draw [->] (0,-0.5) --node[pos=1,right]{\small$y$} (0,2.5);
+   \node[below left]at(0,0){\small$0$};
+   \draw [draw={\colorone},thick,->] (0,0) -- (0,1)node[right]{\small$C_1$};
+   \draw [draw={\colorone},thick,->] (0,1) -- (0,2)node[left]{\small$2$}
+    -- (0.5,2)node[below]{\small$C_2$};
+   \draw [draw={\colorone},thick] (0.5,2) -- (1,2)node[right]{\small $(1,2)$};
+   \fill[draw={\colorone},fill={\colorone}] (0,0) circle (1.7pt);
+   \fill[draw={\colorone},fill={\colorone}] (1,2) circle (1.7pt);
   \end{tikzpicture}}
   %
 Write $C=C_1\cup C_2$, where $C_1$ is the curve given by $x=0$, $y=t$, $0 \le t \le 2$ and $C_2$ is the curve given by $x=t$, $y=2$, $0 \le t \le 1$ (see \autoref{fig_piece_line_int}). Then
@@ -317,6 +306,6 @@ Write $C=C_1\cup C_2$, where $C_1$ is the curve given by $x=0$, $y=t$, $0 \le t 
    &= \frac{t^3}{3} + 4t \,\Bigg|_0^1 = \frac{1}{3} + 4 = \frac{13}{3}\eoehere
  \end{align*}}
 
-Line integral notation varies quite a bit. For example, in physics it is common to see the notation $\int_a^b \vecf\cdot d\vecl$, where it is understood that the limits of integration $a$ and $b$ are for the underlying parameter $t$ of the curve, and the letter \textbf{l} signifies length. Also, the formulation $\int_C \dotp{f}{T}\,ds$ from \autoref{thm:lineinttangent} is often preferred in physics since it emphasizes the idea of integrating the tangential component $\dotp{f}{T}$ of \vecf\ in the direction of \vecT (i.e. in the direction of $C$), which is a useful physical interpretation of line integrals.
+Line integral notation varies quite a bit. For example, in physics it is common to see the notation $\int_a^b \vecf\cdot d\vecl$, where it is understood that the limits of integration $a$ and $b$ are for the underlying parameter $t$ of the curve, and the letter \textbf{l} signifies length. Also, the formulation $\int_C \dotp{f}{T}\,ds$ from \autoref{thm:lineinttangent} is often preferred in physics since it emphasizes the idea of integrating the tangential component $\dotp{f}{T}$ of \vecf\ in the direction of \vecT\ (i.e., in the direction of $C$), which is a useful physical interpretation of line integrals.
 
 \printexercises{exercises/14_Line_Int_exercises}

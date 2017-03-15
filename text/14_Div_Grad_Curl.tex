@@ -26,7 +26,7 @@ Is $\nabla$ \emph{really} a vector? Strictly speaking, no, since $\frac{\partial
 \]
 For this reason, $\nabla$ is often referred to as the ``del operator'', since it ``operates'' on functions.
  
-For example, it is often convenient to write the divergence $\Div\vecf$ as $\Dotprod{\nabla}{\vecf}$, since for a vector field $\vecf(x,y,z) = f_1(x,y,z)\veci + f_2(x,y,z) \vecj + f_3(x,y,z) \veck$, the dot product of \vecf with $\nabla$ (thought of as a vector) makes sense:\index{divergence}
+For example, it is often convenient to write the divergence $\Div\vecf$ as $\Dotprod{\nabla}{\vecf}$, since for a vector field $\vecf(x,y,z) = f_1(x,y,z)\veci + f_2(x,y,z) \vecj + f_3(x,y,z) \veck$, the dot product of \vecf\ with $\nabla$ (thought of as a vector) makes sense:\index{divergence}
 \begin{align*}
  \Dotprod{\nabla}{\vecf} &= \Dotprod{ \left( \frac{\partial}{\partial x}\,\veci +
   \frac{\partial}{\partial y}\,\vecj + \frac{\partial}{\partial z}\,\veck \right) }{\left( f_1(x,y,z)
@@ -76,6 +76,8 @@ Note that this is a real-valued function, to which we will give a special name:
   \]}
 
 Often the notation $\nabla^2 f$ is used for the Laplacian instead of $\Delta f$, using the convention $\nabla^2 = \Dotprod{\nabla}{\nabla}$.\index{Laplacian}\index{$\Delta$}\index{$\nabla^2$}
+
+\youtubeVideo{EW08rD-GFh0}{Laplacian intuition}
 
 \example{exmp_laplposition}{Computing a Laplacian}{Let $\vecr(x,y,z) = x\,\veci + y\,\vecj + z\,\veck$ be the position vector field on  $\mathbb{R}^{3}$. Then $\norm{\vecr(x,y,z)}^2 = \Dotprod{\vecr}{\vecr} = x^2 + y^2 + z^2$ is a real-valued function. Find
  \begin{enumerate}
@@ -180,27 +182,37 @@ Since the choice of $\Sigma$ was arbitrary, then we must have $\Dotprod{(\nabla\
 
 Often (especially in physics) it is convenient to use other coordinate systems when dealing with quantities such as the gradient, divergence, curl and Laplacian. We will present the formulas for these in cylindrical and spherical coordinates.
 
-Recall from \autoref{sec:other_systems} that a point $(x,y,z)$ can be represented in cylindrical coordinates $(r, \theta , z)$, where $x=r\cos \theta$, $y=r\sin \theta$, $z=z$. At each point $(r, \theta , z)$, let $\vecE_{r}$, $\vecE_{\theta}$, $\vecE_{z}$ be unit vectors in the direction of increasing $r$, $\theta$, $z$, respectively (see \autoref{fig:on_cyl_sph}(a)). Then $\vecE_{r}$, $\vecE_{\theta}$, $\vecE_{z}$ form an orthonormal set of vectors. Note, by the right-hand rule, that $\vecE_{z}\times\vecE_{r}=\vecE_{\theta}$.
+Recall from \autoref{sec:other_systems} that a point $(x,y,z)$ can be represented in cylindrical coordinates $(r, \theta , z)$, where $x=r\cos \theta$, $y=r\sin \theta$, $z=z$. At each point $(r, \theta , z)$, let $\vece_{r}$, $\vece_{\theta}$, $\vece_{z}$ be unit vectors in the direction of increasing $r$, $\theta$, $z$, respectively (see \autoref{fig:on_cyl_sph}(a)). Then $\vece_{r}$, $\vece_{\theta}$, $\vece_{z}$ form an orthonormal set of vectors. Note, by the right-hand rule, that $\vece_{z}\times\vece_{r}=\vece_{\theta}$.
 
 \begin{lxfigure}
  \begin{center}
  \begin{tabular}{cc}
-  todo Tim make the figure &
-  todo Tim make the figure
-  \\
-  (a)
+\myincludeasythree{width=\marginparwidth,
+3Droll=126.0060482236849,
+3Dortho=0.004875946324318647,
+3Dc2c=0.44462037086486816 0.39410829544067383 0.8043577671051025,
+3Dcoo=67.21983337402344 3.5258262157440186 -29.566415786743164,
+3Droo=150.00000160608386}{width=\marginparwidth}{figures/ortho_cyl}
   &
-  (b)
+\myincludeasythree{width=\marginparwidth,
+3Droll=126.0060482236849,
+3Dortho=0.004875946324318647,
+3Dc2c=0.44462037086486816 0.39410829544067383 0.8043577671051025,
+3Dcoo=67.21983337402344 3.5258262157440186 -29.566415786743164,
+3Droo=150.00000160608386}{width=\marginparwidth}{figures/ortho_sph}
+  \\
+  (a) & (b)
   \end{tabular}
   \caption{Orthonormal vectors in cylindrical (a) and spherical (b) coordinates}
   \label{fig:on_cyl_sph}
   \end{center}
 \end{lxfigure}
 
-Similarly, a point $(x,y,z)$ can be represented in spherical coordinates $(\rho, \theta , \phi)$, where $x=\rho\sin \phi \cos \theta$, $y=\rho\sin \phi \sin \theta$, $z=\rho\cos \phi$. At each point $(\rho, \theta , \phi)$, let $\vecE_{\rho}$, $\vecE_{\theta}$, $\vecE_{\phi}$ be unit vectors in the direction of increasing $\rho$, $\theta$, $\phi$, respectively (see \autoref{fig:on_cyl_sph}(b)). Then the vectors $\vecE_{\rho}$, $\vecE_{\theta}$, $\vecE_{\phi}$ are orthonormal.\index{$\vecE_{r}$, $\vecE_{\theta}$, $\vecE_{z}$, $\vecE_{\rho}$, $\vecE_{\phi}$} By the right-hand rule, we see that $\vecE_{\theta}\times\vecE_{\rho}=\vecE_{\phi}$.
+Similarly, a point $(x,y,z)$ can be represented in spherical coordinates $(\rho, \theta , \phi)$, where $x=\rho\sin \phi \cos \theta$, $y=\rho\sin \phi \sin \theta$, $z=\rho\cos \phi$. At each point $(\rho, \theta , \phi)$, let $\vece_{\rho}$, $\vece_{\theta}$, $\vece_{\phi}$ be unit vectors in the direction of increasing $\rho$, $\theta$, $\phi$, respectively (see \autoref{fig:on_cyl_sph}(b)). Then the vectors $\vece_{\rho}$, $\vece_{\theta}$, $\vece_{\phi}$ are orthonormal.\index{$\vece_{r}$, $\vece_{\theta}$, $\vece_{z}$, $\vece_{\rho}$, $\vece_{\phi}$} By the right-hand rule, we see that $\vece_{\theta}\times\vece_{\rho}=\vece_{\phi}$.
 
 We can now summarize the expressions for the gradient, divergence, curl and Laplacian in Cartesian, cylindrical and spherical coordinates in the following tables:
 
+\setboxwidth{60pt}
 \keyidea{ki_cart_sys}{Vector Calculus in Cartesian Coordinates}{For the scalar function $F$ or vector field $\vecf = f_1\,\veci + f_2\,\vecj + f_3\,\veck$,
  \begin{alignat*}{2}
   \text{gradient} &: & \nabla F
@@ -219,38 +231,40 @@ We can now summarize the expressions for the gradient, divergence, curl and Lapl
    \frac{\partial^2 F}{\partial y^2} + \frac{\partial^2 F}{\partial z^2}
  \end{alignat*}}
 
-\keyidea{ki_cyl_sys}{Vector Calculus in Cylindrical Coordinates}{For the scalar function $F$ or vector field $\vecf = f_{r}\,\vecE_{r} + f_{\theta}\,\vecE_{\theta} + f_{z}\,\vecE_{z}$,
+\setboxwidth{60pt}
+\keyidea{ki_cyl_sys}{Vector Calculus in Cylindrical Coordinates}{For the scalar function $F$ or vector field $\vecf = f_{r}\,\vece_{r} + f_{\theta}\,\vece_{\theta} + f_{z}\,\vece_{z}$,
  \begin{alignat*}{2}
-  \text{gradient} &: & \nabla F &= \frac{\partial F}{\partial r}\,\vecE_{r} +
-   \frac{1}{r}\,\frac{\partial F}{\partial \theta}\,\vecE_{\theta} + \frac{\partial F}{\partial z}\,\vecE_{z}\\
+  \text{gradient} &: & \nabla F &= \frac{\partial F}{\partial r}\,\vece_{r} +
+   \frac{1}{r}\,\frac{\partial F}{\partial \theta}\,\vece_{\theta} + \frac{\partial F}{\partial z}\,\vece_{z}\\
   \text{divergence} &: & \Dotprod{\nabla}{\vecf} &= \frac{1}{r}\,\frac{\partial}{\partial r}(rf_{r}) +
    \frac{1}{r}\,\frac{\partial f_{\theta}}{\partial \theta} + \frac{\partial f_{z}}{\partial z}\\
   \curl &:  & \nabla\times\vecf &=
    \left( \frac{1}{r}\,\frac{\partial f_{z}}{\partial \theta} - \frac{\partial f_{\theta}}{\partial z} \right)
-   \vecE_{r} +
-   \left( \frac{\partial f_{r}}{\partial z} - \frac{\partial f_{z}}{\partial r} \right) \vecE_{\theta} +
+   \vece_{r} +
+   \left( \frac{\partial f_{r}}{\partial z} - \frac{\partial f_{z}}{\partial r} \right) \vece_{\theta} +
    \frac{1}{r} \left( \frac{\partial}{\partial r}(rf_{\theta}) - \frac{\partial f_{r}}{\partial \theta}
-   \right) \vecE_{z}\\
+   \right) \vece_{z}\\
   \text{Laplacian} &: & \Delta\,F &= \frac{1}{r}\,\frac{\partial}{\partial r} \left( r\frac{\partial F}{\partial r}
    \right) + \frac{1}{r^2}\frac{\partial^2 F}{\partial \theta^2} + \frac{\partial^2 F}{\partial z^2}
  \end{alignat*}}
 
-\keyidea{ki_sph_sys}{Vector Calculus in Spherical Coordinates}{For the scalar function $F$ or vector field $\vecf = f_{\rho}\,\vecE_{\rho} + f_{\theta}\,\vecE_{\theta} + f_{\phi}\,\vecE_{\phi}$
+\setboxwidth{60pt}
+\keyidea{ki_sph_sys}{Vector Calculus in Spherical Coordinates}{For the scalar function $F$ or vector field $\vecf = f_{\rho}\,\vece_{\rho} + f_{\theta}\,\vece_{\theta} + f_{\phi}\,\vece_{\phi}$
  \begin{alignat*}{2}
-  \text{gradient} &: & \nabla F &= \frac{\partial F}{\partial \rho}\,\vecE_{\rho} +
-   \frac{1}{\rho \sin \phi}\,\frac{\partial F}{\partial \theta}\,\vecE_{\theta} +
-   \frac{1}{\rho}\,\frac{\partial F}{\partial \phi}\,\vecE_{\phi}\\
+  \text{gradient} &: & \nabla F &= \frac{\partial F}{\partial \rho}\,\vece_{\rho} +
+   \frac{1}{\rho \sin \phi}\,\frac{\partial F}{\partial \theta}\,\vece_{\theta} +
+   \frac{1}{\rho}\,\frac{\partial F}{\partial \phi}\,\vece_{\phi}\\
   \text{divergence} &: & \Dotprod{\nabla}{\vecf} &= \frac{1}{\rho^2}\,\frac{\partial}{\partial \rho}(\rho^2
    f_{\rho}) + \frac{1}{\rho \sin \phi}\,\frac{\partial f_{\theta}}{\partial \theta} +
    \frac{1}{\rho \sin \phi}\,\frac{\partial}{\partial \phi}(\sin \phi \,f_{\theta})\\
   \curl &:  & \nabla\times\vecf &=
    \frac{1}{\rho \sin \phi} \left( \frac{\partial}{\partial \phi}(\sin \phi\,f_{\theta}) -
-    \frac{\partial f_{\phi}}{\partial \theta} \right) \vecE_{\rho} +
+    \frac{\partial f_{\phi}}{\partial \theta} \right) \vece_{\rho} +
    \frac{1}{\rho} \left( \frac{\partial}{\partial \rho}(\rho f_{\phi}) - \frac{\partial f_{\rho}}{\partial \phi}
-    \right) \vecE_{\theta}\\
+    \right) \vece_{\theta}\\
     &\mathrel{\phantom{:}}  & &\mathrel{\phantom{=}} {} +
     \left( \frac{1}{\rho \sin \phi}\,\frac{\partial f_{\rho}}{\partial \theta} -
-    \frac{1}{\rho}\,\frac{\partial}{\partial \rho}(\rho f_{\theta}) \right) \vecE_{\phi}\\
+    \frac{1}{\rho}\,\frac{\partial}{\partial \rho}(\rho f_{\theta}) \right) \vece_{\phi}\\
   \text{Laplacian} &: & \Delta\,F &= \frac{1}{\rho^2}\,\frac{\partial}{\partial \rho} \left( \rho^2 \,
    \frac{\partial F}{\partial \rho} \right) + \frac{1}{\rho^2 \sin^2 \phi}\,\frac{\partial^2 F}{\partial \theta^2} +
    \frac{1}{\rho^2 \sin \phi}\,\frac{\partial}{\partial \phi} \left( \sin \phi \,\frac{\partial F}{\partial \phi}
@@ -261,64 +275,64 @@ The derivation of the above formulas for cylindrical and spherical coordinates i
 
 \example{ex_sph_grad}{Spherical Coordinates Gradient}{Show that the gradient of a real-valued function $F(\rho,\theta,\phi)$ in spherical coordinates is:
 \[
- \nabla F = \frac{\partial F}{\partial \rho}\,\vecE_{\rho} +
-  \frac{1}{\rho \sin \phi}\,\frac{\partial F}{\partial \theta}\,\vecE_{\theta} +
-  \frac{1}{\rho}\,\frac{\partial F}{\partial \phi}\,\vecE_{\phi}
-\]}{The idea is that in the Cartesian gradient formula $\nabla F(x,y,z) = \frac{\partial F}{\partial x}\,\veci + \frac{\partial F}{\partial y}\,\vecj + \frac{\partial F}{\partial z}\,\veck$, we want to put the Cartesian basis vectors \veci, \vecj, \veck in terms of the spherical coordinate basis vectors $\vecE_{\rho}$, $\vecE_{\theta}$, $\vecE_{\phi}$ and functions of $\rho$, $\theta$ and $\phi$. Then put the partial derivatives $\frac{\partial F}{\partial x}$, $\frac{\partial F}{\partial y}$, $\frac{\partial F}{\partial z}$ in terms of $\frac{\partial F}{\partial \rho}$, $\frac{\partial F}{\partial \theta}$, $\frac{\partial F}{\partial \phi}$ and functions of $\rho$, $\theta$ and $\phi$.
+ \nabla F = \frac{\partial F}{\partial \rho}\,\vece_{\rho} +
+  \frac{1}{\rho \sin \phi}\,\frac{\partial F}{\partial \theta}\,\vece_{\theta} +
+  \frac{1}{\rho}\,\frac{\partial F}{\partial \phi}\,\vece_{\phi}
+\]}{The idea is that in the Cartesian gradient formula $\nabla F(x,y,z) = \frac{\partial F}{\partial x}\,\veci + \frac{\partial F}{\partial y}\,\vecj + \frac{\partial F}{\partial z}\,\veck$, we want to put the Cartesian basis vectors \veci, \vecj, \veck\ in terms of the spherical coordinate basis vectors $\vece_{\rho}$, $\vece_{\theta}$, $\vece_{\phi}$ and functions of $\rho$, $\theta$ and $\phi$. Then put the partial derivatives $\frac{\partial F}{\partial x}$, $\frac{\partial F}{\partial y}$, $\frac{\partial F}{\partial z}$ in terms of $\frac{\partial F}{\partial \rho}$, $\frac{\partial F}{\partial \theta}$, $\frac{\partial F}{\partial \phi}$ and functions of $\rho$, $\theta$ and $\phi$.
 
-Our first step is to get formulas for $\vecE_{\rho}$, $\vecE_{\theta}$, $\vecE_{\phi}$ in terms of \veci, \vecj, \veck.
+Our first step is to get formulas for $\vece_{\rho}$, $\vece_{\theta}$, $\vece_{\phi}$ in terms of \veci, \vecj, \veck.
 
-We can see from \autoref{fig:on_cyl_sph}(b) that the unit vector $\vecE_{\rho}$ in the $\rho$ direction at a general point $(\rho,\theta,\phi)$ is $\vecE_{\rho} = \frac{\vecr}{\norm{\vecr}}$, where $\vecr = x\,\veci + y\,\vecj + z\,\veck$ is the position vector of the point in Cartesian coordinates. Thus,
+We can see from \autoref{fig:on_cyl_sph}(b) that the unit vector $\vece_{\rho}$ in the $\rho$ direction at a general point $(\rho,\theta,\phi)$ is $\vece_{\rho} = \frac{\vecr}{\norm{\vecr}}$, where $\vecr = x\,\veci + y\,\vecj + z\,\veck$ is the position vector of the point in Cartesian coordinates. Thus,
 \[
- \vecE_{\rho} = \frac{\vecr}{\norm{\vecr}}
+ \vece_{\rho} = \frac{\vecr}{\norm{\vecr}}
   = \frac{x\,\veci + y\,\vecj + z\,\veck}{\sqrt{x^2 + y^2 + z^2}} ,
 \]
 so using $x=\rho\sin \phi \cos \theta$, $y=\rho\sin \phi \sin \theta$, $z=\rho\cos \phi$, and $\rho = \sqrt{x^2 + y^2 + z^2}$, we get:
 \begin{equation}
- \vecE_{\rho} = \sin\phi\,\cos\theta\,\veci + \sin\phi\,\sin\theta\,\vecj + \cos\phi\,\veck
+ \vece_{\rho} = \sin\phi\,\cos\theta\,\veci + \sin\phi\,\sin\theta\,\vecj + \cos\phi\,\veck
 \end{equation}
 
-Now, since the angle $\theta$ is measured in the $xy$-plane, then the unit vector $\vecE_{\theta}$ in the $\theta$ direction must be parallel to the $xy$-plane. That is, $\vecE_{\theta}$ is of the form $a\,\veci + b\,\vecj + 0\,\veck$. To figure out what $a$ and $b$ are, note that since $\vecE_{\theta} \perp \vecE_{\rho}$, then in particular $\vecE_{\theta} \perp \vecE_{\rho}$ when $\vecE_{\rho}$ is in the $xy$-plane. That occurs when the angle $\phi$ is $\pi/2$. Putting $\phi = \pi/2$ into the formula for $\vecE_{\rho}$ gives $\vecE_{\rho} = \cos\theta\,\veci + \sin\theta\,\vecj + 0\,\veck$, and we see that a vector perpendicular to that is $-\sin\theta\,\veci + \cos\theta\,\vecj + 0\,\veck$. Since this vector is also a unit vector and points in the (positive) $\theta$ direction, it must be $\vecE_{\theta}$:
+Now, since the angle $\theta$ is measured in the $xy$-plane, then the unit vector $\vece_{\theta}$ in the $\theta$ direction must be parallel to the $xy$-plane. That is, $\vece_{\theta}$ is of the form $a\,\veci + b\,\vecj + 0\,\veck$. To figure out what $a$ and $b$ are, note that since $\vece_{\theta} \perp \vece_{\rho}$, then in particular $\vece_{\theta} \perp \vece_{\rho}$ when $\vece_{\rho}$ is in the $xy$-plane. That occurs when the angle $\phi$ is $\pi/2$. Putting $\phi = \pi/2$ into the formula for $\vece_{\rho}$ gives $\vece_{\rho} = \cos\theta\,\veci + \sin\theta\,\vecj + 0\,\veck$, and we see that a vector perpendicular to that is $-\sin\theta\,\veci + \cos\theta\,\vecj + 0\,\veck$. Since this vector is also a unit vector and points in the (positive) $\theta$ direction, it must be $\vece_{\theta}$:
 \begin{equation}
- \vecE_{\theta} = -\sin\theta\,\veci + \cos\theta\,\vecj + 0\,\veck
+ \vece_{\theta} = -\sin\theta\,\veci + \cos\theta\,\vecj + 0\,\veck
 \end{equation}
 
-Lastly, since $\vecE_{\phi}=\vecE_{\theta}\times\vecE_{\rho}$, we get:
+Lastly, since $\vece_{\phi}=\vece_{\theta}\times\vece_{\rho}$, we get:
 \begin{equation}
- \vecE_{\phi} = \cos\phi\,\cos\theta\,\veci + \cos\phi\,\sin\theta\,\vecj - \sin\phi\,\veck
+ \vece_{\phi} = \cos\phi\,\cos\theta\,\veci + \cos\phi\,\sin\theta\,\vecj - \sin\phi\,\veck
 \end{equation}
 
-Now that we have formulas for the three spherical unit vectors, our next step is to solve those for \veci, \vecj, \veck in terms of $\vecE_{\rho}$, $\vecE_{\theta}$, $\vecE_{\phi}$.
+Now that we have formulas for the three spherical unit vectors, our next step is to solve those for \veci, \vecj, \veck\ in terms of $\vece_{\rho}$, $\vece_{\theta}$, $\vece_{\phi}$.
 
-This comes down to solving a system of three equations in three unknowns. There are many ways of doing this, but we will do it by combining the formulas for $\vecE_{\rho}$ and $\vecE_{\phi}$ to eliminate \veck, which will give us an equation involving just \veci and \vecj. This, with the formula for $\vecE_{\theta}$, will then leave us with a system of two equations in two unknowns (\veci and \vecj), which we will use to solve first for \vecj then for \veci. Lastly, we will solve for \veck.
+This comes down to solving a system of three equations in three unknowns. There are many ways of doing this, but we will do it by combining the formulas for $\vece_{\rho}$ and $\vece_{\phi}$ to eliminate \veck, which will give us an equation involving just \veci\ and \vecj. This, with the formula for $\vece_{\theta}$, will then leave us with a system of two equations in two unknowns (\veci\ and \vecj), which we will use to solve first for \vecj\ then for \veci. Lastly, we will solve for \veck.
 
 First, note that
 \[
- \sin\phi\,\vecE_{\rho} + \cos\phi\,\vecE_{\phi} = \cos\theta\,\veci + \sin\theta\,\vecj
+ \sin\phi\,\vece_{\rho} + \cos\phi\,\vece_{\phi} = \cos\theta\,\veci + \sin\theta\,\vecj
 \]
 so that
 \[
- \sin\theta\,(\sin\phi\,\vecE_{\rho} + \cos\phi\,\vecE_{\phi}) + \cos\theta\,\vecE_{\theta} =
+ \sin\theta\,(\sin\phi\,\vece_{\rho} + \cos\phi\,\vece_{\phi}) + \cos\theta\,\vece_{\theta} =
   (\sin^2 \theta + \cos^2 \theta)\vecj = \vecj ,
 \]
 and so:
 \begin{equation}\label{j_sphere}
- \vecj = \sin\phi\,\sin\theta\,\vecE_{\rho} + \cos\theta\,\vecE_{\theta} + \cos\phi\,\sin\theta\,\vecE_{\phi}
+ \vecj = \sin\phi\,\sin\theta\,\vece_{\rho} + \cos\theta\,\vece_{\theta} + \cos\phi\,\sin\theta\,\vece_{\phi}
 \end{equation}
 
 Likewise, we see that
 \[
- \cos\theta\,(\sin\phi\,\vecE_{\rho} + \cos\phi\,\vecE_{\phi}) - \sin\theta\,\vecE_{\theta} =
+ \cos\theta\,(\sin\phi\,\vece_{\rho} + \cos\phi\,\vece_{\phi}) - \sin\theta\,\vece_{\theta} =
   (\cos^2 \theta + \sin^2 \theta)\veci = \veci ,
 \]
 and so:
 \begin{equation}\label{i_sphere}
- \veci = \sin\phi\,\cos\theta\,\vecE_{\rho} - \sin\theta\,\vecE_{\theta} + \cos\phi\,\cos\theta\,\vecE_{\phi}
+ \veci = \sin\phi\,\cos\theta\,\vece_{\rho} - \sin\theta\,\vece_{\theta} + \cos\phi\,\cos\theta\,\vece_{\phi}
 \end{equation}
 
 Lastly, we see that:
 \begin{equation}\label{k_sphere}
- \veck = \cos\phi\,\vecE_{\rho} - \sin\phi\,\vecE_{\phi}
+ \veck = \cos\phi\,\vece_{\rho} - \sin\phi\,\vece_{\phi}
 \end{equation}
 
 Now that we have formulas for the three Cartesian unit vectors, our next step is to get formulas for $\frac{\partial F}{\partial \rho}$, $\frac{\partial F}{\partial \theta}$, $\frac{\partial F}{\partial \phi}$ in terms of $\frac{\partial F}{\partial x}$, $\frac{\partial F}{\partial y}$, $\frac{\partial F}{\partial z}$.
@@ -365,30 +379,30 @@ Doing this last step is perhaps the most tedious, since it involves simplifying 
 \begin{align*}
  \nabla F &= \frac{1}{\rho\sin\phi}\left( \rho\sin^2\phi\,\cos\theta\,
   \frac{\partial F}{\partial \rho} - \sin\theta\,\frac{\partial F}{\partial \theta} + \sin\phi\,\cos\phi\,\cos\theta\,
-  \frac{\partial F}{\partial \phi} \right) (\sin\phi\,\cos\theta\,\vecE_{\rho} - \sin\theta\,\vecE_{\theta}\\
-  &\mathrel{\phantom{=}} {} + \cos\phi\,\cos\theta\,\vecE_{\phi})\\
+  \frac{\partial F}{\partial \phi} \right) (\sin\phi\,\cos\theta\,\vece_{\rho} - \sin\theta\,\vece_{\theta}\\
+  &\mathrel{\phantom{=}} {} + \cos\phi\,\cos\theta\,\vece_{\phi})\\
   &+ \frac{1}{\rho\sin\phi}\left( \rho\sin^2\phi\,\sin\theta\,
   \frac{\partial F}{\partial \rho} + \cos\theta\,\frac{\partial F}{\partial \theta} + \sin\phi\,\cos\phi\,\sin\theta\,
-  \frac{\partial F}{\partial \phi} \right) (\sin\phi\,\sin\theta\,\vecE_{\rho} + \cos\theta\,\vecE_{\theta}\\
-  &\mathrel{\phantom{=}} {} + \cos\phi\,\sin\theta\,\vecE_{\phi})\\
+  \frac{\partial F}{\partial \phi} \right) (\sin\phi\,\sin\theta\,\vece_{\rho} + \cos\theta\,\vece_{\theta}\\
+  &\mathrel{\phantom{=}} {} + \cos\phi\,\sin\theta\,\vece_{\phi})\\
   &+ \frac{1}{\rho}\left( \rho\cos\phi\,\frac{\partial F}{\partial \rho} -
-  \sin\phi\,\frac{\partial F}{\partial \phi} \right) (\cos\phi\,\vecE_{\rho} - \sin\phi\,\vecE_{\phi}) ,
+  \sin\phi\,\frac{\partial F}{\partial \phi} \right) (\cos\phi\,\vece_{\rho} - \sin\phi\,\vece_{\phi}) ,
 \end{align*}
-which we see has $8$ terms involving $\vecE_{\rho}$, $6$ terms involving $\vecE_{\theta}$, and $8$ terms involving $\vecE_{\phi}$. But the algebra is straightforward and yields the desired result:
+which we see has $8$ terms involving $\vece_{\rho}$, $6$ terms involving $\vece_{\theta}$, and $8$ terms involving $\vece_{\phi}$. But the algebra is straightforward and yields the desired result:
 \[
- \nabla F = \frac{\partial F}{\partial \rho}\,\vecE_{\rho} +
-  \frac{1}{\rho \sin \phi}\,\frac{\partial F}{\partial \theta}\,\vecE_{\theta} +
-  \frac{1}{\rho}\,\frac{\partial F}{\partial \phi}\,\vecE_{\phi}\eoehere
+ \nabla F = \frac{\partial F}{\partial \rho}\,\vece_{\rho} +
+  \frac{1}{\rho \sin \phi}\,\frac{\partial F}{\partial \theta}\,\vece_{\theta} +
+  \frac{1}{\rho}\,\frac{\partial F}{\partial \phi}\,\vece_{\phi}\eoehere
 \]}
 
 \example{ex_laplpos_sphere}{Practicing in Spherical Coordinates}{In \autoref{exmp_laplposition} we showed that $\nabla \norm{\vecr}^2 = 2\,\vecr$ and $\Delta \norm{\vecr}^2 = 6$, where $\vecr(x,y,z) = x\,\veci + y\,\vecj + z\,\veck$ in Cartesian coordinates. Verify that we get the same answers if we switch to spherical coordinates.}{Since $\norm{\vecr}^2 = x^2 + y^2 + z^2 = \rho^2$ in spherical coordinates, let $F(\rho,\theta,\phi) = \rho^2$ (so that $F(\rho,\theta,\phi) = \norm{\vecr}^2$). The gradient of $F$ in spherical coordinates is
  \begin{align*}
-  \nabla F &= \frac{\partial F}{\partial \rho}\,\vecE_{\rho} +
-   \frac{1}{\rho \sin \phi}\,\frac{\partial F}{\partial \theta}\,\vecE_{\theta} +
-   \frac{1}{\rho}\,\frac{\partial F}{\partial \phi}\,\vecE_{\phi}\\
-   &= 2\rho\,\vecE_{\rho} + \frac{1}{\rho \sin \phi}\,(0)\,\vecE_{\theta} +
-    \frac{1}{\rho}\,(0)\,\vecE_{\phi}\\
-   &= 2\rho\,\vecE_{\rho} = 2\rho\,\frac{\vecr}{\norm{\vecr}} ,\text{ as we showed earlier, so}\\
+  \nabla F &= \frac{\partial F}{\partial \rho}\,\vece_{\rho} +
+   \frac{1}{\rho \sin \phi}\,\frac{\partial F}{\partial \theta}\,\vece_{\theta} +
+   \frac{1}{\rho}\,\frac{\partial F}{\partial \phi}\,\vece_{\phi}\\
+   &= 2\rho\,\vece_{\rho} + \frac{1}{\rho \sin \phi}\,(0)\,\vece_{\theta} +
+    \frac{1}{\rho}\,(0)\,\vece_{\phi}\\
+   &= 2\rho\,\vece_{\rho} = 2\rho\,\frac{\vecr}{\norm{\vecr}} ,\text{ as we showed earlier, so}\\
    &= 2\rho\,\frac{\vecr}{\rho} = 2\,\vecr ,\text{ as expected. And the Laplacian is}\\
   \Delta\,F &= \frac{1}{\rho^2}\,\frac{\partial}{\partial \rho} \left( \rho^2 \,
    \frac{\partial F}{\partial \rho} \right) + \frac{1}{\rho^2 \sin^2 \phi}\,\frac{\partial^2 F}{\partial \theta^2} +

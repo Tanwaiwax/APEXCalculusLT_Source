@@ -169,7 +169,7 @@ $\ds \tan^{-1}x = \sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{2n+1}$ & $\ds x-\frac{
 
 % todo find where in the text we derive the ``Important Maclaurin Series Expansions'', and derive any missing in an example
 
-%\enlargethispage{\baselineskip} % todo Tim
+%\enlargethispage{\baselineskip} % todo Tim 
 \theorem{thm:series_alg}{Algebra of Power Series}
 {Let $\ds f(x) = \sum_{n=0}^\infty a_nx^n$ and $\ds g(x) = \sum_{n=0}^\infty b_nx^n$ converge absolutely for $\abs x<R$, and let $h(x)$ be continuous.
 \index{power series!algebra of} 
@@ -190,17 +190,19 @@ $\ds \tan^{-1}x = \sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{2n+1}$ & $\ds x-\frac{
 \example{ex_ts5}{Combining Taylor series}
 {Write out the first 3 terms of the Maclaurin Series for $f(x) = e^x\cos x$ using \autoref{idea:common_taylor} and \autoref{thm:series_alg}.}
 {\autoref{idea:common_taylor} informs us that 
-$$e^x = 1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\dotsb\quad \text{and}\quad \cos x = 1-\frac{x^2}{2!}+\frac{x^4}{4!}+\dotsb.$$
-Applying \autoref{thm:series_alg}, we find that\\
-\flushinnerequ{%
+\[e^x = 1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\dotsb\qquad \text{and}\qquad \cos x = 1-\frac{x^2}{2!}+\frac{x^4}{4!}+\dotsb.\]
+Applying \autoref{thm:series_alg}, we find that
 \begin{align*}
 e^x\cos x &= \left(1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\dotsb\right)\left(1-\frac{x^2}{2!}+\frac{x^4}{4!}+\dotsb\right).
 \intertext{Distribute the right hand expression across the left:}
-	&= 1\left(1-\frac{x^2}{2!}+\frac{x^4}{4!}+\dotsb\right)+x\left(1-\frac{x^2}{2!}+\frac{x^4}{4!}+\dotsb\right)+\frac{x^2}{2!}\left(1-\frac{x^2}{2!}+\frac{x^4}{4!}+\dotsb\right)\\
-	&\phantom{=}+\frac{x^3}{3!}\left(1-\frac{x^2}{2!}+\frac{x^4}{4!}+\dotsb\right) + \frac{x^4}{4!}\left(1-\frac{x^2}{2!}+\frac{x^4}{4!}+\dotsb\right)+\dotsb
+	&= 1\left(1-\frac{x^2}{2!}+\frac{x^4}{4!}+\dotsb\right)
+	+x\left(1-\frac{x^2}{2!}+\frac{x^4}{4!}+\dotsb\right)\\
+	&\phantom{=}+\frac{x^2}{2!}\left(1-\frac{x^2}{2!}+\frac{x^4}{4!}+\dotsb\right)
+	+\frac{x^3}{3!}\left(1-\frac{x^2}{2!}+\frac{x^4}{4!}+\dotsb\right)\\
+	&\phantom{=}+ \frac{x^4}{4!}\left(1-\frac{x^2}{2!}+\frac{x^4}{4!}+\dotsb\right)+\dotsb
 	\intertext{Distribute again and collect like terms.}
 	&= 1 + x -\frac{x^3}{3}-\frac{x^4}{6} - \frac{x^5}{30}+\frac{x^7}{630}+\dotsb
-\end{align*}}\\
+\end{align*}
 While this process is a bit tedious, it is much faster than evaluating all the necessary derivatives of $e^x\cos x$ and computing the Taylor series directly.
 
 Because the series for $e^x$ and $\cos x$ both converge on $(-\infty,\infty)$, so does the series expansion for $e^x\cos x$.}

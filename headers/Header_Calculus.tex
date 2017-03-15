@@ -116,8 +116,8 @@ Notes:
 \newcommand*{\norm}[1]{\ensuremath{\left\lVert #1 \right\rVert}}
 \newcommand*{\vnorm}[1]{\ensuremath{\norm{\vec #1}}}
 \newcommand{\bracket}[1]{\left\langle #1\right\rangle}
-\newcommand{\la}{\left\langle}
-\newcommand{\ra}{\right\rangle}
+%\newcommand{\la}{\left\langle}
+%\newcommand{\ra}{\right\rangle}
 \newcommand*{\dotp}[2]{\ensuremath{\vec #1 \cdot \vec #2}}
 \newcommand*{\proj}[2]{\ensuremath{\text{proj}_{\,\vec #2}{\,\vec #1}}}
 \newcommand*{\crossp}[2]{\ensuremath{\vec #1 \times \vec #2}}
@@ -139,7 +139,7 @@ Notes:
 \newcommand{\vecw}{\ensuremath{\vec w}}
 \newcommand{\vecx}{\ensuremath{\vec x}}
 \newcommand{\vecy}{\ensuremath{\vec y}}
-\newcommand{\vrp}{\ensuremath{\vec r\primeskip '}}
+\newcommand{\vrp}{\ensuremath{\vec r\hskip1.25pt '}}
 \newcommand{\vsp}{\ensuremath{\vec s\primeskip '}}
 \newcommand{\vrt}{\ensuremath{\vec r(t)}}
 \newcommand{\vst}{\ensuremath{\vec s(t)}}
@@ -255,7 +255,7 @@ Notes:
 
 
 % \mfigure[graphicsoptions]{offset}{caption}{label}{file}
-\newcommand{\mfigure}[5][]{
+\newcommand{\mfigure}[5][]{%
 	\mnote[#2]{%
 		\centering\myincludegraphics[#1]{#5}%
 		\captionof{figure}{#3}\label{#4}}%
@@ -266,16 +266,7 @@ Notes:
 	\mnote[#1]{\centering\small#4\captionof{figure}{#2}\label{#3}}
 }
 
-% \mnote[offset=0]{contents}
-\newcommand{\mnote}[2][0pt]{%
-	\marginpar{\vspace{#1}%
-		\begin{minipage}[c]{\marginparwidth}
-			\captionsetup{type=figure}%
-			\testmargintop
-			#2\ifhmode\unskip\fi
-			\testmarginbottom
-		\end{minipage}%
-}}
+% mnote in apex_style.sty
 
 % \mfigurethree{mediaoptions}{graphicsoptions}{offset}{caption}{label}{file}
 \newcommand{\mfigurethree}[6]%
@@ -317,6 +308,9 @@ Notes:
 % end mecmath
 
 %%%%%%%%%%%%%%%%%
+
+\newboolean{isEarlyTrans}
+\setboolean{isEarlyTrans}{false}
 
 \newcommand{\prereqIntro}{The material in this section provides a basic review of and practice problems for pre-calculus skills essential to your success in Calculus. You should take time to review this section and work the suggested problems (checking your answers against those in the back of the book). Since this content is a pre-requisite for Calculus, reviewing and mastering these skills are considered your responsibility. This means that minimal, and in some cases no, class time will be devoted to this section. When you identify areas that you need help with we strongly urge you to seek assistance outside of class from your instructor or other student tutoring service.\bigskip}
 

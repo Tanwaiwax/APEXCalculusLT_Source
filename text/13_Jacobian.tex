@@ -83,6 +83,8 @@ Similarly, the Jacobian $J(u,v,w)$ of three variables is sometimes written as
 \[J(u,v,w) = \frac{\partial (x,y,z)}{\partial (u,v,w)} .\]
 Notice that \autoeqref{eqn:changevarint2} is saying that $dA(x,y) = \abs{J(u,v)}\,dA(u,v)$, which you can think of as a two-variable version of the relation $dx = g\primeskip'(u)\,du$ in the single-variable case.
 
+\youtubeVideo{Bw5yEqwMjQU}{Jacobian}
+
 The following example shows how the change of variables formula is used.\index{$\dfrac{\partial (x,y,z)}{\partial (u,v,w)}$}
 
 \example{ex_simple_Jacobian}{Change of Variables}{Evaluate $\ds\iint_{R} e^{\frac{x-y}{x+y}} \,dA$, where $R= \lbrace (x,y): x \ge 0, y \ge 0,
@@ -91,35 +93,34 @@ The following example shows how the change of variables formula is used.\index{$
  
 \begin{lxfigure}
  \begin{center}
-  \begin{tikzpicture}
-   \usetikzlibrary{arrows}
-   \draw [black!60,line width=0.3pt,-latex] (-0.5,0) -- (3,0,0);
-   \draw [black!60,line width=0.3pt,-latex] (0,-0.5) -- (0,3,0);
-   \pgfputat{\pgfpointxyz{2.9}{0.2}{0}}{\pgfbox[center,center]{\small $x$}};
-   \pgfputat{\pgfpointxyz{0.2}{2.9}{0}}{\pgfbox[center,center]{\small $y$}};
-   \pgfputat{\pgfpointxyz{0.15}{-0.2}{0}}{\pgfbox[center,center]{\small $0$}};
-   \filldraw [black,line width=1.2pt,fill=black!10] (2,0) -- (0,2) -- (0,0) -- (2,0);
-   \node [above right] at (1,1) {\small $x+y=1$};
-   \node [left] at (0,2) {\small $1$};
-   \node [below] at (2,0) {\small $1$};
-   \node at (0.4,0.4) {\small $R$};
-   \filldraw [black,line width=1.2pt,fill=black!10] (8.5,0) -- (10.5,2) -- (6.5,2) -- (8.5,0);
-   \draw [black!60,line width=0.3pt,-latex] (6,0) -- (11,0,0);
-   \draw [black!60,line width=0.3pt,-latex] (8.5,-0.5) -- (8.5,3,0);
-   \pgfputat{\pgfpointxyz{10.9}{0.2}{0}}{\pgfbox[center,center]{\small $u$}};
-   \pgfputat{\pgfpointxyz{8.7}{2.9}{0}}{\pgfbox[center,center]{\small $v$}};
-   \pgfputat{\pgfpointxyz{8.65}{-0.2}{0}}{\pgfbox[center,center]{\small $0$}};
-   \draw (7.5,1) -- (9.5,1);
-   \node [above left] at (8.5,2) {\small $1$};
-   \node [below] at (6.5,0) {\small $-1$};
-   \node [below] at (10.5,0) {\small $1$};
-   \node at (8.75,1.5) {\small $R'$};
-   \node [below right] at (9.5,1) {\small $u=v$};
-   \node [below left] at (7.5,1) {\small $u=-v$};
-   \draw [line width=1.5pt,-latex] (5.5,2) -- (3.5,2);
-   \node [above] at (4.5,2) {\small $x=\frac12(u+v)$};
-   \node [below] at (4.5,2) {\small $y=\frac12(v-u)$};
-  \end{tikzpicture}\vspace{-4mm}
+  \begin{tikzpicture}[scale=2]
+   % the left area
+   \draw[draw={\colorone},fill={\coloronefill},thick]
+    (0,0)--(1,0)--node[pos=.5,above right]{\scriptsize$x+y=1$}(0,1)--cycle;
+   \draw[draw={\colorone},->](-.2,0)
+    --node[above,color=black,pos=1]{\scriptsize$x$}(1.2,0);
+   \node[below]at(1,0){\scriptsize$1$};
+   \draw[draw={\colorone},->](0,-.2)
+    --node[right,color=black,pos=1]{\scriptsize$y$}(0,1.2);
+   \node[left]at(0,1){\scriptsize$1$};
+   \node[below right] at (0,0) {\scriptsize$0$};
+   \node at (0.2,0.2) {\small $R$};
+   % the arrow
+   \draw[->,very thick](2.5,.7)
+    --node[pos=.5]{\begin{tabular}{l}$x=\frac12(u+v)$\\[1ex]$y=\frac12(v-u)$\end{tabular}}(1.5,.7);
+   % the right area
+   \draw[draw={\colorone},fill={\coloronefill},thick](4,0)
+    --node[pos=.5,below right,color=black]{\scriptsize$u=v$}(5,1)--(3,1)
+    --node[pos=.5,below left ,color=black]{\scriptsize$u=-v$}(4,0);
+   \draw[draw={\colorone},->](2.8,0)
+    --node[above,color=black,pos=1]{\scriptsize$u$}(5.2,0);
+   \node[below]at(3,0){\scriptsize$-1$};
+   \node[below]at(5,0){\scriptsize$1$};
+   \draw[draw={\colorone},->](4,-.2)
+    --node[right,color=black,pos=1]{\scriptsize$v$}(4,1.2);
+   \node[above left]at(4,1){\scriptsize$1$};
+   \node[right]at(4,.6){$R'$};
+  \end{tikzpicture}
  \end{center}
  \caption{The regions $R$ and $R'$}
  \label{fig:exyint}
@@ -174,8 +175,10 @@ so we have the following formula:
  \end{equation}\index{double integral!polar coordinates}\index{coordinates!polar}
  where the mapping $x=r\cos \theta$, $y=r\sin \theta$ maps the region $R'$ in the $r\theta$-plane onto the region $R$ in the $xy$-plane in a one-to-one manner.}
 
-\example{ex_polar_parab}{Integrating in Polar Coordinates}{Find the volume $V$ inside the paraboloid $z=x^2 + y^2$ for $0 \le z \le 1$.}{%
- \mtable{$z=x^2 + y^2$ for \autoref{ex_polar_parab}}{fig_parab}{\begin{tikzpicture}
+\example{ex_polar_parab}{Integrating in Polar Coordinates}{Find the volume $V$ inside the paraboloid $z=x^2 + y^2$ for $0 \le z \le 1$.}{Using vertical slices, we see that
+\[V = \iint_{R} (1 - z)\,dA = \iint_{R} (1 - (x^2 + y^2 ))\,dA ,\]
+where $R = \lbrace (x,y): x^2 + y^2 \le 1 \rbrace$ is the unit disk in $\mathbb{R}^2$ (see \autoref{fig_parab}). In polar coordinates $(r,\theta)$ we know that $x^2 + y^2 = r^2$ and that the unit disk $R$ is the set $R' = \lbrace (r,\theta):0 \le r \le 1, 0 \le \theta \le 2\pi \rbrace$. Thus,
+\mtable{$z=x^2 + y^2$ for \autoref{ex_polar_parab}}{fig_parab}{\begin{tikzpicture}
   \usetikzlibrary{arrows}
   \definecolor{insideo}{HTML}{798084}
   \definecolor{insidei}{HTML}{F0F0F0}
@@ -193,17 +196,17 @@ so we have the following formula:
   \draw [black!60,line width=0.3pt,-latex] (-2,0) -- (2,0,0);
   \draw [black!60,line width=0.3pt,-latex] (0,0) -- (0,4,0);
   \draw [black!60,line width=0.3pt,-latex] (0,0) -- (0,0,2);
-  \pgfputat{\pgfpointxyz{1.9}{0.2}{0}}{\pgfbox[center,center]{\small $y$}};
-  \pgfputat{\pgfpointxyz{0.2}{3.9}{0}}{\pgfbox[center,center]{\small $z$}};
-  \pgfputat{\pgfpointxyz{0.2}{0}{1.8}}{\pgfbox[center,center]{\small $x$}};
-  \pgfputat{\pgfpointxyz{0.05}{-0.2}{0}}{\pgfbox[center,center]{\small $0$}};
+  \node[above]at(2,0){\small$y$};
+  \node[right]at(0,4){\small$z$};
+  \node[right]at(0,0,2){\small$x$};
+  \node[below right]at(0,0){\small$0$};
+%  \pgfputat{\pgfpointxyz{1.9}{0.2}{0}}{\pgfbox[center,center]{\small $y$}};
+%  \pgfputat{\pgfpointxyz{0.2}{3.9}{0}}{\pgfbox[center,center]{\small $z$}};
+%  \pgfputat{\pgfpointxyz{0.2}{0}{1.8}}{\pgfbox[center,center]{\small $x$}};
+%  \pgfputat{\pgfpointxyz{0.05}{-0.2}{0}}{\pgfbox[center,center]{\small $0$}};
   \node [right] at (1.5,3.7) {\small $x^2 + y^2 = 1$};
   \node [above left] at (0,3) {\small $1$};
- \end{tikzpicture}
- }
- Using vertical slices, we see that
- \[V = \iint_{R} (1 - z)\,dA = \iint_{R} (1 - (x^2 + y^2 ))\,dA ,\]
- where $R = \lbrace (x,y): x^2 + y^2 \le 1 \rbrace$ is the unit disk in $\mathbb{R}^2$ (see \autoref{fig_parab}). In polar coordinates $(r,\theta)$ we know that $x^2 + y^2 = r^2$ and that the unit disk $R$ is the set $R' = \lbrace (r,\theta):0 \le r \le 1, 0 \le \theta \le 2\pi \rbrace$. Thus,
+ \end{tikzpicture}}%
  \begin{align*}
   V &= \int_0^{2\pi} \int_0^1 (1 - r^2 )\,r\,dr\,d\theta\\
    &= \int_0^{2\pi} \int_0^1 (r - r^3 )\,dr\,d\theta\\
@@ -227,10 +230,14 @@ so we have the following formula:
   \draw [black!60,line width=0.3pt,-latex] (-2,0) -- (2,0,0);
   \draw [black!60,line width=0.3pt,-latex] (1,1) -- (0,0,2);
   \draw [black!60,line width=0.3pt,-latex] (0,-0.5) -- (0,2.9,0);
-  \pgfputat{\pgfpointxyz{1.9}{0.2}{0}}{\pgfbox[center,center]{\small $y$}};
-  \pgfputat{\pgfpointxyz{0.2}{2.8}{0}}{\pgfbox[center,center]{\small $z$}};
-  \pgfputat{\pgfpointxyz{0.2}{0}{1.8}}{\pgfbox[center,center]{\small $x$}};
-  \pgfputat{\pgfpointxyz{0.15}{-0.2}{0}}{\pgfbox[center,center]{\small $0$}};
+  \node[above]at(2,0){\small$y$};
+  \node[right]at(0,3){\small$z$};
+  \node[right]at(0,0,2){\small$x$};
+  \node[below right]at(0,0){\small$0$};
+%  \pgfputat{\pgfpointxyz{1.9}{0.2}{0}}{\pgfbox[center,center]{\small $y$}};
+%  \pgfputat{\pgfpointxyz{0.2}{2.8}{0}}{\pgfbox[center,center]{\small $z$}};
+%  \pgfputat{\pgfpointxyz{0.2}{0}{1.8}}{\pgfbox[center,center]{\small $x$}};
+%  \pgfputat{\pgfpointxyz{0.15}{-0.2}{0}}{\pgfbox[center,center]{\small $0$}};
   \node [above] at (1.3,2.4) {\small $x^2 + y^2 = 1$};
   \node [above left] at (0,2) {\small $1$};
  \end{tikzpicture}

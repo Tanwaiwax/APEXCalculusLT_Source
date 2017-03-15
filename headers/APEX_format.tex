@@ -59,6 +59,17 @@
 \newtheorem{exampleEnv}{Example}[section]
 \let\theHexampleEnv\theexampleEnv
 \renewcommand{\theexampleEnv}{\arabic{exampleEnv}}
+% this gets written to aux.  if it appears in section #1, the argument vanishes.
+% otherwise, we're in a different section and need to prefix whatever with the
+% section #1
+\protected\def\sectionifdifferent#1{%
+  \ifthenelse{\equal{#1}{\thesection}}{}{#1.}%
+}
+% the prefix before \theexampleEnv
+\makeatletter
+\renewcommand{\p@exampleEnv}{\sectionifdifferent{\thesection}}
+\makeatother
+
 \theoremstyle{apex}
 
 \newcommand{\exampleEnvautorefname}{Example}

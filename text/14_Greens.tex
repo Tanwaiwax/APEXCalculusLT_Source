@@ -22,46 +22,37 @@ We will now see a way of evaluating the line integral of a \emph{smooth} vector 
  \end{align}
  where $Y_1$ and $Y_2$ are the lowest and highest points, respectively, on $C$.
  See \autoref{fig_green_simple}.
- %
+
  \begin{lxfigure}
  \begin{center}
  \begin{tikzpicture}
   \usetikzlibrary{arrows}
-  \draw [black!60,line width=0.3pt,-latex,anchor=base] (0,0) -- (5,0)
-    node[black,shift={(0,-0.4)}] at (1,0) {\small $a$}
-    node[black,shift={(0,-0.4)}] at (4.2,0) {\small $b$};
-  \draw [black!60,line width=0.3pt,-latex] (0,0) -- (0,5);
-  \pgfputat{\pgfpointxyz{4.9}{0.2}{0}}{\pgfbox[center,center]{\small $x$}}
-  \pgfputat{\pgfpointxyz{0.2}{4.9}{0}}{\pgfbox[center,center]{\small $y$}}
-  \filldraw [black,line width=1.2pt,fill=black!10] (1,2.5) to[out=90,in=180] node [sloped]
-  {\large $\blacktriangleleft$} (2.5,4) to[out=0,in=90] (4.2,3) to[out=270,in=0] node [sloped]
-  {\large $\blacktriangleright$}(2,1) to[out=180,in=270] (1,2.5);
-  \node [above] at (3,4) {\small $y = y_2(x)$};
-  \node [below] at (2.5,1) {\small $y = y_1(x)$};
-  \node [right] at (4.2,3) {\small $x = x_2(y)$};
-  \node [left] at (1,2.5) {\small $x = x_1(y)$};
-  \node [below] at (2.5,4) {\small $Y_2$};
-  \node [above] at (2,1) {\small $Y_1$};
-  \node [left] at (4.2,3) {\small $X_2$};
-  \node [right] at (1,2.5) {\small $X_1$};
-  \node [right] at (2.5,2.5) {\small $R$};
-  \node [left] at (4,1.5) {\small $C$};
-  \draw [dashed] (1,0) -- (1,4);
-  \draw [dashed] (4.2,0) -- (4.2,4);
-  \draw [dashed] (0,4) -- (4.2,4);
-  \draw [dashed] (0,1) -- (4.2,1);
-  \node [left] at (0,4) {\small $d$};
-  \node [left] at (0,1) {\small $c$};
-  \fill (1,2.5) circle (2pt);
-  \fill (2.5,4) circle (2pt);
-  \fill (4.2,3) circle (2pt);
-  \fill (2,1) circle (2pt);
+  \draw [black,->] (0,0) -- (5,0) node[above] {\small$x$};
+  \draw [black,->] (0,0) -- node[right,pos=1]{\small$y$} (0,5);
+  \filldraw [draw={\colorone},very thick,fill={\coloronefill}]
+   (1,2.5)node[left]{\small $x = x_1(y)$}node[right]{\small $X_1$}
+   to[out=90,in=180] node [sloped]{\large $\blacktriangleleft$}(2.5,4)
+   node[below]{\small $Y_2$}node[above] {\small $y = y_2(x)$}
+   to[out=0,in=90](4.2,3) node[right]{\small $x = x_2(y)$}node[left]{\small $X_2$}
+   to[out=270,in=0] node [sloped]{\large $\blacktriangleright$}
+   node[below right]{\small$C$}
+   (2,1)node[above]{\small $Y_1$}node[below]{\small $y = y_1(x)$}
+   to[out=180,in=270] cycle;
+  \node at (2.5,2.5) {\small $R$};
+  \draw [dashed] (1,0)node[below]{\small$a$} -- (1,4);
+  \draw [dashed] (4.2,0)node[below]{\small$b$} -- (4.2,4);
+  \draw [dashed] (0,4)node[left]{\small$d$} -- (4.2,4);
+  \draw [dashed] (0,1)node[left]{\small$c$} -- (4.2,1);
+  \fill[draw={\colorone},fill={\colorone}] (1,2.5) circle (2pt);
+  \fill[draw={\colorone},fill={\colorone}] (2.5,4) circle (2pt);
+  \fill[draw={\colorone},fill={\colorone}] (4.2,3) circle (2pt);
+  \fill[draw={\colorone},fill={\colorone}] (2,1) circle (2pt);
  \end{tikzpicture}
  \caption{Figure for Green's Theorem on a simple region.}
  \label{fig_green_simple}
  \end{center}
  \end{lxfigure}
- %
+
  Integrate $P(x,y)$ around $C$ using the representation $C = C_1 \cup C_2$ given by Equations \eqref{green_bottom} and \eqref{green_top}. Since $y = y_1(x)$ along $C_1$ (as $x$ goes from $a$ to $b$) and $y = y_2(x)$ along $C_2$ (as $x$ goes from $b$ to $a$), as we see from \autoref{fig_green_simple}, then we have
  \begin{align*}
   \oint_C P(x,y)\,dx &= \int_{C_1} P(x,y)\,dx + \int_{C_2} P(x,y)\,dx\\
@@ -92,26 +83,24 @@ Putting this together, we have
 
 Though we proved Green's Theorem only for a simple region $R$, the theorem can also be proved for more general regions (say, a union of simple regions).%\footnote{See \cite[\S\,15.31]{tm} for a discussion of some of the difficulties involved when the boundary curve is ``complicated''.}
 
+\youtubeVideo{a_zdFvYXX_c}{Green's Theorem}
+
 \example{exmp_greenexmp}{Using Green's Theorem}{Evaluate $\oint_{C} (x^2 + y^2 )\,dx + 2xy\,dy$, where $C$ is the boundary (traversed counterclockwise) of the region
-  $R = \lbrace\,(x,y): 0 \le x \le 1,2x^2 \le y \le 2x \,\rbrace$.}{%
+  $R = \{(x,y): 0 \le x \le 1,2x^2 \le y \le 2x \}$.}{%
  \mtable{Figure for \autoref{exmp_greenexmp}}{fig_greenexmp}{\begin{tikzpicture}
    \usetikzlibrary{arrows}
-   \fill [fill=black!10] (0,0) parabola (1,2) -- (0,0);
-   \draw [black!60,line width=0.3pt,-latex] (-0.5,0) -- (2,0);
-   \draw [black!60,line width=0.3pt,-latex] (0,-0.5) -- (0,2.5);
-   \pgfputat{\pgfpointxyz{1.9}{0.2}{0}}{\pgfbox[center,center]{\small $x$}}
-   \pgfputat{\pgfpointxyz{0.2}{2.4}{0}}{\pgfbox[center,center]{\small $y$}}
-   \pgfputat{\pgfpointxyz{-0.2}{-0.2}{0}}{\pgfbox[center,center]{\small $0$}}
-   \draw [line width=1pt] (0,0) parabola (1,2);
-   \draw [line width=1pt,-latex] (0,0) parabola (0.5,0.5);
-   \draw [line width=1pt] (0,0) -- (1,2);
-   \draw [line width=1pt,-latex] (1,2) -- (0.5,1);
-   \node [right,above] at (1,2) {\small $(1,2)$};
+   \draw[draw={\colorone},fill={\coloronefill}](0,0)parabola(1,2)
+    node[above]{\small$(1,2)$}--cycle;
+   \draw [black,->] (-0.5,0) --node[above,pos=1,color=black]{\small$x$} (2,0);
+   \draw [black,->] (0,-0.5) --node[right,pos=1,color=black]{\small$y$} (0,2.5);
+   \node[below left]at(0,0){\small$0$};
+   \draw [draw={\colorone},->] (0,0) parabola (0.5,0.5);
+   \draw [draw={\colorone},->] (1,2) -- (0.5,1);
    \node [left] at (0,2) {\small $2$};
    \node [below] at (1,0) {\small $1$};
    \node at (1,1) {\small $C$};
-   \fill (0,0) circle (1.7pt);
-   \fill (1,2) circle (1.7pt);
+   \fill[draw={\colorone},fill={\colorone}] (0,0) circle (1.7pt);
+   \fill[draw={\colorone},fill={\colorone}] (1,2) circle (1.7pt);
   \end{tikzpicture}}
   %
  $R$ is the shaded region in \autoref{fig_greenexmp}. By Green's Theorem, for
@@ -133,29 +122,30 @@ Though we proved Green's Theorem only for a simple region $R$, the theorem can a
   \frac{\partial Q}{\partial x} = \frac{y^2 - x^2}{(x^2 + y^2 )^2} = \frac{\partial P}{\partial y} 
   \Rightarrow 
   \iint_{R} \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)\,dA =
-  \iint_{R} 0 \,dA = 0.\eoehere
- \]}
+  \iint_{R} 0 \,dA = 0.
+ \]
 
-This would seem to contradict Green's Theorem. However, note that $R$ is not the \emph{entire} region enclosed by $C$, since the point $(0,0)$ is not contained in $R$. That is, $R$ has a ``hole'' at the origin, so Green's Theorem does not apply.
+This would seem to contradict Green's Theorem. However, note that $R$ is not the \emph{entire} region enclosed by $C$, since the point $(0,0)$ is not contained in $R$. That is, $R$ has a ``hole'' at the origin, so Green's Theorem does not apply.}
 
-\mtable{The annulus $R$}{fig_annulus}{\begin{tikzpicture}
- \usetikzlibrary{arrows}
- \filldraw [black,line width=1.2pt,fill=black!10] (0:0) circle (2);
- \filldraw [black,line width=1.2pt,fill=white] (0:0) circle (0.5);
- \draw [black!60,line width=0.3pt,-latex] (-3,0) -- (3,0,0);
- \draw [black!60,line width=0.3pt,-latex] (0,-2.5) -- (0,3,0);
- \pgfputat{\pgfpointxyz{2.9}{0.2}{0}}{\pgfbox[center,center]{\small $x$}};
- \pgfputat{\pgfpointxyz{0.2}{2.9}{0}}{\pgfbox[center,center]{\small $y$}};
- \pgfputat{\pgfpointxyz{0.15}{-0.2}{0}}{\pgfbox[center,center]{\small $0$}};
- \node [above right] at (1.5,1.5) {\small $C_1$};
- \node [right] at (0.35,0.35) {\small $C_2$};
- \node [above left] at (0,2) {\small $1$};
- \node [below right] at (2,0) {\small $1$};
- \node [above left] at (0,0.5) {\small $1/2$};
- \node [below right] at (0.5,0) {\small $1/2$};
- \node at (1.05,1.05) {\small $R$};
- \node [rotate=45] at (-0.3536,0.3536) {\Large $\blacktriangleright$};
- \node [rotate=-45] at (1.4142,1.4142) {\Large $\blacktriangleleft$};
+\mtable{The annulus $R$}{fig_annulus}{\begin{tikzpicture}[scale=2]
+% \usetikzlibrary{arrows}
+ \filldraw [draw={\colorone},fill={\coloronefill}] (0,0) circle (1);
+ \filldraw [draw={\colorone},fill=white] (0,0) circle (0.5);
+ \draw [black,->] (-1.2,0) --node[above,pos=1]{\small$x$} (1.2,0);
+ \draw [black,->] (0,-1.2) --node[right,pos=1]{\small$y$} (0,1.2);
+% \pgfputat{\pgfpointxyz{2.9}{0.2}{0}}{\pgfbox[center,center]{\small $x$}};
+% \pgfputat{\pgfpointxyz{0.2}{2.9}{0}}{\pgfbox[center,center]{\small $y$}};
+ \node[below right]at(0,0){\small$0$};
+% \pgfputat{\pgfpointxyz{0.15}{-0.2}{0}}{\pgfbox[center,center]{\small $0$}};
+ \node [above right] at (45:1) {\small $C_1$};
+ \node [right] at (45:0.5) {\small $C_2$};
+ \node [above left] at (0,1) {\small $1$};
+ \node [below right] at (1,0) {\small $1$};
+ \node [above left] at (0,0.5) {\small $\frac12$};
+ \node [below right] at (0.5,0) {\small $\frac12$};
+ \node at (.7:45) {\small $R$};
+ \node [rotate=45] at (135:.5) {$\blacktriangleright$};
+ \node [rotate=-45] at (45:1) {$\blacktriangleleft$};
 \end{tikzpicture}}
 If we modify the region $R$ to be the \emph{annulus} $R =\lbrace\,(x,y): 1/4 \le x^2 + y^2 \le 1\,\rbrace$ (see \autoref{fig_annulus}), and take the ``boundary'' $C$ of $R$ to be $C = C_1 \cup C_2$, where $C_1$ is\index{annulus} the unit circle $x^2 + y^2 = 1$ traversed counterclockwise and $C_2$ is the circle $x^2 + y^2 = 1/4$ traversed \emph{clockwise}, then it can be shown (see Exercise \ref{const_closed_int}) that
 \[\oint_{C}\vecf\cdot d\vecr = 0 .\]
@@ -172,50 +162,40 @@ It turns out that Green's Theorem can be extended to \emph{multiply connected} r
  \centering
  \begin{tabular}{cc}
  \begin{tikzpicture}
-  \usetikzlibrary{arrows}
-  \filldraw [black,line width=1.2pt,fill=black!10] (0:0) circle (2);
-  \filldraw [black,line width=1.2pt,fill=white] (0:0) circle (0.5);
-  \node [above right] at (1.5,1.5) {\small $C_1$};
+%  \usetikzlibrary{arrows}
+  \filldraw [draw={\colorone},fill={\coloronefill}] (0,0) circle (2);
+  \filldraw [draw={\colorone},fill=white] (0,0) circle (0.5);
+  \node [above right] at (45:2) {\small $C_1$};
   \node [above] at (0,0.5) {\small $C_2$};
   \node at (0,1.35) {\small $R_1$};
   \node at (0,-1.35) {\small $R_2$};
-  \node [rotate=45] at (-0.3536,0.3536) {\Large $\blacktriangleright$};
-  \node [rotate=45] at (0.3536,-0.3536) {\Large $\blacktriangleleft$};
-  \node [rotate=-45] at (1.4142,1.4142) {\Large $\blacktriangleleft$};
-  \node [rotate=-45] at (-1.4142,-1.4142) {\Large $\blacktriangleright$};
-  \draw [dashed] (0.5,0) -- (2,0);
-  \draw [dashed] (-0.5,0) -- (-2,0);
-  \draw [-latex] (1.05,0.15) -- (1.45,0.15);
-  \draw [latex-] (1.05,-0.15) -- (1.45,-0.15);
-  \draw [-latex] (-1.45,0.15) -- (-1.05,0.15);
-  \draw [latex-] (-1.45,-0.15) -- (-1.05,-0.15);
+  \node [rotate=45] at (135:.5) {$\blacktriangleright$};
+  \node [rotate=45] at (-45:.5) {$\blacktriangleleft$};
+  \node [rotate=-45] at (45:2) {$\blacktriangleleft$};
+  \node [rotate=-45] at (-135:2) {$\blacktriangleright$};
+  \draw [dashed] (0.5,0) --node[above]{$\to$}node[below]{$\leftarrow$} (2,0);
+  \draw [dashed] (-0.5,0) --node[above]{$\to$}node[below]{$\leftarrow$} (-2,0);
  \end{tikzpicture}
  &
  \begin{tikzpicture}
-  \usetikzlibrary{arrows}
-  \filldraw [black,line width=1.2pt,fill=black!10] (0,0) ellipse (2.5 and 2);
-  \filldraw [black,line width=1.2pt,fill=white] (-1,0) circle (0.5);
-  \filldraw [black,line width=1.2pt,fill=white] (1,0) circle (0.5);
+%  \usetikzlibrary{arrows}
+  \filldraw [draw={\colorone},fill={\coloronefill}] (0,0) ellipse (2.5 and 2);
+  \filldraw [draw={\colorone},fill=white] (-1,0) circle (0.5);
+  \filldraw [draw={\colorone},fill=white] (1,0) circle (0.5);
   \node [above right] at (1.5,1.6) {\small $C_1$};
   \node [above] at (1,0.5) {\small $C_2$};
   \node [above] at (-1,0.5) {\small $C_3$};
   \node at (0,1.35) {\small $R_1$};
   \node at (0,-1.35) {\small $R_2$};
-  \node [rotate=45] at (-1.3536,0.3536) {\Large $\blacktriangleright$};
-  \node [rotate=45] at (0.6464,0.3536) {\Large $\blacktriangleright$};
-  \node [rotate=45] at (-0.6464,-0.3536) {\Large $\blacktriangleleft$};
-  \node [rotate=45] at (1.3536,-0.3536) {\Large $\blacktriangleleft$};
-  \node [rotate=-31] at (1.5,1.6) {\Large $\blacktriangleleft$};
-  \node [rotate=-31] at (-1.5,-1.6) {\Large $\blacktriangleright$};
-  \draw [dashed] (2.5,0) -- (1.5,0);
-  \draw [dashed] (0.5,0) -- (-0.5,0);
-  \draw [dashed] (-1.5,0) -- (-2.5,0);
-  \draw [-latex] (1.8,0.15) -- (2.2,0.15);
-  \draw [latex-] (1.8,-0.15) -- (2.2,-0.15);
-  \draw [-latex] (-0.2,0.15) -- (0.2,0.15);
-  \draw [latex-] (-0.2,-0.15) -- (0.2,-0.15);
-  \draw [-latex] (-2.2,0.15) -- (-1.8,0.15);
-  \draw [latex-] (-2.2,-0.15) -- (-1.8,-0.15);
+  \node [rotate=45] at (-1.3536,0.3536) {$\blacktriangleright$};
+  \node [rotate=45] at (0.6464,0.3536) {$\blacktriangleright$};
+  \node [rotate=45] at (-0.6464,-0.3536) {$\blacktriangleleft$};
+  \node [rotate=45] at (1.3536,-0.3536) {$\blacktriangleleft$};
+  \node [rotate=-31] at (1.5,1.6) {$\blacktriangleleft$};
+  \node [rotate=-31] at (-1.5,-1.6) {$\blacktriangleright$};
+  \draw [dashed] (2.5,0) --node[above]{$\to$}node[below]{$\leftarrow$} (1.5,0);
+  \draw [dashed] (0.5,0) --node[above]{$\to$}node[below]{$\leftarrow$} (-0.5,0);
+  \draw [dashed] (-1.5,0) --node[above]{$\to$}node[below]{$\leftarrow$} (-2.5,0);
  \end{tikzpicture} \\
  Region $R$ with one hole & Region $R$ with two holes
  \end{tabular}

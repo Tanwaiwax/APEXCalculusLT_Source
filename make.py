@@ -1,4 +1,6 @@
-#!/usr/local/bin/python3
+#!/usr/bin/python
+
+"""This could be Python 3 by changing the few print statements.  But see the calls to pdfsizeopt, which must have Python 2, because it uses old style print statements."""
 
 import re
 import os
@@ -15,18 +17,19 @@ start = time.time()
 
 asyfiles = ['figdisk1_3D','figwash1c_3D','figsq_rt_3D','figsq_rt_b_3D',
             'figwash4_3D','figwash4b_3D','figshellparab_3D',
-            'figshellparab_b_3D','figarc4_3D','figarc4_b_3D']
+            'figshellparab_b_3D','figarc4_3D','figarc4_b_3D',
+            'ortho_cyl','ortho_sph']
 
 parser = argparse.ArgumentParser(description='Compile document to a pdf.',
                                  epilog="If no options are given, "
                                  "--help is assumed.")
 
 parser.add_argument("-a","--all", action="store_true",
-                    help="Creates all versions (ignores other options).")
+                    help="Creates all versions. (Ignores other options. 15 min)")
 
 parser.add_argument("-c","--calculus", type=int, choices=[0,1,2,3,4],
                     default=0,
-                    help="Calculus semester 1, 2, 3, or (default) all. (1 or 4 min)")
+                    help="Calculus semester 1, 2, 3, or (default) all. (2 or 4 min)")
 
 parser.add_argument("-f","--figures", action="store_true",
                     help="Create 3D figures using Asymptote.")
@@ -38,10 +41,10 @@ parser.add_argument("-n","--internet", action="store_true",
                     help="Create interNet version (options x & w).")
 
 parser.add_argument("-x","--xml", action="store_true",
-                    help="Create xml version. (120 min)");
+                    help="Create xml version. (180 min)");
 
 parser.add_argument("-w","--web", action="store_true",
-                    help="Convert xml version to html. (4 min)");
+                    help="Convert xml version to html. (5 min)");
 
 parser.add_argument("-t","--todo", action="store_true",
                     help="Update todo lists.");
@@ -57,9 +60,11 @@ group.add_argument("-b","--blackwhite", action="store_true",
 group.add_argument("-s","--static", action="store_true",
                    help="Print static color graphics (default is interactive).")
 
-os.makedirs('ApexPDFs',exist_ok=True)
-os.makedirs('logs',exist_ok=True)
-os.makedirs('web',exist_ok=True)
+for dir in ('ApexPDFs','logs','web'):
+    try:
+        os.mkdir(dir)
+    except OSError:
+        pass # the directory already exists
 
 if len(sys.argv)==1:
     parser.print_help()
@@ -116,8 +121,8 @@ def updatetodo():
         'todo_calc2.txt': todocalc2
     }
     for filename,todolist in todosin.items():
-        with open(filename,'w') as timfile:
-            print(*todolist,sep='\n',file=timfile)
+        with open(filename,'w') as todofile:
+            todofile.write('\n'.join(todolist).encode('utf-8'))
         
 def writeoptions(args):
     with open('options.tex','w') as options:
@@ -154,10 +159,30 @@ def getsuffix(args):
         newsuffix += "_small"
     return newsuffix
 
+def fixRefs():
+    """
+    LaTeXML doesn't have the frefnum for sections and subsections, so that
+    autorefs only end up with the number.  We go through and add hte frefnum in.
+    We could compile the regular expression in re.search, but
+    "The compiled versions of the most recent patterns passed to re.match(),
+    re.search() or re.compile() are cached, so programs that use only a few
+    regular expressions at a time needn't worry about compiling regular
+    expressions."
+    """
+    with open('calculusRefs.xml') as input, open('calculus.xml','w') as output:
+        for line in input:
+#            line = line.decode('iso-8859-1').replace(u'\xa0',' ')
+            if ( '<section ' in line and ' refnum' in line and ' frefnum' not in line ):
+                refnum = re.search(' refnum="(.+?)"',line).group(1)
+                line = line.replace('<section ',
+                            '<section frefnum="Section {0}" '.format(refnum))
+            output.write(line)
+
 def getcommandline(args):
     if args.xml:
         ret = ['latexml','--quiet',#'--quiet',#'--verbose','--verbose',#
-                       '--destination=calculus.xml',
+                       '--destination=calculusRefs.xml',
+                       '--nocomments',
                        'Calculus']
         if platform.mac_ver()[0] is '':
             return ret
@@ -165,18 +190,44 @@ def getcommandline(args):
             return ['caffeinate','-s'] + ret
             # prevent sleeping, if plugged in, until command finished
     if args.web:
-        #os.chdir('web')
-#        return
+        fixRefs()
+        shutil.copyfile('web/script.js','script.js')
+        shutil.copyfile('web/style.css','style.css')
         return ['latexmlpost','--quiet','--split','--stylesheet=web/apex.xsl',
+                    
                     '--destination=web/index.html','--css=style.css',
                     '--javascript=https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js',
                     '--javascript=LaTeXML-maybeMathJax.js',
                     '--javascript=script.js','calculus.xml']
     if args.internet:
-        return
+        raise "args.internet doesn't need a command line"
     if args.instructor:
         return ['latexmk','-xelatex','Answers']
     return ['latexmk','-xelatex','Calculus']
+
+def minimizePdf(filename):
+    """pdfsizeopt forces Python 2 by using the old style print statement.
+    It also prints to sys.stderr, which we can intercept using
+    "with ... as sys.stderr" and reverting to sys.__stderr__ at the end.
+    It also makes several calls to os.system, which prints to stderr in a way
+    we can't intercept.  We intercept those calls by redefining os.system to
+    use subprocess.check_call."""
+    sys.path[:0] = ['../pdfsizeopt/lib']
+    from pdfsizeopt import main
+    oldossystem = os.system
+    try:
+        os.remove('logs/ossystemerr.log')
+    except:
+        pass
+    def ossystem(args):
+        with open('logs/ossystemerr.log','a') as mystdout:
+            subprocess.check_call(args,stdout=mystdout,stderr=subprocess.STDOUT,shell=True)
+    os.system = ossystem
+    with open('logs/minimizePdf.log','w') as sys.stderr:
+        main.main(['../pdfsizeopt/pdfsizeopt','--use-pngout=no',
+                   '--use-jbig2=no','--use-multivalent=no',filename])
+    sys.stderr = sys.__stderr__
+    os.system = oldossystem
 
 def compilewith(commands=False):
     if commands:
@@ -194,39 +245,46 @@ def compilewith(commands=False):
     writeoptions(args)
     if args.quit:
         return
-    newsuffix = getsuffix(args)
-    if args.xml or args.web or args.instructor:
+    if args.xml or args.instructor:
         compilewith("-qsc0")
     elif args.internet:
         compilewith("-x")
         compilewith("-w")
         return
+    runcommands(args,commands)
+
+def runcommands(args,commands):
+    newsuffix = getsuffix(args) or 'Big'
     with open('logs/compilation'+newsuffix+'.log','w') as mystdout:
         try:
             commandline = getcommandline(args)
-#            print("running",commandline)
             subprocess.check_call(commandline,stdout=mystdout,stderr=subprocess.STDOUT)
         except:
             time = "{0[0]:02d}:{0[1]:02d}".format(getTime())
-            print("At",time,"failing command:",commands);
+            print "At",time,"failing command:",commands
             raise
-        finally:
-            if args.web:
-                #os.chdir('..')
-                pass
     time = "{0[0]:02d}:{0[1]:02d}".format(getTime())
     if commands:
-        print("Command line:",commands,"finished at",time)
+        print "Command line:",commands,"finished at",time
     else:
-        print("Command line finished at",time)
-    if not args.xml and not args.web and not args.instructor:
+        print "Command line finished at",time
+    if args.instructor:
+        os.rename('Answers.pdf','ApexPDFs/Answers.pdf')
+    elif not args.xml and not args.web:
         os.rename("Calculus.pdf","ApexPDFs/Calculus"+newsuffix+".pdf")
+        if newsuffix == 'Big':
+            if (2, 4) <= sys.version_info[:2] < (3, 0):
+                minimizePdf("ApexPDFs/CalculusBig.pdf")
+                print "Minimizing pdf finished at","{0[0]:02d}:{0[1]:02d}".format(getTime())
+                os.rename("ApexPDFs/CalculusBig.pso.pdf","ApexPDFs/Calculus.pdf")
+            else:
+                os.rename("ApexPDFs/CalculusBig.pdf","ApexPDFs/Calculus.pdf")
 
 if args.all:
     compilewith('-f')
-    for part,size in itertools.product('0123',["","s","b"]):
-        # switch the order so that all parts are compiled together to speed
-        # up compilation, since the index shouldn't need to be recommputed
+    # having this first makes sure the index and toc are up to date
+    compilewith('-c0')
+    for part,size in itertools.product('123',["s","b"]):
         compilewith('-'+size+'c'+part)
     compilewith('-i')
 else:

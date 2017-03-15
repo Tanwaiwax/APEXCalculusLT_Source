@@ -34,12 +34,12 @@ In part (b) of the figure, we zoom in on this portion of the surface. When $\dx_
 
 This portion of the tangent plane is a parallelogram, defined by sides $\vec u$ and $\vec v$, as shown. One of the applications of the cross product from \autoref{sec:cross_product} is that the area of this parallelogram is $\norm{\vec u\times \vec v}$. Once we can determine $\vec u$ and $\vec v$, we can determine the area.
 
-$\vec u$ is tangent to the surface in the direction of $x$, therefore, from \autoref{sec:multi_tangent}, $\vec u$ is parallel to $\la 1,0,f_x(x_i,y_i)\ra$. The $x$-displacement of $\vec u$ is $\dx_i$, so we know that $\vec u = \dx_i\la 1,0,f_x(x_i,y_i)\ra$. Similar logic shows that $\vec v = \dy_i\la 0,1,f_y(x_i,y_i)\ra$. Thus:
+$\vec u$ is tangent to the surface in the direction of $x$, therefore, from \autoref{sec:multi_tangent}, $\vec u$ is parallel to $\bracket{1,0,f_x(x_i,y_i)}$. The $x$-displacement of $\vec u$ is $\dx_i$, so we know that $\vec u = \dx_i\bracket{1,0,f_x(x_i,y_i)}$. Similar logic shows that $\vec v = \dy_i\bracket{0,1,f_y(x_i,y_i)}$. Thus:
 
 \begin{align*}
 \text{surface area $S_i$} &\approx \text{area of  $T_i$}\\
 				&= \norm{\vec u\times \vec v}\\
-				&= \big|\big|\dx_i\la 1,0,f_x(x_i,y_i)\ra\times\dy_i\la 0,1,f_y(x_i,y_i)\ra\big|\big|\\
+				&= \big|\big|\dx_i\bracket{1,0,f_x(x_i,y_i)}\times\dy_i\bracket{0,1,f_y(x_i,y_i)}\big|\big|\\
 				&=\sqrt{1+f_x(x_i,y_i)^2+f_y(x_i,y_i)^2}\dx_i\dy_i.
 \end{align*}
 Note that $\dx_i\dy_i = \Delta A_i$, the area of the $i^{\,\text{th}}$ subregion.
@@ -59,6 +59,8 @@ The concept of surface area is \textit{defined} here, for while we already have 
 S &= \iint_R \ dS\\
 &=\iint_R \sqrt{1+f_x(x,y)^2+f_y(x,y)^2}\ dA.
 \end{align*}}
+
+\youtubeVideo{ricG1_x6xCo}{Surface area of $z=(x^2+y^2)^{1/2}$}
 
 We test this definition by using it to compute surface areas of known surfaces. We start with a triangle.
 
@@ -128,9 +130,9 @@ Find the surface area of this cone.}
 $$f_x(x,y) = -\frac{xh}{a\sqrt{x^2+y^2}}\quad \text{and}\quad -\frac{yh}{a\sqrt{x^2+y^2}}.$$
 
 Since we are integrating over the circle $x^2+y^2=a^2$, we again use polar coordinates. Using the standard substitutions, our integrand becomes
-$$\sqrt{1+ \left(\frac{hr\cos\theta}{a\sqrt{r^2}}\right)^2 + \left(\frac{hr\sin\theta}{a\sqrt{r^2}}\right)^2}.$$
+\[\sqrt{1+ \left(\frac{hr\cos\theta}{a\sqrt{r^2}}\right)^2 + \left(\frac{hr\sin\theta}{a\sqrt{r^2}}\right)^2}.\]
 This may look intimidating at first, but there are lots of simple simplifications to be done. It amazingly reduces to just
-$$\sqrt{1+\frac{h^2}{a^2}} = \frac1a\sqrt{a^2+h^2}.$$
+\[\sqrt{1+\frac{h^2}{a^2}} = \frac1a\sqrt{a^2+h^2}.\]
 Our polar bounds are $0\leq\theta\leq2\pi$ and $0\leq r\leq a$. Thus
 \mnote{\textbf{Note:} Note that once again $f_x$ and $f_y$ are not continuous on the domain of $f$, as both are undefined at $(0,0)$. (A similar problem occurred in the previous example.) Once again the resulting improper integral converges and the computation of the surface area is valid.}
 \begin{align*}
@@ -141,16 +143,15 @@ S &=	\int_0^{2\pi}\int_0^ar\frac1a\sqrt{a^2+h^2}\ dr\ d\theta\\
 \end{align*}
 This matches the formula found in the back of this text.}
 
-\example{ex_surfacearea4}{Finding surface area over a region}{Find the area of the surface $f(x,y) = x^2-3y+3$ over the region $R$ bounded by $-x\leq y\leq x$, $0\leq x\leq 4$, as pictured in \autoref{fig:surfacearea4}.
 \mfigurethree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
 3Droll=0,
 3Dortho=0.0046491301618516445,
 3Dc2c=0.43148449063301086 0.6710871458053589 0.6028791069984436,
 3Dcoo=31.701290130615234 -40.52073669433594 19.84035873413086,
 3Droo=150.00000342734387,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.2,trim=1mm 0mm 1mm 0mm, clip}{0in}{Graphing the surface in \autoref{ex_surfacearea4}.}{fig:surfacearea4}{figures/figsurfacearea4}
+3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.2,trim=1mm 0mm 1mm 0mm, clip}{-.5in}{Graphing the surface in \autoref{ex_surfacearea4}.}{fig:surfacearea4}{figures/figsurfacearea4}
 %\mfigure[scale=1.2,trim=1mm 0mm 1mm 0mm, clip]{0in}{Graphing the surface in \autoref{ex_surfacearea4}.}{fig:surfacearea4}{figures/figsurfacearea4}
-}
+\example{ex_surfacearea4}{Finding surface area over a region}{Find the area of the surface $f(x,y) = x^2-3y+3$ over the region $R$ bounded by $-x\leq y\leq x$, $0\leq x\leq 4$, as pictured in \autoref{fig:surfacearea4}.}
 {It is straightforward to compute $f_x(x,y) = 2x$ and $f_y(x,y) = -3$. Thus the surface area is described by the double integral
 $$\iint_R \sqrt{1+(2x)^2+(-3)^2}\ dA = \iint_R \sqrt{10+4x^2}\ dA.$$
 As with integrals describing arc length, double integrals describing surface area are in general hard to evaluate directly because of the square--root. This particular integral can be easily evaluated, though, with judicious choice of our order of integration. 

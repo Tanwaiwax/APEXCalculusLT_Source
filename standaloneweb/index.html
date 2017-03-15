@@ -1,0 +1,1013 @@
+<!DOCTYPE html><html>
+<head>
+<title>0.1 An Introduction To Limits</title>
+<!--Generated on Sat Dec 31 09:21:56 2016 by LaTeXML (version 0.8.2) http://dlmf.nist.gov/LaTeXML/.-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="LaTeXML.css" type="text/css">
+<link rel="stylesheet" href="ltx-book.css" type="text/css">
+<link rel="stylesheet" href="ltx-ulem.css" type="text/css">
+<style type="text/css">.ltx_theorem_definitionEnv {
+      padding: 1ex 1em;
+      text-indent:0;
+      border-width: 1px;
+      border-style: solid;
+      border-color: hsl(60,90%,68%);
+      background-color: hsl(60,91%,90%); /* old browsers */
+      background-image: -moz-linear-gradient(top,hsl(60,100%,97%) 0%,hsl(60,82%,83%)); /* FF 3.6+ */
+      background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsl(60,100%,97%)), color-stop(100%,hsl(60,82%,83%))); /* Chrome, Safari 4+ */
+      background-image: -webkit-linear-gradient(top,hsl(60,100%,97%) 0%,hsl(60,82%,83%) 100%); /* Chrome 10+, Safari 5.1+ */
+      background-image: -o-linear-gradient(top,hsl(60,100%,97%) 0%,hsl(60,82%,83%) 100%); /* Opera 11.10+ */
+      background-image: -ms-linear-gradient(top,hsl(60,100%,97%) 0%,hsl(60,82%,83%) 100%); /* IE 10+ */
+      background-image: linear-gradient(to bottom,hsl(60,100%,97%) 0%,hsl(60,82%,83%) 100%); /* W3C */
+    }</style>
+<style type="text/css">.ltx_theorem_theoremEnv {
+      padding: 1ex 1em;
+      text-indent:0;
+      border-width: 1px;
+      border-style: solid;
+      border-color: hsl(120,18%,58%);
+      background-color: hsl(120,72%,92%); /* old browsers */
+      background-image: -moz-linear-gradient(top,hsl(120,100%,97%) 0%,hsl(120,43%,86%)); /* FF 3.6+ */
+      background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsl(120,100%,97%)), color-stop(100%,hsl(120,43%,86%))); /* Chrome, Safari 4+ */
+      background-image: -webkit-linear-gradient(top,hsl(120,100%,97%) 0%,hsl(120,43%,86%) 100%); /* Chrome 10+, Safari 5.1+ */
+      background-image: -o-linear-gradient(top,hsl(120,100%,97%) 0%,hsl(120,43%,86%) 100%); /* Opera 11.10+ */
+      background-image: -ms-linear-gradient(top,hsl(120,100%,97%) 0%,hsl(120,43%,86%) 100%); /* IE 10+ */
+      background-image: linear-gradient(to bottom,hsl(120,100%,97%) 0%,hsl(120,43%,86%) 100%); /* W3C */
+    }</style>
+<style type="text/css">.ltx_theorem_keyideaEnv {
+      padding: 1ex 1em;
+      text-indent:0;
+      border-width: 1px;
+      border-style: solid;
+      border-color: hsl(0,18%,58%);
+      background-color: hsl(0,72%,92%); /* old browsers */
+      background-image: -moz-linear-gradient(top,hsl(0,100%,97%) 0%,hsl(0,43%,86%)); /* FF 3.6+ */
+      background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsl(0,100%,97%)), color-stop(100%,hsl(0,43%,86%))); /* Chrome, Safari 4+ */
+      background-image: -webkit-linear-gradient(top,hsl(0,100%,97%) 0%,hsl(0,43%,86%) 100%); /* Chrome 10+, Safari 5.1+ */
+      background-image: -o-linear-gradient(top,hsl(0,100%,97%) 0%,hsl(0,43%,86%) 100%); /* Opera 11.10+ */
+      background-image: -ms-linear-gradient(top,hsl(0,100%,97%) 0%,hsl(0,43%,86%) 100%); /* IE 10+ */
+      background-image: linear-gradient(to bottom,hsl(0,100%,97%) 0%,hsl(0,43%,86%) 100%); /* W3C */
+    }</style>
+<style type="text/css">.ltx_theorem_exvideoEnv {
+      padding: 1ex 1em;
+      text-indent:0;
+      border-width: 1px;
+      border-style: solid;
+      border-color: hsl(240,18%,58%);
+      background-color: hsl(240,72%,92%); /* old browsers */
+      background-image: -moz-linear-gradient(top,hsl(240,100%,97%) 0%,hsl(240,43%,86%)); /* FF 3.6+ */
+      background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsl(240,100%,97%)), color-stop(100%,hsl(240,43%,86%))); /* Chrome, Safari 4+ */
+      background-image: -webkit-linear-gradient(top,hsl(240,100%,97%) 0%,hsl(240,43%,86%) 100%); /* Chrome 10+, Safari 5.1+ */
+      background-image: -o-linear-gradient(top,hsl(240,100%,97%) 0%,hsl(240,43%,86%) 100%); /* Opera 11.10+ */
+      background-image: -ms-linear-gradient(top,hsl(240,100%,97%) 0%,hsl(240,43%,86%) 100%); /* IE 10+ */
+      background-image: linear-gradient(to bottom,hsl(240,100%,97%) 0%,hsl(240,43%,86%) 100%); /* W3C */
+    }</style>
+<meta name="keywords" lang="en" content="difference quotient, does not exist, indeterminate form, limit, pseudo-definition">
+</head>
+<body>
+<nav class="ltx_page_navbar">
+<div class="ltx_TOC">
+<ul class="ltx_toclist">
+<li class="ltx_tocentry ltx_tocentry_document ltx_ref_self">
+<span class="ltx_ref ltx_ref_self">APEX</span>
+<ul class="ltx_toclist ltx_toclist_document">
+<li class="ltx_tocentry ltx_tocentry_section">
+<a href="#Ch0.S1" title="0.1 An Introduction To Limits" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">0.1 </span>An Introduction To Limits</span></a>
+<ul class="ltx_toclist ltx_toclist_section">
+<li class="ltx_tocentry ltx_tocentry_subsection"><a href="#Ch0.S1.SSx1" title="Identifying When Limits Do Not Exist ‣ 0.1 An Introduction To Limits" class="ltx_ref"><span class="ltx_text ltx_ref_title">Identifying When Limits Do Not Exist</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsection"><a href="#Ch0.S1.SSx2" title="Limits of Difference Quotients ‣ 0.1 An Introduction To Limits" class="ltx_ref"><span class="ltx_text ltx_ref_title">Limits of Difference Quotients</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsection">
+<a href="#Ch0.S1.SSx3" title="Exercises 0.1 ‣ 0.1 An Introduction To Limits" class="ltx_ref"><span class="ltx_text ltx_ref_title"><span class="ltx_ref">Exercises 0.1</span></span></a>
+<ul class="ltx_toclist ltx_toclist_subsection">
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="#Ch0.S1.SSx3.SSSx1" title="Terms and Concepts ‣ Exercises 0.1 ‣ 0.1 An Introduction To Limits" class="ltx_ref"><span class="ltx_text ltx_ref_title">Terms and Concepts</span></a></li>
+<li class="ltx_tocentry ltx_tocentry_subsubsection"><a href="#Ch0.S1.SSx3.SSSx2" title="Problems ‣ Exercises 0.1 ‣ 0.1 An Introduction To Limits" class="ltx_ref"><span class="ltx_text ltx_ref_title">Problems</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div></nav>
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<article class="ltx_document">
+<section id="Ch0.S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">0.1 </span>An Introduction To Limits</h2>
+
+<div id="Ch0.S1.p1" class="ltx_para">
+<p class="ltx_p">We begin our study of <span class="ltx_text ltx_font_italic">limits</span> by considering examples that demonstrate key concepts that will be explained as we progress.</p>
+</div>
+<div id="Ch0.S1.p2" class="ltx_para">
+<p class="ltx_p">Consider the function <math id="Ch0.S1.p2.m1" class="ltx_Math" alttext="y=\frac{\sin x}{x}" display="inline"><mrow><mi>y</mi><mo>=</mo><mfrac><mrow><mi>sin</mi><mo>⁡</mo><mi>x</mi></mrow><mi>x</mi></mfrac></mrow></math>. When <math id="Ch0.S1.p2.m2" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> is near the value 1, what value (if any) is <math id="Ch0.S1.p2.m3" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math> near?</p>
+</div>
+<div id="Ch0.S1.p3" class="ltx_para">
+<p class="ltx_p">While our question is not precisely formed (what constitutes “near the value 1”?), the answer does not seem difficult to find. One might think first to look at a graph of this function to approximate the appropriate <math id="Ch0.S1.p3.m1" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math> values. Consider <a href="#Ch0.F1" title="Figure 0.1 ‣ 0.1 An Introduction To Limits" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Figure 0.1</span></a>(a), where <math id="Ch0.S1.p3.m2" class="ltx_Math" alttext="y=\frac{\sin x}{x}" display="inline"><mrow><mi>y</mi><mo>=</mo><mfrac><mrow><mi>sin</mi><mo>⁡</mo><mi>x</mi></mrow><mi>x</mi></mfrac></mrow></math> is graphed. For values of <math id="Ch0.S1.p3.m3" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> near 1, it seems that <math id="Ch0.S1.p3.m4" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math> takes on values near <math id="Ch0.S1.p3.m5" class="ltx_Math" alttext="0.85" display="inline"><mn>0.85</mn></math>. In fact, when <math id="Ch0.S1.p3.m6" class="ltx_Math" alttext="x=1" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow></math>, then <math id="Ch0.S1.p3.m7" class="ltx_Math" alttext="y=\frac{\sin 1}{1}\approx 0.84" display="inline"><mrow><mi>y</mi><mo>=</mo><mfrac><mrow><mi>sin</mi><mo>⁡</mo><mn>1</mn></mrow><mn>1</mn></mfrac><mo>≈</mo><mn>0.84</mn></mrow></math>, so it makes sense that when <math id="Ch0.S1.p3.m8" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> is “near” 1, <math id="Ch0.S1.p3.m9" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math> will be “near” <math id="Ch0.S1.p3.m10" class="ltx_Math" alttext="0.84" display="inline"><mn>0.84</mn></math>.</p>
+</div>
+<figure id="Ch0.F1" class="ltx_figure"><span class="ltx_note ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span>
+<span class="ltx_inline-block ltx_minipage ltx_align_middle" style="width:150.0pt;"><img src="x1.png" id="Ch0.F1.g1" class="ltx_graphics ltx_centering" width="197" height="164" alt="">
+<span class="ltx_p ltx_align_center"><span class="ltx_text" style="font-size:90%;">(a)</span></span><svg id="Ch0.F1.pic1" class="ltx_picture ltx_centering" style="width:148.1pt;height:141.1pt;" height="195.29" overflow="visible" version="1.1" viewBox="-6.88 -26.43 204.9 195.29" width="204.9"><g transform="matrix(1 0 0 -1 0 142.43)"><g stroke="#000000"><g fill="#000000"><g color="#000000" stroke-width="0.4pt"><g transform="matrix(1 0 0 1 0 0)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 0)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="100%">
+<p class="ltx_p"></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 -4.12 -23.66)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 177.36)"><g transform="matrix(1 0 0 -1 0 122)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt"><clipPath id="pgfcp1"><path d="M 0 -196.85 L 178.5 -196.85 L 178.5 342.24 L 0 342.24"></path></clipPath><g clip-path="url(#pgfcp1)"><g stroke-width="0.2pt"><g color="#808080" stroke="#808080"><g fill="#808080"><path d="M 46.56 -1.97 L 46.56 1.97 M 124.17 -1.97 L 124.17 1.97" style="fill:none"></path></g></g></g><g stroke-width="0.2pt"><g color="#808080" stroke="#808080"><g fill="#808080"><path d="M 7.76 -2.95 L 7.76 2.95 M 162.98 -2.95 L 162.98 2.95" style="fill:none"></path></g></g></g></g><clipPath id="pgfcp2"><path d="M -196.84 0 L -196.84 145.39 L 375.34 145.39 L 375.34 0"></path></clipPath><g clip-path="url(#pgfcp2)"><g stroke-width="0.2pt"><g color="#808080" stroke="#808080"><g fill="#808080"><path d="M 82.42 24.23 L 88.32 24.23 M 82.42 72.7 L 88.32 72.7 M 82.42 121.16 L 88.32 121.16" style="fill:none"></path></g></g></g></g><path d="M 0 0 L 175.73 0" style="fill:none"></path><g transform="matrix(1 0 0 1 175.73 0)"><path d="M 2.77 0 L -1.66 2.21 L 0 0 L -1.66 -2.21" style="stroke:none"></path></g><path d="M 85.37 0 L 85.37 142.62" style="fill:none"></path><g transform="matrix(0 1 -1 0 85.37 142.62)"><path d="M 2.77 0 L -1.66 2.21 L 0 0 L -1.66 -2.21" style="stroke:none"></path></g><g transform="matrix(1 0 0 1 0.5 -16.56)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="14.53">
+<p class="ltx_p"><math id="Ch0.F1.pic1.pic1.m1" class="ltx_Math" alttext="-1" display="inline"><mrow><mo mathsize="70%" stretchy="false">-</mo><mn mathsize="70%">1</mn></mrow></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 159.34 -16.56)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F1.pic1.pic1.m2" class="ltx_Math" alttext="1" display="inline"><mn mathsize="70%">1</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 55.73 21.12)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="21.79">
+<p class="ltx_p"><math id="Ch0.F1.pic1.pic1.m3" class="ltx_Math" alttext="0.8" display="inline"><mn mathsize="70%">0.8</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 55.73 69.58)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="21.79">
+<p class="ltx_p"><math id="Ch0.F1.pic1.pic1.m4" class="ltx_Math" alttext="0.9" display="inline"><mn mathsize="70%">0.9</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 70.26 118.05)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F1.pic1.pic1.m5" class="ltx_Math" alttext="1" display="inline"><mn mathsize="70%">1</mn></math></p></foreignObject></switch></g></g><clipPath id="pgfcp3"><path d="M -196.84 0 L -196.84 145.39 L 375.34 145.39 L 375.34 0"></path></clipPath><g clip-path="url(#pgfcp3)"><g stroke-width="0.2pt"><g color="#808080" stroke="#808080"><g fill="#808080"><path d="M 82.42 72.7 L 88.32 72.7" style="fill:none"></path></g></g></g></g><g transform="matrix(1 0 0 1 77.53 72.7)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 2.49)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="100%">
+<p class="ltx_p"></p></foreignObject></switch></g></g><clipPath id="pgfcp4"><path d="M 0 0 L 178.5 0 L 178.5 145.39 L 0 145.39 Z"></path></clipPath><g clip-path="url(#pgfcp4)"><g stroke="#0000FF"><g stroke-width="0.8pt"><path d="M 7.76 44.32 C 7.76 44.32 10.05 48.59 10.93 50.19 C 11.81 51.79 13.22 54.3 14.1 55.84 C 14.98 57.38 16.39 59.81 17.27 61.3 C 18.15 62.79 19.56 65.13 20.44 66.56 C 21.32 67.98 22.73 70.22 23.61 71.58 C 24.48 72.95 25.9 75.09 26.77 76.4 C 27.65 77.71 29.06 79.76 29.94 81 C 30.82 82.24 32.23 84.17 33.11 85.34 C 33.99 86.52 35.4 88.36 36.28 89.48 C 37.16 90.59 38.57 92.32 39.45 93.37 C 40.33 94.41 41.74 96.03 42.62 97 C 43.5 97.98 44.91 99.5 45.79 100.41 C 46.67 101.32 48.08 102.73 48.96 103.57 C 49.84 104.41 51.25 105.69 52.13 106.46 C 53.01 107.23 54.42 108.41 55.3 109.11 C 56.17 109.81 57.58 110.88 58.46 111.5 C 59.34 112.13 60.75 113.07 61.63 113.62 C 62.51 114.18 63.92 115.02 64.8 115.5 C 65.68 115.98 67.09 116.69 67.97 117.1 C 68.85 117.51 70.26 118.1 71.14 118.43 C 72.02 118.76 73.43 119.24 74.31 119.5 C 75.19 119.76 76.6 120.13 77.48 120.32 C 78.36 120.51 79.77 120.77 80.65 120.87 C 81.53 120.98 83.82 121.07 83.82 121.07" style="fill:none"></path></g></g><g stroke="#0000FF"><g stroke-width="0.8pt"><path d="M 86.92 121.06 C 86.92 121.06 89.21 120.97 90.09 120.87 C 90.97 120.77 92.38 120.51 93.26 120.32 C 94.14 120.13 95.55 119.76 96.43 119.5 C 97.31 119.24 98.72 118.76 99.6 118.43 C 100.48 118.1 101.89 117.51 102.76 117.1 C 103.64 116.69 105.05 115.98 105.93 115.5 C 106.81 115.02 108.22 114.18 109.1 113.62 C 109.98 113.07 111.39 112.13 112.27 111.5 C 113.15 110.88 114.56 109.81 115.44 109.11 C 116.32 108.41 117.73 107.23 118.61 106.46 C 119.49 105.69 120.9 104.41 121.78 103.57 C 122.66 102.73 124.07 101.32 124.95 100.41 C 125.83 99.5 127.24 97.98 128.12 97 C 129 96.03 130.41 94.41 131.29 93.37 C 132.16 92.32 133.57 90.59 134.45 89.48 C 135.33 88.36 136.74 86.52 137.62 85.34 C 138.5 84.17 139.91 82.24 140.79 81 C 141.67 79.76 143.08 77.71 143.96 76.4 C 144.84 75.09 146.25 72.95 147.13 71.58 C 148.01 70.22 149.42 67.98 150.3 66.56 C 151.18 65.13 152.59 62.79 153.47 61.3 C 154.35 59.81 155.76 57.38 156.64 55.84 C 157.52 54.3 158.93 51.79 159.81 50.19 C 160.69 48.59 162.97 44.32 162.97 44.32" style="fill:none"></path></g></g><g fill="#FFFFFF"><path d="M 85.37 121.16 M 87.44 121.16 C 87.44 122.31 86.51 123.24 85.37 123.24 C 84.22 123.24 83.29 122.31 83.29 121.16 C 83.29 120.01 84.22 119.08 85.37 119.08 C 86.51 119.08 87.44 120.01 87.44 121.16 Z M 85.37 121.16"></path></g></g></g></g></g></g></g></g><g transform="matrix(1 0 0 1 183.37 -3.11)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F1.pic1.m1" class="ltx_Math" alttext="x" display="inline"><mi mathsize="70%">x</mi></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 81.74 152.76)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F1.pic1.m2" class="ltx_Math" alttext="y" display="inline"><mi mathsize="70%">y</mi></math></p></foreignObject></switch></g></g></g></g></g></g></svg>
+<span class="ltx_p ltx_align_center"><span class="ltx_text" style="font-size:90%;">(b)</span></span>
+<span class="ltx_block ltx_caption ltx_align_center"><span class="ltx_text ltx_tag" style="font-size:90%;">Figure 0.1: </span><math id="Ch0.F1.m1" class="ltx_Math" alttext="\sin(x)/x" display="inline"><mrow><mrow><mi mathsize="90%">sin</mi><mo>⁡</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%" stretchy="false">/</mo><mi mathsize="90%">x</mi></mrow></math><span class="ltx_text" style="font-size:90%;"> near </span><math id="Ch0.F1.m2" class="ltx_Math" alttext="x=1" display="inline"><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">=</mo><mn mathsize="90%">1</mn></mrow></math><span class="ltx_text" style="font-size:90%;"> (top) and </span><math id="Ch0.F1.m3" class="ltx_Math" alttext="x=0" display="inline"><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">=</mo><mn mathsize="90%">0</mn></mrow></math><span class="ltx_text" style="font-size:90%;"> (bottom).</span>
+</span>
+</span></span></span></span>
+</figure>
+<div id="Ch0.S1.p4" class="ltx_para">
+<p class="ltx_p">Consider this again at a different value for <math id="Ch0.S1.p4.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>. When <math id="Ch0.S1.p4.m2" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> is near 0, what value (if any) is <math id="Ch0.S1.p4.m3" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math> near? By considering <a href="#Ch0.F1" title="Figure 0.1 ‣ 0.1 An Introduction To Limits" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Figure 0.1</span></a>(b), one can see that it seems that <math id="Ch0.S1.p4.m4" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math> takes on values near <math id="Ch0.S1.p4.m5" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>. But what happens when <math id="Ch0.S1.p4.m6" class="ltx_Math" alttext="x=0" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow></math>? We have</p>
+<table id="Ch0.Ex1" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ch0.Ex1.m1" class="ltx_Math" alttext="y\rightarrow\frac{\sin 0}{0}\rightarrow\raisebox{8.0pt}{\text{``\ }}\frac{0}{0%
+}\raisebox{8.0pt}{\text{\ ''}}." display="block"><mrow><mrow><mi>y</mi><mo>→</mo><mfrac><mrow><mi>sin</mi><mo>⁡</mo><mn>0</mn></mrow><mn>0</mn></mfrac><mo>→</mo><mrow><mpadded depth="-8.0pt" height="+8.0pt" voffset="8.0pt"><mtext>“ </mtext></mpadded><mo>⁢</mo><mfrac><mn>0</mn><mn>0</mn></mfrac><mo>⁢</mo><mpadded depth="-8.0pt" height="+8.0pt" voffset="8.0pt"><mtext> ”</mtext></mpadded></mrow></mrow><mo>.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+</table>
+<p class="ltx_p">The expression “<math id="Ch0.S1.p4.m7" class="ltx_Math" alttext="0/0" display="inline"><mrow><mn>0</mn><mo>/</mo><mn>0</mn></mrow></math>” has no value; it is <em class="ltx_emph">indeterminate.</em>  Such an expression gives no information about what is going on with the function nearby. We cannot find out how <math id="Ch0.S1.p4.m8" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math> behaves near <math id="Ch0.S1.p4.m9" class="ltx_Math" alttext="x=0" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow></math> for this function simply by letting <math id="Ch0.S1.p4.m10" class="ltx_Math" alttext="x=0" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+<div id="Ch0.S1.p5" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph">Finding a limit</em> entails understanding how a function behaves near a particular value of <math id="Ch0.S1.p5.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>. Before continuing, it will be useful to establish some notation. Let <math id="Ch0.S1.p5.m2" class="ltx_Math" alttext="y=f(x)" display="inline"><mrow><mi>y</mi><mo>=</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>; that is, let <math id="Ch0.S1.p5.m3" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math> be a function of <math id="Ch0.S1.p5.m4" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> for some function <math id="Ch0.S1.p5.m5" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>. The expression “the limit of <math id="Ch0.S1.p5.m6" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math> as <math id="Ch0.S1.p5.m7" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> approaches 1” describes a number, often referred to as <math id="Ch0.S1.p5.m8" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math>, that <math id="Ch0.S1.p5.m9" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math> nears as <math id="Ch0.S1.p5.m10" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> nears 1. We write all this as</p>
+<table id="Ch0.Ex2" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ch0.Ex2.m1" class="ltx_Math" alttext="\lim_{x\to 1}y=\lim_{x\to 1}f(x)=L." display="block"><mrow><mrow><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>1</mn></mrow></munder><mo>⁡</mo><mi>y</mi></mrow><mo>=</mo><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>1</mn></mrow></munder><mo>⁡</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mi>L</mi></mrow><mo>.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+</table>
+<p class="ltx_p">This is not a complete definition (that will come in the next section); this is a pseudo-definition that will allow us to explore the idea of a limit. 
+</p>
+</div>
+<div id="Ch0.S1.p6" class="ltx_para">
+<p class="ltx_p">Above, where <math id="Ch0.S1.p6.m1" class="ltx_Math" alttext="f(x)=\sin(x)/x" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>/</mo><mi>x</mi></mrow></mrow></math>, we approximated</p>
+<table id="Ch0.Ex3" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ch0.Ex3.m1" class="ltx_Math" alttext="\lim_{x\to 1}\frac{\sin x}{x}\approx 0.84\quad\text{ and }\quad\lim_{x\to 0}%
+\frac{\sin x}{x}\approx 1." display="block"><mrow><mrow><mrow><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>1</mn></mrow></munder><mo>⁡</mo><mfrac><mrow><mi>sin</mi><mo>⁡</mo><mi>x</mi></mrow><mi>x</mi></mfrac></mrow><mo>≈</mo><mrow><mn>0.84</mn><mo mathvariant="italic" separator="true"> </mo><mtext> and </mtext></mrow></mrow><mo mathvariant="italic" separator="true"> </mo><mrow><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow></munder><mo>⁡</mo><mfrac><mrow><mi>sin</mi><mo>⁡</mo><mi>x</mi></mrow><mi>x</mi></mfrac></mrow><mo>≈</mo><mn>1</mn></mrow></mrow><mo>.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+</table>
+<p class="ltx_p">(We <span class="ltx_text ltx_font_italic">approximated</span> these limits, hence used the “<math id="Ch0.S1.p6.m2" class="ltx_Math" alttext="\approx" display="inline"><mo>≈</mo></math>” symbol, since we are working with the pseudo-definition of a limit, not the actual definition.)</p>
+</div>
+<figure id="Ch0.F2" class="ltx_figure"><span class="ltx_note ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span>
+<span class="ltx_inline-block ltx_minipage ltx_align_middle" style="width:150.0pt;">
+<span class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle">
+<span class="ltx_thead">
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row"><math id="Ch0.F2.m1" class="ltx_Math" alttext="x" display="inline"><mi mathsize="90%">x</mi></math></span>
+<span class="ltx_td ltx_align_center ltx_th ltx_th_column"><math id="Ch0.F2.m2" class="ltx_Math" alttext="\sin(x)/x" display="inline"><mrow><mrow><mi mathsize="90%">sin</mi><mo>⁡</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%" stretchy="false">/</mo><mi mathsize="90%">x</mi></mrow></math></span></span>
+</span>
+<span class="ltx_tbody">
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t"><span class="ltx_text" style="font-size:90%;">0.9</span></span>
+<span class="ltx_td ltx_align_center ltx_border_t"><span class="ltx_text" style="font-size:90%;">0.870363</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text" style="font-size:90%;">0.99</span></span>
+<span class="ltx_td ltx_align_center"><span class="ltx_text" style="font-size:90%;">0.844471</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text" style="font-size:90%;">0.999</span></span>
+<span class="ltx_td ltx_align_center"><span class="ltx_text" style="font-size:90%;">0.841772</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text ltx_font_bold" style="font-size:90%;">1</span></span>
+<span class="ltx_td ltx_align_center"><span class="ltx_text ltx_font_bold" style="font-size:90%;">0.841471</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text" style="font-size:90%;">1.001</span></span>
+<span class="ltx_td ltx_align_center"><span class="ltx_text" style="font-size:90%;">0.841170</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text" style="font-size:90%;">1.01</span></span>
+<span class="ltx_td ltx_align_center"><span class="ltx_text" style="font-size:90%;">0.838447</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text" style="font-size:90%;">1.1</span></span>
+<span class="ltx_td ltx_align_center"><span class="ltx_text" style="font-size:90%;">0.810189</span></span></span>
+</span>
+</span>
+<span class="ltx_p ltx_align_center"><span class="ltx_text" style="font-size:90%;">(a)</span></span>
+<span class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle">
+<span class="ltx_thead">
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row"><math id="Ch0.F2.m3" class="ltx_Math" alttext="x" display="inline"><mi mathsize="90%">x</mi></math></span>
+<span class="ltx_td ltx_align_center ltx_th ltx_th_column"><math id="Ch0.F2.m4" class="ltx_Math" alttext="\sin(x)/x" display="inline"><mrow><mrow><mi mathsize="90%">sin</mi><mo>⁡</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%" stretchy="false">/</mo><mi mathsize="90%">x</mi></mrow></math></span></span>
+</span>
+<span class="ltx_tbody">
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t"><span class="ltx_text" style="font-size:90%;">-0.1</span></span>
+<span class="ltx_td ltx_align_center ltx_border_t"><span class="ltx_text" style="font-size:90%;">0.9983341665</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text" style="font-size:90%;">-0.01</span></span>
+<span class="ltx_td ltx_align_center"><span class="ltx_text" style="font-size:90%;">0.9999833334</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text" style="font-size:90%;">-0.001</span></span>
+<span class="ltx_td ltx_align_center"><span class="ltx_text" style="font-size:90%;">0.9999998333</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text ltx_phantom" style="font-size:90%;"><span style="visibility:hidden">-</span></span><span class="ltx_text ltx_font_bold" style="font-size:90%;">0</span></span>
+<span class="ltx_td ltx_align_center"><span class="ltx_text ltx_font_bold" style="font-size:90%;">not defined</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text ltx_phantom" style="font-size:90%;"><span style="visibility:hidden">-</span></span><span class="ltx_text" style="font-size:90%;">0.001</span></span>
+<span class="ltx_td ltx_align_center"><span class="ltx_text" style="font-size:90%;">0.9999998333</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text ltx_phantom" style="font-size:90%;"><span style="visibility:hidden">-</span></span><span class="ltx_text" style="font-size:90%;">0.01</span></span>
+<span class="ltx_td ltx_align_center"><span class="ltx_text" style="font-size:90%;">0.9999833334</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text ltx_phantom" style="font-size:90%;"><span style="visibility:hidden">-</span></span><span class="ltx_text" style="font-size:90%;">0.1</span></span>
+<span class="ltx_td ltx_align_center"><span class="ltx_text" style="font-size:90%;">0.9983341665</span></span></span>
+</span>
+</span>
+<span class="ltx_p ltx_align_center"><span class="ltx_text" style="font-size:90%;">(b)</span></span>
+<span class="ltx_block ltx_caption ltx_align_center"><span class="ltx_text ltx_tag" style="font-size:90%;">Figure 0.2: </span><span class="ltx_text" style="font-size:90%;">Values of </span><math id="Ch0.F2.m5" class="ltx_Math" alttext="\sin(x)/x" display="inline"><mrow><mrow><mi mathsize="90%">sin</mi><mo>⁡</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%" stretchy="false">/</mo><mi mathsize="90%">x</mi></mrow></math><span class="ltx_text" style="font-size:90%;"> with </span><math id="Ch0.F2.m6" class="ltx_Math" alttext="x" display="inline"><mi mathsize="90%">x</mi></math><span class="ltx_text" style="font-size:90%;"> near 1 and near 0.</span>
+</span>
+</span></span></span></span>
+</figure>
+<div id="Ch0.S1.p7" class="ltx_para">
+<p class="ltx_p">Once we have the true definition of a limit, we will find limits <span class="ltx_text ltx_font_italic">analytically</span>; that is, exactly using a variety of mathematical tools. For now, we will <span class="ltx_text ltx_font_italic">approximate</span> limits both graphically and numerically. Graphing a function can provide a good approximation, though often not very precise. Numerical methods can provide a more accurate approximation. We have already approximated limits graphically, so we now turn our attention to numerical approximations.</p>
+</div>
+<div id="Ch0.S1.p8" class="ltx_para">
+<p class="ltx_p">Consider again <math id="Ch0.S1.p8.m1" class="ltx_Math" alttext="\lim_{x\to 1}\sin(x)/x" display="inline"><mrow><msub><mo>lim</mo><mrow><mi>x</mi><mo>→</mo><mn>1</mn></mrow></msub><mo>⁡</mo><mrow><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>/</mo><mi>x</mi></mrow></mrow></math>. To approximate this limit numerically, we can create a table of <math id="Ch0.S1.p8.m2" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> and <math id="Ch0.S1.p8.m3" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> values where <math id="Ch0.S1.p8.m4" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> is “near” 1. This is done in <a href="#Ch0.F2" title="Figure 0.2 ‣ 0.1 An Introduction To Limits" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Figure 0.2</span></a>(a).</p>
+</div>
+<div id="Ch0.S1.p9" class="ltx_para">
+<p class="ltx_p">Notice that for values of <math id="Ch0.S1.p9.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> near <math id="Ch0.S1.p9.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>, we have <math id="Ch0.S1.p9.m3" class="ltx_Math" alttext="\sin(x)/x" display="inline"><mrow><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>/</mo><mi>x</mi></mrow></math> near <math id="Ch0.S1.p9.m4" class="ltx_Math" alttext="0.841" display="inline"><mn>0.841</mn></math>. The <math id="Ch0.S1.p9.m5" class="ltx_Math" alttext="x=1" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow></math> row is in bold to highlight the fact that when considering limits, we are <span class="ltx_text ltx_font_italic">not</span> concerned with the value of the function at that particular <math id="Ch0.S1.p9.m6" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> value; we are only concerned with the values of the function when <math id="Ch0.S1.p9.m7" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> is <span class="ltx_text ltx_font_italic">near</span> 1.</p>
+</div>
+<div id="Ch0.S1.p10" class="ltx_para">
+<p class="ltx_p">Now approximate <math id="Ch0.S1.p10.m1" class="ltx_Math" alttext="\lim_{x\to 0}\sin(x)/x" display="inline"><mrow><msub><mo>lim</mo><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow></msub><mo>⁡</mo><mrow><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>/</mo><mi>x</mi></mrow></mrow></math> numerically. We already approximated the value of this limit as 1 graphically in <a href="#Ch0.F1" title="Figure 0.1 ‣ 0.1 An Introduction To Limits" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Figure 0.1</span></a>(b). The table in <a href="#Ch0.F2" title="Figure 0.2 ‣ 0.1 An Introduction To Limits" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Figure 0.2</span></a>(b) shows the value of <math id="Ch0.S1.p10.m2" class="ltx_Math" alttext="\sin(x)/x" display="inline"><mrow><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>/</mo><mi>x</mi></mrow></math> for values of <math id="Ch0.S1.p10.m3" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> near 0. Ten places after the decimal point are shown to highlight how close to 1 the value of <math id="Ch0.S1.p10.m4" class="ltx_Math" alttext="\sin(x)/x" display="inline"><mrow><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>/</mo><mi>x</mi></mrow></math> gets as <math id="Ch0.S1.p10.m5" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> takes on values very near 0. We include the <math id="Ch0.S1.p10.m6" class="ltx_Math" alttext="x=0" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow></math> row in bold again to stress that we are not concerned with the value of our function at <math id="Ch0.S1.p10.m7" class="ltx_Math" alttext="x=0" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow></math>, only on the behavior of the function <span class="ltx_text ltx_font_italic">near</span> 0.</p>
+</div>
+<div id="Ch0.S1.p11" class="ltx_para">
+<p class="ltx_p">This numerical method gives confidence to say that 1 is a good approximation of <math id="Ch0.S1.p11.m1" class="ltx_Math" alttext="\lim_{x\to 0}\sin(x)/x" display="inline"><mrow><msub><mo>lim</mo><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow></msub><mo>⁡</mo><mrow><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>/</mo><mi>x</mi></mrow></mrow></math>; that is,</p>
+<table id="Ch0.Ex4" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ch0.Ex4.m1" class="ltx_Math" alttext="\lim_{x\to 0}\sin(x)/x\approx 1." display="block"><mrow><mrow><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow></munder><mo>⁡</mo><mrow><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>/</mo><mi>x</mi></mrow></mrow><mo>≈</mo><mn>1</mn></mrow><mo>.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+</table>
+<p class="ltx_p">Later we will be able to prove that the limit is <span class="ltx_text ltx_font_italic">exactly</span> 1.</p>
+</div>
+<div id="Ch0.S1.p12" class="ltx_para ltx_noindent">
+<p class="ltx_p">Watch the video:
+<br class="ltx_break"><a href="https://youtu.be/riXcZT2ICjA" title="" class="ltx_ref">Introduction to limits from https://youtu.be/riXcZT2ICjA</a>
+<div class="ltx_block iframe" style="width:560;height:355;">
+<a href="https://www.youtube.com/embed/riXcZT2ICjA?rel=0" title="" class="ltx_ref iframe"></a>
+</div></p>
+</div>
+<div id="Ch0.S1.p13" class="ltx_para">
+<p class="ltx_p">We now consider several examples that allow us to explore different aspects of the limit concept.</p>
+</div>
+<figure id="Ch0.F3" class="ltx_figure"><span class="ltx_note ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span>
+<span class="ltx_inline-block ltx_minipage ltx_align_middle" style="width:150.0pt;"><svg id="Ch0.F3.pic1" class="ltx_picture ltx_centering" style="width:176.1pt;height:142.0pt;" height="196.49" overflow="visible" version="1.1" viewBox="-44.28 -26.43 243.68 196.49" width="243.68"><g transform="matrix(1 0 0 -1 0 143.63)"><g stroke="#000000"><g fill="#000000"><g color="#000000" stroke-width="0.4pt"><g transform="matrix(1 0 0 1 0 0)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 0)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="100%">
+<p class="ltx_p"></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 -41.51 -23.66)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 178.55)"><g transform="matrix(1 0 0 -1 0 123.2)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt"><clipPath id="pgfcp5"><path d="M 0 -196.84 L 179.88 -196.84 L 179.88 343.43 L 0 343.43"></path></clipPath><g clip-path="url(#pgfcp5)"><g stroke-width="0.2pt"><g color="#808080" stroke="#808080"><g fill="#808080"><path d="M 57.82 -1.97 L 57.82 1.97 M 122.06 -1.97 L 122.06 1.97" style="fill:none"></path></g></g></g><g stroke-width="0.2pt"><g color="#808080" stroke="#808080"><g fill="#808080"><path d="M 25.7 -2.95 L 25.7 2.95 M 89.94 -2.95 L 89.94 2.95 M 154.18 -2.95 L 154.18 2.95" style="fill:none"></path></g></g></g></g><clipPath id="pgfcp6"><path d="M -196.84 0 L -196.84 146.59 L 376.72 146.59 L 376.72 0"></path></clipPath><g clip-path="url(#pgfcp6)"><g stroke-width="0.2pt"><g color="#808080" stroke="#808080"><g fill="#808080"><path d="M -2.95 14.66 L 2.95 14.66 M -2.95 43.98 L 2.95 43.98 M -2.95 73.29 L 2.95 73.29 M -2.95 102.61 L 2.95 102.61 M -2.95 131.93 L 2.95 131.93" style="fill:none"></path></g></g></g></g><path d="M 0 0 L 177.11 0" style="fill:none"></path><g transform="matrix(1 0 0 1 177.11 0)"><path d="M 2.77 0 L -1.66 2.21 L 0 0 L -1.66 -2.21" style="stroke:none"></path></g><path d="M 0 0 L 0 143.82" style="fill:none"></path><g transform="matrix(0 1 -1 0 0 143.82)"><path d="M 2.77 0 L -1.66 2.21 L 0 0 L -1.66 -2.21" style="stroke:none"></path></g><g transform="matrix(1 0 0 1 14.8 -16.56)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="21.79">
+<p class="ltx_p"><math id="Ch0.F3.pic1.pic1.m1" class="ltx_Math" alttext="2.5" display="inline"><mn mathsize="70%">2.5</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 86.31 -16.56)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F3.pic1.pic1.m2" class="ltx_Math" alttext="3" display="inline"><mn mathsize="70%">3</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 143.29 -16.56)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="21.79">
+<p class="ltx_p"><math id="Ch0.F3.pic1.pic1.m3" class="ltx_Math" alttext="3.5" display="inline"><mn mathsize="70%">3.5</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 -36.9 11.55)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="29.06">
+<p class="ltx_p"><math id="Ch0.F3.pic1.pic1.m4" class="ltx_Math" alttext="0.26" display="inline"><mn mathsize="70%">0.26</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 -36.9 40.86)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="29.06">
+<p class="ltx_p"><math id="Ch0.F3.pic1.pic1.m5" class="ltx_Math" alttext="0.28" display="inline"><mn mathsize="70%">0.28</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 -29.63 70.18)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="21.79">
+<p class="ltx_p"><math id="Ch0.F3.pic1.pic1.m6" class="ltx_Math" alttext="0.3" display="inline"><mn mathsize="70%">0.3</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 -36.9 99.5)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="29.06">
+<p class="ltx_p"><math id="Ch0.F3.pic1.pic1.m7" class="ltx_Math" alttext="0.32" display="inline"><mn mathsize="70%">0.32</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 -36.9 128.82)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="29.06">
+<p class="ltx_p"><math id="Ch0.F3.pic1.pic1.m8" class="ltx_Math" alttext="0.34" display="inline"><mn mathsize="70%">0.34</mn></math></p></foreignObject></switch></g></g><g stroke="#0000FF"><g stroke-width="0.8pt"><path d="M 25.7 104.71 C 25.7 104.71 35.91 97.2 39.83 94.49 C 43.75 91.78 50.04 87.64 53.96 85.16 C 57.89 82.68 64.17 78.88 68.1 76.6 C 72.02 74.31 78.31 70.82 82.23 68.71 C 86.15 66.61 92.44 63.38 96.36 61.43 C 100.29 59.49 106.57 56.49 110.5 54.68 C 114.42 52.88 120.71 50.1 124.63 48.42 C 128.55 46.74 134.84 44.14 138.76 42.58 C 142.69 41.01 152.9 37.12 152.9 37.12" style="fill:none"></path></g></g></g></g></g></g></g></g><g transform="matrix(1 0 0 1 184.76 -3.11)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F3.pic1.m1" class="ltx_Math" alttext="x" display="inline"><mi mathsize="70%">x</mi></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 -3.63 153.96)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F3.pic1.m2" class="ltx_Math" alttext="y" display="inline"><mi mathsize="70%">y</mi></math></p></foreignObject></switch></g></g></g></g></g></g></svg>
+<span class="ltx_p ltx_align_center"><span class="ltx_text" style="font-size:90%;">(a)</span></span>
+<span class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle">
+<span class="ltx_thead">
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row"><math id="Ch0.F3.m1" class="ltx_Math" alttext="x" display="inline"><mi mathsize="90%">x</mi></math></span>
+<span class="ltx_td ltx_align_center ltx_th ltx_th_column"><math id="Ch0.F3.m2" class="ltx_Math" alttext="\frac{x^{2}-x-6}{6x^{2}-19x+3}" display="inline"><mfrac><mrow><msup><mi mathsize="90%">x</mi><mn mathsize="90%">2</mn></msup><mo mathsize="90%" stretchy="false">-</mo><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">-</mo><mn mathsize="90%">6</mn></mrow><mrow><mrow><mrow><mn mathsize="90%">6</mn><mo>⁢</mo><msup><mi mathsize="90%">x</mi><mn mathsize="90%">2</mn></msup></mrow><mo mathsize="90%" stretchy="false">-</mo><mrow><mn mathsize="90%">19</mn><mo>⁢</mo><mi mathsize="90%">x</mi></mrow></mrow><mo mathsize="90%" stretchy="false">+</mo><mn mathsize="90%">3</mn></mrow></mfrac></math></span></span>
+</span>
+<span class="ltx_tbody">
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t"><span class="ltx_text" style="font-size:90%;">2.9</span></span>
+<span class="ltx_td ltx_align_center ltx_border_t"><span class="ltx_text" style="font-size:90%;">0.298780</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text" style="font-size:90%;">2.99</span></span>
+<span class="ltx_td ltx_align_center"><span class="ltx_text" style="font-size:90%;">0.294569</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text" style="font-size:90%;">2.999</span></span>
+<span class="ltx_td ltx_align_center"><span class="ltx_text" style="font-size:90%;">0.294163</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text ltx_font_bold" style="font-size:90%;">3</span></span>
+<span class="ltx_td ltx_align_center"><span class="ltx_text ltx_font_bold" style="font-size:90%;">not defined</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text" style="font-size:90%;">3.001</span></span>
+<span class="ltx_td ltx_align_center"><span class="ltx_text" style="font-size:90%;">0.294073</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text" style="font-size:90%;">3.01</span></span>
+<span class="ltx_td ltx_align_center"><span class="ltx_text" style="font-size:90%;">0.293669</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text" style="font-size:90%;">3.1</span></span>
+<span class="ltx_td ltx_align_center"><span class="ltx_text" style="font-size:90%;">0.289773</span></span></span>
+</span>
+</span>
+<span class="ltx_p ltx_align_center"><span class="ltx_text" style="font-size:90%;">(b)</span></span>
+<span class="ltx_block ltx_caption ltx_align_center"><span class="ltx_text ltx_tag" style="font-size:90%;">Figure 0.3: </span><span class="ltx_text" style="font-size:90%;">Graphically and numerically approximating a limit in </span><a href="#Ch0.S1.ThmexampleEnv1" title="Example 1Approximating the value of a limit ‣ 0.1 An Introduction To Limits" class="ltx_ref ltx_refmacro_autoref" style="font-size:90%;"><span class="ltx_text ltx_ref_tag">Example 1</span></a><span class="ltx_text" style="font-size:90%;">.</span>
+</span>
+</span></span></span></span>
+</figure>
+<div id="Ch0.S1.ThmexampleEnv1" class="ltx_theorem inExample ltx_theorem_exampleEnv">
+<h6 class="ltx_title ltx_font_bold ltx_title_theorem">
+<span class="ltx_text ltx_align_left" style="width:80.0pt;">Example 1</span>Approximating the value of a limit</h6>
+<div id="Ch0.S1.ThmexampleEnv1.p1" class="ltx_para">
+<p class="ltx_p">Use graphical and numerical methods to approximate</p>
+<table id="Ch0.Ex5" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ch0.Ex5.m1" class="ltx_Math" alttext="\lim_{x\to 3}\frac{x^{2}-x-6}{6x^{2}-19x+3}." display="block"><mrow><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>3</mn></mrow></munder><mo>⁡</mo><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mi>x</mi><mo>-</mo><mn>6</mn></mrow><mrow><mrow><mrow><mn>6</mn><mo>⁢</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo>-</mo><mrow><mn>19</mn><mo>⁢</mo><mi>x</mi></mrow></mrow><mo>+</mo><mn>3</mn></mrow></mfrac></mrow><mo>.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+</table>
+</div>
+<div id="Ch0.S1.ThmexampleEnv1.p2" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text solutionTag ltx_font_bold ltx_font_smallcaps ltx_align_left" style="font-size:90%;width:65.0pt;">Solution</span>To graphically approximate the limit, graph</p>
+<table id="Ch0.Ex6" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ch0.Ex6.m1" class="ltx_Math" alttext="y=(x^{2}-x-6)/(6x^{2}-19x+3)" display="block"><mrow><mi>y</mi><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mi>x</mi><mo>-</mo><mn>6</mn></mrow><mo stretchy="false">)</mo></mrow><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mrow><mn>6</mn><mo>⁢</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo>-</mo><mrow><mn>19</mn><mo>⁢</mo><mi>x</mi></mrow></mrow><mo>+</mo><mn>3</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+</table>
+<p class="ltx_p">on a small interval that contains 3. To numerically approximate the limit, create a table of values where the <math id="Ch0.S1.ThmexampleEnv1.p2.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> values are near 3. This is done in <a href="#Ch0.F3" title="Figure 0.3 ‣ 0.1 An Introduction To Limits" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Figure 0.3</span></a>.</p>
+</div>
+<div id="Ch0.S1.ThmexampleEnv1.p3" class="ltx_para">
+<p class="ltx_p">The graph shows that when <math id="Ch0.S1.ThmexampleEnv1.p3.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> is near 3, the value of <math id="Ch0.S1.ThmexampleEnv1.p3.m2" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math> is very near <math id="Ch0.S1.ThmexampleEnv1.p3.m3" class="ltx_Math" alttext="0.3" display="inline"><mn>0.3</mn></math>. By considering values of <math id="Ch0.S1.ThmexampleEnv1.p3.m4" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> near 3, we see that <math id="Ch0.S1.ThmexampleEnv1.p3.m5" class="ltx_Math" alttext="y=0.294" display="inline"><mrow><mi>y</mi><mo>=</mo><mn>0.294</mn></mrow></math> is a better approximation. The graph and the table imply that</p>
+<table id="Ch0.Ex7" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ch0.Ex7.m1" class="ltx_Math" alttext="\lim_{x\to 3}\frac{x^{2}-x-6}{6x^{2}-19x+3}\approx 0.294." display="block"><mrow><mrow><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>3</mn></mrow></munder><mo>⁡</mo><mfrac><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mi>x</mi><mo>-</mo><mn>6</mn></mrow><mrow><mrow><mrow><mn>6</mn><mo>⁢</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo>-</mo><mrow><mn>19</mn><mo>⁢</mo><mi>x</mi></mrow></mrow><mo>+</mo><mn>3</mn></mrow></mfrac></mrow><mo>≈</mo><mn>0.294</mn></mrow><mo>.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+</table>
+</div>
+</div>
+<div id="Ch0.S1.p14" class="ltx_para">
+<p class="ltx_p">This example may bring up a few questions about approximating limits (and the nature of limits themselves).</p>
+<ol id="Ch0.I1" class="ltx_enumerate">
+<li id="Ch0.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate">1.</span> 
+<div id="Ch0.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">If a graph does not produce as good an approximation as a table, why bother with it?</p>
+</div>
+</li>
+<li id="Ch0.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate">2.</span> 
+<div id="Ch0.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">How many values of <math id="Ch0.I1.i2.p1.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> in a table are “enough?” In the previous example, could we have just used <math id="Ch0.I1.i2.p1.m2" class="ltx_Math" alttext="x=3.001" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>3.001</mn></mrow></math> and found a fine approximation?</p>
+</div>
+</li>
+</ol>
+</div>
+<div id="Ch0.S1.p15" class="ltx_para">
+<p class="ltx_p">Graphs are useful since they give a visual understanding concerning the behavior of a function. Sometimes a function may act “erratically” near certain <math id="Ch0.S1.p15.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> values which is hard to discern numerically but very plain graphically. Since graphing utilities are very accessible, it makes sense to make proper use of them.</p>
+</div>
+<div id="Ch0.S1.p16" class="ltx_para">
+<p class="ltx_p">Since tables and graphs are used only to <span class="ltx_text ltx_font_italic">approximate</span> the value of a limit, there is not a firm answer to how many data points are “enough.” Include enough so that a trend is clear, and use values (when possible) both less than and greater than the value in question. In <a href="#Ch0.S1.ThmexampleEnv1" title="Example 1Approximating the value of a limit ‣ 0.1 An Introduction To Limits" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Example 1</span></a>, we used both values less than and greater than 3. Had we used just <math id="Ch0.S1.p16.m1" class="ltx_Math" alttext="x=3.001" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>3.001</mn></mrow></math>, we might have been tempted to conclude that the limit had a value of <math id="Ch0.S1.p16.m2" class="ltx_Math" alttext="0.3" display="inline"><mn>0.3</mn></math>. While this is not far off, we could do better. Using values “on both sides of 3” helps us identify trends.</p>
+</div>
+<figure id="Ch0.F4" class="ltx_figure"><span class="ltx_note ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span>
+<span class="ltx_inline-block ltx_minipage ltx_align_middle" style="width:150.0pt;"><svg id="Ch0.F4.pic1" class="ltx_picture ltx_centering" style="width:148.8pt;height:133.2pt;" height="184.27" overflow="visible" version="1.1" viewBox="-6.47 -14.21 205.87 184.27" width="205.87"><g transform="matrix(1 0 0 -1 0 155.85)"><g stroke="#000000"><g fill="#000000"><g color="#000000" stroke-width="0.4pt"><g transform="matrix(1 0 0 1 0 0)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 0)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="100%">
+<p class="ltx_p"></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 -3.7 -11.45)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 166.33)"><g transform="matrix(1 0 0 -1 0 135.42)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt"><clipPath id="pgfcp7"><path d="M 0 -196.84 L 179.88 -196.84 L 179.88 343.43 L 0 343.43"></path></clipPath><g clip-path="url(#pgfcp7)"><g stroke-width="0.2pt"><g color="#808080" stroke="#808080"><g fill="#808080"><path d="M 28.62 10.25 L 28.62 14.18 M 69.5 10.25 L 69.5 14.18 M 110.38 10.25 L 110.38 14.18 M 151.26 10.25 L 151.26 14.18" style="fill:none"></path></g></g></g><g stroke-width="0.2pt"><g color="#808080" stroke="#808080"><g fill="#808080"><path d="M 8.18 9.26 L 8.18 15.17 M 49.06 9.26 L 49.06 15.17 M 130.82 9.26 L 130.82 15.17 M 171.7 9.26 L 171.7 15.17" style="fill:none"></path></g></g></g></g><clipPath id="pgfcp8"><path d="M -196.85 0 L -196.85 146.59 L 376.72 146.59 L 376.72 0"></path></clipPath><g clip-path="url(#pgfcp8)"><g stroke-width="0.2pt"><g color="#808080" stroke="#808080"><g fill="#808080"><path d="M 86.99 73.29 L 92.89 73.29 M 86.99 134.37 L 92.89 134.37" style="fill:none"></path></g></g></g></g><path d="M 0 12.22 L 177.11 12.22" style="fill:none"></path><g transform="matrix(1 0 0 1 177.11 12.22)"><path d="M 2.77 0 L -1.66 2.21 L 0 0 L -1.66 -2.21" style="stroke:none"></path></g><path d="M 89.94 0 L 89.94 143.82" style="fill:none"></path><g transform="matrix(0 1 -1 0 89.94 143.82)"><path d="M 2.77 0 L -1.66 2.21 L 0 0 L -1.66 -2.21" style="stroke:none"></path></g><g transform="matrix(1 0 0 1 0.91 -4.34)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="14.53">
+<p class="ltx_p"><math id="Ch0.F4.pic1.pic1.m1" class="ltx_Math" alttext="-1" display="inline"><mrow><mo mathsize="70%" stretchy="false">-</mo><mn mathsize="70%">1</mn></mrow></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 34.53 -4.34)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="29.06">
+<p class="ltx_p"><math id="Ch0.F4.pic1.pic1.m2" class="ltx_Math" alttext="-0.5" display="inline"><mrow><mo mathsize="70%" stretchy="false">-</mo><mn mathsize="70%">0.5</mn></mrow></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 119.92 -4.34)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="21.79">
+<p class="ltx_p"><math id="Ch0.F4.pic1.pic1.m3" class="ltx_Math" alttext="0.5" display="inline"><mn mathsize="70%">0.5</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 168.07 -4.34)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F4.pic1.pic1.m4" class="ltx_Math" alttext="1" display="inline"><mn mathsize="70%">1</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 60.3 70.18)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="21.79">
+<p class="ltx_p"><math id="Ch0.F4.pic1.pic1.m5" class="ltx_Math" alttext="0.5" display="inline"><mn mathsize="70%">0.5</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 74.83 131.26)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F4.pic1.pic1.m6" class="ltx_Math" alttext="1" display="inline"><mn mathsize="70%">1</mn></math></p></foreignObject></switch></g></g><clipPath id="pgfcp9"><path d="M 0 0 L 179.88 0 L 179.88 146.59 L 0 146.59 Z"></path></clipPath><g clip-path="url(#pgfcp9)"><g stroke="#0000FF"><g stroke-width="0.8pt"><path d="M 8.18 12.22 C 8.18 12.22 89.94 134.37 89.94 134.37" style="fill:none"></path></g></g><g stroke="#0000FF"><g stroke-width="0.8pt"><path d="M 89.94 134.37 C 89.94 134.37 94.16 134.09 95.78 133.75 C 97.4 133.4 100 132.57 101.62 131.88 C 103.24 131.19 105.84 129.8 107.46 128.76 C 109.08 127.72 111.68 125.78 113.3 124.4 C 114.92 123.01 117.52 120.52 119.14 118.79 C 120.76 117.06 123.36 114.01 124.98 111.93 C 126.6 109.86 129.2 106.25 130.82 103.83 C 132.44 101.41 135.04 97.25 136.66 94.48 C 138.28 91.72 140.88 87 142.5 83.89 C 144.12 80.78 146.72 75.51 148.34 72.05 C 149.96 68.59 152.56 62.76 154.18 58.96 C 155.8 55.15 158.4 48.78 160.02 44.63 C 161.64 40.47 164.24 33.54 165.86 29.04 C 167.48 24.55 171.7 12.22 171.7 12.22" style="fill:none"></path></g></g><g stroke-width="0.8pt"><g fill="#FFFFFF"><path d="M 89.94 134.37 M 92.01 134.37 C 92.01 135.52 91.08 136.45 89.94 136.45 C 88.79 136.45 87.86 135.52 87.86 134.37 C 87.86 133.22 88.79 132.29 89.94 132.29 C 91.08 132.29 92.01 133.22 92.01 134.37 Z M 89.94 134.37"></path></g></g></g></g></g></g></g></g></g><g transform="matrix(1 0 0 1 184.76 9.1)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F4.pic1.m1" class="ltx_Math" alttext="x" display="inline"><mi mathsize="70%">x</mi></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 86.3 153.96)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F4.pic1.m2" class="ltx_Math" alttext="y" display="inline"><mi mathsize="70%">y</mi></math></p></foreignObject></switch></g></g></g></g></g></g></svg>
+<span class="ltx_p ltx_align_center"><span class="ltx_text" style="font-size:90%;">(a)</span></span>
+<span class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle">
+<span class="ltx_thead">
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_column"><math id="Ch0.F4.m1" class="ltx_Math" alttext="x" display="inline"><mi mathsize="90%">x</mi></math></span>
+<span class="ltx_td ltx_align_left ltx_th ltx_th_column"><math id="Ch0.F4.m2" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></math></span></span>
+</span>
+<span class="ltx_tbody">
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_border_t"><math id="Ch0.F4.m3" class="ltx_Math" alttext="-0.1" display="inline"><mrow><mo mathsize="90%" stretchy="false">-</mo><mn mathsize="90%">0.1</mn></mrow></math></span>
+<span class="ltx_td ltx_align_left ltx_border_t"><math id="Ch0.F4.m4" class="ltx_Math" alttext="0.9" display="inline"><mn mathsize="90%">0.9</mn></math></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left"><math id="Ch0.F4.m5" class="ltx_Math" alttext="-0.01" display="inline"><mrow><mo mathsize="90%" stretchy="false">-</mo><mn mathsize="90%">0.01</mn></mrow></math></span>
+<span class="ltx_td ltx_align_left"><math id="Ch0.F4.m6" class="ltx_Math" alttext="0.99" display="inline"><mn mathsize="90%">0.99</mn></math></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left"><math id="Ch0.F4.m7" class="ltx_Math" alttext="-0.001" display="inline"><mrow><mo mathsize="90%" stretchy="false">-</mo><mn mathsize="90%">0.001</mn></mrow></math></span>
+<span class="ltx_td ltx_align_left"><math id="Ch0.F4.m8" class="ltx_Math" alttext="0.999" display="inline"><mn mathsize="90%">0.999</mn></math></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left"><math id="Ch0.F4.m9" class="ltx_Math" alttext="\phantom{-}0.001" display="inline"><mn mathsize="90%">0.001</mn></math></span>
+<span class="ltx_td ltx_align_left"><math id="Ch0.F4.m10" class="ltx_Math" alttext="0.999999" display="inline"><mn mathsize="90%">0.999999</mn></math></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left"><math id="Ch0.F4.m11" class="ltx_Math" alttext="\phantom{-}0.01" display="inline"><mn mathsize="90%">0.01</mn></math></span>
+<span class="ltx_td ltx_align_left"><math id="Ch0.F4.m12" class="ltx_Math" alttext="0.9999" display="inline"><mn mathsize="90%">0.9999</mn></math></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left"><math id="Ch0.F4.m13" class="ltx_Math" alttext="\phantom{-}0.1" display="inline"><mn mathsize="90%">0.1</mn></math></span>
+<span class="ltx_td ltx_align_left"><math id="Ch0.F4.m14" class="ltx_Math" alttext="0.99" display="inline"><mn mathsize="90%">0.99</mn></math></span></span>
+</span>
+</span>
+<span class="ltx_p ltx_align_center"><span class="ltx_text" style="font-size:90%;">(b)</span></span>
+<span class="ltx_block ltx_caption ltx_align_center"><span class="ltx_text ltx_tag" style="font-size:90%;">Figure 0.4: </span><span class="ltx_text" style="font-size:90%;">Graphically and numerically approximating a limit in </span><a href="#Ch0.S1.ThmexampleEnv2" title="Example 2Approximating the value of a limit ‣ 0.1 An Introduction To Limits" class="ltx_ref ltx_refmacro_autoref" style="font-size:90%;"><span class="ltx_text ltx_ref_tag">Example 2</span></a><span class="ltx_text" style="font-size:90%;">.</span>
+</span>
+</span></span></span></span>
+</figure>
+<div id="Ch0.S1.ThmexampleEnv2" class="ltx_theorem inExample ltx_theorem_exampleEnv">
+<h6 class="ltx_title ltx_font_bold ltx_title_theorem">
+<span class="ltx_text ltx_align_left" style="width:80.0pt;">Example 2</span>Approximating the value of a limit</h6>
+<div id="Ch0.S1.ThmexampleEnv2.p1" class="ltx_para">
+<p class="ltx_p">Graphically and numerically approximate the limit of <math id="Ch0.S1.ThmexampleEnv2.p1.m1" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> as <math id="Ch0.S1.ThmexampleEnv2.p1.m2" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> approaches 0, where</p>
+<table id="Ch0.Ex8" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ch0.Ex8.m1" class="ltx_Math" alttext="f(x)=\begin{cases}x+1&amp;x&lt;0\\
+-x^{2}+1&amp;x&gt;0\end{cases}." display="block"><mrow><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd columnalign="left"><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow></mtd><mtd columnalign="left"><mrow><mi>x</mi><mo>&lt;</mo><mn>0</mn></mrow></mtd></mtr><mtr><mtd columnalign="left"><mrow><mrow><mo>-</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo>+</mo><mn>1</mn></mrow></mtd><mtd columnalign="left"><mrow><mi>x</mi><mo>&gt;</mo><mn>0</mn></mrow></mtd></mtr></mtable></mrow></mrow><mo>.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+</table>
+</div>
+<div id="Ch0.S1.ThmexampleEnv2.p2" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text solutionTag ltx_font_bold ltx_font_smallcaps ltx_align_left" style="font-size:90%;width:65.0pt;">Solution</span>Again we graph <math id="Ch0.S1.ThmexampleEnv2.p2.m1" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> and create a table of its values near <math id="Ch0.S1.ThmexampleEnv2.p2.m2" class="ltx_Math" alttext="x=0" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow></math> to approximate the limit. Note that this is a piecewise defined function, so it behaves differently on either side of 0. <a href="#Ch0.F4" title="Figure 0.4 ‣ 0.1 An Introduction To Limits" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Figure 0.4</span></a>(a) shows a graph of <math id="Ch0.S1.ThmexampleEnv2.p2.m3" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math>, and on either side of 0 it seems the <math id="Ch0.S1.ThmexampleEnv2.p2.m4" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math> values approach 1. Note that <math id="Ch0.S1.ThmexampleEnv2.p2.m5" class="ltx_Math" alttext="f(0)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></math> is not actually defined, as indicated in the graph with the open circle.</p>
+</div>
+<div id="Ch0.S1.ThmexampleEnv2.p3" class="ltx_para">
+<p class="ltx_p">The table shown in <a href="#Ch0.F4" title="Figure 0.4 ‣ 0.1 An Introduction To Limits" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Figure 0.4</span></a>(b) shows values of <math id="Ch0.S1.ThmexampleEnv2.p3.m1" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> for values of <math id="Ch0.S1.ThmexampleEnv2.p3.m2" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> near 0. It is clear that as <math id="Ch0.S1.ThmexampleEnv2.p3.m3" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> takes on values very near 0, <math id="Ch0.S1.ThmexampleEnv2.p3.m4" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> takes on values very near 1. It turns out that if we let <math id="Ch0.S1.ThmexampleEnv2.p3.m5" class="ltx_Math" alttext="x=0" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow></math> for either “piece” of <math id="Ch0.S1.ThmexampleEnv2.p3.m6" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math>, 1 is returned; this is significant and we’ll return to this idea later.</p>
+</div>
+<div id="Ch0.S1.ThmexampleEnv2.p4" class="ltx_para">
+<p class="ltx_p">The graph and table allow us to say that <math id="Ch0.S1.ThmexampleEnv2.p4.m1" class="ltx_Math" alttext="\lim_{x\to 0}f(x)\approx 1" display="inline"><mrow><mrow><msub><mo>lim</mo><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow></msub><mo>⁡</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>≈</mo><mn>1</mn></mrow></math>; in fact, we are probably very sure it <span class="ltx_text ltx_font_italic">equals</span> 1.</p>
+</div>
+</div>
+<section id="Ch0.S1.SSx1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">Identifying When Limits Do Not Exist</h3>
+
+<div id="Ch0.S1.SSx1.p1" class="ltx_para">
+<p class="ltx_p">A function may not have a limit for all values of <math id="Ch0.S1.SSx1.p1.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>. That is, we may not be able to say <math id="Ch0.S1.SSx1.p1.m2" class="ltx_Math" alttext="\displaystyle\lim_{x\to c}f(x)=L" display="inline"><mrow><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mi>c</mi></mrow></munder><mo>⁡</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mi>L</mi></mrow></math> for some numbers <math id="Ch0.S1.SSx1.p1.m3" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math> for all values of <math id="Ch0.S1.SSx1.p1.m4" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math>, because there may not be a number that <math id="Ch0.S1.SSx1.p1.m5" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> is approaching. There are three ways in which a limit may fail to exist. 
+</p>
+<ol id="Ch0.I2" class="ltx_enumerate">
+<li id="Ch0.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate">1.</span> 
+<div id="Ch0.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">The function <math id="Ch0.I2.i1.p1.m1" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> may approach different values on either side of <math id="Ch0.I2.i1.p1.m2" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math>.</p>
+</div>
+</li>
+<li id="Ch0.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate">2.</span> 
+<div id="Ch0.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">The function may grow without upper or lower bound as <math id="Ch0.I2.i2.p1.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> approaches <math id="Ch0.I2.i2.p1.m2" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math>.</p>
+</div>
+</li>
+<li id="Ch0.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate">3.</span> 
+<div id="Ch0.I2.i3.p1" class="ltx_para">
+<p class="ltx_p">The function may oscillate as <math id="Ch0.I2.i3.p1.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> approaches <math id="Ch0.I2.i3.p1.m2" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+<div id="Ch0.S1.SSx1.p2" class="ltx_para">
+<p class="ltx_p">We’ll explore each of these in turn.</p>
+</div>
+<div id="Ch0.S1.ThmexampleEnv3" class="ltx_theorem inExample ltx_theorem_exampleEnv">
+<h6 class="ltx_title ltx_font_bold ltx_title_theorem">
+<span class="ltx_text ltx_align_left" style="width:80.0pt;">Example 3</span>Different Values Approached From Left and Right</h6>
+<div id="Ch0.S1.ThmexampleEnv3.p1" class="ltx_para">
+<p class="ltx_p">Explore why <math id="Ch0.S1.ThmexampleEnv3.p1.m1" class="ltx_Math" alttext="\displaystyle\lim_{x\to 1}f(x)" display="inline"><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>1</mn></mrow></munder><mo>⁡</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> does not exist, where</p>
+<table id="Ch0.Ex9" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ch0.Ex9.m1" class="ltx_Math" alttext="f(x)=\begin{cases}x^{2}-2x+3&amp;x\leq 1\\
+x&amp;x&gt;1\end{cases}." display="block"><mrow><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd columnalign="left"><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>-</mo><mrow><mn>2</mn><mo>⁢</mo><mi>x</mi></mrow></mrow><mo>+</mo><mn>3</mn></mrow></mtd><mtd columnalign="left"><mrow><mi>x</mi><mo>≤</mo><mn>1</mn></mrow></mtd></mtr><mtr><mtd columnalign="left"><mi>x</mi></mtd><mtd columnalign="left"><mrow><mi>x</mi><mo>&gt;</mo><mn>1</mn></mrow></mtd></mtr></mtable></mrow></mrow><mo>.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+</table>
+</div>
+<div id="Ch0.S1.ThmexampleEnv3.p2" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text solutionTag ltx_font_bold ltx_font_smallcaps ltx_align_left" style="font-size:90%;width:65.0pt;">Solution</span>A graph of <math id="Ch0.S1.ThmexampleEnv3.p2.m1" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> around <math id="Ch0.S1.ThmexampleEnv3.p2.m2" class="ltx_Math" alttext="x=1" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow></math> and a table are given in <a href="#Ch0.F5" title="Figure 0.5 ‣ Example 3Different Values Approached From Left and Right ‣ Identifying When Limits Do Not Exist ‣ 0.1 An Introduction To Limits" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Figure 0.5</span></a>.</p>
+</div>
+<figure id="Ch0.F5" class="ltx_figure"><span class="ltx_note ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span>
+<span class="ltx_inline-block ltx_minipage ltx_align_middle" style="width:150.0pt;"><svg id="Ch0.F5.pic1" class="ltx_picture ltx_centering" style="width:154.4pt;height:138.8pt;" height="192.04" overflow="visible" version="1.1" viewBox="-14.31 -21.99 213.7 192.04" width="213.7"><g transform="matrix(1 0 0 -1 0 148.06)"><g stroke="#000000"><g fill="#000000"><g color="#000000" stroke-width="0.4pt"><g transform="matrix(1 0 0 1 0 0)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 0)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="100%">
+<p class="ltx_p"></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 -11.54 -19.22)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 175.16)"><g transform="matrix(1 0 0 -1 0 128.69)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt"><clipPath id="pgfcp10"><path d="M 0 -196.85 L 179.88 -196.85 L 179.88 343.43 L 0 343.43"></path></clipPath><g clip-path="url(#pgfcp10)"><g stroke-width="0.2pt"><g color="#808080" stroke="#808080"><g fill="#808080"><path d="M 28.62 2.47 L 28.62 6.41 M 69.5 2.47 L 69.5 6.41 M 110.38 2.47 L 110.38 6.41 M 151.26 2.47 L 151.26 6.41" style="fill:none"></path></g></g></g><g stroke-width="0.2pt"><g color="#808080" stroke="#808080"><g fill="#808080"><path d="M 49.06 1.49 L 49.06 7.39 M 89.94 1.49 L 89.94 7.39 M 130.82 1.49 L 130.82 7.39 M 171.7 1.49 L 171.7 7.39" style="fill:none"></path></g></g></g></g><clipPath id="pgfcp11"><path d="M -196.85 0 L -196.85 146.58 L 376.72 146.58 L 376.72 0"></path></clipPath><g clip-path="url(#pgfcp11)"><g stroke-width="0.2pt"><g color="#808080" stroke="#808080"><g fill="#808080"><path d="M 5.22 48.86 L 11.13 48.86 M 5.22 93.28 L 11.13 93.28 M 5.22 137.7 L 11.13 137.7" style="fill:none"></path></g></g></g></g><path d="M 0 4.44 L 177.11 4.44" style="fill:none"></path><g transform="matrix(1 0 0 1 177.11 4.44)"><path d="M 2.77 0 L -1.66 2.21 L 0 0 L -1.66 -2.21" style="stroke:none"></path></g><path d="M 8.18 0 L 8.18 143.81" style="fill:none"></path><g transform="matrix(0 1 -1 0 8.18 143.81)"><path d="M 2.77 0 L -1.66 2.21 L 0 0 L -1.66 -2.21" style="stroke:none"></path></g><g transform="matrix(1 0 0 1 38.16 -12.12)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="21.79">
+<p class="ltx_p"><math id="Ch0.F5.pic1.pic1.m1" class="ltx_Math" alttext="0.5" display="inline"><mn mathsize="70%">0.5</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 86.31 -12.12)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F5.pic1.pic1.m2" class="ltx_Math" alttext="1" display="inline"><mn mathsize="70%">1</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 119.92 -12.12)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="21.79">
+<p class="ltx_p"><math id="Ch0.F5.pic1.pic1.m3" class="ltx_Math" alttext="1.5" display="inline"><mn mathsize="70%">1.5</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 168.07 -12.12)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F5.pic1.pic1.m4" class="ltx_Math" alttext="2" display="inline"><mn mathsize="70%">2</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 -6.93 45.75)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F5.pic1.pic1.m5" class="ltx_Math" alttext="1" display="inline"><mn mathsize="70%">1</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 -6.93 90.17)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F5.pic1.pic1.m6" class="ltx_Math" alttext="2" display="inline"><mn mathsize="70%">2</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 -6.93 134.58)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F5.pic1.pic1.m7" class="ltx_Math" alttext="3" display="inline"><mn mathsize="70%">3</mn></math></p></foreignObject></switch></g></g><clipPath id="pgfcp12"><path d="M 0 0 L 179.88 0 L 179.88 146.58 L 0 146.58 Z"></path></clipPath><g clip-path="url(#pgfcp12)"><g stroke="#0000FF"><g stroke-width="0.8pt"><path d="M 8.18 137.7 C 8.18 137.7 14.08 131.48 16.35 129.26 C 18.62 127.04 22.26 123.68 24.53 121.71 C 26.8 119.74 30.44 116.77 32.7 115.04 C 34.97 113.32 38.61 110.75 40.88 109.27 C 43.15 107.79 46.79 105.62 49.06 104.38 C 51.33 103.15 54.96 101.37 57.23 100.39 C 59.5 99.4 63.14 98.02 65.41 97.28 C 67.68 96.54 71.32 95.55 73.59 95.06 C 75.86 94.56 79.49 93.97 81.76 93.72 C 84.03 93.48 89.94 93.28 89.94 93.28" style="fill:none"></path></g></g><g stroke="#0000FF"><g stroke-width="0.8pt"><path d="M 89.94 48.86 C 89.94 48.86 95.85 52.07 98.11 53.3 C 100.38 54.54 104.02 56.51 106.29 57.74 C 108.56 58.98 112.2 60.95 114.47 62.19 C 116.74 63.42 120.37 65.4 122.64 66.63 C 124.91 67.86 128.55 69.84 130.82 71.07 C 133.09 72.3 136.73 74.28 139 75.51 C 141.27 76.74 144.9 78.72 147.17 79.95 C 149.44 81.19 153.08 83.16 155.35 84.4 C 157.62 85.63 161.26 87.6 163.52 88.84 C 165.79 90.07 171.7 93.28 171.7 93.28" style="fill:none"></path></g></g><g fill="#FFFFFF"><g stroke="#0000FF"><g stroke-width="0.8pt"><path d="M 89.94 48.86 M 92.01 48.86 C 92.01 50.01 91.08 50.94 89.94 50.94 C 88.79 50.94 87.86 50.01 87.86 48.86 C 87.86 47.71 88.79 46.79 89.94 46.79 C 91.08 46.79 92.01 47.71 92.01 48.86 Z M 89.94 48.86"></path></g></g></g><g fill="#0000FF"><g stroke="#0000FF"><path d="M 89.94 93.28 M 92.01 93.28 C 92.01 94.43 91.08 95.35 89.94 95.35 C 88.79 95.35 87.86 94.43 87.86 93.28 C 87.86 92.13 88.79 91.2 89.94 91.2 C 91.08 91.2 92.01 92.13 92.01 93.28 Z M 89.94 93.28"></path></g></g></g></g></g></g></g></g></g><g transform="matrix(1 0 0 1 184.75 1.33)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F5.pic1.m1" class="ltx_Math" alttext="x" display="inline"><mi mathsize="70%">x</mi></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 4.54 153.95)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F5.pic1.m2" class="ltx_Math" alttext="y" display="inline"><mi mathsize="70%">y</mi></math></p></foreignObject></switch></g></g></g></g></g></g></svg>
+<span class="ltx_p ltx_align_center"><span class="ltx_text" style="font-size:90%;">(a)</span></span>
+<span class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle">
+<span class="ltx_thead">
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_column"><math id="Ch0.F5.m1" class="ltx_Math" alttext="x" display="inline"><mi mathsize="90%">x</mi></math></span>
+<span class="ltx_td ltx_align_left ltx_th ltx_th_column"><math id="Ch0.F5.m2" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></math></span></span>
+</span>
+<span class="ltx_tbody">
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_border_t"><span class="ltx_text" style="font-size:90%;">0.9</span></span>
+<span class="ltx_td ltx_align_left ltx_border_t"><span class="ltx_text" style="font-size:90%;">2.01</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">0.99</span></span>
+<span class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">2.0001</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">0.999</span></span>
+<span class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">2.000001</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">1.001</span></span>
+<span class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">1.001</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">1.01</span></span>
+<span class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">1.01</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">1.1</span></span>
+<span class="ltx_td ltx_align_left"><span class="ltx_text" style="font-size:90%;">1.1</span></span></span>
+</span>
+</span>
+<span class="ltx_p ltx_align_center"><span class="ltx_text" style="font-size:90%;">(b)</span></span>
+<span class="ltx_block ltx_caption ltx_align_center"><span class="ltx_text ltx_tag" style="font-size:90%;">Figure 0.5: </span><span class="ltx_text" style="font-size:90%;">Graphically and numerically observing no limit as </span><math id="Ch0.F5.m3" class="ltx_Math" alttext="x\to 1" display="inline"><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">→</mo><mn mathsize="90%">1</mn></mrow></math><span class="ltx_text" style="font-size:90%;"> in </span><a href="#Ch0.S1.ThmexampleEnv3" title="Example 3Different Values Approached From Left and Right ‣ Identifying When Limits Do Not Exist ‣ 0.1 An Introduction To Limits" class="ltx_ref ltx_refmacro_autoref" style="font-size:90%;"><span class="ltx_text ltx_ref_tag">Example 3</span></a><span class="ltx_text" style="font-size:90%;">.</span>
+</span>
+</span></span></span></span>
+</figure>
+<div id="Ch0.S1.ThmexampleEnv3.p3" class="ltx_para">
+<p class="ltx_p">It is clear that as <math id="Ch0.S1.ThmexampleEnv3.p3.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> approaches 1, <math id="Ch0.S1.ThmexampleEnv3.p3.m2" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> does not seem to approach a single number. Instead, it seems as though <math id="Ch0.S1.ThmexampleEnv3.p3.m3" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> approaches two different numbers. When considering values of <math id="Ch0.S1.ThmexampleEnv3.p3.m4" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> less than 1 (approaching 1 from the left), it seems that <math id="Ch0.S1.ThmexampleEnv3.p3.m5" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> is approaching 2; when considering values of <math id="Ch0.S1.ThmexampleEnv3.p3.m6" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> greater than 1 (approaching 1 from the right), it seems that <math id="Ch0.S1.ThmexampleEnv3.p3.m7" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> is approaching 1. Recognizing this behavior is important; we’ll study this in greater depth later. Right now, it suffices to say that the limit does not exist since <math id="Ch0.S1.ThmexampleEnv3.p3.m8" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> is not approaching one value as <math id="Ch0.S1.ThmexampleEnv3.p3.m9" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> approaches 1.</p>
+</div>
+</div>
+<figure id="Ch0.F6" class="ltx_figure"><span class="ltx_note ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span>
+<span class="ltx_inline-block ltx_minipage ltx_align_middle" style="width:150.0pt;"><svg id="Ch0.F6.pic1" class="ltx_picture ltx_centering" style="width:164.9pt;height:141.0pt;" height="195.16" overflow="visible" version="1.1" viewBox="-28.84 -25.11 228.23 195.16" width="228.23"><g transform="matrix(1 0 0 -1 0 144.94)"><g stroke="#000000"><g fill="#000000"><g color="#000000" stroke-width="0.4pt"><g transform="matrix(1 0 0 1 0 0)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 0)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="100%">
+<p class="ltx_p"></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 -26.07 -22.34)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 177.23)"><g transform="matrix(1 0 0 -1 0 124.52)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt"><clipPath id="pgfcp13"><path d="M 0 -196.84 L 179.88 -196.84 L 179.88 343.42 L 0 343.42"></path></clipPath><g clip-path="url(#pgfcp13)"><g stroke-width="0.2pt"><g color="#808080" stroke="#808080"><g fill="#808080"><path d="M 28.62 -0.65 L 28.62 3.29 M 69.5 -0.65 L 69.5 3.29 M 110.38 -0.65 L 110.38 3.29 M 151.26 -0.65 L 151.26 3.29" style="fill:none"></path></g></g></g><g stroke-width="0.2pt"><g color="#808080" stroke="#808080"><g fill="#808080"><path d="M 49.06 -1.63 L 49.06 4.27 M 89.94 -1.63 L 89.94 4.27 M 130.82 -1.63 L 130.82 4.27 M 171.7 -1.63 L 171.7 4.27" style="fill:none"></path></g></g></g></g><clipPath id="pgfcp14"><path d="M -196.85 0 L -196.85 146.59 L 376.72 146.59 L 376.72 0"></path></clipPath><g clip-path="url(#pgfcp14)"><g stroke-width="0.2pt"><g color="#808080" stroke="#808080"><g fill="#808080"><path d="M 5.22 67.35 L 11.13 67.35 M 5.22 133.38 L 11.13 133.38" style="fill:none"></path></g></g></g></g><path d="M 0 1.32 L 177.11 1.32" style="fill:none"></path><g transform="matrix(1 0 0 1 177.11 1.32)"><path d="M 2.77 0 L -1.66 2.21 L 0 0 L -1.66 -2.21" style="stroke:none"></path></g><path d="M 8.18 0 L 8.18 143.82" style="fill:none"></path><g transform="matrix(0 1 -1 0 8.18 143.82)"><path d="M 2.77 0 L -1.66 2.21 L 0 0 L -1.66 -2.21" style="stroke:none"></path></g><g transform="matrix(1 0 0 1 38.16 -15.24)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="21.79">
+<p class="ltx_p"><math id="Ch0.F6.pic1.pic1.m1" class="ltx_Math" alttext="0.5" display="inline"><mn mathsize="70%">0.5</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 86.31 -15.24)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F6.pic1.pic1.m2" class="ltx_Math" alttext="1" display="inline"><mn mathsize="70%">1</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 119.92 -15.24)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="21.79">
+<p class="ltx_p"><math id="Ch0.F6.pic1.pic1.m3" class="ltx_Math" alttext="1.5" display="inline"><mn mathsize="70%">1.5</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 168.07 -15.24)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F6.pic1.pic1.m4" class="ltx_Math" alttext="2" display="inline"><mn mathsize="70%">2</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 -14.19 64.24)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="14.53">
+<p class="ltx_p"><math id="Ch0.F6.pic1.pic1.m5" class="ltx_Math" alttext="50" display="inline"><mn mathsize="70%">50</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 -21.46 130.27)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="21.79">
+<p class="ltx_p"><math id="Ch0.F6.pic1.pic1.m6" class="ltx_Math" alttext="100" display="inline"><mn mathsize="70%">100</mn></math></p></foreignObject></switch></g></g><clipPath id="pgfcp15"><path d="M 0 0 L 179.88 0 L 179.88 146.59 L 0 146.59 Z"></path></clipPath><g clip-path="url(#pgfcp15)"><g stroke="#0000FF"><g stroke-width="0.8pt"><path d="M 8.18 2.64 C 8.18 2.64 11.13 2.74 12.26 2.78 C 13.4 2.83 15.22 2.9 16.35 2.95 C 17.49 3 19.31 3.09 20.44 3.15 C 21.58 3.21 23.39 3.31 24.53 3.38 C 25.66 3.46 27.48 3.58 28.62 3.67 C 29.75 3.76 31.57 3.91 32.7 4.02 C 33.84 4.12 35.66 4.31 36.79 4.45 C 37.93 4.58 39.75 4.82 40.88 4.99 C 42.02 5.16 43.83 5.46 44.97 5.69 C 46.1 5.91 47.92 6.3 49.06 6.6 C 50.19 6.9 52.01 7.43 53.15 7.84 C 54.28 8.25 56.1 8.98 57.23 9.57 C 58.37 10.17 60.19 11.21 61.32 12.1 C 62.46 12.99 64.28 14.56 65.41 15.99 C 66.54 17.43 68.36 19.91 69.5 22.45 C 70.63 25 72.45 29.12 73.59 34.34 C 74.72 39.55 76.54 46.27 77.67 60.01 C 78.81 73.76 81.76 133.38 81.76 133.38" style="fill:none"></path></g></g><g stroke="#0000FF"><g stroke-width="0.8pt"><path d="M 98.11 133.38 C 98.11 133.38 101.07 73.76 102.2 60.01 C 103.34 46.27 105.16 39.55 106.29 34.34 C 107.43 29.12 109.24 25 110.38 22.45 C 111.51 19.91 113.33 17.43 114.47 15.99 C 115.6 14.56 117.42 12.99 118.56 12.1 C 119.69 11.21 121.51 10.17 122.64 9.57 C 123.78 8.98 125.6 8.25 126.73 7.84 C 127.87 7.43 129.69 6.9 130.82 6.6 C 131.95 6.3 133.77 5.91 134.91 5.69 C 136.04 5.46 137.86 5.16 139 4.99 C 140.13 4.82 141.95 4.58 143.08 4.45 C 144.22 4.31 146.04 4.12 147.17 4.02 C 148.31 3.91 150.13 3.76 151.26 3.67 C 152.39 3.58 154.21 3.46 155.35 3.38 C 156.48 3.31 158.3 3.21 159.44 3.15 C 160.57 3.09 162.39 3 163.52 2.95 C 164.66 2.9 166.48 2.83 167.61 2.78 C 168.75 2.74 171.7 2.64 171.7 2.64" style="fill:none"></path></g></g><g stroke-dasharray="3.0pt,3.0pt" stroke-dashoffset="0.0pt"><g stroke-width="0.8pt"><path d="M 89.94 2.64 L 89.94 133.38" style="fill:none"></path></g></g></g></g></g></g></g></g></g><g transform="matrix(1 0 0 1 184.75 -1.79)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F6.pic1.m1" class="ltx_Math" alttext="x" display="inline"><mi mathsize="70%">x</mi></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 4.54 153.96)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F6.pic1.m2" class="ltx_Math" alttext="y" display="inline"><mi mathsize="70%">y</mi></math></p></foreignObject></switch></g></g></g></g></g></g></svg>
+<span class="ltx_p ltx_align_center"><span class="ltx_text" style="font-size:90%;">(a)</span></span>
+<span class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle">
+<span class="ltx_thead">
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row"><math id="Ch0.F6.m1" class="ltx_Math" alttext="x" display="inline"><mi mathsize="90%">x</mi></math></span>
+<span class="ltx_td ltx_align_right ltx_th ltx_th_column"><math id="Ch0.F6.m2" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></math></span></span>
+</span>
+<span class="ltx_tbody">
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t"><span class="ltx_text" style="font-size:90%;">0.9</span></span>
+<span class="ltx_td ltx_align_right ltx_border_t"><span class="ltx_text" style="font-size:90%;">100</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text" style="font-size:90%;">0.99</span></span>
+<span class="ltx_td ltx_align_right"><span class="ltx_text" style="font-size:90%;">10000</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text" style="font-size:90%;">0.999</span></span>
+<span class="ltx_td ltx_align_right"><math id="Ch0.F6.m3" class="ltx_Math" alttext="1\times 10^{6}" display="inline"><mrow><mn mathsize="90%">1</mn><mo mathsize="90%" stretchy="false">×</mo><msup><mn mathsize="90%">10</mn><mn mathsize="90%">6</mn></msup></mrow></math></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text" style="font-size:90%;">1.001</span></span>
+<span class="ltx_td ltx_align_right"><math id="Ch0.F6.m4" class="ltx_Math" alttext="1\times 10^{6}" display="inline"><mrow><mn mathsize="90%">1</mn><mo mathsize="90%" stretchy="false">×</mo><msup><mn mathsize="90%">10</mn><mn mathsize="90%">6</mn></msup></mrow></math></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text" style="font-size:90%;">1.01</span></span>
+<span class="ltx_td ltx_align_right"><span class="ltx_text" style="font-size:90%;">10000</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><span class="ltx_text" style="font-size:90%;">1.1</span></span>
+<span class="ltx_td ltx_align_right"><span class="ltx_text" style="font-size:90%;">100</span></span></span>
+</span>
+</span>
+<span class="ltx_p ltx_align_center"><span class="ltx_text" style="font-size:90%;">(b)</span></span>
+<span class="ltx_block ltx_caption ltx_align_center"><span class="ltx_text ltx_tag" style="font-size:90%;">Figure 0.6: </span><span class="ltx_text" style="font-size:90%;">Graphically and numerically observing no limit as </span><math id="Ch0.F6.m5" class="ltx_Math" alttext="x\to 1" display="inline"><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">→</mo><mn mathsize="90%">1</mn></mrow></math><span class="ltx_text" style="font-size:90%;"> in </span><a href="#Ch0.S1.ThmexampleEnv4" title="Example 4The Function Grows Without Bound ‣ Identifying When Limits Do Not Exist ‣ 0.1 An Introduction To Limits" class="ltx_ref ltx_refmacro_autoref" style="font-size:90%;"><span class="ltx_text ltx_ref_tag">Example 4</span></a><span class="ltx_text" style="font-size:90%;">.</span>
+</span>
+</span></span></span></span>
+</figure>
+<div id="Ch0.S1.ThmexampleEnv4" class="ltx_theorem inExample ltx_theorem_exampleEnv">
+<h6 class="ltx_title ltx_font_bold ltx_title_theorem">
+<span class="ltx_text ltx_align_left" style="width:80.0pt;">Example 4</span>The Function Grows Without Bound</h6>
+<div id="Ch0.S1.ThmexampleEnv4.p1" class="ltx_para">
+<p class="ltx_p">Explore why <math id="Ch0.S1.ThmexampleEnv4.p1.m1" class="ltx_Math" alttext="\displaystyle\lim_{x\to 1}1/(x-1)^{2}" display="inline"><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>1</mn></mrow></munder><mo>⁡</mo><mrow><mn>1</mn><mo>/</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>-</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow></mrow></math> does not exist.</p>
+</div>
+<div id="Ch0.S1.ThmexampleEnv4.p2" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text solutionTag ltx_font_bold ltx_font_smallcaps ltx_align_left" style="font-size:90%;width:65.0pt;">Solution</span>A graph and table of <math id="Ch0.S1.ThmexampleEnv4.p2.m1" class="ltx_Math" alttext="f(x)=1/(x-1)^{2}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>1</mn><mo>/</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>-</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow></mrow></math> are given in <a href="#Ch0.F6" title="Figure 0.6 ‣ Identifying When Limits Do Not Exist ‣ 0.1 An Introduction To Limits" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Figure 0.6</span></a>.
+Both show that as <math id="Ch0.S1.ThmexampleEnv4.p2.m2" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> approaches 1, <math id="Ch0.S1.ThmexampleEnv4.p2.m3" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> grows larger and larger.</p>
+</div>
+<div id="Ch0.S1.ThmexampleEnv4.p3" class="ltx_para">
+<p class="ltx_p">We can deduce this on our own, without the aid of the graph and table. If <math id="Ch0.S1.ThmexampleEnv4.p3.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> is near 1, then <math id="Ch0.S1.ThmexampleEnv4.p3.m2" class="ltx_Math" alttext="(x-1)^{2}" display="inline"><msup><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>-</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></math> is very small, and:</p>
+<table id="Ch0.Ex10" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ch0.Ex10.m1" class="ltx_Math" alttext="\frac{1}{\text{very small number}}=\text{very large number}." display="block"><mrow><mrow><mfrac><mn>1</mn><mtext>very small number</mtext></mfrac><mo>=</mo><mtext>very large number</mtext></mrow><mo>.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+</table>
+<p class="ltx_p">Since <math id="Ch0.S1.ThmexampleEnv4.p3.m3" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> is not approaching a single number, we conclude that <math id="Ch0.S1.ThmexampleEnv4.p3.m4" class="ltx_Math" alttext="\displaystyle\lim_{x\to 1}\frac{1}{(x-1)^{2}}" display="inline"><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>1</mn></mrow></munder><mo>⁡</mo><mstyle displaystyle="true"><mfrac><mn>1</mn><msup><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>-</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mfrac></mstyle></mrow></math> does not exist.</p>
+</div>
+</div>
+<div id="Ch0.S1.ThmexampleEnv5" class="ltx_theorem inExample ltx_theorem_exampleEnv">
+<h6 class="ltx_title ltx_font_bold ltx_title_theorem">
+<span class="ltx_text ltx_align_left" style="width:80.0pt;">Example 5</span>The Function Oscillates</h6>
+<div id="Ch0.S1.ThmexampleEnv5.p1" class="ltx_para">
+<p class="ltx_p">Explore why <math id="Ch0.S1.ThmexampleEnv5.p1.m1" class="ltx_Math" alttext="\displaystyle\lim_{x\to 0}\sin(1/x)" display="inline"><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow></munder><mo>⁡</mo><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>/</mo><mi>x</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> does not exist.</p>
+</div>
+<div id="Ch0.S1.ThmexampleEnv5.p2" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text solutionTag ltx_font_bold ltx_font_smallcaps ltx_align_left" style="font-size:90%;width:65.0pt;">Solution</span>Two graphs of <math id="Ch0.S1.ThmexampleEnv5.p2.m1" class="ltx_Math" alttext="f(x)=\sin(1/x)" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>/</mo><mi>x</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> are given in <a href="#Ch0.F7" title="Figure 0.7 ‣ Identifying When Limits Do Not Exist ‣ 0.1 An Introduction To Limits" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Figure 0.7</span></a>. <a href="#Ch0.F7" title="Figure 0.7 ‣ Identifying When Limits Do Not Exist ‣ 0.1 An Introduction To Limits" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Figure 0.7</span></a>(a) shows <math id="Ch0.S1.ThmexampleEnv5.p2.m2" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> on the interval <math id="Ch0.S1.ThmexampleEnv5.p2.m3" class="ltx_Math" alttext="[-1,1]" display="inline"><mrow><mo stretchy="false">[</mo><mrow><mo>-</mo><mn>1</mn></mrow><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math>; notice how <math id="Ch0.S1.ThmexampleEnv5.p2.m4" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> seems to oscillate near <math id="Ch0.S1.ThmexampleEnv5.p2.m5" class="ltx_Math" alttext="x=0" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow></math>. One might think that despite the oscillation, as <math id="Ch0.S1.ThmexampleEnv5.p2.m6" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> approaches 0, <math id="Ch0.S1.ThmexampleEnv5.p2.m7" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> approaches 0. However, <a href="#Ch0.F7" title="Figure 0.7 ‣ Identifying When Limits Do Not Exist ‣ 0.1 An Introduction To Limits" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Figure 0.7</span></a>(b) zooms in on <math id="Ch0.S1.ThmexampleEnv5.p2.m8" class="ltx_Math" alttext="\sin(1/x)" display="inline"><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>/</mo><mi>x</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math>, on the interval <math id="Ch0.S1.ThmexampleEnv5.p2.m9" class="ltx_Math" alttext="[-0.1,0.1]" display="inline"><mrow><mo stretchy="false">[</mo><mrow><mo>-</mo><mn>0.1</mn></mrow><mo>,</mo><mn>0.1</mn><mo stretchy="false">]</mo></mrow></math>. Here the oscillation is even more pronounced. Finally, in the table in <a href="#Ch0.F7" title="Figure 0.7 ‣ Identifying When Limits Do Not Exist ‣ 0.1 An Introduction To Limits" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Figure 0.7</span></a>(c), we see <math id="Ch0.S1.ThmexampleEnv5.p2.m10" class="ltx_Math" alttext="\sin(x)/x" display="inline"><mrow><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>/</mo><mi>x</mi></mrow></math> evaluated for values of <math id="Ch0.S1.ThmexampleEnv5.p2.m11" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> near 0. As <math id="Ch0.S1.ThmexampleEnv5.p2.m12" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> approaches 0, <math id="Ch0.S1.ThmexampleEnv5.p2.m13" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> does not appear to approach any value.</p>
+</div>
+<div id="Ch0.S1.ThmexampleEnv5.p3" class="ltx_para">
+<p class="ltx_p">It can be shown that in reality, as <math id="Ch0.S1.ThmexampleEnv5.p3.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> approaches 0, <math id="Ch0.S1.ThmexampleEnv5.p3.m2" class="ltx_Math" alttext="\sin(1/x)" display="inline"><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>/</mo><mi>x</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> takes on all values between <math id="Ch0.S1.ThmexampleEnv5.p3.m3" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>-</mo><mn>1</mn></mrow></math> and 1 infinitely many times! Because of this oscillation,
+<math id="Ch0.S1.ThmexampleEnv5.p3.m4" class="ltx_Math" alttext="\displaystyle\lim_{x\to 0}\sin(1/x)" display="inline"><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow></munder><mo>⁡</mo><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>/</mo><mi>x</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> does not exist.</p>
+</div>
+</div>
+<figure id="Ch0.F7" class="ltx_figure">
+<table class="ltx_tabular ltx_align_middle">
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center"><img src="x2.png" id="Ch0.F7.g1" class="ltx_graphics" width="178" height="148" alt=""></td>
+<td class="ltx_td ltx_align_center"><img src="x3.png" id="Ch0.F7.g2" class="ltx_graphics" width="181" height="148" alt=""></td>
+<td class="ltx_td ltx_align_center">
+<table class="ltx_tabular ltx_align_bottom">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math id="Ch0.F7.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math></td>
+<td class="ltx_td ltx_align_right"><math id="Ch0.F7.m2" class="ltx_Math" alttext="\sin(1/x)" display="inline"><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>/</mo><mi>x</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_t">0.1</td>
+<td class="ltx_td ltx_align_right ltx_border_t"><math id="Ch0.F7.m3" class="ltx_Math" alttext="-0.544021" display="inline"><mrow><mo>-</mo><mn>0.544021</mn></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">0.01</td>
+<td class="ltx_td ltx_align_right"><math id="Ch0.F7.m4" class="ltx_Math" alttext="-0.506366" display="inline"><mrow><mo>-</mo><mn>0.506366</mn></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">0.001</td>
+<td class="ltx_td ltx_align_right"><math id="Ch0.F7.m5" class="ltx_Math" alttext="0.826880" display="inline"><mn>0.826880</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">0.0001</td>
+<td class="ltx_td ltx_align_right"><math id="Ch0.F7.m6" class="ltx_Math" alttext="-0.305614" display="inline"><mrow><mo>-</mo><mn>0.305614</mn></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math id="Ch0.F7.m7" class="ltx_Math" alttext="1.0\times 10^{-5}" display="inline"><mrow><mn>1.0</mn><mo>×</mo><msup><mn>10</mn><mrow><mo>-</mo><mn>5</mn></mrow></msup></mrow></math></td>
+<td class="ltx_td ltx_align_right"><math id="Ch0.F7.m8" class="ltx_Math" alttext="0.035749" display="inline"><mn>0.035749</mn></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math id="Ch0.F7.m9" class="ltx_Math" alttext="1.0\times 10^{-6}" display="inline"><mrow><mn>1.0</mn><mo>×</mo><msup><mn>10</mn><mrow><mo>-</mo><mn>6</mn></mrow></msup></mrow></math></td>
+<td class="ltx_td ltx_align_right"><math id="Ch0.F7.m10" class="ltx_Math" alttext="-0.349994" display="inline"><mrow><mo>-</mo><mn>0.349994</mn></mrow></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math id="Ch0.F7.m11" class="ltx_Math" alttext="1.0\times 10^{-7}" display="inline"><mrow><mn>1.0</mn><mo>×</mo><msup><mn>10</mn><mrow><mo>-</mo><mn>7</mn></mrow></msup></mrow></math></td>
+<td class="ltx_td ltx_align_right"><math id="Ch0.F7.m12" class="ltx_Math" alttext="0.420548" display="inline"><mn>0.420548</mn></math></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">(a)</td>
+<td class="ltx_td ltx_align_center">(b)</td>
+<td class="ltx_td ltx_align_center">(c)</td>
+</tr>
+</tbody>
+</table>
+<figcaption class="ltx_caption"><span class="ltx_tag ltx_tag_figure">Figure 0.7: </span>Observing that <math id="Ch0.F7.m15" class="ltx_Math" alttext="f(x)=\sin(1/x)" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>/</mo><mi>x</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> has no limit as <math id="Ch0.F7.m16" class="ltx_Math" alttext="x\to 0" display="inline"><mrow><mi>x</mi><mo>→</mo><mn>0</mn></mrow></math> in <a href="#Ch0.S1.ThmexampleEnv5" title="Example 5The Function Oscillates ‣ Identifying When Limits Do Not Exist ‣ 0.1 An Introduction To Limits" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Example 5</span></a>.</figcaption>
+</figure>
+</section>
+<section id="Ch0.S1.SSx2" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">Limits of Difference Quotients</h3>
+
+<figure id="Ch0.F8" class="ltx_figure"><span class="ltx_note ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span>
+<span class="ltx_inline-block ltx_minipage ltx_align_middle" style="width:150.0pt;"><img src="x4.png" id="Ch0.F8.g1" class="ltx_graphics ltx_centering" width="175" height="160" alt="">
+<span class="ltx_block ltx_caption ltx_align_center"><span class="ltx_text ltx_tag">Figure 0.8: </span>Interpreting a difference quotient as the slope of a secant line.
+</span>
+</span></span></span></span>
+</figure>
+<div id="Ch0.S1.SSx2.p1" class="ltx_para">
+<p class="ltx_p">We have approximated limits of functions as <math id="Ch0.S1.SSx2.p1.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> approached a particular number. We will consider another important kind of limit after explaining a few key ideas.
+</p>
+</div>
+<div id="Ch0.S1.SSx2.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="Ch0.S1.SSx2.p2.m1" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> represent the position function, in feet, of some particle that is moving in a straight line, where <math id="Ch0.S1.SSx2.p2.m2" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> is measured in seconds. Let’s say that when <math id="Ch0.S1.SSx2.p2.m3" class="ltx_Math" alttext="x=1" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow></math>, the particle is at position 10 ft., and when <math id="Ch0.S1.SSx2.p2.m4" class="ltx_Math" alttext="x=5" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>5</mn></mrow></math>, the particle is at 20 ft. Another way of expressing this is to say</p>
+<table id="Ch0.Ex11" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ch0.Ex11.m1" class="ltx_Math" alttext="f(1)=10\quad\text{ and }\quad f(5)=20." display="block"><mrow><mrow><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>10</mn><mo mathvariant="italic" separator="true"> </mo><mtext> and </mtext></mrow></mrow><mo mathvariant="italic" separator="true"> </mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>5</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>20</mn></mrow></mrow><mo>.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+</table>
+<p class="ltx_p">Since the particle traveled 10 feet in 4 seconds, we can say the particle’s <span class="ltx_text ltx_font_italic">average velocity</span> was 2.5 ft/s. We write this calculation using a “quotient of differences,” or, a <span class="ltx_text ltx_font_italic">difference quotient</span>:</p>
+<table id="Ch0.Ex12" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ch0.Ex12.m1" class="ltx_Math" alttext="\frac{f(5)-f(1)}{5-1}=\frac{10}{4}=2.5\text{ft/s}." display="block"><mrow><mrow><mfrac><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>5</mn><mo stretchy="false">)</mo></mrow></mrow><mo>-</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></mrow><mrow><mn>5</mn><mo>-</mo><mn>1</mn></mrow></mfrac><mo>=</mo><mfrac><mn>10</mn><mn>4</mn></mfrac><mo>=</mo><mrow><mn>2.5</mn><mo>⁢</mo><mtext>ft/s</mtext></mrow></mrow><mo>.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+</table>
+</div>
+<div id="Ch0.S1.SSx2.p3" class="ltx_para">
+<p class="ltx_p">This difference quotient can be thought of as the familiar “rise over run” used to compute the slopes of lines. In fact, that is essentially what we are doing: given two points on the graph of <math id="Ch0.S1.SSx2.p3.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>, we are finding the slope of the <span class="ltx_text ltx_font_italic">secant line</span> through those two points. See <a href="#Ch0.F8" title="Figure 0.8 ‣ Limits of Difference Quotients ‣ 0.1 An Introduction To Limits" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Figure 0.8</span></a>.</p>
+</div>
+<figure id="Ch0.F9" class="ltx_figure"><span class="ltx_note ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span>
+<span class="ltx_inline-block ltx_minipage ltx_align_middle" style="width:150.0pt;"><svg id="Ch0.F9.pic1" class="ltx_picture ltx_centering" style="width:148.3pt;height:137.9pt;" height="190.84" overflow="visible" version="1.1" viewBox="-5.77 -20.79 205.15 190.84" width="205.15"><g transform="matrix(1 0 0 -1 0 149.26)"><g stroke="#000000"><g fill="#000000"><g color="#000000" stroke-width="0.4pt"><g transform="matrix(1 0 0 1 0 0)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 0)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="100%">
+<p class="ltx_p"></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 -3 -18.02)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 181.65)"><g transform="matrix(1 0 0 -1 0 137.58)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt"><clipPath id="pgfcp16"><path d="M 0 -196.85 L 179.87 -196.85 L 179.87 343.43 L 0 343.43"></path></clipPath><g clip-path="url(#pgfcp16)"><g stroke-width="0.2pt"><g color="#808080" stroke="#808080"><g fill="#808080"><path d="M 0 3.67 L 0 7.61 M 47.97 3.67 L 47.97 7.61 M 95.93 3.67 L 95.93 7.61 M 143.9 3.67 L 143.9 7.61" style="fill:none"></path></g></g></g><g stroke-width="0.2pt"><g color="#808080" stroke="#808080"><g fill="#808080"><path d="M 71.95 2.69 L 71.95 8.59 M 119.91 2.69 L 119.91 8.59 M 167.88 2.69 L 167.88 8.59" style="fill:none"></path></g></g></g></g><clipPath id="pgfcp17"><path d="M -196.85 0 L -196.85 146.59 L 376.73 146.59 L 376.73 0"></path></clipPath><g clip-path="url(#pgfcp17)"><g stroke-width="0.2pt"><g color="#808080" stroke="#808080"><g fill="#808080"><path d="M 21.03 62.02 L 26.94 62.02 M 21.03 118.4 L 26.94 118.4" style="fill:none"></path></g></g></g></g><path d="M 0 5.64 L 177.1 5.64" style="fill:none"></path><g transform="matrix(1 0 0 1 177.1 5.64)"><path d="M 2.77 0 L -1.66 2.21 L 0 0 L -1.66 -2.21" style="stroke:none"></path></g><path d="M 23.98 0 L 23.98 143.82" style="fill:none"></path><g transform="matrix(0 1 -1 0 23.98 143.82)"><path d="M 2.77 0 L -1.66 2.21 L 0 0 L -1.66 -2.21" style="stroke:none"></path></g><g transform="matrix(1 0 0 1 68.32 -10.92)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F9.pic1.pic1.m1" class="ltx_Math" alttext="2" display="inline"><mn mathsize="70%">2</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 116.28 -10.92)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F9.pic1.pic1.m2" class="ltx_Math" alttext="4" display="inline"><mn mathsize="70%">4</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 164.25 -10.92)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F9.pic1.pic1.m3" class="ltx_Math" alttext="6" display="inline"><mn mathsize="70%">6</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 1.61 58.9)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="14.53">
+<p class="ltx_p"><math id="Ch0.F9.pic1.pic1.m4" class="ltx_Math" alttext="10" display="inline"><mn mathsize="70%">10</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 1.61 115.28)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="14.53">
+<p class="ltx_p"><math id="Ch0.F9.pic1.pic1.m5" class="ltx_Math" alttext="20" display="inline"><mn mathsize="70%">20</mn></math></p></foreignObject></switch></g></g><g stroke="#0000FF"><g stroke-width="0.8pt"><path d="M 23.98 5.64 C 23.98 5.64 32.65 28.12 35.97 35.94 C 39.3 43.76 44.64 55.37 47.97 62.02 C 51.29 68.67 56.63 78.39 59.96 83.86 C 63.29 89.34 68.62 97.18 71.95 101.48 C 75.28 105.79 80.61 111.74 83.94 114.87 C 87.27 118 92.6 122.08 95.93 124.04 C 99.26 125.99 104.6 128.19 107.92 128.97 C 111.25 129.75 116.59 130.06 119.91 129.67 C 123.24 129.28 128.58 127.71 131.91 126.15 C 135.23 124.58 140.57 121.13 143.9 118.4 C 147.23 115.66 152.56 110.33 155.89 106.42 C 159.22 102.51 167.88 90.21 167.88 90.21" style="fill:none"></path></g></g><g stroke="#FF0000"><g stroke-width="0.8pt"><path d="M 23.98 31.01 C 23.98 31.01 119.91 155.04 119.91 155.04" style="fill:none"></path></g></g><g color="#000000" stroke="#000000"><g fill="#000000"><path d="M 47.97 62.02 M 49.35 62.02 C 49.35 62.78 48.73 63.4 47.97 63.4 C 47.2 63.4 46.58 62.78 46.58 62.02 C 46.58 61.25 47.2 60.63 47.97 60.63 C 48.73 60.63 49.35 61.25 49.35 62.02 Z M 47.97 62.02" style="stroke:none"></path></g></g><g color="#000000" stroke="#000000"><g fill="#000000"><path d="M 95.93 124.04 M 97.32 124.04 C 97.32 124.8 96.7 125.42 95.93 125.42 C 95.17 125.42 94.55 124.8 94.55 124.04 C 94.55 123.27 95.17 122.65 95.93 122.65 C 96.7 122.65 97.32 123.27 97.32 124.04 Z M 95.93 124.04" style="stroke:none"></path></g></g></g></g></g></g></g></g><g transform="matrix(1 0 0 1 184.74 2.52)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F9.pic1.m1" class="ltx_Math" alttext="x" display="inline"><mi mathsize="70%">x</mi></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 20.35 153.95)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F9.pic1.m2" class="ltx_Math" alttext="f" display="inline"><mi mathsize="70%">f</mi></math></p></foreignObject></switch></g></g></g></g></g></g></svg>
+<span class="ltx_p ltx_align_center"><span class="ltx_text" style="font-size:90%;">(a)</span></span><svg id="Ch0.F9.pic2" class="ltx_picture ltx_centering" style="width:148.3pt;height:137.9pt;" height="190.84" overflow="visible" version="1.1" viewBox="-5.77 -20.79 205.15 190.84" width="205.15"><g transform="matrix(1 0 0 -1 0 149.26)"><g stroke="#000000"><g fill="#000000"><g color="#000000" stroke-width="0.4pt"><g transform="matrix(1 0 0 1 0 0)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 0)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="100%">
+<p class="ltx_p"></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 -3 -18.02)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 172.91)"><g transform="matrix(1 0 0 -1 0 128.84)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt"><clipPath id="pgfcp18"><path d="M 0 -196.85 L 179.87 -196.85 L 179.87 343.43 L 0 343.43"></path></clipPath><g clip-path="url(#pgfcp18)"><g stroke-width="0.2pt"><g color="#808080" stroke="#808080"><g fill="#808080"><path d="M 0 3.67 L 0 7.61 M 47.97 3.67 L 47.97 7.61 M 95.93 3.67 L 95.93 7.61 M 143.9 3.67 L 143.9 7.61" style="fill:none"></path></g></g></g><g stroke-width="0.2pt"><g color="#808080" stroke="#808080"><g fill="#808080"><path d="M 71.95 2.69 L 71.95 8.59 M 119.91 2.69 L 119.91 8.59 M 167.88 2.69 L 167.88 8.59" style="fill:none"></path></g></g></g></g><clipPath id="pgfcp19"><path d="M -196.85 0 L -196.85 146.59 L 376.73 146.59 L 376.73 0"></path></clipPath><g clip-path="url(#pgfcp19)"><g stroke-width="0.2pt"><g color="#808080" stroke="#808080"><g fill="#808080"><path d="M 21.03 62.02 L 26.94 62.02 M 21.03 118.4 L 26.94 118.4" style="fill:none"></path></g></g></g></g><path d="M 0 5.64 L 177.1 5.64" style="fill:none"></path><g transform="matrix(1 0 0 1 177.1 5.64)"><path d="M 2.77 0 L -1.66 2.21 L 0 0 L -1.66 -2.21" style="stroke:none"></path></g><path d="M 23.98 0 L 23.98 143.82" style="fill:none"></path><g transform="matrix(0 1 -1 0 23.98 143.82)"><path d="M 2.77 0 L -1.66 2.21 L 0 0 L -1.66 -2.21" style="stroke:none"></path></g><g transform="matrix(1 0 0 1 68.32 -10.92)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F9.pic2.pic1.m1" class="ltx_Math" alttext="2" display="inline"><mn mathsize="70%">2</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 116.28 -10.92)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F9.pic2.pic1.m2" class="ltx_Math" alttext="4" display="inline"><mn mathsize="70%">4</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 164.25 -10.92)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F9.pic2.pic1.m3" class="ltx_Math" alttext="6" display="inline"><mn mathsize="70%">6</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 1.61 58.9)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="14.53">
+<p class="ltx_p"><math id="Ch0.F9.pic2.pic1.m4" class="ltx_Math" alttext="10" display="inline"><mn mathsize="70%">10</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 1.61 115.28)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="14.53">
+<p class="ltx_p"><math id="Ch0.F9.pic2.pic1.m5" class="ltx_Math" alttext="20" display="inline"><mn mathsize="70%">20</mn></math></p></foreignObject></switch></g></g><g stroke="#0000FF"><g stroke-width="0.8pt"><path d="M 23.98 5.64 C 23.98 5.64 32.65 28.12 35.97 35.94 C 39.3 43.76 44.64 55.37 47.97 62.02 C 51.29 68.67 56.63 78.39 59.96 83.86 C 63.29 89.34 68.62 97.18 71.95 101.48 C 75.28 105.79 80.61 111.74 83.94 114.87 C 87.27 118 92.6 122.08 95.93 124.04 C 99.26 125.99 104.6 128.19 107.92 128.97 C 111.25 129.75 116.59 130.06 119.91 129.67 C 123.24 129.28 128.58 127.71 131.91 126.15 C 135.23 124.58 140.57 121.13 143.9 118.4 C 147.23 115.66 152.56 110.33 155.89 106.42 C 159.22 102.51 167.88 90.21 167.88 90.21" style="fill:none"></path></g></g><g stroke="#FF0000"><g stroke-width="0.8pt"><path d="M 23.98 22.55 C 23.98 22.55 95.93 140.95 95.93 140.95" style="fill:none"></path></g></g><g color="#000000" stroke="#000000"><g fill="#000000"><path d="M 47.97 62.02 M 49.35 62.02 C 49.35 62.78 48.73 63.4 47.97 63.4 C 47.2 63.4 46.58 62.78 46.58 62.02 C 46.58 61.25 47.2 60.63 47.97 60.63 C 48.73 60.63 49.35 61.25 49.35 62.02 Z M 47.97 62.02" style="stroke:none"></path></g></g><g color="#000000" stroke="#000000"><g fill="#000000"><path d="M 71.95 101.48 M 73.33 101.48 C 73.33 102.25 72.71 102.87 71.95 102.87 C 71.18 102.87 70.57 102.25 70.57 101.48 C 70.57 100.72 71.18 100.1 71.95 100.1 C 72.71 100.1 73.33 100.72 73.33 101.48 Z M 71.95 101.48" style="stroke:none"></path></g></g></g></g></g></g></g></g><g transform="matrix(1 0 0 1 184.74 2.52)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F9.pic2.m1" class="ltx_Math" alttext="x" display="inline"><mi mathsize="70%">x</mi></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 20.35 153.95)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F9.pic2.m2" class="ltx_Math" alttext="f" display="inline"><mi mathsize="70%">f</mi></math></p></foreignObject></switch></g></g></g></g></g></g></svg>
+<span class="ltx_p ltx_align_center"><span class="ltx_text" style="font-size:90%;">(b)</span></span><svg id="Ch0.F9.pic3" class="ltx_picture ltx_centering" style="width:148.3pt;height:137.9pt;" height="190.84" overflow="visible" version="1.1" viewBox="-5.77 -20.79 205.15 190.84" width="205.15"><g transform="matrix(1 0 0 -1 0 149.26)"><g stroke="#000000"><g fill="#000000"><g color="#000000" stroke-width="0.4pt"><g transform="matrix(1 0 0 1 0 0)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 0)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="100%">
+<p class="ltx_p"></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 -3 -18.02)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 172.91)"><g transform="matrix(1 0 0 -1 0 128.84)"><g stroke="#000000"><g fill="#000000"><g stroke-width="0.4pt"><clipPath id="pgfcp20"><path d="M 0 -196.85 L 179.87 -196.85 L 179.87 343.43 L 0 343.43"></path></clipPath><g clip-path="url(#pgfcp20)"><g stroke-width="0.2pt"><g color="#808080" stroke="#808080"><g fill="#808080"><path d="M 0 3.67 L 0 7.61 M 47.97 3.67 L 47.97 7.61 M 95.93 3.67 L 95.93 7.61 M 143.9 3.67 L 143.9 7.61" style="fill:none"></path></g></g></g><g stroke-width="0.2pt"><g color="#808080" stroke="#808080"><g fill="#808080"><path d="M 71.95 2.69 L 71.95 8.59 M 119.91 2.69 L 119.91 8.59 M 167.88 2.69 L 167.88 8.59" style="fill:none"></path></g></g></g></g><clipPath id="pgfcp21"><path d="M -196.85 0 L -196.85 146.59 L 376.73 146.59 L 376.73 0"></path></clipPath><g clip-path="url(#pgfcp21)"><g stroke-width="0.2pt"><g color="#808080" stroke="#808080"><g fill="#808080"><path d="M 21.03 62.02 L 26.94 62.02 M 21.03 118.4 L 26.94 118.4" style="fill:none"></path></g></g></g></g><path d="M 0 5.64 L 177.1 5.64" style="fill:none"></path><g transform="matrix(1 0 0 1 177.1 5.64)"><path d="M 2.77 0 L -1.66 2.21 L 0 0 L -1.66 -2.21" style="stroke:none"></path></g><path d="M 23.98 0 L 23.98 143.82" style="fill:none"></path><g transform="matrix(0 1 -1 0 23.98 143.82)"><path d="M 2.77 0 L -1.66 2.21 L 0 0 L -1.66 -2.21" style="stroke:none"></path></g><g transform="matrix(1 0 0 1 68.32 -10.92)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F9.pic3.pic1.m1" class="ltx_Math" alttext="2" display="inline"><mn mathsize="70%">2</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 116.28 -10.92)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F9.pic3.pic1.m2" class="ltx_Math" alttext="4" display="inline"><mn mathsize="70%">4</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 164.25 -10.92)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F9.pic3.pic1.m3" class="ltx_Math" alttext="6" display="inline"><mn mathsize="70%">6</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 1.61 58.9)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="14.53">
+<p class="ltx_p"><math id="Ch0.F9.pic3.pic1.m4" class="ltx_Math" alttext="10" display="inline"><mn mathsize="70%">10</mn></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 1.61 115.28)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="14.53">
+<p class="ltx_p"><math id="Ch0.F9.pic3.pic1.m5" class="ltx_Math" alttext="20" display="inline"><mn mathsize="70%">20</mn></math></p></foreignObject></switch></g></g><g stroke="#0000FF"><g stroke-width="0.8pt"><path d="M 23.98 5.64 C 23.98 5.64 32.65 28.12 35.97 35.94 C 39.3 43.76 44.64 55.37 47.97 62.02 C 51.29 68.67 56.63 78.39 59.96 83.86 C 63.29 89.34 68.62 97.18 71.95 101.48 C 75.28 105.79 80.61 111.74 83.94 114.87 C 87.27 118 92.6 122.08 95.93 124.04 C 99.26 125.99 104.6 128.19 107.92 128.97 C 111.25 129.75 116.59 130.06 119.91 129.67 C 123.24 129.28 128.58 127.71 131.91 126.15 C 135.23 124.58 140.57 121.13 143.9 118.4 C 147.23 115.66 152.56 110.33 155.89 106.42 C 159.22 102.51 167.88 90.21 167.88 90.21" style="fill:none"></path></g></g><g stroke="#FF0000"><g stroke-width="0.8pt"><path d="M 23.98 18.32 C 23.98 18.32 83.94 127.56 83.94 127.56" style="fill:none"></path></g></g><g color="#000000" stroke="#000000"><g fill="#000000"><path d="M 47.97 62.02 M 49.35 62.02 C 49.35 62.78 48.73 63.4 47.97 63.4 C 47.2 63.4 46.58 62.78 46.58 62.02 C 46.58 61.25 47.2 60.63 47.97 60.63 C 48.73 60.63 49.35 61.25 49.35 62.02 Z M 47.97 62.02" style="stroke:none"></path></g></g><g color="#000000" stroke="#000000"><g fill="#000000"><path d="M 59.96 83.86 M 61.34 83.86 C 61.34 84.63 60.72 85.25 59.96 85.25 C 59.19 85.25 58.57 84.63 58.57 83.86 C 58.57 83.1 59.19 82.48 59.96 82.48 C 60.72 82.48 61.34 83.1 61.34 83.86 Z M 59.96 83.86" style="stroke:none"></path></g></g></g></g></g></g></g></g><g transform="matrix(1 0 0 1 184.74 2.52)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F9.pic3.m1" class="ltx_Math" alttext="x" display="inline"><mi mathsize="70%">x</mi></math></p></foreignObject></switch></g></g><g transform="matrix(1 0 0 1 20.35 153.95)"><g class="ltx_svg_fog" transform="matrix(1 0 0 -1 0 11.21)"><switch><foreignObject color="#000000" height="100%" overflow="visible" width="7.26">
+<p class="ltx_p"><math id="Ch0.F9.pic3.m2" class="ltx_Math" alttext="f" display="inline"><mi mathsize="70%">f</mi></math></p></foreignObject></switch></g></g></g></g></g></g></svg>
+<span class="ltx_p ltx_align_center"><span class="ltx_text" style="font-size:90%;">(c)</span></span>
+<span class="ltx_block ltx_caption ltx_align_center"><span class="ltx_text ltx_tag" style="font-size:90%;">Figure 0.9: </span><span class="ltx_text" style="font-size:90%;">Secant lines of </span><math id="Ch0.F9.m1" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></math><span class="ltx_text" style="font-size:90%;"> at </span><math id="Ch0.F9.m2" class="ltx_Math" alttext="x=1" display="inline"><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">=</mo><mn mathsize="90%">1</mn></mrow></math><span class="ltx_text" style="font-size:90%;"> and </span><math id="Ch0.F9.m3" class="ltx_Math" alttext="x=1+h" display="inline"><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">=</mo><mrow><mn mathsize="90%">1</mn><mo mathsize="90%" stretchy="false">+</mo><mi mathsize="90%">h</mi></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">, for shrinking values of </span><math id="Ch0.F9.m4" class="ltx_Math" alttext="h" display="inline"><mi mathsize="90%">h</mi></math><span class="ltx_text" style="font-size:90%;"> (i.e., </span><math id="Ch0.F9.m5" class="ltx_Math" alttext="h\rightarrow 0" display="inline"><mrow><mi mathsize="90%">h</mi><mo mathsize="90%" stretchy="false">→</mo><mn mathsize="90%">0</mn></mrow></math><span class="ltx_text" style="font-size:90%;">).</span>
+</span>
+</span></span></span></span>
+</figure>
+<div id="Ch0.S1.SSx2.p4" class="ltx_para">
+<p class="ltx_p">Now consider finding the average speed on another time interval. We again start at <math id="Ch0.S1.SSx2.p4.m1" class="ltx_Math" alttext="x=1" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow></math>, but consider the position of the particle <math id="Ch0.S1.SSx2.p4.m2" class="ltx_Math" alttext="h" display="inline"><mi>h</mi></math> seconds later. That is, consider the positions of the particle when <math id="Ch0.S1.SSx2.p4.m3" class="ltx_Math" alttext="x=1" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow></math> and when <math id="Ch0.S1.SSx2.p4.m4" class="ltx_Math" alttext="x=1+h" display="inline"><mrow><mi>x</mi><mo>=</mo><mrow><mn>1</mn><mo>+</mo><mi>h</mi></mrow></mrow></math>. The difference quotient is now</p>
+<table id="Ch0.Ex13" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ch0.Ex13.m1" class="ltx_Math" alttext="\frac{f(1+h)-f(1)}{(1+h)-1}=\frac{f(1+h)-f(1)}{h}." display="block"><mrow><mrow><mfrac><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><mi>h</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>-</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><mi>h</mi></mrow><mo stretchy="false">)</mo></mrow><mo>-</mo><mn>1</mn></mrow></mfrac><mo>=</mo><mfrac><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><mi>h</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>-</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></mrow><mi>h</mi></mfrac></mrow><mo>.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+</table>
+</div>
+<div id="Ch0.S1.SSx2.p5" class="ltx_para">
+<p class="ltx_p">Let <math id="Ch0.S1.SSx2.p5.m1" class="ltx_Math" alttext="f(x)=-1.5x^{2}+11.5x" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo>-</mo><mrow><mn>1.5</mn><mo>⁢</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></mrow><mo>+</mo><mrow><mn>11.5</mn><mo>⁢</mo><mi>x</mi></mrow></mrow></mrow></math>; note that <math id="Ch0.S1.SSx2.p5.m2" class="ltx_Math" alttext="f(1)=10" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>10</mn></mrow></math> and <math id="Ch0.S1.SSx2.p5.m3" class="ltx_Math" alttext="f(5)=20" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>5</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>20</mn></mrow></math>, as in our discussion. We can compute this difference quotient for all values of <math id="Ch0.S1.SSx2.p5.m4" class="ltx_Math" alttext="h" display="inline"><mi>h</mi></math> (even negative values!) except <math id="Ch0.S1.SSx2.p5.m5" class="ltx_Math" alttext="h=0" display="inline"><mrow><mi>h</mi><mo>=</mo><mn>0</mn></mrow></math>, for then we get “0/0,” the indeterminate form introduced earlier. For all values <math id="Ch0.S1.SSx2.p5.m6" class="ltx_Math" alttext="h\neq 0" display="inline"><mrow><mi>h</mi><mo>≠</mo><mn>0</mn></mrow></math>, the difference quotient computes the average velocity of the particle over an interval of time of length <math id="Ch0.S1.SSx2.p5.m7" class="ltx_Math" alttext="h" display="inline"><mi>h</mi></math> starting at <math id="Ch0.S1.SSx2.p5.m8" class="ltx_Math" alttext="x=1" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow></math>.</p>
+</div>
+<div id="Ch0.S1.SSx2.p6" class="ltx_para">
+<p class="ltx_p">For small values of <math id="Ch0.S1.SSx2.p6.m1" class="ltx_Math" alttext="h" display="inline"><mi>h</mi></math>, i.e., values of <math id="Ch0.S1.SSx2.p6.m2" class="ltx_Math" alttext="h" display="inline"><mi>h</mi></math> close to 0, we get average velocities over very short time periods and compute secant lines over small intervals. See <a href="#Ch0.F9" title="Figure 0.9 ‣ Limits of Difference Quotients ‣ 0.1 An Introduction To Limits" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Figure 0.9</span></a>. This leads us to wonder what the limit of the difference quotient is as <math id="Ch0.S1.SSx2.p6.m3" class="ltx_Math" alttext="h" display="inline"><mi>h</mi></math> approaches 0. That is,</p>
+<table id="Ch0.Ex14" class="ltx_equation ltx_eqn_table">
+
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ch0.Ex14.m1" class="ltx_Math" alttext="\lim_{h\to 0}\frac{f(1+h)-f(1)}{h}=\text{ ? }" display="block"><mrow><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>h</mi><mo>→</mo><mn>0</mn></mrow></munder><mo>⁡</mo><mfrac><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><mi>h</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>-</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></mrow><mi>h</mi></mfrac></mrow><mo>=</mo><mtext> ? </mtext></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+</table>
+</div>
+<div id="Ch0.S1.SSx2.p7" class="ltx_para">
+<p class="ltx_p">As we do not yet have a true definition of a limit nor an exact method for computing it, we settle for approximating the value. While we could graph the difference quotient (where the <math id="Ch0.S1.SSx2.p7.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>-axis would represent <math id="Ch0.S1.SSx2.p7.m2" class="ltx_Math" alttext="h" display="inline"><mi>h</mi></math> values and the <math id="Ch0.S1.SSx2.p7.m3" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math>-axis would represent values of the difference quotient) we settle for making a table. See <a href="#Ch0.F10" title="Figure 0.10 ‣ Limits of Difference Quotients ‣ 0.1 An Introduction To Limits" class="ltx_ref ltx_refmacro_autoref"><span class="ltx_text ltx_ref_tag">Figure 0.10</span></a>. The table gives us reason to assume the value of the limit is about 8.5.</p>
+</div>
+<figure id="Ch0.F10" class="ltx_figure"><span class="ltx_note ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span>
+<span class="ltx_inline-block ltx_minipage ltx_align_middle" style="width:150.0pt;">
+<span class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle">
+<span class="ltx_thead">
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_column ltx_th_row"><math id="Ch0.F10.m1" class="ltx_Math" alttext="h" display="inline"><mi mathsize="90%">h</mi></math></span>
+<span class="ltx_td ltx_align_center ltx_th ltx_th_column"><math id="Ch0.F10.m2" class="ltx_Math" alttext="\frac{f(1+h)-f(1)}{h}" display="inline"><mfrac><mrow><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mrow><mn mathsize="90%">1</mn><mo mathsize="90%" stretchy="false">+</mo><mi mathsize="90%">h</mi></mrow><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%" stretchy="false">-</mo><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mn mathsize="90%">1</mn><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></mrow><mi mathsize="90%">h</mi></mfrac></math></span></span>
+</span>
+<span class="ltx_tbody">
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row ltx_border_t"><math id="Ch0.F10.m3" class="ltx_Math" alttext="-0.5" display="inline"><mrow><mo mathsize="90%" stretchy="false">-</mo><mn mathsize="90%">0.5</mn></mrow></math></span>
+<span class="ltx_td ltx_align_center ltx_border_t"><span class="ltx_text" style="font-size:90%;">9.250</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><math id="Ch0.F10.m4" class="ltx_Math" alttext="-0.1" display="inline"><mrow><mo mathsize="90%" stretchy="false">-</mo><mn mathsize="90%">0.1</mn></mrow></math></span>
+<span class="ltx_td ltx_align_center"><span class="ltx_text" style="font-size:90%;">8.650</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><math id="Ch0.F10.m5" class="ltx_Math" alttext="-0.01" display="inline"><mrow><mo mathsize="90%" stretchy="false">-</mo><mn mathsize="90%">0.01</mn></mrow></math></span>
+<span class="ltx_td ltx_align_center"><span class="ltx_text" style="font-size:90%;">8.515</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><math id="Ch0.F10.m6" class="ltx_Math" alttext="\phantom{-}0.01" display="inline"><mn mathsize="90%">0.01</mn></math></span>
+<span class="ltx_td ltx_align_center"><span class="ltx_text" style="font-size:90%;">8.485</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><math id="Ch0.F10.m7" class="ltx_Math" alttext="\phantom{-}0.1" display="inline"><mn mathsize="90%">0.1</mn></math></span>
+<span class="ltx_td ltx_align_center"><span class="ltx_text" style="font-size:90%;">8.350</span></span></span>
+<span class="ltx_tr">
+<span class="ltx_td ltx_align_left ltx_th ltx_th_row"><math id="Ch0.F10.m8" class="ltx_Math" alttext="\phantom{-}0.5" display="inline"><mn mathsize="90%">0.5</mn></math></span>
+<span class="ltx_td ltx_align_center"><span class="ltx_text" style="font-size:90%;">7.750</span></span></span>
+</span>
+</span>
+<span class="ltx_block ltx_caption ltx_align_center"><span class="ltx_text ltx_tag" style="font-size:90%;">Figure 0.10: </span><span class="ltx_text" style="font-size:90%;">The difference quotient for </span><math id="Ch0.F10.m9" class="ltx_Math" alttext="f(x)=-1.5x^{2}+11.5x" display="inline"><mrow><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%" stretchy="false">=</mo><mrow><mrow><mo mathsize="90%" stretchy="false">-</mo><mrow><mn mathsize="90%">1.5</mn><mo>⁢</mo><msup><mi mathsize="90%">x</mi><mn mathsize="90%">2</mn></msup></mrow></mrow><mo mathsize="90%" stretchy="false">+</mo><mrow><mn mathsize="90%">11.5</mn><mo>⁢</mo><mi mathsize="90%">x</mi></mrow></mrow></mrow></math><span class="ltx_text" style="font-size:90%;"> evaluated at values of </span><math id="Ch0.F10.m10" class="ltx_Math" alttext="h" display="inline"><mi mathsize="90%">h</mi></math><span class="ltx_text" style="font-size:90%;"> near 0.</span>
+</span>
+</span></span></span></span>
+</figure>
+<div id="Ch0.S1.SSx2.p8" class="ltx_para">
+<p class="ltx_p">Proper understanding of limits is key to understanding calculus. With limits, we can accomplish seemingly impossible mathematical things, like adding up an infinite number of numbers (and not get infinity) and finding the slope of a line between two points, where the “two points” are actually the same point. These are not just mathematical curiosities; they allow us to link position, velocity and acceleration together, connect cross-sectional areas to volume, find the work done by a variable force, and much more.</p>
+</div>
+<div id="Ch0.S1.SSx2.p9" class="ltx_para">
+<p class="ltx_p">In the next section we give the formal definition of the limit and begin our study of finding limits analytically. In the following exercises, we continue our introduction and approximate the value of limits.</p>
+</div>
+</section>
+<section id="Ch0.S1.SSx3" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection"><span class="ltx_ref ltx_missing_label ltx_ref_self">Exercises 0.1</span></h3>
+
+<div id="Ch0.S1.SSx3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_rule" style="width:100%;height:1px;background:black;display:inline-block;"> </span></p>
+</div>
+<section id="Ch0.S1.SSx3.SSSx1" class="ltx_subsubsection">
+<h4 class="ltx_title ltx_title_subsubsection" style="font-size:90%;">Terms and Concepts</h4>
+
+<div id="Ch0.S1.SSx3.SSSx1.p1" class="ltx_para">
+<ol id="Ch0.I3" class="ltx_enumerate">
+<li id="Ch0.I3.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate"><span class="ltx_text" style="font-size:90%;">1.</span></span> 
+<div id="Ch0.I3.i1.p1" class="ltx_para">
+<p class="ltx_p ltx_parbox ltx_align_top" style="width:433.6pt;"><span class="ltx_text" style="font-size:90%;">In your own words, what does it mean to “find the limit of </span><math id="Ch0.I3.i1.p1.m1" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></math><span class="ltx_text" style="font-size:90%;"> as </span><math id="Ch0.I3.i1.p1.m2" class="ltx_Math" alttext="x" display="inline"><mi mathsize="90%">x</mi></math><span class="ltx_text" style="font-size:90%;"> approaches 3”?</span></p>
+</div>
+</li>
+<li id="Ch0.I3.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate"><span class="ltx_text" style="font-size:90%;">2.</span></span> 
+<div id="Ch0.I3.i2.p1" class="ltx_para">
+<p class="ltx_p ltx_parbox ltx_align_top" style="width:433.6pt;"><span class="ltx_text" style="font-size:90%;">An expression of the form </span><math id="Ch0.I3.i2.p1.m1" class="ltx_Math" alttext="\frac{0}{0}" display="inline"><mfrac><mn mathsize="90%">0</mn><mn mathsize="90%">0</mn></mfrac></math><span class="ltx_text" style="font-size:90%;"> is called </span><span class="ltx_text ltx_framed_underline" style="font-size:90%;">     </span><span class="ltx_text" style="font-size:90%;">.</span></p>
+</div>
+</li>
+<li id="Ch0.I3.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate"><span class="ltx_text" style="font-size:90%;">3.</span></span> 
+<div id="Ch0.I3.i3.p1" class="ltx_para">
+<p class="ltx_p ltx_parbox ltx_align_top" style="width:433.6pt;"><span class="ltx_text" style="font-size:90%;">T/F: The limit of </span><math id="Ch0.I3.i3.p1.m1" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></math><span class="ltx_text" style="font-size:90%;"> as </span><math id="Ch0.I3.i3.p1.m2" class="ltx_Math" alttext="x" display="inline"><mi mathsize="90%">x</mi></math><span class="ltx_text" style="font-size:90%;"> approaches </span><math id="Ch0.I3.i3.p1.m3" class="ltx_Math" alttext="5" display="inline"><mn mathsize="90%">5</mn></math><span class="ltx_text" style="font-size:90%;"> is </span><math id="Ch0.I3.i3.p1.m4" class="ltx_Math" alttext="f(5)" display="inline"><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mn mathsize="90%">5</mn><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">.</span></p>
+</div>
+</li>
+<li id="Ch0.I3.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate"><span class="ltx_text" style="font-size:90%;">4.</span></span> 
+<div id="Ch0.I3.i4.p1" class="ltx_para">
+<p class="ltx_p ltx_parbox ltx_align_top" style="width:433.6pt;"><span class="ltx_text" style="font-size:90%;">Describe three situations where </span><math id="Ch0.I3.i4.p1.m1" class="ltx_Math" alttext="\displaystyle\lim_{x\to c}f(x)" display="inline"><mrow><munder><mo mathsize="90%" movablelimits="false" stretchy="false">lim</mo><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">→</mo><mi mathsize="90%">c</mi></mrow></munder><mo>⁡</mo><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></mrow></math><span class="ltx_text" style="font-size:90%;"> does not exist.</span></p>
+</div>
+</li>
+<li id="Ch0.I3.i5" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate"><span class="ltx_text" style="font-size:90%;">5.</span></span> 
+<div id="Ch0.I3.i5.p1" class="ltx_para">
+<p class="ltx_p ltx_parbox ltx_align_top" style="width:433.6pt;"><span class="ltx_text" style="font-size:90%;">In your own words, what is a difference quotient?</span></p>
+</div>
+</li>
+</ol>
+</div>
+</section>
+<section id="Ch0.S1.SSx3.SSSx2" class="ltx_subsubsection">
+<h4 class="ltx_title ltx_title_subsubsection" style="font-size:90%;">Problems</h4>
+
+<div id="Ch0.S1.SSx3.SSSx2.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">In Exercises 6–</span><a href="#Ch0.I4.i15" title="15. ‣ Problems ‣ Exercises 0.1 ‣ 0.1 An Introduction To Limits" class="ltx_ref" style="font-size:90%;"><span class="ltx_text ltx_ref_tag">15</span></a><span class="ltx_text" style="font-size:90%;">, approximate the given limits both numerically and graphically.</span></p>
+</div>
+<div id="Ch0.S1.SSx3.SSSx2.p2" class="ltx_para ltx_noindent">
+<ol id="Ch0.I4" class="ltx_enumerate">
+<li id="Ch0.I4.i6" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate"><span class="ltx_text" style="font-size:90%;">6.</span></span> 
+<div id="Ch0.I4.i6.p1" class="ltx_para">
+<p class="ltx_p ltx_parbox ltx_align_top" style="width:433.6pt;"><math id="Ch0.I4.i6.p1.m1" class="ltx_Math" alttext="\displaystyle\lim_{x\to 1}x^{2}+3x-5" display="inline"><mrow><mrow><mrow><munder><mo mathsize="90%" movablelimits="false" stretchy="false">lim</mo><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">→</mo><mn mathsize="90%">1</mn></mrow></munder><mo>⁡</mo><msup><mi mathsize="90%">x</mi><mn mathsize="90%">2</mn></msup></mrow><mo mathsize="90%" stretchy="false">+</mo><mrow><mn mathsize="90%">3</mn><mo>⁢</mo><mi mathsize="90%">x</mi></mrow></mrow><mo mathsize="90%" stretchy="false">-</mo><mn mathsize="90%">5</mn></mrow></math></p>
+</div>
+</li>
+<li id="Ch0.I4.i7" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate"><span class="ltx_text" style="font-size:90%;">7.</span></span> 
+<div id="Ch0.I4.i7.p1" class="ltx_para">
+<p class="ltx_p ltx_parbox ltx_align_top" style="width:433.6pt;"><math id="Ch0.I4.i7.p1.m1" class="ltx_Math" alttext="\displaystyle\lim_{x\to 0}x^{3}-3x^{2}+x-5" display="inline"><mrow><mrow><mrow><mrow><munder><mo mathsize="90%" movablelimits="false" stretchy="false">lim</mo><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">→</mo><mn mathsize="90%">0</mn></mrow></munder><mo>⁡</mo><msup><mi mathsize="90%">x</mi><mn mathsize="90%">3</mn></msup></mrow><mo mathsize="90%" stretchy="false">-</mo><mrow><mn mathsize="90%">3</mn><mo>⁢</mo><msup><mi mathsize="90%">x</mi><mn mathsize="90%">2</mn></msup></mrow></mrow><mo mathsize="90%" stretchy="false">+</mo><mi mathsize="90%">x</mi></mrow><mo mathsize="90%" stretchy="false">-</mo><mn mathsize="90%">5</mn></mrow></math></p>
+</div>
+</li>
+<li id="Ch0.I4.i8" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate"><span class="ltx_text" style="font-size:90%;">8.</span></span> 
+<div id="Ch0.I4.i8.p1" class="ltx_para">
+<p class="ltx_p ltx_parbox ltx_align_top" style="width:433.6pt;"><math id="Ch0.I4.i8.p1.m1" class="ltx_Math" alttext="\displaystyle\lim_{x\to 0}\frac{x+1}{x^{2}+3x}" display="inline"><mrow><munder><mo mathsize="90%" movablelimits="false" stretchy="false">lim</mo><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">→</mo><mn mathsize="90%">0</mn></mrow></munder><mo>⁡</mo><mstyle displaystyle="true"><mfrac><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">+</mo><mn mathsize="90%">1</mn></mrow><mrow><msup><mi mathsize="90%">x</mi><mn mathsize="90%">2</mn></msup><mo mathsize="90%" stretchy="false">+</mo><mrow><mn mathsize="90%">3</mn><mo>⁢</mo><mi mathsize="90%">x</mi></mrow></mrow></mfrac></mstyle></mrow></math></p>
+</div>
+</li>
+<li id="Ch0.I4.i9" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate"><span class="ltx_text" style="font-size:90%;">9.</span></span> 
+<div id="Ch0.I4.i9.p1" class="ltx_para">
+<p class="ltx_p ltx_parbox ltx_align_top" style="width:433.6pt;"><math id="Ch0.I4.i9.p1.m1" class="ltx_Math" alttext="\displaystyle\lim_{x\to 3}\frac{x^{2}-2x-3}{x^{2}-4x+3}" display="inline"><mrow><munder><mo mathsize="90%" movablelimits="false" stretchy="false">lim</mo><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">→</mo><mn mathsize="90%">3</mn></mrow></munder><mo>⁡</mo><mstyle displaystyle="true"><mfrac><mrow><msup><mi mathsize="90%">x</mi><mn mathsize="90%">2</mn></msup><mo mathsize="90%" stretchy="false">-</mo><mrow><mn mathsize="90%">2</mn><mo>⁢</mo><mi mathsize="90%">x</mi></mrow><mo mathsize="90%" stretchy="false">-</mo><mn mathsize="90%">3</mn></mrow><mrow><mrow><msup><mi mathsize="90%">x</mi><mn mathsize="90%">2</mn></msup><mo mathsize="90%" stretchy="false">-</mo><mrow><mn mathsize="90%">4</mn><mo>⁢</mo><mi mathsize="90%">x</mi></mrow></mrow><mo mathsize="90%" stretchy="false">+</mo><mn mathsize="90%">3</mn></mrow></mfrac></mstyle></mrow></math></p>
+</div>
+</li>
+<li id="Ch0.I4.i10" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate"><span class="ltx_text" style="font-size:90%;">10.</span></span> 
+<div id="Ch0.I4.i10.p1" class="ltx_para">
+<p class="ltx_p ltx_parbox ltx_align_top" style="width:433.6pt;"><math id="Ch0.I4.i10.p1.m1" class="ltx_Math" alttext="\displaystyle\lim_{x\to-1}\frac{x^{2}+8x+7}{x^{2}+6x+5}" display="inline"><mrow><munder><mo mathsize="90%" movablelimits="false" stretchy="false">lim</mo><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">→</mo><mrow><mo mathsize="90%" stretchy="false">-</mo><mn mathsize="90%">1</mn></mrow></mrow></munder><mo>⁡</mo><mstyle displaystyle="true"><mfrac><mrow><msup><mi mathsize="90%">x</mi><mn mathsize="90%">2</mn></msup><mo mathsize="90%" stretchy="false">+</mo><mrow><mn mathsize="90%">8</mn><mo>⁢</mo><mi mathsize="90%">x</mi></mrow><mo mathsize="90%" stretchy="false">+</mo><mn mathsize="90%">7</mn></mrow><mrow><msup><mi mathsize="90%">x</mi><mn mathsize="90%">2</mn></msup><mo mathsize="90%" stretchy="false">+</mo><mrow><mn mathsize="90%">6</mn><mo>⁢</mo><mi mathsize="90%">x</mi></mrow><mo mathsize="90%" stretchy="false">+</mo><mn mathsize="90%">5</mn></mrow></mfrac></mstyle></mrow></math></p>
+</div>
+</li>
+<li id="Ch0.I4.i11" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate"><span class="ltx_text" style="font-size:90%;">11.</span></span> 
+<div id="Ch0.I4.i11.p1" class="ltx_para">
+<p class="ltx_p ltx_parbox ltx_align_top" style="width:433.6pt;"><math id="Ch0.I4.i11.p1.m1" class="ltx_Math" alttext="\displaystyle\lim_{x\to 2}\frac{x^{2}+7x+10}{x^{2}-4x+4}" display="inline"><mrow><munder><mo mathsize="90%" movablelimits="false" stretchy="false">lim</mo><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">→</mo><mn mathsize="90%">2</mn></mrow></munder><mo>⁡</mo><mstyle displaystyle="true"><mfrac><mrow><msup><mi mathsize="90%">x</mi><mn mathsize="90%">2</mn></msup><mo mathsize="90%" stretchy="false">+</mo><mrow><mn mathsize="90%">7</mn><mo>⁢</mo><mi mathsize="90%">x</mi></mrow><mo mathsize="90%" stretchy="false">+</mo><mn mathsize="90%">10</mn></mrow><mrow><mrow><msup><mi mathsize="90%">x</mi><mn mathsize="90%">2</mn></msup><mo mathsize="90%" stretchy="false">-</mo><mrow><mn mathsize="90%">4</mn><mo>⁢</mo><mi mathsize="90%">x</mi></mrow></mrow><mo mathsize="90%" stretchy="false">+</mo><mn mathsize="90%">4</mn></mrow></mfrac></mstyle></mrow></math></p>
+</div>
+</li>
+<li id="Ch0.I4.i12" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate"><span class="ltx_text" style="font-size:90%;">12.</span></span> 
+<div id="Ch0.I4.i12.p1" class="ltx_para">
+<p class="ltx_p ltx_parbox ltx_align_top" style="width:433.6pt;"><math id="Ch0.I4.i12.p1.m1" class="ltx_Math" alttext="\displaystyle\lim_{x\to 2}f(x)" display="inline"><mrow><munder><mo mathsize="90%" movablelimits="false" stretchy="false">lim</mo><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">→</mo><mn mathsize="90%">2</mn></mrow></munder><mo>⁡</mo><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">, where</span></p>
+</div>
+<div id="Ch0.I4.i12.p2" class="ltx_para">
+<p class="ltx_p"><math id="Ch0.I4.i12.p2.m1" class="ltx_Math" alttext="f(x)=\left\{\begin{array}[]{cl}x+2&amp;x\leq 2\\
+3x-5&amp;x&gt;2\end{array}\right." display="inline"><mrow><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%" stretchy="false">=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" rowspacing="0pt"><mtr><mtd columnalign="center"><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">+</mo><mn mathsize="90%">2</mn></mrow></mtd><mtd columnalign="left"><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">≤</mo><mn mathsize="90%">2</mn></mrow></mtd></mtr><mtr><mtd columnalign="center"><mrow><mrow><mn mathsize="90%">3</mn><mo>⁢</mo><mi mathsize="90%">x</mi></mrow><mo mathsize="90%" stretchy="false">-</mo><mn mathsize="90%">5</mn></mrow></mtd><mtd columnalign="left"><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">&gt;</mo><mn mathsize="90%">2</mn></mrow></mtd></mtr></mtable><mi></mi></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">.</span></p>
+</div>
+</li>
+<li id="Ch0.I4.i13" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate"><span class="ltx_text" style="font-size:90%;">13.</span></span> 
+<div id="Ch0.I4.i13.p1" class="ltx_para">
+<p class="ltx_p ltx_parbox ltx_align_top" style="width:433.6pt;"><math id="Ch0.I4.i13.p1.m1" class="ltx_Math" alttext="\displaystyle\lim_{x\to 3}f(x)" display="inline"><mrow><munder><mo mathsize="90%" movablelimits="false" stretchy="false">lim</mo><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">→</mo><mn mathsize="90%">3</mn></mrow></munder><mo>⁡</mo><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">, where</span></p>
+</div>
+<div id="Ch0.I4.i13.p2" class="ltx_para">
+<p class="ltx_p"><math id="Ch0.I4.i13.p2.m1" class="ltx_Math" alttext="f(x)=\left\{\begin{array}[]{cl}x^{2}-x+1&amp;x\leq 3\\
+2x+1&amp;x&gt;3\end{array}\right." display="inline"><mrow><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%" stretchy="false">=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" rowspacing="0pt"><mtr><mtd columnalign="center"><mrow><mrow><msup><mi mathsize="90%">x</mi><mn mathsize="90%">2</mn></msup><mo mathsize="90%" stretchy="false">-</mo><mi mathsize="90%">x</mi></mrow><mo mathsize="90%" stretchy="false">+</mo><mn mathsize="90%">1</mn></mrow></mtd><mtd columnalign="left"><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">≤</mo><mn mathsize="90%">3</mn></mrow></mtd></mtr><mtr><mtd columnalign="center"><mrow><mrow><mn mathsize="90%">2</mn><mo>⁢</mo><mi mathsize="90%">x</mi></mrow><mo mathsize="90%" stretchy="false">+</mo><mn mathsize="90%">1</mn></mrow></mtd><mtd columnalign="left"><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">&gt;</mo><mn mathsize="90%">3</mn></mrow></mtd></mtr></mtable><mi></mi></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">.</span></p>
+</div>
+</li>
+<li id="Ch0.I4.i14" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate"><span class="ltx_text" style="font-size:90%;">14.</span></span> 
+<div id="Ch0.I4.i14.p1" class="ltx_para">
+<p class="ltx_p ltx_parbox ltx_align_top" style="width:433.6pt;"><math id="Ch0.I4.i14.p1.m1" class="ltx_Math" alttext="\displaystyle\lim_{x\to 0}f(x)" display="inline"><mrow><munder><mo mathsize="90%" movablelimits="false" stretchy="false">lim</mo><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">→</mo><mn mathsize="90%">0</mn></mrow></munder><mo>⁡</mo><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">, where</span></p>
+</div>
+<div id="Ch0.I4.i14.p2" class="ltx_para">
+<p class="ltx_p"><math id="Ch0.I4.i14.p2.m1" class="ltx_Math" alttext="f(x)=\left\{\begin{array}[]{cl}\cos x&amp;x\leq 0\\
+x^{2}+3x+1&amp;x&gt;0\end{array}\right." display="inline"><mrow><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%" stretchy="false">=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" rowspacing="0pt"><mtr><mtd columnalign="center"><mrow><mi mathsize="90%">cos</mi><mo>⁡</mo><mi mathsize="90%">x</mi></mrow></mtd><mtd columnalign="left"><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">≤</mo><mn mathsize="90%">0</mn></mrow></mtd></mtr><mtr><mtd columnalign="center"><mrow><msup><mi mathsize="90%">x</mi><mn mathsize="90%">2</mn></msup><mo mathsize="90%" stretchy="false">+</mo><mrow><mn mathsize="90%">3</mn><mo>⁢</mo><mi mathsize="90%">x</mi></mrow><mo mathsize="90%" stretchy="false">+</mo><mn mathsize="90%">1</mn></mrow></mtd><mtd columnalign="left"><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">&gt;</mo><mn mathsize="90%">0</mn></mrow></mtd></mtr></mtable><mi></mi></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">.</span></p>
+</div>
+</li>
+<li id="Ch0.I4.i15" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate"><span class="ltx_text" style="font-size:90%;">15.</span></span> 
+<div id="Ch0.I4.i15.p1" class="ltx_para">
+<p class="ltx_p ltx_parbox ltx_align_top" style="width:433.6pt;"><math id="Ch0.I4.i15.p1.m1" class="ltx_Math" alttext="\displaystyle\lim_{x\to\pi/2}f(x)" display="inline"><mrow><munder><mo mathsize="90%" movablelimits="false" stretchy="false">lim</mo><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">→</mo><mrow><mi mathsize="90%">π</mi><mo mathsize="90%" stretchy="false">/</mo><mn mathsize="90%">2</mn></mrow></mrow></munder><mo>⁡</mo><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">, where</span></p>
+</div>
+<div id="Ch0.I4.i15.p2" class="ltx_para">
+<p class="ltx_p"><math id="Ch0.I4.i15.p2.m1" class="ltx_Math" alttext="f(x)=\left\{\begin{array}[]{cl}\sin x&amp;x\leq\pi/2\\
+\cos x&amp;x&gt;\pi/2\end{array}\right." display="inline"><mrow><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%" stretchy="false">=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" rowspacing="0pt"><mtr><mtd columnalign="center"><mrow><mi mathsize="90%">sin</mi><mo>⁡</mo><mi mathsize="90%">x</mi></mrow></mtd><mtd columnalign="left"><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">≤</mo><mrow><mi mathsize="90%">π</mi><mo mathsize="90%" stretchy="false">/</mo><mn mathsize="90%">2</mn></mrow></mrow></mtd></mtr><mtr><mtd columnalign="center"><mrow><mi mathsize="90%">cos</mi><mo>⁡</mo><mi mathsize="90%">x</mi></mrow></mtd><mtd columnalign="left"><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">&gt;</mo><mrow><mi mathsize="90%">π</mi><mo mathsize="90%" stretchy="false">/</mo><mn mathsize="90%">2</mn></mrow></mrow></mtd></mtr></mtable><mi></mi></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">.</span></p>
+</div>
+</li>
+</ol>
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">In Exercises 16–</span><a href="#Ch0.I5.i24" title="24. ‣ Problems ‣ Exercises 0.1 ‣ 0.1 An Introduction To Limits" class="ltx_ref" style="font-size:90%;"><span class="ltx_text ltx_ref_tag">24</span></a><span class="ltx_text" style="font-size:90%;">, a function </span><math id="Ch0.S1.SSx3.SSSx2.p2.m1" class="ltx_Math" alttext="f" display="inline"><mi mathsize="90%">f</mi></math><span class="ltx_text" style="font-size:90%;"> and a value </span><math id="Ch0.S1.SSx3.SSSx2.p2.m2" class="ltx_Math" alttext="a" display="inline"><mi mathsize="90%">a</mi></math><span class="ltx_text" style="font-size:90%;"> are given. Approximate the limit of the difference quotient, </span><math id="Ch0.S1.SSx3.SSSx2.p2.m3" class="ltx_Math" alttext="\displaystyle\lim_{h\to 0}\frac{f(a+h)-f(a)}{h}" display="inline"><mrow><munder><mo mathsize="90%" movablelimits="false" stretchy="false">lim</mo><mrow><mi mathsize="90%">h</mi><mo mathsize="90%" stretchy="false">→</mo><mn mathsize="90%">0</mn></mrow></munder><mo>⁡</mo><mstyle displaystyle="true"><mfrac><mrow><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mrow><mi mathsize="90%">a</mi><mo mathsize="90%" stretchy="false">+</mo><mi mathsize="90%">h</mi></mrow><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%" stretchy="false">-</mo><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">a</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></mrow><mi mathsize="90%">h</mi></mfrac></mstyle></mrow></math><span class="ltx_text" style="font-size:90%;">, using </span><math id="Ch0.S1.SSx3.SSSx2.p2.m4" class="ltx_Math" alttext="h=\pm 0.1,\pm 0.01" display="inline"><mrow><mi mathsize="90%">h</mi><mo mathsize="90%" stretchy="false">=</mo><mrow><mrow><mo mathsize="90%" stretchy="false">±</mo><mn mathsize="90%">0.1</mn></mrow><mo mathsize="90%" stretchy="false">,</mo><mrow><mo mathsize="90%" stretchy="false">±</mo><mn mathsize="90%">0.01</mn></mrow></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">.</span></p>
+</div>
+<div id="Ch0.S1.SSx3.SSSx2.p3" class="ltx_para">
+<ol id="Ch0.I5" class="ltx_enumerate">
+<li id="Ch0.I5.i16" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate"><span class="ltx_text" style="font-size:90%;">16.</span></span> 
+<div id="Ch0.I5.i16.p1" class="ltx_para">
+<p class="ltx_p ltx_parbox ltx_align_top" style="width:433.6pt;"><math id="Ch0.I5.i16.p1.m1" class="ltx_Math" alttext="f(x)=-7x+2" display="inline"><mrow><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%" stretchy="false">=</mo><mrow><mrow><mo mathsize="90%" stretchy="false">-</mo><mrow><mn mathsize="90%">7</mn><mo>⁢</mo><mi mathsize="90%">x</mi></mrow></mrow><mo mathsize="90%" stretchy="false">+</mo><mn mathsize="90%">2</mn></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">, </span><math id="Ch0.I5.i16.p1.m2" class="ltx_Math" alttext="a=3" display="inline"><mrow><mi mathsize="90%">a</mi><mo mathsize="90%" stretchy="false">=</mo><mn mathsize="90%">3</mn></mrow></math></p>
+</div>
+</li>
+<li id="Ch0.I5.i17" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate"><span class="ltx_text" style="font-size:90%;">17.</span></span> 
+<div id="Ch0.I5.i17.p1" class="ltx_para">
+<p class="ltx_p ltx_parbox ltx_align_top" style="width:433.6pt;"><math id="Ch0.I5.i17.p1.m1" class="ltx_Math" alttext="f(x)=9x+0.06" display="inline"><mrow><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%" stretchy="false">=</mo><mrow><mrow><mn mathsize="90%">9</mn><mo>⁢</mo><mi mathsize="90%">x</mi></mrow><mo mathsize="90%" stretchy="false">+</mo><mn mathsize="90%">0.06</mn></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">, </span><math id="Ch0.I5.i17.p1.m2" class="ltx_Math" alttext="a=-1" display="inline"><mrow><mi mathsize="90%">a</mi><mo mathsize="90%" stretchy="false">=</mo><mrow><mo mathsize="90%" stretchy="false">-</mo><mn mathsize="90%">1</mn></mrow></mrow></math></p>
+</div>
+</li>
+<li id="Ch0.I5.i18" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate"><span class="ltx_text" style="font-size:90%;">18.</span></span> 
+<div id="Ch0.I5.i18.p1" class="ltx_para">
+<p class="ltx_p ltx_parbox ltx_align_top" style="width:433.6pt;"><math id="Ch0.I5.i18.p1.m1" class="ltx_Math" alttext="f(x)=x^{2}+3x-7" display="inline"><mrow><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%" stretchy="false">=</mo><mrow><mrow><msup><mi mathsize="90%">x</mi><mn mathsize="90%">2</mn></msup><mo mathsize="90%" stretchy="false">+</mo><mrow><mn mathsize="90%">3</mn><mo>⁢</mo><mi mathsize="90%">x</mi></mrow></mrow><mo mathsize="90%" stretchy="false">-</mo><mn mathsize="90%">7</mn></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">, </span><math id="Ch0.I5.i18.p1.m2" class="ltx_Math" alttext="a=1" display="inline"><mrow><mi mathsize="90%">a</mi><mo mathsize="90%" stretchy="false">=</mo><mn mathsize="90%">1</mn></mrow></math></p>
+</div>
+</li>
+<li id="Ch0.I5.i19" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate"><span class="ltx_text" style="font-size:90%;">19.</span></span> 
+<div id="Ch0.I5.i19.p1" class="ltx_para">
+<p class="ltx_p ltx_parbox ltx_align_top" style="width:433.6pt;"><math id="Ch0.I5.i19.p1.m1" class="ltx_Math" alttext="\displaystyle f(x)=\frac{1}{x+1}" display="inline"><mrow><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%" stretchy="false">=</mo><mstyle displaystyle="true"><mfrac><mn mathsize="90%">1</mn><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">+</mo><mn mathsize="90%">1</mn></mrow></mfrac></mstyle></mrow></math><span class="ltx_text" style="font-size:90%;">, </span><math id="Ch0.I5.i19.p1.m2" class="ltx_Math" alttext="a=2" display="inline"><mrow><mi mathsize="90%">a</mi><mo mathsize="90%" stretchy="false">=</mo><mn mathsize="90%">2</mn></mrow></math></p>
+</div>
+</li>
+<li id="Ch0.I5.i20" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate"><span class="ltx_text" style="font-size:90%;">20.</span></span> 
+<div id="Ch0.I5.i20.p1" class="ltx_para">
+<p class="ltx_p ltx_parbox ltx_align_top" style="width:433.6pt;"><math id="Ch0.I5.i20.p1.m1" class="ltx_Math" alttext="\displaystyle f(x)=-4x^{2}+5x-1" display="inline"><mrow><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%" stretchy="false">=</mo><mrow><mrow><mrow><mo mathsize="90%" stretchy="false">-</mo><mrow><mn mathsize="90%">4</mn><mo>⁢</mo><msup><mi mathsize="90%">x</mi><mn mathsize="90%">2</mn></msup></mrow></mrow><mo mathsize="90%" stretchy="false">+</mo><mrow><mn mathsize="90%">5</mn><mo>⁢</mo><mi mathsize="90%">x</mi></mrow></mrow><mo mathsize="90%" stretchy="false">-</mo><mn mathsize="90%">1</mn></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">, </span><math id="Ch0.I5.i20.p1.m2" class="ltx_Math" alttext="a=-3" display="inline"><mrow><mi mathsize="90%">a</mi><mo mathsize="90%" stretchy="false">=</mo><mrow><mo mathsize="90%" stretchy="false">-</mo><mn mathsize="90%">3</mn></mrow></mrow></math></p>
+</div>
+</li>
+<li id="Ch0.I5.i21" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate"><span class="ltx_text" style="font-size:90%;">21.</span></span> 
+<div id="Ch0.I5.i21.p1" class="ltx_para">
+<p class="ltx_p ltx_parbox ltx_align_top" style="width:433.6pt;"><math id="Ch0.I5.i21.p1.m1" class="ltx_Math" alttext="\displaystyle f(x)=\ln x" display="inline"><mrow><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%" stretchy="false">=</mo><mrow><mi mathsize="90%">ln</mi><mo>⁡</mo><mi mathsize="90%">x</mi></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">, </span><math id="Ch0.I5.i21.p1.m2" class="ltx_Math" alttext="a=5" display="inline"><mrow><mi mathsize="90%">a</mi><mo mathsize="90%" stretchy="false">=</mo><mn mathsize="90%">5</mn></mrow></math></p>
+</div>
+</li>
+<li id="Ch0.I5.i22" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate"><span class="ltx_text" style="font-size:90%;">22.</span></span> 
+<div id="Ch0.I5.i22.p1" class="ltx_para">
+<p class="ltx_p ltx_parbox ltx_align_top" style="width:433.6pt;"><math id="Ch0.I5.i22.p1.m1" class="ltx_Math" alttext="\displaystyle f(x)=\sin x" display="inline"><mrow><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%" stretchy="false">=</mo><mrow><mi mathsize="90%">sin</mi><mo>⁡</mo><mi mathsize="90%">x</mi></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">, </span><math id="Ch0.I5.i22.p1.m2" class="ltx_Math" alttext="a=\pi" display="inline"><mrow><mi mathsize="90%">a</mi><mo mathsize="90%" stretchy="false">=</mo><mi mathsize="90%">π</mi></mrow></math></p>
+</div>
+</li>
+<li id="Ch0.I5.i23" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate"><span class="ltx_text" style="font-size:90%;">23.</span></span> 
+<div id="Ch0.I5.i23.p1" class="ltx_para">
+<p class="ltx_p ltx_parbox ltx_align_top" style="width:433.6pt;"><math id="Ch0.I5.i23.p1.m1" class="ltx_Math" alttext="\displaystyle f(x)=\cos x" display="inline"><mrow><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%" stretchy="false">=</mo><mrow><mi mathsize="90%">cos</mi><mo>⁡</mo><mi mathsize="90%">x</mi></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">, </span><math id="Ch0.I5.i23.p1.m2" class="ltx_Math" alttext="a=\pi" display="inline"><mrow><mi mathsize="90%">a</mi><mo mathsize="90%" stretchy="false">=</mo><mi mathsize="90%">π</mi></mrow></math></p>
+</div>
+</li>
+<li id="Ch0.I5.i24" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate"><span class="ltx_text" style="font-size:90%;">24.</span></span> 
+<div id="Ch0.I5.i24.p1" class="ltx_para">
+<p class="ltx_p ltx_parbox ltx_align_top" style="width:433.6pt;"><math id="Ch0.I5.i24.p1.m1" class="ltx_Math" alttext="\displaystyle f(x)=\sqrt{x+4}" display="inline"><mrow><mrow><mi mathsize="90%">f</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%" stretchy="false">=</mo><msqrt><mrow><mi mathsize="90%">x</mi><mo mathsize="90%" stretchy="false">+</mo><mn mathsize="90%">4</mn></mrow></msqrt></mrow></math><span class="ltx_text" style="font-size:90%;">, </span><math id="Ch0.I5.i24.p1.m2" class="ltx_Math" alttext="a=0" display="inline"><mrow><mi mathsize="90%">a</mi><mo mathsize="90%" stretchy="false">=</mo><mn mathsize="90%">0</mn></mrow></math></p>
+</div>
+</li>
+</ol>
+</div>
+</section>
+</section>
+</section>
+</article>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_page_logo">Generated  on Sat Dec 31 09:21:56 2016 by <a href="http://dlmf.nist.gov/LaTeXML/">LaTeXML <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="[LOGO]"></a>
+</div></footer>
+</div>
+</body>
+</html>

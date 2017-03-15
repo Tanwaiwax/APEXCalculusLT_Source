@@ -2,7 +2,7 @@
 
 In normal conversation we describe position in terms of both \emph{time} and \emph{distance}. For instance, imagine driving to visit a friend. If she calls and asks where you are, you might answer ``I am 20 minutes from your house,'' or you might say ``I am 10 miles from your house.'' Both answers provide your friend with a general idea of where you are.
 
-Currently, our vector--valued functions have defined points with a parameter $t$, which we often take to represent time. Consider \autoref{fig:vvfarc_intro1}(a), where $\vrt = \la t^2-t,t^2+t\ra$ is graphed and the points corresponding to $t=0,\ 1$ and $2$ are shown. Note how the arc length between $t=0$ and $t=1$ is smaller than the arc length between $t=1$ and $t=2$; if the parameter $t$ is time and $\vec r$ is position, we can say that the particle traveled faster on $[1,2]$ than on $[0,1]$. 
+Currently, our vector--valued functions have defined points with a parameter $t$, which we often take to represent time. Consider \autoref{fig:vvfarc_intro1}(a), where $\vrt =\bracket{t^2-t,t^2+t}$ is graphed and the points corresponding to $t=0,\ 1$ and $2$ are shown. Note how the arc length between $t=0$ and $t=1$ is smaller than the arc length between $t=1$ and $t=2$; if the parameter $t$ is time and $\vec r$ is position, we can say that the particle traveled faster on $[1,2]$ than on $[0,1]$. 
 \mtable{Introducing the arc length parameter.}{fig:vvfarc_intro1}{%
 \begin{tabular}{c}
 \myincludegraphics{figures/figvvfarc_intro1}\\
@@ -22,7 +22,9 @@ s(t) = \int_0^t \norm{\vec r\,'(u)}\ du.\label{eq:vvfarc}
 
 This establishes a relationship between $s$ and $t$. Knowing this relationship explicitly, we can rewrite $\vec r(t)$ as a function of $s$: $\vec r(s)$. We demonstrate this in an example.
 
-\example{ex_vvfarc1}{Finding the arc length parameter}{Let $\vec r(t) = \la 3t-1,4t+2\ra$. Parametrize $\vec r$ with the arc length parameter $s$.}
+\youtubeVideo{G0R-qialKlE}{Parametrize a Curve with Respect to Arc Length}
+
+\example{ex_vvfarc1}{Finding the arc length parameter}{Let $\vec r(t) =\bracket{3t-1,4t+2}$. Parametrize $\vec r$ with the arc length parameter $s$.}
 {Using \autoeqref{eq:vvfarc}, we write
 $$s(t) = \int_0^t \norm{\vec r\,'(u)}\ du.$$
 We can integrate this, explicitly finding a relationship between $s$ and $t$:
@@ -33,8 +35,8 @@ s(t) &= \int_0^t \norm{\vec r\,'(u)}\ du \\
 			&= 5t.
 \end{align*}
 Since $s=5t$, we can write $t=s/5$ and replace $t$ in $\vec r(t)$ with $s/5$:
-$$\vec r(s) = \la 3(s/5)-1, 4(s/5)+2\ra = \la \frac35s-1,\frac45s+2\ra.$$
-Clearly, as shown in \autoref{fig:vvfarc1}, the graph of $\vec r$ is a line, where $t=0$ corresponds to the point $(-1,2)$. What point on the line is 2 units away from this initial point? We find it with $s(2) = \la 1/5, 18/5\ra$. 
+$$\vec r(s) =\bracket{3(s/5)-1, 4(s/5)+2}=\bracket{\frac35s-1,\frac45s+2}.$$
+Clearly, as shown in \autoref{fig:vvfarc1}, the graph of $\vec r$ is a line, where $t=0$ corresponds to the point $(-1,2)$. What point on the line is 2 units away from this initial point? We find it with $s(2) =\bracket{1/5, 18/5}$. 
 \mfigure{0in}{Graphing $\vec r$ in \autoref{ex_vvfarc1} with parameters $t$ and $s$.}{fig:vvfarc1}{figures/figvvfarc1}
 
 Is the point $(1/5,18/5)$ really 2 units away from $(-1,2)$? We use the Distance Formula to check:
@@ -93,13 +95,13 @@ We already knew that $\vec T\,'(s)$ is in the same direction as $\vec N(s)$; tha
 We use  \autoref{def:curvature}  to find the curvature of the line in \autoref{ex_vvfarc1}.
 
 \example{ex_curvature1}{Finding the curvature of a line}
-{Use \autoref{def:curvature} to find the curvature of $\vrt = \la 3t-1,4t+2\ra$.}
-{In \autoref{ex_vvfarc1}, we found that the arc length parameter was defined by $s=5t$, so $\vec r(s) =\la 3t/5-1, 4t/5+2\ra$ parametrized $\vec r$ with the arc length parameter. To find $\kappa$, we need to find $\vec T\,'(s)$. 
+{Use \autoref{def:curvature} to find the curvature of $\vrt =\bracket{3t-1,4t+2}$.}
+{In \autoref{ex_vvfarc1}, we found that the arc length parameter was defined by $s=5t$, so $\vec r(s) =\bracket{3t/5-1, 4t/5+2}$ parametrized $\vec r$ with the arc length parameter. To find $\kappa$, we need to find $\vec T\,'(s)$. 
 \begin{align*}
 \vec T(s) &= \vrp(s)\quad \text{(recall this is a unit vector)}\\
-				&= \la 3/5, 4/5\ra.
+				&=\bracket{3/5, 4/5}.
 \intertext{Therefore}
-\vec T\,'(s) &= \la 0,0\ra
+\vec T\,'(s) &=\bracket{0,0}
 \intertext{and}
 \kappa&=\norm{\vec T\,'(s)} = 0.
 \end{align*}
@@ -114,7 +116,7 @@ While the definition of curvature is a beautiful mathematical concept, it is nea
 \begin{enumerate}
 	\item If $C$ is defined by $y=f(x)$, then 
 	$$\kappa = \frac{|\fp'(x)|}{\Big(1+\big(\fp(x)\big)^2\Big)^{3/2}}.$$
-	\item	If $C$ is defined as a vector--valued function in the plane, $\vec r(t) = \la x(t), y(t)\ra$, then
+	\item	If $C$ is defined as a vector--valued function in the plane, $\vec r(t) =\bracket{x(t), y(t)}$, then
 	$$\kappa = \frac{|x\primeskip'y\primeskip''-x\primeskip''y\primeskip'|}{\big((x\primeskip')^2+(y\primeskip')^2\big)^{3/2}}.$$
 	\item If $C$ is defined in space by a vector--valued function $\vec r(t)$, then
 $$\kappa = \frac{\norm{\vec T\,'(t)}}{\norm{\vrp(t)}} = \frac{\norm{\vrp(t)\times\vrp'(t)}}{\norm{\vrp(t)}^3} = \frac{\vec a(t)\cdot \vec N(t)}{\norm{\vec v(t)}^2}.$$
@@ -122,7 +124,7 @@ $$\kappa = \frac{\norm{\vec T\,'(t)}}{\norm{\vrp(t)}} = \frac{\norm{\vrp(t)\time
 
 We practice using these formulas.
 
-\example{ex_curvature2}{Finding the curvature of a circle}{Find the curvature of a circle with radius $r$, defined by $\vec c(t) = \la r\cos t,r\sin t\ra$.
+\example{ex_curvature2}{Finding the curvature of a circle}{Find the curvature of a circle with radius $r$, defined by $\vec c(t) =\bracket{r\cos t,r\sin t}$.
 \index{curvature!of circle}}
 {Before we start, we should expect the curvature of a circle to be constant, and not dependent on $t$. (Why?)
 
@@ -159,9 +161,9 @@ is the \textbf{osculating circle}, or \textbf{circle of curvature}, to $C$ at $P
 \mfigure{0in}{Examining the curvature of $y=x^2$.}{fig:curvature3}{figures/figcurvature3}
 At the vertex ($x=0$), the curvature is $\kappa = 2$. At $x=1$, the curvature is $\kappa = 2/(5)^{3/2} \approx 0.179.$ So at $x=0$, the curvature of $y=x^2$ is that of a circle of radius $1/2$; at $x=1$, the curvature is that of a circle with radius $\approx 1/0.179 \approx 5.59$. This is illustrated in \autoref{fig:curvature3}. At $x=3$, the curvature is $0.009$; the graph is nearly straight as the curvature is very close to 0.}
 
-\example{ex_curvature4}{Finding curvature}{Find where the curvature of $\vec r(t) = \la t, t^2, 2t^3\ra $ is maximized.}
+\example{ex_curvature4}{Finding curvature}{Find where the curvature of $\vec r(t) =\bracket{t, t^2, 2t^3}$ is maximized.}
 {We use the third formula in \autoref{thm:curvature_formulas} as $\vrt$ is defined in space. We leave it to the reader to verify that 
-$$\vrp(t) =\la 1,2t,6t^2\ra,\quad \vrp'(t) = \la 0,2,12t\ra,\quad \text{and}\quad \vrp(t)\times \vrp'(t) = \la 12t^2,-12t,2\ra.$$
+$$\vrp(t) =\bracket{1,2t,6t^2},\quad \vrp'(t) =\bracket{0,2,12t},\quad \text{and}\quad \vrp(t)\times \vrp'(t) =\bracket{12t^2,-12t,2}.$$
 \mtable{Understanding the curvature of a curve in space.}{fig:curvature4}{%
 \begin{tabular}{c}
 \myincludegraphics{figures/figcurvature4a}\\
@@ -180,7 +182,7 @@ $$\vrp(t) =\la 1,2t,6t^2\ra,\quad \vrp'(t) = \la 0,2,12t\ra,\quad \text{and}\qua
 Thus 
 \begin{align*}
 \kappa(t) &= \frac{\norm{\vrp(t)\times\vrp'(t)}}{\norm{\vrp(t)}^3} \\
-				&= \rule{0pt}{20pt}\frac{\norm{\la 12t^2,-12t,2\ra}}{\norm{\la 1,2t,6t^2\ra}^3} \\
+				&= \rule{0pt}{20pt}\frac{\norm{\bracket{12t^2,-12t,2}}}{\norm{\bracket{1,2t,6t^2}}^3} \\
 				&= \rule{0pt}{20pt}\frac{\sqrt{\rule{0pt}{8.5pt}144t^4+144t^2+4}}{\left(\sqrt{\rule{0pt}{8.5pt}1+4t^2+36t^4\ }\right)^3}
 \end{align*}
 While this is not a particularly ``nice'' formula, it does explictly tell us what the curvature is at a given $t$ value. To maximize $\kappa(t)$, we should solve $\kappa'(t)=0$ for $t$. This is doable, but \emph{very} time consuming. Instead, consider the graph of $\kappa(t)$ as given in \autoref{fig:curvature4}(a). We see that $\kappa$ is maximized at two $t$ values; using a numerical solver, we find these values are $t\approx\pm 0.189$. In part (b) of the figure we graph $\vrt$ and indicate the points where curvature is maximized.}

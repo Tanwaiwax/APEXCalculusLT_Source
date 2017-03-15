@@ -80,15 +80,13 @@ sub boxStyles {
 }
 
 DefMacro('\examplestarred {}{}{}','\begin{exampleEnv}[#2]\label{#1}
-\lxAddClass{inExample}
 #3
 \end{exampleEnv}');
-
 
 DefMacro('\apexchapter []{}{}',
 	 '\setboolean{chapter_already_has_exercises}{false}'
 	 .'\chapter{#2}\label{#3}'
-	 .'\if.#1.\else\input{#1}\fi'
+	 .'\if.#1.\else\addtocounter{section}{-1}\input{#1}\fi'
 	 .'\section*{Chapter Introduction}');
 
 
@@ -98,10 +96,10 @@ DefMacro('\myincludeasythree{}{} Semiverbatim','\myincludegraphics[#2]{#3}');
 
 DefMacro('\vv {}','\vec #1');
 
-DefMacro('\flushinner{}','#1');
-DefMacro('\flushouter{}','#1');
-DefMacro('\flushinnerequ{}','#1');
-DefMacro('\flushouterequ{}','#1');
+DefMacro('\flushinner{}','{#1}');
+DefMacro('\flushouter{}','{#1}');
+DefMacro('\flushinnerequ{}','{#1}');
+DefMacro('\flushouterequ{}','{#1}');
 
 # it'd be nice to have this.  instead, we have to enclose all fake figures in
 # an lxfigure environment
@@ -135,6 +133,16 @@ DefMacro('\x');
 DefMacro('\y');
 
 
+# \mnote[offset=0]{contents}
+DefMacro('\mnote []{}','\begin{figure}[h]'
+	 .'\marginpar{'
+	 .'\begin{minipage}[c]{\marginparwidth}'
+	 .'\captionsetup{type=figure}#2'
+	 .'\end{minipage}'
+	 .'}'
+	 .'\end{figure}');
+
+
 sub TheChapter {
     return CounterValue('chapter')->toString;
 }
@@ -152,9 +160,15 @@ DefMacro('\writeToAnsFile {}', sub {
     push(@ret,
 	 Tokenize('\immediate\write\answrite{\subsection*{\hyperref[exer'
 		  .TheSection().']{Exercises '.TheSection().'}}\label{sol'
-		  .TheSection().'}\bigskip}\write\answrite{\lxAddClass{solutions}\loadAnswers{'),
-	 $_[1],
-	 Tokenize('}}'));
+		  .TheSection().'}\bigskip}'));
+    if ( CounterValue('section')->toString eq '0' ) {
+	push(@ret,Tokenize('\write\answrite{\lxAddClass{solutions}\loadAllAnswers{'),
+	     $_[1],
+	     Tokenize('}}')); }
+    else {
+	push(@ret,Tokenize('\write\answrite{\lxAddClass{solutions}\loadAnswers{'),
+	     $_[1],
+	     Tokenize('}}')); }
     @ret;
 	 });
 

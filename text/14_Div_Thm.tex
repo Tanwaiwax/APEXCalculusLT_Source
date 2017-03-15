@@ -2,7 +2,7 @@
 
 In \autoref{sec:line_int} we learned how to integrate along a curve. We will now learn how to perform integration over a \emph{surface} in $\mathbb{R}^{3}$, such as a sphere or a paraboloid.\index{integral!surface}\index{surface integral} Recall from \autoref{sec:vvf} how we identified points $(x,y,z)$ on a curve $C$ in $\mathbb{R}^{3}$, parametrized by $x=x(t)$, $y=y(t)$, $z=z(t)$, $a \le t \le b$, with the terminal points of the position vector
 \[
- \vecr(t) = x(t) \veci + y(t) \vecj + z(t) \veck \text{ for $t$ in $[a,b]$.}
+ \vecr(t) = x(t) \veci + y(t) \vecj + z(t) \veck \qquad\text{for $t$ in $[a,b]$.}
 \]
 
 The idea behind a parametrization of a curve is that it ``transforms'' a subset of $\mathbb{R}^{1}$ (normally an interval $[a,b]$) into a curve in $\mathbb{R}^{2}$ or $\mathbb{R}^{3}$ (see \autoref{fig:curveparam}).
@@ -10,38 +10,40 @@ The idea behind a parametrization of a curve is that it ``transforms'' a subset 
 \begin{lxfigure}
  \flushinner{%
   \begin{tikzpicture}
-   \usetikzlibrary{arrows}
-   \draw [black!60,line width=0.3pt,-latex,anchor=base] (-2,0) -- (3,0,0)
-    node[black,shift={(0,-0.4)}] at (-1.5,0) {\small $a$}
-    node[black,shift={(0,-0.4)}] at (0,0) {\small $t$}
-    node[black,shift={(0,-0.4)}] at (2,0) {\small $b$};
-   \pgfputat{\pgfpointxyz{2.9}{0.25}{0}}{\pgfbox[center,center]{\small $\mathbb{R}^{1}$}};
-   \draw [line width=1.2pt] (-1.5,0) -- (2,0);
-   \fill (-1.5,0) circle (2pt);
-   \fill (0,0) circle (2pt);
-   \fill (2,0) circle (2pt);
-   \draw [black!60,line width=0.3pt,-latex] (6,0) -- (12,0,0);
-   \draw [black!60,line width=0.3pt,-latex] (6,0) -- (6,2.8,0);
-   \draw [black!60,line width=0.3pt,-latex] (6,0) -- (6,0,2);
-   \pgfputat{\pgfpointxyz{11.9}{0.2}{0}}{\pgfbox[center,center]{\small $y$}};
-   \pgfputat{\pgfpointxyz{6.2}{2.7}{0}}{\pgfbox[center,center]{\small $z$}};
-   \pgfputat{\pgfpointxyz{6.2}{0}{1.8}}{\pgfbox[center,center]{\small $x$}};
-   \pgfputat{\pgfpointxyz{6.05}{-0.2}{0}}{\pgfbox[center,center]{\small $0$}};
-   \draw [rounded corners,line width=1pt](6.75,2.1) .. controls (8.95,3) and (9.55,1.2) .. (10,0.75) ..
-    controls (10.3,0.45) and (10.9,0.3) .. (11.35,0.6);
-   \draw [black,line width=1.2pt,-latex] (6,0) -- (8.9,2.05);
-   \node [below] at (7.1,2.1) {\small $(x(a),y(a),z(a))$};
-   \node [above right] at (8.9,2.05) {\small $(x(t),y(t),z(t))$};
-   \node [above] at (11.35,0.6) {\small $(x(b),y(b),z(b))$};
-   \node [below right] at (7.5,1.2) {\small $\vecr(t)$};
+%   \usetikzlibrary{arrows}
+   \draw [->] (-2,0)--node[above,pos=1]{\small$\mathbb{R}^1$} (3,0);
+   \draw [draw={\colorone},thick] (-1.5,0) --
+    node[pos=0,below]{\small $a$}
+    node[pos=.4,below]{\small $t$}
+    node[pos=1,below]{\small $b$}
+    (2.5,0);
+   \fill[draw={\colorone},fill={\colorone}] (-1.5,0) circle (2pt);
+   \fill[draw={\colorone},fill={\colorone}] (.1,0) circle (2pt);
+   \fill[draw={\colorone},fill={\colorone}] (2.5,0) circle (2pt);
+   % arc to range
+   \draw [line width=1.5pt,->]  (3.5,1.7) to[out=30,in=150] (5.5,1.7);
+   \node at (4.5,1.6) {\small $x=x(t)$};
+   \node at (4.5,1.2) {\small $y=y(t)$};
+   \node at (4.5,0.8) {\small $z=z(t)$};
+   % range
+   \draw [black,->] (6,0)--node[above,pos=1]{\small$y$} (12,0);
+   \draw [black,->] (6,0)--node[right,pos=1]{\small$z$} (6,2.8);
+   \draw [black,->] (6,0)--node[right,pos=1]{\small$x$} (6,0,2);
+   \node[below right]at(6,0){\small$0$};
+   \draw [draw={\colorone},rounded corners,thick](6.75,2.1)
+    node[above]{\small $(x(a),y(a),z(a))$}
+    .. controls (8.95,3) and (9.55,1.2)
+%    node[pos=.8,below left]{\small $C$}
+    .. (10,0.75)
+    .. controls (10.3,0.45) and (10.9,0.3)
+    .. (11.35,0.6)node[above]{\small $(x(b),y(b),z(b))$};
+   \draw [->,thick] (6,0)
+    --node[pos=.5,below right]{\small $\vecr(t)$}
+    node[above right,pos=1]{\small $(x(t),y(t),z(t))$} (8.85,2);
    \node [left] at (9.4,1.4) {\small $C$};
-   \fill (6.75,2.1) circle (2pt);
-   \fill (8.9,2.05) circle (2pt);
-   \fill (11.35,0.6) circle (2pt);
-   \draw [line width=1.5pt,-latex]  (3.5,1.7) to[out=30,in=150] (5.5,1.7);
-   \node [below] at (4.5,1.7) {\small $x=x(t)$};
-   \node [below] at (4.5,1.3) {\small $y=y(t)$};
-   \node [below] at (4.5,0.9) {\small $z=z(t)$};
+   \fill[draw={\colorone},fill={\colorone}] (6.75,2.1) circle (2pt);
+   \fill[draw={\colorone},fill={\colorone}] (8.9,2.05) circle (2pt);
+   \fill[draw={\colorone},fill={\colorone}] (11.35,0.6) circle (2pt);
   \end{tikzpicture}}
  \caption{Parametrization of a curve $C$ in $\mathbb{R}^{3}$}
  \label{fig:curveparam}
@@ -52,41 +54,34 @@ Similar to how we used a parametrization of a curve to define the line integral 
 \begin{lxfigure}
  \begin{center}
   \begin{tikzpicture}
-   \usetikzlibrary{arrows}
-   \draw [black!60,line width=0.3pt,-latex] (0,0) -- (4.5,0);
-   \draw [black!60,line width=0.3pt,-latex] (0,0) -- (0,4.5);
-   \pgfputat{\pgfpointxyz{4.4}{0.2}{0}}{\pgfbox[center,center]{\small $u$}}
-   \pgfputat{\pgfpointxyz{0.2}{4.4}{0}}{\pgfbox[center,center]{\small $v$}}
-   \filldraw [black,line width=1.2pt,fill=black!10] (1,1) -- (1,4) -- (4,4) -- (4,1) -- (1,1);
-   \draw (1,2) -- (4,2);
-   \draw (1,3) -- (4,3);
-   \draw (2,1) -- (2,4);
-   \draw (3,1) -- (3,4);
+%   \usetikzlibrary{arrows}
+   \draw [black,->] (0,0)--node[pos=1,above]{\small$u$} (4.5,0);
+   \draw [black,->] (0,0)--node[pos=1,right]{\small$v$} (0,4.5);
+   \node[below]at(0,0){\small$0$};
+   \draw[draw={\colorone},fill={\coloronefill}](1,1) grid (4,4)rectangle(1,1);
    \node at (2.5,2.5) {\small $R$};
    \node at (2.2,4.5) {\small $\mathbb{R}^{2}$};
    \node [below] at (2,2) {\small $(u,v)$};
-   \fill (2,2) circle (2pt);
-   \shadedraw [line width=1.2pt,opacity=0.1,ball color=red!40] (7.5,2.55) to[out=-20,in=110] (9.7,1.55) -- (10.7,2.55)
-    to[out=110,in=-20] (8.5,3.55) -- (7.5,2.55);
+   \fill[draw={\colorone},fill={\colorone}] (2,2) circle (2pt);
+   % arrow between
+   \draw [line width=1.5pt,->]  (4.5,2.7) to[out=30,in=150] (6.5,2.7);
+   \node at (5.5,2.6) {\small $x=x(u,v)$};
+   \node at (5.5,2.2) {\small $y=y(u,v)$};
+   \node at (5.5,1.8) {\small $z=z(u,v)$};
+   % after
+   \draw [->] (8,1)--node[pos=1,above]{\small$y$} (11.2,1);
+   \draw [->] (8,1)--node[pos=1,right]{\small$z$} (8,4);
+   \draw [->] (8,1)--node[pos=1,right]{\small$x$} (8,1,2.5);
+   \node[below]at(8,1){\small$0$};
+   \shadedraw [ball color={\coloronefill!60!\colorone}] (7.5,2.55) to[out=-20,in=110] (9.7,1.55) -- (10.7,2.55)
+    to[out=110,in=-20] (8.5,3.55) -- cycle;
    \draw (7.8,2.85) to[out=-20,in=110] (10,1.85);
    \draw (8.2,3.25) to[out=-20,in=110] (10.4,2.25);
    \draw (9.3,3.35) -- (8.3,2.35);
    \draw (10,3.2) -- (9,2.2);
-   \draw [black!60,line width=0.3pt,-latex] (8,1) -- (11.2,1,0);
-   \draw [black!60,line width=0.3pt,-latex] (8,1) -- (8,4,0);
-   \draw [black!60,line width=0.3pt,-latex] (8,1) -- (8,1,2.5);
-   \pgfputat{\pgfpointxyz{11.1}{1.2}{0}}{\pgfbox[center,center]{\small $y$}};
-   \pgfputat{\pgfpointxyz{8.2}{3.9}{0}}{\pgfbox[center,center]{\small $z$}};
-   \pgfputat{\pgfpointxyz{8.2}{1}{2.3}}{\pgfbox[center,center]{\small $x$}};
-   \pgfputat{\pgfpointxyz{8.05}{0.8}{0}}{\pgfbox[center,center]{\small $0$}};
    \node [below] at (10.3,3.6) {\small $\Sigma$};
    \fill (9,3.05) circle (2pt);
-   \draw [black,line width=1.2pt,-latex] (8,1) -- (8.975,3);
-   \node [below right] at (8.43,1.95) {\small $\vecr(u,v)$};
-   \draw [line width=1.5pt,-latex]  (4.5,2.7) to[out=30,in=150] (6.5,2.7);
-   \node [below] at (5.5,2.7) {\small $x=x(u,v)$};
-   \node [below] at (5.5,2.3) {\small $y=y(u,v)$};
-   \node [below] at (5.5,1.9) {\small $z=z(u,v)$};
+   \draw [very thick,->] (8,1) --node[below right,pos=.5]{\small $\vecr(u,v)$} (8.975,3);
   \end{tikzpicture}
  \caption{Parametrization of a surface $\Sigma$ in $\mathbb{R}^{3}$}
  \label{fig:surfparam}
@@ -147,7 +142,9 @@ This is a special case of a \emph{surface integral} over the surface $\Sigma$, w
   In particular, the surface area $S$ of $\Sigma$ is\index{integral!surface}\index{surface integral}
   \[S = \iint_{\Sigma} 1\,d\sigma .\]}
 
-\example{ex_surf_int}{Computing a Surface Integral}{A \emph{torus} $T$ is a surface obtained by revolving a circle of radius $a$ in the $yz$-plane around the $z$-axis, where the circle's center is at a distance $b$ from the z-axis ($0<a<b$), as in \autoref{fig:torus}. Find the surface area of $T$.\index{torus}%
+\youtubeVideo{pAWLCFYsrVs}{Ex: Evaluate a Surface Integral (Parametric Surface --- Helicoid)}
+
+\example{ex_surf_int}{Computing a Surface Integral}{A \emph{torus} $T$ is a surface obtained by revolving a circle of radius $a$ in the $yz$-plane around the $z$-axis, where the circle's center is at a distance $b$ from the z-axis ($0<a<b$), as in \autoref{fig:torus}. Find the surface area of $T$.\index{torus}\\
 % 
  \begin{lxfigure}
  \begin{center}
@@ -156,7 +153,7 @@ This is a special case of a \emph{surface integral} over the surface $\Sigma$, w
   \begin{axis}[width=.5\textwidth,axis on top,axis lines=center,name=myplot,
 			xtick=\empty,ytick=\empty,xmin=-.1,xmax=4.5,ymin=-2.3,ymax=2.3
 			,disabledatascaling,axis equal]
-   \draw[\colorone](axis cs:3,0)circle(1);
+   \draw[draw={\colorone}](axis cs:3,0)circle(1);
    \draw[dashed](axis cs:3,0)--(axis cs:3,-1.5);
    \draw(axis cs:3,0)--(axis cs:3.707,0.707)
     node[pos=.5,shift={(-2pt,2pt)}]{\scriptsize$a$};
@@ -245,59 +242,47 @@ Since $\frac{\partial \vecr}{\partial u}$ and $\frac{\partial \vecr}{\partial v}
 \[
  \iint_{\Sigma} f(x,y,z)\,d\sigma = \iint_{R} f(x(u,v),y(u,v),z(u,v))\,\norm{\vecn}\,d\sigma ,
 \]
-where $\vecn = \frac{\partial \vecr}{\partial u}\times\frac{\partial \vecr}{\partial v}$. We say that \vecn is a \textbf{normal vector} to $\Sigma$.\index{vector!normal}
+where $\vecn = \frac{\partial \vecr}{\partial u}\times\frac{\partial \vecr}{\partial v}$. We say that \vecn\ is a \textbf{normal vector} to $\Sigma$.\index{vector!normal}
 
 \mtable{Outward Unit Normal Vectors}{fig_outward}{\begin{tikzpicture}
- \usetikzlibrary{arrows}
- \definecolor{spherecolor}{HTML}{80DCFF}
- \shade [ball color=spherecolor] (0,0) circle (1.5);
- \draw [black!60,line width=0.3pt,-latex] (0,0) -- (2,0,0);
- \draw [black!60,line width=0.3pt,-latex] (0,0) -- (0,2,0);
- \draw [black!60,line width=0.3pt,-latex] (0,0) -- (0,0,4);
- \pgfputat{\pgfpointxyz{1.9}{0.2}{0}}{\pgfbox[center,center]{\small $y$}};
- \pgfputat{\pgfpointxyz{0.2}{1.9}{0}}{\pgfbox[center,center]{\small $z$}};
- \pgfputat{\pgfpointxyz{0.2}{0}{3.8}}{\pgfbox[center,center]{\small $x$}};
- \pgfputat{\pgfpointxyz{0.05}{-0.2}{0}}{\pgfbox[center,center]{\small $0$}};
- \draw [line width=0.2pt] (-1.5,0) arc (180:360:1.5 and 0.4);
- \draw [dashed,line width=0.2pt] (1.5,0) arc (0:180:1.5 and 0.4);
- \fill (0.98,0.98) circle (2pt);
- \draw [line width=1.2pt,-latex] (0.98,0.98) -- (1.5,1.5);
+ \shade [ball color={\coloronefill!60!\colorone}] (0,0) circle (1.5);
+ \draw [->] (0,0)--node[pos=1,above]{\small$y$} (2,0);
+ \draw [->] (0,0)--node[pos=1,right]{\small$z$} (0,2);
+ \draw [->] (0,0)--node[pos=1,right]{\small$x$} (0,0,4);
+ \node[below]at(0,0){\small$0$};
+ \draw [draw={\colorone}] (-1.5,0) arc (180:360:1.5 and 0.4);
+ \draw [dashed,draw={\colorone}] (1.5,0) arc (0:180:1.5 and 0.4);
+ \fill (0.98,0.98)circle (2pt) ;
+ \draw [very thick,->] (0.98,0.98) -- (1.5,1.5);
  \fill (0.98,-0.98) circle (2pt);
- \draw [line width=1.2pt,-latex] (0.98,-0.98) -- (1.5,-1.5);
+ \draw [very thick,->] (0.98,-0.98) -- (1.5,-1.5);
  \fill (-1.5,0) circle (2pt);
- \draw [line width=1.2pt,-latex] (-1.5,0) -- (-2.2,0);
+ \draw [very thick,->] (-1.5,0) -- (-2.2,0);
 \end{tikzpicture}}
 Recall that normal vectors to a plane can point in two opposite directions. By an \textbf{outward unit normal vector} to a surface $\Sigma$, we will mean the unit vector that is normal to $\Sigma$ and points away from the ``top'' (or ``outer'' part) of the surface. This is a hazy definition, but the picture in \autoref{fig_outward} gives a better idea of what outward normal vectors look like, in the case of a sphere. With this idea in mind, we make the following definition of a surface integral of a 3-dimensional \emph{vector field} over a surface:\index{outward normal}
 
-\definition{defn:surfintvec}{Vector Surface Integral}{Let $\Sigma$ be a surface in $\mathbb{R}^{3}$ and let $\vecf(x,y,z) = f_1(x,y,z) \veci + f_2(x,y,z) \vecj + f_3(x,y,z) \veck$ be a vector field defined on some subset of $\mathbb{R}^{3}$ that contains $\Sigma$. The \textbf{surface integral} of \vecf over $\Sigma$ is
+\definition{defn:surfintvec}{Vector Surface Integral}{Let $\Sigma$ be a surface in $\mathbb{R}^{3}$ and let $\vecf(x,y,z) = f_1(x,y,z) \veci + f_2(x,y,z) \vecj + f_3(x,y,z) \veck$ be a vector field defined on some subset of $\mathbb{R}^{3}$ that contains $\Sigma$. The \textbf{surface integral} of \vecf\ over $\Sigma$ is
   \begin{equation}\label{eqn:surfintvec}
    \iint_{\Sigma} \Dotprod{\vecf}{d\sigma} =
    \iint_{\Sigma} \Dotprod{\vecf}{\vecn}\,d\sigma ,
   \end{equation}
-  where, at any point on $\Sigma$, \vecn is the outward unit normal vector to $\Sigma$.}
+  where, at any point on $\Sigma$, \vecn\ is the outward unit normal vector to $\Sigma$.}
 
 Note in the above definition that the dot product inside the integral on the right is a real-valued function, and hence we can use \autoref{defn:surfintreal} to evaluate the integral.
 
 \example{exmp_surfintex}{Evaluating a Surface Integral}{Evaluate the surface integral $\iint_{\Sigma} \Dotprod{\vecf}{d\sigma}$, where $\vecf(x,y,z) = yz\veci + xz\vecj + xy\veck$ and $\Sigma$ is the part of the plane $x+y+z=1$ with $x \ge 0$, $y \ge 0$, and $z \ge 0$, with the outward unit normal $\vecn$ pointing in the positive $z$ direction (see \autoref{fig_surf_plane}).%
  \mtable{The surface in \autoref{exmp_surfintex}}{fig_surf_plane}{\begin{tikzpicture}
-  \usetikzlibrary{arrows}
-  \filldraw [black,fill=black!10] (1.5,0,0) -- (0,1.5,0) -- (0,0,1.5) -- (1.5,0,0);
-  \draw [black!60,line width=0.3pt,-latex] (0,0) -- (2,0,0);
-  \draw [black!60,line width=0.3pt,-latex] (0,0) -- (0,2,0);
-  \draw [black!60,line width=0.3pt,-latex] (0,0) -- (0,0,2.5);
-  \pgfputat{\pgfpointxyz{1.9}{0.2}{0}}{\pgfbox[center,center]{\small $y$}};
-  \pgfputat{\pgfpointxyz{0.2}{1.9}{0}}{\pgfbox[center,center]{\small $z$}};
-  \pgfputat{\pgfpointxyz{0.2}{0}{2.3}}{\pgfbox[center,center]{\small $x$}};
-  \pgfputat{\pgfpointxyz{-0.1}{0.1}{0}}{\pgfbox[center,center]{\small $0$}};
-  \node [below] at (1.5,0,0) {\small $1$};
-  \node [left] at (0,1.5,0) {\small $1$};
-  \node [left] at (0,0,1.4) {\small $1$};
-  \node [left] at (0,0.8,0.5) {\small $\Sigma$};
-  \node [below] at (1.2,0,0.8) {\small $x+y+z=1$};
-  \draw [dashed] (0,0,0.7) -- (0.7,0,0.7);
+%  \usetikzlibrary{arrows}
+  \filldraw [draw={\colorone},fill={\coloronefill}] (1.5,0)node[below]{\small$1$}
+   -- (0,1.5)node[left]{\small$1$}
+   --node[pos=.5,left]{\small$\Sigma$} (0,0,1.5)node[above left]{\small$1$} -- cycle;
+  \draw [->] (0,0)--node[pos=1,above]{\small$y$} (2,0);
+  \draw [->] (0,0)--node[pos=1,right]{\small$z$} (0,2);
+  \draw [->] (0,0)--node[pos=1,right]{\small$x$} (0,0,2.5);
+  \node[left]at(0,0){\small$0$};
+  \draw [dashed] (0,0,0.7) -- (0.7,0,0.7)node[below right]{\small $x+y+z=1$};
   \fill (0.48,0.48) circle (2pt);
-  \draw [line width=1.2pt,-latex] (0.48,0.48) -- (1.1,1.1);
-  \node [above right] at (1.02,1.02) {\small $\vecn$};
+  \draw [very thick,->] (0.48,0.48) -- (1.1,1.1)node[above right]{\small $\vecn$};
  \end{tikzpicture}}}{%
  Since the vector $\vecv = (1,1,1)$ is normal to the plane $x+y+z=1$ (why?), then dividing \vecv\ by its length yields the outward unit normal vector $\vecn = \left( \frac{1}{\sqrt{3}}, \frac{1}{\sqrt{3}},\frac{1}{\sqrt{3}} \right)$. We now need to parametrize $\Sigma$. As we can see from Figure 4.4.5, projecting $\Sigma$ onto the $xy$-plane yields a triangular region $R= \lbrace\,(x,y): 0 \le x \le 1, 0 \le y \le 1-x\,\rbrace$. Thus, using $(u,v)$ instead of $(x,y)$, we see that
  \[x=u, y=v, z=1-(u+v),\text{ for } 0 \le u \le 1, 0 \le v \le 1-u\]
@@ -353,9 +338,9 @@ The proof of the Divergence Theorem is very similar to the proof of Green's Theo
   = 3\,\text{vol}(S) = 3\cdot \frac{4\pi (1)^3}{3} = 4\pi .\eoehere
  \end{align*}}
 
-In physical applications, the surface integral $\iint_{\Sigma} \Dotprod{\vecf}{d\sigma}$ is often referred to as the \textbf{flux} of \vecf through the surface $\Sigma$. For example, if \vecf represents the velocity field of a fluid, then the flux is the net quantity of fluid to flow through the surface $\Sigma$ per unit time.\index{flux} A positive flux means there is a net flow \emph{out} of the surface (i.e. in the direction of the outward unit normal vector \vecn), while a negative flux indicates a net flow inward (in the direction of $-\vecn$).
+In physical applications, the surface integral $\iint_{\Sigma} \Dotprod{\vecf}{d\sigma}$ is often referred to as the \textbf{flux} of \vecf\ through the surface $\Sigma$. For example, if \vecf\ represents the velocity field of a fluid, then the flux is the net quantity of fluid to flow through the surface $\Sigma$ per unit time.\index{flux} A positive flux means there is a net flow \emph{out} of the surface (i.e. in the direction of the outward unit normal vector \vecn), while a negative flux indicates a net flow inward (in the direction of $-\vecn$).
 
-The term divergence comes from interpreting div \vecf as a measure of how much a vector field ``diverges'' from a point. This is best seen by using another definition of div \vecf which is equivalent
+The term divergence comes from interpreting div \vecf\ as a measure of how much a vector field ``diverges'' from a point. This is best seen by using another definition of div \vecf\ which is equivalent
 %\footnote{See \cite{sch}, p. 36-39, for an intuitive discussion of this.}
 to the definition given by \autoeqref{eqn:div}. Namely, for a point $(x,y,z)$ in $\mathbb{R}^{3}$,
 \begin{equation}\label{eqn:divalt}
@@ -365,7 +350,7 @@ where $V$ is the volume enclosed by a closed surface $\Sigma$ around the point $
 
 The following theorem is a simple consequence of \autoeqref{eqn:divalt}.
 
-\theorem{thm:divzero}{Zero Flux}{If the flux of a vector field \vecf is zero through every closed surface containing a given point, then $\Div\vecf = 0$ at that point.}
+\theorem{thm:divzero}{Zero Flux}{If the flux of a vector field \vecf\ is zero through every closed surface containing a given point, then $\Div\vecf = 0$ at that point.}
 
 \begin{proof}
  By \autoeqref{eqn:divalt}, at the given point $(x,y,z)$ we have 

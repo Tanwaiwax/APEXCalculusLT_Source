@@ -93,8 +93,16 @@ We conclude that $f$ is continuous everywhere except at integer values of $c$. S
 		
 Our definition of continuity on an interval specifies the interval is an open interval. At endpoints or points of discontinuity we may consider continuity from the right or left.
 
-\definition{def:left_right_cont}{Left and Right Continuity}{Let $f$ be defined on an open interval that contains $a$.  We say that $f$ is \textbf{continuous from the right at $a$} (or \textbf{right continuous at $a$}) if $\ds \lim_{x\to a^+} f(x)=f(a)$.  We say that $f$ is \textbf{continuous from the left at $a$} (or \textbf{left continuous at $a$}) if  $\ds \lim_{x\to a^-} f(x)=f(a)$.}
-\index{continuity!right}\index{continuity!left}
+% todo Tim check phrasing
+\definition{def:left_right_cont}{Right and Left Continuity}{%
+\textbf{Right Continuous}
+
+Let $f$ be defined on a closed interval with left endpoint $a$. We say that $f$ is \textbf{continuous from the right at $a$} (or \textbf{right continuous at $a$}) if  \[\lim_{x\to a^+} f(x)=f(a).\vspace{-\baselineskip}\]\index{continuity!right}
+
+\textbf{Left Continuous}
+
+Let $f$ be defined on a closed interval with right endpoint $b$. We say that $f$ is \textbf{continuous from the left at $b$} (or \textbf{left continuous at $b$}) if
+\[\lim_{x\to b^-} f(x)=f(b).\vspace{-\baselineskip}\]\index{continuity!left}}
 
 We can then extend the definition of continuity to closed intervals by considering the appropriate one-sided limits at the endpoints.
 
@@ -102,8 +110,8 @@ We can then extend the definition of continuity to closed intervals by consideri
 {Let $f$ be defined on the closed interval $[a,b]$ for some real numbers $a,b$. Then $f$ is \textbf{continuous on $[a,b]$} if:
 \begin{enumerate}
 	\item	$f$ is continuous on $(a,b)$,
-	\item	$f$ is left continuous at $a$ and 
-	\item	$f$ is right continuous at $b$.
+	\item	$f$ is right continuous at $a$ and 
+	\item	$f$ is left continuous at $b$.
 \end{enumerate}}
 		
 We can make the appropriate adjustments to talk about continuity on half--open intervals such as $[a,b)$ or $(a,b]$ if necessary.\bigskip
@@ -234,7 +242,7 @@ This intuitive notion of continuity does help us understand another important co
 
 While this notion seems intuitive, it is not trivial to prove and its importance is profound. Therefore the concept is stated in the form of a theorem and illustrated in \autoref{fig_ivt}.
 
-\mtable[-1in]{A situation where the Intermediate Value Theorem applies (top) and does not (bottom).}{fig_ivt}{\begin{tabular}{c}
+\mtable[-1in]{A situation where the Intermediate Value Theorem applies (top) and does not (bottom).}{fig_ivt}{%
 \begin{tikzpicture}
 \begin{axis}[width=\marginparwidth, xtick={.7, 1.5, 4.7}, xticklabels={\scriptsize{$a$},\scriptsize{$c$},\scriptsize{$b$}}, ytick={.54, 2.98,4.16},yticklabels={\scriptsize{$f(b)$},\scriptsize{$L$},\scriptsize{$f(a)$}}, axis y line=middle,axis x line=middle, ymin=-.5, ymax=5.5, xmin=-.5, xmax=5.2, name=myplot]
 \addplot[draw={\colorone}, domain=0:5, thick, smooth] {.2*(x-2)*(x-2)*(x-2)-2*(x-2)+2};
@@ -248,7 +256,8 @@ While this notion seems intuitive, it is not trivial to prove and its importance
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \node[\colorone] at (3.5,1.1){\scriptsize $y=f(x)$};
-\end{tikzpicture} \\ (a) \\
+\end{tikzpicture}
+\\ (a) \\
 \begin{tikzpicture}
 \begin{axis}[width=\marginparwidth, axis y line=middle, axis x line=middle, name=myplot, ymin=-.5, ymax=5.5, xmin=-.5, xmax=4.2, xtick={1,2,3.5}, xticklabels={\scriptsize{$a$},\scriptsize{?},\scriptsize{$b$}}, ytick={.5,1.5,3.5},yticklabels={\scriptsize{$f(a)$}, \scriptsize{$L$}, \scriptsize{$f(b)$}}]
 \addplot[draw={\colorone}, domain=0:2, thick, smooth] {x/2};
@@ -265,8 +274,8 @@ While this notion seems intuitive, it is not trivial to prove and its importance
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \node[\colorone] at (3,2.3){\scriptsize $y=f(x)$};
-\end{tikzpicture} \\ (b)
-\end{tabular}}
+\end{tikzpicture}
+\\ (b)}
 
 \theorem{thm:IVT}{Intermediate Value Theorem}{Let $f$ be a continuous function on $[a,b]$ and, without loss of generality, let $f(a) < f(b)$. Then for every value $y$, where $f(a) < y < f(b)$, there is a value $c$ in $(a,b)$ such that $f(c) = y$\index{Intermediate Value Theorem}}
 %\hfill\hyperref[pf:IVT]{(see the proof)}
@@ -275,7 +284,7 @@ While this notion seems intuitive, it is not trivial to prove and its importance
 
 One important application of the Intermediate Value Theorem is root finding. Given a function $f$, we are often interested in finding values of $x$ where $f(x) = 0$. These roots may be very difficult to find exactly. Good approximations can be found through successive applications of this theorem. Suppose through direct computation we find that $f(a) <0 $ and $f(b)>0$, where $a<b$. The Intermediate Value Theorem states that there is a $c$ in $[a,b]$ such that $f(c) = 0$. The theorem does not give us any clue as to where that value is in the interval $[a,b]$, just that it exists. 
 
-\example{ex_root_exists}{Finding roots}{Show that $f(x)=x^3+x+3$ has at least one real root.}{We must determine an interval on which the function chang\-es from positive to negative values. We start by evaluating $f$ at different values. We see that $f(0)=3>0$ and $f(1)=5>0$. As we choose larger positive values of $x$, we can see that $f(x)$ values will continue to grow. Looking at negative $x$-values, $f(-1)=1>0$ and $f(-2)=-7<0$ so we know $f(x)$ must change sign in $[-2,-1]$.  Because $f(x)$ is a polynomial, it is continuous on all real numbers so is continuous on $[-2,-1]$. By the Intermediate Value Theorem there is a $c$ in $[-2,-1]$ where $f(x)=0$. Thus $f(x)$ must have at least one real root on $[-2,-1]$.} 
+\example{ex_root_exists}{Finding roots}{Show that $f(x)=x^3+x+3$ has at least one real root.}{We must determine an interval on which the function chang\-es from positive to negative values. We start by evaluating $f$ at different values. We see that $f(0)=3>0$ and $f(1)=5>0$. As we choose larger positive values of $x$, we can see that $f(x)$ values will continue to grow. Looking at negative $x$-values, $f(-1)=1>0$ and $f(-2)=-7<0$ so we know $f(x)$ must change sign in $[-2,-1]$.  Because $f(x)$ is a polynomial, it is continuous on all real numbers so is continuous on $[-2,-1]$. By the Intermediate Value Theorem there is a $c$ in $(-2,-1)$ where $f(x)=0$. Thus $f(x)$ must have at least one real root on $(-2,-1)$.} 
 
 Note that in the above example you were not asked to find the root, just to show that the function \emph{had} a root. %We could find a smaller interval that would better approximate the root using the \textbf{Bisection Method}. We demonstrate this in the following example.
 
@@ -349,3 +358,5 @@ Later, we will want to add up an infinite list of numbers. We will do so by firs
 These are just two quick examples of why we are interested in limits. Many students dislike this topic when they are first introduced to it, but over time an appreciation is often formed based on the scope of its applicability.
 
 \printexercises{exercises/01_05_exercises}
+
+% todo Find an interactive example of the bisection method where you specify the function and endpoints

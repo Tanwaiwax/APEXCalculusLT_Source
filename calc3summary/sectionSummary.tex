@@ -1,0 +1,104 @@
+\documentclass{amsart}
+
+\usepackage[margin=1.5in]{geometry}
+
+\newcommand{\BBR}{\mathbb{R}}
+\newcommand{\cvec}{\vec c}
+\newcommand{\Fvec}{\vec F}
+\newcommand{\dd}{d}
+\newcommand{\dA}{\dd A}
+\newcommand{\ds}{\dd s}
+\newcommand{\dS}{\dd S}
+\newcommand{\dt}{\dd t}
+\newcommand{\du}{\dd u}
+\newcommand{\dv}{\dd v}
+\newcommand{\dV}{\dd V}
+\newcommand{\dx}{\dd x}
+\newcommand{\dy}{\dd y}
+\newcommand{\dsvec}{\dd\vec s}
+\newcommand{\dSvec}{\dd\vec S}
+\newcommand{\grad}{\nabla}
+\newcommand{\norm}[1]{\left\lVert #1\right\rVert}
+
+\title{Vector Calculus Summary}
+
+\begin{document}
+
+\maketitle
+
+Let summarize what we've learned in this chapter.
+
+We introduced four new types of integrals, which are gathered in Table \ref{tab:ints}.
+\begin{table}[!ht]
+ \begin{tabular}{|l|p{.3\linewidth}|p{.4\linewidth}|}\hline
+  & $\cvec:\BBR\to\BBR^3$\par parameterizes a curve
+  & $\Phi:\BBR^2\to\BBR^3$\par parameterizes a surface \\\hline
+  $f:\BBR^3\to\BBR$
+  & scalar line integral:\par
+  $\int_{c(D)} f\ds$\par
+  \quad$=\int_D f(\cvec(t))\norm{\cvec~'(t)}\dt \vphantom{\dfrac11}$
+  & scalar surface integral:\par
+  $\iint_{\Phi(D)} f\dS$\par
+  \quad$=\iint_D f(\Phi(u,v))\norm{\Phi_u\times\Phi_v}\du\dv \vphantom{\dfrac11}$
+  \\\hline
+  $\Fvec:\BBR^3\to\BBR^3\vphantom{\dfrac11}$
+  & vector line integral:\par
+  $\int_{c(D)}\Fvec\cdot\dsvec$\par
+  \quad$=\int_D\Fvec(\cvec(t))\cdot\cvec~'(t)\dt \vphantom{\dfrac11}$
+  & vector surface integral:\par
+  $\iint_{\Phi(D)}\Fvec\cdot\dSvec$\par
+  \quad$=\iint_D\Fvec(\Phi(u,v))\cdot(\Phi_u\times\Phi_v)\du\dv \vphantom{\dfrac11}$
+  \\\hline
+ \end{tabular}
+ \caption{Summary of Integrating Parameterized Curves and Surfaces}
+ \label{tab:ints}
+\end{table}
+If we are in the bottom left entry, where $\cvec:\BBR\to\BBR^3$ and
+$\Fvec:\BBR^3\to\BBR^3$, we may be able to use the Fundamental Theorem for
+Gradient Vector Fields: $\int_C\grad\phi\cdot\dsvec=\phi(Q)-\phi(P)$.
+
+The three theorems in this chapter all relate an integral over a domain to an
+integral over the boundary of the domain.  This means that we need to pay
+special attention to the orientation of the domain.  We'll occasionally use the
+symbol $\partial$ to indicate the boundary of something (so the boundary of $D$
+would be $\partial D$).  This is the same symbol as a partial derivative, so
+you'll have to look at the context to figure out which definition is being
+used.
+
+We also have four new theorems about these types of integrals.
+These are similar to the Fundamental Theorem of Calculus, so we'll put all five
+together into Table \ref{tab:fundThms}
+\begin{table}[!ht]
+ \begin{tabular}{|p{.25\linewidth}|l|p{.2\linewidth}|}\hline
+  Fundamental Theorem of Calculus & \vphantom{$\dfrac11$}
+  $f(b)-f(a)=\int_a^b f'(x)\dx$ & \\\hline
+  Fundamental Theorem of Gradient Fields & \vphantom{$\dfrac11$}
+  $\phi(Q)-\phi(P)=\int_C\grad\phi\cdot\ds$ & $C$ goes from $P$ to $Q$ \\\hline
+  Green's Theorem \vphantom{$\dfrac11$} &
+  $\oint_{\partial D}P\dx+Q\dy=\iint_D Q_x-P_y\dA$ &
+  $\partial D$ oriented\par counterclockwise \\\hline
+  Stokes' Theorem \vphantom{$\dfrac11$} &
+  $\int_{\partial S}\Fvec\cdot\ds=\iint_S\grad\times\Fvec\cdot\dS$ &
+  $\partial S$ oriented with\par $S$ to the left \\\hline
+  Divergence (Gauss's)\par Theorem & \vphantom{$\dfrac11$}
+  $\iint_{\partial W}\Fvec\cdot\dSvec=\iiint_W\grad\cdot\Fvec\dV$ &
+  $\partial W$ oriented\par outwards \\\hline
+ \end{tabular}
+ \caption{Fundamental Theorems Relating Integrals and Domains}
+ \label{tab:fundThms}
+\end{table}
+
+%\section*{Epilogue}
+%
+%You don't need to know the following for this course.  You may have noticed
+%that the equations in Table \ref{tab:fundThms} have a similar flavor:
+%the left side is the
+%integral of a function over the boundary of a region (in some sense), while the
+%right side is the integral of a derivative (in some sense) of the entire
+%region.  There is actually a theorem unifying all of these into one equation.
+%Also known as Stokes' Theorem, it says that
+%$\int_{\partial M}\omega=\int_M\dd\omega$.  Of course, getting to the point
+%where that equation makes sense takes a good deal of work
+%(all the way to Math 432).
+
+\end{document}

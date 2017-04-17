@@ -7,17 +7,17 @@ The comparison tests of the previous section determine convergence by comparing 
 \subsection*{Ratio Test}
 
 \theorem{thm:ratio_test}{Ratio Test}
-{Let $\{a_n\}$ be a positive sequence where $\ds \lim_{n\to\infty}\frac{a_{n+1}}{a_n} = L$.%
+{Let $\{a_n\}$ be a sequence where $\ds \lim_{n\to\infty}\abs{\frac{a_{n+1}}{a_n}} = L$.%
 \index{series!Ratio Comparison Test}\index{Ratio Comparison Test!for series}\index{convergence!Ratio Comparison Test}\index{divergence!Ratio Comparison Test}%
 \begin{enumerate}
 	\item If $L<1$, then $\ds\sum_{n=1}^\infty a_n$ converges.
-	\item	If $L>1$ or $L=\infty$, then $\ds\sum_{n=1}^\infty a_n$ diverges.
+	\item If $L>1$ or $L=\infty$, then $\ds\sum_{n=1}^\infty a_n$ diverges.
 	\item If $L=1$, the Ratio Test is inconclusive.
 \end{enumerate}}
 
-\mnote{\textbf{Note:} \autoref{thm:series_behavior} allows us to apply the Ratio Test to series where $\{a_n\}$ is positive for all but a finite number of terms.}
+%\mnote{\textbf{Note:} \autoref{thm:series_behavior} allows us to apply the Ratio Test to series where $\{a_n\}$ is positive for all but a finite number of terms.}
 
-The principle of the Ratio Test is this: if $\ds\lim_{n\to\infty}\frac{a_{n+1}}{a_n} = L<1$, then for large $n$, each term of $\{a_n\}$ is significantly smaller than its previous term which is enough to ensure convergence.  A full proof can be found at \url{http://tutorial.math.lamar.edu/Classes/CalcII/RatioTest.aspx}.
+The principle of the Ratio Test is this: if $\ds\lim_{n\to\infty}\abs{\frac{a_{n+1}}{a_n}} = L<1$, then for large $n$, each term of $\{a_n\}$ is significantly smaller than its previous term which is enough to ensure convergence.  A full proof can be found at \url{http://tutorial.math.lamar.edu/Classes/CalcII/RatioTest.aspx}.
 
 \youtubeVideo{iy8mhbZTY7g}{Using the Ratio Test to Determine if a Series Converges \#1}
 
@@ -78,8 +78,8 @@ Since the limit is $1/4<1$, by the Ratio Test we conclude $\ds \sum_{n=1}^\infty
 The final test we introduce is the Root Test, which works particularly well on series where each term is raised to a power, and does not work well with terms containing factorials. %(but not those that include factorials). 
 
 \theorem{thm:root_test}{Root Test}
-{Let $\{a_n\}$ be a positive sequence, %such that there is an $N\geq 1$ where for all $n\geq N$, $a_n\geq 0$, 
-and let $\ds \lim_{n\to \infty} (a_n)^{1/n} = L$.
+{Let $\{a_n\}$ be a sequence %such that there is an $N\geq 1$ where for all $n\geq N$, $a_n\geq 0$, 
+where $\ds \lim_{n\to \infty}\abs{a_n}^{1/n} = L$.
 \index{series!Root Comparison Test}\index{Root Comparison Test!for series}\index{convergence!Root Comparison Test}\index{divergence!Root Comparison Test}
 	\begin{enumerate}
 		\item If $L<1$, then $\ds\sum_{n=1}^\infty a_n$ converges.
@@ -87,7 +87,7 @@ and let $\ds \lim_{n\to \infty} (a_n)^{1/n} = L$.
 		\item If $L=1$, the Root Test is inconclusive.
 	\end{enumerate}}
 
-\mnote{\textbf{Note:} \autoref{thm:series_behavior} allows us to apply the Root Test to series where $\{a_n\}$ is positive for all but a finite number of terms.}
+%\mnote{\textbf{Note:} \autoref{thm:series_behavior} allows us to apply the Root Test to series where $\{a_n\}$ is positive for all but a finite number of terms.}
 
 \example{ex_root1}{Applying the Root Test}{Determine the convergence of the following series using the Root Test:
 \[
@@ -111,6 +111,6 @@ and let $\ds \lim_{n\to \infty} (a_n)^{1/n} = L$.
 	Since this is greater than 1, we conclude the series diverges.\eoehere
 \end{enumerate}}
 
-Each of the tests we have encountered so far has required that we analyze series from \emph{positive} sequences. The next section relaxes this restriction by  considering \emph{alternating series}, where the underlying sequence has terms that alternate between being positive and negative.
+Each of the tests we have encountered so far has required that we analyze series from \emph{positive} sequences (the absolute value of the ratio and the root tests converts the sequence into a positive sequence). The next section relaxes this restriction by  considering \emph{alternating series}, where the underlying sequence has terms that alternate between being positive and negative.
 
 \printexercises{exercises/08_04_exercises}

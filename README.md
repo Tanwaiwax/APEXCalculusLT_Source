@@ -7,10 +7,10 @@ The main file is Calculus.tex, intended to be run with XeLaTeX with the Calibri 
 (It will run without Calibri and with pdflatex, but the spacing will be different than intended. One can try using the Carlito font, which is an open font with (supposedly) the same font metrics as Calibri. I have not yet tried it personally.)
 
 There are a variety of compilation options.
-This is simplified by using make.py (a Python script) which calls latexmk.
+This is simplified by using make.py (a Python2 script) which calls latexmk.
 Running `./make.py` will give the various options.
 Compiling with a single set of options will take two to three minutes.
-Running `./make.py -a` will create sixteen different pdfs after about twenty minutes.  Running `./make.py -n` will use latexml to make a complete website version of the book after about thirty to forty minutes.
+Running `./make.py -a` will create seven different pdfs after about twenty minutes.  Running `./make.py -n` will use latexml to make a complete website version of the book after about three hours.
 (Unfortunately, latexmk appears to be a little too agressive in ignoring compilation errors.  I recommend compiling using your regular method first, and once you know it compiles, then use latexmk.)
 
 The directory `figures/matrices` exists because of the bug mentioned at https://github.com/brucemiller/LaTeXML/issues/794.  In the meantime, regular LaTeX versions include the tikz code, while LaTeXML versions include the pdf graphics of the output.

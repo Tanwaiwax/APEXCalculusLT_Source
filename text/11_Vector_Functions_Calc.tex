@@ -101,18 +101,18 @@ Once again we might view this definition as intimidating, but recall that we can
 \youtubeVideo{238wiC0U7NE}{Limit and Derivative of Vector Function}
 
 \example{ex_vvflimit3}{Derivatives of vector--valued functions}{Let $\vec r(t) =\bracket{t^2,t}$. 
+\mtable[-\baselineskip]{Graphing the derivative of a vector--valued function in \autoref{ex_vvflimit3}.}{fig:vvflimit3}{%
+\myincludegraphics{figures/figvvflimit3a}\\[5pt]
+(a)\\[10pt]
+\myincludegraphics{figures/figvvflimit3}\\[5pt]
+(b)}
 \begin{enumerate}
 	\item Sketch $\vec r(t)$ and $\vrp(t)$ on the same axes.
 	\item	Compute $\vrp(1)$ and sketch this vector with its initial point at the origin and at $\vec r(1)$.
 \end{enumerate}}
 {\begin{enumerate}
 \item	\autoref{thm:vvf_deriv} allows us to compute derivatives component--wise, so
-\mtable{Graphing the derivative of a vector--valued function in \autoref{ex_vvflimit3}.}{fig:vvflimit3}{%
-\myincludegraphics{figures/figvvflimit3a}\\[5pt]
-(a)\\[10pt]
-\myincludegraphics{figures/figvvflimit3}\\[5pt]
-(b)}
-$$\vrp(t) =\bracket{2t, 1}.$$
+\[\vrp(t) =\bracket{2t, 1}.\]
 $\vec r(t)$ and $\vrp(t)$ are graphed together in \autoref{fig:vvflimit3}(a). Note how plotting the two of these together, in this way, is not very illuminating. When dealing with real--valued functions, plotting $f(x)$ with $\fp(x)$ gave us useful information as we were able to compare $f$ and $\fp$ at the same $x$-values. When dealing with vector--valued functions, it is hard to tell which points on the graph of $\vrp$ correspond to which points on the graph of $\vec r$.
 
 \item	We easily compute $\vrp(1) =\bracket{2,1}$, which is drawn in \autoref{fig:vvflimit3} with its initial point at the origin, as well as at $\vec r(1) =\bracket{1,1}.$ These are sketched in \autoref{fig:vvflimit3}(b).\eoehere
@@ -132,12 +132,13 @@ $\vec r(t)$ and $\vrp(t)$ are graphed together in \autoref{fig:vvflimit3}(a). No
 3Droo=150.0000027221829,3Dlights=Headlamp,add3Djscript=asylabels.js}{}{0in}{Viewing a vector--valued function and its derivative at one point.}{fig:vvflimit4}{figures/figvvflimit4}%
 }%% ends "if in threeD"
 {% begins "else, not in threeD
-\mtable{Viewing a vector--valued function, and its derivative at one point, from two different perspectives.}{fig:vvflimit4}{%
+\mtable[-2\baselineskip]{Viewing a vector--valued function, and its derivative at one point, from two different perspectives.}{fig:vvflimit4}{%
 \myincludegraphics[scale=1.25]{figures/figvvflimit4} \\
 (a)\\
 \myincludegraphics[scale=1.25]{figures/figvvflimit4a} \\
 (b)}%
 }% ends whole if-then-else
+
 \example{ex_vvflimit4}{Derivatives of vector--valued functions}{Let $\vec r(t) =\bracket{\cos t, \sin t, t}$. Compute $\vrp(t)$ and $\vrp(\pi/2)$. Sketch $\vrp(\pi/2)$ with its initial point at the origin and at $\vec r(\pi/2)$.}
 {We compute $\vrp$ as $\vrp(t) =\bracket{-\sin t, \cos t, 1}$. At $t= \pi/2$, we have $\vrp(\pi/2) =\bracket{-1,0,1}$. \autoref{fig:vvflimit4} \ifthenelse{\boolean{in_threeD}}{shows a graph of $\vec r(t)$,}{shows two graphs of $\vec r(t)$, from different perspectives,} with $\vrp(\pi/2)$ plotted with its initial point at the origin and at $\vec r(\pi/2)$.}
 
@@ -205,9 +206,10 @@ Having established derivatives of vector--valued functions, we now explore the r
 	\item $\ds \frac{d}{dt}\Big(c\vec r(t)\Big) = c\vrp(t)$
 	\item \parbox{200pt}{$\ds \frac{d}{dt}\Big(f(t)\vec r(t)\Big) = \fp(t)\vec r(t) + f(t)\vrp(t)$} \textbf{Product Rule}
 	\item \parbox{200pt}{$\ds \frac{d}{dt}\Big(\vec r(t)\cdot \vec s(t) \Big) = \vrp(t)\cdot \vec s(t) + \vec r(t)\cdot \vec s\,'(t)$} \textbf{Product Rule}
-	\item \parbox{200pt}{$\ds \frac{d}{dt}\Big(\vec r(t)\times \vec s(t) \Big) = \vrp(t)\times \vec s(t) + \vec r(t)\times \vec s\,'(t)$} \textbf{Product Rule}
+	\item\label{crossprodrule} \parbox{200pt}{$\ds \frac{d}{dt}\Big(\vec r(t)\times \vec s(t) \Big) = \vrp(t)\times \vec s(t) + \vec r(t)\times \vec s\,'(t)$} \textbf{Product Rule}
 	\item \parbox{200pt}{$\ds \frac{d}{dt}\Big(\vec r\big(f(t)\big)\Big) = \vrp\big(f(t)\big)\fp(t)$}  \textbf{Chain Rule}
-	\end{enumerate}}
+\end{enumerate}}
+\mnote[-1in]{\textbf{Note:} Because the order is important when computing a cross product, we must maintain the correct order of the functions in rule \ref{crossprodrule}.}
 
 \example{ex_vvfderiv2}{Using derivative properties of vector--valued functions}{Let $\vec r(t) =\bracket{t, t^2-1}$ and let $\vec u(t)$ be the unit vector that points in the direction of $\vec r(t)$.
 \begin{enumerate}
@@ -236,7 +238,8 @@ We now find $\vec u\,'(t)$ using part 3 of \autoref{thm:vvf_deriv_prop}:
 This is admittedly very ``messy;'' such is usually the case when we deal with unit vectors. We can use this formula to compute $\vec u\,(-2)$, $\vec u\,(-1)$ and $\vec u\,(0)$:
 \begin{align*}
 \vec u\,(-2) &=\bracket{-\frac{15}{13 \sqrt{13}},-\frac{10}{13
-   \sqrt{13}}}\approx\bracket{-0.320,-0.213}\\
+   \sqrt{13}}}%\approx\bracket{-0.320,-0.213}
+   \\
 \vec u\,(-1) &=\bracket{0,-2}\\
 \vec u\,(0) &=\bracket{1,0}
 \end{align*}
@@ -265,8 +268,11 @@ Indefinite and definite integrals of vector--valued functions are also evaluated
 	\item $\ds \int \vec r(t)\ dt =\bracket{\int f(t)\ dt, \int g(t)\ dt}$
 	\item	$\ds \int_a^b \vec r(t)\ dt =\bracket{\int_a^b f(t)\ dt, \int_a^b g(t)\ dt}$
 \end{enumerate}
-A similar statement holds for vector--valued functions in $\mathbb{R}^3$.
-\index{vector--valued function!integration}\index{integration!of vector--valued functions}}
+Let $\vec r(t) =\bracket{f(t),g(t),h(t)}$ be a vector--valued function in $\mathbb{R}^3$.
+\begin{enumerate}
+	\item $\ds \int \vec r(t)\ dt =\bracket{\int f(t)\ dt, \int g(t)\ dt, \int h(t)\ dt}$
+	\item	$\ds \int_a^b \vec r(t)\ dt =\bracket{\int_a^b f(t)\ dt, \int_a^b g(t)\ dt, \int_a^b h(t)\ dt}$
+\end{enumerate}\index{vector--valued function!integration}\index{integration!of vector--valued functions}}
 
 \example{ex_vvfint1}{Evaluating a definite integral of a vector--valued function}{Let $\vec r(t) =\bracket{e^{2t},\sin t}$. Evaluate $\ds \int_0^1 \vec r(t) \ dt$.}
 {We follow \autoref{thm:vvf_integration}.
@@ -274,8 +280,9 @@ A similar statement holds for vector--valued functions in $\mathbb{R}^3$.
 \int_0^1 \vec r(t) \ dt &= \int_0^1\bracket{e^{2t},\sin t}\ dt \\
 				&=\bracket{\int_0^1 e^{2t}\ dt\ , \int_0^1 \sin t \ dt}\\
 				&=\bracket{\frac12e^{2t}\Big|_0^1\ , -\cos t\Big|_0^1}\\
-				&=\bracket{\frac12(e^2-1)\ , -\cos(1)+1}\\
-				&\approx\bracket{3.19,0.460}.\eoehere
+				&=\bracket{\frac12(e^2-1)\ , -\cos(1)+1}
+				%\\&\approx\bracket{3.19,0.460}
+				.\eoehere
 \end{align*}}
 
 \example{ex_vvfint2}{Solving an initial value problem}{Let $\vrp'(t) =\bracket{2, \cos t, 12t}$. Find $\vec r(t)$ where:

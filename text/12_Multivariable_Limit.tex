@@ -62,6 +62,7 @@ means that given any $\epsilon>0$, there exists $\delta>0$ such that for all  $(
 3Dcoo=21.82058334350586 66.31769561767578 47.81545639038086,
 3Droo=149.99999973566392,
 3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.25}{0in}{\textbf{Illustrating the definition of a limit.} The open disk in the $x$-$y$ plane has radius $\delta$. Let $(x,y)$ be any point in this disk; $f(x,y)$ is within $\epsilon$ of $L$.}{fig:multilimitdef}{figures/figmultilimit_def}
+% todo add delta (and c?) to the figure
 %\mfigure[scale=1.25]{0in}{\textbf{Illustrating the definition of a limit.} The open disk in the $x$-$y$ plane has radius $\delta$. Let $(x,y)$ be any point in this disk; $f(x,y)$ is within $\epsilon$ of $L$.}{fig:multilimitdef}{figures/figmultilimit_def}
 
 The concept behind \autoref{def:multilimit} is sketched in \autoref{fig:multilimitdef}. Given $\epsilon>0$, find $\delta>0$ such that if $(x,y)$ is any point in the open disk centered at $(x_0,y_0)$ in the $x$-$y$ plane with radius $\delta$, then $f(x,y)$ should be within $\epsilon$ of $L$. 
@@ -73,17 +74,18 @@ $$\lim_{(x,y)\to (x_0,y_0)}f(x,y) = L \quad \text{\ and\ } \lim_{(x,y)\to (x_0,y
 The following limits hold.
 \index{limit!of multivariable function}\index{limit!properties}\index{multivariable function!limit}
 \begin{enumerate}
-\item \parbox{80pt}{Constants:} $\displaystyle \lim_{(x,y)\to (x_0,y_0)} b = b$
-\item	\parbox{80pt}{Identity }	$\displaystyle \lim_{(x,y)\to (x_0,y_0)} x = x_0$;\qquad $\displaystyle \lim_{(x,y)\to (x_0,y_0)} y = y_0$
-\item	\parbox{80pt}{Sums/Differences:} $\displaystyle \lim_{(x,y)\to (x_0,y_0)}\big(f(x,y)\pm g(x,y)\big) = L\pm K$
-\item	\parbox{80pt}{Scalar Multiples:}	$\displaystyle \lim_{(x,y)\to (x_0,y_0)} b\cdot f(x,y) = bL$
-\item	\parbox{80pt}{Products:}	$\displaystyle \lim_{(x,y)\to (x_0,y_0)} f(x,y)\cdot g(x,y) = LK$
-\item	\parbox{80pt}{Quotients:} $\displaystyle \lim_{(x,y)\to (x_0,y_0)} f(x,y)/g(x,y) = L/K$, ($K\neq 0$)
-\item	\parbox{80pt}{Powers:} 	$\displaystyle \lim_{(x,y)\to (x_0,y_0)} f(x,y)^n = L^n$
-%\item	\parbox{80pt}{Roots:}		\parbox[t]{185pt}{$\displaystyle \lim_{(x,y)\to (x_0,y_0)} \sqrt[n]{f(x,y)} = \sqrt[n]{L}$}% \qquad \small (if $n$ is even then $L$ must be greater than 0; when $n$ is odd, it is true for all $L$.)}
+\item \parbox{80pt}{Constants:} $\ds\lim_{(x,y)\to (x_0,y_0)} b = b$
+\item	\parbox{80pt}{Identity }	$\ds\lim_{(x,y)\to (x_0,y_0)} x = x_0$;\qquad $\displaystyle \lim_{(x,y)\to (x_0,y_0)} y = y_0$
+\item	\parbox{80pt}{Sums/Differences:} $\ds\lim_{(x,y)\to (x_0,y_0)}\big(f(x,y)\pm g(x,y)\big) = L\pm K$
+\item	\parbox{80pt}{Scalar Multiples:}	$\ds\lim_{(x,y)\to (x_0,y_0)} b\cdot f(x,y) = bL$
+\item	\parbox{80pt}{Products:}	$\ds\lim_{(x,y)\to (x_0,y_0)} f(x,y)\cdot g(x,y) = LK$
+\item	\parbox{80pt}{Quotients:} $\ds\lim_{(x,y)\to (x_0,y_0)} f(x,y)/g(x,y) = L/K$, ($K\neq 0$)
+\item	\parbox{80pt}{Powers:} 	$\ds\lim_{(x,y)\to (x_0,y_0)} f(x,y)^n = L^n$
+\item	\parbox{80pt}{Roots:}	$\ds\lim_{(x,y)\to (x_0,y_0)} \sqrt[n]{f(x,y)} = \sqrt[n]{L}$ \qquad {\small (when $n$ is odd or $L\ge0$)}
 \end{enumerate}}
 
-This theorem, combined with Theorems \ref{thm:poly_rat} and \ref{thm:lim_continuous} of \autoref{sec:limit_analytically}, allows us to evaluate many limits.\\
+This theorem can be proved by the same arguments as the analogous results for functions of one variable in \autoref{thm:limit_algebra}.  Combined with Theorems \ref{thm:poly_rat} and \ref{thm:lim_continuous} of \autoref{sec:limit_analytically}, this allows us to evaluate many limits.
+% todo do we need a version of theorem 2 (composition of functions) ?
 
 \example{ex_multilimit3}{Evaluating a limit}{Evaluate the following limits:
 $$1. \lim_{(x,y)\to (1,\pi)} \frac yx + \cos(xy) \qquad\qquad 2. \lim_{(x,y)\to (0,0)} \frac{3xy}{x^2+y^2}$$}
@@ -97,10 +99,14 @@ $$1. \lim_{(x,y)\to (1,\pi)} \frac yx + \cos(xy) \qquad\qquad 2. \lim_{(x,y)\to 
 \end{enumerate}}
 
 When dealing with functions of a single variable we also considered one--sided limits and stated
-$$\lim_{x\to c}f(x) = L \quad\text{ if, and only if,}\quad \lim_{x\to c^+}f(x) =L \quad\textbf{ and}\quad \lim_{x\to c^-}f(x) =L.$$
+\[
+\lim_{x\to c}f(x) = L
+\quad\text{if and only if both}\quad
+\lim_{x\to c^+}f(x) =L \quad\text{and}\quad \lim_{x\to c^-}f(x) =L.
+\]
 That is, the limit is $L$ if and only if $f(x)$ approaches $L$ when $x$ approaches $c$ from \textbf{either} direction, the left or the right.
 
-In the plane, there are infinite directions from which $(x,y)$ might approach $(x_0,y_0)$. In fact, we do not have to restrict ourselves to approaching $(x_0,y_0)$ from a particular direction, but rather we can approach that point along a path that is not a straight line. It is possible to arrive at different limiting values by approaching $(x_0,y_0)$ along different paths. If this happens, we say that $\ds \lim_{(x,y)\to(x_0,y_0) } f(x,y)$ does not exist (this is analogous to the left and right hand limits of single variable functions not being equal).
+In the plane, there are infinite directions from which $(x,y)$ might approach $(x_0,y_0)$. In fact, we do not have to restrict ourselves to approaching $(x_0,y_0)$ from a particular direction, but rather we can approach that point along any possible path. It is possible to arrive at different limiting values by approaching $(x_0,y_0)$ along different paths. If this happens, we say that $\ds \lim_{(x,y)\to(x_0,y_0) } f(x,y)$ does not exist (this is analogous to the left and right hand limits of single variable functions not being equal).
 
 Our theorems tell us that we can evaluate most limits quite simply, without worrying about  paths. When indeterminate forms arise, the limit may or may not exist. If it does exist, it can be difficult to prove this as we need to show the same limiting value is obtained regardless of the path chosen. The case where the limit does not exist is often easier to deal with, for we can often pick two paths along which the limit is different.
 
@@ -162,7 +168,7 @@ Thus if $\sqrt{(x-0)^2+(y-0)^2}<\delta$ then $|f(x,y)-0|<\epsilon$, which is wha
 
 \subsection*{Continuity}
 
-\autoref{def:continuous} defines what it means for a function of one variable to be continuous. In brief, it meant that the graph of the function did not have breaks, holes, jumps, etc. We define continuity for functions of two variables in a similar way as we did for functions of one variable.
+\autoref{def:continuous} defines what it means for a function of one variable to be continuous. In brief, it meant that the function always equaled its limit. We define continuity for functions of two variables in a similar way as we did for functions of one variable.
 
 \definition{def:multi_continuous}{Continuous}
 {Let a function $f(x,y)$ be defined on an open disk $B$ containing the point $(x_0,y_0)$. 
@@ -170,7 +176,7 @@ Thus if $\sqrt{(x-0)^2+(y-0)^2}<\delta$ then $|f(x,y)-0|<\epsilon$, which is wha
 \begin{enumerate}
 	\item $f$ is \textbf{continuous} at $(x_0,y_0)$ if $\ds\lim_{(x,y)\to(x_0,y_0)} f(x,y) = f(x_0,y_0)$.
 	\index{continuous function}\index{multivariable function!continuity}
-	\item	$f$ is \textbf{continuous on $B$} if $f$ is continuous at all points in $B$. If $f$ is continuous at all points in $\mathbb{R}^2$, we say that $f$ is \textbf{continuous everywhere}.
+	\item	$f$ is \textbf{continuous on an open set $S$} if $f$ is continuous at each points in $S$. (We say that $f$ is \textbf{continuous everywhere} if $f$ is continuous on $\mathbb{R}^2$.)
 \end{enumerate}}
 
 \example{ex_multicont1}{Continuity of a function of two variables}{Let $\ds f(x,y) = \left\{ \begin{array}{rl} \frac{\cos y\sin x}{x} & x\neq 0 \\
@@ -207,10 +213,10 @@ A similar analysis shows that $f$ is continuous at all points in $\mathbb{R}^2$.
 %\mfigure[scale=1.25]{0in}{A graph of $f(x,y)$ in \autoref{ex_multicont1}.}{fig:multicont1}{figures/figmulticont1}
 }
 
-The following theorem is very similar to \autoref{thm:continuity_algebra}, giving us ways to combine continuous functions to create other continuous functions.
+The following theorems are very similar to Theorems \ref{thm:continuity_algebra} and \ref{thm:composition_continuous}, giving us ways to combine continuous functions to create other continuous functions.
 
 \theorem{thm:multi_continuous_prop}{Properties of Continuous Functions}
-{Let $f$ and $g$ be continuous on an open disk $B$, let $c$ be a real number, and let $n$ be a positive integer. The following functions are continuous on $B$.%
+{Let $f$ and $g$ be continuous on an open set $S$, let $c$ be a real number, and let $n$ be a positive integer. The following functions are continuous on $S$.%
 \index{continuous function!properties}\index{multivariable function!continuity}%
 \begin{enumerate}
 	\item		\parbox{80pt}{Sums/Differences:}	$f\pm g$
@@ -221,11 +227,9 @@ The following theorem is very similar to \autoref{thm:continuity_algebra}, givin
 	\item		\parbox{80pt}{Roots:}	$\sqrt[n]{f}$ \qquad \parbox[t]{150pt}{\small (if $f\geq 0$ on $B$ or $n$ is odd)}
 \end{enumerate}}
 
-% todo we need a transition between Theorems 104 & 105
-
-\theorem{thm:multi_cont_comp}{Continuity of Compositions}{Let $f$ be continuous on $B$, where the range of $f$ on $B$ is $J$, and let $g$ be a single variable function that is continuous on $J$. Then
+\theorem{thm:multi_cont_comp}{Continuity of Compositions}{Let $f$ be continuous on $S$, where the range of $f$ on $S$ is $J$, and let $g$ be a single variable function that is continuous on $J$. Then
 \[(g\circ f)(x,y)=g(f(x,y)),\]
-is continuous on $B$.}
+is continuous on $S$.}
 
 \example{ex_multicont2}{Establishing continuity of a function}{Let $f(x,y) = \sin (x^2\cos y)$. Show $f$ is continuous everywhere.}
 {We will apply Theorems \ref{thm:continuity_algebra}, \ref{thm:multi_continuous_prop}, and \ref{thm:multi_cont_comp}. Let $f_1(x,y) = x^2$. Since $y$ is not actually used in the function, and polynomials are continuous (by \autoref{thm:continuity_algebra}), we conclude $f_1$ is continuous everywhere. A similar statement can be made about $f_2(x,y) = \cos y$. Part 3 of \autoref{thm:multi_continuous_prop} states that $f_3=f_1\cdot f_2$ is continuous everywhere, and \autoref{thm:multi_cont_comp} states the composition of sine with $f_3$ is continuous: that is, $\sin (f_3) = \sin(x^2\cos y)$ is continuous everywhere.}

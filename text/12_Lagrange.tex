@@ -5,45 +5,42 @@
 In the previous section, we were concerned with finding maxima and minima of functions without any constraints on the variables (other than being in the domain of the function). We ended by discussing what we would do if there were constraints on the variables. The following example illustrates a simple case of this type of problem.\index{Lagrange multiplier}
 
 \example{exmp_consimple}{Maximizing an Area}{For a rectangle whose perimeter is $20$ m, find the dimensions that will maximize the area.}{The area $A$ of a rectangle with width $x$ and height $y$ is $A = xy$. The perimeter $P$ of the rectangle is then given by the formula $P = 2x + 2y$. Since we are given that the perimeter $P = 20$, this problem can be stated as:
- \begin{align*}
-  \text{Maximize: }& f(x,y) = xy\\
-  \text{given: }& 2x + 2y = 20
- \end{align*}
- The reader is probably familiar with a simple method, using single-variable calculus, for solving this problem. Since we must have $2x+2y=20$, then we can solve for, say, $y$ in terms of $x$ using that equation. This gives $y = 10 - x$, which we then substitute into $f$ to get $f(x,y) = xy = x(10-x) = 10x - x^2$. This is now a function of $x$ alone, so we now just have to maximize the function $f(x) = 10x - x^2$ on the interval $\lbrack 0, 10 \rbrack$. Since $\fp(x) = 10-2x = 0 \Rightarrow x =5$ and $\fpp(5) = -2 < 0$, then the Second Derivative Test tells us that $x=5$ is a local maximum for $f$, and hence $x=5$ must be the global maximum on the interval $\lbrack 0, 10 \rbrack$ (since $f = 0$ at the endpoints of the interval). So since $y=10-x =5$, then the maximum area occurs for a rectangle whose width and height both are $5$ m.}
+\[\text{Maximize }f(x,y) = xy\text{ subject to }2x + 2y = 20\]
+The reader is probably familiar with a simple method, using single-variable calculus, for solving this problem. Since we must have $2x+2y=20$, then we can solve for, say, $y$ in terms of $x$ using that equation. This gives $y = 10 - x$, which we then substitute into $f$ to get $f(x,y) = xy = x(10-x) = 10x - x^2$. This is now a function of $x$ alone, so we now just have to maximize the function $f(x) = 10x - x^2$ on the interval $[0,10]$. Since $\fp(x) = 10-2x = 0 \Rightarrow x =5$ and $\fpp(5) = -2 < 0$, then the Second Derivative Test tells us that $x=5$ is a local maximum for $f$, and hence $x=5$ must be the global maximum on the interval $[0,10]$ (since $f = 0$ at the endpoints of the interval). So since $y=10-x =5$, then the maximum area occurs for a rectangle whose width and height both are $5$ m.}
 
-Notice in the above example that the ease of the solution depended on being able to solve for one variable in terms of the other in the equation $2x+2y=20$. But what if that were not possible (which is often the case)? In this section we will use a general method, called the \emph{Lagrange multiplier method}\footnote{Named after the French mathematician Joseph Louis Lagrange (1736-1813).}, for solving \emph{constrained optimization} problems:
-\begin{align*}
- \text{Maximize (or minimize): }& f(x,y) \text{ (or $f(x,y,z)$)}\\
- \text{given: }& g(x,y) = c \text{ (or $g(x,y,z) = c$) for some constant $c$}
-\end{align*}
+\mnote{\textbf{Note:} Joseph Louis Lagrange (1736--1813) was a French mathematician and astronomer.}
+
+Notice in the above example that the ease of the solution depended on being able to solve for one variable in terms of the other in the equation $2x+2y=20$. But what if that were not possible (which is often the case)? In this section we will use a general method, called the \emph{Lagrange multiplier method}, for solving \emph{constrained optimization} problems:
+\[
+ \text{Maximize (or minimize) }f(x,y)\text{ subject to }g(x,y) = c
+% \text{ or} \\
+% \text{Maximize (or minimize): }f(x,y,z)\text{ subject to }g(x,y,z) = c
+\]
+for some constant $c$.
 The equation $g(x,y) = c$ is called the \emph{constraint equation}, and we say that $x$ and $y$ are \emph{constrained} by $g(x,y) = c$. Points $(x,y)$ which are maxima or minima of $f(x,y)$ with the condition that they satisfy the constraint equation $g(x,y)=c$ are called \emph{constrained maximum} or \emph{constrained minimum} points, respectively. Similar definitions hold for functions of three variables.\index{constrained critical point}
 
-The Lagrange multiplier method for solving such problems can now be stated:
+The previous section optimized a function on a set $S$.  In this section, ``subject to $g(x,y)=c$'' is the same as saying that the set $S$ is given by $\{(x,y)|g(x,y)=c\}$. The Lagrange multiplier method for solving such problems can now be stated:
 
-\theorem{thm:lagrange}{Lagrange Multipliers}{Let $f(x,y)$ and $g(x,y)$ be smooth functions, and suppose that $c$ is a scalar constant such that $\nabla g(x,y) \ne \vec0$ for all $(x,y)$ that satisfy the equation $g(x,y) = c$. Then to solve the constrained optimization problem
- \begin{align*}
-  \text{Maximize (or minimize): }& f(x,y)\\
-  \text{given: }& g(x,y) = c ,
- \end{align*}
- find the points $(x,y)$ that solve the equation $\nabla f(x,y) = \lambda \nabla g(x,y)$ for some constant $\lambda$ (the number $\lambda$ is called the \emph{Lagrange multiplier}). If there is a constrained maximum or minimum, then it must be such a point.}
+\theorem{thm:lagrange}{Lagrange Multipliers}{Let $f(x,y)$ and $g(x,y)$ be functions with continuous partial derivatives of all orders, and suppose that $c$ is a scalar constant such that $\nabla g(x,y) \ne \vec0$ for all $(x,y)$ that satisfy the equation $g(x,y) = c$. Then to solve the constrained optimization problem
+ \[\text{Maximize (or minimize) }f(x,y)\text{ subject to }g(x,y) = c ,\]
+ find the points $(x,y)$ that solve the equation $\nabla f(x,y) = \lambda \nabla g(x,y)$ for some constant $\lambda$ (the number $\lambda$ is called the \emph{Lagrange multiplier}). If there is a constrained maximum or minimum, then it must be at such a point.}
 
 A rigorous proof of the above theorem is well beyond the scope of this text.
-%requires use of the Implicit Function Theorem, which is beyond the scope of this text.\footnote{See \cite[\S\,6.8]{tm} for more detail.}
+% todo include a proof sketch of Theorem 120 Lagrange Multipliers?
+% todo refer to Extreme Value Theorem after Lagrange Multipliers?
+%requires use of the Implicit Function Theorem, which is beyond the scope of this text. See \cite[\S\,6.8]{tm} for more detail.
 Note that the theorem only gives a \emph{necessary} condition for a point to be a constrained maximum or minimum. Whether a point $(x,y)$ that satisfies $\nabla f(x,y) = \lambda \nabla g(x,y)$ for some $\lambda$ actually \emph{is} a constrained maximum or minimum can \emph{sometimes} be determined by the nature of the problem itself. For instance, in \autoref{exmp_consimple} it was clear that there had to be a global maximum.
 
 So how can you tell when a point that satisfies the condition in \autoref{thm:lagrange} really is a constrained maximum or minimum? The answer is that it depends on the constraint function $g(x,y)$, together with any implicit constraints. It can be shown
-%\footnote{Again, see \cite{tm}.}
-that if the constraint equation $g(x,y)=c$ (plus any hidden constraints) describes a \emph{bounded} set $B$ in $\mathbb{R}^2$, then the constrained maximum or minimum of $f(x,y)$ will occur either at a point $(x,y)$ satisfying $\nabla f(x,y) = \lambda \nabla g(x,y)$ or at a ``boundary'' point of the set $B$.
+% Again, see \cite{tm}.
+that if the constraint equation $g(x,y)=c$ (plus any hidden constraints) describes a bounded set $B$ in $\mathbb{R}^2$, then the constrained maximum or minimum of $f(x,y)$ will occur either at a point $(x,y)$ satisfying $\nabla f(x,y) = \lambda \nabla g(x,y)$ or at a ``boundary'' point of the set $B$.
 
 \youtubeVideo{ry9cgNx1QV8}{LaGrange Multipliers}
 
 In \autoref{exmp_consimple} the constraint equation $2x+2y=20$ describes a line in $\mathbb{R}^2$, which by itself is not bounded. However, there are ``hidden'' constraints, due to the nature of the problem, namely $0\le x,y \le 10$, which cause that line to be restricted to a \emph{line segment} in $\mathbb{R}^2$ (including the endpoints of that line segment), which \emph{is} bounded.
 
 \example{exmp_rectlm}{Maximizing an Area}{For a rectangle whose perimeter is $20$ m, use the Lagrange multiplier method to find the dimensions that will maximize the area.}{As we saw in \autoref{exmp_consimple}, with $x$ and $y$ representing the width and height, respectively, of the rectangle, this problem can be stated as:
- \begin{align*}
-  \text{Maximize: }& f(x,y) = xy\\
-  \text{given: }& g(x,y) = 2x + 2y = 20
- \end{align*}
+ \[\text{Maximize }f(x,y) = xy\text{ subject to }g(x,y) = 2x + 2y = 20.\]
  Then solving the equation $\nabla f(x,y) = \lambda \nabla g(x,y)$ for some $\lambda$ means solving the equations $\dfrac{\partial f}{\partial x} = \lambda \dfrac{\partial g}{\partial x}$ and $\dfrac{\partial f}{\partial y} = \lambda \dfrac{\partial g}{\partial y}$, namely:
  \begin{align*}
   y &= 2\lambda ,\\
@@ -55,13 +52,14 @@ In \autoref{exmp_consimple} the constraint equation $2x+2y=20$ describes a line 
  \[20=g(x,y)=2x+2y=2x+2x=4x\quad\Rightarrow\quad x=5\quad\Rightarrow\quad y=5\]
  There must be a maximum area, since the minimum area is $0$ and $f(5,5) = 25 > 0$, so the point $(5,5)$ that we found (called a \emph{constrained critical point}) must be the constrained maximum. Therefore, the maximum area occurs for a rectangle whose width and height both are $5$ m.}
 
+% todo give a different example than example 3 so that the objective function doesn't immediately simplify because of the constraint
 \example{ex_lagr_circle}{Extreme Values on a Circle}{Find the points on the circle $x^2 + y^2 = 80$ which are closest to and farthest from the point $(1,2)$.}{The distance $d$ from any point $(x,y)$ to the point $(1,2)$ is
   \[d=\sqrt{(x-1)^2 + (y-2)^2},\]
  and minimizing the distance is equivalent to minimizing the square of the distance. Thus the problem can be stated as:
- \begin{align*}
-  \text{Maximize (and minimize): }& f(x,y) = (x-1)^2 + (y-2)^2\\
-  \text{given: }& g(x,y) = x^2 + y^2 = 80
- \end{align*}
+ \[
+ \text{Maximize (and minimize) }f(x,y) = (x-1)^2 + (y-2)^2
+ \text{ subject to }g(x,y) = x^2 + y^2 = 80.
+ \]
  Solving $\nabla f(x,y) = \lambda \nabla g(x,y)$ means solving the following equations:
  \begin{align*}
   2(x-1) &= 2\lambda x ,\\
@@ -90,11 +88,7 @@ In \autoref{exmp_consimple} the constraint equation $2x+2y=20$ describes a line 
 
 The Lagrange multiplier method can be extended to functions of three variables.
 
-\example{ex_lagr_3var}{Maximizing a Function of Three Variables}{\mbox{}\\[-2\baselineskip]
- \begin{align*}
-  \text{Maximize (and minimize): }& f(x,y,z) = x+z\\
-  \text{given: }& g(x,y,z) = x^2 + y^2 + z^2 = 1
- \end{align*}}{Solve the equation $\nabla f(x,y,z) = \lambda \nabla g(x,y,z)$:
+\example{ex_lagr_3var}{Maximizing a Function of Three Variables}{Maximize (and minimize) $f(x,y,z) = x+z$ subject to $g(x,y,z) = x^2 + y^2 + z^2 = 1$.}{Solve the equation $\nabla f(x,y,z) = \lambda \nabla g(x,y,z)$:
  \begin{align*}
   1 &= 2\lambda x\\
   0 &= 2\lambda y\\
@@ -102,24 +96,60 @@ The Lagrange multiplier method can be extended to functions of three variables.
  \end{align*}
  The first equation implies $\lambda \ne 0$ (otherwise we would have $1=0$), so we can divide by $\lambda$ in the second equation to get $y=0$ and we can divide by $\lambda$ in the first and third equations to get $x=\frac1{2\lambda}=z$. Substituting these expressions into the constraint equation $g(x,y,z) = x^2 + y^2 + z^2 = 1$ yields the constrained critical points $\left( \frac1{\sqrt2},0,\frac1{\sqrt2} \right)$ and $\left( \frac{-1}{\sqrt2},0,\frac{-1}{\sqrt2}\right)$. Since $f\left( \frac1{\sqrt2},0,\frac1{\sqrt2}\right)>f\left(\frac{-1}{\sqrt2},0,\frac{-1}{\sqrt2}\right)$, and since the constraint equation $x^2 + y^2 + z^2 = 1$ describes a sphere (which is bounded) in $\mathbb{R}^3$, then $\left(\frac1{\sqrt2},0,\frac1{\sqrt2}\right)$ is the constrained maximum point and $\left(\frac{-1}{\sqrt2},0,\frac{-1}{\sqrt2}\right)$ is the constrained minimum point.}
 
-So far we have not attached any significance to the value of the Lagrange multiplier $\lambda$. We needed $\lambda$ only to find the constrained critical points, but made no use of its value. It turns out that $\lambda$ gives an approximation of the change in the value of the function $f(x,y)$ that we wish to maximize or minimize, when
-the constant $c$ in the constraint equation $g(x,y)=c$ is changed by $1$.
+% todo more clearly explain the significance of the value of \lambda
+%So far we have not attached any significance to the value of the Lagrange multiplier $\lambda$. We needed $\lambda$ only to find the constrained critical points, but made no use of its value. It turns out that $\lambda$ gives an approximation of the change in the value of the function $f(x,y)$ that we wish to maximize or minimize, when
+%the constant $c$ in the constraint equation $g(x,y)=c$ is changed by $1$.
+%
+%For example, in \autoref{exmp_rectlm} we showed that the constrained optimization problem
+%\[\text{Maximize }f(x,y) = xy\text{ subject to }g(x,y) = 2x + 2y = 20\]
+%had the solution $(x,y) = (5,5)$, and that $\lambda = x/2 = y/2$. Thus, $\lambda = 2.5$. In a similar fashion we could show that the constrained optimization problem
+%\[\text{Maximize }f(x,y) = xy\text{ subject to }g(x,y) = 2x + 2y = 21\]
+%has the solution $(x,y) = (5.25,5.25)$. So we see that the value of $f(x,y)$ at the constrained maximum increased from
+%$f(5,5)=25$ to $f(5.25,5.25)=27.5625$, i.e. it increased by $2.5625$ when we increased the value of $c$ in the constraint
+%equation $g(x,y)=c$ from $c=20$ to $c=21$. Notice that $\lambda = 2.5$ is close to $2.5625$, that is,
+%\[\lambda\approx\Delta f=f(\text{new max. pt})-f(\text{old max. pt}).\]
 
-For example, in \autoref{exmp_rectlm} we showed that the constrained optimization problem
-\begin{align*}
-  \text{Maximize: }& f(x,y) = xy\\
-  \text{given: }& g(x,y) = 2x + 2y = 20
-\end{align*}
-had the solution $(x,y) = (5,5)$, and that $\lambda = x/2 = y/2$. Thus, $\lambda = 2.5$. In a similar fashion we could show that the constrained optimization problem
-\begin{align*}
-  \text{Maximize: }& f(x,y) = xy\\
-  \text{given: }& g(x,y) = 2x + 2y = 21
-\end{align*}
-has the solution $(x,y) = (5.25,5.25)$. So we see that the value of $f(x,y)$ at the constrained maximum increased from
-$f(5,5)=25$ to $f(5.25,5.25)=27.5625$, i.e. it increased by $2.5625$ when we increased the value of $c$ in the constraint
-equation $g(x,y)=c$ from $c=20$ to $c=21$. Notice that $\lambda = 2.5$ is close to $2.5625$, that is,
-\[\lambda\approx\Delta f=f(\text{new max. pt})-f(\text{old max. pt}).\]
+\subsection*{Two Constraints}
 
-Finally, note that solving the equation $\nabla f(x,y) = \lambda \nabla g(x,y)$ means having to solve a system of two (possibly nonlinear) equations in three unknowns, which as we have seen before, may not be possible to do. And the 3-variable case can get even more complicated. All of this somewhat restricts the usefulness of Lagrange's method to relatively simple functions. Luckily there are many numerical methods for solving constrained optimization problems, though we will not discuss them here.%\footnote{See \cite{bss}.}
+% todo Tim check the phrasing of two constraints
+When we have two constraints, we can still use Lagrange multipliers once we've made a slight modification.  The optimization problem
+\[
+ \text{Maximize (or minimize) }f(x,y,z)\text{ subject to }
+ g(x,y,z)=c_1\text{ and }h(x,y,z)=c_2
+\]
+is satisfied when $\nabla f(x,y,z)=\lambda\nabla g(x,y,z)+\mu\nabla h(x,y,z)$.
+
+\example{ex_lang_two_const}{Optimizing with Two Constraints}{The plane $x-y+z=2$ intersects the cylinder $x^2+y^2=4$ in an ellipse. Find the points on the ellipse closest to and farthest from the origin.}{We can optimize the distance $\sqrt{x^2+y^2+z^2}$ by optimizing the function $f(x,y,z)=x^2+y^2+z^2$, which has a simpler derivative.  Let $g(x,y,z)=x-y+z$ be the plane constraint, and $h(x,y,z)=x^2+y^2$ be the cylinder constraint.  We see that
+\begin{align*}
+ \nabla f(x,y,z)&=\bracket{2x,2y,2z} \\
+ \nabla g(x,y,z)&=\bracket{1,-1,1} \\
+ \nabla h(x,y,z)&=\bracket{2x,2y,0}.
+\end{align*}
+The equation $\nabla f=\lambda\nabla g+\mu\nabla h$ means that 
+\begin{align*}
+ 2x&=\lambda+2\mu x\\
+ 2y&=-\lambda+2\mu y\\
+ 2z&=\lambda.
+\end{align*}
+Adding the first two equations tells us that $x+y=\mu(x+y)$, so that $\mu=1$ or $x=-y$.  If $\mu=1$, then $\lambda=z=0$, and the constraint equations become
+\begin{align*}
+ x-y&=2\\
+ x^2+y^2&=4.
+\end{align*}
+Substituting $x=y+2$ into $x^2+y^2=4$ tells us that $(y+2)^2+y^2=4$,
+% y^2+4y+4+y^2=4
+% 2y^2+4y=0
+% 2y(y+2)=0
+which simplifies to $2y(y+2)=0$.  This means that we need to look at the points $(2,0,0)$ and $(0,-2,0)$, which are both distance 2 from the origin.  If $x=-y$, then the constraint equations become
+\begin{align*}
+ 2x+z&=2\\
+ 2x^2&=4
+\end{align*}
+and we need to look at the points $(\pm\sqrt2,\mp\sqrt2,2\mp2\sqrt2)$.  These have distance
+$\sqrt{2+2+(2\mp2\sqrt2)^2}
+%=\sqrt{4+4\mp8\sqrt2+8}
+=\sqrt{16\mp8\sqrt2}$, which are both greater than 2.  Therefore, the closest points are $(2,0,0)$ and $(0,-2,0)$, while the furthest point is $(-\sqrt2,\sqrt2,2+\sqrt2)$.}
+
+Finally, note that solving the equation $\nabla f(x,y) = \lambda \nabla g(x,y)$ means having to solve a system of two (possibly nonlinear) equations in three unknowns, which as we have seen before, may not be possible to do. And the 3-variable case can get even more complicated. All of this somewhat restricts the usefulness of Lagrange's method to relatively simple functions. Luckily there are many numerical methods for solving constrained optimization problems, though we will not discuss them here.
 
 \printexercises{exercises/12_Lagrange_exercises}

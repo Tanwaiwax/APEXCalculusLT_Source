@@ -16,9 +16,10 @@ Using this process we can even evaluate definite integrals.
 \example{ex_iterated1}{Integrating functions of more than one variable}{Evaluate the integral $\ds \int_1^{2y} 2xy\ dx.$}
 {We find the indefinite integral as before, then apply the Fundamental Theorem of Calculus to evaluate the definite integral:
 \begin{align*}
-\int_1^{2y} 2xy\ dx &= x^2y\Big|_1^{2y}\\
-			&= (2y)^2y - (1)^2y \\
-			&= 4y^3-y.\eoehere
+ \int_1^{2y} 2xy\ dx
+ &= x^2y\Big|_1^{2y}\\
+ &= (2y)^2y - (1)^2y \\
+ &= 4y^3-y.\eoehere
 \end{align*}}
 
 We can also integrate with respect to $y$. In general,
@@ -26,7 +27,7 @@ $$\int_{h_1(y)}^{h_2(y)} f_x(x,y)\ dx = f(x,y)\Big|_{h_1(y)}^{h_2(y)} = f\big(h_
 and
 $$\int_{g_1(x)}^{g_2(x)} f_y(x,y)\ dy = f(x,y)\Big|_{g_1(x)}^{g_2(x)} = f\big(x,g_2(x)\big)-f\big(x,g_1(x)\big).$$
 
-Note that when integrating with respect to $x$, the bounds are functions of $y$ (of the form $x=h_1(y)$ and $x=h_2(y)$) and the final result is also a function of $y$. When integrating with respect to $y$, the bounds are functions of $x$ (of the form $y=g_1(x)$ and $y=g_2(x)$) and the final result is a function of $x$. Another example will help us understand this.
+Note that when integrating by $x$, the bounds do not depend on $x$, and the result is no longer a function of $x$.  When integrating by $y$, the bounds do not depend on $y$, and the result is no longer a function of $y$. Another example will help us understand this.
 
 \example{ex_iterated2}{Integrating functions of more than one variable}{Evaluate $\ds \int_1^x\big(5x^3y^{-3}+6y^2\big)\ dy$.}
 {We consider $x$ as staying constant and integrate with respect to $y$:
@@ -64,7 +65,9 @@ Let $a$, $b$, $c$ and $d$ be numbers and let $g_1(x)$, $g_2(x)$, $h_1(y)$ and $h
 \end{enumerate}}
 
 Again make note of the bounds of these iterated integrals.\\
-With $\ds \int_c^d\int_{h_1(y)}^{h_2(y)} f(x,y)\ dx\ dy$, $x$ varies from $h_1(y)$ to $h_2(y)$, whereas $y$ varies from $c$ to $d$. That is, the bounds of $x$ are \textit{curves}, the curves $x=h_1(y)$ and $x=h_2(y)$, whereas the bounds of $y$ are \textit{constants}, $y=c$ and $y=d$. It is useful to remember that when setting up and evaluating such iterated integrals, we integrate ``from curve to curve, then from point to point.''
+With $\ds \int_c^d\int_{h_1(y)}^{h_2(y)} f(x,y)\ dx\ dy$, $x$ varies from $h_1(y)$ to $h_2(y)$, whereas $y$ varies from $c$ to $d$. That is, the bounds of $x$ are \textit{curves}, the curves $x=h_1(y)$ and $x=h_2(y)$, whereas the bounds of $y$ are \textit{constants}, $y=c$ and $y=d$. It is useful to remember that
+after integrating with respect to a variable, that variable is no longer present.
+%when setting up and evaluating such iterated integrals, we integrate ``from curve to curve, then from point to point.''
 
 We now begin to investigate \textit{why} we are interested in iterated integrals and \textit{what} they mean.
 
@@ -125,13 +128,14 @@ A &= \int_1^5\int_{y}^{\frac{y+5}2}\ dx\ dy \\
 
 We can also find the area by integrating with respect to $y$ first. In this situation, though, we have two functions that act as the lower bound for the region $R$, $y=1$ and $y=2x-5$. This requires us to use two iterated integrals. Note how the $x$-bounds are different for each integral:
 \begin{align*}
-A &= \int_1^3\int_1^x 1\ dy \ dx &+& & &\int_3^5\int_{2x-5}^x1\ dy\ dx\\
-	&= \int_1^3\big(y\big)\Big|_1^x\ dx & + & & & \int_3^5\big(y\big)\Big|_{2x-5}^x\ dx\\
-	&= \int_1^3\big(x-1\big)\ dx & + & & & \int_3^5\big(-x+5\big)\ dx \\
-	&= 2 & + & & & 2 \\
+ A
+ &= \int_1^3\int_1^x 1\ dy \ dx &&+\qquad\int_3^5\int_{2x-5}^x1\ dy\ dx\\
+	&= \int_1^3\big(y\big)\Big|_1^x\ dx &&+\qquad\int_3^5\big(y\big)\Big|_{2x-5}^x\ dx\\
+	&= \int_1^3\big(x-1\big)\ dx &&+\qquad\int_3^5\big(-x+5\big)\ dx \\
+	&= 2 &&+\qquad2 \\
 	&=4.
 \end{align*}
-As expected, we get the same answer both ways.}
+As expected, we get the same answer both ways.  This equality will also be justified by \autoref{thm:fubini} in the next section.}
 
 \example{ex_iterated6}{Area of a plane region}{Find the area of the region enclosed by $y=2x$ and $y=x^2$, as shown in \autoref{fig:iterated6}. 
 \mfigure{0in}{Calculating the area of a plane region with iterated integrals in \autoref{ex_iterated6}.}{fig:iterated6}{figures/figiterated6}
@@ -162,8 +166,9 @@ Examples will help us develop this skill.
 }
 {We need to use the bounds of integration to determine the region we are integrating over. %Recall \autoref{idea:bounds_on_double}: the region $R$ is completely determined by these bounds, and not influenced at all by the integrand. Therefore, to rewrite the integral, we ignore the integrand.
 
-\mfigure{0in}{Sketching the region $R$ described by the iterated integral in \autoref{ex_double5}.}{fig:double5}{figures/figdouble5}
 The bounds tell us that $y$ is bounded by $0$ and $x/3$; $x$ is bounded by 0 and 6. We plot these four curves: $y=0$, $y=x/3$, $x=0$ and $x=6$ to find the region described by the bounds. \autoref{fig:double5} shows these curves, indicating that $R$ is a triangle.
+
+\mfigure{0in}{Sketching the region $R$ described by the iterated integral in \autoref{ex_double5}.}{fig:double5}{figures/figdouble5}
 
 To change the order of integration, we need to consider the curves that bound the $x$-values. We see that the lower bound is $x=3y$ and the upper bound is $x=6$. The bounds on $y$ are $0$ to $2$. Thus we can rewrite the integral as 
 $\ds \int_0^2\int_{3y}^6 1\ dx \ dy.$}

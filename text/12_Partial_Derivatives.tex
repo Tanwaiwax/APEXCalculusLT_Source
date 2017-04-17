@@ -21,8 +21,9 @@ Let $y$ be a function of $x$. We have studied in great detail the derivative of 
 3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.25,trim = 2mm 2mm 2mm 2mm,clip}{figures/figpartialintrob}
 %\myincludegraphics[scale=1.25,trim = 2mm 2mm 2mm 2mm,clip]{figures/figpartialintrob}\\[10pt]
 (b)}
+% todo fix the hash marks on the axes
 
-Consider the function $z=f(x,y) = x^2+2y^2$, as graphed in \autoref{fig:partialintro}(a). By fixing $y=2$, we focus our attention to all points on the surface where the $y$-value is 2, shown in both parts (a) and (b) of the figure. These points form a curve in space: $z = f(x,2) = x^2+8$ which is a function of just one variable. We can take the derivative of $z$ with respect to $x$ along this curve and find equations of tangent lines, et.c.
+Consider the function $z=f(x,y) = x^2+2y^2$, as graphed in \autoref{fig:partialintro}(a). By fixing $y=2$, we focus our attention to all points on the surface where the $y$-value is 2, shown in both parts (a) and (b) of the figure. These points form a curve in space: $z = f(x,2) = x^2+8$ which is a function of just one variable. We can take the derivative of $z$ with respect to $x$ along this curve and find equations of tangent lines, etc.
 
 The key notion to extract from this example is: by treating $y$ as  constant (it does not vary) we can consider how $z$ changes with respect to $x$. In a similar fashion, we can hold $x$ constant and consider how $z$ changes with respect to $y$. This is the underlying principle of \textbf{partial derivatives}. We state the formal, limit--based definition first, then show how to compute these partial derivatives without directly taking limits.
 
@@ -35,7 +36,7 @@ The key notion to extract from this example is: by treating $y$ as  constant (it
 	\item The \textbf{partial derivative of $f$ with respect to $y$} is:
 	$$f_y(x,y) = \lim_{h\to 0} \frac{f(x,y+h) - f(x,y)}h.$$
 	
-	%\item		If $f_x$ and $f_y$ are continuous on $S$, then $f$ is \textbf{differentiable} on $S$.\footnote{This definition of differentiability is mathematically ``weak'' but easy to understand; see \autoref{sec:total_differential} for a stronger definition that is less intuitive.}
+	%\item		If $f_x$ and $f_y$ are continuous on $S$, then $f$ is \textbf{differentiable} on $S$. (This definition of differentiability is mathematically ``weak'' but easy to understand; see \autoref{sec:total_differential} for a stronger definition that is less intuitive.)
 	\end{enumerate}
 	\index{partial derivative}\index{derivative!partial}}
 
@@ -133,7 +134,7 @@ Since the magnitude of $f_x$ is greater than the magnitude of $f_y$ at $(2,1)$, 
 
 \subsection*{Second Partial Derivatives}
 
-Let $z=f(x,y)$. We have learned to find the partial derivatives $f_x(x,y)$ and $f_y(x,y)$, which are each functions of $x$ and $y$. Therefore we can take partial derivatives of them, each with respect to $x$ and $y$. We define these ``second partials'' along with the notation, give examples, then discuss their meaning.
+Let $z=f(x,y)$. We have learned to find the partial derivatives $f_x(x,y)$ and $f_y(x,y)$, which are each functions of $x$ and $y$. Therefore we can take partial derivatives of these, each with respect to $x$ and $y$. We define these ``second partials'' along with the notation, give examples, then discuss their meaning.
 
 \definition{def:second_partial}{Second Partial Derivative, Mixed Partial Derivative}
 {Let $z=f(x,y)$ be continuous on an open set $S$.
@@ -153,17 +154,18 @@ Similar definitions hold for $\ds \frac{\partial^2f}{\py^2} = f_{yy}$ and $\ds \
 The second partial derivatives $f_{xy}$ and $f_{yx}$ are \textbf{mixed partial derivatives}.
 \index{partial derivative!mixed}\index{partial derivative!second derivative}\index{derivative!mixed partial}}
 
+\mnote{\textbf{Note:} The terms in \autoref{def:second_partial} all depend on limits, so each definition comes with the caveat ``where the limit exists.''
+
+The way to keep track of the order is to start with the variable nearest to the function.  Unfortunately, this means that while $\frac{\partial^2f}{\partial y\partial x}=f_{xy}$ both mean ``differentiate with respect to $x$ first'', the $x$ and $y$ appear in a different order.  Fortunately \autoref{thm:mixed_partial} will soon tell us that the order doesn't usually matter.}
+
 The notation of second partial derivatives gives some insight into the notation of the second derivative of a function of a single variable. If $y=f(x)$, then $\ds \fp'(x) = \frac{d^2 y}{dx^2}$. The ``$d^2y$'' portion means ``take the derivative of $y$ twice,'' while ``$dx^2$'' means ``with respect to $x$ both times.'' When we only know of functions of a single variable, this latter phrase seems silly: there is only one variable to take the derivative with respect to. Now that we understand functions of multiple variables, we see the importance of specifying which variables we are referring to.
-
-\mnote{\textbf{Note:} The terms in \autoref{def:second_partial} all depend on limits, so each definition comes with the caveat ``where the limit exists.''} 
-
 
 \example{ex_partial6}{Second partial derivatives}{For each of the following, find all six first and second partial derivatives. That is, find 
 $$f_x,\quad f_y,\quad f_{xx},\quad f_{yy},\quad f_{xy}\quad \text{and}\quad f_{yx}\,.$$
 \begin{enumerate}
 	\item $f(x,y) = x^3y^2 + 2xy^3+\cos x$
 	\item	$\ds f(x,y) = \frac{x^3}{y^2}$
-	\item	$f(x,y)=e^{x}\sin(x^2y)$
+%	\item	$f(x,y)=e^{x}\sin(x^2y)$
 \end{enumerate}
 }
 {In each, we give $f_x$ and $f_y$ immediately and then spend time deriving the second partial derivatives.
@@ -178,7 +180,7 @@ $$f_x,\quad f_y,\quad f_{xx},\quad f_{yy},\quad f_{xy}\quad \text{and}\quad f_{y
 	f_{xy}(x,y) &= \frac{\partial}{\py}\big(f_x\big) = \frac{\partial}{\py}\big(3x^2y^2+2y^3-\sin x\big) = 6x^2y+6y^2 \\
 	f_{yx}(x,y) &= \frac{\partial}{\px}\big(f_y\big) = \frac{\partial}{\px}\big(2x^3y+6xy^2\big) = 6x^2y+6y^2
 	\end{align*}
-
+%
 	\item\mbox{}\\[-2\baselineskip]
 	\begin{align*}
 	f(x,y) &= \frac{x^3}{y^2} = x^3y^{-2} \\
@@ -187,23 +189,22 @@ $$f_x,\quad f_y,\quad f_{xx},\quad f_{yy},\quad f_{xy}\quad \text{and}\quad f_{y
 	f_{xx}(x,y) &= \frac{\partial}{\px}\big(f_x\big) = \frac{\partial}{\px}\big(\frac{3x^2}{y^2}\big) = \frac{6x}{y^2} \\
 	f_{yy}(x,y) &= \frac{\partial}{\py}\big(f_y\big) = \frac{\partial}{\py}\big(-\frac{2x^3}{y^3}\big) = \frac{6x^3}{y^4} \\
 	f_{xy}(x,y) &= \frac{\partial}{\py}\big(f_x\big) = \frac{\partial}{\py}\big(\frac{3x^2}{y^2}\big) = -\frac{6x^2}{y^3} \\
-	f_{yx}(x,y) &= \frac{\partial}{\px}\big(f_y\big) = \frac{\partial}{\px}\big(-\frac{2x^3}{y^3}\big) = -\frac{6x^2}{y^3}
+	f_{yx}(x,y) &= \frac{\partial}{\px}\big(f_y\big) = \frac{\partial}{\px}\big(-\frac{2x^3}{y^3}\big) = -\frac{6x^2}{y^3}.\eoehere
 	\end{align*}
-
-\item	$f(x,y) = e^x\sin(x^2y)$
-
-  Because the following partial derivatives get rather long, we omit the extra notation and just give the results. In several cases, multiple applications of the Product and Chain Rules will be necessary, followed by some basic combination of like terms.
-  \begin{align*}
-	f_x(x,y) &= e^x\sin(x^2y) + 2xye^x\cos(x^2y) \\
-	f_y(x,y) &= x^2e^x\cos(x^2y) \\
-	f_{xx}(x,y) &= e^x\sin(x^2y)+4xye^x\cos(x^2y)+2ye^x\cos(x^2y) -4x^2y^2e^x\sin(x^2y) \\
-	f_{yy}(x,y) &=  -x^4e^x\sin(x^2y) \\
-	f_{xy}(x,y) &= x^2e^x\cos(x^2y)+2xe^x\cos(x^2y)-2x^3ye^x\sin(x^2y) \\
-	f_{yx}(x,y) &= x^2e^x\cos(x^2y)+2xe^x\cos(x^2y)-2x^3ye^x\sin(x^2y)\eoehere
-  \end{align*}
+%
+%\item	$f(x,y) = e^x\sin(x^2y)$
+%  Because the following partial derivatives get rather long, we omit the extra notation and just give the results. In several cases, multiple applications of the Product and Chain Rules will be necessary, followed by some basic combination of like terms.
+%  \begin{align*}
+%	f_x(x,y) &= e^x\sin(x^2y) + 2xye^x\cos(x^2y) \\
+%	f_y(x,y) &= x^2e^x\cos(x^2y) \\
+%	f_{xx}(x,y) &= e^x\sin(x^2y)+4xye^x\cos(x^2y)+2ye^x\cos(x^2y) -4x^2y^2e^x\sin(x^2y) \\
+%	f_{yy}(x,y) &=  -x^4e^x\sin(x^2y) \\
+%	f_{xy}(x,y) &= x^2e^x\cos(x^2y)+2xe^x\cos(x^2y)-2x^3ye^x\sin(x^2y) \\
+%	f_{yx}(x,y) &= x^2e^x\cos(x^2y)+2xe^x\cos(x^2y)-2x^3ye^x\sin(x^2y)\eoehere
+%  \end{align*}
 \end{enumerate}}
 
-Notice how in each of the three functions in \autoref{ex_partial6}, $f_{xy} = f_{yx}$. Due to the complexity of the examples, this likely is not a coincidence. The following theorem states that it is not.
+Notice how in both of the functions in \autoref{ex_partial6}, $f_{xy} = f_{yx}$. Due to the complexity of the examples, this likely is not a coincidence. The following theorem states that it is not.
 
 \theorem{thm:mixed_partial}{Mixed Partial Derivatives}
 {Let $f$ be defined such that $f_{xy}$ and $f_{yx}$ are continuous on an open set $S$. Then for each point $(x,y)$ in $S$, $f_{xy}(x,y) = f_{yx}(x,y)$.}
@@ -220,6 +221,7 @@ Now consider $z=f(x,y)$. Similar statements can be made about $f_{xx}$ and $f_{y
 
 Similarly, $f_{yy}$ measures the concavity in the $y$-direction. If $f_{yy}(x,y)>0$, then $f_y$ is increasing with respect to $y$ and the graph of $f$ will be concave up in the $y$-direction. Appealing to the rolling meadow analogy again, $f_{yy}$ measures whether one's path is concave up/down when walking due north.
 
+% todo are we sure about this metaphor?
 We now consider the mixed partials $f_{xy}$ and $f_{yx}$. The mixed partial $f_{xy}$ measures how much $f_x$ changes with respect to $y$. Once again using the rolling meadow analogy, $f_{x}$ measures the slope if one walks due east. Looking east, begin walking \textit{north} (side--stepping). Is the path towards the east getting steeper? If so, $f_{xy}>0$. Is the path towards the east not changing in steepness? If so, then $f_{xy}=0$. A similar thing can be said about $f_{yx}$: consider the steepness of paths heading north while side--stepping to the east.
 
 The following example examines these ideas with concrete numbers and graphs.
@@ -228,11 +230,10 @@ The following example examines these ideas with concrete numbers and graphs.
 {We find that:
 
 $f_x(x,y) = 2x+y$,\quad  $f_y(x,y) = -2y+x$,\quad $f_{xx}(x,y) = 2$, \quad $f_{yy}(x,y) = -2$ and $f_{xy}(x,y) = f_{yx}(x,y) = 1$. Thus at $(-1/2,1/2)$ we have 
-$$f_x(-1/2,1/2) = -1/2,\qquad f_y(-1/2,1/2) = -3/2.$$
-The slope of the tangent line at $(-1/2, 1/2, -1/4)$ in the direction of $x$ is $-1/2$: if one moves from that point parallel to the $x$-axis, the instantaneous rate of change will be $-1/2$. The slope of the tangent line
- at this point in the direction of $y$ is $-3/2$: if one moves from this point parallel to the $y$-axis, the instantaneous rate of change will be $-3/2$. These tangents lines are graphed in \autoref{fig:partial7}(a) and (b), respectively, where the tangent lines are drawn in a solid line. 
+\[f_x(-1/2,1/2) = -1/2,\qquad f_y(-1/2,1/2) = -3/2.\]
+The slope of the tangent line at $(-1/2, 1/2, -1/4)$ in the direction of $x$ is $-1/2$: if one moves from that point parallel to the $x$-axis, the instantaneous rate of change will be $-1/2$. The slope of the tangent line at this point in the direction of $y$ is $-3/2$: if one moves from this point parallel to the $y$-axis, the instantaneous rate of change will be $-3/2$. These tangents lines are graphed in \autoref{fig:partial7}(a) and (b), respectively, where the tangent lines are drawn in a solid line. 
+
 \mtable{Understanding the second partial derivatives in \autoref{ex_partial7}.}{fig:partial7}{%
-\begin{tabular}{c}
 \myincludegraphicsthree{width=150pt,3Dmenu,activate=onclick,deactivate=onclick,
 3Droll=0.4263461176034552,
 3Dortho=0.004999999888241291,
@@ -250,9 +251,7 @@ The slope of the tangent line at $(-1/2, 1/2, -1/4)$ in the direction of $x$ is 
 3Droo=129.9999903526944,
 3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.25,trim=0mm 4mm 0mm 0mm,clip}{figures/figpartial6b}\\
 %\myincludegraphics[scale=1.25,trim=0mm 4mm 0mm 0mm,clip]{figures/figpartial6b}\\
-(b)
-\end{tabular}}
-
+(b)}
 Now consider only \autoref{fig:partial7}(a). Three directed tangent lines are drawn (two are dashed), each in the direction of $x$; that is, each has a slope determined by $f_x$. Note how as $y$ increases, the slope of these lines get closer to $0$. Since the slopes are all negative, getting closer to 0 means the \textit{slopes are increasing.} The slopes given by $f_x$ are increasing as $y$ increases, meaning $f_{xy}$ must be positive. 
 
 Since $f_{xy}=f_{yx}$, we also expect $f_y$ to increase as $x$ increases. Consider \autoref{fig:partial7}(b) where again three directed tangent lines are drawn, this time each in the direction of $y$ with slopes determined by $f_y$. As $x$ increases, the slopes become less steep (closer to 0). Since these are negative slopes, this means the slopes are increasing.
@@ -336,7 +335,7 @@ In the previous example we saw that $f_{xxy} = f_{yxx}$; this is not a coinciden
 
 This can be useful at times. Had we known this, the second part of \autoref{ex_partial9} would have been much simpler to compute. Instead of computing $f_{xyz}$ in the $x$, $y$ then $z$ orders, we could have applied the $z$, then $x$ then $y$ order (as $f_{xyz} = f_{zxy}$). It is easy to see that $f_z = -\sin z$; then $f_{zx}$ and $f_{zxy}$ are clearly 0 as $f_z$ does not contain an $x$ or $y$.\\
 
-A brief review of this section: partial derivatives measure the instantaneous rate of change of a multivariable function with respect to one variable. %When $z=f(x,y)$, $f_x$ measures the rate at which $z$ changes as we move parallel to the $x$-axis. 
+We have seen that partial derivatives measure the instantaneous rate of change of a multivariable function with respect to one variable. %When $z=f(x,y)$, $f_x$ measures the rate at which $z$ changes as we move parallel to the $x$-axis. 
 With $z=f(x,y)$, the partial derivatives $f_x$ and $f_y$ measure the instantaneous rate of change of $z$ when moving parallel to the $x$- and $y$-axes, respectively. How do we measure the rate of change at a point when we do not move parallel to one of these axes? What if we move in the direction given by the vector $\bracket{2,1}$? Can we measure that rate of change? The answer is, of course, yes, we can. This is the topic of \autoref{sec:directional_derivative}. First, we need to define what it means for a function of two variables to be \textit{differentiable.}
 
 \printexercises{exercises/12_03_exercises}

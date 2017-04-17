@@ -68,14 +68,13 @@ where $\vec T(t)$ is the unit tangent vector. \autoeqref{eq:vvfarc2} is often mi
 
 \subsection*{Curvature}
 
-Consider points $A$ and $B$ on the curve graphed in \autoref{fig:curvatureintro}(a). One can readily argue that the curve curves more sharply at $A$ than at $B$. It is useful to use a number to describe how sharply the curve bends; that number is the \textbf{curvature} of the curve.
-\mtable{Establishing the concept of curvature.}{fig:curvatureintro}{%
-\begin{tabular}{c}
+\mtable[-1in]{Establishing the concept of curvature.}{fig:curvatureintro}{%
 \myincludegraphics{figures/figcurvature_intro}\\
 (a)\\[10pt]
 \myincludegraphics{figures/figcurvature_introb}\\
-(b)
-\end{tabular}}
+(b)}
+
+Consider points $A$ and $B$ on the curve graphed in \autoref{fig:curvatureintro}(a). One can readily argue that the curve curves more sharply at $A$ than at $B$. It is useful to use a number to describe how sharply the curve bends; that number is the \textbf{curvature} of the curve.
 
 We derive this number in the following way. Consider \autoref{fig:curvatureintro}(b), where  unit tangent vectors are graphed around points $A$ and $B$. Notice how the direction of the unit tangent vector changes quite a bit near $A$, whereas it does not change as much around $B$. This leads to an important concept: measuring the rate of change of the unit tangent vector with respect to arc length gives us a measurement of curvature.
 
@@ -108,19 +107,65 @@ We use  \autoref{def:curvature}  to find the curvature of the line in \autoref{e
 It probably comes as no surprise that the curvature of a line is 0. (How ``curvy\primeskip'' is a line? It is not curvy at all.)}
 
 
-While the definition of curvature is a beautiful mathematical concept, it is nearly impossible to use most of the time; writing $\vec r$ in terms of the arc length parameter is generally very hard. Fortunately, there are other methods of calculating this value that are much easier. There is a tradeoff: the definition is ``easy\primeskip'' to understand though hard to compute, whereas these other formulas are easy to compute though it may be hard to understand why they work.
+While the definition of curvature is a useful mathematical concept, it is nearly impossible to use most of the time; writing $\vec r$ in terms of the arc length parameter is generally very hard. Fortunately, there are other methods of calculating this value that are much easier. There is a trade-off: the definition is ``easy\primeskip'' to understand though hard to compute, whereas these other formulas are easy to compute though it may be hard to understand why they work.
 
 \theorem{thm:curvature_formulas}{Formulas for Curvature}
 {Let $C$ be a smooth curve on an open interval $I$ in the plane or in space.
 \index{curvature!equations for}
 \begin{enumerate}
 	\item If $C$ is defined by $y=f(x)$, then 
-	$$\kappa = \frac{|\fp'(x)|}{\Big(1+\big(\fp(x)\big)^2\Big)^{3/2}}.$$
+	$$\kappa = \frac{\abs{\fp'(x)}}{\Big(1+\big(\fp(x)\big)^2\Big)^{3/2}}.$$
 	\item	If $C$ is defined as a vector--valued function in the plane, $\vec r(t) =\bracket{x(t), y(t)}$, then
-	$$\kappa = \frac{|x\primeskip'y\primeskip''-x\primeskip''y\primeskip'|}{\big((x\primeskip')^2+(y\primeskip')^2\big)^{3/2}}.$$
+	$$\kappa = \frac{\abs{x\primeskip'y\primeskip''-x\primeskip''y\primeskip'}}{\big((x\primeskip')^2+(y\primeskip')^2\big)^{3/2}}.$$
 	\item If $C$ is defined in space by a vector--valued function $\vec r(t)$, then
 $$\kappa = \frac{\norm{\vec T\,'(t)}}{\norm{\vrp(t)}} = \frac{\norm{\vrp(t)\times\vrp'(t)}}{\norm{\vrp(t)}^3} = \frac{\vec a(t)\cdot \vec N(t)}{\norm{\vec v(t)}^2}.$$
 \end{enumerate}}
+
+\begin{proof}
+We'll prove statement 3; statements 1 and 2 are applications that we leave to the exercises.  By the chain rule and then \autoeqref{eq:vvfarc3},
+\[
+\frac{d\vec T(t)}{dt}
+=\frac{d\vec T(s)}{ds}\frac{ds}{dt}
+=\frac{d\vec T(s)}{ds}\norm{\vrp(t)},
+\]
+so that
+\[
+\kappa=\norm{\frac{d\vec T(s)}{ds}}
+=\norm{\frac{\frac{d\vec T(t)}{dt}}{\norm{\vrp(t)}}}
+=\frac{\norm{\frac{d\vec T(t)}{dt}}}{\norm{\vrp(t)}}
+=\frac{\norm{\vec T\,'(t)}}{\norm{\vrp(t)}}.
+\]
+Now, $\vrp(t)=\norm{\vrp(t)}\vec T(t)$ so that
+\begin{align*}
+ \vrp'(t)&=\left(\norm{\vrp(t)}\right)'\vec T(t)+\norm{\vrp(t)}\vec T\,'(t)
+ \qquad\text{and}\\
+ \vrp(t)\times\vrp'(t)
+ &=\norm{\vrp(t)}\vec T(t)\times\norm{\vrp(t)}\vec T\,'(t)
+ =\norm{\vrp(t)}^2\vec T(t)\times\vec T\,'(t)
+\end{align*}
+Because $\norm{\vec T}=1$, \autoref{thm:vects_of_constant_length} tells us that $\vec T$ and $\vec T\,'$ are orthogonal.  This means that
+\begin{align*}
+ \norm{\vrp(t)\times\vrp'(t)}
+ &=\norm{\vrp(t)}^2\norm{\vec T(t)}\norm{\vec T\,'(t)}
+ =\norm{\vrp(t)}^2\norm{\vec T\,'(t)},\qquad\text{and}\\
+ \kappa
+ &=\frac{\norm{\vec T\,'(t)}}{\norm{\vrp(t)}}
+ =\frac{\norm{\vrp(t)\times\vrp'(t)}}{\norm{\vrp(t)}^3}.
+\end{align*}
+\autoref{thm:acc_plane} tells us that $\vrp'(t)=a_T\vec T(t)+(\vrp'(t)\cdot\vec N(t))\vec N(t)$.  Since $\vrp(t)=\vec v(t)$ and $T(t)$ are parallel, their cross product is zero and
+\[
+ \kappa
+ =\frac{\norm{\vec v(t)\times[a_T\vec T(t)+(\vrp'(t)\cdot\vec N(t))\vec N(t)]}}
+ {\norm{\vec v(t)}^3}
+ =\frac{\norm{\vec v(t)\times(\vec a(t)\cdot\vec N(t))\vec N(t)}}{\norm{\vec v(t)}^3}.
+\]
+Since $\vec v(t)$ and $\vec N(t)$ are orthogonal, the norm of their cross product is the product of their norms, and
+\[
+\kappa
+=\frac{\norm{\vec v(t)}(\vec a(t)\cdot\vec N(t))\norm{\vec N(t)}}{\norm{\vec v(t)}^3}
+=\frac{\vec a(t)\cdot\vec N(t)}{\norm{\vec v(t)}^2}.\qedhere
+\]
+\end{proof}
 
 We practice using these formulas.
 
@@ -130,7 +175,7 @@ We practice using these formulas.
 
 We compute $\kappa$ using the second part of \autoref{thm:curvature_formulas}.
 \begin{align*}
-\kappa &= \frac{|(-r\sin t)(-r\sin t) - (-r\cos t)(r\cos t)|}{\big( (-r\sin t)^2+(r\cos t)^2\big)^{3/2}} \\
+\kappa &= \frac{\abs{(-r\sin t)(-r\sin t) - (-r\cos t)(r\cos t)}}{\big( (-r\sin t)^2+(r\cos t)^2\big)^{3/2}} \\
 			&= \rule{0pt}{20pt}\frac{r^2(\sin^2t+\cos^2t)}{\big(r^2(\sin^2t+\cos^2t)\big)^{3/2}}\\
 			&= \rule{0pt}{20pt}\frac{r^2}{r^3} = \frac1r.
 \end{align*}
@@ -145,27 +190,30 @@ Let a point $P$ on a smooth curve $C$  be given, and let $\kappa$ be the curvatu
 		\item	has a common tangent line as $C$ at $P$ and
 		\item	has radius $r=1/\kappa$ (hence has curvature $\kappa$)
 	\end{itemize}
-is the \textbf{osculating circle}, or \textbf{circle of curvature}, to $C$ at $P$, and $r$ is the \textbf{radius of curvature}. \index{curvature!of circle}\index{osculating circle}\index{circle of curvature}\index{radius of curvature}\index{curvature!radius of}%
-\autoref{fig:curvature_osculate} shows the graph of the curve seen earlier in \autoref{fig:curvatureintro} and its osculating circles at $A$ and $B$. A sharp turn corresponds to a circle with a small radius; a gradual turn corresponds to a circle with a large radius. Being able to think of curvature in terms of the radius of a circle is very useful.
 \mfigure{0in}{Illustrating the osculating circles for the curve seen in \autoref{fig:curvatureintro}.}{fig:curvature_osculate}{figures/figcurvature_introc}
- %\\
-%\mnote{\textbf{Note:} 
- (The word ``osculating'' comes from a Latin word related to kissing; an osculating circle ``kisses'' the graph at a particular point. Many beautiful ideas in mathematics have come from studying the osculating circles to a curve.)
+is the \textbf{osculating circle}, or \textbf{circle of curvature}, to $C$ at $P$, and $r$ is the \textbf{radius of curvature}. \index{curvature!of circle}\index{osculating circle}\index{circle of curvature}\index{radius of curvature}\index{curvature!radius of}%
+\autoref{fig:curvature_osculate} shows the graph of the curve seen earlier in \autoref{fig:curvatureintro} and its osculating circles at $A$ and $B$. A sharp turn corresponds to a circle with a small radius; a gradual turn corresponds to a circle with a large radius. Being able to think of curvature in terms of the radius of a circle is very useful. (The word ``osculating'' comes from a Latin word related to kissing; an osculating circle ``kisses'' the graph at a particular point. Many useful ideas in mathematics have come from studying the osculating circles to a curve.)
+
+\mfigure{0in}{Examining the curvature of $y=x^2$.}{fig:curvature3}{figures/figcurvature3}
 
 \example{ex_curvature3}{Finding curvature}{Find the curvature of the parabola defined by $y=x^2$ at the vertex and at $x=1$.}
 {We use the first formula found in \autoref{thm:curvature_formulas}. 
 \begin{align*}
-\kappa(x) &= \frac{|2|}{\big(1+(2x)^2\big)^{3/2}} \\
+\kappa(x) &= \frac{\abs 2}{\big(1+(2x)^2\big)^{3/2}} \\
 			&= \frac2{\big(1+4x^2\big)^{3/2}}.
-\end{align*}\
-\mfigure{0in}{Examining the curvature of $y=x^2$.}{fig:curvature3}{figures/figcurvature3}
-At the vertex ($x=0$), the curvature is $\kappa = 2$. At $x=1$, the curvature is $\kappa = 2/(5)^{3/2} \approx 0.179.$ So at $x=0$, the curvature of $y=x^2$ is that of a circle of radius $1/2$; at $x=1$, the curvature is that of a circle with radius $\approx 1/0.179 \approx 5.59$. This is illustrated in \autoref{fig:curvature3}. At $x=3$, the curvature is $0.009$; the graph is nearly straight as the curvature is very close to 0.}
+\end{align*}
+At the vertex ($x=0$), the curvature is $\kappa = 2$. At $x=1$, the curvature is $\kappa = 2/(5)^{3/2}$. So at $x=0$, the curvature of $y=x^2$ is that of a circle of radius $1/2$; at $x=1$, the curvature is that of a circle with radius $(5)^{3/2}/2\approx 5.59$. This is illustrated in \autoref{fig:curvature3}. At $x=3$, the curvature is $0.009$; the graph is nearly straight as the curvature is very close to 0.}
 
 \example{ex_curvature4}{Finding curvature}{Find where the curvature of $\vec r(t) =\bracket{t, t^2, 2t^3}$ is maximized.}
 {We use the third formula in \autoref{thm:curvature_formulas} as $\vrt$ is defined in space. We leave it to the reader to verify that 
 $$\vrp(t) =\bracket{1,2t,6t^2},\quad \vrp'(t) =\bracket{0,2,12t},\quad \text{and}\quad \vrp(t)\times \vrp'(t) =\bracket{12t^2,-12t,2}.$$
-\mtable{Understanding the curvature of a curve in space.}{fig:curvature4}{%
-\begin{tabular}{c}
+Thus 
+\begin{align*}
+\kappa(t) &= \frac{\norm{\vrp(t)\times\vrp'(t)}}{\norm{\vrp(t)}^3} \\
+				&= \rule{0pt}{20pt}\frac{\norm{\bracket{12t^2,-12t,2}}}{\norm{\bracket{1,2t,6t^2}}^3} \\
+				&= \rule{0pt}{20pt}\frac{\sqrt{\rule{0pt}{8.5pt}144t^4+144t^2+4}}{\left(\sqrt{\rule{0pt}{8.5pt}1+4t^2+36t^4\ }\right)^3}
+\end{align*}
+\mtable[-6\baselineskip]{Understanding the curvature of a curve in space.  The top is $\kappa$ as a function of $t$; the bottom is $\vrt$ as a function of $t$.}{fig:curvature4}{%
 \myincludegraphics{figures/figcurvature4a}\\
 (a)\\[10pt]
 \myincludegraphicsthree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
@@ -176,15 +224,7 @@ $$\vrp(t) =\bracket{1,2t,6t^2},\quad \vrp'(t) =\bracket{0,2,12t},\quad \text{and
 3Droo=150,
 3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.25,trim=5mm 5mm 5mm 4mm,clip}{figures/figcurvature4}\\
 %\myincludegraphics[scale=1.25,trim=5mm 5mm 5mm 4mm,clip]{figures/figcurvature4}\\
-(b)
-\end{tabular}
-}
-Thus 
-\begin{align*}
-\kappa(t) &= \frac{\norm{\vrp(t)\times\vrp'(t)}}{\norm{\vrp(t)}^3} \\
-				&= \rule{0pt}{20pt}\frac{\norm{\bracket{12t^2,-12t,2}}}{\norm{\bracket{1,2t,6t^2}}^3} \\
-				&= \rule{0pt}{20pt}\frac{\sqrt{\rule{0pt}{8.5pt}144t^4+144t^2+4}}{\left(\sqrt{\rule{0pt}{8.5pt}1+4t^2+36t^4\ }\right)^3}
-\end{align*}
+(b)}
 While this is not a particularly ``nice'' formula, it does explictly tell us what the curvature is at a given $t$ value. To maximize $\kappa(t)$, we should solve $\kappa'(t)=0$ for $t$. This is doable, but \emph{very} time consuming. Instead, consider the graph of $\kappa(t)$ as given in \autoref{fig:curvature4}(a). We see that $\kappa$ is maximized at two $t$ values; using a numerical solver, we find these values are $t\approx\pm 0.189$. In part (b) of the figure we graph $\vrt$ and indicate the points where curvature is maximized.}
 
 \subsection*{Curvature and Motion}
@@ -243,6 +283,8 @@ Using \autoeqref{eq:curvature_an}, we can compute the acceleration normal to the
 							&= 8.07\text{ft/s}^2.
 \end{align*}
 Note that each acceleration is similar; this is by design. Considering the classic ``Force $=$ mass $\times$ acceleration'' formula, this acceleration must be kept small in order for the tires of a vehicle to keep a ``grip'' on the road. If one travels on a turn of radius 310ft at a rate of 50mph, the acceleration is double, at 17.35ft/s$^2$. If the acceleration is too high, the frictional force created by the tires may not be enough to keep the car from sliding. Civil engineers routinely compute a ``safe'' design speed, then subtract 5-10mph to create the posted speed limit for additional safety.}
+
+% todo add some text about the Frenet frame
 
 We end this chapter with a reflection on what we've covered. We started with vector--valued functions, which may have seemed at the time to be just another way of writing parametric equations. However, we have seen that the vector perspective has given us great insight into the behavior of functions and the study of motion. Vector--valued position functions convey displacement, distance traveled, speed, velocity, acceleration and curvature information, each of which has great importance in science and engineering.
 

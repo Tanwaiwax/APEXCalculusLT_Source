@@ -20,7 +20,7 @@ Two vectors are \textbf{equal} if they have the same magnitude and direction.
 
 \autoref{fig:vectintro1} shows multiple instances of the same vector. Each directed line segment has the same direction and length (magnitude), hence each is the same vector.
 
-%Given two points $P$ and $Q$ (either in the plane or in space), the line segment that starts at $P$ and ends at $Q$ is a vector, denoted $\vv{PQ}$. The point $P$ is said to be the \textbf{initial} point of the vector, and the point $Q$ is the \textbf{terminal point}. We define the magnitude of $\vv{PQ}$ as the length of the line segment $\overline{PQ}$: $||\vv{PQ}|| = \norm{\overline{PQ}}$.
+%Given two points $P$ and $Q$ (either in the plane or in space), the line segment that starts at $P$ and ends at $Q$ is a vector, denoted $\vv{PQ}$. The point $P$ is said to be the \textbf{initial} point of the vector, and the point $Q$ is the \textbf{terminal point}. We define the magnitude of $\vv{PQ}$ as the length of the line segment $\overline{PQ}$: $\norm{\vv{PQ}}=\norm{\overline{PQ}}$.
 
 We use $\mathbb{R}^2$ (pronounced ``r two'') to represent all the vectors in the plane, and use $\mathbb{R}^3$ (pronounced ``r three'') to represent all the vectors in space.\index{r@$\mathbb{R}$}
 
@@ -240,7 +240,7 @@ We prefer the given definition of parallel as it is grounded in the fact that un
 
 If one graphed all unit vectors in $\mathbb{R}^2$ with the initial point at the origin, then the terminal points would all lie on the unit circle. Based on what we know from trigonometry, we can then say that the component form of all unit vectors in $\mathbb{R}^2$ is $\bracket{\cos\theta,\sin\theta}$ for some angle $\theta$.
 
-A similar construction in $\mathbb{R}^3$ shows that the terminal points all lie on the unit sphere. These vectors also have a particular component form, but its derivation is not as straightforward as the one for unit vectors in $\mathbb{R}^2$. Important concepts about unit vectors are given in the  following Key Idea. 
+A similar construction in $\mathbb{R}^3$ shows that the terminal points all lie on the unit sphere. These vectors also have a particular component form, but its derivation is not as straightforward as the one for unit vectors in $\mathbb{R}^2$. Important concepts about unit vectors are given in \autoref{idea:unit_vectors} below.
 
 \keyidea{idea:unit_vectors}{Unit Vectors}
 {\mbox{}\\[-2\baselineskip]\begin{enumerate}
@@ -276,7 +276,11 @@ m_1\cos120^\circ + m_2\cos45^\circ &=0 \\
 m_1\sin120^\circ + m_2\sin45^\circ &=50
 \end{align*}
 This is a simple 2-equation, 2-unkown system of linear equations. We leave it to the reader to verify that the solution is 
-$$m_1=50(\sqrt{3}-1) \approx 36.6;\qquad m_2=\frac{50\sqrt{2}}{1+\sqrt{3}} \approx 25.88.$$
+\[
+m_1=50(\sqrt{3}-1)\text{lb}% \approx 36.6
+;\qquad
+m_2=\frac{50\sqrt{2}}{1+\sqrt{3}}\text{lb}.% \approx 25.88.
+\]
 
 It might seem odd that the sum of the forces applied to the chains is more than 50lb. We leave it to a physics class to discuss the full details, but offer this short explanation. Our equations were established so that the \textit{vertical} components of each force sums to 50lb, thus supporting the weight. Since the chains are at an angle, they also pull against each other, creating an ``additional'' horizontal force while holding the weight in place.}
 
@@ -311,10 +315,26 @@ Unit vectors were very important in the previous calculation; they allowed us to
 		&=\bracket{4,-5,2}
 	\end{align*}
 \end{enumerate}
-These two examples demonstrate that converting between component form and the standard unit vectors is rather straightforward. Many mathematicians prefer component form, and it is the preferred notation in this text. Many engineers prefer using the standard unit vectors, and many engineering text use that notation.}
+These two examples demonstrate that converting between component form and the standard unit vectors is rather straightforward. Many mathematicians prefer component form, and it is the preferred notation in this text. Many engineers prefer using the standard unit vectors, and many engineering texts use that notation.}
 
-\example{ex_vect8}{Finding Component Force}{A weight of 25lb is suspended from a chain of length 2ft while a wind pushes the weight to the right with constant force of 5lb as shown in \autoref{fig:vect8}. What angle will the chain make with the vertical as a result of the wind's pushing? How much higher will the weight be?%
-\mfigure{0in}{A figure of a weight being pushed by the wind in \autoref{ex_vect8}.}{fig:vect8}{figures/figvect8}}
+\mtable{A figure of a weight being pushed by the wind in \autoref{ex_vect8}.}{fig:vect8}{\begin{tikzpicture}
+ \draw [dashed] (-1.5,-.2) -- (2,-.2);
+ \draw (1.75,.65) node {\scriptsize 2ft $\left\{\rule{0pt}{.8cm}\right.$};
+ \filldraw[thick,black,fill=gray!30] (-.5,0) -- (.5,0) -- (1,-1) -- (-1,-1)--cycle;
+ \draw [thick] (-1.5,1.5) -- (2,1.5);
+ \draw [thick] (0,0) -- (-.51,1.5); % diagonal line ~ 110 degrees
+ \draw [dashed] (0,0) -- (0,1.5);
+ \draw [rotate=90,->,>=stealth] (1,0) arc (0:20:1);
+ %
+ \draw [->,>=stealth] (.6,0) arc (0:109:.6);
+ \draw [rotate=50] (.75,0) node {\scriptsize $\varphi$};
+ %
+ \draw [rotate=99] (1.2,0) node {\scriptsize $\theta$};
+ \draw [thick,->,>=stealth] (-1.45,-.5) -- (-.8,-.5) node [pos=.15,below] {\scriptsize $\vec F_w$};
+ \draw [thick,->,>=stealth] (0,-1) -- (0,-1.65) node [pos=.5,right] {\scriptsize $\vec F_g$};
+\end{tikzpicture}}
+
+\example{ex_vect8}{Finding Component Force}{A weight of 25lb is suspended from a chain of length 2ft while a wind pushes the weight to the right with constant force of 5lb as shown in \autoref{fig:vect8}. What angle will the chain make with the vertical as a result of the wind's pushing? How much higher will the weight be?}
 {The force of the wind is represented by the vector $\vec F_w = 5\veci$. The force of gravity on the weight is represented by $\vec F_g = -25\vecj$. The direction and magnitude of the vector representing the force on the chain are both unknown. We represent this force with $$\vec F_c = m\bracket{\cos\varphi,\sin\varphi}= m\cos\varphi\, \veci + m\sin\varphi\,\vecj$$ for some magnitude $m$ and some angle with the horizontal $\varphi$. (Note: $\theta$ is the angle the chain makes with the \emph{vertical}; $\varphi$ is the angle with the \emph{horizontal}.)
 
 As the weight is at equilibrium, the sum of the forces is $\vec0$:
@@ -331,13 +351,14 @@ Thus the sum of the $\veci$ and $\vecj$ components are 0, leading us to the foll
 \end{align}
 
 This is enough to determine $\vec F_c$ already, as we know $m\cos \varphi = -5$ and $m\sin\varphi =25$. Thus $F_c =\bracket{-5,25}.$ We can use this to find the magnitude $m$:
-$$m = \sqrt{(-5)^2+25^2} = 5\sqrt{26}\approx 25.5\text{lb}.$$
+\[m = \sqrt{(-5)^2+25^2} = 5\sqrt{26}%\approx 25.5
+\text{lb}.\]
 We can then use either equality from \autoeqref{eq:vect8} to solve for $\varphi$. We choose the first equality as using arccosine will return an angle in the $2^\text{nd}$ quadrant:
 $$5 + 5\sqrt{26}\cos \varphi = 0 \quad \Rightarrow \quad \varphi = \cos^{-1}\left(\frac{-5}{5\sqrt{26}}\right) \approx 1.7682\approx 101.31^\circ.$$
 
 Subtracting $90^\circ$ from this angle gives us an angle of $11.31^\circ$ with the vertical.
 
-We can now use trigonometry to find out how high the weight is lifted. The diagram shows that a right triangle is formed with the 2ft chain as the hypotenuse with an interior angle of $11.31^\circ$. The length of the adjacent side (in the diagram, the dashed vertical line) is $2\cos 11.31^\circ \approx 1.96$ft. Thus the weight is lifted by about $0.04$ft, almost 1/2in.}
+We can now use trigonometry to find out how high the weight is lifted. \autoref{fig:vect8} shows that a right triangle is formed with the 2ft chain as the hypotenuse.  We have found that the interior angle is $11.31^\circ$. The length of the adjacent side (in the diagram, the dashed vertical line) is $2\cos 11.31^\circ \approx 1.96$ft. Thus the weight is lifted by about $0.04$ft, almost 1/2in.}
 
 The algebra we have applied to vectors is already demonstrating itself to be very useful. There are two more fundamental operations we can perform with vectors, the \emph{dot product} and the \emph{cross product}. The next two sections explore each in turn.
 

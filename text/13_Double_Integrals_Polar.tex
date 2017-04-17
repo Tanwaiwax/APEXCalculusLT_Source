@@ -38,11 +38,7 @@ $$\iint_Rf(x,y)\ dA = \int_\alpha^\beta\int_{g_1(\theta)}^{g_2(\theta)} f\big(r\
 Examples will help us understand this Key Idea.
 
 \example{ex_doublepol1}{Evaluating a double integral with polar coordinates}{Find the signed volume under the plane $z= 4-x-2y$ over the circle with equation $x^2+y^2=1$.}
-{The bounds of the integral are determined solely by the region $R$ over which we are integrating. In this case, it is a circle with equation $x^2+y^2=1$. We need to find polar bounds for this region. It may help to review \autoref{sec:polar}; bounds for this circle are $0\leq r\leq 1$ and $0\leq \theta\leq 2\pi$.
-
-We replace $f(x,y)$ with $f(r\cos\theta,r\sin\theta)$. That means we make the following substitutions:
-$$4-x-2y \quad \Rightarrow \quad 4-r\cos\theta-2r\sin\theta.$$
-Finally, we replace $dA$ in the double integral with $r\ dr\ d\theta$. This gives the final iterated integral, which we evaluate:
+{The bounds of the integral are determined solely by the region $R$ over which we are integrating. The surface and region are shown in \autoref{fig:doublepol1}.
 \mfigurethree{width=150pt,3Dmenu,activate=onclick,deactivate=onclick,
 3Droll=0.,
 3Dortho=0.0046491301618516445,
@@ -51,6 +47,11 @@ Finally, we replace $dA$ in the double integral with $r\ dr\ d\theta$. This give
 3Droo=149.99999574342704,
 3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.25,trim=4mm 0mm 2mm 0mm, clip}{0in}{Evaluating a double integral with polar coordinates in \autoref{ex_doublepol1}.}{fig:doublepol1}{figures/figdoublepol1}
 %\mfigure[scale=1.25,trim=4mm 0mm 2mm 0mm, clip]{0in}{Evaluating a double integral with polar coordinates in \autoref{ex_doublepol1}.}{fig:doublepol1}{figures/figdoublepol1}
+In this case, it is a circle with equation $x^2+y^2=1$. We need to find polar bounds for this region. It may help to review \autoref{sec:polar}; bounds for this circle are $0\leq r\leq 1$ and $0\leq \theta\leq 2\pi$.
+
+We replace $f(x,y)$ with $f(r\cos\theta,r\sin\theta)$. That means we make the following substitutions:
+\[4-x-2y \quad \Rightarrow \quad 4-r\cos\theta-2r\sin\theta.\]
+Finally, we replace $dA$ in the double integral with $r\ dr\ d\theta$. This gives the final iterated integral, which we evaluate:
 \begin{align*}
 \iint_Rf(x,y)\ dA
  &= \int_0^{2\pi}\int_0^1\big(4-r\cos\theta-2r\sin\theta\big)r\ dr\ d\theta\\
@@ -58,14 +59,11 @@ Finally, we replace $dA$ in the double integral with $r\ dr\ d\theta$. This give
  &= \int_0^{2\pi}\left.\left(2r^2-\frac13r^3(\cos\theta-2\sin\theta)\right)\right|_0^1d\theta\\
  &= \int_0^{2\pi} \left(2-\frac13\big(\cos\theta-2\sin\theta\big)\right)\ d\theta\\
  &= \left.\left(2\theta -\frac13\big(\sin\theta+2\cos\theta\big)\right)\right|_0^{2\pi} \\
- &= 4\pi \approx 12.566.
-\end{align*}
-The surface and region $R$ are shown in \autoref{fig:doublepol1}.}
+ &= 4\pi %\approx 12.566
+ .\eoehere
+\end{align*}}
 
-\example{ex_doublepol2}{Evaluating a double integral with polar coordinates}{Find the volume under the paraboloid $z=4-(x-2)^2-y^2$ over the region bounded by the circles $(x-1)^2+y^2=1$ and $(x-2)^2+y^2=4$.}
-{At first glance, this seems like a very hard volume to compute as the region $R$ (shown in \autoref{fig:doublepol2}(a)) has a hole in it, cutting out a strange portion of the surface, as shown in part (b) of the figure. However, by describing $R$ in terms of polar equations, the volume is not very difficult to compute.
 \mtable{Showing the region $R$ and surface used in \autoref{ex_doublepol2}.}{fig:doublepol2}{%
-\begin{tabular}{c}
 \myincludegraphics{figures/figdoublepol2a}\\
 (a)\\
 \myincludegraphicsthree{width=150pt,3Dmenu,activate=onclick,deactivate=onclick,
@@ -76,33 +74,40 @@ The surface and region $R$ are shown in \autoref{fig:doublepol1}.}
 3Droo=149.9999981182509,
 3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.25,trim=1mm 0mm 1mm 10mm,clip}{figures/figdoublepol2b}\\
 %\myincludegraphics[scale=1.25,trim=1mm 0mm 1mm 10mm,clip]{figures/figdoublepol2b}\\
-(b)
-\end{tabular}
-}
+(b)}
+
+\example{ex_doublepol2}{Evaluating a double integral with polar coordinates}{Find the volume under the paraboloid $z=4-(x-2)^2-y^2$ over the region bounded by the circles $(x-1)^2+y^2=1$ and $(x-2)^2+y^2=4$.}
+{At first glance, this seems like a very hard volume to compute as the region $R$ (shown in \autoref{fig:doublepol2}(a)) has a hole in it, cutting out a strange portion of the surface, as shown in part (b) of the figure. However, by describing $R$ in terms of polar equations, the volume is not very difficult to compute.
 It is straightforward to show that the circle $(x-1)^2+y^2=1$ has polar equation $r=2\cos\theta$, and that the circle $(x-2)^2+y^2=4$ has polar equation $r=4\cos\theta$. Each of these circles is traced out on the interval $0\leq\theta\leq\pi$. The bounds on $r$ are $2\cos\theta\leq r\leq 4\cos\theta.$ 
 
 Replacing $x$ with $r\cos\theta$ in the integrand, along with replacing $y$ with $r\sin \theta$, prepares us to evaluate the double integral $\iint_Rf(x,y)\ dA$:
 
 
 \begin{align*}
-\iint_Rf(x,y)\ dA &= \int_0^{\pi}\int_{2\cos\theta}^{4\cos\theta} \Big(4-\big(r\cos\theta-2\big)^2-\big(r\sin\theta\big)^2\Big)r\ dr\ d\theta\\
-			%&=\int_0^{\pi}\int_{2\cos\theta}^{4\cos\theta} \big(r^3\cos^2\theta + r^3\sin^2\theta -4r^2\cos \theta+4r\big)\ dr\ d\theta\\
-			&= \int_0^{\pi}\int_{2\cos\theta}^{4\cos\theta} \big(-r^3+4r^2\cos \theta\big)\ dr\ d\theta\\
-			&= \int_0^\pi \left.\left(-\frac14r^4+\frac43r^3\cos\theta\right)\right|_{2\cos\theta}^{4\cos\theta}d\theta\\
-			&=\int_0^\pi \left(\left[-\frac14(256\cos^4\theta)+\frac43(64\cos^4\theta)\right]-\right.\\
-			&\ \left.\left[-\frac14(16\cos^4\theta)+\frac43(8\cos^4\theta)\right]\right)\ d\theta\\
-			&=\int_0^\pi\frac{44}3\cos^4\theta\ d\theta.
-\intertext{To integrate $\cos^4\theta$, rewrite it as $\cos^2\theta\cos^2\theta$ and employ the half--angle formula twice:}
+\iint_Rf(x,y)\ dA
+	&= \int_0^{\pi}\int_{2\cos\theta}^{4\cos\theta} \Big(4-\big(r\cos\theta-2\big)^2-\big(r\sin\theta\big)^2\Big)r\ dr\ d\theta\\
+	%&=\int_0^{\pi}\int_{2\cos\theta}^{4\cos\theta} \big(r^3\cos^2\theta + r^3\sin^2\theta -4r^2\cos \theta+4r\big)\ dr\ d\theta\\
+	&= \int_0^{\pi}\int_{2\cos\theta}^{4\cos\theta} \big(-r^3+4r^2\cos \theta\big)\ dr\ d\theta\\
+	&= \int_0^\pi \left.\left(-\frac14r^4+\frac43r^3\cos\theta\right)\right|_{2\cos\theta}^{4\cos\theta}d\theta\\
+	&=\int_0^\pi \left(\left[-\frac14(256\cos^4\theta)+\frac43(64\cos^4\theta)\right]-\right.\\
+	&\ \left.\left[-\frac14(16\cos^4\theta)+\frac43(8\cos^4\theta)\right]\right)\ d\theta\\
+	&=\int_0^\pi\frac{44}3\cos^4\theta\ d\theta.
+\end{align*}
+To integrate $\cos^4\theta$, rewrite it as $\cos^2\theta\cos^2\theta$ and employ the half--angle formula twice:
+\begin{align*}
 	\cos^4\theta &=\cos^2\theta\cos^2\theta\\
-								&= \frac12\big(1+\cos(2\theta)\big)\frac12\big(1+\cos(2\theta)\big) \\
-								&= \frac14\big(1+2\cos(2\theta)+\cos^2(2\theta)\big)\\
-								&=\frac14\Big(1+2\cos(2\theta)+\frac12\big(1+\cos(4\theta)\big)\Big)\\
-								&= \frac38+\frac12\cos(2\theta)+\frac18\cos(4\theta).
-		\intertext{Picking up from where we left off above, we have}
-		&=\int_0^\pi\frac{44}3\cos^4\theta\ d\theta\\
-		&=\int_0^\pi \frac{44}3\left(\frac38+\frac12\cos(2\theta)+\frac18\cos(4\theta)\right)d\theta\\
-		&= \left.\frac{44}3\left(\frac{3}8\theta+\frac14\sin(2\theta)+\frac{1}{32}\sin(4\theta)\right)\right|_0^\pi\\
-		&=\frac{11}2\pi\approx 17.279.
+	&= \frac12\big(1+\cos(2\theta)\big)\frac12\big(1+\cos(2\theta)\big) \\
+	&= \frac14\big(1+2\cos(2\theta)+\cos^2(2\theta)\big)\\
+	&=\frac14\Big(1+2\cos(2\theta)+\frac12\big(1+\cos(4\theta)\big)\Big)\\
+	&= \frac38+\frac12\cos(2\theta)+\frac18\cos(4\theta).
+\end{align*}
+Picking up from where we left off above, we have
+\begin{align*}
+\iint_Rf(x,y)\ dA &=\int_0^\pi\frac{44}3\cos^4\theta\ d\theta\\
+	&=\int_0^\pi \frac{44}3\left(\frac38+\frac12\cos(2\theta)+\frac18\cos(4\theta)\right)d\theta\\
+	&= \left.\frac{44}3\left(\frac{3}8\theta+\frac14\sin(2\theta)+\frac{1}{32}\sin(4\theta)\right)\right|_0^\pi\\
+	&=\frac{11}2\pi%\approx 17.279
+	.
 \end{align*}
 While this example was not trivial, the double integral would have been \textit{much} harder to evaluate had we used rectangular coordinates.}
 
@@ -176,8 +181,10 @@ $$\frac13\cos^3(3\theta)\cos\theta = \frac13\cos^2(3\theta)\cos(3\theta)\cos\the
 This last expression still needs simplification, but eventually all terms can be reduced to the form $a\cos(m\theta)$ or $a\sin(m\theta)$ for various values of $a$ and $m$.
 
 We forgo the algebra and recommend the reader employ technology, such as WolframAlpha\textregistered, to compute the numeric answer. Such technology gives:
-$$\int_0^\pi\int_0^{\cos(3\theta)}\big(1-r\cos\theta+0.1r\sin\theta\big)r\ dr\ d\theta = \frac{\pi}{4} \approx 0.785u^3.$$
-Since the units were not specified, we leave the result as almost $0.8$ cubic units (meters, feet, etc.) Should the artist want to scale the piece uniformly, so that each rose petal had a length other than 1, she should keep in mind that scaling by a factor of $k$ scales the volume by a factor of $k^3$.}
+$$\int_0^\pi\int_0^{\cos(3\theta)}\big(1-r\cos\theta+0.1r\sin\theta\big)r\ dr\ d\theta = \frac{\pi}{4} %\approx 0.785
+u^3.$$
+Since the units were not specified, we leave the result as almost $0.8$ cubic units (meters, feet, etc.).% Should the artist want to scale the piece uniformly, so that each rose petal had a length other than 1, she should keep in mind that scaling by a factor of $k$ scales the volume by a factor of $k^3$.
+}
 
 We have used iterated integrals to find areas of plane regions and volumes under surfaces. Just as a single integral can be used to compute much more than ``area under the curve,'' iterated integrals can be used to compute much more than we have thus far seen. The next two sections show two, among many, applications of iterated integrals.
 

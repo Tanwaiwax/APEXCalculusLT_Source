@@ -47,7 +47,7 @@ Some of the most important results we will need for line integrals in $\mathbb{R
 %  \frac{dw}{dt} = \frac{\partial w}{\partial x}\,\frac{dx}{dt} + \frac{\partial w}{\partial y}\,\frac{dy}{dt} +
 %   \frac{\partial w}{\partial z}\,\frac{dz}{dt} .
 % \]
-% Also, if $x=x(t_1,t_2)$, $y=y(t_1,t_2)$ and $z=z(t_1,t_2)$ are continuously differentiable function of $(t_1,t_2)$, then%\footnotemark
+% Also, if $x=x(t_1,t_2)$, $y=y(t_1,t_2)$ and $z=z(t_1,t_2)$ are continuously differentiable function of $(t_1,t_2)$, then
 % \[
 %  \frac{\partial w}{\partial t_1} = \frac{\partial w}{\partial x}\,\frac{\partial x}{\partial t_1} +
 %  \frac{\partial w}{\partial y}\,\frac{\partial y}{\partial t_1} +
@@ -59,7 +59,7 @@ Some of the most important results we will need for line integrals in $\mathbb{R
 %  \frac{\partial w}{\partial y}\,\frac{\partial y}{\partial t_2} +
 %  \frac{\partial w}{\partial z}\,\frac{\partial z}{\partial t_2} .
 % \]}
-% %\footnotetext{See \cite[\S\,6.5]{tm} for a proof.}
+% % (See \cite[\S\,6.5]{tm} for a proof.)
 
 \theorem{thm:lineintsuffpath3}{Fundamental Theorem of Line Integrals in Three Dimensions}{Let $\vecf(x,y,z) = P(x,y,z)\,\veci + Q(x,y,z)\,\vecj + R(x,y,z)\,\veck$ be a vector field in some solid $S$, with $P$, $Q$ and $R$ continuously differentiable functions on $S$. Let $C$ be a smooth curve in $S$ parametrized by $x=x(t)$, $y=y(t)$, $z=z(t)$, $a \le t \le b$. Suppose that there is a real-valued function $F(x,y,z)$ such that $\nabla F = \vecf$ on $S$. Then
  \begin{equation}\label{eqn:lineintsuffpath3}
@@ -164,7 +164,7 @@ You may be wondering what kind of surface would \emph{not} have two sides. An ex
  \label{fig:mobius}
 \end{lxfigure}
 
-If you imagine walking along a line down the center of the M\"{o}bius strip, as in \autoref{fig:mobius}(b), then you arrive back at the same place from which you started but upside down! That is, your \emph{orientation} changed even though your motion was continuous along that center line. Informally, thinking of your vertical direction as a normal vector field along the strip, there is a discontinuity at your starting point (and, in fact, at every point) since your vertical direction takes two different values there. The M\"{o}bius strip has only \emph{one side}, and hence is nonorientable.%\footnote{For further discussion of orientability, see \cite[\S\,IV.7]{one}.}
+If you imagine walking along a line down the center of the M\"{o}bius strip, as in \autoref{fig:mobius}(b), then you arrive back at the same place from which you started but upside down! That is, your \emph{orientation} changed even though your motion was continuous along that center line. Informally, thinking of your vertical direction as a normal vector field along the strip, there is a discontinuity at your starting point (and, in fact, at every point) since your vertical direction takes two different values there. The M\"{o}bius strip has only \emph{one side}, and hence is nonorientable.% (For further discussion of orientability, see \cite[\S\,IV.7]{one}.)
 
 For an orientable surface $\Sigma$ which has a boundary curve $C$, pick a unit normal vector \vecn\ such that if you walked along $C$ with your head pointing in the direction of \vecn, then the surface would be on your left. We say in this situation that \vecn\ is a \emph{positive unit normal vector}\index{vector!positive unit normal} and that $C$ is traversed \emph{\vecn-positively}\index{n-positive@\vecn-positive direction}. We can now state Stokes' Theorem:
 
@@ -404,11 +404,11 @@ The line integral in the preceding example was far simpler to calculate than the
  \]}
 
 In physical applications, for a simple closed curve $C$ the line integral $\oint_{C}{f}\cdot d\vec{r}$ is often called the \textbf{circulation}\index{circulation} of \vecf\ around $C$. For example, if \vecE\ represents the electrostatic field due to a point charge, then it turns out
-%\footnote{See Ch. 2 in \cite{rmc}.}
+% (See Ch. 2 in \cite{rmc}.)
 that $\curl\vecE = \vec0$, which means that the circulation $\oint_{C}{E}\cdot d\vec{r}=0$ by Stokes' Theorem. Vector fields which have zero curl are often called \emph{irrotational}\index{irrotational} fields.
 
 In fact, the term curl was created by the 19\textsuperscript{th} century Scottish physicist James Clerk Maxwell in his study of electromagnetism, where it is used extensively. In physics, the curl is interpreted as a measure of \emph{circulation density}. This is best seen by using another definition of curl \vecf\ which is equivalent
-%\footnote{See \cite{sch}, p. 78-81, for the derivation.}
+% (See \cite{sch}, p. 78-81, for the derivation.)
 to the definition given by \autoeqref{eqn:curl}. Namely, for a point $(x,y,z)$ in $\mathbb{R}^{3}$,
 \[
  \Dotprod{\vecn}{(\curl\vecf\,)}(x,y,z) = \lim_{S \to 0} \frac{1}{S} \oint_{C}{f}\cdot d\vec{r} ,
@@ -473,5 +473,22 @@ where $\Sigma$ is any orientable surface inside $S$ whose boundary is $C$ (such 
   \frac{\partial P}{\partial z} \ne \frac{\partial R}{\partial x} \text{ for some $(x,y,z)$ in $\mathbb{R}^{3}$.}
  \]
  Thus, $\vecf(x,y,z)$ does not have a potential in $\mathbb{R}^{3}$.}
+
+The theorems in this chapter all relate an integral over a domain to an integral over the boundary of the domain.  This means that we need to pay special attention to the orientation of the domain.  We'll occasionally use the symbol $\partial$ to indicate the boundary of something (so the boundary of $D$ would be $\partial D$).  This is the same symbol as a partial derivative, so you'll have to look at the context to figure out which definition is being used.
+
+We also have four new theorems about these types of integrals. These are similar to the Fundamental Theorem of Calculus, so we'll put all five together into \autoref{fundThms}.
+
+% todo Tim check the phrasing
+\setboxwidth{100pt}
+\keyidea{fundThms}{Fundamental Theorems Relating Integrals and Domains}{%
+\renewcommand{\arraystretch}{1.4}
+ \begin{tabular}{p{.25\specialboxlength} l p{.35\specialboxlength}}
+  Theorem & Equation & Orientation \\\midrule
+  Fundamental Theorem\par of Calculus & $f(b)-f(a)=\int_a^b \fp(x)d x$ &\\
+  Fundamental Theorem\par of Gradient Fields & $\phi(Q)-\phi(P)=\int_C\nabla\phi\cdot d s$ & $C$ goes from $P$ to $Q$ \\
+  Green's Theorem & $\oint_{\partial D}Pd x+Qdy=\iint_D Q_x-P_yd A$ & $\partial D$ oriented counterclockwise \\
+  Stokes' Theorem & $\int_{\partial S}\vec F\cdot d\vec s=\iint_S\nabla\times\vec F\cdot d\vec s$ & $\partial S$ oriented with $S$ to the left \\
+  Divergence Theorem & $\iint_{\partial W}\vec F\cdot d \vec s=\iiint_W\nabla\cdot\vec Fd V$ & $\partial W$ oriented outwards
+ \end{tabular}}
 
 \printexercises{exercises/14_Stokes_exercises}

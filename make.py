@@ -101,29 +101,40 @@ def makefigs():
         os.chdir('..')
 
 def updatetodo():
+    from collections import defaultdict
     output = subprocess.check_output(['grep','todo','-Ir','.'])
     todos = output.decode('utf-8').split("\n")
-    todotim = []
-    todocalc1 = []
-    todocalc2 = []
+    todosin = defaultdict(list)
     for todo in todos:
         if re.match('./make.py',todo) or re.match('./todo_',todo) or todo == '':
             continue
         if ' Tim ' in todo:
-            todotim.append(todo)
-        elif re.search('/0[1-4]',todo):
-            todocalc1.append(todo)
+            todosin['tim'].append(todo)
+        elif re.search('/0[1-4]',todo) or 'CalculusI.' in todo:
+            todosin['calc1'].append(todo)
+        elif re.search('/0[5-9]',todo) or 'CalculusII.' in todo:
+            todosin['calc2'].append(todo)
         else:
-            todocalc2.append(todo)
-    todosin = {
-        'todo_tim.txt': todotim,
-        'todo_calc1.txt': todocalc1,
-        'todo_calc2.txt': todocalc2
-    }
+            todosin['calc3'].append(todo)
     for filename,todolist in todosin.items():
-        with open(filename,'w') as todofile:
+        with open('todo_'+filename+'.txt','w') as todofile:
             todofile.write('\n'.join(todolist).encode('utf-8'))
-        
+    # and a few manual TeX commands instead of 'todo'
+    with open('todo_tex.txt','w') as mystdout:
+        for keywd in ('drawexampleline','enlargethispage','pagebreak',
+                        'clearpage','cleardoublepage','columnbreak','newpage'):
+            mystdout.write('\n\n'+keywd+':\n')
+            mystdout.flush()
+            try:
+                subprocess.check_call(['grep',keywd,'-Ir','--exclude-dir=hidden','exercises'],stdout=mystdout)
+            except:
+                pass
+            try:
+                subprocess.check_call(['grep',keywd,'-Ir','--exclude-dir=hidden','text'],stdout=mystdout)
+            except:
+                pass
+        mystdout.write('\n')
+
 def writeoptions(args):
     with open('options.tex','w') as options:
         title = "Calculus"
@@ -180,7 +191,7 @@ def fixRefs():
 
 def getcommandline(args):
     if args.xml:
-        ret = ['latexml','--quiet',#'--quiet',#'--verbose','--verbose',#
+        ret = ['latexml','--quiet','--quiet',#'--verbose','--verbose',#
                        '--destination=calculusRefs.xml',
                        '--nocomments',
                        'Calculus']
@@ -284,8 +295,8 @@ if args.all:
     compilewith('-f')
     # having this first makes sure the index and toc are up to date
     compilewith('-c0')
+    compilewith('-i')
     for part,size in itertools.product('123',["s","b"]):
         compilewith('-'+size+'c'+part)
-    compilewith('-i')
 else:
     compilewith()

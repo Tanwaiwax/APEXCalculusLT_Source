@@ -39,7 +39,7 @@ $\vec u$ is tangent to the surface in the direction of $x$, therefore, from \aut
 \begin{align*}
 \text{surface area $S_i$} &\approx \text{area of  $T_i$}\\
 				&= \norm{\vec u\times \vec v}\\
-				&= \big|\big|\dx_i\bracket{1,0,f_x(x_i,y_i)}\times\dy_i\bracket{0,1,f_y(x_i,y_i)}\big|\big|\\
+				&= \norm{\dx_i\bracket{1,0,f_x(x_i,y_i)}\times\dy_i\bracket{0,1,f_y(x_i,y_i)}}\\
 				&=\sqrt{1+f_x(x_i,y_i)^2+f_y(x_i,y_i)^2}\dx_i\dy_i.
 \end{align*}
 Note that $\dx_i\dy_i = \Delta A_i$, the area of the $i^{\,\text{th}}$ subregion.
@@ -134,7 +134,7 @@ Since we are integrating over the circle $x^2+y^2=a^2$, we again use polar coord
 This may look intimidating at first, but there are lots of simple simplifications to be done. It amazingly reduces to just
 \[\sqrt{1+\frac{h^2}{a^2}} = \frac1a\sqrt{a^2+h^2}.\]
 Our polar bounds are $0\leq\theta\leq2\pi$ and $0\leq r\leq a$. Thus
-\mnote{\textbf{Note:} Note that once again $f_x$ and $f_y$ are not continuous on the domain of $f$, as both are undefined at $(0,0)$. (A similar problem occurred in the previous example.) Once again the resulting improper integral converges and the computation of the surface area is valid.}
+\mnote[.2in]{\textbf{Note:} Note that once again $f_x$ and $f_y$ are not continuous on the domain of $f$, as both are undefined at $(0,0)$. (A similar problem occurred in the previous example.) Once again the resulting improper integral converges and the computation of the surface area is valid.}
 \begin{align*}
 S &=	\int_0^{2\pi}\int_0^ar\frac1a\sqrt{a^2+h^2}\ dr\ d\theta\\
 	&= \int_0^{2\pi} \left.\left(\frac12r^2\frac1a\sqrt{a^2+h^2}\right)\right|_0^ad\theta \\
@@ -143,6 +143,8 @@ S &=	\int_0^{2\pi}\int_0^ar\frac1a\sqrt{a^2+h^2}\ dr\ d\theta\\
 \end{align*}
 This matches the formula found in the back of this text.}
 
+\example{ex_surfacearea4}{Finding surface area over a region}{Find the area of the surface $f(x,y) = x^2-3y+3$ over the region $R$ bounded by $-x\leq y\leq x$, $0\leq x\leq 4$, as pictured in \autoref{fig:surfacearea4}.}
+{It is straightforward to compute $f_x(x,y) = 2x$ and $f_y(x,y) = -3$. Thus the surface area is described by the double integral
 \mfigurethree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
 3Droll=0,
 3Dortho=0.0046491301618516445,
@@ -151,9 +153,7 @@ This matches the formula found in the back of this text.}
 3Droo=150.00000342734387,
 3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.2,trim=1mm 0mm 1mm 0mm, clip}{-.5in}{Graphing the surface in \autoref{ex_surfacearea4}.}{fig:surfacearea4}{figures/figsurfacearea4}
 %\mfigure[scale=1.2,trim=1mm 0mm 1mm 0mm, clip]{0in}{Graphing the surface in \autoref{ex_surfacearea4}.}{fig:surfacearea4}{figures/figsurfacearea4}
-\example{ex_surfacearea4}{Finding surface area over a region}{Find the area of the surface $f(x,y) = x^2-3y+3$ over the region $R$ bounded by $-x\leq y\leq x$, $0\leq x\leq 4$, as pictured in \autoref{fig:surfacearea4}.}
-{It is straightforward to compute $f_x(x,y) = 2x$ and $f_y(x,y) = -3$. Thus the surface area is described by the double integral
-$$\iint_R \sqrt{1+(2x)^2+(-3)^2}\ dA = \iint_R \sqrt{10+4x^2}\ dA.$$
+\[\iint_R \sqrt{1+(2x)^2+(-3)^2}\ dA = \iint_R \sqrt{10+4x^2}\ dA.\]
 As with integrals describing arc length, double integrals describing surface area are in general hard to evaluate directly because of the square--root. This particular integral can be easily evaluated, though, with judicious choice of our order of integration. 
 
 Integrating with order $dx\ dy$ requires us to evaluate $\int \sqrt{10+4x^2}\ dx$. This can be done, though it involves Integration By Parts and $\sinh^{-1}x$. Integrating with order $dy\ dx$ has as its first integral $\int \sqrt{10+4x^2}\ dy$, which is easy to evaluate: it is simply $y\sqrt{10+4x^2}+C$. So we proceed with the order $dy\ dx$; the bounds are already given in the statement of the problem.
@@ -163,7 +163,8 @@ Integrating with order $dx\ dy$ requires us to evaluate $\int \sqrt{10+4x^2}\ dx
 				&=\int_0^4\big(2x\sqrt{10+4x^2}\big)\ dx.
 				\intertext{Apply substitution with $u = 10+4x^2$:}
 				&= \left.\left(\frac16\big(10+4x^2\big)^{3/2}\right)\right|_0^4 \\
-				&= \frac13\big(37\sqrt{74}-5\sqrt{10}\big) \approx 100.825\text{u}^2.
+				&= \frac13\big(37\sqrt{74}-5\sqrt{10}\big) %\approx 100.825
+				\text{u}^2.
 \end{align*}
 So while the region $R$ over which we integrate has an area of 16u$^2$, the surface has a much greater area as its $z$-values change dramatically over $R$.}
 

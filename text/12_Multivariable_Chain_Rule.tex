@@ -1,17 +1,45 @@
 \section{The Multivariable Chain Rule}\label{sec:multi_chain}
 
-The Chain Rule, as learned in \autoref{sec:chainrule}, states that $\ds \frac{d}{dx}\Big(f\big(g(x)\big)\Big) = \fp\big(g(x)\big)g\primeskip'(x)$. If $t=g(x)$, we can express the Chain Rule as 
+The Chain Rule, as learned in \autoref{sec:chainrule}, states that $\dfrac{d}{dx}\Big(f\big(g(x)\big)\Big) = \fp\big(g(x)\big)g\primeskip'(x)$. If $t=g(x)$, we can express the Chain Rule as 
 $$\frac{df}{dx} = \frac{df}{dt}\frac{dt}{dx}.$$
 In this section we extend the Chain Rule to functions of more than one variable.
 
 \theorem{thm:multi_chain}{Multivariable Chain Rule, Part I}
 {Let $z=f(x,y)$, $x=g(t)$ and $y=h(t)$, where $f$, $g$ and $h$ are differentiable functions. Then $z = f(x,y) = f\big(g(t),h(t)\big)$ is a function of $t$, and 
 \index{derivative!Chain Rule}\index{Chain Rule!multivariable}
+\[
+	\frac{dz}{dt} = \frac{df}{dt}
+	= f_x(x,y)\frac{dx}{dt}+f_y(x,y)\frac{dy}{dt}
+	= \frac{\partial f}{\partial x}\frac{dx}{dt}
+	+\frac{\partial f}{\partial y}\frac{dy}{dt}.
+\]}
+
+% todo Tim check phrasing
+\begin{proof}
+By definition,
+\[\frac{df}{dt}(x,y)=\lim_{h\to0}\frac{f(x(t+h),y(t+h))-f(x,y)}h.\]
+Let
 \begin{align*}
-\frac{dz}{dt} = \frac{df}{dt} &= f_x(x,y)\frac{dx}{dt}+f_y(x,y)\frac{dy}{dt}\\[5pt]
-		&= \frac{\partial f}{\partial x}\frac{dx}{dt}+\frac{\partial f}{\partial y}\frac{dy}{dt}.
+ \Delta f&=f(x(t+h),y(t+h))-f(x,y), \\
+ dx&=x(t+h)-x(t),\qquad\text{and} \\
+ dy&=y(t+h)-y(t).
 \end{align*}
-}
+Because $f$ is differentiable, \autoref{def:multi_differentiability} gives us functions $E_x$ and $E_y$ so that
+\begin{gather*}
+ E_x dx+E_y dy = \Delta f-f_x(x,y)dx-f_y(x,y)dy\\
+ \text{and}\qquad
+ \lim_{\bracket{dx,dy}\to0}\bracket{E_x,E_y}=0.
+\end{gather*}
+This means that
+\begin{align*}
+ \frac{df}{dt}(x,y)
+ &=\lim_{h\to0}\frac{f_x(x,y)dx+f_y(x,y)dy+E_x dx+E_y dy}h \\
+ &=f_x(x,y)\lim_{h\to0}\frac{dx}h+f_y(x,y)\lim_{h\to0}\frac{dy}h \\
+ &\qquad\qquad\mbox{}
+ +\lim_{h\to0}E_x\lim_{h\to0}\frac{dx}h+\lim_{h\to0}E_y\lim_{h\to0}\frac{dy}h \\
+ &=f_x(x,y)x'(t)+f_y(x,y)y'(t)+0x'(t)+0y'(t).\qedhere
+\end{align*}
+\end{proof}
 
 It is good to understand what the situation of $z=f(x,y)$, $x=g(t)$ and $y=h(t)$ describes. We know that $z=f(x,y)$ describes a surface; we also recognize that $x=g(t)$ and $y=h(t)$ are parametric equations for a curve in the $x$-$y$ plane. Combining these together, we are describing a curve that lies on the surface described by $f$. The parametric equations for this curve are $x=g(t)$, $y=h(t)$ and $z=f\big(g(t),h(t)\big)$.
 
@@ -25,8 +53,6 @@ It is good to understand what the situation of $z=f(x,y)$, $x=g(t)$ and $y=h(t)$
 %\mfigure[scale=1.25,trim=1mm 0mm 0mm 0mm,clip]{0in}{Understanding the application of the Multivariable Chain Rule.}{fig:mchain_intro}{figures/figmchain_intro} 
 
 Consider \autoref{fig:mchain_intro} in which a surface is drawn, along with a dashed curve in the $x$-$y$ plane. Restricting $f$ to just the points on this circle gives the curve shown on the surface. The derivative $\frac{df}{dt}$ gives the instantaneous rate of change of $f$ with respect to $t$. If we consider an object traveling along this path, $\frac{df}{dt}$ gives the rate at which the object rises/falls.
-
-\youtubeVideo{HOYA0-pOHsg}{Generalized Chain Rule --- Part 1}
 
 We now practice applying the Multivariable Chain Rule.
 
@@ -47,6 +73,7 @@ This may now make one wonder ``What's the point? If we could already find the de
 
 We demonstrate this in the next example.
 
+% todo Find a better example 2 where we don't know the functions, but do know the values of the derivatives
 \example{ex_mchain100}{Applying the Multivarible Chain Rule}{An object travels along a path on a surface. The exact path and surface are not known, but at time $t=t_0$ it is known that :
 $$\frac{\partial z}{\partial x} = 5,\qquad \frac{\partial z}{\partial y}=-2,\qquad \frac{dx}{dt}=3\qquad \text{and}\qquad \frac{dy}{dt}=7.$$
 Find $\frac{dz}{dt}$ at time $t_0$.}
@@ -60,6 +87,7 @@ By knowing certain rates--of--change information about the surface and about the
 
 We next apply the Chain Rule to solve a max/min problem.
 
+% todo Find a better example 3 that doesn't obviously simplify
 \example{ex_mchain2}{Applying the Multivariable Chain Rule}{Consider the surface $z=x^2+y^2-xy$, a paraboloid, on which a particle moves with $x$ and $y$ coordinates given by $x=\cos t$ and $y=\sin t$. Find $\frac{dz}{dt}$ when $t=0$, and find where the particle reaches its maximum/minimum $z$-values.}
 {It is straightforward to compute
 $$f_x(x,y) = 2x-y,\qquad f_y(x,y) = 2y-x,\qquad \frac{dx}{dt} = -\sin t,\qquad \frac{dy}{dt} = \cos t.$$
@@ -102,6 +130,29 @@ We can extend the Chain Rule to include the situation where $z$ is a function of
 		$$\frac{\partial z}{\partial t_i} = \frac{\partial f}{\partial x_1}\frac{\partial x_1}{\partial t_i} + \frac{\partial f}{\partial x_2}\frac{\partial x_2}{\partial t_i} + \cdots +  \frac{\partial f}{\partial x_m}\frac{\partial x_m}{\partial t_i}.$$
 \end{enumerate}}
 
+% todo Tim check phrasing
+The proof of Part II follows quickly from Part I, because $\frac\partial{\partial t_i}$ means that we hold the other variables constant and we are back to the one variable case already proved.  A helpful way to remember the derivatives is to examine the following chart\\
+\begin{lxfigure}\centering
+\begin{tikzpicture}
+ \draw(3,4)node(z){$z$};
+ \draw(0,2)node(x1){$x_1$};
+ \draw(2,2)node(x2){$x_2$};
+ \draw(4,2)node(xdots){$\dotsb$};
+ \draw(6,2)node(xm){$x_m$};
+ \draw(0,0)node(t1){$t_1$};
+ \draw(2,0)node(t2){$t_2$};
+ \draw(4,0)node(tdots){$\dotsb$};
+ \draw(6,0)node(tn){$t_n$};
+ \draw(z)--(x1)(z)--(x2)(z)--(xm)
+ (x1)--(t1)(x1)--(t2)(x1)--(tn)
+ (x2)--(t1)(x2)--(t2)(x2)--(tn)
+ (xm)--(t1)(xm)--(t2)(xm)--(tn);
+\end{tikzpicture}
+\end{lxfigure}\\
+Each possible path from $f$ to the variable $t_i$ contributes a term to the sum, and each line segment in a path contributes a factor to that term.
+
+\youtubeVideo{HOYA0-pOHsg}{Generalized Chain Rule --- Part 1}
+
 \example{ex_mchain3}{Using the Multivarible Chain Rule, Part II}{Let $z=x^2y+x$, $x=s^2+3t$ and $y=2s-t$. Find $\frac{\partial z}{\partial s}$ and $\frac{\partial z}{\partial t}$, and evaluate each when $s=1$ and $t=2$.}
 {Following \autoref{thm:multi_chain2}, we compute the following partial derivatives:
 $$\frac{\partial f}{\partial x} = 2xy+1\qquad\qquad \frac{\partial f}{\partial y} = x^2,$$
@@ -135,24 +186,31 @@ Instead of using this method, consider $z=x^2y-xy^3$. The implicit function abov
 \begin{equation}\frac{dz}{dx} = \frac{\partial z}{\partial x}\frac{dx}{dx}+\frac{\partial z}{\partial y}\frac{dy}{dx}.\label{eq:mchain1}\end{equation}
 Since $z$ is constant (in our example, $z=3$), $\frac{dz}{dx} = 0$. We also know $\frac{dx}{dx} = 1$. \autoeqref{eq:mchain1} becomes
 \begin{align*}
-0 &= \frac{\partial z}{\partial x}(1) + \frac{\partial z}{\partial y}\frac{dy}{dx} \quad \Rightarrow\\[5pt]
+0 &= \frac{\partial z}{\partial x}(1) + \frac{\partial z}{\partial y}\frac{dy}{dx} %\quad \Rightarrow
+\\[5pt]
 \frac{dy}{dx} &= -\frac{\partial z}{\partial x}\Big/\frac{\partial z}{\partial y}\\[5pt]
 			&= -\frac{\,f_x\,}{f_y}.
 \end{align*}
 
 Note how our solution for $\frac{dy}{dx}$ in \autoeqref{eq:mchain2} is just the partial derivative of $z$ with respect to $x$, divided by the partial derivative of $z$ with respect to $y$.
 
-We state the above as a theorem.
+We state the above as a theorem for two and three variables.
 
 \theorem{thm:implicit_deriv_chain}{Implicit Differentiation}
-{Let $f$ be a differentiable function of $x$ and $y$, where $f(x,y)=c$ defines $y$ as  an implicit function of $x$, for some constant $c$. Then
+{If $f$ is a differentiable function of $x$ and $y$, where $f(x,y)=c$ defines $y$ as  an implicit function of $x$ for some constant $c$, then
 \index{derivative!implicit}\index{implicit differentiation}
-$$\frac{dy}{dx} = - \frac{f_x(x,y)}{f_y(x,y)}.$$
+\[\frac{dy}{dx} = - \frac{f_x(x,y)}{f_y(x,y)}.\]
+If $f$ is a differentiable function of $x$, $y$, and $z$, where $f(x,y,z)=c$ defines $z$ as an implicit function of $x$ and $y$ for some constant $c$, then
+\[
+\frac{\partial z}{\partial x}=-\frac{f_x(x,y,z)}{f_z(x,y,z)}
+\qquad\text{and}\qquad
+\frac{\partial z}{\partial y}=-\frac{f_y(x,y,z)}{f_z(x,y,z)}.
+\]
 }
 
 We practice using \autoref{thm:implicit_deriv_chain} by applying it to a problem from \autoref{sec:imp_deriv}.
 
-\example{ex_mchain5}{Implicit Differentiation}{Given the implicitly defined function $\sin(x^2y^2)+y^3=x+y$, find $y\primeskip'$. Note: this is the same problem as given in \autoref{ex_implicit5} of \autoref{sec:imp_deriv}, where the solution took about a full page to find.}
+\example{ex_mchain5}{Implicit Differentiation}{Given the implicitly defined function $\sin(x^2y^2)+y^3=x+y$, find $y\primeskip'$. Note: this is the same problem as given in \autoref{ex_implicit5} of \autoref{sec:imp_deriv}.}
 {Let $f(x,y) = \sin(x^2y^2)+y^3-x-y$; the implicitly defined function above is equivalent to $f(x,y)=0$. We find $\frac{dy}{dx}$ by applying \autoref{thm:implicit_deriv_chain}. We find 
 $$f_x(x,y) = 2xy^2\cos(x^2y^2)-1\qquad \text{and}\qquad f_y(x,y) = 2x^2y\cos(x^2y^2)+3y^2-1,$$
 so 

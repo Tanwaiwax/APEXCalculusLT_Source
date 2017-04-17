@@ -15,8 +15,10 @@ This nail provides a ``handle'' for the cardboard. Moving the cardboard around m
 The previous section showed that one can define a line given a point on the line and the direction of the line (usually given by a vector). One can make a similar statement about planes: we can define a plane in space given a point on the plane and the direction the plane ``faces'' (using the description above, the direction of the nail). Once again, the direction information will be supplied by a vector, called a \textbf{normal vector}, that is orthogonal to the plane.
 \index{vectors!normal vector}\index{normal vector}\index{planes!normal vector}
 
+% todo make a picture of this?
 What exactly does ``orthogonal to the plane'' mean? Choose any two points $P$ and $Q$ in the plane, and consider the vector $\vv{PQ}$. We say a vector $\vec n$ is orthogonal to the plane if $\vec n$ is perpendicular to $\vv{PQ}$ for all choices of $P$ and $Q$; that is, if $\vec n\cdot \vv{PQ}=0$ for all $P$ and $Q$.
 
+% todo make a picture of this?
 This gives us way of writing an equation describing the plane. Let $P=(x_0,y_0,z_0)$ be a point in the plane and let $\vec n =\bracket{a,b,c}$ be a normal vector to the plane. A point $Q = (x,y,z)$ lies in the plane defined by $P$ and $\vec n$ if, and only if, $\vv{PQ}$ is orthogonal to $\vec n$. Knowing $\vv{PQ} =\bracket{x-x_0,y-y_0,z-z_0}$, consider:
 
 \begin{align}
@@ -33,21 +35,20 @@ z &= \frac1c(d-ax-by).\label{eq:planes3}
  \autoeqref{eq:planes3} is especially useful as many computer programs can graph functions in this form. Equations \eqref{eq:planes1} and \eqref{eq:planes2} have specific names, given next.
 
 \definition{def:planes}{Equations of a Plane in Standard and General Forms}
-{The plane passing through the point $P=(x_0,y_0,z_0)$ with normal vector $\vec n=\bracket{a,b,c}$ can be described by an equation with \textbf{standard form} $$a(x-x_0)+b(y-y_0)+c(z-z_0) =0;$$
+{The plane passing through the point $P=(x_0,y_0,z_0)$ with normal vector $\vec n=\bracket{a,b,c}$ can be described by an equation with \textbf{standard form}
+\[a(x-x_0)+b(y-y_0)+c(z-z_0) =0;\]
 the equation's \textbf{general form} is 
 \index{planes!equations of}
-$$ax+by+cz = d.$$}
+\[ax+by+cz = d;\]
+the equation's \textbf{vector form} is
+\[\bracket{x,y,z}\cdot\vecn=\bracket{x_0,y_0,z_0}\cdot\vecn=d.\]}
 
 A key to remember throughout this section is this: to find the equation of a plane, we need a point and a normal vector. We will give several examples of finding the equation of a plane, and in each one different types of information are given. In each case, we need to use the given information to find a point on the plane and a normal vector.
 
 \youtubeVideo{0MECmEjR2WU}{Equation of a Plane Through Three Points}
 
 \example{ex_planes1}{Finding the equation of a plane.}{Write the equation of the plane that passes through the points $P=(1,1,0)$, $Q = (1,2,-1)$ and $R = (0,1,2)$ in standard form.}
-{We need a vector $\vec n$ that is orthogonal to the plane. Since $P$, $Q$ and $R$ are in the plane, so are the vectors $\vv{PQ}$ and $\vv{PR}$; $\vv{PQ}\times\vv{PR}$ is orthogonal to $\vv{PQ}$ and $\vv{PR}$ and hence the plane itself.
-
-It is straightforward to compute $\vec n = \vv{PQ}\times\vv{PR} =\bracket{2,1,1}$. We can use any point we wish in the plane (any of $P$, $Q$ or $R$ will do) and we arbitrarily choose $P$. Following \autoref{def:planes}, the equation of the plane in standard form is 
-$$2(x-1) + (y-1)+z = 0.$$
-The plane is sketched in \autoref{fig:planes1}.
+{We need a vector $\vec n$ that is orthogonal to the plane.
 \mfigurethree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
 3Droll=-0.8901640937366284,
 3Dortho=0.005352090112864971,
@@ -56,7 +57,11 @@ The plane is sketched in \autoref{fig:planes1}.
 3Droo=150.00000744992093,
 3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.25,trim=2mm 0mm 2mm 2mm,clip=true}{0in}{Sketching the plane in \autoref{ex_planes1}.}{fig:planes1}{figures/figplanes1}
 %\mfigure[scale=1.25,trim=2mm 0mm 2mm 2mm,clip=true]{0in}{Sketching the plane in \autoref{ex_planes1}.}{fig:planes1}{figures/figplanes1}
-}
+Since $P$, $Q$ and $R$ are in the plane, so are the vectors $\vv{PQ}$ and $\vv{PR}$; $\vv{PQ}\times\vv{PR}$ is orthogonal to $\vv{PQ}$ and $\vv{PR}$ and hence the plane itself.
+
+It is straightforward to compute $\vec n = \vv{PQ}\times\vv{PR} =\bracket{2,1,1}$. We can use any point we wish in the plane (any of $P$, $Q$ or $R$ will do) and we arbitrarily choose $P$. Following \autoref{def:planes}, the equation of the plane in standard form is 
+$$2(x-1) + (y-1)+z = 0.$$
+The plane is sketched in \autoref{fig:planes1}.}
 
 We have just demonstrated the fact that any three non-collinear points define a plane. (This is why a three-legged stool does not ``rock;'' it's three feet always lie in a plane. A four-legged stool will rock unless all four feet lie in the same plane.)
 
@@ -189,7 +194,8 @@ The distance $h$ from $Q$ to the plane is given by \autoref{idea:planes_dist}:
 h &= \frac{\abs{\vec n\cdot \vv{PQ}}}{\vnorm n} \\
   &= \frac{\abs{\bracket{2,-5,6}\cdot\bracket{2,1,2.5}}}{\norm{\bracket{2,-5,6}}} \\
 	&= \frac{\abs{14}}{\sqrt{65}} \\
-	&\approx 1.74.\eoehere
+	&= \frac{14}{\sqrt{65}} %\\\approx 1.74
+	.\eoehere
 \end{align*}}
 
 We can use \autoref{idea:planes_dist} to find other distances. Given two parallel planes, we can find the distance between these planes by letting $P$ be a point on one plane and $Q$ a point on the other. If $\ell$ is a line parallel to a plane, we can use the Key Idea to find the distance between them as well: again, let $P$ be a point in the plane and let $Q$ be any point on the line. (One can also use \autoref{idea:line_distance}.) The exercises contain several problems of these types.

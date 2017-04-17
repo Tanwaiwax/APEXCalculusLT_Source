@@ -14,11 +14,6 @@ A common use of vector--valued functions is to describe the motion of an object 
 \youtubeVideo{gD2R4Jqw6dQ}{Example of Position, Velocity and Acceleration in Three Space}
 
 \example{ex_motion1}{Finding velocity and acceleration}{An object is moving with position function $\vec r(t) =\bracket{t^2-t,t^2+t}$, $-3\leq t\leq 3$, where distances are measured in feet and time is measured in seconds.
-\mtable{Graphing the position, velocity and acceleration of an object in \autoref{ex_motion1}.}{fig:motion1}{%
-	\myincludegraphics{figures/figmotion1a}\\
-	(a)\\[10pt]
-	\myincludegraphics{figures/figmotion1b}\\
-	(b)}
 \begin{enumerate}
 	\item Find \vvt\  and \vat.
 	\item	Sketch \vrt; plot $\vec v(-1)$, $\vec a(-1)$, $\vec v(1)$ and $\vec a(1)$, each with their initial point at their corresponding point on the graph of $\vrt$.
@@ -26,11 +21,17 @@ A common use of vector--valued functions is to describe the motion of an object 
 \end{enumerate}}
 {\begin{enumerate}
 	\item Taking derivatives, we find
-	$$\vvt = \vrp(t) =\bracket{2t-1,2t+1}\quad \text{and} \quad \vat = \vrp'(t) =\bracket{2,2}.$$
+	\[\vvt = \vrp(t) =\bracket{2t-1,2t+1}\quad \text{and} \quad \vat = \vrp'(t) =\bracket{2,2}.\]
 	Note that acceleration is constant.
-	
+
 	\item		$\vec v(-1) =\bracket{-3,-1}$,\ \ $\vec a(-1) =\bracket{2,2}$; \quad $\vec v(1) =\bracket{1,3}$,\ \ $\vec a(1) =\bracket{2,2}$. These are plotted with \vrt\ in \autoref{fig:motion1}(a).
 	
+\mtable{Graphing the position, velocity and acceleration of an object in \autoref{ex_motion1}.}{fig:motion1}{%
+	\myincludegraphics{figures/figmotion1a}\\
+	(a)\\[10pt]
+	\myincludegraphics{figures/figmotion1b}\\
+	(b)}
+
 	We can think of acceleration as ``pulling'' the velocity vector in a certain direction. At $t=-1$, the velocity vector points down and to the left; at $t=1$, the velocity vector has been pulled in the $\bracket{2,2}$ direction and is now pointing up and to the right. In \autoref{fig:motion1}(b) we plot more velocity/acceleration vectors, making more clear the effect acceleration has on velocity.
 	
 	Since $\vat$ is constant in this example, as $t$ grows large \vvt\ becomes almost parallel to \vat. For instance, when $t=10$, $\vec v(10) =\bracket{19,21}$, which is nearly parallel to $\bracket{2,2}$.
@@ -93,9 +94,9 @@ Since the objects begin and end at the same location, the have the same displace
 		
 	\item		When the boy releases the string, the string no longer applies a force to the ball, meaning acceleration is $\vec 0$ and the ball can now move in a straight line in the direction of $\vec v(t)$. 
 	
-	\mfigure{0in}{Modeling the flight of a ball in \autoref{ex_motion3}.}{fig:motion3}{figures/figmotion3}
 	Let $t=t_0$ be the time when the boy lets go of the string. The ball will be at $\vec r(t_0)$, traveling in the direction of $\vec v(t_0)$. We want to find $t_0$ so that this line contains the point $(0,10)$ (since the tree is 10ft directly in front of the boy).
 	
+	\mfigure{0in}{Modeling the flight of a ball in \autoref{ex_motion3}.}{fig:motion3}{figures/figmotion3}
 	There are many ways to find this time value. We choose one that is relatively simple computationally. As shown in \autoref{fig:motion3}, the vector from the release point to the tree is $\bracket{0,10}- \vec r(t_0)$. This line segment is tangent to the circle, which means it is also perpendicular to $\vec r(t_0)$ itself, so their dot product is 0.
 	
 	\begin{align*}
@@ -105,10 +106,13 @@ Since the objects begin and end at the same location, the have the same displace
 	20\sin (4\pi t_0) - 4 &=0\\
 	\sin (4\pi t_0) &=1/5\\
 	4\pi t_0 &= \sin^{-1}(1/5)\\
-	4\pi t_0 &\approx 0.2 + 2\pi n,\intertext{where $n$ is an integer. Solving for $t_0$ we have:}
+	4\pi t_0 &\approx 0.2 + 2\pi n\\%,
+	%\intertext{where $n$ is an integer. Solving for $t_0$ we have:}
 	t_0 &\approx 0.016 + n/2
 	\end{align*}
-	This is a wonderful formula. Every 1/2 second after $t=0.016$s the boy can release the string (since the ball makes 2 revolutions per second, he has two chances each second to release the ball).\eoehere
+	where $n$ is an integer.
+%	This is a wonderful formula.
+	This means that every 1/2 second after $t=0.016$s the boy can release the string (since the ball makes 2 revolutions per second, he has two chances each second to release the ball).\eoehere
 \end{enumerate}}
 
 \example{ex_motion4}{Analyzing motion in space}{An object moves in a spiral with position function $\vrt =\bracket{\cos t, \sin t, t}$, where distances are measured in meters and time is in minutes. Describe the object's speed and acceleration at time $t$.}
@@ -238,13 +242,6 @@ Note that this is just a restatement of \autoref{thm:vvf_arc_length}: arc length
 \end{enumerate}}
 {\begin{enumerate}
 	\item We use \autoref{thm:distance_traveled} to establish the integral:
-	\begin{align*}
-	\text{distance traveled} &= \int_{-2}^2 \norm{\vvt}\ dt \\
-							&= \int_{-2}^2 \sqrt{1+(2t)^2+ \pi^2\cos^2(\pi t)}\ dt.
-	\end{align*}
-	This cannot be solved in terms of elementary functions so we turn to numerical integration, finding the distance to be 12.88m.
-		
-	\item		The displacement is the vector $$\vec r(2)-\vec r(-2) =\bracket{2,4,0}-\bracket{-2,4,0}=\bracket{4,0,0}.$$ That is, the particle ends with an $x$-value increased by 4 and with $y$- and $z$-values the same (see \autoref{fig:motion6}).
 	%%
 	%% Using a boolean to give different graphics for 2D and 3D versions.
 	\ifthenelse{\boolean{in_threeD}}{% if in three D
@@ -264,6 +261,15 @@ Note that this is just a restatement of \autoref{thm:vvf_arc_length}: arc length
 	(b)
 	}% ends \mtable
 	}% ends 2D, also ends all of if-then-else
+	\begin{align*}
+	\text{distance traveled} &= \int_{-2}^2 \norm{\vvt}\ dt \\
+							&= \int_{-2}^2 \sqrt{1+(2t)^2+ \pi^2\cos^2(\pi t)}\ dt.
+	\end{align*}
+	This cannot be solved in terms of elementary functions so we turn to numerical integration, finding the distance to be 12.88m.
+		
+	\item		The displacement is the vector
+	\[\vec r(2)-\vec r(-2) =\bracket{2,4,0}-\bracket{-2,4,0}=\bracket{4,0,0}.\]
+	That is, the particle ends with an $x$-value increased by 4 and with $y$- and $z$-values the same (see \autoref{fig:motion6}).
 	
 	\item		We found above that the particle traveled 12.88m over 4 seconds. We can compute average speed by dividing: 12.88/4 = 3.22m/s. 
 	

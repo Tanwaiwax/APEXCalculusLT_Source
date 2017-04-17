@@ -28,7 +28,7 @@ The volume of the rectangular solid whose base is the $i^\text{ th}$ subregion a
 For each subregion $R_i$ used to approximate $R$, create the rectangular solid with base area $\dx\dy$ and height $f(x_i,y_i)$. 
 The sum of all rectangular solids is $$\ds \sum_{i=1}^n f(x_i,y_i)\dx\dy.$$ This approximates the signed volume under $f$ over $R$. As we have done before, to get a better approximation we can use more rectangles to approximate the region $R$.
 
-In general, each rectangle could have a different width $\dx_j$ and height $\dy_k$, giving the $i^\text{ th}$ rectangle an area $\Delta A_i = \dx_j\dy_k$ and the $i^\text{ th}$ rectangular solid a volume of $f(x_i,y_i)\Delta A_i$. Let $||\Delta A||$ denote the length of the longest diagonal of all rectangles in the subdivision of $R$; $||\Delta A||\to 0$ means each rectangle's width and height are both approaching 0. If $f$ is a continuous function, as $||\Delta A||$ shrinks (and hence $n\to\infty$) the summation $\ds \sum_{i=1}^n f(x_i,y_i)\Delta A_i$ approximates the signed volume better and better. This leads to a definition.
+In general, each rectangle could have a different width $\dx_j$ and height $\dy_k$, giving the $i^\text{ th}$ rectangle an area $\Delta A_i = \dx_j\dy_k$ and the $i^\text{ th}$ rectangular solid a volume of $f(x_i,y_i)\Delta A_i$. Let $\norm{\Delta A}$ denote the length of the longest diagonal of all rectangles in the subdivision of $R$; $\norm{\Delta A}\to 0$ means each rectangle's width and height are both approaching 0. If $f$ is a continuous function, as $\norm{\Delta A}$ shrinks (and hence $n\to\infty$) the summation $\ds \sum_{i=1}^n f(x_i,y_i)\Delta A_i$ approximates the signed volume better and better. This leads to a definition.
 
 \mnote{\textbf{Note:} Recall that the integration symbol ``$\int$'' is an ``elongated S,'' representing the word ``sum.'' We interpreted $\int_a^bf(x)\ dx$ as ``take the \textit{sum} of the areas of rectangles over the interval $[a,b]$.'' The double integral uses two integration symbols to represent a ``double sum.'' When adding up the volumes of rectangular solids over a partition of a region $R$, as done in \autoref{fig:double_intro}, one could first add up the volumes across each row (one type of sum), then add these totals together (another sum), as in
 $$\sum_{j=1}^n\sum_{i=1}^mf(x_i,y_j)\Delta x_i\Delta y_j.$$
@@ -47,11 +47,11 @@ The definition above does not state how to find the signed volume, though the no
 
 \theorem{thm:double_int}{Double Integrals and Signed Volume}
 {Let $z=f(x,y)$ be a continuous function defined over a closed region $R$ in the $x$-$y$ plane. Then the signed volume $V$ under $f$ over $R$ is
-$$V = \iint_R f(x,y)\ dA = \lim_{||\Delta A||\to 0}\sum_{i=1}^n f(x_i,y_i)\Delta A_i.$$}
+$$V = \iint_R f(x,y)\ dA = \lim_{\norm{\Delta A}\to 0}\sum_{i=1}^n f(x_i,y_i)\Delta A_i.$$}
 
 This theorem states that we can find the exact signed volume using a limit of sums. The partition of the region $R$ is not specified, so any partitioning where the diagonal of each rectangle shrinks to 0 results in the same answer. 
 
-This does not offer a very satisfying way of computing area, though. Our experience has shown that evaluating the limits of sums can be tedious. We seek a more direct method.
+This does not offer a very satisfying way of computing volume, though. Our experience has shown that evaluating the limits of sums can be tedious. We seek a more direct method.
 
 Recall \autoref{thm:volume_by_cross_section} in \autoref{sec:disk}. This stated that if $A(x)$ gives the cross-sectional area of a solid at $x$, then $\int_a^b A(x)\ dx$ gave the volume of that solid over $[a,b]$. 
 
@@ -84,21 +84,12 @@ This gives a concrete method for finding signed volume under a surface. We could
 	$$\iint_R f(x,y)\ dA = \int_c^d\int_{h_1(y)}^{h_2(y)} f(x,y)\ dx\ dy.$$
 \end{enumerate}}
 
-Note that once again the bounds of integration follow the ``curve to curve, point to point'' pattern discussed in the previous section. In fact, one of the main points of the previous section is developing the skill of describing a region $R$ with the bounds of an iterated integral. Once this skill is developed, we can use double integrals to compute many quantities, not just signed volume under a surface.\\
+Note that the bounds of integration follow a ``curve to curve, point to point'' pattern. In fact, one of the main points of the previous section is developing the skill of describing a region $R$ with the bounds of an iterated integral. Once this skill is developed, we can use double integrals to compute many quantities, not just signed volume under a surface.
 
 \youtubeVideo{NG2UcXdwzfk}{Ex: Evaluate a Double Integral to Determine Volume (Basic)}
 
 \example{ex_double1}{Evaluating a double integral}{Let $f(x,y) = xy+e^y$. Find the signed volume under $f$ on the region $R$, which is the rectangle with corners $(3,1)$ and $(4,2)$ pictured in \autoref{fig:double1}, using Fubini's Theorem and both orders of integration.}
 {We wish to evaluate $\iint_R \big(xy+e^y\big)\ dA$. As $R$ is a rectangle, the bounds are easily described as $3\leq x\leq 4$ and $1\leq y\leq 2$.\\
-
-Using the order $dy\ dx$:
-\begin{align*}
-\iint_R\big(xy+e^y\big) \ dA &= \int_3^4\int_1^2\big(xy+e^y\big)\ dy \ dx \\
-			&= \int_3^4 \left(\left.\left[\frac12xy^2+e^y\right]\right|_1^2\ \right) dx \\
-			&= \int_3^4\left(\frac 32x + e^2-e\right)dx \\
-			&= \left.\left(\frac 34x^2 + \big(e^2-e\big)x\right)\right|_3^4 \\
-			&= \frac {21}4+ e^2-e\approx 9.92.
-\end{align*}
 
 \mfigurethree{width=150pt,3Dmenu,activate=onclick,deactivate=onclick,
 3Droll=0.,
@@ -109,13 +100,25 @@ Using the order $dy\ dx$:
 3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.25,trim= 1mm 0mm 2mm 0mm,clip}{0in}{Finding the signed volume under a surface in \autoref{ex_double1}.}{fig:double1}{figures/figdouble1}
 %\mfigure[scale=1.25,trim= 1mm 0mm 2mm 0mm,clip]{0in}{Finding the signed volume under a surface in \autoref{ex_double1}.}{fig:double1}{figures/figdouble1}
 
+Using the order $dy\ dx$:
+\begin{align*}
+\iint_R\big(xy+e^y\big) \ dA
+	&= \int_3^4\int_1^2\big(xy+e^y\big)\ dy \ dx \\
+	&= \int_3^4 \left(\left.\left[\frac12xy^2+e^y\right]\right|_1^2\ \right) dx \\
+	&= \int_3^4\left(\frac 32x + e^2-e\right)dx \\
+	&= \left.\left(\frac 34x^2 + \big(e^2-e\big)x\right)\right|_3^4 \\
+	&= \frac {21}4+ e^2-e%\approx 9.92
+	.
+\end{align*}
+
 Now we check the validity of Fubini's Theorem by using the order $dx\ dy$:
 \begin{align*}
 \iint_R\big(xy+e^y\big) \ dA &= \int_1^2\int_3^4\big(xy+e^y\big)\ dx \ dy \\
 		&= \int_1^2\left(\left.\left[\frac12x^2y+xe^y\right]\right|_3^4\right)dy\\
 		&= \int_1^2\left(\frac72y+e^y\right)\ dy\\
 		&= \left.\left(\frac74y^2+e^y\right)\right|_1^2\\
-		&=\frac{21}4+e^2-e\approx 9.92.
+		&=\frac{21}4+e^2-e%\approx 9.92
+		.
 \end{align*}
 Both orders of integration return the same result, as expected.}
 
@@ -130,7 +133,8 @@ Both orders of integration return the same result, as expected.}
 		%&= \int_0^2 \left(\frac13\left(e^{\frac x2+3}-e^{2x}\right)\right)dx \\
 		%&= \frac13\left.\left(2e^{\frac x2+3}-\frac12e^{2x}\right)\right|_0^2\\
 		%&= \frac13\left(\frac32e^4-2e^3+\frac12\right)\\
-		%&= \frac12e^4-\frac23e^3+\frac16\approx  14.08.
+		%&= \frac12e^4-\frac23e^3+\frac16%\approx  14.08
+		%.
 %\end{align*}
 %
 %Now lets consider the order $dx \ dy$. Here $x$ goes from ``curve to curve,'' $0\leq x\leq 2-2y$, and $y$ goes from ``point to point,'' $0\leq y\leq 1$:
@@ -140,7 +144,8 @@ Both orders of integration return the same result, as expected.}
 		%&= \int_0^1\left(\frac12\big(e^{4-y}-e^{3y}\big)\right)dy\\
 		%&=\left.\frac12\left(-e^{4-y}-\frac13e^{3y}\right)\right|_0^1\\
 		%&=\frac12\left(-\frac43e^3+e^4+\frac13\right)\\
-		%&= \frac12e^4-\frac23e^3+\frac16\approx  14.08.
+		%&= \frac12e^4-\frac23e^3+\frac16%\approx  14.08
+		%.
 %\end{align*}
 %We obtained the same result using both orders of integration.}
 
@@ -297,10 +302,7 @@ To change the bounds, note that the curves bounding $y$ are $y=0$ up to $y=x$; t
 How easy is it to evaluate each iterated integral? Consider the order of integrating $dx\ dy$, as given in the original problem. The first indefinite integral we need to evaluate is $\int e^{-x^2}\ dx$; we have stated before (see \autoref{sec:numerical_integration}) that this integral cannot be evaluated in terms of elementary functions. We are stuck.
 
 Changing the order of integration makes a big difference here. In the second iterated integral, we are faced with $\int e^{-x^2}\ dy$; integrating with respect to $y$ gives us $ye^{-x^2}+C$, and the first definite integral evaluates to 
-$$\int_0^x e^{-x^2}\ dy = xe^{-x^2}.$$
-Thus 
-$$\int_0^3\int_0^x e^{-x^2}\ dy\ dx = \int_0^3\Big(xe^{-x^2}\Big)dx.$$
-This last integral is easy to evaluate with substitution, giving a final answer of $\frac12(1-e^{-9})\approx 0.5$. \autoref{fig:double6b} shows the surface over $R$.
+\[\int_0^x e^{-x^2}\ dy = xe^{-x^2}.\]
 \mfigurethree{width=150pt,3Dmenu,activate=onclick,deactivate=onclick,
 3Droll=0.,
 3Dortho=0.005074724089354277,
@@ -309,9 +311,12 @@ This last integral is easy to evaluate with substitution, giving a final answer 
 3Droo=201.00002888349545,
 3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.25,trim = 1mm 10mm 1mm 0mm, clip}{0in}{Showing the surface $f$ defined in \autoref{ex_double6} over its region $R$.}{fig:double6b}{figures/figdouble6b}
 %\mfigure[scale=1.25,trim = 1mm 10mm 1mm 0mm, clip]{0in}{Showing the surface $f$ defined in \autoref{ex_double6} over its region $R$.}{fig:double6b}{figures/figdouble6b}
- 
- 
- In short, evaluating one iterated integral is impossible; the other iterated integral is relatively simple.}
+Thus 
+\[\int_0^3\int_0^x e^{-x^2}\ dy\ dx = \int_0^3\Big(xe^{-x^2}\Big)dx.\]
+This last integral is easy to evaluate with substitution, giving a final answer of $\frac12(1-e^{-9})%\approx 0.5
+$. \autoref{fig:double6b} shows the surface over $R$.
+
+In short, evaluating one iterated integral is impossible; the other iterated integral is relatively simple.}
 
 \autoref{def:av_val} defines the average value of a single--variable function $f(x)$ on the interval $[a,b]$ as
 $$\text{average value of $f(x)$ on $[a,b]$} = \frac1{b-a}\int_a^b f(x)\ dx;$$

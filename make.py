@@ -106,7 +106,7 @@ def updatetodo():
     todos = output.decode('utf-8').split("\n")
     todosin = defaultdict(list)
     for todo in todos:
-        if re.match('./make.py',todo) or re.match('./todo_',todo) or todo == '':
+        if re.match('./make.py',todo) or re.match('./todo_',todo) or todo == '' or re.match('./ApexPDFs/versions',todo):
             continue
         if ' Tim ' in todo:
             todosin['tim'].append(todo)
@@ -118,7 +118,7 @@ def updatetodo():
             todosin['calc3'].append(todo)
     for filename,todolist in todosin.items():
         with open('todo_'+filename+'.txt','w') as todofile:
-            todofile.write('\n'.join(todolist).encode('utf-8'))
+            todofile.write(('\n'.join(todolist)+'\n').encode('utf-8'))
     # and a few manual TeX commands instead of 'todo'
     with open('todo_tex.txt','w') as mystdout:
         for keywd in ('drawexampleline','enlargethispage','pagebreak',

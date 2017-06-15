@@ -1,60 +1,54 @@
-\exerciseset{In Exercises} 
-{,  find the area of the given surface over the region $R$.
-}{
+\exerciseset{In Exercises}{, find the area of the given surface over the region $R$.}{
 
-\exercise{$f(x,y) = 3x-7y+2$; $R$ is the rectangle with opposite corners $(-1,0)$ and $(1,3)$.
-}{$\ds SA = \int_{0}^{3}\int_{-1}^{1} \sqrt{1+ 9+49}\ dx\ dy = 6\sqrt{59} \approx 46.09$
-}
-\exercise{$f(x,y) = 2x+2y+2$; $R$ is the triangle with corners $(0,0)$, $(1,0)$ and $(0,1)$.
-}{$\ds SA = \int_{0}^{1}\int_{0}^{1-x} \sqrt{1+ 4+4}\ dy\ dx = 18$
-}
-\exercise{$f(x,y) = x^2+y^2+10$; $R$ is the circle $x^2+y^2=16$.
-}{This is easier in polar:
-\begin{align*}SA &= \int_{0}^{2\pi}\int_{0}^{4} r\sqrt{1+ 4r^2\cos^2t+4r^2\sin^2t}\ dr\ d\theta\\
-		&= \int_0^{2\pi}\int_0^4r\sqrt{1+4r^2}\ dr\ d\theta \\
-		&= \frac{\pi}{6}\big(65\sqrt{65}-1\big) \approx 273.87
+\exercise{$f(x,y) = 3x-7y+2$; $R$ is the rectangle with opposite corners $(-1,0)$ and $(1,3)$.}{$\ds S = \int_{0}^{3}\int_{-1}^{1} \sqrt{1+ 9+49}\ dx\ dy = 6\sqrt{59} \approx 46.09$}
+
+\exercise{$f(x,y) = 2x+2y+2$; $R$ is the triangle with corners $(0,0)$, $(1,0)$ and $(0,1)$.}{$\ds S = \int_{0}^{1}\int_{0}^{1-x} \sqrt{1+ 4+4}\ dy\ dx = 18$}
+
+\exercise{$f(x,y) = x^2+y^2+10$; $R$ is the disk $x^2+y^2\le16$.}{This is easier in polar:
+\begin{align*}
+	S &= \int_{0}^{2\pi}\int_{0}^{4} r\sqrt{1+ 4r^2\cos^2t+4r^2\sin^2t}\ dr\ d\theta\\
+	&= \int_0^{2\pi}\int_0^4r\sqrt{1+4r^2}\ dr\ d\theta \\
+	&= \frac{\pi}{6}\big(65\sqrt{65}-1\big) \approx 273.87
+\end{align*}}
+
+\exercise{$f(x,y) = -2x+4y^2+7$ over $R$, the triangle bounded by $y=-x$, $y=x$, $0\leq y\leq 1$.}{\begin{align*}
+	S &= \int_{0}^{1}\int_{-y}^{y} \sqrt{1+ 4+64y^2}\ dx\ dy\\
+	&= \int_0^{1}\big(2y\sqrt{5+64y^2}\big)\ dy \\
+	&= \frac1{96}\big(69\sqrt{69}-5\sqrt{5}\big)\approx 5.85
+\end{align*}}
+
+\exercise{$f(x,y) = x^2+y$ over $R$, the triangle bounded by $y=2x$, $y=0$ and $x=2$.}{\begin{align*}
+	S &= \int_{0}^{2}\int_{0}^{2x} \sqrt{1+ 1+4x^2}\ dy\ dx\\
+	&= \int_0^{2}\big(2x\sqrt{2+4x^2}\big)\ dx \\
+	&= \frac{26}{3}\sqrt{2}\approx 12.26
+\end{align*}}
+
+\exercise{$f(x,y) = \frac23x^{3/2}+2y^{3/2}$ over $R$, the rectangle with opposite corners $(0,0)$ and $(1,1)$.}{\begin{align*}
+	S &= \int_{0}^{1}\int_{0}^{1} \sqrt{1+ x+9y}\ dx\ dy\\
+	&= \int_0^{1}\frac23\Big((9y+2)^{3/2}-(9y+1)^{3/2}\Big)\ dy \\
+	&= \frac{4}{135}\big(121\sqrt{11}-100\sqrt{10}-4\sqrt{2}+1\big)\approx 2.383
+\end{align*}}
+
+\exercise{$f(x,y) = 10-2\sqrt{x^2+y^2}$ over $R$, the disk $x^2+y^2\le25$. (This is the cone with height 10 and base radius 5; be sure to compare you result with the known formula.)}{This is easier in polar:
+\begin{align*}
+	S &= \int_{0}^{2\pi}\int_{0}^{5} r\sqrt{1+ \frac{4r^2\cos^2t+4r^2\sin^2t}{r^2\sin^2t+r^2\cos^2t}}\ dr\ d\theta\\
+	&= \int_0^{2\pi}\int_0^5r\sqrt{5}\ dr\ d\theta \\
+	&= 25\pi\sqrt{5}\approx 175.62
+\end{align*}}
+
+\exercise{Find the surface area of the sphere with radius 5 by doubling the surface area of $f(x,y) = \sqrt{25-x^2-y^2}$ over $R$, the disk $x^2+y^2\le25$. (Be sure to compare you result with the known formula.)}{This is easier in polar:
+\begin{align*}
+	S &= 2\int_{0}^{2\pi}\int_{0}^{5} r\sqrt{1+ \frac{r^2\cos^2t+r^2\sin^2t}{25-r^2\sin^2t-r^2\cos^2t}}\ dr\ d\theta\\
+	&= 2\int_0^{2\pi}\int_0^5r\sqrt{\frac{1}{25-r^2}}\ dr\ d\theta \\
+	&= 100\pi\approx 314.16
+\end{align*}}
+
+\exercise{Find the surface area of the ellipse formed by restricting the plane $f(x,y) = cx+dy+h$ to the region $R$, the disk $x^2+y^2\le1$, where $c$, $d$ and $h$ are some constants. Your answer should be given in terms of $c$ and $d$; why does the value of $h$ not matter?}{Integrating in polar is easiest considering $R$:
+\begin{align*}
+	S &= \int_{0}^{2\pi}\int_{0}^{1} r\sqrt{1+ c^2+d^2}\ dr\ d\theta\\
+	&= \int_0^{2\pi}\frac12\Big(\sqrt{1+c^2+d^2}\Big)\ dy \\
+	&= \pi\sqrt{1+c^2+d^2}.
 \end{align*}
+The value of $h$ does not matter as it only shifts the plane vertically (i.e., parallel to the $z$-axis). Different values of $h$ do not create different ellipses in the plane.}
+
 }
-\exercise{$f(x,y) = -2x+4y^2+7$ over $R$, the triangle bounded by $y=-x$, $y=x$, $0\leq y\leq 1$.
-}{
-\begin{align*}SA &= \int_{0}^{1}\int_{-y}^{y} \sqrt{1+ 4+64y^2}\ dx\ dy\\
-		&= \int_0^{1}\big(2y\sqrt{5+64y^2}\big)\ dy \\
-		&= \frac1{96}\big(69\sqrt{69}-5\sqrt{5}\big)\approx 5.85
-\end{align*}
-}
-\exercise{$f(x,y) = x^2+y$ over $R$, the triangle bounded by $y=2x$, $y=0$ and $x=2$.
-}{
-\begin{align*}SA &= \int_{0}^{2}\int_{0}^{2x} \sqrt{1+ 1+4x^2}\ dy\ dx\\
-		&= \int_0^{2}\big(2x\sqrt{2+4x^2}\big)\ dx \\
-		&= \frac{26}{3}\sqrt{2}\approx 12.26
-\end{align*}
-}
-\exercise{$f(x,y) = \frac23x^{3/2}+2y^{3/2}$ over $R$, the rectangle with opposite corners $(0,0)$ and $(1,1)$.
-}{
-\begin{align*}SA &= \int_{0}^{1}\int_{0}^{1} \sqrt{1+ x+9y}\ dx\ dy\\
-		&= \int_0^{1}\frac23\Big((9y+2)^{3/2}-(9y+1)^{3/2}\Big)\ dy \\
-		&= \frac{4}{135}\big(121\sqrt{11}-100\sqrt{10}-4\sqrt{2}+1\big)\approx 2.383
-\end{align*}
-}
-\exercise{$f(x,y) = 10-2\sqrt{x^2+y^2}$ over $R$, the circle $x^2+y^2=25$. (This is the cone with height 10 and base radius 5; be sure to compare you result with the known formula.)
-}{This is easier in polar:
-\begin{align*}SA &= \int_{0}^{2\pi}\int_{0}^{5} r\sqrt{1+ \frac{4r^2\cos^2t+4r^2\sin^2t}{r^2\sin^2t+r^2\cos^2t}}\ dr\ d\theta\\
-		&= \int_0^{2\pi}\int_0^5r\sqrt{5}\ dr\ d\theta \\
-		&= 25\pi\sqrt{5}\approx 175.62
-\end{align*}
-}
-\exercise{Find the surface area of the sphere with radius 5 by doubling the surface area of $f(x,y) = \sqrt{25-x^2-y^2}$ over $R$, the circle $x^2+y^2=25$. (Be sure to compare you result with the known formula.)
-}{This is easier in polar:
-\begin{align*}SA &= 2\int_{0}^{2\pi}\int_{0}^{5} r\sqrt{1+ \frac{r^2\cos^2t+r^2\sin^2t}{25-r^2\sin^2t-r^2\cos^2t}}\ dr\ d\theta\\
-		&= 2\int_0^{2\pi}\int_0^5r\sqrt{\frac{1}{25-r^2}}\ dr\ d\theta \\
-		&= 100\pi\approx 314.16
-\end{align*}
-}
-\exercise{Find the surface area of the ellipse formed by restricting the plane $f(x,y) = cx+dy+h$ to the region $R$, the circle $x^2+y^2=1$, where $c$, $d$ and $h$ are some constants. Your answer should be given in terms of $c$ and $d$; why does the value of $h$ not matter?
-}{Integrating in polar is easiest considering $R$:
-\begin{align*}SA &= \int_{0}^{2\pi}\int_{0}^{1} r\sqrt{1+ c^2+d^2}\ dr\ d\theta\\
-		&= \int_0^{2\pi}\frac12\Big(\sqrt{1+c^2+d^2}\Big)\ dy \\
-		&= \pi\sqrt{1+c^2+d^2}.
-\end{align*}
-The value of $h$ does not matter as it only shifts the plane vertically (i.e., parallel to the $z$-axis). Different values of $h$ do not create different ellipses in the plane.
-}}

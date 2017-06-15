@@ -4,13 +4,13 @@ The volume of a general right cylinder, as shown in \autoref{fig:cross1}, is
 \begin{center}
 Area of the base $\times$ height.
 \end{center}
-\mfigurethree{width=75pt,3Dmenu,activate=onclick,deactivate=onclick,
+\mtable{The volume of a general right cylinder}{fig:cross1}{
+\myincludeasythree{width=.5\marginparwidth,
 3Droll=0,
 3Dortho=0.005786627996712923,
 3Dc2c=0.4350872337818146 0.822970449924469 0.3652651607990265,
 3Dcoo=-7.312352180480957 -16.589130401611328 29.674652099609375,
-3Droo=149.99999509331877,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{}{0in}{The volume of a general right cylinder}{fig:cross1}{figures/figcross1}
+3Droo=149.99999509331877}{width=.5\marginparwidth}{figures/figcross1_3D}}
 We can use this fact as the building block in finding volumes of a variety of shapes.
 
 Given an arbitrary solid, we can \textit{approximate} its volume by cutting it into $n$  thin slices. When the slices are thin, each slice can be approximated well by a general right cylinder. Thus the volume of each slice is approximately its cross-sectional area $\times$ thickness.
@@ -31,33 +31,33 @@ with $\Delta x=\frac{b-a}{n}$ and $x_i=a+i\Delta x$. We recognize this as a defi
 \[V = \int_a^b A(x)\ dx.\]}
 
 \example{ex_disk0}{Finding the volume of a solid}{Find the volume of a pyramid with a square base of side length 10 in and a height of 5 in.}
-{There are many ways to ``orient'' the pyramid along the $x$-axis; \autoref{fig:disk0} gives one such way, with the pointed top of the pyramid at the origin and the $x$-axis going through the center of the base.
-\mfigurethree{width=\marginparwidth,3Dmenu,activate=onclick,deactivate=onclick,
+{There are many ways to ``orient'' the pyramid along the $x$-axis; \autoref{fig:disk0}(a) gives one such way, with the pointed top of the pyramid at the origin and the $x$-axis going through the center of the base.
+\mtable{Orienting a pyramid along the $x$-axis (top) and cutting a slice in the pyramid (bottom) in \autoref{ex_disk0}.}{fig:disk0}{%
+\myincludeasythree{width=\marginparwidth,
 3Droll=130.3044775136707,
 3Dortho=0.004594136495143175,
 3Dc2c=0.4693154990673065 0.5382519960403442 0.7000198364257812,
 3Dcoo=60.78499984741211 0.48087620735168457 -14.641631126403809,
-3Droo=150.00000157638937,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{width=\marginparwidth}{0in}{Orienting a pyramid along the $x$-axis in \autoref{ex_disk0}.}{fig:disk0}{figures/figcross_area1}
-%\mfigure{0in}{Orienting a pyramid along the $x$-axis in \autoref{ex_disk0}.}{fig:disk0}{figures/figcross_area1}
+3Droo=150.00000157638937}{width=\marginparwidth}{figures/figcross_area1_3D}
+\\(a)\\
+\myincludeasythree{width=\marginparwidth,
+3Droll=130.3044775136707,
+3Dortho=0.004594136495143175,
+3Dc2c=0.4693154990673065 0.5382519960403442 0.7000198364257812,
+3Dcoo=60.78499984741211 0.48087620735168457 -14.641631126403809,
+3Droo=150.00000157638937}{width=\marginparwidth}{figures/figcross_area1a_3D}
+\\(b)}
 
 Each cross section of the pyramid is a square.
 %; this is a sample differential element.
 To determine its area $A(x)$, we need to determine the side lengths of the square.
 
-When $x=5$, the square has side length 10; when $x=0$, the square has side length 0. Since the edges of the pyramid are lines, it is easy to figure that each cross-sectional square has side length $2x$, giving $A(x) = (2x)^2=4x^2$. % 
+When $x=5$, the square has side length 10; when $x=0$, the square has side length 0. Since the edges of the pyramid are lines, it is easy to figure that each cross-sectional square has side length $2x$, giving $A(x) = (2x)^2=4x^2$.
 
-If one were to cut a slice out of the pyramid at $x=3$, as shown in \autoref{fig:disk0a}, one would have a shape with square bottom and top with sloped sides. If the slice were thin, both the bottom and top squares would have sides lengths of about 6, and thus the cross--sectional area of the bottom and top would be about 36in$^2$. Letting $\Delta x$ represent the thickness of the slice, the volume of this slice would then be about $36\Delta x$in$^3$. 
-\mfigurethree{width=\marginparwidth,3Dmenu,activate=onclick,deactivate=onclick,
-3Droll=130.3044775136707,
-3Dortho=0.004594136495143175,
-3Dc2c=0.4693154990673065 0.5382519960403442 0.7000198364257812,
-3Dcoo=60.78499984741211 0.48087620735168457 -14.641631126403809,
-3Droo=150.00000157638937,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{width=\marginparwidth}{0in}{Cutting a slice in the pyramid in \autoref{ex_disk0} at $x=3$.}{fig:disk0a}{figures/figcross_area1a}
+If one were to cut a slice out of the pyramid at $x=3$, as shown in \autoref{fig:disk0}(b), one would have a shape with square bottom and top with sloped sides. If the slice were thin, both the bottom and top squares would have sides lengths of about 6, and thus the cross--sectional area of the bottom and top would be about 36in$^2$. Letting $\Delta x$ represent the thickness of the slice, the volume of this slice would then be about $36\Delta x$in$^3$. 
 
 Cutting the pyramid into $n$ slices divides the total volume into $n$ equally--spaced smaller pieces, each with volume $(2x_i)^2\Delta x$, where $x_i$ is the approximate location of the slice along the $x$-axis and $\Delta x$ represents the thickness of each slice. One can approximate total volume of the pyramid by summing up the volumes of these slices:
-$$\text{Volume } \approx \sum_{i=1}^n (2x_i)^2\Delta x.$$
+\[\text{Volume } \approx \sum_{i=1}^n (2x_i)^2\Delta x.\]
 Taking the limit as $n\to\infty$ gives the actual volume of the pyramid; recognizing this sum as a Riemann Sum allows us to find the exact answer using a definite integral, matching the definite integral given by \autoref{thm:volume_by_cross_section}.
 
 We have 
@@ -89,7 +89,6 @@ Start with a function $y=f(x)$ from $x=a$ to $x=b$. Revolving this curve about a
 \clearpage
 
 \mtable{Sketching a solid in \autoref{ex_disk1}.}{fig:disk1}{%
- \begin{tabular}{c}
   \begin{tikzpicture}
    \begin{axis}[width=\marginparwidth,
      tick label style={font=\scriptsize},axis y line=middle,
@@ -110,27 +109,14 @@ Start with a function $y=f(x)$ from $x=a$ to $x=b$. Revolving this curve about a
 3Dc2c=0.44462037086486816 0.39410829544067383 0.8043577671051025,
 3Dcoo=67.21983337402344 3.5258262157440186 -29.566415786743164,
 3Droo=150.00000160608386}{width=\marginparwidth}{figures/figdisk1_3D}\\
-%\myincludegraphics{figures/figdisk1} \\
-%	\myincludegraphicsthree{width=110pt,3Dmenu,activate=onclick,deactivate=onclick,
-%3Droll=126.0060482236849,
-%3Dortho=0.004875946324318647,
-%3Dc2c=0.44462037086486816 0.39410829544067383 0.8043577671051025,
-%3Dcoo=67.21983337402344 3.5258262157440186 -29.566415786743164,
-%3Droo=150.00000160608386,
-%3Dlights=Headlamp,add3Djscript=asylabels.js}{}{figures/figdisk1}\\
-%%\myincludegraphics{figures/figdisk1} \\
 	(b) \\
-	\myincludegraphicsthree{width=\marginparwidth,3Dmenu,activate=onclick,
-	deactivate=onclick,
+	\myincludeasythree{width=\marginparwidth,
 3Droll=126.0060482236849,
 3Dortho=0.004875946324318647,
 3Dc2c=0.44462037086486816 0.39410829544067383 0.8043577671051025,
 3Dcoo=67.21983337402344 3.5258262157440186 -29.566415786743164,
-3Droo=150.00000160608386,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{width=\marginparwidth}{figures/figdisk1b}\\
-%\myincludegraphics{figures/figdisk1b} \\
-	(c) 
-\end{tabular}}
+3Droo=150.00000160608386}{width=\marginparwidth}{figures/figdisk1b_3D}\\
+	(c)}
 
 \example{ex_disk1}{Finding volume using the Disk Method}{Find the volume of the solid formed by revolving about the $x$-axis the region bounded by the curves $y=1/x$, $x=1$, $x=2$ and the $x$-axis.}
 {A sketch can help us understand this problem. In \autoref{fig:disk1}(a) we have sketched the region we will be rotating.  In \autoref{fig:disk1}(b), the curve $y=1/x$ is sketched along with the sample slice, a disk, at $x$ with radius $R(x)=1/x$. In \autoref{fig:disk1}(c) the whole solid is pictured, along with the sample slice.
@@ -157,7 +143,6 @@ Taking the limit of the above sum as $n\to\infty$ gives the actual volume; recog
 While \autoref{idea:disk_method} is given in terms of functions of $x$, the principle involved can be applied to functions of $y$ when the axis of rotation is vertical, not horizontal. We demonstrate this in the next example.
 
 \mtable{Sketching a solid in \autoref{ex_disk2}.}{fig:disk2}{%
-	\begin{tabular}{c}
   \begin{tikzpicture}
    \begin{axis}[width=1.16\marginparwidth,
      tick label style={font=\scriptsize},axis y line=middle,
@@ -172,25 +157,20 @@ While \autoref{idea:disk_method} is given in terms of functions of $x$, the prin
    \node [above] at (myplot.above origin) {\scriptsize $y$};
   \end{tikzpicture}
   \\ (a) \\
-	\myincludegraphicsthree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
+	\myincludeasythree{width=\marginparwidth,
 3Droll=112.9954735907269,
 3Dortho=0.003950905054807663,
 3Dc2c=0.5512889623641968 0.2862306833267212 0.7836788296699524,
 3Dcoo=-9.51923942565918 49.542564392089844 -9.694497108459473,
-3Droo=150.00000339216956,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{}{figures/figdisk1a}\\
-%\myincludegraphics{figures/figdisk1a} \\
-	(b)\\
-	\myincludegraphicsthree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
+3Droo=150.00000339216956}{width=\marginparwidth}{figures/figdisk1a_3D}
+\\(b)\\
+	\myincludeasythree{width=\marginparwidth,
 3Droll=112.9954735907269,
 3Dortho=0.003950905054807663,
 3Dc2c=0.5512889623641968 0.2862306833267212 0.7836788296699524,
 3Dcoo=-9.51923942565918 49.542564392089844 -9.694497108459473,
-3Droo=150.00000339216956,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{}{figures/figdisk2a}\\
-%\myincludegraphics{figures/figdisk2a} \\
-	(c)
-	\end{tabular}}
+3Droo=150.00000339216956}{width=\marginparwidth}{figures/figdisk2a_3D}
+\\(c)}
 
 \example{ex_disk2}{Finding volume using the Disk Method}{Find the volume of the solid formed by revolving about the $y$-axis the region bounded by the curves $y=1/x$, $y=1$, $y=0.5$, and the $y$-axis.}
 {Since the axis of rotation is vertical, our perpendicular cross sections have thickness $\Delta y$ and radius $x=R(y)$. We need to convert the function into a function of $y$. % and convert the $x$-bounds to $y$-bounds.
@@ -204,6 +184,7 @@ Thus we are rotating about the $y$-axis the region bounded by the curves $x=1/y$
 \end{align*}}
 
 % todo create and work out an example where the same region is rotated about the x axis and y axis but the disk method (for both) shows that they have different volumes
+
 % not the same region
 %The previous two examples demonstrate how taking the same region and rotating it about two different axes will result in different solids and thus volumes.
 
@@ -216,7 +197,6 @@ V = \pi\int_a^b [R(x)]^2 \ dx - \pi\int_a^b [r(x)]^2\ dx
 One can generate a solid of revolution with a hole in the middle by revolving a region about an axis. Consider \autoref{fig:washeridea}(a), where a region is sketched along with a dashed, horizontal axis of rotation. By rotating the region about the axis, a solid is formed. Each cross section of this solid will be a washer (a disk with a hole in the center) as sketched in \autoref{fig:washeridea}(b). The outside of the washer has radius $R(x)$, whereas the inside has radius $r(x)$. The entire solid is sketched in \autoref{fig:washeridea}(c).  This leads us to the Washer Method.
 
 \begin{lxfigure}
-%\mtable{Establishing the Washer Method.}{fig:washeridea}{%
 \begin{tabular}{ccc}
  \begin{tikzpicture}
   \begin{axis}[width=1.16\marginparwidth,
@@ -237,41 +217,21 @@ One can generate a solid of revolution with a hole in the middle by revolving a 
   \node [right] at (myplot.right of origin) {\scriptsize $x$};
   \node [above] at (myplot.above origin) {\scriptsize $y$};
  \end{tikzpicture}
-%\myincludegraphicsthree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
-%3Droll=96.94265756936434,
-%3Dortho=0.005309578496962786,
-%3Dc2c=0.547386884689331 0.07732175290584564 0.833299994468689,
-%3Dcoo=64.78053283691406 10.129053115844727 -47.566162109375,
-%3Droo=149.99999789136484,
-%3Dlights=Headlamp,add3Djscript=asylabels.js}{}{figures/figwasher_idea_a}
 &
-%\myincludegraphics{figures/figwasher_idea_a}\\
-\myincludegraphicsthree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
+\myincludeasythree{width=\marginparwidth,
 3Droll=96.94265756936434,
 3Dortho=0.005309578496962786,
 3Dc2c=0.547386884689331 0.07732175290584564 0.833299994468689,
 3Dcoo=64.78053283691406 10.129053115844727 -47.566162109375,
-3Droo=149.99999789136484,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{}{figures/figwasher_idea_c}
+3Droo=149.99999789136484}{width=\marginparwidth}{figures/figwasher_idea_c_3D}
 &
-\myincludegraphicsthree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
+\myincludeasythree{width=\marginparwidth,
 3Droll=96.94265756936434,
 3Dortho=0.005309578496962786,
 3Dc2c=0.547386884689331 0.07732175290584564 0.833299994468689,
 3Dcoo=64.78053283691406 10.129053115844727 -47.566162109375,
-3Droo=149.99999789136484,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{}{figures/figwasher_idea_b}\\
-%\myincludegraphics{figures/figwasher_idea_b}\\
+3Droo=149.99999789136484}{width=\marginparwidth}{figures/figwasher_idea_b_3D}\\
 (a) & (b) & (c)
-%\myincludegraphicsthree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
-%3Droll=96.94265756936434,
-%3Dortho=0.005309578496962786,
-%3Dc2c=0.547386884689331 0.07732175290584564 0.833299994468689,
-%3Dcoo=64.78053283691406 10.129053115844727 -47.566162109375,
-%3Droo=149.99999789136484,
-%3Dlights=Headlamp,add3Djscript=asylabels.js}{}{figures/figwasher_idea_c}\\
-%%\myincludegraphics{figures/figwasher_idea_c}\\
-%(c)
 \end{tabular}
 \caption{Establishing the Washer Method.}
 \label{fig:washeridea}
@@ -284,9 +244,7 @@ $$V = \pi\int_a^b \Big([R(x)]^2-[r(x)]^2\Big)\ dx.$$}
 
 Even though we introduced it first, the Disk Method is just a special case of the Washer Method with an inside radius of $r(x)=0$.
 
-\example{ex_wash1}{Finding volume with the Washer Method}{Find the volume of the solid formed by rotating the region bounded by $y=x^2-2x+2$ and $y=2x-1$ about the $x$-axis.}
-{A sketch of the region will help, as given in \autoref{fig:wash1}(a).
-\mtable[-4.5in]{Sketching the region, a sample slice, and solid in \autoref{ex_wash1}.}{fig:wash1}{%
+\mtable[-4in]{Sketching the region, a sample slice, and solid in \autoref{ex_wash1}.}{fig:wash1}{%
  \begin{tikzpicture}
   \begin{axis}[width=\marginparwidth,
      tick label style={font=\scriptsize},axis y line=middle,
@@ -302,42 +260,24 @@ Even though we introduced it first, the Disk Method is just a special case of th
   \node [right] at (myplot.right of origin) {\scriptsize $x$};
   \node [above] at (myplot.above origin) {\scriptsize $y$};
  \end{tikzpicture}
-%\myincludegraphicsthree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
-%3Droll=97.32968340849395,
-%3Dortho=0.004881054162979126,
-%3Dc2c=0.43117064237594604 0.05905330181121826 0.9003357887268066,
-%3Dcoo=64.78053283691406 10.12905216217041 -47.566158294677734,
-%3Droo=149.99999769784193,
-%3Dlights=Headlamp,add3Djscript=asylabels.js}{}{figures/figwash1}
-\\
-%\myincludegraphics{figures/figwash1c}\\
-(a)\\
+\\(a)\\
 \myincludeasythree{width=\marginparwidth,
 3Droll=97.32968340849395,
 3Dortho=0.004881054162979126,
 3Dc2c=0.43117064237594604 0.05905330181121826 0.9003357887268066,
 3Dcoo=64.78053283691406 10.12905216217041 -47.566158294677734,
-3Droo=149.99999769784193}{width=\marginparwidth}{figures/figwash1c_3D}\\
-%\myincludegraphicsthree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
-%3Droll=97.32968340849395,
-%3Dortho=0.004881054162979126,
-%3Dc2c=0.43117064237594604 0.05905330181121826 0.9003357887268066,
-%3Dcoo=64.78053283691406 10.12905216217041 -47.566158294677734,
-%3Droo=149.99999769784193,
-%3Dlights=Headlamp,add3Djscript=asylabels.js}{}{figures/figwash1c}\\
-%\myincludegraphics{figures/figwash1c}\\
-(b)\\
-\myincludegraphicsthree{width=\marginparwidth,3Dmenu,activate=onclick,deactivate=onclick,
+3Droo=149.99999769784193}{width=\marginparwidth}{figures/figwash1c_3D}
+\\(b)\\
+\myincludeasythree{width=\marginparwidth,
 3Droll=97.32968340849395,
 3Dortho=0.004881054162979126,
 3Dc2c=0.43117064237594604 0.05905330181121826 0.9003357887268066,
 3Dcoo=64.78053283691406 10.12905216217041 -47.566158294677734,
-3Droo=149.99999769784193,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{width=\marginparwidth}{figures/figwash1b}\\
-%\myincludegraphics{figures/figwash1b}\\
-(c)}
-%
-Rotating about the $x$-axis will produce cross sections in the shape of washers, as shown in \autoref{fig:wash1}(b); the complete solid is shown in part (c). The outside radius of this washer is $R(x) = 2x+1$; the inside radius is $r(x) = x^2-2x+2$. As the region is bounded from $x=1$ to $x=3$, we integrate as follows to compute the volume.
+3Droo=149.99999769784193}{width=\marginparwidth}{figures/figwash1b_3D}
+\\(c)}
+
+\example{ex_wash1}{Finding volume with the Washer Method}{Find the volume of the solid formed by rotating the region bounded by $y=x^2-2x+2$ and $y=2x-1$ about the $x$-axis.}
+{A sketch of the region will help, as given in \autoref{fig:wash1}(a). Rotating about the $x$-axis will produce cross sections in the shape of washers, as shown in \autoref{fig:wash1}(b); the complete solid is shown in part (c). The outside radius of this washer is $R(x) = 2x+1$; the inside radius is $r(x) = x^2-2x+2$. As the region is bounded from $x=1$ to $x=3$, we integrate as follows to compute the volume.
 \begin{align*}
 V &= \pi\int_1^3 \Big((2x-1)^2-(x^2-2x+2)^2\Big)\ dx \\
 		&= \pi\int_1^3 \big(-x^4+4x^3-4x^2+4x-3\big)\ dx \\
@@ -372,29 +312,6 @@ When rotating about a vertical axis, the outside and inside radius functions mus
 3Dc2c=0.44462037086486816 0.39410829544067383 0.8043577671051025,
 3Dcoo=67.21983337402344 3.5258262157440186 -29.566415786743164,
 3Droo=150.00000160608386}{width=\marginparwidth}{figures/figsq_rt_3D}
-% \begin{tikzpicture}
-%  \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
-%    axis on top,axis y line=none,axis lines=center,y dir=reverse,name=myplot,
-%    xtick={1},ztick=\empty,
-%    ymin=-3.2,ymax=3.2,xmin=-1.1,xmax=1.1,zmin=-.1,zmax=1.1]
-%   \addplot3[domain=.35:1,y domain=90:360, samples y=36,surf, shader=flat,
-%     colormap={mp2}{\colormaptwo}] ({.71*cos(y)*(x)},{.71*sin(y)*(x)},.5);
-%   \addplot3[domain=.35:1,y domain=0:180, samples y=36,surf, shader=flat,
-%     colormap={mp2}{\colormaptwo}] ({.71*sin(y)*(x)},{.71*cos(y)*(x)},.5);
-%   \addplot3[domain=0:1,samples y=0,thick,black] (x,0,{sqrt x});
-%   \addplot3[domain=0:1,samples y=0,thick,black] (x,0,{x^2});
-%   \addplot3[domain=0:1,y domain=0:1,surf,shader=flat,colormap={mp2}{\colormapone},
-%     opacity=.2] (x,0,{y*((sqrt x)-x^2)+x^2});
-%   \addplot3[domain=0:290,samples y=0,{\colortwo},thick,smooth,]
-%    ({.71*cos(x)},{.71*sin(x)},{.5});
-%   \addplot3[domain=290:360,samples y=0,{\colortwo},thick,smooth,dashed]
-%    ({.71*cos(x)},{.71*sin(x)},{.5});
-%   \addplot3[domain=-52:360,samples y=0,{\colortwo},thick,smooth,]
-%    ({.25*cos(x)},{.25*sin(x)},{.5});
-%  \end{axis}
-%  \node [right] at (myplot.right of origin)[shift={(-20pt,-15pt)}] {\scriptsize $x$};
-%  \node [above] at (myplot.above origin) [shift={(0,-17pt)}] {\scriptsize $y$};
-% \end{tikzpicture}
  \\ (b) \\
 \myincludeasythree{width=\marginparwidth,
 3Droll=126.0060482236849,
@@ -402,24 +319,6 @@ When rotating about a vertical axis, the outside and inside radius functions mus
 3Dc2c=0.44462037086486816 0.39410829544067383 0.8043577671051025,
 3Dcoo=67.21983337402344 3.5258262157440186 -29.566415786743164,
 3Droo=150.00000160608386}{width=\marginparwidth}{figures/figsq_rt_b_3D}
-% \begin{tikzpicture}
-%  \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
-%    axis on top,axis y line=none,axis lines=center,y dir=reverse,name=myplot,
-%    xtick={1},ztick=\empty,ymin=-2.2,ymax=2.2,xmin=-1.1,xmax=1.1,zmin=-.1,zmax=1.1]
-%   \addplot3[domain=0:1,y domain=0:360, surf,colormap={mp2}{\colormaptwo},opacity=.8,
-%     faceted color=black!60,very thin,z buffer=sort,samples=15,samples y=20]
-%    ({sin(y)*((sqrt x))},{cos(y)*((sqrt x))},x);
-%   \addplot3[domain=0:1,y domain=0:360, surf,colormap={mp2}{\colormapplaneone},
-%     opacity=.5,faceted color=black!40,samples=15,samples y=36,very thin,
-%     z buffer=sort] ({sin(y)*(x^2)},{cos(y)*(x^2)},x);
-%   \addplot3[domain=0:1,samples y=0,black,smooth,dashed] (x,0,{sqrt x});
-%   \addplot3[domain=0:1,samples y=0,black,thick,smooth] (x,0,{x^2});
-%   \addplot3[domain=0:360,samples y=0,black,thick,smooth,] ({cos(x)},{sin(x)},1);
-%   \addplot3[domain=-.2:3.3,samples y=0, black, thick, smooth,dashed] (x,0,2);
-%  \end{axis}
-%  \node [right] at (myplot.right of origin)[shift={(-20pt,-15pt)}] {\scriptsize $x$};
-%  \node [above] at (myplot.above origin) [shift={(0,-17pt)}] {\scriptsize $y$};
-% \end{tikzpicture}
  \\ (c)}
 
 \example{ex_wash_3}{Finding volume with the Washer Method}{Find the volume of the solid formed by rotating the region bounded by $y=x^2$ and $x=y^2$ about the $y$-axis.}{In \autoref{fig:ex_sq_and_rt} we have a sketch of the region (a), a sample slice (b), and the solid (c). Rotating about the $y$-axis will produce cross sections in the shape of washers, as shown in Figure (not yet created); the complete solid is shown in  part (c). Since the axis of rotation is vertical, each radius is a function of $y$. The outside radius of this washer is $R(y)=\sqrt y$ and the inside radius is $r(y)=y^2$. As the region is bounded from $y=0$ to $y=1$, we integrate as follows to compute the volume. 
@@ -434,7 +333,8 @@ V&=\pi \int_0^1 \left((\sqrt y)^2-(y^2)^2\right) \ dy\\
 
 \mtable{Sketching the region, a sample slice, and the solid in \autoref{ex_wash2}.}{fig:wash2}{%
  \begin{tikzpicture}
-  \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+  \begin{axis}[width=1.16\marginparwidth,axis equal,
+    tick label style={font=\scriptsize},
     axis y line=middle,axis x line=middle,axis lines=center,name=myplot,
     xtick={1,2},ztick={1,2,3},ymin=-.2,ymax=3.2,xmin=-.2,xmax=2.2]
     \draw[draw={\colorone},fill={\coloronefill}] (axis cs:1,1) -- (axis cs:2,1) --(axis cs:2,3)-- cycle;
@@ -446,34 +346,21 @@ V&=\pi \int_0^1 \left((\sqrt y)^2-(y^2)^2\right) \ dy\\
    \node [right] at (myplot.right of origin) {\scriptsize $x$};
    \node [above] at (myplot.above origin) {\scriptsize $y$};
   \end{tikzpicture}
-  \\
-%\myincludegraphicsthree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
-%3Droll=123.42078064170005,
-%3Dortho=0.00488104997202754,
-%3Dc2c=0.41855040192604065 0.31316813826560974 0.8524911999702454,
-%3Dcoo=-7.115118026733398 66.85215759277344 -16.372848510742188,
-%3Droo=149.99999819286032,
-%3Dlights=Headlamp,add3Djscript=asylabels.js}{}{figures/figwash2a}\\
-%%\myincludegraphics{figures/figwash2a} \\
-(a) \\
-\myincludegraphicsthree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
+  \\(a) \\
+\myincludeasythree{width=\marginparwidth,
 3Droll=123.42078064170005,
 3Dortho=0.00488104997202754,
 3Dc2c=0.41855040192604065 0.31316813826560974 0.8524911999702454,
 3Dcoo=-7.115118026733398 66.85215759277344 -16.372848510742188,
-3Droo=149.99999819286032,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{}{figures/figwash2b}\\
-%\myincludegraphics{figures/figwash2b} \\
-(b) \\
-\myincludegraphicsthree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
+3Droo=149.99999819286032}{width=\marginparwidth}{figures/figwash2b_3D}
+\\(b) \\
+\myincludeasythree{width=\marginparwidth,
 3Droll=123.42078064170005,
 3Dortho=0.00488104997202754,
 3Dc2c=0.41855040192604065 0.31316813826560974 0.8524911999702454,
 3Dcoo=-7.115118026733398 66.85215759277344 -16.372848510742188,
-3Droo=149.99999819286032,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{}{figures/figwash2c}\\
-%\myincludegraphics{figures/figwash2c} \\
-(c)}
+3Droo=149.99999819286032}{width=\marginparwidth}{figures/figwash2c_3D}
+\\(c)}
 
 \example{ex_wash2}{Finding volume with the Washer Method}{Find the volume of the solid formed by rotating the triangular region with vertices at $(1,1)$, $(2,1)$ and $(2,3)$ about the $y$-axis.}
 {The triangular region is sketched in \autoref{fig:wash2}(a); the sample slice is sketched in (b) and the full solid is drawn in (c). They help us establish the outside and inside radii. Since the axis of rotation is vertical, each radius is a function of $y$. 
@@ -521,32 +408,6 @@ In the previous examples, the axis of rotation has either been the $x$ or $y$ ax
 3Dc2c=0.44462037086486816 0.39410829544067383 0.8043577671051025,
 3Dcoo=67.21983337402344 3.5258262157440186 -29.566415786743164,
 3Droo=150.00000160608386}{width=\marginparwidth}{figures/figwash4_3D}
-%\begin{tikzpicture}
-%\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
-%			axis on top,axis y line=none,axis lines=center,y dir=reverse,name=myplot,
-%			xtick={1},ztick=\empty,ymin=-3.5,ymax=3.5,
-%			xmin=-1.1,xmax=2.1,zmin=-.5,zmax=4.5]
-%\addplot3[domain=.5:.7,y domain=90:270, samples y=36,surf, shader=flat, colormap={mp2}{\colormaptwo}]
-%	(.5,{1.28*cos(y)*(.5+x)},{1.28*sin(y)*(.5+x)+2});
-%\addplot3[domain=0:1,y domain=0:1,surf,shader=flat,colormap={mp2}{\colormapone}]
-%	(x,0,{y*((sqrt x)-(x))+x});
-%\addplot3[domain=.5:.7,y domain=0:180, samples y=36,surf, shader=flat, colormap={mp2}{\colormaptwo}]
-%	(.5,{1.28*sin(y)*(.5+x)},{1.28*cos(y)*(.5+x)+2});
-%\addplot3[domain=0:1,samples y=0,black,thick,smooth,] (x,0,{sqrt x});
-%\addplot3[domain=0:1,samples y=0,black,thick,smooth,] (x,0,{x});
-%\draw (axis cs:.51,0,.5) --  (axis cs:.51,0,2);
-%\draw (axis cs:.49,0,.7) --  (axis cs:.49,0,2);
-%\addplot3[domain=0:180,samples y=0,{\colortwo},thick,smooth]
-%	(.5,{1.5*sin(x)},{1.5*cos(x)+2});
-%\addplot3[domain=198:360,samples y=0,{\colortwo},thick,smooth]
-%	(.5,{1.5*sin(x)},{1.5*cos(x)+2});
-%\addplot3[domain=0:360,samples y=0,{\colortwo},thick,smooth]
-%	(.5,{1.28*cos(x)},{1.28*sin(x)+2});
-%\addplot3[domain=-1.1:2.1,samples y=0, black, thick, smooth,dashed] (x,0,2);
-%\end{axis}
-%\node [right] at (myplot.right of origin)[shift={(-20pt,-15pt)}] {\scriptsize $x$};
-%\node [above] at (myplot.above origin) [shift={(0,-17pt)}] {\scriptsize $y$};
-%\end{tikzpicture}
 \\ (b) \\
 \myincludeasythree{width=\marginparwidth,
 3Droll=126.0060482236849,
@@ -554,22 +415,6 @@ In the previous examples, the axis of rotation has either been the $x$ or $y$ ax
 3Dc2c=0.44462037086486816 0.39410829544067383 0.8043577671051025,
 3Dcoo=67.21983337402344 3.5258262157440186 -29.566415786743164,
 3Droo=150.00000160608386}{width=\marginparwidth}{figures/figwash4b_3D}
-%\begin{tikzpicture}
-%\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
-%			axis on top,axis y line=none,axis lines=center,y dir=reverse,name=myplot,
-%			xtick={1},ztick=\empty,ymin=-3.5,ymax=3.5,
-%			xmin=-1.1,xmax=2.1,zmin=-.5,zmax=4.5]
-%\addplot3[domain=0:1,y domain=125:360, surf,colormap={mp2}{\colormaptwo},opacity=.8,faceted color=black!60,very thin,z buffer=sort,samples=10,samples y=16] (x,{sin(y)*(2-(sqrt x))},{cos(y)*(2-(sqrt x))+2});
-%\addplot3[domain=0:1,y domain=-30:140, surf,colormap={mp2}{\colormapplaneone},opacity=.7,faceted color=black!40,samples=10,samples y=36,very thin,z buffer=sort] (x,{sin(y)*(2-x)},{cos(y)*(2-x)+2});
-%\addplot3[domain=0:1,samples y=0,black,smooth,dashed] (x,0,{sqrt x});
-%\addplot3[domain=0:1,samples y=0,black,thick,smooth] (x,0,{x});
-%\addplot3[domain=0:360,samples y=0,black,thick,smooth,] (1,{cos(x)},{sin(x)+2});
-%\addplot3[domain=-85:125,samples y=0,black,thick,smooth,] (0,{2*cos(x)},{2*sin(x)+2});
-%\addplot3[domain=-1.1:2.1,samples y=0, black, thick, smooth,dashed] (x,0,2);
-%\end{axis}
-%\node [right] at (myplot.right of origin)[shift={(-20pt,-15pt)}] {\scriptsize $x$};
-%\node [above] at (myplot.above origin) [shift={(0,-17pt)}] {\scriptsize $y$};
-%\end{tikzpicture}
 \\ (c)}
 
 \example{ex_wash_4}{Finding volume with the Washer Method}{Find the volume of the solid formed by rotating the region bounded by $y=\sqrt x$ and $y=x$ about $y=2$.}{%

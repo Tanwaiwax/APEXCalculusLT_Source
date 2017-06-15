@@ -10,11 +10,14 @@ settings.embed = true;
 bool apexbw = false;
 usersetting();
 
+import three;
 import graph3;
+import labelpath3;
 defaultrender.merge=true;
 
 //usepackage("amsmath");
 usepackage("mathspec");
+usepackage("esvect");
 texpreamble("\setallmainfonts[Mapping=tex-text]{Calibri}");
 texpreamble("\setmainfont[Mapping=tex-text]{Calibri}");
 texpreamble("\setsansfont[Mapping=tex-text]{Calibri}");

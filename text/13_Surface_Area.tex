@@ -102,9 +102,9 @@ S & = 2\iint_R \sqrt{1+ f_x(x,y)^2+f_y(x,y)^2}\ dA \\
 
 The reason this need arises is that the function $f(x,y) = \sqrt{a^2-x^2-y^2}$ fails the requirements of \autoref{def:surfacearea}, as $f_x$ and $f_y$ are not continuous on the boundary of the circle $x^2+y^2=a^2$.\\
 
-The computation of the surface area is still valid. The definition makes stronger requirements than necessary in part to avoid the use of improper integration, as when $f_x$ and/or $f_y$ are not continuous, the resulting improper integral may not converge. Since the improper integral does converge in this example, the surface area is accurately computed.}
+The computation of the surface area is still valid. The definition makes stronger requirements than necessary in part to avoid the use of improper integration, as when $f_x$ and/or $f_y$ are not continuous, the resulting improper integral may not converge. Since the improper integral does converge in this example, the surface area is accurately computed.}%
 %
-The region $R$ that we are integrating over is the circle, centered at the origin, with radius $a$: $x^2+y^2=a^2$. Because of this region, we are likely to have greater success with our integration by converting to polar coordinates. Using the substitutions $x=r\cos\theta$, $y=r\sin\theta$, $dA = r\ dr\ d\theta$ and bounds $0\leq\theta\leq2\pi$ and $0\leq r\leq a$, we have:
+The region $R$ that we are integrating over is the disk, centered at the origin, with radius $a$: $x^2+y^2\le a^2$. Because of this region, we are likely to have greater success with our integration by converting to polar coordinates. Using the substitutions $x=r\cos\theta$, $y=r\sin\theta$, $dA = r\ dr\ d\theta$ and bounds $0\leq\theta\leq2\pi$ and $0\leq r\leq a$, we have:
 \begin{align}
 S &= 2\int_0^{2\pi}\int_0^a \sqrt{1+\frac{r^2\cos^2\theta+r^2\sin^2\theta}{a^2-r^2\cos^2\theta-r^2\sin^2\theta}}\ r\ dr\ d\theta \notag\\
 &=2\int_0^{2\pi}\int_0^ar\sqrt{1+\frac{r^2}{a^2-r^2}}\ dr\ d\theta\notag\\
@@ -129,7 +129,7 @@ Find the surface area of this cone.}
 {We begin by computing partial derivatives. 
 $$f_x(x,y) = -\frac{xh}{a\sqrt{x^2+y^2}}\quad \text{and}\quad -\frac{yh}{a\sqrt{x^2+y^2}}.$$
 
-Since we are integrating over the circle $x^2+y^2=a^2$, we again use polar coordinates. Using the standard substitutions, our integrand becomes
+Since we are integrating over the disk $x^2+y^2\le a^2$, we again use polar coordinates. Using the standard substitutions, our integrand becomes
 \[\sqrt{1+ \left(\frac{hr\cos\theta}{a\sqrt{r^2}}\right)^2 + \left(\frac{hr\sin\theta}{a\sqrt{r^2}}\right)^2}.\]
 This may look intimidating at first, but there are lots of simple simplifications to be done. It amazingly reduces to just
 \[\sqrt{1+\frac{h^2}{a^2}} = \frac1a\sqrt{a^2+h^2}.\]
@@ -164,9 +164,9 @@ Integrating with order $dx\ dy$ requires us to evaluate $\int \sqrt{10+4x^2}\ dx
 				\intertext{Apply substitution with $u = 10+4x^2$:}
 				&= \left.\left(\frac16\big(10+4x^2\big)^{3/2}\right)\right|_0^4 \\
 				&= \frac13\big(37\sqrt{74}-5\sqrt{10}\big) %\approx 100.825
-				\text{u}^2.
+				\text{ units}^2.
 \end{align*}
-So while the region $R$ over which we integrate has an area of 16u$^2$, the surface has a much greater area as its $z$-values change dramatically over $R$.}
+So while the region $R$ over which we integrate has an area of $16\text{ units}^2$, the surface has a much greater area as its $z$-values change dramatically over $R$.}
 
 In practice, technology helps greatly in the evaluation of such integrals. High powered computer algebra systems can compute integrals that are difficult, or at least time consuming, by hand, and can at the least produce very accurate approximations with numerical methods. In general, just knowing \textit{how} to set up the proper integrals brings one very close to being able to compute the needed value. Most of the work is actually done in just describing the region $R$ in terms of polar or rectangular coordinates. Once this is done, technology can usually provide a good answer.\bigskip
 

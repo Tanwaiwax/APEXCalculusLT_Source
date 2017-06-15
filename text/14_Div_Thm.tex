@@ -1,4 +1,4 @@
-\section{Surface Integrals and the Divergence Theorem}
+\section{Surface Integrals and the Divergence Theorem}\label{sec:divthm}
 
 In \autoref{sec:line_int} we learned how to integrate along a curve. We will now learn how to perform integration over a \emph{surface} in $\mathbb{R}^{3}$, such as a sphere or a paraboloid.\index{integral!surface}\index{surface integral} Recall from \autoref{sec:vvf} how we identified points $(x,y,z)$ on a curve $C$ in $\mathbb{R}^{3}$, parametrized by $x=x(t)$, $y=y(t)$, $z=z(t)$, $a \le t \le b$, with the terminal points of the position vector
 \[
@@ -171,29 +171,12 @@ This is a special case of a \emph{surface integral} over the surface $\Sigma$, w
   \node[right]at(myplot.right of origin){\scriptsize$y$};
  \end{tikzpicture}
  &
- \begin{tikzpicture}
-  \begin{axis}[width=.8\textwidth,view={105}{45},disabledatascaling,
-			axis lines=center,name=myplot,xtick=\empty,ytick=\empty,ztick=\empty,
-            xmin=-5,xmax=5,ymin=-5,ymax=5,zmin=-5,zmax=5]
-   \addplot3[domain=0:360,y domain=0:360,surf,colormap={mp2}{\colormapplaneone},
-		opacity=1,faceted color=black!40,samples=18,samples y=36,very thin,
-		z buffer=sort]
-		({(3+cos(x))*cos(y)}, {(3+cos(x))*sin(y)},{sin(x)});
-   \addplot3[domain=0:360,dashed]
-		({(3+cos(x))*cos(53)}, {(3+cos(x))*sin(53)},{sin(x)});
-   \draw(axis cs:5,0,0)node[below left]{\scriptsize$x$};
-   \draw(axis cs:0,4.6,0)node[above right]{\scriptsize$y$};
-   \draw(axis cs:0,0,4.6)node[right]{\scriptsize$z$};
-   \draw(axis cs:0,0,0)--(axis cs:0,0,4.9);
-   \draw(axis cs:0,0,0)--(axis cs:0,-2,0);
-   \draw(axis cs:4,0,0)--(axis cs:4.9,0,0);
-   \draw(axis cs:0,0,0)--(axis cs:2.4,3.2,0);
-   \draw[->](axis cs:1.3,0,0)arc[start angle=0,end angle=53,radius=1.3]
-    node[pos=.5,shift={(0pt,3pt)}]{\scriptsize$v$};
-   \draw(axis cs:1.8,2.4,0)
-    --node[pos=.1,right]{\scriptsize$a$}(axis cs:1.8,2.4,1);
-  \end{axis}
- \end{tikzpicture}
+ \myincludeasythree{width=.5\textwidth,
+3Droll=0.,
+3Dortho=0.,
+3Dc2c=0.52 -0.80 0.30,
+3Dcoo=26.24 100.81 52.61,
+3Droo=150.0}{width=.5\textwidth}{figures/torus}
  \\
  Circle in the $yz$-plane & Torus $T$
  \end{tabular}
@@ -265,16 +248,17 @@ Recall that normal vectors to a plane can point in two opposite directions. By a
 
 \definition{defn:surfintvec}{Vector Surface Integral}{Let $\Sigma$ be a surface in $\mathbb{R}^{3}$ and let $\vecf(x,y,z) = f_1(x,y,z) \veci + f_2(x,y,z) \vecj + f_3(x,y,z) \veck$ be a vector field defined on some subset of $\mathbb{R}^{3}$ that contains $\Sigma$. The \textbf{surface integral} of \vecf\ over $\Sigma$ is
   \begin{equation}\label{eqn:surfintvec}
-   \iint_{\Sigma} \Dotprod{\vecf}{d\sigma} =
-   \iint_{\Sigma} \Dotprod{\vecf}{\vecn}\,d\sigma ,
+   \iint_\Sigma \Dotprod{\vecf}{d\vec\sigma} =
+   \iint_R \Dotprod{\vecf}{\vecn}\,d\sigma ,
   \end{equation}
   where, at any point on $\Sigma$, \vecn\ is the outward unit normal vector to $\Sigma$.}
 
-\mnote[-4\baselineskip]{Sometimes, the notation $\oiint_{\Sigma} \Dotprod{\vecf}{d\sigma}$ is used instead of $\iint_{\Sigma} \Dotprod{\vecf}{d\sigma}$ when $\Sigma$ is a closed surface.\index{$\oiint_{\Sigma}$}  Especially in physics texts, it is common to see simply $\oint_{\Sigma}$ instead of $\oiint_{\Sigma}$.}
+\mnote[-4\baselineskip]{Sometimes, the notation $\oiint_{\Sigma} \Dotprod{\vecf}{d\vec\sigma}$ is used instead of $\iint_{\Sigma} \Dotprod{\vecf}{d\vec\sigma}$ when $\Sigma$ is a closed surface.\index{$\oiint_{\Sigma}$}  Especially in physics texts, it is common to see simply $\oint_{\Sigma}$ instead of $\oiint_{\Sigma}$.}
 
 Note in the above definition that the dot product inside the integral on the right is a real-valued function, and hence we can use \autoref{defn:surfintreal} to evaluate the integral.
 
-\example{exmp_surfintex}{Evaluating a Surface Integral}{Evaluate the surface integral $\iint_{\Sigma} \Dotprod{\vecf}{d\sigma}$, where $\vecf(x,y,z) = yz\veci + xz\vecj + xy\veck$ and $\Sigma$ is the part of the plane $x+y+z=1$ with $x \ge 0$, $y \ge 0$, and $z \ge 0$, with the outward unit normal $\vecn$ pointing in the positive $z$ direction (see \autoref{fig_surf_plane}).%
+% todo This has vectors with parens instead of <>.  Have we done that elsewhere?
+\example{exmp_surfintex}{Evaluating a Surface Integral}{Evaluate the surface integral $\iint_{\Sigma} \Dotprod{\vecf}{d\vec\sigma}$, where $\vecf(x,y,z) = yz\veci + xz\vecj + xy\veck$ and $\Sigma$ is the part of the plane $x+y+z=1$ with $x \ge 0$, $y \ge 0$, and $z \ge 0$, with the outward unit normal $\vecn$ pointing in the positive $z$ direction (see \autoref{fig_surf_plane}).%
  \mtable{The surface in \autoref{exmp_surfintex}}{fig_surf_plane}{\begin{tikzpicture}
 %  \usetikzlibrary{arrows}
   \filldraw [draw={\colorone},fill={\coloronefill}] (1.5,0)node[below]{\small$1$}
@@ -288,7 +272,7 @@ Note in the above definition that the dot product inside the integral on the rig
   \fill (0.48,0.48) circle (2pt);
   \draw [very thick,->] (0.48,0.48) -- (1.1,1.1)node[above right]{\small $\vecn$};
  \end{tikzpicture}}}{%
- Since the vector $\vecv = (1,1,1)$ is normal to the plane $x+y+z=1$ (why?), then dividing \vecv\ by its length yields the outward unit normal vector $\vecn = \left( \frac{1}{\sqrt{3}}, \frac{1}{\sqrt{3}},\frac{1}{\sqrt{3}} \right)$. We now need to parametrize $\Sigma$. As we can see from Figure 4.4.5, projecting $\Sigma$ onto the $xy$-plane yields a triangular region $R= \lbrace\,(x,y): 0 \le x \le 1, 0 \le y \le 1-x\,\rbrace$. Thus, using $(u,v)$ instead of $(x,y)$, we see that
+ Since the vector $\vecv = (1,1,1)$ is normal to the plane $x+y+z=1$ (why?), then dividing \vecv\ by its length yields the outward unit normal vector $\vecn = \left( \frac{1}{\sqrt{3}}, \frac{1}{\sqrt{3}},\frac{1}{\sqrt{3}} \right)$. We now need to parametrize $\Sigma$. As we can see from \autoref{fig_surf_plane}, projecting $\Sigma$ onto the $xy$-plane yields a triangular region $R= \lbrace\,(x,y): 0 \le x \le 1, 0 \le y \le 1-x\,\rbrace$. Thus, using $(u,v)$ instead of $(x,y)$, we see that
  \[x=u, y=v, z=1-(u+v),\text{ for } 0 \le u \le 1, 0 \le v \le 1-u\]
  is a parametrization of $\Sigma$ over $R$ (since $z=1-(x+y)$ on $\Sigma$). So on $\Sigma$,
  \begin{align*}
@@ -307,7 +291,7 @@ Note in the above definition that the dot product inside the integral on the rig
  \]
  Thus, integrating over $R$ using vertical slices (e.g. as indicated by the dashed line in \autoref{fig_surf_plane}) gives
  \begin{align*}
-  \iint_{\Sigma} \Dotprod{\vecf}{d\sigma} &=
+  \iint_{\Sigma} \Dotprod{\vecf}{d\vec\sigma} &=
    \iint_{\Sigma} \Dotprod{\vecf}{\vecn}\,d\sigma\\[6pt]
    &= \iint_{R} (\Dotprod{\vecf(x(u,v),y(u,v),z(u,v))}{\vecn})\,
     \norm{\frac{\partial \vecr}{\partial u}\times\frac{\partial \vecr}{\partial v}}\,dv\,du\\[6pt]
@@ -317,12 +301,23 @@ Note in the above definition that the dot product inside the integral on the rig
    &= \left.\frac{u}{6} + \frac{u^2}{4} - \frac{u^3}{2} + \frac{5u^4}{24}\,\right|_0^1 = \frac{1}{8}.\eoehere
  \end{align*}}
 
+Notice that we divided $\vecn$ by its norm, and later multiplied by the same factor with $\norm{\frac{\partial \vecr}{\partial u}\times\frac{\partial \vecr}{\partial v}}$.  This is generally the case:
+%, so that
+\begin{align*}
+ \vecn
+ &=\frac{\frac{\partial \vecr}{\partial u}\times\frac{\partial \vecr}{\partial v}}{\norm{\frac{\partial \vecr}{\partial u}\times\frac{\partial \vecr}{\partial v}}}\\
+ \d\sigma
+ &=\norm{\frac{\partial \vecr}{\partial u}\times\frac{\partial \vecr}{\partial v}}\,dv\,du\\
+ \vecn d\sigma=\frac{\partial \vecr}{\partial u}\times\frac{\partial \vecr}{\partial v}\,dv\,du,
+\end{align*}
+which simplifies the calculation.
+
 Computing surface integrals can often be tedious, especially when the formula for the outward unit normal vector at each point of $\Sigma$ changes. The following theorem provides an easier way in the case when $\Sigma$ is a \textbf{closed surface}, that is, when $\Sigma$ encloses a bounded solid in $\mathbb{R}^{3}$. For example, spheres, cubes, and ellipsoids are closed surfaces, but planes and paraboloids are not.\index{closed surface}
 
 \theorem{thm:divergence}{Divergence Theorem}{\index{Divergence Theorem}%
 Let $\Sigma$ be a closed surface in $\mathbb{R}^{3}$ which bounds a solid $S$, and let $\vecf(x,y,z) = f_1(x,y,z) \veci + f_2(x,y,z) \vecj + f_3(x,y,z) \veck$ be a vector field defined on some subset of $\mathbb{R}^{3}$ that contains $\Sigma$. Then
   \begin{equation}\label{eqn:divergence}
-   \iint_{\Sigma} \Dotprod{\vecf}{d\sigma} = \iiint_{S} \Div\vecf dV ,
+   \iint_{\Sigma} \Dotprod{\vecf}{d\vec\sigma} = \iiint_{S} \Div\vecf dV ,
   \end{equation}
   where
   \begin{equation}\label{eqn:div}
@@ -333,22 +328,22 @@ Let $\Sigma$ be a closed surface in $\mathbb{R}^{3}$ which bounds a solid $S$, a
 
 The proof of the Divergence Theorem is very similar to the proof of Green's Theorem, i.e. it is first proved for the simple case when the solid $S$ is bounded above by one surface, bounded below by another surface, and bounded laterally by one or more surfaces. The proof can then be extended to more general solids.% See \cite[\S\,15.6]{tm} for the details.
 
-\example{ex_div_thm}{Using the Divergence Theorem}{Evaluate $\iint_{\Sigma} \Dotprod{\vecf}{d\sigma}$, where $\vecf(x,y,z) = x\veci +  y\vecj + z\veck$ and $\Sigma$ is the unit sphere $x^2 + y^2 + z^2 = 1$.}{We see that $\Div\vecf = 1+1+1=3$, so
+\example{ex_div_thm}{Using the Divergence Theorem}{Evaluate $\iint_{\Sigma} \Dotprod{\vecf}{d\vec\sigma}$, where $\vecf(x,y,z) = x\veci +  y\vecj + z\veck$ and $\Sigma$ is the unit sphere $x^2 + y^2 + z^2 = 1$.}{We see that $\Div\vecf = 1+1+1=3$, so
  \begin{align*}
-  \iint_{\Sigma} \Dotprod{\vecf}{d\sigma} &=
+  \iint_{\Sigma} \Dotprod{\vecf}{d\vec\sigma} &=
   \iiint_{S} \Div\vecf dV
   = \iiint_{S} 3 dV\\
   &= 3 \iiint_{S} 1 dV
   = 3\,\text{vol}(S) = 3\cdot \frac{4\pi (1)^3}{3} = 4\pi .\eoehere
  \end{align*}}
 
-In physical applications, the surface integral $\iint_{\Sigma} \Dotprod{\vecf}{d\sigma}$ is often referred to as the \textbf{flux} of \vecf\ through the surface $\Sigma$. For example, if \vecf\ represents the velocity field of a fluid, then the flux is the net quantity of fluid to flow through the surface $\Sigma$ per unit time.\index{flux} A positive flux means there is a net flow \emph{out} of the surface (i.e. in the direction of the outward unit normal vector \vecn), while a negative flux indicates a net flow inward (in the direction of $-\vecn$).
+In physical applications, the surface integral $\iint_{\Sigma} \Dotprod{\vecf}{d\vec\sigma}$ is often referred to as the \textbf{flux} of \vecf\ through the surface $\Sigma$. For example, if \vecf\ represents the velocity field of a fluid, then the flux is the net quantity of fluid to flow through the surface $\Sigma$ per unit time.\index{flux} A positive flux means there is a net flow \emph{out} of the surface (i.e. in the direction of the outward unit normal vector \vecn), while a negative flux indicates a net flow inward (in the direction of $-\vecn$).
 
 The term divergence comes from interpreting div \vecf\ as a measure of how much a vector field ``diverges'' from a point. This is best seen by using another definition of div \vecf\ which is equivalent
 % See \cite{sch}, p. 36-39, for an intuitive discussion of this.
 to the definition given by \autoeqref{eqn:div}. Namely, for a point $(x,y,z)$ in $\mathbb{R}^{3}$,
 \begin{equation}\label{eqn:divalt}
- \Div\vecf(x,y,z) = \lim_{V \to 0} \frac{1}{V} \iint_{\Sigma} \Dotprod{\vecf}{d\sigma} ,
+ \Div\vecf(x,y,z) = \lim_{V \to 0} \frac{1}{V} \iint_{\Sigma} \Dotprod{\vecf}{d\vec\sigma} ,
 \end{equation}
 where $V$ is the volume enclosed by a closed surface $\Sigma$ around the point $(x,y,z)$. In the limit, $V \to 0$ means that we take smaller and smaller closed surfaces around $(x,y,z)$, which means that the volumes they enclose are going to zero. It can be shown that this limit is independent of the shapes of those surfaces. Notice that the limit being taken is of the ratio of the flux through a surface to the volume enclosed by that surface, which gives a rough measure of the flow ``leaving'' a point, as we mentioned. Vector fields which have zero divergence are often called \emph{solenoidal}\index{solenoidal} fields.
 
@@ -359,7 +354,7 @@ The following theorem is a simple consequence of \autoeqref{eqn:divalt}.
 \begin{proof}
  By \autoeqref{eqn:divalt}, at the given point $(x,y,z)$ we have 
  \begin{align*}
-  \Div\vecf(x,y,z) &= \lim_{V \to 0} \frac{1}{V} \iint_{\Sigma} \Dotprod{\vecf}{d\sigma}
+  \Div\vecf(x,y,z) &= \lim_{V \to 0} \frac{1}{V} \iint_{\Sigma} \Dotprod{\vecf}{d\vec\sigma}
    \text{ for closed surfaces $\Sigma$ containing $(x,y,z)$, so}\\
     &= \lim_{V \to 0} \frac{1}{V} \,\, (0) \text{ by our assumption that the flux through each $\Sigma$ is
     zero, so}\\[6pt]
@@ -370,7 +365,7 @@ The following theorem is a simple consequence of \autoeqref{eqn:divalt}.
 
 %Lastly, we note that sometimes the notation
 %\[
-% \oiint_{\Sigma} f(x,y,z)\,d\sigma \quad\text{and}\quad \oiint_{\Sigma} \Dotprod{\vecf}{d\sigma}
+% \oiint_{\Sigma} f(x,y,z)\,d\sigma \quad\text{and}\quad \oiint_{\Sigma} \Dotprod{\vecf}{d\vec\sigma}
 %\]
 %is used to denote surface integrals of scalar and vector fields, respectively, over closed surfaces.\index{$\oiint_{\Sigma}$} Especially in physics texts, it is common to see simply $\oint_{\Sigma}$ instead of $\oiint_{\Sigma}$.
 
@@ -379,32 +374,27 @@ This section and the previous introduced four new types of integrals, which we g
 
 \setboxwidth{80pt}
 \keyidea{integral_types}{Integrating Parameterized Curves and Surfaces}{%
-%\begin{lxfigure}
-%\flushinner{}%
 \renewcommand{\arraystretch}{1.4}
  \begin{tabular}{|l|p{.32\specialboxlength}|p{.43\specialboxlength}|}\hline
   & $\vec c:\mathbb{R}\to\mathbb{R}^3$\par parameterizes a curve
-  & $\Phi:\mathbb{R}^2\to\mathbb{R}^3$\par parameterizes a surface \\\hline
+  & $\vec r:\mathbb{R}^2\to\mathbb{R}^3$\par parameterizes a surface \\\hline
   $f:\mathbb{R}^3\to\mathbb{R}$
   & scalar line integral:\par
-  $\int_{c(D)} f ds$\par
+  $\int_{\vec c(D)} f ds$\par
   \qquad$=\int_D f(\vec c(t))\norm{\vec c\,'(t)}dt$
   & scalar surface integral:\par
-  $\iint_{\Phi(D)} f dS$\par
-  \qquad$=\iint_D f(\Phi(u,v))\norm{\Phi_u\times\Phi_v}du dv$
+  $\iint_{\vec r(D)} f d\sigma$\par
+  \qquad$=\iint_D f(\vec r(u,v))\norm{\vec r_u\times\vec r_v}du\; dv$
   \\\hline
   $\vec F:\mathbb{R}^3\to\mathbb{R}^3$
   & vector line integral:\par
-  $\int_{c(D)}\vec F\cdot d\vec s$\par
+  $\int_{\vec c(D)}\vec F\cdot d\vec r$\par
   \qquad$=\int_D\vec F(\vec c(t))\cdot\vec c\,'(t)dt$
   & vector surface integral:\par
-  $\iint_{\Phi(D)}\vec F\cdot d\vec S$\par
-  \qquad$=\iint_D\vec F(\Phi(u,v))\cdot(\Phi_u\times\Phi_v)dudv$
+  $\iint_{\vec r(D)}\vec F\cdot d\vec\sigma$\par
+  \qquad$=\iint_D\vec F(\vec r(u,v))\cdot(\vec r_u\times\vec r_v)du\; dv$
   \\\hline
  \end{tabular}}
-% \caption{Summary of Integrating Parameterized Curves and Surfaces}
-% \label{integral_types}
-%\end{lxfigure}\\
 If we are in the bottom left entry, where $\vec c:\mathbb{R}\to\mathbb{R}^3$ and $\vec F:\mathbb{R}^3\to\mathbb{R}^3$, we may be able to use the Fundamental Theorem for Gradient Vector Fields: $\int_C\nabla\phi\cdot d\vec s=\phi(Q)-\phi(P)$.
 
 \printexercises{exercises/14_Div_Thm_exercises}

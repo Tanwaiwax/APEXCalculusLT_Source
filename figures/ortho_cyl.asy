@@ -39,8 +39,8 @@ draw((.9,.9,0)--(.9,.9,.1)--(1,1,.1),black);
 
   
 draw(X--X+Y,black+dashed);
-draw(O--X+Y,black+dashed);
-draw(X+Y--X+Y+Z,black);
+draw(O--X+Y,colorone);
+draw(X+Y--X+Y+Z,colorone);
   
 draw((.4,0,0)..(.4,.15,0)..(.3,.3,0),black);
   

@@ -10,6 +10,7 @@ And yet another?
 
 Hopefully one was able to come up with at least one solution: $y = x^2$. ``Finding another'' may have seemed impossible until one realizes that a function like $y=x^2+1$ also has a derivative of $2x$. Once that discovery is made, finding ``yet another'' is not difficult; the function $y = x^2 + 123{,}456{,}789$ also has a derivative of $2x$. The differential equation $y\primeskip' = 2x$ has many solutions. This leads us to some definitions.
 
+% todo Tim should involve an interval in some way
 \definition{def:antider}{Antiderivatives}
 {Let a function $f(x)$ be given. An \textbf{antiderivative} of $f(x)$ is a function $F(x)$ such that $\Fp(x) = f(x)$.\index{antiderivative}}
 
@@ -20,6 +21,12 @@ We refer to \textit{an} antiderivative of $f$, as opposed to \textit{the} antide
 \theorem{thm:antideriv_const}{Antiderivative Forms}
 {Let $F(x)$ and $G(x)$ be antiderivatives of $f(x)$ on an interval. Then there exists a constant $C$ such that
 \[G(x) = F(x) + C.\]}
+
+\begin{proof}
+Suppose that $a$ and $b$ are two distinct points in the interval.  Then by applying the Mean Value Theorem to the function $G(x)-F(x)$, there is a point $c$ between $a$ and $b$ so that
+\[(G(b)-F(b))-(G(a)-F(a))=(G'(c)-F'(c))(b-a)=(f(c)-f(c))(b-a)=0.\]
+Because this holds for any $a$ and $b$ in the interval, $G(b)-F(b)$ is constant for all possible $b$.
+\end{proof}
 
 Given a function $f$ and one of its antiderivatives $F$, we know \textit{all} antiderivatives of $f$ have the form $F(x) + C$ for some constant $C$.
 

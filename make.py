@@ -15,10 +15,29 @@ import subprocess
 
 start = time.time()
 
-asyfiles = ['figdisk1_3D','figwash1c_3D','figsq_rt_3D','figsq_rt_b_3D',
-            'figwash4_3D','figwash4b_3D','figshellparab_3D',
-            'figshellparab_b_3D','figarc4_3D','figarc4_b_3D',
-            'ortho_cyl','ortho_sph']
+asyfiles = ['conicalhelix','cyl_surf_r','cyl_surf_t','cyl_surf_z',
+            'fig10_01_ex_19_3D','fig10_01_ex_20_3D','fig10_01_ex_21_3D','fig10_01_ex_22_3D',
+            'figarc4_3D','figarc4_b_3D',
+            'figcartcoord1_3D','figcartcoord2_3D',
+            'figcross_area1a_3D','figcross_area1a_3D','figcross1_3D','figcrossp_rhr_3D','figcrossp4a_3D','figcrossp6_3D','figcrosspparallelpiped_3D',
+            'figdisk1_3D','figdisk1a_3D','figdisk1b_3D','figdisk2a_3D','figdotp3_3D',
+            'figgabriel_3D',
+            'figlines_dist2_3D','figlines_intro_3D','figlines1_3D','figlines2_3D','figlines3_3D','figlines6_3D',
+            'figmass2_3D','figmotion6_3D',
+            'figparcalc8_3D','figplanes_dist_3D','figplanes_intro_3D','figplanes1_3D','figplanes2_3D','figplanes3_3D','figplanes4_3D','figplanes5_3D','figpolcalc8a_3D',
+            'figquadric_cone_3D','figquadric_coneb_3D','figquadric_conec_3D','figquadric_ellipsoid_3D','figquadric_ellipsoidb_3D',
+            'figquadric_hyp_one_sheet_3D','figquadric_hyp_one_sheetb_3D','figquadric_hyp_par_3D','figquadric_hyp_parb_3D','figquadric_hyp_parc_3D',
+            'figquadric_hyp_two_sheet_3D','figquadric_hyp_two_sheetb_3D','figquadric_par_3D','figquadric_parb_3D',
+            'figsa1_3D','figsa2a_3D','figsa2b_3D',
+            'figshell_intro_a_3D','figshell_intro_d_3D','figshell2b_3D','figshell2c_3D','figshell3b_3D','figshell3c_3D','figshellparab_b_3D','figshellparab_b_3D',
+            'figspace1_3D','figspace2_3D','figspace3_3D','figspace4a_3D','figspace4b_3D','figspace4c_3D','figspace4d_3D','figspace4e_3D','figspace4f_3D',
+            'figspace5a_3D','figspace5ab_3D','figspace5b_3D','figspace5bb_3D','figspace5c_3D','figspace5cb_3D','figspace6_3D',
+            'figspacecylinder1_3D','figspacecylinder1b_3D','figspacexy_3D','figspaceyz_3D',
+            'figsq_rt_3D','figsq_rt_b_3D','figsurf_rev_intro_3D','figsurf_rev_introb_3D','figsurfrev1a_3D','figsurfrev1b_3D','figsurfrev2a_3D','figsurfrev2b_3D',
+            'figvectintro3b_3D','figvvf2_3D',
+            'figwash1b_3D','figwash1c_3D','figwash2b_3D','figwash2c_3D','figwash4_3D','figwash4b_3D','figwasher_idea_b_3D','figwasher_idea_c_3D',
+            'helicoid','ortho_cyl','ortho_rect','ortho_sph',
+            'sph_surf_phi','sph_surf_r','torus']
 
 parser = argparse.ArgumentParser(description='Compile document to a pdf.',
                                  epilog="If no options are given, "
@@ -84,12 +103,13 @@ def makefigs():
             exts = ('.pdf','.prc','BW.pdf','BW.prc')
             try:
                 oldest_bin_time = min(os.path.getmtime(asyfile+ext) for ext in exts)
-            except FileNotFoundError:
+            except OSError:
+                # file not found
                 oldest_bin_time = -float("infinity")
             if ( os.path.getmtime(asyfile+'.asy') < oldest_bin_time ):
                 continue
             # -user apexbw=true runs that command in apexconfig.asy
-            # using -bw causes the figure to be blacked out (?!)
+            # using -bw instead causes the figure to be blacked out (?!)
             bwopts = ( [], ['-user','apexbw=true','-outname',asyfile+'BW'] )
             prcopts = ( [], ['-noprc'] )
             for prcopt,bwopt in itertools.product(prcopts,bwopts):
@@ -122,15 +142,16 @@ def updatetodo():
     # and a few manual TeX commands instead of 'todo'
     with open('todo_tex.txt','w') as mystdout:
         for keywd in ('drawexampleline','enlargethispage','pagebreak',
-                        'clearpage','cleardoublepage','columnbreak','newpage'):
+                      'clearpage','cleardoublepage','columnbreak','newpage',
+                      'mfigurethree','myincludegraphicsthree','addplot3'):
             mystdout.write('\n\n'+keywd+':\n')
             mystdout.flush()
             try:
-                subprocess.check_call(['grep',keywd,'-Ir','--exclude-dir=hidden','exercises'],stdout=mystdout)
+                subprocess.check_call(['grep',keywd,'-Irl','--exclude-dir=hidden','exercises'],stdout=mystdout)
             except:
                 pass
             try:
-                subprocess.check_call(['grep',keywd,'-Ir','--exclude-dir=hidden','text'],stdout=mystdout)
+                subprocess.check_call(['grep',keywd,'-Irl','--exclude-dir=hidden','text'],stdout=mystdout)
             except:
                 pass
         mystdout.write('\n')
@@ -162,12 +183,12 @@ def getsuffix(args):
         return "_answers"
     newsuffix = ''
     if args.calculus in (1,2,3):
-        iii = "I"*args.calculus
-        newsuffix += "_"+iii
+        #iii = "I"*args.calculus
+        newsuffix += "-"+str(args.calculus)
     if args.blackwhite:
-        newsuffix += "_BW"
+        newsuffix += "-bw"
     elif args.static:
-        newsuffix += "_small"
+        newsuffix += "-color"
     return newsuffix
 
 def fixRefs():
@@ -205,7 +226,6 @@ def getcommandline(args):
         shutil.copyfile('web/script.js','script.js')
         shutil.copyfile('web/style.css','style.css')
         return ['latexmlpost','--quiet','--split','--stylesheet=web/apex.xsl',
-                    
                     '--destination=web/index.html','--css=style.css',
                     '--javascript=https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js',
                     '--javascript=LaTeXML-maybeMathJax.js',
@@ -223,6 +243,8 @@ def minimizePdf(filename):
     It also makes several calls to os.system, which prints to stderr in a way
     we can't intercept.  We intercept those calls by redefining os.system to
     use subprocess.check_call."""
+    #os.rename(filename,"ApexPDFs/calculusBig.pso.pdf")
+    #return
     sys.path[:0] = ['../pdfsizeopt/lib']
     from pdfsizeopt import main
     oldossystem = os.system
@@ -282,14 +304,14 @@ def runcommands(args,commands):
     if args.instructor:
         os.rename('Answers.pdf','ApexPDFs/Answers.pdf')
     elif not args.xml and not args.web:
-        os.rename("Calculus.pdf","ApexPDFs/Calculus"+newsuffix+".pdf")
+        os.rename("Calculus.pdf","ApexPDFs/calculus"+newsuffix+".pdf")
         if newsuffix == 'Big':
             if (2, 4) <= sys.version_info[:2] < (3, 0):
-                minimizePdf("ApexPDFs/CalculusBig.pdf")
+                minimizePdf("ApexPDFs/calculusBig.pdf")
                 print "Minimizing pdf finished at","{0[0]:02d}:{0[1]:02d}".format(getTime())
-                os.rename("ApexPDFs/CalculusBig.pso.pdf","ApexPDFs/Calculus.pdf")
+                os.rename("ApexPDFs/calculusBig.pso.pdf","ApexPDFs/calculus.pdf")
             else:
-                os.rename("ApexPDFs/CalculusBig.pdf","ApexPDFs/Calculus.pdf")
+                os.rename("ApexPDFs/calculusBig.pdf","ApexPDFs/calculus.pdf")
 
 if args.all:
     compilewith('-f')

@@ -106,7 +106,8 @@ $$L = \int_a^b \sqrt{1+[\fp(x)]^2}\ dx.$$}
 
 As the integrand contains a square root, it is often difficult to use the formula in \autoref{idea:arclength} to find the length exactly. When exact answers are difficult to come by, we resort to using numerical methods of approximating definite integrals. The following examples will demonstrate this.
 
-\mfigure{0in}{A graph of $f(x) = x^{3/2}$ from \autoref{ex_arc1}.}{fig:arc1}{figures/figarc1}	
+\mfigure{0in}{A graph of $f(x) = x^{3/2}$ from \autoref{ex_arc1}.}{fig:arc1}{figures/figarc1}
+
 \example{ex_arc1}{Finding arc length}{Find the arc length of $f(x) = x^{3/2}$ from $x=0$ to $x=4$.}
 {A graph of $f$ is given in \autoref{fig:arc1}.
 We begin by finding $\fp(x)= \frac32x^{1/2}$. Using the formula, we find the arc length $L$ as
@@ -162,7 +163,6 @@ Using a computer with $n=100$ the approximation is $L\approx 3.8202$; our approx
 \subsection*{Surface Area of Solids of Revolution}
 
 \mtable[-.5in]{Establishing the formula for surface area.}{fig:surface_intro}{%
-%\myincludegraphics{figures/figarc4b}
 \myincludeasythree{width=\marginparwidth,
 3Droll=126.0060482236849,
 3Dortho=0.004875946324318647,
@@ -177,14 +177,6 @@ Using a computer with $n=100$ the approximation is $L\approx 3.8202$; our approx
 3Dc2c=0.44462037086486816 0.39410829544067383 0.8043577671051025,
 3Dcoo=67.21983337402344 3.5258262157440186 -29.566415786743164,
 3Droo=150.00000160608386}{width=\marginparwidth}{figures/figarc4_3D}
-%\myincludegraphicsthree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
-%3Droll=121.00092658103458,
-%3Dortho=0.0048407199792563915,
-%3Dc2c=0.2899017035961151 0.17925968766212463 0.9401186108589172,
-%3Dcoo=72.58285522460938 2.891160011291504 -26.545438766479492,
-%3Droo=149.99998703790175,
-%3Dlights=Headlamp,add3Djscript=asylabels.js}{}{figures/figarc4}
-%\myincludegraphics{figures/figarc4}
 \\(b)}
 
 We have already seen how a curve $y=f(x)$ on $[a,b]$ can be revolved around an axis to form a solid. Instead of computing its volume, we now consider its surface area.
@@ -204,25 +196,25 @@ which is a Riemann Sum. Taking the limit as the subinterval lengths go to zero g
 
 If instead we revolve $y=f(x)$ about the $y$-axis, the radii of the resulting frustum are $x_{i-1}$ and $x_i$; their average value is simply the midpoint of the interval. In the limit, this midpoint is just $x$. This gives the second part of \autoref{idea:surface_area}.
 
+% todo Tim does this (and prev KI) only need f' continuous on (a,b)?
 \keyidea{idea:surface_area}{Surface Area of a Solid of Revolution}
 {Let $f$ be differentiable on an open interval containing $[a,b]$ where $\fp$ is also continuous on $[a,b]$. \index{integration!surface area}\index{surface area!solid of revolution}
 \begin{enumerate}
 	\item	The surface area of the solid formed by revolving the graph of $y=f(x)$, where $f(x)\geq0$, about the $x$-axis is
-	$$\text{Surface Area} = 2\pi\int_a^b f(x)\sqrt{1+\fp(x)^2}\ dx.$$
+	$$\text{Surface Area} = 2\pi\int_a^b f(x)\sqrt{1+[\fp(x)]^2}\ dx.$$
 	\item	The surface area of the solid formed by revolving the graph of $y=f(x)$ about the $y$-axis, where $a,b\geq0$, is
-	$$\text{Surface Area} = 2\pi\int_a^b x\sqrt{1+\fp(x)^2}\ dx.$$
+	$$\text{Surface Area} = 2\pi\int_a^b x\sqrt{1+[\fp(x)]^2}\ dx.$$
 \end{enumerate}}
 
 \example{ex_sa1}{Finding surface area of a solid of revolution}{Find the surface area of the solid formed by revolving $y=\sin x$ on $[0,\pi]$ around the $x$-axis, as shown in \autoref{fig:sa1}.}
 {The setup turns out to be easier than the resulting integral. Using \autoref{idea:surface_area}, we have the surface area $SA$ is:
-\mfigurethree{width=150pt,3Dmenu,activate=onclick,deactivate=onclick,
+\mtable{Revolving $y=\sin x$ on $[0,\pi]$ about the $x$-axis.}{fig:sa1}{%
+\myincludeasythree{width=\marginparwidth,
 3Droll=121.00092658103458,
 3Dortho=0.0048407199792563915,
 3Dc2c=0.2899017035961151 0.17925968766212463 0.9401186108589172,
 3Dcoo=72.58285522460938 2.891160011291504 -26.545438766479492,
-3Droo=149.99998703790175,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{}{0in}{Revolving $y=\sin x$ on $[0,\pi]$ about the $x$-axis.}{fig:sa1}{figures/figsa1}
-%\mfigure{0in}{Revolving $y=\sin x$ on $[0,\pi]$ about the $x$-axis.}{fig:sa1}{figures/figsa1}
+3Droo=149.99998703790175}{width=\marginparwidth}{figures/figsa1_3D}}
 % todo write out the integration in ``Finding surface area of a solid of revolution''
 \begin{align*}
 	\text{SA}
@@ -238,30 +230,23 @@ If instead we revolve $y=f(x)$ about the $y$-axis, the radii of the resulting fr
 
 It is interesting to see that the surface area of a solid, whose shape is defined by a trigonometric function, involves both a square root and a natural logarithm.}
 
+\example{ex_sa2}{Finding surface area of a solid of revolution}{Find the surface area of the solid formed by revolving the curve $y=x^2$ on $[0,1]$ about:\\
 \mtable{The solids used in \autoref{ex_sa2}.}{fig:sa2}{%
-\begin{tabular}{c}
-\myincludegraphicsthree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
+\myincludeasythree{width=\marginparwidth,
 3Droll=138.26595091591264,
 3Dortho=0.0048407199792563915,
 3Dc2c=0.16831636428833008 0.19470007717609406 0.966313362121582,
 3Dcoo=81.32470703125 3.403531074523926 -28.20997428894043,
-3Droo=149.9999886313645,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{}{figures/figsa2a}\\
-%\myincludegraphics{figures/figsa2a}\\
-(a)\\[15pt]
-\\
-\myincludegraphicsthree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
+3Droo=149.9999886313645}{width=\marginparwidth}{figures/figsa2a_3D}
+\\(a)\\[15pt]
+\myincludeasythree{width=\marginparwidth,
 3Droll=138.26595091591264,
 3Dortho=0.0048407199792563915,
 3Dc2c=0.16831637918949127 0.19470007717609406 0.966313362121582,
 3Dcoo=0.013853734359145164 79.42704010009766 -29.364774703979492,
-3Droo=149.99998895240248,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{}{figures/figsa2b}\\
-%\myincludegraphics{figures/figsa2b}\\
-(b)
-\end{tabular}}
-\example{ex_sa2}{Finding surface area of a solid of revolution}{Find the surface area of the solid formed by revolving the curve $y=x^2$ on $[0,1]$ about:\\
-\null\hfill 1.\qquad the $x$-axis\hfill2.\qquad the $y$-axis.\hfill\null}
+3Droo=149.99998895240248}{width=\marginparwidth}{figures/figsa2b_3D}\\
+(b)}
+\null\hfill 1.\quad the $x$-axis\hfill2.\quad the $y$-axis.\hfill\null}
 {\begin{enumerate}
 	\item		The solid formed by revolving $y=x^2$ around the $x$-axis is graphed in \autoref{fig:sa2}(a). Like the integral in \autoref{ex_sa1}, this integral is easier to setup than to actually integrate. While it is possible to use a trigonometric substitution to evaluate this integral, it is significantly more difficult than a solution employing the hyperbolic sine:
 \begin{align*}
@@ -285,14 +270,13 @@ It is interesting to see that the surface area of a solid, whose shape is define
 Our final example is a famous mathematical ``paradox.''
 
 \example{ex_gabriel}{The surface area and volume of Gabriel's Horn}{Consider the solid formed by revolving $y=1/x$ about the $x$-axis on $[1,\infty)$. Find the volume and surface area of this solid. (This shape, as graphed in \autoref{fig:gabriel}, is known as ``Gabriel's Horn'' since it looks like a very long horn that only a supernatural person, such as an angel, could play.)\index{Gabriel's Horn}
-\mfigurethree{width=150pt,3Dmenu,activate=onclick,deactivate=onclick,
+\mtable{A graph of Gabriel's Horn.}{fig:gabriel}{%
+\myincludeasythree{width=\marginparwidth,
 3Droll=107.09033109095482,
 3Dortho=0.0048407199792563915,
 3Dc2c=0.4647676646709442 0.1565970778465271 0.8714748024940491,
 3Dcoo=72.58285522460938 2.8911631107330322 -26.545440673828125,
-3Droo=149.99999776925813,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{}{0in}{A graph of Gabriel's Horn.}{fig:gabriel}{figures/figgabriel}
-%\mfigure{0in}{A graph of Gabriel's Horn.}{fig:gabriel}{figures/figgabriel}
+3Droo=149.99999776925813}{width=\marginparwidth}{figures/figgabriel_3D}}
 }
 {To compute the volume it is natural to use the Disk Method. We have:
 \begin{align*}

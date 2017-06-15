@@ -9,7 +9,6 @@ currentprojection=orthographic((10.17,5.3,46),(0,1,0),(0,0,0),1,(-0.0999,0.0072)
 real[] myxchoice={1,2,3};
 real[] myychoice={-5,5};
 real[] myzchoice={};
-defaultpen(0.5mm);
 
 pair xbounds=(-.2,3.3);
 pair ybounds=(-5.6,5.6);
@@ -32,9 +31,7 @@ triple g2(real t) {return (t,(t^2-2*t+2),0);}
 path3 p2=graph(g2,3,1,operator ..);
 draw(p2,colortwo+.4mm);
 
-path3 p3=p1--p2;
-draw(surface(p3 -- cycle), emissive(coloronefill));
-
+draw(surface(p1--p2--cycle), emissive(coloronefill));
 
 triple f2(pair t) {return (2,cos(t.x)*t.y,sin(t.x)*t.y);}
 surface s2=surface(f2,(0,2),(2*pi,3),16,1,Spline);

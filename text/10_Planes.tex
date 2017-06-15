@@ -1,26 +1,24 @@
 \section{Planes}\label{sec:planes}
 
 Any flat surface, such as a wall, table top or stiff piece of cardboard can be thought of as representing part of a plane. Consider a piece of cardboard with a point $P$ marked on it. One can take a nail and stick it into the cardboard at $P$ such that the nail is perpendicular to the cardboard; see \autoref{fig:planes_intro}.% -- that is, the line containing the nail is perpendicular to any line drawn on the cardboard through $P$.
-\mfigurethree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
+\mtable{Illustrating defining a plane with a sheet of cardboard and a nail.}{fig:planes_intro}{%
+\myincludeasythree{width=\marginparwidth,
 3Droll=-41.9,
 3Dortho=0.0045,
 3Dc2c=.97 .05 .23,
 3Dcoo=65.14276885986328 3.0251121520996094 21.06670570373535,
-3Droo=150,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{}{0in}{Illustrating defining a plane with a sheet of cardboard and a nail.}{fig:planes_intro}{figures/figplanes_intro}
-%\mfigure{0in}{Illustrating defining a plane with a sheet of cardboard and a nail.}{fig:planes_intro}{figures/figplanes_intro}
+3Droo=150}{width=\marginparwidth}{figures/figplanes_intro_3D}}
 
 This nail provides a ``handle'' for the cardboard. Moving the cardboard around moves $P$ to different locations in space. Tilting the nail (but keeping $P$ fixed) tilts the cardboard. Both moving and tilting the cardboard defines a different plane in space. In fact, we can define a plane by: 1) the location of $P$ in space, and 2) the direction of the nail.
 
 The previous section showed that one can define a line given a point on the line and the direction of the line (usually given by a vector). One can make a similar statement about planes: we can define a plane in space given a point on the plane and the direction the plane ``faces'' (using the description above, the direction of the nail). Once again, the direction information will be supplied by a vector, called a \textbf{normal vector}, that is orthogonal to the plane.
 \index{vectors!normal vector}\index{normal vector}\index{planes!normal vector}
 
-% todo make a picture of this?
+% todo should we make a picture of a vector ``orthogonal to the plane''?
 What exactly does ``orthogonal to the plane'' mean? Choose any two points $P$ and $Q$ in the plane, and consider the vector $\vv{PQ}$. We say a vector $\vec n$ is orthogonal to the plane if $\vec n$ is perpendicular to $\vv{PQ}$ for all choices of $P$ and $Q$; that is, if $\vec n\cdot \vv{PQ}=0$ for all $P$ and $Q$.
 
-% todo make a picture of this?
+% todo should we make a picture of how the vector equation of a plane works?
 This gives us way of writing an equation describing the plane. Let $P=(x_0,y_0,z_0)$ be a point in the plane and let $\vec n =\bracket{a,b,c}$ be a normal vector to the plane. A point $Q = (x,y,z)$ lies in the plane defined by $P$ and $\vec n$ if, and only if, $\vv{PQ}$ is orthogonal to $\vec n$. Knowing $\vv{PQ} =\bracket{x-x_0,y-y_0,z-z_0}$, consider:
-
 \begin{align}
 \vv{PQ}\cdot\vec n &= 0 \notag\\
 				\bracket{x-x_0,y-y_0,z-z_0}\cdot\bracket{a,b,c}&=0\notag\\
@@ -49,44 +47,47 @@ A key to remember throughout this section is this: to find the equation of a pla
 
 \example{ex_planes1}{Finding the equation of a plane.}{Write the equation of the plane that passes through the points $P=(1,1,0)$, $Q = (1,2,-1)$ and $R = (0,1,2)$ in standard form.}
 {We need a vector $\vec n$ that is orthogonal to the plane.
-\mfigurethree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
+\mtable{Sketching the plane in \autoref{ex_planes1}.}{fig:planes1}{%
+\myincludeasythree{width=\marginparwidth,
 3Droll=-0.8901640937366284,
 3Dortho=0.005352090112864971,
 3Dc2c=0.16529597342014313 0.9668735861778259 0.19450663030147552,
 3Dcoo=7.7291765213012695 11.105842590332031 32.345008850097656,
-3Droo=150.00000744992093,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.25,trim=2mm 0mm 2mm 2mm,clip=true}{0in}{Sketching the plane in \autoref{ex_planes1}.}{fig:planes1}{figures/figplanes1}
-%\mfigure[scale=1.25,trim=2mm 0mm 2mm 2mm,clip=true]{0in}{Sketching the plane in \autoref{ex_planes1}.}{fig:planes1}{figures/figplanes1}
+3Droo=150.00000744992093}{width=\marginparwidth}{figures/figplanes1_3D}}
 Since $P$, $Q$ and $R$ are in the plane, so are the vectors $\vv{PQ}$ and $\vv{PR}$; $\vv{PQ}\times\vv{PR}$ is orthogonal to $\vv{PQ}$ and $\vv{PR}$ and hence the plane itself.
 
 It is straightforward to compute $\vec n = \vv{PQ}\times\vv{PR} =\bracket{2,1,1}$. We can use any point we wish in the plane (any of $P$, $Q$ or $R$ will do) and we arbitrarily choose $P$. Following \autoref{def:planes}, the equation of the plane in standard form is 
-$$2(x-1) + (y-1)+z = 0.$$
+\[2(x-1) + (y-1)+z = 0.\]
 The plane is sketched in \autoref{fig:planes1}.}
 
 We have just demonstrated the fact that any three non-collinear points define a plane. (This is why a three-legged stool does not ``rock;'' it's three feet always lie in a plane. A four-legged stool will rock unless all four feet lie in the same plane.)
 
 \example{ex_planes2}{Finding the equation of a plane.}{Verify that lines $\ell_1$ and $\ell_2$, whose parametric equations are given below, intersect, then give the equation of the  plane that contains these two lines in general form.
-$$ \ell_1: \begin{array}{ccc} x&=&-5+2s \\ y&=&1+s \\ z&=&-4+2s\end{array} \qquad\qquad
-				\ell_2: \begin{array}{ccc} x &=& 2+3t\\ y&=&1-2t \\ z&=&1+t\end{array}$$}
+\[
+ \ell_1: \begin{array}{ccc} x&=&-5+2s \\ y&=&1+s \\ z&=&-4+2s\end{array}
+ \qquad\qquad
+ \ell_2: \begin{array}{ccc} x &=& 2+3t\\ y&=&1-2t \\ z&=&1+t\end{array}
+\]}
 {The lines clearly are not parallel. If they do not intersect, they are skew, meaning there is not a plane that contains them both. If they do intersect, there is such a plane. 
 
 To find their point of intersection, we set the $x$, $y$ and $z$ equations equal to each other and solve for $s$ and $t$:
-$$\begin{array}{ccc}
--5+2s &=&2+3t \\ 1+s &=& 1-2t \\ -4+2s &=& 1+t \end{array}\quad  \Rightarrow  \quad s=2,\quad t=-1.$$
+\[
+ \begin{array}{ccc}-5+2s &=&2+3t \\ 1+s &=& 1-2t \\ -4+2s &=& 1+t \end{array}
+ \quad  \Rightarrow  \quad s=2,\quad t=-1.
+\]
 
 When $s=2$ and $t=-1$, the lines intersect at the point $P= (-1,3,0)$. 
 
 Let $\vec d_1 =\bracket{2,1,2}$ and $\vec d_2=\bracket{3,-2,1}$ be the directions of lines $\ell_1$ and $\ell_2$, respectively. A normal vector to the plane containing these the two lines will also be orthogonal to $\vec d_1$ and $\vec d_2$. Thus we find a normal vector $\vec n$ by computing $\vec n = \vec d_1 \times \vec d_2=\bracket{5,4-7}$.
 
 We can pick any point in the plane with which to write our equation; each line gives us infinite choices of points. We choose $P$, the point of intersection. We follow \autoref{def:planes} to write the plane's equation in general form:
-\mfigurethree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
+\mtable{Sketching the plane in \autoref{ex_planes2}.}{fig:planes2}{%
+\myincludeasythree{width=\marginparwidth,
 3Droll=2.9217762747959766,
 3Dortho=0.005,
 3Dc2c=-0.8846508860588074 0.46156787872314453 0.06593840569257736,
 3Dcoo=-0.8311560153961182 6.697127819061279 -4.196700572967529,
-3Droo=149.99999773205013,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{}{0in}{Sketching the plane in \autoref{ex_planes2}.}{fig:planes2}{figures/figplanes2}
-%\mfigure{0in}{Sketching the plane in \autoref{ex_planes2}.}{fig:planes2}{figures/figplanes2}
+3Droo=149.99999773205013}{width=\marginparwidth}{figures/figplanes2_3D}}
 \begin{align*}
 5(x+1) +4(y-3) -7z &= 0 \\
 5x + 5 + 4y-12 -7z &= 0\\
@@ -96,14 +97,13 @@ The plane's equation in general form is $5x+4y-7z=7$; it is sketched in \autoref
 
 \example{ex_planes3}{Finding the equation of a plane}{Give the equation, in standard form, of the plane that passes through the point $P=(-1,0,1)$ and is orthogonal to the line with vector equation $\vec \ell(t) =\bracket{-1,0,1}+ t\bracket{1,2,2}$.}
 {As the plane is to be orthogonal to the line, the plane must be orthogonal to the direction of the line given by $\vec d =\bracket{1,2,2}$. We use this as our normal vector. Thus the plane's equation, in standard form, is
-\mfigurethree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
+\mtable{The line and plane in \autoref{ex_planes3}.}{fig:planes3}{%
+\myincludeasythree{width=\marginparwidth,
 3Droll=-0.19776251118795246,
 3Dortho=0.0055,
 3Dc2c=0.7284952998161316 0.6353668570518494 0.2561318576335907,
 3Dcoo=-0.8311604261398315 6.69713020324707 -4.196701526641846,
-3Droo=149.99999682944613,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.25,trim=5mm 0mm 5mm 5mm,clip=true}{0in}{The line and plane in \autoref{ex_planes3}.}{fig:planes3}{figures/figplanes3}
-%\mfigure[scale=1.25,trim=5mm 0mm 5mm 5mm,clip=true]{0in}{The line and plane in \autoref{ex_planes3}.}{fig:planes3}{figures/figplanes3}
+3Droo=149.99999682944613}{width=\marginparwidth}{figures/figplanes3_3D}}
 \[(x+1) +2y+2(z-1)=0.\]
 The line and plane are sketched in \autoref{fig:planes3}.}
 
@@ -127,14 +127,13 @@ y &= \frac12(3x-1)
 \end{align*}
 We can choose any value for $x$; we choose $x=1$. This determines that $y=1$. We can now use the equations of either plane to find $z$: when $x=1$ and $y=1$, $z=-1$ on both planes. We have found a point $P$  on the line: $P= (1,1,-1)$. 
 
-\mfigurethree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
+\mtable{Graphing the planes and their line of intersection in \autoref{ex_planes4}.}{fig:planes4}{%
+\myincludeasythree{width=\marginparwidth,
 3Droll=-1.123268578351379,
 3Dortho=0.0046491301618516445,
 3Dc2c=0.3357679545879364 0.7699711322784424 0.5425903797149658,
 3Dcoo=-0.8311622142791748 6.697126388549805 -4.196705341339111,
-3Droo=149.99999623071383,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.25,trim=5mm 0mm 5mm 5mm,clip=true}{0in}{Graphing the planes and their line of intersection in \autoref{ex_planes4}.}{fig:planes4}{figures/figplanes4}
-%\mfigure[scale=1.25,trim=5mm 0mm 5mm 5mm,clip=true]{0in}{Graphing the planes and their line of intersection in \autoref{ex_planes4}.}{fig:planes4}{figures/figplanes4}
+3Droo=149.99999623071383}{width=\marginparwidth}{figures/figplanes4_3D}}
 
 We now need the direction of the line. Since the line lies in each plane, its direction is orthogonal to a normal vector for each plane. Considering the equations for $p_1$ and $p_2$, we can quickly determine their normal vectors. For $p_1$, $\vec n_1 =\bracket{1,-1,1}$ and for $p_2$, $\vec n_2 =\bracket{-2,1,1}.$ A direction orthogonal to both of these directions is their cross product: $\vec d = \vec n_1\times \vec n_2 =\bracket{-2,-3,-1}.$
 
@@ -146,15 +145,14 @@ The planes and line are graphed in \autoref{fig:planes4}.}
 {The equation of the plane shows that the vector $\vec n =\bracket{2,1,1}$ is a normal vector to the plane, and the equation of the line shows that the line moves parallel to $\vec d =\bracket{-1,2,1}$. Since these are not orthogonal, we know there is a point of intersection. (If there were orthogonal, it would mean that the plane and line were parallel to each other, either never intersecting or the line was in the plane itself.)
 
 To find the point of intersection, we need to find a $t$ value such that $\ell(t)$ satisfies the equation of the plane. Rewriting the equation of the line with parametric equations will help:
-$$\ell(t) = \begin{cases}x=3-t\\y=-3+2t\\z=-1+t\end{cases}.$$
-\mfigurethree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
+\[\ell(t) = \begin{cases}x=3-t\\y=-3+2t\\z=-1+t\end{cases}.\]%
+\mtable{Illustrating the intersection of a line and a plane in \autoref{ex_planes5}.}{fig:planes5}{%
+\myincludeasythree{width=\marginparwidth,
 3Droll=1.7009339618393229,
 3Dortho=0.0046491301618516445,
 3Dc2c=0.6873484253883362 0.6952667832374573 0.2101338654756546,
 3Dcoo=7.167160511016846 -9.016068458557129 21.630752563476562,
-3Droo=149.9999995928182,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.25,trim=2mm 0mm 2mm 0mm,clip}{0in}{Illustrating the intersection of a line and a plane in \autoref{ex_planes5}.}{fig:planes5}{figures/figplanes5}
-%\mfigure[scale=1.25,trim=2mm 0mm 2mm 0mm,clip]{0in}{Illustrating the intersection of a line and a plane in \autoref{ex_planes5}.}{fig:planes5}{figures/figplanes5}
+3Droo=149.9999995928182}{width=\marginparwidth}{figures/figplanes5_3D}}%
 Replacing $x$, $y$ and $z$ in the equation of the plane with the expressions containing $t$ found in the equation of the line allows us to determine a $t$ value that indicates the point of intersection:
 \begin{align*}
 2x+y+z &=4 \\
@@ -171,18 +169,17 @@ Consider \autoref{fig:planes_dist}, where a plane with normal vector $\vec n$ is
 \begin{equation}\norm{\text{proj}_{\,\vec n}\,{\vv{PQ}}} = \norm{\frac{\vec n\cdot \vv{PQ}}{\vnorm n^2}\vec n} = \frac{|\vec n\cdot \vv{PQ}|}{\vnorm n}\label{eq:plane_dist}
 \end{equation}
 \autoeqref{eq:plane_dist} is important as it does more than just give the distance between a point and a plane. We will see how it allows us to find several other distances as well: the distance between parallel planes and the distance from a line and a plane. Because \autoeqref{eq:plane_dist} is important, we restate it as a Key Idea.
-\mfigurethree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
+\mtable{Illustrating finding the distance from a point to a plane.}{fig:planes_dist}{%
+\myincludeasythree{width=\marginparwidth,
 3Droll=1.7009341752827345,
 3Dortho=0.007484772708266974,
 3Dc2c=0.6873484253883362 0.6952667832374573 0.2101338654756546,
 3Dcoo=1.2409521341323853 -5.606988430023193 29.735889434814453,
-3Droo=149.9999995928182,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.25}{0in}{Illustrating finding the distance from a point to a plane.}{fig:planes_dist}{figures/figplanes_dist}
-%\mfigure[scale=1.25]{0in}{Illustrating finding the distance from a point to a plane.}{fig:planes_dist}{figures/figplanes_dist}
+3Droo=149.9999995928182}{width=\marginparwidth}{figures/figplanes_dist_3D}}
 
 \keyidea{idea:planes_dist}{Distance from a Point to a Plane}
 {Let a plane with normal vector $\vec n$ be given, and let $Q$ be a point. The distance $h$ from $Q$ to the plane is 
-$$h = \frac{|\vec n\cdot \vv{PQ}|}{\vnorm n},$$
+\[h = \frac{\abs{\vec n\cdot \vv{PQ}}}{\vnorm n},\]
 where $P$ is any point in the plane.
 \index{planes!distance between point and plane}\index{distance!between point and plane}}
 

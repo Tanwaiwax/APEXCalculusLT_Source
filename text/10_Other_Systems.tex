@@ -2,81 +2,32 @@
 
 % originally from Schoolcraft
 
-\mtable{Cartesian Coordinates}{fig_cart_coord}{\begin{tikzpicture}[scale=3]
- % these are weirdly ordered. pay attention
- \draw[->](0,0) -- (1,0) node[right]{\scriptsize$y$};
- \draw[->](0,0) -- (0,1) node[right]{\scriptsize$z$};
- \draw[->](0,0) -- (xyz cs:z=1.5) node[right]{\scriptsize$x$};
- \draw[draw={\colorone}] (0,0) node[color=black,below]{\scriptsize$0$}
-  -- node[pos=.5,color=black,left]{\scriptsize$x$}(xyz cs:z=1)
-  -- node[pos=.5,color=black,below]{\scriptsize$y$}(1,0,1)
-  -- node[pos=.7,color=black,right]{\scriptsize$z$}(1,1,1)
-     node[color=black,above right]{\scriptsize$(x,y,z)$};
- \fill[draw={\colorone}](1,1,1) circle(.6pt);
- \draw[dashed](0,0) -- (1,0,1);
- \draw(.9,0,1)--(.9,.1,1)--(1,.1,1);
-\end{tikzpicture}}
-
-The Cartesian coordinates of a point $(x,y,z)$ are determined by following straight paths starting from the origin: first along the $x$-axis, then parallel to the $y$-axis, then parallel to the $z$-axis, as in \autoref{fig_cart_coord}. In \emph{curvilinear coordinate systems}\index{coordinates!curvilinear}, these paths can be curved. The two types of curvilinear coordinates which we will consider are cylindrical\index{coordinates!cylindrical} and spherical\index{coordinates!spherical} coordinates. Instead of referencing a point in terms of sides of a rectangular parallelepiped, as with Cartesian coordinates, we will think of the point as lying on a cylinder or sphere. Cylindrical coordinates are often used when there is symmetry around the $z$-axis; spherical coordinates are useful when there is symmetry about the origin.
-
-\mtable{Cylindrical coordinates}{fig_cyl_coord}{%\begin{tikzpicture}[scale=3]
-% % these are weirdly ordered. pay attention
-% \draw[->](0,0) -- (1,0) node[right]{\scriptsize$y$};
-% \draw[->](0,0) -- (0,1) node[right]{\scriptsize$z$};
-% \draw[->](0,0) -- (xyz cs:z=1.5) node[right]{\scriptsize$x$};
-% \draw[dashed] (0,0) node[color=black,left]{\scriptsize$0$}
-%  -- node[pos=.5,left]{\scriptsize$x$}(xyz cs:z=1)
-%  -- node[pos=.5,below]{\scriptsize$y$}(1,0,1);
-% \draw[draw={\colorone}](1,0,1) node[color=black,below right]{\scriptsize$P_0(x,y,0)$}
-%  -- node[pos=.7,color=black,right]{\scriptsize$z$}(1,1,1)
-%     node[color=black,above right]{\scriptsize$P(x,y,z)$};
-% \fill[draw={\colorone}](1,1,1) circle(.6pt);
-% \draw[dashed,draw={\colorone}](0,0)
-%  -- node[pos=.5,color=black,above right]{\scriptsize$r$} (1,0,1);
-% \draw(.9,0,.9)--(.9,.1,.9)--(1,.1,1);
-% \draw[->,draw={\colorone}](xyz cs:z=.3)
-%     arc[start angle=225,end angle=315,y radius=.1,x radius=.2]
-%     node[pos=.5,below,color=black]{\scriptsize$\theta$};
-%\end{tikzpicture}
+\mtable{Cartesian (top), cylindrical (middle), and spherical (bottom) coordinate systems}{fig_coord}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=126.0060482236849,
 3Dortho=0.004875946324318647,
 3Dc2c=0.44462037086486816 0.39410829544067383 0.8043577671051025,
 3Dcoo=67.21983337402344 3.5258262157440186 -29.566415786743164,
-3Droo=150.00000160608386}{width=\marginparwidth}{figures/ortho_cyl}%
-}
-
-Let $P = (x,y,z)$ be a point in Cartesian coordinates in $\mathbb{R}^{3}$, and let $P_0 = (x,y,0)$ be the projection of $P$ upon the $xy$-plane. Treating $(x,y)$ as a point in $\mathbb{R}^{2}$, let $(r,\theta)$ be its polar coordinates (see \autoref{fig_cyl_coord}). Let\index{coordinates!polar} $\rho$ be the length of the line segment from the origin to $P$, and let $\phi$ be the angle between that line segment and the positive $z$-axis (see \autoref{fig_sph_coord}), which is called the \emph{zenith angle}\index{zenith angle}. Then the \textbf{cylindrical coordinates} $(r,\theta,z)$  and the \textbf{spherical coordinates} $(\rho,\theta,\phi)$ of $P(x,y,z)$ are defined as follows:
-
-\mtable{Spherical coordinates}{fig_sph_coord}{%\begin{tikzpicture}[scale=3]
-% % these are weirdly ordered. pay attention
-% \draw[->](0,0) -- (1,0) node[right]{\scriptsize$y$};
-% \draw[->](0,0) -- (0,1) node[right]{\scriptsize$z$};
-% \draw[->](0,0) -- (xyz cs:z=1.5) node[right]{\scriptsize$x$};
-% \draw[dashed] (0,0) node[left]{\scriptsize$0$}
-%  -- node[pos=.5,left]{\scriptsize$x$}(xyz cs:z=1)
-%  -- node[pos=.5,below]{\scriptsize$y$}(1,0,1);
-% \draw[dashed](1,0,1) node[below right]{\scriptsize$P_0(x,y,0)$}
-%  -- node[pos=.7,right]{\scriptsize$z$}(1,1,1)
-%     node[above right]{\scriptsize$P(x,y,z)$};
-% \fill[draw={\colorone}](1,1,1) circle(.6pt);
-% \draw[draw={\colorone}](0,0)--node[pos=.5,color=black,above]{\scriptsize$\rho$}(1,1,1);
-% \draw[dashed](0,0) -- (1,0,1);
-% \draw(.9,0,.9)--(.9,.1,.9)--(1,.1,1);
-% \draw[->,draw={\colorone}](xyz cs:z=.3)
-%     arc[start angle=225,end angle=315,y radius=.1,x radius=.2]
-%     node[pos=.5,below,color=black]{\scriptsize$\theta$};
-% \draw[->,draw={\colorone}](0,.2)
-%     arc[start angle=90,end angle=45,y radius=.2,x radius=.2]
-%     node[pos=.5,above,color=black]{\scriptsize$\phi$};
-%\end{tikzpicture}
+3Droo=150.00000160608386}{width=\marginparwidth}{figures/ortho_rect}
+\\(a)\\
 \myincludeasythree{width=\marginparwidth,
 3Droll=126.0060482236849,
 3Dortho=0.004875946324318647,
 3Dc2c=0.44462037086486816 0.39410829544067383 0.8043577671051025,
 3Dcoo=67.21983337402344 3.5258262157440186 -29.566415786743164,
-3Droo=150.00000160608386}{width=\marginparwidth}{figures/ortho_sph}%
-}
+3Droo=150.00000160608386}{width=\marginparwidth}{figures/ortho_cyl}
+\\(b)\\
+\myincludeasythree{width=\marginparwidth,
+3Droll=126.0060482236849,
+3Dortho=0.004875946324318647,
+3Dc2c=0.44462037086486816 0.39410829544067383 0.8043577671051025,
+3Dcoo=67.21983337402344 3.5258262157440186 -29.566415786743164,
+3Droo=150.00000160608386}{width=\marginparwidth}{figures/ortho_sph}
+\\(c)}
+
+The Cartesian coordinates of a point $(x,y,z)$ are determined by following straight paths starting from the origin: first along the $x$-axis, then parallel to the $y$-axis, then parallel to the $z$-axis, as in \autoref{fig_coord}(a). In \emph{curvilinear coordinate systems}\index{coordinates!curvilinear}, these paths can be curved. The two types of curvilinear coordinates which we will consider are cylindrical\index{coordinates!cylindrical} and spherical\index{coordinates!spherical} coordinates. Instead of referencing a point in terms of sides of a rectangular parallelepiped, as with Cartesian coordinates, we will think of the point as lying on a cylinder or sphere. Cylindrical coordinates are often used when there is symmetry around the $z$-axis; spherical coordinates are useful when there is symmetry about the origin.
+
+Let $P = (x,y,z)$ be a point in Cartesian coordinates in $\mathbb{R}^{3}$, and let $P_0 = (x,y,0)$ be the projection of $P$ upon the $xy$-plane. Treating $(x,y)$ as a point in $\mathbb{R}^{2}$, let $(r,\theta)$ be its polar coordinates (see \autoref{fig_coord}(b)). Let\index{coordinates!polar} $\rho$ be the length of the line segment from the origin to $P$, and let $\phi$ be the angle between that line segment and the positive $z$-axis (see \autoref{fig_coord}(c)), which is called the \emph{zenith angle}\index{zenith angle}. Then the \textbf{cylindrical coordinates} $(r,\theta,z)$  and the \textbf{spherical coordinates} $(\rho,\theta,\phi)$ of $P(x,y,z)$ are defined as follows:
 
 \keyidea{idea_cyl_coord}{Cylindrical coordinates $(r,\theta,z)$}{\mbox{}\\[-2\baselineskip]\begin{align*}
   x &= r \cos \theta & r &= \sqrt{x^2 + y^2}\\
@@ -109,74 +60,27 @@ For cylindrical coordinates $(r,\theta,z)$, and constants $r_0$, $\theta_0$ and 
 \begin{lxfigure}
  \flushinner{%
   \begin{tabular}{ccc}
- \begin{tikzpicture}
-  \usetikzlibrary{arrows}
-  \definecolor{insideo}{HTML}{798084}
-  \definecolor{insidei}{HTML}{F0F0F0}
-  \definecolor{outer}{HTML}{006146}
-  \definecolor{inner}{HTML}{9EF0A6}
-  \shade [left color=insideo,right color=insideo,middle color=insidei] (1,1) arc (0:180:1 and .5) --
-   (-1,1) arc (180:360:1 and .5);
-  \shadedraw [left color=outer,right color=outer,middle color=inner] (-1,-1) arc (180:360:1 and .5) -- (1,1) --
-   (1,1) arc (360:180:1 and .5) -- (-1,-1);
-  \draw (1,1) arc (0:180:1 and .5);
-  \draw [dashed,line width=0.2pt] (1,-1) arc (0:180:1 and .5);
-  \draw [black!60,line width=0.3pt,-latex] (0,0)
-   --node[pos=1,color=black,above]{\small$y$} (2,0);
-  \draw [black!60,line width=0.3pt,-latex] (0,-1.5)
-   --node[pos=1,color=black,right]{\small$z$} (0,2);
-  \draw [black!60,line width=0.3pt,-latex] (0,0)
-   --node[pos=1,color=black,right]{\small$x$} (0,0,4);
-%  \pgfputat{\pgfpointxyz{1.9}{0.2}{0}}{\pgfbox[center,center]{\small $y$}};
-%  \pgfputat{\pgfpointxyz{0.2}{1.9}{0}}{\pgfbox[center,center]{\small $z$}};
-%  \pgfputat{\pgfpointxyz{0.2}{0}{3.8}}{\pgfbox[center,center]{\small $x$}};
-  \node[below right]at(0,0){\small$0$};
-%  \pgfputat{\pgfpointxyz{0.1}{-0.2}{0}}{\pgfbox[center,center]{\small $0$}};
-  \draw [dashed,line width=0.2pt] (0,1) -- (1,1);
-  \draw [dashed,line width=0.2pt] (-1,-1) -- (1,-1);
-  \node [above] at (0.5,1) {\small $r_0$};
- \end{tikzpicture}
+  \myincludeasythree{width=.4\textwidth,
+3Droll=126.0060482236849,
+3Dortho=0.004875946324318647,
+3Dc2c=0.44462037086486816 0.39410829544067383 0.8043577671051025,
+3Dcoo=67.21983337402344 3.5258262157440186 -29.566415786743164,
+3Droo=150.00000160608386}{width=.4\textwidth}{figures/cyl_surf_r}
  &
- \begin{tikzpicture}
-  \usetikzlibrary{arrows}
-  \fill [red!30] (0,-.5) -- (1,-1.5) -- (1,.5) -- (0,1.5) -- (0,-.5);
-  \draw [black!60,line width=0.3pt,-latex] (0,0)
-   --node[pos=1,color=black,above]{\small$y$} (2,0);
-  \draw [black!60,line width=0.3pt,-latex] (0,-.5)
-   --node[pos=1,color=black,right]{\small$z$} (0,2);
-  \draw [black!60,dashed,line width=0.3pt] (0,-1.5) -- (0,-.5);
-  \draw [black!60,line width=0.3pt,-latex] (0,0)
-   --node[pos=1,color=black,right]{\small$x$} (0,0,4);
-%  \pgfputat{\pgfpointxyz{1.9}{0.2}{0}}{\pgfbox[center,center]{\small $y$}};
-%  \pgfputat{\pgfpointxyz{0.2}{1.9}{0}}{\pgfbox[center,center]{\small $z$}};
-%  \pgfputat{\pgfpointxyz{0.2}{0}{3.8}}{\pgfbox[center,center]{\small $x$}};
-  \node[above right]at(0,0){\small$0$};
-%  \pgfputat{\pgfpointxyz{-0.2}{0.1}{0}}{\pgfbox[center,center]{\small $0$}};
-  \draw [line width=0.2pt] (0,-.5) -- (1,-1.5) -- (1,.5) -- (0,1.5) -- (0,-.5);
-  \draw [dashed,line width=0.2pt] (0,0) -- (1,-1);
-  \draw [dashed,line width=0.2pt,-latex] (-0.7,-0.7) arc (225:315:1 and .7);
-  \node [below] at (-0.3,-.8) {\small $\theta_0$};
- \end{tikzpicture}
+  \myincludeasythree{width=.4\textwidth,
+3Droll=126.0060482236849,
+3Dortho=0.004875946324318647,
+3Dc2c=0.44462037086486816 0.39410829544067383 0.8043577671051025,
+3Dcoo=67.21983337402344 3.5258262157440186 -29.566415786743164,
+3Droo=150.00000160608386}{width=.4\textwidth}{figures/cyl_surf_t}
  &
- \begin{tikzpicture}
-  \usetikzlibrary{arrows}
-  \definecolor{planecolor}{HTML}{FFB270}
-  \fill [planecolor] (-1.8,.9) -- (-1.1,1.6) -- (1.8,1.6) -- (1.1,.9) -- (-1.8,.9);
-  \draw [line width=0.2pt] (-1.8,.9) -- (-1.1,1.6) -- (1.8,1.6) -- (1.1,.9) -- (-1.8,.9);
-  \draw [black!60,line width=0.3pt,-latex] (0,0)
-   --node[pos=1,color=black,above]{\small$y$} (2,0);
-  \draw [black!60,line width=0.3pt,-latex] (0,-1.5)
-   --node[pos=1,color=black,right]{\small$z$} (0,2);
-  \draw [black!60,line width=0.3pt,-latex] (0,0)
-   --node[pos=1,color=black,right]{\small$x$} (0,0,4);
-%  \pgfputat{\pgfpointxyz{1.9}{0.2}{0}}{\pgfbox[center,center]{\small $y$}};
-%  \pgfputat{\pgfpointxyz{0.2}{1.9}{0}}{\pgfbox[center,center]{\small $z$}};
-%  \pgfputat{\pgfpointxyz{0.2}{0}{3.8}}{\pgfbox[center,center]{\small $x$}};
-  \node[above left]at(0,0){\small$0$};
-%  \pgfputat{\pgfpointxyz{0.1}{-0.2}{0}}{\pgfbox[center,center]{\small $0$}};
-  \fill (0,1.2) circle (1pt);
-  \node [left] at (0,1.2) {\small $z_0$};
- \end{tikzpicture} \\
+  \myincludeasythree{width=.4\textwidth,
+3Droll=126.0060482236849,
+3Dortho=0.004875946324318647,
+3Dc2c=0.44462037086486816 0.39410829544067383 0.8043577671051025,
+3Dcoo=67.21983337402344 3.5258262157440186 -29.566415786743164,
+3Droo=150.00000160608386}{width=.4\textwidth}{figures/cyl_surf_z}
+ \\
  (a) $r = r_0$ & (b) $\theta = \theta_0$ & (c) $z = z_0$
  \end{tabular}}
  \caption{Cylindrical coordinate surfaces}
@@ -188,73 +92,27 @@ For spherical coordinates $(\rho,\theta,\phi)$, and constants $\rho_0$, $\theta_
 \begin{lxfigure}
  \flushinner{%
  \begin{tabular}{ccc}
- \begin{tikzpicture}
-  \usetikzlibrary{arrows}
-  \definecolor{spherecolor}{HTML}{80DCFF}
-  \shade [ball color=spherecolor] (0,0) circle (1.5);
-  \draw [black!60,line width=0.3pt,-latex] (0,0)
-   --node[pos=1,color=black,above]{\small$y$} (2,0);
-  \draw [black!60,line width=0.3pt,-latex] (0,-1.5)
-   --node[pos=1,color=black,right]{\small$z$} (0,2);
-  \draw [black!60,line width=0.3pt,-latex] (0,0)
-   --node[pos=1,color=black,right]{\small$x$} (0,0,4);
-%  \pgfputat{\pgfpointxyz{1.9}{0.2}{0}}{\pgfbox[center,center]{\small $y$}};
-%  \pgfputat{\pgfpointxyz{0.2}{1.9}{0}}{\pgfbox[center,center]{\small $z$}};
-%  \pgfputat{\pgfpointxyz{0.2}{0}{3.8}}{\pgfbox[center,center]{\small $x$}};
-  \node[below left]at(0,0){\small$0$};
-%  \pgfputat{\pgfpointxyz{0.1}{-0.2}{0}}{\pgfbox[center,center]{\small $0$}};
-  \draw [line width=0.2pt] (-1.5,0) arc (180:360:1.5 and 0.4);
-  \draw [dashed,line width=0.2pt] (1.5,0) arc (0:180:1.5 and 0.4);
-  \draw [dashed,line width=0.2pt,-latex] (0,0) -- (1.06,1.06);
-  \node [above] at (0.5,0.5) {\small $\rho_0$};
- \end{tikzpicture}
+  \myincludeasythree{width=.4\textwidth,
+3Droll=126.0060482236849,
+3Dortho=0.004875946324318647,
+3Dc2c=0.44462037086486816 0.39410829544067383 0.8043577671051025,
+3Dcoo=67.21983337402344 3.5258262157440186 -29.566415786743164,
+3Droo=150.00000160608386}{width=.4\textwidth}{figures/sph_surf_r}
  &
- \begin{tikzpicture}
-  \usetikzlibrary{arrows}
-  \fill [red!30] (0,-.5) -- (1,-1.5) -- (1,.5) -- (0,1.5) -- (0,-.5);
-  \draw [black!60,line width=0.3pt,-latex] (0,0)
-   --node[pos=1,color=black,above]{\small$y$} (2,0);
-  \draw [black!60,line width=0.3pt,-latex] (0,-.5)
-   --node[pos=1,color=black,right]{\small$z$} (0,2);
-  \draw [black!60,dashed,line width=0.3pt] (0,-1.5) -- (0,-.5);
-  \draw [black!60,line width=0.3pt,-latex] (0,0)
-   --node[pos=1,color=black,right]{\small$x$} (0,0,4);
-%  \pgfputat{\pgfpointxyz{1.9}{0.2}{0}}{\pgfbox[center,center]{\small $y$}};
-%  \pgfputat{\pgfpointxyz{0.2}{1.9}{0}}{\pgfbox[center,center]{\small $z$}};
-%  \pgfputat{\pgfpointxyz{0.2}{0}{3.8}}{\pgfbox[center,center]{\small $x$}};
-  \node[above left]at(0,0){\small$0$};
-%  \pgfputat{\pgfpointxyz{-0.2}{0.1}{0}}{\pgfbox[center,center]{\small $0$}};
-  \draw [line width=0.2pt] (0,-.5) -- (1,-1.5) -- (1,.5) -- (0,1.5) -- (0,-.5);
-  \draw [dashed,line width=0.2pt] (0,0) -- (1,-1);
-  \draw [dashed,line width=0.2pt,-latex] (-0.7,-0.7) arc (225:315:1 and .7);
-  \node [below] at (-0.3,-.8) {\small $\theta_0$};
- \end{tikzpicture}
+  \myincludeasythree{width=.4\textwidth,
+3Droll=126.0060482236849,
+3Dortho=0.004875946324318647,
+3Dc2c=0.44462037086486816 0.39410829544067383 0.8043577671051025,
+3Dcoo=67.21983337402344 3.5258262157440186 -29.566415786743164,
+3Droo=150.00000160608386}{width=.4\textwidth}{figures/cyl_surf_t}
  &
- \begin{tikzpicture}
-  \usetikzlibrary{arrows}
-  \definecolor{insideo}{HTML}{798084}
-  \definecolor{insidei}{HTML}{F0F0F0}
-  \definecolor{outer}{HTML}{424296}
-  \definecolor{inner}{HTML}{D8D8FF}
-  \shadedraw [left color=insideo,right color=insideo,middle color=insidei] (1,2.2) arc (0:180:1 and .3) --
-   (-1,2.2) arc (180:360:1 and .3);
-  \shadedraw [left color=outer,right color=outer,middle color=inner] (-1,2.2) arc (180:360:1 and .3) -- (0,0) --
-   (-1,2.2);
-  \draw [black!60,line width=0.3pt,-latex] (0,0)
-   --node[pos=1,color=black,above]{\small$y$} (2,0);
-  \draw [black!60,line width=0.3pt,-latex] (0,-.5)
-   --node[pos=1,color=black,right]{\small$z$} (0,3);
-  \draw [black!60,line width=0.3pt,-latex] (0,0)
-   --node[pos=1,color=black,right]{\small$0$} (0,0,2);
-%  \pgfputat{\pgfpointxyz{1.9}{0.2}{0}}{\pgfbox[center,center]{\small $y$}};
-%  \pgfputat{\pgfpointxyz{0.2}{2.9}{0}}{\pgfbox[center,center]{\small $z$}};
-%  \pgfputat{\pgfpointxyz{0.2}{0}{1.8}}{\pgfbox[center,center]{\small $x$}};
-  \node[below left]at(0,0){\small$0$};
-%  \pgfputat{\pgfpointxyz{0.2}{-0.2}{0}}{\pgfbox[center,center]{\small $0$}};
-  \draw [dashed,line width=0.2pt] (-1,2.2) -- (1,2.2);
-  \draw [dashed,line width=0.2pt,-latex] (0,1.4) arc (100:65:1 and 1.2);
-  \node [above] at (0.3,0.9) {\small $\phi_0$};
- \end{tikzpicture} \\
+  \myincludeasythree{width=.4\textwidth,
+3Droll=126.0060482236849,
+3Dortho=0.004875946324318647,
+3Dc2c=0.44462037086486816 0.39410829544067383 0.8043577671051025,
+3Dcoo=67.21983337402344 3.5258262157440186 -29.566415786743164,
+3Droo=150.00000160608386}{width=.4\textwidth}{figures/sph_surf_phi}
+ \\
   (a) $\rho = \rho_0$ & (b) $\theta = \theta_0$ & (c) $\phi = \phi_0$
   \end{tabular}}
  \caption{Spherical coordinate surfaces}
@@ -278,22 +136,15 @@ Using spherical coordinates to write the equation of a sphere does not necessari
  after combining terms. Note that this actually makes it more difficult to figure out what the surface is, as opposed to the Cartesian equation where you could immediately identify the surface as a sphere of radius $3$ centered at $(2,1,0)$.}
 
 \example{exmp_helicoid}{Identifying a Surface}{Describe the surface given by $\theta = z$ in cylindrical coordinates.}{This surface is called a \emph{helicoid}\index{helicoid}. As the (vertical) $z$ coordinate increases, so does the angle $\theta$, while the radius $r$ is unrestricted. So this sweeps out a (ruled!) surface shaped like a spiral staircase, where the spiral has an infinite radius. \autoref{fig:helicoid} shows a section of this surface restricted to $0 \le z \le 4\pi$ and $0 \le r \le 2$.
+
  \begin{lxfigure}
-  \begin{center}
-   \begin{tikzpicture}[scale=1.3]
-    \begin{axis}[width=\textwidth,tick label style={font=\scriptsize},axis on top,
-				axis lines=center,y dir=reverse,name=myplot,
-				ymin=-2,ymax=2,xmin=-2,xmax=2,zmin=0,zmax=14]
-     \addplot3[domain=0:2,y domain=0:720,surf,colormap={mp2}{\colormapplaneone},
-		opacity=.6,faceted color=black!40,samples=8,samples y=72,very thin,
-		z buffer=sort]
-		({x*sin(y)},{x*cos(y)},{rad(y)});
-    \end{axis}
-    \node [left] at (myplot.below origin) [shift={(-60pt,0pt)}] {$x$};
-    \node [below left] at (myplot.right of origin) [shift={(-30pt,-16pt)}] {$y$};
-    \node [below] at (myplot.above origin) [shift={(0,-40pt)}] {$z$};
-   \end{tikzpicture}
-  \end{center}
+  \centering
+   \myincludeasythree{width=\textwidth,
+   3Droll=0.,
+3Dortho=0.,
+3Dc2c=0.52 -0.80 0.30,
+3Dcoo=26.24 100.81 52.61,
+3Droo=150.0}{width=\textwidth}{figures/helicoid}
  \caption{Helicoid $\theta = z$}\eoehere
  \label{fig:helicoid}
  \end{lxfigure}}

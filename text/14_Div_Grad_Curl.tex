@@ -1,21 +1,20 @@
-\section{Gradient, Divergence, Curl and Laplacian}
+\section{Gradient, Divergence, Curl and Laplacian}\label{divgradcurllap}
 
 In this final section we will establish some relationships between the gradient, divergence and curl, and we will also introduce a new quantity called the \emph{Laplacian}. We will then show how to write these quantities in cylindrical and spherical coordinates.
 
 For a real-valued function $f(x,y,z)$ on $\mathbb{R}^{3}$, the gradient $\nabla f(x,y,z)$ is a vector-valued function on $\mathbb{R}^{3}$, that is, its value at a point $(x,y,z)$ is the vector
 \[
- \nabla f(x,y,z) = \left( \frac{\partial f}{\partial x},\frac{\partial f}{\partial y},\frac{\partial f}{\partial z}
-  \right) =
- \frac{\partial f}{\partial x}\,\veci + \frac{\partial f}{\partial y}\,\vecj +
+ \nabla f(x,y,z) = \bracket{\frac{\partial f}{\partial x},\frac{\partial f}{\partial y},\frac{\partial f}{\partial z}}
+ =\frac{\partial f}{\partial x}\,\veci + \frac{\partial f}{\partial y}\,\vecj +
  \frac{\partial f}{\partial z}\,\veck
 \]
 in $\mathbb{R}^{3}$, where each of the partial derivatives is evaluated at the point $(x,y,z)$. So in this way, you can think of the \emph{symbol} $\nabla$ as being ``applied'' to a real-valued function $f$ to produce a vector $\nabla f$.
 
 It turns out that the divergence and curl can also be expressed in terms of the symbol $\nabla$. This is done by thinking of $\nabla$ as a \emph{vector} in $\mathbb{R}^{3}$, namely\index{$\nabla$}
-\[
+\begin{equation}\label{nabladef}
  \nabla = \frac{\partial}{\partial x}\,\veci + \frac{\partial}{\partial y}\,\vecj +
    \frac{\partial}{\partial z}\,\veck .
-\]
+\end{equation}
 Here, the symbols $\frac{\partial}{\partial x}$, $ \frac{\partial}{\partial y}$ and $\frac{\partial}{\partial z}$ are to be thought of as ``partial derivative operators'' that will get ``applied'' to a real-valued function, say $f(x,y,z)$, to produce the partial derivatives $\frac{\partial f}{\partial x}$, $\frac{\partial f}{\partial y}$ and $\frac{\partial f}{\partial z}$. For instance, $\frac{\partial}{\partial x}$ ``applied'' to $f(x,y,z)$ produces $\frac{\partial f}{\partial x}$.
 
 Is $\nabla$ \emph{really} a vector? Strictly speaking, no, since $\frac{\partial}{\partial x}$, $\frac{\partial}{\partial y}$ and $\frac{\partial}{\partial z}$ are not actual numbers. But it helps to \emph{think} of $\nabla$ as a vector, especially with the divergence and curl, as we will soon see. The process of ``applying'' $\frac{\partial}{\partial x}$, $\frac{\partial}{\partial y}$, $\frac{\partial}{\partial z}$ to a real-valued function $f(x,y,z)$ is normally thought of as \emph{multiplying} the quantities:
@@ -27,34 +26,34 @@ Is $\nabla$ \emph{really} a vector? Strictly speaking, no, since $\frac{\partial
 For this reason, $\nabla$ is often referred to as the ``del operator'', since it ``operates'' on functions.
  
 For example, it is often convenient to write the divergence $\Div\vecf$ as $\Dotprod{\nabla}{\vecf}$, since for a vector field $\vecf(x,y,z) = f_1(x,y,z)\veci + f_2(x,y,z) \vecj + f_3(x,y,z) \veck$, the dot product of \vecf\ with $\nabla$ (thought of as a vector) makes sense:\index{divergence}
-\begin{align*}
+\begin{align}
  \Dotprod{\nabla}{\vecf} &= \Dotprod{ \left( \frac{\partial}{\partial x}\,\veci +
   \frac{\partial}{\partial y}\,\vecj + \frac{\partial}{\partial z}\,\veck \right) }{\left( f_1(x,y,z)
-  \veci + f_2(x,y,z) \vecj + f_3(x,y,z) \veck \right) }\\
+  \veci + f_2(x,y,z) \vecj + f_3(x,y,z) \veck \right) }\notag\\
    &= \left( \frac{\partial}{\partial x} \right) (f_1) +
     \left( \frac{\partial}{\partial y} \right) (f_2) +
-    \left( \frac{\partial}{\partial z} \right) (f_3)\\
+    \left( \frac{\partial}{\partial z} \right) (f_3)\notag\\
    &= \frac{\partial f_1}{\partial x} + \frac{\partial f_2}{\partial y} +
-  \frac{\partial f_3}{\partial z}\\
-   &= \Div\vecf
-\end{align*}
+  \frac{\partial f_3}{\partial z}\notag\\
+   &= \Div\vecf\label{nabladiv}
+\end{align}
 
 We can also write $\curl\vecf$ in terms of $\nabla$, namely as $\nabla\times\vecf$, since for a vector field $\vecf(x,y,z) = P(x,y,z)\veci + Q(x,y,z)\vecj + R(x,y,z)\veck$, we have:
-\begin{align*}
+\begin{align}
  \nabla\times\vecf &=
  \begin{vmatrix}
   \veci & \vecj & \veck \vspace{1mm}\\ \dfrac{\partial}{\partial x} & \dfrac{\partial}{\partial y} &
    \dfrac{\partial}{\partial z} \vspace{1mm}\\
   P(x,y,z) & Q(x,y,z) & R(x,y,z)
- \end{vmatrix}\\
+ \end{vmatrix}\notag\\
  &= \left( \frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z} \right) \veci -
     \left( \frac{\partial R}{\partial x} - \frac{\partial P}{\partial z} \right) \vecj +
-    \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) \veck\\
+    \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) \veck\notag\\
  &= \left( \frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z} \right) \veci +
     \left( \frac{\partial P}{\partial z} - \frac{\partial R}{\partial x} \right) \vecj +
-    \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) \veck\\
- &= \curl\vecf
-\end{align*}
+    \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) \veck\notag\\
+ &= \curl\vecf\label{nablacurl}
+\end{align}
 
 For a real-valued function $f(x,y,z)$, the gradient $\nabla f(x,y,z) =\frac{\partial f}{\partial x}\,\veci + \frac{\partial f}{\partial y}\,\vecj + \frac{\partial f}{\partial z}\,\veck$ is a vector field, so we can take its divergence:\index{curl}
 \begin{align*}
@@ -132,9 +131,11 @@ The following theorem shows that this will be the case in general:
  since the mixed partial derivatives in each component are equal.
 \end{proof}
 
+Another way of stating \autoref{thm:curlgrad0} is that potentials are irrotational. 
+
 \theorem{cor:curlgrad0}{Potentials are Irrotational}{If a vector field $\vecf(x,y,z)$ has a potential, then $\curl\vecf = \vec0$.}
 
-Another way of stating \autoref{thm:curlgrad0} is that gradients are irrotational. Also, notice that in \autoref{exmp_laplposition} if we take the divergence of the curl of $\vecr$ we trivially get
+Also, notice that in \autoref{exmp_laplposition} if we take the divergence of the curl of $\vecr$ we trivially get
 \[
  \Dotprod{\nabla}{(\nabla\times\vecr)} = \Dotprod{\nabla}{\vec0} = 0 .
 \]
@@ -231,6 +232,7 @@ We can now summarize the expressions for the gradient, divergence, curl and Lapl
    \frac{\partial^2 F}{\partial y^2} + \frac{\partial^2 F}{\partial z^2}
  \end{alignat*}}
 
+% todo Tim should this be a key idea at all?
 \setboxwidth{60pt}
 \keyidea{ki_cyl_sys}{Vector Calculus in Cylindrical Coordinates}{For the scalar function $F$ or vector field $\vecf = f_{r}\,\vece_{r} + f_{\theta}\,\vece_{\theta} + f_{z}\,\vece_{z}$,
  \begin{alignat*}{2}
@@ -248,6 +250,7 @@ We can now summarize the expressions for the gradient, divergence, curl and Lapl
    \right) + \frac{1}{r^2}\frac{\partial^2 F}{\partial \theta^2} + \frac{\partial^2 F}{\partial z^2}
  \end{alignat*}}
 
+% todo Tim should this be a key idea at all?
 \setboxwidth{60pt}
 \keyidea{ki_sph_sys}{Vector Calculus in Spherical Coordinates}{For the scalar function $F$ or vector field $\vecf = f_{\rho}\,\vece_{\rho} + f_{\theta}\,\vece_{\theta} + f_{\phi}\,\vece_{\phi}$
  \begin{alignat*}{2}
@@ -256,7 +259,7 @@ We can now summarize the expressions for the gradient, divergence, curl and Lapl
    \frac{1}{\rho}\,\frac{\partial F}{\partial \phi}\,\vece_{\phi}\\
   \text{divergence} &: & \Dotprod{\nabla}{\vecf} &= \frac{1}{\rho^2}\,\frac{\partial}{\partial \rho}(\rho^2
    f_{\rho}) + \frac{1}{\rho \sin \phi}\,\frac{\partial f_{\theta}}{\partial \theta} +
-   \frac{1}{\rho \sin \phi}\,\frac{\partial}{\partial \phi}(\sin \phi \,f_{\theta})\\
+   \frac{1}{\rho \sin \phi}\,\frac{\partial}{\partial \phi}(\sin \phi \,f_{\phi})\\
   \curl &:  & \nabla\times\vecf &=
    \frac{1}{\rho \sin \phi} \left( \frac{\partial}{\partial \phi}(\sin \phi\,f_{\theta}) -
     \frac{\partial f_{\phi}}{\partial \theta} \right) \vece_{\rho} +

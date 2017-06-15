@@ -17,7 +17,7 @@ The directory `figures/matrices` exists because of the bug mentioned at https://
 
 This work is covered with a Creative Commons 4.0 By-NC copyright.
 
-####Incompatabilities with the original APEX Calculus:####
+#### Incompatabilities with the original APEX Calculus:
 The original goal was to allow the style files and the text files for LT and ET to be arbitrarily interchanged.  This wound up not being the case, for various reasons.  Among them:
 * `\mfigure`/`\mtable`/`\mnote`/`\mfigurethree` have been redefined to use marginpar instead of AddToShipOut.  This tends to be more stable as the notes shift around.  The result of this is that the first argument (optional in the case of table and note) specifies the vertical offset from where XeLaTeX would have put the item otherwise. 
 * `\apexchapter[prerequisite_section]{Chapter Name}{label}` is being used instead of the `\chapter{Chapter Name}` command.  This allows consistent commands at the beginning of the chapter, one of which is resetting the `chapter_already_has_exercises` boolean, so that putting the chapter number in the solutions to selected problems section is more reliable.

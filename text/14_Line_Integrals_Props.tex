@@ -105,9 +105,8 @@ So far, the examples we have seen of line integrals (e.g., \autoref{exmp_lineint
 \theorem{thm:lineintpathindep}{Path Independence of Line Integrals}{In a region $R$, the line integral $\int_{C}\vecf\cdot d\vecr$ is independent of the path between any two points in $R$ if and only if $\oint_{C}\vecf\cdot d\vecr = 0$ for every closed curve $C$ which is contained in $R$.}
 
 \begin{proof}
- Suppose that $\oint_{C}\vecf\cdot d\vecr = 0$ for every closed curve $C$  which is contained in $R$. Let $P_1$ and $P_2$ be two distinct points in $R$. Let $C_1$ be a curve in $R$ going from $P_1$ to $P_2$, and let $C_2$ be another curve in $R$ going from $P_1$ to $P_2$, as in Figure 4.2.2.
- 
- \mtable{The idea of proving \autoref{thm:lineintpathindep}.}{fig_path_indep}{\begin{tikzpicture}
+Suppose that
+\mtable{The idea of proving \autoref{thm:lineintpathindep}.}{fig_path_indep}{\begin{tikzpicture}
   \usetikzlibrary{arrows}
   \fill[draw={\colorone},fill={\colorone}] (-2,0) circle (2pt);
   \fill[draw={\colorone},fill={\colorone}] (2,0) circle (2pt);
@@ -118,16 +117,18 @@ So far, the examples we have seen of line integrals (e.g., \autoref{exmp_lineint
   \draw [draw={\colorone},very thick] (0,-1) arc (-90:-180:2 and 1);
   \node [right] at (2,0) {\small $P_2$};
  \end{tikzpicture}}
- 
- Then $C = C_1\cup -C_2$ is a closed curve in $R$ (from $P_1$ to $P_1$), and so $\oint_{C}\vecf\cdot d\vecr = 0$. Thus,
- \begin{align*}
-  0 &= \oint_{C}\vecf\cdot d\vecr\\[6pt]
-   &= \int_{C_1}\vecf\cdot d\vecr + \int_{-C_2}\vecf\cdot d\vecr\\[6pt]
-   &= \int_{C_1}\vecf\cdot d\vecr - \int_{C_2}\vecf\cdot d\vecr,\text{ and so}
- \end{align*}
- $\int_{C_1}\vecf\cdot d\vecr = \int_{C_2}\vecf\cdot d\vecr$. This proves path independence.
+$\oint_{C}\vecf\cdot d\vecr = 0$ for every closed curve $C$  which is contained in $R$. Let $P_1$ and $P_2$ be two distinct points in $R$. Let $C_1$ be a curve in $R$ going from $P_1$ to $P_2$, and let $C_2$ be another curve in $R$ going from $P_1$ to $P_2$, as in \autoref{fig_path_indep}.
 
- Conversely, suppose that the line integral $\int_{C}\vecf\cdot d\vecr$ is independent of the path between any two points in $R$. Let $C$ be a closed curve contained in $R$. Let $P_1$ and $P_2$ be two distinct points on $C$. Let $C_1$ be a part of the curve $C$ that goes from $P_1$ to $P_2$, and let $C_2$ be the remaining part of $C$ that goes from $P_1$ to $P_2$, again as in \autoref{fig_path_indep}. Then by path independence we have
+ 
+Then $C = C_1\cup -C_2$ is a closed curve in $R$ (from $P_1$ to $P_1$), and so $\oint_{C}\vecf\cdot d\vecr = 0$. Thus,
+\begin{align*}
+  0 &= \oint_{C}\vecf\cdot d\vecr\\[6pt]
+  &= \int_{C_1}\vecf\cdot d\vecr + \int_{-C_2}\vecf\cdot d\vecr\\[6pt]
+  &= \int_{C_1}\vecf\cdot d\vecr - \int_{C_2}\vecf\cdot d\vecr,\text{ and so}
+\end{align*}
+$\int_{C_1}\vecf\cdot d\vecr = \int_{C_2}\vecf\cdot d\vecr$. This proves path independence.
+
+Conversely, suppose that the line integral $\int_{C}\vecf\cdot d\vecr$ is independent of the path between any two points in $R$. Let $C$ be a closed curve contained in $R$. Let $P_1$ and $P_2$ be two distinct points on $C$. Let $C_1$ be a part of the curve $C$ that goes from $P_1$ to $P_2$, and let $C_2$ be the remaining part of $C$ that goes from $P_1$ to $P_2$, again as in \autoref{fig_path_indep}. Then by path independence we have
  \begin{align*}
   \int_{C_1}\vecf\cdot d\vecr &= \int_{C_2}\vecf\cdot d\vecr\\[6pt]
   \int_{C_1}\vecf\cdot d\vecr - \int_{C_2}\vecf\cdot d\vecr &= 0\\[6pt]
@@ -150,18 +151,18 @@ Clearly, the above theorem does not give a practical way to determine path indep
 %The proof is virtually identical to the proof of \autoref{thm:dirderiv} from Section 2.4 (which uses the Mean Value Theorem), so we omit it. (See \cite[\S\,6.5]{tm}.)
 %We will now use this Chain Rule to
 We will now prove the following \emph{sufficient} condition for path independence of line integrals:
+% should we introduce ``simply connected''?
 
-\theorem{thm:lineintsuffpath}{Fundamental Theorem of Line Integrals}{Let $\vecf(x,y) = P(x,y)\,\veci + Q(x,y)\,\vecj$ be a vector field in some region $R$, with $P$ and $Q$ continuously differentiable functions on $R$. Let $C$ be a smooth curve in $R$ parametrized by $x=x(t)$, $y=y(t)$, $a \le t \le b$. Suppose that there is a real-valued function $F(x,y)$ such that $\nabla F = \vecf$ on $R$. Then
- \[
-  \int_{C}\vecf\cdot d\vecr = F(B) - F(A) ,
- \]
- where $A=(x(a),y(a))$ and $B=(x(b),y(b))$ are the endpoints of $C$. Thus, the line integral is independent of the path between its endpoints, since it depends only on the values of $F$ at those endpoints.}
+% todo Where does Theorem 135 require simply connected?
+\theorem{thm:lineintsuffpath}{Fundamental Theorem of Line Integrals}{Let $\vecf(x,y) = P(x,y)\,\veci + Q(x,y)\,\vecj$ be a vector field in some region $R$ without holes, with $P$ and $Q$ continuously differentiable functions on $R$. Let $C$ be a smooth curve in $R$ parametrized by $x=x(t)$, $y=y(t)$, $a \le t \le b$. Suppose that there is a real-valued function $F(x,y)$ such that $\nabla F = \vecf$ on $R$. Then
+\[\int_{C}\vecf\cdot d\vecr = F(B) - F(A) ,\]
+where $A=(x(a),y(a))$ and $B=(x(b),y(b))$ are the endpoints of $C$. Thus, the line integral is independent of the path between its endpoints, since it depends only on the values of $F$ at those endpoints.}
 
 \begin{proof}
  By definition of $\int_{C}\vecf\cdot d\vecr$, we have
  \begin{align*}
   \int_{C}\vecf\cdot d\vecr
-  &= \int_a^b \left( P(x(t),y(t))\,x\,'(t) + Q(x(t),y(t))\,y\,'(t) \right)\,dt\\
+  &= \int_a^b \Bigl( P(x(t),y(t))\,x\,'(t) + Q(x(t),y(t))\,y\,'(t) \Bigr)\,dt\\
   &= \int_a^b \left( \frac{\partial F}{\partial x}\,\frac{dx}{dt} + \frac{\partial F}{\partial y}\,\frac{dy}{dt}
    \right)\,dt \text{ (since $\nabla F = \vecf \Rightarrow \frac{\partial F}{\partial x} = P$ and
   $\frac{\partial F}{\partial y} = Q$)}\\
@@ -191,7 +192,7 @@ Note that we can also verify that the value of the line integral of \vecf\ along
 
 A consequence of \autoref{thm:lineintsuffpath} in the special case where $C$ is a closed curve, so that the endpoints $A$ and $B$ are the same point, is the following:
 
-\theorem{cor:lineintsuffpath}{Closed Line Integrals of Conservative Fields}{If a vector field $\vecf$ has a potential in a region $R$, then $\ds\oint_{C}\vecf\cdot d\vecr = 0$ for any closed curve $C$ in $R$ (i.e., $\ds\oint_{C}\nabla F\cdot d\vecr = 0$ for any real-valued function $F(x,y)$).}
+\theorem{cor:lineintsuffpath}{Closed Line Integrals of Conservative Fields}{If a vector field $\vecf$ has a potential in a region $R$ without holes, then $\ds\oint_{C}\vecf\cdot d\vecr = 0$ for any closed curve $C$ in $R$ (i.e., $\ds\oint_{C}\nabla F\cdot d\vecr = 0$ for any real-valued function $F(x,y)$).}
 
 \example{ex_use_cor}{Calculating a Closed Line Integral of a Conservative Field}{Evaluate $\ds\oint_C x\,dx + y\,dy$ for $C:$ $x=2\cos t$, $y=3\sin t$, $0\le t\le 2\pi$.}{The vector field $\vecf(x,y) = x\,\veci + y\,\vecj$ has a potential $F(x,y)$:
  \begin{align*}

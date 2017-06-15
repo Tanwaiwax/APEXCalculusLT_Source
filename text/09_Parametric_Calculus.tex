@@ -243,7 +243,6 @@ Unfortunately, the integrand does not have an antiderivative expressible by elem
 
 Related to the formula for finding arc length is the formula for finding surface area. We can adapt the formula found in \autoref{idea:surface_area} from \autoref{sec:arc_length} in a similar way as done to produce the formula for arc length done before.
 
-%\setboxwidth{100pt}
 \keyidea{idea:surface_area_parametric}{Surface Area of a Solid of Revolution}
 {Consider the graph of the parametric equations $x=f(t)$ and $y=g(t)$, where $\fp$ and $g\primeskip'$ are continuous on an open interval $I$ containing $t_1$ and $t_2$ on which the graph does not cross itself.\index{surface area!solid of revolution}\index{integration!surface area}\index{parametric equations!surface area}
 \begin{enumerate}
@@ -254,20 +253,23 @@ Related to the formula for finding arc length is the formula for finding surface
 	$$\text{Surface Area} = 2\pi\int_{t_1}^{t_2} f(t)\sqrt{[\fp(t)]^2+[g\primeskip'(t)]^2}\ dt.$$
 	\end{enumerate}}
 
+\mtable{Rotating a teardrop shape about the $x$-axis in \autoref{ex_parcalc8}.}{fig:parcalc8}{
+\myincludeasythree{width=\marginparwidth,%deactivate=pageinvisible,
+3Droll=0,
+3Dortho=0.004,
+3Dc2c=0.7469545602798462 0.6216799020767212 0.23573943972587585,
+3Dcoo=0 0.000 0,
+3Droo=120.71813597868993}{width=\marginparwidth}{figures/figparcalc8_3D}
+%{scale=1.5,trim=5mm 5mm 5mm 5mm,clip}{0in}{figures/figparcalc8}
+}
+
 \example{ex_parcalc8}{Surface Area of a Solid of Revolution}{Consider the teardrop shape formed by the parametric equations $x=t(t^2-1)$, $y=t^2-1$ as seen in \autoref{ex_parcalc7}. Find the surface area if this shape is rotated about the $x$-axis, as shown in \autoref{fig:parcalc8}.}
 {The teardrop shape is formed between $t=-1$ and $t=1$. Using \autoref{idea:surface_area_parametric}, we see we need for $g(t)\geq 0$ on $[-1,1]$, and this is not the case. To fix this, we simplify replace $g(t)$ with $-g(t)$, which flips the whole graph about the $x$-axis (and does not change the surface area of the resulting solid). The surface area is: 
 \begin{align*}
 \text{Area}\ S &= 2\pi\int_{-1}^1 (1-t^2)\sqrt{(3t^2-1)^2+(2t)^2}\ dt\\
 		&=	2\pi\int_{-1}^1 (1-t^2)\sqrt{9t^4-2t^2+1} \ dt.
 		\end{align*}
-Once again we arrive at an integral that we cannot compute in terms of elementary functions. Using Simpson's Rule with $n=20$, we find the area to be $S=9.44$. Using larger values of $n$ shows this is accurate to 2 places after the decimal.
-\mfigurethree{width=150pt,3Dmenu,activate=onclick,deactivate=pageinvisible,
-3Droll=0,
-3Dortho=0.004,
-3Dc2c=0.7469545602798462 0.6216799020767212 0.23573943972587585,
-3Dcoo=0 0.000 0,
-3Droo=120.71813597868993,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.5,trim=5mm 5mm 5mm 5mm,clip}{0in}{Rotating a teardrop shape about the $x$-axis in \autoref{ex_parcalc8}.}{fig:parcalc8}{figures/figparcalc8}}
+Once again we arrive at an integral that we cannot compute in terms of elementary functions. Using Simpson's Rule with $n=20$, we find the area to be $S=9.44$. Using larger values of $n$ shows this is accurate to 2 places after the decimal.}
 
 After defining a new way of creating curves in the plane, in this section we have applied calculus techniques to the parametric equation defining these curves to study their properties. In the next section, we define another way of forming curves in the plane. To do so, we create a new coordinate system, called \emph{polar coordinates}, that identifies points in the plane in a manner different than from measuring distances from the $y$- and $x$- axes.
 

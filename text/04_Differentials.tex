@@ -6,25 +6,46 @@ Recall that the derivative of a function $f$ can be used to find the slopes of l
 \[y = \fp(c)(x-c)+f(c).\]
 The tangent line can be used to find good approximations of $f(x)$ for values of $x$ near $c$. (This tangent line is also called the \emph{linearization} of $f$ at $c$.)\index{linearization}
 
-For instance, we can approximate $\sin 1.1$ using the tangent line to the graph of $f(x)=\sin x$ at $x=\pi/3 \approx 1.05.$ Recall that $\sin (\pi/3) = \sqrt{3}/2 \approx 0.866$, and $\cos (\pi/3) = 1/2$. Thus the tangent line to $f(x) = \sin x$ at $x=\pi/3$ is: $$ \ell(x) = \frac12(x-\pi/3)+0.866.$$
+For instance, we can approximate $\sin 1.1$ using the tangent line to the graph of $f(x)=\sin x$ at $x=\pi/3 \approx 1.05.$ Recall that $\sin (\pi/3) = \sqrt{3}/2 \approx 0.866$, and $\cos (\pi/3) = 1/2$. Thus the tangent line to $f(x) = \sin x$ at $x=\pi/3$ is:
+\[\ell(x) = \frac12(x-\pi/3)+0.866.\]
 
 
 
-\ifthenelse{\boolean{longpage}}% if longpage, draw in a row
-{\centering
- \noindent\begin{minipage}{.45\textwidth}
-  \centering
-  \noindent\myincludegraphics{figures/figdiffal1a} \\ (a)
- \end{minipage}\quad
- \begin{minipage}{.45\textwidth}
-  \centering
-  \noindent\myincludegraphics{figures/figdiffal1} \\ (b)
- \end{minipage}
- \caption{Graphing $f(x) = \sin x$ and its tangent line at $x=\pi/3$ in order to estimate $\sin 1.1$.}\label{fig:diffal1}}
-{\mtable{Graphing $f(x) = \sin x$ and its tangent line at $x=\pi/3$ in order to estimate $\sin 1.1$.}{fig:diffal1}{%
- \myincludegraphics{figures/figdiffal1a} \\ (a) \\
- \myincludegraphics{figures/figdiffal1} \\ (b)}
-}
+\mtable{Graphing $f(x) = \sin x$ and its tangent line at $x=\pi/3$ in order to estimate $\sin 1.1$.}{fig:diffal1}{%
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,xtick=\empty,extra x ticks={1.047},
+extra x tick labels={$\frac{\pi}{3}$},extra y ticks={0.866},
+extra y tick labels={$\frac{\sqrt{3}}{2}$},ymin=-.1,ymax=1.1,xmin=-.1,xmax=2,]
+\addplot [thick, draw={\colorone},smooth,samples=50] {sin(deg(x))};
+\addplot [draw={\colortwo},thick] {.5*(x-pi/3)+0.866025};
+\filldraw (axis cs:1.047,0.866) circle (1pt);
+\draw (axis cs:1.04,.86) rectangle (axis cs:1.12,.9);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+ \\ (a) \\
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,xtick=\empty,
+extra x ticks={1.047,1.1},extra x tick labels={$\frac{\pi}{3}$,$1.1$},
+ytick={0.86,0.87,0.88,0.89},extra y ticks={0.866},
+extra y tick labels={$\frac{\sqrt{3}}{2}$},ymin=.86,ymax=.9,xmin=1.04,xmax=1.12,]
+\addplot[draw={\colorone},thick,smooth,domain=1.04:1.12]{sin(deg(x))};
+\addplot [draw={\colortwo},thick] {.5*(x-pi/3)+0.866025};
+\filldraw (axis cs:1.047,0.866) circle (1pt);
+\filldraw (axis cs:1.1,.8925) circle (.75pt);
+\filldraw (axis cs:1.1,.8912) circle (.75pt);
+\draw (axis cs:1.07,.8925) node (a) {\tiny $\ell(1.1) \approx \sin 1.1$} ;
+\draw [->,>=latex] (a) -- (axis cs:1.097,.8925);
+\draw(axis cs:1.1,.88) node (b) {\tiny $\sin 1.1$};
+\draw [->,>=latex] (b) -- (axis cs:1.1,.889);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+ \\ (b)}
 
 In \autoref{fig:diffal1}(a), we see a graph of $f(x) = \sin x$ graphed along with its tangent line at $x=\pi/3$. The small rectangle shows the region that is displayed in \autoref{fig:diffal1}(b). In this figure, we see how we are approximating $\sin 1.1$ with the tangent line, evaluated at $1.1$. Together, the two figures show how close these values are.
 
@@ -36,10 +57,11 @@ Using this line to approximate $\sin 1.1$, we have:
 (We leave it to the reader to see how good of an approximation this is.)\\
 
 We now generalize this concept. Given $f(x)$ and an $x$--value $c$,  the tangent line is $\ell(x) = \fp(c)(x-c)+f(c)$. Clearly, $f(c) = \ell(c)$. Let $\dx$ be a small number, representing a small change in $x$ value. We assert that:
-$$f(c+\dx) \approx \ell(c+\dx),$$ since the tangent line to a function approximates well the values of that function near $x=c$. 
+\[f(c+\dx) \approx \ell(c+\dx),\]
+since the tangent line to a function approximates well the values of that function near $x=c$. 
 
 As the $x$ value changes from $c$ to $c+\dx$, the $y$ value of $f$ changes from $f(c)$ to $f(c+\dx)$. We call this change of $y$ value \dy. That is:
-$$\dy = f(c+\dx)-f(c).$$
+\[\dy = f(c+\dx)-f(c).\]
 Replacing $f(c+\dx)$ with its tangent line approximation, we have 
 \begin{align} \dy &\approx \ell(c+\dx) - f(c) \notag\\
 								&= \fp(c)\big((c+\dx)-c\big)+f(c) - f(c)\notag \\
@@ -51,7 +73,8 @@ This final equation is important; we'll come back to it in \autoref{idea:differe
 We introduce two new variables, $dx$ and $dy$ in the context of a formal definition. %We defined $dx = \dx$; that is, it is a small change in $x$. We define
 
 \definition{def:differential}{Differentials of $x$ and $y$.}
-{Let $y=f(x)$ be differentiable. The \textbf{differential of $x$}, denoted $dx$, is any nonzero real number (usually taken to be a small number).\index{differential}\index{derivative!differential} The \textbf{differential of $y$}, denoted $dy$, is $$dy = \fp(x)dx.$$
+{Let $y=f(x)$ be differentiable. The \textbf{differential of $x$}, denoted $dx$, is any nonzero real number (usually taken to be a small number).\index{differential}\index{derivative!differential} The \textbf{differential of $y$}, denoted $dy$, is
+\[dy = \fp(x)dx.\]
 }
 
 We can solve for $\fp(x)$ in the above equation: $\fp(x) = dy/dx$. This states that the derivative of $f$ with respect to $x$ is the differential of $y$ divided by the differential of $x$; this is \textbf{not} the alternate notation for the derivative, $\frac{dy}{dx}$. This latter notation was chosen because of the fraction--like qualities of the derivative, but again, it is one symbol and not a fraction.
@@ -80,7 +103,8 @@ It is helpful to organize our new concepts and notations in one place and an acc
 \begin{enumerate}
 	\item $\dx$ represents a small, nonzero change in $x$ value.
 	\item	$dx$ represents a small, nonzero change in $x$ value (i.e., $\dx = dx$).
-	\item	$\dy$ is the change in $y$ value as $x$ changes by $\dx$; hence $$\dy = f(x+\dx)-f(x).$$
+	\item	$\dy$ is the change in $y$ value as $x$ changes by $\dx$; hence
+	\[\dy = f(x+\dx)-f(x).\]
 	\item		$dy = \fp(x)dx$ which, by \autoeqref{eq:differential}, is an \textit{approximation} of the change in $y$ value as $x$ changes by $\dx$; $dy \approx \dy$.
 \end{enumerate}
 }
@@ -116,10 +140,12 @@ We use differentials once more to approximate the value of a function. Even thou
 {We expect $\sqrt{4.5} \approx 2$, yet we can do better. Let $f(x) = \sqrt{x}$, and let $c=4$. Thus $f(4) = 2$. We can compute $\fp(x) = 1/(2\sqrt{x})$, so $\fp(4) = 1/4$. 
 
 We approximate the difference between $f(4.5)$ and $f(4)$ using differentials, with $dx = 0.5$:
-$$f(4.5)-f(4) = \dy \approx dy = \fp(4)\cdot dx = 1/4 \cdot 1/2 = 1/8 = 0.125.$$
+\[f(4.5)-f(4) = \dy \approx dy = \fp(4)\cdot dx = 1/4 \cdot 1/2 = 1/8 = 0.125.\]
 The approximate change in $f$ from $x=4$ to $x=4.5$ is $0.125$, so we approximate $\sqrt{4.5} \approx 2.125.$}
 
-Differentials are important when we discuss \textit{integration}. When we study that topic, we will use notation such as $$\int f(x)\ dx$$ quite often. While we don't discuss here what all of that notation means, note the existence of the differential $dx$. Proper handling of \textit{integrals} comes with proper handling of differentials. 
+Differentials are important when we discuss \textit{integration}. When we study that topic, we will use notation such as
+\[\int f(x)\ dx\]
+quite often. While we don't discuss here what all of that notation means, note the existence of the differential $dx$. Proper handling of \textit{integrals} comes with proper handling of differentials. 
 
 In light of that, we practice finding differentials in general.
 
@@ -130,10 +156,12 @@ In light of that, we practice finding differentials in general.
 \text{3.}\quad y = \sqrt{x^2+3x-1}
 \]}
 {\begin{enumerate}
-	\item	$y = \sin x$:	\quad As $f(x) = \sin x$, $\fp(x) = \cos x$. Thus $$dy = \cos (x)dx.$$
+	\item	$y = \sin x$:	\quad As $f(x) = \sin x$, $\fp(x) = \cos x$. Thus
+	\[dy = \cos (x)dx.\]
 	\item	$y = e^x(x^2+2)$:\quad Let $f(x) = e^x(x^2+2)$. We need $\fp(x)$, requiring the Product Rule. 
 
-We have $\fp(x) = e^x(x^2+2) + 2xe^x$, so $$dy = \big(e^x(x^2+2) + 2xe^x\big)dx.$$
+We have $\fp(x) = e^x(x^2+2) + 2xe^x$, so
+\[dy = \big(e^x(x^2+2) + 2xe^x\big)dx.\]
 
 	\item	$y = \sqrt{x^2+3x-1}$:\quad	Let $f(x) = \sqrt{x^2+3x-1}$; we need $\fp(x)$, requiring the Chain Rule.
 
@@ -145,10 +173,14 @@ Finding the differential $dy$ of $y=f(x)$ is really no harder than finding the d
 
 We have seen a practical use of differentials as they offer a good method of making certain approximations. Another use is \textit{error propagation.} Suppose a length is measured to be $x$, although the actual value is $x+\dx$ (where we hope \dx\ is small). This measurement of $x$ may be used to compute some other value; we can think of this as $f(x)$ for some function $f$. As the true length is $x+\dx$, one really should have computed $f(x+\dx)$. The difference between $f(x)$ and $f(x+\dx)$ is the propagated error. 
 
-How close are $f(x)$ and $f(x+\dx)$? This is a difference in ``y'' values; $$f(x+\dx)-f(x) = \dy \approx dy.$$ We can approximate the propagated error using differentials.\\
+How close are $f(x)$ and $f(x+\dx)$? This is a difference in ``y'' values;
+\[f(x+\dx)-f(x) = \dy \approx dy.\]
+We can approximate the propagated error using differentials.
 
 \example{ex_diffal4}{Using differentials to approximate propagated error}{A steel ball bearing is to be manufactured with a diameter of 2cm. The manufacturing process has a tolerance of $\pm 0.1$mm in the diameter. Given that the density of steel is about 7.85g/cm$^3$, estimate the propagated error in the mass of the ball bearing.}
-{The mass of a ball bearing is found using the equation ``mass = volume $\times$ density.'' In this situation the mass function is a product of the radius of the ball bearing, hence it is $m = 7.85\frac43\pi r^3$. The differential of the mass is $$dm = 31.4\pi r^2 dr.$$ The radius is to be 1cm; the manufacturing tolerance in the radius is $\pm 0.05$mm, or $\pm 0.005$cm. The propagated error is approximately:
+{The mass of a ball bearing is found using the equation ``mass = volume $\times$ density.'' In this situation the mass function is a product of the radius of the ball bearing, hence it is $m = 7.85\frac43\pi r^3$. The differential of the mass is
+\[dm = 31.4\pi r^2 dr.\]
+The radius is to be 1cm; the manufacturing tolerance in the radius is $\pm 0.05$mm, or $\pm 0.005$cm. The propagated error is approximately:
 \begin{align*}
 \Delta m & \approx dm \\
 				&= 31.4\pi (1)^2 (\pm 0.005) \\

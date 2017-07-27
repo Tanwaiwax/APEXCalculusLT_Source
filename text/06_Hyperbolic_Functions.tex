@@ -70,17 +70,69 @@ The hyperbolic functions are graphed in \autoref{fig:hyperbolic}. In the graphs 
 }
 
 \begin{figure}[!ht]
-\begin{center}
+\centering
 \addtolength{\tabcolsep}{6pt}
 \begin{tabular}{cc}
-\myincludegraphics{figures/fighf_cosh} &
-\myincludegraphics{figures/fighf_sinh} \\[20pt]
-\myincludegraphics{figures/fighf_tanh_coth} &
-\myincludegraphics{figures/fighf_sech_csch}
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,ymin=-10.9,ymax=10.9,
+xmin=-3.5,xmax=3.5,scaled ticks=false]
+\addplot [draw={\colorone},thick,smooth,domain=-3:3] {cosh(x)};
+\draw (axis cs:2,-6) node {\scriptsize $f(x)=\cosh x$};
+\addplot [draw={\colortwo},smooth,thick,dashed,domain=-3:3] {exp(x)/2};
+\addplot [draw={\colortwo},smooth,thick,dashed,domain=-3:3] {exp(-x)/2};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,ymin=-10.9,ymax=10.9,
+xmin=-3.5,xmax=3.5,scaled ticks=false]
+\addplot [draw={\colorone},thick,smooth,domain=-3:3] {sinh(x)};
+\draw (axis cs:2,-6) node {\scriptsize $f(x)=\sinh x$};
+\addplot [draw={\colortwo},smooth,thick,dashed,domain=-3:3] {exp(x)/2};
+\addplot [draw={\colortwo},smooth,thick,dashed,domain=-3:3] {exp(-x)/2};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\[20pt]
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,ytick={-2,2},
+ymin=-3.5,ymax=3.5,xmin=-3.5,xmax=3.5,scaled ticks=false]
+\addplot [draw={\colorone},thick,smooth,domain=-3:3] {tanh(x)};
+\draw (axis cs:1.7,-1.5) node {\scriptsize $f(x)=\tanh x$};
+\draw (axis cs:2.2,2) node {\scriptsize $f(x)=\coth x$};
+\draw [->,>=stealth] (axis cs:1,-1) -- (axis cs:.6,.45);
+\addplot [draw={\colortwo},smooth,thick,domain=-3:-.1] {1/tanh(x)};
+\addplot [draw={\colortwo},smooth,thick,domain=.1:3] {1/tanh(x)};
+\draw [loosely dashed] (axis cs:-3,1) -- (axis cs:3,1);
+\draw [loosely dashed] (axis cs:-3,-1) -- (axis cs:3,-1);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,ytick={-3,-2,-1,1,2,3},
+ymin=-3.5,ymax=3.5,xmin=-3.5,xmax=3.5,scaled ticks=false]
+\addplot [draw={\colorone},thick,smooth,domain=-3:3] {1/cosh(x)};
+\draw (axis cs:-2,1.5) node {\scriptsize $f(x)=\sech x$};
+\draw (axis cs:2.2,2) node {\scriptsize $f(x)=\csch x$};
+\addplot [draw={\colortwo},smooth,thick,domain=-3:-.1] {1/sinh(x)};
+\addplot [draw={\colortwo},smooth,thick,domain=.1:3] {1/sinh(x)};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
 \end{tabular}
 \captionsetup{type=figure}
-\caption{Graphs of the hyperbolic functions.}\label{fig:hyperbolic}
-\end{center}
+\caption{Graphs of the hyperbolic functions.}
+\label{fig:hyperbolic}
 \end{figure}
 \bigskip
 
@@ -227,12 +279,12 @@ Using another Basic Identity, we can see that $4\cosh x\sinh x = 2\sinh 2x$. We 
 
 \item	  We employ substitution, with $u = 7t-3$ and $du = 7dt$. Applying
 \autoref{idea:hyperbolic_identities} we have:
-$$ \int \sech^2 (7t-3)\ dt = \frac17\tanh (7t-3) + C.$$
+\[\int \sech^2 (7t-3)\ dt = \frac17\tanh (7t-3) + C.\]
 
-\item		$$\int_0^{\ln 2} \cosh x\ dx = \sinh x\Big|_0^{\ln 2} = \sinh (\ln 2) - \sinh 0 = \sinh(\ln 2).$$
+\item		\[\int_0^{\ln 2} \cosh x\ dx = \sinh x\Big|_0^{\ln 2} = \sinh (\ln 2) - \sinh 0 = \sinh(\ln 2).\]
 
 We can simplify this last expression as $\sinh x$ is based on exponentials:
-$$\sinh(\ln 2) = \frac{e^{\ln 2}-e^{-\ln 2}}2 = \frac{2-1/2}{2} = \frac34.\eoehere$$
+\[\sinh(\ln 2) = \frac{e^{\ln 2}-e^{-\ln 2}}2 = \frac{2-1/2}{2} = \frac34.\eoehere\]
 \end{enumerate}}
 
 \subsection*{Inverse Hyperbolic Functions}
@@ -268,10 +320,68 @@ $\coth x$ & $(-\infty,0) \cup (0,\infty)$ & $(-\infty,-1) \cup (1,\infty)$ &
 \flushinner{%
 \addtolength{\tabcolsep}{6pt}
 \begin{tabular}{cc}
-\myincludegraphics[scale=0.95]{figures/fighfarccosh} &
-\myincludegraphics[scale=0.95]{figures/fighfarcsinh}\\[15pt]
-\myincludegraphics[scale=0.95]{figures/fighfarctanharccoth} &
-\myincludegraphics[scale=0.95]{figures/fighfarcsecharccsch}
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,axis equal,
+ymin=-.9,ymax=10.9,xmin=-.9,xmax=10.9,scaled ticks=false]
+\addplot [draw={\colorone},thick,smooth,domain=0:3] {cosh(x)};
+\draw (axis cs:8,4) node {\scriptsize $y=\cosh^{-1} x$};
+\draw (axis cs:5.6,10) node {\scriptsize $y=\cosh x$};
+\addplot [draw={\colortwo},smooth,thick,domain=0:3] ({cosh(x)},x);
+\addplot [dashed,domain=-.5:10] {x};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,axis equal,
+ymin=-10.9,ymax=10.9,xmin=-10.9,xmax=10.9,scaled ticks=false]
+\addplot [draw={\colorone},thick,smooth,domain=-3:3] {sinh(x)};
+\draw (axis cs:-6,7) node {\scriptsize $y=\sinh x$};
+\draw (axis cs:6,-5) node {\scriptsize $y=\sinh^{-1} x$};
+\draw[->,>=stealth] (axis cs:-1,7) -- (axis cs:2,7);
+\draw[->,>=stealth] (axis cs:7,-3) -- (axis cs:7,2);
+\addplot [draw={\colortwo},smooth,thick,domain=-3:3] ({sinh(x)},x);
+\addplot [dashed,domain=-10:10] {x};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\[15pt]
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={-2,2},
+ytick={-2,2},ymin=-3.2,ymax=3.2,xmin=-3.2,xmax=3.2,scaled ticks=false,axis equal]
+\addplot [draw={\colortwo},thick,smooth,domain=.348:3] ({1/tanh(x)},x);
+\addplot [draw={\colortwo},thick,smooth,domain=-3:-.348] ({1/tanh(x)},x);
+\draw (axis cs:2.2,1.5) node {\tiny $y=\coth^{-1} x$};
+\draw (axis cs:2.2,-1.5) node {\tiny $y=\tanh^{-1} x$};
+\draw [->,>=stealth] (axis cs:1.8,-1.3) -- (axis cs:.2,-.2);
+\draw [loosely dashed] (axis cs:-1,-3)--(axis cs:-1,3);
+\draw [loosely dashed] (axis cs:1,-3)--(axis cs:1,3);
+\addplot [draw={\colorone},smooth,thick,domain=-3.8:3.8] ({tanh(x)},x);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,
+xtick={-3,-2,-1,1,2,3},ytick={-3,-2,-1,1,2,3},
+ymin=-3.5,ymax=3.5,xmin=-3.5,xmax=3.5,scaled ticks=false,axis equal]
+\draw (axis cs:1.5,-1.5) node {\tiny $y=\sech^{-1} x$};
+\draw (axis cs:-2.2,-1.6) node {\tiny $y=\csch^{-1} x$};
+\draw [->,>=latex] (axis cs:1,-1.2) -- (axis cs:1,-.2);
+\addplot [draw={\colortwo},smooth,thick,domain=-3:-.3275] ({1/sinh(x)},x);
+\addplot [draw={\colortwo},smooth,thick,domain=.3275:3] ({1/sinh(x)},x);
+\addplot [draw={\colorone},thick,smooth,domain=0:3] ({1/cosh(x)},x);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
 \end{tabular}}
 \caption{Graphs of the hyperbolic functions and their inverses.}\label{fig:hfinverse1}
 \end{lxfigure}
@@ -378,13 +488,13 @@ We practice using the derivative and integral formulas in the following example.
 }
 {\begin{enumerate}
 \item	Applying \autoref{idea:hyperbolic_inverse_derivatives} with the Chain Rule gives:
-		$$\frac{d}{dx}\left[\cosh^{-1}\left(\frac{3x-2}5\right)\right] = \frac{1}{\sqrt{\left(\frac{3x-2}5\right)^2-1}}\cdot\frac35.$$
+		\[\frac{d}{dx}\left[\cosh^{-1}\left(\frac{3x-2}5\right)\right] = \frac{1}{\sqrt{\left(\frac{3x-2}5\right)^2-1}}\cdot\frac35.\]
 
 \item		Multiplying the numerator and denominator by $(-1)$ gives: $\ds \int \frac{1}{x^2-1}\ dx = \int \frac{-1}{1-x^2}\ dx$. The second integral can be solved with a direct application of item \#3 from \autoref{idea:hyperbolic_inverse_integrals}, with $a=1$. Thus
 \begin{align}
 \int \frac{1}{x^2-1}\ dx &= -\int \frac{1}{1-x^2}\ dx \notag \\
-		&= \left\{\begin{array}{ccc} -\tanh^{-1}\left(x\right)+C & & x^2<1 \\ \\
--\coth^{-1}\left(x\right)+C & & 1<x^2 \end{array}\right. \notag\\
+		&= \begin{cases}-\tanh^{-1}\left(x\right)+C & x^2<1 \\
+-\coth^{-1}\left(x\right)+C & 1<x^2 \end{cases} \notag\\
      &=-\frac12\ln\abs{\frac{x+1}{x-1}}+C\notag\\
      &=\frac12\ln\abs{\frac{x-1}{x+1}}+C.\label{eq:hf3}
      \end{align}
@@ -392,14 +502,14 @@ We practice using the derivative and integral formulas in the following example.
 %We should note that this exact problem was solved at the beginning of \autoref{sec:partial_fraction}. In that example the answer was given as $\frac12\ln\abs{x-1}-\frac12\ln\abs{x+1}+C.$ Note that this is equivalent to the answer given in \autoeqref{eq:hf3}, as $\ln(a/b) = \ln a - \ln b$.
 
 %The key to linking the two seemingly different answers together is \autoref{fig:hfinverse5}, where the logarithmic definitions of the inverse hyperbolic functions are given. Note that the definitions of $\tanh^{-1}x$ and $\coth^{-1}x$ are very similar; the conditions placed on $\abs x$ ensure that the argument of $\ln$ is always positive. Thus one could say 
-%$$\frac12\ln\abs{\frac{x+1}{x-1}} = \left\{\begin{array}{ccc} \tanh^{-1}x+C & & \abs x<1 \\ \\
-%\coth^{-1}x+C & & \abs x>1 \end{array}\right..$$
+%\[\frac12\ln\abs{\frac{x+1}{x-1}} = \begin{cases}\tanh^{-1}x+C & \abs x<1 \\ \\
+%\coth^{-1}x+C & \abs x>1 \end{cases}.\]
 %
 %We reconcile the two answers by returning to \autoeqref{eq:hf3} and continuing:
 %\begin{align*}
 %\int \frac{1}{x^2-1}\ dx &= \int \frac{-1}{1-x^2}\ dx \\
-%			&= \left\{\begin{array}{ccc} -\frac1a\tanh^{-1}\left(\frac xa\right)+C & & x^2<a^2 \\ \\
-%-\frac1a\coth^{-1}\left(\frac xa\right)+C & & a^2<x^2 \end{array}\right. \\
+%			&= \begin{cases}-\frac1a\tanh^{-1}\left(\frac xa\right)+C & x^2<a^2 \\ \\
+%-\frac1a\coth^{-1}\left(\frac xa\right)+C & a^2<x^2 \end{cases}\\
 %			&= -\frac12\ln\abs{\frac{x+1}{x-1}}+C \\
 %			&= -\frac12\ln\abs{x+1} + \frac12\ln\abs{x-1} +C,
 %\end{align*}

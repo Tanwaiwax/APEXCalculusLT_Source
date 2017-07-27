@@ -1,53 +1,113 @@
-%\draw[draw={\coloronefill},fill={\coloronefill}]plot[smooth,domain=0:6.28]
- %(axis cs:\x,{.5*\x+3}) |-(axis cs:0,2);
 
-
+\exercise{$x=t^3-2t^2$,\quad $y=t^2$,\quad $-2\leq t \leq 3$}{\begin{minipage}{\linewidth}
 \begin{tikzpicture}
-\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
-axis y line=middle,axis x line=middle,name=myplot,axis on top,
-xtick=\empty,extra x ticks={.785,1.57,2.36,3.14,3.92},
-extra x tick labels={$\pi/4$,$\pi/2$,$3\pi/4$,$\pi$,$5\pi/4$},
-ymin=-1.1,ymax=1.1,xmin=-.1,xmax=4.1]
-
-\draw[draw={\coloronefill},fill={\coloronefill}]plot[smooth,domain=.785:2.356]
- (axis cs:\x,{cos(deg(\x))}) |- (axis cs:2.356,.707);
-\draw[draw={\coloronefill},fill={\coloronefill}]plot[smooth,domain=2.356:3.92]
- (axis cs:\x,{cos(deg(\x))}) |- (axis cs:2.356,-.707);
-\draw[draw={\coloronefill},fill={\coloronefill}]plot[smooth,domain=.785:2.356]
- (axis cs:\x,{sin(deg(\x))}) |- (axis cs:2.356,.707);
-\draw[draw={\coloronefill},fill={\coloronefill}]plot[smooth,domain=2.356:3.92]
- (axis cs:\x,{sin(deg(\x))}) |- (axis cs:2.356,-.707);
-%\addplot [draw={\coloronefill},stack plots=y,samples=40,domain=.785:3.92] {cos(deg(x))};
-%\addplot [draw={\coloronefill},thick,fill=\coloronefill,area style,stack plots=y,samples=40,domain=.785:3.92] {sin(deg(x))-(cos(deg(x)))} \closedcycle;
-
-\addplot [smooth,thick, draw={\colorone},domain=-.1:4.1,samples=40] {sin(deg(x))} node [shift={(-25pt,70pt)} ,black] {\scriptsize $y=\sin x$};
-
-\addplot [smooth,thick, draw={\colorone},domain=-.1:4.1,samples=40] {cos(deg(x))} node [shift={(-75pt,0pt)} ,black] {\scriptsize $y=\cos x$};
-
-
+\begin{axis}[width=1.167\marginparwidth,tick label style={font=\scriptsize},axis y line=middle,axis x line=middle,name=myplot,
+ymin=0.1,ymax=9,xmin=-11,xmax=11]
+\addplot [thick, smooth,domain=-2:1,samples=30,->] ({x^3-2*x^2},{x^2});
+\addplot [thick, smooth,domain=1:3,samples=30] ({x^3-2*x^2},{x^2});
 \end{axis}
-
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}
+\end{minipage}}
 
+\exercise{$x=1/t$,\quad $y=\sin t$,\quad $0< t \leq 10$}{\begin{minipage}{\linewidth}
 \begin{tikzpicture}
-\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
-axis y line=middle,axis x line=middle,name=myplot,axis on top,
-xtick=\empty,extra x ticks={.785,1.57,2.36,3.14,3.92},
-extra x tick labels={$\pi/4$,$\pi/2$,$3\pi/4$,$\pi$,$5\pi/4$},
-ymin=-1.1,ymax=1.1,xmin=-.1,xmax=4.1]
-
-\addplot [draw={\coloronefill},stack plots=y,samples=40,domain=.785:3.92] {cos(deg(x))};
-\addplot [draw={\coloronefill},thick,fill=\coloronefill,area style,stack plots=y,samples=40,domain=.785:3.92] {sin(deg(x))-(cos(deg(x)))} \closedcycle;
-
-\addplot [smooth,thick, draw={\colorone},domain=-.1:4.1,samples=40] {sin(deg(x))} node [shift={(-25pt,70pt)} ,black] {\scriptsize $y=\sin x$};
-
-\addplot [smooth,thick, draw={\colorone},domain=-.1:4.1,samples=40] {cos(deg(x))} node [shift={(-75pt,0pt)} ,black] {\scriptsize $y=\cos x$};
-
-
+\begin{axis}[width=1.167\marginparwidth,tick label style={font=\scriptsize},axis y line=middle,axis x line=middle,name=myplot,
+ymin=-1.1,ymax=1.1,xmin=-0.5,xmax=1.5]
+\addplot [thick, smooth,domain=0.1:3,samples=60,->] ({1/x},{sin(deg(x))});
+\addplot [thick, smooth,domain=3:10,samples=60] ({1/x},{sin(deg(x))});
 \end{axis}
-
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}
+\end{minipage}}
+
+\exercise{$x=3\cos t$,\quad $y=5\sin t$,\quad $0\leq t \leq 2\pi$}{\begin{minipage}{\linewidth}
+\begin{tikzpicture}
+\begin{axis}[width=1.167\marginparwidth,tick label style={font=\scriptsize},axis y line=middle,axis x line=middle,name=myplot,
+ymin=-5.5,ymax=5.5,xmin=-5.5,xmax=5.5]
+\addplot [thick, smooth,domain=0:60,samples=10,->] ({3*cos(x)},{5*sin(x)});
+\addplot [thick, smooth,domain=60:360,samples=60] ({3*cos(x)},{5*sin(x)});
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\end{minipage}}
+
+\exercise{$x=3\cos t+2$,\quad $y=5\sin t+3$,\quad $0\leq t \leq 2\pi$}{\begin{minipage}{\linewidth}
+\begin{tikzpicture}
+\begin{axis}[width=1.167\marginparwidth,tick label style={font=\scriptsize},axis y line=middle,axis x line=middle,name=myplot,
+minor x tick num=4,minor y tick num=4,
+ymin=-5.5,ymax=8.5,xmin=-5.5,xmax=7.5]
+\addplot [thick, smooth,domain=0:60,samples=10,->] ({3*cos(x)+2},{5*sin(x)+3});
+\addplot [thick, smooth,domain=60:360,samples=60] ({3*cos(x)+2},{5*sin(x)+3});
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\end{minipage}}
+
+\exercise{$x=\cos t$,\quad $y=\cos(2t)$,\quad $0\leq t \leq \pi$}{\begin{minipage}{\linewidth}
+\begin{tikzpicture}
+\begin{axis}[width=1.167\marginparwidth,tick label style={font=\scriptsize},axis y line=middle,axis x line=middle,name=myplot,
+ymin=-1.1,ymax=1.1,xmin=-1.1,xmax=1.1]
+\addplot [thick, smooth,domain=0:30,samples=10,->] ({cos(x)},{cos(x*2)});
+\addplot [thick, smooth,domain=30:180,samples=60] ({cos(x)},{cos(x*2)});
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\end{minipage}}
+
+\exercise{$x=\cos t$,\quad $y=\sin(2t)$,\quad $0\leq t \leq 2\pi$}{\begin{minipage}{\linewidth}
+\begin{tikzpicture}
+\begin{axis}[width=1.167\marginparwidth,tick label style={font=\scriptsize},axis y line=middle,axis x line=middle,name=myplot,
+%minor x tick num=4,minor y tick num=4,
+ymin=-1.1,ymax=1.1,xmin=-1.1,xmax=1.1]
+\addplot [thick, smooth,domain=0:60,samples=10,->] ({cos(x)},{sin(x*2)});
+\addplot [thick, smooth,domain=60:360,samples=60] ({cos(x)},{sin(x*2)});
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\end{minipage}}
+
+\exercise{$x=2\sec t$,\quad $y=3\tan t$,\quad $-\pi/2< t < \pi/2$}{\begin{minipage}{\linewidth}
+\begin{tikzpicture}
+\begin{axis}[width=1.167\marginparwidth,tick label style={font=\scriptsize},axis y line=middle,axis x line=middle,name=myplot,
+minor x tick num=4,minor y tick num=4,
+ymin=-16.,ymax=16,xmin=-1,xmax=11]
+\addplot [thick, smooth,domain=-80:30,samples=60,->] ({2*sec(x)},{3*tan(x)});
+\addplot [thick, smooth,domain=30:80,samples=60] ({2*sec(x)},{3*tan(x)});
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\end{minipage}}
+
+\exercise{$x=\cos t+\frac14\cos(8t)$,\quad $y=\sin t+\frac14\sin(8t)$,\quad $0\leq t \leq 2\pi$}{\begin{minipage}{\linewidth}
+\begin{tikzpicture}
+\begin{axis}[width=1.167\marginparwidth,tick label style={font=\scriptsize},axis y line=middle,axis x line=middle,name=myplot,
+%minor x tick num=4,minor y tick num=4,
+ymin=-1.5,ymax=1.5,xmin=-1.5,xmax=1.5]
+\addplot [thick, smooth,domain=0:60,samples=20,->] ({cos(x)+cos(8*x)/4},{sin(x)+sin(8*x)/4});
+\addplot [thick, smooth,domain=60:360,samples=120] ({cos(x)+cos(8*x)/4},{sin(x)+sin(8*x)/4});
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\end{minipage}}
+
+\exercise{$x=\cos t+\frac14\sin(8t)$,\quad $y=\sin t+\frac14\cos(8t)$,\quad $0\leq t \leq 2\pi$}{\begin{minipage}{\linewidth}
+\begin{tikzpicture}
+\begin{axis}[width=1.167\marginparwidth,tick label style={font=\scriptsize},axis y line=middle,axis x line=middle,name=myplot,
+%minor x tick num=4,minor y tick num=4,
+ymin=-1.5,ymax=1.5,xmin=-1.5,xmax=1.5]
+\addplot [thick, smooth,domain=0:60,samples=20,->] ({cos(x)+sin(8*x)/4},{sin(x)+cos(8*x)/4});
+\addplot [thick, smooth,domain=60:360,samples=120] ({cos(x)+sin(8*x)/4},{sin(x)+cos(8*x)/4});
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\end{minipage}}

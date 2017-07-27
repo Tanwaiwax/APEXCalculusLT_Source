@@ -58,7 +58,7 @@ as claimed.  Now let $f(x)= x^n$, where $n \in \mathbb{Z}^+$. By the definition 
 We proved \autoref{thm:deriv_common} part 3 in \autoref{sec:derivative} and part 4 is left as an exercise.  In parts 5 and 6 we see something incredible about the functions $y=e^x$ and $y=\ln x$. We will use these rules freely, unfortunately their proofs will have to wait until we know a few more calculus techniques.
 % it is its own derivative.
 
-%One special case of the Power Rule is when $n=1$, i.e., when $f(x) = x$. What is $\fp(x)$? According to the Power Rule, $$\fp(x) = \frac{d}{dx}\big(x\big) = \frac{d}{dx}\big(x^1\big) = 1\cdot x^0 = 1.$$ In words, we are asking ``At what rate does $f$ change with respect to $x$?'' Since $f$ \textit{is} $x$, we are asking ``At what rate does $x$ change with respect to $x$?'' The answer is: 1. They change at the same rate.\\
+%One special case of the Power Rule is when $n=1$, i.e., when $f(x) = x$. What is $\fp(x)$? According to the Power Rule, \[\fp(x) = \frac{d}{dx}\big(x\big) = \frac{d}{dx}\big(x^1\big) = 1\cdot x^0 = 1.\] In words, we are asking ``At what rate does $f$ change with respect to $x$?'' Since $f$ \textit{is} $x$, we are asking ``At what rate does $x$ change with respect to $x$?'' The answer is: 1. They change at the same rate.\\
 
 Let's practice using this theorem.
 
@@ -74,7 +74,18 @@ Let's practice using this theorem.
 	\item	The Power Rule states that if $f(x) = x^3$, then $\fp(x) = 3x^2$. 
 	\item	To find the equation of the line tangent to the graph of $f$ at $x=-1$, we need a point and the slope. The point is $(-1,f(-1)) = (-1, -1)$. The slope is $\fp(-1)= 3$. Thus the tangent line has equation $y = 3(x-(-1))+(-1) = 3x+2$. 
 
-	\mfigure{0in}{A graph of $f(x) = x^3$, along with its derivative $\fp(x) = 3x^2$ and its tangent line at $x=-1$.}{fig:xcubedwithderiv}{figures/figxcubedwithderiv}	\item	We can use the tangent line to approximate $(-1.1)^3$ as $-1.1$ is close to $-1$. We have
+	\mtable{A graph of $f(x) = x^3$, along with its derivative $\fp(x) = 3x^2$ and its tangent line at $x=-1$.}{fig:xcubedwithderiv}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},minor x tick num=1,minor y tick num=1,axis y line=middle,axis x line=middle,ymin=-5.1,ymax=5.1,xmin=-2.1,xmax=2.1,name=myplot]
+\addplot [draw={\colorone},smooth,thick,domain=-2:2] {x^3};
+\addplot [draw={\colortwo},smooth,thick,domain=-2:2] {3*x^2};
+\addplot [smooth,thick,domain=-2:1.2] {3*(x+1)-1};
+\filldraw (axis cs:-1,-1) circle (1pt);
+\filldraw (axis cs:-1,3) circle (1pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
+	\item	We can use the tangent line to approximate $(-1.1)^3$ as $-1.1$ is close to $-1$. We have
 	\[(-1.1)^3 \approx (-1)^3+3(-1.1-(-1))=-1+3(-.1)= -1.3.\]
 	We can easily find the actual answer; $(-1.1)^3 = -1.331$. 
 	\item	See \autoref{fig:xcubedwithderiv}.\eoehere
@@ -168,12 +179,13 @@ Let's practice using this new concept.
 \[1.\ f(x) = 4x^2\qquad 2.\ f(x) = \sin x\qquad 3.\ f(x) = 5e^x\]}
 {\begin{enumerate}
 	\item	Using the Power and Constant Multiple Rules, we have: $\fp(x) = 8x$. Continuing on, we have 
-	$$\fpp(x) = \frac{d}{dx}\big(8x\big) = 8;\qquad \fp''(x) = 0;\qquad f\,^{(4)}(x) = 0.$$
+	\[\fpp(x) = \frac{d}{dx}\big(8x\big) = 8;\qquad \fp''(x) = 0;\qquad f\,^{(4)}(x) = 0.\]
 Notice how all successive derivatives will also be 0.
 	\item	We employ \autoref{thm:deriv_common} repeatedly.
-	$$\fp(x) = \cos x;\quad \fp'(x) = -\sin x;\quad \fp''(x) = -\cos x;\quad f\,^{(4)}(x) = \sin x.$$
+	\[\fp(x) = \cos x;\quad \fp'(x) = -\sin x;\quad \fp''(x) = -\cos x;\quad f\,^{(4)}(x) = \sin x.\]
 	Note how we have come right back to $f(x)$ again. (Can you quickly figure what $f\,^{(23)}(x)$ is?)
-	\item	Employing \autoref{thm:deriv_common} and the Constant Multiple Rule, we can see that $$\fp(x) = \fp'(x) = \fp''(x) = f\,^{(4)}(x) = 5e^x.\eoehere$$
+	\item	Employing \autoref{thm:deriv_common} and the Constant Multiple Rule, we can see that
+	\[\fp(x) = \fp'(x) = \fp''(x) = f\,^{(4)}(x) = 5e^x.\eoehere\]
 	\end{enumerate}}
 
 \subsection*{Interpreting Higher Order Derivatives}

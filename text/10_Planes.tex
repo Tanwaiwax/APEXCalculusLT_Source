@@ -45,8 +45,6 @@ A key to remember throughout this section is this: to find the equation of a pla
 
 \youtubeVideo{0MECmEjR2WU}{Equation of a Plane Through Three Points}
 
-\example{ex_planes1}{Finding the equation of a plane.}{Write the equation of the plane that passes through the points $P=(1,1,0)$, $Q = (1,2,-1)$ and $R = (0,1,2)$ in standard form.}
-{We need a vector $\vec n$ that is orthogonal to the plane.
 \mtable{Sketching the plane in \autoref{ex_planes1}.}{fig:planes1}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=-0.8901640937366284,
@@ -54,7 +52,9 @@ A key to remember throughout this section is this: to find the equation of a pla
 3Dc2c=0.16529597342014313 0.9668735861778259 0.19450663030147552,
 3Dcoo=7.7291765213012695 11.105842590332031 32.345008850097656,
 3Droo=150.00000744992093}{width=\marginparwidth}{figures/figplanes1_3D}}
-Since $P$, $Q$ and $R$ are in the plane, so are the vectors $\vv{PQ}$ and $\vv{PR}$; $\vv{PQ}\times\vv{PR}$ is orthogonal to $\vv{PQ}$ and $\vv{PR}$ and hence the plane itself.
+
+\example{ex_planes1}{Finding the equation of a plane.}{Write the equation of the plane that passes through the points $P=(1,1,0)$, $Q = (1,2,-1)$ and $R = (0,1,2)$ in standard form.}
+{We need a vector $\vec n$ that is orthogonal to the plane. Since $P$, $Q$ and $R$ are in the plane, so are the vectors $\vv{PQ}$ and $\vv{PR}$; $\vv{PQ}\times\vv{PR}$ is orthogonal to $\vv{PQ}$ and $\vv{PR}$ and hence the plane itself.
 
 It is straightforward to compute $\vec n = \vv{PQ}\times\vv{PR} =\bracket{2,1,1}$. We can use any point we wish in the plane (any of $P$, $Q$ or $R$ will do) and we arbitrarily choose $P$. Following \autoref{def:planes}, the equation of the plane in standard form is 
 \[2(x-1) + (y-1)+z = 0.\]
@@ -138,7 +138,7 @@ We can choose any value for $x$; we choose $x=1$. This determines that $y=1$. We
 We now need the direction of the line. Since the line lies in each plane, its direction is orthogonal to a normal vector for each plane. Considering the equations for $p_1$ and $p_2$, we can quickly determine their normal vectors. For $p_1$, $\vec n_1 =\bracket{1,-1,1}$ and for $p_2$, $\vec n_2 =\bracket{-2,1,1}.$ A direction orthogonal to both of these directions is their cross product: $\vec d = \vec n_1\times \vec n_2 =\bracket{-2,-3,-1}.$
 
 The parametric equations of the line through $P=(1,1,-1)$ in the direction of $d=\bracket{-2,-3,-1}$ is:
-$$\ell: \quad x= -2t+1\quad y = -3t+1\quad z=-t-1.$$
+\[\ell: \quad x= -2t+1\quad y = -3t+1\quad z=-t-1.\]
 The planes and line are graphed in \autoref{fig:planes4}.}
 
 \example{ex_planes5}{Finding the intersection of a plane and a line}{Find the point of intersection, if any, of the line $\ell(t) =\bracket{3,-3,-1}+t\bracket{-1,2,1}$ and the plane with equation in general form $2x+y+z=4$.}
@@ -166,7 +166,11 @@ When $t=2$, the point on the line satisfies the equation of the plane; that poin
 Just as it was useful to find distances between points and lines in the previous section, it is also often necessary to find the distance from a point to a plane.
 
 Consider \autoref{fig:planes_dist}, where a plane with normal vector $\vec n$ is sketched containing a point $P$ and a point $Q$, not on the plane, is given. We measure the distance from $Q$ to the plane by measuring the length of the projection of $\vv{PQ}$ onto $\vec n$. That is, we want:
-\begin{equation}\norm{\text{proj}_{\,\vec n}\,{\vv{PQ}}} = \norm{\frac{\vec n\cdot \vv{PQ}}{\vnorm n^2}\vec n} = \frac{|\vec n\cdot \vv{PQ}|}{\vnorm n}\label{eq:plane_dist}
+\begin{equation}
+\norm{\text{proj}_{\,\vec n}\,{\vv{PQ}}}
+= \norm{\frac{\vec n\cdot \vv{PQ}}{\vnorm n^2}\vec n}
+= \frac{\abs{\vec n\cdot \vv{PQ}}}{\vnorm n}
+\label{eq:plane_dist}
 \end{equation}
 \autoeqref{eq:plane_dist} is important as it does more than just give the distance between a point and a plane. We will see how it allows us to find several other distances as well: the distance between parallel planes and the distance from a line and a plane. Because \autoeqref{eq:plane_dist} is important, we restate it as a Key Idea.
 \mtable{Illustrating finding the distance from a point to a plane.}{fig:planes_dist}{%

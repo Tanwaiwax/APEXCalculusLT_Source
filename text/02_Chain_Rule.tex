@@ -27,11 +27,11 @@ F_1\primeskip'(x) &= -2(1-x),\\
 F_2\primeskip'(x) &= -3(1-x)^2\qquad\text{and} \\
 F_3\primeskip'(x) &= -4(1-x)^3.
 \end{align*}
-%$$
+%\[
 %F_1\primeskip'(x) = -2(1-x),\quad
 %F_2\primeskip'(x) = -3(1-x)^2\ \textrm{ and } \ 
 %F_3\primeskip'(x) = -4(1-x)^3.
-%$$
+%\]
 A pattern might jump out at you.  Recognize that each of these functions is a composition, letting $g(x) = 1-x$:
 \begin{align*}
 F_1(x) &= f_1(g(x)), \text{ where } f_1(x) = x^2,\\
@@ -54,7 +54,8 @@ We can think of this as taking the derivative of the outer function evaluated at
 \[y=(1-x)^2 = f(g(x)), \text{ where } f(x) = x^2\ \text{ and }\ g(x) = 1-x.\]
 To find $y\primeskip'$, we apply the Chain Rule. We need $\fp(x)=2x$ and $g\primeskip'(x)=-1.$
 
-Part of the Chain Rule uses $\fp(g(x))$. This means substitute $g(x)$ for $x$ in the equation for $\fp(x)$. That is, $\fp(x) = 2(1-x)$.  Finishing out the Chain Rule we have $$y\primeskip' = \fp(g(x))\cdot g\primeskip'(x) = 2(1-x)\cdot (-1) = -2(1-x)= 2x-2.$$
+Part of the Chain Rule uses $\fp(g(x))$. This means substitute $g(x)$ for $x$ in the equation for $\fp(x)$. That is, $\fp(x) = 2(1-x)$.  Finishing out the Chain Rule we have
+\[y\primeskip' = \fp(g(x))\cdot g\primeskip'(x) = 2(1-x)\cdot (-1) = -2(1-x)= 2x-2.\]
 
 \noindent $F_2(x) = (1-x)^3$:\\
 \indent Let $y = (1-x)^3 = f(g(x))$, where $f(x) = x^3$ and $g(x) = (1-x)$. We have $\fp(x) = 3x^2$, so $\fp(g(x)) = 3(1-x)^2$. The Chain Rule then states
@@ -110,7 +111,14 @@ We now consider more examples that employ the Chain Rule.
 	\]
 \end{enumerate}}
 
-\mfigure{0in}{$f(x) = \cos x^2$ sketched along with its tangent line at $x=1$.}{fig:chain7}{figures/figchain7}
+\mtable{$f(x) = \cos x^2$ sketched along with its tangent line at $x=1$.}{fig:chain7}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,height=1.16\marginparwidth,tick label style={font=\scriptsize},minor x tick num=1,minor y tick num=1,axis y line=middle,axis x line=middle,ymin=-1.1,ymax=1.1,xmin=-3.1,xmax=3.1,name=myplot]
+\addplot [draw={\colorone},smooth,thick,domain=-3.14:3.14,samples=40] {cos(deg(x*x))};
+\addplot [draw={\colortwo},smooth,thick,domain=.1:1.9] {-1.68*(x-1)+0.54};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 \example{ex_chain7}{Using the Chain Rule to find a tangent line}{Let $f(x) = \cos x^2$. Find the equation of the line tangent to the graph of $f$ at $x=1$.}
 {The tangent line goes through the point $(1,f(1)) \approx (1,0.54)$ with slope $\fp(1)$. To find $\fp$, we need the Chain Rule.
@@ -133,7 +141,7 @@ A concrete example of this is
 \]
 While the derivative may  look intimidating at first, look for the pattern. The denominator is the same as what was inside the natural log function; the  numerator is simply its derivative.
 
-This pattern recognition process can be applied to lots of functions. In general, instead of writing ``anything'', we use $u$ as a generic function of $x$. We then say $$\frac{d}{dx}\Big(\ln u\Big) = \frac{u\primeskip'}{u}.$$
+This pattern recognition process can be applied to lots of functions. In general, instead of writing ``anything'', we use $u$ as a generic function of $x$. We then say \[\frac{d}{dx}\Big(\ln u\Big) = \frac{u\primeskip'}{u}.\]
 The following is a short list of how the Chain Rule can be quickly applied to familiar functions.
 
 \noindent\begin{minipage}[t]{.5\textwidth}
@@ -215,9 +223,9 @@ This example demonstrates that derivatives can be computed systematically, no ma
 
 %------------------------\\
 %FOOTNOTE **: Most derivatives will use a combination of the derivative rules.  For kicks, have a shot at finding the derivative of
-%$$
+%\[
 %F(x) = \frac{x\cos(x^{-2})-\sin^2(e^{4x})}{\ln(x^2+5x^4)}
-%$$
+%\]
 %you will never come across this function in practice (or at least we hope not!), but it does involve the constant multiple, sum, difference, product, quotient and chain rules all at once (and a healthy dose of transcendental functions).  Here's the answer: $<$solution redacted - blame the lawyers$>$.\\
 %------------------------\\
 %\\
@@ -287,11 +295,11 @@ This example demonstrates that derivatives can be computed systematically, no ma
 %------------------------\\
 %\\
 %To compute the derivative of $y(x)$, rewrite it as
-%$$
+%\[
 %y(x) = a\ln\left(\frac{a+(a^2-x^2)^{\frac{1}{2}}}{x}\right) - (a^2-x^2)^\frac{1}{2}
-%$$
+%\]
 %and use the constant multiple, chain, and quotient rules:
-%$$
+%\[
 %y^{\, \prime}(x) 
 %= 
 %a\left(\frac{x}{a+(a^2-x^2)^{\frac{1}{2}}}\right)
@@ -299,15 +307,15 @@ This example demonstrates that derivatives can be computed systematically, no ma
 %\frac{1}{2} (a^2-x^2)^{-\frac{1}{2}} \cdot (-2x)
 %- 
 %\frac{1}{2} (a^2-x^2)^{-\frac{1}{2}} \cdot (-2x).
-%$$
+%\]
 %With a little algebra, this simplifies to
-%$$
+%\[
 %y^{\, \prime}(x) 
 %= 
 %-\frac{a\sqrt{a^2-x^2}+a^2-x^2}{x\sqrt{a^2-x^2}+ax}.
-%$$
+%\]
 %The derivative of $f(t)$ isn't actually too bad, since the leading fraction is a constant, so we only need to use the constant multiple and chain rules:
-%$$
+%\[
 %f^{\, \prime}(t) 
 %= 
 %\frac{\Gamma(\frac{\nu + 1}{2})}{\sqrt{\nu \pi} \Gamma(\frac{\nu}{2})}
@@ -321,9 +329,9 @@ This example demonstrates that derivatives can be computed systematically, no ma
 %\left(\frac{\nu+1}{\nu}\right)
 %\cdot
 %t\left(1+\frac{t^2}{\nu}\right)^{-\frac{\nu+3}{2}}.
-%$$
+%\]
 %The derivative of $E(x)$ primarily uses the 1st Fundamental Theorem of Calculus as well as the chain rule
-%$$
+%\[
 %E^{\, \prime}(x) 
 %= 
 %\frac{2}{\sqrt{\pi}} e^{\frac{-\left(\frac{x}{\sqrt{2}}\right)^2}{2}} 
@@ -331,7 +339,7 @@ This example demonstrates that derivatives can be computed systematically, no ma
 %\frac{1}{\sqrt{2}}
 %=
 %\sqrt{\frac{2}{\pi}} \, e^{\frac{-x^2}{4}}. 
-%$$
+%\]
 
 % definitely end the move to Calc 2 part
 
@@ -351,14 +359,14 @@ It is instructive to understand what the  Chain Rule ``looks like'' using ``$\fr
 \end{align*}
 
 %Using the previous notation, this would be written as $y^{\, \prime}(x(t)) \cdot x^{\, \prime}(t)$, but it makes more sense to write
-%$$
+%\[
 %\frac{dy}{dt} = \frac{dy}{dx} \cdot \frac{dx}{dt}.
-%$$
+%\]
 
 Here the ``fractional'' aspect of the derivative notation stands out. On the right hand side, it seems as though the ``$du$'' terms divide out, leaving
 \[\frac{dy}{dx} = \frac{dy}{dx}.\]
 It is important to realize that we \textit{are not} dividing these terms; the derivative notation of $\frac{dy}{dx}$ is one symbol. It is equally important to realize that this notation was chosen precisely because of this behavior. It makes applying the Chain Rule easy with multiple variables. For instance,
-
+%
 %If you look at it like a fraction it sort of looks like the $dx$ part ``divides out'' leaving $\displaystyle \frac{dy}{dt}.$  This isn't quite right, but it does work.  In fact you can extend this as
 \[
  \frac{dy}{dt}
@@ -366,15 +374,44 @@ It is important to realize that we \textit{are not} dividing these terms; the de
 \]
 where $\Box$ and $\triangle$ are any variables you'd like to use.
 
-%After a while, you get better at recognizing the pattern and may take the short cut of not actually writing down the functions that make up the composition when you apply the Chain Rule.  We simply recommend caution and point out that's where errors in work can (and often do) occur.\\
+%After a while, you get better at recognizing the pattern and may take the short cut of not actually writing down the functions that make up the composition when you apply the Chain Rule.  We simply recommend caution and point out that's where errors in work can (and often do) occur.\bigskip
 
-One of the most common ways of ``visualizing'' the Chain Rule is to consider a set of gears, as shown in \autoref{fig:chainrulegears}.
+\mtable[-.5in]{A series of gears to demonstrate the Chain Rule. Note how $\frac{dy}{dx} = \frac{dy}{du}\cdot\frac{du}{dx}$}{fig:chainrulegears}{\begin{tikzpicture}[>=latex,scale=.8]
+\begin{scope}[shift={(0,-200pt)}]
+\begin{scope}
+\foreach \x in {0,1,2,...,35} {
+ \draw [rotate around={{\x*10}:(0,0)}] (60pt,0)--(65pt,0) arc (0:{4.}:65pt);
+ \draw [rotate around={{\x*10+4.}:(0,0)}] (65pt,0) -- (60pt,0) arc (0:6:60pt);
+}
+\draw [->] (40pt,0) arc (0:170:40pt);
+\draw (0,0) node {$x$};
+\end{scope}
+\begin{scope}[shift={(4.5pt,-99pt)}]
+\foreach \x in {0,1,2,...,17} {
+ \draw [rotate around={{\x*20}:(0,0)}] (30pt,0)--(35pt,0) arc (0:{9}:35pt);
+ \draw [rotate around={{\x*20+9}:(0,0)}] (35pt,0) -- (30pt,0) arc (0:11:30pt);
+}
+\draw [->] (0,25pt) arc (90:-80:25pt);
+\draw (0,0) node {$u$};
+\draw (45pt,-30pt) node {\small$\ds \frac{dy}{du} = 3$};
+\draw (-50pt,30pt) node {\small $\ds \frac{du}{dx} = 2$};
+\draw (60pt,40pt) node {\small $\ds \frac{dy}{dx} = 6$};
+\end{scope}
+\begin{scope}[shift={(53.5pt,-100pt)}]
+\foreach \x in {0,1,2,...,5} {
+ \draw [rotate around={{\x*60}:(0,0)}] (10pt,0)--(15pt,0) arc (0:{29}:15pt);
+ \draw [rotate around={{\x*60+29}:(0,0)}] (15pt,0) -- (10pt,0) arc (0:31:10pt);
+}
+\draw [->] (0,-20pt) arc (-90:70:20pt);
+\draw (0,0) node {$y$};
+\end{scope}
+\end{scope}
+\end{tikzpicture}}
 %
-\mfigure{-1in}{A series of gears to demonstrate the Chain Rule. Note how $\frac{dy}{dx} = \frac{dy}{du}\cdot\frac{du}{dx}$}{fig:chainrulegears}{figures/figchainrulegears}
-%
-The gears have 36, 18, and 6 teeth, respectively. That means for every revolution of the $x$ gear, the $u$ gear revolves twice. That is, the rate at which the $u$ gear makes a revolution is twice as fast as the rate at which the $x$ gear makes a revolution. Using the terminology of calculus, the rate of $u$-change, with respect to $x$, is $\frac{du}{dx} = 2$. 
+One of the most common ways of ``visualizing'' the Chain Rule is to consider a set of gears, as shown in \autoref{fig:chainrulegears}. The gears have 36, 18, and 6 teeth, respectively. That means for every revolution of the $x$ gear, the $u$ gear revolves twice. That is, the rate at which the $u$ gear makes a revolution is twice as fast as the rate at which the $x$ gear makes a revolution. Using the terminology of calculus, the rate of $u$-change, with respect to $x$, is $\frac{du}{dx} = 2$. 
 
-Likewise, every revolution of $u$ causes 3 revolutions of $y$: $\frac{dy}{du} = 3$. How does $y$ change with respect to $x$? For each revolution of $x$, $y$ revolves 6 times; that is, $$\frac{dy}{dx} = \frac{dy}{du}\cdot \frac{du}{dx} = 2\cdot 3 = 6.$$
+Likewise, every revolution of $u$ causes 3 revolutions of $y$: $\frac{dy}{du} = 3$. How does $y$ change with respect to $x$? For each revolution of $x$, $y$ revolves 6 times; that is,
+\[\frac{dy}{dx} = \frac{dy}{du}\cdot \frac{du}{dx} = 2\cdot 3 = 6.\]
 We can then extend the Chain Rule with more variables by adding more gears to the picture.\bigskip
 
 It is difficult to overstate the importance of the Chain Rule. So often the functions that we deal with are compositions of two or more functions, requiring us to use this rule to compute derivatives. It is often used in practice when actual functions are unknown. Rather, through measurement, we can calculate $\frac{dy}{du}$ and $\frac{du}{dx}$. With our knowledge of the Chain Rule, finding $\frac{dy}{dx}$ is straightforward. 

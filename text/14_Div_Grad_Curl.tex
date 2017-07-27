@@ -10,7 +10,7 @@ For a real-valued function $f(x,y,z)$ on $\mathbb{R}^{3}$, the gradient $\nabla 
 \]
 in $\mathbb{R}^{3}$, where each of the partial derivatives is evaluated at the point $(x,y,z)$. So in this way, you can think of the \emph{symbol} $\nabla$ as being ``applied'' to a real-valued function $f$ to produce a vector $\nabla f$.
 
-It turns out that the divergence and curl can also be expressed in terms of the symbol $\nabla$. This is done by thinking of $\nabla$ as a \emph{vector} in $\mathbb{R}^{3}$, namely\index{$\nabla$}
+In \autoref{sec:divthm} and \autoref{sec:stokes}, we noted that the divergence and curl can also be expressed in terms of the symbol $\nabla$ by thinking of $\nabla$ as a \emph{vector} in $\mathbb{R}^3$, namely\index{$\nabla$}
 \begin{equation}\label{nabladef}
  \nabla = \frac{\partial}{\partial x}\,\veci + \frac{\partial}{\partial y}\,\vecj +
    \frac{\partial}{\partial z}\,\veck .
@@ -118,15 +118,16 @@ The following theorem shows that this will be the case in general:
 \begin{proof}
  We see by the smoothness of $f$ that
  \begin{align*}
-  \nabla\times(\nabla f) &= \begin{vmatrix}
+  \nabla\times&(\nabla f) \\
+   &= \begin{vmatrix}
    \veci & \vecj & \veck \vspace{1mm}\\ \dfrac{\partial}{\partial x} & \dfrac{\partial}{\partial y} &
     \dfrac{\partial}{\partial z} \vspace{1mm}\\
    \dfrac{\partial f}{\partial x} & \dfrac{\partial f}{\partial y} & \dfrac{\partial f}{\partial z}
    \end{vmatrix}\\
   &= \left( \frac{\partial^2 f}{\partial y\,\partial z}-\frac{\partial^2 f}{\partial z\,\partial y} \right) \,\veci
    - \left( \frac{\partial^2 f}{\partial x\,\partial z}-\frac{\partial^2 f}{\partial z\,\partial x} \right) \,\vecj
-   + \left( \frac{\partial^2 f}{\partial x\,\partial y}-\frac{\partial^2 f}{\partial y\,\partial x} \right) \,\veck
-  = \vec0 ,
+   + \left( \frac{\partial^2 f}{\partial x\,\partial y}-\frac{\partial^2 f}{\partial y\,\partial x} \right) \,\veck\\
+  &= \vec0 ,
  \end{align*}
  since the mixed partial derivatives in each component are equal.
 \end{proof}
@@ -175,8 +176,11 @@ Since the choice of $\Sigma$ was arbitrary, then we must have $\Dotprod{(\nabla\
 }{By the Divergence Theorem, we have
  \begin{align*}
   \iiint_{S} \Dotprod{\nabla}{\vecE} dV &= \iint_{\Sigma} \Dotprod{\vecE}{d\sigma}\\
-   &= 4\pi\,\iiint_{S} \rho dV \quad\text{by Gauss' Law, so combining the integrals gives}\\
-   \iiint_{S} ( \Dotprod{\nabla}{\vecE} - 4\pi\rho ) dV &= 0 \quad\text{, so}\\
+   &= 4\pi\,\iiint_{S} \rho dV \quad\text{by Gauss' Law}
+ \end{align*}
+ Combining the integrals gives
+ \begin{align*}
+   \iiint_{S} ( \Dotprod{\nabla}{\vecE} - 4\pi\rho ) dV &= 0,\quad\text{so}\\
    \Dotprod{\nabla}{\vecE} - 4\pi\rho &= 0 \quad\text{since $\Sigma$ and hence $S$ was arbitrary, so}\\
    \Dotprod{\nabla}{\vecE} &= 4\pi\rho .\eoehere
  \end{align*}}
@@ -186,7 +190,7 @@ Often (especially in physics) it is convenient to use other coordinate systems w
 Recall from \autoref{sec:other_systems} that a point $(x,y,z)$ can be represented in cylindrical coordinates $(r, \theta , z)$, where $x=r\cos \theta$, $y=r\sin \theta$, $z=z$. At each point $(r, \theta , z)$, let $\vece_{r}$, $\vece_{\theta}$, $\vece_{z}$ be unit vectors in the direction of increasing $r$, $\theta$, $z$, respectively (see \autoref{fig:on_cyl_sph}(a)). Then $\vece_{r}$, $\vece_{\theta}$, $\vece_{z}$ form an orthonormal set of vectors. Note, by the right-hand rule, that $\vece_{z}\times\vece_{r}=\vece_{\theta}$.
 
 \begin{lxfigure}
- \begin{center}
+ \centering
  \begin{tabular}{cc}
 \myincludeasythree{width=\marginparwidth,
 3Droll=126.0060482236849,
@@ -206,7 +210,6 @@ Recall from \autoref{sec:other_systems} that a point $(x,y,z)$ can be represente
   \end{tabular}
   \caption{Orthonormal vectors in cylindrical (a) and spherical (b) coordinates}
   \label{fig:on_cyl_sph}
-  \end{center}
 \end{lxfigure}
 
 Similarly, a point $(x,y,z)$ can be represented in spherical coordinates $(\rho, \theta , \phi)$, where $x=\rho\sin \phi \cos \theta$, $y=\rho\sin \phi \sin \theta$, $z=\rho\cos \phi$. At each point $(\rho, \theta , \phi)$, let $\vece_{\rho}$, $\vece_{\theta}$, $\vece_{\phi}$ be unit vectors in the direction of increasing $\rho$, $\theta$, $\phi$, respectively (see \autoref{fig:on_cyl_sph}(b)). Then the vectors $\vece_{\rho}$, $\vece_{\theta}$, $\vece_{\phi}$ are orthonormal.\index{$\vece_{r}$, $\vece_{\theta}$, $\vece_{z}$, $\vece_{\rho}$, $\vece_{\phi}$} By the right-hand rule, we see that $\vece_{\theta}\times\vece_{\rho}=\vece_{\phi}$.
@@ -232,7 +235,6 @@ We can now summarize the expressions for the gradient, divergence, curl and Lapl
    \frac{\partial^2 F}{\partial y^2} + \frac{\partial^2 F}{\partial z^2}
  \end{alignat*}}
 
-% todo Tim should this be a key idea at all?
 \setboxwidth{60pt}
 \keyidea{ki_cyl_sys}{Vector Calculus in Cylindrical Coordinates}{For the scalar function $F$ or vector field $\vecf = f_{r}\,\vece_{r} + f_{\theta}\,\vece_{\theta} + f_{z}\,\vece_{z}$,
  \begin{alignat*}{2}
@@ -250,7 +252,6 @@ We can now summarize the expressions for the gradient, divergence, curl and Lapl
    \right) + \frac{1}{r^2}\frac{\partial^2 F}{\partial \theta^2} + \frac{\partial^2 F}{\partial z^2}
  \end{alignat*}}
 
-% todo Tim should this be a key idea at all?
 \setboxwidth{60pt}
 \keyidea{ki_sph_sys}{Vector Calculus in Spherical Coordinates}{For the scalar function $F$ or vector field $\vecf = f_{\rho}\,\vece_{\rho} + f_{\theta}\,\vece_{\theta} + f_{\phi}\,\vece_{\phi}$
  \begin{alignat*}{2}

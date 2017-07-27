@@ -7,7 +7,7 @@ Given a smooth vector--valued function \vrt, we defined in \autoref{def:vector_t
 \definition{def:unit_tangent}{Unit Tangent Vector}
 {Let \vrt\ be a smooth function on an open interval $I$. The unit tangent vector $\vec T(t)$ is
 \index{unit tangent vector!definition} \index{unit vector!unit tangent vector}
-$$\vec T(t) = \frac{1}{\rule{0pt}{9pt}\norm{\vrp(t)}}\vrp(t).$$}
+\[\vec T(t) = \frac{1}{\rule{0pt}{9pt}\norm{\vrp(t)}}\vrp(t).\]}
 
 \youtubeVideo{39LA5WyVgKY}{Tangent Line to a Parametrized Curve}
 
@@ -19,20 +19,20 @@ $$\vec T(t) = \frac{1}{\rule{0pt}{9pt}\norm{\vrp(t)}}\vrp(t).$$}
 				&=\bracket{-\frac35\sin t,\frac35\cos t,\frac45}.
 \end{align*}
 We can now easily compute $\vec T(0)$ and $\vec T(1)$:
-$$\vec T(0) =\bracket{0,\frac35,\frac45}\,;\quad \vec T(1) =\bracket{-\frac35\sin 1,\frac35\cos 1,\frac45}%\approx\bracket{-0.505,0.324,0.8}
-.$$
+\[\vec T(0) =\bracket{0,\frac35,\frac45}\,;\quad \vec T(1) =\bracket{-\frac35\sin 1,\frac35\cos 1,\frac45}%\approx\bracket{-0.505,0.324,0.8}
+.\]
 These are plotted in \autoref{fig:tannorm1} with their initial points at $\vec r(0)$ and $\vec r(1)$, respectively. (They look rather ``short'' since they are only length 1.)
-\mfigurethree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
+%
+\mtable[-\baselineskip]{Plotting unit tangent vectors in \autoref{ex_tannorm1}.}{fig:tannorm1}{%
+\myincludeasythree{width=\marginparwidth,
 3Droll=0.4623610114058449,
 3Dortho=0.004905222449451685,
 3Dc2c=0.6268976330757141 0.5422312617301941 0.5594503283500671,
 3Dcoo=-3.587019205093384 4.6990532875061035 15.216367721557617,
-3Droo=150.00000240039893,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.5,trim=5mm 5mm 5mm 5mm,clip}{0in}{Plotting unit tangent vectors in \autoref{ex_tannorm1}.}{fig:tannorm1}{figures/figtannorm1}
-%\mfigure[scale=1.5,trim=5mm 5mm 5mm 5mm,clip]{0in}{Plotting unit tangent vectors in \autoref{ex_tannorm1}.}{fig:tannorm1}{figures/figtannorm1}
+3Droo=150.00000240039893}{width=\marginparwidth}{figures/figtannorm1_3D}}
 %
 %The unit tangent vector $\vec T(t)$ always has a magnitude of 1, though it is sometimes easy to doubt that is true. We can help solidify this thought in our minds by computing $\norm{\vec T(1)}$:
-%$$\norm{\vec T(1)} \approx \sqrt{(-0.505)^2+0.324^2+0.8^2} = 1.000001.$$
+%\[\norm{\vec T(1)} \approx \sqrt{(-0.505)^2+0.324^2+0.8^2} = 1.000001.\]
 %We have rounded in our computation of $\vec T(1)$, so we don't get 1 exactly. We leave it to the reader to use the exact representation of $\vec T(1)$ to verify it has length 1.
 }
 
@@ -40,7 +40,20 @@ In many ways, the previous example was ``too nice.'' It turned out that $\vrp(t)
 
 \example{ex_tannorm2}{Computing the unit tangent vector}{Let $\vrt=\bracket{t^2-t,t^2+t}$. Find $\vec T(t)$ and compute $\vec T(0)$ and $\vec T(1)$.}
 {We find $\vrp(t) =\bracket{2t-1,2t+1}$, and
-\mfigure{0in}{Plotting unit tangent vectors in \autoref{ex_tannorm2}.}{fig:tannorm2}{figures/figtannorm2}
+%
+\mtable{Plotting unit tangent vectors in \autoref{ex_tannorm2}.}{fig:tannorm2}{\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-1.1,ymax=6.5,xmin=-2.1,xmax=7]
+\addplot [thick,draw={\colorone}, smooth,domain=-2:2,samples=30] ({x^2-x},{x^2+x});
+\draw [thick,->,draw={\colortwo}] (axis cs:0,0)--(axis cs:-.707,.707);
+\draw [thick,->,draw={\colortwo}] (axis cs:0,2)--(axis cs:0.32,2.95);
+\draw [thick,->,draw={\colorone}] (axis cs:3.79,.77)--(axis cs:3.75,.75);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
+%
 \[\norm{\vrp(t)} = \sqrt{(2t-1)^2+(2t+1)^2} = \sqrt{8t^2+2}.\]
 Therefore
 \[\vecT(t) = \frac{1}{\sqrt{8t^2+2}}\bracket{2t-1,2t+1}=\bracket{\frac{2t-1}{\sqrt{8t^2+2}},\frac{2t+1}{\sqrt{8t^2+2}}}.\]
@@ -49,7 +62,20 @@ When $t=0$, we have $\vec T(0) =\bracket{-1/\sqrt{2},1/\sqrt{2}}$; when $t=1$, w
 \subsection*{Unit Normal Vector}
 
 Just as knowing the direction tangent to a path is important, knowing a direction orthogonal to a path is important. When dealing with real-valued functions, we defined the normal line at a point to the be the line through the point that was perpendicular to the tangent line at that point. We can do a similar thing with vector--valued functions. Given \vrt\ in $\mathbb{R}^2$, we have 2 directions perpendicular to the tangent vector, as shown in \autoref{fig:tannorm_intro1}. It is good to wonder ``Is one of these two directions preferable over the other?''
-\mfigure{0in}{Given a direction in the plane, there are always two directions orthogonal to it.}{fig:tannorm_intro1}{figures/figtannorm_intro1}
+
+\mtable{Given a direction in the plane, there are always two directions orthogonal to it.}{fig:tannorm_intro1}{\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,xtick=\empty,ytick=\empty,
+ymin=-.1,ymax=1.9,xmin=-.1,xmax=2.3]
+\addplot [thick,draw={\colorone}, smooth,domain=-1:1,samples=30] ({x^2-x+.6},{x^2+x+.3});
+\draw[thick,->,black] (axis cs:.51,.41) -- (axis cs:.233,.83);
+\draw[thick,->,draw={\colortwo}] (axis cs:.51,.41) -- (axis cs:.1,0.13);
+\draw[thick,->,draw={\colortwo}] (axis cs:.51,.41) -- (axis cs:.93,.69);
+\draw [thick,->,draw={\colorone}] (axis cs:0.71, 0.21)--(axis cs:.698,.218);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 Given \vrt\ in $\mathbb{R}^3$,  there are infinite vectors orthogonal to the tangent vector at a given point. Again, we might wonder ``Is one of these infinite choices preferable over the others? Is one of these the `right' choice?''
 
@@ -62,28 +88,27 @@ We'll see that $\vec T\,'(t)$ is more than just a convenient choice of vector th
 \definition{def:unit_normal}{Unit Normal Vector}
 {Let \vrt\ be a vector--valued function where the unit tangent vector, $\vec T(t)$, is smooth on an open interval $I$. The \textbf{unit normal vector} $\vec N(t)$ is
 \index{unit normal vector!definition}\index{unit vector!unit normal vector}
-$$\vec N(t) = \frac1{\norm{\vec T\,'(t)}}\vec T\,'(t).$$}
+\[\vec N(t) = \frac1{\norm{\vec T\,'(t)}}\vec T\,'(t).\]}
 
 \example{ex_tannorm3}{Computing the unit normal vector}{Let $\vrt =\bracket{3\cos t, 3\sin t, 4t}$ as in \autoref{ex_tannorm1}. Sketch both $\vec T(\pi/2)$ and $\vec N(\pi/2)$ with initial points at $\vec r(\pi/2)$.}
 {In \autoref{ex_tannorm1}, we found $\vec T(t) =\bracket{\rule{0pt}{10pt} (-3/5)\sin t,(3/5)\cos t,4/5}$. Therefore 
-$$\vec T\,'(t) =\bracket{-\frac35\cos t,-\frac35\sin t,0}\quad \text{and} \quad \norm{\vec T\,'(t)} = \frac35.$$
-Thus $$\vec N(t) = \frac{\vec T\,'(t)}{3/5} =\bracket{-\cos t,-\sin t,0}.$$
-We compute $\vec T(\pi/2) =\bracket{-3/5,0,4/5}$ and $\vec N(\pi/2) =\bracket{0,-1,0}$. These are sketched in \autoref{fig:tannorm3}.
-\mfigurethree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
+\[\vec T\,'(t) =\bracket{-\frac35\cos t,-\frac35\sin t,0}\quad \text{and} \quad \norm{\vec T\,'(t)} = \frac35.\]
+\mtable{Plotting unit tangent and normal vectors in \autoref{fig:tannorm3}.}{fig:tannorm3}{%
+\myincludeasythree{width=\marginparwidth,
 3Droll=0.9552187107340909,
 3Dortho=0.005093402229249477,
 3Dc2c=0.5105816125869751 0.5339998006820679 0.6739070415496826,
 3Dcoo=4.143548488616943 1.2702205181121826 14.294137954711914,
-3Droo=150.0000014005964,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.5,trim=5mm 5mm 5mm 5mm,clip}{0in}{Plotting unit tangent and normal vectors in \autoref{fig:tannorm3}.}{fig:tannorm3}{figures/figtannorm3}
-%\mfigure[scale=1.5,trim=5mm 5mm 5mm 5mm,clip]{0in}{Plotting unit tangent and normal vectors in \autoref{fig:tannorm3}.}{fig:tannorm3}{figures/figtannorm3}
-}
+3Droo=150.0000014005964}{width=\marginparwidth}{figures/figtannorm3_3D}}
+Thus
+\[\vec N(t) = \frac{\vec T\,'(t)}{3/5} =\bracket{-\cos t,-\sin t,0}.\]
+We compute $\vec T(\pi/2) =\bracket{-3/5,0,4/5}$ and $\vec N(\pi/2) =\bracket{0,-1,0}$. These are sketched in \autoref{fig:tannorm3}.}
 
 The previous example was once again ``too nice.'' In general, the expression for $\vec T(t)$ contains fractions of square--roots, hence the expression of $\vec T\,'(t)$ is very messy. We demonstrate this in the next example.
 
 \example{ex_tannorm4}{Computing the unit normal vector}{Let $\vrt=\bracket{t^2-t,t^2+t}$ as in \autoref{ex_tannorm2}. Find $\vec N(t)$ and sketch $\vrt$ with the unit tangent and normal vectors at $t=-1,0$ and 1.}
 {In \autoref{ex_tannorm2}, we found
-$$\vec T(t) =\bracket{\frac{2t-1}{\sqrt{8t^2+2}},\frac{2t+1}{\sqrt{8t^2+2}}}.$$
+\[\vec T(t) =\bracket{\frac{2t-1}{\sqrt{8t^2+2}},\frac{2t+1}{\sqrt{8t^2+2}}}.\]
 Finding $\vec T\,'(t)$ requires two applications of the Quotient Rule:
 
 \begin{align*}
@@ -107,8 +132,24 @@ Finally,
 \end{align*}
 Because we are normalizing $\vec T\,'(t)$, it is usually easier to scale it first.  We see that $\vec T\,'(t)$ is parallel to $\bracket{2t+1,1-2t}$, which has length $\sqrt{(2t+1)^2+(1-2t)^2}=\sqrt{8t^2+2}$, leading to the same $\vec N(t)$.
 
-Using this formula for $\vec N(t)$, we compute the unit tangent and normal vectors for $t=-1,0$ and 1 and sketch them in \autoref{fig:tannorm4}.
-\mfigure{0in}{Plotting unit tangent and normal vectors in \autoref{ex_tannorm4}.}{fig:tannorm4}{figures/figtannorm4}}
+\mtable{Plotting unit tangent and normal vectors in \autoref{ex_tannorm4}.}{fig:tannorm4}{\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-1.1,ymax=6.5,xmin=-2.1,xmax=7]
+\addplot [thick,draw={\colorone}, smooth,domain=-2:2,samples=30] ({x^2-x},{x^2+x});
+\draw [thick,->,draw={\colortwo}] (axis cs:0,0)--(axis cs:-.707,.707);
+\draw [thick,->,draw={\colortwo}] (axis cs:0,2)--(axis cs:0.32,2.95);
+\draw [thick,->,draw={\colortwo}] (axis cs:2,0)--(axis cs:1.05,-.32);
+\draw [thick,->,draw={\colortwo}] (axis cs:0,0)--(axis cs:.707,.707);
+\draw [thick,->,draw={\colortwo}] (axis cs:0,2)--(axis cs:.95,1.68);
+\draw [thick,->,draw={\colortwo}] (axis cs:2,0)--(axis cs:1.68,0.95);
+\draw [thick,->,draw={\colorone}] (axis cs:3.79,.77)--(axis cs:3.75,.75);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
+
+Using this formula for $\vec N(t)$, we compute the unit tangent and normal vectors for $t=-1,0$ and 1 and sketch them in \autoref{fig:tannorm4}.}
 
 The final result for $\vec N(t)$ in \autoref{ex_tannorm4} is suspiciously similar to $\vec T(t)$. There is a clear reason for this. If $\vec u =\bracket{u_1,u_2}$ is a unit vector in $\mathbb{R}^2$, then the \textit{only} unit vectors orthogonal to $\vec u$ are $\bracket{-u_2,u_1}$ and $\bracket{u_2,-u_1}$. Given $\vec T(t)$, we can quickly determine $\vec N(t)$ if we know which term to multiply by $(-1)$.
 
@@ -117,20 +158,21 @@ Consider again \autoref{fig:tannorm4}, where we have plotted some unit tangent a
 
 \theorem{thm:concave}{Unit Normal Vectors in $\mathbb{R}^2$}
 {Let $\vec r(t)$ be a vector--valued function in $\mathbb{R}^2$ where $\vec T\,'(t)$ is smooth on an open interval $I$. Let $t_0$ be in $I$ and $\vec T(t_0) =\bracket{t_1,t_2}$ Then $\vec N(t_0)$ is either
-$$\vec N(t_0) =\bracket{-t_2,t_1}\quad \text{or}\quad \vec N(t_0) =\bracket{t_2,-t_1},$$ whichever is the vector that points to the concave side of the graph of $\vec r$.
+\[\vec N(t_0) =\bracket{-t_2,t_1}\quad \text{or}\quad \vec N(t_0) =\bracket{t_2,-t_1},\]
+whichever is the vector that points to the concave side of the graph of $\vec r$.
 \index{unit tangent vector!in $\mathbb{R}^2$}\index{unit normal vector!in $\mathbb{R}^2$}}
 
 \subsection*{Application to Acceleration}
 
 Let \vrt\ be a position function. It is a fact (stated later in \autoref{thm:acc_plane}) % and proved in the Exercises) 
  that acceleration, \vat, lies in the plane defined by $\vec T$ and $\vec N$. That is, there are scalars $a_{\text{T}}$ and $a_{\text{N}}$ such that 
-$$\vat = a_{\text{T}}\vec T(t) + a_{\text{N}}\vec N(t).$$
+\[\vat = a_{\text{T}}\vec T(t) + a_{\text{N}}\vec N(t).\]
 The scalar $a_{\text{T}}$ measures ``how much'' acceleration is in the direction of travel, that is, it measures the component of acceleration that affects the speed. The scalar $a_{\text{N}}$ measures ``how much'' acceleration is perpendicular to the direction of travel, that is, it measures the component of acceleration that affects the direction of travel.
 \index{unit tangent vector!and acceleration}\index{unit normal vector!and acceleration}
 
 We can find $a_{\text{T}}$ using the orthogonal projection of $\vec a(t)$ onto $\vec T(t)$ (review \autoref{def:orthogonal_projection} in \autoref{sec:dot_product} if needed).
 Recalling that since $\vec T(t)$ is a unit vector, $\vec T(t)\cdot\vec T(t)=1$, so we have 
-$$\proj{a(t)}{T(t)} = \frac{\vec a(t)\cdot\vec T(t)}{\vec T(t)\cdot\vec T(t)}\vec T(t) = \underbrace{\big(\vec a(t)\cdot\vec T(t)\big)}_{a_{\text{T}}}\vec T(t).$$
+\[\proj{a(t)}{T(t)} = \frac{\vec a(t)\cdot\vec T(t)}{\vec T(t)\cdot\vec T(t)}\vec T(t) = \underbrace{\big(\vec a(t)\cdot\vec T(t)\big)}_{a_{\text{T}}}\vec T(t).\]
 Thus the amount of \vat\ in the direction of $\vec T(t)$ is $a_{\text{T}}=\vat\cdot\vec T(t)$. The same logic gives $a_{\text{N}} = \vat\cdot\vec N(t)$.
 
 While this is a fine way of computing $a_{\text{T}}$, there are simpler ways of finding $a_{\text{N}}$ (as finding $\vec N$ itself can be complicated). The following theorem gives alternate formulas for $a_{\text{T}}$ and $a_{\text{N}}$.
@@ -139,7 +181,7 @@ While this is a fine way of computing $a_{\text{T}}$, there are simpler ways of 
 \setboxwidth{20pt}
 \theorem{thm:acc_plane}{Acceleration in the Plane Defined by $\vec T$ and $\vec N$}
 {Let \vrt\ be a position function with acceleration \vat\ and unit tangent and normal vectors $\vec T(t)$ and $\vec N(t)$. Then $\vat$ lies in the plane defined by $\vec T(t)$ and $\vec N(t)$; that is, there exists scalars $a_\text{T}$ and $a_\text{N}$ such that
-$$\vat = a_\text{T}\vec T(t) + a_\text{N}\vec N(t).$$
+\[\vat = a_\text{T}\vec T(t) + a_\text{N}\vec N(t).\]
 Moreover,
 \begin{align*}
 a_\text{T} &= \vat\cdot\vec T(t) = \frac{d}{dt}\Big(\norm{\vec v(t)}\Big) \\
@@ -176,7 +218,7 @@ Also, the Pythagorean theorem tells us that
 \example{ex_tannorm5}{Computing $a_\text{T}$ and $a_\text{N}$}
 {Let $\vrt =\bracket{3\cos t, 3\sin t, 4t}$ as in Examples \ref{ex_tannorm1} and \ref{ex_tannorm3}. Find $a_\text{T}$ and $a_\text{N}$.}
 {The previous examples give $\vat =\bracket{-3\cos t,-3\sin t,0}$ and 
-$$\vec T(t) =\bracket{-\frac35\sin t,\frac35\cos t,\frac45}\quad \text{and}\quad \vec N(t) =\bracket{-\cos t,-\sin t,0}.$$
+\[\vec T(t) =\bracket{-\frac35\sin t,\frac35\cos t,\frac45}\quad \text{and}\quad \vec N(t) =\bracket{-\cos t,-\sin t,0}.\]
 We can find $a_\text{T}$ and $a_\text{N}$ directly with dot products:
 \begin{align*}
 a_\text{T} &= \vat\cdot \vec T(t) = \frac95\cos t\sin t-\frac95\cos t\sin t+0 = 0.\\
@@ -189,32 +231,72 @@ What is the practical interpretation of these numbers? $a_\text{T}=0$ means the 
 \example{ex_tannorm6}{Computing $a_\text{T}$ and $a_\text{N}$}
 {Let $\vrt=\bracket{t^2-t,t^2+t}$ as in Examples \ref{ex_tannorm2} and \ref{ex_tannorm4}. Find $a_\text{T}$ and $a_\text{N}$.}
 {The previous examples give $\vat =\bracket{2,2}$ and
-$$\vec T(t) =\bracket{\frac{2t-1}{\sqrt{8t^2+2}},\frac{2t+1}{\sqrt{8t^2+2}}}\quad \text{and}\quad \vec N(t) =\bracket{\frac{2t+1}{\sqrt{8t^2+2}},-\frac{2t-1}{\sqrt{8t^2+2}}}.$$
+\[\vec T(t) =\bracket{\frac{2t-1}{\sqrt{8t^2+2}},\frac{2t+1}{\sqrt{8t^2+2}}}\quad \text{and}\quad \vec N(t) =\bracket{\frac{2t+1}{\sqrt{8t^2+2}},-\frac{2t-1}{\sqrt{8t^2+2}}}.\]
 While we can compute $a_\text{N}$ using $\vec N(t)$, we instead demonstrate using another formula from \autoref{thm:acc_plane}.
 \begin{align*}
 a_\text{T} &= \vat\cdot\vec T(t) = \frac{4t-2}{\sqrt{8t^2+2}}+\frac{4t+2}{\sqrt{8t^2+2}} = \frac{8t}{\sqrt{8t^2+2}}.\\
 a_\text{N} &= \sqrt{\norm{\vat}^2-a_\text{T}^2} = \sqrt{8-\left(\frac{8t}{\sqrt{8t^2+2}}\right)^2}=\frac{4}{\sqrt{8t^2+2}}\rule{0pt}{25pt}.
 \end{align*}
-When $t=2$, $\ds a_\text{T} = \frac{16}{\sqrt{34}}%\approx 2.74
-$ and $\ds a_\text{N} = \frac{4}{\sqrt{34}}% \approx 0.69
+When $t=2$, $\ds a_{\text{T}} = \frac{16}{\sqrt{34}}%\approx 2.74
+$ and $\ds a_{\text{N}} = \frac{4}{\sqrt{34}}% \approx 0.69
 $. We interpret this to mean that at $t=2$, the particle is acculturating mostly by increasing speed, not by changing direction. As the path near $t=2$ is relatively straight, this should make intuitive sense. \autoref{fig:tannorm6} gives a graph of the path for reference.
-\mfigure{0in}{Graphing $\vec r(t)$ in \autoref{ex_tannorm6}.}{fig:tannorm6}{figures/figtannorm6}
+\mtable{Graphing $\vec r(t)$ in \autoref{ex_tannorm6}.}{fig:tannorm6}{\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-1.1,ymax=6.5,xmin=-2.1,xmax=7]
+\addplot [thick,draw={\colorone}, smooth,domain=-2.1:2.1,samples=30] ({x^2-x},{x^2+x});
+\filldraw [black] (axis cs: 2,6) circle (1.5pt)
+ node [below right] {\scriptsize $t=2$};
+\filldraw [black] (axis cs: 0,0) circle (1.5pt)
+ node [above right] {\scriptsize $t=0$};
+\draw (axis cs: 4.2,1.8) node {\scriptsize $\vec r(t)$};
+\draw [thick,->,draw={\colorone}] (axis cs:3.79,.77)--(axis cs:3.75,.75);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
-Contrast this with $t=0$, where $a_\text{T} = 0$ and $a_\text{N} = 4/\sqrt{2}=2\sqrt2%\approx 2.82
+Contrast this with $t=0$, where $a_{\text{T}}=0$ and $a_{\text{N}}=4/\sqrt2=2\sqrt2 %\approx 2.82
 $. Here the particle's speed is not changing and all acceleration is in the form of direction change.}
 
 \example{ex_tannorm7}{Analyzing projectile motion}{A ball is thrown from a height of 240ft with an initial speed of 64ft/s and an angle of elevation of $30^\circ$. Find the position function \vrt\ of the ball and analyze $a_\text{T}$ and $a_\text{N}$.\index{projectile motion}}
-{Using \autoref{idea:projectile} of \autoref{sec:vvf_motion} we form the position function of the ball:
-$$\vrt =\bracket{\big(64\cos 30^\circ\big)t, -16t^2+\big(64\sin 30^\circ\big)t+240},$$
+{Using \autoeqref{idea:projectile} of \autoref{sec:vvf_motion} we form the position function of the ball:
+\[
+\vrt =\bracket{\big(64\cos 30^\circ\big)t, -16t^2+\big(64\sin 30^\circ\big)t+240},
+\]
 which we plot in \autoref{fig:tannorm7b}.
-\mfigure{0in}{Plotting the position of a thrown ball, with 1s increments shown.}{fig:tannorm7b}{figures/figtannorm7b}
+
+\mtable{Plotting the position of a thrown ball, with 1s increments shown.}{fig:tannorm7b}{\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-10,ymax=260,xmin=-10,xmax=310]
+\addplot [thick,draw={\colorone}, smooth,domain=0:5,samples=30]
+ ({64*cos(30)*x},{-16*x^2+64*sin(30)*x+240});
+\filldraw [black] (axis cs: 0,240) circle (1.5pt)
+ node [below right] {\scriptsize $t=0$};
+\filldraw [black] (axis cs: 55.4,256) circle (1.5pt)
+ node (A)[ ] {};
+\filldraw [black] (axis cs: 111,240) circle (1.5pt)
+ node [above right] {\scriptsize $t=2$};
+\filldraw [black] (axis cs: 166,192) circle (1.5pt)
+ node [above right] {\scriptsize $t=3$};
+\filldraw [black] (axis cs: 222,112) circle (1.5pt)
+ node [above right] {\scriptsize $t=4$};
+\filldraw [black] (axis cs: 277,0) circle (1.5pt) node (B) [] {};
+\draw [thick,->,draw={\colorone}] (axis cs:149.649, 209.76)--(axis cs:152,207);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\draw (A) node[above] {{\scriptsize $t=1$}};
+\draw (B) node [shift={(9pt,8pt)}] {\scriptsize $t=5$};
+\end{tikzpicture}}
 
 From this we find $\vvt =\bracket{64\cos 30^\circ, -32t+64\sin 30^\circ}$ and $\vat =\bracket{0,-32}$. Computing $\vec T(t)$ is not difficult, and with some simplification we find
-$$\vec T(t) =\bracket{\frac{\sqrt{3}}{\sqrt{t^2-2t+4}}, \frac{1-t}{\sqrt{t^2-2t+4}}}.$$
+\[\vec T(t) =\bracket{\frac{\sqrt{3}}{\sqrt{t^2-2t+4}}, \frac{1-t}{\sqrt{t^2-2t+4}}}.\]
 With $\vat$ as simple as it is, finding $a_\text{T}$ is also  simple:
-$$a_\text{T} = \vat\cdot \vec T(t) = \frac{32t-32}{\sqrt{t^2-2t+4}}.$$
+\[a_\text{T} = \vat\cdot \vec T(t) = \frac{32t-32}{\sqrt{t^2-2t+4}}.\]
 We choose to not find $\vec N(t)$ and find $a_\text{N}$ through the formula $a_\text{N} = \sqrt{\norm{\vat}^2-a_\text{T}^2\,}$\,:
-$$a_\text{N} = \sqrt{32^2-\left(\frac{32t-32}{\sqrt{t^2-2t+4}}\right)^2} = \frac{32\sqrt{3}}{\sqrt{t^2-2t+4}}.$$
+\[a_\text{N} = \sqrt{32^2-\left(\frac{32t-32}{\sqrt{t^2-2t+4}}\right)^2} = \frac{32\sqrt{3}}{\sqrt{t^2-2t+4}}.\]
 \autoref{fig:tannorm7a} gives a table of values of $a_\text{T}$ and $a_\text{N}$. When $t=0$, we see the ball's speed is decreasing; when $t=1$ the speed of the ball is unchanged. This corresponds to the fact that at $t=1$ the ball reaches its highest point.
 
 After $t=1$ we see that $a_\text{N}$ is decreasing in value. This is because as the ball falls, it's path becomes straighter and most of the acceleration is in the form of speeding up the ball, and not in changing its direction.

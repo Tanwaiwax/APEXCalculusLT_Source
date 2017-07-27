@@ -12,11 +12,53 @@ Given any quantity described by a function, we are often interested in the large
 \end{enumerate}
 The maximum and minimum values are the \textbf{extreme values}, or \textbf{extrema}, of $f$ on $I$.\index{extrema!absolute}}
 
-\mtable[-2.5in]{Graphs of functions with and without extreme values.}{fig:extreme}{\begin{tabular}{c}
- \myincludegraphics{figures/figextreme1} \\ (a) \\\addlinespace
- \myincludegraphics{figures/figextreme2} \\ (b) \\\addlinespace
- \myincludegraphics{figures/figextreme3} \\ (c)
-\end{tabular}}
+\mtable[-2.5in]{Graphs of functions with and without extreme values.}{fig:extreme}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1, axis y line=middle,axis x line=middle,
+ymin=-.9,ymax=5.5,xmin=-2.2,xmax=2.2,name=myplot]
+\addplot [thick,draw={\colorone},smooth,domain=-2:2] {-x^2+5};
+\filldraw [thick,draw={\colorone},fill=white] (axis cs:2,1) circle (1.5pt);
+\filldraw [thick,draw={\colorone},fill=white] (axis cs:-2., 1) circle (1.5pt);
+\draw [thick] (axis cs:-2,0) node {\textbf{(}};
+\draw [thick] (axis cs:2,0) node {\textbf{)}};
+\draw [ultra thick] (axis cs:-2,0) -- (axis cs:2,0);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(a)\\
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1, axis y line=middle,axis x line=middle,
+ymin=-.9,ymax=5.5,xmin=-2.2,xmax=2.2,name=myplot]
+\addplot [thick,draw={\colorone},smooth,domain=-2:2] {-x^2+5};
+\filldraw [thick,draw={\colorone}] (axis cs:2,1) circle (1.5pt);
+\filldraw [thick,draw={\colorone}] (axis cs:-2., 1) circle (1.5pt);
+\filldraw [thick,draw={\colorone}] (axis cs:0,3) circle (1.5pt);
+\filldraw [thick,draw={\colorone},fill=white] (axis cs:0,5) circle (1.5pt);
+\draw [thick] (axis cs:-2,0) node {\textbf{[}};
+\draw [thick] (axis cs:2,0) node {\textbf{]}};
+\draw [ultra thick] (axis cs:-2,0) -- (axis cs:2,0);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(b)\\
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1, axis y line=middle,axis x line=middle,
+ymin=-.9,ymax=5.5,xmin=-2.2,xmax=2.2,name=myplot]
+\addplot [thick,draw={\colorone},smooth,domain=-2:2] {-x^2+5};
+\filldraw [thick,draw={\colorone}] (axis cs:2,1) circle (1.5pt);
+\filldraw [thick,draw={\colorone}] (axis cs:-2., 1) circle (1.5pt);
+\draw [thick] (axis cs:-2,0) node {\textbf{[}};
+\draw [thick] (axis cs:2,0) node {\textbf{]}};
+\draw [ultra thick] (axis cs:-2,0) -- (axis cs:2,0);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(c)}
 
 Consider \autoref{fig:extreme}. The function displayed in (a) has a maximum, but no minimum, as the interval over which the function is defined is open. In (b), the function has a minimum, but no maximum; there is a discontinuity in the ``natural'' place for the maximum to occur. Finally, the function shown in (c) has both a maximum and a minimum; note that the function is continuous and the interval on which it is defined is closed. 
  
@@ -33,7 +75,21 @@ This theorem states that $f$ has extreme values, but it does not offer any advic
 \youtubeVideo{3-6bdDXzl9M}{Finding Critical Numbers --- Example 2}
 
 \example{ex_extval1}{Approximating extreme values}{Consider $f(x) = 2x^3-9x^2$ on $I=[-1,5]$, as graphed in \autoref{fig:extval1}. Approximate the extreme values of $f$.
-\mfigure{0in}{A graph of $f(x) = 2x^3-9x^2$ as in \autoref{ex_extval1}.}{fig:extval1}{figures/figextval1}}
+%
+\mtable{A graph of $f(x) = 2x^3-9x^2$ as in \autoref{ex_extval1}.}{fig:extval1}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=5,xtick={-1,5}, axis y line=middle,axis x line=middle,
+ymin=-31,ymax=31,xmin=-1.5,xmax=5.5,name=myplot]
+\addplot [thick,draw={\colorone},smooth,domain=-1:5] {2*x^3-9*x^2};
+\filldraw [thick,draw={\colorone}] (axis cs:5,25) node [black,above] {\tiny$(5,25)$} circle (1pt);
+\filldraw [thick,draw={\colorone}] (axis cs:-1., -11) circle (1pt);
+\filldraw [draw={\colorone}] (axis cs: 3,-27) node [black,shift={(0,9pt)}] {\tiny$(3,-27)$} circle (1pt);
+\filldraw [draw={\colorone}] (axis cs: -1,-11) node [black,shift={(4pt,-5pt)}] {\tiny$(-1,-11)$} circle (1pt) ;
+\filldraw [draw={\colorone}] (axis cs: 0,0) node [black,above right] {\tiny$(0,0)$} circle (1pt); 
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}}
 {The graph is drawn in such a way to draw attention to certain points. It certainly seems that the smallest $y$ value is $-27$, found when $x=3$. It also seems that the largest $y$ value is 25, found at the endpoint of $I$, $x=5$. We use the word \textit{seems}, for by the graph alone we cannot be sure the smallest value is not less than $-27$. Since the problem asks for an approximation, we approximate the extreme values to be $25$ and $-27$.}
 
 Notice how the minimum value came at ``the bottom of a valley,'' and the maximum value came at an endpoint. Also note that while $0$ is not an extreme value, it would be if we narrowed our interval to $[-1,4]$. The idea that the point $(0,0)$ is the location of an extreme value for some interval is important, leading us to a definition.
@@ -51,8 +107,16 @@ The relative maximum and minimum values comprise the \textbf{relative extrema} o
 		
 We briefly practice using these definitions.
 
-\mfigure{0in}{A graph of $f(x) = (3x^4-4x^3-12x^2+5)/5$ as in \autoref{ex_extval2}.}%
-{fig:extval2}{figures/figextval2}
+\mtable{A graph of $f(x) = (3x^4-4x^3-12x^2+5)/5$ as in \autoref{ex_extval2}.}%
+{fig:extval2}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,xtick={-2,-1,1,2,3},
+ytick={-6,-4,-2,0,2,4,6},minor y tick num=1,ymin=-6.5,ymax=6.9,xmin=-2.2,xmax=3.2]
+\addplot [thick,draw={\colorone},smooth,domain=-2:3] {(3*x^4-4*x^3-12*x^2+5)/5};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 \example{ex_extval2}{Approximating relative extrema}{Consider $f(x) = (3x^4-4x^3-12x^2+5)/5$, as shown in \autoref{fig:extval2}. Approximate the relative extrema of $f$. At each of these points, evaluate $\fp$.}
 {We still do not have the tools to exactly find the relative extrema, but the graph does allow us to make reasonable approximations. It seems $f$ has relative minima at $x=-1$ and $x=2$, with values of $f(-1)=0$ and $f(2) = -5.4$. It also seems that $f$ has a relative maximum at the point $(0,1)$. 
@@ -61,7 +125,16 @@ We approximate the relative minima to be $0$ and $-5.4$; we approximate the rela
 
 It is straightforward to evaluate $\fp(x) =\frac15(12x^3-12x^2-24x)$ at $x=0, 1$ and $2$. In each case, $\fp(x) = 0$.}
 
-\mfigure{0in}{A graph of $f(x) = (x-1)^{2/3}+2$ as in \autoref{ex_extval3}.}{fig:extval3}{figures/figextval3}
+\mtable{A graph of $f(x) = (x-1)^{2/3}+2$ as in \autoref{ex_extval3}.}{fig:extval3}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-.5,ymax=3.5,xmin=-.6,xmax=2.6]
+\addplot [thick,draw={\colorone},domain=-1.144:1.144] ({x*x*x+1},{x*x+2});
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
+
 \example{ex_extval3}{Approximating relative extrema}{Approximate the relative extrema of $f(x) = (x-1)^{2/3}+2$, shown in \autoref{fig:extval3}. At each of these points, evaluate $\fp$.}
 {The figure implies that $f$ does not have any relative maxima, but has a relative minimum at $(1,2)$. In fact, the graph suggests that not only is this point a relative minimum, $y=f(1)=2$ is \textit{the} minimum value of the function.
 
@@ -79,8 +152,15 @@ If $c$ is a critical number of $f$, then the point $(c,f(c))$ is a \textbf{criti
 
 It isn't too hard to see why this should be true.  If $\fp$ is defined at a relative extreme, then the tangent line must be horizontal.  Otherwise, we'd be able to move along the graph in the direction given by the tangent line to get a more extreme value.
 
-
-\mfigure{0in}{A graph of $f(x)=x^3$ which has a critical value of $x=0$, but no relative extrema.}{fig:extreme4}{figures/figextreme4}
+\mtable{A graph of $f(x)=x^3$ which has a critical value of $x=0$, but no relative extrema.}{fig:extreme4}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,xtick={-1,1},ytick={-1,1},
+ymin=-1.1,ymax=1.1,xmin=-1.1,xmax=1.1]
+\addplot [thick,draw={\colorone},domain=-1:1] {x^3};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 Be careful to understand that this theorem states  ``All relative extrema occur at critical points.'' It does not say ``All critical numbers produce relative extrema.'' For instance, consider $f(x) = x^3$. Since $\fp(x) = 3x^2$, it is straightforward to determine that $x=0$ is a critical number of $f$. However, $f$ has no relative extrema, as illustrated in \autoref{fig:extreme4}.\bigskip
 
@@ -98,25 +178,37 @@ Be careful to understand that this theorem states  ``All relative extrema occur 
 We practice these ideas in the next examples.
 
 \example{ex_extval4}{Finding extreme values}{Find the extreme values of $f(x) = 2x^3+3x^2-12x$ on $[0,3]$, graphed in \autoref{fig:extval4}(a).}
-{We follow the steps outlined in \autoref{idea:extrema}. We first evaluate $f$ at the endpoints: $$f(0)=2(0)^3+3(0)^2-12(0) = 0 \quad \text{and}\quad f(3)=2(3)^3+3(3)^2-12(3) =45.$$
+{We follow the steps outlined in \autoref{idea:extrema}. We first evaluate $f$ at the endpoints:
+\[f(0)=2(0)^3+3(0)^2-12(0) = 0 \quad \text{and}\quad f(3)=2(3)^3+3(3)^2-12(3) =45.\]
 Next, we find the critical values of $f$ on $[0,3]$. We see that $\fp(x) = 6x^2+6x-12 = 6(x+2)(x-1)$; therefore the critical values of $f$ are $x=-2$ and $x=1$. Since $x=-2$ does not lie in the interval $[0,3]$, we ignore it. Evaluating $f$ at the only critical number in our interval gives: $f(1)=2(1)^3+3(1)^2-12(1) = -7$. 
 
-\mtable[-.5in]{A graph and table of extreme values of $f(x) = 2x^3+3x^2-12x$ on $[0,3]$ as in \autoref{ex_extval4}.}{fig:extval4}{\begin{tabular}{c}
-\myincludegraphics{figures/figextval4} \\ (a) \\\addlinespace
+\mtable[-.5in]{A graph and table of extreme values of $f(x) = 2x^3+3x^2-12x$ on $[0,3]$ as in \autoref{ex_extval4}.}{fig:extval4}{%
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-7.5,ymax=45.5,xmin=-.4,xmax=3.3]
+\addplot [thick,draw={\colorone},domain=0:3] {2*x^3+3*x^2-12*x};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(a)\smallskip\\
 \begin{tabular}{cr}
  $x$ & $f(x)$ \\ \midrule
  0 & 0 \\
  1 & $-7$\\
  3 & 45
-\end{tabular} \\ (b)
-\end{tabular}}
+\end{tabular}
+\\(b)}
+
 The table in \autoref{fig:extval4}(b) gives $f$ evaluated at the ``important'' $x$ values in $[0,3]$. We can easily see the maximum and minimum values of $f$: the maximum value is $45$ and the minimum value is $-7$.}
 
 Note that all this was done without the aid of a graph; this work followed an analytic algorithm and did not depend on any visualization. \autoref{fig:extval4}(a) shows $f$ and we can confirm our answer, but it is important to  understand that these answers can be found without graphical assistance.
 
 We practice again.
 
-\example{ex_extval5}{Finding extreme values}{Find the maximum and minimum values of $f$ on $[-4,2]$, where $$f(x) = \begin{cases} (x-1)^2 & x\leq 0 \\ x+1 & x>0 \end{cases} .$$
+\example{ex_extval5}{Finding extreme values}{Find the maximum and minimum values of $f$ on $[-4,2]$, where
+\[f(x) = \begin{cases} (x-1)^2 & x\leq 0 \\ x+1 & x>0 \end{cases}.\]
 }
 {%
 Here $f$ is piecewise--defined, but we can still apply \autoref{idea:extrema} because it is continuous. Evaluating $f$ at the endpoints gives: 
@@ -125,11 +217,24 @@ Here $f$ is piecewise--defined, but we can still apply \autoref{idea:extrema} be
  $-4$ & 25 \\
  0 & 1 \\
  2 & 3
-\end{tabular} \\ (a) \\
-\myincludegraphics{figures/figextval5} \\ (b)}
+\end{tabular}
+\\(a)\\
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-.9,ymax=25.5,xmin=-4.5,xmax=2.5]
+\addplot [thick,draw={\colorone},domain=-4:0] {(x-1)^2};
+\addplot [thick,draw={\colorone},domain=0:2] {(x+1)};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(b)}
 \[f(-4)=(-4-1)^2=(-5)^2 = 25 \quad \text{and} \quad f(2)=2+1 = 3.\]
 
-We now find the critical numbers of $f$. We have to define $\fp$ in a piecewise manner; it is $$\fp(x) =\begin{cases} 2(x-1) & x < 0 \\ 1 & x>0 \end{cases} .$$ Note that while $f$ is defined for all of $[-4,2]$, $\fp$ is not, as the derivative of $f$ does not exist when $x=0$. (From the left, the derivative approaches $-2$; from the right the derivative is 1.) Thus one critical number of $f$ is $x=0$.
+We now find the critical numbers of $f$. We have to define $\fp$ in a piecewise manner; it is
+\[\fp(x) =\begin{cases} 2(x-1) & x < 0 \\ 1 & x>0 \end{cases} .\]
+Note that while $f$ is defined for all of $[-4,2]$, $\fp$ is not, as the derivative of $f$ does not exist when $x=0$. (From the left, the derivative approaches $-2$; from the right the derivative is 1.) Thus one critical number of $f$ is $x=0$.
 
 We now set $\fp(x) = 0$. When $x >0$, $\fp(x)$ is never 0.  When $x<0$, $\fp(x)$ is also never 0. (We may be tempted to say that $\fp(x) = 0 $ when $x=1$. However, this is nonsensical, for we only consider $\fp(x) = 2(x-1)$ when $x<0$, so we will ignore a solution that says $x=1$.) 
 
@@ -144,9 +249,17 @@ So we have three important $x$ values to consider: $x= -4, 2$ and $0$. We have a
  $\sqrt{\pi}$ & $-1$ \\
  2 & $-0.65$
 \end{tabular}
-\\ (a) \\
-\myincludegraphics{figures/figextval6}
-\\ (b)}
+\\(a)\\
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-1.1,ymax=1.1,xmin=-2.2,xmax=2.2]
+\addplot [thick,draw={\colorone},domain=-2:2,samples=40,smooth] {cos(deg(x^2))};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(b)}
 
 \example{ex_extval6}{Finding extreme values}{Find the extrema of  $f(x) = \cos (x^2)$ on $[-2,2]$.}
 {We again use \autoref{idea:extrema}. Evaluating $f$ at the endpoints of the interval gives: $f(-2) = f(2) = \cos (4) \approx -0.6536.$ We now find the critical values of $f$.
@@ -163,14 +276,24 @@ We consider one more example.
 
 \example{ex_extval7}{Finding extreme values}{Find the extreme values of $f(x) = \sqrt{1-x^2}$.} 
 {A closed interval is not given, so we find the extreme values of $f$ on its domain. This $f$ is defined whenever $1-x^2\geq 0$; thus the domain of $f$ is $[-1,1]$. Evaluating $f$ at either endpoint returns 0.
-\mtable{A graph and table of extrema of $f(x)=\sqrt{1-x^2}$ on $[-1,1]$ as in \autoref{ex_extval7}.}{fig:extval7}{\myincludegraphics{figures/figextval7}
-\\ (a) \smallskip\\
+\mtable{A graph and table of extrema of $f(x)=\sqrt{1-x^2}$ on $[-1,1]$ as in \autoref{ex_extval7}.}{fig:extval7}{%
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis equal,
+ytick={1},ymin=-.2,ymax=1.1,xmin=-1.2,xmax=1.2]
+\addplot [thick,draw={\colorone},smooth,domain=0:180] ({cos(x)},{sin(x)});
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(a)\smallskip\\
 \begin{tabular}{rc}
  $x$ & $f(x)$ \\ \midrule
  $-1$ & 0 \\
  0 & 1 \\
  1 & 0
-\end{tabular} \\ (b)}
+\end{tabular}
+\\(b)}
 
 Using the Chain Rule, we find $\ds \fp(x) = \frac{-x}{\sqrt{1-x^2}}$. The critical points of $f$ are found when $\fp(x) = 0$ or when $\fp$ is undefined. It is straightforward to find that $\fp(x) = 0$ when $x=0$, and $\fp$ is undefined when $x=\pm 1$, the endpoints of the interval. The table of important values is given in \autoref{fig:extval7}(b). The maximum value is 1, and the minimum value is 0.}
 

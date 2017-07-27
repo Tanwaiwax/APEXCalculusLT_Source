@@ -1,7 +1,7 @@
 \section{Numerical Integration}\label{sec:numerical_integration}
 
 The Fundamental Theorem of Calculus gives a concrete technique for finding the exact value of a definite integral. That technique is based on computing antiderivatives. Despite the power of this theorem, there are still situations where we must \textit{approximate} the value of the definite integral instead of finding its exact value. The first situation we explore is where we \textit{cannot} compute an antiderivative of the integrand. The second case is when we actually do not know the integrand, but only its value when evaluated at certain points.\index{integration!numerical}\index{numerical integration} %While we handle both situations in the same way, we address them separately here.
-
+%
 %\subsection*{An Antiderivative That Cannot Be Computed}
 \bigskip
 
@@ -9,22 +9,56 @@ The Fundamental Theorem of Calculus gives a concrete technique for finding the e
 %
 %This method of evaluating definite integrals has one significant shortcoming: not all functions have an antiderivative expressible in terms of elementary functions.  (Elementary functions are combinations of polynomials, $n^{\text{th}}$ root, rational, exponential, logarithmic and trigonometric functions.). To be clear, we are not claiming that the antiderivatives are just \textit{hard} to find; rather, we are saying that we \textit{cannot} write them out using functions that we normally use. 
 An \sword{elementary function}\index{elementary function} is any function that is a combination of polynomials, $n^{\text{th}}$ roots, rational, exponential, logarithmic and trigonometric functions and their inverses. We can compute the derivative of any elementary function, but there are many elementary functions of which we cannot compute an antiderivative. For example, the following functions do not have antiderivatives that we can express with elementary functions:
-
-$$
-e^{-x^2}, \quad \sin(x^3)\quad \text{and} \quad \frac{\sin x}{x}.
-$$
+\[e^{-x^2}, \quad \sin(x^3)\quad \text{and} \quad \frac{\sin x}{x}.\]
 
 The simplest way to refer to the antiderivatives of $e^{-x^2}$ is to simply write $\ds\int e^{-x^2}\ dx$. 
 
-\mtable[-2in]{Graphically representing three definite integrals that cannot be evaluated using antiderivatives.}{fig:numerical1}{\myincludegraphics{figures/fignumerical1a}\bigskip\\ \myincludegraphics{figures/fignumerical1b}\bigskip\\ \myincludegraphics{figures/fignumerical1c}}
+\mtable[-2in]{Graphically representing three definite integrals that cannot be evaluated using antiderivatives.}{fig:numerical1}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,
+ymin=-.2,ymax=1.2,xmin=-.2,xmax=1.1]
+\addplot[draw={\colorone},fill={\coloronefill},area style,domain=0:1]
+ {exp(-x*x)}\closedcycle;
+\draw (axis cs:.75,1) node {\scriptsize $y=e^{-x^2}$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\bigskip\\
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,
+ymin=-.6,ymax=1.2,xmin=-1,xmax=1.7]
+\addplot[draw={\colorone},fill={\coloronefill},area style,domain=-pi/4:pi/2]
+ {sin(deg(x^3))}\closedcycle;
+\draw (axis cs:.6,.9) node {\scriptsize $y=\sin(x^3)$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\bigskip\\
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={5,10,15},
+ymin=-.3,ymax=1.1,xmin=-.9,xmax=15.9]
+\addplot[draw={\colorone},fill={\coloronefill},area style,domain=.5:4*pi]
+ {sin(deg(x))/x}\closedcycle;
+\draw (axis cs:10,.7) node {\scriptsize $\displaystyle y=\frac{\sin x}{x}$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 %How, then, can we solve problems involving definite integrals of such functions? We \textit{approximate.} 
 This section outlines three common methods of approximating the value of definite integrals. We describe each as a systematic method of approximating area under a curve. By approximating this area accurately, we find an accurate approximation of the corresponding definite integral.
 
 We will apply the methods we learn in this section to the following definite integrals:
-$$
-\int_0^1 e^{-x^2} \ dx, \quad \int_{-\frac{\pi}{4}}^{\frac{\pi}{2}} \sin(x^3) \ dx, \quad \text{and} \quad \int_{0.5}^{4\pi} \frac{\sin(x)}{x} \ dx,
-$$
+\[
+ \int_0^1 e^{-x^2} \ dx, \quad
+ \int_{-\frac{\pi}{4}}^{\frac{\pi}{2}} \sin(x^3) \ dx,
+ \quad \text{and} \quad
+ \int_{0.5}^{4\pi} \frac{\sin(x)}{x} \ dx,
+\]
 % todo Tim maybe use \pi/4 to \pi/2 in (b) instead?
 as pictured in \autoref{fig:numerical1}.
 
@@ -42,8 +76,41 @@ We start with a review of notation. Let $f$ be a continuous function on the inte
 {We begin by partitioning the interval $[0,1]$ into 5 equally spaced intervals. We have $\dx = \frac{1-0}5 = 1/5=0.2$, so
 \[x_0=0,\ x_1=0.2,\ x_2=0.4,\ x_3=0.6,\ x_4=0.8,\text{ and }x_5=1.\]
 
-\mtable{Approximating $\ds\int_0^1e^{-x^2}\ dx$ in \autoref{ex_num1} using (top) the left hand rule and (bottom) the right hand rule.}{fig:num1}{\myincludegraphics{figures/fignum1b}\bigskip\\
-\myincludegraphics{figures/fignum1a}}
+\mtable{Approximating $\ds\int_0^1e^{-x^2}\ dx$ in \autoref{ex_num1} using (top) the left hand rule and (bottom) the right hand rule.}{fig:num1}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={.2,.4,.6,.8,1},
+ymin=-.2,ymax=1.2,xmin=-.2,xmax=1.1]
+\addplot[draw={\colorone},fill={\coloronefill},area style,domain=0:1]
+ {exp(-x*x)}\closedcycle;
+\foreach \x in {0,0.2,...,.8} {
+ \edef\y{exp(-\x*\x)}
+ \edef\temp{\noexpand\draw[thick,draw={\colortwo}]
+  (axis cs:\x,0)rectangle(axis cs:{\x+.2},{\y});
+ }\temp
+}
+\draw (axis cs:.75,1) node {\scriptsize $y=e^{-x^2}$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\bigskip\\
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={.2,.4,.6,.8,1},
+ymin=-.2,ymax=1.2,xmin=-.2,xmax=1.1]
+\addplot[draw={\colorone},fill={\coloronefill},area style,domain=0:1]
+ {exp(-x*x)}\closedcycle;
+\foreach \x in {0.2,0.4,...,1} {
+ \edef\y{exp(-\x*\x)}
+ \edef\temp{\noexpand\draw[thick,draw={\colortwo}]
+  (axis cs:\x,0)rectangle(axis cs:{\x-.2},{\y});
+ }\temp
+}
+\draw (axis cs:.75,1) node {\scriptsize $y=e^{-x^2}$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 Using the Left Hand Rule, we have:
 \begin{align*}
@@ -63,7 +130,9 @@ Using the Right Hand Rule, we have:
 	&\approx 0.681.
 \end{align*}
 
-\autoref{fig:num1} shows the rectangles used in each method to approximate the definite integral. These graphs show that in this particular case, the Left Hand Rule is an over approximation and the Right Hand Rule is an under approximation. To get a better approximation, we could use more rectangles, as we did in \autoref{sec:riemann}. We could also average the Left and Right Hand Rule results together, giving $$ \frac{0.808 + 0.681}{2} = 0.7445.$$ The actual answer, accurate to 4 places after the decimal, is 0.7468, showing our average is a good approximation.}
+\autoref{fig:num1} shows the rectangles used in each method to approximate the definite integral. These graphs show that in this particular case, the Left Hand Rule is an over approximation and the Right Hand Rule is an under approximation. To get a better approximation, we could use more rectangles, as we did in \autoref{sec:riemann}. We could also average the Left and Right Hand Rule results together, giving
+\[\frac{0.808 + 0.681}{2} = 0.7445.\]
+The actual answer, accurate to 4 places after the decimal, is 0.7468, showing our average is a good approximation.}
 
 \mtable[-.5in]{Table of values used to approximate $\ds\int_{-\frac{\pi}4}^{\frac{\pi}2}\sin(x^3)\ dx$ in \autoref{ex_num2}.}{fig:num2a}{%
 	\begin{tabular}{lrll} 
@@ -83,10 +152,48 @@ Using the Right Hand Rule, we have:
 
 \example{ex_num2}{Approximating definite integrals with rectangles}{Approximate $\ds\int_{-\frac{\pi}4}^{\frac{\pi}2} \sin (x^3)\ dx$ using the Left and Right Hand Rules with 10 equally spaced subintervals.}
 {We begin by finding \dx:
-$$\frac{b-a}{n} = \frac{\pi/2 - (-\pi/4)}{10} = \frac{3\pi}{40}\approx 0.236.$$
+\[\frac{b-a}{n} = \frac{\pi/2 - (-\pi/4)}{10} = \frac{3\pi}{40}\approx 0.236.\]
 It is useful to write out the endpoints of the subintervals in a table; in \autoref{fig:num2a}, we give the exact values of the endpoints, their decimal approximations, and decimal approximations of $\sin(x^3)$ evaluated at these points. 
 
-\mtable{Approximating\\ $\ds\int_{-\frac{\pi}4}^{\frac{\pi}2}\sin(x^3)\ dx$ in \autoref{ex_num2} using (top) the left hand rule and (bottom) the right hand rule.}{fig:num2b}{\myincludegraphics{figures/fignum2b}\\ \myincludegraphics{figures/fignum2a}}
+\mtable{Approximating\\ $\ds\int_{-\frac{\pi}4}^{\frac{\pi}2}\sin(x^3)\ dx$ in \autoref{ex_num2} using (top) the left hand rule and (bottom) the right hand rule.}{fig:num2b}{%
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,
+ymin=-.7,ymax=1.2,xmin=-1,xmax=1.7]
+\addplot[draw={\colorone},fill={\coloronefill},area style,domain=-pi/4:pi/2]
+ {sin(deg(x^3))}\closedcycle;
+\foreach \x / \y in %
+                {-0.785/ -0.466, -0.550/-0.165, -0.314/ -0.0310,%
+                 -0.0785/-0.000484, 0.157/ 0.00388, 0.393/ 0.0605,
+                 0.628/ 0.246, 0.864/ 0.601, 1.10/ 0.971, 1.34/ 0.690} {
+ \addplot [thick,draw={\colortwo}] coordinates
+  {(\x+.2356,0) (\x+.2356,\y) (\x,\y) (\x,0) (\x+.2356,0)};
+}
+\draw (axis cs:.6,.9) node {\scriptsize $y=\sin(x^3)$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,
+ymin=-.7,ymax=1.2,xmin=-1,xmax=1.7]
+\addplot[draw={\colorone},fill={\coloronefill},area style,domain=-pi/4:pi/2]
+ {sin(deg(x^3))}\closedcycle;
+\foreach \x / \y in %
+               {-0.550/-0.165, -0.314/ -0.0310,%
+                -0.0785/-0.000484, 0.157/ 0.00388, 0.393/ 0.0605,
+                0.628/ 0.246, 0.864/ 0.601, 1.10/ 0.971, 1.34/ 0.690, 1.57/ -0.670} {
+  \addplot [thick,draw={\colortwo}] coordinates
+    {(\x-.2356,0) (\x-.2356,\y) (\x,\y) (\x,0) (\x-.2356,0)};
+}
+\draw (axis cs:.6,1.1) node {\scriptsize $y=\sin(x^3)$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
+
 Once this table is created, it is straightforward to approximate the definite integral using the Left and Right Hand Rules. (Note: the table itself is easy to create, especially with a standard spreadsheet program on a computer. The last two columns are all that are needed.) The Left Hand Rule sums the first 10 values of $\sin(x_i^3)$ and multiplies the sum by $\dx$; the Right Hand Rule sums the last 10 values of $\sin(x_i^3)$ and multiplies by $\dx$. Therefore we have:
 \begin{align*}
 	\text{Left Hand Rule: }\int_{-\frac{\pi}4}^{\frac{\pi}2}\sin(x^3)\ dx
@@ -101,13 +208,37 @@ The average of the Left and Right Hand Rules is 0.4275.  The actual answer, accu
 
 In \autoref{ex_num1} we approximated the value of $\ds \int_0^1 e^{-x^2}\ dx$ with 5 rectangles of equal width. \autoref{fig:num1} showed the rectangles used in the Left and Right Hand Rules. These graphs clearly show that rectangles do not match the shape of the graph all that well, and that accurate approximations will only come by using lots of rectangles. \index{Trapezoidal Rule}\index{numerical integration!Trapezoidal Rule}\index{integration!numerical!Trapezoidal Rule}
 
-\mfigure{0in}{Approximating $\int_0^1 e^{-x^2}\ dx$ using 5 trapezoids of equal widths.}{fig:num3a}{figures/fignum3a}
+\mtable{Approximating $\int_0^1 e^{-x^2}\ dx$ using 5 trapezoids of equal widths.}{fig:num3a}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={.2,.4,...,1},
+ymin=-.2,ymax=1.2,xmin=-.2,xmax=1.1]
+\addplot[draw={\colorone},fill={\coloronefill},area style,domain=0:1]
+ {exp(-x*x)}\closedcycle;
+\foreach\x in{0,.2,...,.8}{
+  \edef\y{{exp(-\x*\x)}}
+  \edef\z{{exp(-(\x+.2)*(\x+.2))}}
+  \edef\temp{\noexpand\addplot[thick,draw={\colortwo}] coordinates
+   {(\x,0) (\x,\y) ({\x+.2},\z) ({\x+.2},0) (\x,0)};
+ }\temp
+}
+\draw (axis cs:.75,1) node {\scriptsize $y=e^{-x^2}$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 Instead of using rectangles to approximate the area, we can instead use \textit{trapezoids.} In \autoref{fig:num3a}, we show the region under $f(x) = e^{-x^2}$ on $[0,1]$ approximated with 5 trapezoids of equal width; the top ``corners'' of each trapezoid lies on the graph of $f(x)$. It is clear from this figure that these trapezoids more accurately approximate the area under $f$ and hence should give a better approximation of $\int_0^1 e^{-x^2}\ dx$. (In fact, these trapezoids seem to give a \textit{great} approximation of the area.)
 
 \youtubeVideo{8z6JRFvjkpc}{The Trapezoid Rule for Approximating Integrals}
 
-\mfigure{0in}{The area of a trapezoid.}{fig:trapezoid}{figures/figtrapezoid}
+\mtable{The area of a trapezoid.}{fig:trapezoid}{\begin{tikzpicture}
+\draw(0,0)--node[pos=.5,left]{\small $a$}(0,1)--(1,1.5)
+ --node[pos=.5,right]{\small$b$}(1,0)--node[pos=.5,below]{\small$h$}(0,0);
+\draw(0,.1)--(.1,.1)--(.1,0);
+\draw(.9,0)--(.9,.1)--(1,.1);
+\draw(2.5,.75)node{Area = $\frac{a+b}2h$};
+\end{tikzpicture}}
+
 The formula for the area of a trapezoid is given in \autoref{fig:trapezoid}. We approximate $\int_0^1 e^{-x^2}\ dx$ with these trapezoids in the following example.
 
 \example{ex_num3}{Approximating definite integrals using trapezoids}{Use 5 trapezoids of equal width to approximate $\ds \int_0^1e^{-x^2}\ dx$.}
@@ -124,8 +255,10 @@ $x_i$ & $e^{-x_i^2}$ \\ \midrule
 1 & 0.368
 \end{tabular}}
 
-The leftmost trapezoid has legs of length 1 and 0.961 and a height of 0.2. Thus, by our formula, the area of the leftmost trapezoid is: $$ \frac{1+0.961}{2}(0.2) = 0.1961.$$
-Moving right, the next trapezoid has legs of length 0.961 and 0.852 and a height of 0.2. Thus its area is: $$\frac{0.961+0.852}2(0.2) = 0.1813.$$
+The leftmost trapezoid has legs of length 1 and 0.961 and a height of 0.2. Thus, by our formula, the area of the leftmost trapezoid is:
+\[\frac{1+0.961}{2}(0.2) = 0.1961.\]
+Moving right, the next trapezoid has legs of length 0.961 and 0.852 and a height of 0.2. Thus its area is:
+\[\frac{0.961+0.852}2(0.2) = 0.1813.\]
 
 The sum of the areas of all 5 trapezoids is:
 \begin{align*}
@@ -140,7 +273,7 @@ There are many things to observe in this example. Note how each term in the fina
 \frac12(0.2)\Big[(1+0.961) + (0.961+0.852) + (0.852+0.698) + ( 0.698+ 0.527) +(0.527 + 0.368)\Big].
 \]}\\
 Now notice that all numbers except for the first and the last are added twice. Therefore we can write the summation even more concisely as
-$$\frac{0.2}{2}\Big[1 + 2(0.961+0.852+0.698+0.527) + 0.368\Big].$$
+\[\frac{0.2}{2}\Big[1 + 2(0.961+0.852+0.698+0.527) + 0.368\Big].\]
 
 This is the heart of the \textbf{Trapezoidal Rule}, wherein a definite integral $\ds \int_a^b f(x) \ dx$ is approximated by using trapezoids of equal widths to approximate the corresponding area under $f$. Using $n$ equally spaced subintervals with endpoints $x_0$, $x_1$, \ldots, $x_n$, we again have $\ds \dx = \frac{b-a}n$. Thus:
 \begin{align*}
@@ -180,9 +313,24 @@ Consider three points $(x_1,y_1)$, $(x_2,y_2)$ and $(x_3,y_3)$ whose $x$--values
 \int_{x_1}^{x_3} f(x)\ dx = \frac{x_3-x_1}{6}\big(y_1+4y_2+y_3\big).\label{eq:simpsons}
 \end{equation}
 
-\mfigure{0in}{A graph of a function $f$ and a parabola that approximates it well on $[1,3]$.}{fig:numsimpsons}{figures/fignumsimpsons}
+\mtable{A graph of a function $f$ and a parabola that approximates it well on $[1,3]$.}{fig:numsimpsons}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2,3},
+ytick={1,2,3},ymin=-.2,ymax=4,xmin=.5,xmax=3.5]
+\addplot [draw={\colorone},domain=.9:3.1,thick] {11-12*x+4.5*x^2-.5*x^3};
+\addplot [draw={\colortwo},dashed,domain=.9:3.1,thick] {8-6.5*x+1.5*x^2};
+\filldraw (axis cs:1,3) circle (1pt);
+\filldraw (axis cs:2,1) circle (1pt);
+\filldraw (axis cs:3,2) circle (1pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
-Consider \autoref{fig:numsimpsons}. A function $f$ goes through the 3 points shown and the parabola $g$ that also goes through those points is graphed with a dashed line. Using our equation from above, we know exactly that $$\int_1^3 g(x) \ dx = \frac{3-1}{6}\big(3+4(1)+2\big)= 3.$$ Since $g$ is a good approximation for $f$ on $[1,3]$, we can state that $$\int_1^3 f(x)\ dx \approx 3.$$
+Consider \autoref{fig:numsimpsons}. A function $f$ goes through the 3 points shown and the parabola $g$ that also goes through those points is graphed with a dashed line. Using our equation from above, we know exactly that
+\[\int_1^3 g(x) \ dx = \frac{3-1}{6}\big(3+4(1)+2\big)= 3.\]
+Since $g$ is a good approximation for $f$ on $[1,3]$, we can state that
+\[\int_1^3 f(x)\ dx \approx 3.\]
 
 Notice how the interval $[1,3]$ was split into two subintervals as we needed 3 points. Because of this, whenever we use Simpson's Rule, we need to break the interval into an even number of subintervals. 
 
@@ -207,8 +355,29 @@ $x_i$ & $e^{-x_i^2}$ \\ \midrule
 0.5 & 0.779 \\
 0.75 & 0.570 \\
 1 & 0.368
-\end{tabular} \\ (a) \\
-\myincludegraphics{figures/fignum5b} \\ (b)}
+\end{tabular}
+\\ (a) \\
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={.25,.5,.75,1},
+ymin=-.2,ymax=1.2,xmin=-.2,xmax=1.1]
+\addplot[draw={\colorone},fill={\coloronefill},area style,domain=0:1]
+ {exp(-x*x)}\closedcycle;
+\addplot [draw={\colortwo},domain=0:.5,thick] {1-0.042*x-0.8*x^2};
+\addplot [draw={\colortwo},domain=.5:1,thick] {1.218-0.907*x+0.0569*x^2};
+\addplot [thick,draw={\colortwo}] coordinates {(0,1) (0,0) (.5,0) (.5,.779)};
+\addplot [thick,draw={\colortwo}] coordinates {(.5,0) (1,0) (1,.368)};
+\draw (axis cs:.75,1) node {\scriptsize $y=e^{-x^2}$};
+\filldraw (axis cs:0,1) circle (1pt)
+          (axis cs:.25,.939) circle (1pt)
+          (axis cs:.5,.779) circle (1pt)
+          (axis cs:.75,.57) circle (1pt)
+          (axis cs:1,.368) circle (1pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\ (b)}
 \[
  \int_0^1e^{-x^2}\ dx
  \approx \frac{0.25}{3}\Big[1+4(0.939)+2(0.779)+4(0.570) + 0.368\Big]
@@ -234,8 +403,41 @@ Recall in \autoref{ex_num1} we stated that the correct answer, accurate to 4 pla
   $\phantom{-}1.10$ & $\phantom{-}0.971$ \\
   $\phantom{-}1.34$ & $\phantom{-}0.690$ \\
   $\phantom{-}1.57$ & $-0.670$ \\
-\end{tabular} \\ (a) \\
-\myincludegraphics{figures/fignum6b} \\ (b)}%
+\end{tabular}
+\\ (a) \\
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,
+ymin=-.7,ymax=1.2,xmin=-1,xmax=1.7]
+\addplot[draw={\colorone},fill={\coloronefill},area style,domain=-pi/4:pi/2]
+ {sin(deg(x^3))}\closedcycle;
+\addplot [draw={\colortwo},domain=-.785:-.314,thick] {-.11-.721*x-1.49*x^2};
+\addplot [thick,draw={\colortwo}] coordinates {(-.785,-.466) (-.785,0) (-.314,0) (-.314,-.03)};
+\addplot [draw={\colortwo},domain=-.314:.157,thick] {.004+.037*x-.236*x^2};
+\addplot [thick,draw={\colortwo}] coordinates {(-.314,0) (.157,0) (.157,.004)};
+\addplot [draw={\colortwo},domain=.157:.628,thick] {.037-.395*x+1.156*x^2};
+\addplot [thick,draw={\colortwo}] coordinates {(.157,0) (.628,0) (.628,.246)};
+\addplot [draw={\colortwo},domain=.628:1.1,thick] {-.632+1.32*x+.13*x^2};
+\addplot [thick,draw={\colortwo}] coordinates {(.628,0) (1.1,0) (1.1,.971)};
+\addplot [draw={\colortwo},domain=1.1:1.57,thick] {-11.98+22.46*x-9.72*x^2};
+\addplot [thick,draw={\colortwo}] coordinates {(1.1,0) (1.57,0) (1.57,-.67)};
+\filldraw (axis cs:-.785,-.466 ) circle (1pt)
+          (axis cs:-.55,-.165 ) circle (1pt)
+          (axis cs:-.314,-.031 ) circle (1pt)
+          (axis cs:-.0785,0 ) circle (1pt)
+          (axis cs:.157,.004 ) circle (1pt)
+          (axis cs:.393,.061 ) circle (1pt)
+          (axis cs:.628,.246 ) circle (1pt)
+          (axis cs:.864,.601 ) circle (1pt)
+          (axis cs:1.1,.971 ) circle (1pt)
+          (axis cs:1.34,.69 ) circle (1pt)
+          (axis cs:1.57,-.67 ) circle (1pt);
+\draw (axis cs:.6,.9) node {\scriptsize $y=\sin(x^3)$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\ (b)}%
 \autoref{fig:num6a}(a) shows the table of values that we used in the past for this problem, shown here again for convenience. Again, $\dx = (\pi/2+\pi/4)/10 \approx 0.236$.
 
 Simpson's Rule states that 
@@ -344,23 +546,47 @@ We revisit Examples \ref{ex_num3} and \ref{ex_num5} and compute the error bounds
 {\textbf{Trapezoidal Rule with $n=5$:}
 
 We start by computing the $2^\text{nd}$ derivative of $f(x) = e^{-x^2}$:
+%
+\mtable{Graphing $\fpp(x)$ in \autoref{ex_num7} to help establish error bounds.}{fig:num7a}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,
+ymin=-2.1,ymax=.7,xmin=-.1,xmax=1.1]
+\addplot[draw={\colorone},smooth,thick,domain=0:1] {exp(-x*x)*(4*x*x-2)};
+\draw (axis cs:.8,-1.5) node {\scriptsize $y=e^{-x^2}(4x^2-2)$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
+%
 \[\fpp(x) = e^{-x^2}(4x^2-2).\]
-\mfigure{0in}{Graphing $\fpp(x)$ in \autoref{ex_num7} to help establish error bounds.}{fig:num7a}{figures/fignum7a}
 \autoref{fig:num7a} shows a graph of $\fpp(x)$ on $[0,1]$. It is clear that the largest value of $\fpp$, in absolute value, is 2. Thus we let $M=2$ and apply the error formula from \autoref{thm:numerical_error}.
 \[E_T = \frac{(1-0)^3}{12\cdot 5^2}\cdot 2 = 0.00\overline{6}.\]
 
 Our error estimation formula states that our approximation of 0.7445 found in \autoref{ex_num3} is within 0.0067 of the correct answer, hence we know that
-$$0.7445-0.0067 = .7378 \leq \int_0^1e^{-x^2}\ dx \leq 0.7512 = 0.7445 + 0.0067.$$ We had earlier computed the exact answer, correct to 4 decimal places, to be 0.7468, affirming the validity of \autoref{thm:numerical_error}.\bigskip\\
+\[0.7445-0.0067 = .7378 \leq \int_0^1e^{-x^2}\ dx \leq 0.7512 = 0.7445 + 0.0067.\]
+We had earlier computed the exact answer, correct to 4 decimal places, to be 0.7468, affirming the validity of \autoref{thm:numerical_error}.\bigskip\\
 \textbf{Simpson's Rule with $n=4$:}
 
 We start by computing the $4^\text{th}$ derivative of $f(x) = e^{-x^2}$:
+%
+\mtable{Graphing $f\,^{(4)}(x)$ in \autoref{ex_num7} to help establish error bounds.}{fig:num7b}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,minor y tick num=4,
+ymin=-8,ymax=13.5,xmin=-.1,xmax=1.1]
+\addplot[draw={\colorone},smooth,thick,domain=0:1] {exp(-x*x)*(16*x^4-48*x*x+12)};
+\draw (axis cs:.7,11) node {\scriptsize $y=e^{-x^2}(16x^4-48x^2+12)$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
+%
 \[f\,^{(4)}(x) = e^{-x^2}(16x^4-48x^2+12).\]
-\mfigure{0in}{Graphing $f\,^{(4)}(x)$ in \autoref{ex_num7} to help establish error bounds.}{fig:num7b}{figures/fignum7b}
 \autoref{fig:num7b} shows a graph of $f\,^{(4)}(x)$ on $[0,1]$. It is clear that the largest value of $f\,^{(4)}$, in absolute value, is 12. Thus we let $M=12$ and apply the error formula from \autoref{thm:numerical_error}.
 \[E_s = \frac{(1-0)^5}{180\cdot 4^4}\cdot 12 = 0.00026.\]
 
 Our error estimation formula states that our approximation of $0.7468\overline{3}$ found in \autoref{ex_num5} is within 0.00026 of the correct answer, hence we know that
-$$0.74683-0.00026 = .74657 \leq \int_0^1e^{-x^2}\ dx \leq 0.74709 = 0.74683 + 0.00026.$$ Once again we affirm the validity of \autoref{thm:numerical_error}.}
+\[0.74683-0.00026 = .74657 \leq \int_0^1e^{-x^2}\ dx \leq 0.74709 = 0.74683 + 0.00026.\]
+Once again we affirm the validity of \autoref{thm:numerical_error}.}
 
 % todo write an example of ``find the n so that the estimate is within ? of the actual''
 
@@ -391,7 +617,7 @@ Approximate the distance they traveled.}
 The most difficult aspect of this problem is converting the given data into the form we need it to be in. The speed is measured in miles per hour, whereas the time is measured in 30 second increments. 
 
 We need to compute $\dx = (b-a)/n$. Clearly, $n=24$. What are $a$ and $b$? Since we start at time $t=0$, we have that $a=0$. The final recorded time came after 24 periods of 30 seconds, which is 12 minutes or 1/5 of an hour. Thus we have
-$$\dx = \frac{b-a}{n} = \frac{1/5-0}{24} = \frac1{120}; \quad \frac{\dx}{3} = \frac{1}{360}.$$
+\[\dx = \frac{b-a}{n} = \frac{1/5-0}{24} = \frac1{120}; \quad \frac{\dx}{3} = \frac{1}{360}.\]
 
 Thus the distance traveled is approximately:
 \begin{align*}

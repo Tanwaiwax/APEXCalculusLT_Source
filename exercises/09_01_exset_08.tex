@@ -1,20 +1,22 @@
-\exerciseset{In Exercises}{, sketch the hyperbola defined by the given equation. Label the center.% and foci.
+\exerciseset{In Exercises}{, sketch the hyperbola defined by the given equation. Label the center%
+\ifthenelse{\boolean{abridgeConics}}{}{ and foci}.
 }{
 
 \exercise{$\ds \frac{(x-1)^2}{16}-\frac{(y+2)^2}{9}=1$}{
 \begin{tikzpicture}
 \begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
-axis y line=middle,axis x line=middle,name=myplot,
+axis y line=middle,axis x line=middle,name=myplot,axis equal,
 minor x tick num=4,minor y tick num=1,ymin=-6.5,ymax=2.5,xmin=-6.5,xmax=7.5]
 
 \addplot [thick, smooth,domain=-70:70,samples=30] ({4*sec(x)+1},{3*tan(x)-2});
 \addplot [thick, smooth,domain=-70:70,samples=30] ({-4*sec(x)+1},{3*tan(x)-2});
 
-\filldraw (axis cs: 6,-2) circle (1.5pt)
-                                        (axis cs: -4,-2) circle (1.5pt)
-                                        (axis cs: 1,-2) circle (1.5pt)
-                                        (axis cs: 5,-2) circle (1.5pt)
-                                        (axis cs: -3,-2) circle (1.5pt);
+\ifthenelse{\boolean{abridgeConics}}{}{
+\filldraw (axis cs: 6,-2) circle (1.5pt)(axis cs: -4,-2) circle (1.5pt);
+}
+\filldraw (axis cs: 1,-2) circle (1.5pt)
+          (axis cs: 5,-2) circle (1.5pt)
+          (axis cs: -3,-2) circle (1.5pt);
 \end{axis}
 
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
@@ -25,17 +27,18 @@ minor x tick num=4,minor y tick num=1,ymin=-6.5,ymax=2.5,xmin=-6.5,xmax=7.5]
 \exercise{$\ds (y-4)^2-\frac{(x+1)^2}{25}=1$}{
 \begin{tikzpicture}
 \begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
-axis y line=middle,axis x line=middle,name=myplot,
+axis y line=middle,axis x line=middle,name=myplot,axis equal,
 minor x tick num=4,minor y tick num=4,ymin=-2.5,ymax=10.5,xmin=-10.5,xmax=9.5]
 
 \addplot [thick, smooth,domain=-70:70,samples=30] ({5*tan(x)-1},{sec(x)+4});
 \addplot [thick, smooth,domain=-70:70,samples=30] ({5*tan(x)-1},{-sec(x)+4});
 
-\filldraw (axis cs: -1,9.1) circle (1.5pt)
-                                        (axis cs: -1,-1.1) circle (1.5pt)
-                                        (axis cs: -1,4) circle (1.5pt)
-                                        (axis cs: -1,5) circle (1.5pt)
-                                        (axis cs: -1,3) circle (1.5pt);
+\ifthenelse{\boolean{abridgeConics}}{}{
+\filldraw (axis cs: -1,9.1) circle (1.5pt)(axis cs: -1,-1.1) circle (1.5pt);
+}
+\filldraw (axis cs: -1,4) circle (1.5pt)
+          (axis cs: -1,5) circle (1.5pt)
+          (axis cs: -1,3) circle (1.5pt);
 \end{axis}
 
 \node [right] at (myplot.right of origin) {\scriptsize $x$};

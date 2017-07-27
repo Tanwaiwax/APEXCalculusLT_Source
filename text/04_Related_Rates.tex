@@ -79,7 +79,7 @@ $
 %	\frac{dA}{dt} &= 2\pi r\frac{dr}{dt}
 %\end{align*}
 %
-%Our work above told us that $\frac{dA}{dt} = 16$ in$^2$/s. Solving for $\frac{dr}{dt}$, we have $$\frac{dr}{dt} = \frac{8}{\pi r}.$$
+%Our work above told us that $\frac{dA}{dt} = 16$ in$^2$/s. Solving for $\frac{dr}{dt}$, we have \[\frac{dr}{dt} = \frac{8}{\pi r}.\]
 
 Note how our answer is not a number, but rather a function of $r$. In other words, \textit{the rate at which the radius is growing depends on how big the circle already is.} If the circle is very large, adding 2 in$^3$ of water will not make the circle much bigger at all. If the circle is dime--sized, adding the same amount of water will make a radical change in the radius of the circle.
 
@@ -95,7 +95,15 @@ In some ways, our problem was (intentionally) ill--posed. We need to specify a c
 
 If the radar gun is moving (say, attached to a police car) then radar readouts are only immediately understandable if the gun and the object are moving along the same line. If a police officer is traveling 60 mph and gets a readout of 15 mph, he knows that the car ahead of him is moving away at a rate of 15 miles an hour, meaning the car is traveling 75 mph. (This straight--line principle is one reason officers park on the side of the highway and try to shoot straight back down the road. It gives the most accurate reading.)
 
-\mfigure{0in}{A sketch of a police car (at bottom) attempting to measure the speed of a car (at right) in \autoref{ex_rr3}.}{fig:rr3}{figures/figrr3}
+\mtable{A sketch of a police car (at bottom) attempting to measure the speed of a car (at right) in \autoref{ex_rr3}.}{fig:rr3}{\begin{tikzpicture}[>=latex]
+\draw(0,0) -- (3,0) node [pos=.5,above] {\scriptsize $B=1/2$} -- (0,-3) node [pos=.4,below] {\scriptsize $C$}-- (0,0) node [pos=.5,rotate=90,shift={(.1,.2)}] {\scriptsize $A=1/2$};
+\draw[thick] (0,-3.5) -- (0,.5) node [above] {\scriptsize $N$};
+\draw[thick] (-.5,0) -- (3.5,0) node [right] {\scriptsize $E$};
+\filldraw[fill={\colortwo},draw={\colortwo}] (0,-3) circle (2pt) node [right] {\scriptsize Officer};
+\filldraw[fill=black,draw=black] (3,0) circle (2pt) node [below ] {\scriptsize \quad Car};
+\draw[->,thick] (-.2,-3.3) -- (-.2,-2.7);
+\draw[->,thick] (2.7,.2) -- (3.3,.2);
+\end{tikzpicture}}
 
 Suppose an officer is driving due north at 30 mph and sees a car moving due east, as shown in \autoref{fig:rr3}. Using his radar gun, he measures a reading of 20 mph. By using landmarks, he believes both he and the other car are about 1/2 mile from the intersection of their two roads. 
 
@@ -124,7 +132,13 @@ The other driver appears to be speeding slightly.	}
 
 \example{ex_rr4}{Studying related rates}{A camera is placed on a tripod 10 ft from the side of a road. The camera is to turn to track a car that is to drive by at 100 mph for a promotional video. The video's planners want to know what kind of motor the tripod should be equipped with in order to properly track the car as it passes by.  \autoref{fig:rr4} shows the proposed setup.
 
-\mfigure{1in}{Tracking a speeding car (at left) with a rotating camera.}{fig:rr4}{figures/figrr4}
+\mtable[1in]{Tracking a speeding car (at left) with a rotating camera.}{fig:rr4}{\begin{tikzpicture}[>=latex]
+\draw (-3,0) -- (0,0) -- (0,-2) node [shift={(-5pt,10pt)}] {\small $\theta$} node [right,pos=.5] {\scriptsize 10ft}-- cycle;
+\draw [<->, thick] (-3.5,0) -- node [below,pos=.5] {\scriptsize $x$} (.5,0);
+\draw [fill={\colortwo},draw={\colortwo}] (-3,0) circle (2pt);
+\draw [fill=black] (0,-2) circle (2pt);
+\draw [->] (-3,.2) -- (-2,.2) node [above,pos=.5] {\scriptsize 100mph};
+\end{tikzpicture}}
 
 How fast must the camera be able to turn to track the car?}
 {We seek information about how fast the camera is to \textit{turn}; therefore, we need an equation that will relate an angle $\theta$ to the position of the camera and the speed and position of the car.

@@ -7,22 +7,24 @@ Using this formula, it is easy to verify that, without intervention, the riders 
 We have been given a \textit{position} function, but what we want to compute is a velocity at a specific point in time, i.e., we want an \textit{instantaneous velocity}. We do not currently know how to calculate this.
 
 However, we do know from common experience how to calculate an \textit{average velocity}. (If we travel 60 miles in 2 hours, we know we had an average velocity of 30 mph.) We looked at this concept in \autoref{sec:limit_intro} when we introduced the difference quotient. We have 
-	$$\frac{\text{change in distance}}{\text{change in time}} = \frac{\text{``\ rise\ ''}}{\text{run}} = \text{average velocity}.$$
+	\[\frac{\text{change in distance}}{\text{change in time}} = \frac{\text{``\ rise\ ''}}{\text{run}} = \text{average velocity}.\]
 	
 We can approximate the instantaneous velocity at $t=2$ by considering the average velocity over some time period containing $t=2$. If we make the time interval small, we will get a good approximation. (This fact is commonly used. For instance, high speed cameras are used to track fast moving objects. Distances are measured over a fixed number of frames to generate an accurate approximation of the velocity.)
 
 Consider the interval from $t=2$ to $t=3$ (just before the riders hit the ground). On that interval, the average velocity is 
-		$$\frac{f(3)-f(2)}{3-2} = \frac{f(3)-f(2)}{1} =-80\ \text{ft/s},$$
+		\[\frac{f(3)-f(2)}{3-2} = \frac{f(3)-f(2)}{1} =-80\ \text{ft/s},\]
 where the minus sign indicates that the riders are moving \textit{down}. By narrowing the interval we consider, we will likely get a better approximation of the instantaneous velocity. On $[2,2.5]$ we have 
-	$$\frac{f(2.5)-f(2)}{2.5-2} = \frac{f(2.5)-f(2)}{0.5} =-72\ \text{ft/s}.$$
+	\[\frac{f(2.5)-f(2)}{2.5-2} = \frac{f(2.5)-f(2)}{0.5} =-72\ \text{ft/s}.\]
 
 We can do this for smaller and smaller intervals of time. For instance, over a time span of 1/10$^\text{th}$ of a second, i.e., on $[2,2.1]$, we have 
-$$\frac{f(2.1)-f(2)}{2.1-2} = \frac{f(2.1)-f(2)}{0.1} =-65.6\ \text{ft/s}.$$
+\[\frac{f(2.1)-f(2)}{2.1-2} = \frac{f(2.1)-f(2)}{0.1} =-65.6\ \text{ft/s}.\]
 
 Over a time span of 1/100$^\text{th}$ of a second, on $[2,2.01]$, the average velocity is
-$$\frac{f(2.01)-f(2)}{2.01-2} = \frac{f(2.01)-f(2)}{0.01} =-64.16\ \text{ft/s}.$$
+\[\frac{f(2.01)-f(2)}{2.01-2} = \frac{f(2.01)-f(2)}{0.01} =-64.16\ \text{ft/s}.\]
 
-What we are really computing is the average velocity on the interval $[2,2+h]$ for small values of $h$. That is, we are computing $$\frac{f(2+h) - f(2)}{h}$$ where $h$ is the change in time after $2$ seconds.
+What we are really computing is the average velocity on the interval $[2,2+h]$ for small values of $h$. That is, we are computing
+\[\frac{f(2+h) - f(2)}{h}\]
+where $h$ is the change in time after $2$ seconds.
 
 What we really want is for $h=0$, but this, of course, returns the familiar ``$0/0$'' %\zerooverzero\ 
 indeterminate form. So we employ a limit, as we did in \autoref{sec:limit_intro}.
@@ -68,15 +70,58 @@ Graphically, we can view the average velocities we computed numerically as the s
 As $h\to 0$, these secant lines approach the \textit{tangent line}, a line that goes through the point $(2,f(2))$ with the special slope of $-64$. In parts (c) and (d) of \autoref{fig:derivfalling}, we zoom in around the point $(2,86)$. In (c) we see the secant line, which approximates $f$ well, but not as well the tangent line shown in (d).
 
 \begin{figure}[!ht]
-%	\flushinner{%
 	\begin{tabular}{cc}
-		\myincludegraphics{figures/figderivfalling} &
-		\myincludegraphics{figures/figderivfalling2}\\
-		(a) & (b) \\\addlinespace
-		\myincludegraphics{figures/figderivfalling3} &
-		\myincludegraphics{figures/figderivfalling4}\\
-		(c) & (d)\\
-	\end{tabular}%}
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,axis y line=middle,axis x line=middle,
+ymin=-50,ymax=160,xmin=-.5,xmax=3.49,name=myplot]
+\addplot[draw={\colorone},smooth,thick,domain=0:3.5]{150-16*x*x};
+\addplot [draw={\colortwo},domain=1:3.5,thick] {-80*(x-2)+86};
+\filldraw [black] (axis cs:2,86) circle (1pt);
+\filldraw [black] (axis cs:3,6) circle (1pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+		&
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,axis y line=middle,axis x line=middle,
+ymin=-10,ymax=129,xmin=1.8,xmax=3.4,name=myplot]
+\addplot [draw={\colorone},smooth,thick,domain=1.8:3.4]{150-16*x*x};
+\addplot [draw={\colortwo},domain=1.8:3.2,thick] {-80*(x-2)+86};
+\filldraw [black] (axis cs:2,86) circle (1pt);
+\filldraw [black] (axis cs:3,6) circle (1pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(a) & (b) \\\addlinespace
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,axis y line=middle,axis x line=middle,
+ymin=-10,ymax=129,xmin=1.4,xmax=2.6,name=myplot]
+\addplot [draw={\colorone},smooth,thick,domain=1.4:2.6]{150-16*x*x};
+\addplot [draw={\colortwo},domain=1.42:2.6,thick] {-80*(x-2)+86};
+\filldraw [black] (axis cs:2,86) circle (1pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,axis y line=middle,axis x line=middle,
+ymin=-10,ymax=129,xmin=1.4,xmax=2.6,name=myplot]
+\addplot [draw={\colorone},smooth,thick,domain=1.4:2.6]{150-16*x*x};
+\addplot [draw={\colortwo},domain=1.42:2.6,thick] {-64*(x-2)+86};
+\filldraw [black] (axis cs:2,86) circle (1pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(c) & (d)\\
+	\end{tabular}
 	\caption{Parts (a), (b) and (c) show the secant line to $f(x)$ with $h=1$, zoomed in different amounts. Part (d) shows the tangent line to $f$ at $x=2$.}\label{fig:derivfalling}
 \end{figure}
 
@@ -129,7 +174,19 @@ Some examples will help us understand these definitions.
 	\item The tangent line at $x=3$ has slope $23$ and goes through the point $(3,f(3)) = (3,35)$. Thus the tangent line has equation $y=23(x-3)+35 = 23x-34$.
 	\end{enumerate}
 
-\mfigure{0in}{A graph of $f(x) = 3x^2+5x-7$ and its tangent lines at $x=1$ and $x=3$.}{fig:tangent1}{figures/figtangent1}
+\mtable{A graph of $f(x) = 3x^2+5x-7$ and its tangent lines at $x=1$ and $x=3$.}{fig:tangent1}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,axis y line=middle,axis x line=middle,
+ymin=-11,ymax=66,xmin=-.1,xmax=4.1,name=myplot]
+\addplot [draw={\colorone},smooth,thick,domain=0:4] {3*x*x+5*x-7};
+\addplot [draw={\colortwo},domain=.1:2.2,thick] {11*(x-1)+1};
+\addplot [draw={\colortwo},domain=1.8:3.8,thick] {23*(x-3)+35};
+\filldraw [black] (axis cs:1,1) circle (1pt);
+\filldraw [black] (axis cs:3,35) circle (1pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 A graph of $f$ is given in \autoref{fig:tangent1} along with the tangent lines at $x=1$ and $x=3$.}
 
@@ -142,11 +199,22 @@ A graph of $f$ is given in \autoref{fig:tangent1} along with the tangent lines a
 %
 %\example{ex_normal1}{Finding equations of normal lines}{Let $f(x) = 3x^2+5x-7$, as in \autoref{ex_derv_point1}. Find the equations of the normal lines to the graph of $f$ at $x=1$ and $x=3$.
 %}
-%{In \autoref{ex_derv_point1}, we found that $\fp(1)=11$. Hence at $x=1$, the normal line will have slope $-1/11$. An equation for the normal line is $$n(x) = \frac{-1}{11}(x-1)+1.$$
+%{In \autoref{ex_derv_point1}, we found that $\fp(1)=11$. Hence at $x=1$, the normal line will have slope $-1/11$. An equation for the normal line is \[n(x) = \frac{-1}{11}(x-1)+1.\]
 %The normal line is plotted with $y=f(x)$ in \autoref{fig:normal1}. Note how the line looks perpendicular to $f$. (A key word here is ``looks.'' Mathematically, we say that the normal line \emph{is} perpendicular to $f$ at $x=1$ as the slope of the normal line is the opposite--reciprocal of the slope of the tangent line. However, normal lines may not always \emph{look} perpendicular. The aspect ratio of the picture of the graph plays a big role in this.)
-%\mfigure{0in}{A graph of $f(x)=3x^2+5x-7$, along with its normal line at $x=1$.}{fig:normal1}{figures/fignormal1}
+%\mtable{A graph of $f(x)=3x^2+5x-7$, along with its normal line at $x=1$.}{fig:normal1}{\begin{tikzpicture}
+%\begin{axis}[width=1.16\marginparwidth,x=1cm,y=1cm,tick label style={font=\scriptsize},
+%minor x tick num=1,axis y line=middle,axis x line=middle,
+%ymin=-.1,ymax=3.5,xmin=-0.1,xmax=4.3,name=myplot]
+%\addplot [draw={\colorone},smooth,thick,domain=0:4] {3*x*x+5*x-7};
+%\addplot [draw={\colortwo},domain=.2:2.5,thick] {(-1/11)*(x-1)+1};
+%\filldraw [black] (axis cs:1,1) circle (1pt);
+%\filldraw [black] (axis cs:3,35) circle (1pt);
+%\end{axis}
+%\node [right] at (myplot.right of origin) {\scriptsize $x$};
+%\node [above] at (myplot.above origin) {\scriptsize $y$};
+%\end{tikzpicture}}
 %
-%We also found that $\fp(3) = 23$, so the normal line to the graph of $f$ at $x=3$ will have slope $-1/23$. An equation for the normal line is $$n(x) = \frac{-1}{23}(x-3)+35.$$}
+%We also found that $\fp(3) = 23$, so the normal line to the graph of $f$ at $x=3$ will have slope $-1/23$. An equation for the normal line is \[n(x) = \frac{-1}{23}(x-3)+35.\]}
 
 Linear functions are easy to work with; many functions that arise in the course of solving real problems are not easy to work with. A common practice in mathematical problem solving is to approximate difficult functions with not--so--difficult functions. Lines are a common choice. It turns out that at any given point on the graph of a differentiable function $f$, the best linear approximation to $f$ is its tangent line. That is one reason we'll spend considerable time finding tangent lines to functions.
 
@@ -169,11 +237,27 @@ So given a line $f(x) = ax+b$, the derivative at any point $x$ will be $a$; that
 
 It is now easy to see that the tangent line to the graph of $f$ at $x=1$ is just $f$, with the same being true for $x=7$.}
 
-We often desire to find the tangent line to the graph of a function without knowing the actual derivative of the function. In these cases, the best we may be able to do is approximate the tangent line. We demonstrate this in the next example.\\
-\mfigure{0in}{$f(x) = \sin x$ graphed with an approximation to its tangent line at $x=0$.}{fig:tangentsinx}{figures/figtangentsinx}
+We often desire to find the tangent line to the graph of a function without knowing the actual derivative of the function. In these cases, the best we may be able to do is approximate the tangent line. We demonstrate this in the next example.
 
 \example{ex_der_num_approx}{Numerical Approximation of the Tangent Line}{Approximate the equation of the tangent line to the graph of $f(x)=\sin x$ at $x=0$.}
-{In order to find the equation of the tangent line, we need a slope and a point. The point is given to us: $(0,\sin 0) = (0,0)$. To compute the slope, we need the derivative. This is where we will make an approximation. Recall that $$\fp(0) \approx \frac{\sin(0+h)- \sin 0}{h}$$ for a small value of $h$. We choose (somewhat arbitrarily) to let $h=0.1$. Thus $$\fp(0) \approx \frac{\sin(0.1)-\sin 0}{0.1} \approx 0.9983.$$
+{In order to find the equation of the tangent line, we need a slope and a point. The point is given to us: $(0,\sin 0) = (0,0)$. To compute the slope, we need the derivative. This is where we will make an approximation. Recall that
+\[\fp(0) \approx \frac{\sin(0+h)- \sin 0}{h}\]
+for a small value of $h$. We choose (somewhat arbitrarily) to let $h=0.1$. Thus
+%
+\mtable{$f(x) = \sin x$ graphed with an approximation to its tangent line at $x=0$.}{fig:tangentsinx}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,xtick={-3.14,-1.57,1.57,3.14},
+xticklabels={$-\pi$,$-\frac{\pi}2$,$\frac{\pi}2$,$\pi$},axis y line=middle,
+axis x line=middle,ymin=-1.1,ymax=1.1,xmin=-3.5,xmax=3.5,name=myplot]
+\addplot [draw={\colorone},smooth,thick,domain=-3.5:3.5] {sin(deg(x))};
+\addplot [draw={\colortwo},domain=-1:1,thick] {.9983*x};
+\filldraw [black] (axis cs:0,0) circle (1pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
+%
+\[\fp(0) \approx \frac{\sin(0.1)-\sin 0}{0.1} \approx 0.9983.\]
 Thus our approximation of the equation of the tangent line is $y = 0.9983(x-0) +0 = 0.9983x$; it is graphed in \autoref{fig:tangentsinx}. The graph seems to imply the approximation is rather good.}
 
 Recall from \autoref{sec:limit_analytically} that $\ds \lim_{x\to 0}\frac{\sin x}x =1$, meaning for values of $x$ near 0, $\sin x \approx x$. Since the slope of the line $y=x$ is 1 at $x=0$, it should seem reasonable that ``the slope of $f(x)=\sin x$'' is near 1 at $x=0$. In fact, since we \textit{approximated} the value of the slope to be $0.9983$, we might guess the \textit{actual value} is 1. We'll come back to this later.\bigskip
@@ -202,7 +286,9 @@ The output is the ``derivative function,'' $\fp(x)$. The $\fp(x)$ function will 
 
 %\setlength{\specialboxlength}{\textwidth-10pt}
 \definition{def:the_derivative}{Derivative Function}
-{Let $f$ be a differentiable function on an open interval $I$. The function $$\fp(x) = \lim_{h\to 0} \frac{f(x+h)-f(x)}{h}$$ is \sword{the derivative of $f$}.\index{derivative!as a function}\index{derivative!notation}\\
+{Let $f$ be a differentiable function on an open interval $I$. The function
+\[\fp(x) = \lim_{h\to 0} \frac{f(x+h)-f(x)}{h}\]
+is \sword{the derivative of $f$}.\index{derivative!as a function}\index{derivative!notation}\\
 
 \sword{Notation:} 
 
@@ -300,9 +386,17 @@ Thinking back to \autoref{ex_der_num_approx}, we can find the slope of the tange
 \example{ex_not_diff}{Finding the derivative of a piecewise defined function}{Find the derivative of the absolute value function,
 \[f(x) = \abs{x} = \begin{cases}-x & x<0 \\ x & x\geq 0\end{cases}.\]
 See \autoref{fig:absolutevalue}.}
-{We need to evaluate $\ds \lim_{h\to0}\frac{f(x+h)-f(x)}{h}.$ As $f$ is piecewise-defined, we need to consider separately the limits when $x<0$ and when $x>0$. \\
+{We need to evaluate $\ds \lim_{h\to0}\frac{f(x+h)-f(x)}{h}.$ As $f$ is piecewise-defined, we need to consider separately the limits when $x<0$ and when $x>0$.
 
-\mfigure{0in}{The absolute value function, $f(x) = \abs{x}$. Notice how the slope of the lines (and hence the tangent lines) abruptly changes at $x=0$.}{fig:absolutevalue}{figures/figabsolutevalue}
+\mtable{The absolute value function, $f(x) = \abs{x}$. Notice how the slope of the lines (and hence the tangent lines) abruptly changes at $x=0$.}{fig:absolutevalue}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,axis y line=middle,axis x line=middle,
+ymin=-.2,ymax=1.1,xmin=-1.1,xmax=1.1,name=myplot]
+\addplot [draw={\colorone},thick] coordinates {(-1,1) (0,0) (1,1)};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 When $x<0$:
 	\begin{align*}
@@ -312,9 +406,11 @@ When $x<0$:
 	&=	\lim_{h\to 0}-1 \\
 	&=	-1.
 	\end{align*}
-When $x>0$, a similar computation shows that $\ds \frac{d}{dx}\big(x\big) = 1$. \\
+When $x>0$, a similar computation shows that $\ds \frac{d}{dx}\big(x\big) = 1$.
 
-We need to also find the derivative at $x=0$. By the definition of the derivative at a point, we have $$\fp(0) = \lim_{h\to0}\frac{f(0+h)-f(0)}{h}.$$ Since $x=0$ is the point where our function's definition switches from one piece to the other, we need to consider left and right-hand limits. Consider the following, where we compute the left and right hand limits side by side.\\
+We need to also find the derivative at $x=0$. By the definition of the derivative at a point, we have
+\[\fp(0) = \lim_{h\to0}\frac{f(0+h)-f(0)}{h}.\]
+Since $x=0$ is the point where our function's definition switches from one piece to the other, we need to consider left and right-hand limits. Consider the following, where we compute the left and right hand limits side by side.\\
 \begin{minipage}[b]{.49\linewidth}
 \begin{align*}
 \lim_{h\to0^-}\frac{f(0+h)-f(0)}{h} &= \\
@@ -329,32 +425,50 @@ We need to also find the derivative at $x=0$. By the definition of the derivativ
 \lim_{h\to0^+}1 & =1
 \end{align*}
 \end{minipage}
-%		
-%		$$\begin{array}{ccccc}
-%		\displaystyle \lim_{h\to0}\frac{f(0+h)-f(0)}{h} & = & \displaystyle\lim_{h\to0^-}\frac{f(0+h)-f(0)}{h} &=&\displaystyle\lim_{h\to0^+}\frac{f(0+h)-f(0)}{h}\\
-%	\rule{0pt}{20pt}	&= & \displaystyle\lim_{h\to0^-}\frac{-h-0}{h} &=&\displaystyle\lim_{h\to0^+}\frac{h-0}{h}\\
-%	\rule{0pt}{15pt}	&= & \displaystyle\lim_{h\to0^-}-1 &=&\displaystyle\lim_{h\to0^+}1\\
-%	\rule{0pt}{12pt}	&= & -1 &=& 1\\
-%		\end{array}$$
-%		
-\mfigure{-1in}{A graph of the derivative of $f(x) = \abs{x}$.}{fig:absolutevalueprime}{figures/figabsolutevalueprime}
-
-\noindent
+%
+\mtable[-1in]{A graph of the derivative of $f(x) = \abs{x}$.}{fig:absolutevalueprime}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,axis y line=middle,axis x line=middle,
+ymin=-1.4,ymax=1.4,xmin=-1.1,xmax=1.1,name=myplot]
+\addplot [draw={\colorone},thick] coordinates {(-1,-1) (0,-1)};
+\addplot [draw={\colorone},thick] coordinates {(0,1) (1,1)};
+\filldraw [fill=white, thick] (axis cs:0,-1) circle (2pt);
+\filldraw [fill=white, thick] (axis cs:0,1) circle (2pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
+%
+%\noindent
 The last lines of each column tell the story: the left and right hand limits are not equal. Therefore the limit does not exist at 0, and $f$ is not differentiable at 0; see \autoref{fig:absolutevalueprime}.
-So we have $$\fp(x) = \begin{cases} -1 & x<0 \\ 1 & x>0\end{cases}.$$ 
+So we have
+\[\fp(x) = \begin{cases} -1 & x<0 \\ 1 & x>0\end{cases}.\] 
 At $x=0$, $\fp(x)$ does not exist; there is a jump discontinuity at 0. So $f(x) = \abs{x}$ is differentiable everywhere except at 0.}
 
 The point of non-differentiability came where the piecewise defined function switched from one piece to the other. Our next example shows that this does not always cause trouble.\bigskip
 
 \example{ex_diff_piecewise}{Finding the derivative of a piecewise defined function}{Find the derivative of $f(x)$, where $\ds f(x) = \begin{cases}\sin x & x\leq \pi/2 \\ 1 & x>\pi/2 \end{cases}.$ See \autoref{fig:piecewisesinx1}.}
 {Using \autoref{ex_deriv_sinx}, we know that when $x<\pi/2$, $\fp(x) = \cos x$. It is easy to verify that when $x>\pi/2$, $\fp(x) = 0$; consider:
-\mfigure{0in}{A graph of $f(x)$ as defined in \autoref{ex_diff_piecewise}.}{fig:piecewisesinx1}{figures/figpiecewisesinx1}
+
+\mtable{A graph of $f(x)$ as defined in \autoref{ex_diff_piecewise}.}{fig:piecewisesinx1}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,xtick={1.57},xticklabels={$\frac{\pi}2$},axis y line=middle,
+axis x line=middle,ymin=-.4,ymax=1.4,xmin=-.1,xmax=2.1,name=myplot]
+\addplot [draw={\colorone},smooth,thick,domain=-.1:1.57] {sin(deg(x))};
+\addplot [draw={\colorone},smooth,thick] coordinates {(1.57,1) (2.,1)};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
+
 \[
  \lim_{h\to0}\frac{f(x+h) - f(x)}{h}
  = \lim_{h\to0}\frac{1-1}{h} = \lim_{h\to0}0 =0.
 \]
 
-So far we have $$\fp(x) = \begin{cases}\cos x & x<\pi/2\\ 0 & x>\pi/2\end{cases}.$$ We still need to find $\fp(\pi/2)$. Notice at $x=\pi/2$ that both pieces of $\fp$ are 0, meaning we can state that $\fp(\pi/2)=0$. 
+So far we have
+\[\fp(x) = \begin{cases}\cos x & x<\pi/2\\ 0 & x>\pi/2\end{cases}.\]
+We still need to find $\fp(\pi/2)$. Notice at $x=\pi/2$ that both pieces of $\fp$ are 0, meaning we can state that $\fp(\pi/2)=0$. 
 
 Being more rigorous, we can again evaluate the difference quotient limit at $x=\pi/2$, utilizing again left and right--hand limits:\\
 
@@ -383,18 +497,20 @@ Being more rigorous, we can again evaluate the difference quotient limit at $x=\
 \end{minipage}
 \normalsize
 
-%$\ds \lim_{h\to0}\frac{f(\pi/2+h)-f(\pi/2)}{h}=$
-%\begin{align*}
-% \lim_{h\to0^-}\frac{f(\pi/2+h)-f(\pi/2)}{h}
-% &=\lim_{h\to0^+}\frac{f(\pi/2+h)-f(\pi/2)}{h}\\
-% \lim_{h\to0^-}\frac{\sin(\pi/2+h)-\sin(\pi/2)}{h} &=\lim_{h\to0^+}\frac{1-1}{h}\\
-% \lim_{h\to0^-}{ \frac{\sin(\pi/2)\cos(h)+\sin(h)\cos(\pi/2)-\sin(\pi/2)}{h}}
-% &=\lim_{h\to0^+}\frac{0}{h}\\
-% \lim_{h\to0^-}\frac{1\cdot\cos(h)+\sin(h)\cdot 0-1}{h} &=\lim_{h\to0^+}0\\
-% 0 &=0\\
-%\end{align*}
-\mfigure{0in}{A graph of $\fp(x)$ in \autoref{ex_diff_piecewise}.}{fig:piecewisecosx1}{figures/figpiecewisecosx1}
-Since both the left and right hand limits are 0 at $x=\pi/2$, the limit exists and $\fp(\pi/2)$ exists (and is 0). Therefore we can fully write $\fp$ as $$\fp(x) = \begin{cases}\cos x & x\leq\pi/2\\ 0 & x>\pi/2\end{cases}.$$ See \autoref{fig:piecewisecosx1} for a graph of this function.}
+\mtable{A graph of $\fp(x)$ in \autoref{ex_diff_piecewise}.}{fig:piecewisecosx1}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,xtick={1.57},xticklabels={$\frac{\pi}2$},axis y line=middle,
+axis x line=middle,ymin=-.4,ymax=1.4,xmin=-.1,xmax=2.1,name=myplot]
+\addplot [draw={\colorone},smooth,thick,domain=-.1:1.57] {cos(deg(x))};
+\addplot [draw={\colorone},thick] coordinates {(1.57,0) (2.,0)};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
+
+Since both the left and right hand limits are 0 at $x=\pi/2$, the limit exists and $\fp(\pi/2)$ exists (and is 0). Therefore we can fully write $\fp$ as
+\[\fp(x) = \begin{cases}\cos x & x\leq\pi/2\\ 0 & x>\pi/2\end{cases}.\]
+See \autoref{fig:piecewisecosx1} for a graph of this function.}
 
 Recall we pseudo-defined a continuous function as one in which we could sketch its graph without lifting our pencil. We can give a pseudo--definition for differentiability as well: it is a continuous function that does not have any ``sharp corners.'' One such sharp corner is shown in \autoref{fig:absolutevalue}. Even though the function $f$ in \autoref{ex_diff_piecewise} is piecewise--defined, the transition is ``smooth'' hence it is differentiable. Note how in the graph of $f$ in \autoref{fig:piecewisesinx1} it is difficult to tell when $f$ switches from one piece to the other; there is no ``corner.''
 

@@ -89,7 +89,8 @@ V&=\lim_{n\to \infty} \sum_{i=1}^n 2\pi r_i h_i \Delta x\\
 \\
 (a) & (b)
 \end{tabular}}
-\caption{Determining the volume of a thin cylindrical shell.}\label{fig:soupcan}
+\caption{Determining the volume of a thin cylindrical shell.}
+\label{fig:soupcan}
 \end{figure}
 
 \bigskip
@@ -97,7 +98,7 @@ V&=\lim_{n\to \infty} \sum_{i=1}^n 2\pi r_i h_i \Delta x\\
 \keyidea{idea:shell_method}{The Shell Method}
 {Let a solid be formed by revolving a region $R$, bounded by $x=a$ and $x=b$, around a vertical axis. Let $r(x)$ represent the distance from the axis of rotation to $x$ (i.e., the radius of a sample shell) and let $h(x)$ represent the height of the solid at $x$ (i.e., the height of the shell). The volume of the solid is 
 \index{integration!volume!Shell Method}\index{Shell Method}
-$$V = 2\pi\int_a^b r(x)h(x)\ dx.$$
+\[V = 2\pi\int_a^b r(x)h(x)\ dx.\]
 }
 
 \textbf{Special Cases:}
@@ -114,7 +115,21 @@ Let's practice using the Shell Method.
 Find the volume of the solid formed by rotating the region bounded by $y=0$, $y=1/(1+x^2)$, $x=0$ and $x=1$ about the $y$-axis.}
 {This is the region used to introduce the Shell Method in \autoref{fig:shell_intro}, but is sketched again in \autoref{fig:shell1} for closer reference.
 %
-\mfigure{-.2in}{Graphing a region in \autoref{ex_shell1}.}{fig:shell1}{figures/figshell1}
+\mtable[-\baselineskip]{Graphing a region in \autoref{ex_shell1}.}{fig:shell1}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1},
+extra x ticks={.4},extra x tick labels={$x$},ytick={1},
+ymin=-.2,ymax=1.25,xmin=-.15,xmax=1.1,]
+\addplot [draw={\coloronefill},thick,smooth,domain=0:1,fill={\coloronefill}] plot {(1/(1+x^2))} -- (axis cs:1,0) -- (axis cs:0,0) -- cycle;
+\addplot [draw={\colorone},thick,smooth,domain=0:1] plot {(1/(1+x^2))};
+\draw [thick,draw={\colortwo}] (axis cs:.4,0) -- (axis cs:.4,.86);
+\draw (axis cs:.4,.45) node [left] {\scriptsize$ h(x)\left\{\rule{0pt}{33pt}\right.$}
+      (axis cs:.2,-.12) node {\scriptsize $\underbrace{\rule{35pt}{0pt}}_{r(x)}$}
+      (axis cs: .7,1) node {\scriptsize $\ds y=\frac{1}{1+x^2}$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 %
 A line is drawn in the region parallel to the axis of rotation representing a shell that will be carved out as the region is rotated about the $y$-axis.
 
@@ -135,7 +150,20 @@ Note: in order to find this volume using the Disk Method, two integrals would be
 With the Shell Method, nothing special needs to be accounted for to compute the volume of a solid that has a hole in the middle, as demonstrated next.
 
 \mtable[-2.6in]{Graphing a region in \autoref{ex_shell2}.}{fig:shell2}{%
-\myincludegraphics{figures/figshell2a}
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2,3},
+extra x ticks={.4},extra x tick labels={$x$},ytick={1,2,3},
+ymin=-.2,ymax=3.25,xmin=-.15,xmax=3.2,]
+\draw [draw={\colorone},thick,smooth,,fill={\coloronefill}] (axis cs:0,1) -- node [black,rotate=57,pos=.5,above]  {\scriptsize $y=2x+1$} (axis cs:1,3) --  (axis cs: 1,1) -- cycle;
+\draw [dashed] (axis cs:3,0) -- (axis cs:3,3.2);
+\draw [thick,draw={\colortwo}] (axis cs: .4,1) -- (axis cs:.4,1.8);
+\draw(axis cs:1,1.4)node [right] {\scriptsize$ \left.\rule{0pt}{14pt}\right\} h(x).$}
+     (axis cs:1.7,.7) node { $\underbrace{\rule{100pt}{0pt}}_{r(x)}$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
 \\(a)\smallskip\\
 \myincludeasythree{width=\marginparwidth,
 3Droll=138.26595091591264,
@@ -168,7 +196,18 @@ The height of the sample shell is the distance from $y=1$ to $y=2x+1$, the line 
 When revolving a region around a horizontal axis, we must consider the radius and height functions in terms of $y$, not $x$.
 
 \mtable[-1in]{Graphing a region in \autoref{ex_shell3}.}{fig:shell3}{%
-\myincludegraphics{figures/figshell3a}
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2,3},
+ytick={1,2,3},extra y ticks={1.8},extra y tick labels={$y$},
+ymin=-.2,ymax=3.25,xmin=-.15,xmax=1.5,]
+\draw [draw={\colorone},thick,smooth,,fill={\coloronefill}] (axis cs:0,1) -- node [black,rotate=41,pos=.5,above]  {\scriptsize $x=\frac12y-\frac12$} (axis cs:1,3) --  (axis cs: 1,1) -- cycle;
+\draw [thick,draw={\colortwo}] (axis cs: .4,1.8) -- node [black,pos=.5,below] {$\underbrace{\rule{42pt}{0pt}}_{h(y)}$} (axis cs:1,1.8);
+\draw (axis cs:1,.9) node [right] {\scriptsize$ \left.\rule{0pt}{29pt}\right\} r(y)$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
 \\(a) \\
 \myincludeasythree{width=\marginparwidth,
 3Droll=97.25039174241927,

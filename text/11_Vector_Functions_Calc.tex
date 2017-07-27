@@ -9,7 +9,8 @@ The initial definition of the limit of a vector--valued function is a bit intimi
 \definition{def:vvf_limit}{Limits of Vector--Valued Functions}
 {Let $I$ be an open interval containing $c$, and let $\vec r(t)$ be a vector--valued function defined on $I$, except possibly at $c$. %Let a vector--valued function $\vec r(t)$ be given, defined on an open interval $I$ containing $c$. 
 The \textbf{limit of $\vec r(t)$, as $t$ approaches $c$, is $\vec L$}, expressed as 
-$$\lim_{t\to c} \vec r(t) = \vec L,$$ means that given any $\epsilon>0$, there exists a $\delta>0$ such that for all $t\neq c$, if $|t-c| <\delta$, we have $\norm{\vec r(t) - \vec L} < \epsilon.$
+\[\lim_{t\to c} \vec r(t) = \vec L,\]
+means that given any $\epsilon>0$, there exists a $\delta>0$ such that for all $t\neq c$, if $\abs{t-c}<\delta$, we have $\norm{\vec r(t) - \vec L} < \epsilon.$
 \index{vector--valued function!limits}\index{limit!of vector--valued functions}}
 
 Note how the measurement of distance between real numbers is the absolute value of their difference; the measure of distance between vectors is the vector norm, or magnitude, of their difference.
@@ -18,9 +19,12 @@ Note how the measurement of distance between real numbers is the absolute value 
 {\begin{enumerate}
 	\item Let $\vec r(t) =\bracket{\,f(t),g(t)\,}$ be a vector--valued function in $\mathbb{R}^2$ defined on an open interval $I$ containing $c$. Then
 	\index{vector--valued function!limits}\index{limit!of vector--valued functions}
-	$$\lim_{t\to c} \vec r(t) =\bracket{\lim_{t\to c}f(t)\, , \,\lim_{t\to c} g(t)}.$$
+\[\lim_{t\to c} \vec r(t) =\bracket{\lim_{t\to c}f(t)\, , \,\lim_{t\to c} g(t)}.\]
 	\item Let $\vec r(t) =\bracket{\,f(t),g(t),h(t)\,}$ be a vector--valued function in $\mathbb{R}^3$ defined on an open interval $I$ containing $c$. Then 
-	$$\lim_{t\to c} \vec r(t) =\bracket{\lim_{t\to c}f(t)\, , \,\lim_{t\to c} g(t)\,, \,\lim_{t\to c} h(t)}$$
+\[
+\lim_{t\to c} \vec r(t)
+=\bracket{\lim_{t\to c}f(t)\, , \,\lim_{t\to c} g(t)\,, \,\lim_{t\to c} h(t)}
+\]
 \end{enumerate}}
 
 \autoref{thm:vvf_limit} states that we compute limits component--wise.
@@ -60,15 +64,43 @@ Consider a vector--valued function $\vec r$ defined on an open interval $I$ cont
 \begin{lxfigure}
 \flushinner{%
 \begin{tabular}{cc}
-\myincludegraphics[scale=.9]{figures/figvvfderiv_intro}&\myincludegraphics[scale=.9]{figures/figvvfderiv_introb}\\
-(a) & (b)
+\begin{tikzpicture}[>=stealth]
+ \draw [thick,draw={\colorone}]
+  (2,1) arc [x radius=4,y radius=3,start angle=145,end angle=135] node (A) {};
+ \draw [thick,draw={\colorone}]
+  (A.center) arc [x radius=4,y radius=3,start angle=135,end angle=70] node (B) {};
+ \draw [thick,draw={\colorone}]
+  (B.center) arc [x radius=4,y radius=3,start angle=70,end angle=60];
+ \draw [thick,->] (0,0) -- (A.center) node [left,pos=.6] {\scriptsize $\vec r(t_0)$};
+ \draw [thick,->] (0,0)
+  -- (B.center) node [below,pos=.5] {\scriptsize $\vec r(t_1)$};
+ \draw [->,thick,draw={\colortwo}] (A)
+  --(B) node [above,black,pos=.5,sloped] {\scriptsize $\vec r(t_1)-\vec r(t_0)$};
+\end{tikzpicture}
+&
+\begin{tikzpicture}[>=stealth]
+ \draw [thick,draw={\colorone}]
+  (2,1) arc [x radius=4,y radius=3,start angle=145,end angle=135] node (A) {};
+ \draw [thick,draw={\colorone}]
+  (A.center) arc [x radius=4,y radius=3,start angle=135,end angle=70] node (B) {};
+ \draw [thick,draw={\colorone}]
+  (B.center) arc [x radius=4,y radius=3,start angle=70,end angle=60];
+ \draw [thick,->] (0,0) -- (A.center) node [left,pos=.6] {\scriptsize $\vec r(t_0)$};
+ \draw [thick,->] (0,0)
+  -- (B.center) node [below,pos=.5] {\scriptsize $\vec r(t_1)$};
+ \draw [->,thick,draw={\colortwo}] (A.center)--($(A)!1.2!(B)$)
+  node [above,black,pos=.99,] {$\frac{\vec r(t_1)-\vec r(t_0)}{t_1-t_0}$};
+ \draw [->,thick,draw={\colortwo}] (A.center)--($(A)!.4!29:(B)$)
+  node [above,black] {\scriptsize $\vec r\,'(t_0)$};
+\end{tikzpicture}
+\\(a) & (b)
 \end{tabular}}
 \caption{Illustrating displacement, leading to an understanding of the derivative of vector--valued functions.}
 \label{fig:vvfderiv_intro}
 \end{lxfigure}
 
 The \textbf{derivative} of a vector--valued function is a measure of the \emph{instantaneous} rate of change, measured by taking the limit as the length of $[t_0,t_1]$ goes to 0. Instead of thinking of an interval as $[t_0,t_1]$, we think of it as $[c,c+h]$ for some value of $h$ (hence the interval has length $h$).  The \emph{average} rate of change is 
-$$\frac{\vec r(c+h)-\vec r(c)}{h}$$
+\[\frac{\vec r(c+h)-\vec r(c)}{h}\]
 for any value of $h\neq0$. We take the limit as $h\to0$ to measure the instantaneous rate of change; this is the derivative of $\vec r$.
 
 %We begin with a definition of the derivative that is very similar to \autoref{def:the_derivative}.
@@ -78,12 +110,13 @@ for any value of $h\neq0$. We take the limit as $h\to0$ to measure the instantan
 \index{vector--valued function!derivatives}\index{derivative!vector--valued functions}
 \begin{enumerate}
 	\item The derivative of $\vec r$ at $t=c$ is
-	$$ \vrp (c) = \lim_{h\to 0} \frac{\vec r(c+h) - \vec r(c)}{h}.$$
+	\[\vrp (c) = \lim_{h\to 0} \frac{\vec r(c+h) - \vec r(c)}{h}.\]
 	\item	The derivative of $\vec r$ is
-	$$ \vrp (t) = \lim_{h\to 0} \frac{\vec r(t+h) - \vec r(t)}{h}.$$
+	\[\vrp (t) = \lim_{h\to 0} \frac{\vec r(t+h) - \vec r(t)}{h}.\]
 \end{enumerate}}
 
-\mnote{Alternate notations for the derivative of $\vec r$ include: $$\vrp(t) = \frac{d}{dt}\big(\,\vec r(t)\,\big) = \frac{d\vec r}{dt}.$$}
+\mnote{Alternate notations for the derivative of $\vec r$ include:
+\[\vrp(t) = \frac{d}{dt}\big(\,\vec r(t)\,\big) = \frac{d\vec r}{dt}.\]}
 
 If a vector--valued function has a derivative for all $c$ in an open interval $I$, we say that $\vec r(t)$ is \textbf{differentiable} on $I$.
 
@@ -92,20 +125,47 @@ Once again we might view this definition as intimidating, but recall that we can
 \theorem{thm:vvf_deriv}{Derivatives of Vector--Valued Functions}
 {\begin{enumerate}
 	\item Let $\vec r(t) =\bracket{\, f(t), g(t)\,}$. Then 
-	$$\vrp(t) =\bracket{\, \fp(t), g\primeskip'(t)\,}.$$
+	\[\vrp(t) =\bracket{\, \fp(t), g\primeskip'(t)\,}.\]
 	\item Let $\vec r(t) =\bracket{\, f(t), g(t), h(t)\,}$. Then
 	\index{vector--valued function!derivatives}\index{derivative!vector--valued functions}
-	$$\vrp(t) =\bracket{\, \fp(t), g\primeskip'(t), h\primeskip'(t)\,}.$$
+	\[\vrp(t) =\bracket{\, \fp(t), g\primeskip'(t), h\primeskip'(t)\,}.\]
 \end{enumerate}}
 
 \youtubeVideo{238wiC0U7NE}{Limit and Derivative of Vector Function}
 
+\mtable[-1in]{Graphing the derivative of a vector--valued function in \autoref{ex_vvflimit3}.}{fig:vvflimit3}{%
+\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-2.2,ymax=2.2,xmin=-4.54,xmax=4.54]
+\addplot [thick,draw={\colorone}, smooth,domain=-2:2,samples=20] ({x^2},{x});
+\draw (axis cs:2,1.7) node {\scriptsize $\vec r(t)$};
+\draw [thick,draw={\colortwo}] (axis cs: -4,1) -- (axis cs:4,1)
+ node [below,pos=.9,black]{\scriptsize $\vec r\,'(t)$};
+\draw [thick,draw={\colortwo},->] (axis cs: -2,1) -- (axis cs:-1.99,1);
+\draw [thick,->,draw={\colorone}] (axis cs:1,-1) -- (axis cs:0.9801,-.99);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\[5pt](a)\\[10pt]
+\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-2.2,ymax=2.2,xmin=-4.54,xmax=4.54]
+\addplot [thick,draw={\colorone}, smooth,domain=-2:2,samples=20] ({x^2},{x});
+\draw [thick,->,draw={\colortwo}] (axis cs: 0,0) -- (axis cs:2,1)
+ node [shift={(15pt,0)},pos=.6,black]{\scriptsize $\vec r\,'(1)$};
+\draw [thick,->,draw={\colortwo}] (axis cs: 1,1) -- (axis cs:3,2)
+ node [left,pos=.8,black]{\scriptsize $\vec r\,'(1)$};
+\draw [thick,->,draw={\colorone}] (axis cs:1,-1) -- (axis cs:0.9801,-.99);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\[5pt](b)}
+
 \example{ex_vvflimit3}{Derivatives of vector--valued functions}{Let $\vec r(t) =\bracket{t^2,t}$. 
-\mtable[-\baselineskip]{Graphing the derivative of a vector--valued function in \autoref{ex_vvflimit3}.}{fig:vvflimit3}{%
-\myincludegraphics{figures/figvvflimit3a}\\[5pt]
-(a)\\[10pt]
-\myincludegraphics{figures/figvvflimit3}\\[5pt]
-(b)}
 \begin{enumerate}
 	\item Sketch $\vec r(t)$ and $\vrp(t)$ on the same axes.
 	\item	Compute $\vrp(1)$ and sketch this vector with its initial point at the origin and at $\vec r(1)$.
@@ -118,29 +178,27 @@ $\vec r(t)$ and $\vrp(t)$ are graphed together in \autoref{fig:vvflimit3}(a). No
 \item	We easily compute $\vrp(1) =\bracket{2,1}$, which is drawn in \autoref{fig:vvflimit3} with its initial point at the origin, as well as at $\vec r(1) =\bracket{1,1}.$ These are sketched in \autoref{fig:vvflimit3}(b).\eoehere
 \end{enumerate}}
 
-%%%
-% This could be a mess, but necessary?
-% The 2D version has two pictures, the 3D has only one. Changing the text to reflect this.
-%%%
-%%%
 \ifthenelse{\boolean{in_threeD}}{%
-\mfigurethree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
+\mtable{Viewing a vector--valued function and its derivative at one point.}{fig:vvflimit4}{%
+\myincludeasythree{width=.7\marginparwidth,
 3Droll=-0.5856992334166129,
 3Dortho=0.004399999976158142,
 3Dc2c=0.6354137063026428 0.6317671537399292 0.4439816176891327,
 3Dcoo=-18.837804794311523 -8.740551948547363 60.22870635986328,
-3Droo=150.0000027221829,3Dlights=Headlamp,add3Djscript=asylabels.js}{}{0in}{Viewing a vector--valued function and its derivative at one point.}{fig:vvflimit4}{figures/figvvflimit4}%
-}%% ends "if in threeD"
-{% begins "else, not in threeD
-\mtable[-2\baselineskip]{Viewing a vector--valued function, and its derivative at one point, from two different perspectives.}{fig:vvflimit4}{%
-\myincludegraphics[scale=1.25]{figures/figvvflimit4} \\
-(a)\\
-\myincludegraphics[scale=1.25]{figures/figvvflimit4a} \\
-(b)}%
+3Droo=150.0000027221829}{width=.7\marginparwidth}{figures/figvvflimit4_3D}}%
+}{% not in threeD
+\mtable[-.5in]{Viewing a vector--valued function and its derivative at one point, from two different perspectives.}{fig:vvflimit4}{%
+\myincludegraphics[width=.7\marginparwidth]{figures/figvvflimit4_3D}
+\\(a)\\
+% todo Tim make the graphs pull from the same source? Then they'd have the same size
+\myincludegraphics[width=\marginparwidth]{figures/figvvflimit4a}
+\\(b)}%
 }% ends whole if-then-else
 
 \example{ex_vvflimit4}{Derivatives of vector--valued functions}{Let $\vec r(t) =\bracket{\cos t, \sin t, t}$. Compute $\vrp(t)$ and $\vrp(\pi/2)$. Sketch $\vrp(\pi/2)$ with its initial point at the origin and at $\vec r(\pi/2)$.}
-{We compute $\vrp$ as $\vrp(t) =\bracket{-\sin t, \cos t, 1}$. At $t= \pi/2$, we have $\vrp(\pi/2) =\bracket{-1,0,1}$. \autoref{fig:vvflimit4} \ifthenelse{\boolean{in_threeD}}{shows a graph of $\vec r(t)$,}{shows two graphs of $\vec r(t)$, from different perspectives,} with $\vrp(\pi/2)$ plotted with its initial point at the origin and at $\vec r(\pi/2)$.}
+{We compute $\vrp$ as $\vrp(t) =\bracket{-\sin t, \cos t, 1}$. At $t= \pi/2$, we have $\vrp(\pi/2) =\bracket{-1,0,1}$. \autoref{fig:vvflimit4}
+\ifthenelse{\boolean{in_threeD}}{shows a graph of $\vec r(t)$,}{shows two graphs of $\vec r(t)$, from different perspectives,}
+with $\vrp(\pi/2)$ plotted with its initial point at the origin and at $\vec r(\pi/2)$.}
 
 In Examples \ref{ex_vvflimit3} and \ref{ex_vvflimit4}, sketching a particular derivative with its initial point at the origin did not seem to reveal anything significant. However, when we sketched the vector with its initial point on the corresponding point on the graph, we did see something significant: the vector appeared to be \textit{tangent} to the graph. We have not yet defined what ``tangent'' means in terms of curves in space; in fact, we use the derivative to define this term.
 
@@ -150,26 +208,24 @@ In Examples \ref{ex_vvflimit3} and \ref{ex_vvflimit4}, sketching a particular de
 \begin{enumerate}
 	\item A vector $\vec v$ is \textbf{tangent to the graph of $\vec r(t)$ at $t=c$} if $\vec v$ is parallel to $\vrp(c)$.
 	\item	The \textbf{tangent line}  to the graph of $\vec r(t)$ at $t=c$ is the line through $\vec r(c)$ with direction parallel to $\vrp(c)$. An equation of the tangent line is 
-	$$\vec \ell(t) = \vec r(c) + t\,\vrp(c).$$
+	\[\vec \ell(t) = \vec r(c) + t\,\vrp(c).\]
 \end{enumerate}}
 
-%%%
-%%%   Long figure statements follow for if in/not in 3D
 \ifthenelse{\boolean{in_threeD}}{% in threeD
-\mfigurethree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
+\mtable{Graphing a curve in space with its tangent line.}{fig:vvfderiv1}{%
+\myincludeasythree{width=.8\marginparwidth,
 3Droll=0.5961816528018784,
 3Dortho=0.00514203542843461,
 3Dc2c=0.8352102637290955 0.5152699947357178 0.19214747846126556,
 3Dcoo=-5.658682346343994 19.23411750793457 0.2712952494621277,
-3Droo=149.99999927774635,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{}{0in}{Graphing a curve in space with its tangent line.}{fig:vvfderiv1}{figures/figvvfderiv1}
-}%end in threeD
-{% begin else, not in three D
-\mtable{Graphing a curve in space with its tangent line.}{fig:vvfderiv1}{%
-\myincludegraphics[scale=1.25,trim=5mm 5mm 5mm 5mm,clip]{figures/figvvfderiv1}\\
-(a)\\[10pt]
-\myincludegraphics{figures/figvvfderiv1b}\\
-(b)}% end mtable
+3Droo=149.99999927774635}{width=.8\marginparwidth}{figures/figvvfderiv1_3D}}
+}{% not in three D
+\mtable[-1in]{Graphing a curve in space with its tangent line.}{fig:vvfderiv1}{%
+\myincludegraphics[width=.8\marginparwidth]{figures/figvvfderiv1_3D}
+\\(a)\\[10pt]
+% todo Tim make these pull from the same source, so they're the same size
+\myincludegraphics[width=.8\marginparwidth]{figures/figvvfderiv1b}
+\\(b)}% end mtable
 }% ends all of the if-then-else statements
 
 \example{ex_vvfderiv1}{Finding tangent lines to curves in space}{Let $\vec r(t) =\bracket{t,t^2,t^3}$ on $[-1.5,1.5]$. Find the vector equation of the line tangent to the graph of $\vec r$ at $t=-1$. }
@@ -179,13 +235,27 @@ The direction comes from $\vrp(-1)$. We compute, component--wise, $\vrp(t) =\bra
 
 The vector equation of the line is $\ell(t) =\bracket{-1,1,-1}+ t\bracket{1,-2,3}$. \ifthenelse{\boolean{in_threeD}}{This line and $\vec r(t)$ are sketched in \autoref{fig:vvfderiv1}.}{This line and $\vec r(t)$ are sketched, from two perspectives, in \autoref{fig:vvfderiv1} (a) and (b).}}
 
-\mfigure{0in}{Graphing $\vec r(t)$ and its tangent line in \autoref{ex_vvfderiv3}.}{fig:vvfderiv3}{figures/figvvfderiv3}
+\mtable{Graphing $\vec r(t)$ and its tangent line in \autoref{ex_vvfderiv3}.}{fig:vvfderiv3}{\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-2.96,ymax=2.96,xmin=-3.5,xmax=3.5]
+\addplot [thick,draw={\colorone}, smooth,domain=-1.5:1.5,samples=30] ({x^3},{x^2});
+\addplot [thick,draw={\colortwo}, smooth,domain=-1:1.5,samples=30] ({3*x-1},{-2*x+1});
+\draw (axis cs:2,2) node {\scriptsize $\vec r(t)$};
+\draw (axis cs:2,-1.7) node {\scriptsize $\vec \ell(t)$};
+\draw [thick,draw={\colorone},->] (axis cs: 1,1) -- (axis cs:1.03,1.02);
+\draw [thick,draw={\colortwo},->] (axis cs:2,-1)--(axis cs:2.03,-1.02);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 \example{ex_vvfderiv3}{Finding tangent lines to curves}{Find the equations of the lines tangent to $\vec r(t) =\bracket{t^3,t^2}$ at $t=-1$ and $t=0$.}
 {We find that $\vrp(t) =\bracket{3t^2,2t}$. At $t=-1$, we have
-$$\vec r(-1) =\bracket{-1,1}\quad \text{and}\quad \vrp(-1) =\bracket{3,-2},$$
+\[\vec r(-1) =\bracket{-1,1}\quad \text{and}\quad \vrp(-1) =\bracket{3,-2},\]
 so the equation of the line tangent to the graph of $\vec r(t)$ at $t=-1$ is
-$$\ell(t) =\bracket{-1,1}+ t\bracket{3,-2}.$$ This line is graphed with $\vec r(t)$ in \autoref{fig:vvfderiv3}.
+\[\ell(t) =\bracket{-1,1}+ t\bracket{3,-2}.\]
+This line is graphed with $\vec r(t)$ in \autoref{fig:vvfderiv3}.
 
 At $t=0$, we have $\vrp(0) =\bracket{0,0}=\vec 0$. This implies that the tangent line ``has no direction.'' We cannot apply \autoref{def:vector_tangent}, hence cannot find the equation of the tangent line.}
 
@@ -196,6 +266,9 @@ We were unable to compute the equation of the tangent line to $\vec r(t)=\bracke
 \index{smooth}\index{vector--valued function!smooth}}
 
 Having established derivatives of vector--valued functions, we now explore the relationships between the derivative and other vector operations. The following theorem states how the derivative interacts with vector addition and the various vector products.
+
+% I can't put this in the box, and after makes it come on the next page
+\mnote[13\baselineskip]{\textbf{Note:} Because the order is important when computing a cross product, we must maintain the correct order of the functions in rule \ref{crossprodrule}.}
 
 \theorem{thm:vvf_deriv_prop}{Properies of Derivatives of Vector--Valued Functions}
 {Let $\vec r$ and $\vec s$ be differentiable vector--valued functions, let $f$ be a differentiable real--valued function, and let $c$ be a real number.
@@ -209,7 +282,6 @@ Having established derivatives of vector--valued functions, we now explore the r
 	\item\label{crossprodrule} \parbox{200pt}{$\ds \frac{d}{dt}\Big(\vec r(t)\times \vec s(t) \Big) = \vrp(t)\times \vec s(t) + \vec r(t)\times \vec s\,'(t)$} \textbf{Product Rule}
 	\item \parbox{200pt}{$\ds \frac{d}{dt}\Big(\vec r\big(f(t)\big)\Big) = \vrp\big(f(t)\big)\fp(t)$}  \textbf{Chain Rule}
 \end{enumerate}}
-\mnote[-1in]{\textbf{Note:} Because the order is important when computing a cross product, we must maintain the correct order of the functions in rule \ref{crossprodrule}.}
 
 \example{ex_vvfderiv2}{Using derivative properties of vector--valued functions}{Let $\vec r(t) =\bracket{t, t^2-1}$ and let $\vec u(t)$ be the unit vector that points in the direction of $\vec r(t)$.
 \begin{enumerate}
@@ -218,12 +290,31 @@ Having established derivatives of vector--valued functions, we now explore the r
 \end{enumerate}}
 {\begin{enumerate}
 	\item To form the unit vector that points in the direction of $\vec r$, we need to divide $\vec r(t)$ by its magnitude. 
-	$$\norm{\vec r(t)} = \sqrt{t^2+(t^2-1)^2} \quad \Rightarrow \quad \vec u(t) = \frac{1}{\sqrt{t^2+(t^2-1)^2}}\bracket{t,t^2-1}.$$
+	\[\norm{\vec r(t)} = \sqrt{t^2+(t^2-1)^2} \quad \Rightarrow \quad \vec u(t) = \frac{1}{\sqrt{t^2+(t^2-1)^2}}\bracket{t,t^2-1}.\]
 	
 	$\vec r(t)$ and $\vec u(t)$ are graphed in \autoref{fig:vvfderiv2a}. Note how the graph of $\vec u(t)$ forms part of a circle; this must be the case, as the length of $\vec u(t)$ is 1 for all $t$.
-	\mfigure{0in}{Graphing $\vec r(t)$ and $\vec u(t)$ in \autoref{ex_vvfderiv2}.}{fig:vvfderiv2a}{figures/figvvfderiv2a}
+
+\mtable{Graphing $\vec r(t)$ and $\vec u(t)$ in \autoref{ex_vvfderiv2}.}{fig:vvfderiv2a}{\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-1.1,ymax=3.1,xmin=-2.5,xmax=2.5]
+\addplot [thick,draw={\colorone}, smooth,domain=-2:2,samples=30] {x^2-1};
+\addplot [thick,draw={\colortwo}, smooth,domain=-2:2,samples=30]
+ ({x/sqrt(x^2+(x^2-1)^2)},{(x^2-1)/sqrt(x^2+(x^2-1)^2)});
+\draw (axis cs:-2,1.5) node {\scriptsize $\vec r(t)$};
+\draw (axis cs:.7,1.1) node {\scriptsize $\vec u(t)$};
+\draw [thick,draw={\colortwo},->] (axis cs: -0.768,.64) -- (axis cs:-.7737,.633);
+\draw [thick,->,draw={\colorone}] (axis cs:-1.5,1.25) -- (axis cs:-1.49,1.22);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 	
-	\item		To compute $\vec u\,'(t)$, we use \autoref{thm:vvf_deriv_prop}, writing $$\vec u(t) = f(t)\vec r(t),\quad  \text{where}\quad f(t) = \frac{1}{\sqrt{t^2+(t^2-1)^2}}=\big(t^2+(t^2-1)^2\big)^{-1/2}.$$ (We \emph{could} write $$\vec u(t) =\bracket{\frac{t}{\sqrt{t^2+(t^2-1)^2}}, \frac{t^2-1}{\sqrt{t^2+(t^2-1)^2}}}$$ and then take the derivative. It is a matter of preference; this latter method requires two applications of the Quotient Rule where our method uses the Product and Chain Rules.)
+	\item		To compute $\vec u\,'(t)$, we use \autoref{thm:vvf_deriv_prop}, writing
+	\[\vec u(t) = f(t)\vec r(t),\quad  \text{where}\quad f(t) = \frac{1}{\sqrt{t^2+(t^2-1)^2}}=\big(t^2+(t^2-1)^2\big)^{-1/2}.\]
+	(We \emph{could} write
+	\[\vec u(t) =\bracket{\frac{t}{\sqrt{t^2+(t^2-1)^2}}, \frac{t^2-1}{\sqrt{t^2+(t^2-1)^2}}}\]
+	and then take the derivative. It is a matter of preference; this latter method requires two applications of the Quotient Rule where our method uses the Product and Chain Rules.)
 	
 We find $\fp(t)$ using the Chain Rule:
 \begin{align*}
@@ -243,7 +334,26 @@ This is admittedly very ``messy;'' such is usually the case when we deal with un
 \vec u\,'(-1) &=\bracket{0,-2}\\
 \vec u\,'(0) &=\bracket{1,0}
 \end{align*}
-\mfigure{0in}{Graphing some of the derivatives of $\vec u(t)$ in \autoref{ex_vvfderiv2}.}{fig:vvfderiv2b}{figures/figvvfderiv2b}
+%
+\mtable{Graphing some of the derivatives of $\vec u(t)$ in \autoref{ex_vvfderiv2}.}{fig:vvfderiv2b}{\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-2.1,ymax=1.1,xmin=-1.92,xmax=1.92]
+\addplot [thick,draw={\colorone}, smooth,domain=-2:2,samples=30]
+ ({x/sqrt(x^2+(x^2-1)^2)},{(x^2-1)/sqrt(x^2+(x^2-1)^2)});
+\draw (axis cs:.5,.6) node {\scriptsize $\vec u(t)$};
+\draw [thick,draw={\colorone},->] (axis cs: -0.98226, 0.187522)
+ -- (axis cs:-0.985435, 0.170055);
+\draw [thick,->,draw={\colorone}] (axis cs:-1.5,1.25) -- (axis cs:-1.49,1.22);
+\draw [thick,draw={\colortwo},->] (axis cs:-0.5547, 0.83205)
+ --(axis cs:-0.87472, 0.618704);
+\draw [thick,draw={\colortwo},->] (axis cs:-1., 0)--(axis cs:-1., -2.);
+\draw [thick,draw={\colortwo},->] (axis cs:0., -1.)--(axis cs:1., -1.);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}%
+%
 Each of these is sketched in \autoref{fig:vvfderiv2b}. Note how the length of the vector gives an indication of how quickly the circle is being traced at that point. When $t=-2$, the circle is being drawn relatively slow; when $t=-1$, the circle is being traced much more quickly.\eoehere
 \end{enumerate}}
 
@@ -325,16 +435,17 @@ Therefore,
 
 What does the integration of a vector--valued function \emph{mean}? There are many applications, but none as direct as ``the area under the curve'' that we used in understanding the integral of a real--valued function.
 
-A key understanding for us comes from considering the integral of a derivative: $$\int_a^b \vrp(t)\ dt = \vec r(t)\Big|_a^b = \vec r(b)-\vec r(a).$$ Integrating a \emph{rate of change} function gives \emph{displacement}.\index{displacement}
+A key understanding for us comes from considering the integral of a derivative: \[\int_a^b \vrp(t)\ dt = \vec r(t)\Big|_a^b = \vec r(b)-\vec r(a).\]
+Integrating a \emph{rate of change} function gives \emph{displacement}.\index{displacement}
 
 Noting that vector--valued functions are closely related to parametric equations, we can describe the arc length of the graph of a vector--valued function as an integral. Given parametric equations $x=f(t)$, $y=g(t)$, the arc length on $[a,b]$ of the graph is
-$$\text{Arc Length} = \int_a^b\sqrt{\fp(t)^2+g\primeskip'(t)^2}\ dt,$$
+\[\text{Arc Length} = \int_a^b\sqrt{\fp(t)^2+g\primeskip'(t)^2}\ dt,\]
 as stated in \autoref{thm:arc_length_parametric} in \autoref{sec:par_calc}. If $\vrt =\bracket{f(t), g(t)}$, note that $\sqrt{\fp(t)^2+g\primeskip'(t)^2} = \norm{\vrp(t)}$. Therefore we can express the arc length of the graph of a vector--valued function as an integral of the magnitude of its derivative.
 
 \theorem{thm:vvf_arc_length}{Arc Length of a Vector--Valued Function}
 {Let \vrt\ be a vector--valued function where $\vrp(t)$ is continuous on $[a,b]$. The arc length $L$ of the graph of \vrt\ is 
 \index{vector--valued function!arc length}\index{arc length}
-$$L = \int_a^b \norm{\vrp(t)}\ dt.$$}
+\[L = \int_a^b \norm{\vrp(t)}\ dt.\]}
 
 Note that we are actually integrating a scalar--function here, not a vector--valued function.
 

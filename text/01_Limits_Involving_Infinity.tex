@@ -2,9 +2,21 @@
 
 In \autoref{def:limit} we stated that in the equation $\ds \lim_{x\to c}f(x) = L$, both $c$ and $L$ were numbers. In this section we relax that definition a bit by considering situations when it makes sense to let $c$ and/or $L$ be ``infinity.''
 
-As a motivating example, consider $f(x) = 1/x^2$, as shown in \autoref{fig:oneoverxsquared}. Note how, as $x$ approaches 0, $f(x)$ grows very, very large. It seems appropriate, and descriptive, to state that $$\lim_{x\rightarrow 0} \frac1{x^2}=\infty.$$ Also note that as $x$ gets very large, $f(x)$ gets very, very small. We could represent this concept with notation such as $$\lim_{x\rightarrow \infty} \frac1{x^2}=0.$$
+As a motivating example, consider $f(x) = 1/x^2$, as shown in \autoref{fig:oneoverxsquared}. Note how, as $x$ approaches 0, $f(x)$ grows very, very large. It seems appropriate, and descriptive, to state that
+\[\lim_{x\rightarrow 0} \frac1{x^2}=\infty.\]
+Also note that as $x$ gets very large, $f(x)$ gets very, very small. We could represent this concept with notation such as
+\[\lim_{x\rightarrow \infty} \frac1{x^2}=0.\]
 
-\mfigure{0in}{Graphing $f(x) = 1/x^2$ for values of $x$ near 0.}{fig:oneoverxsquared}{figures/figoneoverxsquared}
+\mtable{Graphing $f(x) = 1/x^2$ for values of $x$ near 0.}{fig:oneoverxsquared}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,axis y line=middle,axis x line=middle,
+ymin=-.1,ymax=110,xmin=-1.1,xmax=1.1,name=myplot]
+\addplot [draw={\colorone},smooth,thick,domain=-1:-.1] {1/(x*x)};
+\addplot [draw={\colorone},smooth,thick,domain=.1:1] {1/(x*x)};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 We explore both types of use of $\infty$ in turn.
 
@@ -18,7 +30,18 @@ It is important to note that by saying $\ds \lim_{x\to c}f(x) = \infty$ we are i
 \youtubeVideo{-vwcLvb9A0s}{Calculus --- Infinite Limits}
 
 \example{ex_inflim1}{Evaluating limits involving infinity}{Find $\ds \lim_{x\to1}\frac1{(x-1)^2}$ as shown in \autoref{fig:inflim1}.
-\mfigure{0in}{Observing infinite limit as $x\to 1$ in \autoref{ex_inflim1}.}{fig:inflim1}{figures/fignolimit2}}
+
+\mtable{Observing infinite limit as $x\to 1$ in \autoref{ex_inflim1}.}{fig:inflim1}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,axis y line=middle,axis x line=middle,
+ymin=-1,ymax=110,xmin=-.1,xmax=2.1,name=myplot]
+\addplot [draw={\colorone},smooth,thick,domain=0:.9] {1/((1-x)*(1-x))};
+\addplot [draw={\colorone},smooth,thick,domain=1.1:2] {1/((1-x)*(1-x))};
+\draw [dashed,thick] (axis cs: 1,0) -- (axis cs: 1,100);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}}
 {In \autoref{ex_no_limit2} of \autoref{sec:limit_intro}, by inspecting values of $x$ close to 1 we concluded that this limit does not exist.  That is, it cannot equal any real number.  But the limit could be infinite.  And in fact, we see that the function does appear to be growing larger and larger, as $f(.99)=10^4$, $f(.999)=10^6$, $f(.9999)=10^8$.  A similar thing happens on the other side of 1.  In general, let a ``large'' value $M$ be given. Let $\delta=1/\sqrt{M}$. If $x$ is within $\delta$ of 1, i.e., if $\abs{x-1}<1/\sqrt{M}$, then:
 	\begin{align*}
 	\abs{x-1} &< \frac{1}{\sqrt{M}} \\
@@ -28,7 +51,17 @@ It is important to note that by saying $\ds \lim_{x\to c}f(x) = \infty$ we are i
 	which is what we wanted to show.  So we may say $\ds\lim_{x\rightarrow 1}1/{(x-1)^2}=\infty$.}
 
 \example{ex_inflim2}{Evaluating limits involving infinity}{Find $\ds\lim_{x\to0}\frac1x$, as shown in \autoref{fig:oneoverx}.
-\mfigure{0in}{Evaluating $\ds\lim_{x\rightarrow 0}\frac1x$.}{fig:oneoverx}{figures/figoneoverx}}
+
+\mtable{Evaluating $\ds\lim_{x\rightarrow 0}\frac1x$.}{fig:oneoverx}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,axis y line=middle,axis x line=middle,
+ymin=-55,ymax=55,xmin=-1.1,xmax=1.1,name=myplot]
+\addplot [draw={\colorone},smooth,thick,domain=-1:-.02] {1/x};
+\addplot [draw={\colorone},smooth,thick,domain=.02:1] {1/x};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}}
 {It is easy to see that the function grows without bound near 0, but it does so in different ways on different sides of 0.  Since its behavior is not consistent, we cannot say that $\ds \lim_{x\to 0}\frac{1}{x}=\infty$. However, we can make a statement about one--sided limits. We can state that $\ds \lim_{x\to0^+}\frac1x=\infty$ and $\ds \lim_{x\to0^-}\frac1x=-\infty$.}
 
 \subsection*{Vertical asymptotes}\index{asymptote!vertical}
@@ -44,7 +77,19 @@ It is important to note that by saying $\ds \lim_{x\to c}f(x) = \infty$ we are i
 \example{ex_vertasy1}{Finding vertical asymptotes}{Find the vertical asymptotes of $f(x)=\dfrac{3x}{x^2-4}$.}
 {Vertical asymptotes occur where the function grows without bound; this can occur at values of $c$ where the denominator is 0. When $x$ is near $c$, the denominator is small, which in turn can make the function take on large values.  In the case of the given function, the denominator is 0 at $x=\pm 2$.  We will consider the limits as $x$ approaches $\pm 2$ from the left and right to determine the vertical asymptotes. 
 %
-\mfigure{0in}{Graphing $f(x) = \dfrac{3x}{x^2-4}$.}{fig:multipleasymptotes}{figures/figmultipleasymptotes}%
+\mtable{Graphing $f(x) = \dfrac{3x}{x^2-4}$.}{fig:multipleasymptotes}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,axis y line=middle,axis x line=middle,
+ymin=-16,ymax=16,xmin=-6.1,xmax=6.1,name=myplot]
+\addplot [draw={\colorone},smooth,thick,domain=-6:-2.1] {3*x/(x*x-4)};
+\addplot [draw={\colorone},smooth,thick,domain=-1.9:1.9] {3*x/(x*x-4)};
+\addplot [draw={\colorone},smooth,thick,domain=2.1:6] {3*x/(x*x-4)};
+\draw [dashed,thick] (axis cs:-2,-16) -- (axis cs:-2,16);
+\draw [dashed,thick] (axis cs:2,-16) -- (axis cs: 2,16);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}%
 %
 \begin{align*}
 \lim_{x\to  2^+}\frac{3x}{(x-2)(x+2)}&= \infty\\
@@ -56,8 +101,17 @@ We can graphically confirm the limits above by looking at \autoref{fig:multiplea
 
 When a rational function has a vertical asymptote at $x=c$, we can conclude that the denominator is 0 at $x=c$. However, just because the denominator is 0 at a certain point does not mean there is a vertical asymptote there.  For instance, $f(x)=(x^2-1)/(x-1)$ does not have a vertical asymptote at $x=1$, as shown in \autoref{fig:noasy}. 
 
-\mfigure{0in}{Graphically showing that\\
-$f(x)=\dfrac{x^2-1}{x-1}$ does not have an asymptote at $x=1$.}{fig:noasy}{figures/fignoasy}
+\mtable{Graphically showing that\\
+$f(x)=\dfrac{x^2-1}{x-1}$ does not have an asymptote at $x=1$.}{fig:noasy}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,axis y line=middle,axis x line=middle,
+ymin=-.2,ymax=3.2,xmin=-1.2,xmax=2.2,name=myplot]
+\addplot [draw={\colorone},smooth,thick] coordinates {(-1,0) (2,3)};
+\fill[white,draw={\colortwo}] (axis cs:1,2) circle (1pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 While the denominator does get small near $x=1$, the numerator gets small too, matching the denominator step for step. In fact, factoring the numerator, we get
 \[f(x)=\frac{(x-1)(x+1)}{x-1}.\]
@@ -72,11 +126,12 @@ If the denominator is 0 at a certain point but the numerator is not, then there 
 
 %When working with limits and infinity, it is important not to go beyond what the rules of algebra and limits allow.  Consider again the limit below:
 We have seen how the limits 
-$$\lim_{x\rightarrow 0}\frac{\sin x}{x}\quad \text{and}\quad \lim_{x\to1}\frac{x^2-1}{x-1}$$ each return the indeterminate form ``$0/0$'' when we blindly plug in $x=0$ and $x=1$, respectively. However, $0/0$ is not a valid arithmetical expression. It gives no indication that the respective limits are 1 and 2.% (hence the use of the word ``indeterminate.'')
+\[\lim_{x\rightarrow 0}\frac{\sin x}{x}\quad \text{and}\quad \lim_{x\to1}\frac{x^2-1}{x-1}\]
+each return the indeterminate form ``$0/0$'' when we blindly plug in $x=0$ and $x=1$, respectively. However, $0/0$ is not a valid arithmetical expression. It gives no indication that the respective limits are 1 and 2.% (hence the use of the word ``indeterminate.'')
 %Blindly plugging in $x=0$ would give us the expression $0/0$.  This is not a valid arithmetical expression because division by 0 is not allowed.  In fact, as we have seen already, the correct value of the limit is 1.
 
 %The expression $0/0$ is called an \emph{indeterminate form}.  For an idea as to where the name comes from, consider the following limit:
-%$$\lim_{x\rightarrow 1}\frac{x^2-1}{x-1}.$$
+%\[\lim_{x\rightarrow 1}\frac{x^2-1}{x-1}.\]
 %Blindly plugging in $x=1$ here gives $0/0$.  However, this time, the correct value of the limit is 2, which can be seen by factoring the numerator and then plugging in $x=1$.  So we have seen that the initial expression $0/0$ can correspond to a limit of 1 or a limit of 2.  In fact, w
 
 With a little cleverness, one can come up with $0/0$ expressions which have a limit of $\infty$, 0, or any other real number.  That is why this expression is called \emph{indeterminate}.
@@ -114,8 +169,17 @@ Graphically, it concerns the behavior of the function to the ``far right'' of th
 We can also define limits such as $\ds\lim_{x\to\infty}f(x)=\infty$ by combining this definition with \autoref{def:limit_of_infinity}. %It is a good exercise to try this.
 
 \mtable[-1in]{Using a graph and a table to approximate a horizontal asymptote in \autoref{ex_hzasy1}.}{fig:hzasy1}{%
- \myincludegraphics{figures/fighzasy1}\\
- (a)\smallskip\\
+ \begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,axis y line=middle,axis x line=middle,
+ymin=-.2,ymax=1.1,xmin=-21,xmax=21,name=myplot]
+\addplot [draw={\colorone},smooth,thick,domain=-20:20] {x*x/(x*x+4)};
+\draw [dashed,thick](axis cs:-21,1) -- (axis cs:21,1);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(a)\smallskip\\
  \begin{tabular}{rl}
 	$x$ & $f(x)$ \\ \midrule
 	10 & 0.9615 \\
@@ -138,20 +202,44 @@ Later, we will show how to determine this analytically.}
 
 Horizontal asymptotes can take on a variety of forms. \autoref{fig:hzasy}(a) shows that $f(x) = x/(x^2+1)$ has a horizontal asymptote of $y=0$, where 0 is approached from both above and below.
 
-%\mfigure{0in}{Graphing $f(x) = \dfrac{x}{x^2+1}$}{fig:hzasy2}{figures/fighzasy2}
-
 \autoref{fig:hzasy}(b) shows that $f(x) =x/\sqrt{x^2+1}$ has two horizontal asymptotes; one at $y=1$ and the other at $y=-1$.
-
-%\mfigure{0in}{Graphing $f(x) = \dfrac{x}{\sqrt{x^2+1}}$ to see its two horizontal asymptotes.}{fig:hzasy3}{figures/fighzasy3}
 
 \autoref{fig:hzasy}(c) shows that $f(x) = (\sin x)/x$ has even more interesting behavior than at just $x=0$; as $x$ approaches $\pm\infty$, $f(x)$ approaches 0, but oscillates as it does this.
 
 \begin{lxfigure}
 \flushinner{%
 \begin{tabular}{ccc}
-\myincludegraphics{figures/fighzasy2} &
-\myincludegraphics{figures/fighzasy3} &
-\myincludegraphics{figures/fighzasy4} \\
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,axis y line=middle,axis x line=middle,
+ymin=-1.1,ymax=1.1,xmin=-21,xmax=21,name=myplot]
+\addplot [draw={\colorone},smooth,thick,domain=-20:20] {x/(x*x+1)};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,axis y line=middle,axis x line=middle,
+ymin=-1.1,ymax=1.1,xmin=-21,xmax=21,name=myplot]
+\addplot [draw={\colorone},smooth,thick,domain=-20:20] {x/sqrt(x*x+1)};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,axis y line=middle,axis x line=middle,
+ymin=-.3,ymax=1.1,xmin=-21,xmax=21,name=myplot]
+\addplot [draw={\colorone},smooth,thick,domain=-20:-.1] {sin(deg(x))/x};
+\addplot [draw={\colorone},smooth,thick,domain=.1:20] {sin(deg(x))/x};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\
 (a) & (b) & (c)
 \end{tabular}}
 \caption{Considering different types of horizontal asymptotes.}
@@ -168,10 +256,10 @@ It is now not much of a jump to conclude the following:
 \lim_{x\to-\infty}\frac{1}{x^n}=0
 \]}
 
-%$$\lim_{x\rightarrow\infty}\frac1{x^n}=0\quad \text{and}\quad \lim_{x\rightarrow-\infty}\frac1{x^n}=0$$
+%\[\lim_{x\rightarrow\infty}\frac1{x^n}=0\quad \text{and}\quad \lim_{x\rightarrow-\infty}\frac1{x^n}=0\]
 
 Now suppose we need to compute the following limit:
-$$\lim_{x\rightarrow\infty}\frac{x^3+2x+1}{4x^3-2x^2+9}.$$
+\[\lim_{x\rightarrow\infty}\frac{x^3+2x+1}{4x^3-2x^2+9}.\]
 A good way of approaching this is to divide through the numerator and denominator by $x^3$ (hence dividing by 1), which is the largest power of $x$ to appear in the function.  Doing this, we get
 \begin{align*}
 \lim_{x\to\infty}\frac{x^3+2x+1}{4x^3-2x^2+9} &=
@@ -203,7 +291,7 @@ This procedure works for any rational function.  In fact, it gives us the follow
 
 \keyidea{thm:lim_rational_fn_at_infty}{Limits of Rational Functions at Infinity}
 {Let $f(x)$ be a rational function of the following form:
-$$f(x)=\frac{a_nx^n + a_{n-1}x^{n-1}+\dots + a_1x + a_0}{b_mx^m + b_{m-1}x^{m-1} + \dots + b_1x + b_0},$$
+\[f(x)=\frac{a_nx^n + a_{n-1}x^{n-1}+\dots + a_1x + a_0}{b_mx^m + b_{m-1}x^{m-1} + \dots + b_1x + b_0},\]
 where any of the coefficients may be 0 except for $a_n$ and $b_m$.
 \begin{enumerate}
 \item If $n=m$, then $\ds\lim_{x\rightarrow\infty} f(x) = \lim_{x\rightarrow-\infty} f(x) = \frac{a_n}{b_m}$.
@@ -211,7 +299,7 @@ where any of the coefficients may be 0 except for $a_n$ and $b_m$.
 \item If $n>m$, then $\ds\lim_{x\rightarrow\infty} f(x)$ and $\ds\lim_{x\to-\infty} f(x)$ are both infinite.
 \end{enumerate}}
 
-%With care, we can quickly evaluate limits at infinity for a large number of functions by considering the largest powers of $x$. For instance, consider again $\ds\lim_{x\to\pm\infty}\frac{x}{\sqrt{x^2+1}},$ graphed in \autoref{fig:hzasy}(b). When $x$ is very large, $x^2+1 \approx x^2$. Thus $$\sqrt{x^2+1}\approx \sqrt{x^2} = \abs{x},\quad \text{and}\quad \frac{x}{\sqrt{x^2+1}} \approx \frac{x}{\abs{x}}.$$ This expression is 1 when $x$ is positive and $-1$ when $x$ is negative. Hence we get asymptotes of $y=1$ and $y=-1$, respectively.
+%With care, we can quickly evaluate limits at infinity for a large number of functions by considering the largest powers of $x$. For instance, consider again $\ds\lim_{x\to\pm\infty}\frac{x}{\sqrt{x^2+1}},$ graphed in \autoref{fig:hzasy}(b). When $x$ is very large, $x^2+1 \approx x^2$. Thus \[\sqrt{x^2+1}\approx \sqrt{x^2} = \abs{x},\quad \text{and}\quad \frac{x}{\sqrt{x^2+1}} \approx \frac{x}{\abs{x}}.\] This expression is 1 when $x$ is positive and $-1$ when $x$ is negative. Hence we get asymptotes of $y=1$ and $y=-1$, respectively.
 
 \example{ex_sqrt_asy}{Horizontal Asymptotes Involving Square Roots}{Find the horizontal asymptotes of $\dfrac{x}{\sqrt{x^2+1}}$.}{We must consider the limits as $x\to \pm \infty$. When $x$ is very large, $x^2+1\approx x^2$ and thus $\sqrt{x^2+1}\approx \sqrt{x^2}=\abs x$.
 \begin{align*}
@@ -264,11 +352,37 @@ We can also use \autoref{thm:lim_rational_fn_at_infty} directly; in this case $n
 				&=\frac{0+0+0}{1+0}=0
 			\end{align*}
 \mtable[-1in]{Visualizing the functions in \autoref{ex_hzasy3}.}{fig:hzasy3}{%
-\begin{tabular}{c}
-	\myincludegraphics{figures/fighzasy5} \\ (a) \\[10pt]
-	\myincludegraphics{figures/fighzasy6} \\ (b) \\[10pt]
-	\myincludegraphics{figures/fighzasy7} \\ (c)
-\end{tabular}}
+	\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,axis y line=middle,axis x line=middle,
+ymin=-.6,ymax=.6,xmin=-41,xmax=2,name=myplot]
+\addplot [draw={\colorone},smooth,thick,domain=-40:-2] {(x*x+2*x-1)/(x*x*x+1)};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\ (a) \\[10pt]
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,minor y tick num = 4,axis y line=middle,axis x line=middle,
+ymin=-.55,ymax=.55,xmin=-1,xmax=41,name=myplot]
+\addplot [draw={\colorone},smooth,thick,domain=1.86:40] {(x*x+2*x-1)/(1-x-3*x*x)};
+\draw [dashed,thick](axis cs:-1,-.33333) -- (axis cs:41,-.3333);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\ (b) \\[10pt]
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,axis y line=middle,axis x line=middle,
+ymin=-50,ymax=5,xmin=-5,xmax=41,name=myplot]
+\addplot [draw={\colorone},smooth,thick,domain=4:40] {(x*x-1)/(3-x)};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\ (c)}
 		\item The highest power of $x$ is in the denominator.  Therefore, the limit is 0; see \autoref{fig:hzasy3}(a).
 		\end{enumerate}
 	\item	\begin{enumerate}

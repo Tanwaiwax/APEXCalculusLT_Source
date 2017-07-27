@@ -16,28 +16,42 @@ import subprocess
 start = time.time()
 
 asyfiles = ['conicalhelix','cyl_surf_r','cyl_surf_t','cyl_surf_z',
-            'fig10_01_ex_19_3D','fig10_01_ex_20_3D','fig10_01_ex_21_3D','fig10_01_ex_22_3D',
-            'figarc4_3D','figarc4_b_3D',
-            'figcartcoord1_3D','figcartcoord2_3D',
-            'figcross_area1a_3D','figcross_area1a_3D','figcross1_3D','figcrossp_rhr_3D','figcrossp4a_3D','figcrossp6_3D','figcrosspparallelpiped_3D',
-            'figdisk1_3D','figdisk1a_3D','figdisk1b_3D','figdisk2a_3D','figdotp3_3D',
-            'figgabriel_3D',
-            'figlines_dist2_3D','figlines_intro_3D','figlines1_3D','figlines2_3D','figlines3_3D','figlines6_3D',
-            'figmass2_3D','figmotion6_3D',
-            'figparcalc8_3D','figplanes_dist_3D','figplanes_intro_3D','figplanes1_3D','figplanes2_3D','figplanes3_3D','figplanes4_3D','figplanes5_3D','figpolcalc8a_3D',
-            'figquadric_cone_3D','figquadric_coneb_3D','figquadric_conec_3D','figquadric_ellipsoid_3D','figquadric_ellipsoidb_3D',
-            'figquadric_hyp_one_sheet_3D','figquadric_hyp_one_sheetb_3D','figquadric_hyp_par_3D','figquadric_hyp_parb_3D','figquadric_hyp_parc_3D',
-            'figquadric_hyp_two_sheet_3D','figquadric_hyp_two_sheetb_3D','figquadric_par_3D','figquadric_parb_3D',
-            'figsa1_3D','figsa2a_3D','figsa2b_3D',
-            'figshell_intro_a_3D','figshell_intro_d_3D','figshell2b_3D','figshell2c_3D','figshell3b_3D','figshell3c_3D','figshellparab_b_3D','figshellparab_b_3D',
-            'figspace1_3D','figspace2_3D','figspace3_3D','figspace4a_3D','figspace4b_3D','figspace4c_3D','figspace4d_3D','figspace4e_3D','figspace4f_3D',
-            'figspace5a_3D','figspace5ab_3D','figspace5b_3D','figspace5bb_3D','figspace5c_3D','figspace5cb_3D','figspace6_3D',
-            'figspacecylinder1_3D','figspacecylinder1b_3D','figspacexy_3D','figspaceyz_3D',
-            'figsq_rt_3D','figsq_rt_b_3D','figsurf_rev_intro_3D','figsurf_rev_introb_3D','figsurfrev1a_3D','figsurfrev1b_3D','figsurfrev2a_3D','figsurfrev2b_3D',
-            'figvectintro3b_3D','figvvf2_3D',
-            'figwash1b_3D','figwash1c_3D','figwash2b_3D','figwash2c_3D','figwash4_3D','figwash4b_3D','figwasher_idea_b_3D','figwasher_idea_c_3D',
+            'ex_helix_y','ex_helix_z','ex_tilted_circle','ex_wobbly_circle',
             'helicoid','ortho_cyl','ortho_rect','ortho_sph',
-            'sph_surf_phi','sph_surf_r','torus']
+            'sph_surf_phi','sph_surf_r','torus'
+]
+
+fig3Dasyfiles = ['13_05_ex_05','13_05_ex_06','13_05_ex_07','13_05_ex_08','3d_proj','3d_projb',
+                 'arc4','arc4_b',
+                 'cartcoord1','cartcoord2','conopt1','conopt1c','conopt2','curvature4',
+                 'direct1','direct2','direct2b','direct3','direct9','disk1','disk1a','disk1b','disk2a','dotp3','dotp4b','dotp4c','dotpangle3D',
+                 'gabriel',
+                 'levelcurve1','levelcurve2','lines_dist2','lines_intro','lines1','lines2','lines3','lines6',
+                 'mass2','mass3a','mass3b','mchain_intro','mchain2','motion6',
+                 'parcalc8','planes_dist','planes_intro','planes1','planes2','planes3','planes4','planes5','polcalc8a',
+                 'sa1','sa2a','sa2b',
+                 'sq_rt','sq_rt_b','surf_rev_intro','surf_rev_introb','surfrev1a','surfrev1b','surfrev2a','surfrev2b',
+                 'tannorm1','tannorm3','tpl2','tpl3','tpl5','tpl6','tpl8',
+                 'vectintro3b','vvfderiv1','vvf2','vvflimit4'
+]
+
+fig3Dasyfiles += ['10_01_ex_'+str(exnum) for exnum in range(15,29)]
+fig3Dasyfiles += ['13_06_ex_'+"{:02}".format(exnum) for exnum in range(7,15)]
+fig3Dasyfiles += ['cross'+suffix for suffix in ('_area1','_area1a','1','p_rhr','p4a','p6','pparallelpiped')]
+fig3Dasyfiles += ['double'+suffix for suffix in ('_intro2','_intro3','_summary','1','2','3','4','6b','pol1','pol2b','pol4','pol5',)]
+fig3Dasyfiles += ['multi'+suffix for suffix in ('_extreme1','_extreme2','_extreme3','_extreme5','cont1','graph_intro','graph_introb','limit_def')]
+fig3Dasyfiles += ['partial'+suffix for suffix in ('intro','introb','3a','3b','4a','4b','6','6b')]
+fig3Dasyfiles += ['quadric'+suffix for suffix in ('_cone','_coneb','_conec','_ellipsoid','_ellipsoidb',
+    '_hyp_one_sheet','_hyp_one_sheetb','_hyp_par','_hyp_parb','_hyp_parc',
+    '_hyp_two_sheet','_hyp_two_sheetb','_par','_parb')]
+fig3Dasyfiles += ['shell'+suffix for suffix in ('_intro_a','_intro_d','2b','2c','3b','3c','parab_b','parab_b')]
+fig3Dasyfiles += ['space'+suffix for suffix in ('_tangent_intro','1','2','3','4a','4b','4c','4d','4e','4f',
+        '5a','5ab','5b','5bb','5c','5cb','6','cylinder1','cylinder1b','xy','xz','yz')]
+fig3Dasyfiles += ['surfacearea'+suffix for suffix in ('_intro1','_intro2','1','3','4')]
+fig3Dasyfiles += ['trip'+suffix for suffix in ('1','1b','2','2b','2c','2d','3','3b','3c','3d','4','4b','4c','4d','5','5b','5c','5d','5e','intro','introa')]
+fig3Dasyfiles += ['wash'+suffix for suffix in ('1b','1c','2b','2c','4','4b','er_idea_b','er_idea_c')]
+
+asyfiles += ['fig'+file+'_3D' for file in fig3Dasyfiles]
 
 parser = argparse.ArgumentParser(description='Compile document to a pdf.',
                                  epilog="If no options are given, "
@@ -79,7 +93,7 @@ group.add_argument("-b","--blackwhite", action="store_true",
 group.add_argument("-s","--static", action="store_true",
                    help="Print static color graphics (default is interactive).")
 
-for dir in ('ApexPDFs','logs','web'):
+for dir in ('ApexPDFs','logs','todo','web'):
     try:
         os.mkdir(dir)
     except OSError:
@@ -126,24 +140,26 @@ def updatetodo():
     todos = output.decode('utf-8').split("\n")
     todosin = defaultdict(list)
     for todo in todos:
-        if re.match('./make.py',todo) or re.match('./todo_',todo) or todo == '' or re.match('./ApexPDFs/versions',todo):
+        if re.match('./make.py',todo) or re.match('./todo/todo_',todo) or todo == '' or re.match('./ApexPDFs/versions',todo) or './.git/logs/' in todo:
             continue
         if ' Tim ' in todo:
             todosin['tim'].append(todo)
-        elif re.search('/0[1-4]',todo) or 'CalculusI.' in todo:
+        elif re.match('\S*/0[1-4]',todo) or 'CalculusI.' in todo:
             todosin['calc1'].append(todo)
-        elif re.search('/0[5-9]',todo) or 'CalculusII.' in todo:
+        elif re.match('\S*/0[5-9]',todo) or 'CalculusII.' in todo:
             todosin['calc2'].append(todo)
-        else:
+        elif re.match('\S*/1[0-4]',todo) or 'CalculusIII.' in todo:
             todosin['calc3'].append(todo)
+        else:
+            todosin['tim'].append(todo)
     for filename,todolist in todosin.items():
-        with open('todo_'+filename+'.txt','w') as todofile:
+        with open('todo/todo_'+filename+'.txt','w') as todofile:
             todofile.write(('\n'.join(todolist)+'\n').encode('utf-8'))
     # and a few manual TeX commands instead of 'todo'
-    with open('todo_tex.txt','w') as mystdout:
+    with open('todo/todo_tex.txt','w') as mystdout:
         for keywd in ('drawexampleline','enlargethispage','pagebreak',
                       'clearpage','cleardoublepage','columnbreak','newpage',
-                      'mfigurethree','myincludegraphicsthree','addplot3'):
+                      'mfigure','myincludegraphics','addplot3'):
             mystdout.write('\n\n'+keywd+':\n')
             mystdout.flush()
             try:
@@ -225,8 +241,9 @@ def getcommandline(args):
         fixRefs()
         shutil.copyfile('web/script.js','script.js')
         shutil.copyfile('web/style.css','style.css')
-        return ['latexmlpost','--quiet','--split','--stylesheet=web/apex.xsl',
+        return ['latexmlpost','--split','--stylesheet=web/apex.xsl',#'--quiet',
                     '--destination=web/index.html','--css=style.css',
+                    '--xsltparam=USE_TWOCOLUMN_INDEX',
                     '--javascript=https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js',
                     '--javascript=LaTeXML-maybeMathJax.js',
                     '--javascript=script.js','calculus.xml']
@@ -318,6 +335,7 @@ if args.all:
     # having this first makes sure the index and toc are up to date
     compilewith('-c0')
     compilewith('-i')
+    # having '123' first means that doesn't change everytime, which speed compilation
     for part,size in itertools.product('123',["s","b"]):
         compilewith('-'+size+'c'+part)
 else:

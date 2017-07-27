@@ -4,15 +4,43 @@
 %
 %Now recall that one-to-one functions have \textit{inverses}. That is, if $f$ is one-to-one, it has an inverse function, denoted by $f\primeskip^{-1}$, such that if $f(a)=b$, then $f\primeskip^{-1}(b) = a$. The domain of $f\primeskip^{-1}$ is the range of $f$, and vice-versa. For ease of notation, we set $g=f\primeskip^{-1}$ and treat $g$ as a function of $x$.
 %
-%Since $f(a)=b$ implies $g(b)=a$, when we compose $f$ and $g$ we get a nice result: $$f\big(g(b)\big) = f(a) = b.$$ In general, $f\big(g(x)\big) =x$ and $g\big(f(x)\big) = x$. This gives us a convenient way to check if two functions are inverses of each other: compose them and if the result is $x$, then they are inverses (on the appropriate domains.)
+%Since $f(a)=b$ implies $g(b)=a$, when we compose $f$ and $g$ we get a nice result: \[f\big(g(b)\big) = f(a) = b.\] In general, $f\big(g(x)\big) =x$ and $g\big(f(x)\big) = x$. This gives us a convenient way to check if two functions are inverses of each other: compose them and if the result is $x$, then they are inverses (on the appropriate domains.)
 %
 %When the point $(a,b)$ lies on the graph of $f$, the point $(b,a)$ lies on the graph of $g$. This leads us to discover that the graph of $g$ is the reflection of $f$ across the line $y=x$. In \autoref{fig:inverse1} we see a function graphed along with its inverse. See how the point $(1,1.5)$ lies on one graph, whereas $(1.5,1)$ lies on the other. Because of this relationship, whatever we know about $f$ can quickly be transferred into knowledge about $g$.
 %
-%\mfigure{-1in}{A function $f$ along with its inverse $f\primeskip^{-1}$. (Note how it does not matter which function we refer to as $f$; the other is $f\primeskip^{-1}$.)}{fig:inverse1}{figures/figinverse1}
+%\mtable[-1in]{A function $f$ along with its inverse $f\primeskip^{-1}$. (Note how it does not matter which function we refer to as $f$; the other is $f\primeskip^{-1}$.)}{fig:inverse1}{\begin{tikzpicture}
+%\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+%minor x tick num=1,minor y tick num=1,axis y line=middle,axis x line=middle,
+%ymin=-1.2,ymax=1.7,xmin=-1.2,xmax=1.7,name=myplot]
+%\addplot [draw={\colorone},smooth,thick,domain=-1:1.05] (x,x^3+.5);
+%\addplot [draw={\colortwo},smooth,thick,domain=-1:1.05] (x^3+.5,x);
+%\addplot [dashed,thin] {x};
+%\filldraw [black] (axis cs:-.5,.375) node [above left] {\tiny $(-0.5,0.375)$} circle (1pt);
+%\filldraw [black] (axis cs:.375,-.5) node [below rigth] {\tiny $(0.375,-0.5)$} circle (1pt);
+%\filldraw [black] (axis cs:1,1.5) node [left] {\tiny $(1,1.5)$} circle (1pt);
+%\filldraw [black] (axis cs:1.5,1) node [below] {\tiny $(1.5,1)$} circle (1pt);
+%\end{axis}
+%\node [right] at (myplot.right of origin) {\scriptsize $x$};
+%\node [above] at (myplot.above origin) {\scriptsize $y$};
+%\end{tikzpicture}}
 %
 %For example, consider \autoref{fig:inverse2} where the tangent line to $f$ at the point $(a,b)$ is drawn. That line has slope $\fp(a)$. Through reflection across $y=x$, we can see that the tangent line to $g$ at the point $(b,a)$ should have slope $\ds \frac{1}{\fp(a)}$. This then tells us that $\ds g\primeskip'(b) = \frac{1}{\fp(a)}.$
 %
-%\mfigure{0in}{Corresponding tangent lines drawn to $f$ and $f\primeskip^{-1}$.}{fig:inverse2}{figures/figinverse2}
+%\mtable{Corresponding tangent lines drawn to $f$ and $f\primeskip^{-1}$.}{fig:inverse2}{\begin{tikzpicture}
+%\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+%minor x tick num=1,minor y tick num=1,axis y line=middle,axis x line=middle,
+%ymin=-1.2,ymax=1.7,xmin=-1.2,xmax=1.7,name=myplot]
+%\addplot [draw={\colorone},smooth,thick,domain=-1:1.05] (x,x^3+.5);
+%\addplot [draw={\colortwo},smooth,thick,domain=-1:1.05] (x^3+.5,x);
+%\addplot [dashed,thin] {x};
+%\addplot [domain=-.9:-.1] {.75*(x+.5)+.375};
+%\addplot [domain=.1:.7] {4/3*(x-.375)-.5};
+%\filldraw [black] (axis cs:-.5,.375) node [above left] {\tiny $(a,b)$} circle (1pt);
+%\filldraw [black] (axis cs:.375,-.5) node [below right] {\tiny $(b,a)$} circle (1pt);
+%\end{axis}
+%\node [right] at (myplot.right of origin) {\scriptsize $x$};
+%\node [above] at (myplot.above origin) {\scriptsize $y$};
+%\end{tikzpicture}}
 %
 %Consider:
 %\begin{center}
@@ -62,19 +90,51 @@ In the next example we apply \autoref{thm:deriv_inverse_functions} to the arcsin
 	&= \frac{1}{\cos(\sin^{-1}x)}.
 \end{align*}
 			
-\mfigure{0in}{A right triangle defined by $y=\sin ^{-1}(x/1)$ with the length of the third leg found using the Pythagorean Theorem.}{fig:inverse3}{figures/figinverse3}
+\mtable{A right triangle defined by $y=\sin ^{-1}(x/1)$ with the length of the third leg found using the Pythagorean Theorem.}{fig:inverse3}{\begin{tikzpicture}[x=.5\marginparwidth,y=.5\marginparwidth,>=stealth]
+\draw (0,0) node [shift={(15pt,5pt)}] {\scriptsize$y$}
+ -- (1,0) node [pos=.5,below] {\scriptsize $\sqrt{1-x^2}$}
+ -- (1,.75) node [pos=.5,right] {\scriptsize $x$}
+ -- (0,0) node [pos=.5,above] {\scriptsize $1$};
+\end{tikzpicture}}
 
 This last expression is not immediately illuminating. Drawing a figure will help, as shown in \autoref{fig:inverse3}. Recall that the sine function can be viewed as taking in an angle and returning a ratio of sides of a right triangle, specifically, the ratio ``opposite over hypotenuse.'' This means that the arcsine function takes as input a ratio of sides and returns an angle. The equation $y=\sin^{-1} x$ can be rewritten as $y=\sin^{-1}(x/1)$; that is, consider a right triangle where the hypotenuse has length 1 and the side opposite of the angle with measure $y$ has length $x$. This means the final side has length $\sqrt{1-x^2}$, using the Pythagorean Theorem.
 
-Therefore $\cos (\sin^{-1} x) = \cos y = \sqrt{1-x^2}/1 = \sqrt{1-x^2}$, resulting in $$\frac d{dx}\big(\sin^{-1}x\big)=g\primeskip'(x)=\frac1{\sqrt{1-x^2}}.\eoehere$$}
+Therefore $\cos (\sin^{-1} x) = \cos y = \sqrt{1-x^2}/1 = \sqrt{1-x^2}$, resulting in \[\frac d{dx}\big(\sin^{-1}x\big)=g\primeskip'(x)=\frac1{\sqrt{1-x^2}}.\eoehere\]}
 
 Remember that the input $x$ of the arcsine function is a ratio of a side of a right triangle to its hypotenuse; the absolute value of this ratio will be less than 1. Therefore $1-x^2$ will be positive.
 
-\mfigure{0in}{Graphs of $y=\sin x$ and $y=\sin^{-1}x$ along with corresponding tangent lines.}{fig:inverse4}{figures/figinverse4}
+\mtable{Graphs of $y=\sin x$ and $y=\sin^{-1}x$ along with corresponding tangent lines.}{fig:inverse4}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,minor y tick num=1,axis y line=middle,axis x line=middle,
+ymin=-1.7,ymax=1.7,xmin=-1.7,xmax=1.7,xtick={-1.57,-.79,.79,1.57},
+xticklabels={$-\frac{\pi}{2}$,$-\frac{\pi}{4}$,$\frac{\pi}{4}$,$\frac{\pi}{2}$},
+name=myplot,axis equal]
+\addplot [draw={\colorone},smooth,thick,domain=-1.57:1.57] (x,{sin(deg(x))});
+\draw (axis cs:-1.1,-1.1) node {\scriptsize $y=\sin x$};
+\filldraw [black] (axis cs:1.05,.866) node [above left] {\scriptsize $(\frac{\pi}{3},\frac{\sqrt{3}}{2})$} circle (1pt);
+\addplot [black,thick,smooth,domain=.5:1.5] {.5*(x-1.05)+.866};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\begin{scope}[shift={(0,-120pt)}]
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,minor y tick num=1,axis y line=middle,axis x line=middle,
+ymin=-1.7,ymax=1.7,xmin=-1.7,xmax=1.7,ytick={-1.57,-.79,.79,1.57},
+yticklabels={$-\frac{\pi}{2}$,$-\frac{\pi}{4}$,$\frac{\pi}{4}$,$\frac{\pi}{2}$},
+name=myplot,axis equal]
+\addplot [draw={\colortwo},smooth,thick,domain=-1.57:1.57,] ({sin(deg(x))},x);
+\draw (axis cs:-1.2,-.6) node {\scriptsize $y=\sin^{-1} x$};
+\filldraw [black] (axis cs:.866,1.05) node [above left] {\scriptsize $(\frac{\sqrt{3}}{2},\frac{\pi}{3})$} circle (1pt);
+\addplot [black,thick,smooth,domain=.5:1.5] {2*(x-.866)+1.05};
+\end{axis}
+\end{scope}
+\end{tikzpicture}}
 
 In order to make $y=\sin x$ one-to-one, we restrict its domain to $[-\pi/2,\pi/2]$; on this domain, the range is $[-1,1]$. Therefore the domain of $y=\sin^{-1}x$ is $[-1,1]$ and the range is $[-\pi/2,\pi/2]$. When $x=\pm 1$, note how the derivative of the arcsine function is undefined; this corresponds to the fact that as $x\to \pm1$, the tangent lines to arcsine approach vertical lines with undefined slopes.
 
-In \autoref{fig:inverse4} we see $f(x) = \sin x$ and $f\primeskip^{-1}(x)=\sin^{-1} x$ graphed on their respective domains. The line tangent to $\sin x$ at the point $(\pi/3, \sqrt{3}/2)$ has slope $\cos \pi/3 = 1/2$. The slope of the corresponding point on $\sin^{-1}x$, the point $(\sqrt{3}/2,\pi/3)$, is $$\frac{1}{\sqrt{1-(\sqrt{3}/2)^2}} = \frac{1}{\sqrt{1-3/4}} = \frac{1}{\sqrt{1/4}} = \frac{1}{1/2}=2,$$ verifying \autoref{thm:deriv_inverse_functions} yet again: at corresponding points, a function and its inverse have reciprocal slopes.\bigskip
+In \autoref{fig:inverse4} we see $f(x) = \sin x$ and $f\primeskip^{-1}(x)=\sin^{-1} x$ graphed on their respective domains. The line tangent to $\sin x$ at the point $(\pi/3, \sqrt{3}/2)$ has slope $\cos \pi/3 = 1/2$. The slope of the corresponding point on $\sin^{-1}x$, the point $(\sqrt{3}/2,\pi/3)$, is
+\[\frac{1}{\sqrt{1-(\sqrt{3}/2)^2}} = \frac{1}{\sqrt{1-3/4}} = \frac{1}{\sqrt{1/4}} = \frac{1}{1/2}=2,\]
+verifying \autoref{thm:deriv_inverse_functions} yet again: at corresponding points, a function and its inverse have reciprocal slopes.\bigskip
 
 Using similar techniques, we can find the derivatives of all the inverse trig\-o\-no\-metric functions after first restricting their domains according to \autoref{fig:domain_trig} to allow them to be invertible.
 

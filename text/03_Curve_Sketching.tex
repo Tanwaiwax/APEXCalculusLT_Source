@@ -4,7 +4,16 @@ We have been learning how we can understand the behavior of a function based on 
 
 Why bother? Graphing utilities are very accessible, whether on a computer, a hand--held calculator, or a smartphone. These resources are usually very fast and accurate. We will see that our method is not particularly fast -- it will require time (but it is not \textit{hard}). So again: why bother?
 
-\mfigure{0in}{Demonstrating the 4 ways that concavity interacts with increasing/decreasing, along with the relationships with the first and second derivatives.}{fig:concavity3}{figures/figconcavity3}
+\mtable{Demonstrating the 4 ways that concavity interacts with increasing/decreasing, along with the relationships with the first and second derivatives.}{fig:concavity3}{\begin{tikzpicture}[scale=.9]
+\draw [thick] (-2.5,.5) arc (180:90:2);
+\draw [thick] (2.5,.5) arc (0:90:2);
+\draw [thick] (-2.5,-.5) arc (180:270:2);
+\draw [thick] (2.5,-.5) arc (0:-90:2);
+\draw(-1,1.25)node[]{\tiny\parbox{50pt}{$\fp>0$, increasing\\[3pt]$\fpp<0$, c. down}};
+\draw(1.5,1.25)node[]{\tiny\parbox{50pt}{$\fp<0$, decreasing\\[3pt]$\fpp<0$, c. down}};
+\draw(-1,-1.25)node[]{\tiny\parbox{50pt}{$\fp<0$,decreasing\\[3pt]$\fpp>0$, c. up}};
+\draw(1.5,-1.25)node[]{\tiny\parbox{50pt}{$\fp>0$, increasing\\[3pt]$\fpp>0$, c. up}};
+\end{tikzpicture}}
 
 We are attempting to understand the behavior of a function $f$ based on the information given by its derivatives. While all of a function's derivatives relay information about it, it turns out that ``most'' of the behavior we care about is explained by \fp\ and \fpp. Understanding the interactions between the graph of $f$ and \fp\ and \fpp\ is important and is illustrated in \autoref{fig:concavity3}. To gain this understanding, one might argue that all that is needed is to look at lots of graphs. This is true to a point, but is somewhat similar to stating that one understands how an engine works after looking only at pictures. It is true that the basic ideas will be conveyed, but ``hands--on'' access increases understanding.
 
@@ -61,7 +70,8 @@ The following Key Idea summarizes what we have learned so far that is applicable
 	\item	We determine the end behavior using limits as $x$ approaches $\pm$infinity.			\[\lim_{x\to-\infty}f(x)=-\infty\qquad\lim_{x\to\infty}f(x)=\infty.\]
 		We do not have any horizontal asymptotes.
 	\item	Find the critical values of $f$. We compute $\fp(x) = 9x^2-20x+4=(9x-2)(x-2)$, so that $x=\frac29,2$.
-	\item	Find the possible points of inflection of $f$. We see $\fpp(x) = 18x-20$, so that $$\fpp(x) = 0 \Rightarrow x= 10/9 \approx 1.111.$$
+	\item	Find the possible points of inflection of $f$. We see $\fpp(x) = 18x-20$, so that
+	\[\fpp(x) = 0 \Rightarrow x= 10/9 \approx 1.111.\]
 	\item	We place the values $x=\frac29,\frac{10}9,2$ on a number line. We mark each subinterval as increasing or decreasing, concave up or down, using the techniques used in Sections \ref{sec:incr_decr} and \ref{sec:concavity}.
 
 \mtable{Sketching $f$ in \autoref{ex_sketch1}.}{fig:sketch1}{%
@@ -106,21 +116,49 @@ The following Key Idea summarizes what we have learned so far that is applicable
 
 	\item	There is a horizontal asymptote of $y=1$, as $\ds \lim_{x\to -\infty}f(x) = 1$ and $\ds\lim_{x\to\infty}f(x) =1$.
 		
-	\item	To find the critical values of $f$, we first find $\fp(x)$. Using the Quotient Rule, we find $$\fp(x) = \frac{-8x+4}{(x^2+x-6)^2} = \frac{-8x+4}{(x-3)^2(x+2)^2}.$$
+	\item	To find the critical values of $f$, we first find $\fp(x)$. Using the Quotient Rule, we find
+	\[\fp(x) = \frac{-8x+4}{(x^2+x-6)^2} = \frac{-8x+4}{(x-3)^2(x+2)^2}.\]
 		
 	$\fp(x) = 0$ when $x = 1/2$, and $\fp$ is undefined when $x=-2,3$. Since \fp\ is undefined only when $f$ is, these are not critical values. The only critical value is $x=1/2$.
 		
-	\item	To find the possible points of inflection, we find $\fpp(x)$, again employing the Quotient Rule: $$\fpp(x) = \frac{24x^2-24x+56}{(x-3)^3(x+2)^3}.$$
+	\item	To find the possible points of inflection, we find $\fpp(x)$, again employing the Quotient Rule:
+	\[\fpp(x) = \frac{24x^2-24x+56}{(x-3)^3(x+2)^3}.\]
 		
 	We find that $\fpp(x)$ is never 0 (setting the numerator equal to 0 and solving for $x$, we find the only roots to this quadratic are imaginary) and \fpp\ is undefined when $x=-2,3$. Thus concavity will possibly only change at $x=-2$ and $x=3$ (although these are not inflection points, since $f$ is not defined there).
 		
 \mtable[-2in]{Sketching $f$ in \autoref{ex_sketch2}.}{fig:sketch2}{%
-\begin{tabular}{c}
-\myincludegraphics{figures/figsketch2b}\\[10pt]
-(a)\\[10pt]
-\myincludegraphics{figures/figsketch2}\\[10pt]
-(b)
-\end{tabular}}
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,minor y tick num = 4, axis y line=middle,axis x line=middle,
+ymin=-5.5,ymax=5.5,xmin=-5.2,xmax=5.2,name=myplot]
+\draw [draw={\colorone},thick] (axis cs:-5,1.2) parabola (axis cs:-2,10);
+\draw [draw={\colorone},thick] (axis cs:3,9) parabola [bend at end] (axis cs:5,1.2);
+\draw [draw={\colorone},thick,smooth] (axis cs:-1.8,-5) .. controls (axis cs:-1.7,-.5) .. (axis cs:-1,0) .. controls (axis cs:0,.36) .. (axis cs:.5,.36) .. controls (axis cs: 1,.36) .. (axis cs: 2,0) .. controls (axis cs:2.7,-.5) .. (axis cs:2.8,-5);
+\addplot [thin,dashed] coordinates {(-2,5.5) (-2,-5.5)};
+\addplot [thin,dashed] coordinates {(3,5.5) (3,-5.5)};
+\addplot [thin,dashed] coordinates {(-5.5,1) (5.5,1)};
+\filldraw [draw={\colorone}] (axis cs:0.5,.36) circle (1pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\[10pt](a)\\[10pt]
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,minor y tick num = 4, axis y line=middle,axis x line=middle,
+ymin=-5.5,ymax=5.5,xmin=-5.2,xmax=5.2,name=myplot]
+\addplot [thick,draw={\colorone},smooth,domain=-5:-2.1] {((x-2)*(x+1))/((x-3)*(x+2))};
+\addplot [thick,draw={\colorone},smooth,domain=-1.9:2.9] {((x-2)*(x+1))/((x-3)*(x+2))};
+\addplot [thick,draw={\colorone},smooth,domain=3.1:5] {((x-2)*(x+1))/((x-3)*(x+2))};
+\addplot [thin,dashed] coordinates {(-2,5.5) (-2,-5.5)};
+\addplot [thin,dashed] coordinates {(3,5.5) (3,-5.5)};
+\addplot [thin,dashed] coordinates {(-5.5,1) (5.5,1)};
+\filldraw [draw={\colorone}] (axis cs:0.5,.36) circle (1pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\[10pt](b)}
 
 	\item	We place the values $x=1/2$, $x=-2$ and $x=3$ on a number line. We mark in each interval whether $f$ is increasing or decreasing, concave up or down. We see that $f$ has a relative maximum at $x=1/2$; concavity changes only at the vertical asymptotes.
 
@@ -140,9 +178,14 @@ The following Key Idea summarizes what we have learned so far that is applicable
 	\item	We have a horizontal asymptote of $y=5$, as
 	\[\lim_{x\to\pm\infty}f(x)=\lim_{x\to\pm\infty}\frac{5(1-\frac2x)(1+\frac1x)}{1+\frac2x+\frac4{x^2}}=5.\]
 	\item	We find the critical values of $f$ by setting $\fp(x)=0$ and solving for $x$. We find 
-			$$\fp(x) = \frac{15x(x+4)}{(x^2+2x+4)^2} \quad \Rightarrow \quad \fp(x) = 0 \text{ when } \ x=-4,0.$$
+	\[
+	\fp(x) = \frac{15x(x+4)}{(x^2+2x+4)^2}
+	\quad \Rightarrow \quad
+	\fp(x) = 0 \text{ when } \ x=-4,0.
+	\]
 	\item	We find the possible points of inflection by solving $\fpp(x) = 0$ for $x$. We find
-			$$\fpp(x) = -\frac{30x^3+180x^2-240}{(x^2+2x+4)^3}.$$ The cubic in the numerator does not factor very ``nicely.'' We instead approximate the roots at $x= -5.759$, $x=-1.305$ and $x=1.064$.
+	\[\fpp(x) = -\frac{30x^3+180x^2-240}{(x^2+2x+4)^3}.\]
+	The cubic in the numerator does not factor very ``nicely.'' We instead approximate the roots at $x= -5.759$, $x=-1.305$ and $x=1.064$.
 			
 	\item	We place the critical points and possible inflection points on a number line and mark each interval as increasing/decreasing, concave up/down appropriately.
 
@@ -151,12 +194,48 @@ The following Key Idea summarizes what we have learned so far that is applicable
 \end{center}	
 	
 \mtable{Sketching $f$ in \autoref{ex_sketch3}.}{fig:sketch3}{%
-\begin{tabular}{c}
-\myincludegraphics{figures/figsketch3b}\\[10pt]
-(a)\\[10pt]
-\myincludegraphics{figures/figsketch3}\\[10pt]
-(b)
-\end{tabular}}
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1, axis y line=middle,axis x line=middle,
+ymin=-3.1,ymax=8.1,xmin=-7.5,xmax=6.5,name=myplot]
+\addplot [thin,dashed] coordinates {(-7.5,5) (6.5,5)};
+\draw [draw={\colorone},thick]  (axis cs:-7,6.1)parabola (axis cs:-5.75,7.2);
+\draw [draw={\colorone},thick]  (axis cs:-5.75,7.2)parabola[bend at end](axis cs:-4.,7.5);
+\draw [draw={\colorone},thick]  (axis cs:-4., 7.5) parabola (axis cs:-1.31, 1.63);
+\draw [draw={\colorone},thick]  (axis cs:-1.31, 1.63) -- (axis cs:-1,0);
+\draw [draw={\colorone},thick]  (axis cs:-1,0) parabola [bend at end] (axis cs:0., -2.5);
+\draw [draw={\colorone},thick]  (axis cs:0.,-2.5) parabola (axis cs:1.064, -1.33);
+\addplot [draw={\colorone},thick,smooth] coordinates {(1.064, -1.33049) (1.264, -1.02533) (1.464, -0.727958) (1.664,-0.443257) (1.864, -0.173847) (2,0)};
+\draw [draw={\colorone},thick]  (axis cs:2,0) parabola [bend at end] (axis cs:6,4.5);
+\filldraw [draw={\colorone}] (axis cs:-5.75,7.2) circle (1pt);
+\filldraw [draw={\colorone}] (axis cs:-4., 7.5) circle (1pt);
+\filldraw [draw={\colorone}] (axis cs:-1.31, 1.63) circle (1pt);
+\filldraw [draw={\colorone}] (axis cs:-1,0) circle (1pt);
+\filldraw [draw={\colorone}] (axis cs:0., -2.5) circle (1pt);
+\filldraw [draw={\colorone}] (axis cs:1.064, -1.33) circle (1pt);
+\filldraw [draw={\colorone}] (axis cs:2,0) circle (1pt);\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\[10pt](a)\\[10pt]
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1, axis y line=middle,axis x line=middle,
+ymin=-3.1,ymax=8.1,xmin=-7.5,xmax=6.5,name=myplot]
+\addplot [thin,dashed] coordinates {(-7.5,5) (6.5,5)};
+\addplot [thick,draw={\colorone},smooth,domain=-7.5:6.5] {(5*(x-2)*(x+1))/(x^2+2*x+4)};
+\filldraw [draw={\colorone}] (axis cs:-5.75,7.2) circle (1pt);
+\filldraw [draw={\colorone}] (axis cs:-4., 7.5) circle (1pt);
+\filldraw [draw={\colorone}] (axis cs:-1.31, 1.63) circle (1pt);
+\filldraw [draw={\colorone}] (axis cs:-1,0) circle (1pt);
+\filldraw [draw={\colorone}] (axis cs:0., -2.5) circle (1pt);
+\filldraw [draw={\colorone}] (axis cs:1.064, -1.33) circle (1pt);
+\filldraw [draw={\colorone}] (axis cs:2,0) circle (1pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\[10pt](b)}
 
 	\item	In \autoref{fig:sketch3}(a) we plot the significant points from the number line as well as the two roots of $f$, $x=-1$ and $x=2$, and connect the points with the appropriate concavity. \autoref{fig:sketch3}(b) shows a computer generated graph of $f$, affirming our results (but the top left was slightly off).\eoehere
 \end{enumerate}}

@@ -6,14 +6,14 @@
 %When dealing with rational functions (i.e., quotients made up of polynomial functions), it is an almost universal rule that everything works better when the degree of the numerator is less than the degree of the denominator. Hence we use polynomial division.
 %
 %We skip the specifics of the steps, but note that when $x^2+2x+1$ is divided into $x^3+4x^2+8x+5$, it goes in $x+2$ times with a remainder of $3x+3$. Thus 
-%$$\frac{x^3+4x^2+8x+5}{x^2+2x+1} = x+2 + \frac{3x+3}{x^2+2x+1}.$$
+%\[\frac{x^3+4x^2+8x+5}{x^2+2x+1} = x+2 + \frac{3x+3}{x^2+2x+1}.\]
 %Integrating $x+2$ is simple. The fraction can be integrated by setting $u = x^2+2x+1$, giving $du = (2x+2)\ dx$. This is very similar to the numerator. Note that $du/2 = (x+1)\ dx$ and then consider the following:
 %\begin{align*}
 %\int \frac{x^3+4x^2+8x+5}{x^2+2x+1}\ dx & = \int \left(x+2 + \frac{3x+3}{x^2+2x+1}\right)\ dx  \rule[-13pt]{0pt}{5pt} \\
 %					&= \int (x+2)\ dx + \int \frac{3(x+1)}{x^2+2x+1}\ dx  \rule[-13pt]{0pt}{5pt}\\
 %					& = \frac12x^2+2x+C_1 + \int \frac{3}{u}\frac{du}{2}  \rule[-13pt]{0pt}{5pt}\\
-%					&= \frac12x^2+2x+C_1 + \frac32\ln|u| + C_2 \rule[-13pt]{0pt}{5pt}\\
-%					&= \frac12x^2+2x+\frac32\ln|x^2+2x+1| + C.
+%					&= \frac12x^2+2x+C_1 + \frac32\ln\abs u + C_2 \rule[-13pt]{0pt}{5pt}\\
+%					&= \frac12x^2+2x+\frac32\ln\abs{x^2+2x+1} + C.
 %\end{align*}
 %In some ways, we ``lucked out'' in that after dividing, substitution was able to be done. In later sections we'll develop techniques for handling rational functions where substitution is not directly feasible.
 %}\\
@@ -27,7 +27,7 @@ In this section we investigate the antiderivatives of rational functions. Recall
 We begin with an example that demonstrates the motivation behind this section. Consider the integral $\ds\int \frac{1}{x^2-1}\ dx$. We do not have a simple formula for this (if the denominator were $x^2+1$, we would recognize the antiderivative as being the arctangent function). It can be solved using Trigonometric Substitution, but note how the integral is easy to evaluate once we realize:
 
 %This integral is not difficult to evaluate once one realizes the following fact: 
-$$\frac{1}{x^2-1} = \frac{1/2}{x-1} - \frac{1/2}{x+1}.$$
+\[\frac{1}{x^2-1} = \frac{1/2}{x-1} - \frac{1/2}{x+1}.\]
 Thus 
 \begin{align*}
 \int\frac{1}{x^2-1}\ dx &= \int\frac{1/2}{x-1}\ dx - \int\frac{1/2}{x+1}\ dx \\
@@ -88,11 +88,12 @@ The following examples will demonstrate how to put this Key Idea into practice. 
 term in the decomposition.
 
 As $(x-2)^3$ divides the denominator, we will have the following terms in the decomposition:
-$$\frac{B}{x-2},\quad \frac{C}{(x-2)^2}\quad \text{and}\quad \frac{D}{(x-2)^3}.$$
+\[\frac{B}{x-2},\quad \frac{C}{(x-2)^2}\quad \text{and}\quad \frac{D}{(x-2)^3}.\]
 
 The $x^2+x+2$ term in the denominator results in a $\ds\frac{Ex+F}{x^2+x+2}$ term.
 
-Finally, the $(x^2+x+7)^2$ term results in the terms $$\frac{Gx+H}{x^2+x+7}\quad \text{and}\quad \frac{Ix+J}{(x^2+x+7)^2}.$$
+Finally, the $(x^2+x+7)^2$ term results in the terms
+\[\frac{Gx+H}{x^2+x+7}\quad \text{and}\quad \frac{Ix+J}{(x^2+x+7)^2}.\]
 All together, we have\\
 \flushinnerequ{%
 \begin{multline*}
@@ -118,9 +119,9 @@ Using the method described in \autoref{idea:partial_fraction} 2(a) to solve for 
 	&= (A+B)x + (A-B)\qquad\text{collect like terms.}\notag
 \end{align}
 The next step is key. %Note the equality we have:
-%$$1 = (A+B)x+(A-B).$$
+%\[1 = (A+B)x+(A-B).\]
 For clarity's sake, rewrite the equality we have as
-$$0x+1 = (A+B)x+(A-B).$$
+\[0x+1 = (A+B)x+(A-B).\]
 On the left, the coefficient of the $x$ term is 0; on the right, it is $(A+B)$. Since both sides are equal for all values of $x$, we must have that $0=A+B$. Likewise, on the left, we have a constant term of 1; on the right, the constant term is $(A-B)$. Therefore we have $1=A-B$.
 
 We have two linear equations with two unknowns. This one is easy to solve by hand, leading to 
@@ -166,24 +167,25 @@ Knowing $A$ and $C$, we can find the value of $B$ by choosing yet another value 
 	&= Ax^2+4Ax+4A + Bx^2 + Bx-2B + Cx-C \notag \\
 	&= (A+B)x^2 + (4A+B+C)x + (4A-2B-C)\notag
 \end{align}
-We have $$0x^2+0x+ 1 = (A+B)x^2 + (4A+B+C)x + (4A-2B-C)$$
+We have
+\[0x^2+0x+ 1 = (A+B)x^2 + (4A+B+C)x + (4A-2B-C)\]
 leading to the equations 
-$$A+B = 0, \quad 4A+B+C = 0 \quad \text{and} \quad 4A-2B-C = 1.$$
+\[A+B = 0, \quad 4A+B+C = 0 \quad \text{and} \quad 4A-2B-C = 1.\]
 These three equations of three unknowns lead to a unique solution:
-$$A = 1/9,\quad B = -1/9 \quad \text{and} \quad C = -1/3.$$
+\[A = 1/9,\quad B = -1/9 \quad \text{and} \quad C = -1/3.\]
 Thus 
-$$\int\frac{1}{(x-1)(x+2)^2}\ dx = \int \frac{1/9}{x-1}\ dx + \int \frac{-1/9}{x+2}\ dx + \int \frac{-1/3}{(x+2)^2}\ dx.$$
+\[\int\frac{1}{(x-1)(x+2)^2}\ dx = \int \frac{1/9}{x-1}\ dx + \int \frac{-1/9}{x+2}\ dx + \int \frac{-1/3}{(x+2)^2}\ dx.\]
 
 Each can be integrated with a simple substitution with $u=x-1$ or $u=x+2$.
 % (or by directly applying \autoref{idea:linearsub} as the denominators are linear functions).
 The end result is
-$$\int\frac{1}{(x-1)(x+2)^2}\ dx = \frac19\ln\abs{x-1}-\frac19\ln\abs{x+2} +\frac1{3(x+2)}+C.\eoehere$$}
+\[\int\frac{1}{(x-1)(x+2)^2}\ dx = \frac19\ln\abs{x-1}-\frac19\ln\abs{x+2} +\frac1{3(x+2)}+C.\eoehere\]}
 
 \example{ex_pf4}{Integrating using partial fractions}{Use partial fraction decomposition to integrate $\ds \int \frac{x^3}{(x-5)(x+3)}\ dx$.}
 {\autoref{idea:partial_fraction} presumes that the degree of the numerator is less than the degree of the denominator. Since this is not the case here, we begin by using polynomial division to reduce the degree of the numerator. We omit the steps, but encourage the reader to verify that
-$$\frac{x^3}{(x-5)(x+3)} = x+2+\frac{19x+30}{(x-5)(x+3)}.$$
+\[\frac{x^3}{(x-5)(x+3)} = x+2+\frac{19x+30}{(x-5)(x+3)}.\]
 Using \autoref{idea:partial_fraction}, we can rewrite the new rational function as:
-$$\frac{19x+30}{(x-5)(x+3)} = \frac{A}{x-5} + \frac{B}{x+3}$$
+\[\frac{19x+30}{(x-5)(x+3)} = \frac{A}{x-5} + \frac{B}{x+3}\]
 for appropriate values of $A$ and $B$. Clearing denominators, we have 
 \[19x+30=A(x+3)+B(x-5).\]
 As in the previous examples we choose values of $x$ to eliminate terms in the polynomial.  If we choose $x=-3$,
@@ -244,7 +246,7 @@ The integrand $\dfrac{2x-1}{x^2+6x+11}$ has a quadratic in the denominator and a
 	&= \frac{2x+6}{x^2+6x+11} - \frac{7}{x^2+6x+11}.
 \end{align*}
 We can now integrate the first term with substitution, leading to a $\ln\abs{x^2+6x+11}$ term. The final term can be integrated using arctangent. First, complete the square in the denominator:
-$$\frac{7}{x^2+6x+11} = \frac{7}{(x+3)^2+2}.$$
+\[\frac{7}{x^2+6x+11} = \frac{7}{(x+3)^2+2}.\]
 An antiderivative of the latter term can be found using \autoref{idea:trigsub} and substitution:
 \[
  \int \frac7{x^2+6x+11}\ dx=\frac7{\sqrt2}\tan^{-1}\left(\frac{x+3}{\sqrt2}\right)+C.

@@ -6,7 +6,17 @@ A fundamental calculus technique is to first answer a given problem with an appr
 
 Consider the region given in \autoref{fig:rie1a}, which is the area under $y=4x-x^2$ on $[0,4]$. What is the signed area of this region -- i.e., what is $\ds\int_0^4(4x-x^2)\ dx$?
 
-\mfigure{0in}{A graph of $f(x) = 4x-x^2$. What is the area of the shaded region?}{fig:rie1a}{figures/figrie1a}
+\mtable{A graph of $f(x) = 4x-x^2$. What is the area of the shaded region?}{fig:rie1a}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2,3,4},
+ytick={1,2,3,4},ymin=-1,ymax=5,xmin=-.5,xmax=4.5]
+\addplot [draw={\coloronefill},fill={\coloronefill},area style,domain=0:4]
+ {4*x-x^2} \closedcycle;
+\addplot [smooth,thick, draw={\colorone},domain=0:4] {4*x-x^2};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 We start by approximating. We can surround the region with a rectangle with height and width of 4 and find the area is approximately 16 square units. This is obviously an \textit{over--approximation}; we are including area in the rectangle that is not under the parabola. 
 
@@ -19,7 +29,29 @@ Let's use 4 rectangles of equal width of 1. This \textit{partitions} the interva
 There are three common ways to determine the height of these rectangles: the \textbf{Left Hand Rule}, the \textbf{Right Hand Rule}, and the \textbf{Midpoint Rule}. The \textbf{Left Hand Rule} says to evaluate the function at the left--hand endpoint of the subinterval and make the rectangle that height. In \autoref{fig:rie1b}, the rectangle drawn on the interval $[2,3]$ has height determined by the Left Hand Rule; it has a height of $f(2)$. (The rectangle is labeled ``LHR.'')\index{Left Hand Rule}\index{Right Hand Rule}\index{Midpoint Rule}
 
 % not \ds because of spacing
-\mfigure{0in}{Approximating $\int_0^4(4x-x^2)\ dx$ using rectangles. The heights of the rectangles are determined using different rules.}{fig:rie1b}{figures/figrie1b}
+\mtable{Approximating $\int_0^4(4x-x^2)\ dx$ using rectangles. The heights of the rectangles are determined using different rules.}{fig:rie1b}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2,3,4},
+ytick={1,2,3,4},ymin=-1,ymax=5,xmin=-.5,xmax=4.5]
+\addplot [draw={\coloronefill},fill={\coloronefill},area style,domain=0:4]
+ {4*x-x^2} \closedcycle;
+\addplot [smooth,thick, draw={\colorone},domain=0:4] {4*x-x^2};
+\draw [thick,draw={\colortwo}] (axis cs:0,0) rectangle (axis cs:1,3);
+\draw [thick,draw={\colortwo}] (axis cs:1,0) rectangle (axis cs:2,3.75);
+\draw [thick,draw={\colortwo}] (axis cs:2,0) rectangle (axis cs:3,4);
+\draw [thick,draw={\colortwo}] (axis cs:3,0) rectangle (axis cs:4,1.666);
+\draw [fill=black] (axis cs:1,3) circle (1pt);
+\draw [fill=black] (axis cs:1.5,3.75) circle (1pt);
+\draw [fill=black] (axis cs:2,4) circle (1pt);
+\draw [fill=black] (axis cs:3.53,1.666) circle (1pt);
+\draw (axis cs:.5,.3) node {\scriptsize RHR};
+\draw (axis cs:1.5,.3) node {\scriptsize MPR};
+\draw (axis cs:2.5,.3) node {\scriptsize LHR};
+\draw (axis cs:3.5,.3) node {\scriptsize other};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 The \textbf{Right Hand Rule} says the opposite: on each subinterval, evaluate the function at the right endpoint and make the rectangle that height. In the figure, the rectangle drawn on $[0,1]$ is drawn using $f(1)$ as its height; this rectangle is labeled ``RHR.''.
 
@@ -33,14 +65,79 @@ The following example will approximate the value of $\ds\int_0^4 (4x-x^2)\ dx$ u
 {We break the interval $[0,4]$ into four subintervals as before. In \autoref{fig:rie2a} we first see 4 rectangles drawn on $f(x) = 4x-x^2$ using the Left Hand Rule. (The areas of the rectangles are given in each figure.)
 
 % not \ds because of the line break
-\mtable{Approximating $\int_0^4(4x-x^2)\ dx$ in \autoref{ex_rie2}.}{fig:rie2a}{\begin{tabular}{c}
-\myincludegraphics{figures/figrie2a} \\
-Left Hand Rule \\
-\myincludegraphics{figures/figrie2b} \\
-Right Hand Rule \\
-\myincludegraphics{figures/figrie2c} \\
-Midpoint Rule
-\end{tabular}}
+\mtable{Approximating $\int_0^4(4x-x^2)\ dx$ in \autoref{ex_rie2}.}{fig:rie2a}{%
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2,3,4},
+ytick={1,2,3,4},ymin=-1,ymax=5,xmin=-.5,xmax=4.5]
+\addplot [draw={\coloronefill},fill={\coloronefill},area style,domain=0:4]
+ {4*x-x^2} \closedcycle;
+\addplot [smooth,thick, draw={\colorone},domain=0:4] {4*x-x^2};
+\draw [thick,draw={\colortwo}] (axis cs:0,0) rectangle (axis cs:1,0);
+\draw [thick,draw={\colortwo}] (axis cs:1,0) rectangle (axis cs:2,3);
+\draw [thick,draw={\colortwo}] (axis cs:2,0) rectangle (axis cs:3,4);
+\draw [thick,draw={\colortwo}] (axis cs:3,0) rectangle (axis cs:4,3);
+\draw [fill=black] (axis cs:0,0) circle (1pt);
+\draw [fill=black] (axis cs:1,3) circle (1pt);
+\draw [fill=black] (axis cs:2,4) circle (1pt);
+\draw [fill=black] (axis cs:3,3) circle (1pt);
+\draw (axis cs:.5,.3) node {$0$};
+\draw (axis cs:1.5,.3) node {$3$};
+\draw (axis cs:2.5,.3) node {$4$};
+\draw (axis cs:3.5,.3) node {$3$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\Left Hand Rule\\
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2,3,4},
+ytick={1,2,3,4},ymin=-1,ymax=5,xmin=-.5,xmax=4.5]
+\addplot [draw={\coloronefill},fill={\coloronefill},area style,domain=0:4]
+ {4*x-x^2} \closedcycle;
+\addplot [smooth,thick, draw={\colorone},domain=0:4] {4*x-x^2};
+\draw [thick,draw={\colortwo}] (axis cs:0,0) rectangle (axis cs:1,3);
+\draw [thick,draw={\colortwo}] (axis cs:1,0) rectangle (axis cs:2,4);
+\draw [thick,draw={\colortwo}] (axis cs:2,0) rectangle (axis cs:3,3);
+\draw [thick,draw={\colortwo}] (axis cs:3,0) rectangle (axis cs:4,0);
+\draw [fill=black] (axis cs:4,0) circle (1pt);
+\draw [fill=black] (axis cs:1,3) circle (1pt);
+\draw [fill=black] (axis cs:2,4) circle (1pt);
+\draw [fill=black] (axis cs:3,3) circle (1pt);
+\draw (axis cs:.5,.3) node {$3$};
+\draw (axis cs:1.5,.3) node {$4$};
+\draw (axis cs:2.5,.3) node {$3$};
+\draw (axis cs:3.5,.3) node {$0$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\Right Hand Rule\\
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2,3,4},
+ytick={1,2,3,4},ymin=-1,ymax=5,xmin=-.5,xmax=4.5]
+\addplot [draw={\coloronefill},fill={\coloronefill},area style,domain=0:4]
+ {4*x-x^2} \closedcycle;
+\addplot [smooth,thick, draw={\colorone},domain=0:4] {4*x-x^2};
+\draw [thick,draw={\colortwo}] (axis cs:0,0) rectangle (axis cs:1,1.75);
+\draw [thick,draw={\colortwo}] (axis cs:1,0) rectangle (axis cs:2,3.75);
+\draw [thick,draw={\colortwo}] (axis cs:2,0) rectangle (axis cs:3,3.75);
+\draw [thick,draw={\colortwo}] (axis cs:3,0) rectangle (axis cs:4,1.75);
+\draw [fill=black] (axis cs:.5,1.75) circle (1pt);
+\draw [fill=black] (axis cs:1.5,3.75) circle (1pt);
+\draw [fill=black] (axis cs:2.5,3.75) circle (1pt);
+\draw [fill=black] (axis cs:3.5,1.75) circle (1pt);
+\draw (axis cs:.5,.3) node {\small$1.75$};
+\draw (axis cs:1.5,.3) node {\small$3.75$};
+\draw (axis cs:2.5,.3) node {\small$3.75$};
+\draw (axis cs:3.5,.3) node {\small$1.75$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\Midpoint Rule}
 
 Note how in the first subinterval, $[0,1]$, the rectangle has height $f(0)=0$. We add up the areas of each rectangle (height$\times$ width) for our Left Hand Rule approximation:
 \begin{align*}
@@ -50,7 +147,29 @@ Note how in the first subinterval, $[0,1]$, the rectangle has height $f(0)=0$. W
 	
 \autoref{fig:rie2a} next shows 4 rectangles drawn under $f$ using the Right Hand Rule; note how the $[3,4]$ subinterval has a rectangle of height 0. 
 
-%\mfigure{1in}{Approximating $\ds\int_0^4(4x-x^2)\ dx$ using the Right Hand Rule in \autoref{ex_rie2}.}{fig:rie2b}{figures/figrie2b}
+%\mtable[1in]{Approximating $\ds\int_0^4(4x-x^2)\ dx$ using the Right Hand Rule in \autoref{ex_rie2}.}{fig:rie2b}{\begin{tikzpicture}
+%\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+%axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2,3,4},
+%ytick={1,2,3,4},ymin=-1,ymax=5,xmin=-.5,xmax=4.5]
+%\addplot [draw={\coloronefill},fill={\coloronefill},area style,domain=0:4]
+% {4*x-x^2} \closedcycle;
+%\addplot [smooth,thick, draw={\colorone},domain=0:4] {4*x-x^2};
+%\draw [thick,draw={\colortwo}] (axis cs:0,0) rectangle (axis cs:1,3);
+%\draw [thick,draw={\colortwo}] (axis cs:1,0) rectangle (axis cs:2,4);
+%\draw [thick,draw={\colortwo}] (axis cs:2,0) rectangle (axis cs:3,3);
+%\draw [thick,draw={\colortwo}] (axis cs:3,0) rectangle (axis cs:4,0);
+%\draw [fill=black] (axis cs:4,0) circle (1pt);
+%\draw [fill=black] (axis cs:1,3) circle (1pt);
+%\draw [fill=black] (axis cs:2,4) circle (1pt);
+%\draw [fill=black] (axis cs:3,3) circle (1pt);
+%\draw (axis cs:.5,.3) node {$3$};
+%\draw (axis cs:1.5,.3) node {$4$};
+%\draw (axis cs:2.5,.3) node {$3$};
+%\draw (axis cs:3.5,.3) node {$0$};
+%\end{axis}
+%\node [right] at (myplot.right of origin) {\scriptsize $x$};
+%\node [above] at (myplot.above origin) {\scriptsize $y$};
+%\end{tikzpicture}}
 
 These rectangle seem to be the mirror image of those found with the Left Hand Rule. (This is because of the symmetry of our shaded region.) Our approximation gives the same answer as before, though calculated a different way:
 \begin{align*}
@@ -58,7 +177,29 @@ These rectangle seem to be the mirror image of those found with the Left Hand Ru
 	3+4+3+0&= 10.
 \end{align*}
 
-%\mfigure{0in}{Approximating $\ds\int_0^4(4x-x^2)\ dx$ using the Midpoint Rule in \autoref{ex_rie2}.}{fig:rie2c}{figures/figrie2c}
+%\mtable{Approximating $\ds\int_0^4(4x-x^2)\ dx$ using the Midpoint Rule in \autoref{ex_rie2}.}{fig:rie2c}{\begin{tikzpicture}
+%\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+%axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2,3,4},
+%ytick={1,2,3,4},ymin=-1,ymax=5,xmin=-.5,xmax=4.5]
+%\addplot [draw={\coloronefill},fill={\coloronefill},area style,domain=0:4]
+% {4*x-x^2} \closedcycle;
+%\addplot [smooth,thick, draw={\colorone},domain=0:4] {4*x-x^2};
+%\draw [thick,draw={\colortwo}] (axis cs:0,0) rectangle (axis cs:1,1.75);
+%\draw [thick,draw={\colortwo}] (axis cs:1,0) rectangle (axis cs:2,3.75);
+%\draw [thick,draw={\colortwo}] (axis cs:2,0) rectangle (axis cs:3,3.75);
+%\draw [thick,draw={\colortwo}] (axis cs:3,0) rectangle (axis cs:4,1.75);
+%\draw [fill=black] (axis cs:.5,1.75) circle (1pt);
+%\draw [fill=black] (axis cs:1.5,3.75) circle (1pt);
+%\draw [fill=black] (axis cs:2.5,3.75) circle (1pt);
+%\draw [fill=black] (axis cs:3.5,1.75) circle (1pt);
+%\draw (axis cs:.5,.3) node {\small$1.75$};
+%\draw (axis cs:1.5,.3) node {\small$3.75$};
+%\draw (axis cs:2.5,.3) node {\small$3.75$};
+%\draw (axis cs:3.5,.3) node {\small$1.75$};
+%\end{axis}
+%\node [right] at (myplot.right of origin) {\scriptsize $x$};
+%\node [above] at (myplot.above origin) {\scriptsize $y$};
+%\end{tikzpicture}}
 \autoref{fig:rie2a} last shows 4 rectangles drawn under $f$ using the Midpoint Rule.
 This gives an approximation of $\ds\int_0^4(4x-x^2)\ dx$ as:
 \begin{align*} f(0.5)\cdot 1 + f(1.5)\cdot 1+ f(2.5)\cdot 1+f(3.5)\cdot 1 &=\\
@@ -70,14 +211,31 @@ Our three methods provide two approximations of $\ds\int_0^4(4x-x^2)\ dx$: 10 an
 
 It is hard to tell at this moment which is a better approximation: 10 or 11? We can continue to refine our approximation by using more rectangles. The notation can become unwieldy, though, as we add up longer and longer lists of numbers. We introduce \textbf{summation notation} to ameliorate this problem. \index{summation!notation}
 
-Suppose we wish to add up a list of numbers $a_1$, $a_2$, $a_3$, \ldots, $a_9$. Instead of writing $$a_1+a_2+a_3+a_4+a_5+a_6+a_7+a_8+a_9,$$ we use summation notation and write
+Suppose we wish to add up a list of numbers $a_1$, $a_2$, $a_3$, \ldots, $a_9$. Instead of writing
+\[a_1+a_2+a_3+a_4+a_5+a_6+a_7+a_8+a_9,\]
+we use summation notation and write
 \[\sum_{i=1}^9 a_i\]
 Lets analyze this notation.\\
 \begin{lxfigure}
-\begin{center}
-\myincludegraphics{figures/figrie_notation}
+\centering
+\begin{tikzpicture}[>=latex]
+\draw  (1,1) node {$\displaystyle \sum_{i=1}^9 a_i$.};
+\draw [draw={\colorone}] (-.2,0) node [text width=45pt,align=center](a)
+ {\scriptsize \centering $i$=index \\[-5pt] of summation};
+\draw [draw={\colorone},->] (a) -- (.6,.5);
+\draw [draw={\colorone}] (2,0) node [text width=20pt,align=center] (b)
+ {\scriptsize \centering lower\\[-5pt] bound};
+\draw [draw={\colorone},->] (b) -- (1.05,.5);
+\draw [draw={\colorone}] (0,2) node [text width=32pt,align=center] (c)
+ {\scriptsize \centering upper\\[-5pt] bound};
+\draw [draw={\colorone},->] (c) -- (.7,1.5);
+\draw [draw={\colorone}] (2,2) node [text width=32pt,align=center] (d)
+ {\scriptsize \centering summand};
+\draw [draw={\colorone},->] (d) -- (1.4,1.2);
+\draw [draw={\colorone}] (-1,1) node [text width=50pt,align=center] (e) {\scriptsize \centering summation \\[-1pt] symbol \\[-1pt] (an upper case\\[-5pt] sigma)};
+\draw [draw={\colorone},->] (e) -- (.6,1);
+\end{tikzpicture}
 \caption{Understanding summation notation.}\label{fig:rie_notation}
-\end{center}
 \end{lxfigure}
 
 The upper case sigma, $\sum$, represents the term ``sum.'' The index of summation in this example is $i$; any symbol can be used. By convention, the index takes on only the integer values between (and including) the lower and upper bounds. 
@@ -85,7 +243,7 @@ The upper case sigma, $\sum$, represents the term ``sum.'' The index of summatio
 Let's practice using this notation.
 
 \example{ex_rie3}{Using summation notation}{Let the numbers $\{a_i\}$ be defined as $a_i = 2i-1$ for integers $i$, where $i\geq 1$. So $a_1 = 1$, $a_2 = 3$, $a_3 = 5$, etc. (The output is the positive odd integers). Evaluate the following summations:
-$$ 1.\ \sum_{i=1}^6 a_i \qquad\qquad\qquad 2.\ \sum_{i=3}^7 (3a_i-4)\qquad\qquad \qquad 3.\ \sum_{i=1}^4 (a_i)^2$$
+\[ 1.\ \sum_{i=1}^6 a_i \qquad\qquad\qquad 2.\ \sum_{i=3}^7 (3a_i-4)\qquad\qquad \qquad 3.\ \sum_{i=1}^4 (a_i)^2\]
 }
 {\begin{enumerate}
 	\item	\mbox{}\\[-2\baselineskip]
@@ -150,7 +308,7 @@ so we see that \[\sum_{i=0}^n i=\frac{n(n+1)}{2}.\] Similarly, we find that
 \end{align*}
 
 \example{ex_rie4}{Evaluating summations using \autoref{thm:summation}}
-{Revisit \autoref{ex_rie3} and, using \autoref{thm:summation}, evaluate $$\sum_{i=1}^6 a_i = \sum_{i=1}^6 (2i-1).$$
+{Revisit \autoref{ex_rie3} and, using \autoref{thm:summation}, evaluate \[\sum_{i=1}^6 a_i = \sum_{i=1}^6 (2i-1).\]
 }
 {\begin{align*}
 \sum_{i=1}^6 (2i-1)
@@ -331,7 +489,23 @@ $[x_{i-1},x_i]$ and let $c_i$ denote any value in the $i^\text{ th}$ subinterval
 is a \textbf{Riemann sum} of $f$ on $[a,b]$.}
 
 % not \ds because of line break
-\mfigure{0in}{An example of a general Riemann sum to approximate $\int_0^4(4x-x^2)\ dx$.}{fig:riedef}{figures/figriedef}
+\mtable{An example of a general Riemann sum to approximate $\int_0^4(4x-x^2)\ dx$.}{fig:riedef}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2,3,4},
+ytick={1,2,3,4},ymin=-1,ymax=5,xmin=-.5,xmax=4.5]
+\addplot [draw={\coloronefill},fill={\coloronefill},area style,domain=0:4]
+ {4*x-x^2} \closedcycle;
+\addplot [smooth,thick, draw={\colorone},domain=0:4] {4*x-x^2};
+\draw [thick,draw={\colortwo}] (axis cs:0,0) rectangle (axis cs:2,.9375);
+\draw [thick,draw={\colortwo}] (axis cs:2,0) rectangle (axis cs:3.5,2.79);
+\draw [thick,draw={\colortwo}] (axis cs:3.5,0) rectangle (axis cs:4,.76);
+\draw [fill=black] (axis cs:.25,.9375) circle (1pt);
+\draw [fill=black] (axis cs:3.1,2.79) circle (1pt);
+\draw [fill=black] (axis cs:3.8,.76) circle (1pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 \autoref{fig:riedef} shows the approximating rectangles of a Riemann sum of $\ds\int_0^4(4x-x^2)\ dx$. While the rectangles in this example do not approximate well the shaded area, they demonstrate that the subinterval widths may vary and the heights of the rectangles can be determined without following a particular rule.
 
@@ -377,7 +551,23 @@ We now construct the Riemann sum and compute its value using summation formulas.
 \end{align*}
 
 % not \ds because of line break
-\mfigure{-1in}{Approximating $\int_{-2}^3 (5x+2)\ dx$ using the Midpoint Rule and 10 evenly spaced subintervals in \autoref{ex_rie8}.}{fig:rie8}{figures/figrie8}
+\mtable[-1in]{Approximating $\int_{-2}^3 (5x+2)\ dx$ using the Midpoint Rule and 10 evenly spaced subintervals in \autoref{ex_rie8}.}{fig:rie8}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={-2,-1,1,2,3},
+ytick={10,17,-8},ymin=-9,ymax=19,xmin=-2.5,xmax=3.5]
+\addplot [draw={\coloronefill},fill={\coloronefill},area style,domain=-2:3]
+ {5*x+2} \closedcycle;
+\addplot [smooth,thick, draw={\colorone},domain=-2:3] {5*x+2};
+\foreach\x in{-1.75,-1.25,...,2.75} {
+ \edef\y{2+5*\x}
+ \edef\temp{\noexpand\draw[thick,draw={\colortwo}]
+  (axis cs:{\x-.25},0)rectangle(axis cs:{\x+.25},{\y});}
+ \temp
+}
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 Note the graph of $f(x) = 5x+2$ in \autoref{fig:rie8}. The regions whose area is computed by the definite integral are triangles, meaning we can find the exact answer without summation techniques. We find that the exact answer is indeed 22.5. One of the strengths of the Midpoint Rule is that often each rectangle includes area that should not be counted, but misses other area that should. When $\Delta x$ is small, these two amounts are about equal and these errors almost ``subtract each other out.'' In this example, since our function is a line, these errors are exactly equal and they do subtract each other out, giving us the exact answer.
 
@@ -405,13 +595,14 @@ We construct the Right Hand Rule Riemann sum as follows. Be sure to follow each 
 	&= \frac{32}{3}\left(1-\frac{1}{n^2}\right)
 \end{flalign*}
 
-The result is an amazing, easy to use formula. To approximate the definite integral with 10 equally spaced subintervals and the Right Hand Rule, set $n=10$ and compute $$\int_0^4 (4x-x^2)\ dx \approx \frac{32}{3}\left(1-\frac{1}{10^2}\right) = 10.56.$$
+The result is an amazing, easy to use formula. To approximate the definite integral with 10 equally spaced subintervals and the Right Hand Rule, set $n=10$ and compute 
+\[\int_0^4 (4x-x^2)\ dx \approx \frac{32}{3}\left(1-\frac{1}{10^2}\right) = 10.56.\]
 Recall how earlier we approximated the definite integral with 4 subintervals; with $n=4$, the formula gives 10, our answer as before.
 
 It is now easy to approximate the integral with 1,000,000 subintervals!  Hand-held calculators will round off the answer a bit prematurely giving an answer of $10.66666667$. (The actual answer is $10.666666666656$.)}
 
 We now take an important leap. Up to this point, our mathematics has been limited to geometry and algebra (finding areas and manipulating expressions). Now we apply \textit{calculus}. For any \textit{finite} $n$, we know that
-$$\int_0^4 (4x-x^2)\ dx \approx \frac{32}{3}\left(1-\frac{1}{n^2}\right).$$
+\[\int_0^4 (4x-x^2)\ dx \approx \frac{32}{3}\left(1-\frac{1}{n^2}\right).\]
 Both common sense and high--level mathematics tell us that as $n$ gets large, the approximation gets better. In fact, if we take the \textit{limit} as $n\rightarrow \infty$, we get the \textit{exact area} described by $\ds\int_0^4 (4x-x^2)\ dx$. That is, 
 \begin{align*}
 	\int_0^4 (4x-x^2)\ dx
@@ -449,10 +640,10 @@ tick label style={font=\scriptsize},axis y line=middle,axis x line=middle,name=m
                         ymin=-2,ymax=130,%
                         xmin=-1.5,xmax=5.5%
 ]
-\addplot [draw={\coloronefill},fill={\coloronefill},area style,domain=-1:5] {x^3} \closedcycle;
-\addplot [smooth,thick, draw={\colorone},domain=-1:5] {x^3};
+\addplot [draw={\coloronefill},fill={\coloronefill},area style,domain=-1:5] {(x)^3} \closedcycle;
+\addplot [smooth,thick, draw={\colorone},domain=-1:5] {(x)^3};
 
-\foreach \x [evaluate=\x as \y using \x^3] in {-1,-.4,...,4.4001} {
+\foreach \x [evaluate=\x as \y using {(\x)*(\x)*(\x)}] in {-1,-.4,...,4.4001} {
   \addplot[thick,draw={\colortwo}] coordinates
     { (\x,0) (\x,\y) (\x+.6,\y) (\x+.6,0) };
 }

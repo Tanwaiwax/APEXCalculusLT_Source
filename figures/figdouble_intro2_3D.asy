@@ -1,24 +1,15 @@
-import graph3;
+include apexconfig;
 
-//ASY file for figdouble_intro23D.asy in Chapter 13
-
+//ASY file for fig:double_intro in Chapter 13 sec:double_int_volume
 
 size(200,200,IgnoreAspect);
 //currentprojection=perspective(7,2,1);
 currentprojection=orthographic(7.5,3.1,3);
-defaultrender.merge=true;
-
-usepackage("mathspec");
-texpreamble("\setallmainfonts[Mapping=tex-text]{Calibri}");
-texpreamble("\setmainfont[Mapping=tex-text]{Calibri}");
-texpreamble("\setsansfont[Mapping=tex-text]{Calibri}");
-texpreamble("\setmathsfont(Greek){[cmmi10]}");
 
 // setup and draw the axes
 real[] myxchoice={2};
 real[] myychoice={-1,1};
 real[] myzchoice={2};
-defaultpen(0.5mm);
 
 pair xbounds=(-1,2.5);
 pair ybounds=(-1.25,1.25);
@@ -32,14 +23,13 @@ label("$x$",(xbounds.y+0.05*(xbounds.y-xbounds.x),0,0));
 label("$y$",(0,ybounds.y+0.05*(ybounds.y-ybounds.x),0));
 label("$z$",(0,0,zbounds.y+0.05*(zbounds.y-zbounds.x)));
 
-//Draw the surface//{z=-.5*(x-1)^2-.5*(y)^2+2};
 triple f(pair t) {
   return (t.x,t.y,-.5*(t.x-1)^2-.5*(t.y)^2+2);
 }
-surface s=surface(f,(-0.221,-1),(2.2,1),12,20,vsplinetype=new splinetype[] {notaknot,notaknot,monotonic},usplinetype=new splinetype[] {notaknot,notaknot,monotonic});
-pen p=rgb(0,0,.7);
-draw(s,rgb(.7,.7,1)+opacity(.7),meshpen=p);
-
+surface s=surface(f,(-0.221,-1),(2.2,1),12,20,
+	vsplinetype=new splinetype[] {notaknot,notaknot,monotonic},
+	usplinetype=new splinetype[] {notaknot,notaknot,monotonic});
+draw(s,emissive(coloronefill),meshpen=colorone);
 
 pen pp=linewidth(.25mm);
 //draw the grid in the xy-plane
@@ -73,93 +63,38 @@ draw((0,-.3,0) -- (2,-.3,0),pp);
 draw((0,-.2,0) -- (2,-.2,0),pp);
 draw((0,-.1,0) -- (2,-.1,0),pp);
 
-//Draw curve on top of the grid in xy plane ({cos(x)*(1+cos(2*x))},{sin(x)*(1+cos(2*x))},0);
 triple g(real t) {return (cos(t)*(1+cos(2*t)),sin(t)*(1+cos(2*t)),0);}
 path3 mypath=graph(g,-pi/2,pi/2,operator ..);
-draw(mypath,blue);
+draw(mypath,colorone);
 
 // draw curve on surface
 triple g(real t) {
-  return (cos(t)*(1+cos(2*t)),sin(t)*(1+cos(2*t)),-.5*(cos(t)*(1+cos(2*t))-1)^2-.5*(sin(t)*(1+cos(2*t)))^2+2);
-	}
+  return (cos(t)*(1+cos(2*t)),
+  	  sin(t)*(1+cos(2*t)),
+	  -.5*(cos(t)*(1+cos(2*t))-1)^2-.5*(sin(t)*(1+cos(2*t)))^2+2);
+}
 path3 mypath=graph(g,-pi/2,pi/2,operator ..); 
-draw(mypath,blue);	
-	
-//surface s=surface(f,(-pi/2,0),(pi/2,2*pi),8,8,Spline);
-//pen p=rgb(0,0,.7);
-//draw(s,rgb(.6,.6,1)+opacity(.7),blue+linewidth(2));
-//path3 mypath=graph(g,0,32.5,operator ..); draw(mypath,blue);
+draw(mypath,colorone);
 
-//Draw the top of the column on the surface
-//draw((1.6,0.3,1.865)--(1.8,.3,1.725),blue+linewidth(2));
-//draw((1.8,0.3,1.7)--(1.8,.4,1.7),blue+linewidth(2));
-//draw((1.8,0.4,1.7)--(1.6,.4,1.7),blue+linewidth(2));
-//draw((1.6,0.4,1.7)--(1.6,.3,1.7),blue+linewidth(2));
-draw((1.6,.3,1.775) -- (1.6,.4,1.74) -- (1.8,.4,1.6) -- (1.8,.3,1.635) --cycle,blue+.4mm);
+draw((1.6,.3,1.775)--(1.6,.4,1.74)--(1.8,.4,1.6)--(1.8,.3,1.635)--cycle,colorone+.4mm);
 
 //Draw the rectangular column
 //base
-draw((1.6,0.3,0)--(1.8,.3,0)--(1.8,.4,0)--(1.6,.4,0)--cycle,red+.4mm);
+draw((1.6,0.3,0)--(1.8,.3,0)--(1.8,.4,0)--(1.6,.4,0)--cycle,colortwo+.4mm);
 
 //  //verticals plotted to average of 4 function heights
-//draw((1.6,0.3,0)--(1.6,.3,1.7),red+.4mm);//base
-//draw((1.8,0.3,0)--(1.8,.3,1.7),red+.4mm);//base
-//draw((1.8,0.4,0)--(1.8,.4,1.7),red+.4mm);//base
-//draw((1.6,0.4,0)--(1.6,.4,1.7),red+.4mm);//base
 //top
-draw((1.6,0.3,1.7)--(1.8,.3,1.7)--(1.8,.4,1.7)--(1.6,.4,1.7)--cycle,red);
+draw((1.6,0.3,1.7)--(1.8,.3,1.7)--(1.8,.4,1.7)--(1.6,.4,1.7)--cycle,colortwo);
 
-
-pen q=rgb(.9,0,0)+.4mm;
-//  draw(ss,rgb(1,.6,.6)+opacity(.8),meshpen=q,nolight,render(merge=true));
-//   emissive(red+opacity(0.7))
-
-//Shade the column now
-//import three;
-
-path3 p =  (1.6,0.3,0)--(1.8,.3,0) -- (1.8,0.3,1.7)--(1.6,.3,1.7); //Left
-draw(surface(p -- cycle),rgb(1,.6,.6)+opacity(.8),meshpen=q,nolight,render(merge=true));
-path3 p =  (1.6,0.3,1.7)--(1.8,.3,1.7)--(1.8,.4,1.7)--(1.6,.4,1.7); //top
-draw(surface(p -- cycle),rgb(1,.6,.6)+opacity(.8),meshpen=q,nolight,render(merge=true));
-//draw(surface(p -- cycle), emissive(red+opacity(0.7)));
-path3 p =  (1.6,0.4,0)--(1.8,.4,0) -- (1.8,0.4,1.7)--(1.6,.4,1.7); //right
-draw(surface(p -- cycle),rgb(1,.6,.6)+opacity(.8),meshpen=q,nolight,render(merge=true));
-//draw(surface(p -- cycle), emissive(red+opacity(0.7)));
+path3 p = (1.6,0.3,0)--(1.8,.3,0) -- (1.8,0.3,1.7)--(1.6,.3,1.7); //Left
+draw(surface(p -- cycle),emissive(colortwofill),meshpen=colortwo);
+path3 p = (1.6,0.3,1.7)--(1.8,.3,1.7)--(1.8,.4,1.7)--(1.6,.4,1.7); //top
+draw(surface(p -- cycle),emissive(colortwofill),meshpen=colortwo);
+path3 p = (1.6,0.4,0)--(1.8,.4,0) -- (1.8,0.4,1.7)--(1.6,.4,1.7); //right
+draw(surface(p -- cycle),emissive(colortwofill),meshpen=colortwo);
 path3 p =  (1.6,0.3,0)--(1.6,.4,0) -- (1.6,0.4,1.7)--(1.6,.3,1.7); //back
-draw(surface(p -- cycle),rgb(1,.6,.6)+opacity(.8),meshpen=q,nolight,render(merge=true));
-//draw(surface(p -- cycle), emissive(red+opacity(0.7)));
+draw(surface(p -- cycle),emissive(colortwofill),meshpen=colortwo);
 path3 p =  (1.8,0.3,0)--(1.8,.4,0) -- (1.8,0.4,1.7)--(1.8,.3,1.7); //front
-draw(surface(p -- cycle),rgb(1,.6,.6)+opacity(.8),meshpen=q,nolight,render(merge=true));
-//draw(surface(p -- cycle), emissive(red+opacity(0.7)));
+draw(surface(p -- cycle),emissive(colortwofill),meshpen=colortwo);
 path3 p =  (1.6,0.3,0)--(1.8,.3,0)--(1.8,.4,0)--(1.6,.4,0); //bottom
-draw(surface(p -- cycle),rgb(1,.6,.6)+opacity(.8),meshpen=q,nolight,render(merge=true));
-//draw(surface(p -- cycle), emissive(red+opacity(0.7)));
-
-
-
-// ////////////////////////////////////
-//    SAMPLE CODE
-
-// defaultpen(fontsize(10pt));
-
-//real f(pair z) {return -z.x^4+2*z.x^2-z.y^4+2*z.y^2;}
-//surface s=surface(f,(-1.5,-1.5),(1.5,1.5),Spline);
-//pen p=rgb(0,0,.7);
-//draw(s,rgb(.6,.6,1)+opacity(.7),meshpen=p);
-
-//triple f(pair t) {
-//  return (cos(t.x)*1.5*cos(t.y),sin(t.x)*cos(t.y),sin(t.y));
-//}
-//surface s=surface(f,(0,0),(pi,2*pi),8,8,Spline);
-//pen p=rgb(0,0,.7);
-//draw(s,rgb(.6,.6,1)+opacity(.7),meshpen=p);
-
-//draw(s,paleblue);
-//draw(s,lightblue,meshpen=black+thick(),nolight,render(merge=true));
-//draw(mypath,2bp+blue);
-
-//triple g(real t) {return (t,t,-2*t^4+4*t^2);}
-//path3 mypath=graph(g,-1,1,operator ..);
-
-//pen p=rgb(0,0,1);
-//draw(s,paleblue+opacity(.5),meshpen=p,render(merge=true));
+draw(surface(p -- cycle),emissive(colortwofill),meshpen=colortwo);

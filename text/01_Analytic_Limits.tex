@@ -8,7 +8,7 @@ Suppose that $\ds\lim_{x\to 2} f(x)=2$ and $\ds\lim_{x\to 2} g(x) = 3$. What is 
 
 \theorem{thm:limit_algebra}{Basic Limit Properties}{%
 Let $b$, $c$, $L$ and $K$ be real numbers, let $n$ be a positive integer, and let $f$ and $g$ be functions with the following limits: \index{limit!properties}
-$$\lim_{x\to c}f(x) = L \text{\ and\ } \lim_{x\to c} g(x) = K.$$
+\[\lim_{x\to c}f(x) = L \text{\ and\ } \lim_{x\to c} g(x) = K.\]
 The following limits hold.
 \begin{enumerate}
 \item	\makebox[9em][l]{Constants:} $\ds\lim_{x\to c} b = b$
@@ -79,7 +79,9 @@ Find the following limits:\\
 	\end{align*}
 \end{enumerate}}
 
-Part 3 of the previous example demonstrates how the limit of a quadratic polynomial can be determined using the properties of \autoref{thm:limit_algebra}. Not only that, recognize that $$\lim_{x\to 2} p(x) = 9 = p(2);$$ i.e., the limit at 2 was found just by plugging 2 into the function. This holds true for all polynomials, and also for rational functions (which are quotients of polynomials), as stated in the following theorem.
+Part 3 of the previous example demonstrates how the limit of a quadratic polynomial can be determined using the properties of \autoref{thm:limit_algebra}. Not only that, recognize that
+\[\lim_{x\to 2} p(x) = 9 = p(2);\]
+i.e., the limit at 2 was found just by plugging 2 into the function. This holds true for all polynomials, and also for rational functions (which are quotients of polynomials), as stated in the following theorem.
 
 \theorem{thm:poly_rat}{Limits of Polynomial and Rational Functions}{Let $p(x)$ and $q(x)$ be polynomials and $c$ a real number. Then:
 \begin{enumerate}
@@ -88,7 +90,8 @@ Part 3 of the previous example demonstrates how the limit of a quadratic polynom
 \end{enumerate}
 }
 
-\example{ex_limit_rat}{Finding a limit of a rational function}{Using \autoref{thm:poly_rat}, find $$\lim_{x\to -1} \frac{3x^2-5x+1}{x^4-x^2+3}.$$}
+\example{ex_limit_rat}{Finding a limit of a rational function}{Using \autoref{thm:poly_rat}, find
+\[\lim_{x\to -1} \frac{3x^2-5x+1}{x^4-x^2+3}.\]}
 {Using \autoref{thm:poly_rat}, we can quickly state that 
 	\begin{align*}
 		\lim_{x\to -1}\frac{3x^2-5x+1}{x^4-x^2+3}
@@ -96,7 +99,9 @@ Part 3 of the previous example demonstrates how the limit of a quadratic polynom
 		&= \frac{9}{3} =3.\eoehere
 	\end{align*}}
 
-It was likely frustrating in \autoref{sec:limit_def} to do a lot of work to prove that $$\lim_{x\to 2} x^2 = 4$$ as it seemed fairly obvious. The previous theorems state that many functions behave in such an ``obvious'' fashion, as demonstrated by the rational function in \autoref{ex_limit_rat}. 
+It was likely frustrating in \autoref{sec:limit_def} to do a lot of work to prove that
+\[\lim_{x\to 2} x^2 = 4\]
+as it seemed fairly obvious. The previous theorems state that many functions behave in such an ``obvious'' fashion, as demonstrated by the rational function in \autoref{ex_limit_rat}. 
 
 Polynomial and rational functions are not the only functions to behave in such a predictable way. The following theorem gives a list of functions whose behavior is particularly ``nice'' in terms of limits. In the next section, we will give a formal name to these functions that behave ``nicely.''
 
@@ -153,11 +158,14 @@ Many times, we will combine this theorem with Theorems \ref{thm:limit_algebra} a
 	\[\lim_{x\to 3} (\sec^2x - \tan^2 x) = \lim_{x\to 3} 1 = 1,\]
 	using the Constant limit rule. Either way, we find the limit is 1.
 
-	\item	Applying the Product limit rule of \autoref{thm:limit_algebra} and \autoref{thm:lim_continuous} gives $$\ds \lim_{x\to \pi/2} \cos x\sin x = \cos (\pi/2)\sin(\pi/2) = 0\cdot 1 = 0.$$
+	\item	Applying the Product limit rule of \autoref{thm:limit_algebra} and \autoref{thm:lim_continuous} gives
+	\[\ds \lim_{x\to \pi/2} \cos x\sin x = \cos (\pi/2)\sin(\pi/2) = 0\cdot 1 = 0.\]
 
 	\item	Again, we can approach this in two ways. First, we can use the exponential/logarithmic identity that $e^{\ln x} = x$ and evaluate $\ds \lim_{x\to 1} e^{\ln x} = \lim_{x\to 1} x = 1.$ 
 
-	We can also use \autoref{thm:limit_composition}. Using \autoref{thm:lim_continuous}, we have $\ds \lim_{x\to 1}\ln x = \ln 1 = 0$. Applying the Composition rule, $$\ds \lim_{x\to 1} e^{\ln x} = \lim_{x\to 0} e^x = e^0 = 1.$$ Both approaches are valid, giving the same result.
+	We can also use \autoref{thm:limit_composition}. Using \autoref{thm:lim_continuous}, we have $\ds \lim_{x\to 1}\ln x = \ln 1 = 0$. Applying the Composition rule,
+	\[\ds \lim_{x\to 1} e^{\ln x} = \lim_{x\to 0} e^x = e^0 = 1.\]
+	Both approaches are valid, giving the same result.
 
 	\item	We encountered this limit in \autoref{sec:limit_intro}. Applying our theorems, we attempt to find the limit as
 	\[\lim_{x\to 0}\frac{\sin x}{x}\to\frac{\sin 0}{0} \to\zerooverzero
@@ -168,7 +176,9 @@ Many times, we will combine this theorem with Theorems \ref{thm:limit_algebra} a
 
 The section could have been titled ``Using Known Limits to Find Unknown Limits.'' By knowing certain limits of functions, we can find limits involving sums, products, powers, etc., of these functions. We further the development of such comparative tools with the Squeeze Theorem, a clever and intuitive way to find the value of some limits. 
 
-Before stating this theorem formally, suppose we have functions $f$, $g$ and $h$ where $g$ always takes on values between $f$ and $h$; that is, for all $x$ in an interval, $$f(x) \leq g(x) \leq h(x).$$ If $f$ and $h$ have the same limit at $c$, and $g$  is always ``squeezed'' between them, then $g$ must have the same limit as well. That is what the Squeeze Theorem states, as illustrated in \autoref{fig:squeeze_thm}.
+Before stating this theorem formally, suppose we have functions $f$, $g$ and $h$ where $g$ always takes on values between $f$ and $h$; that is, for all $x$ in an interval,
+\[f(x) \leq g(x) \leq h(x).\]
+If $f$ and $h$ have the same limit at $c$, and $g$  is always ``squeezed'' between them, then $g$ must have the same limit as well. That is what the Squeeze Theorem states, as illustrated in \autoref{fig:squeeze_thm}.
 
 \mtable[-1.5in]{The situation of the squeeze theorem}{fig:squeeze_thm}{\begin{tikzpicture}
 \begin{axis}[width=\marginparwidth, ticks=none, axis y line=middle,axis x line=middle,ymin=-1.5,ymax=1.5,xmin=-1,xmax=1.5,name=myplot]
@@ -200,7 +210,8 @@ It can take some work to figure out appropriate functions by which to ``squeeze'
 
 We use the Squeeze Theorem in the following example to finally prove that $\ds \lim_{x\to 0} \frac{\sin x}{x} = 1$.
 
-\example{ex_limit_sinx_prove}{Using the Squeeze Theorem}{Use the Squeeze Theorem to show that $$\ds \lim_{x\to 0} \frac{\sin x}{x} = 1.$$}
+\example{ex_limit_sinx_prove}{Using the Squeeze Theorem}{Use the Squeeze Theorem to show that
+\[\ds \lim_{x\to 0} \frac{\sin x}{x} = 1.\]}
 {We begin by considering the unit circle. Each point on the unit circle has coordinates $(\cos \theta,\sin \theta)$ for some angle $\theta$ as shown in \autoref{fig:squeeze_sinx}. Using similar triangles, we can extend the line from the origin through the point to the point $(1,\tan \theta)$, as shown. (Here we are assuming that $0\leq \theta \leq \pi/2$. Later we will show that we can also consider $\theta \leq 0$.)
 
 \mtable[-1in]{The unit circle and related triangles.}{fig:squeeze_sinx}{
@@ -222,21 +233,21 @@ We use the Squeeze Theorem in the following example to finally prove that $\ds \
 \begin{center}
 \begin{tabular}{ccccc}
 \begin{tikzpicture}[x=.5\marginparwidth,y=.5\marginparwidth,>=stealth]
-\fill [draw=black,thick,fill=blue!20] (0,0) node [shift={(10pt,4pt)}] {\scriptsize$\theta$} -- (1,.839) -- node [pos=.5,right] {\scriptsize$\tan \theta$} (1,0) -- cycle;
+\fill [draw=black,thick,fill={\coloronefill}] (0,0) node [shift={(10pt,4pt)}] {\scriptsize$\theta$} -- (1,.839) -- node [pos=.5,right] {\scriptsize$\tan \theta$} (1,0) -- cycle;
 \draw (.5,0) node [below] {\scriptsize$1$};
 \draw [black,dashed,thick] (1,0) arc (0:40:1);
 \draw [black,dashed,thick] (1,0) -- (.766,.643);
 \end{tikzpicture}
 & &
 \begin{tikzpicture}[x=.5\marginparwidth,y=.5\marginparwidth,>=stealth]
-\fill [draw=black,thick,fill=blue!20] (0,0) node [shift={(10pt,4pt)}] {\scriptsize$\theta$} -- (1,0) arc(0:40:1) -- cycle;
+\fill [draw=black,thick,fill={\coloronefill}] (0,0) node [shift={(10pt,4pt)}] {\scriptsize$\theta$} -- (1,0) arc(0:40:1) -- cycle;
 \draw (.5,0) node [below] {\scriptsize$1$};
 \draw [black,dashed,thick] (1,0) arc (0:40:1);
 \draw [black,dashed,thick] (1,0) -- (.766,.643) -- (1,.839) -- cycle;
 \end{tikzpicture}
 & &
 \begin{tikzpicture}[x=.5\marginparwidth,y=.5\marginparwidth,>=stealth]
-\fill [draw=black,thick,fill=blue!20] (0,0) node [shift={(10pt,4pt)}] {\scriptsize$\theta$} -- (1,0) --(.766,.643) -- cycle;
+\fill [draw=black,thick,fill={\coloronefill}] (0,0) node [shift={(10pt,4pt)}] {\scriptsize$\theta$} -- (1,0) --(.766,.643) -- cycle;
 \draw [dashed,thick] (.766,0)  -- node [pos=.4,left] {\scriptsize$\sin \theta$}(.766,.643);
 \draw (.766,5pt) -- ++(5pt,0) -- ++(0,-5pt);
 \draw (.5,0) node [below] {\scriptsize$1$};
@@ -292,13 +303,25 @@ In the fourth limit, we see that as $x\to 0$, $e^x$ approaches 1 ``just as fast'
 
 Our final theorem for this section will be motivated by the following example.
 
-\example{ex_limit_onept}{Using algebra to evaluate a limit}{Evaluate the following limit: $$\lim_{x\to 1}\frac{x^2-1}{x-1}.$$}
-{We would like to apply Theorems \ref{thm:limit_algebra} and \ref{thm:lim_continuous} and substitute 1 for $x$ in the quotient. This gives:
+\example{ex_limit_onept}{Using algebra to evaluate a limit}{Evaluate the following limit:
+\[\lim_{x\to 1}\frac{x^2-1}{x-1}.\]
+
+\mtable{Graphing $f$ in \autoref{ex_limit_onept} to understand a limit.}{fig:limitxplus1}{%
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,axis y line=middle,axis x line=middle,
+ymin=-.1,ymax=3.2,xmin=-.1,xmax=2.2,name=myplot]
+\addplot [draw={\colorone},smooth,thick] coordinates {(0,1) (2,3)};
+\fill[white,draw={\colortwo},thick] (axis cs:1,2) circle (1.5pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
+		
+}{We would like to apply Theorems \ref{thm:limit_algebra} and \ref{thm:lim_continuous} and substitute 1 for $x$ in the quotient. This gives:
 \[\lim_{x\to 1}\frac{x^2-1}{x-1} = \frac{1^2-1}{1-1} = \raisebox{8pt}{\text{``\ }}\frac{0}{0}\raisebox{8pt}{\text{\ ''}},\]
 an indeterminate form. We cannot apply the \autoref{thm:limit_algebra} because the denominator is 0.
 
-\mfigure{-1in}{Graphing $f$ in \autoref{ex_limit_onept} to understand a limit.}{fig:limitxplus1}{figures/fig_LimitXplus1}
-		
 By graphing the function, as in \autoref{fig:limitxplus1}, we see that the function seems to be linear, implying that the limit should be easy to evaluate. Recognize that the numerator of our quotient can be factored:
 \[\text{Let \ } f(x)=\frac{x^2-1}{x-1} = \frac{(x-1)(x+1)}{x-1}.\]
 The function is not defined when $x=1$, but for all other $x$,
@@ -308,7 +331,8 @@ Clearly $\ds \lim_{x\to 1}x+1 = 2$. Recall that when considering limits, we are 
 
 The key to the above example is that the functions $y=(x^2-1)/(x-1)$ and $y=x+1$ are identical except at $x=1$. Since limits describe a value the function is approaching, not the value the function actually attains, the limits of the two functions are always equal.
 
-\theorem{thm:limit_allbut1}{Limits of Functions Equal At All But One Point}{Let $g(x) = f(x)$ for all $x$ in an open interval, except possibly at $c$, and let $\ds \lim_{x\to c} g(x) = L$ for some real number $L$. Then $$\lim_{x\to c} f(x)=\lim_{x\to c} g(x)=L.$$}
+\theorem{thm:limit_allbut1}{Limits of Functions Equal At All But One Point}{Let $g(x) = f(x)$ for all $x$ in an open interval, except possibly at $c$, and let $\ds \lim_{x\to c} g(x) = L$ for some real number $L$. Then
+\[\lim_{x\to c} f(x)=\lim_{x\to c} g(x)=L.\]}
 
 The Fundamental Theorem of Algebra tells us that when dealing with a rational function of the form $g(x)/f(x)$ and directly evaluating the limit $\ds \lim_{x\to c} \frac{g(x)}{f(x)}$ returns ``0/0'', 
 then $(x-c)$ is a factor of both $g(x)$ and $f(x)$. One can then use algebra to factor this term out, divide, then apply \autoref{thm:limit_allbut1}. Some useful algebraic techniques to rewrite functions that return an indeterminate form when evaluating a limit are:
@@ -323,7 +347,12 @@ We will demonstrate some of these techniques in the following examples.
 \example{ex_limit_allbut1}{Evaluating a limit using \autoref{thm:limit_allbut1}}
 {Evaluate $\ds \lim_{x\to 3} \frac{x^3-2 x^2-5 x+6}{2 x^3+3 x^2-32 x+15}$.}
 {We begin by attempting to apply Theorems \ref{thm:limit_algebra} and \ref{thm:lim_continuous} and substituting 3 for $x$. This returns the familiar indeterminate form of ``0/0''. %\zerooverzero. 
-Since the numerator and denominator are each polynomials, we know that $(x-3)$ is factor of each. Using whatever method is most comfortable to you, factor out $(x-3)$ from each (using polynomial division, synthetic division, a computer algebra system, etc.). We find that $$\frac{x^3-2 x^2-5 x+6}{2 x^3+3 x^2-32 x+15} = \frac{(x-3)(x^2+x-2)}{(x-3)(2 x^2+9 x-5)}.$$ We can divide the $(x-3)$ terms as long as $x\neq 3$. Using \autoref{thm:limit_allbut1} we conclude:
+Since the numerator and denominator are each polynomials, we know that $(x-3)$ is factor of each. Using whatever method is most comfortable to you, factor out $(x-3)$ from each (using polynomial division, synthetic division, a computer algebra system, etc.). We find that
+\[
+\frac{x^3-2 x^2-5 x+6}{2 x^3+3 x^2-32 x+15}
+= \frac{(x-3)(x^2+x-2)}{(x-3)(2 x^2+9 x-5)}.
+\]
+We can divide the $(x-3)$ terms as long as $x\neq 3$. Using \autoref{thm:limit_allbut1} we conclude:
 	\begin{align*}
 	\lim_{x\to 3} \frac{x^3-2 x^2-5 x+6}{2 x^3+3 x^2-32 x+15}
 	&= \lim_{x\to 3}\frac{(x-3)(x^2+x-2)}{(x-3)(2 x^2+9 x-5)} \\

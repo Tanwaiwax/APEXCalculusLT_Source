@@ -7,10 +7,10 @@ So far, our study of series has examined the question of ``Is the sum of these i
 \index{power series}\index{series!power}
 	\begin{enumerate}
 		\item The \sword{power series in $x$} is the series
-		$$\sum_{n=0}^\infty a_nx^n = a_0+a_1x+a_2x^2+a_3x^3+\dotsb$$
+		\[\sum_{n=0}^\infty a_nx^n = a_0+a_1x+a_2x^2+a_3x^3+\dotsb\]
 		
 		\item The \sword{power series in $x$ centered at $c$} is the series
-		$$\sum_{n=0}^\infty a_n(x-c)^n = a_0+a_1(x-c)+a_2(x-c)^2+a_3(x-c)^3+\dotsb$$
+		\[\sum_{n=0}^\infty a_n(x-c)^n = a_0+a_1(x-c)+a_2(x-c)^2+a_3(x-c)^3+\dotsb\]
 	\end{enumerate}
 }
 
@@ -22,19 +22,22 @@ So far, our study of series has examined the question of ``Is the sum of these i
 \]}
 {\begin{enumerate}
 	\item One of the conventions we adopt is that $x^0=1$ regardless of the value of $x$. Therefore
-	$$\sum_{n=0}^\infty x^n = 1+x+x^2+x^3+x^4+\dotsb$$
+	\[\sum_{n=0}^\infty x^n = 1+x+x^2+x^3+x^4+\dotsb\]
 	This is a geometric series in $x$.
 	
 	\item	This series is centered at $c=-1$. Note how this series starts with $n=1$. We could rewrite this series starting at $n=0$ with the understanding that $a_0=0$, and hence the first term is $0$.\\
 	\flushinnerequ{%
-	$$\sum_{n=1}^\infty (-1)^{n+1}\frac{(x+1)^n}n = (x+1) - \frac{(x+1)^2}{2} + \frac{(x+1)^3}{3} - \frac{(x+1)^4}{4}+\frac{(x+1)^5}{5}\dotsb$$}
+	\[\sum_{n=1}^\infty (-1)^{n+1}\frac{(x+1)^n}n = (x+1) - \frac{(x+1)^2}{2} + \frac{(x+1)^3}{3} - \frac{(x+1)^4}{4}+\frac{(x+1)^5}{5}\dotsb\]}
 	
 	\item		This series is centered at $c=\pi$. Recall that $0!=1$.\\
 	\flushinnerequ{%
-	$$\sum_{n=0}^\infty (-1)^{n+1} \frac{(x-\pi)^{2n}}{(2n)!} = -1+\frac{(x-\pi)^2}{2} - \frac{(x-\pi)^4}{24}+ \frac{(x-\pi)^6}{6!}-\frac{(x-\pi)^8}{8!}\dotsb\eoehere $$}
+	\[
+	\sum_{n=0}^\infty (-1)^{n+1} \frac{(x-\pi)^{2n}}{(2n)!}
+	= -1+\frac{(x-\pi)^2}{2} - \frac{(x-\pi)^4}{24}+ \frac{(x-\pi)^6}{6!}-\frac{(x-\pi)^8}{8!}\dotsb\eoehere
+	\]}
 \end{enumerate}}
 
-We introduced power series as a type of function, where a value of $x$ is given and the sum of a series is returned. Of course, not every series converges. For instance, in part 1 of \autoref{ex_ps1}, we recognized the series $\ds \sum_{n=0}^\infty x^n$ as a geometric series in $x$. \autoref{thm:geom_series} states that this series converges only when $|x|<1$. 
+We introduced power series as a type of function, where a value of $x$ is given and the sum of a series is returned. Of course, not every series converges. For instance, in part 1 of \autoref{ex_ps1}, we recognized the series $\ds \sum_{n=0}^\infty x^n$ as a geometric series in $x$. \autoref{thm:geom_series} states that this series converges only when $\abs x<1$. 
 
 This raises the question: ``For what values of $x$ will a given power series converge?,'' which  leads us to a theorem and definition.
 
@@ -69,7 +72,7 @@ To find the values of $x$ for which a given series converges, we will use the co
 
 \theorem{thm:abs_power}{The Radius of Convergence of a Series and Absolute Convergence}
 {%{\begin{itemize}
-	%\item The series $\ds \sum_{n=0}^\infty a_nx^n$ and $\ds \sum_{n=0}^\infty \big|a_nx^n\big|$ have the same radius of convergence $R$.
+	%\item The series $\ds \sum_{n=0}^\infty a_nx^n$ and $\ds \sum_{n=0}^\infty \abs{a_nx^n}$ have the same radius of convergence $R$.
 	%\item 
 	The series $\ds \sum_{n=0}^\infty a_n(x-c)^n$ and $\ds \sum_{n=0}^\infty \abs{a_n(x-c)^n}$ have the same radius of convergence $R$.
 %\end{itemize}
@@ -89,21 +92,21 @@ To find the values of $x$ for which a given series converges, we will use the co
  \text{4. }\sum_{n=0}^\infty n!x^n
 \]}
 {\begin{enumerate}
-	\item We apply the Ratio Test to the series $\ds \sum_{n=0}^\infty \left|\frac{x^n}{n!}\right|$:
+	\item We apply the Ratio Test to the series $\ds \sum_{n=0}^\infty \abs{\frac{x^n}{n!}}$:
 		\begin{align*}
-		\lim_{n\to\infty} \frac{\big|x^{n+1}/(n+1)!\big|}{\big|x^n/n!\big|} &= \lim_{n\to\infty} \left|\frac{x^{n+1}}{x^n}\cdot\frac{n!}{(n+1)!}\right|\\
-			&= \lim_{n\to\infty} \left|\frac x{n+1}\right|\\
+		\lim_{n\to\infty} \frac{\abs{x^{n+1}/(n+1)!}}{\abs{x^n/n!}} &= \lim_{n\to\infty} \abs{\frac{x^{n+1}}{x^n}\cdot\frac{n!}{(n+1)!}}\\
+			&= \lim_{n\to\infty} \abs{\frac x{n+1}}\\
 			&= 0 \text{ for all } x.
 		\end{align*}
 		The Ratio Test shows us that regardless of the choice of $x$, the series converges. Therefore the radius of convergence is $R=\infty$, and the interval of convergence is $(-\infty,\infty)$.
 		
-	\item		We apply the Ratio Test to the series $\ds \sum_{n=1}^\infty \left|(-1)^{n+1}\frac{x^n}{n}\right| = \sum_{n=1}^\infty \left|\frac{x^n}{n}\right|$:
+	\item		We apply the Ratio Test to the series $\ds \sum_{n=1}^\infty \abs{(-1)^{n+1}\frac{x^n}{n}} = \sum_{n=1}^\infty \abs{\frac{x^n}{n}}$:
 	\begin{align*}
-	\lim_{n\to\infty} \frac{\big|x^{n+1}/(n+1)\big|}{\big|x^n/n\big|} &= \lim_{n\to\infty} \left|\frac{x^{n+1}}{x^n}\cdot \frac{n}{n+1}\right| \\
-			&= \lim_{n\to\infty} |x|\frac{n}{n+1}\\
-			&= |x|.
+	\lim_{n\to\infty} \frac{\abs{x^{n+1}/(n+1)}}{\abs{x^n/n}} &= \lim_{n\to\infty} \abs{\frac{x^{n+1}}{x^n}\cdot \frac{n}{n+1}} \\
+			&= \lim_{n\to\infty} \abs x\frac{n}{n+1}\\
+			&= \abs x.
 	\end{align*}
-	The Ratio Test states a series converges if the limit of $|a_{n+1}/a_n| = L<1$. We found the limit above to be $|x|$; therefore, the power series converges when $|x| <1$, or when $x$ is in $(-1,1)$. Thus the radius of convergence is $R=1$.
+	The Ratio Test states a series converges if the limit of $\abs{a_{n+1}/a_n} = L<1$. We found the limit above to be $\abs x$; therefore, the power series converges when $\abs x<1$, or when $x$ is in $(-1,1)$. Thus the radius of convergence is $R=1$.
 	
 	To determine the interval of convergence, we need to check the endpoints of $(-1,1)$. When $x=-1$, we have the opposite of the Harmonic Series:
 	\begin{align*}
@@ -116,13 +119,13 @@ To find the values of $x$ for which a given series converges, we will use the co
 	
 	When $x=1$, we have the series $\ds \sum_{n=1}^\infty (-1)^{n+1}\frac{(1)^n}{n}$, which is the Alternating Harmonic Series, which converges. Therefore the interval of convergence is $(-1,1]$.
 	
-	\item		We apply the Ratio Test to the series $\ds\sum_{n=0}^\infty \big|2^n(x-3)^n\big|$:
+	\item		We apply the Ratio Test to the series $\ds\sum_{n=0}^\infty \abs{2^n(x-3)^n}$:
 	\begin{align*}
-	\lim_{n\to\infty} \frac{\big| 2^{n+1}(x-3)^{n+1}\big|}{\big|2^n(x-3)^n\big|} &= \lim_{n\to\infty} \left|\frac{2^{n+1}}{2^n}\cdot\frac{(x-3)^{n+1}}{(x-3)^n}\right|\\
-			&=\lim_{n\to\infty} \big|2(x-3)\big|.
+	\lim_{n\to\infty} \frac{\abs{2^{n+1}(x-3)^{n+1}}}{\abs{2^n(x-3)^n}} &= \lim_{n\to\infty} \abs{\frac{2^{n+1}}{2^n}\cdot\frac{(x-3)^{n+1}}{(x-3)^n}}\\
+			&=\lim_{n\to\infty} \abs{2(x-3)}.
 	\end{align*}
 	
-According to the Ratio Test, the series converges when $\big|2(x-3)\big|<1 \implies \big|x-3\big| < 1/2$. The series is centered at 3, and $x$ must be within $1/2$ of 3 in order for the series to converge. Therefore the radius of convergence is $R=1/2$, and we know that the series converges absolutely for all $x$ in $(3-1/2,3+1/2) = (2.5, 3.5)$.
+According to the Ratio Test, the series converges when $\abs{2(x-3)}<1 \implies \abs{x-3}< 1/2$. The series is centered at 3, and $x$ must be within $1/2$ of 3 in order for the series to converge. Therefore the radius of convergence is $R=1/2$, and we know that the series converges absolutely for all $x$ in $(3-1/2,3+1/2) = (2.5, 3.5)$.
 
 We check for convergence at the endpoints to find the interval of convergence. When $x=2.5$, we have:
 \begin{align*}
@@ -131,9 +134,9 @@ We check for convergence at the endpoints to find the interval of convergence. W
 \end{align*}
 which diverges. A similar process shows that the series also diverges at $x=3.5$. Therefore the interval of convergence is $(2.5, 3.5)$.
 
-\item		We apply the Ratio Test to $\ds \sum_{n=0}^\infty \big|n!x^n\big|$:
+\item		We apply the Ratio Test to $\ds \sum_{n=0}^\infty \abs{n!x^n}$:
 \begin{align*}
-\lim_{n\to\infty} \frac{\big| (n+1)!x^{n+1}\big|}{\big|n!x^n\big|} &= \lim_{n\to\infty} \big|(n+1)x\big|\\
+\lim_{n\to\infty} \frac{\abs{ (n+1)!x^{n+1}}}{\abs{n!x^n}} &= \lim_{n\to\infty} \abs{(n+1)x}\\
 		&= \infty\ \text{ for all $x$, except $x=0$.}
 \end{align*}
 
@@ -143,7 +146,7 @@ The Ratio Test shows that the series diverges for all $x$ except $x=0$. Therefor
 \subsection*{Power Series as Functions}
 
 We can use a power series to define a function:
-$$f(x) = \sum_{n=0}^\infty a_nx^n$$
+\[f(x) = \sum_{n=0}^\infty a_nx^n\]
 where the domain of $f$ is a subset of the interval of convergence of the power series. One can apply calculus techniques to such functions; in particular, we can find derivatives and antiderivatives. 
 
 \theorem{thm:calc_power_series}{\parbox[t]{210pt}{Derivatives and Indefinite Integrals of Power Series Functions}}
@@ -177,13 +180,14 @@ f(x)&=1+x+\,x^2+\,x^3+\,x^4+\dotsb = \sum_{n=0}^\infty x^n\\
 \fp(x) &= 0+1+2x+3x^2+4x^3+\dotsb=\sum_{n=1}^\infty nx^{n-1} 
 \end{align*}
 
-In \autoref{ex_ps1}, we recognized that $\ds \sum_{n=0}^\infty x^n$ is a geometric series in $x$. We know that such a geometric series converges when $|x|<1$; that is, the interval of convergence is $(-1,1)$.
+In \autoref{ex_ps1}, we recognized that $\ds \sum_{n=0}^\infty x^n$ is a geometric series in $x$. We know that such a geometric series converges when $\abs x<1$; that is, the interval of convergence is $(-1,1)$.
 
 To determine the interval of convergence of $\fp(x)$, we consider the endpoints of $(-1,1)$.
-When $x=-1$ we have $$\fp(-1) = \sum_{n=1}^\infty n(-1)^{n-1}$$
+When $x=-1$ we have
+\[\fp(-1) = \sum_{n=1}^\infty n(-1)^{n-1}\]
 which diverges by the Test for Divergence
 and when $x=1$ we have
-$$\fp(1) = \sum_{n=1}^\infty n$$
+\[\fp(1) = \sum_{n=1}^\infty n\]
 which also diverges by the Test for Divergence. Therefore, the interval of convergence of $\fp(x)$ is $(-1,1)$. 
 
 \item\mbox{}\\[-3\baselineskip]
@@ -195,16 +199,16 @@ which also diverges by the Test for Divergence. Therefore, the interval of conve
 
 To find the interval of convergence of $F(x)$, we again consider the endpoints of $(-1,1)$.
 When $x=-1$ we have
-$$F(-1) = C+\sum_{n=1}^\infty \frac{(-1)^{n}}{n}$$
+\[F(-1) = C+\sum_{n=1}^\infty \frac{(-1)^{n}}{n}\]
 The value of $C$ is irrelevant; notice that the rest of the series is an Alternating Series that whose terms converge to 0. By the Alternating Series Test, this series converges. (In fact, we can recognize that the terms of the series after $C$ are the opposite of the Alternating Harmonic Series. We can thus say that $F(-1) = C-\ln 2$.)
-$$F(1) = C+\sum_{n=1}^\infty \frac{1}{n} $$
+\[F(1) = C+\sum_{n=1}^\infty \frac{1}{n} \]
 Notice that this summation is $C\ +$ the Harmonic Series, which diverges. Since $F$ converges for $x=-1$ and diverges for $x=1$, the interval of convergence of $F(x)$ is $[-1,1)$.\eoehere
 \end{enumerate}}
 
 The previous example showed how to take the derivative and indefinite integral of a power series without motivation for why we care about such operations. We may care for the sheer mathematical enjoyment ``that we can'', which is motivation enough for many. However, we would be remiss to not recognize that we can learn a great deal from taking derivatives and indefinite integrals.\bigskip
 
-Recall that $\ds f(x) = \sum_{n=0}^\infty x^n$ in \autoref{ex_ps3} is a geometric series. According to \autoref{thm:geom_series}, this series converges to $1/(1-x)$ when $|x|<1$. Thus we can say
-$$	f(x) = \sum_{n=0}^\infty x^n = \frac 1{1-x},\quad \text{ on }\quad (-1,1).$$
+Recall that $\ds f(x) = \sum_{n=0}^\infty x^n$ in \autoref{ex_ps3} is a geometric series. According to \autoref{thm:geom_series}, this series converges to $1/(1-x)$ when $\abs x<1$. Thus we can say
+\[f(x) = \sum_{n=0}^\infty x^n = \frac 1{1-x},\quad \text{ on }\quad (-1,1).\]
 
 Integrating the power series, (as done in \autoref{ex_ps3},) we find
 \begin{equation} F(x)  = C_1+\sum_{n=0}^\infty \frac{x^{n+1}}{n+1},\label{eq:ps3a}\end{equation}
@@ -212,13 +216,13 @@ while integrating the function $f(x) = 1/(1-x)$ gives
 \begin{equation} F(x)  = -\ln\abs{1-x} + C_2.\label{eq:ps3b}\end{equation}
 
 Equating Equations \eqref{eq:ps3a} and \eqref{eq:ps3b}, we have 
-$$F(x) = C_1+\sum_{n=0}^\infty \frac{x^{n+1}}{n+1} = -\ln\abs{1-x} + C_2.$$
+\[F(x) = C_1+\sum_{n=0}^\infty \frac{x^{n+1}}{n+1} = -\ln\abs{1-x} + C_2.\]
 Letting $x=0$, we have $F(0) = C_1 = C_2$. This implies that we can drop the constants and conclude
-$$\sum_{n=0}^\infty \frac{x^{n+1}}{n+1} = -\ln\abs{1-x}.$$
+\[\sum_{n=0}^\infty \frac{x^{n+1}}{n+1} = -\ln\abs{1-x}.\]
 We established in \autoref{ex_ps3} that the series $\ds\sum_{n=0}^\infty \frac{x^{n+1}}{n+1}$ converges at $x=-1$; substituting $x=-1$ on both sides of the above equality gives
-$$-1+\frac12-\frac13+\frac14-\frac15+\dotsb = -\ln 2.$$
+\[-1+\frac12-\frac13+\frac14-\frac15+\dotsb = -\ln 2.\]
 On the left we have the opposite of the Alternating Harmonic Series; on the right, we have $-\ln 2$. We conclude that 
-$$1-\frac12+\frac13-\frac14+\dotsb = \ln 2.$$
+\[1-\frac12+\frac13-\frac14+\dotsb = \ln 2.\]
 In \autoref{ex_alt1} of \autoref{sec:alt_series} we said the Alternating Harmonic Series converges to $\ln 2$, but did not show why this was the case. The work above shows how we conclude that the Alternating Harmonic Series Converges to $\ln 2$. \index{Alternating Harmonic Series}
 
 We use this type of analysis in the next example.
@@ -239,7 +243,7 @@ We now find the derivative:
 		&= f(x).
 \end{align*}
 We found the derivative of $f(x)$ is $f(x)$. The only functions for which this is true are of the form $y=ce^x$ for some constant $c$. As $f(0) = 1$ (see \autoeqref{eq:ps4}), $c$ must be 1. Therefore we conclude that 
-$$f(x) = \sum_{n=0}^\infty \frac{x^n}{n!} = e^x$$% \quad\text{for all $x$}.$$
+\[f(x) = \sum_{n=0}^\infty \frac{x^n}{n!} = e^x\]% \quad\text{for all $x$}.
 for all $x$.
 
 We can also find $\ds \int f(x)\ dx$:
@@ -248,7 +252,10 @@ We can also find $\ds \int f(x)\ dx$:
 				&= C+ \sum_{n=0}^\infty \frac{x^{n+1}}{(n+1)!}
 \end{align*}
 We write out a few terms of this last series:
-$$C+ \sum_{n=0}^\infty \frac{x^{n+1}}{(n+1)!} = C+ x+ \frac{x^2}2+\frac{x^3}{6}+\frac{x^4}{24}+\dotsb$$
+\[
+C+ \sum_{n=0}^\infty \frac{x^{n+1}}{(n+1)!}
+= C+ x+ \frac{x^2}2+\frac{x^3}{6}+\frac{x^4}{24}+\dotsb
+\]
 The integral of $f(x)$ differs from $f(x)$ only by a constant, again indicating that $f(x) = e^x$.}
 
 
@@ -262,16 +269,16 @@ The integral of $f(x)$ differs from $f(x)$ only by a constant, again indicating 
 %{The differential equation $y\primeskip' = 2y$ describes a function $y=f(x)$ where the derivative of $y$ is twice $y$ and $y(0)=1$. This is a rather simple differential equation; with a bit of thought one should realize that if $y=Ce^{2x}$, then $y\primeskip' = 2Ce^{2x}$, and hence $y\primeskip' = 2y$. By letting $C=1$ we satisfy the initial condition of $y(0)=1$.
 %
 %Let's ignore the fact that we already know the solution and find a power series function that satisfies the equation. The solution we seek will have the form
-%$$f(x)  = \sum_{n=0}^\infty a_nx^n = a_0+a_1x+a_2x^2+a_3x^3+\dotsb$$
+%\[f(x)  = \sum_{n=0}^\infty a_nx^n = a_0+a_1x+a_2x^2+a_3x^3+\dotsb\]
 %for unknown coefficients $a_n$. We can find $\fp(x)$ using \autoref{thm:calc_power_series}:
-%$$\fp(x) = \sum_{n=1}^\infty a_n\cdot n\cdot x^{n-1} = a_1+2a_2x+3a_3x^2+4a_4x^3\dotsb.$$
+%\[\fp(x) = \sum_{n=1}^\infty a_n\cdot n\cdot x^{n-1} = a_1+2a_2x+3a_3x^2+4a_4x^3\dotsb.\]
 %Since $\fp(x) = 2f(x)$, we have
 %\begin{align*}
 %a_1+2a_2x+3a_3x^2+4a_4x^3\dotsb &= 2\big(a_0+a_1x+a_2x^2+a_3x^3+\dotsb\big)\\
 %			&=2a_0+2a_1x+2a_2x^2+2a_3x^3+\dotsb
 %\end{align*}
 %The coefficients of like powers of $x$ must be equal, so we find that
-%$$a_1 = 2a_0,\quad 2a_2 = 2a_1,\quad 3a_3 = 2a_2,\quad 4a_4 = 2a_3,\quad \text{etc.}$$
+%\[a_1 = 2a_0,\quad 2a_2 = 2a_1,\quad 3a_3 = 2a_2,\quad 4a_4 = 2a_3,\quad \text{etc.}\]
 %The initial condition $y(0) = f(0) = 1$ indicates that $a_0 = 1$; with this, we can find the values of the other coefficients:
 %\begin{align*}
 %a_0 = 1 \text{ and } a_1=2a_0 &\Rightarrow a_1 = 2;\\
@@ -280,7 +287,7 @@ The integral of $f(x)$ differs from $f(x)$ only by a constant, again indicating 
 %a_3=4/3 \text{ and } 4a_4 = 2a_3 &\Rightarrow a_4 =16/(2\cdot3\cdot4)= 2/3. 
 %\end{align*}
 %Thus the first 5 terms of the power series solution to the differential equation $y\primeskip'=2y$ is 
-%$$f(x) = 1+ 2x+2x^2 + \frac43x^3+\frac23x^4+\dotsb$$
+%\[f(x) = 1+ 2x+2x^2 + \frac43x^3+\frac23x^4+\dotsb\]
 %In \autoref{sec:taylor_series}, as we study Taylor Series, we will learn how to recognize this series as describing $y=e^{2x}$.}
 
 \subsection*{Representations of Functions with Power Series}
@@ -292,7 +299,7 @@ It can be difficult to recognize an elementary function by its power series expa
 %We opened the last section by saying that we were going to start thinking about applications of series and then promptly spent the section talking about convergence again.  It's now time to actually start with the applications of series. With this section  we will start talking about how to represent functions with power series.  The natural question of why we might want to do this will be answered later once we actually learn how to do this.
 
 Let's start off with a series we already know how to do, although when we first ran across this series we didn't think of it as a power series nor did we acknowledge that it represented a function. Recall that the geometric series is
-$$\sum_{n=0}^\infty ar^n = \frac a{1-r} \qquad \text{provided }\abs r<1.$$
+\[\sum_{n=0}^\infty ar^n = \frac a{1-r} \qquad \text{provided }\abs r<1.\]
 We also know that if $\abs r\geq 1$ the series diverges. Now, if we take $a=1$ and $r=x$ this becomes,
 \begin{equation}\label{eq_power_eq}
 \sum_{n=0}^\infty x^n=\frac1{1-x}\qquad\text{provided }\abs x<1
@@ -318,29 +325,36 @@ In this section we are going to concentrate on representing functions with power
 %In this way we will hopefully become familiar with some of the kinds of manipulations that we will sometimes need when working with power series. We now consider several examples.
 
 \example{ex_power_cube}{Finding a Power Series}{Find a power series representation for $g(x) = \dfrac1{1+x^3}$ and determine its interval of convergence.}{We want to relate this function back to \autoeqref{eq_power_func}.  This is actually easier than it might look.  Recall that the $x$ in \autoeqref{eq_power_func} is simply a variable and can represent anything.  So, a quick rewrite of $g(x)$ gives,
-$$g(x)=\frac1{1-(-x^3)}$$
+\[g(x)=\frac1{1-(-x^3)}\]
 and so the $-x^3$ holds the same place as the $x$ in \autoeqref{eq_power_func}.  Therefore, all we need to do is replace the $x$ in \autoeqref{eq_power_series} and we've got a power series representation for $g(x)$.  
-$$g(x)=\sum_{n=0}^{\infty}\left( -x^3 \right)^n \qquad \text{provided }\abs{-x^3}<1$$
+\[g(x)=\sum_{n=0}^{\infty}\left( -x^3 \right)^n \qquad \text{provided }\abs{-x^3}<1\]
 
 Notice that we replaced both the $x$ in the power series and in the interval of convergence. All we need to do now is a little simplification.
-$$g(x)=\sum_{n=0}^{\infty}\left( -1 \right)^n x^{3n} \qquad\text{provided }\abs x<1$$
+\[g(x)=\sum_{n=0}^{\infty}\left( -1 \right)^n x^{3n} \qquad\text{provided }\abs x<1\]
 So, in this case the interval of convergence is the same as the original power series.  This usually won't happen.  More often than not the new interval of convergence will be different from the original interval of convergence.}
 
 \example{ex_power_numerator}{Finding a Power Series}{Find a power series representation for $h(x)=\dfrac{2x^2}{1+x^3}$ and determine its interval of convergence.}{This function is similar to the previous function, however the numerator is different.  Since \autoeqref{eq_power_func} doesn't have an $x$ in the numerator it appears that we can't relate this function back to that.  However, now that we've worked the first example this one is actually very simple since we can use the result of the answer from that example.  To see how to do this let's first rewrite the function a little. 
-$$h(x)=2x^2\frac1{1+x^3}.$$
+\[h(x)=2x^2\frac1{1+x^3}.\]
 Now, from the first example we've already got a power series for the second term so let's use that to write the function as, 
-$$h(x)=2x^2\sum_{n=0}^\infty\left( -1 \right)^n x^{3n} \qquad\text{provided }\abs x<1$$
+\[
+h(x)=2x^2\sum_{n=0}^\infty\left( -1 \right)^n x^{3n} \qquad\text{provided }\abs x<1
+\]
 
 Notice that the presence of $x$'s outside of the series will NOT affect its convergence and so the interval of convergence remains the same.  
 The last step is to bring the coefficient into the series and we'll be done.  When we do this make sure and combine the $x$'s as well.  We typically only want a single $x$ in a power series.
-$$h(x)=\sum_{n=0}^\infty 2\left( -1 \right)^n x^{3n+2} \qquad\text{provided }\abs x<1.$$
+\[
+h(x)=\sum_{n=0}^\infty 2\left( -1 \right)^n x^{3n+2} \qquad\text{provided }\abs x<1.
+\]
 As we saw in the previous example we can often use previous results to help us out.  This is an important idea to remember as it can often greatly simplify our work.}
 
 \example{ex_power_five}{Finding a Power Series}{Find a power series representation for $f(x)=\dfrac x{5-x}$ and determine its interval of convergence.}{So again, we have an $x$ in the numerator. As with the last example factor $x$ out and we have $f(x)=x\dfrac1{5-x}$. If we had a power series representation for $g(x)=\dfrac1{5-x}$ we could get a power series representation for $f(x)$. We need the number in the denominator to be a one so we rewrite the denominator.  
-$$g(x)=\frac15\frac1{1-\frac x5}$$
+\[g(x)=\frac15\frac1{1-\frac x5}\]
 
 Now all we need to do to get a power series representation is to replace the $x$ in \autoeqref{eq_power_series} with $\dfrac x5$.  Doing this gives
-$$g(x)=\frac15\sum_{n=0}^\infty\left(\frac x5\right)^n\qquad\text{provided } \abs{\frac x5}<1.$$
+\[
+g(x)=\frac15\sum_{n=0}^\infty\left(\frac x5\right)^n
+\qquad\text{provided } \abs{\frac x5}<1.
+\]
 
 Now simplify the series.
 \begin{align*}
@@ -350,7 +364,10 @@ Now simplify the series.
 \end{align*}
 
 The interval of convergence for this series is
-$$\abs{\frac x5}<1 \qquad \Rightarrow \qquad \frac15\abs x<1 \qquad \Rightarrow \qquad\abs x<5$$
+\[
+\abs{\frac x5}<1 \qquad \Rightarrow \qquad \frac15\abs x<1
+\qquad \Rightarrow \qquad\abs x<5
+\]
 
 We now have a power series representation for $g(x)$ but we need to find a power series representation for the original function.  All we need to do for this is to multiply the power series representative for $g(x)$ by $x$ and we'll have it.  
 \begin{align*}
@@ -364,7 +381,7 @@ The interval of convergence doesn't change and so it will be $\abs x<5$.}
 We now consider several examples where differentiation and integration of power series from \autoref{thm:calc_power_series} are used to write the power series for a function. % in \autoref{sec:power_series}.
 
 \example{ex_power_deriv}{Differentiating a Power Series}{Find a power series representation for $g(x)=\dfrac1{(1-x)^2}$ and determine its radius of convergence.}{We know that
-$$\frac1{(1-x)^2} = \frac{d}{dx} \left( \frac{1}{1-x} \right).$$
+\[\frac1{(1-x)^2} = \frac{d}{dx} \left( \frac{1}{1-x} \right).\]
 Since we have a power series  representation for $\dfrac1{1-x}$, we can differentiate that power series to get a power series representation for $g(x)$.  
 \begin{align*}
 	g(x)
@@ -377,7 +394,7 @@ Since we have a power series  representation for $\dfrac1{1-x}$, we can differen
 Since the original power series had a radius of convergence of $R=1$ the derivative, and hence $g(x)$, will also have a radius of convergence of $R=1$.}
 
 \example{ex_power_int}{Integrating a Power Series}{Find a power series representation for $h(x)=\ln(5-x)$ and determine its radius of convergence.}{In this case we need the fact that
-$$\int\frac1{5-x}\ dx=-\ln(5-x).$$
+\[\int\frac1{5-x}\ dx=-\ln(5-x).\]
 Recall that we found a power series representation for $\dfrac1{5-x}$ in \autoref{ex_power_five}. We now have
 \begin{align*}
 	\ln(5-x)
@@ -393,7 +410,7 @@ We can find the constant of integration, $C$, by substituting in a value of $x$.
 \end{align*}
 
 So, the final answer is, 
-$$\ln(5-x) =\ln(5) - \sum_{n=0}^{\infty} \frac{x^{n+1}}{(n+1)5^{n+1}},$$
+\[\ln(5-x) =\ln(5) - \sum_{n=0}^{\infty} \frac{x^{n+1}}{(n+1)5^{n+1}},\]
 and the radius of convergence is 5. Notice that $x=-5$ allows for convergence so the interval of convergence is $[-5,5)$.}
 
 % todo write a transition paragraph from this section to the next

@@ -5,19 +5,58 @@ We continue with the pattern we have established in this text: after defining a 
 We begin with a series of definitions. We are used to ``open intervals'' such as $(1,3)$, which represents the set of all $x$ such that $1<x<3$,  and ``closed intervals'' such as $[1,3]$, which represents the set of all $x$ such that $1\leq x\leq 3$. We need analogous definitions for open and closed sets in the $x$-$y$ plane.
 
 \mtable{Illustrating open and closed sets in the $x$-$y$ plane.}{fig:multilimit_intro}{%
-\myincludegraphics{figures/figmultilimit_introa}\\
-(a)\\
-\myincludegraphics{figures/figmultilimit_introb}\\
-(b)\\
-\myincludegraphics{figures/figmultilimit_introc}\\
-(c)}
+\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick=\empty,
+ytick=\empty,ymin=-1,ymax=5,xmin=-1,xmax=7.5]
+\addplot [thick,draw={\colorone},fill={\coloronefill}, smooth]coordinates {(1.,3.)(1.045,3.492)(1.167,3.889)(1.346,4.196)(1.56,4.414)(1.79,4.546)(2.015,4.596)(2.226,4.574)(2.425,4.501)(2.615,4.397)(2.799,4.282)(2.98,4.177)(3.16,4.099)(3.34,4.054)(3.52,4.042)(3.7,4.062)(3.88,4.114)(4.06,4.198)(4.242,4.306)(4.432,4.415)(4.636,4.503)(4.859,4.544)(5.107,4.518)(5.385,4.402)(5.681,4.203)(5.979,3.938)(6.261,3.624)(6.508,3.279)(6.705,2.92)(6.84,2.562)(6.917,2.211)(6.943,1.873)(6.922,1.553)(6.861,1.258)(6.766,0.9942)(6.634,0.7662)(6.46,0.5803)(6.238,0.4424)(5.962,0.3583)(5.626,0.3337)(5.229,0.3693)(4.781,0.4503)(4.292,0.5591)(3.774,0.6783)(3.24,0.7904)(2.701,0.8805)(2.182,0.9817)(1.717,1.168)(1.342,1.517)(1.091,2.102)(1.,3.)};
+\filldraw (axis cs: 3.7,4.062) circle (1.5pt) node [shift={(0,9pt)}] {\scriptsize $P_1$};
+\draw [dashed] (axis cs: 3.7,4.062) circle (5pt);
+\filldraw (axis cs: 2,2) circle (1.5pt) node [shift={(0,9pt)}] {\scriptsize $P_2$};
+\draw [dashed] (axis cs: 2,2) circle (5pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(a)\\
+\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick=\empty,
+ytick=\empty,ymin=-1,ymax=5,xmin=-1,xmax=7.5]
+\addplot [thick,dashed,draw={\colorone},fill={\coloronefill}, smooth]coordinates {(1.,3.)(1.045,3.492)(1.167,3.889)(1.346,4.196)(1.56,4.414)(1.79,4.546)(2.015,4.596)(2.226,4.574)(2.425,4.501)(2.615,4.397)(2.799,4.282)(2.98,4.177)(3.16,4.099)(3.34,4.054)(3.52,4.042)(3.7,4.062)(3.88,4.114)(4.06,4.198)(4.242,4.306)(4.432,4.415)(4.636,4.503)(4.859,4.544)(5.107,4.518)(5.385,4.402)(5.681,4.203)(5.979,3.938)(6.261,3.624)(6.508,3.279)(6.705,2.92)(6.84,2.562)(6.917,2.211)(6.943,1.873)(6.922,1.553)(6.861,1.258)(6.766,0.9942)(6.634,0.7662)(6.46,0.5803)(6.238,0.4424)(5.962,0.3583)(5.626,0.3337)(5.229,0.3693)(4.781,0.4503)(4.292,0.5591)(3.774,0.6783)(3.24,0.7904)(2.701,0.8805)(2.182,0.9817)(1.717,1.168)(1.342,1.517)(1.091,2.102)(1.,3.)};
+\filldraw (axis cs: 3.7,4.062) circle (1.5pt) node [shift={(0,9pt)}] {\scriptsize $P_1$};
+\draw [dashed] (axis cs: 3.7,4.062) circle (5pt);
+\filldraw (axis cs: 2,2) circle (1.5pt) node [shift={(0,9pt)}] {\scriptsize $P_2$};
+\draw [dashed] (axis cs: 2,2) circle (5pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(b)\\
+\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick=\empty,
+ytick=\empty,ymin=-1,ymax=5,xmin=-1,xmax=7.5]
+\addplot [thin,draw={\coloronefill},fill={\coloronefill}, smooth]coordinates {(1.,3.)(1.045,3.492)(1.167,3.889)(1.346,4.196)(1.56,4.414)(1.79,4.546)(2.015,4.596)(2.226,4.574)(2.425,4.501)(2.615,4.397)(2.799,4.282)(2.98,4.177)(3.16,4.099)(3.34,4.054)(3.52,4.042)(3.7,4.062)(3.88,4.114)(4.06,4.198)(4.242,4.306)(4.432,4.415)(4.636,4.503)(4.859,4.544)(5.107,4.518)(5.385,4.402)(5.681,4.203)(5.979,3.938)(6.261,3.624)(6.508,3.279)(6.705,2.92)(6.84,2.562)(6.917,2.211)(6.943,1.873)(6.922,1.553)(6.861,1.258)(6.766,0.9942)(6.634,0.7662)(6.46,0.5803)(6.238,0.4424)(5.962,0.3583)(5.626,0.3337)(5.229,0.3693)(4.781,0.4503)(4.292,0.5591)(3.774,0.6783)(3.24,0.7904)(2.701,0.8805)(2.182,0.9817)(1.717,1.168)(1.342,1.517)(1.091,2.102)(1.,3.)};
+\addplot [thick,dashed,draw={\colorone}, smooth]coordinates {(1.,3.)(1.045,3.492)(1.167,3.889)(1.346,4.196)(1.56,4.414)(1.79,4.546)(2.015,4.596)(2.226,4.574)(2.425,4.501)(2.615,4.397)(2.799,4.282)(2.98,4.177)(3.16,4.099)(3.34,4.054)(3.52,4.042)(3.7,4.062)(3.88,4.114)(4.06,4.198)(4.242,4.306)(4.432,4.415)(4.636,4.503)(4.859,4.544)(5.107,4.518)(5.385,4.402)(5.681,4.203)(5.979,3.938)(6.261,3.624)(6.508,3.279)(6.705,2.92)(6.84,2.562)(6.917,2.211)(6.943,1.873)(6.922,1.553)(6.861,1.258)(6.766,0.9942)(6.634,0.7662)(6.46,0.5803)(6.238,0.4424)(5.962,0.3583)(5.626,0.3337)(5.229,0.3693)};
+\addplot [thick,,draw={\colorone}, smooth]coordinates {(5.229,0.3693)(4.781,0.4503)(4.292,0.5591)(3.774,0.6783)(3.24,0.7904)(2.701,0.8805)(2.182,0.9817)(1.717,1.168)(1.342,1.517)(1.091,2.102)(1.,3.)};
+\filldraw (axis cs: 3.7,4.062) circle (1.5pt) node [shift={(0,9pt)}] {\scriptsize $P_1$};
+\draw [dashed] (axis cs: 3.7,4.062) circle (5pt);
+\filldraw (axis cs: 2,2) circle (1.5pt) node [shift={(0,9pt)}] {\scriptsize $P_2$};
+\draw [dashed] (axis cs: 2,2) circle (5pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(c)}
+% todo find some way to parameterize this so that we don't plot coordinates
 
 \definition{def:open}{\parbox[t]{225pt}{Open Disk, Boundary and Interior Points, Open and Closed Sets, Bounded Sets}}
 {An \textbf{open disk} $B$ in $\mathbb{R}^2$ centered at $(x_0,y_0)$ with radius $r$ is the set of all points $(x,y)$ such that $\ds\sqrt{(x-x_0)^2+(y-y_0)^2} < r$. \\
 
 Let $S$ be a set of points in $\mathbb{R}^2$. A point $P$ in $\mathbb{R}^2$ is a \textbf{boundary point} of $S$  if all open disks centered at $P$ contain both points in $S$ and points not in $S$.\\
 
-A point $P$ in $S$ is an \textbf{interior point} of $S$ if there is an open disk centered at $P$ that contains only points in $S$. \\
+A point $P$ in $S$ is an \textbf{interior point} of $S$ if there is an open disk centered at $P$ that contains only points in $S$.\\
 
 A set $S$ is \textbf{open} if every point in $S$ is an interior point.\\
 
@@ -36,7 +75,17 @@ The set depicted in \autoref{fig:multilimit_intro}(a) is a closed set as it cont
 \example{ex_multilimit2}{Determining open/closed, bounded/unbounded}{Determine if the domain of $f(x,y) = \frac1{x-y}$ is open, closed, or neither.}
 {As we cannot divide by 0, we find the domain to be $D = \{(x,y)\ |\ x-y\neq 0\}$. In other words, the domain is the set of all points $(x,y)$ \emph{not} on the line $y=x$. 
 
-\mfigure{0in}{Sketching the domain of the function in \autoref{ex_multilimit2}.}{fig:multilimit2}{figures/figmultilimit2}
+\mtable{Sketching the domain of the function in \autoref{ex_multilimit2}.}{fig:multilimit2}{\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick=\empty,
+ytick=\empty,ymin=-1,ymax=1,xmin=-1,xmax=1]
+\filldraw [draw={\coloronefill},fill={\coloronefill}] (axis cs:-1,-1) rectangle (axis cs: 1,1);
+\addplot [ultra thick,white]coordinates {(-1.,-1.)(1,1)};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
+
 The domain is sketched in \autoref{fig:multilimit2}. Note how we can draw an open disk around any point in the domain that lies entirely inside the domain, and also note how the only boundary points of the domain are the points on the line $y=x$. We conclude the domain is an open set. The set is unbounded.}
 
 \subsection*{Limits}
@@ -51,26 +100,25 @@ means ``if the point $(x,y)$ is really close to the point $(x_0,y_0)$, then $f(x
 \definition{def:multilimit}{Limit of a Function of Two Variables}
 {Let $S$ be an open set containing $(x_0,y_0)$, and let $f$ be a function of two variables defined on $S$, except possibly at $(x_0,y_0)$. 
 %Let $f(x,y)$ be a function of two variables and let $(x_0,y_0)$ be a point in the domain of $f$. 
-The \textbf{limit} of $f(x,y)$ as $(x,y)$ approaches $(x_0,y_0)$ is $L$, denoted $$\ds \lim_{(x,y)\to (x_0,y_0)} f(x,y) = L,$$
-means that given any $\epsilon>0$, there exists $\delta>0$ such that for all  $(x,y)\neq (x_0,y_0)$, if $(x,y)$ is in the open disk centered at $(x_0,y_0)$ with radius $\delta$, then $|f(x,y) - L|<\epsilon.$
+The \textbf{limit} of $f(x,y)$ as $(x,y)$ approaches $(x_0,y_0)$ is $L$, denoted
+\[\ds \lim_{(x,y)\to (x_0,y_0)} f(x,y) = L,\]
+means that given any $\epsilon>0$, there exists $\delta>0$ such that for all  $(x,y)\neq (x_0,y_0)$, if $(x,y)$ is in the open disk centered at $(x_0,y_0)$ with radius $\delta$, then $\abs{f(x,y)-L}<\epsilon.$
 \index{limit!of multivariable function}\index{multivariable function!limit}}
 
-\mfigurethree{width=150pt,3Dmenu,activate=onclick,deactivate=onclick,
+\mtable{\textbf{Illustrating the definition of a limit.} The open disk in the $x$-$y$ plane has radius $\delta$. Let $(x,y)$ be any point in this disk; $f(x,y)$ is within $\epsilon$ of $L$.}{fig:multilimitdef}{%
+\myincludeasythree{width=\marginparwidth,
 3Droll=0.12234160136132792,
 3Dortho=0.004824123345315456,
 3Dc2c=0.9118747115135193 -0.1974218785762787 0.35987377166748047,
 3Dcoo=21.82058334350586 66.31769561767578 47.81545639038086,
-3Droo=149.99999973566392,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.25}{0in}{\textbf{Illustrating the definition of a limit.} The open disk in the $x$-$y$ plane has radius $\delta$. Let $(x,y)$ be any point in this disk; $f(x,y)$ is within $\epsilon$ of $L$.}{fig:multilimitdef}{figures/figmultilimit_def}
-% todo add delta (and c?) to the figure
-%\mfigure[scale=1.25]{0in}{\textbf{Illustrating the definition of a limit.} The open disk in the $x$-$y$ plane has radius $\delta$. Let $(x,y)$ be any point in this disk; $f(x,y)$ is within $\epsilon$ of $L$.}{fig:multilimitdef}{figures/figmultilimit_def}
+3Droo=149.99999973566392}{width=\marginparwidth}{figures/figmultilimit_def_3D}}
 
 The concept behind \autoref{def:multilimit} is sketched in \autoref{fig:multilimitdef}. Given $\epsilon>0$, find $\delta>0$ such that if $(x,y)$ is any point in the open disk centered at $(x_0,y_0)$ in the $x$-$y$ plane with radius $\delta$, then $f(x,y)$ should be within $\epsilon$ of $L$. 
 
 Computing limits using this definition is rather cumbersome. The following theorem allows us to evaluate limits much more easily.
 
 \theorem{thm:multi_limit_algebra}{Basic Limit Properties of Functions of Two Variables}{Let $b$, $x_0$, $y_0$, $L$ and $K$ be real numbers,  let $n$ be a positive integer, and let $f$ and $g$ be functions with the following limits:
-$$\lim_{(x,y)\to (x_0,y_0)}f(x,y) = L \quad \text{\ and\ } \lim_{(x,y)\to (x_0,y_0)} g(x,y) = K.$$
+\[\lim_{(x,y)\to (x_0,y_0)}f(x,y) = L \quad \text{\ and\ } \lim_{(x,y)\to (x_0,y_0)} g(x,y) = K.\]
 The following limits hold.
 \index{limit!of multivariable function}\index{limit!properties}\index{multivariable function!limit}
 \begin{enumerate}
@@ -88,7 +136,7 @@ This theorem can be proved by the same arguments as the analogous results for fu
 % todo do we need a version of theorem 2 (composition of functions) ?
 
 \example{ex_multilimit3}{Evaluating a limit}{Evaluate the following limits:
-$$1. \lim_{(x,y)\to (1,\pi)} \frac yx + \cos(xy) \qquad\qquad 2. \lim_{(x,y)\to (0,0)} \frac{3xy}{x^2+y^2}$$}
+\[1. \lim_{(x,y)\to (1,\pi)} \frac yx + \cos(xy) \qquad\qquad 2. \lim_{(x,y)\to (0,0)} \frac{3xy}{x^2+y^2}\]}
 {\begin{enumerate}
 	\item The aforementioned theorems allow us to simply evaluate $y/x+\cos(xy)$ when $x=1$ and $y=\pi$. If an indeterminate form is returned, we must do more work to evaluate the limit; otherwise, the result is the limit. Therefore
 	\begin{align*}
@@ -152,19 +200,19 @@ Step back and consider what we have just discovered. Along any line $y=mx$ in th
 \example{ex_multilimit5}{Finding a limit}{Let $\ds f(x,y) = \frac{5x^2y^2}{x^2+y^2}$. Find $\ds\lim_{(x,y)\to (0,0)}  f(x,y) .$}
 {It is relatively easy to show that along any line $y=mx$, the limit is 0. This is not enough to prove that the limit exists, as demonstrated in the previous example, but it tells us that if the limit does exist then it must be 0.
 
-To prove the limit is 0, we apply \autoref{def:multilimit}. Let $\epsilon >0$ be given. We want to find $\delta >0$ such that if $\sqrt{(x-0)^2+(y-0)^2} <\delta$, then $|f(x,y)-0| <\epsilon$.
+To prove the limit is 0, we apply \autoref{def:multilimit}. Let $\epsilon >0$ be given. We want to find $\delta >0$ such that if $\sqrt{(x-0)^2+(y-0)^2} <\delta$, then $\abs{f(x,y)-0}<\epsilon$.
 
-Set $\delta < \sqrt{\epsilon/5}$. Note that $\ds \left|\frac{5y^2}{x^2+y^2}\right| <5$ for all $(x,y)\neq (0,0)$, and that if $\sqrt{x^2+y^2} <\delta$, then $x^2<\delta^2$.
+Set $\delta < \sqrt{\epsilon/5}$. Note that $\abs{\dfrac{5y^2}{x^2+y^2}}<5$ for all $(x,y)\neq (0,0)$, and that if $\sqrt{x^2+y^2} <\delta$, then $x^2<\delta^2$.
 
-Let $\sqrt{(x-0)^2+(y-0)^2} = \sqrt{x^2+y^2}<\delta$. Consider $|f(x,y)-0|$:
+Let $\sqrt{(x-0)^2+(y-0)^2} = \sqrt{x^2+y^2}<\delta$. Consider $\abs{f(x,y)-0}$:
 \begin{align*}
-|f(x,y)-0| &= \left|\frac{5x^2y^2}{x^2+y^2}-0\right| \\
-				&= \left|x^2\cdot\frac{5y^2}{x^2+y^2}\right|\\
+\abs{f(x,y)-0}&= \abs{\frac{5x^2y^2}{x^2+y^2}-0} \\
+				&= \abs{x^2\cdot\frac{5y^2}{x^2+y^2}}\\
 				&< \delta^2\cdot 5 \\
 				&< \frac{\epsilon}{5}\cdot 5 \\
 				&= \epsilon.
 \end{align*}
-Thus if $\sqrt{(x-0)^2+(y-0)^2}<\delta$ then $|f(x,y)-0|<\epsilon$, which is what we wanted to show. Thus $\ds \lim_{(x,y)\to(0,0)} \frac{5x^2y^2}{x^2+y^2} = 0$.}
+Thus if $\sqrt{(x-0)^2+(y-0)^2}<\delta$ then $\abs{f(x,y)-0}<\epsilon$, which is what we wanted to show. Thus $\ds \lim_{(x,y)\to(0,0)} \frac{5x^2y^2}{x^2+y^2} = 0$.}
 
 \subsection*{Continuity}
 
@@ -188,10 +236,11 @@ Applying the definition of $f$, we see that $f(0,0) = \cos 0 = 1$.
 
 We now consider the limit $\ds \lim_{(x,y)\to (0,0)} f(x,y)$. Substituting $0$ for $x$ and $y$ in $(\cos y\sin x)/x$ returns the indeterminate form ``0/0'', so we need to do more work to evaluate this limit.
 
-Consider two related limits: $\ds \lim_{(x,y)\to (0,0)} \cos y$ and $\ds \lim_{(x,y)\to(0,0)} \frac{\sin x}x$. The first limit does not contain $x$, and since $\cos y$ is continuous, $$\ds \lim_{(x,y)\to (0,0)} \cos y =\lim_{y\to 0} \cos y = \cos 0 = 1.$$
+Consider two related limits: $\ds \lim_{(x,y)\to (0,0)} \cos y$ and $\ds \lim_{(x,y)\to(0,0)} \frac{\sin x}x$. The first limit does not contain $x$, and since $\cos y$ is continuous,
+\[\ds \lim_{(x,y)\to (0,0)} \cos y =\lim_{y\to 0} \cos y = \cos 0 = 1.\]
 
 The second limit does not contain $y$. By \autoref{thm:special_limits} we can say
-$$\lim_{(x,y)\to (0,0)} \frac{\sin x}{x} = \lim_{x\to 0} \frac{\sin x}{x} = 1.$$
+\[\lim_{(x,y)\to (0,0)} \frac{\sin x}{x} = \lim_{x\to 0} \frac{\sin x}{x} = 1.\]
 Finally, \autoref{thm:multi_limit_algebra} of this section states that we can combine these two limits as follows:
 \begin{align*}
 \lim_{(x,y)\to (0,0)} \frac{\cos y\sin x}{x} &= \lim_{(x,y)\to (0,0)} (\cos y)\left(\frac{\sin x}{x}\right) \\ 
@@ -202,16 +251,15 @@ Finally, \autoref{thm:multi_limit_algebra} of this section states that we can co
 
 We have found that $\ds \lim_{(x,y)\to (0,0)} \frac{\cos y\sin x}{x} = f(0,0)$, so $f$ is continuous at $(0,0)$.
 
-A similar analysis shows that $f$ is continuous at all points in $\mathbb{R}^2$. As long as $x\neq0$, we can evaluate the limit directly; when $x=0$, a similar analysis shows that the limit is $\cos y$. Thus we can say that $f$ is continuous everywhere. A graph of $f$ is given in \autoref{fig:multicont1}. Notice how it has no breaks, jumps, etc.
-\mfigurethree{width=150pt,3Dmenu,activate=onclick,deactivate=onclick,
+\mtable{A graph of $f(x,y)$ in \autoref{ex_multicont1}.}{fig:multicont1}{%
+\myincludeasythree{width=\marginparwidth,
 3Droll=1.3976649182325884,
 3Dortho=0.005226649809628725,
 3Dc2c=0.6559564471244812 0.554935097694397 0.5116328597068787,
 3Dcoo=-1.2457355260849 0.0923926830291748 4.189182281494141,
-3Droo=129.99999868169073,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.25}{0in}{A graph of $f(x,y)$ in \autoref{ex_multicont1}.}{fig:multicont1}{figures/figmulticont1}
-%\mfigure[scale=1.25]{0in}{A graph of $f(x,y)$ in \autoref{ex_multicont1}.}{fig:multicont1}{figures/figmulticont1}
-}
+3Droo=129.99999868169073}{width=\marginparwidth}{figures/figmulticont1_3D}}
+
+A similar analysis shows that $f$ is continuous at all points in $\mathbb{R}^2$. As long as $x\neq0$, we can evaluate the limit directly; when $x=0$, a similar analysis shows that the limit is $\cos y$. Thus we can say that $f$ is continuous everywhere. A graph of $f$ is given in \autoref{fig:multicont1}. Notice how it has no breaks, jumps, etc.}
 
 The following theorems are very similar to Theorems \ref{thm:continuity_algebra} and \ref{thm:composition_continuous}, giving us ways to combine continuous functions to create other continuous functions.
 
@@ -246,8 +294,8 @@ The definitions and theorems given in this section can be extended in a natural 
 \\
 
 \item Let $D$ be an open set in $\mathbb{R}^3$ containing $(x_0,y_0,z_0)$, and let $f(x,y,z)$ be a function of three variables defined on $D$, except possibly at  $(x_0,y_0,z_0)$. The \textbf{limit} of $f(x,y,z)$ as $(x,y,z)$ approaches $(x_0,y_0,z_0)$ is $L$, denoted 
-$$\lim_{(x,y,z)\to (x_0,y_0,z_0)} f(x,y,z) = L,$$
-means that given any $\epsilon >0$, there is a $\delta >0$ such that for all  $(x,y,z)\neq(x_0,y_0,z_0)$, if $(x,y,z)$ is in the open ball centered at $(x_0,y_0,z_0)$ with radius $\delta$, then $|f(x,y,z) - L|< \epsilon$.\\
+\[\lim_{(x,y,z)\to (x_0,y_0,z_0)} f(x,y,z) = L,\]
+means that given any $\epsilon >0$, there is a $\delta >0$ such that for all  $(x,y,z)\neq(x_0,y_0,z_0)$, if $(x,y,z)$ is in the open ball centered at $(x_0,y_0,z_0)$ with radius $\delta$, then $\abs{f(x,y,z) - L}< \epsilon$.\\
 
 \item Let $f(x,y,z)$ be defined on an open ball $B$ containing $(x_0,y_0,z_0)$. Then $f$ is \textbf{continuous} at $(x_0,y_0,z_0)$ if $\ds \lim_{(x,y,z)\to (x_0,y_0,z_0)} f(x,y,z) = f(x_0,y_0,z_0)$.
 \end{enumerate}}

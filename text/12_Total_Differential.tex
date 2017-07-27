@@ -6,7 +6,7 @@ We extend this idea to functions of two variables. Let $z=f(x,y)$, and let $\dx 
 
 \definition{def:total_differential}{Total Differential}
 {Let $z=f(x,y)$ be continuous on an open set $S$. Let $dx$ and $dy$ represent changes in $x$ and $y$, respectively. Where the partial derivatives $f_x$ and $f_y$ exist, the \textbf{total differential of $z$} is \index{total differential}\index{partial derivative!total differential}
-$$dz = f_x(x,y)dx + f_y(x,y)dy.$$}
+\[dz = f_x(x,y)dx + f_y(x,y)dy.\]}
 
 \youtubeVideo{C1Xcj5Xmngc}{Differentials of Functions of Two Variables}
 
@@ -25,7 +25,7 @@ If the approximation of $\ddz$ by $dz$ is good, then as $dx$ and $dy$ get small,
 
 \definition{def:multi_differentiability}{Multivariable Differentiability}
 {Let $z=f(x,y)$ be defined on an open set $S$ containing $(x_0,y_0)$ where $f_x(x_0,y_0)$ and $f_y(x_0,y_0)$ exist. Let $dz$ be the total differential of $z$ at $(x_0,y_0)$, let $\ddz = f(x_0+dx,y_0+dy) - f(x_0,y_0)$, and let $E_x$ and $E_y$ be functions of $dx$ and $dy$  such that 
-$$\ddz = dz + E_xdx + E_ydy.$$
+\[\ddz = dz + E_xdx + E_ydy.\]
 \begin{enumerate}
 	\item $f$ is \textbf{differentiable at $(x_0,y_0)$} if%, given $\epsilon >0$, there is a $\delta >0$ such that if $\norm{\bracket{dx,dy}}< \delta$, then $\norm{\bracket{E_x,E_y}}< \epsilon$. That is, as $dx$ and $dy$ go to 0, so do $E_x$ and $E_y$.
 	\[\lim_{(dx,dy)\to(0,0)}\norm{\bracket{E_x,E_y}}=0.\]
@@ -41,7 +41,7 @@ f(x+dx,y+dy) &= (x+dx)(y+dy) + 3(y+dy)^2 \\
 						&= xy + xdy+ydx+dxdy + 3y^2+6ydy+3dy^2.
 \end{align*}
 $\ddz = f(x+dx,y+dy) - f(x,y)$, so
-$$\ddz = xdy + ydx + dxdy + 6ydy+3dy^2.$$
+\[\ddz = xdy + ydx + dxdy + 6ydy+3dy^2.\]
 It is straightforward to compute $f_x = y$ and $f_y = x+6y$. Consider once more $\ddz$:
 \begin{align*}
 \ddz &= xdy + ydx + dxdy + 6ydy+3dy^2 \qquad \text{ (now reorder)}\\
@@ -82,7 +82,7 @@ The theorems assure us that  essentially all functions that we see in the course
 %\end{align*}
 %
 %Both $f_x$ and $f_y$ \textit{exist} at $(0,0)$, but they are not continuous at $(0,0)$, as 
-%$$f_x(x,y) = \frac{y(y^2-x^2)}{(x^2+y^2)^2} \qquad \text{and}\qquad f_y(x,y) = \frac{x(x^2-y^2)}{(x^2+y^2)^2} $$ are not continuous at $(0,0)$. (Take the limit of $f_x$ as $(x,y)\to(0,0)$ along the $x$- and $y$-axes; they give different results.) So even though $f_x$ and $f_y$ \textit{exist} at every point in the $x$-$y$ plane, they are not continuous. Therefore it is possible, by \autoref{thm:differentiable}, for $f$ to not be differentiable.
+%\[f_x(x,y) = \frac{y(y^2-x^2)}{(x^2+y^2)^2} \qquad \text{and}\qquad f_y(x,y) = \frac{x(x^2-y^2)}{(x^2+y^2)^2} \] are not continuous at $(0,0)$. (Take the limit of $f_x$ as $(x,y)\to(0,0)$ along the $x$- and $y$-axes; they give different results.) So even though $f_x$ and $f_y$ \textit{exist} at every point in the $x$-$y$ plane, they are not continuous. Therefore it is possible, by \autoref{thm:differentiable}, for $f$ to not be differentiable.
 %
 %Indeed, it is not. One can show that $f$ is not continuous at $(0,0)$ (see \autoref{ex_multilimit4}), and by \autoref{thm:diff_cont_multi}, this means $f$ is not differentiable at $(0,0)$.
 
@@ -90,42 +90,42 @@ The theorems assure us that  essentially all functions that we see in the course
 
 By the definition, when $f$ is differentiable $dz$ is a good approximation for $\ddz$ when $dx$ and $dy$ are small. We give some simple examples of how this is used here.
 
-% todo Tim change this example. does it need a calculator or not?
 \example{ex_totaldiff2}{Approximating with the total differential}
-{Let $z = \sqrt{x}\sin y$. Approximate $f(4.1,0.8)$.}
-{Recognizing that $\pi/4 \approx 0.785\approx 0.8$, we can approximate $f(4.1,0.8)$ using $f(4,\pi/4)$. We can easily compute $f(4,\pi/4) = \sqrt{4}\sin(\pi/4) = 2\left(\frac{\sqrt{2}}2\right) = \sqrt{2}\approx 1.414.$ Without calculus, this is the best approximation we could reasonably come up with. The total differential gives us a way of adjusting this initial approximation to hopefully get a more accurate answer.
+{Let $f(x,y)=\sqrt{x}\sin y$. Approximate $f(4.1,0.2)$.}
+{We can approximate $f(4.1,0.2)$ using $f(4,0)=0$. Without calculus, this is the best approximation we could reasonably come up with. The total differential gives us a way of adjusting this initial approximation to hopefully get a more accurate answer.
 
-We let $\ddz = f(4.1,0.8) - f(4,\pi/4)$. The total differential $dz$ is approximately equal to $\ddz$, so
-\begin{equation}f(4.1,0.8) - f(4,\pi/4) \approx dz \quad \Rightarrow \quad f(4.1,0.8) \approx dz + f(4,\pi/4).\label{eq:totaldiff2}\end{equation}
+We let $\ddz = f(4.1,0.2) - f(4,0)$. The total differential $dz$ is approximately equal to $\ddz$, so
+\begin{equation}
+f(4.1,0.2) - f(4,0) \approx dz
+\quad \Rightarrow \quad
+f(4.1,0.2) \approx dz + f(4,0).\label{eq:totaldiff2}
+\end{equation}
 To find $dz$, we need $f_x$ and $f_y$.
-
 \begin{align*}
 f_x(x,y) &= \frac{\sin y}{2\sqrt{x}} \quad\Rightarrow&
-f_x(4,\pi/4) &= \frac{\sin \pi/4}{2\sqrt{4}} \\
-						& &&= \frac{\sqrt{2}/2}{4} = \sqrt{2}/8.\\
+f_x(4,0) &= \frac{\sin0}{2\sqrt{4}}=0 \\
 f_y(x,y) &= \sqrt{x}\cos y \quad\Rightarrow&
-f_y(4,\pi/4) &= \sqrt{4}\frac{\sqrt{2}}2\\
-		& & &= \sqrt{2}.
+f_y(4,0) &= \sqrt{4}\cos0=2
 \end{align*}
-Approximating $4.1$ with 4 gives $dx = 0.1$; approximating $0.8$ with $\pi/4$ gives $dy \approx 0.015$. Thus
-\begin{align*}
-dz(4,\pi/4) &=  f_x(4,\pi/4)(0.1) + f_y(4,\pi/4)(0.015)\\
-				&= \frac{\sqrt{2}}8(0.1) + \sqrt{2}(0.015)\\
-				&\approx 0.039.
-\end{align*}
+Approximating $4.1$ with 4 gives $dx = 0.1$; approximating $0.2$ with $0$ gives $dy=0.2$. Thus
+\[
+dz(4,0) = f_x(4,0)(0.1) + f_y(4,0)(0.2)
+=0(0.1) + 2(0.2)
+=0.4.
+\]
 Returning to \autoeqref{eq:totaldiff2}, we have
-$$f(4.1,0.8) \approx 0.039 + 1.414 = 1.4531.$$
-We, of course, can compute the actual value of $f(4.1,0.8)$ with a calculator; the actual value, accurate to 5 places after the decimal, is $1.45254$. Obviously our approximation is quite good.}
+\[f(4.1,0.2) \approx 0.4 + 0 = .4.\]
+We, of course, can compute the actual value of $f(4.1,0.2)$ with a calculator; to 5 places after the decimal, this is $0.40228$. Obviously our approximation is quite good.}
 
-The point of the previous example was \textit{not} to develop an approximation method for known functions. After all, we can very easily compute $f(4.1,0.8)$ using readily available technology. Rather, it serves to illustrate how well this method of approximation works, and to reinforce the following concept:
+The point of the previous example was \textit{not} to develop an approximation method for known functions. After all, we can very easily compute $f(4.1,0.2)$ using readily available technology. Rather, it serves to illustrate how well this method of approximation works, and to reinforce the following concept:
 \begin{center}
 	``New position = old position $+$ amount of change,'' so\\
 	``New position $\approx$ old position + approximate amount of change.''
 \end{center}
 
-In the previous example, we could easily compute $f(4,\pi/4)$ and could approximate the amount of $z$-change when computing $f(4.1,0.8)$, letting us approximate the new $z$-value.
+In the previous example, we could easily compute $f(4,0)$ and could approximate the amount of $z$-change when computing $f(4.1,0.2)$, letting us approximate the new $z$-value.
 
-It may be surprising to learn that it is not uncommon to know the values of $f$, $f_x$ and $f_y$ at a particular point without actually knowing the function $f$. The total differential gives a good method of approximating $f$ at nearby points.\\
+It may be surprising to learn that it is not uncommon to know the values of $f$, $f_x$ and $f_y$ at a particular point without actually knowing the function $f$. The total differential gives a good method of approximating $f$ at nearby points.
 
 \example{ex_totaldiff3}{Approximating an unknown function}{Given that $f(2,-3) = 6$, $f_x(2,-3) = 1.3$ and $f_y(2,-3) = -0.6$, approximate $f(2.1,-3.03)$.}
 {The total differential approximates how much $f$ changes from the point $(2,-3)$ to the point $(2.1,-3.03)$. With $dx = 0.1$ and $dy = -0.03$, we have
@@ -143,7 +143,7 @@ The total differential gives an approximation of the change in $z$ given small c
 
 \example{ex_totaldiff4}{Sensitivity analysis}{A cylindrical steel storage tank is to be built that is 10ft tall and 4ft across in diameter. It is known that the steel will expand/contract with temperature changes; is the overall volume of the tank more sensitive to changes in the diameter or in the height of the tank?}
 {A cylindrical solid with height $h$ and radius $r$ has volume $V = \pi r^2h$. We can view $V$ as a function of two variables, $r$ and $h$. We can compute partial derivatives of $V$:
-$$\frac{\partial V}{\partial r} = V_r(r,h) = 2\pi rh \qquad \text{and}\qquad \frac{\partial V}{\partial h} = V_h(r,h) = \pi r^2.$$
+\[\frac{\partial V}{\partial r} = V_r(r,h) = 2\pi rh \qquad \text{and}\qquad \frac{\partial V}{\partial h} = V_h(r,h) = \pi r^2.\]
 The total differential is $dV = (2\pi rh)dr + (\pi r^2)dh.$ When $h = 10$ and $r = 2$, we have $dV = 40\pi dr + 4\pi dh$.
 Note that the coefficient of $dr$ is $40\pi%\approx 125.7
 $; the coefficient of $dh$ is a tenth of that%, approximately $12.57$
@@ -160,7 +160,7 @@ The definition of differentiability for functions of three variables is very sim
 \definition{def:total_differential3}{Total Differential}
 {Let $w=f(x,y,z)$ be continuous on an open set $S$. Let $dx$, $dy$ and $dz$ represent changes in $x$, $y$ and  $z$, respectively. Where the partial derivatives $f_x$, $f_y$ and $f_z$ exist, the \textbf{total differential of $w$} is
 \index{total differential}\index{partial derivative!total differential} 
-$$dz = f_x(x,y,z)dx + f_y(x,y,z)dy+f_z(x,y,z)dz.$$
+\[dz = f_x(x,y,z)dx + f_y(x,y,z)dy+f_z(x,y,z)dz.\]
 }
 
 This differential can be a good approximation of the change in $w$ when $w = f(x,y,z)$ is \textbf{differentiable}.
@@ -168,7 +168,7 @@ This differential can be a good approximation of the change in $w$ when $w = f(x
 \definition{def:multi_differentiability3}{Multivariable Differentiability}
 {Let $w=f(x,y,z)$ be defined on an open set $S$ containing $(x_0,y_0,z_0)$ where $f_x(x_0,y_0,z_0)$, $f_y(x_0,y_0,z_0)$ and $f_z(x_0,y_0,z_0)$ exist. Let $dw$ be the total differential of $w$ at $(x_0,y_0,z_0)$, let $\Delta w = f(x_0+dx,y_0+dy,z_0+dz) - f(x_0,y_0,z_0)$, and let $E_x$, $E_y$ and $E_z$ be functions of $dx$, $dy$ and $dz$  such that
 \index{differentiable}\index{derivative!multivariable differentiability}\index{multivariable function!differentiability}
-$$\Delta w = dw + E_xdx + E_ydy + E_zdz.$$
+\[\Delta w = dw + E_xdx + E_ydy + E_zdz.\]
 \begin{enumerate}
 	\item $f$ is \textbf{differentiable at $(x_0,y_0,z_0)$} if, given $\epsilon >0$, there is a $\delta >0$ such that if $\norm{\bracket{dx,dy,dz}}< \delta$, then $\norm{\bracket{E_x,E_y,E_z}}<\epsilon$. 
 	\item	$f$ is \textbf{differentiable on $S$} if $f$ is differentiable at every point in $S$. If $f$ is differentiable on $\mathbb{R}^3$, we say that $f$ is \textbf{differentiable everywhere}.

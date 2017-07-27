@@ -6,9 +6,9 @@ The previous section introduced vectors and described how to add them together a
 {\mbox{}\\[-2\baselineskip]\begin{enumerate}
 	\item Let $\vec u =\bracket{u_1,u_2}$ and $\vec v = \bracket{v_1,v_2}$  in $\mathbb{R}^2$. The \textbf{dot product} of $\vec u$ and $\vec v$, denoted \dotp uv, is 
 	\index{dot product!definition}\index{vectors!dot product}
-	$$\dotp uv = u_1v_1+u_2v_2.$$
+	\[\dotp uv = u_1v_1+u_2v_2.\]
 	\item Let $\vec u = \bracket{u_1,u_2,u_3}$ and $\vec v = \bracket{v_1,v_2,v_3}$  in $\mathbb{R}^3$. The \textbf{dot product} of $\vec u$ and $\vec v$, denoted \dotp uv, is 
-	$$\dotp uv = u_1v_1+u_2v_2+u_3v_3.$$
+	\[\dotp uv = u_1v_1+u_2v_2+u_3v_3.\]
 \end{enumerate}}
 
 Note how this product of vectors returns a \emph{scalar}, not another vector.
@@ -20,9 +20,10 @@ We practice evaluating a dot product in the following example, then we will disc
 	\item Let $\vec x = \bracket{2,-2,5}$ and $\vec y = \bracket{-1, 0, 3}$ in $\mathbb{R}^3$. Find \dotp xy.
 \end{enumerate}}
 {\mbox{}\\[-\baselineskip]\begin{enumerate}
-	\item Using \autoref{def:dot_product}, we have $$\dotp uv = 1(3)+2(-1) = 1.$$
+	\item Using \autoref{def:dot_product}, we have
+	\[\dotp uv = 1(3)+2(-1) = 1.\]
 	\item	Using the definition, we have
-	$$\dotp xy = 2(-1)  -2(0) + 5(3) = 13.$$
+	\[\dotp xy = 2(-1)  -2(0) + 5(3) = 13.\]
 \end{enumerate}}
 
 The dot product, as shown by the preceding example, is very simple to evaluate. It is only the sum of products. While the definition gives no hint as to why we would care about this operation, there is an amazing connection between the dot product and angles formed by the vectors. Before stating this connection, we give a theorem stating some of the properties of the dot product.
@@ -42,17 +43,20 @@ The last statement of the theorem makes a handy connection between the magnitude
 The next theorem extends this understanding by connecting the dot product to magnitudes and angles. Given vectors $\vec u$ and $\vec v$ in the plane, an angle $\theta$ is clearly formed when $\vec u$ and $\vec v$ are drawn with the same initial point as illustrated in \autoref{fig:dotpangle}(a). (We always take $\theta$ to be the angle in $[0,\pi]$ as two angles are actually created.) 
 
 \mtable{Illustrating the angle formed by two vectors with the same initial point.}{fig:dotpangle}{%
-\includegraphics{figures/figdotpangle}\\
-(a)\\[15pt]
-\myincludegraphicsthree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
+\begin{tikzpicture}[>=stealth,scale=1.25]
+	\draw [rotate=-15,->] (0,0) -- (2,0) node (A) [right] {\scriptsize $\vec u$};
+	\draw [rotate=35,->] (0,0) -- (2.5,0) node (B) [right] {\scriptsize $\vec v$};
+	\draw [rotate=-15,->] (.75,0) arc (0:50:.75);
+	\draw [rotate=10] (.9,0) node {\scriptsize $\theta$};
+\end{tikzpicture}
+\\(a)\\[15pt]
+\myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.0045,
 3Dc2c=.54 .61 .58,
 3Dcoo=0 0 40,
-3Droo=170,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{}{figures/figdotpangle3D}\\
-%\includegraphics{figures/figdotpangle3D}\\
-(b)}
+3Droo=170}{width=\marginparwidth}{figures/figdotpangle3D_3D}
+\\(b)}
 
 The same is also true of 2 vectors in space: given $\vec u$ and $\vec v$ in $\mathbb{R}^3$ with the same initial point, there is a plane that contains both $\vec u$ and $\vec v$. (When $\vec u$ and $\vec v$ are co-linear, there are infinite planes that contain both vectors.) In that plane, we can again find an angle $\theta$ between them (and again, $0\leq \theta\leq \pi$). This is illustrated in \autoref{fig:dotpangle}(b).
 
@@ -60,32 +64,71 @@ The following theorem connects this angle $\theta$ to the dot product of $\vec u
 
 \theorem{thm:dot_product}{The Dot Product and Angles}
 {Let $\vec u$ and $\vec v$ be vectors in $\mathbb{R}^2$ or $\mathbb{R}^3$. Then 
-$$\dotp uv = \norm{\vec u}\,\norm{\vec v} \cos\theta,$$
+\[\dotp uv = \norm{\vec u}\,\norm{\vec v} \cos\theta,\]
 where $\theta$, $0\leq\theta\leq \pi$, is the angle between $\vec u$ and $\vec v$.
 \index{dot product!properties}\index{vectors!dot product}}
 
 When $\theta$ is an acute angle (i.e., $0\leq \theta <\pi/2$), $\cos \theta$ is positive; when $\theta = \pi/2$, $\cos \theta = 0$; when $\theta$ is an obtuse angle ($\pi/2<\theta \leq \pi$), $\cos \theta$ is negative. Thus the sign of the dot product gives a general indication of the angle between the vectors, illustrated in \autoref{fig:dotpsign}.
 
 \begin{lxfigure}
-\begin{center}
-\includegraphics{figures/figdotpanglesign}
+\centering
+\begin{tikzpicture}[>=stealth,thick,scale=1.25]
+	\begin{scope}
+		\draw[->] (0,0) -- (1,0) node [pos=.5,below]
+		 {\scriptsize $\vec u\cdot \vec v >0$} node [right] {\scriptsize $\vec u$};
+		\draw[->] (0,0) -- (.5,.866)node [above right] {\scriptsize $\vec v$};
+		\draw[->] (.3,0) arc (0:60:.3);
+		\draw[rotate=30] (.45,0) node {\scriptsize $\theta$};
+	\end{scope}
+	\begin{scope}[shift={(2.4cm,0)}]
+		\draw[->] (0,0) -- (1,0)node [pos=.5,below]
+		 {\scriptsize $\vec u\cdot \vec v =0$}node [right] {\scriptsize $\vec u$};
+		\draw[->] (0,0) -- (0,1)node [above ] {\scriptsize $\vec v$};
+		\draw[->] (.3,0) arc (0:90:.3);
+		\draw[rotate=22.5] (.7,0) node {\scriptsize $\theta=\pi/2$};
+	\end{scope}
+	\begin{scope}[shift={(5.2cm,0)}]
+		\draw[->] (0,0) -- (1,0)node [pos=.5,below]
+		 {\scriptsize $\vec u\cdot \vec v <0$}node [right] {\scriptsize $\vec u$};
+		\draw[->] (0,0) -- (-.707,.707)node [above left] {\scriptsize $\vec v$};
+		\draw[->] (.3,0) arc (0:135:.3);
+		\draw[rotate=67.5] (.45,0) node {\scriptsize $\theta$};
+	\end{scope}
+\end{tikzpicture}
 \caption{Illustrating the relationship between the angle between vectors and the sign of their dot product.}
 \label{fig:dotpsign}
-\end{center}
 \end{lxfigure}
 
 We \emph{can} use \autoref{thm:dot_product} to compute the dot product, but generally this theorem is used to find the angle between known vectors (since the dot product is generally easy to compute). To this end, we rewrite the theorem's equation as
-$$\cos \theta = \frac{\dotp uv}{\norm{\vec u}\norm{\vec v}} \quad \Leftrightarrow \quad \theta = \cos^{-1}\left(\frac{\dotp uv}{\norm{\vec u}\norm{\vec v}}\right).$$
+\[\cos \theta = \frac{\dotp uv}{\norm{\vec u}\norm{\vec v}} \quad \Leftrightarrow \quad \theta = \cos^{-1}\left(\frac{\dotp uv}{\norm{\vec u}\norm{\vec v}}\right).\]
 
 \youtubeVideo{98C7iv8OcnI}{Vectors: The Dot Product}
 
 We practice using this theorem in the following example.
 
-\mfigure{0in}{Vectors used in \autoref{ex_dotp2}.}{fig:dotp2}{figures/figdotp2}
+\mtable{Vectors used in \autoref{ex_dotp2}.}{fig:dotp2}{\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,minor x tick num=4,
+minor y tick num=1,ymin=-1.8,ymax=6.99,xmin=-5.5,xmax=5.5]
+\draw [thick,->] (axis cs:0,0) --(axis cs: 3,1) node [above] {\scriptsize$\vec u$};
+\draw [thick,->] (axis cs:0,0) --(axis cs: -2,6) node [above] {\scriptsize$\vec v$};
+\draw [thick,->] (axis cs:0,0) --(axis cs: -4,3) node [above] {\scriptsize$\vec w$};
+\draw [->] (axis cs: .949,.316) arc (18.4:108.4:12pt);
+\draw [] (axis cs:0.680986, 1.33651) node {\scriptsize $\alpha$};
+\draw [->] (axis cs: -0.474342, 1.42302) arc (108.4:155.1:12pt);
+\draw [] (axis cs:-1.13929, 1.58257) node {\scriptsize $\beta$};
+\draw [->] (axis cs: 2.3725, 0.79) arc (18.4:143.1:30pt);
+\draw [] (axis cs:1.5, 2.59808) node {\scriptsize $\theta$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 \example{ex_dotp2}{Using the dot product to find angles}{Let $\vec u = \bracket{3,1}$, $\vec v = \bracket{-2,6}$ and $\vec w = \bracket{-4,3}$, as shown in \autoref{fig:dotp2}. Find the angles $\alpha$, $\beta$ and $\theta$.}
 {We start by computing the magnitude of each vector.
-$$\norm{\vec u} = \sqrt{10};\quad \norm{\vec v} = 2\sqrt{10};\quad \norm{\vec w} = 5.$$
+\[
+\norm{\vec u} = \sqrt{10};\quad \norm{\vec v} = 2\sqrt{10};\quad \norm{\vec w} = 5.
+\]
 We now apply \autoref{thm:dot_product} to find the angles.
 \begin{align*}
 	\alpha &= \cos^{-1}\left(\frac{\dotp uv}{(\sqrt{10})(2\sqrt{10})}\right) \\
@@ -99,6 +142,7 @@ We now apply \autoref{thm:dot_product} to find the angles.
 	&= \cos^{-1}\left(\frac{-9}{5\sqrt{10}}\right) \\
 	&\approx 2.1763 \approx 124.7^\circ\eoehere
 \end{align*}}
+% todo Tim check this spacing
 
 We see from our computation that $\alpha + \beta = \theta$, as indicated by \autoref{fig:dotp2}. While we knew this should be the case, it is nice to see that this non-intuitive formula indeed returns the results we expected.
 
@@ -150,23 +194,38 @@ All three angles between these vectors was $\pi/2$, or $90^\circ$. We know from 
 \end{enumerate}}
 {\mbox{}\\[-\baselineskip]\begin{enumerate}
 	\item Recall that a line perpendicular to a line with slope $m$ has slope $-1/m$, the ``opposite reciprocal slope.'' We can think of the slope of $\vec u$ as $5/3$, its ``rise over run.'' A vector orthogonal to $\vec u$ will have slope $-3/5$. There are many such choices, though all parallel:
-	$$\bracket{-5,3}\quad \text{or} \quad\bracket{5,-3}\quad \text{or} \quad \bracket{-10,6}\quad \text{or} \quad \bracket{15,-9},\text{etc.}$$
+	\[\bracket{-5,3}\quad \text{or} \quad\bracket{5,-3}\quad \text{or} \quad \bracket{-10,6}\quad \text{or} \quad \bracket{15,-9},\text{etc.}\]
 	\item		There are infinite directions in space orthogonal to any given direction, so there are an infinite number of non--parallel vectors orthogonal to $\vec v$. Since there are so many, we have great leeway in finding some.
 	
 	One way is to arbitrarily pick values for the first two components, leaving the third unknown. For instance, let $\vec v_1 = \bracket{2,7,z}$. If $\vec v_1$ is to be orthogonal to $\vec v$, then $\vec v_1\cdot\vec v = 0$, so 
-	$$2+14+3z=0 \quad \Rightarrow \quad z = \frac{-16}{3}.$$
+	\[2+14+3z=0 \quad \Rightarrow \quad z = \frac{-16}{3}.\]
 	So $\vec v_1 = \bracket{2, 7, -16/3}$ is orthogonal to $\vec v$. We can apply a similar technique by leaving the first or second component unknown.
 	
 	Another method of finding a vector orthogonal to $\vec v$ mirrors what we did in part 1. Let $\vec v_2 = \bracket{-2,1,0}$. Here we switched the first two components of $\vec v$, changing the sign of one of them (similar to the ``opposite reciprocal'' concept before). Letting the third component be 0 effectively ignores the third component of $\vec v$, and it is easy to see that 
-	$$\vec v_2\cdot\vec v = \bracket{-2,1,0}\cdot\bracket{1,2,3}= 0.$$
+	\[\vec v_2\cdot\vec v = \bracket{-2,1,0}\cdot\bracket{1,2,3}= 0.\]
 	Clearly $\vec v_1$ and $\vec v_2$ are not parallel.\eoehere
 \end{enumerate}}
 
 \mtable{Developing the construction of the \emph{orthogonal projection}.}{fig:dotpproj}{%
-\includegraphics{figures/figdotpproja}\\
-(a)\\[15pt]
-\includegraphics{figures/figdotpprojb}\\
-(b)}
+\begin{tikzpicture}[>=stealth]
+	\draw [thick,->] (0,0) -- (4,2) node [right] {\scriptsize $\vec v$};
+	\draw [thick,->] (0,0) -- (1,3) node [above ] {\scriptsize $\vec u$};
+	\draw [dotted,thick] (1,3) -- (2,1);
+	\draw (1.82111, 0.910557) -- ({1.73167, 1.08944})--(1.91056, 1.17889);
+	\draw (.4,.2) arc (26.5:71.6:.45);
+	\draw [rotate=49] (.6,0) node {\scriptsize $\theta$};
+\end{tikzpicture}
+\\(a)\\[15pt]
+\begin{tikzpicture}[>=stealth]
+	\draw [thick,->] (2,1) -- (4,2) node [right] {\scriptsize $\vec v$};
+	\draw [thick,->] (0,0) -- (1,3) node [above ] {\scriptsize $\vec u$};
+	\draw [thick,->,gray] (0,0) -- (2,1) node [below,black] {\scriptsize $\vec w$};
+	\draw [<-,thick] (1,3) -- (2,1) node [right,pos=.5] {\scriptsize $\vec z$};
+	\draw (1.82111, 0.910557) -- ({1.73167, 1.08944})--(1.91056, 1.17889);
+	\draw (.4,.2) arc (26.5:71.6:.45);
+	\draw [rotate=49] (.6,0) node {\scriptsize $\theta$};
+\end{tikzpicture}
+\\(b)}
 
 An important construction is illustrated in \autoref{fig:dotpproj}, where vectors $\vec u$ and $\vec v$ are sketched. In part (a), a dotted line is drawn from the tip of $\vec u$ to the line containing $\vec v$, where the dotted line is orthogonal to $\vec v$. In part (b), the dotted line is replaced with the vector $\vec z$ and  $\vec w$ is formed, parallel to $\vec v$. It is clear by the diagram that $\vec u = \vec w+\vec z$. What is important about this construction is this: $\vec u$ is \emph{decomposed} as the sum of two vectors, one of which is parallel to $\vec v$ and one that is perpendicular to $\vec v$. It is hard to overstate the importance of this construction (as we'll see in upcoming examples). 
 
@@ -192,29 +251,35 @@ Since this construction is so important, it is given a special name.
 \definition{def:orthogonal_projection}{Orthogonal Projection}
 {Let $\vec u$ and $\vec v$ be given. The \textbf{orthogonal projection of $\vec u$ onto $\vec v$}, denoted $\proj uv$, is 
 \index{orthogonal projection}\index{vectors!orthogonal projection}
-$$\proj uv = \frac{\dotp uv}{\dotp vv}\vec v.$$}
+\[\proj uv = \frac{\dotp uv}{\dotp vv}\vec v.\]}
 
 \mtable[-1in]{Graphing the vectors used in \autoref{ex_dotp4}.}{fig:dotp4}{%
-\includegraphics{figures/figdotp4a}\\
-(a)\\[15pt]
-\myincludegraphicsthree{width=100pt,3Dmenu,activate=onclick,deactivate=onclick,
+\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={-3,-2,-1,1,2,3},
+ytick={1,2,-1,-2},ymin=-2.8,ymax=2.8,xmin=-2.9,xmax=3.9]
+\draw [thick,->] (axis cs:0,0) --(axis cs: -2,1) node [above] {\scriptsize$\vec u$};
+\draw [thick,->] (axis cs:0,0) --(axis cs: 3,1) node [above] {\scriptsize$\vec v$};
+\draw [thick,->,gray] (axis cs:0,0) --(axis cs: -1.5,-.5)
+ node [below,black] {\scriptsize$\text{proj}_{\, \vec v}\, \vec u$};
+\draw [dotted,thick] (axis cs: -2,1) -- (axis cs:-1.5,-.5);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(a)\\[15pt]
+\myincludeasythree{width=.8\marginparwidth,
 3Droll=0,
 3Dortho=0.0046,
 3Dc2c=.9 .12 .42,
 3Dcoo=0 50 30,
-3Droo=250,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{}{figures/figdotp4b}\\
-%\includegraphics{figures/figdotp4b}\\
-(b)\\[15pt]
-\myincludegraphicsthree{width=100pt,3Dmenu,activate=onclick,deactivate=onclick,
-3Droll=0,
-3Dortho=0.0046,
-3Dc2c=.29 .77 .56,
-3Dcoo=50 0 40,
-3Droo=250,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{}{figures/figdotp4c}\\
-%\includegraphics{figures/figdotp4c}\\
-(c)}	
+3Droo=250}{width=.8\marginparwidth}{figures/figdotp4b_3D}
+\\(b)
+\ifthenelse{\boolean{in_threeD}}{}{%
+\\[15pt]
+\myincludegraphics[width=.8\marginparwidth]{figures/figdotp4c_3D} % myinc g 3D
+\\(c)}% end ifthenelse
+}% end mtable
 
 \example{ex_dotp4}{Computing the orthogonal projection}{\mbox{}\\[-2\baselineskip]\begin{enumerate}
 	\item Let $\vec u=\bracket{-2,1}$ and $\vec v=\bracket{3,1}$. Find $\proj uv$, and sketch all three vectors with initial points at the origin.
@@ -223,22 +288,36 @@ $$\proj uv = \frac{\dotp uv}{\dotp vv}\vec v.$$}
 {\mbox{}\\[-\baselineskip]\begin{enumerate}
 	\item Applying \autoref{def:orthogonal_projection}, we have
 	\begin{align*}
-	\proj uv &= \frac{\dotp uv}{\dotp vv}\vec v \\
-					&= \frac{-5}{10}\bracket{3,1}\\
-					&=\bracket{-\frac32,-\frac12}.
+		\proj uv
+		&= \frac{\dotp uv}{\dotp vv}\vec v \\
+		&= \frac{-5}{10}\bracket{3,1}\\
+		&=\bracket{-\frac32,-\frac12}.
 	\end{align*}
 	Vectors $\vec u$, $\vec v$ and $\proj uv$ are sketched in \autoref{fig:dotp4}(a). Note how the projection is parallel to $\vec v$; that is, it lies on the same line through the origin as $\vec v$, although it points in the opposite direction. That is because the angle between $\vec u$ and $\vec v$ is obtuse (i.e., greater than $90^\circ$).
 	
-	\item		Apply the definition:
+	\item	Apply the definition:
 	\begin{align*}
-	\proj wx &= \frac{\dotp wx}{\dotp xx}\vec x \\
-					&= \frac{6}{3}\bracket{1,1,1}\\
-					&=\bracket{2,2,2}.
+		\proj wx
+		&= \frac{\dotp wx}{\dotp xx}\vec x \\
+		&= \frac{6}{3}\bracket{1,1,1}\\
+		&=\bracket{2,2,2}.
 	\end{align*}
-	These vectors are sketched in \autoref{fig:dotp4}(b), and again in part (c) from a different perspective. Because of the nature of graphing these vectors, the sketch in part (b) makes it difficult  to recognize that the drawn projection has the geometric properties it should. The graph shown in part (c) illustrates these properties better.\eoehere
+	\ifthenelse{\boolean{in_threeD}}{%
+	These vectors are sketched in \autoref{fig:dotp4}(b).%
+	}{%
+	These vectors are sketched in \autoref{fig:dotp4}(b), and again in part (c) from a different perspective. Because of the nature of graphing these vectors, the sketch in part (b) makes it difficult  to recognize that the drawn projection has the geometric properties it should. The graph shown in part (c) illustrates these properties better.%
+	}
+	\eoehere
 \end{enumerate}}
 
-\mfigure{0in}{Illustrating the orthogonal projection.}{fig:dotpprojc}{figures/figdotpprojc}
+\mtable{Illustrating the orthogonal projection.}{fig:dotpprojc}{\begin{tikzpicture}[>=stealth]
+ \draw [thick,->] (2,1) -- (4,2) node [below] {\scriptsize $\vec v$};
+ \draw [thick,->] (0,0) -- (1,3) node [above ] {\scriptsize $\vec u$};
+ \draw [thick,->,gray] (0,0) -- (2,1)
+  node [pos=.6,below,black] {\scriptsize $\text{proj}_{\, \vec v}\, \vec u$};
+ \draw [<-,thick] (1,3) -- (2,1) node [right,pos=.5] {\scriptsize $\vec z$};
+ \draw (1.82111, 0.910557) -- ({1.73167, 1.08944})--(1.91056, 1.17889);
+\end{tikzpicture}}
 
 Consider \autoref{fig:dotpprojc} where the concept of the orthogonal projection is again illustrated. It is clear that 
 \begin{equation}
@@ -246,15 +325,15 @@ Consider \autoref{fig:dotpprojc} where the concept of the orthogonal projection 
 \label{eq:orthogproj}
 \end{equation}
 As we know what $\vec u$ and $\proj uv$ are, we can solve for $\vec z$ and state that
-$$\vec z = \vec u - \proj uv.$$
+\[\vec z = \vec u - \proj uv.\]
 This leads us to rewrite \autoeqref{eq:orthogproj} in a seemingly silly way:
-$$\vec u = \proj uv + (\vec u - \proj uv).$$
+\[\vec u = \proj uv + (\vec u - \proj uv).\]
 This is not nonsense, as pointed out in the following Key Idea. (Notation note: the expression ``$\parallel \vec y$\,'' means ``is parallel to $\vec y$.'' We can use this notation to state ``$\vec x\parallel\vec y$\,'' which means ``$\vec x$ is parallel to $\vec y$.'' The expression ``$\perp \vec y$\,'' means ``is orthogonal to $\vec y$,'' and is used similarly.)
 
 \keyidea{idea:orthog_proj}{Orthogonal Decomposition of Vectors}
 {Let $\vec u$ and $\vec v$ be given. Then $\vec u$ can be written as the sum of two vectors, one of which is parallel to $\vec v$, and one of which is orthogonal to $\vec v$:
 \index{orthogonal decomposition of vectors}\index{orthogonal!decomposition}\index{vectors!orthogonal decomposition}
-$$\vec u = \underbrace{\proj uv}_{\parallel\ \vec v}\ +\  (\underbrace{\vec u-\proj uv}_{\perp\ \vec v}).$$}
+\[\vec u = \underbrace{\proj uv}_{\parallel\ \vec v}\ +\  (\underbrace{\vec u-\proj uv}_{\perp\ \vec v}).\]}
 
 We illustrate the use of this equality in the following example.
 
@@ -263,9 +342,10 @@ We illustrate the use of this equality in the following example.
 	\item	Let $\vec w =\bracket{2,1,3}$ and $\vec x  =\bracket{1,1,1}$ as in \autoref{ex_dotp4}. Decompose $\vec w$ as the sum of a vector parallel to $\vec x$ and a vector orthogonal to $\vec x$.
 \end{enumerate}}
 {\mbox{}\\[-\baselineskip]\begin{enumerate}
-	\item In \autoref{ex_dotp4}, we found that $\proj uv =\bracket{-1.5,-0.5}$. Let $$\vec z = \vec u - \proj uv =\bracket{-2,1}-\bracket{-1.5,-0.5}=\bracket{-0.5, 1.5}.$$
+	\item In \autoref{ex_dotp4}, we found that $\proj uv =\bracket{-1.5,-0.5}$. Let
+	\[\vec z = \vec u - \proj uv =\bracket{-2,1}-\bracket{-1.5,-0.5}=\bracket{-0.5, 1.5}.\]
 	Is $\vec z$ orthogonal to $\vec v$\,? (I.e, is $\vec z \perp\vec v$\ ?) We check for orthogonality with the dot product:
-	$$\dotp zv =\bracket{-0.5,1.5}\cdot\bracket{3,1}=0.$$
+	\[\dotp zv =\bracket{-0.5,1.5}\cdot\bracket{3,1}=0.\]
 	Since the dot product is 0, we know $\vec z \perp \vec v$. Thus:
 	\begin{align*}
 	\vec u &= \proj uv\ +\ (\vec u - \proj uv) \\
@@ -273,8 +353,8 @@ We illustrate the use of this equality in the following example.
 	\end{align*}
 	
 	\item	We found in \autoref{ex_dotp4} that $\proj wx =\bracket{2,2,2}$. Applying the \autoref{idea:orthog_proj}, we have:
-	$$\vec z = \vec w - \proj wx =\bracket{2,1,3}-\bracket{2,2,2}=\bracket{0,-1,1}.$$ We check to see if $\vec z \perp \vec x$:
-	$$\dotp zx =\bracket{0,-1,1}\cdot\bracket{1,1,1}= 0.$$
+	\[\vec z = \vec w - \proj wx =\bracket{2,1,3}-\bracket{2,2,2}=\bracket{0,-1,1}.\] We check to see if $\vec z \perp \vec x$:
+	\[\dotp zx =\bracket{0,-1,1}\cdot\bracket{1,1,1}= 0.\]
 	Since the dot product is 0, we know the two vectors are orthogonal.
 	We now write $\vec w$ as the sum of two vectors, one parallel and one orthogonal to $\vec x$:
 	\begin{align*}
@@ -285,17 +365,36 @@ We illustrate the use of this equality in the following example.
 
 We give an example of where this decomposition is useful.
 
-\example{ex_dotp6}{Orthogonally decomposing a force vector}{Consider \autoref{fig:dotp6}(a), showing a box weighing 50lb on a ramp that rises 5ft over a span of 20ft. Find the components of force, and their magnitudes, acting on the box (as sketched in part (b) of the figure):
+\example{ex_dotp6}{Orthogonally decomposing a force vector}{Consider \autoref{fig:dotp6}(a), showing a box weighing 50 lb on a ramp that rises 5 ft over a span of 20 ft. Find the components of force, and their magnitudes, acting on the box (as sketched in part (b) of the figure):
 \begin{enumerate}
 	\item in the direction of the ramp, and
 	\item	orthogonal to the ramp.
 \end{enumerate}
-\mtable{Sketching the ramp and box in \autoref{ex_dotp6}. Note: \textit{The vectors are not drawn to scale.}}{fig:dotp6}{%
-\includegraphics{figures/figdotp6}\\
-(a)\\[15pt]
-\includegraphics{figures/figdotp6b}\\
-(b)}}
-{As the ramp rises 5ft over a horizontal distance of 20ft, we can represent the direction of the ramp with the vector $\vec r=\bracket{20,5}$. Gravity pulls down with a force of 50lb, which we represent with $\vec g =\bracket{0,-50}$. 
+%
+\mtable[-8\baselineskip]{Sketching the ramp and box in \autoref{ex_dotp6}. Note: \textit{The vectors are not drawn to scale.}}{fig:dotp6}{%
+\begin{tikzpicture}[>=stealth,scale=.25]
+	\draw [thick,->] (20,5) -- node [right,pos=.5] {\scriptsize $5$} (20,0)
+	 -- node [below,pos=.6] {\scriptsize 20}(0,0)
+	 -- (20,5) node [above] {\scriptsize $\vec r$};
+	\draw [thick] (10,2.5) -- (9.25,5.5) -- (12.25,6.25) -- (13,3.25);
+	\draw [thick,->] (11.125,4.375) -- (11.125,-3.625)
+	 node [below] {\scriptsize $\vec g$};
+\end{tikzpicture}
+\\(a)\\[15pt]
+\begin{tikzpicture}[>=stealth,scale=.25]
+	\draw [thick,->] (20,5) -- node [right,pos=.5] {\scriptsize $5$} (20,0)
+	 -- node [below,pos=.6] {\scriptsize 20}(0,0)
+	 -- (20,5) node [above] {\scriptsize $\vec r$};
+	\draw [thick] (10,2.5) -- (9.25,5.5) -- (12.25,6.25) -- (13,3.25);
+	\draw [thick,->] (11.125,4.375) -- (11.125,-3.625)
+	 node [below] {\scriptsize $\vec g$};
+	\draw [gray,thick,->] (11.125,4.375) -- (13,-3.15)
+	 node [right,pos=.4,black] {\scriptsize $\vec z$};
+	\draw [gray,thick,->] (13,-3.15) -- (11.125,-3.625)
+	 node [shift={(5pt,-5pt)} ,black,pos=0] {\scriptsize $\proj gr$};
+\end{tikzpicture}
+\\(b)}}
+{As the ramp rises 5 ft over a horizontal distance of 20 ft, we can represent the direction of the ramp with the vector $\vec r=\bracket{20,5}$. Gravity pulls down with a force of 50 lb, which we represent with $\vec g =\bracket{0,-50}$. 
 \begin{enumerate}
 	\item To find the force of gravity in the direction of the ramp, we compute $\proj gr$:
 	\begin{align*}
@@ -304,7 +403,7 @@ We give an example of where this decomposition is useful.
 	&=\bracket{-\frac{200}{17},-\frac{50}{17}}%\approx\bracket{-11.76,-2.94}
 	.
 	\end{align*}
-	The magnitude of $\proj gr$ is $\norm{\proj gr} = 50/\sqrt{17} \approx 12.13\text{lb}$. Though the box weighs 50lb, a force of about 12lb is enough to keep the box from sliding down the ramp.
+	The magnitude of $\proj gr$ is $\norm{\proj gr} = 50/\sqrt{17} \approx 12.13\text{ lb}$. Though the box weighs 50 lb, a force of about 12 lb is enough to keep the box from sliding down the ramp.
 	
 	\item		To find the component $\vec z$ of gravity orthogonal to the ramp, we use \autoref{idea:orthog_proj}.
 	\begin{align*}
@@ -313,7 +412,7 @@ We give an example of where this decomposition is useful.
 	.
 	\end{align*}
 	The magnitude of this force is $\norm{\vec z}=200/\sqrt{17}%\approx 48.51
-	$lb. In physics and engineering, knowing this force is important when computing things like static frictional force. (For instance, we could easily compute if the static frictional force alone was enough to keep the box from sliding down the ramp.)\eoehere
+	$ lb. In physics and engineering, knowing this force is important when computing things like static frictional force. (For instance, we could easily compute if the static frictional force alone was enough to keep the box from sliding down the ramp.)\eoehere
 \end{enumerate}}
 
 \subsection*{Application to Work}
@@ -321,7 +420,14 @@ We give an example of where this decomposition is useful.
 In physics, the application of a force $F$ to move an object in a straight line a distance $d$ produces \emph{work}; the amount of work $W$ is $W=Fd$, (where $F$ is in the direction of travel). The orthogonal projection allows us to compute work when the force is not in the direction of travel.
 
 Consider \autoref{fig:dotpwork}, where a force $\vec F$ is being applied to an object moving in the direction of $\vec d$. (The distance the object travels is the magnitude of $\vec d$.) The work done is the amount of force in the direction of $\vec d$, $\norm{\proj Fd}$, times $\vnorm d$:
-\mfigure{0in}{Finding work when the force and direction of travel are given as vectors.}{fig:dotpwork}{figures/figdotpwork}
+
+\mtable{Finding work when the force and direction of travel are given as vectors.}{fig:dotpwork}{\begin{tikzpicture}[>=stealth,scale=.8]
+ \draw [thick] (0,0) rectangle (2,2);
+ \draw [thick,->] (0,-.25) -- (5,-.25) node [right] {\scriptsize $\vec d$};
+ \draw [thick,->] (1,1) -- (3,2) node [shift={(5pt,2.5pt)}] {\scriptsize $\vec F$};
+ \draw [thick,gray,->] (1,1) -- (3,1) node [right,black] {\scriptsize $\proj Fd$};
+\end{tikzpicture}}
+
 \begin{align*}
 \norm{\proj Fd}\cdot\vnorm d
  &= \norm{\frac{\dotp Fd}{\dotp dd}\vec d}\cdot \vnorm d \\
@@ -333,17 +439,25 @@ Consider \autoref{fig:dotpwork}, where a force $\vec F$ is being applied to an o
 The expression $\dotp Fd$ will be positive if the angle between $\vec F$ and $\vec d$ is acute; when the angle is obtuse (hence $\dotp Fd$ is negative), the force is causing motion in the opposite direction of $\vec d$, resulting in ``negative work.'' We want to capture this sign, so we drop the absolute value and find that $W = \dotp Fd$.
 
 \definition{def:work}{Work}
-{Let $\vec F$ be a constant force that moves an object in a straight line from point $P$ to point $Q$. Let $\vec d = \vv{PQ}$. The \textbf{work} $W$ done by $\vec F$ along $\vec d$ is $W = \dotp Fd$.
-\index{work}
-}
+{Let $\vec F$ be a constant force that moves an object in a straight line from point $P$ to point $Q$. Let $\vec d = \vv{PQ}$. The \textbf{work} $W$ done by $\vec F$ along $\vec d$ is $W = \dotp Fd$.\index{work}}
 
-\mfigure{0in}{Computing work when sliding a box up a ramp in \autoref{ex_dotp7}.}{fig:dotp7}{figures/figdotp7}
+\mtable{Computing work when sliding a box up a ramp in \autoref{ex_dotp7}.}{fig:dotp7}{\begin{tikzpicture}[>=stealth,scale=.3]
+ \draw [thick] (0,0) -- node [below,pos=.5] {\scriptsize 15} (15,0)
+  -- node [right, pos=.5] {\scriptsize 3} (15,3) -- cycle;
+ \draw [thick] (5,1) -- (4.55,3.25) -- (6.8,3.7) -- (7.25,1.45);
+ \begin{scope}[,shift={(5.9,2.35)}]
+  \draw [thick,rotate=30,->] (0,0) -- (5,0) node [right] {\scriptsize $\vec F$};
+  \draw [thick,dashed] (-2,0) -- (4,0);
+  \draw (2,0) arc (0:30:2);
+  \draw [rotate=15] (3,0) node {\scriptsize $30^\circ$};
+ \end{scope}
+\end{tikzpicture}}
 
-\example{ex_dotp7}{Computing work}{A man slides a box along a ramp that rises 3ft over a distance of 15ft by applying 50lb of force as shown in \autoref{fig:dotp7}. Compute the work done.}
+\example{ex_dotp7}{Computing work}{A man slides a box along a ramp that rises 3 ft over a distance of 15 ft by applying 50 lb of force as shown in \autoref{fig:dotp7}. Compute the work done.}
 {The figure indicates that the force applied makes a $30^\circ$ angle with the horizontal, so $\vec F = 50\bracket{\cos 30^\circ,\sin 30^\circ}\bracket{25\sqrt3,25}%\approx\bracket{43.3,25}
 $. The ramp is represented by $\vec d  =\bracket{15,3}$. The work done is simply
 \[\dotp Fd = \bracket{25\sqrt3,25}\cdot\bracket{15,3}=375\sqrt3+75%\approx 724.5
-\text{ft--lb}.\]
+\text{ ft--lb}.\]
 
 Note how we did not actually compute the distance the object traveled, nor the magnitude of the force in the direction of travel; this is all inherently computed by the dot product!}
 

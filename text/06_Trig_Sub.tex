@@ -3,7 +3,11 @@
 %\subsection*{Substitution and Inverse Trigonometric Functions}
 %
 %%In \autoref{sec:deriv_inverse_function} 
-%When studying derivatives of inverse functions, we learned that $$\frac{d}{dx}\big(\tan^{-1}x\big) = \frac{1}{1+x^2}.$$ Applying the Chain Rule to this is not difficult; for instance, $$\frac{d}{dx}\big(\tan^{-1}5x\big) = \frac{5}{1+25x^2}.$$ We now explore how Substitution can be used to ``undo'' certain derivatives that are the result of the Chain Rule applied to Inverse Trigonometric functions. We begin with an example.\\
+%When studying derivatives of inverse functions, we learned that
+%\[\frac{d}{dx}\big(\tan^{-1}x\big) = \frac{1}{1+x^2}.\]
+%Applying the Chain Rule to this is not difficult; for instance,
+%\[\frac{d}{dx}\big(\tan^{-1}5x\big) = \frac{5}{1+25x^2}.\]
+%We now explore how Substitution can be used to ``undo'' certain derivatives that are the result of the Chain Rule applied to Inverse Trigonometric functions. We begin with an example.
 %
 %\example{ex_subst14}{Integrating by substitution: inverse trigonometric functions}{Evaluate $\ds \int \frac{1}{25+x^2}\ dx$.}
 %{The integrand looks similar to the derivative of the arctangent function. Note:
@@ -12,7 +16,9 @@
 %							&= \frac{1}{25(1+\left(\frac{x}{5}\right)^2)} \\
 %							&= \frac{1}{25}\frac{1}{1+\left(\frac{x}{5}\right)^2}\ .
 %\end{align*}
-%Thus $$\int\frac{1}{25+x^2}\ dx = \frac{1}{25}\int \frac{1}{1+\left(\frac{x}{5}\right)^2}\ dx.$$ This can be integrated using Substitution. Set $u = x/5$, hence $du = dx/5$ or $dx=5du$. Thus
+%Thus
+%\[\int\frac{1}{25+x^2}\ dx = \frac{1}{25}\int \frac{1}{1+\left(\frac{x}{5}\right)^2}\ dx.\]
+%This can be integrated using Substitution. Set $u = x/5$, hence $du = dx/5$ or $dx=5du$. Thus
 %\begin{align*}
 %	\int\frac{1}{25+x^2}\ dx
 %	&= \frac{1}{25}\int \frac{1}{1+\left(\frac{x}{5}\right)^2}\ dx \\
@@ -28,7 +34,7 @@
 %Let's practice using \autoref{thm:int_inverse_trig}.\bigskip
 %
 %\example{ex_subst15}{Integrating by substitution: inverse trigonometric functions}{Evaluate the given indefinite integrals.
-%$$\int \frac{1}{9+x^2}\ dx,\quad \int \frac{1}{x\sqrt{x^2-\frac{1}{100}}}\ dx\quad \text{ and }\quad  \int \frac{1}{\sqrt{5-x^2}}\ dx.$$}
+%\[\int \frac{1}{9+x^2}\ dx,\quad \int \frac{1}{x\sqrt{x^2-\frac{1}{100}}}\ dx\quad \text{ and }\quad  \int \frac{1}{\sqrt{5-x^2}}\ dx.\]}
 %{Each can be answered using a straightforward application of \autoref{thm:int_inverse_trig}.
 %\begin{gather*}
 %\int \frac{1}{9+x^2}\ dx = \frac13\tan^{-1} \frac x3 + C,\text{ as }a=3.
@@ -152,7 +158,7 @@ While the integration steps are over, we are not yet done. The original problem 
 	\draw (.75,.25) node {$\theta$};
 \end{tikzpicture}}
 The lengths of the sides of the reference triangle in \autoref{fig:tan_tri} are determined by the Pythagorean Theorem. With $x=\sqrt{5}\tan\theta$, we have 
-$$\tan \theta = \frac x{\sqrt{5}}\quad \text{and}\quad \sec\theta = \frac{\sqrt{x^2+5}}{\sqrt{5}}.$$
+\[\tan \theta = \frac x{\sqrt{5}}\quad \text{and}\quad \sec\theta = \frac{\sqrt{x^2+5}}{\sqrt{5}}.\]
 This gives
 \begin{align*}
 	\int\frac1{\sqrt{5+x^2}}\ dx
@@ -177,26 +183,30 @@ where the $\ln\big(1/\sqrt5\big)$ term is absorbed into the constant $C$. (In \a
 So we have $a=1/2$, and following \autoref{idea:trigsub}(c), we set $x= \frac12\sec\theta$, and hence $dx = \frac12\sec\theta\tan\theta\ d\theta$. %The Key Idea also shows that $\sqrt{x^2-1/2^2} = \frac12\tan\theta$. 
 We now rewrite the integral with these substitutions:
 \begin{align*}
-\int \sqrt{4x^2-1}\ dx &= \int 2\sqrt{x^2-\left(\frac12\right)^2}\ dx\\
-			&= \int 2\sqrt{\frac14\sec^2\theta - \frac14}\left(\frac12\sec\theta\tan\theta\right)\ d\theta\\
-			&=\int \sqrt{\frac14(\sec^2\theta-1)}\Big(\sec\theta\tan\theta\Big)\ d\theta\\
-			&=\int\sqrt{\frac14\tan^2\theta}\Big(\sec\theta\tan\theta\Big)\ d\theta\\
-			&=\int \frac12\tan^2\theta\sec\theta\ d\theta\\
-			&=\frac12\int \Big(\sec^2\theta-1\Big)\sec\theta\ d\theta\\
-			&=\frac12\int \big(\sec^3\theta - \sec\theta\big)\ d\theta.
+	\int \sqrt{4x^2-1}\ dx &= \int 2\sqrt{x^2-\left(\frac12\right)^2}\ dx\\
+	&= \int 2\sqrt{\frac14\sec^2\theta - \frac14}
+	\left(\frac12\sec\theta\tan\theta\right)\ d\theta\\
+	&=\int \sqrt{\frac14(\sec^2\theta-1)}\Big(\sec\theta\tan\theta\Big)\ d\theta\\
+	&=\int\sqrt{\frac14\tan^2\theta}\Big(\sec\theta\tan\theta\Big)\ d\theta\\
+	&=\int \frac12\tan^2\theta\sec\theta\ d\theta\\
+	&=\frac12\int \Big(\sec^2\theta-1\Big)\sec\theta\ d\theta\\
+	&=\frac12\int \big(\sec^3\theta - \sec\theta\big)\ d\theta.
 \end{align*}
 We integrated $\sec^3\theta$ in \autoref{ex_trigint6}, finding its antiderivatives to be
-$$\int \sec^3\theta\ d\theta = \frac12\Big(\sec \theta\tan \theta + \ln|\sec \theta+\tan \theta|\Big)+C.$$
-Thus\\
-\flushinnerequ{%
+\[
+\int\sec^3\theta\ d\theta
+=\frac12\Big(\sec\theta\tan\theta+\ln\abs{\sec\theta+\tan\theta}\Big)+C.
+\]
+Thus
 \begin{align*}
-\int \sqrt{4x^2-1}&\ dx\\
-	&=\frac12\int \big(\sec^3\theta - \sec\theta\big)\ d\theta\\
-	&= \frac12\left(\frac12\Big(\sec \theta\tan \theta + \ln|\sec \theta+\tan \theta|\Big) -\ln|\sec \theta + \tan\theta|\right) + C\\
+\int &\sqrt{4x^2-1}\ dx\\
+	&=\frac12\int \big(\sec^3\theta-\sec\theta\big)\ d\theta\\
+	&= \frac12\left(\frac12\Big(\sec\theta\tan\theta
+	+\ln\abs{\sec\theta+\tan \theta}\Big)-\ln\abs{\sec\theta+\tan\theta}\right) + C\\
 	%\end{align*}
 	%\begin{align*}
-	&= \frac14\left(\sec\theta\tan\theta -\ln|\sec\theta+\tan\theta|\right)+C.
-\end{align*}}\\
+	&= \frac14\left(\sec\theta\tan\theta -\ln\abs{\sec\theta+\tan\theta}\right)+C.
+\end{align*}
 We are not yet done. Our original integral is given in terms of $x$, whereas our final answer, as given, is in terms of $\theta$. We need to rewrite our answer in terms of $x$. With $a=1/2$, and $x=\frac12\sec\theta$, we use the Pythagorean Theorem to determine the lengths of the sides of the reference triangle in \autoref{fig:sec_tri}.
 \mtable[-\baselineskip]{A reference triangle for \autoref{ex_trigsub2}}{fig:sec_tri}{\begin{tikzpicture}
 	\draw [very thick] (0,0) -- node[below,pos=.5] {$1/2$} (3,0)
@@ -205,7 +215,7 @@ We are not yet done. Our original integral is given in terms of $x$, whereas our
     \draw [thick] (2.7,0) -- (2.7,.3) -- (3,.3);
 	\draw (.75,.25) node {$\theta$};
 \end{tikzpicture}}
-$$\tan \theta = \frac{\sqrt{x^2-\frac14}}{\frac12} = 2\sqrt{x^2-\frac14}\qquad \text{and}\qquad\sec\theta = 2x.$$
+\[\tan \theta = \frac{\sqrt{x^2-\frac14}}{\frac12} = 2\sqrt{x^2-\frac14}\qquad \text{and}\qquad\sec\theta = 2x.\]
 Therefore,
 \begin{align*}
 	\int \sqrt{4x^2-1}\ dx
@@ -230,7 +240,7 @@ Therefore,
 	\draw (.75,.25) node {$\theta$};
 \end{tikzpicture}}
 We need to rewrite our answer in terms of $x$. Using the Pythagorean Theorem we determine the lengths of the sides of the reference triangle in \autoref{fig:sin_tri}. We have $\cot\theta = \sqrt{4-x^2}/x$ and $\theta = \sin^{-1}(x/2)$. Thus
-$$\int \frac{\sqrt{4-x^2}}{x^2}\ dx = -\frac{\sqrt{4-x^2}}x-\sin^{-1}\left(\frac x2\right) + C.\eoehere$$}
+\[\int \frac{\sqrt{4-x^2}}{x^2}\ dx = -\frac{\sqrt{4-x^2}}x-\sin^{-1}\left(\frac x2\right) + C.\eoehere\]}
 
 Trigonometric Substitution can be applied in many situations, even those not of the form $\sqrt{a^2-x^2}$, $\sqrt{x^2-a^2}$ or $\sqrt{x^2+a^2}$. In the following example, we apply it to an integral we already know how to handle.
 
@@ -268,7 +278,7 @@ They are often needed for writing your final answer in terms of $x$.}
 	&= \frac12\theta + \frac14\sin(2\theta) + C.\label{eq:extrigsub7}
 \end{align}
 We need to return to the variable $x$. As $u=\tan\theta$, $\theta = \tan^{-1}u$. Using the identity $\sin(2\theta) = 2\sin\theta\cos\theta$ and using the reference triangle found in \autoref{idea:trigsub}(b), we have 
-$$\frac14\sin(2\theta) = \frac12\frac u{\sqrt{u^2+1}}\cdot\frac 1{\sqrt{u^2+1}} = \frac12\frac u{u^2+1}.$$
+\[\frac14\sin(2\theta) = \frac12\frac u{\sqrt{u^2+1}}\cdot\frac 1{\sqrt{u^2+1}} = \frac12\frac u{u^2+1}.\]
 Finally, we return to $x$ with the substitution $u=x+3$. We start with the expression in \autoeqref{eq:extrigsub7}:
 \begin{align*}
 	\frac12\theta + \frac14\sin(2\theta) + C
@@ -293,7 +303,7 @@ Thus we have
 		&= 25\int_0^{\pi/4} \tan^2\theta\sec\theta\ d\theta.
 \end{align*}
 We encountered this indefinite integral in \autoref{ex_trigsub2} where we found 
-$$\int \tan^2\theta\sec\theta \ d\theta = \frac12\big(\sec\theta\tan\theta-\ln|\sec\theta+\tan\theta|\big).$$
+\[\int \tan^2\theta\sec\theta \ d\theta = \frac12\big(\sec\theta\tan\theta-\ln\abs{\sec\theta+\tan\theta}\big).\]
 So
 \begin{align*}
 	25\int_0^{\pi/4} \tan^2\theta\sec\theta\ d\theta
@@ -310,7 +320,7 @@ So
 %{\begin{enumerate}
 %	\item	$\sin(2\theta) = 2\sin\theta\cos\theta$
 %	\item	$\cos(2\theta) = \cos^2\theta - \sin^2\theta = 2\cos^2\theta-1 = 1-2\sin^2\theta$
-%	\item $\ds \int \sec^3\theta\ d\theta = \frac12\Big(\sec \theta\tan \theta + \ln\big|\sec \theta+\tan \theta\big|\Big)+C$
+%	\item $\ds \int \sec^3\theta\ d\theta = \frac12\Big(\sec \theta\tan \theta + \ln\abs{\sec \theta+\tan \theta}\Big)+C$
 %	\item	$\ds \int \cos^2\theta\ d\theta = \int \frac12\big(1+\cos(2\theta)\big)\ d\theta = \frac12\big(\theta+\sin\theta\cos\theta\big)+C.$
 %\end{enumerate}}
 

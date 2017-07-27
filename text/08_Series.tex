@@ -2,14 +2,16 @@
 
 Given the sequence $\{a_n\} = \{1/2^n\} = 1/2,\ 1/4,\ 1/8,\ \ldots$, consider the following sums:
 
-$$\begin{array}{ccccc}
+\[
+\begin{array}{ccccc}
 a_1				&=& 1/2					&=& 1/2\\
 a_1+a_2			&=& 1/2+1/4				&=& 3/4\\
 a_1+a_2+a_3		&=& 1/2+1/4+1/8			&=& 7/8\\
 a_1+a_2+a_3+a_4	&=& 1/2+1/4+1/8+1/16		&=& 15/16
-\end{array}$$
+\end{array}
+\]
 Later, we will be able to show that
-$$a_1+a_2+a_3+\dotsb+a_n = \frac{2^n-1}{2^n} = 1-\frac{1}{2^n}.$$
+\[a_1+a_2+a_3+\dotsb+a_n = \frac{2^n-1}{2^n} = 1-\frac{1}{2^n}.\]
 Let $S_n$ be the sum of the first $n$ terms of the sequence $\{1/2^n\}$. From the above, we see that $S_1=1/2$, $S_2 = 3/4$, and that $S_n = 1-1/2^n$. 
 
 Now consider the following limit: $\ds \lim_{n\to\infty}S_n = \lim_{n\to\infty}\big(1-1/2^n\big) = 1$. This limit can be interpreted as saying something amazing: \emph{the sum of \emph{all} the terms of the sequence $\{1/2^n\}$ is 1.} 
@@ -43,7 +45,22 @@ We will explore a variety of series in this section. We start with two series th
 \end{enumerate}}
 {\begin{enumerate}
 \item	Consider $S_n$, the $n^\text{th}$ partial sum.
-\mfigure{0in}{Scatter plots relating to the series of \autoref{ex_series1} part 1.}{fig:series1a}{figures/figseries1a}
+%
+\mtable{Scatter plots relating to the series of \autoref{ex_series1} part 1.}{fig:series1a}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,
+xmin=-1,xmax=11,ymin=-10]%ymax=2.1,%
+\addplot [only marks,draw={\colorone},mark size={1.5pt},domain=1:10,samples=10] {x^2};
+\addplot [only marks,draw={\colortwo},mark size={1.5pt},domain=1:10,samples=10] {x*(x+1)*(2*x+1)/6};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $n$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\node[shift={(0,-25pt)},draw] at (myplot.south) {\begin{tikzpicture} 
+  \fill [\colorone] (0,0) circle (1.5pt) node [right,black] {\scriptsize $a_n$};
+  \fill [\colortwo] (1,0) circle (1.5pt) node [right, black] {\scriptsize $S_n$};
+ \end{tikzpicture}};
+\end{tikzpicture}}
+%
 \begin{align*}
 	S_n &= a_1+a_2+a_3+\dotsb+a_n \\		
 	&= 1^2+2^2+3^2\dotsb+ n^2 \\
@@ -60,13 +77,29 @@ S_2 &= 0\\
 S_3 &= 1\\
 S_4 &= 0
 \end{align*}
-\mfigure{0in}{Scatter plots relating to the series of \autoref{ex_series1} part 2.}{fig:series1b}{figures/figseries1b}
 This pattern repeats; we find that
 $S_n = \begin{cases}
 1  & n\ \text{ is odd}\\
 0  & n\ \text{ is even}
 \end{cases}$.
 As $\{S_n\}$ oscillates, repeating 1, 0, 1, 0, $\ldots$, we conclude that $\ds\lim_{n\to\infty}S_n$ does not exist, hence $\ds\sum_{n=1}^\infty (-1)^{n+1}$ diverges.		
+
+\mtable{Scatter plots relating to the series of \autoref{ex_series1} part 2.}{fig:series1b}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,
+ymin=-1.1,ymax=1.1,xmin=-1,xmax=11]
+\addplot [only marks,draw={\colorone},mark size={2.5pt},domain=1:10,samples=10]
+ {-(-1)^x};
+\addplot [only marks,draw={\colortwo},mark size={1.5pt},domain=1:10,samples=10]
+ {(1-(-1)^x)/2};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $n$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\node[shift={(0,-15pt)},draw] at (myplot.south) {\begin{tikzpicture} 
+\fill [\colorone] (0,0) circle (1.5pt) node [right,black] {\scriptsize $b_n$};
+\fill [\colortwo] (1,0) circle (1.5pt) node [right, black] {\scriptsize $S_n$};
+\end{tikzpicture}};
+\end{tikzpicture}}
 
 A scatter plot of the sequence $\{b_n\}$ and the partial sums $\{S_n\}$ is given in \autoref{fig:series1b}. When $n$ is odd, $b_n = S_n$ so the marks for $b_n$ are drawn oversized to show they coincide.\eoehere
 \end{enumerate}}
@@ -79,7 +112,7 @@ One important type of series is a \emph{geometric series}.
 
 \definition{def:geom_series}{Geometric Series}
 {A \textbf{geometric series} is a series of the form 
-$$\sum_{n=0}^\infty ar^n = a+ar+ar^2+ar^3+\dotsb+ar^n+\dotsb$$
+\[\sum_{n=0}^\infty ar^n = a+ar+ar^2+ar^3+\dotsb+ar^n+\dotsb\]
 Note that the index starts at $n=0$, if the index starts at $n=1$ we have $\ds \sum_{n=1}^\infty ar^{n-1}$.%
 \index{series!geometric}\index{geometric series}
 }
@@ -96,32 +129,81 @@ We started this section with a geometric series, although we dropped the first t
 \end{enumerate}}
 
 \begin{proof}
-If $r=1$, then $S_n=a+a+a+\dotsb+a=na$. Since $\lim_{n\to \infty} S_n=\pm \infty$, the geometric series diverges.\\
+If $r=1$, then $S_n=a+a+a+\dotsb+a=na$. Since $\ds\lim_{n\to \infty} S_n=\pm \infty$, the geometric series diverges.\\
 If $r\neq 1$, we have
-$$S_n=a+ar+ar^2+\dotsb+ar^{n-1}.$$
+\[S_n=a+ar+ar^2+\dotsb+ar^{n-1}.\]
 Multiply each term by $r$ and we have 
-$$rS_n=ar+ar^2+ar^3\dotsb+ar^n.$$
+\[rS_n=ar+ar^2+ar^3\dotsb+ar^n.\]
 Subtract these two equations and solve for $S_n$.
 \begin{align*}
 S_n-rS_n &=a-ar^n \\
 S_n &=\frac{a(1-r^n)}{1-r}\\
 \end{align*}
 From \autoref{thm:geom_seq}, we know that if $-1<r<1$, then $\ds \lim_{n\to \infty} r^n=0$ so
-$$\lim_{n\to \infty} S_n=\lim_{n\to \infty}=\frac{a(1-r^n)}{1-r}=\frac{a}{1-r}- \frac{a}{1-r}\lim_{n\to \infty}r^n=\frac{a}{1-r}.$$
-So when $|r|<1$ the geometric series converges and its sum is $\ds \frac{a}{1-r}$.
+\[
+\lim_{n\to \infty} S_n=\lim_{n\to \infty}=\frac{a(1-r^n)}{1-r}
+=\frac{a}{1-r}- \frac{a}{1-r}\lim_{n\to \infty}r^n=\frac{a}{1-r}.
+\]
+So when $\abs r<1$ the geometric series converges and its sum is $\ds \frac{a}{1-r}$.
 
 If either $r\leq -1$ or $r>1$, the sequence $\{r^n\}$ is divergent by \autoref{thm:geom_seq}. Thus $\ds \lim_{n\to \infty} S_n$ does not exist, so the geometric series diverges if $r\leq -1$ or $r>1$.
 \end{proof}
 
 According to \autoref{thm:geom_series}, the series 
-$$\ds\sum_{n=0}^\infty \frac{1}{2^n} =\sum_{n=0}^\infty \left(\frac 12\right)^2= 1+\frac12+\frac14+\dotsb$$ converges as $r=1/2$, and $\ds \sum_{n=0}^\infty \frac{1}{2^n} = \frac{1}{1-1/2} = 2.$ This concurs with our introductory example; while there we got a sum of 1, we skipped the first term of 1.\\
+\[
+\ds\sum_{n=0}^\infty \frac{1}{2^n}
+=\sum_{n=0}^\infty \left(\frac 12\right)^2= 1+\frac12+\frac14+\dotsb
+\]
+converges as $r=1/2$, and $\ds \sum_{n=0}^\infty \frac{1}{2^n} = \frac{1}{1-1/2} = 2.$ This concurs with our introductory example; while there we got a sum of 1, we skipped the first term of 1.\\
 
 \mtable{Scatter plots relating to the series in \autoref{ex_series2}.}{fig:series2}{%
-\myincludegraphics{figures/figseries2a}
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={2,4,6,8,10},
+ymin=-.5,ymax=2.5,xmin=-1,xmax=11]
+\addplot [only marks,draw={\colorone},mark size={1.5pt},domain=2:10,samples=9] {(.75)^x};
+\addplot [only marks,draw={\colortwo},mark size={1.5pt},domain=2:10,samples=9]
+ {2.25-3*(.75)^x};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $n$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\node[shift={(0,-10pt)},draw] at (myplot.south) {\begin{tikzpicture} 
+ \fill [\colorone] (0,0) circle (1.5pt) node [right,black] {\scriptsize $a_n$};
+ \fill [\colortwo] (1,0) circle (1.5pt) node [right, black] {\scriptsize $S_n$};
+\end{tikzpicture}};
+\end{tikzpicture}
 \smallskip\\(a)\bigskip\\
-\myincludegraphics{figures/figseries2b}
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={2,4,6,8,10},
+ymin=-1.1,ymax=1.1,xmin=-1,xmax=11]
+\addplot [only marks,draw={\colorone},mark size={1.5pt},domain=0:10,samples=11]
+ {(-.5)^(x)};
+\addplot [only marks,draw={\colortwo},mark size={1.5pt},domain=0:10,samples=11]
+ {(2+(-.5)^(x))/3};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $n$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\node[shift={(0,15pt)},draw] at (myplot.south) {\begin{tikzpicture} 
+\fill [\colorone] (0,0) circle (1.5pt) node [right,black] {\scriptsize $a_n$};
+\fill [\colortwo] (1,0) circle (1.5pt) node [right, black] {\scriptsize $S_n$};
+\end{tikzpicture}};
+\end{tikzpicture}
 \smallskip\\(b)\bigskip\\
-\myincludegraphics{figures/figseries2c}
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,
+xmin=-1,xmax=7,ymin=-50]%ymax=1.1,%
+\addplot [only marks,draw={\colorone},mark size={1.5pt},domain=0:6,samples=7] {3^(x)};
+\addplot [only marks,draw={\colortwo},mark size={1.5pt},domain=0:6,samples=7] {(3^(x+1)-1)/2};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $n$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\node[shift={(0,-20pt)},draw] at (myplot.south) {\begin{tikzpicture} 
+\fill [\colorone] (0,0) circle (1.5pt) node [right,black] {\scriptsize $a_n$};
+\fill [\colortwo] (1,0) circle (1.5pt) node [right, black] {\scriptsize $S_n$};
+\end{tikzpicture}};
+\end{tikzpicture}
 \smallskip\\(c)}
 
 \example{ex_series2}{Exploring geometric series}{Check the convergence of the following series. If the series converges, find its sum.
@@ -132,15 +214,18 @@ $$\ds\sum_{n=0}^\infty \frac{1}{2^n} =\sum_{n=0}^\infty \left(\frac 12\right)^2=
 \]}
 {\begin{enumerate}
 \item		Since $r=3/4<1$, this series converges. By \autoref{thm:geom_series}, we have that
-$$\sum_{n=0}^\infty \left(\frac34\right)^n = \frac{1}{1-3/4} = 4.$$ However, note the subscript of the summation in the given series: we are to start with $n=2$. Therefore we subtract off the first two terms, giving:
-$$\sum_{n=2}^\infty \left(\frac34\right)^n = 4 - 1 - \frac34 = \frac94.$$
+\[\sum_{n=0}^\infty \left(\frac34\right)^n = \frac{1}{1-3/4} = 4.\]
+However, note the subscript of the summation in the given series: we are to start with $n=2$. Therefore we subtract off the first two terms, giving:
+\[\sum_{n=2}^\infty \left(\frac34\right)^n = 4 - 1 - \frac34 = \frac94.\]
 This is illustrated in \autoref{fig:series2}(a).
 
 \item	Since $\abs r = 1/2 < 1$, this series converges, and by \autoref{thm:geom_series},
-$$\sum_{n=0}^\infty \left(\frac{-1}{2}\right)^n = \frac{1}{1-(-1/2)} = \frac23.$$
+\[\sum_{n=0}^\infty \left(\frac{-1}{2}\right)^n = \frac{1}{1-(-1/2)} = \frac23.\]
 The partial sums of this series are plotted in \autoref{fig:series2}(b). Note how the partial sums are not purely increasing as some of the terms of the sequence $\{(-1/2)^n\}$ are negative.
 
-\item		Since $r>1$, the series diverges. (This makes ``common sense''; we expect the sum $$1+3+9+27 + 81+243+\dotsb$$ to diverge.) This is illustrated in \autoref{fig:series2}(c).\eoehere
+\item		Since $r>1$, the series diverges. (This makes ``common sense''; we expect the sum
+\[1+3+9+27 + 81+243+\dotsb\]
+to diverge.) This is illustrated in \autoref{fig:series2}(c).\eoehere
 \end{enumerate}}
 
 Later sections will provide tests by which we can determine whether or not a given series converges. This, in general, is much easier than determining \emph{what} a given series converges to. There are many cases, though, where the sum can be determined.
@@ -154,7 +239,23 @@ S_2 &=	\left(\frac11-\frac12\right) + \left(\frac12-\frac13\right) & & = 1-\frac
 S_3 &=	\left(\frac11-\frac12\right) + \left(\frac12-\frac13\right)+\left(\frac13-\frac14\right) & &= 1-\frac14\\
 S_4 &=	\left(\frac11-\frac12\right) + \left(\frac12-\frac13\right)+\left(\frac13-\frac14\right) +\left(\frac14-\frac15\right)& &= 1-\frac15
 \end{align*}
-\mfigure{0in}{Scatter plots relating to the series of \autoref{ex_series3}.}{fig:series3}{figures/figseries3}
+%
+\mtable{Scatter plots relating to the series of \autoref{ex_series3}.}{fig:series3}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={2,4,6,8,10},
+ymin=-.1,ymax=1.1,xmin=-1,xmax=11]
+\addplot [only marks,draw={\colorone},mark size={1.5pt},domain=1:10,samples=10]
+ {1/x-1/(x+1)};
+\addplot [only marks,draw={\colortwo},mark size={1.5pt},domain=1:10,samples=10] {1-1/x};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $n$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\node[shift={(0,-15pt)},draw] at (myplot.south) {\begin{tikzpicture} 
+\fill [\colorone] (0,0) circle (1.5pt) node [right,black] {\scriptsize $a_n$};
+\fill [\colortwo] (1,0) circle (1.5pt) node [right, black] {\scriptsize $S_n$};
+\end{tikzpicture}};
+\end{tikzpicture}}%
+%
 Note how most of the terms in each partial sum subtract out. In general, we see that $\ds S_n = 1-\frac{1}{n+1}$. The sequence $\{S_n\}$ converges,  as $\ds \lim_{n\to\infty}S_n = \lim_{n\to\infty}\left(1-\frac1{n+1}\right) = 1$, and so we conclude that $\ds \sum_{n=1}^\infty \left(\frac1n-\frac1{n+1}\right) = 1$. Partial sums of the series are plotted in \autoref{fig:series3}.}
 
 The series in \autoref{ex_series3} is an example of a \sword{telescoping series}. Informally, a telescoping series is one in which the partial sums reduce to just a finite number of terms. The partial sum $S_n$ did not contain $n$ terms, but rather just two: 1 and $1/(n+1)$.\index{series!telescoping}\index{telescoping series}
@@ -171,7 +272,7 @@ When possible, seek a way to write an explicit formula for the $n^\text{th}$ par
 \]}
 {\begin{enumerate}
 \item		We can decompose the fraction $2/(n^2+2n)$ as
-$$\frac2{n^2+2n} = \frac1n-\frac1{n+2}.$$
+\[\frac2{n^2+2n} = \frac1n-\frac1{n+2}.\]
 (See \autoref{sec:partial_fraction}, Partial Fraction Decomposition, to recall how  this is done, if necessary.)
 
 Expressing the terms of $\{S_n\}$ is now more instructive:\\
@@ -186,10 +287,32 @@ S_4 &= \left(1-\frac13\right) + \left(\frac12-\frac14\right) + \left(\frac13-\fr
 S_5 &= \left(1-\frac13\right) + \left(\frac12-\frac14\right) + \left(\frac13-\frac15\right) + \left(\frac14-\frac16\right) + \left(\frac15-\frac17\right)
 &&= 1+\frac12-\frac16-\frac17
 \end{align*}}\\
-\mfigure{0in}{Scatter plots relating to the series of \autoref{ex_series4} part 1.}{fig:series4a}{figures/figseries4a}
+%
+\mtable{Scatter plots relating to the series of \autoref{ex_series4} part 1.}{fig:series4a}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={2,4,6,8,10},
+ymin=-.1,ymax=1.6,xmin=-1,xmax=11]
+\addplot [only marks,draw={\colorone},mark size={1.5pt},domain=1:10,samples=10]
+ {2/(x^2+2*x)};
+\addplot [only marks,draw={\colortwo},mark size={1.5pt},domain=1:10,samples=10]
+ {1.5-1/(x+1)-1/(x+2)};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $n$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\node[shift={(0,-17pt)},draw] at (myplot.south) {\begin{tikzpicture} 
+\fill [\colorone] (0,0) circle (1.5pt) node [right,black] {\scriptsize $a_n$};
+\fill [\colortwo] (1,0) circle (1.5pt) node [right, black] {\scriptsize $S_n$};
+\end{tikzpicture}};
+\end{tikzpicture}}%
+%
 We again have a telescoping series. In each partial sum, most of the terms pair up to add to zero and we obtain the formula $\ds S_n = 1+\frac12-\frac1{n+1}-\frac1{n+2}.$ Taking limits allows us to determine the convergence of the series:\\
 \flushinnerequ{%
-$$\lim_{n\to\infty}S_n = \lim_{n\to\infty} \left(1+\frac12-\frac1{n+1}-\frac1{n+2}\right) = \frac32,\quad \text{so } \sum_{n=1}^\infty \frac1{n^2+2n} = \frac32.$$}
+\[
+\lim_{n\to\infty}S_n
+= \lim_{n\to\infty} \left(1+\frac12-\frac1{n+1}-\frac1{n+2}\right) = \frac32,
+\quad \text{so }
+\sum_{n=1}^\infty \frac1{n^2+2n} = \frac32.
+\]}\\
 This is illustrated in \autoref{fig:series4a}.
 
 \item	We begin by writing the first few partial sums of the series:
@@ -201,17 +324,39 @@ S_4 &= \ln\left(2\right)+\ln\left(\frac32\right)+\ln\left(\frac43\right)
 +\ln\left(\frac54\right) 
 \end{align*}
 At first, this does not seem helpful, but recall the logarithmic identity: $\ln x+\ln y = \ln (xy).$ Applying this to $S_4$ gives:
-$$S_4 = \ln\left(2\right)+\ln\left(\frac32\right)+\ln\left(\frac43\right)
+\[
+S_4 = \ln\left(2\right)+\ln\left(\frac32\right)+\ln\left(\frac43\right)
 +\ln\left(\frac54\right)
 =\ln\left(\frac21\cdot\frac32\cdot\frac43\cdot\frac54\right)
-=\ln\left(5\right).$$
+=\ln\left(5\right).
+\]
 We must generalize this for $S_n$.\\
 \flushinnerequ{%
-$$S_n=\ln\left(2\right)+\ln\left(\frac32\right)+\cdots +\ln \left(\frac{n+1}{n}\right)=\ln\left(\frac21\cdot\frac32 \cdots  \frac{n}{n-1}\cdot \frac{n+1}{n}\right)=\ln ( n+1)$$}
+\[
+S_n=\ln\left(2\right)+\ln\left(\frac32\right)+\cdots +\ln \left(\frac{n+1}{n}\right)
+=\ln\left(\frac21\cdot\frac32 \cdots  \frac{n}{n-1}\cdot \frac{n+1}{n}\right)
+=\ln(n+1)
+\]}
 
 %\clearpage
 
-\mfigure{0in}{Scatter plots relating to the series of \autoref{ex_series4} part 2.}{fig:series4b}{figures/figseries4b}
+\mtable{Scatter plots relating to the series of \autoref{ex_series4} part 2.}{fig:series4b}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,
+ymin=-.5,ymax=5,xmin=-10,xmax=110]
+\addplot [only marks,draw={\colorone},mark size={1.5pt},domain=10:100,samples=10]
+ {ln((x+1)/x)};
+\addplot [only marks,draw={\colortwo},mark size={1.5pt},domain=10:100,samples=10]
+ {ln(x+1)};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $n$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\node[shift={(0,-15pt)},draw] at (myplot.south) {\begin{tikzpicture} 
+\fill [\colorone] (0,0) circle (1.5pt) node [right,black] {\scriptsize $a_n$};
+\fill [\colortwo] (1,0) circle (1.5pt) node [right, black] {\scriptsize $S_n$};
+\end{tikzpicture}};
+\end{tikzpicture}}
+
 We can conclude that $\{S_n\} = \big\{\ln (n+1)\big\}$. This sequence  does not converge, as $\ds \lim_{n\to\infty}S_n=\infty$. Therefore  $\ds\sum_{n=1}^\infty  \ln\left(\frac{n+1}{n}\right)=\infty$; the series diverges. Note in \autoref{fig:series4b} how the sequence of partial sums grows slowly; after 100 terms, it is not yet over 5. Graphically we may be fooled into thinking the series converges, but our analysis above shows that it does not.\eoehere
 \end{enumerate}}
 
@@ -228,7 +373,8 @@ We are learning about a new mathematical object, the series. As done before, we 
 
 Before using this theorem, we will consider the harmonic series $\ds\sum_{n=1}^\infty\frac1n$.
 
-\example{ex_harm_series}{Divergence of the Harmonic Series}{Show that the harmonic series $\ds \sum_{n=1}^\infty\frac1n$ diverges.}{We will use a proof by contradiction here. Suppose the harmonic series converges to $S$. That is $$S=1+\frac12+ \frac13 +\frac14+\frac15+\frac16+\frac17+\frac18+\cdots$$
+\example{ex_harm_series}{Divergence of the Harmonic Series}{Show that the harmonic series $\ds \sum_{n=1}^\infty\frac1n$ diverges.}{We will use a proof by contradiction here. Suppose the harmonic series converges to $S$. That is
+\[S=1+\frac12+ \frac13 +\frac14+\frac15+\frac16+\frac17+\frac18+\cdots\]
 We then have
 \begin{align*}
 S &\geq 1+\frac12+\frac14+\frac14+\frac16+\frac16+\frac18+\frac18+\cdots\\
@@ -267,7 +413,23 @@ This gives us $S\geq \frac12+S$ which can never be true, thus our assumption tha
 %\end{align*}
 %
 %This is illustrated in \autoref{fig:series5}(a).
-%%\mfigure{0in}{Scatter plots relating to the series of \autoref{ex_series5} part 1.}{fig:series5a}{figures/figseries5a}
+%\mtable{Scatter plots relating to the series of \autoref{ex_series5} part 1.}{fig:series5a}{\begin{tikzpicture}
+%\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+%axis y line=middle,axis x line=middle,name=myplot,axis on top,
+%xtick={10,20,30,40,50},ymin=-.3,ymax=.3,xmin=-1,xmax=55]
+%\addplot [only marks,draw={\colorone},mark size={1.5pt},domain=5:50,samples=10]
+% {((-1)^(x+1)*(x^2-x))/(x^3)};
+%\addplot [only marks,draw={\colortwo},mark size={1.5pt},domain=1:10,samples=10]
+% coordinates {(5,-0.05528)(10,-0.1723)(15,-0.09917)(20,-0.1525)(25,-0.1105)
+% (30,-0.1452)(35,-0.1156)(40,-0.1414)(45,-0.1186)(50,-0.139)};
+%\end{axis}
+%\node [right] at (myplot.right of origin) {\scriptsize $n$};
+%\node [above] at (myplot.above origin) {\scriptsize $y$};
+%\node[shift={(0,0pt)},draw] at (myplot.south) {\begin{tikzpicture} 
+%	\fill [\colorone] (0,0) circle (1.5pt) node [right,black] {\scriptsize $a_n$};
+%	\fill [\colortwo] (1,0) circle (1.5pt) node [right, black] {\scriptsize $S_n$};
+%\end{tikzpicture}};
+%\end{tikzpicture}}
 %
 %\item		This looks very similar to the series that involves $e$ in \autoref{idea:famous_series}. Note, however, that the series given in this example starts with $n=1$ and not $n=0$. The first term of the series in the Key Idea is $1/0! = 1$, so we will subtract this from our result below:
 %\begin{align*}
@@ -275,15 +437,51 @@ This gives us $S\geq \frac12+S$ which can never be true, thus our assumption tha
 %							&= 1000\cdot (e-1) \approx  1718.28.
 %\end{align*}
 %This is illustrated in \autoref{fig:series5}(b). The graph shows how this particular series converges very rapidly.
-%%\mfigure{0in}{Scatter plots relating to the series of \autoref{ex_series5} part 2.}{fig:series5b}{figures/figseries5b}
+%\mtable{Scatter plots relating to the series of \autoref{ex_series5} part 2.}{fig:series5b}{\begin{tikzpicture}
+%\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+%axis y line=middle,axis x line=middle,name=myplot,axis on top,
+%ymin=-.3,ymax=2100,xmin=-1,xmax=11]
+%\addplot [only marks,draw={\colorone},mark size={1.5pt},domain=1:10,samples=10]coordinates {(1,1000.)(2,500.)(3,166.7)(4,41.67)(5,8.333)(6,1.389)(7,0.1984)(8,0.0248)(9,0.002756)(10,0.0002756)};
+%\addplot [only marks,draw={\colortwo},mark size={1.5pt},domain=1:10,samples=10]coordinates {(1,1000.)(2,1500.)(3,1667.)(4,1708.)(5,1717.)(6,1718.)(7,1718.)(8,1718.)(9,1718.)(10,1718.)};
+%\end{axis}
+%\node [right] at (myplot.right of origin) {\scriptsize $n$};
+%\node [above] at (myplot.above origin) {\scriptsize $y$};
+%\node[shift={(0,-25pt)},draw] at (myplot.south) {\begin{tikzpicture} 
+%	\fill [\colorone] (0,0) circle (1.5pt) node [right,black] {\scriptsize $a_n$};
+%	\fill [\colortwo] (1,0) circle (1.5pt) node [right, black] {\scriptsize $S_n$};
+%\end{tikzpicture}};
+%\end{tikzpicture}}
 %\mtable{Scatter plots relating to the series in \autoref{ex_series5}.}{fig:series5}{%
-%\begin{tabular}{c}
-%\myincludegraphics{figures/figseries5a}\\[10pt]
-%(a)\\[15pt]
-%\myincludegraphics{figures/figseries5b}\\[10pt]
-%(b)
-%\end{tabular}
-%}
+%\begin{tikzpicture}
+%\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+%axis y line=middle,axis x line=middle,name=myplot,axis on top,
+%xtick={10,20,30,40,50},ymin=-.3,ymax=.3,xmin=-1,xmax=55]
+%\addplot [only marks,draw={\colorone},mark size={1.5pt},domain=5:50,samples=10] {((-1)^(x+1)*(x^2-x))/(x^3)};
+%\addplot [only marks,draw={\colortwo},mark size={1.5pt},domain=1:10,samples=10]coordinates {(5,-0.05528)(10,-0.1723)(15,-0.09917)(20,-0.1525)(25,-0.1105)(30,-0.1452)(35,-0.1156)(40,-0.1414)(45,-0.1186)(50,-0.139)};
+%\end{axis}
+%\node [right] at (myplot.right of origin) {\scriptsize $n$};
+%\node [above] at (myplot.above origin) {\scriptsize $y$};
+%\node[shift={(0,0pt)},draw] at (myplot.south) {\begin{tikzpicture} 
+%	\fill [\colorone] (0,0) circle (1.5pt) node [right,black] {\scriptsize $a_n$};
+%	\fill [\colortwo] (1,0) circle (1.5pt) node [right, black] {\scriptsize $S_n$};
+%\end{tikzpicture}};
+%\end{tikzpicture}
+%\\[10pt](a)\\[15pt]
+%\begin{tikzpicture}
+%\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+%axis y line=middle,axis x line=middle,name=myplot,axis on top,
+%ymin=-.3,ymax=2100,xmin=-1,xmax=11]
+%\addplot [only marks,draw={\colorone},mark size={1.5pt},domain=1:10,samples=10]coordinates {(1,1000.)(2,500.)(3,166.7)(4,41.67)(5,8.333)(6,1.389)(7,0.1984)(8,0.0248)(9,0.002756)(10,0.0002756)};
+%\addplot [only marks,draw={\colortwo},mark size={1.5pt},domain=1:10,samples=10]coordinates {(1,1000.)(2,1500.)(3,1667.)(4,1708.)(5,1717.)(6,1718.)(7,1718.)(8,1718.)(9,1718.)(10,1718.)};
+%\end{axis}
+%\node [right] at (myplot.right of origin) {\scriptsize $n$};
+%\node [above] at (myplot.above origin) {\scriptsize $y$};
+%\node[shift={(0,-25pt)},draw] at (myplot.south) {\begin{tikzpicture} 
+%	\fill [\colorone] (0,0) circle (1.5pt) node [right,black] {\scriptsize $a_n$};
+%	\fill [\colortwo] (1,0) circle (1.5pt) node [right, black] {\scriptsize $S_n$};
+%\end{tikzpicture}};
+%\end{tikzpicture}}
+%\\[10pt](b)}
 %
 %\item		The denominators in each term are perfect squares; we are adding $\ds \sum_{n=4}^\infty \frac{1}{n^2}$ (note  we start with $n=4$, not $n=1$). This series will converge. Using the formula from \autoref{idea:famous_series}, we have the following:
 %\begin{align*}
@@ -335,9 +533,9 @@ The Test for Divergence follows from \autoref{thm:series_conv}. If the series do
 Note that the two statements in Theorems \ref{thm:series_conv} and \ref{thm:series_nth_term} are really the same. In order to converge, the limit of the terms of the sequence must approach 0; if they do not, the series will not converge. 
 
 Looking back, we can apply this theorem to the series in \autoref{ex_series1}. In that example, we had $\{a_n\} = \{n^2\}$ and $\{b_n\} = \{(-1)^{n+1}\}$.
-$$\lim_{n\to\infty} a_n=\lim_{n\to\infty} n^2=\infty$$
+\[\lim_{n\to\infty} a_n=\lim_{n\to\infty} n^2=\infty\]
 and
-$$\lim_{n\to\infty} b_n=\lim_{n\to\infty}(-1)^{n+1}\text{ which does not exist.}$$
+\[\lim_{n\to\infty} b_n=\lim_{n\to\infty}(-1)^{n+1}\text{ which does not exist.}\]
 Thus by the Test for Divergence, both series will diverge.
 
 \textbf{Important!} This theorem \emph{does not state} that if $\ds \lim_{n\to\infty} a_n = 0$ then $\ds \sum_{n=1}^\infty  a_n $ converges. The standard example of this is the Harmonic Series, as given in \autoref{ex_harm_series}. The Harmonic Sequence, $\{1/n\}$, converges to 0; the Harmonic Series, $\ds \sum_{n=1}^\infty 1/n$, diverges.

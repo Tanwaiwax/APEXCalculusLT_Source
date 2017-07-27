@@ -63,7 +63,24 @@ $-1$ & 1 & 0 \\
 1 & 1 & 2 \\
 2 & 4 & 3
 \end{tabular}\\(a)\\
-\myincludegraphics{figures/figpareq1}\\(b)}
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-2.2,ymax=4.2,xmin=-.9,xmax=5.2]
+\addplot [thick,draw={\colorone}, smooth,domain=-2:2,] ({x^2},{x+1});
+\draw [->,>=latex] (axis cs:3.9204,2.98) -- (axis cs:3.96,2.99);
+\draw [->,>=latex] (axis cs:2.25,-.5) -- (axis cs:2.22,-.49);
+\filldraw (axis cs:4,-1) circle (1.5pt) node [below] {\scriptsize $t=-2$};
+\filldraw (axis cs:1,0) circle (1.5pt) node [shift={(0pt,-10pt)}]
+ {\scriptsize $t=-1$};
+\filldraw (axis cs:0,1) circle (1.5pt) node [left] {\scriptsize $t=0$};
+\filldraw (axis cs:1,2) circle (1.5pt) node [above] {\scriptsize $t=1$};
+\filldraw (axis cs:4,3) circle (1.5pt) node [above ] {\scriptsize $t=2$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(b)}
 \example{ex_pareq1}{Plotting parametric functions}{Plot the graph of the parametric equations $x=t^2$, $y=t+1$ for $t$ in $[-2,2]$.}
 {We plot the graphs of parametric equations in much the same manner as we plotted graphs of functions like $y=f(x)$: we make a table of values, plot points, then connect these points with a ``reasonable'' looking curve. \autoref{fig:pareq1}(a) shows such a table of values; note how we have 3 columns.
 
@@ -81,7 +98,25 @@ $3\pi/4$ & $1/2$ & $1-\sqrt{2}/2$ \\
 $\pi$ & 1 & 0
 \end{tabular}
 \\(a)\\
-\myincludegraphics{figures/figpareq2}\\(b)}
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-.1,ymax=2.1,xmin=-.1,xmax=1.6]
+\addplot [thick,draw={\colorone}, smooth,domain=0:180,] ({(cos(x))^2},{cos(x)+1});
+\draw [->,>=latex] (axis cs:0.998271, 0.00086485) -- (axis cs:0.999534, 0.000233112);
+\draw [->,>=latex] (axis cs:0.770151, 1.87758) -- (axis cs:0.75311, 1.86782);
+\filldraw (axis cs:1,2) circle (1.5pt) node [right] {\scriptsize $t=0$};
+\filldraw (axis cs:.5,1.71) circle (1.5pt) node [below right]
+ {\scriptsize $t=\pi/4$};
+\filldraw (axis cs:0,1) circle (1.5pt) node [right] {\scriptsize $t=\pi/2$};
+\filldraw (axis cs:.5,.292) circle (1.5pt) node [above right]
+ {\scriptsize $t=3\pi/4$};
+\filldraw (axis cs:1,0) circle (1.5pt) node [above right] {\scriptsize $t=\pi$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(b)}
 \example{ex_pareq2}{Plotting parametric functions}{Sketch the graph of the parametric equations $x=\cos^2t$, $y=\cos t+1$ for $t$ in $[0,\pi]$.}
 {We again start by making a table of values in \autoref{fig:pareq2}(a), then plot the points $(x,y)$ on the Cartesian plane in \autoref{fig:pareq2}(b).
 
@@ -92,7 +127,7 @@ The curves in Examples \ref{ex_pareq1} and \ref{ex_pareq2} are portions of the s
 It is sometimes useful to transform rectangular form equations (i.e., $y=f(x)$) into parametric form equations, and vice--versa. Converting from rectangular to parametric can be very simple: given $y=f(x)$, the parametric equations $x=t$, $y=f(t)$ produce the same graph. As an example, given $y=x^2-x-6$, the parametric equations $x=t, y=t^2-t-6$ produce the same parabola. However, other parameterizations can be used. The following example demonstrates one possible alternative.
 
 \mtable{The equation $f(x)=x^2-x-6$ with different parameterizations.}{fig_parab_param}{\begin{tikzpicture}
- \begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+ \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
    axis y line=middle,axis x line=middle,name=myplot,
    ymin=-7.2,ymax=5.5,xmin=-3.75,xmax=4.5]
   \addplot [thick,draw={\colorone}, smooth,domain=-1.5:4.5,] ({x-1},{x^2-3*x-4});
@@ -108,7 +143,7 @@ It is sometimes useful to transform rectangular form equations (i.e., $y=f(x)$) 
 \end{tikzpicture}
 \\(a)\\
 \begin{tikzpicture}
- \begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+ \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
    axis y line=middle,axis x line=middle,name=myplot,
    ymin=-7.2,ymax=5.5,xmin=-3.75,xmax=4.5]
   \addplot [thick,draw={\colorone}, smooth,domain=-.5:5.5,] ({3-x},{x^2-5*x});
@@ -124,7 +159,7 @@ It is sometimes useful to transform rectangular form equations (i.e., $y=f(x)$) 
 \end{tikzpicture}
 \\(b)\\
 \begin{tikzpicture}
- \begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+ \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
    axis y line=middle,axis x line=middle,name=myplot,
    ymin=-7.2,ymax=5.5,xmin=-3.75,xmax=4.5]
   \addplot [thick,draw={\colorone}, smooth,domain=-5.75:5.75,] ({(x+1)/2},{.25*x^2-6.25});
@@ -171,12 +206,26 @@ As we have shown in the previous examples, there are many different ways to para
 \example{ex_pareq6}{Converting from rectangular to parametric}{An object is fired from a height of 0ft and lands 6 seconds later, 192ft away. Assuming ideal projectile motion, the height, in feet, of the object can be described by $h(x) = -x^2/64+3x$, where $x$ is the distance in feet from the initial location. (Thus $h(0) = h(192) = 0$ft.) Find parametric equations $x=f(t)$, $y=g(t)$ for the path of the projectile where $x$ is the horizontal distance the object has traveled at time $t$ (in seconds) and $y$ is the height at time $t$.}
 {Physics tells us that the horizontal motion of the projectile is linear; that is, the horizontal speed of the projectile is constant. Since the object travels 192ft in 6s, we deduce that the object is moving horizontally at a rate of 32ft/s, giving the equation $x=32t$. As $y=-x^2/64+3x$, we find $y= -16t^2+96t$. We can quickly verify that $y\primeskip''=-32$ft/s$^2$, the acceleration due to gravity, and that the projectile reaches its maximum at $t=3$, halfway along its path.
 
-\mfigure{0in}{Graphing projectile motion in \autoref{ex_pareq6}.}{fig:pareq6}{figures/figpareq6}
+\mtable{Graphing projectile motion in \autoref{ex_pareq6}.}{fig:pareq6}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=0,ymax=160,xmin=0,xmax=210]
+\addplot [thick, draw={\colorone},smooth,domain=0:6] ({32*x},{-16*x^2+96*x});
+\draw [->,>=latex] (axis cs:32,80) -- (axis cs:35.2, 86.24);
+\filldraw (axis cs:64, 128) circle (1.5pt) node [above left] {\scriptsize $t=2$};
+\draw (axis cs: 100,50) node [align=left]
+ {\scriptsize $x=32t$\\ \scriptsize $y=-16t^2+96t$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
+
 These parametric equations make certain determinations about the object's location easy: 2 seconds into the flight the object is at the point $\big(x(2),y(2)\big) = \big(64,128\big)$. That is, it has traveled horizontally 64ft and is at a height of 128ft, as shown in \autoref{fig:pareq6}.}
 
 It is  sometimes necessary to convert given parametric equations into rectangular form. This can be decidedly more difficult, as some ``simple'' looking parametric equations can have very ``complicated'' rectangular equations. This conversion is often referred to as ``eliminating the parameter,'' as we are looking for a relationship between $x$ and $y$ that does not involve the parameter $t$.
 
-\example{ex_pareq7}{Eliminating the parameter}{Find a rectangular equation for the curve described by $$ x= \frac{1}{t^2+1}\quad \text{and}\quad y=\frac{t^2}{t^2+1}.$$ }
+\example{ex_pareq7}{Eliminating the parameter}{Find a rectangular equation for the curve described by
+\[x= \frac{1}{t^2+1}\quad \text{and}\quad y=\frac{t^2}{t^2+1}.\]}
 {There is not a set way to eliminate a parameter. One method is to solve for $t$ in one equation and then substitute that value in the second. We use that technique here, then show a second, simpler method.
 
 Starting with $x= 1/(t^2+1)$, solve for $t$: $ t = \pm\sqrt{1/x-1}$. Substitute this value for $t$ in the equation for $y$:
@@ -188,9 +237,25 @@ Starting with $x= 1/(t^2+1)$, solve for $t$: $ t = \pm\sqrt{1/x-1}$. Substitute 
 		&= 1-x.
 \end{align*}
 
-\mfigure{0in}{Graphing parametric and rectangular equations for a graph in \autoref{ex_pareq7}.}{fig:pareq7}{figures/figpareq7}
+\mtable{Graphing parametric and rectangular equations for a graph in \autoref{ex_pareq7}.}{fig:pareq7}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-1.1,ymax=2.1,xmin=-2.1,xmax=2.1,axis equal]
+\addplot [ draw={\colorone},smooth,domain=-2:2] {1-x};
+\addplot [draw={\colorone},ultra thick, smooth,domain=0:1] {1-x};
+\draw [fill=white] (axis cs:0,1) circle (1.5pt);
+\filldraw [fill=black] (axis cs:1,0) circle (1.5pt)
+ node [align=left,shift={(5pt,30pt)}]
+ {\scriptsize $x=\dfrac{1}{t^2+1}$\\[2pt] \scriptsize $y=\dfrac{t^2}{t^2+1}$};
+\draw (axis cs: -1,1.4) node {\scriptsize $y=1-x$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
+
 Thus $y=1-x$. One may have recognized this earlier by manipulating the equation for $y$:
-$$y = \frac{t^2}{t^2+1} = 1-\frac{1}{t^2+1} = 1-x.$$ This is a shortcut that is very specific to this problem; sometimes shortcuts exist and are worth looking for.
+\[y = \frac{t^2}{t^2+1} = 1-\frac{1}{t^2+1} = 1-x.\]
+This is a shortcut that is very specific to this problem; sometimes shortcuts exist and are worth looking for.
 
 We should be careful to limit the domain of the function $y=1-x$. The parametric equations limit $x$ to values in $(0,1]$, thus to produce the same graph we should limit the domain of $y=1-x$ to the same. 
 
@@ -198,7 +263,7 @@ The graphs of these functions are given in \autoref{fig:pareq7}. The portion of 
 
 \example{ex_pareq8}{Eliminating the parameter}{Eliminate the parameter in $x=4\cos t+3$, $y= 2\sin t+1$}
 {We should not try to solve for $t$ in this situation as the resulting algebra/trig would be messy. Rather, we solve for $\cos t$ and $\sin t$ in each equation, respectively. This gives
-$$\cos t = \frac{x-3}{4} \quad \text{and}\quad \sin t=\frac{y-1}{2}.$$
+\[\cos t = \frac{x-3}{4} \quad \text{and}\quad \sin t=\frac{y-1}{2}.\]
 The Pythagorean Theorem gives $\cos^2t+\sin^2t=1$, so:
 \begin{align*}
 \cos^2t+\sin^2t &=1 \\
@@ -206,31 +271,47 @@ The Pythagorean Theorem gives $\cos^2t+\sin^2t=1$, so:
 \frac{(x-3)^2}{16}+\frac{(y-1)^2}{4} &=1
 \end{align*}
 This final equation should look familiar --- it is the equation of an ellipse. \autoref{fig:pareq8} plots the parametric equations, demonstrating that the graph is indeed of an ellipse with a horizontal major axis and center at $(3,1)$.}
-\mfigure{0in}{Graphing the parametric equations $x=4\cos t+3$, $y=2\sin t+1$ in \autoref{ex_pareq8}.}{fig:pareq8}{figures/figpareq8} 
+
+\mtable{Graphing the parametric equations $x=4\cos t+3$, $y=2\sin t+1$ in \autoref{ex_pareq8}.}{fig:pareq8}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,minor x tick num=1,
+minor y tick num=1,ymin=-3.1,ymax=5.1,xmin=-1.1,xmax=8.5]
+\addplot [thick,draw={\colorone},smooth,domain=0:360,samples=60]
+ ({4*cos(x)+3},{2*sin(x)+1});
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 %The Pythagorean Theorem can also be used to identify parametric equations for hyperbolas. We give the parametric equations for ellipses and hyperbolas in the following Key Idea.
 
 %\keyidea{idea:par_ellipse}{Parametric Equations for Ellipses}
 %{The parametric equations 
-%$$ x=a\cos t+h, \quad y=b\sin t+k$$ define an ellipse with horizontal axis of length $2a$ and vertical axis of length $2b$, centered at $(h,k)$.
+%\[x=a\cos t+h, \quad y=b\sin t+k\]
+%define an ellipse with horizontal axis of length $2a$ and vertical axis of length $2b$, centered at $(h,k)$.
 %\index{ellipse!parametric equations}%\\
 %}
 %
 %\keyidea{idea:par_hyperbola}{Parametric Equations for Hyperbolas}
 %{The parametric equations
-%$$ x= a\tan t+h,\quad y=\pm b\sec t+k$$ define a hyperbola with vertical transverse axis centered at $(h,k)$, and 
-%$$ x=\pm a\sec t+h, \quad y=b\tan t + k$$ defines a hyperbola with horizontal transverse axis. Each has asymptotes at $y=\pm b/a(x-h)+k$.
+%\[x= a\tan t+h,\quad y=\pm b\sec t+k\]
+%define a hyperbola with vertical transverse axis centered at $(h,k)$, and 
+%\[x=\pm a\sec t+h, \quad y=b\tan t + k\]
+%defines a hyperbola with horizontal transverse axis. Each has asymptotes at $y=\pm b/a(x-h)+k$.
 %\index{hyperbola!parametric equations}
 %}
 
 %\keyidea{idea:par_ellipse_hyperbola}{Parametric Equations of Ellipses and Hyperbolas}
 %{\begin{itemize}
 %	\item The parametric equations 
-%$$ x=a\cos t+h, \quad y=b\sin t+k$$ define an ellipse with horizontal axis of length $2a$ and vertical axis of length $2b$, centered at $(h,k)$.
+%\[x=a\cos t+h, \quad y=b\sin t+k\]
+%define an ellipse with horizontal axis of length $2a$ and vertical axis of length $2b$, centered at $(h,k)$.
 %\index{ellipse!parametric equations}
 %	\item The parametric equations
-%$$ x= a\tan t+h,\quad y=\pm b\sec t+k$$ define a hyperbola with vertical transverse axis centered at $(h,k)$, and 
-%$$ x=\pm a\sec t+h, \quad y=b\tan t + k$$ defines a hyperbola with horizontal transverse axis. Each has asymptotes at $y=\pm b/a(x-h)+k$.
+%\[x= a\tan t+h,\quad y=\pm b\sec t+k\]
+%define a hyperbola with vertical transverse axis centered at $(h,k)$, and 
+%\[x=\pm a\sec t+h, \quad y=b\tan t + k\]
+%defines a hyperbola with horizontal transverse axis. Each has asymptotes at $y=\pm b/a(x-h)+k$.
 %\index{hyperbola!parametric equations}
 %\end{itemize}}
 %%%%% End with this??
@@ -245,12 +326,34 @@ These examples begin to illustrate the powerful nature of parametric equations. 
 One nice feature of parametric equations is that their graphs are easy to shift. While this is not too difficult in the ``$y=f(x)$'' context, the resulting function can look rather messy. (Plus, to shift to the right by two, we replace $x$ with $x-2$, which is counterintuitive.) The following example demonstrates this.
 
 \mtable{Illustrating how to shift graphs in \autoref{ex_pareq3}.}{fig:pareq3}{%
-\begin{tabular}{cc}
-\myincludegraphics{figures/figpareq3a}\\
-(a) \\
-\myincludegraphics{figures/figpareq3b}\\
-(b)
-\end{tabular}}
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,xtick={2,4,6,8,10},
+ymin=-2.6,ymax=6.5,xmin=-.6,xmax=10.5]
+\addplot [thick,draw={\colorone}, smooth,domain=-3:3,] ({x^2+x},{x^2-x});
+\draw [->,>=latex] (axis cs:0.96, 4.16) -- (axis cs:0.9381, 4.1181);
+\draw [->,>=latex] (axis cs:6,2) -- (axis cs:6.05,2.03);
+\draw (axis cs: 4,5) node [align=left]
+ {\scriptsize $x=t^2+t$\\ \scriptsize $y=t^2-t$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(a) \\
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,xtick={2,4,6,8,10},
+ymin=-2.6,ymax=6.5,xmin=-.6,xmax=10.5]
+\addplot [thick,draw={\colorone}, smooth,domain=-3:3,] ({x^2+x+3},{x^2-x-2});
+\draw [->,>=latex] (axis cs:3.96, 2.16) -- (axis cs:3.9381, 2.1181);
+\draw [->,>=latex] (axis cs:9,0) -- (axis cs:9.05,0.03);
+\draw (axis cs: 2.5,5) node [align=left]
+ {\scriptsize $x=t^2+t+3$\\ \scriptsize $y=t^2-t-2$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(b)}
 
 \example{ex_pareq3}{Shifting the graph of parametric functions}{Sketch the graph of the parametric equations $x=t^2+t$, $y=t^2-t$.  Find new parametric equations that shift this graph to the right 3 units and down 2.}
 {The graph of the parametric equations is given in \autoref{fig:pareq3} (a). It is a parabola with an axis of symmetry along the line $y=x$; the vertex is at $(0,0)$. It should be noted that finding the vertex is not a trivial matter and not something you will be asked to do in this text.
@@ -263,15 +366,28 @@ Because the $x$- and $y$-values of a graph are determined independently, the gra
 {Using the methods developed in this section, we again plot points and graph the parametric equations as shown in \autoref{fig:pareq4}. It appears that the graph crosses itself at the point $(2,6)$, but we'll need to analytically determine this.
 
 We are looking for two different values, say, $s$ and $t$, where $x(s) = x(t)$ and $y(s) = y(t)$. That is, the $x$-values are the same precisely when the $y$-values are the same. This gives us a system of 2 equations with 2 unknowns:
-\mfigure{0in}{A graph of the parametric equations from \autoref{ex_pareq4}.}{fig:pareq4}{figures/figpareq4}
+%
+\mtable{A graph of the parametric equations from \autoref{ex_pareq4}.}{fig:pareq4}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,minor x tick num=4,
+minor y tick num=4,ymin=-.9,ymax=16,xmin=-6,xmax=16]
+\addplot [thick, draw={\colorone},smooth,domain=-2:5,samples=50]
+ ({x^3-5*x^2+3*x+11},{x^2-2*x+3});
+\draw [->,>=latex] (axis cs:-4.62287, 7.5225) -- (axis cs:-4.4041, 7.4756);
+\draw [->,>=latex] (axis cs:7,11) -- (axis cs:7.1107, 11.0601);
+\draw (axis cs: 7,14) node [align=left]
+ {\scriptsize $x=t^3-5t^2+3t+11$\\ \scriptsize $y=t^2-2t+3$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
+%
 \begin{align*}
 s^3-5s^2+3s+11 &= t^3-5t^2+3t+11 \\
 s^2-2s+3 &= t^2-2t+3
 \end{align*}
 
 Solving this system is not trivial but involves only algebra. Using the qua\-dra\-tic formula, one can solve for $t$ in the second equation and find that $\ds t = 1\pm \sqrt{s^2-2s+1}$. This can be substituted into the first equation, revealing that the graph crosses itself at $t=-1$ and $t=3$. We confirm our result by computing $x(-1) = x(3)=2$ and $y(-1) = y(3) = 6$.}
-
-% todo Tim folium of Descartes should be in Implicit Equation section?
 
 We now present a small gallery of ``interesting'' and ``famous'' curves along with parametric equations that produce them.
 
@@ -280,12 +396,22 @@ We now present a small gallery of ``interesting'' and ``famous'' curves along wi
 \begin{lxfigure}
 \flushinner{%
  \begin{tabular}{ccc}
-  \myincludegraphics{figures/figplanecurve1} &
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,xtick={-1,1},ytick={-1,1},
+ymin=-1.1,ymax=1.1,xmin=-1.1,xmax=1.1,axis equal]
+\addplot [thick,draw={\colorone}, smooth,domain=0:360,samples=360]
+ ({(cos(x))^3},{(sin(x))^3});
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+  &
   \begin{tikzpicture}
    \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
                 axis y line=middle,axis x line=middle,name=myplot,
                 xtick={3.14,6.28},xticklabels={$\pi$,$2\pi$},
-                ymin=-.2,ymax=6.2,xmin=-.1,xmax=6.3]
+                ymin=-.2,ymax=6.2,xmin=-.1,xmax=6.3,axis equal]
     \addplot [thick,draw={\colorone}, smooth,domain=0:6.28,samples=20]
      ({x-sin(deg(x))},{1-cos(deg(x))});
    \end{axis}
@@ -296,7 +422,7 @@ We now present a small gallery of ``interesting'' and ``famous'' curves along wi
    \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
                 axis y line=middle,axis x line=middle,name=myplot,
                 %xtick={-1,1},ytick={-1,1},
-                ymin=-.1,ymax=6.1,xmin=-3.1,xmax=3.1]
+                ymin=-.1,ymax=6.1,xmin=-3.1,xmax=3.1,axis equal]
     \addplot [thick,draw={\colorone}, smooth,domain=-1.55:1.55,samples=20]
      ({2*x},{2/(1+x^2)});
    \end{axis}
@@ -307,13 +433,33 @@ We now present a small gallery of ``interesting'' and ``famous'' curves along wi
   \parbox{150pt}{\centering Cycloid\\$x=r(t-\sin t)$\\$y=r(1-\cos t)$} &
   \parbox{150pt}{\centering Witch of Agnesi\\$x=2at$\\$y=2a/(1+t^2)$} \\
   \\
-  \myincludegraphics{figures/figplanecurve3} &
-  \myincludegraphics{figures/figplanecurve4} &
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-7.1,ymax=7.1,xmin=-7.1,xmax=7.5,axis equal]
+\addplot [thick, draw={\colorone},smooth,domain=0:1440,samples=120]
+ ({2*cos(x)+5*cos(2*x/3)},{2*sin(x)-5*sin(2*x/3)});
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+  &
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-7.1,ymax=7.1,xmin=-7.1,xmax=7.5,axis equal]
+\addplot [thick,draw={\colorone}, smooth,domain=0:720,samples=240]
+ ({4*cos(x)-cos(4*x)},{4*sin(x)-sin(4*x)});
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+  &
+% todo Tim folium of Descartes should be in Implicit Equation gallery?
   \begin{tikzpicture}
    \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
                 axis y line=middle,axis x line=middle,name=myplot,
-                %xtick={-1,1},ytick={-1,1},
-                ymin=-2.1,ymax=2.1,xmin=-2.1,xmax=2.1]
+                ymin=-2.1,ymax=2.1,xmin=-2.1,xmax=2.1,axis equal]
     \addplot [thick,draw={\colorone}, smooth,domain=-40:130,samples=20]
      ({3*sin(x)*cos(x)^2/((sin(x))^3+(cos(x))^3)},{3*sin(x)^2*cos(x)/((sin(x))^3+(cos(x))^3)});
    \end{axis}
@@ -324,7 +470,7 @@ We now present a small gallery of ``interesting'' and ``famous'' curves along wi
   \parbox{150pt}{\centering Epicycloid\\$x=4\cos(t)-\cos(4t)$\\$y=4\sin(t)-\sin(4t)$} &
   \parbox{150pt}{\centering Folium of Descartes\\$x=3at/(1+t^3)$\\$y=3at^2/(1+t^3)$}
  \end{tabular}}
-\end{lxfigure}
+\end{lxfigure}\bigskip
 
 One might note a feature shared by three of these graphs: ``sharp corners,'' or \textbf{cusps}. We have seen graphs with cusps before and determined that such functions are not differentiable at these points. This leads us to a definition.
 
@@ -334,14 +480,27 @@ One might note a feature shared by three of these graphs: ``sharp corners,'' or 
 }
 
 Consider the astroid, given by $x=\cos^3t$, $y=\sin^3t$. Taking derivatives, we have:
-$$x\primeskip' = -3\cos^2t\sin t\quad \text{and}\quad y\primeskip' = 3\sin^2t\cos t.$$
+\[
+x\primeskip' = -3\cos^2t\sin t\quad \text{and}\quad y\primeskip' = 3\sin^2t\cos t.
+\]
 It is clear that each is 0 when $t=0,\ \pi/2,\ \pi,\ldots$. Thus the astroid is not smooth at these points, corresponding to the cusps seen in the figure. However, by restricting the domain of the astroid to all reals except $t = \frac{k\pi}{2}$ for $k \in\mathbb{Z}$ we have a piecewise smooth curve.
 
 We demonstrate this once more.
 
 \example{ex_pareq9}{Determine where a curve is not smooth}{Let a curve $C$ be defined by the parametric equations $x=t^3-12t+17$ and $y=t^2-4t+8$. Determine the points, if any, where it is not smooth.}
-{We begin by taking derivatives. 
-\mfigure{0in}{Graphing the curve in \autoref{ex_pareq9}; note it is not smooth at $(1,4)$.}{fig:pareq9}{figures/figpareq9}
+{We begin by taking derivatives.
+%
+\mtable{Graphing the curve in \autoref{ex_pareq9}; note it is not smooth at $(1,4)$.}{fig:pareq9}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,minor x tick num=4,
+minor y tick num=1,ymin=-1,ymax=9,xmin=-1,xmax=11]
+\addplot [thick,draw={\colorone}, smooth,domain=-2:3.5,samples=40]
+ ({x^3-12*x+17},{x^2-4*x+8)});
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
+%
 \[x\primeskip' = 3t^2-12,\quad y\primeskip' = 2t-4.\]
 We set each equal to 0:
 \begin{align*}
@@ -356,28 +515,34 @@ If a curve is not smooth at $t=t_0$, it means that $x\primeskip'(t_0)=y\primeski
 \example*{ex_cycloid}{The Cycloid}{A well-known parametric curve is the cycloid.  Fix $r$, and let $x=r(t-\sin t)$, $y=r(1-\cos t)$.  This represents the path traced out by a point on a wheel of radius $r$ as starts rolling to the right.  We can think of $t$ as the angle through which the point has rotated.
  
 \begin{lxfigure}
- \flushinner{%
- \begin{tikzpicture}[scale=.8]
-   \foreach \x in { 0, 2.09, 4.19, 6.28, 8.38, 10.47, 12.57} {
-    \draw [draw={\colorone}] (\x,1) circle (1);
-    \draw [draw={\colorone},fill={\colorone}] (\x,1) circle (2pt)
-     -- ({\x-sin(deg(\x))},{1-cos(deg(\x))}) circle (2pt);
-   }
-   \draw (0,2.5) node {$t=0$};
-   \foreach \t/\n in { 2/6.28, 4/12.57} {
-    \draw (\n,2.5) node {$t=\t\pi$};
-   }
-   \foreach \t/\n in { 2/2.09, 4/4.19, 8/8.38, 10/10.47} {
-    \draw (\n,2.5) node {$t=\frac{\t\pi}3$};
-   }
-   \draw [draw={\colortwo},smooth,thick,domain=0:12.56,variable=\t]
-    plot ({\t-sin(deg(\t))},{1-cos(deg(\t))});
- \end{tikzpicture}}
+ \centering
+  \begin{tikzpicture}
+   \begin{axis}[axis lines=none,xmin=-1,xmax=4*pi+1,ymin=0,ymax=2.5,axis equal,
+     width=\textwidth]
+    \foreach \x in { 0, 2*pi/3, 4*pi/3, 2*pi, 8*pi/3, 10*pi/3, 4*pi} {
+     \edef\temp{%
+      \noexpand\draw [draw={\colorone}] (axis cs:\x,1) circle (1);
+      \noexpand\draw [draw={\colorone},fill={\colorone}] (axis cs:\x,1)circle (1.5pt)
+       -- (axis cs:{\x-sin(deg(\x))},{1-cos(deg(\x))}) circle (1.5pt);
+     }\temp
+    }
+    \draw (axis cs:0,2.5) node {$t=0$};
+    \draw (axis cs:2*pi,2.5) node {$t=2\pi$};
+    \draw (axis cs:4*pi,2.5) node {$t=4\pi$};
+    \foreach \t in { 2, 4, 8, 10} {
+     \edef\temp{%
+      \noexpand\draw (axis cs:\t*pi/3,2.5) node {$t=\frac{\t\pi}3$};
+     }\temp
+    }
+    \addplot[draw={\colortwo},smooth,thick,domain=0:4*pi]
+     ({\x-sin(deg(\x))},{1-cos(deg(\x))});
+   \end{axis}
+  \end{tikzpicture}
  \caption{A cycloid traced through two revolutions.}
  \label{fig_cycloid}
 \end{lxfigure}
  
-\autoref{fig_cycloid} shows a cycloid sketched out with the wheel shown at various places.  The blue dot is the point on the wheel that we're using to trace out the curve.
+\autoref{fig_cycloid} shows a cycloid sketched out with the wheel shown at various places.  The dot on the rim is the point on the wheel that we're using to trace out the curve.
  
 From this sketch we can see that one arch of the cycloid is traced out in the range $0\le t\le2\pi$.  This makes sense when you consider that the point will be back on the ground after it has rotated through an angle of $2\pi$.}
 

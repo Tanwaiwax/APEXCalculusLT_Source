@@ -6,12 +6,23 @@ Let $f(t)$ be a continuous function defined on $[a,b]$. The definite integral $\
 
 Let $F(x) = \int_a^x f(t)\ dt$. It computes the area under $f$ on $[a,x]$ as illustrated in \autoref{fig:ftc1}. We can study this function using our knowledge of the definite integral. For instance, $F(a)=0$ since $\int_a^af(t)\ dt=0$. %If $f(t)>0$, then $F(x)>0$ when $x>a$ (consider the figure for a visual understanding). If $f$ is defined for values less than $a
 
-\mfigure{0in}{The area of the shaded region is $F(x) = \int_a^x f(t)\ dt$.}{fig:ftc1}{figures/figftc1}
+\mtable{The area of the shaded region is $F(x) = \int_a^x f(t)\ dt$.}{fig:ftc1}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick=\empty,
+extra x ticks={1,2.5,3},extra x tick labels={$a$,$x$,$b$},ytick=\empty,
+ymin=-.5,ymax=2,xmin=-.5,xmax=3.5]
+\addplot [draw={\coloronefill},fill={\coloronefill},area style,domain=1:2.5] {.5*sin(deg(x))+1} \closedcycle;
+\addplot [smooth,thick, draw={\colorone},domain=0:3.25] {.5*sin(deg(x))+1};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $t$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 The first part of the Fundamental Theorem of Calculus tells us how to find derivatives of these kinds of functions.
 
 \theorem{thm:FTC1}{The Fundamental Theorem of Calculus, Part 1}
-{Let $f$ be continuous on $[a,b]$ and let $F(x) = \int_a^x f(t)\ dt$. Then $F$ is a differentiable function on $(a,b)$, and\index{Fundamental Theorem of Calculus}\index{integration!Fun. Thm. of Calc.} $$\Fp(x)=f(x).$$}
+{Let $f$ be continuous on $[a,b]$ and let $F(x) = \int_a^x f(t)\ dt$. Then $F$ is a differentiable function on $(a,b)$, and\index{Fundamental Theorem of Calculus}\index{integration!Fun. Thm. of Calc.}
+\[\Fp(x)=f(x).\]}
 
 \begin{proof}
 In order to see why this is true, we must compute $\ds\lim_{h\to 0}\frac{F(x+h)-F(x)}{h}$. Suppose $x$ and $x+h$ are in $[a,b]$. \autoref{thm:defintprop} implies that
@@ -85,7 +96,7 @@ We have done more than found a complicated way of computing an antiderivative. C
 We now see how indefinite integrals and definite integrals are related: we can evaluate a definite integral using antiderivatives.  Furthermore, \autoref{thm:antideriv_const} told us that any other antiderivative $G$ differs from $F$ by a constant: $G(x)=F(x)+C$.  This means that $G(b)-G(a)=(F(b)+C)-(F(a)+C)=F(b)-F(a)$, and the formula we've just found holds for any antiderivative.  Consequently, it does not matter what value of $C$ we use, and we might as well let $C=0$. This proves the second part of the Fundamental Theorem of Calculus.
 
 \theorem{thm:FTC2}{The Fundamental Theorem of Calculus, Part 2}
-{Let $f$ be continuous on $[a,b]$ and let $F$ be \textit{any} antiderivative of $f$. Then\index{Fundamental Theorem of Calculus}\index{integration!Fun. Thm. of Calc.} $$\int_a^b f(x)\ dx = F(b) - F(a).$$}
+{Let $f$ be continuous on $[a,b]$ and let $F$ be \textit{any} antiderivative of $f$. Then\index{Fundamental Theorem of Calculus}\index{integration!Fun. Thm. of Calc.} \[\int_a^b f(x)\ dx = F(b) - F(a).\]}
 
 %\paragraph{The Constant $C$:}\textit{Any} antiderivative $F(x)$ can be chosen when using the Fundamental Theorem of Calculus to evaluate a definite integral, meaning any value of $C$ can be picked. The constant \textit{always} subtracts out of the expression when evaluating $F(b)-F(a)$, so it does not matter what value is picked. This being the case, we might as well let $C=0$.
 
@@ -131,7 +142,9 @@ In general, if $c$ is a constant, then $\int_a^b c\ dx = c(b-a)$.\eoehere
 
 Part 1 of the Fundamental Theorem of Calculus (FTC) states that given $\ds F(x) = \int_a^x f(t)\ dt$,  $\Fp(x) = f(x)$. Using other notation, $\ds \frac{d}{dx}\big(F(x)\big) = f(x)$. While we have just practiced evaluating definite integrals, sometimes finding antiderivatives is impossible and we need to rely on other techniques to approximate the value of a definite integral. Functions written as $F(x) = \int_a^x f(t)\ dt$ are useful in such situations.
 
-It may be of further use to compose such a function with another. As an example, we may compose $F(x)$ with $g(x)$ to get $$F\big(g(x)\big) = \int_a^{g(x)} f(t)\ dt.$$ What is the derivative of such a function?\index{Fundamental Theorem of Calculus!and Chain Rule} The Chain Rule can be employed to state
+It may be of further use to compose such a function with another. As an example, we may compose $F(x)$ with $g(x)$ to get
+\[F\big(g(x)\big) = \int_a^{g(x)} f(t)\ dt.\]
+What is the derivative of such a function?\index{Fundamental Theorem of Calculus!and Chain Rule} The Chain Rule can be employed to state
 \[
 \frac{d}{dx}\Big(F\big(g(x)\big)\Big) = \Fp\big(g(x)\big)g\primeskip'(x)
 = f\big(g(x)\big)g\primeskip'(x).
@@ -159,7 +172,8 @@ Practice this once more.
 We established, starting with \autoref{idea:motion}, that the derivative of a position function is a velocity function, and the derivative of a velocity function is an acceleration function. Now consider definite integrals of velocity and acceleration functions. Specifically, if $v(t)$ is a velocity function, what does $\ds \int_a^b v(t)\ dt$ mean?\index{integration!displacement}\index{displacement}
 
 The Fundamental Theorem of Calculus states that
-$$\int_a^b v(t)\ dt = V(b) - V(a),$$ where $V(t)$ is any antiderivative of $v(t)$. Since $v(t)$ is a velocity function, $V(t)$ must be a position function, and $V(b) - V(a)$ measures a change in position, or \textbf{displacement}.
+\[\int_a^b v(t)\ dt = V(b) - V(a),\]
+where $V(t)$ is any antiderivative of $v(t)$. Since $v(t)$ is a velocity function, $V(t)$ must be a position function, and $V(b) - V(a)$ measures a change in position, or \textbf{displacement}.
 
 How would we measure total distance traveled? We have to consider the intervals when $v(t)\geq 0$ and when $v(t)\leq 0$. Therefore,
 \[\text{total distance traveled}=\int_a^b\abs{v(t)}\ dt.\]\bigskip
@@ -199,20 +213,58 @@ Integrating a speed function gives a similar, though different, result. Speed is
 
 %Velocity is ``speed and direction,'' so by taking the direction information away, speed 
 As acceleration is the rate of velocity change, integrating an acceleration function gives total change in velocity. We do not have a simple term for this analogous to displacement. If $a(t) = 5$miles/h$^2$ and $t$ is measured in hours, then 
-$$\int_0^3 a(t)\ dt = 15$$
+\[\int_0^3 a(t)\ dt = 15\]
 means the velocity has increased by 15m/h from $t=0$ to $t=3$.
 
 \subsection*{The Mean Value Theorem and Average Value}
 
 \mtable[-4.8in]{A graph of a function $f$ to introduce the Mean Value Theorem and differently sized rectangles giving upper and lower bounds on $\int_1^4 f(x)\ dx$; the last rectangle matches the area exactly.}{fig:ftc7b}%
-{\myincludegraphics{figures/figftc7a}\\
-(a)\\
-\myincludegraphics{figures/figftc7b2}\\
-(b)\\
-\myincludegraphics{figures/figftc7b1}\\
-(c)\\
-\myincludegraphics{figures/figftc7b3}\\
-(d)}
+{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2,3,4},
+ytick=\empty,ymin=-.5,ymax=1.75,xmin=-.5,xmax=4.5]
+\addplot [smooth,thick, draw={\colorone},domain=-.5:4.5] {.3*cos(deg(x))+1}; 
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(a)\\
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2,3,4},
+ytick=\empty,ymin=-.5,ymax=1.75,xmin=-.5,xmax=4.5]
+\addplot [draw={\coloronefill},thick,fill={\coloronefill},domain=1:4] {.3*cos(deg(x))+1} \closedcycle;
+\addplot [smooth,thick, draw={\colorone},domain=-.5:4.5] {.3*cos(deg(x))+1}; 
+\draw [thick,draw={\colortwo}] (axis cs: 1,0) rectangle (axis cs:4,1.35);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(b)\\
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2,3,4},
+ytick=\empty,ymin=-.5,ymax=1.75,xmin=-.5,xmax=4.5]
+\addplot [draw={\coloronefill},thick,fill={\coloronefill},domain=1:4] {.3*cos(deg(x))+1} \closedcycle;
+\addplot [smooth,thick, draw={\colorone},domain=-.5:4.5] {.3*cos(deg(x))+1}; 
+\draw [thick,draw={\colortwo}] (axis cs: 1,0) rectangle (axis cs:4,.65);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(c)\\
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2,3,4},% 
+ytick=\empty,ymin=-.5,ymax=1.75,xmin=-.5,xmax=4.5]
+\addplot [draw={\coloronefill},thick,fill={\coloronefill},domain=1:4] {.3*cos(deg(x))+1} \closedcycle;
+\addplot [smooth,thick, draw={\colorone},domain=-.5:4.5] {.3*cos(deg(x))+1}; 
+\draw [thick,draw={\colortwo}] (axis cs: 1,0) rectangle (axis cs:4,.84);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(d)}
 
 Consider the graph of a function $f$ in \autoref{fig:ftc7b}(a) and the area defined by $\int_1^4 f(x)\ dx$. Three rectangles are then drawn; in (b), the height of the rectangle is greater than $f$ on $[1,4]$, hence the area of this rectangle is is greater than $\int_1^4 f(x)\ dx$. 
 
@@ -243,7 +295,19 @@ f(c)(b-a)&=\int_a^b f(x)\,dx.\qedhere
 
 We demonstrate the principles involved in this version of the Mean Value Theorem in the following example.
 
-\mfigure{0in}{A graph of $y=\sin x$ on $[0,\pi]$ and the rectangle guaranteed by the Mean Value Theorem.}{fig:ftc8}{figures/figftc8}
+\mtable{A graph of $y=\sin x$ on $[0,\pi]$ and the rectangle guaranteed by the Mean Value Theorem.}{fig:ftc8}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2},
+extra x ticks={.69,3.14},extra x tick labels={$c$,$\pi$},ytick={1},
+extra y ticks={.637},extra y tick labels={$\sin 0.69$},
+ymin=-.25,ymax=1.25,xmin=-.5,xmax=3.5]
+\addplot [draw={\coloronefill},thick,fill={\coloronefill},domain=0:3.14] {sin(deg(x))} \closedcycle;
+\addplot [smooth,thick, draw={\colorone},domain=-.5:3.5] {sin(deg(x))}; 
+\draw [thick,draw={\colortwo}] (axis cs: 0,0) rectangle (axis cs:3.14,.637);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 \example{ex_ftc8}{Using the Mean Value Theorem}{Consider $\ds\int_0^\pi \sin x\ dx$. Find a value $c$ guaranteed by the Mean Value Theorem.}
 {We first need to evaluate $\ds\int_0^\pi \sin x\ dx$. (This was previously done in \autoref{ex_ftc4}.)
@@ -257,15 +321,35 @@ Thus we seek a value $c$ in $[0,\pi]$ such that $\pi\sin c =2$.
 
 In \autoref{fig:ftc8} $\sin x$ is sketched along with a rectangle with height $\sin (0.69)$. The area of the rectangle is the same as the area under $\sin x$ on $[0,\pi]$.}
 
-\ifthenelse{\boolean{longpage}}%is longpage
-{% longpage
-\mtable{On the left, a graph of $y=f(x)$ and the rectangle guaranteed by the Mean Value Theorem. On the right, $y=f(x)$ is shifted down by $f(c)$; the resulting ``area under the curve'' is 0.}{fig:ftc9}
-{\myincludegraphics{figures/figftc9a}\hfill \myincludegraphics{figures/figftc9b}}
-} %end longpage
-{%not longpage
 \mtable{On top, a graph of $y=f(x)$ and the rectangle guaranteed by the Mean Value Theorem. Below, $y=f(x)$ is shifted down by $f(c)$; the resulting ``area under the curve'' is 0.}{fig:ftc9}
-{\myincludegraphics{figures/figftc9a}\\ \noindent \myincludegraphics{figures/figftc9b}}
-}%end ifthen else
+{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick=\empty,
+extra x ticks={1,4,1.63},extra x tick labels={$a$,$b$,$c$},ytick=\empty,
+extra y ticks={1.75},extra y tick labels={$f(c)$},
+ymin=-1,ymax=3.5,xmin=-.5,xmax=4.25]
+\addplot [draw={\coloronefill},thick,fill={\coloronefill},domain=1:4] {(x-2.5)^2+1} \closedcycle;
+\addplot [smooth,thick, draw={\colorone},domain=-.5:4.25] {(x-2.5)^2+1}; 
+\draw [thick,draw={\colortwo}] (axis cs: 1,0) rectangle (axis cs:4,1.75);
+\draw (axis cs:3.35,3) node {\scriptsize $y=f(x)$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\smallskip\\
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick=\empty,
+extra x ticks={1,4,1.63},extra x tick labels={$a$,$b$,$c$},ytick=\empty,
+extra y ticks={1.75},extra y tick labels={$f(c)$},
+ymin=-1,ymax=3.5,xmin=-.5,xmax=4.25]
+\addplot [draw={\coloronefill},thick,fill={\coloronefill},domain=1:4] {(x-2.5)^2-.75} \closedcycle;
+\addplot [smooth,thick, draw={\colorone},domain=.75:4.25] {(x-2.5)^2-.75}; 
+\draw (axis cs:3.2,2.5) node {\scriptsize $y=f(x)-f(c)$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 Let $f$ be a function on $[a,b]$ with $c$ such that $f(c)(b-a) = \int_a^bf(x)\ dx$. Consider $\int_a^b\big(f(x)-f(c)\big)\ dx$:
 \begin{align*}

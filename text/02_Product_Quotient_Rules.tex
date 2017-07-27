@@ -25,11 +25,24 @@ Applying the \textbf{real} Product Rule we see that,
 We practice using this new rule in an example, followed by a proof of the theorem.
 
 \example{ex_prod1}{Using the Product Rule}{Use the Product Rule to compute the derivative of $y=5x^2\sin x$. Evaluate the derivative at $x=\pi/2$.}
-{To make our use of the Product Rule explicit, let's set $f(x) = 5x^2$ and $g(x) = \sin x$. We easily compute/recall that $\fp(x) = 10x$ and $g\primeskip'(x) = \cos x$. Employing the rule, we have $$\frac{d}{dx}\Big(5x^2\sin x\Big) = 5x^2\cos x + 10x\sin x.$$
+{To make our use of the Product Rule explicit, let's set $f(x) = 5x^2$ and $g(x) = \sin x$. We easily compute/recall that $\fp(x) = 10x$ and $g\primeskip'(x) = \cos x$. Employing the rule, we have
+\[\frac{d}{dx}\Big(5x^2\sin x\Big) = 5x^2\cos x + 10x\sin x.\]
 
-\mfigure{1in}{A graph of $y = 5x^2\sin x$ and its tangent line at $x=\pi/2$.}{fig:5xsquaredsinx}{figures/fig5xsquaredsinx}
+\mtable[1in]{A graph of $y = 5x^2\sin x$ and its tangent line at $x=\pi/2$.}{fig:5xsquaredsinx}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,minor y tick num=1,axis y line=middle,axis x line=middle,
+ymin=-1.1,ymax=21,xmin=-0.1,xmax=3.5,xtick={1.57,3.14},
+xticklabels={$\frac{\pi}2$,$\pi$},name=myplot]
+\addplot [draw={\colorone},smooth,thick,domain=0:3.14] {5*(x^2)*sin(x*180/3.14)};
+\addplot [draw={\colortwo},smooth,thick,domain=0:2.2] {15.7*(x-1.57)+12.34};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
-At $x=\pi/2$, we have $$y\primeskip'(\pi/2) = 5\left(\frac{\pi}{2}\right)^2\cos \left(\frac{\pi}2\right) + 10\frac{\pi}2 \sin\left(\frac{\pi}{2}\right) = 5\pi.$$ We graph $y$ and its tangent line at $x=\pi/2$, which has a slope of $5\pi$, in \autoref{fig:5xsquaredsinx}. While this does not \textit{prove} that the Product Rule is the correct way to handle derivatives of products, it helps validate its truth.}
+At $x=\pi/2$, we have
+\[y\primeskip'(\pi/2) = 5\left(\frac{\pi}{2}\right)^2\cos \left(\frac{\pi}2\right) + 10\frac{\pi}2 \sin\left(\frac{\pi}{2}\right) = 5\pi.\]
+We graph $y$ and its tangent line at $x=\pi/2$, which has a slope of $5\pi$, in \autoref{fig:5xsquaredsinx}. While this does not \textit{prove} that the Product Rule is the correct way to handle derivatives of products, it helps validate its truth.}
 
 \begin{proof}[Proof of the Product Rule]
 By the limit definition, we have 
@@ -56,7 +69,8 @@ It is often true that we can recognize that a theorem is true through its proof 
 
 \example{ex_prod2}{Exploring alternate derivative methods}{%
 Let $y = (x^2+3x+1)(2x^2-3x+1)$. Find $y\primeskip'$ two ways: first, by expanding the given product and then taking the derivative, and second, by applying the Product Rule. Verify that both methods give the same answer.}
-{We first expand the expression for $y$; a little algebra shows that $y = 2x^4+3x^3-6x^2+1$. It is easy to compute $y\primeskip'$; $$y\primeskip' = 8x^3+9x^2-12x.$$
+{We first expand the expression for $y$; a little algebra shows that $y = 2x^4+3x^3-6x^2+1$. It is easy to compute $y\primeskip'$;
+\[y\primeskip' = 8x^3+9x^2-12x.\]
 
 Now apply the Product Rule.
 \begin{align*}
@@ -98,7 +112,7 @@ We have learned how to compute the derivatives of sums, differences, and product
 \theorem{thm:QuotientRule}{Quotient Rule}
 {Let $f$ and $g$ be functions defined on an open interval $I$, where $g(x) \neq 0$ on $I$.\index{derivative!Quotient Rule}\index{Quotient Rule} Then $f/g$ is differentiable on $I$, and \[\frac{d}{dx}\left(\frac{f(x)}{g(x)}\right) = \frac{g(x)\fp(x) - f(x)g\primeskip'(x)}{[g(x)]^2}.\]}
 
-%The Quotient Rule is not hard to use, although it might be a bit tricky to remember. A useful mnemonic works as follows. Consider a fraction's numerator and denominator as ``HI'' and ``LO'', respectively. Then $$\frac{d}{dx}\left(\frac{\text{HI}}{\text{LO}}\right) = \frac{\text{LO$\cdot$ dHI -- HI$\cdot$ dLO}}{\text{LOLO}},$$ read ``low dee high minus high dee low, over low low.'' Said fast, that phrase can roll off the tongue, making it easy to memorize. The ``dee high'' and ``dee low'' parts refer to the derivatives of the numerator and denominator, respectively.\\
+%The Quotient Rule is not hard to use, although it might be a bit tricky to remember. A useful mnemonic works as follows. Consider a fraction's numerator and denominator as ``HI'' and ``LO'', respectively. Then \[\frac{d}{dx}\left(\frac{\text{HI}}{\text{LO}}\right) = \frac{\text{LO$\cdot$ dHI -- HI$\cdot$ dLO}}{\text{LOLO}},\] read ``low dee high minus high dee low, over low low.'' Said fast, that phrase can roll off the tongue, making it easy to memorize. The ``dee high'' and ``dee low'' parts refer to the derivatives of the numerator and denominator, respectively.\\
 
 \begin{proof}[Proof of the Quotient Rule]
 Let the functions $f$ and $g$ be defined and $g(x) \neq 0$ on an open interval $I$. By the definition of derivative,
@@ -151,7 +165,17 @@ The Quotient Rule allows us to fill in holes in our understanding of derivatives
 	&= \sec ^2 x.
 \end{align*}
 This is a beautiful result. To confirm its truth, we can find the equation of the tangent line to $y=\tan x$ at $x=\pi/4$. The slope is $\sec^2(\pi/4) = 2$; $y=\tan x$, along with its tangent line, is graphed in \autoref{fig:tanx}.
-\mfigure{0in}{A graph of $y=\tan x$ along with its tangent line at $x=\pi/4$.}{fig:tanx}{figures/figtanx}}
+\mtable{A graph of $y=\tan x$ along with its tangent line at $x=\pi/4$.}{fig:tanx}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,minor y tick num=1,axis y line=middle,axis x line=middle,
+ymin=-11,ymax=11,xmin=-1.65,xmax=1.7,xtick={-1.57,-.785,.785,1.57},
+xticklabels={$-\frac{\pi}2$,$-\frac{\pi}2$,$\frac{\pi}4$,$\frac{\pi}2$},name=myplot]
+\addplot [draw={\colorone},smooth,thick,samples=50,domain=-1.5:1.5] {tan(deg(x))};
+\addplot [draw={\colortwo},smooth,thick,domain=-1.0:1.5] {2*(x-.785)+1};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}}
 
 We include this result in the following theorem about the derivatives of the trigonometric functions. Recall we found the derivative of $y=\sin x$ in \autoref{ex_deriv_sinx} and stated the derivative of the cosine function in \autoref{thm:deriv_common}. The derivatives of the cotangent, cosecant and secant functions can all be computed directly using \autoref{thm:deriv_common} and the Quotient Rule.
 
@@ -220,7 +244,8 @@ Taking the derivative of many functions is relatively straightforward. It is cle
 \end{enumerate}
 Verify that all three methods give the same result.}
 {\begin{enumerate}
-	\item	Applying the Quotient Rule gives: $$ \fp(x) = \frac{x\cdot\big(2x-3\big)-\big(x^2-3x+1\big)\cdot 1}{x^2} = \frac{x^2-1}{x^2} = 1-\frac{1}{x^2}.$$
+	\item	Applying the Quotient Rule gives:
+	\[\fp(x) = \frac{x\cdot\big(2x-3\big)-\big(x^2-3x+1\big)\cdot 1}{x^2} = \frac{x^2-1}{x^2} = 1-\frac{1}{x^2}.\]
 	\item	By rewriting $f$, we can apply the Product and Power Rules as follows:
 	\begin{align*}
 		\fp(x)
@@ -230,12 +255,14 @@ Verify that all three methods give the same result.}
 		&= \frac{x^2-1}{x^2} = 1-\frac{1}{x^2},
 	\end{align*}
 	the same result as above.
-	\item	As $x\neq 0$, we can divide through by $x$ first, giving $\ds f(x) = x-3+\frac{1}x$. Now apply the Power Rule to see $$\fp(x) = 1-\frac{1}{x^2},$$  the same result as before.\eoehere
+	\item	As $x\neq 0$, we can divide through by $x$ first, giving $\ds f(x) = x-3+\frac{1}x$. Now apply the Power Rule to see
+	\[\fp(x) = 1-\frac{1}{x^2},\]
+	the same result as before.\eoehere
 \end{enumerate}}
 
 \autoref{ex_multiple_deriv} demonstrates three methods of finding \fp. One is hard pressed to argue for a ``best method'' as all three gave the same result without too much difficulty, although it is clear that using the Product Rule required more steps. Ultimately, the important principle to take away from this is: simplify the answer to a form that seems ``simple'' and easy to interpret.  They are equal; they are all correct. The most appropriate form of $\fp$ depends on what we need to do with the function next. For later problems it will be important for us to determine the most appropriate form to use and to move flexibly between the different forms.
 % In that example, we saw different expressions for \fp, including: {\small 
-%		$$1-\frac{1}{x^2} = \frac{x\cdot\big(2x-3\big)-\big(x^2-3x+1\big)\cdot 1}{x^2} = 	\big(x^2-3x+1\big)\cdot (-1)x^{-2} + \big(2x-3\big)\cdot x^{-1}.$$} They are equal; they are all correct; only the first is ``clear.'' Work to make answers clear.
+%		\[1-\frac{1}{x^2} = \frac{x\cdot\big(2x-3\big)-\big(x^2-3x+1\big)\cdot 1}{x^2} = 	\big(x^2-3x+1\big)\cdot (-1)x^{-2} + \big(2x-3\big)\cdot x^{-1}.\]} They are equal; they are all correct; only the first is ``clear.'' Work to make answers clear.
 		
 In the next section we continue to learn rules that allow us to more easily compute derivatives than using the limit definition directly. We have to memorize the derivatives of a certain set of functions, such as ``the derivative of $\sin x$ is $\cos x$.'' The Sum/Difference, Constant Multiple, Power, Product and Quotient Rules show us how to find the derivatives of certain combinations of these functions. The next section shows how to find the derivatives when we \emph{compose} these functions together.
 

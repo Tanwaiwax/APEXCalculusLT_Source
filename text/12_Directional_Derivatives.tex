@@ -43,31 +43,29 @@ This is really a quick application of \autoref{def:multi_differentiability}.  Be
 	\item toward the origin.
 \end{enumerate}
 }
-{
-\mfigurethree{width=150pt,3Dmenu,activate=onclick,deactivate=onclick,
+{\mtable{Understanding the directional derivative in \autoref{ex_direct1}.}{fig:direct1}{%
+\myincludeasythree{width=\marginparwidth,
 3Droll=-0.45935076561172045,
 3Dortho=0.00494238780811429,
 3Dc2c=0.8379672765731812 0.26980355381965637 0.4743594527244568,
 3Dcoo=-27.334510803222656 46.63825988769531 23.82315444946289,
-3Droo=130.00000000067573,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.1}{0in}{Understanding the directional derivative in \autoref{ex_direct1}.}{fig:direct1}{figures/figdirect1}
-%\mfigure[scale=1.1]{0in}{Understanding the directional derivative in \autoref{ex_direct1}.}{fig:direct1}{figures/figdirect1}
+3Droo=130.00000000067573}{width=\marginparwidth}{figures/figdirect1_3D}}
 The surface is plotted in \autoref{fig:direct1}, where the point $P=(1,2)$ is indicated in the $x,y$-plane as well as the point $(1,2,9)$ which lies on the surface of $f$. We find that $f_x(x,y) = -2x$ and $f_x(1,2) = -2$; $f_y(x,y) = -2y$ and $f_y(1,2) = -4$. 
 \begin{enumerate}
 	\item Let $\vec u_1$ be the unit vector that points from the point $(1,2)$ to the point $Q=(3,4)$, as shown in the figure. The vector $\vv{PQ} =\bracket{2,2}$; the unit vector in this direction is $\vec u_1=\bracket{1/\sqrt{2}, 1/\sqrt{2}}$. Thus the directional derivative of $f$ at $(1,2)$ in the direction of $\vec u_1$ is
-	$$D_{\vec u_1}f(1,2) = -2(1/\sqrt{2}) +(-4)(1/\sqrt{2}) = -6/\sqrt{2}%\approx -4.24
-	.$$
+	\[D_{\vec u_1}f(1,2) = -2(1/\sqrt{2}) +(-4)(1/\sqrt{2}) = -6/\sqrt{2}%\approx -4.24
+	.\]
 	Thus the instantaneous rate of change in moving from the point $(1,2,9)$ on the surface in the direction of $\vec u_1$ (which points toward the point $Q$) is $-3\sqrt2$. Moving in this direction moves one steeply downward.
 	
 	\item		We seek the directional derivative in the direction of $\bracket{2,-1}$. The unit vector in this direction is $\vec u_2 =\bracket{2/\sqrt{5},-1/\sqrt{5}}$. Thus the directional derivative of $f$ at $(1,2)$ in the direction of $\vec u_2$ is
-	$$D_{\vec u_2}f(1,2) = -2(2/\sqrt{5})+(-4)(-1/\sqrt{5}) = 0.$$
+	\[D_{\vec u_2}f(1,2) = -2(2/\sqrt{5})+(-4)(-1/\sqrt{5}) = 0.\]
 	Starting on the surface of $f$ at $(1,2)$ and moving in the direction of $\bracket{2,-1}$ (or $\vec u_2$) results in no instantaneous change in $z$-value. This is analogous to standing on the side of a hill and choosing a direction to walk that does not change the elevation. One neither walks up nor down, rather just ``along the side'' of the hill.
 	
 	Finding these directions of ``no elevation change'' is important.
 	
 	\item		At $P=(1,2)$, the direction towards the origin is given by the vector $\bracket{-1,-2}$; the unit vector in this direction is $\vec u_3=\bracket{-1/\sqrt{5},-2/\sqrt{5}}$. The directional derivative of $f$ at $P$ in the direction of the origin is
-	$$D_{\vec u_3}f(1,2) = -2(-1/\sqrt{5}) + (-4)(-2/\sqrt{5}) = 10/\sqrt{5}% \approx 4.47
-	.$$
+	\[D_{\vec u_3}f(1,2) = -2(-1/\sqrt{5}) + (-4)(-2/\sqrt{5}) = 10/\sqrt{5}% \approx 4.47
+	.\]
 	Moving towards the origin means ``walking uphill'' quite steeply, with an initial slope of $2\sqrt5$.\eoehere
 \end{enumerate}}
 
@@ -144,35 +142,31 @@ We restate these ideas in a theorem, then use them in an example.
 
 \example{ex_direct2}{Finding directions of maximal and minimal increase}{Let $f(x,y) = \sin x\cos y$ and let $P=(\pi/3,\pi/3)$. Find the directions of maximal/minimal increase, and find a direction where the instantaneous rate of $z$ change is 0.}
 {We begin by finding the gradient. We see that $f_x = \cos x\cos y$ and $f_y = -\sin x\sin y$, thus 
-$$\nabla f =\bracket{\cos x\cos y,-\sin x\sin y}\quad \text{and, at $P$,} \quad \nabla f\left(\frac{\pi}3,\frac{\pi}3\right) =\bracket{\frac14,-\frac34}.$$
+\[\nabla f =\bracket{\cos x\cos y,-\sin x\sin y}\quad \text{and, at $P$,} \quad \nabla f\left(\frac{\pi}3,\frac{\pi}3\right) =\bracket{\frac14,-\frac34}.\]
 Thus the direction of maximal increase is $\bracket{1/4, -3/4}$. In this direction, the instantaneous rate of $z$ change is $\norm{\bracket{1/4,-3/4}} = \sqrt{10}/4% \approx 0.79
 .$ 
 
 \autoref{fig:direct2} shows the surface plotted from two different perspectives. In each, the gradient is drawn at $P$ with a dashed line (because of the nature of this surface, the gradient points ``into'' the surface). Let $\vec u =\bracket{u_1, u_2}$ be the unit vector in the direction of $\nabla f$ at $P$. Each graph of the figure also contains the vector $\bracket{u_1, u_2, \norm{\nabla f\,}}$. This vector has a ``run'' of 1 (because in the $x$-$y$ plane it moves 1 unit) and a ``rise'' of $\norm{\nabla f}$, hence we can think of it as a vector with slope of $\norm{\nabla f}$ in the direction of $\nabla f$, helping us visualize how ``steep'' the surface is in its steepest direction. 
 %To help understand this number, consider moving from $P$ one unit in the direction of $\bracket{1/4,-3/4}$. The unit vector in this direction is $\bracket{1/\sqrt{10},-3/\sqrt{10}}\approx\bracket{0.316,-0.949}$; moving from $P$ one unit in the direction of the gradient places one at the point $R=(1.363,0.098)$. 
 
-\mtable{Graphing the surface and important directions in \autoref{ex_direct2}.}{fig:direct2}{%
-\myincludegraphicsthree{width=130pt,3Dmenu,activate=onclick,deactivate=onclick,
+\mtable[-6\baselineskip]{Graphing the surface and important directions in \autoref{ex_direct2}.}{fig:direct2}{%
+\myincludeasythree{width=.8\marginparwidth,
 3Droll=0,
 3Dortho=0.0051408205181360245,
 3Dc2c=0.6666666865348816 0.6666666865348816 0.3333333432674408,
 3Dcoo=-1.1194640398025513 -3.250971794128418 8.740827560424805,
-3Droo=150,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.,trim = 0mm 5mm 0mm 0mm,clip}{figures/figdirect2}\\
-%\myincludegraphics[scale=1.,trim = 0mm 5mm 0mm 0mm,clip]{figures/figdirect2}\\
-(a)\\%[15pt]
-\myincludegraphicsthree{width=130pt,3Dmenu,activate=onclick,deactivate=onclick,
+3Droo=150}{width=.8\marginparwidth}{figures/figdirect2_3D}
+\\(a)\\
+\myincludeasythree{width=.8\marginparwidth,
 3Droll=0,
 3Dortho=0.008940433152019978,
 3Dc2c=0.6666666865348816 0.6666666865348816 0.3333333134651184,
 3Dcoo=-6.498621940612793 -16.487354278564453 45.97212600708008,
-3Droo=149.9999987284343,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1}{figures/figdirect2b}\\
-%\myincludegraphics[scale=1.]{figures/figdirect2b}\\
-(b)}
+3Droo=149.9999987284343}{width=.8\marginparwidth}{figures/figdirect2b_3D}
+\\(b)}
 
 %Compare the $z$-values at $P$ and $R$:
-%$$f\left(\frac{\pi}3,\frac{\pi}3\right) = \frac{\sqrt{3}}4 \approx 0.433.$$
+%\[f\left(\frac{\pi}3,\frac{\pi}3\right) = \frac{\sqrt{3}}4 \approx 0.433.\]
 
 The direction of minimal increase is $\bracket{-1/4,3/4}$; in this direction the instantaneous rate of $z$ change is $-\sqrt{10}/4% \approx -0.79
 $.
@@ -183,20 +177,19 @@ Any direction orthogonal to $\nabla f$ is a direction of no $z$ change. We have 
 {We find $\nabla f =\bracket{-2x+2, -2y+2}$. At $P$, we have $\nabla f(1,1) =\bracket{0,0}$. 
 According to \autoref{thm:gradient}, this is the direction of maximal increase. However, $\bracket{0,0}$ is directionless; it has no displacement. And regardless of the unit vector $\vec u$ chosen, $D_{\vec u\,}f = 0$.
 
-\autoref{fig:direct9} helps us understand what this means. We can see that $P$ lies at the top of a paraboloid. In all directions, the instantaneous rate of change is 0. 
-
-So what is the direction of maximal increase? It is fine to give an answer of $\vec 0 =\bracket{0,0}$, as this indicates that all directional derivatives are 0.
-\mfigurethree{width=150pt,3Dmenu,activate=onclick,deactivate=onclick,
+\mtable{At the top of a paraboloid, all directional derivatives are 0.}{fig:direct9}{%
+\myincludeasythree{width=\marginparwidth,
 3Droll=0.641848137510025,
 3Dortho=0.00471429293975234,
 3Dc2c=0.8800624012947083 0.28546664118766785 0.3794717788696289,
 3Dcoo=-34.139766693115234 45.736881256103516 38.29633712768555,
-3Droo=200.00000572048617,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{}{0in}{At the top of a paraboloid, all directional derivatives are 0.}{fig:direct9}{figures/figdirect9}
-%\mfigure{0in}{At the top of a paraboloid, all directional derivatives are 0.}{fig:direct9}{figures/figdirect9}
-}
+3Droo=200.00000572048617}{width=\marginparwidth}{figures/figdirect9_3D}}
 
-The fact that the gradient of a surface always points in the direction of steepest increase/decrease is very useful, as illustrated in the following example.\\
+\autoref{fig:direct9} helps us understand what this means. We can see that $P$ lies at the top of a paraboloid. In all directions, the instantaneous rate of change is 0. 
+
+So what is the direction of maximal increase? It is fine to give an answer of $\vec 0 =\bracket{0,0}$, as this indicates that all directional derivatives are 0.}
+
+The fact that the gradient of a surface always points in the direction of steepest increase/decrease is very useful, as illustrated in the following example.
 
 \example{ex_direct3}{The flow of water downhill}{Consider the surface given by $f(x,y)= 20-x^2-2y^2$. Water is poured on the surface at $(1,1/4)$. What path does it take as it flows downhill?}
 {Let $\vrt =\bracket{x(t), y(t)}$ be the vector--valued function describing the path of the water in the $x$-$y$ plane; we seek $x(t)$ and $y(t)$. We know that water will always flow downhill in the steepest direction; therefore, at any point on its path, it will be moving in the direction of $-\nabla f$. (We ignore the physical effects of momentum on the water.) Thus $\vrp(t)$ will be parallel to $\nabla f$, and there is some constant $c$ such that $c\nabla f = \vrp(t) =\bracket{x\primeskip'(t), y\primeskip'(t)}$. 
@@ -207,8 +200,10 @@ c\nabla f &=\bracket{x\primeskip'(t), y\primeskip'(t)}\\
 \bracket{-2cx, -4cy}& =\bracket{\frac{dx}{dt}, \frac{dy}{dt}}.
 \end{align*}
 This implies
-$$-2cx = \frac{dx}{dt} \quad \text{and} \quad  -4cy =\frac{dy}{dt}, \text{ i.e.,}$$
-$$c = -\frac{1}{2x}\frac{dx}{dt} \quad \text{and} \quad  c =-\frac{1}{4y}\frac{dy}{dt}.$$
+\begin{gather*}
+-2cx = \frac{dx}{dt} \quad \text{and} \quad  -4cy =\frac{dy}{dt}, \text{ i.e.,}\\
+c = -\frac{1}{2x}\frac{dx}{dt} \quad \text{and} \quad  c =-\frac{1}{4y}\frac{dy}{dt}.
+\end{gather*}
 As $c$ equals both expressions, we have
 \[\frac{1}{2x}\frac{dx}{dt} =\frac{1}{4y}\frac{dy}{dt}.\]
 To find an explicit relationship between $x$ and $y$, we can integrate both sides with respect to $t$. Recall from our study of differentials that $\ds \frac{dx}{dt}dt = dx$. Thus:
@@ -229,22 +224,29 @@ x^2 &= yC_2\\
 Cx^2 &= y.
 \end{align*}
 As the water started at the point $(1,1/4)$, we can solve for $C$:
-$$C(1)^2 = \frac14 \quad \Rightarrow \quad C = \frac14.$$
+\[C(1)^2 = \frac14 \quad \Rightarrow \quad C = \frac14.\]
 \mtable{A graph of the surface described in \autoref{ex_direct3} along with the path in the $x$-$y$ plane with the level curves.}{fig:direct3}{%
-\begin{tabular}{c}
-\myincludegraphicsthree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
+\myincludeasythree{width=\marginparwidth,
 3Droll=0.03187335123623557,
 3Dortho=0.004501350689679384,
 3Dc2c=0.37703937292099 0.8674991130828857 0.3244788944721222,
 3Dcoo=31.472492218017578 -33.2381477355957 46.63370132446289,
-3Droo=150.00001038122664,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{}{figures/figdirect3}\\
-%\myincludegraphics{figures/figdirect3}\\
-(a)\\[15pt]
-\myincludegraphics{figures/figdirect3b}\\
-(b)
-\end{tabular}
-}
+3Droo=150.00001038122664}{width=\marginparwidth}{figures/figdirect3_3D}
+\\(a)\\
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-3.5,ymax=3.5,xmin=-4.2,xmax=4.2]
+\addplot[thick,draw={\colortwo},smooth,domain=0:360]({2*cos(x)},{sqrt(2)*sin(x)});
+\addplot[thick,draw={\colortwo},smooth,domain=0:360]({2*sqrt(2)*cos(x)},{2*sin(x)});
+\addplot[thick,draw={\colortwo},smooth,domain=0:360]({2*sqrt(3)*cos(x)},{sqrt(6)*sin(x)});
+\addplot[thick,draw={\colortwo},smooth,domain=0:360]({4*cos(x)},{2*sqrt(2)*sin(x)});
+\addplot[thick,draw={\colorone},smooth,domain=1:3.1]({x},{x^2/4});
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(b)}%
 Thus the water follows the curve $y=x^2/4$ in the $x$-$y$ plane. The surface and the path of the water is graphed in \autoref{fig:direct3}(a). In part (b) of the figure, the level curves of the surface are plotted in the $x$-$y$ plane, along with the curve $y=x^2/4$. Notice how the path intersects the level curves at right angles. As the path follows the gradient downhill, this reinforces the fact that the gradient is orthogonal to level curves.}
 
 \subsection*{Functions of Three Variables}
@@ -252,11 +254,13 @@ Thus the water follows the curve $y=x^2/4$ in the $x$-$y$ plane. The surface and
 The concepts of directional derivatives and the gradient are easily extended to three (and more) variables. We combine the concepts behind Definitions \ref{def:direct_deriv} and \ref{def:gradient} and \autoref{thm:direct_deriv1} into one set of definitions.
 
 \definition{def:direct_deriv3}{\parbox[t]{195pt}{Directional Derivatives and Gradient with Three Variables}}
-{Let $w=F(x,y,z)$ be differentiable on an open ball $B$ and let $\vec u $ be a unit vector in $\mathbb{R}^3$.\index{gradient}\index{directional derivative}\index{derivative!directional}
+{Let $w=F(x,y,z)$ be differentiable on an open ball $B$ and let $\vec u $ be a unit vector in $\mathbb{R}^3$.\index{gradient}\index{directional derivative}\index{derivative!directional}\index{$\nabla$}
 \begin{enumerate}
 	\item	The \textbf{gradient} of $F$ is $\nabla F =\bracket{F_x,F_y,F_z}$.
-	\item The \textbf{gradient of $F$ at $(x_0,y_0,z_0)$ is $$\nabla F(x_0,y_0,z_0) =\bracket{f_x(x_0,y_0,z_0),f_y(x_0,y_0,z_0),f_z(x_0,y_0,z_0)}.$$}
-	\item The \textbf{directional derivative of $F$ in the direction of $\vec u$} is $$D_{\vec u\,}F=\nabla F\cdot \vec u.$$
+	\item The \textbf{gradient of $F$ at $(x_0,y_0,z_0)$ is
+	\[\nabla F(x_0,y_0,z_0) =\bracket{f_x(x_0,y_0,z_0),f_y(x_0,y_0,z_0),f_z(x_0,y_0,z_0)}.\]}
+	\item The \textbf{directional derivative of $F$ in the direction of $\vec u$} is
+	\[D_{\vec u\,}F=\nabla F\cdot \vec u.\]
 \end{enumerate}
 }
 

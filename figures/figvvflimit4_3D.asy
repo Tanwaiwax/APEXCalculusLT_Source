@@ -1,26 +1,17 @@
-import graph3;
+include apexconfig;
 
-//ASY file for figvvf23D.asy in Chapter 11
+//ASY file for fig:vvflimit4 in Chapter 11 sec:vvf_calc
 
 size(200,200,IgnoreAspect);
 //currentprojection=perspective(7,2,1);
 currentprojection=orthographic(5,5,10);
 //currentprojection=orthographic(-5.6,3.8,9.5);
-defaultrender.merge=true;
-
-usepackage("mathspec");
-texpreamble("\setallmainfonts[Mapping=tex-text]{Calibri}");
-texpreamble("\setmainfont[Mapping=tex-text]{Calibri}");
-texpreamble("\setsansfont[Mapping=tex-text]{Calibri}");
-texpreamble("\setmathsfont(Greek){[cmmi10]}");
 
 // setup and draw the axes
 real[] myxchoice={-1,1};
 real[] myzchoice={0,2,4,6};
 real[] myychoice={-1,1};
 
-
-defaultpen(0.5mm);
 pair xbounds=(-1.25,1.25);
 pair ybounds=(-1.25,1.25);
 pair zbounds=(-0.5,7);
@@ -33,18 +24,9 @@ label("$x$",(xbounds.y+0.05*(xbounds.y-xbounds.x),0,0));
 label("$y$",(0,ybounds.y+0.05*(ybounds.y-ybounds.x),0));
 label("$z$",(0,0,zbounds.y+0.05*(zbounds.y-zbounds.x)));
 
-
 triple g(real t) {return (cos(t),sin(t),t);}
 path3 mypath=graph(g,0,2pi,operator ..);
+draw(mypath,colorone,Arrow3(size=4mm));
 
-
-
-
-
-defaultpen(0.75mm);
-draw(O--(-1,0,1),red,Arrow3(size=4mm));
-
-draw(g(pi/2)--g(pi/2)+(-1,0,1),red,Arrow3(size=4mm));
-
-draw(mypath,blue,Arrow3(size=4mm));
-
+draw(O--(-1,0,1),colortwo,Arrow3(size=4mm));
+draw(g(pi/2)--g(pi/2)+(-1,0,1),colortwo,Arrow3(size=4mm));

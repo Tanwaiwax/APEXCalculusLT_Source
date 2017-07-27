@@ -2,26 +2,21 @@
 
 Let $y$ be a function of $x$. We have studied in great detail the derivative of $y$ with respect to $x$, that is, $\frac{dy}{dx}$, which measures the rate at which $y$ changes with respect to $x$. Consider now $z=f(x,y)$. It makes sense to want to know how $z$ changes with respect to $x$ and/or $y$. This section begins our investigation into these rates of change.
 
-\mtable{By fixing $y=2$, the surface $f(x,y) = x^2+2y^2$ is a curve in space.}{fig:partialintro}
-{\myincludegraphicsthree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
+\mtable{By fixing $y=2$, the surface $f(x,y) = x^2+2y^2$ is a curve in space.}{fig:partialintro}{%
+\myincludeasythree{width=.8\marginparwidth,
 3Droll=1.320775024146522,
 3Dortho=0.004999999888241291,
 3Dc2c=0.6570873856544495 0.6839641332626343 0.31690558791160583,
 3Dcoo=-3.0739071369171143 -0.40104401111602783 58.57058334350586,
-3Droo=129.99999696026478,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.25,trim = 2mm 2mm 2mm 2mm,clip}{figures/figpartialintro}\\[10pt]
-%\myincludegraphics[scale=1.25,trim = 2mm 2mm 2mm 2mm,clip]{figures/figpartialintro}\\[10pt]
-(a)\\[5pt]
-\myincludegraphicsthree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
+3Droo=129.99999696026478}{width=.8\marginparwidth}{figures/figpartialintro_3D}
+\\(a)\\
+\myincludeasythree{width=.8\marginparwidth,
 3Droll=1.320775024146522,
 3Dortho=0.004999999888241291,
 3Dc2c=0.6570873856544495 0.6839641332626343 0.31690558791160583,
 3Dcoo=-3.0739071369171143 -0.40104401111602783 58.57058334350586,
-3Droo=129.99999696026478,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.25,trim = 2mm 2mm 2mm 2mm,clip}{figures/figpartialintrob}
-%\myincludegraphics[scale=1.25,trim = 2mm 2mm 2mm 2mm,clip]{figures/figpartialintrob}\\[10pt]
-(b)}
-% todo fix the hash marks on the axes
+3Droo=129.99999696026478}{width=.8\marginparwidth}{figures/figpartialintrob_3D}
+\\(b)}
 
 Consider the function $z=f(x,y) = x^2+2y^2$, as graphed in \autoref{fig:partialintro}(a). By fixing $y=2$, we focus our attention to all points on the surface where the $y$-value is 2, shown in both parts (a) and (b) of the figure. These points form a curve in space: $z = f(x,2) = x^2+8$ which is a function of just one variable. We can take the derivative of $z$ with respect to $x$ along this curve and find equations of tangent lines, etc.
 
@@ -31,16 +26,18 @@ The key notion to extract from this example is: by treating $y$ as  constant (it
 {Let $z=f(x,y)$ be a continuous function on an open set $S$ in $\mathbb{R}^2$.
 \begin{enumerate}
 	\item The \textbf{partial derivative of $f$ with respect to $x$} is:
-	$$f_x(x,y) = \lim_{h\to 0} \frac{f(x+h,y) - f(x,y)}h.$$
+	\[f_x(x,y) = \lim_{h\to 0} \frac{f(x+h,y) - f(x,y)}h.\]
 	%Alternate notations for $\frac{\partial z}{\partial x}$ include: $\ds\frac{\partial}{\partial x}f(x,y),\ f_x(x,y),\ \text{and}\ z_x.$
 	\item The \textbf{partial derivative of $f$ with respect to $y$} is:
-	$$f_y(x,y) = \lim_{h\to 0} \frac{f(x,y+h) - f(x,y)}h.$$
+	\[f_y(x,y) = \lim_{h\to 0} \frac{f(x,y+h) - f(x,y)}h.\]
 	
 	%\item		If $f_x$ and $f_y$ are continuous on $S$, then $f$ is \textbf{differentiable} on $S$. (This definition of differentiability is mathematically ``weak'' but easy to understand; see \autoref{sec:total_differential} for a stronger definition that is less intuitive.)
 	\end{enumerate}
 	\index{partial derivative}\index{derivative!partial}}
 
-\mnote{Alternate notations for $f_x(x,y)$ include: $$\frac{\partial}{\partial x}f(x,y),\ \ \frac{\pf}{\px},\ \ \frac{\pz}{\px},\ \ \text{and}\ z_x,$$ with similar notations for $f_y(x,y).$ For ease of notation, $f_x(x,y)$ is often abbreviated $f_x$.}
+\mnote{Alternate notations for $f_x(x,y)$ include:
+\[\frac{\partial}{\partial x}f(x,y),\ \ \frac{\pf}{\px},\ \ \frac{\pz}{\px},\ \ \text{and}\ z_x,\]
+with similar notations for $f_y(x,y).$ For ease of notation, $f_x(x,y)$ is often abbreviated $f_x$.}
 
 \youtubeVideo{SbfRDBmyAMI}{Partial Derivatives}
 
@@ -71,16 +68,18 @@ Just as $\frac{d}{dx}\big(5^3\big) = 0$, we compute $\frac{\partial}{\px}\big(y^
 {\mbox{}\\[-1.5\baselineskip]\begin{enumerate}
 	\item We have $f(x,y) = x^3y^2+ 5y^2-x+7$.\\
 	Begin with $f_x(x,y)$. Keep $y$ fixed, treating it as a constant or coefficient, as appropriate:
-	$$f_x(x,y) = 3x^2y^2-1.$$ Note how the $5y^2$ and $7$ terms go to zero.
+	\[f_x(x,y) = 3x^2y^2-1.\]
+	Note how the $5y^2$ and $7$ terms go to zero.
 	
 	To compute $f_y(x,y)$, we hold $x$ fixed:
-	$$f_y(x,y) = 2x^3y+10y.$$ Note how the $-x$ and $7$ terms go to zero.
+	\[f_y(x,y) = 2x^3y+10y.\]
+	Note how the $-x$ and $7$ terms go to zero.
 	
 	\item We have $f(x,y) = \cos(xy^2)+\sin x$.\\
 	Begin with $f_x(x,y)$. We need to apply the Chain Rule with the cosine term; $y^2$ is the coefficient of the $x$-term inside the cosine function.
-	$$f_x(x,y) = -\sin(xy^2)(y^2)+\cos x = -y^2\sin(xy^2)+\cos x.$$
+	\[f_x(x,y) = -\sin(xy^2)(y^2)+\cos x = -y^2\sin(xy^2)+\cos x.\]
 	To find $f_y(x,y)$, note that $x$ is the coefficient of the $y^2$ term inside of the cosine term; also note that since $x$ is fixed, $\sin x$ is also fixed, and we treat it as a constant.
-	$$f_y(x,y) = -\sin(xy^2)(2xy) = -2xy\sin(xy^2).$$
+	\[f_y(x,y) = -\sin(xy^2)(2xy) = -2xy\sin(xy^2).\]
 	
 	\item		We have $f(x,y) = e^{x^2y^3}\sqrt{x^2+1}$.\\
 	Beginning with $f_x(x,y)$, note how we need to apply the Product Rule. 
@@ -89,7 +88,7 @@ Just as $\frac{d}{dx}\big(5^3\big) = 0$, we compute $\frac{\partial}{\px}\big(y^
 					&= 2xy^3e^{x^2y^3}\sqrt{x^2+1}+\frac{x e^{x^2y^3}}{\sqrt{x^2+1}}.
 	\end{align*}
 	Note that when finding $f_y(x,y)$ we do not have to apply the Product Rule; since $\sqrt{x^2+1}$ does not contain $y$, we treat it as fixed and hence becomes a coefficient of the $e^{x^2y^3}$ term.
-	$$f_y(x,y) = e^{x^2y^3}(3x^2y^2)\sqrt{x^2+1} = 3x^2y^2e^{x^2y^3}\sqrt{x^2+1}.\eoehere$$
+	\[f_y(x,y) = e^{x^2y^3}(3x^2y^2)\sqrt{x^2+1} = 3x^2y^2e^{x^2y^3}\sqrt{x^2+1}.\eoehere\]
 \end{enumerate}}
 
 We have shown \textit{how} to compute a partial derivative, but it may still not be clear what a partial derivative \textit{means}. Given $z=f(x,y)$, $f_x(x,y)$ measures the rate at which $z$ changes as only $x$ varies: $y$ is held constant. \index{partial derivative!meaning}
@@ -100,32 +99,26 @@ The following example helps us visualize this more.
 
 \example{ex_partial3}{Evaluating partial derivatives}{Let $z=f(x,y)=-x^2-\frac12y^2+xy+10$. Find $f_x(2,1)$ and $f_y(2,1)$ and interpret their meaning.}
 {We begin by computing $f_x(x,y) = -2x+y$ and $f_y(x,y) = -y+x$. Thus
-$$f_x(2,1) = -3 \quad \text{and}\quad f_y(2,1) = 1.$$
+\[f_x(2,1) = -3 \quad \text{and}\quad f_y(2,1) = 1.\]
 It is also useful to note that $f(2,1) = 7.5$. What does each of these numbers mean?
 
-Consider $f_x(2,1)=-3$, along with \autoref{fig:partial3}(a). If one ``stands'' on the surface at the point $(2,1,7.5)$ and moves parallel to the $x$-axis (i.e., only the $x$-value changes, not the $y$-value), then the instantaneous rate of change is $-3$. Increasing the $x$-value will decrease the $z$-value; decreasing the $x$-value will increase the $z$-value.
-
 \mtable{Illustrating the meaning of partial derivatives.}{fig:partial3}{%
-\begin{tabular}{c}
-\myincludegraphicsthree{width=150pt,3Dmenu,activate=onclick,deactivate=onclick,
+\myincludeasythree{width=\marginparwidth,
 3Droll=0.,
 3Dortho=0.004999999888241291,
 3Dc2c=0.6528097987174988 0.6841705441474915 0.3251922130584717,
 3Dcoo=7.158430576324463 9.488722801208496 72.96935272216797,
-3Droo=129.9999938624484,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.25,trim=0mm 5mm 0mm 0mm,clip}{figures/figpartial3a}\\
-%\myincludegraphics[scale=1.25,trim=0mm 5mm 0mm 0mm,clip]{figures/figpartial3a}\\
-(a)\\[10pt]
-\myincludegraphicsthree{width=150pt,3Dmenu,activate=onclick,deactivate=onclick,
+3Droo=129.9999938624484}{width=\marginparwidth}{figures/figpartial3a_3D}
+\\(a)\\[10pt]
+\myincludeasythree{width=\marginparwidth,
 3Droll=0.,
 3Dortho=0.004999999888241291,
 3Dc2c=0.6528097987174988 0.6841705441474915 0.3251922130584717,
 3Dcoo=7.158430576324463 9.488722801208496 72.96935272216797,
-3Droo=129.9999938624484,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.25,trim=0mm 5mm 0mm 0mm,clip}{figures/figpartial3b}\\
-%\myincludegraphics[scale=1.25,trim=0mm 5mm 0mm 0mm,clip]{figures/figpartial3b}\\
-(b)
-\end{tabular}}
+3Droo=129.9999938624484}{width=\marginparwidth}{figures/figpartial3b_3D}
+\\(b)}
+
+Consider $f_x(2,1)=-3$, along with \autoref{fig:partial3}(a). If one ``stands'' on the surface at the point $(2,1,7.5)$ and moves parallel to the $x$-axis (i.e., only the $x$-value changes, not the $y$-value), then the instantaneous rate of change is $-3$. Increasing the $x$-value will decrease the $z$-value; decreasing the $x$-value will increase the $z$-value.
 
 Now consider $f_y(2,1)=1$, illustrated in \autoref{fig:partial3}(b). Moving along the curve drawn on the surface, i.e., parallel to the $y$-axis and not changing the $x$-values, increases the $z$-value instantaneously at a rate of 1. Increasing the $y$-value by 1 would increase the $z$-value by approximately 1.
 
@@ -139,13 +132,15 @@ Let $z=f(x,y)$. We have learned to find the partial derivatives $f_x(x,y)$ and $
 \definition{def:second_partial}{Second Partial Derivative, Mixed Partial Derivative}
 {Let $z=f(x,y)$ be continuous on an open set $S$.
 \begin{enumerate}
-	\item The \textbf{second partial derivative of $f$ with respect to $x$ then $x$} is $$\frac{\partial}{\partial x}\left(\frac{\partial f}{\px}\right) = \frac{\partial^2 f}{\px^2} = \big(\,f_x\,\big)_x = f_{xx}$$
+	\item The \textbf{second partial derivative of $f$ with respect to $x$ then $x$} is
+	\[\frac{\partial}{\partial x}\left(\frac{\partial f}{\px}\right) = \frac{\partial^2 f}{\px^2} = \big(\,f_x\,\big)_x = f_{xx}\]
 
-\item The \textbf{second partial derivative of $f$ with respect to $x$ then $y$} is $$\frac{\partial}{\partial y}\left(\frac{\partial f}{\px}\right) = \frac{\partial^2f}{\py\px} = \big(\,f_x\,\big)_y = f_{xy}$$
+\item The \textbf{second partial derivative of $f$ with respect to $x$ then $y$} is 
+\[\frac{\partial}{\partial y}\left(\frac{\partial f}{\px}\right) = \frac{\partial^2f}{\py\px} = \big(\,f_x\,\big)_y = f_{xy}\]
 
-%\item The \textbf{second partial derivative of $f$ with respect to $y$ then $y$} is $$\frac{\partial}{\partial y}\left(\frac{\partial f}{\py}\right) = \frac{\partial^2 f}{\py^2} = \big(\,f_y\,\big)_y= f_{yy}$$
+%\item The \textbf{second partial derivative of $f$ with respect to $y$ then $y$} is \[\frac{\partial}{\partial y}\left(\frac{\partial f}{\py}\right) = \frac{\partial^2 f}{\py^2} = \big(\,f_y\,\big)_y= f_{yy}\]
 %
-%\item The \textbf{second partial derivative of $f$ with respect to $y$ then $x$} is $$\frac{\partial}{\partial x}\left(\frac{\partial f}{\py}\right) = \frac{\partial^2f}{\px\py} = \big(\,f_y\,\big)_x = f_{yx}$$
+%\item The \textbf{second partial derivative of $f$ with respect to $y$ then $x$} is \[\frac{\partial}{\partial x}\left(\frac{\partial f}{\py}\right) = \frac{\partial^2f}{\px\py} = \big(\,f_y\,\big)_x = f_{yx}\]
 
 \end{enumerate}
 
@@ -161,7 +156,7 @@ The way to keep track of the order is to start with the variable nearest to the 
 The notation of second partial derivatives gives some insight into the notation of the second derivative of a function of a single variable. If $y=f(x)$, then $\ds \fp'(x) = \frac{d^2 y}{dx^2}$. The ``$d^2y$'' portion means ``take the derivative of $y$ twice,'' while ``$dx^2$'' means ``with respect to $x$ both times.'' When we only know of functions of a single variable, this latter phrase seems silly: there is only one variable to take the derivative with respect to. Now that we understand functions of multiple variables, we see the importance of specifying which variables we are referring to.
 
 \example{ex_partial6}{Second partial derivatives}{For each of the following, find all six first and second partial derivatives. That is, find 
-$$f_x,\quad f_y,\quad f_{xx},\quad f_{yy},\quad f_{xy}\quad \text{and}\quad f_{yx}\,.$$
+\[f_x,\quad f_y,\quad f_{xx},\quad f_{yy},\quad f_{xy}\quad \text{and}\quad f_{yx}\,.\]
 \begin{enumerate}
 	\item $f(x,y) = x^3y^2 + 2xy^3+\cos x$
 	\item	$\ds f(x,y) = \frac{x^3}{y^2}$
@@ -221,7 +216,6 @@ Now consider $z=f(x,y)$. Similar statements can be made about $f_{xx}$ and $f_{y
 
 Similarly, $f_{yy}$ measures the concavity in the $y$-direction. If $f_{yy}(x,y)>0$, then $f_y$ is increasing with respect to $y$ and the graph of $f$ will be concave up in the $y$-direction. Appealing to the rolling meadow analogy again, $f_{yy}$ measures whether one's path is concave up/down when walking due north.
 
-% todo are we sure about this metaphor?
 We now consider the mixed partials $f_{xy}$ and $f_{yx}$. The mixed partial $f_{xy}$ measures how much $f_x$ changes with respect to $y$. Once again using the rolling meadow analogy, $f_{x}$ measures the slope if one walks due east. Looking east, begin walking \textit{north} (side--stepping). Is the path towards the east getting steeper? If so, $f_{xy}>0$. Is the path towards the east not changing in steepness? If so, then $f_{xy}=0$. A similar thing can be said about $f_{yx}$: consider the steepness of paths heading north while side--stepping to the east.
 
 The following example examines these ideas with concrete numbers and graphs.
@@ -234,24 +228,21 @@ $f_x(x,y) = 2x+y$,\quad  $f_y(x,y) = -2y+x$,\quad $f_{xx}(x,y) = 2$, \quad $f_{y
 The slope of the tangent line at $(-1/2, 1/2, -1/4)$ in the direction of $x$ is $-1/2$: if one moves from that point parallel to the $x$-axis, the instantaneous rate of change will be $-1/2$. The slope of the tangent line at this point in the direction of $y$ is $-3/2$: if one moves from this point parallel to the $y$-axis, the instantaneous rate of change will be $-3/2$. These tangents lines are graphed in \autoref{fig:partial7}(a) and (b), respectively, where the tangent lines are drawn in a solid line. 
 
 \mtable{Understanding the second partial derivatives in \autoref{ex_partial7}.}{fig:partial7}{%
-\myincludegraphicsthree{width=150pt,3Dmenu,activate=onclick,deactivate=onclick,
+\myincludeasythree{width=\marginparwidth,
 3Droll=0.4263461176034552,
 3Dortho=0.004999999888241291,
 3Dc2c=0.358655720949173 0.8657855987548828 0.34897172451019287,
 3Dcoo=14.456816673278809 24.785551071166992 12.880075454711914,
-3Droo=129.9999903526944,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.25,trim=0mm 4mm 0mm 0mm,clip}{figures/figpartial6}\\
-%\myincludegraphics[scale=1.25,trim=0mm 4mm 0mm 0mm,clip]{figures/figpartial6}\\
-(a)\\[10pt]
-\myincludegraphicsthree{width=150pt,3Dmenu,activate=onclick,deactivate=onclick,
+3Droo=129.9999903526944}{width=\marginparwidth}{figures/figpartial6_3D}
+\\(a)\\
+\myincludeasythree{width=\marginparwidth,
 3Droll=0.4263461176034552,
 3Dortho=0.004999999888241291,
 3Dc2c=0.358655720949173 0.8657855987548828 0.34897172451019287,
 3Dcoo=14.456816673278809 24.785551071166992 12.880075454711914,
-3Droo=129.9999903526944,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.25,trim=0mm 4mm 0mm 0mm,clip}{figures/figpartial6b}\\
-%\myincludegraphics[scale=1.25,trim=0mm 4mm 0mm 0mm,clip]{figures/figpartial6b}\\
-(b)}
+3Droo=129.9999903526944}{width=\marginparwidth}{figures/figpartial6b_3D}
+\\(b)}
+
 Now consider only \autoref{fig:partial7}(a). Three directed tangent lines are drawn (two are dashed), each in the direction of $x$; that is, each has a slope determined by $f_x$. Note how as $y$ increases, the slope of these lines get closer to $0$. Since the slopes are all negative, getting closer to 0 means the \textit{slopes are increasing.} The slopes given by $f_x$ are increasing as $y$ increases, meaning $f_{xy}$ must be positive. 
 
 Since $f_{xy}=f_{yx}$, we also expect $f_y$ to increase as $x$ increases. Consider \autoref{fig:partial7}(b) where again three directed tangent lines are drawn, this time each in the direction of $y$ with slopes determined by $f_y$. As $x$ increases, the slopes become less steep (closer to 0). Since these are negative slopes, this means the slopes are increasing.
@@ -266,7 +257,7 @@ The concepts underlying partial derivatives can be easily extend to more than tw
 {Let $w=f(x,y,z)$ be a continuous function on an open set $S$ in $\mathbb{R}^3$. 
 
 The \textbf{partial derivative of $f$ with respect to $x$} is:
-	$$f_x(x,y,z) = \lim_{h\to 0} \frac{f(x+h,y,z)-f(x,y,z)}{h}.$$
+	\[f_x(x,y,z) = \lim_{h\to 0} \frac{f(x+h,y,z)-f(x,y,z)}{h}.\]
 	
 	Similar definitions hold for $f_y(x,y,z)$ and $f_z(x,y,z)$.
 	%\item The \textbf{second partial derivative of $f$ }
@@ -303,8 +294,10 @@ We can continue taking partial derivatives of partial derivatives of partial der
 \index{partial derivative!high order}
 
 We do not formally define each higher order derivative, but rather give just a few examples of the notation.\\
-$$f_{xyx}(x,y)  =\frac{\partial}{\px}\left(\frac{\partial}{\py}\left(\frac{\pf}{\px}\right)\right) \quad \text{and}$$
-$$f_{xyz}(x,y,z)  =\frac{\partial}{\partial z}\left(\frac{\partial}{\py}\left(\frac{\pf}{\px}\right)\right)  .$$
+\begin{gather*}
+f_{xyx}(x,y)  =\frac{\partial}{\px}\left(\frac{\partial}{\py}\left(\frac{\pf}{\px}\right)\right) \quad \text{and}\\
+f_{xyz}(x,y,z)  =\frac{\partial}{\partial z}\left(\frac{\partial}{\py}\left(\frac{\pf}{\px}\right)\right).
+\end{gather*}
 
 \example{ex_partial9}{Higher order partial derivatives}{\mbox{}\\[-2\baselineskip]
 \begin{enumerate}

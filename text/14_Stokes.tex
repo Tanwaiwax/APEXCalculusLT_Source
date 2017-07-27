@@ -1,4 +1,4 @@
-\section{Stokes' Theorem}
+\section{Stokes' Theorem}\label{sec:stokes}
 
 So far the only types of line integrals which we have discussed are those along curves in $\mathbb{R}^{2}$. But the definitions and properties which were covered in Sections \ref{sec:line_int} and \ref{sec:line_int_props} can easily be extended to include functions of three variables, so that we can now discuss line integrals along curves in $\mathbb{R}^{3}$.
 
@@ -110,6 +110,7 @@ Evaluate $\int_C f(x,y,z)\,ds$. (Note: $C$ is called a \emph{conical helix}\inde
 We will now discuss a generalization of Green's Theorem in $\mathbb{R}^{2}$ to \emph{orientable} surfaces in $\mathbb{R}^{3}$, called \emph{Stokes' Theorem}.\index{Stokes' Theorem}\index{orientable}\index{surface!orientable} A surface $\Sigma$ in $\mathbb{R}^{3}$ is \textbf{orientable} if there is a continuous vector field \vecn\ in $\mathbb{R}^{3}$ such that \vecn\ is nonzero and normal to $\Sigma$ (i.e. perpendicular to the tangent plane) at each point of $\Sigma$. We say that such an \vecn\ is a \emph{normal vector field}.\index{normal vector field}\index{vector field!normal}
 
 \mtable{An orientation of the sphere.}{fig:or_sph}{\begin{tikzpicture}
+% todo Tim convert to asy
  \shade [ball color={\coloronefill!60!\colorone}] (0,0) circle (1.5);
  \draw [->] (0,0)--node[pos=1,above]{\small$y$} (2,0);
  \draw [->] (0,0)--node[pos=1,right]{\small$z$} (0,2);
@@ -175,11 +176,18 @@ Let $\Sigma$ be an orientable surface in $\mathbb{R}^{3}$ whose boundary is a si
     \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) \veck ,\index{curl}
   \end{equation}
   \vecn\ is a positive unit normal vector over $\Sigma$, and $C$ is traversed \vecn-positively.}
-\mnote[-4\baselineskip]{The formula for $\curl\vecf$ is unfortunately complicated.  \autoeqref{nablacurl} in \autoref{divgradcurllap} provides a simpler way to remember it.}
-  
+
+The formula for $\curl\vecf$ is unfortunately complicated.  If we recall that we have defined the operator $\nabla$ as a \emph{vector} in $\mathbb{R}^3$ by\index{$\nabla$}
+\[
+ \nabla = \frac{\partial}{\partial x}\,\veci + \frac{\partial}{\partial y}\,\vecj +
+   \frac{\partial}{\partial z}\,\veck ,
+\]
+then we can write $\curl\vecf=\nabla\times\vecf$.
+
 \begin{proof}
  As the general case is beyond the scope of this text, we will prove the theorem only for the special case where $\Sigma$ is the graph of $z=z(x,y)$ for some smooth real-valued function $z(x,y)$, with $(x,y)$ varying over a region $D$ in $\mathbb{R}^{2}$. \mtable{A particular case of Stokes' Theorem}{fig_stokes_eg}{\begin{tikzpicture}
 %  \usetikzlibrary{arrows}
+% todo Tim convert to asy
   \shade [ball color=\coloronefill] [rotate around={-20:(2.0,1.5)}] (2.0,1.5) ellipse (1.58 and 0.6);
   \draw [->] (0,0)--node[pos=1,above]{\small$y$} (4,0);
   \draw [->] (0,0)--node[pos=1,right]{\small$z$} (0,3);
@@ -290,7 +298,8 @@ Let $\Sigma$ be an orientable surface in $\mathbb{R}^{3}$ whose boundary is a si
  \]
  is in fact a positive unit normal vector to $\Sigma$ (see \autoref{fig_stokes_eg}). Hence, using the parametrization $\vecr(x,y) = x\,\veci + y\,\vecj + z(x,y)\,\veck$, for $(x,y)$ in $D$, of the surface $\Sigma$, we have $\frac{\partial \vecr}{\partial x} = \veci + \frac{\partial z}{\partial x}\,\veck$ and $\frac{\partial \vecr}{\partial y} = \vecj + \frac{\partial z}{\partial y}\,\veck$, and so $\norm{\frac{\partial \vecr}{\partial x}\times\frac{\partial \vecr}{\partial y}} = \sqrt{1 + \left( \tfrac{\partial z}{\partial x} \right)^2 + \left( \tfrac{\partial z}{\partial y} \right)^2}$. So we see that using \autoeqref{eqn:curl} for $\curl{\vecf}$, we have
  \begin{align*}
-  \iint_{\Sigma} \Dotprod{(\curl{\vecf})}{\vecn}\,d\sigma &=
+  \iint_{\Sigma} & \Dotprod{(\curl{\vecf})}{\vecn}\,d\sigma \\
+  &=
    \iint_{D} \Dotprod{(\curl{\vecf}\,)}{\vecn}\,
    \norm{\frac{\partial \vecr}{\partial x}\times\frac{\partial \vecr}{\partial y}}\,dA\\
    &= \iint_{D} \Dotprod{\left( \left( \frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z} \right)
@@ -312,6 +321,7 @@ Also, it should be noted that Stokes' Theorem holds even when the boundary curve
 
 \example{exmp_stokesparab}{Verifying Stokes' Theorem}{Verify Stokes' Theorem for $\vecf(x,y,z) = z\,\veci + x\,\vecj + y\,\veck$ when $\Sigma$ is the paraboloid $z=x^2 + y^2$ such that $z \le 1$ (see \autoref{fig_parab_stokes}).%
  \mtable{$z=x^2 + y^2$ for \autoref{exmp_stokesparab}.}{fig_parab_stokes}{\begin{tikzpicture}
+ % todo Tim convert to asy
   \usetikzlibrary{arrows}
   \definecolor{insideo}{HTML}{798084}
   \definecolor{insidei}{HTML}{F0F0F0}
@@ -383,7 +393,7 @@ The line integral in the preceding example was far simpler to calculate than the
    \frac{-\tfrac{x}{2}\,\veci - \tfrac{2y}{9}\,\vecj + \veck}{\sqrt{1 +\tfrac{x^2}{4}+
     \tfrac{4y^2}{9}}} ,
  \]
- is a positive unit normal vector to $\Sigma$. And calculating the curl of \vecf gives
+ is a positive unit normal vector to $\Sigma$. And calculating the curl of \vecf\ gives
  \[
   \curl\vecf = (-4y-0)\veci + (9x-0)\vecj + (2-2)\veck = -4y\,\veci + 9x\,\vecj +
    0\,\veck,
@@ -413,7 +423,7 @@ to the definition given by \autoeqref{eqn:curl}. Namely, for a point $(x,y,z)$ i
 where $S$ is the surface area of a surface $\Sigma$ containing the point $(x,y,z)$ and with a simple closed boundary curve $C$ and positive unit normal vector \vecn at $(x,y,z)$. In the limit, think of the curve $C$ shrinking to the point $(x,y,z)$, which causes $\Sigma$, the surface it bounds, to have smaller and smaller surface area. That ratio of circulation to surface area in the limit is what makes the curl a rough measure of circulation density (i.e., circulation per unit area).
 
 \begin{lxfigure}
-\begin{center}
+\centering
 \begin{tikzpicture}[scale=1.34]
  \usetikzlibrary{arrows}
  \draw [->] (-2.5,0) -- (3,0)node[above]{\small$x$};
@@ -438,7 +448,6 @@ where $S$ is the surface area of a surface $\Sigma$ containing the point $(x,y,z
  \draw [draw={\colorone},->] (-1,3) ++(165:0.8) arc (165:105:0.8);
 \end{tikzpicture}
 \caption{Curl and rotation}\label{fig_curl_rot}
-\end{center}
 \end{lxfigure}
 
 An idea of how the curl of a vector field is related to rotation is shown in \autoref{fig_curl_rot}. Suppose we have a vector field $\vecf(x,y,z)$ which is always parallel to the $xy$-plane at each point $(x,y,z)$ and that the vectors grow larger the further the point $(x,y,z)$ is from the $y$-axis. For example, $\vecf(x,y,z) = (1+x^2 )\,\vecj$. Think of the vector field as representing the flow of water, and imagine dropping two wheels with paddles into that water flow, as in \autoref{fig_curl_rot}. Since the flow is stronger (i.e., the magnitude of \vecf\ is larger) as you move away from the $y$-axis, then such a wheel would rotate counterclockwise if it were dropped to the right of the $y$-axis, and it would rotate clockwise if it were dropped to the left of the $y$-axis. In both cases the curl would be nonzero ($\curl\vecf(x,y,z) = 2x\,\veck$ in our example) and would obey the right-hand rule, that is, $\curl\vecf(x,y,z)$ points in the direction of your thumb as you cup your right hand in the direction of the rotation of the wheel. So the curl points outward (in the positive $z$-direction) if $x > 0$ and points inward (in the negative $z$-direction) if $x < 0$. Notice that if all the vectors had the same direction \emph{and} the same magnitude, then the wheels would not rotate and hence there would be no curl (which is why such fields are called irrotational, meaning no rotation).

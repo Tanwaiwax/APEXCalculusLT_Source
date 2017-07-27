@@ -4,18 +4,58 @@ In normal conversation we describe position in terms of both \emph{time} and \em
 
 Currently, our vector--valued functions have defined points with a parameter $t$, which we often take to represent time. Consider \autoref{fig:vvfarc_intro1}(a), where $\vrt =\bracket{t^2-t,t^2+t}$ is graphed and the points corresponding to $t=0,\ 1$ and $2$ are shown. Note how the arc length between $t=0$ and $t=1$ is smaller than the arc length between $t=1$ and $t=2$; if the parameter $t$ is time and $\vec r$ is position, we can say that the particle traveled faster on $[1,2]$ than on $[0,1]$. 
 \mtable{Introducing the arc length parameter.}{fig:vvfarc_intro1}{%
-\begin{tabular}{c}
-\myincludegraphics{figures/figvvfarc_intro1}\\
-(a)\\[10pt]
-\myincludegraphics{figures/figvvfarc_intro1b}\\
-(b)
-\end{tabular}}
+\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-1.1,ymax=6.5,xmin=-2.1,xmax=7]
+\addplot [thick,draw={\colorone}, smooth,domain=-2:2.1,samples=30] ({x^2-x},{x^2+x});
+\filldraw [draw={\colortwo}](axis cs: 0,0) circle (1.5pt)
+ node [black,above right] {\scriptsize $t=0$};
+\filldraw [draw={\colortwo}](axis cs: 0,2) circle (1.5pt)
+ node [black, right] {\scriptsize $t=1$};
+\filldraw [draw={\colortwo}](axis cs: 2,6) circle (1.5pt)
+ node [black, right] {\scriptsize $t=2$};
+\draw [thick,->,draw={\colorone}] (axis cs:3.79,.77)--(axis cs:3.75,.75)
+ node [above ,black] {\scriptsize $\vec r(t)$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(a)\\[10pt]
+\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-1.1,ymax=6.5,xmin=-2.1,xmax=7]
+\addplot [thick,draw={\colorone}, smooth,domain=-2:2.1,samples=30] ({x^2-x},{x^2+x});
+\filldraw [draw={\colortwo}](axis cs: 0,0) circle (1.5pt)
+ node [black,above right] {\scriptsize $s=0$};
+\filldraw [draw={\colortwo}](axis cs: -.24,.94) circle (1.5pt)
+ node [black, right] {\scriptsize $s=1$};
+\filldraw [draw={\colortwo}](axis cs: -.03,1.91) circle (1.5pt)
+ node [black, right] {\scriptsize $s=2$};
+\filldraw [draw={\colortwo}](axis cs: .33,2.84) circle (1.5pt)
+ node [black, right] {\scriptsize $s=3$};
+\filldraw [draw={\colortwo}](axis cs: .75,3.75) circle (1.5pt)
+ node [black, right] {\scriptsize $s=4$};
+\filldraw [draw={\colortwo}](axis cs: 1.21,4.63) circle (1.5pt)
+ node [black, right] {\scriptsize $s=5$};
+\filldraw [draw={\colortwo}](axis cs: 1.71, 5.51) circle (1.5pt)
+ node [black, right] {\scriptsize $s=6$};
+\draw [thick,->,draw={\colorone}] (axis cs:3.79,.77)--(axis cs:3.75,.75)
+ node [above ,black] {\scriptsize $\vec r(s)$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(b)}
 
 Now consider \autoref{fig:vvfarc_intro1}(b), where the same graph is parametrized by a different variable $s$.  Points corresponding to $s=0$ through $s=6$ are plotted. The arc length of the graph between each adjacent pair of points is 1. We can view this parameter $s$ as distance; that is, the arc length of the graph from $s=0$ to $s=3$ is 3, the arc length from $s=2$ to $s=6$ is 4, etc. If one wants to find the point 2.5 units from an initial location (i.e., $s=0$), one would compute $\vec r(2.5)$. This parameter $s$ is very useful, and is called the \textbf{arc length parameter}.\index{arc length parameter}\index{arc length}
 
 How do we find the arc length parameter? 
 
-Start with any parametrization of $\vec r$. We can compute the arc length of the graph of $\vec r$ on the interval $[0,t]$ with $$\text{arc length } = \int_0^t\norm{\vec r\,'(u)}\ du.$$ We can turn this into a function: as $t$ varies, we find the arc length $s$ from $0$ to $t$. This function is
+Start with any parametrization of $\vec r$. We can compute the arc length of the graph of $\vec r$ on the interval $[0,t]$ with
+\[\text{arc length } = \int_0^t\norm{\vec r\,'(u)}\ du.\]
+We can turn this into a function: as $t$ varies, we find the arc length $s$ from $0$ to $t$. This function is
 \begin{equation}
 s(t) = \int_0^t \norm{\vec r\,'(u)}\ du.\label{eq:vvfarc}
 \end{equation}
@@ -26,7 +66,7 @@ This establishes a relationship between $s$ and $t$. Knowing this relationship e
 
 \example{ex_vvfarc1}{Finding the arc length parameter}{Let $\vec r(t) =\bracket{3t-1,4t+2}$. Parametrize $\vec r$ with the arc length parameter $s$.}
 {Using \autoeqref{eq:vvfarc}, we write
-$$s(t) = \int_0^t \norm{\vec r\,'(u)}\ du.$$
+\[s(t) = \int_0^t \norm{\vec r\,'(u)}\ du.\]
 We can integrate this, explicitly finding a relationship between $s$ and $t$:
 \begin{align*}
 s(t) &= \int_0^t \norm{\vec r\,'(u)}\ du \\
@@ -35,12 +75,31 @@ s(t) &= \int_0^t \norm{\vec r\,'(u)}\ du \\
 			&= 5t.
 \end{align*}
 Since $s=5t$, we can write $t=s/5$ and replace $t$ in $\vec r(t)$ with $s/5$:
-$$\vec r(s) =\bracket{3(s/5)-1, 4(s/5)+2}=\bracket{\frac35s-1,\frac45s+2}.$$
+\[\vec r(s) =\bracket{3(s/5)-1, 4(s/5)+2}=\bracket{\frac35s-1,\frac45s+2}.\]
 Clearly, as shown in \autoref{fig:vvfarc1}, the graph of $\vec r$ is a line, where $t=0$ corresponds to the point $(-1,2)$. What point on the line is 2 units away from this initial point? We find it with $s(2) =\bracket{1/5, 18/5}$. 
-\mfigure{0in}{Graphing $\vec r$ in \autoref{ex_vvfarc1} with parameters $t$ and $s$.}{fig:vvfarc1}{figures/figvvfarc1}
+
+\mtable{Graphing $\vec r$ in \autoref{ex_vvfarc1} with parameters $t$ and $s$.}{fig:vvfarc1}{\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,xtick={1,2,-1,-2},
+ymin=-1.1,ymax=6.5,xmin=-2.1,xmax=2.9]
+\addplot [thick,draw={\colorone}, smooth,domain=-2.5:2.5] ({3*x-1},{4*x+2});
+\filldraw (axis cs:-1,2) circle (1.5pt) node [left] {\scriptsize $t=0$}
+ (axis cs:2,6) circle (1.5pt) node [left] {\scriptsize $t=1$}
+ (axis cs: -.4,2.8) circle (1.5pt) node [right,draw={\colortwo}] {\scriptsize $s=1$}
+ (axis cs: .2,3.6) circle (1.5pt) node [right,draw={\colortwo}] {\scriptsize $s=2$}
+ (axis cs: .8,4.4) circle (1.5pt) node [right,draw={\colortwo}] {\scriptsize $s=3$}
+ (axis cs: 1.4,5.2) circle (1.5pt) node [right,draw={\colortwo}] {\scriptsize $s=4$}
+ (axis cs: 2,6) circle (1.5pt) node [right,draw={\colortwo}] {\scriptsize $s=5$};
+\draw (axis cs:-1,2) node [draw={\colortwo},shift={(10pt,-5pt)}]  {\scriptsize $s=0$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 Is the point $(1/5,18/5)$ really 2 units away from $(-1,2)$? We use the Distance Formula to check:
-$$d = \sqrt{\left(\frac15-(-1)\right)^2+ \left(\frac{18}5-2\right)^2} = \sqrt{\frac{36}{25}+\frac{64}{25}} = \sqrt{4}=2.$$
+\[
+d = \sqrt{\left(\frac15-(-1)\right)^2+ \left(\frac{18}5-2\right)^2} = \sqrt{\frac{36}{25}+\frac{64}{25}} = \sqrt{4}=2.
+\]
 Yes, $s(2)$ is indeed 2 units away, in the direction of travel, from the initial point.}
 
 Things worked out very nicely in \autoref{ex_vvfarc1}; we were able to establish directly that $s=5t$. Usually, the arc length parameter is much more difficult to describe in terms of $t$, a result of integrating a square--root. There are a number of things that we can learn about the arc length parameter from \autoeqref{eq:vvfarc}, though, that are incredibly useful.
@@ -69,10 +128,38 @@ where $\vec T(t)$ is the unit tangent vector. \autoeqref{eq:vvfarc2} is often mi
 \subsection*{Curvature}
 
 \mtable[-1in]{Establishing the concept of curvature.}{fig:curvatureintro}{%
-\myincludegraphics{figures/figcurvature_intro}\\
-(a)\\[10pt]
-\myincludegraphics{figures/figcurvature_introb}\\
-(b)}
+\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-.1,ymax=2.9,xmin=-.1,xmax=3.5]
+\addplot [thick,draw={\colorone}, smooth,domain=-1:1.5] ({x^2-x+1},{x^3+1});
+\draw[->,draw={\colorone},thick] (axis cs:2.44, 0.488) -- (axis cs: 2.4141, 0.506961);
+\filldraw (axis cs:.77,1.04) circle (1.5pt) node [below] {\scriptsize $A$}
+ (axis cs: 1.75, 0.875) circle (1.5pt) node [below] {\scriptsize $B$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(a)\\[10pt]
+\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-.1,ymax=2.9,xmin=-.1,xmax=3.5]
+\addplot [thick,draw={\colorone}, smooth,domain=-1:1.5] ({x^2-x+1},{x^3+1});
+\draw[->,draw={\colortwo},thick] (axis cs:0.8461, 1.53144)  -- (axis cs:1.14654, 2.48524);
+\draw[->,draw={\colortwo},thick] (axis cs:1.2684, 0.989352)-- (axis cs:0.273445, 1.08968);
+\draw[->,draw={\colortwo},thick] (axis cs:2.20203, 0.649597)-- (axis cs:1.35163, 1.17574);
+\draw[->,draw={\colorone},thick] (axis cs:2.44, 0.488) -- (axis cs: 2.4141, 0.506961);
+\filldraw (axis cs:.77,1.04) circle (1.5pt) node [below] {\scriptsize $A$}
+ (axis cs:0.8461, 1.53144) circle (1.5pt)
+ (axis cs: 1.2684, 0.989352) circle (1.5pt)
+ (axis cs: 1.75, 0.875) circle (1.5pt) node [below] {\scriptsize $B$}
+ (axis cs: 2.20203, 0.649597) circle (1.5pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(b)}
 
 Consider points $A$ and $B$ on the curve graphed in \autoref{fig:curvatureintro}(a). One can readily argue that the curve curves more sharply at $A$ than at $B$. It is useful to use a number to describe how sharply the curve bends; that number is the \textbf{curvature} of the curve.
 
@@ -81,10 +168,10 @@ We derive this number in the following way. Consider \autoref{fig:curvatureintro
 \definition{def:curvature}{Curvature}
 {Let $\vec r(s)$ be a vector--valued function where $s$ is the arc length parameter. The curvature $\kappa$ of the graph of $\vec r(s)$ is
 \index{curvature}\index{unit tangent vector!and curvature}
-$$\kappa = \norm{\frac{d\vec T}{ds}} = \norm{\vec T\,'(s)}.$$}
+\[\kappa = \norm{\frac{d\vec T}{ds}} = \norm{\vec T\,'(s)}.\]}
 
 If $\vec r(s)$ is parametrized by the arc length parameter, then 
-$$\vec T(s) = \frac{\vrp(s)}{\norm{\vrp(s)}} \quad \text{and}\quad \vec N(s) = \frac{\vec T\,'(s)}{\norm{\vec T\,'(s)}}.$$
+\[\vec T(s) = \frac{\vrp(s)}{\norm{\vrp(s)}} \quad \text{and}\quad \vec N(s) = \frac{\vec T\,'(s)}{\norm{\vec T\,'(s)}}.\]
 Having defined $\norm{\vec T\,'(s)} =\kappa$, we can rewrite the second equation as
 \begin{equation}
 \vec T\,'(s) = \kappa\vec N(s).\label{eq:curvature}
@@ -114,11 +201,11 @@ While the definition of curvature is a useful mathematical concept, it is nearly
 \index{curvature!equations for}
 \begin{enumerate}
 	\item If $C$ is defined by $y=f(x)$, then 
-	$$\kappa = \frac{\abs{\fp'(x)}}{\Big(1+\big(\fp(x)\big)^2\Big)^{3/2}}.$$
+	\[\kappa = \frac{\abs{\fp'(x)}}{\Big(1+\big(\fp(x)\big)^2\Big)^{3/2}}.\]
 	\item	If $C$ is defined as a vector--valued function in the plane, $\vec r(t) =\bracket{x(t), y(t)}$, then
-	$$\kappa = \frac{\abs{x\primeskip'y\primeskip''-x\primeskip''y\primeskip'}}{\big((x\primeskip')^2+(y\primeskip')^2\big)^{3/2}}.$$
+	\[\kappa = \frac{\abs{x\primeskip'y\primeskip''-x\primeskip''y\primeskip'}}{\big((x\primeskip')^2+(y\primeskip')^2\big)^{3/2}}.\]
 	\item If $C$ is defined in space by a vector--valued function $\vec r(t)$, then
-$$\kappa = \frac{\norm{\vec T\,'(t)}}{\norm{\vrp(t)}} = \frac{\norm{\vrp(t)\times\vrp'(t)}}{\norm{\vrp(t)}^3} = \frac{\vec a(t)\cdot \vec N(t)}{\norm{\vec v(t)}^2}.$$
+\[\kappa = \frac{\norm{\vec T\,'(t)}}{\norm{\vrp(t)}} = \frac{\norm{\vrp(t)\times\vrp'(t)}}{\norm{\vrp(t)}^3} = \frac{\vec a(t)\cdot \vec N(t)}{\norm{\vec v(t)}^2}.\]
 \end{enumerate}}
 
 \begin{proof}
@@ -188,13 +275,38 @@ Let a point $P$ on a smooth curve $C$  be given, and let $\kappa$ be the curvatu
 		\item passes through $P$,
 		\item	lies on the concave side of $C$,
 		\item	has a common tangent line as $C$ at $P$ and
+%
+\mtable{Illustrating the osculating circles for the curve seen in \autoref{fig:curvatureintro}.}{fig:curvature_osculate}{\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-.1,ymax=2.9,xmin=-.1,xmax=3.5]
+\addplot [thick,draw={\colorone}, smooth,domain=-1:1.5] ({x^2-x+1},{x^3+1});
+\draw[thick,draw={\colortwo}](axis cs:.83,1.09)circle(.08);
+\draw[thick,draw={\colortwo}](axis cs:.99,-1.15)circle(2.17);
+\draw[->,draw={\colorone},thick] (axis cs:2.44, 0.488) -- (axis cs: 2.4141, 0.506961);
+\filldraw (axis cs:.77,1.04) circle (1.5pt) node [below] {\scriptsize $A$}
+ (axis cs: 1.75, 0.875) circle (1.5pt) node [below] {\scriptsize $B$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
+%
 		\item	has radius $r=1/\kappa$ (hence has curvature $\kappa$)
 	\end{itemize}
-\mfigure{0in}{Illustrating the osculating circles for the curve seen in \autoref{fig:curvatureintro}.}{fig:curvature_osculate}{figures/figcurvature_introc}
 is the \textbf{osculating circle}, or \textbf{circle of curvature}, to $C$ at $P$, and $r$ is the \textbf{radius of curvature}. \index{curvature!of circle}\index{osculating circle}\index{circle of curvature}\index{radius of curvature}\index{curvature!radius of}%
 \autoref{fig:curvature_osculate} shows the graph of the curve seen earlier in \autoref{fig:curvatureintro} and its osculating circles at $A$ and $B$. A sharp turn corresponds to a circle with a small radius; a gradual turn corresponds to a circle with a large radius. Being able to think of curvature in terms of the radius of a circle is very useful. (The word ``osculating'' comes from a Latin word related to kissing; an osculating circle ``kisses'' the graph at a particular point. Many useful ideas in mathematics have come from studying the osculating circles to a curve.)
 
-\mfigure{0in}{Examining the curvature of $y=x^2$.}{fig:curvature3}{figures/figcurvature3}
+\mtable{Examining the curvature of $y=x^2$.}{fig:curvature3}{\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-2.5,ymax=10.1,xmin=-10.2,xmax=4.9]
+\addplot [thick,draw={\colorone}, smooth,domain=-3.2:3.2] {x^2};
+\draw[thick,draw={\colortwo}](axis cs:0,.5)circle(.5);
+\draw[thick,draw={\colortwo}] (axis cs:-4,3.5)circle(5.6);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
 
 \example{ex_curvature3}{Finding curvature}{Find the curvature of the parabola defined by $y=x^2$ at the vertex and at $x=1$.}
 {We use the first formula found in \autoref{thm:curvature_formulas}. 
@@ -206,43 +318,51 @@ At the vertex ($x=0$), the curvature is $\kappa = 2$. At $x=1$, the curvature is
 
 \example{ex_curvature4}{Finding curvature}{Find where the curvature of $\vec r(t) =\bracket{t, t^2, 2t^3}$ is maximized.}
 {We use the third formula in \autoref{thm:curvature_formulas} as $\vrt$ is defined in space. We leave it to the reader to verify that 
-$$\vrp(t) =\bracket{1,2t,6t^2},\quad \vrp'(t) =\bracket{0,2,12t},\quad \text{and}\quad \vrp(t)\times \vrp'(t) =\bracket{12t^2,-12t,2}.$$
+\[\vrp(t) =\bracket{1,2t,6t^2},\quad \vrp'(t) =\bracket{0,2,12t},\quad \text{and}\quad \vrp(t)\times \vrp'(t) =\bracket{12t^2,-12t,2}.\]
 Thus 
 \begin{align*}
 \kappa(t) &= \frac{\norm{\vrp(t)\times\vrp'(t)}}{\norm{\vrp(t)}^3} \\
-				&= \rule{0pt}{20pt}\frac{\norm{\bracket{12t^2,-12t,2}}}{\norm{\bracket{1,2t,6t^2}}^3} \\
-				&= \rule{0pt}{20pt}\frac{\sqrt{\rule{0pt}{8.5pt}144t^4+144t^2+4}}{\left(\sqrt{\rule{0pt}{8.5pt}1+4t^2+36t^4\ }\right)^3}
+	&= \frac{\norm{\bracket{12t^2,-12t,2}}}{\norm{\bracket{1,2t,6t^2}}^3} \smallskip\\
+	&= \frac{\sqrt{144t^4+144t^2+4}}{\Bigl(\sqrt{1+4t^2+36t^4\ }\Bigr)^3}
 \end{align*}
 \mtable[-6\baselineskip]{Understanding the curvature of a curve in space.  The top is $\kappa$ as a function of $t$; the bottom is $\vrt$ as a function of $t$.}{fig:curvature4}{%
-\myincludegraphics{figures/figcurvature4a}\\
-(a)\\[10pt]
-\myincludegraphicsthree{width=125pt,3Dmenu,activate=onclick,deactivate=onclick,
+\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-.1,ymax=2.5,xmin=-2.1,xmax=2.1]
+\addplot [thick,draw={\colorone}, smooth,domain=-2:2]
+ {sqrt(144*x^4+144*x^2+4)/(sqrt(1+4*x^2+36*x^4))^3};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(a)\\[10pt]
+\myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.004910729825496674,
 3Dc2c=0.6666666865348816 0.6666666865348816 0.3333333432674408,
 3Dcoo=-0.0000029802322387695312 -0.0000029802322387695312 -0.0000014901161193847656,
-3Droo=150,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{scale=1.25,trim=5mm 5mm 5mm 4mm,clip}{figures/figcurvature4}\\
-%\myincludegraphics[scale=1.25,trim=5mm 5mm 5mm 4mm,clip]{figures/figcurvature4}\\
-(b)}
-While this is not a particularly ``nice'' formula, it does explictly tell us what the curvature is at a given $t$ value. To maximize $\kappa(t)$, we should solve $\kappa'(t)=0$ for $t$. This is doable, but \emph{very} time consuming. Instead, consider the graph of $\kappa(t)$ as given in \autoref{fig:curvature4}(a). We see that $\kappa$ is maximized at two $t$ values; using a numerical solver, we find these values are $t\approx\pm 0.189$. In part (b) of the figure we graph $\vrt$ and indicate the points where curvature is maximized.}
+3Droo=150}{width=\marginparwidth}{figures/figcurvature4_3D}
+\\(b)}%
+While this is not a particularly ``nice'' formula, it does explicitly tell us what the curvature is at a given $t$ value. To maximize $\kappa(t)$, we should solve $\kappa'(t)=0$ for $t$. This is doable, but \emph{very} time consuming. Instead, consider the graph of $\kappa(t)$ as given in \autoref{fig:curvature4}(a). We see that $\kappa$ is maximized at two $t$ values; using a numerical solver, we find these values are $t\approx\pm 0.189$. In part (b) of the figure we graph $\vrt$ and indicate the points where curvature is maximized.}
 
 \subsection*{Curvature and Motion}
 
 Let $\vec r(t)$ be a position function of an object, with velocity $\vvt = \vrp(t)$ and acceleration $\vec a(t)=\vrp'(t)$. In \autoref{sec:tan_norm} we established that acceleration is in the plane formed by $\vec T(t)$ and $\vec N(t)$, and that we can find scalars $a_\text{T}$ and $a_\text{N}$ such that 
 \index{curvature!and motion}\index{unit tangent vector!and curvature}\index{unit normal vector!and curvature}\index{at@$a_\text{T}$}\index{an@$a_\text{N}$}
-$$\vat = a_\text{T}\vec T(t) + a_\text{N}\vec N(t).$$ \autoref{thm:acc_plane} gives formulas for $a_\text{T}$ and $a_\text{N}$:
-$$a_\text{T} = \frac{d}{dt}\Big(\norm{\vvt}\Big) \quad \text{and} \quad a_\text{N} = \frac{\norm{\vvt\times \vat}}{\norm{\vvt}}.$$
+\[\vat = a_\text{T}\vec T(t) + a_\text{N}\vec N(t).\]
+\autoref{thm:acc_plane} gives formulas for $a_\text{T}$ and $a_\text{N}$:
+\[a_\text{T} = \frac{d}{dt}\Big(\norm{\vvt}\Big) \quad \text{and} \quad a_\text{N} = \frac{\norm{\vvt\times \vat}}{\norm{\vvt}}.\]
 We understood that the amount of acceleration in the direction of $\vec T$ relates only to how the speed of the object is changing, and that the amount of acceleration in the direction of $\vec N$ relates to how the direction of travel of the object is changing. (That is, if the object travels at constant speed, $a_\text{T}=0$; if the object travels in a constant direction, $a_\text{N}=0$.)
 
 
 In \autoeqref{eq:vvfarc3} at the beginning of this section, we found
 $s\,'(t) = \norm{\vvt}$. We can combine this fact with the above formula for $a_\text{T}$ to write
-$$a_\text{T} = \frac{d}{dt}\Big(\norm{\vvt}\Big) = \frac{d}{dt}\big( s\,'(t)\big) = s\,''(t).$$
+\[a_\text{T} = \frac{d}{dt}\Big(\norm{\vvt}\Big) = \frac{d}{dt}\big( s\,'(t)\big) = s\,''(t).\]
 Since $s\,'(t)$ is speed, $s\,''(t)$ is the rate at which speed is changing with respect to time. We see once more that the component of acceleration in the direction of travel relates only to speed, not to a change in direction.
 
 Now compare the formula for $a_\text{N}$ above to the formula for curvature in \autoref{thm:curvature_formulas}:
-$$a_\text{N} = \frac{\norm{\vvt\times \vat}}{\norm{\vvt}}\quad \text{and}\quad \kappa = \frac{\norm{\vrp(t)\times\vrp'(t)}}{\norm{\vrp(t)}^3}=\frac{\norm{\vvt\times \vat}}{\norm{\vvt}^3} .$$
+\[a_\text{N} = \frac{\norm{\vvt\times \vat}}{\norm{\vvt}}\quad \text{and}\quad \kappa = \frac{\norm{\vrp(t)\times\vrp'(t)}}{\norm{\vrp(t)}^3}=\frac{\norm{\vvt\times \vat}}{\norm{\vvt}^3} .\]
 Thus 
 \begin{equation}\label{eq:curvature_an}
 a_\text{N} = \kappa \norm{\vvt}^2 = \kappa\Big(s\,'(t)\Big)^2
@@ -253,7 +373,7 @@ This last equation shows that the component of acceleration that changes the obj
 Imagine driving a car in a clockwise circle. You will naturally feel a force pushing you towards the door (more accurately, the door is pushing you as the car is turning and you want to travel in a straight line). If you keep the radius of the circle constant but speed up (i.e., increasing $s\,'(t)$), the door pushes harder against you ($a_\text{N}$ has increased). If you keep your speed constant but tighten the turn (i.e., increase $\kappa$), once again the door will push harder against you.
 
 Putting our new formulas for $a_\text{T}$ and $a_\text{N}$ together, we have 
-$$\vat = s\,''(t)\vec T(t) + \kappa\norm{\vvt}^2\vec N(t).$$
+\[\vat = s\,''(t)\vec T(t) + \kappa\norm{\vvt}^2\vec N(t).\]
 This is not a particularly practical way of finding $a_\text{T}$ and $a_\text{N}$, but it reveals some great concepts about how acceleration interacts with speed and the shape of a curve.
 
 \example{ex_curvature5}{Curvature and road design}{The minimum radius of the curve in a highway cloverleaf is determined by the operating speed, as given in the table in \autoref{fig:curvature5}. For each curve and speed, compute $a_\text{N}$.}

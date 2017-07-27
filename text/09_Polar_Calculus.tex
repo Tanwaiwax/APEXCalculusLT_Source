@@ -8,7 +8,9 @@ We now turn our attention to answering other questions, whose solutions require 
 
 We are interested in the lines tangent to a given graph, regardless of whether that graph is produced by rectangular, parametric, or polar equations. In each of these contexts, the slope of the tangent line is $\frac{dy}{dx}$. Given $r=f(\theta)$, we are generally \textit{not} concerned with $r\,'=\fp(\theta)$; that describes how fast $r$ changes with respect to $\theta$. Instead, we will use $x=f(\theta)\cos\theta$, $y=f(\theta)\sin\theta$ to compute $\frac{dy}{dx}$. 
 
-Using \autoref{idea:dydxpar} we have $$\frac{dy}{dx} = \frac{dy}{d\theta}\Big/\frac{dx}{d\theta}.$$ Each of the two derivatives on the right hand side of the equality requires the use of the Product Rule. We state the important result as a Key Idea.
+Using \autoref{idea:dydxpar} we have
+\[\frac{dy}{dx} = \frac{dy}{d\theta}\Big/\frac{dx}{d\theta}.\]
+Each of the two derivatives on the right hand side of the equality requires the use of the Product Rule. We state the important result as a Key Idea.
 
 \keyidea{idea:dydxpol}{Finding $\frac{dy}{dx}$ with Polar Functions}
 {Let $r=f(\theta)$ be a polar function. With $x=f(\theta)\cos\theta$ and $y=f(\theta)\sin\theta$,
@@ -36,13 +38,14 @@ Using \autoref{idea:dydxpar} we have $$\frac{dy}{dx} = \frac{dy}{d\theta}\Big/\f
 	&= \frac{\cos\theta(4\sin\theta+1)}{2(\cos^2\theta-\sin^2\theta)-\sin\theta}.
 	\end{align*}
 	When $\theta=\pi/4$, $\frac{dy}{dx}=-2\sqrt{2}-1$ (this requires a bit of simplification). In rectangular coordinates, the point on the graph at $\theta=\pi/4$ is $(1+\sqrt{2}/2,1+\sqrt{2}/2)$. Thus the rectangular equation of the line tangent to the lima\c con at $\theta=\pi/4$ is 
-	$$y=(-2\sqrt{2}-1)\big(x-(1+\sqrt{2}/2)\big)+1+\sqrt{2}/2 \approx  -3.83 x+8.24.$$ The lima\c con and the tangent line are graphed in \autoref{fig:polcalc1}. 
+\[y=(-2\sqrt{2}-1)\big(x-(1+\sqrt{2}/2)\big)+1+\sqrt{2}/2 \approx  -3.83 x+8.24.\]
+The lima\c con and the tangent line are graphed in \autoref{fig:polcalc1}. 
 	
 	The normal line has the opposite--reciprocal slope as the tangent line, so its equation is 
-	$$y \approx \frac{1}{3.83}x+1.26.$$
+\[y \approx \frac{1}{3.83}x+1.26.\]
 	
 	\item		To find the horizontal lines of tangency, we find where $\frac{dy}{dx}=0$ (when the denominator does not equal 0); thus we find where the numerator of our equation for $\frac{dy}{dx}$ is 0.
-	$$\cos\theta(4\sin\theta+1)=0\quad \Rightarrow \quad \cos\theta=0 \quad \text{or}\quad 4\sin\theta+1=0.$$
+	\[\cos\theta(4\sin\theta+1)=0\quad \Rightarrow \quad \cos\theta=0 \quad \text{or}\quad 4\sin\theta+1=0.\]
 	On $[0,2\pi]$, $\cos\theta=0$ when $\theta=\pi/2,\ 3\pi/2$. 
 
 Setting $4\sin\theta+1=0$ gives $\theta=\sin^{-1}(-1/4)\approx -0.2527 = -14.48^\circ$. We want the results in $[0,2\pi]$; we also recognize there are two solutions, one in the 3$^\text{rd}$ quadrant and one in the 4$^\text{th}$. Using reference angles, we have our two solutions as $\theta =3.39$ and $6.03$ radians. The four points we obtained where the lima\c con has a horizontal tangent line are given in \autoref{fig:polcalc1} with black--filled dots.\bigskip
@@ -56,7 +59,27 @@ To find the vertical lines of tangency, we determine where $\frac{dy}{dx}$ is un
 \intertext{Recognize this as a quadratic in the variable $\sin\theta$. Using the quadratic formula, we have}
 \sin\theta &= \frac{-1\pm\sqrt{33}}{8}.
 \end{align*}
-\mfigure{0in}{The lima\c con in \autoref{ex_polcalc1} with its tangent line at $\theta=\pi/4$ and points of vertical and horizontal tangency.}{fig:polcalc1}{figures/figpolcalc1}
+%
+\mtable{The lima\c con in \autoref{ex_polcalc1} with its tangent line at $\theta=\pi/4$ and points of vertical and horizontal tangency.}{fig:polcalc1}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,minor x tick num=1,
+ymin=-.35,ymax=3.2,xmin=-2.1,xmax=2.1]
+\addplot [draw={\colorone},thick, smooth,domain=0:360,samples=60]
+ ({cos(x)*(1+2*sin(x))},{sin(x)*(1+2*sin(x))});
+\addplot [draw={\colortwo},thick, smooth,domain=0.1:2,samples=2] {-3.82843*x+8.24264};
+\filldraw (axis cs: 0,3) circle (1.5pt)
+		(axis cs: 0,1) circle (1.5pt)
+		(axis cs: -.493,-0.125) circle (1.5pt)
+		(axis cs: .483,-0.125) circle (1.5pt);
+\filldraw [fill=white,draw=black,thick] (axis cs: 1.76011, 1.31048) circle (1.5pt)
+		(axis cs: -1.76011, 1.31048) circle (1.5pt)
+		(axis cs: 0.368977, 0.572639) circle (1.5pt)
+		(axis cs: -0.369009, 0.578743) circle (1.5pt);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $0$};
+\node [above] at (myplot.above origin) {\scriptsize $\pi/2$};
+\end{tikzpicture}}%
+%
 We solve $\sin\theta = \frac{-1+\sqrt{33}}8$ and $\sin\theta = \frac{-1-\sqrt{33}}8$:
 \begin{align*}
 \sin\theta &=\frac{-1+\sqrt{33}}8 & \sin\theta &= \frac{-1-\sqrt{33}}{8}\\
@@ -64,9 +87,15 @@ We solve $\sin\theta = \frac{-1+\sqrt{33}}8$ and $\sin\theta = \frac{-1-\sqrt{33
 \theta &\approx 0.6349 & \theta &\approx -1.0030
 \end{align*}
 In each of the solutions above, we only get one of the possible two solutions as $\sin^{-1}x$ only returns solutions in $[-\pi/2,\pi/2]$, the 4$^\text{th}$ and $1^\text{st}$ quadrants. Again using reference angles, we have:
-$$\sin\theta = \frac{-1+\sqrt{33}}8 \quad \Rightarrow \quad \theta \approx 0.6349,\ 2.5067 \text{ radians}$$
+\[
+\sin\theta = \frac{-1+\sqrt{33}}8 \quad \Rightarrow \quad
+\theta \approx 0.6349,\ 2.5067 \text{ radians}
+\]
 and 
-$$\sin\theta = \frac{-1-\sqrt{33}}8 \quad \Rightarrow \quad \theta \approx 4.1446,\ 5.2802 \text{ radians.}$$
+\[
+\sin\theta = \frac{-1-\sqrt{33}}8 \quad \Rightarrow \quad
+\theta \approx 4.1446,\ 5.2802 \text{ radians.}
+\]
 These points are also shown in \autoref{fig:polcalc1} with white--filled dots.\eoehere
 \end{enumerate}}
 
@@ -78,18 +107,30 @@ When the graph of the polar function $r=f(\theta)$ intersects the pole, it means
  =\tan\alpha.
 \]
 %
-%When the graph of the polar function $r=f(\theta)$ intersects the pole, it means that $f(\alpha)=0$ for some angle $\alpha$. Thus the formula for $\frac{dy}{dx}$ in such instances is very simple, reducing simply to $$\frac{dy}{dx} = \tan \alpha.$$
+%When the graph of the polar function $r=f(\theta)$ intersects the pole, it means that $f(\alpha)=0$ for some angle $\alpha$. Thus the formula for $\frac{dy}{dx}$ in such instances is very simple, reducing simply to \[\frac{dy}{dx} = \tan \alpha.\]
 This equation makes an interesting point. It tells us the slope of the tangent line at the pole is $\tan \alpha$; some of our previous work (see, for instance, \autoref{ex_polar3}) shows us that the line through the pole with slope $\tan \alpha$ has polar equation $\theta=\alpha$. Thus when a polar graph touches the pole at $\theta=\alpha$, the equation of the tangent line at the pole is $\theta=\alpha$.
 
 \example{ex_polcalc2}{Finding tangent lines at the pole}{Let $r=1+2\sin\theta$, a lima\c con. Find the equations of the lines tangent to the graph at the pole.
-\mfigure{0in}{Graphing the tangent lines at the pole in \autoref{ex_polcalc2}.}{fig:polcalc2}{figures/figpolcalc2}}
+%
+\mtable{Graphing the tangent lines at the pole in \autoref{ex_polcalc2}.}{fig:polcalc2}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-.5,ymax=1.37,xmin=-1.1,xmax=1.1]
+\addplot [draw={\colorone},thick, smooth,domain=0:360,samples=60]
+ ({cos(x)*(1+2*sin(x))},{sin(x)*(1+2*sin(x))});
+\addplot [draw={\colortwo},thick, smooth,domain=-1:1,samples=2] {x/sqrt(3)};
+\addplot [draw={\colortwo},thick, smooth,domain=-1:1,samples=2] {-x/sqrt(3)};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $0$};
+\node [above] at (myplot.above origin) {\scriptsize $\pi/2$};
+\end{tikzpicture}}}
 {We need to know when $r=0$. 
 \begin{align*}
 1+2\sin\theta &= 0\\
 \sin\theta &= -1/2\\
 \theta &= \frac{7\pi}{6},\ \frac{11\pi}6.
 \end{align*}
-Thus the equations of the tangent lines, in polar, are $\theta = 7\pi/6$ and $\theta = 11\pi/6$. In rectangular form, the tangent lines are $y=\tan(7\pi/6)x$ and $y=\tan(11\pi/6)x$. The full lima\c con can be seen in \autoref{fig:polcalc1}; we zoom in on the tangent lines in \autoref{fig:polcalc2}.}
+Thus the equations of the tangent lines, in polar, are $\theta = 7\pi/6$ and $\theta = 11\pi/6$. In rectangular form, the tangent lines are $y=\tan(7\pi/6)x=\frac x{\sqrt3}$ and $y=\tan(11\pi/6)x=-\frac x{\sqrt3}$. The full lima\c con can be seen in \autoref{fig:polcalc1}; we zoom in on the tangent lines in \autoref{fig:polcalc2}.}
 
 \subsection*{Area}
 
@@ -111,9 +152,61 @@ When using polar coordinates, the equations $\theta=\alpha$ and $r=c$ form lines
 Consider \autoref{fig:polararea} (a) where a region defined by $r=f(\theta)$ on $[\alpha,\beta]$ is given. (Note how the ``sides'' of the region are the lines $\theta=\alpha$ and $\theta=\beta$, whereas in rectangular coordinates the ``sides'' of regions were often the vertical lines $x=a$ and $x=b$.)
 
 Partition the interval $[\alpha,\beta]$ into $n$ equally spaced subintervals as $\alpha=\theta_0<\theta_1<\dotso<\theta_n=\beta$. The radian of each subinterval is $\Delta\theta = (\beta-\alpha)/n$, representing a small change in angle. The area of the region defined by the $i\,^\text{th}$ subinterval $[\theta_{i-1},\theta_i]$ can be approximated with a sector of a circle with radius $f(c_i)$, for some $c_i$ in $[\theta_{i-1},\theta_i]$. The area of this sector is $\frac12[f(c_i)]^2\Delta\theta$. This is shown in part (b) of the figure, where $[\alpha,\beta]$ has been divided into 4 subintervals. We approximate the area of the whole region by summing the areas of all sectors:
+%
 \mtable{Computing the area of a polar region.}{fig:polararea}{%
-\myincludegraphics{figures/figpolarea1}\\(a)\\
-\myincludegraphics{figures/figpolarea2}\\(b)}
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-.1,ymax=1.1,xmin=-.1,xmax=1.1,axis equal]
+\addplot
+ [draw={\colorone},fill={\coloronefill},area style, smooth,domain=18:72,samples=30]
+% (axis cs:x:{1+.05*cos(9*x)})
+ ({cos(x)*(1+.05*cos(9*x))},{sin(x)*(1+.05*cos(9*x))})
+  -- (axis cs:0,0) -- cycle;
+\addplot [draw={\colorone},thick, smooth,domain=0:90,samples=30]
+ ({cos(x)*(1+.05*cos(9*x))},{sin(x)*(1+.05*cos(9*x))});
+\draw [thick,draw={\colorone},] (axis cs:0,0) -- (axis cs: 0.905831, 0.294322)
+ node [pos=.7,below,rotate=18,black] {\scriptsize $\theta=\alpha$};
+\draw [thick,draw={\colorone},] (axis cs:0,0) -- (axis cs:0.313792, 0.965751)
+ node [pos=.7,above,rotate=72,black] {\scriptsize $\theta=\beta$};
+\draw [thick,draw={\colorone},dashed]
+ (axis cs:0,0) -- (axis cs: 0.862592, 0.528597)
+  (axis cs:0,0) -- (axis cs: 0.732107, 0.732107)
+   (axis cs:0,0) -- (axis cs: 0.497095, 0.811186);
+\draw (axis cs:.8,.85) node {\scriptsize $r=f(\theta)$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $0$};
+\node [above] at (myplot.above origin) {\scriptsize $\pi/2$};
+\end{tikzpicture}
+\\(a)\\
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-.1,ymax=1.1,xmin=-.1,xmax=1.1,axis equal]
+\addplot
+ [draw={\coloronefill},fill={\coloronefill},area style, smooth,domain=18:72,samples=30]
+ ({cos(x)*(1+.05*cos(9*x))},{sin(x)*(1+.05*cos(9*x))}) -- (axis cs:0,0) -- cycle;
+\draw [thick,draw={\colorone},] (axis cs:0,0) -- (axis cs:0.313792, 0.965751)
+ node [pos=.7,above,rotate=72,black] {\scriptsize $\theta=\beta$};
+\addplot [draw={\colortwo},fill={\colortwofill},thick, smooth,domain=18:31.5,samples=30]
+ ({.96*cos(x)},{.96*sin(x)}) -- (axis cs:0,0) -- cycle;
+\addplot [draw={\colortwo},fill={\colortwofill},thick, smooth,domain=31.5:45,samples=30]
+ ({1.05*cos(x)},{1.05*sin(x)}) -- (axis cs:0,0) -- cycle;
+\addplot [draw={\colortwo},fill={\colortwofill},thick, smooth,domain=45:58.5,samples=30]
+ ({1.0*cos(x)},{1*sin(x)}) -- (axis cs:0,0) -- cycle;
+\addplot [draw={\colortwo},fill={\colortwofill},thick, smooth,domain=58.5:72,samples=30]
+ ({.96*cos(x)},{.96*sin(x)}) -- (axis cs:0,0) -- cycle;
+\draw (axis cs:.8,.85) node {\scriptsize $r=f(\theta)$};
+\draw [thick,draw={\colortwo},] (axis cs:0,0) -- (axis cs: 0.905831, 0.294322)
+ node [pos=.7,below,rotate=18,black] {\scriptsize $\theta=\alpha$};
+\addplot [draw={\colorone},thick, smooth,domain=0:90,samples=30]
+ ({cos(x)*(1+.05*cos(9*x))},{sin(x)*(1+.05*cos(9*x))});
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $0$};
+\node [above] at (myplot.above origin) {\scriptsize $\pi/2$};
+\end{tikzpicture}
+\\(b)}%
+%
 \[\text{Area} \approx \sum_{i=1}^n \frac12[f(c_i)]^2\Delta\theta.\]
 This is a Riemann sum. By taking the limit of the sum as $n\to\infty$, we find the exact area of the region in the form of a definite integral.
 
@@ -142,29 +235,92 @@ The theorem states that $0\leq \beta-\alpha\leq 2\pi$. This ensures that region 
 Of course, we already knew the area of a circle with radius $1/2$. We did this example to demonstrate that the area formula is correct.}
 
 \example{ex_polcalc4}{Area of a polar region}{Find the area of the cardioid $r=1+\cos\theta$ bound between $\theta=\pi/6$ and $\theta=\pi/3$, as shown in \autoref{fig:polcalc4}.}
-{This is again a direct application of \autoref{thm:polar_area}. 
+{This is again a direct application of \autoref{thm:polar_area}.
+%
+\mtable{Finding the area of the shaded region of a cardioid in \autoref{ex_polcalc4}.}{fig:polcalc4}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,ytick={1},
+ymin=-.7,ymax=1.5,xmin=-.5,xmax=2.1]
+\addplot
+ [draw={\coloronefill},fill={\coloronefill},area style,smooth,domain=30:60,samples=30]
+ ({cos(x)*(1+cos(x))},{sin(x)*(1+cos(x))}) -- (axis cs:0,0) -- cycle;
+\addplot [draw={\colorone},thick, smooth,domain=0:360,samples=60]
+ ({cos(x)*(1+cos(x))},{sin(x)*(1+cos(x))});
+\draw [thick,draw={\colorone}] (axis cs:0,0) -- (axis cs: 1.61603, 0.933013)
+ node [pos=.6,below,rotate=30,black] {\scriptsize $\theta=\pi/6$};
+\draw [thick,draw={\colorone}] (axis cs:0,0) -- (axis cs:0.75, 1.29904)
+ node [pos=.6,above,rotate=60,black] {\scriptsize $\theta=\pi/3$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $0$};
+\node [above] at (myplot.above origin) {\scriptsize $\pi/2$};
+\end{tikzpicture}}
+%
 \begin{align*}
 	\text{Area}
 	&= \frac12\int_{\pi/6}^{\pi/3} (1+\cos\theta)^2\ d\theta\\
 	&= \frac12\int_{\pi/6}^{\pi/3} (1+2\cos\theta+\cos^2\theta)\ d\theta\\
-	&= \frac12\left(\theta+2\sin\theta+\frac12\theta+\frac14\sin(2\theta)\right)\Bigg|_{\pi/6}^{\pi/3} \\
+	&= \frac12\left[\theta+2\sin\theta+\frac12\theta
+	+\frac14\sin(2\theta)\right]_{\pi/6}^{\pi/3} \\
 	&= \frac18\big(\pi+4\sqrt{3}-4\big).\eoehere
 \end{align*}}
-\mfigure{-2in}{Finding the area of the shaded region of a cardioid in \autoref{ex_polcalc4}.}{fig:polcalc4}{figures/figpolcalc4}
 
 \subsubsection*{Area Between Curves}
 
 Our study of area in the context of rectangular functions led naturally to finding area bounded between curves. We consider the same in the context of polar functions. \index{polar!functions!area between curves}
 
-\mfigure{0in}{Illustrating area bound between two polar curves.}{fig:polarea3}{figures/figpolarea3}
+\mtable{Illustrating area bound between two polar curves.}{fig:polarea3}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-.1,ymax=1.1,xmin=-.1,xmax=1.1]
+\addplot [draw={\colortwo}, thick,smooth,domain=0:90,samples=30]
+ ({cos(x)*(.7+.05*sin(6*x))},{sin(x)*(.7+.05*sin(6*x))});
+\draw (axis cs:.8,.85) node {\scriptsize $r_2=f_2(\theta)$}
+      (axis cs:.2,.8) node {\scriptsize $r_1=f_1(\theta)$};
+\addplot [draw={\colorone},thick, smooth,domain=0:90,samples=30]
+ ({cos(x)*(1+.05*cos(9*x))},{sin(x)*(1+.05*cos(9*x))});
+\addplot[draw={\colorone},fill={\coloronefill},thick, smooth,domain=30:60,samples=30]
+ ({cos(x)*(1+.05*cos(9*x))},{sin(x)*(1+.05*cos(9*x))})--(axis cs:0,0)--cycle;
+\addplot[draw={\colortwo},fill=white,thick,smooth,domain=30:60,samples=30]
+ ({cos(x)*(.7+.05*sin(6*x))},{sin(x)*(.7+.05*sin(6*x))})--(axis cs:0,0)--cycle;
+\draw [thick,draw={\colorone},] (axis cs:0,0) -- (axis cs: 0.866025, 0.5)
+ node [pos=.4,below,rotate=30,black] {\scriptsize $\theta=\alpha$};
+\draw [thick,draw={\colorone},] (axis cs:0,0) -- (axis cs:0.475, 0.822724)
+ node [pos=.4,above,rotate=60,black] {\scriptsize $\theta=\beta$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $0$};
+\node [above] at (myplot.above origin) {\scriptsize $\pi/2$};
+\end{tikzpicture}}
+
 Consider the shaded region shown in \autoref{fig:polarea3}. We can find the area of this region by computing the area bounded by $r_2=f_2(\theta)$ and subtracting the area bounded by $r_1=f_1(\theta)$ on $[\alpha,\beta]$. Thus
-$$\text{Area}\ = \ \frac12\int_\alpha^\beta r_2^{\,2}\ d\theta - \frac12\int_\alpha^\beta r_1^{\,2}\ d\theta = \frac12\int_\alpha^\beta \big(r_2^{\,2}-r_1^{\,2}\big)\ d\theta.$$
+\[
+\text{Area}
+\ = \ \frac12\int_\alpha^\beta r_2^{\,2}\ d\theta
+- \frac12\int_\alpha^\beta r_1^{\,2}\ d\theta
+= \frac12\int_\alpha^\beta \big(r_2^{\,2}-r_1^{\,2}\big)\ d\theta.
+\]
 
 \keyidea{idea:area_between_polar}{Area Between Polar Curves}
 {The area $A$ of the region bounded by $r_1=f_1(\theta)$ and $r_2=f_2(\theta)$, $\theta=\alpha$ and $\theta=\beta$, where $f_1(\theta)\leq f_2(\theta)$ on $[\alpha,\beta]$, is
-$$A = \frac{1}{2} \int_\alpha^\beta [f_2(\theta)]^2 - [f_1(\theta)]^2\ d\theta= \frac12\int_\alpha^\beta \big(r_2^{\,2}-r_1^{\,2}\big)\ d\theta.$$}
+\[
+A = \frac{1}{2} \int_\alpha^\beta [f_2(\theta)]^2 - [f_1(\theta)]^2\ d\theta
+= \frac12\int_\alpha^\beta \big(r_2^{\,2}-r_1^{\,2}\big)\ d\theta.
+\]}
 
-\mfigure{0in}{Finding the area between polar curves in \autoref{ex_polcalc5}.}{fig:polcalc5}{figures/figpolcalc5}
+\mtable{Finding the area between polar curves in \autoref{ex_polcalc5}.}{fig:polcalc5}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,
+ymin=-1.6,ymax=1.6,xmin=-.6,xmax=3.2]
+\draw [fill={\coloronefill},draw={\colorone},thick, smooth,domain=0:180,samples=60]  (axis cs:1.5,0)circle(1.5);
+% fill=white to cover up what we don't want
+\addplot [fill=white,draw={\colortwo}, thick,smooth,domain=0:360,samples=60]
+ ({cos(x)*(1+cos(x))},{sin(x)*(1+cos(x))});
+% redraw the circle for the part that was covered
+\draw [draw={\colorone},thick, smooth,domain=0:180,samples=60]
+ (axis cs:1.5,0)circle(1.5);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $0$};
+\node [above] at (myplot.above origin) {\scriptsize $\pi/2$};
+\end{tikzpicture}}
 
 \example{ex_polcalc5}{Area between polar curves}{Find the area bounded between the curves $r=1+\cos \theta$ and $r=3\cos\theta$, as shown in \autoref{fig:polcalc5}.}
 {We need to find the points of intersection between these two functions. Setting them equal to each other, we find:
@@ -184,19 +340,54 @@ Thus we integrate $\frac12\big((3\cos\theta)^2-(1+\cos\theta)^2\big)$ on $[-\pi/
 Amazingly enough, the area between these curves has a ``nice'' value.}
 
 \mtable{Graphing the region bounded by the functions in \autoref{ex_polcalc6}.}{fig:polcalc6}{%
-\begin{tabular}{c}
-\myincludegraphics{figures/figpolcalc6}\\
-(a)\\[10pt]
-\myincludegraphics{figures/figpolcalc6a}\\
-(b)
-\end{tabular}}
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,
+ymin=-1.15,ymax=1.15,xmin=-.5,xmax=2.2]
+\addplot[draw={\coloronefill},fill={\coloronefill},area style,domain=30:45]
+ ({cos(x)*(2*cos(2*x))},{sin(x)*(2*cos(2*x))})--(axis cs:{sqrt(3)/2},0)--cycle;
+\addplot[draw={\coloronefill},fill={\coloronefill},area style,domain=0:30]
+ ({cos(x)},{sin(x)})--(axis cs:0,0)--cycle;
+\addplot [draw={\colorone},thick, smooth,domain=0:360,samples=90]
+ ({cos(x)*(2*cos(2*x))},{sin(x)*(2*cos(2*x))});
+\draw[draw={\colortwo},thick](axis cs:0,0)circle(1);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $0$};
+\node [above] at (myplot.above origin) {\scriptsize $\pi/2$};
+\end{tikzpicture}
+\\(a)\\[10pt]
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,
+ymin=-.1,ymax=1,xmin=-.1,xmax=1.2]
+\addplot[draw={\colorone},fill={\coloronefill},area style,domain=30:45]
+ ({cos(x)*(2*cos(2*x))},{sin(x)*(2*cos(2*x))})--(axis cs:{sqrt(3)/2},0)--cycle;
+\addplot[draw={\colortwo},fill={\colortwofill},area style,domain=0:30]
+ ({cos(x)},{sin(x)})--(axis cs:0,0)--cycle;
+\addplot [draw={\colorone},thick, smooth,domain=0:360,samples=90]
+ ({cos(x)*(2*cos(2*x))},{sin(x)*(2*cos(2*x))});
+\draw[draw={\colortwo},thick](axis cs:0,0)circle(1);
+\draw [thick,dashed] (axis cs: 0,0) -- (axis cs:.866,.5);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $0$};
+\node [above] at (myplot.above origin) {\scriptsize $\pi/2$};
+\end{tikzpicture}
+\\(b)}
+
+% todo the region is also in the first petal and y>0
 \example{ex_polcalc6}{Area defined by polar curves}{Find the area bounded between the polar curves $r=1$ and $r=2\cos(2\theta)$, as shown in \autoref{fig:polcalc6} (a).}
 {We need to find the point of intersection between the two curves. Setting the two functions equal to each other, we have
-$$2\cos(2\theta) = 1 \quad \Rightarrow \quad \cos(2\theta) = \frac12 \quad \Rightarrow \quad 2\theta = \pi/3\quad \Rightarrow \quad \theta=\pi/6.$$
+\[
+2\cos(2\theta) = 1 \quad \Rightarrow \quad \cos(2\theta) = \frac12
+\quad \Rightarrow \quad 2\theta = \pi/3\quad \Rightarrow \quad \theta=\pi/6.
+\]
 In part (b) of the figure, we zoom in on the region and note that it is not really bounded \textit{between} two polar curves, but rather \textit{by} two polar curves, along with $\theta=0$. The dashed line breaks the region into its component parts. Below the dashed line, the region is defined by $r=1$, $\theta=0$ and $\theta = \pi/6$. (Note: the dashed line lies on the line $\theta=\pi/6$.) Above the dashed line the region is bounded by $r=2\cos(2\theta)$ and $\theta =\pi/6$. Since we have two separate regions, we find the area using two separate integrals.
 
 Call the area below the dashed line $A_1$ and the area above the dashed line $A_2$. They are determined by the following integrals:
-$$A_1 = \frac12\int_0^{\pi/6} (1)^2\ d\theta\qquad  A_2 = \frac12\int_{\pi/6}^{\pi/4} \big(2\cos(2\theta)\big)^2\ d\theta.$$
+\[
+A_1 = \frac12\int_0^{\pi/6} (1)^2\ d\theta\qquad
+A_2 = \frac12\int_{\pi/6}^{\pi/4} \big(2\cos(2\theta)\big)^2\ d\theta.
+\]
 (The upper bound of the integral computing $A_2$ is $\pi/4$ as $r=2\cos(2\theta)$ is at the pole when $\theta=\pi/4$.)
 
 We omit the integration details and let the reader verify that $A_1 = \pi/12$ and $A_2 = \pi/12-\sqrt{3}/8$; the total area is $A = \pi/6-\sqrt{3}/8$.}
@@ -209,11 +400,15 @@ As we have already considered the arc length of curves defined by rectangular an
 
 Now consider the polar function $r=f(\theta)$. We again use the identities $x=f(\theta)\cos\theta$ and $y=f(\theta)\sin\theta$ to create parametric equations based on the polar function. We compute $x\primeskip'(\theta)$ and $y\primeskip'(\theta)$ as done before when computing $\frac{dy}{dx}$, then apply \autoeqref{eq:polar_arclength}.
 
-The expression $[x\primeskip'(\theta)]^2+[y\primeskip'(\theta)]^2$ can be simplified a great deal; we leave this as an exercise and state that $$[x\primeskip'(\theta)]^2+[y\primeskip'(\theta)]^2 = [\fp(\theta)]^2+[f(\theta)]^2.$$ This leads us to the  arc length formula.
+The expression $[x\primeskip'(\theta)]^2+[y\primeskip'(\theta)]^2$ can be simplified a great deal; we leave this as an exercise and state that
+\[
+[x\primeskip'(\theta)]^2+[y\primeskip'(\theta)]^2 = [\fp(\theta)]^2+[f(\theta)]^2.
+\]
+This leads us to the  arc length formula.
 
 \keyidea{idea:polar_arclength}{Arc Length of Polar Curves}
 {Let  $r=f(\theta)$ be a polar function with $\fp$ continuous on an open interval $I$ containing $[\alpha,\beta]$, on which the graph traces itself only once. The arc length $L$ of the graph on $[\alpha,\beta]$ is
-$$L = \int_\alpha^\beta \sqrt{[\fp(\theta)]^2+[f(\theta)]^2}\ d\theta = \int_\alpha^\beta\sqrt{(r\,')^2+ r^2}\ d\theta.$$
+\[L = \int_\alpha^\beta \sqrt{[\fp(\theta)]^2+[f(\theta)]^2}\ d\theta = \int_\alpha^\beta\sqrt{(r\,')^2+ r^2}\ d\theta.\]
 }
 
 \example{ex_cardiod_length}{Arc Length of Polar Curves}{Find the arc length of the cardioid $r=1+\cos \theta$.}{With $r=1+\cos \theta$, we have $r' = -\sin \theta$. The cardioid is traced out once on $[0,2\pi]$, giving us our bounds of integration. Applying \autoref{idea:polar_arclength} we have
@@ -225,7 +420,7 @@ $$L = \int_\alpha^\beta \sqrt{[\fp(\theta)]^2+[f(\theta)]^2}\ d\theta = \int_\al
 	& = \int_0^{2\pi} \sqrt{2 + 2\cos \theta}\ \frac{\sqrt {2-2\cos \theta}}{\sqrt {2-2\cos \theta}}\ d\theta\\
 	& = \int_0^{2\pi} \frac{\sqrt{4 - 4\cos^2 \theta}}{\sqrt {2-2\cos \theta}}\ d\theta\\
 	& = 2\int_0^{2\pi} \frac{\sqrt{1 - \cos^2 \theta}}{\sqrt {2-2\cos \theta}}\ d\theta\\
-	& = 2\int_0^{2\pi} \frac{|\sin \theta|}{\sqrt {2-2\cos \theta}}\ d\theta
+	& = 2\int_0^{2\pi} \frac{\abs{\sin\theta}}{\sqrt {2-2\cos \theta}}\ d\theta
 \end{align*}
 Since the $\sin \theta > 0$ on $[0, \pi]$ and $\sin \theta < 0$ on $[\pi, 2\pi]$ we separate the integral into two parts
 \[
@@ -248,7 +443,18 @@ L
 	&=	\int_0^{2\pi} \sqrt{4\sin\theta+5}\ d\theta\\
 	&\approx 13.3649.
 \end{align*}
-\mfigure{0in}{The lima\c con in \autoref{ex_polcalc7} whose arc length is measured.}{fig:polcalc7}{figures/figpolcalc7}
+%
+\mtable[-6\baselineskip]{The lima\c con in \autoref{ex_polcalc7} whose arc length is measured.}{fig:polcalc7}{\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,
+ymin=-.5,ymax=3.2,xmin=-2.22,xmax=2.22]
+\addplot [draw={\colorone},thick, smooth,domain=0:360,samples=90]
+ ({cos(x)*(1+2*sin(x))},{sin(x)*(1+2*sin(x))});
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $0$};
+\node [above] at (myplot.above origin) {\scriptsize $\pi/2$};
+\end{tikzpicture}}
+%
 The final integral cannot be solved in terms of elementary functions, so we resorted to a numerical approximation. (Simpson's Rule, with $n=4$, approximates the value with $13.0608$. Using $n=22$ gives the value above, which is accurate to 4 places after the decimal.)}
 
 \subsection*{Surface Area}
@@ -260,14 +466,25 @@ The formula for arc length leads us to a formula for surface area. The following
 \index{surface area!solid of revolution}\index{polar!function!surface area}\index{integration!surface area}
 \begin{enumerate}
 	\item The surface area of the solid formed by revolving the graph about the initial ray ($\theta=0$) is:
-	$$\text{Surface Area} = 2\pi\int_\alpha^\beta f(\theta)\sin\theta\sqrt{\fp(\theta)^2+f(\theta)^2}\ d\theta.$$
+	\[\text{Surface Area} = 2\pi\int_\alpha^\beta f(\theta)\sin\theta\sqrt{[\fp(\theta)]^2+[f(\theta)]^2}\ d\theta.\]
 	\item The surface area of the solid formed by revolving the graph about the line $\theta=\pi/2$ is:
-	$$\text{Surface Area} = 2\pi\int_\alpha^\beta f(\theta)\cos\theta\sqrt{\fp(\theta)^2+f(\theta)^2}\ d\theta.$$
+	\[\text{Surface Area} = 2\pi\int_\alpha^\beta f(\theta)\cos\theta\sqrt{[\fp(\theta)]^2+[f(\theta)]^2}\ d\theta.\]
 \end{enumerate}}
 
 \example{ex_polcalc8}{Surface area determined by a polar curve}{Find the surface area formed by revolving one petal of the rose curve $r=\cos(2\theta)$ about its central axis (see \autoref{fig:polcalc8}).}
 {\mtable{Finding the surface area of a rose--curve petal that is revolved around its central axis.}{fig:polcalc8}{%
-\myincludegraphics{figures/figpolcalc8}
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={-1,1},
+ytick={-1,1},ymin=-1.1,ymax=1.1,xmin=-1.3,xmax=1.3]
+\addplot [draw={\colorone},thick, smooth,domain=0:45,samples=30]
+ ({cos(x)*(cos(2*x))},{sin(x)*(cos(2*x))});
+\addplot [draw={\colortwo},thick, smooth,domain=45:360,samples=60]
+ ({cos(x)*(cos(2*x))},{sin(x)*(cos(2*x))});
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $0$};
+\node [above] at (myplot.above origin) {\scriptsize $\pi/2$};
+\end{tikzpicture}
 \\(a)\\[10pt]
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
@@ -278,7 +495,9 @@ The formula for arc length leads us to a formula for surface area. The following
 \\(b)}
 We choose, as implied by the figure, to revolve the portion of the curve that lies on $[0,\pi/4]$ about the initial ray. Using \autoref{idea:surface_area_polar} and the fact that $\fp(\theta) = -2\sin(2\theta)$, we have
 \begin{align*}
-\text{Surface Area} &= 2\pi\int_0^{\pi/4} \cos(2\theta)\sin(\theta)\sqrt{\big(-2\sin(2\theta)\big)^2+\big(\cos(2\theta)\big)^2}\ d\theta \\
+\text{Surface Area}
+&= 2\pi\int_0^{\pi/4} \cos(2\theta)\sin(\theta)
+\sqrt{\big(-2\sin(2\theta)\big)^2+\big(\cos(2\theta)\big)^2}\ d\theta \\
 &\approx 1.36707.
 \end{align*}
 The integral is another that cannot be evaluated in terms of elementary functions. Simpson's Rule, with $n=4$, approximates the value at $1.36751$.%; with $n=10$, the value is accurate to 4 decimal places.

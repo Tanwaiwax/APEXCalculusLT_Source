@@ -7,9 +7,9 @@ In \autoref{sec:power_series}, we showed how certain functions can be represente
 \index{Taylor Series!definition}\index{Maclaurin Series!definition}\index{Maclaurin Series|see{Taylor Series}}\index{series!Taylor}\index{series!Maclaurin}
 \begin{enumerate}
 	\item The \sword{Taylor Series of $f(x)$, centered at $c$} is
-	$$\sum_{n=0}^\infty \frac{f\,^{(n)}(c)}{n!}(x-c)^n.$$
+	\[\sum_{n=0}^\infty \frac{f\,^{(n)}(c)}{n!}(x-c)^n.\]
 	\item	Setting $c=0$ gives the \sword{Maclaurin Series of $f(x)$}:
-	$$\sum_{n=0}^\infty \frac{f\,^{(n)}(0)}{n!}x^n.$$
+	\[\sum_{n=0}^\infty \frac{f\,^{(n)}(0)}{n!}x^n.\]
 \end{enumerate}}
 
 \youtubeVideo{Os8OtXFBLkY}{Taylor and Maclaurin Series --- Example 2}
@@ -34,13 +34,15 @@ $f\,^{(9)}(x) = -\sin x $&$\Rightarrow $&$f\,^{(9)}(0) = 0$
 \end{tabular}
 }
 Notice how $f\,^{(n)}(0)=0$ when $n$ is odd,  $f\,^{(n)}(0)=1$ when $n$ is divisible by $4$, and $f\,^{(n)}(0)=-1$ when $n$ is even but not divisible by 4. Thus the Maclaurin series of $\cos x$ is
-$$1-\frac{x^2}2+\frac{x^4}{4!}-\frac{x^6}{6!}+\frac{x^8}{8!} - \dotsb$$
+\[1-\frac{x^2}2+\frac{x^4}{4!}-\frac{x^6}{6!}+\frac{x^8}{8!} - \dotsb\]
 We can go further and write this as a summation. Since we only need the terms where the power of $x$ is even, we write the power series in terms of $x^{2n}$:
-$$\sum_{n=0}^\infty (-1)^{n}\frac{x^{2n}}{(2n)!}.\eoehere$$}
+\[\sum_{n=0}^\infty (-1)^{n}\frac{x^{2n}}{(2n)!}.\eoehere\]}
 
 \example{ex_ts2}{The Taylor series of $f(x)=\ln x$ at $x=1$}
 {Find the Taylor series of $f(x) = \ln x$ centered at $x=1$.}
-{\autoref{fig:ts2} shows the $n^\text{th}$ derivative of $\ln x$ evaluated at $x=1$ for $n=0,\dotsc,5$, along with an expression for the $n^\text{th}$ term: $$f\,^{(n)}(1) = (-1)^{n+1}(n-1)!\quad \text{for $n\geq 1$.}$$ Remember that this is what distinguishes Taylor series from Taylor polynomials; we are very interested in finding a pattern for the $n^\text{th}$ term, not just finding a finite set of coefficients for a polynomial.
+{\autoref{fig:ts2} shows the $n^\text{th}$ derivative of $\ln x$ evaluated at $x=1$ for $n=0,\dotsc,5$, along with an expression for the $n^\text{th}$ term:
+\[f\,^{(n)}(1) = (-1)^{n+1}(n-1)!\quad \text{for $n\geq 1$.}\]
+Remember that this is what distinguishes Taylor series from Taylor polynomials; we are very interested in finding a pattern for the $n^\text{th}$ term, not just finding a finite set of coefficients for a polynomial.
 \mtable{Derivatives of $\ln x$ evaluated at $x=1$.}{fig:ts2}{%
 \begin{tabular}{lll}
 $f(x) = \ln x $&$\Rightarrow $&$f(1) = 0$\\
@@ -55,12 +57,12 @@ $\ds \rule{0pt}{15pt}\frac{(-1)^{n+1}(n-1)!}{x^n} $ & & $(-1)^{n+1}(n-1)!$
 \end{tabular}
 }
 Since $f(1) = \ln 1 = 0$, we skip the first term and start the summation with $n=1$, giving the Taylor series for $\ln x$, centered at $x=1$, as 
-$$\sum_{n=1}^\infty (-1)^{n+1}(n-1)!\frac{1}{n!}(x-1)^n = \sum_{n=1}^\infty (-1)^{n+1}\frac{(x-1)^n}{n}.\eoehere$$}
+\[\sum_{n=1}^\infty (-1)^{n+1}(n-1)!\frac{1}{n!}(x-1)^n = \sum_{n=1}^\infty (-1)^{n+1}\frac{(x-1)^n}{n}.\eoehere\]}
 
 It is important to note that \autoref{def:taylor_series} defines a Taylor series given a function $f(x)$; however, we \emph{cannot} yet state that $f(x)$ \emph{is equal} to its Taylor series. We will find that ``most of the time'' they are equal, but we need to consider the conditions that allow us to conclude this.
 
 \autoref{thm:taylorthm} states that the error between a function $f(x)$ and its $n^\text{th}$--degree Taylor polynomial $p_n(x)$ is $R_n(x)$, where
-$$\abs{R_n(x)}\leq \frac{\max\abs{\,f\,^{(n+1)}(z)}}{(n+1)!}\abs{x-c}^{n+1}.$$
+\[\abs{R_n(x)}\leq \frac{\max\abs{\,f\,^{(n+1)}(z)}}{(n+1)!}\abs{x-c}^{n+1}.\]
 
 If $R_n(x)$ goes to 0 for each $x$ in an interval $I$ as $n$ approaches infinity, we conclude that the function is equal to its Taylor series expansion.
 
@@ -68,7 +70,7 @@ If $R_n(x)$ goes to 0 for each $x$ in an interval $I$ as $n$ approaches infinity
 {Let $f(x)$ have derivatives of all orders at $x=c$, let $R_n(x)$ be as stated in \autoref{thm:taylorthm}, and let $I$ be an interval on which the Taylor series of $f(x)$ converges. 
 If $\ds\lim_{n\to\infty} R_n(x) = 0$ for all $x$ in $I$, then 
 \index{Taylor Series!equality with generating function}
-$$f(x) = \sum_{n=0}^\infty \frac{f\,^{(n)}(c)}{n!}(x-c)^n\ \text{ on $I$.}$$
+\[f(x) = \sum_{n=0}^\infty \frac{f\,^{(n)}(c)}{n!}(x-c)^n\ \text{ on $I$.}\]
 }
 
 We demonstrate the use of this theorem in an example.
@@ -76,15 +78,15 @@ We demonstrate the use of this theorem in an example.
 \example{ex_ts3}{Establishing equality of a function and its Taylor series}
 {Show that $f(x) = \cos x$ is equal to its Maclaurin series, as found in \autoref{ex_ts1}, for all $x$.}
 {Given a value $x$, the magnitude of the error term $R_n(x)$ is bound\-ed by
-$$\abs{R_n(x)}\leq \frac{\max\abs{\,f\,^{(n+1)}(z)}}{(n+1)!}\abs{x}^{n+1}.$$
+\[\abs{R_n(x)}\leq \frac{\max\abs{\,f\,^{(n+1)}(z)}}{(n+1)!}\abs{x}^{n+1}.\]
 Since all derivatives of $\cos x$ are $\pm \sin x$ or $\pm\cos x$, whose magnitudes are bounded by $1$, we can state
-$$\abs{R_n(x)}\leq \frac{1}{(n+1)!}\abs{x}^{n+1}$$
+\[\abs{R_n(x)}\leq \frac{1}{(n+1)!}\abs{x}^{n+1}\]
 which implies
 \begin{equation}
  -\frac{\abs{x}^{n+1}}{(n+1)!} \leq R_n(x) \leq\frac{\abs{x}^{n+1}}{(n+1)!}.\label{eq:coseqtaylor}
 \end{equation}
 For any $x$, $\ds\lim_{n\to\infty} \frac{x^{n+1}}{(n+1)!} = 0$. Applying the Squeeze Theorem to \autoeqref{eq:coseqtaylor}, we conclude that $\ds \lim_{n\to\infty} R_n(x) = 0$ for all $x$, and hence
-$$\cos x = \sum_{n=0}^\infty (-1)^{n}\frac{x^{2n}}{(2n)!}\quad \text{for all $x$}.\eoehere$$}
+\[\cos x = \sum_{n=0}^\infty (-1)^{n}\frac{x^{2n}}{(2n)!}\quad \text{for all $x$}.\eoehere\]}
 
 It is natural to assume that a function is  equal to its Taylor series on the series' interval of convergence, but this is not the case. In order to properly establish equality, one must use \autoref{thm:function_series_equality}. This is a bit disappointing, as we developed beautiful techniques for determining the interval of convergence of a power series, and proving that $R_n(x)\to 0$ can be cumbersome as it deals with high order derivatives of the function.
 
@@ -95,7 +97,7 @@ We develop the Taylor series for one more important function, then give a table 
 \example{ex_ts4}{The Binomial Series}
 {Find the Maclaurin series of $f(x) = (1+x)^k$, $k\neq 0$.}
 {When $k$ is a positive integer, the Maclaurin series is finite. For instance, when $k=4$, we have 
-$$f(x) = (1+x)^4 = 1+4x+6x^2+4x^3+x^4.$$
+\[f(x) = (1+x)^4 = 1+4x+6x^2+4x^3+x^4.\]
 The coefficients of $x$ when $k$ is a positive integer are known as the \emph{binomial coefficients}, giving the series we are developing its name.
 
 When $k=1/2$, we have $f(x) = \sqrt{1+x}$. Knowing a series representation of this function would give a useful way of approximating $\sqrt{1.3}$, for instance.
@@ -114,10 +116,10 @@ f\,^{(n)}(x) &= k(k-1)\dotsm\big(k-(n-1)\big)(1+x)^{k-n} & f\,^{(n)}(0) &=k(k-1)
 \end{align*}}
 
 Thus the Maclaurin series for $f(x) = (1+x)^k$ is
-$$1+ k + \frac{k(k-1)}{2!} + \frac{k(k-1)(k-2)}{3!} + \dotsb + \frac{k(k-1)\dotsm\big(k-(n-1)\big)}{n!}+\dotsb$$
+\[1+ k + \frac{k(k-1)}{2!} + \frac{k(k-1)(k-2)}{3!} + \dotsb + \frac{k(k-1)\dotsm\big(k-(n-1)\big)}{n!}+\dotsb\]
 
 It is important to determine the interval of convergence of this series. With 
-$$a_n = \frac{k(k-1)\dotsm\big(k-(n-1)\big)}{n!}x^n,$$
+\[a_n = \frac{k(k-1)\dotsm\big(k-(n-1)\big)}{n!}x^n,\]
 we apply the Ratio Test:
 \begin{align*}
 	\lim_{n\to\infty}\frac{\abs{a_{n+1}}}{\abs{a_n}}
@@ -196,7 +198,7 @@ Because the series for $e^x$ and $\cos x$ both converge on $(-\infty,\infty)$, s
 \example{ex_ts6}{Creating new Taylor series}
 {Use \autoref{thm:series_alg} to create the Taylor series for $y=\sin(x^2)$ centered at $x=0$ and a series for $y=\ln (\sqrt{x})$ centered at $c=1$.}
 {Given that 
-$$\sin x = \sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{(2n+1)!} = x-\frac{x^3}{3!}+\frac{x^5}{5!} -\frac{x^7}{7!}+\dotsb,$$
+\[\sin x = \sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{(2n+1)!} = x-\frac{x^3}{3!}+\frac{x^5}{5!} -\frac{x^7}{7!}+\dotsb,\]
 we simply substitute $x^2$ for $x$ in the series, giving
 \[
 \sin (x^2) = \sum_{n=0}^\infty (-1)^n\frac{(x^2)^{2n+1}}{(2n+1)!} = \sum_{n=0}^\infty (-1)^n\frac{x^{4n+2}}{(2n+1)!} = x^2-\frac{x^6}{3!}+\frac{x^{10}}{5!} -\frac{x^{14}}{7!}\dotsb.
@@ -205,10 +207,10 @@ Since the Taylor series for $\sin x$ has an infinite radius of convergence, so d
 
 The Taylor expansion for $\ln x$ given in \autoref{idea:common_taylor} is centered at $x=1$, so we will center the series for $\ln (\sqrt{x})$ at $x=1$ as well.
 With 
-$$\ln x = \sum_{n=1}^\infty(-1)^{n+1}\frac{(x-1)^n}{n} = (x-1)- \frac{(x-1)^2}{2} +\frac{(x-1)^3}{3}-\dotsb,$$
+\[\ln x = \sum_{n=1}^\infty(-1)^{n+1}\frac{(x-1)^n}{n} = (x-1)- \frac{(x-1)^2}{2} +\frac{(x-1)^3}{3}-\dotsb,\]
 \mnote{\textbf{Note:} In \autoref{ex_ts6}, one could create a series for $\ln(\sqrt{x})$ by simply recognizing that $\ln(\sqrt{x}) = \ln (x^{1/2}) = 1/2\ln x$, and hence multiplying the Taylor series for $\ln x$ by $1/2$. This example was chosen to demonstrate other aspects of series, such as the fact that the interval of convergence changes.}
 we substitute $\sqrt{x}$ for $x$ to obtain
-$$\ln (\sqrt{x}) = \sum_{n=1}^\infty(-1)^{n+1}\frac{(\sqrt{x}-1)^n}{n} = (\sqrt{x}-1)- \frac{(\sqrt{x}-1)^2}{2} +\frac{(\sqrt{x}-1)^3}{3}-\dotsb.$$
+\[\ln (\sqrt{x}) = \sum_{n=1}^\infty(-1)^{n+1}\frac{(\sqrt{x}-1)^n}{n} = (\sqrt{x}-1)- \frac{(\sqrt{x}-1)^2}{2} +\frac{(\sqrt{x}-1)^3}{3}-\dotsb.\]
 While this is not strictly a power series because of the $\sqrt x$, it is a series that allows us to study the function $\ln(\sqrt{x})$. Since the interval of convergence of $\ln x$ is $(0,2]$, and the range of $\sqrt{x}$ on $(0,4]$ is $(0,2]$, the interval of convergence of this series expansion of $\ln(\sqrt{x})$ is $(0,4]$.}
 
 \example{ex_ts7}{Using Taylor series to evaluate definite integrals}
@@ -225,9 +227,9 @@ e^{-x^2} &= \sum_{n=0}^\infty \frac{(-x^2)^n}{n!} \\
 				&= 1-x^2+\frac{x^4}{2!}-\frac{x^6}{3!}+\dotsb.
 \end{align*}
 We use \autoref{thm:calc_power_series} to integrate:
-$$\int e^{-x^2}\ dx = C + x - \frac{x^3}{3}+\frac{x^5}{5\cdot2!}-\frac{x^7}{7\cdot3!}+\dotsb +(-1)^n\frac{x^{2n+1}}{(2n+1)n!}+\dotsb$$
+\[\int e^{-x^2}\ dx = C + x - \frac{x^3}{3}+\frac{x^5}{5\cdot2!}-\frac{x^7}{7\cdot3!}+\dotsb +(-1)^n\frac{x^{2n+1}}{(2n+1)n!}+\dotsb\]
 This \emph{is} the antiderivative of $e^{-x^2}$; while we can write it out as a series, we cannot write it out in terms of elementary functions. We can evaluate the definite integral $\ds \int_0^1e^{-x^2}\ dx$ using this antiderivative; substituting 1 and 0 for $x$ and subtracting gives
-$$\int_0^1e^{-x^2}\ dx = 1-\frac{1}{3}+\frac{1}{5\cdot 2!}-\frac{1}{7\cdot3!} + \frac{1}{9\cdot4!}-\dotsb.$$
+\[\int_0^1e^{-x^2}\ dx = 1-\frac{1}{3}+\frac{1}{5\cdot 2!}-\frac{1}{7\cdot3!} + \frac{1}{9\cdot4!}-\dotsb.\]
 Summing the 5 terms shown above give the approximation of $0.74749.$ Since this is an alternating series, we can use the Alternating Series Approximation Theorem, (\autoref{thm:alt_series_approx}), to determine how accurate this approximation is. The next term of the series is $ 1/(11\cdot5!) \approx 0.00075758$. Thus we know our approximation is within $0.00075758$ of the actual value of the integral. This is arguably much less work than using Simpson's Rule to approximate the value of the integral.}
 
 Another advantage to using Taylor series instead of Simpson's Rule is for making subsequent approximations.  We found in \autoref{ex_num7} that the error in using Simpson's Rule for $\ds\int_0^1 e^{-x^2}\ dx$ with four intervals was $0.00026$.  If we wanted to decrease that error, we would need to use more intervals, essentially starting the problem over.  Using a Taylor series, if we wanted a more accurate approximation, we can just subtract the next term $1/(11\cdot5!)$ to get an approximation of $0.7467$, with an error of at most $1/(13\cdot6!)\approx0.0001$.\bigskip
@@ -235,19 +237,19 @@ Another advantage to using Taylor series instead of Simpson's Rule is for making
 %\example{ex_ts8}{Using Taylor series to solve differential equations}
 %{Solve the differential equation $y\primeskip'=2y$ in terms of a power series, and use the theory of Taylor series to recognize the solution in terms of an elementary function.}
 %{We found the first 5 terms of the power series solution to this differential equation in \autoref{ex_ps5} in \autoref{sec:power_series}. These are:
-%$$a_0=1,\quad a_1 = 2,\quad a_2 = \frac42=2,\quad a_3=\frac{8}{2\cdot3}=\frac43,\quad a_4=\frac{16}{2\cdot3\cdot4} = \frac23.$$
+%\[a_0=1,\quad a_1 = 2,\quad a_2 = \frac42=2,\quad a_3=\frac{8}{2\cdot3}=\frac43,\quad a_4=\frac{16}{2\cdot3\cdot4} = \frac23.\]
 %We include the ``unsimplified'' expressions for the coefficients found in \autoref{ex_ps5} as we are looking for a pattern. It can be shown that $a_n = 2^n/n!$. Thus the solution, written as a power series, is
-%$$y = \sum_{n=0}^\infty \frac{2^n}{n!}x^n = \sum_{n=0}^\infty \frac{(2x)^n}{n!}.$$
+%\[y = \sum_{n=0}^\infty \frac{2^n}{n!}x^n = \sum_{n=0}^\infty \frac{(2x)^n}{n!}.\]
 %Using \autoref{idea:common_taylor} and \autoref{thm:series_alg}, we recognize $f(x) = e^{2x}$:
-%$$e^x = \sum_{n=0}^\infty \frac{x^n}{n!} \qquad \Rightarrow \qquad e^{2x} = \sum_{n=0}^\infty \frac{(2x)^n}{n!}.$$}
+%\[e^x = \sum_{n=0}^\infty \frac{x^n}{n!} \qquad \Rightarrow \qquad e^{2x} = \sum_{n=0}^\infty \frac{(2x)^n}{n!}.\]}
 
 Finding a pattern in the coefficients that match the series expansion of a known function, such as those shown in \autoref{idea:common_taylor}, can be difficult. What if the coefficients %in the previous example were
 are given in their reduced form; how could we still recover the function?% $y=e^{2x}$?
 
 Suppose that all we know is that 
-$$a_0=1,\quad a_1=2,\quad a_2=2,\quad a_3=\frac43,\quad a_4=\frac23.$$
+\[a_0=1,\quad a_1=2,\quad a_2=2,\quad a_3=\frac43,\quad a_4=\frac23.\]
 \autoref{def:taylor_series} states that each term of the Taylor expansion of a function includes an $n!$. This allows us to say that
-$$a_2=2=\frac{b_2}{2!},\quad a_3 = \frac43=\frac{b_3}{3!},\quad \text{and}\quad a_4 = \frac23=\frac{b_4}{4!}$$
+\[a_2=2=\frac{b_2}{2!},\quad a_3 = \frac43=\frac{b_3}{3!},\quad \text{and}\quad a_4 = \frac23=\frac{b_4}{4!}\]
 for some values $b_2$, $b_3$ and $b_4$.
 Solving for these values, we see that $b_2=4$, $b_3 = 8$ and $b_4=16$. That is, we are recovering the pattern $b_n=2^n$, %we had previously seen,
 allowing us to write 

@@ -136,11 +136,11 @@ def makefigs():
 
 def updatetodo():
     from collections import defaultdict
-    output = subprocess.check_output(['grep','todo','-I','--recursive','--line-number','.'])
+    output = subprocess.check_output(['grep','todo','-I','--recursive','--line-number','--exclude-dir=ApexPDFs','--exclude-dir=.git','--exclude-dir=todo','.'])
     todos = output.decode('utf-8').split("\n")
     todosin = defaultdict(list)
     for todo in todos:
-        if re.match('./make.py',todo) or re.match('./todo/todo_',todo) or todo == '' or re.match('./ApexPDFs/versions',todo) or './.git/logs/' in todo:
+        if re.match('./make.py',todo) or todo == '':
             continue
         if ' Tim ' in todo:
             key = 'tim'

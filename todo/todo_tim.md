@@ -47,10 +47,3 @@
 * [text/14_Stokes.tex line 190](../text/14_Stokes.tex#L190): todo Tim convert to asy
 * [text/14_Stokes.tex line 324](../text/14_Stokes.tex#L324): todo Tim convert to asy
 * [text/14_Stokes.tex line 487](../text/14_Stokes.tex#L487): todo Tim check the phrasing
-* [todo/README.md line 4](../todo/README.md#L4): This is an overview of the todo lists for this text.
-* [todo/README.md line 6](../todo/README.md#L6): The most critical (and perpetual) todo is that the text needs more problems and examples, and more difficult or interesting problems.  If you have a problem that you'd like to contribute, please email it to Tim (if you don't know Tim, use the gmail account with this username).  If you also include your problem's solution, that would be best, but not necessary.
-* [todo/README.md line 9](../todo/README.md#L9): * [Calculus I](todo_calc1.md)
-* [todo/README.md line 10](../todo/README.md#L10): * [Calculus II](todo_calc2.md)
-* [todo/README.md line 11](../todo/README.md#L11): * [Calculus III](todo_calc3.md)
-* [todo/README.md line 12](../todo/README.md#L12): * [notes to myself](todo_tim.md)
-* [todo/README.md line 13](../todo/README.md#L13): * [TeX commands](todo_tex.txt) that might not be necessary if we did things correctly

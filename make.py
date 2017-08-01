@@ -136,38 +136,41 @@ def makefigs():
 
 def updatetodo():
     from collections import defaultdict
-    output = subprocess.check_output(['grep','todo','-Ir','.'])
+    output = subprocess.check_output(['grep','todo','-I','--recursive','--line-number','.'])
     todos = output.decode('utf-8').split("\n")
     todosin = defaultdict(list)
     for todo in todos:
         if re.match('./make.py',todo) or re.match('./todo/todo_',todo) or todo == '' or re.match('./ApexPDFs/versions',todo) or './.git/logs/' in todo:
             continue
         if ' Tim ' in todo:
-            todosin['tim'].append(todo)
+            key = 'tim'
         elif re.match('\S*/0[1-4]',todo) or 'CalculusI.' in todo:
-            todosin['calc1'].append(todo)
+            key = 'calc1'
         elif re.match('\S*/0[5-9]',todo) or 'CalculusII.' in todo:
-            todosin['calc2'].append(todo)
+            key = 'calc2'
         elif re.match('\S*/1[0-4]',todo) or 'CalculusIII.' in todo:
-            todosin['calc3'].append(todo)
+            key = 'calc3'
         else:
-            todosin['tim'].append(todo)
+            key = 'tim'
+        todo = re.sub(r'^\./(\S+):(\d+):\s*%?\s*',r'* <../\1#L\2>: ',todo)
+        todosin[key].append(todo)
     for filename,todolist in todosin.items():
-        with open('todo/todo_'+filename+'.txt','w') as todofile:
+        with open('todo/todo_'+filename+'.md','w') as todofile:
             todofile.write(('\n'.join(todolist)+'\n').encode('utf-8'))
     # and a few manual TeX commands instead of 'todo'
     with open('todo/todo_tex.txt','w') as mystdout:
-        for keywd in ('drawexampleline','enlargethispage','pagebreak',
+        for keywd in ('drawexampleline','enlargethispage','pagebreak','blue',
                       'clearpage','cleardoublepage','columnbreak','newpage',
                       'mfigure','myincludegraphics','addplot3'):
+            grepcall = ['grep',keywd,'-I','--recursive','--files-with-matches','--exclude-dir=hidden']
             mystdout.write('\n\n'+keywd+':\n')
             mystdout.flush()
             try:
-                subprocess.check_call(['grep',keywd,'-Irl','--exclude-dir=hidden','exercises'],stdout=mystdout)
+                subprocess.check_call(grepcall+['exercises'],stdout=mystdout)
             except:
                 pass
             try:
-                subprocess.check_call(['grep',keywd,'-Irl','--exclude-dir=hidden','text'],stdout=mystdout)
+                subprocess.check_call(grepcall+['text'],stdout=mystdout)
             except:
                 pass
         mystdout.write('\n')

@@ -152,7 +152,7 @@ def updatetodo():
             key = 'calc3'
         else:
             key = 'tim'
-        todo = re.sub(r'^\./(\S+):(\d+):\s*%?\s*',r'* <../\1#L\2>: ',todo)
+        todo = re.sub(r'^\./(\S+):(\d+):\s*%?\s*',r'* [\1 line \2](../\1#L\2): ',todo)
         todosin[key].append(todo)
     for filename,todolist in todosin.items():
         with open('todo/todo_'+filename+'.md','w') as todofile:

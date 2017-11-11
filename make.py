@@ -140,7 +140,7 @@ def updatetodo():
     todos = output.decode('utf-8').split("\n")
     todosin = defaultdict(list)
     for todo in todos:
-        if re.match('./make.py',todo) or todo == '':
+        if re.match('./make.py',todo) or todo == '' or re.match(r'\D+.log',todo):
             continue
         if ' Tim ' in todo:
             key = 'tim'

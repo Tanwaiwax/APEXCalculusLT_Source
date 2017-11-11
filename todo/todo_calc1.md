@@ -1,4 +1,3 @@
-* [CalculusI.log line 39226](../CalculusI.log#L39226): []\OML/cmm/m/it/10 eftodoalotofworktoprovethat [][] x[] \OT1/cmr/m/n/10 =
 * [exercises/02_06_exset_05.tex line 37](../exercises/02_06_exset_05.tex#L37): todo write more logarithmic differentiation problems
 * [text/01_Continuity.tex line 414](../text/01_Continuity.tex#L414): todo Find an interactive example of the bisection method where you specify the function and endpoints
 * [text/01_Limit_Definition.tex line 446](../text/01_Limit_Definition.tex#L446): todo write more exercises

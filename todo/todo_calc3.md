@@ -1,13 +1,7 @@
 * [CalculusIII.tex line 66](../CalculusIII.tex#L66): todo Chapter 15 needs an introduction
-* [exercises/10_01_exercises.tex line 19](../exercises/10_01_exercises.tex#L19): \exercise{The points $A = (3, 2, 0)$, $B = (1, 0, 1)$, and $C = (-1, 1, 3)$ form a triangle in space.  Find the distance between each pair of points and determine if the triangle is isosceles.}{} % todo the solution
-* [exercises/10_01_exercises.tex line 21](../exercises/10_01_exercises.tex#L21): \exercise{Explain why three points lie on a line if and only if the distance between two of the points is equal to the sum of the distances from each of these points to the third.}{} % todo solution?
-* [exercises/10_01_exercises.tex line 23](../exercises/10_01_exercises.tex#L23): \exercise{Determine whether or not the points $A = (2, 0, 3)$, $B = (0, -3, 4)$, and $C = (4, 3, 2)$ lie on a line.}{} % todo the solution
-* [exercises/10_01_exercises.tex line 25](../exercises/10_01_exercises.tex#L25): \exercise{Determine whether or not the points $A = (4, 5, 3)$, $B = (6, 8, 7)$, and $C = (0, 0, -5)$ lie on a line.}{} % todo the solution
-* [exercises/10_01_exercises.tex line 39](../exercises/10_01_exercises.tex#L39): Is $A$ closer to the center of the sphere or to the surface of the sphere?}{} % todo the solution
-* [exercises/10_01_exercises.tex line 44](../exercises/10_01_exercises.tex#L44): \]}{} % todo the solution
 * [exercises/10_01_exset_04.tex line 51](../exercises/10_01_exset_04.tex#L51): \exercise{$z=x^2+y^2-2x-4y+4$}{} % todo the solution
 * [exercises/10_01_exset_04.tex line 53](../exercises/10_01_exset_04.tex#L53): \exercise{$\ds\frac{(x-2)^2}4+(y+1)^2+\frac{(z-3)^2}9=1$}{} % todo the solution
-* [exercises/10_02_exercises.tex line 65](../exercises/10_02_exercises.tex#L65): \exercise{Let $P = (1, 2, 3)$, $Q = (2, -1, 4)$, and $R = (-1, 6, 1)$ be the three corners of a parallelogram in space.  Find the possible locations of the fourth corner.}{} % todo the solution
+* [exercises/10_02_exercises.tex line 65](../exercises/10_02_exercises.tex#L65): \exercise{Let $P=(1,2,3)$, $Q=(2,-1,4)$, and $R=(-1,6,1)$ be the three corners of a parallelogram in space.  Find the possible locations of the fourth corner.}{} % todo the solution
 * [exercises/12_02_exercises.tex line 27](../exercises/12_02_exercises.tex#L27): todo add exercises asking students to evaluate limits
 * [exercises/12_04_exercises.tex line 25](../exercises/12_04_exercises.tex#L25): todo add exercises asking where a function is differentiable
 * [exercises/12_06_exercises.tex line 23](../exercises/12_06_exercises.tex#L23): todo include some exercises finding the distance from a surface to a point as in Example 13.7.4

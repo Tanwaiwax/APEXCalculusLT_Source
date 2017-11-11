@@ -1,6 +1,6 @@
 \section{The Cross Product}\label{sec:cross_product}
 
-``Orthogonality'' is immensely important. A quick scan of your current environment will undoubtedly reveal numerous surfaces and edges that are perpendicular to each other (including the edges of this page). The dot product provides a quick test for orthogonality:  vectors $\vec u$ and $\vec v$ are perpendicular if, and only if, $\dotp uv=0$. 
+``Orthogonality'' is immensely important. A quick scan of your current environment will undoubtedly reveal numerous surfaces and edges that are perpendicular to each other (including the edges of this page). The dot product provides a quick test for orthogonality:  vectors $\vec u$ and $\vec v$ are perpendicular if, and only if, $\vec u\cdot\vec v=0$. 
 
 Given two non--parallel, nonzero vectors $\vec u$ and $\vec v$ in space, it is very useful to find a vector $\vec w$ that is perpendicular to both $\vec u$ and $\vec v$. There is a operation, called the \textbf{cross product}, that creates such a vector. This section defines the cross product, then explores its properties and applications.
 
@@ -29,16 +29,67 @@ We test whether or not $\crossp uv$ is orthogonal to $\vec u$ and $\vec v$ using
 \end{align*}
 Since both dot products are zero, $\crossp uv$ is indeed orthogonal to both $\vec u$ and $\vec v$.}
 
-A convenient method of computing the cross product starts with forming a particular $3\times 3$ \emph{matrix}, or rectangular array. The first row comprises the standard unit vectors $\veci$, $\vecj$, and $\vec k$. The second and third rows are the vectors $\vec u$ and $\vec v$, respectively. Using $\vec u$ and $\vec v$ from \autoref{ex_crossp1}, we begin with:
+\subsection*{Additional Material on $2 \times 2$ and $3 \times 3$ determinants}
+
+We will now make a slight digression.  Given four numbers $a$, $b$, $c$, $d$ we define the $2 \times 2$ determinant
+\[\begin{vmatrix}a & b \\ c & d\end{vmatrix} = ad - bc.\]
+Thus
 \[
- \begin{matrix}
-  \veci&\vecj&\veck \\
-  2&-1&4\\
-  3&2&5
- \end{matrix}
+\begin{vmatrix}1 & 2 \\3 & 4\end{vmatrix} = -2
+\text{ and }
+\begin{vmatrix}3 & -2 \\-6 & 4\end{vmatrix} = 0.
 \]
 
-Now repeat the first two columns after the original three:
+Given nine numbers $r_1$, $r_2$, $r_3$, $s_1$, $s_2$, $s_3$, $t_1$, $t_2$, $t_3$ we define the $3 \times 3$ determinant in terms of three $2 \times 2$ determinants as follows
+\[
+\begin{vmatrix}r_1 & r_2 & r_3 \\s_1 & s_2 & s_3 \\t_1 & t_2 & t_3\end{vmatrix} 
+=
+r_1 \begin{vmatrix}s_2 & s_3 \\t_2 & t_3\end{vmatrix}
+\stackrel{!}{-}r_2 \begin{vmatrix}s_1 & s_3 \\t_1 & t_3\end{vmatrix}
++r_3 \begin{vmatrix}s_1 & s_2 \\t_1 & t_2\end{vmatrix}.
+\]
+Note the minus sign in the second term.  Thus
+\begin{eqnarray*}
+\begin{vmatrix}1 & 2 & 3 \\0 & -1 & 5 \\7 & 4 & 0\end{vmatrix} 
+& = &
+1 \begin{vmatrix}-1 & 5 \\4 & 0\end{vmatrix}
+-2 \begin{vmatrix}0 & 5 \\7 & 0\end{vmatrix}
++3 \begin{vmatrix}0 & -1 \\7 & 4\end{vmatrix} \\
+ & = & 1 \cdot (-20) - 2 \cdot (-35) + 3 \cdot 7 \\
+ & = & 71.
+\end{eqnarray*}
+
+We can now express $\vec{v} \times \vec{w}$ as a symbolic $3 \times 3$ determinant as follows.
+\begin{eqnarray*}
+\vec{v} \times \vec{w} & = & 
+\begin{vmatrix}
+\veci & \vecj & \vec{k} \\
+a_1 & a_2 & a_3 \\
+b_1 & b_2 & b_3 
+\end{vmatrix} \\
+& = &
+\veci \begin{vmatrix}a_2 & a_3 \\b_2 & b_3\end{vmatrix}
+-\vecj \begin{vmatrix}a_1 & a_3 \\b_1 & b_3\end{vmatrix}
++\vec{k} \begin{vmatrix}a_1 & a_2 \\b_1 & b_2\end{vmatrix} \\
+& = & (a_2 b_3 - a_3 b_2) \veci
+- (a_1 b_3 - a_3 b_1) \vecj
++ (a_1 b_2 - a_2 b_1) \vec{k}
+\end{eqnarray*}
+
+%%%%%%%%
+
+%A convenient method of computing the cross product starts with forming a particular $3\times 3$ \emph{matrix}, or rectangular array. The first row comprises the standard unit vectors $\veci$, $\vecj$, and $\vec k$. The second and third rows are the vectors $\vec u$ and $\vec v$, respectively. Using $\vec u$ and $\vec v$ from \autoref{ex_crossp1}, we begin with:
+%\[
+% \begin{matrix}
+%  \veci&\vecj&\veck \\
+%  2&-1&4\\
+%  3&2&5
+% \end{matrix}
+%\]
+
+Another way to remember the $3\times3$ determinant is to
+%Now 
+repeat the first two columns after the original three:
 \[
  \begin{matrix}
   \veci&\vecj&\veck&\veci&\vecj \\
@@ -46,7 +97,6 @@ Now repeat the first two columns after the original three:
   3&2&5&3&2
  \end{matrix}
 \]
-
 This gives three full ``upper left to lower right'' diagonals, and three full ``upper right to lower left'' diagonals, as shown. Compute the products along each diagonal, then add the products on the right and subtract the products on the left:
 
 \begin{center}\begin{tikzpicture}[baseline=-3pt,>=stealth]
@@ -106,7 +156,7 @@ It is not coincidence that $\crossp vu = -(\crossp uv)$ in the preceding example
 	\end{enumerate}
 	\item		$\crossp uu = \vec 0$
 	\item		$\crossp u0 = \vec 0$
-	\item		\parbox{167pt}{$\vecu \cdot (\vecv\times\vecw) = (\crossp uv)\cdot \vecw$} Triple Scalar Product
+	\item		\parbox{167pt}{$\vecu \cdot (\vecv\times\vecw) = (\crossp uv)\cdot \vecw$} Scalar Triple Product
 \end{enumerate}}
 
 We introduced the cross product as a way to find a vector orthogonal to two given vectors, but we did not give a proof that the construction given in \autoref{def:cross_product} satisfies this property. \autoref{thm:cross_prod_prop} asserts this property holds; we leave the verification to Exercise \ref{pr_cross_perp}.
@@ -135,7 +185,7 @@ We demonstrate the truth of this theorem in the following example.
 \example{ex_crossp3}{The cross product and angles}{Let $\vec u =\bracket{1,3,6}$ and $\vec v = \bracket{-1,2,1}$ as in \autoref{ex_crossp2}. Verify \autoref{thm:cross_product} by finding $\theta$, the angle between $\vecu$ and $\vecv$, and the magnitude of $\crossp uv$.}
 {We use \autoref{thm:dot_product} to find the angle between $\vecu$ and $\vecv$. 
 \begin{align*}
-\theta &= \cos^{-1}\left(\frac{\dotp uv}{\vnorm u\, \vnorm v}\right) \\
+\theta &= \cos^{-1}\left(\frac{\vec u\cdot\vec v}{\vnorm u\, \vnorm v}\right) \\
 			&= \cos^{-1}\left(\frac{11}{\sqrt{46}\sqrt{6}}\right)\\
 			&\approx 0.8471 = 48.54^\circ.
 \end{align*}
@@ -154,8 +204,6 @@ which allows us to verify the theorem exactly.}
 
 The anticommutative property of the cross product demonstrates that $\crossp uv$ and $\crossp vu$ differ only by a sign --- these vectors have the same magnitude but point in the opposite direction. When seeking a vector perpendicular to $\vec u$ and $\vec v$, we essentially have two directions to choose from, one in the direction of $\crossp uv$ and one in the direction of $\crossp vu$. Does it matter which we choose? How can we tell which one we will get without graphing, etc.?
 
-Another property of the cross product, as defined, is that it follows the \textbf{right hand rule.} Given $\vec u$ and $\vec v$ in $\mathbb{R}^3$ with the same initial point, point the index finger of your right hand in the direction of $\vecu$ and let your middle finger point in the direction of $\vecv$ (much as we did when establishing the right hand rule for the 3-dimensional coordinate system). Your thumb will naturally extend in the direction of $\crossp uv$. One can ``practice'' this using \autoref{fig:crossp_rhr}. If you switch, and point the index finder in the direction of $\vecv$ and the middle finger in the direction of $\vecu$, your thumb will now point in the opposite direction, allowing you to ``visualize'' the anticommutative property of the cross product.
-
 \mtable{Illustrating the Right Hand Rule of the cross product.}{fig:crossp_rhr}{
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
@@ -164,15 +212,22 @@ Another property of the cross product, as defined, is that it follows the \textb
 3Dcoo=0 0 34,
 3Droo=150}{width=\marginparwidth}{figures/figcrossp_rhr_3D}}
 
+Another property of the cross product, as defined, is that it follows the \textbf{right hand rule.} Given $\vec u$ and $\vec v$ in $\mathbb{R}^3$ with the same initial point, point the index finger of your right hand in the direction of $\vecu$ and let your middle finger point in the direction of $\vecv$ (much as we did when establishing the right hand rule for the 3-dimensional coordinate system). Your thumb will naturally extend in the direction of $\crossp uv$. One can ``practice'' this using \autoref{fig:crossp_rhr}. If you switch, and point the index finder in the direction of $\vecv$ and the middle finger in the direction of $\vecu$, your thumb will now point in the opposite direction, allowing you to ``visualize'' the anticommutative property of the cross product.  In fact, we can use this property to define the cross product, which we summarize in the next key idea.
+
+\keyidea{ki:cross_prod_alt}{Alternate Definition of the Cross Product}{For vectors $\vecu$ and $\vecv$, the cross product $\vecu\times\vecv$ is the unique vector such that
+\begin{enumerate}
+\item $\norm{\vecu\times\vecv}=\norm{\vecu}\norm{\vecv}\sin\theta$ where $\theta$ is the angle between $\vecu$ and $\vecv$,
+\item $\vecu\times\vecv$ is orthogonal to both $\vecu$ and $\vecv$, 
+and
+\item $\vecu$, $\vecv$, and $\vecu\times\vecv$ form a right-handed triple.
+\end{enumerate}}
+
 \subsection*{Applications of the Cross Product}
 
 There are a number of ways in which the cross product is useful in mathematics, physics and other areas of science beyond ``just'' finding a vector perpendicular to two others. We highlight a few here.\index{cross product!applications}
 
 \subsubsection*{Area of a Parallelogram}
 
-It is a standard geometry fact that the area of a parallelogram is $A = bh$, where $b$ is the length of the base and $h$ is the height of the parallelogram, as illustrated in \autoref{fig:crossp_parallelogram}(a). As shown when defining the Parallelogram Law of vector addition, two vectors $\vecu$ and $\vecv$ define a parallelogram when drawn from the same initial point, as illustrated in \autoref{fig:crossp_parallelogram}(b). Trigonometry tells us that $h = \vnorm u \sin \theta$, hence the area of the parallelogram is 
-\begin{equation}A = \vnorm u\,\vnorm v\sin\theta = \norm{\crossp uv},\label{eq:crossp1}\end{equation}
-where the second equality comes from \autoref{thm:cross_product}.
 \mtable{Using the cross product to find the area of a parallelogram.}{fig:crossp_parallelogram}{%
 \begin{tikzpicture}[thick,scale=1.25]
  \draw(0,0)--node[below,pos=.5]{\scriptsize $b$}(2,0)--(3,1.5)--(1,1.5)--cycle;
@@ -189,15 +244,15 @@ where the second equality comes from \autoref{thm:cross_product}.
 	\draw (.8,0) -- (.8,.2) -- (1,.2);
 \end{tikzpicture}
 \\(b)}
+
+It is a standard geometry fact that the area of a parallelogram is $A = bh$, where $b$ is the length of the base and $h$ is the height of the parallelogram, as illustrated in \autoref{fig:crossp_parallelogram}(a). As shown when defining the Parallelogram Law of vector addition, two vectors $\vecu$ and $\vecv$ define a parallelogram when drawn from the same initial point, as illustrated in \autoref{fig:crossp_parallelogram}(b). Trigonometry tells us that $h = \vnorm u \sin \theta$, hence the area of the parallelogram is 
+\begin{equation}A = \vnorm u\,\vnorm v\sin\theta = \norm{\crossp uv},\label{eq:crossp1}\end{equation}
+where the second equality comes from \autoref{thm:cross_product}.
 We illustrate using \autoeqref{eq:crossp1} in the following example.
 \index{cross product!applications!area of parallelogram}
 
 % todo Tim this parallelogram is very narrow.  do we want something better?
-\example{ex_crossp4}{Finding the area of a parallelogram}{\mbox{}\\[-2\baselineskip]\begin{enumerate}
-	\item Find the area of the parallelogram defined by the vectors $\vecu = \bracket{2,1}$ and $\vecv = \bracket{1,3}$.
-	\item	Verify that the points $A = (1,1,1)$, $B = (2,3,2)$, $C = (4,5,3)$ and $D = (3,3,2)$ are the vertices of a parallelogram. Find the area of the parallelogram.
-\end{enumerate}}
-{\mtable{Sketching the parallelograms in \autoref{ex_crossp4}.}{fig:crossp4}{%
+\mtable{Sketching the parallelograms in \autoref{ex_crossp4}.}{fig:crossp4}{%
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2,3,4},
@@ -211,7 +266,7 @@ ytick={1,2,3,4,5},ymin=-.5,ymax=5.5,xmin=-.5,xmax=4.5]
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}
-	\\(a)\\[15pt]
+	\\(a)\\%[15pt]
 	\myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.004,
@@ -219,7 +274,12 @@ ytick={1,2,3,4,5},ymin=-.5,ymax=5.5,xmin=-.5,xmax=4.5]
 3Dcoo=61 60 63,
 3Droo=250}{width=\marginparwidth}{figures/figcrossp4a_3D}\\
 	(b)}
-\mbox{}\\[-1.5\baselineskip]\begin{enumerate}
+
+\example{ex_crossp4}{Finding the area of a parallelogram}{\mbox{}\\[-2\baselineskip]\begin{enumerate}
+	\item Find the area of the parallelogram defined by the vectors $\vecu = \bracket{2,1}$ and $\vecv = \bracket{1,3}$.
+	\item	Verify that the points $A = (1,1,1)$, $B = (2,3,2)$, $C = (4,5,3)$ and $D = (3,3,2)$ are the vertices of a parallelogram. Find the area of the parallelogram.
+\end{enumerate}}
+{\mbox{}\\[-1.5\baselineskip]\begin{enumerate}
 	\item \autoref{fig:crossp4}(a) sketches the parallelogram defined by the vectors $\vec u$ and $\vec v$. We have a slight problem in that our vectors exist in $\mathbb{R}^2$, not $\mathbb{R}^3$, and the cross product is only defined on vectors in $\mathbb{R}^3$. We skirt this issue by viewing $\vec u$ and $\vecv$ as vectors in the $x-y$ plane of $\mathbb{R}^3$, and rewrite them as $\vec u = \bracket{2,1,0}$ and $\vecv =\bracket{1,3,0}$. We can now compute the cross product. 
 	It is easy to show that $\crossp uv = \bracket{0,0,5}$; therefore the area of the parallelogram is $A = \norm{\crossp uv} = 5$.
 	\item		To show that the quadrilateral $ABCD$ is a parallelogram (shown in \autoref{fig:crossp4}(b)), we need to show that the opposite sides are parallel. We can quickly show that $\vv{AB} =\vv{DC} = \bracket{1,2,1}$ and $\vv{BC} = \vv{AD} = \bracket{2,2,1}$. We find the area by computing the magnitude of the cross product of $\vv{AB}$ and $\vv{BC}$:
@@ -272,14 +332,14 @@ Thus the volume of a parallelepiped defined by vectors $\vecu$, $\vecv$ and $\ve
 \begin{equation}
 V = \abs{\vecu\cdot (\crossp vw)}.\label{eq:crossp2}
 \end{equation}
-Note how this is the Triple Scalar Product, first seen in \autoref{thm:cross_prod_prop}. Applying the identities given in the theorem shows that we can apply the Triple Scalar Product in any ``order'' we choose to find the volume. That is,
+Note how this is the Scalar Triple Product, first seen in \autoref{thm:cross_prod_prop}. Applying the identities given in the theorem shows that we can apply the Scalar Triple Product in any ``order'' we choose to find the volume. That is,
 \[V = \abs{\vecu\cdot(\crossp vw)} = \abs{\vec u\cdot (\crossp wv)} = \abs{(\crossp uv)\cdot \vecw},\quad \text{etc.}\]
 As with the cross product, we can also write $\vecu\cdot(\crossp vw)$ in terms of a determinant:
 \[
  \vecu\cdot(\crossp vw)=
  \begin{vmatrix}u_1&u_2&u_3\\v_1&v_2&v_3\\w_1&w_2&w_3\end{vmatrix}.
 \]
-Because the volume is the absolute value of the determinant, the order of the rows doesn't matter.
+Because the volume is the absolute value of the determinant, changing the order of the rows can only change the sign of this determinant, which doesn't change the final answer.
 
 \mtable{A parallelepiped in \autoref{ex_crossp6}.}{fig:crossp6}{
 \myincludeasythree{width=\marginparwidth,
@@ -304,9 +364,9 @@ So the volume of the parallelepiped is 2 cubic units.  In terms of determinants,
 \]
 and the absolute value of this determinant is again 2.}
 
-While this application of the Triple Scalar Product is interesting, it is not used all that often: parallelepipeds are not a common shape in physics and engineering.
-% On the other hand, a tetrahedron is more common of a shape, and its volume is $\frac16$ that of a parallelepiped formed with the same vectors.
-The last application of the cross product is very applicable in engineering.
+%While this application of the Scalar Triple Product is interesting, it is not used all that often: parallelepipeds are not a common shape in physics and engineering.
+%% On the other hand, a tetrahedron is more common of a shape, and its volume is $\frac16$ that of a parallelepiped formed with the same vectors.
+%The last application of the cross product is very applicable in engineering.
 
 \subsubsection*{Torque}
 

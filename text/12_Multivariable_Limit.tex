@@ -214,6 +214,40 @@ Let $\sqrt{(x-0)^2+(y-0)^2} = \sqrt{x^2+y^2}<\delta$. Consider $\abs{f(x,y)-0}$:
 \end{align*}
 Thus if $\sqrt{(x-0)^2+(y-0)^2}<\delta$ then $\abs{f(x,y)-0}<\epsilon$, which is what we wanted to show. Thus $\ds \lim_{(x,y)\to(0,0)} \frac{5x^2y^2}{x^2+y^2} = 0$.}
 
+We also have a multivariable version of the squeeze theorem.
+
+\theorem{thm:multi_squeeze}{Squeeze Theorem}{Let $S$ be an open set containing $(x_0, y_0)$.  Suppose $f(x, y)$, $g(x, y)$, and $h(x, y)$ are defined on $S$ except possibly at $(x_0, y_0)$ and both
+\[
+\lim_{(x,y)\to(x_0, y_0)}g(x, y)=L
+\quad\text{and}\quad
+\lim_{(x,y)\to(x_0, y_0)} h(x, y) = L.
+\]
+If $g(x,y)\leq f(x, y)\leq h(x,y)$ for all $(x,y)\in S$ except possibly at $(x_0, y_0)$, then
+\[\lim_{(x,y)\to(x_0, y_0)}f(x, y)=L.\]}
+
+This theorem provides other proofs of the previous example.
+
+\example*{ex_multlimit5b}{Finding a limit using the Squeeze Theorem}{We have 
+\[
+0\leq\frac{5x^2y^2}{x^2+y^2}\leq\frac{5x^2y^2+5y^4}{x^2+y^2}
+=\frac{5y^2(x^2+y^2)}{x^2+y^2}=5y^2.
+\]
+Since $0\to0$ and $5y^2\to0$ as $(x,y)\to(0,0)$ we have 
+\[\lim_{(x,y)\to(0,0)}\frac{5x^2y^2}{x^2+y^2}=0\]
+by the Squeeze Theorem.
+
+If we set $x = r \cos \theta$ and $y = r \sin \theta$ we have $(x, y) \rightarrow 0$ as $r \rightarrow 0$.  Now
+\[
+\frac{5x^2y^2}{x^2+y^2}
+=\frac{5r^4\cos^2\theta\sin^2\theta}{r^2(\cos^2\theta +\sin^2\theta)}
+=5r^2\cos^2\theta\sin^2\theta.
+\]
+Thus 
+\[0\leq\frac{5x^2y^2}{x^2+y^2}=5r^2\cos^2\theta\sin^2\theta\leq5r^2.\]
+Since $5r^2\to0$ as $r\to0$ we have again
+\[\lim_{(x,y)\to(0,0)}\frac{5x^2y^2}{x^2+y^2}=0\]
+by the Squeeze Theorem.}
+
 \subsection*{Continuity}
 
 \autoref{def:continuous} defines what it means for a function of one variable to be continuous. In brief, it meant that the function always equaled its limit. We define continuity for functions of two variables in a similar way as we did for functions of one variable.
@@ -226,6 +260,8 @@ Thus if $\sqrt{(x-0)^2+(y-0)^2}<\delta$ then $\abs{f(x,y)-0}<\epsilon$, which is
 	\index{continuous function}\index{multivariable function!continuity}
 	\item	$f$ is \textbf{continuous on an open set $S$} if $f$ is continuous at each points in $S$. (We say that $f$ is \textbf{continuous everywhere} if $f$ is continuous on $\mathbb{R}^2$.)
 \end{enumerate}}
+
+It follows that if $f$ is a continuous function of one variable, then $f(x)$ (or $f(y)$) is a continuous function of the variables $(x,y)$.
 
 \example{ex_multicont1}{Continuity of a function of two variables}{Let $\ds f(x,y) = \left\{ \begin{array}{rl} \frac{\cos y\sin x}{x} & x\neq 0 \\
 	\cos y & x=0

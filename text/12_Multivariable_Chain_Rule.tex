@@ -14,7 +14,6 @@ In this section we extend the Chain Rule to functions of more than one variable.
 	+\frac{\partial f}{\partial y}\frac{dy}{dt}.
 \]}
 
-% todo Tim check phrasing
 \begin{proof}
 By definition,
 \[\frac{df}{dt}(x,y)=\lim_{h\to0}\frac{f(x(t+h),y(t+h))-f(x,y)}h.\]
@@ -24,19 +23,19 @@ Let
  dx&=x(t+h)-x(t),\qquad\text{and} \\
  dy&=y(t+h)-y(t).
 \end{align*}
-Because $f$ is differentiable, \autoref{def:multi_differentiability} gives us functions $E_x$ and $E_y$ so that
+Because $f$ is differentiable, \autoref{def:multi_differentiability} gives us functions $E_1$ and $E_2$ so that
 \begin{gather*}
- E_x dx+E_y dy = \Delta f-f_x(x,y)dx-f_y(x,y)dy\\
- \text{and}\qquad
- \lim_{\bracket{dx,dy}\to0}\bracket{E_x,E_y}=0.
+ E_1 dx+E_2 dy = \Delta f-f_x(x,y)dx-f_y(x,y)dy,\\
+ \lim_{(dx,dy)\to0}E_1=0,\qquad\text{and}\qquad
+ \lim_{(dx,dy)\to0}E_2=0.
 \end{gather*}
 This means that
 \begin{align*}
  \frac{df}{dt}(x,y)
- &=\lim_{h\to0}\frac{f_x(x,y)dx+f_y(x,y)dy+E_x dx+E_y dy}h \\
+ &=\lim_{h\to0}\frac{f_x(x,y)dx+f_y(x,y)dy+E_1 dx+E_2 dy}h \\
  &=f_x(x,y)\lim_{h\to0}\frac{dx}h+f_y(x,y)\lim_{h\to0}\frac{dy}h \\
  &\qquad\qquad\mbox{}
- +\lim_{h\to0}E_x\lim_{h\to0}\frac{dx}h+\lim_{h\to0}E_y\lim_{h\to0}\frac{dy}h \\
+ +\lim_{h\to0}E_1\lim_{h\to0}\frac{dx}h+\lim_{h\to0}E_2\lim_{h\to0}\frac{dy}h \\
  &=f_x(x,y)x'(t)+f_y(x,y)y'(t)+0x'(t)+0y'(t).\qedhere
 \end{align*}
 \end{proof}

@@ -1,4 +1,10 @@
+* [exercises/11_02_exset_03.tex line 9](../exercises/11_02_exset_03.tex#L9): todo Tim this was originally \vec r.  but was that part of the problem?
 * [exercises/12_03_exercises.tex line 4](../exercises/12_03_exercises.tex#L4): todo Tim is 13.3#1 a good answer?
+* [exercises/12_05_exercises.tex line 17](../exercises/12_05_exercises.tex#L17): todo Tim make the directions more consistent.  maybe combine sets and make more parts?
+* [exercises/12_07_exset_02.tex line 3](../exercises/12_07_exset_02.tex#L3): todo Tim should the solutions be less verbose?
+* [exercises/13_01_exset_03.tex line 2](../exercises/13_01_exset_03.tex#L2): todo Tim should we compute the answer for one or both integrals?
+* [exercises/13_03_exset_03.tex line 3](../exercises/13_03_exset_03.tex#L3): todo Tim do we add the steps to calculate \int e^{-x^2} ?
+* [exercises/13_Jacobian_exercises.tex line 23](../exercises/13_Jacobian_exercises.tex#L23): todo Tim are the Beta function problems Jacobian?  Or just u-sub?
 * [figures/figtrip5d_3D.asy line 37](../figures/figtrip5d_3D.asy#L37): // todo find a better way to shade this in
 * [figures/figtrip5e_3D.asy line 26](../figures/figtrip5e_3D.asy#L26): // todo find a better way to shade this in
 * [headers/APEX_format.tex line 19](../headers/APEX_format.tex#L19): \RequirePackage{amssymb} % todo ? https://tex.stackexchange.com/a/3000/107497 recommends dropping amssymb in favor of unicode-math
@@ -23,21 +29,19 @@
 * [text/09_Conic_Sections.tex line 27](../text/09_Conic_Sections.tex#L27): todo Tim convert conic figures to 3d (or at least tikz)
 * [text/09_Parametric_Equations.tex line 5](../text/09_Parametric_Equations.tex#L5): todo Tim should these be labeled as figures?
 * [text/09_Parametric_Equations.tex line 458](../text/09_Parametric_Equations.tex#L458): todo Tim folium of Descartes should be in Implicit Equation gallery?
-* [text/10_Cross_Product.tex line 195](../text/10_Cross_Product.tex#L195): todo Tim this parallelogram is very narrow.  do we want something better?
+* [text/10_Cross_Product.tex line 254](../text/10_Cross_Product.tex#L254): todo Tim this parallelogram is very narrow.  do we want something better?
 * [text/10_Dot_Product.tex line 145](../text/10_Dot_Product.tex#L145): todo Tim check this spacing
 * [text/10_Lines.tex line 192](../text/10_Lines.tex#L192): todo Tim why not just rescale d2 to match d1?
-* [text/11_Vector_Functions_Calc.tex line 193](../text/11_Vector_Functions_Calc.tex#L193): todo Tim make the graphs pull from the same source? Then they'd have the same size
-* [text/11_Vector_Functions_Calc.tex line 226](../text/11_Vector_Functions_Calc.tex#L226): todo Tim make these pull from the same source, so they're the same size
+* [text/11_Vector_Functions_Calc.tex line 195](../text/11_Vector_Functions_Calc.tex#L195): todo Tim make the graphs pull from the same source? Then they'd have the same size
+* [text/11_Vector_Functions_Calc.tex line 228](../text/11_Vector_Functions_Calc.tex#L228): todo Tim make these pull from the same source, so they're the same size
 * [text/11_Vector_Functions_Motion.tex line 390](../text/11_Vector_Functions_Motion.tex#L390): todo Tim make sure these three figures match
 * [text/11_Vector_Tangent_Normal.tex line 191](../text/11_Vector_Tangent_Normal.tex#L191): todo Tim write these in terms of r(t) if possible? but the theorem is about a(t)
-* [text/12_Directional_Derivatives.tex line 25](../text/12_Directional_Derivatives.tex#L25): todo Tim check the phrasing of the proof of Directional Derivatives
-* [text/12_Directional_Derivatives.tex line 88](../text/12_Directional_Derivatives.tex#L88): todo Tim verify the phrasing of nabla as an operator
+* [text/12_Directional_Derivatives.tex line 95](../text/12_Directional_Derivatives.tex#L95): todo Tim verify the phrasing of nabla as an operator
 * [text/12_Lagrange.tex line 114](../text/12_Lagrange.tex#L114): todo Tim check the phrasing of two constraints
-* [text/12_Multivariable_Chain_Rule.tex line 17](../text/12_Multivariable_Chain_Rule.tex#L17): todo Tim check phrasing
-* [text/12_Multivariable_Chain_Rule.tex line 116](../text/12_Multivariable_Chain_Rule.tex#L116): todo Tim should ``odd n'' become ``2k+1''?
-* [text/12_Multivariable_Chain_Rule.tex line 135](../text/12_Multivariable_Chain_Rule.tex#L135): todo Tim check phrasing
+* [text/12_Multivariable_Chain_Rule.tex line 115](../text/12_Multivariable_Chain_Rule.tex#L115): todo Tim should ``odd n'' become ``2k+1''?
+* [text/12_Multivariable_Chain_Rule.tex line 134](../text/12_Multivariable_Chain_Rule.tex#L134): todo Tim check phrasing
 * [text/12_Tangent_Planes_Lines.tex line 141](../text/12_Tangent_Planes_Lines.tex#L141): todo Tim should this be $\ell_{\vecn}$?
-* [text/12_Tangent_Planes_Lines.tex line 228](../text/12_Tangent_Planes_Lines.tex#L228): todo Tim but isn't one of those points closer to the surface?
+* [text/12_Tangent_Planes_Lines.tex line 237](../text/12_Tangent_Planes_Lines.tex#L237): todo Tim but isn't one of those points closer to the surface?
 * [text/14_Div_Thm.tex line 57](../text/14_Div_Thm.tex#L57): todo Tim convert to asy
 * [text/14_Div_Thm.tex line 232](../text/14_Div_Thm.tex#L232): todo Tim convert to asy
 * [text/14_Div_Thm.tex line 260](../text/14_Div_Thm.tex#L260): todo Tim This has vectors with parens instead of <>.  Have we done that elsewhere?

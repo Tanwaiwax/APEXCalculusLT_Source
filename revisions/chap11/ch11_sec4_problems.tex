@@ -1,0 +1,197 @@
+\section*{11.4 \ \ More Problems}
+
+\ 
+
+
+\begin{enumerate}
+\item  For any $\vec{u}$ and $\vec{v}$ in $\mathbb{R}^3$ we have 
+\[
+\| \vec{u} \|^2 \| \vec{v} \|^2 = (\vec{u} \cdot \vec{v})^2 + \| \vec{u} \times \vec{v} \|^2.
+\]
+(This can be verified directly by a somewhat messy algebraic computation.)  Use this formula to show that 
+\[
+\| \vec{u} \times \vec{v} \| = \| \vec{u} \| \| \vec{v} \| \sin \theta
+\]
+where $\theta$ is the angle between $\vec{u}$ and $\vec{v}$.  \\
+
+\item  Suppose $\vec{a}$, $\vec{v}$, and $\vec{w}$ are vectors in $\mathbb{R}^3$ with $\vec{a} \neq \vec{0}$.  Show that if both $\vec{a} \cdot \vec{v} = \vec{a} \cdot \vec{w}$ and $\vec{a} \times \vec{v} = \vec{a} \times \vec{w}$ then $\vec{v} = \vec{w}$.  \\
+\end{enumerate}
+
+
+\section*{Additional Material on $2 \times 2$ and $3 \times 3$ determinants}
+
+Given four numbers $a$, $b$, $c$, $d$ we define the $2 \times 2$ determinant
+\[
+\begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix} = ad - bc.
+\]
+Thus
+\[
+\begin{vmatrix}
+1 & 2 \\
+3 & 4
+\end{vmatrix} = -2 \text{ and }
+\begin{vmatrix}
+3 & -2 \\
+-6 & 4
+\end{vmatrix} = 0.
+\]
+Given nine numbers $r_1$, $r_2$, $r_3$, $s_1$, $s_2$, $s_3$, $t_1$, $t_2$, $t_3$ we define the $3 \times 3$ determinant in terms of three $2 \times 2$ determinants as follows
+\[
+\begin{vmatrix}
+r_1 & r_2 & r_3 \\
+s_1 & s_2 & s_3 \\
+t_1 & t_2 & t_3
+\end{vmatrix} 
+=
+r_1 \begin{vmatrix}
+s_2 & s_3 \\
+t_2 & t_3
+\end{vmatrix}
+\stackrel{!}{-}
+r_2 \begin{vmatrix}
+s_1 & s_3 \\
+t_1 & t_3
+\end{vmatrix}
++
+r_3 \begin{vmatrix}
+s_1 & s_2 \\
+t_1 & t_2
+\end{vmatrix}.
+\]
+Note the minus sign in the second term.  Thus
+\begin{eqnarray*}
+\begin{vmatrix}
+1 & 2 & 3 \\
+0 & -1 & 5 \\
+7 & 4 & 0
+\end{vmatrix} 
+& = &
+1 \begin{vmatrix}
+-1 & 5 \\
+4 & 0
+\end{vmatrix}
+-
+2 \begin{vmatrix}
+0 & 5 \\
+7 & 0
+\end{vmatrix}
++
+3 \begin{vmatrix}
+0 & -1 \\
+7 & 4
+\end{vmatrix} \\
+ & = & 1 \cdot (-20) - 2 \cdot (-35) + 3 \cdot 7 \\
+ & = & 71.
+\end{eqnarray*}
+We can now express $\vec{v} \times \vec{w}$ as a symbolic $3 \times 3$ determinant as follows.
+\begin{eqnarray*}
+\vec{v} \times \vec{w} & = & 
+\begin{vmatrix}
+\vec{\imath} & \vec{\jmath} & \vec{k} \\
+a_1 & a_2 & a_3 \\
+b_1 & b_2 & b_3 
+\end{vmatrix} \\
+& = &
+\vec{\imath} \begin{vmatrix}
+a_2 & a_3 \\
+b_2 & b_3
+\end{vmatrix}
+-
+\vec{\jmath} \begin{vmatrix}
+a_1 & a_3 \\
+b_1 & b_3
+\end{vmatrix}
++
+\vec{k} \begin{vmatrix}
+a_1 & a_2 \\
+b_1 & b_2
+\end{vmatrix} \\
+ & = & (a_2 b_3 - a_3 b_2) \vec{\imath} - (a_1 b_3 - a_3 b_1) \vec{\jmath} + (a_1 b_2 - a_2 b_1) \vec{k}
+\end{eqnarray*}
+
+
+\begin{enumerate}
+\item  Calculate the following determinants.
+\begin{enumerate}
+\item  $\begin{vmatrix}
+4 & 1 \\
+2 & 5
+\end{vmatrix}$ \\
+
+\item  $\begin{vmatrix}
+-1 & 2 \\
+\frac{1}{2} & 4
+\end{vmatrix}$ \\
+
+\item  $\begin{vmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9
+\end{vmatrix}$ \\
+
+\item  $\begin{vmatrix}
+2 & 1 & 3 \\
+4 & -1 & -5 \\
+1 & 2 & 1
+\end{vmatrix}$ \\
+\end{enumerate}
+
+\item  Show that $\begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix} = 0$ if and only if $\langle a, b \rangle$ and $\langle c, d \rangle$ are parallel.  \\
+
+\item  Show that $\vec{v} \times \vec{w} = \vec{0}$ if and only if $\vec{v}$ and $\vec{w}$ are parallel in $\mathbb{R}^3$.  \\
+
+\item  Show that $\begin{vmatrix}
+c & d \\
+a & b
+\end{vmatrix} = - \begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix}$.  \\
+
+\item  Show that $\vec{w} \times \vec{v} = -(\vec{v} \times \vec{w})$ for any $\vec{v}$ and $\vec{w}$ in $\mathbb{R}^3$.  \\
+
+\item  Show that for any real numbers $s$ and $t$ we have $\begin{vmatrix}
+sa & sb \\
+tc & td
+\end{vmatrix} = st \begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix}$.  \\
+
+\item  Show that $c (\vec{v} \times \vec{w}) = \vec{v} \times (c \vec{w})$ for any scalar $c$ and for any $\vec{v}$ and $\vec{w}$ in $\mathbb{R}^3$.  \\
+
+\item  Show that 
+$\begin{vmatrix}
+a & b \\
+c + s & d + t
+\end{vmatrix} = \begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix}
++ \begin{vmatrix}
+a & b \\
+s & t
+\end{vmatrix}$. \\
+
+\item  $\vec{u} \times (\vec{v} + \vec{w}) = \vec{u} \times \vec{v} + \vec{u} \times \vec{w}$ for any $\vec{u}$, $\vec{v}$, and $\vec{w}$ in $\mathbb{R}^3$.  \\
+
+\item  Let $\vec{u} = \langle u_1, u_2, u_3 \rangle$, $\vec{v} = \langle v_1, v_2, v_3 \rangle$, and $\vec{w} = \langle w_1, w_2, w_3 \rangle$.  Show that
+\[
+\vec{u} \cdot ( \vec{v} \times \vec{w} ) = \begin{vmatrix}
+u_1 & u_2 & u_3 \\
+v_1 & v_2 & v_3 \\
+w_1 & w_2 & w_3
+\end{vmatrix} 
+\]
+
+\item  We have seen that if we swap two rows of a $2 \times 2$ determinant the determinant changes sign.  This is true for $3 \times 3$ determinants as well.  Using this fact show that $\vec{u} \cdot ( \vec{v} \times \vec{w} ) = ( \vec{u} \times \vec{v} ) \cdot \vec{w}$ for any vectors $\vec{u}$, $\vec{v}$ and $\vec{w}$ in $\mathbb{R}^3$.  \\
+
+\item  We have seen that if two rows of a $2 \times 2$ determinant are the same the determinant is zero.  This is true for $3 \times 3$ determinants as well.  Using this fact show that $\vec{v} \times \vec{w}$ is orthogonal to both $\vec{v}$ and $\vec{w}$ for any vectors $\vec{v}$ and $\vec{w}$ in $\mathbb{R}^3$.
+\end{enumerate}
+

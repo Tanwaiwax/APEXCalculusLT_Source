@@ -29,6 +29,8 @@ Two vectors are \textbf{equal} if they have the same magnitude and direction.
 \index{vectors!magnitude}\index{norm}\index{magnitude of vector}
 \index{terminal point}\index{initial point}}
 
+\mnote{\textbf{Note:} Instead of $\norm{\vv{PQ}}$, some texts use $\abs{\vv{PQ}}$ and rely on context to know if it is the norm of a vector or the absolute value of a scalar.}
+
 \autoref{fig:vectintro1} shows multiple instances of the same vector. Each directed line segment has the same direction and length (magnitude), hence each is the same vector.
 
 %Given two points $P$ and $Q$ (either in the plane or in space), the line segment that starts at $P$ and ends at $Q$ is a vector, denoted $\vv{PQ}$. The point $P$ is said to be the \textbf{initial} point of the vector, and the point $Q$ is the \textbf{terminal point}. We define the magnitude of $\vv{PQ}$ as the length of the line segment $\overline{PQ}$: $\norm{\vv{PQ}}=\norm{\overline{PQ}}$.
@@ -372,7 +374,7 @@ A similar construction in $\mathbb{R}^3$ shows that the terminal points all lie 
 
 	\item	A vector $\vec u$ in $\mathbb{R}^2$ is a unit vector if, and only if, its component form is $\bracket{\cos\theta,\sin\theta}$ for some angle $\theta$.
 \index{unit vector!properties}\index{vectors!unit vector}
-	\item	A vector $\vec u$ in $\mathbb{R}^3$ is a unit vector if, and only if, its component form is $\bracket{\sin\theta\cos\varphi,\sin\theta\sin\varphi,\cos\theta}$ for some angles $\theta$ and $\varphi$.
+	\item	A vector $\vec u$ in $\mathbb{R}^3$ is a unit vector if, and only if, its component form is $\bracket{\sin\phi\cos\theta,\sin\phi\sin\theta,\cos\phi}$ for some angles $\theta$ and $\phi$.
 \end{enumerate}}
 
 These formulas can come in handy in a variety of situations, especially the formula for unit vectors in the plane.
@@ -476,7 +478,7 @@ These two examples demonstrate that converting between component form and the st
  \draw [rotate=90,->,>=stealth] (1,0) arc (0:20:1);
  %
  \draw [->,>=stealth] (.6,0) arc (0:109:.6);
- \draw [rotate=50] (.75,0) node {\scriptsize $\varphi$};
+ \draw [rotate=50] (.75,0) node {\scriptsize $\phi$};
  %
  \draw [rotate=99] (1.2,0) node {\scriptsize $\theta$};
  \draw [thick,->,>=stealth] (-1.45,-.5) -- (-.8,-.5) node [pos=.15,below] {\scriptsize $\vec F_w$};
@@ -485,27 +487,27 @@ These two examples demonstrate that converting between component form and the st
 
 \example{ex_vect8}{Finding Component Force}{A weight of 25lb is suspended from a chain of length 2ft while a wind pushes the weight to the right with constant force of 5lb as shown in \autoref{fig:vect8}. What angle will the chain make with the vertical as a result of the wind's pushing? How much higher will the weight be?}
 {The force of the wind is represented by the vector $\vec F_w = 5\veci$. The force of gravity on the weight is represented by $\vec F_g = -25\vecj$. The direction and magnitude of the vector representing the force on the chain are both unknown. We represent this force with
-\[\vec F_c = m\bracket{\cos\varphi,\sin\varphi}= m\cos\varphi\, \veci + m\sin\varphi\,\vecj\]
-for some magnitude $m$ and some angle with the horizontal $\varphi$. (Note: $\theta$ is the angle the chain makes with the \emph{vertical}; $\varphi$ is the angle with the \emph{horizontal}.)
+\[\vec F_c = m\bracket{\cos\phi,\sin\phi}= m\cos\phi\, \veci + m\sin\phi\,\vecj\]
+for some magnitude $m$ and some angle with the horizontal $\phi$. (Note: $\theta$ is the angle the chain makes with the \emph{vertical}; $\phi$ is the angle with the \emph{horizontal}.)
 
 As the weight is at equilibrium, the sum of the forces is $\vec0$:
 \begin{align*}
 \vec F_c + \vec F_w + \vec F_g &= \vec 0\\
-m\cos\varphi\, \veci + m\sin\varphi\,\vecj + 5\veci - 25\vecj &=\vec 0
+m\cos\phi\, \veci + m\sin\phi\,\vecj + 5\veci - 25\vecj &=\vec 0
 \end{align*}
 
 Thus the sum of the $\veci$ and $\vecj$ components are 0, leading us to the following system of equations:
 \begin{align}
-5+m\cos\varphi &= 0\\
--25+m\sin\varphi &= 0
+5+m\cos\phi &= 0\\
+-25+m\sin\phi &= 0
 \label{eq:vect8}
 \end{align}
 
-This is enough to determine $\vec F_c$ already, as we know $m\cos \varphi = -5$ and $m\sin\varphi =25$. Thus $F_c =\bracket{-5,25}.$ We can use this to find the magnitude $m$:
+This is enough to determine $\vec F_c$ already, as we know $m\cos \phi = -5$ and $m\sin\phi =25$. Thus $F_c =\bracket{-5,25}.$ We can use this to find the magnitude $m$:
 \[m = \sqrt{(-5)^2+25^2} = 5\sqrt{26}%\approx 25.5
 \text{lb}.\]
-We can then use either equality from \autoeqref{eq:vect8} to solve for $\varphi$. We choose the first equality as using arccosine will return an angle in the $2^\text{nd}$ quadrant:
-\[5 + 5\sqrt{26}\cos \varphi = 0 \quad \Rightarrow \quad \varphi = \cos^{-1}\left(\frac{-5}{5\sqrt{26}}\right) \approx 1.7682\approx 101.31^\circ.\]
+We can then use either equality from \autoeqref{eq:vect8} to solve for $\phi$. We choose the first equality as using arccosine will return an angle in the $2^\text{nd}$ quadrant:
+\[5 + 5\sqrt{26}\cos \phi = 0 \quad \Rightarrow \quad \phi = \cos^{-1}\left(\frac{-5}{5\sqrt{26}}\right) \approx 1.7682\approx 101.31^\circ.\]
 
 Subtracting $90^\circ$ from this angle gives us an angle of $11.31^\circ$ with the vertical.
 

@@ -85,20 +85,27 @@ ymin=-.1,ymax=1.1,xmin=-7,xmax=7]
 {We can again plot points, but careful consideration of this function is very revealing. Momentarily ignoring the third component, we see the $x$ and $y$ components trace out a circle of radius 1 centered at the origin. Noticing that the $z$ component is $t$, we see that as the graph winds around the $z$-axis, it is also increasing at a constant rate in the positive $z$ direction, forming a spiral. This is graphed in \autoref{fig:vvf2}. In the graph $\vec r(7\pi/4)=\bracket{\frac1{\sqrt2},-\frac1{\sqrt2},\frac{7\pi}4}%\approx \bracket{0.707,-0.707,5.498}
 $ is highlighted to help us understand the graph.}
 
-\subsection*{Algebra of Vector--Valued Functions}
+%\subsection*{Algebra of Vector--Valued Functions}
+%
+%\definition{def:vvf_algebra}{Operations on Vector--Valued Functions}
+%{Let $\vec r_1(t)=\bracket{f_1(t),g_1(t)}$ and $\vec r_2(t)=\bracket{f_2(t),g_2(t)}$ be vector--valued functions in $\mathbb{R}^2$ and let $c$ be a scalar. Then:
+%\begin{enumerate}
+%	\item $\vec r_1(t) \pm \vec r_2(t) =\bracket{\, f_1(t)\pm f_2(t),g_1(t)\pm g_2(t)\,}$.
+%	\item	$c\vec r_1(t) =\bracket{\, cf_1(t),cg_1(t)\,}$.
+%\end{enumerate}
+%A similar definition holds for vector--valued functions in $\mathbb{R}^3$.
+%\index{vector--valued function!algebra of}}
+%
+%This definition states that we add, subtract and scale vector-valued functions component--wise. Combining vector--valued functions in this way can be very useful (as well as create interesting graphs).
 
-\definition{def:vvf_algebra}{Operations on Vector--Valued Functions}
-{Let $\vec r_1(t)=\bracket{f_1(t),g_1(t)}$ and $\vec r_2(t)=\bracket{f_2(t),g_2(t)}$ be vector--valued functions in $\mathbb{R}^2$ and let $c$ be a scalar. Then:
-\begin{enumerate}
-	\item $\vec r_1(t) \pm \vec r_2(t) =\bracket{\, f_1(t)\pm f_2(t),g_1(t)\pm g_2(t)\,}$.
-	\item	$c\vec r_1(t) =\bracket{\, cf_1(t),cg_1(t)\,}$.
-\end{enumerate}
-A similar definition holds for vector--valued functions in $\mathbb{R}^3$.
-\index{vector--valued function!algebra of}}
+\example{ex_vvf3}{Adding and scaling vector--valued functions.}{Let $\vec r_1(t) =\bracket{\,0.2t,0.3t\,}$, $\vec r_2(t) =\bracket{\,\cos t,\sin t\,}$ and $\vec r(t) = \vec r_1(t)+\vec r_2(t)$. Graph $\vec r_1(t)$, $\vec r_2(t)$, $\vec r(t)$ and $5\vec r(t)$ on $-10\leq t\leq10$.}
+{We can graph $\vec r_1$ and $\vec r_2$ easily by plotting points (or just using technology). Let's think about each for a moment to better understand how vector--valued functions work.
 
-This definition states that we add, subtract and scale vector-valued functions component--wise. Combining vector--valued functions in this way can be very useful (as well as create interesting graphs).
+We can rewrite $\vec r_1(t) =\bracket{\, 0.2t,0.3t\,}$ as $ \vec r_1(t) = t\bracket{0.2,0.3}$. That is, the function $\vec r_1$ scales the vector $\bracket{0.2,0.3}$ by $t$. This scaling of a vector produces a line in the direction of $\bracket{0.2,0.3}$.
 
-\mtable{Graphing the functions in \autoref{ex_vvf3}.}{fig:vvf3}{%
+We are familiar with $\vec r_2(t) =\bracket{\, \cos t,\sin t\,}$; it traces out a circle, centered at the origin, of radius 1. \autoref{fig:vvf3}(a) graphs $\vec r_1(t)$ and $\vec r_2(t)$.
+
+\mtable[-7\baselineskip]{Graphing the functions in \autoref{ex_vvf3}.}{fig:vvf3}{%
 \begin{tikzpicture}[>=stealth]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
@@ -136,20 +143,13 @@ ymin=-20.5,ymax=20.5,xmin=-24.5,xmax=24.5]
 \end{tikzpicture}
 \\(c)}
 
-\example{ex_vvf3}{Adding and scaling vector--valued functions.}{Let $\vec r_1(t) =\bracket{\,0.2t,0.3t\,}$, $\vec r_2(t) =\bracket{\,\cos t,\sin t\,}$ and $\vec r(t) = \vec r_1(t)+\vec r_2(t)$. Graph $\vec r_1(t)$, $\vec r_2(t)$, $\vec r(t)$ and $5\vec r(t)$ on $-10\leq t\leq10$.}
-{We can graph $\vec r_1$ and $\vec r_2$ easily by plotting points (or just using technology). Let's think about each for a moment to better understand how vector--valued functions work.
-
-We can rewrite $\vec r_1(t) =\bracket{\, 0.2t,0.3t\,}$ as $ \vec r_1(t) = t\bracket{0.2,0.3}$. That is, the function $\vec r_1$ scales the vector $\bracket{0.2,0.3}$ by $t$. This scaling of a vector produces a line in the direction of $\bracket{0.2,0.3}$.
-
-We are familiar with $\vec r_2(t) =\bracket{\, \cos t,\sin t\,}$; it traces out a circle, centered at the origin, of radius 1. \autoref{fig:vvf3}(a) graphs $\vec r_1(t)$ and $\vec r_2(t)$.
-
 Adding $\vec r_1(t)$ to $\vec r_2(t)$ produces $\vec r(t) =\bracket{\,\cos t + 0.2t,\sin t+0.3t\,}$, graphed in \autoref{fig:vvf3}(b). The linear movement of the line combines with the circle to create loops that move in the direction of $\bracket{0.2,0.3}$.  (We encourage the reader to experiment by changing $\vec r_1(t)$ to $\bracket{2t,3t}$, etc., and observe the effects on the loops.)
 
 Multiplying $\vec r(t)$ by 5 scales the function by 5, producing $5\vec r(t) =\bracket{5\cos t+1,5\sin t+1.5}$, which is graphed in \autoref{fig:vvf3}(c) along with $\vec r(t)$. The new function is ``5 times bigger'' than $\vec r(t)$. Note how the graph of $5\vec r(t)$ in (c) looks identical to the graph of $\vec r(t)$ in $(b)$. This is due to the fact that the $x$ and $y$ bounds of the plot in $(c)$ are exactly 5 times larger than the bounds in (b).}
 
 \example{ex_vvf4}{Adding and scaling vector--valued functions.}{A \textbf{cycloid} is a graph traced by a point $p$ on a rolling circle, as shown in \autoref{fig:vvf4}. Find an equation describing the cycloid, where the circle has radius 1.
 \index{cycloid}\addtocounter{figure}{1}
-\begin{figure}[!hb]
+\begin{figure}[!htb]
 \centering
 \begin{tikzpicture}[>=stealth,scale=.5]
 \draw [thick] (0,1) circle (1);
@@ -168,12 +168,6 @@ Multiplying $\vec r(t)$ by 5 scales the function by 5, producing $5\vec r(t) =\b
 
 We now want the circle to roll. We represent this by letting $\vec c(t)$ represent the location of the center of the circle. It should be clear that the $y$ component of $\vec c(t)$ should be 1; the center of the circle is always going to be 1 if it rolls on a horizontal surface.
 
-The $x$ component of $\vec c(t)$ is a linear function of $t$: $f(t) = mt$ for some scalar $m$. When $t=0$, $f(t) = 0$ (the circle starts centered on the $y$-axis). When $t=2\pi$, the circle has made one complete revolution, traveling a distance equal to its circumference, which is also $2\pi$. This gives us a point on our line $f(t) = mt$, the point $(2\pi, 2\pi)$. It should be clear that $m=1$ and $f(t) = t$. So $\vec c(t) =\bracket{t, 1}$. 
-
-We now combine $\vec p$ and $\vec c$ together to form the equation of the cycloid: $\vec r(t) = \vec p(t) + \vec c(t) =\bracket{\cos t+ t,-\sin t+1}$, which is graphed in \autoref{fig:vvfa}.}
-
-\subsection*{Displacement}
-
 % todo how does this differ from the previous figure?
 \mtable{The cycloid in \autoref{ex_vvf4}.}{fig:vvfa}{\begin{tikzpicture}[>=stealth]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -185,6 +179,12 @@ ymin=-.1,ymax=14,xmin=-.5,xmax=16]
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
+
+The $x$ component of $\vec c(t)$ is a linear function of $t$: $f(t) = mt$ for some scalar $m$. When $t=0$, $f(t) = 0$ (the circle starts centered on the $y$-axis). When $t=2\pi$, the circle has made one complete revolution, traveling a distance equal to its circumference, which is also $2\pi$. This gives us a point on our line $f(t) = mt$, the point $(2\pi, 2\pi)$. It should be clear that $m=1$ and $f(t) = t$. So $\vec c(t) =\bracket{t, 1}$. 
+
+We now combine $\vec p$ and $\vec c$ together to form the equation of the cycloid: $\vec r(t) = \vec p(t) + \vec c(t) =\bracket{\cos t+ t,-\sin t+1}$, which is graphed in \autoref{fig:vvfa}.}
+
+\subsection*{Displacement}
 
 A vector--valued function $\vec r(t)$ is often used to describe the position of a moving object at time $t$. At $t=t_0$, the object is at $\vec r(t_0)$; at $t=t_1$, the object is at $\vec r(t_1)$. Knowing the locations $\vec r(t_0)$ and $\vec r(t_1)$ give no indication of the path taken between them, but often we only care about the difference of the locations, $\vec r(t_1)-\vec r(t_0)$, the \sword{displacement}.\index{displacement}\index{vector--valued function!displacement}
 

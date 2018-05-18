@@ -10,15 +10,15 @@ We will now see a way of evaluating the line integral of a \emph{smooth} vector 
   where $C$ is traversed so that $R$ is always on the left side of $C$.}
 
 \begin{proof}
- We will prove the theorem in the case for a \emph{simple} region $R$, that is, where the boundary curve $C$ can be written as $C = C_1 \cup C_2$ in two distinct ways:
+ We will prove the theorem in the case for a \emph{simple} region $R$, that is, where the boundary curve $C$ can be written as two curves in two distinct ways:
  \begin{align}
   C_1 &= \text{the curve $y = y_1(x)$ from the point $X_1$ to the point $X_2$} \label{green_bottom}\\
   C_2 &= \text{the curve $y = y_2(x)$ from the point $X_2$ to the point $X_1$,}\label{green_top}
  \end{align}
  where $X_1$ and $X_2$ are the points on $C$ farthest to the left and right, respectively; and
  \begin{align}
-  C_1 &= \text{the curve $x = x_1(y)$ from the point $Y_2$ to the point $Y_1$}\label{green_left}\\
-  C_2 &= \text{the curve $x = x_2(y)$ from the point $Y_1$ to the point $Y_2$,}\label{green_right}
+  C_3 &= \text{the curve $x = x_1(y)$ from the point $Y_2$ to the point $Y_1$}\label{green_left}\\
+  C_4 &= \text{the curve $x = x_2(y)$ from the point $Y_1$ to the point $Y_2$,}\label{green_right}
  \end{align}
  where $Y_1$ and $Y_2$ are the lowest and highest points, respectively, on $C$.
  See \autoref{fig_green_simple}.
@@ -62,9 +62,9 @@ We will now see a way of evaluating the line integral of a \emph{smooth} vector 
    &= -\int_a^b \int_{y_1(x)}^{y_2(x)} \frac{\partial P(x,y)}{\partial y}\,dy\,dx \text{ (by the Fundamental Theorem of Calculus)}\\[6pt]
    &= -\iint_{R} \frac{\partial P}{\partial y}\,dA .
  \end{align*}
- Likewise, integrate $Q(x,y)$ around $C$ using the representation $C = C_1 \cup C_2$ given by Equations \eqref{green_left} and \eqref{green_right}. Since $x = x_1(y)$ along $C_1$ (as $y$ goes from $d$ to $c$) and $x = x_2(y)$ along $C_2$ (as $y$ goes from $c$ to $d$), as we see from \autoref{fig_green_simple}, then we have
+ Likewise, integrate $Q(x,y)$ around $C$ using the representation $C = C_3 \cup C_4$ given by Equations \eqref{green_left} and \eqref{green_right}. Since $x = x_1(y)$ along $C_3$ (as $y$ goes from $d$ to $c$) and $x = x_2(y)$ along $C_4$ (as $y$ goes from $c$ to $d$), as we see from \autoref{fig_green_simple}, then we have
  \begin{align*}
-  \oint_C Q(x,y)\,dy &= \int_{C_1} Q(x,y)\,dy + \int_{C_2} Q(x,y)\,dy\\
+  \oint_C Q(x,y)\,dy &= \int_{C_3} Q(x,y)\,dy + \int_{C_4} Q(x,y)\,dy\\
    &= \int_d^c Q(x_1(y),y)\,dy + \int_c^d Q(x_2(y),y)\,dy\\
    &= -\int_c^d Q(x_1(y),y)\,dy + \int_c^d Q(x_2(y),y)\,dy\\[6pt]
    &= \int_c^d \left( Q(x_2(y),y) - Q(x_1(y),y) \right)\,dy\\[6pt]

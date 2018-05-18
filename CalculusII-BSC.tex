@@ -1,0 +1,102 @@
+\part{Calculus II}
+
+\apexchapter{Applications of Integration}{chapter:app_of_int}
+
+We begin this chapter with a reminder of a few key concepts from \autoref{chapter:integration}. Let $f$ be a continuous function on $[a,b]$ which is partitioned into $n$ equally spaced subintervals as 
+\[a=x_0 < x_1 < \cdots < x_{n-1}<x_n=b.\]
+Let $\dx=(b-a)/n$ denote the length of the  subintervals, and let $c_i$ be any $x$-value in the $i^\text{ th}$ subinterval. \autoref{def:rie_sum} states that the sum
+\[\sum_{i=1}^n f(c_i)\dx\]
+is a \textit{Riemann Sum.} Riemann Sums are often used to approximate some quantity (area, volume, work, pressure, etc.). The \textit{approximation} becomes \textit{exact} by taking the limit 
+\[\lim_{n\to\infty} \sum_{i=1}^n f(c_i)\dx.\]
+\autoref{thm:riemannSum} connects limits of Riemann Sums to definite integrals:
+\[\lim_{n\to\infty} \sum_{i=1}^n f(c_i)\dx = \int_a^b f(x)\ dx.\]
+Finally, the Fundamental Theorem of Calculus states how definite integrals can be evaluated using antiderivatives. 
+
+This chapter employs the following technique to a variety of applications. Suppose the value $Q$ of a quantity is to be calculated. We first approximate the value of $Q$ using a Riemann Sum, then find the exact value via a definite integral. We spell out this technique in the following Key Idea.
+
+\keyidea{idea:app_of_defint}{Application of Definite Integrals Strategy}
+{Let a quantity be given whose value $Q$ is to be computed.\index{integration!general application technique}
+\begin{enumerate}
+\item	Divide the quantity into $n$ smaller ``subquantities'' of value $Q_i$.
+\item	Identify a variable $x$ and function $f(x)$ such that each subquantity can be approximated with the product $f(c_i)\dx$, where $\dx$ represents a small change in $x$. Thus $Q_i \approx f(c_i)\dx$.
+%% A sample approximation $f(c_i)\dx$ of $Q_i$ is called a \textit{differential element}.
+\item	Recognize that $\ds Q\approx \sum_{i=1}^n Q_i = \sum_{i=1}^n f(c_i)\dx$, which is a Riemann Sum.
+\item	Taking the appropriate limit gives $\ds Q = \int_a^b f(x)\ dx$
+\end{enumerate}}
+
+This Key Idea will make more sense after we have had a chance to use it several times. We begin with Area Between Curves.%, which we addressed briefly in \autoref{sec:FTC}.
+
+\input{text/07_Area_Between_Curves}
+\input{text/07_Disk_Washer_Method}
+\input{text/07_Shell_Method}
+\input{text/07_Work}
+\input{text/07_Fluid_Force}
+
+
+\ifthenelse{\boolean{isEarlyTrans}}{}{%
+\apexchapter{Inverse Functions and L'H\^opital's Rule}{chapter:diff_conc}
+% todo write a Inverse Functions prerequisite section reviewing logs
+
+% todo write a better chapter intro for Inverse Functions
+This chapter completes our differentiation toolkit.  The first and most important tool will be how to differentiate inverse functions.  We'll be able to use this to differentiate exponential and logarithmic functions, which we stated in \autoref{thm:deriv_common} but did not prove.
+\input{text/07_Inverse_Functions}
+\input{text/02_Derivative_Inverse_Functions}
+\input{text/07_Exp_Log_Functions}
+\input{text/06_Hyperbolic_Functions}
+\input{text/06_LHopitals_Rule}
+}
+
+
+\apexchapter{Techniques of Integration}{chapter:anti_tech}
+
+\autoref{chapter:integration} introduced the antiderivative and connected it to signed areas under a curve through the Fundamental Theorem of Calculus. The chapter after explored more applications of definite integrals than just area. As evaluating definite integrals will become even important, we will want to find antiderivatives of a variety of functions.
+
+This chapter is devoted to exploring techniques of antidifferentiation. While not every function has an antiderivative in terms of elementary functions,
+% (a concept introduced in the section on Numerical Integration),
+we can still find antiderivatives of a wide variety of functions.
+\input{text/06_Int_By_Parts}
+\input{text/06_Trigonometric_Integrals}
+\input{text/06_Trig_Sub}
+\input{text/06_Partial_Fractions}
+\input{text/06_Integration_Strategies}
+\input{text/06_Improper_Integration}
+\input{text/05_Numerical_Integration}
+\ifthenelse{\boolean{isEarlyTrans}}{%
+ \input{text/06_Hyperbolic_Functions}
+ \input{text/06_LHopitals_Rule}%
+}{}
+
+
+
+\apexchapter{Sequences and Series}{chapter:sequences_series}
+
+\input{text/08_Sequences}
+\input{text/08_Series}
+\input{text/08_Integral_Test}
+\input{text/08_Comparison_Tests}
+\input{text/08_Alternating_Series}
+\input{text/08_Ratio_Root_Tests}
+\input{text/08_Series_Strategies}
+\input{text/08_Power_Series}
+%\input{text/08_Series_Functions}
+\input{text/08_Taylor_Polynomials}
+\input{text/08_Taylor_Series}
+
+
+\apexchapter[text/09_Conic_Sections]{Curves in the Plane}{chapter:planar_curves}
+
+We have explored functions of the form $y=f(x)$ closely throughout this text. We have explored their limits, their derivatives and their antiderivatives; we have learned to identify key features of their graphs, such as relative maxima and minima, inflection points and asymptotes; we have found equations of their tangent lines, the areas between portions of their graphs and the $x$-axis, and the volumes of solids generated by revolving portions of their graphs about a horizontal or vertical axis.
+
+Despite all this, the graphs created by functions of the form $y=f(x)$ are limited. Since each $x$-value can correspond to only 1 $y$-value, common shapes like circles cannot be fully described by a function in this form.  Fittingly, the ``vertical line test''  excludes vertical lines from being functions of $x$, even though these lines are important in mathematics.
+
+In this chapter we'll explore new ways of drawing curves in the plane. We'll still work within the framework of functions, as an input will still only correspond to one output. However, our new techniques of drawing curves will render the vertical line test pointless, and allow us to create important --- and beautiful --- new curves. Once these curves are defined, we'll apply the concepts of calculus to them, continuing to find equations of tangent lines and the areas of enclosed regions.
+
+One aspect that we'll be interested in is ``how long is this curve?'' Before we explore that idea for these new ways to draw curves, we'll start by exploring how long a curve is when we've gotten it from a regular $y=f(x)$ function.
+\input{text/07_Arc_Length}
+\input{text/09_Parametric_Equations}
+\input{text/09_Parametric_Calculus}
+\input{text/09_Polar_Intro}
+\input{text/09_Polar_Calculus}
+
+
+\cleardoublepage

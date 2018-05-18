@@ -243,13 +243,16 @@
 
 
 
-\newcommand{\myincludeasythree}[3]{\ifthenelse{\boolean{in_threeD}}{%
-	\includemedia[3Dmenu,activate=onclick,deactivate=onclick,3Dlights=Headlamp,
-	 add3Djscript=asylabels.js,#1
-	]{\myincludegraphics{#3}}{#3\colornamesuffix.prc}%
-}{%
-	\myincludegraphics[#2]{#3}
-}}
+\newcommand{\myincludeasythree}[3]{%
+ \immediate\write\@auxout{\@percentchar\space prc file #3 used in Section \thesection\space as Figure \thefigure}%
+ % so that Python can find it later
+ \ifthenelse{\boolean{in_threeD}}{%
+  \includemedia[3Dmenu,activate=onclick,deactivate=onclick,3Dlights=Headlamp,
+   add3Djscript=asylabels.js,#1
+  ]{\myincludegraphics{#3}}{#3\colornamesuffix.prc}%
+ }{%
+  \myincludegraphics[#2]{#3}%
+ }}
 
 \newcommand{\myincludegraphicsthree}{\@ifstar \myincludegraphicsthreestarred \myincludegraphicsthreenostar}
 

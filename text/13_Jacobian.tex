@@ -271,7 +271,19 @@ In a similar fashion, it can be shown (see Exercises \ref{pr_cyl_jac} and \ref{p
   \,\rho^2 \,\sin \phi \,d\rho\,d\phi\,d\theta ,
  \end{multline}\index{triple integral!spherical coordinates}
  where the mapping $x=\rho\sin \phi\,\cos \theta$, $y=\rho\sin \phi\,\sin \theta$, $z=\rho\cos \phi$ maps the solid $S'$ in $\rho\phi\theta$-space onto the solid $S$ in $xyz$-space in a one-to-one manner.}
- 
+
+\example{exmp_cyl_cone_octant}{Triple Integral over a Region in Cylindrical Coordinates}{Evaluate $\iiint_D x\,dV$ where $D$ is the region bounded by the first octant, the cone $z=\sqrt{x^2+y^2}$, and $z=3$.}{In cylindrical coordinates $D$ is given by $0\le\theta\leq\frac\pi2$, $0\leq r\leq3$, and $r\leq z\leq3$.  Now we have
+\begin{align*}
+\iiint_D x\,dV
+&=\int_0^{\frac\pi2}\int_0^3\int_r^3 r\cos\theta r\,dz\,dr\,d\theta \\
+&=\left.\int_0^{\frac\pi2}\int_0^3 r^2\,z\,\cos \theta\, \right|_{z=r}^{z=3}\,dz\,dr\,d\theta \\
+&=\int_0^{\frac\pi2}\int_0^3 (3r^2-r^3) \cos \theta \,dr\,d\theta \\
+&=\left.\int_0^{\frac\pi2} (r^3-\frac14 r^4) \cos \theta \,\right|_{r=0}^{r=3} \,d\theta \\
+&=\int_0^{\frac\pi2} \frac{27}4 \cos \theta \,d\theta \\
+&=\left.\frac{27}4 \sin\theta \,\right|_{\theta=0}^{\theta=\frac\pi2} \\  
+&=\frac{27}4.\eoehere
+\end{align*}}
+
 \example{exmp_volsphere}{Finding the Volume of a Sphere}{For $a > 0$, find the volume $V$ inside the sphere $S = x^2 + y^2 + z^2 = a^2$.}{We see that $S$ is the set $\rho = a$ in spherical coordinates, so
  \begin{align*}
   V &= \iiint_S 1\,dV

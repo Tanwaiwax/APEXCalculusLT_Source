@@ -3,23 +3,109 @@
 \documentclass{amsart}
 
 \usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
 
 \title{Errata to Apex LT}
 \date{\today}
 
 \newcommand{\ds}{\displaystyle}
 \newcommand{\bracket}[1]{\left\langle#1\right\rangle}
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+
+\makeatletter
+\newcommand{\errorcount}[1]{%
+ \@ifundefined{r@#1plus}{%
+  \@ifundefined{r@#1}{%
+  }{% plusless defined
+   \makebox[2em][r]{\ref{#1}\phantom{+}}
+  }
+ }{% plus defined
+  \makebox[2em][r]{\ref{#1plus}+}
+ }
+}
+\makeatother
+
+\newcommand{\errorrow}[1]{%
+ #1 & \errorcount{#1I} & \errorcount{#1II} & \errorcount{#1III}
+}
 
 \begin{document}
 
-%\vspace*{-.2in}
+\vspace*{-.5in}
 
 \maketitle
 
-The following errors exist in the July 27, 2017 printed version of Apex LT Calculus:
-\begin{itemize}
+% through line 478 (error 237) of _ErrorList2.tex
+
+In the July 27, 2017 and November 13, 2017 printed versions of Apex LT Calculus, there are numerous instances of ``$\lim A+B$''.  The convention seems to be that this should be ``$\lim(A+B)$''.  We believe that all such instances have been corrected for subsequent versions of the text.\bigskip
+
+\noindent
+The following errors exist in the July 27, 2017 printed versions of Apex LT Calculus I:
+\begin{enumerate}
+\item \S1.3 p33 Example 5 Solution Line 1: We would like to use Theorem 3, not 4.
+\item \S1.3 p36 Example 8 Line -2: This uses Theorem 3, not 4.
+\item \S1.4\#25,26: The limit should not be a part of the functions' definition.
 \item \S1.6\#41: We should have $f(x)=a^2x-a$ for $x>3$.
+\item \S4.1\#14: Part (c) (walking 40') occurs after part (d) (the weight reaches the pulley).
 \item \S5.1\#38: $\ds \int \frac{\sin\theta+\sin\theta\tan^2\theta}{\sec^2}\ d\theta$ should be $\ds \int \frac{\sin\theta+\sin\theta\tan^2\theta}{\sec^2\theta}\ d\theta$.
+\item \S5.2\#21,25: These should specify $a$ and $b$ are non-zero.  For consistency with the previous problems (and the solution), 25 should be $\ds\int_0^5 \big(as(t)+br(t)\big) \ dt=0$.
+\item \S6.2 p304 Example 5: ``Figure (not yet created)'' should be ``(b)''.
+\item \S6.3 p314 Example 5: $\dfrac{4\pi}3$ should be $\dfrac{8\pi}3$ units\textsuperscript3.
+\item \S6.3 p314 Example 5: The washer approach at the end is incorrect.
+\label{2017-07-27Iplus}
+\end{enumerate}
+The following errors exist in the July 27, 2017 printed versions of Apex LT Calculus II:
+\begin{enumerate}
+\item \S7.3\#17: The answer should be $\frac{3^{x^2-1}}{2ln3}+C$.
+\item \S8.1 p385 Example 6 Line -3: The $\ln(1+x^2)$ at the end should be $\frac12\ln(1+x^2)$.
+\item \S8.5\#1: $\int \sin^{-1}x\ dx=x\sin^{-1}x+\sqrt{1-x^2}+C$, whereas\\
+$\int x\sin^{-1}x\ dx=\frac{x^2}{2} \sin^{-1}x - \frac{1}{4} \sin^{-1}x + \frac{x}{4} \sqrt{1-x^2}+C$.
+\item \S8.6\#45: The solution should compare the integrand to $x/(x^2+1)$.
+\item \S9.1\#7: All of the answers should be negated.
+\item \S9.2 p475: ``a telescoping series is one in which the partial sums reduce to just a finite number of terms'' is meaningless, since every partial sum has a finite number of terms.  This should be ``a telescoping series is one in which the partial sums reduce to a fixed number of terms.''
+\item \S9.9\#7: The polynomial is the desired $p_5$, but it is labeled $p_8$.
+\item \S9.10 p550 Example 4 Line -3: The Maclaurin series is missing the $x$'s.  It should be
+\[
+1+ kx + \frac{k(k-1)}{2!}x^2 + \frac{k(k-1)(k-2)}{3!}x^3 + \dotsb + \frac{k(k-1)\dotsm\big(k-(n-1)\big)}{n!}x^n+\dotsb
+\]
+\item \S9.10 p551 Example 4 Line 3: $\ds\lim_{n\to\infty} \abs{\frac{k-n}{n}x}$ should be $\ds\lim_{n\to\infty} \abs{\frac{k-n}{n+1}x}$.
+\label{2017-07-27IIplus}
+\end{enumerate}
+The following errors exists in the November 13, 2017 printed version of Apex LT Calculus III:
+\begin{enumerate}
+\item \S11.1 p637 Example 5 Line 1: ``cylinder following cylinders'' should be ``following cylinders''.
+\item \S11.2\#28--31: These should refer to the magnitude of the force.
+\item The solution to \S11.7\#11 should be negated.
+\item \S12.3 p737 Example 3 \# 2 Problem \& Solution: The occurrences of ``derive'' don't really fit the definition.
+\item \S12.5 p757 Example 1 Lines -1 \& -5: $s(2)$ should be $\vec r(2)$.
+\item \S13.5 p813 Line -2: $-1$ or ``negative'' need to be involved.
+\item \S13.7 p836 Exercise 3: The scalars $f_x$ and $f_y$ should be replaced by $\ell_x$ and $\ell_y$.
+\item \S14.4 p896 \#15,23,\&30: The regions are disks, not circles.
+\item \S14.6 p907 Example 2 Line 3: This is the first reference to the 1\textsuperscript{st} octant, which should have been defined in \S11.1.
+\item \S15.1 p940 Paragraph 1: The $C_i$ can overlap only at isolated points.
+\item \S15.3 p954 4 Lines after Example 2: The reference to Exercise 8 should be Exercise 9.
+\item \S15.4 Exercises 1--4, 7: $d\sigma$ should be $d\vec\sigma$.  The answer to \#7 should be $7/4$.
+\label{2017-11-13IIIplus}
+\end{enumerate}
+
+%\end{document}
+
+\begin{table}[h]
+\begin{tabular}{lccc}\toprule
+Version & Calculus I & Calculus II & Calculus III \\\midrule
+\errorrow{2017-11-13} \\
+\errorrow{2017-07-27} \\
+\errorrow{2017-05-00} \\
+\errorrow{2017-01-00} \\
+\errorrow{2016-08-00} \\\bottomrule
+\end{tabular}
+\caption{Errata Tally (``+'' indicates systemic errata)}
+\end{table}
+
+\clearpage
+
+In addition to the previous, the following errors exist in the July 27, 2017 printed version of Apex LT Calculus 3:
+\begin{enumerate}
 \item The solution to \S11.1\#19 should be $x^2+z^2=\frac1{(1+y^2)^2}$.
 \item \S11.5 p696 \#31b: ``to the use the formula'' should be ``to use the formula''.
 \item \S12.2 p727 Theorem 96: $\ds\int\vec r$ is not actually defined, so we should take this to be a definition, not a theorem.
@@ -27,31 +113,36 @@ The following errors exist in the July 27, 2017 printed version of Apex LT Calcu
 \item \S13.4 p710 Definition 91: The $dz$ on the left should be $dw$.
 \item \S13.6 p823 \#25--28 part (b): $\vec u$ is the unit vector in the direction of $\vec v$.
 \item The solution to \S13.8\#17 should have $f(x)=\dots\pm2\sqrt{4-x^2}$ instead of $f(x)=\dots\pm\sqrt{4-x^2}$ (three locations).  Everything before and after these changes is already correct.
+\item \S14.3 p878 Example 1 Solution: The region $R$ is the disk bounded by the given circle.
 \item \S14.5 p899 \#17\&18: ``you result'' should be ``your result''.
-\end{itemize}
-
-%\end{document}
+\item \S14.6 Example 1 p904: ``in the 1\textsuperscript{st} octant'' should be ``where $x,y>0$''.
+\label{2017-07-27III}
+\end{enumerate}
 
 \clearpage
 
-The following error exists in the Summer 2017 printed version of Apex LT Calculus I:
-\begin{itemize}
+In addition to the previous, the following error exists in the Summer 2017 printed version of Apex LT Calculus I:
+\begin{enumerate}
 \item \S4.2 p204 \#4\&5: The question should specify that the desired numbers are positive.
-\end{itemize}
+\label{2017-05-00I}
+\end{enumerate}
 
-The following errors exist in the Summer 2017 printed version of Apex LT Calculus II:
-\begin{itemize}
+In addition to the previous, the following errors exist in the Summer 2017 printed version of Apex LT Calculus II:
+\begin{enumerate}
 \item \S9.6 p510 Example 1 Solution Part 3: $|sin n|/n$ should be $\{|sin n|/n^2\}$.
 \item \S10.3 p592,3 Definitions 48\&49, subsequent paragraph: $f((t_0), g(t_0))$ should be $(f(t_0), g(t_0))$ (three times).
-\end{itemize}
+\label{2017-05-00II}
+\end{enumerate}
 
-The following errors exist in the Summer 2017 printed version of Apex LT Calculus III:
-\begin{itemize}
+\clearpage
+
+In addition to the previous, the following errors exist in the Summer 2017 printed version of Apex LT Calculus III:
+\begin{enumerate}
 \item The solution to \S11.1\#13 should also include where the coordinate is 0.
-\item The solution to \S11.1\#19 should be $x^2+z^2=\dfrac1{(1+y^2)^2}$.\\[-.8\baselineskip]
+\item The solution to \S11.1\#19 should be $x^2+z^2=\frac1{(1+y^2)^2}$.\\[-.8\baselineskip]
 \item The solution to \S11.2\#7 should be $4\hat\imath-4\hat\jmath$.
 \item \S11.4 p688 Line 3: ``face opposite face'' should be ``opposite face''.
-\item \S11.4 p690 Lines 4\&8: $\sin-15^\circ=\dfrac{5(1-\sqrt3)}{\sqrt2}$
+\item \S11.4 p690 Lines 4\&8: $\sin-15^\circ=\frac{5(1-\sqrt3)}{\sqrt2}$
 \item The solution to \S11.4\#27 should be $3\sqrt{30}$.
 \item The solution to \S11.4\#37 should specify ``any \emph{unit} vector''.
 \item \S11.5 p699 Line 7: The vector $c$ is missing its arrow.
@@ -83,27 +174,28 @@ The following errors exist in the Summer 2017 printed version of Apex LT Calculu
 \item \S15.6 p991 Key Idea 68 Divergence: $(\sin \phi \,f_{\theta})$ should be $(\sin \phi \,f_{\phi})$.
 \item There are many places where a vector needs an arrow (because of the conversion from the previous text, many of these look like $\oint_C f\cdot\vec x\,dt$, where the first argument to the dot product is missing its arrow).
 \item There's several places with a circle $x^2+y^2=r^2$ when what is really meant is the two dimensional disk bounded by that circle.  Known instances:
-\begin{itemize}
+\begin{enumerate}
 \item \S13.1 p770 Example 2 Line 6 (an ellipse instead of a circle).
 \item \S14.3 p878 Example 1 Line 2.
 \item \S14.5 p899 Example 2; p900 Example 3 Solution Line 3; \& p903 Exercises \# 8,13,17--19.
 \item \S14.6 p911 Example 4 Solution Line 6; p912 Line 5; \& p923 Exercise \# 8.
-\end{itemize}
-\end{itemize}
+\end{enumerate}
+\label{2017-05-00IIIplus}
+\end{enumerate}
 
 \clearpage
 
 \newcommand{\springerrors}{%
 In addition to the previous, the following errors exist in the Spring 2017 printed version of Apex LT:
-\begin{itemize}
+\begin{enumerate}
 \item Examples are numbered within each section.  But when we refer to an example in a different section, it doesn't indicate that you should go to that section.  For example, in Section 6.3, ``Example 7'' should be ``Example 6.2.7''.
 \item The prerequisite sections (1.0, 2.0, and 10.0) have the running header from the previous section.
-\end{itemize}} % end \springerrors
+\end{enumerate}} % end \springerrors
 
 \springerrors
 
 In addition to the previous, the following errors exist in the Spring 2017 printed version of Apex LT Calculus I:
-\begin{itemize}
+\begin{enumerate}
 \item Theorem 5 (Squeeze Theorem) requires the functions be defined and the squeezing to hold at the limit, which is unnecessary.\vspace{-.5\baselineskip}
 \item Example 1.3.7 should be $\ds \lim_{x\to 0} \frac{\sqrt{x+4}-2}{x}$.
 \item Definition 2 (One Sided Limits) and Definition 8 (Left and Right Continuity) requires that the function be defined in an open interval around the point, whereas it only needs to be defined to the left or right.
@@ -113,14 +205,15 @@ In addition to the previous, the following errors exist in the Spring 2017 print
 \item Example 4.2.3 Line 1: ``an power station'' should be ``a power station''.
 \item \S5.1 p222 Theorem 31 only holds on an interval.  Similarly, the paragraph after Definition 22 should begin ``Using Definitions 21 and 22, we can say that on an interval''.
 \item \S6.1 p296 Example 5: In Figure 6.7, $x+3$ should be $x+1$.  In the example itself, the limits of integration are determined from the picture (using $x+1$), while the integrand uses $x+3$.
-\end{itemize}
+\label{2017-01-00Iplus}
+\end{enumerate}
 
 \clearpage
 
 \springerrors
 
 In addition to the previous, the following errors exist in the Spring 2017 printed version of Apex LT Calculus II:
-\begin{itemize}
+\begin{enumerate}
 \item The solution to \S7.3\#7 should be $\dfrac{1-x\ln x\ln5}{x5^x\ln5}$\smallskip
 \item The solution to \S7.3\#21 should be $\dfrac{\ln\frac{245}3}{\ln3}=\dfrac{\ln245}{\ln3}-1$.
 \item \S8.1 p383 ``If we had chosen\ldots $du=\sin x dx$'' should be $du=-\sin x dx$.
@@ -141,12 +234,13 @@ In addition to the previous, the following errors exist in the Spring 2017 print
 \item The Conic Sections portion is supposed to be labeled 10.0.  The initial title is unlabeled, and the exercises are labeled 10.-1.  (Additionally, the running header is incorrect, as previously noted.)
 \item \S10.5 Key Idea 44: $[f_1(\theta)]^2 - [f_2(\theta)]^2$ should be $[f_2(\theta)]^2 - [f_1(\theta)]^2$.
 \item The solution to \S10.5\#9(a) should use $\theta$, not $t$.
-\end{itemize}
+\label{2017-01-00IIplus}
+\end{enumerate}
 
 \clearpage
 
 In addition to most of the previous, the following errors exist in the Fall 2016 printed version of Apex LT:
-\begin{itemize}
+\begin{enumerate}
 \item Sometimes, ``In Exercises \#--\#'' in exercise directions will go too far, and refer to exercises past the end of the intended range. This was an artifact of the way exercises were loaded.
 \item p. 7, \S1.0 Exercises 11--14: The directions should be ``Graph the given f.''
 \item p. 35, \S1.3 Example 1.3.7: The example should be: Evaluate $\ds\lim_{x\to2}\frac{\sqrt{x+4}-2}x$. (But see the previous erratum in Spring 2017.)
@@ -165,7 +259,7 @@ In addition to most of the previous, the following errors exist in the Fall 2016
 \item p. 231, 232, \S5.1: Exercises 20, 21, 36, and 41 require $\int a^x dx$, although that hasn't yet been discussed. It should be removed.
 \item p. 277 \S5.4\#11: Ditto.
 \item pp. 304--306: The text states that moving a curve through space creates a solid, when it fact it creates a surface. To create a solid, we need to move a region through space, or look at the region enclosed by a surface. This leads to the following changes:
-\begin{itemize}
+\begin{enumerate}
 \item p. 304, paragraph 2, line 2: ``a horizontal axis creates a three-dimensional solid'' should be ``a horizontal axis encloses a three-dimensional solid''.
 \item p. 304, Key Idea 12: ``Let a solid be formed by revolving the curve'' should be ``Let a solid be enclosed by revolving the curve''.
 \item p. 305, Example 6.2.2: The region being rotated is the one bounded by the curve $y=1/x$, $x=1$, $x=2$, and the $x$-axis.
@@ -175,8 +269,9 @@ In addition to most of the previous, the following errors exist in the Fall 2016
 The previous two examples demonstrate how taking the same region and rotating it about two different axes will result in different solids and thus volumes.
 \end{quote}
 The examples do not have the same region. This sentence should be deleted.
-\end{itemize}
+\end{enumerate}
 \item p. 309, Figure 6.16: The label (b) should indicate the middle figure.
-\end{itemize}
+\label{2016-08-00Iplus}
+\end{enumerate}
 
 \end{document}

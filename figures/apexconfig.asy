@@ -1,6 +1,6 @@
 // begin the asy file with
 // include apexconfig;
-settings.outformat = settings.prc ? "prc" : "pdf";
+//settings.outformat = settings.prc ? "prc" : "pdf";
 settings.tex = "xelatex";
 settings.embed = true;
 

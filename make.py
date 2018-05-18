@@ -12,6 +12,7 @@ import argparse
 import platform
 import itertools
 import subprocess
+from collections import defaultdict, namedtuple
 
 start = time.time()
 
@@ -44,7 +45,7 @@ fig3Dasyfiles += ['partial'+suffix for suffix in ('intro','introb','3a','3b','4a
 fig3Dasyfiles += ['quadric'+suffix for suffix in ('_cone','_coneb','_conec','_ellipsoid','_ellipsoidb',
     '_hyp_one_sheet','_hyp_one_sheetb','_hyp_par','_hyp_parb','_hyp_parc',
     '_hyp_two_sheet','_hyp_two_sheetb','_par','_parb')]
-fig3Dasyfiles += ['shell'+suffix for suffix in ('_intro_a','_intro_d','2b','2c','3b','3c','parab_b','parab_b')]
+fig3Dasyfiles += ['shell'+suffix for suffix in ('_intro_a','_intro_d','2b','2c','3b','3c','parab','parab_b')]
 fig3Dasyfiles += ['space'+suffix for suffix in ('_tangent_intro','1','2','3','4a','4b','4c','4d','4e','4f',
         '5a','5ab','5b','5bb','5c','5cb','6','cylinder1','cylinder1b','xy','xz','yz')]
 fig3Dasyfiles += ['surfacearea'+suffix for suffix in ('_intro1','_intro2','1','3','4')]
@@ -58,14 +59,17 @@ parser = argparse.ArgumentParser(description='Compile document to a pdf.',
                                  "--help is assumed.")
 
 parser.add_argument("-a","--all", action="store_true",
-                    help="Creates all versions. (Ignores other options. 15 min)")
+                    help="Creates all versions. (Ignores other options. 25 min)")
 
 parser.add_argument("-c","--calculus", type=int, choices=[0,1,2,3,4],
                     default=0,
-                    help="Calculus semester 1, 2, 3, or (default) all. (2 or 4 min)")
+                    help="Calculus semester 1, 2, 3, or (default) all. (3 or 5 min)")
 
 parser.add_argument("-f","--figures", action="store_true",
                     help="Create 3D figures using Asymptote.")
+
+parser.add_argument("-p","--prc", action="store_true",
+                    help="Update 3D html.")
 
 parser.add_argument("-i","--instructor", action="store_true",
                     help="Create instructor solution manual.")
@@ -93,7 +97,7 @@ group.add_argument("-b","--blackwhite", action="store_true",
 group.add_argument("-s","--static", action="store_true",
                    help="Print static color graphics (default is interactive).")
 
-for dir in ('ApexPDFs','logs','todo','web'):
+for dir in ('ApexPDFs','logs','prc','todo','web'):
     try:
         os.mkdir(dir)
     except OSError:
@@ -114,33 +118,88 @@ def makefigs():
     try:
         os.chdir('figures')
         for asyfile in asyfiles:
-            exts = ('.pdf','.prc','BW.pdf','BW.prc')
-            try:
-                oldest_bin_time = min(os.path.getmtime(asyfile+ext) for ext in exts)
-            except OSError:
-                # file not found
-                oldest_bin_time = -float("infinity")
-            if ( os.path.getmtime(asyfile+'.asy') < oldest_bin_time ):
-                continue
-            # -user apexbw=true runs that command in apexconfig.asy
-            # using -bw instead causes the figure to be blacked out (?!)
-            bwopts = ( [], ['-user','apexbw=true','-outname',asyfile+'BW'] )
-            prcopts = ( [], ['-noprc'] )
-            for prcopt,bwopt in itertools.product(prcopts,bwopts):
-                subprocess.check_call(['asy']+prcopt+bwopt+[asyfile])
+            extops = {
+                '.pdf':   ['-noprc','-outformat','pdf'],
+                '.prc':   ['-prc','-outformat','prc'],
+                # -user apexbw=true runs that command in apexconfig.asy
+                # using -bw instead causes the figure to be blacked out (?!)
+                'BW.pdf': ['-noprc','-user','apexbw=true','-outname',asyfile+'BW','-outformat','pdf'],
+                '.png':   ['-outformat','png'],
+            }
+            for ext,opt in extops.items():
+                try:
+                    if ( os.path.getmtime(asyfile+'.asy') < os.path.getmtime(asyfile+ext) ):
+                        continue
+                except:
+                    pass
+                subprocess.check_call(['asy']+opt+[asyfile])
         for outfile in glob.iglob("*.out"):
             if ( os.path.getsize(outfile) == 0 ):
                 os.remove(outfile)
     finally:
         os.chdir('..')
 
+Figure = namedtuple('Figure',['fignum','figfile'])
+
+def updateprc():
+    prcdict = prcfromfile('Calculus.aux')
+    with open('prc/prc.html','w') as prchtml:
+        prchtml.write('<!doctype html>'
+                      '<html>'
+                      '<head>'
+                      '<meta charset="utf-8">'
+                      '<title>3d images</title>'
+                      '<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">'
+                      '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>'
+                      '<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>'
+                      '<style>.box{display:inline-block;text-align:center;margin:1em}</style>'
+                      '</head>'
+                      '<body>'
+                      '<h1>3d Images From APEX Calculus LT</h1>'
+                      '<div id="accordion">')
+        chapters = sorted( prcdict.keys() )
+        for chapter in chapters:
+            prchtml.write('<h3>Chapter '+str(chapter)+'</h3>'
+                          '<div>')
+            sections = sorted( prcdict[chapter].keys() )
+            for section in sections:
+                prchtml.write('<h4>Section {}.{}</h4>'.format(chapter,section)+'<div>')
+                for figure in prcdict[chapter][section]:
+                    prchtml.write('<div class="box"><a href="'+figure.figfile+'.prc"><img src="'+figure.figfile+'.png"><br>Figure '+figure.fignum+'</a></div>')
+                    shutil.copy('figures/'+figure.figfile+'.prc','prc')
+                    shutil.copy('figures/'+figure.figfile+'.png','prc')
+                prchtml.write('</div>')
+            prchtml.write('</div>')
+        prchtml.write('</div>'
+                      '<p>'
+                      'The linked prc files can be viewed with Adobe Acrobat Pro.<br>'
+                      'The Android app <a href="https://play.google.com/store/search?q=3D%20PDF%20Reader&c=apps">3D PDF Reader</a> by Tech Soft 3d can also view prc files.'
+                      '</p>'
+                      '<script>$("#accordion").accordion({collapsible:true,active:false,heightStyle:"content"});</script>'
+                      '</body>'
+                      '</html>')
+
+def prcfromfile(filename):
+    with open(filename) as filein:
+        print('opening',filename)
+        prcdict = defaultdict(lambda:defaultdict(list))
+        for line in filein:
+            if line.startswith(r'\@input{'):
+                prcdict.update(prcfromfile(line[len('\@input{'):-2]))
+            if line.startswith('% prc '):
+                match = re.match('% prc file figures/(\S+) used in Section (\d+).(\d+) as Figure (\d+.\d+)\s*$',line)
+                if match:
+                    prcdict[ int(match.group(2)) ][ int(match.group(3)) ].append(Figure(match.group(4),match.group(1)))
+                else:
+                    print('no match',line)
+        return prcdict
+
 def updatetodo():
-    from collections import defaultdict
     output = subprocess.check_output(['grep','todo','-I','--recursive','--line-number','--exclude-dir=ApexPDFs','--exclude-dir=.git','--exclude-dir=todo','.'])
     todos = output.decode('utf-8').split("\n")
     todosin = defaultdict(list)
     for todo in todos:
-        if re.match('./make.py',todo) or todo == '' or re.match(r'\D+.log',todo):
+        if re.match('./make.py',todo) or todo == '' or re.match(r'\S+.log',todo):
             continue
         if ' Tim ' in todo:
             key = 'tim'
@@ -292,6 +351,9 @@ def compilewith(commands=False):
         return
     if args.todo:
         updatetodo()
+        return
+    if args.prc:
+        updateprc()
         return
     if args.calculus == 4:
         args.calculus = 0

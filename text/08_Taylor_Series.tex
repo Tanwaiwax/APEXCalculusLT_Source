@@ -116,7 +116,9 @@ f\,^{(n)}(x) &= k(k-1)\dotsm\big(k-(n-1)\big)(1+x)^{k-n} & f\,^{(n)}(0) &=k(k-1)
 \end{align*}}
 
 Thus the Maclaurin series for $f(x) = (1+x)^k$ is
-\[1+ k + \frac{k(k-1)}{2!} + \frac{k(k-1)(k-2)}{3!} + \dotsb + \frac{k(k-1)\dotsm\big(k-(n-1)\big)}{n!}+\dotsb\]
+\[
+1+ kx + \frac{k(k-1)}{2!}x^2 + \frac{k(k-1)(k-2)}{3!}x^3 + \dotsb + \frac{k(k-1)\dotsm\big(k-(n-1)\big)}{n!}x^n+\dotsb
+\]
 
 It is important to determine the interval of convergence of this series. With 
 \[a_n = \frac{k(k-1)\dotsm\big(k-(n-1)\big)}{n!}x^n,\]
@@ -124,7 +126,7 @@ we apply the Ratio Test:
 \begin{align*}
 	\lim_{n\to\infty}\frac{\abs{a_{n+1}}}{\abs{a_n}}
 	&=\lim_{n\to\infty}\frac{\abs{\frac{k(k-1)\dotsm(k-n)}{(n+1)!}x^{n+1}}}{\abs{\frac{k(k-1)\dotsm\big(k-(n-1)\big)}{n!}x^n}}\\
-		&=\lim_{n\to\infty} \abs{\frac{k-n}{n}x}\\
+		&=\lim_{n\to\infty} \abs{\frac{k-n}{n+1}x}\\
 		&= \abs x.
 \end{align*}
 

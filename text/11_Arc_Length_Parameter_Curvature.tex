@@ -9,11 +9,11 @@ Currently, our vector--valued functions have defined points with a parameter $t$
 axis y line=middle,axis x line=middle,name=myplot,
 ymin=-1.1,ymax=6.5,xmin=-2.1,xmax=7]
 \addplot [thick,draw={\colorone}, smooth,domain=-2:2.1,samples=30] ({x^2-x},{x^2+x});
-\filldraw [draw={\colortwo}](axis cs: 0,0) circle (1.5pt)
+\filldraw [draw={\colortwo},fill={\colortwo}](axis cs: 0,0) circle (1.5pt)
  node [black,above right] {\scriptsize $t=0$};
-\filldraw [draw={\colortwo}](axis cs: 0,2) circle (1.5pt)
+\filldraw [draw={\colortwo},fill={\colortwo}](axis cs: 0,2) circle (1.5pt)
  node [black, right] {\scriptsize $t=1$};
-\filldraw [draw={\colortwo}](axis cs: 2,6) circle (1.5pt)
+\filldraw [draw={\colortwo},fill={\colortwo}](axis cs: 2,6) circle (1.5pt)
  node [black, right] {\scriptsize $t=2$};
 \draw [thick,->,draw={\colorone}] (axis cs:3.79,.77)--(axis cs:3.75,.75)
  node [above ,black] {\scriptsize $\vec r(t)$};
@@ -27,19 +27,19 @@ ymin=-1.1,ymax=6.5,xmin=-2.1,xmax=7]
 axis y line=middle,axis x line=middle,name=myplot,
 ymin=-1.1,ymax=6.5,xmin=-2.1,xmax=7]
 \addplot [thick,draw={\colorone}, smooth,domain=-2:2.1,samples=30] ({x^2-x},{x^2+x});
-\filldraw [draw={\colortwo}](axis cs: 0,0) circle (1.5pt)
+\filldraw [draw={\colortwo},fill={\colortwo}](axis cs: 0,0) circle (1.5pt)
  node [black,above right] {\scriptsize $s=0$};
-\filldraw [draw={\colortwo}](axis cs: -.24,.94) circle (1.5pt)
+\filldraw [draw={\colortwo},fill={\colortwo}](axis cs: -.24,.94) circle (1.5pt)
  node [black, right] {\scriptsize $s=1$};
-\filldraw [draw={\colortwo}](axis cs: -.03,1.91) circle (1.5pt)
+\filldraw [draw={\colortwo},fill={\colortwo}](axis cs: -.03,1.91) circle (1.5pt)
  node [black, right] {\scriptsize $s=2$};
-\filldraw [draw={\colortwo}](axis cs: .33,2.84) circle (1.5pt)
+\filldraw [draw={\colortwo},fill={\colortwo}](axis cs: .33,2.84) circle (1.5pt)
  node [black, right] {\scriptsize $s=3$};
-\filldraw [draw={\colortwo}](axis cs: .75,3.75) circle (1.5pt)
+\filldraw [draw={\colortwo},fill={\colortwo}](axis cs: .75,3.75) circle (1.5pt)
  node [black, right] {\scriptsize $s=4$};
-\filldraw [draw={\colortwo}](axis cs: 1.21,4.63) circle (1.5pt)
+\filldraw [draw={\colortwo},fill={\colortwo}](axis cs: 1.21,4.63) circle (1.5pt)
  node [black, right] {\scriptsize $s=5$};
-\filldraw [draw={\colortwo}](axis cs: 1.71, 5.51) circle (1.5pt)
+\filldraw [draw={\colortwo},fill={\colortwo}](axis cs: 1.71, 5.51) circle (1.5pt)
  node [black, right] {\scriptsize $s=6$};
 \draw [thick,->,draw={\colorone}] (axis cs:3.79,.77)--(axis cs:3.75,.75)
  node [above ,black] {\scriptsize $\vec r(s)$};
@@ -76,8 +76,9 @@ s(t) &= \int_0^t \norm{\vec r\,'(u)}\ du \\
 \end{align*}
 Since $s=5t$, we can write $t=s/5$ and replace $t$ in $\vec r(t)$ with $s/5$:
 \[\vec r(s) =\bracket{3(s/5)-1, 4(s/5)+2}=\bracket{\frac35s-1,\frac45s+2}.\]
-Clearly, as shown in \autoref{fig:vvfarc1}, the graph of $\vec r$ is a line, where $t=0$ corresponds to the point $(-1,2)$. What point on the line is 2 units away from this initial point? We find it with $s(2) =\bracket{1/5, 18/5}$. 
+Clearly, as shown in \autoref{fig:vvfarc1}, the graph of $\vec r$ is a line, where $t=0$ corresponds to the point $(-1,2)$. What point on the line is 2 units away from this initial point? We find it with $\vec r(2) =\bracket{1/5, 18/5}$. 
 
+% todo Tim are these boxed?
 \mtable{Graphing $\vec r$ in \autoref{ex_vvfarc1} with parameters $t$ and $s$.}{fig:vvfarc1}{\begin{tikzpicture}[>=stealth]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,xtick={1,2,-1,-2},
@@ -100,7 +101,7 @@ Is the point $(1/5,18/5)$ really 2 units away from $(-1,2)$? We use the Distance
 \[
 d = \sqrt{\left(\frac15-(-1)\right)^2+ \left(\frac{18}5-2\right)^2} = \sqrt{\frac{36}{25}+\frac{64}{25}} = \sqrt{4}=2.
 \]
-Yes, $s(2)$ is indeed 2 units away, in the direction of travel, from the initial point.}
+Yes, $\vec r(2)$ is indeed 2 units away, in the direction of travel, from the initial point.}
 
 Things worked out very nicely in \autoref{ex_vvfarc1}; we were able to establish directly that $s=5t$. Usually, the arc length parameter is much more difficult to describe in terms of $t$, a result of integrating a square--root. There are a number of things that we can learn about the arc length parameter from \autoeqref{eq:vvfarc}, though, that are incredibly useful.
 

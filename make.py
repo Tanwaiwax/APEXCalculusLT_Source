@@ -16,6 +16,7 @@ from collections import defaultdict, namedtuple
 
 start = time.time()
 
+'''
 asyfiles = ['conicalhelix','cyl_surf_r','cyl_surf_t','cyl_surf_z',
             'ex_helix_y','ex_helix_z','ex_tilted_circle','ex_wobbly_circle',
             'helicoid','ortho_cyl','ortho_rect','ortho_sph',
@@ -53,6 +54,12 @@ fig3Dasyfiles += ['trip'+suffix for suffix in ('1','1b','2','2b','2c','2d','3','
 fig3Dasyfiles += ['wash'+suffix for suffix in ('1b','1c','2b','2c','4','4b','er_idea_b','er_idea_c')]
 
 asyfiles += ['fig'+file+'_3D' for file in fig3Dasyfiles]
+
+asyset = set(('figures/'+asyfile+'.asy' for asyfile in asyfiles))
+globset = set(glob.glob('figures/*.asy'))
+print(asyset^globset)
+quit()
+'''
 
 parser = argparse.ArgumentParser(description='Compile document to a pdf.',
                                  epilog="If no options are given, "
@@ -117,7 +124,10 @@ def getTime():
 def makefigs():
     try:
         os.chdir('figures')
-        for asyfile in asyfiles:
+        for asyfile in glob.glob('*.asy'):
+            if asyfile=='apexconfig.asy':
+                continue
+            asyfile = asyfile[:-4]
             extops = {
                 '.pdf':   ['-noprc','-outformat','pdf'],
                 '.prc':   ['-prc','-outformat','prc'],
@@ -291,7 +301,7 @@ def fixRefs():
 def getcommandline(args):
     if args.xml:
         ret = ['latexml','--quiet','--quiet',#'--verbose','--verbose',#
-                       '--destination=calculusRefs.xml',
+                       '--destination=Calculus.xml',
                        '--nocomments',
                        'Calculus']
         if platform.mac_ver()[0] is '':

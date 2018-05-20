@@ -33,7 +33,7 @@
 	<xsl:value-of select="ltx:block/@height" />
       </xsl:attribute>
       <xsl:attribute name="src">
-	<xsl:value-of select="ltx:block/ltx:ref/@href" />
+	<xsl:value-of select="ltx:block//ltx:ref/@href" />
       </xsl:attribute>
       <xsl:attribute name="frameborder">0</xsl:attribute>
       <xsl:attribute name="scrolling">no</xsl:attribute>

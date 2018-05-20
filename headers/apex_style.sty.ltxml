@@ -24,6 +24,11 @@ RequirePackage('ifluatex');
 
 #DefMacro('\exvideo Verbatim','\bigbreak\noindent#1\bigbreak');
 
+DefMacro('\genVideo [] Verbatim Verbatim {}',
+	 '\\noindent Watch the video:\\\\'.
+	 '\\href{#3#1}{#4 from \\nolinkurl{#3}}'.
+	 '\\embedVideo{https://www.youtube.com/embed/#2?rel=0}');
+
 DefMacro('\embedVideo Verbatim','\iframe{#1}{560}{355}');
 
 DefConstructor('\iframe Verbatim {}{}',

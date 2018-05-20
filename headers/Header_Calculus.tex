@@ -231,23 +231,6 @@ Notes:
 
 \newspecialbox[notempty]{exvideo}{ignored}{240}
 
-\newcommand{\genVideo}[4][]{\exvideo{%
- \ifthenelse{\boolean{latexml}}{%
-  \noindent Watch the video:\\%
-  \href{#3#1}{#4 from \nolinkurl{#3}}%
-  \embedVideo{https://www.youtube.com/embed/#2?rel=0}%
- }{%
-  \begin{minipage}[t]{2cm}%
-  \vspace{-.5\baselineskip}\qrcode{#3}%
-  \end{minipage}
-  \quad
-  \begin{minipage}[t]{.74\linewidth}%
-   \noindent Watch the video:\\%
-   \href{#3}{#4 at\\\nolinkurl{#3}}%
-  \end{minipage}%
- }%
-}}
-
 % \youtubeVideo{youtube code}{actual title}
 \newcommand{\youtubeVideo}[2]{\genVideo{#1}{https://youtu.be/#1}{#2}}
 

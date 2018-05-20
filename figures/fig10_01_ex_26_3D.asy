@@ -4,7 +4,7 @@ include apexconfig;
 
 size(200,200,IgnoreAspect);
 //currentprojection=perspective(7,2,1);
-currentprojection=orthographic(13,5,2);
+currentprojection=orthographic(10,5,5);
 
 // setup and draw the axes
 real[] myxchoice={-3,3};

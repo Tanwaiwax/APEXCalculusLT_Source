@@ -43,7 +43,8 @@
   {}% Punctuation after thm head
   {\newline}% Space after thm head: " " = normal interword space; \newline = linebreak
 %  {\makebox[80pt][l]{\textbf{#1 \arabic{examplecounter}}}\thmnote{\textbf{#3}}}% Thm head spec
-  {\makebox[80pt][l]{\textbf{#1 #2}}\thmnote{\textbf{#3}}}% Thm head spec
+  {\parbox[t]{.25\textwidth}{\textbf{#1 #2}}\parbox[t]{.75\textwidth}{\thmnote{\textbf{#3}}}}
+%  {\makebox[80pt][l]{\textbf{#1 #2}}\thmnote{\textbf{#3}}}% Thm head spec
 
 \newtheoremstyle{apex}% name
   {0pt}% Space above, empty = `usual value'
@@ -72,13 +73,6 @@
 
 \theoremstyle{apex}
 
-\newcommand{\exampleEnvautorefname}{Example}
-\newcommand{\sectionautorefname}{Section} % the default is lowercase
-\newcommand{\chapterautorefname}{Chapter} % the default is lowercase
-\newcommand{\autoeqref}[1]{\hyperref[#1]{\equationautorefname\ (\ref*{#1})}}
-% autoref doesn't use parentheses
-
-
 \makeatletter
 \renewenvironment{proof}[1][\proofname]{\par
   \pushQED{\qed}%
@@ -96,7 +90,7 @@
 
 \makeindex
 
-\newcommand{\apex}{A\kern -.1em \lower -.5ex\hbox{P}\kern -.25em\lower .5ex\hbox{E}\kern -.1em X}
+\newcommand{\apex}{\texorpdfstring{A\kern -.1em \lower -.5ex\hbox{P}\kern -.25em\lower .5ex\hbox{E}\kern -.1em X}{APEX}}
 %\newcommand{\apex}{A\kern -1pt \lower -2pt\hbox{P}\kern -4pt \lower .7ex\hbox{E}\kern -1pt X}
 
 \renewcommand{\partname}{\protect\thispagestyle{empty}}
@@ -197,18 +191,26 @@
 \definecolor{colormaptwotop}{rgb}{.9,.9,.9}
 }
 
-\newcommand{\threedlines}[4][]{\draw [dashed,#1] (axis cs: #2,#3,#4) -- (axis cs: #2,#3,0) -- (axis cs: #2,0,0)  (axis cs: #2,#3,0)--(axis cs:0,#3,0);}
+%\newcommand{\threedlines}[4][]{\draw [dashed,#1] (axis cs: #2,#3,#4) -- (axis cs: #2,#3,0) -- (axis cs: #2,0,0)  (axis cs: #2,#3,0)--(axis cs:0,#3,0);}
 
-\newcommand{\mydraw}{\draw (axis cs:0,0,0) -- (axis cs:1,1,0);}
+%\newcommand{\mydraw}{\draw (axis cs:0,0,0) -- (axis cs:1,1,0);}
 
 \newcommand{\myincludegraphics}[2][]{%
- \IfFileExists{./#2\colornamesuffix.pdf}{%
-  \includegraphics[#1]{#2\colornamesuffix}%
+ \IfFileExists{./#2\colornamesuffix.png}{%
+  \includegraphics[#1]{#2\colornamesuffix.png}%
  }{%
-  \IfFileExists{./#2.pdf}{%
-   \includegraphics[#1]{#2}%
+  \IfFileExists{./#2.png}{%
+   \includegraphics[#1]{#2.png}%
   }{%
-   \includegraphics[#1]{#2\colornamesuffix}%
+   \IfFileExists{./#2\colornamesuffix.pdf}{%
+    \includegraphics[#1]{#2\colornamesuffix.pdf}%
+   }{%
+    \IfFileExists{./#2.pdf}{%
+     \includegraphics[#1]{#2.pdf}%
+    }{%
+     \includegraphics[#1]{#2\colornamesuffix}%
+    }%
+   }%
   }%
  }%
 }
@@ -258,8 +260,12 @@
 % The starred version only has 3: label, title, problem/solution.
 \makeatletter
 \newcommand{\example}{\@ifstar \examplestarred \examplenostar}
-\newcommand{\reverseexampledefault}{\renewcommand{\example}{\@ifstar \examplenostar \examplestarred}}
-\newcommand{\restoreexampledefault}{\renewcommand{\example}{\@ifstar \examplestarred \examplenostar}}
+\newcommand{\reverseexampledefault}{%
+ \renewcommand{\example}{\@ifstar \examplenostar \examplestarred}%
+}
+\newcommand{\restoreexampledefault}{%
+ \renewcommand{\example}{\@ifstar \examplestarred \examplenostar}%
+}
 \makeatother
 
 % This is the no-star (regular) version of the example command.
@@ -401,11 +407,13 @@
 \@startsection{subsubsection}{3}{-1em}{\bigskipamount}{\bigskipamount}{\Large\textit}*}
 \makeatother
 
-
+%\newcommand{\printconcepts}{\closeenumerate\subsubsection*{Terms and Concepts}}
 \newcommand{\printconcepts}{\closeenumerate\exercisesubsubsection{Terms and Concepts}}
 %{\noindent\textit{\Large Terms and Concepts}\bigskip}
+%\newcommand{\printproblems}{\closeenumerate\subsubsection*{Problems}}
 \newcommand{\printproblems}{\closeenumerate\exercisesubsubsection{Problems}}
 %{\bigbreak\noindent\textit{\Large Problems}\bigskip}
+%\newcommand{\printreview}{\closeenumerate\subsubsection*{Review}}
 \newcommand{\printreview}{\closeenumerate\exercisesubsubsection{Review}}
 %{\bigbreak\noindent\textit{\Large Review}\bigskip}
 
@@ -424,14 +432,14 @@
 
 \newcount\numberofexercises
 
-\newcounter{numofexer}
-\newcounter{negnumofexer}
+%\newcounter{numofexer}
+%\newcounter{negnumofexer}
 
 % used for debugging; not really used anymore
-\newcounter{debug}
-\setcounter{debug}{0}
+%\newcounter{debug}
+%\setcounter{debug}{0}
 
-\newcounter{exercisecounter}
+%\newcounter{exercisecounter}
 
 
 \newwrite\answrite %write the answers file
@@ -454,12 +462,14 @@
 % in latexml, this needs to happen before closing
 \immediate\closeout\answrite%
 \inanswersection\exercisegeometry\exerciseheader%
-\chapter{#2}\thispagestyle{empty}%
+\chapter*{#2}%
+\addcontentsline{toc}{chapter}{#2}%
+%\thispagestyle{empty}%
 \ifthenelse{\equal{#1}{\jobname}}{}{%
-\begingroup
-\let\thefootnote\relax
-\footnotetext{Revised \today}
-\endgroup
+ {% to localize the next line
+  \let\thefootnote\relax%
+  \footnotetext{Revised \today}%
+ }%
 }%
 \begin{multicols}{2}%
 \small\raggedright%
@@ -478,33 +488,58 @@
 \makeatletter
 % the usual \subsection definition has stretchable space in arguments 3-5
 \newcommand{\exercisesubsection}[1]{%
-\@startsection{subsection}{2}{-.7em}{0pt}{2pt}{\huge\textbf}*{\hyperref[sol#1]{Exercises #1}}%
+\@startsection{subsection}{2}{-.7em}{0pt}{2pt}{\huge\textbf}{\texorpdfstring{\hyperref[sol#1]{Exercises #1}}{Exercises}}%
 \hrule\vspace{-1.5ex}%
 }
 \makeatother
 
 %\newcommand{\inputexercises}[1]{}%
 \newcommand{\printexercises}[1]{%
-\writeToAnsFile{#1}%
-\exercisegeometry%
-\exerciseheader%
-\exercisesubsection{\thesection}%
-\label{exer\thesection}%
-\small%
-\bigskip%
-\begin{multicols}{2}%
-\input{#1}%
-\closeenumerate%
-\end{multicols}%
-\restoregeometry%
-\regularheader%
-%	\easypagecheck
-\setlength{\hoffset}{0pt} \rmfamily\normalsize \bigbreak%
+ \writeToAnsFile{#1}% writeToAnsFile in sty
+ \exercisegeometry%
+ \exerciseheader%
+ \exercisesubsection{\thesection}%
+ \label{exer\thesection}%
+ \small%
+ \bigskip%
+ \begin{multicols}{2}%
+  \renewcommand{\Itemautorefname}{Exercise}% local b/c multicols = good
+  \input{#1}%
+  \closeenumerate%
+ \end{multicols}%
+ \restoregeometry%
+ \regularheader%
+ %	\easypagecheck
+ \setlength{\hoffset}{0pt} \rmfamily\normalsize \bigbreak%
 }
 
-% writeToAnsFile in sty
+\newcounter{answerchapter}
+\newcounter{answersection}[answerchapter]
+\newcommand{\lastanswerchapter}{-1}
 
+% only called by the prerequisite sections
+%\newcommand*{\allAnswersForSection}[3]{
+% \subsection*{\hyperref[exer#1.#2]{Exercises #1.#2}}\label{sol#1.#2}
+% \loadAllAnswers{#3}
+%}
+\newcommand*{\answersForSection}[3]{%
+ \ifthenelse{\equal{#1}{\lastanswerchapter}}{}{%
+  \renewcommand{\lastanswerchapter}{#1}%
+  \section*{Chapter #1}\belowpdfbookmark{Chapter #1}{solsol#1}
+  \setcounter{answerchapter}{#1}
+  \setcounter{answersection}{0}
+ }%
+ \subsection*{\hyperref[exer#1.#2]{Exercises #1.#2}}\label{sol#1.#2}
+ \ifthenelse{\equal{#2}{0}}{%
+  \loadAllAnswers{#3}
+ }{%
+  \loadAnswers{#3}
+ }%
+}
+
+% only called by the prerequisite sections
 \newcommand*{\loadAllAnswers}[1]{%
+	\setcounter{answersection}{-1}%
 	\ifthenelse{\boolean{printoddanswersonly}}{%
 		\setboolean{printoddanswersonly}{false}%
 		\loadAnswers{#1}%
@@ -514,7 +549,9 @@
 	}%
 }
 \newcommand*{\loadAnswers}[1]{%
+	\stepcounter{answersection}%
 	\lxenumerate{leftmargin=1.5em}\input{#1}\end{enumerate}%
+	\bigbreak%
 }
 
 \newcommand{\openenumerate}{\ifthenelse{\boolean{printquestions}%

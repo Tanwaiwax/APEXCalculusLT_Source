@@ -13,6 +13,12 @@
 \usepackage{esint}
 % for oiint in 14_Div_Thm, oint[ctr]clockwise in 14_Line_Integrals_Props
 
+\setcounter{secnumdepth}{1}
+\setcounter{tocdepth}{1}
+
+\newlength{\saveparindent}
+\setlength{\saveparindent}{\parindent}
+
 %%%%
 %% These are low level LaTeX commands that determine the 
 %% look of the Chapter and Section headings.
@@ -82,9 +88,19 @@ Notes:
 %  Defining what the chapter titles look like
 %
 
-\newdimen\titleheight
+%\newdimen\titleheight
+
+%\usepackage{sectsty} % crashed and burned?
+%\chapterfont{\raggedright\scshape\textsc\sectionrule{0pt}{0pt}{-10pt}{1pt}}
 
 \makeatletter
+\def\@makeschapterhead#1{%
+  {\parindent \z@ \raggedright \reset@font
+    {\Huge \scshape \textsc #1}
+    \par\vskip 10\p@
+    \hrule height 1pt
+    \vskip 10\p@
+  }}
 \def\@makechapterhead#1{%
   {\parindent \z@ \raggedright \reset@font
     {\Huge \thechapter: \scshape \textsc #1}
@@ -92,12 +108,35 @@ Notes:
     \hrule height 1pt
     \vskip 10\p@
   }}
+
 %%  
 %%%\makeatletter
 %%\def\@makesectionhead#1{%
 %%	 {\reset@font\LARGE\itshape\bfseries\strut #1 \thechapter.\thesection \ #1
 %%	 }}
-\makeatother 
+\makeatother
+
+
+\newcommand{\apexappendix}{%
+ \appendix
+ \pagenumbering{arabic}
+ \renewcommand{\thepage}{A.\arabic{page}}
+ \part*{Appendices\protect\thispagestyle{empty}}
+ \iflatexml\else
+ \pdfbookmark[part]{Appendices}{appendixbookmark}
+ \fi
+}
+
+
+% an enumerate like environment that can be mixed into tabular, array, etc.
+\newcounter{anywhereenumi}
+\newenvironment{anywhereenum}{%
+ \setcounter{anywhereenumi}{0}%
+ \renewcommand{\item}{%
+  \refstepcounter{anywhereenumi}%
+  \makebox[1em][r]{\arabic{anywhereenumi}.}~~%
+ }%
+}{}
 
 \newcommand{\ds}{\displaystyle}
 
@@ -171,10 +210,13 @@ Notes:
 \DeclareMathOperator{\Div}{div}
 \DeclareMathOperator{\grad}{grad}
 \DeclareMathOperator{\curl}{curl}
+\DeclareMathOperator{\divv}{div}
 
 \newcommand*{\sword}[1]{\textbf{#1}}
 
 \newcommand{\primeskip}{\hskip.75pt}
+
+\newcommand{\surfaceS}{\ensuremath{\mathcal{S}}}
 
 %%%% Begin Header TikZ
 
@@ -231,9 +273,6 @@ Notes:
 
 \newspecialbox[notempty]{exvideo}{ignored}{240}
 
-% \youtubeVideo{youtube code}{actual title}
-\newcommand{\youtubeVideo}[2]{\genVideo{#1}{https://youtu.be/#1}{#2}}
-
 % \jmtVideo{youtube code}{jmt url suffix}{actual title}
 \newcommand{\jmtVideo}[3]{\genVideo{#1}{http://patrickjmt.com/#2/}{#3}}
 
@@ -254,16 +293,16 @@ Notes:
 
 % mnote in apex_style.sty
 
-% \mfigurethree{mediaoptions}{graphicsoptions}{offset}{caption}{label}{file}
-\newcommand{\mfigurethree}[6]%
-	{\mnote[#3]{\centering%
-		\ifthenelse{\boolean{in_threeD}}{% in 3D
-			\includemedia[#1]{\includegraphics{#6_3D\colornamesuffix}}{#6_3D.prc}
-		}{% not
-			\myincludegraphics[#2]{#6}
-		}%
-		\captionof{figure}{#4}\label{#5}
-}}
+%% \mfigurethree{mediaoptions}{graphicsoptions}{offset}{caption}{label}{file}
+%\newcommand{\mfigurethree}[6]%
+%	{\mnote[#3]{\centering%
+%		\ifthenelse{\boolean{in_threeD}}{% in 3D
+%			\includemedia[#1]{\myincludegraphics{#6_3D\colornamesuffix}}{#6_3D.prc}
+%		}{% not
+%			\myincludegraphics[#2]{#6}
+%		}%
+%		\captionof{figure}{#4}\label{#5}
+%}}
 
 
 \newenvironment{lxfigure}{%
@@ -325,9 +364,25 @@ Notes:
 %	}
 %	{}
 
-\usepackage[bookmarksnumbered,hidelinks,pdfstartview=FitH]{hyperref}
+\usepackage[
+	bookmarksnumbered,
+	hidelinks,
+	pdfstartview=FitH,
+	linktoc=all,
+	pdftitle={APEX Calculus LT},
+	pdfauthor={UND Math Dept and Greg Hartman, VMI},
+	pdfdisplaydoctitle,
+	bookmarksdepth=2
+]{hyperref}
+\usepackage{bookmark}
+
+\renewcommand{\sectionautorefname}{Section} % the default is lowercase
+\renewcommand{\chapterautorefname}{Chapter} % the default is lowercase
+\newcommand{\exampleEnvautorefname}{Example}
+\newcommand{\autoeqref}[1]{\hyperref[#1]{\equationautorefname\ (\ref*{#1})}}
+% autoref doesn't use parentheses
 
 \begin{lxNavbar}
-%\lxRef{top}\\ % ? not sure what that was supposed to do
+\lxRef{coverpagetitle}{\apex\ Calculus LT}\\
 \lxContextTOC
 \end{lxNavbar}

@@ -39,4 +39,5 @@ for ( int n = 0 ; n < 10 ; ++n ) {
 }
 
 triple g(real t) {return (2*cos(t),3*sin(t),0);}
-path3 mypath=graph(g,0,2*pi,operator ..); draw(mypath,blue);
+path3 mypath=graph(g,0,2*pi,operator ..);
+draw(mypath,colorone);

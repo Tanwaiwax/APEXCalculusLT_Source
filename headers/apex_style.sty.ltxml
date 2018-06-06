@@ -24,6 +24,8 @@ RequirePackage('ifluatex');
 
 #DefMacro('\exvideo Verbatim','\bigbreak\noindent#1\bigbreak');
 
+DefMacro('\youtubeVideo Verbatim {}','\genVideo{#1}{https://youtu.be/#1}{#2}');
+
 DefMacro('\genVideo [] Verbatim Verbatim {}',
 	 '\\noindent Watch the video:\\\\'.
 	 '\\href{#3#1}{#4 from \\nolinkurl{#3}}'.
@@ -118,12 +120,12 @@ DefMacro('\rvert','\vert');
 DefMacro('\lVert','\Vert');
 DefMacro('\rVert','\Vert');
 DefMacro('\lxenumerate{}','\begin{enumerate}');
-DefMacro('\psBill');
+DefMacro('\psBill'); # todo
+DefMacro('\pdfbookmark[]{}{}','\addcontentsline{toc}{#1}{#2}'); # from hyperref
+# that will work if #1 is "chapter" etc, but not a number or missing
 
 
 # should be in hyperref
-DefMacro('\equationautorefname','Equation');
-DefMacro('\pageautorefname','Page');
 DefMacro('\autopageref{}','\hyperref[{#1}]{\pageautorefname\ \pageref*{#1}}');
 
 # some macros we don't need
@@ -133,18 +135,15 @@ DefMacro('\longexample{}');
 DefMacro('\testmargintop');
 DefMacro('\testmarginbottom');
 
-# some macros we don't need, but LaTeXML wants for plotting tikz pics
-DefMacro('\x');
-DefMacro('\y');
-
 
 # \mnote[offset=0]{contents}
 DefMacro('\mnote []{}','\begin{figure}[h]'
-	 .'\marginpar{'
+	 .'\lxAddClass{marginnote}'
+	 .'\ifx.#1.\else\vspace{#1}\fi'
 	 .'\begin{minipage}[c]{\marginparwidth}'
-	 .'\captionsetup{type=figure}#2'
+	 .'\captionsetup{type=figure}'
+	 .'#2'
 	 .'\end{minipage}'
-	 .'}'
 	 .'\end{figure}');
 
 

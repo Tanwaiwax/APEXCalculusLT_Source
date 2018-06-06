@@ -1,6 +1,7 @@
-\section{Change of Variables in Multiple Integrals}\label{sec:jacobian}
+% this was originally Schoolcraft / Mecmath
 
-% this was originally Schoolcraft
+\subsection{Change of Variables in Multiple Integrals}
+%\label{sec:jacobian}
 
 Given the difficulty of evaluating multiple integrals, the reader may be wondering if it is possible to simplify those integrals using a suitable substitution for the variables. The answer is yes, though it is a bit more complicated than the substitution method which you learned in single-variable calculus.\index{change of variable}
 
@@ -153,7 +154,7 @@ The change of variables formula can be used to evaluate double integrals in pola
  x = x(r,\theta) = r\cos \theta \quad \text{and} \quad y = y(r,\theta) = r\sin \theta ,
 \]
 we have
-\[
+\begin{multline*}
  J(u,v) =
   \begin{vmatrix}
    \dfrac{\partial x}{\partial r} & \dfrac{\partial x}{\partial \theta}\vspace{2mm}\\
@@ -162,19 +163,19 @@ we have
   \begin{vmatrix}
    \cos \theta & -r\sin \theta\vspace{2mm}\\
    \sin \theta & r\cos \theta
-  \end{vmatrix}= r\cos^2 \theta + r\sin^2 \theta = r
+  \end{vmatrix}= r\cos^2 \theta + r\sin^2 \theta = r \\
   \Rightarrow \abs{J(u,v)} = \abs{r} = r ,
-\]
+\end{multline*}
 which verifies \autoref{idea:doublepol}.
 %so we have the following formula:
-
+%
 %\keyidea{idea_polar_int}{Double Integral in Polar Coordinates}{
 % \begin{equation}\label{eqn:polarint}
 %  \iint_{R} f(x,y)\,dx\,dy
 %  = \iint_{R'} f(r\cos \theta,r\sin \theta)\,r\,dr\,d\theta ,
 % \end{equation}\index{double integral!polar coordinates}\index{coordinates!polar}
 % where the mapping $x=r\cos \theta$, $y=r\sin \theta$ maps the region $R'$ in the $r\theta$-plane onto the region $R$ in the $xy$-plane in a one-to-one manner.}
-
+%
 %\example{ex_polar_parab}{Integrating in Polar Coordinates}{Find the volume $V$ inside the paraboloid $z=x^2 + y^2$ for $0 \le z \le 1$.}{Using vertical slices, we see that
 %\[V = \iint_{R} (1 - z)\,dA = \iint_{R} (1 - (x^2 + y^2 ))\,dA ,\]
 %where $R = \lbrace (x,y): x^2 + y^2 \le 1 \rbrace$ is the unit disk in $\mathbb{R}^2$ (see \autoref{fig_parab}). In polar coordinates $(r,\theta)$ we know that $x^2 + y^2 = r^2$ and that the unit disk $R$ is the set $R' = \lbrace (r,\theta):0 \le r \le 1, 0 \le \theta \le 2\pi \rbrace$. Thus,
@@ -214,7 +215,7 @@ which verifies \autoref{idea:doublepol}.
 %   &= \int_0^{2\pi} \frac14 \,d\theta\\
 %   &= \frac\pi2.\eoehere
 % \end{align*}}
-
+%
 %\example{ex_polar_cone}{Integrating in Polar Coordinates}{Find the volume $V$ inside the cone $z=\sqrt{x^2 + y^2}$ for $0 \le z \le 1$.}{%
 % \mtable{$z=\sqrt{x^2 + y^2}$ for \autoref{ex_polar_cone}}{fig_cone}{\begin{tikzpicture}
 %  \usetikzlibrary{arrows}
@@ -255,48 +256,51 @@ which verifies \autoref{idea:doublepol}.
 %   &= \int_0^{2\pi} \frac16 \,d\theta\\
 %   &= \frac\pi3.\eoehere
 % \end{align*}}
+%
+In a similar fashion, %it can be shown (see
+Exercises \ref{pr_cyl_jac} and \ref{pr_sph_jac}
+ask you to verify Theorems \ref{thm:triple_int_cylindrical} and \ref{thm:triple_int_spherical} by computing the appropriate Jacobian.\bigskip
+%) that triple integrals in cylindrical and spherical coordinates take the following forms:
 
-In a similar fashion, it can be shown (see Exercises \ref{pr_cyl_jac} and \ref{pr_sph_jac}) that triple integrals in cylindrical and spherical coordinates take the following forms:
+%\keyidea{idea_cylin_int}{Triple Integral in Cylindrical Coordinates}{%
+% \begin{equation}\label{eqn:cylinderint}
+%  \iiint_{S} f(x,y,z)\,dx\,dy\,dz = \iiint_{S'} f(r\cos \theta,r\sin \theta,z)\,r\,dr\,d\theta\,dz ,
+% \end{equation}\index{triple integral!cylindrical coordinates}
+% where the mapping $x=r\cos \theta$, $y=r\sin \theta$, $z=z$ maps the solid $S'$ in  $r\theta z$-space onto the solid $S$ in $xyz$-space in a one-to-one manner.}
+%
+%\keyidea{idea_sphere_int}{Triple Integral in Spherical Coordinates}{\mbox{}\\[-2\baselineskip]
+% \begin{multline}\label{eqn:sphereint}
+%  \iiint_S f(x,y,z)\,dx\,dy\,dz =\\
+%  \iiint_{S'} f(\rho\sin \phi\,\cos \theta,\rho\sin \phi\,\sin \theta,\rho\cos \phi)
+%  \,\rho^2 \,\sin \phi \,d\rho\,d\phi\,d\theta ,
+% \end{multline}\index{triple integral!spherical coordinates}
+% where the mapping $x=\rho\sin \phi\,\cos \theta$, $y=\rho\sin \phi\,\sin \theta$, $z=\rho\cos \phi$ maps the solid $S'$ in $\rho\phi\theta$-space onto the solid $S$ in $xyz$-space in a one-to-one manner.}
+%
+%\example{exmp_cyl_cone_octant}{Triple Integral over a Region in Cylindrical Coordinates}{Evaluate $\iiint_D x\,dV$ where $D$ is the region bounded by the first octant, the cone $z=\sqrt{x^2+y^2}$, and $z=3$.}{In cylindrical coordinates $D$ is given by $0\le\theta\leq\frac\pi2$, $0\leq r\leq3$, and $r\leq z\leq3$.  Now we have
+%\begin{align*}
+%\iiint_D x\,dV
+%&=\int_0^{\frac\pi2}\int_0^3\int_r^3 r\cos\theta r\,dz\,dr\,d\theta \\
+%&=\left.\int_0^{\frac\pi2}\int_0^3 r^2\,z\,\cos \theta\, \right|_{z=r}^{z=3}\,dz\,dr\,d\theta \\
+%&=\int_0^{\frac\pi2}\int_0^3 (3r^2-r^3) \cos \theta \,dr\,d\theta \\
+%&=\left.\int_0^{\frac\pi2} (r^3-\frac14 r^4) \cos \theta \,\right|_{r=0}^{r=3} \,d\theta \\
+%&=\int_0^{\frac\pi2} \frac{27}4 \cos \theta \,d\theta \\
+%&=\left.\frac{27}4 \sin\theta \,\right|_{\theta=0}^{\theta=\frac\pi2} \\  
+%&=\frac{27}4.\eoehere
+%\end{align*}}
+%
+%\example{exmp_volsphere}{Finding the Volume of a Sphere}{For $a > 0$, find the volume $V$ inside the sphere $S = x^2 + y^2 + z^2 = a^2$.}{We see that $S$ is the set $\rho = a$ in spherical coordinates, so
+% \begin{align*}
+%  V &= \iiint_S 1\,dV
+%   = \int_0^{2\pi} \int_0^\pi \int_0^a 1 \,\rho^2 \,\sin \phi \,d\rho\,d\phi\,d\theta\\
+%   &= \int_0^{2\pi} \int_0^\pi \left( \left.\frac{\rho^3}3\,\right|_{\rho=0}^{\rho=a}\right)\,\sin \phi \,d\phi\,d\theta
+%   = \int_0^{2\pi} \int_0^{\pi} \frac{a^3}3\,\sin \phi\,d\phi\,d\theta\\
+%   &= \int_0^{2\pi} \left( \left. -\frac{a^3}3\,\cos \phi\,\right|_{\phi=0}^{\phi=\pi} \right) \,d\theta
+%   = \int_0^{2\pi} \frac{2a^3}3\,d\theta
+%   = \frac{4\pi a^3}3 .\eoehere
+% \end{align*}}
 
-\keyidea{idea_cylin_int}{Triple Integral in Cylindrical Coordinates}{%
- \begin{equation}\label{eqn:cylinderint}
-  \iiint_{S} f(x,y,z)\,dx\,dy\,dz = \iiint_{S'} f(r\cos \theta,r\sin \theta,z)\,r\,dr\,d\theta\,dz ,
- \end{equation}\index{triple integral!cylindrical coordinates}
- where the mapping $x=r\cos \theta$, $y=r\sin \theta$, $z=z$ maps the solid $S'$ in  $r\theta z$-space onto the solid $S$ in $xyz$-space in a one-to-one manner.}
+%This chapter investigated the natural follow--on to partial derivatives: iterated integration. We learned how to use the bounds of a double integral to describe a region in the plane using both rectangular and polar coordinates, then later expanded to use the bounds of a triple integral to describe a region in space. We used double integrals to find volumes under surfaces, surface area, and the center of mass of lamina; we used triple integrals as an alternate method of finding volumes of space regions and also to find the center of mass of a region in space.
+%
+%Integration does not stop here. We could continue to iterate our integrals, next investigating ``quadruple integrals'' whose bounds describe a region in 4--dimensional space (which are very hard to visualize). We can also look back to ``regular'' integration where we found the area under a curve in the plane. A natural analogue to this is finding the ``area under a curve,'' where the curve is in space, not in a plane. These are just two of many avenues to explore under the heading of ``integration.''
 
-\keyidea{idea_sphere_int}{Triple Integral in Spherical Coordinates}{\mbox{}\\[-2\baselineskip]
- \begin{multline}\label{eqn:sphereint}
-  \iiint_S f(x,y,z)\,dx\,dy\,dz =\\
-  \iiint_{S'} f(\rho\sin \phi\,\cos \theta,\rho\sin \phi\,\sin \theta,\rho\cos \phi)
-  \,\rho^2 \,\sin \phi \,d\rho\,d\phi\,d\theta ,
- \end{multline}\index{triple integral!spherical coordinates}
- where the mapping $x=\rho\sin \phi\,\cos \theta$, $y=\rho\sin \phi\,\sin \theta$, $z=\rho\cos \phi$ maps the solid $S'$ in $\rho\phi\theta$-space onto the solid $S$ in $xyz$-space in a one-to-one manner.}
-
-\example{exmp_cyl_cone_octant}{Triple Integral over a Region in Cylindrical Coordinates}{Evaluate $\iiint_D x\,dV$ where $D$ is the region bounded by the first octant, the cone $z=\sqrt{x^2+y^2}$, and $z=3$.}{In cylindrical coordinates $D$ is given by $0\le\theta\leq\frac\pi2$, $0\leq r\leq3$, and $r\leq z\leq3$.  Now we have
-\begin{align*}
-\iiint_D x\,dV
-&=\int_0^{\frac\pi2}\int_0^3\int_r^3 r\cos\theta r\,dz\,dr\,d\theta \\
-&=\left.\int_0^{\frac\pi2}\int_0^3 r^2\,z\,\cos \theta\, \right|_{z=r}^{z=3}\,dz\,dr\,d\theta \\
-&=\int_0^{\frac\pi2}\int_0^3 (3r^2-r^3) \cos \theta \,dr\,d\theta \\
-&=\left.\int_0^{\frac\pi2} (r^3-\frac14 r^4) \cos \theta \,\right|_{r=0}^{r=3} \,d\theta \\
-&=\int_0^{\frac\pi2} \frac{27}4 \cos \theta \,d\theta \\
-&=\left.\frac{27}4 \sin\theta \,\right|_{\theta=0}^{\theta=\frac\pi2} \\  
-&=\frac{27}4.\eoehere
-\end{align*}}
-
-\example{exmp_volsphere}{Finding the Volume of a Sphere}{For $a > 0$, find the volume $V$ inside the sphere $S = x^2 + y^2 + z^2 = a^2$.}{We see that $S$ is the set $\rho = a$ in spherical coordinates, so
- \begin{align*}
-  V &= \iiint_S 1\,dV
-   = \int_0^{2\pi} \int_0^\pi \int_0^a 1 \,\rho^2 \,\sin \phi \,d\rho\,d\phi\,d\theta\\
-   &= \int_0^{2\pi} \int_0^\pi \left( \left.\frac{\rho^3}3\,\right|_{\rho=0}^{\rho=a}\right)\,\sin \phi \,d\phi\,d\theta
-   = \int_0^{2\pi} \int_0^{\pi} \frac{a^3}3\,\sin \phi\,d\phi\,d\theta\\
-   &= \int_0^{2\pi} \left( \left. -\frac{a^3}3\,\cos \phi\,\right|_{\phi=0}^{\phi=\pi} \right) \,d\theta
-   = \int_0^{2\pi} \frac{2a^3}3\,d\theta
-   = \frac{4\pi a^3}3 .\eoehere
- \end{align*}}
-
-This chapter investigated the natural follow--on to partial derivatives: iterated integration. We learned how to use the bounds of a double integral to describe a region in the plane using both rectangular and polar coordinates, then later expanded to use the bounds of a triple integral to describe a region in space. We used double integrals to find volumes under surfaces, surface area, and the center of mass of lamina; we used triple integrals as an alternate method of finding volumes of space regions and also to find the center of mass of a region in space.
-
-Integration does not stop here. We could continue to iterate our integrals, next investigating ``quadruple integrals'' whose bounds describe a region in 4--dimensional space (which are very hard to visualize). We can also look back to ``regular'' integration where we found the area under a curve in the plane. A natural analogue to this is finding the ``area under a curve,'' where the curve is in space, not in a plane. These are just two of many avenues to explore under the heading of ``integration.''
-
-\printexercises{exercises/13_Jacobian_exercises}
+%\printexercises{exercises/13_Jacobian_exercises}

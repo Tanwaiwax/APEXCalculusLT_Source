@@ -1,0 +1,45 @@
+body>div {
+    padding: 1em;
+    margin: 2em;
+    border-width: 0 0 2px 2px;
+    border-style: solid;
+    border-color: transparent;
+    border-left-color: blue;
+    height: 10ex;
+    width: 10em;
+    display: inline-block;
+    border-image-slice: 1;
+}
+
+#test1 {
+    border-image-source: linear-gradient(to right,blue 3em,transparent 3em);
+    border-image-source: linear-gradient(to right,blue 3em,transparent 3em),
+    linear-gradient(to bottom right,transparent 5ex,blue 5ex); /* illegal? */
+}
+
+#test2 {
+    border-image-source: linear-gradient(to bottom,transparent 5ex,blue 5ex);
+    border-image-source: linear-gradient(to right,blue 3em,transparent 3em),
+    linear-gradient(to bottom,transparent 5ex,blue 5ex); /* illegal? */
+}
+
+#test3 {
+    background-image: linear-gradient(to right,blue 3em,transparent 3em);
+    background-image: linear-gradient(to right,blue 3em,transparent 3em),
+    linear-gradient(to bottom right,white 5ex,blue 5ex);
+}
+
+#test4 {
+    border-image-source: linear-gradient(30deg,blue 4em,transparent 4m);
+}
+
+#test5 {
+    border-bottom-width: 0;
+    border-image-source: linear-gradient(to bottom,transparent 5ex,blue 5ex);
+}
+#test5>div {
+    height: 100%;
+    width: 100%;
+    border-image-source: linear-gradient(to right,blue 3em,transparent 3em);
+    border-image-slice: 1;
+}

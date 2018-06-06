@@ -1,0 +1,92 @@
+\printconcepts
+
+\exercise{T/F: In practice, the evaluation of line integrals over vector fields involves computing the magnitude of a vector--valued function.}{False. It is true for line integrals over scalar fields, though.}
+
+\exercise{Let $\vec F(x,y)$ be a vector field in the plane and let $\vec r(t)$ be a two--dimensional vector--valued function. Why is ``$\vec F\big(\vec r(t)\big)$'' an ``abuse of notation''?}{The input of $\vec F$ should be a point in the plane, not a two dimensional vector.}
+
+\exercise{T/F: The orientation of a curve $C$ matters when computing a line integral over a vector field.}{True.}
+
+\exercise{T/F: The orientation of a curve $C$ matters when computing a line integral over a scalar field.}{False.}
+
+\exercise{Under ``reasonable conditions,'' if $\curl \vec F = \vec 0$, what can we conclude about the vector field $\vec F$?}{We can conclude that $\vec F$ is conservative.}
+
+\exercise{Let $\vec F$ be a conservative field and let $C$ be a closed curve. Why are we able to conclude that $\oint _C \vec F\cdot d\vec r = 0$?}{By the Fundamental Theorem of Line Integrals, since $\vec F$ is conservative, $\oint_C \vec F\cdot d\vec r = f(B) - f(A)$, where $f$ is a potential function for $\vec F$ and $A$ and $B$ are the initial and terminal points of $C$, respectively. Since $C$ is a closed curve, $A = B$, and hence $f(B) - f(A) = 0$.}
+
+\printproblems
+
+\input{exercises/14_03_exset_01}
+\input{exercises/14_03_exset_02}
+
+% Mecmath
+
+\exerciseset{In Exercises}{, determine if the given vector field has a potential.  If so, find one.}{
+
+\exercise{Is there a potential $F(x,y)$ for $\vecf(x,y) = y\,\veci - x\,\vecj$? If so, find one.}{No.}
+
+\exercise{$\vec F=x\,\veci - y\,\vecj$}{Yes. $f(x,y)=x^2/2-y^2/2$.}
+
+\exercise{$\vec F=xy^2\,\veci + x^3 y\,\vecj$}{No.}
+
+\exercise{$\vec F=(y^2+3x^2)\,\veci + 2xy\,\vecj$}{Yes. $f(x,y)=xy^2+x^3$}
+
+\exercise{$\vec F=(x^3 \cos (xy) + 2x \sin (xy))\,\veci + x^2 y \cos (xy)\,\vecj$}{No.}
+
+\exercise{$\vec F= (8xy+3)\,\veci + 4(x^2 + y)\,\vecj$}{Yes. $f(x,y)=4x^2y+2y^2+3x$}
+
+\exercise{$\vec F= y\,\veci - x\,\vecj + z\,\veck$}{No.}
+
+\exercise{$\vec F= a\,\veci + b\,\vecj + c\,\veck$ ($a$, $b$, $c$ constant)}{Yes. $f(x,y,z)=ax+by+cz$.}
+
+\exercise{$\vec F= (x+y)\,\veci + x\,\vecj + z^2 \,\veck$}{Yes. $f(x,y,z)=x^2/x+xy+z^3/3$.}
+
+\exercise{$\vec F= xy\,\veci - (x-yz^2 )\,\vecj + y^2 z\,\veck$}{No}
+
+}
+
+\input{exercises/14_03_exset_03}
+
+\exercise{Prove part of \autoref{thm:conservative_field_curl}: let $\vec F =\bracket{M,N,P}$ be a conservative vector field. Show that $\curl \vec F = 0$.}{Since $\vec F$ is conservative, it is the gradient of some potential function. That is, $\nabla f = \bracket{f_x,f_y,f_z}= \vec F =\bracket{M, N, P}$. In particular, $M = f_x$, $N = f_y$ and $P=f_z$.
+
+Note that $\curl \vec F =\bracket{P_y - N_z, M_z-P_x, N_x-M_y}=\bracket{f_{zy} - f_{yz}, f_{xz} - f_{zx}, f_{yx} - f_{xy}}$, which, by \autoref{thm:mixed_partial}, is $\bracket{0,0,0}$.}
+
+% Mecmath problems
+
+% todo solution to 15.3#52-56
+\exercise{Show that if $\vecf\perp\vecr\primeskip'(t)$ at each point $\vecr(t)$ along a smooth curve $C$, then $\int_C\vecf\cdot d\vecr=0$.}{}
+
+\exercise{Show that if $\vecf$ points in the same direction as $\vecr\primeskip'(t)$ at each point $\vecr(t)$ along a smooth curve $C$, then $\int_C \vecf\cdot d\vecr=\int_C\norm{\vecf}\,ds$.}{}
+
+\exercise{Let $C$ be a smooth curve with arc length $L$, and suppose that $\vecf(x,y)=P(x,y)\,\veci+Q(x,y)\,\vecj$ is a vector field such that $\norm{\vecf(x,y)} \le M$ \smallskip for all $(x,y)$ on $C$. Show that\\
+$\abs{\int_C\vecf\cdot d\vecr} \le ML$. (\emph{Hint: Recall that $\abs{\int_a^b g(x)\,dx} \le \int_a^b \abs{g(x)}\,dx$ for Riemann integrals.})}{}
+
+\exercise{Prove \autoref{thm:line_int_properties_vector} part 1.  Let $\vec F$ and $\vec G$ be vector fields, let $k_1$ and $k_2$ be constants, and let $C$. Show that
+  \[
+   \int_C(k_1\,\vec F\pm k_2\,\vec G)\cdot d\vecr
+   =k_1\int_C\vec F\cdot d\vecr\pm k_2\int_C\vec G\cdot d\vecr.
+  \]}{}
+
+\exercise{Let $f(x,y)$ and $g(x,y)$ be continuously differentiable real-valued functions in a region $R$. Show that
+  \[
+   \oint_{C}(f\,\nabla g)\cdot d\vecr = -\oint_{C}(g\,\nabla f)\cdot d\vecr
+  \]
+  for any closed curve $C$ in $R$. %(\emph{Hint: Use Exercise 21 in Section 2.4.})
+  % Show that $\nabla(fg)=f\nabla g+g\nabla f
+  }{}
+
+\exercise{Let\label{contra_green} $\vec F(x,y)=\frac{-y}{x^2 + y^2}\,\veci + \frac{x}{x^2 + y^2}\,\vecj$ for all $(x,y)\ne(0,0)$, and $C:$ $x=\cos t$, $y=\sin t$, $0\le t\le 2\pi$.
+  \begin{enumerate}
+   \item Show that $\vec F= \nabla f$, for $f(x,y) = \tan^{-1}(y/x)$.
+   \item Show that $\ds\oint_{C}\vec F\cdot d\vecr = 2\pi$. Does this contradict \autoref{cor:lineintsuffpath}? Explain.
+  \end{enumerate}}{(b) No. \emph{Hint:} Think of how $f$ is defined.}
+
+\exercise{Let $g(x)$ and $h(y)$ be differentiable functions, and let $\vec F(x,y)=h(y)\,\veci + g(x)\,\vecj$. Is it possible for $\vec F$ to have a potential $f(x,y)$? If so, find an example. You may assume that $f$ would be smooth. (\emph{Hint: Consider the mixed partial derivatives of $f$.})}{Yes. $f(x,y)=axy+bx+cy+d$.}
+
+% Bevelaqua problems
+\exercise{For $\vec F=\bracket{xy,y}$, evaluate $\ds\oint_C\vec F\cdot d\vecr$ where $C$ is $x=\cos t$, $y=\sin t$ for $0\le t\le2\pi$. Is $\vec F$ conservative?}{$0$; no}
+
+\exercise{For $\vec F=\bracket{y^2,x^2}$, evaluate $\ds\int_C\vec F\cdot d\vecr$ for:
+\begin{enumerate}
+\item $C$ given by $x=t$, $y=t^2$ for $0\le t\le1$.
+\item $C$ given by $x=t^2$, $y=t$ for $0\le t\le1$.
+\item Is $\vec F$ conservative?
+\end{enumerate}}{$7/10$; $7/10$; no}

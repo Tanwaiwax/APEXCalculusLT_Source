@@ -1,0 +1,95 @@
+\exerciseset{In Exercises}{, sketch the given vector field over the rectangle with opposite corners $(-2,-2)$ and $(2,2)$, sketching one vector for every point with integer coordinates (i.e., at $(0,0)$, $(1,2)$, etc.).}{
+
+\exercise{$\vec F =\bracket{x,0}$}{Correct answers should look similar to
+
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,height=1.16\marginparwidth,
+tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,
+name=myplot,axis on top,axis equal,
+xtick={-2,2},ytick={-2,2},
+ymin=-2.5,ymax=2.5,xmin=-2.5,xmax=2.5]
+\foreach \x in {-2,-1,1,2} {
+    \foreach \y in {-2,-1,...,2.11} {
+		\edef\vx{((\x)/4)}
+		\edef\vy{(0)}
+        \edef\temp{\noexpand\draw[->,{\colorone}]
+        (axis cs:{(\x)-(\vx)},{(\y)-(\vy)}) -- (axis cs:{(\x)+(\vx)},{(\y)+(\vy)});}
+        \temp
+    }
+}
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
+
+\exercise{$\vec F =\bracket{0,x}$}{Correct answers should look similar to
+
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,height=1.16\marginparwidth,
+tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,
+name=myplot,axis on top,axis equal,
+xtick={-2,2},ytick={-2,2},
+ymin=-2.5,ymax=2.5,xmin=-2.5,xmax=2.5]
+\foreach \x in {-2,-1,1,2} {
+    \foreach \y in {-2,-1,...,2.11} {
+		\edef\vx{(0)}
+		\edef\vy{((\x)/5)}
+        \edef\temp{\noexpand\draw[->,{\colorone}]
+        (axis cs:{(\x)-(\vx)},{(\y)-(\vy)}) -- (axis cs:{(\x)+(\vx)},{(\y)+(\vy)});}
+        \temp
+    }
+}
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
+
+\exercise{$\vec F =\bracket{1,-1}$}{Correct answers should look similar to
+
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,height=1.16\marginparwidth,
+tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,
+name=myplot,axis on top,axis equal,
+xtick={-2,2},ytick={-2,2},
+ymin=-2.5,ymax=2.5,xmin=-2.5,xmax=2.5]
+\foreach \x in {-2,-1,...,2.11} {
+    \foreach \y in {-2,-1,...,2.11} {
+		\edef\vx{(.2)}
+		\edef\vy{(-.2)}
+        \edef\temp{\noexpand\draw[->,{\colorone}]
+        (axis cs:{(\x)-(\vx)},{(\y)-(\vy)}) -- (axis cs:{(\x)+(\vx)},{(\y)+(\vy)});}
+        \temp
+    }
+}
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
+
+\exercise{$\vec F =\bracket{y^2,1}$}{Correct answers should look similar to
+
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,height=1.16\marginparwidth,
+tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,
+name=myplot,axis on top,axis equal,
+xtick={-2,2},ytick={-2,2},
+ymin=-2.5,ymax=2.5,xmin=-2.5,xmax=2.5]
+\foreach \x in {-2,-1,...,2.11} {
+    \foreach \y in {-2,-1,...,2.11} {
+		\edef\vx{((\y)*(\y)/8)}
+		\edef\vy{(1/8)}
+        \edef\temp{\noexpand\draw[->,{\colorone}]
+        (axis cs:{(\x)-(\vx)},{(\y)-(\vy)}) -- (axis cs:{(\x)+(\vx)},{(\y)+(\vy)});}
+        \temp
+    }
+}
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}
+
+}

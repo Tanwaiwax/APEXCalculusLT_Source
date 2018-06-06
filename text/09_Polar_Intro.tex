@@ -4,7 +4,7 @@ We are generally introduced to the idea of graphing curves by relating $x$-value
 
 The previous two sections introduced and studied a new way of plotting points in the $x,y$-plane. Using parametric equations, $x$ and $y$ values are computed independently and then plotted together. This method allows us to graph an extraordinary range of curves. This section introduces yet another way to plot points in the plane: using \textbf{polar coordinates}.
 
-\subsection*{Polar Coordinates}
+\subsection{Polar Coordinates}
 
 \mtable{Illustrating polar coordinates.}{fig:polar_intro1}{%
 \begin{tikzpicture}[>=latex]
@@ -73,7 +73,7 @@ Consider the following two points: $A(1,\pi)$ and $B(-1,0)$. To locate $A$, go o
 
 This ability to identify a point in the plane with multiple polar coordinates is both a ``blessing'' and a ``curse.'' We will see that it is beneficial as we can plot beautiful functions that intersect themselves (much like we saw with parametric functions). The unfortunate part of this is that it can be difficult to determine when this happens. We'll explore this more later in this section.
 
-\subsection*{Polar to Rectangular Conversion}
+\subsection{Polar to Rectangular Conversion}
 
 \mtable{Converting between rectangular and polar coordinates.}{fig:polar_intro2}{\begin{tikzpicture}[scale=.75,>=latex]
 	\draw [thick] (0,0) -- node [below,pos=.5] {$x$} (4,0)
@@ -164,7 +164,7 @@ Given the rectangular coordinates $(x,y)$, the polar coordinates are determined 
 These points are plotted in \autoref{fig:polar2} (b). The polar system is drawn lightly under the rectangular grid with rays to demonstrate the angles used.\eoehere
 \end{enumerate}}
 
-\subsection*{Polar Functions and Polar Graphs}
+\subsection{Polar Functions and Polar Graphs}
 
 Defining a new coordinate system allows us to create a new kind of function, a \textbf{polar function.} Rectangular coordinates lent themselves well to creating functions that related $x$ and $y$, such as $y=x^2.$ Polar coordinates allow us to create functions that relate $r$ and $\theta$. Normally these functions look like $r=f(\theta)$, although we can create functions of the form $\theta = f(r)$. The following examples introduce us to this concept.\index{polar!functions}\index{polar!functions!graphing}
 
@@ -388,7 +388,7 @@ minor y tick num=4,ymin=-5.3,ymax=5.3,xmin=-5.3,xmax=5.3,axis equal]
 Some curves have very simple polar equations but rather complicated rectangular ones. For instance, the equation $r=1+\cos\theta$ describes a \textit{cardioid} (a shape important to the sensitivity of microphones, among other things; one is graphed in the gallery in the Lima\c con section). It's rectangular form is not nearly as simple; it is the implicit equation
 $x^4+y^4+2x^2y^2-2xy^2-2x^3-y^2=0.$ The conversion is not ``hard,'' but takes several steps, and is left as an exercise.
 
-\subsection*{Gallery of Polar Curves}
+\subsection{Gallery of Polar Curves}
 
 There are a number of basic and ``classic'' polar curves, famous for their beauty and/or applicability to the sciences. \index{polar!function!gallery of graphs} This section ends with a small gallery of some of these graphs. We encourage the reader to understand how these graphs are formed, and to investigate with technology other types of polar functions.
 
@@ -477,7 +477,7 @@ $r=a$ & $r=a\cos \theta$ & $r=a\sin\theta$ & $r=\theta$\\
 	\draw [<->,] (-2.1,0) -- (2.1,0);
 	\draw [<->,] (0,-2.1) -- (0,2.1);
 	\draw [thick,draw={\colorone},domain=0:18.85,samples=100,smooth] plot
-	 ({cos(deg(\x))*(\x/9.5)},{sin(deg(\x))*(\x/9.5)});
+	 ({cos(\x r)*(\x/9.5)},{sin(\x r)*(\x/9.5)});
 \end{tikzpicture}		
 \bigskip\\
 %
@@ -583,12 +583,12 @@ $r^2=a^2\cos (2\theta)$ & $r^2=a^2\sec^4\theta\cos (2\theta)$ \medskip\\
 	\draw [<->,] (-2.1,0) -- (2.1,0);
 	\draw [<->,] (0,-2.1) -- (0,2.1);
 	\draw [thick,draw={\colorone},domain=-45:45,samples=60,smooth] plot
-	 ({cos(\x)*(1.9*sqrt(sec(\x)^4*cos(2*\x)))},
-	  {sin(\x)*(1.9*sqrt(sec(\x)^4*cos(2*\x)))});
+	 ({cos(\x)*1.9*sec(\x)*sec(\x)*sqrt(cos(2*\x))},
+	  {sin(\x)*1.9*sec(\x)*sec(\x)*sqrt(cos(2*\x))});
 	\draw [thick,draw={\colorone},domain=-45:45,samples=60,smooth] plot
-	 ({-cos(\x)*(1.9*sqrt(sec(\x)^4*cos(2*\x)))},
-	  {-sin(\x)*(1.9*sqrt(sec(\x)^4*cos(2*\x)))});
-\end{tikzpicture}		
+	 ({-cos(\x)*1.9*sec(\x)*sec(\x)*sqrt(cos(2*\x))},
+	  {-sin(\x)*1.9*sec(\x)*sec(\x)*sqrt(cos(2*\x))});
+\end{tikzpicture}
 %
 \end{tabular}
 

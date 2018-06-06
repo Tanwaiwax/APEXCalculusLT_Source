@@ -1,13 +1,15 @@
+* [exercises/02_06_exset_03.tex line 23](../exercises/02_06_exset_03.tex#L23): todo use functions instead of coordinates in 2.6 set 3
 * [exercises/02_06_exset_05.tex line 37](../exercises/02_06_exset_05.tex#L37): todo write more logarithmic differentiation problems
+* [exercises/04_02_exercises.tex line 202](../exercises/04_02_exercises.tex#L202): todo fix 4.1#14 so that c doesn't happen after d
 * [text/01_Continuity.tex line 414](../text/01_Continuity.tex#L414): todo Find an interactive example of the bisection method where you specify the function and endpoints
 * [text/01_Limit_Definition.tex line 446](../text/01_Limit_Definition.tex#L446): todo write more exercises
 * [text/01_Limits_Involving_Infinity.tex line 413](../text/01_Limits_Involving_Infinity.tex#L413): todo add a practical example here, like the cost to remove 100% of something and vertical asymptotes and the the long term limit of a population to demonstrate limits at infinity.  Or maybe just put these into the exercises.
 * [text/01_Prerequisite.tex line 207](../text/01_Prerequisite.tex#L207): todo write a trigonometry review
 * [text/02_Derivative.tex line 538](../text/02_Derivative.tex#L538): todo Find an interactive where you specify the function and base point and see the secant and tangent lines
-* [text/02_Derivative_Meaning.tex line 164](../text/02_Derivative_Meaning.tex#L164): todo find an interactive where you specify the function and overlay f and f'
+* [text/02_Derivative_Meaning.tex line 123](../text/02_Derivative_Meaning.tex#L123): todo maybe change example 2.2.5 so that f'(3)!=3
+* [text/02_Derivative_Meaning.tex line 165](../text/02_Derivative_Meaning.tex#L165): todo find an interactive where you specify the function and overlay f and f'
 * [text/02_Derivative_Rules.tex line 210](../text/02_Derivative_Rules.tex#L210): todo Find an interactive where you specify f and see f, f', and f''
-* [text/02_Implicit_Differentiation.tex line 319](../text/02_Implicit_Differentiation.tex#L319): todo find curves that would go in a gallery of famous implicit equations
-* [text/02_Implicit_Differentiation.tex line 321](../text/02_Implicit_Differentiation.tex#L321): todo write a better section summary
+* [text/02_Implicit_Differentiation.tex line 338](../text/02_Implicit_Differentiation.tex#L338): todo write a better section summary for implicit differentiation
 * [text/03_Concavity.tex line 308](../text/03_Concavity.tex#L308): todo write more problems
 * [text/03_Curve_Sketching.tex line 266](../text/03_Curve_Sketching.tex#L266): todo write more problems
 * [text/03_Increasing_Decreasing.tex line 321](../text/03_Increasing_Decreasing.tex#L321): todo write more problems

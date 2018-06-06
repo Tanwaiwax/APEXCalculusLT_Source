@@ -11,9 +11,13 @@ iframe.embeddedVideo {
     margin: 1ex 1em;
 }
 
-.marginbox {
+/*.marginbox,
+LaTeXML-marginpar.css doesn't hit these because these aren't really margin
+notes.  We typeset them as figures in order to get captions to work.
+*/
+.marginnote {
     position: absolute;
-    left: 50em;
+    left: 55em;
     width: 10em;
 }
 
@@ -25,28 +29,28 @@ iframe.embeddedVideo {
     position: static;
 }
 
-/* The blue line to the left of each example. To truly match, we shouldn't
- * have the line to the left of the example title.  But that might be more
- * complicated to figure out. */
+/* The blue line to the left of each example. We use a linear gradient to go a
+ * little along the bottom. To truly match, we shouldn't have the line to the
+ * left of the example title. But that seems to require nesting two divs. */
 .ltx_theorem_exampleEnv {
     padding-left: 1em;
-    border-width: 2px;
-    border-top-width: 0;
+    border-width: 0 0 2px 2px;
     border-style: solid;
     border-left-color: hsl(240,100%,84%);
-    border-image: -moz-line-gradient(left,hsl(240,100%,84%) 0%,hsl(240,100%,84%) 3%,transparent 3%,transparent); /* FF 3.6+ */
-    border-image: -webkit-gradient(linear,left top,right top,color-stop(0%,hsl(240,100%,84%)),color-stop(3%,hsl(240,100%,84%)),color-stop(3%,transparent),color-stop(100%,transparent)); /* Chrome, Safari 4+ */
-    border-image: -webkit-linear-gradient(left,hsl(240,100%,84%) 0%,hsl(240,100%,84%) 3%,transparent 3%,transparent 100%); /* Chrome 10+, Safari 5.1+ */
-    border-image: -o-linear-gradient(left,hsl(240,100%,84%) 0%,hsl(240,100%,84%) 3%,transparent 3%,transparent 100%); /* Opera 11.10+ */
-    border-image: -ms-linear-gradient(left,hsl(240,100%,84%) 0%,hsl(240,100%,84%) 3%,transparent 3%,transparent 100%); /* IE 10+ */
-    border-image: linear-gradient(to right,hsl(240,100%,84%) 0%,hsl(240,100%,84%) 3%,transparent 3%,transparent 100%); /* W3C */
+    border-image: -moz-line-gradient(left,hsl(240,100%,84%) 3%,transparent 3%); /* FF 3.6+ */
+    border-image: -webkit-gradient(linear,left top,right top,color-stop(3%,hsl(240,100%,84%)),color-stop(3%,transparent)); /* Chrome, Safari 4+ */
+    border-image: -webkit-linear-gradient(left,hsl(240,100%,84%) 3%,transparent 3%); /* Chrome 10+, Safari 5.1+ */
+    border-image: -o-linear-gradient(left,hsl(240,100%,84%) 3%,transparent 3%); /* Opera 11.10+ */
+    border-image: -ms-linear-gradient(left,hsl(240,100%,84%) 3%,transparent 3%); /* IE 10+ */
+    border-image: linear-gradient(to right,hsl(240,100%,84%) 3%,transparent 3%); /* W3C */
     border-image-slice: 1; /* must come after border-image, since that's a shorthand */
 }
 
 .ltx_theorem .ltx_title {
-    margin-top: 1em;
+    margin-top: .5em;
 }
 
+/*
 .ltx_theorem .ltx_title.ltx_font_bold {
     font-weight: bold;
 }
@@ -55,8 +59,10 @@ div.ltx_theorem_exampleEnv > h6.ltx_title_theorem > span.ltx_text {
     min-width: 9em;
     display: inline-block;
 }
+*/
 
-.exampleNum, .solutionTag {
+/*.exampleNum,*/
+.solutionTag {
     min-width: 9em;
     display: inline-block;
 }
@@ -70,7 +76,8 @@ a.permaLink {
     margin-left: .5em;
 }
 
-h6.ltx_title.ltx_title_theorem:hover > a.permaLink, a.permaLink:hover {
+figure.marginnote:hover a.permaLink,
+h6.ltx_title.ltx_title_theorem:hover a.permaLink {
     visibility: visible;
 }
 
@@ -78,9 +85,11 @@ h6.ltx_title.ltx_title_theorem:hover > a.permaLink, a.permaLink:hover {
     display: table-row;
 }
 
+/*
 .mnote > * {
     font-size: smaller;
 }
+*/
 
 .ltx_appendix.solutions .MathJax {
     font-size: 80%;
@@ -94,8 +103,7 @@ figcaption {
     font-size: smaller;
 }
 
-section.ltx_appendix .diffRules + .ltx_minipage ,
-section.ltx_appendix .diffRules ~ * > .ltx_minipage {
+section.diffRules .ltx_minipage {
     width: 20%;
 }
 
@@ -105,7 +113,7 @@ section.ltx_appendix .diffRules ~ * > .ltx_minipage {
     margin-right: 5%;
 }
 
-/* adjust margin notes */
+/* adjust margin notes 
 .ltx_note .ltx_note_content {
     display: block;
     position: absolute;
@@ -113,27 +121,56 @@ section.ltx_appendix .diffRules ~ * > .ltx_minipage {
 .ltx_note_content {
     left: 60em;
 }
+*/
 
-/* set up the left side navigation */
-nav.ltx_page_navbar {
-    font-size: 75%;
-    width: 20em;
-    position: fixed;
+/* adjust the left side navigation */
+div.ltx_page_main {
+    left: 13em;
 }
-nav.ltx_page_navbar ul {
+nav.ltx_page_navbar {
+    padding-left: 0;
+    width: 17em;
+}
+nav.ltx_page_navbar ul.ltx_toclist {
+    margin-left: 0;
+    padding-left: 0;
+}
+nav.ltx_page_navbar ul.ltx_toclist ul.ltx_toclist {
+/*    margin-left: -1em;*/
+}
+nav.ltx_page_navbar ul.ltx_toclist li.ltx_tocentry_part {
+    padding-left: .5em;
+}
+nav.ltx_page_navbar ul.ltx_toclist li.ltx_tocentry_chapter,
+nav.ltx_page_navbar ul.ltx_toclist li.ltx_tocentry_appendix,
+nav.ltx_page_navbar ul.ltx_toclist li.ltx_tocentry_index {
     padding-left: 1em;
 }
+nav.ltx_page_navbar ul.ltx_toclist li.ltx_tocentry_section {
+    padding-left: 1.5em;
+}
+nav.ltx_page_navbar ul.ltx_toclist li.ltx_tocentry_subsection {
+    padding-left: 2em;
+}
+.ltx_page_navbar li {
+    white-space: normal;
+    text-indent: -.5em;
+    margin-left: .5em;
+}
+/*
 body > div.ltx_page_main {
     position: absolute;
-    left: 15em; /* = 20em * 75% */
+    left: 15em; /* = 20em * 75% */ /*
     padding: 1ex 1em;
 }
+ */
 
 /* the following things are hidden: */
 
-/* the footnotemark for margin notes */
+/* the footnotemark for margin notes 
 .ltx_note.ltx_role_margin sup.ltx_note_mark { display: none; }
-/* the word "margin" on margin notes */
+/* the word "margin" on margin notes 
 .ltx_note.ltx_role_margin > .ltx_note_outer > .ltx_note_content > .ltx_note_type {
     display: none;
 }
+*/

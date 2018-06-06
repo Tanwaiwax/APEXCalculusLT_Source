@@ -1,6 +1,10 @@
 #!/usr/bin/python
 
-"""This could be Python 3 by changing the few print statements.  But see the calls to pdfsizeopt, which must have Python 2, because it uses old style print statements."""
+'''
+    This could be Python 3 by changing the few print statements.
+    But see the calls to pdfsizeopt, which must have Python 2,
+    because it uses old style print statements.
+'''
 
 import re
 import os
@@ -16,93 +20,32 @@ from collections import defaultdict, namedtuple
 
 start = time.time()
 
-'''
-asyfiles = ['conicalhelix','cyl_surf_r','cyl_surf_t','cyl_surf_z',
-            'ex_helix_y','ex_helix_z','ex_tilted_circle','ex_wobbly_circle',
-            'helicoid','ortho_cyl','ortho_rect','ortho_sph',
-            'sph_surf_phi','sph_surf_r','torus'
-]
-
-fig3Dasyfiles = ['13_05_ex_05','13_05_ex_06','13_05_ex_07','13_05_ex_08','3d_proj','3d_projb',
-                 'arc4','arc4_b',
-                 'cartcoord1','cartcoord2','conopt1','conopt1c','conopt2','curvature4',
-                 'direct1','direct2','direct2b','direct3','direct9','disk1','disk1a','disk1b','disk2a','dotp3','dotp4b','dotp4c','dotpangle3D',
-                 'gabriel',
-                 'levelcurve1','levelcurve2','lines_dist2','lines_intro','lines1','lines2','lines3','lines6',
-                 'mass2','mass3a','mass3b','mchain_intro','mchain2','motion6',
-                 'parcalc8','planes_dist','planes_intro','planes1','planes2','planes3','planes4','planes5','polcalc8a',
-                 'sa1','sa2a','sa2b',
-                 'sq_rt','sq_rt_b','surf_rev_intro','surf_rev_introb','surfrev1a','surfrev1b','surfrev2a','surfrev2b',
-                 'tannorm1','tannorm3','tpl2','tpl3','tpl5','tpl6','tpl8',
-                 'vectintro3b','vvfderiv1','vvf2','vvflimit4'
-]
-
-fig3Dasyfiles += ['10_01_ex_'+str(exnum) for exnum in range(15,29)]
-fig3Dasyfiles += ['13_06_ex_'+"{:02}".format(exnum) for exnum in range(7,15)]
-fig3Dasyfiles += ['cross'+suffix for suffix in ('_area1','_area1a','1','p_rhr','p4a','p6','pparallelpiped')]
-fig3Dasyfiles += ['double'+suffix for suffix in ('_intro2','_intro3','_summary','1','2','3','4','6b','pol1','pol2b','pol4','pol5',)]
-fig3Dasyfiles += ['multi'+suffix for suffix in ('_extreme1','_extreme2','_extreme3','_extreme5','cont1','graph_intro','graph_introb','limit_def')]
-fig3Dasyfiles += ['partial'+suffix for suffix in ('intro','introb','3a','3b','4a','4b','6','6b')]
-fig3Dasyfiles += ['quadric'+suffix for suffix in ('_cone','_coneb','_conec','_ellipsoid','_ellipsoidb',
-    '_hyp_one_sheet','_hyp_one_sheetb','_hyp_par','_hyp_parb','_hyp_parc',
-    '_hyp_two_sheet','_hyp_two_sheetb','_par','_parb')]
-fig3Dasyfiles += ['shell'+suffix for suffix in ('_intro_a','_intro_d','2b','2c','3b','3c','parab','parab_b')]
-fig3Dasyfiles += ['space'+suffix for suffix in ('_tangent_intro','1','2','3','4a','4b','4c','4d','4e','4f',
-        '5a','5ab','5b','5bb','5c','5cb','6','cylinder1','cylinder1b','xy','xz','yz')]
-fig3Dasyfiles += ['surfacearea'+suffix for suffix in ('_intro1','_intro2','1','3','4')]
-fig3Dasyfiles += ['trip'+suffix for suffix in ('1','1b','2','2b','2c','2d','3','3b','3c','3d','4','4b','4c','4d','5','5b','5c','5d','5e','intro','introa')]
-fig3Dasyfiles += ['wash'+suffix for suffix in ('1b','1c','2b','2c','4','4b','er_idea_b','er_idea_c')]
-
-asyfiles += ['fig'+file+'_3D' for file in fig3Dasyfiles]
-
-asyset = set(('figures/'+asyfile+'.asy' for asyfile in asyfiles))
-globset = set(glob.glob('figures/*.asy'))
-print(asyset^globset)
-quit()
-'''
-
 parser = argparse.ArgumentParser(description='Compile document to a pdf.',
-                                 epilog="If no options are given, "
-                                 "--help is assumed.")
+                                 epilog='If no options are given, '
+                                 '--help is assumed.')
 
-parser.add_argument("-a","--all", action="store_true",
-                    help="Creates all versions. (Ignores other options. 25 min)")
+def addboolarg(key,help,parser=parser,shortkey=None):
+    shortkey = shortkey or key[0]
+    parser.add_argument('-'+shortkey,'--'+key,action='store_true',help=help)
 
-parser.add_argument("-c","--calculus", type=int, choices=[0,1,2,3,4],
+addboolarg('all','Creates all versions. (Ignores other options. 20 min)')
+
+parser.add_argument('-c','--calculus', type=int, choices=[0,1,2,3,4],
                     default=0,
-                    help="Calculus semester 1, 2, 3, or (default) all. (3 or 5 min)")
+                    help='Calculus semester 1, 2, 3, or (default) all. (5 or 8 min)')
 
-parser.add_argument("-f","--figures", action="store_true",
-                    help="Create 3D figures using Asymptote.")
-
-parser.add_argument("-p","--prc", action="store_true",
-                    help="Update 3D html.")
-
-parser.add_argument("-i","--instructor", action="store_true",
-                    help="Create instructor solution manual.")
-
-parser.add_argument("-n","--internet", action="store_true",
-                    help="Create interNet version (options x & w).")
-
-parser.add_argument("-x","--xml", action="store_true",
-                    help="Create xml version. (180 min)");
-
-parser.add_argument("-w","--web", action="store_true",
-                    help="Convert xml version to html. (5 min)");
-
-parser.add_argument("-t","--todo", action="store_true",
-                    help="Update todo lists.");
-
-parser.add_argument("-q","--quit", action="store_true",
-                    help="Write options.tex and quit.")
+addboolarg('figures','Create 3D figures using Asymptote.')
+addboolarg('prc','Update 3D html.')
+addboolarg('instructor','Create instructor solution manual.')
+addboolarg('internet','Create interNet version (options x & w).',shortkey='n')
+addboolarg('xml','Create xml version. (2 or 5 hours)'); # 120, 90, 107
+addboolarg('web','Convert xml version to html. (5 min)');
+addboolarg('todo','Update todo lists.');
+addboolarg('quit','Write options.tex and quit.')
 
 group = parser.add_mutually_exclusive_group()
-
-group.add_argument("-b","--blackwhite", action="store_true",
-                   help="Print static graphics in black and white (default is color).")
-
-group.add_argument("-s","--static", action="store_true",
-                   help="Print static color graphics (default is interactive).")
+addboolarg('blackwhite','Print static graphics in black and white (default is color).',parser=group)
+addboolarg('static','Print static color graphics (default is interactive).',parser=group)
 
 for dir in ('ApexPDFs','logs','prc','todo','web'):
     try:
@@ -125,25 +68,26 @@ def makefigs():
     try:
         os.chdir('figures')
         for asyfile in glob.glob('*.asy'):
-            if asyfile=='apexconfig.asy':
+            if 'config' in asyfile:
                 continue
             asyfile = asyfile[:-4]
             extops = {
-                '.pdf':   ['-noprc','-outformat','pdf'],
+                #'.pdf':   ['-noprc','-outformat','pdf'],
                 '.prc':   ['-prc','-outformat','prc'],
                 # -user apexbw=true runs that command in apexconfig.asy
                 # using -bw instead causes the figure to be blacked out (?!)
-                'BW.pdf': ['-noprc','-user','apexbw=true','-outname',asyfile+'BW','-outformat','pdf'],
-                '.png':   ['-outformat','png'],
+                #'BW.pdf': ['-noprc','-user','apexbw=true','-outname',asyfile+'BW','-outformat','pdf'],
+                'BW.png': ['-noprc','-user','apexbw=true','-outname',asyfile+'BW','-outformat','png','-render','4'],
+                '.png':   ['-noprc','-outformat','png','-render','4'],
             }
             for ext,opt in extops.items():
                 try:
-                    if ( os.path.getmtime(asyfile+'.asy') < os.path.getmtime(asyfile+ext) ):
+                    if os.path.getmtime(asyfile+'.asy') < os.path.getmtime(asyfile+ext):
                         continue
                 except:
                     pass
                 subprocess.check_call(['asy']+opt+[asyfile])
-        for outfile in glob.iglob("*.out"):
+        for outfile in glob.iglob('*.out'):
             if ( os.path.getsize(outfile) == 0 ):
                 os.remove(outfile)
     finally:
@@ -162,32 +106,58 @@ def updateprc():
                       '<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">'
                       '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>'
                       '<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>'
-                      '<style>.box{display:inline-block;text-align:center;margin:1em}</style>'
+                      '<style>.box{display:inline-block;text-align:center;margin:1em}img{width:2in;}</style>'
                       '</head>'
                       '<body>'
                       '<h1>3d Images From APEX Calculus LT</h1>'
                       '<div id="accordion">')
-        chapters = sorted( prcdict.keys() )
+        chapters = sorted( prcdict.keys() , key=lambda x:float('inf') if x=='A' else x)
         for chapter in chapters:
-            prchtml.write('<h3>Chapter '+str(chapter)+'</h3>'
-                          '<div>')
-            sections = sorted( prcdict[chapter].keys() )
-            for section in sections:
-                prchtml.write('<h4>Section {}.{}</h4>'.format(chapter,section)+'<div>')
-                for figure in prcdict[chapter][section]:
-                    prchtml.write('<div class="box"><a href="'+figure.figfile+'.prc"><img src="'+figure.figfile+'.png"><br>Figure '+figure.fignum+'</a></div>')
-                    shutil.copy('figures/'+figure.figfile+'.prc','prc')
-                    shutil.copy('figures/'+figure.figfile+'.png','prc')
-                prchtml.write('</div>')
-            prchtml.write('</div>')
+            if chapter=='A':
+                continue
+            writechapterprc(prcdict,prchtml,chapter)
+        writechapterprc(prcdict,prchtml,'A')
+        prchtml.write('</div>')
         prchtml.write('</div>'
                       '<p>'
                       'The linked prc files can be viewed with Adobe Acrobat Pro.<br>'
-                      'The Android app <a href="https://play.google.com/store/search?q=3D%20PDF%20Reader&c=apps">3D PDF Reader</a> by Tech Soft 3d can also view prc files.'
+                      'The mobile app &ldquo;3D PDF Reader&rdquo; by Tech Soft 3D for '
+                      '<a href="https://play.google.com/store/apps/details?id=com.techsoft3d.hps.pdf.reader">Android</a> or '
+                      '<a href="https://itunes.apple.com/us/app/3d-pdf-reader/id569307672?mt=8">iOS</a>'
+                      ' can also view prc files.'
                       '</p>'
                       '<script>$("#accordion").accordion({collapsible:true,active:false,heightStyle:"content"});</script>'
                       '</body>'
                       '</html>')
+
+def writechapterprc(prcdict,prchtml,chapter):
+    # solutions are recorded differently in the aux as well as the dict
+    if chapter=='A':
+        prchtml.write('<h3>Solutions<h3>')
+    else:
+        prchtml.write('<h3>Chapter '+str(chapter)+'</h3>')
+    prchtml.write('<div>')
+    sections = sorted( prcdict[chapter].keys() )
+    for section in sections:
+        if chapter=='A':
+            # section is really chapter because of the comment ~30 lines later
+            prchtml.write('<h4>Chapter '+str(section)+'</h4><div>')
+        else:
+            prchtml.write('<h4>Section {}.{}</h4>'.format(chapter,section)+'<div>')
+        for figure in prcdict[chapter][section]:
+            if chapter=='A':
+                anssection,exercise = figure.fignum.split('.')
+                caption = '{}.{}#{}'.format(section,anssection,exercise) # but section is really chapter
+            elif '.' in figure.fignum:
+                caption = 'Figure '+figure.fignum
+            else:
+                caption = 'Exercise '+figure.fignum
+            prchtml.write('<div class="box"><a href="'+figure.figfile+'.prc"><img src="'+figure.figfile+'.png"><br>'
+                          +caption+'</a></div>')
+            shutil.copy('figures/'+figure.figfile+'.prc','prc')
+            shutil.copy('figures/'+figure.figfile+'.png','prc')
+        prchtml.write('</div>')
+    prchtml.write('</div>')
 
 def prcfromfile(filename):
     with open(filename) as filein:
@@ -197,9 +167,16 @@ def prcfromfile(filename):
             if line.startswith(r'\@input{'):
                 prcdict.update(prcfromfile(line[len('\@input{'):-2]))
             if line.startswith('% prc '):
-                match = re.match('% prc file figures/(\S+) used in Section (\d+).(\d+) as Figure (\d+.\d+)\s*$',line)
+                match = re.match('% prc file figures/(\S+) used in (Exercises|Section|Solutions) (\d+).(\d+) as Figure (\d+.(\d+))\s*$',line)
                 if match:
-                    prcdict[ int(match.group(2)) ][ int(match.group(3)) ].append(Figure(match.group(4),match.group(1)))
+                    if match.group(2)=='Section':
+                        prcdict[ int(match.group(3)) ][ int(match.group(4)) ].append(Figure(match.group(5),match.group(1)))
+                    elif match.group(2)=='Exercises':
+                        
+                        prcdict[ int(match.group(3)) ][ int(match.group(4)) ].append(Figure(match.group(6),match.group(1)))
+                    elif match.group(2)=='Solutions':
+                        # if we're in the solutions, then we'll record the chapter in the section column
+                        prcdict[ 'A' ][ int(match.group(3)) ].append(Figure(match.group(5),match.group(1)))
                 else:
                     print('no match',line)
         return prcdict
@@ -246,61 +223,42 @@ def updatetodo():
 
 def writeoptions(args):
     with open('options.tex','w') as options:
-        title = "Calculus"
+        title = 'Calculus'
         if args.calculus in (1,2,3):
-            iii = "I"*args.calculus
-            title += " "+iii
-            options.write(r"\includeonly{Calculus"+iii+"}\n")
-        options.write(r"\newcommand{\thetitle}{"+title+"}\n")
+            iii = 'I'*args.calculus
+            title += ' '+iii
+            options.write(r'\includeonly{Calculus'+iii+"}\n")
+        options.write(r'\newcommand{\thetitle}{'+title+"}\n")
         if args.blackwhite:
-            options.write("\\printinblackandwhite\n")
-            options.write("\\usetwoDgraphics\n")
+            options.write('\\printinblackandwhite\n')
+            options.write('\\usetwoDgraphics\n')
         elif args.static:
-            options.write("\\printincolor\n")
-            options.write("\\usetwoDgraphics\n")
+            options.write('\\printincolor\n')
+            options.write('\\usetwoDgraphics\n')
         else:
-            options.write("\\printincolor\n")
-            options.write("\\usethreeDgraphics\n")
+            options.write('\\printincolor\n')
+            options.write('\\usethreeDgraphics\n')
 
 def getsuffix(args):
     if args.xml:
-        return "_xml"
+        return '_xml'
     elif args.web:
-        return "_web"
+        return '_web'
     elif args.instructor:
-        return "_answers"
+        return '_answers'
     newsuffix = ''
     if args.calculus in (1,2,3):
         #iii = "I"*args.calculus
-        newsuffix += "-"+str(args.calculus)
+        newsuffix += '-'+str(args.calculus)
     if args.blackwhite:
-        newsuffix += "-bw"
+        newsuffix += '-bw'
     elif args.static:
-        newsuffix += "-color"
+        newsuffix += '-color'
     return newsuffix
-
-def fixRefs():
-    """
-    LaTeXML doesn't have the frefnum for sections and subsections, so that
-    autorefs only end up with the number.  We go through and add hte frefnum in.
-    We could compile the regular expression in re.search, but
-    "The compiled versions of the most recent patterns passed to re.match(),
-    re.search() or re.compile() are cached, so programs that use only a few
-    regular expressions at a time needn't worry about compiling regular
-    expressions."
-    """
-    with open('calculusRefs.xml') as input, open('calculus.xml','w') as output:
-        for line in input:
-#            line = line.decode('iso-8859-1').replace(u'\xa0',' ')
-            if ( '<section ' in line and ' refnum' in line and ' frefnum' not in line ):
-                refnum = re.search(' refnum="(.+?)"',line).group(1)
-                line = line.replace('<section ',
-                            '<section frefnum="Section {0}" '.format(refnum))
-            output.write(line)
 
 def getcommandline(args):
     if args.xml:
-        ret = ['latexml','--quiet','--quiet',#'--verbose','--verbose',#
+        ret = ['../LaTeXML/bin/latexml','--quiet','--quiet',#'--verbose','--verbose',#
                        '--destination=Calculus.xml',
                        '--nocomments',
                        'Calculus']
@@ -310,30 +268,39 @@ def getcommandline(args):
             return ['caffeinate','-s'] + ret
             # prevent sleeping, if plugged in, until command finished
     if args.web:
-        fixRefs()
+        #fixRefs()
         shutil.copyfile('web/script.js','script.js')
         shutil.copyfile('web/style.css','style.css')
-        return ['latexmlpost','--split','--stylesheet=web/apex.xsl',#'--quiet',
-                    '--destination=web/index.html','--css=style.css',
-                    '--xsltparam=USE_TWOCOLUMN_INDEX',
+        return ['../LaTeXML/bin/latexmlpost',
+                    '--split',#'--quiet',
+                    '--stylesheet=web/apex.xsl',
+                    '--destination=standaloneweb/index.html',
+                    '--css=style.css',
+                    '--css=LaTeXML-marginpar.css',
+                    '--css=LaTeXML-navbar-left.css',
+                    '--xsltparam=USE_TWOCOLUMN_INDEX:true',
                     '--javascript=https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js',
                     '--javascript=LaTeXML-maybeMathJax.js',
-                    '--javascript=script.js','calculus.xml']
+                    '--javascript=script.js',
+                    'standalone.xml']
     if args.internet:
-        raise "args.internet doesn't need a command line"
+        raise 'args.internet does not need a command line'
     if args.instructor:
         return ['latexmk','-xelatex','Answers']
     return ['latexmk','-xelatex','Calculus']
 
 def minimizePdf(filename):
-    """pdfsizeopt forces Python 2 by using the old style print statement.
-    It also prints to sys.stderr, which we can intercept using
-    "with ... as sys.stderr" and reverting to sys.__stderr__ at the end.
-    It also makes several calls to os.system, which prints to stderr in a way
-    we can't intercept.  We intercept those calls by redefining os.system to
-    use subprocess.check_call."""
-    #os.rename(filename,"ApexPDFs/calculusBig.pso.pdf")
-    #return
+    '''
+        pdfsizeopt forces Python 2 by using the old style print statement.
+        It also prints to sys.stderr, which we can intercept using
+        "with ... as sys.stderr" and reverting to sys.__stderr__ at the end.
+        It also makes several calls to os.system, which prints to stderr in a way
+        we can't intercept.  We intercept those calls by redefining os.system to
+        use subprocess.check_call.  And even so, some calls get through.
+    '''
+    if (3, 0) <= sys.version_info[:2]:
+        shutil.copy('ApexPDFs/bigpdfs/'+filename,'ApexPDFs/smallpdfs/')
+        return
     sys.path[:0] = ['../pdfsizeopt/lib']
     from pdfsizeopt import main
     oldossystem = os.system
@@ -347,9 +314,11 @@ def minimizePdf(filename):
     os.system = ossystem
     with open('logs/minimizePdf.log','w') as sys.stderr:
         main.main(['../pdfsizeopt/pdfsizeopt','--use-pngout=no',
-                   '--use-jbig2=no','--use-multivalent=no',filename])
+                   '--use-jbig2=no','--use-multivalent=no',
+                   'ApexPDFs/bigpdfs/'+filename,'ApexPDFs/smallpdfs/'+filename])
     sys.stderr = sys.__stderr__
     os.system = oldossystem
+    print 'Minimizing pdf finished at',"{0[0]:02d}:{0[1]:02d}".format(getTime())
 
 def compilewith(commands=False):
     if commands:
@@ -370,48 +339,43 @@ def compilewith(commands=False):
     writeoptions(args)
     if args.quit:
         return
-    if args.xml or args.instructor:
-        compilewith("-qsc0")
+    if args.instructor:
+        compilewith('-qsc0')
     elif args.internet:
-        compilewith("-x")
-        compilewith("-w")
+        compilewith('-x')
+        compilewith('-w')
         return
     runcommands(args,commands)
 
 def runcommands(args,commands):
-    newsuffix = getsuffix(args) or 'Big'
+    newsuffix = getsuffix(args)
     with open('logs/compilation'+newsuffix+'.log','w') as mystdout:
         try:
             commandline = getcommandline(args)
             subprocess.check_call(commandline,stdout=mystdout,stderr=subprocess.STDOUT)
         except:
             time = "{0[0]:02d}:{0[1]:02d}".format(getTime())
-            print "At",time,"failing command:",commands
+            print 'At',time,'failing command:',commands
             raise
     time = "{0[0]:02d}:{0[1]:02d}".format(getTime())
     if commands:
-        print "Command line:",commands,"finished at",time
+        print 'Command line:',commands,'finished at',time
     else:
-        print "Command line finished at",time
+        print 'Command line finished at',time
     if args.instructor:
-        os.rename('Answers.pdf','ApexPDFs/Answers.pdf')
+        shutil.copy('Answers.pdf','ApexPDFs/bigpdfs/')
+        minimizePdf('Answers.pdf')
     elif not args.xml and not args.web:
-        os.rename("Calculus.pdf","ApexPDFs/calculus"+newsuffix+".pdf")
-        if newsuffix == 'Big':
-            if (2, 4) <= sys.version_info[:2] < (3, 0):
-                minimizePdf("ApexPDFs/calculusBig.pdf")
-                print "Minimizing pdf finished at","{0[0]:02d}:{0[1]:02d}".format(getTime())
-                os.rename("ApexPDFs/calculusBig.pso.pdf","ApexPDFs/calculus.pdf")
-            else:
-                os.rename("ApexPDFs/calculusBig.pdf","ApexPDFs/calculus.pdf")
+        shutil.copy('Calculus.pdf','ApexPDFs/bigpdfs/calculus'+newsuffix+'.pdf')
+        minimizePdf('calculus'+newsuffix+'.pdf')
 
 if args.all:
     compilewith('-f')
     # having this first makes sure the index and toc are up to date
     compilewith('-c0')
     compilewith('-i')
-    # having '123' first means that doesn't change everytime, which speed compilation
-    for part,size in itertools.product('123',["s","b"]):
+    # having '123' first means that doesn't change everytime, which may speed compilation
+    for part,size in itertools.product('123',['s','b']):
         compilewith('-'+size+'c'+part)
 else:
     compilewith()

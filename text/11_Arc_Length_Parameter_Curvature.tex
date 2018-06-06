@@ -84,14 +84,14 @@ Clearly, as shown in \autoref{fig:vvfarc1}, the graph of $\vec r$ is a line, whe
 axis y line=middle,axis x line=middle,name=myplot,xtick={1,2,-1,-2},
 ymin=-1.1,ymax=6.5,xmin=-2.1,xmax=2.9]
 \addplot [thick,draw={\colorone}, smooth,domain=-2.5:2.5] ({3*x-1},{4*x+2});
-\filldraw (axis cs:-1,2) circle (1.5pt) node [left] {\scriptsize $t=0$}
- (axis cs:2,6) circle (1.5pt) node [left] {\scriptsize $t=1$}
- (axis cs: -.4,2.8) circle (1.5pt) node [right,draw={\colortwo}] {\scriptsize $s=1$}
- (axis cs: .2,3.6) circle (1.5pt) node [right,draw={\colortwo}] {\scriptsize $s=2$}
- (axis cs: .8,4.4) circle (1.5pt) node [right,draw={\colortwo}] {\scriptsize $s=3$}
- (axis cs: 1.4,5.2) circle (1.5pt) node [right,draw={\colortwo}] {\scriptsize $s=4$}
- (axis cs: 2,6) circle (1.5pt) node [right,draw={\colortwo}] {\scriptsize $s=5$};
-\draw (axis cs:-1,2) node [draw={\colortwo},shift={(10pt,-5pt)}]  {\scriptsize $s=0$};
+\filldraw (axis cs:-1,2) circle (1.5pt) node [above left] {\scriptsize $t=0$}
+ (axis cs:2,6) circle (1.5pt) node [above left] {\scriptsize $t=1$}
+ (axis cs: -.4,2.8) circle (1.5pt) node [below right] {\scriptsize $s=1$}
+ (axis cs: .2,3.6) circle (1.5pt) node [below right] {\scriptsize $s=2$}
+ (axis cs: .8,4.4) circle (1.5pt) node [below right] {\scriptsize $s=3$}
+ (axis cs: 1.4,5.2) circle (1.5pt) node [below right] {\scriptsize $s=4$}
+ (axis cs: 2,6) circle (1.5pt) node [below right] {\scriptsize $s=5$};
+\draw (axis cs:-1,2) node [below right] {\scriptsize $s=0$};
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
@@ -126,7 +126,7 @@ where $\vec T(t)$ is the unit tangent vector. \autoeqref{eq:vvfarc2} is often mi
 \theorem{thm:arclengthparam}{Arc Length Parameter}
 {Let $\vec r(s)$ be a vector--valued function. The parameter $s$ is the arc length parameter if, and only if, $\norm{\vrp(s)} = 1.$\index{arc length parameter}}
 
-\subsection*{Curvature}
+\subsection{Curvature}
 
 \mtable[-1in]{Establishing the concept of curvature.}{fig:curvatureintro}{%
 \begin{tikzpicture}[>=stealth]
@@ -347,7 +347,7 @@ ymin=-.1,ymax=2.5,xmin=-2.1,xmax=2.1]
 \\(b)}%
 While this is not a particularly ``nice'' formula, it does explicitly tell us what the curvature is at a given $t$ value. To maximize $\kappa(t)$, we should solve $\kappa'(t)=0$ for $t$. This is doable, but \emph{very} time consuming. Instead, consider the graph of $\kappa(t)$ as given in \autoref{fig:curvature4}(a). We see that $\kappa$ is maximized at two $t$ values; using a numerical solver, we find these values are $t\approx\pm 0.189$. In part (b) of the figure we graph $\vrt$ and indicate the points where curvature is maximized.}
 
-\subsection*{Curvature and Motion}
+\subsection{Curvature and Motion}
 
 Let $\vec r(t)$ be a position function of an object, with velocity $\vvt = \vrp(t)$ and acceleration $\vec a(t)=\vrp'(t)$. In \autoref{sec:tan_norm} we established that acceleration is in the plane formed by $\vec T(t)$ and $\vec N(t)$, and that we can find scalars $a_\text{T}$ and $a_\text{N}$ such that 
 \index{curvature!and motion}\index{unit tangent vector!and curvature}\index{unit normal vector!and curvature}\index{at@$a_\text{T}$}\index{an@$a_\text{N}$}

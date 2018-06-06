@@ -57,5 +57,5 @@ path3 mypath=graph(g,0,2*pi,operator ..);
 draw(mypath,colorone+linewidth(2));
 
 label("base area $= A$",(2,2,-.1));
-label("Volume $=A\cdot h$",(2,2,-.4));
+//label("Volume $=A\cdot h$",(2,2,-.4));
 label("$h$",(-1.9,0,.5));

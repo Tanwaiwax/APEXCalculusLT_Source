@@ -1,16 +1,26 @@
+* [CalculusII-BSC.tex line 38](../CalculusII-BSC.tex#L38): todo write a Inverse Functions prerequisite section reviewing logs
+* [CalculusII-BSC.tex line 40](../CalculusII-BSC.tex#L40): todo write a better chapter intro for Inverse Functions
+* [CalculusII-UND.tex line 5](../CalculusII-UND.tex#L5): todo write a Inverse Functions prerequisite section reviewing logs
+* [CalculusII-UND.tex line 7](../CalculusII-UND.tex#L7): todo write a better chapter intro for Inverse Functions
+* [errata/Errata.tex line 81](../errata/Errata.tex#L81): \item \S8.2 p402: Most of the definite integrals \emph{do not} ``appear in the previous set''. % todo do we want them to?
+* [exercises/06_03_exset_02.tex line 2](../exercises/06_03_exset_02.tex#L2): todo Tim Note: the corresponding indefinite integrals appear in the previous set.
 * [exercises/11_02_exset_03.tex line 9](../exercises/11_02_exset_03.tex#L9): todo Tim this was originally \vec r.  but was that part of the problem?
 * [exercises/12_03_exercises.tex line 4](../exercises/12_03_exercises.tex#L4): todo Tim is 13.3#1 a good answer?
 * [exercises/12_05_exercises.tex line 17](../exercises/12_05_exercises.tex#L17): todo Tim make the directions more consistent.  maybe combine sets and make more parts?
 * [exercises/12_07_exset_02.tex line 3](../exercises/12_07_exset_02.tex#L3): todo Tim should the solutions be less verbose?
-* [exercises/13_01_exset_03.tex line 2](../exercises/13_01_exset_03.tex#L2): todo Tim should we compute the answer for one or both integrals?
-* [exercises/13_03_exset_03.tex line 3](../exercises/13_03_exset_03.tex#L3): todo Tim do we add the steps to calculate \int e^{-x^2} ?
-* [exercises/13_Jacobian_exercises.tex line 23](../exercises/13_Jacobian_exercises.tex#L23): todo Tim are the Beta function problems Jacobian?  Or just u-sub?
+* [exercises/13_01_exset_03.tex line 2](../exercises/13_01_exset_03.tex#L2): todo Tim should we compute the answer for one or both integrals in 14.1#17-22 ?
+* [exercises/14_05_exset_04.tex line 20](../exercises/14_05_exset_04.tex#L20): todo Tim figure out how to display 15.5#23
 * [figures/figtrip5d_3D.asy line 37](../figures/figtrip5d_3D.asy#L37): // todo find a better way to shade this in
 * [figures/figtrip5e_3D.asy line 26](../figures/figtrip5e_3D.asy#L26): // todo find a better way to shade this in
 * [headers/APEX_format.tex line 19](../headers/APEX_format.tex#L19): \RequirePackage{amssymb} % todo ? https://tex.stackexchange.com/a/3000/107497 recommends dropping amssymb in favor of unicode-math
-* [headers/Header_Calculus.tex line 307](../headers/Header_Calculus.tex#L307): todo mecmath command to remove
+* [headers/apex_style.sty.ltxml line 121](../headers/apex_style.sty.ltxml#L121): DefMacro('\psBill'); # todo
+* [headers/Header_Calculus.tex line 299](../headers/Header_Calculus.tex#L299): todo remove mecmath \Dotprod command
+* [revisions/apex4/14_Line_Integral_Vector_Fields.tex line 262](../revisions/apex4/14_Line_Integral_Vector_Fields.tex#L262): todo Tim maybe separate these into four files for the prc?
+* [revisions/apex4/14_Stokes_Divergence.tex line 312](../revisions/apex4/14_Stokes_Divergence.tex#L312): todo Tim check the phrasing
+* [revisions/apex4/14_Surface_Integrals.tex line 221](../revisions/apex4/14_Surface_Integrals.tex#L221): todo Tim check the phrasing
 * [text/02_Derivative.tex line 519](../text/02_Derivative.tex#L519): todo Tim : iframe ?
 * [text/02_Derivative_Inverse_Functions.tex line 179](../text/02_Derivative_Inverse_Functions.tex#L179): todo Tim show this
+* [text/02_Implicit_Differentiation.tex line 319](../text/02_Implicit_Differentiation.tex#L319): todo Tim create a gallery of famous implicit equations
 * [text/03_Mean_Value_Theorem.tex line 130](../text/03_Mean_Value_Theorem.tex#L130): todo Tim does the next example need an introduction?
 * [text/04_Differentials.tex line 99](../text/04_Differentials.tex#L99): todo Tim bigger brace for the \Delta y?
 * [text/04_NewtonsMethod.tex line 258](../text/04_NewtonsMethod.tex#L258): todo Tim include the Fast Inverse Square Root question?
@@ -19,6 +29,7 @@
 * [text/06_Trigonometric_Integrals.tex line 355](../text/06_Trigonometric_Integrals.tex#L355): todo Tim Fourier series problem?
 * [text/07_Arc_Length.tex line 187](../text/07_Arc_Length.tex#L187): todo Tim should this be 3D at all?
 * [text/07_Arc_Length.tex line 214](../text/07_Arc_Length.tex#L214): todo Tim does this (and prev KI) only need f' continuous on (a,b)?
+* [text/07_Disk_Washer_Method.tex line 247](../text/07_Disk_Washer_Method.tex#L247): todo Tim check that 6.2 side figs don't overlap top figs
 * [text/07_Exp_Log_Functions.tex line 81](../text/07_Exp_Log_Functions.tex#L81): todo Tim move this to 7.0 once that's written
 * [text/07_Fluid_Force.tex line 58](../text/07_Fluid_Force.tex#L58): todo Tim convert the cylindrical tank into a 3d image?
 * [text/07_Fluid_Force.tex line 112](../text/07_Fluid_Force.tex#L112): todo Tim simplify this tikz? maybe convert it to 3d anyway?
@@ -26,14 +37,12 @@
 * [text/07_Work.tex line 193](../text/07_Work.tex#L193): todo Tim make the water tank figure into 3d?
 * [text/07_Work.tex line 231](../text/07_Work.tex#L231): todo Tim make the simplified water tank into 3d?
 * [text/07_Work.tex line 256](../text/07_Work.tex#L256): todo Tim make the water cone into 3d?
-* [text/09_Conic_Sections.tex line 27](../text/09_Conic_Sections.tex#L27): todo Tim convert conic figures to 3d (or at least tikz)
 * [text/09_Parametric_Equations.tex line 5](../text/09_Parametric_Equations.tex#L5): todo Tim should these be labeled as figures?
 * [text/09_Parametric_Equations.tex line 458](../text/09_Parametric_Equations.tex#L458): todo Tim folium of Descartes should be in Implicit Equation gallery?
 * [text/10_Cross_Product.tex line 254](../text/10_Cross_Product.tex#L254): todo Tim this parallelogram is very narrow.  do we want something better?
 * [text/10_Dot_Product.tex line 145](../text/10_Dot_Product.tex#L145): todo Tim check this spacing
 * [text/10_Lines.tex line 192](../text/10_Lines.tex#L192): todo Tim why not just rescale d2 to match d1?
-* [text/11_Vector_Functions_Calc.tex line 195](../text/11_Vector_Functions_Calc.tex#L195): todo Tim make the graphs pull from the same source? Then they'd have the same size
-* [text/11_Vector_Functions_Calc.tex line 228](../text/11_Vector_Functions_Calc.tex#L228): todo Tim make these pull from the same source, so they're the same size
+* [text/11_Arc_Length_Parameter_Curvature.tex line 81](../text/11_Arc_Length_Parameter_Curvature.tex#L81): todo Tim are these boxed?
 * [text/11_Vector_Functions_Motion.tex line 390](../text/11_Vector_Functions_Motion.tex#L390): todo Tim make sure these three figures match
 * [text/11_Vector_Tangent_Normal.tex line 191](../text/11_Vector_Tangent_Normal.tex#L191): todo Tim write these in terms of r(t) if possible? but the theorem is about a(t)
 * [text/12_Directional_Derivatives.tex line 95](../text/12_Directional_Derivatives.tex#L95): todo Tim verify the phrasing of nabla as an operator

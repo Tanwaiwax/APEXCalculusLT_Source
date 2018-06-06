@@ -2,7 +2,7 @@
 
 The previous section introduced us to a new mathematical object, the vector--valued function. We now apply calculus concepts to these functions. We start with the limit, then work our way through derivatives to integrals.
 
-\subsection*{Limits of Vector--Valued Functions}
+\subsection{Limits of Vector--Valued Functions}
 
 The initial definition of the limit of a vector--valued function is a bit intimidating, as was the definition of the limit in \autoref{def:limit}. The theorem following the definition shows that in practice, taking limits of vector--valued functions is no more difficult than taking limits of real--valued functions.
 
@@ -37,7 +37,7 @@ If any of the component limits do not exist, then $\ds\lim_{t\to c} \vec r(t)$ d
 			&=\bracket{1,3,1}.\eoehere
 \end{align*}}
 
-\subsection*{Continuity}
+\subsection{Continuity}
 
 \definition{def:vvf_continuity}{Continuity of Vector--Valued Functions}
 {Let $\vec r(t)$ be a vector--valued function defined on an open interval $I$ containing $c$.
@@ -58,7 +58,7 @@ We again have a theorem that lets us evaluate continuity component--wise.
 
 At $t=1$ each of the component functions is continuous. Therefore $\vec r(t)$ is continuous at $t=1$.}
 
-\subsection*{Derivatives}
+\subsection{Derivatives}
 
 Consider a vector--valued function $\vec r$ defined on an open interval $I$ containing $t_0$ and $t_1$. We can compute the displacement of $\vec r$ on $[t_0,t_1]$, as shown in \autoref{fig:vvfderiv_intro}(a). Recall that dividing the displacement vector by $t_1-t_0$ gives the average rate of change on $[t_0,t_1]$, as shown in (b).
 
@@ -192,8 +192,7 @@ $\vec r(t)$ and $\vrp(t)$ are graphed together in \autoref{fig:vvflimit3}(a). No
 \mtable[-.5in]{Viewing a vector--valued function and its derivative at one point, from two different perspectives.}{fig:vvflimit4}{%
 \myincludegraphics[width=.7\marginparwidth]{figures/figvvflimit4_3D}
 \\(a)\\
-% todo Tim make the graphs pull from the same source? Then they'd have the same size
-\myincludegraphics[width=\marginparwidth]{figures/figvvflimit4a}
+\myincludegraphics[width=.7\marginparwidth]{figures/figvvflimit4a_3D}
 \\(b)}%
 }% ends whole if-then-else
 
@@ -215,18 +214,17 @@ In Examples \ref{ex_vvflimit3} and \ref{ex_vvflimit4}, sketching a particular de
 
 \ifthenelse{\boolean{in_threeD}}{% in threeD
 \mtable{Graphing a curve in space with its tangent line.}{fig:vvfderiv1}{%
-\myincludeasythree{width=.8\marginparwidth,
+\myincludeasythree{width=\marginparwidth,
 3Droll=0.5961816528018784,
 3Dortho=0.00514203542843461,
 3Dc2c=0.8352102637290955 0.5152699947357178 0.19214747846126556,
 3Dcoo=-5.658682346343994 19.23411750793457 0.2712952494621277,
-3Droo=149.99999927774635}{width=.8\marginparwidth}{figures/figvvfderiv1_3D}}
+3Droo=149.99999927774635}{width=\marginparwidth}{figures/figvvfderiv1_3D}}
 }{% not in three D
 \mtable[-1in]{Graphing a curve in space with its tangent line.}{fig:vvfderiv1}{%
-\myincludegraphics[width=.8\marginparwidth]{figures/figvvfderiv1_3D}
+\myincludegraphics[width=\marginparwidth]{figures/figvvfderiv1_3D}
 \\(a)\\[10pt]
-% todo Tim make these pull from the same source, so they're the same size
-\myincludegraphics[width=.8\marginparwidth]{figures/figvvfderiv1b}
+\myincludegraphics[width=\marginparwidth]{figures/figvvfderiv1b_3D}
 \\(b)}% end mtable
 }% ends all of the if-then-else statements
 
@@ -237,7 +235,16 @@ The direction comes from $\vrp(-1)$. We compute, component--wise, $\vrp(t) =\bra
 
 The vector equation of the line is $\ell(t) =\bracket{-1,1,-1}+ t\bracket{1,-2,3}$. \ifthenelse{\boolean{in_threeD}}{This line and $\vec r(t)$ are sketched in \autoref{fig:vvfderiv1}.}{This line and $\vec r(t)$ are sketched, from two perspectives, in \autoref{fig:vvfderiv1} (a) and (b).}}
 
-\mtable{Graphing $\vec r(t)$ and its tangent line in \autoref{ex_vvfderiv3}.}{fig:vvfderiv3}{\begin{tikzpicture}[>=stealth]
+\example{ex_vvfderiv3}{Finding tangent lines to curves}{Find the equations of the lines tangent to $\vec r(t) =\bracket{t^3,t^2}$ at $t=-1$ and $t=0$.}
+{We find that $\vrp(t) =\bracket{3t^2,2t}$. At $t=-1$, we have
+\[\vec r(-1) =\bracket{-1,1}\quad \text{and}\quad \vrp(-1) =\bracket{3,-2},\]
+so the equation of the line tangent to the graph of $\vec r(t)$ at $t=-1$ is
+\[\ell(t) =\bracket{-1,1}+ t\bracket{3,-2}.\]
+This line is graphed with $\vec r(t)$ in \autoref{fig:vvfderiv3}.
+
+At $t=0$, we have $\vrp(0) =\bracket{0,0}=\vec 0$. This implies that the tangent line ``has no direction.'' We cannot apply \autoref{def:vector_tangent}, hence cannot find the equation of the tangent line.}
+
+\mtable[-7\baselineskip]{Graphing $\vec r(t)$ and its tangent line in \autoref{ex_vvfderiv3}.}{fig:vvfderiv3}{\begin{tikzpicture}[>=stealth]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
 ymin=-2.96,ymax=2.96,xmin=-3.5,xmax=3.5]
@@ -252,15 +259,6 @@ ymin=-2.96,ymax=2.96,xmin=-3.5,xmax=3.5]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-\example{ex_vvfderiv3}{Finding tangent lines to curves}{Find the equations of the lines tangent to $\vec r(t) =\bracket{t^3,t^2}$ at $t=-1$ and $t=0$.}
-{We find that $\vrp(t) =\bracket{3t^2,2t}$. At $t=-1$, we have
-\[\vec r(-1) =\bracket{-1,1}\quad \text{and}\quad \vrp(-1) =\bracket{3,-2},\]
-so the equation of the line tangent to the graph of $\vec r(t)$ at $t=-1$ is
-\[\ell(t) =\bracket{-1,1}+ t\bracket{3,-2}.\]
-This line is graphed with $\vec r(t)$ in \autoref{fig:vvfderiv3}.
-
-At $t=0$, we have $\vrp(0) =\bracket{0,0}=\vec 0$. This implies that the tangent line ``has no direction.'' We cannot apply \autoref{def:vector_tangent}, hence cannot find the equation of the tangent line.}
-
 We were unable to compute the equation of the tangent line to $\vec r(t)=\bracket{t^3,t^2}$ at $t=0$ because $\vrp(0) = \vec 0$. The graph in \autoref{fig:vvfderiv3} shows that there is a cusp at this point. This leads us to another definition of \textbf{smooth}, previously defined by \autoref{def:smooth} in \autoref{sec:param_eqs}.
 
 \definition{def:vector_smooth}{Smooth Vector--Valued Functions}
@@ -270,7 +268,7 @@ We were unable to compute the equation of the tangent line to $\vec r(t)=\bracke
 Having established derivatives of vector--valued functions, we now explore the relationships between the derivative and other vector operations. The following theorem states how the derivative interacts with vector addition and the various vector products.
 
 % I can't put this in the box, and after makes it come on the next page
-\mnote[13\baselineskip]{\textbf{Note:} Because the order is important when computing a cross product, we must maintain the correct order of the functions in rule \ref{crossprodrule}.}
+\mnote[13\baselineskip]{\textbf{Note:} Because the order is important when computing a cross product, we must maintain the correct order of the functions in rule \ref*{crossprodrule}.}
 
 \theorem{thm:vvf_deriv_prop}{Properies of Derivatives of Vector--Valued Functions}
 {Let $\vec r$ and $\vec s$ be differentiable vector--valued functions, let $f$ be a differentiable real--valued function, and let $c$ be a real number.
@@ -370,7 +368,7 @@ This is true of any vector--valued function that has a constant length, that is,
 {Let $\vec r(t)$ be a differentiable vector--valued function on an open interval $I$ of constant length. That is, $\norm{\vec r(t)} = c$ for all $t$ in $I$ (equivalently, $\vec r(t)\cdot \vec r(t) = c^2$ for all $t$ in $I$). 
 Then $\vec r(t)\cdot\vrp(t) = 0$ for all $t$ in $I$.\index{vector--valued function!of constant length}}
 
-\subsection*{Integration}
+\subsection{Integration}
 
 Indefinite and definite integrals of vector--valued functions are also defined to be evaluated component--wise.
 

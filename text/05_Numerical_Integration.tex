@@ -2,7 +2,7 @@
 
 The Fundamental Theorem of Calculus gives a concrete technique for finding the exact value of a definite integral. That technique is based on computing antiderivatives. Despite the power of this theorem, there are still situations where we must \textit{approximate} the value of the definite integral instead of finding its exact value. The first situation we explore is where we \textit{cannot} compute an antiderivative of the integrand. The second case is when we actually do not know the integrand, but only its value when evaluated at certain points.\index{integration!numerical}\index{numerical integration} %While we handle both situations in the same way, we address them separately here.
 %
-%\subsection*{An Antiderivative That Cannot Be Computed}
+%\subsection{An Antiderivative That Cannot Be Computed}
 \bigskip
 
 %\autoref{sec:antider} introduced antiderivatives and the indefinite integral; given a function, its indefinite integral is a set of \textit{functions}. In \autoref{sec:def_int}, we learned about definite integrals: given a function and two bounds, the definite integral computes the ``area under the curve,'' i.e., a \textit{number}. The Fundamental Theorem of Calculus states that these two concepts are related: we use antiderivatives to evaluate definite integrals. Definite integrals have immense importance in mathematics, science and engineering. We will explore some of these applications in \autoref{SEVEN}. 
@@ -62,7 +62,7 @@ We will apply the methods we learn in this section to the following definite int
 % todo Tim maybe use \pi/4 to \pi/2 in (b) instead?
 as pictured in \autoref{fig:numerical1}.
 
-\subsection*{The Left and Right Hand Rule Methods}
+\subsection{The Left and Right Hand Rule Methods}
 
 In \autoref{sec:riemann} we addressed the problem of evaluating definite integrals by approximating the area under the curve using rectangles. We revisit those ideas here before introducing other methods of approximating definite integrals. \index{numerical integration!Left/Right Hand Rule}\index{Right Hand Rule}\index{Left Hand Rule}\index{integration!numerical!Left/Right Hand Rule}
 
@@ -135,8 +135,8 @@ Using the Right Hand Rule, we have:
 The actual answer, accurate to 4 places after the decimal, is 0.7468, showing our average is a good approximation.}
 
 \mtable[-.5in]{Table of values used to approximate $\ds\int_{-\frac{\pi}4}^{\frac{\pi}2}\sin(x^3)\ dx$ in \autoref{ex_num2}.}{fig:num2a}{%
-	\begin{tabular}{lrll} 
-	$x_i$ & Exact & Approx. & $\sin(x_i^3)$ \\ \midrule
+	\begin{tabular}{lrll}\lxBeginTableHead
+	$x_i$ & Exact & Approx. & $\sin(x_i^3)$ \\\lxEndTableHead\midrule
 	$x_0$ & $-\pi/4\phantom{0}$ & $-0.785$ & $-0.466$ \\
 	$x_1$ & $-7\pi/40$ & $-0.550$ & $-0.165$ \\
 	$x_2$ & $-\pi/10$ & $-0.314$ & $-0.031$ \\
@@ -204,7 +204,7 @@ Once this table is created, it is straightforward to approximate the definite in
 
 The average of the Left and Right Hand Rules is 0.4275.  The actual answer, accurate to 3 places after the decimal, is 0.460. Our approximations were once again fairly good. The rectangles used in each approximation are shown in \autoref{fig:num2b}. It is clear from the graphs that using more rectangles (and hence, narrower rectangles) should result in a more accurate approximation.}
 
-\subsection*{The Trapezoidal Rule}
+\subsection{The Trapezoidal Rule}
 
 In \autoref{ex_num1} we approximated the value of $\ds \int_0^1 e^{-x^2}\ dx$ with 5 rectangles of equal width. \autoref{fig:num1} showed the rectangles used in the Left and Right Hand Rules. These graphs clearly show that rectangles do not match the shape of the graph all that well, and that accurate approximations will only come by using lots of rectangles. \index{Trapezoidal Rule}\index{numerical integration!Trapezoidal Rule}\index{integration!numerical!Trapezoidal Rule}
 
@@ -231,12 +231,12 @@ Instead of using rectangles to approximate the area, we can instead use \textit{
 
 \youtubeVideo{8z6JRFvjkpc}{The Trapezoid Rule for Approximating Integrals}
 
-\mtable{The area of a trapezoid.}{fig:trapezoid}{\begin{tikzpicture}
+\mtable{The area of a trapezoid is $\frac{a+b}2h$.}{fig:trapezoid}{\begin{tikzpicture}
 \draw(0,0)--node[pos=.5,left]{\small $a$}(0,1)--(1,1.5)
  --node[pos=.5,right]{\small$b$}(1,0)--node[pos=.5,below]{\small$h$}(0,0);
 \draw(0,.1)--(.1,.1)--(.1,0);
 \draw(.9,0)--(.9,.1)--(1,.1);
-\draw(2.5,.75)node{Area = $\frac{a+b}2h$};
+%\draw(2.5,.75)node{Area = };
 \end{tikzpicture}}
 
 The formula for the area of a trapezoid is given in \autoref{fig:trapezoid}. We approximate $\int_0^1 e^{-x^2}\ dx$ with these trapezoids in the following example.
@@ -245,8 +245,8 @@ The formula for the area of a trapezoid is given in \autoref{fig:trapezoid}. We 
 {To compute the areas of the 5 trapezoids in \autoref{fig:num3a}, it will again be useful to create a table of values as shown in \autoref{fig:num3b}.
 
 \mtable{A table of values of $e^{-x^2}$.}{fig:num3b}{%
-\begin{tabular}{ll}
-$x_i$ & $e^{-x_i^2}$ \\ \midrule
+\begin{tabular}{ll}\lxBeginTableHead
+$x_i$ & $e^{-x_i^2}$ \\\lxEndTableHead\midrule
 0 & 1\\
 0.2 & 0.961 \\
 0.4 & 0.852 \\
@@ -304,7 +304,7 @@ How can we improve on the Trapezoidal Rule, apart from using more and more trape
 
 So we have a progression: we start by approximating $f$ with a constant function and then with a linear function. What is next? A quadratic function. By approximating the curve of a function with lots of parabolas, we generally get an even better approximation of the definite integral. We call this process \textbf{Simpson's Rule}, named after Thomas Simpson (1710-1761), even though others had used this rule as much as 100 years prior.
 
-\subsection*{Simpson's Rule}
+\subsection{Simpson's Rule}
 
 Given one point, we can create a constant function that goes through that point. Given two points, we can create a linear function that goes through those points. Given three points, we can create a quadratic function that goes through those three points (given that no two have the same $x$--value).\index{Simpson's Rule}\index{numerical integration!Simpson's Rule}\index{integration!numerical!Simpson's Rule}
 
@@ -348,8 +348,8 @@ Let's demonstrate Simpson's Rule with a concrete example.
 \example{ex_num5}{Using Simpson's Rule}{Approximate $\ds\int_0^1 e^{-x^2}\ dx$ using Simpson's Rule and 4 equally spaced subintervals.}
 {We begin by making a table of values as we have in the past, as shown in \autoref{fig:num5a}(a). Simpson's Rule states that
 \mtable{A table of values to approximate $\int_0^1e^{-x^2}\ dx$ in \autoref{ex_num5}, along with a graph of the function.}{fig:num5a}{%
-\begin{tabular}{ll}
-$x_i$ & $e^{-x_i^2}$ \\ \midrule
+\begin{tabular}{ll}\lxBeginTableHead
+$x_i$ & $e^{-x_i^2}$ \\\lxEndTableHead\midrule
 0 & 1 \\
 0.25 & 0.939 \\
 0.5 & 0.779 \\
@@ -390,8 +390,8 @@ Recall in \autoref{ex_num1} we stated that the correct answer, accurate to 4 pla
 
 \example{ex_num6}{Using Simpson's Rule}{Approximate $\ds\int_{-\frac{\pi}4}^{\frac{\pi}2} \sin (x^3)\ dx$ using Simpson's Rule and 10 equally spaced intervals.}
 {\mtable{A table of values to approximate $\int_{-\frac{\pi}4}^{\frac{\pi}2}\sin(x^3)\ dx$ in \autoref{ex_num6}, along with a graph of the function.}{fig:num6a}{%
-\begin{tabular}{ll} 
-  $x_i$ & $\sin(x_i^3)$ \\ \midrule
+\begin{tabular}{ll}\lxBeginTableHead
+  $x_i$ & $\sin(x_i^3)$ \\\lxEndTableHead\midrule
   $-0.785$ & $-0.466$ \\
   $-0.550$ & $-0.165$   \\
   $-0.314$ & $-0.031$ \\
@@ -440,13 +440,13 @@ ymin=-.7,ymax=1.2,xmin=-1,xmax=1.7]
 \\ (b)}%
 \autoref{fig:num6a}(a) shows the table of values that we used in the past for this problem, shown here again for convenience. Again, $\dx = (\pi/2+\pi/4)/10 \approx 0.236$.
 
-Simpson's Rule states that 
-\small\begin{align*}
+Simpson's Rule states that
+{\small\begin{align*}
 	\int_{-\frac{\pi}4}^{\frac{\pi}2} \sin (x^3)\ dx
 	&\approx \frac{0.236}3\Big[(-0.466)+4(-0.165)+2(-0.031) + \dotsb \\
 	&\qquad\qquad \dotsb + 2(0.971) + 4(0.69) + (-0.67)\Big]\\
 	&= 0.4701
-\end{align*}\normalsize
+\end{align*}}
 
 Recall that the actual value, accurate to 3 decimal places, is 0.460. Our approximation is within one 1/100$^\text{th}$ of the correct value. The graph in \autoref{fig:num6a}(b) shows how closely the parabolas match the shape of the graph.}
 
@@ -456,7 +456,7 @@ Recall that the actual value, accurate to 3 decimal places, is 0.460. Our approx
 %\label{fig:num6b}
 %\end{lxfigure}
 
-\subsection*{Summary and Error Analysis}
+\subsection{Summary and Error Analysis}
 
 We summarize the key concepts of this section thus far in the following Key Idea.
 
@@ -594,21 +594,23 @@ At the beginning of this section we mentioned two main situations where numerica
 
 \example{ex_num8}{Approximating distance traveled}{One of the authors drove his daughter home from school while she recorded their speed every 30 seconds. The data is given in \autoref{fig:num8}.
 %
-\mtable{Speed data collected at 30 second intervals for \autoref{ex_num8}.}{fig:num8}{\begin{tabular}{rr}
-Time & \parbox{30pt}{\centering Speed \\ (mph)}\rule[-9pt]{0pt}{5pt} \\ \midrule
-0 & 0 \\
- 1 & 25 \\ 2 & 22 \\
- 3 & 19 \\ 4 & 39 \\
- 5 & 0 \\ 6 & 43\\
- 7 & 59 \\ 8 & 54 \\
- 9 & 51 \\ 10 & 43 \\
- 11 & 35 \\ 12 & 40 \\
- 13 & 43 \\ 14 & 30 \\
- 15 & 0 \\ 16 & 0 \\
- 17 & 28 \\ 18 & 40 \\
- 19 & 42 \\ 20 & 40 \\
- 21 & 39 \\ 22 & 40 \\
- 23 & 23 \\ 24 & 0 \\ 
+\mtable{Speed data collected at 30 second intervals for \autoref{ex_num8}.}{fig:num8}{\begin{tabular}{rr}\lxBeginTableHead
+Time & Speed\\(min)&(mph)
+%Time & \parbox{30pt}{\centering Speed \\ (mph)}\rule[-9pt]{0pt}{5pt}
+ \\\lxEndTableHead\midrule
+0\phantom{.5} & 0 \\
+ 0.5 & 25 \\ 1\phantom{.5} & 22 \\
+ 1.5 & 19 \\ 2\phantom{.5} & 39 \\
+ 2.5 & 0 \\ 3\phantom{.5} & 43\\
+ 3.5 & 59 \\ 4\phantom{.5} & 54 \\
+ 4.5 & 51 \\ 5\phantom{.5} & 43 \\
+ 5.5 & 35 \\ 6\phantom{.5} & 40 \\
+ 6.5 & 43 \\ 7\phantom{.5} & 30 \\
+ 7.5 & 0 \\ 8\phantom{.5} & 0 \\
+ 8.5 & 28 \\ 9\phantom{.5} & 40 \\
+ 9.5 & 42 \\ 10\phantom{.5} & 40 \\
+ 10.5 & 39 \\ 11\phantom{.5} & 40 \\
+ 11.5 & 23 \\ 12\phantom{.5} & 0 \\ 
 \end{tabular}}
 %
 Approximate the distance they traveled.}

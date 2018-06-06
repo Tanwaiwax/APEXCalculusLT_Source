@@ -17,10 +17,13 @@ if ( typeof window.MathJax === 'undefined' ) {
 
 function setup() {
     spaceOutMarginBoxes();
-    $(".ltx_theorem[id]:has(>h6.ltx_title.ltx_font_bold.ltx_title_theorem)")
-	.each(addPermaLink);
-    if ( $("section.ltx_index > ul.ltx_indexlist").length ) {
-	$("section.ltx_index > ul.ltx_indexlist > li.ltx_indexentry")
+    addPermaLinkFor('.ltx_theorem[id]:has(>h6.ltx_title.ltx_title_theorem)',
+		    "h6.ltx_title.ltx_title_theorem");
+    addPermaLinkFor('figure.marginnote',"figcaption");
+    if ( $("section.ltx_index ul.ltx_indexlist").length ) {
+	// add an A-Z to the index
+	$("section.ltx_index ul.ltx_indexlist li.ltx_indexentry")
+	    .not('li.ltx_indexentry ul.ltx_indexlist li.ltx_indexentry')
 	    .each(readIndexEntry);
 	$('<div id="indexContents"></div>')
 	    .insertAfter("h1.ltx_title.ltx_title_index");
@@ -29,9 +32,21 @@ function setup() {
     fixFirefoxAnchorBug();
 }
 
+function addPermaLinkFor(parents,child) {
+    $(parents).each(function() {
+	$(this).children(child).first()
+	    .append('<a class="permaLink" title="Permalink" href="#'+this.id+'">\u00B6</a>');
+    });
+}
+
+function addPermaLink() {
+    $(this).children("h6.ltx_title.ltx_title_theorem,figcaption").first()
+	.append('<a class="permaLink" title="Permalink" href="#'+this.id+'">\u00B6</a>');
+}
+
 function spaceOutMarginBoxes() {
     lastMarginBoxBottom = 0;
-    $("span.ltx_note.ltx_role_margin > span.ltx_note_outer > span.ltx_note_content").each(spaceOutBox);
+    $("figure.marginnote").each(spaceOutBox);
 }
 
 function spaceOutBox() {
@@ -44,12 +59,8 @@ function spaceOutBox() {
     lastMarginBoxBottom = offset.top + thisJq.height();
 }
 
-function addPermaLink() {
-    $(this).children("h6.ltx_title.ltx_title_theorem").first()
-	.append('<a class="permaLink" title="Permalink" href="#'+this.id+'">\u00B6</a>');
-}
-
 function readIndexEntry(ignoreIndex,indexEntry) {
+    //return;
     var firstLetter = this.id.charAt(0).toLocaleUpperCase();
     if ( entriesIn[firstLetter] ) {
 	entriesIn[firstLetter] = entriesIn[firstLetter].add(this);

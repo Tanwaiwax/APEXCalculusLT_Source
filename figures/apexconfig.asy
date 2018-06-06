@@ -27,7 +27,8 @@ defaultpen(0.5mm);
 
 pen colorone = apexbw ? black : blue;
 pen colortwo = apexbw ? .5*black+.5*white : red;
-pen colorthree = apexbw ? .25*black+.75*white : green;
+pen colorthree = apexbw ? .25*black+.75*white : .7*green+.3*black;
 pen coloronetwo = .5*colorone + .5*colortwo;
-pen coloronefill = apexbw ? colortwo+opacity(0.5) : rgb(.6,.6,1)+opacity(0.5);
+pen coloronefill = apexbw ? colorone+opacity(0.5) : rgb(.6,.6,1)+opacity(0.5);
 pen colortwofill = apexbw ? colortwo+opacity(0.5) : rgb(1,.6,.6)+opacity(0.5);
+pen colorthreefill = apexbw ? colorthree+opacity(0.5) : rgb(.6,1,.6)+opacity(0.5);

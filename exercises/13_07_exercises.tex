@@ -1,0 +1,72 @@
+\printconcepts
+
+\exercise{Explain the difference between the roles $r$, in cylindrical coordinates, and $\rho$, in spherical coordinates, play in determining the location of a point.}
+{In cylindrical, $r$ determines how far from the origin one goes in the $x$-$y$ plane before considering the $z$-component. Equivalently, if on projects a point in cylindrical coordinates onto the $x$-$y$ plane, $r$ will be the distance of this projection from the origin.
+
+In spherical, $\rho$ is the distance from the origin to the point.}
+
+\exercise{Why are points on the $z$-axis not determined uniquely when using cylindrical and spherical coordinates?}
+{If $r=0$ or $\rho=0$, then the point in each coordinate system lies on the $z$-axis regardless of the value of $\theta$.}
+
+\exercise{What surfaces are naturally defined using cylindrical coordinates?}
+{Cylinders (tubes) centered at the origin, parallel to the $z$-axis; planes parallel to the $z$-axis that intersect the $z$-axis; planes parallel to the $x$-$y$ plane.}
+
+\exercise{What surfaces are naturally defined using spherical coordinates?}
+{Spheres centered at the origin; planes parallel to the $z$-axis that intersect the $z$-axis; cones centered on the $z$-axis with point at the origin.}
+
+\printproblems
+
+\input{exercises/13_07_exset_01}
+\input{exercises/13_07_exset_02}
+\input{exercises/13_07_exset_03}
+\input{exercises/13_07_exset_04}
+\input{exercises/13_07_exset_05}
+\input{exercises/13_07_exset_06}
+\input{exercises/13_07_exset_07}
+\input{exercises/13_07_exset_08}
+\input{exercises/13_07_exset_09}
+\input{exercises/13_07_exset_10}
+
+\exercise{Find the center and radius of the sphere given by the spherical equation
+\[
+\rho = 4 \sin \phi \cos \theta + 6 \sin \phi \sin \theta - 2 \cos \phi.
+\]}{center: $(2,3,-1)$, radius: $\sqrt{14}$}
+% \rho^2 = 4\rho\sin\phi\cos\theta + 6\rho\sin\phi\sin\theta - 2\rho\cos\phi
+% x^2+y^2+z^2 = 4x + 6y - 2z
+% x^2-4x+4-4 + y^2-6y+9-9 z^2+2z+1-1 = 0
+% (x-2)^2 + (y-3)^2 + (z+1)^2 = 4+9+1 = 14
+
+% todo the solution to 11.7#29, 31-33
+\exercise{Show that for $a \ne 0$, the equation $\rho = 2a \sin \phi \, \cos \theta$ in spherical coordinates describes a sphere centered at $(a,0,0)$ with radius $\abs{a}$.}{}
+
+\exercise{Let $P = (a,\theta,\phi)$ be a point in spherical coordinates, with $a > 0$ and $0 < \phi < \pi$. Then $P$ lies on the sphere $\rho = a$. Since $0 < \phi < \pi$, the line segment from the origin to $P$ can be extended to intersect the cylinder given by $r = a$ (in cylindrical coordinates). Find the cylindrical coordinates of that point of intersection.}{$(a,\theta,a \cot \phi )$}
+
+\exercise{Let $P_1$ and $P_2$ be points whose spherical coordinates are $( \rho_1,\theta_1,\phi_1 )$ and $( \rho_2,\theta_2,\phi_2 )$, respectively. Let $\vecv_1$ be the vector from the origin to $P_1$, and let $\vecv_2$ be the vector from the origin to $P_2$. For the angle $\gamma$ between $\vecv_1$ and $\vecv_2$, show that
+  \[
+   \cos\gamma=\cos\phi_1\cos\phi_2+\sin\phi_1\sin\phi_2\cos(\theta_2-\theta_1).
+  \]
+  This formula is used in electrodynamics to prove the addition theorem for spherical harmonics, which provides a general expression for the electrostatic potential at a point due to a unit charge.% See pp.\ 100-102 in \cite{jac}.
+}{}
+
+\exercise{Show that the distance $d$ between the points $P_1$ and $P_2$ with cylindrical coordinates $( r_1,\theta_1,z_1 )$ and $( r_2,\theta_2,z_2 )$, respectively, is
+  \[
+   d = \sqrt{r_1^2 + r_2^2 - 2 r_1\,r_2 \cos (\, \theta_2 - \theta_1 \,)
+   + ( z_2 - z_1 )^2} \, .
+  \]}{Hint: Use the distance formula for Cartesian coordinates.}
+
+\exercise{Show that the distance $d$ between the points $P_1$ and $P_2$ with spherical coordinates $( \rho_1,\theta_1,\phi_1 )$ and $( \rho_2,\theta_2,\phi_2 )$, respectively, is
+  \[
+   d = \sqrt{\rho_1^2 + \rho_2^2 - 2 \rho_1\,\rho_2 [ \sin \phi_1 \,
+    \sin \phi_2 \,\cos ( \, \theta_2 - \theta_1 \, ) +
+    \cos \phi_1 \, \cos \phi_2 ]} \, .
+  \]}{}
+
+%\ifthenelse{\boolean{printquestions}}{\columnbreak}{}
+
+% Mecmath follows
+
+\exercise{Prove\label{pr_cyl_jac} \autoref{thm:triple_int_cylindrical} by finding the Jacobian of the cylindrical coordinate transformation.}{}
+
+\exercise{Prove\label{pr_sph_jac} \autoref{thm:triple_int_spherical} by finding the Jacobian of the spherical coordinate transformation.}{}
+
+\exercise{Evaluate $\ds\iint_{R} \sin \left( \frac{x+y}2 \right)\,\cos \left( \frac{x-y}2 \right)\,dA$, where $R$  is the triangle with vertices $(0,0)$, $(2,0)$ and $(1,1)$. (\emph{Hint: Use the change of variables $u=(x+y)/2$, $v=(x-y)/2$.})}{$1-\sin2/2$}

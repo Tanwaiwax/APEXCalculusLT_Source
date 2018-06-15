@@ -87,6 +87,20 @@ ymin=-16.,ymax=16,xmin=-1,xmax=11]
 \end{tikzpicture}
 \end{minipage}}
 
+\exercise{$x=\cosh t$,\quad $y=\sinh t$,\quad $-2\leq t \leq 2$}
+{\mbox{}\\[-\baselineskip]\begin{minipage}{\linewidth}
+\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth+25pt,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,
+ymin=-4.5,ymax=4.5,xmin=-.1,xmax=4.5]
+\addplot [{\colorone},thick, smooth,domain=-2:2,samples=60] ({cosh(x)},{sinh(x)});
+\draw[{\colorone},>=latex,->,thick] (axis cs:2.35241, -2.12928)-- (axis cs:2.33123, -2.10586);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\end{minipage}}
+
 \exercise{$x=\cos t+\frac14\cos(8t)$,\quad $y=\sin t+\frac14\sin(8t)$,\quad $0\leq t \leq 2\pi$}{\mbox{}\\[-\baselineskip]\begin{minipage}{\linewidth}
 \begin{tikzpicture}
 \begin{axis}[width=1.167\marginparwidth,tick label style={font=\scriptsize},axis y line=middle,axis x line=middle,name=myplot,

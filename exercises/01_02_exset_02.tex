@@ -1,5 +1,13 @@
 \exerciseset{In Exercises}{, prove the given limit using an $\epsilon - \delta$ proof.}{
 
+\exercise{$\ds\lim_{x\to4}(2x+5)=13$}{Given $\epsilon>0$, choose $\delta=\frac\epsilon2$.
+\begin{gather*}
+\abs{x-4}<\delta=\frac\epsilon2\\
+\abs{2x-8}<\epsilon\\
+\abs{(2x+5)-(13)}<\epsilon.
+\end{gather*}
+Thus $\ds\lim_{x\to4}(2x+5)=13$.}
+
 \exercise{$\ds\lim_{x\to 5}(3-x)= -2$}{%Let $\epsilon >0$ be given. We wish to find $\delta >0$ such that when $\abs{x-5}<\delta$, $\abs{f(x)-(-2)}<\epsilon$. 
 %
 %Scratch-Work:
@@ -143,7 +151,22 @@ Assuming $x$ is near 4, $x+5$ is positive and we can drop the absolute value sig
 \end{gather*}
 Thus, $\ds\lim_{x\to 4}\left(x^2+x-5\right)= 15$.}
 
-\exercise{$\displaystyle \lim_{x\to 2}\left(x^3-1\right)= 7$}{%Let $\epsilon >0$ be given. We wish to find $\delta >0$ such that when $\abs{x-2}<\delta$, $\abs{f(x)-7}<\epsilon$. 
+\exercise{$\ds\lim_{x\to1}\left(2x^2+3x+1\right)=6$}{Given $\epsilon>0$, let $\delta =\min\{1,\frac\epsilon9\}$. Then:
+\begin{gather*}
+\abs{x-1}<\delta \\
+\abs{x-1}<\frac\epsilon9\\
+\abs{x-1}<\frac\epsilon{2x+5}\\
+\abs{x-1}\cdot\abs{2x+5}<\frac\epsilon{2x+5}\cdot\abs{2x+5}=\epsilon\\
+%\end{gather*}
+%Assuming $x$ is near 1, $2x+5$ is positive and we can drop the absolute value signs on the right.
+%\begin{gather*}
+%|x-1|\cdot|2x+5| < \frac{\epsilon}{2x+5}\cdot(2x+5)\\
+\abs{2x^2+3x-5}<\epsilon\\
+\abs{(2x^2+3x+1)-6}<\epsilon.
+\end{gather*}
+Thus, $\ds\lim_{x\to1}\left(2x^2+3x+1\right)=6$.}
+
+\exercise{$\ds\lim_{x\to 2}\left(x^3-1\right)= 7$}{%Let $\epsilon >0$ be given. We wish to find $\delta >0$ such that when $\abs{x-2}<\delta$, $\abs{f(x)-7}<\epsilon$. 
 %
 %Scratch-Work:
 %Consider $\abs{f(x)-7}<\epsilon$, keeping in  mind we want to make a statement about $\abs{x-2}$:
@@ -178,9 +201,50 @@ Assuming $x$ is near 2, $x^2+2x+4$ is positive and we can drop the absolute valu
 \end{gather*}
 which is what we wanted to prove.}
 
-\exercise{$\displaystyle \lim_{x\to 2} 5 = 5$}{Let $\epsilon >0$ be given. We wish to find $\delta >0$ such that when $\abs{x-2}<\delta$, $\abs{f(x)-5}<\epsilon$. However, since $f(x)=5$, a constant function, the latter inequality is simply $\abs{5-5}<\epsilon$, which is always true. Thus we can choose any $\delta$ we like; we arbitrarily choose $\delta =\epsilon$. }
+\exercise{$\ds\lim_{x\to 2} 5 = 5$}{Let $\epsilon >0$ be given. We wish to find $\delta >0$ such that when $\abs{x-2}<\delta$, $\abs{f(x)-5}<\epsilon$. However, since $f(x)=5$, a constant function, the latter inequality is simply $\abs{5-5}<\epsilon$, which is always true. Thus we can choose any $\delta$ we like; we arbitrarily choose $\delta =\epsilon$. }
 
-\exercise{$\displaystyle \lim_{x\to 0} \sin x= 0$ (Hint: use the fact that $\abs{\sin x} \leq \abs{x}$, with equality only when $x=0$.)}{Let $\epsilon >0$ be given. We wish to find $\delta >0$ such that when $\abs{x-0}<\delta$, $\abs{f(x)-0}<\epsilon$. In simpler terms, we want to show that when $\abs{x}<\delta$, $\abs{\sin x} < \epsilon$. 
+\exercise{$\ds\lim_{x\to0}\left(e^{2x}-1\right)=0$}{%Let $\epsilon >0$ be given. We wish to find $\delta >0$ such that when $\abs{x-0}<\delta$, $\abs{f(x)-0}<\epsilon$. 
+%
+%Consider $\abs{f(x)-0}<\epsilon$, keeping in  mind we want to make a statement about $\abs{x-0}$ (i.e., $\abs x$):
+%\begin{gather*}
+%\abs{f(x)-0}< \epsilon \\
+%\abs{e^{2x}-1}<\epsilon \\
+%-\epsilon< e^{2x}-1 < \epsilon \\
+%1-\epsilon< e^{2x} < 1+\epsilon \\
+%\ln (1-\epsilon) < 2x < \ln (1+\epsilon) \\
+%\frac{\ln (1-\epsilon)}{2} < x < \frac{\ln (1+\epsilon)}{2} \\
+%\end{gather*}
+%Let $\delta = \min\left\{\abs{\frac{\ln(1-\epsilon)}2},\frac{\ln(1+\epsilon)}{2}\right\}=\frac{\ln(1+\epsilon)}2.$
+%
+Given $\epsilon>0$, let $\delta=\frac{\ln(1+\epsilon)}2<\abs{\frac{\ln(1-\epsilon)}2}$.
+\begin{gather*}
+\abs x<\delta \\
+%|x| < \min\left\{\left|\frac{\ln(1-\epsilon)}{2}\right|,\left|\frac{\ln(1+\epsilon)}{2}\right|\right\} \\
+\abs x<\frac{\ln(1+\epsilon)}2<\abs{\frac{\ln(1-\epsilon)}2} \\
+\frac{\ln(1-\epsilon)}2<x<\frac{\ln(1+\epsilon)}2\\
+\ln(1-\epsilon)<2x<\ln(1+\epsilon)\\
+1-\epsilon<e^{2x}<1+\epsilon\\
+-\epsilon<e^{2x}-1<\epsilon\\
+\abs{e^{2x}-1-(0)}<\epsilon,
+\end{gather*}
+which is what we wanted to prove.}
+
+\exercise{$\ds\lim_{x\to1}\frac1x=1$}{Given $\epsilon>0$, let $\delta =\min\{\frac12,\frac\epsilon2\}$. Then:
+\begin{gather*}
+\abs{x-1}<\delta \\
+\abs{x-1}<\frac\epsilon2\\
+\abs{x-1}<\epsilon\cdot x\\
+\abs{x-1}/x < \epsilon\\
+%\end{gather*}
+%Assuming $x$ is near 1, $x$ is positive and we can bring it into the absolute value signs on the left.
+%\begin{gather*}
+\abs{(x-1)/x} < \epsilon\\
+\abs{1-1/x}< \epsilon\\
+\abs{(1/x)-1}< \epsilon,
+\end{gather*}
+which is what we wanted to prove.}
+
+\exercise{$\ds\lim_{x\to 0} \sin x= 0$ (Hint: use the fact that $\abs{\sin x} \leq \abs{x}$, with equality only when $x=0$.)}{Let $\epsilon >0$ be given. We wish to find $\delta >0$ such that when $\abs{x-0}<\delta$, $\abs{f(x)-0}<\epsilon$. In simpler terms, we want to show that when $\abs{x}<\delta$, $\abs{\sin x} < \epsilon$. 
 
 Set $\delta = \epsilon$. We start with assuming that $\abs{x}<\delta$. Using the hint, we have that $\abs{\sin x } < \abs{x} < \delta = \epsilon$. Hence if $\abs{x}<\delta$, we know immediately that $\abs{\sin x} < \epsilon$.}
 

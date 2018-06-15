@@ -46,18 +46,18 @@ We demonstrate the use of L'H\^opital's Rule in the following examples; we will 
 \end{minipage}}
 {\begin{enumerate}
 	\item	This has the indeterminate form $0/0$. We proved this limit is 1 in \autoref{ex_limit_sinx_prove} using the Squeeze Theorem. Here we use L'H\^opital's Rule to show its power.
-\[\lim_{x\to0}\frac{\sin x}x \stackrel{\ \text{ by LHR \rule[-5pt]{0pt}{3pt}} \ }{=} \lim_{x\to0} \frac{\cos x}{1}=1.\]
+\[\lim_{x\to0}\frac{\sin x}x \LHequals \lim_{x\to0} \frac{\cos x}{1}=1.\]
 While this seems easier than using the Squeeze Theorem to find this limit, we note that applying L'H\^opital's Rule here requires us to know the derivative of $\sin x$. We originally encountered this limit when we were trying to find that derivative.
 
 	\item	This has the indeterminate form $0/0$.
-\[\lim_{x\to 1}\frac{\sqrt{x+3}-2}{1-x} 	 \stackrel{\ \text{ by LHR \rule[-5pt]{0pt}{3pt}} \ }{=} \lim_{x \to 1} \frac{\frac12(x+3)^{-1/2}}{-1} =-\frac 14.\]
+\[\lim_{x\to 1}\frac{\sqrt{x+3}-2}{1-x} 	 \LHequals \lim_{x \to 1} \frac{\frac12(x+3)^{-1/2}}{-1} =-\frac 14.\]
 
 	\item	This has the indeterminate form $0/0$.
-\[\lim_{x\to 0}\frac{x^2}{1-\cos x}  \stackrel{\ \text{ by LHR \rule[-5pt]{0pt}{3pt}} \ }{=}  \lim_{x\to 0} \frac{2x}{\sin x}.\]
+\[\lim_{x\to 0}\frac{x^2}{1-\cos x}  \LHequals  \lim_{x\to 0} \frac{2x}{\sin x}.\]
 This latter limit also evaluates to the $0/0$ indeterminate form. To evaluate it, we apply L'H\^opital's Rule again.
 \[
  \lim_{x\to 0} \frac{2x}{\sin x}
- \stackrel{\ \text{ by LHR \rule[-5pt]{0pt}{3pt}} \ }{=} \frac{2}{\cos x} = 2 .
+ \overset{\ \text{ by LHR } \ }{=} \frac{2}{\cos x} = 2 .
 \]
 Thus $\ds \lim_{x\to0}\frac{x^2}{1-\cos x}=2.$
 
@@ -66,9 +66,13 @@ Thus $\ds \lim_{x\to0}\frac{x^2}{1-\cos x}=2.$
 We cannot use L'H\^opital's Rule in this case because the original limit does not return an indeterminate form, so L'H\^opital's Rule does not apply. In fact, the inappropriate use of L'H\^opital's Rule here would result in the incorrect limit $\frac32$.
 
 	\item	We can evaluate this limit already using \autoref{thm:lim_rational_fn_at_infty}; the answer is 3/4. We apply L'H\^opital's Rule to demonstrate its applicability.
-\[\lim_{x\to\infty} \frac{3x^2-100x+2}{4x^2+5x-1000}\stackrel{\ \text{ by LHR \rule[-5pt]{0pt}{3pt}} \ }{=} \lim_{x\to\infty} \frac{6x-100}{8x+5} \stackrel{\ \text{ by LHR \rule[-5pt]{0pt}{3pt}} \ }{=} \lim_{x\to\infty} \frac68 = \frac34.\]
+\[
+ \lim_{x\to\infty} \frac{3x^2-100x+2}{4x^2+5x-1000}
+ \LHequals \lim_{x\to\infty} \frac{6x-100}{8x+5}
+ \LHequals \lim_{x\to\infty} \frac68 = \frac34.
+\]
 
-	\item	$\ds\lim_{x\to \infty}\frac{e^x}{x^3} \stackrel{\ \text{ by LHR \rule[-5pt]{0pt}{3pt}} \ }{=} \lim_{x\to\infty} \frac{e^x}{3x^2} \stackrel{\ \text{ by LHR \rule[-5pt]{0pt}{3pt}} \ }{=} \lim_{x\to\infty} \frac{e^x}{6x} \stackrel{\ \text{ by LHR \rule[-5pt]{0pt}{3pt}} \ }{=} \lim_{x\to\infty} \frac{e^x}{6} = \infty.$
+	\item	$\ds\lim_{x\to \infty}\frac{e^x}{x^3} \LHequals \lim_{x\to\infty} \frac{e^x}{3x^2} \LHequals \lim_{x\to\infty} \frac{e^x}{6x} \LHequals \lim_{x\to\infty} \frac{e^x}{6} = \infty.$
 
 Recall that this means that the limit does not exist; as $x$ approaches $\infty$, the expression $e^x/x^3$ grows without bound. We can infer from this that $e^x$ grows ``faster'' than $x^3$; as $x$ gets large, $e^x$ is far larger than $x^3$. (This has important implications in computing when considering efficiency of algorithms.)\eoehere
 \end{enumerate}}
@@ -96,7 +100,7 @@ L'H\^opital's Rule can only be applied to ratios of functions. When faced with a
 {\begin{enumerate}
 	\item	As $x\to 0^+$, note that $x\to 0$ and $e^{1/x}\to \infty$. Thus we have the indeterminate form $0\cdot\infty$. We rewrite the expression $x\cdot e^{1/x}$ as $\ds\frac{e^{1/x}}{1/x}$; now, as $x\to 0^+$, we get the indeterminate form $\infty/\infty$ to which L'H\^opital's Rule can be applied. 
 \[
-\lim_{x\to0^+} x\cdot e^{1/x} = \lim_{x\to 0^+} \frac{e^{1/x}}{1/x} \stackrel{\ \text{ by LHR \rule[-5pt]{0pt}{3pt}} \ }{=} \lim_{x\to 0^+}\frac{(-1/x^2)e^{1/x}}{-1/x^2} =\lim_{x\to 0^+}e^{1/x} =\infty.
+\lim_{x\to0^+} x\cdot e^{1/x} = \lim_{x\to 0^+} \frac{e^{1/x}}{1/x} \LHequals \lim_{x\to 0^+}\frac{(-1/x^2)e^{1/x}}{-1/x^2} =\lim_{x\to 0^+}e^{1/x} =\infty.
 \]
 
 Interpretation: $e^{1/x}$ grows ``faster'' than $x$ shrinks to zero, meaning their product grows without bound.
@@ -110,7 +114,7 @@ Interpretation: $e^{1/x}$ grows ``faster'' than $x$ shrinks to zero, meaning the
 \]
 
 As $x\to \infty$, the argument of the natural logarithm approaches $\infty/\infty$, to which we can apply L'H\^opital's Rule.
-\[\lim_{x\to\infty} \frac{x+1}x \stackrel{\ \text{ by LHR \rule[-5pt]{0pt}{3pt}} \ }{=} \lim_{x\to\infty}\frac11=1.
+\[\lim_{x\to\infty} \frac{x+1}x \LHequals \lim_{x\to\infty}\frac11=1.
 \]
 
 Since $x\to\infty$ implies $\ds\frac{x+1}x\to 1$, it follows that 
@@ -125,7 +129,8 @@ Interpretation: since this limit evaluates to 0, it means that for large $x$, th
 
 	\item	The limit $\ds \lim_{x\to\infty} \left(x^2-e^x\right)$ initially returns the indeterminate form $\infty-\infty$. We can rewrite the expression by factoring out $x^2$; $\ds x^2-e^x = x^2\left(1-\frac{e^x}{x^2}\right).$ We need to evaluate how $e^x/x^2$ behaves as $x\to\infty$:
 \[
-\lim_{x\to\infty}\frac{e^x}{x^2} \stackrel{\ \text{ by LHR \rule[-5pt]{0pt}{3pt}} \ }{=} \lim_{x\to\infty} \frac{e^x}{2x} \stackrel{\ \text{ by LHR \rule[-5pt]{0pt}{3pt}} \ }{=} \lim_{x\to\infty} \frac{e^x}{2} = \infty.
+\lim_{x\to\infty}\frac{e^x}{x^2} \LHequals \lim_{x\to\infty} \frac{e^x}{2x}
+\LHequals \lim_{x\to\infty} \frac{e^x}{2} = \infty.
 \]
 
 Thus $\lim_{x\to\infty}x^2(1-e^x/x^2)$ evaluates to $\infty\cdot(-\infty)$, which is not an indeterminate form; rather, $\infty\cdot(-\infty)$ evaluates to $-\infty$. We conclude that 

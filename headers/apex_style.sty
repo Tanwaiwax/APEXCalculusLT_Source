@@ -251,6 +251,14 @@
 	\global\setlength{\previousmarginbottom}{#1 sp}%
 	% 1 pt = 65536 sp = 2^16 sp
 }
+% I think these will make it so that compiling without this file won't fail
+% but I can't figure out how to test it
+\write\@auxout{%
+ \string\providecommand{\string\testmargintopwith}[3]{}%
+}
+\write\@auxout{%
+ \string\providecommand{\string\testmarginbottomwith}[2]{}%
+}
 \AtEndDocument{\stoptestingmargins}
 \newcommand{\stoptestingmargins}{%
 	\renewcommand{\testmargintopwith}[2]{}%
@@ -265,12 +273,18 @@
  \ifthenelse{\boolean{printquestions}}{% not in solutions
   \ifthenelse{\equal{\Itemautorefname}{item}}{% not in exercises
    % therefore, regular text
-   \immediate\write\@auxout{\@percentchar\space prc file #3 used in Section \thesection\space as Figure \thefigure}%
+   \immediate\write\@auxout{%
+    \@percentchar\space prc file #3 used in Section \thesection\space as Figure \thefigure%
+   }%
   }{% else in exercises
-   \immediate\write\@auxout{\@percentchar\space prc file #3 used in Exercises \thesection\space as Figure \arabic{section}.\arabic{enumi}}%
+   \immediate\write\@auxout{%
+    \@percentchar\space prc file #3 used in Exercises \thesection\space as Figure \arabic{section}.\arabic{enumi}%
+   }%
   }%
  }{% else in solutions
-  \immediate\write\@auxout{\@percentchar\space prc file #3 used in Solutions \theanswerchapter.\theanswersection\space as Figure \theanswersection.\arabic{enumi}}%
+  \immediate\write\@auxout{%
+   \@percentchar\space prc file #3 used in Solutions \theanswerchapter.\theanswersection\space as Figure \theanswersection.\arabic{enumi}%
+  }%
  }%
  % so that Python can find it later
  \ifthenelse{\boolean{in_threeD}}{%
@@ -330,8 +344,9 @@
 
 
 \newcommand*{\apexchapter}[3][]{%
+ \setcounter{figure}{0}% in case there are figures before the first section
  \clearpage\thispagestyle{empty}\cleardoublepage%
- \setboolean{chapter_already_has_exercises}{false}%
+% \setboolean{chapter_already_has_exercises}{false}%
  \ifthenelse{\equal{#1}{}}{}{% else, there is a #1 argument
   % we want the ``Chapter'' heading to come after the prerequisite section
   \stepcounter{chapter}%
@@ -354,53 +369,10 @@
 
 
 
-% \mnote[offset=0]{contents}
-\newcommand{\mnote}[2][0pt]{%
-	\marginpar{\vspace{#1}%
-		\begin{minipage}[c]{\marginparwidth}
-			\captionsetup{type=figure}%
-			\testmargintop%
-			\mbox{}%\makebox[0pt]{\tikz\draw(0,0)circle(1pt);}%
-			\\[-\baselineskip]
-			#2\ifhmode\unskip\fi
-			\testmarginbottom%
-			%\makebox[0pt]{\tikz\draw(0,0)circle(2pt);}
-		\end{minipage}%
-}}
-
-
-
 % some exercise / answer related commands
 
 \newcommand{\writeToAnsFile}[1]{%
-% \ifthenelse{\boolean{chapter_already_has_exercises}}{}{% else
-%  \setboolean{chapter_already_has_exercises}{true}%
-%  \immediate\write\answrite{}%
-%  \immediate\write\answrite{%
-%   \noexpand\section*{Chapter \arabic{chapter}}%
-%   \noexpand\belowpdfbookmark{Chapter \arabic{chapter}}{solsol\thechapter}%
-%%   \noexpand\noindent{%
-%%    \noexpand\Large%
-%%    \noexpand\textbf{Chapter \arabic{chapter}}%
-%%   }%
-%%   \noexpand\bigskip%
-%%   \noexpand\newline%
-%%   \noexpand\nopagebreak%
-%  }%
-%  \immediate\write\answrite{\noexpand\stepcounter{answerchapter}}%
-% }%
-% \immediate\write\answrite{%
-%  \noexpand\subsection*{\noexpand\hyperref[exer\thesection]{Exercises \thesection}}
-%%  \noexpand\noindent%
-%%  \noexpand\hyperref[exer\thesection]{\noexpand\textbf{Exercises \thesection}}%
-%  \noexpand\label{sol\thesection}%
-% }%
  \immediate\write\answrite{%
   \noexpand\answersForSection{\arabic{chapter}}{\arabic{section}}{#1}%
  }%
-% \ifthenelse{\value{section}=0}{%
-%  \immediate\write\answrite{\noexpand\loadAllAnswers{#1}}%
-% }{%
-%  \immediate\write\answrite{\noexpand\loadAnswers{#1}}%
-% }%
 }

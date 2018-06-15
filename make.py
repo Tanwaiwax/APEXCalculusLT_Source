@@ -172,7 +172,6 @@ def prcfromfile(filename):
                     if match.group(2)=='Section':
                         prcdict[ int(match.group(3)) ][ int(match.group(4)) ].append(Figure(match.group(5),match.group(1)))
                     elif match.group(2)=='Exercises':
-                        
                         prcdict[ int(match.group(3)) ][ int(match.group(4)) ].append(Figure(match.group(6),match.group(1)))
                     elif match.group(2)=='Solutions':
                         # if we're in the solutions, then we'll record the chapter in the section column
@@ -207,7 +206,7 @@ def updatetodo():
     with open('todo/todo_tex.txt','w') as mystdout:
         for keywd in ('drawexampleline','enlargethispage','pagebreak','blue',
                       'clearpage','cleardoublepage','columnbreak','newpage',
-                      'mfigure','myincludegraphics','addplot3'):
+                      'mfigure','myincludegraphics','addplot3','ldots'):
             grepcall = ['grep',keywd,'-I','--recursive','--files-with-matches','--exclude-dir=hidden']
             mystdout.write('\n\n'+keywd+':\n')
             mystdout.flush()
@@ -258,7 +257,7 @@ def getsuffix(args):
 
 def getcommandline(args):
     if args.xml:
-        ret = ['../LaTeXML/bin/latexml','--quiet','--quiet',#'--verbose','--verbose',#
+        ret = ['../LaTeXML/bin/latexml','--quiet',#'--verbose','--verbose',#
                        '--destination=Calculus.xml',
                        '--nocomments',
                        'Calculus']
@@ -274,15 +273,14 @@ def getcommandline(args):
         return ['../LaTeXML/bin/latexmlpost',
                     '--split',#'--quiet',
                     '--stylesheet=web/apex.xsl',
-                    '--destination=standaloneweb/index.html',
+                    '--destination=web/index.html',
                     '--css=style.css',
                     '--css=LaTeXML-marginpar.css',
-                    '--css=LaTeXML-navbar-left.css',
-                    '--xsltparam=USE_TWOCOLUMN_INDEX:true',
+                    '--css=LaTeXML-navbar-left.css', #'--xsltparam=USE_TWOCOLUMN_INDEX:true',
                     '--javascript=https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js',
                     '--javascript=LaTeXML-maybeMathJax.js',
                     '--javascript=script.js',
-                    'standalone.xml']
+                    'Calculus.xml']
     if args.internet:
         raise 'args.internet does not need a command line'
     if args.instructor:

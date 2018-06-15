@@ -8,48 +8,35 @@
 
 \begin{document}
 
-\section*{Taylor Polynomials for Functions of Two Variables}
+\subsection*{Taylor Polynomials for Functions of Two Variables}
 
 We'll take a slight detour at this point.
-%You won't be tested on it;
-%%and the closest the homework comes to using it is Assignment 7, \# 6, which is
-%%entirely self-contained.
-%consequently, you are free to stop reading this once
-%you get tired of trying to figure it out.  But if you're curious, feel free
-%to read on.
+%You won't be tested on it; consequently, you are free to stop reading this once you get tired of trying to figure it out.  But if you're curious, feel free to read on.
 
-Recall from TODO that for a function $f:\BBR\to\BBR$, we have the $n\textsuperscript{th}$-order Taylor polynomial about a point $a$:
+Recall from \ref{thm:taylorthm} that for a function $y=f(x)$, we have the $n\textsuperscript{th}$-order Taylor polynomial about a point $a$:
 \[
  p_n(x)
 % =f(a)+f'(a)(x-a)+\frac{f''(a)}{2!} (x-a)^2%+\frac{f^{(3)}(a)}{3!}(x-a)^3
 % +\dotsm+\frac{f^{(k)}(a)}{k!}(x-a)^k,
  =\sum_{k=0}^n\frac{f^{(k)}(a)}{k!}(x-a)^k
- =p_{n-1}(x)+\frac{f^{(n)}(a)}{n!}(x-a)^n,
+ =p_{n-1}(x)+\frac{(x-a)^n}{n!}f^{(n)}(a),
 \]
-with an associated remainder $R_n(x)=f(x)-p_n(x)$.  If we know that $\abs{f^{(n+1)}(u)}\le K$ for all $u$ between $a$ and $x$, then we can bound the remainder as well:
+with an associated remainder $R_n(x)=f(x)-p_n(x)$.  If we know that $\abs{f^{(n+1)}(u)}\le K$ for all $u$ in an open interval containing $a$ and $x$, then we can bound the remainder as well:
 \[\abs{R_n(x)}\le K\frac{\abs{x-a}^{n+1}}{(n+1)!}.\]
 
-We have also found that a function $f\colon\BBR^2\to\BBR$ can be locally approximated near $(a,b)$ by
+This section has shown that a function $z=f(x,y)$ can be locally approximated near $(a,b)$ by
 \[ L(x,y)=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b). \]
 
 We can combine these ideas and talk about the Taylor polynomial for $f$ (for simplicity, we'll take $(a,b)=(0,0)$). Let
-\begin{align*}
+\begin{align*}\index{Taylor Series!multivariable}
  p_0(x,y)&=f(0,0) \\
- p_1(x,y)&=p_0(x,y)+f_x(0,0)x+f_y(0,0)y \\
- p_2(x,y)&=p_1(x,y)+\frac12f_{xx}(0,0)x^2+f_{xy}(0,0)xy+\frac12(0,0)y^2 \\
- p_3(x,y)&=p_2(x,y)+\frac1{3!}f_{xxx}(0,0)x^3+\frac12f_{xxy}(0,0)x^2y
- +\frac12f_{xyy}(0,0)xy^2+\frac1{3!}f_{yyy}(0,0)y^3 \\
-% p_0(x,y)&=f(0,0) \\
-% p_1(x,y)&=f(0,0)+f_x(0,0)x+f_y(0,0)y \\
-% p_2(x,y)&=f(0,0)+f_x(0,0)x+f_y(0,0)y+\frac12f_{xx}(0,0)x^2+
-% f_{xy}(0,0)xy+\frac12(0,0)y^2 \\
-% p_3(x,y)&=f(0,0)+f_x(0,0)x+f_y(0,0)y+\frac12f_{xx}(0,0)x^2+
-% f_{xy}(0,0)xy+\frac12(0,0)y^2 \\
-% &\phantom{=f(0,0)}+\frac1{3!}f_{xxx}(0,0)x^3+\frac12f_{xxy}(0,0)x^2y
-% +\frac12f_{xyy}(0,0)xy^2+\frac1{3!}f_{yyy}(0,0)y^3 \\
+ p_1(x,y)&=p_0(x,y)+xf_x(0,0)+yf_y(0,0) \\
+ p_2(x,y)&=p_1(x,y)+\frac{x^2}2f_{xx}(0,0)+xyf_{xy}(0,0)+\frac{y^2}2(0,0) \\
+ p_3(x,y)&=p_2(x,y)+\frac{x^3}{3!}f_{xxx}(0,0)+\frac{x^2y}2f_{xxy}(0,0)
+ +\frac{xy^2}2f_{xyy}(0,0)+\frac{y^3}{3!}f_{yyy}(0,0) \\
  \intertext{and in general,}
- p_n(x,y)&=p_{n-1}(x,y)+\sum_{k=0}^n\frac1{k!(n-k)!}
- \frac{\partial^n f}{\partial x^k\partial y^{n-k}}(0,0)x^k y^{n-k},
+ p_n(x,y)&=p_{n-1}(x,y)+\sum_{k=0}^n\frac{x^k y^{n-k}}{k!(n-k)!}
+ \frac{\partial^n f}{\partial x^k\partial y^{n-k}}(0,0),
 \end{align*}
 and define the remainder by $R_n(x,y)=f(x,y)-p_n(x,y)$. Notice that each new term in $p_n$ consists of all the ways to get a polynomial in $x$ and $y$ of order $n$ along with the unique derivative that would make that polynomial a constant, divided by what that constant would be.
 
@@ -67,7 +54,10 @@ for all $k$ and all $(x,y)$ within distance $r$ of the origin. Then for all $(x,
 We can continue this idea to a function $f$ of three variables, again centered at the origin for simplicity.  Let
 \begin{align*}
  p_0(x,y,z) &= f(0,0,0) \\
- p_n(x,y,z) &= p_{n-1}(x,y,z) + \sum_{k=0}^n\sum_{m=0}^{n-k}\frac1{k!m!(n-m-k)!}\frac{\partial^n f}{\partial x^k\partial y^m\partial z^{n-m-k}}(0,0,0)x^k y^m z^{n-k-m}, \qquad\text{and}\\
+ p_n(x,y,z) &= p_{n-1}(x,y,z) + \sum_{k=0}^n\sum_{m=0}^{n-k}
+ \frac{x^k y^m z^{n-k-m}}{k!m!(n-m-k)!}
+ \frac{\partial^n f}{\partial x^k\partial y^m\partial z^{n-m-k}}(0,0,0),\\
+ \intertext{and}
  R_n(x,y,z) &= f(x,y,z)-p_n(x,y,z)
 \end{align*}
 Suppose
@@ -86,21 +76,22 @@ Mathematicians being who they are, they've figured out Taylor polynomials for fu
 \begin{align*}
  p_0(\xvec) & = f(\Ovec) \\
  p_1(\xvec) & = p_0(\xvec)+\sum_{i=1}^d f_{x_i}(\Ovec)x_i \\
- p_2(\xvec) & = p_1(\xvec)+\sum_{i=1}^d \frac12f_{x_ix_i}(\Ovec)x_i^2
- +\sum_{i=1}^d\sum_{j=i+1}^d f_{x_ix_j}(\Ovec)x_ix_j \\
+ p_2(\xvec) & = p_1(\xvec)+\sum_{i=1}^d \frac{x_i^2}2f_{x_ix_i}(\Ovec)
+ +\sum_{i=1}^d\sum_{j=i+1}^d x_ix_j f_{x_ix_j}(\Ovec) \\
  \intertext{and in general,}
  p_n(\xvec) & = p_{n-1}(\xvec) +
- \sum_{\abs\alpha=n}\frac1{\alpha!}\frac{\partial^n f}{\partial\xvec^\alpha}
- (\Ovec)\xvec^\alpha.
+ \sum_{\abs\alpha=n}\frac{\xvec^\alpha}{\alpha!}
+ \frac{\partial^n f}{\partial\xvec^\alpha}
+ (\Ovec).
 \end{align*}
 
-At the end we used multi-index notation: $\alpha=\langle\alpha_1,\dotsc,\alpha_d\rangle$ is a vector with each $\alpha_i\ge 0$, and size $\abs\alpha=\sum_{i=1}^d\alpha_i$. Then $\sum_{\abs\alpha=n}$ means to sum over all possible $\alpha$ with size $n$, and
+At the end we used multi-index notation: $\alpha=\langle\alpha_1,\dotsc,\alpha_d\rangle$ is a vector of integers with each $\alpha_i\ge 0$, and size $\abs\alpha=\sum_{i=1}^d\alpha_i$. Then $\sum_{\abs\alpha=n}$ means to sum over all possible $\alpha$ with size $n$, and
 \begin{align*}
- \alpha! & = \prod_{i=1}^d \alpha_i!, &
+ \alpha! & = \prod_{i=1}^d \alpha_i!,
+ & \xvec^\alpha & = \prod_{i=1}^d x_i^{\alpha_i}, \qquad\text{and} &
  \frac{\partial^n}{\partial\xvec^\alpha}f
  & = \frac{\partial^{\alpha_1}}{\partial x_1^{\alpha_1}}
- \dotso\frac{\partial^{\alpha_d}}{\partial x_d^{\alpha_d}}f,\qquad\text{and} &
- \xvec^\alpha & = \prod_{i=1}^d x_i^{\alpha_i}.
+ \dotso\frac{\partial^{\alpha_d}}{\partial x_d^{\alpha_d}}f.
 \end{align*}
 As before, each new term in $p_n$ consists of all the ways to get a polynomial in $\xvec$ of order $n$ along with the unique derivative that would make that polynomial a constant, divided by what that constant would be.
 

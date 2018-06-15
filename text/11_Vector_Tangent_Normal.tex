@@ -7,14 +7,14 @@ Given a smooth vector--valued function \vrt, we defined in \autoref{def:vector_t
 \definition{def:unit_tangent}{Unit Tangent Vector}
 {Let \vrt\ be a smooth function on an open interval $I$. The unit tangent vector $\vec T(t)$ is
 \index{unit tangent vector!definition} \index{unit vector!unit tangent vector}
-\[\vec T(t) = \frac{1}{\rule{0pt}{9pt}\norm{\vrp(t)}}\vrp(t).\]}
+\[\vec T(t) = \frac1{\norm{\vrp(t)}}\vrp(t).\]}
 
 \youtubeVideo{39LA5WyVgKY}{Tangent Line to a Parametrized Curve}
 
 \example{ex_tannorm1}{Computing the unit tangent vector}{Let $\vrt =\bracket{3\cos t, 3\sin t, 4t}$. Find $\vec T(t)$ and compute $\vec T(0)$ and $\vec T(1)$.}
 {We apply \autoref{def:unit_tangent} to find $\vec T(t)$. 
 \begin{align*}
-\vec T(t) &= \frac{1}{\rule{0pt}{9pt}\norm{\vrp(t)}}\vrp(t) \\
+\vec T(t) &= \frac1{\norm{\vrp(t)}}\vrp(t) \\
 				&=\frac{1}{\sqrt{\big(-3\sin t\big)^2+\big(3\cos t\big)^2+ 4^2}}\bracket{-3\sin t,3\cos t, 4}\\
 				&=\bracket{-\frac35\sin t,\frac35\cos t,\frac45}.
 \end{align*}
@@ -23,18 +23,18 @@ We can now easily compute $\vec T(0)$ and $\vec T(1)$:
 .\]
 These are plotted in \autoref{fig:tannorm1} with their initial points at $\vec r(0)$ and $\vec r(1)$, respectively. (They look rather ``short'' since they are only length 1.)
 %
-\mtable[-\baselineskip]{Plotting unit tangent vectors in \autoref{ex_tannorm1}.}{fig:tannorm1}{%
+%The unit tangent vector $\vec T(t)$ always has a magnitude of 1, though it is sometimes easy to doubt that is true. We can help solidify this thought in our minds by computing $\norm{\vec T(1)}$:
+%\[\norm{\vec T(1)} \approx \sqrt{(-0.505)^2+0.324^2+0.8^2} = 1.000001.\]
+%We have rounded in our computation of $\vec T(1)$, so we don't get 1 exactly. We leave it to the reader to use the exact representation of $\vec T(1)$ to verify it has length 1.
+}
+
+\mtable[-2\baselineskip]{Plotting unit tangent vectors in \autoref{ex_tannorm1}.}{fig:tannorm1}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=0.4623610114058449,
 3Dortho=0.004905222449451685,
 3Dc2c=0.6268976330757141 0.5422312617301941 0.5594503283500671,
 3Dcoo=-3.587019205093384 4.6990532875061035 15.216367721557617,
 3Droo=150.00000240039893}{width=\marginparwidth}{figures/figtannorm1_3D}}
-%
-%The unit tangent vector $\vec T(t)$ always has a magnitude of 1, though it is sometimes easy to doubt that is true. We can help solidify this thought in our minds by computing $\norm{\vec T(1)}$:
-%\[\norm{\vec T(1)} \approx \sqrt{(-0.505)^2+0.324^2+0.8^2} = 1.000001.\]
-%We have rounded in our computation of $\vec T(1)$, so we don't get 1 exactly. We leave it to the reader to use the exact representation of $\vec T(1)$ to verify it has length 1.
-}
 
 In many ways, the previous example was ``too nice.'' It turned out that $\vrp(t)$ was always of length 5. In the next example the length of $\vrp(t)$ is variable, leaving us with a formula that is not as clean.
 
@@ -91,7 +91,7 @@ We'll see that $\vec T\,'(t)$ is more than just a convenient choice of vector th
 \[\vec N(t) = \frac1{\norm{\vec T\,'(t)}}\vec T\,'(t).\]}
 
 \example{ex_tannorm3}{Computing the unit normal vector}{Let $\vrt =\bracket{3\cos t, 3\sin t, 4t}$ as in \autoref{ex_tannorm1}. Sketch both $\vec T(\pi/2)$ and $\vec N(\pi/2)$ with initial points at $\vec r(\pi/2)$.}
-{In \autoref{ex_tannorm1}, we found $\vec T(t) =\bracket{\rule{0pt}{10pt} (-3/5)\sin t,(3/5)\cos t,4/5}$. Therefore 
+{In \autoref{ex_tannorm1}, we found $\vec T(t) =\bracket{(-3/5)\sin t,(3/5)\cos t,4/5}$. Therefore 
 \[\vec T\,'(t) =\bracket{-\frac35\cos t,-\frac35\sin t,0}\quad \text{and} \quad \norm{\vec T\,'(t)} = \frac35.\]
 \mtable{Plotting unit tangent and normal vectors in \autoref{fig:tannorm3}.}{fig:tannorm3}{%
 \myincludeasythree{width=\marginparwidth,
@@ -235,7 +235,7 @@ What is the practical interpretation of these numbers? $a_\text{T}=0$ means the 
 While we can compute $a_\text{N}$ using $\vec N(t)$, we instead demonstrate using another formula from \autoref{thm:acc_plane}.
 \begin{align*}
 a_\text{T} &= \vat\cdot\vec T(t) = \frac{4t-2}{\sqrt{8t^2+2}}+\frac{4t+2}{\sqrt{8t^2+2}} = \frac{8t}{\sqrt{8t^2+2}}.\\
-a_\text{N} &= \sqrt{\norm{\vat}^2-a_\text{T}^2} = \sqrt{8-\left(\frac{8t}{\sqrt{8t^2+2}}\right)^2}=\frac{4}{\sqrt{8t^2+2}}\rule{0pt}{25pt}.
+a_\text{N} &= \sqrt{\norm{\vat}^2-a_\text{T}^2} = \sqrt{8-\left(\frac{8t}{\sqrt{8t^2+2}}\right)^2}=\frac{4}{\sqrt{8t^2+2}}.\medskip
 \end{align*}
 When $t=2$, $\ds a_{\text{T}} = \frac{16}{\sqrt{34}}%\approx 2.74
 $ and $\ds a_{\text{N}} = \frac{4}{\sqrt{34}}% \approx 0.69

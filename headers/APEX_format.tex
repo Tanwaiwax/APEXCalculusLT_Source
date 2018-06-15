@@ -32,6 +32,7 @@
 \RequirePackage[nocomments]{latexml}
 \lxDocumentID{APEX}
 
+\numberwithin{figure}{section}
 \newcounter{savefigure}
 
 \newtheoremstyle{apexExample}% name
@@ -58,18 +59,19 @@
 
 \theoremstyle{apexExample}
 \newtheorem{exampleEnv}{Example}[section]
-\let\theHexampleEnv\theexampleEnv
-\renewcommand{\theexampleEnv}{\arabic{exampleEnv}}
-% this gets written to aux.  if it appears in section #1, the argument vanishes.
-% otherwise, we're in a different section and need to prefix whatever with the
-% section #1
-\protected\def\sectionifdifferent#1{%
-  \ifthenelse{\equal{#1}{\thesection}}{}{#1.}%
-}
-% the prefix before \theexampleEnv
-\makeatletter
-\renewcommand{\p@exampleEnv}{\sectionifdifferent{\thesection}}
-\makeatother
+%\let\theHexampleEnv\theexampleEnv
+%\renewcommand{\theexampleEnv}{\arabic{exampleEnv}}
+%% this gets written to aux.  if it appears in section #1, the argument vanishes.
+%% otherwise, we're in a different section and need to prefix whatever with the
+%% section #1
+%\protected\def\sectionifdifferent#1{%
+%  \ifthenelse{\equal{#1}{\thesection}}{}{#1.}%
+%}
+%% the prefix before \theexampleEnv
+%\makeatletter
+%\renewcommand{\p@exampleEnv}{\sectionifdifferent{\thesection}}
+%\makeatother
+\providecommand{\sectionifdifferent}[1]{} % in case it's still in there
 
 \theoremstyle{apex}
 
@@ -314,7 +316,7 @@
    \definecolor{border#2}{Hsb}{#4,.23,.65}% = hsl(#4,17.6,57.5)
    \definecolor{bottom#2}{Hsb}{#4,.13,.92}% = hsl(#4,42.8,86)
   }%
-  \newtheorem{#2Env}{#3}%
+  \newtheorem{#2Env}{#3}[section]%
   \expandafter\newcommand\csname #2Envautorefname\endcsname{#3}
   \expandafter\newcommand\csname #2\endcsname[4][]{%
    \bigbreak%
@@ -362,17 +364,17 @@
  }% ends ifthenelse #1=''
 }
 
-\newspecialbox{definition}{Definition}{60}
+\newspecialbox{definition}{Def\-i\-ni\-tion}{60}
 % draw = yellow!95!black!60 = Hsb( 60,.59,.97)
 % topc = white!95!yellow    = Hsb( 60,.05,1)
 % botc = yellow!90!black!30 = Hsb( 60,.28,.97)
 
-\newspecialbox{theorem}{Theorem}{120}
+\newspecialbox{theorem}{Theo\-rem}{120}
 % draw = green!30!black!50  = Hsb(120,.23,.65)
 % topc = white!95!green     = Hsb(120,.05,1)
 % botc = green!60!black!20  = Hsb(120,.13,.92)
 
-\newspecialbox{keyidea}{Key Idea}{0}
+\newspecialbox{keyidea}{Key I\-dea}{0}
 % draw = red!30!black!50    = Hsb(  0,.23,.65)
 % topc = white!95!red       = Hsb(  0,.05,1)
 % botc = red!60!black!20    = Hsb(  0,.13,.92)
@@ -524,8 +526,9 @@
 %}
 \newcommand*{\answersForSection}[3]{%
  \ifthenelse{\equal{#1}{\lastanswerchapter}}{}{%
-  \renewcommand{\lastanswerchapter}{#1}%
-  \section*{Chapter #1}\belowpdfbookmark{Chapter #1}{solsol#1}
+  \renewcommand{\lastanswerchapter}{#1}
+  \section*{Chapter #1}
+  \ifthenelse{\boolean{latexml}}{}{\belowpdfbookmark{Chapter #1}{solsol#1}}
   \setcounter{answerchapter}{#1}
   \setcounter{answersection}{0}
  }%
@@ -572,10 +575,16 @@
  \closeenumerate%
  \stepcounter{saveexerciseenum}%
  \stepcounter{exercisesetcounter}%
+ \ifthenelse{\isodd{\value{saveexerciseenum}}}{}{%
+  \PackageInfo{apex}{Section \thesection\space has an exercise set beginning with \arabic{saveexerciseenum}}%
+ }%
  \noindent#1 \arabic{saveexerciseenum}--\ref*{enumiatendof\theexercisesetcounter}#2%
  \addtocounter{saveexerciseenum}{-1}\ignorespaces%
  #3
  \label{enumiatendof\theexercisesetcounter}%
+ \ifthenelse{\isodd{\value{enumi}}}{%
+  \PackageInfo{apex}{Section \thesection\space has an exercise set ending with \arabic{enumi}}%
+ }{}%
 }{
  #3
 }}

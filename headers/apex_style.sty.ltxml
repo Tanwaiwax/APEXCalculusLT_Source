@@ -11,6 +11,7 @@ use strict;
 use warnings;
 use LaTeXML::Package;
 use Data::Dumper;
+use Scalar::Util qw(looks_like_number);
 
 # fix some bugs
 RawTeX('\setlength{\marginparwidth}{150pt}');
@@ -24,6 +25,7 @@ RequirePackage('ifluatex');
 
 #DefMacro('\exvideo Verbatim','\bigbreak\noindent#1\bigbreak');
 
+# same definition, but we need "Verbatim" to get it to work with _
 DefMacro('\youtubeVideo Verbatim {}','\genVideo{#1}{https://youtu.be/#1}{#2}');
 
 DefMacro('\genVideo [] Verbatim Verbatim {}',
@@ -31,6 +33,17 @@ DefMacro('\genVideo [] Verbatim Verbatim {}',
 	 '\\href{#3#1}{#4 from \\nolinkurl{#3}}'.
 	 '\\embedVideo{https://www.youtube.com/embed/#2?rel=0}');
 
+DefMacro('\embedVideo Verbatim','\embedVideoA{#1}\embedVideoB{#1}\embedVideoC{#1}');
+
+# if this works, it will be much better
+#DefConstructor('\embedVideoA Verbatim',
+#	       '<ltx:rawhtml><br />'.
+#	       '<iframe class="embeddedVideo" width="560" height="355" '.
+#	       'src="#1" frameborder="0" scrolling="no" seamless="seamless" '.
+#	       'allowfullscreen="allowfullscreen" '.
+#	       'webkitallowfullscreen="webkitallowfullscreen" '.
+#	       'mozallowfullscreen="mozallowfullscreen">'.
+#	       '</iframe><br /></ltx:rawhtml>');
 DefMacro('\embedVideo Verbatim','\iframe{#1}{560}{355}');
 
 DefConstructor('\iframe Verbatim {}{}',
@@ -91,9 +104,9 @@ DefMacro('\examplestarred {}{}{}','\begin{exampleEnv}[#2]\label{#1}
 \end{exampleEnv}');
 
 DefMacro('\apexchapter []{}{}',
-	 '\setboolean{chapter_already_has_exercises}{false}'
-	 .'\chapter{#2}\label{#3}'
-	 .'\if.#1.\else\addtocounter{section}{-1}\input{#1}\fi'
+	 #'\setboolean{chapter_already_has_exercises}{false}'
+	 '\chapter{#2}\label{#3}'
+	 .'\ifx.#1.\else\addtocounter{section}{-1}\input{#1}\fi'
 	 .'\section*{Chapter Introduction}');
 
 
@@ -121,12 +134,21 @@ DefMacro('\lVert','\Vert');
 DefMacro('\rVert','\Vert');
 DefMacro('\lxenumerate{}','\begin{enumerate}');
 DefMacro('\psBill'); # todo
-DefMacro('\pdfbookmark[]{}{}','\addcontentsline{toc}{#1}{#2}'); # from hyperref
+#DefMacro('\pdfbookmark[]{}{}','\addcontentsline{toc}{#1}{#2}'); # from hyperref
 # that will work if #1 is "chapter" etc, but not a number or missing
+# and hyperref doesn't add it to the table of contents
+#DefMacro('\pdfbookmark[]{}{}',sub {
+#    my($gullet,$level,$text,$name)=@_;
+#    $level //= 'chapter';
+#    if ( looks_like_number($level) ) {
+#	$level = ['chapter','section','subsection','subsubsection']->[$level];
+#    }
+#    (T_CS('\\'.$level),T_BEGIN,$text,T_END); });
 
 
 # should be in hyperref
-DefMacro('\autopageref{}','\hyperref[{#1}]{\pageautorefname\ \pageref*{#1}}');
+#DefMacro('\autopageref{}','\hyperref[{#1}]{\pageautorefname\ \pageref*{#1}}');
+# but pages don't make sense
 
 # some macros we don't need
 DefMacro('\drawexampleline');
@@ -137,14 +159,14 @@ DefMacro('\testmarginbottom');
 
 
 # \mnote[offset=0]{contents}
-DefMacro('\mnote []{}','\begin{figure}[h]'
-	 .'\lxAddClass{marginnote}'
-	 .'\ifx.#1.\else\vspace{#1}\fi'
-	 .'\begin{minipage}[c]{\marginparwidth}'
-	 .'\captionsetup{type=figure}'
-	 .'#2'
-	 .'\end{minipage}'
-	 .'\end{figure}');
+#DefMacro('\mnote []{}','\begin{figure}[h]'
+#	 .'\lxAddClass{marginnote}'
+#	 .'\ifx.#1.\else\vspace{#1}\fi'
+#	 .'\begin{minipage}[c]{\marginparwidth}'
+#	 .'\captionsetup{type=figure}'
+#	 .'#2'
+#	 .'\end{minipage}'
+#	 .'\end{figure}');
 
 
 sub TheChapter {
@@ -155,7 +177,20 @@ sub TheSection {
 }
 
 my %foundChapter;
-DefMacro('\writeToAnsFile {}', sub {
+# have to keep it here because .sty has \noexpand, which gets written
+DefMacro('\writeToAnsFile {}', '\immediate\write\answrite{\answersForSection{'
+	 . CounterValue('chapter')->toString . '}{'
+	 . CounterValue('section')->toString . '}{'
+	 . $_[1] . '}}');
+
+#DefMacro('\writeToAnsFile {}', sub {
+#    @{Tokenize('\immediate\write\answrite{\answersForSection{'
+#	     . CounterValue('chapter')->toString . '}{'
+#	     . CounterValue('section')->toString . '}{'
+#	     . $_[1] . '}}')};
+#	 });
+
+if ( 1==0 ) {
     my @ret;
     if ( ! $foundChapter{TheChapter()} ) {
 	$foundChapter{TheChapter()} = 'true';
@@ -174,7 +209,7 @@ DefMacro('\writeToAnsFile {}', sub {
 	     $_[1],
 	     Tokenize('}}')); }
     @ret;
-	 });
+	 } #);
 
 DefPrimitive('\showans Number',sub {
     my ($stomach,$port) = @_;

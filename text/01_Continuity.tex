@@ -354,6 +354,9 @@ ymin=-1.1,ymax=.7,xmin=-.05,xmax=1.07,name=myplot]
 	\item[Iteration 2:]	$f(0.7)<0$, $f(0.8) > 0$, and at the midpoint, $0.75$, we see that $f(0.75) >0 $. So replace $0.8$ with $0.75$ and repeat. Note that we don't need to continue to check the endpoints, just the midpoint. Thus we put the rest of the iterations in \autoref{table:rootfinding}.
 \end{description}
 		
+Notice that in the 12$^\text{th}$ iteration we have the endpoints of the interval each starting with $0.739$. Thus we have narrowed the zero down to an accuracy of the first three places after the decimal. Using a computer, we have 
+\[ f(0.7390) = -0.00014, \quad f(0.7391) = 0.000024.\]
+%
 \mtable{Iterations of the Bisection Method of Root Finding}{table:rootfinding}%
 	{\footnotesize\noindent \begin{tabular}{ccc}
 		\parbox{3em}{Itera-\\tion \#} & Interval & Midpoint Sign \\ \midrule
@@ -370,9 +373,7 @@ ymin=-1.1,ymax=.7,xmin=-.05,xmax=1.07,name=myplot]
 		11 & $[0.7389,0.7391]$ & $f(0.7390)<0$\\
 		12 & $[0.7390,0.7391]$
 	\end{tabular}}%
-
-Notice that in the 12$^\text{th}$ iteration we have the endpoints of the interval each starting with $0.739$. Thus we have narrowed the zero down to an accuracy of the first three places after the decimal. Using a computer, we have 
-\[ f(0.7390) = -0.00014, \quad f(0.7391) = 0.000024.\]
+%
 Either endpoint of the interval gives a good approximation of where $f$ is 0. The Intermediate Value Theorem states that the actual zero is still within this interval. While we do not know its exact value, we know it starts with $0.739$. 
 
 This type of exercise is rarely done by hand. Rather, it is simple to program a computer to run such an algorithm and stop when the endpoints differ by a preset small amount. One of the authors did write such a program and found the zero of $f$, accurate to 10 places after the decimal, to be 0.7390851332. While it took a few minutes to write the program, it took less than a thousandth of a second for the program to run the necessary 35 iterations. In less than 8 hundredths of a second, the zero was calculated to 100 decimal places (with less than 200 iterations).}

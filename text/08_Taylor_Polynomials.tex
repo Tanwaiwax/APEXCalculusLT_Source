@@ -13,13 +13,12 @@ ymin=-5.5,ymax=8.5,xmin=-4.2,xmax=4.4]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}
-\smallskip\\
-\begin{tabular}{lll}
-$f(0) = 2$ & &$\fp''(0) = -1$\\
-$\fp(0) = 1$ &&	$f\,^{(4)}(0)=-12$ \\
-$\fpp(0) = 2$ && $f\,^{(5)}(0)=-19$
-\end{tabular}}
+\end{tikzpicture}\smallskip
+\begin{align*}
+f(0)&=2 & \fp''(0)&=-1\\
+\fp(0)&=1 & f\,^{(4)}(0)&=-12 \\
+\fpp(0)&=2 & f\,^{(5)}(0)&=-19
+\end{align*}}
 
 In \autoref{fig:taypolyintroa}, we see a function $y=f(x)$ graphed. The table below the graph shows that $f(0)=2$ and $\fp(0) = 1$; therefore, the tangent line to $f$ at $x=0$ is $p_1(x) = 1(x-0)+2 = x+2$. The tangent line is also given in the figure. Note that ``near'' $x=0$, $p_1(x) \approx f(x)$; that is, the tangent line approximates $f$ well.
 
@@ -100,13 +99,13 @@ We will practice creating Taylor and Maclaurin polynomials in the following exam
 {\begin{enumerate}
 \item We start with creating a table of the derivatives of $e^x$ evaluated at $x=0$. In this particular case, this is relatively simple, as shown in \autoref{fig:taypoly1a}.
 \mtable{The derivatives of $f(x)=e^x$ evaluated at $x=0$.}{fig:taypoly1a}{%
-\begin{tabular}{lll}
-$f(x) = e^x $&$\Rightarrow $&$f(0) = 1$\\
-$\fp(x) = e^x $&$\Rightarrow $&$\fp(0) = 1$\\
-$\fp'(x) = e^x $&$\Rightarrow $&$\fp'(0) = 1$\\
-$\ \vdots $& &$\ \vdots$\\
-$f\,^{(n)}(x) = e^x $&$\Rightarrow $&$f\,^{(n)}(0) = 1$
-\end{tabular}}
+\begin{align*}
+f(x)&=e^x & \Rightarrow && f(0)&=1 \\
+\fp(x)&=e^x & \Rightarrow && \fp(0)&=1 \\
+\fpp(x)&=e^x & \Rightarrow && \fpp(0)&=1 \\
+\vdots &&&& \vdots \\
+f\,^{(n)}(x)&=e^x & \Rightarrow && f\,^{(n)}(0)&=1
+\end{align*}}
 By the definition of the Maclaurin series, we have 
 \[
 	p_n(x)
@@ -153,16 +152,16 @@ Using \autoref{def:taypoly}, we have
 
 \item	We can compute $p_6(x)$ using our work above:
 \mtable[-5\baselineskip]{Derivatives of $\ln x$ evaluated at $x=1$.}{fig:taypoly2a}{%
-\begin{tabular}{lll}
-$f(x) = \ln x $&$\Rightarrow $&$f(1) = \phantom-0$\\
-$\fp(x) = \phantom-1/x $&$\Rightarrow $&$\fp(1) = \phantom-1$\\
-$\fp'(x) = -1/x^2 $&$\Rightarrow $&$\fp'(1) = -1$\\
-$\fp''(x) = \phantom-2/x^3 $&$\Rightarrow $&$\fp''(1) = \phantom-2$\\
-$f\,^{(4)}(x) = -6/x^4 $&$\Rightarrow $&$f\,^{(4)}(1) = -6$\\
-$\ \vdots $& &$\ \vdots$\\
-$f\,^{(n)}(x) = $ &$\Rightarrow$ & $f\,^{(n)}(1) = $\\
-$\ds \rule{0pt}{15pt}\frac{(-1)^{n+1}(n-1)!}{x^n}$ \hspace{-2em} & & $(-1)^{n+1}(n-1)!$
-\end{tabular}}
+\begin{align*}
+f(x) &= \ln x & \Rightarrow && f(1)&=\phantom-0\\
+\fp(x) &= \phantom-1/x & \Rightarrow && \fp(1) &= \phantom-1\\
+\fp'(x) &= -1/x^2 & \Rightarrow && \fp'(1) &= -1\\
+\fp''(x) &= \phantom-2/x^3 & \Rightarrow && \fp''(1) &= \phantom-2\\
+f\,^{(4)}(x) &= -6/x^4 & \Rightarrow && f\,^{(4)}(1) &= -6\\
+\vdots &&&& \vdots\\
+f\,^{(n)}(x) &= & \Rightarrow && f\,^{(n)}(1) &= \smallskip\\
+\makebox[0pt]{$\dfrac{(-1)^{n+1}(n-1)!}{x^n}$} &&&& \makebox[0pt]{$(-1)^{n+1}(n-1)!$}
+\end{align*}}
 \[
 p_6(x)
  = (x-1)-\frac12(x-1)^2+\frac13(x-1)^3-\frac14(x-1)^4+\frac15(x-1)^5-\frac16(x-1)^6.
@@ -206,6 +205,7 @@ This approximation is not terribly impressive: a hand held calculator shows that
 % This is an error of $0.08$, or $11\%$. % this is in next example
 The graph in \autoref{fig:taypoly2b} shows that $p_6(x)$ provides less accurate approximations of $\ln x$ as $x$ gets close to 0 or 2. 
 
+% todo use 20th degree polynomial instead of coordinates in Figure 9.9.8 fig:taypoly2c
 \mtable{A plot of $y=\ln x$ and its 20$^\text{th}$ degree Taylor polynomial at $x=1$.}{fig:taypoly2c}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
@@ -294,18 +294,18 @@ We practice again. This time, we use Taylor's theorem to find $n$ that guarantee
 We find an $n$ that satisfies this last inequality with trial--and--error. When $n=8$, we have $\ds \frac{2^{8+1}}{(8+1)!} \approx 0.0014$; when $n=9$, we have $\ds \frac{2^{9+1}}{(9+1)!} \approx 0.000282 <0.001$. Thus we want to approximate $\cos 2$ with $p_9(2)$.\\
 
 We now set out to compute $p_9(x)$. We again need a table of the derivatives of $f(x)=\cos x$ evaluated at $x=0$. A table of these values is given in \autoref{fig:taypoly4a}. Notice how the derivatives, evaluated at $x=0$, follow a certain pattern. All the odd powers of $x$ in the Taylor polynomial will disappear as their coefficient is 0. While our error bounds state that we need $p_9(x)$, our work shows that this will be the same as $p_8(x)$. 
-\mtable[-5\baselineskip]{A table of the derivatives of $f(x)=\cos x$ evaluated at $x=0$.}{fig:taypoly4a}{\begin{tabular}{lll}
-$f(x) = \phantom-\cos x$ & $\Rightarrow$ & $f(0) = \phantom-1$\\
-$\fp(x) = -\sin x$ & $\Rightarrow$ & $\fp(0) = \phantom-0$\\
-$\fp'(x) = -\cos x$ & $\Rightarrow$ & $\fp'(0) = -1$\\
-$\fp''(x) = \phantom-\sin x$ & $\Rightarrow$ & $\fp''(0) = \phantom-0$\\
-$f\,^{(4)}(x) = \phantom-\cos x$ & $\Rightarrow$ & $f\,^{(4)}(0) = \phantom-1$\\
-$f\,^{(5)}(x) = -\sin x$ & $\Rightarrow$ & $f\,^{(5)}(0) = \phantom-0$\\
-$f\,^{(6)}(x) = -\cos x$ & $\Rightarrow$ & $f\,^{(6)}(0) = -1$\\
-$f\,^{(7)}(x) = \phantom-\sin x$ & $\Rightarrow$ & $f\,^{(7)}(0) = \phantom-0$\\
-$f\,^{(8)}(x) = \phantom-\cos x$ & $\Rightarrow$ & $f\,^{(8)}(0) = \phantom-1$\\
-$f\,^{(9)}(x) = -\sin x$ & $\Rightarrow$ & $f\,^{(9)}(0) = \phantom-0$
-\end{tabular}}
+\mtable[-7\baselineskip]{A table of the derivatives of $f(x)=\cos x$ evaluated at $x=0$.}{fig:taypoly4a}{\begin{align*}
+f(x) &= \phantom-\cos x & \Rightarrow && f(0) &= \phantom-1\\
+\fp(x) &= -\sin x & \Rightarrow && \fp(0) &= \phantom-0\\
+\fp'(x) &= -\cos x & \Rightarrow && \fp'(0) &= -1\\
+\fp''(x) &= \phantom-\sin x & \Rightarrow && \fp''(0) &= \phantom-0\\
+f\,^{(4)}(x) &= \phantom-\cos x & \Rightarrow && f\,^{(4)}(0) &= \phantom-1\\
+f\,^{(5)}(x) &= -\sin x & \Rightarrow && f\,^{(5)}(0) &= \phantom-0\\
+f\,^{(6)}(x) &= -\cos x & \Rightarrow && f\,^{(6)}(0) &= -1\\
+f\,^{(7)}(x) &= \phantom-\sin x & \Rightarrow && f\,^{(7)}(0) &= \phantom-0\\
+f\,^{(8)}(x) &= \phantom-\cos x & \Rightarrow && f\,^{(8)}(0) &= \phantom-1\\
+f\,^{(9)}(x) &= -\sin x & \Rightarrow && f\,^{(9)}(0) &= \phantom-0
+\end{align*}}
 
 Since we are forming our polynomial at $x=0$, we are creating a Maclaurin polynomial, and:
 \[
@@ -342,13 +342,14 @@ Our error bound guarantee that this approximation is within $0.001$ of the corre
 	\item	Find bounds on the error when approximating $\sqrt{3}$ with $p_4(3)$.
 \end{enumerate}}
 {\mtable{A table of the derivatives of $f(x)=\sqrt{x}$ evaluated at $x=4$.}{fig:taypoly5a}{%
-\begin{tabular}{lll}
-$f(x) = \sqrt{x} $&$\Rightarrow $&$f(4) = 2$\rule[-12pt]{0pt}{5pt}\\
-$\ds\fp(x) = \frac{1}{2\sqrt{x}} $&$\Rightarrow $&$\ds\fp(4) = \frac{1}{4}$\rule[-12pt]{0pt}{5pt}\\
-$\ds\fp'(x) = \frac{-1}{4x^{3/2}} $&$\Rightarrow $&$\ds\fp'(4) = \frac{-1}{32}$\rule[-12pt]{0pt}{5pt}\\
-$\ds\fp''(x) = \frac3{8x^{5/2}} $&$\Rightarrow $&$\ds\fp''(4) = \frac{3}{256}$\rule[-12pt]{0pt}{5pt}\\
-$\ds f\,^{(4)}(x) = \frac{-15}{16x^{7/2}} $&$\Rightarrow $&$\ds f\,^{(4)}(4) = \frac{-15}{2048}$
-\end{tabular}}
+\begin{align*}
+f(x) &= \sqrt{x} & \Rightarrow && f(4) &= 2\\
+\ds\fp(x) &= \frac{1}{2\sqrt{x}} & \Rightarrow && \ds\fp(4) &= \frac{1}{4}\\
+\ds\fp'(x) &= \frac{-1}{4x^{3/2}} & \Rightarrow && \ds\fp'(4) &= \frac{-1}{32}\\
+\ds\fp''(x) &= \frac3{8x^{5/2}} & \Rightarrow && \ds\fp''(4) &= \frac{3}{256}\\
+\ds f\,^{(4)}(x) &= \frac{-15}{16x^{7/2}} & \Rightarrow
+&& \ds f\,^{(4)}(4) &= \frac{-15}{2048}
+\end{align*}}
 \begin{enumerate}
 	\item	We begin by evaluating the derivatives of $f$ at $x=4$. This is done in \autoref{fig:taypoly5a}. These values allow us to form the Taylor polynomial $p_4(x)$:
 %\flushinnerequ{%
@@ -361,8 +362,10 @@ p_4(x) = //
 	\item	As $p_4(x) \approx \sqrt{x}$ near $x=4$, we approximate $\sqrt{3}$ with $p_4(3) = 1.73212$.
 
 	\item	To find a bound on the error, we need an open interval that contains $x=3$ and $x=4$. We set $I = (2.9,4.1)$. The largest value the fifth derivative of $f(x)=\sqrt{x}$ takes on this interval is near $x=2.9$, at about $0.0273$. Thus
+\[\abs{R_4(3)} \leq \frac{0.0273}{5!}\abs{3-4}^5 \approx 0.00023.\]
+This shows our approximation is accurate to at least the first 2 places after the decimal. It turns out that our approximation has an error of $0.00007$, or $0.004\%$. A graph of $f(x)=\sqrt x$ and $p_4(x)$ is given in \autoref{fig:taypoly5b}. Note how the two functions are nearly indistinguishable on $(2,7)$.\eoehere
 %
-\mtable{A graph of $f(x)=\sqrt{x}$ and its degree 4 Taylor polynomial at $x=4$.}{fig:taypoly5b}{\begin{tikzpicture}
+\mtable[-4\baselineskip]{A graph of $f(x)=\sqrt{x}$ and its degree 4 Taylor polynomial at $x=4$.}{fig:taypoly5b}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
 ymin=-.1,ymax=3.5,xmin=-1,xmax=11]
@@ -379,8 +382,6 @@ ymin=-.1,ymax=3.5,xmin=-1,xmax=11]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}%
 %
-\[\abs{R_4(3)} \leq \frac{0.0273}{5!}\abs{3-4}^5 \approx 0.00023.\]
-This shows our approximation is accurate to at least the first 2 places after the decimal. It turns out that our approximation has an error of $0.00007$, or $0.004\%$. A graph of $f(x)=\sqrt x$ and $p_4(x)$ is given in \autoref{fig:taypoly5b}. Note how the two functions are nearly indistinguishable on $(2,7)$.\eoehere
 \end{enumerate}}
 
 %Our final example gives a brief introduction to using Taylor polynomials to solve differential equations.

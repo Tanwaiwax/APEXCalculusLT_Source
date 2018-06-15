@@ -163,9 +163,10 @@ We introduced the cross product as a way to find a vector orthogonal to two give
 
 Property 5 from the theorem is also left to the reader to prove in Exercise \ref{cross_self}, but it reveals something more interesting than ``the cross product of a vector with itself is $\vec 0$.'' Let $\vec u$ and $\vec v$ be parallel vectors; that is, let there be a scalar $c$ such that $\vecv = c\vecu$. Consider their cross product:
 \begin{align*}
-\crossp uv &= \vecu \times (c\vec u) \\
-					&=	\parbox{50pt}{$c(\crossp uu)$}\text{(by Property 3 of \autoref{thm:cross_prod_prop})}\\
-					&= \parbox{50pt}{$\vec 0$.}\text{(by Property 5 of \autoref{thm:cross_prod_prop})}
+	\crossp uv
+	&= \vecu \times (c\vec u) \\
+	&= c(\crossp uu) & \text{(by Property 3 of \autoref{thm:cross_prod_prop})} \\
+	&= \vec 0. & \text{(by Property 5 of \autoref{thm:cross_prod_prop})}
 \end{align*}
 
 We have just shown that the cross product of parallel vectors is $\vec 0$. This hints at something deeper. \autoref{thm:dot_product} related the angle between two vectors and their dot product; there is a similar relationship relating the cross product of two vectors and the angle between them, given by the following theorem.
@@ -176,7 +177,13 @@ We have just shown that the cross product of parallel vectors is $\vec 0$. This 
 where $\theta$, $0\leq \theta \leq \pi$, is the angle between $\vecu$ and $\vecv$.
 \index{vectors!cross product}\index{cross product!properties}}
 
-\mnote{\textbf{Note:} \autoref{def:orthogonal} (through \autoref{thm:dot_product}) defines $\vec u$ and $\vec v$ to be orthogonal if $\vec u\cdot\vec v=0$. We could use \autoref{thm:cross_product} to define $\vec u$ and $\vec v$ are parallel if $\vec u\times \vec v = 0$. By such a definition, $\vec 0$ would be both orthogonal and parallel to every vector. Apparent paradoxes such as this are not uncommon in mathematics and can be very useful. (See also the marginal note on \autopageref{note:parallel}.)\label{note:crossp}}
+\mnote{\textbf{Note:} \autoref{def:orthogonal} (through \autoref{thm:dot_product}) defines $\vec u$ and $\vec v$ to be orthogonal if $\vec u\cdot\vec v=0$. We could use \autoref{thm:cross_product} to define $\vec u$ and $\vec v$ are parallel if $\vec u\times \vec v = 0$. By such a definition, $\vec 0$ would be both orthogonal and parallel to every vector. Apparent paradoxes such as this are not uncommon in mathematics and can be very useful. (See also the marginal note%
+\ifthenelse{\boolean{latexml}}{%
+ \ at \autoref{def:parallel_vectors}%
+}{%
+ \ on \autopageref{note:parallel}%
+}%
+.)\label{note:crossp}}
 
 Note that this theorem makes a statement about the \emph{magnitude} of the cross product. When the angle between $\vecu$ and $\vecv$ is 0 or $\pi$ (i.e., the vectors are parallel), the magnitude of the cross product is 0. The only vector with a magnitude of 0 is $\vec 0$ (see Property \ref{thm:zero_norm} of \autoref{thm:vector_properties}), hence the cross product of  parallel vectors is $\vec 0$.\bigskip
 
@@ -251,8 +258,15 @@ where the second equality comes from \autoref{thm:cross_product}.
 We illustrate using \autoeqref{eq:crossp1} in the following example.
 \index{cross product!applications!area of parallelogram}
 
+\example{ex_crossp4}{Finding the area of a parallelogram}{\mbox{}\\[-2\baselineskip]\begin{enumerate}
+	\item Find the area of the parallelogram defined by the vectors $\vecu = \bracket{2,1}$ and $\vecv = \bracket{1,3}$.
+	\item	Verify that the points $A = (1,1,1)$, $B = (2,3,2)$, $C = (4,5,3)$ and $D = (3,3,2)$ are the vertices of a parallelogram. Find the area of the parallelogram.
+\end{enumerate}}
+{\mbox{}\\[-1.5\baselineskip]\begin{enumerate}
+	\item \autoref{fig:crossp4}(a) sketches the parallelogram defined by the vectors $\vec u$ and $\vec v$. We have a slight problem in that our vectors exist in $\mathbb{R}^2$, not $\mathbb{R}^3$, and the cross product is only defined on vectors in $\mathbb{R}^3$. We skirt this issue by viewing $\vec u$ and $\vecv$ as vectors in the $x-y$ plane of $\mathbb{R}^3$, and rewrite them as $\vec u = \bracket{2,1,0}$ and $\vecv =\bracket{1,3,0}$. We can now compute the cross product.
+%
 % todo Tim this parallelogram is very narrow.  do we want something better?
-\mtable{Sketching the parallelograms in \autoref{ex_crossp4}.}{fig:crossp4}{%
+\mtable[-6\baselineskip]{Sketching the parallelograms in \autoref{ex_crossp4}.}{fig:crossp4}{%
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2,3,4},
@@ -274,16 +288,13 @@ ytick={1,2,3,4,5},ymin=-.5,ymax=5.5,xmin=-.5,xmax=4.5]
 3Dcoo=61 60 63,
 3Droo=250}{width=\marginparwidth}{figures/figcrossp4a_3D}\\
 	(b)}
-
-\example{ex_crossp4}{Finding the area of a parallelogram}{\mbox{}\\[-2\baselineskip]\begin{enumerate}
-	\item Find the area of the parallelogram defined by the vectors $\vecu = \bracket{2,1}$ and $\vecv = \bracket{1,3}$.
-	\item	Verify that the points $A = (1,1,1)$, $B = (2,3,2)$, $C = (4,5,3)$ and $D = (3,3,2)$ are the vertices of a parallelogram. Find the area of the parallelogram.
-\end{enumerate}}
-{\mbox{}\\[-1.5\baselineskip]\begin{enumerate}
-	\item \autoref{fig:crossp4}(a) sketches the parallelogram defined by the vectors $\vec u$ and $\vec v$. We have a slight problem in that our vectors exist in $\mathbb{R}^2$, not $\mathbb{R}^3$, and the cross product is only defined on vectors in $\mathbb{R}^3$. We skirt this issue by viewing $\vec u$ and $\vecv$ as vectors in the $x-y$ plane of $\mathbb{R}^3$, and rewrite them as $\vec u = \bracket{2,1,0}$ and $\vecv =\bracket{1,3,0}$. We can now compute the cross product. 
-	It is easy to show that $\crossp uv = \bracket{0,0,5}$; therefore the area of the parallelogram is $A = \norm{\crossp uv} = 5$.
+%
+It is easy to show that $\crossp uv = \bracket{0,0,5}$; therefore the area of the parallelogram is $A = \norm{\crossp uv} = 5$.
 	\item		To show that the quadrilateral $ABCD$ is a parallelogram (shown in \autoref{fig:crossp4}(b)), we need to show that the opposite sides are parallel. We can quickly show that $\vv{AB} =\vv{DC} = \bracket{1,2,1}$ and $\vv{BC} = \vv{AD} = \bracket{2,2,1}$. We find the area by computing the magnitude of the cross product of $\vv{AB}$ and $\vv{BC}$:
-	\[\vv{AB} \times \vv{BC} = \bracket{0,1,-2}\quad \Rightarrow \quad \norm{\vv{AB}\times\vv{BC}} = \sqrt{5}.\eoehere\]%  \approx 2.236
+	\[
+	\vv{AB} \times \vv{BC} = \bracket{0,1,-2}\quad \Rightarrow \quad
+	\norm{\vv{AB}\times\vv{BC}} = \sqrt{5}.\eoehere
+	\]%  \approx 2.236
 \end{enumerate}}
 
 This application is more commonly used to find the area of a triangle (because triangles are used more often than parallelograms). We illustrate this in the following example.
@@ -313,8 +324,9 @@ We arrive at the same answer as before with less work.}
 \subsubsection{Volume of a Parallelepiped}
 
 The three dimensional analogue to the parallelogram is the \textbf{parallelepiped}.
-%
-\mnote{\textbf{Note:} The word ``parallelepiped'' is pronounced ``parallel--eh--pipe--ed.''}%
+Each face is parallel to the opposite face, as illustrated in \autoref{fig:crossp_parallelepiped}. By crossing $\vec v$ and $\vec w$, one gets a vector whose magnitude is the area of the base. Dotting this vector with $\vecu$ computes the volume of parallelepiped! (Up to a sign; take the absolute value.)
+
+\mnote[-5\baselineskip]{\textbf{Note:} The word ``parallelepiped'' is pronounced ``parallel--eh--pipe--ed.''}%
 %
 \mtable{A parallelepiped is the three dimensional analogue to the parallelogram.}{fig:crossp_parallelepiped}{%
 \myincludeasythree{width=.5\marginparwidth,
@@ -325,8 +337,6 @@ The three dimensional analogue to the parallelogram is the \textbf{parallelepipe
 3Droo=150}{width=.5\marginparwidth}{figures/figcrosspparallelpiped_3D}}%
 %
 \index{cross product!applications!volume of parallelepiped}%
-%
-Each face is parallel to the opposite face, as illustrated in \autoref{fig:crossp_parallelepiped}. By crossing $\vec v$ and $\vec w$, one gets a vector whose magnitude is the area of the base. Dotting this vector with $\vecu$ computes the volume of parallelepiped! (Up to a sign; take the absolute value.)
 
 Thus the volume of a parallelepiped defined by vectors $\vecu$, $\vecv$ and $\vec w$ is
 \begin{equation}

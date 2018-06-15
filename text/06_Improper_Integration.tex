@@ -192,7 +192,7 @@ ymin=-.1,ymax=.5,xmin=-1,xmax=11]
 The $1/t$ goes to 0, and $\ln 1=0$, leaving
 % $\ds \lim_{t\to\infty} -\frac{\ln t}t + 1$. We need to evaluate
 $\ds \lim_{t\to\infty} \frac{\ln t}{t}$ with L'H\^opital's Rule. We have:
-\[\lim_{t\to\infty}\frac{\ln t}t \stackrel{\ \text{ by LHR \rule[-5pt]{0pt}{3pt}} \ }{=} \lim_{t\to\infty} \frac{1/t}{1} = 0.\]
+\[\lim_{t\to\infty}\frac{\ln t}t \LHequals \lim_{t\to\infty} \frac{1/t}{1} = 0.\]
 Thus the improper integral evaluates as:
 \[\int_1^\infty\frac{\ln x}{x^2}\ dx = 1.\eoehere\]}
 
@@ -239,8 +239,13 @@ Notice that $f$ has a vertical asymptote at $x=0$. In some sense, we are trying 
 It turns out that the region does have a finite area even though it has no upper bound (strange things can occur in mathematics when considering the infinite).
 
 \item		The function $f(x) = 1/x^2$ has a vertical asymptote at $x=0$, as shown in \autoref{fig:impint3b}, so this integral is an improper integral. Let's eschew using limits for a moment and proceed without recognizing the improper nature of the integral. This leads to:
+\begin{align*}
+\int_{-1}^1\frac1{x^2}\ dx &= -\frac1x\Big|_{-1}^1\\
+			&= -1 - (1)\\
+			&=-2.
+\end{align*}
 %
-\mtable{A graph of $f(x)=\frac{1}{x^2}$ in \autoref{ex_impint3}.}{fig:impint3b}{\begin{tikzpicture}
+\mtable[-4\baselineskip]{A graph of $f(x)=\frac{1}{x^2}$ in \autoref{ex_impint3}.}{fig:impint3b}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
 ymin=-.1,ymax=11,xmin=-1.1,xmax=1.1]
@@ -257,11 +262,6 @@ ymin=-.1,ymax=11,xmin=-1.1,xmax=1.1]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 %
-\begin{align*}
-\int_{-1}^1\frac1{x^2}\ dx &= -\frac1x\Big|_{-1}^1\\
-			&= -1 - (1)\\
-			&=-2.
-\end{align*}
 Clearly the area in question is above the $x$-axis, yet the area is supposedly negative. In this example we noted the discontinuity of the integrand on $[-1,1]$ (its improper nature) but continued anyway to apply the Fundamental Theorem of Calculus. Violating the hypothesis of the FTC led us to an incorrect area of $-2$. If we now evaluate the integral using \autoref{def:imp_int2} we will see that the area is unbounded.
 \begin{align*}
 	\int_{-1}^1\frac1{x^2}\ dx

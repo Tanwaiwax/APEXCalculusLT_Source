@@ -108,12 +108,6 @@ Notes:
     \hrule height 1pt
     \vskip 10\p@
   }}
-
-%%  
-%%%\makeatletter
-%%\def\@makesectionhead#1{%
-%%	 {\reset@font\LARGE\itshape\bfseries\strut #1 \thechapter.\thesection \ #1
-%%	 }}
 \makeatother
 
 
@@ -158,8 +152,6 @@ Notes:
 \newcommand*{\norm}[1]{\ensuremath{\left\lVert #1 \right\rVert}}
 \newcommand*{\vnorm}[1]{\ensuremath{\norm{\vec #1}}}
 \newcommand{\bracket}[1]{\left\langle #1\right\rangle}
-%\newcommand{\la}{\left\langle}
-%\newcommand{\ra}{\right\rangle}
 \newcommand*{\dotp}[2]{\ensuremath{\vec #1 \cdot \vec #2}}
 \newcommand*{\proj}[2]{\ensuremath{\text{proj}_{\,\vec #2}{\,\vec #1}}}
 \newcommand*{\crossp}[2]{\ensuremath{\vec #1 \times \vec #2}}
@@ -193,16 +185,13 @@ Notes:
 \newcommand{\pf}{\ensuremath{\partial f}}
 \newcommand{\underlinespace}{\underline{\phantom{xxxxxx}}}
 
-%\newcommand{\mathN}{\ensuremath{\mathbb{N}}}
-
-\newcommand{\zerooverzero}{\ensuremath{\ds \raisebox{8pt}{\text{``\ }}\frac{0}{0}\raisebox{8pt}{\text{\ ''}}}}
-
+\newcommand{\zerooverzero}{\dfrac{\makebox[0pt]{\text{`` }0\text{ ''}}}0\ \ }
 
 \newcommand{\myrule}{\iflatexml\else\rule[-4pt]{0pt}{13pt}\fi}
 \newcommand{\mmrule}{\iflatexml\else\rule[-10pt]{0pt}{15pt}\fi}
-\newcommand{\myds}{\ds\mmrule}
-\newcommand*{\deriv}[2]{\ensuremath{\myds\frac{d}{dx}\left(#1\right)=#2}}
-\newcommand*{\myint}[2]{\ensuremath{\myds\int #1\ dx=} \ensuremath{\ds #2}}
+%\newcommand{\myds}{\ds\mmrule}
+%\newcommand*{\deriv}[2]{\ensuremath{\myds\frac{d}{dx}\left(#1\right)=#2}}
+%\newcommand*{\myint}[2]{\ensuremath{\myds\int #1\ dx=} \ensuremath{\ds #2}}
 
 
 \DeclareMathOperator{\sech}{sech}
@@ -216,6 +205,8 @@ Notes:
 
 \newcommand{\primeskip}{\hskip.75pt}
 
+\newcommand{\LHequals}{\mathrel{\overset{\text{by LHR}}{=}}}
+
 \newcommand{\surfaceS}{\ensuremath{\mathcal{S}}}
 
 %%%% Begin Header TikZ
@@ -223,50 +214,8 @@ Notes:
 %  Some TiKZ  shortcuts to help make drawing 3D vectors faster.
 %
 
-%\newcommand{\plotlinecolor}{blue}
-
-%
-% Draw x and y tick marks
-%
-%\newcommand{\drawxticks}[1]
-%{\foreach \x in {#1}
-%		{\draw  (\x,-.1)--(\x,.1);
-%			};
-%}
-%\newcommand{\drawyticks}[1]
-%{\foreach \x in {#1}
-%		{\draw  (-.1,\x)--(.1,\x);
-%			};
-%}
-
-%\newcommand{\drawxlines}[3]
-%{\draw[<->] (#1,0) -- (#2,0) node [right] {$x$};
-%\foreach \x in {#3}
-%		{\draw  (\x,-.1)--(\x,.1);
-%			};
-%}
-
-%\newcommand{\drawylines}[3]
-%{\draw[<->] (0,#1) -- (0,#2) node [above] {$y$};
-%\foreach \x in {#3}
-%		{\draw  (-.1,\x)--(.1,\x);
-%			};
-%}
-
-%\newcommand{\drawxlabels}[1]
-%{\foreach \x in {#1}
-%		{\draw  (\x,-.1) node [below] {\scriptsize $\x$};
-%		};
-%}
-
-%\newcommand{\drawylabels}[1]
-%{\foreach \x in {#1}
-%		{\draw  (-.1,\x) node [left] {\scriptsize $\x$};
-%		};
-%}
-
 %% draw a box of margin width size to see if figure is properly contained within
-\newcommand{\marginsizebox}{\draw (0,0)--(\marginparwidth,0)--(\marginparwidth,3)--(0,3)--cycle;}
+%\newcommand{\marginsizebox}{\draw (0,0)--(\marginparwidth,0)--(\marginparwidth,3)--(0,3)--cycle;}
 
 %%%%
 %%%%
@@ -274,9 +223,9 @@ Notes:
 \newspecialbox[notempty]{exvideo}{ignored}{240}
 
 % \jmtVideo{youtube code}{jmt url suffix}{actual title}
-\newcommand{\jmtVideo}[3]{\genVideo{#1}{http://patrickjmt.com/#2/}{#3}}
+%\newcommand{\jmtVideo}[3]{\genVideo{#1}{http://patrickjmt.com/#2/}{#3}}
 
-\newcommand{\khanVideo}[3]{\genVideo[?utm_campaign=embed]{#1}{https://www.khanacademy.org/video/#2}{#3}}
+%\newcommand{\khanVideo}[3]{\genVideo[?utm_campaign=embed]{#1}{https://www.khanacademy.org/video/#2}{#3}}
 
 
 % \mfigure[graphicsoptions]{offset}{caption}{label}{file}
@@ -291,18 +240,20 @@ Notes:
 	\mnote[#1]{\centering\small#4\captionof{figure}{#2}\label{#3}}
 }
 
-% mnote in apex_style.sty
-
-%% \mfigurethree{mediaoptions}{graphicsoptions}{offset}{caption}{label}{file}
-%\newcommand{\mfigurethree}[6]%
-%	{\mnote[#3]{\centering%
-%		\ifthenelse{\boolean{in_threeD}}{% in 3D
-%			\includemedia[#1]{\myincludegraphics{#6_3D\colornamesuffix}}{#6_3D.prc}
-%		}{% not
-%			\myincludegraphics[#2]{#6}
-%		}%
-%		\captionof{figure}{#4}\label{#5}
-%}}
+% \mnote[offset=0]{contents}
+\newcommand{\mnote}[2][0pt]{%
+	\marginpar{\vspace{#1}%
+		\begin{minipage}[c]{\marginparwidth}
+			\captionsetup{type=figure}%
+			\testmargintop%
+			\mbox{}%\makebox[0pt]{\tikz\draw(0,0)circle(1pt);}%
+			\\[-\baselineskip]
+			#2\ifhmode\unskip\fi
+			\testmarginbottom%
+			%\makebox[0pt]{\tikz\draw(0,0)circle(2pt);}
+		\end{minipage}%
+}}
+% mnote was in apex_style.sty
 
 
 \newenvironment{lxfigure}{%
@@ -328,7 +279,7 @@ Notes:
 
 % todo remove mecmath \Dotprod command
 
-\newcommand{\Dotprod}[2]{ #1 \cdot #2 }
+%\newcommand{\Dotprod}[2]{ #1 \cdot #2 }
 
 % end mecmath
 

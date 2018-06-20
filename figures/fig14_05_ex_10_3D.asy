@@ -23,9 +23,9 @@ label("$y$",(0,ybounds.y+0.05*(ybounds.y-ybounds.x),0));
 label("$z$",(0,0,zbounds.y+0.05*(zbounds.y-zbounds.x)));
 
 //edges of object
-draw((0,1,0)--(2,1,0)--(2,0,0)--cycle,blue+linewidth(2));
-draw((0,1,0)--(2,1,4)--(2,1,0)--cycle,blue+linewidth(2));
-draw((0,1,0)--(2,1,4)--(2,0,0)--cycle,blue+linewidth(2));
+draw((0,1,0)--(2,1,0)--(2,0,0)--cycle,colorone+linewidth(2));
+draw((0,1,0)--(2,1,4)--(2,1,0)--cycle,colorone+linewidth(2));
+draw((0,1,0)--(2,1,4)--(2,0,0)--cycle,colorone+linewidth(2));
 
 //shade plane
 path3 p=(0,1,0)--(2,1,4)--(2,0,0);

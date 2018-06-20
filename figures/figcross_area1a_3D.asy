@@ -36,7 +36,7 @@ triple f4(real t) {
   return (t,-t,-t);
 }
 //path3 mypath1=graph(f1,2.8,3.2,operator ..);
-//draw(mypath1,blue+.3mm);
+//draw(mypath1,colorone+.3mm);
 
 real x1=2.8;
 real x2=3.2;

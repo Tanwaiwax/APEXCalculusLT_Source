@@ -23,13 +23,13 @@ label("$x$",(xbounds.y+0.05*(xbounds.y-xbounds.x),0,0));
 label("$y$",(0,ybounds.y+0.05*(ybounds.y-ybounds.x),0));
 label("$z$",(0,0,zbounds.y+0.05*(zbounds.y-zbounds.x)));
 
-//Draw the curve x=sin(z) in red
+//Draw the curve x=sin(z)
 triple g(real t) {return (sin(t),0,t);}
 path3 mypath=graph(g,0,pi,operator ..);
 draw(mypath,colortwo);
 label("$x=\sin(z)$",(.5,0,1.75));
 
-//Draw the curve y=sin(z) in blue
+//Draw the curve y=sin(z)
 triple g(real t) {return (0,sin(t),t);}
 path3 mypath=graph(g,0,pi,operator ..);
 draw(mypath,colorone);

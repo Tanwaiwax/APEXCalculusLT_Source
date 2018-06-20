@@ -5,6 +5,7 @@
 * [exercises/10_02_exset_02.tex line 61](../exercises/10_02_exset_02.tex#L61): todo convert 11.2#14,15 to asymptote figures
 * [exercises/10_03_exercises.tex line 41](../exercises/10_03_exercises.tex#L41): todo the solution to 11.3#40-46
 * [exercises/10_04_exercises.tex line 49](../exercises/10_04_exercises.tex#L49): todo the solution to 11.4#8
+* [exercises/10_04_exercises.tex line 115](../exercises/10_04_exercises.tex#L115): todo the solutions to 11.4#49-60
 * [exercises/10_Other_Systems_exercises.tex line 95](../exercises/10_Other_Systems_exercises.tex#L95): todo the solution to 11.7#29, 31-33
 * [exercises/12_02_exercises.tex line 27](../exercises/12_02_exercises.tex#L27): todo add exercises asking students to evaluate limits
 * [exercises/12_04_exercises.tex line 25](../exercises/12_04_exercises.tex#L25): todo add exercises asking where a function is differentiable

@@ -13,17 +13,17 @@
 * [exercises/09_03_exercises.tex line 27](../exercises/09_03_exercises.tex#L27): todo write area enclosed by parametric curves problems
 * [exercises/09_03_exset_02.tex line 21](../exercises/09_03_exset_02.tex#L21): todo also find the vertical tangents in 10.3#13-20
 * [text/05_Numerical_Integration.tex line 591](../text/05_Numerical_Integration.tex#L591): todo write an example of ``find the n so that the estimate is within ? of the actual''
-* [text/06_Integration_Strategies.tex line 145](../text/06_Integration_Strategies.tex#L145): todo write an example and exercises with Weierstrass' method (x=tan(t/2))
-* [text/06_Integration_Strategies.tex line 147](../text/06_Integration_Strategies.tex#L147): todo write exercises using reduction formulas
+* [text/06_Integration_Strategies.tex line 146](../text/06_Integration_Strategies.tex#L146): todo write an example and exercises with Weierstrass' method (x=tan(t/2))
+* [text/06_Integration_Strategies.tex line 148](../text/06_Integration_Strategies.tex#L148): todo write exercises using reduction formulas
 * [text/07_Arc_Length.tex line 233](../text/07_Arc_Length.tex#L233): todo write out the integration in ``Finding surface area of a solid of revolution''
-* [text/07_Disk_Washer_Method.tex line 186](../text/07_Disk_Washer_Method.tex#L186): todo create and work out an example where the same region is rotated about the x axis and y axis but the disk method (for both) shows that they have different volumes
+* [text/07_Disk_Washer_Method.tex line 182](../text/07_Disk_Washer_Method.tex#L182): todo create and work out an example where the same region is rotated about the x axis and y axis but the disk method (for both) shows that they have different volumes
 * [text/07_Exp_Log_Functions.tex line 279](../text/07_Exp_Log_Functions.tex#L279): todo write another logarithmic differentiation example
 * [text/07_Inverse_Functions.tex line 233](../text/07_Inverse_Functions.tex#L233): todo write more exercises for 7.1
 * [text/08_Alternating_Series.tex line 206](../text/08_Alternating_Series.tex#L206): todo example 9.5.3 switches from < to <= midstream
-* [text/08_Power_Series.tex line 416](../text/08_Power_Series.tex#L416): todo write a transition paragraph from this section to the next
-* [text/08_Sequences.tex line 303](../text/08_Sequences.tex#L303): todo write a transition paragraph to geometric sequences
-* [text/08_Sequences.tex line 326](../text/08_Sequences.tex#L326): todo add a geometric sequence example
-* [text/08_Sequences.tex line 328](../text/08_Sequences.tex#L328): todo use more than just color to distinguish a_n from S_n here throughout chapter
+* [text/08_Power_Series.tex line 414](../text/08_Power_Series.tex#L414): todo write a transition paragraph from this section to the next
+* [text/08_Sequences.tex line 298](../text/08_Sequences.tex#L298): todo write a transition paragraph to geometric sequences
+* [text/08_Sequences.tex line 321](../text/08_Sequences.tex#L321): todo add a geometric sequence example
+* [text/08_Sequences.tex line 323](../text/08_Sequences.tex#L323): todo use more than just color to distinguish a_n from S_n here throughout chapter
 * [text/08_Taylor_Polynomials.tex line 208](../text/08_Taylor_Polynomials.tex#L208): todo use 20th degree polynomial instead of coordinates in Figure 9.9.8 fig:taypoly2c
 * [text/08_Taylor_Polynomials.tex line 458](../text/08_Taylor_Polynomials.tex#L458): todo for exercises 21-24, reach back to lin approx / Newton’s method and redo the appropriate problems with Taylor series
 * [text/08_Taylor_Series.tex line 167](../text/08_Taylor_Series.tex#L167): todo find and show where in the text we derive the ``Important Maclaurin Series Expansions'', and derive any missing in an example

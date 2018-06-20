@@ -33,7 +33,7 @@ pair b=(.9,.9);
 
 triple F(pair z) {return (z.x,z.y,0);}
 
-add(vectorfield(gradient,F,a,b,12,12,blue));
+add(vectorfield(gradient,F,a,b,12,12,colorone));
 
 pen p=colorone;
 draw(surface(f,a,b,Spline),emissive(coloronefill),meshpen=p);

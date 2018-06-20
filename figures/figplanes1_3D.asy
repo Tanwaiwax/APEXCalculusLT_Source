@@ -34,7 +34,7 @@ dot((1,1,0));label("$P$",(1,1,0),N);
 dot((1,2,-1));label("$Q$",(1,2,-1),W);
 dot((0,1,2));label("$R$",(0,1,2),W);
 //Draw Vectors
-draw((1,1,0)--(1,2,-1),blue,Arrow3(size=2mm));//PQ
-draw((1,1,0)--(0,1,2),blue,Arrow3(size=2mm));//PR
-draw((1,1,0)--(3,2,1),blue,Arrow3(size=2mm));//P to PQxPR
+draw((1,1,0)--(1,2,-1),colorone,Arrow3(size=2mm));//PQ
+draw((1,1,0)--(0,1,2),colorone,Arrow3(size=2mm));//PR
+draw((1,1,0)--(3,2,1),colorone,Arrow3(size=2mm));//P to PQxPR
 label("$\vv{PQ}\times \vv{PR}$",(3,2,1),N);

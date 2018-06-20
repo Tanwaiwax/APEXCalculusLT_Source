@@ -38,5 +38,7 @@ draw((-1,3,0)--(4,7,-7),black,Arrow3(size=2mm));//n at P
 label("$\vec{n}$",(4,7,-7),W);
 
 //draw the lines -5+2t,1+t,-4+2t  and 2+3t,1-2t,1+t
-draw((5,6,6)--(-5,1,-4),blue);label("$\ell_1$",(5,6,6),N);//L1
-draw((5,-1,2)--(-4.9,5.6,-1.3),blue);label("$\ell_2$",(5,-1,2),N);//L2
+draw((5,6,6)--(-5,1,-4),colorone);
+label("$\ell_1$",(5,6,6),N);//L1
+draw((5,-1,2)--(-4.9,5.6,-1.3),colorone);
+label("$\ell_2$",(5,-1,2),N);//L2

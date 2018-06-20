@@ -24,11 +24,11 @@ label("$y$",(0,ybounds.y+0.05*(ybounds.y-ybounds.x),0));
 label("$z$",(0,0,zbounds.y+0.05*(zbounds.y-zbounds.x)));
 
 //edges of object
-draw((1,0,0)--(1,2,0)--(3,2,0)--(3,0,0)--cycle,blue+linewidth(2));
-draw((3,0,0)--(1,0,1)--(1,2,1)--(3,2,0),blue+linewidth(2));
-draw((3,0,0)--(1,0,1),blue+linewidth(2));
-draw((1,0,0)--(1,0,1),blue+linewidth(2));
-draw((1,2,0)--(1,2,1),blue+linewidth(2));
+draw((1,0,0)--(1,2,0)--(3,2,0)--(3,0,0)--cycle,colorone+linewidth(2));
+draw((3,0,0)--(1,0,1)--(1,2,1)--(3,2,0),colorone+linewidth(2));
+draw((3,0,0)--(1,0,1),colorone+linewidth(2));
+draw((1,0,0)--(1,0,1),colorone+linewidth(2));
+draw((1,2,0)--(1,2,1),colorone+linewidth(2));
 
 //shade faces
 path3 p=(1,0,0)--(1,2,0)--(3,2,0)--(3,0,0);

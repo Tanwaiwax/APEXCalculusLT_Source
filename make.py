@@ -93,7 +93,7 @@ def makefigs():
     finally:
         os.chdir('..')
 
-Figure = namedtuple('Figure',['fignum','figfile'])
+Figure = namedtuple('Figure',['num','file'])
 
 def updateprc():
     prcdict = prcfromfile('Calculus.aux')
@@ -111,7 +111,7 @@ def updateprc():
                       '<body>'
                       '<h1>3d Images From APEX Calculus LT</h1>'
                       '<div id="accordion">')
-        chapters = sorted( prcdict.keys() , key=lambda x:float('inf') if x=='A' else x)
+        chapters = sorted( prcdict.keys() , key=lambda x:float('inf') if x=='A' else int(x) )
         for chapter in chapters:
             if chapter=='A':
                 continue
@@ -140,22 +140,14 @@ def writechapterprc(prcdict,prchtml,chapter):
     sections = sorted( prcdict[chapter].keys() )
     for section in sections:
         if chapter=='A':
-            # section is really chapter because of the comment ~30 lines later
-            prchtml.write('<h4>Chapter '+str(section)+'</h4><div>')
+            # section is really chapter because of \prc@section@autoref in style file
+            prchtml.write('<h4>Chapter '+section+'</h4><div>')
         else:
             prchtml.write('<h4>Section {}.{}</h4>'.format(chapter,section)+'<div>')
         for figure in prcdict[chapter][section]:
-            if chapter=='A':
-                anssection,exercise = figure.fignum.split('.')
-                caption = '{}.{}#{}'.format(section,anssection,exercise) # but section is really chapter
-            elif '.' in figure.fignum:
-                caption = 'Figure '+figure.fignum
-            else:
-                caption = 'Exercise '+figure.fignum
-            prchtml.write('<div class="box"><a href="'+figure.figfile+'.prc"><img src="'+figure.figfile+'.png"><br>'
-                          +caption+'</a></div>')
-            shutil.copy('figures/'+figure.figfile+'.prc','prc')
-            shutil.copy('figures/'+figure.figfile+'.png','prc')
+            prchtml.write('<div class="box"><a href="{0.file}.prc"><img src="{0.file}.png"><br>{0.num}</a></div>'.format(figure))
+            shutil.copy('figures/'+figure.file+'.prc','prc')
+            shutil.copy('figures/'+figure.file+'.png','prc')
         prchtml.write('</div>')
     prchtml.write('</div>')
 
@@ -167,15 +159,10 @@ def prcfromfile(filename):
             if line.startswith(r'\@input{'):
                 prcdict.update(prcfromfile(line[len('\@input{'):-2]))
             if line.startswith('% prc '):
-                match = re.match('% prc file figures/(\S+) used in (Exercises|Section|Solutions) (\d+).(\d+) as Figure (\d+.(\d+))\s*$',line)
+                match = re.match('% prc file figures/(\S+) used in Section (A|\d+).(\d+) as ((Figure )?[.#\d+]+)\s*$',line)
+                # in Python 3.4+, this would be fullmatch
                 if match:
-                    if match.group(2)=='Section':
-                        prcdict[ int(match.group(3)) ][ int(match.group(4)) ].append(Figure(match.group(5),match.group(1)))
-                    elif match.group(2)=='Exercises':
-                        prcdict[ int(match.group(3)) ][ int(match.group(4)) ].append(Figure(match.group(6),match.group(1)))
-                    elif match.group(2)=='Solutions':
-                        # if we're in the solutions, then we'll record the chapter in the section column
-                        prcdict[ 'A' ][ int(match.group(3)) ].append(Figure(match.group(5),match.group(1)))
+                    prcdict[ match.group(2) ][ match.group(3) ].append(Figure(match.group(4),match.group(1)))
                 else:
                     print('no match',line)
         return prcdict
@@ -204,9 +191,9 @@ def updatetodo():
             todofile.write(('\n'.join(todolist)+'\n').encode('utf-8'))
     # and a few manual TeX commands instead of 'todo'
     with open('todo/todo_tex.txt','w') as mystdout:
-        for keywd in ('drawexampleline','enlargethispage','pagebreak','blue',
-                      'clearpage','cleardoublepage','columnbreak','newpage',
-                      'mfigure','myincludegraphics','addplot3','ldots'):
+        for keywd in ('drawexampleline','enlargethispage','blue','pagebreak',
+                      'newpage','clearpage','cleardoublepage','columnbreak',
+                      'mfigure','myincludegraphics','addplot3','ldots','cdots'):
             grepcall = ['grep',keywd,'-I','--recursive','--files-with-matches','--exclude-dir=hidden']
             mystdout.write('\n\n'+keywd+':\n')
             mystdout.flush()

@@ -1,5 +1,3 @@
-%\iflatexml\section*{Chapter Introduction}\fi
-
 This chapter introduces \sword{sequences} and \sword{series}, important mathematical constructions that are useful when solving a large variety of mathematical problems. The content of this chapter is considerably different from the content of the chapters before it. While the material we learn here definitely falls under the scope of ``calculus,'' we will make very little use of derivatives or integrals. Limits are extremely important, though, especially limits that involve infinity. 
 
 One of the problems addressed by this chapter is this: suppose we know information about a function and its derivatives at a point, such as  $f(1) = 3$, $\fp(1) = 1$, $\fp'(1) = -2$, $\fp''(1) = 7$, and so on. What can I say about $f(x)$ itself? Is there any reasonable approximation of the value of $f(2)$? The topic of Taylor Series addresses this problem, and allows us to make excellent approximations of functions when limited knowledge of the function is available.
@@ -8,15 +6,15 @@ One of the problems addressed by this chapter is this: suppose we know informati
 
 We commonly refer to a set of events that occur one after the other as a \textit{sequence} of events. In mathematics, we use the word \textit{sequence} to refer to an ordered set of numbers, i.e., a set of numbers that ``occur one after the other.''
 
-For instance, the numbers 2, 4, 6, 8, \ldots, form a sequence. The order is important; the first number is 2, the second is 4, etc. It seems natural to seek a formula that describes a given sequence, and often this can be done. For instance, the sequence above could be described by the function $a(n) = 2n$, for the values of $n = 1, 2, \dotsc$ (it could also be described by $n^4-10 n^3+35 n^2-48n+24$, to give one of infinitely many other options). To find the 10$^\text{th}$ term in the sequence, we would compute $a(10)$. This leads us to the following, formal definition of a sequence.
+For instance, the numbers $2, 4, 6, 8, \dotsc$, form a sequence. The order is important; the first number is 2, the second is 4, etc. It seems natural to seek a formula that describes a given sequence, and often this can be done. For instance, the sequence above could be described by the function $a(n) = 2n$, for the values of $n = 1, 2, \dotsc$ (it could also be described by $n^4-10 n^3+35 n^2-48n+24$, to give one of infinitely many other options). To find the 10$^\text{th}$ term in the sequence, we would compute $a(10)$. This leads us to the following, formal definition of a sequence.
 
-\mnote{\textbf{Notation:} We use $\mathbb{N}$ to describe the set of natural numbers, that is, the integers 1, 2, 3, \ldots}
+\mnote{\textbf{Notation:} We use $\mathbb{N}$ to describe the set of natural numbers, that is, the integers $1, 2, 3, \dotsc$}
 
 \definition{def:sequence}{Sequence}
 {A \textbf{sequence} is a function $a(n)$ whose domain is $\mathbb{N}$. The \textbf{range} of a sequence is the set of all distinct values of $a(n)$.
 \index{sequences!definition}\\
 
-The \textbf{terms} of a sequence are the values $a(1)$, $a(2)$, \ldots, which are usually denoted with subscripts as $a_1$, $a_2$, \ldots.\\
+The \textbf{terms} of a sequence are the values $a(1), a(2), \dotsc$, which are usually denoted with subscripts as $a_1, a_2, \dotsc$.\\
 
 A sequence $a(n)$ is often denoted as $\{a_n\}$.}
 
@@ -27,7 +25,6 @@ A sequence $a(n)$ is often denoted as $\{a_n\}$.}
 In general, $n! = n\cdot (n-1)\cdot(n-2)\dotsm 2\cdot1$, where $n$ is a natural number.\\
 We define $0! = 1$. While this does not immediately make sense, it makes many mathematical formulas work properly.}
 
-\example{ex_seq1}{Listing terms of a sequence}{List the first four terms of the following sequences.
 \mtable{Plotting sequences in \autoref{ex_seq1}.}{fig:seq1b}{%
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -63,6 +60,8 @@ ymin=-1.1,ymax=0.6,xmin=-.1,xmax=5.5]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}
 \\(c)}
+
+\example{ex_seq1}{Listing terms of a sequence}{List the first four terms of the following sequences.
 \[
  \text{1. }\{a_n\} = \left\{\frac{3^n}{n!}\right\}\qquad
  \text{2. }\{a_n\} = \{4+(-1)^n\}\qquad
@@ -84,18 +83,19 @@ Note that the range of this sequence is finite, consisting of only the values 3 
 
 \noindent $\ds a_5 = \frac{(-1)^{5(6)/2}}{5^2}=-\frac1{25}$.
 
-\noindent We gave one extra term to begin to show the pattern of signs is ``$-$, $-$, $+$, $+$, $-$, $-$, $\ldots$'', due to the fact that the exponent of $-1$ is a special quadratic. This sequence is plotted in \autoref{fig:seq1b}(c).\eoehere
+\noindent We gave one extra term to begin to show the pattern of signs is ``$-$, $-$, $+$, $+$, $-$, $-$, $\dotsc$'', due to the fact that the exponent of $-1$ is a special quadratic. This sequence is plotted in \autoref{fig:seq1b}(c).\eoehere
 \end{enumerate}}
 
 \example{ex_seq2}{Determining a formula for a sequence}{Find the $n^\text{th}$ term of the following sequences, i.e., find a function that describes each of the given sequences.
-
+\begin{multicols}{2}
 \begin{enumerate}
-\item		2, 5, 8, 11, 14, $\ldots$
-\item		2, $-5$, 10, $-17$, 26, $-37$, $\ldots$
-\item		1, 1, 2, 6, 24, 120, 720, $\ldots$
-\item		$\ds \frac52$, $\ds \frac52$, $\ds \frac{15}8$, $\ds \frac54$, $\ds \frac{25}{32}$, $\ldots$
+\item		$2, 5, 8, 11, 14, \dotsc$
+\item		$2, -5, 10, -17, 26, -37, \dotsc$
+\columnbreak
+\item		$1, 1, 2, 6, 24, 120, 720, \dotsc$
+\item		$\ds \frac52, \frac52, \frac{15}8, \frac54, \frac{25}{32}, \dotsc$
 \end{enumerate}
-}
+\end{multicols}}
 {We should first note that there is never exactly one function that describes a finite set of numbers as a sequence. There are many sequences that start with 2, then 5, as our first example does. We are looking for a simple formula that describes the terms given, knowing there is possibly more than one answer.
 \begin{enumerate}
 \item		Note how each term is 3 more than the previous one. This implies a linear function would be appropriate: $a(n) = a_n = 3n + b$ for some appropriate value of $b$. As we want $a_1=2$, we set $b=-1$. Thus $a_n = 3n-1$.
@@ -265,19 +265,14 @@ We continue our study of the limits of sequences by considering some of the prop
 
 \theorem{thm:seq_properties}{Properties of the Limits of Sequences}
 {Let $\{a_n\}$ and $\{b_n\}$ be sequences such that $\ds \lim_{n\to\infty} a_n = L$, $\ds \lim_{n\to\infty} b_n = K$, and let $c$ be a real number.\index{sequences!limit properties}
-\\
-\begin{minipage}[t]{.5\linewidth}
+\begin{multicols}{2}
 \begin{enumerate}
 \item		$\ds \lim_{n\to\infty} (a_n\pm b_n) = L\pm K$
 \item		$\ds \lim_{n\to\infty} (a_n\cdot b_n) = L\cdot K$
-\end{enumerate}
-\end{minipage}%
-\begin{minipage}[t]{.5\linewidth}
-\begin{enumerate}\addtocounter{enumi}{2}
 \item		$\ds \lim_{n\to\infty} (a_n/b_n) = L/K$, $K\neq 0$
 \item		$\ds \lim_{n\to\infty} c\cdot a_n = c\cdot L$
 \end{enumerate}
-\end{minipage}}
+\end{multicols}}
 
 \example{ex_seq6}{Applying properties of limits of sequences}{Let the following limits be given:
 \begin{itemize}
@@ -392,9 +387,9 @@ Another interesting concept to come out of \autoref{ex_seq3} again involves the 
 \definition{def:monotonic}{Monotonic Sequences}
 {\mbox{}\\[-2\baselineskip]\index{sequences!monotonic}\index{monotonic sequence}\begin{enumerate}
 \item		A sequence $\{a_n\}$ is \textbf{monotonically increasing} if $a_n \leq a_{n+1}$ for all $n$, i.e.,
-\[a_1 \leq a_2 \leq a_3 \leq \cdots a_n \leq a_{n+1} \cdots\]
+\[a_1 \leq a_2 \leq a_3 \leq \dotsb \leq a_n \leq a_{n+1} \dotsb\]
  \item	A sequence $\{a_n\}$ is \textbf{monotonically decreasing} if $a_n \geq a_{n+1}$ for all $n$, i.e.,
-\[a_1 \geq a_2 \geq a_3 \geq \cdots a_n \geq a_{n+1} \cdots\]
+\[a_1 \geq a_2 \geq a_3 \geq \dotsb\geq a_n \geq a_{n+1} \dotsb\]
  \item	A sequence is \textbf{monotonic} if it is monotonically increasing or monotonically decreasing.
  \end{enumerate}}
 
@@ -402,29 +397,29 @@ Another interesting concept to come out of \autoref{ex_seq3} again involves the 
 
 A similar statement holds for \emph{strictly decreasing.}}
 
-\example{ex_seq7}{Determining monotonicity}{Determine the monotonicity of the following sequences.\\
-\begin{minipage}[t]{.5\linewidth}
+\example{ex_seq7}{Determining monotonicity}{Determine the monotonicity of the following sequences.
+\begin{multicols}{2}
 \begin{enumerate}
 \item $\ds \{a_n\} = \left\{\frac{n+1}n\right\}$
 \item	$\ds \{a_n\} = \left\{\frac{n^2+1}{n+1}\right\}$	
-\end{enumerate}
-\end{minipage}%
-\begin{minipage}[t]{.5\linewidth}
-\begin{enumerate}\addtocounter{enumi}{2}
 \item $\ds \{a_n\} = \left\{\frac{n^2-9}{n^2-10n+26}\right\}$
 \item	$\ds \{a_n\} = \left\{\frac{n^2}{n!}\right\}$	
 \end{enumerate}
-\end{minipage}}
+\end{multicols}}
 {In each of the following, we will examine $a_{n+1}-a_n$. If $a_{n+1}-a_n \ge0$, we conclude that $a_n\le a_{n+1}$ and hence the sequence is increasing. If $a_{n+1}-a_n\le0$, we conclude that $a_n\ge a_{n+1}$ and the sequence is decreasing. Of course, a sequence need not be monotonic and perhaps neither of the above will apply.
 
 We also give a scatter plot of each sequence. These are useful as they suggest a pattern of monotonicity, but analytic work should be done to confirm a graphical trend.
 
-\clearpage
-
 \begin{enumerate}
-\item\mbox{}\\[-2.5\baselineskip]
+\item\mbox{}\\*[-2.5\baselineskip]
+\begin{align*}
+a_{n+1}-a_n &= \frac{n+2}{n+1} - \frac{n+1}{n} \\		
+	&= \frac{(n+2)(n)-(n+1)^2}{(n+1)n} \\
+	&=	\frac{-1}{n(n+1)} \\
+	&<0 \quad\text{ for all $n$.}
+\end{align*}
 %
-\mtable[\baselineskip]{A plot of $\{a_n\}=\{\frac{n+1}n\}$ in \autoref{ex_seq7}(a).}{fig:seq7a}{\begin{tikzpicture}
+\mtable[-8\baselineskip]{A plot of $\{a_n\}=\{\frac{n+1}n\}$ in \autoref{ex_seq7}(a).}{fig:seq7a}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,ytick={-1,-2,1,2},
 ymin=-.1,ymax=2.5,xmin=-1,xmax=11]
@@ -434,13 +429,6 @@ ymin=-.1,ymax=2.5,xmin=-1,xmax=11]
 \node [right] at (myplot.right of origin) {\scriptsize $n$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
-%
-\begin{align*}
-a_{n+1}-a_n &= \frac{n+2}{n+1} - \frac{n+1}{n} \\		
-	&= \frac{(n+2)(n)-(n+1)^2}{(n+1)n} \\
-	&=	\frac{-1}{n(n+1)} \\
-	&<0 \quad\text{ for all $n$.}
-\end{align*}
 %
 Since $a_{n+1}-a_n<0$ for all $n$, we conclude that the sequence is decreasing.
 
@@ -499,7 +487,7 @@ In short, the sequence is simply not monotonic. However, it is useful to note th
 
 \item
 %
-\mtable[-.7in]{A plot of $\{a_n\}=\{n^2/n!\}$ in \autoref{ex_seq7}(d).}{fig:seq7d}{\begin{tikzpicture}
+\mtable{A plot of $\{a_n\}=\{n^2/n!\}$ in \autoref{ex_seq7}(d).}{fig:seq7d}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
 ymin=-.1,ymax=2.1,xmin=-1,xmax=11]

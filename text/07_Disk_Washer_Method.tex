@@ -86,9 +86,7 @@ Start with a function $y=f(x)$ from $x=a$ to $x=b$. Revolving this curve about a
 
 \youtubeVideo{nZqOKc067Z8}{Longer Version --- Volumes using Disks/Washers}
 
-\clearpage
-
-\mtable{Sketching a solid in \autoref{ex_disk1}.}{fig:disk1}{%
+\mtable[-10\baselineskip]{Sketching a solid in \autoref{ex_disk1}.}{fig:disk1}{%
   \begin{tikzpicture}
    \begin{axis}[width=\marginparwidth,
      tick label style={font=\scriptsize},axis y line=middle,
@@ -138,11 +136,9 @@ Taking the limit of the above sum as $n\to\infty$ gives the actual volume; recog
 		&= \frac{\pi}{2}\ \text{units}^3.\eoehere
 \end{align*}}
 
-\pagebreak
-
 While \autoref{idea:disk_method} is given in terms of functions of $x$, the principle involved can be applied to functions of $y$ when the axis of rotation is vertical, not horizontal. We demonstrate this in the next example.
 
-\mtable{Sketching a solid in \autoref{ex_disk2}.}{fig:disk2}{%
+\mtable[-8\baselineskip]{Sketching a solid in \autoref{ex_disk2}.}{fig:disk2}{%
   \begin{tikzpicture}
    \begin{axis}[width=1.16\marginparwidth,
      tick label style={font=\scriptsize},axis y line=middle,
@@ -196,6 +192,7 @@ V = \pi\int_a^b [R(x)]^2 \ dx - \pi\int_a^b [r(x)]^2\ dx
 
 One can generate a solid of revolution with a hole in the middle by revolving a region about an axis. Consider \autoref{fig:washeridea}(a), where a region is sketched along with a dashed, horizontal axis of rotation. By rotating the region about the axis, a solid is formed. Each cross section of this solid will be a washer (a disk with a hole in the center) as sketched in \autoref{fig:washeridea}(b). The outside of the washer has radius $R(x)$, whereas the inside has radius $r(x)$. The entire solid is sketched in \autoref{fig:washeridea}(c).  This leads us to the Washer Method.
 
+%\mtable{fig:washeridea}{Establishing the Washer Method.}{%
 \begin{lxfigure}
 \begin{tabular}{ccc}
  \begin{tikzpicture}
@@ -217,6 +214,7 @@ One can generate a solid of revolution with a hole in the middle by revolving a 
   \node [right] at (myplot.right of origin) {\scriptsize $x$};
   \node [above] at (myplot.above origin) {\scriptsize $y$};
  \end{tikzpicture}
+%\\(a)\\
 &
 \myincludeasythree{width=\marginparwidth,
 3Droll=96.94265756936434,
@@ -224,14 +222,17 @@ One can generate a solid of revolution with a hole in the middle by revolving a 
 3Dc2c=0.547386884689331 0.07732175290584564 0.833299994468689,
 3Dcoo=64.78053283691406 10.129053115844727 -47.566162109375,
 3Droo=149.99999789136484}{width=\marginparwidth}{figures/figwasher_idea_c_3D}
+%\\(b)\\
 &
 \myincludeasythree{width=\marginparwidth,
 3Droll=96.94265756936434,
 3Dortho=0.005309578496962786,
 3Dc2c=0.547386884689331 0.07732175290584564 0.833299994468689,
 3Dcoo=64.78053283691406 10.129053115844727 -47.566162109375,
-3Droo=149.99999789136484}{width=\marginparwidth}{figures/figwasher_idea_b_3D}\\
-(a) & (b) & (c)
+3Droo=149.99999789136484}{width=\marginparwidth}{figures/figwasher_idea_b_3D}
+\\
+(a) & (b) &
+(c)%}
 \end{tabular}
 \caption{Establishing the Washer Method.}
 \label{fig:washeridea}
@@ -244,8 +245,9 @@ One can generate a solid of revolution with a hole in the middle by revolving a 
 
 Even though we introduced it first, the Disk Method is just a special case of the Washer Method with an inside radius of $r(x)=0$.
 
-% todo Tim check that 6.2 side figs don't overlap top figs
-\mtable[-3in]{Sketching the region, a sample slice, and solid in \autoref{ex_wash1}.}{fig:wash1}{%
+%\mtable[-3\baselineskip]{Sketching the region, a sample slice, and solid in \autoref{ex_wash1}.}{fig:wash1}{%
+\begin{lxfigure}\flushinner{%
+\begin{tabular}{ccc}
  \begin{tikzpicture}
   \begin{axis}[width=\marginparwidth,
      tick label style={font=\scriptsize},axis y line=middle,
@@ -261,21 +263,28 @@ Even though we introduced it first, the Disk Method is just a special case of th
   \node [right] at (myplot.right of origin) {\scriptsize $x$};
   \node [above] at (myplot.above origin) {\scriptsize $y$};
  \end{tikzpicture}
-\\(a)\\
+%\\(a)\\
+&
 \myincludeasythree{width=\marginparwidth,
 3Droll=97.32968340849395,
 3Dortho=0.004881054162979126,
 3Dc2c=0.43117064237594604 0.05905330181121826 0.9003357887268066,
 3Dcoo=64.78053283691406 10.12905216217041 -47.566158294677734,
 3Droo=149.99999769784193}{width=\marginparwidth}{figures/figwash1c_3D}
-\\(b)\\
+%\\(b)\\
+&
 \myincludeasythree{width=\marginparwidth,
 3Droll=97.32968340849395,
 3Dortho=0.004881054162979126,
 3Dc2c=0.43117064237594604 0.05905330181121826 0.9003357887268066,
 3Dcoo=64.78053283691406 10.12905216217041 -47.566158294677734,
 3Droo=149.99999769784193}{width=\marginparwidth}{figures/figwash1b_3D}
-\\(c)}
+%\\(c)}
+\\(a)&(b)&(c)
+\end{tabular}}
+\caption{Sketching the region, a sample slice, and solid in \autoref{ex_wash1}.}
+\label{fig:wash1}
+\end{lxfigure}
 
 \example{ex_wash1}{Finding volume with the Washer Method}{Find the volume of the solid formed by rotating the region bounded by $y=x^2-2x+2$ and $y=2x-1$ about the $x$-axis.}
 {A sketch of the region will help, as given in \autoref{fig:wash1}(a). Rotating about the $x$-axis will produce cross sections in the shape of washers, as shown in \autoref{fig:wash1}(b); the complete solid is shown in part (c). The outside radius of this washer is $R(x) = 2x+1$; the inside radius is $r(x) = x^2-2x+2$. As the region is bounded from $x=1$ to $x=3$, we integrate as follows to compute the volume.
@@ -289,7 +298,9 @@ V &= \pi\int_1^3 \Big((2x-1)^2-(x^2-2x+2)^2\Big)\ dx \\
 
 When rotating about a vertical axis, the outside and inside radius functions must be functions of $y$.
 
-\mtable{Sketching the region, a sample slice, and the solid in \autoref{ex_wash_3}.}{fig:ex_sq_and_rt}{%
+%\mtable{Sketching the region, a sample slice, and the solid in \autoref{ex_wash_3}.}{fig:ex_sq_and_rt}{%
+\begin{lxfigure}\flushinner{%
+\begin{tabular}{ccc}
  \begin{tikzpicture}
   \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
     axis equal,axis y line=middle,axis x line=middle,name=myplot,axis on top,
@@ -306,21 +317,28 @@ When rotating about a vertical axis, the outside and inside radius functions mus
   \node [right] at (myplot.right of origin) {\scriptsize $x$};
   \node [above] at (myplot.above origin) {\scriptsize $y$};
  \end{tikzpicture}
- \\ (a) \\
+% \\ (a) \\
+&
 \myincludeasythree{width=\marginparwidth,
 3Droll=126.0060482236849,
 3Dortho=0.004875946324318647,
 3Dc2c=0.44462037086486816 0.39410829544067383 0.8043577671051025,
 3Dcoo=3.631758213043213 62.91783142089844 -23.517351150512695,
 3Droo=150}{width=\marginparwidth}{figures/figsq_rt_3D}
- \\ (b) \\
+% \\ (b) \\
+&
 \myincludeasythree{width=\marginparwidth,
 3Droll=126.0060482236849,
 3Dortho=0.004875946324318647,
 3Dc2c=0.44462037086486816 0.39410829544067383 0.8043577671051025,
 3Dcoo=3.631758213043213 62.91783142089844 -23.517351150512695,
 3Droo=150}{width=\marginparwidth}{figures/figsq_rt_b_3D}
- \\ (c)}
+\\(a)&(b)&(c)
+\end{tabular}}
+% \\ (c)}
+\caption{Sketching the region, a sample slice, and the solid in \autoref{ex_wash_3}.}
+\label{fig:ex_sq_and_rt}
+\end{lxfigure}
 
 \example{ex_wash_3}{Finding volume with the Washer Method}{Find the volume of the solid formed by rotating the region bounded by $y=x^2$ and $x=y^2$ about the $y$-axis.}{In \autoref{fig:ex_sq_and_rt} we have a sketch of the region (a), a sample slice (b), and the solid (c). Rotating about the $y$-axis will produce cross sections in the shape of washers, as shown in (b); the complete solid is shown in  part (c). Since the axis of rotation is vertical, each radius is a function of $y$. The outside radius of this washer is $R(y)=\sqrt y$ and the inside radius is $r(y)=y^2$. As the region is bounded from $y=0$ to $y=1$, we integrate as follows to compute the volume. 
 \begin{align*}
@@ -330,9 +348,9 @@ V&=\pi \int_0^1 \left((\sqrt y)^2-(y^2)^2\right) \ dy\\
 &=\frac{3\pi}{10} \text{units}^3.\eoehere
 \end{align*}}
 
-\clearpage
-
-\mtable{Sketching the region, a sample slice, and the solid in \autoref{ex_wash2}.}{fig:wash2}{%
+%\mtable{Sketching the region, a sample slice, and the solid in \autoref{ex_wash2}.}{fig:wash2}{%
+\begin{lxfigure}\flushinner{%
+\begin{tabular}{ccc}
  \begin{tikzpicture}
   \begin{axis}[width=1.16\marginparwidth,axis equal,
     tick label style={font=\scriptsize},
@@ -347,21 +365,28 @@ V&=\pi \int_0^1 \left((\sqrt y)^2-(y^2)^2\right) \ dy\\
    \node [right] at (myplot.right of origin) {\scriptsize $x$};
    \node [above] at (myplot.above origin) {\scriptsize $y$};
   \end{tikzpicture}
-  \\(a) \\
+%  \\(a) \\
+&
 \myincludeasythree{width=\marginparwidth,
 3Droll=123.42078064170005,
 3Dortho=0.00488104997202754,
 3Dc2c=0.41855040192604065 0.31316813826560974 0.8524911999702454,
 3Dcoo=-7.115118026733398 66.85215759277344 -16.372848510742188,
 3Droo=149.99999819286032}{width=\marginparwidth}{figures/figwash2b_3D}
-\\(b) \\
+%\\(b) \\
+&
 \myincludeasythree{width=\marginparwidth,
 3Droll=123.42078064170005,
 3Dortho=0.00488104997202754,
 3Dc2c=0.41855040192604065 0.31316813826560974 0.8524911999702454,
 3Dcoo=-7.115118026733398 66.85215759277344 -16.372848510742188,
 3Droo=149.99999819286032}{width=\marginparwidth}{figures/figwash2c_3D}
-\\(c)}
+\\(a)&(b)&(c)
+\end{tabular}}
+%\\(c)}
+\caption{Sketching the region, a sample slice, and the solid in \autoref{ex_wash2}.}
+\label{fig:wash2}
+\end{lxfigure}
 
 \example{ex_wash2}{Finding volume with the Washer Method}{Find the volume of the solid formed by rotating the triangular region with vertices at $(1,1)$, $(2,1)$ and $(2,3)$ about the $y$-axis.}
 {The triangular region is sketched in \autoref{fig:wash2}(a); the sample slice is sketched in (b) and the full solid is drawn in (c). They help us establish the outside and inside radii. Since the axis of rotation is vertical, each radius is a function of $y$. 
@@ -380,8 +405,6 @@ V 	&=	\pi\int_1^3\Big(2^2 - \big(\frac12(y+1)\big)^2\Big)\ dy \\
 \end{align*}}
 
 In the previous examples, the axis of rotation has either been the $x$ or $y$ axis. We will now consider a problem where the axis of rotation is some other horizontal line.
-
-\clearpage
 
 \mtable{Sketching the solid in \autoref{ex_wash_4}.}{fig:wash4}{%
  \begin{tikzpicture}

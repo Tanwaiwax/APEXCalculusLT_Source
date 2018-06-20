@@ -10,7 +10,7 @@
 
 \usepackage{booktabs}
 
-\usepackage{esint}
+%\usepackage{esint}
 % for oiint in 14_Div_Thm, oint[ctr]clockwise in 14_Line_Integrals_Props
 
 \setcounter{secnumdepth}{1}
@@ -42,46 +42,46 @@
 \renewcommand{\footrulewidth}{0pt}
 
 
-\ifthenelse{\boolean{longpage}}% for changing the header
-{% longpage
- \newcommand{\exerciseheader}{}
- \newcommand{\regularheader}{}
-}% i.e, the above does nothing
-{% now for a real change
- \newcommand{\exerciseheader}{%
+%\ifthenelse{\boolean{longpage}}% for changing the header
+%{% longpage
+% \newcommand{\exerciseheader}{}
+% \newcommand{\regularheader}{}
+%}% i.e, the above does nothing
+%{% now for a real change
+\newcommand{\exerciseheader}{%
 	\fancyhfoffset[LE,RO]{32pt}%
 	\fancyfoot[LE]{\textbf{\thepage}}% 
 	\fancyfoot[RO]{\textbf{\thepage}}
 	\fancyhead{}% 
- }
+}
 \newcommand{\regularheader}{%
-\fancyhead[LE]{\nouppercase{\leftmark}}%
+ \fancyhead[LE]{\nouppercase{\leftmark}}%
     %Displays the upper-level (chapter) information---
     % as determined above---in non-upper case in the header, 
     %to the right on even pages.
-\fancyhead[RO]{\rightmark}%
+ \fancyhead[RO]{\rightmark}%
 	%Displays the lower-level (section) information---as
     % determined above---in the header, to the left on odd pages.
-\fancyfoot[LE]{\begin{minipage}{\textwidth}%
-\noindent\hspace{\marginparwidth}\hspace{\marginparsep}\hspace{-4pt}\makebox[0pt][l]{\rule{\textwidth}{.4pt}}
-\vskip.2\baselineskip
-\noindent\hspace{\marginparwidth}\hspace{\marginparsep}\hspace{-4pt}%
-Notes:
-\vskip 1.5in\textbf{\thepage}
-\end{minipage}} 
+ \fancyfoot[LE]{\begin{minipage}{\textwidth}%
+ \noindent\hspace{\marginparwidth}\hspace{\marginparsep}\hspace{-4pt}\makebox[0pt][l]{\rule{\textwidth}{.4pt}}
+ \vskip.2\baselineskip
+ \noindent\hspace{\marginparwidth}\hspace{\marginparsep}\hspace{-4pt}%
+ Notes:
+ \vskip 1.5in\textbf{\thepage}
+ \end{minipage}}
 
-\fancyfoot[RO]{\begin{minipage}{\textwidth+\marginparwidth+\marginparsep}%
-\rule{\textwidth-\marginparwidth-\marginparsep}{.4pt}
-\vskip.2\baselineskip
-Notes:
-\vskip 1.5in
-\hfill\textbf{\thepage}
-\end{minipage}}
-\fancyhfoffset[LE,RO]{\marginparsep+\marginparwidth}
+ \fancyfoot[RO]{\begin{minipage}{\textwidth+\marginparwidth+\marginparsep}%
+ \rule{\textwidth-\marginparwidth-\marginparsep}{.4pt}
+ \vskip.2\baselineskip
+ Notes:
+ \vskip 1.5in
+ \hfill\textbf{\thepage}
+ \end{minipage}}
+ \fancyhfoffset[LE,RO]{\marginparsep+\marginparwidth}
 }
 \regularheader % and execute
 
-}% ends if/then/else exercise/regular headers
+%}% ends if/then/else exercise/regular headers
 
 
 %
@@ -275,15 +275,6 @@ Notes:
 
 
 
-%%%%%%%%%%%%%%%%%
-
-% todo remove mecmath \Dotprod command
-
-%\newcommand{\Dotprod}[2]{ #1 \cdot #2 }
-
-% end mecmath
-
-%%%%%%%%%%%%%%%%%
 
 \newboolean{isEarlyTrans}
 \setboolean{isEarlyTrans}{false}
@@ -299,8 +290,8 @@ Notes:
 	\setmainfont[Mapping=tex-text]{Calibri}
 	\setsansfont[Mapping=tex-text]{Calibri}
 	\setmathsfont(Greek){[cmmi10]}}
-	{\ifthenelse{\boolean{latexml}}{}{\PackageError{apex}{Please compile with XeLaTeX}{Enter x or q to stop.  You can also just continue and see what happens.}}}
-	
+	{\ifthenelse{\boolean{latexml}}{}{\PackageError{apex}{Please compile with XeLaTeX}{Enter x to stop.  You can also just continue and see what happens.}}}
+
 %\ifthenelse{\boolean{luatex}}%
 %	{%
 %	\sffamily
@@ -330,7 +321,7 @@ Notes:
 \renewcommand{\sectionautorefname}{Section} % the default is lowercase
 \renewcommand{\chapterautorefname}{Chapter} % the default is lowercase
 \newcommand{\exampleEnvautorefname}{Example}
-\newcommand{\autoeqref}[1]{\hyperref[#1]{\equationautorefname\ (\ref*{#1})}}
+\newcommand{\autoeqref}[1]{\hyperref[#1]{\equationautorefname~(\ref*{#1})}}
 % autoref doesn't use parentheses
 
 \begin{lxNavbar}

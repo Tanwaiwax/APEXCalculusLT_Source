@@ -30,7 +30,6 @@ draw((1,0,0)--(1,0,1), colortwo+dashed+linewidth(.5));//up1 Q
 draw((0,1,0)--(0,1,1), colortwo+dashed+linewidth(.5));//up2 Q
 draw((1,1,0)--(1,1,1), colortwo+dashed+linewidth(.5));//up3 Q
 label("$Q$",(1,1,1),N);
-//dotfactor=3;  dot((2,1,1),blue);
 
 // Draw the lines for Q'=(3,0,4)
 draw((0,0,4)--(0,0,4)--(3,0,4)--(3,0,4)--(3,0,4), colortwo+dashed+linewidth(.5));//top P
@@ -39,7 +38,6 @@ draw((3,0,0)--(3,0,4), colortwo+dashed+linewidth(.5));//up1 P
 draw((0,0,0)--(0,0,3), colortwo+dashed+linewidth(.5));//up2 P
 draw((3,0,0)--(3,0,3), colortwo+dashed+linewidth(.5));//up3 P
 label("$Q'$",(3,0,4),N);
-//dotfactor=3;  dot((1,4,-1),blue);
 
 //line from Q to Q'
 draw((1,1,1)--(3,0,4), black,Arrow3(size=2mm));

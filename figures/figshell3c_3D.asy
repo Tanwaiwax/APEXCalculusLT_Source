@@ -37,32 +37,12 @@ triple f3(pair t) {return (1,t.x*cos(t.y),t.x*sin(t.y));}
 surface s3=surface(f3,(1,0),(3,2*pi),2,16,Spline);
 draw(s3,emissive(coloronefill));
 
-//triple f4(pair t) {return (t.x,1.8*cos(t.y),1.8*sin(t.y));}
-//surface s4=surface(f4,(.4,0),(1,2*pi),2,16,Spline);
-//draw(s4,rgb(1,.6,.6)+opacity(.7));
-
-//triple g3(real t) {return (.4,1.8*cos(t),1.8*sin(t));}
-//path3 p3=graph(g3,0,2*pi,operator ..);
-//draw(p3,red+.4mm);
-
 draw((0,1,0)--(1,3,0)--(1,1,0)--cycle,colorone+.6mm);
 
 draw((.4,1.8,0)--(1,1.8,0),colortwo+.4mm);
 
-//triple g3(real t) {return (0,cos(t),sin(t));}
-//path3 p3=graph(g3,0,2*pi,operator ..);
 draw(circle(O,1,X),colorone+.4mm);
 
-//triple g3(real t) {return (1,cos(t),sin(t));}
-//path3 p3=graph(g3,0,2*pi,operator ..);
 draw(circle((1,0,0),1,X),colorone+.4mm);
 
-//triple g3(real t) {return (1,3*cos(t),3*sin(t));}
-//path3 p3=graph(g3,0,2*pi,operator ..);
 draw(circle((1,0,0),3,X),colorone+.4mm);
-
-//triple g3(real t) {return (2,3*cos(t),3*sin(t));}
-//path3 p3=graph(g3,0,2*pi,operator ..);
-//draw(p3,blue+.4mm);
-
-//draw((2,2,0)--(2,3,0),purple+linetype(new real[] {4,4})+.3mm);

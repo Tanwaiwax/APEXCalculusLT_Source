@@ -31,7 +31,7 @@
 * [exercises/14_Line_Int_exercises.tex line 32](../exercises/14_Line_Int_exercises.tex#L32): todo find the answer to 15.1#12
 * [text/10_Planes.tex line 17](../text/10_Planes.tex#L17): todo should we make a picture of a vector ``orthogonal to the plane''?
 * [text/10_Planes.tex line 20](../text/10_Planes.tex#L20): todo should we make a picture of how the vector equation of a plane works?
-* [text/11_Arc_Length_Parameter_Curvature.tex line 408](../text/11_Arc_Length_Parameter_Curvature.tex#L408): todo add some text about the Frenet frame
+* [text/11_Arc_Length_Parameter_Curvature.tex line 407](../text/11_Arc_Length_Parameter_Curvature.tex#L407): todo add some text about the Frenet frame
 * [text/11_Vector_Functions_Intro.tex line 3](../text/11_Vector_Functions_Intro.tex#L3): todo state how this compares with 10.2 & 10.3
 * [text/11_Vector_Functions_Intro.tex line 172](../text/11_Vector_Functions_Intro.tex#L172): todo how does this differ from the previous figure?
 * [text/12_Lagrange.tex line 29](../text/12_Lagrange.tex#L29): todo include a proof sketch of Theorem 120 Lagrange Multipliers?

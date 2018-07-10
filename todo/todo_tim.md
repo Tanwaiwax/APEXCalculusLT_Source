@@ -38,17 +38,11 @@
 * [text/09_Parametric_Equations.tex line 5](../text/09_Parametric_Equations.tex#L5): todo Tim should these be labeled as figures?
 * [text/10_Cross_Product.tex line 268](../text/10_Cross_Product.tex#L268): todo Tim this parallelogram is very narrow.  do we want something better?
 * [text/10_Lines.tex line 192](../text/10_Lines.tex#L192): todo Tim why not just rescale d2 to match d1?
-* [text/11_Arc_Length_Parameter_Curvature.tex line 81](../text/11_Arc_Length_Parameter_Curvature.tex#L81): todo Tim are these boxed?
 * [text/11_Vector_Functions_Motion.tex line 390](../text/11_Vector_Functions_Motion.tex#L390): todo Tim make sure these three figures match
-* [text/12_Directional_Derivatives.tex line 95](../text/12_Directional_Derivatives.tex#L95): todo Tim verify the phrasing of nabla as an operator
-* [text/12_Lagrange.tex line 114](../text/12_Lagrange.tex#L114): todo Tim check the phrasing of two constraints
-* [text/12_Multivariable_Chain_Rule.tex line 133](../text/12_Multivariable_Chain_Rule.tex#L133): todo Tim check phrasing
 * [text/12_Tangent_Planes_Lines.tex line 141](../text/12_Tangent_Planes_Lines.tex#L141): todo Tim should this be $\ell_{\vecn}$ here and many other places?
 * [text/12_Tangent_Planes_Lines.tex line 237](../text/12_Tangent_Planes_Lines.tex#L237): todo Tim but isn't one of those points closer to the surface?
 * [text/14_Line_Integral_Vector_Fields.tex line 262](../text/14_Line_Integral_Vector_Fields.tex#L262): todo Tim maybe separate these into four files for the prc?
 * [text/14_Parametrized_Surfaces.tex line 6](../text/14_Parametrized_Surfaces.tex#L6): todo Tim surely we can find a better serif S ?
-* [text/14_Stokes_Divergence.tex line 308](../text/14_Stokes_Divergence.tex#L308): todo Tim check the phrasing
-* [text/14_Surface_Integrals.tex line 218](../text/14_Surface_Integrals.tex#L218): todo Tim check the phrasing
 * [text/mecmath/14_Div_Thm.tex line 59](../text/mecmath/14_Div_Thm.tex#L59): todo Tim convert to asy
 * [text/mecmath/14_Div_Thm.tex line 235](../text/mecmath/14_Div_Thm.tex#L235): todo Tim convert to asy
 * [text/mecmath/14_Div_Thm.tex line 263](../text/mecmath/14_Div_Thm.tex#L263): todo Tim This has vectors with parens instead of <>.  Have we done that elsewhere?

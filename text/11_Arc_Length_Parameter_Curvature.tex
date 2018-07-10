@@ -2,7 +2,7 @@
 
 In normal conversation we describe position in terms of both \emph{time} and \emph{distance}. For instance, imagine driving to visit a friend. If she calls and asks where you are, you might answer ``I am 20 minutes from your house,'' or you might say ``I am 10 miles from your house.'' Both answers provide your friend with a general idea of where you are.
 
-Currently, our vector--valued functions have defined points with a parameter $t$, which we often take to represent time. Consider \autoref{fig:vvfarc_intro1}(a), where $\vrt =\bracket{t^2-t,t^2+t}$ is graphed and the points corresponding to $t=0,\ 1$ and $2$ are shown. Note how the arc length between $t=0$ and $t=1$ is smaller than the arc length between $t=1$ and $t=2$; if the parameter $t$ is time and $\vec r$ is position, we can say that the particle traveled faster on $[1,2]$ than on $[0,1]$. 
+Currently, our vector-valued functions have defined points with a parameter $t$, which we often take to represent time. Consider \autoref{fig:vvfarc_intro1}(a), where $\vrt =\bracket{t^2-t,t^2+t}$ is graphed and the points corresponding to $t=0,\ 1$ and $2$ are shown. Note how the arc length between $t=0$ and $t=1$ is smaller than the arc length between $t=1$ and $t=2$; if the parameter $t$ is time and $\vec r$ is position, we can say that the particle traveled faster on $[1,2]$ than on $[0,1]$. 
 \mtable{Introducing the arc length parameter.}{fig:vvfarc_intro1}{%
 \begin{tikzpicture}[>=stealth]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -49,11 +49,11 @@ ymin=-1.1,ymax=6.5,xmin=-2.1,xmax=7]
 \end{tikzpicture}
 \\(b)}
 
-Now consider \autoref{fig:vvfarc_intro1}(b), where the same graph is parametrized by a different variable $s$.  Points corresponding to $s=0$ through $s=6$ are plotted. The arc length of the graph between each adjacent pair of points is 1. We can view this parameter $s$ as distance; that is, the arc length of the graph from $s=0$ to $s=3$ is 3, the arc length from $s=2$ to $s=6$ is 4, etc. If one wants to find the point 2.5 units from an initial location (i.e., $s=0$), one would compute $\vec r(2.5)$. This parameter $s$ is very useful, and is called the \textbf{arc length parameter}.\index{arc length parameter}\index{arc length}
+Now consider \autoref{fig:vvfarc_intro1}(b), where the same graph is parameterized by a different variable $s$.  Points corresponding to $s=0$ through $s=6$ are plotted. The arc length of the graph between each adjacent pair of points is 1. We can view this parameter $s$ as distance; that is, the arc length of the graph from $s=0$ to $s=3$ is 3, the arc length from $s=2$ to $s=6$ is 4, etc. If one wants to find the point 2.5 units from an initial location (i.e., $s=0$), one would compute $\vec r(2.5)$. This parameter $s$ is very useful, and is called the \textbf{arc length parameter}.\index{arc length parameter}\index{arc length}
 
 How do we find the arc length parameter? 
 
-Start with any parametrization of $\vec r$. We can compute the arc length of the graph of $\vec r$ on the interval $[0,t]$ with
+Start with any parameterization of $\vec r$. We can compute the arc length of the graph of $\vec r$ on the interval $[0,t]$ with
 \[\text{arc length } = \int_0^t\norm{\vec r\,'(u)}\ du.\]
 We can turn this into a function: as $t$ varies, we find the arc length $s$ from $0$ to $t$. This function is
 \begin{equation}
@@ -62,9 +62,9 @@ s(t) = \int_0^t \norm{\vec r\,'(u)}\ du.\label{eq:vvfarc}
 
 This establishes a relationship between $s$ and $t$. Knowing this relationship explicitly, we can rewrite $\vec r(t)$ as a function of $s$: $\vec r(s)$. We demonstrate this in an example.
 
-\youtubeVideo{G0R-qialKlE}{Parametrize a Curve with Respect to Arc Length}
+\youtubeVideo{G0R-qialKlE}{Parametrize a Curve with Respect to Arc Length} % sic
 
-\example{ex_vvfarc1}{Finding the arc length parameter}{Let $\vec r(t) =\bracket{3t-1,4t+2}$. Parametrize $\vec r$ with the arc length parameter $s$.}
+\example{ex_vvfarc1}{Finding the arc length parameter}{Let $\vec r(t) =\bracket{3t-1,4t+2}$. Parameterize $\vec r$ with the arc length parameter $s$.}
 {Using \autoeqref{eq:vvfarc}, we write
 \[s(t) = \int_0^t \norm{\vec r\,'(u)}\ du.\]
 We can integrate this, explicitly finding a relationship between $s$ and $t$:
@@ -103,7 +103,7 @@ d = \sqrt{\left(\frac15-(-1)\right)^2+ \left(\frac{18}5-2\right)^2} = \sqrt{\fra
 \]
 Yes, $\vec r(2)$ is indeed 2 units away, in the direction of travel, from the initial point.}
 
-Things worked out very nicely in \autoref{ex_vvfarc1}; we were able to establish directly that $s=5t$. Usually, the arc length parameter is much more difficult to describe in terms of $t$, a result of integrating a square--root. There are a number of things that we can learn about the arc length parameter from \autoeqref{eq:vvfarc}, though, that are incredibly useful.
+Things worked out very nicely in \autoref{ex_vvfarc1}; we were able to establish directly that $s=5t$. Usually, the arc length parameter is much more difficult to describe in terms of $t$, a result of integrating a square-root. There are a number of things that we can learn about the arc length parameter from \autoeqref{eq:vvfarc}, though, that are incredibly useful.
 
 First, %consider \autoeqref{eq:vvfarc} and 
 take the derivative of $s$ with respect to $t$. The Fundamental Theorem of Calculus (see \autoref{thm:FTC1}) states that
@@ -124,7 +124,7 @@ Solving for $\vrp(s)$, we have
 where $\vec T(t)$ is the unit tangent vector. \autoeqref{eq:vvfarc2} is often misinterpreted, as one is tempted to think it states $\vrp(t) = \vec T(t)$, but there is a big difference between $\vrp(s)$ and $\vrp(t)$. The key to take from it is that $\vrp(s)$ is a unit vector. In fact, the following theorem states that this characterizes the arc length parameter.
 
 \theorem{thm:arclengthparam}{Arc Length Parameter}
-{Let $\vec r(s)$ be a vector--valued function. The parameter $s$ is the arc length parameter if, and only if, $\norm{\vrp(s)} = 1.$\index{arc length parameter}}
+{Let $\vec r(s)$ be a vector-valued function. The parameter $s$ is the arc length parameter if, and only if, $\norm{\vrp(s)} = 1.$\index{arc length parameter}}
 
 \subsection{Curvature}
 
@@ -167,11 +167,11 @@ Consider points $A$ and $B$ on the curve graphed in \autoref{fig:curvatureintro}
 We derive this number in the following way. Consider \autoref{fig:curvatureintro}(b), where  unit tangent vectors are graphed around points $A$ and $B$. Notice how the direction of the unit tangent vector changes quite a bit near $A$, whereas it does not change as much around $B$. This leads to an important concept: measuring the rate of change of the unit tangent vector with respect to arc length gives us a measurement of curvature.
 
 \definition{def:curvature}{Curvature}
-{Let $\vec r(s)$ be a vector--valued function where $s$ is the arc length parameter. The curvature $\kappa$ of the graph of $\vec r(s)$ is
+{Let $\vec r(s)$ be a vector-valued function where $s$ is the arc length parameter. The curvature $\kappa$ of the graph of $\vec r(s)$ is
 \index{curvature}\index{unit tangent vector!and curvature}
 \[\kappa = \norm{\frac{d\vec T}{ds}} = \norm{\vec T\,'(s)}.\]}
 
-If $\vec r(s)$ is parametrized by the arc length parameter, then 
+If $\vec r(s)$ is parameterized by the arc length parameter, then 
 \[\vec T(s) = \frac{\vrp(s)}{\norm{\vrp(s)}} \quad \text{and}\quad \vec N(s) = \frac{\vec T\,'(s)}{\norm{\vec T\,'(s)}}.\]
 Having defined $\norm{\vec T\,'(s)} =\kappa$, we can rewrite the second equation as
 \begin{equation}
@@ -183,7 +183,7 @@ We use \autoref{def:curvature} to find the curvature of the line in \autoref{ex_
 
 \example{ex_curvature1}{Finding the curvature of a line}
 {Use \autoref{def:curvature} to find the curvature of $\vrt =\bracket{3t-1,4t+2}$.}
-{In \autoref{ex_vvfarc1}, we found that the arc length parameter was defined by $s=5t$, so $\vec r(s) =\bracket{3s/5-1, 4s/5+2}$ parametrized $\vec r$ with the arc length parameter. To find $\kappa$, we need to find $\vec T\,'(s)$. 
+{In \autoref{ex_vvfarc1}, we found that the arc length parameter was defined by $s=5t$, so $\vec r(s) =\bracket{3s/5-1, 4s/5+2}$ parameterized $\vec r$ with the arc length parameter. To find $\kappa$, we need to find $\vec T\,'(s)$. 
 \begin{align*}
 \vec T(s) &= \vrp(s)\quad \text{(recall this is a unit vector)}\\
 				&=\bracket{3/5, 4/5}.
@@ -194,7 +194,6 @@ We use \autoref{def:curvature} to find the curvature of the line in \autoref{ex_
 \end{align*}
 It probably comes as no surprise that the curvature of a line is 0. (How ``curvy\primeskip'' is a line? It is not curvy at all.)}
 
-
 While the definition of curvature is a useful mathematical concept, it is nearly impossible to use most of the time; writing $\vec r$ in terms of the arc length parameter is generally very hard. Fortunately, there are other methods of calculating this value that are much easier. There is a trade-off: the definition is ``easy\primeskip'' to understand though hard to compute, whereas these other formulas are easy to compute though it may be hard to understand why they work.
 
 \theorem{thm:curvature_formulas}{Formulas for Curvature}
@@ -203,9 +202,9 @@ While the definition of curvature is a useful mathematical concept, it is nearly
 \begin{enumerate}
 	\item If $C$ is defined by $y=f(x)$, then 
 	\[\kappa = \frac{\abs{\fp'(x)}}{\Big(1+\big(\fp(x)\big)^2\Big)^{3/2}}.\]
-	\item	If $C$ is defined as a vector--valued function in the plane, $\vec r(t) =\bracket{x(t), y(t)}$, then
+	\item	If $C$ is defined as a vector-valued function in the plane, $\vec r(t) =\bracket{x(t), y(t)}$, then
 	\[\kappa = \frac{\abs{x\primeskip'y\primeskip''-x\primeskip''y\primeskip'}}{\big((x\primeskip')^2+(y\primeskip')^2\big)^{3/2}}.\]
-	\item If $C$ is defined in space by a vector--valued function $\vec r(t)$, then
+	\item If $C$ is defined in space by a vector-valued function $\vec r(t)$, then
 \[\kappa = \frac{\norm{\vec T\,'(t)}}{\norm{\vrp(t)}} = \frac{\norm{\vrp(t)\times\vrp'(t)}}{\norm{\vrp(t)}^3} = \frac{\vec a(t)\cdot \vec N(t)}{\norm{\vec v(t)}^2}.\]
 \end{enumerate}}
 
@@ -270,7 +269,7 @@ We compute $\kappa$ using the second part of \autoref{thm:curvature_formulas}.
 \end{align*}
 We have found that a circle with radius $r$ has curvature $\kappa = 1/r$.}
 
-\autoref{ex_curvature2} gives a great result. Before this example, if we were told ``The curve has a curvature of 5 at point $A$,'' we would have no idea what this really meant. Is 5 ``big'' -- does is correspond to a really sharp turn, or a not-so-sharp turn? Now we can think of 5 in terms of a circle with radius 1/5. Knowing the units (inches vs.\ miles, for instance) allows us to determine how sharply the curve is curving.\bigskip
+\autoref{ex_curvature2} gives a great result. Before this example, if we were told ``The curve has a curvature of 5 at point $A$,'' we would have no idea what this really meant. Is 5 ``big'' --- does is correspond to a really sharp turn, or a not-so-sharp turn? Now we can think of 5 in terms of a circle with radius 1/5. Knowing the units (inches vs.\ miles, for instance) allows us to determine how sharply the curve is curving.\bigskip
 
 Let a point $P$ on a smooth curve $C$  be given, and let $\kappa$ be the curvature of the curve at $P$. A circle that:
 	\begin{itemize}
@@ -408,6 +407,6 @@ Note that each acceleration is similar; this is by design. Considering the class
 
 % todo add some text about the Frenet frame
 
-We end this chapter with a reflection on what we've covered. We started with vector--valued functions, which may have seemed at the time to be just another way of writing parametric equations. However, we have seen that the vector perspective has given us great insight into the behavior of functions and the study of motion. Vector--valued position functions convey displacement, distance traveled, speed, velocity, acceleration and curvature information, each of which has great importance in science and engineering.
+We end this chapter with a reflection on what we've covered. We started with vector-valued functions, which may have seemed at the time to be just another way of writing parametric equations. However, we have seen that the vector perspective has given us great insight into the behavior of functions and the study of motion. Vector-valued position functions convey displacement, distance traveled, speed, velocity, acceleration and curvature information, each of which has great importance in science and engineering.
 
 \printexercises{exercises/11_05_exercises}

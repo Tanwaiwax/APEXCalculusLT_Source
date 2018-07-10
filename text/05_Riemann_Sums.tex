@@ -1,10 +1,10 @@
 \section{Riemann Sums}\label{sec:riemann}
 
-In the previous section we defined the definite integral of a function on $[a,b]$ to be the signed area between the curve and the $x$--axis. Some areas were simple to compute; we ended the section with a region whose area was not simple to compute. In this section we develop a technique to find such areas.\index{Riemann Sum}
+In the previous section we defined the definite integral of a function on $[a,b]$ to be the signed area between the curve and the $x$-axis. Some areas were simple to compute; we ended the section with a region whose area was not simple to compute. In this section we develop a technique to find such areas.\index{Riemann Sum}
 
 A fundamental calculus technique is to first answer a given problem with an approximation, then refine that approximation to make it better, then use limits in the refining process to find the exact answer. That is exactly what we will do here.
 
-Consider the region given in \autoref{fig:rie1a}, which is the area under $y=4x-x^2$ on $[0,4]$. What is the signed area of this region -- i.e., what is $\ds\int_0^4(4x-x^2)\ dx$?
+Consider the region given in \autoref{fig:rie1a}, which is the area under $y=4x-x^2$ on $[0,4]$. What is the signed area of this region --- i.e., what is $\ds\int_0^4(4x-x^2)\ dx$?
 
 \mtable{A graph of $f(x) = 4x-x^2$. What is the area of the shaded region?}{fig:rie1a}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -18,15 +18,15 @@ ytick={1,2,3,4},ymin=-1,ymax=5,xmin=-.5,xmax=4.5]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-We start by approximating. We can surround the region with a rectangle with height and width of 4 and find the area is approximately 16 square units. This is obviously an \textit{over--approximation}; we are including area in the rectangle that is not under the parabola. 
+We start by approximating. We can surround the region with a rectangle with height and width of 4 and find the area is approximately 16 square units. This is obviously an \textit{over-approximation}; we are including area in the rectangle that is not under the parabola. 
 
-%We can try to compensate for this over--estimate by reducing the height of the rectangle. This would leave out some area, but still include too much in other places. We'd be guessing, though, as to the ``best'' height to choose.
+%We can try to compensate for this over-estimate by reducing the height of the rectangle. This would leave out some area, but still include too much in other places. We'd be guessing, though, as to the ``best'' height to choose.
 
 We have an approximation of the area, using one rectangle. How can we refine our approximation to make it better? The key to this section is this answer: \textit{use more rectangles.}
 
 Let's use 4 rectangles of equal width of 1. This \textit{partitions} the interval $[0,4]$ into 4 \textit{subintervals}, $[0,1]$, $[1,2]$, $[2,3]$ and $[3,4]$. On each subinterval we will draw a rectangle.
 
-There are three common ways to determine the height of these rectangles: the \textbf{Left Hand Rule}, the \textbf{Right Hand Rule}, and the \textbf{Midpoint Rule}. The \textbf{Left Hand Rule} says to evaluate the function at the left--hand endpoint of the subinterval and make the rectangle that height. In \autoref{fig:rie1b}, the rectangle drawn on the interval $[2,3]$ has height determined by the Left Hand Rule; it has a height of $f(2)$. (The rectangle is labeled ``LHR.'')\index{Left Hand Rule}\index{Right Hand Rule}\index{Midpoint Rule}
+There are three common ways to determine the height of these rectangles: the \textbf{Left Hand Rule}, the \textbf{Right Hand Rule}, and the \textbf{Midpoint Rule}. The \textbf{Left Hand Rule} says to evaluate the function at the left-hand endpoint of the subinterval and make the rectangle that height. In \autoref{fig:rie1b}, the rectangle drawn on the interval $[2,3]$ has height determined by the Left Hand Rule; it has a height of $f(2)$. (The rectangle is labeled ``LHR.'')\index{Left Hand Rule}\index{Right Hand Rule}\index{Midpoint Rule}
 
 % not \ds because of spacing
 \mtable{Approximating $\int_0^4(4x-x^2)\ dx$ using rectangles. The heights of the rectangles are determined using different rules.}{fig:rie1b}{\begin{tikzpicture}
@@ -216,7 +216,8 @@ Suppose we wish to add up a list of numbers $a_1$, $a_2$, $a_3$, \dots, $a_9$. I
 we use summation notation and write
 \[\sum_{i=1}^9 a_i\]
 Lets analyze this notation.\\
-\begin{lxfigure}
+\noindent\begin{minipage}[t]{\linewidth}\noindent
+\captionsetup{type=figure}
 \centering
 \begin{tikzpicture}[>=latex]
 \draw  (1,1) node {$\displaystyle \sum_{i=1}^9 a_i$.};
@@ -236,7 +237,7 @@ Lets analyze this notation.\\
 \draw [draw={\colorone},->] (e) -- (.6,1);
 \end{tikzpicture}
 \caption{Understanding summation notation.}\label{fig:rie_notation}
-\end{lxfigure}
+\end{minipage}
 
 The upper case sigma, $\sum$, represents the term ``sum.'' The index of summation in this example is $i$; any symbol can be used. By convention, the index takes on only the integer values between (and including) the lower and upper bounds. 
 
@@ -603,14 +604,14 @@ It is now easy to approximate the integral with 1,000,000 subintervals!  Hand-he
 
 We now take an important leap. Up to this point, our mathematics has been limited to geometry and algebra (finding areas and manipulating expressions). Now we apply \textit{calculus}. For any \textit{finite} $n$, we know that
 \[\int_0^4 (4x-x^2)\ dx \approx \frac{32}{3}\left(1-\frac{1}{n^2}\right).\]
-Both common sense and high--level mathematics tell us that as $n$ gets large, the approximation gets better. In fact, if we take the \textit{limit} as $n\rightarrow \infty$, we get the \textit{exact area} described by $\ds\int_0^4 (4x-x^2)\ dx$. That is, 
+Both common sense and high-level mathematics tell us that as $n$ gets large, the approximation gets better. In fact, if we take the \textit{limit} as $n\rightarrow \infty$, we get the \textit{exact area} described by $\ds\int_0^4 (4x-x^2)\ dx$. That is, 
 \begin{align*}
 	\int_0^4 (4x-x^2)\ dx
 	&= \lim_{n\to\infty} \frac{32}{3}\left(1-\frac{1}{n^2}\right) \\
 	&= \frac{32}{3}\left(1-0\right)\\
 	&= \frac{32}{3} = 10.\overline{6}
 \end{align*}
-This is a fantastic result. By considering $n$ equally--spaced subintervals, we obtained a formula for an approximation of the definite integral that involved our variable $n$. As $n$ grows large -- without bound -- the error shrinks to zero and we obtain the exact area.
+This is a fantastic result. By considering $n$ equally-spaced subintervals, we obtained a formula for an approximation of the definite integral that involved our variable $n$. As $n$ grows large --- without bound --- the error shrinks to zero and we obtain the exact area.
 
 This section started with a fundamental calculus technique: make an approximation, refine the approximation to make it better, then use limits in the refining process to get an exact answer. That is precisely what we just did.
 
@@ -661,7 +662,7 @@ Now find the exact answer using a limit:
 
 \subsection{Limits of Riemann Sums}
 
-We have used limits to find the exact value of certain definite integrals. Will this always work? We will show, given not--very--restrictive conditions, that yes, it will always work.
+We have used limits to find the exact value of certain definite integrals. Will this always work? We will show, given not-very-restrictive conditions, that yes, it will always work.
 
 The previous two examples demonstrated how an expression such as
 \[\sum_{i=1}^n f(x_i)\Delta x\]

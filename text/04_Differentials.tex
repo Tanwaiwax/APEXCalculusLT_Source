@@ -56,28 +56,29 @@ Using this line to approximate $\sin 1.1$, we have:
 \end{align*}
 (We leave it to the reader to see how good of an approximation this is.)\\
 
-We now generalize this concept. Given $f(x)$ and an $x$--value $c$,  the tangent line is $\ell(x) = \fp(c)(x-c)+f(c)$. Clearly, $f(c) = \ell(c)$. Let $\dx$ be a small number, representing a small change in $x$ value. We assert that:
-\[f(c+\dx) \approx \ell(c+\dx),\]
+We now generalize this concept. Given $f(x)$ and an $x$-value $c$,  the tangent line is $\ell(x) = \fp(c)(x-c)+f(c)$. Clearly, $f(c) = \ell(c)$. Let $\Delta x$ be a small number, representing a small change in $x$ value. We assert that:
+\[f(c+\Delta x) \approx \ell(c+\Delta x),\]
 since the tangent line to a function approximates well the values of that function near $x=c$. 
 
-As the $x$ value changes from $c$ to $c+\dx$, the $y$ value of $f$ changes from $f(c)$ to $f(c+\dx)$. We call this change of $y$ value \dy. That is:
-\[\dy = f(c+\dx)-f(c).\]
-Replacing $f(c+\dx)$ with its tangent line approximation, we have 
-\begin{align} \dy &\approx \ell(c+\dx) - f(c) \notag\\
-								&= \fp(c)\big((c+\dx)-c\big)+f(c) - f(c)\notag \\
-								&=\fp(c)\dx		\label{eq:differential}
+As the $x$ value changes from $c$ to $c+\Delta x$, the $y$ value of $f$ changes from $f(c)$ to $f(c+\Delta x)$. We call this change of $y$ value \Delta y. That is:
+\[\Delta y = f(c+\Delta x)-f(c).\]
+Replacing $f(c+\Delta x)$ with its tangent line approximation, we have 
+\begin{align}
+	\Delta y &\approx \ell(c+\Delta x) - f(c) \notag\\
+	&= \fp(c)\big((c+\Delta x)-c\big)+f(c) - f(c)\notag \\
+	&=\fp(c)\Delta x		\label{eq:differential}
 \end{align}
 
 This final equation is important; we'll come back to it in \autoref{idea:differential}.
 
-We introduce two new variables, $dx$ and $dy$ in the context of a formal definition. %We defined $dx = \dx$; that is, it is a small change in $x$. We define
+We introduce two new variables, $dx$ and $dy$ in the context of a formal definition. %We defined $dx = \Delta x$; that is, it is a small change in $x$. We define
 
 \definition{def:differential}{Differentials of $x$ and $y$.}
 {Let $y=f(x)$ be differentiable. The \textbf{differential of $x$}, denoted $dx$, is any nonzero real number (usually taken to be a small number).\index{differential}\index{derivative!differential} The \textbf{differential of $y$}, denoted $dy$, is
 \[dy = \fp(x)dx.\]
 }
 
-We can solve for $\fp(x)$ in the above equation: $\fp(x) = dy/dx$. This states that the derivative of $f$ with respect to $x$ is the differential of $y$ divided by the differential of $x$; this is \textbf{not} the alternate notation for the derivative, $\frac{dy}{dx}$. This latter notation was chosen because of the fraction--like qualities of the derivative, but again, it is one symbol and not a fraction.
+We can solve for $\fp(x)$ in the above equation: $\fp(x) = dy/dx$. This states that the derivative of $f$ with respect to $x$ is the differential of $y$ divided by the differential of $x$; this is \textbf{not} the alternate notation for the derivative, $\frac{dy}{dx}$. This latter notation was chosen because of the fraction-like qualities of the derivative, but again, it is one symbol and not a fraction.
 
 It is helpful to organize our new concepts and notations in one place and an accompanying figure.
 
@@ -101,11 +102,11 @@ It is helpful to organize our new concepts and notations in one place and an acc
 \keyidea{idea:differential}{Differential Notation}
 {Let $y = f(x)$ be a differentiable function. \index{differential!notation}
 \begin{enumerate}
-	\item $\dx$ represents a small, nonzero change in $x$ value.
-	\item	$dx$ represents a small, nonzero change in $x$ value (i.e., $\dx = dx$).
-	\item	$\dy$ is the change in $y$ value as $x$ changes by $\dx$; hence
-	\[\dy = f(x+\dx)-f(x).\]
-	\item		$dy = \fp(x)dx$ which, by \autoeqref{eq:differential}, is an \textit{approximation} of the change in $y$ value as $x$ changes by $\dx$; $dy \approx \dy$.
+	\item $\Delta x$ represents a small, nonzero change in $x$ value.
+	\item	$dx$ represents a small, nonzero change in $x$ value (i.e., $\Delta x = dx$).
+	\item	$\Delta y$ is the change in $y$ value as $x$ changes by $\Delta x$; hence
+	\[\Delta y = f(x+\Delta x)-f(x).\]
+	\item		$dy = \fp(x)dx$ which, by \autoeqref{eq:differential}, is an \textit{approximation} of the change in $y$ value as $x$ changes by $\Delta x$; $dy \approx \Delta y$.
 \end{enumerate}
 }
 
@@ -114,9 +115,9 @@ What is the value of differentials? Like many mathematical concepts, differentia
 \youtubeVideo{AvM8-LUdg84}{Differentials 2}
 
 \example{ex_diffal1}{Finding and using differentials}{Consider $f(x) = x^2$. Knowing $f(3) = 9$, approximate $f(3.1)$.}
-{The $x$ value is changing from $x=3$ to $x=3.1$; therefore, we see that $dx=0.1$. If we know how much the $y$ value changes from $f(3)$ to $f(3.1)$ (i.e., if we know $\dy$), we will know exactly what $f(3.1)$ is (since we already know $f(3)$). We can approximate \dy\ with $dy$.
+{The $x$ value is changing from $x=3$ to $x=3.1$; therefore, we see that $dx=0.1$. If we know how much the $y$ value changes from $f(3)$ to $f(3.1)$ (i.e., if we know $\Delta y$), we will know exactly what $f(3.1)$ is (since we already know $f(3)$). We can approximate \Delta y\ with $dy$.
 \begin{align*}
-	\dy &\approx dy \\
+	\Delta y &\approx dy \\
 	&= \fp(3)dx \\
 	&= 2\cdot 3\cdot 0.1 = 0.6.
 \end{align*}
@@ -129,7 +130,7 @@ Of course, it is easy to compute the actual answer (by hand or with a calculator
 
 So why bother?
 
-In ``most'' real life situations, we do not know the function that describes a particular behavior. Instead, we can only take measurements of how things change -- measurements of the derivative.
+In ``most'' real life situations, we do not know the function that describes a particular behavior. Instead, we can only take measurements of how things change --- measurements of the derivative.
 
 Imagine water flowing down a winding channel. It is easy to measure the speed and direction (i.e., the \textit{velocity}) of water at any location. It is very hard to create a function that describes the overall flow, hence it is hard to predict where a floating object placed at the beginning of the channel will end up. However, we can \textit{approximate} the path of an object using differentials. Over small intervals, the path taken by a floating object is essentially linear. Differentials allow us to approximate the true path by piecing together lots of short, linear paths. This technique is called Euler's Method, studied in introductory Differential Equations courses.
 
@@ -140,7 +141,7 @@ We use differentials once more to approximate the value of a function. Even thou
 {We expect $\sqrt{4.5} \approx 2$, yet we can do better. Let $f(x) = \sqrt{x}$, and let $c=4$. Thus $f(4) = 2$. We can compute $\fp(x) = 1/(2\sqrt{x})$, so $\fp(4) = 1/4$. 
 
 We approximate the difference between $f(4.5)$ and $f(4)$ using differentials, with $dx = 0.5$:
-\[f(4.5)-f(4) = \dy \approx dy = \fp(4)\cdot dx = 1/4 \cdot 1/2 = 1/8 = 0.125.\]
+\[f(4.5)-f(4) = \Delta y \approx dy = \fp(4)\cdot dx = 1/4 \cdot 1/2 = 1/8 = 0.125.\]
 The approximate change in $f$ from $x=4$ to $x=4.5$ is $0.125$, so we approximate $\sqrt{4.5} \approx 2.125.$}
 
 Differentials are important when we discuss \textit{integration}. When we study that topic, we will use notation such as
@@ -171,10 +172,10 @@ We have $\ds \fp(x) = \frac{1}{2}(x^2+3x-1)^{-\frac12}(2x+3) = \frac{2x+3}{2\sqr
 
 Finding the differential $dy$ of $y=f(x)$ is really no harder than finding the derivative of $f$; we just \textit{multiply} $\fp(x)$ by $dx$. It is important to remember that we are not simply adding the symbol ``$dx$'' at the end.\\
 
-We have seen a practical use of differentials as they offer a good method of making certain approximations. Another use is \textit{error propagation.} Suppose a length is measured to be $x$, although the actual value is $x+\dx$ (where we hope \dx\ is small). This measurement of $x$ may be used to compute some other value; we can think of this as $f(x)$ for some function $f$. As the true length is $x+\dx$, one really should have computed $f(x+\dx)$. The difference between $f(x)$ and $f(x+\dx)$ is the propagated error. 
+We have seen a practical use of differentials as they offer a good method of making certain approximations. Another use is \textit{error propagation.} Suppose a length is measured to be $x$, although the actual value is $x+\Delta x$ (where we hope $\Delta x$ is small). This measurement of $x$ may be used to compute some other value; we can think of this as $f(x)$ for some function $f$. As the true length is $x+\Delta x$, one really should have computed $f(x+\Delta x)$. The difference between $f(x)$ and $f(x+\Delta x)$ is the propagated error. 
 
-How close are $f(x)$ and $f(x+\dx)$? This is a difference in ``y'' values;
-\[f(x+\dx)-f(x) = \dy \approx dy.\]
+How close are $f(x)$ and $f(x+\Delta x)$? This is a difference in ``y'' values;
+\[f(x+\Delta x)-f(x) = \Delta y \approx dy.\]
 We can approximate the propagated error using differentials.
 
 \example{ex_diffal4}{Using differentials to approximate propagated error}{A steel ball bearing is to be manufactured with a diameter of 2cm. The manufacturing process has a tolerance of $\pm 0.1$mm in the diameter. Given that the density of steel is about 7.85g/cm$^3$, estimate the propagated error in the mass of the ball bearing.}

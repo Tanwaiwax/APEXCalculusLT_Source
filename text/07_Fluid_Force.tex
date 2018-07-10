@@ -13,11 +13,12 @@ We start with \textbf{pressure}, which is related to \textbf{force} by the follo
 In the context of fluids, we have the following definition.
 
 \definition{def:fluid_pressure}{Fluid Pressure}
-{Let $w$ be the weight--density of a fluid. The \textbf{pressure} $p$ exerted on an object at depth $d$ in the fluid is $p = w\cdot d.$\index{fluid pressure/force}\index{integration!fluid force}
+{Let $w$ be the weight-density of a fluid. The \textbf{pressure} $p$ exerted on an object at depth $d$ in the fluid is $p = w\cdot d.$\index{fluid pressure/force}\index{integration!fluid force}
 }
 
 We use this definition to find the \textbf{force} exerted on a horizontal sheet by considering the sheet's area.
 
+% todo Tim should this be redone? or not, because Larry Green isn't on Youtube?
 \ifthenelse{\boolean{latexml}}{%
  Watch the video:\\
  Fluid Force on a Vertical Plane at\\
@@ -59,8 +60,8 @@ We use this definition to find the \textbf{force} exerted on a horizontal sheet 
 
 \example{ex_fluid1}{Computing fluid force}{\mbox{}\\[-2\baselineskip]
 \begin{enumerate}
-	\item	A cylindrical storage tank has a radius of 2 ft and holds 10 ft of a fluid with a weight--density of 50 lb/ft$^3$. (See \autoref{fig:fluid1a}.) What is the force exerted on the base of the cylinder by the fluid?
-	\item	A rectangular tank whose base is a 5 ft square has a circular hatch at the bottom with a radius of 2 ft. The tank holds 10 ft of a fluid with a weight--density of 50 lb/ft$^3$. (See \autoref{fig:fluid1b}.) What is the force exerted on the hatch by the fluid?
+	\item	A cylindrical storage tank has a radius of 2 ft and holds 10 ft of a fluid with a weight-density of 50 lb/ft$^3$. (See \autoref{fig:fluid1a}.) What is the force exerted on the base of the cylinder by the fluid?
+	\item	A rectangular tank whose base is a 5 ft square has a circular hatch at the bottom with a radius of 2 ft. The tank holds 10 ft of a fluid with a weight-density of 50 lb/ft$^3$. (See \autoref{fig:fluid1b}.) What is the force exerted on the hatch by the fluid?
 %
 \mtable{A rectangular tank in \autoref{ex_fluid1}.}{fig:fluid1b}{\begin{tikzpicture}[x=.25cm,y=.25cm,>=stealth]
  \begin{scope}[xscale=2]
@@ -127,7 +128,7 @@ The previous example demonstrates that computing the force exerted on a horizont
 
 Pascal's Principle states  that the pressure exerted by a fluid at a depth is equal in all directions. Thus the pressure on any portion of a plate that is 1 ft below the surface of water is the same no matter how the plate is oriented. (Thus a hollow cube submerged at a great depth will not simply be ``crushed'' from above, but the sides will also crumple in. The fluid will exert force on \textit{all} sides of the cube.)
 
-\mtable{A thin, vertically oriented plate submerged in a fluid with weight--density $w$.}{fig:fluid_intro1}{\begin{tikzpicture}[x=1.25cm,y=1.25cm,>=stealth]
+\mtable{A thin, vertically oriented plate submerged in a fluid with weight-density $w$.}{fig:fluid_intro1}{\begin{tikzpicture}[x=1.25cm,y=1.25cm,>=stealth]
  \begin{scope}
   \draw [thick] (0,0) -- (1,2) -- (2,2) -- (4,0)--cycle;
   \draw [draw={\colortwo},fill={\colortwofill},thick] (.5,.9) rectangle (3,1.1);
@@ -146,7 +147,7 @@ Pascal's Principle states  that the pressure exerted by a fluid at a depth is eq
  \end{scope}
 \end{tikzpicture}}
 
-So consider a vertically oriented plate as shown in \autoref{fig:fluid_intro1} submerged in a fluid with weight--density $w$. What is the total fluid force exerted on this plate? We find this force by first approximating the force on small horizontal strips.
+So consider a vertically oriented plate as shown in \autoref{fig:fluid_intro1} submerged in a fluid with weight-density $w$. What is the total fluid force exerted on this plate? We find this force by first approximating the force on small horizontal strips.
 
 Let the top of the plate be at depth $b$ and let the bottom be at depth $a$. (For now we assume that surface of the fluid is at depth 0, so if the bottom of the plate is 3 ft under the surface, we have $a=-3$. We will come back to this later.) We partition the interval $[a,b]$ into $n$ subintervals 
 \[a=y_0<y_1<\dotso<y_n=b,\]
@@ -166,7 +167,7 @@ F = \sum_{i=1}^n F_i \approx \sum_{i=1}^n -w\cdot y_i\cdot\ell(c_i)\cdot\Delta y
 This is, of course, another Riemann Sum. We can find the exact force by taking a limit as the subinterval lengths go to 0; we evaluate this limit with a definite integral.
 
 \keyidea{idea:fluid_force}{Fluid Force on a Vertically Oriented Plate}
-{Let a vertically oriented plate be submerged in a fluid with weight--density $w$ where the top of the plate is at $y=b$ and the bottom is at $y=a$. Let $\ell(y)$ be the length of the plate at $y$.
+{Let a vertically oriented plate be submerged in a fluid with weight-density $w$ where the top of the plate is at $y=b$ and the bottom is at $y=a$. Let $\ell(y)$ be the length of the plate at $y$.
 \index{fluid pressure/force}\index{integration!fluid force}
 \begin{enumerate}
 	\item	If $y=0$ corresponds to the surface of the fluid, then the force exerted on the plate by the fluid is
@@ -186,7 +187,7 @@ isosceles triangle as shown in \autoref{fig:fluid2a} submerged in water with a
       (2.4,0) -- node [pos=.5,rotate=-90,above] {\scriptsize 4 ft} (2.4,4);
 \end{tikzpicture}}
 %
-weight--density of 62.4 lb/ft$^3$. If the bottom of the plate is 10 ft below the surface of the water, what is the total fluid force exerted on this plate?}
+weight-density of 62.4 lb/ft$^3$. If the bottom of the plate is 10 ft below the surface of the water, what is the total fluid force exerted on this plate?}
 {We approach this problem in two different ways to illustrate the different ways \autoref{idea:fluid_force} can be implemented. First we will let $y=0$ represent the surface of the water, then we will consider an alternate convention.
 
 	\mtable{Sketching the triangular plate in \autoref{ex_fluid2} with the convention that the water level is at $y=0$.}{fig:fluid2b}{\begin{tikzpicture}
@@ -253,7 +254,7 @@ xlabel={\scriptsize$x$},ylabel={\scriptsize$y$},xlabel style=right,ylabel style=
 The correct answer is, of course, independent of the placement of the plate in the coordinate plane as long as we are consistent.}
 
 \example{ex_fluid3}{Finding fluid force}{Find the total fluid force on a car door submerged up to the bottom of its window in water, where the car door is a rectangle 40'' long and 27'' high (based on the dimensions of a 2005 Fiat Grande Punto.)}
-{The car door, as a rectangle, is drawn in \autoref{fig:fluid3}. Its length is $10/3$ ft and its height is 2.25 ft. We adopt the convention that the top of the door is at the surface of the water, both of which are at $y=0$. Using the weight--density of water of 62.4 lb/ft$^3$, we have the total force as
+{The car door, as a rectangle, is drawn in \autoref{fig:fluid3}. Its length is $10/3$ ft and its height is 2.25 ft. We adopt the convention that the top of the door is at the surface of the water, both of which are at $y=0$. Using the weight-density of water of 62.4 lb/ft$^3$, we have the total force as
 %
 \mtable{Sketching a submerged car door in \autoref{ex_fluid3}.}{fig:fluid3}{\begin{tikzpicture}[x=.5cm,y=.5cm,>=stealth]
  \draw[thick] (0,0) -- (3.33,0) --  (3.33,-2.25) -- (0,-2.25) --cycle;
@@ -278,7 +279,7 @@ The correct answer is, of course, independent of the placement of the plate in t
 	&= -104y^2\Big|_{-2.25}^0 \\
 	&=	526.5 \text{ lb.}
 \end{align*}
-Most adults would find it very difficult to apply over 500 lb of force to a car door while seated inside, making the door effectively impossible to open. This  is  counter--intuitive as most assume that the door would be relatively easy to open. The truth is that it is not, hence the survival tips mentioned at the beginning of this section.}
+Most adults would find it very difficult to apply over 500 lb of force to a car door while seated inside, making the door effectively impossible to open. This  is  counter-intuitive as most assume that the door would be relatively easy to open. The truth is that it is not, hence the survival tips mentioned at the beginning of this section.}
 
 \mtable{Measuring the fluid force on an underwater porthole in \autoref{ex_fluid4}.}{fig:fluid4}{\begin{tikzpicture}[x=.6cm,y=.6cm,>=stealth]
  \draw[thick] (0,0) circle (1.5);
@@ -328,6 +329,6 @@ We end this chapter with a reminder of the true skills meant to be developed her
 
 What we are actually concerned with is the ability to solve certain problems by first approximating the solution, then refining the approximation, then recognizing if/when this refining process results in a definite integral through a limit. Knowing the formulas found inside the special boxes within this chapter is beneficial as it helps solve problems found in the exercises, and other mathematical skills are strengthened by properly applying these formulas. However, more importantly, understand how each of these formulas was constructed. Each is the result of a summation of approximations; each summation was a Riemann sum, allowing us to take a limit and find the exact answer through a definite integral. %\bigskip
 
-%The next chapter addresses an entirely different topic: sequences and series. In short, a sequence is a list of numbers, where a series is the summation of a list of numbers. These seemingly--simple ideas lead to very powerful mathematics.
+%The next chapter addresses an entirely different topic: sequences and series. In short, a sequence is a list of numbers, where a series is the summation of a list of numbers. These seemingly-simple ideas lead to very powerful mathematics.
 
 \printexercises{exercises/07_06_exercises}

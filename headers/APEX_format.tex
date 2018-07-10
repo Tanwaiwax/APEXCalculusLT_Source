@@ -5,15 +5,10 @@
 %%% for things latexml is having trouble with.
 %%% This does mean that the distinction between APEX_format and Header_Calculus
 %%% is no longer important, and mostly historical.
-%%% The same could be said for Page_Size_Calculus, but it makes some sense to have
-%%% that specifically dealing with the page size geometries and nothing else
 
 % do we want to print the keys for the labels? if so, uncomment
 %\usepackage[notref,notcite]{showkeys}
 
-%%%%
-%% Begins the usepackage section
-%%%%
 
 \RequirePackage{amsmath}
 \RequirePackage{amssymb} % todo ? https://tex.stackexchange.com/a/3000/107497 recommends dropping amssymb in favor of unicode-math
@@ -262,19 +257,21 @@
 % The starred version only has 3: label, title, problem/solution.
 \makeatletter
 \newcommand{\example}{\@ifstar \examplestarred \examplenostar}
-\newcommand{\reverseexampledefault}{%
- \renewcommand{\example}{\@ifstar \examplenostar \examplestarred}%
-}
-\newcommand{\restoreexampledefault}{%
- \renewcommand{\example}{\@ifstar \examplestarred \examplenostar}%
-}
+%\newcommand{\reverseexampledefault}{%
+% \renewcommand{\example}{\@ifstar \examplenostar \examplestarred}%
+%}
+%\newcommand{\restoreexampledefault}{%
+% \renewcommand{\example}{\@ifstar \examplestarred \examplenostar}%
+%}
 \makeatother
 
-% This is the no-star (regular) version of the example command.
-\newcommand{\examplenostar}[4]{\examplestarred{#1}{#2}{#3\bigbreak
 
-\makebox[65pt][l]{\textsc{\small\textbf{Solution\lxAddClass{solutionTag}}}}% 
-#4}}
+\newcommand{\solution}{\bigbreak\par
+\makebox[65pt][l]{\textsc{\small\textbf{Solution\lxAddClass{solutionTag}}}}%
+}
+
+% This is the no-star (regular) version of the example command.
+\newcommand{\examplenostar}[4]{\examplestarred{#1}{#2}{#3\solution #4}}
 
 
 % black: hsl(x,x,0)
@@ -304,6 +301,19 @@
 
 \newcommand{\restoreboxwidth}{\setboxwidth{0pt}}
 \restoreboxwidth
+
+% can't get these to work
+%\newcommand*{\specialboxcoloroptions}[1]{%
+%     rectangle, text width = \specialboxlength,
+%     inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
+%     draw=border#1, top color=top#1, bottom color=bottom#1,
+%     text justified, very thick
+%}
+%\newcommand{\specialboxbwoptions}{%
+%     draw=black, thick, rectangle, text width=\specialboxlength,
+%     inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
+%     draw, text justified, very thick
+%}
 
 \newcommand{\newspecialbox}[4][]{%
  \AtBeginDocument{\makeStyles{#2}{#4}}%
@@ -340,6 +350,7 @@
    \restoreboxwidth%
   }%
  }{% else #1 != '' means we're in exvideo (aka, a qr code to youtube)
+%%%%% this is no longer used
   \definecolor{top#2}{Hsb}{#4,.05,1}% %= hsl(#4,100,97.5)
   \definecolor{border#2}{Hsb}{#4,.3,1}% %= hsl(#4,90.5,68.4)
   \definecolor{bottom#2}{Hsb}{#4,.15,1}% %= hsl(#4,81.9,83.4)
@@ -379,13 +390,6 @@
 % topc = white!95!red       = Hsb(  0,.05,1)
 % botc = red!60!black!20    = Hsb(  0,.13,.92)
 
-%\newcommand{\showcolor}[1]{#1 is
-%  \extractcolorspecs{#1}{\model}{\mycolor}
-%  \convertcolorspec{\model}{\mycolor}{Hsb}{\converted}\converted\ in Hsb}
-%
-%\begin{document}
-%\showcolor{blue!95!black!30}
-%\end{document}
 
 
 
@@ -396,12 +400,6 @@
 %% related to creating problem sections.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\newcommand{\exc}{\addtocounter{excounter}{2}\arabic{excounter}}
-
-%\newif\ifmore
-
-%\newif\ifexsetmore
-
 \setlength{\columnsep}{20pt}
 
 \makeatletter
@@ -409,15 +407,9 @@
 \@startsection{subsubsection}{3}{-1em}{\bigskipamount}{\bigskipamount}{\Large\textit}*}
 \makeatother
 
-%\newcommand{\printconcepts}{\closeenumerate\subsubsection*{Terms and Concepts}}
 \newcommand{\printconcepts}{\closeenumerate\exercisesubsubsection{Terms and Concepts}}
-%{\noindent\textit{\Large Terms and Concepts}\bigskip}
-%\newcommand{\printproblems}{\closeenumerate\subsubsection*{Problems}}
 \newcommand{\printproblems}{\closeenumerate\exercisesubsubsection{Problems}}
-%{\bigbreak\noindent\textit{\Large Problems}\bigskip}
-%\newcommand{\printreview}{\closeenumerate\subsubsection*{Review}}
 \newcommand{\printreview}{\closeenumerate\exercisesubsubsection{Review}}
-%{\bigbreak\noindent\textit{\Large Review}\bigskip}
 
 \newcommand{\inanswersection}{%
 	\setboolean{printquestions}{false}%
@@ -433,15 +425,6 @@
 \newcommand{\printallanswers}{\setboolean{printoddanswersonly}{false}}
 
 \newcount\numberofexercises
-
-%\newcounter{numofexer}
-%\newcounter{negnumofexer}
-
-% used for debugging; not really used anymore
-%\newcounter{debug}
-%\setcounter{debug}{0}
-
-%\newcounter{exercisecounter}
 
 
 \newwrite\answrite %write the answers file
@@ -600,3 +583,7 @@
   \item \parbox[t]{\linewidth}{#2}%
  }%
 }}
+
+\newcommand{\questioncolumnbreak}{%
+ \ifthenelse{\boolean{printquestions}}{\columnbreak}{}%
+}

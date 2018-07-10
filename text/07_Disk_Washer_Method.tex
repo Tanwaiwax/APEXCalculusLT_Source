@@ -17,9 +17,9 @@ Given an arbitrary solid, we can \textit{approximate} its volume by cutting it i
 % (These slices are the differential elements.)
 
 By orienting a solid along the $x$-axis, we can let $A(x_i)$ represent the cross-sectional area
-of the $i\,^\text{th}$ slice, and let $\dx$ represent the thickness of the slices (the thickness is a small change in $x$). The total volume of the solid is approximately:
+of the $i\,^\text{th}$ slice, and let $\Delta x$ represent the thickness of the slices (the thickness is a small change in $x$). The total volume of the solid is approximately:
 	\begin{align*} \text{Volume} &\approx \sum_{i=1}^n \Big[\text{Area}\ \times\ \text{thickness}\Big] \\
-			&= \sum_{i=1}^n A(x_i)\dx.
+			&= \sum_{i=1}^n A(x_i)\Delta x.
 	\end{align*}
 	
 Recognize that this is a Riemann Sum. By taking a limit (as the thickness of the slices goes to 0) we can find the volume exactly. 
@@ -54,9 +54,9 @@ To determine its area $A(x)$, we need to determine the side lengths of the squar
 
 When $x=5$, the square has side length 10; when $x=0$, the square has side length 0. Since the edges of the pyramid are lines, it is easy to figure that each cross-sectional square has side length $2x$, giving $A(x) = (2x)^2=4x^2$.
 
-If one were to cut a slice out of the pyramid at $x=3$, as shown in \autoref{fig:disk0}(b), one would have a shape with square bottom and top with sloped sides. If the slice were thin, both the bottom and top squares would have sides lengths of about 6, and thus the cross--sectional area of the bottom and top would be about 36in$^2$. Letting $\Delta x$ represent the thickness of the slice, the volume of this slice would then be about $36\Delta x$in$^3$. 
+If one were to cut a slice out of the pyramid at $x=3$, as shown in \autoref{fig:disk0}(b), one would have a shape with square bottom and top with sloped sides. If the slice were thin, both the bottom and top squares would have sides lengths of about 6, and thus the cross-sectional area of the bottom and top would be about 36in$^2$. Letting $\Delta x$ represent the thickness of the slice, the volume of this slice would then be about $36\Delta x$in$^3$. 
 
-Cutting the pyramid into $n$ slices divides the total volume into $n$ equally--spaced smaller pieces, each with volume $(2x_i)^2\Delta x$, where $x_i$ is the approximate location of the slice along the $x$-axis and $\Delta x$ represents the thickness of each slice. One can approximate total volume of the pyramid by summing up the volumes of these slices:
+Cutting the pyramid into $n$ slices divides the total volume into $n$ equally-spaced smaller pieces, each with volume $(2x_i)^2\Delta x$, where $x_i$ is the approximate location of the slice along the $x$-axis and $\Delta x$ represents the thickness of each slice. One can approximate total volume of the pyramid by summing up the volumes of these slices:
 \[\text{Volume } \approx \sum_{i=1}^n (2x_i)^2\Delta x.\]
 Taking the limit as $n\to\infty$ gives the actual volume of the pyramid; recognizing this sum as a Riemann Sum allows us to find the exact answer using a definite integral, matching the definite integral given by \autoref{thm:volume_by_cross_section}.
 
@@ -73,7 +73,7 @@ We can check our work by consulting the general equation for the volume of a pyr
 \begin{center}
 $\frac13\times \text{area of base}\times \text{height}$.
 \end{center}
-Certainly, using this formula from geometry is faster than our new method, but the calculus--based method can be applied to much more than just cones.}
+Certainly, using this formula from geometry is faster than our new method, but the calculus-based method can be applied to much more than just cones.}
 
 An important special case of \autoref{thm:volume_by_cross_section} is when the solid is a \textbf{solid of revolution}, that is, when the solid is formed by rotating a shape around an axis.
 
@@ -121,7 +121,7 @@ Start with a function $y=f(x)$ from $x=a$ to $x=b$. Revolving this curve about a
 
 The volume of the sample slice shown in part (b) of the figure is approximately $\pi R(x_i)^2\Delta x$, where $R(x_i)$ is the radius of the disk shown and $\Delta x$ is the thickness of that slice. The radius $R(x_i)$ is the distance from the $x$-axis to the curve, hence $R(x_i) = 1/x_i$.
 
-Slicing the solid into $n$ equally--spaced slices, we can approximate the total volume by adding up the approximate volume of each slice:
+Slicing the solid into $n$ equally-spaced slices, we can approximate the total volume by adding up the approximate volume of each slice:
 \[\text{Approximate volume } = \sum_{i=1}^n \pi \left(\frac1{x_i}\right)^2\Delta x.\]
 
 Taking the limit of the above sum as $n\to\infty$ gives the actual volume; recognizing this sum as a Riemann sum allows us to evaluate the limit with a definite integral, which matches the formula given in \autoref{idea:disk_method}:
@@ -193,7 +193,9 @@ V = \pi\int_a^b [R(x)]^2 \ dx - \pi\int_a^b [r(x)]^2\ dx
 One can generate a solid of revolution with a hole in the middle by revolving a region about an axis. Consider \autoref{fig:washeridea}(a), where a region is sketched along with a dashed, horizontal axis of rotation. By rotating the region about the axis, a solid is formed. Each cross section of this solid will be a washer (a disk with a hole in the center) as sketched in \autoref{fig:washeridea}(b). The outside of the washer has radius $R(x)$, whereas the inside has radius $r(x)$. The entire solid is sketched in \autoref{fig:washeridea}(c).  This leads us to the Washer Method.
 
 %\mtable{fig:washeridea}{Establishing the Washer Method.}{%
-\begin{lxfigure}
+\noindent\begin{minipage}[t]{\linewidth}\noindent%
+\captionsetup{type=figure}%
+\flushinner{%
 \begin{tabular}{ccc}
  \begin{tikzpicture}
   \begin{axis}[width=1.16\marginparwidth,
@@ -233,10 +235,10 @@ One can generate a solid of revolution with a hole in the middle by revolving a 
 \\
 (a) & (b) &
 (c)%}
-\end{tabular}
+\end{tabular}}
 \caption{Establishing the Washer Method.}
 \label{fig:washeridea}
-\end{lxfigure}
+\end{minipage}
 
 \keyidea{idea:washermethod}{The Washer Method}
 {Let a region bounded by $y=f(x)$, $y=g(x)$, $x=a$ and $x=b$ be rotated about a horizontal axis that does not intersect the region, forming a solid. Each cross section at $x$ will be a washer with outside radius $R(x)$ and inside radius $r(x)$. The volume of the solid is
@@ -246,7 +248,9 @@ One can generate a solid of revolution with a hole in the middle by revolving a 
 Even though we introduced it first, the Disk Method is just a special case of the Washer Method with an inside radius of $r(x)=0$.
 
 %\mtable[-3\baselineskip]{Sketching the region, a sample slice, and solid in \autoref{ex_wash1}.}{fig:wash1}{%
-\begin{lxfigure}\flushinner{%
+\noindent\begin{minipage}[t]{\linewidth}\noindent%
+\captionsetup{type=figure}%
+\flushinner{%
 \begin{tabular}{ccc}
  \begin{tikzpicture}
   \begin{axis}[width=\marginparwidth,
@@ -284,7 +288,7 @@ Even though we introduced it first, the Disk Method is just a special case of th
 \end{tabular}}
 \caption{Sketching the region, a sample slice, and solid in \autoref{ex_wash1}.}
 \label{fig:wash1}
-\end{lxfigure}
+\end{minipage}
 
 \example{ex_wash1}{Finding volume with the Washer Method}{Find the volume of the solid formed by rotating the region bounded by $y=x^2-2x+2$ and $y=2x-1$ about the $x$-axis.}
 {A sketch of the region will help, as given in \autoref{fig:wash1}(a). Rotating about the $x$-axis will produce cross sections in the shape of washers, as shown in \autoref{fig:wash1}(b); the complete solid is shown in part (c). The outside radius of this washer is $R(x) = 2x+1$; the inside radius is $r(x) = x^2-2x+2$. As the region is bounded from $x=1$ to $x=3$, we integrate as follows to compute the volume.
@@ -299,7 +303,9 @@ V &= \pi\int_1^3 \Big((2x-1)^2-(x^2-2x+2)^2\Big)\ dx \\
 When rotating about a vertical axis, the outside and inside radius functions must be functions of $y$.
 
 %\mtable{Sketching the region, a sample slice, and the solid in \autoref{ex_wash_3}.}{fig:ex_sq_and_rt}{%
-\begin{lxfigure}\flushinner{%
+\noindent\begin{minipage}[t]{\linewidth}\noindent%
+\captionsetup{type=figure}%
+\flushinner{%
 \begin{tabular}{ccc}
  \begin{tikzpicture}
   \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
@@ -338,7 +344,7 @@ When rotating about a vertical axis, the outside and inside radius functions mus
 % \\ (c)}
 \caption{Sketching the region, a sample slice, and the solid in \autoref{ex_wash_3}.}
 \label{fig:ex_sq_and_rt}
-\end{lxfigure}
+\end{minipage}
 
 \example{ex_wash_3}{Finding volume with the Washer Method}{Find the volume of the solid formed by rotating the region bounded by $y=x^2$ and $x=y^2$ about the $y$-axis.}{In \autoref{fig:ex_sq_and_rt} we have a sketch of the region (a), a sample slice (b), and the solid (c). Rotating about the $y$-axis will produce cross sections in the shape of washers, as shown in (b); the complete solid is shown in  part (c). Since the axis of rotation is vertical, each radius is a function of $y$. The outside radius of this washer is $R(y)=\sqrt y$ and the inside radius is $r(y)=y^2$. As the region is bounded from $y=0$ to $y=1$, we integrate as follows to compute the volume. 
 \begin{align*}
@@ -349,7 +355,9 @@ V&=\pi \int_0^1 \left((\sqrt y)^2-(y^2)^2\right) \ dy\\
 \end{align*}}
 
 %\mtable{Sketching the region, a sample slice, and the solid in \autoref{ex_wash2}.}{fig:wash2}{%
-\begin{lxfigure}\flushinner{%
+\noindent\begin{minipage}[t]{\linewidth}\noindent%
+\captionsetup{type=figure}%
+\flushinner{%
 \begin{tabular}{ccc}
  \begin{tikzpicture}
   \begin{axis}[width=1.16\marginparwidth,axis equal,
@@ -386,7 +394,7 @@ V&=\pi \int_0^1 \left((\sqrt y)^2-(y^2)^2\right) \ dy\\
 %\\(c)}
 \caption{Sketching the region, a sample slice, and the solid in \autoref{ex_wash2}.}
 \label{fig:wash2}
-\end{lxfigure}
+\end{minipage}
 
 \example{ex_wash2}{Finding volume with the Washer Method}{Find the volume of the solid formed by rotating the triangular region with vertices at $(1,1)$, $(2,1)$ and $(2,3)$ about the $y$-axis.}
 {The triangular region is sketched in \autoref{fig:wash2}(a); the sample slice is sketched in (b) and the full solid is drawn in (c). They help us establish the outside and inside radii. Since the axis of rotation is vertical, each radius is a function of $y$. 

@@ -141,20 +141,15 @@
     \drawexampleend{#1}{#1}
    \end{tikzpicture}%
   }{% if different pages (start to bottom already happened)
-   \ifthenelse{\isodd{\pageref{e#1}}}{
-    \setlength{\innerpagemarginlength}{\oddpagemarginlength}
-   }{
-    \setlength{\innerpagemarginlength}{\evenpagemarginlength}
-   }
+   \ifthenelse{\isodd{\pageref{e#1}}}{%
+    \setlength{\innerpagemarginlength}{\oddpagemarginlength}%
+   }{%
+    \setlength{\innerpagemarginlength}{\evenpagemarginlength}%
+   }%
    \begin{tikzpicture}[remember picture,overlay]
     \node [xshift=\innerpagemarginlength,yshift=\topmarginlength](topleft) at (current page.north west)  {};
     \drawexampleend{topleft}{#1}
    \end{tikzpicture}%
-%   \setcounter{pagebeforeend}{\pageref{e#1}}%
-%   \addtocounter{pagebeforeend}{-1}%
-%   \ifthenelse{\pageref{#1}<\value{pagebeforeend}}{%
-%    \write\@auxout{\noexpand\longexample{#1}}%
-%   }{}% end long example
   }
  }{}% ends if example lines
 \end{exampleEnv}%
@@ -176,24 +171,13 @@
  }{}%
 }}
 
-%\newcommand*{\longexample}[1]{
-% \AddEverypageHook{%
-%  \ifthenelse{ \pageref{#1}<\value{page} \AND \value{page}<\pageref{e#1} \AND%
-%               \boolean{@mainmatter} \AND \boolean{printquestions} }{%
-%   \drawexampleline%
-%  }{%
-%  }%
-% }%
-%}
-\newcommand{\longexample}[1]{}
-
 \AddEverypageHook{%
  \ifthenelse{ \pageref{\currentLabel}<\value{page} \AND
-              \value{page}<\pageref{e\currentLabel} \AND
-              \boolean{@mainmatter} \AND \boolean{printquestions} }{%
+              \value{page}<\pageref{e\currentLabel} %\AND
+              %\boolean{@mainmatter} \AND \boolean{printquestions}
+               }{%
   \drawexampleline%
- }{%
- }%
+ }{}%
 }%
 
 

@@ -6,13 +6,13 @@ Recall that when moving in a straight line, if $\vec F$ represents a constant fo
 
 As we have practiced many times before, we can calculate work by first approximating, then refining our approximation through a limit that leads to integration. 
 
-Assume as we did in \autoref{sec:line_int_intro} that $C$ can be parametrized by the arc length parameter $s$. Over a short piece of the curve with length $ds$, the curve is approximately straight and our force is approximately constant. The straight--line direction of this short length of curve is given by $\vec T$, the unit tangent vector;   let $\vec d = \vec T\ ds$, which gives  the direction and magnitude of a small section of $C$. Thus work over this small section of $C$ is $\vec F \cdot \vec d = \vec F\cdot \vec T\ ds$. 
+Assume as we did in \autoref{sec:line_int_intro} that $C$ can be parameterized by the arc length parameter $s$. Over a short piece of the curve with length $ds$, the curve is approximately straight and our force is approximately constant. The straight-line direction of this short length of curve is given by $\vec T$, the unit tangent vector;   let $\vec d = \vec T\ ds$, which gives  the direction and magnitude of a small section of $C$. Thus work over this small section of $C$ is $\vec F \cdot \vec d = \vec F\cdot \vec T\ ds$. 
 
 Summing up all the work over these small segments gives an approximation of the work performed. By taking the limit as $ds$ goes to zero, and hence the number of segments approaches infinity, we can obtain the exact amount of work. Following the logic presented at the beginning of this chapter in the Integration Review, we see that 
 \[W = \int_C \vec F\cdot \vec T\ ds,\]
 a line integral.
 
-This line integral is beautiful in its simplicity, yet is not so useful in making actual computations (largely because the arc length parameter is so difficult to work with). To compute actual work, we need to parametrize $C$ with another parameter  $t$ via a vector--valued function $\vec r(t)$. As stated in \autoref{sec:line_int_intro}, $ds = \norm{\vrp(t)}\ dt$, and recall that $\vec T = \vrp(t)/\norm{\vrp(t)}$. Thus
+This line integral is beautiful in its simplicity, yet is not so useful in making actual computations (largely because the arc length parameter is so difficult to work with). To compute actual work, we need to parameterize $C$ with another parameter  $t$ via a vector-valued function $\vec r(t)$. As stated in \autoref{sec:line_int_intro}, $ds = \norm{\vrp(t)}\ dt$, and recall that $\vec T = \vrp(t)/\norm{\vrp(t)}$. Thus
 \begin{equation}
 W = \int_C \vec F\cdot\vec T\ ds
 = \int_C \vec F\cdot \frac{\vrp(t)}{\norm{\vrp(t)}}\norm{\vrp(t)}\ dt
@@ -26,24 +26,24 @@ These integrals are known as \sword{line integrals over vector fields}. By contr
 We formally define this line integral, then give examples and applications.
 
 \definition{def:line_integral2}{Line Integral Over A Vector Field}
-{Let $\vec F$ be a vector field with continuous components defined on a smooth curve $C$, parametrized by $\vrt$, and let $\vec T$ be the unit tangent vector of $\vrt$. The \sword{line integral over $\vec F$ along $C$} is\index{line integral!over vector field}
+{Let $\vec F$ be a vector field with continuous components defined on a smooth curve $C$, parameterized by $\vrt$, and let $\vec T$ be the unit tangent vector of $\vrt$. The \sword{line integral over $\vec F$ along $C$} is\index{line integral!over vector field}
 \[\int_C \vec F\cdot d\vec r = \int_C \vec F\cdot\vec T\ ds.\]}
 
 \mnote{\textbf{Note:} When $\vec F=\bracket{g,h}$ and $\vec r=\bracket{x,y}$ parameterizes $C$, other common notations for the line integral over $\vec F$ along $C$ are $\int_Cgdx+\int_Chdy$ and $\int_Cgdx+hdy$.}
 
-In \autoref{def:line_integral2}, note how the dot product $\vec F \cdot \vec T$ is just a scalar. %Note how on the right--hand side of the equation in \autoref{def:line_integral2}, the dot product $\vec F\cdot\vec T$ is just a scalar. 
-Therefore, this new line integral is really just a special kind of line integral found in \autoref{sec:line_int_intro}; letting $f(s) = \vec F(s)\cdot \vec T(s)$, the right--hand side simply becomes $\int_C f(s)\ ds$, and we can use the techniques of that section to evaluate the integral. We combine those techniques, along with parts of \autoeqref{eq:line_integral}, to clearly state how to evaluate a line integral over a vector field in the following Key Idea. 
+In \autoref{def:line_integral2}, note how the dot product $\vec F \cdot \vec T$ is just a scalar. %Note how on the right-hand side of the equation in \autoref{def:line_integral2}, the dot product $\vec F\cdot\vec T$ is just a scalar. 
+Therefore, this new line integral is really just a special kind of line integral found in \autoref{sec:line_int_intro}; letting $f(s) = \vec F(s)\cdot \vec T(s)$, the right-hand side simply becomes $\int_C f(s)\ ds$, and we can use the techniques of that section to evaluate the integral. We combine those techniques, along with parts of \autoeqref{eq:line_integral}, to clearly state how to evaluate a line integral over a vector field in the following Key Idea. 
 
 \keyidea{idea:line2}{Evaluating a Line Integral Over A Vector Field}
-{Let $\vec F$ be a vector field with continuous components defined on a smooth curve $C$, parametrized by $\vrt$, $a\leq t\leq b$, where $\vec r$ is continuously differentiable. Then\index{vector field!over vector field}
+{Let $\vec F$ be a vector field with continuous components defined on a smooth curve $C$, parameterized by $\vrt$, $a\leq t\leq b$, where $\vec r$ is continuously differentiable. Then\index{vector field!over vector field}
 	\[
 	\int_C\vec F\cdot\vec T\ ds = \int_C \vec F\cdot d\vec r
 	=\int_a^b \vec F\big(\vec r(t)\big) \cdot \vrp(t)\ dt.
 	\]}
 
-An important concept implicit in this Key Idea: we can use any continuously differentiable parametrization $\vrt$ of $C$ that preserves the orientation of $C$: there isn't a ``right'' one. In practice, choose one that seems easy to work with. 
+An important concept implicit in this Key Idea: we can use any continuously differentiable parameterization $\vrt$ of $C$ that preserves the orientation of $C$: there isn't a ``right'' one. In practice, choose one that seems easy to work with. 
 
-\textbf{Notation note:} the above Definition and Key Idea implicitly evaluate $\vec F$ along the curve $C$, which is parametrized by $\vrt$. For instance, if $\vec F =\bracket{x+y,x-y}$ and $\vrt =\bracket{t^2,\cos t}$, then evaluating $\vec F$ along $C$ means substituting the $x$- and $y$-components of $\vrt$ in for $x$ and $y$, respectively, in $\vec F$. Therefore, along $C$, $\vec F =\bracket{x+y,x-y}=\bracket{t^2+\cos t,t^2-\cos t}$. Since we are substituting the \emph{output} of $\vrt$ for the \emph{input} of $\vec F$, we write this as $\vec F\big(\vrt\big)$. This is a slight abuse of notation as technically the input of $\vec F$ is to be a \emph{point}, not a \emph{vector}, but this shorthand is useful.
+\textbf{Notation note:} the above Definition and Key Idea implicitly evaluate $\vec F$ along the curve $C$, which is parameterized by $\vrt$. For instance, if $\vec F =\bracket{x+y,x-y}$ and $\vrt =\bracket{t^2,\cos t}$, then evaluating $\vec F$ along $C$ means substituting the $x$- and $y$-components of $\vrt$ in for $x$ and $y$, respectively, in $\vec F$. Therefore, along $C$, $\vec F =\bracket{x+y,x-y}=\bracket{t^2+\cos t,t^2-\cos t}$. Since we are substituting the \emph{output} of $\vrt$ for the \emph{input} of $\vec F$, we write this as $\vec F\big(\vrt\big)$. This is a slight abuse of notation as technically the input of $\vec F$ is to be a \emph{point}, not a \emph{vector}, but this shorthand is useful.
 
 We use an example to practice evaluating line integrals over vector fields.
 
@@ -72,9 +72,9 @@ node[pos=.5,below right]{$y=x^4$};
 
 \example{ex_livf1}{Evaluating a line integral over a vector field: computing work}
 {Two particles move from $(0,0)$ to $(1,1)$ under the influence of the force field $\vec F  =\bracket{x,x+y}$. One particle follows $C_1$, the line $y=x$; the other follows $C_2$, the curve $y=x^4$, as shown in \autoref{fig:livf1}. Force is measured in Newtons and distance is measured in meters. Find the work performed by each particle.}
-{To compute work, we need to parametrize each path. We use $\vec r_1(t) =\bracket{t,t}$ to parametrize $y=x$, and let $\vec r_2(t) =\bracket{t,t^4}$ parametrize $y=x^4$; for each, $0\leq t\leq 1$. 
+{To compute work, we need to parameterize each path. We use $\vec r_1(t) =\bracket{t,t}$ to parameterize $y=x$, and let $\vec r_2(t) =\bracket{t,t^4}$ parameterize $y=x^4$; for each, $0\leq t\leq 1$. 
 
-Along the straight--line path, $\vec F\big(\vec r_1(t)\big) =\bracket{x,x+y}=\bracket{t,t+t}=\bracket{t,2t}$. We find $\vrp_1(t) =\bracket{1,2}$. The integral that computes work is:
+Along the straight-line path, $\vec F\big(\vec r_1(t)\big) =\bracket{x,x+y}=\bracket{t,t+t}=\bracket{t,2t}$. We find $\vrp_1(t) =\bracket{1,2}$. The integral that computes work is:
 \begin{align*}
 	\int_{C_1} \vec F\cdot d\vec r
 	&= \int_0^1\bracket{t,2t}\cdot\bracket{1,1}\ dt \\
@@ -117,7 +117,7 @@ node[pos=.5,above,yshift={+1.5ex}]{\small$x^2+(y-1)^2=1$};
 
 \example{ex_livf2}{Evaluating a line integral over a vector field: computing work}
 {Two particles move from $(-1,1)$ to $(1,1)$ under the influence of a force field $\vec F =\bracket{y,x}$. One moves along the curve $C_1$, the parabola defined by $y = 2x^2-1$. The other particle moves along the curve $C_2$, the bottom half of the circle defined by $x^2+(y-1)^2=1$, as shown in \autoref{fig:livf2}. Force is measured in pounds and distances are measured in feet. Find the work performed by moving each particle along its path.}
-{We start by parameterizing $C_1$: the parametrization $\vec r_1(t) =\bracket{t,2t^2-1}$ is straightforward, giving $\vrp_1 =\bracket{1,4t}$. On $C_1$, $\vec F\big(\vec r_1(t)\big) =\bracket{y,x}=\bracket{2t^2-1,t}$.
+{We start by parameterizing $C_1$: the parameterization $\vec r_1(t) =\bracket{t,2t^2-1}$ is straightforward, giving $\vrp_1 =\bracket{1,4t}$. On $C_1$, $\vec F\big(\vec r_1(t)\big) =\bracket{y,x}=\bracket{2t^2-1,t}$.
 
 Computing the work along $C_1$, we have:
 \begin{align*}
@@ -126,7 +126,7 @@ Computing the work along $C_1$, we have:
 	&= \int_{-1}^1 \big(2t^2-1+4t^2\big)\ dt = 2 \text{ ft-lbs}.
 \end{align*}
 
-For $C_2$, it is probably simplest to parametrize the half circle using sine and cosine. Recall that $\vec r(t) =\bracket{\cos t,\sin t}$ is a parametrization of the unit circle on $0\leq t\leq 2\pi$; we add 1 to the second component to shift the circle up one unit, then restrict the domain to $\pi\leq t\leq 2\pi$  to obtain only the lower half, giving $\vec r_2(t) =\bracket{\cos t,\sin t+1}$, $\pi\leq t\leq 2\pi$, and hence $\vrp_2(t) =\bracket{-\sin t,\cos t}$ and $\vec F\big(\vec r_2(t)\big) =\bracket{y,x}=\bracket{\sin t+1,\cos t}$.
+For $C_2$, it is probably simplest to parameterize the half circle using sine and cosine. Recall that $\vec r(t) =\bracket{\cos t,\sin t}$ is a parameterization of the unit circle on $0\leq t\leq 2\pi$; we add 1 to the second component to shift the circle up one unit, then restrict the domain to $\pi\leq t\leq 2\pi$  to obtain only the lower half, giving $\vec r_2(t) =\bracket{\cos t,\sin t+1}$, $\pi\leq t\leq 2\pi$, and hence $\vrp_2(t) =\bracket{-\sin t,\cos t}$ and $\vec F\big(\vec r_2(t)\big) =\bracket{y,x}=\bracket{\sin t+1,\cos t}$.
 
 Computing the work along $C_2$, we have:
 \begin{align*}
@@ -145,7 +145,7 @@ It is relatively easy to see why. Let $C$ be the unit circle. The area under a s
 \theorem{thm:line_int_properties_vector}{Properties of Line Integrals Over Vector Fields}
 {\index{line integral!properties over a vector field}\mbox{}\\[-2\baselineskip]
 \begin{enumerate}
-	\item	Let $\vec F$ and $\vec G$ be  vector fields with continuous components defined on a smooth curve $C$, parametrized by $\vrt$, and let $k_1$ and $k_2$ be scalars. Then
+	\item	Let $\vec F$ and $\vec G$ be  vector fields with continuous components defined on a smooth curve $C$, parameterized by $\vrt$, and let $k_1$ and $k_2$ be scalars. Then
 	\[
 	\ds \int_C\big(k_1\vec F+k_2\vec G\big)\cdot d\vec r
 	= k_1\int_C\vec F\cdot d\vec r +k_2\int_C\vec G\cdot d\vec r.
@@ -155,7 +155,7 @@ It is relatively easy to see why. Let $C$ be the unit circle. The area under a s
 	\int_C\vec F\cdot d\vec r
 	= \int_{C_1}\vec F\cdot d\vec r + \int_{C_2}\vec F\cdot d\vec r.
 	\]
-	\item	Let $C^*$ be the curve $C$ with opposite orientation, parametrized by $\vec r\,^*$. Then
+	\item	Let $C^*$ be the curve $C$ with opposite orientation, parameterized by $\vec r\,^*$. Then
 	\[\int_C\vec F\cdot d\vec r = -\int_{C^*}\vec F\cdot d\vec r\,^*.\]
 	\end{enumerate}}
 
@@ -188,9 +188,9 @@ ymin=-.2,ymax=1.2,xmin=-.2,xmax=1.2]
 {Let $\vec F =\bracket{3(y-1/2),1}$ and let $C$ be the path that starts at $(0,0)$, goes to $(1,1)$ along the curve $y=x^3$, then returns to $(0,0)$ along the line $y=x$, as shown in \autoref{fig:livf3}. Evaluate $\oint_C \vec F\cdot d\vec r$.}
 {As $C$ is piecewise smooth, we break it into two components $C_1$ and $C_2$, where $C_1$ follows the curve $y=x^3$ and $C_2$ follows the curve $y=x$. 
 
-We parametrize $C_1$ with $\vec r_1(t) =\bracket{t, t^3}$ on $0\leq t\leq 1$, with $\vrp_1(t) =\bracket{1,3t^2}$. We will use $\vec F\big(\vec r_1(t)\big) =\bracket{3(t^3-1/2),1}$.
+We parameterize $C_1$ with $\vec r_1(t) =\bracket{t, t^3}$ on $0\leq t\leq 1$, with $\vrp_1(t) =\bracket{1,3t^2}$. We will use $\vec F\big(\vec r_1(t)\big) =\bracket{3(t^3-1/2),1}$.
 
-While we always have unlimited ways in which to parametrize a curve, there are 2 ``direct'' methods to choose from when parametrizing $C_2$. The parametrization $\vec r_2(t)=\bracket{t,t}$, $0\leq t\leq 1$ traces the correct line segment but with the wrong orientation. Using Property 3 of \autoref{thm:line_int_properties_vector}, we can use this parametrization and negate the result.
+While we always have unlimited ways in which to parameterize a curve, there are 2 ``direct'' methods to choose from when parameterizing $C_2$. The parameterization $\vec r_2(t)=\bracket{t,t}$, $0\leq t\leq 1$ traces the correct line segment but with the wrong orientation. Using Property 3 of \autoref{thm:line_int_properties_vector}, we can use this parameterization and negate the result.
 
 Another choice is to use the techniques of \autoref{sec:lines} to create the line with the orientation we desire. We wish to start at $( 1,1)$ and travel in the $\vec d =\bracket{-1,-1}$ direction for one length of $\vec d$, giving equation $\vec \ell(t) =\bracket{1,1} + t\bracket{-1,-1} =\bracket{1-t,1-t}$ on $0\leq t\leq 1$.
 
@@ -219,7 +219,7 @@ If we interpret this integral as computing work, the negative work implies that 
 
 \example{ex_livf4}{Evaluating a line integral over a vector field in space}
 {Let $\vec F =\bracket{-y,x,1}$, and let $C$ be the portion of the helix given by $\vrt = \bracket{ \cos t,\sin t, t/(2\pi)}$ on $[0,2\pi]$, as shown in \autoref{fig:livf4}. Evaluate $\int_C\vec F\cdot d\vec r$.}
-{A parametrization is already given for $C$, so we just need to find $\vec F\big(\vec r(t)\big)$ and \vrp(t). 
+{A parameterization is already given for $C$, so we just need to find $\vec F\big(\vec r(t)\big)$ and \vrp(t). 
 
 We have $\vec F\big(\vec r(t)\big) =\bracket{-\sin t, \cos t, 1}$ and $\vrp(t) =\bracket{-\sin t, \cos t, 1/(2\pi)}$. Thus
 \begin{align*}
@@ -321,12 +321,10 @@ the same value given by the line integrals.
 
 \youtubeVideo{62oBGKSjYiY}{Ex 1: Fundamental Theorem of Line Integrals --- Given Vector Field in a Plane}
 
-%\enlargethispage{\baselineskip}
 We practice using this theorem again in the next example.
 
 \example{ex_livf5}{Using the Fundamental Theorem of Line Integrals}
-{Let $\vec F =\bracket{3x^2y+2x, x^3+1}$, $A = (0,1)$ and $B = (1,4)$. Use the first part of the Fundamental Theorem of Line Integrals to show that $\vec F$ is conservative, then choose any path from $A$ to $B$ and confirm the second part of the theorem.
-}
+{Let $\vec F =\bracket{3x^2y+2x, x^3+1}$, $A = (0,1)$ and $B = (1,4)$. Use the first part of the Fundamental Theorem of Line Integrals to show that $\vec F$ is conservative, then choose any path from $A$ to $B$ and confirm the second part of the theorem.}
 {To show $\vec F$ is conservative, we need to find $z = f(x,y)$ such that $\vec F = \nabla f =\bracket{f_x, f_y}$. That is, we need to find $f$ such that $f_x = 3x^2y+2x$ and $f_y = x^3+1$. As all we know about $f$ are its partial derivatives, we recover $f$ by integration:
 \[\int \frac{\partial f}{\partial x}\ dx = f(x,y) + C(y).\]
 Note how the constant of integration is more than ``just a constant'': it is anything that acts as a constant when taking a derivative with respect to $x$. Any function that is a function of $y$ (containing no $x$'s) acts as a constant when deriving with respect to $x$.
@@ -353,7 +351,7 @@ By the Fundamental Theorem of Line Integrals, regardless of the path from $A$ to
 	&= f(1,4) - f(0,1) \\
 	&= 9 - 1 = 8.
 \end{align*}
-To illustrate the validity of the Fundamental Theorem, we pick a path from $A$ to $B$. The line between these two points would be simple to construct; we choose a slightly more complicated path by choosing the parabola $y = x^2+2x+1$. This leads to the parametrization $\vrt =\bracket{t, t^2+2t+1}$, $0\leq t\leq 1$, with $\vrp(t) =\bracket{t, 2t+2}$. Thus
+To illustrate the validity of the Fundamental Theorem, we pick a path from $A$ to $B$. The line between these two points would be simple to construct; we choose a slightly more complicated path by choosing the parabola $y = x^2+2x+1$. This leads to the parameterization $\vrt =\bracket{t, t^2+2t+1}$, $0\leq t\leq 1$, with $\vrp(t) =\bracket{t, 2t+2}$. Thus
 \begin{align*}
 	\int_C \vec F\cdot d\vec r &= \int_C\vec F\big(\vrt\big)\cdot\vrp(t)\ dt\\
 	&= \int_0^1\bracket{3(t)(t^2+2t+1)+2t, t^3+1}\cdot\bracket{t,2t+2}\ dt\\

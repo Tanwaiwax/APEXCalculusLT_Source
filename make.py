@@ -4,6 +4,8 @@
     This could be Python 3 by changing the few print statements.
     But see the calls to pdfsizeopt, which must have Python 2,
     because it uses old style print statements.
+    The only thing I've found would be to use bash to invoke pdfsizeopt
+    via Python 2 (I think)
 '''
 
 import re
@@ -11,12 +13,20 @@ import os
 import sys
 import glob
 import time
+import atexit
 import shutil
 import argparse
 import platform
 import itertools
 import subprocess
 from collections import defaultdict, namedtuple
+
+loginfo = []
+
+@atexit.register
+def printlogino():
+    if loginfo:
+        print '\n'.join(loginfo)
 
 start = time.time()
 
@@ -35,6 +45,7 @@ parser.add_argument('-c','--calculus', type=int, choices=[0,1,2,3,4],
                     help='Calculus semester 1, 2, 3, or (default) all. (5 or 8 min)')
 
 addboolarg('figures','Create 3D figures using Asymptote.')
+addboolarg('matrices','Create matrix figures for LaTeXML.')
 addboolarg('prc','Update 3D html.')
 addboolarg('instructor','Create instructor solution manual.')
 addboolarg('internet','Create interNet version (options x & w).',shortkey='n')
@@ -47,15 +58,15 @@ group = parser.add_mutually_exclusive_group()
 addboolarg('blackwhite','Print static graphics in black and white (default is color).',parser=group)
 addboolarg('static','Print static color graphics (default is interactive).',parser=group)
 
+if len(sys.argv)==1:
+    parser.print_help()
+    exit()
+
 for dir in ('ApexPDFs','logs','prc','todo','web'):
     try:
         os.mkdir(dir)
     except OSError:
         pass # the directory already exists
-
-if len(sys.argv)==1:
-    parser.print_help()
-    exit()
 
 args = parser.parse_args()
 
@@ -63,6 +74,22 @@ def getTime():
     end = time.time()
     seconds = int(end-start)
     return (seconds//60,seconds%60)
+
+def makematrices():
+    try:
+        os.chdir('figures/matrices')
+        for srcfile in glob.glob('*Src.tex'):
+            root = srcfile.replace('Src.tex','')
+            try:
+                if os.path.getmtime(srcfile) < os.path.getmtime(root+'.pdf') :
+                    continue
+            except:
+                pass
+            with open('logs/compilationmatrix.log','w') as mystdout:
+                subprocess.check_call(['xelatex','-synctex=0','-jobname='+root,'matrix'],
+                                      stdout=mystdout,stderr=subprocess.STDOUT)
+    finally:
+        os.chdir('../../')
 
 def makefigs():
     try:
@@ -98,58 +125,58 @@ Figure = namedtuple('Figure',['num','file'])
 def updateprc():
     prcdict = prcfromfile('Calculus.aux')
     with open('prc/prc.html','w') as prchtml:
-        prchtml.write('<!doctype html>'
-                      '<html>'
-                      '<head>'
-                      '<meta charset="utf-8">'
-                      '<title>3d images</title>'
-                      '<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">'
-                      '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>'
-                      '<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>'
-                      '<style>.box{display:inline-block;text-align:center;margin:1em}img{width:2in;}</style>'
-                      '</head>'
-                      '<body>'
-                      '<h1>3d Images From APEX Calculus LT</h1>'
-                      '<div id="accordion">')
+        prchtml.write('<!doctype html>\n'
+                      '<html>\n'
+                      '<head>\n'
+                      '<meta charset="utf-8">\n'
+                      '<title>3d images</title>\n'
+                      '<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">\n'
+                      '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>\n'
+                      '<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>\n'
+                      '<style>.box{display:inline-block;text-align:center;margin:1em}img{width:2in;}</style>\n'
+                      '</head>\n'
+                      '<body>\n'
+                      '<h1>3d Images From APEX Calculus LT</h1>\n'
+                      '<div id="accordion">\n')
         chapters = sorted( prcdict.keys() , key=lambda x:float('inf') if x=='A' else int(x) )
         for chapter in chapters:
             if chapter=='A':
                 continue
             writechapterprc(prcdict,prchtml,chapter)
         writechapterprc(prcdict,prchtml,'A')
-        prchtml.write('</div>')
-        prchtml.write('</div>'
-                      '<p>'
-                      'The linked prc files can be viewed with Adobe Acrobat Pro.<br>'
+        prchtml.write('</div>\n')
+        prchtml.write('</div>\n'
+                      '<p>\n'
+                      'The linked prc files can be viewed with Adobe Acrobat Pro.<br>\n'
                       'The mobile app &ldquo;3D PDF Reader&rdquo; by Tech Soft 3D for '
                       '<a href="https://play.google.com/store/apps/details?id=com.techsoft3d.hps.pdf.reader">Android</a> or '
                       '<a href="https://itunes.apple.com/us/app/3d-pdf-reader/id569307672?mt=8">iOS</a>'
-                      ' can also view prc files.'
-                      '</p>'
-                      '<script>$("#accordion").accordion({collapsible:true,active:false,heightStyle:"content"});</script>'
-                      '</body>'
-                      '</html>')
+                      ' can also view prc files.\n'
+                      '</p>\n'
+                      '<script>$("#accordion").accordion({collapsible:true,active:false,heightStyle:"content"});</script>\n'
+                      '</body>\n'
+                      '</html>\n')
 
 def writechapterprc(prcdict,prchtml,chapter):
     # solutions are recorded differently in the aux as well as the dict
     if chapter=='A':
-        prchtml.write('<h3>Solutions<h3>')
+        prchtml.write('<h3>Solutions<h3>\n')
     else:
-        prchtml.write('<h3>Chapter '+str(chapter)+'</h3>')
-    prchtml.write('<div>')
+        prchtml.write('<h3>Chapter '+str(chapter)+'</h3>\n')
+    prchtml.write('<div>\n')
     sections = sorted( prcdict[chapter].keys() )
     for section in sections:
         if chapter=='A':
             # section is really chapter because of \prc@section@autoref in style file
-            prchtml.write('<h4>Chapter '+section+'</h4><div>')
+            prchtml.write('<h4>Chapter '+section+'</h4><div>\n')
         else:
-            prchtml.write('<h4>Section {}.{}</h4>'.format(chapter,section)+'<div>')
+            prchtml.write('<h4>Section {}.{}</h4>'.format(chapter,section)+'<div>\n')
         for figure in prcdict[chapter][section]:
-            prchtml.write('<div class="box"><a href="{0.file}.prc"><img src="{0.file}.png"><br>{0.num}</a></div>'.format(figure))
+            prchtml.write('<div class="box"><a href="{0.file}.prc"><img src="{0.file}.png"><br>{0.num}</a></div>\n'.format(figure))
             shutil.copy('figures/'+figure.file+'.prc','prc')
             shutil.copy('figures/'+figure.file+'.png','prc')
-        prchtml.write('</div>')
-    prchtml.write('</div>')
+        prchtml.write('</div>\n')
+    prchtml.write('</div>\n')
 
 def prcfromfile(filename):
     with open(filename) as filein:
@@ -193,7 +220,7 @@ def updatetodo():
     with open('todo/todo_tex.txt','w') as mystdout:
         for keywd in ('drawexampleline','enlargethispage','blue','pagebreak',
                       'newpage','clearpage','cleardoublepage','columnbreak',
-                      'mfigure','myincludegraphics','addplot3','ldots','cdots'):
+                      'mfigure','myincludegraphics','addplot3','cdots'):
             grepcall = ['grep',keywd,'-I','--recursive','--files-with-matches','--exclude-dir=hidden']
             mystdout.write('\n\n'+keywd+':\n')
             mystdout.flush()
@@ -303,7 +330,11 @@ def minimizePdf(filename):
                    'ApexPDFs/bigpdfs/'+filename,'ApexPDFs/smallpdfs/'+filename])
     sys.stderr = sys.__stderr__
     os.system = oldossystem
-    print 'Minimizing pdf finished at',"{0[0]:02d}:{0[1]:02d}".format(getTime())
+    for tmpfile in glob.iglob('ApexPDFs/smallpdfs/psotmp.*.parse.png'):
+        os.remove(tmpfile)
+    message = 'Minimizing pdf finished at '+"{0[0]:02d}:{0[1]:02d}".format(getTime())
+    print message
+    loginfo.append(message)
 
 def compilewith(commands=False):
     if commands:
@@ -312,6 +343,9 @@ def compilewith(commands=False):
         args = parser.parse_args()
     if args.figures:
         makefigs()
+        return
+    if args.matrices:
+        makematrices()
         return
     if args.todo:
         updatetodo()
@@ -340,13 +374,17 @@ def runcommands(args,commands):
             subprocess.check_call(commandline,stdout=mystdout,stderr=subprocess.STDOUT)
         except:
             time = "{0[0]:02d}:{0[1]:02d}".format(getTime())
-            print 'At',time,'failing command:',commands
+            loginfo.append('At '+time+' failing command: '+commands)
             raise
     time = "{0[0]:02d}:{0[1]:02d}".format(getTime())
     if commands:
-        print 'Command line:',commands,'finished at',time
+        message = 'Command line: '+commands+' finished at '+time
+        print message
+        loginfo.append(message)
     else:
-        print 'Command line finished at',time
+        message = 'Command line finished at '+time
+        print message
+        loginfo.append(message)
     if args.instructor:
         shutil.copy('Answers.pdf','ApexPDFs/bigpdfs/')
         minimizePdf('Answers.pdf')

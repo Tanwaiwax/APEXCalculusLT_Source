@@ -46,13 +46,13 @@ Consider the graph of $y=\sin x$ on $[0,\pi]$ given in \autoref{fig:arcintro} (a
 
 As we have done in the past, we start by approximating; later, we will refine our answer using limits to get an exact solution.
 
-The length of straight--line segments is easy to compute using the Distance Formula. We can approximate the length of the given curve by approximating the curve with straight lines and measuring their lengths. 
+The length of straight-line segments is easy to compute using the Distance Formula. We can approximate the length of the given curve by approximating the curve with straight lines and measuring their lengths. 
 
-In \autoref{fig:arcintro} (b), the curve $y=\sin x$ has been approximated with 4 line segments (the interval $[0,\pi]$ has been divided into 4 equally--lengthed subintervals). It is clear that these four line segments approximate $y=\sin x$ very well on the first and last subinterval, though not so well in the middle. Regardless, the sum of the lengths of the line segments is $3.79$, so we approximate the arc length of $y=\sin x$ on $[0,\pi]$ to be $3.79$. 
+In \autoref{fig:arcintro} (b), the curve $y=\sin x$ has been approximated with 4 line segments (the interval $[0,\pi]$ has been divided into 4 equally-lengthed subintervals). It is clear that these four line segments approximate $y=\sin x$ very well on the first and last subinterval, though not so well in the middle. Regardless, the sum of the lengths of the line segments is $3.79$, so we approximate the arc length of $y=\sin x$ on $[0,\pi]$ to be $3.79$. 
 
 %Using 6 evenly spaced subintervals is not too much more work and gives a better approximation. The six lines are shown in \autoref{fig:arcintro} (c) and provide an arc length approximation of $3.81$. 
 
-In general,  we can approximate the arc length of $y=f(x)$ on $[a,b]$ in the following manner. Let $a=x_0 < x_1 < \dotso < x_{n-1}< x_n=b$ be a partition of $[a,b]$ into $n$ subintervals. Let $\dx_i$ represent the length of the $i\,^\text{th}$ subinterval $[x_{i-1},x_i]$.
+In general,  we can approximate the arc length of $y=f(x)$ on $[a,b]$ in the following manner. Let $a=x_0 < x_1 < \dotso < x_{n-1}< x_n=b$ be a partition of $[a,b]$ into $n$ subintervals. Let $\Delta x_i$ represent the length of the $i\,^\text{th}$ subinterval $[x_{i-1},x_i]$.
 
 \mtable{Zooming in on the $i^{\text{th}}$ subinterval $[x_{i-1},x_i]$ of a partition of $[a,b]$.}{fig:arcintro2}{\begin{tikzpicture}
  \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
@@ -77,20 +77,20 @@ In general,  we can approximate the arc length of $y=f(x)$ on $[a,b]$ in the fol
  \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-\autoref{fig:arcintro2} zooms in on the $i^{\text{th}}$ subinterval where $y=f(x)$ is approximated by a straight line segment. The dashed lines show that we can view this line segment as the hypotenuse of a right triangle whose sides have length $\dx_i$ and $\dy_i$. Using the Pythagorean Theorem, the length of this line segment is $\ds \sqrt{(\dx_i)^2 + (\Delta y_i)^2}.$ Summing over all subintervals gives an arc length approximation
-\[L \approx \sum_{i=1}^n \sqrt{(\dx_i)^2 + (\Delta y_i)^2}.\]
+\autoref{fig:arcintro2} zooms in on the $i^{\text{th}}$ subinterval where $y=f(x)$ is approximated by a straight line segment. The dashed lines show that we can view this line segment as the hypotenuse of a right triangle whose sides have length $\Delta x_i$ and $\Delta y_i$. Using the Pythagorean Theorem, the length of this line segment is $\ds \sqrt{(\Delta x_i)^2 + (\Delta y_i)^2}.$ Summing over all subintervals gives an arc length approximation
+\[L \approx \sum_{i=1}^n \sqrt{(\Delta x_i)^2 + (\Delta y_i)^2}.\]
 
 As it is written, this is \textit{not} a Riemann Sum. While we could conclude that taking a limit as the subinterval length goes to zero gives the exact arc length, we would not be able to compute the answer with a definite integral. We need first to do a little algebra.
 
-In the above expression factor out a $\dx_i^2$ term:
+In the above expression factor out a $\Delta x_i^2$ term:
 \begin{align*}
-	\sum_{i=1}^n \sqrt{(\dx_i)^2 + (\Delta y_i)^2}
-	&= \sum_{i=1}^n \sqrt{(\dx_i)^2\left(1 + \frac{(\Delta y_i)^2}{(\dx_i)^2}\right)}.
+	\sum_{i=1}^n \sqrt{(\Delta x_i)^2 + (\Delta y_i)^2}
+	&= \sum_{i=1}^n \sqrt{(\Delta x_i)^2\left(1 + \frac{(\Delta y_i)^2}{(\Delta x_i)^2}\right)}.
 \end{align*}
-Now pull the $(\dx_i)^2$ term out of the square root:
-\[L\approx\sum_{i=1}^n\sqrt{1 + \frac{(\Delta y_i)^2}{(\dx_i)^2}}\ \dx_i.\]
-This is nearly a Riemann Sum. Consider the $(\Delta y_i)^2/(\dx_i)^2$ term. The expression $\Delta y_i/\dx_i$ measures the ``change in $y$/change in $x$,'' that is, the ``rise over run'' of $f$ on the $i\,^\text{th}$ subinterval. The Mean Value Theorem of Differentiation (\autoref{thm:mvt}) states that there is a $c_i$ in the $i\,^\text{th}$ subinterval where $\fp(c_i) = \Delta y_i/\dx_i$. Thus we can rewrite our above expression as:
-\[L\approx\sum_{i=1}^n\sqrt{1+[\fp(c_i)]^2}\ \dx_i.\]
+Now pull the $(\Delta x_i)^2$ term out of the square root:
+\[L\approx\sum_{i=1}^n\sqrt{1 + \frac{(\Delta y_i)^2}{(\Delta x_i)^2}}\ \Delta x_i.\]
+This is nearly a Riemann Sum. Consider the $(\Delta y_i)^2/(\Delta x_i)^2$ term. The expression $\Delta y_i/\Delta x_i$ measures the ``change in $y$/change in $x$,'' that is, the ``rise over run'' of $f$ on the $i\,^\text{th}$ subinterval. The Mean Value Theorem of Differentiation (\autoref{thm:mvt}) states that there is a $c_i$ in the $i\,^\text{th}$ subinterval where $\fp(c_i) = \Delta y_i/\Delta x_i$. Thus we can rewrite our above expression as:
+\[L\approx\sum_{i=1}^n\sqrt{1+[\fp(c_i)]^2}\ \Delta x_i.\]
 This \textit{is} a Riemann Sum. As long as \fp\ is continuous on $[a,b]$, we can invoke \autoref{thm:riemannSum} and conclude
 \[L=\int_a^b\sqrt{1+[\fp(x)]^2}\ dx.\]
 
@@ -199,14 +199,14 @@ We have already seen how a curve $y=f(x)$ on $[a,b]$ can be revolved around an a
 We begin as we have in the previous sections: we partition the interval $[a,b]$ with $n$ subintervals, where the $i\,^{\text{th}}$ subinterval is $[x_i,x_{i+1}]$. On each subinterval, we can approximate the curve $y=f(x)$ with a straight line that connects $f(x_i)$ and $f(x_{i+1})$ as shown in \autoref{fig:surface_intro}(a). Revolving this line segment about the $x$-axis creates part of a cone (called a \textit{frustum} of a cone) as shown in \autoref{fig:surface_intro}(b). The surface area of a frustum of a cone is
 \[A=2\pi r_{\text{avg}} L,\]
 where $r_{\text{avg}}$ is the average of $R_1$ and $R_2$.  The length is given by $L$; we use the material just covered by arc length to state that
-\[L\approx \sqrt{1+[\fp(c_i)]^2}\dx_i\]
+\[L\approx \sqrt{1+[\fp(c_i)]^2}\Delta x_i\]
 for some $c_i$ in the $i\,^\text{th}$ subinterval. The radii are just the function evaluated at the endpoints of the interval: $f(x_{i-1})$ and $f(x_i)$. Thus the surface area of this sample frustum of the cone is approximately 
-\[2\pi\frac{f(x_{i-1})+f(x_i)}2\sqrt{1+[\fp(c_i)]^2}\dx_i.\]
+\[2\pi\frac{f(x_{i-1})+f(x_i)}2\sqrt{1+[\fp(c_i)]^2}\Delta x_i.\]
 
 Since $f$ is a continuous function, the Intermediate Value Theorem states there is some $d_i$ in $[x_{i-1},x_i]$ such that $f(d_i)=\dfrac{f(x_{i-1})+f(x_i)}2$; we can use this to rewrite the above equation as
-\[2\pi f(d_i)\sqrt{1+[\fp(c_i)]^2}\dx_i.\]
+\[2\pi f(d_i)\sqrt{1+[\fp(c_i)]^2}\Delta x_i.\]
 Summing over all the subintervals we get the total surface area to be approximately 
-\[\text{Surface Area}\approx \sum_{i=1}^n 2\pi f(d_i)\sqrt{1+[\fp(c_i)]^2}\dx_i,\]
+\[\text{Surface Area}\approx \sum_{i=1}^n 2\pi f(d_i)\sqrt{1+[\fp(c_i)]^2}\Delta x_i,\]
 which is a Riemann Sum. Taking the limit as the subinterval lengths go to zero gives us the exact surface area, given in the upcoming Key Idea.
 
 If instead we revolve $y=f(x)$ about the $y$-axis, the radii of the resulting frustum are $x_{i-1}$ and $x_i$; their average value is simply the midpoint of the interval. In the limit, this midpoint is just $x$. This gives the second part of \autoref{idea:surface_area}.

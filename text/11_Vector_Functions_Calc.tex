@@ -1,26 +1,26 @@
-\section{Calculus and Vector--Valued Functions}\label{sec:vvf_calc}
+\section{Calculus and Vector-Valued Functions}\label{sec:vvf_calc}
 
-The previous section introduced us to a new mathematical object, the vector--valued function. We now apply calculus concepts to these functions. We start with the limit, then work our way through derivatives to integrals.
+The previous section introduced us to a new mathematical object, the vector-valued function. We now apply calculus concepts to these functions. We start with the limit, then work our way through derivatives to integrals.
 
-\subsection{Limits of Vector--Valued Functions}
+\subsection{Limits of Vector-Valued Functions}
 
-The initial definition of the limit of a vector--valued function is a bit intimidating, as was the definition of the limit in \autoref{def:limit}. The theorem following the definition shows that in practice, taking limits of vector--valued functions is no more difficult than taking limits of real--valued functions.
+The initial definition of the limit of a vector-valued function is a bit intimidating, as was the definition of the limit in \autoref{def:limit}. The theorem following the definition shows that in practice, taking limits of vector-valued functions is no more difficult than taking limits of real-valued functions.
 
-\definition{def:vvf_limit}{Limits of Vector--Valued Functions}
-{Let $I$ be an open interval containing $c$, and let $\vec r(t)$ be a vector--valued function defined on $I$, except possibly at $c$. %Let a vector--valued function $\vec r(t)$ be given, defined on an open interval $I$ containing $c$. 
+\definition{def:vvf_limit}{Limits of Vector-Valued Functions}
+{Let $I$ be an open interval containing $c$, and let $\vec r(t)$ be a vector-valued function defined on $I$, except possibly at $c$. %Let a vector-valued function $\vec r(t)$ be given, defined on an open interval $I$ containing $c$. 
 The \textbf{limit of $\vec r(t)$, as $t$ approaches $c$, is $\vec L$}, expressed as 
 \[\lim_{t\to c} \vec r(t) = \vec L,\]
 means that given any $\epsilon>0$, there exists a $\delta>0$ such that for all $t\neq c$, if $\abs{t-c}<\delta$, we have $\norm{\vec r(t) - \vec L} < \epsilon.$
-\index{vector--valued function!limits}\index{limit!of vector--valued functions}}
+\index{vector-valued function!limits}\index{limit!of vector-valued functions}}
 
 Note how the measurement of distance between real numbers is the absolute value of their difference; the measure of distance between vectors is the vector norm, or magnitude, of their difference.
 
-\theorem{thm:vvf_limit}{Limits of Vector--Valued Functions}
-{\index{vector--valued function!limits}\index{limit!of vector--valued functions}%
+\theorem{thm:vvf_limit}{Limits of Vector-Valued Functions}
+{\index{vector-valued function!limits}\index{limit!of vector-valued functions}%
 \mbox{}\\[-2\baselineskip]\begin{enumerate}
-	\item Let $\vec r(t) =\bracket{\,f(t),g(t)\,}$ be a vector--valued function in $\mathbb{R}^2$ defined on an open interval $I$ containing $c$. Then
+	\item Let $\vec r(t) =\bracket{\,f(t),g(t)\,}$ be a vector-valued function in $\mathbb{R}^2$ defined on an open interval $I$ containing $c$. Then
 \[\lim_{t\to c} \vec r(t) =\bracket{\lim_{t\to c}f(t)\, , \,\lim_{t\to c} g(t)}.\]
-	\item Let $\vec r(t) =\bracket{\,f(t),g(t),h(t)\,}$ be a vector--valued function in $\mathbb{R}^3$ defined on an open interval $I$ containing $c$. Then 
+	\item Let $\vec r(t) =\bracket{\,f(t),g(t),h(t)\,}$ be a vector-valued function in $\mathbb{R}^3$ defined on an open interval $I$ containing $c$. Then 
 \[
 \lim_{t\to c} \vec r(t)
 =\bracket{\lim_{t\to c}f(t)\, , \,\lim_{t\to c} g(t)\,, \,\lim_{t\to c} h(t)}
@@ -28,10 +28,10 @@ Note how the measurement of distance between real numbers is the absolute value 
 \end{enumerate}
 If any of the component limits do not exist, then $\ds\lim_{t\to c} \vec r(t)$ does not exist.}
 
-\autoref{thm:vvf_limit} states that we compute limits component--wise.
+\autoref{thm:vvf_limit} states that we compute limits component-wise.
 
-\example{ex_vvflimit1}{Finding limits of vector--valued functions}{Let $\ds\vec r(t) =\bracket{\frac{\sin t}{t},\, t^2-3t+3,\,\cos t}.$ Find $\ds \lim_{t\to 0}\vec r(t)$.}
-{We apply the theorem and compute limits component--wise.
+\example{ex_vvflimit1}{Finding limits of vector-valued functions}{Let $\ds\vec r(t) =\bracket{\frac{\sin t}{t},\, t^2-3t+3,\,\cos t}.$ Find $\ds \lim_{t\to 0}\vec r(t)$.}
+{We apply the theorem and compute limits component-wise.
 \begin{align*}
 \lim_{t\to0} \vec r(t) &=\bracket{\lim_{t\to 0}\frac{\sin t}{t}\, , \, \lim_{t\to 0} t^2-3t+3\, , \, \lim_{t\to 0} \cos t}\\
 			&=\bracket{1,3,1}.\eoehere
@@ -39,30 +39,31 @@ If any of the component limits do not exist, then $\ds\lim_{t\to c} \vec r(t)$ d
 
 \subsection{Continuity}
 
-\definition{def:vvf_continuity}{Continuity of Vector--Valued Functions}
-{Let $\vec r(t)$ be a vector--valued function defined on an open interval $I$ containing $c$.
-\index{vector--valued function!continuity}\index{continuous function!vector--valued}
+\definition{def:vvf_continuity}{Continuity of Vector-Valued Functions}
+{Let $\vec r(t)$ be a vector-valued function defined on an open interval $I$ containing $c$.
+\index{vector-valued function!continuity}\index{continuous function!vector-valued}
 \begin{enumerate}
 	\item $\vec r(t)$ is \textbf{continuous at $c$} if $\ds \lim_{t\to c} \vec r(t) = \vec r(c)$.
 	\item	If $\vec r(t)$ is continuous at all $c$ in $I$, then $\vec r(t)$ is \textbf{continuous on $I$.}
 \end{enumerate}}
 
-We again have a theorem that lets us evaluate continuity component--wise.
+We again have a theorem that lets us evaluate continuity component-wise.
 
-\theorem{thm:vvf_continuity}{Continuity of Vector--Valued Functions}
-{Let $\vec r(t)$ be a vector--valued function defined on an open interval $I$ containing $c$. Then $\vec r(t)$ is continuous at $c$ if, and only if, each of its component functions is continuous at $c$.
-\index{vector--valued function!continuity}\index{continuous function!vector--valued}}
+\theorem{thm:vvf_continuity}{Continuity of Vector-Valued Functions}
+{Let $\vec r(t)$ be a vector-valued function defined on an open interval $I$ containing $c$. Then $\vec r(t)$ is continuous at $c$ if, and only if, each of its component functions is continuous at $c$.
+\index{vector-valued function!continuity}\index{continuous function!vector-valued}}
 
-\example{ex_vvflimit2}{Evaluating continuity of vector--valued functions}{Let $\ds\vec r(t) =\bracket{\frac{\sin t}{t},\, t^2-3t+3,\,\cos t}.$ Determine whether $\vec r$ is continuous at $t=0$ and $t=1$.}
+\example{ex_vvflimit2}{Evaluating continuity of vector-valued functions}{Let $\ds\vec r(t) =\bracket{\frac{\sin t}{t},\, t^2-3t+3,\,\cos t}.$ Determine whether $\vec r$ is continuous at $t=0$ and $t=1$.}
 {While the second and third components of $\vec r(t)$ are defined at $t=0$, the first component, $(\sin t)/t$, is not. Since the first component is not even defined at $t=0$, $\vec r(t)$ is not defined at $t=0$, and hence it is not continuous at $t=0$.
 
 At $t=1$ each of the component functions is continuous. Therefore $\vec r(t)$ is continuous at $t=1$.}
 
 \subsection{Derivatives}
 
-Consider a vector--valued function $\vec r$ defined on an open interval $I$ containing $t_0$ and $t_1$. We can compute the displacement of $\vec r$ on $[t_0,t_1]$, as shown in \autoref{fig:vvfderiv_intro}(a). Recall that dividing the displacement vector by $t_1-t_0$ gives the average rate of change on $[t_0,t_1]$, as shown in (b).
+Consider a vector-valued function $\vec r$ defined on an open interval $I$ containing $t_0$ and $t_1$. We can compute the displacement of $\vec r$ on $[t_0,t_1]$, as shown in \autoref{fig:vvfderiv_intro}(a). Recall that dividing the displacement vector by $t_1-t_0$ gives the average rate of change on $[t_0,t_1]$, as shown in (b).
 
-\begin{lxfigure}
+\noindent\begin{minipage}[t]{\linewidth}\noindent%
+\captionsetup{type=figure}%
 \flushinner{%
 \begin{tabular}{cc}
 \begin{tikzpicture}[>=stealth]
@@ -96,19 +97,19 @@ Consider a vector--valued function $\vec r$ defined on an open interval $I$ cont
 \end{tikzpicture}
 \\(a) & (b)
 \end{tabular}}
-\caption{Illustrating displacement, leading to an understanding of the derivative of vector--valued functions.}
+\caption{Illustrating displacement, leading to an understanding of the derivative of vector-valued functions.}
 \label{fig:vvfderiv_intro}
-\end{lxfigure}
+\end{minipage}
 
-The \textbf{derivative} of a vector--valued function is a measure of the \emph{instantaneous} rate of change, measured by taking the limit as the length of $[t_0,t_1]$ goes to 0. Instead of thinking of an interval as $[t_0,t_1]$, we think of it as $[c,c+h]$ for some value of $h$ (hence the interval has length $h$).  The \emph{average} rate of change is 
+The \textbf{derivative} of a vector-valued function is a measure of the \emph{instantaneous} rate of change, measured by taking the limit as the length of $[t_0,t_1]$ goes to 0. Instead of thinking of an interval as $[t_0,t_1]$, we think of it as $[c,c+h]$ for some value of $h$ (hence the interval has length $h$).  The \emph{average} rate of change is 
 \[\frac{\vec r(c+h)-\vec r(c)}{h}\]
 for any value of $h\neq0$. We take the limit as $h\to0$ to measure the instantaneous rate of change; this is the derivative of $\vec r$.
 
 %We begin with a definition of the derivative that is very similar to \autoref{def:the_derivative}.
 
-\definition{def:vvf_derivative}{Derivative of a Vector--Valued Function}
+\definition{def:vvf_derivative}{Derivative of a Vector-Valued Function}
 {Let $\vec r(t)$ be continuous on an open interval $I$ containing $c$.
-\index{vector--valued function!derivatives}\index{derivative!vector--valued functions}
+\index{vector-valued function!derivatives}\index{derivative!vector-valued functions}
 \begin{enumerate}
 	\item The derivative of $\vec r$ at $t=c$ is
 	\[\vrp (c) = \lim_{h\to 0} \frac{\vec r(c+h) - \vec r(c)}{h}.\]
@@ -119,12 +120,12 @@ for any value of $h\neq0$. We take the limit as $h\to0$ to measure the instantan
 \mnote{Alternate notations for the derivative of $\vec r$ include:
 \[\vrp(t) = \frac{d}{dt}\big(\,\vec r(t)\,\big) = \frac{d\vec r}{dt}.\]}
 
-If a vector--valued function has a derivative for all $c$ in an open interval $I$, we say that $\vec r(t)$ is \textbf{differentiable} on $I$.
+If a vector-valued function has a derivative for all $c$ in an open interval $I$, we say that $\vec r(t)$ is \textbf{differentiable} on $I$.
 
-Once again we might view this definition as intimidating, but recall that we can evaluate limits component--wise. The following theorem verifies that this means we can compute derivatives component--wise as well, making the task not too difficult.
+Once again we might view this definition as intimidating, but recall that we can evaluate limits component-wise. The following theorem verifies that this means we can compute derivatives component-wise as well, making the task not too difficult.
 
-\theorem{thm:vvf_deriv}{Derivatives of Vector--Valued Functions}
-{\index{vector--valued function!derivatives}\index{derivative!vector--valued functions}
+\theorem{thm:vvf_deriv}{Derivatives of Vector-Valued Functions}
+{\index{vector-valued function!derivatives}\index{derivative!vector-valued functions}
 \mbox{}\\[-2\baselineskip]\begin{enumerate}
 	\item Let $\vec r(t) =\bracket{\, f(t), g(t)\,}$. Then 
 	\[\vrp(t) =\bracket{\, \fp(t), g\primeskip'(t)\,}.\]
@@ -135,7 +136,7 @@ If any of the component derivatives do not exist, then $\vrp(t)$ does not exist.
 
 \youtubeVideo{238wiC0U7NE}{Limit and Derivative of Vector Function}
 
-\mtable[-1in]{Graphing the derivative of a vector--valued function in \autoref{ex_vvflimit3}.}{fig:vvflimit3}{%
+\mtable[-1in]{Graphing the derivative of a vector-valued function in \autoref{ex_vvflimit3}.}{fig:vvflimit3}{%
 \begin{tikzpicture}[>=stealth]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
@@ -167,21 +168,21 @@ ymin=-2.2,ymax=2.2,xmin=-4.54,xmax=4.54]
 \end{tikzpicture}
 \\[5pt](b)}
 
-\example{ex_vvflimit3}{Derivatives of vector--valued functions}{Let $\vec r(t) =\bracket{t^2,t}$. 
+\example{ex_vvflimit3}{Derivatives of vector-valued functions}{Let $\vec r(t) =\bracket{t^2,t}$. 
 \begin{enumerate}
 	\item Sketch $\vec r(t)$ and $\vrp(t)$ on the same axes.
 	\item	Compute $\vrp(1)$ and sketch this vector with its initial point at the origin and at $\vec r(1)$.
 \end{enumerate}}
 {\begin{enumerate}
-\item	\autoref{thm:vvf_deriv} allows us to compute derivatives component--wise, so
+\item	\autoref{thm:vvf_deriv} allows us to compute derivatives component-wise, so
 \[\vrp(t) =\bracket{2t, 1}.\]
-$\vec r(t)$ and $\vrp(t)$ are graphed together in \autoref{fig:vvflimit3}(a). Note how plotting the two of these together, in this way, is not very illuminating. When dealing with real--valued functions, plotting $f(x)$ with $\fp(x)$ gave us useful information as we were able to compare $f$ and $\fp$ at the same $x$-values. When dealing with vector--valued functions, it is hard to tell which points on the graph of $\vrp$ correspond to which points on the graph of $\vec r$.
+$\vec r(t)$ and $\vrp(t)$ are graphed together in \autoref{fig:vvflimit3}(a). Note how plotting the two of these together, in this way, is not very illuminating. When dealing with real-valued functions, plotting $f(x)$ with $\fp(x)$ gave us useful information as we were able to compare $f$ and $\fp$ at the same $x$-values. When dealing with vector-valued functions, it is hard to tell which points on the graph of $\vrp$ correspond to which points on the graph of $\vec r$.
 
 \item	We easily compute $\vrp(1) =\bracket{2,1}$, which is drawn in \autoref{fig:vvflimit3} with its initial point at the origin, as well as at $\vec r(1) =\bracket{1,1}.$ These are sketched in \autoref{fig:vvflimit3}(b).\eoehere
 \end{enumerate}}
 
 \ifthenelse{\boolean{in_threeD}}{%
-\mtable{Viewing a vector--valued function and its derivative at one point.}{fig:vvflimit4}{%
+\mtable{Viewing a vector-valued function and its derivative at one point.}{fig:vvflimit4}{%
 \myincludeasythree{width=.7\marginparwidth,
 3Droll=-0.5856992334166129,
 3Dortho=0.004399999976158142,
@@ -189,14 +190,14 @@ $\vec r(t)$ and $\vrp(t)$ are graphed together in \autoref{fig:vvflimit3}(a). No
 3Dcoo=-18.837804794311523 -8.740551948547363 60.22870635986328,
 3Droo=150.0000027221829}{width=.7\marginparwidth}{figures/figvvflimit4_3D}}%
 }{% not in threeD
-\mtable[-.5in]{Viewing a vector--valued function and its derivative at one point, from two different perspectives.}{fig:vvflimit4}{%
+\mtable[-.5in]{Viewing a vector-valued function and its derivative at one point, from two different perspectives.}{fig:vvflimit4}{%
 \myincludegraphics[width=.7\marginparwidth]{figures/figvvflimit4_3D}
 \\(a)\\
 \myincludegraphics[width=.7\marginparwidth]{figures/figvvflimit4a_3D}
 \\(b)}%
 }% ends whole if-then-else
 
-\example{ex_vvflimit4}{Derivatives of vector--valued functions}{Let $\vec r(t) =\bracket{\cos t, \sin t, t}$. Compute $\vrp(t)$ and $\vrp(\pi/2)$. Sketch $\vrp(\pi/2)$ with its initial point at the origin and at $\vec r(\pi/2)$.}
+\example{ex_vvflimit4}{Derivatives of vector-valued functions}{Let $\vec r(t) =\bracket{\cos t, \sin t, t}$. Compute $\vrp(t)$ and $\vrp(\pi/2)$. Sketch $\vrp(\pi/2)$ with its initial point at the origin and at $\vec r(\pi/2)$.}
 {We compute $\vrp$ as $\vrp(t) =\bracket{-\sin t, \cos t, 1}$. At $t= \pi/2$, we have $\vrp(\pi/2) =\bracket{-1,0,1}$. \autoref{fig:vvflimit4}
 \ifthenelse{\boolean{in_threeD}}{shows a graph of $\vec r(t)$,}{shows two graphs of $\vec r(t)$, from different perspectives,}
 with $\vrp(\pi/2)$ plotted with its initial point at the origin and at $\vec r(\pi/2)$.}
@@ -204,8 +205,8 @@ with $\vrp(\pi/2)$ plotted with its initial point at the origin and at $\vec r(\
 In Examples \ref{ex_vvflimit3} and \ref{ex_vvflimit4}, sketching a particular derivative with its initial point at the origin did not seem to reveal anything significant. However, when we sketched the vector with its initial point on the corresponding point on the graph, we did see something significant: the vector appeared to be \textit{tangent} to the graph. We have not yet defined what ``tangent'' means in terms of curves in space; in fact, we use the derivative to define this term.
 
 \definition{def:vector_tangent}{Tangent Vector, Tangent Line}
-{Let $\vec r(t)$ be a differentiable vector--valued function on an open interval $I$ containing $c$, where $\vrp(c)\neq \vec 0$.
-\index{tangent line}\index{vector--valued function!tangent line}
+{Let $\vec r(t)$ be a differentiable vector-valued function on an open interval $I$ containing $c$, where $\vrp(c)\neq \vec 0$.
+\index{tangent line}\index{vector-valued function!tangent line}
 \begin{enumerate}
 	\item A vector $\vec v$ is \textbf{tangent to the graph of $\vec r(t)$ at $t=c$} if $\vec v$ is parallel to $\vrp(c)$.
 	\item	The \textbf{tangent line}  to the graph of $\vec r(t)$ at $t=c$ is the line through $\vec r(c)$ with direction parallel to $\vrp(c)$. An equation of the tangent line is 
@@ -231,7 +232,7 @@ In Examples \ref{ex_vvflimit3} and \ref{ex_vvflimit4}, sketching a particular de
 \example{ex_vvfderiv1}{Finding tangent lines to curves in space}{Let $\vec r(t) =\bracket{t,t^2,t^3}$ on $[-1.5,1.5]$. Find the vector equation of the line tangent to the graph of $\vec r$ at $t=-1$. }
 {To find the equation of a line, we need a point on the line and the line's direction. The point is given by $\vec r(-1) =\bracket{-1,1,-1}$. (To be clear, $\bracket{-1,1,-1}$ is a \emph{vector}, not a point, but we use the point ``pointed to'' by this vector.)
 
-The direction comes from $\vrp(-1)$. We compute, component--wise, $\vrp(t) =\bracket{1,2t, 3t^2}$. Thus $\vrp(-1) =\bracket{1,-2,3}$. 
+The direction comes from $\vrp(-1)$. We compute, component-wise, $\vrp(t) =\bracket{1,2t, 3t^2}$. Thus $\vrp(-1) =\bracket{1,-2,3}$. 
 
 The vector equation of the line is $\ell(t) =\bracket{-1,1,-1}+ t\bracket{1,-2,3}$. \ifthenelse{\boolean{in_threeD}}{This line and $\vec r(t)$ are sketched in \autoref{fig:vvfderiv1}.}{This line and $\vec r(t)$ are sketched, from two perspectives, in \autoref{fig:vvfderiv1} (a) and (b).}}
 
@@ -261,18 +262,18 @@ ymin=-2.96,ymax=2.96,xmin=-3.5,xmax=3.5]
 
 We were unable to compute the equation of the tangent line to $\vec r(t)=\bracket{t^3,t^2}$ at $t=0$ because $\vrp(0) = \vec 0$. The graph in \autoref{fig:vvfderiv3} shows that there is a cusp at this point. This leads us to another definition of \textbf{smooth}, previously defined by \autoref{def:smooth} in \autoref{sec:param_eqs}.
 
-\definition{def:vector_smooth}{Smooth Vector--Valued Functions}
-{Let $\vec r(t)$ be a differentiable vector--valued function on an open interval $I$. Then $\vec r(t)$ is \textbf{smooth} on $I$ if $\vrp(t)$ is continuous and $\vrp(t)\neq \vec 0$ on $I$.
-\index{smooth}\index{vector--valued function!smooth}}
+\definition{def:vector_smooth}{Smooth Vector-Valued Functions}
+{Let $\vec r(t)$ be a differentiable vector-valued function on an open interval $I$. Then $\vec r(t)$ is \textbf{smooth} on $I$ if $\vrp(t)$ is continuous and $\vrp(t)\neq \vec 0$ on $I$.
+\index{smooth}\index{vector-valued function!smooth}}
 
-Having established derivatives of vector--valued functions, we now explore the relationships between the derivative and other vector operations. The following theorem states how the derivative interacts with vector addition and the various vector products.
+Having established derivatives of vector-valued functions, we now explore the relationships between the derivative and other vector operations. The following theorem states how the derivative interacts with vector addition and the various vector products.
 
 % I can't put this in the box, and after makes it come on the next page
 %\mnote[13\baselineskip]{\textbf{Note:} Because the order is important when computing a cross product, we must maintain the correct order of the functions in rule \ref*{crossprodrule}.}
 
-\theorem{thm:vvf_deriv_prop}{Properies of Derivatives of Vector--Valued Functions}
-{Let $\vec r$ and $\vec s$ be differentiable vector--valued functions, let $f$ be a differentiable real--valued function, and let $c$ be a real number.
-\index{vector--valued function!derivatives}\index{derivative!vector--valued functions}
+\theorem{thm:vvf_deriv_prop}{Properties of Derivatives of Vector-Valued Functions}
+{Let $\vec r$ and $\vec s$ be differentiable vector-valued functions, let $f$ be a differentiable real-valued function, and let $c$ be a real number.
+\index{vector-valued function!derivatives}\index{derivative!vector-valued functions}
 \index{dot product!and derivatives}\index{cross product!and derivatives}
 \begin{enumerate}
 	\item $\ds \frac{d}{dt}\Big(\vec r(t) \pm \vec s(t)\Big) = \vrp(t) \pm \vec s\,'(t)$
@@ -286,7 +287,7 @@ Having established derivatives of vector--valued functions, we now explore the r
 % apparently we need it on the next page
 \mnote[-5\baselineskip]{\textbf{Note:} Because the order is important when computing a cross product, we must maintain the correct order of the functions in rule \ref*{crossprodrule}.}
 
-\example{ex_vvfderiv2}{Using derivative properties of vector--valued functions}{Let $\vec r(t) =\bracket{t, t^2-1}$ and let $\vec u(t)$ be the unit vector that points in the direction of $\vec r(t)$.
+\example{ex_vvfderiv2}{Using derivative properties of vector-valued functions}{Let $\vec r(t) =\bracket{t, t^2-1}$ and let $\vec u(t)$ be the unit vector that points in the direction of $\vec r(t)$.
 \begin{enumerate}
 	\item Graph $\vec r(t)$ and $\vec u(t)$ on the same axes, on $[-2,2]$.
 	\item	Find $\vec u\,'(t)$ and sketch $\vec u\,'(-2)$, $\vec u\,'(-1)$ and $\vec u\,'(0)$. Sketch each with initial point the corresponding point on the graph of $\vec u$.
@@ -364,30 +365,32 @@ It is a basic geometric fact that a line tangent to a circle at a point $P$ is p
 
 Recall that the dot product serves as a test for orthogonality: if $\vec u\cdot \vec v = 0$, then $\vec u$ is orthogonal to $\vec v$. Thus in the above example, $\vec u(t)\cdot \vec u\,'(t)=0$.
 
-This is true of any vector--valued function that has a constant length, that is, that traces out part of a circle. It has important implications later on, so we state it as a theorem (and leave its formal proof as Exercise \ref{pr_const_length}.)
+This is true of any vector-valued function that has a constant length, that is, that traces out part of a circle. It has important implications later on, so we state it as a theorem (and leave its formal proof as Exercise \ref{pr_const_length}.)
 
-\theorem{thm:vects_of_constant_length}{Vector--Valued Functions of Constant Length% are Orthogonal to their Derivative
+\theorem{thm:vects_of_constant_length}{Vector-Valued Functions of Constant Length% are Orthogonal to their Derivative
 }
-{Let $\vec r(t)$ be a differentiable vector--valued function on an open interval $I$ of constant length. That is, $\norm{\vec r(t)} = c$ for all $t$ in $I$ (equivalently, $\vec r(t)\cdot \vec r(t) = c^2$ for all $t$ in $I$). 
-Then $\vec r(t)\cdot\vrp(t) = 0$ for all $t$ in $I$.\index{vector--valued function!of constant length}}
+{Let $\vec r(t)$ be a differentiable vector-valued function on an open interval $I$ of constant length. That is, $\norm{\vec r(t)} = c$ for all $t$ in $I$ (equivalently, $\vec r(t)\cdot \vec r(t) = c^2$ for all $t$ in $I$). 
+Then $\vec r(t)\cdot\vrp(t) = 0$ for all $t$ in $I$.\index{vector-valued function!of constant length}}
 
 \subsection{Integration}
 
-Indefinite and definite integrals of vector--valued functions are also defined to be evaluated component--wise.
+Indefinite and definite integrals of vector-valued functions are also defined to be evaluated component-wise.
 
-\definition{thm:vvf_integration}{\parbox[t]{225pt}{Indefinite and Definite Integrals of Vector--Valued Functions}}
-{Let $\vec r(t) =\bracket{f(t),g(t)}$ be a vector--valued function in $\mathbb{R}^2$.
+\definition{thm:vvf_integration}{\parbox[t]{200pt}{%
+Indefinite and Definite Integrals of Vector-Valued Functions}}
+{Let $\vec r(t) =\bracket{f(t),g(t)}$ be a vector-valued function in $\mathbb{R}^2$.
+\index{vector-valued function!integration}\index{integration!of vector-valued functions}
 \begin{enumerate}
 	\item $\ds \int \vec r(t)\ dt =\bracket{\int f(t)\ dt, \int g(t)\ dt}$
 	\item	$\ds \int_a^b \vec r(t)\ dt =\bracket{\int_a^b f(t)\ dt, \int_a^b g(t)\ dt}$
 \end{enumerate}
-Let $\vec r(t) =\bracket{f(t),g(t),h(t)}$ be a vector--valued function in $\mathbb{R}^3$.
+Let $\vec r(t) =\bracket{f(t),g(t),h(t)}$ be a vector-valued function in $\mathbb{R}^3$.
 \begin{enumerate}
 	\item $\ds \int \vec r(t)\ dt =\bracket{\int f(t)\ dt, \int g(t)\ dt, \int h(t)\ dt}$
 	\item	$\ds \int_a^b \vec r(t)\ dt =\bracket{\int_a^b f(t)\ dt, \int_a^b g(t)\ dt, \int_a^b h(t)\ dt}$
-\end{enumerate}\index{vector--valued function!integration}\index{integration!of vector--valued functions}}
+\end{enumerate}}
 
-\example{ex_vvfint1}{Evaluating a definite integral of a vector--valued function}{Let $\vec r(t) =\bracket{e^{2t},\sin t}$. Evaluate $\ds \int_0^1 \vec r(t) \ dt$.}
+\example{ex_vvfint1}{Evaluating a definite integral of a vector-valued function}{Let $\vec r(t) =\bracket{e^{2t},\sin t}$. Evaluate $\ds \int_0^1 \vec r(t) \ dt$.}
 {We follow \autoref{thm:vvf_integration}.
 \begin{align*}
 \int_0^1 \vec r(t) \ dt &= \int_0^1\bracket{e^{2t},\sin t}\ dt \\
@@ -436,21 +439,21 @@ Therefore,
  &=\bracket{t^2+5t-7,-\cos t+3t,2t^3+2}.\eoehere
 \end{align*}}
 
-What does the integration of a vector--valued function \emph{mean}? There are many applications, but none as direct as ``the area under the curve'' that we used in understanding the integral of a real--valued function.
+What does the integration of a vector-valued function \emph{mean}? There are many applications, but none as direct as ``the area under the curve'' that we used in understanding the integral of a real-valued function.
 
 A key understanding for us comes from considering the integral of a derivative: \[\int_a^b \vrp(t)\ dt = \vec r(t)\Big|_a^b = \vec r(b)-\vec r(a).\]
 Integrating a \emph{rate of change} function gives \emph{displacement}.\index{displacement}
 
-Noting that vector--valued functions are closely related to parametric equations, we can describe the arc length of the graph of a vector--valued function as an integral. Given parametric equations $x=f(t)$, $y=g(t)$, the arc length on $[a,b]$ of the graph is
+Noting that vector-valued functions are closely related to parametric equations, we can describe the arc length of the graph of a vector-valued function as an integral. Given parametric equations $x=f(t)$, $y=g(t)$, the arc length on $[a,b]$ of the graph is
 \[\text{Arc Length} = \int_a^b\sqrt{\fp(t)^2+g\primeskip'(t)^2}\ dt,\]
-as stated in \autoref{thm:arc_length_parametric} in \autoref{sec:par_calc}. If $\vrt =\bracket{f(t), g(t)}$, note that $\sqrt{\fp(t)^2+g\primeskip'(t)^2} = \norm{\vrp(t)}$. Therefore we can express the arc length of the graph of a vector--valued function as an integral of the magnitude of its derivative.
+as stated in \autoref{thm:arc_length_parametric} in \autoref{sec:par_calc}. If $\vrt =\bracket{f(t), g(t)}$, note that $\sqrt{\fp(t)^2+g\primeskip'(t)^2} = \norm{\vrp(t)}$. Therefore we can express the arc length of the graph of a vector-valued function as an integral of the magnitude of its derivative.
 
-\theorem{thm:vvf_arc_length}{Arc Length of a Vector--Valued Function}
-{Let \vrt\ be a vector--valued function where $\vrp(t)$ is continuous on $[a,b]$. The arc length $L$ of the graph of \vrt\ is 
-\index{vector--valued function!arc length}\index{arc length}
+\theorem{thm:vvf_arc_length}{Arc Length of a Vector-Valued Function}
+{Let \vrt\ be a vector-valued function where $\vrp(t)$ is continuous on $[a,b]$. The arc length $L$ of the graph of \vrt\ is 
+\index{vector-valued function!arc length}\index{arc length}
 \[L = \int_a^b \norm{\vrp(t)}\ dt.\]}
 
-Note that we are actually integrating a scalar--function here, not a vector--valued function.
+Note that we are actually integrating a scalar-function here, not a vector-valued function.
 
 The next section takes what we have established thus far and applies it to objects in motion. We will let \vrt\ describe the path of an object in the plane or in space and will discover the information provided by $\vrp(t)$ and $\vrp'(t)$.
 

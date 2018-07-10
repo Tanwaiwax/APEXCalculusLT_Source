@@ -18,7 +18,8 @@ A useful way to establish whether or not a function $f$ is continuous at $c$ is 
 
 If $f$ is defined near $c$ but is not continuous at $c$, then we say that $f$ is \textbf{discontinuous at} $\mathbf{c}$ or $f$ has a \textbf{discontinuity at} $\mathbf{c}$. We will discuss three types of discontinuities, as seen in \autoref{fig:types_of_discont}.\index{discontinuous}
 
-\begin{lxfigure}
+\noindent\begin{minipage}[t]{\linewidth}\noindent%
+\captionsetup{type=figure}%
 \centering
 \begin{tabular}{ccc}
 \begin{tikzpicture}
@@ -56,7 +57,7 @@ Removable & Infinite & Jump
 \end{tabular}
 \caption{Three types of discontinuities}
 \label{fig:types_of_discont}
-\end{lxfigure}
+\end{minipage}
 
 \begin{description}
 \item[Removable discontinuity] This type of discontinuity is called removable because we could remove the discontinuity by redefining the function at a single point.
@@ -145,9 +146,9 @@ We can then extend the definition of continuity to closed intervals by consideri
 	\item	$f$ is left continuous at $b$.
 \end{enumerate}}
 		
-We can make the appropriate adjustments to talk about continuity on half--open intervals such as $[a,b)$ or $(a,b]$ if necessary.\bigskip
+We can make the appropriate adjustments to talk about continuity on half-open intervals such as $[a,b)$ or $(a,b]$ if necessary.\bigskip
 %
-%Using this new definition, we can adjust our answer in \autoref{ex_contint2} by stating that the floor function is continuous on the following half--open intervals \[\dotsc, [-2,-1), [-1,0), [0,1), [1,2), \dotsc.\] This can tempt us to conclude that $f$ is continuous everywhere; after all, if $f$ is continuous on $[0,1)$ and $[1,2)$, isn't $f$ also continuous on $[0,2)$? Of course, the answer is \textit{no}, and the graph of the floor function immediately confirms this.\\
+%Using this new definition, we can adjust our answer in \autoref{ex_contint2} by stating that the floor function is continuous on the following half-open intervals \[\dotsc, [-2,-1), [-1,0), [0,1), [1,2), \dotsc.\] This can tempt us to conclude that $f$ is continuous everywhere; after all, if $f$ is continuous on $[0,1)$ and $[1,2)$, isn't $f$ also continuous on $[0,2)$? Of course, the answer is \textit{no}, and the graph of the floor function immediately confirms this.\\
 %
 %Continuous functions are important as they behave in a predictable fashion: functions attain the value they approach. Because continuity is so important, most of the functions you have likely seen in the past are continuous on their domains. This is demonstrated in the following example where we examine the intervals of continuity of a variety of common functions.\\
 
@@ -207,7 +208,7 @@ Therefore,
 
 \theorem{thm:composition_continuous}{Continuity of Compositions}{Let $f$ be continuous on $I$, where the range of $f$ on $I$ is $J$, and let $g$ be continuous on $J$. Then \[(g\circ f)(x)=g(f(x))\] is continuous on $I$.}
 
-Now knowing the definition of continuity we can re--read \autoref{thm:lim_continuous} as giving a list of functions that are continuous on their domains.
+Now knowing the definition of continuity we can re-read \autoref{thm:lim_continuous} as giving a list of functions that are continuous on their domains.
 
 \theorem{thm:continuous_functions}{Continuous Functions}{%
 The following functions are continuous on their domains.\index{continuous function!properties}\\
@@ -265,7 +266,7 @@ ymin=-.4,ymax=3.2,xmin=-.4,xmax=5.4,name=myplot]
 \end{tikzpicture}}
 
 \begin{enumerate}
-	\item	The square--root terms are continuous on the intervals $[1,\infty)$ and $(-\infty,5]$, respectively. As $f$ is continuous only where each term is continuous, $f$ is continuous on $[1,5]$, the intersection of these two intervals. A graph of $f$ is given in \autoref{fig_continuous3}.
+	\item	The square-root terms are continuous on the intervals $[1,\infty)$ and $(-\infty,5]$, respectively. As $f$ is continuous only where each term is continuous, $f$ is continuous on $[1,5]$, the intersection of these two intervals. A graph of $f$ is given in \autoref{fig_continuous3}.
 
 	\item	The functions $y=x$ and $y=\sin x$ are each continuous everywhere, hence their product is, too.
 	\item	\autoref{thm:continuous_functions} states that $f(x) = \tan x$ is continuous ``on its domain.'' Its domain includes all real numbers except odd multiples of $\pi/2$. Thus $f(x) = \tan x$ is continuous on
@@ -276,7 +277,7 @@ ymin=-.4,ymax=3.2,xmin=-.4,xmax=5.4,name=myplot]
 	\item	The domain of $y = \sqrt{x}$ is $[0,\infty)$. The range of $y=\ln x$ is $(-\infty,\infty)$, but if we restrict its domain to $[1,\infty)$ its range is $[0,\infty)$. So restricting $y = \ln x$ to the domain of $[1,\infty)$ restricts its output is $[0,\infty)$, on which $y = \sqrt{x}$ is defined. Thus the domain of $f(x) = \sqrt{\ln x}$ is $[1,\infty)$.\eoehere
 \end{enumerate}}
 
-A common way of thinking of a continuous function is that ``its graph can be sketched without lifting your pencil.'' That is, its graph forms a ``continuous'' curve, without holes, breaks or jumps. While beyond the scope of this text, this pseudo--definition glosses over some of the finer points of continuity. Very strange functions are continuous that one would be hard pressed to actually sketch by hand. 
+A common way of thinking of a continuous function is that ``its graph can be sketched without lifting your pencil.'' That is, its graph forms a ``continuous'' curve, without holes, breaks or jumps. While beyond the scope of this text, this pseudo-definition glosses over some of the finer points of continuity. Very strange functions are continuous that one would be hard pressed to actually sketch by hand. 
 
 This intuitive notion of continuity does help us understand another important concept as follows. Suppose $f$ is defined on $[1,2]$ and $f(1) = -10$ and $f(2) = 5$. If $f$ is continuous on $[1,2]$ (i.e., its graph can be sketched as a continuous curve from $(1,-10)$ to $(2,5)$) then we know intuitively that somewhere on $[1,2]$ $f$ must be equal to $-9$, and $-8$, and $-7,\ -6,\ \dotsc,\ 0,\ 1/2,$ etc. In short, $f$ takes on all \textit{intermediate} values between $-10$ and $5$. It may take on more values; $f$ may actually equal 6 at some time, for instance, but we are guaranteed all values between $-10$ and 5. 
 
@@ -330,9 +331,9 @@ Note that in the above example you were not asked to find the root, just to show
 
 There is a technique that produces a good approximation of $c$. Let $d$ be the midpoint of the interval $[a,b]$ and consider $f(d)$. There are three possibilities:
 \begin{enumerate}
-	\item	$f(d) = 0$ -- we got lucky and stumbled on the actual value. We stop as we found a root.
-	\item	$f(d) <0$ Then we know there is a root of $f$ on the interval $[d,b]$ -- we have halved the size of our interval, hence are closer to a good approximation of the root.
-	\item	$f(d) >0$ Then we know there is a root of $f$ on the interval $[a,d]$ -- again,we have halved the size of our interval, hence are closer to a good approximation of the root.
+	\item	$f(d) = 0$ --- we got lucky and stumbled on the actual value. We stop as we found a root.
+	\item	$f(d) <0$ Then we know there is a root of $f$ on the interval $[d,b]$ --- we have halved the size of our interval, hence are closer to a good approximation of the root.
+	\item	$f(d) >0$ Then we know there is a root of $f$ on the interval $[a,d]$ --- again,we have halved the size of our interval, hence are closer to a good approximation of the root.
 \end{enumerate}
 
 Successively applying this technique is called the \sword{Bisection Method} \index{Bisection Method} of root finding. We continue until the interval is sufficiently small. We demonstrate this in the following example.

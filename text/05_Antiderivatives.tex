@@ -92,7 +92,7 @@ Understanding all of this is more important later as we try to find antiderivati
 Let's practice once more before stating integration rules.
 
 \example{ex_anti3}{Evaluating indefinite integrals}{Evaluate $\ds \int (3x^2 + 4x+5)\ dx$.}
-{We seek a function $F(x)$ whose derivative is $3x^2+4x+5$. When taking derivatives, we can consider functions term--by--term, so we can likely do that here.
+{We seek a function $F(x)$ whose derivative is $3x^2+4x+5$. When taking derivatives, we can consider functions term-by-term, so we can likely do that here.
 
 What functions have a derivative of $3x^2$? Some thought will lead us to a cubic, specifically $x^3+C_1$, where $C_1$ is a constant. 
 
@@ -116,26 +116,19 @@ Differentiation ``undoes'' the work done by antidifferentiation.
 \autoref{thm:deriv_glossary} gave a list of the derivatives of common functions we had learned at that point. We restate part of that list here to stress the relationship between derivatives and antiderivatives. This list will also be useful as a glossary of common antiderivatives as we learn.
 
 \theorem{thm:indef_alg}{Derivatives and Antiderivatives}
-{\begin{minipage}[t]{.5\specialboxlength}
-Common Differentiation Rules
-\begin{enumerate}
-\item\label{thm:d_const_mult_rule} \myrule$\frac{d}{dx}\big(cf(x) \big) = c\cdot \fp(x)$
-\item\label{thm:d_sum_diff_rule} \myrule$\frac{d}{dx}\big(f(x)\pm g(x) \big) = \\
-\myrule\phantom{.}\ \fp(x)\pm g'(x)$
-\item $\frac{d}{dx}\big(C \big) = 0$\myrule
-\end{enumerate}
-\end{minipage}%
-%
-\begin{minipage}[t]{.5\specialboxlength}
-Common Indefinite Integral Rules
-\begin{enumerate}
-\item \myrule$\int c\cdot f(x)\ dx = c\cdot \int f(x)\ dx$
-\item \myrule$\int \big(f(x)\pm g(x)\big)\ dx = \\
-\myrule\phantom{.}\ \int f(x)\ dx\pm \int g(x)\ dx$
-\item $\int 0\ dx = C$\myrule
-\end{enumerate}
-\end{minipage}
-}
+{\begin{anywhereenum}\renewcommand{\arraystretch}{1.7}
+\begin{tabular}{ll}
+Common Differentiation Rules & Common Indefinite Integral Rules\\
+\item\label{thm:d_const_mult_rule} $\frac{d}{dx}\big(cf(x) \big) = c\cdot \fp(x)$ &
+\item[\theanywhereenumi] $\int c\cdot f(x)\ dx = c\cdot \int f(x)\ dx$ \\
+\item\label{thm:d_sum_diff_rule} $\frac{d}{dx}\big(f(x)\pm g(x) \big) =$ &
+\item[\theanywhereenumi] $\int \big(f(x)\pm g(x)\big)\ dx =$ \\[-1ex]
+\qquad$\fp(x)\pm g'(x)$ & 
+\qquad$\int f(x)\ dx\pm \int g(x)\ dx$ \\
+\item $\frac{d}{dx}\big(C \big) = 0$ &
+\item[\theanywhereenumi] $\int 0\ dx = C$
+\end{tabular}
+\end{anywhereenum}}
 
 We highlight a few important points from \autoref{thm:indef_alg}:\index{Constant Multiple Rule!of integration}\index{integration!Sum/Difference Rule}\index{Sum/Difference Rule!of integration}
 \begin{itemize}
@@ -154,38 +147,29 @@ We highlight a few important points from \autoref{thm:indef_alg}:\index{Constant
 \end{itemize}
 
 \theorem{thm:common_indef_alg}{Derivatives and Antiderivatives}
-{\begin{minipage}[t]{.5\specialboxlength}
-Common Derivatives
-\begin{enumerate}
-\setcounter{enumi}{3}
-\item\label{thm:d_power_rule} $\frac{d}{dx}\big(x^n \big) = n\cdot x^{n-1}$\myrule
-\item\label{thm:d_ln_rule} $\frac{d}{dx}\big(\ln\abs{x}\big) = \frac1 x$\myrule
-\item $\frac{d}{dx}\big(e^ x \big) = e^x$\myrule
-\item $\frac{d}{dx}\big(\sin x \big) = \cos x$\myrule
-\item $\frac{d}{dx}\big(\cos x \big) = -\sin x$\myrule
-\item $\frac{d}{dx}\big(\tan x \big) = \sec^2 x$\myrule
-\item $\frac{d}{dx}\big(\cot x \big) = -\csc^2 x$\myrule
-\item $\frac{d}{dx}\big(\sec x \big) = \sec x\tan x$\myrule
-\item $\frac{d}{dx}\big(\csc x \big) = -\csc x\cot x$\myrule
-\end{enumerate}
-\end{minipage}%
-%
-\begin{minipage}[t]{.5\specialboxlength}
-Common Indefinite Integrals
-\begin{enumerate}
-\setcounter{enumi}{3}
-\item $\int x^n\ dx =\frac{x^{n+1}}{n+1}+ C$\quad{\scriptsize ($n\neq -1$)}\myrule
-\item $\int \frac{1}x\ dx = \ln\abs{x}+C$\myrule
-\item $\int e^x\ dx = e^x+C$\myrule
-\item $\int \cos x\ dx = \phantom{-}\sin x+C$\myrule
-\item $\int \sin x\ dx = -\cos x+C$\myrule
-\item $\int \sec^2 x\ dx = \phantom{-}\tan x+C$\myrule
-\item $\int \csc^2 x\ dx = -\cot x+C$\myrule
-\item $\int \sec x\tan x\ dx = \phantom{-}\sec x+C$\myrule
-\item $\int \csc x\cot  x\ dx = -\csc x+C$\myrule
-\end{enumerate}
-\end{minipage}
-}
+{\begin{anywhereenum}\setcounter{anywhereenumi}{3}\renewcommand{\arraystretch}{1.7}
+\begin{tabular}{ll}
+Common Derivatives & Common Indefinite Integrals \\[-.9\baselineskip]
+\item\label{thm:d_power_rule} $\frac{d}{dx}\big(x^n \big) = n\cdot x^{n-1}$ &
+\item[\theanywhereenumi] $\int x^n\ dx =\frac{x^{n+1}}{n+1}+ C$\quad{\scriptsize ($n\neq -1$)} \\
+\item\label{thm:d_ln_rule} $\frac{d}{dx}\big(\ln\abs{x}\big) = \frac1 x$ &
+\item[\theanywhereenumi] $\int \frac{1}x\ dx = \ln\abs{x}+C$\\
+\item $\frac{d}{dx}\big(e^ x \big) = e^x$ &
+\item[\theanywhereenumi] $\int e^x\ dx = e^x+C$\\
+\item $\frac{d}{dx}\big(\sin x \big) = \cos x$ &
+\item[\theanywhereenumi] $\int \cos x\ dx = \phantom{-}\sin x+C$ \\
+\item $\frac{d}{dx}\big(\cos x \big) = -\sin x$ &
+\item[\theanywhereenumi] $\int \sin x\ dx = -\cos x+C$ \\
+\item $\frac{d}{dx}\big(\tan x \big) = \sec^2 x$ &
+\item[\theanywhereenumi] $\int \sec^2 x\ dx = \phantom{-}\tan x+C$ \\
+\item $\frac{d}{dx}\big(\cot x \big) = -\csc^2 x$ &
+\item[\theanywhereenumi] $\int \csc^2 x\ dx = -\cot x+C$ \\
+\item $\frac{d}{dx}\big(\sec x \big) = \sec x\tan x$ &
+\item[\theanywhereenumi] $\int \sec x\tan x\ dx = \phantom{-}\sec x+C$ \\
+\item $\frac{d}{dx}\big(\csc x \big) = -\csc x\cot x$ \quad\null&
+\item[\theanywhereenumi] $\int \csc x\cot  x\ dx = -\csc x+C$
+\end{tabular}
+\end{anywhereenum}}
 
 \index{integration!Power Rule}\index{Power Rule!integration}
 \begin{itemize}

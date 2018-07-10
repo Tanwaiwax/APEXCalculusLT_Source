@@ -121,11 +121,6 @@ DefMacro('\flushouter{}','{#1}');
 DefMacro('\flushinnerequ{}','{#1}');
 DefMacro('\flushouterequ{}','{#1}');
 
-# it'd be nice to have this.  instead, we have to enclose all fake figures in
-# an lxfigure environment
-#DefMacro('\captionsetup{}');
-#DefMacro('\captionof{}{}','\caption{#2}');
-
 # some Macros we do need
 DefMacroI('\textcent',undef,"\x{00A2}");
 DefMacro('\lvert','\vert');
@@ -146,70 +141,18 @@ DefMacro('\psBill'); # todo
 #    (T_CS('\\'.$level),T_BEGIN,$text,T_END); });
 
 
-# should be in hyperref
-#DefMacro('\autopageref{}','\hyperref[{#1}]{\pageautorefname\ \pageref*{#1}}');
-# but pages don't make sense
-
 # some macros we don't need
 DefMacro('\drawexampleline');
 DefMacro('\eoehere');
-DefMacro('\longexample{}');
 DefMacro('\testmargintop');
 DefMacro('\testmarginbottom');
 
 
-# \mnote[offset=0]{contents}
-#DefMacro('\mnote []{}','\begin{figure}[h]'
-#	 .'\lxAddClass{marginnote}'
-#	 .'\ifx.#1.\else\vspace{#1}\fi'
-#	 .'\begin{minipage}[c]{\marginparwidth}'
-#	 .'\captionsetup{type=figure}'
-#	 .'#2'
-#	 .'\end{minipage}'
-#	 .'\end{figure}');
-
-
-sub TheChapter {
-    return CounterValue('chapter')->toString;
-}
-sub TheSection {
-    return TheChapter() . '.' . CounterValue('section')->toString;
-}
-
-my %foundChapter;
 # have to keep it here because .sty has \noexpand, which gets written
 DefMacro('\writeToAnsFile {}', '\immediate\write\answrite{\answersForSection{'
 	 . CounterValue('chapter')->toString . '}{'
 	 . CounterValue('section')->toString . '}{'
 	 . $_[1] . '}}');
-
-#DefMacro('\writeToAnsFile {}', sub {
-#    @{Tokenize('\immediate\write\answrite{\answersForSection{'
-#	     . CounterValue('chapter')->toString . '}{'
-#	     . CounterValue('section')->toString . '}{'
-#	     . $_[1] . '}}')};
-#	 });
-
-if ( 1==0 ) {
-    my @ret;
-    if ( ! $foundChapter{TheChapter()} ) {
-	$foundChapter{TheChapter()} = 'true';
-	@ret = Tokenize('\immediate\write\answrite{}\write\answrite{\section*{Chapter '.TheChapter().'}}');
-    }
-    push(@ret,
-	 Tokenize('\immediate\write\answrite{\subsection*{\hyperref[exer'
-		  .TheSection().']{Exercises '.TheSection().'}}\label{sol'
-		  .TheSection().'}\bigskip}'));
-    if ( CounterValue('section')->toString eq '0' ) {
-	push(@ret,Tokenize('\write\answrite{\lxAddClass{solutions}\loadAllAnswers{'),
-	     $_[1],
-	     Tokenize('}}')); }
-    else {
-	push(@ret,Tokenize('\write\answrite{\lxAddClass{solutions}\loadAnswers{'),
-	     $_[1],
-	     Tokenize('}}')); }
-    @ret;
-	 } #);
 
 DefPrimitive('\showans Number',sub {
     my ($stomach,$port) = @_;

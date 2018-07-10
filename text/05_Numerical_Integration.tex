@@ -66,14 +66,14 @@ as pictured in \autoref{fig:numerical1}.
 
 In \autoref{sec:riemann} we addressed the problem of evaluating definite integrals by approximating the area under the curve using rectangles. We revisit those ideas here before introducing other methods of approximating definite integrals. \index{numerical integration!Left/Right Hand Rule}\index{Right Hand Rule}\index{Left Hand Rule}\index{integration!numerical!Left/Right Hand Rule}
 
-We start with a review of notation. Let $f$ be a continuous function on the interval $[a,b]$. We wish to approximate $\ds \int_a^b f(x)\ dx$. We partition $[a,b]$ into $n$ equally spaced subintervals, each of length $\ds\dx = \frac{b-a}{n}$. The endpoints of these subintervals are labeled as
-\[x_0=a,\ x_1 = a+\dx,\ x_2 = a+ 2\dx,\ \dotsc,\ x_i = a+i\dx,\ \dotsc,\ x_n = b.\]
+We start with a review of notation. Let $f$ be a continuous function on the interval $[a,b]$. We wish to approximate $\ds \int_a^b f(x)\ dx$. We partition $[a,b]$ into $n$ equally spaced subintervals, each of length $\ds\Delta x = \frac{b-a}{n}$. The endpoints of these subintervals are labeled as
+\[x_0=a,\ x_1 = a+\Delta x,\ x_2 = a+ 2\Delta x,\ \dotsc,\ x_i = a+i\Delta x,\ \dotsc,\ x_n = b.\]
 
 %\autoref{idea:riemann}
-\autoref{sec:riemann} showed that to use the Left Hand Rule we use the summation $\ds \sum_{i=1}^n f(x_{i-1})\dx$ and to use the Right Hand Rule we use $\ds \sum_{i=1}^n f(x_i)\dx$. We review the use of these rules in the context of examples.
+\autoref{sec:riemann} showed that to use the Left Hand Rule we use the summation $\ds \sum_{i=1}^n f(x_{i-1})\Delta x$ and to use the Right Hand Rule we use $\ds \sum_{i=1}^n f(x_i)\Delta x$. We review the use of these rules in the context of examples.
 
 \example{ex_num1}{Approximating definite integrals with rectangles}{Approximate $\ds \int_0^1e^{-x^2}\ dx$ using the Left and Right Hand Rules with 5 equally spaced subintervals.}
-{We begin by partitioning the interval $[0,1]$ into 5 equally spaced intervals. We have $\dx = \frac{1-0}5 = 1/5=0.2$, so
+{We begin by partitioning the interval $[0,1]$ into 5 equally spaced intervals. We have $\Delta x = \frac{1-0}5 = 1/5=0.2$, so
 \[x_0=0,\ x_1=0.2,\ x_2=0.4,\ x_3=0.6,\ x_4=0.8,\text{ and }x_5=1.\]
 
 \mtable{Approximating $\ds\int_0^1e^{-x^2}\ dx$ in \autoref{ex_num1} using (top) the left hand rule and (bottom) the right hand rule.}{fig:num1}{\begin{tikzpicture}
@@ -114,18 +114,18 @@ ymin=-.2,ymax=1.2,xmin=-.2,xmax=1.1]
 
 Using the Left Hand Rule, we have:
 \begin{align*}
-	\sum_{i=1}^n f(x_{i-1})\dx
-	&= \big(f(x_0)+f(x_1)+f(x_2) + f(x_3) + f(x_4)\big)\dx \\
-	&= \big(f(0) + f(0.2) + f(0.4) + f(0.6) + f(0.8)\big)\dx \\
+	\sum_{i=1}^n f(x_{i-1})\Delta x
+	&= \big(f(x_0)+f(x_1)+f(x_2) + f(x_3) + f(x_4)\big)\Delta x \\
+	&= \big(f(0) + f(0.2) + f(0.4) + f(0.6) + f(0.8)\big)\Delta x \\
 	&\approx \big(1+0.961 + 0.852 + 0.698 + 0.527)(0.2)\\
 	&\approx 0.808.
 \end{align*}
 
 Using the Right Hand Rule, we have:
 \begin{align*}
-	\sum_{i=1}^n f(x_i)\dx
-	&= \big(f(x_1)+f(x_2) + f(x_3) + f(x_4) + f(x_5)\big)\dx \\
-	&= \big(f(0.2) + f(0.4) + f(0.6) + f(0.8)+f(1)\big)\dx \\
+	\sum_{i=1}^n f(x_i)\Delta x
+	&= \big(f(x_1)+f(x_2) + f(x_3) + f(x_4) + f(x_5)\big)\Delta x \\
+	&= \big(f(0.2) + f(0.4) + f(0.6) + f(0.8)+f(1)\big)\Delta x \\
 	&\approx \big(0.961 +0.852 + 0.698 + 0.527 + 0.368)(0.2)\\
 	&\approx 0.681.
 \end{align*}
@@ -151,7 +151,7 @@ The actual answer, accurate to 4 places after the decimal, is 0.7468, showing ou
 \end{tabular}}
 
 \example{ex_num2}{Approximating definite integrals with rectangles}{Approximate $\ds\int_{-\frac{\pi}4}^{\frac{\pi}2} \sin (x^3)\ dx$ using the Left and Right Hand Rules with 10 equally spaced subintervals.}
-{We begin by finding \dx:
+{We begin by finding $\Delta x$:
 \[\frac{b-a}{n} = \frac{\pi/2 - (-\pi/4)}{10} = \frac{3\pi}{40}\approx 0.236.\]
 It is useful to write out the endpoints of the subintervals in a table; in \autoref{fig:num2a}, we give the exact values of the endpoints, their decimal approximations, and decimal approximations of $\sin(x^3)$ evaluated at these points. 
 
@@ -194,7 +194,7 @@ ymin=-.7,ymax=1.2,xmin=-1,xmax=1.7]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-Once this table is created, it is straightforward to approximate the definite integral using the Left and Right Hand Rules. (Note: the table itself is easy to create, especially with a standard spreadsheet program on a computer. The last two columns are all that are needed.) The Left Hand Rule sums the first 10 values of $\sin(x_i^3)$ and multiplies the sum by $\dx$; the Right Hand Rule sums the last 10 values of $\sin(x_i^3)$ and multiplies by $\dx$. Therefore we have:
+Once this table is created, it is straightforward to approximate the definite integral using the Left and Right Hand Rules. (Note: the table itself is easy to create, especially with a standard spreadsheet program on a computer. The last two columns are all that are needed.) The Left Hand Rule sums the first 10 values of $\sin(x_i^3)$ and multiplies the sum by $\Delta x$; the Right Hand Rule sums the last 10 values of $\sin(x_i^3)$ and multiplies by $\Delta x$. Therefore we have:
 \begin{align*}
 	\text{Left Hand Rule: }\int_{-\frac{\pi}4}^{\frac{\pi}2}\sin(x^3)\ dx
 	& \approx (1.91)(0.236) = 0.451. \\
@@ -267,7 +267,7 @@ The sum of the areas of all 5 trapezoids is:
 \end{align*}
 We approximate $\ds \int_0^1 e^{-x^2}\ dx \approx 0.7445.$}
 
-There are many things to observe in this example. Note how each term in the final summation was multiplied by both 1/2 and by $\dx = 0.2$. We can factor these coefficients out, leaving a more concise summation as:\\
+There are many things to observe in this example. Note how each term in the final summation was multiplied by both 1/2 and by $\Delta x = 0.2$. We can factor these coefficients out, leaving a more concise summation as:\\
 \flushinnerequ{\small
 \[
 \frac12(0.2)\Big[(1+0.961) + (0.961+0.852) + (0.852+0.698) + ( 0.698+ 0.527) +(0.527 + 0.368)\Big].
@@ -275,17 +275,17 @@ There are many things to observe in this example. Note how each term in the fina
 Now notice that all numbers except for the first and the last are added twice. Therefore we can write the summation even more concisely as
 \[\frac{0.2}{2}\Big[1 + 2(0.961+0.852+0.698+0.527) + 0.368\Big].\]
 
-This is the heart of the \textbf{Trapezoidal Rule}, wherein a definite integral $\ds \int_a^b f(x) \ dx$ is approximated by using trapezoids of equal widths to approximate the corresponding area under $f$. Using $n$ equally spaced subintervals with endpoints $x_0$, $x_1$, \dots, $x_n$, we again have $\ds \dx = \frac{b-a}n$. Thus:
+This is the heart of the \textbf{Trapezoidal Rule}, wherein a definite integral $\ds \int_a^b f(x) \ dx$ is approximated by using trapezoids of equal widths to approximate the corresponding area under $f$. Using $n$ equally spaced subintervals with endpoints $x_0$, $x_1$, \dots, $x_n$, we again have $\ds \Delta x = \frac{b-a}n$. Thus:
 \begin{align*}
 	\int_a^b f(x)\ dx
-	& \approx \sum_{i=1}^n \frac{f(x_{i-1})+f(x_i)}2\dx \\
-	& = \frac{\dx}2 \sum_{i=1}^n \big(f(x_{i-1})+f(x_i)\big)\\
-	& = \frac{\dx}2\left[f(x_0)+ 2\sum_{i=1}^{n-1} f(x_i) + f(x_n)\right].
+	& \approx \sum_{i=1}^n \frac{f(x_{i-1})+f(x_i)}2\Delta x \\
+	& = \frac{\Delta x}2 \sum_{i=1}^n \big(f(x_{i-1})+f(x_i)\big)\\
+	& = \frac{\Delta x}2\left[f(x_0)+ 2\sum_{i=1}^{n-1} f(x_i) + f(x_n)\right].
 \end{align*}
 
 \example{ex_num4}{Using the Trapezoidal Rule}{Revisit \autoref{ex_num2} 
 and approximate $\ds\int_{-\frac{\pi}{4}}^{\frac{\pi}{2}} \sin (x^3)\ dx$ using the Trapezoidal Rule and 10 equally spaced subintervals.}
-{We refer back to \autoref{fig:num2a} for the table of values of $\sin(x^3)$. Recall that $\dx = 3\pi/40 \approx 0.236$. Thus we have:\small
+{We refer back to \autoref{fig:num2a} for the table of values of $\sin(x^3)$. Recall that $\Delta x = 3\pi/40 \approx 0.236$. Thus we have:\small
 \begin{align*}
 	\int_{-\frac{\pi}4}^{\frac{\pi}2} & \sin (x^3)\ dx \\
 	&\approx \frac{0.236}{2}\Big[-0.466 + 2\Big(-0.165+(-0.031)+\dotsb+%0.971+
@@ -306,9 +306,9 @@ So we have a progression: we start by approximating $f$ with a constant function
 
 \subsection{Simpson's Rule}
 
-Given one point, we can create a constant function that goes through that point. Given two points, we can create a linear function that goes through those points. Given three points, we can create a quadratic function that goes through those three points (given that no two have the same $x$--value).\index{Simpson's Rule}\index{numerical integration!Simpson's Rule}\index{integration!numerical!Simpson's Rule}
+Given one point, we can create a constant function that goes through that point. Given two points, we can create a linear function that goes through those points. Given three points, we can create a quadratic function that goes through those three points (given that no two have the same $x$-value).\index{Simpson's Rule}\index{numerical integration!Simpson's Rule}\index{integration!numerical!Simpson's Rule}
 
-Consider three points $(x_1,y_1)$, $(x_2,y_2)$ and $(x_3,y_3)$ whose $x$--values are equ\-ally spaced and $x_1<x_2<x_3$. Let $f$ be the quadratic function that goes through these three points. An exercise will ask you to show that 
+Consider three points $(x_1,y_1)$, $(x_2,y_2)$ and $(x_3,y_3)$ whose $x$-values are equ\-ally spaced and $x_1<x_2<x_3$. Let $f$ be the quadratic function that goes through these three points. An exercise will ask you to show that 
 \begin{equation}
 \int_{x_1}^{x_3} f(x)\ dx = \frac{x_3-x_1}{6}\big(y_1+4y_2+y_3\big).\label{eq:simpsons}
 \end{equation}
@@ -334,14 +334,13 @@ Since $g$ is a good approximation for $f$ on $[1,3]$, we can state that
 
 Notice how the interval $[1,3]$ was split into two subintervals as we needed 3 points. Because of this, whenever we use Simpson's Rule, we need to break the interval into an even number of subintervals. 
 
-In general, to approximate $\ds \int_a^b f(x)\ dx$ using Simpson's Rule, subdivide $[a,b]$ into $n$ subintervals, where $n$ is even and each subinterval has width $\dx = (b-a)/n$. We approximate $f$ with $n/2$ parabolic curves, using \autoeqref{eq:simpsons} to compute the area under these parabolas. Adding up these areas gives the formula:
-\flushinnerequ{%
-\[
-\int_a^b f(x) \ dx
-\approx \frac{\dx}3
+In general, to approximate $\ds \int_a^b f(x)\ dx$ using Simpson's Rule, subdivide $[a,b]$ into $n$ subintervals, where $n$ is even and each subinterval has width $\Delta x = (b-a)/n$. We approximate $f$ with $n/2$ parabolic curves, using \autoeqref{eq:simpsons} to compute the area under these parabolas. Adding up these areas gives the formula:
+\begin{multline*}
+\int_a^b f(x) \ dx\approx\\
+\frac{\Delta x}3
 \left[f(x_0)+4f(x_1)+2f(x_2)+4f(x_3)+\dotsb+2f(x_{n-2})+4f(x_{n-1})+f(x_n)\right].
-\]}\\
-Note how the coefficients of the terms in the summation have the pattern 1, 4, 2, 4, 2, 4, \dots, 2, 4, 1.
+\end{multline*}
+Note how the coefficients of the terms in the summation have the pattern 1, 4, 2, 4, 2, 4, \ldots, 2, 4, 1.
 
 Let's demonstrate Simpson's Rule with a concrete example.
 
@@ -438,7 +437,7 @@ ymin=-.7,ymax=1.2,xmin=-1,xmax=1.7]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}
 \\ (b)}%
-\autoref{fig:num6a}(a) shows the table of values that we used in the past for this problem, shown here again for convenience. Again, $\dx = (\pi/2+\pi/4)/10 \approx 0.236$.
+\autoref{fig:num6a}(a) shows the table of values that we used in the past for this problem, shown here again for convenience. Again, $\Delta x = (\pi/2+\pi/4)/10 \approx 0.236$.
 
 Simpson's Rule states that
 {\small\begin{align*}
@@ -450,11 +449,12 @@ Simpson's Rule states that
 
 Recall that the actual value, accurate to 3 decimal places, is 0.460. Our approximation is within one 1/100$^\text{th}$ of the correct value. The graph in \autoref{fig:num6a}(b) shows how closely the parabolas match the shape of the graph.}
 
-%\begin{lxfigure}
+%\noindent\begin{minipage}[t]{\linewidth}\noindent%
+%\captionsetup{type=figure}%
 %
 %\caption{Approximating $\int_{-\frac{\pi}4}^{\frac{\pi}2}\sin(x^3)\ dx$ in \autoref{ex_num6} with Simpson's Rule and 10 equally spaced intervals.}
 %\label{fig:num6b}
-%\end{lxfigure}
+%\end{minipage}
 
 \subsection{Summary and Error Analysis}
 
@@ -462,8 +462,8 @@ We summarize the key concepts of this section thus far in the following Key Idea
 
 \setboxwidth{140pt}%
 \keyidea{idea:numerical}{Numerical Integration}
-{Let $f$ be a continuous function on $[a,b]$, let $n$ be a positive integer, and let $\ds\dx = \frac{b-a}{n}$.
-Set $x_0=a$, $x_1=a+\dx$, \dots, $x_i = a+i\dx$, $x_n=b$.
+{Let $f$ be a continuous function on $[a,b]$, let $n$ be a positive integer, and let $\ds\Delta x = \frac{b-a}{n}$.
+Set $x_0=a$, $x_1=a+\Delta x$, \dots, $x_i = a+i\Delta x$, $x_n=b$.
 Consider $\ds\int_a^b f(x)\ dx$.\\
 \index{integration!numerical!Left Hand Rule}
 \index{integration!numerical!Right Hand Rule}
@@ -479,15 +479,15 @@ Consider $\ds\int_a^b f(x)\ dx$.\\
 \index{numerical integration!Simpson's Rule}
 \begin{tabular}{ll}
 Left Hand Rule: &
-$\ds\int_a^b f(x)\ dx \approx \dx\Big[f(x_0) + f(x_1) + \dotsb + f(x_{n-1})\big]$.\\
+$\ds\int_a^b f(x)\ dx \approx \Delta x\Big[f(x_0) + f(x_1) + \dotsb + f(x_{n-1})\big]$.\\
 Right Hand Rule: &
-$\ds\int_a^b f(x)\ dx \approx \dx\Big[f(x_1) + f(x_2) + \dotsb + f(x_n)\big]$.\\
+$\ds\int_a^b f(x)\ dx \approx \Delta x\Big[f(x_1) + f(x_2) + \dotsb + f(x_n)\big]$.\\
 Midpoint Rule: &
-$\ds\int_a^b f(x)\ dx \approx \dx\Big[f\big(\frac{x_0+x_1}2\big) + f\big(\frac{x_1+x_2}2\big) + \dotsb + f\big(\frac{x_{n-1}+x_n}2\big)\big]$.\\
+$\ds\int_a^b f(x)\ dx \approx \Delta x\Big[f\big(\frac{x_0+x_1}2\big) + f\big(\frac{x_1+x_2}2\big) + \dotsb + f\big(\frac{x_{n-1}+x_n}2\big)\big]$.\\
 Trapezoidal Rule: &
-$\ds\int_a^b f(x)\ dx \approx \frac{\dx}2\Big[f(x_0) + 2f(x_1) + 2f(x_2) +\dotsb + 2f(x_{n-1})+ f(x_n)\big]$.\\
+$\ds\int_a^b f(x)\ dx \approx \frac{\Delta x}2\Big[f(x_0) + 2f(x_1) + 2f(x_2) +\dotsb + 2f(x_{n-1})+ f(x_n)\big]$.\\
 Simpson's Rule: &
-$\ds\int_a^b f(x)\ dx \approx \frac{\dx}3\Big[f(x_0) + 4f(x_1) + 2f(x_2) +\dotsb + 4f(x_{n-1})+ f(x_n)\big]$ {\small ($n$ even)}.
+$\ds\int_a^b f(x)\ dx \approx \frac{\Delta x}3\Big[f(x_0) + 4f(x_1) + 2f(x_2) +\dotsb + 4f(x_{n-1})+ f(x_n)\big]$ {\small ($n$ even)}.
 \end{tabular}}
 
 In our examples, we approximated the value of a definite integral using a given method then compared it to the ``right'' answer. This should have raised several questions in the reader's mind, such as:
@@ -537,7 +537,7 @@ There are some key things to note about this theorem.
 	\item	The larger the interval, the larger the error. This should make sense intuitively.
 	\item	The error shrinks as more subintervals are used (i.e., as $n$ gets larger).
 	\item	When $n$ doubles, the Left and Right Hand Rules double in accuracy, the Midpoint and Trapezoidal Rules quadruple in accuracy, and Simpson's Rule is 16 times more accurate.
-	\item	The error in Simpson's Rule has a term relating to the 4$^{\text{th}}$ derivative of $f$. Consider a cubic polynomial: its $4^{\text{th}}$ derivative is 0. Therefore, the error in approximating the definite integral of a cubic polynomial with Simpson's Rule is 0 -- Simpson's Rule computes the exact answer!
+	\item	The error in Simpson's Rule has a term relating to the 4$^{\text{th}}$ derivative of $f$. Consider a cubic polynomial: its $4^{\text{th}}$ derivative is 0. Therefore, the error in approximating the definite integral of a cubic polynomial with Simpson's Rule is 0 --- Simpson's Rule computes the exact answer!
 \end{enumerate}
 
 We revisit Examples \ref{ex_num3} and \ref{ex_num5} and compute the error bounds using \autoref{thm:numerical_error} in the following example.
@@ -615,10 +615,10 @@ Time & Speed\\(min)&(mph)
 Approximate the distance they traveled.}
 {Recall that by integrating a speed function we get distance traveled. We have information about $v(t)$; we will use Simpson's Rule to approximate $\ds \int_a^b v(t)\ dt.$ 
 
-The most difficult aspect of this problem is converting the given data into the form we need it to be in. The speed is measured in miles per hour, whereas the time is measured in 30 second increments. 
+The most difficult aspect of this problem is converting the given data into the form we need it to be in. The speed is measured in miles per hour, whereas the time is measured in 30 second increments.
 
-We need to compute $\dx = (b-a)/n$. Clearly, $n=24$. What are $a$ and $b$? Since we start at time $t=0$, we have that $a=0$. The final recorded time came after 24 periods of 30 seconds, which is 12 minutes or 1/5 of an hour. Thus we have
-\[\dx = \frac{b-a}{n} = \frac{1/5-0}{24} = \frac1{120}; \quad \frac{\dx}{3} = \frac{1}{360}.\]
+We need to compute $\Delta x = (b-a)/n$. Clearly, $n=24$. What are $a$ and $b$? Since we start at time $t=0$, we have that $a=0$. The final recorded time came after 24 periods of 30 seconds, which is 12 minutes or 1/5 of an hour. Thus we have
+\[\Delta x = \frac{b-a}{n} = \frac{1/5-0}{24} = \frac1{120}; \quad \frac{\Delta x}{3} = \frac{1}{360}.\]
 
 Thus the distance traveled is approximately:
 \begin{align*}

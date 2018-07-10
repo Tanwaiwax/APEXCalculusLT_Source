@@ -13,8 +13,6 @@ Compiling with a single set of options will take three to five minutes.
 Running `./make.py -a` will create seven different pdfs after about twenty minutes.  Running `./make.py -n` will use latexml to make a complete website version of the book after about three hours.
 (Unfortunately, latexmk appears to be a little too agressive in ignoring compilation errors.  I recommend compiling using your regular method first, and once you know it compiles, then use latexmk.)
 
-The directory `figures/matrices` exists because of the bug mentioned at https://github.com/brucemiller/LaTeXML/issues/794.  In the meantime, regular LaTeX versions include the tikz code, while LaTeXML versions include the pdf graphics of the output.
-
 This work is covered with a Creative Commons 4.0 By-NC copyright.
 
 #### Supporting programs

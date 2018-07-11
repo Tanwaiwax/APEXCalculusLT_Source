@@ -442,7 +442,7 @@
 
 
 \newcommand{\makeexercisesection}[2][\jobname]{%
-%\iflatexml\showans\answrite\fi
+\showans\answrite
 % showans will write the contents of Calculus.answers to the log
 % in latexml, this needs to happen before closing
 \immediate\closeout\answrite%
@@ -480,7 +480,7 @@
 
 %\newcommand{\inputexercises}[1]{}%
 \newcommand{\printexercises}[1]{%
- \writeToAnsFile{#1}% writeToAnsFile in sty
+% \writeToAnsFile{#1}% writeToAnsFile in sty
  \exercisegeometry%
  \exerciseheader%
  \exercisesubsection{\thesection}%
@@ -510,12 +510,18 @@
 %}
 \newcommand*{\answersForSection}[3]{%
  \ifthenelse{\equal{#1}{\lastanswerchapter}}{}{%
-  \renewcommand{\lastanswerchapter}{#1}
+  \renewcommand{\lastanswerchapter}{#1}% apparently global. who knew?
   \section*{Chapter #1}
-  \ifthenelse{\boolean{latexml}}{}{\belowpdfbookmark{Chapter #1}{solsol#1}}
-  \setcounter{answerchapter}{#1}
-  \setcounter{answersection}{0}
+  \ifthenelse{\boolean{latexml}}{%
+  }{%
+   \belowpdfbookmark{Chapter #1}{solsol#1}%
+  }
+  % commandeer chapter and section numbering
+  \setcounter{chapter}{#1}
+%  \setcounter{answerchapter}{#1}
+%  \setcounter{answersection}{0}
  }%
+ \setcounter{section}{#2}
  \subsection*{\hyperref[exer#1.#2]{Exercises #1.#2}}\label{sol#1.#2}
  \ifthenelse{\equal{#2}{0}}{%
   \loadAllAnswers{#3}

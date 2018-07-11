@@ -286,14 +286,9 @@ def getcommandline(args):
         shutil.copyfile('web/style.css','style.css')
         return ['../LaTeXML/bin/latexmlpost',
                     '--split',#'--quiet',
-                    '--stylesheet=web/apex.xsl',
+                    #'--stylesheet=web/apex.xsl',
                     '--destination=web/index.html',
-                    '--css=style.css',
-                    '--css=LaTeXML-marginpar.css',
-                    '--css=LaTeXML-navbar-left.css', #'--xsltparam=USE_TWOCOLUMN_INDEX:true',
-                    '--javascript=https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js',
-                    '--javascript=LaTeXML-maybeMathJax.js',
-                    '--javascript=script.js',
+                    #'--xsltparam=USE_TWOCOLUMN_INDEX:true',
                     'Calculus.xml']
     if args.internet:
         raise 'args.internet does not need a command line'

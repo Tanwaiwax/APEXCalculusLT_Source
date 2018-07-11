@@ -68,9 +68,12 @@
 %   }%
 %}}
 
+% only in .ltxml
 \newcommand{\iframe}[3]{}
-
-\newcommand{\makeStyles}[2]{} % only in .ltxml
+\newcommand{\makeStyles}[2]{}
+\newcommand{\lxIncludeJavascriptFile}[1]{}
+\newcommand{\lxIncludeCssFile}[1]{}
+\newcommand{\showans}[1]{}
 
 \newcommand{\coloredbox}[3]{%
 \noindent%
@@ -313,7 +316,8 @@
   }%
  }{% else in solutions
   \immediate\write\@auxout{%
-   \@percentchar\space prc file #3 used in Section A.\theanswerchapter\space as \theanswersection\@hashchar\arabic{enumi}%
+   \@percentchar\space prc file #3 used in Section A.\thechapter\space as \thesection\@hashchar\arabic{enumi}%
+%   \@percentchar\space prc file #3 used in Section A.\theanswerchapter\space as \theanswersection\@hashchar\arabic{enumi}%
   }%
  }%
  \ifthenelse{\boolean{in_threeD}}{%

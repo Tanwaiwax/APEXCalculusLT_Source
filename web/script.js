@@ -1,16 +1,18 @@
 $(setup);
 
+const minSepPixels = 20;
+
 var lastMarginBoxBottom;
 var entriesIn = {};
 
 if ( typeof window.MathJax === 'undefined' ) {
     window.MathJax = {
 	AuthorInit: function() {
-	    MathJax.Hub.Register.StartupHook("End",spaceOutMarginBoxes);
+	    MathJax.Hub.Register.StartupHook('End',spaceOutMarginBoxes);
 	}
     };
 } else {
-    MathJax.Hub.Register.StartupHook("End",spaceOutMarginBoxes);
+    MathJax.Hub.Register.StartupHook('End',spaceOutMarginBoxes);
 }
 // onload, spaceOut is ok.  It needs to run after MathJax is done,
 // but that is noticeably longer, and tricky to hook into
@@ -18,15 +20,15 @@ if ( typeof window.MathJax === 'undefined' ) {
 function setup() {
     spaceOutMarginBoxes();
     addPermaLinkFor('.ltx_theorem[id]:has(>h6.ltx_title.ltx_title_theorem)',
-		    "h6.ltx_title.ltx_title_theorem");
-    addPermaLinkFor('figure.marginnote',"figcaption");
-    if ( $("section.ltx_index ul.ltx_indexlist").length ) {
+		    'h6.ltx_title.ltx_title_theorem');
+    addPermaLinkFor('figure.marginnote','figcaption');
+    if ( $('section.ltx_index ul.ltx_indexlist').length ) {
 	// add an A-Z to the index
-	$("section.ltx_index ul.ltx_indexlist li.ltx_indexentry")
+	$('section.ltx_index ul.ltx_indexlist li.ltx_indexentry')
 	    .not('li.ltx_indexentry ul.ltx_indexlist li.ltx_indexentry')
 	    .each(readIndexEntry);
 	$('<div id="indexContents"></div>')
-	    .insertAfter("h1.ltx_title.ltx_title_index");
+	    .insertAfter('h1.ltx_title.ltx_title_index');
 	$.each(entriesIn,wrapEntries);
     }
     fixFirefoxAnchorBug();
@@ -40,20 +42,20 @@ function addPermaLinkFor(parents,child) {
 }
 
 function addPermaLink() {
-    $(this).children("h6.ltx_title.ltx_title_theorem,figcaption").first()
+    $(this).children('h6.ltx_title.ltx_title_theorem,figcaption').first()
 	.append('<a class="permaLink" title="Permalink" href="#'+this.id+'">\u00B6</a>');
 }
 
 function spaceOutMarginBoxes() {
     lastMarginBoxBottom = 0;
-    $("figure.marginnote").each(spaceOutBox);
+    $('span.ltx_note.ltx_role_margin span.ltx_note_content').each(spaceOutBox);
 }
 
 function spaceOutBox() {
     var thisJq = $(this);
     var offset = thisJq.offset();
-    if ( offset.top < lastMarginBoxBottom+20 ) {
-	offset.top = lastMarginBoxBottom+20;
+    if ( offset.top < lastMarginBoxBottom+minSepPixels ) {
+	offset.top = lastMarginBoxBottom+minSepPixels;
 	thisJq.offset(offset);
     }
     lastMarginBoxBottom = offset.top + thisJq.height();

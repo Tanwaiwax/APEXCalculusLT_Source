@@ -1,10 +1,14 @@
 #!/usr/bin/python
 
 '''
-    This could be Python 3 by changing the few print statements.
-    But see the calls to pdfsizeopt, which must have Python 2,
-    because it uses old style print statements.
-    The only thing I've found would be to use bash to invoke pdfsizeopt
+    pdfsizeopt must use Python 2 because it uses old style print statements.
+    This file should be version agnostic.  We generally have
+    print(string,'')
+    In Python 3, this prints the string and then an empty string.
+    In Python 2, this prints the tuple that consists of the string and then
+    the empty string.  I think this means that the only difference is that
+    the output has an extra space at the end.
+    A different approach would be to use bash to invoke pdfsizeopt
     via Python 2 (I think)
 '''
 
@@ -26,7 +30,7 @@ loginfo = []
 @atexit.register
 def printlogino():
     if loginfo:
-        print '\n'.join(loginfo)
+        print('\n'.join(loginfo),'')
 
 start = time.time()
 
@@ -85,7 +89,7 @@ def makematrices():
                     continue
             except:
                 pass
-            with open('logs/compilationmatrix.log','w') as mystdout:
+            with open('../../logs/compilationmatrix.log','w+') as mystdout:
                 subprocess.check_call(['xelatex','-synctex=0','-jobname='+root,'matrix'],
                                       stdout=mystdout,stderr=subprocess.STDOUT)
     finally:
@@ -124,7 +128,7 @@ Figure = namedtuple('Figure',['num','file'])
 
 def updateprc():
     prcdict = prcfromfile('Calculus.aux')
-    with open('prc/prc.html','w') as prchtml:
+    with open('prc/prc.html','w+') as prchtml:
         prchtml.write('<!doctype html>\n'
                       '<html>\n'
                       '<head>\n'
@@ -214,10 +218,10 @@ def updatetodo():
         todo = re.sub(r'^\./(\S+):(\d+):\s*%?\s*',r'* [\1 line \2](../\1#L\2): ',todo)
         todosin[key].append(todo)
     for filename,todolist in todosin.items():
-        with open('todo/todo_'+filename+'.md','w') as todofile:
+        with open('todo/todo_'+filename+'.md','w+') as todofile:
             todofile.write(('\n'.join(todolist)+'\n').encode('utf-8'))
     # and a few manual TeX commands instead of 'todo'
-    with open('todo/todo_tex.txt','w') as mystdout:
+    with open('todo/todo_tex.txt','w+') as mystdout:
         for keywd in ('drawexampleline','enlargethispage','blue','pagebreak',
                       'newpage','clearpage','cleardoublepage','columnbreak',
                       'mfigure','myincludegraphics','addplot3','cdots'):
@@ -235,7 +239,7 @@ def updatetodo():
         mystdout.write('\n')
 
 def writeoptions(args):
-    with open('options.tex','w') as options:
+    with open('options.tex','w+') as options:
         title = 'Calculus'
         if args.calculus in (1,2,3):
             iii = 'I'*args.calculus
@@ -282,8 +286,8 @@ def getcommandline(args):
             # prevent sleeping, if plugged in, until command finished
     if args.web:
         #fixRefs()
-        shutil.copyfile('web/script.js','script.js')
-        shutil.copyfile('web/style.css','style.css')
+        #shutil.copyfile('web/script.js','script.js')
+        #shutil.copyfile('web/style.css','style.css')
         return ['../LaTeXML/bin/latexmlpost',
                     '--split',#'--quiet',
                     #'--stylesheet=web/apex.xsl',
@@ -306,6 +310,7 @@ def minimizePdf(filename):
         use subprocess.check_call.  And even so, some calls get through.
     '''
     if (3, 0) <= sys.version_info[:2]:
+        print('python 3 precludes pdfsizeopt','')
         shutil.copy('ApexPDFs/bigpdfs/'+filename,'ApexPDFs/smallpdfs/')
         return
     sys.path[:0] = ['../pdfsizeopt/lib']
@@ -316,10 +321,10 @@ def minimizePdf(filename):
     except:
         pass
     def ossystem(args):
-        with open('logs/ossystemerr.log','a') as mystdout:
+        with open('logs/ossystemerr.log','a+') as mystdout:
             subprocess.check_call(args,stdout=mystdout,stderr=subprocess.STDOUT,shell=True)
     os.system = ossystem
-    with open('logs/minimizePdf.log','w') as sys.stderr:
+    with open('logs/minimizePdf.log','w+') as sys.stderr:
         main.main(['../pdfsizeopt/pdfsizeopt','--use-pngout=no',
                    '--use-jbig2=no','--use-multivalent=no',
                    'ApexPDFs/bigpdfs/'+filename,'ApexPDFs/smallpdfs/'+filename])
@@ -328,7 +333,7 @@ def minimizePdf(filename):
     for tmpfile in glob.iglob('ApexPDFs/smallpdfs/psotmp.*.parse.png'):
         os.remove(tmpfile)
     message = 'Minimizing pdf finished at '+"{0[0]:02d}:{0[1]:02d}".format(getTime())
-    print message
+    print(message,'')
     loginfo.append(message)
 
 def compilewith(commands=False):
@@ -363,22 +368,25 @@ def compilewith(commands=False):
 
 def runcommands(args,commands):
     newsuffix = getsuffix(args)
-    with open('logs/compilation'+newsuffix+'.log','w') as mystdout:
+    with open('logs/compilation'+newsuffix+'.log','w+') as mystdout:
         try:
             commandline = getcommandline(args)
             subprocess.check_call(commandline,stdout=mystdout,stderr=subprocess.STDOUT)
         except:
             time = "{0[0]:02d}:{0[1]:02d}".format(getTime())
-            loginfo.append('At '+time+' failing command: '+commands)
+            if commands:
+                loginfo.append('At '+time+' failing command: '+commands)
+            else:
+                loginfo.append('At '+time+' failing command line')
             raise
     time = "{0[0]:02d}:{0[1]:02d}".format(getTime())
     if commands:
         message = 'Command line: '+commands+' finished at '+time
-        print message
+        print(message,'')
         loginfo.append(message)
     else:
         message = 'Command line finished at '+time
-        print message
+        print(message,'')
         loginfo.append(message)
     if args.instructor:
         shutil.copy('Answers.pdf','ApexPDFs/bigpdfs/')

@@ -6,8 +6,7 @@
     print(string,'')
     In Python 3, this prints the string and then an empty string.
     In Python 2, this prints the tuple that consists of the string and then
-    the empty string.  I think this means that the only difference is that
-    the output has an extra space at the end.
+    the empty string.
     A different approach would be to use bash to invoke pdfsizeopt
     via Python 2 (I think)
 '''
@@ -55,6 +54,12 @@ addboolarg('instructor','Create instructor solution manual.')
 addboolarg('internet','Create interNet version (options x & w).',shortkey='n')
 addboolarg('xml','Create xml version. (2 or 5 hours)'); # 120, 90, 107
 addboolarg('web','Convert xml version to html. (5 min)');
+parser.add_argument('--standalonen',action='store_true',
+                    help='Create interNet version for standalone.tex')
+parser.add_argument('--standalonex',action='store_true',
+                    help='Create xml version for standalone.tex')
+parser.add_argument('--standalonew',action='store_true',
+                    help='Convert xml version to html for standalone.tex')
 addboolarg('todo','Update todo lists.');
 addboolarg('quit','Write options.tex and quit.')
 
@@ -259,8 +264,12 @@ def writeoptions(args):
 def getsuffix(args):
     if args.xml:
         return '_xml'
+    elif args.standalonex:
+        return '_sxml'
     elif args.web:
         return '_web'
+    elif args.standalonew:
+        return '_sweb'
     elif args.instructor:
         return '_answers'
     newsuffix = ''
@@ -273,28 +282,43 @@ def getsuffix(args):
         newsuffix += '-color'
     return newsuffix
 
+def getlatexmlcommandline(base='Calculus'):
+    ret = [os.path.join('..','LaTeXML','bin','latexml'),
+           '--quiet',#'--verbose','--verbose',#
+           '--destination='+base+'.xml',
+           '--nocomments',
+           base]
+    if platform.mac_ver()[0]:
+        return ['caffeinate','-s'] + ret
+        # prevent sleeping, if plugged in, until command finished
+    if platform.win32_ver()[0]:
+        ret[0] += '.bat'
+    return ret
+
+def getlatexmlpostcommandline(base='Calculus',destdir='web'):
+    #fixRefs()
+    #shutil.copyfile('web/script.js','script.js')
+    #shutil.copyfile('web/style.css','style.css')
+    ret = [os.path.join('..','LaTeXML','bin','latexmlpost'),
+           '--split',#'--quiet',
+           #'--stylesheet=web/apex.xsl',
+           '--destination='+destdir+'/index.html',
+           #'--xsltparam=USE_TWOCOLUMN_INDEX:true',
+           base+'.xml']
+    if platform.win32_ver()[0]:
+        ret[0] += '.bat'
+    return ret
+    
 def getcommandline(args):
     if args.xml:
-        ret = ['../LaTeXML/bin/latexml','--quiet',#'--verbose','--verbose',#
-                       '--destination=Calculus.xml',
-                       '--nocomments',
-                       'Calculus']
-        if platform.mac_ver()[0] is '':
-            return ret
-        else:
-            return ['caffeinate','-s'] + ret
-            # prevent sleeping, if plugged in, until command finished
+        return getlatexmlcommandline()
+    if args.standalonex:
+        return getlatexmlcommandline('standalone')
     if args.web:
-        #fixRefs()
-        #shutil.copyfile('web/script.js','script.js')
-        #shutil.copyfile('web/style.css','style.css')
-        return ['../LaTeXML/bin/latexmlpost',
-                    '--split',#'--quiet',
-                    #'--stylesheet=web/apex.xsl',
-                    '--destination=web/index.html',
-                    #'--xsltparam=USE_TWOCOLUMN_INDEX:true',
-                    'Calculus.xml']
-    if args.internet:
+        return getlatexmlpostcommandline()
+    if args.standalonew:
+        return getlatexmlpostcommandline('standalone','standaloneweb')
+    if args.internet or args.standalonen:
         raise 'args.internet does not need a command line'
     if args.instructor:
         return ['latexmk','-xelatex','Answers']
@@ -364,6 +388,10 @@ def compilewith(commands=False):
         compilewith('-x')
         compilewith('-w')
         return
+    elif args.standalonen:
+        compilewith('--standalonex')
+        compilewith('--standalonew')
+        return
     runcommands(args,commands)
 
 def runcommands(args,commands):
@@ -391,7 +419,7 @@ def runcommands(args,commands):
     if args.instructor:
         shutil.copy('Answers.pdf','ApexPDFs/bigpdfs/')
         minimizePdf('Answers.pdf')
-    elif not args.xml and not args.web:
+    elif not args.xml and not args.web and not args.standalonex and not args.standalonew:
         shutil.copy('Calculus.pdf','ApexPDFs/bigpdfs/calculus'+newsuffix+'.pdf')
         minimizePdf('calculus'+newsuffix+'.pdf')
 

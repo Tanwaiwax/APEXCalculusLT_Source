@@ -1,4 +1,4 @@
-* [CalculusIII.tex line 66](../CalculusIII.tex#L66): % todo Chapter 15 needs an introduction
+* [CalculusIII.tex line 67](../CalculusIII.tex#L67): % todo Chapter 15 needs an introduction
 * [exercises/10_01_exset_04.tex line 51](../exercises/10_01_exset_04.tex#L51): \exercise{$z=x^2+y^2-2x-4y+4$}{} % todo the solution to 11.1#39&40
 * [exercises/10_01_exset_04.tex line 53](../exercises/10_01_exset_04.tex#L53): \exercise{$\ds\frac{(x-2)^2}4+(y+1)^2+\frac{(z-3)^2}9=1$}{} % todo the solution
 * [exercises/10_02_exercises.tex line 65](../exercises/10_02_exercises.tex#L65): \exercise{Let $P=(1,2,3)$, $Q=(2,-1,4)$, and $R=(-1,6,1)$ be the three corners of a parallelogram in space.  Find the possible locations of the fourth corner.}{} % todo the solution to 11.2#36-39

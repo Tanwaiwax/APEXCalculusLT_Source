@@ -1,5 +1,5 @@
-* [CalculusII.tex line 5](../CalculusII.tex#L5): todo write a Inverse Functions prerequisite section reviewing logs
-* [CalculusII.tex line 7](../CalculusII.tex#L7): todo write a better chapter intro for Inverse Functions
+* [CalculusII.tex line 6](../CalculusII.tex#L6): todo write a Inverse Functions prerequisite section reviewing logs
+* [CalculusII.tex line 8](../CalculusII.tex#L8): todo write a better chapter intro for Inverse Functions
 * [exercises/05_05_exset_01.tex line 9](../exercises/05_05_exset_01.tex#L9): todo change coordinates to use a function of some sort for the lakes?
 * [exercises/06_03_exercises.tex line 23](../exercises/06_03_exercises.tex#L23): todo write some exercises with csc^p cot^q
 * [exercises/06_04_exercises.tex line 25](../exercises/06_04_exercises.tex#L25): todo write an exercise with a repeated quadratic and one with two distinct quadratics

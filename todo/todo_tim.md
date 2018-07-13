@@ -1,7 +1,7 @@
-* [CalculusII-BSC.tex line 38](../CalculusII-BSC.tex#L38): todo write a Inverse Functions prerequisite section reviewing logs
-* [CalculusII-BSC.tex line 40](../CalculusII-BSC.tex#L40): todo write a better chapter intro for Inverse Functions
-* [CalculusII-UND.tex line 5](../CalculusII-UND.tex#L5): todo write a Inverse Functions prerequisite section reviewing logs
-* [CalculusII-UND.tex line 7](../CalculusII-UND.tex#L7): todo write a better chapter intro for Inverse Functions
+* [CalculusII-BSC.tex line 39](../CalculusII-BSC.tex#L39): todo write a Inverse Functions prerequisite section reviewing logs
+* [CalculusII-BSC.tex line 41](../CalculusII-BSC.tex#L41): todo write a better chapter intro for Inverse Functions
+* [CalculusII-UND.tex line 6](../CalculusII-UND.tex#L6): todo write a Inverse Functions prerequisite section reviewing logs
+* [CalculusII-UND.tex line 8](../CalculusII-UND.tex#L8): todo write a better chapter intro for Inverse Functions
 * [errata/Errata.tex line 81](../errata/Errata.tex#L81): \item \S8.2 p402: Most of the definite integrals \emph{do not} ``appear in the previous set''. % todo do we want them to?
 * [exercises/02_06_exset_04.tex line 1](../exercises/02_06_exset_04.tex#L1): todo Tim check line break of directions
 * [exercises/06_03_exset_02.tex line 2](../exercises/06_03_exset_02.tex#L2): todo Tim Note: the corresponding indefinite integrals appear in the previous set.
@@ -15,7 +15,7 @@
 * [figures/figtrip5d_3D.asy line 37](../figures/figtrip5d_3D.asy#L37): // todo find a better way to shade this in
 * [figures/figtrip5e_3D.asy line 26](../figures/figtrip5e_3D.asy#L26): // todo find a better way to shade this in
 * [headers/APEX_format.tex line 14](../headers/APEX_format.tex#L14): \RequirePackage{amssymb} % todo ? https://tex.stackexchange.com/a/3000/107497 recommends dropping amssymb in favor of unicode-math
-* [headers/apex_style.sty.ltxml line 131](../headers/apex_style.sty.ltxml#L131): DefMacro('\psBill'); # todo
+* [headers/apex_style.sty.ltxml line 134](../headers/apex_style.sty.ltxml#L134): DefMacro('\psBill'); # todo
 * [text/02_Derivative.tex line 518](../text/02_Derivative.tex#L518): todo Tim : iframe ?
 * [text/02_Derivative_Inverse_Functions.tex line 179](../text/02_Derivative_Inverse_Functions.tex#L179): todo Tim show this
 * [text/02_Implicit_Differentiation.tex line 324](../text/02_Implicit_Differentiation.tex#L324): todo Tim vet the wording before and after the implicit gallery

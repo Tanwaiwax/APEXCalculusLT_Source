@@ -62,7 +62,6 @@ function spaceOutBox() {
 }
 
 function readIndexEntry(ignoreIndex,indexEntry) {
-    //return;
     // this catches nabla || the Jacobian entry
     var firstLetter = this.id==='a' || this.id==='xyzuvw' ?
 	'(symbols)' : this.id.charAt(0).toLocaleUpperCase() || '(symbols)';

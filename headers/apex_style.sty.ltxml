@@ -33,23 +33,15 @@ DefMacro('\genVideo [] Verbatim Verbatim {}',
 	 '\\href{#3#1}{#4 from \\nolinkurl{#3}}\\\\'.
 	 '\\embedVideo{https://www.youtube.com/embed/#2?rel=0}\\\\');
 
-# if this works, it will be much better
-DefConstructor('\embedVideo Verbatim',
+DefMacro('\embedVideo Verbatim','\iframe{#1}{560}{355}');
+DefConstructor('\iframe Verbatim {}{}',
 	       '<ltx:rawhtml>'.
-	       '<xhtml:iframe class="embeddedVideo" width="560" height="355" '.
+	       '<xhtml:iframe width="560" height="355" '.
 	       'src="#1" frameborder="0" scrolling="no" seamless="seamless" '.
 	       'allowfullscreen="allowfullscreen" '.
 	       'webkitallowfullscreen="webkitallowfullscreen" '.
 	       'mozallowfullscreen="mozallowfullscreen">'.
 	       '</xhtml:iframe></ltx:rawhtml>');
-#DefMacro('\embedVideo Verbatim','\iframe{#1}{560}{355}');
-
-#DefConstructor('\iframe Verbatim {}{}',
-#	       '<ltx:rawhtml>'.
-#	       '<ltx:block class="iframe" width="#2" height="#3">'.
-#	       '<ltx:ref class="iframe" href="#1" />'.
-#	       '</ltx:block>'.
-#	       '</ltx:rawhtml>');
 
 #DefMacro('\coloredbox{}{}{}','#3'); # causes problems
 DefMacro('\coloredbox{}{}'); # avoids problems?

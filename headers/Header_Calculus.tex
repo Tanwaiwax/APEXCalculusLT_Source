@@ -1,13 +1,6 @@
 \newboolean{abridgeConics}
 \setboolean{abridgeConics}{true}
 
-\newboolean{calc1included}
-\newboolean{calc2included}
-\newboolean{calc3included}
-\setboolean{calc1included}{false}
-\setboolean{calc2included}{false}
-\setboolean{calc3included}{false}
-
 \usepackage{fancyhdr}
 %\pgfplotsset{width=\marginparwidth+1pt,compat=1.3}
 \usepackage[font=small]{caption}
@@ -338,6 +331,33 @@
 %	}
 %	{}
 
+
+\newboolean{calc1included}
+\newboolean{calc2included}
+\newboolean{calc3included}
+\setboolean{calc1included}{false}
+\setboolean{calc2included}{false}
+\setboolean{calc3included}{false}
+
+\newcommand{\apexindex}{%
+ \cleardoublepage
+ \phantomsection
+ \iflatexml\chapter*{\indexname}\else\addcontentsline{toc}{chapter}{\indexname}\fi
+ % set the ``see'' entries that shouldn't refer to a page number
+ \ifthenelse{\boolean{calc2included}}{%
+  \index{$"!$|see {factorial}} % 08 sequences
+ }{}
+ \ifthenelse{\boolean{calc3included}}{%
+  \index{perpendicular|see{orthogonal}} % 10 dot product
+  \index{nabla|see {del operator}} % 12 directional derivatives, 14 vector fields
+  \index{$\nabla$|see {del operator}} % 12 directional derivatives, 14 vector fields
+  \index{multiple integration|see{iterated integration}} % 13 iterated integrals
+  \index{$\dfrac{\partial (x,y,z)}{\partial (u,v,w)}$|see {Jacobian}} % 13 Jacobian
+ }{}
+ \printindex
+}
+
+
 \usepackage[
 	bookmarksnumbered,
 	hidelinks,
@@ -353,12 +373,16 @@
 }
 \usepackage{bookmark}
 
+% these need to come after hyperref
+% if they come before and have newcommand, latexml overwrites them
 \renewcommand{\sectionautorefname}{Section} % the default is lowercase
 \renewcommand{\chapterautorefname}{Chapter} % the default is lowercase
 \newcommand{\exampleEnvautorefname}{Example}
 \newcommand{\autoeqref}[1]{\hyperref[#1]{\equationautorefname~(\ref*{#1})}}
 % autoref doesn't use parentheses
 
+% \apex has to be used after hyperref
+% lxNavbar has to come after latexml
 \begin{lxNavbar}
 \lxRef{coverpagetitle}{\apex\ Calculus LT}\\
 \lxContextTOC

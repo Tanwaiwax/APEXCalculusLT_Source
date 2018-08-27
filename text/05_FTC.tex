@@ -29,7 +29,7 @@ In order to see why this is true, we must compute $\ds\lim_{h\to 0}\frac{F(x+h)-
 \[\int_a^{x+h}f(t)\,dt =\int_a^x f(t)\,dt+\int_x^{x+h} f(t)\,dt,\]
 which we can rewrite as
 \[\int_x^{x+h} f(t)\,dt=\int_a^{x+h} f(t)\,dt-\int_a^x f(t)\,dt.\]
-This allows us to simplify the denominator of the difference quotient in our limit as follows:
+This allows us to simplify the numerator of the difference quotient in our limit as follows:
 \begin{align*}
 F(x+h)-F(x)
 &=\int_a^{x+h} f(t)\,dt-\int_a^x f(t)\,dt \quad\text{(by the definition of $F$)}\\
@@ -39,7 +39,9 @@ so we see that
 \[\lim_{h\to 0}\frac{F(x+h)-F(x)}{h}=\lim_{h\to 0}\frac 1h\int_x^{x+h} f(t)\,dt.\]
 
 % we could simplify this by using epsilon/delta continuity.  but would that be more complicated to understand?
-Assume for the moment that $h>0$. Since $x$ and $x+h$ are both in $[a,b]$ and $f$ is continuous on $[a,b]$, $f$ is also continuous on $[x,x+h]$. Applying the Extreme Value Theorem (\autoref{thm:extremeVal}), we know that $f$ must have an absolute minimum value $f(u)=m$ and an absolute maximum value $f(v)=M$ on this interval. In other words, $m\leq f(t)\leq M$ whenever $x\leq t\leq x+h$. Using the Comparison Properties of Integrals, we can now say that
+Assume for the moment that $h>0$. Since $x$ and $x+h$ are both in $[a,b]$ and $f$ is continuous on $[a,b]$, $f$ is also continuous on $[x,x+h]$. Applying the Extreme Value Theorem (\autoref{thm:extremeVal}), we know that $f$ must have an absolute minimum value $f(u)=m$ and an absolute maximum value $f(v)=M$ on this interval. In other words, $m\leq f(t)\leq M$ whenever $x\leq t\leq x+h$. Using \autoref{thm:further_def_int_props},
+%the Comparison Properties of Integrals,
+we can now say that
 \[\int_x^{x+h} m\,dt \leq \int_x^{x+h} f(t)\,dt \leq \int_x^{x+h} M\,dt.\]
 Computing the outer integrals, this becomes 
 \begin{align*}

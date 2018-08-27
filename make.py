@@ -133,7 +133,7 @@ Figure = namedtuple('Figure',['num','file'])
 
 def updateprc():
     prcdict = prcfromfile('Calculus.aux')
-    with open('prc/prc.html','w+') as prchtml:
+    with open('prc/index.html','w+') as prchtml:
         prchtml.write('<!doctype html>\n'
                       '<html>\n'
                       '<head>\n'
@@ -147,6 +147,7 @@ def updateprc():
                       '<body>\n'
                       '<h1>3d Images From APEX Calculus LT</h1>\n'
                       '<div id="accordion">\n')
+        # sorting 'A' to the end and continuing seems redundant. 
         chapters = sorted( prcdict.keys() , key=lambda x:float('inf') if x=='A' else int(x) )
         for chapter in chapters:
             if chapter=='A':

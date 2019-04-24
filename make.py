@@ -283,8 +283,14 @@ def getsuffix(args):
         newsuffix += '-color'
     return newsuffix
 
+def getlatexmlbin(exe):
+    if platform.mac_ver()[0]:
+        return os.path.join('..','LaTeXML','bin',exe)
+    if platform.win32_ver()[0]:
+        return exe
+    
 def getlatexmlcommandline(base='Calculus'):
-    ret = [os.path.join('..','LaTeXML','bin','latexml'),
+    ret = [getlatexmlbin('latexml'),
            '--quiet',#'--verbose','--verbose',#
            '--destination='+base+'.xml',
            '--nocomments',
@@ -300,7 +306,7 @@ def getlatexmlpostcommandline(base='Calculus',destdir='web'):
     #fixRefs()
     #shutil.copyfile('web/script.js','script.js')
     #shutil.copyfile('web/style.css','style.css')
-    ret = [os.path.join('..','LaTeXML','bin','latexmlpost'),
+    ret = [getlatexmlbin('latexmlpost'),
            '--split',#'--quiet',
            #'--stylesheet=web/apex.xsl',
            '--destination='+destdir+'/index.html',
@@ -400,6 +406,7 @@ def runcommands(args,commands):
     with open('logs/compilation'+newsuffix+'.log','w+') as mystdout:
         try:
             commandline = getcommandline(args)
+            print('commandline is:',commandline)
             subprocess.check_call(commandline,stdout=mystdout,stderr=subprocess.STDOUT)
         except:
             time = "{0[0]:02d}:{0[1]:02d}".format(getTime())

@@ -300,6 +300,29 @@ V&=\pi\int_0^2\left(y^2-\left(\frac32-\sqrt{\frac94 -y}\right)^2\right)\ dy \\
 \end{align*}
 While this integral is not impossible to solve, using the Shell Method gave us a significantly easier way to compute the volume.}
 
+% todo figures
+\example{ex_shell_wash}{Finding volume using the Washer Method and the Shell Method}{Find the volume of the solid formed by rotating the region bounded by the curves $y=x^2+3$, $y=2x+1$, $x=0$, and $x=1$ about the y-axis using both the washer method and the shell method.}{We'll start with the shell method, since that turns out to be easier.  The volume is
+\begin{align*}
+V&=2\pi\int_0^1 x((x^2+3)-(2x+1))\ dx\\
+&=2\pi\int_0^1 x^3-2x^2+2x\ dx\\
+%&=2\pi\left[\frac14-\frac23+1\right]\\
+&=\frac{7\pi}6\text{units}^3.
+\end{align*}
+
+With the washer method, we need to integrate with respect to $y$ because we are rotating around a vertical axis.  We also need to divide the region in two because the washers will run into different boundaries at different heights.
+\begin{align*}
+V&=\pi\int_1^3\left(\frac{y-1}2\right)^2\ dy+\pi\int_3^4\left(1^2-\left(\sqrt{y-3}\right)^2\right)\ dy\\
+&=\pi\int_1^3\frac{y^2}4-\frac y2+\frac14\ dy+\pi\int_3^4 4-y\ dy\\
+%&=\pi\left[\frac{y^3}{12}-\frac{y^2}4+\frac y4\right]_1^3+\pi\left[4y-\frac{y^2}2\right]_3^4\\
+%&=\pi\left[\frac{27}{12}-\frac94+\frac34\right]
+%-\pi\left[\frac1{12}-\frac14+\frac14\right]
+%+\pi\left[16-8\right]-\pi\left[12-\frac92\right]\\
+%&=\pi\frac34-\pi\frac1{12}+8\pi-12\pi+\pi\frac92\\
+&=\pi\frac23+\pi\frac12\\
+&=\frac{7\pi}6\text{units}^3.
+\end{align*}
+We are reassured to find the same answer using either method.}
+
 %We end this section with a table summarizing the usage of the Washer and Shell Methods.
 %
 %\keyidea{idea:shell_and_washer}{Summary of the Washer and Shell Methods}

@@ -28,6 +28,7 @@ Informally, a function is increasing if as $x$ gets larger (i.e., looking left t
 
 Our interest lies in finding intervals in the domain of $f$ on which $f$ is either increasing or decreasing. Such information should seem useful. For instance, if $f$ describes the speed of an object, we might want to know when the speed was increasing or decreasing (i.e., when the object was accelerating vs. decelerating). If $f$ describes the population of a city, we should be interested in when the population is growing or declining.
 
+% todo this figure is no longer needed
 \mtable{Examining the secant line of an increasing function.}{fig:incr00}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,xtick={1,2},
@@ -42,19 +43,35 @@ ymin=-.5,ymax=2.2,xmin=-.2,xmax=2.2]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-To find such intervals, we again consider secant lines. Let $f$ be an increasing, differentiable function on an open interval $I$, such as the one shown in \autoref{fig:incr00}, and let $a<b$ be given in $I$. The secant line on the graph of $f$ from $x=a$ to $x=b$ is drawn; it has a slope of $(f(b)-f(a))/(b-a)$. But note:
-\[
- \frac{f(b)-f(a)}{b-a}
- \Rightarrow \frac{\text{numerator }>0}{\text{denominator } >0}
- \Rightarrow \parbox{70pt}{\centering slope of the secant line $>0$}
- \Rightarrow \parbox{70pt}{\centering Average rate of change of $f$ on $[a,b]$ is $>0$.}
-\]
+%To find such intervals, we again consider secant lines. Let $f$ be an increasing, differentiable function on an open interval $I$, such as the one shown in \autoref{fig:incr00}, and let $a<b$ be given in $I$. The secant line on the graph of $f$ from $x=a$ to $x=b$ is drawn; it has a slope of $(f(b)-f(a))/(b-a)$. But note:
+%\[
+% \frac{f(b)-f(a)}{b-a}
+% \Rightarrow \frac{\text{numerator }>0}{\text{denominator } >0}
+% \Rightarrow \parbox{70pt}{\centering slope of the secant line $>0$}
+% \Rightarrow \parbox{70pt}{\centering Average rate of change of $f$ on $[a,b]$ is $>0$.}
+%\]
+%
+%We have shown mathematically what may have already been obvious: when $f$ is increasing, its secant lines will have a positive slope. Now recall the Mean Value Theorem guarantees that there is a number $c$, where $a<c<b$, such that
+%\[\fp(c) = \frac{f(b)-f(a)}{b-a}>0.\]
+%By considering all such secant lines in $I$, we strongly imply that $\fp(x) \geq 0$ on $I$. A similar statement can be made for decreasing functions.
+%
+%Our above logic can be summarized as ``If $f$ is increasing, then $\fp$ is probably  positive.'' \autoref{thm:incr_decr} below turns this around by stating ``If $\fp$ is positive, then $f$ is increasing.'' This leads us to a method for finding when functions are increasing and decreasing.
 
-We have shown mathematically what may have already been obvious: when $f$ is increasing, its secant lines will have a positive slope. Now recall the Mean Value Theorem guarantees that there is a number $c$, where $a<c<b$, such that
-\[\fp(c) = \frac{f(b)-f(a)}{b-a}>0.\]
-By considering all such secant lines in $I$, we strongly imply that $\fp(x) \geq 0$ on $I$. A similar statement can be made for decreasing functions.
+There is a nice relationship between the sign of $\fp$ on some interval and whether $f$ is increasing or decreasing on that interval.
 
-Our above logic can be summarized as ``If $f$ is increasing, then $\fp$ is probably  positive.'' \autoref{thm:incr_decr} below turns this around by stating ``If $\fp$ is positive, then $f$ is increasing.'' This leads us to a method for finding when functions are increasing and decreasing.
+First, suppose that $f(x)$ is differentiable and increasing on the interval $(a,b)$. Then for any c in (a, b) we have
+\[\fp(c)=\lim_{h\to0}\frac{f(c+h)-f(c)}h=\lim_{h\to0^+}\frac{f(c+h)-f(c)}h\ge0\]
+because $f(c+h)\ge f(c)$ for small $h>0$. Thus $\fp(c)\ge0$ for any $c$ in $(a,b)$.
+
+Conversely, suppose $\fp(c)\ge0$ for all $c$ in $(a,b)$. Then for any $s<t$ in $(a,b)$, $f$ is continuous on $[s,t]$ and differentiable on $(s,t)$. The Mean Value Theorem (\autoref{thm:mvt}) then implies that there is a $c$ in $(s,t)$ such that
+% this was displayed, but that causes an ugly page break
+$f(t)-f(s)=\fp(c)(t-s)\ge0$
+because $\fp(c)\ge0$ and $t-s>0$. Therefore $f(t)\ge f(s)$. This means $f$ is increasing on $(a,b)$.
+
+We've now shown that for any $f$ differentiable on $(a,b)$,
+% this was displayed, but that causes an ugly page break
+$f$ is increasing on $(a,b)$ if and only if $\fp(c)\ge0$ for all $c$ in $(a,b)$.
+Using the same arguments we could show $f$ is decreasing on $(a,b)$ if and only if $\fp(c)\le0$ for all $c$ in $(a,b)$. The following Theorem is now an immediate consequence.
 
 \mnote[3\baselineskip]{\textbf{Note:} \autoref{thm:incr_decr} (parts 1 and 2) also holds if $\fp(c) = 0$ for a finite number of values of $c$ in $I$.}
 
@@ -66,10 +83,11 @@ Our above logic can be summarized as ``If $f$ is increasing, then $\fp$ is proba
 \item	If $\fp(c) =0$ for all $c$ in $(a,b)$, then $f$ is constant on $[a,b]$.
 \end{enumerate}}
 
-Let $a$ and $b$ be in $I$ where $\fp(a)>0$ and $\fp(b)<0$. If $\fp$ is continuous, then we can use the Intermediate Value Theorem. Even if $\fp$ isn't continuous,
-Darboux's Theorem (which is too advanced to prove here)
-% an advanced theorem (Darboux's Theorem)
-shows that $\fp$ has the Intermediate Value property.  Either way, there must be some value $c$ between $a$ and $b$ where $\fp(c) = 0$.  This leads us to the following method for finding intervals on which a function is increasing or decreasing.
+%Let $a$ and $b$ be in $I$ where $\fp(a)>0$ and $\fp(b)<0$. If $\fp$ is continuous, then we can use the Intermediate Value Theorem. Even if $\fp$ isn't continuous, Darboux's Theorem (which is too advanced to prove here)
+%% an advanced theorem (Darboux's Theorem)
+%shows that $\fp$ has the Intermediate Value property.  Either way, there must be some value $c$ between $a$ and $b$ where $\fp(c) = 0$.  This leads us to the following method for finding intervals on which a function is increasing or decreasing.
+
+Suppose $a$ and $b$ are in $I$ where $\fp(a)>0$ and $\fp(b)<0$. Then there must be some number $c$ between $a$ and $b$ with $\fp(c)=0$. If $\fp$ is continuous on $I$, this is an immediate consequence of the Intermediate Value Theorem.  Even if $\fp$ isn't continuous, such a $c$ must exist as a consequence of Darboux's Theorem.  (For a special case of this theorem see \exautoref{darboux}.)  In either case, this leads us to the following method for finding intervals on which a function is increasing or decreasing.
 
 \keyidea{idea:incr_decr}{Finding Intervals on which $f$ is Increasing or Decreasing}
 {Let $f$ be a differentiable function on an interval I. To find intervals on which $f$ is increasing and decreasing:\index{increasing function!finding intervals}\index{decreasing function!finding intervals}
@@ -183,7 +201,7 @@ Case 3 & Case 4
 \end{tabular}}
 
 \theorem{thm:first_der}{First Derivative Test}%
-{Let $f$ be differentiable on $I$ and let $c$ be a critical point in $I$.\index{First Derivative Test}\index{derivative!First Deriv. Test}\index{extrema!and First Deriv. Test}\index{maximum!and First Deriv. Test}\index{minimum!and First Deriv. Test}
+{Suppose that $f$ is continuous on an open interval containing $c$, differentiable on an open interval containing $c$ except possibly at $c$, and $c$ is a critical point of $f$. Then\index{First Derivative Test}\index{derivative!First Deriv. Test}\index{extrema!and First Deriv. Test}\index{maximum!and First Deriv. Test}\index{minimum!and First Deriv. Test}
 \begin{enumerate}
 \item	If the sign of \fp\ switches from positive to negative at $c$, then $f(c)$ is a relative maximum of $f$.
 \item	If the sign of \fp\ switches from negative to positive at $c$, then $f(c)$ is a relative minimum of $f$.

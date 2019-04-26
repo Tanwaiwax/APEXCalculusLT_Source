@@ -21,7 +21,7 @@ ymin=-.5,ymax=2,xmin=-.5,xmax=3.5]
 The first part of the Fundamental Theorem of Calculus tells us how to find derivatives of these kinds of functions.
 
 \theorem{thm:FTC1}{The Fundamental Theorem of Calculus, Part 1}
-{Let $f$ be continuous on $[a,b]$ and let $F(x) = \int_a^x f(t)\ dt$. Then $F$ is a differentiable function on $(a,b)$, and\index{Fundamental Theorem of Calculus}\index{integration!Fun. Thm. of Calc.}
+{Let $f$ be continuous on $[a,b]$ and let $F(x) = \int_a^x f(t)\ dt$. Then $F$ is a continuous differentiable function on $(a,b)$, and\index{Fundamental Theorem of Calculus}\index{integration!Fun. Thm. of Calc.}
 \[\Fp(x)=f(x).\]}
 
 \begin{proof}
@@ -74,7 +74,7 @@ Finally, we know that
 so applying the Squeeze Theorem again tells us that
 \[\lim_{h\to 0}\frac1h\int_x^{x+h} f(t)\,dt=f(x).\] 
 
-Therefore $\Fp(x)=f(x)$ as desired.
+Therefore $\Fp(x)=f(x)$ as desired.  Because the limit exists, \exautoref{diffimpliescont} in \autoref{sec:derivative} implies that $F$ is continuous as well, so that it is differentiable.
 \end{proof}
 
 \youtubeVideo{PGmVvIglZx8}{Fundamental Theorem of Calculus Part 1}
@@ -277,7 +277,7 @@ Finally, in (d) the height of the rectangle is such that the area of the rectang
 We state this idea formally in a theorem.
 
 \theorem{thm:mvt2}{The Mean Value Theorem of Integration}
-{Let $f$ be continuous on $[a,b]$.\index{Mean Value Theorem!of integration}\index{integration!Mean Value Theorem} There exists a value $c$ in $[a,b]$ such that
+{Let $f$ be continuous on $[a,b]$.\index{Mean Value Theorem!of integration}\index{integration!Mean Value Theorem} There exists a value $c$ in $(a,b)$ such that
 \[\int_a^bf(x)\ dx = f(c)(b-a).\]}
 
 This is an \emph{existential} statement; $c$ exists, but we do not provide a method of finding it. \autoref{thm:mvt2} is directly connected to the Mean Value Theorem of Differentiation, given %in \autoref{sec:mvt} 
@@ -286,7 +286,7 @@ as \autoref{thm:mvt}. %; we leave it to the reader to see how.
 \begin{proof}
 If $a=b$, then $\int_a^a f(x)\,dx =0=f(a)(a-a)$. Otherwise, we define the following for $x$ in $[a,b]$:
 \[ F(x)=\int_a^x f(t)\,dt.\]
-Applying \autoref{thm:FTC1} we know that $F$ is differentiable on $[a,b]$ and that $\Fp(x)=f(x)$ for any $x$ in $[a,b]$. We may now apply the Mean Value Theorem for Differentiation (\autoref{thm:mvt}) to see that there is a value $c$ in $(a,b)$ such that
+Applying \autoref{thm:FTC1} we know that $F$ is differentiable on $(a,b)$ and that $\Fp(x)=f(x)$ for any $x$ in $(a,b)$. We may now apply the Mean Value Theorem for Differentiation (\autoref{thm:mvt}) to see that there is a value $c$ in $(a,b)$ such that
 \[F'(c)=\frac{F(b)-F(a)}{b-a}.\]
 Note that $F'(c)=f(c)$ and that $F(b)-F(a)=\int_a^b f(x)\,dx$ by \autoref{thm:FTC2}. Therefore we can rewrite our equation as: 
 \begin{align*}

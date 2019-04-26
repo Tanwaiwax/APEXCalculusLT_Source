@@ -1,0 +1,83 @@
+\documentclass{amsart}\nofiles
+
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+
+\begin{theorem}[The Fundamental Theorem of Calculus, Part 1]
+Let $f$ be continuous on $[a,b]$ and let $F(x) = \int_a^x f(t)\ dt$. Then $F$ is a continuous differentiable function on $(a,b)$, and\index{Fundamental Theorem of Calculus}\index{integration!Fun. Thm. of Calc.}
+\[F'(x)=f(x).\]
+\end{theorem}
+
+\begin{proof}
+In order to see why this is true, we must compute $\displaystyle\lim_{h\to 0}\frac{F(x+h)-F(x)}{h}$. Suppose $x$ and $x+h$ are in $[a,b]$. Theorem 5.2.1 implies that
+\[\int_a^{x+h}f(t)\,dt =\int_a^x f(t)\,dt+\int_x^{x+h} f(t)\,dt,\]
+which we can rewrite as
+\[\int_x^{x+h} f(t)\,dt=\int_a^{x+h} f(t)\,dt-\int_a^x f(t)\,dt.\]
+This allows us to simplify the numerator of the difference quotient in our limit as follows:
+\begin{align*}
+F(x+h)-F(x)
+&=\int_a^{x+h} f(t)\,dt-\int_a^x f(t)\,dt \quad\text{(by the definition of $F$)}\\
+&=\int_x^{x+h} f(t)\,dt,
+\end{align*}
+so we see that
+\[\lim_{h\to 0}\frac{F(x+h)-F(x)}{h}=\lim_{h\to 0}\frac 1h\int_x^{x+h} f(t)\,dt.\]
+
+\textbf{Ending 1:}
+
+% we could simplify this by using epsilon/delta continuity.  but would that be more complicated to understand?
+Assume for the moment that $h>0$. Since $x$ and $x+h$ are both in $[a,b]$ and $f$ is continuous on $[a,b]$, $f$ is also continuous on $[x,x+h]$. Applying the Extreme Value Theorem (Theorem 3.1.1), we know that $f$ must have an absolute minimum value $f(u)=m$ and an absolute maximum value $f(v)=M$ on this interval. In other words, $m\leq f(t)\leq M$ whenever $x\leq t\leq x+h$. Using Theorem 5.3.3,
+%the Comparison Properties of Integrals,
+we can now say that
+\[\int_x^{x+h} m\,dt \leq \int_x^{x+h} f(t)\,dt \leq \int_x^{x+h} M\,dt.\]
+Computing the outer integrals, this becomes 
+\begin{align*}
+m(x+h-x)\leq \int_x^{x+h} f(t)&\,dt \leq M(x+h-x),\quad\text{or}\\
+mh\leq \int_x^{x+h} f(t)&\,dt \leq Mh.
+\end{align*}
+Since $h>0$, we may divide by $h$ to obtain
+\[f(u)=m\leq \frac1h\int_x^{x+h} f(t)\,dt \leq M=f(v).\]
+
+Now suppose that $h<0$. Preceding as before, we know that $f$ has an absolute minimum value $f(u)=m$ and an absolute maximum value $f(v)=M$ on the interval $[x+h,x]$. We know that $m\leq f(t)\leq M$ whenever $x+h\leq t\leq x$, so we have \[\int_{x+h}^x m\,dt\leq\int_{x+h}^x f(t)\,dt\leq \int_{x+h}^x M\,dt.\] Once again we compute to obtain \[ -mh\leq \int_{x+h}^x f(t)\,dt \leq -Mh.\]
+Since $-h>0$, we can divide by $-h$ to obtain:
+\begin{align*}
+m\leq -\frac1h\int_{x+h}^x f(t)&\,dt \leq M\\
+f(u)=m\leq \frac1h \int_x^{x+h} f(t)&\,dt \leq M=f(v)
+\quad\text{(using Theorem 5.2.1(2))}\\
+\end{align*}
+
+We are now ready to compute the desired limit,
+\[\lim_{h\to 0}\frac{F(x+h)-F(x)}{h}=\lim_{h\to 0}\frac1h\int_x^{x+h} f(t)\,dt.\]
+Whether $h>0$ or $h<0$, we know that
+\[f(u)\leq \frac1h\int_x^{x+h} f(t)\,dt\leq f(v),\]
+where $u$ and $v$ are both between $x$ and $x+h$. Note that 
+\[\lim_{h\to 0} (x+h)=x \text{\quad and \quad} \lim_{h\to 0} x=x,\]
+so the Squeeze Theorem (Theorem 1.3.5) says that
+\[\lim_{h\to 0}u=x \text{\quad and \quad} \lim_{h\to 0} v=x.\]
+Since $f$ is continuous at $x$, we know that
+\[\lim_{h\to 0} f(u)=f(x)\text{\quad and \quad} \lim_{h\to 0}f(v)=f(x).\]
+Finally, we know that
+\[f(u)\leq \frac1h \int_x^{x+h} f(t)\,dt\leq f(v)\text{,}\]
+so applying the Squeeze Theorem again tells us that
+\[\lim_{h\to 0}\frac1h\int_x^{x+h} f(t)\,dt=f(x).\] 
+
+Therefore $F'(x)=f(x)$ as desired.  Because the limit exists, Exercise 2.1\#33 implies that $F$ is continuous as well, so that it is differentiable. Q.E.D.
+
+\textbf{Ending 2:}
+
+By the definition of limit, this will be equal to $f(x)$ if for any $\epsilon>0$, we can find a $\delta>0$ so that $\abs h<\delta$ implies that
+\[\abs{\frac1h\int_x^{x+h}f(t)\ dt-f(x)}<\epsilon.\]
+Because $f$ is continuous at $x$, for any $\epsilon>0$, we can find a $\delta>0$ so that $\abs{x-t}<\delta$ implies $\abs{f(x)-f(t)}<\epsilon$.  In this case,
+\[
+ \abs{\frac1h\int_x^{x+h}f(t)\ dt-f(x)}
+ \le\frac1h\int_x^{x+h}\abs{f(t)-f(x)}\ dt
+ <\frac1h\int_x^{x+h}\epsilon\ dt
+ =\epsilon.
+\]
+Therefore $F'(x)=f(x)$ as desired.  Because the limit exists, Exercise 2.1\#33 implies that $F$ is continuous as well, so that it is differentiable. Q.E.D.
+\end{proof}
+
+Ending 2 uses the fact that $\abs{\int f}\le\int\abs f$.  I'm not finding where we prove such a fact; it could be added to Theorem 5.3.3 ``Further Properties of the Definite Integral''.  We talk about $\int\abs f$ around Example 5.4.6, where we discuss displacement and total distance traveled, but we don't prove the inequality.  It could also be as early as Section 5.2.  Regardless, it should be somewhere --- either an example, a theorem, or an exercise.
+
+\end{document}

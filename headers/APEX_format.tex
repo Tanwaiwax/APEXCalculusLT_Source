@@ -351,27 +351,27 @@
   }%
  }{% else #1 != '' means we're in exvideo (aka, a qr code to youtube)
 %%%%% this is no longer used
-  \definecolor{top#2}{Hsb}{#4,.05,1}% %= hsl(#4,100,97.5)
-  \definecolor{border#2}{Hsb}{#4,.3,1}% %= hsl(#4,90.5,68.4)
-  \definecolor{bottom#2}{Hsb}{#4,.15,1}% %= hsl(#4,81.9,83.4)
-  \expandafter\newcommand\csname #2\endcsname[1]{%
-   \bigbreak%
-   \noindent%
-%   \flushinner{%
-%    \noindent%
-    \coloredbox{% same options as above
-     rectangle, text width = \specialboxlength,
-     inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
-     draw=border#2, top color=top#2, bottom color=bottom#2,
-     text justified, very thick
-    }{%
-     draw=black, thick, rectangle, text width=\specialboxlength,
-     inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
-     draw, text justified, very thick
-    }{\noindent ##1}%
-%   }%
-   \bigbreak%
-  }%
+%  \definecolor{top#2}{Hsb}{#4,.05,1}% %= hsl(#4,100,97.5)
+%  \definecolor{border#2}{Hsb}{#4,.3,1}% %= hsl(#4,90.5,68.4)
+%  \definecolor{bottom#2}{Hsb}{#4,.15,1}% %= hsl(#4,81.9,83.4)
+%  \expandafter\newcommand\csname #2\endcsname[1]{%
+%   \bigbreak%
+%   \noindent%
+%%   \flushinner{%
+%%    \noindent%
+%    \coloredbox{% same options as above
+%     rectangle, text width = \specialboxlength,
+%     inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
+%     draw=border#2, top color=top#2, bottom color=bottom#2,
+%     text justified, very thick
+%    }{%
+%     draw=black, thick, rectangle, text width=\specialboxlength,
+%     inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
+%     draw, text justified, very thick
+%    }{\noindent ##1}%
+%%   }%
+%   \bigbreak%
+%  }%
  }% ends ifthenelse #1=''
 }
 
@@ -477,6 +477,15 @@
 \hrule\vspace{-1.5ex}%
 }
 \makeatother
+
+\newcommand{\exautoref}[1]{%
+ \hyperref[#1]{Exercise~\ref*{#1}}%
+% {%
+%  \renewcommand{\Itemautorefname}{Exercise}% localize the upcoming reference
+%  \autoref{#1}%
+% }%
+% doesn't work?
+}
 
 %\newcommand{\inputexercises}[1]{}%
 \newcommand{\printexercises}[1]{%

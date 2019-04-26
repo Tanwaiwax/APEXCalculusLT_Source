@@ -1,6 +1,16 @@
 List Of Changes
 =====================
 
+Changes for the 2019-XX version:
+
+* The preface now has a link to a library of the 3d images.  This page also has instructions for using an Android or iOS app to interactively view the images.
+
+* Exercise 3.3#39 proves enough of Darboux's theorem for Key Idea 3.3.1.
+
+* The criteria for the first derivative test have been weakened.
+
+* All known errata (56) have been fixed.
+
 Changes for the 2018-07 version:
 ---------------------
 

@@ -1,6 +1,4 @@
-* [errata/Errata.tex line 196](../errata/Errata.tex#L196): \item \S8.2 p402: Most of the definite integrals \emph{do not} ``appear in the previous set''. % todo do we want them to?
-* [CalculusII-UND.tex line 6](../CalculusII-UND.tex#L6): todo write a Inverse Functions prerequisite section reviewing logs
-* [CalculusII-UND.tex line 8](../CalculusII-UND.tex#L8): todo write a better chapter intro for Inverse Functions
+* [errata/Errata.tex line 223](../errata/Errata.tex#L223): \item \S8.2 p402: Most of the definite integrals \emph{do not} ``appear in the previous set''. % todo do we want them to?
 * [headers/apex_style.sty.ltxml line 126](../headers/apex_style.sty.ltxml#L126): DefMacro('\psBill'); # todo
 * [headers/APEX_format.tex line 14](../headers/APEX_format.tex#L14): \RequirePackage{amssymb} % todo ? https://tex.stackexchange.com/a/3000/107497 recommends dropping amssymb in favor of unicode-math
 * [exercises/12_07_exset_02.tex line 3](../exercises/12_07_exset_02.tex#L3): todo Tim should the solutions be less verbose?
@@ -10,11 +8,14 @@
 * [exercises/02_06_exset_04.tex line 1](../exercises/02_06_exset_04.tex#L1): todo Tim check line break of directions
 * [exercises/11_02_exset_03.tex line 9](../exercises/11_02_exset_03.tex#L9): todo Tim this was originally \vec r.  but was that part of the problem? not really
 * [exercises/13_01_exset_03.tex line 2](../exercises/13_01_exset_03.tex#L2): todo Tim should we compute the answer for one or both integrals in 14.1#17-22 ?
+* [exercises/07_07_exercises.tex line 95](../exercises/07_07_exercises.tex#L95): todo Tim check these to fix the answers
 * [exercises/14_05_exset_04.tex line 20](../exercises/14_05_exset_04.tex#L20): todo Tim figure out how to display 15.5#23
 * [exercises/12_05_exercises.tex line 17](../exercises/12_05_exercises.tex#L17): todo Tim make the directions more consistent.  maybe combine sets and make more parts?
+* [exercises/03_04_exset_02.tex line 3](../exercises/03_04_exset_02.tex#L3): todo Tim be consistent about whether critical points and inflection points are in the domain or on the graph
 * [figures/figtrip5d_3D.asy line 37](../figures/figtrip5d_3D.asy#L37): // todo find a better way to shade this in
 * [figures/figtrip5e_3D.asy line 26](../figures/figtrip5e_3D.asy#L26): // todo find a better way to shade this in
 * [text/06_Trigonometric_Integrals.tex line 356](../text/06_Trigonometric_Integrals.tex#L356): todo Tim Fourier series problem?
+* [text/09_Parametric_Calculus.tex line 354](../text/09_Parametric_Calculus.tex#L354): todo Tim Rogowski has a subsection on speed at this point.  Stewart doesn't.
 * [text/02_Derivative_Inverse_Functions.tex line 179](../text/02_Derivative_Inverse_Functions.tex#L179): todo Tim show this
 * [text/04_Differentials.tex line 100](../text/04_Differentials.tex#L100): todo Tim bigger brace for the \Delta y?
 * [text/12_Tangent_Planes_Lines.tex line 141](../text/12_Tangent_Planes_Lines.tex#L141): todo Tim should this be $\ell_{\vecn}$ here and many other places?
@@ -51,5 +52,3 @@
 * [text/10_Lines.tex line 192](../text/10_Lines.tex#L192): todo Tim why not just rescale d2 to match d1?
 * [text/04_NewtonsMethod.tex line 258](../text/04_NewtonsMethod.tex#L258): todo Tim include the Fast Inverse Square Root question?
 * [text/02_Derivative.tex line 518](../text/02_Derivative.tex#L518): todo Tim : iframe ?
-* [CalculusII-BSC.tex line 39](../CalculusII-BSC.tex#L39): todo write a Inverse Functions prerequisite section reviewing logs
-* [CalculusII-BSC.tex line 41](../CalculusII-BSC.tex#L41): todo write a better chapter intro for Inverse Functions

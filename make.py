@@ -113,16 +113,21 @@ def makefigs():
                 # -user apexbw=true runs that command in apexconfig.asy
                 # using -bw instead causes the figure to be blacked out (?!)
                 #'BW.pdf': ['-noprc','-user','apexbw=true','-outname',asyfile+'BW','-outformat','pdf'],
-                'BW.png': ['-noprc','-user','apexbw=true','-outname',asyfile+'BW','-outformat','png','-render','4'],
-                '.png':   ['-noprc','-outformat','png','-render','4'],
+                'BW.png': ['-noprc','-user','apexbw=true','-outname',asyfile+'BW','-outformat','png'],#['-render','4'],
+                '.png':   ['-noprc','-outformat','png'],#['-render','4'],
+            # for some reason, -render kills the png output
             }
+            asyexe = '/usr/local/bin/asy'
+            # version 2.44 has problems with the png
+            # * it doesn't look as nice
+            # * -render 4 causes the compilation to fail (https://github.com/vectorgraphics/asymptote/issues/96)
+            # * the z-index is based on when they appear in the file, not the camera view
             for ext,opt in extops.items():
                 try:
-                    if os.path.getmtime(asyfile+'.asy') < os.path.getmtime(asyfile+ext):
-                        continue
-                except:
-                    pass
-                subprocess.check_call(['asy']+opt+[asyfile])
+                    if os.path.getmtime(asyfile+ext) <= os.path.getmtime(asyfile+'.asy'):
+                        subprocess.check_call([asyexe]+opt+[asyfile])
+                except OSError:
+                    subprocess.check_call([asyexe]+opt+[asyfile])
         for outfile in glob.iglob('*.out'):
             if ( os.path.getsize(outfile) == 0 ):
                 os.remove(outfile)
@@ -213,12 +218,13 @@ def updatetodo():
             continue
         if ' Tim ' in todo:
             key = 'tim'
-        elif re.match('\S*/0[1-4]',todo) or 'CalculusI.' in todo:
-            key = 'calc1'
-        elif re.match('\S*/0[5-9]',todo) or 'CalculusII.' in todo:
-            key = 'calc2'
-        elif re.match('\S*/1[0-4]',todo) or 'CalculusIII.' in todo:
+        # put the next backwards, so that CalcII-UND gets sorted appropriately 
+        elif re.match('\S*/1[0-4]',todo) or 'CalculusIII' in todo:
             key = 'calc3'
+        elif re.match('\S*/0[5-9]',todo) or 'CalculusII' in todo:
+            key = 'calc2'
+        elif re.match('\S*/0[1-4]',todo) or 'CalculusI' in todo:
+            key = 'calc1'
         else:
             key = 'tim'
         todo = re.sub(r'^\./(\S+):(\d+):\s*%?\s*',r'* [\1 line \2](../\1#L\2): ',todo)

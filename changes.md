@@ -2,14 +2,21 @@ List Of Changes
 =====================
 
 Changes for the 2019-XX version:
+--------------------
 
 * The preface now has a link to a library of the 3d images.  This page also has instructions for using an Android or iOS app to interactively view the images.
 
+* The preface also has a link to an html version of the book.  As far as accessibility goes, pdf can't hope to compete with html.
+
 * Exercise 3.3#39 proves enough of Darboux's theorem for Key Idea 3.3.1.
+
+* New examples: 6.3 (Using the Washer and Shell Methods), 9.8 (Reindexing a Power Series)
 
 * The criteria for the first derivative test have been weakened.
 
-* All known errata (56) have been fixed.
+* New exercises in Sections 7.1, 8.5 (tangent half-angle substitution).
+
+* All known errata (82+) have been fixed.
 
 Changes for the 2018-07 version:
 ---------------------

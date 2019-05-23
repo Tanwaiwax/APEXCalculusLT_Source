@@ -74,15 +74,16 @@ The real difference with this integral from the standard ``$\int_a^bf(x)\ dx$'' 
 
 %The trouble here is that we have generally avoided direct use of the arc-length parameter $s$ in the past as it is usually difficult to use. We continue that methodology here. 
 
-Given a curve $C$, find any parameterization of $C$: $x = g(t)$ and $y=h(t)$, for continuous functions $g$ and $h$, where $a\leq t\leq b$. We can represent this parameterization with a vector-valued function, $\vrt =\bracket{g(t),h(t)}$.
+Given a curve $C$, find any smooth parameterization of $C$: $x = g(t)$ and $y=h(t)$, for continuous functions $g$ and $h$, where $a\leq t\leq b$. We can represent this parameterization with a vector-valued function, $\vrt =\bracket{g(t),h(t)}$.
 
 In \autoref{sec:curvature}, we defined the arc-length parameter in \autoeqref{eq:vvfarc} as 
-\[
-s(t) = \int_0^t \norm{\vec r\,'(u)}\ du. 
-\]
-By the Fundamental Theorem of Calculus, $ds = \norm{\vec r\,'(t)}\ dt$. We can substitute the right hand side of this equation for $ds$ in the line integral definition.
-
-We can view $f$ as being a function of $x$ and $y$ since it is a function of $s$. Thus $f(s) =f(x,y) =f\big(g(t),h(t)\big)$. This gives us a concrete way to evaluate a line integral:
+\[s(t) = \int_0^t \norm{\vec r\,'(u)}\ du.\]
+By the Fundamental Theorem of Calculus, $\dfrac{ds}{dt} = \norm{\vec r\,'(t)}$. Because $\vrt$ is smooth, this is strictly positive, and so $s$ has an inverse: $t=\beta(s)$.  This means that $f(s)=f(g(\beta(s)),h(\beta(s)))$ and
+% We can substitute the right hand side of this equation for $ds$ in the line integral definition.
+%
+%We can view $f$ as being a function of $x$ and $y$ since it is a function of $s$. Thus $f(s) =f(x,y) =f\big(g(t),h(t)\big)$. This gives us a concrete way to evaluate a line integral:
+\[\int_C f(s)\ ds = \int_0^{\alpha(b)} f(s)\ ds = \int_0^{\alpha(b)}f(g(\beta(s)),h(\beta(s)))\ ds. \]
+We can now substitute $s=\alpha(t)$ to see that
 \[\int_C f(s)\ ds = \int_a^bf\big(g(t),h(t)\big)\norm{\vec r\,'(t)}\ dt.\]
 
 We restate this as a theorem, along with its three-dimensional analogue, followed by an example where we finally evaluate an integral and find an area.

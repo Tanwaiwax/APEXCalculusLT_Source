@@ -2,14 +2,14 @@
 * [exercises/10_02_exset_02.tex line 61](../exercises/10_02_exset_02.tex#L61): todo convert 11.2#14,15 to asymptote figures
 * [exercises/12_04_exercises.tex line 25](../exercises/12_04_exercises.tex#L25): todo add exercises asking where a function is differentiable
 * [exercises/10_Other_Systems_exercises.tex line 95](../exercises/10_Other_Systems_exercises.tex#L95): todo the solution to 11.7#29, 31-33
+* [exercises/hidden/14_Line_Int_exercises.tex line 11](../exercises/hidden/14_Line_Int_exercises.tex#L11): todo find the answer to 15.1#4
+* [exercises/hidden/14_Line_Int_exercises.tex line 32](../exercises/hidden/14_Line_Int_exercises.tex#L32): todo find the answer to 15.1#12
 * [exercises/13_07_exercises.tex line 50](../exercises/13_07_exercises.tex#L50): todo the solution to 14.7#46, 48-52
 * [exercises/14_07_exset_02.tex line 4](../exercises/14_07_exset_02.tex#L4): todo solve 15.7#9
 * [exercises/14_07_exset_02.tex line 7](../exercises/14_07_exset_02.tex#L7): todo solve 15.7#10
 * [exercises/14_02_exercises.tex line 19](../exercises/14_02_exercises.tex#L19): todo solutions to 15.2#19-26
 * [exercises/10_02_exercises.tex line 65](../exercises/10_02_exercises.tex#L65): \exercise{Let $P=(1,2,3)$, $Q=(2,-1,4)$, and $R=(-1,6,1)$ be the three corners of a parallelogram in space.  Find the possible locations of the fourth corner.}{} % todo the solution to 11.2#36-39
 * [exercises/14_01_exercises.tex line 31](../exercises/14_01_exercises.tex#L31): todo solution to 15.1#30,31
-* [exercises/14_Line_Int_exercises.tex line 11](../exercises/14_Line_Int_exercises.tex#L11): todo find the answer to 15.1#4
-* [exercises/14_Line_Int_exercises.tex line 32](../exercises/14_Line_Int_exercises.tex#L32): todo find the answer to 15.1#12
 * [exercises/14_03_exset_01.tex line 43](../exercises/14_03_exset_01.tex#L43): todo find the answer to 15.3#23
 * [exercises/14_03_exset_01.tex line 48](../exercises/14_03_exset_01.tex#L48): todo find the answer to 15.3#25
 * [exercises/13_02_exset_02.tex line 103](../exercises/13_02_exset_02.tex#L103): \item % todo solution to 14.2#15b, 16b

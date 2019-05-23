@@ -300,28 +300,100 @@ V&=\pi\int_0^2\left(y^2-\left(\frac32-\sqrt{\frac94 -y}\right)^2\right)\ dy \\
 \end{align*}
 While this integral is not impossible to solve, using the Shell Method gave us a significantly easier way to compute the volume.}
 
-% todo figures
-\example{ex_shell_wash}{Finding volume using the Washer Method and the Shell Method}{Find the volume of the solid formed by rotating the region bounded by the curves $y=x^2+3$, $y=2x+1$, $x=0$, and $x=1$ about the y-axis using both the washer method and the shell method.}{We'll start with the shell method, since that turns out to be easier.  The volume is
-\begin{align*}
-V&=2\pi\int_0^1 x((x^2+3)-(2x+1))\ dx\\
-&=2\pi\int_0^1 x^3-2x^2+2x\ dx\\
-%&=2\pi\left[\frac14-\frac23+1\right]\\
-&=\frac{7\pi}6\text{units}^3.
-\end{align*}
+We finish with an example where we can use either method to find the volume.
 
-With the washer method, we need to integrate with respect to $y$ because we are rotating around a vertical axis.  We also need to divide the region in two because the washers will run into different boundaries at different heights.
+\example{ex_shell_wash}{Finding volume using the Washer Method and the Shell Method}{Find the volume of the solid formed by rotating the region bounded by the curves $y=x^2+3$, $y=2x+1$, $x=0$, and $x=1$ about the y-axis using both the washer method and the shell method.}{We'll start with the shell method, since that turns out to be easier.  The region, a sample shell, and the resulting solid are shown in \autoref{shell_wash_fig} parts a, b, and e respectively.  The volume is
+\[
+V=2\pi\int_0^1 x((x^2+3)-(2x+1))\ dx
+=\frac{7\pi}6\text{units}^3.
+\]
+%\begin{align*}
+%V&=2\pi\int_0^1 x((x^2+3)-(2x+1))\ dx\\
+%&=2\pi\int_0^1 x^3-2x^2+2x\ dx\\
+%%&=2\pi\left[\frac14-\frac23+1\right]\\
+%&=\frac{7\pi}6\text{units}^3.
+%\end{align*}
+
+With the washer method, we need to integrate with respect to $y$ because we are rotating around a vertical axis.  We also need to divide the region in two because the washers will run into different boundaries at different heights.  We have indicated the region and the two different types of washers in \autoref{shell_wash_fig} parts c and d.  The volume is
 \begin{align*}
-V&=\pi\int_1^3\left(\frac{y-1}2\right)^2\ dy+\pi\int_3^4\left(1^2-\left(\sqrt{y-3}\right)^2\right)\ dy\\
-&=\pi\int_1^3\frac{y^2}4-\frac y2+\frac14\ dy+\pi\int_3^4 4-y\ dy\\
+V&=\pi\int_1^3\left(\frac{y-1}2\right)^2\ dy
++\pi\int_3^4\left(1^2-\left(\sqrt{y-3}\right)^2\right)\ dy\\
+%&=\pi\int_1^3\frac{y^2}4-\frac y2+\frac14\ dy+\pi\int_3^4 4-y\ dy\\
 %&=\pi\left[\frac{y^3}{12}-\frac{y^2}4+\frac y4\right]_1^3+\pi\left[4y-\frac{y^2}2\right]_3^4\\
 %&=\pi\left[\frac{27}{12}-\frac94+\frac34\right]
 %-\pi\left[\frac1{12}-\frac14+\frac14\right]
 %+\pi\left[16-8\right]-\pi\left[12-\frac92\right]\\
 %&=\pi\frac34-\pi\frac1{12}+8\pi-12\pi+\pi\frac92\\
-&=\pi\frac23+\pi\frac12\\
-&=\frac{7\pi}6\text{units}^3.
+&=\pi\frac23+\pi\frac12
+%\\&
+=\frac{7\pi}6\text{units}^3.
 \end{align*}
 We are reassured to find the same answer using either method.}
+
+\begin{minipage}{\textwidth}
+\begin{tabular}{ccc}
+\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
+			axis y line=middle,axis x line=middle,name=myplot,axis on top,
+			xtick=\empty,extra x ticks={1,2},ytick={1,2,3,4},
+			ymin=-.2,ymax=4.5,xmin=-.1,xmax=1.5]%[,axis equal]
+\draw[\colorone,thick](axis cs:0,1)--(axis cs:1,3)
+%node [color=black,left,pos=.5] {$\underbrace{\makebox[30pt]{}}_{r(x)}$}
+--(axis cs:1,4);
+\node at(axis cs:.25,2){$\underbrace{\makebox[30pt]{}}_{r(x)}$};
+\addplot[draw={\colorone},smooth,thick,domain=0:1] {x^2+3};
+\draw[thick,draw={\colortwo}] (axis cs: .5,2) -- (axis cs:.5,3.25)%;
+node[color=black,right,pos=.5]{\scriptsize$ \left.\rule{0pt}{12pt}\right\} h(x)$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+&
+\myincludeasythree{width=\marginparwidth,
+3Droll=115.86380470248459,
+3Dortho=0.003982423339039087,
+3Dc2c=0.35041913390159607 0.18568213284015656 0.9180024862289429,
+3Dcoo=5.665955543518066 74.65992736816406 -21.359724044799805,
+3Droo=150}{width=\marginparwidth}{figures/shellwash}
+&
+\multirow{3}{*}{%
+\myincludeasythree{width=\marginparwidth,
+3Droll=124.28706719451111,
+3Dortho=0.003981335088610649,
+3Dc2c=0.3404673635959625 0.24756169319152832 0.9070805907249451,
+3Dcoo=-5.416632652282715 90.77053833007812 -22.686864852905273,
+3Droo=150}{width=\marginparwidth}{figures/shellwash_b}%
+}
+\smallskip\\(a)&(b)\smallskip\\
+\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
+			axis y line=middle,axis x line=middle,name=myplot,axis on top,
+			xtick=\empty,extra x ticks={1,2},ytick={1,2,3,4},
+			ymin=-.2,ymax=4.5,xmin=-.1,xmax=1.5]%[,axis equal]
+\draw[\colorone,thick](axis cs:0,1)--(axis cs:1,3)
+%node [color=black,left,pos=.5] {$\underbrace{\makebox[25pt]{}}_{r(x)}$}
+--(axis cs:1,4);
+\addplot[draw={\colorone},smooth,thick,domain=0:1] {x^2+3};
+\draw[thick,draw={\colortwo}] (axis cs:0,3.64)--(axis cs: .8,3.64)
+node[color=black,above,pos=.5]{\scriptsize$r(x)$};
+\draw[thick,draw={\colortwo}] (axis cs: 0,2) -- (axis cs:.5,2)%;
+node[color=black,above,pos=.5]{\scriptsize$R(x)$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+&
+\myincludeasythree{width=\marginparwidth,
+3Droll=120.0383890024397,
+3Dortho=0.004286274313926697,
+3Dc2c=0.36060017347335815 0.2289222776889801 0.9041913747787476,
+3Dcoo=9.441178321838379 68.38707733154297 -22.945234298706055,
+3Droo=150}{width=\marginparwidth}{figures/shellwash_c}
+\smallskip\\(c)&(d)&(e)
+\end{tabular}
+\captionof{figure}{Graphing the region in \autoref{ex_shell_wash}.}
+\label{shell_wash_fig}
+\end{minipage}\bigskip
 
 %We end this section with a table summarizing the usage of the Washer and Shell Methods.
 %

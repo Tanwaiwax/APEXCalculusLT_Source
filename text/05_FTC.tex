@@ -38,9 +38,8 @@ F(x+h)-F(x)
 so we see that
 \[\lim_{h\to 0}\frac{F(x+h)-F(x)}{h}=\lim_{h\to 0}\frac 1h\int_x^{x+h} f(t)\,dt.\]
 
-% we could simplify this by using epsilon/delta continuity.  but would that be more complicated to understand?
+% begin current argument
 Assume for the moment that $h>0$. Since $x$ and $x+h$ are both in $[a,b]$ and $f$ is continuous on $[a,b]$, $f$ is also continuous on $[x,x+h]$. Applying the Extreme Value Theorem (\autoref{thm:extremeVal}), we know that $f$ must have an absolute minimum value $f(u)=m$ and an absolute maximum value $f(v)=M$ on this interval. In other words, $m\leq f(t)\leq M$ whenever $x\leq t\leq x+h$. Using \autoref{thm:further_def_int_props},
-%the Comparison Properties of Integrals,
 we can now say that
 \[\int_x^{x+h} m\,dt \leq \int_x^{x+h} f(t)\,dt \leq \int_x^{x+h} M\,dt.\]
 Computing the outer integrals, this becomes 
@@ -73,6 +72,19 @@ Finally, we know that
 \[f(u)\leq \frac1h \int_x^{x+h} f(t)\,dt\leq f(v)\text{,}\]
 so applying the Squeeze Theorem again tells us that
 \[\lim_{h\to 0}\frac1h\int_x^{x+h} f(t)\,dt=f(x).\] 
+% end current argument. begin alternate argument
+%By the definition of limit, this will be equal to $f(x)$ if for any $\epsilon>0$, we can find a $\delta>0$ so that $\abs h<\delta$ implies that
+%\[\abs{\frac1h\int_x^{x+h}f(t)\ dt-f(x)}<\epsilon.\]
+%% pulling out the epsilon-delta definition may be confusing
+%Because $x$ is fixed, $f(x)$ is a constant and is equal to $\frac1h\int_x^{x+h}f(x)\ dt$.  Because $f$ is continuous at $x$, for any $\epsilon>0$, we can find a $\delta>0$ so that $\abs{x-t}<\delta$ implies $\abs{f(x)-f(t)}<\epsilon$.  In this case,
+%\begin{multline*}
+% \abs{\frac1h\int_x^{x+h}f(t)\ dt-f(x)}
+% =\abs{\frac1h\int_x^{x+h}f(t)-f(x)\ dt} \\ % this step may be confusing
+% \le\frac1h\int_x^{x+h}\abs{f(t)-f(x)}\ dt
+% <\frac1h\int_x^{x+h}\epsilon\ dt
+% =\epsilon.
+%\end{multline*}
+% end alternate argument
 
 Therefore $\Fp(x)=f(x)$ as desired.  Because the limit exists, \exautoref{diffimpliescont} in \autoref{sec:derivative} implies that $F$ is continuous as well, so that it is differentiable.
 \end{proof}

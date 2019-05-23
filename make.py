@@ -210,8 +210,11 @@ def prcfromfile(filename):
         return prcdict
 
 def updatetodo():
-    output = subprocess.check_output(['grep','todo','-I','--recursive','--line-number','--exclude-dir=ApexPDFs','--exclude-dir=.git','--exclude-dir=todo','.'])
+    output = subprocess.check_output(['grep','todo','-I','--recursive','--line-number',
+                                      '--exclude-dir=ApexPDFs','--exclude-dir=.git','--exclude-dir=todo',
+                                      '--exclude-dir=text/hidden','--exclude-dir=exercises/hidden','--exclude-dir=text/mecmath','.'])
     todos = output.decode('utf-8').split("\n")
+    todos.sort()
     todosin = defaultdict(list)
     for todo in todos:
         if re.match('./make.py',todo) or todo == '' or re.match(r'\S+.log',todo):

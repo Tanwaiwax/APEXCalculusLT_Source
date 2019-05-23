@@ -212,7 +212,7 @@ def prcfromfile(filename):
 def updatetodo():
     output = subprocess.check_output(['grep','todo','-I','--recursive','--line-number',
                                       '--exclude-dir=ApexPDFs','--exclude-dir=.git','--exclude-dir=todo',
-                                      '--exclude-dir=text/hidden','--exclude-dir=exercises/hidden','--exclude-dir=text/mecmath','.'])
+                                      '--exclude-dir=hidden','--exclude-dir=mecmath','.'])
     todos = output.decode('utf-8').split("\n")
     todos.sort()
     todosin = defaultdict(list)
@@ -230,7 +230,7 @@ def updatetodo():
             key = 'calc1'
         else:
             key = 'tim'
-        todo = re.sub(r'^\./(\S+):(\d+):\s*%?\s*',r'* [\1 line \2](../\1#L\2): ',todo)
+        todo = re.sub(r'^\./(\S+):(\d+):\s*%?\s*',r'1 [\1 line \2](../\1#L\2): ',todo)
         todosin[key].append(todo)
     for filename,todolist in todosin.items():
         with open('todo/todo_'+filename+'.md','w+') as todofile:

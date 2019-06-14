@@ -103,7 +103,7 @@ These points are also shown in \autoref{fig:polcalc1} with white-filled dots.\eo
 When the graph of the polar function $r=f(\theta)$ intersects the pole, it means that $f(\alpha) = 0$ for some angle $\alpha$. Making this substitution in the formula for $\dfrac{dy}{dx}$ given in \autoref{idea:dydxpol} we see
 \[
  \frac{dy}{dx}
- =\frac{\fp(\alpha)\sin\alpha+f(\alpha)\cos\alpha}{\fp(\alpha)\cos\alpha+f(\alpha)\sin\alpha}
+ =\frac{\fp(\alpha)\sin\alpha+f(\alpha)\cos\alpha}{\fp(\alpha)\cos\alpha-f(\alpha)\sin\alpha}
  =\frac{\sin\alpha}{\cos\alpha}
  =\tan\alpha.
 \]
@@ -152,7 +152,7 @@ When using polar coordinates, the equations $\theta=\alpha$ and $r=c$ form lines
 
 Consider \autoref{fig:polararea} (a) where a region defined by $r=f(\theta)$ on $[\alpha,\beta]$ is given. (Note how the ``sides'' of the region are the lines $\theta=\alpha$ and $\theta=\beta$, whereas in rectangular coordinates the ``sides'' of regions were often the vertical lines $x=a$ and $x=b$.)
 
-Partition the interval $[\alpha,\beta]$ into $n$ equally spaced subintervals as $\alpha=\theta_0<\theta_1<\dotso<\theta_n=\beta$. The radian of each subinterval is $\Delta\theta = (\beta-\alpha)/n$, representing a small change in angle. The area of the region defined by the $i\,^\text{th}$ subinterval $[\theta_{i-1},\theta_i]$ can be approximated with a sector of a circle with radius $f(c_i)$, for some $c_i$ in $[\theta_{i-1},\theta_i]$. The area of this sector is $\frac12[f(c_i)]^2\Delta\theta$. This is shown in part (b) of the figure, where $[\alpha,\beta]$ has been divided into 4 subintervals. We approximate the area of the whole region by summing the areas of all sectors:
+Partition the interval $[\alpha,\beta]$ into $n$ equally spaced subintervals as $\alpha=\theta_0<\theta_1<\dotso<\theta_n=\beta$. The radian length of each subinterval is $\Delta\theta = (\beta-\alpha)/n$, representing a small change in angle. The area of the region defined by the $i\,^\text{th}$ subinterval $[\theta_{i-1},\theta_i]$ can be approximated with a sector of a circle with radius $f(c_i)$, for some $c_i$ in $[\theta_{i-1},\theta_i]$. The area of this sector is $\frac12[f(c_i)]^2\Delta\theta$. This is shown in part (b) of the figure, where $[\alpha,\beta]$ has been divided into 4 subintervals. We approximate the area of the whole region by summing the areas of all sectors:
 %
 \mtable{Computing the area of a polar region.}{fig:polararea}{%
 \begin{tikzpicture}
@@ -301,7 +301,7 @@ Consider the shaded region shown in \autoref{fig:polarea3}. We can find the area
 \]
 
 \keyidea{idea:area_between_polar}{Area Between Polar Curves}
-{The area $A$ of the region bounded by $r_1=f_1(\theta)$ and $r_2=f_2(\theta)$, $\theta=\alpha$ and $\theta=\beta$, where $f_1(\theta)\leq f_2(\theta)$ on $[\alpha,\beta]$, is
+{The area $A$ of the region bounded by $r_1=f_1(\theta)$ and $r_2=f_2(\theta)$, $\theta=\alpha$ and $\theta=\beta$, where $0\le f_1(\theta)\leq f_2(\theta)$ on $[\alpha,\beta]$, is
 \[
 A = \frac{1}{2} \int_\alpha^\beta [f_2(\theta)]^2 - [f_1(\theta)]^2\ d\theta
 = \frac12\int_\alpha^\beta \big(r_2^{\,2}-r_1^{\,2}\big)\ d\theta.

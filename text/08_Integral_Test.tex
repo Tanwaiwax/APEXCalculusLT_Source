@@ -74,7 +74,7 @@ Therefore the series and integral either both converge or both diverge. \autoref
 \youtubeVideo{ObiRjUFHJHo}{Integral Test for Series: Why It Works}
 
 \example{ex_itest1}{Using the Integral Test}
-{Determine the convergence of $\ds\sum_{n=1}^\infty \frac{\ln n}{n^2}$.  (The terms of the sequence $\{a_n\} = \{\ln n/n^2\}$ and the n$^{\text{th}}$ partial sums are given in \autoref{fig:itest1}.)}
+{Determine the convergence of $\ds\sum_{n=1}^\infty \frac{\ln n}{n^2}$.  (The terms of the sequence $\{a_n\} = \{(\ln n)/n^2\}$ and the n$^{\text{th}}$ partial sums are given in \autoref{fig:itest1}.)}
 {\autoref{fig:itest1}
 \mtable{Plotting the sequence and series in \autoref{ex_itest1}.}{fig:itest1}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -98,7 +98,7 @@ Applying the Integral Test, we test the convergence of $\ds \int_1^\infty \frac{
 	\int_1^\infty \frac{\ln x}{x^2}\ dx
 	&= \lim_{t\to\infty} \int_1^t \frac{\ln x}{x^2}\ dx\\
 	&= \lim_{t\to\infty}\biggl( -\frac1x\ln x\Big|_1^t + \int_1^t\frac1{x^2}\ dx \biggr)\\
-	&= \lim_{t\to\infty} \biggl( -\frac1x\ln x -\frac 1x\Big|_1^t\biggr)\\
+	&= \lim_{t\to\infty} \biggl( \Bigl[-\frac1x\ln x -\frac 1x\Bigr]_1^t\biggr)\\
 	&= \lim_{t\to\infty}\biggl(1-\frac1t-\frac{\ln t}{t}\biggr).\quad \text{Apply L'H\^opital's Rule:}\\
 	&= 1-0- \lim_{t\to\infty} \frac1t\\
 	&=1
@@ -115,7 +115,7 @@ Another important type of series is the \emph{p-series}.
 \qquad$\ds\sum_{n=1}^\infty \frac{1}{n^p}$.
 \item	A \textbf{general $p$-series} is a series of the form 
 \qquad$\ds\sum_{n=1}^\infty \frac{1}{(an+b)^p}$,\medskip\\
-where $a$ and $b$ are real numbers, and $an+b\neq 0$ for all $n$.
+where $a>0$, $b$ is a real number, and $an+b\neq 0$ for all $n$.
 \end{enumerate}}
 
 Like geometric series, one of the nice things about $p$-series is that they have easy to determine convergence properties.
@@ -171,7 +171,7 @@ This series is a famous series, called the \emph{Harmonic Series}, so named beca
 \item	This is a $p$-series with $p=1/2$; the theorem states that it diverges.
 
 \item	This is not a $p$-series; the definition does not allow for alternating signs. Therefore we cannot apply \autoref{thm:pseries}. We will consider this series again in \autoref{sec:alt_series}.
-(Another famous result states that this series, the \emph{Alternating Harmonic Series}, converges to $\ln 2$.)
+(Another famous result states that this series, the \emph{Alternating Harmonic Series}, converges to $-\ln 2$.)
 
 \item	This is a general $p$-series with $p=3$, therefore it converges.
 

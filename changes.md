@@ -8,15 +8,17 @@ Changes for the 2019-XX version:
 
 * The preface also has a link to an html version of the book.  As far as accessibility goes, pdf can't hope to compete with html.
 
+* The criteria for the first derivative test have been weakened.
+
 * Exercise 3.3#39 proves enough of Darboux's theorem for Key Idea 3.3.1.
 
 * New examples: 6.3 (Using the Washer and Shell Methods), 9.8 (Reindexing a Power Series)
 
-* The criteria for the first derivative test have been weakened.
-
 * New exercises in Sections 7.1, 8.5 (tangent half-angle substitution).
 
-* All known errata (82+) have been fixed.
+* A corrected proof for Theorem 9.4.1.
+
+* All known errata (106+) have been fixed.
 
 Changes for the 2018-07 version:
 ---------------------

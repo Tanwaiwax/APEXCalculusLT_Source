@@ -133,7 +133,7 @@ ytick={1},ymin=-.1,ymax=1.1,xmin=-11,xmax=1]
 		\int_{-\infty}^0 e^x \ dx
 		&= \lim_{t\to-\infty} \int_t^0 e^x\ dx \\
 		&=  \lim_{t\to-\infty} e^x\Big|_t^0 \\
-		&= \lim_{t\to-\infty} e^0-e^t \\
+		&= \lim_{t\to-\infty} \bigl(e^0-e^t\bigr) \\
 		&= 1.
 	\end{align*}
 	A graph of the area defined by this integral is given in \autoref{fig:impint1c}.
@@ -267,7 +267,7 @@ Clearly the area in question is above the $x$-axis, yet the area is supposedly n
 	\int_{-1}^1\frac1{x^2}\ dx
 	&= \lim_{t\to0^-}\int_{-1}^t \frac1{x^2}\ dx + \lim_{t\to0^+}\int_t^1\frac1{x^2}\ dx \\
 	&= \lim_{t\to0^-}-\frac1x\Big|_{-1}^t + \lim_{t\to0^+}-\frac1x\Big|_t^1\\
-	&= \lim_{t\to0^-}\left(-\frac1t+1\right) + \lim_{t\to0^+}\left(-1+\frac1t\right).
+	&= \lim_{t\to0^-}\left(-\frac1t-1\right) + \lim_{t\to0^+}\left(-1+\frac1t\right).
 \end{align*}
 Neither limit converges hence the original improper integral diverges. The nonsensical answer we obtained by ignoring the improper nature of the integral is just that: nonsensical.\eoehere
 \end{enumerate}}
@@ -303,7 +303,7 @@ ytick=\empty,ymin=-.1,ymax=6,xmin=-.1,xmax=2.1]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}%
 %
-When does this limit converge --- i.e., when is this limit \textit{not} $\infty$? This limit converges precisely when the power of $b$ is less than 0: when $1-p<0 \Rightarrow 1<p$. 
+When does this limit converge --- i.e., when is this limit \textit{not} $\infty$? This limit converges precisely when the power of $t$ is less than 0: when $1-p<0 \Rightarrow 1<p$. 
 
 Our analysis shows that if $p>1$, then $\ds\int_1^\infty \frac1{x\primeskip^p}\ dx $ converges. When $p<1$ the improper integral diverges; we showed in \autoref{ex_impint1} that when $p=1$ the integral also diverges. 
 
@@ -394,7 +394,7 @@ In cases like this (and many more) it is useful to employ the following theorem.
 	\index{integration!improper}\index{convergence!Limit Comparison Test!for integration}\index{divergence!Limit Comparison Test!for integration}\index{Limit Comparison Test!for integration}\index{convergence!of improper int.}\index{divergence!of improper int.}}
 
 \example{ex_impint6}{Determining convergence of improper integrals}{Determine the convergence of $\ds \int_3^{\infty} \frac{1}{\sqrt{x^2+2x+5}}\ dx$.}
-{As $x$ gets large, the quadratic function will begin to behave much like $y=x$. So we compare \small$\ds\frac{1}{\sqrt{x^2+2x+5}}$\normalsize\ to \small$\ds\frac1x$\normalsize\ with the Limit Comparison Test:
+{As $x$ gets large, the square root of a quadratic function will begin to behave much like $y=x$. So we compare \small$\ds\frac{1}{\sqrt{x^2+2x+5}}$\normalsize\ to \small$\ds\frac1x$\normalsize\ with the Limit Comparison Test:
 \[
 \lim_{x\to\infty} \frac{1/\sqrt{x^2+2x+5}}{1/x}
 = \lim_{x\to\infty}\frac{x}{\sqrt{x^2+2x+5}}.
@@ -414,8 +414,8 @@ axis y line=middle,axis x line=middle,name=myplot,axis on top,
 ymin=-.1,ymax=.35,xmin=-.1,xmax=21]
 \addplot [draw={\colortwo},thick,smooth,domain=3:20] {1/sqrt(x*x+2*x+5)};
 \addplot [draw={\colorone},thick,smooth,domain=3:20] {1/x};
-\draw (axis cs:10,.3) node {\scriptsize $\ds f(x)=\frac{1}{\sqrt{x^2+2x+5}}$};
-\draw (axis cs:4,.09) node {\scriptsize $\ds f(x)=\frac{1}{x}$};
+\draw (axis cs:10,.3) node {\scriptsize $\ds f(x)=\frac1x$};
+\draw (axis cs:4,.09) node {\scriptsize $\ds f(x)=\frac1{\sqrt{x^2+2x+5}}$};
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};

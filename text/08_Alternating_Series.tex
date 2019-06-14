@@ -42,7 +42,7 @@ converge.}
 
 The basic idea behind \autoref{thm:alt_series_test} is illustrated in \autoref{fig:alt_series_converge}. A positive, decreasing sequence $\{b_n\}$ is shown along with the partial sums
 \[S_n = \sum_{i=1}^n(-1)^{i+1}b_i =b_1-b_2+b_3-b_4+\dotsb+(-1)^{n+1}b_n.\]
-Because $\{b_n\}$ is decreasing, the amount by which $S_n$ bounces up and down de\-creases. Moreover, the odd terms of $S_n$ form a decreasing, bounded sequence, while the even terms of $S_n$ form an increasing, bounded sequence. Since bounded, monotonic sequences converge (see \autoref{thm:monotonic_converge}) and the terms of $\{b_n\}$ approach 0, we will show below the odd and even terms of $S_n$ converge to the same common limit $L$, the sum of the series.
+Because $\{b_n\}$ is decreasing, the amount by which $S_n$ bounces up and down de\-creases. Moreover, the odd terms of $S_n$ form a decreasing, bounded sequence, while the even terms of $S_n$ form an increasing, bounded sequence. Since bounded, monotonic sequences converge (see \autoref{thm:monotonic_converge}) and the terms of $\{b_n\}$ approach 0, we will show below that the odd and even terms of $S_n$ converge to the same common limit $L$, the sum of the series.
 
 \mtable{Illustrating convergence with the Alternating Series Test.}{fig:alt_series_converge}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -89,7 +89,7 @@ Next we determine the limit of the sequence of odd partial sums.
 &=L+0\\
 &=L
 \end{align*}
-Both the even and odd partial sums converge to $s$ so we have $\ds \lim_{n\to \infty}S_n=L$, which means the series is convergent.
+Both the even and odd partial sums converge to $L$ so we have $\ds \lim_{n\to \infty}S_n=L$, which means the series is convergent.
 \end{proof}
 
 \youtubeVideo{aOiZvfFAMW8}{Alternating Series --- Another Example 4}
@@ -106,7 +106,7 @@ Both the even and odd partial sums converge to $s$ so we have $\ds \lim_{n\to \i
 	
 	While the test does not state what the series converges to, we will see later that $\ds \sum_{n=1}^\infty (-1)^{n+1}\frac1n=\ln2.$
 	
-	\item		The underlying sequence is $\{b_n\} = \{\ln n/n\}$. This is positive for $n\geq 2$ and $\ds \lim_{n\to \infty} \frac{\ln n}{n}=\lim_{n\to \infty}\frac{1}{n}=0$ (use L'H\^opital's Rule). However, the sequence is not decreasing for all $n$. It is straightforward to compute $b_1\approx0.347$, $b_2\approx 0.366$, and $b_3\approx 0.347$: the sequence is increasing for at least the first 2 terms. 
+	\item		The underlying sequence is $\{b_n\} = \{(\ln n)/n\}$. This is positive for $n\geq 2$ and $\ds \lim_{n\to \infty} \frac{\ln n}{n}=\lim_{n\to \infty}\frac{1}{n}=0$ (use L'H\^opital's Rule). However, the sequence is not decreasing for all $n$. It is straightforward to compute $b_1\approx0.347$, $b_2\approx 0.366$, and $b_3\approx 0.347$: the sequence is increasing for at least the first 2 terms. 
 	
 	We do not immediately conclude that we cannot apply the Alternating Series Test. Rather, consider the long-term behavior of $\{b_n\}$. Treating $b_n=b(n)$ as a continuous function of $n$ defined on $[2,\infty)$, we can take its derivative:
 	\[b\primeskip'(n) = \frac{1-\ln n}{n^2}.\]
@@ -150,7 +150,7 @@ Thus we say the Alternating Harmonic Series converges conditionally.
 	\[\sum_{n=1}^\infty \abs{(-1)^n\frac{n+3}{n^2+2n+5}}= \sum_{n=1}^\infty \frac{n+3}{n^2+2n+5}\]
 	diverges using the Limit Comparison Test, comparing with $1/n$. 
 	
-	The series $\ds \sum_{n=1}^\infty (-1)^n\frac{n+3}{n^2+2n+5}$ converges using the Alternating Series Test; we conclude it converges conditionally.
+	The sequence $\{\dfrac{n+3}{n^2+2n+5}\}$ is monotonically decreasing, so that the series $\ds \sum_{n=1}^\infty (-1)^n\frac{n+3}{n^2+2n+5}$ converges using the Alternating Series Test; we conclude it converges conditionally.
 	
 %	\item	We can show the series
 %	\[\sum_{n=1}^\infty \abs{(-1)^n\frac{n^2+2n+5}{2^n}}=\sum_{n=1}^\infty \frac{n^2+2n+5}{2^n}\]
@@ -183,14 +183,16 @@ One reason this is important is that our convergence tests all require that the 
 
 The second statement relates to \sword{rearrangements}\index{rearrangements of series}\index{series!rearrangements} of series. When dealing with a finite set of numbers, the sum of the numbers does not depend on the order which they are added. (So $1+2+3 = 3+1+2$.) One may be surprised to find out that when dealing with an infinite set of numbers, the same statement does not always hold true: some infinite lists of numbers may be rearranged in different orders to achieve different sums. The theorem states that the terms of an absolutely convergent series can be rearranged in any way without affecting the sum.
 
-In \autoref{ex_alt_series2}, we determined the series in part 2 converges absolutely. \autoref{thm:abs_convergence} tells us the series converges (which we could also determine using the Alternating Series Test).
+% todo Tim do we want to have an absolutely convergent example to refer back to?
+% the former part 2 was removed because it used the ratio test
+%In \autoref{ex_alt_series2}, we determined the series in part 2 converges absolutely. \autoref{thm:abs_convergence} tells us the series converges (which we could also determine using the Alternating Series Test).
 
 The theorem states that rearranging the terms of an absolutely convergent series does not affect its sum. This implies that perhaps the sum of a conditionally convergent series can change based on the arrangement of terms. Indeed, it can. The Riemann Rearrangement Theorem (named after Bernhard Riemann) states that any conditionally convergent series can have its terms rearranged so that the sum is any desired value or infinity.
 
 Before we consider an example, we state the following theorem that illustrates how the alternating structure of an alternating series is a powerful tool when approximating the sum of a convergent series.
 
 \theorem{thm:alt_series_approx}{The Alternating Series Approximation Theorem}
-{Let $\{b_n\}$ be a sequence that satisfies the hypotheses of the Alternating Series Test, and let $S_n$ and $L$ be the $n^\text{th}$ partial sums and sum, respectively, of either $\ds \sum_{n=1}^\infty (-1)^{n}b_n$ or $\ds \sum_{n=1}^\infty (-1)^{n+1}b_n$. Then
+{Let $\{b_n\}$ be a sequence that satisfies the hypotheses of the Alternating Series Test, and let $S_n$ and $L$ be the $n^\text{th}$ partial sum and sum, respectively, of either $\ds \sum_{n=1}^\infty (-1)^{n}b_n$ or $\ds \sum_{n=1}^\infty (-1)^{n+1}b_n$. Then
 \index{series!alternating!Approximation Theorem}
 \begin{enumerate}
 	\item $\abs{S_n-L} < b_{n+1}$, and
@@ -201,9 +203,9 @@ Part 1 of \autoref{thm:alt_series_approx} states that the $n^\text{th}$ partial 
 
 Moreover, Part 2 of the theorem states that since $S_{13} \approx 0.8252$ and $S_{14}\approx 0.8201$, we know the sum $L$ lies between $0.8201$ and $0.8252$. One use of this is the knowledge that $S_{14}$ is accurate to two places after the decimal.
 
-Some alternating series converge slowly. In \autoref{ex_alt1} we determined the series $\ds\sum_{n=2}^\infty (-1)^{n+1}\frac{\ln n}{n}$ converged. With $n=1001$, we find $\ln n/n \approx 0.0069$, meaning that $S_{1000} \approx 0.1633$ is accurate to one, maybe two, places after the decimal. Since $S_{1001} \approx 0.1564$, we know the sum $L$ is $0.1564\leq L\leq0.1633$.
+Some alternating series converge slowly. In \autoref{ex_alt1} we determined the series $\ds\sum_{n=2}^\infty (-1)^{n+1}\frac{\ln n}{n}$ converged. With $n=1001$, we find $(\ln n)/n \approx 0.0069$, meaning that $S_{1000} \approx 0.1633$ is accurate to one, maybe two, places after the decimal. Since $S_{1001} \approx 0.1564$, we know the sum $L$ is $0.1564\leq L\leq0.1633$.
 
-\example{ex_alt_series_approx}{Approximating the sum of convergent alternating series}
+\example{ex_alt_series_approx}{Approximating the sums of convergent alternating series}
 {Approximate the sum of the following series, accurate to within $0.001$.
 \[
  \text{1. }\sum_{n=1}^\infty (-1)^{n+1}\frac{1}{n^3}\qquad
@@ -222,7 +224,7 @@ Some alternating series converge slowly. In \autoref{ex_alt1} we determined the 
 	We can use Part 2 of the theorem to obtain an even more accurate result. As we know the $10^\text{th}$ term of the series is $-1/1000$, we can easily compute $S_{10} = 0.901116$. Part 2 of the theorem states that $L$ is between $S_9$ and $S_{10}$, so $0.901116 <L<0.902116$.
 	
 	
-	\item		We want to find $n$ where $\ln (n)/n \le 0.001$. We start by solving $\ln (n)/n = 0.001$ for $n$. This cannot be solved algebraically, so we will use Newton's Method to approximate a solution. 
+	\item		We want to find $n$ where $(\ln n)/n \le 0.001$. We start by solving $(\ln n)/n = 0.001$ for $n$. This cannot be solved algebraically, so we will use Newton's Method to approximate a solution. 
 	
 	Let $f(x) = \ln(x)/x-0.001$; we want to know where $f(x) = 0$. We make a guess that $x$ must be ``large,'' so our initial guess will be $x_1=1000$. Recall how Newton's Method works: given an approximate solution $x_n$, our next approximation $x_{n+1}$ is given by
 	\[x_{n+1} = x_n - \frac{f(x_n)}{\fp(x_n)}.\]
@@ -233,7 +235,8 @@ Some alternating series converge slowly. In \autoref{ex_alt1} we determined the 
 	\end{align*}
 	Using a computer, we find that Newton's Method seems to converge to a solution $x=9118.01$ after 8 iterations. Taking the next integer higher, we have $n=9119$, where $\ln(9119)/9119 =0.000999903<0.001$.
 	
-	Again using a computer, we find $S_{9118} = -0.160369$. Part 1 of the theorem states that this is within $0.001$ of the actual sum $L$. Already knowing the 9,119$^\text{th}$ term, we can compute $S_{9119} = -0.159369$, meaning $-0.159369 < L < -0.160369$. 
+	Again using a computer, we find $S_{9118} = -0.160369$. Part 1 of the theorem states that this is within $0.001$ of the actual sum $L$. Already knowing the 9,119$^\text{th}$ term, we can compute $S_{9119} = -0.159369$, meaning
+	\[-0.160369 < L < -0.159369.\]
 	
 \end{enumerate}
 Notice how the first series converged quite quickly, where we needed only 10 terms to reach the desired accuracy, whereas the second series took over 9,000 terms.}

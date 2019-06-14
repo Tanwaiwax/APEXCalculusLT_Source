@@ -112,7 +112,7 @@ One important type of series is a \emph{geometric series}.
 \definition{def:geom_series}{Geometric Series}
 {A \textbf{geometric series} is a series of the form 
 \[\sum_{n=0}^\infty ar^n = a+ar+ar^2+ar^3+\dotsb+ar^n+\dotsb\]
-Note that the index starts at $n=0$, if the index starts at $n=1$ we have $\ds \sum_{n=1}^\infty ar^{n-1}$.%
+Note that the index starts at $n=0$. If the index starts at $n=1$ we have $\ds \sum_{n=1}^\infty ar^{n-1}$.%
 \index{series!geometric}\index{geometric series}
 }
 
@@ -122,7 +122,7 @@ We started this section with a geometric series, although we dropped the first t
 {Consider the geometric series $\ds \sum_{n=0}^\infty ar^n$.
 \index{series!geometric}\index{geometric series}\index{convergence!of geometric series}\index{divergence!of geometric series}
 \begin{enumerate}
-\item	If $r\neq1$, the $n^\text{th}$ partial sum is: $\ds S_n = \frac{a(1-r\,^n)}{1-r}$.
+\item	If $r\neq1$, the $n^\text{th}$ partial sum is: $\ds S_n = \sum_{k=0}^{n-1}ar^k=\frac{a(1-r\,^n)}{1-r}$.
 \item	The series converges if, and only if, $\abs r<1$. When $\abs r<1$, 
 \[\sum_{n=0}^\infty ar^n = \frac{a}{1-r}.\]
 \end{enumerate}}
@@ -151,7 +151,7 @@ If either $r\leq -1$ or $r>1$, the sequence $\{r^n\}$ is divergent by \autoref{t
 According to \autoref{thm:geom_series}, the series 
 \[
 \ds\sum_{n=0}^\infty \frac{1}{2^n}
-=\sum_{n=0}^\infty \left(\frac 12\right)^2= 1+\frac12+\frac14+\dotsb
+=\sum_{n=0}^\infty \left(\frac 12\right)^n= 1+\frac12+\frac14+\dotsb
 \]
 converges as $r=1/2$, and $\ds \sum_{n=0}^\infty \frac{1}{2^n} = \frac{1}{1-1/2} = 2.$ This concurs with our introductory example; while there we got a sum of 1, we skipped the first term of 1.\\
 
@@ -527,7 +527,7 @@ Since  $\ds \sum_{n\to\infty}a_n$ converges, the sequence $\{ S_n\}$ converges. 
 
 The Test for Divergence follows from \autoref{thm:series_conv}. If the series does not diverge, it must converge and therefore $\ds  \lim_{n\to\infty}a_n=0$.
 
-Note that the two statements in Theorems \ref{thm:series_conv} and \ref{thm:series_nth_term} are really the same. In order to converge, the limit of the terms of the sequence must approach 0; if they do not, the series will not converge. 
+Note that the two statements in Theorems \ref{thm:series_conv} and \ref{thm:series_nth_term} are really the same. In order to converge, the terms of the sequence must approach 0; if they do not, the series will not converge. 
 
 Looking back, we can apply this theorem to the series in \autoref{ex_series1}. In that example, we had $\{a_n\} = \{n^2\}$ and $\{b_n\} = \{(-1)^{n+1}\}$.
 \[\lim_{n\to\infty} a_n=\lim_{n\to\infty} n^2=\infty\]

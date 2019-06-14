@@ -134,7 +134,7 @@ We can, however, examine the slopes of tangent lines near $t=0$, and take the li
 	\lim_{t\to0} \frac{y\primeskip'(t)}{x\primeskip'(t)}
 	&=\lim_{t\to0} \frac{3\cos t\sin^2t}{-3\sin t\cos^2t}
 	\quad \text{\small (We can reduce as $t\neq 0$.)}\\
-	&= \lim_{t\to0} -\frac{\sin t}{\cos t}\\
+	&= \lim_{t\to0}\left(-\frac{\sin t}{\cos t}\right)\\
 	&= 0.
 \end{align*}
 We have accomplished something significant. When the derivative $\frac{dy}{dx}$ returns an indeterminate form at $t=t_0$, we can define its value by setting it to be $\ds \lim_{t\to t_0}\frac{dy}{dx}$, if that limit exists. This allows us to find slopes of tangent lines at cusps, which can be very beneficial. 
@@ -302,7 +302,7 @@ We continue our study of the features of the graphs of parametric equations by c
 
 Recall in \autoref{sec:arc_length} we found the arc length of the graph of a function, from $x=a$ to $x=b$, to be
 \[L = \int_a^b\sqrt{1+\left(\frac{dy}{dx}\right)^2}\ dx.\]
-We can use this equation and convert it to the parametric equation context. Letting $x=f(t)$ and $y=g(t)$, we know that $\frac{dy}{dx} = g\primeskip'(t)/\fp(t)$. It will also be useful to calculate the differential of $x$:
+We can use this equation and convert it to the parametric equation context. Letting $x=f(t)$ and $y=g(t)$, we know that $\frac{dy}{dx} = g\primeskip'(t)/\fp(t)$. Suupose that $f'(t)>0$, and calculate the differential of $x$:
 \[dx = \fp(t)dt \qquad \Rightarrow \qquad dt = \frac{1}{\fp(t)}\cdot dx.\]
 Starting with the arc length formula above, consider:
 \begin{align*}
@@ -312,7 +312,7 @@ Starting with the arc length formula above, consider:
 	&= \int_a^b \sqrt{[\fp(t)]^2+[g\primeskip'(t)]^2}\cdot\underbrace{\frac1{\fp(t)}\ dx}_{=dt} \qquad\text{Factor out the $[\fp(t)]^2$} \\
 	&= \int_{t_1}^{t_2} \sqrt{[\fp(t)]^2+[g\primeskip'(t)]^2}\ dt.\\
 \end{align*}
-Note the new bounds (no longer ``$x$'' bounds, but ``$t$'' bounds). They are found by finding $t_1$ and $t_2$ such that $a= f(t_1)$ and $b=f(t_2)$. This formula is important, so we restate it as a theorem.
+Note the new bounds (no longer ``$x$'' bounds, but ``$t$'' bounds). They are found by finding $t_1$ and $t_2$ such that $a= f(t_1)$ and $b=f(t_2)$. This formula holds even when $f'$ isn't positive and we restate it as a theorem.
 
 \theorem{thm:arc_length_parametric}{Arc Length of Parametric Curves}
 {Let $x=f(t)$ and $y=g(t)$ be parametric equations with $\fp$ and $g\primeskip'$ continuous on some open interval $I$ containing $t_1$ and $t_2$ on which the graph traces itself only once. The arc length of the graph, from $t=t_1$ to $t=t_2$, is

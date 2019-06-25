@@ -1,6 +1,16 @@
 \newboolean{abridgeConics}
 \setboolean{abridgeConics}{true}
 
+\usepackage[american]{babel}
+
+\newcommand{\monthYear}{%
+\ifcase \month \or January\or February\or March\or April\or May\or June\or July\or August\or September\or October\or November\or December\fi \space \number \year}
+%modified from \today. we could do
+%\usepackage[en-US]{datetime2}
+%\DTMlangsetup{showdayofmonth=false}
+% so that \today is just month and year
+%but LaTeXML doesn't have datetime2, so we need this anyway
+
 \usepackage{multirow}
 \usepackage{fancyhdr}
 %\pgfplotsset{width=\marginparwidth+1pt,compat=1.3}
@@ -322,7 +332,8 @@
 \newcommand{\apexindex}{%
  \cleardoublepage
  \phantomsection
- \iflatexml\chapter*{\indexname}\else\addcontentsline{toc}{chapter}{\indexname}\fi
+ \iflatexml\chapter*{\indexname}\fi
+ \addcontentsline{toc}{chapter}{\indexname}
  % set the ``see'' entries that shouldn't refer to a page number
  \ifthenelse{\boolean{calc2included}}{%
   \index{$"!$|see {factorial}} % 08 sequences
@@ -338,6 +349,10 @@
 }
 
 
+\newboolean{bsc}
+\newcommand{\forwhom}{\ifthenelse{\boolean{bsc}}{ for Bismarck State College}{}}
+
+
 \usepackage[
 	bookmarksnumbered,
 	hidelinks,
@@ -349,7 +364,8 @@
 \hypersetup{
 	pdftitle={APEX Calculus LT},
 	pdfauthor={UND Math Dept and Greg Hartman, VMI},
-	unicode
+	unicode,
+    pdflang=EN-US
 }
 \usepackage{bookmark}
 
@@ -364,7 +380,7 @@
 % \apex has to be used after hyperref
 % lxNavbar has to come after latexml
 \begin{lxNavbar}
-\lxRef{coverpagetitle}{\apex\ Calculus LT}\\
+\lxRef{lxApexTOC}{Table of Contents}\\
 \lxContextTOC
 \end{lxNavbar}
 

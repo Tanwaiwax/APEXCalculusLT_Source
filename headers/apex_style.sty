@@ -375,29 +375,47 @@
 \newcommand*{\lxenumerate}[1]{\begin{enumerate}[#1]}
 
 
-
+% this has been annoying
+% I want the document to go: #.0, chap title, chap intro, #.1
+% I want the TOC to omit the #.0
+% I want the pdf bookmarks to keep #.0
+% I tried to have a \pdfbookmark to the prerequisite section filed under the chapter,
+% but the link was out of order, so it doesn't work
+% instead, we'll go with:
+% [pdfbookmark]chap title, #.0, [toc]chap title, [pdfbookmark]chap intro, #.1
 \newcommand*{\apexchapter}[3][]{%
  \setcounter{figure}{0}% in case there are figures before the first section
  \clearpage\thispagestyle{empty}\cleardoublepage%
 % \setboolean{chapter_already_has_exercises}{false}%
- \ifthenelse{\equal{#1}{}}{}{% else, there is a #1 argument
-  % we want the ``Chapter'' heading to come after the prerequisite section
-  \stepcounter{chapter}%
+ \ifthenelse{\equal{#1}{}}{% no prereq section
+  \chapter{#2}\label{#3}%
+ }{% else, there is a #1 argument
+  \refstepcounter{chapter}%
+  \pdfbookmark[chapter]{\thechapter\ #2}{#3}
   \addtocounter{section}{-1}%
   \fancyhead[LE]{\chaptername\ \thechapter\ \ \ \ {#2}}%
-  \let\saveaddcontentsline=\addcontentsline%
-  \renewcommand{\addcontentsline}[3]{}%
-  \input{#1}%
-  \let\addcontentsline=\saveaddcontentsline%
+  \bgroup
+   \renewcommand{\addcontentsline}[3]{}%
+   \let\oldsection=\section
+   \renewcommand{\section}[1]{%
+    \oldsection{##1}
+    \label{prereq#3}
+    \pdfbookmark[section]{\thesection\ ##1}{prereq#3}
+   }
+   \input{#1}%
+  \egroup
+  \restoregeometry
+  % the grouping intercepted the restoregeometry at the end of the prereq's exercises
   \fancyhead[LE]{\nouppercase{\leftmark}}%
-  \addtocounter{chapter}{-1}%
-  \setcounter{savefigure}{\value{figure}}% to avoid getting reset by \chapter
+  \chapter*{\thechapter: #2}\label{#3}
+%  \thispagestyle{fancy}%
+  \hypersetup{bookmarksdepth=-2}% make the next line not appear in the pdf bookmarks
+  \addcontentsline{toc}{chapter}{\string\numberline{\arabic{chapter}}#2}
+  \hypersetup{bookmarksdepth=2}
+  \pdfbookmark[section]{Chapter Introduction}{#3}
+  \fancyhead[LE]{\chaptername\ \thechapter\ \ \ \ {#2}}%
  }%
- \chapter{#2}\label{#3}%
- \thispagestyle{empty}%
- \ifthenelse{\equal{#1}{}}{}{% else, there is a #1 argument
-  \setcounter{figure}{\value{savefigure}}%
- }%
+ \thispagestyle{fancy}%
 }
 
 

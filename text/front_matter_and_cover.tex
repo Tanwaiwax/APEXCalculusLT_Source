@@ -1,21 +1,19 @@
-\pagestyle{empty}
-
-\input{text/title_page}
-
-\clearpage
-
-\input{text/copyright_page}
-
-\clearpage
-
-\phantomsection
-\iflatexml
-\chapter*{Table of Contents}
-\else
-\pdfbookmark[chapter]{Table of Contents}{tocbookmarklabel}
-\fi
-\thispagestyle{empty}
-\tableofcontents
+\ifthenelse{\boolean{latexml}}{%
+ \label{lxApexTOC}
+ \tableofcontents
+ \input{text/title_page}
+ \input{text/copyright_page}
+}{%
+ \pagestyle{empty}
+ \input{text/title_page}
+ \clearpage
+ \input{text/copyright_page}
+ \clearpage
+ \phantomsection
+ \pdfbookmark[chapter]{Table of Contents}{tocbookmarklabel}
+ \thispagestyle{empty}
+ \tableofcontents
+}
 
 %\cleardoublepage
 %\renewcommand{\listtheoremname}{List of Theorems\protect\thispagestyle{empty}}

@@ -18,6 +18,8 @@ Changes for the 2019-XX version:
 
 * A corrected proof for Theorem 9.4.1.
 
+* Taylor's Theorem has a stronger conclusion regarding the bound on the error term.
+
 * All known errata (106+) have been fixed.
 
 Changes for the 2018-07 version:

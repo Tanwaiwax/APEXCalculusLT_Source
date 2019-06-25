@@ -1,0 +1,83 @@
+\documentclass[openany]{book}
+\usepackage{hyperref}
+\usepackage{bookmark}
+\begin{document}
+
+\tableofcontents
+
+\chapter{A}
+\section{a}
+\pdfbookmark[chapter]{B}{chapC}
+\hypersetup{bookmarksdepth=-2}
+\section{b}
+\chapter{C}\label{chapC}
+\hypersetup{bookmarksdepth=1}%back to tocdepth
+\section{c}
+\chapter{D}
+\section{d}
+
+\end{document}
+
+\documentclass[openany]{book}
+
+\usepackage[bookmarksnumbered]{hyperref}
+\usepackage{bookmark}
+
+\begin{document}
+
+\tableofcontents
+
+\clearpage
+
+\stepcounter{chapter}\stepcounter{chapter}
+\pdfbookmark[chapter]{2 [bookmark] Chapter Title}{chapterlabel}
+\addtocounter{section}{-1}
+\bgroup
+\renewcommand{\addcontentsline}[3]{}
+\section{pdf only Section Title}
+\egroup
+\pdfbookmark[section]{2.0 Section Title}{prereq}
+\label{prereq}
+
+This is a prerequisite section.
+
+\hypersetup{bookmarksdepth=-2}
+\chapter*{[pdf*] Chapter Title}\label{chapterlabel}
+\addcontentsline{toc}{chapter}{\texorpdfstring{\string\numberline{2}}{2 }[pdfacl] Chapter Title}
+\hypersetup{bookmarksdepth=2}
+\pdfbookmark[section]{Chapter Introduction}{chapterlabel}
+
+This chapter is about stuff.
+
+\section{Displayed Section Title}
+
+This is a section.
+
+\end{document}
+
+Can I have tableofcontents chapter entries not appear in pdf bookmarks?
+
+I'd like to have my table of contents and pdf bookmarks be slightly different.  I can monkey around with counters, \addcontentsline, and \pdfbookmark to mostly achieve what I want.  The only thing I'm having trouble with is have something appear in the table of contents that isn't in the pdf bookmarks.
+
+[This answer](https://tex.stackexchange.com/q/13502/107497) led me to using bookmarksdepth, which does result in the indicated items appearing in the table of contents but not the pdf bookmarks.  Unfortunately, the chapter A bookmark also disappears.  Is there a way to have some entries appear in the table of contents, but not the pdf bookmarks, without having other bookmarks also disappear?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+For various chapters in my book, I'd like to have a prerequisite section 0.  In the text of the book (lets say for chapter 2), this would be ordered:
+2.0 Prerequisite section
+2 Chapter Title
+2.1 First section
+In the \tableofcontents, the prerequisite section should not appear.  I can make all of this happen by fiddling with the appropriate counters and \addcontentsline.
+
+For navigability, however, I would like the section to appear in the pdf bookmarks.  I can't just use \pdfbookmark in the order I just had, because then the prerequisite section would appear under the wrong chapter.  So I'm content with the pdf bookmark order
+2 Chapter Title
+2.0 Prerequisite section
+Chapter Introduction
+2.1 First section
+The closest I've been able to come is:
+
+(Text appearing in `[]` is to help me determine where various titles came from - it wouldn't be in the document.)
+
+Unfortunately, the \addcontentsline also adds that entry to the pdf bookmarks, so that ``2 Chapter Title'' appears twice.  Is it possible to manually add the [pdfacl] entry to the \tableofcontents without that entry showing up in the pdf bookmarks?
+

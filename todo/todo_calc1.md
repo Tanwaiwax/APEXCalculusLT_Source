@@ -10,7 +10,7 @@
 1. [text/02_Derivative_Rules.tex line 209](../text/02_Derivative_Rules.tex#L209): todo Find an interactive where you specify f and see f, f', and f''
 1. [text/02_Implicit_Differentiation.tex line 319](../text/02_Implicit_Differentiation.tex#L319): todo write a better section summary for implicit differentiation
 1. [text/03_Concavity.tex line 308](../text/03_Concavity.tex#L308): todo write more problems
-1. [text/03_Curve_Sketching.tex line 266](../text/03_Curve_Sketching.tex#L266): todo write more problems
+1. [text/03_Curve_Sketching.tex line 267](../text/03_Curve_Sketching.tex#L267): todo write more problems
 1. [text/03_Increasing_Decreasing.tex line 336](../text/03_Increasing_Decreasing.tex#L336): todo write more problems
 1. [text/04_Differentials.tex line 201](../text/04_Differentials.tex#L201): todo Find the related and absolute errors in the examples, ask for the errors in the exercises
 1. [text/04_NewtonsMethod.tex line 257](../text/04_NewtonsMethod.tex#L257): todo find and write application problems

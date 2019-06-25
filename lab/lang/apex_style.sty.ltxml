@@ -1,0 +1,22 @@
+# -*- mode: Perl -*-
+# /=====================================================================\ #
+# |  APEX_format                                                        | #
+# | Implementation for LaTeXML                                          | #
+# |=====================================================================| #
+# | Timothy Prescott <timothy.prescott.und@gmail.com>                   | #
+# | License:     Creative Commons Attribution 4.0 Unported License      | #
+# |    http://creativecommons.org/licenses/by/4.0/                      | #
+# \=====================================================================/ #
+use strict;
+use warnings;
+use LaTeXML::Package;
+
+DefMacro('\lxIncludeJavascriptFile{}',
+	 '\AtBeginDocument{\lx@include@file{javascript}{#1}}');
+DefMacro('\lxIncludeCssFile{}',
+	 '\AtBeginDocument{\lx@include@file{css}{#1}}');
+
+DefConstructor('\lx@include@file{}{}',
+	       '<ltx:resource type="text/#1" src="#2" />');
+
+1;

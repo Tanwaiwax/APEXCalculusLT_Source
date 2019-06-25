@@ -1,0 +1,81 @@
+\documentclass[openany]{book}
+
+\RequirePackage[nocomments]{latexml}
+\lxDocumentID{apex}
+\begin{lxNavbar}
+\lxRef{lxApexTOC}{Table of Contents}\\
+\lxContextTOC
+\end{lxNavbar}
+
+\usepackage{ifthen}
+\usepackage{../../headers/apex_style}
+
+\lxIncludeCssFile{LaTeXML-navbar-left.css}
+
+\usepackage{hyperref}
+
+\begin{document}
+
+\iflatexml
+\label{lxApexTOC}
+\tableofcontents
+\chapter*{APEX Calculus}
+%\addcontentsline{toc}{chapter}{APEX Calculus}
+APEX Calculus
+\else
+APEX Calculus
+\tableofcontents
+\fi
+
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+Preface text
+
+\part{Part One}
+
+\chapter{Chapter One}
+
+\section{Section One dot One}
+
+content
+
+\section{Section One dot Two}
+
+content
+
+\chapter{Chapter Two}
+
+\section{Section Two dot One}
+
+content
+
+\section{Section Two dot Two}
+
+content
+
+\part{Part Two}
+
+\chapter{Chapter Three}
+
+\section{Section Three dot One}
+
+content
+
+\section{Section Three dot Two}
+
+content
+
+\chapter{Chapter Four}
+
+\section{Section Four dot One}
+
+content
+
+\section{Section Four dot Two}
+
+content
+
+\end{document}
+
+% ../../../LaTeXML/bin/latexml --quiet --destination=mybook.xml --nocomments mybook
+% ../../../LaTeXML/bin/latexmlpost --split --quiet --destination=mybook.html mybook.xml

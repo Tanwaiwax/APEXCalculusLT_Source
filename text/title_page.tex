@@ -5,16 +5,20 @@
 
 \begin{flushright}
 
-\textsc{\large \apex{\Huge\ \thetitle}}
-\label{coverpagetitle} \\
+\ifthenelse{\boolean{latexml}}{%
+ \chapter*[APEX \thetitle]{\textsc{\large \apex \Huge\ \thetitle}}
+ \addcontentsline{toc}{chapter}{APEX \thetitle}
+}{
+ \textsc{\large \apex \Huge\ \thetitle}
+}
+\label{coverpagetitle}
+\\
 
 \ifthenelse{\boolean{isEarlyTrans}}{Early}{Late} Transcendentals \\
 
 \vspace{\stretch{1}}%
 
-\Large
-
-University of North Dakota\bigskip
+{\Large University of North Dakota}\bigskip
 
 \normalsize
 
@@ -28,7 +32,7 @@ Gregory Hartman, Ph.D.
 
 \vspace{\stretch{4}}%
 
-{\small Revised \today\forwhom}
+{\small Revised \monthYear\forwhom}
 
 \end{flushright}
 \normalsize

@@ -48,10 +48,13 @@ DefMacro('\coloredbox{}{}'); # avoids problems?
 # exhibit problem:
 # \parbox{\linewidth} {\href{https://youtu.be/2CsQ_l1S2_Y}{has underscores}}
 
-DefConstructor('\lxIncludeJavascriptFile{}',
-               '<ltx:resource type="text/javascript" src="#1" />');
-DefConstructor('\lxIncludeCssFile{}',
-               '<ltx:resource type="text/css" src="#1" />');
+DefMacro('\lxIncludeJavascriptFile{}',
+	 '\AtBeginDocument{\lx@include@file{javascript}{#1}}');
+DefMacro('\lxIncludeCssFile{}',
+	 '\AtBeginDocument{\lx@include@file{css}{#1}}');
+
+DefConstructor('\lx@include@file{}{}',
+	       '<ltx:resource type="text/#1" src="#2" />');
 
 DefConstructor('\makeStyles{}{}',
 	       '<ltx:resource type="text/css">'.
@@ -117,24 +120,14 @@ DefMacro('\flushinnerequ{}','{#1}');
 DefMacro('\flushouterequ{}','{#1}');
 
 # some Macros we do need
+
 DefMacroI('\textcent',undef,"\x{00A2}");
-DefMacro('\lvert','\vert');
-DefMacro('\rvert','\vert');
-DefMacro('\lVert','\Vert');
-DefMacro('\rVert','\Vert');
+#DefMacro('\lvert','\vert');
+#DefMacro('\rvert','\vert');
+#DefMacro('\lVert','\Vert');
+#DefMacro('\rVert','\Vert');
 DefMacro('\lxenumerate{}','\begin{enumerate}');
 DefMacro('\psBill'); # todo
-#DefMacro('\pdfbookmark[]{}{}','\addcontentsline{toc}{#1}{#2}'); # from hyperref
-# that will work if #1 is "chapter" etc, but not a number or missing
-# and hyperref doesn't add it to the table of contents
-#DefMacro('\pdfbookmark[]{}{}',sub {
-#    my($gullet,$level,$text,$name)=@_;
-#    $level //= 'chapter';
-#    if ( looks_like_number($level) ) {
-#	$level = ['chapter','section','subsection','subsubsection']->[$level];
-#    }
-#    (T_CS('\\'.$level),T_BEGIN,$text,T_END); });
-
 
 # some macros we don't need
 DefMacro('\drawexampleline');

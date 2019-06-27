@@ -1,7 +1,7 @@
 List Of Changes
 =====================
 
-Changes for the 2019-XX version:
+Changes for the 2019-06 version:
 --------------------
 
 * The preface now has a link to a library of the 3d images.  This page also has instructions for using an Android or iOS app to interactively view the images.

@@ -1,0 +1,16 @@
+\documentclass{book}
+\makeatletter\renewcommand\@pnumwidth{2em}\makeatother
+\begin{document}
+\tableofcontents
+\section{Enough Space}
+\clearpage
+\setcounter{page}{1000}
+\section{Not Enough Space}
+content
+\end{document}
+
+see https://tex.stackexchange.com/q/455945/107497
+
+In the standard book class, LaTeX assumes that any page number in the table of contents is at most three digits.  This means that once my book passes 1000, entries to the table of contents are too wide.
+
+This seems similar to [https://tex.stackexchange.com/q/229269/107497], but that question is using `scrbook` and KOMA-script (which I'm not), as well as `tocstyle`.  I'm hoping not to add another package just to solve this problem.

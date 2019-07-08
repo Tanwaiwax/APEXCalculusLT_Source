@@ -300,7 +300,7 @@ def getlatexmlbin(exe):
     
 def getlatexmlcommandline(base='Calculus'):
     ret = [getlatexmlbin('latexml'),
-           '--quiet',#'--verbose','--verbose',#
+           '--verbose','--verbose',#'--quiet',#
            '--destination='+base+'.xml',
            '--nocomments',
            base]

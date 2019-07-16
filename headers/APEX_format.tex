@@ -461,7 +461,12 @@
 
 
 
-% \writeToAnsFile in the style file b/c latexml was copying in ``noexpand''
+% \writeToAnsFile (was?) in the style file b/c latexml was copying in ``noexpand''
+\newcommand{\writeToAnsFile}[1]{%
+ \immediate\write\answrite{%
+  \noexpand\answersForSection{\arabic{chapter}}{\arabic{section}}{#1}%
+ }%
+}
 
 
 

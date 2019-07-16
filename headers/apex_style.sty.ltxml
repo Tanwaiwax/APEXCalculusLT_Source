@@ -138,6 +138,7 @@ DefMacro('\testmargintop');
 DefMacro('\testmarginbottom');
 
 
+if(0==1){
 # have to keep it here because .sty has \noexpand, which gets written
 DefMacro('\writeToAnsFile {}',sub {
     #    print STDERR Dumper($_[1]);
@@ -146,6 +147,7 @@ DefMacro('\writeToAnsFile {}',sub {
 	      . CounterValue('section')->toString . '}{'),
      $_[1],
      Tokenize('}}'));});
+}
 
 DefPrimitive('\showans Number',sub {
     my ($stomach,$port) = @_;

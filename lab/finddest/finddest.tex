@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage{custom}
+%\mymacro
+\myconstructor
+\begin{document}
+\jobname
+\end{document}
+
+macro:
+  LaTeXML::Core::Mouth::file::$IN
+ LaTeXML::Core::Mouth::file
+   LaTeXML::Core::Mouth
+LaTeXML::Core::Gullet
+
+constructor:
+  XML::LibXML::XPathContext
+  LaTeXML::Common::XML::XPath
+  LaTeXML::Common::Model::RelaxNG
+ LaTeXML::Common::Model
+XML::LibXML::Document
+XML::LibXML::PI
+LaTeXML::Core::Document
+LaTeXML::Common::Locator
+LaTeXML::Common::Font
+
+destination:
+lib/LaTeXML/Post.pm -> LaTeXML::Post::Document->getDestination() but not exported
+!lib/LaTeXML/Post/Graphics.pm
+!lib/LaTeXML/Post/Manifest/Epub.pm
+!lib/LaTeXML/Post/LaTeXImages.pm
+!lib/LaTeXML/Post/Collector.pm
+!lib/LaTeXML/Post/Split.pm
+!lib/LaTeXML/Post/XSLT.pm
+!lib/LaTeXML/Post/Writer.pm
+!lib/LaTeXML/Util/Pack.pm
+!lib/LaTeXML/Util/Test.pm
+!lib/LaTeXML/Util/Pathname.pm
+!lib/LaTeXML/Util/Image.pm
+lib/LaTeXML/Common/Config.pm Config->{opts}{destination}
+lib/LaTeXML.pm LaTeXML->{opts}{destination}
+
+
+Is there a way to know the --destination within a .sty.ltxml file?
+
+In TeX, this would be the \jobname macro.  But in LaTeXML, \jobname always resolves to the source.
+
+For example,
+pdftex -jobname myjob '\jobname\bye'
+will create a pdf saying 'myjob' (the default would be 'texput').  On the other hand,
+echo '\jobname\bye' | latexml --destination=myjob.xml -
+says that the \jobname is 'Anonymous String'.
+
+It appears that LaTeXML->{opts}{destination} and LaTeXML::Common::Config->{opts}{destination} would access the destination, and possibly also
+use LaTeXML::Post;
+import LaTeXML::Post::Document qw(getDestination);
+(although that isn't exported?).  But within a .sty.ltxml file, I can't figure out how to access those objects.
+
+A macro can access the Gullet and Mouth, while a constructor can access LaTeXML::Core::Document and several items within LaTeXML::Common (but not Config).  But there doesn't appear to be an overlap with the previous paragraph.
+

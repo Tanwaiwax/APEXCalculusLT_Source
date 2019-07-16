@@ -1,0 +1,68 @@
+use strict;
+use warnings;
+#use LaTeXML;
+use LaTeXML::Post;
+#import LaTeXML::Post::Document qw(getDestination);
+use LaTeXML::Global;
+use LaTeXML::Package;
+use Data::Dumper;
+
+# state->lookupValue('DOCUMENTID');
+
+# see texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzexternalshared.code.tex
+
+#print STDERR "destination:\n".LaTeXML::Post::Document->getDestination()."\n";
+
+#print STDERR "LGS:\n".Dumper(LaTeXML::Global->$STATE)."\n";
+
+LaTeXML::Package->AtBeginDocument(sub {
+ print STDERR "customABD:\n".Dumper(@_);
+ DefMacro('\pgfactualjobname',sub {
+  print STDERR "paj:\n".Dumper(@_);
+ });
+});
+
+#print STDERR "destination is ".LaTeXML->{opts}{destination}."\n";
+
+# macro[0] -> gullet
+# constructor[0] -> document
+
+RegisterDocumentNamespace('xi','http://www.w3.org/2001/XInclude');
+
+DefMacro('\tikzexternalimgextension','.xml');
+DefMacro('\pgfsys@imagesuffixlist','.xml');
+
+# TikZ:
+# Invokes '#2' if \jobname equals '#1' and '#3' if not.
+# I suppose that '#1' is a macro containing the file name.
+#\def\tikzifexternaljobnamematches#1#2#3{%
+#	\edef\pgf@tempa{\expandafter\string\csname#1\endcsname}%
+#	\edef\pgf@tempb{\expandafter\string\csname\pgfactualjobname\endcsname}%
+#	\ifx\pgf@tempa\pgf@tempb #2\else#3 \fi%
+#}%
+DefMacro('\tikzifexternaljobnamematches{}',sub {
+print STDERR "item 1 is $_[1]\n";
+print STDERR "as string: ".$_[1]->toString()."\n";
+print STDERR "expanded: ".Expand($_[1])."\n";
+print STDERR "expanded string: ".Expand($_[1])->toString()."\n";
+if ( ToString(Expand(T_CS('\thedocument@ID'))) eq ToString(Expand($_[1])) ) { print STDERR 'TTTT';return Tokenize('\expandafter\@firstoftwo') } else { print STDERR 'FFFF';return Tokenize('\expandafter\@secondoftwo'); }
+});
+#DefMacro('\tikzifexternaljobnamematches{}{}{}',sub {
+#if ( ToString(Expand(T_CS('\thedocument@ID'))) eq $_[1] ) { print STDERR 'TTTT';return Tokenize($_[2]) } else { print STDERR 'FFFF';return Tokenize($_[3]); }
+#});
+#'?\lxGetDocumentID==#1(\typeout{TTTT}#2)(\typeout{FFFF}#3)');
+
+DefMacro('\lxGetDocumentID','\thedocument@ID');
+
+DefConstructor('\tikzexternal@forcegraphics@@@',
+ '<xi:include href="#href" xpointer="picture" />',
+ properties => sub {
+  href => ToString(Expand(T_CS('\tikzexternal@curfilename')))});
+
+#<xsl:copy-of select="document('file.xml')"/>
+#
+#<document xmlns="http://www.w3.org/1999/xhtml"
+#      xmlns:xi="http://www.w3.org/2001/XInclude">
+#<xi:include href="license.txt" />
+
+1;

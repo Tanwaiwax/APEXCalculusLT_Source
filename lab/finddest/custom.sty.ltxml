@@ -1,0 +1,24 @@
+use strict;
+use warnings;
+#use LaTeXML;
+use LaTeXML::Post;
+#import LaTeXML::Post::Document qw(getDestination);
+use LaTeXML::Global;
+use LaTeXML::Package;
+use Data::Dumper;
+
+# state->lookupValue('DOCUMENTID');
+# macro[0] -> gullet
+# constructor[0] -> document
+
+DefMacro('\mymacro',sub{print STDERR Dumper(@_);'';});
+DefConstructor('\myconstructor',sub{
+print STDERR '-'x20 . "\n";
+print STDERR Dumper(@_);
+print STDERR '-'x20 . "\n";
+print STDERR Dumper(keys %{$_[0]});
+print STDERR '-'x20 . "\n";
+print STDERR Dumper($_[0]->{document});
+});
+
+1;

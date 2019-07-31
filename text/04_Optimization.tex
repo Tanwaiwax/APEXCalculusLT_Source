@@ -13,27 +13,31 @@ We start with a classic example which is followed by a discussion of the topic o
  (0,0)--(33.6pt,35.28pt)--(95.2pt,35.28pt)--(61.6pt,0)--cycle;
 \begin{scope}[cm={1,1.05,0,1,(0,0)}]
 \foreach \x in {0,...,7} {
- \shadedraw[xscale=.3,shift={(\x*14 pt,0)},left color=brown!40!white,
- 	right color=brown!99!white](0,0)-- ++(0,20pt)-- ++(4pt,4pt)-- ++(6pt,0pt)
+ \shadedraw[xscale=.3,shift={(\x*14 pt,0)},
+ \iflatexml fill=brown!70!white\else left color=brown!40!white,right color=brown!99!white\fi
+ ](0,0)-- ++(0,20pt)-- ++(4pt,4pt)-- ++(6pt,0pt)
  		-- ++(4pt,-4pt)-- ++(0pt,-20pt)--cycle;
 }
 \end{scope}
 \begin{scope}[shift={(33.6pt,35.28pt)}]
 \foreach \x in {0,...,10} {
- \shadedraw[xscale=.4,shift={(\x*14 pt,0)},left color=brown!40!white,
- 	right color=brown!99!white](0,0)-- ++(0,20pt)-- ++(4pt,4pt)-- ++(6pt,0pt)
+ \shadedraw[xscale=.4,shift={(\x*14 pt,0)},
+ \iflatexml fill=brown!70!white\else left color=brown!40!white,right color=brown!99!white\fi
+ ](0,0)-- ++(0,20pt)-- ++(4pt,4pt)-- ++(6pt,0pt)
  		-- ++(4pt,-4pt)-- ++(0pt,-20pt)--cycle;
 }
 \end{scope}
 \foreach \x in {0,...,10} {
- \shadedraw[xscale=.4,shift={(\x*14 pt,0)},left color=brown!40!white,
- 	right color=brown!99!white](0,0)-- ++(0,20pt)-- ++(4pt,4pt)-- ++(6pt,0pt)
+ \shadedraw[xscale=.4,shift={(\x*14 pt,0)},
+ \iflatexml fill=brown!70!white\else left color=brown!40!white,right color=brown!99!white\fi
+ ](0,0)-- ++(0,20pt)-- ++(4pt,4pt)-- ++(6pt,0pt)
  		-- ++(4pt,-4pt)-- ++(0pt,-20pt)--cycle;
 }
 \begin{scope}[cm={1,1.05,0,1,(61.6pt,0)}]
 \foreach \x in {0,...,7} {
- \shadedraw[xscale=.3,shift={(\x*14 pt,0)},left color=brown!40!white,
- 	right color=brown!99!white](0,0)-- ++(0,20pt)-- ++(4pt,4pt)-- ++(6pt,0pt)
+ \shadedraw[xscale=.3,shift={(\x*14 pt,0)},
+ \iflatexml fill=brown!70!white\else left color=brown!40!white,right color=brown!99!white\fi
+ ](0,0)-- ++(0,20pt)-- ++(4pt,4pt)-- ++(6pt,0pt)
  		-- ++(4pt,-4pt)-- ++(0pt,-20pt)--cycle;
 }
 \end{scope}
@@ -100,22 +104,25 @@ We will use \autoref{idea:optimization} in a variety of examples.
  (0,0)--(33.6pt,35.28pt)--(95.2pt,35.28pt)--(61.6pt,0)--cycle;
 \begin{scope}[cm={1,1.05,0,1,(0,0)}]
 \foreach \x in {0,...,7} {
- \shadedraw [xscale=.3,shift={(\x*14 pt,0)},left color=brown!40!white,
-  right color=brown!99!white](0,0)-- ++(0,20pt)-- ++(4pt,4pt)-- ++(6pt,0pt)
+ \shadedraw [xscale=.3,shift={(\x*14 pt,0)},
+ \iflatexml fill=brown!70!white\else left color=brown!40!white,right color=brown!99!white\fi
+ ](0,0)-- ++(0,20pt)-- ++(4pt,4pt)-- ++(6pt,0pt)
   	-- ++(4pt,-4pt)-- ++(0pt,-20pt)--cycle;
 }
 \end{scope}
 \begin{scope}[shift={(33.6pt,35.28pt)}]
 \foreach \x in {0,...,10} {
- \shadedraw[xscale=.4,shift={(\x*14 pt,0)},left color=brown!40!white,
-  right color=brown!99!white](0,0)-- ++(0,20pt)-- ++(4pt,4pt)-- ++(6pt,0pt)
+ \shadedraw[xscale=.4,shift={(\x*14 pt,0)},
+ \iflatexml fill=brown!70!white\else left color=brown!40!white,right color=brown!99!white\fi
+ ](0,0)-- ++(0,20pt)-- ++(4pt,4pt)-- ++(6pt,0pt)
   	-- ++(4pt,-4pt)-- ++(0pt,-20pt)--cycle;
 }
 \end{scope}        
 \begin{scope}[cm={1,1.05,0,1,(61.6pt,0)}]
 \foreach \x in {0,...,7} {
- \shadedraw[xscale=.3,shift={(\x*14 pt,0)},left color=brown!40!white,
-  right color=brown!99!white](0,0)-- ++(0,20pt)-- ++(4pt,4pt)-- ++(6pt,0pt)
+ \shadedraw[xscale=.3,shift={(\x*14 pt,0)},
+ \iflatexml fill=brown!70!white\else left color=brown!40!white,right color=brown!99!white\fi
+ ](0,0)-- ++(0,20pt)-- ++(4pt,4pt)-- ++(6pt,0pt)
   	-- ++(4pt,-4pt)-- ++(0pt,-20pt)--cycle;
 }
 \end{scope}
@@ -232,12 +239,18 @@ Evaluating $c(x)$ at $x=416.67$ gives a cost of about \$370,000. The distance th
 
 \mtable{A sketch for \autoref{ex_min_surf_area}.}{fig:min_surf_area}{%
 \begin{tikzpicture}[scale=.67]
- \draw [draw={\colorone},left color=\colorone!60,right color=\colorone!20,thick]
+ \draw [draw={\colorone},
+ \iflatexml fill=\colorone!40\else left color=\colorone!60,right color=\colorone!20\fi
+ ,thick]
   (0,0) ellipse [x radius=1.5cm, y radius=1cm];
  \begin{scope}[xscale=1.5]
-  \draw [draw={\colorone},left color=\colorone!60,right color=\colorone!20,thick]
+  \draw [draw={\colorone},
+  \iflatexml fill=\colorone!40\else left color=\colorone!60,right color=\colorone!20\fi
+  ,thick]
    (-1,0) -- node [pos=.5,left,color=black] {\scriptsize $h$} (-1,-3.5) arc (180:360:1) -- (1,0) arc (360:180:1);
-%  \draw [draw={\colorone},left color=\colorone!60,right color=\colorone!20]
+%  \draw [draw={\colorone},
+% \iflatexml fill=\colorone!40\else left color=\colorone!60,right color=\colorone!20\fi
+% ]
 %   (-1,-.2) -- (-1,-3.3)
 %   arc (180:360:1) -- (1,-.2) arc (360:180:1);
  \end{scope}

@@ -51,5 +51,5 @@ pen p=colorone;
 draw(s,emissive(coloronefill),meshpen=p);
 
 //label and arrow
-label("$x+y^2/9=1$",(2.5,0,1));
+label("$x^2+y^2/9=1$",(2.5,0,1));
 draw((2.25,0,1.25)--(1,0,2),Arrow3(size=2mm));

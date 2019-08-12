@@ -98,9 +98,8 @@ Hooke's Law states that the force required to compress or stretch a spring $x$ u
    \draw [thick,draw={\colorone}] (0,0) --(1,1) --(1.5,.5)--(2,.5);
   \end{scope}
  \end{scope}
- \draw [shift={(.9,0)},thick,
- \iflatexml fill=\colorone!40\else left color={\colorone!70},right color={\coloronefill}\fi
- ,{\colorone}] (2,0) rectangle (2.5,.5);
+ \ifthenelse{\boolean{latexml}}{\draw [shift={(.9,0)},thick,{\colorone},fill=\colorone!40]}{\draw [shift={(.9,0)},thick,{\colorone},left color={\colorone!70},right color={\coloronefill}]}
+ (2,0) rectangle (2.5,.5);
  \draw [shift={(.9,0)},->,>=stealth]
   (2.75,.15)-= node [pos=.5,above] {$F$} (3.25,.15);
  \begin{scope}[shift={(0,-.25)}]
@@ -127,9 +126,8 @@ Hooke's Law states that the force required to compress or stretch a spring $x$ u
     \draw (\x*.4+2.8,.1)--(\x*.4+2.8,-.1) node [below] {\scriptsize $\x$};
    }
   \end{scope}
-  \draw [shift={(2.9,0)},thick,
-  \iflatexml fill=\colorone!40\else left color={\colorone!70},right color={\coloronefill}\fi
-  ,{\colorone}] (2,0) rectangle (2.5,.5);
+  \ifthenelse{\boolean{latexml}}{\draw [shift={(2.9,0)},thick,{\colorone},fill=\colorone!40]}{\draw [shift={(2.9,0)},thick,{\colorone},left color={\colorone!70},right color={\coloronefill}]}
+  (2,0) rectangle (2.5,.5);
  \end{scope}             
 \end{tikzpicture}
 \caption{Illustrating the important aspects of stretching a spring in computing work in \autoref{ex_spring1}.}
@@ -189,12 +187,9 @@ We demonstrate how to compute the total work done in pumping a fluid out of the 
     \draw [dashed] (3,\y) arc (0:180:3);
 }
 \draw (5.1,14) node {\scriptsize $\left.\rule{0pt}{.3cm}\right\}\Delta y_i$};
-\draw [
-\iflatexml fill=\colorone!60\else left color={\colorone},right color={\coloronefill}\fi
-,thick] (0,16) circle (3);
-\draw [
-\iflatexml fill=\colorone!60\else left color={\colorone},right color={\coloronefill}\fi
-,thick]
+\ifthenelse{\boolean{latexml}}{\draw [thick,fill=\colorone!60]}{\draw [thick,left color={\colorone},right color={\coloronefill}]}
+ (0,16) circle (3);
+\ifthenelse{\boolean{latexml}}{\draw [thick,fill=\colorone!60]}{\draw [thick,left color={\colorone},right color={\coloronefill}]}
  (-3,16) -- (-3,12)  arc (180:360:3) -- (3,16) arc (360:180:3);
 \end{scope}
 \end{tikzpicture}}
@@ -232,9 +227,8 @@ W 	&=	\int_0^{30} 6240\pi(35-y)\ dy \\
 \draw [thick](3,30) --(3,0) arc (0:-180:3) -- (-3,30);
 \draw [thick] (0,30) circle (3);
 \draw [thick,dashed] (3,0) arc (0:180:3);
-\draw [
-\iflatexml fill=\colorone!60\else left color={\colorone},right color={\coloronefill}\fi
-,thick,draw={\colorone}] (0,14) circle (3);
+\ifthenelse{\boolean{latexml}}{\draw [thick,draw={\colorone},fill=\colorone!60]}{\draw [thick,draw={\colorone},left color={\colorone},right color={\coloronefill}]}
+ (0,14) circle (3);
 \draw [->] (5.25,16) node [above] {\scriptsize $V(y)=100\pi dy$} -- (2,14);
 \end{scope}
 \end{tikzpicture}}
@@ -259,9 +253,8 @@ We demonstrate the concepts again in the next examples.
 \draw (0,30) -- node [pos=.5,above] {\scriptsize $2$} (2.9,29.22);                              
 \draw [thick](3,30) --(0,0) -- (-3,30);
 \draw [thick] (0,30) circle (3);
-\draw [
-\iflatexml fill=\colorone!60\else left color={\colorone},right color={\coloronefill}\fi
-,thick,draw={\colorone}] (0,14) circle (1.4);
+\ifthenelse{\boolean{latexml}}{\draw [thick,draw={\colorone},fill=\colorone!60]}{\draw [thick,draw={\colorone},left color={\colorone},right color={\coloronefill}]}
+ (0,14) circle (1.4);
 \draw [->] (3.4,6) node [below] {\scriptsize $V(y)=\pi(\frac y5+2)^2 dy$} -- (0,14);
 \end{scope}
 \end{tikzpicture}}

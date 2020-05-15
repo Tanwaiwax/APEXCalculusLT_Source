@@ -1,4 +1,5 @@
-1. [errata/Errata.tex line 254](../errata/Errata.tex#L254): \item \S8.2 p402: Most of the definite integrals \emph{do not} ``appear in the previous set''. % todo do we want them to?
+1. [errata/Errata.tex line 305](../errata/Errata.tex#L305): \item \S8.2 p402: Most of the definite integrals \emph{do not} ``appear in the previous set''. % todo do we want them to?
+1. [errata/Errata.tex line 60](../errata/Errata.tex#L60): \item The chapter headings in \S10.2--10.5 show Chapter 9. % todo
 1. [exercises/02_06_exset_04.tex line 1](../exercises/02_06_exset_04.tex#L1): todo Tim check line break of directions
 1. [exercises/03_04_exset_02.tex line 3](../exercises/03_04_exset_02.tex#L3): todo Tim be consistent about whether critical points and inflection points are in the domain or on the graph
 1. [exercises/06_03_exset_02.tex line 2](../exercises/06_03_exset_02.tex#L2): todo Tim Note: the corresponding indefinite integrals appear in the previous set.
@@ -14,9 +15,14 @@
 1. [figures/figtrip5d_3D.asy line 37](../figures/figtrip5d_3D.asy#L37): // todo find a better way to shade this in
 1. [figures/figtrip5e_3D.asy line 26](../figures/figtrip5e_3D.asy#L26): // todo find a better way to shade this in
 1. [headers/APEX_format.tex line 42](../headers/APEX_format.tex#L42): \RequirePackage{amssymb} % todo ? https://tex.stackexchange.com/a/3000/107497 recommends dropping amssymb in favor of unicode-math
-1. [headers/apex_style.sty.ltxml line 130](../headers/apex_style.sty.ltxml#L130): DefMacro('\psBill'); # todo
-1. [lab/lang/APEX_format.tex line 42](../lab/lang/APEX_format.tex#L42): \RequirePackage{amssymb} % todo ? https://tex.stackexchange.com/a/3000/107497 recommends dropping amssymb in favor of unicode-math
-1. [text/02_Derivative.tex line 518](../text/02_Derivative.tex#L518): todo Tim : iframe ?
+1. [headers/apex_style.sty.ltxml line 132](../headers/apex_style.sty.ltxml#L132): DefMacro('\psBill'); # todo
+1. [revisions/completed/metroStErrata.txt line 21](../revisions/completed/metroStErrata.txt#L21): Figure 11.6 would look better if the blue plane would not stop exactly at the z-axis and if the tip of the x-axis would “stick out”.  Mention the general drawing trick: if a plane is parallel to a coordinate axis, draw grid lines parallel to that axis onto the plane.  Also draw an example of an oblique plane. - todo'd
+1. [revisions/completed/metroStErrata.txt line 31](../revisions/completed/metroStErrata.txt#L31): Section 11.2 Example 6 (and several other similar examples and exercises) need a short physics crash course:  forces are vectors and in particular add like vectors; an object is at rest iff all acting forces add up to the zero vector; force = mass times acceleration; the force of gravity near the surface of the earth is such that the acceleration of every object is 9.8 m/s^2. - todo
+1. [revisions/completed/metroStErrata.txt line 59](../revisions/completed/metroStErrata.txt#L59): P.731 line 3: Concept of position function is not clear. A vector does not determine a position. We need to introduce the concept of a “position vector”:  The position vector of point P is the vector OP. That way every point determines a unique vector and every vector determines a unique point. - todo
+1. [revisions/completed/metroStErrata.txt line 69](../revisions/completed/metroStErrata.txt#L69): Fig 13.4: the labeling of the level curves is not nice; maybe use different colors for the different levels? - todo
+1. [revisions/completed/metroStErrata.txt line 87](../revisions/completed/metroStErrata.txt#L87): Section 13.9: I would like some justification/motivation for the Lagrange multiplier method, which would reinforce the geometric meaning of the gradient.  Also we need some more problems with three unknowns. - already todo'd
+1. [text/02_Derivative.tex line 349](../text/02_Derivative.tex#L349): todo Tim should the graph of sin and its derivative use equal aspect ratio?
+1. [text/02_Derivative.tex line 519](../text/02_Derivative.tex#L519): todo Tim : iframe ?
 1. [text/03_Curve_Sketching.tex line 251](../text/03_Curve_Sketching.tex#L251): todo Tim Fig 3.5.5 (sin x according to Mathematica) take a while to render.  could we get some actual tikz code to do it for us?
 1. [text/03_Mean_Value_Theorem.tex line 130](../text/03_Mean_Value_Theorem.tex#L130): todo Tim does the next example need an introduction?
 1. [text/04_NewtonsMethod.tex line 258](../text/04_NewtonsMethod.tex#L258): todo Tim include the Fast Inverse Square Root question?
@@ -27,20 +33,24 @@
 1. [text/07_Arc_Length.tex line 187](../text/07_Arc_Length.tex#L187): todo Tim should this be 3D at all?
 1. [text/07_Arc_Length.tex line 214](../text/07_Arc_Length.tex#L214): todo Tim does this (and prev KI) only need f' continuous on (a,b)?
 1. [text/07_Exp_Log_Functions.tex line 81](../text/07_Exp_Log_Functions.tex#L81): todo Tim move this to 7.0 once that's written
-1. [text/07_Fluid_Force.tex line 114](../text/07_Fluid_Force.tex#L114): todo Tim simplify this tikz? maybe convert it to 3d anyway?
+1. [text/07_Fluid_Force.tex line 122](../text/07_Fluid_Force.tex#L122): todo Tim simplify this tikz? maybe convert it to 3d anyway?
 1. [text/07_Fluid_Force.tex line 21](../text/07_Fluid_Force.tex#L21): todo Tim should this be redone? or not, because Larry Green isn't on Youtube?
-1. [text/07_Fluid_Force.tex line 60](../text/07_Fluid_Force.tex#L60): todo Tim convert the cylindrical tank into a 3d image?
+1. [text/07_Fluid_Force.tex line 64](../text/07_Fluid_Force.tex#L64): todo Tim convert the cylindrical tank into a 3d image?
 1. [text/07_Shell_Method.tex line 58](../text/07_Shell_Method.tex#L58): todo Tim turn these into asymptote files
-1. [text/07_Work.tex line 193](../text/07_Work.tex#L193): todo Tim make the water tank figure into 3d?
-1. [text/07_Work.tex line 231](../text/07_Work.tex#L231): todo Tim make the simplified water tank into 3d?
-1. [text/07_Work.tex line 256](../text/07_Work.tex#L256): todo Tim make the water cone into 3d?
+1. [text/07_Work.tex line 201](../text/07_Work.tex#L201): todo Tim make the water tank figure into 3d?
+1. [text/07_Work.tex line 241](../text/07_Work.tex#L241): todo Tim make the simplified water tank into 3d?
+1. [text/07_Work.tex line 268](../text/07_Work.tex#L268): todo Tim make the water cone into 3d?
 1. [text/08_Alternating_Series.tex line 186](../text/08_Alternating_Series.tex#L186): todo Tim do we want to have an absolutely convergent example to refer back to?
-1. [text/09_Parametric_Calculus.tex line 354](../text/09_Parametric_Calculus.tex#L354): todo Tim Rogowski has a subsection on speed at this point.  Stewart doesn't.
+1. [text/09_Parametric_Calculus.tex line 356](../text/09_Parametric_Calculus.tex#L356): todo Tim Rogowski has a subsection on speed at this point.  Stewart doesn't.
 1. [text/09_Parametric_Equations.tex line 5](../text/09_Parametric_Equations.tex#L5): todo Tim should these be labeled as figures?
-1. [text/10_Cross_Product.tex line 268](../text/10_Cross_Product.tex#L268): todo Tim this parallelogram is very narrow.  do we want something better?
-1. [text/10_Lines.tex line 192](../text/10_Lines.tex#L192): todo Tim why not just rescale d2 to match d1?
-1. [text/11_Vector_Functions_Motion.tex line 396](../text/11_Vector_Functions_Motion.tex#L396): todo Tim make sure these three figures match
+1. [text/10_Cross_Product.tex line 271](../text/10_Cross_Product.tex#L271): todo Tim this parallelogram is very narrow.  do we want something better?
+1. [text/10_Lines.tex line 193](../text/10_Lines.tex#L193): % todo Tim why not just rescale d2 to match d1?
+1. [text/10_Space_Intro.tex line 132](../text/10_Space_Intro.tex#L132): todo Tim this would look better if the blue plane would not stop exactly at the z-axis and if the tip of the x-axis would stick out
+1. [text/11_Vector_Functions_Motion.tex line 398](../text/11_Vector_Functions_Motion.tex#L398): todo Tim make sure these three figures match
+1. [text/12_Multivariable_Intro.tex line 100](../text/12_Multivariable_Intro.tex#L100): todo Tim distinguish the level curves in Fig 13.1.4
 1. [text/12_Tangent_Planes_Lines.tex line 141](../text/12_Tangent_Planes_Lines.tex#L141): todo Tim should this be $\ell_{\vecn}$ here and many other places?
 1. [text/12_Tangent_Planes_Lines.tex line 237](../text/12_Tangent_Planes_Lines.tex#L237): todo Tim but isn't one of those points closer to the surface?
+1. [text/13_Surface_Area.tex line 61](../text/13_Surface_Area.tex#L61): todo Tim remove the grid lines from figure 14.5.2 fig:surfacearea1 - check that this happened
 1. [text/14_Line_Integral_Vector_Fields.tex line 262](../text/14_Line_Integral_Vector_Fields.tex#L262): todo Tim maybe separate these into four files for the prc?
 1. [text/14_Parametrized_Surfaces.tex line 6](../text/14_Parametrized_Surfaces.tex#L6): todo Tim surely we can find a better serif S ?
+1. [text/Inside_Cover_Of_The_Text_Material_Complete.tex line 58](../text/Inside_Cover_Of_The_Text_Material_Complete.tex#L58): todo Tim Hartman includes \int\ln x dx after \int e^x dx.  Do we want to?

@@ -8,7 +8,14 @@ Each point $P$ in space can be represented with an ordered triple, $P=(a,b,c)$, 
 
 Visualizing points in space on paper can be problematic, as we are trying to represent a 3-dimensional concept on a 2-dimensional medium. We cannot draw three lines representing the three axes in which each line is perpendicular to the other two. Despite this issue, standard conventions exist for plotting shapes in space that we will discuss that are more than adequate.
 
-\mtable{Illustrating the right hand rule.  Figure courtesy of \href{https://commons.wikimedia.org/wiki/File:Right_hand_rule_simple.png}{user:Schorschi2} / \href{http://commons.wikimedia.org/}{Wikimedia Commons} / Public Domain.}{fig:right_hand_rule}{\rotatebox{41}{\includegraphics[width=.5\marginparwidth]{figures/raw/Right_hand_rule_simple.png}}\vspace{-2\baselineskip}}
+\mtable{Illustrating the right hand rule.  Figure courtesy of \href{https://commons.wikimedia.org/wiki/File:Right_hand_rule_simple.png}{user:Schorschi2} / \href{http://commons.wikimedia.org/}{Wikimedia Commons} / Public Domain.}{fig:right_hand_rule}{\centering
+\begin{tikzpicture}[baseline=-10ex]
+ \draw[->](0,0)--(0,1)node[above]{$z$};
+ \draw[->](0,0)--(-.5,-.3)node[below left]{$x$};
+ \draw[->](0,0)--(.5,-.3)node[below right]{$y$};
+\node at(2,.5){\rotatebox{41}{\includegraphics[width=.5\marginparwidth]{figures/raw/Right_hand_rule_simple.png}}};
+\end{tikzpicture}
+\vspace{-2\baselineskip}}
 
 One convention is that the axes must conform to the \sword{right hand rule}. This rule states that when the fingers of the right hand extend in the direction of the positive $x$-axis and curve toward the positive $y$-axis, then the extended thumb will point in the direction of the positive $z$-axis. (It may take some thought to verify this, but this system is inherently different from the one created by using the ``left hand rule.'')
 Another way to view the rule is that when the index finger of the right hand extends in the direction of the positive $x$-axis, and the middle finger (bent ``inward'' so it is perpendicular to the palm) points along the positive $y$-axis, then the extended thumb will point in the direction of the positive $z$-axis.%
@@ -38,7 +45,7 @@ Just as the $x$- and $y$-axes divide the plane into four quadrants, the $x$-, $y
 
 \subsection{Measuring Distances}
 
-It is of critical importance to know how to measure distances between points in space. The formula for doing so is based on measuring distance in the plane, and is known (in both contexts) as the Euclidean measure of distance.
+It is of critical importance to know how to measure distances between points in space. The formula for doing so is based on measuring distance in the plane and the Pythagorean theorem, and is known (in both contexts) as the Euclidean measure of distance.
 
 \definition{def:space_distance}{Distance In Space}{Let $P=(x_1,y_1,z_1)$ and $Q = (x_2,y_2,z_2)$ be points in space. The distance $D$ between $P$ and $Q$ is \index{distance!between points in space}
 \[D = \sqrt{(x_2-x_1)^2+(y_2-y_1)^2+(z_2-z_1)^2}.\]}
@@ -122,6 +129,7 @@ the $x$-$y$ plane & the $y$-$z$ plane & the $x$-$z$ plane
 \caption{The coordinate planes.}\label{fig:coordplanes}
 \end{minipage}
 
+% todo Tim this would look better if the blue plane would not stop exactly at the z-axis and if the tip of the x-axis would stick out
 \mtable{The plane $x=2$.}{fig:space2}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
@@ -130,6 +138,7 @@ the $x$-$y$ plane & the $y$-$z$ plane & the $x$-$z$ plane
 3Dcoo=0 0 0,
 3Droo=150}{width=\marginparwidth}{figures/figspace2_3D}}
 
+% todo Mention the general drawing trick: if a plane is parallel to a coordinate axis, draw grid lines parallel to that axis onto the plane.  Also draw an example of an oblique plane.
 \example*{ex_space_x_is_two}{A plane in three dimensions}{The equation $x=2$ describes all points in space where the $x$-value is 2. This is a plane, parallel to the $y$-$z$ coordinate plane, shown in \autoref{fig:space2}.}
 
 \example{ex_space3}{Regions defined by planes}{Sketch the region defined by the inequalities $-1\leq y\leq 2$.}
@@ -241,7 +250,7 @@ In the example preceding the definition, the curve $x^2+y^2=1$ in the $x$-$y$ pl
 
 One of the applications of integration we learned previously was to find the volume of solids of revolution --- solids formed by revolving a curve about a horizontal or vertical axis. We now consider how to find the equation of the surface of such a solid.
 
-Consider the surface formed by revolving $y=\sqrt{x}$ about the $x$-axis. Cross-sections of this surface parallel to the $y$-$z$ plane are circles, as shown in \autoref{fig:surf_rev_intro}(a). Each circle has equation of the form $y^2+z^2=r^2$ for some radius $r$. The radius is a function of $x$; in fact, it is $r(x) = \sqrt{x}$. Thus the equation of the surface shown in \autoref{fig:surf_rev_intro}(b) is $y^2+z^2=(\sqrt{x})^2.$
+Consider the surface formed by revolving the curve $y=\sqrt{x}$ in the $x$-$y$ plane about the $x$-axis. Cross-sections of this surface parallel to the $y$-$z$ plane are circles, as shown in \autoref{fig:surf_rev_intro}(a). Each circle has equation of the form $y^2+z^2=r^2$ for some radius $r$. The radius is a function of $x$; in fact, it is $r(x) = \sqrt{x}$. Thus the equation of the surface shown in \autoref{fig:surf_rev_intro}(b) is $y^2+z^2=(\sqrt{x})^2.$
 
 \mtable[-\baselineskip]{Introducing surfaces of revolution.}{fig:surf_rev_intro}{%
 \myincludeasythree{width=\marginparwidth,

@@ -23,17 +23,20 @@ label("$x$",(xbounds.y+0.05*(xbounds.y-xbounds.x),0,0));
 label("$y$",(0,ybounds.y+0.05*(ybounds.y-ybounds.x),0));
 label("$z$",(0,0,zbounds.y+0.05*(zbounds.y-zbounds.x)));
 
-triple f(pair t) {
-  return (t.x,t.y,4-t.x-2*t.y);
-}
-surface s=surface(f,(-0.25,-0.25),(4,2),4,4);
-draw(s,emissive(coloronefill),meshpen=colorone);
+////triple f(pair t) {
+////  return (t.x,t.y,4-t.x-2*t.y);
+////}
+////surface s=surface(f,(-0.25,-0.25),(4,2),4,4);
+////draw(s,emissive(coloronefill),meshpen=colorone);
 
 //draw the triangle on plane
-draw((4,0,0)--(0,2,0)--(0,0,4)--(4,0,0),colorone);
+////draw((4,0,0)--(0,2,0)--(0,0,4)--(4,0,0),colorone);
+draw(surface((4,0,0)--(0,2,0)--(0,0,4)--cycle),emissive(coloronefill),colorone);
+// using longer draw instead of ////
 
 //draw the triangle on xy plane
 draw((4,0,0)--(0,2,0)--(0,0,0)--(4,0,0),colorone+dashed+linewidth(2));
 
 //draw red line on plane
-draw((0.8,1.6,0)--(0,0,4),colortwo+linewidth(1));
+//draw((0.8,1.6,0)--(0,0,4),colortwo+linewidth(1));
+// what is the red line for?

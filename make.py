@@ -63,6 +63,8 @@ parser.add_argument('--standalonew',action='store_true',
 addboolarg('todo','Update todo lists.');
 addboolarg('quit','Write options.tex and quit.')
 
+#parser.add_argument('--misspell',action='store_true',help='Write misspelled words to misspell.txt')
+
 group = parser.add_mutually_exclusive_group()
 addboolarg('blackwhite','Print static graphics in black and white (default is color).',parser=group)
 addboolarg('static','Print static color graphics (default is interactive).',parser=group)
@@ -375,6 +377,10 @@ def minimizePdf(filename):
     message = 'Minimizing pdf finished at '+"{0[0]:02d}:{0[1]:02d}".format(getTime())
     print(message,'')
     loginfo.append(message)
+
+def writemisspellings():
+    pass
+    # cat text/*tex | aspell list -t --ignore=3 --ignore-case | sort | uniq > misspell.txt
 
 def compilewith(commands=False):
     if commands:

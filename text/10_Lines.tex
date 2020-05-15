@@ -73,10 +73,10 @@ Since $t$ is equal to each expression on the right, we can set these equal to ea
 Each representation has its own advantages, depending on the context. We summarize these three forms in the following definition, then give examples of their use.
 
 \definition{def:lines}{Equations of Lines in Space}
-{Consider the line in space that passes through $\vec p =\bracket{x_0,y_0,z_0}$ in the direction of $\vec d =\bracket{a,b,c}.$\index{lines!equations for}
+{Consider the line in space that passes through $(x_0,y_0,z_0)$ in the direction of $\vec d =\bracket{a,b,c}.$\index{lines!equations for}
 \begin{enumerate}
 	\item The \textbf{vector equation} of the line is
-	\[\vec \ell(t) = \vec p+t\vec d.\]
+	\[\vec \ell(t) = \bracket{x_0,y_0,z_0}+t\vec d.\]
 	\item	The \textbf{parametric equations} of the line are
 	\[x = x_0+at, \quad y=y_0+bt, \quad z = z_0+ct .\]
 	\item	The \textbf{symmetric equations} of the line are
@@ -161,7 +161,7 @@ Determine whether $\ell_1$ and $\ell_2$ are the same line, intersect, are parall
 3Dcoo=0 30 50,
 3Droo=150}{width=\marginparwidth}{figures/figlines2_3D}}
 
-We next check to see if they intersect (if they do not, they are skew lines). To find if they intersect, we look for $t$ and $s$ values such that the respective $x$, $y$ and $z$ values are the same. That is, we want $s$ and $t$ such that:
+We next check to see if they intersect (if they do not, they are skew lines). To find if they intersect, we look for $t$ and $s$ values such that the respective $x$, $y$ and $z$ values are the same. (This is why it is important that we have different parameters for our lines.) That is, we want $s$ and $t$ such that:
 \[
 \begin{array}{ccc}
 1+3t &=&-2+4s\\
@@ -181,18 +181,20 @@ It does not. Therefore, we conclude that the lines $\ell_1$ and $\ell_2$ are ske
 Determine whether $\ell_1$ and $\ell_2$ are the same line, intersect, are parallel, or skew.}
 {It is obviously very difficult to simply look at these equations and discern anything. This is done intentionally. In the ``real world,'' most equations that are used do not have nice, integer coefficients.% Rather, there are lots of digits after the decimal and the equations can look ``messy.''
 
-We again start by deciding whether or not each line has the same direction. The direction of $\ell_1$ is given by $\vec d_1 =\bracket{1.6,2.72,-3.36}$ and the direction of $\ell_2$ is given by $\vec d_2 =\bracket{-2.9,-4.93,6.09}$. When it is not clear through observation whether two vectors are parallel or not, the standard way of determining this is by comparing their respective unit vectors. Using a calculator, we find:
-\begin{align*}
-\vec u_1 &= \frac{\vec d_1}{\norm{\vec d_1}} =\bracket{0.3471,0.5901,-0.7289}\\
- \vec u_2 &= \frac{\vec d_2}{\norm{\vec d_2}} =\bracket{-0.3471,-0.5901,0.7289}.
-\end{align*}
-
-The two vectors seem to be parallel (at least, their components are equal to 4 decimal places). In most situations, it would suffice to conclude that the lines are at least parallel, if not the same. One way to be sure is to rewrite $\vec d_1$ and $\vec d_2$ in terms of fractions, not decimals. We have 
-\[\vec d_1 =\bracket{\frac{16}{10},\frac{272}{100},-\frac{336}{100}}\qquad \vec d_2 =\bracket{-\frac{29}{10},-\frac{493}{100},\frac{609}{100}}.\]
-% todo Tim why not just rescale d2 to match d1?
-One can then find the magnitudes of each vector in terms of fractions, then compute the unit vectors likewise. After a lot of manual arithmetic (or after briefly using a computer algebra system), one finds that 
-\[\vec u_1 =\bracket{\sqrt{\frac{10}{83}},\frac{17}{\sqrt{830}},-\frac{21}{\sqrt{830}}}\qquad \vec u_2 =\bracket{-\sqrt{\frac{10}{83}},-\frac{17}{\sqrt{830}},\frac{21}{\sqrt{830}}}.\]
-We can now say without equivocation that these lines are parallel.
+We again start by deciding whether or not each line has the same direction. The direction of $\ell_1$ is given by $\vec d_1 =\bracket{1.6,2.72,-3.36}$ and the direction of $\ell_2$ is given by $\vec d_2 =\bracket{-2.9,-4.93,6.09}$. When it is not clear through observation whether two vectors are parallel or not,
+%the standard way of determining this is by comparing their respective unit vectors. Using a calculator, we find:
+%\begin{align*}
+%\vec u_1 &= \frac{\vec d_1}{\norm{\vec d_1}} =\bracket{0.3471,0.5901,-0.7289}\\
+% \vec u_2 &= \frac{\vec d_2}{\norm{\vec d_2}} =\bracket{-0.3471,-0.5901,0.7289}.
+%\end{align*}
+%
+%The two vectors seem to be parallel (at least, their components are equal to 4 decimal places). In most situations, it would suffice to conclude that the lines are at least parallel, if not the same. One way to be sure is to rewrite $\vec d_1$ and $\vec d_2$ in terms of fractions, not decimals. We have 
+%\[\vec d_1 =\bracket{\frac{16}{10},\frac{272}{100},-\frac{336}{100}}\qquad \vec d_2 =\bracket{-\frac{29}{10},-\frac{493}{100},\frac{609}{100}}.\]
+%% todo Tim why not just rescale d2 to match d1?
+%One can then find the magnitudes of each vector in terms of fractions, then compute the unit vectors likewise. After a lot of manual arithmetic (or after briefly using a computer algebra system), one finds that 
+%\[\vec u_1 =\bracket{\sqrt{\frac{10}{83}},\frac{17}{\sqrt{830}},-\frac{21}{\sqrt{830}}}\qquad \vec u_2 =\bracket{-\sqrt{\frac{10}{83}},-\frac{17}{\sqrt{830}},\frac{21}{\sqrt{830}}}.\]
+%We can now say without equivocation that these lines are parallel.
+we can rescale the vectors.  We see that $\vec d_1\cdot\frac{-2.9}{1.6}=\vec d_2$, so that the lines are parallel (if we had many more digits after the decimal point, we might have to decide if the lines are ``parallel enough'').
 
 Are they the same line? The parametric equations for a line describe one point that lies on the line, so we know that the point $P_1 = (-0.7,4.2,2.3)$ lies on $\ell_1$. To determine if this point also lies on $\ell_2$, plug in the $x$, $y$ and $z$ values of $P_1$ into the symmetric equations for $\ell_2$:
 \begin{multline*}

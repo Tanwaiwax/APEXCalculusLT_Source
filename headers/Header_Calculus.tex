@@ -30,18 +30,7 @@
 \newlength{\saveparindent}
 \setlength{\saveparindent}{\parindent}
 
-%%%%
-%% These are low level LaTeX commands that determine the 
-%% look of the Chapter and Section headings.
-%% Note the use in the chapter part of an external file
-%% that contains graphics for each chapter start.
-%% But not really?
-%%%%
 
-%%%%
-%% Commands for the header, utilizing the fancyhdr
-%% (fancy header) package
-%%%%
 
 \pagestyle{fancy}
 \fancyhead{}
@@ -101,38 +90,44 @@
 
 %\newdimen\titleheight
 
-%\usepackage{sectsty} % crashed and burned?
-%\chapterfont{\raggedright\scshape\textsc\sectionrule{0pt}{0pt}{-10pt}{1pt}}
+\usepackage{titlesec}
+\titleformat{\chapter}[block]{\sloppy\Huge\scshape\textsc}{\thechapter:}{.4em}{}[\titlerule]
+\titlespacing*{\chapter}{0pt}{0pt}{2ex}
+
+%\usepackage{sectsty}
 
 \makeatletter
-\def\@makeschapterhead#1{%
-  {\parindent \z@ \raggedright \reset@font
-    {\Huge \scshape \textsc #1}
-    \par\vskip 10\p@
-    \hrule height 1pt
-    \vskip 10\p@
-  }}
-\def\@makechapterhead#1{%
-  {\parindent \z@ \raggedright \reset@font
-    {\Huge \thechapter: \scshape \textsc #1}
-    \par\vskip 10\p@
-    \hrule height 1pt
-    \vskip 10\p@
-  }}
+% the best that I could get with sectsty. also couldn't get the rule to work
+%\chapterfont{\raggedright\reset@font\Huge\scshape\textsc}%\sectionrule{0pt}{0pt}{-10pt}{1pt}}
+%\def\@makeschapterhead#1{%
+%  {\parindent \z@ \raggedright \reset@font
+%    {\Huge \scshape \textsc #1}
+%    \par\vskip 10\p@
+%    \hrule height 1pt
+%    \vskip 10\p@
+%  }}
+%\def\@makechapterhead#1{%
+%  {\parindent \z@ \raggedright \reset@font
+%    {\Huge \thechapter: \scshape \textsc #1}
+%    \par\vskip 10\p@
+%    \hrule height 1pt
+%    \vskip 10\p@
+%  }}
 \renewcommand\@pnumwidth{2em}
 % make the space in the toc wide enough for 4 digit numbers
 \makeatother
-
 
 \newcommand{\apexappendix}{%
  \appendix
  \pagenumbering{arabic}
  \renewcommand{\thepage}{A.\arabic{page}}
  \renewcommand{\thechapter}{\arabic{chapter}}
- \part*{Appendices\protect\thispagestyle{empty}}
- \iflatexml\else
- \pdfbookmark[part]{Appendices}{appendixbookmark}
- \fi
+ \part{\appendixname}
+% \part*{Appendices\protect\thispagestyle{empty}}
+% \addcontentsline{toc}{part}{\appendixname}
+% \iflatexml\else
+% \pdfbookmark[part]{Appendices}{appendixbookmark}
+% \fi
 }
 
 
@@ -371,10 +366,14 @@
 }
 \usepackage{bookmark}
 
-% these need to come after hyperref
+% hyperref changes these
 % if they come before and have newcommand, latexml overwrites them
-\renewcommand{\sectionautorefname}{Section} % the default is lowercase
-\renewcommand{\chapterautorefname}{Chapter} % the default is lowercase
+\AtBeginDocument{
+ \renewcommand{\partname}{}
+ \renewcommand{\chapterautorefname}{Chapter} % the default is lowercase
+ \renewcommand{\sectionautorefname}{Section} % the default is lowercase
+ \renewcommand{\appendixname}{Appendices}
+}
 \newcommand{\exampleEnvautorefname}{Example}
 \newcommand{\autoeqref}[1]{\hyperref[#1]{\equationautorefname~(\ref*{#1})}}
 % autoref doesn't use parentheses

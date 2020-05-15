@@ -72,13 +72,13 @@ We've now shown that for any $f$ differentiable on $(a,b)$,
 $f$ is increasing on $(a,b)$ if and only if $\fp(c)\ge0$ for all $c$ in $(a,b)$.
 Using the same arguments we could show $f$ is decreasing on $(a,b)$ if and only if $\fp(c)\le0$ for all $c$ in $(a,b)$. The following Theorem is now an immediate consequence.
 
-\mnote[3\baselineskip]{\textbf{Note:} \autoref{thm:incr_decr} (parts 1 and 2) also holds if $\fp(c) = 0$ for a finite number of values of $c$ in $I$.}
+%\mnote[3\baselineskip]{\textbf{Note:} \autoref{thm:incr_decr} (parts 1 and 2) also holds if $\fp(c) = 0$ for a finite number of values of $c$ in $I$.}
 
 \theorem{thm:incr_decr}{Test For Increasing/Decreasing Functions}%
 {Let $f$ be a continuous function on $[a,b]$ and differentiable on $(a,b)$.
 \begin{enumerate}
-\item	If $\fp(c) > 0$ for all $c$ in $(a,b)$, then $f$ is increasing on $[a,b]$.
-\item	If $\fp(c) <0$ for all $c$ in $(a,b)$, then $f$ is decreasing on $[a,b]$.
+\item	If $\fp(c) \ge 0$ for all $c$ in $(a,b)$, then $f$ is increasing on $[a,b]$.
+\item	If $\fp(c) \le 0$ for all $c$ in $(a,b)$, then $f$ is decreasing on $[a,b]$.
 \item	If $\fp(c) =0$ for all $c$ in $(a,b)$, then $f$ is constant on $[a,b]$.
 \end{enumerate}}
 
@@ -89,7 +89,7 @@ Using the same arguments we could show $f$ is decreasing on $(a,b)$ if and only 
 Suppose $a$ and $b$ are in $I$ where $\fp(a)>0$ and $\fp(b)<0$. Then there must be some number $c$ between $a$ and $b$ with $\fp(c)=0$. If $\fp$ is continuous on $I$, this is an immediate consequence of the Intermediate Value Theorem.  Even if $\fp$ isn't continuous, such a $c$ must exist as a consequence of Darboux's Theorem.  (For a special case of this theorem see \exautoref{darboux}.)  In either case, this leads us to the following method for finding intervals on which a function is increasing or decreasing.
 
 \keyidea{idea:incr_decr}{Finding Intervals on which $f$ is Increasing or Decreasing}
-{Let $f$ be a differentiable function on an interval I. To find intervals on which $f$ is increasing and decreasing:\index{increasing function!finding intervals}\index{decreasing function!finding intervals}
+{Let $f$ be a continuous function on an interval I. To find intervals on which $f$ is increasing and decreasing:\index{increasing function!finding intervals}\index{decreasing function!finding intervals}
 \begin{enumerate}
 \item	Find the critical points of $f$. That is, find all $c$ in $I$ where $\fp(c) = 0$ or $\fp$ is not defined.
 \item	Use the critical points to divide $I$ into subintervals.
@@ -116,13 +116,13 @@ Since an interval was not specified for us to consider, we consider the entire d
 We now pick a value $p$ in each subinterval and find the sign of $\fp(p)$. All we care about is the sign, so we do not actually have to fully compute $\fp(p)$; pick ``nice'' values that make this simple.
 
 \iflatexml\begin{description}\else\begin{description}[leftmargin=0pt]\fi
-\item[Subinterval 1,] $(-\infty,-1)$:\quad We (arbitrarily) pick $p=-2$. We can compute $\fp(-2)$ directly: $\fp(-2) = 3(-2)^2+2(-2)-1=7>0$. We conclude that $f$ is increasing on $(-\infty,-1)$.
+\item[Subinterval 1,] $(-\infty,-1)$:\quad We (arbitrarily) pick $p=-2$. We can compute $\fp(-2)$ directly: $\fp(-2) = 3(-2)^2+2(-2)-1=7>0$. We conclude that $f$ is increasing on $(-\infty,-1]$.
 
 Note we can arrive at the same conclusion without computation. For instance, we could choose $p=-100$. The first term in $\fp(-100)$, i.e., $3(-100)^2$ is clearly positive and very large. The other terms are small in comparison, so we know $\fp(-100)>0$. All we need is the sign.
 
-\item[Subinterval 2,] $(-1,1/3)$:\quad We pick $p=0$ since that value seems easy to deal with and note that $\fp(0)=-1<0$. We conclude $f$ is decreasing on $(-1,1/3)$.
+\item[Subinterval 2,] $(-1,1/3)$:\quad We pick $p=0$ since that value seems easy to deal with and note that $\fp(0)=-1<0$. We conclude $f$ is decreasing on $[-1,1/3]$.
 
-\item[Subinterval 3,] $(1/3,\infty)$:\quad Pick an arbitrarily large value for $p>1/3$ and note that $\fp(p)=3p^2+2p-1>0$. We conclude that $f$ is increasing on $(1/3,\infty)$ and use all of our information to complete our sign chart.
+\item[Subinterval 3,] $(1/3,\infty)$:\quad Pick an arbitrarily large value for $p>1/3$ and note that $\fp(p)=3p^2+2p-1>0$. We conclude that $f$ is increasing on $[1/3,\infty)$ and use all of our information to complete our sign chart.
 \end{description}
 
 \begin{center}
@@ -227,16 +227,16 @@ We have found that $f$ has two critical points, $x=-1,3$, and at $x=1$ something
 Pick a number $p$ from each subinterval and test the sign of \fp\ at $p$ to determine whether $f$ is increasing or decreasing on that interval. Again, we do well to avoid complicated computations; notice that the denominator of $\fp$ is \textit{always} positive so we can ignore it during our work.
 
 \iflatexml\begin{description}\else\begin{description}[leftmargin=0pt]\fi
-\item[Interval 1,] $(-\infty,-1)$:\quad  Choosing a very small number (i.e., a negative number with a large magnitude) $p$ returns $p^2-2p-3$ in the numerator of $\fp$; that will be positive. Hence $f$ is increasing on $(-\infty,-1)$.
+\item[Interval 1,] $(-\infty,-1)$:\quad  Choosing a very small number (i.e., a negative number with a large magnitude) $p$ returns $p^2-2p-3$ in the numerator of $\fp$; that will be positive. Hence $f$ is increasing on $(-\infty,-1]$.
 
-\item[Interval 2,] $(-1,1)$:\quad Choosing 0 seems simple: $\fp(0)=-3<0$. We conclude $f$ is decreasing on $(-1,1)$.
+\item[Interval 2,] $(-1,1)$:\quad Choosing 0 seems simple: $\fp(0)=-3<0$. We conclude $f$ is decreasing on $[-1,1)$.
 
-\item[Interval 3,] $(1,3)$:\quad Choosing 2 seems simple: $\fp(2) = -3<0$. Again, $f$ is decreasing.
+\item[Interval 3,] $(1,3]$:\quad Choosing 2 seems simple: $\fp(2) = -3<0$. Again, $f$ is decreasing.
 
-\item[Interval 4,] $(3,\infty)$:\quad Choosing a very large number $p$ from this subinterval will give a positive numerator and (of course) a positive denominator. So $f$ is increasing on $(3,\infty)$.
+\item[Interval 4,] $(3,\infty)$:\quad Choosing a very large number $p$ from this subinterval will give a positive numerator and (of course) a positive denominator. So $f$ is increasing on $[3,\infty)$.
 \end{description}
 
-In summary, $f$ is increasing on $(-\infty,-1)$ and $(3,\infty)$ and is decreasing on $(-1,1)$ and $(1,3)$. Since at $x=-1$, the sign of \fp\ switched from positive to negative, \autoref{thm:first_der} states that $f(-1)$ is a relative maximum of $f$. At $x=3$, the sign of \fp\ switched from negative to positive, meaning $f(3)$ is a relative minimum. At $x=1$, $f$ is not defined, so there is no relative extrema at $x=1$.
+In summary, $f$ is increasing on $(-\infty,-1]$ and $[3,\infty)$ and is decreasing on $[-1,1)$ and $(1,3]$. Since at $x=-1$, the sign of \fp\ switched from positive to negative, \autoref{thm:first_der} states that $f(-1)$ is a relative maximum of $f$. At $x=3$, the sign of \fp\ switched from negative to positive, meaning $f(3)$ is a relative minimum. At $x=1$, $f$ is not defined, so there is no relative extrema at $x=1$.
 
 \mnote{\textbf{Note:} In our sign charts, we will use ``U'' to indicate that something is undefined.}
 
@@ -277,17 +277,17 @@ f(x) &= x^{\frac{8}{3}}-4x^{\frac{2}{3}} \\
 This derivation of $\fp$ shows that $\fp(x) = 0$ when $x=\pm 1$ and \fp\ is not defined when $x=0$. Thus we have 3 critical points, breaking the number line into 4 subintervals: $(-\infty,-1)$, $(-1,0)$, $(0,1)$, and $(1\infty)$.
 
 \iflatexml\begin{description}\else\begin{description}[leftmargin=0pt]\fi
-\item[Interval 1,] $(\infty,-1)$: We choose $p=-2$; we can easily verify that $\fp(-2)<0$. So $f$ is decreasing on $(-\infty,-1)$.
+\item[Interval 1,] $(\infty,-1)$: We choose $p=-2$; we can easily verify that $\fp(-2)<0$. So $f$ is decreasing on $(-\infty,-1]$.
 
 \item[Interval 2,] $(-1,0)$: Choose $p=-1/2$. Once more we practice finding the sign of $\fp(p)$ without computing an actual value. We have $\fp(p) = (8/3)p^{-1/3}(p-1)(p+1)$; find the sign of each of the three terms. 
 	\[\fp(p) = \frac 83 \cdot \underbrace{p^{-\frac13}}_{<0}\cdot \underbrace{(p-1)}_{<0}\underbrace{(p+1)}_{>0}.\]
-	We have a ``negative $\times$ negative $\times$ positive'' giving a positive number; $f$ is increasing on $(-1,0)$.
+	We have a ``negative $\times$ negative $\times$ positive'' giving a positive number; $f$ is increasing on $[-1,0]$.
 
 \item[Interval 3,] $(0,1)$: We do a similar sign analysis as before, using $p$ in $(0,1)$.
 	\[\fp(p) = \frac 83 \cdot \underbrace{p^{-\frac13}}_{>0}\cdot \underbrace{(p-1)}_{<0}\underbrace{(p+1)}_{>0}.\]
-	We have 2 positive factors and one negative factor; $\fp(p)<0$ and so $f$ is decreasing on $(0,1)$.
+	We have 2 positive factors and one negative factor; $\fp(p)<0$ and so $f$ is decreasing on $[0,1]$.
 
-\item[Interval 4,] $(1,\infty)$: Similar work to that done for the other three intervals shows that $\fp(x)>0$ on $(1,\infty)$, so $f$ is increasing on this interval.  We can now put all this information into a chart.
+\item[Interval 4,] $(1,\infty)$: Similar work to that done for the other three intervals shows that $\fp(x)>0$ on $(1,\infty)$, so $f$ is increasing on $[1,\infty)$.  We can now put all this information into a chart.
 \end{description}
 
 \begin{center}
@@ -327,10 +327,10 @@ We examine one more example.
 \includecodegraphics{figures/matrices/incrdecrTrig}
 \end{center}
 
-This means that $f$ is increasing on $(0,\frac\pi3)$ and $(\pi,\frac{5\pi}3)$ and decreasing on $(\frac\pi3,\pi)$ and $(\frac{5\pi}3,2\pi)$, so that the relative maxima are $f(\frac\pi3)$ and $f(\frac{5\pi}3)$ and the relative minimum is $f(\pi)$.  (The values $f(0)$ and $f(2\pi)$ would also be relative minima, but relative extrema are not allowed to occur at the endpoints of an interval.)}
+This means that $f$ is increasing on $[0,\frac\pi3]$ and $[\pi,\frac{5\pi}3]$ and decreasing on $[\frac\pi3,\pi]$ and $[\frac{5\pi}3,2\pi]$, so that the relative maxima are $f(\frac\pi3)$ and $f(\frac{5\pi}3)$ and the relative minimum is $f(\pi)$.  (The values $f(0)$ and $f(2\pi)$ would also be relative minima, but relative extrema are not allowed to occur at the endpoints of an interval.)}
 
 We have seen how the first derivative of a function helps determine when the function is going ``up'' or ``down.'' In the next section, we will see how the second derivative helps determine how the graph of a function curves.
 
 \printexercises{exercises/03_03_exercises}
 
-% todo write more problems
+% todo write more increasing / decreasing problems

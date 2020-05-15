@@ -1,16 +1,13 @@
-1. [CalculusII-BSC.tex line 39](../CalculusII-BSC.tex#L39): todo write a Inverse Functions prerequisite section reviewing logs
-1. [CalculusII-BSC.tex line 41](../CalculusII-BSC.tex#L41): todo write a better chapter intro for Inverse Functions
-1. [CalculusII-UND.tex line 6](../CalculusII-UND.tex#L6): todo write a Inverse Functions prerequisite section reviewing logs
-1. [CalculusII-UND.tex line 8](../CalculusII-UND.tex#L8): todo write a better chapter intro for Inverse Functions
 1. [CalculusII.tex line 42](../CalculusII.tex#L42): todo write a Inverse Functions prerequisite section reviewing logs
 1. [CalculusII.tex line 44](../CalculusII.tex#L44): todo write a better chapter intro for Inverse Functions
 1. [exercises/05_05_exset_01.tex line 9](../exercises/05_05_exset_01.tex#L9): todo change coordinates to use a function of some sort for the lakes?
-1. [exercises/06_03_exercises.tex line 23](../exercises/06_03_exercises.tex#L23): todo write some exercises with csc^p cot^q
-1. [exercises/06_04_exercises.tex line 25](../exercises/06_04_exercises.tex#L25): todo write an exercise with a repeated quadratic and one with two distinct quadratics
+1. [exercises/06_03_exercises.tex line 25](../exercises/06_03_exercises.tex#L25): todo write some exercises with csc^p cot^q
+1. [exercises/06_04_exercises.tex line 25](../exercises/06_04_exercises.tex#L25): todo write a partial fraction exercise with a repeated quadratic and one with two distinct quadratics
 1. [exercises/06_06_exset_01.tex line 1](../exercises/06_06_exset_01.tex#L1): todo Create exercises for L'Hopital's rule with the indeterminate form infinity-infinity
 1. [exercises/06_06_exset_01.tex line 2](../exercises/06_06_exset_01.tex#L2): todo Create exercises for L'Hopital's rule with limits other than 0, 1, or infinity
 1. [exercises/06_08_exercises.tex line 3](../exercises/06_08_exercises.tex#L3): todo write some trig sub problems that use perfect squares
-1. [exercises/06_08_exercises.tex line 4](../exercises/06_08_exercises.tex#L4): todo write more definite integral trig substitution problems
+1. [exercises/06_08_exercises.tex line 4](../exercises/06_08_exercises.tex#L4): todo write some trig sub problems that involve completing the square
+1. [exercises/06_08_exercises.tex line 5](../exercises/06_08_exercises.tex#L5): todo write more definite integral trig substitution problems
 1. [exercises/07_01_exset_03.tex line 1](../exercises/07_01_exset_03.tex#L1): todo change 6.1#21-25 to use plots instead of coordinates
 1. [exercises/08_08_exercises.tex line 23](../exercises/08_08_exercises.tex#L23): todo add some problems about turning a sum into a closed expression via using a series
 1. [exercises/08_09_exercises.tex line 1](../exercises/08_09_exercises.tex#L1): todo write problems that force parts 2/3 of the Limit Comparison Test.  maybe 1/(n^2-1000)ln n

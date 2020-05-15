@@ -100,7 +100,7 @@ axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,5,10},
 ymin=-.1,ymax=1.1,xmin=-1,xmax=11]
 \addplot [draw={\colorone},fill={\coloronefill},area style,domain=1:10.5,thick]
  {1/x} |- (axis cs:1,0);
-\draw (axis cs:5,.75) node {\scriptsize $\ds f(x)=\frac{1}{x^2}$};
+\draw (axis cs:5,.75) node {\scriptsize $\ds f(x)=\frac{1}{x}$};
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
@@ -146,7 +146,7 @@ ytick={1},ymin=-.1,ymax=1.1,xmin=-11,xmax=1]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,ytick={1},
 ymin=-.1,ymax=1.1,xmin=-11,xmax=11]
-\addplot [draw={\colorone},fill={\coloronefill},area style,domain=-10.5:10.5,thick]
+\addplot [draw={\colorone},fill={\coloronefill},area style,domain=-10.5:10.5,thick,samples=100]
  {1/(1+x*x)} |- (axis cs:0,0);
 \draw (axis cs:6,.75) node {\scriptsize $\ds f(x)=\frac{1}{1+x^2}$};
 \end{axis}
@@ -174,7 +174,7 @@ A graph of the area defined by this integral is given in \autoref{fig:impint1d}.
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,5,10},
 ymin=-.1,ymax=.5,xmin=-1,xmax=11]
-\addplot [draw={\colorone},fill={\coloronefill},area style,domain=1:10.5,thick]
+\addplot [draw={\colorone},fill={\coloronefill},area style,domain=1:10.5,thick,samples=100]
  {ln(x)/(x*x)} |- (axis cs:1,0);
 \draw (axis cs:5,.3) node {\scriptsize $\ds f(x)=\frac{\ln x}{x^2}$};
 \end{axis}
@@ -406,7 +406,7 @@ The trouble is the square root function.
 %To get rid of it, we employ the following fact: If $\ds \lim_{x\to c} f(x) = L$, then $\ds\lim_{x\to c} f(x)^2 = L^2.$ (This is true when either $c$ or $L$ is $\infty$.) So we consider now the limit
 %\[\lim_{x\to\infty} \frac{x^2}{x^2+2x+5}.\]
 %This converges to 1, meaning the original limit also converged to 1. As $x$ gets very large, the function $\frac1{\sqrt{x^2+2x+5}}$ looks very much like $\frac1x$.
-We determine the limit by using a technique we learned in Calculus I:
+We determine the limit by using a technique we learned in \autoref{key:rat_lim_at_inf}:
 %
 \mtable{Graphing $f(x)=\frac{1}{\sqrt{x^2+2x+5}}$ and $f(x)=\frac1x$ in \autoref{ex_impint6}.}{fig:impint6}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},

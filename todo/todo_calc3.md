@@ -16,17 +16,15 @@
 1. [exercises/14_01_exercises.tex line 31](../exercises/14_01_exercises.tex#L31): todo solution to 15.1#30,31
 1. [exercises/14_02_exercises.tex line 19](../exercises/14_02_exercises.tex#L19): todo solutions to 15.2#19-26
 1. [exercises/14_03_exercises.tex line 54](../exercises/14_03_exercises.tex#L54): todo solution to 15.3#52-56
-1. [exercises/14_03_exset_01.tex line 43](../exercises/14_03_exset_01.tex#L43): todo find the answer to 15.3#23
-1. [exercises/14_03_exset_01.tex line 48](../exercises/14_03_exset_01.tex#L48): todo find the answer to 15.3#25
 1. [exercises/14_04_exset_02.tex line 22](../exercises/14_04_exset_02.tex#L22): todo find the solution to 15.4#18
 1. [exercises/14_04_exset_02.tex line 27](../exercises/14_04_exset_02.tex#L27): todo find the solution to 15.4#20
-1. [exercises/14_04_exset_02.tex line 41](../exercises/14_04_exset_02.tex#L41): todo find the solution to 15.4#25
 1. [exercises/14_05_exset_04.tex line 35](../exercises/14_05_exset_04.tex#L35): todo solution to 15.5#23,24
 1. [exercises/14_07_exercises.tex line 42](../exercises/14_07_exercises.tex#L42): todo solution to 15.7#33,34
-1. [exercises/14_07_exset_02.tex line 4](../exercises/14_07_exset_02.tex#L4): todo solve 15.7#9
-1. [exercises/14_07_exset_02.tex line 7](../exercises/14_07_exset_02.tex#L7): todo solve 15.7#10
+1. [exercises/14_07_exset_02.tex line 6](../exercises/14_07_exset_02.tex#L6): todo solve 15.7#10
+1. [text/10_Cross_Product.tex line 216](../text/10_Cross_Product.tex#L216): todo Figure 11.4.1 is not helpful. Why is the plane there? It's not possible to discern where vectors u and v lie.  A right hand would also help.
 1. [text/10_Planes.tex line 17](../text/10_Planes.tex#L17): todo should we make a picture of a vector ``orthogonal to the plane''?
 1. [text/10_Planes.tex line 20](../text/10_Planes.tex#L20): todo should we make a picture of how the vector equation of a plane works?
+1. [text/10_Space_Intro.tex line 141](../text/10_Space_Intro.tex#L141): todo Mention the general drawing trick: if a plane is parallel to a coordinate axis, draw grid lines parallel to that axis onto the plane.  Also draw an example of an oblique plane.
 1. [text/11_Arc_Length_Parameter_Curvature.tex line 407](../text/11_Arc_Length_Parameter_Curvature.tex#L407): todo add some text about the Frenet frame
 1. [text/11_Vector_Functions_Intro.tex line 172](../text/11_Vector_Functions_Intro.tex#L172): todo how does this differ from the previous figure?
 1. [text/11_Vector_Functions_Intro.tex line 3](../text/11_Vector_Functions_Intro.tex#L3): todo state how this compares with 10.2 & 10.3
@@ -38,6 +36,6 @@
 1. [text/12_Multivariable_Chain_Rule.tex line 89](../text/12_Multivariable_Chain_Rule.tex#L89): todo Find a better example 3 that doesn't obviously simplify
 1. [text/12_Multivariable_Limit.tex line 139](../text/12_Multivariable_Limit.tex#L139): todo do we need a version of theorem 2 (composition of functions) ?
 1. [text/12_Multivariable_Limit.tex line 52](../text/12_Multivariable_Limit.tex#L52): todo find some way to parameterize this so that we don't plot coordinates
-1. [text/12_Partial_Derivatives.tex line 331](../text/12_Partial_Derivatives.tex#L331): todo write an example where you find a function given the partial derivatives
+1. [text/12_Partial_Derivatives.tex line 333](../text/12_Partial_Derivatives.tex#L333): todo write an example where you find a function given the partial derivatives
 1. [text/13_Double_Integrals_Volume.tex line 220](../text/13_Double_Integrals_Volume.tex#L220): todo parameterize this instead of a bunch of coordinates
 1. [text/14_Surface_Integrals.tex line 20](../text/14_Surface_Integrals.tex#L20): todo should this be equal to something?

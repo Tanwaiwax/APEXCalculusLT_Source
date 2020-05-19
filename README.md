@@ -54,7 +54,8 @@ With the noted exceptions, the introduction of LT chapter 7 means that ET chapte
 
 #### Supporting programs
 The following programs are used for compiling everything from start to finish:
-* Python2 to invoke make.py
+* [LaTeX](https://www.tug.org/texlive/)
+* [Python2](https://www.python.org/) to invoke make.py
 * [pdfsizeopt](https://github.com/pts/pdfsizeopt/) to minimize the size of the pdf file
 * [LaTeXML](http://dlmf.nist.gov/LaTeXML/) to convert the book into a website
 * [Asymptote](http://asymptote.sourceforge.net/) to create the three dimensional graphics

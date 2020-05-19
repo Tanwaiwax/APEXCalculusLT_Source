@@ -27,10 +27,6 @@
 1. [text/08_Taylor_Polynomials.tex line 460](../text/08_Taylor_Polynomials.tex#L460): todo for exercises 21-24, reach back to lin approx / Newton’s method and redo the appropriate problems with Taylor series
 1. [text/08_Taylor_Series.tex line 167](../text/08_Taylor_Series.tex#L167): todo find and show where in the text we derive the ``Important Maclaurin Series Expansions'', and derive any missing in an example
 1. [text/08_Taylor_Series.tex line 271](../text/08_Taylor_Series.tex#L271): todo have the exercises find the interval of convergence where appropriate
-1. [text/09_Conic_Sections.tex line 176](../text/09_Conic_Sections.tex#L176): todo prove the reflective property of parabolas
+1. [text/09_Conic_Sections.tex line 177](../text/09_Conic_Sections.tex#L177): todo derive (or verify?) the polar equations of conics
 1. [text/09_Conic_Sections.tex line 28](../text/09_Conic_Sections.tex#L28): todo convert conic figures to asymptote (or at least tikz)
-1. [text/09_Conic_Sections.tex line 391](../text/09_Conic_Sections.tex#L391): todo prove the reflective property of ellipses
-1. [text/09_Conic_Sections.tex line 396](../text/09_Conic_Sections.tex#L396): todo prove that a parabola is the limiting case of an ellipse
-1. [text/09_Conic_Sections.tex line 662](../text/09_Conic_Sections.tex#L662): todo prove the reflective property of hyperbolas
-1. [text/09_Conic_Sections.tex line 664](../text/09_Conic_Sections.tex#L664): todo prove that a parabola is the limiting case of a hyperbola
 1. [text/09_Polar_Calculus.tex line 378](../text/09_Polar_Calculus.tex#L378): todo the region is also in the first petal and y>0

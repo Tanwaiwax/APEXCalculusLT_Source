@@ -10,7 +10,7 @@ Changes for the 2020-06 version:
 
 * Anthony Bevelacqua and John Collings contributed several exercises.
 
-* All known errata (20+) have been fixed.
+* All known errata (29+) have been fixed.
 
 Changes for the 2019-06 version:
 --------------------

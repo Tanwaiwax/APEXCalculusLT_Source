@@ -14,7 +14,7 @@
 1. [text/03_Increasing_Decreasing.tex line 336](../text/03_Increasing_Decreasing.tex#L336): todo write more increasing / decreasing problems
 1. [text/04_Differentials.tex line 201](../text/04_Differentials.tex#L201): todo Find the related and absolute errors in the examples, ask for the errors in the exercises
 1. [text/04_NewtonsMethod.tex line 257](../text/04_NewtonsMethod.tex#L257): todo find and write application problems
-1. [text/04_Optimization.tex line 300](../text/04_Optimization.tex#L300): todo write more optimization problems and examples, especially where the domain is not a closed interval
+1. [text/04_Optimization.tex line 280](../text/04_Optimization.tex#L280): todo write more optimization problems and examples, especially where the domain is not a closed interval
 1. [text/04_Related_Rates.tex line 172](../text/04_Related_Rates.tex#L172): todo write an example with similar triangles
 1. [text/04_Related_Rates.tex line 179](../text/04_Related_Rates.tex#L179): todo write a problem with water in & water out
 1. [text/04_Related_Rates.tex line 180](../text/04_Related_Rates.tex#L180): todo write a problem with an isosceles triangle

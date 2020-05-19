@@ -214,7 +214,7 @@ def prcfromfile(filename):
 def updatetodo():
     output = subprocess.check_output(['grep','todo','-I','--recursive','--line-number',
                                       '--exclude-dir=ApexPDFs','--exclude-dir=.git','--exclude-dir=todo',
-                                      '--exclude-dir=hidden','--exclude-dir=mecmath','.'])
+                                      '--exclude-dir=hidden','--exclude-dir=mecmath','--exclude-dir=completed','.'])
     todos = output.decode('utf-8').split("\n")
     todos.sort()
     todosin = defaultdict(list)
@@ -241,7 +241,7 @@ def updatetodo():
     with open('todo/todo_tex.txt','w+') as mystdout:
         for keywd in ('drawexampleline','enlargethispage','blue','pagebreak',
                       'newpage','clearpage','cleardoublepage','columnbreak',
-                      'mfigure','myincludegraphics','addplot3','cdots'):
+                      'mfigure','myincludegraphics','addplot3','cdots','ldots'):
             grepcall = ['grep',keywd,'-I','--recursive','--files-with-matches','--exclude-dir=hidden']
             mystdout.write('\n\n'+keywd+':\n')
             mystdout.flush()

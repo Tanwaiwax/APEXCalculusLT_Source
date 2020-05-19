@@ -26,7 +26,6 @@
 1. [text/10_Planes.tex line 20](../text/10_Planes.tex#L20): todo should we make a picture of how the vector equation of a plane works?
 1. [text/10_Space_Intro.tex line 141](../text/10_Space_Intro.tex#L141): todo Mention the general drawing trick: if a plane is parallel to a coordinate axis, draw grid lines parallel to that axis onto the plane.  Also draw an example of an oblique plane.
 1. [text/11_Arc_Length_Parameter_Curvature.tex line 407](../text/11_Arc_Length_Parameter_Curvature.tex#L407): todo add some text about the Frenet frame
-1. [text/11_Vector_Functions_Intro.tex line 172](../text/11_Vector_Functions_Intro.tex#L172): todo how does this differ from the previous figure?
 1. [text/11_Vector_Functions_Intro.tex line 3](../text/11_Vector_Functions_Intro.tex#L3): todo state how this compares with 10.2 & 10.3
 1. [text/12_Lagrange.tex line 29](../text/12_Lagrange.tex#L29): todo include a proof sketch of Theorem 13.9.1 Lagrange Multipliers?
 1. [text/12_Lagrange.tex line 30](../text/12_Lagrange.tex#L30): todo refer to Extreme Value Theorem after Lagrange Multipliers?

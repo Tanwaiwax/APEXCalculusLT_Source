@@ -90,39 +90,33 @@
 
 %\newdimen\titleheight
 
-\usepackage{titlesec}
+\usepackage[newparttoc]{titlesec}
+\usepackage{titletoc}
+
 \titleformat{\chapter}[block]{\sloppy\Huge\scshape\textsc}{\thechapter:}{.4em}{}[\titlerule]
 \titlespacing*{\chapter}{0pt}{0pt}{2ex}
 
-%\usepackage{sectsty}
-
 \makeatletter
-% the best that I could get with sectsty. also couldn't get the rule to work
-%\chapterfont{\raggedright\reset@font\Huge\scshape\textsc}%\sectionrule{0pt}{0pt}{-10pt}{1pt}}
-%\def\@makeschapterhead#1{%
-%  {\parindent \z@ \raggedright \reset@font
-%    {\Huge \scshape \textsc #1}
-%    \par\vskip 10\p@
-%    \hrule height 1pt
-%    \vskip 10\p@
-%  }}
-%\def\@makechapterhead#1{%
-%  {\parindent \z@ \raggedright \reset@font
-%    {\Huge \thechapter: \scshape \textsc #1}
-%    \par\vskip 10\p@
-%    \hrule height 1pt
-%    \vskip 10\p@
-%  }}
-\renewcommand\@pnumwidth{2em}
-% make the space in the toc wide enough for 4 digit numbers
+\titleformat{\part}[block]
+   {\Huge\bfseries\filcenter}
+   {}
+   {0em}
+   {\thispagestyle{empty}}
+\titlecontents{part}[0pt]
+	{\vspace{3ex}}
+	{no numbered parts}
+	{\large\bfseries}
+	{\titlerule*[1em]{ }\contentspage}
 \makeatother
 
-\newcommand{\apexappendix}{%
- \appendix
+\let\oldappendix\appendix
+\renewcommand{\appendix}{%
+ \cleardoublepage
+ \oldappendix
+ \setcounter{secnumdepth}{-1}
  \pagenumbering{arabic}
  \renewcommand{\thepage}{A.\arabic{page}}
- \renewcommand{\thechapter}{\arabic{chapter}}
- \part{\appendixname}
+ \part*{\appendixname}
 % \part*{Appendices\protect\thispagestyle{empty}}
 % \addcontentsline{toc}{part}{\appendixname}
 % \iflatexml\else
@@ -211,26 +205,46 @@
 
 \newcommand{\surfaceS}{\ensuremath{\mathcal{S}}}
 
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,theorems}
+
 %\newspecialbox[notempty]{exvideo}{ignored}{240}
 \AtBeginDocument{\makeStyles{exvideo}{240}}
-\definecolor{topexvideo}{Hsb}{240,.05,1}% %= hsl(#4,100,97.5)
-\definecolor{borderexvideo}{Hsb}{240,.3,1}% %= hsl(#4,90.5,68.4)
-\definecolor{bottomexvideo}{Hsb}{240,.15,1}% %= hsl(#4,81.9,83.4)
+\newcommand{\setexvideocolor}{%
+ \definecolor{topexvideo}{Hsb}{240,.05,1}% %= hsl(#4,100,97.5)
+ \definecolor{borderexvideo}{Hsb}{240,.3,1}% %= hsl(#4,90.5,68.4)
+ \definecolor{bottomexvideo}{Hsb}{240,.15,1}% %= hsl(#4,81.9,83.4)
+}
+\newcommand{\setexvideobw}{%
+ \definecolor{topexvideo}{Hsb}{0,0,1}% white
+ \definecolor{bottomexvideo}{Hsb}{0,0,1}% white
+ \definecolor{borderexvideo}{Hsb}{0,1,0}% black
+}
 \newcommand{\exvideo}[1]{%
+% \bigbreak%
+% \noindent%
+%  \coloredbox{% same options newspecialbox
+%   rectangle, text width = \specialboxlength,
+%   inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
+%   draw=borderexvideo, top color=topexvideo, bottom color=bottomexvideo,
+%   text justified, very thick
+%  }{%
+%   draw=black, thick, rectangle, text width=\specialboxlength,
+%   inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
+%   draw, text justified, very thick
+%  }{\noindent #1}%
+% \bigbreak%
+%}%
+%\renewcommand{\exvideo}[1]{%
  \bigbreak%
- \noindent%
-  \coloredbox{% same options newspecialbox
-   rectangle, text width = \specialboxlength,
-   inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
-   draw=borderexvideo, top color=topexvideo, bottom color=bottomexvideo,
-   text justified, very thick
-  }{%
-   draw=black, thick, rectangle, text width=\specialboxlength,
-   inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
-   draw, text justified, very thick
-  }{\noindent #1}%
+ \tcbox[
+  colframe=borderexvideo,
+   interior style={top color=topexvideo, bottom color=bottomexvideo},
+   sharp corners=all,notitle,width=\textwidth,enhanced,tcbox width=forced left
+  ]{#1}%
  \bigbreak%
-}%
+}
 
 
 % \jmtVideo{youtube code}{jmt url suffix}{actual title}
@@ -328,20 +342,21 @@
 
 \newcommand{\apexindex}{%
  \cleardoublepage
+% \chapter{\indexname} % \printindex has its own heading
  \phantomsection
- \iflatexml\chapter*{\indexname}\fi
+% \iflatexml\chapter*{\indexname}\fi
  \addcontentsline{toc}{chapter}{\indexname}
  % set the ``see'' entries that shouldn't refer to a page number
- \ifthenelse{\boolean{calc2included}}{%
-  \index{$"!$|see {factorial}} % 08 sequences
- }{}
- \ifthenelse{\boolean{calc3included}}{%
-  \index{perpendicular|see{orthogonal}} % 10 dot product
-  \index{nabla|see {del operator}} % 12 directional derivatives, 14 vector fields
-  \index{$\nabla$|see {del operator}} % 12 directional derivatives, 14 vector fields
-  \index{multiple integration|see{iterated integration}} % 13 iterated integrals
-  \index{$\dfrac{\partial (x,y,z)}{\partial (u,v,w)}$|see {Jacobian}} % 13 Jacobian
- }{}
+% \ifthenelse{\boolean{calc2included}}{%
+%  \index{$"!$|see {factorial}} % 08 sequences
+% }{}
+% \ifthenelse{\boolean{calc3included}}{%
+%  \index{perpendicular|see{orthogonal}} % 10 dot product
+%  \index{nabla|see {del operator}} % 12 directional derivatives, 14 vector fields
+%  \index{$\nabla$|see {del operator}} % 12 directional derivatives, 14 vector fields
+%  \index{multiple integration|see{iterated integration}} % 13 iterated integrals
+%  \index{$\dfrac{\partial (x,y,z)}{\partial (u,v,w)}$|see {Jacobian}} % 13 Jacobian
+% }{}
  \printindex
 }
 
@@ -366,10 +381,11 @@
 }
 \usepackage{bookmark}
 
+%\renewcommand{\partname}{Calculus}
+
 % hyperref changes these
 % if they come before and have newcommand, latexml overwrites them
 \AtBeginDocument{
- \renewcommand{\partname}{}
  \renewcommand{\chapterautorefname}{Chapter} % the default is lowercase
  \renewcommand{\sectionautorefname}{Section} % the default is lowercase
  \renewcommand{\appendixname}{Appendices}
@@ -391,3 +407,7 @@
 \lxIncludeCssFile{style.css}
 \lxIncludeCssFile{LaTeXML-marginpar.css}
 \lxIncludeCssFile{LaTeXML-navbar-left.css}
+
+% set the defaults, just in case
+\printincolor
+\usetwoDgraphics

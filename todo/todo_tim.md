@@ -16,11 +16,6 @@
 1. [figures/figtrip5e_3D.asy line 26](../figures/figtrip5e_3D.asy#L26): // todo find a better way to shade this in
 1. [headers/APEX_format.tex line 42](../headers/APEX_format.tex#L42): \RequirePackage{amssymb} % todo ? https://tex.stackexchange.com/a/3000/107497 recommends dropping amssymb in favor of unicode-math
 1. [headers/apex_style.sty.ltxml line 132](../headers/apex_style.sty.ltxml#L132): DefMacro('\psBill'); # todo
-1. [revisions/completed/metroStErrata.txt line 21](../revisions/completed/metroStErrata.txt#L21): Figure 11.6 would look better if the blue plane would not stop exactly at the z-axis and if the tip of the x-axis would “stick out”.  Mention the general drawing trick: if a plane is parallel to a coordinate axis, draw grid lines parallel to that axis onto the plane.  Also draw an example of an oblique plane. - todo'd
-1. [revisions/completed/metroStErrata.txt line 31](../revisions/completed/metroStErrata.txt#L31): Section 11.2 Example 6 (and several other similar examples and exercises) need a short physics crash course:  forces are vectors and in particular add like vectors; an object is at rest iff all acting forces add up to the zero vector; force = mass times acceleration; the force of gravity near the surface of the earth is such that the acceleration of every object is 9.8 m/s^2. - todo
-1. [revisions/completed/metroStErrata.txt line 59](../revisions/completed/metroStErrata.txt#L59): P.731 line 3: Concept of position function is not clear. A vector does not determine a position. We need to introduce the concept of a “position vector”:  The position vector of point P is the vector OP. That way every point determines a unique vector and every vector determines a unique point. - todo
-1. [revisions/completed/metroStErrata.txt line 69](../revisions/completed/metroStErrata.txt#L69): Fig 13.4: the labeling of the level curves is not nice; maybe use different colors for the different levels? - todo
-1. [revisions/completed/metroStErrata.txt line 87](../revisions/completed/metroStErrata.txt#L87): Section 13.9: I would like some justification/motivation for the Lagrange multiplier method, which would reinforce the geometric meaning of the gradient.  Also we need some more problems with three unknowns. - already todo'd
 1. [text/02_Derivative.tex line 349](../text/02_Derivative.tex#L349): todo Tim should the graph of sin and its derivative use equal aspect ratio?
 1. [text/02_Derivative.tex line 519](../text/02_Derivative.tex#L519): todo Tim : iframe ?
 1. [text/03_Curve_Sketching.tex line 251](../text/03_Curve_Sketching.tex#L251): todo Tim Fig 3.5.5 (sin x according to Mathematica) take a while to render.  could we get some actual tikz code to do it for us?
@@ -33,19 +28,19 @@
 1. [text/07_Arc_Length.tex line 187](../text/07_Arc_Length.tex#L187): todo Tim should this be 3D at all?
 1. [text/07_Arc_Length.tex line 214](../text/07_Arc_Length.tex#L214): todo Tim does this (and prev KI) only need f' continuous on (a,b)?
 1. [text/07_Exp_Log_Functions.tex line 81](../text/07_Exp_Log_Functions.tex#L81): todo Tim move this to 7.0 once that's written
-1. [text/07_Fluid_Force.tex line 122](../text/07_Fluid_Force.tex#L122): todo Tim simplify this tikz? maybe convert it to 3d anyway?
+1. [text/07_Fluid_Force.tex line 114](../text/07_Fluid_Force.tex#L114): todo Tim simplify this tikz? maybe convert it to 3d anyway?
 1. [text/07_Fluid_Force.tex line 21](../text/07_Fluid_Force.tex#L21): todo Tim should this be redone? or not, because Larry Green isn't on Youtube?
-1. [text/07_Fluid_Force.tex line 64](../text/07_Fluid_Force.tex#L64): todo Tim convert the cylindrical tank into a 3d image?
+1. [text/07_Fluid_Force.tex line 60](../text/07_Fluid_Force.tex#L60): todo Tim convert the cylindrical tank into a 3d image?
 1. [text/07_Shell_Method.tex line 58](../text/07_Shell_Method.tex#L58): todo Tim turn these into asymptote files
-1. [text/07_Work.tex line 201](../text/07_Work.tex#L201): todo Tim make the water tank figure into 3d?
-1. [text/07_Work.tex line 241](../text/07_Work.tex#L241): todo Tim make the simplified water tank into 3d?
-1. [text/07_Work.tex line 268](../text/07_Work.tex#L268): todo Tim make the water cone into 3d?
+1. [text/07_Work.tex line 196](../text/07_Work.tex#L196): todo Tim make the water tank figure into 3d?
+1. [text/07_Work.tex line 235](../text/07_Work.tex#L235): todo Tim make the simplified water tank into 3d?
+1. [text/07_Work.tex line 261](../text/07_Work.tex#L261): todo Tim make the water cone into 3d?
 1. [text/08_Alternating_Series.tex line 186](../text/08_Alternating_Series.tex#L186): todo Tim do we want to have an absolutely convergent example to refer back to?
+1. [text/09_Conic_Sections.tex line 176](../text/09_Conic_Sections.tex#L176): todo Tim incorporate revisions/conics.tex: reflective properties, parabola as the limiting case
 1. [text/09_Parametric_Calculus.tex line 356](../text/09_Parametric_Calculus.tex#L356): todo Tim Rogowski has a subsection on speed at this point.  Stewart doesn't.
 1. [text/09_Parametric_Equations.tex line 5](../text/09_Parametric_Equations.tex#L5): todo Tim should these be labeled as figures?
 1. [text/10_Cross_Product.tex line 271](../text/10_Cross_Product.tex#L271): todo Tim this parallelogram is very narrow.  do we want something better?
-1. [text/10_Lines.tex line 193](../text/10_Lines.tex#L193): % todo Tim why not just rescale d2 to match d1?
-1. [text/10_Space_Intro.tex line 132](../text/10_Space_Intro.tex#L132): todo Tim this would look better if the blue plane would not stop exactly at the z-axis and if the tip of the x-axis would stick out
+1. [text/10_Space_Intro.tex line 132](../text/10_Space_Intro.tex#L132): todo Tim this would look better if the bl-ue plane would not stop exactly at the z-axis and if the tip of the x-axis would stick out
 1. [text/11_Vector_Functions_Motion.tex line 398](../text/11_Vector_Functions_Motion.tex#L398): todo Tim make sure these three figures match
 1. [text/12_Multivariable_Intro.tex line 100](../text/12_Multivariable_Intro.tex#L100): todo Tim distinguish the level curves in Fig 13.1.4
 1. [text/12_Tangent_Planes_Lines.tex line 141](../text/12_Tangent_Planes_Lines.tex#L141): todo Tim should this be $\ell_{\vecn}$ here and many other places?

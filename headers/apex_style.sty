@@ -11,6 +11,9 @@
 %\RequirePackage{thmtools} % continuing theorems and ``List of Theorems''
 %\usepackage{lipsum} % not used
 
+% make the space in the toc wide enough for 4 digit numbers
+\renewcommand\@pnumwidth{2em}
+
 % The following helps create a ``List of Theorems'', ``Definitions'', and ``Key Ideas''.  See http://tex.stackexchange.com/q/74857/107497
 %\usepackage{etoolbox}
 %\patchcmd\thmtlo@chaptervspacehack
@@ -89,7 +92,7 @@
 
 % creates a generic style for the lines. You can add lots
 % of things here, all separated by commas.
-\newcommand{\linestyle}{[thick, \thelinecolor]}
+%\newcommand{\linestyle}{[thick, \thelinecolor]}
 
 %\newcommand{\setlinestyle}[1]{\renewcommand{\linestyle}{[#1, \thelinecolor]}}
 
@@ -131,7 +134,7 @@
   \ifthenelse{\boolean{showexamplelines}}{%
    \begin{tikzpicture}[remember picture,overlay]%
     \node [yshift=\bottommarginlength](bottom) at (current page.north) {};%
-    \draw \linestyle (#1) -- ( #1 |- bottom);% from start to bottom of page
+    \draw [thick, \thelinecolor] (#1) -- ( #1 |- bottom);% from start to bottom of page
    \end{tikzpicture}%
   }{}%
  }%
@@ -160,7 +163,7 @@
 }%ends the definition of examplestarred
 
 \newcommand*{\drawexampleend}[2]{%
- \draw \linestyle (#1)--(#1 |- e#2.south) -- ++(0,-.2\baselineskip) -- ++(10pt,0);
+ \draw [thick, \thelinecolor] (#1)--(#1 |- e#2.south) -- ++(0,-.2\baselineskip) -- ++(10pt,0);
 }
 
 \newcommand*{\drawnode}[3]{%
@@ -197,7 +200,7 @@
 }%
 \begin{tikzpicture}[remember picture,overlay]
 	\node [xshift=\innerpagemarginlength,yshift=\topmarginlength](tleft) at (current page.north west)  {};
-	\draw \linestyle (tleft) -- ++(0,\bottommarginlength+1in);
+	\draw [thick, \thelinecolor] (tleft) -- ++(0,\bottommarginlength+1in);
 \end{tikzpicture}}
 
 

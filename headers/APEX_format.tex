@@ -82,19 +82,6 @@
 
 \theoremstyle{apexExample}
 \newtheorem{exampleEnv}{Example}[section]
-%\let\theHexampleEnv\theexampleEnv
-%\renewcommand{\theexampleEnv}{\arabic{exampleEnv}}
-%% this gets written to aux.  if it appears in section #1, the argument vanishes.
-%% otherwise, we're in a different section and need to prefix whatever with the
-%% section #1
-%\protected\def\sectionifdifferent#1{%
-%  \ifthenelse{\equal{#1}{\thesection}}{}{#1.}%
-%}
-%% the prefix before \theexampleEnv
-%\makeatletter
-%\renewcommand{\p@exampleEnv}{\sectionifdifferent{\thesection}}
-%\makeatother
-\providecommand{\sectionifdifferent}[1]{} % in case it's still in there
 
 \theoremstyle{apex}
 
@@ -118,23 +105,17 @@
 \newcommand{\apex}{\texorpdfstring{A\kern -.1em \lower -.5ex\hbox{P}\kern -.25em\lower .5ex\hbox{E}\kern -.1em X}{APEX}}
 %\newcommand{\apex}{A\kern -1pt \lower -2pt\hbox{P}\kern -4pt \lower .7ex\hbox{E}\kern -1pt X}
 
-\renewcommand{\partname}{\protect\thispagestyle{empty}}
-\renewcommand{\thepart}{}
+%\renewcommand{\partname}{\protect\thispagestyle{empty}}
+%\renewcommand{\thepart}{}
 
 
-%%%%
-%%  Create boolean for whether or not to print 3D graphics. 
-%%  Also creates command to switch back and forth; "looks better."
-%%%%
+% Create boolean for whether or not to print 3D graphics. 
+% Also creates command to switch back and forth; "looks better."
 \newboolean{in_threeD}
-\setboolean{in_threeD}{true}
 \newcommand{\usethreeDgraphics}{\setboolean{in_threeD}{true}}
 \newcommand{\usetwoDgraphics}{\setboolean{in_threeD}{false}}
+\usethreeDgraphics
 
-
-%%%%
-%% Commands to determine whether we print in color or black and white
-%%%%
 
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.8}
@@ -159,10 +140,10 @@
 \newcommand{\colormapone}{rgb=(.4,.4,1); rgb=(.8,.8,1)}
 \newcommand{\colormaptwo}{rgb=(1,.4,.4); rgb=(1,.8,.8)}
 \newcommand{\colormapplaneone}{rgb=(.7,.7,1); rgb=(.9,.9,1)}
-\definecolor{colormaponebottom}{rgb}{.4,.4,1}
-\definecolor{colormaponetop}{rgb}{.8,.8,1}
-\definecolor{colormaptwobottom}{rgb}{1,.4,.4}
-\definecolor{colormaptwotop}{rgb}{1,.8,.8}
+%\definecolor{colormaponebottom}{rgb}{.4,.4,1}
+%\definecolor{colormaponetop}{rgb}{.8,.8,1}
+%\definecolor{colormaptwobottom}{rgb}{1,.4,.4}
+%\definecolor{colormaptwotop}{rgb}{1,.8,.8}
 
 % determines the line colors for color and black and white lines.
 \newcommand{\colorlinecolor}{blue!95!black!30}
@@ -171,8 +152,12 @@
 % sets the line color to be in color, as a default
 \newcommand{\thelinecolor}{\colorlinecolor}
 
-\newcommand{\setcolorlinecolor}[1]{\renewcommand{\colorlinecolor}{#1}\renewcommand{\thelinecolor}{\colorlinecolor}}
-\newcommand{\setbwlinecolor}[1]{\renewcommand{\bwlinecolor}{#1}\renewcommand{\thelinecolor}{\bwlinecolor}}
+%\newcommand{\setcolorlinecolor}[1]{%
+% \renewcommand{\colorlinecolor}{#1}%
+% \renewcommand{\thelinecolor}{\colorlinecolor}}
+%\newcommand{\setbwlinecolor}[1]{%
+% \renewcommand{\bwlinecolor}{#1}%
+% \renewcommand{\thelinecolor}{\bwlinecolor}}
 
 % this allows the above default to be overriden by using
 % the \printincolor and \printinblackandwhite commands
@@ -180,45 +165,46 @@
 % and forth between bw and color. (Who would want to?)
 \newcommand{\colornamesuffix}{}
 
-\newcommand{\printincolor}{\setboolean{inColor}{true}%
-\renewcommand{\thelinecolor}{\colorlinecolor}
-\renewcommand{\colornamesuffix}{}
-% aforementioned renewcommanding
-\renewcommand{\colorone}{blue}
-\renewcommand{\colortwo}{red}
-\renewcommand{\colorthree}{green}
-\renewcommand{\coloronefill}{blue!15!white}
-\renewcommand{\colortwofill}{red!15!white}
-\renewcommand{\colormapone}{rgb=(.4,.4,1); rgb=(.8,.8,1)}
-\renewcommand{\colormaptwo}{rgb=(1,.4,.4); rgb=(1,.8,.8)}
-\renewcommand{\colormapplaneone}{rgb=(.7,.7,1); rgb=(.9,.9,1)}
-\definecolor{colormaponebottom}{rgb}{.4,.4,1}
-\definecolor{colormaponetop}{rgb}{.8,.8,1}
-\definecolor{colormaptwobottom}{rgb}{1,.4,.4}
-\definecolor{colormaptwotop}{rgb}{1,.8,.8}
+\newcommand{\printincolor}{
+ \setboolean{inColor}{true}%
+ % aforementioned renewcommanding
+ \renewcommand{\thelinecolor}{\colorlinecolor}
+ \renewcommand{\colornamesuffix}{}
+ \renewcommand{\colorone}{blue}
+ \renewcommand{\colortwo}{red}
+ \renewcommand{\colorthree}{green}
+ \renewcommand{\coloronefill}{blue!15!white}
+ \renewcommand{\colortwofill}{red!15!white}
+ \renewcommand{\colormapone}{rgb=(.4,.4,1); rgb=(.8,.8,1)}
+ \renewcommand{\colormaptwo}{rgb=(1,.4,.4); rgb=(1,.8,.8)}
+ \renewcommand{\colormapplaneone}{rgb=(.7,.7,1); rgb=(.9,.9,1)}
+ \definecolor{colormaponebottom}{rgb}{.4,.4,1}
+ \definecolor{colormaponetop}{rgb}{.8,.8,1}
+ \definecolor{colormaptwobottom}{rgb}{1,.4,.4}
+ \definecolor{colormaptwotop}{rgb}{1,.8,.8}
+ \setexvideocolor
 }
 
-\newcommand{\printinblackandwhite}{\setboolean{inColor}{false}%
-\renewcommand{\thelinecolor}{\bwlinecolor}
-\renewcommand{\colornamesuffix}{BW}
-% the counter to the above renewcommanding
-\renewcommand{\colorone}{black}
-\renewcommand{\colortwo}{black!50!white}
-\renewcommand{\colorthree}{black!25!white}
-\renewcommand{\coloronefill}{black!15!white}
-\renewcommand{\colortwofill}{black!05!white}
-\renewcommand{\colormapone}{rgb=(.4,.4,.4); rgb=(.7,.7,.7)}
-\renewcommand{\colormaptwo}{rgb=(.6,.6,.6); rgb=(.9,.9,.9)}
-\renewcommand{\colormapplaneone}{rgb=(.8,.8,.8); rgb=(.95,.95,.95)}
-\definecolor{colormaponebottom}{rgb}{.4,.4,.4}
-\definecolor{colormaponetop}{rgb}{.7,.7,.7}
-\definecolor{colormaptwobottom}{rgb}{.6,.6,.6}
-\definecolor{colormaptwotop}{rgb}{.9,.9,.9}
+\newcommand{\printinblackandwhite}{
+ \setboolean{inColor}{false}%
+ % undoing the above renewcommanding
+ \renewcommand{\thelinecolor}{\bwlinecolor}
+ \renewcommand{\colornamesuffix}{BW}
+ \renewcommand{\colorone}{black}
+ \renewcommand{\colortwo}{black!50!white}
+ \renewcommand{\colorthree}{black!25!white}
+ \renewcommand{\coloronefill}{black!15!white}
+ \renewcommand{\colortwofill}{black!05!white}
+ \renewcommand{\colormapone}{rgb=(.4,.4,.4); rgb=(.7,.7,.7)}
+ \renewcommand{\colormaptwo}{rgb=(.6,.6,.6); rgb=(.9,.9,.9)}
+ \renewcommand{\colormapplaneone}{rgb=(.8,.8,.8); rgb=(.95,.95,.95)}
+ \definecolor{colormaponebottom}{rgb}{.4,.4,.4}
+ \definecolor{colormaponetop}{rgb}{.7,.7,.7}
+ \definecolor{colormaptwobottom}{rgb}{.6,.6,.6}
+ \definecolor{colormaptwotop}{rgb}{.9,.9,.9}
+ \setexvideobw
 }
 
-%\newcommand{\threedlines}[4][]{\draw [dashed,#1] (axis cs: #2,#3,#4) -- (axis cs: #2,#3,0) -- (axis cs: #2,0,0)  (axis cs: #2,#3,0)--(axis cs:0,#3,0);}
-
-%\newcommand{\mydraw}{\draw (axis cs:0,0,0) -- (axis cs:1,1,0);}
 
 \newcommand{\myincludegraphics}[2][]{%
  \IfFileExists{./#2\colornamesuffix.png}{%
@@ -240,14 +226,7 @@
  }%
 }
 
-% the default is printing in color
-\printincolor
 
-
-%%%
-%% Creates a lot of measurements - lengths - to use
-%% later on. Explained when a value is set.
-%%%
 
 
 \newlength{\topmarginlength} 
@@ -258,11 +237,10 @@
 \newlength{\innerpagemarginlength}
 
 
-% measures how far from the text the example line is to be drawn
+% how far from the text the example line is to be drawn
 \setlength{\marginlinelength}{2pt}
 
-% the height of the top margin
-% used in calculating the lines for examples
+% the height of the top margin (used in calculating the lines for examples)
 \setlength{\topmarginlength}{-1in-\voffset}
 
 % the length of the bottom margin (ish)

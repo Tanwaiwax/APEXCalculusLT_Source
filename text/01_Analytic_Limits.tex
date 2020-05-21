@@ -6,7 +6,7 @@ Recognizing that $\epsilon$-$\delta$ proofs are cumbersome, this section gives a
 
 Suppose that $\ds\lim_{x\to 2} f(x)=2$ and $\ds\lim_{x\to 2} g(x) = 3$. What is $\ds\lim_{x\to 2}(f(x)+g(x))$? Intuition tells us that the limit should be 5, as we expect limits to behave in a nice way. The following theorem states that already established limits do behave nicely.
 
-\theorem{thm:limit_algebra}{Basic Limit Properties}{%
+\begin{theorem}[Basic Limit Properties]\label{thm:limit_algebra}
 Let $b$, $c$, $L$ and $K$ be real numbers, let $n$ be a positive integer, and let $f$ and $g$ be functions with the following limits: \index{limit!properties}
 \[\lim_{x\to c}f(x) = L \text{\ and\ } \lim_{x\to c} g(x) = K.\]
 The following limits hold.\\
@@ -21,7 +21,8 @@ The following limits hold.\\
 \item Powers: & $\ds\lim_{x\to c} [f(x)]^n = L^n$ \\
 \item Roots: & $\ds\lim_{x\to c} \sqrt[n]{f(x)} = \sqrt[n]{L}$ \quad {\small (when $n$ is odd or $L\ge0$)}
 \end{tabular}
-\end{anywhereenum}}
+\end{anywhereenum}
+\end{theorem}
 
 We will now prove the Sum Property using the formal definition of a limit from the previous section. We know that $\ds \lim_{x\to c}f(x) = L$ and  $\ds\lim_{x\to c} g(x) = K$. We want to show that $\ds \lim_{x\to c}(f(x)+g(x))=L+K$.
 
@@ -43,9 +44,11 @@ Thus $\abs{(f(x)+g(x))-(L+K)}<\epsilon$, which is what we were trying to show.
 
 The other Basic Limit Properties can be proven in a similar way and are left for the reader.  Our next theorem requires a few more conditions.
 
-\theorem{thm:limit_composition}{Limits of Composition}{Suppose that
+\begin{theorem}[Limits of Composition]\label{thm:limit_composition}
+Suppose that
 \[\lim_{x\to c}f(x)=L\text{ and }\lim_{x\to L}g(x)=g(L)=K.\]
-Then $\ds\lim_{x\to c}g(f(x))=K$.}
+Then $\ds\lim_{x\to c}g(f(x))=K$.
+\end{theorem}
 % continuity of g required: f=g=1_{x==0} so f(g)=1_{x \neq 0}
 
 \youtubeVideo{v_Nz6UUQ4HQ}{Limit Laws to Evaluate a Limit, Example 1}
@@ -85,12 +88,13 @@ Part 3 of the previous example demonstrates how the limit of a quadratic polynom
 \[\lim_{x\to 2} p(x) = 9 = p(2);\]
 i.e., the limit at 2 was found just by plugging 2 into the function. This holds true for all polynomials, and also for rational functions (which are quotients of polynomials), as stated in the following theorem.
 
-\theorem{thm:poly_rat}{Limits of Polynomial and Rational Functions}{Let $p(x)$ and $q(x)$ be polynomials and $c$ a real number. Then:
+\begin{theorem}[Limits of Polynomial and Rational Functions]\label{thm:poly_rat}
+Let $p(x)$ and $q(x)$ be polynomials and $c$ a real number. Then:
 \begin{enumerate}
 \item	$\ds \lim_{x\to c} p(x) = p(c)$
 \item	$\ds \lim_{x\to c} \frac{p(x)}{q(x)} = \frac{p(c)}{q(c)}$, where $q(c) \neq 0$.
 \end{enumerate}
-}
+\end{theorem}
 
 \example{ex_limit_rat}{Finding a limit of a rational function}{Using \autoref{thm:poly_rat}, find
 \[\lim_{x\to -1} \frac{3x^2-5x+1}{x^4-x^2+3}.\]}
@@ -108,7 +112,7 @@ as it seemed fairly obvious. The previous theorems state that many functions beh
 Polynomial and rational functions are not the only functions to behave in such a predictable way. The following theorem gives a list of functions whose behavior is particularly ``nice'' in terms of limits. In the next section, we will give a formal name to these functions that behave ``nicely.''
 
 \setboxwidth{70pt}
-\theorem{thm:lim_continuous}{Limits of Basic Functions}{%
+\begin{theorem}[Limits of Basic Functions]\label{thm:lim_continuous}
 Let $c$ be a real number in the domain of the given function and let $n$ be a positive integer. The following limits hold:
 \begin{multicols}{3}
 \begin{enumerate}
@@ -122,7 +126,8 @@ Let $c$ be a real number in the domain of the given function and let $n$ be a po
 \item	$\ds \lim_{x\to c} \ln x = \ln c$
 \item	$\ds \lim_{x\to c} \sqrt[n]{x} = \sqrt[n]{c}$
 \end{enumerate}
-\end{multicols}}
+\end{multicols}
+\end{theorem}
 
 Many times, we will combine this theorem with Theorems \ref{thm:limit_algebra} and \ref{thm:limit_composition}.  If our expression can be built up from the pieces in those theorems, then we can quickly evaluate the limit.
 
@@ -160,13 +165,13 @@ Many times, we will combine this theorem with Theorems \ref{thm:limit_algebra} a
 	We can also use \autoref{thm:limit_composition}. Using \autoref{thm:lim_continuous}, we have $\ds \lim_{x\to 1}\ln x = \ln 1 = 0$. Applying the Composition rule,
 	\[\ds \lim_{x\to 1} e^{\ln x} = \lim_{x\to 0} e^x = e^0 = 1.\]
 	Both approaches are valid, giving the same result.
-	
+		
 	\item	We encountered this limit in \autoref{sec:limit_intro}. Applying our theorems, we attempt to find the limit as
 	\[\lim_{x\to 0}\frac{\sin x}{x}\to\frac{\sin 0}{0} \to\zerooverzero.\]
 	This, of course, violates a condition of \autoref{thm:limit_algebra}, as the limit of the denominator is not allowed to be 0. Therefore, we are still unable to evaluate this limit with tools we currently have at hand.\eoehere
 \end{enumerate}}
 
-The section could have been titled ``Using Known Limits to Find Unknown Limits.'' By knowing certain limits of functions, we can find limits involving sums, products, powers, etc., of these functions. We further the development of such comparative tools with the Squeeze Theorem, a clever and intuitive way to find the value of some limits. 
+The section could have been titled ``Using Known Limits to Find Unknown Limits.'' By knowing certain limits of functions, we can find limits involving sums, products, powers, etc., of these functions. We further the development of such comparative tools with the Squeeze Theorem, a clever and intuitive way to find the value of some limits.
 
 Before stating this theorem formally, suppose we have functions $f$, $g$ and $h$ where $g$ always takes on values between $f$ and $h$; that is, for all $x$ in an interval,
 \[f(x) \leq g(x) \leq h(x).\]
@@ -187,18 +192,19 @@ If $f$ and $h$ have the same limit at $c$, and $g$  is always ``squeezed'' betwe
 \node[\colorone] at (2.2,1.35) {\scriptsize $c$};
 \end{tikzpicture}}
 
-\theorem{thm:sqz}{Squeeze Theorem}
-{Let $f$, $g$ and $h$ be functions on open intervals $I$ and $J$ on either side of $c$ such that for all $x$ in $I$ and $J$,
+\begin{theorem}[Squeeze Theorem]\label{thm:sqz}
+Let $f$, $g$ and $h$ be functions on open intervals $I$ and $J$ on either side of $c$ such that for all $x$ in $I$ and $J$,
 \[f(x)\leq g(x) \leq h(x).\]
 If
 \[\lim_{x\to c} f(x) = L = \lim_{x\to c} h(x),\]
 then\[
 \lim_{x\to c} g(x) = L.\]
-\index{limit!Squeeze Theorem}\index{Squeeze Theorem}}
+\index{limit!Squeeze Theorem}\index{Squeeze Theorem}
+\end{theorem}
 
 %Because the Squeeze Theorem is talking about limits, what happens at $x=c$ doesn't matter.  The inequalities don't need to hold, and the functions don't even need to be defined.
 
-It can take some work to figure out appropriate functions by which to ``squeeze'' the given function of which you are trying to evaluate a limit. However, that is generally the only place work is necessary; the theorem makes the ``evaluating the limit part'' very simple. 
+It can take some work to figure out appropriate functions with which to ``squeeze'' the given function of which you are trying to evaluate a limit. However, that is generally the only place work is necessary; the theorem makes the ``evaluating the limit part'' very simple. 
 
 We use the Squeeze Theorem in the following example to finally prove that $\ds \lim_{x\to 0} \frac{\sin x}{x} = 1$.
 
@@ -273,7 +279,8 @@ Second, this limit tells us more than just that as $x$ app\-roaches 0, $\sin(x)/
 
 We include this special limit, along with three others, in the following theorem.
 
-\theorem{thm:special_limits}{Special Limits}{\mbox{}\\[-2.5\baselineskip]
+\begin{theorem}[Special Limits]\label{thm:special_limits}
+\mbox{}\\[-2.5\baselineskip]
 \begin{multicols}{2}
 \begin{enumerate}
 	\item		$\ds \lim_{x\to 0} \frac{\sin x}{x} = 1$
@@ -281,7 +288,8 @@ We include this special limit, along with three others, in the following theorem
 	\item		$\ds \lim_{x\to 0} (1+x)^\frac1x = e$
 	\item		$\ds \lim_{x\to 0} \frac{e^x-1}{x} = 1$
 \end{enumerate}
-\end{multicols}}
+\end{multicols}
+\end{theorem}
 
 A short word on how to interpret the latter three limits. We know that as $x$ goes to 0, $\cos x$ goes to 1. So, in the second limit, both the numerator and denominator are approaching 0. However, since the limit is 0, we can interpret this as saying that ``$\cos x$ is approaching 1 faster than $x$ is approaching 0.''
 
@@ -317,8 +325,10 @@ Clearly $\ds\lim_{x\to 1}(x+1)=2$. Recall that when considering limits, we are n
 
 The key to the above example is that the functions $y=(x^2-1)/(x-1)$ and $y=x+1$ are identical except at $x=1$. Since limits describe a value the function is approaching, not the value the function actually attains, the limits of the two functions are always equal.
 
-\theorem{thm:limit_allbut1}{Limits of Functions Equal At All But One Point}{Let $g(x) = f(x)$ for all $x$ in an open interval, except possibly at $c$, and let $\ds \lim_{x\to c} g(x) = L$ for some real number $L$. Then
-\[\lim_{x\to c} f(x)=\lim_{x\to c} g(x)=L.\]}
+\begin{theorem}[Limits of Functions Equal At All But One Point]\label{thm:limit_allbut1}
+Let $g(x) = f(x)$ for all $x$ in an open interval, except possibly at $c$, and let $\ds \lim_{x\to c} g(x) = L$ for some real number $L$. Then
+\[\lim_{x\to c} f(x)=\lim_{x\to c} g(x)=L.\]
+\end{theorem}
 
 The Fundamental Theorem of Algebra tells us that when dealing with a rational function of the form $g(x)/f(x)$ and directly evaluating the limit $\ds \lim_{x\to c} \frac{g(x)}{f(x)}$ returns ``0/0'', 
 then $(x-c)$ is a factor of both $g(x)$ and $f(x)$. One can then use algebra to factor this term out, divide, then apply \autoref{thm:limit_allbut1}. Some useful algebraic techniques to rewrite functions that return an indeterminate form when evaluating a limit are:

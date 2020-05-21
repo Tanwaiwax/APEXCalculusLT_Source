@@ -2,12 +2,13 @@
 
 As we have studied limits, we have gained the intuition that limits measure ``where a function is heading.'' That is, if $\ds \lim_{x\to 1} f(x) = 3$, then as $x$ is close to 1, $f(x)$ is close to 3. We have seen, though, that this is not necessarily a good indicator of what $f(1)$ actually is. This can be problematic; functions can tend to one value but attain another. This section focuses on functions that \textit{do not} exhibit such behavior.
 
-\definition{def:continuous}{Continuous Function}
-{Let $f$ be a function defined on an open interval $I$ containing $c$. \index{continuous function}
+\begin{definition}[Continuous Function]\label{def:continuous}
+Let $f$ be a function defined on an open interval $I$ containing $c$. \index{continuous function}
 \begin{enumerate}
 	\item	$f$ is \textbf{continuous at $c$} if $\ds \lim_{x\to c}f(x) = f(c)	$.
 	\item	$f$ is \textbf{continuous on $I$} if $f$ is continuous at $c$ for all values of $c$ in $I$. If $f$ is continuous on $(-\infty,\infty)$, we say $f$ is \textbf{continuous everywhere}.
-\end{enumerate}}
+\end{enumerate}
+\end{definition}
 
 A useful way to establish whether or not a function $f$ is continuous at $c$ is to verify the following three things:
 \begin{enumerate}
@@ -123,10 +124,10 @@ Give the intervals on which $f$ is continuous.}
 \end{enumerate}
 We conclude that $f$ is continuous everywhere except at integer values of $c$. So the intervals on which $f$ is continuous are
 \[\dotsc, (-2,-1), (-1,0), (0,1), (1,2), \dotsc.\eoehere\]}
-		
+
 Our definition of continuity on an interval specifies the interval is an open interval. At endpoints or points of discontinuity we may consider continuity from the right or left.
 
-\definition{def:left_right_cont}{Right and Left Continuity}{%
+\begin{definition}[Right and Left Continuity]\label{def:left_right_cont}
 \textbf{Right Continuous}
 
 Let $f$ be defined on a closed interval with left endpoint $a$. We say that $f$ is \textbf{continuous from the right at $a$} (or \textbf{right continuous at $a$}) if  \[\lim_{x\to a^+} f(x)=f(a).\vspace{-\baselineskip}\]\index{continuity!right}
@@ -134,17 +135,19 @@ Let $f$ be defined on a closed interval with left endpoint $a$. We say that $f$ 
 \textbf{Left Continuous}
 
 Let $f$ be defined on a closed interval with right endpoint $b$. We say that $f$ is \textbf{continuous from the left at $b$} (or \textbf{left continuous at $b$}) if
-\[\lim_{x\to b^-} f(x)=f(b).\vspace{-\baselineskip}\]\index{continuity!left}}
+\[\lim_{x\to b^-} f(x)=f(b).\vspace{-\baselineskip}\]\index{continuity!left}
+\end{definition}
 
 We can then extend the definition of continuity to closed intervals by considering the appropriate one-sided limits at the endpoints.
 
-\definition{def:closed_continuity}{Continuity on Closed Intervals}
-{Let $f$ be defined on the closed interval $[a,b]$ for some real numbers $a,b$. Then $f$ is \textbf{continuous on $[a,b]$} if:
+\begin{definition}[Continuity on Closed Intervals]\label{def:closed_continuity}
+Let $f$ be defined on the closed interval $[a,b]$ for some real numbers $a,b$. Then $f$ is \textbf{continuous on $[a,b]$} if:
 \begin{enumerate}
 	\item	$f$ is continuous on $(a,b)$,
 	\item	$f$ is right continuous at $a$ and 
 	\item	$f$ is left continuous at $b$.
-\end{enumerate}}
+\end{enumerate}
+\end{definition}
 		
 We can make the appropriate adjustments to talk about continuity on half-open intervals such as $[a,b)$ or $(a,b]$ if necessary.\bigskip
 %
@@ -182,7 +185,8 @@ apply to continuity as well. We will utilize these properties in the following e
 
 The following theorem states how continuous functions can be combined to form other continuous functions.
 
-\theorem{thm:continuity_algebra}{Properties of Continuous Functions}{Let $f$ and $g$ be continuous functions on an interval $I$, let $c$ be a real number and let $n$ be a positive integer. The following functions are continuous on $I$.
+\begin{theorem}[Properties of Continuous Functions]\label{thm:continuity_algebra}
+Let $f$ and $g$ be continuous functions on an interval $I$, let $c$ be a real number and let $n$ be a positive integer. The following functions are continuous on $I$.
 \begin{enumerate}
 	\item	\makebox[9em][l]{Sums/Differences:} $f\pm g$
 	\item	\makebox[9em][l]{Constant Multiples:} $c\cdot f$
@@ -190,7 +194,8 @@ The following theorem states how continuous functions can be combined to form ot
 	\item	\makebox[9em][l]{Quotients:}	$f/g$ \qquad {\small (as long as $g\neq 0$ on $I$)}
 	\item	\makebox[9em][l]{Powers:} $f\,^n$
 	\item	\makebox[9em][l]{Roots:}	$\sqrt[n]{f}$ \qquad {\small (if $f\geq 0$ on $I$ or $n$ is odd)}
-\end{enumerate}}
+\end{enumerate}
+\end{theorem}
 
 The proofs of each of the parts of \autoref{thm:continuity_algebra} follow from the Basic Limit Properties given in \autoref{thm:limit_algebra}. We will prove the product of two continuous functions is continuous now.
 
@@ -206,11 +211,13 @@ Therefore,
 \end{align*}
 \end{proof}
 
-\theorem{thm:composition_continuous}{Continuity of Compositions}{Let $f$ be continuous on $I$, where the range of $f$ on $I$ is $J$, and let $g$ be continuous on $J$. Then \[(g\circ f)(x)=g(f(x))\] is continuous on $I$.}
+\begin{theorem}[Continuity of Compositions]\label{thm:composition_continuous}
+Let $f$ be continuous on $I$, where the range of $f$ on $I$ is $J$, and let $g$ be continuous on $J$. Then \[(g\circ f)(x)=g(f(x))\] is continuous on $I$.
+\end{theorem}
 
 Now knowing the definition of continuity we can re-read \autoref{thm:lim_continuous} as giving a list of functions that are continuous on their domains.
 
-\theorem{thm:continuous_functions}{Continuous Functions}{%
+\begin{theorem}[Continuous Functions]\label{thm:continuous_functions}
 The following functions are continuous on their domains.\index{continuous function!properties}\\
 \begin{anywhereenum}
 \renewcommand{\arraystretch}{1.4}
@@ -226,7 +233,8 @@ The following functions are continuous on their domains.\index{continuous functi
 %		\item	$\ds f(x) = \sqrt[n]{x}$, 
 %			{\small (where $n$ is a positive integer)}
 \end{tabular}
-\end{anywhereenum}}
+\end{anywhereenum}
+\end{theorem}
 
 %\autoref{thm:continuity_algebra} and \autoref{thm:continuous_functions} tell us that the following types of functions are continuous on their domains: 
 %\begin{center}
@@ -318,7 +326,9 @@ While this notion seems intuitive, it is not trivial to prove and its importance
 \end{tikzpicture}
 \\ (b)}
 
-\theorem{thm:IVT}{Intermediate Value Theorem}{Let $f$ be a continuous function on $[a,b]$ and, without loss of generality, let $f(a) < f(b)$. Then for every value $y$, where $f(a) < y < f(b)$, there exists at least one value $c$ in $(a,b)$ such that $f(c) = y$\index{Intermediate Value Theorem}}
+\begin{theorem}[Intermediate Value Theorem]\label{thm:IVT}
+Let $f$ be a continuous function on $[a,b]$ and, without loss of generality, let $f(a) < f(b)$. Then for every value $y$, where $f(a) < y < f(b)$, there exists at least one value $c$ in $(a,b)$ such that $f(c) = y$\index{Intermediate Value Theorem}
+\end{theorem}
 %\hfill\hyperref[pf:IVT]{(see the proof)}
 
 %The Intermediate Value Theorem appears entirely obvious, but it actually depends on a subtle property of the real numbers called completeness.  The theorem does not hold if we use the rational numbers in place of the real numbers.  For example, we can use $f(x)=x^2-2$, $a=0$ and $b=2$.  Then there is no rational number so that $f(c)=0$.

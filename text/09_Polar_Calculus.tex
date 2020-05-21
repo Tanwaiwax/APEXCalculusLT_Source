@@ -12,15 +12,15 @@ Using \autoref{idea:dydxpar} we have
 \[\frac{dy}{dx} = \frac{dy}{d\theta}\Big/\frac{dx}{d\theta}.\]
 Each of the two derivatives on the right hand side of the equality requires the use of the Product Rule. We state the important result as a Key Idea.
 
-\keyidea{idea:dydxpol}{Finding $\frac{dy}{dx}$ with Polar Functions}
-{Let $r=f(\theta)$ be a polar function. With $x=f(\theta)\cos\theta$ and $y=f(\theta)\sin\theta$,
+\begin{keyidea}[Finding $\frac{dy}{dx}$ with Polar Functions]\label{idea:dydxpol}
+Let $r=f(\theta)$ be a polar function. With $x=f(\theta)\cos\theta$ and $y=f(\theta)\sin\theta$,
 \index{polar!functions!finding $\frac{dy}{dx}$}\index{tangent line}
 \[
  \frac{dy}{dx}
  =\frac{\frac{dy}{d\theta}}{\frac{dx}{d\theta}}
  =\frac{\fp(\theta)\sin\theta+f(\theta)\cos\theta}{\fp(\theta)\cos\theta-f(\theta)\sin\theta}.
 \]
-}
+\end{keyidea}
 
 \youtubeVideo{QTa9OZ4iGPo}{The Slope of Tangent Lines to Polar Curves}
 
@@ -211,12 +211,13 @@ ymin=-.1,ymax=1.1,xmin=-.1,xmax=1.1,axis equal]
 \[\text{Area} \approx \sum_{i=1}^n \frac12[f(c_i)]^2\Delta\theta.\]
 This is a Riemann sum. By taking the limit of the sum as $n\to\infty$, we find the exact area of the region in the form of a definite integral.
 
-\theorem{thm:polar_area}{Area of a Polar Region}
-{Let $f$ be continuous and non-negative on $[\alpha,\beta]$, where $0\leq \beta-\alpha\leq 2\pi$. The area  $A$ of the region bounded by the curve $r=f(\theta)$ and the lines $\theta=\alpha$ and $\theta=\beta$ is 
+\begin{theorem}[Area of a Polar Region]\label{thm:polar_area}
+Let $f$ be continuous and non-negative on $[\alpha,\beta]$, where $0\leq \beta-\alpha\leq 2\pi$. The area  $A$ of the region bounded by the curve $r=f(\theta)$ and the lines $\theta=\alpha$ and $\theta=\beta$ is 
 \[
 A=\frac12\int_\alpha^\beta[f(\theta)]^2 \ d\theta
 =\frac12\int_\alpha^\beta r^{\,2} \ d\theta
-\]}
+\]
+\end{theorem}
 
 The theorem states that $0\leq \beta-\alpha\leq 2\pi$. This ensures that region does not overlap itself, which would give a result that does not correspond directly to the area.
 
@@ -300,12 +301,13 @@ Consider the shaded region shown in \autoref{fig:polarea3}. We can find the area
 = \frac12\int_\alpha^\beta \big(r_2^{\,2}-r_1^{\,2}\big)\ d\theta.
 \]
 
-\keyidea{idea:area_between_polar}{Area Between Polar Curves}
-{The area $A$ of the region bounded by $r_1=f_1(\theta)$ and $r_2=f_2(\theta)$, $\theta=\alpha$ and $\theta=\beta$, where $0\le f_1(\theta)\leq f_2(\theta)$ on $[\alpha,\beta]$, is
+\begin{keyidea}[Area Between Polar Curves]\label{idea:area_between_polar}
+The area $A$ of the region bounded by $r_1=f_1(\theta)$ and $r_2=f_2(\theta)$, $\theta=\alpha$ and $\theta=\beta$, where $0\le f_1(\theta)\leq f_2(\theta)$ on $[\alpha,\beta]$, is
 \[
 A = \frac{1}{2} \int_\alpha^\beta [f_2(\theta)]^2 - [f_1(\theta)]^2\ d\theta
 = \frac12\int_\alpha^\beta \big(r_2^{\,2}-r_1^{\,2}\big)\ d\theta.
-\]}
+\]
+\end{keyidea}
 
 \mtable{Finding the area between polar curves in \autoref{ex_polcalc5}.}{fig:polcalc5}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -407,10 +409,10 @@ The expression $[x\primeskip'(\theta)]^2+[y\primeskip'(\theta)]^2$ can be simpli
 \]
 This leads us to the  arc length formula.
 
-\keyidea{idea:polar_arclength}{Arc Length of Polar Curves}
-{Let  $r=f(\theta)$ be a polar function with $\fp$ continuous on an open interval $I$ containing $[\alpha,\beta]$, on which the graph traces itself only once. The arc length $L$ of the graph on $[\alpha,\beta]$ is
+\begin{keyidea}[Arc Length of Polar Curves]\label{idea:polar_arclength}
+Let  $r=f(\theta)$ be a polar function with $\fp$ continuous on an open interval $I$ containing $[\alpha,\beta]$, on which the graph traces itself only once. The arc length $L$ of the graph on $[\alpha,\beta]$ is
 \[L = \int_\alpha^\beta \sqrt{[\fp(\theta)]^2+[f(\theta)]^2}\ d\theta = \int_\alpha^\beta\sqrt{(r\,')^2+ r^2}\ d\theta.\]
-}
+\end{keyidea}
 
 \example{ex_cardioid_length}{Arc Length of Polar Curves}{Find the arc length of the cardioid $r=1+\cos \theta$.}{With $r=1+\cos \theta$, we have $r' = -\sin \theta$. The cardioid is traced out once on $[0,2\pi]$, giving us our bounds of integration. Applying \autoref{idea:polar_arclength} we have
 \begin{align*}
@@ -462,15 +464,16 @@ The final integral cannot be solved in terms of elementary functions, so we reso
 
 The formula for arc length leads us to a formula for surface area. The following Key Idea is based on \autoref{idea:surface_area_parametric}.
 
-\keyidea{idea:surface_area_polar}{Surface Area of a Solid of Revolution}
-{Consider the graph of the polar equation $r=f(\theta)$, where $\fp$ is continuous on an open interval containing $[\alpha,\beta]$ on which the graph does not cross itself.
+\begin{keyidea}[Surface Area of a Solid of Revolution]\label{idea:surface_area_polar}
+Consider the graph of the polar equation $r=f(\theta)$, where $\fp$ is continuous on an open interval containing $[\alpha,\beta]$ on which the graph does not cross itself.
 \index{surface area!solid of revolution}\index{polar!function!surface area}\index{integration!surface area}
 \begin{enumerate}
 	\item The surface area of the solid formed by revolving the graph about the initial ray ($\theta=0$) is:
 	\[\text{Surface Area} = 2\pi\int_\alpha^\beta f(\theta)\sin\theta\sqrt{[\fp(\theta)]^2+[f(\theta)]^2}\ d\theta.\]
 	\item The surface area of the solid formed by revolving the graph about the line $\theta=\pi/2$ is:
 	\[\text{Surface Area} = 2\pi\int_\alpha^\beta f(\theta)\cos\theta\sqrt{[\fp(\theta)]^2+[f(\theta)]^2}\ d\theta.\]
-\end{enumerate}}
+\end{enumerate}
+\end{keyidea}
 
 \example{ex_polcalc8}{Surface area determined by a polar curve}{Find the surface area formed by revolving one petal of the rose curve $r=\cos(2\theta)$ about its central axis (see \autoref{fig:polcalc8}).}
 {\mtable{Finding the surface area of a rose-curve petal that is revolved around its central axis.}{fig:polcalc8}{%

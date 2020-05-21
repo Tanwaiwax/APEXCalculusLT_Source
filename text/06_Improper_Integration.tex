@@ -35,8 +35,8 @@ In this section we consider integrals where one or both of the above conditions 
 \subsection{Improper Integrals with Infinite Bounds}
 
 %\setboxwidth{40pt}
-\definition{def:imp_int1}{Improper Integrals with Infinite Bounds}
-{\index{integration!improper}\index{improper integration}\index{convergence!of improper int.}\index{divergence!of improper int.}
+\begin{definition}[Improper Integrals with Infinite Bounds]\label{def:imp_int1}
+\index{integration!improper}\index{improper integration}\index{convergence!of improper int.}\index{divergence!of improper int.}
 \begin{enumerate}
 \item		Let $f$ be a continuous function on $[a,\infty)$. For $t \geq a$ let \[\int_a^\infty f(x)\ dx = \lim_{t\to\infty}\int_a^t f(x)\ dx.\]
 
@@ -48,7 +48,8 @@ In this section we consider integrals where one or both of the above conditions 
 \int_{-\infty}^\infty f(x)\ dx
 = \lim_{a\to-\infty}\int_a^c f(x)\ dx\ +\ \lim_{b\to\infty}\int_c^b f(x)\ dx.
 \]
-\end{enumerate}}
+\end{enumerate}
+\end{definition}
 
 An improper integral is said to \textbf{converge} if its corresponding limit exists; otherwise, it \textbf{diverges}. The improper integral in part 3 converges if and only if both of its limits exist.
 
@@ -201,11 +202,11 @@ Thus the improper integral evaluates as:
 We have just considered definite integrals where the interval of integration was infinite. We now consider another type of improper integration, where the range of the integrand is infinite.
 
 
-\definition{def:imp_int2}{Improper Integration with Infinite Range}
-{Let $f(x)$ be a continuous function on $[a,b]$ except at $c$, $a\leq c\leq b$, where $x=c$ is a vertical asymptote of $f$. Define\index{integration!improper}\index{improper integration}
+\begin{definition}[Improper Integration with Infinite Range]\label{def:imp_int2}
+Let $f(x)$ be a continuous function on $[a,b]$ except at $c$, $a\leq c\leq b$, where $x=c$ is a vertical asymptote of $f$. Define\index{integration!improper}\index{improper integration}
 \[\int_a^b f(x)\ dx = \lim_{t\to c^-}\int_a^t f(x)\ dx + \lim_{t\to c^+}\int_t^b f(x)\ dx.\]
 %The integral converges if both limits exist and diverges otherwise.
-}
+\end{definition}
 
 Note that $c$ can be one of the endpoints ($a$ or $b$). In that case, there is only one limit to consider as part of the definition.
 
@@ -313,18 +314,19 @@ Our analysis shows that if $p>1$, then $\ds\int_1^\infty \frac1{x\primeskip^p}\ 
 The result of \autoref{ex_impint4} provides an important tool in determining the convergence of other integrals. A similar result is proved in the exercises about improper integrals of the form $\ds \int_0^1\frac1{x\primeskip^p}\ dx$. These results are summarized in the following Key Idea.
 
 \setboxwidth{80pt}
-\keyidea{idea:impint1}{Convergence of Improper Integrals $\ds \int_1^\infty\frac1{x\primeskip^p}\ dx$ and $\ds \int_0^1\frac1{x\primeskip^p}\ dx$.}
-{\index{convergence!of improper int.}\index{divergence!of improper int.}\begin{enumerate}
+\begin{keyidea}[Convergence of Improper Integrals $\ds \int_1^\infty\frac1{x\primeskip^p}\ dx$ and $\ds \int_0^1\frac1{x\primeskip^p}\ dx$.]\label{idea:impint1}
+\index{convergence!of improper int.}\index{divergence!of improper int.}\begin{enumerate}
 \item		The improper integral $\ds \int_1^\infty\frac1{x\primeskip^p}\ dx$ converges when $p>1$ and diverges when $p\leq 1.$
 \item		The improper integral $\ds \int_0^1\frac1{x\primeskip^p}\ dx$ converges when $p<1$ and diverges when $p\geq 1.$
-\end{enumerate}}
+\end{enumerate}
+\end{keyidea}
 
 A basic technique in determining convergence of improper integrals is to compare an integrand whose convergence is unknown to an integrand whose convergence is known. We often use integrands of the form $1/x\primeskip^p$ in comparisons as their convergence on certain intervals is known. This is described in the following theorem.
 
 \mnote{\textbf{Note:} We used the upper and lower bound of ``1'' in \autoref{idea:impint1} for convenience. It can be replaced by any $a$ where $a>0$. }
 
-\theorem{thm:impint_comparison}{Direct Comparison Test for Improper Integrals}
-{Let $f$ and $g$ be continuous on $[a,\infty)$ where $0\leq f(x)\leq g(x)$ for all $x$ in $[a,\infty)$. 
+\begin{theorem}[Direct Comparison Test for Improper Integrals]\label{thm:impint_comparison}
+Let $f$ and $g$ be continuous on $[a,\infty)$ where $0\leq f(x)\leq g(x)$ for all $x$ in $[a,\infty)$.
 \index{integration!improper}\index{convergence!Direct Comparison Test!for integration}\index{divergence!Direct Comparison Test!for integration}\index{Direct Comparison Test!for integration}\index{convergence!of improper int.}\index{divergence!of improper int.}
 	\begin{enumerate}
 	\item		If $\ds \int_a^\infty g(x)\ dx$ converges, then $\ds \int_a^\infty f(x)\ dx$ converges.
@@ -337,7 +339,7 @@ A basic technique in determining convergence of improper integrals is to compare
 %	\item		If $\ds \int_a^b f(x)\ dx$ diverges, then $\ds \int_a^b g(x)\ dx$ diverges.
 %	\end{itemize}
 %\end{itemize}
-}
+\end{theorem}
 
 \example{ex_impint5}{Determining convergence of improper integrals}{Determine the convergence of the following improper integrals.
 \[
@@ -385,13 +387,14 @@ Being able to compare ``unknown'' integrals to ``known'' integrals is very usefu
 
 In cases like this (and many more) it is useful to employ the following theorem.
 
-\theorem{thm:impint_limit}{Limit Comparison Test for Improper Integrals}
-{Let $f$ and $g$ be continuous functions on $[a,\infty)$ where $f(x)>0$ and $g(x)>0$ for all $x$. If
+\begin{theorem}[Limit Comparison Test for Improper Integrals]\label{thm:impint_limit}
+Let $f$ and $g$ be continuous functions on $[a,\infty)$ where $f(x)>0$ and $g(x)>0$ for all $x$. If
 \[\lim_{x\to\infty} \frac{f(x)}{g(x)} = L,\qquad 0<L<\infty,\]
 	then
 	\[\int_a^\infty f(x)\ dx \quad \text{and} \quad \int_a^\infty g(x)\ dx\]
 	either both converge or both diverge.%
-	\index{integration!improper}\index{convergence!Limit Comparison Test!for integration}\index{divergence!Limit Comparison Test!for integration}\index{Limit Comparison Test!for integration}\index{convergence!of improper int.}\index{divergence!of improper int.}}
+	\index{integration!improper}\index{convergence!Limit Comparison Test!for integration}\index{divergence!Limit Comparison Test!for integration}\index{Limit Comparison Test!for integration}\index{convergence!of improper int.}\index{divergence!of improper int.}
+\end{theorem}
 
 \example{ex_impint6}{Determining convergence of improper integrals}{Determine the convergence of $\ds \int_3^{\infty} \frac{1}{\sqrt{x^2+2x+5}}\ dx$.}
 {As $x$ gets large, the square root of a quadratic function will begin to behave much like $y=x$. So we compare \small$\ds\frac{1}{\sqrt{x^2+2x+5}}$\normalsize\ to \small$\ds\frac1x$\normalsize\ with the Limit Comparison Test:

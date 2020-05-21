@@ -2,8 +2,8 @@
 
 Given a function $z=f(x,y)$, we are often interested in points where $z$ takes on the largest or smallest values. For instance, if $z$ represents a cost function, we would likely want to know what $(x,y)$ values minimize the cost. If $z$ represents the ratio of a volume to surface area, we would likely want to know where $z$ is greatest. This leads to the following definition.
 
-\definition{def:multi_extrema}{Relative and Absolute Extrema}
-{Let $z=f(x,y)$ be defined on a set $S$ containing the point $P=(x_0,y_0)$.
+\begin{definition}[Relative and Absolute Extrema]\label{def:multi_extrema}
+Let $z=f(x,y)$ be defined on a set $S$ containing the point $P=(x_0,y_0)$.
 \index{maximum!relative/local}\index{minimum!relative/local}\index{extrema!relative}
 \index{extrema!absolute}\index{maximum!absolute}\index{minimum!absolute}
 \begin{enumerate}
@@ -12,19 +12,22 @@ Given a function $z=f(x,y)$, we are often interested in points where $z$ takes o
 	\item	If $f(x_0,y_0)\geq f(x,y)$ for all $(x,y)$ in $S$, then $f$ has an \textbf{absolute maximum} at $P$; if $f(x_0,y_0)\leq f(x,y)$ for all $(x,y)$ in $S$, then $f$ has an \textbf{absolute minimum} at $P$.
 	
 	\item		If $f$ has a relative maximum or minimum at $P$, then $f$ has a \textbf{relative extremum} at $P$; if $f$ has an absolute maximum or minimum at $P$, then $f$ has an \textbf{absolute extremum} at $P$.
-\end{enumerate}}
+\end{enumerate}
+\end{definition}
 
 If $f$ has a relative or absolute maximum at $P=(x_0,y_0)$, it means every curve on the surface of $f$ through $P$ will also have a relative or absolute maximum at $P$. Recalling what we learned in \autoref{sec:extreme_values}, the slopes of the tangent lines to these curves at $P$ must be 0 or undefined. Since directional derivatives are computed using $f_x$ and $f_y$, we are led to the following definition and theorem.
 
-\definition{def:multi_critical_point}{Critical Point}
-{Let $z = f(x,y)$ be continuous on an open set $S$. A \textbf{critical point} $P=(x_0,y_0)$ of $f$ is a point in $S$ such that\index{critical point}
+\begin{definition}[Critical Point]\label{def:multi_critical_point}
+Let $z = f(x,y)$ be continuous on an open set $S$. A \textbf{critical point} $P=(x_0,y_0)$ of $f$ is a point in $S$ such that\index{critical point}
 \begin{itemize}
 	\item $f_x(x_0,y_0) = 0$ and $f_y(x_0,y_0) = 0$, or
 	\item	$f_x(x_0,y_0)$ or $f_y(x_0,y_0)$ is undefined.
-\end{itemize}}
+\end{itemize}
+\end{definition}
 
-\theorem{thm:multi_critical_point}{Critical Points and Relative Extrema}
-{Let $z=f(x,y)$ be defined on an open set $S$ containing $P=(x_0,y_0)$. If $f$ has a relative extrema at $P$, then $P$ is a critical point of $f$.\index{extrema!relative}\index{critical point}}
+\begin{theorem}[Critical Points and Relative Extrema]\label{thm:multi_critical_point}
+Let $z=f(x,y)$ be defined on an open set $S$ containing $P=(x_0,y_0)$. If $f$ has a relative extrema at $P$, then $P$ is a critical point of $f$.\index{extrema!relative}\index{critical point}
+\end{theorem}
 
 Therefore, to find relative extrema, we find the critical points of $f$ and determine which correspond to relative maxima, relative minima, or neither.
 
@@ -85,9 +88,10 @@ The critical point $(-1,2)$ clearly corresponds to a relative maximum. However, 
 
 If one walks parallel to the $y$-axis towards this critical point, then this point becomes a relative maximum along this path. But if one walks towards this point parallel to the $x$-axis, this point becomes a relative minimum along this path. A point that seems to act as both a max and a min is a \textbf{saddle point}. A formal definition follows.}
 
-\definition{def:saddle_point}{Saddle Point}
-{Let $P=(x_0,y_0)$ be in the domain of $f$ where $f_x=0$ and $f_y=0$ at $P$. We say $P$ is a \textbf{saddle point} of $f$ if, for every open disk $D$ containing $P$, there are points $(x_1,y_1)$ and $(x_2,y_2)$ in $D$ such that $f(x_0,y_0)>f(x_1,y_1)$ and $f(x_0,y_0)<f(x_2,y_2)$.
-\index{saddle point}\index{critical point}}
+\begin{definition}[Saddle Point]\label{def:saddle_point}
+Let $P=(x_0,y_0)$ be in the domain of $f$ where $f_x=0$ and $f_y=0$ at $P$. We say $P$ is a \textbf{saddle point} of $f$ if, for every open disk $D$ containing $P$, there are points $(x_1,y_1)$ and $(x_2,y_2)$ in $D$ such that $f(x_0,y_0)>f(x_1,y_1)$ and $f(x_0,y_0)<f(x_2,y_2)$.
+\index{saddle point}\index{critical point}
+\end{definition}
 
 At a saddle point, the instantaneous rate of change in all directions is 0 and there are points nearby with $z$-values both less than and greater than the $z$-value of the saddle point.
 
@@ -108,8 +112,8 @@ However, this is not the case. Functions $f$ exist where $f_{xx}$ and $f_{yy}$ a
 
 To account for this, consider $D = f_{xx}f_{yy}-f_{xy}f_{yx}$. Since $f_{xy}$ and $f_{yx}$ are equal when continuous (refer back to \autoref{thm:mixed_partial}), we can rewrite this as $D = f_{xx}f_{yy}-f_{xy}^{\,2}$. Then $D$ can be used to test whether the concavity at a point changes depending on direction. If $D>0$, the concavity does not switch (i.e., at that point, the graph is concave up or down in all directions). If $D<0$, the concavity does switch. If $D=0$, our test fails to determine whether concavity switches or not. We state the use of $D$ in the following theorem.
 
-\theorem{thm:multi_second_test}{Second Derivative Test}
-{Let $z=f(x,y)$ be defined on an open set containing a critical point $P=(x_0,y_0)$ where all second order derivatives of $f$ are continuous at $P$. Define
+\begin{theorem}[Second Derivative Test]\label{thm:multi_second_test}
+Let $z=f(x,y)$ be defined on an open set containing a critical point $P=(x_0,y_0)$ where all second order derivatives of $f$ are continuous at $P$. Define
 \index{Second Derivative Test}\index{maximum!relative/local}\index{minimum!relative/local}\index{saddle point}
 \[D = f_{xx}(x_0,y_0)f_{yy}(x_0,y_0)-f_{xy}^{\,2}(x_0,y_0).\]
 \begin{enumerate}
@@ -117,7 +121,8 @@ To account for this, consider $D = f_{xx}f_{yy}-f_{xy}f_{yx}$. Since $f_{xy}$ an
 	\item If $D>0$ and $f_{xx}(x_0,y_0)<0$, then $P$ is a relative maximum of $f$.
 	\item If $D<0$, then $P$ is a saddle point of $f$.
 	\item If $D=0$, the test is inconclusive.
-\end{enumerate}}
+\end{enumerate}
+\end{theorem}
 
 \begin{proof}
 Let $\vec u=\bracket{h,k}$ be a unit vector.  Then at the critical point $P$, $D_{\vec u}\,f=0$.  This means that along the line $h(y-y_0)=k(x-x_0)$, $P$ is a critical point that is a maximum or minimum according to the sign of $D_{\vec u}^2\,f$.  Now,
@@ -232,9 +237,10 @@ When optimizing functions of one variable such as $y=f(x)$, we made use of \auto
 
 A similar theorem and procedure applies to functions of two variables. A continuous function over a closed set also attains a maximum and minimum value (see the following theorem). We can find these values by evaluating the function at the critical points in the set and over the boundary of the set. After formally stating this extreme value theorem, we give examples.
 
-\theorem{thm:extremeVal3}{Extreme Value Theorem}
-{Let $z=f(x,y)$ be a continuous function on a closed, bounded set $S$. Then $f$ has an absolute maximum and an absolute minimum value on $S$.
-\index{Extreme Value Theorem}}
+\begin{theorem}[Extreme Value Theorem]\label{thm:extremeVal3}
+Let $z=f(x,y)$ be a continuous function on a closed, bounded set $S$. Then $f$ has an absolute maximum and an absolute minimum value on $S$.
+\index{Extreme Value Theorem}
+\end{theorem}
 
 \example{ex_conopt1}{Finding extrema on a closed set}{Let $f(x,y) = x^2-y^2+5$ and let $S$ be the triangle with vertices $(-1,-2)$, $(0,1)$ and $(2,-2)$. Find the maximum and minimum values of $f$ on $S$.}
 {It can help to see a graph of $f$ along with the set $S$. In \autoref{fig:conopt1}(a) the triangle defining $S$ is shown in the $x$-$y$ plane in a dashed line. Above it is the surface of $f$; we are only concerned with the portion of $f$ enclosed by the ``triangle'' on its surface. 

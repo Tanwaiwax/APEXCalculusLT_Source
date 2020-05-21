@@ -4,10 +4,11 @@
 
 Given two non-parallel, nonzero vectors $\vec u$ and $\vec v$ in space, it is very useful to find a vector $\vec w$ that is perpendicular to both $\vec u$ and $\vec v$. There is a operation, called the \textbf{cross product}, that creates such a vector. This section defines the cross product, then explores its properties and applications.
 
-\definition{def:cross_product}{Cross Product}
-{Let $\vec u =\bracket{u_1,u_2,u_3}$ and $\vec v = \bracket{v_1,v_2,v_3}$ be vectors in $\mathbb{R}^3$. The \textbf{cross product of $\vec u$ and $\vec v$}, denoted $\crossp uv$, is the vector
+\begin{definition}[Cross Product]\label{def:cross_product}
+Let $\vec u =\bracket{u_1,u_2,u_3}$ and $\vec v = \bracket{v_1,v_2,v_3}$ be vectors in $\mathbb{R}^3$. The \textbf{cross product of $\vec u$ and $\vec v$}, denoted $\crossp uv$, is the vector
 \index{vectors!cross product}\index{cross product!definition}
-\[\crossp uv = \bracket{u_2v_3-u_3v_2,-(u_1v_3-u_3v_1),u_1v_2-u_2v_1}.\]}
+\[\crossp uv = \bracket{u_2v_3-u_3v_2,-(u_1v_3-u_3v_1),u_1v_2-u_2v_1}.\]
+\end{definition}
 
 This definition can be a bit cumbersome to remember. After an example we will give a convenient method for computing the cross product. For now, careful examination of the products and differences given in the definition should reveal a pattern that is not too difficult to remember. (For instance, in the first component only 2 and 3 appear as subscripts; in the second component, only 1 and 3 appear as subscripts. Further study reveals the order in which they appear.)
 
@@ -142,8 +143,8 @@ which is the opposite of $\crossp uv$. We leave it to the reader to verify that 
 It is not coincidence that $\crossp vu = -(\crossp uv)$ in the preceding example; one can show using \autoref{def:cross_product} that this will always be the case. The following theorem states several useful properties of the cross product, each of which can be verified by referring to the definition.
 
 \setboxwidth{15pt}
-\theorem{thm:cross_prod_prop}{Properties of the Cross Product}
-{Let $\vecu$, $\vecv$ and $\vecw$ be vectors in $\mathbb{R}^3$ and let $c$ be a scalar. The following identities hold:
+\begin{theorem}[Properties of the Cross Product]\label{thm:cross_prod_prop}
+Let $\vecu$, $\vecv$ and $\vecw$ be vectors in $\mathbb{R}^3$ and let $c$ be a scalar. The following identities hold:
 \index{vectors!cross product}\index{cross product!properties}
 \begin{enumerate}
 	\item \parbox{167pt}{$\crossp uv = -(\crossp vu)$} Anticommutative Property
@@ -159,7 +160,8 @@ It is not coincidence that $\crossp vu = -(\crossp uv)$ in the preceding example
 	\item		$\crossp uu = \vec 0$
 	\item		$\crossp u0 = \vec 0$
 	\item		\parbox{167pt}{$\vecu \cdot (\vecv\times\vecw) = (\crossp uv)\cdot \vecw$} Scalar Triple Product
-\end{enumerate}}
+\end{enumerate}
+\end{theorem}
 
 We introduced the cross product as a way to find a vector orthogonal to two given vectors, but we did not give a proof that the construction given in \autoref{def:cross_product} satisfies this property. \autoref{thm:cross_prod_prop} asserts this property holds; we leave the verification to \exautoref{pr_cross_perp}.
 
@@ -173,11 +175,12 @@ Property 5 from the theorem is also left to the reader to prove in \exautoref{cr
 
 We have just shown that the cross product of parallel vectors is $\vec 0$. This hints at something deeper. \autoref{thm:dot_product} related the angle between two vectors and their dot product; there is a similar relationship relating the cross product of two vectors and the angle between them, given by the following theorem.
 
-\theorem{thm:cross_product}{The Cross Product and Angles}
-{Let $\vec u$ and $\vec v$ be vectors in $\mathbb{R}^3$. Then
+\begin{theorem}[The Cross Product and Angles]\label{thm:cross_product}
+Let $\vec u$ and $\vec v$ be vectors in $\mathbb{R}^3$. Then
 \[\norm{\crossp uv} = \vnorm u\, \vnorm v \sin\theta,\]
 where $\theta$, $0\leq \theta \leq \pi$, is the angle between $\vecu$ and $\vecv$.
-\index{vectors!cross product}\index{cross product!properties}}
+\index{vectors!cross product}\index{cross product!properties}
+\end{theorem}
 
 \mnote{\textbf{Note:} \autoref{def:orthogonal} (through \autoref{thm:dot_product}) defines $\vec u$ and $\vec v$ to be orthogonal if $\vec u\cdot\vec v=0$. We could use \autoref{thm:cross_product} to define $\vec u$ and $\vec v$ are parallel if $\vec u\times \vec v = 0$. By such a definition, $\vec 0$ would be both orthogonal and parallel to every vector. Apparent paradoxes such as this are not uncommon in mathematics and can be very useful. (See also the marginal note%
 \ifthenelse{\boolean{latexml}}{%
@@ -224,13 +227,15 @@ The anticommutative property of the cross product demonstrates that $\crossp uv$
 
 Another property of the cross product, as defined, is that it follows the \textbf{right hand rule.} Given $\vec u$ and $\vec v$ in $\mathbb{R}^3$ with the same initial point, point the index finger of your right hand in the direction of $\vecu$ and let your middle finger point in the direction of $\vecv$ (much as we did when establishing the right hand rule for the 3-dimensional coordinate system). Your thumb will naturally extend in the direction of $\crossp uv$. One can ``practice'' this using \autoref{fig:crossp_rhr}. If you switch, and point the index finder in the direction of $\vecv$ and the middle finger in the direction of $\vecu$, your thumb will now point in the opposite direction, allowing you to ``visualize'' the anticommutative property of the cross product.  In fact, we can use this property to define the cross product, which we summarize in the next key idea.
 
-\keyidea{ki:cross_prod_alt}{Alternate Definition of the Cross Product}{For vectors $\vecu$ and $\vecv$, the cross product $\vecu\times\vecv$ is the unique vector such that
+\begin{keyidea}[Alternate Definition of the Cross Product]\label{ki:cross_prod_alt}
+For vectors $\vecu$ and $\vecv$, the cross product $\vecu\times\vecv$ is the unique vector such that
 \begin{enumerate}
 \item $\norm{\vecu\times\vecv}=\norm{\vecu}\norm{\vecv}\sin\theta$ where $\theta$ is the angle between $\vecu$ and $\vecv$,
 \item $\vecu\times\vecv$ is orthogonal to both $\vecu$ and $\vecv$, 
 and
 \item $\vecu$, $\vecv$, and $\vecu\times\vecv$ form a right-handed triple.
-\end{enumerate}}
+\end{enumerate}
+\end{keyidea}
 
 \subsection{Applications of the Cross Product}
 

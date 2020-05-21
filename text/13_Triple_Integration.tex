@@ -5,10 +5,11 @@ We learned in \autoref{sec:double_int_volume} how to compute the signed volume $
 V = \iint_R f(x,y)\ dA - \iint_R g(x,y)\ dA = \iint_R \big(f(x,y)-g(x,y)\big)\ dA.
 \]
 
-\theorem{thm:volume_between_surfaces}{Volume Between Surfaces}
-{Let $f$ and $g$ be continuous functions on a closed, bounded region $R$, where $f(x,y)\geq g(x,y)$ for all $(x,y)$ in $R$. The volume $V$ between $f$ and $g$ over $R$ is
+\begin{theorem}[Volume Between Surfaces]\label{thm:volume_between_surfaces}
+Let $f$ and $g$ be continuous functions on a closed, bounded region $R$, where $f(x,y)\geq g(x,y)$ for all $(x,y)$ in $R$. The volume $V$ between $f$ and $g$ over $R$ is
 \index{volume}
-\[V =\iint_R \big(f(x,y)-g(x,y)\big)\ dA.\]}
+\[V =\iint_R \big(f(x,y)-g(x,y)\big)\ dA.\]
+\end{theorem}
 
 \example{ex_trip1}{Finding volume between surfaces}{Find the volume of the space region bounded by the planes $z=3x+y-4$ and $z=8-3x-2y$ where $x,y>0$. In \autoref{fig:trip1}(a) the planes are drawn; in (b), only the defined region is given.
 \mtable{Finding the volume between the planes given in \autoref{ex_trip1}.}{fig:trip1}{%
@@ -73,8 +74,8 @@ The volume $\Delta V_i$ of the $i^\text{\,th}$ solid $D_i$ is $\Delta V_i = \Del
 Let $\norm{\Delta D}$ represent the length of the longest diagonal of rectangular solids in the subdivision of $D$. As $\norm{\Delta D}\to 0$, the volume of each solid goes to 0, as do each of $\Delta x_i$, $\Delta y_i$ and $\Delta z_i$, for all $i$. Our calculus experience tells us that taking a limit as $\norm{\Delta D}\to 0$ turns our approximation of $V$ into an exact calculation of $V$. Before we state this result in a theorem, we use a definition to define some terms.
 
 \setboxwidth{90pt}
-\definition{def:triple_integral}{Triple Integrals, Iterated Integration (Part I)}
-{Let $D$ be a closed, bounded region in space. Let $a$ and $b$ be real numbers, let $g_1(x)$ and $g_2(x)$ be continuous functions of $x$, and let $f_1(x,y)$ and $f_2(x,y)$ be continuous functions of $x$ and $y$.
+\begin{definition}[Triple Integrals, Iterated Integration (Part I)]\label{def:triple_integral}
+Let $D$ be a closed, bounded region in space. Let $a$ and $b$ be real numbers, let $g_1(x)$ and $g_2(x)$ be continuous functions of $x$, and let $f_1(x,y)$ and $f_2(x,y)$ be continuous functions of $x$ and $y$.
 \index{integration!triple}\index{triple integral}\index{iterated integration}
 \begin{enumerate}
 	\item	The volume $V$ of $D$ is denoted by a \textbf{triple integral},
@@ -83,13 +84,14 @@ Let $\norm{\Delta D}$ represent the length of the longest diagonal of rectangula
 	\item The iterated integral $\ds \int_a^b\int_{g_1(x)}^{g_2(x)}\int_{f_1(x,y)}^{f_2(x,y)} \ dz\ dy\ dx$ is evaluated as 
 	\[\int_a^b\int_{g_1(x)}^{g_2(x)}\int_{f_1(x,y)}^{f_2(x,y)} \ dz\ dy\ dx=\int_a^b\int_{g_1(x)}^{g_2(x)}\left(\int_{f_1(x,y)}^{f_2(x,y)} \ dz\right)\ dy\ dx.\]
 	Evaluating the above iterated integral is \textbf{triple integration.}
-\end{enumerate}}
+\end{enumerate}
+\end{definition}
 
 Our informal understanding of the notation $\iiint_D\ dV$ is ``sum up lots of little volumes over $D$,'' analogous to our understanding of $\iint_R\ dA$ and $\iint_R\ dm$. We now state the major theorem of this section.
 
 \setboxwidth{90pt}
-\theorem{thm:triple_integration}{Triple Integration (Part I)}
-{Let $D$ be a closed, bounded region in space and let $\Delta D$ be any subdivision of $D$ into $n$ rectangular solids, where the  $i^\text{\,th}$ subregion $D_i$ has dimensions $\Delta x_i\times\Delta y_i\times\Delta z_i$ and volume $\Delta V_i$.
+\begin{theorem}[Triple Integration (Part I)]\label{thm:triple_integration}
+Let $D$ be a closed, bounded region in space and let $\Delta D$ be any subdivision of $D$ into $n$ rectangular solids, where the  $i^\text{\,th}$ subregion $D_i$ has dimensions $\Delta x_i\times\Delta y_i\times\Delta z_i$ and volume $\Delta V_i$.
 \index{integration!triple}\index{triple integral}\index{iterated integration}
 \begin{enumerate}
 	\item	The volume $V$ of $D$ is
@@ -99,7 +101,8 @@ Our informal understanding of the notation $\iiint_D\ dV$ is ``sum up lots of li
 	\[\iiint_D \ dV = \int_a^b\int_{g_1(x)}^{g_2(x)}\int_{f_1(x,y)}^{f_2(x,y)} \ dz\ dy\ dx.\]
 
 	\item	$V$ can be determined using iterated integration with other orders of integration (there are 6 total), as long as $D$ is defined by the region enclosed by a pair of planes, a pair of cylinders, and a pair of surfaces.
-\end{enumerate}}
+\end{enumerate}
+\end{theorem}
 
 We evaluated the area of a plane region $R$ by iterated integration, where the bounds were ``from curve to curve, then from point to point.'' \autoref{thm:triple_integration} allows us to find the volume of a space region with an iterated integral with bounds ``from surface to surface, then from curve to curve, then from point to point.'' In the iterated integral 
 \[\int_a^b\int_{g_1(x)}^{g_2(x)}\int_{f_1(x,y)}^{f_2(x,y)} \ dz\ dy\ dx,\]
@@ -346,14 +349,16 @@ $D$ is bounded below by the surface $x=-\sqrt{1-y^2}$ and above by $\sqrt{1-y^2}
 
 The following theorem states two things that should make ``common sense'' to us. First, using the triple integral to find volume of a region $D$ should always return a positive number; we are computing \textit{volume} here, not \textit{signed volume}. Secondly, to compute the volume of a ``complicated'' region, we could break it up into subregions and compute the volumes of each subregion separately, summing them later to find the total volume.
 
-\theorem{thm:triple_int_prop}{Properties of Triple Integrals}
-{Let $D$ be a closed, bounded region in space, and let $D_1$ and $D_2$ be non-overlapping regions such that $D=D_1\bigcup D_2$.
+\begin{theorem}[Properties of Triple Integrals]\label{thm:triple_int_prop}
+Let $D$ be a closed, bounded region in space, and let $D_1$ and $D_2$ be non-overlapping regions such that $D=D_1\bigcup D_2$.
 \index{triple integral!properties}\index{iterated integration!properties}
 \begin{enumerate}
 	\item $\ds \iiint_D \ dV \geq 0$
 	\item	$\ds \iiint_D\ dV = \iiint_{D_1}\ dV + \iiint_{D_2}\ dV.$\eoehere
 \end{enumerate}
-\mbox{}}
+\mbox{}
+\end{theorem}
+% todo Tim check a spurious mbox at the end of thm:triple_int_prop
 
 We use this latter property in the next example.
 
@@ -585,13 +590,17 @@ If all one wanted to do in \autoref{ex_trip5} was find the volume of the region 
 
 There are uses for triple integration beyond merely finding volume, just as there are uses for integration beyond ``area under the curve.'' These uses start with understanding how to integrate functions of three variables, which is effectively no different than integrating functions of two variables. This leads us to a definition, followed by an example.
 
-\definition{def:triple_integral_2}{Iterated Integration, (Part II)}
-{Let $D$ be a closed, bounded region in space, over which $g_1(x)$, $g_2(x)$, $f_1(x,y)$, $f_2(x,y)$ and $h(x,y,z)$ are all continuous, and let $a$ and $b$ be real numbers.\\
+\begin{definition}[Iterated Integration, (Part II)]\label{def:triple_integral_2}
+Let $D$ be a closed, bounded region in space, over which $g_1(x)$, $g_2(x)$, $f_1(x,y)$, $f_2(x,y)$ and $h(x,y,z)$ are all continuous, and let $a$ and $b$ be real numbers.\\
 
 The \textbf{iterated integral} $\ds \int_a^b\int_{g_1(x)}^{g_2(x)}\int_{f_1(x,y)}^{f_2(x,y)} h(x,y,z)\ dz\ dy\ dx$ is evaluated as
 \index{integration!triple}\index{triple integral}\index{iterated integration}
 \small
-\[\int_a^b\int_{g_1(x)}^{g_2(x)}\int_{f_1(x,y)}^{f_2(x,y)} h(x,y,z)\ dz\ dy\ dx = \int_a^b\int_{g_1(x)}^{g_2(x)}\left(\int_{f_1(x,y)}^{f_2(x,y)} h(x,y,z)\ dz\right) dy\ dx.\]\normalsize\mbox{}}
+\[\int_a^b\int_{g_1(x)}^{g_2(x)}\int_{f_1(x,y)}^{f_2(x,y)} h(x,y,z)\ dz\ dy\ dx = \int_a^b\int_{g_1(x)}^{g_2(x)}\left(\int_{f_1(x,y)}^{f_2(x,y)} h(x,y,z)\ dz\right) dy\ dx.\]
+\normalsize
+\mbox{}
+\end{definition}
+% todo Tim spurious normalsize mbox at the end of def:triple_integral_2
 
 \example{ex_trip6}{Evaluating a triple integral of a function of three variables}{Evaluate $\ds \int_0^1\int_{x^2}^x\int_{x^2-y}^{2x+3y} \big(xy+2xz\big)\ dz\ dy\ dx.$}
 {We evaluate this integral according to \autoref{def:triple_integral_2}.\\
@@ -632,17 +641,18 @@ Here we fix a $k$ value, which establishes the $z$-height of the rectangular sol
 
 This triple summation understanding leads to the $\iiint_D$ notation of the triple integral, as well as the method of evaluation shown in \autoref{thm:triple_integration2}.}
 
-\definition{def:triple_integral_3}{Triple Integral}
-{Let $w=h(x,y,z)$ be a continuous function over a closed, bounded space region $D$, and let $\Delta D$ be any partition of $D$ into $n$ rectangular solids with volume $\Delta V_i$. The \textbf{triple integral of $h$ over $D$} is
+\begin{definition}[Triple Integral]\label{def:triple_integral_3}
+Let $w=h(x,y,z)$ be a continuous function over a closed, bounded space region $D$, and let $\Delta D$ be any partition of $D$ into $n$ rectangular solids with volume $\Delta V_i$. The \textbf{triple integral of $h$ over $D$} is
 \index{integration!triple}\index{triple integral}\index{iterated integration}
 \[
 \iiint_Dh(x,y,z)\ dV = \lim_{\norm{\Delta D}\to 0}\sum_{i=1}^n h(x_i,y_i,z_i)\Delta V_i.
-\]}
+\]
+\end{definition}
 
 The following theorem assures us that the above limit exists for continuous functions $h$ and gives us a method of evaluating the limit.
 
-\theorem{thm:triple_integration2}{Triple Integration (Part II)}
-{Let $w=h(x,y,z)$ be a continuous function over a closed, bounded space region $D$, and let $\Delta D$ be any partition of $D$ into $n$ rectangular solids with volume $V_i$.
+\begin{theorem}[Triple Integration (Part II)]\label{thm:triple_integration2}
+Let $w=h(x,y,z)$ be a continuous function over a closed, bounded space region $D$, and let $\Delta D$ be any partition of $D$ into $n$ rectangular solids with volume $V_i$.
 \index{integration!triple}\index{triple integral}\index{iterated integration}
 
 \begin{enumerate}
@@ -650,8 +660,8 @@ The following theorem assures us that the above limit exists for continuous func
 
 \item		If $D$ is defined as the region bounded by the planes $x=a$ and $x=b$, the cylinders $y=g_1(x)$ and $y=g_2(x)$, and the surfaces $z=f_1(x,y)$ and $z=f_2(x,y)$, where $a<b$, $g_1(x)\leq g_2(x)$ and $f_1(x,y)\leq f_2(x,y)$ on $D$, then
 	\[\iiint_D h(x,y,z)\ dV = \int_a^b\int_{g_1(x)}^{g_2(x)}\int_{f_1(x,y)}^{f_2(x,y)} h(x,y,z)\ dz\ dy\ dx.\]
-
-\end{enumerate}}
+\end{enumerate}
+\end{theorem}
 
 We now apply triple integration to find the centers of mass of solid objects.
 
@@ -659,8 +669,8 @@ We now apply triple integration to find the centers of mass of solid objects.
 
 One may wish to review \autoref{sec:center_of_mass} for a reminder of the relevant terms and concepts. 
 
-\definition{def:mass_3d}{Mass, Center of Mass of Solids}
-{Let a solid be represented by a region $D$ in space with variable density function $\delta(x,y,z)$. 
+\begin{definition}[Mass, Center of Mass of Solids]\label{def:mass_3d}
+Let a solid be represented by a region $D$ in space with variable density function $\delta(x,y,z)$. 
 \index{moment}\index{center of mass}\index{mass}
 \begin{enumerate}
 	\item The \textbf{mass} of the object is $\ds M= \iiint_D \ dm=\iiint_D \delta(x,y,z)\ dV$.
@@ -670,7 +680,7 @@ One may wish to review \autoref{sec:center_of_mass} for a reminder of the releva
 	\item The \textbf{center of mass} of the object is
 	\[\big(\overline{x},\overline{y},\overline{z}\big) = \left(\frac{M_{yz}}M,\frac{M_{xz}}M,\frac{M_{xy}}M\right).\]
 \end{enumerate}
-}
+\end{definition}
 
 \example{ex_trip7}{Finding the center of mass of a solid}{Find the mass and center of mass of the solid represented by the space region bounded by the coordinate planes and $z=2-y/3-2x/3$, shown in \autoref{fig:trip7}, with constant density $\delta(x,y,z)=3$g/cm$^3$. (Note: this space region was used in \autoref{ex_trip2}.)
 

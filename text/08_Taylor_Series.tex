@@ -2,15 +2,16 @@
 
 In \autoref{sec:power_series}, we showed how certain functions can be represented by a power series function. In \autoref{sec:taylor_poly}, we showed how we can approximate functions with polynomials, given that enough derivative information is available. In this section we combine these concepts: if a function $f(x)$ is infinitely differentiable, we show how to represent it with a power series function.
 
-\definition{def:taylor_series}{Taylor and Maclaurin Series}
-{Let $f(x)$ have derivatives of all orders at $x=c$.
+\begin{definition}[Taylor and Maclaurin Series]\label{def:taylor_series}
+Let $f(x)$ have derivatives of all orders at $x=c$.
 \index{Taylor Series!definition}\index{Maclaurin Series!definition}\index{Maclaurin Series|seealso{Taylor Series}}\index{series!Taylor}\index{series!Maclaurin}
 \begin{enumerate}
 	\item The \sword{Taylor Series of $f(x)$, centered at $c$} is
 	\[\sum_{n=0}^\infty \frac{f\,^{(n)}(c)}{n!}(x-c)^n.\]
 	\item	Setting $c=0$ gives the \sword{Maclaurin Series of $f(x)$}:
 	\[\sum_{n=0}^\infty \frac{f\,^{(n)}(0)}{n!}x^n.\]
-\end{enumerate}}
+\end{enumerate}
+\end{definition}
 
 \youtubeVideo{Os8OtXFBLkY}{Taylor and Maclaurin Series --- Example 2}
 
@@ -66,12 +67,12 @@ It is important to note that \autoref{def:taylor_series} defines a Taylor series
 
 If $R_n(x)$ goes to 0 for each $x$ in an interval $I$ as $n$ approaches infinity, we conclude that the function is equal to its Taylor series expansion.
 
-\theorem{thm:function_series_equality}{Function and Taylor Series Equality}
-{Let $f(x)$ have derivatives of all orders at $x=c$, let $R_n(x)$ be as stated in \autoref{thm:taylorthm}, and let $I$ be an interval on which the Taylor series of $f(x)$ converges. 
+\begin{theorem}[Function and Taylor Series Equality]\label{thm:function_series_equality}
+Let $f(x)$ have derivatives of all orders at $x=c$, let $R_n(x)$ be as stated in \autoref{thm:taylorthm}, and let $I$ be an interval on which the Taylor series of $f(x)$ converges. 
 If $\ds\lim_{n\to\infty} R_n(x) = 0$ for all $x$ in $I$, then 
 \index{Taylor Series!equality with generating function}
 \[f(x) = \sum_{n=0}^\infty \frac{f\,^{(n)}(c)}{n!}(x-c)^n\ \text{ on $I$.}\]
-}
+\end{theorem}
 
 We demonstrate the use of this theorem in an example.
 
@@ -151,8 +152,8 @@ Unfortunately, this particular expansion of $\pi$ converges very slowly. The fir
 100 terms approximate $\pi$ as $3.13159$, which is not particularly good.
 
 \setboxwidth{110pt}
-\keyidea{idea:common_taylor}{Important Maclaurin Series Expansions}
-{%
+\begin{keyidea}[Important Maclaurin Series Expansions]\label{idea:common_taylor}
+%
 \noindent\begin{tabular}{llc}
 \textbf{Function and Series} & \textbf{First Few Terms} & \parbox{55pt}{\centering\textbf{Interval of}\\\textbf{Convergence}} \\
 $\ds e^x = \sum_{n=0}^\infty \frac{x^n}{n!}$ & $\ds 1+ x+\frac{x^2}{2!} + \frac{x^3}{3!}+\dotsb$ & $(-\infty,\infty)$\medskip\\
@@ -162,12 +163,13 @@ $\ds \ln(x+1) = \sum_{n=1}^\infty(-1)^{n+1}\frac{x^n}{n}$ & $\ds x-\frac{x^2}{2}
 $\ds \frac{1}{1-x} = \sum_{n=0}^\infty x^n$ &$\ds 1+x+x^2+x^3+\dotsb$& $(-1,1)$\\
 \small$\ds (1+x)^k=\sum_{n=0}^\infty \frac{k(k-1)\dotsm\big(k-(n-1)\big)}{n!}x^n$ \normalsize& $\ds 1+kx+\frac{k(k-1)}{2!}x^2 + \dotsb$ & $\begin{cases}(-1,1)&\phantom{-}k\le-1\\{}(-1,1]&-1<k<0\\{}[-1,1]&\phantom{-}0<k\end{cases}$\\
 $\ds \tan^{-1}x = \sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{2n+1}$ & $\ds x-\frac{x^3}{3}+\frac{x^5}{5}-\frac{x^7}{7}+\dotsb$ & $[-1,1]$
-\end{tabular}\index{Taylor Series!common series}}
+\end{tabular}\index{Taylor Series!common series}
+\end{keyidea}
 
 % todo find and show where in the text we derive the ``Important Maclaurin Series Expansions'', and derive any missing in an example
 
-\theorem{thm:series_alg}{Algebra of Power Series}
-{Let $\ds f(x) = \sum_{n=0}^\infty a_nx^n$ and $\ds g(x) = \sum_{n=0}^\infty b_nx^n$ converge absolutely for $\abs x<R$, and let $h(x)$ be continuous.
+\begin{theorem}[Algebra of Power Series]\label{thm:series_alg}
+Let $\ds f(x) = \sum_{n=0}^\infty a_nx^n$ and $\ds g(x) = \sum_{n=0}^\infty b_nx^n$ converge absolutely for $\abs x<R$, and let $h(x)$ be continuous.
 \index{power series!algebra of} 
 \begin{enumerate}
 	\item	$\ds f(x)\pm g(x) = \sum_{n=0}^\infty (a_n\pm b_n)x^n$ \quad for $\abs x<R$.
@@ -175,7 +177,8 @@ $\ds \tan^{-1}x = \sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{2n+1}$ & $\ds x-\frac{
 	\sum_{n=0}^\infty\big(a_0b_n+a_1b_{n-1}+\dotsb+ a_nb_0\big)x^n$ for $\abs x<R$.
 	
 	\item	$\ds f\big(h(x)\big) = \sum_{n=0}^\infty a_n\big(h(x)\big)^n$ \quad for $\abs{h(x)}<R$.
-\end{enumerate}}
+\end{enumerate}
+\end{theorem}
 
 \example{ex_ts5}{Combining Taylor series}
 {Write out the first 3 terms of the Maclaurin Series for $f(x) = e^x\cos x$ using \autoref{idea:common_taylor} and \autoref{thm:series_alg}.}

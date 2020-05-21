@@ -21,15 +21,16 @@ This example illustrates some interesting concepts that we explore in this secti
 % make sure the next stays on the opening page
 
 %\setboxwidth{50pt}
-\definition{def:series}{Infinite Series, $n^\text{th}$ Partial Sums, Convergence, Divergence}
-{Let $\{a_n\}$ be a sequence.
+\begin{definition}[Infinite Series, $n^\text{th}$ Partial Sums, Convergence, Divergence]\label{def:series}
+Let $\{a_n\}$ be a sequence.
 \index{series!definition}\index{series!partial sums}\index{series!convergent}\index{series!divergent}\index{convergence!of series}\index{divergence!of series}
 \begin{enumerate}
 \item		The sum $\ds \sum_{n=1}^\infty a_n$ is an \textbf{infinite series} (or, simply \textbf{series}).
 \item		Let $\ds S_n = \sum_{i=1}^n a_i$\,; the sequence $\{S_n\}$ is the sequence of \textbf{$n^\text{th}$ partial sums} of $\{a_n\}$.
 \item		If the sequence $\{S_n\}$ converges to $L$, we say the series $\ds \sum_{n=1}^\infty a_n$ \textbf{converges} to $L$, and we write $\ds \sum_{n=1}^\infty a_n = L$.
 \item		If the sequence $\{S_n\}$ diverges, the series $\ds \sum_{n=1}^\infty a_n$ \textbf{diverges}.
-\end{enumerate}}
+\end{enumerate}
+\end{definition}
 
 Using our new terminology, we can state that the series $\ds \sum_{n=1}^\infty 1/2^n$ converges, and $\ds \sum_{n=1}^\infty 1/2^n = 1.$
 
@@ -109,23 +110,24 @@ While it is important to recognize when a series diverges, we are generally more
 
 One important type of series is a \emph{geometric series}.
 
-\definition{def:geom_series}{Geometric Series}
-{A \textbf{geometric series} is a series of the form 
+\begin{definition}[Geometric Series]\label{def:geom_series}
+A \textbf{geometric series} is a series of the form 
 \[\sum_{n=0}^\infty ar^n = a+ar+ar^2+ar^3+\dotsb+ar^n+\dotsb\]
 Note that the index starts at $n=0$. If the index starts at $n=1$ we have $\ds \sum_{n=1}^\infty ar^{n-1}$.%
 \index{series!geometric}\index{geometric series}
-}
+\end{definition}
 
 We started this section with a geometric series, although we dropped the first term of $1$. One reason geometric series are important is that they have nice convergence properties.
 
-\theorem{thm:geom_series}{Convergence of Geometric Series}
-{Consider the geometric series $\ds \sum_{n=0}^\infty ar^n$.
+\begin{theorem}[Convergence of Geometric Series]\label{thm:geom_series}
+Consider the geometric series $\ds \sum_{n=0}^\infty ar^n$.
 \index{series!geometric}\index{geometric series}\index{convergence!of geometric series}\index{divergence!of geometric series}
 \begin{enumerate}
 \item	If $r\neq1$, the $n^\text{th}$ partial sum is: $\ds S_n = \sum_{k=0}^{n-1}ar^k=\frac{a(1-r\,^n)}{1-r}$.
 \item	The series converges if, and only if, $\abs r<1$. When $\abs r<1$, 
 \[\sum_{n=0}^\infty ar^n = \frac{a}{1-r}.\]
-\end{enumerate}}
+\end{enumerate}
+\end{theorem}
 
 \begin{proof}
 If $r=1$, then $S_n=a+a+a+\dotsb+a=na$. Since $\ds\lim_{n\to \infty} S_n=\pm \infty$, the geometric series diverges.\\
@@ -359,14 +361,15 @@ We can conclude that $\{S_n\} = \big\{\ln (n+1)\big\}$. This sequence  does not 
 
 We are learning about a new mathematical object, the series. As done before, we apply ``old'' mathematics to this new topic.
 
-\theorem{thm:series_prop}{Properties of Infinite Series}
-{Suppose that \quad$\ds \sum_{n=1}^\infty a_n$\quad and \quad $\ds\sum_{n=1}^\infty b_n$ are convergent series, and that \quad$\ds \sum_{n=1}^\infty a_n = L$,\quad  $\ds\sum_{n=1}^\infty b_n = K$, and $c$ is a constant.
+\begin{theorem}[Properties of Infinite Series]\label{thm:series_prop}
+Suppose that \quad$\ds \sum_{n=1}^\infty a_n$\quad and \quad $\ds\sum_{n=1}^\infty b_n$ are convergent series, and that \quad$\ds \sum_{n=1}^\infty a_n = L$,\quad  $\ds\sum_{n=1}^\infty b_n = K$, and $c$ is a constant.
 \index{series!properties}\index{Sum/Difference Rule!of series}
 \index{Constant Multiple Rule!of series}
 \begin{enumerate}
 \item  Constant Multiple Rule: $\ds\sum_{n=1}^\infty c\cdot a_n = c\cdot\sum_{n=1}^\infty a_n = c\cdot L.$
 \item		Sum/Difference Rule: $\ds\sum_{n=1}^\infty \big(a_n\pm b_n\big) = \sum_{n=1}^\infty a_n \pm \sum_{n=1}^\infty b_n = L \pm K.$
-\end{enumerate}}
+\end{enumerate}
+\end{theorem}
 
 Before using this theorem, we will consider the harmonic series $\ds\sum_{n=1}^\infty\frac1n$.
 
@@ -384,15 +387,16 @@ This gives us $S\geq \frac12+S$ which can never be true, thus our assumption tha
 %Before using this theorem, we provide a few ``famous'' series.
 %
 %\setboxwidth{20pt}
-%\keyidea{idea:famous_series}{Important Series}
-%{\begin{enumerate}
+%\begin{keyidea}[Important Series]\label{idea:famous_series}
+%\begin{enumerate}
 %\item	\parbox{90pt}{$\ds\sum_{n=0}^\infty \frac1{n!} = e$. } (Note that the index starts with $n=0$.)
 %\item	$\ds\sum_{n=1}^\infty \frac1{n^2} = \frac{\pi^2}{6}$.
 %\item	$\ds\sum_{n=1}^\infty \frac{(-1)^{n+1}}{n^2} = \frac{\pi^2}{12}$.
 %\item	$\ds\sum_{n=0}^\infty \frac{(-1)^{n}}{2n+1} = \frac{\pi}{4}$.
 %\item	\parbox{90pt}{$\ds\sum_{n=1}^\infty \frac{1}{n} $ \quad diverges.} (This is called the \emph{Harmonic Series}.)\index{Harmonic Series}
 %\item	\parbox{90pt}{$\ds\sum_{n=1}^\infty \frac{(-1)^{n+1}}{n} = \ln 2$.} (This is called the \emph{Alternating Harmonic Series}.)\index{Alternating Harmonic Series}
-%\end{enumerate}}
+%\end{enumerate}
+%\end{keyidea}
 %
 %\example{ex_series5}{Evaluating series}{Evaluate the given series.
 %
@@ -506,7 +510,9 @@ As one contemplates the behavior of series, a few facts become clear.
 
 These concepts are very important and lie at the heart of the next two theorems.
 
-\theorem{thm:series_conv}{Convergence of Sequence}{If the series $\ds \sum_{n=1}^\infty a_n$ converges, then $\ds\lim_{n\to\infty}a_n=0$.}
+\begin{theorem}[Convergence of Sequence]\label{thm:series_conv}
+If the series $\ds \sum_{n=1}^\infty a_n$ converges, then $\ds\lim_{n\to\infty}a_n=0$.
+\end{theorem}
 
 \begin{proof}
 Let $S_n=a_1+a_2+\dots+a_n$. We have 
@@ -523,7 +529,9 @@ Since  $\ds \sum_{n\to\infty}a_n$ converges, the sequence $\{ S_n\}$ converges. 
 \end{align*}
 \end{proof}
 
-\theorem{thm:series_nth_term}{Test for Divergence}{If $ \ds \lim_{n\to\infty} a_n$ does not exist or $\ds  \lim_{n\to\infty}a_n\neq0$, then the series $\ds \sum_{n=1}^\infty a_n$ diverges.}
+\begin{theorem}[Test for Divergence]\label{thm:series_nth_term}
+If $ \ds \lim_{n\to\infty} a_n$ does not exist or $\ds  \lim_{n\to\infty}a_n\neq0$, then the series $\ds \sum_{n=1}^\infty a_n$ diverges.
+\end{theorem}
 
 The Test for Divergence follows from \autoref{thm:series_conv}. If the series does not diverge, it must converge and therefore $\ds  \lim_{n\to\infty}a_n=0$.
 
@@ -537,12 +545,13 @@ Thus by the Test for Divergence, both series will diverge.
 
 \textbf{Important!} This theorem \emph{does not state} that if $\ds \lim_{n\to\infty} a_n = 0$ then $\ds \sum_{n=1}^\infty  a_n $ converges. The standard example of this is the Harmonic Series, as given in \autoref{ex_harm_series}. The Harmonic Sequence, $\{1/n\}$, converges to 0; the Harmonic Series, $\ds \sum_{n=1}^\infty 1/n$, diverges.
 
-\theorem{thm:series_behavior}{Infinite Nature of Series}
-{The convergence or divergence of a series remains unchanged by the insertion or deletion of any finite number of terms. That is:
+\begin{theorem}[Infinite Nature of Series]\label{thm:series_behavior}
+The convergence or divergence of a series remains unchanged by the insertion or deletion of any finite number of terms. That is:
 \begin{enumerate}
 	\item	A divergent series will remain divergent with the insertion or deletion of any finite number of terms.
 	\item	A convergent series will remain convergent with the insertion or deletion of any finite number of terms. (Of course, the \emph{sum} will likely change.)
-\end{enumerate}}
+\end{enumerate}
+\end{theorem}
 
 In other words, when we are only interested in the convergence or divergence of a series, it is safe to ignore the first few billion terms.
 

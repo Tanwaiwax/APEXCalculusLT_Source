@@ -70,12 +70,13 @@ g\primeskip'(x)&=\frac 1{\fp(g(x))} \quad\text{assuming $\fp(x)$ is nonzero}
 \end{align*}
 Note that the derivation above assumes that the function $g$ is differentiable. It is possible to prove that $g$ must be differentiable if $\fp$ is nonzero, but the proof is beyond the scope of this text. However, assuming this fact we have shown the following:
 
-\theorem{thm:deriv_inverse_functions}{Derivatives of Inverse Functions}
-{Let $f$ be differentiable and one-to-one on an open interval $I$, where $\fp(x) \neq 0$ for all $x$ in $I$, let $J$ be the range of $f$ on $I$, let $g$ be the inverse function of $f$, and let $f(a) = b$ for some $a$ in $I$. Then $g$ is a differentiable function on $J$, and in particular,
+\begin{theorem}[Derivatives of Inverse Functions]\label{thm:deriv_inverse_functions}
+Let $f$ be differentiable and one-to-one on an open interval $I$, where $\fp(x) \neq 0$ for all $x$ in $I$, let $J$ be the range of $f$ on $I$, let $g$ be the inverse function of $f$, and let $f(a) = b$ for some $a$ in $I$. Then $g$ is a differentiable function on $J$, and in particular,
 \begin{align*}
  \left(f\primeskip^{-1}\right)'(b) &=g\primeskip'(b) = \frac{1}{\fp(a)} \\
  \left(f\primeskip^{-1}\right)'(x) &=g\primeskip'(x) = \frac{1}{\fp(g(x))}
-\end{align*}}
+\end{align*}
+\end{theorem}
 
 The results of \autoref{thm:deriv_inverse_functions} are not trivial; the notation may seem confusing at first. Careful consideration, along with examples, should earn understanding.
 
@@ -138,8 +139,8 @@ verifying \autoref{thm:deriv_inverse_functions} yet again: at corresponding poin
 
 Using similar techniques, we can find the derivatives of all the inverse trig\-o\-no\-metric functions after first restricting their domains according to \autoref{fig:domain_trig} to allow them to be invertible.
 
-\theorem{thm:deriv_inverse_trig}{Derivatives of Inverse Trigonometric Functions}
-{The inverse trigonometric functions are differentiable on all open sets contained in their domains (as listed in \autoref{fig:domain_trig}) and their derivatives are as follows:\\\index{derivative!inverse trig.}
+\begin{theorem}[Derivatives of Inverse Trigonometric Functions]\label{thm:deriv_inverse_trig}
+The inverse trigonometric functions are differentiable on all open sets contained in their domains (as listed in \autoref{fig:domain_trig}) and their derivatives are as follows:\\\index{derivative!inverse trig.}
 \begin{minipage}{.5\specialboxlength}\small
 	\begin{enumerate}
 		\item	$\ds\frac d{dx}\big(\sin^{-1}x\big)= \frac1{\sqrt{1-x^2}}$ 
@@ -154,7 +155,8 @@ Using similar techniques, we can find the derivatives of all the inverse trig\-o
 		\item	$\ds\frac d{dx}\big(\cot^{-1}x\big)=-\frac1{1+x^2}$
 	\end{enumerate}
 	\normalsize
-\end{minipage}}			
+\end{minipage}
+\end{theorem}			
 
 Note how the last three derivatives are merely the negatives of the first three, respectively. Because of this, the first three are used almost exclusively throughout this text.
 
@@ -195,13 +197,14 @@ Note how the last three derivatives are merely the negatives of the first three,
 \[\int\frac{dx}{\sqrt{1-x^2}}=\sin^{-1}x+C.\]
 Combining these formulas with $u$-substitution yields the following:
 
-\theorem{thm:int_inverse_trig}{Integrals Involving Inverse Trigonometric Functions}
-{Let $a>0$.
+\begin{theorem}[Integrals Involving Inverse Trigonometric Functions]\label{thm:int_inverse_trig}
+Let $a>0$.
 \begin{enumerate}
 	\item	$\ds\int\frac1{a^2+x^2}\ dx=\frac1a\tan^{-1}\left(\frac xa\right) + C$
 	\item	$\ds\int\frac1{\sqrt{a^2-x^2}}\ dx=\sin^{-1}\left(\frac xa\right)+C$
 	\item	$\ds\int\frac1{x\sqrt{x^2-a^2}}\ dx=\frac1a\sec^{-1}\left(\frac{\abs x}a\right)+C$
-\end{enumerate}}
+\end{enumerate}
+\end{theorem}
 
 We will look at the second part of this theorem. The other parts are similar and are left as exercises.
 
@@ -236,8 +239,8 @@ We now use the substitution $u=x+1$ and $du=dx$ to find:
 % moved to end of implicit differentiation.  but do we want to give it again?
 %In this chapter we have defined the derivative, given rules to facilitate its computation, and given the derivatives of a number of standard functions. We restate the most important of these in the following theorem, intended to be a reference for further work.
 %
-%\theorem{thm:deriv_glossary}{Glossary of Derivatives of Elementary Functions}
-%{Let $u$ and $v$ be differentiable functions, and let $c$ and $n$ be real numbers, $n\neq 0$. \\
+%\begin{theorem}[Glossary of Derivatives of Elementary Functions]\label{thm:deriv_glossary}
+%Let $u$ and $v$ be differentiable functions, and let $c$ and $n$ be real numbers, $n\neq 0$. \\
 %\begin{anywhereenum}
 %\renewcommand{\arraystretch}{1.6}
 %\begin{tabular}{ll}
@@ -266,6 +269,7 @@ We now use the substitution $u=x+1$ and $du=dx$ to find:
 %%	\item		$\frac{d}{dx}\big(\sec^{-1}x\big) = \frac{1}{\abs{x}\sqrt{x^2-1}}$
 %%	\item		$\frac{d}{dx}\big(\cot^{-1}x\big) = -\frac{1}{1+x^2}$
 %\end{tabular}
-%\end{anywhereenum}}
+%\end{anywhereenum}
+%\end{theorem}
 
 \printexercises{exercises/02_07_exercises}

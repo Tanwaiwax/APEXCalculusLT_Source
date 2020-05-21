@@ -48,7 +48,8 @@ In general, if $x = g(u)$ is a one-to-one, differentiable function from an inter
 \[\int_a^b f(x)\,dx = \int_{g^{-1}(a)}^{g^{-1}(b)} f(g(u))\,g\primeskip'(u)\,du .\]
 This is called the \emph{change of variable} formula for integrals of single-variable functions, and it is what you were implicitly using when doing integration by substitution. This formula turns out to be a special case of a more general formula which can be used to evaluate multiple integrals. We will state the formulas for double and triple integrals involving real-valued functions of two and three variables, respectively. We will assume that all the functions involved are continuously differentiable and that the regions and solids involved all have ``reasonable'' boundaries. The proof of the following theorem is beyond the scope of the text.% See \cite[\S\,15.32 and \S\,15.62]{tm} for all the details.
 
-\theorem{thm:changevarint}{Change of Variables Formula for Multiple Integrals}{Let $x=x(u,v)$ and $y=y(u,v)$ define a one-to-one mapping of a region $R'$ in the $uv$-plane onto a region $R$ in the $xy$-plane such that the determinant\index{change of variable}
+\begin{theorem}[Change of Variables Formula for Multiple Integrals]\label{thm:changevarint}
+Let $x=x(u,v)$ and $y=y(u,v)$ define a one-to-one mapping of a region $R'$ in the $uv$-plane onto a region $R$ in the $xy$-plane such that the determinant\index{change of variable}
   \begin{equation}\label{eqn:jacob2}
    J(u,v) =
     \begin{vmatrix}
@@ -76,7 +77,8 @@ This is called the \emph{change of variable} formula for integrals of single-var
   \begin{multline}\label{eqn:changevarint3}
    \iiint_{S} f(x,y,z)\,dV(x,y,z) =\\
    \iiint_{S'} f(x(u,v,w),y(u,v,w),z(u,v,w))\,\abs{J(u,v,w)}\,dV(u,v,w).
-  \end{multline}}
+  \end{multline}
+\end{theorem}
 
 The determinant $J(u,v)$ in \autoeqref{eqn:jacob2} is called the \textbf{Jacobian} of $x$ and $y$ with respect to $u$ and $v$, and is sometimes written as\index{Jacobian}
 \[J(u,v) = \frac{\partial (x,y)}{\partial (u,v)} .\]
@@ -169,12 +171,13 @@ we have
 which verifies \autoref{idea:doublepol}.
 %so we have the following formula:
 %
-%\keyidea{idea_polar_int}{Double Integral in Polar Coordinates}{
+%\begin{keyidea}[Double Integral in Polar Coordinates]\label{idea_polar_int}
 % \begin{equation}\label{eqn:polarint}
 %  \iint_{R} f(x,y)\,dx\,dy
 %  = \iint_{R'} f(r\cos \theta,r\sin \theta)\,r\,dr\,d\theta ,
 % \end{equation}\index{double integral!polar coordinates}\index{coordinates!polar}
-% where the mapping $x=r\cos \theta$, $y=r\sin \theta$ maps the region $R'$ in the $r\theta$-plane onto the region $R$ in the $xy$-plane in a one-to-one manner.}
+% where the mapping $x=r\cos \theta$, $y=r\sin \theta$ maps the region $R'$ in the $r\theta$-plane onto the region $R$ in the $xy$-plane in a one-to-one manner.
+%\end{keyidea}
 %
 %\example{ex_polar_parab}{Integrating in Polar Coordinates}{Find the volume $V$ inside the paraboloid $z=x^2 + y^2$ for $0 \le z \le 1$.}{Using vertical slices, we see that
 %\[V = \iint_{R} (1 - z)\,dA = \iint_{R} (1 - (x^2 + y^2 ))\,dA ,\]
@@ -262,19 +265,22 @@ Exercises \ref{pr_cyl_jac} and \ref{pr_sph_jac}
 ask you to verify Theorems \ref{thm:triple_int_cylindrical} and \ref{thm:triple_int_spherical} by computing the appropriate Jacobian.\bigskip
 %) that triple integrals in cylindrical and spherical coordinates take the following forms:
 
-%\keyidea{idea_cylin_int}{Triple Integral in Cylindrical Coordinates}{%
+%\begin{keyidea}[Triple Integral in Cylindrical Coordinates]\label{idea_cylin_int}
 % \begin{equation}\label{eqn:cylinderint}
 %  \iiint_{S} f(x,y,z)\,dx\,dy\,dz = \iiint_{S'} f(r\cos \theta,r\sin \theta,z)\,r\,dr\,d\theta\,dz ,
 % \end{equation}\index{triple integral!cylindrical coordinates}
-% where the mapping $x=r\cos \theta$, $y=r\sin \theta$, $z=z$ maps the solid $S'$ in  $r\theta z$-space onto the solid $S$ in $xyz$-space in a one-to-one manner.}
+% where the mapping $x=r\cos \theta$, $y=r\sin \theta$, $z=z$ maps the solid $S'$ in  $r\theta z$-space onto the solid $S$ in $xyz$-space in a one-to-one manner.
+%\end{keyidea}
 %
-%\keyidea{idea_sphere_int}{Triple Integral in Spherical Coordinates}{\mbox{}\\[-2\baselineskip]
+%\begin{keyidea}[Triple Integral in Spherical Coordinates]\label{idea_sphere_int}
+%\mbox{}\\[-2\baselineskip]
 % \begin{multline}\label{eqn:sphereint}
 %  \iiint_S f(x,y,z)\,dx\,dy\,dz =\\
 %  \iiint_{S'} f(\rho\sin \phi\,\cos \theta,\rho\sin \phi\,\sin \theta,\rho\cos \phi)
 %  \,\rho^2 \,\sin \phi \,d\rho\,d\phi\,d\theta ,
 % \end{multline}\index{triple integral!spherical coordinates}
-% where the mapping $x=\rho\sin \phi\,\cos \theta$, $y=\rho\sin \phi\,\sin \theta$, $z=\rho\cos \phi$ maps the solid $S'$ in $\rho\phi\theta$-space onto the solid $S$ in $xyz$-space in a one-to-one manner.}
+% where the mapping $x=\rho\sin \phi\,\cos \theta$, $y=\rho\sin \phi\,\sin \theta$, $z=\rho\cos \phi$ maps the solid $S'$ in $\rho\phi\theta$-space onto the solid $S$ in $xyz$-space in a one-to-one manner.
+%\end{keyidea}
 %
 %\example{exmp_cyl_cone_octant}{Triple Integral over a Region in Cylindrical Coordinates}{Evaluate $\iiint_D x\,dV$ where $D$ is the region bounded by the first octant, the cone $z=\sqrt{x^2+y^2}$, and $z=3$.}{In cylindrical coordinates $D$ is given by $0\le\theta\leq\frac\pi2$, $0\leq r\leq3$, and $r\leq z\leq3$.  Now we have
 %\begin{align*}

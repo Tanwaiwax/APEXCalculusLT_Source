@@ -206,9 +206,6 @@
 \newcommand{\surfaceS}{\ensuremath{\mathcal{S}}}
 
 
-\usepackage{tcolorbox}
-\tcbuselibrary{skins,theorems}
-
 %\newspecialbox[notempty]{exvideo}{ignored}{240}
 \AtBeginDocument{\makeStyles{exvideo}{240}}
 \newcommand{\setexvideocolor}{%
@@ -340,7 +337,8 @@
 \setboolean{calc2included}{false}
 \setboolean{calc3included}{false}
 
-\newcommand{\apexindex}{%
+\let\oldprintindex\printindex
+\renewcommand{\printindex}{%
  \cleardoublepage
 % \chapter{\indexname} % \printindex has its own heading
  \phantomsection
@@ -357,7 +355,7 @@
 %  \index{multiple integration|see{iterated integration}} % 13 iterated integrals
 %  \index{$\dfrac{\partial (x,y,z)}{\partial (u,v,w)}$|see {Jacobian}} % 13 Jacobian
 % }{}
- \printindex
+ \oldprintindex
 }
 
 
@@ -386,11 +384,12 @@
 % hyperref changes these
 % if they come before and have newcommand, latexml overwrites them
 \AtBeginDocument{
- \renewcommand{\chapterautorefname}{Chapter} % the default is lowercase
- \renewcommand{\sectionautorefname}{Section} % the default is lowercase
- \renewcommand{\appendixname}{Appendices}
+ \renewcommand{\chapterautorefname}{Chap\-ter} % the default is lowercase
+ \renewcommand{\sectionautorefname}{Sec\-tion} % the default is lowercase
+ \renewcommand{\figureautorefname}{Fig\-ure}
+ \renewcommand{\appendixname}{Ap\-pen\-di\-ces}
 }
-\newcommand{\exampleEnvautorefname}{Example}
+\newcommand{\exampleEnvautorefname}{Ex\-am\-ple}
 \newcommand{\autoeqref}[1]{\hyperref[#1]{\equationautorefname~(\ref*{#1})}}
 % autoref doesn't use parentheses
 

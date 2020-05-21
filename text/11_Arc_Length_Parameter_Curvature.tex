@@ -122,8 +122,9 @@ Solving for $\vrp(s)$, we have
 \end{equation}
 where $\vec T(t)$ is the unit tangent vector. \autoeqref{eq:vvfarc2} is often misinterpreted, as one is tempted to think it states $\vrp(t) = \vec T(t)$, but there is a big difference between $\vrp(s)$ and $\vrp(t)$. The key to take from it is that $\vrp(s)$ is a unit vector. In fact, the following theorem states that this characterizes the arc length parameter.
 
-\theorem{thm:arclengthparam}{Arc Length Parameter}
-{Let $\vec r(s)$ be a vector-valued function. The parameter $s$ is the arc length parameter if, and only if, $\norm{\vrp(s)} = 1.$\index{arc length parameter}}
+\begin{theorem}[Arc Length Parameter]\label{thm:arclengthparam}
+Let $\vec r(s)$ be a vector-valued function. The parameter $s$ is the arc length parameter if, and only if, $\norm{\vrp(s)} = 1.$\index{arc length parameter}
+\end{theorem}
 
 \subsection{Curvature}
 
@@ -165,10 +166,11 @@ Consider points $A$ and $B$ on the curve graphed in \autoref{fig:curvatureintro}
 
 We derive this number in the following way. Consider \autoref{fig:curvatureintro}(b), where  unit tangent vectors are graphed around points $A$ and $B$. Notice how the direction of the unit tangent vector changes quite a bit near $A$, whereas it does not change as much around $B$. This leads to an important concept: measuring the rate of change of the unit tangent vector with respect to arc length gives us a measurement of curvature.
 
-\definition{def:curvature}{Curvature}
-{Let $\vec r(s)$ be a vector-valued function where $s$ is the arc length parameter. The curvature $\kappa$ of the graph of $\vec r(s)$ is
+\begin{definition}[Curvature]\label{def:curvature}
+Let $\vec r(s)$ be a vector-valued function where $s$ is the arc length parameter. The curvature $\kappa$ of the graph of $\vec r(s)$ is
 \index{curvature}\index{unit tangent vector!and curvature}
-\[\kappa = \norm{\frac{d\vec T}{ds}} = \norm{\vec T\,'(s)}.\]}
+\[\kappa = \norm{\frac{d\vec T}{ds}} = \norm{\vec T\,'(s)}.\]
+\end{definition}
 
 If $\vec r(s)$ is parameterized by the arc length parameter, then 
 \[\vec T(s) = \frac{\vrp(s)}{\norm{\vrp(s)}} \quad \text{and}\quad \vec N(s) = \frac{\vec T\,'(s)}{\norm{\vec T\,'(s)}}.\]
@@ -195,8 +197,8 @@ It probably comes as no surprise that the curvature of a line is 0. (How ``curvy
 
 While the definition of curvature is a useful mathematical concept, it is nearly impossible to use most of the time; writing $\vec r$ in terms of the arc length parameter is generally very hard. Fortunately, there are other methods of calculating this value that are much easier. There is a trade-off: the definition is ``easy\primeskip'' to understand though hard to compute, whereas these other formulas are easy to compute though it may be hard to understand why they work.
 
-\theorem{thm:curvature_formulas}{Formulas for Curvature}
-{Let $C$ be a smooth curve on an open interval $I$ in the plane or in space.
+\begin{theorem}[Formulas for Curvature]\label{thm:curvature_formulas}
+Let $C$ be a smooth curve on an open interval $I$ in the plane or in space.
 \index{curvature!equations for}
 \begin{enumerate}
 	\item If $C$ is defined by $y=f(x)$, then 
@@ -205,7 +207,8 @@ While the definition of curvature is a useful mathematical concept, it is nearly
 	\[\kappa = \frac{\abs{x\primeskip'y\primeskip''-x\primeskip''y\primeskip'}}{\big((x\primeskip')^2+(y\primeskip')^2\big)^{3/2}}.\]
 	\item If $C$ is defined in space by a vector-valued function $\vec r(t)$, then
 \[\kappa = \frac{\norm{\vec T\,'(t)}}{\norm{\vrp(t)}} = \frac{\norm{\vrp(t)\times\vrp'(t)}}{\norm{\vrp(t)}^3} = \frac{\vec a(t)\cdot \vec N(t)}{\norm{\vec v(t)}^2}.\]
-\end{enumerate}}
+\end{enumerate}
+\end{theorem}
 
 \begin{proof}
 We'll prove statement 3; statements 1 and 2 are applications that we leave to the exercises.  By the chain rule and then \autoeqref{eq:vvfarc3},

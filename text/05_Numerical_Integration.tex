@@ -461,8 +461,8 @@ Recall that the actual value, accurate to 3 decimal places, is 0.460. Our approx
 We summarize the key concepts of this section thus far in the following Key Idea.
 
 \setboxwidth{140pt}%
-\keyidea{idea:numerical}{Numerical Integration}
-{Let $f$ be a continuous function on $[a,b]$, let $n$ be a positive integer, and let $\ds\Delta x = \frac{b-a}{n}$.
+\begin{keyidea}[Numerical Integration]\label{idea:numerical}
+Let $f$ be a continuous function on $[a,b]$, let $n$ be a positive integer, and let $\ds\Delta x = \frac{b-a}{n}$.
 Set $x_0=a$, $x_1=a+\Delta x$, \dots, $x_i = a+i\Delta x$, $x_n=b$.
 Consider $\ds\int_a^b f(x)\ dx$.\\
 \index{integration!numerical!Left Hand Rule}
@@ -488,7 +488,8 @@ Trapezoidal Rule: &
 $\ds\int_a^b f(x)\ dx \approx \frac{\Delta x}2\Big[f(x_0) + 2f(x_1) + 2f(x_2) +\dotsb + 2f(x_{n-1})+ f(x_n)\big]$.\\
 Simpson's Rule: &
 $\ds\int_a^b f(x)\ dx \approx \frac{\Delta x}3\Big[f(x_0) + 4f(x_1) + 2f(x_2) +\dotsb + 4f(x_{n-1})+ f(x_n)\big]$ {\small ($n$ even)}.
-\end{tabular}}
+\end{tabular}
+\end{keyidea}
 
 In our examples, we approximated the value of a definite integral using a given method then compared it to the ``right'' answer. This should have raised several questions in the reader's mind, such as:
 \begin{enumerate}
@@ -506,8 +507,8 @@ Using technology, make an approximation with, say, 10, 100, and 200 subintervals
 
 A second method is to use Error Analysis. While the details are beyond the scope of this text, there are some formulas that give \textit{bounds} for how good your approximation will be. For instance, the formula might state that the approximation is within 0.1 of the correct answer. If the approximation is 1.58, then one knows that the correct answer is between 1.48 and 1.68. By using lots of subintervals, one can get an approximation as accurate as one likes. \autoref{thm:numerical_error} states what these bounds are.
 
-\theorem{thm:numerical_error}{Error Bounds in Numerical Integration}%
-{Suppose that $M_n$ is an upper bound on $\abs{f^{(n)}(x)}$ on $[a,b]$.  Then a bound for the error of the numerical method of integration is given by:
+\begin{theorem}[Error Bounds in Numerical Integration]\label{thm:numerical_error}
+Suppose that $M_n$ is an upper bound on $\abs{f^{(n)}(x)}$ on $[a,b]$.  Then a bound for the error of the numerical method of integration is given by:
 \index{integration!numerical!Left Hand Rule}
 \index{integration!numerical!Right Hand Rule}
 \index{integration!numerical!Midpoint Rule}
@@ -530,7 +531,8 @@ Midpoint Rule & $\dfrac{M_2(b-a)^3}{24n^2}$ \\
 Trapezoidal Rule & $\dfrac{M_2(b-a)^3}{12n^2}$ \\
 Simpson's Rule & $\dfrac{M_4(b-a)^5}{180n^4}$
 \end{tabular}
-\end{center}}
+\end{center}
+\end{theorem}
 
 There are some key things to note about this theorem.
 \begin{enumerate}

@@ -50,18 +50,20 @@ One can rewrite this  as
 \[\sum_{j=1}^n\left(\sum_{i=1}^mf(x_i,y_j)\Delta x_i\right)\Delta y_j.\]
 The summation inside the parenthesis indicates the sum of  heights $\times$ widths, which gives an area; multiplying these areas by the thickness $\Delta y_j$ gives a volume. The illustration in \autoref{fig:double_intro3} relates to this understanding.\label{note:doubleint}}
 
-\definition{def:double_int}{Double Integral, Signed Volume}
-{Let $z=f(x,y)$ be a continuous function defined over a closed region $R$ in the $x$-$y$ plane. The \textbf{signed volume} $V$ under $f$ over $R$ is denoted by the \textbf{double integral}
+\begin{definition}[Double Integral, Signed Volume]\label{def:double_int}
+Let $z=f(x,y)$ be a continuous function defined over a closed region $R$ in the $x$-$y$ plane. The \textbf{signed volume} $V$ under $f$ over $R$ is denoted by the \textbf{double integral}
 \[V = \iint_R f(x,y)\ dA.\]
 Alternate notations for the double integral are
 \index{integration!double}\index{double integral}\index{iterated integration}\index{signed volume}\index{volume}
-\[\iint_R f(x,y)\ dA=\iint_R f(x,y)\ dx\ dy=\iint_R f(x,y)\ dy\ dx.\]}
+\[\iint_R f(x,y)\ dA=\iint_R f(x,y)\ dx\ dy=\iint_R f(x,y)\ dy\ dx.\]
+\end{definition}
 
 The definition above does not state how to find the signed volume, though the notation offers a hint. We need the next two theorems to evaluate double integrals to find volume.
 
-\theorem{thm:double_int}{Double Integrals and Signed Volume}
-{Let $z=f(x,y)$ be a continuous function defined over a closed region $R$ in the $x$-$y$ plane. Then the signed volume $V$ under $f$ over $R$ is
-\[V = \iint_R f(x,y)\ dA = \lim_{\norm{\Delta A}\to 0}\sum_{i=1}^n f(x_i,y_i)\Delta A_i.\]}
+\begin{theorem}[Double Integrals and Signed Volume]\label{thm:double_int}
+Let $z=f(x,y)$ be a continuous function defined over a closed region $R$ in the $x$-$y$ plane. Then the signed volume $V$ under $f$ over $R$ is
+\[V = \iint_R f(x,y)\ dA = \lim_{\norm{\Delta A}\to 0}\sum_{i=1}^n f(x_i,y_i)\Delta A_i.\]
+\end{theorem}
 
 This theorem states that we can find the exact signed volume using a limit of sums. The partition of the region $R$ is not specified, so any partitioning where the diagonal of each rectangle shrinks to 0 results in the same answer. 
 
@@ -90,8 +92,8 @@ V = \int_a^b A(x)\ dx = \int_a^b\left(\int_{g_1(x)}^{g_2(x)} f(x,y)\ dy\right)dx
 
 This gives a concrete method for finding signed volume under a surface. We could do a similar procedure where we started with $y$ fixed, resulting in a iterated integral with the order of integration $dx\ dy$. The following theorem states that both methods give the same result, which is the value of the double integral. It is such an important theorem it has a name associated with it.
 
-\theorem{thm:fubini}{Fubini's Theorem}
-{Let $R$ be a closed, bounded region in the $x$-$y$ plane and let $z=f(x,y)$ be a continuous function on $R$.%
+\begin{theorem}[Fubini's Theorem]\label{thm:fubini}
+Let $R$ be a closed, bounded region in the $x$-$y$ plane and let $z=f(x,y)$ be a continuous function on $R$.%
 \index{double integral}\index{iterated integration}\index{signed volume}\index{volume}\index{Fubini's Theorem}
 \begin{enumerate}
 	\item If $R$ is bounded by $a\leq x\leq b$ and $g_1(x)\leq y\leq g_2(x)$, where $g_1$ and $g_2$ are continuous functions on $[a,b]$, then
@@ -99,7 +101,8 @@ This gives a concrete method for finding signed volume under a surface. We could
 	
 	\item If $R$ is bounded by $c\leq y\leq d$ and $h_1(y)\leq x\leq h_2(y)$, where $h_1$ and $h_2$ are continuous functions on $[c,d]$, then
 	\[\iint_R f(x,y)\ dA = \int_c^d\int_{h_1(y)}^{h_2(y)} f(x,y)\ dx\ dy.\]
-\end{enumerate}}
+\end{enumerate}
+\end{theorem}
 
 Note that the bounds of integration follow a ``curve to curve, point to point'' pattern. In fact, one of the main points of the previous section is developing the skill of describing a region $R$ with the bounds of an iterated integral. Once this skill is developed, we can use double integrals to compute many quantities, not just signed volume under a surface.
 
@@ -199,14 +202,14 @@ We obtained the same result using both orders of integration.}
 
 Note how in these two examples that the bounds of integration depend only on $R$; the bounds of integration have nothing to do with $f(x,y)$. This is an important concept, so we include it  as a Key Idea.
 
-\keyidea{idea:bounds_on_double}{Double Integration Bounds}
-{When evaluating $\iint_Rf(x,y)\ dA$ using an iterated integral, the bounds of integration depend only on $R$. The surface $f$ does not determine the bounds of integration.
-}
+\begin{keyidea}[Double Integration Bounds]\label{idea:bounds_on_double}
+When evaluating $\iint_Rf(x,y)\ dA$ using an iterated integral, the bounds of integration depend only on $R$. The surface $f$ does not determine the bounds of integration.
+\end{keyidea}
 
 Before doing another example, we give some properties of double integrals. Each should make sense if we view them in the context of finding signed volume under a surface, over a region.
 
-\theorem{thm:double_prop}{Properties of Double Integrals}
-{Let $f$ and $g$ be continuous functions over a closed, bounded plane region $R$, and let $c$ be a constant.
+\begin{theorem}[Properties of Double Integrals]\label{thm:double_prop}
+Let $f$ and $g$ be continuous functions over a closed, bounded plane region $R$, and let $c$ be a constant.
 \index{double integral!properties}\index{iterated integration!properties}
 \begin{enumerate}
 	\item $\ds \iint_Rc\,f(x,y)\ dA = c\iint_Rf(x,y)\ dA.$
@@ -215,7 +218,8 @@ Before doing another example, we give some properties of double integrals. Each 
 	\item	If $f(x,y)\geq g(x,y)$ on $R$, then $\ds \iint_R f(x,y)\ dA\geq \iint_R g(x,y)\ dA$.
 	\item \label{thm:double_prop_regions}	Let $R$ be the union of two nonoverlapping regions, $R = R_1\bigcup R_2$ (see \autoref{fig:double_region}). Then 
 	\[\iint_R f(x,y)\ dA = \iint_{R_1}f(x,y)\ dA+ \iint_{R_2}f(x,y)\ dA.\]
-\end{enumerate}}
+\end{enumerate}
+\end{theorem}
 
 % todo parameterize this instead of a bunch of coordinates
 \mtable[-2in]{$R$ is the union of two nonoverlapping regions, $R_1$ and $R_2$.}{fig:double_region}{\begin{tikzpicture}[xscale=.85,yscale=.6]
@@ -400,9 +404,10 @@ In short, evaluating one iterated integral is impossible; the other iterated int
 \[\text{average value of $f(x)$ on $[a,b]$} = \frac1{b-a}\int_a^b f(x)\ dx;\]
 that is, it is the ``area under $f$ over an interval divided by the length of the interval.'' We make an analogous statement here: the average value of $z=f(x,y)$ over a region $R$ is the volume under $f$ over $R$ divided by the area of $R$.
 
-\definition{def:av_val2}{The Average Value of $f$ on $R$}
-{Let $z=f(x,y)$ be a continuous function defined over a closed region $R$ in the $x$-$y$ plane. The \sword{average value of $f$ on $R$} is \index{average value of a function}
-\[\text{average value of $f$ on $R$} = \frac{\ds \iint_R f(x,y)\ dA}{\ds\iint_R \ dA}.\]}
+\begin{definition}[The Average Value of $f$ on $R$]\label{def:av_val2}
+Let $z=f(x,y)$ be a continuous function defined over a closed region $R$ in the $x$-$y$ plane. The \sword{average value of $f$ on $R$} is \index{average value of a function}
+\[\text{average value of $f$ on $R$} = \frac{\ds \iint_R f(x,y)\ dA}{\ds\iint_R \ dA}.\]
+\end{definition}
 
 \example{ex_double8}{Finding average value of a function over a region $R$}
 {Find the average value of $f(x,y) = 4-y$ over the region $R$, which is bounded by the parabolas $y^2=4x$ and $x^2=4y$. Note: this is the same function and region as used in \autoref{ex_double4}.

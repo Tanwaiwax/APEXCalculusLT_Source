@@ -1,5 +1,6 @@
 \section{Taylor Polynomials}\label{sec:taylor_poly}
 
+% todo Tim change ``the theorem'' in this section ?
 Consider a function $y=f(x)$ and a point $\big(c,f(c)\big)$. The derivative, $\fp(c)$, gives the instantaneous rate of change of $f$ at $x=c$. Of all lines that pass through the point $\big(c,f(c)\big)$, the line that best approximates $f$ at this point is the tangent line; that is, the line whose slope (rate of change) is $\fp(c)$.
 
 \mtable{Plotting $y=f(x)$ and a table of derivatives of $f$ evaluated at 0.}{fig:taypolyintroa}{\begin{tikzpicture}
@@ -67,8 +68,8 @@ As we use more and more derivatives, our polynomial approximation to $f$ gets be
 The polynomials we have created are examples of \emph{Taylor polynomials}, named after the British mathematician Brook Taylor who made important discoveries about such functions. While we created the above Taylor polynomials by solving initial-value problems, it can be shown that Taylor polynomials follow a general pattern that make their formation much more direct. This is described in the following definition.
 
 \setboxwidth{100pt}
-\definition{def:taypoly}{Taylor Polynomial, Maclaurin Polynomial}
-{Let $f$ be a function whose first $n$ derivatives exist at $x=c$.
+\begin{definition}[Taylor Polynomial, Maclaurin Polynomial]\label{def:taypoly}
+Let $f$ be a function whose first $n$ derivatives exist at $x=c$.
 \index{Taylor Polynomial!definition}\index{Maclaurin Polynomial!definition} \index{Maclaurin Polynomial|seealso{Taylor Polynomial}}
 \begin{enumerate}
 	\item	The \textbf{Taylor polynomial of degree $n$ of $f$ at $x=c$} is 
@@ -83,7 +84,8 @@ The polynomials we have created are examples of \emph{Taylor polynomials}, named
 	&= f(0) + \fp(0)x + \frac{\fpp(0)}{2!}x^2+\frac{\fp''(0)}{3!}x^3+\dotsb+\frac{f\,^{(n)}(0)}{n!}x^n \\
 	&=\sum_{k=0}^n\frac{f\,^{(k)}(0)}{k!}x^k.
 	\end{align*}
-\end{enumerate}}
+\end{enumerate}
+\end{definition}
 
 \mnote{\textbf{Note:} The summations in this definition use the convention that $x^0=1$ even when $x=0$ and that $f^{(0)}=f$.  They also use the definition that $0!=1$.}
 Generally, we order the terms of a polynomial to have decreasing degrees, and that is how we began this section.  This definition, and the rest of this chapter, reverses this order to reflect the greater importance of the lower degree terms in the polynomials that we will be finding.
@@ -245,14 +247,15 @@ In both situations, a critical piece of information to have is ``How good is my 
 We had the same problem when studying Numerical Integration. \autoref{thm:numerical_error} provided bounds on the error when using, say, Simpson's Rule to approximate a definite integral. These bounds allowed us to determine that, for example, using $10$ subintervals provided an approximation within $\pm .01$ of the exact value. The following theorem gives similar bounds for Taylor (and hence Maclaurin) polynomials.
 
 %\setboxwidth{65pt}
-\theorem{thm:taylorthm}{Taylor's Theorem}
-{\mbox{}\\[-2\baselineskip]\index{Taylor Polynomial!Taylor's Theorem}\index{Taylor's Theorem}
+\begin{theorem}[Taylor's Theorem]\label{thm:taylorthm}
+\mbox{}\\[-2\baselineskip]\index{Taylor Polynomial!Taylor's Theorem}\index{Taylor's Theorem}
 \begin{enumerate}
 	\item	Let $f$ be a function whose $(n+1)^{\text{th}}$ derivative exists on an open interval $I$ and let $c$ be in $I$. Then, for each $x$ in $I$, there exists $z_x$ between $x$ and $c$ such that
 \[f(x) = \sum_{k=0}^n\frac{f\,^{(k)}(c)}{k!}(x-c)^k+R_n(x),\]
 where $\ds R_n(x) = \frac{f\,^{(n+1)}(z_x)}{(n+1)!}(x-c)^{n+1}.$
 	\item	$\abs{R_n(x)}\leq\dfrac{\max_z\abs{\,f\,^{(n+1)}(z)}}{(n+1)!}\abs{x-c}^{n+1}$, where $z$ is between $x$ and $c$.
-\end{enumerate}}
+\end{enumerate}
+\end{theorem}
 
 The first part of Taylor's Theorem states that $f(x) = p_n(x) + R_n(x)$, where $p_n(x)$ is the $n^\text{th}$ order Taylor polynomial and $R_n(x)$ is the remainder, or error, in the Taylor approximation. The second part gives bounds on how big that error can be. If the $(n+1)^\text{th}$ derivative is large, the error may be large; if $x$ is far from $c$, the error may also be large. However, the $(n+1)!$ term in the denominator tends to ensure that the error gets smaller as $n$ increases.
 

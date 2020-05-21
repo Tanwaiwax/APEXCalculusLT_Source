@@ -17,8 +17,8 @@ ymin=-5.5,ymax=5.5,xmin=-5.5,xmax=5.5]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-\definition{def:vector}{Vector}
-{A \textbf{vector} is a directed line segment.\bigskip
+\begin{definition}[Vector]\label{def:vector}
+A \textbf{vector} is a directed line segment.\bigskip
 
 Given points $P$ and $Q$ (either in the plane or in space), we denote with $\vv{PQ}$ the vector \textit{from $P$ to $Q$}. The point $P$ is said to be the \textbf{initial point} of the vector, and the point $Q$ is the \textbf{terminal point}. \bigskip
 
@@ -27,7 +27,8 @@ The \textbf{magnitude}, \textbf{length} or \textbf{norm} of $\vv{PQ}$ is the len
 Two vectors are \textbf{equal} if they have the same magnitude and direction.
 \index{vectors}\index{vectors!definition}\index{vectors!norm}
 \index{vectors!magnitude}\index{norm}\index{magnitude of vector}
-\index{terminal point}\index{initial point}}
+\index{terminal point}\index{initial point}
+\end{definition}
 
 \mnote{\textbf{Note:} Instead of $\norm{\vv{PQ}}$, some texts use $\abs{\vv{PQ}}$ and rely on context to know if it is the norm of a vector or the absolute value of a scalar.}
 
@@ -55,8 +56,8 @@ Consider the vectors $\vv{PQ}$ and $\vv{RS}$ as shown in \autoref{fig:vectintro2
 
 This demonstrates that inherently all we care about is \textit{displacement}; that is, how far in the $x$, $y$ and possibly $z$ directions the terminal point is from the initial point. Both the vectors $\vv{PQ}$ and $\vv{RS}$ in \autoref{fig:vectintro2} have an $x$-displacement of 2 and a $y$-displacement of 1. This suggests a standard way of describing vectors in the plane. A vector whose $x$-displacement is $a$ and whose $y$-displacement is $b$ will have terminal point $(a,b)$ when the initial point is the origin, $(0,0)$. This leads us to a definition of a standard and concise way of referring to vectors.
 
-\definition{def:vector_component}{Component Form of a Vector}
-{\mbox{}\\[-2\baselineskip]\begin{enumerate}
+\begin{definition}[Component Form of a Vector]\label{def:vector_component}
+\mbox{}\\[-2\baselineskip]\begin{enumerate}
 	\item The \textbf{component form} of a vector $\vec{v}$ in $\mathbb{R}^2$, whose terminal point is $(a,b)$ when its initial point is $(0,0)$, is $\bracket{a,b}.$ 
 	
 	\item The \textbf{component form} of a vector $\vec{v}$ in $\mathbb{R}^3$, whose terminal point is $(a,b,c)$ when its initial point is $(0,0,0)$, is $\bracket{a,b,c}.$ 
@@ -65,7 +66,8 @@ This demonstrates that inherently all we care about is \textit{displacement}; th
 	%\[\vv{PQ} =\bracket{x_2-x_1, y_2-y_1,z_2-z_1}.\]
 \end{enumerate}
 The numbers $a$, $b$ (and $c$, respectively) are the \textbf{components} of $\vec v$.
-\index{vectors!component form}}
+\index{vectors!component form}
+\end{definition}
 
 \mnote{\textbf{Note:} Instead of $\vec{v}$, some texts use boldface: $\mathbf{v}$. The advantage of $\mathbf{v}$ is that it tends to be easier to read.  The advantage of $\vec{v}$ is that it's easier to write.}
 
@@ -123,8 +125,8 @@ minor y tick num=4,ymin=-5.5,ymax=5.5,xmin=-5.5,xmax=5.9]
 
 Now that we have defined vectors, and have created a nice notation by which to describe them, we start considering how vectors interact with each other. That is, we define an \textit{algebra} on vectors.
 
-\definition{def:vector_algebra}{Vector Algebra}
-{\index{vectors!algebra of}\mbox{}\\[-2\baselineskip]\begin{enumerate}
+\begin{definition}[Vector Algebra]\label{def:vector_algebra}
+\index{vectors!algebra of}\mbox{}\\[-2\baselineskip]\begin{enumerate}
 	\item Let $\vec u =\bracket{u_1,u_2}$ and $\vec v =\bracket{v_1,v_2}$ be vectors in $\mathbb{R}^2$, and let $c$ be a scalar.
 		\begin{enumerate}
 			\item The addition, or sum, of the vectors $\vec u$ and $\vec v$ is the vector
@@ -139,7 +141,8 @@ Now that we have defined vectors, and have created a nice notation by which to d
 			\item	The product of $c$ and $\vec v$ is the vector 
 			\[c\vec v = c\bracket{v_1,v_2,v_3}=\bracket{cv_1,cv_2,cv_3}.\]
 		\end{enumerate}
-\end{enumerate}}
+\end{enumerate}
+\end{definition}
 
 In short, we say addition and multiplication are computed ``component-wise.''  We also define vector subtraction using these two operations:
 %It follows from the properties of the real numbers and \autoref{def:vector_algebra} that
@@ -271,8 +274,8 @@ The \textbf{zero vector} is the vector whose initial point is also its terminal 
 
 Our examples have illustrated key principles in vector algebra: how to add and subtract vectors and how to multiply vectors by a scalar. The following theorem states formally the properties of these operations.
 
-\theorem{thm:vector_properties}{Properties of Vector Operations}
-{The following are true for all scalars $c$ and $d$, and for all vectors $\vec u$, $\vec v$ and $\vec w$, where $\vec u$, $\vec v$ and $\vec w$ are all in $\mathbb{R}^2$ or where $\vec u$, $\vec v$ and $\vec w$ are all in $\mathbb{R}^3$:\index{vectors!algebraic properties}
+\begin{theorem}[Properties of Vector Operations]\label{thm:vector_properties}
+The following are true for all scalars $c$ and $d$, and for all vectors $\vec u$, $\vec v$ and $\vec w$, where $\vec u$, $\vec v$ and $\vec w$ are all in $\mathbb{R}^2$ or where $\vec u$, $\vec v$ and $\vec w$ are all in $\mathbb{R}^3$:\index{vectors!algebraic properties}
 \begin{enumerate}
 	\item \parbox{150pt}{$\vec u+\vec v = \vec v+\vec u$}Commutative Property
 	\item \parbox{150pt}{$(\vec u+\vec v)+\vec w = \vec u+(\vec v+\vec w)$}Associative Property
@@ -283,21 +286,23 @@ Our examples have illustrated key principles in vector algebra: how to add and s
 	\item \parbox{150pt}{$0\vec v = \vec 0$}
 	\item	\parbox{150pt}{$\norm{c\vec v} = \abs c\cdot\norm{\vec v}$}\label{thm:norm_prop}
 	\item	$\vnorm u = 0$ if, and only if, $\vecu = \vec 0$.  \label{thm:zero_norm}
-\end{enumerate}}
+\end{enumerate}
+\end{theorem}
 
 %The result of the \autoref{ex_vect3} leads us to the following theorem about multiplying vectors by a scalar.
 %
-%\theorem{thm:vector_scale}{Scaling Vectors}
-%{Let $\vec v$ be a vector in $\mathbb{R}^2$ or $\mathbb{R^3}$ and let $c$ be a scalar. Then
+%\begin{theorem}[Scaling Vectors]\label{thm:vector_scale}
+%Let $\vec v$ be a vector in $\mathbb{R}^2$ or $\mathbb{R^3}$ and let $c$ be a scalar. Then
 %\[\norm{c\vec v} = \abs c\cdot\norm{\vec v}.\]
-%}
+%\end{theorem}
 
 As stated before, each vector $\vec v$ conveys magnitude and direction information. We have a method of extracting the magnitude, which we write as $\norm{\vec v}$. \textit{Unit vectors} are a way of extracting just the direction information from a vector.
 
-\definition{def:unit_vector}{Unit Vector}
-{A \textbf{unit vector} is a vector $\vec v$ with a magnitude of 1; that is, 
+\begin{definition}[Unit Vector]\label{def:unit_vector}
+A \textbf{unit vector} is a vector $\vec v$ with a magnitude of 1; that is, 
 \index{vectors!unit vector}\index{unit vector}
-\[\norm{\vec v}=1.\]}
+\[\norm{\vec v}=1.\]
+\end{definition}
 
 Consider this scenario: you are given a vector $\vec v$ and are told to create a vector of length 10 in the direction of $\vec v$. How does one do that? If we knew that $\vec u$ was the unit vector in the direction of $\vec v$, the answer would be easy: $10\vec u$. So how do we find $\vec u$\,?
 
@@ -352,12 +357,13 @@ We rewrite the equation with parentheses to make a point:
 
 This equation illustrates the fact that a vector has both magnitude and direction, where we view a unit vector as supplying \textit{only} direction information. Identifying unit vectors with direction allows us to define \textbf{parallel vectors}.
 
-\definition{def:parallel_vectors}{Parallel Vectors}
-{\index{vectors!parallel}\index{parallel vectors}%
+\begin{definition}[Parallel Vectors]\label{def:parallel_vectors}
+\index{vectors!parallel}\index{parallel vectors}%
 \mbox{}\\[-2\baselineskip]\begin{enumerate}
 	\item Unit vectors $\vec u_1$ and $\vec u_2$ are \textbf{parallel} if $\vec u_1 = \pm \vec u_2$.
 	\item	Nonzero vectors $\vec v_1$ and $\vec v_2$ are \textbf{parallel} if their respective unit vectors are parallel.
-\end{enumerate}}
+\end{enumerate}
+\end{definition}
 
 It is equivalent to say that vectors $\vec v_1$ and $\vec v_2$ are parallel if there is a scalar $c\neq 0$ such that $\vec v_1 = c\vec v_2$ (see marginal note).
 \mnote{\textbf{Note:} $\vec 0$ is directionless; because $\vnorm{0}=0$, there is no unit vector in the ``direction'' of $\vec 0$. 
@@ -376,14 +382,15 @@ If one graphed all unit vectors in $\mathbb{R}^2$ with the initial point at the 
 
 A similar construction in $\mathbb{R}^3$ shows that the terminal points all lie on the unit sphere. These vectors also have a particular component form, but its derivation is not as straightforward as the one for unit vectors in $\mathbb{R}^2$. Important concepts about unit vectors are given in \autoref{idea:unit_vectors} below.
 
-\keyidea{idea:unit_vectors}{Unit Vectors}
-{\index{unit vector!properties}\index{vectors!unit vector}%
+\begin{keyidea}[Unit Vectors]\label{idea:unit_vectors}
+\index{unit vector!properties}\index{vectors!unit vector}%
 \mbox{}\\[-2\baselineskip]\begin{enumerate}
 	\item	The unit vector in the direction of $\vec v$ is
 	\[\vec u = \frac1{\norm{\vec v}} \vec v.\]
 	\item	A vector $\vec u$ in $\mathbb{R}^2$ is a unit vector if, and only if, its component form is $\bracket{\cos\theta,\sin\theta}$ for some angle $\theta$.
 	\item	A vector $\vec u$ in $\mathbb{R}^3$ is a unit vector if, and only if, its component form is $\bracket{\sin\phi\cos\theta,\sin\phi\sin\theta,\cos\phi}$ for some angles $\theta$ and $\phi$.
-\end{enumerate}}
+\end{enumerate}
+\end{keyidea}
 
 These formulas can come in handy in a variety of situations, especially the formula for unit vectors in the plane.
 
@@ -446,14 +453,15 @@ It might seem odd that the sum of the forces applied to the chains is more than 
 
 Unit vectors were very important in the previous calculation; they allowed us to define a vector in the proper direction but with an unknown magnitude. Our computations were then computed component-wise. Because such calculations are often necessary, the \textit{standard unit vectors} can be useful.
 
-\definition{def:standard_unit}{Standard Unit Vectors}
-{\index{vectors!standard unit vector}\index{unit vector!standard unit vector}%
+\begin{definition}[Standard Unit Vectors]\label{def:standard_unit}
+\index{vectors!standard unit vector}\index{unit vector!standard unit vector}%
 \mbox{}\\[-2\baselineskip]\begin{enumerate}
 	\item In $\mathbb{R}^2$, the standard unit vectors are
 	\[\veci =\bracket{1,0}\quad \text{and}\quad \vecj =\bracket{0,1}.\]
 	\item In $\mathbb{R}^3$, the standard unit vectors are
 	\[\veci =\bracket{1,0,0}\quad \text{and}\quad \vecj =\bracket{0,1,0}\quad \text{and}\quad \vec k =\bracket{0,0,1}.\]
-\end{enumerate}}
+\end{enumerate}
+\end{definition}
 
 \example{ex_vect7}{Using standard unit vectors}{\mbox{}\\[-2\baselineskip]\begin{enumerate}
 	\item Rewrite $\vec v =\bracket{2,-3}$ using the standard unit vectors.

@@ -6,19 +6,20 @@ But what if we didn't move due north or east? What if we needed to move northeas
 
 We begin with a definition.
 
-\definition{def:direct_deriv}{Directional Derivatives}
-{Let $z=f(x,y)$ be continuous on an open set $S$ and let $\vec u =\bracket{u_1,u_2}$ be a unit vector. For all points $(x,y)$, the \textbf{directional derivative of $f$ at $(x,y)$ in the direction of $\vec u$} is
+\begin{definition}[Directional Derivatives]\label{def:direct_deriv}
+Let $z=f(x,y)$ be continuous on an open set $S$ and let $\vec u =\bracket{u_1,u_2}$ be a unit vector. For all points $(x,y)$, the \textbf{directional derivative of $f$ at $(x,y)$ in the direction of $\vec u$} is
 \index{derivative!directional}\index{directional derivative}
 \[D_{\vec u\,}f(x,y) = \lim_{h\to 0} \frac{f(x+hu_1,y+hu_2) - f(x,y)}h.\]
-}
+\end{definition}
 
 The partial derivatives $f_x$ and $f_y$ are defined with similar limits, but only $x$ or $y$ varies with $h$, not both. Here both $x$ and $y$ vary with a weighted $h$, determined by a particular unit vector $\vec u$. This may look a bit intimidating but in reality it is not too difficult to deal with; it often just requires extra algebra. However, the following theorem reduces this algebraic load.
 
 % ``at'' was ``on an open set $S$ containing''
-\theorem{thm:direct_deriv1}{Directional Derivatives}
-{Let $z=f(x,y)$ be differentiable at $(x_0,y_0)$, and let $\vec u =\bracket{u_1,u_2}$ be a unit vector. The directional derivative of $f$ at $(x_0,y_0)$ in the direction of $\vec u$ is
+\begin{theorem}[Directional Derivatives]\label{thm:direct_deriv1}
+Let $z=f(x,y)$ be differentiable at $(x_0,y_0)$, and let $\vec u =\bracket{u_1,u_2}$ be a unit vector. The directional derivative of $f$ at $(x_0,y_0)$ in the direction of $\vec u$ is
 \index{derivative!directional}\index{directional derivative}
-\[D_{\vec u\,}f(x_0,y_0)=f_x(x_0,y_0)u_1 + f_y(x_0,y_0)u_2.\]}
+\[D_{\vec u\,}f(x_0,y_0)=f_x(x_0,y_0)u_1 + f_y(x_0,y_0)u_2.\]
+\end{theorem}
 
 %\begin{proof}
 %This is really a quick application of \autoref{def:multi_differentiability}.  Because $f$ is differentiable at $(x_0,y_0)$,
@@ -78,14 +79,14 @@ The surface is plotted in \autoref{fig:direct1}, where the point $P=(1,2)$ is in
 
 As we study directional derivatives, it will help to make an important connection between the unit vector $\vec u =\bracket{u_1,u_2}$ that describes the direction and the partial derivatives $f_x$ and $f_y$. We start with a definition and follow this with a Key Idea.
 
-\definition{def:gradient}{Gradient}
-{Let $z=f(x,y)$ be differentiable on an open set $S$ that contains the point $(x_0,y_0)$.
+\begin{definition}[Gradient]\label{def:gradient}
+Let $z=f(x,y)$ be differentiable on an open set $S$ that contains the point $(x_0,y_0)$.
 \index{gradient} 
 \begin{enumerate}
 	\item The \textbf{gradient of $f$} is $\nabla f(x,y) =\bracket{f_x(x,y),f_y(x,y)}$.
 	\item The \textbf{gradient of $f$ at} $(x_0,y_0)$ is $\nabla f(x_0,y_0) =\bracket{f_x(x_0,y_0),f_y(x_0,y_0)}$.
 \end{enumerate}
-}
+\end{definition}
 
 \mnote{\textbf{Note:} The symbol ``$\nabla$'' is named ``nabla,'' derived from the Greek name of a Jewish harp. Oddly enough, in mathematics the expression $\nabla f$ is pronounced ``del $f$.''}
 
@@ -93,11 +94,12 @@ To simplify notation, we often express the gradient as $\nabla f =\bracket{f_x, 
 \[\nabla=\bracket{\frac\partial{\partial x},\frac\partial{\partial y}}.\]
 The operator $\nabla$ only has any meaning when it operates on a function; it doesn't mean anything by itself.  But this notation does help us to apply it correctly to find the gradient. The gradient allows us to compute directional derivatives in terms of a dot product.
 
-\keyidea{idea:gradient_direct}{The Gradient and Directional Derivatives}
-{%Let $z=f(x,y)$ be differentiable on an open set $S$ and let $\vec u$ be a unit vector. 
+\begin{keyidea}[The Gradient and Directional Derivatives]\label{idea:gradient_direct}
+%Let $z=f(x,y)$ be differentiable on an open set $S$ and let $\vec u$ be a unit vector. 
 The directional derivative of $z=f(x,y)$ in the direction of the unit vector $\vec u$ is
 \index{gradient}\index{directional derivative}\index{derivative!directional}
-\[D_{\vec u\,}f = \nabla f\cdot \vec u.\]}
+\[D_{\vec u\,}f = \nabla f\cdot \vec u.\]
+\end{keyidea}
 
 The properties of the dot product previously studied allow us to investigate the properties of the directional derivative. Given that the directional derivative gives the instantaneous rate of change of $z$ when moving in the direction of $\vec u$, three questions naturally arise:
 \begin{enumerate}
@@ -133,8 +135,8 @@ This last equality states $\nabla f \cdot \vrp(t) = 0$: the gradient is orthogon
 
 We restate these ideas in a theorem, then use them in an example.
 
-\theorem{thm:gradient}{The Gradient and Directional Derivatives}
-{Let $z=f(x,y)$ be differentiable on an open set $S$ with gradient $\nabla f$, let $P=(x_0,y_0)$ be a point in $S$ and let $\vec u$ be a unit vector.
+\begin{theorem}[The Gradient and Directional Derivatives]\label{thm:gradient}
+Let $z=f(x,y)$ be differentiable on an open set $S$ with gradient $\nabla f$, let $P=(x_0,y_0)$ be a point in $S$ and let $\vec u$ be a unit vector.
 \index{gradient}\index{directional derivative}\index{derivative!directional}\index{level curves}\index{gradient!and level curves}
 \begin{enumerate}
 	\item The maximum value of $D_{\vec u\,}f(x_0,y_0)$ is $\norm{\nabla f(x_0,y_0)}$; the direction of maximal $z$ increase is $\nabla f(x_0,y_0)$.
@@ -143,7 +145,8 @@ We restate these ideas in a theorem, then use them in an example.
 	%The minimum value of $D_{\vec u\,}f$ is $-\norm{\nabla f}$, obtained when the angle between $\nabla f$ and $\vec u$ is $\pi$, i.e., the direction of minimal increase is $-\nabla f$.
 	\item At $P$, $\nabla f(x_0,y_0)$ is orthogonal to the level curve passing through $(x_0,y_0)$.
 	%$D_{\vec u\,}f = 0$ when $\nabla f$ and $\vec u$ are orthogonal.
-\end{enumerate}}
+\end{enumerate}
+\end{theorem}
 
 \example{ex_direct2}{Finding directions of maximal and minimal increase}{Let $f(x,y) = \sin x\cos y$ and let $P=(\pi/3,\pi/3)$. Find the directions of maximal/minimal increase, and find a direction where the instantaneous rate of $z$ change is 0.}
 {We begin by finding the gradient. We see that $f_x = \cos x\cos y$ and $f_y = -\sin x\sin y$, thus 
@@ -258,8 +261,8 @@ Thus the water follows the curve $y=x^2/4$ in the $x$-$y$ plane. The surface and
 
 The concepts of directional derivatives and the gradient are easily extended to three (and more) variables. We combine the concepts behind Definitions \ref{def:direct_deriv} and \ref{def:gradient} and \autoref{thm:direct_deriv1} into one set of definitions.
 
-\definition{def:direct_deriv3}{\parbox[t]{195pt}{Directional Derivatives and Gradient with Three Variables}}
-{Let $w=F(x,y,z)$ be differentiable on an open ball $B$ and let $\vec u $ be a unit vector in $\mathbb{R}^3$.\index{gradient}\index{directional derivative}\index{derivative!directional}
+\begin{definition}[{\parbox[t]{195pt}{Directional Derivatives and Gradient with Three Variables}}]\label{def:direct_deriv3}
+Let $w=F(x,y,z)$ be differentiable on an open ball $B$ and let $\vec u $ be a unit vector in $\mathbb{R}^3$.\index{gradient}\index{directional derivative}\index{derivative!directional}
 \begin{enumerate}
 	\item	The \textbf{gradient} of $F$ is $\nabla F =\bracket{F_x,F_y,F_z}$.
 	\item The \textbf{gradient of $F$ at $(x_0,y_0,z_0)$ is
@@ -267,12 +270,12 @@ The concepts of directional derivatives and the gradient are easily extended to 
 	\item The \textbf{directional derivative of $F$ in the direction of $\vec u$} is
 	\[D_{\vec u\,}F=\nabla F\cdot \vec u.\]
 \end{enumerate}
-}
+\end{definition}
 
 The same properties of the gradient given in \autoref{thm:gradient}, when $f$ is a function of two variables, hold for $F$, a function of three variables.
 
-\theorem{thm:gradient3}{\parbox[t]{200pt}{The Gradient and Directional Derivatives with Three Variables}}
-{Let $w=F(x,y,z)$ be differentiable on an open set $S$ with gradient $\nabla F$, let $P=(x_0,y_0,z_0)$ be a point in $S$, and let $\vec u$ be a unit vector.\index{gradient}\index{directional derivative}\index{derivative!directional}
+\begin{theorem}[{\parbox[t]{200pt}{The Gradient and Directional Derivatives with Three Variables}}]\label{thm:gradient3}
+Let $w=F(x,y,z)$ be differentiable on an open set $S$ with gradient $\nabla F$, let $P=(x_0,y_0,z_0)$ be a point in $S$, and let $\vec u$ be a unit vector.\index{gradient}\index{directional derivative}\index{derivative!directional}
 \begin{enumerate}
 	\item The maximum value of $D_{\vec u\,}F(x_0,y_0,z_0)$ is $\norm{\nabla F(x_0,y_0,z_0)}$; %, obtained when the angle between $\nabla F$ and $\vec u$ is 0, i.e.,
 	 the direction of maximal increase is $\nabla F(x_0,y_0,z_0)$.
@@ -281,7 +284,7 @@ The same properties of the gradient given in \autoref{thm:gradient}, when $f$ is
 	\item At $P$, $D_{\vec u\,}F(x_0,y_0,z_0) = 0$ when $\nabla F(x_0,y_0,z_0)$ and $\vec u$ are orthogonal.
 %	\item At $P$, $\nabla F(x_0,y_0,z_0)$ is orthogonal to the level surface passing through
 \end{enumerate}
-}
+\end{theorem}
 
 We interpret the third statement of the theorem as ``the gradient is orthogonal to level surfaces,'' the three-variable analogue to level curves.
 \index{gradient!and level surfaces}\index{level surface}

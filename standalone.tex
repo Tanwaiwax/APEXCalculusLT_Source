@@ -1,5 +1,5 @@
 % !TEX program = XeLaTeX
-\errorcontextlines 10000
+%\errorcontextlines 10000
 
 \RequirePackage[l2tabu, orthodox]{nag}
 \documentclass[10pt]{book}
@@ -15,32 +15,7 @@
 \usetwoDgraphics
 %\usethreeDgraphics
 
-\newtheorem{tmpdefinition}{Definition}[section]
-\tcolorboxenvironment{tmpdefinition}{
-  sharp corners=all,
-  enhanced,
-  colframe=borderdefinition,
-  interior style={top color=topdefinition, bottom color=bottomdefinition},
- }
-\makeatletter
-%\newcommand{\tcb@cnt@tmpdefinitionautorefname}{Definition}
-\newcommand{\tcb@cnt@tmppdefinitionautorefname}{Definition}
-\makeatother
-\newcommand{\tmpdefinitionautorefname}{Definition}
-
-\newtcbtheorem[number within=section]{tmppdefinition}{Definition}{
-  theorem style=break,
-  colframe=borderdefinition,
-  interior style={top color=topdefinition, bottom color=bottomdefinition},
-  sharp corners=all,
-  width=\textwidth,enhanced,tcbox width=forced left,
-  notitle,separator sign={\hspace{20pt}},
-  coltitle=black,
-  description delimiters none,
-  terminator sign none,
-  fonttitle=\bfseries,
-  theorem name and number
- }{def}
+\tcbuselibrary{breakable}
 
 \begin{document}
 
@@ -52,33 +27,14 @@
 
 \pagestyle{fancy}
 
-\setcounter{chapter}{1}
-\setcounter{section}{5}
+\setcounter{chapter}{3}
+\setcounter{section}{4}
 
-\definition{def:limit_of_infinity}{Limit of Infinity, $\infty$}
-{We say $\ds \lim_{x\rightarrow c} f(x)=\infty$ if for every $M>0$ there exists $\delta>0$ such that for all $x\neq c$, if  $\abs{x-c}<\delta$, then $f(x)\geq M$. \index{limit!of infinity}}
+\input{text/03_Curve_Sketching}
 
-\begin{tmpdefinition}[Limit of Infinity, $\infty$]\label{def:limit_of_infinity2}
-We say $\ds \lim_{x\rightarrow c} f(x)=\infty$ if for every $M>0$ there exists $\delta>0$ such that for all $x\neq c$, if  $\abs{x-c}<\delta$, then $f(x)\geq M$. \index{limit!of infinity}
-\end{tmpdefinition}
+\makeexercisesection{Standalone Solutions To All Problems}
 
-\begin{tmppdefinition}{Limit of Infinity, $\infty$}{limit_of_infinity3}
-We say $\ds \lim_{x\rightarrow c} f(x)=\infty$ if for every $M>0$ there exists $\delta>0$ such that for all $x\neq c$, if  $\abs{x-c}<\delta$, then $f(x)\geq M$. \index{limit!of infinity}
-\end{tmppdefinition}
-
-\noindent
-top is :\autoref{def:limit_of_infinity}:\\
-middle is :\autoref{def:limit_of_infinity2}:\\
-bottom is :\autoref{def:limit_of_infinity3}:
-
-%\input{text/01_Limits_Involving_Infinity}
-
-%\makeexercisesection{Standalone Solutions To All Problems}
-
-%\pagestyle{empty}
-%\eendgeometry
-
-%\apexindex
+%\printindex
 
 %\backmatter
 %

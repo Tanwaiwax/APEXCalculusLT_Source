@@ -17,10 +17,11 @@ To evaluate the above integral, we would seek $\vec r(u,v)$, a smooth parameteri
 
 The integral in \autoeqref{eq:surface_int} is a specific example of a more general construction defined below.
 
-% todo should this be equal to something?
-\definition{def:surface_integral}{Surface Integral}
-{Let $G(x,y,z)$ be a continuous function defined on a surface \surfaceS. The \sword{surface integral of $G$ on \surfaceS} is\index{surface integral}
-\[\iint_\surfaceS G(x,y,z)\ dS.\]}
+% todo Tim should def:surface_integral be equal to something?
+\begin{definition}[Surface Integral]\label{def:surface_integral}
+Let $G(x,y,z)$ be a continuous function defined on a surface \surfaceS. The \sword{surface integral of $G$ on \surfaceS} is\index{surface integral}
+\[\iint_\surfaceS G(x,y,z)\ dS.\]
+\end{definition}
 
 Surface integrals can be used to measure a variety of quantities beyond mass. If $G(x,y,z)$ measures the static charge density at a point, then the surface integral will compute the total static charge of the sheet. If $G$ measures the amount of fluid passing through a screen (represented by \surfaceS) at a point, then the surface integral gives the total amount of fluid going through the screen.
 
@@ -86,13 +87,14 @@ A nice thing happens with the actual computation of flux: the $\norm{\vec r_u\ti
 
 The above only makes sense if \surfaceS\ is orientable; the normal vectors $\vec n$ must vary continuously across \surfaceS. We assume that $\vec n$ does vary continuously. (If the parameterization $\vec r$ of \surfaceS\ is smooth, then our above definition of $\vec n$ will vary continuously.)
 
-\definition{def:surfflux}{Flux over a surface}
-{Let $\vec F$ be a vector field with continuous components defined on an orientable surface \surfaceS\ with normal vector $\vec n$. The \sword{flux} of $\vec F$ across \surfaceS\ is\index{flux}
+\begin{definition}[Flux over a surface]\label{def:surfflux}
+Let $\vec F$ be a vector field with continuous components defined on an orientable surface \surfaceS\ with normal vector $\vec n$. The \sword{flux} of $\vec F$ across \surfaceS\ is\index{flux}
 \[\text{Flux} = \iint_\surfaceS \vec F\cdot \vec n\ dS.\]
 If \surfaceS\ is parameterized by $\vec r(u,v)$, which is smooth on its domain $R$, then
 \[
 \text{Flux} = \iint_R \vec F\big(\vec r(u,v)\big)\cdot (\vec r_u\times \vec r_v)\ dA.
-\]}
+\]
+\end{definition}
 
 Since \surfaceS\ is orientable, we adopt the convention of saying one passes from the ``back'' side of \surfaceS\ to the ``front'' side when moving across the surface parallel to the direction of $\vec n$. Also, when \surfaceS\ is closed, it is natural to speak of the regions of space ``inside'' and ``outside'' \surfaceS. We also adopt the convention that when \surfaceS\ is a closed surface, $\vec n$ should point to the outside of \surfaceS. If $\vec n = \vec r_u\times\vec r_v$ points inside \surfaceS, use $\vec n = \vec r_v\times \vec r_u$ instead.
 
@@ -218,7 +220,7 @@ In the previous example, the surfaces $\surfaceS_1$ and $\surfaceS_2$ form a clo
 In this chapter, we've introduced four new types of integrals, which we gather in \autoref{integral_types}.
 
 \setboxwidth{80pt}
-\keyidea{integral_types}{Integrating Parameterized Curves and Surfaces}{%
+\begin{keyidea}[Integrating Parameterized Curves and Surfaces]\label{integral_types}
 \renewcommand{\arraystretch}{1.4}
  \begin{tabular}{|l|p{.32\specialboxlength}|p{.43\specialboxlength}|}\hline
   & $\vec c:\mathbb{R}\to\mathbb{R}^3$\par parameterizes a curve $C$
@@ -239,7 +241,8 @@ In this chapter, we've introduced four new types of integrals, which we gather i
   $\iint_{\vec r(D)}\vec F\cdot\vec n\ dS$\par
   \qquad$=\iint_D\vec F(\vec r(u,v))\cdot(\vec r_u\times\vec r_v)dA$
   \\\hline
- \end{tabular}}
+ \end{tabular}
+\end{keyidea}
 %If we are in the bottom left entry, where $\vec c:\mathbb{R}\to\mathbb{R}^3$ and $\vec F:\mathbb{R}^3\to\mathbb{R}^3$, we may be able to use the Fundamental Theorem for Gradient Vector Fields: $\int_C\nabla\phi\cdot d\vec s=\phi(Q)-\phi(P)$.
 
 \printexercises{exercises/14_06_exercises}

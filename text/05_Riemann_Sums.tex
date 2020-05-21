@@ -270,8 +270,8 @@ Let's practice using this notation.
 It might seem odd to stress a new, concise way of writing summations only to write each term out as we add them up. It is. The following theorem gives some of the properties of summations that allow us to work with them without writing individual terms. Examples will follow.
 
 \setboxwidth{75pt}
-\theorem{thm:summation}{Properties of Summations}
-{~\\[-\baselineskip]\noindent\begin{minipage}[t]{200pt}\index{summation!properties}
+\begin{theorem}[Properties of Summations]\label{thm:summation}
+~\\[-\baselineskip]\noindent\begin{minipage}[t]{200pt}\index{summation!properties}
 \iflatexml\begin{enumerate}\lxAddClass{twoColumnList}\else\begin{enumerate}[series=summationprop]\fi
 	\item	$\ds \sum_{i=1}^n c = c\cdot n$, where $c$ is a constant.
 	\item	$\ds \sum_{i=m}^n (a_i\pm b_i) = \sum_{i=m}^n a_i \pm \sum_{i=m}^n b_i$
@@ -294,7 +294,8 @@ It might seem odd to stress a new, concise way of writing summations only to wri
 	\item	$\ds \sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}6$
 	\item	$\ds \sum_{i=1}^n i^3 = \left(\frac{n(n+1)}2\right)^2$
 	\end{enumerate}
-\end{minipage}}
+\end{minipage}
+\end{theorem}
 
 Note: In practice we will sometimes need variations on formulas 5, 6, and 7 above. For example, we note that
 \[
@@ -481,13 +482,14 @@ Summations of rectangles with area $f(c_i)\Delta x_i$ are named after mathematic
 
 %In this general form, the subintervals do not have be of equal length, and one can choose a point $c_i$ inside each subinterval any way they choose (and not just the left endpoint, or the midpoint, etc.) \autoref{fig:riedef} shows the approximating rectangles of a Riemann sum of $\ds\int_0^4(4x-x^2)\ dx$. (This particular approximation is of little use; clearly the width and heights of the rectangles were not chosen ``well.'')
 
-\definition{def:rie_sum}{Riemann Sum}
-{Let $f$ be defined on the closed interval $[a,b]$ and let $\Delta x$ be a partition of $[a,b]$, with \index{Riemann Sum}
+\begin{definition}[Riemann Sum]\label{def:rie_sum}
+Let $f$ be defined on the closed interval $[a,b]$ and let $\Delta x$ be a partition of $[a,b]$, with \index{Riemann Sum}
 \[a=x_0 < x_1 < \dots < x_{n-1} < x_n=b.\]
 Let $\Delta x_i$ denote the length of the $i^\text{ th}$ subinterval
 $[x_{i-1},x_i]$ and let $c_i$ denote any value in the $i^\text{ th}$ subinterval. The sum
 \[\sum_{i=1}^n f(c_i)\Delta x_i\]
-is a \textbf{Riemann sum} of $f$ on $[a,b]$.}
+is a \textbf{Riemann sum} of $f$ on $[a,b]$.
+\end{definition}
 
 % not \ds because of line break
 \mtable{An example of a general Riemann sum to approximate $\int_0^4(4x-x^2)\ dx$.}{fig:riedef}{\begin{tikzpicture}
@@ -514,8 +516,8 @@ Usually, Riemann sums are calculated using one of the three methods we have intr
 
 %Before working another example, let's summarize some of what we have learned in a convenient way.
 
-%\keyidea{idea:riemann}{Riemann Sum Concepts}
-%{Consider $\ds\int_a^b f(x) \ dx \approx \sum_{i=1}^n f(c_i)\Delta x_i.$ 
+%\begin{keyidea}[Riemann Sum Concepts]\label{idea:riemann}
+%Consider $\ds\int_a^b f(x) \ dx \approx \sum_{i=1}^n f(c_i)\Delta x_i.$ 
 %
 %\begin{enumerate}
 %\item	When the $n$ subintervals have equal length, $\ds \Delta x_i = \Delta x = \frac{b-a}n.$
@@ -523,7 +525,8 @@ Usually, Riemann sums are calculated using one of the three methods we have intr
 %\item	The Left Hand Rule summation is: $\ds \sum_{i=1}^n f(x_{i-1})\Delta x$.
 %\item	The Right Hand Rule summation is: $\ds \sum_{i=1}^n f(x_i)\Delta x$.
 %\item	The Midpoint Rule summation is: $\ds \sum_{i=1}^n f\left(\frac{x_{i-1}+x_i}{2}\right)\Delta x$.
-%\end{enumerate}}
+%\end{enumerate}
+%\end{keyidea}
 
 Let's do another example.
 
@@ -686,17 +689,18 @@ The theorem goes on to state that the rectangles do not need to be of the same w
 \[\lim_{\norm{\Delta x}\to 0}\ \sum_{i=1}^n f(c_i)\Delta x_i\]
 as ``the limit of the sum of rectangles, where the width of each rectangle can be different but getting small, and the height of each rectangle is not necessarily determined by a particular rule.'' The theorem states that this Riemann Sum also gives the value of the definite integral of $f$ over $[a,b]$.
 
-\theorem{thm:riemannSum}{Definite Integrals and the Limit of Riemann Sums}
-{Let $f$ be continuous on the closed interval $[a,b]$  and let $S_L(n)$, $S_R(n)$ and $S_M(n)$ be defined as before. Then:\index{Riemann Sum!and definite integral}\index{integration!definite!Riemann Sums}
+\begin{theorem}[Definite Integrals and the Limit of Riemann Sums]\label{thm:riemannSum}
+Let $f$ be continuous on the closed interval $[a,b]$  and let $S_L(n)$, $S_R(n)$ and $S_M(n)$ be defined as before. Then:\index{Riemann Sum!and definite integral}\index{integration!definite!Riemann Sums}
 \begin{enumerate}
 	\item	$\ds \lim_{n\to\infty} S_L(n) = \lim_{n\to\infty} S_R(n) = \lim_{n\to\infty} S_M(n) = \lim_{n\to\infty}\sum_{i=1}^n f(c_i)\Delta x$, 
 	\item	$\ds \lim_{n\to\infty}\sum_{i=1}^n f(c_i)\Delta x = \int_a^b f(x)\ dx$, and
 	\item	$\ds \lim_{\norm{\Delta x}\to 0}\ \sum_{i=1}^n f(c_i)\Delta x_i = \int_a^b f(x)\ dx$.
-\end{enumerate}}
+\end{enumerate}
+\end{theorem}
 
 Now that we have more tools to work with, we can now justify the remaining properties in \autoref{thm:defintprop}. 
 
-%{\bfseries Theorem 36 \quad Properties of the Definite Integral}
+%\begin{theorem}[Properties of the Definite Integral]
 %
 %Let $f$ and $g$ be continuous on a closed interval $I$ that contains the values $a$, $b$, and $c$, and let $k$ be constant. The following hold:
 %\begin{enumerate}
@@ -706,6 +710,7 @@ Now that we have more tools to work with, we can now justify the remaining prope
 %\item $\ds\int_a^b (f(x)\pm g(x))\,dx =\int_a^b f(x)\,dx \pm \int_a^b g(x)\,dx$
 %\item $\ds\int_a^b k\cdot f(x)\,dx =k\cdot \int_a^b f(x)\,dx$
 %\end{enumerate}
+%\end{theorem}
 
 \begin{proof}\label{pf:defintprop}
 \begin{enumerate}
@@ -750,13 +755,14 @@ When we compute $\ds\int_b^a f(x)\,dx$, we can use the same partitions and the s
 \end{enumerate}
 \end{proof}
 
-\theorem{thm:further_def_int_props}{Further Properties of the Definite Integral}{
+\begin{theorem}[Further Properties of the Definite Integral]\label{thm:further_def_int_props}
 Let $f$ be continuous on the interval $[a,b]$ and let $k$, $m$, and $M$ be constants. The following hold:
 \begin{enumerate}
 \item $\ds\int_a^b k\,dx=k(b-a)$.
 \item If $m\leq f(x)$ for all $x$ in $[a,b]$, then $m(b-a)\leq \ds\int_a^b f(x)\,dx$.
 \item If $f(x)\leq M$ for all $x$ in $[a,b]$, then $\ds\int_a^b f(x)\,dx\leq M(b-a)$.
-\end{enumerate}}
+\end{enumerate}
+\end{theorem}
 
 \begin{proof}
 Before justifying these properties, note that for any subdivision of $[a,b]$ we have: \[\sum_{i=1}^n \Delta x=n\frac{b-a}n=b-a.\]

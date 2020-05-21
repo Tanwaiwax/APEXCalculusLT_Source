@@ -25,21 +25,23 @@ These integrals are known as \sword{line integrals over vector fields}. By contr
 
 We formally define this line integral, then give examples and applications.
 
-\definition{def:line_integral2}{Line Integral Over A Vector Field}
-{Let $\vec F$ be a vector field with continuous components defined on a smooth curve $C$, parameterized by $\vrt$, and let $\vec T$ be the unit tangent vector of $\vrt$. The \sword{line integral over $\vec F$ along $C$} is\index{line integral!over vector field}
-\[\int_C \vec F\cdot d\vec r = \int_C \vec F\cdot\vec T\ ds.\]}
+\begin{definition}[Line Integral Over A Vector Field]\label{def:line_integral2}
+Let $\vec F$ be a vector field with continuous components defined on a smooth curve $C$, parameterized by $\vrt$, and let $\vec T$ be the unit tangent vector of $\vrt$. The \sword{line integral over $\vec F$ along $C$} is\index{line integral!over vector field}
+\[\int_C \vec F\cdot d\vec r = \int_C \vec F\cdot\vec T\ ds.\]
+\end{definition}
 
 \mnote{\textbf{Note:} When $\vec F=\bracket{g,h}$ and $\vec r=\bracket{x,y}$ parameterizes $C$, other common notations for the line integral over $\vec F$ along $C$ are $\int_Cgdx+\int_Chdy$ and $\int_Cgdx+hdy$.}
 
 In \autoref{def:line_integral2}, note how the dot product $\vec F \cdot \vec T$ is just a scalar. %Note how on the right-hand side of the equation in \autoref{def:line_integral2}, the dot product $\vec F\cdot\vec T$ is just a scalar. 
 Therefore, this new line integral is really just a special kind of line integral found in \autoref{sec:line_int_intro}; letting $f(s) = \vec F(s)\cdot \vec T(s)$, the right-hand side simply becomes $\int_C f(s)\ ds$, and we can use the techniques of that section to evaluate the integral. We combine those techniques, along with parts of \autoeqref{eq:line_integral}, to clearly state how to evaluate a line integral over a vector field in the following Key Idea. 
 
-\keyidea{idea:line2}{Evaluating a Line Integral Over A Vector Field}
-{Let $\vec F$ be a vector field with continuous components defined on a smooth curve $C$, parameterized by $\vrt$, $a\leq t\leq b$, where $\vec r$ is continuously differentiable. Then\index{vector field!over vector field}
+\begin{keyidea}[Evaluating a Line Integral Over A Vector Field]\label{idea:line2}
+Let $\vec F$ be a vector field with continuous components defined on a smooth curve $C$, parameterized by $\vrt$, $a\leq t\leq b$, where $\vec r$ is continuously differentiable. Then\index{vector field!over vector field}
 	\[
 	\int_C\vec F\cdot\vec T\ ds = \int_C \vec F\cdot d\vec r
 	=\int_a^b \vec F\big(\vec r(t)\big) \cdot \vrp(t)\ dt.
-	\]}
+	\]
+\end{keyidea}
 
 An important concept implicit in this Key Idea: we can use any continuously differentiable parameterization $\vrt$ of $C$ that preserves the orientation of $C$: there isn't a ``right'' one. In practice, choose one that seems easy to work with. 
 
@@ -142,8 +144,8 @@ Line integrals over vector fields share the same properties as line integrals ov
 
 It is relatively easy to see why. Let $C$ be the unit circle. The area under a surface over $C$ is the same whether we traverse the circle in a clockwise or counterclockwise fashion, hence the line integral over a scalar field on $C$ is the same irrespective of orientation. On the other hand, if we are computing work done by a force field, direction of travel definitely matters. Opposite directions create opposite signs when computing dot products, so traversing the circle in opposite directions will create line integrals that differ by a factor of $-1$. 
 
-\theorem{thm:line_int_properties_vector}{Properties of Line Integrals Over Vector Fields}
-{\index{line integral!properties over a vector field}\mbox{}\\[-2\baselineskip]
+\begin{theorem}[Properties of Line Integrals Over Vector Fields]\label{thm:line_int_properties_vector}
+\index{line integral!properties over a vector field}\mbox{}\\[-2\baselineskip]
 \begin{enumerate}
 	\item	Let $\vec F$ and $\vec G$ be  vector fields with continuous components defined on a smooth curve $C$, parameterized by $\vrt$, and let $k_1$ and $k_2$ be scalars. Then
 	\[
@@ -157,7 +159,8 @@ It is relatively easy to see why. Let $C$ be the unit circle. The area under a s
 	\]
 	\item	Let $C^*$ be the curve $C$ with opposite orientation, parameterized by $\vec r\,^*$. Then
 	\[\int_C\vec F\cdot d\vec r = -\int_{C^*}\vec F\cdot d\vec r\,^*.\]
-	\end{enumerate}}
+	\end{enumerate}
+\end{theorem}
 
 We demonstrate using these properties in the following example.
 
@@ -306,14 +309,14 @@ There is a simpler method. Consider the surface defined by $z = f(x,y) = xy$. We
 
 We now state the Fundamental Theorem of Line Integrals, which connects conservative fields and path independence to fields with potential functions. 
 
-\theorem{thm:FTofLineIntegrals}{Fundamental Theorem of Line Integrals}
-{Let $\vec F$ be a vector field whose components are continuous on a connected domain $D$ in the plane or in space, let $A$ and $B$ be any points in $D$, and let $C$ be any path in $D$ starting at $A$ and ending at $B$.\index{line integral!Fundamental Theorem}\index{Fundamental Theorem of Line Integrals}\index{conservative field}\index{vector field!conservative}\index{path independent}\index{line integral!path independent}
+\begin{theorem}[Fundamental Theorem of Line Integrals]\label{thm:FTofLineIntegrals}
+Let $\vec F$ be a vector field whose components are continuous on a connected domain $D$ in the plane or in space, let $A$ and $B$ be any points in $D$, and let $C$ be any path in $D$ starting at $A$ and ending at $B$.\index{line integral!Fundamental Theorem}\index{Fundamental Theorem of Line Integrals}\index{conservative field}\index{vector field!conservative}\index{path independent}\index{line integral!path independent}
 \begin{enumerate}
 	\item $\vec F$ is conservative if and only if there exists a differentiable function $f$ such that $\vec F = \nabla f$. 
 	\item	If $\vec F$ is conservative, then 
 	\[\int_C\vec F\cdot d\vec r = \int_A^B \vec F\cdot d\vec r = f(B) - f(A).\]
 \end{enumerate}
-}
+\end{theorem}
 
 Once again considering \autoref{ex_livf2}, we have $A = (-1,1)$, $B = (1,1)$ and $\vec F =\bracket{y,x}$. In that example, we evaluated two line integrals from $A$ to $B$ and found the value of each was 2. Note that $f(x,y) = xy$ is a potential function for $\vec F$. Following the Fundamental Theorem of Line Integrals, consider $f(B) - f(A)$:
 \[f(B) - f(A) = f(1,1) - f(-1,1) = 1 - (-1) = 2,\]
@@ -363,8 +366,9 @@ which matches our previous result.}
 
 The Fundamental Theorem of Line Integrals states that we can determine whether or not $\vec F$ is conservative by determining whether or not $\vec F$ has a potential function. This can be difficult. A simpler method exists if the domain of $\vec F$ is simply connected (not just connected as needed in the Fundamental Theorem of Line Integrals), which is a reasonable requirement. We state this simpler method as a theorem.
 
-\theorem{thm:conservative_field_curl}{Curl of Conservative Fields}
-{Let $\vec F$ be a vector field whose components are continuous on a simply connected domain $D$ in the plane or in space. Then $\vec F$ is conservative if and only if $\curl \vec F = 0$ or $\vec 0$, respectively.\index{curl!of conservative fields}\index{conservative field}}
+\begin{theorem}[Curl of Conservative Fields]\label{thm:conservative_field_curl}
+Let $\vec F$ be a vector field whose components are continuous on a simply connected domain $D$ in the plane or in space. Then $\vec F$ is conservative if and only if $\curl \vec F = 0$ or $\vec 0$, respectively.\index{curl!of conservative fields}\index{conservative field}
+\end{theorem}
 
 In \autoref{ex_livf5}, we showed that $\vec F =\bracket{ 3x^2y+2x,x^3+1}$ is conservative by finding a potential function for $\vec F$. Using the above theorem, we can show that $\vec F$ is conservative much more easily by computing its curl:
 \[\curl \vec F = N_x - M_y = 3x^2 - 3x^2 = 0.\]

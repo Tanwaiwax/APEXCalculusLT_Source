@@ -18,7 +18,8 @@ So if $y = 6x^2+11x-13$, we can immediately compute $y\primeskip' = 12x+11$.\big
 In this section (and in some sections to follow) we will learn some of what mathematicians have already discovered about the derivatives of certain functions and how derivatives interact with arithmetic operations. We start with a theorem.
 
 \begin{anywhereenum}
-\theorem{thm:deriv_common}{Derivatives of Common Functions}{\noindent\index{derivative!basic rules}\index{derivative!Constant Rule}\index{derivative!Power Rule}\index{Power Rule!differentiation}%
+\begin{theorem}[Derivatives of Common Functions]\label{thm:deriv_common}
+\noindent\index{derivative!basic rules}\index{derivative!Constant Rule}\index{derivative!Power Rule}\index{Power Rule!differentiation}%
 \begin{tabular}{ll}
 \item \sword{Constant Rule:}	$\dfrac d{dx}\big( c\big) = 0$, &
 \item \sword{Power Rule:} $\dfrac d{dx}\left(x^n\right) = nx^{n-1}$,\\
@@ -28,7 +29,8 @@ In this section (and in some sections to follow) we will learn some of what math
 \item $\dfrac d{dx}(\cos x) = -\sin x$ \\[2ex]
 \item $\dfrac d{dx}\left(e^x\right) = e^x$ &
 \item $\dfrac d{dx}(\ln x) = \dfrac1x$
-\end{tabular}}
+\end{tabular}
+\end{theorem}
 \end{anywhereenum}
 
 This theorem starts by stating an intuitive fact: constant functions have a rate of change of zero, as they are \textit{constant}. Therefore their derivative is 0. The proof is left as an exercise.
@@ -92,15 +94,16 @@ Let's practice using this theorem.
 
 \autoref{thm:deriv_common} gives useful information, but we will need much more. For instance, using the theorem, we can easily find the derivative of $y=x^3$, but it does not tell how to compute the derivative of $y=2x^3$, $y=x^3+\sin x$, nor $y=x^3\sin x$. The following theorem helps with the first two of these examples (the third is answered in the next section).
 
-\theorem{thm:deriv_prop}{Properties of the Derivative}
-{Let $f$ and $g$ be differentiable on an open interval $I$ and let $c$ be a real number. Then:
+\begin{theorem}[Properties of the Derivative]\label{thm:deriv_prop}
+Let $f$ and $g$ be differentiable on an open interval $I$ and let $c$ be a real number. Then:
 \index{derivative!Sum/Difference Rule}\index{Sum/Difference Rule!of derivatives}
 \index{derivative!Constant Multiple Rule}\index{Constant Multiple Rule!of derivatives}\begin{enumerate}
 	\item	\sword{Sum/Difference Rule:}\\
 	\qquad$\ds \frac{d}{dx}\Big(f(x) \pm g(x)\Big) = \frac{d}{dx}\Big(f(x)\Big) \pm \frac{d}{dx}\Big(g(x)\Big)=\fp(x)\pm g\primeskip'(x)$
 	\item	\sword{Constant Multiple Rule:}\\
 	\qquad$\ds \frac{d}{dx}\Big(c\cdot f(x)\Big) = c\cdot\frac{d}{dx}\Big(f(x)\Big) = c\cdot\fp(x)$.
-\end{enumerate}}
+\end{enumerate}
+\end{theorem}
 
 \begin{proof}[Proof of Sum Rule for Differentiation]
 Let $f$ and $g$ be differentiable on an open interval $I$ and let $c$ be a real number,
@@ -157,9 +160,10 @@ The point is \textit{not} ``Here's a cool way to do some math without a calculat
 
 \subsection{Higher Order Derivatives}
 
-The derivative of a function $f$ is itself a function, therefore we can take its derivative. The following definition gives a name to this concept and introduces its notation.\\
-\definition{def:Higher_Deriv}{Higher Order Derivatives}
-{Let $y=f(x)$ be a differentiable function on $I$. \index{derivative!higher order}\index{derivative!notation}
+The derivative of a function $f$ is itself a function, therefore we can take its derivative. The following definition gives a name to this concept and introduces its notation.
+
+\begin{definition}[Higher Order Derivatives]\label{def:Higher_Deriv}
+Let $y=f(x)$ be a differentiable function on $I$. \index{derivative!higher order}\index{derivative!notation}
 		\begin{enumerate}
 		\item		The \textit{second derivative} of $f$ is: 
 						\[ \fp'(x) = \frac{d}{dx}\Big(\fp(x)\Big) = \frac{d}{dx}\left(\frac{dy}{dx}\right) = \frac{d\primeskip^2y}{dx^2}=y\primeskip''.\]
@@ -167,7 +171,9 @@ The derivative of a function $f$ is itself a function, therefore we can take its
 						\[ \fp''(x) = \frac{d}{dx}\Big(\fp'(x)\Big) = \frac{d}{dx}\left(\frac{d\primeskip^2y}{dx^2}\right) = \frac{d\primeskip^3y}{dx^3}=y\primeskip'''.\]
 				\item		The \textit{n$^{\text{th}}$ derivative} of $f$ is:
 						\[ f\,^{(n)}(x) = \frac{d}{dx}\left(f\,^{(n-1)}(x)\right) = \frac{d}{dx}\left(\frac{d\primeskip^{n-1}y}{dx^{n-1}}\right) = \frac{d\primeskip^ny}{dx^n}=y^{(n)}.\]
-		\end{enumerate}}
+		\end{enumerate}
+\end{definition}
+
 \mnote[-1in]{\textbf{Note:} \autoref{def:Higher_Deriv} comes with the caveat ``Where the corresponding limits exist.'' With $f$ differentiable on $I$, it is possible that $\fp$ is \textit{not} differentiable on all of $I$, and so on.}
 
 In general, when finding the fourth derivative and on, we resort to the $f\,^{(4)}(x)$ notation, not $\fp'''(x)$; after a while, too many ticks is too confusing.\bigskip

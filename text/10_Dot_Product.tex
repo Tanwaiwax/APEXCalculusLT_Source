@@ -2,14 +2,15 @@
 
 The previous section introduced vectors and described how to add them together and how to multiply them by scalars. This section introduces \emph{a} multiplication on vectors called the \textbf{dot product}.
 
-\definition{def:dot_product}{Dot Product}
-{\index{dot product!definition}\index{vectors!dot product}
+\begin{definition}[Dot Product]\label{def:dot_product}
+\index{dot product!definition}\index{vectors!dot product}
 \mbox{}\\[-2\baselineskip]\begin{enumerate}
 	\item Let $\vec u =\bracket{u_1,u_2}$ and $\vec v = \bracket{v_1,v_2}$  in $\mathbb{R}^2$. The \textbf{dot product} of $\vec u$ and $\vec v$, denoted \dotp uv, is 
 	\[\dotp uv = u_1v_1+u_2v_2.\]
 	\item Let $\vec u = \bracket{u_1,u_2,u_3}$ and $\vec v = \bracket{v_1,v_2,v_3}$  in $\mathbb{R}^3$. The \textbf{dot product} of $\vec u$ and $\vec v$, denoted \dotp uv, is 
 	\[\dotp uv = u_1v_1+u_2v_2+u_3v_3.\]
-\end{enumerate}}
+\end{enumerate}
+\end{definition}
 
 Note how this product of vectors returns a \emph{scalar}, not another vector.
 
@@ -28,15 +29,16 @@ We practice evaluating a dot product in the following example, then we will disc
 
 The dot product, as shown by the preceding example, is very simple to evaluate. It is only the sum of products. While the definition gives no hint as to why we would care about this operation, there is an amazing connection between the dot product and angles formed by the vectors. Before stating this connection, we give a theorem stating some of the properties of the dot product.
 
-\theorem{thm:dot_product_properties}{Properties of the Dot Product}
-{Let $\vec u$, $\vec v$ and $\vec w$ be vectors in $\mathbb{R}^2$ or $\mathbb{R}^3$ and let $c$ be a scalar.\index{dot product!properties}\index{vectors!dot product}
+\begin{theorem}[Properties of the Dot Product]\label{thm:dot_product_properties}
+Let $\vec u$, $\vec v$ and $\vec w$ be vectors in $\mathbb{R}^2$ or $\mathbb{R}^3$ and let $c$ be a scalar.\index{dot product!properties}\index{vectors!dot product}
 \begin{enumerate}
 	\item \parbox{150pt}{$\dotp uv = \dotp vu$}{Commutative Property}
 	\item \parbox{150pt}{$\vec u\cdot(\vec v+\vec w) = \dotp uv + \dotp uw$}{Distributive Property}
 	\item	$c(\dotp uv) = (c\vec u)\cdot \vec v = \vec u \cdot (c\vec v)$
 	\item	$\dotp 0v = 0$
 	\item	$\dotp vv=\norm{\vec v}^2 $
-\end{enumerate}}
+\end{enumerate}
+\end{theorem}
 
 The last statement of the theorem makes a handy connection between the magnitude of a vector and the dot product with itself. Our definition and theorem give properties of the dot product, but we are still likely wondering ``What does the dot product \emph{mean}?'' It is helpful to understand that the dot product of a vector with itself is connected to its magnitude.
 
@@ -62,11 +64,12 @@ The same is also true of 2 vectors in space: given $\vec u$ and $\vec v$ in $\ma
 
 The following theorem connects this angle $\theta$ to the dot product of $\vec u$ and $\vec v$.
 
-\theorem{thm:dot_product}{The Dot Product and Angles}
-{Let $\vec u$ and $\vec v$ be vectors in $\mathbb{R}^2$ or $\mathbb{R}^3$. Then 
+\begin{theorem}[The Dot Product and Angles]\label{thm:dot_product}
+Let $\vec u$ and $\vec v$ be vectors in $\mathbb{R}^2$ or $\mathbb{R}^3$. Then 
 \[\dotp uv = \norm{\vec u}\,\norm{\vec v} \cos\theta,\]
 where $\theta$, $0\leq\theta\leq \pi$, is the angle between $\vec u$ and $\vec v$.
-\index{dot product!properties}\index{vectors!dot product}}
+\index{dot product!properties}\index{vectors!dot product}
+\end{theorem}
 
 When $\theta$ is an acute angle (i.e., $0\leq \theta <\pi/2$), $\cos \theta$ is positive; when $\theta = \pi/2$, $\cos \theta = 0$; when $\theta$ is an obtuse angle ($\pi/2<\theta \leq \pi$), $\cos \theta$ is negative. Thus the sign of the dot product gives a general indication of the angle between the vectors, illustrated in \autoref{fig:dotpsign}.
 
@@ -179,9 +182,10 @@ While our work shows that each angle is $\pi/2$, i.e.,  $90^\circ$, none of thes
 
 All three angles between these vectors was $\pi/2$, or $90^\circ$. We know from geometry and everyday life that $90^\circ$ angles are ``nice'' for a variety of reasons, so it should seem significant that these angles are all $\pi/2$. Notice the common feature in each calculation (and also the calculation of $\alpha$ in \autoref{ex_dotp2}): the dot products of each pair of angles was 0. We use this as a basis for a definition of the term \textbf{orthogonal}, which is essentially synonymous to \textit{perpendicular}.
 
-\definition{def:orthogonal}{Orthogonal}
-{Vectors $\vec u$ and $\vec v$ are \textbf{orthogonal} if their dot product is 0.
-\index{orthogonal}\index{vectors!orthogonal}}
+\begin{definition}[Orthogonal]\label{def:orthogonal}
+Vectors $\vec u$ and $\vec v$ are \textbf{orthogonal} if their dot product is 0.
+\index{orthogonal}\index{vectors!orthogonal}
+\end{definition}
 
 \mnote{\textbf{Note:} The term \textit{perpendicular} originally referred to lines. As mathematics progressed, the concept of ``being at right angles to'' was applied to other objects, such as vectors and planes, and the term \emph{orthogonal} was introduced. It is especially used when discussing objects that are hard, or impossible, to visualize: two vectors in 5-dimensional space are orthogonal if their dot product is 0. It is not wrong to say they are \textit{perpendicular}, but common convention gives preference to the word \textit{orthogonal}.}
 
@@ -246,10 +250,11 @@ We also know that $\vec w$ is parallel to to $\vec v$\,; that is, the direction 
 
 Since this construction is so important, it is given a special name.
 
-\definition{def:orthogonal_projection}{Orthogonal Projection}
-{Let $\vec u$ and $\vec v$ be given, where $\vec v\neq\vec 0$. The \textbf{orthogonal projection of $\vec u$ onto $\vec v$}, denoted $\proj uv$, is 
+\begin{definition}[Orthogonal Projection]\label{def:orthogonal_projection}
+Let $\vec u$ and $\vec v$ be given, where $\vec v\neq\vec 0$. The \textbf{orthogonal projection of $\vec u$ onto $\vec v$}, denoted $\proj uv$, is 
 \index{orthogonal projection}\index{vectors!orthogonal projection}
-\[\proj uv = \frac{\dotp uv}{\dotp vv}\vec v.\]}
+\[\proj uv = \frac{\dotp uv}{\dotp vv}\vec v.\]
+\end{definition}
 
 \mtable[-1in]{Graphing the vectors used in \autoref{ex_dotp4}.}{fig:dotp4}{%
 \begin{tikzpicture}[>=stealth]
@@ -329,10 +334,11 @@ This leads us to rewrite \autoeqref{eq:orthogproj} in a seemingly silly way:
 \[\vec u = \proj uv + (\vec u - \proj uv).\]
 This is not nonsense, as pointed out in the following Key Idea. (Notation note: the expression ``$\parallel \vec y$\,'' means ``is parallel to $\vec y$.'' We can use this notation to state ``$\vec x\parallel\vec y$\,'' which means ``$\vec x$ is parallel to $\vec y$.'' The expression ``$\perp \vec y$\,'' means ``is orthogonal to $\vec y$,'' and is used similarly.)
 
-\keyidea{idea:orthog_proj}{Orthogonal Decomposition of Vectors}
-{Let $\vec u$ and $\vec v$ be given. Then $\vec u$ can be written as the sum of two vectors, one of which is parallel to $\vec v$, and one of which is orthogonal to $\vec v$:
+\begin{keyidea}[Orthogonal Decomposition of Vectors]\label{idea:orthog_proj}
+Let $\vec u$ and $\vec v$ be given. Then $\vec u$ can be written as the sum of two vectors, one of which is parallel to $\vec v$, and one of which is orthogonal to $\vec v$:
 \index{orthogonal decomposition of vectors}\index{orthogonal!decomposition}\index{vectors!orthogonal decomposition}
-\[\vec u = \underbrace{\proj uv}_{\parallel\ \vec v}\ +\  (\underbrace{\vec u-\proj uv}_{\perp\ \vec v}).\]}
+\[\vec u = \underbrace{\proj uv}_{\parallel\ \vec v}\ +\  (\underbrace{\vec u-\proj uv}_{\perp\ \vec v}).\]
+\end{keyidea}
 
 We illustrate the use of this equality in the following example.
 
@@ -437,8 +443,9 @@ Consider \autoref{fig:dotpwork}, where a force $\vec F$ is being applied to an o
 
 The expression $\dotp Fd$ will be positive if the angle between $\vec F$ and $\vec d$ is acute; when the angle is obtuse (hence $\dotp Fd$ is negative), the force is causing motion in the opposite direction of $\vec d$, resulting in ``negative work.'' We want to capture this sign, so we drop the absolute value and find that $W = \dotp Fd$.
 
-\definition{def:work}{Work}
-{Let $\vec F$ be a constant force that moves an object in a straight line from point $P$ to point $Q$. Let $\vec d = \vv{PQ}$. The \textbf{work} $W$ done by $\vec F$ along $\vec d$ is $W = \dotp Fd$.\index{work}}
+\begin{definition}[Work]\label{def:work}
+Let $\vec F$ be a constant force that moves an object in a straight line from point $P$ to point $Q$. Let $\vec d = \vv{PQ}$. The \textbf{work} $W$ done by $\vec F$ along $\vec d$ is $W = \dotp Fd$.\index{work}
+\end{definition}
 
 \mtable{Computing work when sliding a box up a ramp in \autoref{ex_dotp7}.}{fig:dotp7}{\begin{tikzpicture}[>=stealth,scale=.3]
  \draw [thick] (0,0) -- node [below,pos=.5] {\scriptsize 15} (15,0)

@@ -51,8 +51,8 @@ ytick=\empty,ymin=-1,ymax=5,xmin=-1,xmax=7.5]
 \\(c)}
 % todo find some way to parameterize this so that we don't plot coordinates
 
-\definition{def:open}{\parbox[t]{225pt}{Open Disk, Boundary and Interior Points, Open and Closed Sets, Bounded Sets}}
-{An \textbf{open disk} $B$ in $\mathbb{R}^2$ centered at $(x_0,y_0)$ with radius $r$ is the set of all points $(x,y)$ such that $\ds\sqrt{(x-x_0)^2+(y-y_0)^2} < r$. \\
+\begin{definition}[{\parbox[t]{225pt}{Open Disk, Boundary and Interior Points, Open and Closed Sets, Bounded Sets}}]\label{def:open}
+An \textbf{open disk} $B$ in $\mathbb{R}^2$ centered at $(x_0,y_0)$ with radius $r$ is the set of all points $(x,y)$ such that $\ds\sqrt{(x-x_0)^2+(y-y_0)^2} < r$. \\
 
 Let $S$ be a set of points in $\mathbb{R}^2$. A point $P$ in $\mathbb{R}^2$ is a \textbf{boundary point} of $S$  if all open disks centered at $P$ contain both points in $S$ and points not in $S$.\\
 
@@ -63,7 +63,8 @@ A set $S$ is \textbf{open} if every point in $S$ is an interior point.\\
 A set $S$ is \textbf{closed} if it contains all of its boundary points.\\
 
 A set $S$ is \textbf{bounded} if there is an $M>0$ such that the open disk, centered at the origin with radius $M$, contains $S$. A set that is not bounded is \textbf{unbounded}.
-\index{open}\index{closed}\index{open disk}\index{closed disk}\index{boundary point}\index{interior point}\index{bounded set}\index{unbounded set}}
+\index{open}\index{closed}\index{open disk}\index{closed disk}\index{boundary point}\index{interior point}\index{bounded set}\index{unbounded set}
+\end{definition}
 
 \autoref{fig:multilimit_intro} shows several sets in the $x$-$y$ plane. In each set, point $P_1$ lies on the boundary of the set as all open disks centered there contain both points in, and not in, the set. In contrast, point $P_2$ is an interior point for there is an open disk centered there that lies entirely within the set.
 
@@ -97,13 +98,14 @@ Recall a pseudo-definition of the limit of a function of one variable: ``$\ds \l
 \end{center}
 means ``if the point $(x,y)$ is really close to the point $(x_0,y_0)$, then $f(x,y)$ is really close to $L$.'' The formal definition is given below.
 
-\definition{def:multilimit}{Limit of a Function of Two Variables}
-{Let $S$ be an open set containing $(x_0,y_0)$, and let $f$ be a function of two variables defined on $S$, except possibly at $(x_0,y_0)$. 
+\begin{definition}[Limit of a Function of Two Variables]\label{def:multilimit}
+Let $S$ be an open set containing $(x_0,y_0)$, and let $f$ be a function of two variables defined on $S$, except possibly at $(x_0,y_0)$. 
 %Let $f(x,y)$ be a function of two variables and let $(x_0,y_0)$ be a point in the domain of $f$. 
 The \textbf{limit} of $f(x,y)$ as $(x,y)$ approaches $(x_0,y_0)$ is $L$, denoted
 \[\ds \lim_{(x,y)\to (x_0,y_0)} f(x,y) = L,\]
 means that given any $\epsilon>0$, there exists $\delta>0$ such that for all  $(x,y)\neq (x_0,y_0)$, if $(x,y)$ is in the open disk centered at $(x_0,y_0)$ with radius $\delta$, then $\abs{f(x,y)-L}<\epsilon.$
-\index{limit!of multivariable function}\index{multivariable function!limit}}
+\index{limit!of multivariable function}\index{multivariable function!limit}
+\end{definition}
 
 \mtable{\textbf{Illustrating the definition of a limit.} The open disk in the $x$-$y$ plane has radius $\delta$. Let $(x,y)$ be any point in this disk; $f(x,y)$ is within $\epsilon$ of $L$.}{fig:multilimitdef}{%
 \myincludeasythree{width=\marginparwidth,
@@ -117,7 +119,8 @@ The concept behind \autoref{def:multilimit} is sketched in \autoref{fig:multilim
 
 Computing limits using this definition is rather cumbersome. The following theorem allows us to evaluate limits much more easily.
 
-\theorem{thm:multi_limit_algebra}{Basic Limit Properties of Functions of Two Variables}{Let $b$, $x_0$, $y_0$, $L$ and $K$ be real numbers,  let $n$ be a positive integer, and let $f$ and $g$ be functions with the following limits:
+\begin{theorem}[Basic Limit Properties of Functions of Two Variables]\label{thm:multi_limit_algebra}
+Let $b$, $x_0$, $y_0$, $L$ and $K$ be real numbers,  let $n$ be a positive integer, and let $f$ and $g$ be functions with the following limits:
 \[\lim_{(x,y)\to (x_0,y_0)}f(x,y) = L \quad \text{\ and\ } \lim_{(x,y)\to (x_0,y_0)} g(x,y) = K.\]
 The following limits hold.
 \index{limit!of multivariable function}\index{limit!properties}\index{multivariable function!limit}
@@ -133,7 +136,8 @@ The following limits hold.
 \item Roots: & $\ds\lim_{(x,y)\to (x_0,y_0)} \sqrt[n]{f(x,y)} = \sqrt[n]{L}$ \\
 &\null \qquad {\small (when $n$ is odd or $L\ge0$)}
 \end{tabular}
-\end{anywhereenum}}
+\end{anywhereenum}
+\end{theorem}
 
 This theorem can be proved by the same arguments as the analogous results for functions of one variable in \autoref{thm:limit_algebra}.  Combined with Theorems \ref{thm:poly_rat} and \ref{thm:lim_continuous} of \autoref{sec:limit_analytically}, this allows us to evaluate many limits.
 % todo do we need a version of theorem 2 (composition of functions) ?
@@ -219,14 +223,16 @@ Thus if $\sqrt{(x-0)^2+(y-0)^2}<\delta$ then $\abs{f(x,y)-0}<\epsilon$, which is
 
 We also have a multivariable version of the squeeze theorem.
 
-\theorem{thm:multi_squeeze}{Squeeze Theorem}{Let $S$ be an open set containing $(x_0, y_0)$.  Suppose $f(x, y)$, $g(x, y)$, and $h(x, y)$ are defined on $S$ except possibly at $(x_0, y_0)$ and both
+\begin{theorem}[Squeeze Theorem]\label{thm:multi_squeeze}
+Let $S$ be an open set containing $(x_0, y_0)$.  Suppose $f(x, y)$, $g(x, y)$, and $h(x, y)$ are defined on $S$ except possibly at $(x_0, y_0)$ and both
 \[
 \lim_{(x,y)\to(x_0, y_0)}g(x, y)=L
 \quad\text{and}\quad
 \lim_{(x,y)\to(x_0, y_0)} h(x, y) = L.
 \]
 If $g(x,y)\leq f(x, y)\leq h(x,y)$ for all $(x,y)\in S$ except possibly at $(x_0, y_0)$, then
-\[\lim_{(x,y)\to(x_0, y_0)}f(x, y)=L.\]}
+\[\lim_{(x,y)\to(x_0, y_0)}f(x, y)=L.\]
+\end{theorem}
 
 This theorem provides other proofs of the previous example.
 
@@ -255,12 +261,13 @@ by the Squeeze Theorem.}
 
 \autoref{def:continuous} defines what it means for a function of one variable to be continuous. In brief, it meant that the function always equaled its limit. We define continuity for functions of two variables in a similar way as we did for functions of one variable.
 
-\definition{def:multi_continuous}{Continuous}
-{Let a function $f(x,y)$ be defined on an open disk $B$ containing the point $(x_0,y_0)$.\index{continuous function}\index{multivariable function!continuity}
+\begin{definition}[Continuous]\label{def:multi_continuous}
+Let a function $f(x,y)$ be defined on an open disk $B$ containing the point $(x_0,y_0)$.\index{continuous function}\index{multivariable function!continuity}
 \begin{enumerate}
 	\item $f$ is \textbf{continuous} at $(x_0,y_0)$ if $\ds\lim_{(x,y)\to(x_0,y_0)} f(x,y) = f(x_0,y_0)$.
 	\item	$f$ is \textbf{continuous on an open set $S$} if $f$ is continuous at each points in $S$. (We say that $f$ is \textbf{continuous everywhere} if $f$ is continuous on $\mathbb{R}^2$.)
-\end{enumerate}}
+\end{enumerate}
+\end{definition}
 
 It follows that if $f$ is a continuous function of one variable, then $f(x)$ (or $f(y)$) is a continuous function of the variables $(x,y)$.
 
@@ -300,8 +307,8 @@ A similar analysis shows that $f$ is continuous at all points in $\mathbb{R}^2$.
 
 The following theorems are very similar to Theorems \ref{thm:continuity_algebra} and \ref{thm:composition_continuous}, giving us ways to combine continuous functions to create other continuous functions.
 
-\theorem{thm:multi_continuous_prop}{Properties of Continuous Functions}
-{Let $f$ and $g$ be continuous on an open set $S$, let $c$ be a real number, and let $n$ be a positive integer. The following functions are continuous on $S$.%
+\begin{theorem}[Properties of Continuous Functions]\label{thm:multi_continuous_prop}
+Let $f$ and $g$ be continuous on an open set $S$, let $c$ be a real number, and let $n$ be a positive integer. The following functions are continuous on $S$.%
 \index{continuous function!properties}\index{multivariable function!continuity}%
 \begin{anywhereenum}\\\renewcommand{\arraystretch}{1.6}
 \begin{tabular}{ll}
@@ -312,11 +319,14 @@ The following theorems are very similar to Theorems \ref{thm:continuity_algebra}
 	\item Powers: & $f\,^n$ \\
 	\item Roots: & $\sqrt[n]{f}$ \qquad \parbox[t]{150pt}{\small (if $f\geq 0$ on $B$ or $n$ is odd)}
 \end{tabular}
-\end{anywhereenum}}
+\end{anywhereenum}
+\end{theorem}
 
-\theorem{thm:multi_cont_comp}{Continuity of Compositions}{Let $f$ be continuous on $S$, where the range of $f$ on $S$ is $J$, and let $g$ be a single variable function that is continuous on $J$. Then
+\begin{theorem}[Continuity of Compositions]\label{thm:multi_cont_comp}
+Let $f$ be continuous on $S$, where the range of $f$ on $S$ is $J$, and let $g$ be a single variable function that is continuous on $J$. Then
 \[(g\circ f)(x,y)=g(f(x,y)),\]
-is continuous on $S$.}
+is continuous on $S$.
+\end{theorem}
 
 \example{ex_multicont2}{Establishing continuity of a function}{Let $f(x,y) = \sin (x^2\cos y)$. Show $f$ is continuous everywhere.}
 {We will apply Theorems \ref{thm:continuity_algebra}, \ref{thm:multi_continuous_prop}, and \ref{thm:multi_cont_comp}. Let $f_1(x,y) = x^2$. Since $y$ is not actually used in the function, and polynomials are continuous (by \autoref{thm:continuity_algebra}), we conclude $f_1$ is continuous everywhere. A similar statement can be made about $f_2(x,y) = \cos y$. Part 3 of \autoref{thm:multi_continuous_prop} states that $f_3=f_1\cdot f_2$ is continuous everywhere, and \autoref{thm:multi_cont_comp} states the composition of sine with $f_3$ is continuous: that is, $\sin (f_3) = \sin(x^2\cos y)$ is continuous everywhere.}
@@ -326,15 +336,16 @@ is continuous on $S$.}
 The definitions and theorems given in this section can be extended in a natural way to definitions and theorems about functions of three (or more) variables. We cover the key concepts here; some terms from Definitions \ref{def:open} and \ref{def:multi_continuous} are not redefined but their analogous meanings should be clear to the reader.
 
 \setboxwidth{20pt}
-\definition{def:multi3defs}{Open Balls, Limit, Continuous}
-{\index{multivariable function!limit}\index{limit!of multivariable function}\index{multivariable function!continuity}\index{open ball}%
+\begin{definition}[Open Balls, Limit, Continuous]\label{def:multi3defs}
+\index{multivariable function!limit}\index{limit!of multivariable function}\index{multivariable function!continuity}\index{open ball}%
 \begin{enumerate}
 \item An \textbf{open ball} in $\mathbb{R}^3$ centered at $(x_0,y_0,z_0)$ with radius $r$ is the set of all points $(x,y,z)$ such that $\sqrt{(x-x_0)^2+(y-y_0)^2+(z-z_0)^2} = r$.\bigskip
 \item Let $D$ be an open set in $\mathbb{R}^3$ containing $(x_0,y_0,z_0)$, and let $f(x,y,z)$ be a function of three variables defined on $D$, except possibly at  $(x_0,y_0,z_0)$. The \textbf{limit} of $f(x,y,z)$ as $(x,y,z)$ approaches $(x_0,y_0,z_0)$ is $L$, denoted 
 \[\lim_{(x,y,z)\to (x_0,y_0,z_0)} f(x,y,z) = L,\]
 means that given any $\epsilon >0$, there is a $\delta >0$ such that for all  $(x,y,z)\neq(x_0,y_0,z_0)$, if $(x,y,z)$ is in the open ball centered at $(x_0,y_0,z_0)$ with radius $\delta$, then $\abs{f(x,y,z) - L}< \epsilon$.\bigskip
 \item Let $f(x,y,z)$ be defined on an open ball $B$ containing $(x_0,y_0,z_0)$. Then $f$ is \textbf{continuous} at $(x_0,y_0,z_0)$ if $\ds \lim_{(x,y,z)\to (x_0,y_0,z_0)} f(x,y,z) = f(x_0,y_0,z_0)$.
-\end{enumerate}}
+\end{enumerate}
+\end{definition}
 
 These definitions can also be extended naturally to apply to functions of four or more variables. Theorems \ref{thm:multi_continuous_prop} and \ref{thm:multi_cont_comp} also applies to function of three or more variables, allowing us to say that the function
 \[f(x,y,z) = \frac{e^{x^2+y}\sqrt{y^2+z^2+3}}{\sin (xyz)+5}\]

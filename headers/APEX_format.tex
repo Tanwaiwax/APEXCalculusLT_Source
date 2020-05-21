@@ -183,6 +183,7 @@
  \definecolor{colormaptwobottom}{rgb}{1,.4,.4}
  \definecolor{colormaptwotop}{rgb}{1,.8,.8}
  \setexvideocolor
+ \colorizespecialboxes
 }
 
 \newcommand{\printinblackandwhite}{
@@ -203,6 +204,7 @@
  \definecolor{colormaptwobottom}{rgb}{.6,.6,.6}
  \definecolor{colormaptwotop}{rgb}{.9,.9,.9}
  \setexvideobw
+ \bwizespecialboxes
 }
 
 
@@ -321,51 +323,46 @@
 %     draw, text justified, very thick
 %}
 
-\newcommand{\newspecialbox}[4][]{%
- \AtBeginDocument{\makeStyles{#2}{#4}}%
- \ifthenelse{\equal{#1}{}}{%
-  \definecolor{top#2}{Hsb}{#4,.05,1}% = hsl(#4,100,97.5)
-  \ifthenelse{#4=60}{%
-   \definecolor{border#2}{Hsb}{#4,.59,.97}% = hsl(#4,90.5,68.4)
-   \definecolor{bottom#2}{Hsb}{#4,.28,.97}% = hsl(#4,81.9,83.4)
-  }{%
-   \definecolor{border#2}{Hsb}{#4,.23,.65}% = hsl(#4,17.6,57.5)
-   \definecolor{bottom#2}{Hsb}{#4,.13,.92}% = hsl(#4,42.8,86)
-  }%
-  \newtheorem{#2Env}{#3}[section]%
-  \expandafter\newcommand\csname #2Envautorefname\endcsname{#3}
-  \expandafter\newcommand\csname #2\endcsname[4][]{%
-   \bigbreak%
-   \noindent%
-   \flushinner{%
-    \noindent%
-    \coloredbox{%
-     rectangle, text width = \specialboxlength,
-     inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
-     draw=border#2, top color=top#2, bottom color=bottom#2,
-     text justified, very thick
-    }{%
-     draw=black, thick, rectangle, text width=\specialboxlength,
-     inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
-     draw, text justified, very thick
-    }{%
-     \noindent\begin{#2Env}[{##3}##1]\label{##2}\noindent ##4\end{#2Env}%
-    }%
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable,skins,theorems}
+
+\newcommand{\newspecialbox}[3]{%
+ \AtBeginDocument{\makeStyles{#1}{#3}}%
+% \ifthenelse{\equal{#1}{}}{%
+  \expandafter\newcommand\csname colorize#1\endcsname{
+   \definecolor{top#1}{Hsb}{#3,.05,1}% = hsl(#4,100,97.5)
+   \ifthenelse{#3=60}{%
+    \definecolor{border#1}{Hsb}{#3,.59,.97}% = hsl(#4,90.5,68.4)
+    \definecolor{bottom#1}{Hsb}{#3,.28,.97}% = hsl(#4,81.9,83.4)
+   }{%
+    \definecolor{border#1}{Hsb}{#3,.23,.65}% = hsl(#4,17.6,57.5)
+    \definecolor{bottom#1}{Hsb}{#3,.13,.92}% = hsl(#4,42.8,86)
    }%
-   \bigbreak%
-   \restoreboxwidth%
-  }%
- }{% else #1 != '' means we're in exvideo (aka, a qr code to youtube)
-%%%%% this is no longer used
-%  \definecolor{top#2}{Hsb}{#4,.05,1}% %= hsl(#4,100,97.5)
-%  \definecolor{border#2}{Hsb}{#4,.3,1}% %= hsl(#4,90.5,68.4)
-%  \definecolor{bottom#2}{Hsb}{#4,.15,1}% %= hsl(#4,81.9,83.4)
-%  \expandafter\newcommand\csname #2\endcsname[1]{%
+  }
+  \expandafter\newcommand\csname bwize#1\endcsname{
+   \colorlet{top#1}{white}
+   \colorlet{bottom#1}{white}
+   \colorlet{border#1}{black}
+  }
+  \newtheorem{#1}{#2}[section]%
+  \expandafter\newcommand\csname #1autorefname\endcsname{#2}
+  \tcolorboxenvironment{#1}{
+    sharp corners=all,
+    enhanced,
+    colframe=border#1,
+    interior style={top color=top#1, bottom color=bottom#1},
+    breakable=true,
+    overlay first={\continue{bottom}{#1}},
+    overlay middle={\continue{bottom}{#1}\continue{top}{#1}},
+    overlay last={\continue{top}{#1}},
+    enlargepage flexible=3\baselineskip,
+  }
+%  \expandafter\newcommand\csname #2\endcsname[4][]{%
 %   \bigbreak%
 %   \noindent%
-%%   \flushinner{%
-%%    \noindent%
-%    \coloredbox{% same options as above
+%   \flushinner{%
+%    \noindent%
+%    \coloredbox{%
 %     rectangle, text width = \specialboxlength,
 %     inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
 %     draw=border#2, top color=top#2, bottom color=bottom#2,
@@ -374,19 +371,70 @@
 %     draw=black, thick, rectangle, text width=\specialboxlength,
 %     inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
 %     draw, text justified, very thick
-%    }{\noindent ##1}%
-%%   }%
+%    }{%
+%     \noindent\begin{#2Env}[{##3}##1]\label{##2}\noindent ##4\end{#2Env}%
+%    }%
+%   }%
 %   \bigbreak%
+%   \restoreboxwidth%
 %  }%
- }% ends ifthenelse #1=''
+% }{% else #1 != '' means we're in exvideo (aka, a qr code to youtube)
+%%%%% this is no longer used
+% }% ends ifthenelse #1=''
 }
+
+\newcommand{\continue}[1]{%
+ \csname continue#1\endcsname{#1}%
+}
+\newcommand{\continuetext}[2]{%
+ \ifthenelse{\equal{#1}{top}}{%
+  \csname #2autorefname\endcsname\ \csname the#2\endcsname\ continued%
+ }{%
+  (continued)
+ }%
+}
+% can't get this to work
+%\newcommand{\northsouth}[2][]{\ifthenelse{\equal{#2}{top}}{#1north}{#1south}}
+
+% adapted from https://tex.stackexchange.com/a/545324/107497 by Schrödinger's cat
+\newcommand{\continuebottom}[2]{
+   \path[font=\small\itshape] (frame.south) node (cont) {\continuetext{#1}{#2}};
+   \begin{scope}[decoration={zigzag,amplitude=0.5mm}]
+    \path[fill=#1#2]
+     decorate {([xshift= 1.2pt]frame.south west) -- (cont.west)} --++ (0,0.5ex)
+      -| cycle
+     decorate {([xshift=-1.2pt]frame.south east) -- (cont.east)} --++ (0,0.5ex)
+      -| cycle;
+    \path[fill=white]
+     decorate {([xshift= 1.2pt]frame.south west) -- (cont.west)} --++ (0,-0.5ex)
+      -| cycle
+     decorate {([xshift=-1.2pt]frame.south east) -- (cont.east)} --++ (0,-0.5ex)
+      -| cycle;
+   \end{scope} 
+}
+\newcommand{\continuetop}[2]{
+   \path[font=\small\itshape] (frame.north) node (thm) {\continuetext{#1}{#2}};
+   \begin{scope}[decoration={zigzag,amplitude=0.5mm}]
+    \path[fill=#1#2]
+     decorate {([xshift= 1.2pt]frame.north west) -- (thm.west)} --++ (0,-0.5ex)
+      -| cycle
+     decorate {([xshift=-1.2pt]frame.north east) -- (thm.east)} --++ (0,-0.5ex)
+      -| cycle;
+    \path[fill=white]
+     decorate {([xshift= 1.2pt]frame.north west) -- (thm.west)} --++ (0,0.5ex)
+      -| cycle
+     decorate {([xshift=-1.2pt]frame.north east) -- (thm.east)} --++ (0,0.5ex)
+      -| cycle;
+   \end{scope} 
+}
+
 
 \newspecialbox{definition}{Def\-i\-ni\-tion}{60}
 % draw = yellow!95!black!60 = Hsb( 60,.59,.97)
 % topc = white!95!yellow    = Hsb( 60,.05,1)
 % botc = yellow!90!black!30 = Hsb( 60,.28,.97)
 
-\newspecialbox{theorem}{Theo\-rem}{120}
+\newspecialbox{theorem}{The\-o\-rem}{120}
 % draw = green!30!black!50  = Hsb(120,.23,.65)
 % topc = white!95!green     = Hsb(120,.05,1)
 % botc = green!60!black!20  = Hsb(120,.13,.92)
@@ -396,7 +444,16 @@
 % topc = white!95!red       = Hsb(  0,.05,1)
 % botc = red!60!black!20    = Hsb(  0,.13,.92)
 
-
+\newcommand{\colorizespecialboxes}{
+ \colorizedefinition
+ \colorizetheorem
+ \colorizekeyidea
+}
+\newcommand{\bwizespecialboxes}{
+ \bwizedefinition
+ \bwizetheorem
+ \bwizekeyidea
+}
 
 
 
@@ -453,26 +510,29 @@
 
 
 \newcommand{\makeexercisesection}[2][\jobname]{%
-%\showans\answrite
-% showans will write the contents of Calculus.answers to the log
-% in latexml, this needs to happen before closing
-\immediate\closeout\answrite%
-\inanswersection\exercisegeometry\exerciseheader%
-\chapter*{#2}%
-\addcontentsline{toc}{chapter}{#2}%
-%\thispagestyle{empty}%
-\ifthenelse{\equal{#1}{\jobname}}{}{%
- {% to localize the next line
-  \let\thefootnote\relax%
-  \footnotetext{Revised \today}%
+ %\showans\answrite
+ % showans will write the contents of Calculus.answers to the log
+ % in latexml, this needs to happen before closing
+ \immediate\closeout\answrite%
+ \inanswersection\exercisegeometry\exerciseheader%
+ \chapter*{#2}%
+ \addcontentsline{toc}{chapter}{#2}%
+ %\thispagestyle{empty}%
+ \ifthenelse{\equal{#1}{\jobname}}{}{%
+  {% to localize the next line
+   \let\thefootnote\relax%
+   \footnotetext{Revised \today}%
+  }%
  }%
+ \begin{multicols}{2}%
+  \small\raggedright%
+  \input{#1.answers}%
+ \end{multicols}%
+ \restoregeometry\regularheader%
+ \setlength{\hoffset}{0pt}\rmfamily%
+ \pagestyle{empty}%
+ \eendgeometry%
 }%
-\begin{multicols}{2}%
-\small\raggedright%
-\input{#1.answers}%
-\end{multicols}%
-\restoregeometry\regularheader%
-\setlength{\hoffset}{0pt}\rmfamily}%
 
 
 \setboolean{printquestions}{true}
@@ -586,14 +646,19 @@
  \stepcounter{saveexerciseenum}%
  \stepcounter{exercisesetcounter}%
  \ifthenelse{\isodd{\value{saveexerciseenum}}}{}{%
-  \PackageInfo{apex}{Section \thesection\space has an exercise set beginning with \arabic{saveexerciseenum}}%
+  \PackageInfo{apex}{%
+   Section \thesection\space has an exercise set
+   beginning with \arabic{saveexerciseenum}%
+  }%
  }%
  \noindent#1 \arabic{saveexerciseenum}--\ref*{enumiatendof\theexercisesetcounter}#2%
  \addtocounter{saveexerciseenum}{-1}\ignorespaces%
  #3
  \label{enumiatendof\theexercisesetcounter}%
  \ifthenelse{\isodd{\value{enumi}}}{%
-  \PackageInfo{apex}{Section \thesection\space has an exercise set ending with \arabic{enumi}}%
+  \PackageInfo{apex}{%
+   Section \thesection\space has an exercise set ending with \arabic{enumi}%
+  }%
  }{}%
 }{
  #3

@@ -58,10 +58,11 @@ All this leads us to a definition. The integral found in \autoeqref{eq:line0} is
 
 \mnote{\textbf{Note:} \autoref{def:line_integral1} uses the term \sword{scalar field} which has not yet been defined. Its meaning is discussed in the paragraph preceding \autoref{def:line_integral2} when it is compared to a \sword{vector field}.}
 
-\definition{def:line_integral1}{Line Integral Over A Scalar Field}
-{Let $C$ be a smooth curve parameterized by $s$, the arc-length parameter, and let $f$ be a continuous function of $s$. A \sword{line integral} is an integral of the form
+\begin{definition}[Line Integral Over A Scalar Field]\label{def:line_integral1}
+Let $C$ be a smooth curve parameterized by $s$, the arc-length parameter, and let $f$ be a continuous function of $s$. A \sword{line integral} is an integral of the form
 \[\int_C f(s)\ ds = \lim_{\norm{\Delta s}\to 0}\sum_{i=1}^n f(c_i)\Delta s_i,\]
-where $s_1<s_2<\dots<s_n$ is any partition of the $s$-interval over which $C$ is defined, $c_i$ is any value in the $i\,^\text{th}$ subinterval,  $\Delta s_i$ is the width of the $i\,^\text{th}$ subinterval, and $\norm{\Delta s}$ is the length of the longest subinterval in the partition.\index{line integral!over scalar field}}
+where $s_1<s_2<\dots<s_n$ is any partition of the $s$-interval over which $C$ is defined, $c_i$ is any value in the $i\,^\text{th}$ subinterval,  $\Delta s_i$ is the width of the $i\,^\text{th}$ subinterval, and $\norm{\Delta s}$ is the length of the longest subinterval in the partition.\index{line integral!over scalar field}
+\end{definition}
 
 When $C$ is a \sword{closed} curve, i.e., a curve that ends at the same point at which it starts,  we use
 \[\oint_C f(s)\ ds \quad \text{instead of}\quad \int_Cf(s)\ ds.\]
@@ -88,14 +89,15 @@ We can now substitute $s=\alpha(t)$ to see that
 
 We restate this as a theorem, along with its three-dimensional analogue, followed by an example where we finally evaluate an integral and find an area.
 
-\theorem{thm:line1}{Evaluating a Line Integral Over A Scalar Field}
-{\index{line integral!over scalar field}%
+\begin{theorem}[Evaluating a Line Integral Over A Scalar Field]\label{thm:line1}
+\index{line integral!over scalar field}%
 \mbox{}\\[-2\baselineskip]\begin{itemize}
 	\item Let $C$ be a curve parameterized by $\vrt =\bracket{g(t),h(t)}$, $a\leq t\leq b$, where $g$ and $h$ are continuously differentiable, and let $z=f(x,y)$, where $f$ is continuous over $C$. Then
 \[\int_Cf(s)\ ds = \int_a^bf\big(g(t),h(t)\big)\norm{\vec r\,'(t)}\ dt.\]
 	\item Let $C$ be a curve parameterized by $\vrt =\bracket{g(t),h(t),k(t)}$, $a\leq t\leq b$, where $g$, $h$ and $k$ are continuously differentiable, and let $w=f(x,y,z)$, where $f$ is continuous over $C$. Then
 \[\int_Cf(s)\ ds = \int_a^bf\big(g(t),h(t),k(t)\big)\norm{\vec r\,'(t)}\ dt.\]
-\end{itemize}}
+\end{itemize}
+\end{theorem}
 
 %\mnote{\textbf{Notation:} We often write $f\big(\vec r(t)\big)$ to represent $f\big(g(t),h(t)\big)$ or $f\big(g(t),h(t),k(t)\big)$. As the input of $f$ are points, it is an abuse of notation to use a vector, $\vec r(t)$, as $f$\,'s input. As this notation is concise and intuitive, this notational abuse is common practice and used extensively in subsequent sections.} Removed as already explained in 14.3
 
@@ -268,14 +270,15 @@ A curve $C$ that is composed of two or more smooth curves is said to be \sword{p
 
 We state these properties as a theorem.
 
-\theorem{thm:line_int_properties_scalar}{Properties of Line Integrals Over Scalar Fields}
-{\index{line integral!properties over a scalar field}%
+\begin{theorem}[Properties of Line Integrals Over Scalar Fields]\label{thm:line_int_properties_scalar}
+\index{line integral!properties over a scalar field}%
 \mbox{}\\[-2\baselineskip]\begin{enumerate}
 	\item	Let $C$ be a smooth curve parameterized by the arc-length parameter $s$, let $f$ and $g$ be continuous functions of $s$, and let $k_1$ and $k_2$ be scalars. Then
 \[\ds \int_C\big(k_1f(s)+k_2g(s)\big)\ ds = k_1\int_Cf(s)\ ds +k_2\int_Cg(s)\ ds.\]
 	\item Let $C$ be piecewise smooth, composed of smooth components $C_1$ and $C_2$. Then
 \[\int_Cf(s)\ ds = \int_{C_1}f(s)\ ds + \int_{C_2}f(s)\ ds.\]
-\end{enumerate}}
+\end{enumerate}
+\end{theorem}
 
 \subsection{Mass and Center of Mass}
 
@@ -288,8 +291,8 @@ By taking the limit as the length of the segments approaches 0, we have the defi
 
 We can extend this understanding of computing mass to also compute the center of mass of a thin wire. (As a reminder, the center of mass can be a useful piece of information as objects rotate about that center.) We give the relevant formulas in the next definition, followed by an example. Note the similarities between this definition and \autoref{def:mass_3d}, which gives similar properties of solids in space.
 
-\definition{def:mass_of_thin_wire}{Mass, Center of Mass of Thin Wire}
-{Let a thin wire lie along a smooth curve $C$ with continuous density function $\delta(s)$, where $s$ is the arc length parameter. 	\index{mass!center of}\index{mass}%
+\begin{definition}[Mass, Center of Mass of Thin Wire]\label{def:mass_of_thin_wire}
+Let a thin wire lie along a smooth curve $C$ with continuous density function $\delta(s)$, where $s$ is the arc length parameter. 	\index{mass!center of}\index{mass}%
 \begin{enumerate}
 	\item The \textbf{mass} of the thin wire is $\ds M = \int_C \delta(s)\ ds$.
 	\item	The \textbf{moment about the $y$-$z$ plane} is $\ds M_{yz} = \int_C x\delta(s)\ ds$.
@@ -301,7 +304,8 @@ We can extend this understanding of computing mass to also compute the center of
 	(\overline{x},\overline{y},\overline{z})
 	= \left(\frac{M_{yz}}M, \frac{M_{xz}}M,\frac{M_{xy}}M\right).
 	\]
-\end{enumerate}}
+\end{enumerate}
+\end{definition}
 
 \example{ex_linescalarfield6}{Evaluating a line integral: calculating mass.}
 {A thin wire follows the path $\vrt =\bracket{1+\cos t,1+\sin t, 1+ \sin(2t)}$, $0\leq t\leq 2\pi$. The density of the wire is determined by its position in space: $\delta(x,y,z) = y+z$ gm/cm. The wire is shown in \autoref{fig:linescalarfield6}, where a light color indicates low density and a dark color represents high density. Find the mass  and center of mass of the wire.%

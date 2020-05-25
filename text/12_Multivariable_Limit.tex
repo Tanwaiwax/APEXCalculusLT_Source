@@ -271,9 +271,9 @@ Let a function $f(x,y)$ be defined on an open disk $B$ containing the point $(x_
 
 It follows that if $f$ is a continuous function of one variable, then $f(x)$ (or $f(y)$) is a continuous function of the variables $(x,y)$.
 
-\example{ex_multicont1}{Continuity of a function of two variables}{Let $\ds f(x,y) = \left\{ \begin{array}{rl} \frac{\cos y\sin x}{x} & x\neq 0 \\
+\example{ex_multicont1}{Continuity of a function of two variables}{Let $\ds f(x,y) = \begin{cases} \frac{\cos y\sin x}{x} & x\neq 0 \\
 	\cos y & x=0
-	\end{array} \right.$. Is $f$ continuous at $(0,0)$? Is $f$ continuous everywhere?}
+	\end{cases}$. Is $f$ continuous at $(0,0)$? Is $f$ continuous everywhere?}
 {To determine if $f$ is continuous at $(0,0)$, we need to compare $\ds\lim_{(x,y)\to (0,0)} f(x,y)$ to $f(0,0)$. 
 
 Applying the definition of $f$, we see that $f(0,0) = \cos 0 = 1$. 
@@ -335,7 +335,8 @@ is continuous on $S$.
 
 The definitions and theorems given in this section can be extended in a natural way to definitions and theorems about functions of three (or more) variables. We cover the key concepts here; some terms from Definitions \ref{def:open} and \ref{def:multi_continuous} are not redefined but their analogous meanings should be clear to the reader.
 
-\setboxwidth{20pt}
+{
+\tcbset{grow to right by=20pt}
 \begin{definition}[Open Balls, Limit, Continuous]\label{def:multi3defs}
 \index{multivariable function!limit}\index{limit!of multivariable function}\index{multivariable function!continuity}\index{open ball}%
 \begin{enumerate}
@@ -346,6 +347,7 @@ means that given any $\epsilon >0$, there is a $\delta >0$ such that for all  $(
 \item Let $f(x,y,z)$ be defined on an open ball $B$ containing $(x_0,y_0,z_0)$. Then $f$ is \textbf{continuous} at $(x_0,y_0,z_0)$ if $\ds \lim_{(x,y,z)\to (x_0,y_0,z_0)} f(x,y,z) = f(x_0,y_0,z_0)$.
 \end{enumerate}
 \end{definition}
+}
 
 These definitions can also be extended naturally to apply to functions of four or more variables. Theorems \ref{thm:multi_continuous_prop} and \ref{thm:multi_cont_comp} also applies to function of three or more variables, allowing us to say that the function
 \[f(x,y,z) = \frac{e^{x^2+y}\sqrt{y^2+z^2+3}}{\sin (xyz)+5}\]

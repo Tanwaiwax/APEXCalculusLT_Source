@@ -34,15 +34,18 @@ Similar to the two-variable case, if $\vecf(x,y,z)$ represents the force applied
 
 Some of the most important results we will need for line integrals in $\mathbb{R}^{3}$ are stated below without proof (the proofs are similar to their two-variable equivalents).
 
-\theorem{thm:lineinttangent3}{Vector Line Integral Along a Curve}{For a vector field $\vecf(x,y,z) = P(x,y,z)\,\veci + Q(x,y,z)\,\vecj + R(x,y,z)\,\veck$ and a curve $C$ with a smooth parametrization $x=x(t)$, $y=y(t)$, $z=z(t)$, $a \le t \le b$ and position vector $\vecr(t) = x(t)\,\veci + y(t)\,\vecj + z(t)\,\veck$,
+\begin{theorem}[Vector Line Integral Along a Curve]\label{thm:lineinttangent3}
+For a vector field $\vecf(x,y,z) = P(x,y,z)\,\veci + Q(x,y,z)\,\vecj + R(x,y,z)\,\veck$ and a curve $C$ with a smooth parametrization $x=x(t)$, $y=y(t)$, $z=z(t)$, $a \le t \le b$ and position vector $\vecr(t) = x(t)\,\veci + y(t)\,\vecj + z(t)\,\veck$,
  \[
   \int_C \Dotprod{\vecf}{d\vecr} = \int_C \Dotprod{\vecf}{\vecT}\,ds ,
  \]
- where $\vecT(t) = \frac{\vecr\primeskip'(t)}{\norm{\vecr\primeskip'(t)}}$ is the unit tangent vector to $C$ at $(x(t),y(t),z(t))$.}
+ where $\vecT(t) = \frac{\vecr\primeskip'(t)}{\norm{\vecr\primeskip'(t)}}$ is the unit tangent vector to $C$ at $(x(t),y(t),z(t))$.
+\end{theorem}
 
 % use thm:multi_chain2 instead
 
-%\theorem{thm:chainrule3}{Chain Rule}{If $w=f(x,y,z)$ is a continuously differentiable function of $x$, $y$, and $z$, and $x=x(t)$, $y=y(t)$ and $z=z(t)$ are differentiable functions of $t$, then $w$ is a differentiable function of $t$, and
+%\begin{theorem}[Chain Rule]\label{thm:chainrule3}
+%If $w=f(x,y,z)$ is a continuously differentiable function of $x$, $y$, and $z$, and $x=x(t)$, $y=y(t)$ and $z=z(t)$ are differentiable functions of $t$, then $w$ is a differentiable function of $t$, and
 % \[
 %  \frac{dw}{dt} = \frac{\partial w}{\partial x}\,\frac{dx}{dt} + \frac{\partial w}{\partial y}\,\frac{dy}{dt} +
 %   \frac{\partial w}{\partial z}\,\frac{dz}{dt} .
@@ -58,7 +61,8 @@ Some of the most important results we will need for line integrals in $\mathbb{R
 %  \frac{\partial w}{\partial t_2} = \frac{\partial w}{\partial x}\,\frac{\partial x}{\partial t_2} +
 %  \frac{\partial w}{\partial y}\,\frac{\partial y}{\partial t_2} +
 %  \frac{\partial w}{\partial z}\,\frac{\partial z}{\partial t_2} .
-% \]}
+% \]
+%\end{theorem}
 % % (See \cite[\S\,6.5]{tm} for a proof.)
 
 \theorem{thm:lineintsuffpath3}{Fundamental Theorem of Line Integrals in Three Dimensions}{Let $\vecf(x,y,z) = P(x,y,z)\,\veci + Q(x,y,z)\,\vecj + R(x,y,z)\,\veck$ be a vector field in some solid $S$, with $P$, $Q$ and $R$ continuously differentiable functions on $S$. Let $C$ be a smooth curve in $S$ parametrized by $x=x(t)$, $y=y(t)$, $z=z(t)$, $a \le t \le b$. Suppose that there is a real-valued function $F(x,y,z)$ such that $\nabla F = \vecf$ on $S$. Then
@@ -487,7 +491,8 @@ The theorems in this chapter all relate an integral over a domain to an integral
 We also have four new theorems about these types of integrals. These are similar to the Fundamental Theorem of Calculus, so we'll put all five together into \autoref{fundThms}.
 
 % todo Tim check the phrasing
-\setboxwidth{100pt}
+{
+\tcbset{grow to right by=100pt}
 \keyidea{fundThms}{Fundamental Theorems Relating Integrals and Domains}{%
 \renewcommand{\arraystretch}{1.4}
  \begin{tabular}{p{.25\specialboxlength} l p{.35\specialboxlength}}
@@ -498,5 +503,6 @@ We also have four new theorems about these types of integrals. These are similar
   Stokes' Theorem & $\int_{\partial S}\vec F\cdot d\vec r=\iint_S\curl\vec F\cdot \vecn d\sigma$ & $\partial S$ oriented with $S$ to the left \\
   Divergence Theorem & $\iint_{\partial W}\vec F\cdot d \vec\sigma=\iiint_W\Div\vec Fd V$ & $\partial W$ oriented outwards
  \end{tabular}}
+}
 
 \printexercises{exercises/14_Stokes_exercises}

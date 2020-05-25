@@ -1,5 +1,5 @@
 % !TEX program = XeLaTeX
-%\errorcontextlines 10000
+\errorcontextlines 10000
 
 \RequirePackage[l2tabu, orthodox]{nag}
 \documentclass[10pt]{book}
@@ -15,7 +15,7 @@
 \usetwoDgraphics
 %\usethreeDgraphics
 
-\tcbuselibrary{breakable}
+\usepackage{lipsum}
 
 \begin{document}
 
@@ -27,12 +27,72 @@
 
 \pagestyle{fancy}
 
-\setcounter{chapter}{3}
-\setcounter{section}{4}
+\setcounter{chapter}{1}
+\setcounter{section}{2}
 
-\input{text/03_Curve_Sketching}
+\renewcommand{\eoehere}{}
+\renewcommand{\drawexampleline}{}
+\renewcommand{\examplestarred}[3]{%
+ \begin{exampleEnv}[#2]\label{#1}
+  #3%
+ \end{exampleEnv}
+}
+\tcolorboxenvironment{exampleEnv}{
+    empty,
+    size=minimal,
+    breakable,
+    parbox=false,
+    beforeafter skip=\bigskipamount,
+    enlargepage flexible=3\baselineskip,
+    lines before break=5,
+    before upper={\setlength{\parindent}{\saveparindent}\noindent},
+    boxsep=0pt,
+    overlay unbroken={
+     \node[xshift=-2\marginlinelength,yshift=-.5\baselineskip]
+      (start\arabic{exampleEnv})at(frame.north west){};
+     \node[xshift=10pt](stop\arabic{exampleEnv})at(frame.south west){};
+     \draw[thick,\thelinecolor](start\arabic{exampleEnv})|-(stop\arabic{exampleEnv});
+    },
+    overlay first={
+     \node[xshift=-2\marginlinelength,yshift=-.5\baselineskip]
+      (start\arabic{exampleEnv})at(frame.north west){};
+     \draw[thick,\thelinecolor]
+      (start\arabic{exampleEnv})--(start\arabic{exampleEnv}|-frame.south);
+    },
+    overlay middle={
+     % a middle has only one on a page, so we don't need other suffixes
+     \node[xshift=-2\marginlinelength,yshift=.5\baselineskip]
+      (start)at(frame.north west){};
+     \node[xshift=-2\marginlinelength](stop)at(frame.south west){};
+     \draw[thick,\thelinecolor](start)--(start|-stop);
+    },
+    overlay last={
+     \node[xshift=-2\marginlinelength,yshift=.5\baselineskip]
+      (start\arabic{exampleEnv})at(frame.north west){};
+     \node[xshift=10pt](stop\arabic{exampleEnv})at(frame.south west){};
+     \draw[thick,\thelinecolor](start\arabic{exampleEnv})|-(stop\arabic{exampleEnv});
+    },
+}
 
-\makeexercisesection{Standalone Solutions To All Problems}
+\lipsum[1]
+
+\example*{mylabel1}{Example Title}{Problem Statement\solution Solution statement
+
+\lipsum[2]}
+
+\lipsum[3]
+
+\example*{mylabel}{Example Title}{Problem Statement\solution Solution statement
+
+\lipsum[4-10]
+
+\[a=b\]}
+
+\lipsum[11]
+
+theexampleEnv is \theexampleEnv
+
+%\makeexercisesection{Standalone Solutions To All Problems}
 
 %\printindex
 

@@ -168,40 +168,43 @@ whichever is the vector that points to the concave side of the graph of $\vec r$
 \subsection{Application to Acceleration}
 
 Let \vrt\ be a position function. It is a fact (stated later in \autoref{thm:acc_plane}) % and proved in the Exercises) 
- that acceleration, \vat, lies in the plane defined by $\vec T$ and $\vec N$. That is, there are scalars $a_{\text{T}}$ and $a_{\text{N}}$ such that 
-\[\vat = a_{\text{T}}\vec T(t) + a_{\text{N}}\vec N(t).\]
-The scalar $a_{\text{T}}$ measures ``how much'' acceleration is in the direction of travel, that is, it measures the component of acceleration that affects the speed. The scalar $a_{\text{N}}$ measures ``how much'' acceleration is perpendicular to the direction of travel, that is, it measures the component of acceleration that affects the direction of travel.
+ that acceleration, \vat, lies in the plane defined by $\vec T$ and $\vec N$. That is, there are scalars $a_{\mathrm{T}}$ and $a_{\mathrm{N}}$ such that 
+\[\vat = a_{\mathrm{T}}\vec T(t) + a_{\mathrm{N}}\vec N(t).\]
+The scalar $a_{\mathrm{T}}$ measures ``how much'' acceleration is in the direction of travel, that is, it measures the component of acceleration that affects the speed. The scalar $a_{\mathrm{N}}$ measures ``how much'' acceleration is perpendicular to the direction of travel, that is, it measures the component of acceleration that affects the direction of travel.
 \index{unit tangent vector!and acceleration}\index{unit normal vector!and acceleration}
 
-We can find $a_{\text{T}}$ using the orthogonal projection of $\vec a(t)$ onto $\vec T(t)$ (review \autoref{def:orthogonal_projection} in \autoref{sec:dot_product} if needed).
+We can find $a_{\mathrm{T}}$ using the orthogonal projection of $\vec a(t)$ onto $\vec T(t)$ (review \autoref{def:orthogonal_projection} in \autoref{sec:dot_product} if needed).
 Recalling that since $\vec T(t)$ is a unit vector, $\vec T(t)\cdot\vec T(t)=1$, so we have 
-\[\proj{a(t)}{T(t)} = \frac{\vec a(t)\cdot\vec T(t)}{\vec T(t)\cdot\vec T(t)}\vec T(t) = \underbrace{\big(\vec a(t)\cdot\vec T(t)\big)}_{a_{\text{T}}}\vec T(t).\]
-Thus the amount of \vat\ in the direction of $\vec T(t)$ is $a_{\text{T}}=\vat\cdot\vec T(t)$. The same logic gives $a_{\text{N}} = \vat\cdot\vec N(t)$.
+\[\proj{a(t)}{T(t)} = \frac{\vec a(t)\cdot\vec T(t)}{\vec T(t)\cdot\vec T(t)}\vec T(t) = \underbrace{\big(\vec a(t)\cdot\vec T(t)\big)}_{a_{\mathrm{T}}}\vec T(t).\]
+Thus the amount of \vat\ in the direction of $\vec T(t)$ is $a_{\mathrm{T}}=\vat\cdot\vec T(t)$. The same logic gives $a_{\mathrm{N}} = \vat\cdot\vec N(t)$.
 
-While this is a fine way of computing $a_{\text{T}}$, there are simpler ways of finding $a_{\text{N}}$ (as finding $\vec N$ itself can be complicated). The following theorem gives alternate formulas for $a_{\text{T}}$ and $a_{\text{N}}$.
-\mnote{\textbf{Note:} Keep in mind that both $a_\text{T}$ and $a_\text{N}$ are functions of $t$; that is, the scalar changes depending on $t$. It is convention to drop the ``$(t)$'' notation from $a_\text{T}(t)$ and simply write $a_\text{T}$.}
+While this is a fine way of computing $a_{\mathrm{T}}$, there are simpler ways of finding $a_{\mathrm{N}}$ (as finding $\vec N$ itself can be complicated). The following theorem gives alternate formulas for $a_{\mathrm{T}}$ and $a_{\mathrm{N}}$.
 
-\setboxwidth{20pt}
+\mnote{\textbf{Note:} Keep in mind that both $a_{\mathrm{T}}$ and $a_{\mathrm{N}}$ are functions of $t$; that is, the scalar changes depending on $t$. It is convention to drop the ``$(t)$'' notation from $a_{\mathrm{T}}(t)$ and simply write $a_{\mathrm{T}}$.}
+
+{
+\tcbset{grow to right by=20pt}
 \begin{theorem}[Acceleration in the Plane Defined by $\vec T$ and $\vec N$]\label{thm:acc_plane}
-Let \vrt\ be a position function with acceleration \vat\ and unit tangent and normal vectors $\vec T(t)$ and $\vec N(t)$. Then $\vat$ lies in the plane defined by $\vec T(t)$ and $\vec N(t)$; that is, there exists scalars $a_\text{T}$ and $a_\text{N}$ such that
-\[\vat = a_\text{T}\vec T(t) + a_\text{N}\vec N(t).\]
+Let \vrt\ be a position function with acceleration \vat\ and unit tangent and normal vectors $\vec T(t)$ and $\vec N(t)$. Then $\vat$ lies in the plane defined by $\vec T(t)$ and $\vec N(t)$; that is, there exists scalars $a_{\mathrm{T}}$ and $a_{\mathrm{N}}$ such that
+\[\vat = a_{\mathrm{T}}\vec T(t) + a_{\mathrm{N}}\vec N(t).\]
 Moreover,
 \begin{align*}
-a_\text{T} &= \vat\cdot\vec T(t) = \frac{d}{dt}\Big(\norm{\vec v(t)}\Big) \\
-a_\text{N} &= \vat\cdot \vec N(t) = \sqrt{\norm{\vec a(t)}^2-a_\text{T}^2} = \frac{\norm{\vat\times\vvt}}{\norm{\vvt}} = \norm{\vvt}\,\norm{\vec T\,'(t)}
+a_\mathrm{T} &= \vat\cdot\vec T(t) = \frac{d}{dt}\Big(\norm{\vec v(t)}\Big) \\
+a_\mathrm{N} &= \vat\cdot \vec N(t) = \sqrt{\norm{\vec a(t)}^2-a_\mathrm{T}^2} = \frac{\norm{\vat\times\vvt}}{\norm{\vvt}} = \norm{\vvt}\,\norm{\vec T\,'(t)}
 \end{align*}%
 \index{unit tangent vector!and acceleration}\index{unit normal vector!and acceleration}%
-\iflatexml%
-\index{an@$a_\text{N}$}\index{at@$a_\text{T}$}\index{unit normal vector!an@$a_\text{N}$}\index{unit tangent vector!at@$a_\text{T}$}%
-\else%
-\index{an@$a_\string\text{N}$}\index{at@$a_\string\text{T}$}\index{unit normal vector!an@$a_\string\text{N}$}\index{unit tangent vector!at@$a_\string\text{T}$}%
-\fi%
+%\iflatexml%
+\index{an@$a_{\mathrm{N}}$}\index{at@$a_{\mathrm{T}}$}\index{unit normal vector!an@$a_{\mathrm{N}}$}\index{unit tangent vector!at@$a_{\mathrm{T}}$}%
+%\else%
+%\index{an@$a_\string\mathrm{N}$}\index{at@$a_\string\mathrm{T}$}\index{unit normal vector!an@$a_\string\mathrm{N}$}\index{unit tangent vector!at@$a_\string\mathrm{T}$}%
+%\fi%
 \end{theorem}
+}
 % GregH asked about this at https://tex.stackexchange.com/q/176439/107497
 % egreg provided a solution at https://tex.stackexchange.com/a/88357/107497
 % but LaTeXML sends \string to the index, which messes up the output
 
-Note the second formula for $a_\text{T}$: $\ds \frac{d}{dt}\Big(\norm{\vvt}\Big)$. This measures the rate of change of speed, which again is the amount of acceleration in the direction of travel.
+Note the second formula for $a_{\mathrm{T}}$: $\ds \frac{d}{dt}\Big(\norm{\vvt}\Big)$. This measures the rate of change of speed, which again is the amount of acceleration in the direction of travel.
 
 \begin{proof}
 We see that
@@ -211,45 +214,45 @@ We see that
  =\left(\frac d{dt}\norm{\vvt}\right)\,\vec T(t)+\norm{\vvt}\vec T\,'(t) \\
  &=\left(\frac d{dt}\norm{\vvt}\right)\,\vec T(t)+\norm{\vvt}\norm{\vec T\,'(t)}\vec N(t).
 \end{align*}
-Since $\vec T(t)$ and $\vec N(t)$ are not parallel, this decomposition is unique and the coefficients tell us $a_\text{T}$ and $a_\text{N}$.
+Since $\vec T(t)$ and $\vec N(t)$ are not parallel, this decomposition is unique and the coefficients tell us $a_\mathrm{T}$ and $a_\mathrm{N}$.
 
 Because $\norm{\vec T}=1$, \autoref{thm:vects_of_constant_length} tells us that $\vec T$ and $\vec T\,'=\norm{\vec T\,'}\vec N$ are orthogonal.  This means that
 \[
  \norm{\vat\times\vvt}
- =\norm{a_\text{N}\vec N(t)\times\norm{\vvt}\,\vec T(t)}
- =a_\text{N}\norm{\vvt}.
+ =\norm{a_\mathrm{N}\vec N(t)\times\norm{\vvt}\,\vec T(t)}
+ =a_\mathrm{N}\norm{\vvt}.
 \]
 Also, the Pythagorean theorem tells us that
 \[
- \norm{\vec a(t)}^2=\norm{a_\text{T}\vec T(t)}^2+\norm{a_\text{N}\vec N(t)}^2
- =a_\text{T}^2+a_\text{N}^2.\qedhere
+ \norm{\vec a(t)}^2=\norm{a_\mathrm{T}\vec T(t)}^2+\norm{a_\mathrm{N}\vec N(t)}^2
+ =a_\mathrm{T}^2+a_\mathrm{N}^2.\qedhere
 \]
 \end{proof}
 
-\example{ex_tannorm5}{Computing $a_\text{T}$ and $a_\text{N}$}
-{Let $\vrt =\bracket{3\cos t, 3\sin t, 4t}$ as in Examples \ref{ex_tannorm1} and \ref{ex_tannorm3}. Find $a_\text{T}$ and $a_\text{N}$.}
+\example{ex_tannorm5}{Computing $a_\mathrm{T}$ and $a_\mathrm{N}$}
+{Let $\vrt =\bracket{3\cos t, 3\sin t, 4t}$ as in Examples \ref{ex_tannorm1} and \ref{ex_tannorm3}. Find $a_\mathrm{T}$ and $a_\mathrm{N}$.}
 {The previous examples give $\vat =\bracket{-3\cos t,-3\sin t,0}$ and 
 \[\vec T(t) =\bracket{-\frac35\sin t,\frac35\cos t,\frac45}\quad \text{and}\quad \vec N(t) =\bracket{-\cos t,-\sin t,0}.\]
-We can find $a_\text{T}$ and $a_\text{N}$ directly with dot products:
+We can find $a_\mathrm{T}$ and $a_\mathrm{N}$ directly with dot products:
 \begin{align*}
-a_\text{T} &= \vat\cdot \vec T(t) = \frac95\cos t\sin t-\frac95\cos t\sin t+0 = 0.\\
-a_\text{N} &= \vat\cdot \vec N(t) = 3\cos^2t+3\sin^2t + 0 = 3.
+a_\mathrm{T} &= \vat\cdot \vec T(t) = \frac95\cos t\sin t-\frac95\cos t\sin t+0 = 0.\\
+a_\mathrm{N} &= \vat\cdot \vec N(t) = 3\cos^2t+3\sin^2t + 0 = 3.
 \end{align*}
 Thus $\vat = 0\vec T(t) + 3\vec N(t) = 3\vec N(t)$, which is clearly the case.
 
-What is the practical interpretation of these numbers? $a_\text{T}=0$ means the object is moving at a constant speed, and hence all acceleration comes in the form of direction change.}
+What is the practical interpretation of these numbers? $a_\mathrm{T}=0$ means the object is moving at a constant speed, and hence all acceleration comes in the form of direction change.}
 
-\example{ex_tannorm6}{Computing $a_\text{T}$ and $a_\text{N}$}
-{Let $\vrt=\bracket{t^2-t,t^2+t}$ as in Examples \ref{ex_tannorm2} and \ref{ex_tannorm4}. Find $a_\text{T}$ and $a_\text{N}$.}
+\example{ex_tannorm6}{Computing $a_\mathrm{T}$ and $a_\mathrm{N}$}
+{Let $\vrt=\bracket{t^2-t,t^2+t}$ as in Examples \ref{ex_tannorm2} and \ref{ex_tannorm4}. Find $a_\mathrm{T}$ and $a_\mathrm{N}$.}
 {The previous examples give $\vat =\bracket{2,2}$ and
 \[\vec T(t) =\bracket{\frac{2t-1}{\sqrt{8t^2+2}},\frac{2t+1}{\sqrt{8t^2+2}}}\quad \text{and}\quad \vec N(t) =\bracket{\frac{2t+1}{\sqrt{8t^2+2}},-\frac{2t-1}{\sqrt{8t^2+2}}}.\]
-While we can compute $a_\text{N}$ using $\vec N(t)$, we instead demonstrate using another formula from \autoref{thm:acc_plane}.
+While we can compute $a_\mathrm{N}$ using $\vec N(t)$, we instead demonstrate using another formula from \autoref{thm:acc_plane}.
 \begin{align*}
-a_\text{T} &= \vat\cdot\vec T(t) = \frac{4t-2}{\sqrt{8t^2+2}}+\frac{4t+2}{\sqrt{8t^2+2}} = \frac{8t}{\sqrt{8t^2+2}}.\\
-a_\text{N} &= \sqrt{\norm{\vat}^2-a_\text{T}^2} = \sqrt{8-\left(\frac{8t}{\sqrt{8t^2+2}}\right)^2}=\frac{4}{\sqrt{8t^2+2}}.\medskip
+a_\mathrm{T} &= \vat\cdot\vec T(t) = \frac{4t-2}{\sqrt{8t^2+2}}+\frac{4t+2}{\sqrt{8t^2+2}} = \frac{8t}{\sqrt{8t^2+2}}.\\
+a_\mathrm{N} &= \sqrt{\norm{\vat}^2-a_\mathrm{T}^2} = \sqrt{8-\left(\frac{8t}{\sqrt{8t^2+2}}\right)^2}=\frac{4}{\sqrt{8t^2+2}}.\medskip
 \end{align*}
-When $t=2$, $\ds a_{\text{T}} = \frac{16}{\sqrt{34}}%\approx 2.74
-$ and $\ds a_{\text{N}} = \frac{4}{\sqrt{34}}% \approx 0.69
+When $t=2$, $\ds a_{\mathrm{T}} = \frac{16}{\sqrt{34}}%\approx 2.74
+$ and $\ds a_{\mathrm{N}} = \frac{4}{\sqrt{34}}% \approx 0.69
 $. We interpret this to mean that at $t=2$, the particle is acculturating mostly by increasing speed, not by changing direction. As the path near $t=2$ is relatively straight, this should make intuitive sense. \autoref{fig:tannorm6} gives a graph of the path for reference.
 \mtable{Graphing $\vec r(t)$ in \autoref{ex_tannorm6}.}{fig:tannorm6}{\begin{tikzpicture}[>=stealth]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -267,10 +270,10 @@ ymin=-1.1,ymax=6.5,xmin=-2.1,xmax=7]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-Contrast this with $t=0$, where $a_{\text{T}}=0$ and $a_{\text{N}}=4/\sqrt2=2\sqrt2 %\approx 2.82
+Contrast this with $t=0$, where $a_{\mathrm{T}}=0$ and $a_{\mathrm{N}}=4/\sqrt2=2\sqrt2 %\approx 2.82
 $. Here the particle's speed is not changing and all acceleration is in the form of direction change.}
 
-\example{ex_tannorm7}{Analyzing projectile motion}{A ball is thrown from a height of 240ft with an initial speed of 64ft/s and an angle of elevation of $30^\circ$. Find the position function \vrt\ of the ball and analyze $a_\text{T}$ and $a_\text{N}$.\index{projectile motion}}
+\example{ex_tannorm7}{Analyzing projectile motion}{A ball is thrown from a height of 240ft with an initial speed of 64ft/s and an angle of elevation of $30^\circ$. Find the position function \vrt\ of the ball and analyze $a_\mathrm{T}$ and $a_\mathrm{N}$.\index{projectile motion}}
 {Using \autoeqref{idea:projectile} of \autoref{sec:vvf_motion} we form the position function of the ball:
 \[
 \vrt =\bracket{\big(64\cos 30^\circ\big)t, -16t^2+\big(64\sin 30^\circ\big)t+240},
@@ -304,16 +307,16 @@ ymin=-10,ymax=260,xmin=-10,xmax=310]
 
 From this we find $\vvt =\bracket{64\cos 30^\circ, -32t+64\sin 30^\circ}$ and $\vat =\bracket{0,-32}$. Computing $\vec T(t)$ is not difficult, and with some simplification we find
 \[\vec T(t) =\bracket{\frac{\sqrt{3}}{\sqrt{t^2-2t+4}}, \frac{1-t}{\sqrt{t^2-2t+4}}}.\]
-With $\vat$ as simple as it is, finding $a_\text{T}$ is also  simple:
-\[a_\text{T} = \vat\cdot \vec T(t) = \frac{32t-32}{\sqrt{t^2-2t+4}}.\]
-We choose to not find $\vec N(t)$ and find $a_\text{N}$ through the formula $a_\text{N} = \sqrt{\norm{\vat}^2-a_\text{T}^2\,}$\,:
-\[a_\text{N} = \sqrt{32^2-\left(\frac{32t-32}{\sqrt{t^2-2t+4}}\right)^2} = \frac{32\sqrt{3}}{\sqrt{t^2-2t+4}}.\]
-\autoref{fig:tannorm7a} gives a table of values of $a_\text{T}$ and $a_\text{N}$. When $t=0$, we see the ball's speed is decreasing; when $t=1$ the speed of the ball is unchanged. This corresponds to the fact that at $t=1$ the ball reaches its highest point.
+With $\vat$ as simple as it is, finding $a_\mathrm{T}$ is also  simple:
+\[a_\mathrm{T} = \vat\cdot \vec T(t) = \frac{32t-32}{\sqrt{t^2-2t+4}}.\]
+We choose to not find $\vec N(t)$ and find $a_\mathrm{N}$ through the formula $a_\mathrm{N} = \sqrt{\norm{\vat}^2-a_\mathrm{T}^2\,}$\,:
+\[a_\mathrm{N} = \sqrt{32^2-\left(\frac{32t-32}{\sqrt{t^2-2t+4}}\right)^2} = \frac{32\sqrt{3}}{\sqrt{t^2-2t+4}}.\]
+\autoref{fig:tannorm7a} gives a table of values of $a_\mathrm{T}$ and $a_\mathrm{N}$. When $t=0$, we see the ball's speed is decreasing; when $t=1$ the speed of the ball is unchanged. This corresponds to the fact that at $t=1$ the ball reaches its highest point.
 
-After $t=1$ we see that $a_\text{N}$ is decreasing in value. This is because as the ball falls, it's path becomes straighter and most of the acceleration is in the form of speeding up the ball, and not in changing its direction.
-\mtable{A table of values of $a_\text{T}$ and $a_\text{N}$ in \autoref{ex_tannorm7}.}{fig:tannorm7a}{%
+After $t=1$ we see that $a_\mathrm{N}$ is decreasing in value. This is because as the ball falls, it's path becomes straighter and most of the acceleration is in the form of speeding up the ball, and not in changing its direction.
+\mtable{A table of values of $a_\mathrm{T}$ and $a_\mathrm{N}$ in \autoref{ex_tannorm7}.}{fig:tannorm7a}{%
 \begin{tabular}{cll}
-$t$ & $a_\text{T}$ & $a_\text{N}$ \\ \midrule
+$t$ & $a_\mathrm{T}$ & $a_\mathrm{N}$ \\ \midrule
 0 & $-16$ & 27.7 \\
 1 & $\phantom{-0}0$ & 32 \\
 2 & $\phantom{-}16$ & 27.7\\

@@ -295,20 +295,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\newlength{\specialboxlength}
-\newlength{\specialboxinnerseplength}
-\newlength{\specialboxinnerseplengthx}
-\newlength{\specialboxinnerseplengthy}
-
-\setlength{\specialboxinnerseplength}{15pt}
-\setlength{\specialboxinnerseplengthx}{15pt}
-\setlength{\specialboxinnerseplengthy}{10pt}
-
-\newcommand{\setboxwidth}[1]{%
-\setlength{\specialboxlength}{\textwidth+#1-2.3\specialboxinnerseplength}}
-
-\newcommand{\restoreboxwidth}{\setboxwidth{0pt}}
-\restoreboxwidth
+%\newlength{\specialboxlength}
+%\newlength{\specialboxinnerseplength}
+%\newlength{\specialboxinnerseplengthx}
+%\newlength{\specialboxinnerseplengthy}
+%
+%\setlength{\specialboxinnerseplength}{15pt}
+%\setlength{\specialboxinnerseplengthx}{15pt}
+%\setlength{\specialboxinnerseplengthy}{10pt}
+%
+%\newcommand{\setboxwidth}[1]{%
+%\setlength{\specialboxlength}{\textwidth+#1-2.3\specialboxinnerseplength}}
+%
+%\newcommand{\restoreboxwidth}{\setboxwidth{0pt}}
+%\restoreboxwidth
 
 % can't get these to work
 %\newcommand*{\specialboxcoloroptions}[1]{%
@@ -356,6 +356,8 @@
     overlay middle={\continue{bottom}{#1}\continue{top}{#1}},
     overlay last={\continue{top}{#1}},
     enlargepage flexible=3\baselineskip,
+    toggle enlargement=evenpage,
+    lines before break=8,
   }
 %  \expandafter\newcommand\csname #2\endcsname[4][]{%
 %   \bigbreak%
@@ -537,7 +539,8 @@
 
 \setboolean{printquestions}{true}
 \newcounter{saveexerciseenum}[section]
-\newcounter{exercisesetcounter}
+\newcounter{exercisesetcounter}[section]
+\renewcommand{\theexercisesetcounter}{\thesection.\arabic{exercisesetcounter}}
 \newboolean{enumopen}
 \setboolean{enumopen}{false}
 
@@ -641,14 +644,17 @@
  \setboolean{enumopen}{false}%
 }{}}
 
+% I tried converting this to an environment, but the enumerate got nested somehow
+% and things went strange
 \newcommand{\exerciseset}[3]{\ifthenelse{\boolean{printquestions}}{%
  \closeenumerate%
  \stepcounter{saveexerciseenum}%
  \stepcounter{exercisesetcounter}%
  \ifthenelse{\isodd{\value{saveexerciseenum}}}{}{%
   \PackageInfo{apex}{%
-   Section \thesection\space has an exercise set
-   beginning with \arabic{saveexerciseenum}%
+   Exercise set \theexercisesetcounter\space begins with \arabic{saveexerciseenum}%
+%   Section \thesection\space has an exercise set
+%   beginning with \arabic{saveexerciseenum}%
   }%
  }%
  \noindent#1 \arabic{saveexerciseenum}--\ref*{enumiatendof\theexercisesetcounter}#2%
@@ -657,7 +663,8 @@
  \label{enumiatendof\theexercisesetcounter}%
  \ifthenelse{\isodd{\value{enumi}}}{%
   \PackageInfo{apex}{%
-   Section \thesection\space has an exercise set ending with \arabic{enumi}%
+   Exercise set \theexercisesetcounter\space ends with \arabic{enumi}%
+%   Section \thesection\space has an exercise set ending with \arabic{enumi}%
   }%
  }{}%
 }{

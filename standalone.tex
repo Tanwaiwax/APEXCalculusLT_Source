@@ -56,14 +56,16 @@
     overlay first={
      \node[xshift=-2\marginlinelength,yshift=-.5\baselineskip]
       (start\arabic{exampleEnv})at(frame.north west){};
-     \draw[thick,\thelinecolor]
-      (start\arabic{exampleEnv})--(start\arabic{exampleEnv}|-frame.south);
+     \node[xshift=-2\marginlinelength,yshift=-2\baselineskip]
+      (stop\arabic{exampleEnv})at(frame.south west){};
+     \draw[thick,\thelinecolor](start\arabic{exampleEnv})--(stop\arabic{exampleEnv});
     },
     overlay middle={
      % a middle has only one on a page, so we don't need other suffixes
      \node[xshift=-2\marginlinelength,yshift=.5\baselineskip]
       (start)at(frame.north west){};
-     \node[xshift=-2\marginlinelength](stop)at(frame.south west){};
+     \node[xshift=-2\marginlinelength,yshift=-2\baselineskip]
+      (stop)at(frame.south west){};
      \draw[thick,\thelinecolor](start)--(start|-stop);
     },
     overlay last={

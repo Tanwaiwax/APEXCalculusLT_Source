@@ -31,8 +31,10 @@ These equations look strange; the key concept to learn here is that we can find 
 
 We demonstrate this process in the following example.
 
-\example{ex_implicit1}{Using Implicit Differentiation}{Find $y\primeskip'$ given that $\sin(y) + y^3=6-x^3$.}
-{We start by taking the derivative of both sides (thus maintaining the equality). We have:
+\begin{example}[Using Implicit Differentiation]\label{ex_implicit1}
+Find $y\primeskip'$ given that $\sin(y) + y^3=6-x^3$.
+\solution
+We start by taking the derivative of both sides (thus maintaining the equality). We have:
 \[\frac{d}{dx}\Big(\sin(y) + y^3\Big)=\frac{d}{dx}\Big(6-x^3\Big).\]
 The right hand side is easy; it returns $-3x^2$. 
 
@@ -53,15 +55,17 @@ Now solve for $y\primeskip'$.
 	y\primeskip'&=	\frac{-3x^2}{\cos y+3y^2}
 \end{align*}
 
-This equation for $y\primeskip'$ probably seems unusual for it contains both $x$ and $y$ terms. How is it to be used? We'll address that next.}
+This equation for $y\primeskip'$ probably seems unusual for it contains both $x$ and $y$ terms. How is it to be used? We'll address that next.
+\end{example}
 
 Implicit functions are generally harder to deal with than explicit functions. With an explicit function, given an $x$ value, we have an explicit formula for computing the corresponding $y$ value. With an implicit function, one often has to find $x$ and $y$ values \textit{at the same time} that satisfy the equation. It is much easier to demonstrate that a given point satisfies the equation than to actually find such a point.
 
 For instance, we can affirm easily that the point $(\sqrt[3]{6},0)$ lies on the graph of the equation $\sin y + y^3=6-x^3$. Plugging in $0$ for $y$, we see the left hand side is $0$. Setting $x=\sqrt[3]6$, we see the right hand side is also $0$; the equation is satisfied. The following example finds an equation of the tangent line to this equation at this point.
 
-\example{ex_implicit2}{Using Implicit Differentiation to find a tangent line}{%
-Find the equation of the line tangent to the implicitly defined curve $\sin y + y^3=6-x^3$ at the point $(\sqrt[3]6,0)$.}%
-{In \autoref{ex_implicit1} we found that
+\begin{example}[Using Implicit Differentiation to find a tangent line]\label{ex_implicit2}
+Find the equation of the line tangent to the implicitly defined curve $\sin y + y^3=6-x^3$ at the point $(\sqrt[3]6,0)$.
+\solution
+In \autoref{ex_implicit1} we found that
 \[y\primeskip' = \frac{-3x^2}{\cos y +3y^2}.\]
 We find the slope of the tangent line at the point  $(\sqrt[3]6,0)$ by substituting $\sqrt[3]6$ for $x$ and $0$ for $y$. Thus at the point $(\sqrt[3]6,0)$, we have the slope as
 \[y\primeskip' = \frac{-3(\sqrt[3]{6})^2}{\cos 0 + 3\cdot0^2} = \frac{-3\sqrt[3]{36}}{1} \approx -9.91.\]
@@ -79,7 +83,8 @@ ymin=-3.2,ymax=3.2,xmin=-3.2,xmax=3.2,name=myplot,axis equal]
 \end{tikzpicture}}
 Therefore an equation of the tangent line to the implicitly defined curve $\sin y + y^3=6-x^3$ at the point $(\sqrt[3]{6},0)$ is
 \[y = -3\sqrt[3]{36}(x-\sqrt[3]{6})+0 \approx -9.91x+18.\]
-The curve and this tangent line are shown in \autoref{fig:implicit2}.}
+The curve and this tangent line are shown in \autoref{fig:implicit2}.
+\end{example}
 
 
 This suggests a general method for implicit differentiation.  For the steps below assume $y$ is a function of $x$.
@@ -91,8 +96,10 @@ This suggests a general method for implicit differentiation.  For the steps belo
 
 \paragraph{Practical Note:}When working by hand, it may be beneficial to use the symbol $\frac{dy}{dx}$ instead of $y\primeskip'$, as the latter can be easily confused for $y$ or $y^1$.
 
-\example{ex_implicit3}{Using Implicit Differentiation}{Given the implicitly defined function $y^3+x^2y^4=1+2x$, find $y\primeskip'$.}
-{We will take the implicit derivatives term by term. Using the Chain Rule the derivative of $y^3$ is $3y^2 y\primeskip'$.
+\begin{example}[Using Implicit Differentiation]\label{ex_implicit3}
+Given the implicitly defined function $y^3+x^2y^4=1+2x$, find $y\primeskip'$.
+\solution
+We will take the implicit derivatives term by term. Using the Chain Rule the derivative of $y^3$ is $3y^2 y\primeskip'$.
 
 The second term, $x^2y^4$ is a little more work. It requires the Product Rule as it is the product of two functions of $x$: $x^2$ and $y^4$. We see that $\dfrac{d}{dx}(x^2y^4)$ is
 \begin{gather*}
@@ -127,10 +134,13 @@ ymin=-10.5,ymax=2.49,xmin=-1.5,xmax=10.5,name=myplot,axis equal]
 
 Notice how our curve looks much different than other functions we have worked with up to this point.
 % For one, it fails the vertical line test.
-Such curves are important in many areas of mathematics, so developing tools to deal with them is also important.}
+Such curves are important in many areas of mathematics, so developing tools to deal with them is also important.
+\end{example}
 
-\example{ex_implicit5}{Using Implicit Differentiation}{Given the implicitly defined curve $\sin(x^2y^2)+y^3=x+y$, find $y\primeskip'$.}
-{Differentiating term by term, we find the most difficulty in the first term.  It requires both the Chain and Product Rules.
+\begin{example}[Using Implicit Differentiation]\label{ex_implicit5}
+Given the implicitly defined curve $\sin(x^2y^2)+y^3=x+y$, find $y\primeskip'$.
+\solution
+Differentiating term by term, we find the most difficulty in the first term.  It requires both the Chain and Product Rules.
 \begin{align*}
 	\frac{d}{dx}\left(\sin (x^2y^2)\right)
 	&= \cos(x^2y^2) \cdot \frac{d}{dx} (x^2y^2)\\
@@ -157,7 +167,7 @@ ymin=-1.95,ymax=1.95,xmin=-1.95,xmax=1.95,name=myplot,axis equal]
 \\ (a) \\
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},minor x tick num=1,minor y tick num=1,axis y line=middle,axis x line=middle,ymin=-1.95,ymax=1.95,xmin=-1.95,xmax=1.95,name=myplot,axis equal]
-
+%
 \addplot [draw={\colorone},smooth,thick] coordinates
 	{(-1.91,-1.57) (-1.82,-1.61) (-1.68,-1.61) (-1.7,-1.49) (-1.74,-1.38)
 	 (-1.76,-1.28) (-1.64,-1.26) (-1.54,-1.29) (-1.36,-1.35) (-1.2,-1.42)
@@ -169,12 +179,12 @@ ymin=-1.95,ymax=1.95,xmin=-1.95,xmax=1.95,name=myplot,axis equal]
 	 (0.929,1.05) (1.15,1.07) (1.24,1.13) (1.27,1.25) (1.28,1.37) (1.29,1.49)
 	 (1.36,1.58) (1.47,1.57) (1.59,1.52) (1.68,1.48) (1.79,1.43) (1.89,1.39)
 	 (1.98,1.36) (1.98,1.6)};
-
+%
 \addplot [draw={\colortwo},smooth,thick,domain=-.75:.75] {-x};
 \addplot [draw={\colortwo},smooth,thick,domain=-.75:.75] {0.5*x+1};
 \addplot [draw={\colortwo},smooth,thick,domain=-.75:.75] {0.5*x-1};
 \end{axis}
-
+%
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}
@@ -187,19 +197,19 @@ From here we can safely move around terms to get the following:
 Then we can solve for $y\primeskip'$ to get
 \[y\primeskip' = \frac{1 - 2xy^2\cos(x^2y^2)}{2x^2y\cos(x^2y^2)+3y^2-1}.\]
 
-A graph of this implicit equation is given in \autoref{fig:implicit5}(a). It is easy to verify that the points $(0,0)$, $(0,1)$ and $(0,-1)$ all lie on the graph. We can find the slopes of the tangent lines at each of these points using our formula for $y\primeskip'$. 
-
-At $(0,0)$, the slope is $-1$.
-
-At $(0,1)$, the slope is $1/2$.
-
+A graph of this implicit equation is given in \autoref{fig:implicit5}(a). It is easy to verify that the points $(0,0)$, $(0,1)$ and $(0,-1)$ all lie on the graph. We can find the slopes of the tangent lines at each of these points using our formula for $y\primeskip'$.\\
+At $(0,0)$, the slope is $-1$.\\
+At $(0,1)$, the slope is $1/2$.\\
 At $(0,-1)$, the slope is also $1/2$.\\
-The tangent lines have been added to the graph of the function in \autoref{fig:implicit5}(b).}
+The tangent lines have been added to the graph of the function in \autoref{fig:implicit5}(b).
+\end{example}
 
 Quite a few ``famous'' curves have equations that are given implicitly.  We can use implicit differentiation to find the slope at various points on those curves. We investigate two such curves in the next examples.\bigskip
 
-\example{ex_implicit7}{Finding slopes of tangent lines to a circle}{Find the slope of the tangent line to the circle $x^2+y^2=1$ at the point $(1/2, \sqrt{3}/2)$.}
-{Taking derivatives, we get $2x+2yy\primeskip'=0$.  Solving for $y\primeskip'$  gives: \[\ds y\primeskip' = \frac{-x}{y}.\]
+\begin{example}[Finding slopes of tangent lines to a circle]\label{ex_implicit7}
+Find the slope of the tangent line to the circle $x^2+y^2=1$ at the point $(1/2, \sqrt{3}/2)$.
+\solution
+Taking derivatives, we get $2x+2yy\primeskip'=0$.  Solving for $y\primeskip'$  gives: \[\ds y\primeskip' = \frac{-x}{y}.\]
 This is a clever formula. Recall that the slope of the line through the origin and the point $(x,y)$ on the circle will be $y/x$. We have found that the slope of the tangent line to the circle at that point is the opposite reciprocal of $y/x$, namely, $-x/y$. Hence these two lines are always perpendicular.
 
 At the point $(1/2, \sqrt{3}/2)$, we have the tangent line's slope as
@@ -218,10 +228,12 @@ ymin=-1.2,ymax=1.2,xmin=-1.2,xmax=1.2,name=myplot,axis equal]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}}
+\end{tikzpicture}}
+\end{example}
 
 This section has shown how to find the derivatives of implicitly defined functions, whose graphs include a wide variety of interesting and unusual shapes. Implicit differentiation can also be used to further our understanding of ``regular'' differentiation. 
 
+%% the following derives d/dx x^r, but implicit derivation assumes that the derivative already exists
 %One hole in our current understanding of derivatives is this: what is the derivative of the square root function? That is,
 %\[\frac{d}{dx}\big(\sqrt{x}\big) = \frac{d}{dx}\big(x^{1/2}\big) = \text{?}\]
 %
@@ -254,10 +266,11 @@ This section has shown how to find the derivatives of implicitly defined functio
 %
 %This theorem allows us to say the derivative of $x^\pi$ is $\pi x^{\pi -1}$. 
 %
-%We now apply this final version of the Power Rule in the next example, the second investigation of a ``famous'' curve.\\
+%We now apply this final version of the Power Rule in the next example, the second investigation of a ``famous'' curve.
 %
-%\example{ex_implicit8}{Using the Power Rule}{Find the slope of $x^{2/3}+y^{2/3}=8$ at the point $(8,8)$.}
-%{This is a particularly interesting curve called an \emph{astroid}.  It is the shape traced out by a point on the edge of a circle that is rolling around inside of a larger circle, as shown in \autoref{fig:implicit8}(a).
+%\begin{example}[Using the Power Rule]\label{ex_implicit8}
+%Find the slope of $x^{2/3}+y^{2/3}=8$ at the point $(8,8)$.
+%This is a particularly interesting curve called an \emph{astroid}.  It is the shape traced out by a point on the edge of a circle that is rolling around inside of a larger circle, as shown in \autoref{fig:implicit8}(a).
 %
 %\mtable{An astroid, traced out by a point on the smaller circle as it rolls inside the larger circle, along with a tangent line.}{fig:implicit8}{
 %\begin{tikzpicture}
@@ -295,14 +308,17 @@ This section has shown how to find the derivatives of implicitly defined functio
 %	y\primeskip'&=	-\frac{y^{1/3}}{x^{1/3}} = -\sqrt[3]{\frac{y}x}.
 %\end{align*}
 %
-%Plugging in $x=8$ and $y=8$, we get a slope of $-1$. The astroid, with its tangent line at $(8,8)$, is shown in \autoref{fig:implicit8}(b).}
+%Plugging in $x=8$ and $y=8$, we get a slope of $-1$. The astroid, with its tangent line at $(8,8)$, is shown in \autoref{fig:implicit8}(b).
+%\end{example}
 
 \subsection{Implicit Differentiation and the Second Derivative}
 
 We can use implicit differentiation to find higher order derivatives. In theory, this is simple: first find $\frac{dy}{dx}$, then take its derivative with respect to $x$. In practice, it is not hard, but it often requires a bit of algebra. We demonstrate this in an example.
 
-\example{ex_implicit9}{Finding the second derivative}{Given $x^2+y^2=1$, find $\ds\frac{d^2y}{dx^2} = y\primeskip''$. }
-{We found that $y\primeskip' = \frac{dy}{dx} = -x/y$ in \autoref{ex_implicit7}. To find $y\primeskip''$, we apply implicit differentiation to $y\primeskip'$.
+\begin{example}[Finding the second derivative]\label{ex_implicit9}
+Given $x^2+y^2=1$, find $\ds\frac{d^2y}{dx^2} = y\primeskip''$.
+\solution
+We found that $y\primeskip' = \frac{dy}{dx} = -x/y$ in \autoref{ex_implicit7}. To find $y\primeskip''$, we apply implicit differentiation to $y\primeskip'$.
 \begin{align*}
 	y\primeskip''
 	&= \frac{d}{dx}\big(y\primeskip'\big) \\
@@ -315,7 +331,8 @@ We can use implicit differentiation to find higher order derivatives. In theory,
 	&= -\frac1{y^3}.
 \end{align*}
 %While this is not a particularly simple expression, it is usable.
-We can see that $y\primeskip''>0$ when $y<0$ and $y\primeskip''<0$ when $y>0$. In \autoref{sec:concavity}, we will see how this relates to the shape of the graph.}
+We can see that $y\primeskip''>0$ when $y<0$ and $y\primeskip''<0$ when $y>0$. In \autoref{sec:concavity}, we will see how this relates to the shape of the graph.
+\end{example}
 
 % todo write a better section summary for implicit differentiation
 Implicit differentiation proves to be useful as it allows us to find the instantaneous rates of change of a variety of functions.

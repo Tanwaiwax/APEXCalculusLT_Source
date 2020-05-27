@@ -108,16 +108,19 @@ xmin=2.3,xmax=3.7,name=myplot]
 \\ (b)}
 
 % = {x+2}{6x-1} when x!=3
-\example{ex_limit1}{Approximating the value of a limit}{Use graphical and numerical methods to approximate
-\[\lim_{x\to 3} \frac{x^2-x-6}{6x^2-19x+3}.\]}%
-{To graphically approximate the limit, graph
+\begin{example}[Approximating the value of a limit]\label{ex_limit1}
+Use graphical and numerical methods to approximate
+\[\lim_{x\to 3} \frac{x^2-x-6}{6x^2-19x+3}.\]
+\solution
+To graphically approximate the limit, graph
 \[y = (x^2-x-6)/(6x^2-19x+3)\]
 on a small interval that contains 3. To numerically approximate the limit, create a table of values where the $x$ values are near 3. This is done in \autoref{fig:limit1}.
 
 The graph shows that when $x$ is near 3, the value of $y$ is very near $0.3$. By considering values of $x$ near 3, we see that $y=0.294$ is a better approximation. The graph and the table imply that
-\[\lim_{x\to 3} \frac{x^2-x-6}{6x^2-19x+3} \approx 0.294.\eoehere\]}
+\[\lim_{x\to 3} \frac{x^2-x-6}{6x^2-19x+3} \approx 0.294.\]
+\end{example}
 
-This example may bring up a few questions about approximating limits (and the nature of limits themselves). 
+This example may bring up a few questions about approximating limits (and the nature of limits themselves).
 \begin{enumerate}
 \item If a graph does not produce as good an approximation as a table, why bother with it?
 \item How many values of $x$ in a table are ``enough?'' In the previous example, could we have just used $x=3.001$ and found a fine approximation?
@@ -135,9 +138,9 @@ minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-.1,ymax=1.1,xmin=-1.1,xmax=1.1,name=myplot]
 \addplot [draw={\colorone},thick, smooth,domain=-1:0,samples=2] ({x},{x+1});
 \addplot [draw={\colorone},thick, smooth,domain=0:1,samples=15] ({x},{1-x*x});
-
+%
 \filldraw [thick,fill=white] (axis cs:0,1) circle (1.5pt);
-
+%
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
@@ -154,12 +157,16 @@ ymin=-.1,ymax=1.1,xmin=-1.1,xmax=1.1,name=myplot]
 \end{tabular}
 \\ (b)}
 
-\example{ex_limit2}{Approximating the value of a limit}{Graphically and numerically approximate the limit of $f(x)$ as $x$ approaches 0, where
-\[f(x) = \begin{cases} x+1 & x< 0 \\ -x^2+1 & x > 0 \end{cases}.\]}{Again we graph $f(x)$ and create a table of its values near $x=0$ to approximate the limit. Note that this is a piecewise defined function, so it behaves differently on either side of 0. \autoref{fig:limit2}(a) shows a graph of $f(x)$, and on either side of 0 it seems the $y$ values approach 1. Note that $f(0)$ is not actually defined, as indicated in the graph with the open circle.
+\begin{example}[Approximating the value of a limit]\label{ex_limit2}
+Graphically and numerically approximate the limit of $f(x)$ as $x$ approaches 0, where
+\[f(x) = \begin{cases} x+1 & x< 0 \\ -x^2+1 & x > 0 \end{cases}.\]
+\solution
+Again we graph $f(x)$ and create a table of its values near $x=0$ to approximate the limit. Note that this is a piecewise defined function, so it behaves differently on either side of 0. \autoref{fig:limit2}(a) shows a graph of $f(x)$, and on either side of 0 it seems the $y$ values approach 1. Note that $f(0)$ is not actually defined, as indicated in the graph with the open circle.
 
 The table shown in \autoref{fig:limit2}(b) shows values of $f(x)$ for values of $x$ near 0. It is clear that as $x$ takes on values very near 0, $f(x)$ takes on values very near 1. It turns out that if we let $x=0$ for either ``piece'' of $f(x)$, 1 is returned; this is significant and we'll return to this idea later.
 
-The graph and table allow us to say that $\lim_{x\to 0}f(x) \approx 1$; in fact, we are probably very sure it \textit{equals} 1.}
+The graph and table allow us to say that $\lim_{x\to 0}f(x) \approx 1$; in fact, we are probably very sure it \textit{equals} 1.
+\end{example}
 
 \subsection{Identifying When Limits Do Not Exist}
 
@@ -172,17 +179,18 @@ A function may not have a limit for all values of $x$. That is, we may not be ab
 
 We'll explore each of these in turn.\bigskip
 
-\example{ex_no_limit1}{Different Values Approached From Left and Right}{%
+\begin{example}[Different Values Approached From Left and Right]\label{ex_no_limit1}
 Explore why $\ds\lim_{x\to 1} f(x)$ does not exist, where
-\[f(x) = \begin{cases} x^2-2x+3 & x\leq 1 \\ x & x>1 \end{cases}.\]}%
-{A graph of $f(x)$ around $x=1$ and a table are given in \autoref{fig:nolimit1}.
+\[f(x) = \begin{cases} x^2-2x+3 & x\leq 1 \\ x & x>1 \end{cases}.\]
+\solution
+A graph of $f(x)$ around $x=1$ and a table are given in \autoref{fig:nolimit1}.
 %
 \mtable[-3in]{Graphically and numerically observing no limit as $x\to 1$ in \autoref{ex_no_limit1}.}{fig:nolimit1}{%
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-.1,ymax=3.2,xmin=-.1,xmax=2.1,name=myplot]
-
+%
 \addplot [draw={\colorone},smooth,thick] coordinates {(0.,3.) (0.1,2.81) (0.2,2.64) (0.3,2.49) (0.4,2.36) (0.5,2.25) (0.6,2.16) (0.7,2.09) (0.8,2.04) (0.9,2.01) (1,2)};
 \addplot [draw={\colorone},smooth,thick] coordinates {(1,1) (1.1,1.1) (1.2,1.2) (1.3,1.3) (1.4,1.4) (1.5,1.5) (1.6,1.6) (1.7,1.7) (1.8,1.8) (1.9,1.9) (2.,2.)
 };
@@ -204,12 +212,13 @@ ymin=-.1,ymax=3.2,xmin=-.1,xmax=2.1,name=myplot]
 \end{tabular}
 \\ (b)}
 %
-It is clear that as $x$ approaches 1, $f(x)$ does not seem to approach a single number. Instead, it seems as though $f(x)$ approaches two different numbers. When considering values of $x$ less than 1 (approaching 1 from the left), it seems that $f(x)$ is approaching 2; when considering values of $x$ greater than 1 (approaching 1 from the right), it seems that $f(x)$ is approaching 1. Recognizing this behavior is important; we'll study this in greater depth later. Right now, it suffices to say that the limit does not exist since $f(x)$ is not approaching one value as $x$ approaches 1.}
+It is clear that as $x$ approaches 1, $f(x)$ does not seem to approach a single number. Instead, it seems as though $f(x)$ approaches two different numbers. When considering values of $x$ less than 1 (approaching 1 from the left), it seems that $f(x)$ is approaching 2; when considering values of $x$ greater than 1 (approaching 1 from the right), it seems that $f(x)$ is approaching 1. Recognizing this behavior is important; we'll study this in greater depth later. Right now, it suffices to say that the limit does not exist since $f(x)$ is not approaching one value as $x$ approaches 1.
+\end{example}
 
 \mtable{Graphically and numerically observing no limit as $x\to 1$ in \autoref{ex_no_limit2}.}{fig:nolimit2}{
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},minor x tick num=1,axis y line=middle,axis x line=middle,ymin=-1,ymax=110,xmin=-.1,xmax=2.1,name=myplot]
-
+%
 \addplot [draw={\colorone},smooth,thick] coordinates {(0.,1.) (0.05,1.10803) (0.1,1.23457) (0.15,1.38408) (0.2,1.5625)(0.25,1.77778) (0.3,2.04082) (0.35,2.36686) (0.4,2.77778)(0.45,3.30579) (0.5,4.) (0.55,4.93827) (0.6,6.25) (0.65,8.16327)(0.7,11.1111) (0.75,16.) (0.8,25.) (0.85,44.4444) (0.9,100.) };
 \addplot [draw={\colorone},smooth,thick] coordinates {(1.1,100.) (1.15,44.4444) (1.2,25.) (1.25,16.) (1.3,11.1111) (1.35,8.16327) (1.4,6.25) (1.45,4.93827) (1.5,4.) (1.55,3.30579) (1.6,2.77778) (1.65,2.36686) (1.7,2.04082) (1.75,1.77778) (1.8,1.5625) (1.85,1.38408) (1.9,1.23457) (1.95,1.10803) (2.,1.)};
 \draw [dashed,thick] (axis cs: 1,1) -- (axis cs: 1,100);
@@ -229,19 +238,25 @@ It is clear that as $x$ approaches 1, $f(x)$ does not seem to approach a single 
 \end{tabular}
 \\ (b)}
 
-\example{ex_no_limit2}{The Function Grows Without Bound}{Explore why $\ds\lim_{x\to 1} 1/(x-1)^2$ does not exist.}%
-{A graph and table of $f(x) = 1/(x-1)^2$ are given in \autoref{fig:nolimit2}.
+\begin{example}[The Function Grows Without Bound]\label{ex_no_limit2}
+Explore why $\ds\lim_{x\to 1} 1/(x-1)^2$ does not exist.
+\solution
+A graph and table of $f(x) = 1/(x-1)^2$ are given in \autoref{fig:nolimit2}.
 Both show that as $x$ approaches 1, $f(x)$ grows larger and larger.
 
 We can deduce this on our own, without the aid of the graph and table. If $x$ is near 1, then $(x-1)^2$ is very small, and:
 \[\frac{1}{\text{very small number}} = \text{very large number}.\]
-Since $f(x)$ is not approaching a single number, we conclude that $\ds\lim_{x\to 1}\frac{1}{(x-1)^2}$ does not exist.}
+Since $f(x)$ is not approaching a single number, we conclude that $\ds\lim_{x\to 1}\frac{1}{(x-1)^2}$ does not exist.
+\end{example}
 
-\example{ex_no_limit3}{The Function Oscillates}{Explore why $\ds\lim_{x\to 0}\sin(1/x)$ does not exist.}%
-{Two graphs of $f(x) = \sin(1/x)$ are given in \autoref{fig:nolimit3}. \autoref{fig:nolimit3}(a) shows $f(x)$ on the interval $[-1,1]$; notice how $f(x)$ seems to oscillate near $x=0$. One might think that despite the oscillation, as $x$ approaches 0, $f(x)$ approaches 0. However, \autoref{fig:nolimit3}(b) zooms in on $\sin(1/x)$, on the interval $[-0.1,0.1]$. Here the oscillation is even more pronounced. Finally, in the table in \autoref{fig:nolimit3}(c), we see $\sin(1/x)$ evaluated for values of $x$ near 0. As $x$ approaches 0, $f(x)$ does not appear to approach any value. 
+\begin{example}[The Function Oscillates]\label{ex_no_limit3}
+Explore why $\ds\lim_{x\to 0}\sin(1/x)$ does not exist.
+\solution
+Two graphs of $f(x) = \sin(1/x)$ are given in \autoref{fig:nolimit3}. \autoref{fig:nolimit3}(a) shows $f(x)$ on the interval $[-1,1]$; notice how $f(x)$ seems to oscillate near $x=0$. One might think that despite the oscillation, as $x$ approaches 0, $f(x)$ approaches 0. However, \autoref{fig:nolimit3}(b) zooms in on $\sin(1/x)$, on the interval $[-0.1,0.1]$. Here the oscillation is even more pronounced. Finally, in the table in \autoref{fig:nolimit3}(c), we see $\sin(1/x)$ evaluated for values of $x$ near 0. As $x$ approaches 0, $f(x)$ does not appear to approach any value. 
 
 It can be shown that in reality, as $x$ approaches 0, $\sin(1/x)$ takes on all values between $-1$ and 1 infinitely many times! Because of this oscillation,
-$\ds\lim_{x\to 0}\sin(1/x)$ does not exist.}
+$\ds\lim_{x\to 0}\sin(1/x)$ does not exist.
+\end{example}
 
 \noindent\begin{minipage}[t]{\linewidth}\noindent%
 \captionsetup{type=figure}%
@@ -363,7 +378,9 @@ For small values of $h$, i.e., values of $h$ close to 0, we get average velociti
 
 As we do not yet have a true definition of a limit nor an exact method for computing it, we settle for approximating the value. While we could graph the difference quotient (where the $x$-axis would represent $h$ values and the $y$-axis would represent values of the difference quotient) we settle for making a table. See \autoref{table:diff_quot_smallh}. The table gives us reason to assume the value of the limit is about 8.5. \bigskip
 
-\mtable{The difference quotient for $f(x)=-1.5x^2+11.5x$ evaluated at values of $h$ near 0.}{table:diff_quot_smallh}{\begin{tabular}{lc}
+Proper understanding of limits is key to understanding calculus. With limits, we can accomplish seemingly impossible mathematical things, like adding up an infinite number of numbers (and not get infinity) and finding the slope of a line between two points, where the ``two points'' are actually the same point. These are not just mathematical curiosities; they allow us to link position, velocity and acceleration together, connect cross-sectional areas to volume, find the work done by a variable force, and much more.
+
+\mtable[.25in]{The difference quotient for $f(x)=-1.5x^2+11.5x$ evaluated at values of $h$ near 0.}{table:diff_quot_smallh}{\begin{tabular}{lc}
  $h$ & $\frac{f(1+h)-f(1)}{h}$ \\\midrule
  $-0.5$ & 9.250 \\
  $-0.1$ & 8.650 \\
@@ -384,8 +401,6 @@ As we do not yet have a true definition of a limit nor an exact method for compu
 % (f(1+h)-f(1))/h
 % =-3+11.5-1.5h
 % =8.5-1.5h
-
-Proper understanding of limits is key to understanding calculus. With limits, we can accomplish seemingly impossible mathematical things, like adding up an infinite number of numbers (and not get infinity) and finding the slope of a line between two points, where the ``two points'' are actually the same point. These are not just mathematical curiosities; they allow us to link position, velocity and acceleration together, connect cross-sectional areas to volume, find the work done by a variable force, and much more.
 
 In the next section we give the formal definition of the limit and begin our study of finding limits analytically. In the following exercises, we continue our introduction and approximate the value of limits.
 

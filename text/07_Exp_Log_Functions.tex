@@ -73,12 +73,15 @@ For any base $a>0$, the exponential function $f(x)=a^x$ has derivative $\fp(x)=a
 
 \youtubeVideo{U3PyUcEd7IU}{Derivatives of Exponential Functions}
 
-%\example{ex_exp_derivs}{Finding Exponential Derivatives}{Find derivatives of the following functions.
-%\[\text{1. }f(x)=e^{x^2}\qquad\text{2. }g(t)=t e^t\]}
-%{\begin{enumerate}
+%\begin{example}[Finding Exponential Derivatives]\label{ex_exp_derivs}
+%Find derivatives of the following functions.
+%\[\text{1. }f(x)=e^{x^2}\qquad\text{2. }g(t)=t e^t\]
+%\solution
+%\begin{enumerate}
 %\item We note that this is a composition of functions where the \emph{inside} function is $x^2$. Hence we can apply the Chain Rule to see that: \[\fp(x)=\left(e^{x^2}\right) (2x)\]
-%\item In this case we apply the Product Rule for derivatives to find: \[g\primeskip'(t)=e^t+te^t=e^t(t+1).\eoehere\]
-%\end{enumerate}}
+%\item In this case we apply the Product Rule for derivatives to find: \[g\primeskip'(t)=e^t+te^t=e^t(t+1).\]
+%\end{enumerate}
+%\end{example}
 
 \subsection{General logarithmic functions}
 
@@ -157,25 +160,32 @@ Now we
 can apply the change of base formula to find the derivative of a general logarithmic function:
 \[\frac{d}{dx}\log_ax=\frac{d}{dx}\left(\frac{\ln x}{\ln a}\right) =\frac 1{\ln a}\left(\frac{d}{dx}\ln x\right)=\frac 1{x\ln a}.\]
 
-\example{ex_find_d_exp_log}{Finding Derivatives of Logs and Exponentials}{Find derivatives of the following functions.
+\begin{example}[Finding Derivatives of Logs and Exponentials]\label{ex_find_d_exp_log}
+Find derivatives of the following functions.
 \[
  \text{1.}\quad f(x)=x3^{4x-7}\qquad
  \text{2.}\quad g(x)=2^{x^2}\qquad
  \text{3.}\quad h(x)=\frac x{\log_5x}
-\]}
-{\begin{enumerate}
+\]
+\solution
+\begin{enumerate}
 \item We apply both the Product and Chain Rules:
 \[\fp(x)=3^{4x-7}+x\left(3^{4x-7}\ln 3\right)(4)=(1+4x\ln 3)3^{4x-7}\]
 \item We apply the Chain Rule:
 \[g\primeskip'(x)=2^{x^2}(\ln 2)(2x)=2^{x^2+1}x\ln2.\]
 \item Applying the Quotient Rule:
-\[h\primeskip'(x)=\frac{\log_5x-x\left(\frac1{x\ln 5}\right)}{(\log_5x)^2}=\frac{(\log_5x)(\ln 5)-1}{(\log_5x)^2\ln 5}\eoehere\]
-\end{enumerate}}
+\[h\primeskip'(x)=\frac{\log_5x-x\left(\frac1{x\ln 5}\right)}{(\log_5x)^2}=\frac{(\log_5x)(\ln 5)-1}{(\log_5x)^2\ln 5}\]
+\end{enumerate}
+\end{example}
 
-\example{ex_d_ln_abs_x}{The Derivative of the Natural Log}{Find the derivative of the function $y=\ln\abs x$.}{We can rewrite our function as
+\begin{example}[The Derivative of the Natural Log]\label{ex_d_ln_abs_x}
+Find the derivative of the function $y=\ln\abs x$.
+\solution
+We can rewrite our function as
 \[y=\begin{cases} \ln x & \text{if $x>0$}\\ \ln(-x) & \text{if $x<0$}\\ \end{cases}\]
 Applying the Chain Rule, we see that $\frac{dy}{dx}=\frac 1x$ for $x>0$, and $\frac{dy}{dx}=\frac{-1}{-x}=\frac 1x$ for $x<0$. Hence we have
-\[\frac{d}{dx}\ln\abs x=\frac 1x \quad\text{ for $x\neq0$.}\eoehere\]}
+\[\frac{d}{dx}\ln\abs x=\frac 1x \quad\text{ for $x\neq0$.}\]
+\end{example}
 
 \subsection{Antiderivatives}
 
@@ -200,13 +210,15 @@ Given a base $a>0$ and $a\neq 1$, the following hold:\\
 \end{minipage}
 \end{theorem}
 
-\example{ex_exp_log_anti}{Finding Antiderivatives}{Find the following antiderivatives.
+\begin{example}[Finding Antiderivatives]\label{ex_exp_log_anti}
+Find the following antiderivatives.
 \[
  \text{1. }\int 3^x\,dx\qquad
  \text{2. }\int x^2 e^{x^3}\,dx\qquad
  \text{3. }\int \frac{x\,dx}{x^2+1}
-\]}
-{\begin{enumerate}
+\]
+\solution
+\begin{enumerate}
 \item Applying our theorem, \[\int 3^x\, dx=\frac{3^x}{\ln 3}+C\]
 \item We use the substitution $u=x^3$, $du=3x^2\,dx$:
 \begin{align*}
@@ -219,18 +231,19 @@ Given a base $a>0$ and $a\neq 1$, the following hold:\\
 \int \frac{x\,dx}{x^2+1}&=\frac 12 \int \frac{du}{u}\\
 &=\frac 12 \ln\abs u+C\\
 &=\frac 12 \ln\abs{x^2+1}+C\\
-&=\frac 12 \ln(x^2+1)+C\eoehere
+&=\frac 12 \ln(x^2+1)+
 \end{align*}
-\end{enumerate}}
+\end{enumerate}
+\end{example}
 
 Note that we do not yet have an antiderivative for the function $f(x)=\ln x$. We remedy this in \autoref{sec:IBP} with \autoref{ex_ibp5}.
 % although see Example 2.4.4
 
 %with the following example.
 %
-%\paragraph{Example.} Compute $\int \ln x\,dx$.
+%example: Compute $\int \ln x\,dx$.
 %
-%\paragraph{Solution.} While this does not look like a product of functions, we find integration by parts useful. In particular we use $u=\ln x$, $du=dx/x$, $dv=dx$, and $v=x$:
+%\solution While this does not look like a product of functions, we find integration by parts useful. In particular we use $u=\ln x$, $du=dx/x$, $dv=dx$, and $v=x$:
 %\begin{align*}
 %\int \ln x\,dx &=x\ln x-\int (x)\left(\frac{dx}x\right)\\
 %&=x\ln x-\int dx\\
@@ -256,8 +269,10 @@ The function is not a power function: it has a ``power'' of $x$, not a constant.
 
 A differentiation technique known as \emph{logarithmic differentiation} becomes useful here. The basic principle is this: take the natural log of both sides of an equation $y=f(x)$, then use implicit differentiation to find $y\primeskip'$. We demonstrate this in the following example.
 
-\example{ex_implicit10}{Using Logarithmic Differentiation}{Given $y=x^x$, use logarithmic differentiation to find $y\primeskip'$.}
-{As suggested above, we start by taking the natural log of both sides then applying implicit differentiation.
+\begin{example}[Using Logarithmic Differentiation]\label{ex_implicit10}
+Given $y=x^x$, use logarithmic differentiation to find $y\primeskip'$.
+\solution
+As suggested above, we start by taking the natural log of both sides then applying implicit differentiation.
 \begin{align*}
 y &= x^x \\
 \ln (y) &= \ln (x^x) && \text{\small (apply logarithm rule)}\\
@@ -284,7 +299,8 @@ ymin=-.1,ymax=4.2,xmin=-.1,xmax=2.2]
 
 To ``test'' our answer, let's use it to find the equation of the tangent line at $x=1.5$. The point on the graph our tangent line must pass through is $(1.5, 1.5^{1.5}) \approx (1.5, 1.837)$. Using the equation for $y\primeskip'$, we find the slope as
 \[y\primeskip' = 1.5^{1.5}\big(\ln 1.5+1\big) \approx 1.837(1.405) \approx 2.582.\]
-Thus the equation of the tangent line is $y = 2.582(x-1.5)+1.837$. \autoref{fig:implicit10} graphs $y=x^x$ along with this tangent line.}
+Thus the equation of the tangent line is $y = 2.582(x-1.5)+1.837$. \autoref{fig:implicit10} graphs $y=x^x$ along with this tangent line.
+\end{example}
 
 \printexercises{exercises/07_exp_log_exercises}
 

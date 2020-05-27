@@ -250,8 +250,8 @@ ymin=-1.2,ymax=1.2,xmin=-1.2,xmax=1.2]
 \end{tikzpicture}
 \\[-5pt](b)}
 
-\example{ex_vectorfield1}{Computing divergence and curl of planar vector fields}
-{For each of the planar vector fields given below, view its graph and try to visually determine if its divergence and curl are 0. Then compute the divergence and curl.
+\begin{example}[Computing divergence and curl of planar vector fields]\label{ex_vectorfield1}
+For each of the planar vector fields given below, view its graph and try to visually determine if its divergence and curl are 0. Then compute the divergence and curl.
 
 %\noindent\begin{minipage}[t]{.48\linewidth}
 %\begin{enumerate}
@@ -270,8 +270,9 @@ ymin=-1.2,ymax=1.2,xmin=-1.2,xmax=1.2]
 	\item $\vec F =\bracket{-y,x}$ (see \autoref{fig:vectorfield1a}(b))
 	\item $\vec F =\bracket{x,y}$ (see \autoref{fig:vectorfield1b}(a))
 	\item $\vec F =\bracket{\cos y, \sin x}$ (see \autoref{fig:vectorfield1b}(b))
-\end{enumerate}}
-{\begin{enumerate}
+\end{enumerate}
+\solution
+\begin{enumerate}
 	\item The arrow sizes are constant along any horizontal line, so if one were to draw a small box anywhere on the graph, it would seem that the same amount of fluid would enter the box as exit. Therefore it seems the divergence is zero; it is, as 
 	\[
 	\divv\vec F
@@ -369,17 +370,18 @@ ymin=-7,ymax=7,xmin=-7,xmax=7]
 	= \frac{\partial}{\partial x}(\sin x) - \frac{\partial}{\partial y}(\cos y)
 	= \cos x + \sin y.
 	\]
-	Depending on the values of $x$ and $y$, the curl may be positive, negative, or zero.\eoehere
-\end{enumerate}}
+	Depending on the values of $x$ and $y$, the curl may be positive, negative, or zero.
+\end{enumerate}
+\end{example}
 
-\example{ex_vectorfield2}{Computing divergence and curl of vector fields in space}
-{Compute the divergence and curl of each of the following vector fields.
+\begin{example}[Computing divergence and curl of vector fields in space]\label{ex_vectorfield2}
+Compute the divergence and curl of each of the following vector fields.
 \begin{enumerate}
 	\item $\vec F =\bracket{x^2+y+z, -x-z, x+y}$
 	\item	$\vec F =\bracket{e^{xy}, \sin(x+z),x^2+y}$
 \end{enumerate}
-}
-{We compute the divergence and curl of each field following the definitions.
+\solution
+We compute the divergence and curl of each field following the definitions.
 \begin{enumerate}
 	\item $\divv \vec F = \nabla \cdot \vec F = M_x+N_y+P_z = 2x+0+0= 2x.$
 	
@@ -390,12 +392,13 @@ ymin=-7,ymax=7,xmin=-7,xmax=7]
 	\item $\divv \vec F = \nabla \cdot \vec F = M_x+N_y+P_z = ye^{xy}+0+0= ye^{xy}.$
 		
 	$\begin{aligned}\curl\vec F = \nabla \times \vec F &=\bracket{P_y-N_z,M_z-P_x,N_x - M_y}\\ &=\bracket{1-\cos(x+z), -2x, \cos(x+z) - xe^{xy}}.\eoehere \end{aligned}$
-\end{enumerate}}
+\end{enumerate}
+\end{example}
 
-\example{ex_vectorfield3}{Creating a field representing gravitational force}
-{The force of gravity between two objects is inversely proportional to the square of the distance between the objects. Locate a point mass at the origin. Create a vector field $\vec F$ that represents the gravitational pull of the point mass at any point $(x,y,z)$. Find the divergence and curl of this field. 
-}
-{The point mass pulls toward the origin, so at $(x,y,z)$, the force will pull in the direction of $\bracket{-x, -y, -z}$. To get the proper magnitude, it will be useful to find the unit vector in this direction. Dividing by its magnitude, we have
+\begin{example}[Creating a field representing gravitational force]\label{ex_vectorfield3}
+The force of gravity between two objects is inversely proportional to the square of the distance between the objects. Locate a point mass at the origin. Create a vector field $\vec F$ that represents the gravitational pull of the point mass at any point $(x,y,z)$. Find the divergence and curl of this field.
+\solution
+The point mass pulls toward the origin, so at $(x,y,z)$, the force will pull in the direction of $\bracket{-x, -y, -z}$. To get the proper magnitude, it will be useful to find the unit vector in this direction. Dividing by its magnitude, we have
 \[
 \vec u
 = \bracket{\frac{-x}{\sqrt{x^2+y^2+z^2}}, \frac{-y}{\sqrt{x^2+y^2+z^2}},\frac{-z}{\sqrt{x^2+y^2+z^2}}}.
@@ -427,7 +430,8 @@ ymin=-1.2,ymax=1.2,xmin=-1.2,xmax=1.2]
 \]
 We leave it to the reader to confirm that $\divv \vec F = 0$ and $\curl \vec F = \vec 0$.
 
-The analogous planar vector field is given in \autoref{fig:vectorfield3}. Note how all arrows point to the origin, and the magnitude gets very small when ``far'' from the origin.}
+The analogous planar vector field is given in \autoref{fig:vectorfield3}. Note how all arrows point to the origin, and the magnitude gets very small when ``far'' from the origin.
+\end{example}
 
 A function $z=f(x,y)$ naturally induces a vector field, $\vec F = \nabla f =\bracket{f_x,f_y}$. Given what we learned of the gradient in \autoref{sec:directional_derivative}, we know that the vectors of $\vec F$ point in the direction of greatest increase of $f$. Because of this, $f$ is said to be the \sword{potential function}\index{potential function}\index{vector field!potential function of} of $\vec F$. Vector fields that are the gradient of potential functions will play an important role in the next section.
 
@@ -460,12 +464,13 @@ ymin=-1.2,ymax=1.2,xmin=-1.2,xmax=1.2]
 3Dlights=Headlamp}{width=1.16\marginparwidth}{figures/figvectorfield4b_3D}
 \\(b)}
 
-\example{ex_vectorfield4}{A vector field that is the gradient of a potential function}
-{Let $f(x,y) = 3-x^2-2y^2$ and let $\vec F = \nabla f$. Graph $\vec F$, and find the divergence and curl of $\vec F$. 
-}
-{Given $f$, we find $\vec F = \nabla f =\bracket{-2x,-4y}$. A graph of $\vec F$ is given in \autoref{fig:vectorfield4}(a). In part (b) of the figure, the vector field is given along with a graph of the surface itself; one can see how each vector is pointing in the direction of ``steepest uphill'', which, in this case, is not simply just ``toward the origin.''
+\begin{example}[A vector field that is the gradient of a potential function]\label{ex_vectorfield4}
+Let $f(x,y) = 3-x^2-2y^2$ and let $\vec F = \nabla f$. Graph $\vec F$, and find the divergence and curl of $\vec F$.
+\solution
+Given $f$, we find $\vec F = \nabla f =\bracket{-2x,-4y}$. A graph of $\vec F$ is given in \autoref{fig:vectorfield4}(a). In part (b) of the figure, the vector field is given along with a graph of the surface itself; one can see how each vector is pointing in the direction of ``steepest uphill'', which, in this case, is not simply just ``toward the origin.''
 
-We leave it to the reader to confirm that $\divv \vec F = -6$ and $\curl \vec F = 0$.}
+We leave it to the reader to confirm that $\divv \vec F = -6$ and $\curl \vec F = 0$.
+\end{example}
 
 There are some important concepts visited in this section that will be revisited in subsequent sections and again at the very end of this chapter. One is: given a vector field $\vec F$, both $\divv\vec F$ and $\curl\vec F$ are measures of rates of change of $\vec F$. The divergence measures how much the field spreads (diverges) at a point, and the curl measures how much the field twists (curls) at a point. Another important concept is this: given $z=f(x,y)$, the gradient $\nabla f$ is also a measure of a rate of change of $f$. We will see how the integrals of these rates of change produce meaningful results.
 

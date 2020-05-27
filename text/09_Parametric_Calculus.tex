@@ -36,12 +36,14 @@ As with the tangent line we note that it is possible for a normal line to be ver
 
 \youtubeVideo{k5QnaGVk1JI}{Derivatives of Parametric Functions}
 
-\example{ex_parcalc1}{Tangent and Normal Lines to Curves}{Let $x=5t^2-6t+4$ and $y=t^2+6t-1$, and let $C$ be the curve defined by these equations.
+\begin{example}[Tangent and Normal Lines to Curves]\label{ex_parcalc1}
+Let $x=5t^2-6t+4$ and $y=t^2+6t-1$, and let $C$ be the curve defined by these equations.
 \begin{enumerate}
 	\item	Find the equations of the tangent and normal lines to $C$ at $t=3$.
 	\item	Find where $C$ has vertical and horizontal tangent lines.
-\end{enumerate}}
-{\begin{enumerate}
+\end{enumerate}
+\solution
+\begin{enumerate}
 	\item We start by computing $\fp(t) = 10t-6$ and $g\primeskip'(t) =2t+6$. Thus \[\frac{dy}{dx} = \frac{2t+6}{10t-6}.\]
 	Make note of something that might seem unusual: $\frac{dy}{dx}$ is a function of $t$, not $x$. Just as points on the curve are found in terms of $t$, so are the slopes of the tangent lines.
 
@@ -76,15 +78,18 @@ minor y tick num=1,ymin=-20,ymax=55,xmin=-5,xmax=90]
 	\[\fp(t)=0 \quad \Rightarrow \quad 10t-6=0 \quad \Rightarrow \quad t=0.6.\]
 	The point on $C$ corresponding to $t=0.6$ is $(2.2,2.96)$. The tangent line at that point is $x=2.2$.
 	
-	The points where the tangent lines are vertical and horizontal are indicated on the graph in \autoref{fig:parcalc1}.\eoehere
-\end{enumerate}}
-	
-\example{ex_parcalc2}{Tangent and Normal Lines to a Circle}{\mbox{}\\[-2\baselineskip]
+	The points where the tangent lines are vertical and horizontal are indicated on the graph in \autoref{fig:parcalc1}.
+\end{enumerate}
+\end{example}
+
+% todo Tim check v spacing	
+\begin{example}[Tangent and Normal Lines to a Circle]\label{ex_parcalc2}
 \begin{enumerate}
 	\item	Find where the unit circle, defined by $x=\cos t$ and $y=\sin t$ on $[0,2\pi]$, has vertical and horizontal tangent lines. 
 	\item	 Find the equation of the normal line at $t=t_0$.
-\end{enumerate}}
-{\begin{enumerate}
+\end{enumerate}
+\solution
+\begin{enumerate}
 	\item We compute the derivative following \autoref{idea:dydxpar}:
 	\[\frac{dy}{dx} = \frac{g\primeskip'(t)}{\fp(t)} = -\frac{\cos t}{\sin t}.\]
 	The derivative is $0$ when $\cos t= 0$; that is, when $t=\pi/2,\ 3\pi/2$. These are the points $(0,1)$ and $(0,-1)$ on the circle.
@@ -108,11 +113,12 @@ ymin=-1.1,ymax=1.1,xmin=-1.3,xmax=1.3,axis equal]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}%
 %
-as long as $\cos t_0\neq 0$. It is an important fact to recognize that the normal lines to a circle pass through its center, as illustrated in \autoref{fig:parcalc2}. Stated in another way, any line that passes through the center of a circle intersects the circle at right angles.\eoehere
-\end{enumerate}}
+as long as $\cos t_0\neq 0$. It is an important fact to recognize that the normal lines to a circle pass through its center, as illustrated in \autoref{fig:parcalc2}. Stated in another way, any line that passes through the center of a circle intersects the circle at right angles.
+\end{enumerate}
+\end{example}
 
-\example{ex_parcalc3}{Tangent lines when $\frac{dy}{dx}$ is not defined}
-{Find the equation of the tangent line to the astroid $x=\cos^3 t$, $y=\sin^3t$ at $t=0$, shown in \autoref{fig:parcalc3}.
+\begin{example}[Tangent lines when $\frac{dy}{dx}$ is not defined]\label{ex_parcalc3}
+Find the equation of the tangent line to the astroid $x=\cos^3 t$, $y=\sin^3t$ at $t=0$, shown in \autoref{fig:parcalc3}.
 %
 \mtable{A graph of an astroid.}{fig:parcalc3}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -125,8 +131,8 @@ ymin=-1.1,ymax=1.1,xmin=-1.1,xmax=1.1,axis equal]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 %
-}
-{We start by finding $x\primeskip'(t)$ and $y\primeskip'(t)$:
+\solution
+We start by finding $x\primeskip'(t)$ and $y\primeskip'(t)$:
 \[x\primeskip'(t) = -3\sin t\cos^2t, \qquad y\primeskip'(t) = 3\cos t\sin^2t.\]
 Note that both of these are 0 at $t=0$; the curve is not smooth at $t=0$ forming a cusp on the graph. Evaluating $\frac{dy}{dx}$ at this point returns the indeterminate form of ``0/0''. 
 %$\frac{dy}{dx}$:
@@ -144,7 +150,8 @@ We can, however, examine the slopes of tangent lines near $t=0$, and take the li
 \end{align*}
 We have accomplished something significant. When the derivative $\frac{dy}{dx}$ returns an indeterminate form at $t=t_0$, we can define its value by setting it to be $\ds \lim_{t\to t_0}\frac{dy}{dx}$, if that limit exists. This allows us to find slopes of tangent lines at cusps, which can be very beneficial. 
 
-We found the slope of the tangent line at $t=0$ to be 0; therefore the tangent line is $y=0$, the $x$-axis.}
+We found the slope of the tangent line at $t=0$ to be 0; therefore the tangent line is $y=0$, the $x$-axis.
+\end{example}
 
 \subsection{Concavity}
 
@@ -176,8 +183,10 @@ Let $x=f(t)$ and $y=g(t)$ be twice differentiable functions on an open interval 
 
 Examples will help us understand this Key Idea.
 
-\example{ex_parcalc4}{Concavity of Plane Curves}{Let $x=5t^2-6t+4$ and $y=t^2+6t-1$ as in \autoref{ex_parcalc1}. Determine the $t$-intervals on which the graph is concave up/down.}
-{Concavity is determined by the second derivative of $y$ with respect to $x$, $\frac{d^2y}{dx^2}$, so we compute that here following \autoref{idea:second_der_par}.
+\begin{example}[Concavity of Plane Curves]\label{ex_parcalc4}
+Let $x=5t^2-6t+4$ and $y=t^2+6t-1$ as in \autoref{ex_parcalc1}. Determine the $t$-intervals on which the graph is concave up/down.
+\solution
+Concavity is determined by the second derivative of $y$ with respect to $x$, $\frac{d^2y}{dx^2}$, so we compute that here following \autoref{idea:second_der_par}.
 
 In \autoref{ex_parcalc1}, we found $\ds\frac{dy}{dx} = \frac{2t+6}{10t-6}$ and $\fp(t) = 10t-6$. So:
 \begin{align*}
@@ -209,10 +218,13 @@ As the numerator of $\ds -\frac{9}{(5t-3)^3}$ is never 0, $\frac{d^2y}{dx^2} \ne
 \includecodegraphics{figures/matrices/paramcalc}
 \end{center}
 
-Reviewing \autoref{ex_parcalc1}, we see that when $t=3/5=0.6$, the graph of the parametric equations has a vertical tangent line. This point is also a point of inflection for the graph, illustrated in \autoref{fig:parcalc4}.}
+Reviewing \autoref{ex_parcalc1}, we see that when $t=3/5=0.6$, the graph of the parametric equations has a vertical tangent line. This point is also a point of inflection for the graph, illustrated in \autoref{fig:parcalc4}.
+\end{example}
 
-\example{ex_parcalc5}{Concavity of Plane Curves}{Find the points of inflection of the graph of the parametric equations $x=\sqrt{t}$, $y=\sin t$, for $0\leq t\leq 16$.}
-{We need to compute $\frac{dy}{dx}$ and $\frac{d^2y}{dx^2}$. 
+\begin{example}[Concavity of Plane Curves]\label{ex_parcalc5}
+Find the points of inflection of the graph of the parametric equations $x=\sqrt{t}$, $y=\sin t$, for $0\leq t\leq 16$.
+\solution
+We need to compute $\frac{dy}{dx}$ and $\frac{d^2y}{dx^2}$. 
 \begin{gather*}
 \frac{dy}{dx} = \frac{y\primeskip'(t)}{x\primeskip'(t)}
 = \frac{\cos t}{1/(2\sqrt{t})} = 2\sqrt{t}\cos t.\\
@@ -255,7 +267,8 @@ ymin=-1.1,ymax=1.1,xmin=-.5,xmax=4.5]
 
 In \autoref{fig:parcalc5}(a) we see a plot of the second derivative. It shows that it has zeros at approximately $t=0.5,\ 3.5,\ 6.5,\ 9.5,\ 12.5$ and $16$. These approximations are not very good, made only by looking at the graph. Newton's Method provides more accurate approximations. Accurate to 2 decimal places, we have:
 \[t=0.65,\ 3.29,\ 6.36,\ 9.48,\ 12.61\ \text{and}\ 15.74.\]
-The corresponding points have been plotted on the graph of the parametric equations in \autoref{fig:parcalc5}(b). Note how most occur near the $x$-axis, but not exactly on the axis.}
+The corresponding points have been plotted on the graph of the parametric equations in \autoref{fig:parcalc5}(b). Note how most occur near the $x$-axis, but not exactly on the axis.
+\end{example}
 
 
 \subsection{Area with Parametric Equations}
@@ -285,9 +298,12 @@ On the other hand, if we should happen to have $b=f(\alpha)$ and $a=f(\beta)$, t
 
 Let's work an example.
 
-\example{eg_cycloid_area}{Finding the area under a parametric curve}{Determine the area under the cycloid given by the parametric equations
-\[x=6(\theta-\sin\theta)\qquad y=6(1-\cos\theta)\qquad 0\le\theta\le2\pi.\]}{First, notice that we've switched the parameter to $\theta$ for this problem.  This is to make sure that we don't get too locked into always having $t$ as the parameter.
- 
+\begin{example}[Finding the area under a parametric curve]\label{eg_cycloid_area}
+Determine the area under the cycloid given by the parametric equations
+\[x=6(\theta-\sin\theta)\qquad y=6(1-\cos\theta)\qquad 0\le\theta\le2\pi.\]
+\solution
+First, notice that we've switched the parameter to $\theta$ for this problem.  This is to make sure that we don't get too locked into always having $t$ as the parameter.
+
 Now, we could graph this to verify that the curve is traced out exactly once for the given range if we wanted to.
  
 There really isn't too much to this example other than plugging the parametric equations into the formula.  We'll first need the derivative of the parametric equation for $x$ however.
@@ -299,8 +315,9 @@ A
 &=36\int_0^{2\pi}1-2\cos\theta+\cos^2\theta\ d\theta\\
 &=36\int_0^{2\pi}\frac32-2\cos\theta+\frac12\cos(2\theta)\ d\theta\\
 &=36\left[\frac32\theta-2\sin\theta+\frac14\sin(2\theta)\right]_0^{2\pi}\\
-&=108\pi.\eoehere
-\end{align*}}
+&=108\pi.
+\end{align*}
+\end{example}
 
 
 \subsection{Arc Length}
@@ -329,9 +346,10 @@ Let $x=f(t)$ and $y=g(t)$ be parametric equations with $\fp$ and $g\primeskip'$ 
 
 As before, these integrals are often not easy to compute. We start with a simple example, then give  another where we approximate the solution.
 
-\example{ex_parcalc6}{Arc Length of a Circle}{Find the arc length of the circle parameterized by $x=3\cos t$, $y=3\sin t$ on $[0,3\pi/2]$. 
-}
-{By direct application of \autoref{thm:arc_length_parametric}, we have
+\begin{example}[Arc Length of a Circle]\label{ex_parcalc6}
+Find the arc length of the circle parameterized by $x=3\cos t$, $y=3\sin t$ on $[0,3\pi/2]$. 
+\solution
+By direct application of \autoref{thm:arc_length_parametric}, we have
 \begin{align*}
 L &= \int_0^{3\pi/2} \sqrt{(-3\sin t)^2 +(3\cos t)^2} \ dt.\\
 \intertext{Apply the Pythagorean Theorem.}
@@ -339,9 +357,11 @@ L &= \int_0^{3\pi/2} \sqrt{(-3\sin t)^2 +(3\cos t)^2} \ dt.\\
 	&= 3t\Big|_0^{3\pi/2} = 9\pi/2.
 	\end{align*}
 	
-This should make sense; we know from geometry that the circumference of a circle with radius 3 is $6\pi$; since we are finding the arc length of $3/4$ of a circle, the arc length is $3/4\cdot 6\pi = 9\pi/2$.}
+This should make sense; we know from geometry that the circumference of a circle with radius 3 is $6\pi$; since we are finding the arc length of $3/4$ of a circle, the arc length is $3/4\cdot 6\pi = 9\pi/2$.
+\end{example}
 
-\example{ex_parcalc7}{Arc Length of a Parametric Curve}{The graph of the parametric equations $x=t(t^2-1)$, $y=t^2-1$ crosses itself as shown in \autoref{fig:parcalc7}, forming a ``teardrop.'' Find the arc length of the teardrop.
+\begin{example}[Arc Length of a Parametric Curve]\label{ex_parcalc7}
+The graph of the parametric equations $x=t(t^2-1)$, $y=t^2-1$ crosses itself as shown in \autoref{fig:parcalc7}, forming a ``teardrop.'' Find the arc length of the teardrop.
 %
 \mtable{A graph of the parametric equations in \autoref{ex_parcalc7}, where the arc length of the teardrop is calculated.}{fig:parcalc7}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -351,13 +371,15 @@ ymin=-1.1,ymax=1.1,xmin=-1.1,xmax=1.1]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $t$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}}
-{We can see by the parameterizations of $x$ and $y$ that when $t=\pm 1$, $x=0$ and $y=0$. This means we'll integrate from $t=-1$ to $t=1$. Applying \autoref{thm:arc_length_parametric}, we have
+\end{tikzpicture}}
+\solution
+We can see by the parameterizations of $x$ and $y$ that when $t=\pm 1$, $x=0$ and $y=0$. This means we'll integrate from $t=-1$ to $t=1$. Applying \autoref{thm:arc_length_parametric}, we have
 \begin{align*}
 L 	&= \int_{-1}^1\sqrt{(3t^2-1)^2+(2t)^2}\ dt\\
 		&=	\int_{-1}^1 \sqrt{9t^4-2t^2+1} \ dt.
 \end{align*}
-Unfortunately, the integrand does not have an antiderivative expressible by elementary functions. We turn to numerical integration to approximate its value. Using 4 subintervals, Simpson's Rule approximates the value of the integral as $2.65051$. Using a computer, more subintervals are easy to employ, and $n=20$ gives a value of $2.71559$. Increasing $n$ shows that this value is stable and a good approximation of the actual value.}
+Unfortunately, the integrand does not have an antiderivative expressible by elementary functions. We turn to numerical integration to approximate its value. Using 4 subintervals, Simpson's Rule approximates the value of the integral as $2.65051$. Using a computer, more subintervals are easy to employ, and $n=20$ gives a value of $2.71559$. Increasing $n$ shows that this value is stable and a good approximation of the actual value.
+\end{example}
 
 % todo Tim Rogowski has a subsection on speed at this point.  Stewart doesn't.
 
@@ -392,13 +414,16 @@ Consider the graph of the parametric equations $x=f(t)$ and $y=g(t)$, where $\fp
 %{scale=1.5,trim=5mm 5mm 5mm 5mm,clip}{0in}{figures/figparcalc8}
 }
 
-\example{ex_parcalc8}{Surface Area of a Solid of Revolution}{Consider the teardrop shape formed by the parametric equations $x=t(t^2-1)$, $y=t^2-1$ as seen in \autoref{ex_parcalc7}. Find the surface area if this shape is rotated about the $x$-axis, as shown in \autoref{fig:parcalc8}.}
-{The teardrop shape is formed between $t=-1$ and $t=1$. Using \autoref{idea:surface_area_parametric}, we see we need for $g(t)\geq 0$ on $[-1,1]$, and this is not the case. To fix this, we simplify replace $g(t)$ with $-g(t)$, which flips the whole graph about the $x$-axis (and does not change the surface area of the resulting solid). The surface area is: 
+\begin{example}[Surface Area of a Solid of Revolution]\label{ex_parcalc8}
+Consider the teardrop shape formed by the parametric equations $x=t(t^2-1)$, $y=t^2-1$ as seen in \autoref{ex_parcalc7}. Find the surface area if this shape is rotated about the $x$-axis, as shown in \autoref{fig:parcalc8}.
+\solution
+The teardrop shape is formed between $t=-1$ and $t=1$. Using \autoref{idea:surface_area_parametric}, we see we need for $g(t)\geq 0$ on $[-1,1]$, and this is not the case. To fix this, we simplify replace $g(t)$ with $-g(t)$, which flips the whole graph about the $x$-axis (and does not change the surface area of the resulting solid). The surface area is: 
 \begin{align*}
 \text{Area}\ S &= 2\pi\int_{-1}^1 (1-t^2)\sqrt{(3t^2-1)^2+(2t)^2}\ dt\\
 		&=	2\pi\int_{-1}^1 (1-t^2)\sqrt{9t^4-2t^2+1} \ dt.
 		\end{align*}
-Once again we arrive at an integral that we cannot compute in terms of elementary functions. Using Simpson's Rule with $n=20$, we find the area to be $S=9.44$. Using larger values of $n$ shows this is accurate to 2 places after the decimal.}
+Once again we arrive at an integral that we cannot compute in terms of elementary functions. Using Simpson's Rule with $n=20$, we find the area to be $S=9.44$. Using larger values of $n$ shows this is accurate to 2 places after the decimal.
+\end{example}
 
 After defining a new way of creating curves in the plane, in this section we have applied calculus techniques to the parametric equation defining these curves to study their properties. In the next section, we define another way of forming curves in the plane. To do so, we create a new coordinate system, called \emph{polar coordinates}, that identifies points in the plane in a manner different than from measuring distances from the $y$- and $x$- axes.
 

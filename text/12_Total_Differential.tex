@@ -11,12 +11,16 @@ Let $z=f(x,y)$ be continuous on an open set $S$. Let $dx$ and $dy$ represent cha
 
 \youtubeVideo{C1Xcj5Xmngc}{Differentials of Functions of Two Variables}
 
-\enlargethispage{\baselineskip} % otherwise, the next example ends, but the mark doesn't get drawn until the next page
+% todo Tim check example line in 3d total differential
+%\enlargethispage{\baselineskip} % otherwise, the next example ends, but the mark doesn't get drawn until the next page
 % maybe if we drew the full example line at the beginning instead of the end?
 
-\example{ex_total_diff_10}{Finding the total differential}{Let $z = x^4e^{3y}$. Find $dz$.}
-{We compute the partial derivatives: $f_x = 4x^3e^{3y}$ and $f_y = 3x^4e^{3y}$. Following \autoref{def:total_differential}, we have
-\[dz = 4x^3e^{3y}dx+3x^4e^{3y}dy.\eoehere\]}
+\begin{example}[Finding the total differential]\label{ex_total_diff_10}
+Let $z = x^4e^{3y}$. Find $dz$.
+\solution
+We compute the partial derivatives: $f_x = 4x^3e^{3y}$ and $f_y = 3x^4e^{3y}$. Following \autoref{def:total_differential}, we have
+\[dz = 4x^3e^{3y}dx+3x^4e^{3y}dy.\]
+\end{example}
 
 We \emph{can} approximate $\Delta z$ with $dz$, but as with all approximations, there is error involved. A good approximation is one in which the error is small. At a given point $(x_0,y_0)$, let $E_1$ and $E_2$ be functions of $dx$ and $dy$ such that $E_1dx+E_2dy$ describes this error. Then
 \begin{align*}
@@ -37,8 +41,10 @@ Let $z=f(x,y)$ be defined on an open set $S$ containing $(x_0,y_0)$ where $f_x(x
 \end{enumerate}
 \end{definition}
 
-\example{ex_totaldiff1}{Showing a function is differentiable}{Show $f(x,y) = xy+3y^2$ is differentiable using \autoref{def:multi_differentiability}.}
-{We begin by finding $f(x+dx,y+dy)$, $\Delta z$, $f_x$ and $f_y$.
+\begin{example}[Showing a function is differentiable]\label{ex_totaldiff1}
+Show $f(x,y) = xy+3y^2$ is differentiable using \autoref{def:multi_differentiability}.
+\solution
+We begin by finding $f(x+dx,y+dy)$, $\Delta z$, $f_x$ and $f_y$.
 \begin{align*}
 f(x+dx,y+dy) &= (x+dx)(y+dy) + 3(y+dy)^2 \\
 						&= xy + xdy+ydx+dxdy + 3y^2+6ydy+3dy^2.
@@ -52,7 +58,8 @@ It is straightforward to compute $f_x = y$ and $f_y = x+6y$. Consider once more 
 		&= \underbrace{(y)}_{f_x}dx + \underbrace{(x+6y)}_{f_y}dy + \underbrace{(dy)}_{E_1}dx+\underbrace{(3dy)}_{E_2}dy\\
 		&= f_xdx + f_ydy + E_1dx+E_2dy.
 \end{align*}
-With $E_1 = dy$ and $E_2 = 3dy$, it is clear that as $dx$ and $dy$ go to 0, $E_1$ and $E_2$ also go to 0. Since this did not depend on a specific point $(x_0,y_0)$, we can say that $f(x,y)$ is differentiable for all pairs $(x,y)$ in $\mathbb{R}^2$, or, equivalently, that $f$ is differentiable everywhere. }
+With $E_1 = dy$ and $E_2 = 3dy$, it is clear that as $dx$ and $dy$ go to 0, $E_1$ and $E_2$ also go to 0. Since this did not depend on a specific point $(x_0,y_0)$, we can say that $f(x,y)$ is differentiable for all pairs $(x,y)$ in $\mathbb{R}^2$, or, equivalently, that $f$ is differentiable everywhere.
+\end{example}
 
 Our intuitive understanding of differentiability of functions $y=f(x)$ of one variable was that the graph of $f$ was ``smooth.'' A similar intuitive understanding of functions $z=f(x,y)$ of two variables is that the surface defined by $f$ is also ``smooth,'' not containing cusps, edges, breaks,  etc. The following theorem
 %states that differentiable functions are continuous, followed by another theorem that 
@@ -94,9 +101,10 @@ The theorems assure us that essentially all functions that we see in the course 
 
 By the definition, when $f$ is differentiable $dz$ is a good approximation for $\Delta z$ when $dx$ and $dy$ are small. We give some simple examples of how this is used here.
 
-\example{ex_totaldiff2}{Approximating with the total differential}
-{Let $f(x,y)=\sqrt{x}\sin y$. Approximate $f(4.1,0.2)$.}
-{We can approximate $f(4.1,0.2)$ using $f(4,0)=0$. Without calculus, this is the best approximation we could reasonably come up with. The total differential gives us a way of adjusting this initial approximation to hopefully get a more accurate answer.
+\begin{example}[Approximating with the total differential]\label{ex_totaldiff2}
+Let $f(x,y)=\sqrt{x}\sin y$. Approximate $f(4.1,0.2)$.
+\solution
+We can approximate $f(4.1,0.2)$ using $f(4,0)=0$. Without calculus, this is the best approximation we could reasonably come up with. The total differential gives us a way of adjusting this initial approximation to hopefully get a more accurate answer.
 
 We let $\Delta z = f(4.1,0.2) - f(4,0)$. The total differential $dz$ is approximately equal to $\Delta z$, so
 \begin{equation}
@@ -119,7 +127,8 @@ dz(4,0) = f_x(4,0)(0.1) + f_y(4,0)(0.2)
 \]
 Returning to \autoeqref{eq:totaldiff2}, we have
 \[f(4.1,0.2) \approx 0.4 + 0 = .4.\]
-We, of course, can compute the actual value of $f(4.1,0.2)$ with a calculator; to 5 places after the decimal, this is $0.40228$. Obviously our approximation is quite good.}
+We, of course, can compute the actual value of $f(4.1,0.2)$ with a calculator; to 5 places after the decimal, this is $0.40228$. Obviously our approximation is quite good.
+\end{example}
 
 The point of the previous example was \textit{not} to develop an approximation method for known functions. After all, we can very easily compute $f(4.1,0.2)$ using readily available technology. Rather, it serves to illustrate how well this method of approximation works, and to reinforce the following concept:
 \begin{center}
@@ -131,27 +140,33 @@ In the previous example, we could easily compute $f(4,0)$ and could approximate 
 
 It may be surprising to learn that it is not uncommon to know the values of $f$, $f_x$ and $f_y$ at a particular point without actually knowing the function $f$. The total differential gives a good method of approximating $f$ at nearby points.
 
-\example{ex_totaldiff3}{Approximating an unknown function}{Given that $f(2,-3) = 6$, $f_x(2,-3) = 1.3$ and $f_y(2,-3) = -0.6$, approximate $f(2.1,-3.03)$.}
-{The total differential approximates how much $f$ changes from the point $(2,-3)$ to the point $(2.1,-3.03)$. With $dx = 0.1$ and $dy = -0.03$, we have
+\begin{example}[Approximating an unknown function]\label{ex_totaldiff3}
+Given that $f(2,-3) = 6$, $f_x(2,-3) = 1.3$ and $f_y(2,-3) = -0.6$, approximate $f(2.1,-3.03)$.
+\solution
+The total differential approximates how much $f$ changes from the point $(2,-3)$ to the point $(2.1,-3.03)$. With $dx = 0.1$ and $dy = -0.03$, we have
 \begin{align*}
 dz &= f_x(2,-3)dx + f_y(2,-3)dy\\
 		&= 1.3(0.1) + (-0.6)(-0.03) \\
 		&= 0.148.
 \end{align*}
-The change in $z$ is approximately $0.148$, so we approximate $f(2.1,-3.03)\approx 6.148.$}
+The change in $z$ is approximately $0.148$, so we approximate $f(2.1,-3.03)\approx 6.148$.
+\end{example}
 
 \subsection{Error/Sensitivity Analysis}
 
 The total differential gives an approximation of the change in $z$ given small changes in $x$ and $y$. We can use this to approximate error propagation; that is, if the input is a little off from what it should be, how far from correct will the output be? We demonstrate this in an example.
 \index{sensitivity analysis}\index{total differential!sensitivity analysis}
 
-\example{ex_totaldiff4}{Sensitivity analysis}{A cylindrical steel storage tank is to be built that is 10ft tall and 4ft across in diameter. It is known that the steel will expand/contract with temperature changes; is the overall volume of the tank more sensitive to changes in the diameter or in the height of the tank?}
-{A cylindrical solid with height $h$ and radius $r$ has volume $V = \pi r^2h$. We can view $V$ as a function of two variables, $r$ and $h$. We can compute partial derivatives of $V$:
+\begin{example}[Sensitivity analysis]\label{ex_totaldiff4}
+A cylindrical steel storage tank is to be built that is 10ft tall and 4ft across in diameter. It is known that the steel will expand/contract with temperature changes; is the overall volume of the tank more sensitive to changes in the diameter or in the height of the tank?
+\solution
+A cylindrical solid with height $h$ and radius $r$ has volume $V = \pi r^2h$. We can view $V$ as a function of two variables, $r$ and $h$. We can compute partial derivatives of $V$:
 \[\frac{\partial V}{\partial r} = V_r(r,h) = 2\pi rh \qquad \text{and}\qquad \frac{\partial V}{\partial h} = V_h(r,h) = \pi r^2.\]
 The total differential is $dV = (2\pi rh)dr + (\pi r^2)dh.$ When $h = 10$ and $r = 2$, we have $dV = 40\pi dr + 4\pi dh$.
 Note that the coefficient of $dr$ is $40\pi%\approx 125.7
 $; the coefficient of $dh$ is a tenth of that%, approximately $12.57$
-. A small change in radius will be multiplied by $40\pi$, whereas a small change in height will be multiplied by $4\pi$. Thus the volume of the tank is more sensitive to changes in radius than in height.}
+. A small change in radius will be multiplied by $40\pi$, whereas a small change in height will be multiplied by $4\pi$. Thus the volume of the tank is more sensitive to changes in radius than in height.
+\end{example}
 
 The previous example showed that the volume of a particular tank was more sensitive to changes in radius than in height. Keep in mind that this analysis only applies to a tank of those dimensions. A tank with a height of 1ft and radius of 5ft would be more sensitive to changes in height than in radius.
 

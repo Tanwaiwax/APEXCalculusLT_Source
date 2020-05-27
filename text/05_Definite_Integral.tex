@@ -46,13 +46,15 @@ minor x tick num=4,ymin=-2.9,ymax=5.9,xmin=-.9,xmax=15.9]
 
 Now consider a more difficult problem.
 
-\example{ex_defint3}{Finding position using velocity}{The velocity of an object moving straight up/down under the acceleration of gravity is given as $v(t) = -32t+48$, where time $t$ is given in seconds and velocity is in ft/s. When $t=0$, the object had a height of 0 ft.
+\begin{example}[Finding position using velocity]\label{ex_defint3}
+The velocity of an object moving straight up/down under the acceleration of gravity is given as $v(t) = -32t+48$, where time $t$ is given in seconds and velocity is in ft/s. When $t=0$, the object had a height of 0 ft.
 \begin{enumerate}
 	\item	What was the initial velocity of the object?
 	\item	What was the maximum height of the object?
 	\item	What was the height of the object at time $t=2$?
-\end{enumerate}}
-{It is straightforward to find the initial velocity; at time $t=0$, $v(0) =-32\cdot 0+48 = 48 $ ft/s.
+\end{enumerate}
+\solution
+It is straightforward to find the initial velocity; at time $t=0$, $v(0) =-32\cdot 0+48 = 48 $ ft/s.
 
 To answer questions about the height of the object, we need to find the object's position function $s(t)$. This is an initial value problem, which we studied in the previous section. We are told the initial height is 0, i.e., $s(0) = 0$. We know $s\primeskip'(t) = v(t) = -32t+48$. To find $s$, we find the indefinite integral of $v(t)$:
 \[s(t)=\int v(t)\ dt = \int (-32t+48)\ dt = -16t^2+48t+C.\]
@@ -95,7 +97,8 @@ That is,
 	\[\text{Displacement} = \frac12(1.5\text{s})(48\text{ft/s}) - \frac12(.5\text{s})(16\text{ft/s}) = 32\text{ft}.\]
 This also matches our previous calculation of the height at $t=2$.
 
-Notice how we answered each question in this example in two ways. Our first method was to manipulate equations using our understanding of antiderivatives and derivatives. Our second method was geometric: we answered questions looking at a graph and finding the areas of certain regions of this graph.}
+Notice how we answered each question in this example in two ways. Our first method was to manipulate equations using our understanding of antiderivatives and derivatives. Our second method was geometric: we answered questions looking at a graph and finding the areas of certain regions of this graph.
+\end{example}
 
 The above example does not \textit{prove} a relationship between area under a velocity function and displacement, but it does indicate that there may be a relationship. \autoref{sec:FTC} will fully establish fact that the area under a velocity function is displacement.
 
@@ -119,7 +122,8 @@ The previous section introduced the indefinite integral, which is related to ant
 
 We practice using this notation.
 
-\example{ex_defint4}{Evaluating definite integrals}{Consider the function $f$ given in \autoref{fig:defint4}. Find:
+\begin{example}[Evaluating definite integrals]\label{ex_defint4}
+Consider the function $f$ given in \autoref{fig:defint4}. Find:
 
 \mtable[.5in]{A graph of $f(x)$ in \autoref{ex_defint4}.}{fig:defint4}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -145,8 +149,9 @@ xtick={1,2,3,4,5},ytick={-1,1},ymin=-1.1,ymax=1.1,xmin=-.5,xmax=5.5]
 	\item	$\ds \int_0^3 5f(x)\ dx$
 	\item	$\ds \int_1^1 f(x) \ dx$
 \end{enumerate}
-\end{minipage}}
-{\begin{enumerate}
+\end{minipage}
+\solution
+\begin{enumerate}
 	\item	$ \int_0^3 f(x)\ dx$ is the area under $f$ on the interval $[0,3]$. This region is a triangle, so the area is $\int_0^3 f(x)\ dx=\frac12(3)(1) = 1.5$. 
 	\item	$\int_3^5 f(x)\ dx$ represents the area of the triangle found under the $x$-axis on $[3,5]$. The area is $\frac12(2)(1) = 1$; since it is found \textit{under} the $x$-axis, this is ``negative area.'' Therefore $ \int_3^5 f(x)\ dx = -1$.
 	\item	$ \int_0^5f(x)\ dx$ is the total signed area under $f$ on $[0,5]$. This is $1.5 + (-1) = 0.5$.
@@ -165,7 +170,8 @@ ytick={-5,5},ymin=-5.5,ymax=5.5,xmin=-.5,xmax=5.5]
 \end{tikzpicture}}
 		
 	\item	$\int_1^1f(x)\ dx$ is the area under $f$ on the ``interval'' $[1,1]$. This describes a line segment, not a region; it has no width. Therefore the area is 0.\eoehere
-\end{enumerate}}
+\end{enumerate}
+\end{example}
 
 This example illustrates some of the properties of the definite integral, given in \autoref{thm:defintprop}.
 
@@ -248,8 +254,8 @@ and we can apply property 2.
 %	\item[4,5.]	Each of these may be non-intuitive. Property (5) states that when one scales a function by, for instance, 7, the area of the enclosed region also is scaled by a factor of 7. Both Properties (4) and (5)  can be proved using geometry. The details are not complicated but are not discussed here.
 %\end{enumerate}
 
-\example{ex_defint5}{Evaluating definite integrals using \autoref{thm:defintprop}.}
-{Consider the graph of a function $f(x)$ shown in \autoref{fig:defint5}. Answer the following:
+\begin{example}[Evaluating definite integrals using \autoref{thm:defintprop}.]\label{ex_defint5}
+Consider the graph of a function $f(x)$ shown in \autoref{fig:defint5}. Answer the following:
 %
 \mtable{A graph of a function in \autoref{ex_defint5}.}{fig:defint5}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -268,15 +274,19 @@ ymin=-1.1,ymax=1.1,xmin=-.2,xmax=3.5]
 	\item	Which value is greater: $\ds \int_a^b f(x)\ dx$ or $\ds \int_b^c f(x)\ dx$?
 	\item	Is $\ds \int_a^c f(x)\ dx$ greater or less than 0?
 	\item	Which value is greater: $\ds \int_a^b f(x)\ dx$ or $\ds \int_c^b f(x)\ dx$?
-\end{enumerate}}
-{\begin{enumerate}
+\end{enumerate}
+\solution
+\begin{enumerate}
 	\item	$\int_a^b f(x)\ dx$ has a positive value (since the area is above the $x$-axis) whereas $\int_b^c f(x)\ dx$ has a negative value. Hence $\int_a^b f(x)\ dx$ is bigger.
 	\item	$\int_a^c f(x)\ dx$ is the total signed area under $f$ between $x=a$ and $x=c$. Since the region below the $x$-axis looks to be larger than the region above, we conclude that the definite integral has a value less than 0.
 	\item	Note how the second integral has the bounds ``reversed.'' Therefore $\int_c^b f(x)\ dx$ represents a positive number, greater than the area described by the first definite integral. Hence $\int_c^b f(x)\ dx$ is greater.\eoehere
-\end{enumerate}}
+\end{enumerate}
+\end{example}
 
 The area definition of the definite integral allows us to use geometry to compute the definite integral of some simple functions.
 
+\begin{example}[Evaluating definite integrals using geometry]\label{ex_defint8}
+%
 \mtable{A graph of $f(x) = 2x-4$ in (a) and $f(x) = \sqrt{9-x^2}$ in (b), from \autoref{ex_defint8}.}{fig:defint8}{%
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -309,16 +319,19 @@ ymin=-.5,ymax=5.5,xmin=-3.5,xmax=3.5]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}
 \\(b)}
-\example{ex_defint8}{Evaluating definite integrals using geometry}{Evaluate the following definite integrals:
-\[1.\quad\int_{-2}^5 (2x-4)\ dx \qquad\qquad 2.\quad\int_{-3}^3 \sqrt{9-x^2}\ dx.\]}
-{\begin{enumerate}
+%
+Evaluate the following definite integrals:
+\[1.\quad\int_{-2}^5 (2x-4)\ dx \qquad\qquad 2.\quad\int_{-3}^3 \sqrt{9-x^2}\ dx.\]
+\solution
+\begin{enumerate}
 	\item	It is useful to sketch the function in the integrand, as shown in \autoref{fig:defint8}(a). We see we need to compute the areas of two regions, which we have labeled $R_1$ and $R_2$. Both are triangles, so the area computation is straightforward:
 	\[R_1: \frac12(4)(8) = 16 \qquad R_2: \frac12(3)6 = 9.\]
 	Region $R_1$ lies under the $x$-axis, hence it is counted as negative area (we can think of the triangle's height as being ``$-8$''), so
 	\[\int_{-2}^5(2x-4)\ dx = -16+9 = -7.\]
 	\item	Recognize that the integrand of this definite integral describes a half circle, as sketched in \autoref{fig:defint8}(b), with radius 3. Thus the area is:
 	\[\int_{-3}^3 \sqrt{9-x^2}\ dx = \frac12\pi r^2 = \frac 92\pi.\eoehere\]
-\end{enumerate}}
+\end{enumerate}
+\end{example}
 
 \mtable{A graph of a velocity in \autoref{ex_defint6}.}{fig:defint6}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -336,10 +349,12 @@ ymin=-9,ymax=17,xmin=-.5,xmax=8.5]
 \node [above] at (myplot.above origin) {\scriptsize $y$ (ft/s)};
 \end{tikzpicture}}
 
-\example{ex_defint6}{Understanding motion given velocity}{Consider the graph of a velocity function of an object moving in a straight line, given in \autoref{fig:defint6}, where the numbers in the given regions gives the area of that region. Assume that the definite integral of a velocity function gives displacement. Find the maximum speed of the object and its maximum displacement from its starting position.}
-{Since the graph gives velocity, finding the maximum speed is simple: it looks to be 15ft/s.
+\begin{example}[Understanding motion given velocity]\label{ex_defint6}
+Consider the graph of a velocity function of an object moving in a straight line, given in \autoref{fig:defint6}, where the numbers in the given regions gives the area of that region. Assume that the definite integral of a velocity function gives displacement. Find the maximum speed of the object and its maximum displacement from its starting position.
+\solution
+Since the graph gives velocity, finding the maximum speed is simple: it looks to be 15ft/s.
 
-\mnote{\textbf{Note:} The \emph{displacement} of the object is different from the distance traveled since the object moves backwards and forwards at different times in this example. The displacement measures how far the object is from where it started, without regard for how far it actually traveled to get there.}
+\mnote[.25in]{\textbf{Note:} The \emph{displacement} of the object is different from the distance traveled since the object moves backwards and forwards at different times in this example. The displacement measures how far the object is from where it started, without regard for how far it actually traveled to get there.}
 
 At time $t=0$, the displacement is 0; the object is at its starting position. At time $t=a$, the object has moved backward 11 feet. Between times $t=a$ and $t=b$, the object moves forward 38 feet, bringing it into a position 27 feet forward of its starting position. From $t=b$ to $t=c$ the object is moving backwards again, hence its maximum displacement is 27 feet from its starting position.
 
@@ -368,7 +383,8 @@ We can also analyze the displacement by drawing the path of the particle's locat
 \caption{Number line for \autoref{ex_defint6}.}
 \label{fig_displacement_line}
 \end{minipage}\\
-The object starts at the origin, and moves to the left with a negative velocity 11 units.  It then reverses direction and moves to the right with a positive velocity 38 units, arriving at 27.  Finally, it reverses direction again and moves to the left with a negative velocity 11 units, ending at 26.}
+The object starts at the origin, and moves to the left with a negative velocity 11 units.  It then reverses direction and moves to the right with a positive velocity 38 units, arriving at 27.  Finally, it reverses direction again and moves to the left with a negative velocity 11 units, ending at 26.
+\end{example}
 
 \youtubeVideo{Z7uyQjcFSy4}{Definite Integral as Area 2 --- Breaking Up the Region}
 

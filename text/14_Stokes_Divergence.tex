@@ -23,11 +23,12 @@ Let $D$ be a closed domain in space whose boundary is an orientable, piecewise s
 3Dcoo=-4.848399639129639 2.010268211364746 61.92150115966797,
 3Droo=399.9999804687495}{width=\marginparwidth}{figures/figdivthm_space2_3D}}
 
-\example{ex_divthm_space2}{Using the Divergence Theorem in space}
-{Let $D$ be the domain in space bounded by the planes $z=0$ and $z=2x$, along with the cylinder $x=1-y^2$, as graphed in \autoref{fig:divthm_space2}, let \surfaceS\ be the boundary of $D$, and let $\vec F =\bracket{x+y,y^2, 2z}$. 
+\begin{example}[Using the Divergence Theorem in space]\label{ex_divthm_space2}
+Let $D$ be the domain in space bounded by the planes $z=0$ and $z=2x$, along with the cylinder $x=1-y^2$, as graphed in \autoref{fig:divthm_space2}, let \surfaceS\ be the boundary of $D$, and let $\vec F =\bracket{x+y,y^2, 2z}$. 
 
-Verify the Divergence Theorem by finding the total outward flux of $\vec F$ across \surfaceS, and show this is equal to $\iiint_D \divv\vec F\ dV$.}
-{The surface \surfaceS\ is piecewise smooth, comprising surfaces $\surfaceS_1$, which is part of the plane $z=2x$, surface $\surfaceS_2$, which is part of the cylinder $x=1-y^2$, and surface $\surfaceS_3$, which is part of the plane $z=0$. To find the total outward flux across \surfaceS, we need to compute the outward flux across each of these three surfaces.
+Verify the Divergence Theorem by finding the total outward flux of $\vec F$ across \surfaceS, and show this is equal to $\iiint_D \divv\vec F\ dV$.
+\solution
+The surface \surfaceS\ is piecewise smooth, comprising surfaces $\surfaceS_1$, which is part of the plane $z=2x$, surface $\surfaceS_2$, which is part of the cylinder $x=1-y^2$, and surface $\surfaceS_3$, which is part of the plane $z=0$. To find the total outward flux across \surfaceS, we need to compute the outward flux across each of these three surfaces.
 
 We leave it to the reader to confirm that surfaces $\surfaceS_1$, $\surfaceS_2$ and $\surfaceS_3$ can be parameterized by $\vec r_1$, $\vec r_2$ and $\vec r_3$ respectively as
 \begin{align*}
@@ -84,7 +85,8 @@ With $\divv \vec F = 1+2y+2 = 2y+3$, we find the total outward flux of $\vec F$ 
 \text{Flux} = \iiint_D\divv \vec F\ dV
 = \int_{-1}^1\int_0^{1-y^2}\int_0^{2x}\big(2y+3\big)\ dz\ dx\ dy = 16/5,
 \]
-the same result we obtained previously.}
+the same result we obtained previously.
+\end{example}
 
 In \autoref{ex_divthm_space2} we see that the total outward flux of a vector field across a closed surface can be found two different ways because of the Divergence Theorem. One computation took far less work to obtain. In that particular case, since \surfaceS\ was comprised of three separate surfaces, it was far simpler to compute one triple integral than three surface integrals (each of which required partial derivatives and a cross product). In practice, if outward flux needs to be measured, one would choose only one method. We will use both methods in this section simply to reinforce the truth of the Divergence Theorem.
 
@@ -99,11 +101,12 @@ We practice again in the following example.
 3Droo=399.9999594035934,
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figsurfflux2_3D}}
 
-\example{ex_divthm_space1}{Using the Divergence Theorem in space}
-{Let \surfaceS\ be the surface formed by the paraboloid $z=1-x^2-y^2$, $z\geq 0$, and the unit disk centered at the origin in the $x$-$y$ plane, graphed in \autoref{fig:divthm_space1}, and let $\vec F =\bracket{0,0,z}$. (This surface and vector field were used in \autoref{ex_surfflux2}.)
+\begin{example}[Using the Divergence Theorem in space]\label{ex_divthm_space1}
+Let \surfaceS\ be the surface formed by the paraboloid $z=1-x^2-y^2$, $z\geq 0$, and the unit disk centered at the origin in the $x$-$y$ plane, graphed in \autoref{fig:divthm_space1}, and let $\vec F =\bracket{0,0,z}$. (This surface and vector field were used in \autoref{ex_surfflux2}.)
 
-Verify the Divergence Theorem; find the total outward flux across \surfaceS\ and evaluate the triple integral of $\divv \vec F$, showing that these two quantities are equal.}
-{We find the flux across \surfaceS\ first. As \surfaceS\ is piecewise-smooth, we decompose it into smooth components $\surfaceS_1$, the disk, and $\surfaceS_2$, the paraboloid, and find the flux across each.
+Verify the Divergence Theorem; find the total outward flux across \surfaceS\ and evaluate the triple integral of $\divv \vec F$, showing that these two quantities are equal.
+\solution
+We find the flux across \surfaceS\ first. As \surfaceS\ is piecewise-smooth, we decompose it into smooth components $\surfaceS_1$, the disk, and $\surfaceS_2$, the paraboloid, and find the flux across each.
 
 In \autoref{ex_surfflux2}, we found the flux across $\surfaceS_1$ is 0. We also found that the flux across $\surfaceS_2$ is $\pi/2$. (In that example, the normal vector had a positive $z$ component hence was an outer normal.) Thus the total outward flux is $0+\pi/2 = \pi/2$.
 
@@ -123,10 +126,11 @@ With $\divv \vec F = 1$, we can integrate, recalling that $dV = r\ dz\ dr\ d\the
 \iiint_D\divv \vec F\ dV
 = \int_0^{2\pi}\int_0^1\int_0^{1-r^2} r\ dz\ dr\ d\theta = \frac{\pi}2,
 \]
-which matches our flux computation above.}
+which matches our flux computation above.
+\end{example}
 
-\example{ex_divthm_space3}{A ``paradox'' of the Divergence Theorem and Gauss's Law}
-{The magnitude of many physical quantities (such as light intensity or electromagnetic and gravitational forces) follow an ``inverse square law'': the magnitude of the quantity at a point is inversely proportional to the square of the distance to the source of the quantity.\index{Gauss's Law} 
+\begin{example}[A ``paradox'' of the Divergence Theorem and Gauss's Law]\label{ex_divthm_space3}
+The magnitude of many physical quantities (such as light intensity or electromagnetic and gravitational forces) follow an ``inverse square law'': the magnitude of the quantity at a point is inversely proportional to the square of the distance to the source of the quantity.\index{Gauss's Law} 
 
 Let a point light source be placed at the origin and let $\vec F$ be the vector field which describes the intensity and direction of the emanating light. At a point $(x,y,z)$, the unit vector describing the direction of the light passing through that point is $\bracket{x,y,z}/\sqrt{x^2+y^2+z^2}$. As the intensity of light follows the inverse square law, the magnitude of $\vec F$ at $(x,y,z)$ is $k/(x^2+y^2+z^2)$ for some constant $k$. Taken together, 
 \[\vec F(x,y,z) = \frac{k}{(x^2+y^2+z^2)^{3/2}}\bracket{x,y,z}.\]
@@ -140,8 +144,9 @@ Let a point light source be placed at the origin and let $\vec F$ be the vector 
 3Droo=399.9999533297849,
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figdivthm_space3_3D}}
 
-Consider the cube, centered at the origin, with sides of length $2a$ for some $a>0$ (hence corners of the cube lie at $(a,a,a)$, $(-a,-a,-a)$, etc., as shown in \autoref{fig:divthm_space3}). Find the flux across the six faces of the cube and compare this to $\iint_D \divv\vec F\ dV$.}
-{Let $\surfaceS_1$ be the ``top'' face of the cube, which can be parameterized by $\vec r(u,v) =\bracket{u,v,a}$ for $-a\leq u\leq a$, $-a\leq v\leq a$. We leave it to the reader to confirm that $\vec r_u\times \vec r_v =\bracket{0,0,1}$, which points outside of the cube.
+Consider the cube, centered at the origin, with sides of length $2a$ for some $a>0$ (hence corners of the cube lie at $(a,a,a)$, $(-a,-a,-a)$, etc., as shown in \autoref{fig:divthm_space3}). Find the flux across the six faces of the cube and compare this to $\iint_D \divv\vec F\ dV$.
+\solution
+Let $\surfaceS_1$ be the ``top'' face of the cube, which can be parameterized by $\vec r(u,v) =\bracket{u,v,a}$ for $-a\leq u\leq a$, $-a\leq v\leq a$. We leave it to the reader to confirm that $\vec r_u\times \vec r_v =\bracket{0,0,1}$, which points outside of the cube.
 
 The flux across this face is:
 \begin{align*}
@@ -166,18 +171,21 @@ Since $\vec F$ is differentiable everywhere except the origin, the Divergence Th
 
 This has an important consequence in electrodynamics. Let $q$ be a point charge at the origin. The electric field generated by this point charge is 
 \[\vec E = \frac{q}{4\pi \epsilon_0}\frac{\bracket{x,y,z}}{(x^2+y^2+z^2)^{3/2}},\]
-i.e., it is $\vec F$ with $k = q/(4\pi \epsilon_0)$, where $\epsilon_0$ is a physical constant (the ``permittivity of free space''). Gauss's Law states that the outward flux of $\vec E$ across any surface enclosing the origin is $q/\epsilon_0$.}
+i.e., it is $\vec F$ with $k = q/(4\pi \epsilon_0)$, where $\epsilon_0$ is a physical constant (the ``permittivity of free space''). Gauss's Law states that the outward flux of $\vec E$ across any surface enclosing the origin is $q/\epsilon_0$.
+\end{example}
 
 Our interest in the Divergence Theorem is twofold. First, it's truth alone is interesting: to study the behavior of a vector field across a closed surface, one can examine properties of that field within the surface. Secondly, it offers an alternative way of computing flux. When there are multiple methods of computing a desired quantity, one has power to select the easiest computation as illustrated next.
 
-\example{ex_divthm_space4}{Using the Divergence Theorem to compute flux}
-{Let \surfaceS\ be the cube bounded by the planes $x=\pm 1$, $y=\pm 1$, $z=\pm 1$, and let $\vec F =\bracket{x^2y,2yz,x^2z^3}$. Compute the outward flux of $\vec F$ over \surfaceS.}
-{We compute $\divv \vec F = 2xy+2z+3x^2z^2$. By the Divergence Theorem, the outward flux is the triple integral over the domain $D$ enclosed by \surfaceS:
+\begin{example}[Using the Divergence Theorem to compute flux]\label{ex_divthm_space4}
+Let \surfaceS\ be the cube bounded by the planes $x=\pm 1$, $y=\pm 1$, $z=\pm 1$, and let $\vec F =\bracket{x^2y,2yz,x^2z^3}$. Compute the outward flux of $\vec F$ over \surfaceS.
+\solution
+We compute $\divv \vec F = 2xy+2z+3x^2z^2$. By the Divergence Theorem, the outward flux is the triple integral over the domain $D$ enclosed by \surfaceS:
 \[
 \text{Outward flux:}
 \quad \int_{-1}^1\int_{-1}^1\int_{-1}^1(2xy+2z+3x^2z^2)\ dz\ dy\ dx = \frac83.
 \]
-The direct flux computation requires six surface integrals, one for each face of the cube. The Divergence Theorem offers a much more simple computation.}
+The direct flux computation requires six surface integrals, one for each face of the cube. The Divergence Theorem offers a much more simple computation.
+\end{example}
 
 \subsection{Stokes' Theorem}
 
@@ -207,9 +215,10 @@ where $\vec r_u\times\vec r_v$ may be replaced by $\vec r_v\times\vec r_u$ to pr
 3Droo=399.9999566444115,
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figstokes1_3D}}
 
-\example{ex_stokes1}{Verifying Stokes' Theorem}
-{Considering the planar surface $f(x,y) = 7-2x-2y$, let $C$ be the curve in space that lies on this surface above the circle of radius 1 and centered at $(1,1)$ in the $x$-$y$ plane, let \surfaceS\ be the planar region enclosed by $C$, as illustrated in \autoref{fig:stokes1}, and let $\vec F =\bracket{x+y,2y, y^2}$. Verify Stoke's Theorem by showing $\oint_C \vec F\cdot \ d\vec r = \iint_\surfaceS (\curl\vec F)\cdot \vec n\ dS$.}
-{We begin by parameterizing $C$ and then find the circulation. A unit circle centered at $(1,1)$ can be parameterized with $x=\cos t+1$, $y=\sin t+1$ on $0\leq t\leq 2\pi$; to put this curve on the surface $f$, make the $z$ component equal $f(x,y)$: $z = 7-2(\cos t+1)-2(\sin t+1)  = 3-2\cos t - 2\sin t$. All together, we parameterize $C$ with $\vec r(t) =\bracket{\cos t+1, \sin t+1, 3-2\cos t-2\sin t}$. 
+\begin{example}[Verifying Stokes' Theorem]\label{ex_stokes1}
+Considering the planar surface $f(x,y) = 7-2x-2y$, let $C$ be the curve in space that lies on this surface above the circle of radius 1 and centered at $(1,1)$ in the $x$-$y$ plane, let \surfaceS\ be the planar region enclosed by $C$, as illustrated in \autoref{fig:stokes1}, and let $\vec F =\bracket{x+y,2y, y^2}$. Verify Stoke's Theorem by showing $\oint_C \vec F\cdot \ d\vec r = \iint_\surfaceS (\curl\vec F)\cdot \vec n\ dS$.
+\solution
+We begin by parameterizing $C$ and then find the circulation. A unit circle centered at $(1,1)$ can be parameterized with $x=\cos t+1$, $y=\sin t+1$ on $0\leq t\leq 2\pi$; to put this curve on the surface $f$, make the $z$ component equal $f(x,y)$: $z = 7-2(\cos t+1)-2(\sin t+1)  = 3-2\cos t - 2\sin t$. All together, we parameterize $C$ with $\vec r(t) =\bracket{\cos t+1, \sin t+1, 3-2\cos t-2\sin t}$. 
 
 The circulation of $\vec F$ around $C$ is
 \begin{align*}
@@ -232,9 +241,10 @@ The surface integral of Stokes' Theorem is thus
 	&= \int_0^1\int_0^{2\pi}\bracket{2v\sin u+2,0,-1}\cdot\bracket{2v,2v,v}\ du\ dv\\
 	&= 3\pi,
 \end{align*}
-which matches our previous result.}
+which matches our previous result.
+\end{example}
 
-One of the interesting results of Stokes' Theorem is that if two surfaces $\surfaceS_1$ and $\surfaceS_2$ share the same boundary, then $\iint_{\surfaceS_1} (\curl \vec F)\cdot \vec n\ dS = \iint_{\surfaceS_2} (\curl \vec F)\cdot \vec n\ dS$. That is, the value of these two surface integrals is somehow independent of the interior of the surface. We demonstrate this principle in the next example.\\
+One of the interesting results of Stokes' Theorem is that if two surfaces $\surfaceS_1$ and $\surfaceS_2$ share the same boundary, then $\iint_{\surfaceS_1} (\curl \vec F)\cdot \vec n\ dS = \iint_{\surfaceS_2} (\curl \vec F)\cdot \vec n\ dS$. That is, the value of these two surface integrals is somehow independent of the interior of the surface. We demonstrate this principle in the next example.
 
 \mtable{As given in \autoref{ex_stokes2}, the surface \surfaceS\ is the portion of the plane bounded by the curve.}{fig:stokes2}
 {\myincludeasythree{width=\marginparwidth,
@@ -254,9 +264,10 @@ One of the interesting results of Stokes' Theorem is that if two surfaces $\surf
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figstokes3_3D}
 \\(b)}
 
-\example{ex_stokes2}{Stokes' Theorem and surfaces that share a boundary}
-{Let $C$ be the curve given in \autoref{ex_stokes1} and note that it lies on the surface $z = 6-x^2-y^2$. Let \surfaceS\ be the region of this surface bounded by $C$, and let $\vec F =\bracket{x+y,2y,y^2}$ as in the previous example. Compute $\iint_\surfaceS (\curl\vec F)\cdot \vec n\ dS $ to show it equals the result found in the previous example.}
-{We begin by demonstrating that $C$ lies on the surface $z=6-x^2-y^2$. We can parameterize the $x$ and $y$ components of $C$ with $x=\cos t+1$, $y=\sin t+1$ as before. Lifting these components to the surface $f$ gives the $z$ component as $z = 6-x^2-y^2 = 6-(\cos t+1)^2-(\sin t+1)^2 = 3-2\cos t-2\sin t$, which is the same $z$ component as found in \autoref{ex_stokes1}. Thus the curve $C$ lies on the surface $z=6-x^2-y^2$, as illustrated in \autoref{fig:stokes2}. 
+\begin{example}[Stokes' Theorem and surfaces that share a boundary]\label{ex_stokes2}
+Let $C$ be the curve given in \autoref{ex_stokes1} and note that it lies on the surface $z = 6-x^2-y^2$. Let \surfaceS\ be the region of this surface bounded by $C$, and let $\vec F =\bracket{x+y,2y,y^2}$ as in the previous example. Compute $\iint_\surfaceS (\curl\vec F)\cdot \vec n\ dS $ to show it equals the result found in the previous example.
+\solution
+We begin by demonstrating that $C$ lies on the surface $z=6-x^2-y^2$. We can parameterize the $x$ and $y$ components of $C$ with $x=\cos t+1$, $y=\sin t+1$ as before. Lifting these components to the surface $f$ gives the $z$ component as $z = 6-x^2-y^2 = 6-(\cos t+1)^2-(\sin t+1)^2 = 3-2\cos t-2\sin t$, which is the same $z$ component as found in \autoref{ex_stokes1}. Thus the curve $C$ lies on the surface $z=6-x^2-y^2$, as illustrated in \autoref{fig:stokes2}. 
 
 Since $C$ and $\vec F$ are the same as in the previous example, we already know that $\oint_C\vec F\cdot\ d\vec r = 3\pi$. We confirm that this is also the value of $\iint_\surfaceS (\curl\vec F)\cdot \vec n\ dS $.
 
@@ -272,7 +283,8 @@ which also conforms to the right-hand rule with regard to the orientation of $C$
 	\int_0^1\int_0^{2\pi}\bracket{2v\sin u+2,0,-1}\cdot\bracket{2v\big(v\cos u+1\big), 2v\big(v\sin u+1\big),v}\ du\ dv =\\
 	3\pi.
 \end{multline*}
-Even though the  surfaces used in this example and in \autoref{ex_stokes1} are very different, because they share the same boundary, Stokes' Theorem guarantees they have equal ``sum of curls'' across their respective surfaces.}
+Even though the  surfaces used in this example and in \autoref{ex_stokes1} are very different, because they share the same boundary, Stokes' Theorem guarantees they have equal ``sum of curls'' across their respective surfaces.
+\end{example}
 
 \subsection{A Common Thread of Calculus}
 

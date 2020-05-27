@@ -16,8 +16,10 @@ This definition can be a bit cumbersome to remember. After an example we will gi
 
 Let's practice using this definition by computing a cross product.
 
-\example{ex_crossp1}{Computing a cross product}{Let $\vec u = \bracket{2,-1,4}$ and $\vec v = \bracket{3,2,5}$. Find $\crossp uv$, and verify that it is orthogonal to both $\vec u$ and $\vec v$.}
-{Using \autoref{def:cross_product}, we have
+\begin{example}[Computing a cross product]\label{ex_crossp1}
+Let $\vec u = \bracket{2,-1,4}$ and $\vec v = \bracket{3,2,5}$. Find $\crossp uv$, and verify that it is orthogonal to both $\vec u$ and $\vec v$.
+\solution
+Using \autoref{def:cross_product}, we have
 \[
 \crossp uv = \bracket{(-1)5-(4)2,-\big((2)5-(4)3\big), (2)2-(-1)3}=\bracket{-13,2,7}.
 \] 
@@ -30,7 +32,8 @@ We test whether or not $\crossp uv$ is orthogonal to $\vec u$ and $\vec v$ using
 \big(\crossp uv\big) \cdot \vec v
  &=\bracket{-13,2,7}\cdot\bracket{3,2,5}=-13\cdot3+2\cdot2+7\cdot5=0.
 \end{align*}
-Since both dot products are zero, $\crossp uv$ is indeed orthogonal to both $\vec u$ and $\vec v$.}
+Since both dot products are zero, $\crossp uv$ is indeed orthogonal to both $\vec u$ and $\vec v$.
+\end{example}
 
 \subsection{Additional Material on \texorpdfstring{$2\times2$ and $3\times3$}{2x2 and 3x3} determinants}
 
@@ -125,8 +128,10 @@ This is equivalent to evaluating the determinant
 
 We practice using this method.
 
-\example{ex_crossp2}{Computing a cross product}{Let $\vecu=\bracket{1,3,6}$ and $\vec v = \bracket{-1,2,1}$. Compute both $\crossp uv$ and $\crossp vu$.}
-{To compute $\crossp uv$, we form the matrix as prescribed above, complete with repeated first columns:
+\begin{example}[Computing a cross product]\label{ex_crossp2}
+Let $\vecu=\bracket{1,3,6}$ and $\vec v = \bracket{-1,2,1}$. Compute both $\crossp uv$ and $\crossp vu$.
+\solution
+To compute $\crossp uv$, we form the matrix as prescribed above, complete with repeated first columns:
 \[\begin{array}{ccccc} \ \veci\ &\ \vecj\ &\ \veck\ &\ \veci\ &\ \vecj\ \\  1&3&6&1&3\\-1&2&1&-1&2\end{array}\]
 We let the reader compute the products of the diagonals; we give the result:
 \[\crossp uv = \big(3\veci-6\vecj+2\veck\,\big) - \big(-3\veck + 12\veci+\vecj\,\big) = \bracket{-9,-7,5}.\]
@@ -136,7 +141,8 @@ To compute $\crossp vu$, we switch the second and third rows of the above matrix
 \[\begin{array}{ccccc} \ \veci\ &\ \vecj\ &\ \veck\ &\ \veci\ &\ \vecj\ \\-1&2&1&-1&2\\  1&3&6&1&3\end{array}\]
 Note how with the rows being switched, the products that once appeared on the right now appear on the left, and vice-versa. Thus the result is:
 \[\crossp vu = \big(12\veci+\vecj-3\veck\,\big) - \big(2\veck + 3\veci-6\vecj\,\big) = \bracket{9,7,-5},\]
-which is the opposite of $\crossp uv$. We leave it to the reader to verify that each of these vectors is orthogonal to $\vec u$ and $\vec v$.}
+which is the opposite of $\crossp uv$. We leave it to the reader to verify that each of these vectors is orthogonal to $\vec u$ and $\vec v$.
+\end{example}
 
 \subsection{Properties of the Cross Product}
 
@@ -196,8 +202,10 @@ Note that this theorem makes a statement about the \emph{magnitude} of the cross
 
 We demonstrate the truth of this theorem in the following example.
 
-\example{ex_crossp3}{The cross product and angles}{Let $\vec u =\bracket{1,3,6}$ and $\vec v = \bracket{-1,2,1}$ as in \autoref{ex_crossp2}. Verify \autoref{thm:cross_product} by finding $\theta$, the angle between $\vecu$ and $\vecv$, and the magnitude of $\crossp uv$.}
-{We use \autoref{thm:dot_product} to find the angle between $\vecu$ and $\vecv$. 
+\begin{example}[The cross product and angles]\label{ex_crossp3}
+Let $\vec u =\bracket{1,3,6}$ and $\vec v = \bracket{-1,2,1}$ as in \autoref{ex_crossp2}. Verify \autoref{thm:cross_product} by finding $\theta$, the angle between $\vecu$ and $\vecv$, and the magnitude of $\crossp uv$.
+\solution
+We use \autoref{thm:dot_product} to find the angle between $\vecu$ and $\vecv$. 
 \begin{align*}
 \theta &= \cos^{-1}\left(\frac{\vec u\cdot\vec v}{\vnorm u\, \vnorm v}\right) \\
 			&= \cos^{-1}\left(\frac{11}{\sqrt{46}\sqrt{6}}\right)\\
@@ -212,7 +220,8 @@ Our work in \autoref{ex_crossp2} showed that $\crossp uv = \bracket{-9,-7,5}$, h
 \end{align*}
 Numerically, they seem equal. Using a right triangle, one can show that 
 \[\sin\left(\cos^{-1}\left(\frac{11}{\sqrt{46}\sqrt{6}}\right)\right) = \frac{\sqrt{155}}{\sqrt{46}\sqrt{6}},\]
-which allows us to verify the theorem exactly.}
+which allows us to verify the theorem exactly.
+\end{example}
 
 \subsection{Right Hand Rule}
 
@@ -268,11 +277,14 @@ where the second equality comes from \autoref{thm:cross_product}.
 We illustrate using \autoeqref{eq:crossp1} in the following example.
 \index{cross product!applications!area of parallelogram}
 
-\example{ex_crossp4}{Finding the area of a parallelogram}{\mbox{}\\[-2\baselineskip]\begin{enumerate}
+% todo Tim check v spacing
+\begin{example}[Finding the area of a parallelogram]\label{ex_crossp4}
+\begin{enumerate}
 	\item Find the area of the parallelogram defined by the vectors $\vecu = \bracket{2,1}$ and $\vecv = \bracket{1,3}$.
 	\item	Verify that the points $A = (1,1,1)$, $B = (2,3,2)$, $C = (4,5,3)$ and $D = (3,3,2)$ are the vertices of a parallelogram. Find the area of the parallelogram.
-\end{enumerate}}
-{\mbox{}\\[-1.5\baselineskip]\begin{enumerate}
+\end{enumerate}
+\solution
+\mbox{}\\[-1.5\baselineskip]\begin{enumerate}
 	\item \autoref{fig:crossp4}(a) sketches the parallelogram defined by the vectors $\vec u$ and $\vec v$. We have a slight problem in that our vectors exist in $\mathbb{R}^2$, not $\mathbb{R}^3$, and the cross product is only defined on vectors in $\mathbb{R}^3$. We skirt this issue by viewing $\vec u$ and $\vecv$ as vectors in the $x-y$ plane of $\mathbb{R}^3$, and rewrite them as $\vec u = \bracket{2,1,0}$ and $\vecv =\bracket{1,3,0}$. We can now compute the cross product.
 %
 % todo Tim this parallelogram is very narrow.  do we want something better?
@@ -303,14 +315,17 @@ It is easy to show that $\crossp uv = \bracket{0,0,5}$; therefore the area of th
 	\item		To show that the quadrilateral $ABCD$ is a parallelogram (shown in \autoref{fig:crossp4}(b)), we need to show that the opposite sides are parallel. We can quickly show that $\vv{AB} =\vv{DC} = \bracket{1,2,1}$ and $\vv{BC} = \vv{AD} = \bracket{2,2,1}$. We find the area by computing the magnitude of the cross product of $\vv{AB}$ and $\vv{BC}$:
 	\[
 	\vv{AB} \times \vv{BC} = \bracket{0,1,-2}\quad \Rightarrow \quad
-	\norm{\vv{AB}\times\vv{BC}} = \sqrt{5}.\eoehere
+	\norm{\vv{AB}\times\vv{BC}} = \sqrt{5}.
 	\]%  \approx 2.236
-\end{enumerate}}
+\end{enumerate}
+\end{example}
 
 This application is more commonly used to find the area of a triangle (because triangles are used more often than parallelograms). We illustrate this in the following example.
 
-\example{ex_crossp5}{Area of a triangle}{Find the area of the triangle with vertices $A=(1,2)$, $B=(2,3)$ and $C=(3,1)$, as pictured in \autoref{fig:crossp5}.}
-{We found the area of this triangle in \autoref{ex_abc4} to be $1.5$ using integration. There we discussed the fact that finding the area of a triangle can be inconvenient using the ``$\frac12bh$'' formula as one has to compute the height, which generally involves finding angles, etc. Using a cross product is much more direct.
+\begin{example}[Area of a triangle]\label{ex_crossp5}
+Find the area of the triangle with vertices $A=(1,2)$, $B=(2,3)$ and $C=(3,1)$, as pictured in \autoref{fig:crossp5}.
+\solution
+We found the area of this triangle in \autoref{ex_abc4} to be $1.5$ using integration. There we discussed the fact that finding the area of a triangle can be inconvenient using the ``$\frac12bh$'' formula as one has to compute the height, which generally involves finding angles, etc. Using a cross product is much more direct.
 
 \mtable{Finding the area of a triangle in \autoref{ex_crossp5}.}{fig:crossp5}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -329,7 +344,8 @@ We can choose any two sides of the triangle to use to form vectors; we choose $\
 = \frac12\norm{\bracket{1,1,0}\times \bracket{2,-1,0}}
 = \frac12\norm{\bracket{0,0,-3}} = \frac32.
 \]
-We arrive at the same answer as before with less work.}
+We arrive at the same answer as before with less work.
+\end{example}
 
 \subsubsection{Volume of a Parallelepiped}
 
@@ -369,8 +385,10 @@ Because the volume is the absolute value of the determinant, changing the order 
 3Dcoo=0 50 50,
 3Droo=150}{width=\marginparwidth}{figures/figcrossp6_3D}}
 
-\example{ex_crossp6}{Finding the volume of parallelepiped}{Find the volume of the parallelepiped defined by the vectors $\vecu = \bracket{1,1,0}$, $\vecv = \bracket{-1,1,0}$ and $\vecw = \bracket{0,1,1}$.}
-{We apply \autoeqref{eq:crossp2}. We first find $\crossp vw =\bracket{1,1,-1}$. Then
+\begin{example}[Finding the volume of parallelepiped]\label{ex_crossp6}
+Find the volume of the parallelepiped defined by the vectors $\vecu = \bracket{1,1,0}$, $\vecv = \bracket{-1,1,0}$ and $\vecw = \bracket{0,1,1}$.
+\solution
+We apply \autoeqref{eq:crossp2}. We first find $\crossp vw =\bracket{1,1,-1}$. Then
 \[\abs{\vec u\cdot(\crossp vw)} = \abs{\bracket{1,1,0}\cdot \bracket{1,1,-1}} = 2.\]
 So the volume of the parallelepiped is 2 cubic units.  In terms of determinants, we have
 \[
@@ -382,7 +400,8 @@ So the volume of the parallelepiped is 2 cubic units.  In terms of determinants,
  =1+1
  =2,
 \]
-and the absolute value of this determinant is again 2.}
+and the absolute value of this determinant is again 2.
+\end{example}
 
 %While this application of the Scalar Triple Product is interesting, it is not used all that often: parallelepipeds are not a common shape in physics and engineering.
 %% On the other hand, a tetrahedron is more common of a shape, and its volume is $\frac16$ that of a parallelepiped formed with the same vectors.
@@ -394,7 +413,8 @@ and the absolute value of this determinant is again 2.}
 
 While a full understanding of torque is beyond the purposes of this book, when a force $\vec F$ is applied to a lever arm $\vec \ell$, the resulting torque is \begin{equation}\vec \tau = \crossp \ell F.\label{eq:crossp3}\end{equation}
 
-\example{ex_crossp7}{Computing torque}{A lever of length 2ft makes an angle with the horizontal of $45^\circ$. Find the resulting torque when a force of 10lb is applied to the end of the level where:
+\begin{example}[Computing torque]\label{ex_crossp7}
+A lever of length 2ft makes an angle with the horizontal of $45^\circ$. Find the resulting torque when a force of 10lb is applied to the end of the level where:
 
 \mtable{Showing a force being applied to a lever in \autoref{ex_crossp7}.}{fig:crossp7}{\begin{tikzpicture}[>=stealth]
  \draw [thick,->,rotate=45] (-2,0) -- (0,0)
@@ -422,8 +442,9 @@ While a full understanding of torque is beyond the purposes of this book, when a
 \begin{enumerate}
 	\item the force is perpendicular to the lever, and
 	\item	the force makes an angle of $60^\circ$ with the lever, as shown in \autoref{fig:crossp7}.
-\end{enumerate}}
-{\begin{enumerate}
+\end{enumerate}
+\solution
+\begin{enumerate}
 	\item We start by determining vectors for the force and lever arm. Since the lever arm makes a $45^\circ$ angle with the horizontal and is 2ft long, we can state that $\vec \ell = 2\bracket{\cos 45^\circ,\sin 45^\circ}= \bracket{\sqrt2,\sqrt2}.$
 	
 	Since the force vector is perpendicular to the lever arm (as seen in the left hand side of \autoref{fig:crossp7}), we can conclude it is making an angle of $-45^\circ$ with the horizontal. As it has a magnitude of 10lb, we can state $\vec F = 10\bracket{\cos (-45^\circ), \sin(-45^\circ)}= \bracket{5\sqrt2,-5\sqrt2}.$
@@ -452,8 +473,9 @@ While a full understanding of torque is beyond the purposes of this book, when a
 	%\\&\approx \bracket{0,0,-17.321}
 	.
 	\end{align*}
-	As one might expect, when the force and lever arm vectors \textit{are} orthogonal, the magnitude of force is greater than when the vectors \textit{are not} orthogonal.\eoehere
-\end{enumerate}}
+	As one might expect, when the force and lever arm vectors \textit{are} orthogonal, the magnitude of force is greater than when the vectors \textit{are not} orthogonal.
+\end{enumerate}
+\end{example}
 
 While the cross product has a variety of applications (as noted in this chapter), its fundamental use is finding a vector perpendicular to two others. Knowing a vector is orthogonal to two others is of incredible importance, as it allows us to find the equations of lines and planes in a variety of contexts. The importance of the cross product, in some sense, relies on the importance of lines and planes, which see widespread use throughout engineering, physics and mathematics. We study lines and planes in the next two sections. 
 

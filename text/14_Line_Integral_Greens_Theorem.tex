@@ -153,9 +153,10 @@ node[pos=1,below left]{$C_1$};
 \end{tikzpicture}
 \\(b)}
 
-\example{ex_flux1}{Finding flux across curves in the plane}
-{Curves $C_1$ and $C_2$ each start at $(1,0)$ and end at $(0,1)$, where $C_1$ follows the line $y=1-x$ and $C_2$ follows the unit circle, as shown in \autoref{fig:flux1}. Find the flux across both curves for the vector fields $\vec F_1 =\bracket{y,-x+1}$ and $\vec F_2 =\bracket{-x,2y-x}$.}
-{We begin by finding parameterizations of $C_1$ and $C_2$. As done in \autoref{ex_livf3}, parameterize $C_1$ by creating the line that starts at $(1,0)$ and moves in the $\bracket{-1,1}$ direction: $\vec r_1(t) =\bracket{1,0}+t\bracket{-1,1}=\bracket{1-t,t}$, for $0\leq t\leq 1$. We parameterize $C_2$ with the familiar $\vec r_2(t) =\bracket{\cos t,\sin t}$ on $0\leq t\leq \pi/2$. For reference later, we give each function and its derivative below:
+\begin{example}[Finding flux across curves in the plane]\label{ex_flux1}
+Curves $C_1$ and $C_2$ each start at $(1,0)$ and end at $(0,1)$, where $C_1$ follows the line $y=1-x$ and $C_2$ follows the unit circle, as shown in \autoref{fig:flux1}. Find the flux across both curves for the vector fields $\vec F_1 =\bracket{y,-x+1}$ and $\vec F_2 =\bracket{-x,2y-x}$.
+\solution
+We begin by finding parameterizations of $C_1$ and $C_2$. As done in \autoref{ex_livf3}, parameterize $C_1$ by creating the line that starts at $(1,0)$ and moves in the $\bracket{-1,1}$ direction: $\vec r_1(t) =\bracket{1,0}+t\bracket{-1,1}=\bracket{1-t,t}$, for $0\leq t\leq 1$. We parameterize $C_2$ with the familiar $\vec r_2(t) =\bracket{\cos t,\sin t}$ on $0\leq t\leq \pi/2$. For reference later, we give each function and its derivative below:
 \begin{gather*}
 \vec r_1(t) =\bracket{1-t,t},\quad\vrp_1(t)=\bracket{-1,1}.\\
 \vec r_2(t) =\bracket{\cos t,\sin t}, \quad \vrp_2(t) =\bracket{-\sin t,\cos t}.
@@ -196,7 +197,8 @@ Over $C_2$, we have $M = -x = -\cos t$ and $N = 2y-x = 2\sin t-\cos t$. Thus the
 	&= \int_0^{\pi/2} \big(2\sin^2 t-\sin t\cos t-\cos^2t\big)\ dt\\
 	&=\pi/4 - 1/2\approx 0.285.
 \end{align*}
-We analyze the results of this example below.}
+We analyze the results of this example below.
+\end{example}
 
 In \autoref{ex_flux1}, we saw that the flux across the two curves was the same when the vector field was $\vec F_1 =\bracket{y, -x+1}$. This is not a coincidence. We show why they are equal in \autoref{ex_div2}. In short, the reason is this: the divergence of $\vec F_1$ is 0, and when $\divv \vec F = 0$, the flux across any two paths with common beginning and ending points will be the same.
 
@@ -244,9 +246,10 @@ ymin=-.2,ymax=2.2,xmin=-1.2,xmax=1.2]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-\example{ex_green1}{Confirming Green's Theorem}
-{Let $\vec F =\bracket{-y,x^2+1}$ and let $R$ be the region of the plane bounded by the triangle with vertices $(-1,0)$, $(1,0)$ and $(0,2)$, shown in \autoref{fig:green1}. Verify Green's Theorem; that is, find the circulation of $\vec F$ around the boundary of $R$ and show that is equal to the double integral of $\curl \vec F$ over $R$.}
-{The curve $C$ that bounds $R$ is composed of 3 lines. While we need to traverse the boundary of $R$ in a counterclockwise fashion, we may start anywhere we choose. We arbitrarily choose to start at $(-1,0)$, move to $(1,0)$, etc., with each line parameterized by $\vec r_1(t)$, $\vec r_2(t)$ and $\vec r_3(t)$, respectively.
+\begin{example}[Confirming Green's Theorem]\label{ex_green1}
+Let $\vec F =\bracket{-y,x^2+1}$ and let $R$ be the region of the plane bounded by the triangle with vertices $(-1,0)$, $(1,0)$ and $(0,2)$, shown in \autoref{fig:green1}. Verify Green's Theorem; that is, find the circulation of $\vec F$ around the boundary of $R$ and show that is equal to the double integral of $\curl \vec F$ over $R$.
+\solution
+The curve $C$ that bounds $R$ is composed of 3 lines. While we need to traverse the boundary of $R$ in a counterclockwise fashion, we may start anywhere we choose. We arbitrarily choose to start at $(-1,0)$, move to $(1,0)$, etc., with each line parameterized by $\vec r_1(t)$, $\vec r_2(t)$ and $\vec r_3(t)$, respectively.
 
 We leave it to the reader to confirm that the following parameterizations of the three lines are accurate:
 
@@ -266,7 +269,8 @@ The circulation is the sum of the flows: $2$.
 
 We confirm Green's Theorem by computing $\iint_R \curl \vec F\ dA$. We find $\curl \vec F = 2x+1$. The region $R$ is bounded by the lines $y = 2x+2$, $y=-2x+2$ and $y=0$. Integrating with the order $dx\, dy$ is most straightforward, leading to
 \[\int_0^2\int_{y/2-1}^{1-y/2} (2x+1)\ dx\ dy = \int_0^2 (2-y)\ dy = 2,\]
-which matches our previous measurement of circulation.}
+which matches our previous measurement of circulation.
+\end{example}
 
 \mtable{The vector field and planar region used in \autoref{ex_green2}.}{fig:green2}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,height=1.16\marginparwidth,
@@ -289,13 +293,15 @@ ymin=-2.4,ymax=2.4,xmin=-2.4,xmax=2.4]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-\example{ex_green2}{Using Green's Theorem}
-{Let $\vec F =\bracket{\sin x,\cos y}$ and let $R$ be the region enclosed by the curve $C$ parameterized by $\vec r(t) =\bracket{2\cos t+ \frac1{10}\cos(10t),2\sin t+\frac1{10}\sin(10t)}$ on $0\leq t\leq 2\pi$, as shown in \autoref{fig:green2}. Find the circulation around $C$.}
-{Computing the circulation directly using the line integral looks difficult, as the integrand will include terms like ``$\sin\big(2\cos t + \frac1{10}\cos(10t)\big)$.'' 
+\begin{example}[Using Green's Theorem]\label{ex_green2}
+Let $\vec F =\bracket{\sin x,\cos y}$ and let $R$ be the region enclosed by the curve $C$ parameterized by $\vec r(t) =\bracket{2\cos t+ \frac1{10}\cos(10t),2\sin t+\frac1{10}\sin(10t)}$ on $0\leq t\leq 2\pi$, as shown in \autoref{fig:green2}. Find the circulation around $C$.
+\solution
+Computing the circulation directly using the line integral looks difficult, as the integrand will include terms like ``$\sin\big(2\cos t + \frac1{10}\cos(10t)\big)$.'' 
 
 Green's Theorem states that $\oint_C\vec F\cdot d\vec r = \iint_R \curl\vec F\ dA$; since $\curl \vec F = 0$ in this example, the double integral is simply 0 and hence the circulation is 0.
 
-Since $\curl \vec F = 0$, we can conclude that the circulation is 0 in two ways. One method is to employ Green's Theorem as done above. The second way is to recognize that $\vec F$ is a conservative field, hence there is a function $z=f(x,y)$ wherein $\vec F = \nabla f$. Let $A$ be any point on the curve $C$; since $C$ is closed, we can say that $C$ ``begins'' and ``ends'' at $A$. By the Fundamental Theorem of Line Integrals, $\oint_C \vec F\ d\vec r = f(A)-f(A) = 0$.}
+Since $\curl \vec F = 0$, we can conclude that the circulation is 0 in two ways. One method is to employ Green's Theorem as done above. The second way is to recognize that $\vec F$ is a conservative field, hence there is a function $z=f(x,y)$ wherein $\vec F = \nabla f$. Let $A$ be any point on the curve $C$; since $C$ is closed, we can say that $C$ ``begins'' and ``ends'' at $A$. By the Fundamental Theorem of Line Integrals, $\oint_C \vec F\ d\vec r = f(A)-f(A) = 0$.
+\end{example}
 
 One can use Green's Theorem to find the area of an enclosed region by integrating along its boundary. Let $C$ be a closed curve, enclosing the region $R$, parameterized by $\vec r(t) =\bracket{f(t),g(t)}$. We know the area of $R$ is computed by the double integral $\iint_R \ dA$, where the integrand is $1$. By creating a field $\vec F$ where $\curl \vec F =1$, we can employ Green's Theorem to compute the area of $R$ as $\oint_C \vec F\cdot d\vec r$. 
 
@@ -303,8 +309,8 @@ One is free to choose any field $\vec F$ to use as long as $\curl\vec F = 1$. Co
 
 %Note: take this sentence out and make as exercise Choosing $\vec F =\bracket{-y,0}$ has special significance. This field leads to the line integral $\oint_C\bracket{0,-f(t)}\cdot\bracket{\fp(t),\gp(t)}\ dt$.
 
-\example{ex_green3}{Using Green's Theorem to find area}
-{Let $C$ be the closed curve parameterized by $\vrt =\bracket{t-t^3,t^2}$ on $-1\leq t\leq 1$, enclosing the region $R$, as shown in \autoref{fig:green3}. Find the area of $R$.%
+\begin{example}[Using Green's Theorem to find area]\label{ex_green3}
+Let $C$ be the closed curve parameterized by $\vrt =\bracket{t-t^3,t^2}$ on $-1\leq t\leq 1$, enclosing the region $R$, as shown in \autoref{fig:green3}. Find the area of $R$.%
 \mtable{The region $R$, whose area is found in \autoref{ex_green3}.}{fig:green3}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,height=1.16\marginparwidth,
 tick label style={font=\scriptsize},
@@ -316,16 +322,18 @@ ymin=-.6,ymax=1.6,xmin=-1.1,xmax=1.1]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}}
-{We can choose any field $\vec F$, as long as $\curl \vec F = 1$. We choose $\vec F =\bracket{-y,0}$. We also confirm (left to the reader) that $\vrt$ traverses the region $R$ in a counterclockwise fashion. Thus
+\end{tikzpicture}}
+\solution
+We can choose any field $\vec F$, as long as $\curl \vec F = 1$. We choose $\vec F =\bracket{-y,0}$. We also confirm (left to the reader) that $\vrt$ traverses the region $R$ in a counterclockwise fashion. Thus
 \begin{align*}
 	\text{Area of $R$}
 	&= \iint_R\ dA \\
 	&= \oint_C \vec F\cdot d\vec r\\
 	&= \int_{-1}^1\bracket{-t^2,0}\cdot\bracket{1-3t^2,2t}\ dt\\
 	&= \int_{-1}^1 (-t^2)(1-3t^2)\ dt \\
-	&= \frac8{15}.\eoehere
-\end{align*}}
+	&= \frac8{15}.
+\end{align*}
+\end{example}
 
 \subsection{The Divergence Theorem}
 
@@ -357,9 +365,10 @@ ymin=-2.4,ymax=2.4,xmin=-2.4,xmax=2.4]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-\example{ex_div1}{Confirming the Divergence Theorem}
-{Let $\vec F =\bracket{x-y,x+y}$, let $C$ be the circle of radius 2 centered at the origin and define $R$ to be the interior of that circle, as shown in \autoref{fig:div1}. Verify the Divergence Theorem; that is, find the flux across $C$ and show it is equal to the double integral of $\divv \vec F$ over $R$.}
-{We parameterize the circle in the usual way, with\\
+\begin{example}[Confirming the Divergence Theorem]\label{ex_div1}
+Let $\vec F =\bracket{x-y,x+y}$, let $C$ be the circle of radius 2 centered at the origin and define $R$ to be the interior of that circle, as shown in \autoref{fig:div1}. Verify the Divergence Theorem; that is, find the flux across $C$ and show it is equal to the double integral of $\divv \vec F$ over $R$.
+\solution
+We parameterize the circle in the usual way, with\\
 $\vrt =\bracket{2\cos t,2\sin t}$, $0\leq t\leq 2\pi$. The flux across $C$ is
 \begin{align*}
 	\oint_C \vec F\cdot \vec n\ ds
@@ -372,11 +381,13 @@ We compute the divergence of $\vec F$ as $\divv \vec F = M_x+N_y = 2$. Since the
 \iint_R \divv \vec F\ dA = \iint_R 2\ dA = 2\iint_R\ dA
 = 2(\text{area of $R$}) = 8\pi,
 \]
-which matches our previous result.}
+which matches our previous result.
+\end{example}
 
-\example{ex_div2}{Flux when $\divv \vec F = 0$}
-{Let $\vec F$ be any field where $\divv \vec F = 0$, and let $C_1$ and $C_2$ be any two nonintersecting paths, except that each begin at point $A$ and end at point $B$ (see \autoref{fig:div2}). Show why the flux across $C_1$ and $C_2$ is the same.}
-{%
+\begin{example}[Flux when $\divv \vec F = 0$]\label{ex_div2}
+Let $\vec F$ be any field where $\divv \vec F = 0$, and let $C_1$ and $C_2$ be any two nonintersecting paths, except that each begin at point $A$ and end at point $B$ (see \autoref{fig:div2}). Show why the flux across $C_1$ and $C_2$ is the same.
+\solution
+%
 \mtable{As used in \autoref{ex_div2}, the vector field has a divergence of 0 and the two paths only intersect at their initial and terminal points.}{fig:div2}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,height=1.16\marginparwidth,
 tick label style={font=\scriptsize},axis line style={draw=none},
@@ -409,7 +420,8 @@ Using the properties and notation given in \autoref{thm:line_int_properties_vect
 	\int_{C_2} \vec F\cdot \vec n\ ds
 	&= \int_{C_1} \vec F\cdot \vec n\ ds.
 \end{align*}
-Thus the flux across each path is equal.}
+Thus the flux across each path is equal.
+\end{example}
 
 In this section, we have investigated flow and flux, quantities that measure interactions between a vector field and a planar curve. We can also measure flow along spatial curves, though as mentioned before, it does not make sense to measure flux across spatial curves.
 

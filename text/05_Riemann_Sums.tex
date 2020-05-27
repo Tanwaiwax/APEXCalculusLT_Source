@@ -61,8 +61,10 @@ These are the three most common rules for determining the heights of approximati
 
 The following example will approximate the value of $\ds\int_0^4 (4x-x^2)\ dx$ using these rules.
 
-\example{ex_rie2}{Using the Left Hand, Right Hand and Midpoint Rules}{Approximate the value of $\ds\int_0^4 (4x-x^2)\ dx$ using the Left Hand Rule, the Right Hand Rule, and the Midpoint Rule, using 4 equally spaced subintervals.}
-{We break the interval $[0,4]$ into four subintervals as before. In \autoref{fig:rie2a} we first see 4 rectangles drawn on $f(x) = 4x-x^2$ using the Left Hand Rule. (The areas of the rectangles are given in each figure.)
+\begin{example}[Using the Left Hand, Right Hand and Midpoint Rules]\label{ex_rie2}
+Approximate the value of $\ds\int_0^4 (4x-x^2)\ dx$ using the Left Hand Rule, the Right Hand Rule, and the Midpoint Rule, using 4 equally spaced subintervals.
+\solution
+We break the interval $[0,4]$ into four subintervals as before. In \autoref{fig:rie2a} we first see 4 rectangles drawn on $f(x) = 4x-x^2$ using the Left Hand Rule. (The areas of the rectangles are given in each figure.)
 
 % not \ds because of the line break
 \mtable{Approximating $\int_0^4(4x-x^2)\ dx$ in \autoref{ex_rie2}.}{fig:rie2a}{%
@@ -205,7 +207,8 @@ This gives an approximation of $\ds\int_0^4(4x-x^2)\ dx$ as:
 \begin{align*} f(0.5)\cdot 1 + f(1.5)\cdot 1+ f(2.5)\cdot 1+f(3.5)\cdot 1 &=\\
 	1.75+3.75+3.75+1.75&= 11.
 \end{align*}
-Our three methods provide two approximations of $\ds\int_0^4(4x-x^2)\ dx$: 10 and 11.}
+Our three methods provide two approximations of $\ds\int_0^4(4x-x^2)\ dx$: 10 and 11.
+\end{example}
 
 \subsection{Summation Notation}
 
@@ -243,10 +246,11 @@ The upper case sigma, $\sum$, represents the term ``sum.'' The index of summatio
 
 Let's practice using this notation.
 
-\example{ex_rie3}{Using summation notation}{Let the numbers $\{a_i\}$ be defined as $a_i = 2i-1$ for integers $i$, where $i\geq 1$. So $a_1 = 1$, $a_2 = 3$, $a_3 = 5$, etc. (The output is the positive odd integers). Evaluate the following summations:
+\begin{example}[Using summation notation]\label{ex_rie3}
+Let the numbers $\{a_i\}$ be defined as $a_i = 2i-1$ for integers $i$, where $i\geq 1$. So $a_1 = 1$, $a_2 = 3$, $a_3 = 5$, etc. (The output is the positive odd integers). Evaluate the following summations:
 \[ 1.\ \sum_{i=1}^6 a_i \qquad\qquad\qquad 2.\ \sum_{i=3}^7 (3a_i-4)\qquad\qquad \qquad 3.\ \sum_{i=1}^4 (a_i)^2\]
-}
-{\begin{enumerate}
+\solution
+\begin{enumerate}
 	\item	\mbox{}\\[-2\baselineskip]
 		\begin{align*}
 			\sum_{i=1}^6 a_i &= a_1+a_2+a_3+a_4+a_5+a_6\\
@@ -265,7 +269,8 @@ Let's practice using this notation.
 			&=	1^2+3^2+5^2+7^2 \\
 			&=	84\eoehere
 		\end{align*}
-\end{enumerate}}
+\end{enumerate}
+\end{example}
 
 It might seem odd to stress a new, concise way of writing summations only to write each term out as we add them up. It is. The following theorem gives some of the properties of summations that allow us to work with them without writing individual terms. Examples will follow.
 
@@ -311,10 +316,10 @@ so we see that \[\sum_{i=0}^n i=\frac{n(n+1)}{2}.\] Similarly, we find that
 \sum_{i=0}^n i^3&=\left(\frac{n(n+1)}{2}\right)^2\\
 \end{align*}
 
-\example{ex_rie4}{Evaluating summations using \autoref{thm:summation}}
-{Revisit \autoref{ex_rie3} and, using \autoref{thm:summation}, evaluate \[\sum_{i=1}^6 a_i = \sum_{i=1}^6 (2i-1).\]
-}
-{\begin{align*}
+\begin{example}[Evaluating summations using \autoref{thm:summation}]\label{ex_rie4}
+Revisit \autoref{ex_rie3} and, using \autoref{thm:summation}, evaluate \[\sum_{i=1}^6 a_i = \sum_{i=1}^6 (2i-1).\]
+\solution
+\begin{align*}
 \sum_{i=1}^6 (2i-1)
 &=\sum_{i=1}^6 2i-\sum_{i=1}^6 (1) && \text{(\autoref{thm:summation}(2))}\\
 &=\left( 2\sum_{i=1}^6 i\right) -\sum_{i=1}^6 (1)
@@ -322,7 +327,8 @@ so we see that \[\sum_{i=0}^n i=\frac{n(n+1)}{2}.\] Similarly, we find that
 &=2\left(\frac{6(6+1)}{2}\right)-6 && \text{(\autoref{thm:summation}(1,5))}\\
 &=2(21)-6=36
 \end{align*}
-We obtained the same answer without writing out all six terms. When dealing with small sizes of $n$, it may be faster to write the terms out by hand. However, \autoref{thm:summation} is incredibly important when dealing with large sums as we'll soon see.}
+We obtained the same answer without writing out all six terms. When dealing with small sizes of $n$, it may be faster to write the terms out by hand. However, \autoref{thm:summation} is incredibly important when dealing with large sums as we'll soon see.
+\end{example}
  
 \subsection{Riemann Sums}
 
@@ -338,7 +344,7 @@ Consider again $\ds\int_0^4(4x-x^2)\ dx$. We will approximate this definite inte
 \draw (2,-.25) node {\scriptsize $2$};
 \draw (3,-.25) node {\scriptsize $3$};
 \draw (4,-.25) node {\scriptsize $4$};
-
+%
 \draw (0,-.55) node {\scriptsize $x_0$};
 \draw (1,-.55) node {\scriptsize $x_4$};
 \draw (2,-.55) node {\scriptsize $x_8$};
@@ -381,11 +387,12 @@ Thus approximating $\ds\int_0^4(4x-x^2)\ dx$ with 16 equally spaced subintervals
 \youtubeVideo{gFpHHTxsDkI}{Calculating a Definite Integral Using Riemann Sums --- Part 1}
 
 We use these formulas in the next two examples.
-%\example{ex_rie6}{Use technology to approximate $\ds\int_0^4(4x-x^2)\ dx$ using the Left Hand Rule and 16 and 100 equally spaced intervals. \\
+%\begin{example}
+%Use technology to approximate $\ds\int_0^4(4x-x^2)\ dx$ using the Left Hand Rule and 16 and 100 equally spaced intervals.
 %
 %\mnote{\textbf{Note:} If one does not have ready access to such technology, one can still read and understand how technology can be used to accomplish these goals.}
-%}
-%{Consider first $n=16$. We have $\Delta x = 4/16 = 0.25$, and $x_i = (i-1)\Delta x$ (as worked out before). We want to evaluate $ \sum_{i=1}^{16} f(x_i)\Delta x$. Access to technology may vary; we show how to use \textit{Mathematica} to compute this sum.
+%\solution
+%Consider first $n=16$. We have $\Delta x = 4/16 = 0.25$, and $x_i = (i-1)\Delta x$ (as worked out before). We want to evaluate $ \sum_{i=1}^{16} f(x_i)\Delta x$. Access to technology may vary; we show how to use \textit{Mathematica} to compute this sum.
 %
 %First, note that 
 %\begin{align*}
@@ -411,13 +418,15 @@ We use these formulas in the next two examples.
 %\noindent\texttt{\detokenize{Sum[(0.16(i-1)-(0.04(i-1))^2)*(0.04),{i,1,100}]}}
 %\end{center}
 %Again, \textit{Mathematica} nearly instantly computes this sum as \texttt{10.6656}.
-%}\\
+%\end{example}
 %
 %One of the advantages of using a computer is that it can do a large number of calculations very quickly. Using 10,000 subintervals and the Left Hand Rule, \textit{Mathematica} took approximately $1/5^\text{ th}$ of a second to compute an approximation 10.66666656. It is worthwhile to ascertain what technology is available to you and to understand how to use it appropriately.
 The following example lets us practice using the Left Hand Rule and the summation formulas introduced in \autoref{thm:summation}.
 
-\example{ex_rie7}{Approximating definite integrals using sums}{Approximate $\ds\int_0^4 (4x-x^2)\,dx$ using the Right Hand Rule and summation formulas with 16 and 1000 equally spaced intervals.}
-{Using the formula derived before, using 16 equally spaced intervals and the Right Hand Rule, we can approximate the definite integral as
+\begin{example}[Approximating definite integrals using sums]\label{ex_rie7}
+Approximate $\ds\int_0^4 (4x-x^2)\,dx$ using the Right Hand Rule and summation formulas with 16 and 1000 equally spaced intervals.
+\solution
+Using the formula derived before, using 16 equally spaced intervals and the Right Hand Rule, we can approximate the definite integral as
 \[\sum_{i=1}^{16} f(x_i)\Delta x.\]
 We have $\Delta x=4/16=0.25$, $x_i=0+i\Delta x=i\Delta x$, and $f(x_i)=f(i\Delta x)=4i\Delta x-i^2\Delta x^2$. Using the summation formulas, we see:
 %\flushinner{%
@@ -445,7 +454,7 @@ name=myplot,axis on top,
                         ytick={1,2,3,4},
                         ymin=-1,ymax=5,
                         xmin=-.5,xmax=4.5]
-
+%
 \addplot [draw={\coloronefill},fill={\coloronefill},area style,domain=0:4] {4*x-x^2} \closedcycle;
 \addplot [smooth,thick, draw={\colorone},domain=0:4] {4*x-x^2};
 \foreach \x [evaluate=\x as \y using (4-\x)*\x] in {.25,.5,...,4} {
@@ -468,7 +477,8 @@ Notice  Equation (*); by changing the 16's to 1000's and changing the value of $
 \end{align*}
 
 Using many, many rectangles, we likely have a good approximation of $\ds\int_0^4 (4x-x^2)\ dx$. That is,
-\[\int_0^4 (4x-x^2)\ dx\approx 10.666656.\eoehere\]}
+\[\int_0^4 (4x-x^2)\ dx\approx 10.666656.\]
+\end{example}
 
 Before the above example, we stated what the summations for the Left Hand, Right Hand and Midpoint Rules looked like. Each had the same basic structure, which was:
 \begin{enumerate}
@@ -532,8 +542,10 @@ Usually, Riemann sums are calculated using one of the three methods we have intr
 
 Let's do another example.
 
-\example{ex_rie8}{Approximating definite integrals with sums}{Approximate $\ds\int_{-2}^3 (5x+2)\ dx$ using the Midpoint Rule and 10 equally spaced intervals.}
-{We see that %Following \autoref{idea:riemann}, we have
+\begin{example}[Approximating definite integrals with sums]\label{ex_rie8}
+Approximate $\ds\int_{-2}^3 (5x+2)\ dx$ using the Midpoint Rule and 10 equally spaced intervals.
+\solution
+We see that %Following \autoref{idea:riemann}, we have
 \[
  \Delta x = \frac{3 - (-2)}{10} = \frac12
  \quad \text{and} \quad
@@ -577,12 +589,15 @@ ytick={10,17,-8},ymin=-9,ymax=19,xmin=-2.5,xmax=3.5]
 
 Note the graph of $f(x) = 5x+2$ in \autoref{fig:rie8}. The regions whose area is computed by the definite integral are triangles, meaning we can find the exact answer without summation techniques. We find that the exact answer is indeed 22.5. One of the strengths of the Midpoint Rule is that often each rectangle includes area that should not be counted, but misses other area that should. When $\Delta x$ is small, these two amounts are about equal and these errors almost ``subtract each other out.'' In this example, since our function is a line, these errors are exactly equal and they do subtract each other out, giving us the exact answer.
 
-Note too that when the function is negative, the rectangles have a ``negative'' height. When we compute the area of the rectangle, we use $f(c_i)\Delta x$; when $f$ is negative, the area is counted as negative.}
+Note too that when the function is negative, the rectangles have a ``negative'' height. When we compute the area of the rectangle, we use $f(c_i)\Delta x$; when $f$ is negative, the area is counted as negative.
+\end{example}
 
 Notice in the previous example that while we used 10 equally spaced intervals, the number ``10'' didn't play a big role in the calculations until the very end. Mathematicians love to abstract ideas; let's approximate the area of another region using $n$ subintervals, where we do not specify a value of $n$ until the very end.
 
-\example{ex_rie9}{Approximating definite integrals with a sum formula}{Revisit $\ds\int_0^4(4x-x^2)\ dx$ yet again. Approximate this definite integral using the Right Hand Rule with $n$ equally spaced subintervals.}
-{We see that %Using \autoref{idea:riemann}, we know
+\begin{example}[Approximating definite integrals with a sum formula]\label{ex_rie9}
+Revisit $\ds\int_0^4(4x-x^2)\ dx$ yet again. Approximate this definite integral using the Right Hand Rule with $n$ equally spaced subintervals.
+\solution
+We see that %Using \autoref{idea:riemann}, we know
 $\Delta x = \dfrac{4-0}{n} = \dfrac4n$. We also find $x_i = 0 + \Delta xi = \dfrac{4i}n$.
 
 We construct the Right Hand Rule Riemann sum as follows. Be sure to follow each step carefully. If you get stuck, and do not understand how one line proceeds to the next, you may skip to the result and consider how this result is used. You should come back, though, and work through each step for full understanding.
@@ -605,7 +620,8 @@ The result is an amazing, easy to use formula. To approximate the definite integ
 \[\int_0^4 (4x-x^2)\ dx \approx \frac{32}{3}\left(1-\frac{1}{10^2}\right) = 10.56.\]
 Recall how earlier we approximated the definite integral with 4 subintervals; with $n=4$, the formula gives 10, our answer as before.
 
-It is now easy to approximate the integral with 1,000,000 subintervals!  Hand-held calculators will round off the answer a bit prematurely giving an answer of $10.66666667$. (The actual answer is $10.666666666656$.)}
+It is now easy to approximate the integral with 1,000,000 subintervals!  Hand-held calculators will round off the answer a bit prematurely giving an answer of $10.66666667$. (The actual answer for this many subintervals is $10.666666666656$.)
+\end{example}
 
 We now take an important leap. Up to this point, our mathematics has been limited to geometry and algebra (finding areas and manipulating expressions). Now we apply \textit{calculus}. For any \textit{finite} $n$, we know that
 \[\int_0^4 (4x-x^2)\ dx \approx \frac{32}{3}\left(1-\frac{1}{n^2}\right).\]
@@ -622,8 +638,10 @@ This section started with a fundamental calculus technique: make an approximatio
 
 Let's practice this again.
 
-\example{ex_rie10}{Approximating definite integrals with a sum formula}{Find a formula that approximates $\ds\int_{-1}^5 x^3\ dx$ using the Right Hand Rule and $n$ equally spaced subintervals, then take the limit as $n\to\infty$ to find the exact area.}
-{We see that %Following \autoref{idea:riemann}, we have
+\begin{example}[Approximating definite integrals with a sum formula]\label{ex_rie10}
+Find a formula that approximates $\ds\int_{-1}^5 x^3\ dx$ using the Right Hand Rule and $n$ equally spaced subintervals, then take the limit as $n\to\infty$ to find the exact area.
+\solution
+We see that %Following \autoref{idea:riemann}, we have
 $\Delta x = \frac{5-(-1)}{n} = \frac6n$ and $x_i = (-1) + i\Delta x=-1+\frac{6i}n$.
 
 The Riemann sum corresponding to the Right Hand Rule is (followed by simplifications):
@@ -648,13 +666,13 @@ tick label style={font=\scriptsize},axis y line=middle,axis x line=middle,name=m
 ]
 \addplot [draw={\coloronefill},fill={\coloronefill},area style,domain=-1:5] {(x)^3} \closedcycle;
 \addplot [smooth,thick, draw={\colorone},domain=-1:5] {(x)^3};
-
+%
 \foreach \x [evaluate=\x as \y using {(\x)*(\x)*(\x)}] in {-1,-.4,...,4.4001} {
   \addplot[thick,draw={\colortwo}] coordinates
     { (\x,0) (\x,\y) (\x+.6,\y) (\x+.6,0) };
 }
 \end{axis}
-
+%
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
@@ -663,7 +681,8 @@ Now find the exact answer using a limit:
 \[
 \int_{-1}^5 x^3\ dx
 = \lim_{n\to\infty} \left(156 - \frac{378}n + \frac{216}{n^2}\right) = 156.\eoehere
-\]}
+\]
+\end{example}
 
 \subsection{Limits of Riemann Sums}
 

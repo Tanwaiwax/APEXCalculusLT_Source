@@ -94,9 +94,12 @@ Therefore $\Fp(x)=f(x)$ as desired.  Because the limit exists, \exautoref{diffim
 
 Initially this seems simple, as demonstrated in the following example.
 
-\example{ex_ftc2}{Using the Fundamental Theorem of Calculus, Part 1}{Let $\ds F(x) = \int_{-5}^x (t^2+\sin t)\ dt$. What is $\Fp(x)$?}
-{Using the Fundamental Theorem of Calculus, we have\\
-$\Fp(x) = x^2+\sin x$.}
+\begin{example}[Using the Fundamental Theorem of Calculus, Part 1]\label{ex_ftc2}
+Let $\ds F(x) = \int_{-5}^x (t^2+\sin t)\ dt$. What is $\Fp(x)$?
+\solution
+Using the Fundamental Theorem of Calculus, we have\\
+$\Fp(x) = x^2+\sin x$.
+\end{example}
 
 This simple example reveals something incredible: $F(x)$ is an antiderivative of $x^2+\sin x$. Therefore, $F(x) = \frac13x^3-\cos x+C$ for some value of $C$. (We can find $C$, but generally we do not care. We know that $F(-5)=0$, which allows us to compute $C$. In this case, $C=\cos(-5)+\frac{125}3$.)
 
@@ -118,15 +121,18 @@ Let $f$ be continuous on $[a,b]$ and let $F$ be \textit{any} antiderivative of $
 
 \youtubeVideo{nHnZVFeQvNQ}{The Fundamental Theorem of Calculus. Part 2}
 
-\example{ex_ftc3}{Using the Fundamental Theorem of Calculus, Part 2}{We spent a great deal of time in the previous section studying $\int_0^4(4x-x^2)\ dx$. Using the Fundamental Theorem of Calculus, evaluate this definite integral.}
-{We need an antiderivative of $f(x)=4x-x^2$. All antiderivatives of $f$ have the form $F(x) = 2x^2-\frac13x^3+C$; for simplicity, choose $C=0$.
+\begin{example}[Using the Fundamental Theorem of Calculus, Part 2]\label{ex_ftc3}
+We spent a great deal of time in the previous section studying $\int_0^4(4x-x^2)\ dx$. Using the Fundamental Theorem of Calculus, evaluate this definite integral.
+\solution
+We need an antiderivative of $f(x)=4x-x^2$. All antiderivatives of $f$ have the form $F(x) = 2x^2-\frac13x^3+C$; for simplicity, choose $C=0$.
 
 The Fundamental Theorem of Calculus states
 \[
 \int_0^4(4x-x^2)\ dx = F(4)-F(0)
 = \big(2(4)^2-\frac134^3\big)-\big(0-0\big) = 32-\frac{64}3 = 32/3.
 \]
-This is the same answer we obtained using limits in the previous section, just with much less work.}
+This is the same answer we obtained using limits in the previous section, just with much less work.
+\end{example}
 
 \paragraph{Notation:}\index{integration!notation}%
 A special notation is often used in the process of evaluating definite integrals using the Fundamental Theorem of Calculus. Instead of explicitly writing $F(b)-F(a)$, the notation $F(x)\Big|_a^b$ is used. Thus the solution to \autoref{ex_ftc3} would be written as:
@@ -135,13 +141,16 @@ A special notation is often used in the process of evaluating definite integrals
 = \big(2(4)^2-\frac134^3\big)-\big(0-0\big) =  32/3.
 \]
 
-\example{ex_ftc4}{Using the Fundamental Theorem of Calculus, Part 2}{Evaluate the following definite integrals.
+% todo Tim vertical spacing
+\begin{example}[Using the Fundamental Theorem of Calculus, Part 2]\label{ex_ftc4}
+Evaluate the following definite integrals.
 \[
 1.\ \int_{-2}^2 x^3\ dx \quad 2.\ \int_0^\pi \sin x\ dx \qquad
 3.\ \int_0^5 e^t\ dt \qquad 4.\ \int_4^9 \sqrt{u}\ du\qquad 5.\ \int_1^5 2\ dx
 \]
-\vspace{-10pt}}
-{\begin{enumerate}
+\vspace{-10pt}
+\solution
+\begin{enumerate}
 \item	$\ds \int_{-2}^2 x^3\ dx = \left.\frac14x^4\right|_{-2}^2 = \left(\frac142^4\right) - \left(\frac14(-2)^4\right) = 0.$
 \item	$\ds \int_0^\pi \sin x\ dx = -\cos x\Big|_0^\pi = -\cos \pi- \big(-\cos 0\big) = 1+1=2.$ \\
 (This is interesting; it says that the area under one ``hump'' of a sine curve is 2.)
@@ -151,8 +160,9 @@ A special notation is often used in the process of evaluating definite integrals
 
 This integral is interesting; the integrand is a constant function, hence we are finding the area of a rectangle with width $(5-1)=4$ and height 2. Notice how the evaluation of the definite integral led to $2(4)=8$. 
 
-In general, if $c$ is a constant, then $\int_a^b c\ dx = c(b-a)$.\eoehere
-\end{enumerate}}
+In general, if $c$ is a constant, then $\int_a^b c\ dx = c(b-a)$.
+\end{enumerate}
+\end{example}
 
 \subsection{The Fundamental Theorem of Calculus and the Chain Rule}
 
@@ -167,21 +177,27 @@ What is the derivative of such a function?\index{Fundamental Theorem of Calculus
 \]
 An example will help us understand this.
 
-\example{ex_ftc11}{The FTC, Part 1, and the Chain Rule}{Find the derivative of $\ds F(x) = \int_2^{x^2} \ln t\ dt$.}
-{We can view $F(x)$ as being the function $\ds G(x) = \int_2^x \ln t\ dt$ composed with $g(x) = x^2$; that is, $F(x) = G\big(g(x)\big)$. The Fundamental Theorem of Calculus states that $G\primeskip'(x) = \ln x$. The Chain Rule gives us 
+\begin{example}[The FTC, Part 1, and the Chain Rule]\label{ex_ftc11}
+Find the derivative of $\ds F(x) = \int_2^{x^2} \ln t\ dt$.
+\solution
+We can view $F(x)$ as being the function $\ds G(x) = \int_2^x \ln t\ dt$ composed with $g(x) = x^2$; that is, $F(x) = G\big(g(x)\big)$. The Fundamental Theorem of Calculus states that $G\primeskip'(x) = \ln x$. The Chain Rule gives us 
 \begin{align*}
 F\primeskip'(x) &= G\primeskip'\big(g(x)\big) g\primeskip'(x) \\
  			&= \ln (g(x)) g\primeskip'(x) \\
  			&= \ln (x^2) 2x \\
  			&=2x\ln x^2
 \end{align*}
-Normally, the steps defining $G(x)$ and $g(x)$ are skipped.}
+Normally, the steps defining $G(x)$ and $g(x)$ are skipped.
+\end{example}
 
 Practice this once more.
 
-\example{ex_ftc12}{The FTC, Part 1, and the Chain Rule}{Find the derivative of $\ds F(x) = \int_{\cos x}^5 t^3\ dt.$}
-{Note that $\ds F(x) = -\int_5^{\cos x} t^3\ dt$. Viewed this way, the derivative of $F$ is straightforward:
-\[F\primeskip'(x) = \sin x \cos^3 x.\eoehere\]}
+\begin{example}[The FTC, Part 1, and the Chain Rule]\label{ex_ftc12}
+Find the derivative of $\ds F(x) = \int_{\cos x}^5 t^3\ dt$.
+\solution
+Note that $\ds F(x) = -\int_5^{\cos x} t^3\ dt$. Viewed this way, the derivative of $F$ is straightforward:
+\[F\primeskip'(x) = \sin x \cos^3 x.\]
+\end{example}
 
 \subsection{Understanding Motion with the Fundamental Theorem of Calculus}
 
@@ -194,9 +210,11 @@ where $V(t)$ is any antiderivative of $v(t)$. Since $v(t)$ is a velocity functio
 How would we measure total distance traveled? We have to consider the intervals when $v(t)\geq 0$ and when $v(t)\leq 0$. Therefore,
 \[\text{total distance traveled}=\int_a^b\abs{v(t)}\ dt.\]\bigskip
 
-\example{ex_ftcmotion1}{Finding displacement and total distance traveled}{A ball is thrown straight up with velocity given by $v(t) = -32t+20$ft/s, where $t$ is measured in seconds. Find, and interpret,
-\[1.\ \int_0^1 v(t)\ dt\qquad\text{and}\qquad 2.\ \int_0^1\abs{v(t)}\ dt.\]}
-{\begin{enumerate}
+\begin{example}[Finding displacement and total distance traveled]\label{ex_ftcmotion1}
+A ball is thrown straight up with velocity given by $v(t) = -32t+20$ft/s, where $t$ is measured in seconds. Find, and interpret,
+\[1.\ \int_0^1 v(t)\ dt\qquad\text{and}\qquad 2.\ \int_0^1\abs{v(t)}\ dt.\]
+\solution
+\begin{enumerate}
 \item Using the Fundamental Theorem of Calculus, we have 
 \begin{align*}
 	\int_0^1 v(t)\ dt &= \int_0^1 (-32t+20)\ dt \\
@@ -219,11 +237,12 @@ This means $v(t)>0$ for $t<\frac{5}{8}$ and $v(t)<0$ for $t>\frac{5}{8}$ so we h
 &=\int_0^{5/8} -32t+20\ dt + \int_{5/8}^1 32t-20\ dt\\
 &=\frac{34}{4}=8.5 \text{ ft}.\eoehere
 \end{align*}
-\end{enumerate}}
+\end{enumerate}
+\end{example}
 
 Integrating a rate of change function gives total change. Velocity is the rate of position change; integrating velocity gives the total change of position, i.e., displacement.
 
-Integrating a speed function gives a similar, though different, result. Speed is also the rate of position change, but does not account for direction. So integrating a speed function gives total change of position, without the possibility of ``negative position change.'' Hence the integral of a speed function gives \textit{distance traveled.}
+Integrating a speed function gives a similar, though different, result. Speed is also the rate of position change, but does not account for direction. So integrating a speed function gives total change of position, without the possibility of ``negative position change.'' Hence the integral of a speed function gives \emph{distance traveled.}
 
 %Integrating a \textit{speed} function gives something different than displacement. If two objects both travel at the same speed along different paths, they will travel the same \textit{distance} though their \textit{displacements} will likely be different. For instance, one object could travel along a circle and the other along a straight line. Their ending points will be far different from each other, though they would have each traveled the same distance. The final conclusion: \textit{integrating a speed function gives distance traveled.}
 
@@ -234,7 +253,7 @@ means the velocity has increased by 15m/h from $t=0$ to $t=3$.
 
 \subsection{The Mean Value Theorem and Average Value}
 
-\mtable[-4.8in]{A graph of a function $f$ to introduce the Mean Value Theorem and differently sized rectangles giving upper and lower bounds on $\int_1^4 f(x)\ dx$; the last rectangle matches the area exactly.}{fig:ftc7b}%
+\mtable[-3in]{A graph of a function $f$ to introduce the Mean Value Theorem and differently sized rectangles giving upper and lower bounds on $\int_1^4 f(x)\ dx$; the last rectangle matches the area exactly.}{fig:ftc7b}%
 {\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2,3,4},
@@ -326,8 +345,10 @@ ymin=-.25,ymax=1.25,xmin=-.5,xmax=3.5]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-\example{ex_ftc8}{Using the Mean Value Theorem}{Consider $\ds\int_0^\pi \sin x\ dx$. Find a value $c$ guaranteed by the Mean Value Theorem.}
-{We first need to evaluate $\ds\int_0^\pi \sin x\ dx$. (This was previously done in \autoref{ex_ftc4}.)
+\begin{example}[Using the Mean Value Theorem]\label{ex_ftc8}
+Consider $\ds\int_0^\pi \sin x\ dx$. Find a value $c$ guaranteed by the Mean Value Theorem.
+\solution
+We first need to evaluate $\ds\int_0^\pi \sin x\ dx$. (This was previously done in \autoref{ex_ftc4}.)
 \[\int_0^\pi\sin x\ dx = -\cos x \Big|_0^\pi = 2.\]
 Thus we seek a value $c$ in $[0,\pi]$ such that $\pi\sin c =2$. 
 \[
@@ -336,8 +357,17 @@ Thus we seek a value $c$ in $[0,\pi]$ such that $\pi\sin c =2$.
  c = \sin^{-1}\left(\frac2\pi\right) \approx 0.69.
 \]
 
-In \autoref{fig:ftc8} $\sin x$ is sketched along with a rectangle with height $\sin (0.69)$. The area of the rectangle is the same as the area under $\sin x$ on $[0,\pi]$.}
+In \autoref{fig:ftc8} $\sin x$ is sketched along with a rectangle with height $\sin (0.69)$. The area of the rectangle is the same as the area under $\sin x$ on $[0,\pi]$.
+\end{example}
 
+Let $f$ be a function on $[a,b]$ with $c$ such that $f(c)(b-a) = \int_a^bf(x)\ dx$. Consider $\int_a^b\big(f(x)-f(c)\big)\ dx$:
+\begin{align*}
+	\int_a^b\big(f(x)-f(c)\big)\ dx
+	&= \int_a^b f(x) - \int_a^b f(c)\ dx\\
+	&= f(c)(b-a) - f(c)(b-a) \\
+	&= 0.
+\end{align*}
+%
 \mtable{On top, a graph of $y=f(x)$ and the rectangle guaranteed by the Mean Value Theorem. Below, $y=f(x)$ is shifted down by $f(c)$; the resulting ``area under the curve'' is 0.}{fig:ftc9}
 {\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -367,14 +397,7 @@ ymin=-1,ymax=3.5,xmin=-.5,xmax=4.25]
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
-
-Let $f$ be a function on $[a,b]$ with $c$ such that $f(c)(b-a) = \int_a^bf(x)\ dx$. Consider $\int_a^b\big(f(x)-f(c)\big)\ dx$:
-\begin{align*}
-	\int_a^b\big(f(x)-f(c)\big)\ dx
-	&= \int_a^b f(x) - \int_a^b f(c)\ dx\\
-	&= f(c)(b-a) - f(c)(b-a) \\
-	&= 0.
-\end{align*}
+%
 When $f(x)$ is shifted by $-f(c)$, the amount of area under $f$ above the $x$-axis on $[a,b]$ is the same as the amount of area below the $x$-axis above $f$; see \autoref{fig:ftc9} for an illustration of this. In this sense, we can say that $f(c)$ is the \textit{average value} of $f$ on $[a,b]$. 
 
 The value $f(c)$ is the average value in another sense. First, recognize that the Mean Value Theorem can be rewritten as
@@ -406,16 +429,19 @@ Let $f$ be continuous on $[a,b]$. The \textbf{average value of\ \ $\mathbf{f}$\ 
 
 An application of this definition is given in the following example.
 
-\example{ex_ftc10}{Finding the average value of a function}{An object moves back and forth along a straight line with a velocity given by $v(t) = (t-1)^2$ on $[0,3]$, where $t$ is measured in seconds and $v(t)$ is measured in ft/s. 
+\begin{example}[Finding the average value of a function]\label{ex_ftc10}
+An object moves back and forth along a straight line with a velocity given by $v(t) = (t-1)^2$ on $[0,3]$, where $t$ is measured in seconds and $v(t)$ is measured in ft/s. 
 
-What is the average velocity of the object?}
-{By our definition, the average velocity is:
+What is the average velocity of the object?
+\solution
+By our definition, the average velocity is:
 \[
 \frac1{3-0}\int_0^3 (t-1)^2\ dt
 = \frac13 \int_0^3 \big(t^2-2t+1\big)\ dt
 = \left.\frac13\left(\frac13t^3-t^2+t\right)\right|_0^3
-= 1\text{ ft/s}.\eoehere
-\]}
+= 1\text{ ft/s}.
+\]
+\end{example}
 
 We can understand the above example through a simpler situation. Suppose you drove 100 miles in 2 hours. What was your average speed? The answer is simple: displacement/time = 100 miles/2 hours = 50 mph.
 

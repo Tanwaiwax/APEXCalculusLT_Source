@@ -1,5 +1,5 @@
 % !TEX program = XeLaTeX
-\errorcontextlines 10000
+%\errorcontextlines 10000
 
 \RequirePackage[l2tabu, orthodox]{nag}
 \documentclass[10pt]{book}
@@ -17,6 +17,8 @@
 
 \usepackage{lipsum}
 
+\newcommand*{\nopars}[1]{#1}
+
 \begin{document}
 
 %\frontmatter
@@ -30,69 +32,148 @@
 \setcounter{chapter}{1}
 \setcounter{section}{2}
 
-\renewcommand{\eoehere}{}
-\renewcommand{\drawexampleline}{}
-\renewcommand{\examplestarred}[3]{%
- \begin{exampleEnv}[#2]\label{#1}
-  #3%
- \end{exampleEnv}
+\nopars{\small%
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick=\empty,
+extra x ticks={.5,3},extra x tick labels={$a$,$b$},ytick=\empty,
+ymin=-.2,ymax=2,xmin=-.5,xmax=3.5]
+\addplot[smooth,draw={\coloronefill},fill={\coloronefill},area style,domain=.5:3]
+ {.25*sin(deg(2*x))+1.25}\closedcycle;
+\addplot[smooth,draw=white,fill=white,area style,domain=.5:3]
+ {.25*(x-2)^2+.2}\closedcycle;
+\addplot [smooth,thick, draw={\colorone},domain=-.25:3.25] {.25*sin(deg(2*x))+1.25} node [shift={(5pt,7pt)} ,black] {\scriptsize $f(x)$};
+\addplot [smooth,thick, draw={\colorone},domain=-.25:3.25] {.25*(x-2)^2+.2}node [shift={(5pt,7pt)} ,black] {\scriptsize $g(x)$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\ (a)
+\\
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick=\empty,
+extra x ticks={.5,3},extra x tick labels={$a$,$b$},ytick=\empty,
+ymin=-.2,ymax=2,xmin=-.5,xmax=3.5]
+\addplot[smooth,draw={\coloronefill},fill={\coloronefill},area style,domain=.5:3]
+ {.25*sin(deg(2*x))+1.25}\closedcycle;
+\addplot[smooth,draw=white,fill=white,area style,domain=.5:3]
+ {.25*(x-2)^2+.2}\closedcycle;
+\addplot [smooth,thick, draw={\colorone},domain=-.25:3.25] {.25*sin(deg(2*x))+1.25} node [shift={(5pt,7pt)} ,black] {\scriptsize $f(x)$};
+\addplot [smooth,thick, draw={\colorone},domain=-.25:3.25] {.25*(x-2)^2+.2}node [shift={(5pt,7pt)} ,black] {\scriptsize $g(x)$};
+\foreach\x in{.5,.75,...,3} {
+ \edef\temp{\noexpand\draw[thick]
+  (axis cs:\x,{.25*(\x-2)^2+.2})--(axis cs:\x,{.25*sin(deg(2*\x))+1.25});}\temp
 }
-\tcolorboxenvironment{exampleEnv}{
-    empty,
-    size=minimal,
-    breakable,
-    parbox=false,
-    beforeafter skip=\bigskipamount,
-    enlargepage flexible=3\baselineskip,
-    lines before break=5,
-    before upper={\setlength{\parindent}{\saveparindent}\noindent},
-    boxsep=0pt,
-    overlay unbroken={
-     \node[xshift=-2\marginlinelength,yshift=-.5\baselineskip]
-      (start\arabic{exampleEnv})at(frame.north west){};
-     \node[xshift=10pt](stop\arabic{exampleEnv})at(frame.south west){};
-     \draw[thick,\thelinecolor](start\arabic{exampleEnv})|-(stop\arabic{exampleEnv});
-    },
-    overlay first={
-     \node[xshift=-2\marginlinelength,yshift=-.5\baselineskip]
-      (start\arabic{exampleEnv})at(frame.north west){};
-     \node[xshift=-2\marginlinelength,yshift=-2\baselineskip]
-      (stop\arabic{exampleEnv})at(frame.south west){};
-     \draw[thick,\thelinecolor](start\arabic{exampleEnv})--(stop\arabic{exampleEnv});
-    },
-    overlay middle={
-     % a middle has only one on a page, so we don't need other suffixes
-     \node[xshift=-2\marginlinelength,yshift=.5\baselineskip]
-      (start)at(frame.north west){};
-     \node[xshift=-2\marginlinelength,yshift=-2\baselineskip]
-      (stop)at(frame.south west){};
-     \draw[thick,\thelinecolor](start)--(start|-stop);
-    },
-    overlay last={
-     \node[xshift=-2\marginlinelength,yshift=.5\baselineskip]
-      (start\arabic{exampleEnv})at(frame.north west){};
-     \node[xshift=10pt](stop\arabic{exampleEnv})at(frame.south west){};
-     \draw[thick,\thelinecolor](start\arabic{exampleEnv})|-(stop\arabic{exampleEnv});
-    },
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(b)
+\\
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick=\empty,
+extra x ticks={.5,3},extra x tick labels={$a$,$b$},ytick=\empty,
+ymin=-.2,ymax=2,xmin=-.5,xmax=3.5]
+\newcommand{\f}[1]{.25*sin(deg(2*#1))+1.25}
+\newcommand{\g}[1]{.25*(#1-2)^2+.2}
+\addplot[smooth,draw={\coloronefill},fill={\coloronefill},area style,domain=.5:3]
+ {\f{x}}\closedcycle;
+\addplot[smooth,draw=white,fill=white,area style,domain=.5:3]
+ {\g{x}}\closedcycle;
+% {.25*(x-2)^2+.2}\closedcycle;
+\addplot [smooth,thick, draw={\colorone},domain=-.25:3.25] {\f{x}} node [shift={(5pt,7pt)} ,black] {\scriptsize $f(x)$};
+\addplot [smooth,thick, draw={\colorone},domain=-.25:3.25] {\g{x}}node [shift={(5pt,7pt)} ,black] {\scriptsize $g(x)$};
+\foreach\x in{.5,.75,...,2.75} {
+ \edef\c{(\x+.25*(1+sin(deg(3*\x)))/2)}
+ \edef\temp{
+  \noexpand\draw[thick](axis cs:\x,{\f{\c}})rectangle(axis cs:{\x+.25},{\g{\c}});
+  \noexpand\filldraw(axis cs:{\c},{\f{\c}})circle(1.3pt);
+  \noexpand\filldraw(axis cs:{\c},{\g{\c}})circle(1.3pt);
+ }\temp
+}
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\ (c)
 }
 
-\lipsum[1]
+%\vskip 3in
 
-\example*{mylabel1}{Example Title}{Problem Statement\solution Solution statement
+% from 07 Area Between Curves
+\newcommand{\f}[1]{.25*sin(deg(2*#1))+1.25}
+\newcommand{\g}[1]{.25*(#1-2)^2+.2}
+\mtable[-3in]
+{Subdividing a region into vertical slices and approximating the areas with rectangles.}{fig:abcintro}{\small%
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick=\empty,
+extra x ticks={.5,3},extra x tick labels={$a$,$b$},ytick=\empty,
+ymin=-.2,ymax=2,xmin=-.5,xmax=3.5]
+\addplot[smooth,draw={\coloronefill},fill={\coloronefill},area style,domain=.5:3]
+ {.25*sin(deg(2*x))+1.25}\closedcycle;
+\addplot[smooth,draw=white,fill=white,area style,domain=.5:3]
+ {.25*(x-2)^2+.2}\closedcycle;
+\addplot [smooth,thick, draw={\colorone},domain=-.25:3.25] {.25*sin(deg(2*x))+1.25} node [shift={(5pt,7pt)} ,black] {\scriptsize $f(x)$};
+\addplot [smooth,thick, draw={\colorone},domain=-.25:3.25] {.25*(x-2)^2+.2}node [shift={(5pt,7pt)} ,black] {\scriptsize $g(x)$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\ (a)
+\\
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick=\empty,
+extra x ticks={.5,3},extra x tick labels={$a$,$b$},ytick=\empty,
+ymin=-.2,ymax=2,xmin=-.5,xmax=3.5]
+\addplot[smooth,draw={\coloronefill},fill={\coloronefill},area style,domain=.5:3]
+ {.25*sin(deg(2*x))+1.25}\closedcycle;
+\addplot[smooth,draw=white,fill=white,area style,domain=.5:3]
+ {.25*(x-2)^2+.2}\closedcycle;
+\addplot [smooth,thick, draw={\colorone},domain=-.25:3.25] {.25*sin(deg(2*x))+1.25} node [shift={(5pt,7pt)} ,black] {\scriptsize $f(x)$};
+\addplot [smooth,thick, draw={\colorone},domain=-.25:3.25] {.25*(x-2)^2+.2}node [shift={(5pt,7pt)} ,black] {\scriptsize $g(x)$};
+\foreach\x in{.5,.75,...,3} {
+ \edef\temp{\noexpand\draw[thick]
+  (axis cs:\x,{.25*(\x-2)^2+.2})--(axis cs:\x,{.25*sin(deg(2*\x))+1.25});}\temp
+}
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\(b)
+\\
+\begin{tikzpicture}
+\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick=\empty,
+extra x ticks={.5,3},extra x tick labels={$a$,$b$},ytick=\empty,
+ymin=-.2,ymax=2,xmin=-.5,xmax=3.5]
+\addplot[smooth,draw={\coloronefill},fill={\coloronefill},area style,domain=.5:3]
+ {\f{x}}\closedcycle;
+\addplot[smooth,draw=white,fill=white,area style,domain=.5:3]
+ {\g{x}}\closedcycle;
+% {.25*(x-2)^2+.2}\closedcycle;
+\addplot [smooth,thick, draw={\colorone},domain=-.25:3.25] {\f{x}} node [shift={(5pt,7pt)} ,black] {\scriptsize $f(x)$};
+\addplot [smooth,thick, draw={\colorone},domain=-.25:3.25] {\g{x}}node [shift={(5pt,7pt)} ,black] {\scriptsize $g(x)$};
+\foreach\x in{.5,.75,...,2.75} {
+ \edef\c{(\x+.25*(1+sin(deg(3*\x)))/2)}
+ \edef\temp{
+  \noexpand\draw[thick](axis cs:\x,{\f{\c}})rectangle(axis cs:{\x+.25},{\g{\c}});
+  \noexpand\filldraw(axis cs:{\c},{\f{\c}})circle(1.3pt);
+  \noexpand\filldraw(axis cs:{\c},{\g{\c}})circle(1.3pt);
+ }\temp
+}
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\\ (c)
+}
 
-\lipsum[2]}
 
-\lipsum[3]
-
-\example*{mylabel}{Example Title}{Problem Statement\solution Solution statement
-
-\lipsum[4-10]
-
-\[a=b\]}
-
-\lipsum[11]
-
-theexampleEnv is \theexampleEnv
+%\input{text/01_Analytic_Limits}
 
 %\makeexercisesection{Standalone Solutions To All Problems}
 

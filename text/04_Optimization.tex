@@ -6,7 +6,8 @@ In \autoref{sec:extreme_values} we learned about extreme values --- the largest 
 
 We start with a classic example which is followed by a discussion of the topic of optimization.
 
-\example{ex_opt1}{Optimization: perimeter and area}{A man has 100 feet of fencing, a large yard, and a small dog. He wants to create a rectangular enclosure for his dog with the fencing that provides the maximal area. What dimensions provide the maximal area?
+\begin{example}[Optimization: perimeter and area]\label{ex_opt1}
+A man has 100 feet of fencing, a large yard, and a small dog. He wants to create a rectangular enclosure for his dog with the fencing that provides the maximal area. What dimensions provide the maximal area?
 %
 \mtable{A sketch of the enclosure in \autoref{ex_opt1}.}{fig:opt1}{\begin{tikzpicture}[scale=1.3]
 \ifthenelse{\boolean{latexml}}{\shadedraw[fill=green!75!black]}{\shadedraw[top color=green,bottom color=green!50!black]}
@@ -37,8 +38,9 @@ We start with a classic example which is followed by a discussion of the topic o
 \draw [<->,>=latex] (100.2pt,35.28pt) -- (66.6pt,0pt) node [right,pos=.5] {$y$};
 \draw [shift = {(0,-70pt)}] (0,0) -- (80pt,0) node [pos=.5,below] {$x$}
  -- (80pt,50pt) node [pos=.5,right] {$y$} -- (0,50pt) -- cycle;
-\end{tikzpicture}}}
-{One can likely guess the correct answer --- that is great. We will proceed to show how calculus can provide this answer in a context that proves this answer is correct.
+\end{tikzpicture}}
+\solution
+One can likely guess the correct answer --- that is great. We will proceed to show how calculus can provide this answer in a context that proves this answer is correct.
 
 It helps to make a sketch of the situation. Our enclosure is sketched twice in \autoref{fig:opt1}, either with green grass and nice fence boards or as a simple rectangle. Either way, drawing a rectangle forces us to realize that we need to know the dimensions of this rectangle so we can create an area function --- after all, we are trying to maximize the area.
 
@@ -63,7 +65,8 @@ A'(x) 	&= 50-2x
 \end{align*}
 We solve $50-2x=0$ to find $x=25$; this is the only critical point. We evaluate $A(x)$ at the endpoints of our interval and at this critical point to find the extreme values; in this case, all we care about is the maximum.
 
-Clearly $A(0)=0$ and $A(50)=0$, whereas $A(25) = 625 \text{ ft}^2$. This is the maximum. Since we earlier found $y = 50-x$, we find that $y$ is also $25$. Thus the dimensions of the rectangular enclosure with perimeter of 100 ft. with maximum area is a square, with sides of length 25 ft.}
+Clearly $A(0)=0$ and $A(50)=0$, whereas $A(25) = 625 \text{ ft}^2$. This is the maximum. Since we earlier found $y = 50-x$, we find that $y$ is also $25$. Thus the dimensions of the rectangular enclosure with perimeter of 100 ft. with maximum area is a square, with sides of length 25 ft.
+\end{example}
 
 This example is very simplistic and a bit contrived. (After all, most people create a design then buy fencing to meet their needs, and not buy fencing and plan later.) But it models well the necessary process: create equations that describe a situation, reduce an equation to a single variable, then find the needed extreme value.
 
@@ -122,8 +125,10 @@ We will use \autoref{idea:optimization} in a variety of examples.
 \draw [draw={\colorone},very thick,shift = {(0,-80pt)}] (0,0) sin (40pt,2pt) cos (80pt,0);
 \end{tikzpicture}}
 
-\example{ex_opt2}{Optimization: perimeter and area}{Here is another classic calculus problem: A woman has a 100 feet of fencing, a small dog, and a large yard that contains a stream (that is mostly straight). She wants to create a rectangular enclosure with maximal area that uses the stream as one side. (Apparently her dog won't swim away.) What dimensions provide the maximal area?}
-{We will follow the steps outlined by \autoref{idea:optimization}. 
+\begin{example}[Optimization: perimeter and area]\label{ex_opt2}
+Here is another classic calculus problem: A woman has a 100 feet of fencing, a small dog, and a large yard that contains a stream (that is mostly straight). She wants to create a rectangular enclosure with maximal area that uses the stream as one side. (Apparently her dog won't swim away.) What dimensions provide the maximal area?
+\solution
+We will follow the steps outlined by \autoref{idea:optimization}. 
 \begin{enumerate}
 	\item		We are maximizing \textit{area}. A sketch of the region will help; \autoref{fig:opt2} gives two sketches of the proposed enclosed area. A key feature of the sketches is to acknowledge that one side is not fenced. 
 	
@@ -142,12 +147,13 @@ We will use \autoref{idea:optimization} in a variety of examples.
 	
 	Find the critical points. We have $A'(x) = 50-x$; setting this equal to 0 and solving for $x$ returns $x=50$. This gives an area of
 	\[A(50) = 50(25) = 1250.\]
-	\item		We earlier set $y = 50-x/2$; thus $y = 25$. Thus our rectangle will have two sides of length 25 and one side of length 50, with a total area of 1250~ft$^2$.\eoehere
-\end{enumerate}}
+	\item		We earlier set $y = 50-x/2$; thus $y = 25$. Thus our rectangle will have two sides of length 25 and one side of length 50, with a total area of 1250~ft$^2$.
+\end{enumerate}
+\end{example}
 
 Keep in mind as we do these problems that we are practicing a \textit{process}; that is, we are learning to turn a situation into a system of equations. These equations allow us to write a certain quantity as a function of one variable, which we then optimize.
 
-%\mnote{\textbf{Note:} \autoref{ex_opt3} is another classic calculus example. The underlying principle is given in a variety of contexts; Google ``calculus dog'' to find articles where 
+%\mnote{\textbf{Note:} \autoref{ex_opt3} is another classic calculus example. The underlying principle is given in a variety of contexts; Google ``calculus dog'' to find articles where }
 
 \mtable{Running a power line from the power station to an offshore facility with minimal cost in \autoref{ex_opt3}.}{fig:opt3b}{\begin{tikzpicture}[>=latex]
 \begin{scope}
@@ -165,10 +171,12 @@ Keep in mind as we do these problems that we are practicing a \textit{process}; 
 \filldraw [fill=white] (130pt,35pt) circle (7pt);
 \end{tikzpicture}}
 
-\example{ex_opt3}{Optimization: minimizing cost}{A power line needs to be run from a power station located on the beach to an offshore facility. \autoref{fig:opt3b} shows the distances between the power station to the facility.
+\begin{example}[Optimization: minimizing cost]\label{ex_opt3}
+A power line needs to be run from a power station located on the beach to an offshore facility. \autoref{fig:opt3b} shows the distances between the power station to the facility.
 
-It costs \$50/ft. to run a power line along the land, and \$130/ft. to run a power line under water. How much of the power line should be run along the land to minimize the overall cost? What is the minimal cost?}
-{We will follow the strategy of \autoref{idea:optimization} implicitly, without specifically numbering steps.
+It costs \$50/ft. to run a power line along the land, and \$130/ft. to run a power line under water. How much of the power line should be run along the land to minimize the overall cost? What is the minimal cost?
+\solution
+We will follow the strategy of \autoref{idea:optimization} implicitly, without specifically numbering steps.
 
 There are two immediate solutions that we could consider, each of which we will reject through ``common sense.'' First, we could minimize the distance by directly connecting the two locations with a straight line. However, this requires that all the wire be laid underwater, the most costly option. Second, we could minimize the underwater length by running a wire all 5000 ft. along the beach, directly across from the offshore facility. This has the undesired effect of having the longest distance of all, probably ensuring a non-minimal cost.
 
@@ -222,7 +230,8 @@ x & = \frac{50,000}{120} =\frac{1250}{3} %=416+\frac23
 \approx 416.67.
 \end{align*}
 
-Evaluating $c(x)$ at $x=416.67$ gives a cost of about \$370,000. The distance the power line is laid along land is $5000-416.67 = 4583.33$ ft., and the underwater distance is $\sqrt{416.67^2+1000^2} \approx 1083$ ft.}
+Evaluating $c(x)$ at $x=416.67$ gives a cost of about \$370,000. The distance the power line is laid along land is $5000-416.67 = 4583.33$ ft., and the underwater distance is $\sqrt{416.67^2+1000^2} \approx 1083$ ft.
+\end{example}
 
 \mtable{A sketch for \autoref{ex_min_surf_area}.}{fig:min_surf_area}{%
 \begin{tikzpicture}[scale=.67]
@@ -238,7 +247,9 @@ Evaluating $c(x)$ at $x=416.67$ gives a cost of about \$370,000. The distance th
  \draw (0,0) -- node [pos=.5,above] {\scriptsize $r$} (1.5,0);
 \end{tikzpicture}}
 
-\example{ex_min_surf_area}{Optimization: Minimizing Surface Area}{Design a closed cylindrical can of volume $8$ ft$^3$ so that it uses the least amount of metal. In other words, minimize the surface area of the can.}{Following the strategy of \autoref{idea:optimization}, we make a sketch in \autoref{fig:min_surf_area} and identify the quantity to be minimized as the surface area of the cylinder. The formula for the surface area is our fundamental equation  since it relates all of our relevant quantities.
+\begin{example}[Optimization: Minimizing Surface Area]\label{ex_min_surf_area}
+Design a closed cylindrical can of volume $8$ ft$^3$ so that it uses the least amount of metal. In other words, minimize the surface area of the can.
+Following the strategy of \autoref{idea:optimization}, we make a sketch in \autoref{fig:min_surf_area} and identify the quantity to be minimized as the surface area of the cylinder. The formula for the surface area is our fundamental equation  since it relates all of our relevant quantities.
 \[
  A
  =\underbrace{\pi r^2}_{\text{Top}}
@@ -270,7 +281,8 @@ Thus, the surface area must be minimized at the critical point we found. Finally
  \approx 2.17\text{ ft.}
 \]
 
-Notice that the height is twice the length of the radius. This means that the surface area is minimized when the can is as tall as it is wide.}
+Notice that the height is twice the length of the radius. This means that the surface area is minimized when the can is as tall as it is wide.
+\end{example}
 
 In the exercises you will see a variety of situations that require you to combine problem-solving skills with calculus. Focus on the \textit{process}; learn how to form equations from situations that can be manipulated into what you need. Eschew memorizing how to do ``this kind of problem'' as opposed to ``that kind of problem.'' Learning a process will benefit one far longer than memorizing a specific technique.
 

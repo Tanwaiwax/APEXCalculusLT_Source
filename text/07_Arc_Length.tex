@@ -1,6 +1,6 @@
 \section{Arc Length and Surface Area}\label{sec:arc_length}
 
-\mtable{Graphing $y=\sin x$ on $[0,\pi]$ and approximating the curve with line segments.}{fig:arcintro}{%
+\mtable[-.5in]{Graphing $y=\sin x$ on $[0,\pi]$ and approximating the curve with line segments.}{fig:arcintro}{%
 \begin{tikzpicture}
  \begin{axis}[width=1.16\marginparwidth,%height=.46\marginparwidth,
    tick label style={font=\scriptsize},axis equal,
@@ -115,8 +115,10 @@ ymin=-.2,ymax=8.5,xmin=-.1,xmax=4.5,]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-\example{ex_arc1}{Finding arc length}{Find the arc length of $f(x) = x^{3/2}$ from $x=0$ to $x=4$.}
-{A graph of $f$ is given in \autoref{fig:arc1}.
+\begin{example}[Finding arc length]\label{ex_arc1}
+Find the arc length of $f(x) = x^{3/2}$ from $x=0$ to $x=4$.
+\solution
+A graph of $f$ is given in \autoref{fig:arc1}.
 We begin by finding $\fp(x)= \frac32x^{1/2}$. Using the formula, we find the arc length $L$ as
 \begin{align*}
 	L
@@ -124,11 +126,14 @@ We begin by finding $\fp(x)= \frac32x^{1/2}$. Using the formula, we find the arc
 	&=	\int_0^4 \sqrt{1+\frac94x} \ dx \\
 	&= 	\int_0^4 \left(1+\frac94x\right)^{1/2}\ dx \\
 	&=  \frac23\cdot\frac49\left(1+\frac94x\right)^{3/2}\Big|_0^4 \\
-	&=	\frac{8}{27}\left(10^{3/2}-1\right)\text{units}.\eoehere % \approx 9.07 
-\end{align*}}
+	&=	\frac{8}{27}\left(10^{3/2}-1\right)\text{units}. % \approx 9.07 
+\end{align*}
+\end{example}
 
-\example{ex_arc2}{Finding arc length}{Find the arc length of $\ds f(x) =\frac18x^2-\ln x$ from $x=1$ to $x=2$.}
-{A graph of $f$ is given in \autoref{fig:arc2}; the portion of the curve measured in this problem is in bold.
+\begin{example}[Finding arc length]\label{ex_arc2}
+Find the arc length of $\ds f(x) =\frac18x^2-\ln x$ from $x=1$ to $x=2$.
+\solution
+A graph of $f$ is given in \autoref{fig:arc2}; the portion of the curve measured in this problem is in bold.
 \mtable{A graph of $f(x) =\frac18x^2-\ln x$ from \autoref{ex_arc2}.}{fig:arc2}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
@@ -148,13 +153,16 @@ This function was chosen specifically because the resulting integral can be eval
 	&=	\int_1^2	\sqrt{ \left(\frac x4 + \frac1x\right)^2 }\ dx \\
 	&= \int_1^2 \left(\frac x4 + \frac1x\right) \ dx \\
 	&=  \left(\frac{x^2}8 + \ln x\right)\Bigg|_1^2\\
-	&=	\frac38+\ln 2\ \text{units}.\eoehere % \approx 1.07
-\end{align*}}
+	&=	\frac38+\ln 2\ \text{units}. % \approx 1.07
+\end{align*}
+\end{example}
 
 The previous examples found the arc length exactly through careful choice of the functions. In general, exact answers are much more difficult to come by and numerical approximations are necessary.
 
-\example{ex_arc3}{Approximating arc length numerically}{Find the length of the sine curve from $x=0$ to $x=\pi$.}
-{This is somewhat of a mathematical curiosity; in \autoref{ex_ftc4} we found the area under one ``hump'' of the sine curve is 2 square units; now we are measuring its arc length.
+\begin{example}[Approximating arc length numerically]\label{ex_arc3}
+Find the length of the sine curve from $x=0$ to $x=\pi$.
+\solution
+This is somewhat of a mathematical curiosity; in \autoref{ex_ftc4} we found the area under one ``hump'' of the sine curve is 2 square units; now we are measuring its arc length.
 
 \mtable{A table of values of $y=\sqrt{1+\cos^2x}$ to evaluate a definite integral in \autoref{ex_arc3}.}{fig:arc3}{%
 \[\begin{array}{cc}
@@ -174,7 +182,8 @@ This integral \textit{cannot} be evaluated in terms of elementary functions so w
 	\left(\sqrt{2}+4\sqrt{3/2}+2(1)+4\sqrt{3/2}+\sqrt{2}\right) \\
 	&\approx3.82918.
 \end{align*}
-Using a computer with $n=100$ the approximation is $L\approx 3.8202$; our approximation with $n=4$ is quite good.  Our approximation of $3.79$ from the beginning of this section isn't as close.}
+Using a computer with $n=100$ the approximation is $L\approx 3.8202$; our approximation with $n=4$ is quite good.  Our approximation of $3.79$ from the beginning of this section isn't as close.
+\end{example}
 
 \subsection{Surface Area of Solids of Revolution}
 
@@ -223,8 +232,10 @@ Let $f$ be differentiable on an open interval containing $[a,b]$ where $\fp$ is 
 \end{enumerate}
 \end{keyidea}
 
-\example{ex_sa1}{Finding surface area of a solid of revolution}{Find the surface area of the solid formed by revolving $y=\sin x$ on $[0,\pi]$ around the $x$-axis, as shown in \autoref{fig:sa1}.}
-{The setup turns out to be easier than the resulting integral. Using \autoref{idea:surface_area}, we have the surface area $SA$ is:
+\begin{example}[Finding surface area of a solid of revolution]\label{ex_sa1}
+Find the surface area of the solid formed by revolving $y=\sin x$ on $[0,\pi]$ around the $x$-axis, as shown in \autoref{fig:sa1}.
+\solution
+The setup turns out to be easier than the resulting integral. Using \autoref{idea:surface_area}, we have the surface area $SA$ is:
 \mtable{Revolving $y=\sin x$ on $[0,\pi]$ about the $x$-axis.}{fig:sa1}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=121.00092658103458,
@@ -245,7 +256,8 @@ Let $f$ be differentiable on an open interval containing $[a,b]$ where $\fp$ is 
 	&=	2\pi\left(\sqrt2+\ln\left(\sqrt2+1\right)\right)\ \text{units}^2 \qquad\qquad\text{rationalize the denominator.}
 \end{align*}
 
-It is interesting to see that the surface area of a solid, whose shape is defined by a trigonometric function, involves both a square root and a natural logarithm.}
+It is interesting to see that the surface area of a solid, whose shape is defined by a trigonometric function, involves both a square root and a natural logarithm.
+\end{example}
 
 \mtable{The solids used in \autoref{ex_sa2}.}{fig:sa2}{%
 \myincludeasythree{width=\marginparwidth,
@@ -263,9 +275,11 @@ It is interesting to see that the surface area of a solid, whose shape is define
 3Droo=149.99998895240248}{width=\marginparwidth}{figures/figsa2b_3D}\\
 (b)}
 
-\example{ex_sa2}{Finding surface area of a solid of revolution}{Find the surface area of the solid formed by revolving the curve $y=x^2$ on $[0,1]$ about:\\
-\null\hfill 1.\quad the $x$-axis\hfill2.\quad the $y$-axis.\hfill\null}
-{\begin{enumerate}
+\begin{example}[Finding surface area of a solid of revolution]\label{ex_sa2}
+Find the surface area of the solid formed by revolving the curve $y=x^2$ on $[0,1]$ about:\\
+\null\hfill 1.\quad the $x$-axis\hfill2.\quad the $y$-axis.\hfill\null
+\solution
+\begin{enumerate}
 	\item		The solid formed by revolving $y=x^2$ around the $x$-axis is graphed in \autoref{fig:sa2}(a). Like the integral in \autoref{ex_sa1}, this integral is easier to setup than to actually integrate. While it is possible to use a trigonometric substitution to evaluate this integral, it is significantly more difficult than a solution employing the hyperbolic sine:
 \begin{align*}
 	SA &= 2\pi\int_0^1 x^2\sqrt{1+(2x)^2}\ dx. \\
@@ -282,12 +296,14 @@ It is interesting to see that the surface area of a solid, whose shape is define
 	&= \left.\frac{\pi}{4}\frac23 u^{3/2}\right|_1^5\\
 	&= \frac{\pi}6\left(5\sqrt{5}-1\right)\ \text{units}^2.
 \end{align*}
- The solid formed by revolving $y=x^2$ about the $y$-axis is graphed in \autoref{fig:sa2} (b).\eoehere
-\end{enumerate}}
+ The solid formed by revolving $y=x^2$ about the $y$-axis is graphed in \autoref{fig:sa2} (b).
+\end{enumerate}
+\end{example}
 
 Our final example is a famous mathematical ``paradox.''
 
-\example{ex_gabriel}{The surface area and volume of Gabriel's Horn}{Consider the solid formed by revolving $y=1/x$ about the $x$-axis on $[1,\infty)$. Find the volume and surface area of this solid. (This shape, as graphed in \autoref{fig:gabriel}, is known as ``Gabriel's Horn'' since it looks like a very long horn that only a supernatural person, such as an angel, could play.)\index{Gabriel's Horn}
+\begin{example}[The surface area and volume of Gabriel's Horn]\label{ex_gabriel}
+Consider the solid formed by revolving $y=1/x$ about the $x$-axis on $[1,\infty)$. Find the volume and surface area of this solid. (This shape, as graphed in \autoref{fig:gabriel}, is known as ``Gabriel's Horn'' since it looks like a very long horn that only a supernatural person, such as an angel, could play.)\index{Gabriel's Horn}
 \mtable{A graph of Gabriel's Horn.}{fig:gabriel}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=107.09033109095482,
@@ -295,8 +311,8 @@ Our final example is a famous mathematical ``paradox.''
 3Dc2c=0.4647676646709442 0.1565970778465271 0.8714748024940491,
 3Dcoo=72.58285522460938 2.8911631107330322 -26.545440673828125,
 3Droo=149.99999776925813}{width=\marginparwidth}{figures/figgabriel_3D}}
-}
-{To compute the volume it is natural to use the Disk Method. We have:
+\solution
+To compute the volume it is natural to use the Disk Method. We have:
 \begin{align*}
 V &= \pi\int_1^\infty \frac{1}{x^2}\ dx \\
 	&= \lim_{b\to\infty}\pi\int_1^b\frac{1}{x^2}\ dx \\
@@ -316,7 +332,8 @@ By \autoref{idea:impint1}, the improper integral on the left diverges. Since the
 
 Hence the ``paradox'': we can fill Gabriel's Horn with a finite amount of paint, but since it has infinite surface area, we can never paint it.
 
-Somehow this paradox is striking when we think about it in terms of volume and area. However, we have seen a similar paradox before, as referenced above. We know that the area under the curve $y=1/x^2$ on $[1,\infty)$ is finite, yet the shape has an infinite perimeter. Strange things can occur when we deal with the infinite.}
+Somehow this paradox is striking when we think about it in terms of volume and area. However, we have seen a similar paradox before, as referenced above. We know that the area under the curve $y=1/x^2$ on $[1,\infty)$ is finite, yet the shape has an infinite perimeter. Strange things can occur when we deal with the infinite.
+\end{example}
 
 %A standard equation from physics is ``Work = force $\times$ distance'', when the force applied is constant. In the next section we learn how to compute work when the force applied is variable.
 

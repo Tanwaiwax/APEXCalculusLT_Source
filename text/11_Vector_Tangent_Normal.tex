@@ -12,8 +12,10 @@ Let \vrt\ be a smooth function on an open interval $I$. The unit tangent vector 
 
 \youtubeVideo{39LA5WyVgKY}{Tangent Line to a Parametrized Curve} % sic
 
-\example{ex_tannorm1}{Computing the unit tangent vector}{Let $\vrt =\bracket{3\cos t, 3\sin t, 4t}$. Find $\vec T(t)$ and compute $\vec T(0)$ and $\vec T(1)$.}
-{We apply \autoref{def:unit_tangent} to find $\vec T(t)$. 
+\begin{example}[Computing the unit tangent vector]\label{ex_tannorm1}
+Let $\vrt =\bracket{3\cos t, 3\sin t, 4t}$. Find $\vec T(t)$ and compute $\vec T(0)$ and $\vec T(1)$.
+\solution
+We apply \autoref{def:unit_tangent} to find $\vec T(t)$. 
 \begin{align*}
 \vec T(t) &= \frac1{\norm{\vrp(t)}}\vrp(t) \\
 				&=\frac{1}{\sqrt{\big(-3\sin t\big)^2+\big(3\cos t\big)^2+ 4^2}}\bracket{-3\sin t,3\cos t, 4}\\
@@ -27,7 +29,7 @@ These are plotted in \autoref{fig:tannorm1} with their initial points at $\vec r
 %The unit tangent vector $\vec T(t)$ always has a magnitude of 1, though it is sometimes easy to doubt that is true. We can help solidify this thought in our minds by computing $\norm{\vec T(1)}$:
 %\[\norm{\vec T(1)} \approx \sqrt{(-0.505)^2+0.324^2+0.8^2} = 1.000001.\]
 %We have rounded in our computation of $\vec T(1)$, so we don't get 1 exactly. We leave it to the reader to use the exact representation of $\vec T(1)$ to verify it has length 1.
-}
+\end{example}
 
 \mtable[-2\baselineskip]{Plotting unit tangent vectors in \autoref{ex_tannorm1}.}{fig:tannorm1}{%
 \myincludeasythree{width=\marginparwidth,
@@ -39,8 +41,10 @@ These are plotted in \autoref{fig:tannorm1} with their initial points at $\vec r
 
 In many ways, the previous example was ``too nice.'' It turned out that $\vrp(t)$ was always of length 5. In the next example the length of $\vrp(t)$ is variable, leaving us with a formula that is not as clean.
 
-\example{ex_tannorm2}{Computing the unit tangent vector}{Let $\vrt=\bracket{t^2-t,t^2+t}$. Find $\vec T(t)$ and compute $\vec T(0)$ and $\vec T(1)$.}
-{We find $\vrp(t) =\bracket{2t-1,2t+1}$, and
+\begin{example}[Computing the unit tangent vector]\label{ex_tannorm2}
+Let $\vrt=\bracket{t^2-t,t^2+t}$. Find $\vec T(t)$ and compute $\vec T(0)$ and $\vec T(1)$.
+\solution
+We find $\vrp(t) =\bracket{2t-1,2t+1}$, and
 %
 \mtable{Plotting unit tangent vectors in \autoref{ex_tannorm2}.}{fig:tannorm2}{\begin{tikzpicture}[>=stealth]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -58,7 +62,8 @@ ymin=-1.1,ymax=6.5,xmin=-2.1,xmax=7]
 \[\norm{\vrp(t)} = \sqrt{(2t-1)^2+(2t+1)^2} = \sqrt{8t^2+2}.\]
 Therefore
 \[\vecT(t) = \frac{1}{\sqrt{8t^2+2}}\bracket{2t-1,2t+1}=\bracket{\frac{2t-1}{\sqrt{8t^2+2}},\frac{2t+1}{\sqrt{8t^2+2}}}.\]
-When $t=0$, we have $\vec T(0) =\bracket{-1/\sqrt{2},1/\sqrt{2}}$; when $t=1$, we have $\vec T(1) =\bracket{1/\sqrt{10}, 3/\sqrt{10}}.$ We leave it to the reader to verify each of these is a unit vector. They are plotted in \autoref{fig:tannorm2}}
+When $t=0$, we have $\vec T(0) =\bracket{-1/\sqrt{2},1/\sqrt{2}}$; when $t=1$, we have $\vec T(1) =\bracket{1/\sqrt{10}, 3/\sqrt{10}}.$ We leave it to the reader to verify each of these is a unit vector. They are plotted in \autoref{fig:tannorm2}.
+\end{example}
 
 \subsection{Unit Normal Vector}
 
@@ -92,8 +97,10 @@ Let \vrt\ be a vector-valued function where the unit tangent vector, $\vec T(t)$
 \[\vec N(t) = \frac1{\norm{\vec T\,'(t)}}\vec T\,'(t).\]
 \end{definition}
 
-\example{ex_tannorm3}{Computing the unit normal vector}{Let $\vrt =\bracket{3\cos t, 3\sin t, 4t}$ as in \autoref{ex_tannorm1}. Sketch both $\vec T(\pi/2)$ and $\vec N(\pi/2)$ with initial points at $\vec r(\pi/2)$.}
-{In \autoref{ex_tannorm1}, we found $\vec T(t) =\bracket{(-3/5)\sin t,(3/5)\cos t,4/5}$. Therefore 
+\begin{example}[Computing the unit normal vector]\label{ex_tannorm3}
+Let $\vrt =\bracket{3\cos t, 3\sin t, 4t}$ as in \autoref{ex_tannorm1}. Sketch both $\vec T(\pi/2)$ and $\vec N(\pi/2)$ with initial points at $\vec r(\pi/2)$.
+\solution
+In \autoref{ex_tannorm1}, we found $\vec T(t) =\bracket{(-3/5)\sin t,(3/5)\cos t,4/5}$. Therefore 
 \[\vec T\,'(t) =\bracket{-\frac35\cos t,-\frac35\sin t,0}\quad \text{and} \quad \norm{\vec T\,'(t)} = \frac35.\]
 \mtable{Plotting unit tangent and normal vectors in \autoref{ex_tannorm3}.}{fig:tannorm3}{%
 \myincludeasythree{width=\marginparwidth,
@@ -104,12 +111,15 @@ Let \vrt\ be a vector-valued function where the unit tangent vector, $\vec T(t)$
 3Droo=150.0000014005964}{width=\marginparwidth}{figures/figtannorm3_3D}}
 Thus
 \[\vec N(t) = \frac{\vec T\,'(t)}{3/5} =\bracket{-\cos t,-\sin t,0}.\]
-We compute $\vec T(\pi/2) =\bracket{-3/5,0,4/5}$ and $\vec N(\pi/2) =\bracket{0,-1,0}$. These are sketched in \autoref{fig:tannorm3}.}
+We compute $\vec T(\pi/2) =\bracket{-3/5,0,4/5}$ and $\vec N(\pi/2) =\bracket{0,-1,0}$. These are sketched in \autoref{fig:tannorm3}.
+\end{example}
 
 The previous example was once again ``too nice.'' In general, the expression for $\vec T(t)$ contains fractions of square-roots, hence the expression of $\vec T\,'(t)$ is very messy. We demonstrate this in the next example.
 
-\example{ex_tannorm4}{Computing the unit normal vector}{Let $\vrt=\bracket{t^2-t,t^2+t}$ as in \autoref{ex_tannorm2}. Find $\vec N(t)$ and sketch $\vrt$ with the unit tangent and normal vectors at $t=-1,0$ and 1.}
-{In \autoref{ex_tannorm2}, we found
+\begin{example}[Computing the unit normal vector]\label{ex_tannorm4}
+Let $\vrt=\bracket{t^2-t,t^2+t}$ as in \autoref{ex_tannorm2}. Find $\vec N(t)$ and sketch $\vrt$ with the unit tangent and normal vectors at $t=-1,0$ and 1.
+\solution
+In \autoref{ex_tannorm2}, we found
 \[\vec T(t) =\bracket{\frac{2t-1}{\sqrt{8t^2+2}},\frac{2t+1}{\sqrt{8t^2+2}}}.\]
 Finding $\vec T\,'(t)$ requires two applications of the Quotient Rule:
 
@@ -151,7 +161,8 @@ ymin=-1.1,ymax=6.5,xmin=-2.1,xmax=7]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-Using this formula for $\vec N(t)$, we compute the unit tangent and normal vectors for $t=-1,0$ and 1 and sketch them in \autoref{fig:tannorm4}.}
+Using this formula for $\vec N(t)$, we compute the unit tangent and normal vectors for $t=-1,0$ and 1 and sketch them in \autoref{fig:tannorm4}.
+\end{example}
 
 The final result for $\vec N(t)$ in \autoref{ex_tannorm4} is suspiciously similar to $\vec T(t)$. There is a clear reason for this. If $\vec u =\bracket{u_1,u_2}$ is a unit vector in $\mathbb{R}^2$, then the \textit{only} unit vectors orthogonal to $\vec u$ are $\bracket{-u_2,u_1}$ and $\bracket{u_2,-u_1}$. Given $\vec T(t)$, we can quickly determine $\vec N(t)$ if we know which term to multiply by $(-1)$.
 
@@ -229,9 +240,10 @@ Also, the Pythagorean theorem tells us that
 \]
 \end{proof}
 
-\example{ex_tannorm5}{Computing $a_\mathrm{T}$ and $a_\mathrm{N}$}
-{Let $\vrt =\bracket{3\cos t, 3\sin t, 4t}$ as in Examples \ref{ex_tannorm1} and \ref{ex_tannorm3}. Find $a_\mathrm{T}$ and $a_\mathrm{N}$.}
-{The previous examples give $\vat =\bracket{-3\cos t,-3\sin t,0}$ and 
+\begin{example}[Computing $a_\mathrm{T}$ and $a_\mathrm{N}$]\label{ex_tannorm5}
+Let $\vrt =\bracket{3\cos t, 3\sin t, 4t}$ as in Examples \ref{ex_tannorm1} and \ref{ex_tannorm3}. Find $a_\mathrm{T}$ and $a_\mathrm{N}$.
+\solution
+The previous examples give $\vat =\bracket{-3\cos t,-3\sin t,0}$ and 
 \[\vec T(t) =\bracket{-\frac35\sin t,\frac35\cos t,\frac45}\quad \text{and}\quad \vec N(t) =\bracket{-\cos t,-\sin t,0}.\]
 We can find $a_\mathrm{T}$ and $a_\mathrm{N}$ directly with dot products:
 \begin{align*}
@@ -240,11 +252,13 @@ a_\mathrm{N} &= \vat\cdot \vec N(t) = 3\cos^2t+3\sin^2t + 0 = 3.
 \end{align*}
 Thus $\vat = 0\vec T(t) + 3\vec N(t) = 3\vec N(t)$, which is clearly the case.
 
-What is the practical interpretation of these numbers? $a_\mathrm{T}=0$ means the object is moving at a constant speed, and hence all acceleration comes in the form of direction change.}
+What is the practical interpretation of these numbers? $a_\mathrm{T}=0$ means the object is moving at a constant speed, and hence all acceleration comes in the form of direction change.
+\end{example}
 
-\example{ex_tannorm6}{Computing $a_\mathrm{T}$ and $a_\mathrm{N}$}
-{Let $\vrt=\bracket{t^2-t,t^2+t}$ as in Examples \ref{ex_tannorm2} and \ref{ex_tannorm4}. Find $a_\mathrm{T}$ and $a_\mathrm{N}$.}
-{The previous examples give $\vat =\bracket{2,2}$ and
+\begin{example}[Computing $a_\mathrm{T}$ and $a_\mathrm{N}$]\label{ex_tannorm6}
+Let $\vrt=\bracket{t^2-t,t^2+t}$ as in Examples \ref{ex_tannorm2} and \ref{ex_tannorm4}. Find $a_\mathrm{T}$ and $a_\mathrm{N}$.
+\solution
+The previous examples give $\vat =\bracket{2,2}$ and
 \[\vec T(t) =\bracket{\frac{2t-1}{\sqrt{8t^2+2}},\frac{2t+1}{\sqrt{8t^2+2}}}\quad \text{and}\quad \vec N(t) =\bracket{\frac{2t+1}{\sqrt{8t^2+2}},-\frac{2t-1}{\sqrt{8t^2+2}}}.\]
 While we can compute $a_\mathrm{N}$ using $\vec N(t)$, we instead demonstrate using another formula from \autoref{thm:acc_plane}.
 \begin{align*}
@@ -271,10 +285,13 @@ ymin=-1.1,ymax=6.5,xmin=-2.1,xmax=7]
 \end{tikzpicture}}
 
 Contrast this with $t=0$, where $a_{\mathrm{T}}=0$ and $a_{\mathrm{N}}=4/\sqrt2=2\sqrt2 %\approx 2.82
-$. Here the particle's speed is not changing and all acceleration is in the form of direction change.}
+$. Here the particle's speed is not changing and all acceleration is in the form of direction change.
+\end{example}
 
-\example{ex_tannorm7}{Analyzing projectile motion}{A ball is thrown from a height of 240ft with an initial speed of 64ft/s and an angle of elevation of $30^\circ$. Find the position function \vrt\ of the ball and analyze $a_\mathrm{T}$ and $a_\mathrm{N}$.\index{projectile motion}}
-{Using \autoeqref{idea:projectile} of \autoref{sec:vvf_motion} we form the position function of the ball:
+\begin{example}[Analyzing projectile motion]\label{ex_tannorm7}
+A ball is thrown from a height of 240ft with an initial speed of 64ft/s and an angle of elevation of $30^\circ$. Find the position function \vrt\ of the ball and analyze $a_\mathrm{T}$ and $a_\mathrm{N}$.\index{projectile motion}
+\solution
+Using \autoeqref{idea:projectile} of \autoref{sec:vvf_motion} we form the position function of the ball:
 \[
 \vrt =\bracket{\big(64\cos 30^\circ\big)t, -16t^2+\big(64\sin 30^\circ\big)t+240},
 \]
@@ -323,7 +340,8 @@ $t$ & $a_\mathrm{T}$ & $a_\mathrm{N}$ \\ \midrule
 3 & $\phantom{-}24.2$ & 20.9 \\
 4 & $\phantom{-}27.7$ & 16 \\
 5 & $\phantom{-}29.4$ & 12.7 
-\end{tabular}}}
+\end{tabular}}
+\end{example}
 
 Our understanding of the unit tangent and normal vectors is aiding our understanding of motion. The work in \autoref{ex_tannorm7} gave quantitative analysis of what we intuitively knew.
 

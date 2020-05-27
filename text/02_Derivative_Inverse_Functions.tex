@@ -84,8 +84,10 @@ The results of \autoref{thm:deriv_inverse_functions} are not trivial; the notati
 
 In the next example we apply \autoref{thm:deriv_inverse_functions} to the arcsine function.
 
-\example{ex_deriv_arcsin}{Finding the derivative of an inverse trigonometric function}{Let $y = \sin^{-1} x$. Find $y\primeskip'$ using \autoref{thm:deriv_inverse_functions}.}
-{Adopting our previously defined notation, let $g(x) = \sin^{-1} x$ and $f(x) = \sin x$. Thus $\fp(x) = \cos x$. Applying \autoref{thm:deriv_inverse_functions}, we have 
+\begin{example}[Finding the derivative of an inverse trigonometric function]\label{ex_deriv_arcsin}
+Let $y = \sin^{-1} x$. Find $y\primeskip'$ using \autoref{thm:deriv_inverse_functions}.
+\solution
+Adopting our previously defined notation, let $g(x) = \sin^{-1} x$ and $f(x) = \sin x$. Thus $\fp(x) = \cos x$. Applying \autoref{thm:deriv_inverse_functions}, we have 
 \begin{align*}
 	g\primeskip'(x) &= \frac{1}{\fp(g(x))} \\
 	&= \frac{1}{\cos(\sin^{-1}x)}.
@@ -100,7 +102,8 @@ In the next example we apply \autoref{thm:deriv_inverse_functions} to the arcsin
 
 This last expression is not immediately illuminating. Drawing a figure will help, as shown in \autoref{fig:inverse3}. Recall that the sine function can be viewed as taking in an angle and returning a ratio of sides of a right triangle, specifically, the ratio ``opposite over hypotenuse.'' This means that the arcsine function takes as input a ratio of sides and returns an angle. The equation $y=\sin^{-1} x$ can be rewritten as $y=\sin^{-1}(x/1)$; that is, consider a right triangle where the hypotenuse has length 1 and the side opposite of the angle with measure $y$ has length $x$. This means the final side has length $\sqrt{1-x^2}$, using the Pythagorean Theorem.
 
-Therefore $\cos (\sin^{-1} x) = \cos y = \sqrt{1-x^2}/1 = \sqrt{1-x^2}$, resulting in \[\frac d{dx}\big(\sin^{-1}x\big)=g\primeskip'(x)=\frac1{\sqrt{1-x^2}}.\eoehere\]}
+Therefore $\cos (\sin^{-1} x) = \cos y = \sqrt{1-x^2}/1 = \sqrt{1-x^2}$, resulting in \[\frac d{dx}\big(\sin^{-1}x\big)=g\primeskip'(x)=\frac1{\sqrt{1-x^2}}.\]
+\end{example}
 
 Remember that the input $x$ of the arcsine function is a ratio of a side of a right triangle to its hypotenuse; the absolute value of this ratio will be less than 1. Therefore $1-x^2$ will be positive.
 
@@ -162,21 +165,27 @@ Note how the last three derivatives are merely the negatives of the first three,
 
 %In \autoref{sec:basic_diff_rules}, we stated without proof or explanation that $\ds \frac{d}{dx}\bigl(\ln x\bigr) = \frac1x$. We can justify that now using \autoref{thm:deriv_inverse_functions}, as shown in the example.
 %
-%\example{ex_deriv_lnx}{Finding the derivative of $y=\ln x$}{Use \autoref{thm:deriv_inverse_functions} to compute $\ds \frac{d}{dx}\big(\ln x\big)$.}
-%{View $y= \ln x$ as the inverse of $y = e^x$. Therefore, using our standard notation, let $f(x) = e^x$ and $g(x) = \ln x$. We wish to find $g\primeskip'(x)$. \autoref{thm:deriv_inverse_functions} gives:
+%\begin{example}[Finding the derivative of $y=\ln x$]\label{ex_deriv_lnx}
+%Use \autoref{thm:deriv_inverse_functions} to compute $\ds \frac{d}{dx}\big(\ln x\big)$.
+%\solution
+%View $y= \ln x$ as the inverse of $y = e^x$. Therefore, using our standard notation, let $f(x) = e^x$ and $g(x) = \ln x$. We wish to find $g\primeskip'(x)$. \autoref{thm:deriv_inverse_functions} gives:
 %\begin{align*}
 %	g\primeskip'(x)
 %	&= \frac1{\fp(g(x))} \\
 %	&= \frac1{e^{\ln x}} \\
-%	&= \frac1x.\eoehere
-%\end{align*}}
+%	&= \frac1x.
+%\end{align*}
+%\end{example}
 
-\example{eg_inv_derivs}{Finding derivatives of inverse functions}{Find the derivatives of the following functions:
+\begin{example}[Finding derivatives of inverse functions]\label{eg_inv_derivs}
+Find the derivatives of the following functions:
 \[
  \text{1.}\quad f(x)=\cos^{-1}(x^2)\qquad
  \text{2.}\quad g(x)=\frac{\sin^{-1}x}{\sqrt{1-x^2}}\qquad
  \text{3.}\quad f(x)=\sin^{-1}(\cos x)
-\]}{\begin{enumerate}
+\]
+\solution
+\begin{enumerate}
 \item We use \autoref{thm:deriv_inverse_trig} and the Chain Rule to find:
 \[\fp(x)=-\frac{1}{\sqrt{1-(x^2)^2}}(2x)=- \frac{2x}{\sqrt{1-x^4}}\]
 \item We use \autoref{thm:deriv_inverse_trig} and the Quotient Rule to compute: 
@@ -189,9 +198,10 @@ Note how the last three derivatives are merely the negatives of the first three,
 \begin{align*}
  \fp(x)&=\frac{1}{\sqrt{1-\cos^2x}}(-\sin x)\\
  &=\frac{-\sin x}{\sqrt{\sin^2x}}\\
- &=\frac{-\sin x}{\abs{\sin x}}.\eoehere
+ &=\frac{-\sin x}{\abs{\sin x}}.
 \end{align*}
-\end{enumerate}}
+\end{enumerate}
+\end{example}
 
 \autoref{thm:deriv_inverse_trig} allows us to integrate some functions that we could not integrate before. For example,
 \[\int\frac{dx}{\sqrt{1-x^2}}=\sin^{-1}x+C.\]
@@ -221,20 +231,24 @@ We next use the substitution $u=x/a$ and $du=dx/a$ to find:
 
 We conclude this section with several examples.
 
-\example{eg_inv_deriv_harder}{Finding antiderivatives involving inverse functions}{Find the following integrals.
+\begin{example}[Finding antiderivatives involving inverse functions]\label{eg_inv_deriv_harder}
+Find the following integrals.
 \[
  \text{1.}\quad\int\frac{dx}{100+x^2}\qquad
  \text{2.}\quad\int\frac{\sin^{-1} x}{\sqrt{1-x^2}}\ dx\qquad
  \text{3.}\int\frac{dx}{x^2+2x+5}
-\]}{\begin{enumerate}
+\]
+\solution
+\begin{enumerate}
 \item $\ds\int\frac{dx}{100+x^2}=\int\frac{dx}{10^2+x^2}=\frac1{10}\tan^{-1}(x/10)+C$
 \item We use the substitution $u=\sin^{-1}x$ and $du=\frac{dx}{\sqrt{1-x^2}}$ to find:
 \[\int\frac{\sin^{-1}x}{\sqrt{1-x^2}}\ dx=\int u\ du=\frac12 u^2+C=\frac 12\left(\sin^{-1}x\right)^2+C\]
 \item This does not immediately look like one of the forms in \autoref{thm:int_inverse_trig}, but we can complete the square in the denominator to see that
 \[\int\frac{dx}{x^2+2x+5} =\int\frac{dx}{(x^2+2x+1)+4}=\int\frac{dx}{4+(x+1)^2}\]
 We now use the substitution $u=x+1$ and $du=dx$ to find:
-\[\int\frac{dx}{4+(x+1)^2} =\int\frac{du}{4+u^2}=\frac12 \tan^{-1}(u/2)+C =\frac 12\tan^{-1}\left(\frac{x+1}2\right)+C.\eoehere\]
-\end{enumerate}}
+\[\int\frac{dx}{4+(x+1)^2} =\int\frac{du}{4+u^2}=\frac12 \tan^{-1}(u/2)+C =\frac 12\tan^{-1}\left(\frac{x+1}2\right)+C.\]
+\end{enumerate}
+\end{example}
 
 % moved to end of implicit differentiation.  but do we want to give it again?
 %In this chapter we have defined the derivative, given rules to facilitate its computation, and given the derivatives of a number of standard functions. We restate the most important of these in the following theorem, intended to be a reference for further work.

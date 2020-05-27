@@ -56,8 +56,10 @@ It is instructive to consider each of three directions given in the definition i
 
 \youtubeVideo{DRBNp7SZCvU}{Determining a Unit Normal Vector to a Surface}
 
-\example{ex_tpl1}{Finding directional tangent lines}{Find the lines tangent to the surface $z=\sin x\cos y$ at $(\pi/2,\pi/2)$ in the $x$ and $y$ directions and also in the direction of $\vec v =\bracket{-1,1}.$}
-{The partial derivatives with respect to $x$ and $y$ are:
+\begin{example}[Finding directional tangent lines]\label{ex_tpl1}
+Find the lines tangent to the surface $z=\sin x\cos y$ at $(\pi/2,\pi/2)$ in the $x$ and $y$ directions and also in the direction of $\vec v =\bracket{-1,1}$.
+\solution
+The partial derivatives with respect to $x$ and $y$ are:
 \begin{align*}
 f_x(x,y) = \cos x\cos y\quad &\Rightarrow \quad f_x(\pi/2,\pi/2) = 0\\
 f_y(x,y) = -\sin x\sin y\quad&\Rightarrow \quad f_y(\pi/2,\pi/2)=-1.
@@ -91,10 +93,13 @@ The two lines are shown with the surface in \autoref{fig:partial4}(a). To find t
 \[D_{\vec u\,}f(\pi/2,\pi,2) =\bracket{0,-1}\cdot\bracket{-1/\sqrt{2},1/\sqrt 2}= -1/\sqrt 2.\]
 Thus the directional tangent line is 
 \[\ell_{\vec u}(t) = \begin{cases}x= \pi/2 -t/\sqrt{2}\\ y = \pi/2 + t/\sqrt{2} \\ z= -t/\sqrt{2}\end{cases}.\]
-The curve through $(\pi/2,\pi/2,0)$ in the direction of $\vec v$ is shown in \autoref{fig:partial4}(b) along with $\ell_{\vec u}(t)$.}
+The curve through $(\pi/2,\pi/2,0)$ in the direction of $\vec v$ is shown in \autoref{fig:partial4}(b) along with $\ell_{\vec u}(t)$.
+\end{example}
 
-\example{ex_tpl2}{Finding directional tangent lines}{Let $f(x,y) = 4xy-x^4-y^4$. Find the equations of \textit{all} directional tangent lines to $f$ at $(1,1)$.}
-{First note that $f(1,1) = 2$. We need to compute directional derivatives, so we need $\nabla f$. We begin by computing partial derivatives.
+\begin{example}[Finding directional tangent lines]\label{ex_tpl2}
+Let $f(x,y) = 4xy-x^4-y^4$. Find the equations of \textit{all} directional tangent lines to $f$ at $(1,1)$.
+\solution
+First note that $f(1,1) = 2$. We need to compute directional derivatives, so we need $\nabla f$. We begin by computing partial derivatives.
 \[
 f_x = 4y-4x^3 \Rightarrow f_x(1,1) = 0;\quad f_y = 4x-4y^3\Rightarrow f_y(1,1) = 0.
 \]
@@ -113,7 +118,8 @@ Thus $\nabla f(1,1) =\bracket{0,0}$. Let $\vec u =\bracket{u_1,u_2}$ be any unit
 \]
 \autoref{fig:tpl2} shows a graph of $f$ and the point $(1,1,2)$. Note that this point comes at the top of a ``hill,'' and therefore every tangent line through this point will have a ``slope'' of 0. 
 
-That is, consider any curve on the surface that goes through this point. Each curve will have a relative maximum at this point, hence its tangent line will have a slope of 0. The following section investigates the points on surfaces where all tangent lines have a slope of 0.}
+That is, consider any curve on the surface that goes through this point. Each curve will have a relative maximum at this point, hence its tangent line will have a slope of 0. The following section investigates the points on surfaces where all tangent lines have a slope of 0.
+\end{example}
 
 \subsection{Normal Lines}
 
@@ -151,8 +157,10 @@ z = f(x_0,y_0) - t.
 \end{cases}
 \]
 
-\example{ex_tpl3}{Finding a normal line}{Find the equation of the normal line to $z=-x^2-y^2+2$ at $(0,1)$.}
-{We find $z_x(x,y) = -2x$ and $z_y(x,y) = -2y$; at $(0,1)$, we have $z_x = 0$ and $z_y = -2$. We take the direction of the normal line, following \autoref{def:normal_line_space}, to be $\vec n=\bracket{0,-2,-1}$. The line with this direction going through the point $(0,1,1)$ is 
+\begin{example}[Finding a normal line]\label{ex_tpl3}
+Find the equation of the normal line to $z=-x^2-y^2+2$ at $(0,1)$.
+\solution
+We find $z_x(x,y) = -2x$ and $z_y(x,y) = -2y$; at $(0,1)$, we have $z_x = 0$ and $z_y = -2$. We take the direction of the normal line, following \autoref{def:normal_line_space}, to be $\vec n=\bracket{0,-2,-1}$. The line with this direction going through the point $(0,1,1)$ is 
 %
 \mtable{Graphing a surface with a normal line  from \autoref{ex_tpl3}.}{fig:tpl3}{%
 \myincludeasythree{width=\marginparwidth,
@@ -168,12 +176,15 @@ z = f(x_0,y_0) - t.
 \ell_n(t)=\bracket{0,-2,-1}t+\bracket{0,1,1}.
 \]
 
-The surface $z=-x^2-y^2+2$, along with the found normal line, is graphed in \autoref{fig:tpl3}.}
+The surface $z=-x^2-y^2+2$, along with the found normal line, is graphed in \autoref{fig:tpl3}.
+\end{example}
 
 The direction of the normal line has many uses, one of which is the definition of the \textbf{tangent plane} which we define shortly. Another use is in measuring distances from the surface to a point. Given a point $Q$ in space, it is a general geometric concept to define the distance from $Q$ to the surface as being the length of the shortest line segment $\overline{PQ}$ over all points $P$ on the surface. This, in turn, implies that $\vv{PQ}$ will be orthogonal to the surface at $P$. Therefore we can measure the distance from $Q$ to the surface $f$ by finding a point $P$ on the surface such that $\vv{PQ}$ is parallel to the normal line to $f$ at $P$.
 
-\example{ex_tpl4}{Finding the distance from a point to a surface}{Let $f(x,y) = 2-x^2-y^2$ and let $Q = (2,2,2)$. Find the distance from $Q$ to the surface defined by $f$.}
-{This surface is used in \autoref{ex_tpl2}, so we know that at $(x,y)$, the direction of the normal line will be $\vec d_n =\bracket{-2x,-2y,-1}$. A point $P$ on the surface will have coordinates $(x,y,2-x^2-y^2)$, so $\vv{PQ} =\bracket{2-x,2-y,x^2+y^2}$. To find where $\vv{PQ}$ is parallel to $\vec d_n$, we need to find $x$, $y$ and $c$ such that $c\vv{PQ} = \vec d_n$.
+\begin{example}[Finding the distance from a point to a surface]\label{ex_tpl4}
+Let $f(x,y) = 2-x^2-y^2$ and let $Q = (2,2,2)$. Find the distance from $Q$ to the surface defined by $f$.
+\solution
+This surface is used in \autoref{ex_tpl2}, so we know that at $(x,y)$, the direction of the normal line will be $\vec d_n =\bracket{-2x,-2y,-1}$. A point $P$ on the surface will have coordinates $(x,y,2-x^2-y^2)$, so $\vv{PQ} =\bracket{2-x,2-y,x^2+y^2}$. To find where $\vv{PQ}$ is parallel to $\vec d_n$, we need to find $x$, $y$ and $c$ such that $c\vv{PQ} = \vec d_n$.
 \begin{align*}
 c\vv{PQ} &= \vec d_n \\
 c\bracket{2-x,2-y,x^2+y^2}&=\bracket{-2x,-2y,-1}.
@@ -199,14 +210,15 @@ r=\frac12
 \left( \sqrt[3]{2+\sqrt{\frac{109}{27}}}+\sqrt[3]{2-\sqrt{\frac{109}{27}}} \right)
 \]
 but this isn't an especially useful representation for $r$. We can approximate $r$ with a numerical technique (like the Bisection or Newton's Method) or by using whatever algorithm is built into your calculator or favorite computer program.  We find $r\approx.689$.  Thus
-\[
-P\approx(0.689,0.689,1.051)\qquad\text{and}\qquad\norm{\vv{PQ}}\approx2.083.\eoehere
-\]}
+\[P\approx(0.689,0.689,1.051)\qquad\text{and}\qquad\norm{\vv{PQ}}\approx2.083.\]
+\end{example}
 
 We can take the concept of measuring the distance from a point to a surface to find a point $Q$ a particular distance from a surface at a given point $P$ on the surface.
 
-\example{ex_tpl5}{Finding a point a set distance from a surface}{Let $f(x,y) = x-y^2+3$. Let $P = \big(2,1,f(2,1)\big) = (2,1,4)$. Find points $Q$ in space that are 4 units from the surface of $f$ at $P$. That is, find $Q$ such that $\norm{\vv{PQ}}=4$ and $\vv{PQ}$ is orthogonal to $f$ at $P$.}
-{We begin by finding partial derivatives:
+\begin{example}[Finding a point a set distance from a surface]\label{ex_tpl5}
+Let $f(x,y) = x-y^2+3$. Let $P = \big(2,1,f(2,1)\big) = (2,1,4)$. Find points $Q$ in space that are 4 units from the surface of $f$ at $P$. That is, find $Q$ such that $\norm{\vv{PQ}}=4$ and $\vv{PQ}$ is orthogonal to $f$ at $P$.
+\solution
+We begin by finding partial derivatives:
 \begin{align*}
 f_x(x,y)  =1  \qquad &\Rightarrow \qquad f_x(2,1) = 1\\
 f_y(x,y) = -2y \qquad &\Rightarrow \qquad  f_y(2,1) = -2
@@ -234,7 +246,8 @@ Q_1 &= \ell_n(4) & Q_2 &= \ell_n(-4) \\
   & & =\bracket{2-\frac4{\sqrt6},1+\frac8{\sqrt6},4+\frac4{\sqrt6}}
 % \approx\bracket{0.37, 4.27, 5.63}
 \end{align*}
-The surface is graphed along with points $P$, $Q_1$, $Q_2$ and a portion of the normal line to $f$ at $P$.}
+The surface is graphed along with points $P$, $Q_1$, $Q_2$ and a portion of the normal line to $f$ at $P$.
+\end{example}
 % todo Tim but isn't one of those points closer to the surface?
 
 \subsection{Tangent Planes}
@@ -250,8 +263,10 @@ The plane through $P$ with normal vector $\vec n$ is the \textbf{tangent plane t
 \[a(x-x_0) + b(y-y_0) - \big(z-f(x_0,y_0)\big) = 0.\]
 \end{definition}
 
-\example{ex_tpl6}{Finding tangent planes}{Find the equation of the tangent plane to $z=-x^2-y^2+2$ at $(0,1)$.}
-{Note that this is the same surface and point used in \autoref{ex_tpl3}.
+\begin{example}[Finding tangent planes]\label{ex_tpl6}
+Find the equation of the tangent plane to $z=-x^2-y^2+2$ at $(0,1)$.
+\solution
+Note that this is the same surface and point used in \autoref{ex_tpl3}.
 %
 \mtable{Graphing a surface with tangent plane from \autoref{ex_tpl6}.}{fig:tpl6}{%
 \myincludeasythree{width=\marginparwidth,
@@ -263,10 +278,13 @@ The plane through $P$ with normal vector $\vec n$ is the \textbf{tangent plane t
 %
 There we found $\vec n =\bracket{0,-2,-1}$ and $P = (0,1,1)$. Therefore the equation of the tangent plane is
 \[-2(y-1)-(z-1)=0.\]
-The surface $z=-x^2-y^2+2$ and tangent plane are graphed in \autoref{fig:tpl6}.}
+The surface $z=-x^2-y^2+2$ and tangent plane are graphed in \autoref{fig:tpl6}.
+\end{example}
 
-\example{ex_tpl7}{Using the tangent plane to approximate function values}{The point $(3,-1,4)$ lies on the surface of an unknown differentiable function $f$ where $f_x(3,-1) = 2$ and $f_y(3,-1) = -1/2$. Find the equation of the tangent plane to $f$ at $P$, and use this to approximate the value of $f(2.9,-0.8)$.}
-{Knowing the partial derivatives at $(3,-1)$ allows us to form the normal vector to the tangent plane, $\vec n =\bracket{2,-1/2,-1}$. Thus the equation of the tangent line to $f$ at $P$ is:
+\begin{example}[Using the tangent plane to approximate function values]\label{ex_tpl7}
+The point $(3,-1,4)$ lies on the surface of an unknown differentiable function $f$ where $f_x(3,-1) = 2$ and $f_y(3,-1) = -1/2$. Find the equation of the tangent plane to $f$ at $P$, and use this to approximate the value of $f(2.9,-0.8)$.
+\solution
+Knowing the partial derivatives at $(3,-1)$ allows us to form the normal vector to the tangent plane, $\vec n =\bracket{2,-1/2,-1}$. Thus the equation of the tangent line to $f$ at $P$ is:
 \begin{equation}
 2(x-3)-1/2(y+1) - (z-4) = 0
 \quad \Rightarrow \quad
@@ -280,7 +298,8 @@ dz = f_xdx + f_ydy \quad \text{and} \quad z =
 \underbrace{\underbrace{2}_{f_x}\underbrace{(x-3)}_{dx}
 +\underbrace{-1/2}_{f_y}\underbrace{(y+1)}_{dy}}_{dz}+4.
 \]
-Thus the ``new $z$-value'' is the sum of the change in $z$ (i.e., $dz$) and the old $z$-value (4). As mentioned when studying the total differential, it is not uncommon to know partial derivative information about a unknown function, and tangent planes are used to give accurate approximations of the function.}
+Thus the ``new $z$-value'' is the sum of the change in $z$ (i.e., $dz$) and the old $z$-value (4). As mentioned when studying the total differential, it is not uncommon to know partial derivative information about a unknown function, and tangent planes are used to give accurate approximations of the function.
+\end{example}
 
 \subsection{The Gradient and Normal Lines, Tangent Planes}
 
@@ -308,8 +327,10 @@ $\nabla F(x_0,y_0,z_0)$ is orthogonal to this level surface.
 %The gradient at a point gives a vector orthogonal to the surface at that point.
 This direction can be used to find tangent planes and normal lines.
 
-\example{ex_tpl8}{Using the gradient to find a tangent plane}{Find the equation of the plane tangent to the ellipsoid $\ds \frac{x^2}{12} +\frac{y^2}{6}+\frac{z^2}{4}=1$ at $P = (1,2,1)$.}
-{We consider the equation of the ellipsoid as a level surface of a function $F$ of three variables, where $F(x,y,z) = \frac{x^2}{12} +\frac{y^2}{6}+\frac{z^2}{4}$.  The gradient is:
+\begin{example}[Using the gradient to find a tangent plane]\label{ex_tpl8}
+Find the equation of the plane tangent to the ellipsoid $\ds \frac{x^2}{12} +\frac{y^2}{6}+\frac{z^2}{4}=1$ at $P = (1,2,1)$.
+\solution
+We consider the equation of the ellipsoid as a level surface of a function $F$ of three variables, where $F(x,y,z) = \frac{x^2}{12} +\frac{y^2}{6}+\frac{z^2}{4}$.  The gradient is:
 %
 \mtable{An ellipsoid and its tangent plane at a point.}{fig:tpl8}{%
 \myincludeasythree{width=\marginparwidth,
@@ -325,7 +346,8 @@ This direction can be used to find tangent planes and normal lines.
 \end{align*}
 At  $P$, the gradient is $\nabla F(1,2,1) =\bracket{1/6, 2/3, 1/2}$. Thus the equation of the plane tangent to the ellipsoid at $P$ is
 \[\frac 16(x-1) + \frac23(y-2) + \frac 12(z-1) = 0.\]
-The ellipsoid and tangent plane are graphed in \autoref{fig:tpl8}.}
+The ellipsoid and tangent plane are graphed in \autoref{fig:tpl8}.
+\end{example}
 
 \subsection*{Taylor Polynomials for Functions of Two Variables}
 

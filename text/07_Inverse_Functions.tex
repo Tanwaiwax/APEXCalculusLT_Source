@@ -39,17 +39,21 @@ To determine whether or not $f$ and $g$ are inverses for each other, we check to
  \node[above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-\example{ex_inv_determine}{Verifying Inverses}{Determine whether or not the following pairs of functions are inverses:
+\begin{example}[Verifying Inverses]\label{ex_inv_determine}
+Determine whether or not the following pairs of functions are inverses:
 \begin{enumerate}
 \item $f(x)=3x+1$; $g(x)=\dfrac{x-1}3$
 \item $f(x)=x^3+1$; $g(x)=x^{1/3}-1$
-\end{enumerate}}{\begin{enumerate}
+\end{enumerate}
+\solution
+\begin{enumerate}
 \item To check the composition we plug $f(x)$ in for $x$ in the definition of $g$ as follows: \[ g(f(x))=\frac{f(x)-1}3=\frac{(3x+1)-1}3=\frac{3x}3=x\]
 So $g(f(x))=x$ for all $x$ in the domain of $f$. Likewise, you can check that $f(g(x))=x$ for all $x$ in the domain of $g$, so $f$ and $g$ are inverses.
 \item If we try to proceed as before, we find that:
 \[g(f(x))=(f(x))^{1/3}-1=(x^3+1)^{1/3}-1\]
-This doesn't seem to be the same as the identity function $x$. To verify this, we find a number $a$ in the domain of $f$ and show that $g(f(a))\neq a$ for that value. Let's try $x=1$. Since $f(1)=1^3+1=2$, we find that $g(f(1))=g(2)=2^{1/3}-1\approx 0.26$. Since $g(f(1))\neq 1$, these functions are not inverses.\eoehere
-\end{enumerate}}
+This doesn't seem to be the same as the identity function $x$. To verify this, we find a number $a$ in the domain of $f$ and show that $g(f(a))\neq a$ for that value. Let's try $x=1$. Since $f(1)=1^3+1=2$, we find that $g(f(1))=g(2)=2^{1/3}-1\approx 0.26$. Since $g(f(1))\neq 1$, these functions are not inverses.
+\end{enumerate}
+\end{example}
 
 %To find the inverse $f^{-1}$ of a given function $y=f(x)$, we follow these steps (when possible):
 %\begin{enumerate}
@@ -58,8 +62,10 @@ This doesn't seem to be the same as the identity function $x$. To verify this, w
 %\item The equation now defines $y=f^{-1}(x)$.
 %\end{enumerate}
 %
-%\example{ex_inv_find}{Finding Inverses}{Find the inverses of the following functions.
-%\[\text{1.}\quad f(x)=5x+3\qquad\qquad\text{2.}\quad g(x)=x^3+1.\]}{\begin{enumerate}
+%\begin{example}[Finding Inverses]\label{ex_inv_find}
+%Find the inverses of the following functions.
+%\[\text{1.}\quad f(x)=5x+3\qquad\qquad\text{2.}\quad g(x)=x^3+1.\]
+%\solution\begin{enumerate}
 %\item Start with the equation $y=5x+3$ and solve for $x$:
 %\begin{align*}
 %y&=5x+3\\
@@ -75,8 +81,9 @@ This doesn't seem to be the same as the identity function $x$. To verify this, w
 %(y-1)^{1/3}&=x
 %\end{align*}
 %Interchanging $x$ and $y$ yields $y=(x-1)^{1/3}$, so
-%\[g^{-1}(x)=(x-1)^{1/3}.\eoehere\]
-%\end{enumerate}}
+%\[g^{-1}(x)=(x-1)^{1/3}.\]
+%\end{enumerate}
+%\end{example}
 
 
 \subsection{Functions that are not one-to-one.}
@@ -199,7 +206,8 @@ $\cot x$ & $(0,\pi)$ & $(-\infty,\infty)$&$\cot^{-1}x$ &  $ (-\infty,\infty)$ & 
 \label{fig:domain_trig}
 \end{minipage}
 
-\example{eg_inv_trig}{Evaluating Inverse Trigonometric Functions}{Find exact values for the following:
+\begin{example}[Evaluating Inverse Trigonometric Functions]\label{eg_inv_trig}
+Find exact values for the following:
 \mnote[-\baselineskip]{Sometimes, $\arcsin$ is used instead of $\sin^{-1}$.  Similar ``arc'' functions are used for the other inverse trigonometric functions as well.}
 \\
 \begin{minipage}{.5\linewidth}
@@ -214,14 +222,16 @@ $\cot x$ & $(0,\pi)$ & $(-\infty,\infty)$&$\cot^{-1}x$ &  $ (-\infty,\infty)$ & 
  \item $\sin^{-1}(\sin(7\pi/6))$
  \item $\tan(\cos^{-1}(11/15))$
 \end{enumerate}
-\end{minipage}}{\begin{enumerate}
+\end{minipage}
+\solution
+\begin{enumerate}
 \item $\tan^{-1}(1)=\pi/4$
 \item $\cos(\sin^{-1}(\sqrt3/2))=\cos(\pi/3)=1/2$
 \item Since $7\pi/6$ is not in the range of the inverse sine function, we should be careful with this one.
 \[\sin^{-1}(\sin(7\pi/6))=\sin^{-1}(-1/2)=-\pi/6.\]
 \item Since we don't know the value of $\cos^{-1}(11/15)$, we let $\theta$ stand for this value. We know that $\theta$ is an angle between $0$ and $\pi$ and that $\cos(\theta)=11/15$.
 In \autoref{fig_inv_trig}, we use this information to construct a right triangle with angle $\theta$, where the adjacent side over the hypotenuse must equal 11/15. Applying the Pythagorean Theorem we find that
-\mtable[-2\baselineskip]{A right triangle for the situation in \autoref{eg_inv_trig} (4).}{fig_inv_trig}{%
+\mtable[-\baselineskip]{A right triangle for the situation in \autoref{eg_inv_trig} (4).}{fig_inv_trig}{%
 \begin{tikzpicture}[x=1ex,y=1ex]
  \draw(0,0)
   --node[pos=.1,above right]{$\theta$}node[pos=.6,below]{11}(11,0)
@@ -231,7 +241,8 @@ In \autoref{fig_inv_trig}, we use this information to construct a right triangle
 \[y=\sqrt{15^2-11^2}=\sqrt{104}=2\sqrt{26}.\]
 Finally, we have:
 \[\tan(\cos^{-1}(11/15))=\tan(\theta)=\frac{2\sqrt{26}}{11}.\eoehere\]
-\end{enumerate}}
+\end{enumerate}
+\end{example}
 
 \printexercises{exercises/07_07_exercises}
 

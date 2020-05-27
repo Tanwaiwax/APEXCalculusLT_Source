@@ -18,7 +18,7 @@ Let $f$ be differentiable on an interval $I$.
 The graph of $f$ is \textbf{concave up} on $I$ if $\fp$ is increasing. The graph of $f$ is \textbf{concave down} on $I$ if $\fp$ is decreasing. If $\fp$ is constant then the graph of $f$ is said to have \textbf{no concavity}.\index{concavity}\index{concave up}\index{concave down}
 \end{definition}
 
-\mtable[-1in]{A function $f$ with a graph that is (a) concave up and (b) concave down. Notice how the slopes of the tangent lines, when looking from left to right, are (a) increasing and (b) decreasing.}{fig:concavity1}{%
+\mtable[-0in]{A function $f$ with a graph that is (a) concave up and (b) concave down. Notice how the slopes of the tangent lines, when looking from left to right, are (a) increasing and (b) decreasing.}{fig:concavity1}{%
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,ymin=-1,ymax=35,xmin=-3.5,xmax=3.5]
@@ -81,7 +81,7 @@ A \textbf{point of inflection} is a point on the graph of $f$ at which the conca
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,xtick={1,2,3,4},
 ymin=-1,ymax=16,xmin=-.5,xmax=4.5]
-
+%
 \addplot [thick, draw={\colorone},smooth,domain=.5:4.5] {2*(x-1)*(x-2)*(x-3)*(x-4)+5};
 \filldraw (axis cs:1.85,4.39) circle (1pt);
 \filldraw (axis cs:3.15,4.39) circle (1pt);
@@ -136,8 +136,10 @@ We have identified the concepts of concavity and points of inflection. It is now
 
 \youtubeVideo{QtXCIxB6kW8}{Finding Local Maximums/Minimums --- Second Derivative Test}
 
-\example{ex_conc1}{Finding intervals of concave up/down, inflection points}{Let $f(x)=x^3-3x+1$. Find the inflection points of $f$ and the intervals on which it is concave up/down.}
-{We start by finding $\fp(x)=3x^2-3$ and $\fpp(x)=6x$.  To find the inflection points, we use \autoref{thm:inflection} and find where $\fpp(x)=0$ or where \fpp\ is undefined. We find \fpp\ is always defined, and is 0 only when $x=0$. So the point $(0,1)$ is the only possible point of inflection.
+\begin{example}[Finding intervals of concave up/down, inflection points]\label{ex_conc1}
+Let $f(x)=x^3-3x+1$. Find the inflection points of $f$ and the intervals on which it is concave up/down.
+\solution
+We start by finding $\fp(x)=3x^2-3$ and $\fpp(x)=6x$.  To find the inflection points, we use \autoref{thm:inflection} and find where $\fpp(x)=0$ or where \fpp\ is undefined. We find \fpp\ is always defined, and is 0 only when $x=0$. So the point $(0,1)$ is the only possible point of inflection.
 
 \mtable{A number line determining the concavity of $f$ and a graph of $f$ used in \autoref{ex_conc1}.}{fig:concline1}{\includecodegraphics{figures/matrices/concline1}
 \\ (a) \\
@@ -157,10 +159,13 @@ ymin=-3.5,ymax=3.5,xmin=-2.2,xmax=2.2]
 
 This possible inflection point divides the real line into two intervals, $(-\infty,0)$ and $(0,\infty)$. We use a process similar to the one used in the previous section to determine increasing/decreasing. Pick any $c<0$; $\fpp(c)<0$ so $f$ is concave down on $(-\infty,0)$. Pick any $c>0$; $\fpp(c)>0$ so $f$ is concave up on $(0,\infty)$. Since the concavity changes at $x=0$, the point $(0,1)$ is an inflection point.
 
-The number line in \autoref{fig:concline1}(a) illustrates the process of determining concavity (to save space, we will abbreviate ``concave down'', ``concave up'', and ``inflection point'' to ``CD'', ``CU'', and ``IP'', respectively). \autoref{fig:concline1}(b) shows a graph of $f$ and \fpp, confirming our results. Notice how $f$ is concave down precisely when $\fpp(x)<0$ and concave up when $\fpp(x)>0$.}
+The number line in \autoref{fig:concline1}(a) illustrates the process of determining concavity (to save space, we will abbreviate ``concave down'', ``concave up'', and ``inflection point'' to ``CD'', ``CU'', and ``IP'', respectively). \autoref{fig:concline1}(b) shows a graph of $f$ and \fpp, confirming our results. Notice how $f$ is concave down precisely when $\fpp(x)<0$ and concave up when $\fpp(x)>0$.
+\end{example}
 
-\example{ex_conc2}{Finding intervals of concave up/down, inflection points}{Let $f(x)=x/(x^2-1)$. Find the inflection points of $f$ and the intervals on which it is concave up/down.}
-{The first thing we see is that $f$ itself is not defined at $x=\pm1$, having a domain of $(-\infty,-1)\cup(-1,1)\cup(1,\infty)$. Since the domain of $f$ is the union of three intervals, it makes sense that the concavity of $f$ could switch across intervals. We cannot say that $f$ has points of inflection at $x=\pm1$ as they are not part of the domain, but we must still consider these $x$-values to be important and will include them in our number line.
+\begin{example}[Finding intervals of concave up/down, inflection points]\label{ex_conc2}
+Let $f(x)=x/(x^2-1)$. Find the inflection points of $f$ and the intervals on which it is concave up/down.
+\solution
+The first thing we see is that $f$ itself is not defined at $x=\pm1$, having a domain of $(-\infty,-1)\cup(-1,1)\cup(1,\infty)$. Since the domain of $f$ is the union of three intervals, it makes sense that the concavity of $f$ could switch across intervals. We cannot say that $f$ has points of inflection at $x=\pm1$ as they are not part of the domain, but we must still consider these $x$-values to be important and will include them in our number line.
 
 We need to find \fp\ and \fpp. Using the Quotient Rule and simplifying, we find
 \[
@@ -206,7 +211,8 @@ The important $x$-values at which concavity might switch are $x=-1$, $x=0$ and $
 \includecodegraphics{figures/matrices/concline2}
 \end{center}
 
-We conclude that $f$ is concave up on $(-1,0)$ and $(1,\infty)$ and concave down on $(-\infty,-1)$ and $(0,1)$. There is only one point of inflection, $(0,0)$, as $f$ is not defined at $x=\pm 1$. Our work is confirmed by the graph of $f$ in \autoref{fig:conc2}. Notice how $f$ is concave up whenever \fpp\ is positive, and concave down when \fpp\ is negative.}
+We conclude that $f$ is concave up on $(-1,0)$ and $(1,\infty)$ and concave down on $(-\infty,-1)$ and $(0,1)$. There is only one point of inflection, $(0,0)$, as $f$ is not defined at $x=\pm 1$. Our work is confirmed by the graph of $f$ in \autoref{fig:conc2}. Notice how $f$ is concave up whenever \fpp\ is positive, and concave down when \fpp\ is negative.
+\end{example}
 
 Recall that relative maxima and minima of $f$ are found at critical points of $f$; that is, they are found when $\fp(x)=0$ or when $\fp$ is undefined. Likewise, the relative maxima and minima of \fp\ are found when $\fpp(x)=0$ or when \fpp\ is undefined; note that these are the inflection points of $f$. 
 
@@ -224,8 +230,10 @@ axis y line=middle,axis x line=middle,name=myplot,ymin=-1,ymax=21,xmin=-.2,xmax=
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-\example{ex_conc3}{Understanding inflection points}{The sales of a certain product over a three-year span are modeled by $S(t)= t^4-8t^2+20$, where $t$ is the time in years, shown in \autoref{fig:conc3}.  Over the first two years, sales are decreasing.  Find the point at which sales are decreasing at their greatest rate.}
-{We want to maximize the rate of decrease, which is to say, we want to find where $S\primeskip'$ has a minimum.  To do this, we find where $S\primeskip''$ is 0.  We find $S\primeskip'(t)=4t^3-16t$ and $S\primeskip''(t)=12t^2-16$.  Setting $S\primeskip''(t)=0$ and solving, we get $t=2/\sqrt3\approx 1.16$ (we ignore the negative value of $t$ since it does not lie in the domain of our function $S$).
+\begin{example}[Understanding inflection points]\label{ex_conc3}
+The sales of a certain product over a three-year span are modeled by $S(t)= t^4-8t^2+20$, where $t$ is the time in years, shown in \autoref{fig:conc3}.  Over the first two years, sales are decreasing.  Find the point at which sales are decreasing at their greatest rate.
+\solution
+We want to maximize the rate of decrease, which is to say, we want to find where $S\primeskip'$ has a minimum.  To do this, we find where $S\primeskip''$ is 0.  We find $S\primeskip'(t)=4t^3-16t$ and $S\primeskip''(t)=12t^2-16$.  Setting $S\primeskip''(t)=0$ and solving, we get $t=2/\sqrt3\approx 1.16$ (we ignore the negative value of $t$ since it does not lie in the domain of our function $S$).
 
 \mtable{A graph of $S(t)$ in \autoref{ex_conc3} along with $S\primeskip'(t)$.}{fig:conc3b}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -246,7 +254,8 @@ axis y line=middle,axis x line=middle,name=myplot,ymin=-16,ymax=22,xmin=-.2,xmax
 
 This is both the inflection point and the point of maximum decrease.  This is the point at which things first start looking up for the company.  After the inflection point, it will still take some time before sales start to increase, but at least sales are not decreasing quite as quickly as they had been.
 
-A graph of $S(t)$ and $S\primeskip'(t)$ is given in \autoref{fig:conc3b}. When $S\primeskip'(t)<0$, sales are decreasing; note how at $t\approx 1.16$, $S\primeskip'(t)$ is minimized. That is, sales are decreasing at the fastest rate at $t\approx 1.16$.  On the interval of $(1.16,2)$, $S$ is decreasing but concave up, so the decline in sales is ``leveling off.''}
+A graph of $S(t)$ and $S\primeskip'(t)$ is given in \autoref{fig:conc3b}. When $S\primeskip'(t)<0$, sales are decreasing; note how at $t\approx 1.16$, $S\primeskip'(t)$ is minimized. That is, sales are decreasing at the fastest rate at $t\approx 1.16$.  On the interval of $(1.16,2)$, $S$ is decreasing but concave up, so the decline in sales is ``leveling off.''
+\end{example}
 
 Not every critical point corresponds to a relative extrema; $f(x)=x^3$ has a critical point at $x=0$ but no relative maximum or minimum. Likewise, just because $\fpp(x)=0$ we cannot conclude concavity changes at that point. We were careful before to use terminology ``\textit{possible} point of inflection'' since we needed to check to see if the concavity changed. The canonical example of $\fpp(x)=0$ \textit{without} concavity changing is $f(x)=x^4$. At $x=0$, $\fpp(x)=0$ but $f$ is always concave up, as shown in \autoref{fig:concavity5}.
 
@@ -287,6 +296,9 @@ Let $c$ be a critical point of $f$ where $\fpp(c)$ is defined. \index{derivative
 
 Note that if $\fpp(c)=0$, then the Second Derivative Test is inconclusive. The Second Derivative Test relates to the First Derivative Test in the following way. If $\fpp(c)>0$, then the graph is concave up at a critical point $c$ and $\fp$ itself is growing.  Since $\fp(c)=0$ and $\fp$ is growing at $c$, then it must go from negative to positive at $c$.  This means the function goes from decreasing to increasing, indicating a local minimum at $c$.
 
+\begin{example}[Using the Second Derivative Test]\label{ex_conc4}
+Let $f(x)=100/x + x$.  Find the critical points of $f$ and use the Second Derivative Test to label them as relative maxima or minima.
+%
 \mtable{A graph of $f(x)$ in \autoref{ex_conc4}. The second derivative is evaluated at each critical point. When the graph is concave up, the critical point represents a local minimum; when the graph is concave down, the critical point represents a local maximum.}{fig:conc4}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,ymin=-51,ymax=51,xmin=-21,xmax=21]
@@ -298,9 +310,10 @@ axis y line=middle,axis x line=middle,name=myplot,ymin=-51,ymax=51,xmin=-21,xmax
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
-
-\example{ex_conc4}{Using the Second Derivative Test}{Let $f(x)=100/x + x$.  Find the critical points of $f$ and use the Second Derivative Test to label them as relative maxima or minima.}
-{We find $\fp(x)=-100/x^2+1$ and $\fpp(x) = 200/x^3.$  We set $\fp(x)=0$ and solve for $x$ to find the critical points (note that \fp\ is not defined at $x=0$, but neither is $f$ so this is not a critical point.) We find  the critical points are $x=\pm 10$.  Evaluating \fpp\ at $x=10$ gives $0.1>0$, so there is a local minimum at $x=10$.  Evaluating $\fpp(-10)=-0.1<0$, determining a relative maximum at  $x=-10$. These results are confirmed in \autoref{fig:conc4}.}
+%
+\solution
+We find $\fp(x)=-100/x^2+1$ and $\fpp(x) = 200/x^3.$  We set $\fp(x)=0$ and solve for $x$ to find the critical points (note that \fp\ is not defined at $x=0$, but neither is $f$ so this is not a critical point.) We find  the critical points are $x=\pm 10$.  Evaluating \fpp\ at $x=10$ gives $0.1>0$, so there is a local minimum at $x=10$.  Evaluating $\fpp(-10)=-0.1<0$, determining a relative maximum at  $x=-10$. These results are confirmed in \autoref{fig:conc4}.
+\end{example}
 
 We have been learning how the first and second derivatives of a function relate information about the graph of that function. We have found intervals of increasing and decreasing, intervals where the graph is concave up and down, along with the locations of relative extrema and inflection points. In \autoref{chapter:limits} we saw how limits explained asymptotic behavior. In the next section we combine all of this information to produce accurate sketches of functions.
 

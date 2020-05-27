@@ -37,8 +37,10 @@ and applying FTC part 2 we have \index{integration!by parts}
 
 Let's try an example to understand our new technique.
 
-\example{ex_ibp1}{Integrating using Integration by Parts}{Evaluate $\ds\int x\cos{x}\,dx$.}
-{The key to Integration by Parts is to identify part of the integrand as ``$u$'' and part as ``$dv$.'' Regular practice will help one make good identifications, and later we will introduce some principles that help. For now, let  $u=x$ and $dv=\cos{x}\,dx$.
+\begin{example}[Integrating using Integration by Parts]\label{ex_ibp1}
+Evaluate $\ds\int x\cos{x}\,dx$.
+\solution
+The key to Integration by Parts is to identify part of the integrand as ``$u$'' and part as ``$dv$.'' Regular practice will help one make good identifications, and later we will introduce some principles that help. For now, let  $u=x$ and $dv=\cos{x}\,dx$.
 
 It is generally useful to make a small table of these values.
 \[
@@ -58,7 +60,8 @@ Now substitute all of this into the Integration by Parts formula, giving
 \[\int x\cos x\,dx = x\sin x - \int \sin x \,dx.\]
 We can then integrate $\sin x$ to get $-\cos x + C$ and overall our answer is
 \[\int x\cos x\, dx = x\sin x + \cos x + C.\]
-We have two important notes here: (1) notice how the antiderivative contains the product, $x\sin x$. This product is what makes integration by parts necessary. And (2) antidifferentiating $dv$ does result in $v+C$. The intermediate $+C$s are all added together and represented by one $+C$ in the final answer.}
+We have two important notes here: (1) notice how the antiderivative contains the product, $x\sin x$. This product is what makes integration by parts necessary. And (2) antidifferentiating $dv$ does result in $v+C$. The intermediate $+C$s are all added together and represented by one $+C$ in the final answer.
+\end{example}
 
 The example above demonstrates how Integration by Parts works in general.  We try to identify $u$ and $dv$ in the integral we are given, and the key is that we usually want to choose $u$ and $dv$ so that $du$ is simpler than $u$ and $v$ is hopefully not too much more complicated than $dv$.  This will mean that the integral on the right side of the Integration by Parts formula, $\int v\,du$ will be simpler to integrate than the original integral $\int u\,dv$.
 
@@ -77,8 +80,10 @@ We then need to integrate $x^2\sin x$, which is more complicated than our origin
 
 We now consider another example.
 
-\example{ex_ibp2}{Integrating using Integration by Parts}{Evaluate $\ds\int x e^x\,dx$.}
-{Notice that $x$ becomes simpler when differentiated and $e^x$ is unchanged by differentiation or integration. This suggests that we should let $u=x$ and $dv=e^x\, dx$:
+\begin{example}[Integrating using Integration by Parts]\label{ex_ibp2}
+Evaluate $\ds\int x e^x\,dx$.
+\solution
+Notice that $x$ becomes simpler when differentiated and $e^x$ is unchanged by differentiation or integration. This suggests that we should let $u=x$ and $dv=e^x\, dx$:
 %The integrand contains an \textbf{A}lgebraic term ($x$) and an \textbf{E}xponential term ($e^x$). Our mnemonic suggests letting $u$ be the algebraic term, so we choose $u=x$ and $dv=e^x\,dx$.  Then $du=dx$ and $v=e^x$ as indicated by the tables below.\\
 \[
 \begin{aligned}
@@ -97,10 +102,13 @@ The Integration by Parts formula gives
 \[\int x e^x\,dx = xe^x - \int e^x\,dx.\]
 The integral on the right is simple; our final answer is
 \[\int xe^x\, dx = xe^x - e^x + C.\]
-Note again how the antiderivatives contain a product term.}
+Note again how the antiderivatives contain a product term.
+\end{example}
 
-\example{ex_ibp3}{Integrating using Integration by Parts}{Evaluate $\ds\int x^2\cos x \,dx$.}
-{Let $u=x^2$ instead of the trigonometric function, hence $dv=\cos x\,dx$.  Then $du=2x\,dx$ and $v=\sin x$ as shown below.
+\begin{example}[Integrating using Integration by Parts]\label{ex_ibp3}
+Evaluate $\ds\int x^2\cos x \,dx$.
+\solution
+Let $u=x^2$ instead of the trigonometric function, hence $dv=\cos x\,dx$.  Then $du=2x\,dx$ and $v=\sin x$ as shown below.
 \[
 \begin{aligned}
 u&= x^2 & dv&=\cos x\, dx\\
@@ -131,11 +139,13 @@ du&= 2\, dx & v&=-\cos x
 This means that
 \[\int x^2\cos x\,dx = x^2\sin x - \left(-2x\cos x - \int -2\cos x\,dx\right).\]
 The integral all the way on the right is now something we can evaluate.  It evaluates to $-2\sin{x}$.  Then going through and simplifying, being careful to keep all the signs straight, our answer is
-\[\int x^2\cos x\, dx = x^2\sin x  + 2x\cos x - 2\sin x + C.\eoehere\]}
+\[\int x^2\cos x\, dx = x^2\sin x  + 2x\cos x - 2\sin x + C.\]
+\end{example}
 
-
-\example{ex_ibp4}{Integrating using Integration by Parts}{Evaluate $\ds\int e^x\cos x \,dx$.}
-{This is a classic problem.
+\begin{example}[Integrating using Integration by Parts]\label{ex_ibp4}
+Evaluate $\ds\int e^x\cos x \,dx$.
+\solution
+This is a classic problem.
 %  Our mnemonic suggests letting $u$ be the trigonometric function instead of the exponential.
 In this particular example, one can let $u$ be either $\cos x$ or $e^x$;
 %to demonstrate that we do not have to follow LIATE,
@@ -182,12 +192,14 @@ Add $\ds\int e^x\cos x\, dx$ to both sides. This gives
 \end{align*}
 
 Simplifying a little and adding the constant of integration, our answer is thus
-\[\int e^x\cos x\, dx = \frac12e^x\left(\sin x + \cos x\right)+C.\eoehere\]}
+\[\int e^x\cos x\, dx = \frac12e^x\left(\sin x + \cos x\right)+C.\]
+\end{example}
 
 % see Example 2.4.4.
-\example{ex_ibp5}{Integrating using Integration by Parts: antiderivative of $\ln x$}
-{Evaluate $\ds\int \ln x\,dx$.}
-{One may have noticed that we have rules for integrating the familiar trigonometric functions and $e^x$, but we have not yet given a rule for integrating $\ln x$.  That is because $\ln x$ can't easily be integrated with any of the rules we have learned up to this point.  But we can find its antiderivative by a clever application of Integration by Parts.  Set $u=\ln x$ and $dv=dx$.  This is a good strategy to learn as it can help in other situations. This determines $du=(1/x)\,dx$ and $v=x$ as shown below.
+\begin{example}[Integrating using Integration by Parts: antiderivative of $\ln x$]\label{ex_ibp5}
+Evaluate $\ds\int \ln x\,dx$.
+\solution
+One may have noticed that we have rules for integrating the familiar trigonometric functions and $e^x$, but we have not yet given a rule for integrating $\ln x$.  That is because $\ln x$ can't easily be integrated with any of the rules we have learned up to this point.  But we can find its antiderivative by a clever application of Integration by Parts.  Set $u=\ln x$ and $dv=dx$.  This is a good strategy to learn as it can help in other situations. This determines $du=(1/x)\,dx$ and $v=x$ as shown below.
 \[
 \begin{aligned}
 u&= \ln x & dv&=dx\\
@@ -204,25 +216,30 @@ Putting this all together in the Integration by Parts formula, things work out v
  \int \ln x\,dx
  &= x\ln x - \int x\,\frac1x\,dx \\
  &= x\ln x - \int 1\,dx \\
- &= x\ln{x} - x + C.\eoehere
-\end{align*}}
+ &= x\ln{x} - x + C.
+\end{align*}
+\end{example}
 
-\example{ex_ibp6}{Using Integration by Parts: antiderivative of $\tan^{-1} x$}
-{Evaluate $\displaystyle \int \tan^{-1} x  \,dx$.}
-{The same strategy we used above works here.  Let $u=\tan^{-1} x$ and $dv=dx$.  Then $du=1/(1+x^2)\,dx$ and $v=x$.  The Integration by Parts formula gives
+\begin{example}[Using Integration by Parts: antiderivative of $\tan^{-1} x$]\label{ex_ibp6}
+Evaluate $\displaystyle \int \tan^{-1} x  \,dx$.
+\solution
+The same strategy we used above works here.  Let $u=\tan^{-1} x$ and $dv=dx$.  Then $du=1/(1+x^2)\,dx$ and $v=x$.  The Integration by Parts formula gives
 \[\int \tan^{-1} x \,dx = x\tan^{-1} x - \int \frac x{1+x^2}\,dx.\]
 The integral on the right can be solved by substitution.  Taking $t=1+x^2$, we get $dt=2x\,dx$.  The integral then becomes
 \[\int \tan^{-1} x \,dx = x\tan^{-1} x - \frac12\int \frac 1{t}\,dt.\]
 The integral on the right evaluates to $\ln\abs t+C$, which becomes $\ln(1+x^2)+C$.  Therefore, the answer is
 \[\int \tan^{-1} x\, dx = x\tan^{-1} x - \frac12\ln(1+x^2) + C.\]
-Since $1+x^2>0$, we do not need to include the absolute value in the $\ln(1+x^2)$ term.}
+Since $1+x^2>0$, we do not need to include the absolute value in the $\ln(1+x^2)$ term.
+\end{example}
 
 \subsection{Substitution Before Integration}
 
 When taking derivatives, it was common to employ multiple rules (such as using both the Quotient and the Chain Rules). It should then come as no surprise that some integrals are best evaluated by combining integration techniques. In particular, here we illustrate making an ``unusual'' substitution first before using Integration by Parts.
 
-\example{ex_ibp8}{Integration by Parts after substitution}{Evaluate $\ds \int \cos(\ln x)\, dx$.}
-{The integrand contains a composition of functions, leading us to think Substitution would be beneficial. Letting $u=\ln x$, we have $du = 1/x\, dx$. This seems problematic, as we do not have a $1/x$ in the integrand. But consider:
+\begin{example}[Integration by Parts after substitution]\label{ex_ibp8}
+Evaluate $\ds \int \cos(\ln x)\, dx$.
+\solution
+The integrand contains a composition of functions, leading us to think Substitution would be beneficial. Letting $u=\ln x$, we have $du = 1/x\, dx$. This seems problematic, as we do not have a $1/x$ in the integrand. But consider:
 \[du = \frac 1x\, dx \Rightarrow x\cdot du = dx.\]
 Since $u = \ln x$, we can use inverse functions to solve for $x = e^u$. Therefore we have that
 \begin{align*}
@@ -237,14 +254,17 @@ We evaluated this integral in \autoref{ex_ibp4}. Using the result there, we have
 				&= \frac12e^u\big(\sin u + \cos u\big) + C \\
 				&= \frac12e^{\ln x} \big(\sin(\ln x) + \cos (\ln x)\big)+C\\
 				&= \frac12x \big(\sin(\ln x) + \cos (\ln x)\big)+C.\eoehere
-\end{align*}}
+\end{align*}
+\end{example}
 
 \subsection{Definite Integrals and Integration By Parts}
 
 So far we have focused only on evaluating indefinite integrals. Of course, we can use Integration by Parts to evaluate definite integrals as well, as \autoref{thm:IBP} states. We do so in the next example.
 
-\example{ex_ibp7}{Definite integration using Integration by Parts}{Evaluate $\displaystyle \int_1^2 x^2 \ln x \,dx$.}
-{%Once again, our mnemonic suggests we let $u=\ln x$.  %(We could let $u = x^2$ and $dv = \ln x\, dx$, as we now know the antiderivatives of $\ln x$. However, letting $u = \ln x$ makes our next integral much simpler as it removes the logarithm from the integral entirely.)
+\begin{example}[Definite integration using Integration by Parts]\label{ex_ibp7}
+Evaluate $\displaystyle \int_1^2 x^2 \ln x \,dx$.
+\solution
+%Once again, our mnemonic suggests we let $u=\ln x$.  %(We could let $u = x^2$ and $dv = \ln x\, dx$, as we now know the antiderivatives of $\ln x$. However, letting $u = \ln x$ makes our next integral much simpler as it removes the logarithm from the integral entirely.)
 To simplify the integral we let $u=\ln x$ and $dv =x^2\,dx$. 
 %So we have $u=\ln x$ and $dv=x^2\,dx$.
 We then get $du = (1/x)\,dx$ and $v=x^3/3$ as shown below.
@@ -269,8 +289,9 @@ This may seem counterintuitive since the power on the algebraic factor has incre
 	&=  \frac{x^3}3\ln x\bigg|_1^2 - \frac{x^3}{9}\bigg|_1^2\\
 	&=  \left(\frac{x^3}3\ln x - \frac{x^3}{9}\right)\bigg|_1^2\\
 	&=	\left(\frac83\ln 2 - \frac89\right)-\left(\frac13\ln 1 - \frac19\right) \\
-	&= \frac83\ln 2 - \frac79.\eoehere % \approx 1.07.
-\end{align*}}
+	&= \frac83\ln 2 - \frac79. % \approx 1.07.
+\end{align*}
+\end{example}
 
 In general, Integration by Parts is useful for integrating certain products of functions, like $\ds\int x e^x\,dx$ or $\ds\int x^3\sin x\,dx$.   It is also useful for integrals involving logarithms and inverse trigonometric functions.  
 
@@ -285,8 +306,8 @@ Integration by Parts is a very useful method, second only to substitution. In th
 
 \printexercises{exercises/06_02_exercises}
 
-%\paragraph{Example} $\displaystyle \int \sin(\sqrt x )\,dx \,dx$
-% If you\primeskip're looking for a trickier example....
+%maybe $\int \sin(\sqrt x )\,dx $
+% If you're looking for a trickier example....
 
 %Maybe an example where Integration by Parts is useful in a theoretical context....
 

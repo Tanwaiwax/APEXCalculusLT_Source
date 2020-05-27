@@ -106,102 +106,102 @@
 \newboolean{eoeencountered}
 \newcommand{\currentLabel}{notinexample}
 
-% thanks to Steven B. Segletes and egreg at
-% http://tex.stackexchange.com/a/320586/107497
-\newcommand{\eoehere}{%
- \ifthenelse{\boolean{eoeencountered}}{%
-  \vspace{-\baselineskip}\nopagebreak%
- }{%
-  \drawnode{e\currentLabel}{0}{0}%
-  \ltx@label{e\currentLabel}%
- % \gdef\currentLabel{notinexample}%
-  \ifthenelse{\boolean{measuring@}}{}{\global\eoeencounteredtrue}%
- }%
-}
+%% thanks to Steven B. Segletes and egreg at
+%% http://tex.stackexchange.com/a/320586/107497
+%\newcommand{\eoehere}{%
+% \ifthenelse{\boolean{eoeencountered}}{%
+%  \vspace{-\baselineskip}\nopagebreak%
+% }{%
+%  \drawnode{e\currentLabel}{0}{0}%
+%  \ltx@label{e\currentLabel}%
+% % \gdef\currentLabel{notinexample}%
+%  \ifthenelse{\boolean{measuring@}}{}{\global\eoeencounteredtrue}%
+% }%
+%}
 
 %\newcounter{pagebeforeend}
 
-\newcommand{\examplestarred}[3]{%
-%\stepcounter{examplecounter}%
-\setboolean{eoeencountered}{false}%
-\renewcommand{\currentLabel}{#1}%
-\bigbreak%
-\noindent%
-\begin{exampleEnv}[#2]\label{#1}%
- \drawnode{#1}{-2\marginlinelength}{\baselineskip}%
- \ifthenelse{\pageref{#1}=\pageref{e#1}}{}{%
-  % if different pages, we need to draw start to bottom before leaving the page
-  \ifthenelse{\boolean{showexamplelines}}{%
-   \begin{tikzpicture}[remember picture,overlay]%
-    \node [yshift=\bottommarginlength](bottom) at (current page.north) {};%
-    \draw [thick, \thelinecolor] (#1) -- ( #1 |- bottom);% from start to bottom of page
-   \end{tikzpicture}%
-  }{}%
- }%
- \noindent%
- #3%
- \eoehere%
- \ifthenelse{\boolean{showexamplelines}}{%
-  \ifthenelse{\pageref{#1}=\pageref{e#1}}{%
-   \begin{tikzpicture}[remember picture,overlay]
-    \drawexampleend{#1}{#1}
-   \end{tikzpicture}%
-  }{% if different pages (start to bottom already happened)
-   \ifthenelse{\isodd{\pageref{e#1}}}{%
-    \setlength{\innerpagemarginlength}{\oddpagemarginlength}%
-   }{%
-    \setlength{\innerpagemarginlength}{\evenpagemarginlength}%
-   }%
-   \begin{tikzpicture}[remember picture,overlay]
-    \node [xshift=\innerpagemarginlength,yshift=\topmarginlength](topleft) at (current page.north west)  {};
-    \drawexampleend{topleft}{#1}
-   \end{tikzpicture}%
-  }
- }{}% ends if example lines
-\end{exampleEnv}%
-\bigbreak%
-}%ends the definition of examplestarred
+%\newcommand{\examplestarred}[3]{%
+%%\stepcounter{examplecounter}%
+%\setboolean{eoeencountered}{false}%
+%\renewcommand{\currentLabel}{#1}%
+%\bigbreak%
+%\noindent%
+%\begin{exampleEnv}[#2]\label{#1}%
+% \drawnode{#1}{-2\marginlinelength}{\baselineskip}%
+% \ifthenelse{\pageref{#1}=\pageref{e#1}}{}{%
+%  % if different pages, we need to draw start to bottom before leaving the page
+%  \ifthenelse{\boolean{showexamplelines}}{%
+%   \begin{tikzpicture}[remember picture,overlay]%
+%    \node [yshift=\bottommarginlength](bottom) at (current page.north) {};%
+%    \draw [thick, \thelinecolor] (#1) -- ( #1 |- bottom);% from start to bottom of page
+%   \end{tikzpicture}%
+%  }{}%
+% }%
+% \noindent%
+% #3%
+% \eoehere%
+% \ifthenelse{\boolean{showexamplelines}}{%
+%  \ifthenelse{\pageref{#1}=\pageref{e#1}}{%
+%   \begin{tikzpicture}[remember picture,overlay]
+%    \drawexampleend{#1}{#1}
+%   \end{tikzpicture}%
+%  }{% if different pages (start to bottom already happened)
+%   \ifthenelse{\isodd{\pageref{e#1}}}{%
+%    \setlength{\innerpagemarginlength}{\oddpagemarginlength}%
+%   }{%
+%    \setlength{\innerpagemarginlength}{\evenpagemarginlength}%
+%   }%
+%   \begin{tikzpicture}[remember picture,overlay]
+%    \node [xshift=\innerpagemarginlength,yshift=\topmarginlength](topleft) at (current page.north west)  {};
+%    \drawexampleend{topleft}{#1}
+%   \end{tikzpicture}%
+%  }
+% }{}% ends if example lines
+%\end{exampleEnv}%
+%\bigbreak%
+%}%ends the definition of examplestarred
 
-\newcommand*{\drawexampleend}[2]{%
- \draw [thick, \thelinecolor] (#1)--(#1 |- e#2.south) -- ++(0,-.2\baselineskip) -- ++(10pt,0);
-}
+%\newcommand*{\drawexampleend}[2]{%
+% \draw [thick, \thelinecolor] (#1)--(#1 |- e#2.south) -- ++(0,-.2\baselineskip) -- ++(10pt,0);
+%}
+%
+%\newcommand*{\drawnode}[3]{%
+%\parbox[l]{0pt}{%
+% \ifthenelse{\boolean{showexamplelines}}{%
+%  \begin{tikzpicture}[remember picture,overlay]
+%   \draw (#2,#3) node (#1) {};
+%%   \draw (#2,#3) circle (1pt) node (#1) {};
+%%   \draw (#2,#3) circle (1pt) node (#1) {\nolinkurl{#1}};
+%  \end{tikzpicture}%
+% }{}%
+%}}
+%
+%\AddEverypageHook{%
+% \ifthenelse{ \pageref{\currentLabel}<\value{page} \AND
+%              \value{page}<\pageref{e\currentLabel} %\AND
+%              %\boolean{@mainmatter} \AND \boolean{printquestions}
+%               }{%
+%  \drawexampleline%
+% }{}%
+%}%
 
-\newcommand*{\drawnode}[3]{%
-\parbox[l]{0pt}{%
- \ifthenelse{\boolean{showexamplelines}}{%
-  \begin{tikzpicture}[remember picture,overlay]
-   \draw (#2,#3) node (#1) {};
-%   \draw (#2,#3) circle (1pt) node (#1) {};
-%   \draw (#2,#3) circle (1pt) node (#1) {\nolinkurl{#1}};
-  \end{tikzpicture}%
- }{}%
-}}
 
-\AddEverypageHook{%
- \ifthenelse{ \pageref{\currentLabel}<\value{page} \AND
-              \value{page}<\pageref{e\currentLabel} %\AND
-              %\boolean{@mainmatter} \AND \boolean{printquestions}
-               }{%
-  \drawexampleline%
- }{}%
-}%
-
-
-% Draws a line on a page that doesn't contain either
-% the beginning or end of an example.
-% Takes no arguments; figures out if you 
-% are on an even or odd numbered page for
-% correct margin calculation
-\newcommand{\drawexampleline}{%
-\ifthenelse{\isodd{\thepage}}{%
- \setlength{\innerpagemarginlength}{\oddpagemarginlength}%
-}{%
- \setlength{\innerpagemarginlength}{\evenpagemarginlength}%
-}%
-\begin{tikzpicture}[remember picture,overlay]
-	\node [xshift=\innerpagemarginlength,yshift=\topmarginlength](tleft) at (current page.north west)  {};
-	\draw [thick, \thelinecolor] (tleft) -- ++(0,\bottommarginlength+1in);
-\end{tikzpicture}}
+%% Draws a line on a page that doesn't contain either
+%% the beginning or end of an example.
+%% Takes no arguments; figures out if you 
+%% are on an even or odd numbered page for
+%% correct margin calculation
+%\newcommand{\drawexampleline}{%
+%\ifthenelse{\isodd{\thepage}}{%
+% \setlength{\innerpagemarginlength}{\oddpagemarginlength}%
+%}{%
+% \setlength{\innerpagemarginlength}{\evenpagemarginlength}%
+%}%
+%\begin{tikzpicture}[remember picture,overlay]
+%	\node [xshift=\innerpagemarginlength,yshift=\topmarginlength](tleft) at (current page.north west)  {};
+%	\draw [thick, \thelinecolor] (tleft) -- ++(0,\bottommarginlength+1in);
+%\end{tikzpicture}}
 
 
 \newcommand{\previousmarginpage}{-1}

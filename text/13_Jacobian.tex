@@ -90,7 +90,10 @@ Notice that \autoeqref{eqn:changevarint2} is saying that $dA(x,y) = \abs{J(u,v)}
 
 The following example shows how the change of variables formula is used.
 
-\example{ex_simple_Jacobian}{Change of Variables}{Evaluate $\ds\iint_{R} e^{\frac{x-y}{x+y}} \,dA$, where $R= \{(x,y): x \ge 0, y \ge 0, x + y \le 1 \}$.}{First, note that evaluating this double integral \emph{without} using substitution is probably impossible, at least in a closed form. By looking at the numerator and denominator of the exponent of $e$, we will try the substitution $u=x-y$ and $v=x+y$. To use the change of variables \autoeqref{eqn:changevarint2}, we need to write both $x$ and $y$ in terms of $u$ and $v$. So solving for $x$ and $y$ gives $x=\frac12(u+v)$ and $y=\frac12(v-u)$. In \autoref{fig:exyint} below, we see how the mapping $x=x(u,v)=\frac12(u+v)$,
+\begin{example}[Change of Variables]\label{ex_simple_Jacobian}
+Evaluate $\ds\iint_{R} e^{\frac{x-y}{x+y}} \,dA$, where $R= \{(x,y): x \ge 0, y \ge 0, x + y \le 1 \}$.
+\solution
+First, note that evaluating this double integral \emph{without} using substitution is probably impossible, at least in a closed form. By looking at the numerator and denominator of the exponent of $e$, we will try the substitution $u=x-y$ and $v=x+y$. To use the change of variables \autoeqref{eqn:changevarint2}, we need to write both $x$ and $y$ in terms of $u$ and $v$. So solving for $x$ and $y$ gives $x=\frac12(u+v)$ and $y=\frac12(v-u)$. In \autoref{fig:exyint} below, we see how the mapping $x=x(u,v)=\frac12(u+v)$,
  $y=y(u,v)=\frac12(v-u)$ maps the region $R'$ onto $R$ in a one-to-one manner.
  
 \noindent\begin{minipage}[t]{\linewidth}\noindent%
@@ -149,7 +152,8 @@ The following example shows how the change of variables formula is used.
   &= \int_0^1 \frac v2 (e - e^{-1})\,dv\\
   &= \left.\frac{v^2}4 (e - e^{-1}) \,\right|_{0}^{1}
   = \frac14 \left( e - \frac1e \right) = \frac{e^2 - 1}{4e}.\eoehere
- \end{align*}}
+ \end{align*}
+\end{example}
 
 The change of variables formula can be used to evaluate double integrals in polar coordinates. Letting
 \[
@@ -179,7 +183,10 @@ which verifies \autoref{idea:doublepol}.
 % where the mapping $x=r\cos \theta$, $y=r\sin \theta$ maps the region $R'$ in the $r\theta$-plane onto the region $R$ in the $xy$-plane in a one-to-one manner.
 %\end{keyidea}
 %
-%\example{ex_polar_parab}{Integrating in Polar Coordinates}{Find the volume $V$ inside the paraboloid $z=x^2 + y^2$ for $0 \le z \le 1$.}{Using vertical slices, we see that
+%\begin{example}[Integrating in Polar Coordinates]\label{ex_polar_parab}
+%Find the volume $V$ inside the paraboloid $z=x^2 + y^2$ for $0 \le z \le 1$.
+%\solution
+%Using vertical slices, we see that
 %\[V = \iint_{R} (1 - z)\,dA = \iint_{R} (1 - (x^2 + y^2 ))\,dA ,\]
 %where $R = \lbrace (x,y): x^2 + y^2 \le 1 \rbrace$ is the unit disk in $\mathbb{R}^2$ (see \autoref{fig_parab}). In polar coordinates $(r,\theta)$ we know that $x^2 + y^2 = r^2$ and that the unit disk $R$ is the set $R' = \lbrace (r,\theta):0 \le r \le 1, 0 \le \theta \le 2\pi \rbrace$. Thus,
 %\mtable{$z=x^2 + y^2$ for \autoref{ex_polar_parab}}{fig_parab}{\begin{tikzpicture}
@@ -216,10 +223,13 @@ which verifies \autoref{idea:doublepol}.
 %   &= \int_0^{2\pi} \int_0^1 (r - r^3 )\,dr\,d\theta\\
 %   &= \int_0^{2\pi} \left( \left.\frac{r^2}2 - \frac{r^4}4 \,\right|_{r=0}^{r=1} \right) \,d\theta\\
 %   &= \int_0^{2\pi} \frac14 \,d\theta\\
-%   &= \frac\pi2.\eoehere
-% \end{align*}}
+%   &= \frac\pi2.
+% \end{align*}
+%\end{example}
 %
-%\example{ex_polar_cone}{Integrating in Polar Coordinates}{Find the volume $V$ inside the cone $z=\sqrt{x^2 + y^2}$ for $0 \le z \le 1$.}{%
+%\begin{example}[Integrating in Polar Coordinates]\label{ex_polar_cone}
+%Find the volume $V$ inside the cone $z=\sqrt{x^2 + y^2}$ for $0 \le z \le 1$.
+%\solution
 % \mtable{$z=\sqrt{x^2 + y^2}$ for \autoref{ex_polar_cone}}{fig_cone}{\begin{tikzpicture}
 %  \usetikzlibrary{arrows}
 %  \definecolor{insideo}{HTML}{798084}
@@ -257,8 +267,9 @@ which verifies \autoref{idea:doublepol}.
 %   &= \int_0^{2\pi} \int_0^1 (r - r^2 )\,dr\,d\theta\\
 %   &= \int_0^{2\pi} \left( \left.\frac{r^2}2 - \frac{r^3}3 \,\right|_{r=0}^{r=1} \right) \,d\theta\\
 %   &= \int_0^{2\pi} \frac16 \,d\theta\\
-%   &= \frac\pi3.\eoehere
-% \end{align*}}
+%   &= \frac\pi3.
+% \end{align*}
+%\end{example}
 %
 In a similar fashion, %it can be shown (see
 Exercises \ref{pr_cyl_jac} and \ref{pr_sph_jac}
@@ -282,7 +293,10 @@ ask you to verify Theorems \ref{thm:triple_int_cylindrical} and \ref{thm:triple_
 % where the mapping $x=\rho\sin \phi\,\cos \theta$, $y=\rho\sin \phi\,\sin \theta$, $z=\rho\cos \phi$ maps the solid $S'$ in $\rho\phi\theta$-space onto the solid $S$ in $xyz$-space in a one-to-one manner.
 %\end{keyidea}
 %
-%\example{exmp_cyl_cone_octant}{Triple Integral over a Region in Cylindrical Coordinates}{Evaluate $\iiint_D x\,dV$ where $D$ is the region bounded by the first octant, the cone $z=\sqrt{x^2+y^2}$, and $z=3$.}{In cylindrical coordinates $D$ is given by $0\le\theta\leq\frac\pi2$, $0\leq r\leq3$, and $r\leq z\leq3$.  Now we have
+%\begin{example}[Triple Integral over a Region in Cylindrical Coordinates]\label{exmp_cyl_cone_octant}
+%Evaluate $\iiint_D x\,dV$ where $D$ is the region bounded by the first octant, the cone $z=\sqrt{x^2+y^2}$, and $z=3$.
+%\solution
+%In cylindrical coordinates $D$ is given by $0\le\theta\leq\frac\pi2$, $0\leq r\leq3$, and $r\leq z\leq3$.  Now we have
 %\begin{align*}
 %\iiint_D x\,dV
 %&=\int_0^{\frac\pi2}\int_0^3\int_r^3 r\cos\theta r\,dz\,dr\,d\theta \\
@@ -291,10 +305,13 @@ ask you to verify Theorems \ref{thm:triple_int_cylindrical} and \ref{thm:triple_
 %&=\left.\int_0^{\frac\pi2} (r^3-\frac14 r^4) \cos \theta \,\right|_{r=0}^{r=3} \,d\theta \\
 %&=\int_0^{\frac\pi2} \frac{27}4 \cos \theta \,d\theta \\
 %&=\left.\frac{27}4 \sin\theta \,\right|_{\theta=0}^{\theta=\frac\pi2} \\  
-%&=\frac{27}4.\eoehere
-%\end{align*}}
+%&=\frac{27}4.
+%\end{align*}
+%\end{example}
 %
-%\example{exmp_volsphere}{Finding the Volume of a Sphere}{For $a > 0$, find the volume $V$ inside the sphere $S = x^2 + y^2 + z^2 = a^2$.}{We see that $S$ is the set $\rho = a$ in spherical coordinates, so
+%\begin{example}[Finding the Volume of a Sphere]\label{exmp_volsphere}
+%For $a > 0$, find the volume $V$ inside the sphere $S = x^2 + y^2 + z^2 = a^2$.
+%We see that $S$ is the set $\rho = a$ in spherical coordinates, so
 % \begin{align*}
 %  V &= \iiint_S 1\,dV
 %   = \int_0^{2\pi} \int_0^\pi \int_0^a 1 \,\rho^2 \,\sin \phi \,d\rho\,d\phi\,d\theta\\
@@ -302,8 +319,9 @@ ask you to verify Theorems \ref{thm:triple_int_cylindrical} and \ref{thm:triple_
 %   = \int_0^{2\pi} \int_0^{\pi} \frac{a^3}3\,\sin \phi\,d\phi\,d\theta\\
 %   &= \int_0^{2\pi} \left( \left. -\frac{a^3}3\,\cos \phi\,\right|_{\phi=0}^{\phi=\pi} \right) \,d\theta
 %   = \int_0^{2\pi} \frac{2a^3}3\,d\theta
-%   = \frac{4\pi a^3}3 .\eoehere
-% \end{align*}}
+%   = \frac{4\pi a^3}3 .
+% \end{align*}
+%\end{example}
 
 %This chapter investigated the natural follow--on to partial derivatives: iterated integration. We learned how to use the bounds of a double integral to describe a region in the plane using both rectangular and polar coordinates, then later expanded to use the bounds of a triple integral to describe a region in space. We used double integrals to find volumes under surfaces, surface area, and the center of mass of lamina; we used triple integrals as an alternate method of finding volumes of space regions and also to find the center of mass of a region in space.
 %

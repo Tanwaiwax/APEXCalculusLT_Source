@@ -11,7 +11,8 @@ Let $f$ and $g$ be continuous functions on a closed, bounded region $R$, where $
 \[V =\iint_R \big(f(x,y)-g(x,y)\big)\ dA.\]
 \end{theorem}
 
-\example{ex_trip1}{Finding volume between surfaces}{Find the volume of the space region bounded by the planes $z=3x+y-4$ and $z=8-3x-2y$ where $x,y>0$. In \autoref{fig:trip1}(a) the planes are drawn; in (b), only the defined region is given.
+\begin{example}[Finding volume between surfaces]\label{ex_trip1}
+Find the volume of the space region bounded by the planes $z=3x+y-4$ and $z=8-3x-2y$ where $x,y>0$. In \autoref{fig:trip1}(a) the planes are drawn; in (b), only the defined region is given.
 \mtable{Finding the volume between the planes given in \autoref{ex_trip1}.}{fig:trip1}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
@@ -26,8 +27,9 @@ Let $f$ and $g$ be continuous functions on a closed, bounded region $R$, where $
 3Dc2c=0.5144106149673462 -0.7084314823150635 0.48322510719299316,
 3Dcoo=69.411376953125 50.58059310913086 38.15925598144531,
 3Droo=149.99999640034895}{width=\marginparwidth}{figures/figtrip1b_3D}
-\\(b)}}
-{We need to determine the region $R$ over which we will integrate. To do so, we need to determine where the planes intersect. They have common $z$-values when $3x+y-4=8-3x-2y$. Applying a little algebra, we have:
+\\(b)}
+\solution
+We need to determine the region $R$ over which we will integrate. To do so, we need to determine where the planes intersect. They have common $z$-values when $3x+y-4=8-3x-2y$. Applying a little algebra, we have:
 \begin{align*}
 3x+y-4 &= 8-3x-2y\\
 6x+3y &=12\\
@@ -39,7 +41,8 @@ V &= \iint_R \big(8-3x-2y-(3x+y-4)\big)\ dA \\
 	&= \int_0^2\int_0^{4-2x} \big(12-6x-3y\big)\ dy\ dx\\
 	&= 16\text{units}^3.
 \end{align*}
-The volume between the surfaces is $16$ cubic units.}
+The volume between the surfaces is $16$ cubic units.
+\end{example}
 
 In the preceding example, we found the volume by evaluating the integral
 \[\ds \int_0^2\int_0^{4-2x} \big(8-3x-2y-(3x+y-4)\big)\ dy\ dx.\]
@@ -132,8 +135,10 @@ Examples will help us understand triple integration, including integrating with 
 3Droo=150.00000119319247}{width=\marginparwidth}{figures/figtrip2b_3D}
 \\(b)}
 
-\example{ex_trip2}{Finding the volume of a space region with triple integration}{Find the volume of the space region in the 1\textsuperscript{st} octant bounded by the plane $z=2-y/3-2x/3$, shown in \autoref{fig:trip2}(a), using the order of integration $dz\ dy\ dx$. Set up the triple integrals that give the volume in the other 5 orders of integration.}
-{Starting with the order of integration $dz\ dy\ dx$, we need to first find bounds on $z$. The region $D$ is bounded below by the plane $z=0$ (because we are restricted to the first octant) and above by $z=2-y/3-2x/3$; $0\leq z\leq 2-y/3-2x/3$.
+\begin{example}[Finding the volume of a space region with triple integration]\label{ex_trip2}
+Find the volume of the space region in the 1\textsuperscript{st} octant bounded by the plane $z=2-y/3-2x/3$, shown in \autoref{fig:trip2}(a), using the order of integration $dz\ dy\ dx$. Set up the triple integrals that give the volume in the other 5 orders of integration.
+\solution
+Starting with the order of integration $dz\ dy\ dx$, we need to first find bounds on $z$. The region $D$ is bounded below by the plane $z=0$ (because we are restricted to the first octant) and above by $z=2-y/3-2x/3$; $0\leq z\leq 2-y/3-2x/3$.
 
 To find the bounds on $y$ and $x$, we ``collapse'' the region onto the $x$-$y$ plane, giving the triangle shown in \autoref{fig:trip2}(b). (We know the equation of the line $y=6-2x$ in two ways. First, by setting $z=0$, we have $0 = 2-y/3-2x/3 \Rightarrow y=6-2x$. Secondly, we know this is going to be a straight line between the points $(3,0)$ and $(0,6)$ in the $x$-$y$ plane.)
 
@@ -224,7 +229,8 @@ The $y$-bounds are the same as in the order above. We now determine the bounds o
  \int_0^2\int_0^{3-3z/2}\int_0^{6-2x-3z}\ dy\ dx\ dz.
 \]
 
-This problem was long, but hopefully useful, demonstrating how to determine bounds with every order of integration to describe the region $D$. In practice, we only need 1, but being able to do them all gives us flexibility to choose the order that suits us best.}
+This problem was long, but hopefully useful, demonstrating how to determine bounds with every order of integration to describe the region $D$. In practice, we only need 1, but being able to do them all gives us flexibility to choose the order that suits us best.
+\end{example}
 
 In the previous example, we collapsed the surface into the $x$-$y$, $x$-$z$, and $y$-$z$ planes as we determined the ``curve to curve, point to point'' bounds of integration. Since the surface was a triangular portion of a plane, this collapsing, or \textit{projecting}, was simple: the \textit{projection} of a straight line in space onto a coordinate plane is a line.
 
@@ -246,8 +252,10 @@ The following example shows us how to do this when dealing with more complicated
 3Droo=149.9999888496757}{width=\marginparwidth}{figures/fig3d_projb_3D}
 \\(b)}
 
-\example{ex_trip2b}{Finding the projection of a curve in space onto the coordinate planes}{Consider the surfaces $z=3-x^2-y^2$ and $z=2y$, as shown in \autoref{fig:trip2bb}(a). The curve of their intersection is shown, along with the projection of this curve into the coordinate planes, shown dashed. Find the equations of the projections into the coordinate planes.}
-{The two surfaces are $z=3-x^2-y^2$ and $z=2y$. To find where they intersect, it is natural to set them equal to each other: $3-x^2-y^2=2y$. This is an implicit function of $x$ and $y$ that gives all points $(x,y)$ in the $x$-$y$ plane where the $z$ values of the two surfaces are equal. 
+\begin{example}[Finding the projection of a curve in space onto the coordinate planes]\label{ex_trip2b}
+Consider the surfaces $z=3-x^2-y^2$ and $z=2y$, as shown in \autoref{fig:trip2bb}(a). The curve of their intersection is shown, along with the projection of this curve into the coordinate planes, shown dashed. Find the equations of the projections into the coordinate planes.
+\solution
+The two surfaces are $z=3-x^2-y^2$ and $z=2y$. To find where they intersect, it is natural to set them equal to each other: $3-x^2-y^2=2y$. This is an implicit function of $x$ and $y$ that gives all points $(x,y)$ in the $x$-$y$ plane where the $z$ values of the two surfaces are equal. 
 
 We can rewrite this implicit function by completing the square:
 \[3-x^2-y^2=2y \quad \Rightarrow \quad y^2+2y+x^2=3\quad \Rightarrow \quad (y+1)^2+x^2=4.\]
@@ -264,7 +272,8 @@ and ellipse centered at $(0,-2)$ in the $x$-$z$ plane with a major axis of lengt
 
 Finally, to project the curve of intersection into the $y$-$z$ plane, we solve equation for $x$. Since $z=2y$ is a cylinder that lacks the variable $x$, it becomes our equation of the projection in the $y$-$z$ plane.
 
-All three projections are shown in \autoref{fig:trip2bb}(b).}
+All three projections are shown in \autoref{fig:trip2bb}(b).
+\end{example}
 
 \mtable{The region $D$ in \autoref{ex_trip3} is shown in (a); in (b), it is collapsed onto the $x$-$y$ plane.}{fig:trip3}{%
 \myincludeasythree{width=\marginparwidth,
@@ -282,8 +291,10 @@ All three projections are shown in \autoref{fig:trip2bb}(b).}
 3Droo=149.99999973988238}{width=\marginparwidth}{figures/figtrip3b_3D}
 \\(b)}
 
-\example{ex_trip3}{Finding the volume of a space region with triple integration}{Set up the triple integrals that find the volume of the space region $D$ where $x^2+y^2\le1$ and $0\le z\le-y$, as shown in \autoref{fig:trip3}(a), with the orders of integration $dz\ dy\ dx$, $dy\ dx\ dz$ and $dx\ dz\ dy$.}
-{The order $dz\ dy\ dx$:\\
+\begin{example}[Finding the volume of a space region with triple integration]\label{ex_trip3}
+Set up the triple integrals that find the volume of the space region $D$ where $x^2+y^2\le1$ and $0\le z\le-y$, as shown in \autoref{fig:trip3}(a), with the orders of integration $dz\ dy\ dx$, $dy\ dx\ dz$ and $dx\ dz\ dy$.
+\solution
+The order $dz\ dy\ dx$:\\
 
 The region $D$ is bounded below by the plane $z=0$ and above by the plane $z=-y$. The cylinder $x^2+y^2=1$ does not offer any bounds in the $z$-direction, as that surface is parallel to the $z$-axis. Thus $0\leq z\leq -y$.
 
@@ -348,8 +359,9 @@ $D$ is bounded below by the surface $x=-\sqrt{1-y^2}$ and above by $\sqrt{1-y^2}
   -1\leq y\leq 0
  \end{gathered}
  \qquad\Rightarrow\qquad
- \int_{-1}^0\int_{0}^{-y}\int_{-\sqrt{1-y^2}}^{\sqrt{1-y^2}}\ dx\ dz\ dy.\eoehere
-\]}
+ \int_{-1}^0\int_{0}^{-y}\int_{-\sqrt{1-y^2}}^{\sqrt{1-y^2}}\ dx\ dz\ dy.
+\]
+\end{example}
 
 The following theorem states two things that should make ``common sense'' to us. First, using the triple integral to find volume of a region $D$ should always return a positive number; we are computing \textit{volume} here, not \textit{signed volume}. Secondly, to compute the volume of a ``complicated'' region, we could break it up into subregions and compute the volumes of each subregion separately, summing them later to find the total volume.
 
@@ -366,7 +378,8 @@ Let $D$ be a closed, bounded region in space, and let $D_1$ and $D_2$ be non-ove
 
 We use this latter property in the next example.
 
-\example{ex_trip4}{Finding the volume of a space region with triple integration}{Find the volume of the space region $D$ bounded by the coordinate planes, $z=1-x/2$ and $z=1-y/4$, as shown in \autoref{fig:trip4}(a). Set up the triple integrals that find the volume of $D$ in all 6 orders of integration.
+\begin{example}[Finding the volume of a space region with triple integration]\label{ex_trip4}
+Find the volume of the space region $D$ bounded by the coordinate planes, $z=1-x/2$ and $z=1-y/4$, as shown in \autoref{fig:trip4}(a). Set up the triple integrals that find the volume of $D$ in all 6 orders of integration.
 \mtable[-3\baselineskip]{The region $D$ in \autoref{ex_trip4} is shown in (a); in (b), it is collapsed onto the $x$-$y$ plane.}{fig:trip4}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
@@ -381,8 +394,9 @@ We use this latter property in the next example.
 3Dc2c=0.6418777108192444 0.6134042739868164 0.46013936400413513,
 3Dcoo=-9.54626750946045 -8.89417552947998 36.88103103637695,
 3Droo=150.0000021860597}{width=\marginparwidth}{figures/figtrip4d_3D}
-\\(b)}}
-{Following the bounds-determining strategy of ``surface to surface, curve to curve, and point to point,''  we can see that the most difficult orders of integration are the two in which we integrate with respect to $z$ first, for there are two ``upper'' surfaces that bound $D$ in the $z$-direction. So we start by noting that we have 
+\\(b)}
+\solution
+Following the bounds-determining strategy of ``surface to surface, curve to curve, and point to point,''  we can see that the most difficult orders of integration are the two in which we integrate with respect to $z$ first, for there are two ``upper'' surfaces that bound $D$ in the $z$-direction. So we start by noting that we have 
 \[0\leq z\leq 1-\frac12x \quad\text{and}\quad 0\leq z\leq 1-\frac14y.\]
 We now collapse the region $D$ onto the $x$-$y$ axis, as shown in \autoref{fig:trip4}(b). The boundary of $D$, the line from $(0,0,1)$ to $(2,4,0)$, is shown in part (b) of the figure as a dashed line; it has equation $y=2x$. (We can recognize this in two ways: one, in collapsing the line from $(0,0,1)$ to $(2,4,0)$ onto the $x$-$y$ plane, we simply ignore the $z$-values, meaning the line now goes from $(0,0)$ to $(2,4)$. Secondly, the two surfaces meet where $z=1-x/2$ is equal to $z=1-y/4$: thus $1-x/2=1-y/4 \Rightarrow y=2x.$)
 
@@ -481,11 +495,13 @@ The remaining four orders of integration do not require a sum of triple integral
  \end{gathered}
  \qquad\Rightarrow\qquad
  \int_0^4\int_{0}^{1-y/4}\int_0^{2-2z}\ dx\ dz\ dy
-\]}
+\]
+\end{example}
 
 We give one more example of finding the volume of a space region.
 
-\example{ex_trip5}{Finding the volume of a space region}{Set up a triple integral that gives the volume of the space region $D$ bounded by $z= 2x^2+2$ and $z=6-2x^2-y^2$. These surfaces are plotted in \autoref{fig:trip5}(a) and (b), respectively; the region $D$ is shown in part (c) of the figure.
+\begin{example}[Finding the volume of a space region]\label{ex_trip5}
+Set up a triple integral that gives the volume of the space region $D$ bounded by $z= 2x^2+2$ and $z=6-2x^2-y^2$. These surfaces are plotted in \autoref{fig:trip5}(a) and (b), respectively; the region $D$ is shown in part (c) of the figure.
 
 \noindent\begin{minipage}[t]{\linewidth}\noindent%
 \captionsetup{type=figure}%
@@ -516,8 +532,9 @@ We give one more example of finding the volume of a space region.
 \end{tabular}}
 \caption{The region $D$ is bounded by the surfaces shown in (a) and (b); $D$ is shown in (c).}
 \label{fig:trip5}
-\end{minipage}}
-{The main point of this example is this: integrating with respect to $z$ first is rather straightforward; integrating with respect to $x$ first is not.\\
+\end{minipage}
+\solution
+The main point of this example is this: integrating with respect to $z$ first is rather straightforward; integrating with respect to $x$ first is not.\\
 
 \noindent The order $dz\ dy\ dx$:\\
 
@@ -576,7 +593,6 @@ for region $D_1$  and the paraboloid creates bounds
 \[-\sqrt{3-y^2/2-z^2/2}\leq x\leq \sqrt{3-y^2/2-z^2/2}\]
 for region $D_2$.
 
-
 Collapsing $D$ onto the $y$-$z$ axes gives the regions shown in \autoref{fig:trip5b}(b). We find the equation of the curve $z=4-y^2/2$ by noting that the equation of the ellipse seen in \autoref{fig:trip5}(c) has equation 
 \[x^2+y^2/4=1 \quad \Rightarrow \quad x = \sqrt{1-y^2/4}.\]  
 Substitute this expression for $x$ in either surface equation, $z=6-2x^2-y^2$ or $z=2x^2+2$. In both cases, we find
@@ -586,7 +602,8 @@ Region $R_1$, corresponding to $D_1$, has bounds
 and region $R_2$, corresponding to $D_2$, has bounds
 \[4-y^2/2\leq z\leq 6-y^2,\quad -2\leq y\leq 2.\]
 Thus the volume of $D$ is given by:
-\[\int_{-2}^2\int_2^{4-y^2/2}\int_{-\sqrt{z/2-1}}^{\sqrt{z/2-1}}\ dx\ dz\ dy +\int_{-2}^2\int_{4-y^2/2}^{6-y^2}\int_{-\sqrt{3-y^2/2-z^2/2}}^{\sqrt{3-y^2/2-z^2/2}}\ dx\ dz\ dy.\eoehere\]}
+\[\int_{-2}^2\int_2^{4-y^2/2}\int_{-\sqrt{z/2-1}}^{\sqrt{z/2-1}}\ dx\ dz\ dy +\int_{-2}^2\int_{4-y^2/2}^{6-y^2}\int_{-\sqrt{3-y^2/2-z^2/2}}^{\sqrt{3-y^2/2-z^2/2}}\ dx\ dz\ dy.\]
+\end{example}
 
 If all one wanted to do in \autoref{ex_trip5} was find the volume of the region $D$, one would have likely stopped at the first integration setup (with order $dz\ dy\ dx$) and computed the volume from there. However, we included the other two methods (1) to show that it could be done, ``messy'' or not, and (2) because sometimes we ``have'' to use a less desirable order of integration in order to actually integrate.
 
@@ -595,7 +612,7 @@ If all one wanted to do in \autoref{ex_trip5} was find the volume of the region 
 There are uses for triple integration beyond merely finding volume, just as there are uses for integration beyond ``area under the curve.'' These uses start with understanding how to integrate functions of three variables, which is effectively no different than integrating functions of two variables. This leads us to a definition, followed by an example.
 
 \begin{definition}[Iterated Integration, (Part II)]\label{def:triple_integral_2}
-Let $D$ be a closed, bounded region in space, over which $g_1(x)$, $g_2(x)$, $f_1(x,y)$, $f_2(x,y)$ and $h(x,y,z)$ are all continuous, and let $a$ and $b$ be real numbers.\\
+Let $D$ be a closed, bounded region in space, over which $g_1(x)$, $g_2(x)$, $f_1(x,y)$, $f_2(x,y)$ and $h(x,y,z)$ are all continuous, and let $a$ and $b$ be real numbers.\bigskip
 
 The \textbf{iterated integral} $\ds \int_a^b\int_{g_1(x)}^{g_2(x)}\int_{f_1(x,y)}^{f_2(x,y)} h(x,y,z)\ dz\ dy\ dx$ is evaluated as
 \index{integration!triple}\index{triple integral}\index{iterated integration}
@@ -606,8 +623,10 @@ The \textbf{iterated integral} $\ds \int_a^b\int_{g_1(x)}^{g_2(x)}\int_{f_1(x,y)
 \end{definition}
 % todo Tim spurious normalsize mbox at the end of def:triple_integral_2
 
-\example{ex_trip6}{Evaluating a triple integral of a function of three variables}{Evaluate $\ds \int_0^1\int_{x^2}^x\int_{x^2-y}^{2x+3y} \big(xy+2xz\big)\ dz\ dy\ dx.$}
-{We evaluate this integral according to \autoref{def:triple_integral_2}.\\
+\begin{example}[Evaluating a triple integral of a function of three variables]\label{ex_trip6}
+Evaluate $\ds \int_0^1\int_{x^2}^x\int_{x^2-y}^{2x+3y} \bigl(xy+2xz\bigr)\ dz\ dy\ dx$.
+\solution
+We evaluate this integral according to \autoref{def:triple_integral_2}.\\
 
 $\ds \int_0^1\int_{x^2}^x\int_{x^2-y}^{2x+3y} \big(xy+2xz\big)\ dz\ dy\ dx $
 \begin{align*}
@@ -618,8 +637,9 @@ $\ds \int_0^1\int_{x^2}^x\int_{x^2-y}^{2x+3y} \big(xy+2xz\big)\ dz\ dy\ dx $
 			\intertext{We continue as we have in the past, showing fewer steps.}
 			&= \int_0^1\Bigg(-\frac72x^7-8x^6-\frac72x^5+15x^4\Bigg)\ dx\\
 			&= \frac{281}{336}%\approx 0.836
-			.\eoehere
-\end{align*}}
+			.
+\end{align*}
+\end{example}
 
 We now know \textit{how} to evaluate a triple integral of a function of three variables; we do not yet understand what it \textit{means}. We build up this understanding in a way very similar to how we have understood integration and double integration.
 
@@ -641,8 +661,7 @@ We now use the above limit to define the \textbf{triple integral}, give a theore
 , we showed how the summation of rectangles over a region $R$ in the plane could be viewed as a double sum, leading to the double integral. Likewise, we can view the sum $\ds \sum_{i=1}^nh(x_i,y_i,z_i)\Delta x_i\Delta y_i\Delta z_i$ as a triple sum, \[\sum_{k=1}^p\sum_{j=1}^n\sum_{i=1}^mh(x_i,y_j,z_k)\Delta x_i\Delta y_j\Delta z_k,\]
 which we evaluate as
 \[\sum_{k=1}^p\left(\sum_{j=1}^n\left(\sum_{i=1}^m h(x_i,y_j,z_k)\Delta x_i\right)\Delta y_j\right)\Delta z_k.\]
-Here we fix a $k$ value, which establishes the $z$-height of the rectangular solids on one ``level'' of all the rectangular solids in the space region $D$. The inner double summation adds up all the volumes of the rectangular solids on this level, while the outer summation adds up the volumes of each level.
-
+Here we fix a $k$ value, which establishes the $z$-height of the rectangular solids on one ``level'' of all the rectangular solids in the space region $D$. The inner double summation adds up all the volumes of the rectangular solids on this level, while the outer summation adds up the volumes of each level.\bigskip\\
 This triple summation understanding leads to the $\iiint_D$ notation of the triple integral, as well as the method of evaluation shown in \autoref{thm:triple_integration2}.}
 
 \begin{definition}[Triple Integral]\label{def:triple_integral_3}
@@ -686,7 +705,8 @@ Let a solid be represented by a region $D$ in space with variable density functi
 \end{enumerate}
 \end{definition}
 
-\example{ex_trip7}{Finding the center of mass of a solid}{Find the mass and center of mass of the solid represented by the space region bounded by the coordinate planes and $z=2-y/3-2x/3$, shown in \autoref{fig:trip7}, with constant density $\delta(x,y,z)=3$g/cm$^3$. (Note: this space region was used in \autoref{ex_trip2}.)
+\begin{example}[Finding the center of mass of a solid]\label{ex_trip7}
+Find the mass and center of mass of the solid represented by the space region bounded by the coordinate planes and $z=2-y/3-2x/3$, shown in \autoref{fig:trip7}, with constant density $\delta(x,y,z)=3$g/cm$^3$. (Note: this space region was used in \autoref{ex_trip2}.)
 
 \mtable{Finding the center of mass of this solid in \autoref{ex_trip7}.}{fig:trip7}{%
 \myincludeasythree{width=\marginparwidth,
@@ -695,8 +715,8 @@ Let a solid be represented by a region $D$ in space with variable density functi
 3Dc2c=0.4086907207965851 0.6385185718536377 0.6521241664886475,
 3Dcoo=3.675152540206909 -7.818903923034668 16.216196060180664,
 3Droo=150.00000119319247}{width=\marginparwidth}{figures/figtrip2_3D}}
-}
-{We apply \autoref{def:mass_3d}. In \autoref{ex_trip2}, we found bounds for the order of integration $dz\ dy\ dx$ to be $0\leq z\leq 2-y/3-2x/3$, $0\leq y\leq 6-2x$ and $0\leq x\leq 3$. We find the mass of the object: 
+\solution
+We apply \autoref{def:mass_3d}. In \autoref{ex_trip2}, we found bounds for the order of integration $dz\ dy\ dx$ to be $0\leq z\leq 2-y/3-2x/3$, $0\leq y\leq 6-2x$ and $0\leq x\leq 3$. We find the mass of the object: 
 \begin{align*}
 M &= \iiint_D \delta(x,y,z)\ dV \\
   &= \int_0^3\int_0^{6-2x}\int_0^{2-y/3-2x/3} \big(3\big)\ dz\ dy\ dx\\
@@ -721,10 +741,12 @@ M_{yz} &= \iiint_D 3x\ dV = \frac{27}2.\\
 M_{xz} &= \iiint_D 3y\ dV = 27.
 \end{align*}
 The center of mass is
-\[\big(\overline{x},\overline{y},\overline{z}\big) = \left(\frac{27/2}{18},\frac{27}{18},\frac{9}{18}\right) = \big(0.75,1.5,0.5\big).\eoehere\]}
+\[\big(\overline{x},\overline{y},\overline{z}\big) = \left(\frac{27/2}{18},\frac{27}{18},\frac{9}{18}\right) = \big(0.75,1.5,0.5\big).\]
+\end{example}
 
 
-\example{ex_trip8}{Finding the center of mass of a solid}{Find the center of mass of the solid represented by the region bounded by the planes $z=0$ and $z=-y$ and the cylinder $x^2+y^2=1$, shown in \autoref{fig:trip8}, with density function $\delta(x,y,z) = 10+x^2+5y-5z$. (Note: this space region was used in \autoref{ex_trip3}.)
+\begin{example}[Finding the center of mass of a solid]\label{ex_trip8}
+Find the center of mass of the solid represented by the region bounded by the planes $z=0$ and $z=-y$ and the cylinder $x^2+y^2=1$, shown in \autoref{fig:trip8}, with density function $\delta(x,y,z) = 10+x^2+5y-5z$. (Note: this space region was used in \autoref{ex_trip3}.)
 
 \mtable{Finding the center of mass of this solid in \autoref{ex_trip8}.}{fig:trip8}{%
 \myincludeasythree{width=\marginparwidth,
@@ -733,8 +755,8 @@ The center of mass is
 3Dc2c=0.8340418338775635 0.34454345703125 0.43088746070861816,
 3Dcoo=-6.1953253746032715 -30.81180191040039 48.79259490966797,
 3Droo=149.99999973988238}{width=\marginparwidth}{figures/figtrip3_3D}}
-}
-{As we start, consider the density function. It is symmetric about the $y$-$z$ plane, and the farther one moves from this plane, the denser the object is. The symmetry indicates that $\overline x$ should be 0. 
+\solution
+As we start, consider the density function. It is symmetric about the $y$-$z$ plane, and the farther one moves from this plane, the denser the object is. The symmetry indicates that $\overline x$ should be 0. 
 
 As one moves away from the origin in the $y$ or $z$ directions, the object becomes less dense, though there is more volume in these regions.  
 
@@ -753,7 +775,8 @@ Though none of the integrals needed to compute the center of mass are particular
 	&= \iiint_D z\big(10+x^2+5y-5z\big)\ dV = \frac{61\pi}{96}-\frac{10}9\approx 0.885.
 \end{align*}
 Note how $M_{yz}=0$, as expected. The center of mass is
-\[\big(\overline{x},\overline{y},\overline{z}\big) = \left(0,\frac{-1.99}{3.855},\frac{0.885}{3.855}\right) \approx \big(0,-0.516, 0.230\big).\eoehere\]}
+\[\big(\overline{x},\overline{y},\overline{z}\big) = \left(0,\frac{-1.99}{3.855},\frac{0.885}{3.855}\right) \approx \big(0,-0.516, 0.230\big).\]
+\end{example}
 
 As stated before, there are many uses for triple integration beyond finding volume. When $h(x,y,z)$ describes a rate of change function over some space region $D$, then $\ds \iiint_D h(x,y,z)\ dV$ gives the total change over $D$. Our one specific example of this was computing mass; a density function is simply a ``rate of mass change per volume'' function. Integrating density gives total mass.
 

@@ -44,12 +44,14 @@ If $u = g(x)$, then $du = g\primeskip'(x)dx$ and
 \[\int \Fp(g(x))g\primeskip'(x)\ dx = \int \Fp(u)\ du = F(u)+C = F(g(x))+C.\]
 \end{theorem}
 
-The point of substitution is to make the integration step easy. Indeed, the step $\int \Fp(u)\ du = F(u) + C$ looks easy, as the antiderivative of the derivative of $F$ is just $F$, plus a constant. The ``work'' involved is making the proper substitution. There is not a step-by-step process to memorize; rather, experience will be your guide. To gain experience, we now embark on many examples.\\
+The point of substitution is to make the integration step easy. Indeed, the step $\int \Fp(u)\ du = F(u) + C$ looks easy, as the antiderivative of the derivative of $F$ is just $F$, plus a constant. The ``work'' involved is making the proper substitution. There is not a step-by-step process to memorize; rather, experience will be your guide. To gain experience, we now embark on many examples.
 
 \youtubeVideo{li1SMPsqNuw}{Integration by U-Substitution (Indefinite Integral)}
 
-\example{ex_sub1}{Integrating by substitution}{Evaluate $\ds \int x\sin(x^2+5)\ dx$.}
-{Knowing that substitution is related to the Chain Rule, we choose to let $u$ be the ``inside'' function of $\sin(x^2+5)$. (This is not \emph{always} a good choice, but it is often the best place to start.)
+\begin{example}[Integrating by substitution]\label{ex_sub1}
+Evaluate $\ds \int x\sin(x^2+5)\ dx$.
+\solution
+Knowing that substitution is related to the Chain Rule, we choose to let $u$ be the ``inside'' function of $\sin(x^2+5)$. (This is not \emph{always} a good choice, but it is often the best place to start.)
 
 Let $u = x^2+5$, hence $du = 2x\,dx$. The integrand has an $x\,dx$ term, but not a $2x\,dx$ term. (Recall that multiplication is commutative, so the $x$ does not physically have to be next to $dx$ for there to be an $x\,dx$ term.) We can divide both sides of the $du$ expression by 2:
 \[du = 2x\,dx \quad \Rightarrow \quad \frac12du = x\,dx.\]
@@ -61,10 +63,13 @@ We can now substitute.
 	&= -\frac12\cos u + C \quad \text{\scriptsize (now replace $u$ with $x^2+5$)}\\
 	&=-\frac12\cos(x^2+5) + C.
 \end{align*}
-Thus $\int x\sin(x^2+5)\ dx = -\frac12\cos(x^2+5)+C$. We can check our work by evaluating the derivative of the right hand side.}
+Thus $\int x\sin(x^2+5)\ dx = -\frac12\cos(x^2+5)+C$. We can check our work by evaluating the derivative of the right hand side.
+\end{example}
 
-\example{ex_sub2}{Integrating by substitution}{Evaluate $\ds \int \cos(5x)\ dx$.}
-{Again let $u$ replace the ``inside'' function. Letting $u = 5x$, we have $du = 5dx$. Since our integrand does not have a $5dx$ term, we can divide the previous equation by $5$ to obtain $\frac15du = dx$. We can now substitute.
+\begin{example}[Integrating by substitution]\label{ex_sub2}
+Evaluate $\ds \int \cos(5x)\ dx$.
+\solution
+Again let $u$ replace the ``inside'' function. Letting $u = 5x$, we have $du = 5dx$. Since our integrand does not have a $5dx$ term, we can divide the previous equation by $5$ to obtain $\frac15du = dx$. We can now substitute.
 \begin{align*}
 	\int \cos(5x)\ dx
 	&= \int \cos(\underbrace{5x}_u) \underbrace{dx}_{\frac15du} \\
@@ -72,27 +77,33 @@ Thus $\int x\sin(x^2+5)\ dx = -\frac12\cos(x^2+5)+C$. We can check our work by e
 	&= \frac15\sin u + C \\
 	&= \frac15\sin (5x)+C.
 \end{align*}
-We can again check our work through differentiation.}
+We can again check our work through differentiation.
+\end{example}
 
 The previous example exhibited a common, and simple, type of substitution. The ``inside'' function was a linear function (in this case, $y = 5x$). When the inside function is linear, the resulting integration is very predictable, so that we can say
 \[\int \Fp(ax+b)\ dx = \frac{1}{a}F(ax+b) + C.\]
 
 For example, $\int \sin (7x-4)\ dx = -\frac17\cos(7x-4)+C$. Our next example can use this idea, but we will only employ it after going through all of the steps.
 
-\example{ex_sub3}{Integrating by substituting a linear function}{Evaluate $\ds \int \frac{7}{-3x+1}\ dx$.}
-{View this as a composition of functions $f(g(x))$, where $f(x) = 7/x$ and $g(x) = -3x+1$. Employing our understanding of substitution, we let $u = -3x+1$, the inside function. Thus $du = -3dx$. The integrand lacks a $-3$; hence divide the previous equation by $-3$ to obtain $-du/3 = dx$. We can now evaluate the integral through substitution.
+\begin{example}[Integrating by substituting a linear function]\label{ex_sub3}
+Evaluate $\ds \int \frac{7}{-3x+1}\ dx$.
+\solution
+View this as a composition of functions $f(g(x))$, where $f(x) = 7/x$ and $g(x) = -3x+1$. Employing our understanding of substitution, we let $u = -3x+1$, the inside function. Thus $du = -3dx$. The integrand lacks a $-3$; hence divide the previous equation by $-3$ to obtain $-du/3 = dx$. We can now evaluate the integral through substitution.
 \begin{align*}
 	\int \frac{7}{-3x+1}\ dx
 	&= \int\left(\frac{7}{u}\right)\left(\frac{du}{-3}\right) \\
 	&= \frac{-7}3\int \frac{du}{u} \\
 	&= \frac{-7}3\ln \abs u + C\\
-	&= -\frac73\ln\abs{-3x+1} + C.\eoehere
-\end{align*}}
+	&= -\frac73\ln\abs{-3x+1} + C.
+\end{align*}
+\end{example}
 
 Not all integrals that benefit from substitution have a clear ``inside'' function. Several of the following examples will demonstrate ways in which this occurs.
 
-\example{ex_sub10}{Integrating by substitution}{Evaluate $\ds \int \sin x\cos x\ dx$.}
-{There is not a composition of function here to exploit; rather, just a product of functions. Do not be afraid to experiment; when given an integral to evaluate, it is often beneficial to think ``If I let $u$ be \textit{this}, then $du$ must be \textit{that} \dotso'' and see if this helps simplify the integral at all.
+\begin{example}[Integrating by substitution]\label{ex_sub10}
+Evaluate $\ds \int \sin x\cos x\ dx$.
+\solution
+There is not a composition of function here to exploit; rather, just a product of functions. Do not be afraid to experiment; when given an integral to evaluate, it is often beneficial to think ``If I let $u$ be \textit{this}, then $du$ must be \textit{that} \dotso'' and see if this helps simplify the integral at all.
 
 In this example, let's set $u = \sin x$. Then $du = \cos x\ dx$, which we have as part of the integrand. The substitution becomes very straightforward:
 \begin{align*}
@@ -101,12 +112,15 @@ In this example, let's set $u = \sin x$. Then $du = \cos x\ dx$, which we have a
 	&= \frac12u^2+ C \\
 	&= \frac12\sin^2 x + C.
 \end{align*}
-One would do well to ask ``What would happen if we let $u = \cos x$?'' The result is just as easy to find, yet looks very different. The challenge to the reader is to evaluate the integral letting $u = \cos x$ and discover why the answer is the same, yet looks different.}
+One would do well to ask ``What would happen if we let $u = \cos x$?'' The result is just as easy to find, yet looks very different. The challenge to the reader is to evaluate the integral letting $u = \cos x$ and discover why the answer is the same, yet looks different.
+\end{example}
 
 Our examples so far have required ``basic substitution.'' The next example demonstrates how substitutions can be made that often strike the new learner as being ``nonstandard.''
 
-\example{ex_sub4}{Integrating by substitution}{Evaluate $\ds\int x\sqrt{x+3}\ dx$.}
-{Recognizing the composition of functions, set $u = x+3$. Then $du = dx$, giving what seems initially to be a simple substitution. But at this stage, we have:
+\begin{example}[Integrating by substitution]\label{ex_sub4}
+Evaluate $\ds\int x\sqrt{x+3}\ dx$.
+\solution
+Recognizing the composition of functions, set $u = x+3$. Then $du = dx$, giving what seems initially to be a simple substitution. But at this stage, we have:
 	\[\int x\sqrt{x+3}\ dx = \int x\sqrt{u}\ du.\]
 We cannot evaluate an integral that has both an $x$ and an $u$ in it. We need to convert the $x$ to an expression involving just $u$.
 
@@ -118,10 +132,13 @@ Since we set $u = x+3$, we can also state that $u-3 = x$. Thus we can replace $x
 	&= \frac25u^\frac52 - 2u^\frac32 + C \\
 	&= \frac25(x+3)^\frac52 - 2(x+3)^\frac32 + C.
 \end{align*}
-Checking your work is always a good idea. In this particular case, some algebra will be needed to make one's answer match the integrand in the original problem.}
+Checking your work is always a good idea. In this particular case, some algebra will be needed to make one's answer match the integrand in the original problem.
+\end{example}
 
-\example{ex_sub5}{Integrating by substitution}{Evaluate $\ds \int \frac{1}{x\ln x}\ dx$.}
-{This is another example where there does not seem to be an obvious composition of functions. The line of thinking used in \autoref{ex_sub4} is useful here: choose something for $u$ and consider what this implies $du$ must be. If $u$ can be chosen such that $du$ also appears in the integrand, then we have chosen well.
+\begin{example}[Integrating by substitution]\label{ex_sub5}
+Evaluate $\ds \int \frac{1}{x\ln x}\ dx$.
+\solution
+This is another example where there does not seem to be an obvious composition of functions. The line of thinking used in \autoref{ex_sub4} is useful here: choose something for $u$ and consider what this implies $du$ must be. If $u$ can be chosen such that $du$ also appears in the integrand, then we have chosen well.
 
 Choosing $u = 1/x$ makes $du = -1/x^2\ dx$; that does not seem helpful. However, setting $u = \ln x$ makes $du = 1/x\ dx$, which is part of the integrand. Thus:
 \begin{align*}
@@ -131,7 +148,8 @@ Choosing $u = 1/x$ makes $du = -1/x^2\ dx$; that does not seem helpful. However,
 	&= \ln \abs u + C \\
 	&= \ln \abs{\ln x} + C.
 \end{align*}
-The final answer is interesting; the natural log of the natural log. Take the derivative to confirm this answer is indeed correct.}
+The final answer is interesting; the natural log of the natural log. Take the derivative to confirm this answer is indeed correct.
+\end{example}
 
 \subsection{Integrals Involving Trigonometric Functions}
 
@@ -139,8 +157,10 @@ The final answer is interesting; the natural log of the natural log. Take the de
 
 The next three examples will help fill in some missing pieces of our antider\-ivative knowledge. We know the antiderivatives of the sine and cosine functions; what about the other standard functions tangent, cotangent, secant and cosecant? We discover these next.
 
-\example{ex_sub6}{Integration by substitution: antiderivatives of $\tan x$}{Evaluate $\ds \int \tan x\ dx.$}
-{The previous paragraph established that we did not know the antiderivatives of tangent, hence we must assume that we have learned something in this section that  can help us evaluate this indefinite integral. 
+\begin{example}[Integration by substitution: antiderivatives of $\tan x$]\label{ex_sub6}
+Evaluate $\ds \int \tan x\ dx.$
+\solution
+The previous paragraph established that we did not know the antiderivatives of tangent, hence we must assume that we have learned something in this section that  can help us evaluate this indefinite integral. 
 
 Rewrite $\tan x$ as $\sin x/\cos x$. While the presence of a composition of functions may not be immediately obvious, recognize that $\cos x$ is ``inside'' the $1/x$ function. Therefore, we see if setting $u = \cos x$ returns usable results. We have that $du = -\sin x\ dx$, hence $-du = \sin x\ dx$. We can integrate:
 \begin{align*}
@@ -158,10 +178,13 @@ Some texts prefer to bring the $-1$ inside the logarithm as a power of $\cos x$,
 	&= \ln \abs{\frac{1}{\cos x}} + C\\
 	&= \ln \abs{\sec x} + C.
 \end{align*}
-Thus the result they give is $\int \tan x \ dx = \ln\abs{\sec x}+C$. These two answers are equivalent.}
+Thus the result they give is $\int \tan x \ dx = \ln\abs{\sec x}+C$. These two answers are equivalent.
+\end{example}
 
-\example{ex_sub7}{Integrating by substitution: antiderivatives of $\sec x$}{Evaluate $\ds\int \sec x\ dx$.}
-{This example employs a wonderful trick: multiply the integrand by ``1'' so that we see how to integrate more clearly. In this case, we write ``1'' as
+\begin{example}[Integrating by substitution: antiderivatives of $\sec x$]\label{ex_sub7}
+Evaluate $\ds\int \sec x\ dx$.
+\solution
+This example employs a wonderful trick: multiply the integrand by ``1'' so that we see how to integrate more clearly. In this case, we write ``1'' as
 \[1 = \frac{\sec x + \tan x}{\sec x + \tan x}.\]
 This may seem like it came out of left field, but it works beautifully. Consider:
 \begin{align*}
@@ -172,8 +195,9 @@ This may seem like it came out of left field, but it works beautifully. Consider
 	\int \sec x\ dx
 	&= \int \frac{du}{u} \\
 	&= \ln \abs u + C \\
-	&= \ln \abs{\sec x+\tan x} + C.\eoehere
-\end{align*}}
+	&= \ln \abs{\sec x+\tan x} + C.
+\end{align*}
+\end{example}
 
 We can use similar techniques to those used in Examples \ref{ex_sub6} and \ref{ex_sub7} to find antiderivatives of $\cot x$ and $\csc x$ (which the reader can explore in the exercises.) We summarize our results here.
 
@@ -202,8 +226,10 @@ We can use similar techniques to those used in Examples \ref{ex_sub6} and \ref{e
 
 It is common to be reluctant to manipulate the integrand of an integral; at first, our grasp of integration is tenuous and one may think that working with the integrand will improperly change the results. Integration by substitution works using a different logic: as long as \textit{equality} is maintained, the integrand can be manipulated so that its \textit{form} is easier to deal with. The next example demonstrates a common way in which using algebra first makes the integration easier to perform.
 
-\example{ex_sub11}{Integration by alternate methods}{Evaluate $\ds\int \frac{x^2+2x+3}{\sqrt{x}}\ dx$ with, and without, substitution.}
-{We already know how to integrate this particular example. Rewrite $\sqrt{x}$ as $x^\frac12$ and simplify the fraction:
+\begin{example}[Integration by alternate methods]\label{ex_sub11}
+Evaluate $\ds\int \frac{x^2+2x+3}{\sqrt{x}}\ dx$ with, and without, substitution.
+\solution
+We already know how to integrate this particular example. Rewrite $\sqrt{x}$ as $x^\frac12$ and simplify the fraction:
 	\[ \frac{x^2+2x+3}{x^{1/2}} = x^\frac32 + 2x^\frac12 + 3x^{-\frac12}.\]
 We can now integrate using the Power Rule:
 \begin{align*}
@@ -223,7 +249,8 @@ This gives us $\ds \int \frac{x^2+2x+3}{\sqrt{x}}\ dx = \int (x^2+2x+3)\cdot2\ d
 	&= \frac25u^5 + \frac43u^3 + 6u + C \\
 	&= \frac25x^\frac52 + \frac43x^\frac32 + 6x^\frac12+C,
 \end{align*}
-which is obviously the same answer we obtained before. In this situation, substitution is arguably more work than our other method. The fantastic thing is that it works. It demonstrates how flexible integration is.}
+which is obviously the same answer we obtained before. In this situation, substitution is arguably more work than our other method. The fantastic thing is that it works. It demonstrates how flexible integration is.
+\end{example}
 
 
 \subsection{Substitution and Definite Integration}
@@ -237,10 +264,12 @@ Let $F$ and $g$ be differentiable functions, where the range of $g$ is an interv
 \[\int_a^b \Fp\big(g(x)\big)g\primeskip'(x)\ dx = \int_{g(a)}^{g(b)} \Fp(u)\ du.\]
 \end{theorem}
 
-In effect, \autoref{thm:subst_def_int} states that once you convert to integrating with respect to $u$, you do not need to switch back to evaluating with respect to $x$. A few examples will help one understand.\\
+In effect, \autoref{thm:subst_def_int} states that once you convert to integrating with respect to $u$, you do not need to switch back to evaluating with respect to $x$. A few examples will help one understand.
 
-\example{ex_sub12}{Definite integrals and substitution: changing the bounds}{Evaluate $\ds\int_0^2 \cos(3x-1)\ dx$ using \autoref{thm:subst_def_int}.}
-{Observing the composition of functions, let $u=3x-1$, hence $du = 3dx$. As $3dx$ does not appear in the integrand, divide the latter equation by 3 to get $du/3 = dx$. 
+\begin{example}[Definite integrals and substitution: changing the bounds]\label{ex_sub12}
+Evaluate $\ds\int_0^2 \cos(3x-1)\ dx$ using \autoref{thm:subst_def_int}.
+\solution
+Observing the composition of functions, let $u=3x-1$, hence $du = 3dx$. As $3dx$ does not appear in the integrand, divide the latter equation by 3 to get $du/3 = dx$. 
 
 By setting $u = 3x-1$, we are implicitly stating that $g(x) = 3x-1$. \autoref{thm:subst_def_int} states that the new lower bound is $g(0) = -1$; the new upper bound is $g(2) = 5$. We now evaluate the definite integral:
 
@@ -278,7 +307,13 @@ ymin=-1.1,ymax=1.1,xmin=-1.5,xmax=5.5]
 \end{align*}
 Notice how once we converted the integral to be in terms of $u$, we never went back to using $x$.
 
-The graphs in \autoref{fig:subst12} tell more of the story. In (a) the area defined by the original integrand is shaded, whereas in (b) the area defined by the new integrand is shaded. In this particular situation, the areas look very similar; the new region is ``shorter'' but ``wider,'' giving the same area.}
+The graphs in \autoref{fig:subst12} tell more of the story. In (a) the area defined by the original integrand is shaded, whereas in (b) the area defined by the new integrand is shaded. In this particular situation, the areas look very similar; the new region is ``shorter'' but ``wider,'' giving the same area.
+\end{example}
+
+\begin{example}[Definite integrals and substitution: changing the bounds]\label{ex_subst13}
+Evaluate $\ds \int_0^{\pi/2} \sin x \cos x\ dx$ using \autoref{thm:subst_def_int}.
+\solution
+We saw the corresponding indefinite integral in \autoref{ex_sub10}. In that example we set $u = \sin x$ but stated that we could have let $u = \cos x$. For variety, we do the latter here.
 
 \mtable{Graphing the areas defined by the definite integrals of \autoref{ex_subst13}.}{fig:subst13}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -306,8 +341,6 @@ ymin=-.6,ymax=1.1,xmin=-.5,xmax=2]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}
 \\(b)}
-\example{ex_subst13}{Definite integrals and substitution: changing the bounds}{Evaluate $\ds \int_0^{\pi/2} \sin x \cos x\ dx$ using \autoref{thm:subst_def_int}.}
-{We saw the corresponding indefinite integral in \autoref{ex_sub10}. In that example we set $u = \sin x$ but stated that we could have let $u = \cos x$. For variety, we do the latter here.
 
 Let $u = g(x) = \cos x$, giving $du = -\sin x\ dx$ and hence $\sin x\ dx = -du$. The new upper bound is $g(\pi/2) = 0$; the new lower bound is $g(0) = 1$. Note how the lower bound is actually larger than the upper bound now. We have
 \begin{align*}
@@ -317,9 +350,13 @@ Let $u = g(x) = \cos x$, giving $du = -\sin x\ dx$ and hence $\sin x\ dx = -du$.
 	&= \int_0^1 u\ du\\
 	&= \left.\frac12u^2\right|_0^1= \frac12.
 \end{align*}
-In \autoref{fig:subst13} we have again graphed the two regions defined by our definite integrals. Unlike the previous example, they bear no resemblance to each other. However, \autoref{thm:subst_def_int} guarantees that they have the same area.}
+In \autoref{fig:subst13} we have again graphed the two regions defined by our definite integrals. Unlike the previous example, they bear no resemblance to each other. However, \autoref{thm:subst_def_int} guarantees that they have the same area.
+\end{example}
 
-\example{ex_subst_def_3}{Definite integrals and substitution: changing the bounds}{Evaluate $\ds\int_0^2 xe^{x^2+1}\ dx$ using \autoref{thm:subst_def_int}.}{We note the composition of functions and let $u=x^2+1$, hence $du=2x\,dx$. We divide the differential by 2 to get $\frac{du}2=x\,dx$.
+\begin{example}[Definite integrals and substitution: changing the bounds]\label{ex_subst_def_3}
+Evaluate $\ds\int_0^2 xe^{x^2+1}\ dx$ using \autoref{thm:subst_def_int}.
+\solution
+We note the composition of functions and let $u=x^2+1$, hence $du=2x\,dx$. We divide the differential by 2 to get $\frac{du}2=x\,dx$.
 
 Setting $g(x)=u=x^2+1$, we find that the new lower bound is $g(0)=1$; the new upper bound is $g(2)=5$. We now evaluate:
 \begin{align*}
@@ -327,8 +364,9 @@ Setting $g(x)=u=x^2+1$, we find that the new lower bound is $g(0)=1$; the new up
 	&= \int_1^5 e^u \frac{du}2\\
 	&= \left.\frac12 e^u\right|_1^5\\
 	&= \frac12(e^5-e^1) \\
-	&= \frac e2(e^4-1).\eoehere %\approx 147.41316\\
-\end{align*}}
+	&= \frac e2(e^4-1). %\approx 147.41316\\
+\end{align*}
+\end{example}
 
 % Integration by substitution is a powerful and useful integration technique. The next section introduces another technique, called Integration by Parts. As substitution ``undoes'' the Chain Rule, integration by parts ``undoes'' the Product Rule. Together, these two techniques provide a strong foundation on which most other integration techniques are based.
 

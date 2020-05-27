@@ -92,8 +92,9 @@ Applying transformations of functions we get the following standard form of the 
 Note: $p$ is not necessarily a positive number.\index{parabola!general equation}
 \end{keyidea}
 
-\example{ex_conic1}{Finding the equation of a parabola}{Give the equation of the parabola with focus at $(1,2)$ and directrix at $y=3$.}
-{The vertex is located halfway between the focus and directrix, so $(h,k) = (1,2.5)$. This gives $p=-0.5$. Using \autoref{idea:parabola} we have the equation of the parabola as
+\begin{example}[Finding the equation of a parabola]\label{ex_conic1}
+Give the equation of the parabola with focus at $(1,2)$ and directrix at $y=3$.
+\solution
 %
 \mtable{The parabola described in \autoref{ex_conic1}.}{fig:conic1}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -105,12 +106,16 @@ ymin=-6.5,ymax=2.9,xmin=-3.5,xmax=5.5]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 %
+The vertex is located halfway between the focus and directrix, so $(h,k) = (1,2.5)$. This gives $p=-0.5$. Using \autoref{idea:parabola} we have the equation of the parabola as
 \[y=\frac{1}{4(-0.5)}(x-1)^2+2.5 = -\frac12(x-1)^2+2.5.\]
-The parabola is sketched in \autoref{fig:conic1}.}
+The parabola is sketched in \autoref{fig:conic1}.
+\end{example}
 
 \ifthenelse{\boolean{abridgeConics}}{}{%
-\example{ex_conic2}{Finding the focus and directrix of a parabola}{Find the focus and directrix of the parabola $x=\frac18y^2-y+1$. The point $(7,12)$ lies on the graph of this parabola; verify that it is equidistant from the focus and directrix.}
-{We need to put the equation of the parabola in its general form. This requires us to complete the square:
+\begin{example}[Finding the focus and directrix of a parabola]\label{ex_conic2}
+Find the focus and directrix of the parabola $x=\frac18y^2-y+1$. The point $(7,12)$ lies on the graph of this parabola; verify that it is equidistant from the focus and directrix.
+\solution
+We need to put the equation of the parabola in its general form. This requires us to complete the square:
 \begin{align*}
 	x &= \frac18y^2-y+1 \\
 	&= \frac18\big(y^2-8y+8\big)\\
@@ -138,7 +143,8 @@ ymin=-5.5,ymax=14.5,xmin=-11,xmax=14,axis equal]
 
 The point $(7,12)$ lies on the graph and is $7-(-3)=10$ units from the directrix. The distance from $(7,12)$ to the focus is:
 \[\sqrt{(7-1)^2 + (12-4)^2} = \sqrt{100}=10.\]
-Indeed, the point on the parabola is equidistant from the focus and directrix.}
+Indeed, the point on the parabola is equidistant from the focus and directrix.
+\end{example}
 	
 \subsection{Reflective Property}
 
@@ -189,6 +195,19 @@ An \textbf{ellipse} is the locus of all points whose sum of distances from two f
 
 An easy way to visualize this construction of an ellipse is to pin both ends of a string to a board. The pins become the foci. Holding a pencil tight against the string places the pencil on the ellipse; the sum of distances from the pencil to the pins is constant: the length of the string. See \autoref{fig:ellipse_def}.
 
+\mtable[-2\baselineskip]{Illustrating the construction of an ellipse with pins, pencil and string.}{fig:ellipse_def}{\begin{tikzpicture}
+	\draw [thick,dashed] (0,0) circle [x radius=2,y radius=1.5];
+	\filldraw (1.3,0)circle(1.5pt) (-1.3,0)circle(1.5pt);
+	\draw  (1.3,0) -- node [right,pos=.5] {\scriptsize $d_1$}
+	 (1.39,1.07) -- node [above,pos=.5] {\scriptsize $d_2$} (-1.3,0);
+	\draw (0,-.7) node {\scriptsize $d_1+d_2=$ constant};
+	\begin{scope}[shift={(1.9cm,1.225cm)},rotate=120,xscale=.25,yscale=.5]
+		\draw (0,0) -- (0,-2) -- (1,-2)--(1,0) -- (.5,1) -- cycle;
+		\draw [fill=black] (.3,.6) -- ( .5,1)--(.7,.6)--cycle;
+		\draw (0,0) cos (.5,-.1) sin (1,0);
+	\end{scope}
+\end{tikzpicture}}
+
 \ifthenelse{\boolean{abridgeConics}}{}{%
 We can again find an algebraic equation for an ellipse using this geometric definition. Let the foci be located along the $x$-axis, $c$ units from the origin. Let these foci be labeled as $F_1 = (-c,0)$ and $F_2=(c,0)$. Let $P=(x,y)$ be a point on the ellipse. The sum of distances from $F_1$ to $P$ ($d_1$) and from $F_2$ to $P$ ($d_2$) is a constant $d$. That is, $d_1+d_2=d$. Using the Distance Formula, we have 
 \[\sqrt{(x+c)^2+y^2} + \sqrt{(x-c)^2+y^2} = d.\]
@@ -203,22 +222,8 @@ This is not particularly illuminating, but by making the substitution $a=d/2$ an
 As shown in \autoref{fig:ellipse_label}, the values of $a$ and $b$ have
 % geometric
 meaning. In general, the two foci of an ellipse lie on the \textbf{major axis} of the ellipse, and the midpoint of the segment joining the two foci is the \textbf{center}. The major axis intersects the ellipse at two points, each of which is a \textbf{vertex}. The line segment through the center and perpendicular to the major axis is the \textbf{minor axis}. The ``constant sum of distances'' that defines the ellipse is the length of the major axis, i.e., $2a$.
-%
-% this is not the figure that was just referenced, but the figure from before the previous paragraph.  But I can't get TeX to realize what page it goes on otherwise
-\mtable[-6\baselineskip]{Illustrating the construction of an ellipse with pins, pencil and string.}{fig:ellipse_def}{\begin{tikzpicture}
-	\draw [thick,dashed] (0,0) circle [x radius=2,y radius=1.5];
-	\filldraw (1.3,0)circle(1.5pt) (-1.3,0)circle(1.5pt);
-	\draw  (1.3,0) -- node [right,pos=.5] {\scriptsize $d_1$}
-	 (1.39,1.07) -- node [above,pos=.5] {\scriptsize $d_2$} (-1.3,0);
-	\draw (0,-.7) node {\scriptsize $d_1+d_2=$ constant};
-	\begin{scope}[shift={(1.9cm,1.225cm)},rotate=120,xscale=.25,yscale=.5]
-		\draw (0,0) -- (0,-2) -- (1,-2)--(1,0) -- (.5,1) -- cycle;
-		\draw [fill=black] (.3,.6) -- ( .5,1)--(.7,.6)--cycle;
-		\draw (0,0) cos (.5,-.1) sin (1,0);
-	\end{scope}
-\end{tikzpicture}}
 
-\mtable{Labeling the significant features of an ellipse.}{fig:ellipse_label}{\begin{tikzpicture}
+\mtable[3\baselineskip]{Labeling the significant features of an ellipse.}{fig:ellipse_label}{\begin{tikzpicture}
  \draw [thick,draw={\colorone}] (0,0) circle [x radius=2,y radius=1.5];
  \draw [thick,dashed] (-2.4,0) -- (2.4,0) (0,1.8) -- (0,-1.9);
  \filldraw [draw={\colortwo}] (1.3,0) circle (1.5pt) (-1.3,0) circle (1.5pt);
@@ -248,7 +253,8 @@ The foci lie along the major axis, $c$ units from the center, where $c^2=a^2-b^2
 \index{ellipse!standard equation}
 \end{keyidea}
 
-\example{ex_conic3}{Finding the equation of an ellipse}{Find the general equation of the ellipse graphed in \autoref{fig:conic3}.
+\begin{example}[Finding the equation of an ellipse]\label{ex_conic3}
+Find the general equation of the ellipse graphed in \autoref{fig:conic3}.
 %
 \mtable{The ellipse used in \autoref{ex_conic3}.}{fig:conic3}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -260,12 +266,16 @@ ytick={-4,-2,2,4,6},ymin=-4.9,ymax=6.9,xmin=-6.9,xmax=6.9]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}}
-{The center is located at $(-3,1)$. The distance from the center to a vertex is 5 units, hence $a=5$. The minor axis seems to have length 4, so $b=2$. Thus the equation of the ellipse is
-\[\frac{(x+3)^2}{4}+\frac{(y-1)^2}{25} = 1.\eoehere\]}
+\end{tikzpicture}}
+\solution
+The center is located at $(-3,1)$. The distance from the center to a vertex is 5 units, hence $a=5$. The minor axis seems to have length 4, so $b=2$. Thus the equation of the ellipse is
+\[\frac{(x+3)^2}{4}+\frac{(y-1)^2}{25} = 1.\]
+\end{example}
 
-\example{ex_conic4}{Graphing an ellipse}{Graph the ellipse defined by $4x^2+9y^2-8x-36y=-4$.}
-{It is simple to graph an ellipse once it is in standard form. In order to put the given equation in standard form, we must complete the square with both the $x$ and $y$ terms. We first rewrite the equation by regrouping:
+\begin{example}[Graphing an ellipse]\label{ex_conic4}
+Graph the ellipse defined by $4x^2+9y^2-8x-36y=-4$.
+\solution
+It is simple to graph an ellipse once it is in standard form. In order to put the given equation in standard form, we must complete the square with both the $x$ and $y$ terms. We first rewrite the equation by regrouping:
 \[4x^2+9y^2-8x-36y=-4 \quad \Rightarrow \quad (4x^2-8x) + (9y^2-36y) = -4.\]
 Now we complete the squares.
 \begin{align*}
@@ -293,7 +303,8 @@ ytick={-1,1,2,3,4},ymin=-2,ymax=5,xmin=-3,xmax=5]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}%
 %
-We see the center of the ellipse is at $(1,2)$. We have $a=3$ and $b=2$; the major axis is horizontal, so the vertices are located at $(-2,2)$ and $(4,2)$. We find $c=\sqrt{9-4} = \sqrt{5}\approx 2.24.$ The foci are located along the major axis, approximately $2.24$ units from the center, at $(1\pm 2.24,2)$. This is all graphed in \autoref{fig:conic4}.}
+We see the center of the ellipse is at $(1,2)$. We have $a=3$ and $b=2$; the major axis is horizontal, so the vertices are located at $(-2,2)$ and $(4,2)$. We find $c=\sqrt{9-4} = \sqrt{5}\approx 2.24.$ The foci are located along the major axis, approximately $2.24$ units from the center, at $(1\pm 2.24,2)$. This is all graphed in \autoref{fig:conic4}.
+\end{example}
 
 \ifthenelse{\boolean{abridgeConics}}{}{%
 \subsection{Eccentricity}
@@ -450,7 +461,7 @@ The vertices are located $a$ units from the center and the foci are located $c$ 
 
 \subsection{Graphing Hyperbolas}
 
-\mtable[-1in]{Graphing the hyperbola $\frac{x^2}9-\frac{y^2}1 = 1$ along with its asymptotes, $y=\pm x/3$.}{fig:hyperbola_asy1}{\begin{tikzpicture}
+\mtable[-1.2in]{Graphing the hyperbola $\frac{x^2}9-\frac{y^2}1 = 1$ along with its asymptotes, $y=\pm x/3$.}{fig:hyperbola_asy1}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
 ymin=-3.2,ymax=3.2,xmin=-8.2,xmax=8.2]
@@ -465,7 +476,7 @@ ymin=-3.2,ymax=3.2,xmin=-8.2,xmax=8.2]
 
 Consider the hyperbola $\frac{x^2}9-\frac{y^2}1 = 1$. Solving for $y$, we find $y=\pm\sqrt{x^2/9-1}$. As $x$ grows large, the ``$-1$'' part of the equation for $y$ becomes less significant and $y\approx \pm\sqrt{x^2/9} = \pm x/3$. That is, as $x$ gets large, the graph of the hyperbola looks very much like the lines $y=\pm x/3$. These lines are asymptotes of the hyperbola, as shown in \autoref{fig:hyperbola_asy1}.
 
-\mtable{Using the asymptotes of a hyperbola as a graphing aid.}{fig:hyperbola_asy2}{\begin{tikzpicture}
+\mtable[.2in]{Using the asymptotes of a hyperbola as a graphing aid.}{fig:hyperbola_asy2}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,xtick=\empty,extra x ticks={2,8,5},
 extra x tick labels={$h-a$, $h+a$,$h$},ytick=\empty,extra y ticks={2,4,6},
@@ -518,11 +529,14 @@ minor y tick num=4,ymin=-7.2,ymax=11.2,xmin=-5.2,xmax=7.2]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-\example{ex_conic5}{Graphing a hyperbola}{Sketch the hyperbola given by $\ds \frac{(y-2)^2}{25}-\frac{(x-1)^2}{4}=1.$}
-{The hyperbola is centered at $(1,2)$; $a=5$ and $b=2$.
+\begin{example}[Graphing a hyperbola]\label{ex_conic5}
+Sketch the hyperbola given by $\ds \frac{(y-2)^2}{25}-\frac{(x-1)^2}{4}=1$.
+\solution
+The hyperbola is centered at $(1,2)$; $a=5$ and $b=2$.
 In \autoref{fig:conic5} we draw the prescribed rectangle centered at $(1,2)$ along with the asymptotes defined by its diagonals. The hyperbola has a vertical transverse axis, so the vertices are located at $(1,7)$ and $(1,-3)$. This is enough to make a good sketch.
 
-We also find the location of the foci: as $c^2= a^2+b^2$, we have $c=\sqrt{29}\approx 5.4$. Thus the foci are located at $(1,2\pm 5.4)$ as shown in the figure.}
+We also find the location of the foci: as $c^2= a^2+b^2$, we have $c=\sqrt{29}\approx 5.4$. Thus the foci are located at $(1,2\pm 5.4)$ as shown in the figure.
+\end{example}
 
 \mtable{Graphing the hyperbola in \autoref{ex_conic6}.}{fig:conic6}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -546,8 +560,10 @@ minor y tick num=4,ymin=-10.9,ymax=11.9,xmin=-4.2,xmax=4.2]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-\example{ex_conic6}{Graphing a hyperbola}{Sketch the hyperbola given by $9x^2-y^2+2y=10.$}
-{We must complete the square to put the equation in general form. (We recognize this as a hyperbola since it is a general quadratic equation and the $x^2$ and $y^2$ terms have opposite signs.)
+\begin{example}[Graphing a hyperbola]\label{ex_conic6}
+Sketch the hyperbola given by $9x^2-y^2+2y=10$.
+\solution
+We must complete the square to put the equation in general form. (We recognize this as a hyperbola since it is a general quadratic equation and the $x^2$ and $y^2$ terms have opposite signs.)
 \begin{align*}
 	9x^2-y^2+2y &=10\\
 	9x^2- (y^2-2y) &= 10\\
@@ -557,7 +573,8 @@ minor y tick num=4,ymin=-10.9,ymax=11.9,xmin=-4.2,xmax=4.2]
 	x^2 - \frac{(y-1)^2}{9} &=1
 \end{align*}
 
-We see the hyperbola is centered at $(0,1)$, with a horizontal transverse axis, where $a=1$ and $b=3$. The appropriate rectangle is sketched in \autoref{fig:conic6} along with the asymptotes of the hyperbola. The vertices are located at $(\pm 1,1)$. We have $c=\sqrt{10}\approx 3.2$, so the foci are located at $(\pm 3.2,1)$ as shown in \autoref{fig:conic6}.}
+We see the hyperbola is centered at $(0,1)$, with a horizontal transverse axis, where $a=1$ and $b=3$. The appropriate rectangle is sketched in \autoref{fig:conic6} along with the asymptotes of the hyperbola. The vertices are located at $(\pm 1,1)$. We have $c=\sqrt{10}\approx 3.2$, so the foci are located at $(\pm 3.2,1)$ as shown in \autoref{fig:conic6}.
+\end{example}
 
 \ifthenelse{\boolean{abridgeConics}}{}{%
 \subsection{Eccentricity}

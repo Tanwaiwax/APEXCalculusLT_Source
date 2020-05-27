@@ -11,8 +11,10 @@ $f \circ g$ or $f(g)$ and read it as ``$f$ of $g$.''  Before giving the correspo
 
 To motivate the rule, let's look at three derivatives we can already compute.
 
-\example{ex_chain1}{Exploring similar derivatives}{Find the derivatives of $F_1(x) = (1-x)^2$, $F_2(x) = (1-x)^3,$ and $F_3(x) = (1-x)^4.$ (We'll see later why we are using subscripts for different functions and an uppercase $F$.)}
-{In order to use the rules we already have, we must first expand each function as
+\begin{example}[Exploring similar derivatives]\label{ex_chain1}
+Find the derivatives of $F_1(x) = (1-x)^2$, $F_2(x) = (1-x)^3,$ and $F_3(x) = (1-x)^4.$ (We'll see later why we are using subscripts for different functions and an uppercase $F$.)
+\solution
+In order to use the rules we already have, we must first expand each function as
 $F_1(x) = 1 - 2x + x^2$,  $F_2(x) = 1 - 3x + 3x^2 - x^3$ and $F_3(x) = 1 - 4x + 6x^2 - 4x^3 + x^4$.
   
 It is not hard to see that:
@@ -39,7 +41,8 @@ F_2(x) &= f_2(g(x)), \text{ where } f_2(x) = x^3,\\
 F_3(x) &= f_3(g(x)), \text{ where } f_3(x) = x^4.
 \end{align*}
 
-We'll come back to this example after giving the formal statements of the Chain Rule; for now, we are just illustrating a pattern.}
+We'll come back to this example after giving the formal statements of the Chain Rule; for now, we are just illustrating a pattern.
+\end{example}
 
 \begin{theorem}[The Chain Rule]\label{thm:chain_rule}
 Let $y = f(u)$ be a differentiable function of $u$ and let $u = g(x)$ be a differentiable function of $x$.\index{derivative!Chain Rule}\index{Chain Rule} Then $y=f(g(x))$ is a differentiable function of $x$, and \[y\primeskip' = \fp(g(x))\cdot g\primeskip'(x).\]
@@ -47,8 +50,10 @@ Let $y = f(u)$ be a differentiable function of $u$ and let $u = g(x)$ be a diffe
 
 We can think of this as taking the derivative of the outer function evaluated at the inner function times the derivative of the inner function. To help  understand the Chain Rule, we return to \autoref{ex_chain1}.
 
-\example{ex_chain2}{Using the Chain Rule}{Use the Chain Rule to find the derivatives of the functions given in \autoref{ex_chain1}.}
-{\autoref{ex_chain1} ended with the recognition that each of the given functions was actually a composition of functions. To avoid confusion, we ignore most of the subscripts here.
+\begin{example}[Using the Chain Rule]\label{ex_chain2}
+Use the Chain Rule to find the derivatives of the functions given in \autoref{ex_chain1}.
+\solution
+\autoref{ex_chain1} ended with the recognition that each of the given functions was actually a composition of functions. To avoid confusion, we ignore most of the subscripts here.
 
 \noindent $F_1(x) = (1-x)^2:$\\
 \indent We found that
@@ -64,7 +69,8 @@ Part of the Chain Rule uses $\fp(g(x))$. This means substitute $g(x)$ for $x$ in
 
 \noindent $F_3(x) = (1-x)^4$:\\
 \indent Finally, when $y = (1-x)^4$, we have $f(x)= x^4$ and $g(x) = (1-x)$. Thus $\fp(x) = 4x^3$ and $\fp(g(x)) = 4(1-x)^3$. Thus
-\[y\primeskip' = \fp(g(x))\cdot g\primeskip'(x) = 4(1-x)^3\cdot (-1) = -4(1-x)^3.\eoehere\]}
+\[y\primeskip' = \fp(g(x))\cdot g\primeskip'(x) = 4(1-x)^3\cdot (-1) = -4(1-x)^3.\]
+\end{example}
 
 \autoref{ex_chain2} demonstrated a particular pattern: when $f(x)=x^n$ and $y=f(g(x))$, then $y\primeskip' =n\cdot (g(x))^{n-1}\cdot g\primeskip'(x)$. This  is called the Generalized Power Rule.
 
@@ -86,13 +92,15 @@ Treat the derivative-taking process step-by-step. In the example just given, fir
 
 We now consider more examples that employ the Chain Rule.
 
-\example{ex_chain3}{Using the Chain Rule}{Find the derivatives of the following functions:
+\begin{example}[Using the Chain Rule]\label{ex_chain3}
+Find the derivatives of the following functions:
 \[
  1.\quad y = \sin{2x}\qquad\qquad
  2.\quad y= \ln (4x^3-2x^2)\qquad\qquad
  3.\quad y = e^{-x^2}
-\]}
-{\begin{enumerate}
+\]
+\solution
+\begin{enumerate}
 	\item	Consider $y = \sin 2x$. Recognize that this is a composition of functions, where $f(x) = \sin x$ and $g(x) = 2x$. Thus
 	\[
 	 y\primeskip' = \fp(g(x))\cdot g\primeskip'(x)
@@ -111,9 +119,10 @@ We now consider more examples that employ the Chain Rule.
 	\end{align*}
 	\item	Recognize  that $y = e^{-x^2}$ is the composition of $f(x) = e^x$ and $g(x) = -x^2$. Remembering that $\fp(x) = e^x$, we have
 	\[
-	 y\primeskip'=e^{x^2}\cdot\frac{d}{dx}(x^2)=e^{-x^2}\cdot(-2x)=(-2x)e^{-x^2}.\eoehere
+	 y\primeskip'=e^{x^2}\cdot\frac{d}{dx}(x^2)=e^{-x^2}\cdot(-2x)=(-2x)e^{-x^2}.
 	\]
-\end{enumerate}}
+\end{enumerate}
+\end{example}
 
 \mtable{$f(x) = \cos x^2$ sketched along with its tangent line at $x=1$.}{fig:chain7}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,height=1.16\marginparwidth,tick label style={font=\scriptsize},minor x tick num=1,minor y tick num=1,axis y line=middle,axis x line=middle,ymin=-1.1,ymax=1.1,xmin=-3.1,xmax=3.1,name=myplot]
@@ -124,13 +133,16 @@ We now consider more examples that employ the Chain Rule.
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-\example{ex_chain7}{Using the Chain Rule to find a tangent line}{Let $f(x) = \cos x^2$. Find the equation of the line tangent to the graph of $f$ at $x=1$.}
-{The tangent line goes through the point $(1,f(1)) \approx (1,0.54)$ with slope $\fp(1)$. To find $\fp$, we need the Chain Rule.
+\begin{example}[Using the Chain Rule to find a tangent line]\label{ex_chain7}
+Let $f(x) = \cos x^2$. Find the equation of the line tangent to the graph of $f$ at $x=1$.
+\solution
+The tangent line goes through the point $(1,f(1)) \approx (1,0.54)$ with slope $\fp(1)$. To find $\fp$, we need the Chain Rule.
 
 $\fp(x) = -\sin(x^2) \cdot(2x) = -2x\sin x^2$. Evaluated at $x=1$, we have $\fp(1) = -2\sin 1\approx -1.68$. Thus the equation of the tangent line is approximately
 \[y = -1.68(x-1)+0.54.\]
 
-The tangent line is sketched along with $f$ in \autoref{fig:chain7}.}
+The tangent line is sketched along with $f$ in \autoref{fig:chain7}.
+\end{example}
 
 The Chain Rule is used often in taking derivatives. Because of this, one can become familiar with the basic process and learn  patterns that facilitate finding derivatives quickly. For instance,
 \[
@@ -164,11 +176,13 @@ The following is a short list of how the Chain Rule can be quickly applied to fa
 
 Of course, the Chain Rule can be applied in conjunction with any of the other rules we have already learned. We practice this next.
 
-\example{ex_chain4}{Using the Product, Quotient and Chain Rules}{Find the derivatives of the following functions.
+\begin{example}[Using the Product, Quotient and Chain Rules]\label{ex_chain4}
+Find the derivatives of the following functions.
 \[
  1.\quad f(x) = x^5 \sin{2x^3} \qquad\qquad 2.\quad f(x) = \dfrac{5x^3}{e^{-x^2}}.
-\]}
-{\begin{enumerate}
+\]
+\solution
+\begin{enumerate}
 \item	We must use the Product and Chain Rules. Do not think that you must be able to ``see'' the whole answer immediately; rather, just proceed step-by-step.
 \begin{align*}
  \fp(x)
@@ -182,11 +196,12 @@ Of course, the Chain Rule can be applied in conjunction with any of the other ru
  \fp(x)
  &= \frac{e^{-x^2} \cdot \frac{d}{dx}(5x^3) - 5x^3\frac{d}{dx}e^{-x^2}}{(e^{-x^2})^2}\\
  &= \frac{e^{-x^2} \cdot 15x^2 - 5x^3 \cdot e^{-x^2} \cdot \frac{d}{dx}(-x^2)}{(e^{-x^2})^2}\\
- &= \frac{e^{-x^2}\big(15x^2\big) - 5x^3\big((-2x)e^{-x^2}\big)}{\big(e^{-x^2}\big)^2}\\
- &=\frac{e^{-x^2}\big(10x^4+15x^2\big)}{e^{-2x^2}}\\
- &= e^{x^2}\big(10x^4+15x^2\big).\eoehere
+ &= \frac{e^{-x^2}\bigl(15x^2\bigr) - 5x^3\bigl((-2x)e^{-x^2}\bigr)}{\big(e^{-x^2}\big)^2}\\
+ &=\frac{e^{-x^2}\bigl(10x^4+15x^2\bigr)}{e^{-2x^2}}\\
+ &= e^{x^2}\bigl(10x^4+15x^2\bigr).
 \end{align*}
-\end{enumerate}}
+\end{enumerate}
+\end{example}
 
 A key to correctly working these problems is to break the problem down into smaller, more manageable pieces. For instance, when using the Product and Chain Rules together, just consider the first part of the Product Rule at first: $f(x)g\primeskip'(x)$. Just rewrite $f(x)$, then find $g\primeskip'(x)$. Then move on to the $\fp(x)g(x)$ part. Don't attempt to figure out both parts at once.
 
@@ -194,8 +209,10 @@ Likewise, using the Quotient Rule, approach the numerator in two steps and handl
 
 We can also employ the Chain Rule itself several times, as shown in the next example.
 
-\example{ex_chain6}{Using the Chain Rule multiple times}{Find the derivative of $y = \tan^5(6x^3-7x)$.}
-{Recognize that we have the function $g(x)=\tan(6x^3-7x)$ ``inside'' the function $f(x) = x^5$; that is, we have $y=\left(\tan(6x^3-7x)\right)^5$. We use the Chain Rule multiple times, beginning with the Generalized Power Rule:
+\begin{example}[Using the Chain Rule multiple times]\label{ex_chain6}
+Find the derivative of $y = \tan^5(6x^3-7x)$.
+\solution
+Recognize that we have the function $g(x)=\tan(6x^3-7x)$ ``inside'' the function $f(x) = x^5$; that is, we have $y=\left(\tan(6x^3-7x)\right)^5$. We use the Chain Rule multiple times, beginning with the Generalized Power Rule:
 \begin{align*}
 y\primeskip' &= 5\left(\tan(6x^3-7x)\right)^4 \cdot \frac{d}{dx} \tan(6x^3-7x)\\
 &= 5\tan^4(6x^3-7x) \cdot \sec^2 (6x^3-7x) \cdot \frac{d}{dx}(6x^3-7x) \\
@@ -205,14 +222,16 @@ y\primeskip' &= 5\left(\tan(6x^3-7x)\right)^4 \cdot \frac{d}{dx} \tan(6x^3-7x)\\
 
 This function is frankly a ridiculous function, possessing no real practical value. It is very difficult to graph, as the tangent function has many vertical asymptotes and $6x^3-7x$ grows so very fast. The important thing to learn from this is that the derivative can be found. In fact, it is not ``hard;'' one must take several small steps and be careful to keep track of how to apply each of these steps.%However, just to demonstrate that this is the proper derivative, we have plotted the tangent line to the function, along with $y$, in FIGURE. The derivative gives the correct slope.
 %Do for x=.05
-}
+\end{example}
 
 It is a traditional mathematical exercise to find the derivatives of arbitrarily complicated functions just to demonstrate that it \textit{can be done}. Just break everything down into smaller pieces.
 
 %We note that these functions (which look similar to those in the previous example) may arise in dealing with a Fourier transform or a Fourier series (perhaps in a differential equations or circuits class).  They are more complicated, because you do not use the chain rule immediately.  You must first use a previous rule, namely the product rule.  However, within the calculations, you will have to involve the chain rule.**   \\
 
-\example{ex_chain5}{Using the Product, Quotient and Chain Rules}{Find the derivative of $f(x)=\dfrac{x\cos(x^{-2})-\sin^2(e^{4x})}{\ln x^2}$.}
-{This function likely has no practical use outside of demonstrating derivative skills. The answer is given below without simplification. It employs the Quotient Rule, the Product Rule, and the Chain Rule three times.\\
+\begin{example}[Using the Product, Quotient and Chain Rules]\label{ex_chain5}
+Find the derivative of $f(x)=\dfrac{x\cos(x^{-2})-\sin^2(e^{4x})}{\ln x^2}$.
+\solution
+This function likely has no practical use outside of demonstrating derivative skills. The answer is given below without simplification. It employs the Quotient Rule, the Product Rule, and the Chain Rule three times.\\
 \scriptsize
 $\fp(x) = $\\
 %\flushinner{%
@@ -223,7 +242,8 @@ $\fp(x) = $\\
 \normalsize
 
 The reader is highly encouraged to look at each term and recognize why it is there. %(I.e., the Quotient Rule is used; in the numerator, identify the ``LOdHI'' term, etc.)
-This example demonstrates that derivatives can be computed systematically, no matter how arbitrarily complicated the function is.}
+This example demonstrates that derivatives can be computed systematically, no matter how arbitrarily complicated the function is.
+\end{example}
 
 %------------------------\\
 %FOOTNOTE **: Most derivatives will use a combination of the derivative rules.  For kicks, have a shot at finding the derivative of
@@ -258,10 +278,12 @@ This example demonstrates that derivatives can be computed systematically, no ma
 
 % this is covered in Calc 2
 
-%The Chain Rule also has theoretic value. That is, it can be used to find the derivatives of functions that we have not yet learned as we do in the following example.\\
+%The Chain Rule also has theoretic value. That is, it can be used to find the derivatives of functions that we have not yet learned as we do in the following example.
 %
-%\example{ex_chain8}{The Chain Rule and exponential functions}{Use the Chain Rule to find the derivative of $y= a^x$ where $a>0$, $a\neq 1$ is constant.}
-%{We only know how to find the derivative of one exponential function: $y = e^x$; this problem is asking us to find the derivative of functions such as $y = 2^x$. 
+%\begin{example}[The Chain Rule and exponential functions]\label{ex_chain8}
+%Use the Chain Rule to find the derivative of $y= a^x$ where $a>0$, $a\neq 1$ is constant.
+%\solution
+%We only know how to find the derivative of one exponential function: $y = e^x$; this problem is asking us to find the derivative of functions such as $y = 2^x$. 
 %
 %This can be accomplished by rewriting $a^x$ in terms of $e$.  Recalling that $e^x$ and $\ln x$ are inverse functions, we can write
 %\[a = e^{\ln a} \qquad \text{and so} \qquad y = a^x = e^{\ln (a^x)}.\]
@@ -273,7 +295,8 @@ This example demonstrates that derivatives can be computed systematically, no ma
 %\[y\primeskip' = e^{x (\ln a)} \cdot \ln a.\]
 %Recall that the $e^{x(\ln a)}$ term on the right hand side is just $a^x$, our original function. Thus, the derivative contains the original function itself. We have
 %\[y\primeskip' = y \cdot \ln a = a^x\cdot \ln a.\]
-%The Chain Rule, coupled with the derivative rule of $e^x$, allows us to find the derivatives of all exponential functions.}\\
+%The Chain Rule, coupled with the derivative rule of $e^x$, allows us to find the derivatives of all exponential functions.
+%\end{example}
 %
 %The previous example produced a result worthy of its own ``box.''
 %

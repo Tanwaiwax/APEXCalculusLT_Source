@@ -38,12 +38,15 @@ Using our new terminology, we can state that the series $\ds \sum_{n=1}^\infty 1
 
 We will explore a variety of series in this section. We start with two series that diverge, showing how we might discern divergence.
 
-\example{ex_series1}{Showing series diverge}{\mbox{}\\[-2\baselineskip]
+% todo Tim check v spacing
+\begin{example}[Showing series diverge]\label{ex_series1}
+\mbox{}\\[-2\baselineskip]
 \begin{enumerate}
 \item		Let $\{a_n\} = \{n^2\}$. Show $\ds \sum_{n=1}^\infty a_n$ diverges.
 \item		Let $\{b_n\} = \{(-1)^{n+1}\}$. Show $\ds \sum_{n=1}^\infty b_n$ diverges.
-\end{enumerate}}
-{\begin{enumerate}
+\end{enumerate}
+\solution
+\begin{enumerate}
 \item	Consider $S_n$, the $n^\text{th}$ partial sum.
 %
 \mtable{Scatter plots relating to the series of \autoref{ex_series1} part 1.}{fig:series1a}{\begin{tikzpicture}
@@ -101,8 +104,9 @@ ymin=-1.1,ymax=1.1,xmin=-1,xmax=11]
 \end{tikzpicture}};
 \end{tikzpicture}}
 
-A scatter plot of the sequence $\{b_n\}$ and the partial sums $\{S_n\}$ is given in \autoref{fig:series1b}. When $n$ is odd, $b_n = S_n$ so the marks for $b_n$ are drawn oversized to show they coincide.\eoehere
-\end{enumerate}}
+A scatter plot of the sequence $\{b_n\}$ and the partial sums $\{S_n\}$ is given in \autoref{fig:series1b}. When $n$ is odd, $b_n = S_n$ so the marks for $b_n$ are drawn oversized to show they coincide.
+\end{enumerate}
+\end{example}
 
 While it is important to recognize when a series diverges, we are generally more interested in the series that  converge. In this section we will demonstrate a few general techniques for determining convergence; later sections will delve deeper into this topic.
 
@@ -207,13 +211,15 @@ xmin=-1,xmax=7,ymin=-50]%ymax=1.1,%
 \end{tikzpicture}
 \smallskip\\(c)}
 
-\example{ex_series2}{Exploring geometric series}{Check the convergence of the following series. If the series converges, find its sum.
+\begin{example}[Exploring geometric series]\label{ex_series2}
+Check the convergence of the following series. If the series converges, find its sum.
 \[
  \text{1. }\sum_{n=2}^\infty \left(\frac34\right)^n\qquad
  \text{2. }\sum_{n=0}^\infty \left(\frac{-1}{2}\right)^n\qquad
  \text{3. }\sum_{n=0}^\infty 3^n
-\]}
-{\begin{enumerate}
+\]
+\solution
+\begin{enumerate}
 \item		Since $r=3/4<1$, this series converges. By \autoref{thm:geom_series}, we have that
 \[\sum_{n=0}^\infty \left(\frac34\right)^n = \frac{1}{1-3/4} = 4.\]
 However, note the subscript of the summation in the given series: we are to start with $n=2$. Therefore we subtract off the first two terms, giving:
@@ -226,14 +232,17 @@ The partial sums of this series are plotted in \autoref{fig:series2}(b). Note ho
 
 \item		Since $r>1$, the series diverges. (This makes ``common sense''; we expect the sum
 \[1+3+9+27 + 81+243+\dotsb\]
-to diverge.) This is illustrated in \autoref{fig:series2}(c).\eoehere
-\end{enumerate}}
+to diverge.) This is illustrated in \autoref{fig:series2}(c).
+\end{enumerate}
+\end{example}
 
 Later sections will provide tests by which we can determine whether or not a given series converges. This, in general, is much easier than determining \emph{what} a given series converges to. There are many cases, though, where the sum can be determined.
 
-\example{ex_series3}{Telescoping series}{Evaluate the sum~~$\ds \sum_{n=1}^\infty \left(\frac1n-\frac1{n+1}\right)$.
-\index{series!telescoping}\index{telescoping series}}
-{It will help to write down some of the first few partial sums of this series.
+\begin{example}[Telescoping series]\label{ex_series3}
+Evaluate the sum~~$\ds \sum_{n=1}^\infty \left(\frac1n-\frac1{n+1}\right)$.
+\index{series!telescoping}\index{telescoping series}
+\solution
+It will help to write down some of the first few partial sums of this series.
 \begin{align*}
 S_1 &=	\frac11-\frac12 & & = 1-\frac12\\
 S_2 &=	\left(\frac11-\frac12\right) + \left(\frac12-\frac13\right) & & = 1-\frac13\\
@@ -257,7 +266,8 @@ ymin=-.1,ymax=1.1,xmin=-1,xmax=11]
 \end{tikzpicture}};
 \end{tikzpicture}}%
 %
-Note how most of the terms in each partial sum subtract out. In general, we see that $S_n = 1-\frac{1}{n+1}$. The sequence $\{S_n\}$ converges,  as $\ds \lim_{n\to\infty}S_n=\smallskip\lim_{n\to\infty}\left(1-\tfrac1{n+1}\right)=1$, and so we conclude that $\ds\sum_{n=1}^\infty \left(\tfrac1n-\tfrac1{n+1}\right) = 1$. Partial sums of the series are plotted in \autoref{fig:series3}.}
+Note how most of the terms in each partial sum subtract out. In general, we see that $S_n = 1-\frac{1}{n+1}$. The sequence $\{S_n\}$ converges,  as $\ds \lim_{n\to\infty}S_n=\smallskip\lim_{n\to\infty}\left(1-\tfrac1{n+1}\right)=1$, and so we conclude that $\ds\sum_{n=1}^\infty \left(\tfrac1n-\tfrac1{n+1}\right) = 1$. Partial sums of the series are plotted in \autoref{fig:series3}.
+\end{example}
 
 The series in \autoref{ex_series3} is an example of a \sword{telescoping series}. Informally, a telescoping series is one in which the partial sums reduce to just a fixed number of terms. The partial sum $S_n$ did not contain $n$ terms, but rather just two: 1 and $1/(n+1)$.\index{series!telescoping}\index{telescoping series}
 
@@ -266,12 +276,14 @@ When possible, seek a way to write an explicit formula for the $n^\text{th}$ par
 %\noindent\textbf{Note on notation:} Most of the series we encounter will start with $n=1$. For ease of notation, we will often write $\sum a_n$ instead of writing $\ds\sum_{n=1}^\infty a_n$.\\
 
 
-\example{ex_series4}{Evaluating series}{Evaluate each of the following infinite series.
+\begin{example}[Evaluating series]\label{ex_series4}
+Evaluate each of the following infinite series.
 \[
  \text{1.}\quad\sum_{n=1}^\infty \frac{2}{n^2+2n}\qquad\qquad
  \text{2.}\quad\sum_{n=1}^\infty \ln\left(\frac{n+1}{n}\right)
-\]}
-{\begin{enumerate}
+\]
+\solution
+\begin{enumerate}
 \item		We can decompose the fraction $2/(n^2+2n)$ as
 \[\frac2{n^2+2n} = \frac1n-\frac1{n+2}.\]
 (See \autoref{sec:partial_fraction}, Partial Fraction Decomposition, to recall how  this is done, if necessary.)
@@ -356,8 +368,9 @@ ymin=-.5,ymax=5,xmin=-10,xmax=110]
 \end{tikzpicture}};
 \end{tikzpicture}}
 
-We can conclude that $\{S_n\} = \big\{\ln (n+1)\big\}$. This sequence  does not converge, as $\ds \lim_{n\to\infty}S_n=\infty$. Therefore  $\ds\sum_{n=1}^\infty  \ln\left(\frac{n+1}{n}\right)=\infty$; the series diverges. Note in \autoref{fig:series4b} how the sequence of partial sums grows slowly; after 100 terms, it is not yet over 5. Graphically we may be fooled into thinking the series converges, but our analysis above shows that it does not.\eoehere
-\end{enumerate}}
+We can conclude that $\{S_n\} = \big\{\ln (n+1)\big\}$. This sequence  does not converge, as $\ds \lim_{n\to\infty}S_n=\infty$. Therefore  $\ds\sum_{n=1}^\infty  \ln\left(\frac{n+1}{n}\right)=\infty$; the series diverges. Note in \autoref{fig:series4b} how the sequence of partial sums grows slowly; after 100 terms, it is not yet over 5. Graphically we may be fooled into thinking the series converges, but our analysis above shows that it does not.
+\end{enumerate}
+\end{example}
 
 We are learning about a new mathematical object, the series. As done before, we apply ``old'' mathematics to this new topic.
 
@@ -373,7 +386,10 @@ Suppose that \quad$\ds \sum_{n=1}^\infty a_n$\quad and \quad $\ds\sum_{n=1}^\inf
 
 Before using this theorem, we will consider the harmonic series $\ds\sum_{n=1}^\infty\frac1n$.
 
-\example{ex_harm_series}{Divergence of the Harmonic Series}{Show that the harmonic series $\ds \sum_{n=1}^\infty\frac1n$ diverges.}{We will use a proof by contradiction here. Suppose the harmonic series converges to $S$. That is
+\begin{example}[Divergence of the Harmonic Series]\label{ex_harm_series}
+Show that the harmonic series $\ds \sum_{n=1}^\infty\frac1n$ diverges.
+\solution
+We will use a proof by contradiction here. Suppose the harmonic series converges to $S$. That is
 \[S=1+\frac12+ \frac13 +\frac14+\frac15+\frac16+\frac17+\frac18+\dotsb\]
 We then have
 \begin{align*}
@@ -382,7 +398,8 @@ S &\geq 1+\frac12+\frac14+\frac14+\frac16+\frac16+\frac18+\frac18+\dotsb\\
 +\frac14\phantom{+\frac18}+\dotsb\\
 &=\frac12+S
 \end{align*}
-This gives us $S\geq \frac12+S$ which can never be true, thus our assumption that the harmonic series converges must be false. Therefore, the harmonic series diverges.}
+This gives us $S\geq \frac12+S$ which can never be true, thus our assumption that the harmonic series converges must be false. Therefore, the harmonic series diverges.
+\end{example}
 
 %Before using this theorem, we provide a few ``famous'' series.
 %
@@ -398,14 +415,16 @@ This gives us $S\geq \frac12+S$ which can never be true, thus our assumption tha
 %\end{enumerate}
 %\end{keyidea}
 %
-%\example{ex_series5}{Evaluating series}{Evaluate the given series.
+%\begin{example}[Evaluating series]\label{ex_series5}
+%Evaluate the given series.
 %
 %\[
 %\text{1.}\quad\sum_{n=1}^\infty \frac{(-1)^{n+1}\big(n^2-n\big)}{n^3}\qquad
 %\text{2.}\quad\sum_{n=1}^\infty \frac{1000}{n!}\qquad
 %\text{3.}\quad\frac1{16}+\frac1{25}+\frac1{36}+\frac1{49}+\dotsb
-%\]}
-%{\begin{enumerate}
+%\]
+%\solution
+%\begin{enumerate}
 %\item	We start by using algebra to break the series apart:
 %\begin{align*}
 %\sum_{n=1}^\infty \frac{(-1)^{n+1}\big(n^2-n\big)}{n^3} &= \sum_{n=1}^\infty\left(\frac{(-1)^{n+1}n^2}{n^3}-\frac{(-1)^{n+1}n}{n^3}\right) \\
@@ -492,7 +511,8 @@ This gives us $S\geq \frac12+S$ which can never be true, thus our assumption tha
 %\frac{\pi^2}{6} - \frac{49}{36} &= \sum_{n=4}^\infty \frac1{n^2} \\
 %0.2838&\approx \sum_{n=4}^\infty \frac1{n^2} 
 %\end{align*}
-%\end{enumerate}}
+%\end{enumerate}
+%\end{example}
 
 It may take a while before one is comfortable with this statement, whose truth lies at the heart of the study of infinite series: \emph{it is possible that the sum of an infinite list of nonzero numbers is finite.} We have seen this repeatedly in this section, yet it still may ``take some getting used to.''
 
@@ -555,7 +575,8 @@ The convergence or divergence of a series remains unchanged by the insertion or 
 
 In other words, when we are only interested in the convergence or divergence of a series, it is safe to ignore the first few billion terms.
 
-\example*{ex_trunc_harm}{Removing Terms from the Harmonic Series}{Consider once more the Harmonic Series $\ds\sum_{n=1}^\infty\frac1n$\vspace{-.8\baselineskip} which diverges; that is, the partial sums $S_N=\ds\sum_{n=1}^N\frac1n$ grow (very, very slowly) without bound. One might think that by removing the ``large'' terms of the sequence that perhaps the series will converge. This is simply not the case. For instance, the sum of the first 10 million terms of the Harmonic Series is about 16.7. Removing the first 10 million terms from the Harmonic Series changes the partial sums,  effectively subtracting 16.7 from the sum. However, a sequence that is growing without bound will still grow without bound when 16.7 is subtracted from it. 
+\begin{example}[Removing Terms from the Harmonic Series]\label{ex_trunc_harm}
+Consider once more the Harmonic Series $\ds\sum_{n=1}^\infty\frac1n$\vspace{-.8\baselineskip} which diverges; that is, the partial sums $S_N=\ds\sum_{n=1}^N\frac1n$ grow (very, very slowly) without bound. One might think that by removing the ``large'' terms of the sequence that perhaps the series will converge. This is simply not the case. For instance, the sum of the first 10 million terms of the Harmonic Series is about 16.7. Removing the first 10 million terms from the Harmonic Series changes the partial sums,  effectively subtracting 16.7 from the sum. However, a sequence that is growing without bound will still grow without bound when 16.7 is subtracted from it. 
 
 The equation below illustrates this. Even though we have subtracted off the first 10 million terms, this only subtracts a constant off of an expression that is still growing to infinity. Therefore, the modified series is still growing to infinity.
 \begin{multline*}
@@ -563,9 +584,10 @@ The equation below illustrates this. Even though we have subtracted off the firs
  =\lim_{N\to\infty}\sum_{n=10,000,001}^N\frac1n
  =\lim_{N\to\infty}\sum_{n=1}^N\frac1n-\sum_{n=1}^{10,000,001}\frac1n \\
  =\lim_{N\to\infty}\sum_{n=1}^N\frac1n-16.7
- =\infty.\eoehere
-\end{multline*}}
+ =\infty.
+\end{multline*}
+\end{example}
 
-This section introduced us to series and defined a few special types of series whose convergence properties are well known. We know when a geometric series converges or diverges. Most series that we encounter are not one of these types, but we are still interested in knowing whether or not they converge. The next three sections introduce tests that help us determine whether or not a given series converges. 
+This section introduced us to series and defined a few special types of series whose convergence properties are well known. We know when a geometric series converges or diverges. Most series that we encounter are not one of these types, but we are still interested in knowing whether or not they converge. The next three sections introduce tests that help us determine whether or not a given series converges. {
 
 \printexercises{exercises/08_02_exercises}

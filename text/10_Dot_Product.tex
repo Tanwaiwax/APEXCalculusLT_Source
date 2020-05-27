@@ -16,16 +16,20 @@ Note how this product of vectors returns a \emph{scalar}, not another vector.
 
 We practice evaluating a dot product in the following example, then we will discuss why this product is useful.
 
-\example{ex_dotp1}{Evaluating dot products}{\mbox{}\\[-2\baselineskip]\begin{enumerate}
+% todo Tim check v spacing
+\begin{example}[Evaluating dot products]\label{ex_dotp1}
+\begin{enumerate}
 	\item Let $\vec u=\bracket{1,2}$, $\vec v=\bracket{3,-1}$ in $\mathbb{R}^2$. Find \dotp uv.
 	\item Let $\vec x = \bracket{2,-2,5}$ and $\vec y = \bracket{-1, 0, 3}$ in $\mathbb{R}^3$. Find \dotp xy.
-\end{enumerate}}
-{\mbox{}\\[-\baselineskip]\begin{enumerate}
+\end{enumerate}
+\solution
+\begin{enumerate}
 	\item Using \autoref{def:dot_product}, we have
 	\[\dotp uv = 1(3)+2(-1) = 1.\]
 	\item	Using the definition, we have
 	\[\dotp xy = 2(-1)  -2(0) + 5(3) = 13.\]
-\end{enumerate}}
+\end{enumerate}
+\end{example}
 
 The dot product, as shown by the preceding example, is very simple to evaluate. It is only the sum of products. While the definition gives no hint as to why we would care about this operation, there is an amazing connection between the dot product and angles formed by the vectors. Before stating this connection, we give a theorem stating some of the properties of the dot product.
 
@@ -128,8 +132,10 @@ minor y tick num=1,ymin=-1.8,ymax=6.99,xmin=-5.5,xmax=5.5]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-\example{ex_dotp2}{Using the dot product to find angles}{Let $\vec u = \bracket{3,1}$, $\vec v = \bracket{-2,6}$ and $\vec w = \bracket{-4,3}$, as shown in \autoref{fig:dotp2}. Find the angles $\alpha$, $\beta$ and $\theta$.}
-{We start by computing the magnitude of each vector.
+\begin{example}[Using the dot product to find angles]\label{ex_dotp2}
+Let $\vec u = \bracket{3,1}$, $\vec v = \bracket{-2,6}$ and $\vec w = \bracket{-4,3}$, as shown in \autoref{fig:dotp2}. Find the angles $\alpha$, $\beta$ and $\theta$.
+\solution
+We start by computing the magnitude of each vector.
 \[
 \norm{\vec u} = \sqrt{10};\quad \norm{\vec v} = 2\sqrt{10};\quad \norm{\vec w} = 5.
 \]
@@ -142,8 +148,9 @@ We now apply \autoref{thm:dot_product} to find the angles.
 	&\approx 0.6055 \approx 34.7^\circ.\displaybreak[0]\\[10pt]
 	\theta &= \cos^{-1}\left(\frac{\dotp uw}{(\sqrt{10})(5)}\right) \\
 	&= \cos^{-1}\left(\frac{-9}{5\sqrt{10}}\right) \\
-	&\approx 2.1763 \approx 124.7^\circ\eoehere
-\end{align*}}
+	&\approx 2.1763 \approx 124.7^\circ
+\end{align*}
+\end{example}
 
 We see from our computation that $\alpha + \beta = \theta$, as indicated by \autoref{fig:dotp2}. While we knew this should be the case, it is nice to see that this non-intuitive formula indeed returns the results we expected.
 
@@ -157,8 +164,10 @@ We do a similar example next in the context of vectors in space.
 3Dcoo=10 50 46,
 3Droo=200}{width=\marginparwidth}{figures/figdotp3_3D}}
 
-\example{ex_dotp3}{Using the dot product to find angles}{Let $\vec u = \bracket{1,1,1}$, $\vec v = \bracket{-1,3,-2}$ and $\vec w = \bracket{-5,1,4}$, as illustrated in \autoref{fig:dotp3}. Find the angle between each pair of vectors.}
-{\begin{enumerate}
+\begin{example}[Using the dot product to find angles]\label{ex_dotp3}
+Let $\vec u = \bracket{1,1,1}$, $\vec v = \bracket{-1,3,-2}$ and $\vec w = \bracket{-5,1,4}$, as illustrated in \autoref{fig:dotp3}. Find the angle between each pair of vectors.
+\solution
+\begin{enumerate}
 	\item Between $\vec u$ and $\vec v$:
 	\begin{align*}
 		\theta &= \cos^{-1}\left(\frac{\dotp uv}{\norm{\vec u}\norm{\vec v}}\right)\\
@@ -178,7 +187,8 @@ We do a similar example next in the context of vectors in space.
 		&= \frac{\pi}2.
 	\end{align*}
 \end{enumerate}
-While our work shows that each angle is $\pi/2$, i.e.,  $90^\circ$, none of these angles looks to be a right angle in \autoref{fig:dotp3}. Such is the case when drawing three-dimensional objects on the page.}
+While our work shows that each angle is $\pi/2$, i.e.,  $90^\circ$, none of these angles looks to be a right angle in \autoref{fig:dotp3}. Such is the case when drawing three-dimensional objects on the page.
+\end{example}
 
 All three angles between these vectors was $\pi/2$, or $90^\circ$. We know from geometry and everyday life that $90^\circ$ angles are ``nice'' for a variety of reasons, so it should seem significant that these angles are all $\pi/2$. Notice the common feature in each calculation (and also the calculation of $\alpha$ in \autoref{ex_dotp2}): the dot products of each pair of angles was 0. We use this as a basis for a definition of the term \textbf{orthogonal}, which is essentially synonymous to \textit{perpendicular}.
 
@@ -189,12 +199,14 @@ Vectors $\vec u$ and $\vec v$ are \textbf{orthogonal} if their dot product is 0.
 
 \mnote{\textbf{Note:} The term \textit{perpendicular} originally referred to lines. As mathematics progressed, the concept of ``being at right angles to'' was applied to other objects, such as vectors and planes, and the term \emph{orthogonal} was introduced. It is especially used when discussing objects that are hard, or impossible, to visualize: two vectors in 5-dimensional space are orthogonal if their dot product is 0. It is not wrong to say they are \textit{perpendicular}, but common convention gives preference to the word \textit{orthogonal}.}
 
-\example{ex_dotp8}{Finding orthogonal vectors}{Let $\vec u = \bracket{3,5}$ and $\vec v = \bracket{1,2,3}$. 
+\begin{example}[Finding orthogonal vectors]\label{ex_dotp8}
+Let $\vec u = \bracket{3,5}$ and $\vec v = \bracket{1,2,3}$. 
 \begin{enumerate}
 	\item Find two vectors in $\mathbb{R}^2$ that are orthogonal to $\vec u$.
 	\item	Find two non-parallel vectors in $\mathbb{R}^3$ that are orthogonal to $\vec v$.
-\end{enumerate}}
-{\mbox{}\\[-\baselineskip]\begin{enumerate}
+\end{enumerate}
+\solution
+\begin{enumerate}
 	\item Recall that a line perpendicular to a line with slope $m$ has slope $-1/m$, the ``opposite reciprocal slope.'' We can think of the slope of $\vec u$ as $5/3$, its ``rise over run.'' A vector orthogonal to $\vec u$ will have slope $-3/5$. There are many such choices, though all parallel:
 	\[\bracket{-5,3}\quad \text{or} \quad\bracket{5,-3}\quad \text{or} \quad \bracket{-10,6}\quad \text{or} \quad \bracket{15,-9},\text{etc.}\]
 	\item		There are infinite directions in space orthogonal to any given direction, so there are an infinite number of non-parallel vectors orthogonal to $\vec v$. Since there are so many, we have great leeway in finding some.
@@ -205,8 +217,9 @@ Vectors $\vec u$ and $\vec v$ are \textbf{orthogonal} if their dot product is 0.
 	
 	Another method of finding a vector orthogonal to $\vec v$ mirrors what we did in part 1. Let $\vec v_2 = \bracket{-2,1,0}$. Here we switched the first two components of $\vec v$, changing the sign of one of them (similar to the ``opposite reciprocal'' concept before). Letting the third component be 0 effectively ignores the third component of $\vec v$, and it is easy to see that 
 	\[\vec v_2\cdot\vec v = \bracket{-2,1,0}\cdot\bracket{1,2,3}= 0.\]
-	Clearly $\vec v_1$ and $\vec v_2$ are not parallel.\eoehere
-\end{enumerate}}
+	Clearly $\vec v_1$ and $\vec v_2$ are not parallel.
+\end{enumerate}
+\end{example}
 
 \mtable{Developing the construction of the \emph{orthogonal projection}.}{fig:dotpproj}{%
 \begin{tikzpicture}[>=stealth]
@@ -284,11 +297,14 @@ ytick={1,2,-1,-2},ymin=-2.8,ymax=2.8,xmin=-2.9,xmax=3.9]
 \\(c)}% end ifthenelse
 }% end mtable
 
-\example{ex_dotp4}{Computing the orthogonal projection}{\mbox{}\\[-2\baselineskip]\begin{enumerate}
+% todo Tim check v spacing
+\begin{example}[Computing the orthogonal projection]\label{ex_dotp4}
+\begin{enumerate}
 	\item Let $\vec u=\bracket{-2,1}$ and $\vec v=\bracket{3,1}$. Find $\proj uv$, and sketch all three vectors with initial points at the origin.
 	\item	Let $\vec w =\bracket{2,1,3}$ and $\vec x =\bracket{1,1,1}$. Find $\proj wx$, and sketch all three vectors with initial points at the origin.
-\end{enumerate}}
-{\mbox{}\\[-\baselineskip]\begin{enumerate}
+\end{enumerate}
+\solution
+\mbox{}\\[-\baselineskip]\begin{enumerate}
 	\item Applying \autoref{def:orthogonal_projection}, we have
 	\begin{align*}
 		\proj uv
@@ -306,12 +322,12 @@ ytick={1,2,-1,-2},ymin=-2.8,ymax=2.8,xmin=-2.9,xmax=3.9]
 		&=\bracket{2,2,2}.
 	\end{align*}
 	\ifthenelse{\boolean{in_threeD}}{%
-	These vectors are sketched in \autoref{fig:dotp4}(b).%
+	 These vectors are sketched in \autoref{fig:dotp4}(b).%
 	}{%
-	These vectors are sketched in \autoref{fig:dotp4}(b), and again in part (c) from a different perspective. Because of the nature of graphing these vectors, the sketch in part (b) makes it difficult  to recognize that the drawn projection has the geometric properties it should. The graph shown in part (c) illustrates these properties better.%
+	 These vectors are sketched in \autoref{fig:dotp4}(b), and again in part (c) from a different perspective. Because of the nature of graphing these vectors, the sketch in part (b) makes it difficult  to recognize that the drawn projection has the geometric properties it should. The graph shown in part (c) illustrates these properties better.
 	}
-	\eoehere
-\end{enumerate}}
+\end{enumerate}
+\end{example}
 
 Consider \autoref{fig:dotpprojc} where the concept of the orthogonal projection is again illustrated. It is clear that
 \begin{equation}
@@ -342,11 +358,14 @@ Let $\vec u$ and $\vec v$ be given. Then $\vec u$ can be written as the sum of t
 
 We illustrate the use of this equality in the following example.
 
-\example{ex_dotp5}{Orthogonal decomposition of vectors}{\mbox{}\\[-2\baselineskip]\begin{enumerate}
+% todo Tim check v spacing
+\begin{example}[Orthogonal decomposition of vectors]\label{ex_dotp5}
+\begin{enumerate}
 	\item Let $\vec u =\bracket{-2,1}$ and $\vec v =\bracket{3,1}$ as in \autoref{ex_dotp4}. Decompose $\vec u$ as the sum of a vector parallel to $\vec v$ and a vector orthogonal to $\vec v$.
 	\item	Let $\vec w =\bracket{2,1,3}$ and $\vec x  =\bracket{1,1,1}$ as in \autoref{ex_dotp4}. Decompose $\vec w$ as the sum of a vector parallel to $\vec x$ and a vector orthogonal to $\vec x$.
-\end{enumerate}}
-{\mbox{}\\[-\baselineskip]\begin{enumerate}
+\end{enumerate}
+\solution
+\begin{enumerate}
 	\item In \autoref{ex_dotp4}, we found that $\proj uv =\bracket{-1.5,-0.5}$. Let
 	\[\vec z = \vec u - \proj uv =\bracket{-2,1}-\bracket{-1.5,-0.5}=\bracket{-0.5, 1.5}.\]
 	Is $\vec z$ orthogonal to $\vec v$\,? (I.e, is $\vec z \perp\vec v$\ ?) We check for orthogonality with the dot product:
@@ -364,13 +383,15 @@ We illustrate the use of this equality in the following example.
 	We now write $\vec w$ as the sum of two vectors, one parallel and one orthogonal to $\vec x$:
 	\begin{align*}
 	\vec w &= \proj wx\ +\ (\vec w - \proj wx) \\
-	\bracket{2,1,3}&= \underbrace{\bracket{2,2,2}}_{\parallel\ \vec x}\ +\ \underbrace{\bracket{0,-1,1}}_{\perp \ \vec x} \eoehere
+	\bracket{2,1,3}&= \underbrace{\bracket{2,2,2}}_{\parallel\ \vec x}\ +\ \underbrace{\bracket{0,-1,1}}_{\perp \ \vec x}
 	\end{align*}
-\end{enumerate}}
+\end{enumerate}
+\end{example}
 
 We give an example of where this decomposition is useful.
 
-\example{ex_dotp6}{Orthogonally decomposing a force vector}{Consider \autoref{fig:dotp6}(a), showing a box weighing 50 lb on a ramp that rises 5 ft over a span of 20 ft. Find the components of force, and their magnitudes, acting on the box (as sketched in part (b) of the figure):
+\begin{example}[Orthogonally decomposing a force vector]\label{ex_dotp6}
+Consider \autoref{fig:dotp6}(a), showing a box weighing 50 lb on a ramp that rises 5 ft over a span of 20 ft. Find the components of force, and their magnitudes, acting on the box (as sketched in part (b) of the figure):
 \begin{enumerate}
 	\item in the direction of the ramp, and
 	\item	orthogonal to the ramp.
@@ -398,8 +419,9 @@ We give an example of where this decomposition is useful.
 	\draw [gray,thick,->] (13,-3.15) -- (11.125,-3.625)
 	 node [shift={(5pt,-5pt)} ,black,pos=0] {\scriptsize $\proj gr$};
 \end{tikzpicture}
-\\(b)}}
-{As the ramp rises 5 ft over a horizontal distance of 20 ft, we can represent the direction of the ramp with the vector $\vec r=\bracket{20,5}$. Gravity pulls down with a force of 50 lb, which we represent with $\vec g =\bracket{0,-50}$. 
+\\(b)}
+\solution
+As the ramp rises 5 ft over a horizontal distance of 20 ft, we can represent the direction of the ramp with the vector $\vec r=\bracket{20,5}$. Gravity pulls down with a force of 50 lb, which we represent with $\vec g =\bracket{0,-50}$. 
 \begin{enumerate}
 	\item To find the force of gravity in the direction of the ramp, we compute $\proj gr$:
 	\begin{align*}
@@ -417,8 +439,9 @@ We give an example of where this decomposition is useful.
 	.
 	\end{align*}
 	The magnitude of this force is $\norm{\vec z}=200/\sqrt{17}%\approx 48.51
-	$ lb. In physics and engineering, knowing this force is important when computing things like static frictional force. (For instance, we could easily compute if the static frictional force alone was enough to keep the box from sliding down the ramp.)\eoehere
-\end{enumerate}}
+	$ lb. In physics and engineering, knowing this force is important when computing things like static frictional force. (For instance, we could easily compute if the static frictional force alone was enough to keep the box from sliding down the ramp.)
+\end{enumerate}
+\end{example}
 
 \subsection{Application to Work}
 
@@ -459,13 +482,16 @@ Let $\vec F$ be a constant force that moves an object in a straight line from po
  \end{scope}
 \end{tikzpicture}}
 
-\example{ex_dotp7}{Computing work}{A man slides a box along a ramp that rises 3 ft over a distance of 15 ft by applying 50 lb of force as shown in \autoref{fig:dotp7}. Compute the work done.}
-{The figure indicates that the force applied makes a $30^\circ$ angle with the horizontal, so $\vec F = 50\bracket{\cos 30^\circ,\sin 30^\circ}\bracket{25\sqrt3,25}%\approx\bracket{43.3,25}
+\begin{example}[Computing work]\label{ex_dotp7}
+A man slides a box along a ramp that rises 3 ft over a distance of 15 ft by applying 50 lb of force as shown in \autoref{fig:dotp7}. Compute the work done.
+\solution
+The figure indicates that the force applied makes a $30^\circ$ angle with the horizontal, so $\vec F = 50\bracket{\cos 30^\circ,\sin 30^\circ}\bracket{25\sqrt3,25}%\approx\bracket{43.3,25}
 $. The ramp is represented by $\vec d  =\bracket{15,3}$. The work done is simply
 \[\dotp Fd = \bracket{25\sqrt3,25}\cdot\bracket{15,3}=375\sqrt3+75%\approx 724.5
 \text{ ft-lb}.\]
 
-Note how we did not actually compute the distance the object traveled, nor the magnitude of the force in the direction of travel; this is all inherently computed by the dot product!}
+Note how we did not actually compute the distance the object traveled, nor the magnitude of the force in the direction of travel; this is all inherently computed by the dot product.
+\end{example}
 
 The dot product is a powerful way of evaluating computations that depend on angles without actually using angles. The next section explores another ``product'' on vectors, the \emph{cross product.} Once again, angles play an important role, though in a much different way.
 

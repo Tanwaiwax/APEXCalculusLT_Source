@@ -52,10 +52,12 @@ We now practice parameterizing surfaces.
 3Droo=399.9999800778292,
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figparsurf1_3D}}
 
-\example{ex_parsurf1}{Parameterizing a surface over a rectangle}
-{Parameterize the surface $z=x^2+2y^2$ over the rectangular region $R$ defined by $-3\leq x\leq 3$, $-1\leq y\leq 1$.}
-{There is a straightforward way to parameterize a surface of the form $z=f(x,y)$ over a rectangular domain. %Parameterizing surfaces, given in the form $z=f(x,y)$ over rectangular regions is straightforward. 
-We  let $x=u$ and $y=v$, and let $\vec r(u,v) =\bracket{u,v, f(u,v)}$. In this instance, we have $\vec r(u,v) =\bracket{u,v,u^2+2v^2}$, for $-3\leq u\leq 3$, $-1\leq v\leq 1$. This surface is graphed in \autoref{fig:parsurf1}.}
+\begin{example}[Parameterizing a surface over a rectangle]\label{ex_parsurf1}
+Parameterize the surface $z=x^2+2y^2$ over the rectangular region $R$ defined by $-3\leq x\leq 3$, $-1\leq y\leq 1$.
+\solution
+There is a straightforward way to parameterize a surface of the form $z=f(x,y)$ over a rectangular domain. %Parameterizing surfaces, given in the form $z=f(x,y)$ over rectangular regions is straightforward. 
+We  let $x=u$ and $y=v$, and let $\vec r(u,v) =\bracket{u,v, f(u,v)}$. In this instance, we have $\vec r(u,v) =\bracket{u,v,u^2+2v^2}$, for $-3\leq u\leq 3$, $-1\leq v\leq 1$. This surface is graphed in \autoref{fig:parsurf1}.
+\end{example}
 
 \mtable{The surface parameterized in \autoref{ex_parsurf2}.}{fig:parsurf2}{%
 \myincludeasythree{width=\marginparwidth,
@@ -66,15 +68,17 @@ We  let $x=u$ and $y=v$, and let $\vec r(u,v) =\bracket{u,v, f(u,v)}$. In this i
 3Droo=399.9999800778292,
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figparsurf2_3D}}
 
-\example{ex_parsurf2}{Parameterizing a surface over a circular disk}
-{Parameterize the surface $z=x^2+2y^2$ over the circular region $R$ enclosed by the circle of radius 2 that is centered at the origin.}
-{We can parameterize the circular boundary of $R$ with the vector-valued function $\bracket{2\cos u,2\sin u}$, where $0\leq u\leq 2\pi$. We can obtain the interior of $R$ by scaling this function by a variable amount, i.e., by multiplying by $v$: $\bracket{2v\cos u,2v\sin u}$, where $0\leq v\leq 1$.
+\begin{example}[Parameterizing a surface over a circular disk]\label{ex_parsurf2}
+Parameterize the surface $z=x^2+2y^2$ over the circular region $R$ enclosed by the circle of radius 2 that is centered at the origin.
+\solution
+We can parameterize the circular boundary of $R$ with the vector-valued function $\bracket{2\cos u,2\sin u}$, where $0\leq u\leq 2\pi$. We can obtain the interior of $R$ by scaling this function by a variable amount, i.e., by multiplying by $v$: $\bracket{2v\cos u,2v\sin u}$, where $0\leq v\leq 1$.
 
 It is important to understand the role of $v$ in the above function. When $v=1$, we get the boundary of $R$, a circle of radius 2. When $v=0$, we simply get the point $(0,0)$, the center of $R$ (which can be thought of as a circle with radius of 0). When $v=1/2$, we get the circle of radius $1$ that is centered at the origin, which is the circle \emph{halfway} between the boundary and the center. As $v$ varies from 0 to 1, we create a series of concentric circles that fill out all of $R$.
 
 Thus far, we have determined the $x$ and $y$ components of our parameterization of the surface: $x=2v\cos u$ and $y=2v\sin u$. We find the $z$ component simply by using $z = f(x,y) = x^2+2y^2$: 
 \[z = (2v\cos u)^2+2(2v\sin u)^2 = 4v^2\cos^2u+8v^2\sin^2u.\]
-Thus $\vec r(u,v) =\bracket{2v\cos u,2v\sin u,4v^2\cos^2u+8v^2\sin^2u}$, $0\leq u\leq 2\pi$, $0\leq v\leq 1$, which is graphed in \autoref{fig:parsurf2}. The way that this graphic was generated highlights how the surface was parameterized. When viewing from above, one can see lines emanating from the origin; they represent different values of $u$ as $u$ sweeps from an angle of 0 up to $2\pi$. One can also see concentric circles, each corresponding to a different value of $v$. }
+Thus $\vec r(u,v) =\bracket{2v\cos u,2v\sin u,4v^2\cos^2u+8v^2\sin^2u}$, $0\leq u\leq 2\pi$, $0\leq v\leq 1$, which is graphed in \autoref{fig:parsurf2}. The way that this graphic was generated highlights how the surface was parameterized. When viewing from above, one can see lines emanating from the origin; they represent different values of $u$ as $u$ sweeps from an angle of 0 up to $2\pi$. One can also see concentric circles, each corresponding to a different value of $v$.
+\end{example}
 
 Examples \ref{ex_parsurf1} and \ref{ex_parsurf2} demonstrate an important principle when parameterizing surfaces given in the form $z=f(x,y)$ over a region $R$: if one can determine $x$ and $y$ in terms of $u$ and $v$, then $z$ follows directly as $z=f(x,y)$. 
 
@@ -103,9 +107,10 @@ xtick={1,2,3},ytick={1,2,3},ymin=-.5,ymax=3.5,xmin=-.5,xmax=3.5]
 3Dlights=Headlamp}{width=1.16\marginparwidth}{figures/figparsurf3_3D}
 \\(b)}
 
-\example{ex_parsurf3}{Parameterizing a surface over a triangle}
-{Parameterize the surface $z=x^2+2y^2$ over the triangular region $R$ enclosed by the coordinate axes and the line $y=2-2x/3$, as shown in \autoref{fig:parsurf3}(a).}
-{We may begin by letting $x=u$, $0\leq u\leq 3$,  and $y = 2-2u/3$. This gives only the line on the ``upper'' side of the triangle. To get all of the region $R$, we can once again scale $y$ by a variable factor, $v$.
+\begin{example}[Parameterizing a surface over a triangle]\label{ex_parsurf3}
+Parameterize the surface $z=x^2+2y^2$ over the triangular region $R$ enclosed by the coordinate axes and the line $y=2-2x/3$, as shown in \autoref{fig:parsurf3}(a).
+\solution
+We may begin by letting $x=u$, $0\leq u\leq 3$,  and $y = 2-2u/3$. This gives only the line on the ``upper'' side of the triangle. To get all of the region $R$, we can once again scale $y$ by a variable factor, $v$.
 
 Still letting $x = u$, $0\leq u\leq 3$, we let $y = v(2-2u/3)$, $0\leq v\leq 1$. When $v=0$, all $y$-values are 0, and we get the portion of the $x$-axis between $x=0$ and $x=3$. When $v=1$, we get the upper side of the triangle. When $v=1/2$, we get the line $y=1/2(2-2u/3) = 1-u/3$, which is the line ``halfway up'' the triangle, shown in the figure with a dashed line.
 
@@ -116,9 +121,10 @@ Letting $z = f(x,y) = x^2+2y^2$, we have
 \]
 This surface is graphed in \autoref{fig:parsurf3}(b). Again, when one looks from above, we can see the scaling effects of $v$: the series of lines that run to the point $(3,0)$ each represent a different value of $v$.
 
-Another common way to parameterize the surface is to begin with $y=u$, $0\leq u\leq 2$. Solving the equation of the line $y=2-2x/3$ for $x$, we have $x = 3-3y/2$, leading to using $x=v(3-3u/2)$, $0\leq v\leq 1$. With $z=x^2+2y^2$, we have $\vec r(u,v) =\bracket{v(3-3u/2),u, \big(v(3-3u/2)\big)^2+2v^2}$, $0\leq u\leq 2$, $0\leq v\leq 1$.}
+Another common way to parameterize the surface is to begin with $y=u$, $0\leq u\leq 2$. Solving the equation of the line $y=2-2x/3$ for $x$, we have $x = 3-3y/2$, leading to using $x=v(3-3u/2)$, $0\leq v\leq 1$. With $z=x^2+2y^2$, we have $\vec r(u,v) =\bracket{v(3-3u/2),u, \bigl(v(3-3u/2)\bigr)^2+2v^2}$, $0\leq u\leq 2$, $0\leq v\leq 1$.
+\end{example}
 
-\example{ex_parsurf4}{Parameterizing a surface over a triangle}{%
+\begin{example}[Parameterizing a surface over a triangle]\label{ex_parsurf4}
 \mtable{Part (a) shows a graph of the region $R$, and part (b) shows the surface over $R$, as defined in \autoref{ex_parsurf4}.}{fig:parsurf4}
 {\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -140,14 +146,16 @@ xtick={1,2,3},ytick={1,2,3},ymin=-.5,ymax=3.5,xmin=-.5,xmax=3.5]
 3Dlights=Headlamp,add3Djscript=asylabels.js}{width=1.16\marginparwidth}{figures/figparsurf4_3D}
 \\(b)}%
 %
-Parameterize the surface $z=x^2+2y^2$ over the triangular region $R$ enclosed by the  lines $y=3-2x/3$, $y=1$ and $x=0$ as shown in \autoref{fig:parsurf4}(a).}
-{While the region $R$ in this example is very similar to the region $R$ in the previous example, and our method of parameterizing the surface is fundamentally the same, it will feel as though our answer is much different than before.
+Parameterize the surface $z=x^2+2y^2$ over the triangular region $R$ enclosed by the  lines $y=3-2x/3$, $y=1$ and $x=0$ as shown in \autoref{fig:parsurf4}(a).
+\solution
+While the region $R$ in this example is very similar to the region $R$ in the previous example, and our method of parameterizing the surface is fundamentally the same, it will feel as though our answer is much different than before.
 
 We begin with letting $x=u$, $0\leq u\leq 3$. We may be tempted to let $y = v(3-2u/3)$, $0\leq v\leq 1$, but this is incorrect. When $v = 1$, we obtain the upper line of the triangle as desired. However, when $v=0$, the $y$-value is 0, which does not lie in the region $R$. 
 
 We will describe the general method of proceeding following this example. For now, consider $y = 1+v(2-2u/3)$, $0\leq v\leq 1$. Note that when $v=1$, we have $y=3-2u/3$, the upper line of the boundary of $R$. Also, when $v=0$, we have $y=1$, which is the lower boundary of $R$. With $z=x^2+2y^2$, we determine $\vec r(u,v) =\bracket{u, 1+v(2-2u/3), u^2+2\big(1+v(2-2u/3)\big)^2}$, $0\leq u\leq 3$, $0\leq v\leq 1$. 
 
-The surface is graphed in \autoref{fig:parsurf4}(b).}
+The surface is graphed in \autoref{fig:parsurf4}(b).
+\end{example}
 
 Given a surface of the form $z=f(x,y)$, one can often determine a parameterization of the surface over a region $R$ in a manner similar to determining bounds of integration over a region $R$. Using the techniques of \autoref{sec:iterated_integrals}, suppose a region $R$ can be described by $a\leq x\leq b$, $g_1(x) \leq y\leq g_2(x)$, i.e., the area of $R$ can be found using the iterated integral
 \[\int_a^b\int_{g_1(x)}^{g_2(x)}\ dy\ dx.\]
@@ -181,17 +189,19 @@ Let $R$ be bounded by $a\leq x\leq b$, $g_1(x)\leq y\leq g_2(x)$, i.e., the area
 3Droo=399.9999708739728,
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figparsurf5_3D}}
 
-\example{ex_parsurf5}{Parameterizing a cylindrical surface}
-{Find a parameterization of the cylinder $x^2 + z^2/4=1$, where $-1\leq y\leq 2$, as shown in \autoref{fig:parsurf5}.}
-{The equation $x^2+z^2/4=1$ can be envisioned to describe an ellipse in the $x$-$z$ plane; as the equation lacks a $y$-term, the equation describes a cylinder (recall \autoref{def:cylinder}) that extends without bound parallel to the $y$-axis. This ellipse has a vertical major axis of length 4, a horizontal minor axis of length 2, and is centered at the origin. We can parameterize this ellipse using sines and cosines; our parameterization can begin with
+\begin{example}[Parameterizing a cylindrical surface]\label{ex_parsurf5}
+Find a parameterization of the cylinder $x^2 + z^2/4=1$, where $-1\leq y\leq 2$, as shown in \autoref{fig:parsurf5}.
+\solution
+The equation $x^2+z^2/4=1$ can be envisioned to describe an ellipse in the $x$-$z$ plane; as the equation lacks a $y$-term, the equation describes a cylinder (recall \autoref{def:cylinder}) that extends without bound parallel to the $y$-axis. This ellipse has a vertical major axis of length 4, a horizontal minor axis of length 2, and is centered at the origin. We can parameterize this ellipse using sines and cosines; our parameterization can begin with
 \[\vec r(u,v) = \bracket{\cos u, \text{???}, 2\sin u},\quad 0\leq u\leq 2\pi,\]
 where we still need to determine the $y$ component.
 
 While the cylinder $x^2+z^2/4=1$ is satisfied by any $y$ value, the problem states that all $y$ values are to be between $y=-1$ and $y=2$. Since the value of $y$ does not depend at all on the values of $x$ or $z$, we can use another variable, $v$, to describe $y$. Our final answer is
 \[
 \vec r(u,v)
-= \bracket{\cos u, v, 2\sin u}, \quad 0\leq u\leq 2\pi,\quad -1\leq v\leq 2.\eoehere
-\]}
+= \bracket{\cos u, v, 2\sin u}, \quad 0\leq u\leq 2\pi,\quad -1\leq v\leq 2.
+\]
+\end{example}
 
 \mtable{The elliptic cone as described in \autoref{ex_parsurf6}.}{fig:parsurf6a}{%
 \myincludeasythree{width=\marginparwidth,
@@ -202,9 +212,10 @@ While the cylinder $x^2+z^2/4=1$ is satisfied by any $y$ value, the problem stat
 3Droo=399.9999637774216,
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figparsurf6a_3D}}
 
-\example{ex_parsurf6}{Parameterizing an elliptic cone}
-{Find a parameterization of the elliptic cone $z^2 = \frac{x^2}{4}+\frac{y^2}{9}$, where $-2\leq z\leq 3$, as shown in \autoref{fig:parsurf6a}.}
-{One way to parameterize this cone is to recognize that given a $z$ value, the cross section of the cone at that $z$ value is an ellipse with equation $\frac{x^2}{(2z)^2} + \frac{y^2}{(3z)^2}=1$. We can let $z=v$, for $-2\leq v\leq 3$ and then parameterize the above ellipses using sines, cosines and $v$.
+\begin{example}[Parameterizing an elliptic cone]\label{ex_parsurf6}
+Find a parameterization of the elliptic cone $z^2 = \frac{x^2}{4}+\frac{y^2}{9}$, where $-2\leq z\leq 3$, as shown in \autoref{fig:parsurf6a}.
+\solution
+One way to parameterize this cone is to recognize that given a $z$ value, the cross section of the cone at that $z$ value is an ellipse with equation $\frac{x^2}{(2z)^2} + \frac{y^2}{(3z)^2}=1$. We can let $z=v$, for $-2\leq v\leq 3$ and then parameterize the above ellipses using sines, cosines and $v$.
 
 We can parameterize the $x$ component of our surface with $x=2z\cos u$ and the $y$ component with $y=3z\sin u$, where $0\leq u\leq 2\pi$. Putting all components together, we have
 %
@@ -222,7 +233,8 @@ We can parameterize the $x$ component of our surface with $x=2z\cos u$ and the $
 \quad 0\leq u\leq 2\pi,\quad -2\leq v\leq 3.
 \]
 
-When $v$ takes on negative values, the radii of the cross-sectional ellipses become ``negative,'' which can lead to some surprising results. Consider \autoref{fig:parsurf6b}, where the cone is graphed for $0\leq u\leq \pi$. Because $v$ is negative below the $x$-$y$ plane, the radii of the cross-sectional ellipses are negative, and the opposite side of the cone is sketched below the $x$-$y$ plane.}
+When $v$ takes on negative values, the radii of the cross-sectional ellipses become ``negative,'' which can lead to some surprising results. Consider \autoref{fig:parsurf6b}, where the cone is graphed for $0\leq u\leq \pi$. Because $v$ is negative below the $x$-$y$ plane, the radii of the cross-sectional ellipses are negative, and the opposite side of the cone is sketched below the $x$-$y$ plane.
+\end{example}
 
 \mtable{An ellipsoid in (a), drawn again in (b) with its domain restricted, as described in \autoref{ex_parsurf7}.}{fig:parsurf7}
 {\myincludeasythree{width=\marginparwidth,
@@ -242,9 +254,10 @@ When $v$ takes on negative values, the radii of the cross-sectional ellipses bec
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figparsurf7b_3D}
 \\(b)}
 
-\example{ex_parsurf7}{Parameterizing an ellipsoid}
-{Find a parameterization of the ellipsoid $\frac{x^2}{25}+y^2+\frac{z^2}{4}=1$ as shown in \autoref{fig:parsurf7}(a).}
-{Recall \autoref{idea:unit_vectors} from \autoref{sec:vector_intro}, which states that all unit vectors in space have the form $\bracket{\sin\theta\cos\varphi,\sin\theta\sin\varphi,\cos\theta}$ for some angles $\theta$ and $\varphi$. If we choose our angles appropriately, this allows us to draw the unit sphere. To get an ellipsoid, we need only scale each component of the sphere appropriately.
+\begin{example}[Parameterizing an ellipsoid]\label{ex_parsurf7}
+Find a parameterization of the ellipsoid $\frac{x^2}{25}+y^2+\frac{z^2}{4}=1$ as shown in \autoref{fig:parsurf7}(a).
+\solution
+Recall \autoref{idea:unit_vectors} from \autoref{sec:vector_intro}, which states that all unit vectors in space have the form $\bracket{\sin\theta\cos\varphi,\sin\theta\sin\varphi,\cos\theta}$ for some angles $\theta$ and $\varphi$. If we choose our angles appropriately, this allows us to draw the unit sphere. To get an ellipsoid, we need only scale each component of the sphere appropriately.
 
 The $x$-radius of the given ellipsoid is 5, the $y$-radius is 1 and the $z$-radius is 2. Substituting $u$ for $\theta$ and $v$ for $\varphi$, we have $\vec r(u,v) =\bracket{5\sin u\cos v, \sin u\sin v,2\cos u}$, where we still need to determine the ranges of $u$ and $v$. 
 
@@ -258,7 +271,8 @@ The final parameterization is thus
 \quad 0\leq u\leq\pi,\quad 0\leq v\leq 2\pi.
 \]
 
-In \autoref{fig:parsurf7}(b), the ellipsoid is graphed on $\frac{\pi}{4}\leq u\leq \frac{2\pi}{3}$, $\frac{\pi}4\leq v\leq \frac{3\pi}2$ to demonstrate how each variable affects the surface.}
+In \autoref{fig:parsurf7}(b), the ellipsoid is graphed on $\frac{\pi}{4}\leq u\leq \frac{2\pi}{3}$, $\frac{\pi}4\leq v\leq \frac{3\pi}2$ to demonstrate how each variable affects the surface.
+\end{example}
 
 Parameterization is a powerful way to represent surfaces. One of the advantages of the methods of parameterization described in this section is that the domain of $\vec r(u,v)$ is always a rectangle; that is, the bounds on $u$ and $v$ are constants. This will make some of our future computations easier to evaluate.
 
@@ -359,9 +373,10 @@ Let $\vec r(u,v)$ be a smooth parameterization of a surface \surfaceS\ over a cl
 
 %\mnote{\textbf{Note:} In \autoref{def:surfacearea}, the surface area differential of a surface given in the form $z=f(x,y)$ is defined to be $dS = \sqrt{1+f_x^2+f_y^2}\ dA$. We can use this differential in this and subsequent sections, though 
 
-\example{ex_parsurfarea1}{Finding the surface area of a parameterized surface}
-{Using the parameterization found in \autoref{ex_parsurf2}, find the surface area of $z=x^2+2y^2$ over the circular disk of radius 2, centered at the origin.}
-{In \autoref{ex_parsurf2}, we parameterized the surface as $\vec r(u,v) =\\ \bracket{2v\cos u, 2v\sin u, 4v^2\cos^2u+8v^2\sin^2u}$, for $0\leq u\leq 2\pi$, $0\leq v\leq 1$. To find the surface area using \autoref{thm:par_surface_area}, we need $\norm{\vec r_u\times\vec r_v}$. We find:
+\begin{example}[Finding the surface area of a parameterized surface]\label{ex_parsurfarea1}
+Using the parameterization found in \autoref{ex_parsurf2}, find the surface area of $z=x^2+2y^2$ over the circular disk of radius 2, centered at the origin.
+\solution
+In \autoref{ex_parsurf2}, we parameterized the surface as $\vec r(u,v) =\\ \bracket{2v\cos u, 2v\sin u, 4v^2\cos^2u+8v^2\sin^2u}$, for $0\leq u\leq 2\pi$, $0\leq v\leq 1$. To find the surface area using \autoref{thm:par_surface_area}, we need $\norm{\vec r_u\times\vec r_v}$. We find:
 \begin{align*}
 \vec r_u &= \bracket{-2v\sin u, 2v\cos u, 8v^2\cos u\sin u}\\
 \vec r_v &= \bracket{2\cos u, 2\sin v, 8v\cos^2 u+16v\sin^2u}\\
@@ -373,7 +388,8 @@ Thus the surface area is
 S = \iint_\surfaceS \ dS &= \iint_R\norm{\vec r_u\times \vec r_v}\ dA \\
 & = \int_0^1\int_0^{2\pi} \sqrt{256v^4\cos^2u+1024v^4\sin^2u+16v^2}\ du\ dv \approx 53.59.
 \end{align*}
-There is a lot of tedious work in the above calculations and the final integral is nontrivial. The use of a computer-algebra system is highly recommended.}
+There is a lot of tedious work in the above calculations and the final integral is nontrivial. The use of a computer-algebra system is highly recommended.
+\end{example}
 
 In \autoref{sec:line_int_intro}, we recalled the arc length differential $ds=\norm{\vrp(t)}dt$. In subsequent sections, we used that differential, but in most applications the ``$\norm{\vrp(t)}$'' part of the differential canceled out of the integrand (to our benefit, as integrating the square roots of functions is generally difficult). We will find a similar thing happens when we use the surface area differential $dS$ in the following sections. That is, our main goal is not to be able to compute surface area; rather, surface area is a tool to obtain other quantities that are more important and useful. In our applications, we will use $dS$, but most of the time the ``$\norm{\vec r_u\times \vec r_v}$'' part will cancel out of the integrand, making the subsequent integration easier to compute.
 

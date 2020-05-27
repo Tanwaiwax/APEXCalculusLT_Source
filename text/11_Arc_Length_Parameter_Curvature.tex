@@ -64,8 +64,10 @@ This establishes a relationship between $s$ and $t$. Knowing this relationship e
 
 \youtubeVideo{G0R-qialKlE}{Parametrize a Curve with Respect to Arc Length} % sic
 
-\example{ex_vvfarc1}{Finding the arc length parameter}{Let $\vec r(t) =\bracket{3t-1,4t+2}$. Parameterize $\vec r$ with the arc length parameter $s$.}
-{Using \autoeqref{eq:vvfarc}, we write
+\begin{example}[Finding the arc length parameter]\label{ex_vvfarc1}
+Let $\vec r(t) =\bracket{3t-1,4t+2}$. Parameterize $\vec r$ with the arc length parameter $s$.
+\solution
+Using \autoeqref{eq:vvfarc}, we write
 \[s(t) = \int_0^t \norm{\vec r\,'(u)}\ du.\]
 We can integrate this, explicitly finding a relationship between $s$ and $t$:
 \begin{align*}
@@ -100,7 +102,8 @@ Is the point $(1/5,18/5)$ really 2 units away from $(-1,2)$? We use the Distance
 \[
 d = \sqrt{\left(\frac15-(-1)\right)^2+ \left(\frac{18}5-2\right)^2} = \sqrt{\frac{36}{25}+\frac{64}{25}} = \sqrt{4}=2.
 \]
-Yes, $\vec r(2)$ is indeed 2 units away, in the direction of travel, from the initial point.}
+Yes, $\vec r(2)$ is indeed 2 units away, in the direction of travel, from the initial point.
+\end{example}
 
 Things worked out very nicely in \autoref{ex_vvfarc1}; we were able to establish directly that $s=5t$. Usually, the arc length parameter is much more difficult to describe in terms of $t$, a result of integrating a square-root. There are a number of things that we can learn about the arc length parameter from \autoeqref{eq:vvfarc}, though, that are incredibly useful.
 
@@ -182,9 +185,10 @@ We already knew that $\vec T\,'(s)$ is in the same direction as $\vec N(s)$; tha
 
 We use \autoref{def:curvature} to find the curvature of the line in \autoref{ex_vvfarc1}.
 
-\example{ex_curvature1}{Finding the curvature of a line}
-{Use \autoref{def:curvature} to find the curvature of $\vrt =\bracket{3t-1,4t+2}$.}
-{In \autoref{ex_vvfarc1}, we found that the arc length parameter was defined by $s=5t$, so $\vec r(s) =\bracket{3s/5-1, 4s/5+2}$ parameterized $\vec r$ with the arc length parameter. To find $\kappa$, we need to find $\vec T\,'(s)$. 
+\begin{example}[Finding the curvature of a line]\label{ex_curvature1}
+Use \autoref{def:curvature} to find the curvature of $\vrt =\bracket{3t-1,4t+2}$.
+\solution
+In \autoref{ex_vvfarc1}, we found that the arc length parameter was defined by $s=5t$, so $\vec r(s) =\bracket{3s/5-1, 4s/5+2}$ parameterized $\vec r$ with the arc length parameter. To find $\kappa$, we need to find $\vec T\,'(s)$. 
 \begin{align*}
 \vec T(s) &= \vrp(s)\quad \text{(recall this is a unit vector)}\\
 				&=\bracket{3/5, 4/5}.
@@ -193,7 +197,8 @@ We use \autoref{def:curvature} to find the curvature of the line in \autoref{ex_
 \intertext{and}
 \kappa&=\norm{\vec T\,'(s)} = 0.
 \end{align*}
-It probably comes as no surprise that the curvature of a line is 0. (How ``curvy\primeskip'' is a line? It is not curvy at all.)}
+It probably comes as no surprise that the curvature of a line is 0. (How ``curvy\primeskip'' is a line? It is not curvy at all.)
+\end{example}
 
 While the definition of curvature is a useful mathematical concept, it is nearly impossible to use most of the time; writing $\vec r$ in terms of the arc length parameter is generally very hard. Fortunately, there are other methods of calculating this value that are much easier. There is a trade-off: the definition is ``easy\primeskip'' to understand though hard to compute, whereas these other formulas are easy to compute though it may be hard to understand why they work.
 
@@ -258,9 +263,11 @@ Since $\vec v(t)$ and $\vec N(t)$ are orthogonal, the norm of their cross produc
 
 We practice using these formulas.
 
-\example{ex_curvature2}{Finding the curvature of a circle}{Find the curvature of a circle with radius $r$, defined by $\vec c(t) =\bracket{r\cos t,r\sin t}$.
-\index{curvature!of circle}}
-{Before we start, we should expect the curvature of a circle to be constant, and not dependent on $t$. (Why?)
+\begin{example}[Finding the curvature of a circle]\label{ex_curvature2}
+Find the curvature of a circle with radius $r$, defined by $\vec c(t) =\bracket{r\cos t,r\sin t}$.
+\index{curvature!of circle}
+\solution
+Before we start, we should expect the curvature of a circle to be constant, and not dependent on $t$. (Why?)
 
 We compute $\kappa$ using the second part of \autoref{thm:curvature_formulas}.
 \begin{align*}
@@ -269,7 +276,8 @@ We compute $\kappa$ using the second part of \autoref{thm:curvature_formulas}.
 	&= \frac{r^2(\sin^2t+\cos^2t)}{\big(r^2(\sin^2t+\cos^2t)\big)^{3/2}}\smallskip\\
 	&= \frac{r^2}{r^3} = \frac1r.
 \end{align*}
-We have found that a circle with radius $r$ has curvature $\kappa = 1/r$.}
+We have found that a circle with radius $r$ has curvature $\kappa = 1/r$.
+\end{example}
 
 \autoref{ex_curvature2} gives a great result. Before this example, if we were told ``The curve has a curvature of 5 at point $A$,'' we would have no idea what this really meant. Is 5 ``big'' --- does is correspond to a really sharp turn, or a not-so-sharp turn? Now we can think of 5 in terms of a circle with radius 1/5. Knowing the units (inches vs.\ miles, for instance) allows us to determine how sharply the curve is curving.\bigskip
 
@@ -311,16 +319,21 @@ ymin=-2.5,ymax=10.1,xmin=-10.2,xmax=4.9]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-\example{ex_curvature3}{Finding curvature}{Find the curvature of the parabola defined by $y=x^2$ at the vertex and at $x=1$.}
-{We use the first formula found in \autoref{thm:curvature_formulas}. 
+\begin{example}[Finding curvature]\label{ex_curvature3}
+Find the curvature of the parabola defined by $y=x^2$ at the vertex and at $x=1$.
+\solution
+We use the first formula found in \autoref{thm:curvature_formulas}. 
 \begin{align*}
 \kappa(x) &= \frac{\abs 2}{\big(1+(2x)^2\big)^{3/2}} \\
 			&= \frac2{\big(1+4x^2\big)^{3/2}}.
 \end{align*}
-At the vertex ($x=0$), the curvature is $\kappa = 2$. At $x=1$, the curvature is $\kappa = 2/(5)^{3/2}$. So at $x=0$, the curvature of $y=x^2$ is that of a circle of radius $1/2$; at $x=1$, the curvature is that of a circle with radius $(5)^{3/2}/2\approx 5.59$. This is illustrated in \autoref{fig:curvature3}. At $x=3$, the curvature is $0.009$; the graph is nearly straight as the curvature is very close to 0.}
+At the vertex ($x=0$), the curvature is $\kappa = 2$. At $x=1$, the curvature is $\kappa = 2/(5)^{3/2}$. So at $x=0$, the curvature of $y=x^2$ is that of a circle of radius $1/2$; at $x=1$, the curvature is that of a circle with radius $(5)^{3/2}/2\approx 5.59$. This is illustrated in \autoref{fig:curvature3}. At $x=3$, the curvature is $0.009$; the graph is nearly straight as the curvature is very close to 0.
+\end{example}
 
-\example{ex_curvature4}{Finding curvature}{Find where the curvature of $\vec r(t) =\bracket{t, t^2, 2t^3}$ is maximized.}
-{We use the third formula in \autoref{thm:curvature_formulas} as $\vrt$ is defined in space. We leave it to the reader to verify that 
+\begin{example}[Finding curvature]\label{ex_curvature4}
+Find where the curvature of $\vec r(t) =\bracket{t, t^2, 2t^3}$ is maximized.
+\solution
+We use the third formula in \autoref{thm:curvature_formulas} as $\vrt$ is defined in space. We leave it to the reader to verify that 
 \[\vrp(t) =\bracket{1,2t,6t^2},\quad \vrp'(t) =\bracket{0,2,12t},\quad \text{and}\quad \vrp(t)\times \vrp'(t) =\bracket{12t^2,-12t,2}.\]
 Thus 
 \begin{align*}
@@ -347,7 +360,8 @@ ymin=-.1,ymax=2.5,xmin=-2.1,xmax=2.1]
 3Dcoo=-0.0000029802322387695312 -0.0000029802322387695312 -0.0000014901161193847656,
 3Droo=150}{width=\marginparwidth}{figures/figcurvature4_3D}
 \\(b)}%
-While this is not a particularly ``nice'' formula, it does explicitly tell us what the curvature is at a given $t$ value. To maximize $\kappa(t)$, we should solve $\kappa'(t)=0$ for $t$. This is doable, but \emph{very} time consuming. Instead, consider the graph of $\kappa(t)$ as given in \autoref{fig:curvature4}(a). We see that $\kappa$ is maximized at two $t$ values; using a numerical solver, we find these values are $t\approx\pm 0.189$. In part (b) of the figure we graph $\vrt$ and indicate the points where curvature is maximized.}
+While this is not a particularly ``nice'' formula, it does explicitly tell us what the curvature is at a given $t$ value. To maximize $\kappa(t)$, we should solve $\kappa'(t)=0$ for $t$. This is doable, but \emph{very} time consuming. Instead, consider the graph of $\kappa(t)$ as given in \autoref{fig:curvature4}(a). We see that $\kappa$ is maximized at two $t$ values; using a numerical solver, we find these values are $t\approx\pm 0.189$. In part (b) of the figure we graph $\vrt$ and indicate the points where curvature is maximized.
+\end{example}
 
 \subsection{Curvature and Motion}
 
@@ -379,8 +393,10 @@ Putting our new formulas for $a_\text{T}$ and $a_\text{N}$ together, we have
 \[\vat = s\,''(t)\vec T(t) + \kappa\norm{\vvt}^2\vec N(t).\]
 This is not a particularly practical way of finding $a_\text{T}$ and $a_\text{N}$, but it reveals some great concepts about how acceleration interacts with speed and the shape of a curve.
 
-\example{ex_curvature5}{Curvature and road design}{The minimum radius of the curve in a highway cloverleaf is determined by the operating speed, as given in the table in \autoref{fig:curvature5}. For each curve and speed, compute $a_\text{N}$.}
-{\mtable{Operating speed and minimum radius in highway cloverleaf design.}{fig:curvature5}{%
+\begin{example}[Curvature and road design]\label{ex_curvature5}
+The minimum radius of the curve in a highway cloverleaf is determined by the operating speed, as given in the table in \autoref{fig:curvature5}. For each curve and speed, compute $a_\text{N}$.
+\solution
+\mtable{Operating speed and minimum radius in highway cloverleaf design.}{fig:curvature5}{%
 \begin{tabular}{cc}
 \parbox{50pt}{\centering Operating\\Speed (mph)} & \parbox{50pt}{\centering Minimum\\Radius (ft)} \\ \midrule
 35 & 310\\
@@ -405,7 +421,8 @@ Using \autoeqref{eq:curvature_an}, we can compute the acceleration normal to the
 			a_\text{N}&= \frac1{540}\big(66\big)^2 \\
 							&= 8.07\text{ft/s}^2.
 \end{align*}
-Note that each acceleration is similar; this is by design. Considering the classic ``Force $=$ mass $\times$ acceleration'' formula, this acceleration must be kept small in order for the tires of a vehicle to keep a ``grip'' on the road. If one travels on a turn of radius 310ft at a rate of 50mph, the acceleration is double, at 17.35ft/s$^2$. If the acceleration is too high, the frictional force created by the tires may not be enough to keep the car from sliding. Civil engineers routinely compute a ``safe'' design speed, then subtract 5-10mph to create the posted speed limit for additional safety.}
+Note that each acceleration is similar; this is by design. Considering the classic ``Force $=$ mass $\times$ acceleration'' formula, this acceleration must be kept small in order for the tires of a vehicle to keep a ``grip'' on the road. If one travels on a turn of radius 310ft at a rate of 50mph, the acceleration is double, at 17.35ft/s$^2$. If the acceleration is too high, the frictional force created by the tires may not be enough to keep the car from sliding. Civil engineers routinely compute a ``safe'' design speed, then subtract 5-10mph to create the posted speed limit for additional safety.
+\end{example}
 
 % todo add some text about the Frenet frame
 

@@ -25,14 +25,14 @@ Let $r=f(\theta)$ be a polar function. With $x=f(\theta)\cos\theta$ and $y=f(\th
 \youtubeVideo{QTa9OZ4iGPo}{The Slope of Tangent Lines to Polar Curves}
 
 % at some point, someone said `` answer should be ``-2'' not ``-1''. ''  whatever that means
-\example{ex_polcalc1}{Finding $\frac{dy}{dx}$ with polar functions.}
-{Consider the lima\c con $r=1+2\sin\theta$ on $[0,2\pi]$.
+\begin{example}[Finding $\frac{dy}{dx}$ with polar functions.]\label{ex_polcalc1}
+Consider the lima\c con $r=1+2\sin\theta$ on $[0,2\pi]$.
 \begin{enumerate}
 	\item	Find the rectangular equations of the tangent and normal lines to the graph at $\theta=\pi/4$.
 	\item	Find where the graph has vertical and horizontal tangent lines.
 \end{enumerate}
-}
-{\begin{enumerate}
+\solution
+\begin{enumerate}
 	\item We start by computing $\frac{dy}{dx}$. With $\fp(\theta) = 2\cos\theta$, we have
 	\begin{align*}
 	\frac{dy}{dx} &= \frac{2\cos\theta\sin\theta + \cos\theta(1+2\sin\theta)}{2\cos^2\theta-\sin\theta(1+2\sin\theta)}\\
@@ -97,8 +97,9 @@ and
 \sin\theta = \frac{-1-\sqrt{33}}8 \quad \Rightarrow \quad
 \theta \approx 4.1446,\ 5.2802 \text{ radians.}
 \]
-These points are also shown in \autoref{fig:polcalc1} with white-filled dots.\eoehere
-\end{enumerate}}
+These points are also shown in \autoref{fig:polcalc1} with white-filled dots.
+\end{enumerate}
+\end{example}
 
 When the graph of the polar function $r=f(\theta)$ intersects the pole, it means that $f(\alpha) = 0$ for some angle $\alpha$. Making this substitution in the formula for $\dfrac{dy}{dx}$ given in \autoref{idea:dydxpol} we see
 \[
@@ -111,7 +112,8 @@ When the graph of the polar function $r=f(\theta)$ intersects the pole, it means
 %When the graph of the polar function $r=f(\theta)$ intersects the pole, it means that $f(\alpha)=0$ for some angle $\alpha$. Thus the formula for $\frac{dy}{dx}$ in such instances is very simple, reducing simply to \[\frac{dy}{dx} = \tan \alpha.\]
 This equation makes an interesting point. It tells us the slope of the tangent line at the pole is $\tan \alpha$; some of our previous work (see, for instance, \autoref{ex_polar3}) shows us that the line through the pole with slope $\tan \alpha$ has polar equation $\theta=\alpha$. Thus when a polar graph touches the pole at $\theta=\alpha$, the equation of the tangent line at the pole is $\theta=\alpha$.
 
-\example{ex_polcalc2}{Finding tangent lines at the pole}{Let $r=1+2\sin\theta$, a lima\c con. Find the equations of the lines tangent to the graph at the pole.
+\begin{example}[Finding tangent lines at the pole]\label{ex_polcalc2}
+Let $r=1+2\sin\theta$, a lima\c con. Find the equations of the lines tangent to the graph at the pole.
 %
 \mtable{Graphing the tangent lines at the pole in \autoref{ex_polcalc2}.}{fig:polcalc2}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -124,14 +126,16 @@ ymin=-.5,ymax=1.37,xmin=-1.1,xmax=1.1]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $0$};
 \node [above] at (myplot.above origin) {\scriptsize $\pi/2$};
-\end{tikzpicture}}}
-{We need to know when $r=0$. 
+\end{tikzpicture}}
+\solution
+We need to know when $r=0$. 
 \begin{align*}
 1+2\sin\theta &= 0\\
 \sin\theta &= -1/2\\
 \theta &= \frac{7\pi}{6},\ \frac{11\pi}6.
 \end{align*}
-Thus the equations of the tangent lines, in polar, are $\theta = 7\pi/6$ and $\theta = 11\pi/6$. In rectangular form, the tangent lines are $y=\tan(7\pi/6)x=\frac x{\sqrt3}$ and $y=\tan(11\pi/6)x=-\frac x{\sqrt3}$. The full lima\c con can be seen in \autoref{fig:polcalc1}; we zoom in on the tangent lines in \autoref{fig:polcalc2}.}
+Thus the equations of the tangent lines, in polar, are $\theta = 7\pi/6$ and $\theta = 11\pi/6$. In rectangular form, the tangent lines are $y=\tan(7\pi/6)x=\frac x{\sqrt3}$ and $y=\tan(11\pi/6)x=-\frac x{\sqrt3}$. The full lima\c con can be seen in \autoref{fig:polcalc1}; we zoom in on the tangent lines in \autoref{fig:polcalc2}.
+\end{example}
 
 \subsection{Area}
 
@@ -221,8 +225,10 @@ A=\frac12\int_\alpha^\beta[f(\theta)]^2 \ d\theta
 
 The theorem states that $0\leq \beta-\alpha\leq 2\pi$. This ensures that region does not overlap itself, which would give a result that does not correspond directly to the area.
 
-\example{ex_polcalc3}{Area of a polar region}{Find the area of the circle defined by $r=\cos \theta$. (Recall this circle has radius $1/2$.)}
-{This is a direct application of \autoref{thm:polar_area}. The circle is traced out on $[0,\pi]$, leading to the integral
+\begin{example}[Area of a polar region]\label{ex_polcalc3}
+Find the area of the circle defined by $r=\cos \theta$. (Recall this circle has radius $1/2$.)
+\solution
+This is a direct application of \autoref{thm:polar_area}. The circle is traced out on $[0,\pi]$, leading to the integral
 \mnote{\textbf{Note:} \autoref{ex_polcalc3} requires the use of the integral $\ds\int \cos^2\theta\ d\theta$. This is handled well by using the half angle formula as found in the back of this text. Due to the nature of the area formula, integrating $\cos^2\theta$ and $\sin^2\theta$ is required often. We offer here these indefinite integrals as a time-saving measure.
 \begin{align*}
 	\int\cos^2\theta\ d\theta &= \frac12\theta+\frac14\sin(2\theta)+C\\
@@ -234,10 +240,13 @@ The theorem states that $0\leq \beta-\alpha\leq 2\pi$. This ensures that region 
 	&= \frac14\big(\theta +\frac12\sin(2\theta)\big)\Bigg|_0^\pi\\
 	&= \frac\pi4.
 \end{align*}
-Of course, we already knew the area of a circle with radius $1/2$. We did this example to demonstrate that the area formula is correct.}
+Of course, we already knew the area of a circle with radius $1/2$. We did this example to demonstrate that the area formula is correct.
+\end{example}
 
-\example{ex_polcalc4}{Area of a polar region}{Find the area of the cardioid $r=1+\cos\theta$ bound between $\theta=\pi/6$ and $\theta=\pi/3$, as shown in \autoref{fig:polcalc4}.}
-{This is again a direct application of \autoref{thm:polar_area}.
+\begin{example}[Area of a polar region]\label{ex_polcalc4}
+Find the area of the cardioid $r=1+\cos\theta$ bound between $\theta=\pi/6$ and $\theta=\pi/3$, as shown in \autoref{fig:polcalc4}.
+\solution
+This is again a direct application of \autoref{thm:polar_area}.
 %
 \mtable{Finding the area of the shaded region of a cardioid in \autoref{ex_polcalc4}.}{fig:polcalc4}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -263,8 +272,9 @@ ymin=-.7,ymax=1.5,xmin=-.5,xmax=2.1]
 	&= \frac12\int_{\pi/6}^{\pi/3} (1+2\cos\theta+\cos^2\theta)\ d\theta\\
 	&= \frac12\left[\theta+2\sin\theta+\frac12\theta
 	+\frac14\sin(2\theta)\right]_{\pi/6}^{\pi/3} \\
-	&= \frac18\big(\pi+4\sqrt{3}-4\big).\eoehere
-\end{align*}}
+	&= \frac18\big(\pi+4\sqrt{3}-4\big).
+\end{align*}
+\end{example}
 
 \subsubsection{Area Between Curves}
 
@@ -325,8 +335,10 @@ ymin=-1.6,ymax=1.6,xmin=-.6,xmax=3.2]
 \node [above] at (myplot.above origin) {\scriptsize $\pi/2$};
 \end{tikzpicture}}
 
-\example{ex_polcalc5}{Area between polar curves}{Find the area bounded between the curves $r=1+\cos \theta$ and $r=3\cos\theta$, as shown in \autoref{fig:polcalc5}.}
-{We need to find the points of intersection between these two functions. Setting them equal to each other, we find:
+\begin{example}[Area between polar curves]\label{ex_polcalc5}
+Find the area bounded between the curves $r=1+\cos \theta$ and $r=3\cos\theta$, as shown in \autoref{fig:polcalc5}.
+\solution
+We need to find the points of intersection between these two functions. Setting them equal to each other, we find:
 \begin{align*}
 1+\cos\theta &= 3\cos \theta \\
  \cos\theta &=1/2\\
@@ -340,7 +352,8 @@ Thus we integrate $\frac12\big((3\cos\theta)^2-(1+\cos\theta)^2\big)$ on $[-\pi/
 	&= \frac12\big(2\sin(2\theta) - 2\sin\theta+3\theta\big)\Bigg|_{-\pi/3}^{\pi/3}\\
 	&= \pi.
 \end{align*}
-Amazingly enough, the area between these curves has a ``nice'' value.}
+Amazingly enough, the area between these curves has a ``nice'' value.
+\end{example}
 
 \mtable{Graphing the region bounded by the functions in \autoref{ex_polcalc6}.}{fig:polcalc6}{%
 \begin{tikzpicture}
@@ -378,8 +391,10 @@ ymin=-.1,ymax=1,xmin=-.1,xmax=1.2]
 \\(b)}
 
 % todo the region is also in the first petal and y>0
-\example{ex_polcalc6}{Area defined by polar curves}{Find the area bounded between the polar curves $r=1$ and $r=2\cos(2\theta)$, as shown in \autoref{fig:polcalc6} (a).}
-{We need to find the point of intersection between the two curves. Setting the two functions equal to each other, we have
+\begin{example}[Area defined by polar curves]\label{ex_polcalc6}
+Find the area bounded between the polar curves $r=1$ and $r=2\cos(2\theta)$, as shown in \autoref{fig:polcalc6} (a).
+\solution
+We need to find the point of intersection between the two curves. Setting the two functions equal to each other, we have
 \[
 2\cos(2\theta) = 1 \quad \Rightarrow \quad \cos(2\theta) = \frac12
 \quad \Rightarrow \quad 2\theta = \pi/3\quad \Rightarrow \quad \theta=\pi/6.
@@ -393,7 +408,8 @@ A_2 = \frac12\int_{\pi/6}^{\pi/4} \big(2\cos(2\theta)\big)^2\ d\theta.
 \]
 (The upper bound of the integral computing $A_2$ is $\pi/4$ as $r=2\cos(2\theta)$ is at the pole when $\theta=\pi/4$.)
 
-We omit the integration details and let the reader verify that $A_1 = \pi/12$ and $A_2 = \pi/12-\sqrt{3}/8$; the total area is $A = \pi/6-\sqrt{3}/8$.}
+We omit the integration details and let the reader verify that $A_1 = \pi/12$ and $A_2 = \pi/12-\sqrt{3}/8$; the total area is $A = \pi/6-\sqrt{3}/8$.
+\end{example}
 
 \subsection{Arc Length}
 
@@ -414,7 +430,10 @@ Let  $r=f(\theta)$ be a polar function with $\fp$ continuous on an open interval
 \[L = \int_\alpha^\beta \sqrt{[\fp(\theta)]^2+[f(\theta)]^2}\ d\theta = \int_\alpha^\beta\sqrt{(r\,')^2+ r^2}\ d\theta.\]
 \end{keyidea}
 
-\example{ex_cardioid_length}{Arc Length of Polar Curves}{Find the arc length of the cardioid $r=1+\cos \theta$.}{With $r=1+\cos \theta$, we have $r' = -\sin \theta$. The cardioid is traced out once on $[0,2\pi]$, giving us our bounds of integration. Applying \autoref{idea:polar_arclength} we have
+\begin{example}[Arc Length of Polar Curves]\label{ex_cardioid_length}
+Find the arc length of the cardioid $r=1+\cos \theta$.
+\solution
+With $r=1+\cos \theta$, we have $r' = -\sin \theta$. The cardioid is traced out once on $[0,2\pi]$, giving us our bounds of integration. Applying \autoref{idea:polar_arclength} we have
 \begin{align*}
 	L
 	& = \int_0^{2\pi} \sqrt{(-\sin \theta)^2  + (1 + \cos \theta)^2}\ d\theta \\
@@ -434,11 +453,14 @@ Using the symmetry of the cardioid and $u$-substitution ($u = 2 - 2\cos \theta$)
 L
 & = 4\int_0^{\pi} \frac{\sin \theta}{\sqrt {2-2\cos \theta}}\ d\theta\\
 & = 2\int_0^4 \frac{1}{\sqrt u}\ du\\
-& = 4  u^{1/2}\biggr|_0^4 = 8.\eoehere
-\end{align*}}
+& = 4  u^{1/2}\biggr|_0^4 = 8.
+\end{align*}
+\end{example}
 
-\example{ex_polcalc7}{Arc length of a lima\c con}{Find the arc length of the lima\c con $r=1+2\sin\theta$.}
-{With $r=1+2\sin\theta$, we have $r\,' = 2\cos\theta$. The lima\c con is traced out once on $[0,2\pi]$, giving us our bounds of integration. Applying \autoref{idea:polar_arclength}, we have
+\begin{example}[Arc length of a lima\c con]\label{ex_polcalc7}
+Find the arc length of the lima\c con $r=1+2\sin\theta$.
+\solution
+With $r=1+2\sin\theta$, we have $r\,' = 2\cos\theta$. The lima\c con is traced out once on $[0,2\pi]$, giving us our bounds of integration. Applying \autoref{idea:polar_arclength}, we have
 \begin{align*}
 	L
 	&= \int_0^{2\pi} \sqrt{(2\cos\theta)^2+(1+2\sin\theta)^2}\ d\theta \\
@@ -458,7 +480,8 @@ ymin=-.5,ymax=3.2,xmin=-2.22,xmax=2.22]
 \node [above] at (myplot.above origin) {\scriptsize $\pi/2$};
 \end{tikzpicture}}
 %
-The final integral cannot be solved in terms of elementary functions, so we resorted to a numerical approximation. (Simpson's Rule, with $n=4$, approximates the value with $13.0608$. Using $n=22$ gives the value above, which is accurate to 4 places after the decimal.)}
+The final integral cannot be solved in terms of elementary functions, so we resorted to a numerical approximation. (Simpson's Rule, with $n=4$, approximates the value with $13.0608$. Using $n=22$ gives the value above, which is accurate to 4 places after the decimal.)
+\end{example}
 
 \subsection{Surface Area}
 
@@ -475,8 +498,10 @@ Consider the graph of the polar equation $r=f(\theta)$, where $\fp$ is continuou
 \end{enumerate}
 \end{keyidea}
 
-\example{ex_polcalc8}{Surface area determined by a polar curve}{Find the surface area formed by revolving one petal of the rose curve $r=\cos(2\theta)$ about its central axis (see \autoref{fig:polcalc8}).}
-{\mtable{Finding the surface area of a rose-curve petal that is revolved around its central axis.}{fig:polcalc8}{%
+\begin{example}[Surface area determined by a polar curve]\label{ex_polcalc8}
+Find the surface area formed by revolving one petal of the rose curve $r=\cos(2\theta)$ about its central axis (see \autoref{fig:polcalc8}).
+\solution
+\mtable{Finding the surface area of a rose-curve petal that is revolved around its central axis.}{fig:polcalc8}{%
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={-1,1},
@@ -505,7 +530,7 @@ We choose, as implied by the figure, to revolve the portion of the curve that li
 &\approx 1.36707.
 \end{align*}
 The integral is another that cannot be evaluated in terms of elementary functions. Simpson's Rule, with $n=4$, approximates the value at $1.36751$.%; with $n=10$, the value is accurate to 4 decimal places.
-}
+\end{example}
 
 
 This chapter has been about curves in the plane. While there is great mathematics to be discovered in the two dimensions of a plane, we live in a three dimensional world and hence we should also look to do mathematics in 3D --- that is, in \emph{space}. The next chapter begins our exploration into space by introducing the topic of \emph{vectors}, which are incredibly useful and powerful mathematical objects.

@@ -5,12 +5,13 @@ We have used iterated integrals to evaluate double integrals, which give the sig
 Some regions $R$ are easy to describe using rectangular coordinates --- that is, with equations of the form $y=f(x)$, $x=a$, etc. However, some regions are easier to handle if we represent their boundaries with polar equations of the form $r=f(\theta)$, $\theta = \alpha$, etc. 
 
 The basic form of the double integral is $\iint_R f(x,y)\ dA$. We interpret this integral as follows: over the region $R$, sum up lots of products of heights (given by $f(x_i,y_i)$) and areas (given by $\Delta A_i$). That is, $dA$ represents ``a little bit of area.'' In rectangular coordinates, we can describe a small rectangle as having area $dx\ dy$ or $dy\ dx$ --- the area of a rectangle is simply length$\times$width --- a small change in $x$ times a small change in $y$. Thus we replace $dA$ in the double integral with $dx\ dy$ or $dy\ dx$.
+
 \mtable{Approximating a region $R$ with portions of sectors of circles.}{fig:double_pol_intro}{
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis equal,
 ymin=-.1,ymax=1.1,xmin=-.2,xmax=1.24]
-
+%
 \filldraw[draw={\colortwo},fill={\coloronefill}]
  (axis cs:.693,.4)arc[start angle=30,end angle=45,radius=.8]--(axis cs:.566,.566)
  --(axis cs:.424,.424)arc[start angle=45,end angle=30,radius=.6]--(axis cs:.52,.3)
@@ -42,7 +43,7 @@ ymin=-.1,ymax=1.1,xmin=-.2,xmax=1.24]
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=none,axis x line=none,name=myplot,ymin=-.05,ymax=0.65,xmin=-.1,xmax=.74]
-
+%
 \filldraw[draw={\colortwo},fill={\coloronefill},thick]
  (axis cs:.693,.4)arc[start angle=30,end angle=45,radius=.8]--(axis cs:.566,.566)
  --(axis cs:.424,.424)arc[start angle=45,end angle=30,radius=.6]--(axis cs:.52,.3)
@@ -80,8 +81,9 @@ Let $R$ be a plane region bounded by the polar equations $\alpha\leq\theta\leq\b
 
 Examples will help us understand this Key Idea.
 
-\example{ex_doublepol1}{Evaluating a double integral with polar coordinates}{Find the signed volume under the plane $z=4-x-2y$ over the disk with equation $x^2+y^2\le1$.}
-{%
+\begin{example}[Evaluating a double integral with polar coordinates]\label{ex_doublepol1}
+Find the signed volume under the plane $z=4-x-2y$ over the disk with equation $x^2+y^2\le1$.
+\solution
 \mtable{Evaluating a double integral with polar coordinates in \autoref{ex_doublepol1}.}{fig:doublepol1}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=0.,
@@ -103,8 +105,9 @@ Finally, we replace $dA$ in the double integral with $r\ dr\ d\theta$. This give
  &= \int_0^{2\pi} \left(2-\frac13\big(\cos\theta-2\sin\theta\big)\right)\ d\theta\\
  &= \left.\left(2\theta -\frac13\big(\sin\theta+2\cos\theta\big)\right)\right|_0^{2\pi} \\
  &= 4\pi %\approx 12.566
- .\eoehere
-\end{align*}}
+ .
+\end{align*}
+\end{example}
 
 \mtable{Showing the region $R$ and surface used in \autoref{ex_doublepol2}.}{fig:doublepol2}{%
 \begin{tikzpicture}
@@ -129,8 +132,10 @@ ymin=-2.1,ymax=2.1,xmin=-.54,xmax=4.5]
 3Droo=149.9999981182509}{width=\marginparwidth}{figures/figdoublepol2b_3D}
 \\(b)}
 
-\example{ex_doublepol2}{Evaluating a double integral with polar coordinates}{Find the volume under the paraboloid $z=4-(x-2)^2-y^2$ over the region bounded by the circles $(x-1)^2+y^2=1$ and $(x-2)^2+y^2=4$.}
-{At first glance, this seems like a very hard volume to compute as the region $R$ (shown in \autoref{fig:doublepol2}(a)) has a hole in it, cutting out a strange portion of the surface, as shown in part (b) of the figure. However, by describing $R$ in terms of polar equations, the volume is not very difficult to compute. We can use techniques from \autoref{sec:polar} to show that the circle $(x-1)^2+y^2=1$ has polar equation $r=2\cos\theta$, and that the circle $(x-2)^2+y^2=4$ has polar equation $r=4\cos\theta$. Each of these circles is traced out on the interval $0\leq\theta\leq\pi$. The bounds on $r$ are $2\cos\theta\leq r\leq 4\cos\theta.$ 
+\begin{example}[Evaluating a double integral with polar coordinates]\label{ex_doublepol2}
+Find the volume under the paraboloid $z=4-(x-2)^2-y^2$ over the region bounded by the circles $(x-1)^2+y^2=1$ and $(x-2)^2+y^2=4$.
+\solution
+At first glance, this seems like a very hard volume to compute as the region $R$ (shown in \autoref{fig:doublepol2}(a)) has a hole in it, cutting out a strange portion of the surface, as shown in part (b) of the figure. However, by describing $R$ in terms of polar equations, the volume is not very difficult to compute. We can use techniques from \autoref{sec:polar} to show that the circle $(x-1)^2+y^2=1$ has polar equation $r=2\cos\theta$, and that the circle $(x-2)^2+y^2=4$ has polar equation $r=4\cos\theta$. Each of these circles is traced out on the interval $0\leq\theta\leq\pi$. The bounds on $r$ are $2\cos\theta\leq r\leq 4\cos\theta.$ 
 
 Replacing $x$ with $r\cos\theta$ in the integrand, along with replacing $y$ with $r\sin \theta$, prepares us to evaluate the double integral $\iint_Rf(x,y)\ dA$:
 
@@ -160,10 +165,13 @@ Picking up from where we left off above, we have
 	&=\frac{11}2\pi%\approx 17.279
 	.
 \end{align*}
-While this example was not trivial, the double integral would have been \textit{much} harder to evaluate had we used rectangular coordinates.}
+While this example was not trivial, the double integral would have been \textit{much} harder to evaluate had we used rectangular coordinates.
+\end{example}
 
-\example{ex_doublepol5}{Evaluating a double integral with polar coordinates}{Find the volume under the surface $\ds f(x,y) =\frac1{x^2+y^2+1}$ over the  sector of the circle with radius $a$ centered at the origin in the first quadrant, as shown in \autoref{fig:doublepol5}.}
-{\mtable{The surface and region $R$ used in \autoref{ex_doublepol5}.}{fig:doublepol5}{%
+\begin{example}[Evaluating a double integral with polar coordinates]\label{ex_doublepol5}
+Find the volume under the surface $\ds f(x,y) =\frac1{x^2+y^2+1}$ over the  sector of the circle with radius $a$ centered at the origin in the first quadrant, as shown in \autoref{fig:doublepol5}.
+\solution
+\mtable{The surface and region $R$ used in \autoref{ex_doublepol5}.}{fig:doublepol5}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.005125566851347685,
@@ -185,10 +193,13 @@ We find the volume as follows:
 		&= \frac{\pi}{4}\ln(a^2+1).
 \end{align*}
 \autoref{fig:doublepol5}  shows that $f$ shrinks to near 0 very quickly. Regardless, as $a$ grows, so does the volume, without bound. 
-\mnote{\textbf{Note:} Previous work has shown that there is finite \textit{area} under $\frac{1}{x^2+1}$ over the entire $x$-axis. However, \autoref{ex_doublepol5} shows that there is infinite \textit{volume} under $\frac{1}{x^2+y^2+1}$ over the entire $x$-$y$ plane.}}
+\mnote{\textbf{Note:} Previous work has shown that there is finite \textit{area} under $\frac{1}{x^2+1}$ over the entire $x$-axis. However, \autoref{ex_doublepol5} shows that there is infinite \textit{volume} under $\frac{1}{x^2+y^2+1}$ over the entire $x$-$y$ plane.}
+\end{example}
 
-\example{ex_doublepol3}{Finding the volume of a sphere}{Find the volume of a sphere with radius $a$.}
-{The sphere of radius $a$, centered at the origin, has equation $x^2+y^2+z^2=a^2$; solving for $z$, we have $z=\sqrt{a^2-x^2-y^2}$. This gives the upper half of a sphere. We wish to find the volume under this top half, then double it to find the total volume. 
+\begin{example}[Finding the volume of a sphere]\label{ex_doublepol3}
+Find the volume of a sphere with radius $a$.
+\solution
+The sphere of radius $a$, centered at the origin, has equation $x^2+y^2+z^2=a^2$; solving for $z$, we have $z=\sqrt{a^2-x^2-y^2}$. This gives the upper half of a sphere. We wish to find the volume under this top half, then double it to find the total volume. 
 
 The region we need to integrate over is the circle of radius $a$, centered at the origin. Polar bounds for this equation are $0\leq r\leq a$, $0\leq\theta\leq2\pi$.
 
@@ -203,7 +214,8 @@ All together, the volume of a sphere with radius $a$ is:
 	&= \left.\left(\frac23a^3\theta\right)\right|_0^{2\pi}\\
 	&= \frac43\pi a^3.
 \end{align*}
-Generally, the formula for the volume of a sphere with radius $r$ is given as $4/3\pi r^3$; we have justified this formula with our calculation.}
+Generally, the formula for the volume of a sphere with radius $r$ is given as $4/3\pi r^3$; we have justified this formula with our calculation.
+\end{example}
 
 \mtable{Visualizing the solid used in \autoref{ex_doublepol4}.}{fig:doublepol4}{%
 \myincludeasythree{width=\marginparwidth,
@@ -213,8 +225,10 @@ Generally, the formula for the volume of a sphere with radius $r$ is given as $4
 3Dcoo=-13.062450408935547 -3.628488063812256 70.90967559814453,
 3Droo=300}{width=\marginparwidth}{figures/figdoublepol4_3D}}
 
-\example{ex_doublepol4}{Finding the volume of a solid}{A sculptor wants to make a solid bronze cast of the solid shown in \autoref{fig:doublepol4}, where the base of the solid has boundary, in polar coordinates, $r=\cos(3\theta)$, and the top is defined by the plane $z=1-x+0.1y$. Find the volume of the solid.}
-{From the outset, we should recognize that knowing \textit{how to set up} this problem is probably more important than knowing \textit{how to compute the integrals.} The iterated integral to come is not ``hard'' to evaluate, though it is long, requiring lots of algebra. Once the proper iterated integral is determined, one can use readily-available technology to help compute the final answer. 
+\begin{example}[Finding the volume of a solid]\label{ex_doublepol4}
+A sculptor wants to make a solid bronze cast of the solid shown in \autoref{fig:doublepol4}, where the base of the solid has boundary, in polar coordinates, $r=\cos(3\theta)$, and the top is defined by the plane $z=1-x+0.1y$. Find the volume of the solid.
+\solution
+From the outset, we should recognize that knowing \textit{how to set up} this problem is probably more important than knowing \textit{how to compute the integrals.} The iterated integral to come is not ``hard'' to evaluate, though it is long, requiring lots of algebra. Once the proper iterated integral is determined, one can use readily-available technology to help compute the final answer. 
 
 The region $R$ that we are integrating over is bound by $0\leq r\leq \cos(3\theta)$, for $0\leq \theta\leq\pi$ (note that this rose curve is traced out on the interval $[0,\pi]$, not $[0,2\pi]$). This gives us our bounds of integration. The integrand is $z=1-x+0.1y$; converting to polar, we have that the volume $V$ is:
 \[V = \iint_R f(x,y)\ dA = \int_0^\pi\int_0^{\cos(3\theta)}\big(1-r\cos\theta+0.1r\sin\theta\big)r\ dr\ d\theta.\]
@@ -231,7 +245,7 @@ We forgo the algebra and recommend the reader employ technology, such as Wolfram
 \[\int_0^\pi\int_0^{\cos(3\theta)}\big(1-r\cos\theta+0.1r\sin\theta\big)r\ dr\ d\theta = \frac{\pi}{4} %\approx 0.785
 \text{ units}^3.\]
 Since the units were not specified, we leave the result as almost $0.8$ cubic units (meters, feet, etc.).% Should the artist want to scale the piece uniformly, so that each rose petal had a length other than 1, she should keep in mind that scaling by a factor of $k$ scales the volume by a factor of $k^3$.
-}
+\end{example}
 
 We have used iterated integrals to find areas of plane regions and volumes under surfaces. Just as a single integral can be used to compute much more than ``area under the curve,'' iterated integrals can be used to compute much more than we have thus far seen. The next two sections show two, among many, applications of iterated integrals.
 

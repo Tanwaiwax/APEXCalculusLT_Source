@@ -72,8 +72,10 @@ We start with a review of notation. Let $f$ be a continuous function on the inte
 %\autoref{idea:riemann}
 \autoref{sec:riemann} showed that to use the Left Hand Rule we use the summation $\ds \sum_{i=1}^n f(x_{i-1})\Delta x$ and to use the Right Hand Rule we use $\ds \sum_{i=1}^n f(x_i)\Delta x$. We review the use of these rules in the context of examples.
 
-\example{ex_num1}{Approximating definite integrals with rectangles}{Approximate $\ds \int_0^1e^{-x^2}\ dx$ using the Left and Right Hand Rules with 5 equally spaced subintervals.}
-{We begin by partitioning the interval $[0,1]$ into 5 equally spaced intervals. We have $\Delta x = \frac{1-0}5 = 1/5=0.2$, so
+\begin{example}[Approximating definite integrals with rectangles]\label{ex_num1}
+Approximate $\ds \int_0^1e^{-x^2}\ dx$ using the Left and Right Hand Rules with 5 equally spaced subintervals.
+\solution
+We begin by partitioning the interval $[0,1]$ into 5 equally spaced intervals. We have $\Delta x = \frac{1-0}5 = 1/5=0.2$, so
 \[x_0=0,\ x_1=0.2,\ x_2=0.4,\ x_3=0.6,\ x_4=0.8,\text{ and }x_5=1.\]
 
 \mtable{Approximating $\ds\int_0^1e^{-x^2}\ dx$ in \autoref{ex_num1} using (top) the left hand rule and (bottom) the right hand rule.}{fig:num1}{\begin{tikzpicture}
@@ -132,9 +134,10 @@ Using the Right Hand Rule, we have:
 
 \autoref{fig:num1} shows the rectangles used in each method to approximate the definite integral. These graphs show that in this particular case, the Left Hand Rule is an over approximation and the Right Hand Rule is an under approximation. To get a better approximation, we could use more rectangles, as we did in \autoref{sec:riemann}. We could also average the Left and Right Hand Rule results together, giving
 \[\frac{0.808 + 0.681}{2} = 0.7445.\]
-The actual answer, accurate to 4 places after the decimal, is 0.7468, showing our average is a good approximation.}
+The actual answer, accurate to 4 places after the decimal, is 0.7468, showing our average is a good approximation.
+\end{example}
 
-\mtable[-.5in]{Table of values used to approximate $\ds\int_{-\frac{\pi}4}^{\frac{\pi}2}\sin(x^3)\ dx$ in \autoref{ex_num2}.}{fig:num2a}{%
+\mtable[-.4in]{Table of values used to approximate $\ds\int_{-\frac{\pi}4}^{\frac{\pi}2}\sin(x^3)\ dx$ in \autoref{ex_num2}.}{fig:num2a}{%
 	\begin{tabular}{lrll}\lxBeginTableHead
 	$x_i$ & Exact & Approx. & $\sin(x_i^3)$ \\\lxEndTableHead\midrule
 	$x_0$ & $-\pi/4\phantom{0}$ & $-0.785$ & $-0.466$ \\
@@ -150,12 +153,14 @@ The actual answer, accurate to 4 places after the decimal, is 0.7468, showing ou
 	$x_{10}$ & $\pi/2\phantom{0}$ & $\phantom{-}1.57$ & $-0.670$
 \end{tabular}}
 
-\example{ex_num2}{Approximating definite integrals with rectangles}{Approximate $\ds\int_{-\frac{\pi}4}^{\frac{\pi}2} \sin (x^3)\ dx$ using the Left and Right Hand Rules with 10 equally spaced subintervals.}
-{We begin by finding $\Delta x$:
+\begin{example}[Approximating definite integrals with rectangles]\label{ex_num2}
+Approximate $\ds\int_{-\frac{\pi}4}^{\frac{\pi}2} \sin (x^3)\ dx$ using the Left and Right Hand Rules with 10 equally spaced subintervals.
+\solution
+We begin by finding $\Delta x$:
 \[\frac{b-a}{n} = \frac{\pi/2 - (-\pi/4)}{10} = \frac{3\pi}{40}\approx 0.236.\]
 It is useful to write out the endpoints of the subintervals in a table; in \autoref{fig:num2a}, we give the exact values of the endpoints, their decimal approximations, and decimal approximations of $\sin(x^3)$ evaluated at these points. 
 
-\mtable{Approximating\\ $\ds\int_{-\frac{\pi}4}^{\frac{\pi}2}\sin(x^3)\ dx$ in \autoref{ex_num2} using (top) the left hand rule and (bottom) the right hand rule.}{fig:num2b}{%
+\mtable[.2in]{Approximating\\ $\ds\int_{-\frac{\pi}4}^{\frac{\pi}2}\sin(x^3)\ dx$ in \autoref{ex_num2} using (top) the left hand rule and (bottom) the right hand rule.}{fig:num2b}{%
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
@@ -202,7 +207,8 @@ Once this table is created, it is straightforward to approximate the definite in
 	&\approx (1.71)(0.236) = 0.404.
 \end{align*}
 
-The average of the Left and Right Hand Rules is 0.4275.  The actual answer, accurate to 3 places after the decimal, is 0.460. Our approximations were once again fairly good. The rectangles used in each approximation are shown in \autoref{fig:num2b}. It is clear from the graphs that using more rectangles (and hence, narrower rectangles) should result in a more accurate approximation.}
+The average of the Left and Right Hand Rules is 0.4275.  The actual answer, accurate to 3 places after the decimal, is 0.460. Our approximations were once again fairly good. The rectangles used in each approximation are shown in \autoref{fig:num2b}. It is clear from the graphs that using more rectangles (and hence, narrower rectangles) should result in a more accurate approximation.
+\end{example}
 
 \subsection{The Trapezoidal Rule}
 
@@ -241,8 +247,10 @@ Instead of using rectangles to approximate the area, we can instead use \textit{
 
 The formula for the area of a trapezoid is given in \autoref{fig:trapezoid}. We approximate $\int_0^1 e^{-x^2}\ dx$ with these trapezoids in the following example.
 
-\example{ex_num3}{Approximating definite integrals using trapezoids}{Use 5 trapezoids of equal width to approximate $\ds \int_0^1e^{-x^2}\ dx$.}
-{To compute the areas of the 5 trapezoids in \autoref{fig:num3a}, it will again be useful to create a table of values as shown in \autoref{fig:num3b}.
+\begin{example}[Approximating definite integrals using trapezoids]\label{ex_num3}
+Use 5 trapezoids of equal width to approximate $\ds \int_0^1e^{-x^2}\ dx$.
+\solution
+To compute the areas of the 5 trapezoids in \autoref{fig:num3a}, it will again be useful to create a table of values as shown in \autoref{fig:num3b}.
 
 \mtable{A table of values of $e^{-x^2}$.}{fig:num3b}{%
 \begin{tabular}{ll}\lxBeginTableHead
@@ -265,7 +273,8 @@ The sum of the areas of all 5 trapezoids is:
 \frac{1+0.961}{2}(0.2) + \frac{0.961+0.852}2(0.2)+\frac{0.852+0.698}2(0.2)& \\
 +\frac{0.698+0.527}2(0.2)+\frac{0.527+0.368}2(0.2)&= 0.7445.
 \end{align*}
-We approximate $\ds \int_0^1 e^{-x^2}\ dx \approx 0.7445.$}
+We approximate $\ds \int_0^1 e^{-x^2}\ dx \approx 0.7445$.
+\end{example}
 
 There are many things to observe in this example. Note how each term in the final summation was multiplied by both 1/2 and by $\Delta x = 0.2$. We can factor these coefficients out, leaving a more concise summation as:\\
 \flushinnerequ{\small
@@ -283,16 +292,17 @@ This is the heart of the \textbf{Trapezoidal Rule}, wherein a definite integral 
 	& = \frac{\Delta x}2\left[f(x_0)+ 2\sum_{i=1}^{n-1} f(x_i) + f(x_n)\right].
 \end{align*}
 
-\example{ex_num4}{Using the Trapezoidal Rule}{Revisit \autoref{ex_num2} 
-and approximate $\ds\int_{-\frac{\pi}{4}}^{\frac{\pi}{2}} \sin (x^3)\ dx$ using the Trapezoidal Rule and 10 equally spaced subintervals.}
-{We refer back to \autoref{fig:num2a} for the table of values of $\sin(x^3)$. Recall that $\Delta x = 3\pi/40 \approx 0.236$. Thus we have:\small
+\begin{example}[Using the Trapezoidal Rule]\label{ex_num4}
+Revisit \autoref{ex_num2} and approximate $\ds\int_{-\frac{\pi}{4}}^{\frac{\pi}{2}} \sin (x^3)\ dx$ using the Trapezoidal Rule and 10 equally spaced subintervals.
+\solution
+We refer back to \autoref{fig:num2a} for the table of values of $\sin(x^3)$. Recall that $\Delta x = 3\pi/40 \approx 0.236$. Thus we have:\small
 \begin{align*}
 	\int_{-\frac{\pi}4}^{\frac{\pi}2} & \sin (x^3)\ dx \\
 	&\approx \frac{0.236}{2}\Big[-0.466 + 2\Big(-0.165+(-0.031)+\dotsb+%0.971+
 0.69\Big)+(-0.67)\Big]\\
-	&= 0.4275.\eoehere
+	&= 0.4275.
 \end{align*}
-\normalsize}
+\end{example}
 
 Notice how ``quickly'' the Trapezoidal Rule can be implemented once the table of values is created. This is true for all the methods explored in this section; the real work is creating a table of $x_i$ and $f(x_i)$ values. Once this is completed, approximating the definite integral is not difficult. Again, using technology is wise. Spreadsheets can make quick work of these computations and make using lots of subintervals easy. 
 
@@ -344,8 +354,10 @@ Note how the coefficients of the terms in the summation have the pattern 1, 4, 2
 
 Let's demonstrate Simpson's Rule with a concrete example.
 
-\example{ex_num5}{Using Simpson's Rule}{Approximate $\ds\int_0^1 e^{-x^2}\ dx$ using Simpson's Rule and 4 equally spaced subintervals.}
-{We begin by making a table of values as we have in the past, as shown in \autoref{fig:num5a}(a). Simpson's Rule states that
+\begin{example}[Using Simpson's Rule]\label{ex_num5}
+Approximate $\ds\int_0^1 e^{-x^2}\ dx$ using Simpson's Rule and 4 equally spaced subintervals.
+\solution
+We begin by making a table of values as we have in the past, as shown in \autoref{fig:num5a}(a). Simpson's Rule states that
 \mtable{A table of values to approximate $\int_0^1e^{-x^2}\ dx$ in \autoref{ex_num5}, along with a graph of the function.}{fig:num5a}{%
 \begin{tabular}{ll}\lxBeginTableHead
 $x_i$ & $e^{-x_i^2}$ \\\lxEndTableHead\midrule
@@ -385,10 +397,13 @@ ymin=-.2,ymax=1.2,xmin=-.2,xmax=1.1]
 
 Recall in \autoref{ex_num1} we stated that the correct answer, accurate to 4 places after the decimal, was 0.7468. Our approximation with Simpson's Rule, with 4 subintervals, is better than our approximation with the Trapezoidal Rule using 5.
 
-\autoref{fig:num5a}(b) shows $f(x) = e^{-x^2}$ along with its approximating parabolas, demonstrating how good our approximation is. The approximating curves are nearly indistinguishable from the actual function.}
+\autoref{fig:num5a}(b) shows $f(x) = e^{-x^2}$ along with its approximating parabolas, demonstrating how good our approximation is. The approximating curves are nearly indistinguishable from the actual function.
+\end{example}
 
-\example{ex_num6}{Using Simpson's Rule}{Approximate $\ds\int_{-\frac{\pi}4}^{\frac{\pi}2} \sin (x^3)\ dx$ using Simpson's Rule and 10 equally spaced intervals.}
-{\mtable{A table of values to approximate $\int_{-\frac{\pi}4}^{\frac{\pi}2}\sin(x^3)\ dx$ in \autoref{ex_num6}, along with a graph of the function.}{fig:num6a}{%
+\begin{example}[Using Simpson's Rule]\label{ex_num6}
+Approximate $\ds\int_{-\frac{\pi}4}^{\frac{\pi}2} \sin (x^3)\ dx$ using Simpson's Rule and 10 equally spaced intervals.
+\solution
+\mtable{A table of values to approximate $\int_{-\frac{\pi}4}^{\frac{\pi}2}\sin(x^3)\ dx$ in \autoref{ex_num6}, along with a graph of the function.}{fig:num6a}{%
 \begin{tabular}{ll}\lxBeginTableHead
   $x_i$ & $\sin(x_i^3)$ \\\lxEndTableHead\midrule
   $-0.785$ & $-0.466$ \\
@@ -447,7 +462,8 @@ Simpson's Rule states that
 	&= 0.4701
 \end{align*}}
 
-Recall that the actual value, accurate to 3 decimal places, is 0.460. Our approximation is within one 1/100$^\text{th}$ of the correct value. The graph in \autoref{fig:num6a}(b) shows how closely the parabolas match the shape of the graph.}
+Recall that the actual value, accurate to 3 decimal places, is 0.460. Our approximation is within one 1/100$^\text{th}$ of the correct value. The graph in \autoref{fig:num6a}(b) shows how closely the parabolas match the shape of the graph.
+\end{example}
 
 %\noindent\begin{minipage}[t]{\linewidth}\noindent%
 %\captionsetup{type=figure}%
@@ -546,8 +562,10 @@ There are some key things to note about this theorem.
 
 We revisit Examples \ref{ex_num3} and \ref{ex_num5} and compute the error bounds using \autoref{thm:numerical_error} in the following example.
 
-\example{ex_num7}{Computing error bounds}{Find the error bounds when approximating $\ds \int_0^1 e^{-x^2}\ dx$ using the Trapezoidal Rule and 5 subintervals, and using Simpson's Rule with 4 subintervals.}
-{\textbf{Trapezoidal Rule with $n=5$:}
+\begin{example}[Computing error bounds]\label{ex_num7}
+Find the error bounds when approximating $\ds \int_0^1 e^{-x^2}\ dx$ using the Trapezoidal Rule and 5 subintervals, and using Simpson's Rule with 4 subintervals.
+\solution
+\textbf{Trapezoidal Rule with $n=5$:}
 
 We start by computing the $2^\text{nd}$ derivative of $f(x) = e^{-x^2}$:
 %
@@ -590,13 +608,15 @@ ymin=-8,ymax=13.5,xmin=-.1,xmax=1.1]
 
 Our error estimation formula states that our approximation of $0.7468\overline{3}$ found in \autoref{ex_num5} is within 0.00026 of the correct answer, hence we know that
 \[0.74683-0.00026 = .74657 \leq \int_0^1e^{-x^2}\ dx \leq 0.74709 = 0.74683 + 0.00026.\]
-Once again we affirm the validity of \autoref{thm:numerical_error}.}
+Once again we affirm the validity of \autoref{thm:numerical_error}.
+\end{example}
 
 % todo write an example of ``find the n so that the estimate is within ? of the actual''
 
 At the beginning of this section we mentioned two main situations where numerical integration was desirable. We have considered the case where an antiderivative of the integrand cannot be computed. We now investigate the situation where the integrand is not known. This is, in fact, the most widely used application of Numerical Integration methods. ``Most of the time'' we observe behavior but do not know ``the'' function that describes it. We instead collect data about the behavior and make approximations based off of this data. We demonstrate this in an example.
 
-\example{ex_num8}{Approximating distance traveled}{One of the authors drove his daughter home from school while she recorded their speed every 30 seconds. The data is given in \autoref{fig:num8}.
+\begin{example}[Approximating distance traveled]\label{ex_num8}
+One of the authors drove his daughter home from school while she recorded their speed every 30 seconds. The data is given in \autoref{fig:num8}.
 %
 \mtable{Speed data collected at 30 second intervals for \autoref{ex_num8}.}{fig:num8}{\begin{tabular}{rr}\lxBeginTableHead
 Time & Speed\\(min)&(mph)
@@ -616,8 +636,9 @@ Time & Speed\\(min)&(mph)
  11.5 & 23 \\ 12\phantom{.5} & 0 \\ 
 \end{tabular}}
 %
-Approximate the distance they traveled.}
-{Recall that by integrating a speed function we get distance traveled. We have information about $v(t)$; we will use Simpson's Rule to approximate $\ds \int_a^b v(t)\ dt.$ 
+Approximate the distance they traveled.
+\solution
+Recall that by integrating a speed function we get distance traveled. We have information about $v(t)$; we will use Simpson's Rule to approximate $\ds \int_a^b v(t)\ dt.$ 
 
 The most difficult aspect of this problem is converting the given data into the form we need it to be in. The speed is measured in miles per hour, whereas the time is measured in 30 second increments.
 
@@ -630,7 +651,8 @@ Thus the distance traveled is approximately:
 					&= \frac{1}{360}\Big[0+4\cdot25+2\cdot 22 + \dots + 2\cdot40+4\cdot 23 + 0\Big]\\
 					&\approx 6.2167 \ \text{miles.}
 \end{align*}
-We approximate the author drove 6.2 miles. (Because we are sure the reader wants to know, the author's odometer recorded the distance as about 6.05 miles.)}
+We approximate the author drove 6.2 miles. (Because we are sure the reader wants to know, the author's odometer recorded the distance as about 6.05 miles.)
+\end{example}
 
 %We started this chapter learning about antiderivatives and indefinite integrals. We then seemed to change focus by looking at areas between the graph of a function and the $x$-axis. We defined these areas as the definite integral of the function, using a notation very similar to the notation of the indefinite integral. The Fundamental Theorem of Calculus tied these two seemingly separate concepts together: we can find areas under a curve, i.e., we can evaluate a definite integral, using antiderivatives. 
 %

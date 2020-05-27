@@ -4,9 +4,13 @@
 
 In the previous section, we were concerned with finding maxima and minima of functions without any constraints on the variables (other than being in the domain of the function). We ended by discussing what we would do if there were constraints on the variables. The following example illustrates a simple case of this type of problem.\index{Lagrange multiplier}
 
-\example{exmp_consimple}{Maximizing an Area}{For a rectangle whose perimeter is $20$ m, find the dimensions that will maximize the area.}{The area $A$ of a rectangle with width $x$ and height $y$ is $A = xy$. The perimeter $P$ of the rectangle is then given by the formula $P = 2x + 2y$. Since we are given that the perimeter $P = 20$, this problem can be stated as:
+\begin{example}[Maximizing an Area]\label{exmp_consimple}
+For a rectangle whose perimeter is $20$ m, find the dimensions that will maximize the area.
+\solution
+The area $A$ of a rectangle with width $x$ and height $y$ is $A = xy$. The perimeter $P$ of the rectangle is then given by the formula $P = 2x + 2y$. Since we are given that the perimeter $P = 20$, this problem can be stated as:
 \[\text{Maximize }f(x,y) = xy\text{ subject to }2x + 2y = 20\]
-The reader is probably familiar with a simple method, using single-variable calculus, for solving this problem. Since we must have $2x+2y=20$, then we can solve for, say, $y$ in terms of $x$ using that equation. This gives $y = 10 - x$, which we then substitute into $f$ to get $f(x,y) = xy = x(10-x) = 10x - x^2$. This is now a function of $x$ alone, so we now just have to maximize the function $f(x) = 10x - x^2$ on the interval $[0,10]$. Since $\fp(x) = 10-2x = 0 \Rightarrow x =5$ and $\fpp(5) = -2 < 0$, then the Second Derivative Test tells us that $x=5$ is a local maximum for $f$, and hence $x=5$ must be the global maximum on the interval $[0,10]$ (since $f = 0$ at the endpoints of the interval). So since $y=10-x =5$, then the maximum area occurs for a rectangle whose width and height both are $5$ m.}
+The reader is probably familiar with a simple method, using single-variable calculus, for solving this problem. Since we must have $2x+2y=20$, then we can solve for, say, $y$ in terms of $x$ using that equation. This gives $y = 10 - x$, which we then substitute into $f$ to get $f(x,y) = xy = x(10-x) = 10x - x^2$. This is now a function of $x$ alone, so we now just have to maximize the function $f(x) = 10x - x^2$ on the interval $[0,10]$. Since $\fp(x) = 10-2x = 0 \Rightarrow x =5$ and $\fpp(5) = -2 < 0$, then the Second Derivative Test tells us that $x=5$ is a local maximum for $f$, and hence $x=5$ must be the global maximum on the interval $[0,10]$ (since $f = 0$ at the endpoints of the interval). So since $y=10-x =5$, then the maximum area occurs for a rectangle whose width and height both are $5$ m.
+\end{example}
 
 \mnote{\textbf{Note:} Joseph Louis Lagrange (1736--1813) was a French mathematician and astronomer.}
 
@@ -41,7 +45,10 @@ that if the constraint equation $g(x,y)=c$ (plus any hidden constraints) describ
 
 In \autoref{exmp_consimple} the constraint equation $2x+2y=20$ describes a line in $\mathbb{R}^2$, which by itself is not bounded. However, there are ``hidden'' constraints, due to the nature of the problem, namely $0\le x,y \le 10$, which cause that line to be restricted to a \emph{line segment} in $\mathbb{R}^2$ (including the endpoints of that line segment), which \emph{is} bounded.
 
-\example{exmp_rectlm}{Maximizing an Area}{For a rectangle whose perimeter is $20$ m, use the Lagrange multiplier method to find the dimensions that will maximize the area.}{As we saw in \autoref{exmp_consimple}, with $x$ and $y$ representing the width and height, respectively, of the rectangle, this problem can be stated as:
+\begin{example}[Maximizing an Area]\label{exmp_rectlm}
+For a rectangle whose perimeter is $20$ m, use the Lagrange multiplier method to find the dimensions that will maximize the area.
+\solution
+As we saw in \autoref{exmp_consimple}, with $x$ and $y$ representing the width and height, respectively, of the rectangle, this problem can be stated as:
  \[\text{Maximize }f(x,y) = xy\text{ subject to }g(x,y) = 2x + 2y = 20.\]
  Then solving the equation $\nabla f(x,y) = \lambda \nabla g(x,y)$ for some $\lambda$ means solving the equations $\dfrac{\partial f}{\partial x} = \lambda \dfrac{\partial g}{\partial x}$ and $\dfrac{\partial f}{\partial y} = \lambda \dfrac{\partial g}{\partial y}$, namely:
  \begin{align*}
@@ -52,10 +59,14 @@ In \autoref{exmp_consimple} the constraint equation $2x+2y=20$ describes a line 
  \[\frac y2 = \lambda = \frac x2 \quad \Rightarrow \quad x = y ,\]
  so now substitute either of the expressions for $x$ or $y$ into the constraint equation to solve for $x$ and $y$:
  \[20=g(x,y)=2x+2y=2x+2x=4x\quad\Rightarrow\quad x=5\quad\Rightarrow\quad y=5\]
- There must be a maximum area, since the minimum area is $0$ and $f(5,5) = 25 > 0$, so the point $(5,5)$ that we found (called a \emph{constrained critical point}) must be the constrained maximum. Therefore, the maximum area occurs for a rectangle whose width and height both are $5$ m.}
+ There must be a maximum area, since the minimum area is $0$ and $f(5,5) = 25 > 0$, so the point $(5,5)$ that we found (called a \emph{constrained critical point}) must be the constrained maximum. Therefore, the maximum area occurs for a rectangle whose width and height both are $5$ m.
+\end{example}
 
 % todo give a different example than example 3 so that the objective function doesn't immediately simplify because of the constraint
-\example{ex_lagr_circle}{Extreme Values on a Circle}{Find the points on the circle $x^2 + y^2 = 80$ which are closest to and farthest from the point $(1,2)$.}{The distance $d$ from any point $(x,y)$ to the point $(1,2)$ is
+\begin{example}[Extreme Values on a Circle]\label{ex_lagr_circle}
+Find the points on the circle $x^2 + y^2 = 80$ which are closest to and farthest from the point $(1,2)$.
+\solution
+The distance $d$ from any point $(x,y)$ to the point $(1,2)$ is
   \[d=\sqrt{(x-1)^2 + (y-2)^2},\]
  and minimizing the distance is equivalent to minimizing the square of the distance. Thus the problem can be stated as:
  \[
@@ -85,18 +96,22 @@ In \autoref{exmp_consimple} the constraint equation $2x+2y=20$ describes a line 
 \end{tikzpicture}}
  Substituting this into $g(x,y) = x^2 + y^2 = 80$ yields $5x^2=80$, so $x=\pm 4$. So the two constrained critical points are $(4,8)$ and $(-4,-8)$. Since $f(4,8)=45$ and $f(-4,-8)=125$, and since there must be points on the circle closest to and farthest from $(1,2)$, then it must be the case that $(4,8)$ is the point on the circle closest to $(1,2)$ and $(-4,-8)$ is the farthest from $(1,2)$ (see \autoref{fig_lagr_on_circle}).
  
- Notice that since the constraint equation $x^2 + y^2 = 80$ describes a circle, which is a bounded set in $\mathbb{R}^2$, then we were guaranteed that the constrained critical points we found were indeed the constrained maximum and  minimum.}
-
+ Notice that since the constraint equation $x^2 + y^2 = 80$ describes a circle, which is a bounded set in $\mathbb{R}^2$, then we were guaranteed that the constrained critical points we found were indeed the constrained maximum and  minimum.
+\end{example}
 
 The Lagrange multiplier method can be extended to functions of three variables.
 
-\example{ex_lagr_3var}{Maximizing a Function of Three Variables}{Maximize (and minimize) $f(x,y,z) = x+z$ subject to $g(x,y,z) = x^2 + y^2 + z^2 = 1$.}{Solve the equation $\nabla f(x,y,z) = \lambda \nabla g(x,y,z)$:
+\begin{example}[Maximizing a Function of Three Variables]\label{ex_lagr_3var}
+Maximize (and minimize) $f(x,y,z) = x+z$ subject to $g(x,y,z) = x^2 + y^2 + z^2 = 1$.
+\solution
+Solve the equation $\nabla f(x,y,z) = \lambda \nabla g(x,y,z)$:
  \begin{align*}
   1 &= 2\lambda x\\
   0 &= 2\lambda y\\
   1 &= 2\lambda z
  \end{align*}
- The first equation implies $\lambda \ne 0$ (otherwise we would have $1=0$), so we can divide by $\lambda$ in the second equation to get $y=0$ and we can divide by $\lambda$ in the first and third equations to get $x=\frac1{2\lambda}=z$. Substituting these expressions into the constraint equation $g(x,y,z) = x^2 + y^2 + z^2 = 1$ yields the constrained critical points $\left( \frac1{\sqrt2},0,\frac1{\sqrt2} \right)$ and $\left( \frac{-1}{\sqrt2},0,\frac{-1}{\sqrt2}\right)$. Since $f\left( \frac1{\sqrt2},0,\frac1{\sqrt2}\right)>f\left(\frac{-1}{\sqrt2},0,\frac{-1}{\sqrt2}\right)$, and since the constraint equation $x^2 + y^2 + z^2 = 1$ describes a sphere (which is bounded) in $\mathbb{R}^3$, then $\left(\frac1{\sqrt2},0,\frac1{\sqrt2}\right)$ is the constrained maximum point and $\left(\frac{-1}{\sqrt2},0,\frac{-1}{\sqrt2}\right)$ is the constrained minimum point.}
+ The first equation implies $\lambda \ne 0$ (otherwise we would have $1=0$), so we can divide by $\lambda$ in the second equation to get $y=0$ and we can divide by $\lambda$ in the first and third equations to get $x=\frac1{2\lambda}=z$. Substituting these expressions into the constraint equation $g(x,y,z) = x^2 + y^2 + z^2 = 1$ yields the constrained critical points $\left( \frac1{\sqrt2},0,\frac1{\sqrt2} \right)$ and $\left( \frac{-1}{\sqrt2},0,\frac{-1}{\sqrt2}\right)$. Since $f\left( \frac1{\sqrt2},0,\frac1{\sqrt2}\right)>f\left(\frac{-1}{\sqrt2},0,\frac{-1}{\sqrt2}\right)$, and since the constraint equation $x^2 + y^2 + z^2 = 1$ describes a sphere (which is bounded) in $\mathbb{R}^3$, then $\left(\frac1{\sqrt2},0,\frac1{\sqrt2}\right)$ is the constrained maximum point and $\left(\frac{-1}{\sqrt2},0,\frac{-1}{\sqrt2}\right)$ is the constrained minimum point.
+\end{example}
 
 % todo more clearly explain the significance of the value of \lambda
 %So far we have not attached any significance to the value of the Lagrange multiplier $\lambda$. We needed $\lambda$ only to find the constrained critical points, but made no use of its value. It turns out that $\lambda$ gives an approximation of the change in the value of the function $f(x,y)$ that we wish to maximize or minimize, when
@@ -120,7 +135,10 @@ When we have two constraints, we can still use Lagrange multipliers once we've m
 \]
 is satisfied when $\nabla f(x,y,z)=\lambda\nabla g(x,y,z)+\mu\nabla h(x,y,z)$.
 
-\example{ex_lang_two_const}{Optimizing with Two Constraints}{The plane $x-y+z=2$ intersects the cylinder $x^2+y^2=4$ in an ellipse. Find the points on the ellipse closest to and farthest from the origin.}{We can optimize the distance $\sqrt{x^2+y^2+z^2}$ by optimizing the function $f(x,y,z)=x^2+y^2+z^2$, which has a simpler derivative.  Let $g(x,y,z)=x-y+z$ be the plane constraint, and $h(x,y,z)=x^2+y^2$ be the cylinder constraint.  We see that
+\begin{example}[Optimizing with Two Constraints]\label{ex_lang_two_const}
+The plane $x-y+z=2$ intersects the cylinder $x^2+y^2=4$ in an ellipse. Find the points on the ellipse closest to and farthest from the origin.
+\solution
+We can optimize the distance $\sqrt{x^2+y^2+z^2}$ by optimizing the function $f(x,y,z)=x^2+y^2+z^2$, which has a simpler derivative.  Let $g(x,y,z)=x-y+z$ be the plane constraint, and $h(x,y,z)=x^2+y^2$ be the cylinder constraint.  We see that
 \begin{align*}
  \nabla f(x,y,z)&=\bracket{2x,2y,2z} \\
  \nabla g(x,y,z)&=\bracket{1,-1,1} \\
@@ -149,7 +167,8 @@ which simplifies to $2y(y+2)=0$.  This means that we need to look at the points 
 and we need to look at the points $(\pm\sqrt2,\mp\sqrt2,2\mp2\sqrt2)$.  These have distance
 $\sqrt{2+2+(2\mp2\sqrt2)^2}
 %=\sqrt{4+4\mp8\sqrt2+8}
-=\sqrt{16\mp8\sqrt2}$, which are both greater than 2.  Therefore, the closest points are $(2,0,0)$ and $(0,-2,0)$, while the furthest point is $(-\sqrt2,\sqrt2,2+\sqrt2)$.}
+=\sqrt{16\mp8\sqrt2}$, which are both greater than 2.  Therefore, the closest points are $(2,0,0)$ and $(0,-2,0)$, while the furthest point is $(-\sqrt2,\sqrt2,2+\sqrt2)$.
+\end{example}
 
 Finally, note that solving the equation $\nabla f(x,y) = \lambda \nabla g(x,y)$ means having to solve a system of two (possibly nonlinear) equations in three unknowns, which as we have seen before, may not be possible to do. And the 3-variable case can get even more complicated. All of this somewhat restricts the usefulness of Lagrange's method to relatively simple functions. Luckily there are many numerical methods for solving constrained optimization problems, though we will not discuss them here.
 

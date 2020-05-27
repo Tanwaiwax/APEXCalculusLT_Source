@@ -22,14 +22,15 @@ The principle of the Ratio Test is this: if $\ds\lim_{n\to\infty}\abs{\frac{a_{n
 
 \youtubeVideo{iy8mhbZTY7g}{Using the Ratio Test to Determine if a Series Converges \#1}
 
-\example{ex_ratio1}{Applying the Ratio Test}{Use the Ratio Test to determine the convergence of the following series:
+\begin{example}[Applying the Ratio Test]\label{ex_ratio1}
+Use the Ratio Test to determine the convergence of the following series:
 \[
  \text{1. }\sum_{n=1}^\infty \frac{2^n}{n!}\qquad\qquad
  \text{2. }\sum_{n=1}^\infty \frac{3^n}{n^3}\qquad\qquad
  \text{3. }\sum_{n=1}^\infty \frac{1}{n^2+1}.
 \]
-}
-{\begin{enumerate}
+\solution
+\begin{enumerate}
 	\item $\ds \sum_{n=1}^\infty \frac{2^n}{n!}$:\\[-3\baselineskip]
 	\begin{align*}
 		\lim_{n\to\infty}\frac{2^{n+1}/(n+1)!}{2^n/n!}
@@ -54,15 +55,18 @@ The principle of the Ratio Test is this: if $\ds\lim_{n\to\infty}\abs{\frac{a_{n
 		&= \lim_{n\to\infty} \frac{n^2+1}{(n+1)^2+1}\\
 		&= 1.
 	\end{align*}
-	Since the limit is 1, the Ratio Test is inconclusive. We can easily show this series converges using the Direct or Limit Comparison Tests, with each comparing to the series $\ds \sum_{n=1}^\infty \frac{1}{n^2}$.\eoehere
-\end{enumerate}}
+	Since the limit is 1, the Ratio Test is inconclusive. We can easily show this series converges using the Direct or Limit Comparison Tests, with each comparing to the series $\ds \sum_{n=1}^\infty \frac{1}{n^2}$.
+\end{enumerate}
+\end{example}
 
 The Ratio Test is not effective when the terms of a series \textit{only} contain algebraic functions (e.g., polynomials). It is most effective when the terms contain some factorials or exponentials. The previous example also reinforces our developing intuition: factorials dominate exponentials, which dominate algebraic functions, which dominate logarithmic functions. In Part 1 of the example, the factorial in the denominator dominated the exponential in the numerator, causing the series to converge. In Part 2, the exponential in the numerator dominated the algebraic function in the denominator, causing the series to diverge.
 
 While we have used factorials in previous sections, we have not explored them closely and one is likely to not yet have a strong intuitive sense for how they behave. The following example gives more practice with factorials.
 
-\example{ex_ratio2}{Applying the Ratio Test}{Determine the convergence of $\ds\sum_{n=1}^\infty \frac{n!n!}{(2n)!}$.}
-{Before we begin, be sure to note the difference between $(2n)!$ and $2n!$. When $n=4$, the former is $8!=8\cdot7\cdot\dotsm\cdot 2\cdot1=40{,}320$, whereas the latter is $2(4\cdot3\cdot2\cdot1) = 48$.
+\begin{example}[Applying the Ratio Test]\label{ex_ratio2}
+Determine the convergence of $\ds\sum_{n=1}^\infty \frac{n!n!}{(2n)!}$.
+\solution
+Before we begin, be sure to note the difference between $(2n)!$ and $2n!$. When $n=4$, the former is $8!=8\cdot7\cdot\dotsm\cdot 2\cdot1=40{,}320$, whereas the latter is $2(4\cdot3\cdot2\cdot1) = 48$.
 
 Applying the Ratio Test:
 \begin{align*}
@@ -72,7 +76,8 @@ Applying the Ratio Test:
 	&= \lim_{n\to\infty}\frac{(n+1)(n+1)}{(2n+2)(2n+1)}\\
 	&= 1/4.
 \end{align*}
-Since the limit is $1/4<1$, by the Ratio Test we conclude $\ds \sum_{n=1}^\infty \frac{n!n!}{(2n)!}$ converges.}
+Since the limit is $1/4<1$, by the Ratio Test we conclude $\ds \sum_{n=1}^\infty \frac{n!n!}{(2n)!}$ converges.
+\end{example}
 
 \subsection{Root Test}
 
@@ -91,13 +96,15 @@ where $\ds \lim_{n\to \infty}\abs{a_n}^{1/n} = L$.
 
 %\mnote{\textbf{Note:} \autoref{thm:series_behavior} allows us to apply the Root Test to series where $\{a_n\}$ is positive for all but a finite number of terms.}
 
-\example{ex_root1}{Applying the Root Test}{Determine the convergence of the following series using the Root Test:
+\begin{example}[Applying the Root Test]\label{ex_root1}
+Determine the convergence of the following series using the Root Test:
 \[
  \text{1.}\quad\sum_{n=1}^\infty \left(\frac{3n+1}{5n-2}\right)^n\qquad\qquad
  \text{2.}\quad\sum_{n=2}^\infty\frac{n^4}{(\ln n)^n}\qquad\qquad
  \text{3.}\quad\sum_{n=1}^\infty \frac{2^n}{n^2}.
-\]}
-{\begin{enumerate}
+\]
+\solution
+\begin{enumerate}
 	\item	$\ds\lim_{n\to\infty} \left(\left(\frac{3n+1}{5n-2}\right)^n\right)^{1/n} = \lim_{n\to\infty} \frac{3n+1}{5n-2} = \frac 35.$ 
 	
 	Since the limit is less than 1, we conclude the series converges. Note: it is difficult to apply the Ratio Test to this series.
@@ -111,7 +118,8 @@ where $\ds \lim_{n\to \infty}\abs{a_n}^{1/n} = L$.
 	\item	$\ds \lim_{n\to\infty} \left(\frac{2^n}{n^2}\right)^{1/n} = \lim_{n\to\infty} \frac{2}{\big(n^{1/n}\big)^2} = 2$. 
 	
 	Since this is greater than 1, we conclude the series diverges.\eoehere
-\end{enumerate}}
+\end{enumerate}
+\end{example}
 
 We end here our study of tests to determine convergence. The next section of this text provides strategies for testing series, while the \hyperref[tab_series_tests]{back of the book} contains a table summarizing the tests that one may find useful. 
 

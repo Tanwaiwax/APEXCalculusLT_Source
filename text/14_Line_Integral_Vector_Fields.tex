@@ -72,9 +72,10 @@ node[pos=.5,below right]{$y=x^4$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-\example{ex_livf1}{Evaluating a line integral over a vector field: computing work}
-{Two particles move from $(0,0)$ to $(1,1)$ in the presence of the force field $\vec F  =\bracket{x,x+y}$. One particle follows $C_1$, the line $y=x$; the other follows $C_2$, the curve $y=x^4$, as shown in \autoref{fig:livf1}. Force is measured in newtons and distance is measured in meters. Find the work performed by each particle.}
-{To compute work, we need to parameterize each path. We use $\vec r_1(t) =\bracket{t,t}$ to parameterize $y=x$, and let $\vec r_2(t) =\bracket{t,t^4}$ parameterize $y=x^4$; for each, $0\leq t\leq 1$. 
+\begin{example}[Evaluating a line integral over a vector field: computing work]\label{ex_livf1}
+Two particles move from $(0,0)$ to $(1,1)$ in the presence of the force field $\vec F  =\bracket{x,x+y}$. One particle follows $C_1$, the line $y=x$; the other follows $C_2$, the curve $y=x^4$, as shown in \autoref{fig:livf1}. Force is measured in newtons and distance is measured in meters. Find the work performed by each particle.
+\solution
+To compute work, we need to parameterize each path. We use $\vec r_1(t) =\bracket{t,t}$ to parameterize $y=x$, and let $\vec r_2(t) =\bracket{t,t^4}$ parameterize $y=x^4$; for each, $0\leq t\leq 1$. 
 
 Along the straight-line path, $\vec F\big(\vec r_1(t)\big) =\bracket{x,x+y}=\bracket{t,t+t}=\bracket{t,2t}$. We find $\vrp_1(t) =\bracket{1,1}$. The integral that computes work is:
 \begin{align*}
@@ -92,7 +93,8 @@ Along the curve $y = x^4$, $\vec F\big(\vec r_2(t)\big) =\bracket{x,x+y}=\bracke
 	&= \big(\frac12t^2 + \frac45t^5 + \frac12t^8\big)\Big|_0^1 =  1.8 \text{ joules}.
 \end{align*}
 
-Note how differing amounts of work are performed along the different paths. This should not be too surprising: the force is variable, one path is longer than the other, etc.}
+Note how differing amounts of work are performed along the different paths. This should not be too surprising: the force is variable, one path is longer than the other, etc.
+\end{example}
 
 \mtable{Paths through a vector field in \autoref{ex_livf2}.}{fig:livf2}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,height=1.16\marginparwidth,
@@ -117,9 +119,10 @@ node[pos=.5,above,yshift={+1.5ex}]{\small$x^2+(y-1)^2=1$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-\example{ex_livf2}{Evaluating a line integral over a vector field: computing work}
-{Two particles move from $(-1,1)$ to $(1,1)$ under the influence of a force field $\vec F =\bracket{y,x}$. One moves along the curve $C_1$, the parabola defined by $y = 2x^2-1$. The other particle moves along the curve $C_2$, the bottom half of the circle defined by $x^2+(y-1)^2=1$, as shown in \autoref{fig:livf2}. Force is measured in pounds and distances are measured in feet. Find the work performed by moving each particle along its path.}
-{We start by parameterizing $C_1$: the parameterization $\vec r_1(t) =\bracket{t,2t^2-1}$ is straightforward, giving $\vrp_1 =\bracket{1,4t}$. On $C_1$, $\vec F\big(\vec r_1(t)\big) =\bracket{y,x}=\bracket{2t^2-1,t}$.
+\begin{example}[Evaluating a line integral over a vector field: computing work]\label{ex_livf2}
+Two particles move from $(-1,1)$ to $(1,1)$ under the influence of a force field $\vec F =\bracket{y,x}$. One moves along the curve $C_1$, the parabola defined by $y = 2x^2-1$. The other particle moves along the curve $C_2$, the bottom half of the circle defined by $x^2+(y-1)^2=1$, as shown in \autoref{fig:livf2}. Force is measured in pounds and distances are measured in feet. Find the work performed by moving each particle along its path.
+\solution
+We start by parameterizing $C_1$: the parameterization $\vec r_1(t) =\bracket{t,2t^2-1}$ is straightforward, giving $\vrp_1 =\bracket{1,4t}$. On $C_1$, $\vec F\big(\vec r_1(t)\big) =\bracket{y,x}=\bracket{2t^2-1,t}$.
 
 Computing the work along $C_1$, we have:
 \begin{align*}
@@ -136,7 +139,8 @@ Computing the work along $C_2$, we have:
 	& = \int_{\pi}^{2\pi}\bracket{\sin t+1,\cos t}\cdot\bracket{-\sin t,\cos t}\ dt \\
 	&= \int_{\pi}^{2\pi} \big(-\sin^2t-\sin t+\cos^2t\big)\ dt = 2 \text{ ft-lbs}.
 \end{align*}
-Note how the work along $C_1$ and $C_2$ in this example is the same. We'll address why later in this section when \emph{conservative fields} and \emph{path independence} are discussed.}
+Note how the work along $C_1$ and $C_2$ in this example is the same. We'll address why later in this section when \emph{conservative fields} and \emph{path independence} are discussed.
+\end{example}
 
 \subsection{Properties of Line Integrals Over Vector Fields}
 
@@ -187,9 +191,10 @@ ymin=-.2,ymax=1.2,xmin=-.2,xmax=1.2]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-\example{ex_livf3}{Using properties of line integrals over vector fields}
-{Let $\vec F =\bracket{3(y-1/2),1}$ and let $C$ be the path that starts at $(0,0)$, goes to $(1,1)$ along the curve $y=x^3$, then returns to $(0,0)$ along the line $y=x$, as shown in \autoref{fig:livf3}. Evaluate $\oint_C \vec F\cdot d\vec r$.}
-{As $C$ is piecewise smooth, we break it into two components $C_1$ and $C_2$, where $C_1$ follows the curve $y=x^3$ and $C_2$ follows the curve $y=x$. 
+\begin{example}[Using properties of line integrals over vector fields]\label{ex_livf3}
+Let $\vec F =\bracket{3(y-1/2),1}$ and let $C$ be the path that starts at $(0,0)$, goes to $(1,1)$ along the curve $y=x^3$, then returns to $(0,0)$ along the line $y=x$, as shown in \autoref{fig:livf3}. Evaluate $\oint_C \vec F\cdot d\vec r$.
+\solution
+As $C$ is piecewise smooth, we break it into two components $C_1$ and $C_2$, where $C_1$ follows the curve $y=x^3$ and $C_2$ follows the curve $y=x$. 
 
 We parameterize $C_1$ with $\vec r_1(t) =\bracket{t, t^3}$ on $0\leq t\leq 1$, with $\vrp_1(t) =\bracket{1,3t^2}$. We will use $\vec F\big(\vec r_1(t)\big) =\bracket{3(t^3-1/2),1}$.
 
@@ -209,7 +214,8 @@ Evaluating the line integral (note how we subtract the integral over $C_2$ as th
 	&= \big(1/4 \big) - \big(1\big)\\
 	&=	-3/4.
 \end{align*}
-If we interpret this integral as computing work, the negative work implies that the motion is mostly \emph{against} the direction of the force, which seems plausible when we look at \autoref{fig:livf3}.}
+If we interpret this integral as computing work, the negative work implies that the motion is mostly \emph{against} the direction of the force, which seems plausible when we look at \autoref{fig:livf3}.
+\end{example}
 
 \mtable{The graph of $\vec r(t)$ in \autoref{ex_livf4}.}{fig:livf4}{%
 \myincludeasythree{width=\marginparwidth,
@@ -220,17 +226,19 @@ If we interpret this integral as computing work, the negative work implies that 
 3Droo=399.99998637870164,
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figlivf4_3D}}
 
-\example{ex_livf4}{Evaluating a line integral over a vector field in space}
-{Let $\vec F =\bracket{-y,x,1}$, and let $C$ be the portion of the helix given by $\vrt = \bracket{ \cos t,\sin t, t/(2\pi)}$ on $[0,2\pi]$, as shown in \autoref{fig:livf4}. Evaluate $\int_C\vec F\cdot d\vec r$.}
-{A parameterization is already given for $C$, so we just need to find $\vec F\big(\vec r(t)\big)$ and \vrp(t). 
+\begin{example}[Evaluating a line integral over a vector field in space]\label{ex_livf4}
+Let $\vec F =\bracket{-y,x,1}$, and let $C$ be the portion of the helix given by $\vrt = \bracket{ \cos t,\sin t, t/(2\pi)}$ on $[0,2\pi]$, as shown in \autoref{fig:livf4}. Evaluate $\int_C\vec F\cdot d\vec r$.
+\solution
+A parameterization is already given for $C$, so we just need to find $\vec F\big(\vec r(t)\big)$ and \vrp(t). 
 
 We have $\vec F\big(\vec r(t)\big) =\bracket{-\sin t, \cos t, 1}$ and $\vrp(t) =\bracket{-\sin t, \cos t, 1/(2\pi)}$. Thus
 \begin{align*}
 	\int_C \vec F\cdot d\vec r
 	&= \int_0^{2\pi}\bracket{-\sin t, \cos t, 1}\cdot\bracket{-\sin t, \cos t, 1/(2\pi)}dt\\
 	&= \int_0^{2\pi} \Big(\sin^2t+\cos^2t + \frac1{2\pi}\big)dt\\
-	&= 2\pi + 1 \approx 7.28.\eoehere
-\end{align*}}
+	&= 2\pi + 1 \approx 7.28.
+\end{align*}
+\end{example}
 
 \subsection{The Fundamental Theorem of Line Integrals}
 
@@ -326,9 +334,10 @@ the same value given by the line integrals.
 
 We practice using this theorem again in the next example.
 
-\example{ex_livf5}{Using the Fundamental Theorem of Line Integrals}
-{Let $\vec F =\bracket{3x^2y+2x, x^3+1}$, $A = (0,1)$ and $B = (1,4)$. Use the first part of the Fundamental Theorem of Line Integrals to show that $\vec F$ is conservative, then choose any path from $A$ to $B$ and confirm the second part of the theorem.}
-{To show $\vec F$ is conservative, we need to find $z = f(x,y)$ such that $\vec F = \nabla f =\bracket{f_x, f_y}$. That is, we need to find $f$ such that $f_x = 3x^2y+2x$ and $f_y = x^3+1$. As all we know about $f$ are its partial derivatives, we recover $f$ by integration:
+\begin{example}[Using the Fundamental Theorem of Line Integrals]\label{ex_livf5}
+Let $\vec F =\bracket{3x^2y+2x, x^3+1}$, $A = (0,1)$ and $B = (1,4)$. Use the first part of the Fundamental Theorem of Line Integrals to show that $\vec F$ is conservative, then choose any path from $A$ to $B$ and confirm the second part of the theorem.
+\solution
+To show $\vec F$ is conservative, we need to find $z = f(x,y)$ such that $\vec F = \nabla f =\bracket{f_x, f_y}$. That is, we need to find $f$ such that $f_x = 3x^2y+2x$ and $f_y = x^3+1$. As all we know about $f$ are its partial derivatives, we recover $f$ by integration:
 \[\int \frac{\partial f}{\partial x}\ dx = f(x,y) + C(y).\]
 Note how the constant of integration is more than ``just a constant'': it is anything that acts as a constant when taking a derivative with respect to $x$. Any function that is a function of $y$ (containing no $x$'s) acts as a constant when deriving with respect to $x$.
 
@@ -361,8 +370,9 @@ To illustrate the validity of the Fundamental Theorem, we pick a path from $A$ t
 	&= \int_0^1 \big(5t^4+8t^3+3t^2+4t+2\big)\ dt\\
 	&= \big(t^5+2t^4+t^3+2t^2+2t\big)\Big|_0^1\\
 	&= 8,
-\end{align*}				
-which matches our previous result.}
+\end{align*}
+which matches our previous result.
+\end{example}
 
 The Fundamental Theorem of Line Integrals states that we can determine whether or not $\vec F$ is conservative by determining whether or not $\vec F$ has a potential function. This can be difficult. A simpler method exists if the domain of $\vec F$ is simply connected (not just connected as needed in the Fundamental Theorem of Line Integrals), which is a reasonable requirement. We state this simpler method as a theorem.
 

@@ -96,14 +96,15 @@ Both the even and odd partial sums converge to $L$ so we have $\ds \lim_{n\to \i
 
 \youtubeVideo{aOiZvfFAMW8}{Alternating Series --- Another Example 4}
 
-\example{ex_alt1}{Applying the Alternating Series Test}
-{Determine if the Alternating Series Test applies to each of the following series.
+\begin{example}[Applying the Alternating Series Test]\label{ex_alt1}
+Determine if the Alternating Series Test applies to each of the following series.
 \[
  \text{1. }\sum_{n=1}^\infty (-1)^{n+1}\frac1n\qquad
  \text{2. }\sum_{n=2}^\infty (-1)^n\frac{\ln n}{n}\qquad
  \text{3. }\sum_{n=1}^\infty (-1)^{n+1}\frac{\abs{\sin n}}{n^2}
-\]}
-{\begin{enumerate}
+\]
+\solution
+\begin{enumerate}
 	\item This is the Alternating Harmonic Series as seen previously. The underlying sequence is $\{b_n\} = \{1/n\}$, which is positive, decreasing, and approaches 0 as $n\to\infty$. Therefore we can apply the Alternating Series Test and conclude this series converges. 
 	
 	While the test does not state what the series converges to, we will see later that $\ds \sum_{n=1}^\infty (-1)^{n+1}\frac1n=\ln2.$
@@ -118,8 +119,9 @@ Both the even and odd partial sums converge to $L$ so we have $\ds \lim_{n\to \i
 	
 	\item  The underlying sequence is $\{b_n\} = \{\abs{\sin n}/n^2\}$. This sequence is positive and approaches $0$ as $n\to\infty$. However, it is not a decreasing sequence; the value of $\abs{\sin n}$ oscillates between $0$ and $1$ as $n\to\infty$. We cannot remove a finite number of terms to make $\{b_n\}$ decreasing, therefore we cannot apply the Alternating Series Test.
 	
-	Keep in mind that this does not mean we conclude the series diverges; in fact, it does converge. We are just unable to conclude this based on \autoref{thm:alt_series_test}.\eoehere
-\end{enumerate}}
+	Keep in mind that this does not mean we conclude the series diverges; in fact, it does converge. We are just unable to conclude this based on \autoref{thm:alt_series_test}.
+\end{enumerate}
+\end{example}
 
 One of the famous results of mathematics is that the Harmonic Series,\vspace{-.5\baselineskip} $\ds \sum_{n=1}^\infty \frac1n$ diverges, yet the Alternating Harmonic Series, $\ds \sum_{n=1}^\infty (-1)^{n+1}\frac1n$, converges. The notion that alternating the signs of the terms in a series can make a series converge leads us to the following definitions.\index{Alternating Harmonic Series}
 
@@ -135,8 +137,8 @@ One of the famous results of mathematics is that the Harmonic Series,\vspace{-.5
 
 Thus we say the Alternating Harmonic Series converges conditionally.
 
-\example{ex_alt_series2}{Determining absolute and conditional convergence.}
-{Determine if the following series converge absolutely, conditionally, or diverge.\\
+\begin{example}[Determining absolute and conditional convergence.]\label{ex_alt_series2}
+Determine if the following series converge absolutely, conditionally, or diverge.\\
 \begin{minipage}{.5\textwidth}
  \begin{enumerate}
   \item $\ds\sum_{n=1}^\infty (-1)^n\frac{n+3}{n^2+2n+5}$
@@ -147,8 +149,9 @@ Thus we say the Alternating Harmonic Series converges conditionally.
  \begin{enumerate}\setcounter{enumi}{1}
   \item $\ds\sum_{n=3}^\infty (-1)^n\frac{3n-3}{5n-10}$
  \end{enumerate}
-\end{minipage}}
-{\begin{enumerate}
+\end{minipage}
+\solution
+\begin{enumerate}
 	\item We can show the series
 	\[\sum_{n=1}^\infty \abs{(-1)^n\frac{n+3}{n^2+2n+5}}= \sum_{n=1}^\infty \frac{n+3}{n^2+2n+5}\]
 	diverges using the Limit Comparison Test, comparing with $1/n$. 
@@ -168,7 +171,8 @@ Thus we say the Alternating Harmonic Series converges conditionally.
 	The series $\ds \sum_{n=3}^\infty (-1)^n\frac{3n-3}{5n-10}$ fails the conditions of the Alternating Series Test as $(3n-3)/(5n-10)$ does not approach $0$ as $n\to\infty$. We can state further that this series diverges; as $n\to\infty$, the series effectively adds and subtracts $3/5$ over and over. This causes the sequence of partial sums to oscillate and not converge.
 	
 	Therefore the series $\ds \sum_{n=1}^\infty (-1)^n\frac{3n-3}{5n-10}$ diverges.\eoehere
-\end{enumerate}}
+\end{enumerate}
+\end{example}
 
 Knowing that a series converges absolutely allows us to make two important statements, given in the following theorem. The first is that absolute convergence is  ``stronger'' than regular convergence.\vspace{-.5\baselineskip}
 That is, just because {\small$\ds \sum_{n=1}^\infty a_n$} converges, we cannot conclude that {\small$\ds \sum_{n=1}^\infty \abs{a_n}$} will converge, but knowing a series converges absolutely tells us that {\small$\ds \sum_{n=1}^\infty a_n$} will converge. 
@@ -210,13 +214,14 @@ Moreover, Part 2 of the theorem states that since $S_{13} \approx 0.8252$ and $S
 
 Some alternating series converge slowly. In \autoref{ex_alt1} we determined the series $\ds\sum_{n=2}^\infty (-1)^{n+1}\frac{\ln n}{n}$ converged. With $n=1001$, we find $(\ln n)/n \approx 0.0069$, meaning that $S_{1000} \approx 0.1633$ is accurate to one, maybe two, places after the decimal. Since $S_{1001} \approx 0.1564$, we know the sum $L$ is $0.1564\leq L\leq0.1633$.
 
-\example{ex_alt_series_approx}{Approximating the sums of convergent alternating series}
-{Approximate the sum of the following series, accurate to within $0.001$.
+\begin{example}[Approximating the sums of convergent alternating series]\label{ex_alt_series_approx}
+Approximate the sum of the following series, accurate to within $0.001$.
 \[
  \text{1. }\sum_{n=1}^\infty (-1)^{n+1}\frac{1}{n^3}\qquad
  \text{2. }\sum_{n=1}^\infty (-1)^{n+1}\frac{\ln n}{n}.
-\]}
-{\begin{enumerate}
+\]
+\solution
+\begin{enumerate}
 	\item  Using \autoref{thm:alt_series_approx}, we want to find $n$ where $1/n^3 \le 0.001$:
 	\begin{align*}
 	\frac1{n^3} &\leq 0.001=\frac{1}{1000} \\
@@ -243,7 +248,8 @@ Some alternating series converge slowly. In \autoref{ex_alt1} we determined the 
 	\[-0.160369 < L < -0.159369.\]
 	
 \end{enumerate}
-Notice how the first series converged quite quickly, where we needed only 10 terms to reach the desired accuracy, whereas the second series took over 9,000 terms.}
+Notice how the first series converged quite quickly, where we needed only 10 terms to reach the desired accuracy, whereas the second series took over 9,000 terms.
+\end{example}
 
 We now consider the Alternating Harmonic Series once more. We have stated that 
 \[

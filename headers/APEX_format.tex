@@ -81,7 +81,8 @@
   {\thmname{\textbf{#1}}\thmnumber{ \textbf{#2}}\thmnote{\hspace{20pt}\textbf{#3}}}% Thm head spec
 
 \theoremstyle{apexExample}
-\newtheorem{exampleEnv}{Example}[section]
+\newtheorem{example}{Example}[section]
+\newcommand{\exampleautorefname}{Example}
 
 \theoremstyle{apex}
 
@@ -260,26 +261,26 @@
 %% Things related to the vertical line to the left of examples
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% the example environment has a regular and starred version.
-% the regular version takes 4 arguments: label, title, problem, solution.
-% The starred version only has 3: label, title, problem/solution.
-\makeatletter
-\newcommand{\example}{\@ifstar \examplestarred \examplenostar}
-%\newcommand{\reverseexampledefault}{%
-% \renewcommand{\example}{\@ifstar \examplenostar \examplestarred}%
-%}
-%\newcommand{\restoreexampledefault}{%
-% \renewcommand{\example}{\@ifstar \examplestarred \examplenostar}%
-%}
-\makeatother
+%% the example environment has a regular and starred version.
+%% the regular version takes 4 arguments: label, title, problem, solution.
+%% The starred version only has 3: label, title, problem/solution.
+%\makeatletter
+%\newcommand{\example}{\@ifstar \examplestarred \examplenostar}
+%%\newcommand{\reverseexampledefault}{%
+%% \renewcommand{\example}{\@ifstar \examplenostar \examplestarred}%
+%%}
+%%\newcommand{\restoreexampledefault}{%
+%% \renewcommand{\example}{\@ifstar \examplestarred \examplenostar}%
+%%}
+%\makeatother
 
 
 \newcommand{\solution}{\bigbreak\par
 \makebox[65pt][l]{\textsc{\small\textbf{Solution\lxAddClass{solutionTag}}}}%
 }
 
-% This is the no-star (regular) version of the example command.
-\newcommand{\examplenostar}[4]{\examplestarred{#1}{#2}{#3\solution #4}}
+%% This is the no-star (regular) version of the example command.
+%\newcommand{\examplenostar}[4]{\examplestarred{#1}{#2}{#3\solution #4}}
 
 
 % black: hsl(x,x,0)
@@ -287,6 +288,57 @@
 % blue: hsl(240,100,50)
 % line color: blue!95!black!30 = Hsb(240,.29,.98) = hsl(240,87.7,83.8)
 
+
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable,skins,theorems}
+
+
+% try this for \begin{example}/\end{example}
+\newcommand{\eoehere}{}
+\newcommand{\drawexampleline}{}
+%\renewcommand{\examplestarred}[3]{%
+% \begin{exampleEnv}[#2]\label{#1}
+%  #3%
+% \end{exampleEnv}
+%}
+\tcolorboxenvironment{example}{
+    empty,
+    size=minimal,
+    breakable,
+    parbox=false,
+    beforeafter skip=\bigskipamount,
+    enlargepage flexible=3\baselineskip,
+    lines before break=5,
+    before upper={\setlength{\parindent}{\saveparindent}\noindent},
+    boxsep=0pt,
+    overlay unbroken={
+     \node[xshift=-2\marginlinelength,yshift=-.5\baselineskip]
+      (start\arabic{example})at(frame.north west){};
+     \node[xshift=10pt](stop\arabic{example})at(frame.south west){};
+     \draw[thick,\thelinecolor](start\arabic{example})|-(stop\arabic{example});
+    },
+    overlay first={
+     \node[xshift=-2\marginlinelength,yshift=-.5\baselineskip]
+      (start\arabic{example})at(frame.north west){};
+     \node[xshift=-2\marginlinelength,yshift=-2\baselineskip]
+      (stop\arabic{example})at(frame.south west){};
+     \draw[thick,\thelinecolor](start\arabic{example})--(stop\arabic{example});
+    },
+    overlay middle={
+     % a middle has only one on a page, so we don't need other suffixes
+     \node[xshift=-2\marginlinelength,yshift=.5\baselineskip]
+      (start)at(frame.north west){};
+     \node[xshift=-2\marginlinelength,yshift=-2\baselineskip]
+      (stop)at(frame.south west){};
+     \draw[thick,\thelinecolor](start)--(start|-stop);
+    },
+    overlay last={
+     \node[xshift=-2\marginlinelength,yshift=.5\baselineskip]
+      (start\arabic{example})at(frame.north west){};
+     \node[xshift=10pt](stop\arabic{example})at(frame.south west){};
+     \draw[thick,\thelinecolor](start\arabic{example})|-(stop\arabic{example});
+    },
+}
 
 
 
@@ -322,9 +374,6 @@
 %     inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
 %     draw, text justified, very thick
 %}
-
-\usepackage{tcolorbox}
-\tcbuselibrary{breakable,skins,theorems}
 
 \newcommand{\newspecialbox}[3]{%
  \AtBeginDocument{\makeStyles{#1}{#3}}%
@@ -564,6 +613,7 @@
 %\newcommand{\inputexercises}[1]{}%
 \newcommand{\printexercises}[1]{%
  \writeToAnsFile{#1}% writeToAnsFile in sty
+% \clearpage% %% how is this not needed?
  \exercisegeometry%
  \exerciseheader%
  \exercisesubsection{\thesection}%

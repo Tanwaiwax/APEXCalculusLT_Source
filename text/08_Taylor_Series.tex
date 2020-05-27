@@ -17,9 +17,10 @@ Let $f(x)$ have derivatives of all orders at $x=c$.
 
 The difference between a Taylor polynomial and a Taylor series is the former is a polynomial, containing only a finite number of terms, whereas the latter is a series, a summation of an infinite set of terms. When creating the Taylor polynomial of degree $n$ for a function $f(x)$ at $x=c$, we needed to evaluate $f$, and the first $n$ derivatives of $f$, at $x=c$. When creating the Taylor series of $f$, we need to find a pattern that describes the $n^\text{th}$ derivative of $f$ at $x=c$. We demonstrate this in the next two examples.
 
-\example{ex_ts1}{The Maclaurin series of $f(x) = \cos x$}
-{Find the Maclaurin series of $f(x)=\cos x$.}
-{In \autoref{ex_taypoly4} we found the $8^\text{th}$ degree Maclaurin polynomial of $\cos x$. In doing so, we created the table shown in \autoref{fig:ts1}.
+\begin{example}[The Maclaurin series of $f(x) = \cos x$]\label{ex_ts1}
+Find the Maclaurin series of $f(x)=\cos x$.
+\solution
+In \autoref{ex_taypoly4} we found the $8^\text{th}$ degree Maclaurin polynomial of $\cos x$. In doing so, we created the table shown in \autoref{fig:ts1}.
 %
 \mtable{A table of the derivatives of $f(x)=\cos x$ evaluated at $x=0$.}{fig:ts1}{%
 \begin{align*}
@@ -38,11 +39,13 @@ f\,^{(9)}(x) &= -\sin x &\Rightarrow & &f\,^{(9)}(0) &= \phantom-0
 Notice how $f\,^{(n)}(0)=0$ when $n$ is odd,  $f\,^{(n)}(0)=1$ when $n$ is divisible by $4$, and $f\,^{(n)}(0)=-1$ when $n$ is even but not divisible by 4. Thus the Maclaurin series of $\cos x$ is
 \[1-\frac{x^2}2+\frac{x^4}{4!}-\frac{x^6}{6!}+\frac{x^8}{8!} - \dotsb\]
 We can go further and write this as a summation. Since we only need the terms where the power of $x$ is even, we write the power series in terms of $x^{2n}$:
-\[\sum_{n=0}^\infty (-1)^{n}\frac{x^{2n}}{(2n)!}.\eoehere\]}
+\[\sum_{n=0}^\infty (-1)^{n}\frac{x^{2n}}{(2n)!}.\]
+\end{example}
 
-\example{ex_ts2}{The Taylor series of $f(x)=\ln x$ at $x=1$}
-{Find the Taylor series of $f(x) = \ln x$ centered at $x=1$.}
-{\autoref{fig:ts2} shows the $n^\text{th}$ derivative of $\ln x$ evaluated at $x=1$ for $n=0,\dotsc,5$, along with an expression for the $n^\text{th}$ term:
+\begin{example}[The Taylor series of $f(x)=\ln x$ at $x=1$]\label{ex_ts2}
+Find the Taylor series of $f(x) = \ln x$ centered at $x=1$.
+\solution
+\autoref{fig:ts2} shows the $n^\text{th}$ derivative of $\ln x$ evaluated at $x=1$ for $n=0,\dotsc,5$, along with an expression for the $n^\text{th}$ term:
 \[f\,^{(n)}(1) = (-1)^{n+1}(n-1)!\quad \text{for $n\geq 1$.}\]
 Remember that this is what distinguishes Taylor series from Taylor polynomials; we are very interested in finding a pattern for the $n^\text{th}$ term, not just finding a finite set of coefficients for a polynomial.
 \mtable{Derivatives of $\ln x$ evaluated at $x=1$.}{fig:ts2}{%
@@ -58,7 +61,8 @@ f\,^{(n)}(x) &=  &\Rightarrow & & f\,^{(n)}(1) &= \smallskip\\
 \makebox[0pt]{$\dfrac{(-1)^{n+1}(n-1)!}{x^n}$} &&&& \makebox[0pt]{$(-1)^{n+1}(n-1)!$}
 \end{align*}}
 Since $f(1) = \ln 1 = 0$, we skip the first term and start the summation with $n=1$, giving the Taylor series for $\ln x$, centered at $x=1$, as 
-\[\sum_{n=1}^\infty (-1)^{n+1}(n-1)!\frac{1}{n!}(x-1)^n = \sum_{n=1}^\infty (-1)^{n+1}\frac{(x-1)^n}{n}.\eoehere\]}
+\[\sum_{n=1}^\infty (-1)^{n+1}(n-1)!\frac{1}{n!}(x-1)^n = \sum_{n=1}^\infty (-1)^{n+1}\frac{(x-1)^n}{n}.\]
+\end{example}
 
 It is important to note that \autoref{def:taylor_series} defines a Taylor series given a function $f(x)$; however, we \emph{cannot} yet state that $f(x)$ \emph{is equal} to its Taylor series. We will find that ``most of the time'' they are equal, but we need to consider the conditions that allow us to conclude this.
 
@@ -76,9 +80,10 @@ If $\ds\lim_{n\to\infty} R_n(x) = 0$ for all $x$ in $I$, then
 
 We demonstrate the use of this theorem in an example.
 
-\example{ex_ts3}{Establishing equality of a function and its Taylor series}
-{Show that $f(x) = \cos x$ is equal to its Maclaurin series, as found in \autoref{ex_ts1}, for all $x$.}
-{Given a value $x$, the magnitude of the error term $R_n(x)$ is bound\-ed by
+\begin{example}[Establishing equality of a function and its Taylor series]\label{ex_ts3}
+Show that $f(x) = \cos x$ is equal to its Maclaurin series, as found in \autoref{ex_ts1}, for all $x$.
+\solution
+Given a value $x$, the magnitude of the error term $R_n(x)$ is bound\-ed by
 \[\abs{R_n(x)}\leq \frac{\max\abs{\,f\,^{(n+1)}(z)}}{(n+1)!}\abs{x}^{n+1}.\]
 Since all derivatives of $\cos x$ are $\pm \sin x$ or $\pm\cos x$, whose magnitudes are bounded by $1$, we can state
 \[\abs{R_n(x)}\leq \frac{1}{(n+1)!}\abs{x}^{n+1}\]
@@ -87,7 +92,8 @@ which implies
  -\frac{\abs{x}^{n+1}}{(n+1)!} \leq R_n(x) \leq\frac{\abs{x}^{n+1}}{(n+1)!}.\label{eq:coseqtaylor}
 \end{equation}
 For any $x$, $\ds\lim_{n\to\infty} \frac{x^{n+1}}{(n+1)!} = 0$. Applying the Squeeze Theorem to \autoeqref{eq:coseqtaylor}, we conclude that $\ds \lim_{n\to\infty} R_n(x) = 0$ for all $x$, and hence
-\[\cos x = \sum_{n=0}^\infty (-1)^{n}\frac{x^{2n}}{(2n)!}\quad \text{for all $x$}.\eoehere\]}
+\[\cos x = \sum_{n=0}^\infty (-1)^{n}\frac{x^{2n}}{(2n)!}\quad \text{for all $x$}.\]
+\end{example}
 
 It is natural to assume that a function is  equal to its Taylor series on the series' interval of convergence, but this is not the case. In order to properly establish equality, one must use \autoref{thm:function_series_equality}. This is a bit disappointing, as we developed beautiful techniques for determining the interval of convergence of a power series, and proving that $R_n(x)\to 0$ can be cumbersome as it deals with high order derivatives of the function.
 
@@ -95,9 +101,10 @@ There is good news. A function $f(x)$ that is equal to its Taylor series, center
 
 We develop the Taylor series for one more important function, then give a table of the Taylor series for a number of common functions.\index{Binomial Series}\index{series!Binomial}
 
-\example{ex_ts4}{The Binomial Series}
-{Find the Maclaurin series of $f(x) = (1+x)^k$, $k\neq 0$.}
-{When $k$ is a positive integer, the Maclaurin series is finite. For instance, when $k=4$, we have 
+\begin{example}[The Binomial Series]\label{ex_ts4}
+Find the Maclaurin series of $f(x) = (1+x)^k$, $k\neq 0$.
+\solution
+When $k$ is a positive integer, the Maclaurin series is finite. For instance, when $k=4$, we have 
 \[f(x) = (1+x)^4 = 1+4x+6x^2+4x^3+x^4.\]
 The coefficients of $x$ when $k$ is a positive integer are known as the \emph{binomial coefficients}, giving the series we are developing its name.
 
@@ -135,7 +142,7 @@ The series converges absolutely when the limit of the Ratio Test is less than 1;
 
 While outside the scope of this text, the interval of convergence depends on the value of $k$. When $k>0$, the interval of convergence is $[-1,1]$. When $-1<k<0$, the interval of convergence is $(-1,1]$. If $k\leq -1$, the interval of convergence is $(-1,1)$.
 %When $x=1$, we can apply the Alternating Series Test and find the series converges. When $x=-1$, it can be shown (with some difficulty) that the series also converges. Therefore the interval of convergence is $[-1,1]$. We can apply \autoref{thm:function_series_equality} to prove equality between $f(x)$ and the series (or apply the discussion following the theorem). 
-}
+\end{example}
 
 We learned that Taylor polynomials offer a way of approximating a ``difficult to compute'' function with a polynomial. Taylor series offer a way of exactly representing a function with a series. One probably can see the use of a good approximation; is there any use of representing a function exactly as a series?
 
@@ -182,9 +189,10 @@ Let $\ds f(x) = \sum_{n=0}^\infty a_nx^n$ and $\ds g(x) = \sum_{n=0}^\infty b_nx
 \end{enumerate}
 \end{theorem}
 
-\example{ex_ts5}{Combining Taylor series}
-{Write out the first 3 terms of the Maclaurin Series for $f(x) = e^x\cos x$ using \autoref{idea:common_taylor} and \autoref{thm:series_alg}.}
-{\autoref{idea:common_taylor} informs us that 
+\begin{example}[Combining Taylor series]\label{ex_ts5}
+Write out the first 3 terms of the Maclaurin Series for $f(x) = e^x\cos x$ using \autoref{idea:common_taylor} and \autoref{thm:series_alg}.
+\solution
+\autoref{idea:common_taylor} informs us that 
 \[e^x = 1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\dotsb\qquad \text{and}\qquad \cos x = 1-\frac{x^2}{2!}+\frac{x^4}{4!}+\dotsb.\]
 Applying \autoref{thm:series_alg}, we find that
 \begin{align*}
@@ -200,11 +208,12 @@ e^x\cos x &= \left(1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\dotsb\right)\left(1-\frac{
 \end{align*}
 While this process is a bit tedious, it is much faster than evaluating all the necessary derivatives of $e^x\cos x$ and computing the Taylor series directly.
 
-Because the series for $e^x$ and $\cos x$ both converge on $(-\infty,\infty)$, so does the series expansion for $e^x\cos x$.}
+Because the series for $e^x$ and $\cos x$ both converge on $(-\infty,\infty)$, so does the series expansion for $e^x\cos x$.
+\end{example}
 
-\example{ex_ts6}{Creating new Taylor series}
-{Use \autoref{thm:series_alg} to create the Taylor series for $y=\sin(x^2)$ centered at $x=0$ and a series for $y=\ln (\sqrt{x})$ centered at $c=1$.}
-{Given that 
+\begin{example}[Creating new Taylor series]\label{ex_ts6}
+Use \autoref{thm:series_alg} to create the Taylor series for $y=\sin(x^2)$ centered at $x=0$ and a series for $y=\ln (\sqrt{x})$ centered at $c=1$.
+Given that 
 \[\sin x = \sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{(2n+1)!} = x-\frac{x^3}{3!}+\frac{x^5}{5!} -\frac{x^7}{7!}+\dotsb,\]
 we simply substitute $x^2$ for $x$ in the series, giving
 \[
@@ -218,12 +227,13 @@ With
 \mnote{\textbf{Note:} In \autoref{ex_ts6}, one could create a series for $\ln(\sqrt{x})$ by simply recognizing that $\ln(\sqrt{x}) = \ln (x^{1/2}) = 1/2\ln x$, and hence multiplying the Taylor series for $\ln x$ by $1/2$. This example was chosen to demonstrate other aspects of series, such as the fact that the interval of convergence changes.}
 we substitute $\sqrt{x}$ for $x$ to obtain
 \[\ln (\sqrt{x}) = \sum_{n=1}^\infty(-1)^{n+1}\frac{(\sqrt{x}-1)^n}{n} = (\sqrt{x}-1)- \frac{(\sqrt{x}-1)^2}{2} +\frac{(\sqrt{x}-1)^3}{3}-\dotsb.\]
-While this is not strictly a power series because of the $\sqrt x$, it is a series that allows us to study the function $\ln(\sqrt{x})$. Since the interval of convergence of $\ln x$ is $(0,2]$, and the range of $\sqrt{x}$ on $(0,4]$ is $(0,2]$, the interval of convergence of this series expansion of $\ln(\sqrt{x})$ is $(0,4]$.}
+While this is not strictly a power series because of the $\sqrt x$, it is a series that allows us to study the function $\ln(\sqrt{x})$. Since the interval of convergence of $\ln x$ is $(0,2]$, and the range of $\sqrt{x}$ on $(0,4]$ is $(0,2]$, the interval of convergence of this series expansion of $\ln(\sqrt{x})$ is $(0,4]$.
+\end{example}
 
-\example{ex_ts7}{Using Taylor series to evaluate definite integrals}
-{Use the Taylor series of $e^{-x^2}$ to evaluate $\ds \int_0^1e^{-x^2}\ dx$.
-}
-{We learned, when studying Numerical Integration, that $e^{-x^2}$ does not have an antiderivative expressible in terms of elementary functions. This means any definite integral of this function must have its value approximated, and not computed exactly.
+\begin{example}[Using Taylor series to evaluate definite integrals]\label{ex_ts7}
+Use the Taylor series of $e^{-x^2}$ to evaluate $\ds \int_0^1e^{-x^2}\ dx$.
+\solution
+We learned, when studying Numerical Integration, that $e^{-x^2}$ does not have an antiderivative expressible in terms of elementary functions. This means any definite integral of this function must have its value approximated, and not computed exactly.
 
 We can quickly write out the Taylor series for $e^{-x^2}$ using the Taylor series of $e^x$:
 \begin{align*}
@@ -237,18 +247,21 @@ We use \autoref{thm:calc_power_series} to integrate:
 \[\int e^{-x^2}\ dx = C + x - \frac{x^3}{3}+\frac{x^5}{5\cdot2!}-\frac{x^7}{7\cdot3!}+\dotsb +(-1)^n\frac{x^{2n+1}}{(2n+1)n!}+\dotsb\]
 This \emph{is} the antiderivative of $e^{-x^2}$; while we can write it out as a series, we cannot write it out in terms of elementary functions. We can evaluate the definite integral $\ds \int_0^1e^{-x^2}\ dx$ using this antiderivative; substituting 1 and 0 for $x$ and subtracting gives
 \[\int_0^1e^{-x^2}\ dx = 1-\frac{1}{3}+\frac{1}{5\cdot 2!}-\frac{1}{7\cdot3!} + \frac{1}{9\cdot4!}-\dotsb.\]
-Summing the 5 terms shown above gives the approximation of $0.74749.$ Since this is an alternating series, we can use the Alternating Series Approximation Theorem, (\autoref{thm:alt_series_approx}), to determine how accurate this approximation is. The next term of the series is $ 1/(11\cdot5!) \approx 0.00075758$. Thus we know our approximation is within $0.00075758$ of the actual value of the integral. This is arguably much less work than using Simpson's Rule to approximate the value of the integral.}
+Summing the 5 terms shown above gives the approximation of $0.74749.$ Since this is an alternating series, we can use the Alternating Series Approximation Theorem, (\autoref{thm:alt_series_approx}), to determine how accurate this approximation is. The next term of the series is $ 1/(11\cdot5!) \approx 0.00075758$. Thus we know our approximation is within $0.00075758$ of the actual value of the integral. This is arguably much less work than using Simpson's Rule to approximate the value of the integral.
+\end{example}
 
 Another advantage to using Taylor series instead of Simpson's Rule is for making subsequent approximations.  We found in \autoref{ex_num7} that the error in using Simpson's Rule for $\ds\int_0^1 e^{-x^2}\ dx$ with four intervals was $0.00026$.  If we wanted to decrease that error, we would need to use more intervals, essentially starting the problem over.  Using a Taylor series, if we wanted a more accurate approximation, we can just subtract the next term $1/(11\cdot5!)$ to get an approximation of $0.7467$, with an error of at most $1/(13\cdot6!)\approx0.0001$.\bigskip
 
-%\example{ex_ts8}{Using Taylor series to solve differential equations}
-%{Solve the differential equation $y\primeskip'=2y$ in terms of a power series, and use the theory of Taylor series to recognize the solution in terms of an elementary function.}
-%{We found the first 5 terms of the power series solution to this differential equation in \autoref{ex_ps5} in \autoref{sec:power_series}. These are:
+%\begin{example}[Using Taylor series to solve differential equations]\label{ex_ts8}
+%Solve the differential equation $y\primeskip'=2y$ in terms of a power series, and use the theory of Taylor series to recognize the solution in terms of an elementary function.
+%\solution
+%We found the first 5 terms of the power series solution to this differential equation in \autoref{ex_ps5} in \autoref{sec:power_series}. These are:
 %\[a_0=1,\quad a_1 = 2,\quad a_2 = \frac42=2,\quad a_3=\frac{8}{2\cdot3}=\frac43,\quad a_4=\frac{16}{2\cdot3\cdot4} = \frac23.\]
 %We include the ``unsimplified'' expressions for the coefficients found in \autoref{ex_ps5} as we are looking for a pattern. It can be shown that $a_n = 2^n/n!$. Thus the solution, written as a power series, is
 %\[y = \sum_{n=0}^\infty \frac{2^n}{n!}x^n = \sum_{n=0}^\infty \frac{(2x)^n}{n!}.\]
 %Using \autoref{idea:common_taylor} and \autoref{thm:series_alg}, we recognize $f(x) = e^{2x}$:
-%\[e^x = \sum_{n=0}^\infty \frac{x^n}{n!} \qquad \Rightarrow \qquad e^{2x} = \sum_{n=0}^\infty \frac{(2x)^n}{n!}.\]}
+%\[e^x = \sum_{n=0}^\infty \frac{x^n}{n!} \qquad \Rightarrow \qquad e^{2x} = \sum_{n=0}^\infty \frac{(2x)^n}{n!}.\]
+%\end{example}
 
 Finding a pattern in the coefficients that match the series expansion of a known function, such as those shown in \autoref{idea:common_taylor}, can be difficult. What if the coefficients %in the previous example were
 are given in their reduced form; how could we still recover the function?% $y=e^{2x}$?

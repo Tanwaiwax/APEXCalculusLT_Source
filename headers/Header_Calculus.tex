@@ -262,9 +262,11 @@
 	\mnote[#1]{\centering\small#4\captionof{figure}{#2}\label{#3}}
 }
 
+\usepackage[noadjust]{marginnote}
+
 % \mnote[offset=0]{contents}
-\newcommand{\mnote}[2][0pt]{%
-	\marginpar{\vspace{#1}%
+\newcommand*{\mnote}[2][0pt]{%
+	\marginnote{%
 		\begin{minipage}[c]{\marginparwidth}
 			\captionsetup{type=figure}%
 			\testmargintop%
@@ -273,8 +275,8 @@
 			#2\ifhmode\unskip\fi
 			\testmarginbottom%
 			%\makebox[0pt]{\tikz\draw(0,0)circle(2pt);}
-		\end{minipage}%
-}}
+		\end{minipage}}[#1]%
+}
 % mnote was in apex_style.sty
 
 

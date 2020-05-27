@@ -2,6 +2,9 @@
 
 We are often interested in knowing the area of a region. Forget momentarily that we addressed this already in \autoref{sec:FTC} and approach it instead using the technique described in \autoref{idea:app_of_defint}. 
 
+\bgroup % leaving newcommand in the mtable causes errors
+\newcommand{\f}[1]{.25*sin(deg(2*#1))+1.25}
+\newcommand{\g}[1]{.25*(#1-2)^2+.2}
 \mtable[-3in]{Subdividing a region into vertical slices and approximating the areas with rectangles.}{fig:abcintro}{\small%
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -18,7 +21,8 @@ ymin=-.2,ymax=2,xmin=-.5,xmax=3.5]
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}
-\\ (a)\\
+\\ (a)
+\\
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick=\empty,
@@ -38,14 +42,13 @@ ymin=-.2,ymax=2,xmin=-.5,xmax=3.5]
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}
-\\(b)\\
+\\(b)
+\\
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick=\empty,
 extra x ticks={.5,3},extra x tick labels={$a$,$b$},ytick=\empty,
 ymin=-.2,ymax=2,xmin=-.5,xmax=3.5]
-\newcommand{\f}[1]{.25*sin(deg(2*#1))+1.25}
-\newcommand{\g}[1]{.25*(#1-2)^2+.2}
 \addplot[smooth,draw={\coloronefill},fill={\coloronefill},area style,domain=.5:3]
  {\f{x}}\closedcycle;
 \addplot[smooth,draw=white,fill=white,area style,domain=.5:3]
@@ -65,7 +68,9 @@ ymin=-.2,ymax=2,xmin=-.5,xmax=3.5]
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}
-\\ (c)}
+\\ (c)
+}
+\egroup
 
 Let $Q$ be the area of a region bounded by continuous functions $f$ and $g$. If we break the region into many subregions, we have an obvious equation:
 \begin{center}
@@ -88,8 +93,10 @@ Often, we do not know which function is greater (or they switch within the domai
 
 \youtubeVideo{DRFyNHdVgUA}{Finding Areas Between Curves}
 
-\example{ex_abc1}{Finding area enclosed by curves}{Find the area of the region bounded by $f(x) = \sin x+2$, $g(x) = \frac12\cos (2x)-1$, $x=0$ and $x=4\pi$, as shown in \autoref{fig:abc1}.}
-{\mtable{Graphing an enclosed region in \autoref{ex_abc1}.}{fig:abc1}{\begin{tikzpicture}
+\begin{example}[Finding area enclosed by curves]\label{ex_abc1}
+Find the area of the region bounded by $f(x) = \sin x+2$, $g(x) = \frac12\cos (2x)-1$, $x=0$ and $x=4\pi$, as shown in \autoref{fig:abc1}.
+\solution
+\mtable{Graphing an enclosed region in \autoref{ex_abc1}.}{fig:abc1}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,extra x ticks={12.57},
 extra x tick labels={$4\pi$},ymin=-2,ymax=3.5,xmin=-.5,xmax=13.5]
@@ -112,12 +119,15 @@ The graph verifies that the upper boundary of the region is given by $f$ and the
 	& = \int_0^{4\pi} \Big(\sin x+2 - \big(\frac12\cos (2x)-1\big)\Big)\ dx \\
 	&= -\cos x -\frac14\sin(2x)+3x\Big|_0^{4\pi}\\
 	&=	12\pi %\approx 37.7
-	\ \text{units}^2.\eoehere
-\end{align*}}
+	\ \text{units}^2.
+\end{align*}
+\end{example}
 
 % originally in FTC section
-\example{ex_ftc6}{Finding area between curves}{Find the area of the region enclosed by $y=x^2+x-5$ and $y=3x-2$.}
-{It will help to sketch these two functions, as done in \autoref{fig:ftc6}. 
+\begin{example}[Finding area between curves]\label{ex_ftc6}
+Find the area of the region enclosed by $y=x^2+x-5$ and $y=3x-2$.
+\solution
+It will help to sketch these two functions, as done in \autoref{fig:ftc6}. 
 \mtable{Sketching the region enclosed by $y=x^2+x-5$ and $y=3x-2$ in \autoref{ex_ftc6}.}{fig:ftc6}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={-2,-1,1,2,3,4},
@@ -143,8 +153,9 @@ Following \autoref{thm:areabetweencurves}, the area is
 	\int_{-1}^3\big(3x-2 -(x^2+x-5)\big)\ dx &= \int_{-1}^3 (-x^2+2x+3)\ dx \\
 	&=\left.\left(-\frac13x^3+x^2+3x\right)\right|_{-1}^3 \\
 	&=-\frac13(27)+9+9-\left(\frac13+1-3\right)\\
-	&= 10\frac23 = 10.\overline{6}\eoehere
-\end{align*}}
+	&= 10\frac23 = 10.\overline{6}
+\end{align*}
+\end{example}
 
 \mtable{Graphing a region enclosed by two functions in \autoref{ex_abc2}.}{fig:abc2}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -169,8 +180,10 @@ ymin=-5,ymax=3.5,xmin=-.5,xmax=4.7]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-\example{ex_abc2}{Finding total area enclosed by curves}{Find the total area of the region enclosed by the functions $f(x) = -2x+5$ and $g(x) = x^3-7x^2+12x-3$ as shown in \autoref{fig:abc2}.}
-{A quick calculation shows that $f=g$ at $x=1, 2$ and 4. One can proceed thoughtlessly by computing $\ds \int_1^4\big(f(x)-g(x)\big)\ dx$, but this ignores the fact that on $[1,2]$, $g(x)>f(x)$. (In fact, the thoughtless integration returns $-9/4$, hardly the expected value of an \textit{area}.) Thus we compute the total area by breaking the interval $[1,4]$ into two subintervals, $[1,2]$ and $[2,4]$ and using the proper integrand in each.
+\begin{example}[Finding total area enclosed by curves]\label{ex_abc2}
+Find the total area of the region enclosed by the functions $f(x) = -2x+5$ and $g(x) = x^3-7x^2+12x-3$ as shown in \autoref{fig:abc2}.
+\solution
+A quick calculation shows that $f=g$ at $x=1, 2$ and 4. One can proceed thoughtlessly by computing $\ds \int_1^4\big(f(x)-g(x)\big)\ dx$, but this ignores the fact that on $[1,2]$, $g(x)>f(x)$. (In fact, the thoughtless integration returns $-9/4$, hardly the expected value of an \textit{area}.) Thus we compute the total area by breaking the interval $[1,4]$ into two subintervals, $[1,2]$ and $[2,4]$ and using the proper integrand in each.
 \begin{align*}
 	\text{Total Area}
 	&= \int_1^2 \big(g(x)-f(x)\big)\ dx + \int_2^4\big(f(x)-g(x)\big)\ dx\\
@@ -178,15 +191,18 @@ ymin=-5,ymax=3.5,xmin=-.5,xmax=4.7]
 	+ \int_2^4\big(-x^3+7x^2-14x+8\big)\ dx\\
 	&= \frac5{12} + \frac83 \\
 	&= \frac{37}{12} % \approx 3.083
-	\ \text{units}^2.\eoehere
-\end{align*}}
+	\ \text{units}^2.
+\end{align*}
+\end{example}
 
 The previous example makes note that we are expecting area to be \textit{positive}. When first learning about the definite integral, we interpreted it as ``signed area under the curve,'' allowing for ``negative area.'' That doesn't apply here; area is to be positive.
 
 The previous example also demonstrates that we often have to break a given region into subregions before applying \autoref{thm:areabetweencurves}. The following example shows another situation where this is applicable, along with an alternate view of applying the Theorem.
 
-\example{ex_abc3}{Finding area: integrating with respect to $y$}{Find the area of the region enclosed by the functions $y=\sqrt{x}+2$, $y=-(x-1)^2+3$ and $y=2$, as shown in \autoref{fig:abc3}.}
-{We give two approaches to this problem. In the first approach, we notice that the region's ``top'' is defined by two different curves. On $[0,1]$, the top function is $y=\sqrt{x}+2$; on $[1,2]$, the top function is $y=-(x-1)^2+3$. Thus we compute the area as the sum of two integrals:
+\begin{example}[Finding area: integrating with respect to $y$]\label{ex_abc3}
+Find the area of the region enclosed by the functions $y=\sqrt{x}+2$, $y=-(x-1)^2+3$ and $y=2$, as shown in \autoref{fig:abc3}.
+\solution
+We give two approaches to this problem. In the first approach, we notice that the region's ``top'' is defined by two different curves. On $[0,1]$, the top function is $y=\sqrt{x}+2$; on $[1,2]$, the top function is $y=-(x-1)^2+3$. Thus we compute the area as the sum of two integrals:
 
 \mtable{Graphing a region for \autoref{ex_abc3}.}{fig:abc3}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -247,11 +263,13 @@ The area is found by integrating the above function with respect to $y$ with the
 	&= \Big(-\frac23(3-y)^{3/2}+y-\frac13(y-2)^3\Big)\Big|_2^3 \\
 	&= 4/3.
 \end{align*}
-The important thing to notice is that by integrating with respect to $y$ instead of $x$, we only had to do one integral and did not need to find the point at which to switch from one integration to another.}
+The important thing to notice is that by integrating with respect to $y$ instead of $x$, we only had to do one integral and did not need to find the point at which to switch from one integration to another.
+\end{example}
 
 This calculus-based technique of finding area can be useful even with shapes that we normally think of as ``easy.'' \autoref{ex_abc4} computes the area of a triangle. While the formula ``$\frac12\times\text{base}\times\text{height}$'' is well known, in arbitrary triangles it can be nontrivial to compute the height. Calculus makes the problem simple.
 
-\example{ex_abc4}{Finding the area of a triangle}{Compute the area of the regions bounded by the lines
+\begin{example}[Finding the area of a triangle]\label{ex_abc4}
+Compute the area of the regions bounded by the lines
 \mtable{Graphing a triangular region in \autoref{ex_abc4}.}{fig:abc4}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,axis equal,
 	tick label style={font=\scriptsize},axis y line=middle,axis x line=middle,
@@ -266,8 +284,9 @@ This calculus-based technique of finding area can be useful even with shapes tha
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
-$y=3-x$, $y=x+1$ and $y=5x-15$, as shown in \autoref{fig:abc4}.}
-{Recognize that there are two ``bottom'' functions to this region, causing us to use two definite integrals.
+$y=3-x$, $y=x+1$ and $y=5x-15$, as shown in \autoref{fig:abc4}.
+\solution
+Recognize that there are two ``bottom'' functions to this region, causing us to use two definite integrals.
 \begin{align*}
 	\text{Total Area}
 	&= \int_1^3\bigl((x+1)-(3-x)\bigr)\ dx + \int_3^4\bigl((x+1)-(5x-15)\bigr)\ dx \\
@@ -291,13 +310,16 @@ The ``top'' function is always $x=\frac y5+3$ while there are two ``bottom'' fun
 %	&= \frac{30}5 \\
 	&= 6.
 \end{align*}
-Of course, the final answer is the same (and we see that integrating with respect to $x$ was probably easier, since it avoided fractions).}
+Of course, the final answer is the same (and we see that integrating with respect to $x$ was probably easier, since it avoided fractions).
+\end{example}
 
 % move this to numerical integration?
 %While we have focused on producing exact answers, we are also able to make approximations using the principle of \autoref{thm:areabetweencurves}. The integrand in the theorem is a distance (``top minus bottom''); integrating this distance function gives an area. By taking discrete measurements of distance, we can approximate an area using numerical integration techniques developed in \autoref{sec:numerical_integration}. The following example demonstrates this.
 %
-%\example{ex_abc5}{Numerically approximating area}{To approximate the area of a lake, shown in \autoref{fig:abc5}(a),  the ``length'' of the lake is measured at 200-foot increments as shown in \autoref{fig:abc5}(b), where the lengths are given in hundreds of feet. Approximate the area of the lake.}
-%{The measurements of length can be viewed as measuring ``top minus bottom'' of two functions. The exact answer is found by integrating $\ds \int_0^{12} \big(f(x)-g(x)\big)\ dx$, but of course we don't know the functions $f$ and $g$. Our discrete measurements instead allow us to approximate.
+%\begin{example}[Numerically approximating area]\label{ex_abc5}
+%To approximate the area of a lake, shown in \autoref{fig:abc5}(a),  the ``length'' of the lake is measured at 200-foot increments as shown in \autoref{fig:abc5}(b), where the lengths are given in hundreds of feet. Approximate the area of the lake.
+%\solution
+%The measurements of length can be viewed as measuring ``top minus bottom'' of two functions. The exact answer is found by integrating $\ds \int_0^{12} \big(f(x)-g(x)\big)\ dx$, but of course we don't know the functions $f$ and $g$. Our discrete measurements instead allow us to approximate.
 %
 %\mtable{(a) A sketch of a lake, and (b) the lake with length measurements.}{fig:abc5}{\begin{tikzpicture}[scale=.4]%[width=1.16\marginparwidth]
 %\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -332,7 +354,8 @@ Of course, the final answer is the same (and we see that integrating with respec
 %	&= 44.01\overline{3} \ \text{units}^2.
 %\end{align*}
 %
-%Since the measurements are in hundreds of feet, units${}^2 = (100\ \text{ft})^2 = 10,000\ \text{ft}^2$, giving a total area of $440,133\ \text{ft}^2$. (Since we are approximating, we'd likely say the area was about $440,000\ \text{ft}^2$, which is a little more than 10 acres.)}
+%Since the measurements are in hundreds of feet, units${}^2 = (100\ \text{ft})^2 = 10,000\ \text{ft}^2$, giving a total area of $440,133\ \text{ft}^2$. (Since we are approximating, we'd likely say the area was about $440,000\ \text{ft}^2$, which is a little more than 10 acres.)
+%\end{example}
 
 In the next section we apply \autoref{idea:app_of_defint} to finding the volumes of certain solids.
 

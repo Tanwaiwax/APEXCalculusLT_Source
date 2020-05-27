@@ -44,8 +44,10 @@ Let $z=f(x,y)$ be a continuous function on an open set $S$ in $\mathbb{R}^2$.
 
 \youtubeVideo{SbfRDBmyAMI}{Partial Derivatives}
 
-\example{ex_partial1}{Computing partial derivatives with the limit definition}{Let $f(x,y) = x^2y + 2x+y^3$. Find $f_x(x,y)$ using the limit definition.}
-{Using \autoref{def:partial_derivative}, we have:
+\begin{example}[Computing partial derivatives with the limit definition]\label{ex_partial1}
+Let $f(x,y) = x^2y + 2x+y^3$. Find $f_x(x,y)$ using the limit definition.
+\solution
+Using \autoref{def:partial_derivative}, we have:
 \begin{align*}
 f_x(x,y) &= \lim_{h\to 0} \frac{f(x+h,y) - f(x,y)}{h} \\
 				&= \lim_{h\to 0} \frac{(x+h)^2y+2(x+h)+y^3 - (x^2y+2x+y^3)}{h}\\
@@ -54,7 +56,8 @@ f_x(x,y) &= \lim_{h\to 0} \frac{f(x+h,y) - f(x,y)}{h} \\
 				&=\lim_{h\to 0}(2xy+hy+2)\\
 				&= 2xy+2.
 \end{align*}
-We have found $f_x(x,y) = 2xy+2$.}
+We have found $f_x(x,y) = 2xy+2$.
+\end{example}
 
 \autoref{ex_partial1} found a partial derivative using the formal, limit-based definition. Using limits is not necessary, though, as we can rely on our previous knowledge of derivatives to compute partial derivatives easily. When computing $f_x(x,y)$, we hold $y$ fixed --- it does not vary. Therefore we can compute the derivative with respect to $x$ by treating $y$ as a constant or coefficient. 
 
@@ -62,13 +65,15 @@ Just as $\frac{d}{dx}\big(5x^2\big) = 10x$, we compute $\frac{\partial}{\px}\big
 
 Just as $\frac{d}{dx}\big(5^3\big) = 0$, we compute $\frac{\partial}{\px}\big(y^3\big) = 0.$ Here we are treating $y$ as a constant. More examples will help make this clear.
 
-\example{ex_partial2}{Finding partial derivatives}{Find $f_x(x,y)$ and $f_y(x,y)$ in each of the following.
+\begin{example}[Finding partial derivatives]\label{ex_partial2}
+Find $f_x(x,y)$ and $f_y(x,y)$ in each of the following.
 \begin{enumerate}
 	\item $f(x,y) = x^3y^2+ 5y^2-x+7$
 	\item	$f(x,y) = \cos(xy^2)+\sin x$
 	\item	$f(x,y) = e^{x^2y^3}\sqrt{x^2+1}$
-\end{enumerate}}
-{\mbox{}\\[-1.5\baselineskip]\begin{enumerate}
+\end{enumerate}
+\solution
+\begin{enumerate}
 	\item We have $f(x,y) = x^3y^2+ 5y^2-x+7$.\\
 	Begin with $f_x(x,y)$. Keep $y$ fixed, treating it as a constant or coefficient, as appropriate:
 	\[f_x(x,y) = 3x^2y^2-1.\]
@@ -91,8 +96,9 @@ Just as $\frac{d}{dx}\big(5^3\big) = 0$, we compute $\frac{\partial}{\px}\big(y^
 					&= 2xy^3e^{x^2y^3}\sqrt{x^2+1}+\frac{x e^{x^2y^3}}{\sqrt{x^2+1}}.
 	\end{align*}
 	Note that when finding $f_y(x,y)$ we do not have to apply the Product Rule; since $\sqrt{x^2+1}$ does not contain $y$, we treat it as fixed and hence becomes a coefficient of the $e^{x^2y^3}$ term.
-	\[f_y(x,y) = e^{x^2y^3}(3x^2y^2)\sqrt{x^2+1} = 3x^2y^2e^{x^2y^3}\sqrt{x^2+1}.\eoehere\]
-\end{enumerate}}
+	\[f_y(x,y) = e^{x^2y^3}(3x^2y^2)\sqrt{x^2+1} = 3x^2y^2e^{x^2y^3}\sqrt{x^2+1}.\]
+\end{enumerate}
+\end{example}
 
 We have shown \textit{how} to compute a partial derivative, but it may still not be clear what a partial derivative \textit{means}. Given $z=f(x,y)$, $f_x(x,y)$ measures the rate at which $z$ changes as only $x$ varies: $y$ is held constant. \index{partial derivative!meaning}
 
@@ -100,8 +106,10 @@ Imagine standing in a rolling meadow, then beginning to walk due east. Depending
 
 The following example helps us visualize this more.
 
-\example{ex_partial3}{Evaluating partial derivatives}{Let $z=f(x,y)=-x^2-\frac12y^2+xy+10$. Find $f_x(2,1)$ and $f_y(2,1)$ and interpret their meaning.}
-{We begin by computing $f_x(x,y) = -2x+y$ and $f_y(x,y) = -y+x$. Thus
+\begin{example}[Evaluating partial derivatives]\label{ex_partial3}
+Let $z=f(x,y)=-x^2-\frac12y^2+xy+10$. Find $f_x(2,1)$ and $f_y(2,1)$ and interpret their meaning.
+\solution
+We begin by computing $f_x(x,y) = -2x+y$ and $f_y(x,y) = -y+x$. Thus
 \[f_x(2,1) = -3 \quad \text{and}\quad f_y(2,1) = 1.\]
 It is also useful to note that $f(2,1) = 7.5$. What does each of these numbers mean?
 
@@ -125,7 +133,8 @@ Consider $f_x(2,1)=-3$, along with \autoref{fig:partial3}(a). If one ``stands'' 
 
 Now consider $f_y(2,1)=1$, illustrated in \autoref{fig:partial3}(b). Moving along the curve drawn on the surface, i.e., parallel to the $y$-axis and not changing the $x$-values, increases the $z$-value instantaneously at a rate of 1. Increasing the $y$-value by 1 would increase the $z$-value by approximately 1.
 
-Since the magnitude of $f_x$ is greater than the magnitude of $f_y$ at $(2,1)$, it is ``steeper'' in the $x$-direction than in the $y$-direction.}
+Since the magnitude of $f_x$ is greater than the magnitude of $f_y$ at $(2,1)$, it is ``steeper'' in the $x$-direction than in the $y$-direction.
+\end{example}
 
 
 \subsection{Second Partial Derivatives}
@@ -153,21 +162,21 @@ The second partial derivatives $f_{xy}$ and $f_{yx}$ are \textbf{mixed partial d
 \index{partial derivative!mixed}\index{partial derivative!second derivative}\index{derivative!mixed partial}
 \end{definition}
 
-\mnote{\textbf{Note:} The terms in \autoref{def:second_partial} all depend on limits, so each definition comes with the caveat ``where the limit exists.''
-
+\mnote{\textbf{Note:} The terms in \autoref{def:second_partial} all depend on limits, so each definition comes with the caveat ``where the limit exists.''\bigskip\\
 The way to keep track of the order is to start with the variable nearest to the function.  Unfortunately, this means that while $\frac{\partial^2f}{\partial y\partial x}=f_{xy}$ both mean ``differentiate with respect to $x$ first'', the $x$ and $y$ appear in a different order.  Fortunately \autoref{thm:mixed_partial} will soon tell us that the order doesn't usually matter.}
 
 The notation of second partial derivatives gives some insight into the notation of the second derivative of a function of a single variable. If $y=f(x)$, then $\ds \fp'(x) = \frac{d^2 y}{dx^2}$. The ``$d^2y$'' portion means ``take the derivative of $y$ twice,'' while ``$dx^2$'' means ``with respect to $x$ both times.'' When we only know of functions of a single variable, this latter phrase seems silly: there is only one variable to take the derivative with respect to. Now that we understand functions of multiple variables, we see the importance of specifying which variables we are referring to.
 
-\example{ex_partial6}{Second partial derivatives}{For each of the following, find all six first and second partial derivatives. That is, find 
+\begin{example}[Second partial derivatives]\label{ex_partial6}
+For each of the following, find all six first and second partial derivatives. That is, find 
 \[f_x,\quad f_y,\quad f_{xx},\quad f_{yy},\quad f_{xy}\quad \text{and}\quad f_{yx}\,.\]
 \begin{enumerate}
 	\item $f(x,y) = x^3y^2 + 2xy^3+\cos x$
 	\item	$\ds f(x,y) = \frac{x^3}{y^2}$
 %	\item	$f(x,y)=e^{x}\sin(x^2y)$
 \end{enumerate}
-}
-{In each, we give $f_x$ and $f_y$ immediately and then spend time deriving the second partial derivatives.
+\solution
+In each, we give $f_x$ and $f_y$ immediately and then spend time deriving the second partial derivatives.
 \begin{enumerate}
 	\item\mbox{}\\[-2\baselineskip]
 	\begin{align*}
@@ -201,7 +210,8 @@ The notation of second partial derivatives gives some insight into the notation 
 %	f_{xy}(x,y) &= x^2e^x\cos(x^2y)+2xe^x\cos(x^2y)-2x^3ye^x\sin(x^2y) \\
 %	f_{yx}(x,y) &= x^2e^x\cos(x^2y)+2xe^x\cos(x^2y)-2x^3ye^x\sin(x^2y)\eoehere
 %  \end{align*}
-\end{enumerate}}
+\end{enumerate}
+\end{example}
 
 Notice how in both of the functions in \autoref{ex_partial6}, $f_{xy} = f_{yx}$. Due to the complexity of the examples, this likely is not a coincidence. The following theorem states that it is not.
 
@@ -225,8 +235,10 @@ We now consider the mixed partials $f_{xy}$ and $f_{yx}$. The mixed partial $f_{
 
 The following example examines these ideas with concrete numbers and graphs.
 
-\example{ex_partial7}{Understanding second partial derivatives}{Let $z=x^2-y^2+xy$. Evaluate the 6 first and second partial derivatives at $(-1/2,1/2)$ and interpret what each of these numbers mean.}
-{We find that:
+\begin{example}[Understanding second partial derivatives]\label{ex_partial7}
+Let $z=x^2-y^2+xy$. Evaluate the 6 first and second partial derivatives at $(-1/2,1/2)$ and interpret what each of these numbers mean.
+\solution
+We find that:
 
 $f_x(x,y) = 2x+y$,\quad  $f_y(x,y) = -2y+x$,\quad $f_{xx}(x,y) = 2$, \quad $f_{yy}(x,y) = -2$ and $f_{xy}(x,y) = f_{yx}(x,y) = 1$. Thus at $(-1/2,1/2)$ we have 
 \[f_x(-1/2,1/2) = -1/2,\qquad f_y(-1/2,1/2) = -3/2.\]
@@ -252,7 +264,8 @@ Now consider only \autoref{fig:partial7}(a). Three directed tangent lines are dr
 
 Since $f_{xy}=f_{yx}$, we also expect $f_y$ to increase as $x$ increases. Consider \autoref{fig:partial7}(b) where again three directed tangent lines are drawn, this time each in the direction of $y$ with slopes determined by $f_y$. As $x$ increases, the slopes become less steep (closer to 0). Since these are negative slopes, this means the slopes are increasing.
 
-Thus far we have a visual understanding of $f_x$, $f_y$, and $f_{xy}=f_{yx}$. We now interpret $f_{xx}$ and $f_{yy}$. In \autoref{fig:partial7}(a), we see a curve drawn where $x$ is held constant at $x=-1/2$: only $y$ varies. This curve is clearly concave down, corresponding to the fact that $f_{yy}<0$. In part (b) of the figure, we see a similar curve where $y$ is constant and only $x$ varies. This curve is concave up, corresponding to the fact that $f_{xx}>0$.}
+Thus far we have a visual understanding of $f_x$, $f_y$, and $f_{xy}=f_{yx}$. We now interpret $f_{xx}$ and $f_{yy}$. In \autoref{fig:partial7}(a), we see a curve drawn where $x$ is held constant at $x=-1/2$: only $y$ varies. This curve is clearly concave down, corresponding to the fact that $f_{yy}<0$. In part (b) of the figure, we see a similar curve where $y$ is constant and only $x$ varies. This curve is concave up, corresponding to the fact that $f_{xx}>0$.
+\end{example}
 
 \subsection{Partial Derivatives and Functions of Three Variables}
 
@@ -272,12 +285,14 @@ The \textbf{partial derivative of $f$ with respect to $x$} is:
 
 By taking partial derivatives of partial derivatives, we can find second partial derivatives of $f$ with respect to $z$ then $y$, for instance, just as before.\\
 
-\example{ex_partial8}{Partial derivatives of functions of three variables}{For each of the following, find $f_x$,\ \ $f_y$,\ \ $f_z$,\ \  $f_{xz}$,\ \  $f_{yz}$, and $f_{zz}$.
+\begin{example}[Partial derivatives of functions of three variables]\label{ex_partial8}
+For each of the following, find $f_x$,\ \ $f_y$,\ \ $f_z$,\ \  $f_{xz}$,\ \  $f_{yz}$, and $f_{zz}$.
 \begin{enumerate}
 	\item $f(x,y,z) = x^2y^3z^4+x^2y^2+x^3z^3+y^4z^4$
 	\item	$f(x,y,z) = x\sin (yz)$
-\end{enumerate}}
-{\begin{enumerate}
+\end{enumerate}
+\solution
+\begin{enumerate}
 	\item\mbox{}\\[-2\baselineskip]
 	\begin{align*}
 	f_x &= 2xy^3z^4+2xy^2+3x^2z^3 & f_y &= 3x^2y^2z^4+2x^2y+4y^3z^4 \\
@@ -289,27 +304,28 @@ By taking partial derivatives of partial derivatives, we can find second partial
 	\begin{align*}
 	f_x &= \sin(yz) & f_y &= xz\cos(yz) & f_z &= xy\cos(yz) \\
 	f_{xz} &= y\cos(yz) & f_{yz} &= x\cos(yz) - xyz\sin(yz) & f_{zz} &= -xy^2\sin(xy)
-	\eoehere
 	\end{align*}
-\end{enumerate}}
+\end{enumerate}
+\end{example}
 
 \subsection{Higher Order Partial Derivatives}
 
 We can continue taking partial derivatives of partial derivatives of partial derivatives of \dotso; we do not have to stop with second partial derivatives. These higher order partial derivatives do not have a tidy graphical interpretation; nevertheless they are not hard to compute and worthy of some practice. 
 \index{partial derivative!high order}
 
-We do not formally define each higher order derivative, but rather give just a few examples of the notation.\\
+We do not formally define each higher order derivative, but rather give just a few examples of the notation.
 \begin{gather*}
 f_{xyx}(x,y)  =\frac{\partial}{\px}\left(\frac{\partial}{\py}\left(\frac{\pf}{\px}\right)\right) \quad \text{and}\\
 f_{xyz}(x,y,z)  =\frac{\partial}{\partial z}\left(\frac{\partial}{\py}\left(\frac{\pf}{\px}\right)\right).
 \end{gather*}
 
-\example{ex_partial9}{Higher order partial derivatives}{\mbox{}\\[-2\baselineskip]
+\begin{example}[Higher order partial derivatives]\label{ex_partial9}
 \begin{enumerate}
 	\item Let $f(x,y) = x^2y^2+\sin(xy)$. Find $f_{xxy}$ and $f_{yxx}$. 
 	\item Let $f(x,y,z) = x^3e^{xy}+\cos(z)$. Find $f_{xyz}$.
-\end{enumerate}}
-{\mbox{}\\[-1.5\baselineskip]\begin{enumerate}
+\end{enumerate}
+\solution
+\begin{enumerate}
 	\item To find $f_{xxy}$, we first find $f_x$, then $f_{xx}$, then $f_{xxy}$:
 	\begin{align*}
 	f_x &= 2xy^2+y\cos(xy) \quad\quad f_{xx} = 2y^2-y^2\sin(xy)\\
@@ -325,9 +341,10 @@ f_{xyz}(x,y,z)  =\frac{\partial}{\partial z}\left(\frac{\partial}{\py}\left(\fra
 	\item		To find $f_{xyz}$, we find $f_x$, then $f_{xy}$, then $f_{xyz}$:
 	\begin{align*}
 	f_x &= 3x^2e^{xy}+ x^3ye^{xy} \quad \quad f_{xy} = 3x^3e^{xy}+x^3e^{xy}+x^4ye^{xy} = 4x^3e^{xy}+x^4ye^{xy}\\
-	f_{xyz} &= 0.\eoehere
+	f_{xyz} &= 0.
 	\end{align*}
-\end{enumerate}}
+\end{enumerate}
+\end{example}
 
 In the previous example we saw that $f_{xxy} = f_{yxx}$; this is not a coincidence. While we do not state this as a formal theorem, as long as each partial derivative is continuous, it does not matter the order in which the partial derivatives are taken. For instance, $f_{xxy} = f_{xyx} = f_{yxx}$. 
 

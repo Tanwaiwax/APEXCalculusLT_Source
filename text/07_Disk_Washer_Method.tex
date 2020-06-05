@@ -13,12 +13,12 @@ Area of the base $\times$ height.
 3Droo=150}{width=.5\marginparwidth}{figures/figcross1_3D}}
 We can use this fact as the building block in finding volumes of a variety of shapes.
 
-Given an arbitrary solid, we can \textit{approximate} its volume by cutting it into $n$  thin slices. When the slices are thin, each slice can be approximated well by a general right cylinder. Thus the volume of each slice is approximately its cross-sectional area $\times$ thickness.
+Given an arbitrary solid, we can \emph{approximate} its volume by cutting it into $n$  thin slices. When the slices are thin, each slice can be approximated well by a general right cylinder. Thus the volume of each slice is approximately its cross-sectional area $\times$ thickness.
 % (These slices are the differential elements.)
 
 By orienting a solid along the $x$-axis, we can let $A(x_i)$ represent the cross-sectional area
 of the $i\,^\text{th}$ slice, and let $\Delta x$ represent the thickness of the slices (the thickness is a small change in $x$). The total volume of the solid is approximately:
-	\begin{align*} \text{Volume} &\approx \sum_{i=1}^n \Big[\text{Area}\ \times\ \text{thickness}\Big] \\
+	\begin{align*} \text{Volume} &\approx \sum_{i=1}^n \Bigl[\text{Area}\ \times\ \text{thickness}\Bigr] \\
 			&= \sum_{i=1}^n A(x_i)\Delta x.
 	\end{align*}
 	
@@ -124,7 +124,7 @@ Let a solid be enclosed by revolving the curve $y=f(x)$ from $x=a$ to $x=b$ arou
 \begin{example}[Finding volume using the Disk Method]\label{ex_disk1}
 Find the volume of the solid formed by revolving about the $x$-axis the region bounded by the curves $y=1/x$, $x=1$, $x=2$ and the $x$-axis.
 \solution
-A sketch can help us understand this problem. In \autoref{fig:disk1}(a) we have sketched the region we will be rotating.  In \autoref{fig:disk1}(b), the curve $y=1/x$ is sketched along with the sample slice, a disk, at $x$ with radius $R(x)=1/x$. In \autoref{fig:disk1}(c) the whole solid is pictured, along with the sample slice.
+A sketch is always useful in helping us understand the problem. In \autoref{fig:disk1}(a) we have sketched the region we will be rotating.  In \autoref{fig:disk1}(b), the curve $y=1/x$ is sketched along with the sample slice, a disk, at $x$ with radius $R(x)=1/x$. In \autoref{fig:disk1}(c) the whole solid is pictured, along with the sample slice.
 
 The volume of the sample slice shown in part (b) of the figure is approximately $\pi R(x_i)^2\Delta x$, where $R(x_i)$ is the radius of the disk shown and $\Delta x$ is the thickness of that slice. The radius $R(x_i)$ is the distance from the $x$-axis to the curve, hence $R(x_i) = 1/x_i$.
 
@@ -146,7 +146,7 @@ Taking the limit of the above sum as $n\to\infty$ gives the actual volume; recog
 
 While \autoref{idea:disk_method} is given in terms of functions of $x$, the principle involved can be applied to functions of $y$ when the axis of rotation is vertical, not horizontal. We demonstrate this in the next example.
 
-\mtable[-2in]{Sketching a solid in \autoref{ex_disk2}.}{fig:disk2}{%
+\mtable[-2.5in]{Sketching a solid in \autoref{ex_disk2}.}{fig:disk2}{%
   \begin{tikzpicture}
    \begin{axis}[width=1.16\marginparwidth,
      tick label style={font=\scriptsize},axis y line=middle,
@@ -254,7 +254,7 @@ One can generate a solid of revolution with a hole in the middle by revolving a 
 \begin{keyidea}[The Washer Method]\label{idea:washermethod}
 Let a region bounded by $y=f(x)$, $y=g(x)$, $x=a$ and $x=b$ be rotated about a horizontal axis that does not intersect the region, forming a solid. Each cross section at $x$ will be a washer with outside radius $R(x)$ and inside radius $r(x)$. The volume of the solid is
 \index{integration!volume!Washer Method}\index{Washer Method}
-\[V = \pi\int_a^b \Big([R(x)]^2-[r(x)]^2\Big)\ dx.\]
+\[V = \pi\int_a^b \Bigl([R(x)]^2-[r(x)]^2\Bigr)\ dx.\]
 \end{keyidea}
 
 Even though we introduced it first, the Disk Method is just a special case of the Washer Method with an inside radius of $r(x)=0$.
@@ -307,9 +307,9 @@ Find the volume of the solid formed by rotating the region bounded by $y=x^2-2x+
 \solution
 A sketch of the region will help, as given in \autoref{fig:wash1}(a). Rotating about the $x$-axis will produce cross sections in the shape of washers, as shown in \autoref{fig:wash1}(b); the complete solid is shown in part (c). The outside radius of this washer is $R(x) = 2x+1$; the inside radius is $r(x) = x^2-2x+2$. As the region is bounded from $x=1$ to $x=3$, we integrate as follows to compute the volume.
 \begin{align*}
-V &= \pi\int_1^3 \Big((2x-1)^2-(x^2-2x+2)^2\Big)\ dx \\
-		&= \pi\int_1^3 \big(-x^4+4x^3-4x^2+4x-3\big)\ dx \\
-		&= \pi\Big[-\frac{1}{5}x^5+x^4-\frac43x^3+2x^2-3x\Big]\Big|_1^3 \\
+V &= \pi\int_1^3 \Bigl((2x-1)^2-(x^2-2x+2)^2\Bigr)\ dx \\
+		&= \pi\int_1^3 \bigl(-x^4+4x^3-4x^2+4x-3\bigr)\ dx \\
+		&= \pi\Bigl[-\frac{1}{5}x^5+x^4-\frac43x^3+2x^2-3x\Bigr]\Big|_1^3 \\
 		&=\frac{104}{15}\pi %\approx 21.78
 		\ \text{units}^3.
 \end{align*}
@@ -426,9 +426,9 @@ The inside radius is formed by the line connecting $(1,1)$ and $(2,3)$. The equa
 
 We integrate over the $y$-bounds of $y=1$ to $y=3$. Thus the volume is
 \begin{align*}
-V 	&=	\pi\int_1^3\Big(2^2 - \big(\frac12(y+1)\big)^2\Big)\ dy \\
-		&=	\pi\int_1^3\Big(-\frac14y^2-\frac12y+\frac{15}4\Big)\ dy \\
-		&= 	\pi\Big[-\frac1{12}y^3-\frac14y^2+\frac{15}4y\Big]\Big|_1^3\\
+V 	&=	\pi\int_1^3\Bigl(2^2 - \bigl(\frac12(y+1)\bigr)^2\Bigr)\ dy \\
+		&=	\pi\int_1^3\Bigl(-\frac14y^2-\frac12y+\frac{15}4\Bigr)\ dy \\
+		&= 	\pi\Bigl[-\frac1{12}y^3-\frac14y^2+\frac{15}4y\Bigr]\Big|_1^3\\
 		&= \frac{10}3\pi %\approx 10.47
 		\ \text{units}^3.
 \end{align*}
@@ -493,6 +493,6 @@ The ultimate goal of this section is not to compute volumes of solids. That can 
 	\item	then use limits to establish a definite integral which gives the exact value.
 \end{itemize}
 
-We practice this principle in the next section where we find volumes by slicing solids in a different way.{
+We practice this principle in the next section where we find volumes by slicing solids in a different way.
 
 \printexercises{exercises/07_02_exercises}

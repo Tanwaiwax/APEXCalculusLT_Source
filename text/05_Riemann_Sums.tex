@@ -18,13 +18,13 @@ ytick={1,2,3,4},ymin=-1,ymax=5,xmin=-.5,xmax=4.5]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-We start by approximating. We can surround the region with a rectangle with height and width of 4 and find the area is approximately 16 square units. This is obviously an \textit{over-approximation}; we are including area in the rectangle that is not under the parabola. 
+We start by approximating. We can surround the region with a rectangle with height and width of 4 and find the area is approximately 16 square units. This is obviously an \emph{over-approximation}; we are including area in the rectangle that is not under the parabola. 
 
 %We can try to compensate for this over-estimate by reducing the height of the rectangle. This would leave out some area, but still include too much in other places. We'd be guessing, though, as to the ``best'' height to choose.
 
-We have an approximation of the area, using one rectangle. How can we refine our approximation to make it better? The key to this section is this answer: \textit{use more rectangles.}
+We have an approximation of the area, using one rectangle. How can we refine our approximation to make it better? The key to this section is this answer: \emph{use more rectangles.}
 
-Let's use 4 rectangles of equal width of 1. This \textit{partitions} the interval $[0,4]$ into 4 \textit{subintervals}, $[0,1]$, $[1,2]$, $[2,3]$ and $[3,4]$. On each subinterval we will draw a rectangle.
+Let's use 4 rectangles of equal width of 1. This \emph{partitions} the interval $[0,4]$ into 4 \emph{subintervals}, $[0,1]$, $[1,2]$, $[2,3]$ and $[3,4]$. On each subinterval we will draw a rectangle.
 
 There are three common ways to determine the height of these rectangles: the \textbf{Left Hand Rule}, the \textbf{Right Hand Rule}, and the \textbf{Midpoint Rule}. The \textbf{Left Hand Rule} says to evaluate the function at the left-hand endpoint of the subinterval and make the rectangle that height. In \autoref{fig:rie1b}, the rectangle drawn on the interval $[2,3]$ has height determined by the Left Hand Rule; it has a height of $f(2)$. (The rectangle is labeled ``LHR.'')\index{Left Hand Rule}\index{Right Hand Rule}\index{Midpoint Rule}
 
@@ -57,7 +57,7 @@ The \textbf{Right Hand Rule} says the opposite: on each subinterval, evaluate th
 
 The \textbf{Midpoint Rule} says that on each subinterval, evaluate the function at the midpoint and make the rectangle that height. The rectangle drawn on $[1,2]$ was made using the Midpoint Rule, with a height of $f(1.5)$. That rectangle is labeled ``MPR.''
 
-These are the three most common rules for determining the heights of approximating rectangles, but one is not forced to use one of these three methods. The rectangle on $[3,4]$ has a height of approximately $f(3.53)$, very close to the Midpoint Rule. It was chosen so that the area of the rectangle is \textit{exactly} the area of the region under $f$ on $[3,4]$. (Later you'll be able to figure how to do this, too.)
+These are the three most common rules for determining the heights of approximating rectangles, but one is not forced to use one of these three methods. The rectangle on $[3,4]$ has a height of approximately $f(3.53)$, very close to the Midpoint Rule. It was chosen so that the area of the rectangle is \emph{exactly} the area of the region under $f$ on $[3,4]$. (Later you'll be able to figure how to do this, too.)
 
 The following example will approximate the value of $\ds\int_0^4 (4x-x^2)\ dx$ using these rules.
 
@@ -267,7 +267,7 @@ Let the numbers $\{a_i\}$ be defined as $a_i = 2i-1$ for integers $i$, where $i\
 		\begin{align*}
 			\sum_{i=1}^4 (a_i)^2 &=	(a_1)^2+(a_2)^2+(a_3)^2+(a_4)^2\\
 			&=	1^2+3^2+5^2+7^2 \\
-			&=	84\eoehere
+			&=	84
 		\end{align*}
 \end{enumerate}
 \end{example}
@@ -277,30 +277,35 @@ It might seem odd to stress a new, concise way of writing summations only to wri
 {
 \tcbset{grow to right by=75pt}
 \begin{theorem}[Properties of Summations]\label{thm:summation}
-~\\[-\baselineskip]\noindent\begin{minipage}[t]{200pt}\index{summation!properties}
-\iflatexml\begin{enumerate}\lxAddClass{twoColumnList}\else\begin{enumerate}[series=summationprop]\fi
+\begin{multicols}{2}
+%~\\[-\baselineskip]\noindent\begin{minipage}[t]{200pt}
+\index{summation!properties}
+%\iflatexml
+\begin{enumerate}
+%\lxAddClass{twoColumnList}\else\begin{enumerate}[series=summationprop]\fi
 	\item	$\ds \sum_{i=1}^n c = c\cdot n$, where $c$ is a constant.
 	\item	$\ds \sum_{i=m}^n (a_i\pm b_i) = \sum_{i=m}^n a_i \pm \sum_{i=m}^n b_i$
 	\item	$\ds \sum_{i=m}^n c\cdot a_i = c\cdot\sum_{i=m}^n a_i$
 	\item	$\ds \sum_{i=m}^j a_i + \sum_{i=j+1}^n  a_i = \sum_{i=m}^n a_i$
-%	\item	$\ds \sum_{i=1}^n i = \frac{n(n+1)}2$
-%	\item	$\ds \sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}6$
-%	\item	$\ds \sum_{i=1}^n i^3 = \left(\frac{n(n+1)}2\right)^2$
-\iflatexml\else
-\end{enumerate}
-\end{minipage}%
-\begin{minipage}[t]{150pt}
-\begin{enumerate}[resume=summationprop]
-\fi
-%	\item	$\ds \sum_{i=1}^n c = c\cdot n$, where $c$ is a constant.
-%	\item	$\ds \sum_{i=m}^n (a_i\pm b_i) = \sum_{i=m}^n a_i \pm \sum_{i=m}^n b_i$
-%	\item	$\ds \sum_{i=1}^n c\cdot a_i = c\cdot\sum_{i=1}^n a_i$
-%	\item	$\ds \sum_{i=m}^j a_i + \sum_{i=j+1}^n  a_i = \sum_{i=m}^n a_i$
+%%	\item	$\ds \sum_{i=1}^n i = \frac{n(n+1)}2$
+%%	\item	$\ds \sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}6$
+%%	\item	$\ds \sum_{i=1}^n i^3 = \left(\frac{n(n+1)}2\right)^2$
+%\iflatexml\else
+%\end{enumerate}
+%\end{minipage}%
+%\begin{minipage}[t]{150pt}
+%\begin{enumerate}[resume=summationprop]
+%\fi
+%%	\item	$\ds \sum_{i=1}^n c = c\cdot n$, where $c$ is a constant.
+%%	\item	$\ds \sum_{i=m}^n (a_i\pm b_i) = \sum_{i=m}^n a_i \pm \sum_{i=m}^n b_i$
+%%	\item	$\ds \sum_{i=1}^n c\cdot a_i = c\cdot\sum_{i=1}^n a_i$
+%%	\item	$\ds \sum_{i=m}^j a_i + \sum_{i=j+1}^n  a_i = \sum_{i=m}^n a_i$
 	\item	$\ds \sum_{i=1}^n i = \frac{n(n+1)}2$
 	\item	$\ds \sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}6$
 	\item	$\ds \sum_{i=1}^n i^3 = \left(\frac{n(n+1)}2\right)^2$
+	\item[]
 	\end{enumerate}
-\end{minipage}
+\end{multicols}
 \end{theorem}
 }
 
@@ -396,8 +401,8 @@ We use these formulas in the next two examples.
 %
 %First, note that 
 %\begin{align*}
-%f(x_i) &= \parbox{130pt}{$\ds f\big(0+(i-1)\Delta x\big)$} \text{\small (using the formula for $x_i$)}\\
-%			&= \parbox{130pt}{$\ds 4(i-1)\Delta x - \big((i-1)\Delta x\big)^2$} \text{\small (apply the formula $f(x) = 4x-x^2$)}\\
+%f(x_i) &= \parbox{130pt}{$\ds f\bigl(0+(i-1)\Delta x\bigr)$} \text{\small (using the formula for $x_i$)}\\
+%			&= \parbox{130pt}{$\ds 4(i-1)\Delta x - \bigl((i-1)\Delta x\bigr)^2$} \text{\small (apply the formula $f(x) = 4x-x^2$)}\\
 %			& = \parbox{130pt}{$\ds (i-1) - (.25(i-1))^2.$} \text{\small ($\Delta x = 0.25$)}
 %\end{align*}
 %
@@ -409,8 +414,8 @@ We use these formulas in the next two examples.
 %
 %Once the groundwork is laid, it is easy to change from using 16 subintervals to 100. We now have $\Delta x=4/100 = 0.04$. Again simplify $f(x_i)$:
 %\begin{align*}
-%f(x_i) &= \parbox{130pt}{$\ds f\big(0+(i-1)\Delta x\big)$} \text{\small (using the formula for $x_i$)}\\
-%			&= \parbox{130pt}{$\ds 4(i-1)\Delta x - \big((i-1)\Delta x\big)^2$} \text{\small (apply the formula $f(x) = 4x-x^2$)}\\
+%f(x_i) &= \parbox{130pt}{$\ds f\bigl(0+(i-1)\Delta x\bigr)$} \text{\small (using the formula for $x_i$)}\\
+%			&= \parbox{130pt}{$\ds 4(i-1)\Delta x - \bigl((i-1)\Delta x\bigr)^2$} \text{\small (apply the formula $f(x) = 4x-x^2$)}\\
 %			& = \parbox{130pt}{$\ds 0.16(i-1) - (.04(i-1))^2.$} \text{\small ($\Delta x = 0.04$)}
 %\end{align*}
 % We make the proper adjustments for $f(x_i)$ in our old \textit{Mathematica} expression, and  sum from $i=1$ to $i=100$:
@@ -476,7 +481,8 @@ Notice  Equation (*); by changing the 16's to 1000's and changing the value of $
 &=10.666656
 \end{align*}
 
-Using many, many rectangles, we likely have a good approximation of $\ds\int_0^4 (4x-x^2)\ dx$. That is,
+Using many, many rectangles, we likely have a good approximation:
+% of $\ds\int_0^4 (4x-x^2)\ dx$. That is,
 \[\int_0^4 (4x-x^2)\ dx\approx 10.666656.\]
 \end{example}
 
@@ -505,7 +511,7 @@ is a \textbf{Riemann sum} of $f$ on $[a,b]$.
 
 % not \ds because of line break
 \mtable{An example of a general Riemann sum to approximate $\int_0^4(4x-x^2)\ dx$.}{fig:riedef}{\begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2,3,4},
 ytick={1,2,3,4},ymin=-1,ymax=5,xmin=-.5,xmax=4.5]
 \addplot [draw={\coloronefill},fill={\coloronefill},area style,domain=0:4]
@@ -620,12 +626,12 @@ The result is an amazing, easy to use formula. To approximate the definite integ
 \[\int_0^4 (4x-x^2)\ dx \approx \frac{32}{3}\left(1-\frac{1}{10^2}\right) = 10.56.\]
 Recall how earlier we approximated the definite integral with 4 subintervals; with $n=4$, the formula gives 10, our answer as before.
 
-It is now easy to approximate the integral with 1,000,000 subintervals!  Hand-held calculators will round off the answer a bit prematurely giving an answer of $10.66666667$. (The actual answer for this many subintervals is $10.666666666656$.)
+It is now easy to approximate the integral with 1,000,000 subintervals.  Hand-held calculators may round off the answer a bit prematurely giving an answer of $10\frac23$. (The actual answer for this many subintervals is $10.666666666656$.)
 \end{example}
 
-We now take an important leap. Up to this point, our mathematics has been limited to geometry and algebra (finding areas and manipulating expressions). Now we apply \textit{calculus}. For any \textit{finite} $n$, we know that
+We now take an important leap. Up to this point, our mathematics has been limited to geometry and algebra (finding areas and manipulating expressions). Now we apply \emph{calculus}. For any \emph{finite} $n$, we know that
 \[\int_0^4 (4x-x^2)\ dx \approx \frac{32}{3}\left(1-\frac{1}{n^2}\right).\]
-Both common sense and high-level mathematics tell us that as $n$ gets large, the approximation gets better. In fact, if we take the \textit{limit} as $n\rightarrow \infty$, we get the \textit{exact area} described by $\ds\int_0^4 (4x-x^2)\ dx$. That is, 
+Both common sense and high-level mathematics tell us that as $n$ gets large, the approximation gets better. In fact, if we take the \emph{limit} as $n\rightarrow \infty$, we get the \emph{exact area} described by $\ds\int_0^4 (4x-x^2)\ dx$. That is, 
 \begin{align*}
 	\int_0^4 (4x-x^2)\ dx
 	&= \lim_{n\to\infty} \frac{32}{3}\left(1-\frac{1}{n^2}\right) \\
@@ -680,7 +686,7 @@ tick label style={font=\scriptsize},axis y line=middle,axis x line=middle,name=m
 Now find the exact answer using a limit:
 \[
 \int_{-1}^5 x^3\ dx
-= \lim_{n\to\infty} \left(156 - \frac{378}n + \frac{216}{n^2}\right) = 156.\eoehere
+= \lim_{n\to\infty} \left(156 - \frac{378}n + \frac{216}{n^2}\right) = 156.
 \]
 \end{example}
 

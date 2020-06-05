@@ -80,7 +80,7 @@ In general,  we can approximate the arc length of $y=f(x)$ on $[a,b]$ in the fol
 \autoref{fig:arcintro2} zooms in on the $i^{\text{th}}$ subinterval where $y=f(x)$ is approximated by a straight line segment. The dashed lines show that we can view this line segment as the hypotenuse of a right triangle whose sides have length $\Delta x_i$ and $\Delta y_i$. Using the Pythagorean Theorem, the length of this line segment is $\ds \sqrt{(\Delta x_i)^2 + (\Delta y_i)^2}.$ Summing over all subintervals gives an arc length approximation
 \[L \approx \sum_{i=1}^n \sqrt{(\Delta x_i)^2 + (\Delta y_i)^2}.\]
 
-As it is written, this is \textit{not} a Riemann Sum. While we could conclude that taking a limit as the subinterval length goes to zero gives the exact arc length, we would not be able to compute the answer with a definite integral. We need first to do a little algebra.
+As it is written, this is \emph{not} a Riemann Sum. While we could conclude that taking a limit as the subinterval length goes to zero gives the exact arc length, we would not be able to compute the answer with a definite integral. We need first to do a little algebra.
 
 In the above expression factor out a $\Delta x_i^2$ term:
 \begin{align*}
@@ -91,7 +91,7 @@ Now pull the $(\Delta x_i)^2$ term out of the square root:
 \[L\approx\sum_{i=1}^n\sqrt{1 + \frac{(\Delta y_i)^2}{(\Delta x_i)^2}}\ \Delta x_i.\]
 This is nearly a Riemann Sum. Consider the $(\Delta y_i)^2/(\Delta x_i)^2$ term. The expression $\Delta y_i/\Delta x_i$ measures the ``change in $y$/change in $x$,'' that is, the ``rise over run'' of $f$ on the $i\,^\text{th}$ subinterval. The Mean Value Theorem of Differentiation (\autoref{thm:mvt}) states that there is a $c_i$ in the $i\,^\text{th}$ subinterval where $\fp(c_i) = \Delta y_i/\Delta x_i$. Thus we can rewrite our above expression as:
 \[L\approx\sum_{i=1}^n\sqrt{1+[\fp(c_i)]^2}\ \Delta x_i.\]
-This \textit{is} a Riemann Sum. As long as \fp\ is continuous on $[a,b]$, we can invoke \autoref{thm:riemannSum} and conclude
+This \emph{is} a Riemann Sum. As long as \fp\ is continuous on $[a,b]$, we can invoke \autoref{thm:riemannSum} and conclude
 \[L=\int_a^b\sqrt{1+[\fp(x)]^2}\ dx.\]
 
 \begin{keyidea}[Arc Length]\label{idea:arclength}
@@ -175,7 +175,7 @@ x & \sqrt{1+\cos^2x} \\ \midrule
 \end{array}\]}
 The setup is straightforward: $f(x) = \sin x$ and $\fp(x) = \cos x$. Thus 
 \[L = \int_0^\pi \sqrt{1+\cos^2x}\ dx.\]
-This integral \textit{cannot} be evaluated in terms of elementary functions so we will approximate it with Simpson's Method with $n=4$. \autoref{fig:arc3} gives $\sqrt{1+\cos^2x}$ evaluated at 5 evenly spaced points in $[0,\pi]$. Simpson's Rule then states that 
+This integral \emph{cannot} be evaluated in terms of elementary functions so we will approximate it with Simpson's Method with $n=4$. \autoref{fig:arc3} gives $\sqrt{1+\cos^2x}$ evaluated at 5 evenly spaced points in $[0,\pi]$. Simpson's Rule then states that 
 \begin{align*}
 	\int_0^\pi \sqrt{1+\cos^2x}\ dx
 	&\approx	\frac{\pi-0}{4\cdot 3}
@@ -206,7 +206,7 @@ Using a computer with $n=100$ the approximation is $L\approx 3.8202$; our approx
 
 We have already seen how a curve $y=f(x)$ on $[a,b]$ can be revolved around an axis to form a solid. Instead of computing its volume, we now consider its surface area.
 
-We begin as we have in the previous sections: we partition the interval $[a,b]$ with $n$ subintervals, where the $i\,^{\text{th}}$ subinterval is $[x_i,x_{i+1}]$. On each subinterval, we can approximate the curve $y=f(x)$ with a straight line that connects $f(x_i)$ and $f(x_{i+1})$ as shown in \autoref{fig:surface_intro}(a). Revolving this line segment about the $x$-axis creates part of a cone (called a \textit{frustum} of a cone) as shown in \autoref{fig:surface_intro}(b). The surface area of a frustum of a cone is
+We begin as we have in the previous sections: we partition the interval $[a,b]$ with $n$ subintervals, where the $i\,^{\text{th}}$ subinterval is $[x_i,x_{i+1}]$. On each subinterval, we can approximate the curve $y=f(x)$ with a straight line that connects $f(x_i)$ and $f(x_{i+1})$ as shown in \autoref{fig:surface_intro}(a). Revolving this line segment about the $x$-axis creates part of a cone (called a \emph{frustum} of a cone) as shown in \autoref{fig:surface_intro}(b). The surface area of a frustum of a cone is
 \[A=2\pi r_{\text{avg}} L,\]
 where $r_{\text{avg}}$ is the average of $R_1$ and $R_2$.  The length is given by $L$; we use the material just covered by arc length to state that
 \[L\approx \sqrt{1+[\fp(c_i)]^2}\Delta x_i\]
@@ -236,7 +236,7 @@ Let $f$ be differentiable on an open interval containing $[a,b]$ where $\fp$ is 
 Find the surface area of the solid formed by revolving $y=\sin x$ on $[0,\pi]$ around the $x$-axis, as shown in \autoref{fig:sa1}.
 \solution
 The setup turns out to be easier than the resulting integral. Using \autoref{idea:surface_area}, we have the surface area $SA$ is:
-\mtable{Revolving $y=\sin x$ on $[0,\pi]$ about the $x$-axis.}{fig:sa1}{%
+\mtable[-3\baselineskip]{Revolving $y=\sin x$ on $[0,\pi]$ about the $x$-axis.}{fig:sa1}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=121.00092658103458,
 3Dortho=0.0048407199792563915,
@@ -259,7 +259,7 @@ The setup turns out to be easier than the resulting integral. Using \autoref{ide
 It is interesting to see that the surface area of a solid, whose shape is defined by a trigonometric function, involves both a square root and a natural logarithm.
 \end{example}
 
-\mtable{The solids used in \autoref{ex_sa2}.}{fig:sa2}{%
+\mtable[-4\baselineskip]{The solids used in \autoref{ex_sa2}.}{fig:sa2}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=138.26595091591264,
 3Dortho=0.0048407199792563915,

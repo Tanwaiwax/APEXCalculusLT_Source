@@ -130,6 +130,9 @@ At $t=0$, the velocity of Object 1 is $\vec v(1) =\bracket{1,0}$ and the velocit
 In \autoref{fig:motion2a}, we see the velocity and acceleration vectors for Object 1 plotted for $t=-1, -1/2, 0, 1/2$ and $t=1$. Note again how the constant acceleration vector seems to ``pull'' the velocity vector from pointing down, right to up, right. We could plot the analogous picture for Object 2, but the velocity and acceleration vectors are rather large ($\vec a_2(-1) =\bracket{-6,30}$). 
 
 Instead, we simply plot the locations of Object 1 and 2  on intervals of $1/5^{\text{th}}$ of a second, shown in \autoref{fig:motion2b}(a) and (b). Note how the $x$-values of Object 1 increase at a steady rate. This is because the $x$-component of $\vec a(t)$ is 0; there is no acceleration in the $x$-component. The dots are not evenly spaced; the object is moving faster near $t=-1$ and $t=1$ than near $t=0$.
+
+In part (b) of the Figure, we see the points plotted for Object 2. Note the large change in position from $t=-1$ to $t=-0.8$; the object starts moving very quickly. However, it slows considerably at it approaches the origin, and comes to a complete stop at $t=0$. While it looks like there are 3 points near the origin, there are in reality 5 points there.
+
 \mtable{Comparing the positions of Objects 1 and 2 in \autoref{ex_motion2}.}{fig:motion2b}{%
 \begin{tikzpicture}[>=stealth]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -162,8 +165,6 @@ ymin=-.1,ymax=1.1,xmin=-1.1,xmax=1.1]
 \end{tikzpicture}
 \\(b)}
 
-In part (b) of the Figure, we see the points plotted for Object 2. Note the large change in position from $t=-1$ to $t=-0.8$; the object starts moving very quickly. However, it slows considerably at it approaches the origin, and comes to a complete stop at $t=0$. While it looks like there are 3 points near the origin, there are in reality 5 points there.
-
 Since the objects begin and end at the same location, they have the same displacement. Since they begin and end at the same time, with the same displacement, they have the same average rate of change (i.e, they have the same average velocity). Since they follow the same path, they have the same distance traveled. Even though these three measurements are the same, the objects obviously travel the path in very different ways.
 \end{example}
 
@@ -193,10 +194,6 @@ A young boy whirls a ball, attached to a string, above his head in a counter-clo
 	
 		The magnitude of the acceleration is related to the speed at which the ball is traveling. A ball whirling quickly is rapidly changing direction/velocity. When velocity is changing rapidly, the acceleration must be ``large.''
 		
-	\item		When the boy releases the string, the string no longer applies a force to the ball, meaning acceleration is $\vec 0$ and the ball can now move in a straight line in the direction of $\vec v(t)$. 
-	
-	Let $t=t_0$ be the time when the boy lets go of the string. The ball will be at $\vec r(t_0)$, traveling in the direction of $\vec v(t_0)$. We want to find $t_0$ so that this line contains the point $(0,10)$ (since the tree is 10ft directly in front of the boy).
-	
 \mtable{Modeling the flight of a ball in \autoref{ex_motion3}.}{fig:motion3}{\begin{tikzpicture}[>=latex,scale=.75]
 \begin{scope}[scale=.5,shift={(0,10)}]
 \ifthenelse{\boolean{inColor}}{
@@ -238,10 +235,14 @@ A young boy whirls a ball, attached to a string, above his head in a counter-clo
 \end{scope}
 \end{tikzpicture}}
 
+	\item		When the boy releases the string, the string no longer applies a force to the ball, meaning acceleration is $\vec 0$ and the ball can now move in a straight line in the direction of $\vec v(t)$. 
+	
+	Let $t=t_0$ be the time when the boy lets go of the string. The ball will be at $\vec r(t_0)$, traveling in the direction of $\vec v(t_0)$. We want to find $t_0$ so that this line contains the point $(0,10)$ (since the tree is 10ft directly in front of the boy).
+	
 	There are many ways to find this time value. We choose one that is relatively simple computationally. As shown in \autoref{fig:motion3}, the vector from the release point to the tree is $\bracket{0,10}- \vec r(t_0)$. This line segment is tangent to the circle, which means it is also perpendicular to $\vec r(t_0)$ itself, so their dot product is 0.
 	
 	\begin{align*}
-	\vec r(t_0) \cdot \big(\bracket{0,10}- \vec r(t_0)\big) &=0\\
+	\vec r(t_0) \cdot \bigl(\bracket{0,10}- \vec r(t_0)\bigr) &=0\\
 	\bracket{2\cos (4\pi t_0), 2\sin (4\pi t_0)}\cdot\bracket{-2\cos(4\pi t_0),10-2\sin (4\pi t_0)}&=0\\
 	-4\cos^2(4\pi t_0) + 20\sin (4\pi t_0)-4\sin^2(4\pi t_0) &= 0\\
 	20\sin (4\pi t_0) - 4 &=0\\
@@ -299,12 +300,12 @@ We integrate once more to find $\vrt$:
 \begin{align*}
 \vrt &= \int \vvt\ dt \\
 \vrt &= \int\bracket{v_0\cos \theta, -gt+v_0\sin\theta}\ dt\\
-\vrt &=\bracket{\big(v_0\cos \theta\big)t, -\frac12gt^2+\big(v_0\sin\theta\big)t}+ \vec C.
+\vrt &=\bracket{\bigl(v_0\cos \theta\bigr)t, -\frac12gt^2+\bigl(v_0\sin\theta\bigr)t}+ \vec C.
 \end{align*}
 Knowing $\vec r(0) =\bracket{x_0,y_0}$, we conclude $\vec C =\bracket{x_0,y_0}$ and
 \begin{equation}
 \vrt
-=\bracket{\big(v_0\cos\theta\big)t+x_0\ ,-\frac12gt^2+\big(v_0\sin\theta\big)t+y_0}.
+=\bracket{\bigl(v_0\cos\theta\bigr)t+x_0\ ,-\frac12gt^2+\bigl(v_0\sin\theta\bigr)t+y_0}.
 \label{idea:projectile}
 \end{equation}
  %\\
@@ -313,7 +314,7 @@ Knowing $\vec r(0) =\bracket{x_0,y_0}$, we conclude $\vec C =\bracket{x_0,y_0}$ 
 %\begin{keyidea}[Projectile Motion]\label{idea:projectile}
 %The position function of a projectile propelled from an initial position of $\vec r_0=\bracket{x_0,y_0}$, with initial speed $v_0$, with angle of elevation $\theta$ and neglecting all accelerations but gravity is 
 %\index{vector-valued function!projectile motion}\index{projectile motion}
-%\[\vrt =\bracket{\big(v_0\cos \theta\big)t+x_0\ , -\frac12gt^2+\big(v_0\sin\theta\big)t+y_0\ }.\]
+%\[\vrt =\bracket{\bigl(v_0\cos \theta\bigr)t+x_0\ , -\frac12gt^2+\bigl(v_0\sin\theta\bigr)t+y_0\ }.\]
 %Letting $\vec v_0 = v_0\bracket{\cos \theta,\sin \theta}$,\ \ $\vrt$ can be written as
 %\[\vrt =\bracket{0,-\frac12gt^2}+ \vec v_0t+\vec r_0.\]
 %\end{keyidea}
@@ -391,7 +392,7 @@ Note that this is just a restatement of \autoref{thm:vvf_arc_length}: arc length
 
 %Given a position function $\vrt =\bracket{f(t),g(t)}$, \autoref{thm:distance_traveled}
  %states that the distance traveled is
-%\[\int_a^b \sqrt{\big(\fp(t)\big)^2+\big(g'(t)\big)^2}\ dt.\]
+%\[\int_a^b \sqrt{\bigl(\fp(t)\bigr)^2+\bigl(g'(t)\bigr)^2}\ dt.\]
 %Comparing this to \autoref{idea:arc_length_parametric} we see that \emph{distance traveled} measures the same thing as \emph{arc length}, just in different contexts.\\
 
 \begin{example}[Distance Traveled, Displacement, and Average Speed]\label{ex_motion6}

@@ -68,7 +68,7 @@ ymin=-1.2,ymax=1.2,xmin=-1.2,xmax=1.2]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-(If $C$ is a complicated closed curve, it can be difficult to determine what ``counterclockwise'' means. Consider \autoref{fig:fluxcounterclockwise}. Seeing the curve as a whole, we know which way ``counterclockwise'' is. If we zoom in on point $A$, one might incorrectly choose to traverse the path in the wrong direction. So we offer this definition: \textit{a closed curve is being traversed counterclockwise if the outside is to the right of the path and the inside is to the left.})
+(If $C$ is a complicated closed curve, it can be difficult to determine what ``counterclockwise'' means. Consider \autoref{fig:fluxcounterclockwise}. Seeing the curve as a whole, we know which way ``counterclockwise'' is. If we zoom in on point $A$, one might incorrectly choose to traverse the path in the wrong direction. So we offer this definition: \emph{a closed curve is being traversed counterclockwise if the outside is to the right of the path and the inside is to the left.})
 
 When a curve $C$ is traversed counterclockwise by $\vrt =\bracket{f(t), g(t)}$, we rotate $\vec T$ clockwise 90$^\circ$  to obtain $\vec n$:
 \[
@@ -79,7 +79,7 @@ Letting $\vec F =\bracket{M,N}$, we calculate flux as:
 \begin{align*}
 \int_C \vec F\cdot \vec n\ ds &= \int_C \vec F\cdot \frac{\bracket{g'(t),-\fp(t)}}{\norm{\vrp(t)}} \norm{\vrp(t)}\ dt \\
 				&= \int_C\bracket{M,N}\cdot\bracket{g'(t),-\fp(t)}\ dt \\
-				&= \int_C \Big(M\,g'(t) - N\,\fp(t)\Big)dt\\
+				&= \int_C \Bigl(M\,g'(t) - N\,\fp(t)\Bigr)dt\\
 				&= \int_C M\,g'(t)\ dt - \int_C N\,\fp(t)\ dt.\\
 				\intertext{As the $x$ and $y$ components of $\vrt$ are $f(t)$ and $g(t)$ respectively, the differentials of $x$ and $y$ are $dx = \fp(t)dt$ and $dy=g'(t)dt$. We can then write the above integrals as:}
 				&= \int_C M\ dy - \int_C N\ dx.\\
@@ -95,7 +95,7 @@ Let $\vec F=\bracket{M,N}$ be a vector field with continuous components defined 
 \[\int_C \vec F\cdot\vec T\ ds=\int_C \vec F\cdot d\vec r.\]
 	\item The \sword{flux} of $\vec F$ across $C$ is
 \[
-\int_C \vec F\cdot \vec n\ ds =  \int_C M\ dy -N\ dx = \int_C\Big(M\,g'(t) - N\,\fp(t)\Big)dt.
+\int_C \vec F\cdot \vec n\ ds =  \int_C M\ dy -N\ dx = \int_C\Bigl(M\,g'(t) - N\,\fp(t)\Bigr)dt.
 \]
 \end{itemize}
 \end{definition}
@@ -165,16 +165,16 @@ We begin by finding parameterizations of $C_1$ and $C_2$. As done in \autoref{ex
 When $\vec F = \vec F_1 =\bracket{y,-x+1}$ (as shown in \autoref{fig:flux1}(a)), over $C_1$ we have $M = y =t$ and $N = -x+1 = -(1-t)+1 = t$. Using \autoref{def:flowflux}, we compute the flux:
 
 \begin{align*}
-\int_{C_1} \vec F\cdot \vec n\ ds & = \int_{C_1} \Big(M\,g'(t) - N\,\fp(t)\Big)\ dt\\
-			&= \int_0^1 \Big( t(1) - t(-1)\Big)\ dt \\
+\int_{C_1} \vec F\cdot \vec n\ ds & = \int_{C_1} \Bigl(M\,g'(t) - N\,\fp(t)\Bigr)\ dt\\
+			&= \int_0^1 \Bigl( t(1) - t(-1)\Bigr)\ dt \\
 			&= \int_0^1 2t\ dt\\
 			&= 1.
 \end{align*}
 Over $C_2$, we have $M = y = \sin t$ and $N = -x+1 = 1-\cos t$. Thus the flux across $C_2$ is:
 \begin{align*}
 	\int_{C_1} \vec F\cdot \vec n\ ds
-	& = \int_{C_1} \Big(M\,g'(t) - N\,\fp(t)\Big)\ dt\\
-	&= \int_0^{\pi/2}\Big((\sin t)(\cos t) - (1-\cos t)(-\sin t)\Big)\ dt\\
+	& = \int_{C_1} \Bigl(M\,g'(t) - N\,\fp(t)\Bigr)\ dt\\
+	&= \int_0^{\pi/2}\Bigl((\sin t)(\cos t) - (1-\cos t)(-\sin t)\Bigr)\ dt\\
 	&= \int_0^{\pi/2} \sin t\ dt\\
 	&=1.
 \end{align*}
@@ -183,8 +183,8 @@ Notice how the flux was the same across both curves. This won't hold true when w
 When $\vec F=\vec F_2=\bracket{-x,2y-x}$ (as shown in \autoref{fig:flux1}(b)), over $C_1$ we have $M=-x=t-1$ and $N=2y-x=2t-(1-t)=3t-1$. Computing the flux across $C_1$:
 \begin{align*}
 	\int_{C_1} \vec F\cdot \vec n\ ds
-	& = \int_{C_1} \Big(M\,g'(t) - N\,\fp(t)\Big)\ dt\\
-	&= \int_0^1 \Big( (t-1)(1) - (3t-1)(-1)\Big)\ dt \\
+	& = \int_{C_1} \Bigl(M\,g'(t) - N\,\fp(t)\Bigr)\ dt\\
+	&= \int_0^1 \Bigl( (t-1)(1) - (3t-1)(-1)\Bigr)\ dt \\
 	&= \int_0^1 (4t-2)\ dt\\
 	&= 0.
 \end{align*}
@@ -192,9 +192,9 @@ Over $C_2$, we have $M = -x = -\cos t$ and $N = 2y-x = 2\sin t-\cos t$. Thus the
 
 \begin{align*}
 	\int_{C_1} \vec F\cdot \vec n\ ds
-	& = \int_{C_1} \Big(M\,g'(t) - N\,\fp(t)\Big)\ dt\\
-	&= \int_0^{\pi/2}\Big((-\cos t)(\cos t) - (2\sin t-\cos t)(-\sin t)\Big)\ dt\\
-	&= \int_0^{\pi/2} \big(2\sin^2 t-\sin t\cos t-\cos^2t\big)\ dt\\
+	& = \int_{C_1} \Bigl(M\,g'(t) - N\,\fp(t)\Bigr)\ dt\\
+	&= \int_0^{\pi/2}\Bigl((-\cos t)(\cos t) - (2\sin t-\cos t)(-\sin t)\Bigr)\ dt\\
+	&= \int_0^{\pi/2} \bigl(2\sin^2 t-\sin t\cos t-\cos^2t\bigr)\ dt\\
 	&=\pi/4 - 1/2\approx 0.285.
 \end{align*}
 We analyze the results of this example below.
@@ -296,7 +296,7 @@ ymin=-2.4,ymax=2.4,xmin=-2.4,xmax=2.4]
 \begin{example}[Using Green's Theorem]\label{ex_green2}
 Let $\vec F =\bracket{\sin x,\cos y}$ and let $R$ be the region enclosed by the curve $C$ parameterized by $\vec r(t) =\bracket{2\cos t+ \frac1{10}\cos(10t),2\sin t+\frac1{10}\sin(10t)}$ on $0\leq t\leq 2\pi$, as shown in \autoref{fig:green2}. Find the circulation around $C$.
 \solution
-Computing the circulation directly using the line integral looks difficult, as the integrand will include terms like ``$\sin\big(2\cos t + \frac1{10}\cos(10t)\big)$.'' 
+Computing the circulation directly using the line integral looks difficult, as the integrand will include terms like ``$\sin\bigl(2\cos t + \frac1{10}\cos(10t)\bigr)$.'' 
 
 Green's Theorem states that $\oint_C\vec F\cdot d\vec r = \iint_R \curl\vec F\ dA$; since $\curl \vec F = 0$ in this example, the double integral is simply 0 and hence the circulation is 0.
 
@@ -372,8 +372,8 @@ We parameterize the circle in the usual way, with\\
 $\vrt =\bracket{2\cos t,2\sin t}$, $0\leq t\leq 2\pi$. The flux across $C$ is
 \begin{align*}
 	\oint_C \vec F\cdot \vec n\ ds
-	&= \oint_C\big(M\gp(t)-N\fp(t)\big)\ dt\\
-	&= \int_0^{2\pi} \big((2\cos t-2\sin t)(2\cos t) - (2\cos t+2\sin t)(-2\sin t)\big)\ dt\\
+	&= \oint_C\bigl(M\gp(t)-N\fp(t)\bigr)\ dt\\
+	&= \int_0^{2\pi} \bigl((2\cos t-2\sin t)(2\cos t) - (2\cos t+2\sin t)(-2\sin t)\bigr)\ dt\\
 	&= \int_0^{2\pi} 4\ dt = 8\pi.
 \end{align*}
 We compute the divergence of $\vec F$ as $\divv \vec F = M_x+N_y = 2$. Since the divergence is constant, we can compute the following double integral easily:

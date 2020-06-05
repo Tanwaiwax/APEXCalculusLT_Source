@@ -114,7 +114,9 @@ A common way to address this problem is limit the length of each arrow, and repr
 
 Drawing arrows with variable thickness is best done with technology; search the documentation of your favorite graphing program for terms like ``vector fields'' or ``slope fields'' to learn how. Technology obviously allows us to plot many vectors in a vector field nicely; in \autoref{fig:vectorfieldintrob}(b), we see the same vector field drawn with many vectors, and finally get a clear picture of how this vector field behaves. (If this vector field represented the velocity of air moving across a flat surface, we could see that the air tends to move either to the upper-right or lower-left, and moves very slowly near the origin.)
 
-\mtable{Graphing a vector field in space.}{fig:vectorfieldintroc}{%
+We can similarly plot vector fields in space, as shown in \autoref{fig:vectorfieldintroc}, though it is not often done. The plots get very busy very quickly, as there are lots of arrows drawn in a small amount of space. In \autoref{fig:vectorfieldintroc} the field $\vec F =\bracket{-y,x,z}$ is graphed. If one could view the graph from above, one could see the arrows point in a circle about the $z$-axis. One should also note how the arrows far from the origin are larger than those close to the origin. 
+
+\mtable[1.5in]{Graphing a vector field in space.}{fig:vectorfieldintroc}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.004676746670156717,
@@ -122,8 +124,6 @@ Drawing arrows with variable thickness is best done with technology; search the 
 3Dcoo=40.4605598449707 -31.11708641052246 21.908815383911133,
 3Droo=141.89772583942957,
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figvectorfieldintro_f_3D}}
-
-We can similarly plot vector fields in space, as shown in \autoref{fig:vectorfieldintroc}, though it is not often done. The plots get very busy very quickly, as there are lots of arrows drawn in a small amount of space. In \autoref{fig:vectorfieldintroc} the field $\vec F =\bracket{-y,x,z}$ is graphed. If one could view the graph from above, one could see the arrows point in a circle about the $z$-axis. One should also note how the arrows far from the origin are larger than those close to the origin. 
 
 It is good practice to try to visualize certain vector fields in one's head. For instance, consider a point mass at the origin and the vector field that represents the gravitational force exerted by the mass at any point in the room. The field would consist of arrows pointing toward the origin, increasing in size as they near the origin (as the gravitational pull is strongest near the point mass).
 
@@ -166,7 +166,7 @@ Now apply the del operator $\nabla$ to vector fields. Let $\vec F =\bracket{x+\s
 We can also compute their cross products:\small
 \begin{align*}
 	&\nabla\times \vec F\\
-	&= {\bracket{\frac{\partial}{\partial y}\big(x^2\big)-\frac{\partial}{\partial z}\big(y^2+z\big),\frac{\partial}{\partial z}\big(x+\sin y\big)-\frac{\partial}{\partial x}\big(x^2\big),\frac{\partial}{\partial x}\big(y^2+z\big)-\frac{\partial}{\partial y}\big(x+\sin y\big)}}\\
+	&= {\bracket{\frac{\partial}{\partial y}\bigl(x^2\bigr)-\frac{\partial}{\partial z}\bigl(y^2+z\bigr),\frac{\partial}{\partial z}\bigl(x+\sin y\bigr)-\frac{\partial}{\partial x}\bigl(x^2\bigr),\frac{\partial}{\partial x}\bigl(y^2+z\bigr)-\frac{\partial}{\partial y}\bigl(x+\sin y\bigr)}}\\
 	&=\bracket{-1,-2x,-\cos y}.
 \end{align*}\normalsize
 
@@ -391,7 +391,7 @@ We compute the divergence and curl of each field following the definitions.
 	For this particular field, no matter the location in space, a spin is induced with axis parallel to $\bracket{2,0,-2}.$
 	\item $\divv \vec F = \nabla \cdot \vec F = M_x+N_y+P_z = ye^{xy}+0+0= ye^{xy}.$
 		
-	$\begin{aligned}\curl\vec F = \nabla \times \vec F &=\bracket{P_y-N_z,M_z-P_x,N_x - M_y}\\ &=\bracket{1-\cos(x+z), -2x, \cos(x+z) - xe^{xy}}.\eoehere \end{aligned}$
+	$\begin{aligned}\curl\vec F = \nabla \times \vec F &=\bracket{P_y-N_z,M_z-P_x,N_x - M_y}\\ &=\bracket{1-\cos(x+z), -2x, \cos(x+z) - xe^{xy}}.\end{aligned}$
 \end{enumerate}
 \end{example}
 
@@ -405,7 +405,7 @@ The point mass pulls toward the origin, so at $(x,y,z)$, the force will pull in 
 \]
 The magnitude of the force is inversely proportional to the square of the distance between the two points. Letting $k$ be the constant of proportionality, we have the magnitude as $\ds\frac{k}{x^2+y^2+z^2}$. Multiplying this magnitude by the unit vector above, we have the desired vector field:
 %
-\mtable[-6\baselineskip]{A vector field representing a planar gravitational force.}{fig:vectorfield3}{\begin{tikzpicture}
+\mtable[-3\baselineskip]{A vector field representing a planar gravitational force.}{fig:vectorfield3}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,height=1.16\marginparwidth,
 tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,axis equal,
@@ -435,7 +435,7 @@ The analogous planar vector field is given in \autoref{fig:vectorfield3}. Note h
 
 A function $z=f(x,y)$ naturally induces a vector field, $\vec F = \nabla f =\bracket{f_x,f_y}$. Given what we learned of the gradient in \autoref{sec:directional_derivative}, we know that the vectors of $\vec F$ point in the direction of greatest increase of $f$. Because of this, $f$ is said to be the \sword{potential function}\index{potential function}\index{vector field!potential function of} of $\vec F$. Vector fields that are the gradient of potential functions will play an important role in the next section.
 
-\mtable[-3\baselineskip]{The vector field $\vec F = \nabla f$ and a graph of a function $z=f(x,y)$ in \autoref{ex_vectorfield4}.}{fig:vectorfield4}{%
+\mtable{The vector field $\vec F = \nabla f$ and a graph of a function $z=f(x,y)$ in \autoref{ex_vectorfield4}.}{fig:vectorfield4}{%
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,height=1.16\marginparwidth,
 tick label style={font=\scriptsize},

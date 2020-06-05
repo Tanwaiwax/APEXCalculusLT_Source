@@ -1,6 +1,6 @@
 \section{Continuity}\label{sec:continuity}
 
-As we have studied limits, we have gained the intuition that limits measure ``where a function is heading.'' That is, if $\ds \lim_{x\to 1} f(x) = 3$, then as $x$ is close to 1, $f(x)$ is close to 3. We have seen, though, that this is not necessarily a good indicator of what $f(1)$ actually is. This can be problematic; functions can tend to one value but attain another. This section focuses on functions that \textit{do not} exhibit such behavior.
+As we have studied limits, we have gained the intuition that limits measure ``where a function is heading.'' That is, if $\ds \lim_{x\to 1} f(x) = 3$, then as $x$ is close to 1, $f(x)$ is close to 3. We have seen, though, that this is not necessarily a good indicator of what $f(1)$ actually is. This can be problematic; functions can tend to one value but attain another. This section focuses on functions that \emph{do not} exhibit such behavior.
 
 \begin{definition}[Continuous Function]\label{def:continuous}
 Let $f$ be a function defined on an open interval $I$ containing $c$. \index{continuous function}
@@ -70,7 +70,7 @@ Removable & Infinite & Jump
 
 \begin{example}[Finding intervals of continuity]\label{ex_contint1}
 Let $f$ be defined as shown in \autoref{fig_continuous1}. Give the interval(s) on which $f$ is continuous.
-
+%
 \mtable{A graph of $f$ in \autoref{ex_contint1}.}{fig_continuous1}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,axis y line=middle,axis x line=middle,
@@ -87,11 +87,12 @@ ymin=-.4,ymax=1.7,xmin=-.4,xmax=3.4,name=myplot]
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
+%
 \solution
 We proceed by examining the three criteria for continuity.
 \begin{enumerate}
 	\item	The limits $\ds \lim_{x\to c} f(x)$ exists for all $c$ between 0 and 3.
-	\item	$f(c)$ is defined for all $c$ between 0 and 3, \textit{except for} $c=1$. We know immediately that $f$ cannot be continuous at $x=1$.
+	\item	$f(c)$ is defined for all $c$ between 0 and 3, \emph{except for} $c=1$. We know immediately that $f$ cannot be continuous at $x=1$.
 	\item	The limit $\ds \lim_{x\to c} f(x) = f(c)$ for all $c$ between 0 and 3, except, of course, for $c=1$. 
 \end{enumerate}
 
@@ -116,7 +117,7 @@ ymin=-2.4,ymax=2.4,xmin=-2.4,xmax=3.4,name=myplot]
 \end{tikzpicture}}
 
 \begin{example}[Finding intervals of continuity]\label{ex_contint2}
-The \textit{floor function},
+The \emph{floor function},
 \index{floor function}
 $f(x) = \lfloor x \rfloor$, returns the largest integer smaller than or equal to the input $x$. (For example, $f(\pi) = \lfloor \pi \rfloor = 3$.) The graph of $f$ in \autoref{fig:continuous2} demonstrates why this is often called a ``step function.'' \\
 Give the intervals on which $f$ is continuous.
@@ -157,7 +158,7 @@ Let $f$ be defined on the closed interval $[a,b]$ for some real numbers $a,b$. T
 		
 We can make the appropriate adjustments to talk about continuity on half-open intervals such as $[a,b)$ or $(a,b]$ if necessary.\bigskip
 %
-%Using this new definition, we can adjust our answer in \autoref{ex_contint2} by stating that the floor function is continuous on the following half-open intervals \[\dotsc, [-2,-1), [-1,0), [0,1), [1,2), \dotsc.\] This can tempt us to conclude that $f$ is continuous everywhere; after all, if $f$ is continuous on $[0,1)$ and $[1,2)$, isn't $f$ also continuous on $[0,2)$? Of course, the answer is \textit{no}, and the graph of the floor function immediately confirms this.\\
+%Using this new definition, we can adjust our answer in \autoref{ex_contint2} by stating that the floor function is continuous on the following half-open intervals \[\dotsc, [-2,-1), [-1,0), [0,1), [1,2), \dotsc.\] This can tempt us to conclude that $f$ is continuous everywhere; after all, if $f$ is continuous on $[0,1)$ and $[1,2)$, isn't $f$ also continuous on $[0,2)$? Of course, the answer is \emph{no}, and the graph of the floor function immediately confirms this.\\
 %
 %Continuous functions are important as they behave in a predictable fashion: functions attain the value they approach. Because continuity is so important, most of the functions you have likely seen in the past are continuous on their domains. This is demonstrated in the following example where we examine the intervals of continuity of a variety of common functions.\\
 
@@ -166,21 +167,16 @@ apply to continuity as well. We will utilize these properties in the following e
 
 \begin{example}[Determining intervals on which a function is continuous]\label{ex_cont_funct1}
 For each of the following functions, give the domain of the function and the interval(s) on which it is continuous.
-
-\noindent
-\begin{minipage}[t]{.5\textwidth}
+\begin{multicols}{2}
 	\begin{enumerate}
 		\item	$f(x) = 1/x$
 		\item	$f(x) = \sin x$
 		\item	$f(x) = \sqrt{x}$
-	\end{enumerate}
-\end{minipage}%
-\begin{minipage}[t]{.5\textwidth}
-	\begin{enumerate}\addtocounter{enumi}{3}
 		\item	$f(x) = \sqrt{1-x^2}$
 		\item	$f(x) = \abs x$
+		\item[]
 	\end{enumerate}
-\end{minipage}
+\end{multicols}
 \solution
 We examine each in turn.
 \begin{enumerate}
@@ -256,19 +252,14 @@ In the following example, we will show how we apply the previous theorems.
 
 \begin{example}[Determining intervals on which a function is continuous]\label{ex_cont_funct}
 State the interval(s) on which each of the following functions is continuous.
-
-\noindent\begin{minipage}{.5\linewidth}
+\begin{multicols}{2}
 	\begin{enumerate}
 		\item	$\ds f(x) = \sqrt{x-1} + \sqrt{5-x}$
 		\item	$\ds f(x) = x\sin x$
-	\end{enumerate}
-\end{minipage}%
-\begin{minipage}{.5\linewidth}
-	\begin{enumerate}\addtocounter{enumi}{2}
 		\item	$\ds f(x) = \tan x$
 		\item	$\ds f(x) = \sqrt{\ln x}$
 	\end{enumerate}
-\end{minipage}
+\end{multicols}
 \solution
 We examine each in turn, applying Theorems \ref{thm:continuity_algebra} and \ref{thm:continuous_functions} as appropriate.
 
@@ -285,7 +276,7 @@ ymin=-.4,ymax=3.2,xmin=-.4,xmax=5.4,name=myplot]
 \end{tikzpicture}}
 
 \begin{enumerate}
-	\item	The square-root terms are continuous on the intervals $[1,\infty)$ and $(-\infty,5]$, respectively. As $f$ is continuous only where each term is continuous, $f$ is continuous on $[1,5]$, the intersection of these two intervals. A graph of $f$ is given in \autoref{fig_continuous3}.
+	\item	The two square-root terms are continuous on the intervals $[1,\infty)$ and $(-\infty,5]$, respectively. As $f$ is continuous only where each term is continuous, $f$ is continuous on the intersection of these two intervals: $[1,5]$. A graph of $f$ is displayed in \autoref{fig_continuous3}.
 
 	\item	The functions $y=x$ and $y=\sin x$ are each continuous everywhere, hence their product is, too.
 	\item	\autoref{thm:continuous_functions} states that $f(x) = \tan x$ is continuous ``on its domain.'' Its domain includes all real numbers except odd multiples of $\pi/2$. Thus $f(x) = \tan x$ is continuous on
@@ -299,7 +290,7 @@ ymin=-.4,ymax=3.2,xmin=-.4,xmax=5.4,name=myplot]
 
 A common way of thinking of a continuous function is that ``its graph can be sketched without lifting your pencil.'' That is, its graph forms a ``continuous'' curve, without holes, breaks or jumps. While beyond the scope of this text, this pseudo-definition glosses over some of the finer points of continuity. Very strange functions are continuous that one would be hard pressed to actually sketch by hand. 
 
-This intuitive notion of continuity does help us understand another important concept as follows. Suppose $f$ is defined on $[1,2]$ and $f(1) = -10$ and $f(2) = 5$. If $f$ is continuous on $[1,2]$ (i.e., its graph can be sketched as a continuous curve from $(1,-10)$ to $(2,5)$) then we know intuitively that somewhere on $[1,2]$ $f$ must be equal to $-9$, and $-8$, and $-7,\ -6,\ \dotsc,\ 0,\ 1/2,$ etc. In short, $f$ takes on all \textit{intermediate} values between $-10$ and $5$. It may take on more values; $f$ may actually equal 6 at some time, for instance, but we are guaranteed all values between $-10$ and 5. 
+This intuitive notion of continuity does help us understand another important concept as follows. Suppose $f$ is defined on $[1,2]$ and $f(1) = -10$ and $f(2) = 5$. If $f$ is continuous on $[1,2]$ (i.e., its graph can be sketched as a continuous curve from $(1,-10)$ to $(2,5)$) then we know intuitively that somewhere on $[1,2]$ $f$ must be equal to $-9$, and $-8$, and $-7,\ -6,\ \dotsc,\ 0,\ 1/2,$ etc. In short, $f$ takes on all \emph{intermediate} values between $-10$ and $5$. It may take on more values; $f$ may actually equal 6 at some time, for instance, but we are guaranteed all values between $-10$ and 5. 
 
 While this notion seems intuitive, it is not trivial to prove and its importance is profound. Therefore the concept is stated in the form of a theorem and illustrated in \autoref{fig_ivt}.
 
@@ -366,7 +357,7 @@ Successively applying this technique is called the \sword{Bisection Method} \ind
 
 \mtable{Graphing a root of\\
 $f(x) = x-\cos x$.}{fig:xminuscosx}{\begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=4,axis y line=middle,axis x line=middle,
 ymin=-1.1,ymax=.7,xmin=-.05,xmax=1.07,name=myplot]
 \addplot [draw={\colorone},smooth,thick,domain=0:1] {x-cos(deg(x))};
@@ -384,10 +375,7 @@ Consider the graph of $f(x) = x-\cos x$, shown in \autoref{fig:xminuscosx}. It i
 	\item[Iteration 1:] $f(0.7) < 0$, $f(0.9) > 0$, and $f(0.8) >0$. So replace $0.9$ with $0.8$ and repeat.
 	\item[Iteration 2:]	$f(0.7)<0$, $f(0.8) > 0$, and at the midpoint, $0.75$, we see that $f(0.75) >0 $. So replace $0.8$ with $0.75$ and repeat. Note that we don't need to continue to check the endpoints, just the midpoint. Thus we put the rest of the iterations in \autoref{table:rootfinding}.
 \end{description}
-		
-Notice that in the 12$^\text{th}$ iteration we have the endpoints of the interval each starting with $0.739$. Thus we have narrowed the zero down to an accuracy of the first three places after the decimal. Using a computer, we have 
-\[ f(0.7390) = -0.00014, \quad f(0.7391) = 0.000024.\]
-%
+
 \mtable{Iterations of the Bisection Method of Root Finding}{table:rootfinding}%
 	{\footnotesize\noindent \begin{tabular}{ccc}
 		\parbox{3em}{Itera-\\tion \#} & Interval & Midpoint Sign \\ \midrule
@@ -404,7 +392,9 @@ Notice that in the 12$^\text{th}$ iteration we have the endpoints of the interva
 		11 & $[0.7389,0.7391]$ & $f(0.7390)<0$\\
 		12 & $[0.7390,0.7391]$
 	\end{tabular}}%
-%
+
+Notice that in the 12$^\text{th}$ iteration we have the endpoints of the interval each starting with $0.739$. Thus we have narrowed the zero down to an accuracy of the first three places after the decimal. Using a computer, we have 
+\[ f(0.7390) = -0.00014, \quad f(0.7391) = 0.000024.\]
 Either endpoint of the interval gives a good approximation of where $f$ is 0. The Intermediate Value Theorem states that the actual zero is still within this interval. While we do not know its exact value, we know it starts with $0.739$. 
 
 This type of exercise is rarely done by hand. Rather, it is simple to program a computer to run such an algorithm and stop when the endpoints differ by a preset small amount. One of the authors did write such a program and found the zero of $f$, accurate to 10 places after the decimal, to be 0.7390851332. While it took a few minutes to write the program, it took less than a thousandth of a second for the program to run the necessary 35 iterations. In less than 8 hundredths of a second, the zero was calculated to 100 decimal places (with less than 200 iterations).
@@ -431,7 +421,7 @@ In this chapter we:
 \item	defined continuity and explored properties of continuous functions.
 \end{itemize}
 
-Why? Mathematics is famous for building on itself and calculus proves to be no exception. In the next chapter we will be interested in ``dividing by 0.'' That is, we will want to divide a quantity by a smaller and smaller number and see what value the quotient approaches. In other words, we will want to find a limit. These limits will enable us to, among other things, determine \textit{exactly} how fast something is moving when we are only given position information.
+Why? Mathematics is famous for building on itself and calculus proves to be no exception. In the next chapter we will be interested in ``dividing by 0.'' That is, we will want to divide a quantity by a smaller and smaller number and see what value the quotient approaches. In other words, we will want to find a limit. These limits will enable us to, among other things, determine \emph{exactly} how fast something is moving when we are only given position information.
 
 Later, we will want to add up an infinite list of numbers. We will do so by first adding up a finite list of numbers, then take a limit as the number of things we are adding approaches infinity. Surprisingly, this sum often is finite; that is, we can add up an infinite list of numbers and get, for instance, 42.
 

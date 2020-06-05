@@ -39,13 +39,13 @@ Therefore, this new line integral is really just a special kind of line integral
 Let $\vec F$ be a vector field with continuous components defined on a smooth curve $C$, parameterized by $\vrt$, $a\leq t\leq b$, where $\vec r$ is continuously differentiable. Then\index{vector field!over vector field}
 	\[
 	\int_C\vec F\cdot\vec T\ ds = \int_C \vec F\cdot d\vec r
-	=\int_a^b \vec F\big(\vec r(t)\big) \cdot \vrp(t)\ dt.
+	=\int_a^b \vec F\bigl(\vec r(t)\bigr) \cdot \vrp(t)\ dt.
 	\]
 \end{keyidea}
 
 An important concept implicit in this Key Idea: we can use any continuously differentiable parameterization $\vrt$ of $C$ that preserves the orientation of $C$: there isn't a ``right'' one. In practice, choose one that seems easy to work with. 
 
-\textbf{Notation note:} the above Definition and Key Idea implicitly evaluate $\vec F$ along the curve $C$, which is parameterized by $\vrt$. For instance, if $\vec F =\bracket{x+y,x-y}$ and $\vrt =\bracket{t^2,\cos t}$, then evaluating $\vec F$ along $C$ means substituting the $x$- and $y$-components of $\vrt$ in for $x$ and $y$, respectively, in $\vec F$. Therefore, along $C$, $\vec F =\bracket{x+y,x-y}=\bracket{t^2+\cos t,t^2-\cos t}$. Since we are substituting the \emph{output} of $\vrt$ for the \emph{input} of $\vec F$, we write this as $\vec F\big(\vrt\big)$. This is a slight abuse of notation as technically the input of $\vec F$ is to be a \emph{point}, not a \emph{vector}, but this shorthand is useful.
+\textbf{Notation note:} the above Definition and Key Idea implicitly evaluate $\vec F$ along the curve $C$, which is parameterized by $\vrt$. For instance, if $\vec F =\bracket{x+y,x-y}$ and $\vrt =\bracket{t^2,\cos t}$, then evaluating $\vec F$ along $C$ means substituting the $x$- and $y$-components of $\vrt$ in for $x$ and $y$, respectively, in $\vec F$. Therefore, along $C$, $\vec F =\bracket{x+y,x-y}=\bracket{t^2+\cos t,t^2-\cos t}$. Since we are substituting the \emph{output} of $\vrt$ for the \emph{input} of $\vec F$, we write this as $\vec F\bigl(\vrt\bigr)$. This is a slight abuse of notation as technically the input of $\vec F$ is to be a \emph{point}, not a \emph{vector}, but this shorthand is useful.
 
 We use an example to practice evaluating line integrals over vector fields.
 
@@ -77,7 +77,7 @@ Two particles move from $(0,0)$ to $(1,1)$ in the presence of the force field $\
 \solution
 To compute work, we need to parameterize each path. We use $\vec r_1(t) =\bracket{t,t}$ to parameterize $y=x$, and let $\vec r_2(t) =\bracket{t,t^4}$ parameterize $y=x^4$; for each, $0\leq t\leq 1$. 
 
-Along the straight-line path, $\vec F\big(\vec r_1(t)\big) =\bracket{x,x+y}=\bracket{t,t+t}=\bracket{t,2t}$. We find $\vrp_1(t) =\bracket{1,1}$. The integral that computes work is:
+Along the straight-line path, $\vec F\bigl(\vec r_1(t)\bigr) =\bracket{x,x+y}=\bracket{t,t+t}=\bracket{t,2t}$. We find $\vrp_1(t) =\bracket{1,1}$. The integral that computes work is:
 \begin{align*}
 	\int_{C_1} \vec F\cdot d\vec r
 	&= \int_0^1\bracket{t,2t}\cdot\bracket{1,1}\ dt \\
@@ -85,12 +85,12 @@ Along the straight-line path, $\vec F\big(\vec r_1(t)\big) =\bracket{x,x+y}=\bra
 	&= \frac32t^2\Big|_0^1 = 1.5 \text{ joules}.
 \end{align*}
 
-Along the curve $y = x^4$, $\vec F\big(\vec r_2(t)\big) =\bracket{x,x+y}=\bracket{t,t+t^4}$. We find $\vrp_2(t) =\bracket{1,4t^3}$. The work performed along this path is
+Along the curve $y = x^4$, $\vec F\bigl(\vec r_2(t)\bigr) =\bracket{x,x+y}=\bracket{t,t+t^4}$. We find $\vrp_2(t) =\bracket{1,4t^3}$. The work performed along this path is
 \begin{align*}
 	\int_{C_2} \vec F\cdot d\vec r
 	&= \int_0^1\bracket{t,t+t^4}\cdot\bracket{1,4t^3}\ dt\\
-	&= \int_0^1 \big(t + 4t^4+ 4t^7\big)\ dt \\
-	&= \big(\frac12t^2 + \frac45t^5 + \frac12t^8\big)\Big|_0^1 =  1.8 \text{ joules}.
+	&= \int_0^1 \bigl(t + 4t^4+ 4t^7\bigr)\ dt \\
+	&= \bigl(\frac12t^2 + \frac45t^5 + \frac12t^8\bigr)\Big|_0^1 =  1.8 \text{ joules}.
 \end{align*}
 
 Note how differing amounts of work are performed along the different paths. This should not be too surprising: the force is variable, one path is longer than the other, etc.
@@ -122,22 +122,22 @@ node[pos=.5,above,yshift={+1.5ex}]{\small$x^2+(y-1)^2=1$};
 \begin{example}[Evaluating a line integral over a vector field: computing work]\label{ex_livf2}
 Two particles move from $(-1,1)$ to $(1,1)$ under the influence of a force field $\vec F =\bracket{y,x}$. One moves along the curve $C_1$, the parabola defined by $y = 2x^2-1$. The other particle moves along the curve $C_2$, the bottom half of the circle defined by $x^2+(y-1)^2=1$, as shown in \autoref{fig:livf2}. Force is measured in pounds and distances are measured in feet. Find the work performed by moving each particle along its path.
 \solution
-We start by parameterizing $C_1$: the parameterization $\vec r_1(t) =\bracket{t,2t^2-1}$ is straightforward, giving $\vrp_1 =\bracket{1,4t}$. On $C_1$, $\vec F\big(\vec r_1(t)\big) =\bracket{y,x}=\bracket{2t^2-1,t}$.
+We start by parameterizing $C_1$: the parameterization $\vec r_1(t) =\bracket{t,2t^2-1}$ is straightforward, giving $\vrp_1 =\bracket{1,4t}$. On $C_1$, $\vec F\bigl(\vec r_1(t)\bigr) =\bracket{y,x}=\bracket{2t^2-1,t}$.
 
 Computing the work along $C_1$, we have:
 \begin{align*}
 	\int_{C_1} \vec F\cdot d\vec r_1
 	& = \int_{-1}^1\bracket{2t^2-1,t}\cdot\bracket{1,4t}\ dt \\
-	&= \int_{-1}^1 \big(2t^2-1+4t^2\big)\ dt = 2 \text{ ft-lbs}.
+	&= \int_{-1}^1 \bigl(2t^2-1+4t^2\bigr)\ dt = 2 \text{ ft-lbs}.
 \end{align*}
 
-For $C_2$, it is probably simplest to parameterize the half circle using sine and cosine. Recall that $\vec r(t) =\bracket{\cos t,\sin t}$ is a parameterization of the unit circle on $0\leq t\leq 2\pi$; we add 1 to the second component to shift the circle up one unit, then restrict the domain to $\pi\leq t\leq 2\pi$  to obtain only the lower half, giving $\vec r_2(t) =\bracket{\cos t,\sin t+1}$, $\pi\leq t\leq 2\pi$, and hence $\vrp_2(t) =\bracket{-\sin t,\cos t}$ and $\vec F\big(\vec r_2(t)\big) =\bracket{y,x}=\bracket{\sin t+1,\cos t}$.
+For $C_2$, it is probably simplest to parameterize the half circle using sine and cosine. Recall that $\vec r(t) =\bracket{\cos t,\sin t}$ is a parameterization of the unit circle on $0\leq t\leq 2\pi$; we add 1 to the second component to shift the circle up one unit, then restrict the domain to $\pi\leq t\leq 2\pi$  to obtain only the lower half, giving $\vec r_2(t) =\bracket{\cos t,\sin t+1}$, $\pi\leq t\leq 2\pi$, and hence $\vrp_2(t) =\bracket{-\sin t,\cos t}$ and $\vec F\bigl(\vec r_2(t)\bigr) =\bracket{y,x}=\bracket{\sin t+1,\cos t}$.
 
 Computing the work along $C_2$, we have:
 \begin{align*}
 	\int_{C_2} \vec F\cdot d\vec r_2
 	& = \int_{\pi}^{2\pi}\bracket{\sin t+1,\cos t}\cdot\bracket{-\sin t,\cos t}\ dt \\
-	&= \int_{\pi}^{2\pi} \big(-\sin^2t-\sin t+\cos^2t\big)\ dt = 2 \text{ ft-lbs}.
+	&= \int_{\pi}^{2\pi} \bigl(-\sin^2t-\sin t+\cos^2t\bigr)\ dt = 2 \text{ ft-lbs}.
 \end{align*}
 Note how the work along $C_1$ and $C_2$ in this example is the same. We'll address why later in this section when \emph{conservative fields} and \emph{path independence} are discussed.
 \end{example}
@@ -153,7 +153,7 @@ It is relatively easy to see why. Let $C$ be the unit circle. The area under a s
 \begin{enumerate}
 	\item	Let $\vec F$ and $\vec G$ be  vector fields with continuous components defined on a smooth curve $C$, parameterized by $\vrt$, and let $k_1$ and $k_2$ be scalars. Then
 	\[
-	\ds \int_C\big(k_1\vec F+k_2\vec G\big)\cdot d\vec r
+	\ds \int_C\bigl(k_1\vec F+k_2\vec G\bigr)\cdot d\vec r
 	= k_1\int_C\vec F\cdot d\vec r +k_2\int_C\vec G\cdot d\vec r.
 	\]
 	\item Let $C$ be piecewise smooth, composed of smooth components $C_1$ and $C_2$. Then
@@ -196,13 +196,13 @@ Let $\vec F =\bracket{3(y-1/2),1}$ and let $C$ be the path that starts at $(0,0)
 \solution
 As $C$ is piecewise smooth, we break it into two components $C_1$ and $C_2$, where $C_1$ follows the curve $y=x^3$ and $C_2$ follows the curve $y=x$. 
 
-We parameterize $C_1$ with $\vec r_1(t) =\bracket{t, t^3}$ on $0\leq t\leq 1$, with $\vrp_1(t) =\bracket{1,3t^2}$. We will use $\vec F\big(\vec r_1(t)\big) =\bracket{3(t^3-1/2),1}$.
+We parameterize $C_1$ with $\vec r_1(t) =\bracket{t, t^3}$ on $0\leq t\leq 1$, with $\vrp_1(t) =\bracket{1,3t^2}$. We will use $\vec F\bigl(\vec r_1(t)\bigr) =\bracket{3(t^3-1/2),1}$.
 
 While we always have unlimited ways in which to parameterize a curve, there are 2 ``direct'' methods to choose from when parameterizing $C_2$. The parameterization $\vec r_2(t)=\bracket{t,t}$, $0\leq t\leq 1$ traces the correct line segment but with the wrong orientation. Using Property 3 of \autoref{thm:line_int_properties_vector}, we can use this parameterization and negate the result.
 
 Another choice is to use the techniques of \autoref{sec:lines} to create the line with the orientation we desire. We wish to start at $( 1,1)$ and travel in the $\vec d =\bracket{-1,-1}$ direction for one length of $\vec d$, giving equation $\vec \ell(t) =\bracket{1,1} + t\bracket{-1,-1} =\bracket{1-t,1-t}$ on $0\leq t\leq 1$.
 
-Either choice is fine; we choose $\vec r_2(t)$ to practice using line integral properties. We find $\vrp_2(t) =\bracket{1,1}$ and $\vec F\big(\vec r_2(t)\big) =\bracket{3(t-1/2),1}$.
+Either choice is fine; we choose $\vec r_2(t)$ to practice using line integral properties. We find $\vrp_2(t) =\bracket{1,1}$ and $\vec F\bigl(\vec r_2(t)\bigr) =\bracket{3(t-1/2),1}$.
 
 Evaluating the line integral (note how we subtract the integral over $C_2$ as the orientation of $\vec r_2(t)$ is opposite):
 \begin{align*}
@@ -210,8 +210,8 @@ Evaluating the line integral (note how we subtract the integral over $C_2$ as th
 	&= \int_{C_1}\vec F\cdot d\vec r_1 - \int_{C_2}\vec F\cdot d\vec r_2 \\
 	&= \int_0^1\bracket{3(t^3-1/2),1}\cdot\bracket{1,3t^2} dt
 	- \int_0^1\bracket{3(t-1/2),1}\cdot\bracket{1,1}dt \\
-	&= \int_0^1\Big(3t^3+3t^2-3/2\Big)\ dt - \int_0^1 \Big(3t-1/2\Big)\ dt\\
-	&= \big(1/4 \big) - \big(1\big)\\
+	&= \int_0^1\Bigl(3t^3+3t^2-3/2\Bigr)\ dt - \int_0^1 \Bigl(3t-1/2\Bigr)\ dt\\
+	&= \bigl(1/4 \bigr) - \bigl(1\bigr)\\
 	&=	-3/4.
 \end{align*}
 If we interpret this integral as computing work, the negative work implies that the motion is mostly \emph{against} the direction of the force, which seems plausible when we look at \autoref{fig:livf3}.
@@ -229,13 +229,13 @@ If we interpret this integral as computing work, the negative work implies that 
 \begin{example}[Evaluating a line integral over a vector field in space]\label{ex_livf4}
 Let $\vec F =\bracket{-y,x,1}$, and let $C$ be the portion of the helix given by $\vrt = \bracket{ \cos t,\sin t, t/(2\pi)}$ on $[0,2\pi]$, as shown in \autoref{fig:livf4}. Evaluate $\int_C\vec F\cdot d\vec r$.
 \solution
-A parameterization is already given for $C$, so we just need to find $\vec F\big(\vec r(t)\big)$ and \vrp(t). 
+A parameterization is already given for $C$, so we just need to find $\vec F\bigl(\vec r(t)\bigr)$ and \vrp(t). 
 
-We have $\vec F\big(\vec r(t)\big) =\bracket{-\sin t, \cos t, 1}$ and $\vrp(t) =\bracket{-\sin t, \cos t, 1/(2\pi)}$. Thus
+We have $\vec F\bigl(\vec r(t)\bigr) =\bracket{-\sin t, \cos t, 1}$ and $\vrp(t) =\bracket{-\sin t, \cos t, 1/(2\pi)}$. Thus
 \begin{align*}
 	\int_C \vec F\cdot d\vec r
 	&= \int_0^{2\pi}\bracket{-\sin t, \cos t, 1}\cdot\bracket{-\sin t, \cos t, 1/(2\pi)}dt\\
-	&= \int_0^{2\pi} \Big(\sin^2t+\cos^2t + \frac1{2\pi}\big)dt\\
+	&= \int_0^{2\pi} \Bigl(\sin^2t+\cos^2t + \frac1{2\pi}\Bigr)dt\\
 	&= 2\pi + 1 \approx 7.28.
 \end{align*}
 \end{example}
@@ -365,10 +365,10 @@ By the Fundamental Theorem of Line Integrals, regardless of the path from $A$ to
 \end{align*}
 To illustrate the validity of the Fundamental Theorem, we pick a path from $A$ to $B$. The line between these two points would be simple to construct; we choose a slightly more complicated path by choosing the parabola $y = x^2+2x+1$. This leads to the parameterization $\vrt =\bracket{t, t^2+2t+1}$, $0\leq t\leq 1$, with $\vrp(t) =\bracket{t, 2t+2}$. Thus
 \begin{align*}
-	\int_C \vec F\cdot d\vec r &= \int_C\vec F\big(\vrt\big)\cdot\vrp(t)\ dt\\
+	\int_C \vec F\cdot d\vec r &= \int_C\vec F\bigl(\vrt\bigr)\cdot\vrp(t)\ dt\\
 	&= \int_0^1\bracket{3(t)(t^2+2t+1)+2t, t^3+1}\cdot\bracket{t,2t+2}\ dt\\
-	&= \int_0^1 \big(5t^4+8t^3+3t^2+4t+2\big)\ dt\\
-	&= \big(t^5+2t^4+t^3+2t^2+2t\big)\Big|_0^1\\
+	&= \int_0^1 \bigl(5t^4+8t^3+3t^2+4t+2\bigr)\ dt\\
+	&= \bigl(t^5+2t^4+t^3+2t^2+2t\bigr)\Big|_0^1\\
 	&= 8,
 \end{align*}
 which matches our previous result.

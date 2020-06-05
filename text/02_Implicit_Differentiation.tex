@@ -1,10 +1,10 @@
 \section{Implicit Differentiation}\label{sec:imp_deriv}
 
-In the previous sections we learned to find the derivative, $ \frac{dy}{dx}$, or $y\primeskip'$, when $y$ is given \textit{explicitly} as a function of $x$. That is, if we know $y=f(x)$ for some function $f$, we can find $y\primeskip'$. For example, given  $y=3x^2-7$, we can easily find $y\primeskip'=6x$. (Here we explicitly state how $x$ and $y$ are related. Knowing $x$, we can directly find $y$.)
+In the previous sections we learned to find the derivative, $ \frac{dy}{dx}$, or $y\primeskip'$, when $y$ is given \emph{explicitly} as a function of $x$. That is, if we know $y=f(x)$ for some function $f$, we can find $y\primeskip'$. For example, given  $y=3x^2-7$, we can easily find $y\primeskip'=6x$. (Here we explicitly state how $x$ and $y$ are related. Knowing $x$, we can directly find $y$.)
 
-Sometimes the relationship between $y$ and $x$ is not explicit; rather, it is \textit{implicit}. For instance, we might know that $x^2-y=4$. This equality defines a relationship between $x$ and $y$; if we know $x$, we could figure out $y$. Can we still find $y\primeskip'$?  In this case, sure; we  solve for $y$ to get $y=x^2-4$ (hence we now know $y$ explicitly)  and then differentiate to get $y\primeskip'=2x$.
+Sometimes the relationship between $y$ and $x$ is not explicit; rather, it is \emph{implicit}. For instance, we might know that $x^2-y=4$. This equality defines a relationship between $x$ and $y$; if we know $x$, we could figure out $y$. Can we still find $y\primeskip'$?  In this case, sure; we  solve for $y$ to get $y=x^2-4$ (hence we now know $y$ explicitly)  and then differentiate to get $y\primeskip'=2x$.
 
-Sometimes the \textit{implicit} relationship between $x$ and $y$ is complicated.  Suppose we are given $\sin(y)+y^3=6-x^3$. A graph of this equation is given in \autoref{fig:implicit1}. In this case there is absolutely no way to solve for $y$ in terms of elementary functions.  The surprising thing is, however, that we can still find $y\primeskip'$ via a process known as \sword{implicit differentiation}.\index{implicit differentiation}\index{derivative!implicit}
+Sometimes the \emph{implicit} relationship between $x$ and $y$ is complicated.  Suppose we are given $\sin(y)+y^3=6-x^3$. A graph of this equation is given in \autoref{fig:implicit1}. In this case there is absolutely no way to solve for $y$ in terms of elementary functions.  The surprising thing is, however, that we can still find $y\primeskip'$ via a process known as \sword{implicit differentiation}.\index{implicit differentiation}\index{derivative!implicit}
 
 \mtable{A graph of the equation $\sin (y)+y^3=6-x^3$.}{fig:implicit1}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -19,11 +19,11 @@ ymin=-3.2,ymax=3.2,xmin=-3.2,xmax=3.2,axis equal,name=myplot]
 
 Implicit differentiation is a technique based on the Chain Rule that is used to find a derivative when the relationship between the variables is given implicitly rather than explicitly (solved for one variable in terms of the other).\bigskip
 
-We begin by reviewing the Chain Rule. Let $f$ and $g$ be functions of $x$. Then \[\frac{d}{dx}\Big(f(g(x))\Big) = \fp(g(x))\cdot g'(x).\]
+We begin by reviewing the Chain Rule. Let $f$ and $g$ be functions of $x$. Then \[\frac{d}{dx}\Bigl(f(g(x))\Bigr) = \fp(g(x))\cdot g'(x).\]
 Suppose now that $y=g(x)$. We can rewrite the above as
 \begin{equation}
-\frac{d}{dx}\Big(f(y)\Big) = \fp(y)\cdot y\primeskip', \quad \text{or}\quad
-\frac{d}{dx}\Big(f(y)\Big) = \fp(y)\cdot \frac{dy}{dx} .\label{eq:implicit1}
+\frac{d}{dx}\Bigl(f(y)\Bigr) = \fp(y)\cdot y\primeskip', \quad \text{or}\quad
+\frac{d}{dx}\Bigl(f(y)\Bigr) = \fp(y)\cdot \frac{dy}{dx} .\label{eq:implicit1}
 \end{equation}
 These equations look strange; the key concept to learn here is that we can find $y\primeskip'$ even if we don't exactly know how $y$ and $x$ relate.\\
 
@@ -35,15 +35,15 @@ We demonstrate this process in the following example.
 Find $y\primeskip'$ given that $\sin(y) + y^3=6-x^3$.
 \solution
 We start by taking the derivative of both sides (thus maintaining the equality). We have:
-\[\frac{d}{dx}\Big(\sin(y) + y^3\Big)=\frac{d}{dx}\Big(6-x^3\Big).\]
+\[\frac{d}{dx}\Bigl(\sin(y) + y^3\Bigr)=\frac{d}{dx}\Bigl(6-x^3\Bigr).\]
 The right hand side is easy; it returns $-3x^2$. 
 
 The left hand side requires more consideration. We take the derivative term-by-term.  Using the technique derived from \autoeqref{eq:implicit1} above, we can see that
-\[\frac{d}{dx}\Big(\sin y\Big) = \cos y \cdot y\primeskip'.\] %The derivative of $\sin(y)$ is $\cos(y)y\primeskip'$.  The reason for this is the chain rule. Since $y$ itself depends on $x$, the term $\sin(y)$ is really a function inside of a function, $y$ being a function of $x$.
+\[\frac{d}{dx}\Bigl(\sin y\Bigr) = \cos y \cdot y\primeskip'.\] %The derivative of $\sin(y)$ is $\cos(y)y\primeskip'$.  The reason for this is the chain rule. Since $y$ itself depends on $x$, the term $\sin(y)$ is really a function inside of a function, $y$ being a function of $x$.
 
 We apply the same process to the $y^3$ term. 
 \[
-\frac{d}{dx}\Big(y^3\Big) = \frac{d}{dx}\Big((y)^3\Big) = 3(y)^2\cdot y\primeskip'.
+\frac{d}{dx}\Bigl(y^3\Bigr) = \frac{d}{dx}\Bigl((y)^3\Bigr) = 3(y)^2\cdot y\primeskip'.
 \]
 %Similarly, the derivative of $y^3$ is $3y^2y\primeskip'$.  
 Putting this together with the right hand side, we have
@@ -51,14 +51,14 @@ Putting this together with the right hand side, we have
 Now solve for $y\primeskip'$.
 \begin{align*}
 	\cos(y)y\primeskip'+3y^2y\primeskip' 	&= -3x^2.\\
-	\big(\cos y+3y^2\big)y\primeskip' &=	-3x^2\\
+	\bigl(\cos y+3y^2\bigr)y\primeskip' &=	-3x^2\\
 	y\primeskip'&=	\frac{-3x^2}{\cos y+3y^2}
 \end{align*}
 
 This equation for $y\primeskip'$ probably seems unusual for it contains both $x$ and $y$ terms. How is it to be used? We'll address that next.
 \end{example}
 
-Implicit functions are generally harder to deal with than explicit functions. With an explicit function, given an $x$ value, we have an explicit formula for computing the corresponding $y$ value. With an implicit function, one often has to find $x$ and $y$ values \textit{at the same time} that satisfy the equation. It is much easier to demonstrate that a given point satisfies the equation than to actually find such a point.
+Implicit functions are generally harder to deal with than explicit functions. With an explicit function, given an $x$ value, we have an explicit formula for computing the corresponding $y$ value. With an implicit function, one often has to find $x$ and $y$ values \emph{at the same time} that satisfy the equation. It is much easier to demonstrate that a given point satisfies the equation than to actually find such a point.
 
 For instance, we can affirm easily that the point $(\sqrt[3]{6},0)$ lies on the graph of the equation $\sin y + y^3=6-x^3$. Plugging in $0$ for $y$, we see the left hand side is $0$. Setting $x=\sqrt[3]6$, we see the right hand side is also $0$; the equation is satisfied. The following example finds an equation of the tangent line to this equation at this point.
 
@@ -207,7 +207,7 @@ The tangent lines have been added to the graph of the function in \autoref{fig:i
 Quite a few ``famous'' curves have equations that are given implicitly.  We can use implicit differentiation to find the slope at various points on those curves. We investigate two such curves in the next examples.\bigskip
 
 \begin{example}[Finding slopes of tangent lines to a circle]\label{ex_implicit7}
-Find the slope of the tangent line to the circle $x^2+y^2=1$ at the point $(1/2, \sqrt{3}/2)$.
+Find the slope of the tangent line to the circle $x^2+y^2=1$ at the point $(\frac12, \frac{\sqrt3}2)$.
 \solution
 Taking derivatives, we get $2x+2yy\primeskip'=0$.  Solving for $y\primeskip'$  gives: \[\ds y\primeskip' = \frac{-x}{y}.\]
 This is a clever formula. Recall that the slope of the line through the origin and the point $(x,y)$ on the circle will be $y/x$. We have found that the slope of the tangent line to the circle at that point is the opposite reciprocal of $y/x$, namely, $-x/y$. Hence these two lines are always perpendicular.
@@ -215,7 +215,7 @@ This is a clever formula. Recall that the slope of the line through the origin a
 At the point $(1/2, \sqrt{3}/2)$, we have the tangent line's slope as
 \[y\primeskip' = \frac{-1/2}{\sqrt{3}/2} = \frac{-1}{\sqrt{3}} \approx -0.577.\]
 
-A graph of the circle and its tangent line at $(1/2,\sqrt{3}/2)$ is given in \autoref{fig:implicit7}, along with a thin dashed line from the origin that is perpendicular to the tangent line. (It turns out that all normal lines to a circle pass through the center of the circle.)
+In \autoref{fig:implicit7}, we see a graph of the circle and its tangent line at the point $(1/2,\sqrt{3}/2)$ along with a thin dashed line from the origin that is perpendicular to the tangent line. (It turns out that all normal lines to a circle pass through the center of the circle.)
 
 \mtable[-1in]{The unit circle with its tangent line at $(1/2,\sqrt{3}/2)$.}{fig:implicit7}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -235,10 +235,10 @@ This section has shown how to find the derivatives of implicitly defined functio
 
 %% the following derives d/dx x^r, but implicit derivation assumes that the derivative already exists
 %One hole in our current understanding of derivatives is this: what is the derivative of the square root function? That is,
-%\[\frac{d}{dx}\big(\sqrt{x}\big) = \frac{d}{dx}\big(x^{1/2}\big) = \text{?}\]
+%\[\frac{d}{dx}\bigl(\sqrt{x}\bigr) = \frac{d}{dx}\bigl(x^{1/2}\bigr) = \text{?}\]
 %
 %We allude to a possible solution, as we can write the square root function as a power function with a rational (or, fractional) power. We are then tempted to apply the Power Rule and obtain
-%\[\frac{d}{dx}\big(x^{1/2}\big) = \frac12x^{-1/2} = \frac{1}{2\sqrt{x}}.\]
+%\[\frac{d}{dx}\bigl(x^{1/2}\bigr) = \frac12x^{-1/2} = \frac{1}{2\sqrt{x}}.\]
 %
 %The trouble with this is that the Power Rule was initially defined only for positive integer powers, $n>0$. While we did not justify this at the time, generally the Power Rule is proved using something called the Binomial Theorem, which deals only with positive integers. The Quotient Rule allowed us to extend the Power Rule to negative integer powers. Implicit Differentiation allows us to extend the Power Rule to rational powers, as shown below.
 %
@@ -247,7 +247,7 @@ This section has shown how to find the derivatives of implicitly defined functio
 %\begin{align*}
 %	y &= x^{m/n} \\
 %	y^n &= x^m \\
-%	\frac{d}{dx}\big(y^n\big) &= \frac{d}{dx}\big(x^m\big) \\
+%	\frac{d}{dx}\bigl(y^n\bigr) &= \frac{d}{dx}\bigl(x^m\bigr) \\
 %	n\cdot y^{n-1}\cdot y\primeskip' &= m\cdot x^{m-1} \\
 %	y\primeskip' &= \frac{m}{n} \frac{x^{m-1}}{y^{n-1}} && \mbox{\small (now substitute $x^{m/n}$ for $y$)} \\
 %	&= \frac{m}{n} \frac{x^{m-1}}{(x^{m/n})^{n-1}} && \mbox{\small (apply lots of algebra)}\\
@@ -258,7 +258,7 @@ This section has shown how to find the derivatives of implicitly defined functio
 %	&= \frac{m}n x^{m/n -1}.
 %\end{align*}
 %
-%The above derivation is the key to the proof extending the Power Rule to rational powers. Using limits, we can extend this once more to include \textit{all} powers, including irrational (even transcendental!) powers, giving the following theorem.
+%The above derivation is the key to the proof extending the Power Rule to rational powers. Using limits, we can extend this once more to include \emph{all} powers, including irrational (even transcendental!) powers, giving the following theorem.
 %
 %\begin{theorem}[Power Rule for Differentiation]\label{thm:finalpower}
 %Let $f(x) = x^n$, where $n\neq 0$ is a real number. Then $f$ is a differentiable function, and $\fp(x) = n\cdot x^{n-1}$.\index{derivative!Power Rule}\index{Power Rule!differentiation}
@@ -321,7 +321,7 @@ Given $x^2+y^2=1$, find $\ds\frac{d^2y}{dx^2} = y\primeskip''$.
 We found that $y\primeskip' = \frac{dy}{dx} = -x/y$ in \autoref{ex_implicit7}. To find $y\primeskip''$, we apply implicit differentiation to $y\primeskip'$.
 \begin{align*}
 	y\primeskip''
-	&= \frac{d}{dx}\big(y\primeskip'\big) \\
+	&= \frac{d}{dx}\bigl(y\primeskip'\bigr) \\
 	&= \frac{d}{dx}\left(-\frac xy\right) && \text{\small now use the Quotient Rule} \\
 	&= -\frac{y(1) - x(y\primeskip')}{y^2} && \text{\small replace $y\primeskip'$ with $-x/y$} \\
 	&= -\frac{y-x(-x/y)}{y^2}\\
@@ -337,8 +337,10 @@ We can see that $y\primeskip''>0$ when $y<0$ and $y\primeskip''<0$ when $y>0$. I
 % todo write a better section summary for implicit differentiation
 Implicit differentiation proves to be useful as it allows us to find the instantaneous rates of change of a variety of functions.
 % In particular, it extended the Power Rule to rational exponents, which we then extended to all real numbers.
-% In \autoref{sec:deriv_inverse_function}, implicit differentiation will be used to find the derivatives of \textit{inverse} functions, such as $y=\sin^{-1} x$.
+% In \autoref{sec:deriv_inverse_function}, implicit differentiation will be used to find the derivatives of \emph{inverse} functions, such as $y=\sin^{-1} x$.
 We close with a small gallery of ``interesting'' and ``famous'' curves along with the implicit equations that produce them.
+
+\clearpage
 
 \noindent\begin{minipage}[t]{\linewidth}\noindent%
 \captionsetup{type=figure}%
@@ -440,7 +442,7 @@ ymin=-1,ymax=1,xmin=-1.6,xmax=1.6,axis equal]
  \end{tabular}}
 \end{minipage}\bigskip
 
-The astroid and folium of Descartes also appear in \autoref{sec:param_eqs}.  Other important implicit curves are the conic sections, which are discussed in \autoref{sec:conic_sections}.  Also, the lemniscate, cardioid, and lima\c con seen in \autoref{sec:polar} have particularly nice implicit representations.\bigskip
+The astroid and folium of Descartes also appear in \autoref{sec:param_eqs}.  Other important implicit curves are the conic sections, which appear in \autoref{sec:conic_sections}.  Also, the lemniscate, cardioid, and lima\c con seen in \autoref{sec:polar} have particularly nice implicit representations.\bigskip
 
 % other possibilities
 % trident curve?
@@ -457,30 +459,30 @@ Let $u$ and $v$ be differentiable functions, and let $c$ and $n$ be real numbers
 \begin{anywhereenum}
 \renewcommand{\arraystretch}{1.6}
 \begin{tabular}{ll}
-	\item		$\frac{d}{dx}\big(cu\big) = cu'$ &
-	\item		$\frac{d}{dx}\big(u\pm v\big) = u'\pm v'$ \\
-	\item		$\frac{d}{dx}\big(u\cdot v\big) = uv'+u'v$ &
-	\item		$\frac{d}{dx}\big(\frac uv\big) = \frac{u'v-uv'}{v^2}$ \\
-	\item		$\frac{d}{dx}\big(u(v)\big) = u'(v)v'$ &
-	\item		$\frac{d}{dx}\big(x^n\big) = nx^{n-1}$ \\
-	\item		$\frac{d}{dx}\big(c\big) = 0$ &
-	\item		$\frac{d}{dx}\big(x\big) = 1$ \\
-	\item		$\frac{d}{dx}\big(\ln x\big) = \frac{1}{x}$ &
-	\item		$\frac{d}{dx}\big(e^x\big) = e^x$ \\
-	\item		$\frac{d}{dx}\big(\sin x\big) = \cos x$ &
-	\item		$\frac{d}{dx}\big(\cos x\big) = -\sin x$ \\
-	\item		$\frac{d}{dx}\big(\tan x\big) = \sec^2x$ &
-	\item		$\frac{d}{dx}\big(\cot x\big) = -\csc^2x$ \\
-	\item		$\frac{d}{dx}\big(\sec x\big) = \sec x\tan x$\qquad\null &
-	\item		$\frac{d}{dx}\big(\csc x\big) = -\csc x\cot x$
-%	\item		$\frac{d}{dx}\big(a^x\big) = \ln a\cdot a^x$ \\
-%	\item		$\frac{d}{dx}\big(\log_a x\big) = \frac{1}{\ln a}\cdot\frac{1}{x}$ &
-%	\item		$\frac{d}{dx}\big(\sin^{-1}x\big) = \frac{1}{\sqrt{1-x^2}}$ &
-%	\item		$\frac{d}{dx}\big(\csc^{-1}x\big) = -\frac{1}{\abs{x}\sqrt{x^2-1}}$ \\
-%	\item		$\frac{d}{dx}\big(\tan^{-1}x\big) = \frac{1}{1+x^2}$ &
-%	\item		$\frac{d}{dx}\big(\cos^{-1}x\big) = -\frac{1}{\sqrt{1-x^2}}$
-%	\item		$\frac{d}{dx}\big(\sec^{-1}x\big) = \frac{1}{\abs{x}\sqrt{x^2-1}}$
-%	\item		$\frac{d}{dx}\big(\cot^{-1}x\big) = -\frac{1}{1+x^2}$
+	\item		$\frac{d}{dx}\bigl(cu\bigr) = cu'$ &
+	\item		$\frac{d}{dx}\bigl(u\pm v\bigr) = u'\pm v'$ \\
+	\item		$\frac{d}{dx}\bigl(u\cdot v\bigr) = uv'+u'v$ &
+	\item		$\frac{d}{dx}\bigl(\frac uv\bigr) = \frac{u'v-uv'}{v^2}$ \\
+	\item		$\frac{d}{dx}\bigl(u(v)\bigr) = u'(v)v'$ &
+	\item		$\frac{d}{dx}\bigl(x^n\bigr) = nx^{n-1}$ \\
+	\item		$\frac{d}{dx}\bigl(c\bigr) = 0$ &
+	\item		$\frac{d}{dx}\bigl(x\bigr) = 1$ \\
+	\item		$\frac{d}{dx}\bigl(\ln x\bigr) = \frac{1}{x}$ &
+	\item		$\frac{d}{dx}\bigl(e^x\bigr) = e^x$ \\
+	\item		$\frac{d}{dx}\bigl(\sin x\bigr) = \cos x$ &
+	\item		$\frac{d}{dx}\bigl(\cos x\bigr) = -\sin x$ \\
+	\item		$\frac{d}{dx}\bigl(\tan x\bigr) = \sec^2x$ &
+	\item		$\frac{d}{dx}\bigl(\cot x\bigr) = -\csc^2x$ \\
+	\item		$\frac{d}{dx}\bigl(\sec x\bigr) = \sec x\tan x$\qquad\null &
+	\item		$\frac{d}{dx}\bigl(\csc x\bigr) = -\csc x\cot x$
+%	\item		$\frac{d}{dx}\bigl(a^x\bigr) = \ln a\cdot a^x$ \\
+%	\item		$\frac{d}{dx}\bigl(\log_a x\bigr) = \frac{1}{\ln a}\cdot\frac{1}{x}$ &
+%	\item		$\frac{d}{dx}\bigl(\sin^{-1}x\bigr) = \frac{1}{\sqrt{1-x^2}}$ &
+%	\item		$\frac{d}{dx}\bigl(\csc^{-1}x\bigr) = -\frac{1}{\abs{x}\sqrt{x^2-1}}$ \\
+%	\item		$\frac{d}{dx}\bigl(\tan^{-1}x\bigr) = \frac{1}{1+x^2}$ &
+%	\item		$\frac{d}{dx}\bigl(\cos^{-1}x\bigr) = -\frac{1}{\sqrt{1-x^2}}$
+%	\item		$\frac{d}{dx}\bigl(\sec^{-1}x\bigr) = \frac{1}{\abs{x}\sqrt{x^2-1}}$
+%	\item		$\frac{d}{dx}\bigl(\cot^{-1}x\bigr) = -\frac{1}{1+x^2}$
 \end{tabular}
 \end{anywhereenum}
 \end{theorem}

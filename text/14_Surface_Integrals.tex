@@ -54,15 +54,15 @@ We need to be careful to not ``simplify'' $\norm{\vec r_u\times \vec r_v} = 2\sq
 The density is given as a function of $x$, $y$ and $z$, for which we'll substitute the corresponding components of $\vec r$ (with the slight abuse of notation that we used in previous sections): 
 \begin{align*}
 	\delta(x,y,z)
-	&= \delta\big(\vec r(u,v)\big) \\
+	&= \delta\bigl(\vec r(u,v)\bigr) \\
 	&= u^2 + 5v(2-2u)+3-2u-v(2-2u)\\
 	&= u^2-8uv-2u+8v+3.
 \end{align*}
 Thus the mass of the sheet is:
 \begin{align*}
 	M &= \iint_\surfaceS\ dm\\
-	&= \iint_R \delta\big(\vec r(u,v)\big)\norm{\vec r_u\times \vec r_v}\ dA\\
-	&= \int_0^1\int_0^1 \big(u^2-8uv-2u+8v+3\big)\big(2\sqrt{6}(1-u)\big)\ du\ dv\\
+	&= \iint_R \delta\bigl(\vec r(u,v)\bigr)\norm{\vec r_u\times \vec r_v}\ dA\\
+	&= \int_0^1\int_0^1 \bigl(u^2-8uv-2u+8v+3\bigr)\bigl(2\sqrt{6}(1-u)\bigr)\ du\ dv\\
 	&= \frac{31}{\sqrt{6}} \approx 12.66 \text{ gm.}
 \end{align*}
 \end{example}
@@ -94,7 +94,7 @@ Let $\vec F$ be a vector field with continuous components defined on an orientab
 \[\text{Flux} = \iint_\surfaceS \vec F\cdot \vec n\ dS.\]
 If \surfaceS\ is parameterized by $\vec r(u,v)$, which is smooth on its domain $R$, then
 \[
-\text{Flux} = \iint_R \vec F\big(\vec r(u,v)\big)\cdot (\vec r_u\times \vec r_v)\ dA.
+\text{Flux} = \iint_R \vec F\bigl(\vec r(u,v)\bigr)\cdot (\vec r_u\times \vec r_v)\ dA.
 \]
 \end{definition}
 
@@ -116,14 +116,14 @@ We demonstrate the computation of flux, and its interpretation, in the following
 \begin{example}[Finding flux across a surface]\label{ex_surfflux1}
 Let \surfaceS\ be the surface given in \autoref{ex_surfint1}, where \surfaceS\ is parameterized by $\vec r(u,v) =\bracket{u, v(2-2u),3-2u-v(2-2u)}$ on $0\leq u\leq 1$, $0\leq v\leq 1$, and let $\vec F =\bracket{1, x,-y}$, as shown in \autoref{fig:surfflux1}. Find the flux of $\vec F$ across \surfaceS.
 \solution
-Using our work from the previous example, we have $\vec n = \vec r_u\times\vec r_v =\bracket{4-4u,2-2u,2-2u}$. We also need $\vec F\big(\vec r(u,v)\big) =\bracket{1, u, -v(2-2u)}$. 
+Using our work from the previous example, we have $\vec n = \vec r_u\times\vec r_v =\bracket{4-4u,2-2u,2-2u}$. We also need $\vec F\bigl(\vec r(u,v)\bigr) =\bracket{1, u, -v(2-2u)}$. 
 
 Thus the flux of $\vec F$ across \surfaceS\ is:
 \begin{align*}
 	\text{Flux}
 	&= \iint_\surfaceS \vec F\cdot \vec n\ dS\\
 	&= \iint_R\bracket{1,u,-v(2-2u)}\cdot\bracket{4-4u,2-2u,2-2u}\ dA \\
-	&= \int_0^1\int_0^1 \big(-4u^2v-2u^2+8uv-2u-4v+4\big)\ du\ dv\\
+	&= \int_0^1\int_0^1 \bigl(-4u^2v-2u^2+8uv-2u-4v+4\bigr)\ du\ dv\\
 	&= 5/3.
 \end{align*}
 To make full use of this numeric answer, we need to know the direction in which the field is passing across \surfaceS. The graph in \autoref{fig:surfflux1} helps, but we need a method that is not dependent on a graph.
@@ -203,7 +203,7 @@ We now compute the flux across each surface with $\vec F_2=\bracket{0,0,z}$:
 \begin{align*}
 	\text{Flux across }\surfaceS_1
 	&= \iint_{\surfaceS_1} \vec F_2\cdot \vec n_1\ dS .
-	\intertext{Over $\surfaceS_1$, $\vec F_2 = \vec F_2\big(\vec r_2(u,v)\big) =\bracket{0,0,0}.$ Therefore,}
+	\intertext{Over $\surfaceS_1$, $\vec F_2 = \vec F_2\bigl(\vec r_2(u,v)\bigr) =\bracket{0,0,0}.$ Therefore,}
 	&= \iint_R\bracket{0,0,0}\cdot\bracket{0,0,v}\ dA\\
 	&= \int_0^1\int_0^{2\pi} (0)\ du\ dv\\
 	&= 0.
@@ -212,7 +212,7 @@ We now compute the flux across each surface with $\vec F_2=\bracket{0,0,z}$:
 \begin{align*}
 	\text{Flux across }\surfaceS_2
 	&= \iint_{\surfaceS_2} \vec F_2\cdot \vec n_2\ dS .
-	\intertext{Over $\surfaceS_2$, $\vec F_2 = \vec F_2\big(\vec r_2(u,v)\big) =\bracket{0,0,1-v^2}.$ Therefore,}
+	\intertext{Over $\surfaceS_2$, $\vec F_2 = \vec F_2\bigl(\vec r_2(u,v)\bigr) =\bracket{0,0,1-v^2}.$ Therefore,}
 	&= \iint_R\bracket{0,0,1-v^2}\cdot\bracket{2v^2\cos u,2v^2\sin u,v}\ dA\\
 	&= \int_0^1\int_0^{2\pi} (v^3-v)\ du\ dv\\
 	&= \pi/2.

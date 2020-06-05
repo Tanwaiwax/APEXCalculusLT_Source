@@ -61,22 +61,16 @@ Let
  \lim_{x\to 2} f(x)=2,\quad\lim_{x\to 2} g(x) = 3\qquad\text{and}\qquad
  p(x) = 3x^2-5x+7.
 \]
-Find the following limits:\\
-\begin{minipage}[t]{.5\textwidth}
-\begin{enumerate}
-	\item	$\ds \lim_{x\to 2} \big(f(x) + g(x)\big)$
-	\item	$\ds \lim_{x\to 2} \big(5f(x) + g(x)^2\big)$
-\end{enumerate}
-\end{minipage}%
-\begin{minipage}[t]{.5\textwidth}
-\begin{enumerate}\addtocounter{enumi}{2}
-	\item	$\ds \lim_{x\to 2} p(x)$
-\end{enumerate}
-\end{minipage}
+Find the following limits:
+\[
+1.~\lim_{x\to 2} \bigl(f(x) + g(x)\bigr)\qquad
+2.~\lim_{x\to 2} \bigl(5f(x) + g(x)^2\bigr)\qquad
+3.~\lim_{x\to 2} p(x)
+\]
 \solution
 \begin{enumerate}
-	\item	Using the Sum/Difference rule, we know that $\ds \lim_{x\to 2} \big(f(x) + g(x)\big) = 2+3 =5$.
-	\item	Using the Scalar Multiple and Sum/Difference rules, we find that\\ $\ds \lim_{x\to 2} \big(5f(x) + g(x)^2\big) = 5\cdot 2 + 3^2 = 19.$
+	\item	Using the Sum/Difference rule, we know that $\ds \lim_{x\to 2} \bigl(f(x) + g(x)\bigr) = 2+3 =5$.
+	\item	Using the Scalar Multiple and Sum/Difference rules, we find that\\ $\ds \lim_{x\to 2} \bigl(5f(x) + g(x)^2\bigr) = 5\cdot 2 + 3^2 = 19.$
 	\item	Here we combine the Power, Scalar Multiple, Sum/Difference and Constant Rules. We show quite a few steps, but in general these can be omitted:
 	\begin{align*}
 		\lim_{x\to 2} p(x) &= \lim_{x\to 2} (3x^2-5x+7) \\
@@ -140,23 +134,21 @@ Let $c$ be a real number in the domain of the given function and let $n$ be a po
 Many times, we will combine this theorem with Theorems \ref{thm:limit_algebra} and \ref{thm:limit_composition}.  If our expression can be built up from the pieces in those theorems, then we can quickly evaluate the limit.
 
 \begin{example}[Evaluating limits analytically]\label{ex_limit_1}
-Evaluate the following limits.\\ 
-\begin{minipage}[t]{.5\textwidth}
+Evaluate the following limits.
+\begin{multicols}{2}
 \begin{enumerate}
 \item		$\ds \lim_{x\to \pi} \cos x$
 \item		$\ds \lim_{x\to 3} (\sec^2x - \tan^2 x)$
 \item		$\ds \lim_{x\to \frac\pi2} \cos x\sin x$
-\end{enumerate}
-\end{minipage}%
-\begin{minipage}[t]{.5\textwidth}
-\begin{enumerate}\addtocounter{enumi}{3}
 \item		$\ds \lim_{x\to 1} e^{\ln x}$
 \item		$\ds \lim_{x\to 0} \frac{\sin x}{x}$
+\item[]
 \end{enumerate}
-\end{minipage}
+\end{multicols}
 \solution
 \begin{enumerate}
-	\item	This is a straightforward application of \autoref{thm:lim_continuous}: $\ds \lim_{x\to \pi} \cos x = \cos \pi = -1$.
+	\item	This is a straightforward application of \autoref{thm:lim_continuous}:\\
+	 $\ds \lim_{x\to \pi} \cos x = \cos \pi = -1$.
 	\item	We can approach this in at least two ways. First, by directly applying Theorems \ref{thm:limit_algebra} and \ref{thm:lim_continuous}, we have:
 	\[\lim_{x\to 3} (\sec^2x - \tan^2 x) = \sec^23-\tan^23.\]
 	Using the Pythagorean Theorem, this last expression is 1; therefore
@@ -177,7 +169,7 @@ Evaluate the following limits.\\
 		
 	\item	We encountered this limit in \autoref{sec:limit_intro}. Applying our theorems, we attempt to find the limit as
 	\[\lim_{x\to 0}\frac{\sin x}{x}\to\frac{\sin 0}{0} \to\zerooverzero.\]
-	This, of course, violates a condition of \autoref{thm:limit_algebra}, as the limit of the denominator is not allowed to be 0. Therefore, we are still unable to evaluate this limit with tools we currently have at hand.\eoehere
+	This, of course, violates a condition of \autoref{thm:limit_algebra}, as the limit of the denominator is not allowed to be 0. Therefore, we are still unable to evaluate this limit with tools we currently have at hand.
 \end{enumerate}
 \end{example}
 
@@ -221,7 +213,7 @@ We use the Squeeze Theorem in the following example to finally prove that $\ds \
 Use the Squeeze Theorem to show that
 \[\ds \lim_{x\to 0} \frac{\sin x}{x} = 1.\]
 \solution
-We begin by considering the unit circle. Each point on the unit circle has coordinates $(\cos \theta,\sin \theta)$ for some angle $\theta$ as shown in \autoref{fig:squeeze_sinx}. Using similar triangles, we can extend the line from the origin through the point to the point $(1,\tan \theta)$, as shown. (Here we are assuming that $0\leq \theta \leq \pi/2$. Later we will show that we can also consider $\theta \leq 0$.)
+We will begin by considering the unit circle. Each point on the unit circle has coordinates $(\cos \theta,\sin \theta)$ for some angle $\theta$ as shown in \autoref{fig:squeeze_sinx}. Using similar triangles, we can extend the line from the origin through the point to the point $(1,\tan \theta)$, as shown. (Here we are assuming that $0\leq \theta \leq \pi/2$. Later we will show that we can also consider $\theta \leq 0$.)
 
 \mtable[-1in]{The unit circle and related triangles.}{fig:squeeze_sinx}{
 \begin{tikzpicture}[x=.4\marginparwidth,y=.4\marginparwidth,>=stealth]
@@ -241,21 +233,21 @@ We begin by considering the unit circle. Each point on the unit circle has coord
 
 \begin{center}
 \begin{tabular}{ccccc}
-\begin{tikzpicture}[x=.5\marginparwidth,y=.5\marginparwidth,>=stealth]
+\begin{tikzpicture}[x=.2\textwidth,y=.5\marginparwidth,>=stealth]
 \fill [draw=black,thick,fill={\coloronefill}] (0,0) node [shift={(10pt,4pt)}] {\scriptsize$\theta$} -- (1,.839) -- node [pos=.5,right] {\scriptsize$\tan \theta$} (1,0) -- cycle;
 \draw (.5,0) node [below] {\scriptsize$1$};
 \draw [black,dashed,thick] (1,0) arc (0:40:1);
 \draw [black,dashed,thick] (1,0) -- (.766,.643);
 \end{tikzpicture}
 & &
-\begin{tikzpicture}[x=.5\marginparwidth,y=.5\marginparwidth,>=stealth]
+\begin{tikzpicture}[x=.2\textwidth,y=.5\marginparwidth,>=stealth]
 \fill [draw=black,thick,fill={\coloronefill}] (0,0) node [shift={(10pt,4pt)}] {\scriptsize$\theta$} -- (1,0) arc(0:40:1) -- cycle;
 \draw (.5,0) node [below] {\scriptsize$1$};
 \draw [black,dashed,thick] (1,0) arc (0:40:1);
 \draw [black,dashed,thick] (1,0) -- (.766,.643) -- (1,.839) -- cycle;
 \end{tikzpicture}
 & &
-\begin{tikzpicture}[x=.5\marginparwidth,y=.5\marginparwidth,>=stealth]
+\begin{tikzpicture}[x=.2\textwidth,y=.5\marginparwidth,>=stealth]
 \fill [draw=black,thick,fill={\coloronefill}] (0,0) node [shift={(10pt,4pt)}] {\scriptsize$\theta$} -- (1,0) --(.766,.643) -- cycle;
 \draw [dashed,thick] (.766,0)  -- node [pos=.4,left] {\scriptsize$\sin \theta$}(.766,.643);
 \draw (.766,5pt) -- ++(5pt,0) -- ++(0,-5pt);
@@ -285,14 +277,14 @@ Now take limits.
 Clearly this means that $\ds \lim_{\theta\to 0} \frac{\sin\theta}{\theta}=1$.
 \end{example}
 
-Two notes about the previous example are worth mentioning. First, one might be discouraged by this application, thinking ``I would \textit{never} have come up with that on my own. This is too hard!'' Don't be discouraged; within this text we will guide you in your use of the Squeeze Theorem. As one gains mathematical maturity, clever proofs like this are easier and easier to create.
+Two notes about the previous example are worth mentioning. First, one might be discouraged by this application, thinking ``I would \emph{never} have come up with that on my own. This is too hard!'' Don't be discouraged; within this text we will guide you in your use of the Squeeze Theorem. As one gains mathematical maturity, clever proofs like this are easier and easier to create.
 
-Second, this limit tells us more than just that as $x$ app\-roaches 0, $\sin(x)/x$ approaches 1. Both $x$ and $\sin x$ are approaching 0, but the \textit{ratio} of $x$ and $\sin x$ approaches 1, meaning that they are approaching 0 in essentially the same way. Another way of viewing this is: for small $x$, the functions $y=x$ and $y=\sin x$ are essentially indistinguishable.\bigskip
+Second, this limit tells us more than just that as $x$ app\-roaches 0, $\sin(x)/x$ approaches 1. Both $x$ and $\sin x$ are approaching 0, but the \emph{ratio} of $x$ and $\sin x$ approaches 1, meaning that they are approaching 0 in essentially the same way. Another way of viewing this is: for small $x$, the functions $y=x$ and $y=\sin x$ are essentially indistinguishable.\bigskip
 
 We include this special limit, along with three others, in the following theorem.
 
 \begin{theorem}[Special Limits]\label{thm:special_limits}
-\mbox{}\\[-2.5\baselineskip]
+\mbox{}\vspace{-1.5\baselineskip}
 \begin{multicols}{2}
 \begin{enumerate}
 	\item		$\ds \lim_{x\to 0} \frac{\sin x}{x} = 1$
@@ -335,7 +327,7 @@ By graphing the function, as in \autoref{fig:limitxplus1}, we see that the funct
 \[\text{Let \ } f(x)=\frac{x^2-1}{x-1} = \frac{(x-1)(x+1)}{x-1}.\]
 The function is not defined when $x=1$, but for all other $x$,
 \[\frac{x^2-1}{x-1} = \frac{(x-1)(x+1)}{x-1} = \frac{\hbox{\sout{$(x-1)$}}(x+1)}{\hbox{\sout{$x-1$}}}= x+1.\]
-Clearly $\ds\lim_{x\to 1}(x+1)=2$. Recall that when considering limits, we are not concerned with the value of the function at 1, only the value the function approaches as $x$ approaches 1. Since $(x^2-1)/(x-1)$ and $x+1$ are the same at all points except $x=1$, they both approach the same value as $x$ approaches 1. Therefore we can conclude that
+Clearly $\ds\lim_{x\to 1}(x+1)=2$. Recall that when considering limits, we are not concerned with the value of the function at 1, only the value that the function approaches as $x$ approaches 1. Since $(x^2-1)/(x-1)$ and $x+1$ are the same at all points except $x=1$, they both approach the same value as $x$ approaches 1. Therefore we can conclude that
 \[\lim_{x\to 1}\frac{x^2-1}{x-1}=\lim_{x\to 1}\frac{(x-1)(x+1)}{x-1}=\lim_{x\to 1} (x+1)=2.\]
 \end{example}
 
@@ -384,7 +376,7 @@ We begin by applying \autoref{thm:lim_continuous} and substituting 2 for $x$. Th
 &=\lim_{x\to 0} \frac{(x+4)-4}{x(\sqrt{x+4}+2)} \\
 &=\lim_{x\to 0} \frac{x}{x(\sqrt{x+4}+2)} & \text{Simplify the numerator.}\\
 &=\lim_{x\to 0} \frac{1}{\sqrt{x+4}+2} & \text{Divide out }x.\\
-&=\frac{1}{\sqrt{4}+2}=\frac{1}{4}.\eoehere
+&=\frac{1}{\sqrt{4}+2}=\frac{1}{4}.
 \end{align*}
 \end{example}
 
@@ -397,6 +389,7 @@ Let $f(x) = -1.5x^2+11.5x$; find $\ds \lim_{h\to 0}\frac{f(1+h)-f(1)}{h}$.
 \solution
 Since $f$ is a polynomial, our first attempt should be to employ \autoref{thm:lim_continuous} and substitute 0 for $h$. However, we see that this gives us ``$0/0$.'' %\zerooverzero.
 Knowing that we have a rational function hints that some algebra will help. Consider the following steps:
+\allowdisplaybreaks
 \begin{align*}
 	\lim_{h\to 0} & \frac{f(1+h)-f(1)}{h} \\
 	&= \lim_{h\to 0}\frac{-1.5(1+h)^2 + 11.5(1+h) - \left(-1.5(1)^2+11.5(1)\right)}{h} \\
@@ -409,6 +402,6 @@ Knowing that we have a rational function hints that some algebra will help. Cons
 This matches our previous approximation.
 \end{example}
 
-This section contains several valuable tools for evaluating limits. One of the main results of this section is \autoref{thm:lim_continuous}; it states that many functions that we use regularly behave in a very nice, predictable way. In \autoref{sec:continuity} we give a name to this nice behavior; we label such functions as \textit{continuous.} Defining that term will require us to look again at what a limit is and what causes limits to not exist.
+This section contains several valuable tools for evaluating limits. One of the main results of this section is \autoref{thm:lim_continuous}; it states that many functions that we use regularly behave in a very nice, predictable way. In \autoref{sec:continuity} we give a name to this nice behavior; we label such functions as \emph{continuous.} Defining that term will require us to look again at what a limit is and what causes limits to not exist.
 
 \printexercises{exercises/01_03_exercises}

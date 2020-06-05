@@ -2,6 +2,9 @@
 \setboolean{abridgeConics}{true}
 
 \usepackage[american]{babel}
+%\usepackage{polyglossia}
+%\setdefaultlanguage[american]{english}
+% that seemed to cause some strange errors
 
 \newcommand{\monthYear}{%
 \ifcase \month \or January\or February\or March\or April\or May\or June\or July\or August\or September\or October\or November\or December\fi \space \number \year}
@@ -20,9 +23,6 @@
 %\usepackage{wrapfig}
 
 \usepackage{booktabs}
-
-%\usepackage{esint}
-% for oiint in 14_Div_Thm, oint[ctr]clockwise in 14_Line_Integrals_Props
 
 \setcounter{secnumdepth}{1}
 \setcounter{tocdepth}{1}
@@ -116,6 +116,7 @@
  \setcounter{secnumdepth}{-1}
  \pagenumbering{arabic}
  \renewcommand{\thepage}{A.\arabic{page}}
+ \renewcommand{\thechapter}{\arabic{chapter}}
  \part*{\appendixname}
 % \part*{Appendices\protect\thispagestyle{empty}}
 % \addcontentsline{toc}{part}{\appendixname}
@@ -308,10 +309,14 @@
 \ifthenelse{\boolean{xetex}}%
 	{%
 	\sffamily
-	%%\usepackage{fontspec}
+%	\usepackage{fontspec}
+%	\usepackage{unicode-math}
 	\usepackage{mathspec}
 	\setallmainfonts[Mapping=tex-text]{Calibri}
 	\setmainfont[Mapping=tex-text]{Calibri}
+	% setallmainfonts claims to setmainfont. but it doesn't?
+%	\setmathsfont[Mapping=tex-text]{Calibri}
+%	\setmathrm[Mapping=tex-text]{Calibri}
 	\setsansfont[Mapping=tex-text]{Calibri}
 	\setmathsfont(Greek){[cmmi10]}
 	}
@@ -332,13 +337,6 @@
 %	{}
 
 
-\newboolean{calc1included}
-\newboolean{calc2included}
-\newboolean{calc3included}
-\setboolean{calc1included}{false}
-\setboolean{calc2included}{false}
-\setboolean{calc3included}{false}
-
 \let\oldprintindex\printindex
 \renewcommand{\printindex}{%
  \cleardoublepage
@@ -346,17 +344,6 @@
  \phantomsection
 % \iflatexml\chapter*{\indexname}\fi
  \addcontentsline{toc}{chapter}{\indexname}
- % set the ``see'' entries that shouldn't refer to a page number
-% \ifthenelse{\boolean{calc2included}}{%
-%  \index{$"!$|see {factorial}} % 08 sequences
-% }{}
-% \ifthenelse{\boolean{calc3included}}{%
-%  \index{perpendicular|see{orthogonal}} % 10 dot product
-%  \index{nabla|see {del operator}} % 12 directional derivatives, 14 vector fields
-%  \index{$\nabla$|see {del operator}} % 12 directional derivatives, 14 vector fields
-%  \index{multiple integration|see{iterated integration}} % 13 iterated integrals
-%  \index{$\dfrac{\partial (x,y,z)}{\partial (u,v,w)}$|see {Jacobian}} % 13 Jacobian
-% }{}
  \oldprintindex
 }
 

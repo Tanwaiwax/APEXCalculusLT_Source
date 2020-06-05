@@ -1,6 +1,6 @@
 \section{Infinite Series}\label{sec:series}
 
-Given the sequence $\{a_n\} = \{1/2^n\} = 1/2,\ 1/4,\ 1/8,\ \dotsc$, consider the following sums:
+Given the sequence $\{a_n\} = \{1/2^n\} = 1/2,\ 1/4,\ 1/8,\ \dotsc$, consider the following sums:\vspace{-.5\baselineskip}
 \[
 \begin{array}{ccccc}
 a_1				&=& 1/2					&=& 1/2\\
@@ -9,36 +9,34 @@ a_1+a_2+a_3		&=& 1/2+1/4+1/8			&=& 7/8\\
 a_1+a_2+a_3+a_4	&=& 1/2+1/4+1/8+1/16		&=& 15/16
 \end{array}
 \]
-Later, we will be able to show that
+Later, we will be able to show that\vspace{-.5\baselineskip}
 \[a_1+a_2+a_3+\dotsb+a_n = \frac{2^n-1}{2^n} = 1-\frac{1}{2^n}.\]
 Let $S_n$ be the sum of the first $n$ terms of the sequence $\{1/2^n\}$. From the above, we see that $S_1=1/2$, $S_2 = 3/4$, and that $S_n = 1-1/2^n$. 
 
-Now consider the following limit: $\ds \lim_{n\to\infty}S_n = \lim_{n\to\infty}\big(1-1/2^n\big) = 1$. This limit can be interpreted as saying something amazing: \emph{the sum of \emph{all} the terms of the sequence $\{1/2^n\}$ is 1.} 
+Now consider the following limit: $\ds \lim_{n\to\infty}S_n = \lim_{n\to\infty}\bigl(1-1/2^n\bigr) = 1$. This limit can be interpreted as saying something amazing: \emph{the sum of \emph{all} the terms of the sequence $\{1/2^n\}$ is 1.} 
 
 
 This example illustrates some interesting concepts that we explore in this section. We begin this exploration with some definitions.
 
-% make sure the next stays on the opening page
-
-%{\tcbset{grow to right by=50pt}}
+{\tcbset{grow to right by=50pt}
 \begin{definition}[Infinite Series, $n^\text{th}$ Partial Sums, Convergence, Divergence]\label{def:series}
 Let $\{a_n\}$ be a sequence.
 \index{series!definition}\index{series!partial sums}\index{series!convergent}\index{series!divergent}\index{convergence!of series}\index{divergence!of series}
 \begin{enumerate}
 \item		The sum $\ds \sum_{n=1}^\infty a_n$ is an \textbf{infinite series} (or, simply \textbf{series}).
-\item		Let $\ds S_n = \sum_{i=1}^n a_i$\,; the sequence $\{S_n\}$ is the sequence of \textbf{$n^\text{th}$ partial sums} of $\{a_n\}$.
-\item		If the sequence $\{S_n\}$ converges to $L$, we say the series $\ds \sum_{n=1}^\infty a_n$ \textbf{converges} to $L$, and we write $\ds \sum_{n=1}^\infty a_n = L$.
+\item		Let $\ds S_n = \sum_{i=1}^n a_i$\,; the sequence $\{S_n\}$ is the sequence of \textbf{$n^\text{th}$ partial sums} of $\{a_n\}$.\vspace{-.5\baselineskip}
+\item		If the sequence $\{S_n\}$ converges to $L$, we say the series $\ds \sum_{n=1}^\infty a_n$ \textbf{converges} to $L$, and we write $\ds \sum_{n=1}^\infty a_n = L$.\vspace{-.5\baselineskip}
 \item		If the sequence $\{S_n\}$ diverges, the series $\ds \sum_{n=1}^\infty a_n$ \textbf{diverges}.
 \end{enumerate}
 \end{definition}
+}
 
-Using our new terminology, we can state that the series $\ds \sum_{n=1}^\infty 1/2^n$ converges, and $\ds \sum_{n=1}^\infty 1/2^n = 1.$
+Using our new terminology, we can state that the series $\ds \sum_{n=1}^\infty 1/2^n$\vspace{-.5\baselineskip} converges, and $\ds \sum_{n=1}^\infty 1/2^n = 1.$
 
 \youtubeVideo{cyoiIBs7kIg}{Finding a Formula for a Partial Sum of a Telescoping Series}
 
 We will explore a variety of series in this section. We start with two series that diverge, showing how we might discern divergence.
 
-% todo Tim check v spacing
 \begin{example}[Showing series diverge]\label{ex_series1}
 \mbox{}\\[-2\baselineskip]
 \begin{enumerate}
@@ -84,7 +82,7 @@ This pattern repeats; we find that
 $S_n = \begin{cases}
 1  & n\ \text{ is odd}\\
 0  & n\ \text{ is even}
-\end{cases}$.
+\end{cases}$.\smallskip
 As $\{S_n\}$ oscillates, repeating $1, 0, 1, 0, \dotsc$, we conclude that $\ds\lim_{n\to\infty}S_n$ does not exist, hence $\ds\sum_{n=1}^\infty (-1)^{n+1}$ diverges.		
 
 \mtable{Scatter plots relating to the series of \autoref{ex_series1} part 2.}{fig:series1b}{\begin{tikzpicture}
@@ -123,8 +121,10 @@ Note that the index starts at $n=0$. If the index starts at $n=1$ we have $\ds \
 
 We started this section with a geometric series, although we dropped the first term of $1$. One reason geometric series are important is that they have nice convergence properties.
 
+\clearpage
+% todo Tim check page break of T9.2.1
 \begin{theorem}[Convergence of Geometric Series]\label{thm:geom_series}
-Consider the geometric series $\ds \sum_{n=0}^\infty ar^n$.
+Consider the geometric series $\ds \sum_{n=0}^\infty ar^n$.\vspace{-.5\baselineskip}
 \index{series!geometric}\index{geometric series}\index{convergence!of geometric series}\index{divergence!of geometric series}
 \begin{enumerate}
 \item	If $r\neq1$, the $n^\text{th}$ partial sum is: $\ds S_n = \sum_{k=0}^{n-1}ar^k=\frac{a(1-r\,^n)}{1-r}$.
@@ -151,7 +151,7 @@ From \autoref{thm:geom_seq}, we know that if $-1<r<1$, then $\ds \lim_{n\to \inf
 \]
 So when $\abs r<1$ the geometric series converges and its sum is $\ds \frac{a}{1-r}$.
 
-If either $r\leq -1$ or $r>1$, the sequence $\{r^n\}$ is divergent by \autoref{thm:geom_seq}. Thus $\ds \lim_{n\to \infty} S_n$ does not exist, so the geometric series diverges if $r\leq -1$ or $r>1$.
+If either $r\leq -1$ or $r>1$, the sequence $\{r^n\}$ is divergent by \autoref{thm:geom_seq}. Thus $\ds \lim_{n\to \infty} S_n$ does not exist, so the geometric series diverges if $r\leq -1$ or \mbox{$r>1$.}
 \end{proof}
 
 According to \autoref{thm:geom_series}, the series 
@@ -368,7 +368,7 @@ ymin=-.5,ymax=5,xmin=-10,xmax=110]
 \end{tikzpicture}};
 \end{tikzpicture}}
 
-We can conclude that $\{S_n\} = \big\{\ln (n+1)\big\}$. This sequence  does not converge, as $\ds \lim_{n\to\infty}S_n=\infty$. Therefore  $\ds\sum_{n=1}^\infty  \ln\left(\frac{n+1}{n}\right)=\infty$; the series diverges. Note in \autoref{fig:series4b} how the sequence of partial sums grows slowly; after 100 terms, it is not yet over 5. Graphically we may be fooled into thinking the series converges, but our analysis above shows that it does not.
+We can conclude that $\{S_n\} = \bigl\{\ln (n+1)\bigr\}$. This sequence  does not converge, as $\ds \lim_{n\to\infty}S_n=\infty$. Therefore  $\ds\sum_{n=1}^\infty  \ln\left(\frac{n+1}{n}\right)=\infty$; the series diverges. Note in \autoref{fig:series4b} how the sequence of partial sums grows slowly; after 100 terms, it is not yet over 5. Graphically we may be fooled into thinking the series converges, but our analysis above shows that it does not.
 \end{enumerate}
 \end{example}
 
@@ -380,7 +380,7 @@ Suppose that \quad$\ds \sum_{n=1}^\infty a_n$\quad and \quad $\ds\sum_{n=1}^\inf
 \index{Constant Multiple Rule!of series}
 \begin{enumerate}
 \item  Constant Multiple Rule: $\ds\sum_{n=1}^\infty c\cdot a_n = c\cdot\sum_{n=1}^\infty a_n = c\cdot L.$
-\item		Sum/Difference Rule: $\ds\sum_{n=1}^\infty \big(a_n\pm b_n\big) = \sum_{n=1}^\infty a_n \pm \sum_{n=1}^\infty b_n = L \pm K.$
+\item		Sum/Difference Rule: $\ds\sum_{n=1}^\infty \bigl(a_n\pm b_n\bigr) = \sum_{n=1}^\infty a_n \pm \sum_{n=1}^\infty b_n = L \pm K.$
 \end{enumerate}
 \end{theorem}
 
@@ -419,7 +419,7 @@ This gives us $S\geq \frac12+S$ which can never be true, thus our assumption tha
 %Evaluate the given series.
 %
 %\[
-%\text{1.}\quad\sum_{n=1}^\infty \frac{(-1)^{n+1}\big(n^2-n\big)}{n^3}\qquad
+%\text{1.}\quad\sum_{n=1}^\infty \frac{(-1)^{n+1}\bigl(n^2-n\bigr)}{n^3}\qquad
 %\text{2.}\quad\sum_{n=1}^\infty \frac{1000}{n!}\qquad
 %\text{3.}\quad\frac1{16}+\frac1{25}+\frac1{36}+\frac1{49}+\dotsb
 %\]
@@ -427,7 +427,7 @@ This gives us $S\geq \frac12+S$ which can never be true, thus our assumption tha
 %\begin{enumerate}
 %\item	We start by using algebra to break the series apart:
 %\begin{align*}
-%\sum_{n=1}^\infty \frac{(-1)^{n+1}\big(n^2-n\big)}{n^3} &= \sum_{n=1}^\infty\left(\frac{(-1)^{n+1}n^2}{n^3}-\frac{(-1)^{n+1}n}{n^3}\right) \\
+%\sum_{n=1}^\infty \frac{(-1)^{n+1}\bigl(n^2-n\bigr)}{n^3} &= \sum_{n=1}^\infty\left(\frac{(-1)^{n+1}n^2}{n^3}-\frac{(-1)^{n+1}n}{n^3}\right) \\
 %						&= \sum_{n=1}^\infty\frac{(-1)^{n+1}}{n}-\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n^2} \\
 %						&= \ln(2) - \frac{\pi^2}{12}	\approx	-0.1293.
 %\end{align*}
@@ -588,6 +588,6 @@ The equation below illustrates this. Even though we have subtracted off the firs
 \end{multline*}
 \end{example}
 
-This section introduced us to series and defined a few special types of series whose convergence properties are well known. We know when a geometric series converges or diverges. Most series that we encounter are not one of these types, but we are still interested in knowing whether or not they converge. The next three sections introduce tests that help us determine whether or not a given series converges. {
+This section introduced us to series and defined a few special types of series whose convergence properties are well known. We know when a geometric series converges or diverges. Most series that we encounter are not one of these types, but we are still interested in knowing whether or not they converge. The next three sections introduce tests that help us determine whether or not a given series converges.
 
 \printexercises{exercises/08_02_exercises}

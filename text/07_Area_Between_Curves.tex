@@ -80,16 +80,16 @@ The issue to address next is how to systematically break a region into subregion
 
 We now approximate the area of a slice. Again, we have many options, but using a rectangle seems simplest. Picking any $x$-value $c_i$ in the $i^\text{ th}$ slice, we set the height of the rectangle to be $f(c_i)-g(c_i)$, the difference of the corresponding $y$-values. The width of the rectangle is a small difference in $x$-values, which we represent with $\Delta x$. \autoref{fig:abcintro} (c) shows sample points $c_i$ chosen in each subinterval and appropriate rectangles drawn.
 %(Each of these rectangles represents a differential element.)
-Each slice has an area approximately equal to $\big(f(c_i)-g(c_i)\big)\Delta x$; hence, the total area is approximately the Riemann Sum
-\[Q \approx \sum_{i=1}^n \big(f(c_i)-g(c_i)\big)\Delta x.\]
-Taking the limit as $n\to \infty$ gives the exact area as $\int_a^b \big(f(x)-g(x)\big)\ dx.$
+Each slice has an area approximately equal to $\bigl(f(c_i)-g(c_i)\bigr)\Delta x$; hence, the total area is approximately the Riemann Sum\vspace{-.5\baselineskip}
+\[Q \approx \sum_{i=1}^n \bigl(f(c_i)-g(c_i)\bigr)\Delta x.\]
+Taking the limit as $n\to \infty$ gives the exact area as $\int_a^b \bigl(f(x)-g(x)\bigr)\ dx.$
 
 \begin{theorem}[Area Between Curves]\label{thm:areabetweencurves}
 Let $f(x)$ and $g(x)$ be continuous functions defined on $[a,b]$ where $f(x)\geq g(x)$ for all $x$ in $[a,b]$. The area of the region bounded by the curves $y=f(x)$, $y=g(x)$ and the lines $x=a$ and $x=b$ is \index{integration!area between curves}
-\[\int_a^b \big(f(x)-g(x)\big)\ dx.\]
+\[\int_a^b \bigl(f(x)-g(x)\bigr)\ dx.\]
 \end{theorem}
 
-Often, we do not know which function is greater (or they switch within the domain of integration).  In that case, we can say that the area is $\int_a^b\abs{f(x)-g(x)}\ dx$, which may involve dividing the domain of integration into pieces.
+Often, we do not know which function is greater (or they switch within the domain of integration).  If so, we can say that the area is $\int_a^b\abs{f(x)-g(x)}\ dx$, which may involve dividing the domain of integration into pieces.
 
 \youtubeVideo{DRFyNHdVgUA}{Finding Areas Between Curves}
 
@@ -115,8 +115,8 @@ extra x tick labels={$4\pi$},ymin=-2,ymax=3.5,xmin=-.5,xmax=13.5]
 %
 The graph verifies that the upper boundary of the region is given by $f$ and the lower bound is given by $g$. Therefore the area of the region is the value of the integral
 \begin{align*} 
-	\int_0^{4\pi} \big(f(x)- g(x)\big)\ dx
-	& = \int_0^{4\pi} \Big(\sin x+2 - \big(\frac12\cos (2x)-1\big)\Big)\ dx \\
+	\int_0^{4\pi} \bigl(f(x)- g(x)\bigr)\ dx
+	& = \int_0^{4\pi} \Bigl(\sin x+2 - \bigl(\frac12\cos (2x)-1\bigr)\Bigr)\ dx \\
 	&= -\cos x -\frac14\sin(2x)+3x\Big|_0^{4\pi}\\
 	&=	12\pi %\approx 37.7
 	\ \text{units}^2.
@@ -140,7 +140,7 @@ ytick={5,10,15},ymin=-10,ymax=16,xmin=-2.5,xmax=4.5]
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
-The region whose area we seek is completely bounded by these two functions; they seem to intersect at $x=-1$ and $x=3$. To check, set $x^2+x-5=3x-2$ and solve for $x$:
+The region whose area we seek is completely bounded by these two functions; they seem to intersect at $x=-1$ and $x=3$. To check, set $x^2+x-5=3x-2$ and solve for $x$:\vspace{-.5\baselineskip}
 \begin{align*}
 	x^2+x-5 &= 3x-2 \\
 	(x^2+x-5) - (3x-2) &= 0\\
@@ -150,7 +150,7 @@ The region whose area we seek is completely bounded by these two functions; they
 \end{align*}
 Following \autoref{thm:areabetweencurves}, the area is 
 \begin{align*}
-	\int_{-1}^3\big(3x-2 -(x^2+x-5)\big)\ dx &= \int_{-1}^3 (-x^2+2x+3)\ dx \\
+	\int_{-1}^3\bigl(3x-2 -(x^2+x-5)\bigr)\ dx &= \int_{-1}^3 (-x^2+2x+3)\ dx \\
 	&=\left.\left(-\frac13x^3+x^2+3x\right)\right|_{-1}^3 \\
 	&=-\frac13(27)+9+9-\left(\frac13+1-3\right)\\
 	&= 10\frac23 = 10.\overline{6}
@@ -183,19 +183,20 @@ ymin=-5,ymax=3.5,xmin=-.5,xmax=4.7]
 \begin{example}[Finding total area enclosed by curves]\label{ex_abc2}
 Find the total area of the region enclosed by the functions $f(x) = -2x+5$ and $g(x) = x^3-7x^2+12x-3$ as shown in \autoref{fig:abc2}.
 \solution
-A quick calculation shows that $f=g$ at $x=1, 2$ and 4. One can proceed thoughtlessly by computing $\ds \int_1^4\big(f(x)-g(x)\big)\ dx$, but this ignores the fact that on $[1,2]$, $g(x)>f(x)$. (In fact, the thoughtless integration returns $-9/4$, hardly the expected value of an \textit{area}.) Thus we compute the total area by breaking the interval $[1,4]$ into two subintervals, $[1,2]$ and $[2,4]$ and using the proper integrand in each.
+A quick calculation shows that $f=g$ at $x=1, 2$ and 4. One can proceed thoughtlessly by computing $\ds \int_1^4\bigl(f(x)-g(x)\bigr)\ dx$, but this ignores the fact that on $[1,2]$, $g(x)>f(x)$. (In fact, the thoughtless integration returns $-9/4$, hardly the expected value of an \emph{area}.) Thus we compute the total area by breaking the interval $[1,4]$ into two subintervals, $[1,2]$ and $[2,4]$ and using the proper integrand in each.
 \begin{align*}
 	\text{Total Area}
-	&= \int_1^2 \big(g(x)-f(x)\big)\ dx + \int_2^4\big(f(x)-g(x)\big)\ dx\\
-	&= \int_1^2 \big(x^3-7x^2+14x-8\big) \ dx
-	+ \int_2^4\big(-x^3+7x^2-14x+8\big)\ dx\\
-	&= \frac5{12} + \frac83 \\
-	&= \frac{37}{12} % \approx 3.083
+	&= \int_1^2 \bigl(g(x)-f(x)\bigr)\ dx + \int_2^4\bigl(f(x)-g(x)\bigr)\ dx\\
+	&= \int_1^2 \bigl(x^3-7x^2+14x-8\bigr) \ dx
+	+ \int_2^4\bigl(-x^3+7x^2-14x+8\bigr)\ dx\\
+	&= \frac5{12} + \frac83
+	 %\\&
+	= \frac{37}{12} % \approx 3.083
 	\ \text{units}^2.
 \end{align*}
 \end{example}
 
-The previous example makes note that we are expecting area to be \textit{positive}. When first learning about the definite integral, we interpreted it as ``signed area under the curve,'' allowing for ``negative area.'' That doesn't apply here; area is to be positive.
+The previous example makes note that we are expecting area to be \emph{positive}. When first learning about the definite integral, we interpreted it as ``signed area under the curve,'' allowing for ``negative area.'' That doesn't apply here; area is to be positive.
 
 The previous example also demonstrates that we often have to break a given region into subregions before applying \autoref{thm:areabetweencurves}. The following example shows another situation where this is applicable, along with an alternate view of applying the Theorem.
 
@@ -222,12 +223,13 @@ ymin=-.1,ymax=3.5,xmin=-.1,xmax=2.5]
 
 \begin{align*}
 	\text{Total Area}
-	&= \int_0^1 \Big(\big(\sqrt{x}+2\big)-2\Big)\ dx + \int_1^2 \Big(\big(-(x-1)^2+3\big)-2\Big)\ dx \\
-	&= 2/3 + 2/3\\
-	&=4/3.
+	&= \int_0^1 \Bigl(\bigl(\sqrt{x}+2\bigr)-2\Bigr)\ dx + \int_1^2 \Bigl(\bigl(-(x-1)^2+3\bigr)-2\Bigr)\ dx \\
+	&= 2/3 + 2/3
+	%\\&
+	=4/3.
 \end{align*}
 
-The second approach is clever and very useful in certain situations. We are used to viewing curves as functions of $x$; we input an $x$-value and a $y$-value is returned. Some curves can also be described as functions of $y$: input a $y$-value and an $x$-value is returned. We can rewrite the equations describing the boundary by solving for $x$:
+The second approach is clever and very useful in certain situations. We are used to viewing curves as functions of $x$; we input an $x$-value and a $y$-value is returned. Some curves can also be described as functions of $y$: input a $y$-value and an $x$-value is returned. We can rewrite the equations describing the boundary by solving for $x$:\vspace{-.3\baselineskip}
 \begin{align*}
 y=\sqrt{x}+2 & \quad\Rightarrow\quad x=(y-2)^2 \\
 y=-(x-1)^2+3 & \quad\Rightarrow\quad x=\sqrt{3-y}+1.
@@ -254,13 +256,13 @@ ymin=-.1,ymax=3.5,xmin=-.1,xmax=2.5]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}	
 %
-\[\big(\sqrt{3-y}+1\big) - (y-2)^2.\]
+\[\bigl(\sqrt{3-y}+1\bigr) - (y-2)^2.\]
 
 The area is found by integrating the above function with respect to $y$ with the appropriate bounds. We determine these by considering the $y$-values the region occupies. It is bounded below by $y=2$, and bounded above by $y=3$. That is, both the ``top'' and ``bottom'' functions exist on the $y$ interval $[2,3]$. Thus
 \begin{align*}
 	\text{Total Area}
-	&= \int_2^3 \big(\sqrt{3-y}+1 - (y-2)^2\big)\ dy \\
-	&= \Big(-\frac23(3-y)^{3/2}+y-\frac13(y-2)^3\Big)\Big|_2^3 \\
+	&= \int_2^3 \bigl(\sqrt{3-y}+1 - (y-2)^2\bigr)\ dy \\
+	&= \Bigl(-\frac23(3-y)^{3/2}+y-\frac13(y-2)^3\Bigr)\Big|_2^3 \\
 	&= 4/3.
 \end{align*}
 The important thing to notice is that by integrating with respect to $y$ instead of $x$, we only had to do one integral and did not need to find the point at which to switch from one integration to another.
@@ -293,8 +295,9 @@ Recognize that there are two ``bottom'' functions to this region, causing us to 
 %	&= \int_1^3 2x-2\ dx + \int_3^4 16-4x\ dx \\
 %	&= \left.x^2-2x\right|_1^3 + \left.16x-2x^2\right|_3^4 \\
 %	&= (3- -1) + (32-30) \\
-	&= 4+2\\
-	&= 6.
+	&= 4+2
+	%\\&
+	= 6.
 \end{align*}
 We can also approach this by converting each function into a function of $y$. This also requires 2 integrals, so there isn't really any advantage to doing so. We do it here for demonstration purposes.
 
@@ -306,9 +309,11 @@ The ``top'' function is always $x=\frac y5+3$ while there are two ``bottom'' fun
 %	&= \int_0^2\left(\frac{6y}5\right)\ dy+ \int_2^5\left(-\frac{4y}5+4\right)\ dy \\
 %	&= \left.\frac{3y^2}5\right|_0^2 + \left[-\frac{2y^2}5+4y\right]_2^5 \\
 %	&= \frac{12}5 + \left[10-\frac{32}5\right] \\
-	&= \frac{12}5 + \frac{18}5 \\
+	&= \frac{12}5 + \frac{18}5
+	% \\
 %	&= \frac{30}5 \\
-	&= 6.
+	%&
+	= 6.
 \end{align*}
 Of course, the final answer is the same (and we see that integrating with respect to $x$ was probably easier, since it avoided fractions).
 \end{example}
@@ -319,7 +324,7 @@ Of course, the final answer is the same (and we see that integrating with respec
 %\begin{example}[Numerically approximating area]\label{ex_abc5}
 %To approximate the area of a lake, shown in \autoref{fig:abc5}(a),  the ``length'' of the lake is measured at 200-foot increments as shown in \autoref{fig:abc5}(b), where the lengths are given in hundreds of feet. Approximate the area of the lake.
 %\solution
-%The measurements of length can be viewed as measuring ``top minus bottom'' of two functions. The exact answer is found by integrating $\ds \int_0^{12} \big(f(x)-g(x)\big)\ dx$, but of course we don't know the functions $f$ and $g$. Our discrete measurements instead allow us to approximate.
+%The measurements of length can be viewed as measuring ``top minus bottom'' of two functions. The exact answer is found by integrating $\ds \int_0^{12} \bigl(f(x)-g(x)\bigr)\ dx$, but of course we don't know the functions $f$ and $g$. Our discrete measurements instead allow us to approximate.
 %
 %\mtable{(a) A sketch of a lake, and (b) the lake with length measurements.}{fig:abc5}{\begin{tikzpicture}[scale=.4]%[width=1.16\marginparwidth]
 %\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -350,7 +355,7 @@ Of course, the final answer is the same (and we see that integrating with respec
 %\begin{align*}
 %	\text{Area}
 %	&\approx \frac{2}{3}
-%\Big(1\cdot0+4\cdot2.25+2\cdot5.08+4\cdot6.35+2\cdot5.21+4\cdot2.76+1\cdot0\Big)\\
+%\Bigl(1\cdot0+4\cdot2.25+2\cdot5.08+4\cdot6.35+2\cdot5.21+4\cdot2.76+1\cdot0\Bigr)\\
 %	&= 44.01\overline{3} \ \text{units}^2.
 %\end{align*}
 %

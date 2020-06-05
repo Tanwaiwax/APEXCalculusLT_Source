@@ -35,19 +35,14 @@ We can go through the same process as above for any base $a>0$, though we are no
 
 \begin{keyidea}[Properties of Exponential Functions]\label{ki_exp_func_props}
 For $a>0$ and $a\neq1$ the exponential function $f(x)=a^x$ satisfies:\\
-\begin{minipage}[t]{.5\linewidth}
+\begin{multicols}{2}
 \begin{enumerate}
  \item $a^0=1$
  \item $\ds\lim_{x\to\infty}a^x=\begin{cases}\infty&a>1\\0&a<1\end{cases}$
-\end{enumerate}
-\end{minipage}%
-\begin{minipage}[t]{.5\linewidth}
-\begin{enumerate}
- \setcounter{enumi}{2}
  \item $a^x>0$ for all $x$
  \item $\ds\lim_{x\to-\infty}a^x=\begin{cases}0&a>1\\\infty&a<1\end{cases}$
 \end{enumerate}
-\end{minipage}
+\end{multicols}
 \end{keyidea}
 
 \subsection{Derivatives of exponential functions}
@@ -193,21 +188,18 @@ Combining these new results, we arrive at the following theorem:
 
 \begin{theorem}[Derivatives and Antiderivatives of Exponentials and Logarithms]\label{thm_int_exp_log}
 Given a base $a>0$ and $a\neq 1$, the following hold:\\
-\begin{minipage}[t]{.5\textwidth}
+\begin{multicols}{2}
 \begin{enumerate}
 \item $\dfrac d{dx}e^x=e^x$
 \item $\dfrac d{dx}a^x=a^x\ln a$
 \item $\dfrac d{dx}\ln x=\dfrac1x$
 \item $\dfrac d{dx}\log_a x=\dfrac1{x\ln a}$
-\end{enumerate}
-\end{minipage}%
-\begin{minipage}[t]{.5\textwidth}
-\begin{enumerate}\setcounter{enumi}{4}
 \item $\ds\int e^x\,dx=e^x+C$
 \item $\ds\int a^x\,dx=\frac{a^x}{\ln a}+C$
 \item $\ds\int \frac{dx}{x}=\ln\abs x+C$
+\item[]
 \end{enumerate}
-\end{minipage}
+\end{multicols}
 \end{theorem}
 
 \begin{example}[Finding Antiderivatives]\label{ex_exp_log_anti}
@@ -277,12 +269,12 @@ As suggested above, we start by taking the natural log of both sides then applyi
 y &= x^x \\
 \ln (y) &= \ln (x^x) && \text{\small (apply logarithm rule)}\\
 \ln (y) &= x\ln x && \text{\small (now use implicit differentiation)}\\
-\frac{d}{dx}\Big(\ln (y)\Big) &= \frac{d}{dx}\Big(x\ln x\Big) \\
+\frac{d}{dx}\Bigl(\ln (y)\Bigr) &= \frac{d}{dx}\Bigl(x\ln x\Bigr) \\
 \frac{y\primeskip'}{y} &= \ln x + x\cdot\frac1x\\
 \frac{y\primeskip'}{y} &= \ln x + 1\\
 y\primeskip'
-&= y\big(\ln x+1\big) && \text{\small (substitute $y=x^x$)}\\
-y\primeskip' &= x^x\big(\ln x+1\big).
+&= y\bigl(\ln x+1\bigr) && \text{\small (substitute $y=x^x$)}\\
+y\primeskip' &= x^x\bigl(\ln x+1\bigr).
 \end{align*} 
 
 \mtable{A graph of $y=x^x$ and its tangent line at $x=1.5$.}{fig:implicit10}{\begin{tikzpicture}
@@ -298,7 +290,7 @@ ymin=-.1,ymax=4.2,xmin=-.1,xmax=2.2]
 \end{tikzpicture}}
 
 To ``test'' our answer, let's use it to find the equation of the tangent line at $x=1.5$. The point on the graph our tangent line must pass through is $(1.5, 1.5^{1.5}) \approx (1.5, 1.837)$. Using the equation for $y\primeskip'$, we find the slope as
-\[y\primeskip' = 1.5^{1.5}\big(\ln 1.5+1\big) \approx 1.837(1.405) \approx 2.582.\]
+\[y\primeskip' = 1.5^{1.5}\bigl(\ln 1.5+1\bigr) \approx 1.837(1.405) \approx 2.582.\]
 Thus the equation of the tangent line is $y = 2.582(x-1.5)+1.837$. \autoref{fig:implicit10} graphs $y=x^x$ along with this tangent line.
 \end{example}
 

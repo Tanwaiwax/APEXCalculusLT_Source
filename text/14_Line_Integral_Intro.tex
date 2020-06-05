@@ -1,6 +1,6 @@
 \section{Introduction to Line Integrals}\label{sec:line_int_intro}
 
-\mtable[-4\baselineskip]{Finding area under a curve in space.}{fig:lineint0}{%
+\mtable[-8\baselineskip]{Finding area under a curve in space.}{fig:lineint0}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.005003686994314194,
@@ -36,7 +36,7 @@ We suspect the answer can be found using an integral, but before trying to figur
 
 In \autoref{fig:lineint0}(c), four rectangles have been drawn over the curve $C$. The bottom corners of each rectangle lie on $C$, and each rectangle has a height given by the function $f(x,y)$ for some $(x,y)$ pair along $C$ between the rectangle's bottom corners. 
 
-As we know how to find the area of each rectangle, we are able to approximate the area above $C$ and under $f$. Clearly, our approximation will be \textit{an approximation}. The heights of the rectangles do not match exactly with the surface $f$, nor does the base of each rectangle follow perfectly the path of $C$.
+As we know how to find the area of each rectangle, we are able to approximate the area above $C$ and under $f$. Clearly, our approximation will be \emph{an approximation}. The heights of the rectangles do not match exactly with the surface $f$, nor does the base of each rectangle follow perfectly the path of $C$.
 
 In typical calculus fashion, our approximation can be improved by using more rectangles. The sum of the areas of these rectangles gives an approximate value of the true area above $C$ and under $f$. As the area of each rectangle is ``height $\times$ width'', we assert that the
 \[\text{area above $C$}\approx \sum (\text{heights}\times\text{widths}).\]
@@ -82,10 +82,10 @@ In \autoref{sec:curvature}, we defined the arc-length parameter in \autoeqref{eq
 By the Fundamental Theorem of Calculus, $\dfrac{ds}{dt} = \norm{\vec r\,'(t)}$. Because $\vrt$ is smooth, this is strictly positive, and so $s$ has an inverse: $t=\beta(s)$.  This means that $f(s)=f(g(\beta(s)),h(\beta(s)))$ and
 % We can substitute the right hand side of this equation for $ds$ in the line integral definition.
 %
-%We can view $f$ as being a function of $x$ and $y$ since it is a function of $s$. Thus $f(s) =f(x,y) =f\big(g(t),h(t)\big)$. This gives us a concrete way to evaluate a line integral:
+%We can view $f$ as being a function of $x$ and $y$ since it is a function of $s$. Thus $f(s) =f(x,y) =f\bigl(g(t),h(t)\bigr)$. This gives us a concrete way to evaluate a line integral:
 \[\int_C f(s)\ ds = \int_0^{\alpha(b)} f(s)\ ds = \int_0^{\alpha(b)}f(g(\beta(s)),h(\beta(s)))\ ds. \]
 We can now substitute $s=\alpha(t)$ to see that
-\[\int_C f(s)\ ds = \int_a^bf\big(g(t),h(t)\big)\norm{\vec r\,'(t)}\ dt.\]
+\[\int_C f(s)\ ds = \int_a^bf\bigl(g(t),h(t)\bigr)\norm{\vec r\,'(t)}\ dt.\]
 
 We restate this as a theorem, along with its three-dimensional analogue, followed by an example where we finally evaluate an integral and find an area.
 
@@ -93,13 +93,13 @@ We restate this as a theorem, along with its three-dimensional analogue, followe
 \index{line integral!over scalar field}%
 \mbox{}\\[-2\baselineskip]\begin{itemize}
 	\item Let $C$ be a curve parameterized by $\vrt =\bracket{g(t),h(t)}$, $a\leq t\leq b$, where $g$ and $h$ are continuously differentiable, and let $z=f(x,y)$, where $f$ is continuous over $C$. Then
-\[\int_Cf(s)\ ds = \int_a^bf\big(g(t),h(t)\big)\norm{\vec r\,'(t)}\ dt.\]
+\[\int_Cf(s)\ ds = \int_a^bf\bigl(g(t),h(t)\bigr)\norm{\vec r\,'(t)}\ dt.\]
 	\item Let $C$ be a curve parameterized by $\vrt =\bracket{g(t),h(t),k(t)}$, $a\leq t\leq b$, where $g$, $h$ and $k$ are continuously differentiable, and let $w=f(x,y,z)$, where $f$ is continuous over $C$. Then
-\[\int_Cf(s)\ ds = \int_a^bf\big(g(t),h(t),k(t)\big)\norm{\vec r\,'(t)}\ dt.\]
+\[\int_Cf(s)\ ds = \int_a^bf\bigl(g(t),h(t),k(t)\bigr)\norm{\vec r\,'(t)}\ dt.\]
 \end{itemize}
 \end{theorem}
 
-%\mnote{\textbf{Notation:} We often write $f\big(\vec r(t)\big)$ to represent $f\big(g(t),h(t)\big)$ or $f\big(g(t),h(t),k(t)\big)$. As the input of $f$ are points, it is an abuse of notation to use a vector, $\vec r(t)$, as $f$\,'s input. As this notation is concise and intuitive, this notational abuse is common practice and used extensively in subsequent sections.} Removed as already explained in 14.3
+%\mnote{\textbf{Notation:} We often write $f\bigl(\vec r(t)\bigr)$ to represent $f\bigl(g(t),h(t)\bigr)$ or $f\bigl(g(t),h(t),k(t)\bigr)$. As the input of $f$ are points, it is an abuse of notation to use a vector, $\vec r(t)$, as $f$\,'s input. As this notation is concise and intuitive, this notational abuse is common practice and used extensively in subsequent sections.} Removed as already explained in 14.3
 
 To be clear, the first point of \autoref{thm:line1} can be used to find the area under a surface $z=f(x,y)$ and above a curve $C$. This is also a \emph{signed area}; when $f<0$, then we have a negative area that subtracts from our answer.  We will later give an understanding of the line integral when $C$ is a curve in space.
 
@@ -135,8 +135,8 @@ We find the values of $f$ over $C$ as $f(x,y) = f(t,2t+1) = \cos(t)+\sin(2t+1) +
 The area we seek is 
 \begin{align*}
 	\int_Cf(s)\ ds
-	&= \int_{-1}^1 \big(\cos(t)+\sin(2t+1) + 2\big)\sqrt{5}\ dt \\
-	&= \left.\sqrt{5}\big(\sin(t) - \frac12\cos(2t+1)+2t\big)\right|_{-1}^1\\
+	&= \int_{-1}^1 \bigl(\cos(t)+\sin(2t+1) + 2\bigr)\sqrt{5}\ dt \\
+	&= \left.\sqrt{5}\bigl(\sin(t) - \frac12\cos(2t+1)+2t\bigr)\right|_{-1}^1\\
 	&\approx 14.418\ \text{units}^2.
 \end{align*}
 \end{example}
@@ -169,7 +169,7 @@ The curve $C$ is the unit circle, which we will describe with the parameterizati
 We find the values of $f$ over $C$ as $f(x,y) = f(\cos t, \sin t) = \cos^2t-\sin^2t+3$. Thus the area we seek is (note the use of the $\oint f(s) ds$ notation):
 \begin{align*}
 	\oint_C f(s)\ ds
-	&= \int_0^{2\pi}\big(\cos^2t-\sin^2t+3\big)\ dt \\
+	&= \int_0^{2\pi}\bigl(\cos^2t-\sin^2t+3\bigr)\ dt \\
 	&= 6\pi.
 \end{align*}
 (Note: we may have approximated this answer from the start. The unit circle has a circumference of $2\pi$, and we may have guessed that due to the apparent symmetry of our surface, the average height of the surface is 3.)
@@ -185,7 +185,7 @@ We parameterize our curve $C$ as $\vrt =\bracket{t,t^2}$ for $-1\leq t\leq 1$; w
 Replacing $x$ and $y$ with their respective functions of $t$, we have $f(x,y) = f(t,t^2) = 1-\cos(t)\sin(t^2)$. Thus the area under $f$ and over $C$ is found to be
 \begin{align*}
 	\int_C f(s)\ ds
-	&= \int_{-1}^1 \Big(1-\cos(t)\sin\big(t^2\big)\Big)\sqrt{1+t^2}\ dt.\\
+	&= \int_{-1}^1 \Bigl(1-\cos(t)\sin\bigl(t^2\bigr)\Bigr)\sqrt{1+t^2}\ dt.\\
 \intertext{This integral is impossible to evaluate using the techniques developed in this text. We resort to a numerical approximation; accurate to two places after the decimal, we find the area is}
 	&= 2.17.
 \end{align*}
@@ -226,7 +226,7 @@ Many properties of line integrals can be inferred from general integration prope
 One property in particular of line integrals is worth noting. If $C$ is a curve composed of subcurves $C_1$ and $C_2$, where they share only one point in common (see \autoref{fig:line_int_prop}(a)), then the line integral over $C$ is the sum of the line integrals over $C_1$ and $C_2$: 
 \[\int_Cf(s)\ ds = \int_{C_1}f(s)\ ds+\int_{C_2}f(s)\ ds.\]
 
-\mtable[-5\baselineskip]{Illustrating properties of line integrals.}{fig:line_int_prop}{%
+\mtable{Illustrating properties of line integrals.}{fig:line_int_prop}{%
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,height=1.16\marginparwidth,
 tick label style={font=\scriptsize},
@@ -274,7 +274,7 @@ This property allows us to evaluate line integrals over some curves $C$ that are
 
 A curve $C$ that is composed of two or more smooth curves is said to be \sword{piecewise smooth}. In this chapter, any statement that is made about smooth curves also holds for piecewise smooth curves.\index{smooth curve!piecewise}\index{piecewise smooth curve}
 
-%The second property of note is that the orientation of the parameterization of $C$ does not affect the value of the line integral (\textit{over scalar fields}. Later, we'll see cases where orientation does matter.) In \autoref{fig:line_int_prop}, the arrows indicating orientation are extraneous. In \autoref{sec:line_int_vf}, where we study line integrals \emph{over vector fields}, the orientation of the parameterization does make a difference.
+%The second property of note is that the orientation of the parameterization of $C$ does not affect the value of the line integral (\emph{over scalar fields}. Later, we'll see cases where orientation does matter.) In \autoref{fig:line_int_prop}, the arrows indicating orientation are extraneous. In \autoref{sec:line_int_vf}, where we study line integrals \emph{over vector fields}, the orientation of the parameterization does make a difference.
 
 We state these properties as a theorem.
 
@@ -282,7 +282,7 @@ We state these properties as a theorem.
 \index{line integral!properties over a scalar field}%
 \mbox{}\\[-2\baselineskip]\begin{enumerate}
 	\item	Let $C$ be a smooth curve parameterized by the arc-length parameter $s$, let $f$ and $g$ be continuous functions of $s$, and let $k_1$ and $k_2$ be scalars. Then
-\[\ds \int_C\big(k_1f(s)+k_2g(s)\big)\ ds = k_1\int_Cf(s)\ ds +k_2\int_Cg(s)\ ds.\]
+\[\ds \int_C\bigl(k_1f(s)+k_2g(s)\bigr)\ ds = k_1\int_Cf(s)\ ds +k_2\int_Cg(s)\ ds.\]
 	\item Let $C$ be piecewise smooth, composed of smooth components $C_1$ and $C_2$. Then
 \[\int_Cf(s)\ ds = \int_{C_1}f(s)\ ds + \int_{C_2}f(s)\ ds.\]
 \end{enumerate}
@@ -316,7 +316,8 @@ Let a thin wire lie along a smooth curve $C$ with continuous density function $\
 \end{definition}
 
 \begin{example}[Evaluating a line integral: calculating mass.]\label{ex_linescalarfield6}
-A thin wire follows the path $\vrt =\bracket{1+\cos t,1+\sin t, 1+ \sin(2t)}$, $0\leq t\leq 2\pi$. The density of the wire is determined by its position in space: $\delta(x,y,z) = y+z$ gm/cm. The wire is shown in \autoref{fig:linescalarfield6}, where a light color indicates low density and a dark color represents high density. Find the mass  and center of mass of the wire.%
+A
+%
 \mtable{Finding the mass of a thin wire in \autoref{ex_linescalarfield6}.}{fig:linescalarfield6}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
@@ -325,10 +326,12 @@ A thin wire follows the path $\vrt =\bracket{1+\cos t,1+\sin t, 1+ \sin(2t)}$, $
 3Dcoo=85.21116638183594 55.206966400146484 50.90880584716797,
 3Droo=141.89772711774134,
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figlinescalarfield6_3D}}
+%
+thin wire follows the path $\vrt =\bracket{1+\cos t,1+\sin t, 1+ \sin(2t)}$, $0\leq t\leq 2\pi$. The density of the wire is determined by its position in space: $\delta(x,y,z) = y+z$ gm/cm. The wire is shown in \autoref{fig:linescalarfield6}, where a light color indicates low density and a dark color represents high density. Find the mass  and center of mass of the wire.
 \solution
 We compute the density of the wire as 
 \[
-\delta(x,y,z) = \delta\big(1+\cos t,1+\sin t, 1+\sin(2t)\big) = 2+\sin t+\sin(2t).
+\delta(x,y,z) = \delta\bigl(1+\cos t,1+\sin t, 1+\sin(2t)\bigr) = 2+\sin t+\sin(2t).
 \]
 We compute $ds$ as
 \[
@@ -337,15 +340,15 @@ ds = \norm{\vrp(t)}\ dt = \sqrt{\sin^2t+\cos^2t+4\cos^2(2t)}\ dt
 \]
 Thus the mass is
 \[
-M = \oint_C \delta(s)\ ds = \int_0^{2\pi} \big(2+\sin t+\sin(2t)\big)\sqrt{1+4\cos^2(2t)}\ dt
+M = \oint_C \delta(s)\ ds = \int_0^{2\pi} \bigl(2+\sin t+\sin(2t)\bigr)\sqrt{1+4\cos^2(2t)}\ dt
 \approx 21.08\text{gm}.
 \]
 We compute the moments about the coordinate planes:\small
 \begin{align*}
-M_{yz} &= \oint_C x\delta(s)\ ds = \int_0^{2\pi}(1+\cos t)\big(2+\sin t+\sin(2t)\big)\sqrt{1+4\cos^2(2t)}\ dt \approx 21.08. \\
-M_{xz} &= \oint_C y\delta(s)\ ds = \int_0^{2\pi}(1+\sin t)\big(2+\sin t+\sin(2t)\big)\sqrt{1+4\cos^2(2t)}\ dt \approx
+M_{yz} &= \oint_C x\delta(s)\ ds = \int_0^{2\pi}(1+\cos t)\bigl(2+\sin t+\sin(2t)\bigr)\sqrt{1+4\cos^2(2t)}\ dt \approx 21.08. \\
+M_{xz} &= \oint_C y\delta(s)\ ds = \int_0^{2\pi}(1+\sin t)\bigl(2+\sin t+\sin(2t)\bigr)\sqrt{1+4\cos^2(2t)}\ dt \approx
 26.35\\
-M_{xy} &= \oint_C z\delta(s)\ ds = \int_0^{2\pi}\big(1+\sin(2 t)\big)\big(2+\sin t+\sin(2t)\big)\sqrt{1+4\cos^2(2t)}\ dt \approx 25.40
+M_{xy} &= \oint_C z\delta(s)\ ds = \int_0^{2\pi}\bigl(1+\sin(2 t)\bigr)\bigl(2+\sin t+\sin(2t)\bigr)\sqrt{1+4\cos^2(2t)}\ dt \approx 25.40
 \end{align*}\normalsize
 Thus the center of mass of the wire is located at 
 \[

@@ -18,14 +18,13 @@ One can identify a point $(x_0,y_0,z_0)$, given in rectangular coordinates, with
 \index{cylindrical coordinates}\index{coordinates!cylindrical}
 
 We use the identity $z=z$ along with the identities found in \autoref{idea:polarconvert} to convert between the  rectangular coordinate $(x,y,z)$ and the  cylindrical coordinate $(r,\theta,z)$, namely:
-%
-\mnote{\textbf{Note:} Our rectangular to polar conversion formulas used $r^2=x^2+y^2$, allowing for negative $r$ values. Since we now restrict $r\geq 0$, we can use $r=\sqrt{x^2+y^2}$.}
-%
 \begin{align*}
 &\text{From rectangular to cylindrical:}\quad r=\sqrt{x^2+y^2},\quad \tan\theta = y/x \quad\text{and}\quad z=z;\\
 &\text{From cylindrical to rectangular:} \quad x=r\cos\theta\quad y=r\sin\theta\quad \text{and}\quad z=z.
 \end{align*}
 These identities, along with conversions related to spherical coordinates, are given later in \autoref{idea:convert_coords}.
+
+\mnote{\textbf{Note:} Our rectangular to polar conversion formulas used $r^2=x^2+y^2$, allowing for negative $r$ values. Since we now restrict $r\geq 0$, we can use $r=\sqrt{x^2+y^2}$.}
 
 \youtubeVideo{w9wCdLuklw8}{Conversion From Rectangular Coordinates}
 
@@ -35,7 +34,7 @@ Convert the rectangular point $(2,-2,1)$ to cylindrical coordinates, and convert
 Following the identities given above (and, later in \autoref{idea:convert_coords}), we have $r = \sqrt{2^2+(-2)^2} = 2\sqrt{2}$. Using $\tan\theta = y/x$, we find $\theta = \tan^{-1}(-2/2) =-\pi/4$. As we restrict $\theta$ to being between $0$ and $2\pi$, we set $\theta = 7\pi/4$. Finally, $z = 1$, giving the cylindrical point $(2\sqrt2,7\pi/4,1)$.
 
 In converting the cylindrical point $(4,3\pi/4,5)$ to rectangular, we have
-$x = 4\cos\big(3\pi/4\big) = -2\sqrt{2}$, $y = 4\sin\big(3\pi/4\big) = 2\sqrt{2}$ and $z=5$, giving the rectangular point $(-2\sqrt{2},2\sqrt{2},5)$.
+$x = 4\cos\bigl(3\pi/4\bigr) = -2\sqrt{2}$, $y = 4\sin\bigl(3\pi/4\bigr) = 2\sqrt{2}$ and $z=5$, giving the rectangular point $(-2\sqrt{2},2\sqrt{2},5)$.
 \end{example}
 
 Setting each of $r$, $\theta$ and $z$ equal to a constant defines a surface in space, as illustrated in the following example.
@@ -65,7 +64,7 @@ Cylindrical coordinates are useful when describing certain domains in space, all
 
 \autoref{thm:triple_integration2} shows how to evaluate $\iiint_Dh(x,y,z)\ dV$ using rectangular coordinates. In that evaluation, we use $dV = dz\,dy\,dx$ (or one of the other five orders of integration). Recall how, in this order of integration, the bounds on $y$ are ``curve to curve'' and the bounds on $x$ are ``point to point'': these bounds describe a region $R$ in the $x$-$y$ plane. We could describe $R$ using polar coordinates as done in \autoref{sec:double_int_polar}. In that section, we saw how we used $dA = r\,dr\,d\theta$ instead of $dA = dy\,dx$. 
 
-Considering the above thoughts, we have $dV = dz\big(r\,dr\,d\theta\big) = r\,dz\,dr\,d\theta$. We set bounds on $z$ as ``surface to surface'' as done in the previous section, and then use ``curve to curve'' and ``point to point'' bounds on $r$ and $\theta$, respectively. Finally, using the identities given above, we change the integrand $h(x,y,z)$ to $h(r,\theta,z)$.
+Considering the above thoughts, we have $dV = dz\bigl(r\,dr\,d\theta\bigr) = r\,dz\,dr\,d\theta$. We set bounds on $z$ as ``surface to surface'' as done in the previous section, and then use ``curve to curve'' and ``point to point'' bounds on $r$ and $\theta$, respectively. Finally, using the identities given above, we change the integrand $h(x,y,z)$ to $h(r,\theta,z)$.
 
 This process should sound plausible; the following theorem states it is truly a way of evaluating a triple integral.
 
@@ -95,13 +94,16 @@ To describe this solid with the bounds of a triple integral, we bound $z$ with $
 
 Using \autoref{def:mass_3d} and \autoref{thm:triple_int_cylindrical}, we have the mass of the solid is
 \begin{align*}
-M=\iiint_D\delta(x,y,z)\ dV &= \int_0^{2\pi}\int_0^2\int_0^{\sqrt{4-r^2}+3}\big(r^2+z+1\big)r\,dz\,dr\,d\theta \\
-&= \int_0^{2\pi}\int_0^2\big((r^3+4r)\sqrt{4-r^2}+\frac52r^3+\frac{19}2r\big)\,dr\,d\theta \\
+M=\iiint_D\delta(x,y,z)\ dV &= \int_0^{2\pi}\int_0^2\int_0^{\sqrt{4-r^2}+3}\bigl(r^2+z+1\bigr)r\,dz\,dr\,d\theta \\
+&= \int_0^{2\pi}\int_0^2\bigl((r^3+4r)\sqrt{4-r^2}+\frac52r^3+\frac{19}2r\bigr)\,dr\,d\theta \\
 &= \frac{1318\pi}{15} \approx 276.04\text{ gm},
 \end{align*}
 where we leave the details of the remaining double integral to the reader.
 \end{example}
 
+\begin{example}[Finding the center of mass using cylindrical coordinates]\label{ex_cylindrical3}
+Find
+%
 \mtable{Visualizing the solid used in \autoref{ex_cylindrical3}.}{fig:cylindrical3}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=-0.0853586683163278,
@@ -109,9 +111,8 @@ where we leave the details of the remaining double integral to the reader.
 3Dc2c=0.5381587743759155 0.7346906065940857 0.41305553913116455,
 3Dcoo=-13.062450408935547 -3.628488063812256 70.90967559814453,
 3Droo=300}{width=\marginparwidth}{figures/figdoublepol4_3D}}
-
-\begin{example}[Finding the center of mass using cylindrical coordinates]\label{ex_cylindrical3}
-Find the center of mass of the solid with constant density whose base can be described by the polar curve $r=\cos(3\theta)$ and whose top is defined by the plane $z=1-x+0.1y$, where distances are measured in feet, as seen in \autoref{fig:cylindrical3}. (The volume of this solid was found in \autoref{ex_doublepol4}.)
+%
+the center of mass of the solid with constant density whose base can be described by the polar curve $r=\cos(3\theta)$ and whose top is defined by the plane $z=1-x+0.1y$, where distances are measured in feet, as seen in \autoref{fig:cylindrical3}. (The volume of this solid was found in \autoref{ex_doublepol4}.)
 \solution
 We convert the equation of the plane to use cylindrical coordinates: $z= 1-r\cos\theta+0.1r\sin\theta$. Thus the region is space is bounded by $0 \leq z \leq 1-r\cos\theta + 0.1r\sin\theta$, $0 \leq r \leq \cos(3\theta)$, $0 \leq \theta \leq \pi$ (recall that the rose curve $r=\cos(3\theta)$ is traced out once on $[0,\pi]$.
 
@@ -138,7 +139,7 @@ The center of mass, in rectangular coordinates,  is located at $(-0.147,0.015,0.
 \subsection{Spherical Coordinates}
 \index{spherical coordinates}\index{coordinates!spherical}
 
-\mtable{Illustrating the principles behind spherical coordinates.}{fig:sphericalintro}{%
+\mtable[-1in]{Illustrating the principles behind spherical coordinates.}{fig:sphericalintro}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.0045,
@@ -149,32 +150,35 @@ The center of mass, in rectangular coordinates,  is located at $(-0.147,0.015,0.
 
 In short, spherical coordinates can be thought of as a ``double application'' of the polar coordinate system. In spherical coordinates, a point $P$ is identified with $(\rho,\theta,\varphi)$, where $\rho$ is the distance from the origin to $P$, $\theta$ is the same angle as would be used to describe $P$ in the cylindrical coordinate system, and $\varphi$ is the angle between the positive $z$-axis and the ray from the origin to $P$; see \autoref{fig:sphericalintro}. So that each point in space that does not lie on the $z$-axis is defined uniquely, we will restrict $\rho \geq 0$, $0 \leq \theta \leq 2\pi$ and $0 \leq \varphi \leq \pi$.
 
-\mnote{\textbf{Note:} The symbol $\rho$ is the Greek letter ``rho.'' Traditionally it is used in the spherical coordinate system, while $r$ is used in the polar and cylindrical coordinate systems.% In space, $r$ and $\rho$ play different roles. In spherical coordinates, $\rho$ is the dist
+\mnote[.5in]{\textbf{Note:} The symbol $\rho$ is the Greek letter ``rho.'' Traditionally it is used in the spherical coordinate system, while $r$ is used in the polar and cylindrical coordinate systems.% In space, $r$ and $\rho$ play different roles. In spherical coordinates, $\rho$ is the dist
 }
 
 The following Key Idea gives conversions to/from our three spatial coordinate systems.
 
+% todo Tim follow up on K14.7.1
 \begin{keyidea}[{\parbox[t]{210pt}{Converting Between Rectangular, Cylindrical and Spherical Coordinates}}]\label{idea:convert_coords}
-\textbf{Rectangular and Cylindrical}
-\begin{gather*}
-r^2 = x^2+y^2,\quad \tan \theta = y/x,\quad z=z\\
-x=r\cos \theta, \quad y=r\sin\theta,\quad z=z
-\end{gather*}
+\begin{description}
+\item[Rectangular and Cylindrical]
+\begin{align*}
+r^2 &= x^2+y^2, & \tan \theta &= y/x, & z&=z\\
+x&=r\cos \theta, & y&=r\sin\theta, & z&=z
+\end{align*}
 
-\textbf{Rectangular and Spherical}
-\begin{gather*}
-\rho = \sqrt{x^2+y^2+z^2},\quad \tan \theta = y/x,\quad \cos \varphi = z/\sqrt{x^2+y^2+z^2}\\
-x=\rho\sin\varphi\cos\theta,\quad y=\rho\sin\varphi\sin\theta,\quad z=\rho\cos\varphi
-\end{gather*}
+\item[Rectangular and Spherical]
+\begin{align*}
+\rho &= \sqrt{x^2+y^2+z^2}, & \tan \theta &= y/x, & \cos \varphi &= z/\sqrt{x^2+y^2+z^2}\\
+x&=\rho\sin\varphi\cos\theta, & y&=\rho\sin\varphi\sin\theta, & z&=\rho\cos\varphi
+\end{align*}
 
-\textbf{Cylindrical and Spherical }
-\begin{gather*}
-\rho=\sqrt{r^2+z^2}, \quad \theta = \theta,\quad \tan \varphi = r/z \\
-r=\rho \sin \varphi, \quad \theta = \theta, \quad z=\rho\cos\varphi
-\end{gather*}
+\item[Cylindrical and Spherical]
+\begin{align*}
+\rho&=\sqrt{r^2+z^2}, & \theta &= \theta,& \tan \varphi &= r/z \\
+r&=\rho \sin \varphi, & \theta &= \theta, & z&=\rho\cos\varphi
+\end{align*}
+\end{description}
 \end{keyidea}
 
-\mnote[-6\baselineskip]{\textbf{Note:} The role of $\theta$ and $\varphi$ in spherical coordinates differs between mathematicians and physicists. When reading about physics in spherical coordinates, be careful to note how that particular author uses these variables and recognize that these identities will may no longer be valid.}
+\mnote[-6\baselineskip]{\textbf{Note:} The role of $\theta$ and $\varphi$ in spherical coordinates differs between mathematicians and physicists. When reading about physics in spherical coordinates, be careful to note how that particular author uses these variables and recognize that these identities may be rearranged.}
 
 \begin{example}[Converting between rectangular and spherical coordinates]\label{ex_spherical4}
 Convert the rectangular point $(2,-2,1)$ to spherical coordinates, and convert the spherical point $(6,\pi/3,\pi/2)$ to rectangular and cylindrical coordinates.
@@ -186,6 +190,9 @@ Converting the spherical point $(6,\pi/3,\pi/2)$ to rectangular, we have $x = 6\
 To convert this spherical point to cylindrical, we have $r = 6\sin(\pi/2) = 6$, $\theta = \pi/3$ and $z = 6\cos(\pi/2) =0$, giving the cylindrical point $(6,\pi/3,0)$.
 \end{example}
 
+\begin{example}[Canonical surfaces in spherical coordinates]\label{ex_spherical1}
+Describe the surfaces $\rho=1$, $\theta = \pi/3$ and $\varphi = \pi/6$, given in spherical coordinates.
+%
 \mtable{Graphing the canonical surfaces in spherical coordinates from \autoref{ex_spherical1}.}{fig:spherical1}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
@@ -194,9 +201,7 @@ To convert this spherical point to cylindrical, we have $r = 6\sin(\pi/2) = 6$, 
 3Dcoo=7.126433849334717 10.647956848144531 4.059844017028809,
 3Droo=300,
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figspherical1_3D}}
-
-\begin{example}[Canonical surfaces in spherical coordinates]\label{ex_spherical1}
-Describe the surfaces $\rho=1$, $\theta = \pi/3$ and $\varphi = \pi/6$, given in spherical coordinates.
+%
 \solution
 The equation $\rho = 1$ describes all points in space that are 1 unit away from the origin: this is the sphere of radius 1, centered at the origin.
 
@@ -209,12 +214,7 @@ All three surfaces are graphed in \autoref{fig:spherical1}. Note how their inter
 
 Spherical coordinates are useful when describing certain domains in space, allowing us to evaluate triple integrals over these domains more easily than if we used rectangular coordinates or cylindrical coordinates. The crux of setting up a triple integral in spherical coordinates is appropriately describing the ``small amount of volume,'' $dV$, used in the integral.
 
-Considering \autoref{fig:sphericalwedge}, we can make a small ``spherical wedge'' by varying $\rho$, $\theta$ and $\varphi$ each a small amount, $\Delta\rho$, $\Delta\theta$ and $\Delta\varphi$, respectively. This wedge is approximately a rectangular solid when the change in each coordinate is small, giving a volume of about
-\[
-\Delta V \approx \Delta\rho\ \times\ \rho\Delta\varphi\ \times\ \rho\sin(\varphi)\Delta\theta.
-\]
-
-\mtable{Approximating the volume of a standard region in space using spherical coordinates.}{fig:sphericalwedge}{%
+\mtable[-3\baselineskip]{Approximating the volume of a standard region in space using spherical coordinates.}{fig:sphericalwedge}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.004123700316995382,
@@ -223,6 +223,11 @@ Considering \autoref{fig:sphericalwedge}, we can make a small ``spherical wedge'
 3Droo=300.000013020833,
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figsphericalwedge_3D}}
 
+Considering \autoref{fig:sphericalwedge}, we can make a small ``spherical wedge'' by varying $\rho$, $\theta$ and $\varphi$ each a small amount, $\Delta\rho$, $\Delta\theta$ and $\Delta\varphi$, respectively. This wedge is approximately a rectangular solid when the change in each coordinate is small, giving a volume of about
+\[
+\Delta V \approx \Delta\rho\ \times\ \rho\Delta\varphi\ \times\ \rho\sin(\varphi)\Delta\theta.
+\]
+
 Given a region $D$ in space, we can approximate the volume of $D$ with many such wedges. As the size of each of $\Delta\rho$, $\Delta\theta$ and $\Delta\varphi$ goes to zero, the number of wedges increases to infinity and the volume of $D$ is more accurately approximated, giving
 \[
 dV = d\rho\ \times\ \rho\ d\varphi\ \times\ \rho\sin(\varphi)d\theta = \rho^2\sin(\varphi)\ d\rho\ d\theta\ d\varphi.
@@ -230,7 +235,7 @@ dV = d\rho\ \times\ \rho\ d\varphi\ \times\ \rho\sin(\varphi)d\theta = \rho^2\si
 
 Again, this development of $dV$ should sound reasonable, and the following theorem states it is the appropriate manner by which triple integrals are to be evaluated in spherical coordinates.
 
-\mnote{\textbf{Note:} It is generally most intuitive to evaluate the triple integral in \autoref{thm:triple_int_spherical} by integrating with respect to $\rho$ first; it often does not matter whether we next integrate with respect to $\theta$ or $\varphi$. Different texts present different standard orders, some preferring $d\varphi\ d\theta$ instead of $d\theta\ d\varphi$. As the bounds for these variables are usually constants in practice, it generally is a matter of preference.}
+\mnote{\textbf{Note:} It is often most intuitive to evaluate the triple integral in \autoref{thm:triple_int_spherical} by integrating with respect to $\rho$ first; it often does not matter whether we next integrate with respect to $\theta$ or $\varphi$. Different texts present different standard orders, some preferring $d\varphi\ d\theta$ instead of $d\theta\ d\varphi$. As the bounds for these variables are usually constants in practice, it generally is a matter of preference.}
 
 \begin{theorem}[Triple Integration in Spherical Coordinates]\label{thm:triple_int_spherical}
 Let $w=h(\rho,\theta,\varphi)$ be a continuous function on a closed, bounded region $D$ in space, bounded in spherical coordinates by $\alpha_1 \leq \varphi \leq \alpha_2$, $\beta_1 \leq \theta \leq \beta_2$ and $f_1(\theta,\varphi) \leq \rho \leq f_2(\theta,\varphi)$. Then \index{integration!with spherical coordinates}
@@ -245,7 +250,7 @@ Let $D$ be the region in space bounded by the sphere, centered at the origin, of
 The sphere of radius $r$, centered at the origin, has equation $\rho = r$. To obtain the full sphere, the bounds on $\theta$ and $\varphi$ are $0\leq \theta \leq 2\pi$ and $0 \leq \varphi \leq \pi$. This leads us to:
 \begin{align*}
 V &= \iiint_D\ dV\\
-	&= \int_0^{\pi}\int_0^{2\pi}\int_0^r\big(\rho^2\sin(\varphi)\big)\ d\rho\ d\theta\ d\varphi\\
+	&= \int_0^{\pi}\int_0^{2\pi}\int_0^r\bigl(\rho^2\sin(\varphi)\bigr)\ d\rho\ d\theta\ d\varphi\\
 	&= \int_0^\pi\int_0^{2\pi}\left(\frac13\rho^3\sin(\varphi)\Big|_0^r\right)\ d\theta\ d\varphi\\
 	&= \int_0^\pi\int_0^{2\pi} \left(\frac13r^3\sin(\varphi)\right)\ d\theta\ d\varphi\\
 	&= \int_0^\pi \left(\frac{2\pi}3r^3\sin(\varphi)\right)\ d\varphi\\
@@ -274,15 +279,15 @@ While the surfaces describing the solid are given in the statement of the proble
 The mass of the solid:
 \begin{align*}
 M &= \iiint_D\ dm = \iiint_D\ dV\\
-	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4\big(\rho^2\sin(\varphi)\big)\ d\rho\ d\theta\ d\varphi\\
-	&= \frac{64}3\big(2-\sqrt{3}\big)\pi \approx 17.958.
+	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4\bigl(\rho^2\sin(\varphi)\bigr)\ d\rho\ d\theta\ d\varphi\\
+	&= \frac{64}3\bigl(2-\sqrt{3}\bigr)\pi \approx 17.958.
 \end{align*}
 
 To compute $M_{yz}$, the integrand is $x$; using \autoref{idea:convert_coords}, we have $x = \rho\sin\varphi\cos\theta$. This gives:
 \begin{align*}
 M_{yz} &= \iiint_D x\ dm \\
-	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4 \big((\rho\sin(\varphi)\cos(\theta))\rho^2\sin(\varphi)\big) \ d\rho\ d\theta\ d\varphi\\
-	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4 \big(\rho^3\sin^2(\varphi)\cos(\theta)\big) \ d\rho\ d\theta\ d\varphi\\
+	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4 \bigl((\rho\sin(\varphi)\cos(\theta))\rho^2\sin(\varphi)\bigr) \ d\rho\ d\theta\ d\varphi\\
+	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4 \bigl(\rho^3\sin^2(\varphi)\cos(\theta)\bigr) \ d\rho\ d\theta\ d\varphi\\
 	&=0,
 \end{align*}
 which we expected as we expect $\overline{x} = 0$.
@@ -290,8 +295,8 @@ which we expected as we expect $\overline{x} = 0$.
 To compute $M_{xz}$, the integrand is $y$; using \autoref{idea:convert_coords}, we have $y = \rho\sin\varphi\sin\theta$. This gives:
 \begin{align*}
 M_{xz} &= \iiint_D y\ dm \\
-	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4 \big((\rho\sin(\varphi)\sin(\theta))\rho^2\sin(\varphi)\big) \ d\rho\ d\theta\ d\varphi\\
-	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4 \big(\rho^3\sin^2(\varphi)\sin(\theta)\big) \ d\rho\ d\theta\ d\varphi\\
+	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4 \bigl((\rho\sin(\varphi)\sin(\theta))\rho^2\sin(\varphi)\bigr) \ d\rho\ d\theta\ d\varphi\\
+	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4 \bigl(\rho^3\sin^2(\varphi)\sin(\theta)\bigr) \ d\rho\ d\theta\ d\varphi\\
 	&=0,
 \end{align*}
 which we also expected as we expect $\overline{y} = 0$.
@@ -299,8 +304,8 @@ which we also expected as we expect $\overline{y} = 0$.
 To compute $M_{xy}$, the integrand is $z$; using \autoref{idea:convert_coords}, we have $z = \rho\cos\varphi$. This gives:
 \begin{align*}
 M_{xy} &= \iiint_D z\ dm \\
-	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4 \big((\rho\cos(\varphi))\rho^2\sin(\varphi)\big) \ d\rho\ d\theta\ d\varphi\\
-	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4 \big(\rho^3\cos(\varphi)\sin(\varphi)\big) \ d\rho\ d\theta\ d\varphi\\
+	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4 \bigl((\rho\cos(\varphi))\rho^2\sin(\varphi)\bigr) \ d\rho\ d\theta\ d\varphi\\
+	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4 \bigl(\rho^3\cos(\varphi)\sin(\varphi)\bigr) \ d\rho\ d\theta\ d\varphi\\
 	&=16\pi \approx 50.266.
 \end{align*}
 

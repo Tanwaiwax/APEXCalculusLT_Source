@@ -18,26 +18,29 @@ Let $\vrt =\bracket{3\cos t, 3\sin t, 4t}$. Find $\vec T(t)$ and compute $\vec T
 We apply \autoref{def:unit_tangent} to find $\vec T(t)$. 
 \begin{align*}
 \vec T(t) &= \frac1{\norm{\vrp(t)}}\vrp(t) \\
-				&=\frac{1}{\sqrt{\big(-3\sin t\big)^2+\big(3\cos t\big)^2+ 4^2}}\bracket{-3\sin t,3\cos t, 4}\\
+				&=\frac{1}{\sqrt{\bigl(-3\sin t\bigr)^2+\bigl(3\cos t\bigr)^2+ 4^2}}\bracket{-3\sin t,3\cos t, 4}\\
 				&=\bracket{-\frac35\sin t,\frac35\cos t,\frac45}.
 \end{align*}
 We can now easily compute $\vec T(0)$ and $\vec T(1)$:
-\[\vec T(0) =\bracket{0,\frac35,\frac45}\,;\quad \vec T(1) =\bracket{-\frac35\sin 1,\frac35\cos 1,\frac45}%\approx\bracket{-0.505,0.324,0.8}
-.\]
-These are plotted in \autoref{fig:tannorm1} with their initial points at $\vec r(0)$ and $\vec r(1)$, respectively. (They look rather ``short'' since they are only length 1.)
 %
-%The unit tangent vector $\vec T(t)$ always has a magnitude of 1, though it is sometimes easy to doubt that is true. We can help solidify this thought in our minds by computing $\norm{\vec T(1)}$:
-%\[\norm{\vec T(1)} \approx \sqrt{(-0.505)^2+0.324^2+0.8^2} = 1.000001.\]
-%We have rounded in our computation of $\vec T(1)$, so we don't get 1 exactly. We leave it to the reader to use the exact representation of $\vec T(1)$ to verify it has length 1.
-\end{example}
-
-\mtable[-2\baselineskip]{Plotting unit tangent vectors in \autoref{ex_tannorm1}.}{fig:tannorm1}{%
+\mtable{Plotting unit tangent vectors in \autoref{ex_tannorm1}.}{fig:tannorm1}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=0.4623610114058449,
 3Dortho=0.004905222449451685,
 3Dc2c=0.6268976330757141 0.5422312617301941 0.5594503283500671,
 3Dcoo=-3.587019205093384 4.6990532875061035 15.216367721557617,
 3Droo=150.00000240039893}{width=\marginparwidth}{figures/figtannorm1_3D}}
+%
+\[
+\vec T(0) =\bracket{0,\frac35,\frac45}\,;\quad \vec T(1) =\bracket{-\frac35\sin 1,\frac35\cos 1,\frac45}%\approx\bracket{-0.505,0.324,0.8}
+.
+\]
+These are plotted in \autoref{fig:tannorm1} with their initial points at $\vec r(0)$ and $\vec r(1)$, respectively. (They look rather ``short'' since they are only length 1.)
+%
+%The unit tangent vector $\vec T(t)$ always has a magnitude of 1, though it is sometimes easy to doubt that is true. We can help solidify this thought in our minds by computing $\norm{\vec T(1)}$:
+%\[\norm{\vec T(1)} \approx \sqrt{(-0.505)^2+0.324^2+0.8^2} = 1.000001.\]
+%We have rounded in our computation of $\vec T(1)$, so we don't get 1 exactly. We leave it to the reader to use the exact representation of $\vec T(1)$ to verify it has length 1.
+\end{example}
 
 In many ways, the previous example was ``too nice.'' It turned out that $\vrp(t)$ was always of length 5. In the next example the length of $\vrp(t)$ is variable, leaving us with a formula that is not as clean.
 
@@ -67,8 +70,6 @@ When $t=0$, we have $\vec T(0) =\bracket{-1/\sqrt{2},1/\sqrt{2}}$; when $t=1$, w
 
 \subsection{Unit Normal Vector}
 
-Just as knowing the direction tangent to a path is important, knowing a direction orthogonal to a path is important. When dealing with real-valued functions, we defined the normal line at a point to the be the line through the point that was perpendicular to the tangent line at that point. We can do a similar thing with vector-valued functions. Given \vrt\ in $\mathbb{R}^2$, we have 2 directions perpendicular to the tangent vector, as shown in \autoref{fig:tannorm_intro1}. It is good to wonder ``Is one of these two directions preferable over the other?''
-
 \mtable{Given a direction in the plane, there are always two directions orthogonal to it.}{fig:tannorm_intro1}{\begin{tikzpicture}[>=stealth]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,xtick=\empty,ytick=\empty,
@@ -83,12 +84,15 @@ ymin=-.1,ymax=1.9,xmin=-.1,xmax=2.3]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
+Just as knowing the direction tangent to a path is important, knowing a direction orthogonal to a path is important. When dealing with real-valued functions, we defined the normal line at a point to the be the line through the point that was perpendicular to the tangent line at that point. We can do a similar thing with vector-valued functions. Given \vrt\ in $\mathbb{R}^2$, we have 2 directions perpendicular to the tangent vector, as shown in \autoref{fig:tannorm_intro1}. It is good to wonder ``Is one of these two directions preferable over the other?''
+
 Given \vrt\ in $\mathbb{R}^3$,  there are infinite vectors orthogonal to the tangent vector at a given point. Again, we might wonder ``Is one of these infinite choices preferable over the others? Is one of these the `right' choice?''
 
 The answer in both $\mathbb{R}^2$ and $\mathbb{R}^3$ is ``Yes, there is one vector that is preferable.'' %, it is the `right' one to choose.''
 Recall \autoref{thm:vects_of_constant_length}, which states that if \vrt\ has constant length, then \vrt\ is orthogonal to $\vrp(t)$ for all $t$. We know $\vec T(t)$, the unit tangent vector, has constant length. Therefore $\vec T(t)$ is orthogonal to $\vec T\,'(t)$.\index{vector-valued function!of constant length}
 
 We'll see that $\vec T\,'(t)$ is more than just a convenient choice of vector that is orthogonal to $\vrp(t)$; rather, it is the ``right'' choice. Since all we care about is the direction, we define this newly found vector to be a unit vector.
+
 \mnote{\textbf{Note:} $\vec T(t)$ is a unit vector, by definition. This \emph{does not} imply that $\vec T\,'(t)$ is also a unit vector.}
 
 \begin{definition}[Unit Normal Vector]\label{def:unit_normal}
@@ -164,7 +168,7 @@ ymin=-1.1,ymax=6.5,xmin=-2.1,xmax=7]
 Using this formula for $\vec N(t)$, we compute the unit tangent and normal vectors for $t=-1,0$ and 1 and sketch them in \autoref{fig:tannorm4}.
 \end{example}
 
-The final result for $\vec N(t)$ in \autoref{ex_tannorm4} is suspiciously similar to $\vec T(t)$. There is a clear reason for this. If $\vec u =\bracket{u_1,u_2}$ is a unit vector in $\mathbb{R}^2$, then the \textit{only} unit vectors orthogonal to $\vec u$ are $\bracket{-u_2,u_1}$ and $\bracket{u_2,-u_1}$. Given $\vec T(t)$, we can quickly determine $\vec N(t)$ if we know which term to multiply by $(-1)$.
+The final result for $\vec N(t)$ in \autoref{ex_tannorm4} is suspiciously similar to $\vec T(t)$. There is a clear reason for this. If $\vec u =\bracket{u_1,u_2}$ is a unit vector in $\mathbb{R}^2$, then the \emph{only} unit vectors orthogonal to $\vec u$ are $\bracket{-u_2,u_1}$ and $\bracket{u_2,-u_1}$. Given $\vec T(t)$, we can quickly determine $\vec N(t)$ if we know which term to multiply by $(-1)$.
 
 Consider again \autoref{fig:tannorm4}, where we have plotted some unit tangent and normal vectors. Note how $\vec N(t)$ always points ``inside'' the curve, or to the concave side of the curve. This is not a coincidence; this is true in general. Knowing the direction that $\vec r(t)$ ``turns'' allows us to quickly find $\vec N(t)$.
 
@@ -186,7 +190,7 @@ The scalar $a_{\mathrm{T}}$ measures ``how much'' acceleration is in the directi
 
 We can find $a_{\mathrm{T}}$ using the orthogonal projection of $\vec a(t)$ onto $\vec T(t)$ (review \autoref{def:orthogonal_projection} in \autoref{sec:dot_product} if needed).
 Recalling that since $\vec T(t)$ is a unit vector, $\vec T(t)\cdot\vec T(t)=1$, so we have 
-\[\proj{a(t)}{T(t)} = \frac{\vec a(t)\cdot\vec T(t)}{\vec T(t)\cdot\vec T(t)}\vec T(t) = \underbrace{\big(\vec a(t)\cdot\vec T(t)\big)}_{a_{\mathrm{T}}}\vec T(t).\]
+\[\proj{a(t)}{T(t)} = \frac{\vec a(t)\cdot\vec T(t)}{\vec T(t)\cdot\vec T(t)}\vec T(t) = \underbrace{\bigl(\vec a(t)\cdot\vec T(t)\bigr)}_{a_{\mathrm{T}}}\vec T(t).\]
 Thus the amount of \vat\ in the direction of $\vec T(t)$ is $a_{\mathrm{T}}=\vat\cdot\vec T(t)$. The same logic gives $a_{\mathrm{N}} = \vat\cdot\vec N(t)$.
 
 While this is a fine way of computing $a_{\mathrm{T}}$, there are simpler ways of finding $a_{\mathrm{N}}$ (as finding $\vec N$ itself can be complicated). The following theorem gives alternate formulas for $a_{\mathrm{T}}$ and $a_{\mathrm{N}}$.
@@ -200,7 +204,7 @@ Let \vrt\ be a position function with acceleration \vat\ and unit tangent and no
 \[\vat = a_{\mathrm{T}}\vec T(t) + a_{\mathrm{N}}\vec N(t).\]
 Moreover,
 \begin{align*}
-a_\mathrm{T} &= \vat\cdot\vec T(t) = \frac{d}{dt}\Big(\norm{\vec v(t)}\Big) \\
+a_\mathrm{T} &= \vat\cdot\vec T(t) = \frac{d}{dt}\Bigl(\norm{\vec v(t)}\Bigr) \\
 a_\mathrm{N} &= \vat\cdot \vec N(t) = \sqrt{\norm{\vec a(t)}^2-a_\mathrm{T}^2} = \frac{\norm{\vat\times\vvt}}{\norm{\vvt}} = \norm{\vvt}\,\norm{\vec T\,'(t)}
 \end{align*}%
 \index{unit tangent vector!and acceleration}\index{unit normal vector!and acceleration}%
@@ -215,7 +219,7 @@ a_\mathrm{N} &= \vat\cdot \vec N(t) = \sqrt{\norm{\vec a(t)}^2-a_\mathrm{T}^2} =
 % egreg provided a solution at https://tex.stackexchange.com/a/88357/107497
 % but LaTeXML sends \string to the index, which messes up the output
 
-Note the second formula for $a_{\mathrm{T}}$: $\ds \frac{d}{dt}\Big(\norm{\vvt}\Big)$. This measures the rate of change of speed, which again is the amount of acceleration in the direction of travel.
+Note the second formula for $a_{\mathrm{T}}$: $\ds \frac{d}{dt}\Bigl(\norm{\vvt}\Bigr)$. This measures the rate of change of speed, which again is the amount of acceleration in the direction of travel.
 
 \begin{proof}
 We see that
@@ -293,7 +297,7 @@ A ball is thrown from a height of 240ft with an initial speed of 64ft/s and an a
 \solution
 Using \autoeqref{idea:projectile} of \autoref{sec:vvf_motion} we form the position function of the ball:
 \[
-\vrt =\bracket{\big(64\cos 30^\circ\big)t, -16t^2+\big(64\sin 30^\circ\big)t+240},
+\vrt =\bracket{\bigl(64\cos 30^\circ\bigr)t, -16t^2+\bigl(64\sin 30^\circ\bigr)t+240},
 \]
 which we plot in \autoref{fig:tannorm7b}.
 

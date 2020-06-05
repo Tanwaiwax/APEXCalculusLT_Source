@@ -26,7 +26,7 @@ We say $\ds \lim_{x\rightarrow c} f(x)=\infty$ if for every $M>0$ there exists $
 
 This is just like the $\epsilon$-$\delta$ definition from \autoref{sec:limit_def}.  In that definition, given any (small) value $\epsilon$, if we let $x$ get close enough to $c$ (within $\delta$ units of $c$) then $f(x)$ is guaranteed to be within $\epsilon$ of $f(c)$.  Here, given any (large) value $M$, if we let $x$ get close enough to $c$ (within $\delta$ units of $c$), then $f(x)$ will be at least as large as $M$.  In other words, if we get close enough to $c$, then we can make $f(x)$ as large as we want.  We can define limits equal to $-\infty$ in a similar way.
 
-It is important to note that by saying $\ds \lim_{x\to c}f(x) = \infty$ we are implicitly stating that \textit{the} limit of $f(x)$, as $x$ approaches $c$, \textit{does not exist.} A limit only exists when $f(x)$ approaches an actual numeric value. We use the concept of limits that approach infinity because it is helpful and descriptive.
+It is important to note that by saying $\ds \lim_{x\to c}f(x) = \infty$ we are implicitly stating that \emph{the} limit of $f(x)$, as $x$ approaches $c$, \emph{does not exist.} A limit only exists when $f(x)$ approaches an actual numeric value. We use the concept of limits that approach infinity because it is helpful and descriptive.
 
 \youtubeVideo{-vwcLvb9A0s}{Calculus --- Infinite Limits}
 
@@ -34,7 +34,7 @@ It is important to note that by saying $\ds \lim_{x\to c}f(x) = \infty$ we are i
 Find $\ds \lim_{x\to1}\frac1{(x-1)^2}$ as shown in \autoref{fig:inflim1}.
 
 \mtable{Observing infinite limit as $x\to 1$ in \autoref{ex_inflim1}.}{fig:inflim1}{\begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-1,ymax=110,xmin=-.1,xmax=2.1,name=myplot]
 \addplot [draw={\colorone},smooth,thick,domain=0:.9] {1/((1-x)*(1-x))};
@@ -147,7 +147,7 @@ each return the indeterminate form ``$0/0$'' when we blindly plug in $x=0$ and $
 
 With a little cleverness, one can come up with $0/0$ expressions which have a limit of $\infty$, 0, or any other real number.  That is why this expression is called \emph{indeterminate}.
 
-A key concept to understand is that such limits do not really return $0/0$. Rather, keep in mind that we are taking \textit{limits}. What is really happening is that the numerator is shrinking to 0 while the denominator is also shrinking to 0. The respective rates at which they do this are very important and determine the actual value of the limit.
+A key concept to understand is that such limits do not really return $0/0$. Rather, keep in mind that we are taking \emph{limits}. What is really happening is that the numerator is shrinking to 0 while the denominator is also shrinking to 0. The respective rates at which they do this are very important and determine the actual value of the limit.
 
 An indeterminate form indicates that one needs to do more work in order to compute the limit. That work may be algebraic (such as factoring and dividing) or it may require a tool such as the Squeeze Theorem. %algebraically manipulate the expression in some way in order to compute the limit.  It may also indicate that you need a completely different approach, like with $(\sin x)/x$. 
  In a later section we will learn a technique called L'H\^opital's Rule that provides another way to handle indeterminate forms.  
@@ -267,6 +267,7 @@ ymin=-.3,ymax=1.1,xmin=-21,xmax=21,name=myplot]
 We can analytically evaluate limits at infinity for rational functions once we understand $\ds\lim_{x\rightarrow\infty} 1/x$.  As $x$ gets larger and larger, the $1/x$ gets smaller and small\-er, approaching 0.  We can, in fact, make $1/x$ as small as we want by choosing a large enough value of $x$.  Given $\epsilon$, we can make $1/x<\epsilon$  by choosing $x>1/\epsilon$.  Thus we have $\lim_{x\rightarrow\infty} 1/x=0$.  
 It is now not much of a jump to conclude the following:
 
+{\tcbset{grow to right by=2em}
 \begin{theorem}[Limits of $\dfrac1{x^n}$]\label{thm:lim_of_x_to_n}
 For any $n>0$, 
 \[
@@ -275,7 +276,7 @@ For any $n>0$,
 \lim_{x\to-\infty}\frac{1}{x^n}=0
 \qquad\text{(provided $x^n$ is defined for $x<0$)}
 \]
-\end{theorem}
+\end{theorem}}
 
 %\[\lim_{x\rightarrow\infty}\frac1{x^n}=0\quad \text{and}\quad \lim_{x\rightarrow-\infty}\frac1{x^n}=0\]
 
@@ -362,7 +363,7 @@ We can also use \autoref{thm:lim_rational_fn_at_infty} directly; in this case $n
 
 \mtable[-1in]{Visualizing the functions in \autoref{ex_hzasy3}.}{fig:hzasy3}{%
 	\begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-.6,ymax=.6,xmin=-41,xmax=2,name=myplot]
 \addplot [draw={\colorone},smooth,thick,domain=-40:-2] {(x*x+2*x-1)/(x*x*x+1)};
@@ -372,7 +373,7 @@ ymin=-.6,ymax=.6,xmin=-41,xmax=2,name=myplot]
 \end{tikzpicture}
 \\ (a) \\[10pt]
 \begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,minor y tick num = 4,axis y line=middle,axis x line=middle,
 ymin=-.55,ymax=.55,xmin=-1,xmax=41,name=myplot]
 \addplot [draw={\colorone},smooth,thick,domain=1.86:40] {(x*x+2*x-1)/(1-x-3*x*x)};
@@ -383,7 +384,7 @@ ymin=-.55,ymax=.55,xmin=-1,xmax=41,name=myplot]
 \end{tikzpicture}
 \\ (b) \\[10pt]
 \begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-50,ymax=5,xmin=-5,xmax=41,name=myplot]
 \addplot [draw={\colorone},smooth,thick,domain=4:40] {(x*x-1)/(3-x)};

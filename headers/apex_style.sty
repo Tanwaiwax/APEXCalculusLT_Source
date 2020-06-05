@@ -12,7 +12,7 @@
 %\usepackage{lipsum} % not used
 
 % make the space in the toc wide enough for 4 digit numbers
-\renewcommand\@pnumwidth{2em}
+\renewcommand\@pnumwidth{2.5em}
 
 % The following helps create a ``List of Theorems'', ``Definitions'', and ``Key Ideas''.  See http://tex.stackexchange.com/q/74857/107497
 %\usepackage{etoolbox}
@@ -106,18 +106,6 @@
 \newboolean{eoeencountered}
 \newcommand{\currentLabel}{notinexample}
 
-%% thanks to Steven B. Segletes and egreg at
-%% http://tex.stackexchange.com/a/320586/107497
-%\newcommand{\eoehere}{%
-% \ifthenelse{\boolean{eoeencountered}}{%
-%  \vspace{-\baselineskip}\nopagebreak%
-% }{%
-%  \drawnode{e\currentLabel}{0}{0}%
-%  \ltx@label{e\currentLabel}%
-% % \gdef\currentLabel{notinexample}%
-%  \ifthenelse{\boolean{measuring@}}{}{\global\eoeencounteredtrue}%
-% }%
-%}
 
 %\newcounter{pagebeforeend}
 
@@ -140,7 +128,6 @@
 % }%
 % \noindent%
 % #3%
-% \eoehere%
 % \ifthenelse{\boolean{showexamplelines}}{%
 %  \ifthenelse{\pageref{#1}=\pageref{e#1}}{%
 %   \begin{tikzpicture}[remember picture,overlay]
@@ -218,12 +205,14 @@
 	\ifthenelse{ #2 > 46800000 }{% 468e5
 		\PackageWarningNoLine{apex}{mnote too high on page #3}%
 	}{}%
-	\ifthenelse{ #1 < 0 }{%
-		\PackageWarningNoLine{apex}{mnote on left inner margin on page #3}%
-	}{}%
-	\ifthenelse{ #1 > 33000000 }{% 33e6
-		\PackageWarningNoLine{apex}{mnote on right inner margin on page #3}% {: #1}%
-	}{}%
+	% marginnote doesn't misplace the margin on the next page, so these are no longer
+	% necessary.  But we'll keep them just in case
+%	\ifthenelse{ #1 < 0 }{%
+%		\PackageWarningNoLine{apex}{mnote on left inner margin on page #3}%
+%	}{}%
+%	\ifthenelse{ #1 > 33000000 }{% 33e6
+%		\PackageWarningNoLine{apex}{mnote on right inner margin on page #3}% {: #1}%
+%	}{}%
 	\ifthenelse{ #3 = \previousmarginpage }{%
 		\ifthenelse{\lengthtest{\previousmarginbottom < #2 sp}}{%
 			\PackageWarningNoLine{apex}{mnote overlaps on page #3}% {: #2}%

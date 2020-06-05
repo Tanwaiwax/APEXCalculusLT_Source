@@ -44,14 +44,14 @@ This approximates the signed volume under $f$ over $R$. As we have done before, 
 
 In general, each rectangle could have a different width $\Delta x_j$ and height $\Delta y_k$, giving the $i^\text{ th}$ rectangle an area $\Delta A_i = \Delta x_j\Delta y_k$ and the $i^\text{ th}$ rectangular solid a volume of $f(x_i,y_i)\Delta A_i$. Let $\norm{\Delta A}$ denote the length of the longest diagonal of all rectangles in the subdivision of $R$; $\norm{\Delta A}\to 0$ means each rectangle's width and height are both approaching 0. If $f$ is a continuous function, as $\norm{\Delta A}$ shrinks (and hence $n\to\infty$) the summation $\ds \sum_{i=1}^n f(x_i,y_i)\Delta A_i$ approximates the signed volume better and better. This leads to a definition.
 
-\mnote{\textbf{Note:} Recall that the integration symbol ``$\int$'' is an ``elongated S,'' representing the word ``sum.'' We interpreted $\int_a^bf(x)\ dx$ as ``take the \textit{sum} of the areas of rectangles over the interval $[a,b]$.'' The double integral uses two integration symbols to represent a ``double sum.'' When adding up the volumes of rectangular solids over a partition of a region $R$, as done in \autoref{fig:double_intro}, one could first add up the volumes across each row (one type of sum), then add these totals together (another sum), as in
+\mnote{\textbf{Note:} Recall that the integration symbol ``$\int$'' is an ``elongated S,'' representing the word ``sum.'' We interpreted $\int_a^bf(x)\ dx$ as ``take the \emph{sum} of the areas of rectangles over the interval $[a,b]$.'' The double integral uses two integration symbols to represent a ``double sum.'' When adding up the volumes of rectangular solids over a partition of a region $R$, as done in \autoref{fig:double_intro}, one could first add up the volumes across each row (one type of sum), then add these totals together (another sum), as in
 \[\sum_{j=1}^n\sum_{i=1}^mf(x_i,y_j)\Delta x_i\Delta y_j.\]
 One can rewrite this  as
 \[\sum_{j=1}^n\left(\sum_{i=1}^mf(x_i,y_j)\Delta x_i\right)\Delta y_j.\]
 The summation inside the parenthesis indicates the sum of  heights $\times$ widths, which gives an area; multiplying these areas by the thickness $\Delta y_j$ gives a volume. The illustration in \autoref{fig:double_intro3} relates to this understanding.\label{note:doubleint}}
 
 \begin{definition}[Double Integral, Signed Volume]\label{def:double_int}
-Let $z=f(x,y)$ be a continuous function defined over a closed region $R$ in the $x$-$y$ plane. The \textbf{signed volume} $V$ under $f$ over $R$ is denoted by the \textbf{double integral}
+Let $z=f(x,y)$ be a continuous function defined over a closed region $R$ in the $x$-$y$ plane. The \textbf{signed volume} $V$ under $f$ over $R$ is denoted by the \textbf{double integral}\vspace{-.5\baselineskip}
 \[V = \iint_R f(x,y)\ dA.\]
 Alternate notations for the double integral are
 \index{integration!double}\index{double integral}\index{iterated integration}\index{signed volume}\index{volume}
@@ -111,7 +111,7 @@ Note that the bounds of integration follow a ``curve to curve, point to point'' 
 \begin{example}[Evaluating a double integral]\label{ex_double1}
 Let $f(x,y) = xy+e^y$. Find the signed volume under $f$ on the region $R$, which is the rectangle with corners $(3,1)$ and $(4,2)$ pictured in \autoref{fig:double1}, using Fubini's Theorem and both orders of integration.
 \solution
-We wish to evaluate $\iint_R \big(xy+e^y\big)\ dA$. As $R$ is a rectangle, the bounds are easily described as $3\leq x\leq 4$ and $1\leq y\leq 2$.\\
+We wish to evaluate $\iint_R \bigl(xy+e^y\bigr)\ dA$. As $R$ is a rectangle, the bounds are easily described as $3\leq x\leq 4$ and $1\leq y\leq 2$.\\
 
 \mtable{Finding the signed volume under a surface in \autoref{ex_double1}.}{fig:double1}{%
 \myincludeasythree{width=\marginparwidth,
@@ -123,18 +123,19 @@ We wish to evaluate $\iint_R \big(xy+e^y\big)\ dA$. As $R$ is a rectangle, the b
 
 Using the order $dy\ dx$:
 \begin{align*}
-\iint_R\big(xy+e^y\big) \ dA
-	&= \int_3^4\int_1^2\big(xy+e^y\big)\ dy \ dx \\
+\iint_R\bigl(xy+e^y\bigr) \ dA
+	&= \int_3^4\int_1^2\bigl(xy+e^y\bigr)\ dy \ dx \\
 	&= \int_3^4 \left(\left.\left[\frac12xy^2+e^y\right]\right|_1^2\ \right) dx \\
 	&= \int_3^4\left(\frac 32x + e^2-e\right)dx \\
-	&= \left.\left(\frac 34x^2 + \big(e^2-e\big)x\right)\right|_3^4 \\
+	&= \left.\left(\frac 34x^2 + \bigl(e^2-e\bigr)x\right)\right|_3^4 \\
 	&= \frac {21}4+ e^2-e%\approx 9.92
 	.
 \end{align*}
 
 Now we check the validity of Fubini's Theorem by using the order $dx\ dy$:
+\allowdisplaybreaks
 \begin{align*}
-\iint_R\big(xy+e^y\big) \ dA &= \int_1^2\int_3^4\big(xy+e^y\big)\ dx \ dy \\
+\iint_R\bigl(xy+e^y\bigr) \ dA &= \int_1^2\int_3^4\bigl(xy+e^y\bigr)\ dx \ dy \\
 		&= \int_1^2\left(\left.\left[\frac12x^2y+xe^y\right]\right|_3^4\right)dy\\
 		&= \int_1^2\left(\frac72y+e^y\right)\ dy\\
 		&= \left.\left(\frac74y^2+e^y\right)\right|_1^2\\
@@ -165,7 +166,7 @@ Both orders of integration return the same result, as expected.
 %\begin{align*}
 %\iint_R e^{2x+3y}\ dA &= \int_0^1\int_0^{2-2y} e^{2x+3y}\ dy\ dx\\
 		%&= \int_0^1\left.\left(\frac12e^{2x+3y}\right)\right|_0^{2-2y} dy\\
-		%&= \int_0^1\left(\frac12\big(e^{4-y}-e^{3y}\big)\right)dy\\
+		%&= \int_0^1\left(\frac12\bigl(e^{4-y}-e^{3y}\bigr)\right)dy\\
 		%&=\left.\frac12\left(-e^{4-y}-\frac13e^{3y}\right)\right|_0^1\\
 		%&=\frac12\left(-\frac43e^3+e^4+\frac13\right)\\
 		%&= \frac12e^4-\frac23e^3+\frac16%\approx  14.08
@@ -175,7 +176,7 @@ Both orders of integration return the same result, as expected.
 %\end{example}
 
 \begin{example}[Evaluating a double integral]\label{ex_double2}
-Evaluate $\iint_R \big(3xy-x^2-y^2+6\big)\ dA$, where $R$ is the triangle bounded by $x=0$, $y=0$ and $x/2+y=1$, as shown in \autoref{fig:double2}.
+Evaluate $\iint_R \bigl(3xy-x^2-y^2+6\bigr)\ dA$, where $R$ is the triangle bounded by $x=0$, $y=0$ and $x/2+y=1$, as shown in \autoref{fig:double2}.
 \solution
 While it is not specified which order we are to use, we will evaluate the double integral using both orders to help drive home the point that it does not matter which order we use.
 
@@ -190,7 +191,7 @@ While it is not specified which order we are to use, we will evaluate the double
 Using the order $dy\ dx$:
 The bounds on $y$ go from ``curve to curve,'' i.e., $0\leq y\leq 1-x/2$, and the bounds on $x$ go from ``point to point,'' i.e., $0\leq x\leq 2$.
 \begin{align*}
-\iint_R (3xy-x^2-y^2+6\big)\ dA &= \int_0^2\int_0^{-\frac x2+1} (3xy-x^2-y^2+6\big)\ dy\ dx\\
+\iint_R (3xy-x^2-y^2+6\bigl)\ dA &= \int_0^2\int_0^{-\frac x2+1} (3xy-x^2-y^2+6\bigr)\ dy\ dx\\
 		&= \int_0^2\left.\left(\frac32xy^2-x^2y-\frac13y^3+6y\right)\right|_0^{-\frac x2+1}dx\\
 		&= \int_0^2 \left(\frac{11}{12}x^3-\frac{11}{4}x^2-x+\frac{17}3\right)dx \\
 		&= \left.\left(\frac{11}{48}x^4-\frac{11}{12}x^3-\frac12x^2+\frac{17}3x\right)\right|_0^2\\
@@ -199,7 +200,7 @@ The bounds on $y$ go from ``curve to curve,'' i.e., $0\leq y\leq 1-x/2$, and the
 
 Now lets consider the order $dx \ dy$. Here $x$ goes from ``curve to curve,'' $0\leq x\leq 2-2y$, and $y$ goes from ``point to point,'' $0\leq y\leq 1$:
 \begin{align*}
-\iint_R (3xy-x^2-y^2+6\big)\ dA &= \int_0^1\int_0^{2-2y} (3xy-x^2-y^2+6\big)\ dx\ dy\\
+\iint_R \bigl(3xy-x^2-y^2+6\bigr)\ dA &= \int_0^1\int_0^{2-2y} \bigl(3xy-x^2-y^2+6\bigr)\ dx\ dy\\
 		&= \int_0^1\left.\left(\frac32x^2y-\frac13x^3-xy^2+6x\right)\right|_0^{2-2y} dy\\
 		&= \int_0^1\left(\frac{32}3y^3-22y^2+2y+\frac{28}3\right)dy\\
 		&=\left.\left(\frac83y^4-\frac{22}3y^3+y^2+\frac{28}3y\right)\right|_0^1\\
@@ -221,7 +222,7 @@ Let $f$ and $g$ be continuous functions over a closed, bounded plane region $R$,
 \index{double integral!properties}\index{iterated integration!properties}
 \begin{enumerate}
 	\item $\ds \iint_Rc\,f(x,y)\ dA = c\iint_Rf(x,y)\ dA.$
-	\item	$\ds \iint_R \big(f(x,y)\pm g(x,y)\big)\ dA = \iint_R f(x,y)\ dA \pm \iint_R g(x,y)\ dA $
+	\item	$\ds \iint_R \bigl(f(x,y)\pm g(x,y)\bigr)\ dA = \iint_R f(x,y)\ dA \pm \iint_R g(x,y)\ dA $
 	\item	If $f(x,y)\geq 0$ on $R$, then $\ds \iint_R f(x,y)\ dA\geq 0$.
 	\item	If $f(x,y)\geq g(x,y)$ on $R$, then $\ds \iint_R f(x,y)\ dA\geq \iint_R g(x,y)\ dA$.
 	\item \label{thm:double_prop_regions}	Let $R$ be the union of two nonoverlapping regions, $R = R_1\bigcup R_2$ (see \autoref{fig:double_region}). Then 
@@ -262,8 +263,8 @@ If we attempt to integrate using an iterated integral with the order $dy\ dx$, n
 Instead, let's use the order $dx\ dy$. The curves bounding $x$ are $y-1\leq x\leq 1-y$; the bounds on $y$ are $0\leq y\leq 1$. This gives us:
 \begin{align*}
 \iint_R f(x,y)\ dA &= \int_0^1\int_{y-1}^{1-y}\sin x\cos y\ dx\ dy\\
-		&= \int_0^1\left.\Big( -\cos x\cos y\Big)\right|_{y-1}^{1-y}dy\\
-		&= \int_0^1 \cos y\Big(-\cos (1-y) + \cos(y-1)\Big)dy.
+		&= \int_0^1\left.\Bigl( -\cos x\cos y\Bigr)\right|_{y-1}^{1-y}dy\\
+		&= \int_0^1 \cos y\Bigl(-\cos (1-y) + \cos(y-1)\Bigr)dy.
 \end{align*}
 Recall that the cosine function is an even function; that is, $\cos x = \cos (-x)$. Therefore, from the last integral above, we have $\cos (y-1) = \cos (1-y)$. Thus the integrand simplifies to 0, and we have 
 \begin{align*}
@@ -299,8 +300,8 @@ We now choose an order of integration: $dy\ dx$ or $dx\ dy$? Either order works;
 Thus we have the following ``curve to curve, point to point'' bounds: $y^2/4\leq x\leq 2\sqrt y$, and $0\leq y\leq 4$. 
 \begin{align*}
 \iint_R (4-y)\ dA &= \int_0^4\int_{y^2/4}^{2\sqrt{y}}(4-y)\ dx\ dy\\
-				&= \int_0^4 \big(x(4-y)\big)\Big|_{y^2/4}^{2\sqrt{y}} dy\\
-				&= \int_0^4 \Big(\big(2\sqrt{y}-\frac{y^2}{4}\big)\big(4-y)\Big)\ dy = \int_0^4 \Big( \frac{y^3}{4}-y^2-2y^{3/2}+8y^{1/2}\Big)\ dy\\
+				&= \int_0^4 \bigl(x(4-y)\bigr)\Big|_{y^2/4}^{2\sqrt{y}} dy\\
+				&= \int_0^4 \Bigl(\bigl(2\sqrt{y}-\frac{y^2}{4}\bigr)\bigl(4-y\bigr)\Bigr)\ dy = \int_0^4 \Bigl( \frac{y^3}{4}-y^2-2y^{3/2}+8y^{1/2}\Bigr)\ dy\\
 				&= \left.\left(\frac{y^4}{16}-\frac{y^3}{3}-\frac{4y^{5/2}}5+\frac{16y^{3/2}}3\right)\right|_0^4\\
 				&= \frac{176}{15} = 11.7\overline{3}.
 \end{align*}
@@ -410,7 +411,7 @@ Changing the order of integration makes a big difference here. In the second ite
 Thus 
 \[
  \int_0^3\int_0^x e^{-x^2}\ dy\ dx
- = \int_0^3\Big(xe^{-x^2}\Big)dx
+ = \int_0^3\Bigl(xe^{-x^2}\Bigr)dx
  = \int_0^9\frac12 e^{-u}\ du,
 \]
 where we used the substitution $u=x^2$, giving a final answer of $\frac12(1-e^{-9})%\approx 0.5

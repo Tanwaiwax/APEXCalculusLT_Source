@@ -4,16 +4,16 @@ A common amusement park ride lifts riders to a height then allows them to freefa
 
 Using this formula, it is easy to verify that, without intervention, the riders will hit the ground at $t=2.5\sqrt{1.5} \approx 3.06$ seconds. Suppose the designers of the ride decide to begin slowing the riders' fall after 2 seconds (corresponding to a height of 86 ft.). How fast will the riders be traveling at that time?\\
 
-We have been given a \textit{position} function, but what we want to compute is a velocity at a specific point in time, i.e., we want an \textit{instantaneous velocity}. We do not currently know how to calculate this.
+We have been given a \emph{position} function, but what we want to compute is a velocity at a specific point in time, i.e., we want an \emph{instantaneous velocity}. We do not currently know how to calculate this.
 
-However, we do know from common experience how to calculate an \textit{average velocity}. (If we travel 60 miles in 2 hours, we know we had an average velocity of 30 mph.) We looked at this concept in \autoref{sec:limit_intro} when we introduced the difference quotient. We have 
+However, we do know from common experience how to calculate an \emph{average velocity}. (If we travel 60 miles in 2 hours, we know we had an average velocity of 30 mph.) We looked at this concept in \autoref{sec:limit_intro} when we introduced the difference quotient. We have 
 	\[\frac{\text{change in distance}}{\text{change in time}} = \frac{\text{``\ rise\ ''}}{\text{run}} = \text{average velocity}.\]
 	
 We can approximate the instantaneous velocity at $t=2$ by considering the average velocity over some time period containing $t=2$. If we make the time interval small, we will get a good approximation. (This fact is commonly used. For instance, high speed cameras are used to track fast moving objects. Distances are measured over a fixed number of frames to generate an accurate approximation of the velocity.)
 
 Consider the interval from $t=2$ to $t=3$ (just before the riders hit the ground). On that interval, the average velocity is 
 		\[\frac{f(3)-f(2)}{3-2} = \frac{f(3)-f(2)}{1} =-80\ \text{ft/s},\]
-where the minus sign indicates that the riders are moving \textit{down}. By narrowing the interval we consider, we will likely get a better approximation of the instantaneous velocity. On $[2,2.5]$ we have 
+where the minus sign indicates that the riders are moving \emph{down}. By narrowing the interval we consider, we will likely get a better approximation of the instantaneous velocity. On $[2,2.5]$ we have 
 	\[\frac{f(2.5)-f(2)}{2.5-2} = \frac{f(2.5)-f(2)}{0.5} =-72\ \text{ft/s}.\]
 
 We can do this for smaller and smaller intervals of time. For instance, over a time span of 1/10$^\text{th}$ of a second, i.e., on $[2,2.1]$, we have 
@@ -67,7 +67,7 @@ name=myplot, extra x ticks={2.4}, extra x tick labels={\begin{tabular}{c}$\uparr
 
 Graphically, we can view the average velocities we computed numerically as the slopes of secant lines on the graph of $f$ going through the points $(2,f(2))$ and $(2+h,f(2+h))$, as in \autoref{fig:diff_quotient}. In \autoref{fig:derivfalling}, the secant line corresponding to $h=1$ is shown in three contexts. \autoref{fig:derivfalling}(a) shows a ``zoomed out'' version of $f$ with its secant line. In (b), we zoom in around the points of intersection between $f$ and the secant line. Notice how well this secant line approximates $f$ between those two points --- it is a common practice to approximate functions with straight lines.
 
-As $h\to 0$, these secant lines approach the \textit{tangent line}, a line that goes through the point $(2,f(2))$ with the special slope of $-64$. In parts (c) and (d) of \autoref{fig:derivfalling}, we zoom in around the point $(2,86)$. In (c) we see the secant line, which approximates $f$ well, but not as well the tangent line shown in (d).
+As $h\to 0$, these secant lines approach the \emph{tangent line}, a line that goes through the point $(2,f(2))$ with the special slope of $-64$. In parts (c) and (d) of \autoref{fig:derivfalling}, we zoom in around the point $(2,86)$. In (c) we see the secant line, which approximates $f$ well, but not as well the tangent line shown in (d).
 
 \begin{figure}[!ht]
 	\begin{tabular}{cc}
@@ -143,27 +143,20 @@ Some examples will help us understand these definitions.
 
 \begin{example}[Finding derivatives and tangent lines]\label{ex_derv_point1}
 Let $f(x) = 3x^2+5x-7$. Find: 
-
-\noindent\begin{minipage}[t]{.5\textwidth}
+\begin{multicols}{2}
 	\begin{enumerate}
 	\item		$\fp(1)$
 	\item		The equation of the tangent line to the graph of $f$ at $x=1$.
-	\end{enumerate}
-	\end{minipage}%
-	\noindent\begin{minipage}[t]{.5\textwidth}
-	\begin{enumerate}\addtocounter{enumi}{2}
 	\item		$\fp(3)$
 	\item		The equation of the tangent line to the graph $f$ at $x=3$.
 	\end{enumerate}
-	\end{minipage}
+	\end{multicols}
 \solution
 	\begin{enumerate}
 	\item We compute this directly using \autoref{def:derivative_at_a_point}.
 		\begin{align*}
 			\fp(1) &= \lim_{h\to 0} \frac{f(1+h)-f(1)}{h} \\
 				   &= \lim_{h\to 0} \frac{3(1+h)^2+5(1+h)-7 - (3(1)^2+5(1)-7)}{h}\\
-		%\end{align*}
-		%\begin{align*}
 				   &= \lim_{h\to 0} \frac{3h^2+11h}{h}\\
 				   &= \lim_{h\to 0}(3h+11)=11.%\\
 				   %&= 11.
@@ -177,11 +170,11 @@ Let $f(x) = 3x^2+5x-7$. Find:
 				   &= \lim_{h\to 0}(3h+23)\\
 				   &= 23.
 		\end{align*}
-	\item The tangent line at $x=3$ has slope $23$ and goes through the point $(3,f(3)) = (3,35)$. Thus the tangent line has equation $y=23(x-3)+35 = 23x-34$.
+	\item The tangent line at $x=3$ has slope $23$ and goes through the point $(3,f(3))$, which is $(3,35)$. Thus the tangent line has equation $y=23(x-3)+35 = 23x-34$.
 	\end{enumerate}
 
 \mtable{A graph of $f(x) = 3x^2+5x-7$ and its tangent lines at $x=1$ and $x=3$.}{fig:tangent1}{\begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-11,ymax=66,xmin=-.1,xmax=4.1,name=myplot]
 \addplot [draw={\colorone},smooth,thick,domain=0:4] {3*x*x+5*x-7};
@@ -201,7 +194,7 @@ A graph of $f$ is given in \autoref{fig:tangent1} along with the tangent lines a
 %
 %\begin{definition}[Normal Line]\label{def:normal_line}
 %Let $f$ be continuous on an open interval $I$ and differentiable at $c$, for some $c$ in $I$. The \textbf{normal line} to the graph of $f$ at $c$ is the line with equation
-%\[n(x) =\frac{-1}{\fp(c)}(x-c)+f(c),\] where $\fp(c)\neq 0$. When $\fp(c)=0$, the normal line is the vertical line through $\big(c,f(c)\big)$; that is, $x=c$.\index{derivative!normal line}\index{normal line}
+%\[n(x) =\frac{-1}{\fp(c)}(x-c)+f(c),\] where $\fp(c)\neq 0$. When $\fp(c)=0$, the normal line is the vertical line through $\bigl(c,f(c)\bigr)$; that is, $x=c$.\index{derivative!normal line}\index{normal line}
 %\end{definition}
 %
 %\begin{example}[Finding equations of normal lines]\label{ex_normal1}
@@ -243,7 +236,7 @@ We find the slope of the tangent line by using \autoref{def:derivative_at_a_poin
 					&= 3.
 	\end{align*}
 	
-We just found that $\fp(1) = 3$. That is, we found the \textit{instantaneous rate of change} of $f(x) = 3x+5$ is $3$. This is not surprising; lines are characterized by being the \textit{only} functions with a \textit{constant rate of change.} That rate of change is called the \textit{slope} of the line. Since their rates of change are constant, their \textit{instantaneous} rates of  change are always the same; they are all the slope.
+We just found that $\fp(1) = 3$. That is, we found the \emph{instantaneous rate of change} of $f(x) = 3x+5$ is $3$. This is not surprising; lines are characterized by being the \emph{only} functions with a \emph{constant rate of change.} That rate of change is called the \emph{slope} of the line. Since their rates of change are constant, their \emph{instantaneous} rates of  change are always the same; they are all the slope.
 
 So given a line $f(x) = ax+b$, the derivative at any point $x$ will be $a$; that is, $\fp(x) = a$. 
 
@@ -260,7 +253,7 @@ In order to find the equation of the tangent line, we need a slope and a point. 
 for a small value of $h$. We choose (somewhat arbitrarily) to let $h=0.1$. Thus
 %
 \mtable{$f(x) = \sin x$ graphed with an approximation to its tangent line at $x=0$.}{fig:tangentsinx}{\begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=1.16\marginparwidth,axis equal,tick label style={font=\scriptsize},
 minor x tick num=1,xtick={-3.14,-1.57,1.57,3.14},
 xticklabels={$-\pi$,$-\frac{\pi}2$,$\frac{\pi}2$,$\pi$},axis y line=middle,
 axis x line=middle,ymin=-1.1,ymax=1.1,xmin=-3.5,xmax=3.5,name=myplot]
@@ -276,7 +269,7 @@ axis x line=middle,ymin=-1.1,ymax=1.1,xmin=-3.5,xmax=3.5,name=myplot]
 Thus our approximation of the equation of the tangent line is $y = 0.9983(x-0) +0 = 0.9983x$; it is graphed in \autoref{fig:tangentsinx}. The graph seems to imply the approximation is rather good.
 \end{example}
 
-Recall from \autoref{sec:limit_analytically} that $\ds \lim_{x\to 0}\frac{\sin x}x =1$, meaning for values of $x$ near 0, $\sin x \approx x$. Since the slope of the line $y=x$ is 1 at $x=0$, it should seem reasonable that ``the slope of $f(x)=\sin x$'' is near 1 at $x=0$. In fact, since we \textit{approximated} the value of the slope to be $0.9983$, we might guess the \textit{actual value} is 1. We'll come back to this later.\bigskip
+Recall from \autoref{sec:limit_analytically} that $\ds \lim_{x\to 0}\frac{\sin x}x =1$, meaning for values of $x$ near 0, $\sin x \approx x$. Since the slope of the line $y=x$ is 1 at $x=0$, it should seem reasonable that ``the slope of $f(x)=\sin x$'' is near 1 at $x=0$. In fact, since we \emph{approximated} the value of the slope to be $0.9983$, we might guess the \emph{actual value} is 1. We'll come back to this later.\bigskip
 
 Consider again \autoref{ex_derv_point1}. To find the derivative of $f$ at $x=1$, we needed to evaluate a limit. To find the derivative of $f$ at $x=3$, we needed to again evaluate a limit. We have this process:
 \[
@@ -287,7 +280,7 @@ Consider again \autoref{ex_derv_point1}. To find the derivative of $f$ at $x=1$,
 \begin{tabular}{c}return\\number $\fp(c)$\end{tabular}
 \]
 
-This process describes a \textit{function}; given one input (the value of $c$), we return exactly one output (the value of $\fp(c)$). The ``do something'' box is where the tedious work (taking limits) of this function occurs. 
+This process describes a \emph{function}; given one input (the value of $c$), we return exactly one output (the value of $\fp(c)$). The ``do something'' box is where the tedious work (taking limits) of this function occurs. 
 
 Instead of applying this function repeatedly for different values of $c$, let us apply it just once to the variable $x$. We then take a limit just once. The process now looks like:
 \[
@@ -303,7 +296,7 @@ The output is the ``derivative function,'' $\fp(x)$. The $\fp(x)$ function will 
 \begin{definition}[Derivative Function]\label{def:the_derivative}
 Let $f$ be a differentiable function on an open interval $I$. The function
 \[\fp(x) = \lim_{h\to 0} \frac{f(x+h)-f(x)}{h}\]
-is \sword{the derivative of $f$}.\index{derivative!as a function}\index{derivative!notation}\\
+is \sword{the derivative of $f$}.\index{derivative!as a function}\index{derivative!notation}\bigbreak
 
 \sword{Notation:}
 
@@ -355,7 +348,7 @@ So $\ds\fp(x) = \frac{-1}{(x+1)^2}$. To practice using our notation, we could al
 \begin{example}[Finding the derivative of a function]\label{ex_deriv_sinx}
 Find the derivative of $f(x) = \sin x$.
 \solution
-Before applying \autoref{def:the_derivative}, note that once this is found, we can find the actual tangent line to $f(x) = \sin x$ at $x=0$, whereas we settled for an approximation in \autoref{ex_der_num_approx}. 
+Before applying \autoref{def:the_derivative}, note that once the derivative is found, we can find the actual tangent line to $f(x) = \sin x$ at $x=0$, whereas we settled for an approximation in \autoref{ex_der_num_approx}. 
 	\small
 	\begin{align*}
 		\fp(x)
@@ -370,12 +363,13 @@ Before applying \autoref{def:the_derivative}, note that once this is found, we c
 
 We have found that when $f(x) = \sin x$, $\fp(x) = \cos x$ (see \autoref{fig:sin_and_dsin}).
 
-% todo Tim should the graph of sin and its derivative use equal aspect ratio?
-\noindent\begin{minipage}[t]{\linewidth}\noindent%
+% todo Tim should the graph of sin and its derivative use equal aspect ratio? check that it worked
+\begin{center}
 \captionsetup{type=figure}%
-\centering
 \begin{tikzpicture}
-\begin{axis}[tick label style={font=\scriptsize}, axis y line=middle,axis x line=middle, ymin=-1.15, ymax=1.15,xmin=-7,xmax=7,name=myplot,  xtick={-6.28318, -4.7123889, -3.14159, -1.5708, 1.5708, 3.14159, 4.7123889, 6.28318}, xticklabels={-$2\pi$, $-\frac{3\pi}{2}$,$-\pi$, $-\frac{\pi}{2}$, $\frac{\pi}{2}$,$\pi$, $\frac{3\pi}{2}$, $2\pi$}, xscale=1.4]
+\begin{axis}[tick label style={font=\scriptsize}, axis y line=middle,axis x line=middle, ymin=-1.15, ymax=1.15,xmin=-7,xmax=7,name=myplot,axis equal,
+  xtick={-6.28318, -4.7123889, -3.14159, -1.5708, 1.5708, 3.14159, 4.7123889, 6.28318}, xticklabels={-$2\pi$, $-\frac{3\pi}{2}$,$-\pi$, $-\frac{\pi}{2}$, $\frac{\pi}{2}$,$\pi$, $\frac{3\pi}{2}$, $2\pi$},width=\textwidth ] % xscale=1.4,
+  % w/h = 14/2.3 => h = 2.3*w/14 = .164 w
 \addplot [draw={\colorone}, smooth, domain=-6.28318:6.28318,thick] {sin(deg(x))} 
          node [pos=.7, above right] {\scriptsize $f(x)=\sin{x}$};
 \addplot [draw={\colortwo},smooth, domain=-6.28318:6.28318,thick] {cos(deg(x))}
@@ -394,7 +388,7 @@ We have found that when $f(x) = \sin x$, $\fp(x) = \cos x$ (see \autoref{fig:sin
 \end{tikzpicture}
 \caption{The function $f(x)=\sin x$ and its derivative $\fp(x)=\cos x$.}
 \label{fig:sin_and_dsin}
-\end{minipage}
+\end{center}
 
 Initially, this might be somewhat surprising; the result of a tedious limit process and the sine function is a nice function. Then again, perhaps this is not entirely surprising. The sine function is periodic --- it repeats itself on regular intervals. Therefore its rate of change also repeats itself on the same regular intervals. In fact, if we think about $\fp(x)$ as the slope of the tangent to the sine curve we notice the following
 \begin{itemize}
@@ -405,7 +399,7 @@ Initially, this might be somewhat surprising; the result of a tedious limit proc
 
 We should have known the derivative would be periodic; we now know exactly which periodic function it is.
 
-Thinking back to \autoref{ex_der_num_approx}, we can find the slope of the tangent line to $f(x)=\sin x$ at $x=0$ using our derivative. We approximated the slope as $0.9983$; we now know the slope is \textit{exactly} $\cos 0 =1$.
+Thinking back to \autoref{ex_der_num_approx}, we can find the slope of the tangent line to $f(x)=\sin x$ at $x=0$ using our derivative. We approximated the slope as $0.9983$; we now know the slope is \emph{exactly} $\cos 0 =1$.
 
 \begin{example}[Finding the derivative of a piecewise defined function]\label{ex_not_diff}
 Find the derivative of the absolute value function,
@@ -416,7 +410,7 @@ We need to evaluate $\ds \lim_{h\to0}\frac{f(x+h)-f(x)}{h}.$ As $f$ is piecewise
 
 \mtable{The absolute value function, $f(x) = \abs{x}$. Notice how the slope of the lines (and hence the tangent lines) abruptly changes at $x=0$.}{fig:absolutevalue}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
-minor x tick num=1,axis y line=middle,axis x line=middle,
+minor tick num=1,axis y line=middle,axis x line=middle,axis equal,
 ymin=-.2,ymax=1.1,xmin=-1.1,xmax=1.1,name=myplot]
 \addplot [draw={\colorone},thick] coordinates {(-1,1) (0,0) (1,1)};
 \end{axis}
@@ -426,13 +420,13 @@ ymin=-.2,ymax=1.1,xmin=-1.1,xmax=1.1,name=myplot]
 
 When $x<0$:
 	\begin{align*}
-	\frac{d}{dx}\big(-x\big)
+	\frac{d}{dx}\bigl(-x\bigr)
 	&= \lim_{h\to 0}\frac{-(x+h) - (-x)}{h} \\
 	&=	\lim_{h\to 0}\frac{-h}{h}\\
 	&=	\lim_{h\to 0}-1 \\
 	&=	-1.
 	\end{align*}
-When $x>0$, a similar computation shows that $\ds \frac{d}{dx}\big(x\big) = 1$.
+When $x>0$, a similar computation shows that $\ds \frac{d}{dx}\bigl(x\bigr) = 1$.
 
 We need to also find the derivative at $x=0$. By the definition of the derivative at a point, we have
 \[\fp(0) = \lim_{h\to0}\frac{f(0+h)-f(0)}{h}.\]
@@ -450,7 +444,7 @@ Since $x=0$ is the point where our function's definition switches from one piece
 \lim_{h\to0^+}\frac{h-0}{h} &= \\
 \lim_{h\to0^+}1 & =1
 \end{align*}
-\end{minipage}
+\end{minipage}\\
 %
 \mtable[-1in]{A graph of the derivative of $f(x) = \abs{x}$.}{fig:absolutevalueprime}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -500,8 +494,7 @@ So far we have
 We still need to find $\fp(\pi/2)$. Notice at $x=\pi/2$ that both pieces of $\fp$ are 0, meaning we can state that $\fp(\pi/2)=0$. 
 
 Being more rigorous, we can again evaluate the difference quotient limit at $x=\pi/2$, utilizing again left and right-hand limits:\\
-
-\small
+{\small
 \noindent\begin{minipage}{.59\linewidth}
 \begin{align*}
 \lim_{h\to0^-}\frac{f(\pi/2+h)-f(\pi/2)}{h} &=\\
@@ -524,7 +517,7 @@ Being more rigorous, we can again evaluate the difference quotient limit at $x=\
 \phantom{0}
 \end{align*}
 \end{minipage}
-\normalsize
+}
 
 \mtable{A graph of $\fp(x)$ in \autoref{ex_diff_piecewise}.}{fig:piecewisecosx1}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -560,7 +553,7 @@ Recall we pseudo-defined a continuous function as one in which we could sketch i
  }%
 }
 
-This section defined the derivative; in some sense, it answers the question of ``What \textit{is} the derivative?'' The next section addresses the question ``What does the derivative \textit{mean}?''
+This section defined the derivative; in some sense, it answers the question of ``What \emph{is} the derivative?'' The next section addresses the question ``What does the derivative \emph{mean}?''
 
 
 \printexercises{exercises/02_01_exercises}

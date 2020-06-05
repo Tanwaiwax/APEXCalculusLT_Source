@@ -1,7 +1,6 @@
 \section{Taylor Polynomials}\label{sec:taylor_poly}
 
-% todo Tim change ``the theorem'' in this section ?
-Consider a function $y=f(x)$ and a point $\big(c,f(c)\big)$. The derivative, $\fp(c)$, gives the instantaneous rate of change of $f$ at $x=c$. Of all lines that pass through the point $\big(c,f(c)\big)$, the line that best approximates $f$ at this point is the tangent line; that is, the line whose slope (rate of change) is $\fp(c)$.
+Consider a function $y=f(x)$ and a point $\bigl(c,f(c)\bigr)$. The derivative, $\fp(c)$, gives the instantaneous rate of change of $f$ at $x=c$. Of all lines that pass through the point $\bigl(c,f(c)\bigr)$, the line that best approximates $f$ at this point is the tangent line; that is, the line whose slope (rate of change) is $\fp(c)$.
 
 \mtable{Plotting $y=f(x)$ and a table of derivatives of $f$ evaluated at 0.}{fig:taypolyintroa}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -49,7 +48,7 @@ If $p_2''(x) = 2$, then $p_2'(x) = 2x+C$ for some constant $C$. Since we have de
 
 We can repeat this approximation process by creating polynomials of higher degree that match more of the derivatives of $f$ at $x=0$. In general, a polynomial of degree $n$ can be created to match the first $n$ derivatives of $f$. \autoref{fig:taypolyintrob} also shows $p_4(x)= -x^4/2-x^3/6+x^2+x+2$, whose first four derivatives at 0 match those of $f$. (Using the table in \autoref{fig:taypolyintroa}, start with $p_4^{(4)}(x)=-12$ and solve the related initial-value problem.)
 
-\mtable{Plotting $f$ and $p_{13}$.}{fig:taypolyintroc}{\begin{tikzpicture}
+\mtable[.1in]{Plotting $f$ and $p_{13}$.}{fig:taypolyintroc}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
 ymin=-5.5,ymax=8.5,xmin=-4.2,xmax=4.4]
@@ -141,7 +140,6 @@ A plot of $f(x)=e^x$ and $p_5(x)$ is given in \autoref{fig:taypoly1b}.
 \end{enumerate}
 \end{example}
 
-% todo Tim check v spacing
 \begin{example}[Finding and using Taylor polynomials]\label{ex_taypoly2}
 \mbox{}\\[-2\baselineskip]\begin{enumerate}
 	\item	Find the $n^\text{th}$ Taylor polynomial of $y=\ln x$ at $x=1$.
@@ -255,7 +253,7 @@ In both situations, a critical piece of information to have is ``How good is my 
 
 We had the same problem when studying Numerical Integration. \autoref{thm:numerical_error} provided bounds on the error when using, say, Simpson's Rule to approximate a definite integral. These bounds allowed us to determine that, for example, using $10$ subintervals provided an approximation within $\pm .01$ of the exact value. The following theorem gives similar bounds for Taylor (and hence Maclaurin) polynomials.
 
-%{\tcbset{grow to right by=65pt}}
+{\tcbset{grow to right by=2em}
 \begin{theorem}[Taylor's Theorem]\label{thm:taylorthm}
 \mbox{}\\[-2\baselineskip]\index{Taylor Polynomial!Taylor's Theorem}\index{Taylor's Theorem}
 \begin{enumerate}
@@ -264,7 +262,7 @@ We had the same problem when studying Numerical Integration. \autoref{thm:numeri
 where $\ds R_n(x) = \frac{f\,^{(n+1)}(z_x)}{(n+1)!}(x-c)^{n+1}.$
 	\item	$\abs{R_n(x)}\leq\dfrac{\max_z\abs{\,f\,^{(n+1)}(z)}}{(n+1)!}\abs{x-c}^{n+1}$, where $z$ is between $x$ and $c$.
 \end{enumerate}
-\end{theorem}
+\end{theorem}}
 
 The first part of Taylor's Theorem states that $f(x) = p_n(x) + R_n(x)$, where $p_n(x)$ is the $n^\text{th}$ order Taylor polynomial and $R_n(x)$ is the remainder, or error, in the Taylor approximation. The second part gives bounds on how big that error can be. If the $(n+1)^\text{th}$ derivative is large, the error may be large; if $x$ is far from $c$, the error may also be large. However, the $(n+1)!$ term in the denominator tends to ensure that the error gets smaller as $n$ increases.
 
@@ -275,9 +273,9 @@ Use \autoref{thm:taylorthm} to find error bounds when approximating $\ln 1.5$ an
 \solution
 \begin{enumerate}
 \item	We start with the approximation of $\ln 1.5$ with $p_6(1.5)$.
-% The theorem references an open interval $I$ that contains both $x$ and $c$. The smaller the interval we use the better; it will give us a more accurate (and smaller) approximation of the error. We let $I = (0.9,1.6)$, as this interval contains both $c=1$ and $x=1.5$. 
+% Taylor's Theorem references an open interval $I$ that contains both $x$ and $c$. The smaller the interval we use the better; it will give us a more accurate (and smaller) approximation of the error. We let $I = (0.9,1.6)$, as this interval contains both $c=1$ and $x=1.5$. 
 %
-The theorem references $\max\abs{f\,^{(n+1)}(z)}$. In our situation, this is asking ``How big can the $7^\text{th}$ derivative of $y=\ln x$ be on the interval $[1,1.5]$?'' The seventh derivative is $y = -6!/x^7$. The largest absolute value it attains on $I$ is 720. Thus we can bound the error as:
+Taylor's Theorem references $\max\abs{f\,^{(n+1)}(z)}$. In our situation, this is asking ``How big can the $7^\text{th}$ derivative of $y=\ln x$ be on the interval $[1,1.5]$?'' The seventh derivative is $y = -6!/x^7$. The largest absolute value it attains on $I$ is 720. Thus we can bound the error as:
 \begin{align*}
 	\abs{R_6(1.5)}
 	&\leq \frac{\max\abs{f\,^{(7)}(z)}}{7!}\abs{1.5-1}^7\\
@@ -358,9 +356,8 @@ Our error bound guarantee that this approximation is within $0.001$ of the corre
 \autoref{fig:taypoly4b} shows a graph of $y=p_8(x)$ and $y=\cos x$. Note how well the two functions agree on about $(-\pi,\pi)$.
 \end{example}
 
-% todo Tim check v spacing
 \begin{example}[Finding and using Taylor polynomials]\label{ex_taypoly5}
-\begin{enumerate}
+\mbox{}\\[-2\baselineskip]\begin{enumerate}
 	\item	Find the degree 4 Taylor polynomial, $p_4(x)$, for $f(x)=\sqrt{x}$ at $x=4.$
 	\item	Use $p_4(x)$ to approximate $\sqrt{3}$.
 	\item	Find bounds on the error when approximating $\sqrt{3}$ with $p_4(3)$.
@@ -428,7 +425,7 @@ This shows our approximation is accurate to at least the first 2 places after th
 %Now we find information about $y\primeskip''$. Starting with $y\primeskip'=y^2$, take derivatives of both sides, \emph{with respect to $x$}. That means we must use implicit differentiation.
 %\begin{align*}
 %y\primeskip' &= y^2\\
-%\frac{d}{dx}\big(y\primeskip'\big) &= \frac{d}{dx}\big(y^2\big)\\
+%\frac{d}{dx}\bigl(y\primeskip'\bigr) &= \frac{d}{dx}\bigl(y^2\bigr)\\
 %y\primeskip'' &= 2y\cdot y\primeskip'.
 %\intertext{Now evaluate both sides at $x=0$:}
 %y\primeskip''(0) &= 2y(0)\cdot y\primeskip'(0)\\
@@ -436,7 +433,7 @@ This shows our approximation is accurate to at least the first 2 places after th
 %\end{align*}
 %We repeat this once more to find $y\primeskip'''(0)$. We again use implicit differentiation; this time the Product Rule is also required.
 %\begin{align*}
-%\frac{d}{dx}\big(y\primeskip''\big) &= \frac{d}{dx} \big(2yy\primeskip'\big)\\
+%\frac{d}{dx}\bigl(y\primeskip''\bigr) &= \frac{d}{dx} \bigl(2yy\primeskip'\bigr)\\
 %y\primeskip''' &= 2y\primeskip'\cdot y\primeskip' + 2y\cdot y\primeskip''.
 %\intertext{Now evaluate both sides at $x=0$:}
 %y\primeskip'''(0) &= 2y\primeskip'(0)^2 + 2y(0)y\primeskip''(0)\\

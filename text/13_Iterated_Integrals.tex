@@ -26,18 +26,18 @@ We find the indefinite integral as before, then apply the Fundamental Theorem of
 \end{example}
 
 We can also integrate with respect to $y$. In general,
-\[\int_{h_1(y)}^{h_2(y)} f_x(x,y)\ dx = f(x,y)\Big|_{h_1(y)}^{h_2(y)} = f\big(h_2(y),y\big)-f\big(h_1(y),y\big),\]
+\[\int_{h_1(y)}^{h_2(y)} f_x(x,y)\ dx = f(x,y)\Big|_{h_1(y)}^{h_2(y)} = f\bigl(h_2(y),y\bigr)-f\bigl(h_1(y),y\bigr),\]
 and
-\[\int_{g_1(x)}^{g_2(x)} f_y(x,y)\ dy = f(x,y)\Big|_{g_1(x)}^{g_2(x)} = f\big(x,g_2(x)\big)-f\big(x,g_1(x)\big).\]
+\[\int_{g_1(x)}^{g_2(x)} f_y(x,y)\ dy = f(x,y)\Big|_{g_1(x)}^{g_2(x)} = f\bigl(x,g_2(x)\bigr)-f\bigl(x,g_1(x)\bigr).\]
 
 Note that when integrating by $x$, the bounds do not depend on $x$, and the result is no longer a function of $x$.  When integrating by $y$, the bounds do not depend on $y$, and the result is no longer a function of $y$. Another example will help us understand this.
 
 \begin{example}[Integrating functions of more than one variable]\label{ex_iterated2}
-Evaluate $\ds \int_1^x\big(5x^3y^{-3}+6y^2\big)\ dy$.
+Evaluate $\ds \int_1^x\bigl(5x^3y^{-3}+6y^2\bigr)\ dy$.
 \solution
 We consider $x$ as staying constant and integrate with respect to $y$:
 \begin{align*}
-\int_1^x\big(5x^3y^{-3}+6y^2\big)\ dy & = \left(\frac{5x^3y^{-2}}{-2}+\frac{6y^3}{3}\right)\Bigg|_1^x \\
+\int_1^x\bigl(5x^3y^{-3}+6y^2\bigr)\ dy & = \left(\frac{5x^3y^{-2}}{-2}+\frac{6y^3}{3}\right)\Bigg|_1^x \\
 						&= \left(-\frac52x^3x^{-2}+2x^3\right) - \left(-\frac52x^3+2\right) \\
 						&= \frac92x^3-\frac52x-2.
 \end{align*}
@@ -49,11 +49,11 @@ In the previous example, we integrated a function with respect to $y$ and ended 
 \youtubeVideo{DYsv6L-VcsQ}{Double Integrals --- Basic Idea and Examples}
 
 \begin{example}[Integrating an integral]\label{ex_iterated3}
-Evaluate $\ds \int_1^2\left(\int_1^x\big(5x^3y^{-3}+6y^2\big)\ dy\right)\ dx$.
+Evaluate $\ds \int_1^2\left(\int_1^x\bigl(5x^3y^{-3}+6y^2\bigr)\ dy\right)\ dx$.
 \solution
 We follow a standard ``order of operations'' and perform the operations inside parentheses first (which is the integral evaluated in \autoref{ex_iterated2}.)
 \begin{align*}
-\int_1^2\left(\int_1^x\big(5x^3y^{-3}+6y^2\big)\ dy\right)\ dx &= \int_1^2 \left(\left[\frac{5x^3y^{-2}}{-2}+\frac{6y^3}{3}\right]\Bigg|_1^x\right)\ dx \\
+\int_1^2\left(\int_1^x\bigl(5x^3y^{-3}+6y^2\bigr)\ dy\right)\ dx &= \int_1^2 \left(\left[\frac{5x^3y^{-2}}{-2}+\frac{6y^3}{3}\right]\Bigg|_1^x\right)\ dx \\
 			&= \int_1^2 \left(\frac92x^3-\frac52x-2\right)\ dx \\
 			&= \left(\frac98x^4-\frac54x^2-2x\right)\Bigg|_1^2\\
 			&= \frac{89}8.
@@ -61,7 +61,7 @@ We follow a standard ``order of operations'' and perform the operations inside p
 Note how the bounds of $x$ were $x=1$ to $x=2$ and the final result was a number.
 \end{example}
 
-The previous example showed how we could perform something called an iterated integral; we do not yet know \textit{why} we would be interested in doing so nor what the result, such as the number $89/8$, \textit{means}. Before we investigate these questions, we offer some definitions.
+The previous example showed how we could perform something called an iterated integral; we do not yet know \emph{why} we would be interested in doing so nor what the result, such as the number $89/8$, \emph{means}. Before we investigate these questions, we offer some definitions.
 
 \begin{definition}[Iterated Integration]\label{def:iterated_integral}
 \textbf{Iterated integration} is the process of repeatedly integrating the results of previous integrations. Integrating one integral is denoted as follows.\\
@@ -75,17 +75,17 @@ Let $a$, $b$, $c$ and $d$ be numbers and let $g_1(x)$, $g_2(x)$, $h_1(y)$ and $h
 \end{definition}
 
 Again make note of the bounds of these iterated integrals.\\
-With $\ds \int_c^d\int_{h_1(y)}^{h_2(y)} f(x,y)\ dx\ dy$, $x$ varies from $h_1(y)$ to $h_2(y)$, whereas $y$ varies from $c$ to $d$. That is, the bounds of $x$ are \textit{curves}, the curves $x=h_1(y)$ and $x=h_2(y)$, whereas the bounds of $y$ are \textit{constants}, $y=c$ and $y=d$. It is useful to remember that
+With $\ds \int_c^d\int_{h_1(y)}^{h_2(y)} f(x,y)\ dx\ dy$, $x$ varies from $h_1(y)$ to $h_2(y)$, whereas $y$ varies from $c$ to $d$. That is, the bounds of $x$ are \emph{curves}, the curves $x=h_1(y)$ and $x=h_2(y)$, whereas the bounds of $y$ are \emph{constants}, $y=c$ and $y=d$. It is useful to remember that
 after integrating with respect to a variable, that variable is no longer present.
 %when setting up and evaluating such iterated integrals, we integrate ``from curve to curve, then from point to point.''
 
-We now begin to investigate \textit{why} we are interested in iterated integrals and \textit{what} they mean.
+We now begin to investigate \emph{why} we are interested in iterated integrals and \emph{what} they mean.
 
 \subsection{Area of a plane region}
 
 Consider the plane region $R$ bounded by $a\leq x\leq b$ and $g_1(x)\leq y\leq g_2(x)$, shown in \autoref{fig:iterated_intro}. We learned in \autoref{sec:ABC} that the area of $R$ is given by 
 \index{integration!area}
-\[\int_a^b \big(g_2(x)-g_1(x)\big)\ dx.\]
+\[\int_a^b \bigl(g_2(x)-g_1(x)\bigr)\ dx.\]
 
 \mtable{Calculating the area of a plane region $R$ with an iterated integral.}{fig:iterated_intro}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -105,13 +105,13 @@ ymin=-.1,ymax=1,xmin=-.1,xmax=1]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-We can  view the expression $\big(g_2(x)-g_1(x)\big)$ as 
+We can  view the expression $\bigl(g_2(x)-g_1(x)\bigr)$ as 
 \[
-\big(g_2(x)-g_1(x)\big) = \int_{g_1(x)}^{g_2(x)} 1\ dy =\int_{g_1(x)}^{g_2(x)} \ dy,
+\bigl(g_2(x)-g_1(x)\bigr) = \int_{g_1(x)}^{g_2(x)} 1\ dy =\int_{g_1(x)}^{g_2(x)} \ dy,
 \]
 meaning we can express the area of $R$ as an iterated integral:
 \[
- \text{area of }R = \int_a^b \big(g_2(x)-g_1(x)\big)\ dx
+ \text{area of }R = \int_a^b \bigl(g_2(x)-g_1(x)\bigr)\ dx
  = \int_a^b\left(\int_{g_1(x)}^{g_2(x)} \ dy\right) dx
  =\int_a^b\int_{g_1(x)}^{g_2(x)} \ dy\ dx.
 \]
@@ -214,8 +214,8 @@ We can also find the area by integrating with respect to $y$ first. In this situ
 \begin{align*}
  A
  &= \int_1^3\int_1^x 1\ dy \ dx &&+\qquad\int_3^5\int_{2x-5}^x1\ dy\ dx\\
- &= \int_1^3\big(y\big)\Big|_1^x\ dx &&+\qquad\int_3^5\big(y\big)\Big|_{2x-5}^x\ dx\\
- &= \int_1^3\big(x-1\big)\ dx &&+\qquad\int_3^5\big(-x+5\big)\ dx \\
+ &= \int_1^3\bigl(y\bigr)\Big|_1^x\ dx &&+\qquad\int_3^5\bigl(y\bigr)\Big|_{2x-5}^x\ dx\\
+ &= \int_1^3\bigl(x-1\bigr)\ dx &&+\qquad\int_3^5\bigl(-x+5\bigr)\ dx \\
  &= 2 &&+\qquad2 \\
  &=4.
 \end{align*}
@@ -244,7 +244,7 @@ Once again we'll find the area of the region using both orders of integration.
 Using $dy\ dx$:
 \[
 \int_0^2\int_{x^2}^{2x}1\ dy \ dx = \int_0^2(2x-x^2)\ dx
-= \big(x^2-\frac13x^3\big)\Big|_0^2 = \frac43.
+= \bigl(x^2-\frac13x^3\bigr)\Big|_0^2 = \frac43.
 \]
 
 Using $dx\ dy$:

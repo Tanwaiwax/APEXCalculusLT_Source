@@ -60,7 +60,7 @@ axis y line=none,axis x line=none,name=myplot,ymin=-.05,ymax=0.65,xmin=-.1,xmax=
 Now consider representing a region $R$ with polar coordinates. Consider \autoref{fig:double_pol_intro}(a). Let $R$ be the region in the first quadrant bounded by the curve. We can approximate this region using the natural shape of polar coordinates: portions of sectors of circles. In the figure, one such region is shaded, shown again in part (b) of the figure.
 
 As the area of a sector of a circle with radius $r$, subtended by an angle $\theta$, is $A = \frac12r^2\theta$, we can find the area of the shaded region. The whole sector has area $\frac12r_2^2\Delta \theta$, whereas the smaller, unshaded sector has area $\frac12r_1^2\Delta \theta$. The area of the shaded region is the difference of these areas:
-\[\Delta A_i = \frac12r_2^2\Delta\theta-\frac12r_1^2\Delta\theta = \frac12\big(r_2^2-r_1^2\big)\big(\Delta\theta\big) = \frac{r_2+r_1}{2}\big(r_2-r_1\big)\Delta\theta.\]
+\[\Delta A_i = \frac12r_2^2\Delta\theta-\frac12r_1^2\Delta\theta = \frac12\bigl(r_2^2-r_1^2\bigr)\bigl(\Delta\theta\bigr) = \frac{r_2+r_1}{2}\bigl(r_2-r_1\bigr)\Delta\theta.\]
 
 Note that $(r_2+r_1)/2$ is just the average of the two radii. 
 
@@ -74,7 +74,7 @@ So to evaluate $\iint_Rf(x,y)\ dA$, replace $dA$ with $r\ dr\ d\theta$. Convert 
 \begin{keyidea}[Evaluating Double Integrals with Polar Coordinates]\label{idea:doublepol}
 Let $R$ be a plane region bounded by the polar equations $\alpha\leq\theta\leq\beta$ and  $g_1(\theta)\leq r\leq g_2(\theta)$. Then
 \index{double integral!in polar}
-\[\iint_Rf(x,y)\ dA = \int_\alpha^\beta\int_{g_1(\theta)}^{g_2(\theta)} f\big(r\cos\theta,r\sin\theta\big)\ r\ dr\ d\theta.\]
+\[\iint_Rf(x,y)\ dA = \int_\alpha^\beta\int_{g_1(\theta)}^{g_2(\theta)} f\bigl(r\cos\theta,r\sin\theta\bigr)\ r\ dr\ d\theta.\]
 \end{keyidea}
 
 \youtubeVideo{sQM-8Oj4Ecg}{Double Integral Using Polar Coordinates --- Part 1 of 3}
@@ -99,11 +99,11 @@ We replace $f(x,y)$ with $f(r\cos\theta,r\sin\theta)$. That means we make the fo
 Finally, we replace $dA$ in the double integral with $r\ dr\ d\theta$. This gives the final iterated integral, which we evaluate:
 \begin{align*}
 \iint_Rf(x,y)\ dA
- &= \int_0^{2\pi}\int_0^1\big(4-r\cos\theta-2r\sin\theta\big)r\ dr\ d\theta\\
- &= \int_0^{2\pi}\int_0^1\big(4r-r^2(\cos\theta-2\sin\theta)\big)\ dr\ d\theta\\
+ &= \int_0^{2\pi}\int_0^1\bigl(4-r\cos\theta-2r\sin\theta\bigr)r\ dr\ d\theta\\
+ &= \int_0^{2\pi}\int_0^1\bigl(4r-r^2(\cos\theta-2\sin\theta)\bigr)\ dr\ d\theta\\
  &= \int_0^{2\pi}\left.\left(2r^2-\frac13r^3(\cos\theta-2\sin\theta)\right)\right|_0^1d\theta\\
- &= \int_0^{2\pi} \left(2-\frac13\big(\cos\theta-2\sin\theta\big)\right)\ d\theta\\
- &= \left.\left(2\theta -\frac13\big(\sin\theta+2\cos\theta\big)\right)\right|_0^{2\pi} \\
+ &= \int_0^{2\pi} \left(2-\frac13\bigl(\cos\theta-2\sin\theta\bigr)\right)\ d\theta\\
+ &= \left.\left(2\theta -\frac13\bigl(\sin\theta+2\cos\theta\bigr)\right)\right|_0^{2\pi} \\
  &= 4\pi %\approx 12.566
  .
 \end{align*}
@@ -141,9 +141,9 @@ Replacing $x$ with $r\cos\theta$ in the integrand, along with replacing $y$ with
 
 \begin{align*}
 \iint_Rf(x,y)\ dA
-	&= \int_0^{\pi}\int_{2\cos\theta}^{4\cos\theta} \Big(4-\big(r\cos\theta-2\big)^2-\big(r\sin\theta\big)^2\Big)r\ dr\ d\theta\\
-	%&=\int_0^{\pi}\int_{2\cos\theta}^{4\cos\theta} \big(r^3\cos^2\theta + r^3\sin^2\theta -4r^2\cos \theta+4r\big)\ dr\ d\theta\\
-	&= \int_0^{\pi}\int_{2\cos\theta}^{4\cos\theta} \big(-r^3+4r^2\cos \theta\big)\ dr\ d\theta\\
+	&= \int_0^{\pi}\int_{2\cos\theta}^{4\cos\theta} \Bigl(4-\bigl(r\cos\theta-2\bigr)^2-\bigl(r\sin\theta\bigr)^2\Bigr)r\ dr\ d\theta\\
+	%&=\int_0^{\pi}\int_{2\cos\theta}^{4\cos\theta} \bigl(r^3\cos^2\theta + r^3\sin^2\theta -4r^2\cos \theta+4r\bigr)\ dr\ d\theta\\
+	&= \int_0^{\pi}\int_{2\cos\theta}^{4\cos\theta} \bigl(-r^3+4r^2\cos \theta\bigr)\ dr\ d\theta\\
 	&= \int_0^\pi \left.\left(-\frac14r^4+\frac43r^3\cos\theta\right)\right|_{2\cos\theta}^{4\cos\theta}d\theta\\
 	&=\int_0^\pi \left(\left[-\frac14(256\cos^4\theta)+\frac43(64\cos^4\theta)\right]-\right.\\
 	&\ \left.\left[-\frac14(16\cos^4\theta)+\frac43(8\cos^4\theta)\right]\right)\ d\theta\\
@@ -152,9 +152,9 @@ Replacing $x$ with $r\cos\theta$ in the integrand, along with replacing $y$ with
 To integrate $\cos^4\theta$, rewrite it as $\cos^2\theta\cos^2\theta$ and employ the half-angle formula twice:
 \begin{align*}
 	\cos^4\theta &=\cos^2\theta\cos^2\theta\\
-	&= \frac12\big(1+\cos(2\theta)\big)\frac12\big(1+\cos(2\theta)\big) \\
-	&= \frac14\big(1+2\cos(2\theta)+\cos^2(2\theta)\big)\\
-	&=\frac14\Big(1+2\cos(2\theta)+\frac12\big(1+\cos(4\theta)\big)\Big)\\
+	&= \frac12\bigl(1+\cos(2\theta)\bigr)\frac12\bigl(1+\cos(2\theta)\bigr) \\
+	&= \frac14\bigl(1+2\cos(2\theta)+\cos^2(2\theta)\bigr)\\
+	&=\frac14\Bigl(1+2\cos(2\theta)+\frac12\bigl(1+\cos(4\theta)\bigr)\Bigr)\\
 	&= \frac38+\frac12\cos(2\theta)+\frac18\cos(4\theta).
 \end{align*}
 Picking up from where we left off above, we have
@@ -165,7 +165,7 @@ Picking up from where we left off above, we have
 	&=\frac{11}2\pi%\approx 17.279
 	.
 \end{align*}
-While this example was not trivial, the double integral would have been \textit{much} harder to evaluate had we used rectangular coordinates.
+While this example was not trivial, the double integral would have been \emph{much} harder to evaluate had we used rectangular coordinates.
 \end{example}
 
 \begin{example}[Evaluating a double integral with polar coordinates]\label{ex_doublepol5}
@@ -187,13 +187,13 @@ The region $R$ we are integrating over is a circle with radius $a$, restricted t
 We find the volume as follows:
 \begin{align*}
 \iint_Rf(x,y)\ dA &= \int_0^{\pi/2}\int_0^a\frac{r}{r^2+1}\ dr\ d\theta\\
-		&= \int_0^{\pi/2} \frac12\big(\ln|r^2+1|\big)\Big|_0^a\ d\theta\\
+		&= \int_0^{\pi/2} \frac12\bigl(\ln|r^2+1|\bigr)\Big|_0^a\ d\theta\\
 		&=\int_0^{\pi/2} \frac12\ln(a^2+1)\ d\theta\\
 		&= \left.\left(\frac12\ln(a^2+1)\theta\right)\right|_0^{\pi/2}\\
 		&= \frac{\pi}{4}\ln(a^2+1).
 \end{align*}
 \autoref{fig:doublepol5}  shows that $f$ shrinks to near 0 very quickly. Regardless, as $a$ grows, so does the volume, without bound. 
-\mnote{\textbf{Note:} Previous work has shown that there is finite \textit{area} under $\frac{1}{x^2+1}$ over the entire $x$-axis. However, \autoref{ex_doublepol5} shows that there is infinite \textit{volume} under $\frac{1}{x^2+y^2+1}$ over the entire $x$-$y$ plane.}
+\mnote{\textbf{Note:} Previous work has shown that there is finite \emph{area} under $\frac{1}{x^2+1}$ over the entire $x$-axis. However, \autoref{ex_doublepol5} shows that there is infinite \emph{volume} under $\frac{1}{x^2+y^2+1}$ over the entire $x$-$y$ plane.}
 \end{example}
 
 \begin{example}[Finding the volume of a sphere]\label{ex_doublepol3}
@@ -208,7 +208,7 @@ All together, the volume of a sphere with radius $a$ is:
 2\iint_R\sqrt{a^2-x^2-y^2}\ dA &= 2\int_0^{2\pi}\int_0^a\sqrt{a^2-(r\cos\theta)^2-(r\sin\theta)^2}r\ dr\ d\theta\\
 		&=2\int_0^{2\pi}\int_0^ar\sqrt{a^2-r^2}\ dr\ d\theta.
 \intertext{We can evaluate this inner integral with substitution. With $u=a^2-r^2$, $du = -2r\ dr$. The new bounds of integration are $u(0) = a^2$ to $u(a)=0$. Thus we have:}
-	&= \int_0^{2\pi}\int_{a^2}^0\big(-u^{1/2}\big)\ du\ d\theta\\
+	&= \int_0^{2\pi}\int_{a^2}^0\bigl(-u^{1/2}\bigr)\ du\ d\theta\\
 	&= \int_0^{2\pi}\left.\left(-\frac23u^{3/2}\right)\right|_{a^2}^0 d\theta\\
 	&= \int_0^{2\pi}\left(\frac23a^3\right)\ d\theta\\
 	&= \left.\left(\frac23a^3\theta\right)\right|_0^{2\pi}\\
@@ -228,21 +228,21 @@ Generally, the formula for the volume of a sphere with radius $r$ is given as $4
 \begin{example}[Finding the volume of a solid]\label{ex_doublepol4}
 A sculptor wants to make a solid bronze cast of the solid shown in \autoref{fig:doublepol4}, where the base of the solid has boundary, in polar coordinates, $r=\cos(3\theta)$, and the top is defined by the plane $z=1-x+0.1y$. Find the volume of the solid.
 \solution
-From the outset, we should recognize that knowing \textit{how to set up} this problem is probably more important than knowing \textit{how to compute the integrals.} The iterated integral to come is not ``hard'' to evaluate, though it is long, requiring lots of algebra. Once the proper iterated integral is determined, one can use readily-available technology to help compute the final answer. 
+From the outset, we should recognize that knowing \emph{how to set up} this problem is probably more important than knowing \emph{how to compute the integrals.} The iterated integral to come is not ``hard'' to evaluate, though it is long, requiring lots of algebra. Once the proper iterated integral is determined, one can use readily-available technology to help compute the final answer. 
 
 The region $R$ that we are integrating over is bound by $0\leq r\leq \cos(3\theta)$, for $0\leq \theta\leq\pi$ (note that this rose curve is traced out on the interval $[0,\pi]$, not $[0,2\pi]$). This gives us our bounds of integration. The integrand is $z=1-x+0.1y$; converting to polar, we have that the volume $V$ is:
-\[V = \iint_R f(x,y)\ dA = \int_0^\pi\int_0^{\cos(3\theta)}\big(1-r\cos\theta+0.1r\sin\theta\big)r\ dr\ d\theta.\]
+\[V = \iint_R f(x,y)\ dA = \int_0^\pi\int_0^{\cos(3\theta)}\bigl(1-r\cos\theta+0.1r\sin\theta\bigr)r\ dr\ d\theta.\]
 Distributing the $r$, the inner integral is easy to evaluate, leading to 
 \[ \int_0^\pi \left(\frac12\cos^2(3\theta)-\frac13\cos^3(3\theta)\cos\theta
 +\frac{0.1}3\cos^3(3\theta)\sin\theta\right)\ d\theta.\]
 This integral takes time to compute by hand; it is rather long and cumbersome. The powers of cosine need to be reduced, and products like $\cos(3\theta)\cos\theta$ need to be turned to sums using the Product To Sum formulas in the back cover of this text. 
 
 We rewrite $\frac12\cos^2(3\theta)$ as $\frac14(1+\cos(6\theta))$. We can also rewrite $\frac13\cos^3(3\theta)\cos\theta$ as: 
-\[\frac13\cos^3(3\theta)\cos\theta = \frac13\cos^2(3\theta)\cos(3\theta)\cos\theta = \frac13\frac{1+\cos(6\theta)}2\big(\cos(4\theta)+\cos(2\theta)\big).\]
+\[\frac13\cos^3(3\theta)\cos\theta = \frac13\cos^2(3\theta)\cos(3\theta)\cos\theta = \frac13\frac{1+\cos(6\theta)}2\bigl(\cos(4\theta)+\cos(2\theta)\bigr).\]
 This last expression still needs simplification, but eventually all terms can be reduced to the form $a\cos(m\theta)$ or $a\sin(m\theta)$ for various values of $a$ and $m$.
 
 We forgo the algebra and recommend the reader employ technology, such as WolframAlpha\textregistered, to compute the numeric answer. Such technology gives:
-\[\int_0^\pi\int_0^{\cos(3\theta)}\big(1-r\cos\theta+0.1r\sin\theta\big)r\ dr\ d\theta = \frac{\pi}{4} %\approx 0.785
+\[\int_0^\pi\int_0^{\cos(3\theta)}\bigl(1-r\cos\theta+0.1r\sin\theta\bigr)r\ dr\ d\theta = \frac{\pi}{4} %\approx 0.785
 \text{ units}^3.\]
 Since the units were not specified, we leave the result as almost $0.8$ cubic units (meters, feet, etc.).% Should the artist want to scale the piece uniformly, so that each rose petal had a length other than 1, she should keep in mind that scaling by a factor of $k$ scales the volume by a factor of $k^3$.
 \end{example}

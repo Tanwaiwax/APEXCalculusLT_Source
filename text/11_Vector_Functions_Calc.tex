@@ -129,7 +129,7 @@ Let $\vec r(t)$ be continuous on an open interval $I$ containing $c$.
 \end{definition}
 
 \mnote{Alternate notations for the derivative of $\vec r$ include:
-\[\vrp(t) = \frac{d}{dt}\big(\,\vec r(t)\,\big) = \frac{d\vec r}{dt}.\]}
+\[\vrp(t) = \frac{d}{dt}\bigl(\,\vec r(t)\,\bigr) = \frac{d\vec r}{dt}.\]}
 
 If a vector-valued function has a derivative for all $c$ in an open interval $I$, we say that $\vec r(t)$ is \textbf{differentiable} on $I$.
 
@@ -205,7 +205,7 @@ $\vec r(t)$ and $\vrp(t)$ are graphed together in \autoref{fig:vvflimit3}(a). No
 3Dcoo=-18.837804794311523 -8.740551948547363 60.22870635986328,
 3Droo=150.0000027221829}{width=.7\marginparwidth}{figures/figvvflimit4_3D}}%
 }{% not in threeD
-\mtable[-.5in]{Viewing a vector-valued function and its derivative at one point, from two different perspectives.}{fig:vvflimit4}{%
+\mtable[-3\baselineskip]{Viewing a vector-valued function and its derivative at one point, from two different perspectives.}{fig:vvflimit4}{%
 \myincludegraphics[width=.7\marginparwidth]{figures/figvvflimit4_3D}
 \\(a)\\
 \myincludegraphics[width=.7\marginparwidth]{figures/figvvflimit4a_3D}
@@ -220,7 +220,7 @@ We compute $\vrp$ as $\vrp(t) =\bracket{-\sin t, \cos t, 1}$. At $t= \pi/2$, we 
 with $\vrp(\pi/2)$ plotted with its initial point at the origin and at $\vec r(\pi/2)$.
 \end{example}
 
-In Examples \ref{ex_vvflimit3} and \ref{ex_vvflimit4}, sketching a particular derivative with its initial point at the origin did not seem to reveal anything significant. However, when we sketched the vector with its initial point on the corresponding point on the graph, we did see something significant: the vector appeared to be \textit{tangent} to the graph. We have not yet defined what ``tangent'' means in terms of curves in space; in fact, we use the derivative to define this term.
+In Examples \ref{ex_vvflimit3} and \ref{ex_vvflimit4}, sketching a particular derivative with its initial point at the origin did not seem to reveal anything significant. However, when we sketched the vector with its initial point on the corresponding point on the graph, we did see something significant: the vector appeared to be \emph{tangent} to the graph. We have not yet defined what ``tangent'' means in terms of curves in space; in fact, we use the derivative to define this term.
 
 \begin{definition}[Tangent Vector, Tangent Line]\label{def:vector_tangent}
 Let $\vec r(t)$ be a differentiable vector-valued function on an open interval $I$ containing $c$, where $\vrp(c)\neq \vec 0$.
@@ -232,6 +232,11 @@ Let $\vec r(t)$ be a differentiable vector-valued function on an open interval $
 \end{enumerate}
 \end{definition}
 
+\begin{example}[Finding tangent lines to curves in space]\label{ex_vvfderiv1}
+Let $\vec r(t) =\bracket{t,t^2,t^3}$ on $[-1.5,1.5]$. Find the vector equation of the line tangent to the graph of $\vec r$ at $t=-1$.
+\solution
+To find the equation of a line, we need a point on the line and the line's direction. The point is given by $\vec r(-1) =\bracket{-1,1,-1}$. (To be clear, $\bracket{-1,1,-1}$ is a \emph{vector}, not a point, but we use the point ``pointed to'' by this vector.)
+
 \ifthenelse{\boolean{in_threeD}}{% in threeD
 \mtable{Graphing a curve in space with its tangent line.}{fig:vvfderiv1}{%
 \myincludeasythree{width=\marginparwidth,
@@ -241,17 +246,12 @@ Let $\vec r(t)$ be a differentiable vector-valued function on an open interval $
 3Dcoo=-5.658682346343994 19.23411750793457 0.2712952494621277,
 3Droo=149.99999927774635}{width=\marginparwidth}{figures/figvvfderiv1_3D}}
 }{% not in three D
-\mtable[-1in]{Graphing a curve in space with its tangent line.}{fig:vvfderiv1}{%
+\mtable{Graphing a curve in space with its tangent line.}{fig:vvfderiv1}{%
 \myincludegraphics[width=\marginparwidth]{figures/figvvfderiv1_3D}
 \\(a)\\[10pt]
 \myincludegraphics[width=\marginparwidth]{figures/figvvfderiv1b_3D}
 \\(b)}% end mtable
 }% ends all of the if-then-else statements
-
-\begin{example}[Finding tangent lines to curves in space]\label{ex_vvfderiv1}
-Let $\vec r(t) =\bracket{t,t^2,t^3}$ on $[-1.5,1.5]$. Find the vector equation of the line tangent to the graph of $\vec r$ at $t=-1$.
-\solution
-To find the equation of a line, we need a point on the line and the line's direction. The point is given by $\vec r(-1) =\bracket{-1,1,-1}$. (To be clear, $\bracket{-1,1,-1}$ is a \emph{vector}, not a point, but we use the point ``pointed to'' by this vector.)
 
 The direction comes from $\vrp(-1)$. We compute, component-wise, $\vrp(t) =\bracket{1,2t, 3t^2}$. Thus $\vrp(-1) =\bracket{1,-2,3}$. 
 
@@ -270,7 +270,7 @@ This line is graphed with $\vec r(t)$ in \autoref{fig:vvfderiv3}.
 At $t=0$, we have $\vrp(0) =\bracket{0,0}=\vec 0$. This implies that the tangent line ``has no direction.'' We cannot apply \autoref{def:vector_tangent}, hence cannot find the equation of the tangent line.
 \end{example}
 
-\mtable[-7\baselineskip]{Graphing $\vec r(t)$ and its tangent line in \autoref{ex_vvfderiv3}.}{fig:vvfderiv3}{\begin{tikzpicture}[>=stealth]
+\mtable[1.5in]{Graphing $\vec r(t)$ and its tangent line in \autoref{ex_vvfderiv3}.}{fig:vvfderiv3}{\begin{tikzpicture}[>=stealth]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
 ymin=-2.96,ymax=2.96,xmin=-3.5,xmax=3.5]
@@ -302,12 +302,12 @@ Let $\vec r$ and $\vec s$ be differentiable vector-valued functions, let $f$ be 
 \index{vector-valued function!derivatives}\index{derivative!vector-valued functions}
 \index{dot product!and derivatives}\index{cross product!and derivatives}
 \begin{enumerate}
-	\item $\ds \frac{d}{dt}\Big(\vec r(t) \pm \vec s(t)\Big) = \vrp(t) \pm \vec s\,'(t)$
-	\item $\ds \frac{d}{dt}\Big(c\vec r(t)\Big) = c\vrp(t)$
-	\item \parbox{200pt}{$\ds \frac{d}{dt}\Big(f(t)\vec r(t)\Big) = \fp(t)\vec r(t) + f(t)\vrp(t)$} \textbf{Product Rule}
-	\item \parbox{200pt}{$\ds \frac{d}{dt}\Big(\vec r(t)\cdot \vec s(t) \Big) = \vrp(t)\cdot \vec s(t) + \vec r(t)\cdot \vec s\,'(t)$} \textbf{Product Rule}
-	\item\label{crossprodrule} \parbox{200pt}{$\ds \frac{d}{dt}\Big(\vec r(t)\times \vec s(t) \Big) = \vrp(t)\times \vec s(t) + \vec r(t)\times \vec s\,'(t)$} \textbf{Product Rule}
-	\item \parbox{200pt}{$\ds \frac{d}{dt}\Big(\vec r\big(f(t)\big)\Big) = \vrp\big(f(t)\big)\fp(t)$}  \textbf{Chain Rule}
+	\item $\ds \frac{d}{dt}\Bigl(\vec r(t) \pm \vec s(t)\Bigr) = \vrp(t) \pm \vec s\,'(t)$
+	\item $\ds \frac{d}{dt}\Bigl(c\vec r(t)\Bigr) = c\vrp(t)$
+	\item \parbox{200pt}{$\ds \frac{d}{dt}\Bigl(f(t)\vec r(t)\Bigr) = \fp(t)\vec r(t) + f(t)\vrp(t)$} \textbf{Product Rule}
+	\item \parbox{200pt}{$\ds \frac{d}{dt}\Bigl(\vec r(t)\cdot \vec s(t) \Bigr) = \vrp(t)\cdot \vec s(t) + \vec r(t)\cdot \vec s\,'(t)$} \textbf{Product Rule}
+	\item\label{crossprodrule} \parbox{200pt}{$\ds \frac{d}{dt}\Bigl(\vec r(t)\times \vec s(t) \Bigr) = \vrp(t)\times \vec s(t) + \vec r(t)\times \vec s\,'(t)$} \textbf{Product Rule}
+	\item \parbox{200pt}{$\ds \frac{d}{dt}\Bigl(\vec r\bigl(f(t)\bigr)\Bigr) = \vrp\bigl(f(t)\bigr)\fp(t)$}  \textbf{Chain Rule}
 \end{enumerate}
 \end{theorem}
 
@@ -344,20 +344,20 @@ ymin=-1.1,ymax=3.1,xmin=-2.5,xmax=2.5]
 \end{tikzpicture}}
 	
 	\item		To compute $\vec u\,'(t)$, we use \autoref{thm:vvf_deriv_prop}, writing
-	\[\vec u(t) = f(t)\vec r(t),\quad  \text{where}\quad f(t) = \frac{1}{\sqrt{t^2+(t^2-1)^2}}=\big(t^2+(t^2-1)^2\big)^{-1/2}.\]
+	\[\vec u(t) = f(t)\vec r(t),\quad  \text{where}\quad f(t) = \frac{1}{\sqrt{t^2+(t^2-1)^2}}=\bigl(t^2+(t^2-1)^2\bigr)^{-1/2}.\]
 	(We \emph{could} write
 	\[\vec u(t) =\bracket{\frac{t}{\sqrt{t^2+(t^2-1)^2}}, \frac{t^2-1}{\sqrt{t^2+(t^2-1)^2}}}\]
 	and then take the derivative. It is a matter of preference; this latter method requires two applications of the Quotient Rule where our method uses the Product and Chain Rules.)
 	
 We find $\fp(t)$ using the Chain Rule:
 \begin{align*}
-\fp(t) &= -\frac12\big(t^2+(t^2-1)^2\big)^{-3/2}\big(2t+2(t^2-1)(2t)\big)\\
-			&= -\frac{2t(2t^2-1)}{2\big(\sqrt{t^2+(t^2-1)^2}\,\big)^3}
+\fp(t) &= -\frac12\bigl(t^2+(t^2-1)^2\bigr)^{-3/2}\bigl(2t+2(t^2-1)(2t)\bigr)\\
+			&= -\frac{2t(2t^2-1)}{2\bigl(\sqrt{t^2+(t^2-1)^2}\,\bigr)^3}
 \end{align*}
 We now find $\vec u\,'(t)$ using part 3 of \autoref{thm:vvf_deriv_prop}:
 \begin{align*}
 \vec u\,'(t) &=  \fp(t)\vec u(t) + f(t)\vec u\,'(t) \\
-				&=  -\frac{2t(2t^2-1)}{2\big(\sqrt{t^2+(t^2-1)^2}\,\big)^3}\bracket{t,t^2-1}+ \frac{1}{\sqrt{t^2+(t^2-1)^2}}\bracket{1,2t}.
+				&=  -\frac{2t(2t^2-1)}{2\bigl(\sqrt{t^2+(t^2-1)^2}\,\bigr)^3}\bracket{t,t^2-1}+ \frac{1}{\sqrt{t^2+(t^2-1)^2}}\bracket{1,2t}.
 \end{align*}
 This is admittedly very ``messy;'' such is usually the case when we deal with unit vectors. We can use this formula to compute $\vec u\,'(-2)$, $\vec u\,'(-1)$ and $\vec u\,'(0)$:
 \begin{align*}

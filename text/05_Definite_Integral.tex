@@ -18,7 +18,7 @@ ymin=-.9,ymax=5.9,xmin=-.9,xmax=10.9]
 \node [above] at (myplot.above origin) {\scriptsize $v$ (ft/s)};
 \end{tikzpicture}}
 
-Now consider a slightly harder situation (and not particularly realistic): an object travels in a straight line with a constant velocity of 5ft/s for 10 seconds, then instantly reverses course at a rate of 2ft/s for 4 seconds. (Since the object is traveling in the opposite direction when reversing course, we say the velocity is a constant $-2$ft/s.) How far away from the starting point is the object --- what is its \textit{displacement}?
+Now consider a slightly harder situation (and not particularly realistic): an object travels in a straight line with a constant velocity of 5ft/s for 10 seconds, then instantly reverses course at a rate of 2ft/s for 4 seconds. (Since the object is traveling in the opposite direction when reversing course, we say the velocity is a constant $-2$ft/s.) How far away from the starting point is the object --- what is its \emph{displacement}?
 
 Here we use ``Distance $=$ Rate$_1$ $\times$ Time$_1$ + Rate$_2$ $\times$ Time$_2$,'' which is 
 \[\text{Distance } \ = 5\cdot10 + (-2)\cdot 4 = 42\text{ ft.}\]
@@ -31,7 +31,7 @@ We can again depict this situation graphically. In \autoref{fig:defint2} we have
 which is easy to calculate as $50-8=42$ feet.
 
 \mtable{The total displacement is the area above the $t$-axis minus the area below the $t$-axis.}{fig:defint2}{\begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,ytick={-2,5},
 minor x tick num=4,ymin=-2.9,ymax=5.9,xmin=-.9,xmax=15.9]
 \addplot[draw={\coloronefill},fill={\coloronefill},domain=0:10,area style]{5}\closedcycle;
@@ -88,7 +88,7 @@ Recall how in our previous work that the displacement of the object (in this cas
 which matches our previous calculation of the maximum height.
 
 Finally, to find the height of the object at time $t=2$, we calculate the total signed area under the velocity function from $t=0$ to $t=2$. This signed area is equal to $s(2)$, the displacement (i.e., signed distance) from the starting position at $t=0$ to the position at time $t=2$.
-%Finally, we find the total \textit{signed} area under the velocity function from $t=0$ to $t=2$ to find the $s(2)$, the height at $t=2$, which is a displacement, the distance from the current position to the starting position.
+%Finally, we find the total \emph{signed} area under the velocity function from $t=0$ to $t=2$ to find the $s(2)$, the height at $t=2$, which is a displacement, the distance from the current position to the starting position.
 That is,
 	\begin{center}
 	Displacement = Area above the $t$-axis $-$ Area below $t$-axis.
@@ -100,7 +100,7 @@ This also matches our previous calculation of the height at $t=2$.
 Notice how we answered each question in this example in two ways. Our first method was to manipulate equations using our understanding of antiderivatives and derivatives. Our second method was geometric: we answered questions looking at a graph and finding the areas of certain regions of this graph.
 \end{example}
 
-The above example does not \textit{prove} a relationship between area under a velocity function and displacement, but it does indicate that there may be a relationship. \autoref{sec:FTC} will fully establish fact that the area under a velocity function is displacement.
+The above example does not \emph{prove} a relationship between area under a velocity function and displacement, but it does indicate that there may be a relationship. \autoref{sec:FTC} will fully establish fact that the area under a velocity function is displacement.
 
 While \autoref{fig:defint2} shows the graph of a function that has a jump discontinuity, we will now focus on functions that are continuous.  Given a graph of a continuous function $y=f(x)$, we will find that there is great use in computing the area between the curve $y=f(x)$ and the $x$-axis. Because of this, we need to define some terms.  The \textbf{total signed area} from $x=a$ to $x=b$ under a continuous function $f$ is
 \begin{center}
@@ -124,7 +124,7 @@ We practice using this notation.
 
 \begin{example}[Evaluating definite integrals]\label{ex_defint4}
 Consider the function $f$ given in \autoref{fig:defint4}. Find:
-
+%
 \mtable[.5in]{A graph of $f(x)$ in \autoref{ex_defint4}.}{fig:defint4}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
@@ -136,24 +136,21 @@ xtick={1,2,3,4,5},ytick={-1,1},ymin=-1.1,ymax=1.1,xmin=-.5,xmax=5.5]
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
-
-\noindent\begin{minipage}[t]{.5\textwidth}
+%
+\begin{multicols}{2}
 \begin{enumerate}
 	\item	$\ds \int_0^3 f(x)\ dx$
 	\item	$\ds \int_3^5 f(x)\ dx$
 	\item	$\ds \int_0^5 f(x)\ dx$
-\end{enumerate}
-\end{minipage}%
-\begin{minipage}[t]{.5\textwidth}
-\begin{enumerate}\addtocounter{enumi}{3}
 	\item	$\ds \int_0^3 5f(x)\ dx$
 	\item	$\ds \int_1^1 f(x) \ dx$
+	\item[]
 \end{enumerate}
-\end{minipage}
+\end{multicols}
 \solution
 \begin{enumerate}
 	\item	$ \int_0^3 f(x)\ dx$ is the area under $f$ on the interval $[0,3]$. This region is a triangle, so the area is $\int_0^3 f(x)\ dx=\frac12(3)(1) = 1.5$. 
-	\item	$\int_3^5 f(x)\ dx$ represents the area of the triangle found under the $x$-axis on $[3,5]$. The area is $\frac12(2)(1) = 1$; since it is found \textit{under} the $x$-axis, this is ``negative area.'' Therefore $ \int_3^5 f(x)\ dx = -1$.
+	\item	$\int_3^5 f(x)\ dx$ represents the area of the triangle found under the $x$-axis on $[3,5]$. The area is $\frac12(2)(1) = 1$; since it is found \emph{under} the $x$-axis, this is ``negative area.'' Therefore $ \int_3^5 f(x)\ dx = -1$.
 	\item	$ \int_0^5f(x)\ dx$ is the total signed area under $f$ on $[0,5]$. This is $1.5 + (-1) = 0.5$.
 	\item	$ \int_0^35f(x)\ dx$ is the area under $5f$ on $[0,3]$. This is sketched in \autoref{fig:defint4a}. Again, the region is a triangle, with height 5 times that of the height of the original triangle. Thus the area is $ \int_0^35f(x)\ dx = 15/2 = 7.5.$
 		
@@ -169,7 +166,7 @@ ytick={-5,5},ymin=-5.5,ymax=5.5,xmin=-.5,xmax=5.5]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 		
-	\item	$\int_1^1f(x)\ dx$ is the area under $f$ on the ``interval'' $[1,1]$. This describes a line segment, not a region; it has no width. Therefore the area is 0.\eoehere
+	\item	$\int_1^1f(x)\ dx$ is the area under $f$ on the ``interval'' $[1,1]$. This describes a line segment, not a region; it has no width. Therefore the area is 0.
 \end{enumerate}
 \end{example}
 
@@ -279,7 +276,7 @@ ymin=-1.1,ymax=1.1,xmin=-.2,xmax=3.5]
 \begin{enumerate}
 	\item	$\int_a^b f(x)\ dx$ has a positive value (since the area is above the $x$-axis) whereas $\int_b^c f(x)\ dx$ has a negative value. Hence $\int_a^b f(x)\ dx$ is bigger.
 	\item	$\int_a^c f(x)\ dx$ is the total signed area under $f$ between $x=a$ and $x=c$. Since the region below the $x$-axis looks to be larger than the region above, we conclude that the definite integral has a value less than 0.
-	\item	Note how the second integral has the bounds ``reversed.'' Therefore $\int_c^b f(x)\ dx$ represents a positive number, greater than the area described by the first definite integral. Hence $\int_c^b f(x)\ dx$ is greater.\eoehere
+	\item	Notice how the second integral has the bounds ``reversed.'' Therefore $\int_c^b f(x)\ dx$ represents a positive number, greater than the area described by the first definite integral. Hence $\int_c^b f(x)\ dx$ is greater.
 \end{enumerate}
 \end{example}
 
@@ -324,17 +321,19 @@ Evaluate the following definite integrals:
 \[1.\quad\int_{-2}^5 (2x-4)\ dx \qquad\qquad 2.\quad\int_{-3}^3 \sqrt{9-x^2}\ dx.\]
 \solution
 \begin{enumerate}
-	\item	It is useful to sketch the function in the integrand, as shown in \autoref{fig:defint8}(a). We see we need to compute the areas of two regions, which we have labeled $R_1$ and $R_2$. Both are triangles, so the area computation is straightforward:
+	\item	It is always useful to sketch the function in the integrand, as shown in \autoref{fig:defint8}(a). We see we need to compute the areas of two regions, which we have labeled $R_1$ and $R_2$. Both are triangles, so the area computation is straightforward:
 	\[R_1: \frac12(4)(8) = 16 \qquad R_2: \frac12(3)6 = 9.\]
 	Region $R_1$ lies under the $x$-axis, hence it is counted as negative area (we can think of the triangle's height as being ``$-8$''), so
 	\[\int_{-2}^5(2x-4)\ dx = -16+9 = -7.\]
 	\item	Recognize that the integrand of this definite integral describes a half circle, as sketched in \autoref{fig:defint8}(b), with radius 3. Thus the area is:
-	\[\int_{-3}^3 \sqrt{9-x^2}\ dx = \frac12\pi r^2 = \frac 92\pi.\eoehere\]
+	\[\int_{-3}^3 \sqrt{9-x^2}\ dx = \frac12\pi r^2 = \frac 92\pi.\]
 \end{enumerate}
 \end{example}
 
+\begin{example}[Understanding motion given velocity]\label{ex_defint6}
+%
 \mtable{A graph of a velocity in \autoref{ex_defint6}.}{fig:defint6}{\begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick=\empty,
 extra x ticks={2,6,8},extra x tick labels={$\ a$,$b\ $,$\ c$},ytick={-5,5,10,15},
 ymin=-9,ymax=17,xmin=-.5,xmax=8.5]
@@ -348,13 +347,12 @@ ymin=-9,ymax=17,xmin=-.5,xmax=8.5]
 \node [right] at (myplot.right of origin) {\scriptsize $t$ (s)};
 \node [above] at (myplot.above origin) {\scriptsize $y$ (ft/s)};
 \end{tikzpicture}}
-
-\begin{example}[Understanding motion given velocity]\label{ex_defint6}
+%
 Consider the graph of a velocity function of an object moving in a straight line, given in \autoref{fig:defint6}, where the numbers in the given regions gives the area of that region. Assume that the definite integral of a velocity function gives displacement. Find the maximum speed of the object and its maximum displacement from its starting position.
 \solution
 Since the graph gives velocity, finding the maximum speed is simple: it looks to be 15ft/s.
 
-\mnote[.25in]{\textbf{Note:} The \emph{displacement} of the object is different from the distance traveled since the object moves backwards and forwards at different times in this example. The displacement measures how far the object is from where it started, without regard for how far it actually traveled to get there.}
+\mnote[.5in]{\textbf{Note:} The \emph{displacement} of the object is different from the distance traveled since the object moves backwards and forwards at different times in this example. The displacement measures how far the object is from where it started, without regard for how far it actually traveled to get there.}
 
 At time $t=0$, the displacement is 0; the object is at its starting position. At time $t=a$, the object has moved backward 11 feet. Between times $t=a$ and $t=b$, the object moves forward 38 feet, bringing it into a position 27 feet forward of its starting position. From $t=b$ to $t=c$ the object is moving backwards again, hence its maximum displacement is 27 feet from its starting position.
 

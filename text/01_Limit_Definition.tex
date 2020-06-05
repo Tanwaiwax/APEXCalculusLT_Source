@@ -16,7 +16,7 @@ The problem with these definitions is that the words ``tends,'' ``approach,'' an
 The definition we describe in this section comes from formalizing \textbf{3}.  A quick restatement gets us closer to what we want:
 
 \begin{description}
-\item[$\textbf{3}^\prime$.]If $x$ is within a certain \textit{tolerance level} of $c$, then the corresponding value $y=f(x)$ is within a certain \textit{tolerance level} of $L$.
+\item[$\textbf{3}^\prime$.]If $x$ is within a certain \emph{tolerance level} of $c$, then the corresponding value $y=f(x)$ is within a certain \emph{tolerance level} of $L$.
 \end{description}
 
 The traditional notation for the $x$-tolerance is the lowercase Greek letter delta, or $\delta$, and the $y$-tolerance is denoted by lowercase epsilon, or $\epsilon$. One more rephrasing of $\textbf{3}^\prime$ nearly gets us to the actual definition:
@@ -48,7 +48,7 @@ if  $\abs{x - c} < \delta$, then $\abs{f(x) - L} < \epsilon$.\index{limit!defini
 0<\abs{x - c} < \delta \longrightarrow \abs{f(x) - L} < \epsilon\text{.)}
 \]
 
-Note the order in which $\epsilon$ and $\delta$ are given.  In the definition, the $y$-tolerance $\epsilon$ is given \textit{first} and then the limit will exist \textbf{if} we can find an $x$-tolerance $\delta$ that works.
+Note the order in which $\epsilon$ and $\delta$ are given.  In the definition, the $y$-tolerance $\epsilon$ is given \emph{first} and then the limit will exist \textbf{if} we can find an $x$-tolerance $\delta$ that works.
 
 \youtubeVideo{v5zsbgYrunM}{Limits 1b --- Delta-Epsilon Formulation}
 
@@ -71,7 +71,7 @@ $4 - \delta < x < 4 + \delta$.  The lower bound of $2.25$ is $1.75$ units from 4
 
 \mtable{Illustrating the $\epsilon-\delta$ process.}{fig:choose_e_d}{%
 \begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-.1,ymax=3.1,xmin=-.1,xmax=7.1,xtick={2,4,6},ytick={1,2},name=myplot]
 \addplot[draw={\colorone},smooth,thick,domain=0:7] ({\x},{sqrt(\x)});
@@ -89,7 +89,7 @@ ymin=-.1,ymax=3.1,xmin=-.1,xmax=7.1,xtick={2,4,6},ytick={1,2},name=myplot]
 \end{tikzpicture}
 		\\
 \begin{tikzpicture}[>=stealth]
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-.1,ymax=3.1,xmin=-.1,xmax=7.1,xtick={2,4,6},ytick={1,2},name=myplot]
 \addplot[draw={\colorone},smooth,thick,domain=0:7] ({\x},{sqrt(\x)});
@@ -113,9 +113,9 @@ ymin=-.1,ymax=3.1,xmin=-.1,xmax=7.1,xtick={2,4,6},ytick={1,2},name=myplot]
 \end{tikzpicture}
 		\\
 		\noindent
-		\ifthenelse{\boolean{latexml}}{%
-		With $\epsilon=0.5$, we pick any $\delta < 1.75$.}{%
-		\parbox{200pt}{With $\epsilon=0.5$, we pick any $\delta < 1.75$.}}
+%		\ifthenelse{\boolean{latexml}}{%
+		With $\epsilon=0.5$, we pick any $\delta < 1.75$.%}{%
+%		\parbox{200pt}{With $\epsilon=0.5$, we pick any $\delta < 1.75$.}}
 	}
 
 		
@@ -142,7 +142,7 @@ What we have so far: if $\epsilon =0.5$, then $\delta \leq 1.75$ and if $\epsilo
 - (4\epsilon - \epsilon^2) < x-4 < (4\epsilon + \epsilon^2) &\qquad \textrm{ (Rewrite in the desired form)}
 \end{align*}
 
-The ``desired form'' in the last step is ``$-\textit{something} < x-4 < \textit{something}$.''
+The ``desired form'' in the last step is ``$-\emph{something} < x-4 < \emph{something}$.''
 Since we want this last interval to describe an $x$ tolerance around 4, we have that either $\delta \leq 4\epsilon - \epsilon^2$ or $\delta \leq 4\epsilon + \epsilon^2$, whichever is smaller: \[\delta \leq \min\{4\epsilon - \epsilon^2, 4\epsilon + \epsilon^2\}\text{.}\]  Since $\epsilon > 0$, the minimum is $\delta \leq 4\epsilon - \epsilon^2$.  That's the formula: given an $\epsilon$, set $\delta \leq 4\epsilon-\epsilon^2$. 
 
 We can check this for our previous values.  If $\epsilon=0.5$, the formula gives
@@ -152,7 +152,7 @@ So given any $\epsilon >0$, set $\delta \leq 4\epsilon - \epsilon^2$. Then if $\
 \end{example}
 
 %FOOTNOTE $**$: Actually, it is a pain, but this won't work if $\epsilon \ge 4$.  This shouldn't really occur since $\epsilon$ is supposed to be small, but it could happen.  In the cases where $\epsilon \ge 4$, just take $\delta = 1$ and you'll be fine.
-The previous example was a little long in that we sampled a few specific cases of $\epsilon$ before handling the general case. Normally this is not done.  The previous example is also a bit unsatisfying in that $\sqrt{4}=2$; why work so hard to prove something so obvious? Many $\epsilon$-$\delta$ proofs are long and difficult to do. In this section, we will focus on examples where the answer is, frankly, obvious, because the non-obvious examples are even harder. In the next section we will learn some theorems that allow us to evaluate limits \textit{analytically}, that is, without using the $\epsilon$-$\delta$ definition.
+The previous example was a little long in that we sampled a few specific cases of $\epsilon$ before handling the general case. Normally this is not done.  The previous example is also a bit unsatisfying in that $\sqrt{4}=2$; why work so hard to prove something so obvious? Many $\epsilon$-$\delta$ proofs are long and difficult to do. In this section, we will focus on examples where the answer is, frankly, obvious, because the non-obvious examples are even harder. In the next section we will learn some theorems that allow us to evaluate limits \emph{analytically}, that is, without using the $\epsilon$-$\delta$ definition.
 %That is why theorems about limits are so useful! After doing a few more $\epsilon$-$\delta$ proofs, you will really appreciate the analytical ``short cuts'' found in the next section.\\
 
 We will follow a general pattern to work through $\delta$-$\epsilon$ problems. In some sense, each starts out ``backwards.'' That is, while we want to
@@ -163,10 +163,10 @@ We will follow a general pattern to work through $\delta$-$\epsilon$ problems. I
 we actually start by assuming 
 \begin{enumerate}
 	\item $\abs{f(x)-L}<\epsilon$, then perform some algebraic manipulations to give an inequality of the form
-	\item $\abs{x-c}<$ \textit{something}.
+	\item $\abs{x-c}<$ \emph{something}.
 \end{enumerate} 
 %then perform some algebraic manipulations to transform that inequality into an inequality where the ``less than'' side is $\abs{x-c}$. 
-When we have properly done this, the \textit{something} on the ``greater than'' side of the inequality becomes our $\delta$. We can refer to this as the ``scratch-work'' phase of our proof. Once we have $\delta$, we can formally start with $\abs{x-c}<\delta$ and use algebraic manipulations to conclude that $\abs{f(x)-L}<\epsilon$, usually by using the same steps of our ``scratch-work'' in reverse order.
+When we have properly done this, the \emph{something} on the ``greater than'' side of the inequality becomes our $\delta$. We can refer to this as the ``scratch-work'' phase of our proof. Once we have $\delta$, we can formally start with $\abs{x-c}<\delta$ and use algebraic manipulations to conclude that $\abs{f(x)-L}<\epsilon$, usually by using the same steps of our ``scratch-work'' in reverse order.
 
 We will highlight this process in the following examples.
 
@@ -202,7 +202,7 @@ Given $\epsilon>0$, choose $\ds \delta=\frac{\epsilon}{3}$. We assume $\abs{x-1}
 \abs{3x-5-(-2)}&< \epsilon, &
 \end{align*}
 \normalsize
-which is what we wanted to show. Thus  $\ds \lim_{x\to 1}(3x-5)=-2$.\qedhere\eoehere
+which is what we wanted to show. Thus  $\ds \lim_{x\to 1}(3x-5)=-2$.\qedhere
 \end{proof}
 \end{example}
 
@@ -213,6 +213,7 @@ Scratch-Work:
  
 We start our scratch-work by considering $\abs{f(x)-1}<\epsilon$:
 
+\allowdisplaybreaks
 \begin{align*}
 \abs{f(x)-1}&<\epsilon \\
 \abs{4-\frac{3}{2}x-1}&<\epsilon \\
@@ -252,9 +253,9 @@ $\abs{f(x)-4}<\epsilon$:
 \abs{(x-2)(x+2)} &< \epsilon \notag\\
 \abs{x-2} &<\frac{\epsilon}{\abs{x+2}}.\label{eq:lim1}
 \end{align}
-We are at the phase of saying that $\abs{x-2}<$ \textit{something}, where \textit{something}$=\epsilon/\abs{x+2}$. We want to turn that \textit{something} into $\delta$. Could we not set $\delta = \dfrac{\epsilon}{\abs{x+2}}$?  
+We are at the phase of saying that $\abs{x-2}<$ \emph{something}, where \emph{something}$=\epsilon/\abs{x+2}$. We want to turn that \emph{something} into $\delta$. Could we not set $\delta = \dfrac{\epsilon}{\abs{x+2}}$?  
 
-We are close to an answer, but the catch is that $\delta$ must be a \textit{constant} value (so it can't contain $x$).  There is a way to work around this, but we do have to make an assumption.  Remember that $\epsilon$ is supposed to be a small number, which implies that $\delta$ will also be a small value.  In particular, we can (probably) assume that $\delta < 1$.  If this is true, then $\abs{x-2}< \delta$ would imply that $\abs{x-2}< 1$, giving $1 < x < 3$.  
+We are close to an answer, but the catch is that $\delta$ must be a \emph{constant} value (so it can't contain $x$).  There is a way to work around this, but we do have to make an assumption.  Remember that $\epsilon$ is supposed to be a small number, which implies that $\delta$ will also be a small value.  In particular, we can (probably) assume that $\delta < 1$.  If this is true, then $\abs{x-2}< \delta$ would imply that $\abs{x-2}< 1$, giving $1 < x < 3$.  
 
 Now, back to the fraction $\dfrac{\epsilon}{\abs{x+2}}$.  If $1<x<3$, then $3<x+2<5$ (add 2 to all terms in the inequality).  Taking reciprocals, we have 
 \begin{align}
@@ -369,7 +370,7 @@ $\abs{x^2 - 4}< \epsilon$ (i.e.\ $\abs{y - 4}< \epsilon$) as desired.  This show
 %\abs{(x-1)(x^2+x-1)}&< \epsilon \notag\\
 %\abs{x-1} &<\frac{\epsilon}{\abs{x^2+x-1}}.\label{eq:lim4}
 %\end{align}
-%We are at the phase of saying that $\abs{x-1}<$ \textit{something}, where \textit{something}$=\epsilon/\abs{x^2+x-1}$. We want to turn that \textit{something} into $\delta$.
+%We are at the phase of saying that $\abs{x-1}<$ \emph{something}, where \emph{something}$=\epsilon/\abs{x^2+x-1}$. We want to turn that \emph{something} into $\delta$.
 %
 %Since $x$ is approaching 1, we are safe to assume that $x$ is between 0 and 2. So
 %\begin{align*}
@@ -413,7 +414,7 @@ $\abs{x^2 - 4}< \epsilon$ (i.e.\ $\abs{y - 4}< \epsilon$) as desired.  This show
 %1-\epsilon < e^x < 1+\epsilon & \qquad \textrm{(Add 1)}\\
 %\ln(1-\epsilon) < x < \ln(1+\epsilon) & \qquad \textrm{(Take natural logs)}\\
 %\end{eqnarray*}
-%Making the safe assumption that $\epsilon<1$ ensures the last inequality is valid (i.e., so that $\ln (1-\epsilon)$ is defined). We can then set $\delta$ to be the minimum of $\abs{\ln(1-\epsilon)}$ and $\ln(1+\epsilon)$; i.e.,  %  Well, there is a catch.  The value of $\epsilon$ is supposed to be small, but if it happens that $\epsilon \ge 1$, then $\ln(1-\epsilon)$ would be undefined!  The way to work around this is to simply define a new epsilon that is guaranteed to be smaller than the original epsilon \textit{and} less than 1 (let's say less than 1/2 just to be on the safe side).  Let's call this new value $\epsilon_1$ and define it to be $\epsilon_1 = \min\{\epsilon, 1/2\}$.  Then we can use the calculations above to define 
+%Making the safe assumption that $\epsilon<1$ ensures the last inequality is valid (i.e., so that $\ln (1-\epsilon)$ is defined). We can then set $\delta$ to be the minimum of $\abs{\ln(1-\epsilon)}$ and $\ln(1+\epsilon)$; i.e.,  %  Well, there is a catch.  The value of $\epsilon$ is supposed to be small, but if it happens that $\epsilon \ge 1$, then $\ln(1-\epsilon)$ would be undefined!  The way to work around this is to simply define a new epsilon that is guaranteed to be smaller than the original epsilon \emph{and} less than 1 (let's say less than 1/2 just to be on the safe side).  Let's call this new value $\epsilon_1$ and define it to be $\epsilon_1 = \min\{\epsilon, 1/2\}$.  Then we can use the calculations above to define 
 %\[\delta = \min\{\abs{\ln(1-\epsilon)}, \ln(1+\epsilon)\} = \ln(1+\epsilon).\]  
 %\mnote{\textbf{Note:} Recall $\ln 1= 0$ and $\ln x<0$ when $0<x<1$. So $\ln (1-\epsilon) <0$, hence we consider its absolute value.}
 %
@@ -434,7 +435,7 @@ $\abs{x^2 - 4}< \epsilon$ (i.e.\ $\abs{y - 4}< \epsilon$) as desired.  This show
 %In summary, given $\epsilon > 0$, let $\delta = \ln(1+\epsilon)$. Then $\abs{x - 0} < \delta$ implies $\abs{e^x - 1}< \epsilon$ as desired.  We have shown that $\displaystyle \lim_{x\rightarrow 0} e^x = 1 $.
 %\end{example}
 %
-%We note that we could actually show that $\ds\lim_{x\to c} e^x = e^c $ for any constant $c$.  We do this by factoring out $e^c$ from both sides, leaving us to show $\ds\lim_{x\to c} e^{x-c} = 1 $ instead.  By using the substitution $u=x-c$, this reduces to showing $\ds\lim_{u\to 0} e^u = 1 $ which we just did in the last example.  As an added benefit, this shows that in fact the function $f(x)=e^x$ is \textit{continuous} at all values of $x$, an important concept we will define in \autoref{sec:continuity}.\\
+%We note that we could actually show that $\ds\lim_{x\to c} e^x = e^c $ for any constant $c$.  We do this by factoring out $e^c$ from both sides, leaving us to show $\ds\lim_{x\to c} e^{x-c} = 1 $ instead.  By using the substitution $u=x-c$, this reduces to showing $\ds\lim_{u\to 0} e^u = 1 $ which we just did in the last example.  As an added benefit, this shows that in fact the function $f(x)=e^x$ is \emph{continuous} at all values of $x$, an important concept we will define in \autoref{sec:continuity}.\\
 
 \ifthenelse{\boolean{latexml}}{%
  To better understand the definition of a limit, experiment with the Geogebra app

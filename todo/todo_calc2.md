@@ -23,10 +23,10 @@
 1. [text/08_Sequences.tex line 312](../text/08_Sequences.tex#L312): todo write a transition paragraph to geometric sequences
 1. [text/08_Sequences.tex line 339](../text/08_Sequences.tex#L339): todo add a geometric sequence example
 1. [text/08_Sequences.tex line 341](../text/08_Sequences.tex#L341): todo use more than just color to distinguish a_n from S_n here throughout chapter
-1. [text/08_Taylor_Polynomials.tex line 217](../text/08_Taylor_Polynomials.tex#L217): todo use 20th degree polynomial instead of coordinates in Figure 9.9.8 fig:taypoly2c
-1. [text/08_Taylor_Polynomials.tex line 485](../text/08_Taylor_Polynomials.tex#L485): todo for exercises 21-24, reach back to lin approx / Newton’s method and redo the appropriate problems with Taylor series
+1. [text/08_Taylor_Polynomials.tex line 215](../text/08_Taylor_Polynomials.tex#L215): todo use 20th degree polynomial instead of coordinates in Figure 9.9.8 fig:taypoly2c
+1. [text/08_Taylor_Polynomials.tex line 482](../text/08_Taylor_Polynomials.tex#L482): todo for exercises 21-24, reach back to lin approx / Newton’s method and redo the appropriate problems with Taylor series
 1. [text/08_Taylor_Series.tex line 178](../text/08_Taylor_Series.tex#L178): todo find and show where in the text we derive the ``Important Maclaurin Series Expansions'', and derive any missing in an example
 1. [text/08_Taylor_Series.tex line 289](../text/08_Taylor_Series.tex#L289): todo have the exercises find the interval of convergence where appropriate
 1. [text/09_Conic_Sections.tex line 185](../text/09_Conic_Sections.tex#L185): todo derive (or verify?) the polar equations of conics
 1. [text/09_Conic_Sections.tex line 28](../text/09_Conic_Sections.tex#L28): todo convert conic figures to asymptote (or at least tikz)
-1. [text/09_Polar_Calculus.tex line 393](../text/09_Polar_Calculus.tex#L393): todo the region is also in the first petal and y>0
+1. [text/09_Polar_Calculus.tex line 395](../text/09_Polar_Calculus.tex#L395): todo the region is also in the first petal and y>0

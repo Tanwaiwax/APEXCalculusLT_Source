@@ -120,20 +120,20 @@ f(x) &= (1+x)^k & f(0) &= 1\\
 \fp'(x) &= k(k-1)(1+x)^{k-2} & \fp'(0) &=k(k-1)\\
 \fp''(x) &= k(k-1)(k-2)(1+x)^{k-3} & \fp''(0) &=k(k-1)(k-2)\\
 &\vdots & &\vdots\\
-f\,^{(n)}(x) &= k(k-1)\dotsm\big(k-(n-1)\big)(1+x)^{k-n} & f\,^{(n)}(0) &=k(k-1)\dotsm\big(k-(n-1)\big)
+f\,^{(n)}(x) &= k(k-1)\dotsm\bigl(k-(n-1)\bigr)(1+x)^{k-n} & f\,^{(n)}(0) &=k(k-1)\dotsm\bigl(k-(n-1)\bigr)
 \end{align*}}
 
 Thus the Maclaurin series for $f(x) = (1+x)^k$ is
 \[
-1+ kx + \frac{k(k-1)}{2!}x^2 + \frac{k(k-1)(k-2)}{3!}x^3 + \dotsb + \frac{k(k-1)\dotsm\big(k-(n-1)\big)}{n!}x^n+\dotsb
+1+ kx + \frac{k(k-1)}{2!}x^2 + \frac{k(k-1)(k-2)}{3!}x^3 + \dotsb + \frac{k(k-1)\dotsm\bigl(k-(n-1)\bigr)}{n!}x^n+\dotsb
 \]
 
 It is important to determine the interval of convergence of this series. With 
-\[a_n = \frac{k(k-1)\dotsm\big(k-(n-1)\big)}{n!}x^n,\]
+\[a_n = \frac{k(k-1)\dotsm\bigl(k-(n-1)\bigr)}{n!}x^n,\]
 we apply the Ratio Test:
 \begin{align*}
 	\lim_{n\to\infty}\frac{\abs{a_{n+1}}}{\abs{a_n}}
-	&=\lim_{n\to\infty}\frac{\abs{\frac{k(k-1)\dotsm(k-n)}{(n+1)!}x^{n+1}}}{\abs{\frac{k(k-1)\dotsm\big(k-(n-1)\big)}{n!}x^n}}\\
+	&=\lim_{n\to\infty}\frac{\abs{\frac{k(k-1)\dotsm(k-n)}{(n+1)!}x^{n+1}}}{\abs{\frac{k(k-1)\dotsm\bigl(k-(n-1)\bigr)}{n!}x^n}}\\
 		&=\lim_{n\to\infty} \abs{\frac{k-n}{n+1}x}\\
 		&= \abs x.
 \end{align*}
@@ -169,7 +169,7 @@ $\ds \sin x = \sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{(2n+1)!}$ & $\ds x-\frac{x
 $\ds \cos x = \sum_{n=0}^\infty (-1)^n\frac{x^{2n}}{(2n)!}$ & $\ds 1-\frac{x^2}{2!}+\frac{x^4}{4!} - \frac{x^6}{6!} +\dotsb$ & $(-\infty,\infty)$\smallskip\\
 $\ds \ln(x+1) = \sum_{n=1}^\infty(-1)^{n+1}\frac{x^n}{n}$ & $\ds x-\frac{x^2}{2}+\frac{x^3}{3}-\dotsb$& $(-1,1]$\smallskip\\
 $\ds \frac{1}{1-x} = \sum_{n=0}^\infty x^n$ &$\ds 1+x+x^2+x^3+\dotsb$& $(-1,1)$\\
-\small$\ds (1+x)^k=\sum_{n=0}^\infty \frac{k(k-1)\dotsm\big(k-(n-1)\big)}{n!}x^n$ \normalsize& $\ds 1+kx+\frac{k(k-1)}{2!}x^2 + \dotsb$ & $\begin{cases}(-1,1)&\phantom{-}k\le-1\\{}(-1,1]&-1<k<0\\{}[-1,1]&\phantom{-}0<k\end{cases}$\\
+\small$\ds (1+x)^k=\sum_{n=0}^\infty \frac{k(k-1)\dotsm\bigl(k-(n-1)\bigr)}{n!}x^n$ \normalsize& $\ds 1+kx+\frac{k(k-1)}{2!}x^2 + \dotsb$ & $\begin{cases}(-1,1)&\phantom{-}k\le-1\\{}(-1,1]&-1<k<0\\{}[-1,1]&\phantom{-}0<k\end{cases}$\\
 $\ds \tan^{-1}x = \sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{2n+1}$ & $\ds x-\frac{x^3}{3}+\frac{x^5}{5}-\frac{x^7}{7}+\dotsb$ & $[-1,1]$
 \end{tabular}\index{Taylor Series!common series}
 \end{keyidea}
@@ -183,9 +183,9 @@ Let $\ds f(x) = \sum_{n=0}^\infty a_nx^n$ and $\ds g(x) = \sum_{n=0}^\infty b_nx
 \begin{enumerate}
 	\item	$\ds f(x)\pm g(x) = \sum_{n=0}^\infty (a_n\pm b_n)x^n$ \quad for $\abs x<R$.
 	\item	$\ds f(x)g(x) = \left(\sum_{n=0}^\infty a_nx^n\right)\left(\sum_{n=0}^\infty b_nx^n\right) =\\\mbox{}\qquad
-	\sum_{n=0}^\infty\big(a_0b_n+a_1b_{n-1}+\dotsb+ a_nb_0\big)x^n$ for $\abs x<R$.
+	\sum_{n=0}^\infty\bigl(a_0b_n+a_1b_{n-1}+\dotsb+ a_nb_0\bigr)x^n$ for $\abs x<R$.
 	
-	\item	$\ds f\big(h(x)\big) = \sum_{n=0}^\infty a_n\big(h(x)\big)^n$ \quad for $\abs{h(x)}<R$.
+	\item	$\ds f\bigl(h(x)\bigr) = \sum_{n=0}^\infty a_n\bigl(h(x)\bigr)^n$ \quad for $\abs{h(x)}<R$.
 \end{enumerate}
 \end{theorem}
 
@@ -235,7 +235,7 @@ Use the Taylor series of $e^{-x^2}$ to evaluate $\ds \int_0^1e^{-x^2}\ dx$.
 \solution
 We learned, when studying Numerical Integration, that $e^{-x^2}$ does not have an antiderivative expressible in terms of elementary functions. This means any definite integral of this function must have its value approximated, and not computed exactly.
 
-We can quickly write out the Taylor series for $e^{-x^2}$ using the Taylor series of $e^x$:
+We can quickly write out the Taylor series for $e^{-x^2}$ using the Taylor series of $e^x$:\vspace{-.5\baselineskip}
 \begin{align*}
 e^x &= \sum_{n=0}^\infty \frac{x^n}{n!} = 1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\dotsb
 \intertext{and so}

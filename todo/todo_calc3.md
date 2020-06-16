@@ -1,4 +1,4 @@
-1. [CalculusIII.tex line 67](../CalculusIII.tex#L67): todo Chapter 15 needs an introduction
+1. [CalculusIII.tex line 66](../CalculusIII.tex#L66): todo Chapter 15 needs an introduction
 1. [exercises/10_01_exset_04.tex line 51](../exercises/10_01_exset_04.tex#L51): todo the solution to 11.1#39&40
 1. [exercises/10_02_exercises.tex line 65](../exercises/10_02_exercises.tex#L65): todo the solution to 11.2#36-39
 1. [exercises/10_02_exset_02.tex line 61](../exercises/10_02_exset_02.tex#L61): todo convert 11.2#15,16 to asymptote figures. but is 15 even doable?
@@ -25,7 +25,7 @@
 1. [text/10_Planes.tex line 17](../text/10_Planes.tex#L17): todo should we make a picture of a vector ``orthogonal to the plane''?
 1. [text/10_Planes.tex line 20](../text/10_Planes.tex#L20): todo should we make a picture of how the vector equation of a plane works?
 1. [text/10_Space_Intro.tex line 152](../text/10_Space_Intro.tex#L152): todo Mention the general drawing trick: if a plane is parallel to a coordinate axis, draw grid lines parallel to that axis onto the plane.  Also draw an example of an oblique plane.
-1. [text/11_Arc_Length_Parameter_Curvature.tex line 427](../text/11_Arc_Length_Parameter_Curvature.tex#L427): todo add some text about the Frenet frame
+1. [text/11_Arc_Length_Parameter_Curvature.tex line 428](../text/11_Arc_Length_Parameter_Curvature.tex#L428): todo add some text about the Frenet frame
 1. [text/11_Vector_Functions_Intro.tex line 3](../text/11_Vector_Functions_Intro.tex#L3): todo state how this compares with 10.2 & 10.3
 1. [text/12_Lagrange.tex line 116](../text/12_Lagrange.tex#L116): todo more clearly explain the significance of the value of \lambda
 1. [text/12_Lagrange.tex line 35](../text/12_Lagrange.tex#L35): todo include a proof sketch of Theorem 13.9.1 Lagrange Multipliers?

@@ -2,12 +2,13 @@
 
 We now present some of the proofs of the theorems in the text.  If you need a reminder about sequences, you should (re)read \autoref{sec:sequences}.  The first thing we will do is state some important properties of the real numbers.
 
-\theorem{thm:realscomplete}{Completeness of the Real Numbers}
-{\hspace{0pt}\\[-5ex]\begin{itemize}
+\begin{theorem}[Completeness of the Real Numbers]\label{thm:realscomplete}
+\hspace{0pt}\\[-5ex]\begin{itemize}
 \item Suppose that $A$ is a nonempty subset of the real numbers that is bounded above.  Then there is a unique real number $a^*$ that is the least upper bound of $A$: $A$ is bounded above by $a^*$, and any real number less than $a^*$ has some number from $A$ that is above $a^*$.
 \item Suppose that $a_n$ is a sequence of real numbers that converges to $a_\infty$.  Then $a_\infty$ is also a real number.
 \item These two properties are equivalent.
-\end{itemize}}
+\end{itemize}
+\end{theorem}
 
 The first thing you should think is that these properties are obviously true for the real numbers.  The next thing you should realize is that these properties do not hold for the rational numbers: the set $\{q\in\mathbb{Q}:q^2<2\}$ is nonempty and bounded above, but it does not have a least upper bound that is a rational number.  Similarly, we can find a sequence of rational numbers that approaches a limiting value that isn't rational (for example, the rational numbers 3, 3.1, 3.14, 3.141, 3.1415, 3.14159, \dotsc\ approaches a limiting value that isn't rational).  This means that any of our theorems that use this property could fail if we use the rational numbers instead of the real numbers.  It turns out that proving this theorem is quite difficult, and depends on how you actually define the real numbers (most definitions are tailored so that one of the first two properties is obviously true).  This theorem is usually proved in a more advanced course with an intimidating name like ``Real Analysis'' or ``Advanced Calculus'' and is far beyond anything we will present here.
 
@@ -42,8 +43,9 @@ The theorem (and the proof) do not hold if we use the rational numbers in place 
 
 Before proving our next theorem, we'll first define an extension of an idea we saw (or will see) in \autoref{sec:sequences}.
 
-\definition{def:subsequence}{Subsequence}%
-{Suppose that $\{x_n\}$ is a sequence of numbers.  Then $\{y_n\}$ is a \textbf{subsequence} if $g:\mathbb{N}^+\to\mathbb{N}^+$ is a strictly increasing function and $y_n=x_{g(n)}$.}
+\begin{definition}[Subsequence]\label{def:subsequence}
+Suppose that $\{x_n\}$ is a sequence of numbers.  Then $\{y_n\}$ is a \textbf{subsequence} if $g:\mathbb{N}^+\to\mathbb{N}^+$ is a strictly increasing function and $y_n=x_{g(n)}$.
+\end{definition}
 
 The idea may best be explained by a diagram:
 \[
@@ -58,8 +60,9 @@ We can take a subsequence of a subsequence, which is sometimes called a subsubse
 
 If the original sequence converges, then so does any subsequence.  On the other hand, if the original sequence diverges, then we may be able to find a subsequence that still converges.  For example, $\{(-1)^n\}$ diverges, but if we take every other term, then we get a subsequence that converges.  Our next theorem is a powerful tool that gives conditions to guarantee that we'll be able to find a convergent subsequence.
 
-\theorem{thm:bolzanoWeierstrass}{The Bolzano-Weierstrass Theorem}
-{Suppose that $\{x_n\}$ is a bounded sequence or real numbers.  Then $\{x_n\}$ has a subsequence that converges.}
+\begin{theorem}[The Bolzano-Weierstrass Theorem]\label{thm:bolzanoWeierstrass}
+Suppose that $\{x_n\}$ is a bounded sequence or real numbers.  Then $\{x_n\}$ has a subsequence that converges.
+\end{theorem}
 
 \begin{proof}
 Because the sequence is bounded, it is contained in some segment $[-M,M]$.

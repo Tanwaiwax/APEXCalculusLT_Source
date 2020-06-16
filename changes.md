@@ -4,7 +4,7 @@ List Of Changes
 Changes for the 2020-06 version:
 --------------------
 
-* A careful reading of Definition 3.3.1 shows that intervals of increasing and decreasing are usually closed within the domain.  We often had open intervals instead.
+* A careful reading of Definition 3.3.1 shows that intervals of increasing and decreasing are usually closed within their domain.  We often had open intervals instead.
 
 * Definition 10.3.1 (Tangent line to a parametric curve) has been rearranged to no longer have an unnecessary "provided x'≠0".
 

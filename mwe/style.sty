@@ -1,0 +1,63 @@
+\newboolean{printquestions}
+\setboolean{printquestions}{true}
+
+\newcommand{\mytest}{\ifthenelse{\equal{\Itemautorefname}{item}}{item}{not item}}
+
+\newcommand{\subtest}{\mytest}
+
+\newcommand{\Item@auto@ref@name}{item}
+\newcommand{\prc@autoref}{%
+ \ifx\Itemautorefname\Item@auto@ref@name% not in exercises
+% \ifthenelse{\equal{\Itemautorefname}{item}}{% not in exercises
+  % therefore, regular text
+  \stepcounter{figure}%
+  Figure \thefigure%
+  \addtocounter{figure}{-1}%
+ \else%
+% }{% else in exercises
+  \thesection hashchar\arabic{enumi}%
+% }%
+ \fi%
+}
+
+\newcommand{\prc@section@autoref}{Section \thesection}
+
+\newcommand{\auxasymessage}[1]{%
+ \@percentchar\space prc file #1 used in \prc@section@autoref\space as \prc@autoref%
+}
+
+\newcommand{\myincludeasythree}[3]{%
+ % we want a library of 3d images
+ % each call here also leaves a marker in the aux file, which Python can then find
+ % this works if the above are etoolbox's ifthenelse, but not ifthen's
+ % e.g.: \typeout{find me \ifthenelse{\boolean{true}}{a}{b}}
+% \typeout{auxasymessage:}
+% \typeout{prc section autoref:\prc@section@autoref:}
+ \typeout{Itemautorefname:\Itemautorefname:}
+ \typeout{prc autoref:\prc@autoref:}
+ \typeout{\auxasymessage{#3}}
+% \typeout{\meaning{\Itemautorefname}}
+ \expandafter\immediate\expandafter\write\expandafter\@auxout{\auxasymessage{#3}}%
+% \immediate\write\@auxout{%
+%  \@percentchar\@percentchar\space prc file #3 used as \prc@autoref%
+% }%
+%  \@percentchar\@percentchar\space prc file #3 used in \prc@section@autoref\space as \prc@autoref%
+ \ifthenelse{\boolean{printquestions}}{% not in solutions
+  \ifthenelse{\equal{\Itemautorefname}{item}}{% not in exercises
+   % therefore, regular text
+   \stepcounter{figure}%
+   \immediate\write\@auxout{%
+    \@percentchar\space prc file #3 used in Section \thesection\space as Figure \thefigure%
+   }%
+   \addtocounter{figure}{-1}%
+  }{% else in exercises
+   \immediate\write\@auxout{%
+    \@percentchar\space prc file #3 used in Section \thesection\space as \thesection hashchar\arabic{enumi}%
+   }%
+  }%
+ }{% else in solutions
+  \immediate\write\@auxout{%
+   \@percentchar\space prc file #3 used in Section A.\thechapter\space as \thesection hashchar\arabic{enumi}%
+  }%
+ }%
+}

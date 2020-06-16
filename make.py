@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/local/bin/python3
 
 '''
     pdfsizeopt must use Python 2 because it uses old style print statements.
@@ -11,18 +11,25 @@
     via Python 2 (I think)
 '''
 
-import re
-import os
-import sys
-import glob
-import time
-import atexit
-import shutil
 import argparse
-import platform
+import atexit
+import collections
+import glob
 import itertools
+import os
+import platform
+import re
+import shutil
 import subprocess
-from collections import defaultdict, namedtuple
+import sys
+import time
+
+ignorelist = frozenset(['Georg','LHR','NonCommercial',
+    'myplot','num','pos','proj',
+    'xlabel','xmajorgrids','xmax','xmin','xscale','xshift','xtick','xticklabels',
+    'ylabel','ymajorgrids','ymax','ymin','yscale','yshift','ytick','yticklabels',
+    'ztick',
+])
 
 loginfo = []
 
@@ -62,6 +69,9 @@ parser.add_argument('--standalonew',action='store_true',
                     help='Convert xml version to html for standalone.tex')
 addboolarg('todo','Update todo lists.');
 addboolarg('quit','Write options.tex and quit.')
+parser.add_argument('--spelling',action='store_true',help='Run spellcheck')
+parser.add_argument('--justprint',action='store_true',
+                    help='Print  the  commands  that  would  be executed, but do not execute them')
 
 #parser.add_argument('--misspell',action='store_true',help='Write misspelled words to misspell.txt')
 
@@ -71,7 +81,7 @@ addboolarg('static','Print static color graphics (default is interactive).',pars
 
 if len(sys.argv)==1:
     parser.print_help()
-    exit()
+    quit()
 
 for dir in ('ApexPDFs','logs','prc','todo','web'):
     try:
@@ -97,8 +107,11 @@ def makematrices():
             except:
                 pass
             with open('../../logs/compilationmatrix.log','w+') as mystdout:
-                subprocess.check_call(['xelatex','-synctex=0','-jobname='+root,'matrix'],
-                                      stdout=mystdout,stderr=subprocess.STDOUT)
+                command = ['xelatex','-synctex=0','-jobname='+root,'matrix']
+                if args.justprint:
+                    print('run:',command,'2>','logs/compilationmatrix.log')
+                else:
+                    subprocess.check_call(command,stdout=mystdout,stderr=subprocess.STDOUT)
     finally:
         os.chdir('../../')
 
@@ -127,16 +140,22 @@ def makefigs():
             for ext,opt in extops.items():
                 try:
                     if os.path.getmtime(asyfile+ext) <= os.path.getmtime(asyfile+'.asy'):
-                        subprocess.check_call([asyexe]+opt+[asyfile])
+                        if args.justprint:
+                            print('run:',[asyexe]+opt+[asyfile])
+                        else:
+                            subprocess.check_call([asyexe]+opt+[asyfile])
                 except OSError:
-                    subprocess.check_call([asyexe]+opt+[asyfile])
+                    if args.justprint:
+                        print('run:',[asyexe]+opt+[asyfile])
+                    else:
+                        subprocess.check_call([asyexe]+opt+[asyfile])
         for outfile in glob.iglob('*.out'):
             if ( os.path.getsize(outfile) == 0 ):
                 os.remove(outfile)
     finally:
         os.chdir('..')
 
-Figure = namedtuple('Figure',['num','file'])
+Figure = collections.namedtuple('Figure',['num','file'])
 
 def updateprc():
     prcdict = prcfromfile('Calculus.aux')
@@ -198,7 +217,7 @@ def writechapterprc(prcdict,prchtml,chapter):
 def prcfromfile(filename):
     with open(filename) as filein:
         print('opening',filename)
-        prcdict = defaultdict(lambda:defaultdict(list))
+        prcdict = collections.defaultdict(lambda:collections.defaultdict(list))
         for line in filein:
             if line.startswith(r'\@input{'):
                 prcdict.update(prcfromfile(line[len('\@input{'):-2]))
@@ -217,7 +236,7 @@ def updatetodo():
                                       '--exclude-dir=hidden','--exclude-dir=mecmath','--exclude-dir=completed','.'])
     todos = output.decode('utf-8').split("\n")
     todos.sort()
-    todosin = defaultdict(list)
+    todosin = collections.defaultdict(list)
     for todo in todos:
         if re.match('./make.py',todo) or todo == '' or re.match(r'\S+.log',todo):
             continue
@@ -236,7 +255,10 @@ def updatetodo():
         todosin[key].append(todo)
     for filename,todolist in todosin.items():
         with open('todo/todo_'+filename+'.md','w+') as todofile:
-            todofile.write(('\n'.join(todolist)+'\n').encode('utf-8'))
+            if (3, 0) <= sys.version_info[:2]:
+                todofile.write('\n'.join(todolist)+'\n')
+            else:
+                todofile.write(('\n'.join(todolist)+'\n').encode('utf-8'))
     # and a few manual TeX commands instead of 'todo'
     with open('todo/todo_tex.txt','w+') as mystdout:
         for keywd in ('drawexampleline','enlargethispage','blue','pagebreak',
@@ -362,9 +384,12 @@ def minimizePdf(filename):
         os.remove('logs/ossystemerr.log')
     except:
         pass
-    def ossystem(args):
+    def ossystem(argstooss):
         with open('logs/ossystemerr.log','a+') as mystdout:
-            subprocess.check_call(args,stdout=mystdout,stderr=subprocess.STDOUT,shell=True)
+            if args.justprint:
+                print('run:',argstooss,'2>','logs/ossystemerr.log')
+            else:
+                subprocess.check_call(argstooss,stdout=mystdout,stderr=subprocess.STDOUT,shell=True)
     os.system = ossystem
     with open('logs/minimizePdf.log','w+') as sys.stderr:
         main.main(['../pdfsizeopt/pdfsizeopt','--use-pngout=no',
@@ -378,11 +403,50 @@ def minimizePdf(filename):
     print(message,'')
     loginfo.append(message)
 
+def lc(input:str) -> str:
+    return input[0].lower()+input[1:]
+
 def writemisspellings():
-    pass
-    # cat text/*tex | aspell list -t --ignore=3 --ignore-case | sort | uniq > misspell.txt
+    with open('misspell.txt','w+') as misspellings:
+        texcommands = {
+            'addplot': 'op',
+            'autoeqref': 'p',
+            'autopageref': 'p',
+            'autoref': 'p',
+            'axis': 'o',
+            'boolean': 'p',
+            'eqref': 'p',
+            'exautoref': 'p',
+            'includecodegraphics': 'p',
+            'label': 'p',
+            'hyperref': 'oP',
+            'mfigure': 'opPpp',
+            'mtable': 'PpP',
+            'myincludeasythree': 'ppp',
+            'myincludegraphics': 'op',
+            'pdfbookmark': 'OPp',
+            'ref': 'p',
+            'youtubeVideo': 'pP'
+        }
+        print('Possible misspellings in tex files in this directory:',file=misspellings)
+        for texfile in glob.glob('text/*.tex'):
+            #if 'preface.tex' in texfile:
+            #    continue
+            with open(texfile) as filehandle:
+                output = subprocess.run(['aspell --mode=tex --ignore=3 '+
+                                        ' '.join([f'--add-tex-command="{k} {v}"' for k,v in texcommands.items()])+
+                                        ' list'],
+                                    stdin=filehandle,text=True,capture_output=True,shell=True)
+                filemisspellings = collections.Counter(output.stdout.strip().split('\n'))
+                filtered = collections.Counter({w:c for w,c in filemisspellings.items() if w and w not in ignorelist and lc(w) not in ignorelist})
+                if filtered:
+                    print('\n'+texfile+':',file=misspellings)
+                    for word in sorted(filtered.keys()):
+                        print(word+':',filtered[word],'time(s)',file=misspellings)
 
 def compilewith(commands=False):
+    print('running:',commands)
+    #quit()
     if commands:
         args = parser.parse_args([''.join(commands)])
     else:
@@ -398,6 +462,9 @@ def compilewith(commands=False):
         return
     if args.prc:
         updateprc()
+        return
+    if args.spelling:
+        writemisspellings()
         return
     if args.calculus == 4:
         args.calculus = 0
@@ -422,7 +489,11 @@ def runcommands(args,commands):
         try:
             commandline = getcommandline(args)
             print('commandline is:',commandline)
-            subprocess.check_call(commandline,stdout=mystdout,stderr=subprocess.STDOUT)
+            #breakpoint()
+            if args.justprint:
+                print('now run')
+            else:
+                subprocess.check_call(commandline,stdout=mystdout,stderr=subprocess.STDOUT)
         except:
             time = "{0[0]:02d}:{0[1]:02d}".format(getTime())
             if commands:
@@ -447,6 +518,8 @@ def runcommands(args,commands):
         minimizePdf('calculus'+newsuffix+'.pdf')
 
 if args.all:
+    print('all true')
+    #suffix = ' --justprint' if args.justprint else ''
     compilewith('-f')
     # having this first makes sure the index and toc are up to date
     compilewith('-c0')
@@ -455,4 +528,5 @@ if args.all:
     for part,size in itertools.product('123',['s','b']):
         compilewith('-'+size+'c'+part)
 else:
+    print('all false')
     compilewith()

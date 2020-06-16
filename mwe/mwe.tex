@@ -1,24 +1,72 @@
 % !TEX program = XeLaTeX
 %\errorcontextlines 10000
 
-\documentclass{article}
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass[10pt]{book}
 
-\usepackage{enumitem}
+\input{APEX_format}
+\usepackage{apex_style}
+\input{Header_Calculus}
+
+\usepackage{etoolbox}
+
+\newcommand{\thetitle}{Standalone}
+
+\printallanswers
+\printincolor
+\usetwoDgraphics
+%\usethreeDgraphics
+
+\newenvironment{exercisesett}[2]{%
+% \closeenumerate%
+ \stepcounter{enumi}%
+ \stepcounter{exercisesetcounter}%
+ \ifthenelse{\isodd{\value{enumi}}}{}{%
+  \PackageInfo{apex}{%
+   Exercise set \theexercisesetcounter\space begins with \arabic{enumi}%
+  }%
+ }%
+ \pagebreak[1]%
+ \noindent#1 \arabic{enumi}--\ref*{enumiatendof\theexercisesetcounter}#2%
+ \addtocounter{enumi}{-1}\ignorespaces%
+ \nopagebreak%
+}{%
+ \label{enumiatendof\theexercisesetcounter}%
+ \closeenumerate%
+ \pagebreak[1]%
+ \ifthenelse{\isodd{\value{enumi}}}{%
+  \PackageInfo{apex}{%
+   Exercise set \theexercisesetcounter\space ends with \arabic{enumi}%
+  }%
+ }{}%
+}
+\newcommand{\closeenumerateinquestions}{\closeenumerate}
+\BeforeBeginEnvironment{exercisesett}{\closeenumerateinquestions}
 
 \begin{document}
 
-\begin{enumerate}
-\item item
-\item item
-\end{enumerate}
+%\frontmatter
+%
+%\input{text/front_matter_and_cover}
 
-That ended with: \theenumi
+\mainmatter
 
-\begin{enumerate}[resume]
-\item item
-\item item
-\end{enumerate}
+\setcounter{chapter}{2}
+\setcounter{section}{3}
 
-That ended with: \theenumi
+\printexercises{standalone_exercises}
+
+\renewcommand{\closeenumerateinquestions}{}
+\renewenvironment{exercisesett}{}{}
+
+\appendix
+
+\printsolutions{Standalone Solutions To All Problems}
+
+%\printindex
+%
+%\backmatter
+%
+%\input{text/Inside_Cover_Of_The_Text_Material_Complete}
 
 \end{document}

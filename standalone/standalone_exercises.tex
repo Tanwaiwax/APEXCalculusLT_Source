@@ -1,35 +1,48 @@
-depth\enumdepth\checkenum
+\newenvironment{exercisesett}[2]{%
+ \closeenumerate%
+ \stepcounter{enumi}%
+ \stepcounter{exercisesetcounter}%
+ \ifthenelse{\isodd{\value{enumi}}}{}{%
+  \PackageInfo{apex}{%
+   Exercise set \theexercisesetcounter\space begins with \arabic{enumi}%
+  }%
+ }%
+ \pagebreak[1]%
+ \noindent#1 \arabic{enumi}--\ref*{enumiatendof\theexercisesetcounter}#2%
+ \addtocounter{enumi}{-1}\ignorespaces%
+ \nopagebreak%
+}{%
+ \label{enumiatendof\theexercisesetcounter}%
+ \pagebreak[1]%
+ \ifthenelse{\isodd{\value{enumi}}}{%
+  \PackageInfo{apex}{%
+   Exercise set \theexercisesetcounter\space ends with \arabic{enumi}%
+  }%
+ }{}%
+}
 
 \exercise{statement1}{solution1}
 
-depth\enumdepth\checkenum
+%\exerciseset{open1}{, close1}{
+%
+%\exercise{statement2}{solution2}
+%
+%}
 
-\exerciseset{open1\checkenum}{, close1\checkenum}{
+%\exercise{statement3}{solution3}
 
-depth\enumdepth\checkenum
-
-\exercise{statement2}{solution2}
-
-depth\enumdepth\checkenum
-
-}
-
-%\closeenumerate open 3--3, close
-
-depth\enumdepth\checkenum
-
-\exercise{statement3}{solution3}
-
-depth\enumdepth\checkenum
-
-\begin{exercisesett}{open2\checkenum}{, close2\checkenum}
-
-depth\enumdepth\checkenum
+\begin{exercisesett}{open2}{, close2}
 
 \exercise{statement4}{solution4}
 
-depth\enumdepth\checkenum
+\end{exercisesett}
+
+\exercise{statement5}{solution5}
+
+\begin{exercisesett}{open3}{, close3}
+
+\exercise{statement6}{solution6}
 
 \end{exercisesett}
 
-depth\enumdepth\checkenum
+\renewenvironment{exercisesett}[2]{}{}

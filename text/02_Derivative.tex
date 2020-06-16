@@ -128,10 +128,10 @@ ymin=-10,ymax=129,xmin=1.4,xmax=2.6,name=myplot]
 We have just introduced a number of important concepts that we will flesh out more within this section. First, we formally define two of them.
 
 \begin{definition}[Derivative at a Point]\label{def:derivative_at_a_point}
-Let $f$ be a continuous function on an open interval $I$ and let $c$ be in $I$.\index{derivative!at a point} The \sword{derivative of $f$ at $c$}, denoted $\fp(c)$, is \[\lim_{h\to 0}\frac{f(c+h)-f(c)}{h},\] provided the limit exists.
+Let $f$ be a continuous function on an open interval $I$ and let $c$ be in $I$.\index{derivative!at a point} The \textbf{derivative of $f$ at $c$}, denoted $\fp(c)$, is \[\lim_{h\to 0}\frac{f(c+h)-f(c)}{h},\] provided the limit exists.
 \end{definition}
 
-If the limit exists, we say that \sword{$f$ is differentiable at $c$}; if the limit does not exist, then \sword{$f$ is not differentiable at $c$}. If $f$ is differentiable at every point in $I$, then \sword{$f$ is differentiable on $I$}.\index{differentiable}
+If the limit exists, we say that $f$ is \textbf{differentiable at $c$}; if the limit does not exist, then $f$ is \textbf{not differentiable at $c$}. If $f$ is differentiable at every point in $I$, then $f$ is \textbf{differentiable on $I$}.\index{differentiable}
 
 \begin{definition}[Tangent Line]\label{def:tangent_line}
 Let $f$ be continuous on an open interval $I$ and differentiable at $c$, for some $c$ in $I$. The line with equation $\ell(x) = \fp(c)(x-c)+f(c)$ is the \textbf{tangent line} to the graph of $f$ at $c$; that is, it is the line through $(c,f(c))$ whose slope is the derivative of $f$ at $c$.\index{tangent line}\index{derivative!tangent line}
@@ -190,7 +190,7 @@ ymin=-11,ymax=66,xmin=-.1,xmax=4.1,name=myplot]
 A graph of $f$ is given in \autoref{fig:tangent1} along with the tangent lines at $x=1$ and $x=3$.
 \end{example}
 
-%Another important line that can be created using information from the der\-iv\-ative is the \sword{normal line.} It is perpendicular to the tangent line, hence its slope is the opposite-reciprocal of the tangent line's slope.
+%Another important line that can be created using information from the derivative is the \textbf{normal line.} It is perpendicular to the tangent line, hence its slope is the opposite-reciprocal of the tangent line's slope.
 %
 %\begin{definition}[Normal Line]\label{def:normal_line}
 %Let $f$ be continuous on an open interval $I$ and differentiable at $c$, for some $c$ in $I$. The \textbf{normal line} to the graph of $f$ at $c$ is the line with equation
@@ -253,10 +253,10 @@ In order to find the equation of the tangent line, we need a slope and a point. 
 for a small value of $h$. We choose (somewhat arbitrarily) to let $h=0.1$. Thus
 %
 \mtable{$f(x) = \sin x$ graphed with an approximation to its tangent line at $x=0$.}{fig:tangentsinx}{\begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,axis equal,tick label style={font=\scriptsize},
+\begin{axis}[width=1.16\marginparwidth,axis equal image,tick label style={font=\scriptsize},
 minor x tick num=1,xtick={-3.14,-1.57,1.57,3.14},
 xticklabels={$-\pi$,$-\frac{\pi}2$,$\frac{\pi}2$,$\pi$},axis y line=middle,
-axis x line=middle,ymin=-1.1,ymax=1.1,xmin=-3.5,xmax=3.5,name=myplot]
+axis x line=middle,ymin=-1.9,ymax=1.9,xmin=-3.5,xmax=3.5,name=myplot]
 \addplot [draw={\colorone},smooth,thick,domain=-3.5:3.5] {sin(deg(x))};
 \addplot [draw={\colortwo},domain=-1:1,thick] {.9983*x};
 \filldraw [black] (axis cs:0,0) circle (1pt);
@@ -296,9 +296,9 @@ The output is the ``derivative function,'' $\fp(x)$. The $\fp(x)$ function will 
 \begin{definition}[Derivative Function]\label{def:the_derivative}
 Let $f$ be a differentiable function on an open interval $I$. The function
 \[\fp(x) = \lim_{h\to 0} \frac{f(x+h)-f(x)}{h}\]
-is \sword{the derivative of $f$}.\index{derivative!as a function}\index{derivative!notation}\bigbreak
+is the \textbf{derivative} of $f$.\index{derivative!as a function}\index{derivative!notation}\bigbreak
 
-\sword{Notation:}
+\textbf{Notation:}
 
 Let $y = f(x)$. The following notations all represent the derivative:
 \[\fp(x)\ =\ y\primeskip'\ =\ \frac{dy}{dx}\ =\ \frac{df}{dx}\ =\ \frac{d}{dx}(f)\ =\ \frac{d}{dx}(y).\]
@@ -363,11 +363,10 @@ Before applying \autoref{def:the_derivative}, note that once the derivative is f
 
 We have found that when $f(x) = \sin x$, $\fp(x) = \cos x$ (see \autoref{fig:sin_and_dsin}).
 
-% todo Tim should the graph of sin and its derivative use equal aspect ratio? check that it worked
-\begin{center}
+{\centering
 \captionsetup{type=figure}%
 \begin{tikzpicture}
-\begin{axis}[tick label style={font=\scriptsize}, axis y line=middle,axis x line=middle, ymin=-1.15, ymax=1.15,xmin=-7,xmax=7,name=myplot,axis equal,
+\begin{axis}[tick label style={font=\scriptsize}, axis y line=middle,axis x line=middle, ymin=-1.5, ymax=1.9,xmin=-7,xmax=7,name=myplot,axis equal image,
   xtick={-6.28318, -4.7123889, -3.14159, -1.5708, 1.5708, 3.14159, 4.7123889, 6.28318}, xticklabels={-$2\pi$, $-\frac{3\pi}{2}$,$-\pi$, $-\frac{\pi}{2}$, $\frac{\pi}{2}$,$\pi$, $\frac{3\pi}{2}$, $2\pi$},width=\textwidth ] % xscale=1.4,
   % w/h = 14/2.3 => h = 2.3*w/14 = .164 w
 \addplot [draw={\colorone}, smooth, domain=-6.28318:6.28318,thick] {sin(deg(x))} 
@@ -388,7 +387,7 @@ We have found that when $f(x) = \sin x$, $\fp(x) = \cos x$ (see \autoref{fig:sin
 \end{tikzpicture}
 \caption{The function $f(x)=\sin x$ and its derivative $\fp(x)=\cos x$.}
 \label{fig:sin_and_dsin}
-\end{center}
+}% end centering
 
 Initially, this might be somewhat surprising; the result of a tedious limit process and the sine function is a nice function. Then again, perhaps this is not entirely surprising. The sine function is periodic --- it repeats itself on regular intervals. Therefore its rate of change also repeats itself on the same regular intervals. In fact, if we think about $\fp(x)$ as the slope of the tangent to the sine curve we notice the following
 \begin{itemize}
@@ -446,7 +445,7 @@ Since $x=0$ is the point where our function's definition switches from one piece
 \end{align*}
 \end{minipage}\\
 %
-\mtable[-1in]{A graph of the derivative of $f(x) = \abs{x}$.}{fig:absolutevalueprime}{\begin{tikzpicture}
+\mtable{A graph of the derivative of $f(x) = \abs{x}$.}{fig:absolutevalueprime}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-1.4,ymax=1.4,xmin=-1.1,xmax=1.1,name=myplot]
@@ -459,7 +458,7 @@ ymin=-1.4,ymax=1.4,xmin=-1.1,xmax=1.1,name=myplot]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 %
-%\noindent
+\noindent
 The last lines of each column tell the story: the left and right hand limits are not equal. Therefore the limit does not exist at 0, and $f$ is not differentiable at 0; see \autoref{fig:absolutevalueprime}.
 So we have
 \[\fp(x) = \begin{cases} -1 & x<0 \\ 1 & x>0\end{cases}.\] 
@@ -542,11 +541,11 @@ Recall we pseudo-defined a continuous function as one in which we could sketch i
 % todo Tim : iframe ?
 }{%
  \exvideo{%
-  \begin{minipage}[t]{2cm}%
+  \begin{minipage}[t]{.18\linewidth}%
    \vspace{-.5\baselineskip}\qrcode{http://mathinsight.org/applet/secant_line_slope}%
   \end{minipage}
   \quad
-  \begin{minipage}[t]{.74\linewidth}%
+  \begin{minipage}[t]{.64\linewidth}%
    To better understand the definition of a derivative, experiment with the Geogebra app at \\
    \url{http://mathinsight.org/applet/secant_line_slope}.%
   \end{minipage}%

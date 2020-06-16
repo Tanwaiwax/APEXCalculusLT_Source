@@ -6,9 +6,9 @@ In \autoref{sec:power_series}, we showed how certain functions can be represente
 Let $f(x)$ have derivatives of all orders at $x=c$.
 \index{Taylor Series!definition}\index{Maclaurin Series!definition}\index{Maclaurin Series|seealso{Taylor Series}}\index{series!Taylor}\index{series!Maclaurin}
 \begin{enumerate}
-	\item The \sword{Taylor Series of $f(x)$, centered at $c$} is
+	\item The \textbf{Taylor Series of $f(x)$, centered at $c$} is
 	\[\sum_{n=0}^\infty \frac{f\,^{(n)}(c)}{n!}(x-c)^n.\]
-	\item	Setting $c=0$ gives the \sword{Maclaurin Series of $f(x)$}:
+	\item	Setting $c=0$ gives the \textbf{Maclaurin Series of $f(x)$}:
 	\[\sum_{n=0}^\infty \frac{f\,^{(n)}(0)}{n!}x^n.\]
 \end{enumerate}
 \end{definition}
@@ -83,7 +83,7 @@ We demonstrate the use of this theorem in an example.
 \begin{example}[Establishing equality of a function and its Taylor series]\label{ex_ts3}
 Show that $f(x) = \cos x$ is equal to its Maclaurin series, as found in \autoref{ex_ts1}, for all $x$.
 \solution
-Given a value $x$, the magnitude of the error term $R_n(x)$ is bound\-ed by
+Given a value $x$, the magnitude of the error term $R_n(x)$ is bounded by
 \[\abs{R_n(x)}\leq \frac{\max\abs{\,f\,^{(n+1)}(z)}}{(n+1)!}\abs{x}^{n+1}.\]
 Since all derivatives of $\cos x$ are $\pm \sin x$ or $\pm\cos x$, whose magnitudes are bounded by $1$, we can state
 \[\abs{R_n(x)}\leq \frac{1}{(n+1)!}\abs{x}^{n+1}\]
@@ -97,7 +97,7 @@ For any $x$, $\ds\lim_{n\to\infty} \frac{x^{n+1}}{(n+1)!} = 0$. Applying the Squ
 
 It is natural to assume that a function is  equal to its Taylor series on the series' interval of convergence, but this is not the case. In order to properly establish equality, one must use \autoref{thm:function_series_equality}. This is a bit disappointing, as we developed beautiful techniques for determining the interval of convergence of a power series, and proving that $R_n(x)\to 0$ can be cumbersome as it deals with high order derivatives of the function.
 
-There is good news. A function $f(x)$ that is equal to its Taylor series, centered at any point the domain of $f(x)$, is said to be an \sword{analytic function},\index{analytic function} and most, if not all, functions that we encounter within this course are analytic functions. Generally speaking, any function that one creates with elementary functions (polynomials, exponentials, trigonometric functions, etc.) that is not piecewise defined is probably analytic. For most functions, we assume the function is equal to its Taylor series on the series' interval of convergence and only use \autoref{thm:function_series_equality} when we suspect something may not work as expected.  The converse is also true: if a function is equal to \emph{some} power series on an interval, then that power series is the Taylor series of the function.
+There is good news. A function $f(x)$ that is equal to its Taylor series, centered at any point the domain of $f(x)$, is said to be an \textbf{analytic function},\index{analytic function} and most, if not all, functions that we encounter within this course are analytic functions. Generally speaking, any function that one creates with elementary functions (polynomials, exponentials, trigonometric functions, etc.) that is not piecewise defined is probably analytic. For most functions, we assume the function is equal to its Taylor series on the series' interval of convergence and only use \autoref{thm:function_series_equality} when we suspect something may not work as expected.  The converse is also true: if a function is equal to \emph{some} power series on an interval, then that power series is the Taylor series of the function.
 
 We develop the Taylor series for one more important function, then give a table of the Taylor series for a number of common functions.\index{Binomial Series}\index{series!Binomial}
 
@@ -164,18 +164,19 @@ Unfortunately, this particular expansion of $\pi$ converges very slowly. The fir
 %
 \noindent\begin{tabular}{llc}
 \textbf{Function and Series} & \textbf{First Few Terms} & \parbox{55pt}{\centering\textbf{Interval of}\\\textbf{Convergence}} \\
-$\ds e^x = \sum_{n=0}^\infty \frac{x^n}{n!}$ & $\ds 1+ x+\frac{x^2}{2!} + \frac{x^3}{3!}+\dotsb$ & $(-\infty,\infty)$\medskip\\
+$\ds e^x = \sum_{n=0}^\infty \frac{x^n}{n!}$ & $\ds 1+ x+\frac{x^2}{2!} + \frac{x^3}{3!}+\dotsb$ & $(-\infty,\infty)$\medskip\\ % Ex {ex_taypoly1} (ish) 9.9.1
 $\ds \sin x = \sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{(2n+1)!}$ & $\ds x-\frac{x^3}{3!}+\frac{x^5}{5!} - \frac{x^7}{7!}+\dotsb$ & $(-\infty,\infty)$\medskip\\
-$\ds \cos x = \sum_{n=0}^\infty (-1)^n\frac{x^{2n}}{(2n)!}$ & $\ds 1-\frac{x^2}{2!}+\frac{x^4}{4!} - \frac{x^6}{6!} +\dotsb$ & $(-\infty,\infty)$\smallskip\\
-$\ds \ln(x+1) = \sum_{n=1}^\infty(-1)^{n+1}\frac{x^n}{n}$ & $\ds x-\frac{x^2}{2}+\frac{x^3}{3}-\dotsb$& $(-1,1]$\smallskip\\
-$\ds \frac{1}{1-x} = \sum_{n=0}^\infty x^n$ &$\ds 1+x+x^2+x^3+\dotsb$& $(-1,1)$\\
-\small$\ds (1+x)^k=\sum_{n=0}^\infty \frac{k(k-1)\dotsm\bigl(k-(n-1)\bigr)}{n!}x^n$ \normalsize& $\ds 1+kx+\frac{k(k-1)}{2!}x^2 + \dotsb$ & $\begin{cases}(-1,1)&\phantom{-}k\le-1\\{}(-1,1]&-1<k<0\\{}[-1,1]&\phantom{-}0<k\end{cases}$\\
+$\ds \cos x = \sum_{n=0}^\infty (-1)^n\frac{x^{2n}}{(2n)!}$ & $\ds 1-\frac{x^2}{2!}+\frac{x^4}{4!} - \frac{x^6}{6!} +\dotsb$ & $(-\infty,\infty)$\smallskip\\ % ex {ex_ts1} 9.10.1
+$\ds \ln(x+1) = \sum_{n=1}^\infty(-1)^{n+1}\frac{x^n}{n}$ & $\ds x-\frac{x^2}{2}+\frac{x^3}{3}-\dotsb$& $(-1,1]$\smallskip\\ % Ex 9.10.2 (ish)
+$\ds \frac{1}{1-x} = \sum_{n=0}^\infty x^n$ &$\ds 1+x+x^2+x^3+\dotsb$& $(-1,1)$\\ % equ {eq:power_series_geometric} 9.8.1
+\small$\ds (1+x)^k=\sum_{n=0}^\infty \frac{k(k-1)\dotsm\bigl(k-(n-1)\bigr)}{n!}x^n$ \normalsize& $\ds 1+kx+\frac{k(k-1)}{2!}x^2 + \dotsb$ & $\begin{cases}(-1,1)&\phantom{-}k\le-1\\{}(-1,1]&-1<k<0\\{}[-1,1]&\phantom{-}0<k\end{cases}$\\ % ex {ex_ts4} 9.10.4
 $\ds \tan^{-1}x = \sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{2n+1}$ & $\ds x-\frac{x^3}{3}+\frac{x^5}{5}-\frac{x^7}{7}+\dotsb$ & $[-1,1]$
 \end{tabular}\index{Taylor Series!common series}
 \end{keyidea}
 }
 
-% todo find and show where in the text we derive the ``Important Maclaurin Series Expansions'', and derive any missing in an example
+% todo Tim should we mention where in the text we derive the ``Important Maclaurin Series Expansions''
+% todo Tim Do we want to derive the Maclaurin series for sin and arctan?
 
 \begin{theorem}[Algebra of Power Series]\label{thm:series_alg}
 Let $\ds f(x) = \sum_{n=0}^\infty a_nx^n$ and $\ds g(x) = \sum_{n=0}^\infty b_nx^n$ converge absolutely for $\abs x<R$, and let $h(x)$ be continuous.

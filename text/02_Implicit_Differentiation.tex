@@ -39,6 +39,7 @@ We start by taking the derivative of both sides (thus maintaining the equality).
 The right hand side is easy; it returns $-3x^2$. 
 
 The left hand side requires more consideration. We take the derivative term-by-term.  Using the technique derived from \autoeqref{eq:implicit1} above, we can see that
+\vspace{-.3\baselineskip}
 \[\frac{d}{dx}\Bigl(\sin y\Bigr) = \cos y \cdot y\primeskip'.\] %The derivative of $\sin(y)$ is $\cos(y)y\primeskip'$.  The reason for this is the chain rule. Since $y$ itself depends on $x$, the term $\sin(y)$ is really a function inside of a function, $y$ being a function of $x$.
 
 We apply the same process to the $y^3$ term. 
@@ -48,7 +49,7 @@ We apply the same process to the $y^3$ term.
 %Similarly, the derivative of $y^3$ is $3y^2y\primeskip'$.  
 Putting this together with the right hand side, we have
 \[\cos(y)y\primeskip'+3y^2y\primeskip' = -3x^2.\]
-Now solve for $y\primeskip'$.
+Now solve for $y\primeskip'$.\vspace{-.5\baselineskip}
 \begin{align*}
 	\cos(y)y\primeskip'+3y^2y\primeskip' 	&= -3x^2.\\
 	\bigl(\cos y+3y^2\bigr)y\primeskip' &=	-3x^2\\
@@ -108,7 +109,7 @@ x^2 \cdot (4y^3y') + 2x \cdot y^4
 \end{gather*}
 The first part of this expression requires a $y\primeskip'$ because we are taking the derivative of a $y$ term. The second part does not require it because we are taking the derivative of $x^2$.
 
-The derivative of the right hand side of the equation is found to be $2$. In all, we get:
+The derivative of the right hand side of the equation is found to be $2$. In all, we get:\vspace{-.3\baselineskip}
 \[3y^2y\primeskip' + 4x^2y^3y\primeskip' + 2xy^4 = 2.\]
 
 Move terms around so that the left side consists only of the $y\primeskip'$ terms and the right side consists of all the other terms:
@@ -319,6 +320,7 @@ We can use implicit differentiation to find higher order derivatives. In theory,
 Given $x^2+y^2=1$, find $\ds\frac{d^2y}{dx^2} = y\primeskip''$.
 \solution
 We found that $y\primeskip' = \frac{dy}{dx} = -x/y$ in \autoref{ex_implicit7}. To find $y\primeskip''$, we apply implicit differentiation to $y\primeskip'$.
+{\allowdisplaybreaks
 \begin{align*}
 	y\primeskip''
 	&= \frac{d}{dx}\bigl(y\primeskip'\bigr) \\
@@ -329,7 +331,7 @@ We found that $y\primeskip' = \frac{dy}{dx} = -x/y$ in \autoref{ex_implicit7}. T
 %	&= -\frac{y+x^2/y}{y^2}\cdot\frac yy \\
 	&= -\frac{y^2+x^2}{y^3}, && \text{\small since we were given $x^2+y^2=1$} \\
 	&= -\frac1{y^3}.
-\end{align*}
+\end{align*}}
 %While this is not a particularly simple expression, it is usable.
 We can see that $y\primeskip''>0$ when $y<0$ and $y\primeskip''<0$ when $y>0$. In \autoref{sec:concavity}, we will see how this relates to the shape of the graph.
 \end{example}
@@ -340,15 +342,13 @@ Implicit differentiation proves to be useful as it allows us to find the instant
 % In \autoref{sec:deriv_inverse_function}, implicit differentiation will be used to find the derivatives of \emph{inverse} functions, such as $y=\sin^{-1} x$.
 We close with a small gallery of ``interesting'' and ``famous'' curves along with the implicit equations that produce them.
 
-\clearpage
-
-\noindent\begin{minipage}[t]{\linewidth}\noindent%
-\captionsetup{type=figure}%
+\noindent%
 \flushinner{%
+ \newcommand{\scalefactor}{1}
  \begin{tabular}{ccc}
  % astroid
 \begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\scalefactor\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,xtick={-1,1},ytick={-1,1},
 ymin=-1.1,ymax=1.1,xmin=-1.1,xmax=1.1,axis equal]
 \addplot [thick,draw={\colorone}, smooth,domain=0:360,samples=360]
@@ -360,7 +360,7 @@ ymin=-1.1,ymax=1.1,xmin=-1.1,xmax=1.1,axis equal]
   &
   % fattened circle with n=2
 \begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\scalefactor\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,xtick={-1,1},ytick={-1,1},
 ymin=-1.1,ymax=1.1,xmin=-1.1,xmax=1.1,axis equal]
 \addplot [thick,draw={\colorone}, smooth,domain=0:90,samples=90]
@@ -378,7 +378,7 @@ ymin=-1.1,ymax=1.1,xmin=-1.1,xmax=1.1,axis equal]
    &
    % Elliptic curve y^2=x^3+ax+b with a=-2, b=2
 \begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\scalefactor\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,xtick={-2,2},ytick={-2,2},
 ymin=-3.1,ymax=3.1,xmin=-3.1,xmax=3.1,axis equal]
 \addplot [thick,draw={\colorone}, smooth,domain=-1.769:3.1,samples=40]
@@ -395,7 +395,7 @@ ymin=-3.1,ymax=3.1,xmin=-3.1,xmax=3.1,axis equal]
   \parbox{150pt}{\centering Elliptic curve\\$y^2=x^3+ax+b$} \bigskip\\
   % Cassini ovals with a=1, b=1.1
 \begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\scalefactor\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
 ymin=-1,ymax=1,xmin=-1.6,xmax=1.6,axis equal]
 \addplot[thick,draw={\colorone},smooth,domain=0:360,samples=90]
@@ -409,7 +409,7 @@ ymin=-1,ymax=1,xmin=-1.6,xmax=1.6,axis equal]
   &
   % devil's curve with a=1, b=.8
   \begin{tikzpicture}
-   \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
+   \begin{axis}[width=\scalefactor\marginparwidth,tick label style={font=\scriptsize},
                 axis y line=middle,axis x line=middle,name=myplot,
                 ymin=-1.5,ymax=1.5,xmin=-1.5,xmax=1.5,axis equal]
     \addplot [thick,draw={\colorone}, smooth,domain=-.8:.8,samples=40]
@@ -427,7 +427,7 @@ ymin=-1,ymax=1,xmin=-1.6,xmax=1.6,axis equal]
   &
   % folium of Descartes
   \begin{tikzpicture}
-   \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
+   \begin{axis}[width=\scalefactor\marginparwidth,tick label style={font=\scriptsize},
                 axis y line=middle,axis x line=middle,name=myplot,
                 ymin=-2.1,ymax=2.1,xmin=-2.1,xmax=2.1,axis equal]
     \addplot [thick,draw={\colorone}, smooth,domain=-40:130,samples=20]
@@ -440,7 +440,7 @@ ymin=-1,ymax=1,xmin=-1.6,xmax=1.6,axis equal]
   \parbox{150pt}{\centering Devil's curve\\$y^2(y^2-a^2)=x^2(x^2-b^2)$} &
   \parbox{150pt}{\centering Folium of Descartes\\$x^3+y^3=3axy$}
  \end{tabular}}
-\end{minipage}\bigskip
+\bigskip
 
 The astroid and folium of Descartes also appear in \autoref{sec:param_eqs}.  Other important implicit curves are the conic sections, which appear in \autoref{sec:conic_sections}.  Also, the lemniscate, cardioid, and limaçon seen in \autoref{sec:polar} have particularly nice implicit representations.\bigskip
 % does that mean they should be here? they're not really that nice

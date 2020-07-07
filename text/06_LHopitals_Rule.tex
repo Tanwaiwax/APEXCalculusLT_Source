@@ -2,13 +2,12 @@
 
 This section is concerned with a technique for evaluating certain limits that will be useful in later chapters.
 
-Our treatment of limits exposed us to ``0/0'', an indeterminate form. If $\ds \lim_{x\to c}f(x)=0$ and $\ds \lim_{x\to c} g(x) =0$, we do not conclude that $\ds \lim_{x\to c} f(x)/g(x)$ is $0/0$; rather, we use $0/0$ as notation to describe the fact that both the numerator and denominator approach 0. The expression 0/0 has no numeric value; other work must be done to evaluate the limit.
+Our treatment of limits exposed us to ``0/0'', an indeterminate form. If both $\ds \lim_{x\to c}f(x)$ and $\ds \lim_{x\to c} g(x)$ are zero, we do not conclude that $\ds \lim_{x\to c} f(x)/g(x)$ is $0/0$; rather, we use $0/0$ as notation to describe the fact that both the numerator and denominator approach 0. The expression 0/0 has no numeric value; other work must be done to evaluate the limit.
 
 Other indeterminate forms exist; they are: $\infty/\infty$, $0\cdot\infty$, $\infty-\infty$, $0^0$, $1^\infty$ and $\infty^0$. Just as ``0/0'' does not mean ``divide 0 by 0,'' the expression ``$\infty/\infty$'' does not mean ``divide infinity by infinity.'' Instead, it means ``a quantity is growing without bound and is being divided by another quantity that is growing without bound.'' We cannot determine from such a statement what value, if any, results in the limit. Likewise, ``$0\cdot \infty$'' does not mean ``multiply zero by infinity.'' Instead, it means ``one quantity is shrinking to zero, and is being multiplied by a quantity that is growing without bound.'' We cannot determine from such a description what the result of such a limit will be.
 
 This section introduces L'Hôpital's Rule, a method of resolving limits that produce the indeterminate forms 0/0 and $\infty/\infty$. We'll also show how algebraic manipulation can be used to convert other indeterminate expressions into one of these two forms so that our new rule can be applied.
 
-% todo Tim todo check the index for L'Hôpital's Rule
 \begin{theorem}[L'Hôpital's Rule, Part 1]\label{thm:LHR_1}
 Let $f$ and $g$ be differentiable functions on an open interval $I$ containing $a$.
 \begin{enumerate}
@@ -16,7 +15,7 @@ Let $f$ and $g$ be differentiable functions on an open interval $I$ containing $
 assuming that the limit on the right exists.
 \item If  $\ds\lim_{x\to a}f(x)=\pm\infty$ and $\ds\lim_{x\to a}g(x)=\pm\infty$, then \[\lim_{x\to a}\frac{f(x)}{g(x)}=\lim_{x\to a} \frac{\fp(x)}{g\primeskip'(x)},\]
 assuming that the limit on the right exists.
-\index{L'Hôpital's Rule}%\index{LHopitals Rule@L'Hôpital's Rule}
+\index{LHopitals Rule@L'Hôpital's Rule}
 \end{enumerate}
 \end{theorem}
 
@@ -33,7 +32,7 @@ assuming that the limit on the right exists.
 assuming that the limit on the right exists.
 \end{enumerate}
 Similar statements can be made where $x$ approaches $-\infty$.
-\index{L'Hôpital's Rule}%\index{LHopitals Rule@L'Hôpital's Rule}
+\index{LHopitals Rule@L'Hôpital's Rule}
 \end{theorem}
 
 We demonstrate the use of L'Hôpital's Rule in the following examples; we will often use ``LHR'' as an abbreviation of ``L'Hôpital's Rule.''
@@ -72,10 +71,9 @@ This latter limit also evaluates to the $0/0$ indeterminate form. To evaluate it
 \]
 Thus $\ds \lim_{x\to0}\frac{x^2}{1-\cos x}=2.$
 
-	\item \mbox{}\\[-2\baselineskip]
-\[\lim_{x\to-3}\frac{x^3+27}{x^2+9} =\frac 0{18}=0\]
+	\item \hfill$\ds\lim_{x\to-3}\frac{x^3+27}{x^2+9}
+	 =\frac0{18}=0$\hfill\null\smallskip\\
 We cannot use L'Hôpital's Rule in this case because the original limit does not return an indeterminate form, so L'Hôpital's Rule does not apply. In fact, the inappropriate use of L'Hôpital's Rule here would result in the incorrect limit $-\frac92$.
-% was \frac32
 
 	\item	We can evaluate this limit already using \autoref{thm:lim_rational_fn_at_infty}; the answer is 3/4. We apply L'Hôpital's Rule to demonstrate its applicability.
 \[
@@ -159,7 +157,7 @@ Interpretation: as $x$ gets large, the difference between $x^2$ and $e^x$ grows 
 
 When faced with a limit that returns one of the indeterminate forms $0^0$, $1^\infty$, or $\infty^0$, it is often useful to use the natural logarithm to convert to an indeterminate form we already know how to find the limit of, then use the natural exponential function find the original limit. This is possible because the natural logarithm and natural exponential functions are inverses and because they are both continuous. The following Key Idea expresses the concept, which is followed by an example that demonstrates its use.
 
-\begin{keyidea}[{\parbox[t]{200pt}{Evaluating Limits Involving Indeterminate Forms $0^0$, $1^\infty$ and $\infty^0$}}]\label{idea:LHR_power}
+\begin{keyidea}[Evaluating Limits Involving Indeterminate Forms $0^0$, $1^\infty$ and $\infty^0$]\label{idea:LHR_power}
 If $\ds \lim_{x\to c} \ln\bigl(f(x)\bigr) = L$,\quad then 
 $\ds \lim_{x\to c} f(x) = \lim_{x\to c} e^{\ln(f(x))} = e\,^L.$ \index{limit!indeterminate form}\index{indeterminate form}
 \end{keyidea}

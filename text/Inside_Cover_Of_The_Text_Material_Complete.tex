@@ -272,212 +272,176 @@
 
 \subsection{Areas and Volumes}
 
-\begin{tabular}{llll}
-	{\begin{minipage}[t]{.22\linewidth}
-		\textbf{Triangles}
-		\begin{flalign*}
-			&h=a\sin\theta &\\
-			&\text{Area} = \frac12bh \\
-			&\text{Law of Cosines:} \\
-			&c^2=a^2+b^2-2ab\cos\theta
-		\end{flalign*}
-		~ % to force some space between this row and the next
-	\end{minipage}}
+% this acts like there's an arraystretch, but I'm not sure why
+\begin{tabular}{p{.22\linewidth}p{.22\linewidth}p{.22\linewidth}p{.22\linewidth}}
+	\paragraph{Triangles}
+	\vbox{\begin{flalign*}
+		&h=a\sin\theta &\\
+		&\text{Area} = \frac12bh \\
+		&\text{Law of Cosines:} \\
+		&c^2=a^2+b^2-2ab\cos\theta
+	\end{flalign*}}
 	&
-	\begin{minipage}[t]{.22\linewidth}
-		~\vspace{0pt}\\
-		\begin{tikzpicture}[x=30pt,y=30pt,thick]
-			\draw (0,0) -- node [below]  { $b$} (3,0) node [shift={(-15pt,8pt)}] {$\theta$} -- node [above right] { $a$} (2,1.5) -- node [above left] { $c$} (0,0);
-			\draw (2.7,0) arc (180:125:.3);
-			\draw [dashed] (2,1.5) -- (2,0) node [pos=.5,left] {$h$};
-			\draw (2,.2) -- (1.8,.2) -- (1.8,0);
-		\end{tikzpicture}
-	\end{minipage}
+	\begin{tikzpicture}[x=30pt,y=30pt,thick,
+				baseline={([yshift=2\baselineskip]current bounding box.north)}]
+		\draw (0,0) -- node [below]  { $b$} (3,0) node [shift={(-15pt,8pt)}] {$\theta$} -- node [above right] { $a$} (2,1.5) -- node [above left] { $c$} (0,0);
+		\draw (2.7,0) arc (180:125:.3);
+		\draw [dashed] (2,1.5) -- (2,0) node [pos=.5,left] {$h$};
+		\draw (2,.2) -- (1.8,.2) -- (1.8,0);
+	\end{tikzpicture}
 	&
-	{\begin{minipage}[t]{.22\linewidth}
-		\textbf{Right Circular Cone}
-		\begin{flalign*}
-			&\text{Volume} = \frac 13 \pi r^2h &\\
-			&\text{Surface Area} = \\
-			&\pi r\sqrt{r^2+h^2} +\pi r^2
-		\end{flalign*}
-	\end{minipage}}
+	\paragraph{Right Circular Cone}
+	\vbox{\begin{flalign*}
+		&\text{Volume} = \frac 13 \pi r^2h &\\
+		&\text{Surface Area} = \\
+		&\pi r\sqrt{r^2+h^2} +\pi r^2
+	\end{flalign*}}
 	&
-	\begin{minipage}[t]{.22\linewidth}
-		~\vspace{0pt}\\
-		\begin{tikzpicture}[x=13pt,y=15pt,thick]
-			\begin{scope}[xscale=2]
-				\draw (-1,0) arc (-180:0:1);
-				\draw [dashed] (1,0) arc (0:180:1);
-			\end{scope}
-			\draw (-2,.1) -- (0,3) -- (2,.15);
-			\draw [dashed] (0,3) -- node [left] {\small $h$} (0,0);
-			\draw [dashed] (0,0) -- node [above] {\small $r$} (2,0);
-			\draw [fill=black] (0,0) circle (1pt);
-		\end{tikzpicture}
-	\end{minipage}
+	\begin{tikzpicture}[x=13pt,y=15pt,thick,
+				baseline={([yshift=2\baselineskip]current bounding box.north)}]
+		\begin{scope}[xscale=2]
+			\draw (-1,0) arc (-180:0:1);
+			\draw [dashed] (1,0) arc (0:180:1);
+		\end{scope}
+		\draw (-2,.1) -- (0,3) -- (2,.15);
+		\draw [dashed] (0,3) -- node [left] {\small $h$} (0,0);
+		\draw [dashed] (0,0) -- node [above] {\small $r$} (2,0);
+		\draw [fill=black] (0,0) circle (1pt);
+	\end{tikzpicture}
 	\\
-	\begin{minipage}[t]{.23\linewidth}
-		\textbf{Parallelograms}
-		Area = $bh$
-	\end{minipage}
+	\paragraph{Parallelograms}
+	\vbox{\begin{flalign*}
+		&\text{Area} = bh &
+	\end{flalign*}}
 	&
-	\begin{minipage}[t]{.22\linewidth}
-		~\vspace{0pt}\\
-		\begin{tikzpicture}[x=30pt,y=25pt,thick]
-			\draw (0,0) -- node [below]  { $b$} (2,0) -- (3,1.5) -- (1,1.5) -- (0,0);
-			\draw [dashed] (1,1.5) -- node [right] {$h$} (1,0);
-			\draw (.8,0) -- (.8,.2) -- (1,.2);
-		\end{tikzpicture}
-	\end{minipage}
+	\begin{tikzpicture}[x=30pt,y=25pt,thick,
+				baseline={([yshift=2\baselineskip]current bounding box.north)}]
+		\draw (0,0) -- node [below]  { $b$} (2,0) -- (3,1.5) -- (1,1.5) -- (0,0);
+		\draw [dashed] (1,1.5) -- node [right] {$h$} (1,0);
+		\draw (.8,0) -- (.8,.2) -- (1,.2);
+	\end{tikzpicture}
 	&
-	{\begin{minipage}[t]{.22\linewidth}
-		\textbf{Right Circular Cylinder}
-		\begin{flalign*}
-			&\text{Volume} = \pi r^2h &\\
-			&\text{Surface Area} = \\
-			&2\pi rh  +2\pi r^2
-		\end{flalign*}
-	\end{minipage}}
+	\paragraph{Right Circular Cylinder}
+	\vbox{\begin{flalign*}
+		&\text{Volume} = \pi r^2h &\\
+		&\text{Surface Area} = \\
+		&2\pi rh  +2\pi r^2
+	\end{flalign*}}
 	&
-	\begin{minipage}[t]{.22\linewidth}
-		~\vspace{0pt}\\
-		\begin{tikzpicture}[x=13pt,y=14pt,thick]
-			\begin{scope}[xscale=2]
-				\draw (-1,0) arc (-180:0:1);
-				\draw [dashed] (1,0) arc (0:180:1);
-			\end{scope}
-			\draw (0,2.5) ellipse [x radius=2,y radius=1];
-			\draw (-2,0) -- (-2,2.5) (2,0) -- node [right] {$h$} (2,2.5);
-			\draw (0,2.5) -- node [above] {$r$} (2,2.5);
-			\draw [fill=black] (0,2.5) circle (1pt);
-		\end{tikzpicture}\bigskip\\~
-	\end{minipage}
-	\\\addlinespace[4\baselineskip]
-	\begin{minipage}[t]{.23\linewidth}
-		\textbf{Trapezoids}
-		Area = $\frac12(a+b)h$
-	\end{minipage}
+	\begin{tikzpicture}[x=13pt,y=14pt,thick,
+				baseline={([yshift=2\baselineskip]current bounding box.north)}]
+		\begin{scope}[xscale=2]
+			\draw (-1,0) arc (-180:0:1);
+			\draw [dashed] (1,0) arc (0:180:1);
+		\end{scope}
+		\draw (0,2.5) ellipse [x radius=2,y radius=1];
+		\draw (-2,0) -- (-2,2.5) (2,0) -- node [right] {$h$} (2,2.5);
+		\draw (0,2.5) -- node [above] {$r$} (2,2.5);
+		\draw [fill=black] (0,2.5) circle (1pt);
+	\end{tikzpicture}
+	\\
+	\paragraph{Trapezoids}
+	\vbox{\begin{flalign*}
+		& \text{Area} = \frac12(a+b)h &
+	\end{flalign*}}
 	&
-	\begin{minipage}[t]{.22\linewidth}
-		~\vspace{0pt}\\
-		\begin{tikzpicture}[x=30pt,y=25pt,thick]
-			\draw (0,0) -- node [below,pos=.7]  { $b$} (3,0) -- (2.5,1.5) -- node [above] {$a$} (1.5,1.5) -- (0,0);
-			\draw [dashed] (1.5,1.5) -- node [right] {$h$} (1.5,0);
-			\draw (1.3,0) -- (1.3,.2) -- (1.5,.2);
-		\end{tikzpicture}\bigskip\\~
-	\end{minipage}
+	\begin{tikzpicture}[x=30pt,y=25pt,thick,
+				baseline={([yshift=2\baselineskip]current bounding box.north)}]
+		\draw (0,0) -- node [below,pos=.7]  { $b$} (3,0) -- (2.5,1.5) -- node [above] {$a$} (1.5,1.5) -- (0,0);
+		\draw [dashed] (1.5,1.5) -- node [right] {$h$} (1.5,0);
+		\draw (1.3,0) -- (1.3,.2) -- (1.5,.2);
+	\end{tikzpicture}
 	&
-	{\begin{minipage}[t]{.22\linewidth}
-		\textbf{Sphere}
-		\begin{flalign*}
-			&\text{Volume} = \frac43\pi r^3 &\\
-			&\text{Surface Area} = 4\pi r^2
-		\end{flalign*}
-	\end{minipage}}
+	\paragraph{Sphere}
+	\vbox{\begin{flalign*}
+		&\text{Volume} = \frac43\pi r^3 &\\
+		&\text{Surface Area} = 4\pi r^2
+	\end{flalign*}}
 	&
-	\begin{minipage}[t]{.22\linewidth}
-		~\vspace{0pt}\\
-		\begin{tikzpicture}[x=13pt,y=13pt,thick]
-			\begin{scope}[xscale=2]
-				\draw (-1,0) arc (-180:0:1);
-				\draw [dashed] (1,0) arc (0:180:1);
-			\end{scope}
-			\draw (0,0) circle (2);
-			\draw [dashed] (0,0) -- node [above] {$r$} (2,0);
-			\draw [fill=black] (0,0) circle (1pt);
-		\end{tikzpicture}
-	\end{minipage}
-	\\\addlinespace[4\baselineskip]
-	{\begin{minipage}[t]{.22\linewidth}
-		\textbf{Circles}
-		\begin{flalign*}
-			&\text{Area} = \pi r^2 &\\
-			&\text{Circumference} = 2\pi r
-		\end{flalign*}
-	\end{minipage}}
+	\begin{tikzpicture}[x=13pt,y=13pt,thick,
+				baseline={([yshift=2\baselineskip]current bounding box.north)}]
+		\begin{scope}[xscale=2]
+			\draw (-1,0) arc (-180:0:1);
+			\draw [dashed] (1,0) arc (0:180:1);
+		\end{scope}
+		\draw (0,0) circle (2);
+		\draw [dashed] (0,0) -- node [above] {$r$} (2,0);
+		\draw [fill=black] (0,0) circle (1pt);
+	\end{tikzpicture}
+	\\
+	\paragraph{Circles}
+	\vbox{\begin{flalign*}
+		&\text{Area} = \pi r^2 &\\
+		&\text{Circumference} = 2\pi r
+	\end{flalign*}}
 	&
-	\begin{minipage}[t]{.22\linewidth}
-		~\vspace{0pt}\\
-		\begin{tikzpicture}[x=30pt,y=30pt,thick]
-			\draw (0,0) circle (1);
-			\draw [dashed] (0,0) -- node [above] {$r$} (1,0);
-			\draw [fill=black] (0,0) circle (1pt);
-		\end{tikzpicture}
-	\end{minipage}
+	\begin{tikzpicture}[x=30pt,y=30pt,thick,
+				baseline={([yshift=2\baselineskip]current bounding box.north)}]
+		\draw (0,0) circle (1);
+		\draw [dashed] (0,0) -- node [above] {$r$} (1,0);
+		\draw [fill=black] (0,0) circle (1pt);
+	\end{tikzpicture}
 	&
-	{\begin{minipage}[t]{.22\linewidth}
-		\textbf{General Cone}
-		\begin{flalign*}
-			&\text{Area of Base} = A &\\
-			&\text{Volume} = \frac13Ah
-		\end{flalign*}
-	\end{minipage}}
+	\paragraph{General Cone}
+	\vbox{\begin{flalign*}
+		&\text{Area of Base} = A &\\
+		&\text{Volume} = \frac13Ah
+	\end{flalign*}}
 	&
-	\begin{minipage}[t]{.22\linewidth}
-		~\vspace{0pt}\\
-		\begin{tikzpicture}[x=13pt,y=10pt,thick]
-			\begin{scope}
-				\clip (0,0) rectangle (4,-2.5);
-				\draw [smooth] plot coordinates {(0,0) (1,1.5) (2,1.5) (4,0) (3,-1) (2,-1.5) (1,-2) (0,0)};
-			\end{scope}
-			\begin{scope}
-				\clip (0,0) rectangle (4,2.5);
-				\draw [smooth,dashed] plot coordinates {(0,0) (1,1.5) (2,1.5) (4,0) (3,-1) (2,-1.5) (1,-2) (0,0)};
-			\end{scope}
-			\draw (0,0) -- (2,4) -- (4,0);
-			\draw [dashed] (2,0) -- node [right] {$h$}(2,4);
-			\draw [fill=black] (2,0) circle (1pt);
-			\draw (1.5,-.75) node {$A$};
-		\end{tikzpicture}\bigskip\\~
-	\end{minipage}
-	\\\addlinespace[4\baselineskip]
-	{\begin{minipage}[t]{.22\linewidth}
-		\textbf{Sectors of Circles}
-		\begin{flalign*}
-			&\theta \text{ in radians} &\\
-			&\text{Area} = \frac12\theta r^2 \\
-			&s=r\theta
-		\end{flalign*}
-	\end{minipage}}
+	\begin{tikzpicture}[x=13pt,y=10pt,thick,
+				baseline={([yshift=2\baselineskip]current bounding box.north)}]
+		\begin{scope}
+			\clip (0,0) rectangle (4,-2.5);
+			\draw [smooth] plot coordinates {(0,0) (1,1.5) (2,1.5) (4,0) (3,-1) (2,-1.5) (1,-2) (0,0)};
+		\end{scope}
+		\begin{scope}
+			\clip (0,0) rectangle (4,2.5);
+			\draw [smooth,dashed] plot coordinates {(0,0) (1,1.5) (2,1.5) (4,0) (3,-1) (2,-1.5) (1,-2) (0,0)};
+		\end{scope}
+		\draw (0,0) -- (2,4) -- (4,0);
+		\draw [dashed] (2,0) -- node [right] {$h$}(2,4);
+		\draw [fill=black] (2,0) circle (1pt);
+		\draw (1.5,-.75) node {$A$};
+	\end{tikzpicture}
+	\\
+	\paragraph{Sectors of Circles}
+	\vbox{\begin{flalign*}
+		&\theta \text{ in radians} &\\
+		&\text{Area} = \frac12\theta r^2 \\
+		&s=r\theta
+	\end{flalign*}}
 	&
-	\begin{minipage}[t]{.22\linewidth}
-		~\vspace{0pt}\\
-		\begin{tikzpicture}[x=30pt,y=30pt,thick]
-			\draw (2,0) arc (0:50:2) -- (0,0);
-			\draw [] (0,0) -- node [below] {$r$} (2,0);
-			\draw [fill=black] (0,0) circle (1pt);
-			\draw (1.95,1.0) node {$s$};
-			\draw (0,0) node [shift={(15pt,8pt)}] {$\theta$};
-		\end{tikzpicture}
-	\end{minipage}
+	\begin{tikzpicture}[x=30pt,y=30pt,thick,
+				baseline={([yshift=2\baselineskip]current bounding box.north)}]
+		\draw (2,0) arc (0:50:2) -- (0,0);
+		\draw [] (0,0) -- node [below] {$r$} (2,0);
+		\draw [fill=black] (0,0) circle (1pt);
+		\draw (1.95,1.0) node {$s$};
+		\draw (0,0) node [shift={(15pt,8pt)}] {$\theta$};
+	\end{tikzpicture}
 	&
-	{\begin{minipage}[t]{.22\linewidth}
-		\textbf{General Right Cylinder}
-		\begin{flalign*}
-			&\text{Area of Base} = A &\\
-			&\text{Volume} = Ah
-		\end{flalign*}
-	\end{minipage}}
+	\paragraph{General Right Cylinder}
+	\vbox{\begin{flalign*}
+		&\text{Area of Base} = A &\\
+		&\text{Volume} = Ah
+	\end{flalign*}}
 	&
-	\begin{minipage}[t]{.22\linewidth}
-		~\vspace{0pt}\\
-		\begin{tikzpicture}[x=13pt,y=10pt,thick]
-			\begin{scope}
-				\clip (0,0) rectangle (4,-2.5);
-				\draw [smooth] plot coordinates {(0,0) (1,1.5) (2,1.5) (4,0) (3,-1) (2,-1.5) (1,-2) (0,0)};
-			\end{scope}
-			\begin{scope}
-				\clip (0,0) rectangle (4,2.5);
-				\draw [smooth,dashed] plot coordinates {(0,0) (1,1.5) (2,1.5) (4,0) (3,-1) (2,-1.5) (1,-2) (0,0)};
-			\end{scope}
-			\begin{scope}[shift={(0,4)}]
-				\draw [smooth] plot coordinates {(0,0) (1,1.5) (2,1.5) (4,0) (3,-1) (2,-1.5) (1,-2) (0,0)};
-			\end{scope}
-			\draw (0,0) -- (0,4) (4,0) -- (4,4) node [pos=.5,right] {$h$};
-			\draw (2,0) node {$A$};
-		\end{tikzpicture}
-	\end{minipage}
+	\begin{tikzpicture}[x=13pt,y=10pt,thick,
+				baseline={([yshift=2\baselineskip]current bounding box.north)}]
+		\begin{scope}
+			\clip (0,0) rectangle (4,-2.5);
+			\draw [smooth] plot coordinates {(0,0) (1,1.5) (2,1.5) (4,0) (3,-1) (2,-1.5) (1,-2) (0,0)};
+		\end{scope}
+		\begin{scope}
+			\clip (0,0) rectangle (4,2.5);
+			\draw [smooth,dashed] plot coordinates {(0,0) (1,1.5) (2,1.5) (4,0) (3,-1) (2,-1.5) (1,-2) (0,0)};
+		\end{scope}
+		\begin{scope}[shift={(0,4)}]
+			\draw [smooth] plot coordinates {(0,0) (1,1.5) (2,1.5) (4,0) (3,-1) (2,-1.5) (1,-2) (0,0)};
+		\end{scope}
+		\draw (0,0) -- (0,4) (4,0) -- (4,4) node [pos=.5,right] {$h$};
+		\draw (2,0) node {$A$};
+	\end{tikzpicture}
 \end{tabular}
 
 \clearpage
@@ -550,12 +514,12 @@ $ac x^3 + adx^2 + bcx + bd = ax^2(cx+d)+b(cx+d)=(ax^2+b)(cx+d)$
 \sum^n_{i=1}{i^2} &= \frac{n(n+1)(2n+1)}{6}
 &
 \sum^n_{i=1}{i^3} &= \left(\frac{n(n+1)}{2}\right)^2
-\end{align*}
+\end{align*}\bigskip
 
 \subsubsection*{Trapezoidal Rule}
 
 \noindent$\ds\int_a^b{f(x)}\ dx \approx \frac{\Delta x}{2}\left[f(x_1)+2f(x_2) + 2f(x_3) + \dotsb + 2f(x_{n}) + f(x_{n+1})\right]$\smallskip\\
-with  $\text{Error} \leq \dfrac{(b-a)^3}{12n^2}\left[ \max \abs{\fpp(x)}\right]$
+with  $\text{Error} \leq \dfrac{(b-a)^3}{12n^2}\left[ \max \abs{\fpp(x)}\right]$\bigskip
 
 \subsubsection*{Simpson's Rule}
 
@@ -566,7 +530,7 @@ with $\text{Error} \leq \dfrac{(b-a)^5}{180n^4}\left[ \max \abs{f\primeskip^{(4)
 \subsubsection*{Arc Length}
 
 \noindent
-$\ds L = \int_a^b{\sqrt{1+ f\,'(x)^2}}\ dx$\bigskip\\~
+$\ds L = \int_a^b{\sqrt{1+ f\,'(x)^2}}\ dx$\bigskip\bigskip
 
 % also add volume of revolution, or nothing at all
 % \begin{minipage}[t]{.4\linewidth}
@@ -586,11 +550,11 @@ $\ds L = \int_a^b{\sqrt{1+ f\,'(x)^2}}\ dx$\bigskip\\~
 \begin{minipage}[t]{.5\linewidth}
  \subsubsection*{Force Exerted by a Fluid}
  $\ds F = \int_a^b{w\,d(y)\,\ell(y)}\ dy$
-\end{minipage}
+\end{minipage}\bigskip
 
 \subsubsection*{Taylor Series Expansion for $f(x)$}
 \noindent$\ds p_n(x) = f(c) + \fp(c)(x-c) + \frac{\fpp(c)}{2!}(x-c)^2 + \frac{f\,'''(c)}{3!}(x-c)^3 + \dotsb + \frac{f\,^{(n)}(c)}{n!}(x-c)^n + \dotsb $
-\bigskip
+\bigskip\bigskip
 
 %\subsection*{Maclaurin Series Expansion for $f(x)$} %{, where $c=0$}
 %\noindent$\ds p_n(x) = f(0) + \fp(0)x + \frac{\fpp(0)}{2!}x^2 + \frac{f\,'''(0)}{3!}x^3 + \dotsb + \frac{f\,^{(n)}(0)}{n!}x^n$ + \dotsb
@@ -610,7 +574,7 @@ $y=\dfrac{x^2}{4p}$ & $x=\dfrac{y^2}{4p}$ & $\dfrac{x^2}{a^2}+\dfrac{y^2}{b^2}=1
 \subsection{Summary of Tests for Series}\label{tab_series_tests}
 
 \begin{center}
-\addtolength{\tabcolsep}{6pt}
+\addtolength{\tabcolsep}{5pt}
 \begin{tabular}{ccccc}
 
 \toprule\lxBeginTableHead
@@ -646,3 +610,5 @@ Root Test & $\ds\sum_{n=1}^\infty a_n$ & \parbox{1in}{\centering$\ds\lim_{n\to\i
 \end{tabular}
 
 \end{center}
+
+% trying to avoid an underfull hbox?

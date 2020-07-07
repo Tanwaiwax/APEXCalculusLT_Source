@@ -10,27 +10,27 @@ We start with a classic example which is followed by a discussion of the topic o
 A man has 100 feet of fencing, a large yard, and a small dog. He wants to create a rectangular enclosure for his dog with the fencing that provides the maximal area. What dimensions provide the maximal area?
 %
 \mtable{A sketch of the enclosure in \autoref{ex_opt1}.}{fig:opt1}{\begin{tikzpicture}[scale=1.3]
-\ifthenelse{\boolean{latexml}}{\shadedraw[fill=green!75!black]}{\shadedraw[top color=green,bottom color=green!50!black]}
+\ifbool{latexml}{\shadedraw[fill=green!75!black]}{\shadedraw[top color=green,bottom color=green!50!black]}
  (0,0)--(33.6pt,35.28pt)--(95.2pt,35.28pt)--(61.6pt,0)--cycle;
 \begin{scope}[cm={1,1.05,0,1,(0,0)}]
 \foreach \x in {0,...,7} { % left side
- \ifthenelse{\boolean{latexml}}{\shadedraw[xscale=.3,shift={(\x*14 pt,0)},fill=brown!70!white]}{\shadedraw[xscale=.3,shift={(\x*14 pt,0)},left color=brown!40!white,right color=brown!99!white]}
+ \ifbool{latexml}{\shadedraw[xscale=.3,shift={(\x*14 pt,0)},fill=brown!70!white]}{\shadedraw[xscale=.3,shift={(\x*14 pt,0)},left color=brown!40!white,right color=brown!99!white]}
  (0,0)-- ++(0,20pt)-- ++(4pt,4pt)-- ++(6pt,0pt)-- ++(4pt,-4pt)-- ++(0pt,-20pt)--cycle;
 }
 \end{scope}
 \begin{scope}[shift={(33.6pt,35.28pt)}]
 \foreach \x in {0,...,10} { % back side
- \ifthenelse{\boolean{latexml}}{\shadedraw[xscale=.4,shift={(\x*14 pt,0)},fill=brown!70!white]}{\shadedraw[xscale=.4,shift={(\x*14 pt,0)},left color=brown!40!white,right color=brown!99!white]}
+ \ifbool{latexml}{\shadedraw[xscale=.4,shift={(\x*14 pt,0)},fill=brown!70!white]}{\shadedraw[xscale=.4,shift={(\x*14 pt,0)},left color=brown!40!white,right color=brown!99!white]}
  (0,0)-- ++(0,20pt)-- ++(4pt,4pt)-- ++(6pt,0pt)-- ++(4pt,-4pt)-- ++(0pt,-20pt)--cycle;
 }
 \end{scope}
 \foreach \x in {0,...,10} { % front side
- \ifthenelse{\boolean{latexml}}{\shadedraw[xscale=.4,shift={(\x*14 pt,0)},fill=brown!70!white]}{\shadedraw[xscale=.4,shift={(\x*14 pt,0)},left color=brown!40!white,right color=brown!99!white]}
+ \ifbool{latexml}{\shadedraw[xscale=.4,shift={(\x*14 pt,0)},fill=brown!70!white]}{\shadedraw[xscale=.4,shift={(\x*14 pt,0)},left color=brown!40!white,right color=brown!99!white]}
  (0,0)-- ++(0,20pt)-- ++(4pt,4pt)-- ++(6pt,0pt)-- ++(4pt,-4pt)-- ++(0pt,-20pt)--cycle;
 }
 \begin{scope}[cm={1,1.05,0,1,(61.6pt,0)}]
 \foreach \x in {0,...,7} { % right side
- \ifthenelse{\boolean{latexml}}{\shadedraw[xscale=.3,shift={(\x*14 pt,0)},fill=brown!70!white]}{\shadedraw[xscale=.3,shift={(\x*14 pt,0)},left color=brown!40!white,right color=brown!99!white]}
+ \ifbool{latexml}{\shadedraw[xscale=.3,shift={(\x*14 pt,0)},fill=brown!70!white]}{\shadedraw[xscale=.3,shift={(\x*14 pt,0)},left color=brown!40!white,right color=brown!99!white]}
  (0,0)-- ++(0,20pt)-- ++(4pt,4pt)-- ++(6pt,0pt)-- ++(4pt,-4pt)-- ++(0pt,-20pt)--cycle;
 }
 \end{scope}
@@ -76,21 +76,14 @@ We outline here the basic process of solving these optimization problems.
 %\small
 \begin{keyidea}[Solving Optimization Problems]\label{idea:optimization}
 ~\\[-\baselineskip]
-\begin{enumerate}
+\parbox[t]{\linewidth}{\begin{enumerate}
 	\item	Understand the problem. Clearly identify what quantity is to be maximized or minimized. Make a sketch if helpful.
 	\item	Create equations relevant to the context of the problem, using the information given. (One of these should describe the quantity to be optimized. We'll call this the \emph{fundamental equation.})
 	\item	If the fundamental equation defines the quantity to be optimized as a function of more than one variable, reduce it to a single variable function using substitutions derived from the other equations.
-%		\end{enumerate}
-%\emph{\small (continued)\dotsc}
-%\end{keyidea}
-%
-%\addtocounter{keyidea}{-1}
-%\begin{keyidea}[Solving Optimization Problems --- Continued]\label{idea:optimizationb}
-%\begin{enumerate}\addtocounter{enumi}{3}
 	\item	Identify the domain of this function, keeping in mind the context of the problem.
 	\item	Find the extreme values of this function on the determined domain.
 	\item	Identify the values of all relevant quantities of the problem.
-\end{enumerate}
+\end{enumerate}}
 \end{keyidea}
 
 We will use \autoref{idea:optimization} in a variety of examples.
@@ -100,19 +93,19 @@ We will use \autoref{idea:optimization} in a variety of examples.
  (0,0)--(33.6pt,35.28pt)--(95.2pt,35.28pt)--(61.6pt,0)--cycle;
 \begin{scope}[cm={1,1.05,0,1,(0,0)}]
 \foreach \x in {0,...,7} {
- \ifthenelse{\boolean{latexml}}{\shadedraw [xscale=.3,shift={(\x*14 pt,0)},fill=brown!70!white]}{\shadedraw [xscale=.3,shift={(\x*14 pt,0)},left color=brown!40!white,right color=brown!99!white]}
+ \ifbool{latexml}{\shadedraw [xscale=.3,shift={(\x*14 pt,0)},fill=brown!70!white]}{\shadedraw [xscale=.3,shift={(\x*14 pt,0)},left color=brown!40!white,right color=brown!99!white]}
  (0,0)-- ++(0,20pt)-- ++(4pt,4pt)-- ++(6pt,0pt)-- ++(4pt,-4pt)-- ++(0pt,-20pt)--cycle;
 }
 \end{scope}
 \begin{scope}[shift={(33.6pt,35.28pt)}]
 \foreach \x in {0,...,10} {
- \ifthenelse{\boolean{latexml}}{\shadedraw[xscale=.4,shift={(\x*14 pt,0)},fill=brown!70!white]}{\shadedraw[xscale=.4,shift={(\x*14 pt,0)},left color=brown!40!white,right color=brown!99!white]}
+ \ifbool{latexml}{\shadedraw[xscale=.4,shift={(\x*14 pt,0)},fill=brown!70!white]}{\shadedraw[xscale=.4,shift={(\x*14 pt,0)},left color=brown!40!white,right color=brown!99!white]}
  (0,0)-- ++(0,20pt)-- ++(4pt,4pt)-- ++(6pt,0pt)-- ++(4pt,-4pt)-- ++(0pt,-20pt)--cycle;
 }
 \end{scope}        
 \begin{scope}[cm={1,1.05,0,1,(61.6pt,0)}]
 \foreach \x in {0,...,7} {
- \ifthenelse{\boolean{latexml}}{\shadedraw[xscale=.3,shift={(\x*14 pt,0)},fill=brown!70!white]}{\shadedraw[xscale=.3,shift={(\x*14 pt,0)},left color=brown!40!white,right color=brown!99!white]}
+ \ifbool{latexml}{\shadedraw[xscale=.3,shift={(\x*14 pt,0)},fill=brown!70!white]}{\shadedraw[xscale=.3,shift={(\x*14 pt,0)},left color=brown!40!white,right color=brown!99!white]}
  (0,0)-- ++(0,20pt)-- ++(4pt,4pt)-- ++(6pt,0pt)-- ++(4pt,-4pt)-- ++(0pt,-20pt)--cycle;
 }
 \end{scope}
@@ -157,18 +150,18 @@ Keep in mind as we do these problems that we are practicing a \emph{process}; th
 
 \mtable{Running a power line from the power station to an offshore facility with minimal cost in \autoref{ex_opt3}.}{fig:opt3b}{\begin{tikzpicture}[>=latex]
 \begin{scope}
-\clip (0,0) rectangle (140pt,50pt);
-\draw [inner color={\colorone},draw = white] (-10,-25pt) rectangle (180pt,70pt);
+\clip (0,0) rectangle (120pt,50pt);
+\draw [inner color={\colorone},draw = white] (-10,-25pt) rectangle (160pt,70pt);
 \end{scope}
-\draw [top color=brown, bottom color=white,draw=white] (0,0) rectangle (140pt,-15pt);
-\draw (0,0) -- (150pt,0);
+\draw [top color=brown, bottom color=white,draw=white] (0,0) rectangle (120pt,-15pt);
+\draw (0,0) -- (140pt,0);
 \filldraw [fill=white] (10pt,-5pt) rectangle (20pt,5pt);
-\draw [<->] (15pt,-10pt) -- (130pt,-10pt) node [below,pos=.5] {\scriptsize 5000 ft};
-\draw [<->] (140pt,0pt) -- (140pt,35pt) node [right, pos=.5] {\scriptsize 1000 ft};
-\draw [ultra thick] (20pt,0) -- (70pt,0);
-\filldraw (70pt,0) circle (2pt);
-\draw [dashed,thick] (70pt,0) -- (130pt,35pt);
-\filldraw [fill=white] (130pt,35pt) circle (7pt);
+\draw [<->] (15pt,-10pt) -- (110pt,-10pt) node [below,pos=.5] {\scriptsize 5000 ft};
+\draw [<->] (120pt,0pt) -- (120pt,35pt) node [right, pos=.5] {\scriptsize 1000 ft};
+\draw [ultra thick] (20pt,0) -- (60pt,0);
+\filldraw (60pt,0) circle (2pt);
+\draw [dashed,thick] (60pt,0) -- (110pt,35pt);
+\filldraw [fill=white] (110pt,35pt) circle (7pt);
 \end{tikzpicture}}
 
 \begin{example}[Optimization: minimizing cost]\label{ex_opt3}
@@ -184,20 +177,20 @@ The optimal solution likely has the line being run along the ground for a while,
 
 \mtable{Labeling unknown distances in \autoref{ex_opt3}.}{fig:opt3c}{\begin{tikzpicture}[>=latex]
 \begin{scope}
-\clip (0,0) rectangle (140pt,50pt);
-\draw [inner color={\colorone},draw = white] (-10,-25pt) rectangle (180pt,70pt);
+\clip (0,0) rectangle (120pt,50pt);
+\draw [inner color={\colorone},draw = white] (-10,-25pt) rectangle (160pt,70pt);
 \end{scope}
-\draw [top color=brown, bottom color=white,draw=white] (0,0) rectangle (140pt,-15pt);
-\draw (0,0) -- (150pt,0);
+\draw [top color=brown, bottom color=white,draw=white] (0,0) rectangle (120pt,-15pt);
+\draw (0,0) -- (130pt,0);
 \filldraw [fill=white] (10pt,-5pt) rectangle (20pt,5pt);
-\draw [<->] (15pt,-10pt) -- (70pt,-10pt) node [below,pos=.5] {\scriptsize $5000 -x$};
-\draw [<->] (70pt,-10pt) -- (130pt,-10pt) node [below,pos=.5] {\scriptsize $x$};
-\draw [<->] (140pt,0pt) -- (140pt,35pt) node [right, pos=.5] {\scriptsize 1000 ft};
-\draw [ultra thick] (20pt,0) -- (70pt,0);
-\filldraw (70pt,0) circle (2pt);
-\draw [dashed,thick] (70pt,0) -- (130pt,35pt) ;
-\draw (100pt,23pt) node [rotate=30] {\scriptsize $\sqrt{x^2+1000^2}$};
-\filldraw [fill=white] (130pt,35pt) circle (7pt);
+\draw [<->] (15pt,-10pt) -- (60pt,-10pt) node [below,pos=.5] {\scriptsize $5000 -x$};
+\draw [<->] (60pt,-10pt) -- (110pt,-10pt) node [below,pos=.5] {\scriptsize $x$};
+\draw [<->] (120pt,0pt) -- (120pt,35pt) node [right, pos=.5] {\scriptsize 1000 ft};
+\draw [ultra thick] (20pt,0) -- (60pt,0);
+\filldraw (60pt,0) circle (2pt);
+\draw [dashed,thick] (60pt,0) -- (110pt,35pt) ;
+\draw (85pt,23pt) node [rotate=30] {\scriptsize $\sqrt{x^2+1000^2}$};
+\filldraw [fill=white] (110pt,35pt) circle (7pt);
 \end{tikzpicture}}
 
 By choosing $x$ as we did, we make the expression under the square root simple. We now create the cost function. 
@@ -217,6 +210,7 @@ We now find the critical points of $c(x)$. We compute $c\primeskip'(x)$ as
 \[c\primeskip'(x) = -50+\frac{130x}{\sqrt{x^2+1000^2}}.\]
 
 Recognize that this is never undefined. Setting $c\primeskip'(x)=0$ and solving for $x$, we have:
+{\allowdisplaybreaks
 \begin{align*}
 -50+\frac{130x}{\sqrt{x^2+1000^2}} &= 0 \\
 \frac{130x}{\sqrt{x^2+1000^2}}  &= 50\\
@@ -228,19 +222,19 @@ x^2 &= \frac{50,000^2}{130^2-50^2}\\
 x &= \frac{50,000}{\sqrt{130^2-50^2}}\\
 x & = \frac{50,000}{120} =\frac{1250}{3} %=416+\frac23
 \approx 416.67.
-\end{align*}
+\end{align*}}
 
 Evaluating $c(x)$ at $x=416.67$ gives a cost of about \$370,000. The distance the power line is laid along land is $5000-416.67 = 4583.33$ ft., and the underwater distance is $\sqrt{416.67^2+1000^2} \approx 1083$ ft.
 \end{example}
 
 \mtable{A sketch for \autoref{ex_min_surf_area}.}{fig:min_surf_area}{%
 \begin{tikzpicture}[scale=.67]
- \ifthenelse{\boolean{latexml}}{\draw [draw={\colorone},thick,fill=\colorone!40]}{\draw [draw={\colorone},thick,left color=\colorone!60,right color=\colorone!20]}
+ \ifbool{latexml}{\draw [draw={\colorone},thick,fill=\colorone!40]}{\draw [draw={\colorone},thick,left color=\colorone!60,right color=\colorone!20]}
   (0,0) ellipse [x radius=1.5cm, y radius=1cm];
  \begin{scope}[xscale=1.5]
-  \ifthenelse{\boolean{latexml}}{\draw [draw={\colorone},thick,fill=\colorone!40]}{\draw [draw={\colorone},thick,left color=\colorone!60,right color=\colorone!20]}
+  \ifbool{latexml}{\draw [draw={\colorone},thick,fill=\colorone!40]}{\draw [draw={\colorone},thick,left color=\colorone!60,right color=\colorone!20]}
    (-1,0) -- node [pos=.5,left,color=black] {\scriptsize $h$} (-1,-3.5) arc (180:360:1) -- (1,0) arc (360:180:1);
-%   \ifthenelse{\boolean{latexml}}{\draw [draw={\colorone},fill=\colorone!40]}{\draw [draw={\colorone},left color=\colorone!60,right color=\colorone!20]}
+%   \ifbool{latexml}{\draw [draw={\colorone},fill=\colorone!40]}{\draw [draw={\colorone},left color=\colorone!60,right color=\colorone!20]}
 %   (-1,-.2) -- (-1,-3.3)
 %   arc (180:360:1) -- (1,-.2) arc (360:180:1);
  \end{scope}

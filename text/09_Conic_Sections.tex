@@ -42,7 +42,7 @@ A \textbf{parabola} is the locus of all points equidistant from a point (called 
 \index{conic sections!parabola}\index{parabola!definition}\index{directrix}\index{focus}
 \end{definition}
 
-\mtable{Illustrating the definition of the parabola and establishing an algebraic formula.}{fig:parabola_def}{\begin{tikzpicture}[scale=.8]
+\mtable{Illustrating the definition of the parabola and establishing an algebraic formula.}{fig:parabola_def}{\begin{tikzpicture}[scale=.75]
 	\draw [thick,draw={\colorone}] (-3,-1)
 	 node [above,black,shift={(12pt,0pt)}] {\scriptsize Directrix}
 	 -- (3,-1);
@@ -62,7 +62,7 @@ A \textbf{parabola} is the locus of all points equidistant from a point (called 
 
 \autoref{fig:parabola_def} illustrates this definition. The point halfway between the focus and the directrix is the \textbf{vertex}. The line through the focus, perpendicular to the directrix, is the \textbf{axis of symmetry}, as the portion of the parabola on one side of this line is the mirror-image of the portion on the opposite side.
 
-\ifthenelse{\boolean{abridgeConics}}{}{%
+\iftoggle{abridgeConics}{}{%
 The definition leads us to an algebraic formula for the parabola. Let $P=(x,y)$ be a point on a parabola whose focus is at $F=(0,p)$ and whose directrix is at $y=-p$. (We'll assume for now that the focus lies on the $y$-axis; by placing the focus $p$ units above the $x$-axis and the directrix $p$ units below this axis, the vertex will be at $(0,0)$.)
 
 We use the Distance Formula to find the distance $d_1$ between $F$ and $P$:
@@ -85,10 +85,11 @@ The geometric definition of the parabola and distance formula can be used to der
 Applying transformations of functions we get the following standard form of the parabola.
 
 \begin{keyidea}[General Equation of a Parabola]\label{idea:parabola}
+\mbox{}\\[-1.5\baselineskip]\parbox{\linewidth}{%
 \begin{enumerate}
 	\item	\textbf{Vertical Axis of Symmetry:} The equation of the parabola with vertex at $(h,k)$, directrix $y=k-p$, and focus at $(h,k+p)$ in standard form is \[y=\frac{1}{4p}(x-h)^2+k.\]
 	\item	\textbf{Horizontal Axis of Symmetry:} The  equation of the parabola with vertex at $(h,k)$, directrix $x=h-p$, and focus at $(h+p,k)$ in standard form is \[x=\frac{1}{4p}(y-k)^2+h.\]
-\end{enumerate}
+\end{enumerate}}
 Note: $p$ is not necessarily a positive number.\index{parabola!general equation}
 \end{keyidea}
 
@@ -111,7 +112,7 @@ The vertex is located halfway between the focus and directrix, so $(h,k) = (1,2.
 The parabola is sketched in \autoref{fig:conic1}.
 \end{example}
 
-\ifthenelse{\boolean{abridgeConics}}{}{%
+\iftoggle{abridgeConics}{}{%
 \begin{example}[Finding the focus and directrix of a parabola]\label{ex_conic2}
 Find the focus and directrix of the parabola $x=\frac18y^2-y+1$. The point $(7,12)$ lies on the graph of this parabola; verify that it is equidistant from the focus and directrix.
 \solution
@@ -208,7 +209,7 @@ An easy way to visualize this construction of an ellipse is to pin both ends of 
 	\end{scope}
 \end{tikzpicture}}
 
-\ifthenelse{\boolean{abridgeConics}}{}{%
+\iftoggle{abridgeConics}{}{%
 We can again find an algebraic equation for an ellipse using this geometric definition. Let the foci be located along the $x$-axis, $c$ units from the origin. Let these foci be labeled as $F_1 = (-c,0)$ and $F_2=(c,0)$. Let $P=(x,y)$ be a point on the ellipse. The sum of distances from $F_1$ to $P$ ($d_1$) and from $F_2$ to $P$ ($d_2$) is a constant $d$. That is, $d_1+d_2=d$. Using the Distance Formula, we have 
 \[\sqrt{(x+c)^2+y^2} + \sqrt{(x-c)^2+y^2} = d.\]
 Using a fair amount of algebra can produce the following equation of an ellipse (note that the equation is an implicitly defined function; it has to be, as an ellipse fails the Vertical Line Test):
@@ -306,7 +307,7 @@ ytick={-1,1,2,3,4},ymin=-2,ymax=5,xmin=-3,xmax=5]
 We see the center of the ellipse is at $(1,2)$. We have $a=3$ and $b=2$; the major axis is horizontal, so the vertices are located at $(-2,2)$ and $(4,2)$. We find $c=\sqrt{9-4} = \sqrt{5}\approx 2.24.$ The foci are located along the major axis, approximately $2.24$ units from the center, at $(1\pm 2.24,2)$. This is all graphed in \autoref{fig:conic4}.
 \end{example}
 
-\ifthenelse{\boolean{abridgeConics}}{}{%
+\iftoggle{abridgeConics}{}{%
 \subsection{Eccentricity}
 
 When $a=b$, we have a circle. The general equation becomes
@@ -507,7 +508,7 @@ $\ds y=\pm\frac ba(x-h)+k$  &$\ds  y=\pm\frac ab(x-h)+k.$
 \end{tabular}
 \end{center}
 
-\mtable{Graphing the hyperbola in \autoref{ex_conic5}.}{fig:conic5}{\begin{tikzpicture}
+\mtable[.5in]{Graphing the hyperbola in \autoref{ex_conic5}.}{fig:conic5}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,minor x tick num=4,
 minor y tick num=4,ymin=-7.2,ymax=11.2,xmin=-5.2,xmax=7.2]
@@ -576,7 +577,7 @@ We must complete the square to put the equation in general form. (We recognize t
 We see the hyperbola is centered at $(0,1)$, with a horizontal transverse axis, where $a=1$ and $b=3$. The appropriate rectangle is sketched in \autoref{fig:conic6} along with the asymptotes of the hyperbola. The vertices are located at $(\pm 1,1)$. We have $c=\sqrt{10}\approx 3.2$, so the foci are located at $(\pm 3.2,1)$ as shown in \autoref{fig:conic6}.
 \end{example}
 
-\ifthenelse{\boolean{abridgeConics}}{}{%
+\iftoggle{abridgeConics}{}{%
 \subsection{Eccentricity}
 
 \begin{definition}[Eccentricity of a Hyperbola]\label{def:hyperbola_eccentricity}

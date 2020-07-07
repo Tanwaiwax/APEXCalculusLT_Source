@@ -1,5 +1,5 @@
-\newboolean{abridgeConics}
-\setboolean{abridgeConics}{true}
+\newtoggle{abridgeConics}
+\toggletrue{abridgeConics}
 
 \newcommand{\monthYear}{%
 \ifcase \month \or January\or February\or March\or April\or May\or June\or July\or August\or September\or October\or November\or December\fi \space \number \year}
@@ -11,8 +11,7 @@
 
 \usepackage{multirow}
 %\pgfplotsset{width=\marginparwidth+1pt,compat=1.3}
-\usepackage[font=small]{caption}
-%,justification=centering
+\usepackage[font=small,justification=RaggedRight]{caption}
 
 %\usepackage{wrapfig}
 
@@ -20,9 +19,6 @@
 
 \setcounter{secnumdepth}{1}
 \setcounter{tocdepth}{1}
-
-\newlength{\saveparindent}
-\setlength{\saveparindent}{\parindent}
 
 \makeatletter
 \let\ps@oldplain=\ps@plain % save the plain pagestyle
@@ -41,10 +37,10 @@
  \fancyhead[LE]{\nouppercase{\leftmark}}%
  \fancyhead[RO]{\nouppercase{\rightmark}}%
  \fancyfoot[LE]{\begin{minipage}{\textwidth}%
-  \noindent\hspace{\marginparwidth}\hspace{\marginparsep}\hspace{-4pt}%
+  \noindent\hspace{\marginparwidth}\hspace{\marginparsep}\hspace{-.4em}%
   \makebox[0pt][l]{\rule{\textwidth}{.4pt}}%
   \vskip.2\baselineskip%
-  \noindent\hspace{\marginparwidth}\hspace{\marginparsep}\hspace{-4pt}%
+  \noindent\hspace{\marginparwidth}\hspace{\marginparsep}\hspace{-.4em}%
   Notes:%
   \vskip 1.5in\textbf{\thepage}%
  \end{minipage}}
@@ -59,41 +55,51 @@
  \fancyhfoffset[LE,RO]{\marginparsep+\marginparwidth}
 }
 \fancypagestyle{exercise}{%
-	\fancyhead{}% 
+	\fancyhf{}% 
 	\fancyhfoffset[LE,RO]{32pt}%
 	\fancyfoot[LE,RO]{\textbf{\thepage}}
 }
 
 
-%
-%  Defining what the chapter titles look like
-%
 
-%\newdimen\titleheight
-
-\usepackage[newparttoc]{titlesec}
+\usepackage[newparttoc]{titlesec} % apparently conflicts with hyperref?  :(
+% but: ``unsolved is the anchor setting, missing with unnumbered section,
+% perhaps problems with page breaks with numbered ones''
+% if I'm not seeing those problems, maybe just continue
 \usepackage{titletoc}
 
-\titleformat{\chapter}[block]{\sloppy\Huge\scshape\textsc}{\thechapter:}{.4em}{}[\titlerule]
-\titlespacing*{\chapter}{0pt}{0pt}{2ex}
+\newcommand{\leftparbox}[2]{\parbox[t]{#1}{\raggedright#2}}
+% I couldn't get the raggedright to take otherwise
 
-\makeatletter
 \titleformat{\part}[block]
-   {\Huge\bfseries\filcenter}
-   {}
-   {0em}
-   {\thispagestyle{empty}}
+   {\Huge\bfseries\filcenter} % commands on the entire thing
+   {} % don't use a label
+   {0em} % space between (non?)label and title
+   {\thispagestyle{empty}} % command for the page
 \titlecontents{part}[0pt]
 	{\vspace{3ex}}
 	{no numbered parts}
 	{\large\bfseries}
 	{\titlerule*[1em]{ }}
-\makeatother
+
+\titleformat{\chapter}[block]
+	{\hyphenpenalty=10000\relax\Huge\scshape\textsc} % commands on the entire thing
+	{\thechapter:} % the label
+	{.4em} % space between label and title
+	{\leftparbox{11em}} % command taking the title
+	[\addvspace{2ex}\titlerule] % afterward
+\titlespacing*{\chapter}{0pt}{0pt}{2ex}
+
+%\titleformat{\section}
+%  {\normalfont\Large\bfseries} % commands on the entire thing
+%  {\thesection} % the label
+%  {1em} % space between label and title
+%  {} % command taking the title (only actual difference)
 
 \let\oldmainmatter\mainmatter
 \renewcommand{\mainmatter}{%
  \oldmainmatter
- \fancypagestyle{plain}{% override the default
+ \fancypagestyle{plain}{% override the default for opening chapters
   \fancyhf{}
   \fancyfoot[RO]{\begin{minipage}{\textwidth+\marginparwidth+\marginparsep}%
    \rule{\textwidth-\marginparwidth-\marginparsep}{.4pt}
@@ -143,7 +149,8 @@
 
 \newcommand{\ds}{\displaystyle}
 
-\newcommand{\primeskip}{\hskip.75pt}
+\newcommand{\primeskip}{\ifbool{mmode}{\mkern1.35mu}{\kern.075em}\relax}
+%\newcommand{\primeskip}{\hskip.75pt}
 
 \newcommand{\fp}{\ensuremath{f\,'}}
 \newcommand{\fpp}{\ensuremath{f\,''}}
@@ -221,28 +228,16 @@
  \definecolor{borderexvideo}{Hsb}{0,1,0}% black
 }
 \newcommand{\exvideo}[1]{%
-% \bigbreak%
-% \noindent%
-%  \coloredbox{% same options newspecialbox
-%   rectangle, text width = \specialboxlength,
-%   inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
-%   draw=borderexvideo, top color=topexvideo, bottom color=bottomexvideo,
-%   text justified, very thick
-%  }{%
-%   draw=black, thick, rectangle, text width=\specialboxlength,
-%   inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
-%   draw, text justified, very thick
-%  }{\noindent #1}%
-% \bigbreak%
-%}%
-%\renewcommand{\exvideo}[1]{%
- \bigbreak%
  \tcbox[
    colframe=borderexvideo,
+   beforeafter skip=\boxskipamount,
    interior style={top color=topexvideo, bottom color=bottomexvideo},
-   sharp corners=all,notitle,width=\textwidth,enhanced,tcbox width=forced left
+   sharp corners=all,
+   notitle,
+   width=\textwidth,
+   enhanced,
+   tcbox width=forced left
   ]{#1}%
- \bigbreak%
 }
 
 
@@ -256,12 +251,13 @@
 \newcommand{\mfigure}[5][]{%
 	\mnote[#2]{%
 		\centering\myincludegraphics[#1]{#5}%
-		\captionof{figure}{#3}\label{#4}}%
+		\captionsetup{type=figure}\caption{#3}\label{#4}}%
 }
 
 % \mtable[offset=0]{caption}{label}{contents}
 \newcommand{\mtable}[4][0ex]{%
-	\mnote[#1]{\centering\small#4\captionof{figure}{#2}\label{#3}}
+	\mnote[#1]{\centering\small#4\captionsetup{type=figure}%
+		\caption{#2}\label{#3}}%
 }
 
 \usepackage[noadjust]{marginnote}
@@ -273,10 +269,9 @@
 			\captionsetup{type=figure}%
 			\testmargintop%
 			\mbox{}%\makebox[0pt]{\tikz\draw(0,0)circle(1pt);}%
-			\\[-\baselineskip]
-			#2\ifhmode\unskip\fi
-			\testmarginbottom%
-			%\makebox[0pt]{\tikz\draw(0,0)circle(2pt);}
+			\\[-\baselineskip]%
+			\RaggedRight#2\ifhmode\unskip\fi%
+			\testmarginbottom%\makebox[0pt]{\tikz\draw(0,0)circle(2pt);}
 		\end{minipage}}[#1]%
 }
 % mnote was in apex_style.sty
@@ -301,12 +296,12 @@
 
 
 
-\newboolean{isEarlyTrans}
-\setboolean{isEarlyTrans}{false}
+\newtoggle{isEarlyTrans}
+\togglefalse{isEarlyTrans}
 
 \newcommand{\prereqIntro}{The material in this section provides a basic review of and practice problems for pre-calculus skills essential to your success in Calculus. You should take time to review this section and work the suggested problems (checking your answers against those in the back of the book). Since this content is a pre-requisite for Calculus, reviewing and mastering these skills are considered your responsibility. This means that minimal, and in some cases no, class time will be devoted to this section. When you identify areas that you need help with we strongly urge you to seek assistance outside of class from your instructor or other student tutoring service.\bigskip}
 
-\ifthenelse{\boolean{xetex}}%
+\ifbool{xetex}%
 	{%
 	\sffamily
 %	\usepackage{fontspec}
@@ -322,7 +317,7 @@
 	}
 	{}
 
-\ifthenelse{\boolean{luatex}}%
+\ifbool{luatex}%
 	{%
 	\sffamily
 	\usepackage{fontspec}
@@ -339,32 +334,58 @@
 %\usepackage[american]{babel}
 \usepackage{polyglossia}
 \setdefaultlanguage[variant=usmax]{english}
+\renewcommand*{\englishhyphenmins}{22}
+\AfterEndPreamble{
 \hyphenation{%
- a-mong
  an-ti-der-iv-a-tive
  an-ti-der-iv-a-tives
- app-roach-es
- bound-ed
+ app-rox-i-mate
+ cen-tered
  chang-es
- de-creases
+ con-struc-tions
+ de-creas-es
+ Der-iv-a-tive
  der-iv-a-tive
+ dis-place-ment
+ dis-tance
  e-qual-ly
  ex-am-ples
+ Func-tions
+% Hô-pi-tal % doesn't hyphenate L'Hôpital's
+ im-pli-cit
  in-dis-tin-guish-a-ble
- nu-mer-i-cal-ly
- par-a-bo-la
+ in-fall-i-ble
+% %L'Hô-pi-tal's % ' causes: ! Not a letter.
+% % see https://tex.stackexchange.com/a/165091/107497 for fix and pitfalls
+ meth-od
+ of-ten
  proc-ess
+ re-fer-ring
  qua-dra-tic
+ sa-li-ent
  se-quence
  sketch-ing
- small-er
  smart-er
+ sub-sti-tute
+ The-o-rem
  Trig-o-no-me-tric
  trig-o-no-me-tric
  wheth-er
-}
+}}
 
+
+% lets try to reduce bad boxes
 \usepackage{microtype}
+\hfuzz=2pt
+\vfuzz=1.5\baselineskip
+% ignore overfull < this amount
+%\newdimen\hfuzz % lock it in?
+%\newdimen\vfuzz % lock it in?
+%\hbadness=10000
+\vbadness=9999
+% ignore underfull > this amount
+\parskip=0pt plus \baselineskip
+\baselineskip=1\baselineskip plus .3\baselineskip
 
 
 \let\oldprintindex\printindex
@@ -378,8 +399,8 @@
 }
 
 
-\newboolean{bsc}
-\newcommand{\forwhom}{\ifthenelse{\boolean{bsc}}{ for Bismarck State College}{}}
+\newtoggle{bsc} % default false
+\newcommand{\forwhom}{\iftoggle{bsc}{ for Bismarck State College}{}}
 
 
 \usepackage[
@@ -411,14 +432,15 @@
 \newcommand{\autoeqref}[1]{\hyperref[#1]{\equationautorefname~(\ref*{#1})}}
 % autoref doesn't use parentheses
 
-% \apex has to be used after hyperref
+% \apex has to be *used* after hyperref
 % lxNavbar has to come after latexml
 \begin{lxNavbar}
 \lxRef{lxApexTOC}{Table of Contents}\\
 \lxContextTOC
 \end{lxNavbar}
 
-\lxIncludeJavascriptFile{https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js}
+\lxIncludeJavascriptFile{%
+https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js}
 \lxIncludeJavascriptFile{LaTeXML-maybeMathJax.js}
 \lxIncludeJavascriptFile{script.js}
 \lxIncludeCssFile{style.css}

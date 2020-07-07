@@ -2,7 +2,7 @@
 
 \mtable[-.5in]{Graphing $y=\sin x$ on $[0,\pi]$ and approximating the curve with line segments.}{fig:arcintro}{%
 \begin{tikzpicture}
- \begin{axis}[width=1.16\marginparwidth,%height=.46\marginparwidth,
+ \begin{axis}[width=\marginparwidth,%height=.46\marginparwidth,
    tick label style={font=\scriptsize},axis equal,
    axis y line=middle,axis x line=middle,name=myplot,axis on top,
    xtick={.79,1.57,2.36,3.14},
@@ -16,7 +16,7 @@
 \end{tikzpicture}
 \\(a)\\
 \begin{tikzpicture}
- \begin{axis}[width=1.16\marginparwidth,%height=.46\marginparwidth,
+ \begin{axis}[width=\marginparwidth,%height=.46\marginparwidth,
    tick label style={font=\scriptsize},
    axis y line=middle,axis x line=middle,name=myplot,axis on top,%
    xtick={.79,1.57,2.36,3.14},
@@ -135,7 +135,7 @@ Find the arc length of $\ds f(x) =\frac18x^2-\ln x$ from $x=1$ to $x=2$.
 \solution
 A graph of $f$ is given in \autoref{fig:arc2}; the portion of the curve measured in this problem is in bold.
 \mtable{A graph of $f(x) =\frac18x^2-\ln x$ from \autoref{ex_arc2}.}{fig:arc2}{\begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
 ymin=-.26,ymax=1.2,xmin=-.1,xmax=3.1]
 \addplot [draw={\colorone},smooth,thin,domain=.2:3] {x*x/8-ln(x)};
@@ -162,7 +162,7 @@ The previous examples found the arc length exactly through careful choice of the
 \begin{example}[Approximating arc length numerically]\label{ex_arc3}
 Find the length of the sine curve from $x=0$ to $x=\pi$.
 \solution
-This is somewhat of a mathematical curiosity; in \autoref{ex_ftc4} we found the area under one ``hump'' of the sine curve is 2 square units; now we are measuring its arc length.
+This is somewhat of a mathematical curiosity; \autoref{ex_ftc4} showed that the area under one ``hump'' of the sine curve is 2 square units; now we are measuring its arc length.
 
 \mtable{A table of values of $y=\sqrt{1+\cos^2x}$ to evaluate a definite integral in \autoref{ex_arc3}.}{fig:arc3}{%
 \[\begin{array}{cc}
@@ -173,9 +173,10 @@ x & \sqrt{1+\cos^2x} \\ \midrule
  3 \pi/4 & \sqrt{3/2} \\
  \pi  & \sqrt{2} \\
 \end{array}\]}
+
 The setup is straightforward: $f(x) = \sin x$ and $\fp(x) = \cos x$. Thus 
 \[L = \int_0^\pi \sqrt{1+\cos^2x}\ dx.\]
-This integral \emph{cannot} be evaluated in terms of elementary functions so we will approximate it with Simpson's Method with $n=4$. \autoref{fig:arc3} gives $\sqrt{1+\cos^2x}$ evaluated at 5 evenly spaced points in $[0,\pi]$. Simpson's Rule then states that 
+This integral \emph{cannot} be evaluated in terms of elementary functions so we will approximate it with Simpson's Method with $n=4$. \autoref{fig:arc3} gives the integrand evaluated at 5 evenly spaced points in $[0,\pi]$. Simpson's Rule then states that 
 \begin{align*}
 	\int_0^\pi \sqrt{1+\cos^2x}\ dx
 	&\approx	\frac{\pi-0}{4\cdot 3}
@@ -187,7 +188,7 @@ Using a computer with $n=100$ the approximation is $L\approx 3.8202$; our approx
 
 \subsection{Surface Area of Solids of Revolution}
 
-\mtable[-.5in]{Establishing the formula for surface area.}{fig:surface_intro}{%
+\mtable[-1in]{Establishing the formula for surface area.}{fig:surface_intro}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=126.0060482236849,
 3Dortho=0.004875946324318647,

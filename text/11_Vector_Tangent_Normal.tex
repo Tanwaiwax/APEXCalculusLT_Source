@@ -104,15 +104,17 @@ Let \vrt\ be a vector-valued function where the unit tangent vector, $\vec T(t)$
 \begin{example}[Computing the unit normal vector]\label{ex_tannorm3}
 Let $\vrt =\bracket{3\cos t, 3\sin t, 4t}$ as in \autoref{ex_tannorm1}. Sketch both $\vec T(\pi/2)$ and $\vec N(\pi/2)$ with initial points at $\vec r(\pi/2)$.
 \solution
-In \autoref{ex_tannorm1}, we found $\vec T(t) =\bracket{(-3/5)\sin t,(3/5)\cos t,4/5}$. Therefore 
+In \autoref{ex_tannorm1}, we found $\vec T(t)=\bracket{-\frac35\sin t,\frac35\cos t,4/5}$. Therefore 
 \[\vec T\,'(t) =\bracket{-\frac35\cos t,-\frac35\sin t,0}\quad \text{and} \quad \norm{\vec T\,'(t)} = \frac35.\]
+%
 \mtable{Plotting unit tangent and normal vectors in \autoref{ex_tannorm3}.}{fig:tannorm3}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=0.9552187107340909,
 3Dortho=0.005093402229249477,
 3Dc2c=0.5105816125869751 0.5339998006820679 0.6739070415496826,
 3Dcoo=4.143548488616943 1.2702205181121826 14.294137954711914,
-3Droo=150.0000014005964}{width=\marginparwidth}{figures/figtannorm3_3D}}
+3Droo=150.0000014005964}{width=\marginparwidth}{figures/figtannorm3_3D}}%
+%
 Thus
 \[\vec N(t) = \frac{\vec T\,'(t)}{3/5} =\bracket{-\cos t,-\sin t,0}.\]
 We compute $\vec T(\pi/2) =\bracket{-3/5,0,4/5}$ and $\vec N(\pi/2) =\bracket{0,-1,0}$. These are sketched in \autoref{fig:tannorm3}.
@@ -199,7 +201,7 @@ While this is a fine way of computing $a_{\mathrm{T}}$, there are simpler ways o
 \mnote{\textbf{Note:} Keep in mind that both $a_{\mathrm{T}}$ and $a_{\mathrm{N}}$ are functions of $t$; that is, the scalar changes depending on $t$. It is convention to drop the ``$(t)$'' notation from $a_{\mathrm{T}}(t)$ and simply write $a_{\mathrm{T}}$.}
 
 {
-\tcbset{grow to right by=20pt}
+\tcbset{grow to right by=2em}
 \begin{theorem}[Acceleration in the Plane Defined by $\vec T$ and $\vec N$]\label{thm:acc_plane}
 Let \vrt\ be a position function with acceleration \vat\ and unit tangent and normal vectors $\vec T(t)$ and $\vec N(t)$. Then $\vat$ lies in the plane defined by $\vec T(t)$ and $\vec N(t)$; that is, there exists scalars $a_{\mathrm{T}}$ and $a_{\mathrm{N}}$ such that
 \[\vat = a_{\mathrm{T}}\vec T(t) + a_{\mathrm{N}}\vec N(t).\]
@@ -306,7 +308,7 @@ Using \autoeqref{idea:projectile} of \autoref{sec:vvf_motion} we form the positi
 which we plot in \autoref{fig:tannorm7b}.
 
 \mtable{Plotting the position of a thrown ball, with 1s increments shown.}{fig:tannorm7b}{\begin{tikzpicture}[>=stealth]
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
 ymin=-10,ymax=260,xmin=-10,xmax=310]
 \addplot [thick,draw={\colorone}, smooth,domain=0:5,samples=30]
@@ -330,11 +332,19 @@ ymin=-10,ymax=260,xmin=-10,xmax=310]
 \draw (B) node [shift={(9pt,8pt)}] {\scriptsize $t=5$};
 \end{tikzpicture}}
 
-From this we find $\vvt =\bracket{64\cos 30^\circ, -32t+64\sin 30^\circ}$ and $\vat =\bracket{0,-32}$. Computing $\vec T(t)$ is not difficult, and with some simplification we find
-\[\vec T(t) =\bracket{\frac{\sqrt{3}}{\sqrt{t^2-2t+4}}, \frac{1-t}{\sqrt{t^2-2t+4}}}.\]
+From this we find
+\[
+ \vvt =\bracket{64\cos 30^\circ, -32t+64\sin 30^\circ}
+ \qquad and\qquad
+ \vat =\bracket{0,-32}.
+\]
+Computing $\vec T(t)$ is not difficult, and with some simplification we find
+\[
+ \vec T(t) =\bracket{\frac{\sqrt{3}}{\sqrt{t^2-2t+4}}, \frac{1-t}{\sqrt{t^2-2t+4}}}.
+\]
 With $\vat$ as simple as it is, finding $a_\mathrm{T}$ is also  simple:
 \[a_\mathrm{T} = \vat\cdot \vec T(t) = \frac{32t-32}{\sqrt{t^2-2t+4}}.\]
-We choose to not find $\vec N(t)$ and find $a_\mathrm{N}$ through the formula $a_\mathrm{N} = \sqrt{\norm{\vat}^2-a_\mathrm{T}^2\,}$\,:
+We skip finding $\vec N(t)$ and find $a_\mathrm{N}$ through the formula $a_\mathrm{N} = \sqrt{\norm{\vat}^2-a_\mathrm{T}^2\,}$\,:
 \[a_\mathrm{N} = \sqrt{32^2-\left(\frac{32t-32}{\sqrt{t^2-2t+4}}\right)^2} = \frac{32\sqrt{3}}{\sqrt{t^2-2t+4}}.\]
 \autoref{fig:tannorm7a} gives a table of values of $a_\mathrm{T}$ and $a_\mathrm{N}$. When $t=0$, we see the ball's speed is decreasing; when $t=1$ the speed of the ball is unchanged. This corresponds to the fact that at $t=1$ the ball reaches its highest point.
 

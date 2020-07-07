@@ -31,7 +31,7 @@ These identities, along with conversions related to spherical coordinates, are g
 \begin{example}[Converting between rectangular and cylindrical coordinates]\label{ex_cylindrical4}
 Convert the rectangular point $(2,-2,1)$ to cylindrical coordinates, and convert the cylindrical point $(4,3\pi/4,5)$ to rectangular.
 \solution
-Following the identities given above (and, later in \autoref{idea:convert_coords}), we have $r = \sqrt{2^2+(-2)^2} = 2\sqrt{2}$. Using $\tan\theta = y/x$, we find $\theta = \tan^{-1}(-2/2) =-\pi/4$. As we restrict $\theta$ to being between $0$ and $2\pi$, we set $\theta = 7\pi/4$. Finally, $z = 1$, giving the cylindrical point $(2\sqrt2,7\pi/4,1)$.
+Following the identities given above (also in \autoref{idea:convert_coords}), we have that $r = \sqrt{2^2+(-2)^2} = 2\sqrt{2}$. Using $\tan\theta = y/x$, we find that $\theta = \tan^{-1}(-2/2) =-\pi/4$. As we restrict $\theta$ to being between $0$ and $2\pi$, we set $\theta = 7\pi/4$. Finally, $z = 1$, giving the cylindrical point $(2\sqrt2,7\pi/4,1)$.
 
 In converting the cylindrical point $(4,3\pi/4,5)$ to rectangular, we have
 $x = 4\cos\bigl(3\pi/4\bigr) = -2\sqrt{2}$, $y = 4\sin\bigl(3\pi/4\bigr) = 2\sqrt{2}$ and $z=5$, giving the rectangular point $(-2\sqrt{2},2\sqrt{2},5)$.
@@ -40,13 +40,13 @@ $x = 4\cos\bigl(3\pi/4\bigr) = -2\sqrt{2}$, $y = 4\sin\bigl(3\pi/4\bigr) = 2\sqr
 Setting each of $r$, $\theta$ and $z$ equal to a constant defines a surface in space, as illustrated in the following example.
 
 \mtable{Graphing the canonical surfaces in cylindrical coordinates from \autoref{ex_cylindrical1}.}{fig:cylindrical1}{%
-\myincludeasythree{width=1.16\marginparwidth,
+\myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.005137230269610882,
 3Dc2c=0.8924431204795837 0.30546268820762634 0.3320206105709076,
 3Dcoo=-13.9379243850708 -4.1078948974609375 30.89048194885254,
 3Droo=149.9999934895832,
-3Dlights=Headlamp}{width=1.16\marginparwidth}{figures/figcylindrical1_3D}}
+3Dlights=Headlamp}{width=\marginparwidth}{figures/figcylindrical1_3D}}
 
 \begin{example}[Canonical surfaces in cylindrical coordinates]\label{ex_cylindrical1}
 Describe the surfaces $r=1$, $\theta = \pi/3$ and $z=2$, given in cylindrical coordinates.
@@ -133,7 +133,8 @@ M_{xz} = \iiint_D y\,dV &= \int_0^{\pi}\int_0^{\cos(3\theta)}\int_0^{1-r\cos\the
 M_{xy} = \iiint_D z\,dV &= \int_0^{\pi}\int_0^{\cos(3\theta)}\int_0^{1-r\cos\theta+0.1r\sin\theta} (z) r\,dz\,dr\,d\theta\\
  &= 0.467.
 \end{align*}
-The center of mass, in rectangular coordinates,  is located at $(-0.147,0.015,0.467)$, which lies outside the bounds of the solid.
+The center of mass %, in rectangular coordinates,  
+is located at $(-0.147,0.015,0.467)$, which lies outside the bounds of the solid.
 \end{example}
 
 \subsection{Spherical Coordinates}
@@ -150,14 +151,14 @@ The center of mass, in rectangular coordinates,  is located at $(-0.147,0.015,0.
 
 In short, spherical coordinates can be thought of as a ``double application'' of the polar coordinate system. In spherical coordinates, a point $P$ is identified with $(\rho,\theta,\varphi)$, where $\rho$ is the distance from the origin to $P$, $\theta$ is the same angle as would be used to describe $P$ in the cylindrical coordinate system, and $\varphi$ is the angle between the positive $z$-axis and the ray from the origin to $P$; see \autoref{fig:sphericalintro}. So that each point in space that does not lie on the $z$-axis is defined uniquely, we will restrict $\rho \geq 0$, $0 \leq \theta \leq 2\pi$ and $0 \leq \varphi \leq \pi$.
 
-\mnote[.5in]{\textbf{Note:} The symbol $\rho$ is the Greek letter ``rho.'' Traditionally it is used in the spherical coordinate system, while $r$ is used in the polar and cylindrical coordinate systems.% In space, $r$ and $\rho$ play different roles. In spherical coordinates, $\rho$ is the dist
+\mnote[-\baselineskip]{\textbf{Note:} The symbol $\rho$ is the Greek letter ``rho.'' Traditionally it is used in the spherical coordinate system, while $r$ is used in the polar and cylindrical coordinate systems.% In space, $r$ and $\rho$ play different roles. In spherical coordinates, $\rho$ is the dist
 }
 
 The following Key Idea gives conversions to/from our three spatial coordinate systems.
 
 {\tcbset{grow to right by=2em}
-\begin{keyidea}[{\parbox[t]{210pt}{Converting Between Rectangular, Cylindrical and Spherical Coordinates}}]\label{idea:convert_coords}
-\mbox{}\\[-\baselineskip]
+\begin{keyidea}[Converting Between Rectangular, Cylindrical and\\Spherical Coordinates]\label{idea:convert_coords}
+\mbox{}\\[-\baselineskip]\parbox[t]{\linewidth}{%
 \begin{description}
 \item[Rectangular and Cylindrical]
 \begin{align*}
@@ -167,7 +168,7 @@ x&=r\cos \theta, & y&=r\sin\theta, & z&=z
 
 \item[Rectangular and Spherical]
 \begin{align*}
-\rho &= \sqrt{x^2+y^2+z^2}, & \tan \theta &= y/x, & \cos \varphi &= z/\sqrt{x^2+y^2+z^2}\\
+\rho &= \sqrt{x^2+y^2+z^2}, & \tan \theta &= \frac yx, & \cos \varphi &= \frac z{\sqrt{x^2+y^2+z^2}}\\
 x&=\rho\sin\varphi\cos\theta, & y&=\rho\sin\varphi\sin\theta, & z&=\rho\cos\varphi
 \end{align*}
 
@@ -176,18 +177,23 @@ x&=\rho\sin\varphi\cos\theta, & y&=\rho\sin\varphi\sin\theta, & z&=\rho\cos\varp
 \rho&=\sqrt{r^2+z^2}, & \theta &= \theta,& \tan \varphi &= r/z \\
 r&=\rho \sin \varphi, & \theta &= \theta, & z&=\rho\cos\varphi
 \end{align*}
-\end{description}
-\end{keyidea}
-}
+\end{description}}
+\end{keyidea}}
 
-\mnote[-6\baselineskip]{\textbf{Note:} The role of $\theta$ and $\varphi$ in spherical coordinates differs between mathematicians and physicists. When reading about physics in spherical coordinates, be careful to note how that particular author uses these variables and recognize that these identities may be rearranged.}
+\mnote{\textbf{Note:} The role of $\theta$ and $\varphi$ in spherical coordinates differs between mathematicians and physicists. When reading about physics in spherical coordinates, be careful to note how that particular author uses these variables and recognize that these identities may be rearranged.}
 
 \begin{example}[Converting between rectangular and spherical coordinates]\label{ex_spherical4}
 Convert the rectangular point $(2,-2,1)$ to spherical coordinates, and convert the spherical point $(6,\pi/3,\pi/2)$ to rectangular and cylindrical coordinates.
 \solution
 This rectangular point is the same as used in \autoref{ex_cylindrical4}. Using \autoref{idea:convert_coords}, we find $\rho = \sqrt{2^2+(-1)^2+1^2} = 3$. Using the same logic as in \autoref{ex_cylindrical4}, we find $\theta = 7\pi/4$. Finally, $\cos\varphi = 1/3$, giving $\varphi = \cos^{-1}(1/3) \approx 1.23$, or about $70.53^\circ$. Thus the spherical coordinates are approximately $(3,7\pi/4,1.23)$.
 
-Converting the spherical point $(6,\pi/3,\pi/2)$ to rectangular, we have $x = 6\sin(\pi/2)\cos(\pi/3) = 3$, $y = 6\sin(\pi/2)\sin(\pi/3) = 3\sqrt{3}$ and $z = 6\cos(\pi/2) = 0$. Thus the rectangular coordinates are $(3,3\sqrt{3},0)$.
+Converting the spherical point $(6,\pi/3,\pi/2)$ to rectangular, we have
+\begin{align*}
+ x &= 6\sin(\pi/2)\cos(\pi/3) = 3,\\
+ y &= 6\sin(\pi/2)\sin(\pi/3) = 3\sqrt{3},\text{ and}\\
+ z &= 6\cos(\pi/2) = 0.
+\end{align*}
+Thus the rectangular coordinates are $(3,3\sqrt{3},0)$.
 
 To convert this spherical point to cylindrical, we have $r = 6\sin(\pi/2) = 6$, $\theta = \pi/3$ and $z = 6\cos(\pi/2) =0$, giving the cylindrical point $(6,\pi/3,0)$.
 \end{example}
@@ -216,7 +222,7 @@ All three surfaces are graphed in \autoref{fig:spherical1}. Note how their inter
 
 Spherical coordinates are useful when describing certain domains in space, allowing us to evaluate triple integrals over these domains more easily than if we used rectangular coordinates or cylindrical coordinates. The crux of setting up a triple integral in spherical coordinates is appropriately describing the ``small amount of volume,'' $dV$, used in the integral.
 
-\mtable[-3\baselineskip]{Approximating the volume of a standard region in space using spherical coordinates.}{fig:sphericalwedge}{%
+\mtable[-\baselineskip]{Approximating the volume of a standard region in space using spherical coordinates.}{fig:sphericalwedge}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.004123700316995382,
@@ -237,7 +243,7 @@ dV = d\rho\ \times\ \rho\ d\varphi\ \times\ \rho\sin(\varphi)d\theta = \rho^2\si
 
 Again, this development of $dV$ should sound reasonable, and the following theorem states it is the appropriate manner by which triple integrals are to be evaluated in spherical coordinates.
 
-\mnote{\textbf{Note:} It is often most intuitive to evaluate the triple integral in \autoref{thm:triple_int_spherical} by integrating with respect to $\rho$ first; it often does not matter whether we next integrate with respect to $\theta$ or $\varphi$. Different texts present different standard orders, some preferring $d\varphi\ d\theta$ instead of $d\theta\ d\varphi$. As the bounds for these variables are usually constants in practice, it generally is a matter of preference.}
+\mnote[3\baselineskip]{\textbf{Note:} It is often most intuitive to evaluate the triple integral in \autoref{thm:triple_int_spherical} by integrating with respect to $\rho$ first; it often does not matter whether we next integrate with respect to $\theta$ or $\varphi$. Different texts present different standard orders, some preferring $d\varphi\ d\theta$ instead of $d\theta\ d\varphi$. As the bounds for these variables are usually constants in practice, it generally is a matter of preference.}
 
 \begin{theorem}[Triple Integration in Spherical Coordinates]\label{thm:triple_int_spherical}
 Let $w=h(\rho,\theta,\varphi)$ be a continuous function on a closed, bounded region $D$ in space, bounded in spherical coordinates by $\alpha_1 \leq \varphi \leq \alpha_2$, $\beta_1 \leq \theta \leq \beta_2$ and $f_1(\theta,\varphi) \leq \rho \leq f_2(\theta,\varphi)$. Then \index{integration!with spherical coordinates}

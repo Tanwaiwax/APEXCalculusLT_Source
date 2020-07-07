@@ -43,11 +43,6 @@ DefConstructor('\iframe Verbatim {}{}',
 	       'mozallowfullscreen="mozallowfullscreen">'.
 	       '</xhtml:iframe></ltx:rawhtml>');
 
-#DefMacro('\coloredbox{}{}{}','#3'); # causes problems
-DefMacro('\coloredbox{}{}'); # avoids problems?
-# exhibit problem:
-# \parbox{\linewidth} {\href{https://youtu.be/2CsQ_l1S2_Y}{has underscores}}
-
 DefMacro('\lxIncludeJavascriptFile{}',
 	 '\AtBeginDocument{\lx@include@file{javascript}{#1}}');
 DefMacro('\lxIncludeCssFile{}',
@@ -99,10 +94,6 @@ sub boxStyles {
     }";
 }
 
-DefMacro('\examplestarred {}{}{}','\begin{exampleEnv}[#2]\label{#1}
-#3
-\end{exampleEnv}');
-
 DefMacro('\apexchapter []{}{}',
 	 #'\setboolean{chapter_already_has_exercises}{false}'
 	 '\chapter{#2}\label{#3}'
@@ -124,15 +115,9 @@ DefMacro('\flushouterequ{}','{#1}');
 # some Macros we do need
 
 DefMacroI('\textcent',undef,"\x{00A2}");
-#DefMacro('\lvert','\vert');
-#DefMacro('\rvert','\vert');
-#DefMacro('\lVert','\Vert');
-#DefMacro('\rVert','\Vert');
-DefMacro('\lxenumerate{}','\begin{enumerate}');
 DefMacro('\psBill'); # todo
 
 # some macros we don't need
-DefMacro('\drawexampleline');
 DefMacro('\testmargintop');
 DefMacro('\testmarginbottom');
 

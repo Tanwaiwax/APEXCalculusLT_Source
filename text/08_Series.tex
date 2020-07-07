@@ -18,7 +18,7 @@ Now consider the following limit: $\ds \lim_{n\to\infty}S_n = \lim_{n\to\infty}\
 
 This example illustrates some interesting concepts that we explore in this section. We begin this exploration with some definitions.
 
-{\tcbset{grow to right by=50pt}
+{\tcbset{grow to right by=5em}
 \begin{definition}[Infinite Series, $n^\text{th}$ Partial Sums, Convergence, Divergence]\label{def:series}
 Let $\{a_n\}$ be a sequence.
 \index{series!definition}\index{series!partial sums}\index{series!convergent}\index{series!divergent}\index{convergence!of series}\index{divergence!of series}
@@ -28,8 +28,7 @@ Let $\{a_n\}$ be a sequence.
 \item		If the sequence $\{S_n\}$ converges to $L$, we say the series $\ds \sum_{n=1}^\infty a_n$ \textbf{converges} to $L$, and we write $\ds \sum_{n=1}^\infty a_n = L$.\vspace{-.5\baselineskip}
 \item		If the sequence $\{S_n\}$ diverges, the series $\ds \sum_{n=1}^\infty a_n$ \textbf{diverges}.
 \end{enumerate}
-\end{definition}
-}
+\end{definition}}
 
 Using our new terminology, we can state that the series $\ds \sum_{n=1}^\infty 1/2^n$\vspace{-.5\baselineskip} converges, and $\ds \sum_{n=1}^\infty 1/2^n = 1.$
 
@@ -38,11 +37,11 @@ Using our new terminology, we can state that the series $\ds \sum_{n=1}^\infty 1
 We will explore a variety of series in this section. We start with two series that diverge, showing how we might discern divergence.
 
 \begin{example}[Showing series diverge]\label{ex_series1}
-\mbox{}\\[-2\baselineskip]
+\mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{%
 \begin{enumerate}
 \item		Let $\{a_n\} = \{n^2\}$. Show $\ds \sum_{n=1}^\infty a_n$ diverges.
 \item		Let $\{b_n\} = \{(-1)^{n+1}\}$. Show $\ds \sum_{n=1}^\infty b_n$ diverges.
-\end{enumerate}
+\end{enumerate}}\vspace{0pt}
 \solution
 \begin{enumerate}
 \item	Consider $S_n$, the $n^\text{th}$ partial sum.
@@ -86,7 +85,7 @@ $S_n = \begin{cases}
 As $\{S_n\}$ oscillates, repeating $1, 0, 1, 0, \dotsc$, we conclude that $\ds\lim_{n\to\infty}S_n$ does not exist, hence $\ds\sum_{n=1}^\infty (-1)^{n+1}$ diverges.		
 
 \mtable{Scatter plots relating to the series of \autoref{ex_series1} part 2.}{fig:series1b}{\begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
 ymin=-1.1,ymax=1.1,xmin=-1,xmax=11]
 \addplot [only marks,draw={\colorone},mark size={2.5pt},domain=1:10,samples=10]
@@ -121,7 +120,6 @@ Note that the index starts at $n=0$. If the index starts at $n=1$ we have $\ds \
 
 We started this section with a geometric series, although we dropped the first term of $1$. One reason geometric series are important is that they have nice convergence properties.
 
-\clearpage
 \begin{theorem}[Convergence of Geometric Series]\label{thm:geom_series}
 Consider the geometric series $\ds \sum_{n=0}^\infty ar^n$.\vspace{-.5\baselineskip}
 \index{series!geometric}\index{geometric series}\index{convergence!of geometric series}\index{divergence!of geometric series}
@@ -150,7 +148,7 @@ From \autoref{thm:geom_seq}, we know that if $-1<r<1$, then $\ds \lim_{n\to \inf
 \]
 So when $\abs r<1$ the geometric series converges and its sum is $\ds \frac{a}{1-r}$.
 
-If either $r\leq -1$ or $r>1$, the sequence $\{r^n\}$ is divergent by \autoref{thm:geom_seq}. Thus $\ds \lim_{n\to \infty} S_n$ does not exist, so the geometric series diverges if $r\leq -1$ or \mbox{$r>1$.}
+If either $r\leq -1$ or $r>1$, the sequence $\{r^n\}$ is divergent by \autoref{thm:geom_seq}. Thus $\ds \lim_{n\to \infty} S_n$ does not exist, so the geometric series diverges if $r\leq -1$ or \mbox{$r>1$.} % prevent a line break
 \end{proof}
 
 According to \autoref{thm:geom_series}, the series 
@@ -158,11 +156,11 @@ According to \autoref{thm:geom_series}, the series
 \ds\sum_{n=0}^\infty \frac{1}{2^n}
 =\sum_{n=0}^\infty \left(\frac 12\right)^n= 1+\frac12+\frac14+\dotsb
 \]
-converges as $r=1/2$, and $\ds \sum_{n=0}^\infty \frac{1}{2^n} = \frac{1}{1-1/2} = 2.$ This concurs with our introductory example; while there we got a sum of 1, we skipped the first term of 1.\\
+converges as $r=1/2$, and $\ds \sum_{n=0}^\infty \frac{1}{2^n} = \frac{1}{1-1/2} = 2.$ This concurs with our introductory example; while there we got a sum of 1, we skipped the first term of 1.
 
 \mtable{Scatter plots relating to the series in \autoref{ex_series2}.}{fig:series2}{%
 \begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={2,4,6,8,10},
 ymin=-.5,ymax=2.5,xmin=-1,xmax=11]
 \addplot [only marks,draw={\colorone},mark size={1.5pt},domain=2:10,samples=9] {(.75)^x};
@@ -178,7 +176,7 @@ ymin=-.5,ymax=2.5,xmin=-1,xmax=11]
 \end{tikzpicture}
 \smallskip\\(a)\bigskip\\
 \begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={2,4,6,8,10},
 ymin=-1.1,ymax=1.1,xmin=-1,xmax=11]
 \addplot [only marks,draw={\colorone},mark size={1.5pt},domain=0:10,samples=11]
@@ -195,7 +193,7 @@ ymin=-1.1,ymax=1.1,xmin=-1,xmax=11]
 \end{tikzpicture}
 \smallskip\\(b)\bigskip\\
 \begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
 xmin=-1,xmax=7,ymin=-50]%ymax=1.1,%
 \addplot [only marks,draw={\colorone},mark size={1.5pt},domain=0:6,samples=7] {3^(x)};
@@ -249,6 +247,7 @@ S_3 &=	\left(\frac11-\frac12\right) + \left(\frac12-\frac13\right)+\left(\frac13
 S_4 &=	\left(\frac11-\frac12\right) + \left(\frac12-\frac13\right)+\left(\frac13-\frac14\right) +\left(\frac14-\frac15\right)& &= 1-\frac15
 \end{align*}
 %
+% todo Tim don't nest tikzpictures?
 \mtable{Scatter plots relating to the series of \autoref{ex_series3}.}{fig:series3}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={2,4,6,8,10},
@@ -265,7 +264,9 @@ ymin=-.1,ymax=1.1,xmin=-1,xmax=11]
 \end{tikzpicture}};
 \end{tikzpicture}}%
 %
-Note how most of the terms in each partial sum subtract out. In general, we see that $S_n = 1-\frac{1}{n+1}$. The sequence $\{S_n\}$ converges,  as $\ds \lim_{n\to\infty}S_n=\smallskip\lim_{n\to\infty}\left(1-\tfrac1{n+1}\right)=1$, and so we conclude that $\ds\sum_{n=1}^\infty \left(\tfrac1n-\tfrac1{n+1}\right) = 1$. Partial sums of the series are plotted in \autoref{fig:series3}.
+Note how most of the terms in each partial sum subtract out. In general, we see that $S_n = 1-\frac{1}{n+1}$. This means that the sequence $\{S_n\}$ converges,  as
+\[\lim_{n\to\infty}S_n=\smallskip\lim_{n\to\infty}\left(1-\tfrac1{n+1}\right)=1,\]
+and so we conclude that $\ds\sum_{n=1}^\infty \left(\tfrac1n-\tfrac1{n+1}\right) = 1$. Partial sums of the series are plotted in \autoref{fig:series3}.
 \end{example}
 
 The series in \autoref{ex_series3} is an example of a \textbf{telescoping series}. Informally, a telescoping series is one in which the partial sums reduce to just a fixed number of terms. The partial sum $S_n$ did not contain $n$ terms, but rather just two: 1 and $1/(n+1)$.\index{series!telescoping}\index{telescoping series}
@@ -281,7 +282,6 @@ Evaluate each of the following infinite series.
  \text{1.}\quad\sum_{n=1}^\infty \frac{2}{n^2+2n}\qquad\qquad
  \text{2.}\quad\sum_{n=1}^\infty \ln\left(\frac{n+1}{n}\right)
 \]
-\newpage
 \solution
 \begin{enumerate}
 \item		We can decompose the fraction $2/(n^2+2n)$ as
@@ -289,16 +289,17 @@ Evaluate each of the following infinite series.
 (See \autoref{sec:partial_fraction}, Partial Fraction Decomposition, to recall how  this is done, if necessary.)
 
 Expressing the terms of $\{S_n\}$ is now more instructive:%
-{\footnotesize%
+{%
+\small%
 \begin{align*}
-S_1 &= 1-\frac13 &&= 1-\frac13\\
-S_2 &= \left(1-\frac13\right) + \left(\frac12-\frac14\right) &&= 1+\frac12-\frac13-\frac14\\
-S_3 &= \left(1-\frac13\right) + \left(\frac12-\frac14\right) + \left(\frac13-\frac15\right)
-&&= 1+\frac12-\frac14-\frac15\\
-S_4 &= \left(1-\frac13\right) + \left(\frac12-\frac14\right) + \left(\frac13-\frac15\right) + \left(\frac14-\frac16\right)
-&&= 1+\frac12-\frac15-\frac16\\
-S_5 &= \left(1-\frac13\right) + \left(\frac12-\frac14\right) + \left(\frac13-\frac15\right) + \left(\frac14-\frac16\right) + \left(\frac15-\frac17\right)\mkern-18mu
-&&= 1+\frac12-\frac16-\frac17
+S_1 &= 1-\tfrac13 &&= 1-\tfrac13\\
+S_2 &= (1-\tfrac13) + (\tfrac12-\tfrac14) &&= 1+\tfrac12-\tfrac13-\tfrac14\\
+S_3 &= (1-\tfrac13) + (\tfrac12-\tfrac14) + (\tfrac13-\tfrac15)
+&&= 1+\tfrac12-\tfrac14-\tfrac15\\
+S_4 &= (1-\tfrac13) + (\tfrac12-\tfrac14) + (\tfrac13-\tfrac15) + (\tfrac14-\tfrac16)
+&&= 1+\tfrac12-\tfrac15-\tfrac16\\
+S_5 &= (1-\tfrac13) + (\tfrac12-\tfrac14) + (\tfrac13-\tfrac15) + (\tfrac14-\tfrac16) + (\tfrac15-\tfrac17)\mkern-18mu
+&&= 1+\tfrac12-\tfrac16-\tfrac17
 \end{align*}}%
 %
 \mtable{Scatter plots relating to the series of \autoref{ex_series4} part 1.}{fig:series4a}{\begin{tikzpicture}
@@ -318,14 +319,12 @@ ymin=-.1,ymax=1.6,xmin=-1,xmax=11]
 \end{tikzpicture}};
 \end{tikzpicture}}%
 %
-We again have a telescoping series. In each partial sum, most of the terms pair up to add to zero and we obtain the formula $\ds S_n = 1+\frac12-\frac1{n+1}-\frac1{n+2}.$ Taking limits allows us to determine the convergence of the series:\\
-\flushinnerequ{%
+We again have a telescoping series. In each partial sum, most of the terms pair up to add to zero and we obtain the formula $\ds S_n = 1+\frac12-\frac1{n+1}-\frac1{n+2}.$ Taking limits allows us to determine the convergence of the series:
 \[
 \lim_{n\to\infty}S_n
 = \lim_{n\to\infty} \left(1+\frac12-\frac1{n+1}-\frac1{n+2}\right) = \frac32,
-\quad \text{so }
-\sum_{n=1}^\infty \frac1{n^2+2n} = \frac32.
-\]}\\
+\]
+so $\ds\sum_{n=1}^\infty \frac1{n^2+2n} = \frac32$.
 This is illustrated in \autoref{fig:series4a}.
 
 \item	We begin by writing the first few partial sums of the series:
@@ -343,13 +342,12 @@ S_4 = \ln\left(2\right)+\ln\left(\frac32\right)+\ln\left(\frac43\right)
 =\ln\left(\frac21\cdot\frac32\cdot\frac43\cdot\frac54\right)
 =\ln\left(5\right).
 \]
-We must generalize this for $S_n$.\\
-\flushinnerequ{%
-\[
-S_n=\ln\left(2\right)+\ln\left(\frac32\right)+\dots +\ln \left(\frac{n+1}{n}\right)
+We must generalize this for $S_n$.
+\begin{multline*}
+S_n=\ln\left(2\right)+\ln\left(\frac32\right)+\dots +\ln \left(\frac{n+1}{n}\right)\\
 =\ln\left(\frac21\cdot\frac32 \dots  \frac{n}{n-1}\cdot \frac{n+1}{n}\right)
 =\ln(n+1)
-\]}
+\end{multline*}
 
 \mtable{Scatter plots relating to the series of \autoref{ex_series4} part 2.}{fig:series4b}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -403,7 +401,7 @@ This gives us $S\geq \frac12+S$ which can never be true, thus our assumption tha
 
 %Before using this theorem, we provide a few ``famous'' series.
 %
-%{\tcbset{grow to right by=20pt}}
+%{\tcbset{grow to right by=2em}}
 %\begin{keyidea}[Important Series]\label{idea:famous_series}
 %\begin{enumerate}
 %\item	\parbox{90pt}{$\ds\sum_{n=0}^\infty \frac1{n!} = e$. } (Note that the index starts with $n=0$.)

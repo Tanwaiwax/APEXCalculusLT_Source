@@ -153,15 +153,12 @@ Let $z=f(x,y)$ be differentiable on an open set $S$ with gradient $\nabla f$, le
 \begin{example}[Finding directions of maximal and minimal increase]\label{ex_direct2}
 Let $f(x,y) = \sin x\cos y$ and let $P=(\pi/3,\pi/3)$. Find the directions of maximal/minimal increase, and find a direction where the instantaneous rate of $z$ change is 0.
 \solution
-We begin by finding the gradient. We see that $f_x = \cos x\cos y$ and $f_y = -\sin x\sin y$, thus 
+We begin by finding the gradient. We see that the partial derivatives are $f_x = \cos x\cos y$ and $f_y = -\sin x\sin y$, so that
 \[\nabla f =\bracket{\cos x\cos y,-\sin x\sin y}\quad \text{and, at $P$,} \quad \nabla f\left(\frac{\pi}3,\frac{\pi}3\right) =\bracket{\frac14,-\frac34}.\]
 Thus the direction of maximal increase is $\bracket{1/4, -3/4}$. In this direction, the instantaneous rate of $z$ change is $\norm{\bracket{1/4,-3/4}} = \sqrt{10}/4% \approx 0.79
 $. 
 
-\autoref{fig:direct2} shows the surface plotted from two different perspectives. In each, the gradient is drawn at $P$ with a dashed line (because of the nature of this surface, the gradient points ``into'' the surface). Let $\vec u =\bracket{u_1, u_2}$ be the unit vector in the direction of $\nabla f$ at $P$. Each graph of the figure also contains the vector $\bracket{u_1, u_2, \norm{\nabla f\,}}$. This vector has a ``run'' of 1 (because in the $x$-$y$ plane it moves 1 unit) and a ``rise'' of $\norm{\nabla f}$, hence we can think of it as a vector with slope of $\norm{\nabla f}$ in the direction of $\nabla f$, helping us visualize how ``steep'' the surface is in its steepest direction. 
-%To help understand this number, consider moving from $P$ one unit in the direction of $\bracket{1/4,-3/4}$. The unit vector in this direction is $\bracket{1/\sqrt{10},-3/\sqrt{10}}\approx\bracket{0.316,-0.949}$; moving from $P$ one unit in the direction of the gradient places one at the point $R=(1.363,0.098)$. 
-
-\mtable[-6\baselineskip]{Graphing the surface and important directions in \autoref{ex_direct2}.}{fig:direct2}{%
+\mtable{Graphing the surface and important directions in \autoref{ex_direct2}.}{fig:direct2}{%
 \myincludeasythree{width=.8\marginparwidth,
 3Droll=0,
 3Dortho=0.0051408205181360245,
@@ -176,6 +173,9 @@ $.
 3Dcoo=-6.498621940612793 -16.487354278564453 45.97212600708008,
 3Droo=149.9999987284343}{width=.8\marginparwidth}{figures/figdirect2b_3D}
 \\(b)}
+
+\autoref{fig:direct2} shows the surface plotted from two different perspectives. In each, the gradient is drawn at $P$ with a dashed line (because of the nature of this surface, the gradient points ``into'' the surface). Let $\vec u =\bracket{u_1, u_2}$ be the unit vector in the direction of $\nabla f$ at $P$. Each graph of the figure also contains the vector $\bracket{u_1, u_2, \norm{\nabla f\,}}$. This vector has a ``run'' of 1 (because in the $x$-$y$ plane it moves 1 unit) and a ``rise'' of $\norm{\nabla f}$, hence we can think of it as a vector with slope of $\norm{\nabla f}$ in the direction of $\nabla f$, helping us visualize how ``steep'' the surface is in its steepest direction. 
+%To help understand this number, consider moving from $P$ one unit in the direction of $\bracket{1/4,-3/4}$. The unit vector in this direction is $\bracket{1/\sqrt{10},-3/\sqrt{10}}\approx\bracket{0.316,-0.949}$; moving from $P$ one unit in the direction of the gradient places one at the point $R=(1.363,0.098)$. 
 
 %Compare the $z$-values at $P$ and $R$:
 %\[f\left(\frac{\pi}3,\frac{\pi}3\right) = \frac{\sqrt{3}}4 \approx 0.433.\]
@@ -274,7 +274,7 @@ Thus the water follows the curve $y=x^2/4$ in the $x$-$y$ plane. The surface and
 
 The concepts of directional derivatives and the gradient are easily extended to three (and more) variables. We combine the concepts behind Definitions \ref{def:direct_deriv} and \ref{def:gradient} and \autoref{thm:direct_deriv1} into one set of definitions.
 
-\begin{definition}[{\parbox[t]{195pt}{Directional Derivatives and Gradient with Three Variables}}]\label{def:direct_deriv3}
+\begin{definition}[Directional Derivatives and Gradient with Three Variables]\label{def:direct_deriv3}
 Let $w=F(x,y,z)$ be differentiable on an open ball $B$ and let $\vec u $ be a unit vector in $\mathbb{R}^3$.\index{gradient}\index{directional derivative}\index{derivative!directional}
 \begin{enumerate}
 	\item	The \textbf{gradient} of $F$ is $\nabla F =\bracket{F_x,F_y,F_z}$.
@@ -287,7 +287,8 @@ Let $w=F(x,y,z)$ be differentiable on an open ball $B$ and let $\vec u $ be a un
 
 The same properties of the gradient given in \autoref{thm:gradient}, when $f$ is a function of two variables, hold for $F$, a function of three variables.
 
-\begin{theorem}[{\parbox[t]{200pt}{The Gradient and Directional Derivatives with Three Variables}}]\label{thm:gradient3}
+{\tcbset{grow to right by=10em}
+\begin{theorem}[The Gradient and Directional Derivatives with Three Variables]\label{thm:gradient3}
 Let $w=F(x,y,z)$ be differentiable on an open set $S$ with gradient $\nabla F$, let $P=(x_0,y_0,z_0)$ be a point in $S$, and let $\vec u$ be a unit vector.\index{gradient}\index{directional derivative}\index{derivative!directional}
 \begin{enumerate}
 	\item The maximum value of $D_{\vec u\,}F(x_0,y_0,z_0)$ is $\norm{\nabla F(x_0,y_0,z_0)}$; %, obtained when the angle between $\nabla F$ and $\vec u$ is 0, i.e.,
@@ -297,7 +298,7 @@ Let $w=F(x,y,z)$ be differentiable on an open set $S$ with gradient $\nabla F$, 
 	\item At $P$, $D_{\vec u\,}F(x_0,y_0,z_0) = 0$ when $\nabla F(x_0,y_0,z_0)$ and $\vec u$ are orthogonal.
 %	\item At $P$, $\nabla F(x_0,y_0,z_0)$ is orthogonal to the level surface passing through
 \end{enumerate}
-\end{theorem}
+\end{theorem}}
 
 We interpret the third statement of the theorem as ``the gradient is orthogonal to level surfaces,'' the three-variable analogue to level curves.
 \index{gradient!and level surfaces}\index{level surface}

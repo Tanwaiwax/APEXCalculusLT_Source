@@ -5,7 +5,7 @@ A common use of vector-valued functions is to describe the motion of an object i
 \begin{definition}[Velocity, Speed and Acceleration]\label{def:vvf_motion}
 Let $\vec r(t)$ be a position function in $\mathbb{R}^2$ or $\mathbb{R}^3$.
 \index{velocity}\index{speed}\index{acceleration}\index{vector-valued function!describing motion}
-\begin{enumerate}
+\begin{enumerate}\raggedright
 	\item \textbf{Velocity}, denoted $\vec v(t)$, is the instantaneous rate of position change; that is, $\vec v(t) = \vrp(t)$.
 	\item	\textbf{Speed} is the magnitude of velocity, $\norm{\vec v(t)}$.
 	\item	\textbf{Acceleration}, denoted $\vec a(t)$, is the instantaneous rate of velocity change; that is, $\vec a(t) = \vec v\,'(t) = \vrp'(t)$.
@@ -196,7 +196,7 @@ A young boy whirls a ball, attached to a string, above his head in a counter-clo
 		
 \mtable{Modeling the flight of a ball in \autoref{ex_motion3}.}{fig:motion3}{\begin{tikzpicture}[>=latex,scale=.75]
 \begin{scope}[scale=.5,shift={(0,10)}]
-\ifthenelse{\boolean{inColor}}{
+\iftoggle{inColor}{
  \newcommand{\trunkcolor}{brown}
 }{
  \newcommand{\trunkcolor}{white}
@@ -204,7 +204,7 @@ A young boy whirls a ball, attached to a string, above his head in a counter-clo
 \draw[fill=\trunkcolor,ultra thick]
    (.75,-1) .. controls (.5,.5) and (.5,3) .. (0.5,4) --
    (-0.5,4) .. controls (-.5,3) and (-.5,.5) .. (-.75,-1) ;
-\ifthenelse{\boolean{inColor}}{
+\iftoggle{inColor}{
  \newcommand{\branchcolor}{green!50!black}
 }{
  \newcommand{\branchcolor}{white}
@@ -243,6 +243,7 @@ A young boy whirls a ball, attached to a string, above his head in a counter-clo
 	
 	\begin{align*}
 	\vec r(t_0) \cdot \bigl(\bracket{0,10}- \vec r(t_0)\bigr) &=0\\
+	\hspace{-2em}
 	\bracket{2\cos (4\pi t_0), 2\sin (4\pi t_0)}\cdot\bracket{-2\cos(4\pi t_0),10-2\sin (4\pi t_0)}&=0\\
 	-4\cos^2(4\pi t_0) + 20\sin (4\pi t_0)-4\sin^2(4\pi t_0) &= 0\\
 	20\sin (4\pi t_0) - 4 &=0\\
@@ -405,9 +406,14 @@ A particle moves in space with position function $\vrt =\bracket{t,t^2,\sin (\pi
 \solution
 \begin{enumerate}
 	\item We use \autoref{thm:distance_traveled} to establish the integral:
-	%%
-	%% Using a boolean to give different graphics for 2D and 3D versions.
-	\ifthenelse{\boolean{in_threeD}}{% if in three D
+	\begin{align*}
+	\text{distance traveled}
+	&= \int_{-2}^2 \norm{\vvt}\ dt \\
+	&= \int_{-2}^2 \sqrt{1+(2t)^2+ \pi^2\cos^2(\pi t)}\ dt.
+	\end{align*}
+	This cannot be solved in terms of elementary functions so we turn to numerical integration, finding the distance to be 12.88 m.
+	
+	\iftoggle{in_threeD}{%
 	\mtable{The path of the particle in \autoref{ex_motion6}.}{fig:motion6}{
 	\myincludeasythree{width=\marginparwidth,
 3Droll=-1.3988262638349023,
@@ -424,13 +430,7 @@ A particle moves in space with position function $\vrt =\bracket{t,t^2,\sin (\pi
 	\myincludegraphics[width=\marginparwidth]{figures/figmotion6_3D}\\
 	(b)
 	}% ends \mtable
-	}% ends 2D, also ends all of if-then-else
-	\begin{align*}
-	\text{distance traveled}
-	&= \int_{-2}^2 \norm{\vvt}\ dt \\
-	&= \int_{-2}^2 \sqrt{1+(2t)^2+ \pi^2\cos^2(\pi t)}\ dt.
-	\end{align*}
-	This cannot be solved in terms of elementary functions so we turn to numerical integration, finding the distance to be 12.88 m.
+	}% ends 2D, also ends all of if-toggle
 	
 	\item	The displacement is the vector
 	\[\vec r(2)-\vec r(-2) =\bracket{2,4,0}-\bracket{-2,4,0}=\bracket{4,0,0}.\]
@@ -454,10 +454,10 @@ that is, we just found the average value of $\norm{\vvt}$ on $[-2,2]$.
 
 Likewise, given position function $\vrt$, the average velocity on $[a,b]$ is
 \[\frac{\text{displacement}}{\text{travel time}} = \frac1{b-a}\int_a^b \vec{r}\,'(t)\ dt = \frac{\vec r(b)-\vec r(a)}{b-a};\]
-that is, it is the average value of $\vec r\,'(t)$, or $\vvt$, on $[a,b]$.\\
+that is, it is the average value of $\vec r\,'(t)$, or $\vvt$, on $[a,b]$.
 
 \begin{keyidea}[Average Speed, Average Velocity]\label{idea:average_speed_velocity}
-Let $\vec r(t)$ be a continuous position function on an open interval $I$ containing $a<b$. \\
+Let $\vec r(t)$ be a continuous position function on an open interval $I$ containing $a<b$.\bigskip
 
 The \textbf{average speed} is:
 \[\frac{\text{distance traveled}}{\text{travel time}} = \frac{\int_a^b \norm{\vec{r}\,'(t)}\ dt}{b-a} = \frac1{b-a}\int_a^b\norm{\vec{r}\,'(t)}\ dt.\]

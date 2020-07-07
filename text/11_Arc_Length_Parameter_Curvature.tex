@@ -81,7 +81,7 @@ Since $s=5t$, we can write $t=s/5$ and replace $t$ in $\vec r(t)$ with $s/5$:
 Clearly, as shown in \autoref{fig:vvfarc1}, the graph of $\vec r$ is a line, where $t=0$ corresponds to the point $(-1,2)$. What point on the line is 2 units away from this initial point? We find it with $\vec r(2) =\bracket{1/5, 18/5}$. 
 
 \mtable{Graphing $\vec r$ in \autoref{ex_vvfarc1} with parameters $t$ and $s$.}{fig:vvfarc1}{\begin{tikzpicture}[>=stealth]
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,xtick={1,2,-1,-2},
 ymin=-1.1,ymax=6.5,xmin=-2.1,xmax=2.9]
 \addplot [thick,draw={\colorone}, smooth,domain=-2.5:2.5] ({3*x-1},{4*x+2});
@@ -119,7 +119,7 @@ The Chain Rule states that
 \frac{d\vec r}{dt} &= \frac{d\vec r}{ds}\cdot\frac{ds}{dt}\\
 \vrp(t) &= \vrp(s)\cdot \norm{\vrp(t)}.
 \end{align*}
-Solving for $\vrp(s)$, we have 
+Solving for $\vrp(s)$, we have\vspace{-.3\baselineskip}
 \begin{equation}
 \vrp(s) = \frac{\vrp(t)}{\norm{\vrp(t)}} = \vec T(t),\label{eq:vvfarc2}
 \end{equation}
@@ -222,7 +222,7 @@ We'll prove statement 3; statements 1 and 2 are applications that we leave to th
 =\frac{d\vec T(s)}{ds}\frac{ds}{dt}
 =\frac{d\vec T(s)}{ds}\norm{\vrp(t)},
 \]
-so that
+so that\vspace{-.3\baselineskip}
 \[
 \kappa=\norm{\frac{d\vec T(s)}{ds}}
 =\norm{\frac{\frac{d\vec T(t)}{dt}}{\norm{\vrp(t)}}}
@@ -307,7 +307,7 @@ ymin=-.1,ymax=2.9,xmin=-.1,xmax=3.5]
 is the \textbf{osculating circle}, or \textbf{circle of curvature}, to $C$ at $P$, and $r$ is the \textbf{radius of curvature}. \index{curvature!of circle}\index{osculating circle}\index{circle of curvature}\index{radius of curvature}\index{curvature!radius of}%
 \autoref{fig:curvature_osculate} shows the graph of the curve seen earlier in \autoref{fig:curvatureintro} and its osculating circles at $A$ and $B$. A sharp turn corresponds to a circle with a small radius; a gradual turn corresponds to a circle with a large radius. Being able to think of curvature in terms of the radius of a circle is very useful. (The word ``osculating'' comes from a Latin word related to kissing; an osculating circle ``kisses'' the graph at a particular point. Many useful ideas in mathematics have come from studying the osculating circles to a curve.)
 
-\mtable{Examining the curvature of $y=x^2$.}{fig:curvature3}{\begin{tikzpicture}[>=stealth]
+\mtable[\baselineskip]{Examining the curvature of $y=x^2$.}{fig:curvature3}{\begin{tikzpicture}[>=stealth]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
 ymin=-2.5,ymax=10.1,xmin=-10.2,xmax=4.9]
@@ -334,7 +334,11 @@ At the vertex ($x=0$), the curvature is $\kappa = 2$. At $x=1$, the curvature is
 Find where the curvature of $\vec r(t) =\bracket{t, t^2, 2t^3}$ is maximized.
 \solution
 We use the third formula in \autoref{thm:curvature_formulas} as $\vrt$ is defined in space. We leave it to the reader to verify that 
-\[\vrp(t) =\bracket{1,2t,6t^2},\quad \vrp'(t) =\bracket{0,2,12t},\quad \text{and}\quad \vrp(t)\times \vrp'(t) =\bracket{12t^2,-12t,2}.\]
+\begin{align*}
+ \vrp(t) &=\bracket{1,2t,6t^2},\\
+ \vrp'(t) &=\bracket{0,2,12t},\qquad \text{and}\\
+ \vrp(t)\times \vrp'(t) =\bracket{12t^2,-12t,2}.
+\end{align*}
 Thus 
 \begin{align*}
 \kappa(t) &= \frac{\norm{\vrp(t)\times\vrp'(t)}}{\norm{\vrp(t)}^3} \\

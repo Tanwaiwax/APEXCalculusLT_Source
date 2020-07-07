@@ -52,12 +52,12 @@ ymin=-3.3,ymax=3.3,xmin=-3.3,xmax=3.3]
 
 \begin{definition}[Vector Field]\label{def:vector_field}
 \index{vector field}%
-\mbox{}\\[-2\baselineskip]\begin{enumerate}
+\mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{\begin{enumerate}
 	\item A \textbf{vector field in the plane} is a function $\vec F(x,y)$ whose domain is a subset of $\mathbb{R}^2$ and whose output is a two-dimensional vector:
 	\[\vec F(x,y) =\bracket{M(x,y), N(x,y)}.\]
 	\item A \textbf{vector field in space} is a function $\vec F(x,y,z)$ whose domain is a subset of $\mathbb{R}^3$ and whose output is a three-dimensional vector:
 	\[\vec F(x,y,z) =\bracket{M(x,y,z), N(x,y,z), P(x,y,z)}.\]
-\end{enumerate}
+\end{enumerate}}
 \end{definition}
 
 This definition may seem odd at first, as a special type of function is called a ``field.'' However, as the function determines a ``field of vectors'', we can say the field is \emph{defined by} the function, and thus the field \emph{is} a function.
@@ -112,7 +112,7 @@ ymin=-3.3,ymax=3.3,xmin=-3.3,xmax=3.3]
 
 A common way to address this problem is limit the length of each arrow, and represent long vectors with thick arrows, as done in \autoref{fig:vectorfieldintrob}(a). Usually we do not use a graph of a vector field to determine exactly the magnitude of a particular vector. Rather, we are more concerned with the relative magnitudes of vectors: which are bigger than others? Thus limiting the length of the vectors is not problematic.
 
-Drawing arrows with variable thickness is best done with technology; search the documentation of your favorite graphing program for terms like ``vector fields'' or ``slope fields'' to learn how. Technology obviously allows us to plot many vectors in a vector field nicely; in \autoref{fig:vectorfieldintrob}(b), we see the same vector field drawn with many vectors, and finally get a clear picture of how this vector field behaves. (If this vector field represented the velocity of air moving across a flat surface, we could see that the air tends to move either to the upper-right or lower-left, and moves very slowly near the origin.)
+Drawing arrows with variable thickness is best done with technology; search the documentation of your graphing program for terms like ``vector fields'' or ``slope fields'' to learn how. Technology obviously allows us to plot many vectors in a vector field nicely; in \autoref{fig:vectorfieldintrob}(b), we see the same vector field drawn with many vectors, and finally get a clear picture of how this vector field behaves. (If this vector field represented the velocity of air moving across a flat surface, we could see that the air tends to move either to the upper-right or lower-left, and moves very slowly near the origin.)
 
 We can similarly plot vector fields in space, as shown in \autoref{fig:vectorfieldintroc}, though it is not often done. The plots get very busy very quickly, as there are lots of arrows drawn in a small amount of space. In \autoref{fig:vectorfieldintroc} the field $\vec F =\bracket{-y,x,z}$ is graphed. If one could view the graph from above, one could see the arrows point in a circle about the $z$-axis. One should also note how the arrows far from the origin are larger than those close to the origin. 
 
@@ -132,11 +132,11 @@ It is good practice to try to visualize certain vector fields in one's head. For
 \subsection{Vector Field Notation and Del Operator}
 
 \autoref{def:vector_field} defines a vector field $\vec F$ using the notation
-\[
-\vec F(x,y) =\bracket{M(x,y), N(x,y)}
-\quad \text{and}\quad
-\vec F(x,y,z) =\bracket{M(x,y,z), N(x,y,z),P(x,y,z)}.
-\]
+\begin{align*}
+\vec F(x,y) &=\bracket{M(x,y), N(x,y)}
+\quad \text{and}\\quad
+\vec F(x,y,z) &=\bracket{M(x,y,z), N(x,y,z),P(x,y,z)}.
+\end{align*}
 That is, the components of $\vec F$ are each functions of $x$ and $y$ (and also $z$ in space). As done in other contexts, we will drop the ``of $x$, $y$ and $z$'' portions of the notation and refer to vector fields in the plane and in space as 
 \[\vec F =\bracket{M, N}\quad \text{and} \quad \vec F  =\bracket{M,N,P},\]
 respectively, as this shorthand is quite convenient.
@@ -198,10 +198,10 @@ In space, things are a bit more complicated. Again let $\vec F$ represent the fl
 In space, it turns out the proper measure of curl is $\nabla \times \vec F$, as stated in the following definition. To find the curl of a planar vector field $\vec F =\bracket{M,N}$, embed it into space as $\vec F =\bracket{M, N, 0}$ and apply the cross product definition. Since $M$ and $N$ are functions of just $x$ and $y$ (and not $z$), all partial derivatives with respect to $z$ become 0 and the result is simply $\bracket{0,0,N_x-M_y}$. The third component is the measure of curl of a planar vector field. 
 
 \begin{definition}[Curl of a Vector Field]\label{def:curl}
-\index{curl}\mbox{}\\[-2\baselineskip]\begin{itemize}
+\index{curl}\mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{\begin{itemize}
 	\item Let $\vec F =\bracket{M,N}$ be a vector field in the plane. The \textbf{curl} of $\vec F$ is $\curl \vec F = N_x - M_y$.
 	\item Let $\vec F =\bracket{M,N,P}$ be a vector field in space. The \textbf{curl} of $\vec F$ is $\curl \vec F = \nabla \times \vec F =\bracket{P_y-N_z,M_z-P_x,N_x - M_y}$.
-\end{itemize}
+\end{itemize}}
 \end{definition}
 
 We adopt the convention of referring to curl as $\nabla \times \vec F$, regardless of whether $\vec F$ is a vector field in two or three dimensions. 
@@ -437,7 +437,7 @@ A function $z=f(x,y)$ naturally induces a vector field, $\vec F = \nabla f =\bra
 
 \mtable{The vector field $\vec F = \nabla f$ and a graph of a function $z=f(x,y)$ in \autoref{ex_vectorfield4}.}{fig:vectorfield4}{%
 \begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,height=1.16\marginparwidth,
+\begin{axis}[width=\marginparwidth,height=1.16\marginparwidth,
 tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,axis equal,
 xtick={-1,1},ytick={-1,1},
@@ -455,13 +455,13 @@ ymin=-1.2,ymax=1.2,xmin=-1.2,xmax=1.2]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}
 \\[-5pt](a)\\[10pt]
-\myincludeasythree{width=1.16\marginparwidth,
+\myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.004781691357493401,
 3Dc2c=0.7686017751693726 -0.47064894437789917 0.4332907199859619,
 3Dcoo=0.000002273424570375937 -0.0000013264116205391474 56.08348083496094,
 3Droo=117.22547128132403,
-3Dlights=Headlamp}{width=1.16\marginparwidth}{figures/figvectorfield4b_3D}
+3Dlights=Headlamp}{width=\marginparwidth}{figures/figvectorfield4b_3D}
 \\(b)}
 
 \begin{example}[A vector field that is the gradient of a potential function]\label{ex_vectorfield4}

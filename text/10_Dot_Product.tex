@@ -4,12 +4,12 @@ The previous section introduced vectors and described how to add them together a
 
 \begin{definition}[Dot Product]\label{def:dot_product}
 \index{dot product!definition}\index{vectors!dot product}
-\mbox{}\\[-2\baselineskip]\begin{enumerate}
+\mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{\begin{enumerate}
 	\item Let $\vec u =\bracket{u_1,u_2}$ and $\vec v = \bracket{v_1,v_2}$  in $\mathbb{R}^2$. The \textbf{dot product} of $\vec u$ and $\vec v$, denoted \dotp uv, is 
 	\[\dotp uv = u_1v_1+u_2v_2.\]
 	\item Let $\vec u = \bracket{u_1,u_2,u_3}$ and $\vec v = \bracket{v_1,v_2,v_3}$  in $\mathbb{R}^3$. The \textbf{dot product} of $\vec u$ and $\vec v$, denoted \dotp uv, is 
 	\[\dotp uv = u_1v_1+u_2v_2+u_3v_3.\]
-\end{enumerate}
+\end{enumerate}}
 \end{definition}
 
 Note how this product of vectors returns a \emph{scalar}, not another vector.
@@ -17,11 +17,11 @@ Note how this product of vectors returns a \emph{scalar}, not another vector.
 We practice evaluating a dot product in the following example, then we will discuss why this product is useful.
 
 \begin{example}[Evaluating dot products]\label{ex_dotp1}
-\mbox{}\\[-2\baselineskip]
+\mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{%
 \begin{enumerate}
 	\item Let $\vec u=\bracket{1,2}$, $\vec v=\bracket{3,-1}$ in $\mathbb{R}^2$. Find \dotp uv.
 	\item Let $\vec x = \bracket{2,-2,5}$ and $\vec y = \bracket{-1, 0, 3}$ in $\mathbb{R}^3$. Find \dotp xy.
-\end{enumerate}
+\end{enumerate}}\vspace{0pt}
 \solution
 \begin{enumerate}
 	\item Using \autoref{def:dot_product}, we have
@@ -107,7 +107,7 @@ When $\theta$ is an acute angle (i.e., $0\leq \theta <\pi/2$), $\cos \theta$ is 
 \label{fig:dotpsign}
 \end{minipage}
 
-We \emph{can} use \autoref{thm:dot_product} to compute the dot product, but generally this theorem is used to find the angle between known vectors (since the dot product is generally easy to compute). To this end, we rewrite the theorem's equation as
+We \emph{can} use \autoref{thm:dot_product} to compute the dot product, but generally this theorem is used to find the angle between known vectors (since the dot product is generally easy to compute). To this end, we rewrite the theorem's equation as\vspace{-.3\baselineskip}
 \[\cos \theta = \frac{\dotp uv}{\norm{\vec u}\norm{\vec v}} \quad \Leftrightarrow \quad \theta = \cos^{-1}\left(\frac{\dotp uv}{\norm{\vec u}\norm{\vec v}}\right).\]
 
 \youtubeVideo{98C7iv8OcnI}{Vectors: The Dot Product}
@@ -168,19 +168,19 @@ We do a similar example next in the context of vectors in space.
 Let $\vec u = \bracket{1,1,1}$, $\vec v = \bracket{-1,3,-2}$ and $\vec w = \bracket{-5,1,4}$, as illustrated in \autoref{fig:dotp3}. Find the angle between each pair of vectors.
 \solution
 \begin{enumerate}
-	\item Between $\vec u$ and $\vec v$:
+	\item Between $\vec u$ and $\vec v$:\vspace{-\baselineskip}
 	\begin{align*}
 		\theta &= \cos^{-1}\left(\frac{\dotp uv}{\norm{\vec u}\norm{\vec v}}\right)\\
 		&= \cos^{-1}\left(\frac{0}{\sqrt{3}\sqrt{14}}\right)\\
 		&= \frac{\pi}2.
 	\end{align*}
-	\item	Between $\vec u$ and $\vec w$:
+	\item	Between $\vec u$ and $\vec w$:\vspace{-\baselineskip}
 	\begin{align*}
 		\theta &= \cos^{-1}\left(\frac{\dotp uw}{\norm{\vec u}\norm{\vec w}}\right)\\
 		&= \cos^{-1}\left(\frac{0}{\sqrt{3}\sqrt{42}}\right)\\
 		&= \frac{\pi}2.
 	\end{align*}
-	\item	Between $\vec v$ and $\vec w$:
+	\item	Between $\vec v$ and $\vec w$:\vspace{-\baselineskip}
 	\begin{align*}
 		\theta &= \cos^{-1}\left(\frac{\dotp vw}{\norm{\vec v}\norm{\vec w}}\right)\\
 		&= \cos^{-1}\left(\frac{0}{\sqrt{14}\sqrt{42}}\right)\\
@@ -291,20 +291,20 @@ ytick={1,2,-1,-2},ymin=-2.8,ymax=2.8,xmin=-2.9,xmax=3.9]
 3Dcoo=0 50 30,
 3Droo=250}{width=.8\marginparwidth}{figures/figdotp4b_3D}
 \\(b)
-\ifthenelse{\boolean{in_threeD}}{}{%
+\iftoggle{in_threeD}{}{%
 \\[15pt]
 \myincludegraphics[width=.8\marginparwidth]{figures/figdotp4c_3D} % myinc g 3D
-\\(c)}% end ifthenelse
+\\(c)}% end iftoggle
 }% end mtable
 
 \begin{example}[Computing the orthogonal projection]\label{ex_dotp4}
-\mbox{}\\[-2\baselineskip]
+\mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{%
 \begin{enumerate}
 	\item Let $\vec u=\bracket{-2,1}$ and $\vec v=\bracket{3,1}$. Find $\proj uv$, and sketch all three vectors with initial points at the origin.
 	\item	Let $\vec w =\bracket{2,1,3}$ and $\vec x =\bracket{1,1,1}$. Find $\proj wx$, and sketch all three vectors with initial points at the origin.
-\end{enumerate}
+\end{enumerate}}\vspace{0pt}
 \solution
-\mbox{}\\[-\baselineskip]\begin{enumerate}
+\begin{enumerate}
 	\item Applying \autoref{def:orthogonal_projection}, we have
 	\begin{align*}
 		\proj uv
@@ -321,12 +321,12 @@ ytick={1,2,-1,-2},ymin=-2.8,ymax=2.8,xmin=-2.9,xmax=3.9]
 		&= \frac{6}{3}\bracket{1,1,1}\\
 		&=\bracket{2,2,2}.
 	\end{align*}
-	\ifthenelse{\boolean{in_threeD}}{%
+	\iftoggle{in_threeD}{%
 	 These vectors are sketched in \autoref{fig:dotp4}(b).%
 	}{%
 	 These vectors are sketched in \autoref{fig:dotp4}(b), and again in part (c) from a different perspective. Because of the nature of graphing these vectors, the sketch in part (b) makes it difficult  to recognize that the drawn projection has the geometric properties it should. The graph shown in part (c) illustrates these properties better.
 	}
-\end{enumerate}
+\end{enumerate}%}
 \end{example}
 
 Consider \autoref{fig:dotpprojc} where the concept of the orthogonal projection is again illustrated. It is clear that
@@ -359,11 +359,11 @@ Let $\vec u$ and $\vec v$ be given. Then $\vec u$ can be written as the sum of t
 We illustrate the use of this equality in the following example.
 
 \begin{example}[Orthogonal decomposition of vectors]\label{ex_dotp5}
-\mbox{}\\[-2\baselineskip]
+\mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{%
 \begin{enumerate}
 	\item Let $\vec u =\bracket{-2,1}$ and $\vec v =\bracket{3,1}$ as in \autoref{ex_dotp4}. Decompose $\vec u$ as the sum of a vector parallel to $\vec v$ and a vector orthogonal to $\vec v$.
 	\item	Let $\vec w =\bracket{2,1,3}$ and $\vec x  =\bracket{1,1,1}$ as in \autoref{ex_dotp4}. Decompose $\vec w$ as the sum of a vector parallel to $\vec x$ and a vector orthogonal to $\vec x$.
-\end{enumerate}
+\end{enumerate}}\vspace{0pt}
 \solution
 \begin{enumerate}
 	\item In \autoref{ex_dotp4}, we found that $\proj uv =\bracket{-1.5,-0.5}$. Let
@@ -390,8 +390,11 @@ We illustrate the use of this equality in the following example.
 
 We give an example of where this decomposition is useful.
 
-\mtable{Sketching the ramp and box in \autoref{ex_dotp6}. Note: \emph{The vectors are not drawn to scale.}}{fig:dotp6}{%
-\begin{tikzpicture}[>=stealth,scale=.25]
+\begin{example}[Orthogonally decomposing a force vector]\label{ex_dotp6}
+Consider \autoref{fig:dotp6}(a), showing a box weighing 50 lb on a ramp that rises 5 ft over a span of 20 ft. Find the components of force, and their magnitudes, acting on the box (as sketched in part (b) of the figure):
+%
+\mtable[-3\baselineskip]{Sketching the ramp and box in \autoref{ex_dotp6}. Note: \emph{The vectors are not drawn to scale.}}{fig:dotp6}{%
+\begin{tikzpicture}[>=stealth,scale=.2]
 	\draw [thick,->] (20,5) -- node [right,pos=.5] {\scriptsize $5$} (20,0)
 	 -- node [below,pos=.6] {\scriptsize 20}(0,0)
 	 -- (20,5) node [above] {\scriptsize $\vec r$};
@@ -400,7 +403,7 @@ We give an example of where this decomposition is useful.
 	 node [below] {\scriptsize $\vec g$};
 \end{tikzpicture}
 \\(a)\\[15pt]
-\begin{tikzpicture}[>=stealth,scale=.25]
+\begin{tikzpicture}[>=stealth,scale=.2]
 	\draw [thick,->] (20,5) -- node [right,pos=.5] {\scriptsize $5$} (20,0)
 	 -- node [below,pos=.6] {\scriptsize 20}(0,0)
 	 -- (20,5) node [above] {\scriptsize $\vec r$};
@@ -413,9 +416,7 @@ We give an example of where this decomposition is useful.
 	 node [shift={(5pt,-5pt)} ,black,pos=0] {\scriptsize $\proj gr$};
 \end{tikzpicture}
 \\(b)}
-
-\begin{example}[Orthogonally decomposing a force vector]\label{ex_dotp6}
-Consider \autoref{fig:dotp6}(a), showing a box weighing 50 lb on a ramp that rises 5 ft over a span of 20 ft. Find the components of force, and their magnitudes, acting on the box (as sketched in part (b) of the figure):
+%
 \begin{enumerate}
 	\item in the direction of the ramp, and
 	\item	orthogonal to the ramp.
@@ -423,7 +424,7 @@ Consider \autoref{fig:dotp6}(a), showing a box weighing 50 lb on a ramp that ris
 \solution
 As the ramp rises 5 ft over a horizontal distance of 20 ft, we can represent the direction of the ramp with the vector $\vec r=\bracket{20,5}$. Gravity pulls down with a force of 50 lb, which we represent with $\vec g =\bracket{0,-50}$. 
 \begin{enumerate}
-	\item To find the force of gravity in the direction of the ramp, we compute $\proj gr$:
+	\item To find the force of gravity in the direction of the ramp, we compute the projection $\proj gr$:\vspace{-.5\baselineskip}
 	\begin{align*}
 	\proj gr &= \frac{\dotp gr}{\dotp rr}\vec r\\
 	&=  \frac{-250}{425}\bracket{20,5}\\
@@ -432,7 +433,7 @@ As the ramp rises 5 ft over a horizontal distance of 20 ft, we can represent the
 	\end{align*}
 	The magnitude of $\proj gr$ is $\norm{\proj gr} = 50/\sqrt{17} \approx 12.13\text{ lb}$. Though the box weighs 50 lb, a force of about 12 lb is enough to keep the box from sliding down the ramp.
 	
-	\item		To find the component $\vec z$ of gravity orthogonal to the ramp, we use \autoref{idea:orthog_proj}.
+	\item		To find the component $\vec z$ of gravity orthogonal to the ramp, we use \autoref{idea:orthog_proj}.\vspace{-.5\baselineskip}
 	\begin{align*}
 	\vec z &= \vec g - \proj gr \\
 	&=\bracket{\frac{200}{17},-\frac{800}{17}}%\approx\bracket{11.76,-47.06}
@@ -493,6 +494,6 @@ $. The ramp is represented by $\vec d  =\bracket{15,3}$. The work done is simply
 Note how we did not actually compute the distance the object traveled, nor the magnitude of the force in the direction of travel; this is all inherently computed by the dot product.
 \end{example}
 
-The dot product is a powerful way of evaluating computations that depend on angles without actually using angles. The next section explores another ``product'' on vectors, the \emph{cross product.} Once again, angles play an important role, though in a much different way.
+The dot product is a powerful way of evaluating computations that depend on angles without actually using angles. The next section explores another product on vectors, the \emph{cross product.} Once again, angles play an important role, though in a much different way.
 
 \printexercises{exercises/10_03_exercises}

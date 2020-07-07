@@ -1,4 +1,3 @@
-\usepackage{ifthen}
 \usepackage{etoolbox}
 
 \PassOptionsToPackage{HTML}{xcolor}
@@ -6,6 +5,7 @@
 \usepackage{tikz}
 \usetikzlibrary{calc}
 
+% with 10pt font, 1em ~ 10pt ; 1ex ~ 4.3pt
 
 %%Page Size stuff
 
@@ -14,17 +14,22 @@
 	marginparsep=32pt,bottom=3in,footskip=1.5in]{geometry}
 
 \newcommand{\exercisegeometry}{%
+%	\batchmode%
 	\newgeometry{inner=72pt,outer=72pt,textheight=9.25in,tmargin=.75in,
 		marginparwidth=150pt,marginparsep=32pt,footskip=29pt}%
+%	\errorstopmode%
 }
-
 \newcommand{\eendgeometry}{%
+%	\batchmode%
 	\newgeometry{inner=72pt,outer=36pt,textheight=10in,
 		marginparwidth=150pt,marginparsep=32pt}%
+%	\errorstopmode%
 }
 \newcommand{\prefacegeometry}{%
+%	\batchmode%
 	\newgeometry{inner=1in,textheight=9in,textwidth=320pt,marginparwidth=150pt,%
 		marginparsep=32pt,bottom=1in,footskip=1.5in}%
+%	\errorstopmode%
 }
 
 %%% This was originally a style with \usepackage, but inputing is generally
@@ -38,29 +43,30 @@
 % do we want to print the keys for the labels? if so, uncomment
 %\usepackage[notref,notcite]{showkeys}
 
-
-\RequirePackage{amsmath}
-\RequirePackage{amssymb} % todo ? https://tex.stackexchange.com/a/3000/107497 recommends dropping amssymb in favor of unicode-math
+\usepackage{amsmath}
+\usepackage{amssymb} % todo ? https://tex.stackexchange.com/a/3000/107497 recommends dropping amssymb in favor of unicode-math
 % but then the font loading gets messed up with mathspec
 % see also https://tex.stackexchange.com/q/218112/107497 that if the font doesn't have math, then it's a losing battle
 %\RequirePackage{unicode-math}
-\RequirePackage{amsthm}
 
-\RequirePackage{graphicx}
-\RequirePackage{multicol}
-\RequirePackage{makeidx}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{makeidx}
 
-\RequirePackage[normalem]{ulem}
+\usepackage[normalem]{ulem}
 
-%linkbordercolor=white
-\RequirePackage{calc}
+\usepackage{calc}
+\usepackage{ragged2e}
 
-\RequirePackage[nocomments]{latexml}
+\usepackage[inline]{enumitem}
+
+\usepackage[nocomments]{latexml}
 \lxDocumentID{apex}
 
 \numberwithin{figure}{section}
 \numberwithin{equation}{section}
-\newcounter{savefigure}
+
+\usepackage{amsthm}
 
 \newtheoremstyle{apexExample}% name
   {0pt}% Space above, empty = `usual value'
@@ -69,10 +75,10 @@
   {}% Indent amount (empty = no indent, \parindent = para indent)
   {\bfseries}% Thm head font
   {}% Punctuation after thm head
-  {\newline}% Space after thm head: " " = normal interword space; \newline = linebreak
-%  {\makebox[80pt][l]{\textbf{#1 \arabic{examplecounter}}}\thmnote{\textbf{#3}}}% Thm head spec
-  {\parbox[t]{.25\textwidth}{\textbf{#1 #2}}\parbox[t]{.75\textwidth}{\thmnote{\textbf{#3}}}}
-%  {\makebox[80pt][l]{\textbf{#1 #2}}\thmnote{\textbf{#3}}}% Thm head spec
+  {\newline}% Space after thm head
+  {\parbox[t]{8em}{\bfseries\thmname{#1} \thmnumber{#2}}%
+   \thmnote{\parbox[t]{.75\textwidth}{\bfseries\raggedright#3}}%
+  }
 
 \newtheoremstyle{apex}% name
   {0pt}% Space above, empty = `usual value'
@@ -81,14 +87,17 @@
   {}% Indent amount (empty = no indent, \parindent = para indent)
   {\bfseries}% Thm head font
   {}% Punctuation after thm head
-  {\newline}% Space after thm head: " " = normal interword space; \newline = linebreak
-  {\thmname{\textbf{#1}}\thmnumber{ \textbf{#2}}\thmnote{\hspace{20pt}\textbf{#3}}}% Thm head spec
+  {\newline}% Space after thm head
+  {\parbox[t]{8em}{\bfseries\thmname{#1} \thmnumber{#2}}%
+   \thmnote{\parbox[t]{.7\textwidth}{\bfseries\raggedright#3}}%
+  }% Thm head spec
+  % the padding for the box takes just a bit of room away from these that examples get to keep
 
 \theoremstyle{apexExample}
 \newtheorem{example}{Example}[section]
 \newcommand{\exampleautorefname}{Example}
-
 \theoremstyle{apex}
+
 
 \makeatletter
 \renewenvironment{proof}[1][\proofname]{\pagebreak[2]\par
@@ -108,22 +117,21 @@
 \makeindex
 
 \newcommand{\apex}{\texorpdfstring{A\kern -.1em \lower -.5ex\hbox{P}\kern -.25em\lower .5ex\hbox{E}\kern -.1em X}{APEX}}
-%\newcommand{\apex}{A\kern -1pt \lower -2pt\hbox{P}\kern -4pt \lower .7ex\hbox{E}\kern -1pt X}
 
 
 % Create boolean for whether or not to print 3D graphics. 
 % Also creates command to switch back and forth; "looks better."
-\newboolean{in_threeD}
-\newcommand{\usethreeDgraphics}{\setboolean{in_threeD}{true}}
-\newcommand{\usetwoDgraphics}{\setboolean{in_threeD}{false}}
+\newtoggle{in_threeD}
+\newcommand{\usethreeDgraphics}{\toggletrue{in_threeD}}
+\newcommand{\usetwoDgraphics}{\togglefalse{in_threeD}}
 \usethreeDgraphics
 
 
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.8}
 
-\newboolean{inColor}
-\setboolean{inColor}{true}
+\newtoggle{inColor}
+\toggletrue{inColor}
 
 \pgfplotsset{colormap={coloronemap}{rgb=(.4,.4,1); rgb=(.8,.8,1)}}
 \pgfplotsset{colormap={colortwomap}{rgb=(1,.4,.4); rgb=(1,.8,.8)}}
@@ -154,13 +162,6 @@
 % sets the line color to be in color, as a default
 \newcommand{\thelinecolor}{\colorlinecolor}
 
-%\newcommand{\setcolorlinecolor}[1]{%
-% \renewcommand{\colorlinecolor}{#1}%
-% \renewcommand{\thelinecolor}{\colorlinecolor}}
-%\newcommand{\setbwlinecolor}[1]{%
-% \renewcommand{\bwlinecolor}{#1}%
-% \renewcommand{\thelinecolor}{\bwlinecolor}}
-
 % this allows the above default to be overriden by using
 % the \printincolor and \printinblackandwhite commands
 % anywhere in the file. This allows you to switch back
@@ -168,7 +169,7 @@
 \newcommand{\colornamesuffix}{}
 
 \newcommand{\printincolor}{
- \setboolean{inColor}{true}%
+ \toggletrue{inColor}%
  % aforementioned renewcommanding
  \renewcommand{\thelinecolor}{\colorlinecolor}
  \renewcommand{\colornamesuffix}{}
@@ -189,7 +190,7 @@
 }
 
 \newcommand{\printinblackandwhite}{
- \setboolean{inColor}{false}%
+ \togglefalse{inColor}%
  % undoing the above renewcommanding
  \renewcommand{\thelinecolor}{\bwlinecolor}
  \renewcommand{\colornamesuffix}{BW}
@@ -232,91 +233,68 @@
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Examples
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newlength{\topmarginlength} 
-\newlength{\bottommarginlength}
-\newlength{\oddpagemarginlength}
-\newlength{\evenpagemarginlength}
+\newlength{\boxskipamount}
+\setlength{\boxskipamount}{4ex plus 4ex minus 2ex}
+
+%\newlength{\topmarginlength} 
+%\newlength{\bottommarginlength}
+%\newlength{\oddpagemarginlength}
+%\newlength{\evenpagemarginlength}
 \newlength{\marginlinelength}
-\newlength{\innerpagemarginlength}
-
+%\newlength{\innerpagemarginlength}
 
 % how far from the text the example line is to be drawn
-\setlength{\marginlinelength}{2pt}
+\setlength{\marginlinelength}{.2em}
 
 % the height of the top margin (used in calculating the lines for examples)
-\setlength{\topmarginlength}{-1in-\voffset}
+%\setlength{\topmarginlength}{-1in-\voffset}
 
 % the length of the bottom margin (ish)
 % actually starts at the top of the page, moves
 % through the top margin length then the text height.
-\setlength{\bottommarginlength}{-1in-\textheight-2\baselineskip-\voffset-\headheight-\headsep-\topmargin}
+%\setlength{\bottommarginlength}{-1in-\textheight-2\baselineskip-\voffset-\headheight-\headsep-\topmargin}
 
 % the length of the left hand margin of an odd page
-\setlength{\oddpagemarginlength}{1in+\hoffset+\oddsidemargin-2\marginlinelength}
+%\setlength{\oddpagemarginlength}{1in+\hoffset+\oddsidemargin-2\marginlinelength}
 
 % the length of the left hand margin of an even page
-\setlength{\evenpagemarginlength}{1in+\hoffset+\evensidemargin-2\marginlinelength}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Things related to the vertical line to the left of examples
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%% the example environment has a regular and starred version.
-%% the regular version takes 4 arguments: label, title, problem, solution.
-%% The starred version only has 3: label, title, problem/solution.
-%\makeatletter
-%\newcommand{\example}{\@ifstar \examplestarred \examplenostar}
-%%\newcommand{\reverseexampledefault}{%
-%% \renewcommand{\example}{\@ifstar \examplenostar \examplestarred}%
-%%}
-%%\newcommand{\restoreexampledefault}{%
-%% \renewcommand{\example}{\@ifstar \examplestarred \examplenostar}%
-%%}
-%\makeatother
-
+%\setlength{\evenpagemarginlength}{1in+\hoffset+\evensidemargin-2\marginlinelength}
 
 \newcommand{\solution}{\bigbreak\par
- \makebox[65pt][l]{\textsc{\small\textbf{Solution\lxAddClass{solutionTag}}}}%
+ \makebox[6.5em][l]{\textsc{\small\textbf{Solution\lxAddClass{solutionTag}}}}%
  \nopagebreak%
 }
-
-%% This is the no-star (regular) version of the example command.
-%\newcommand{\examplenostar}[4]{\examplestarred{#1}{#2}{#3\solution #4}}
-
 
 % black: hsl(x,x,0)
 % white: hsl(x,x,100)
 % blue: hsl(240,100,50)
 % line color: blue!95!black!30 = Hsb(240,.29,.98) = hsl(240,87.7,83.8)
 
-
 \usepackage{tcolorbox}
 \tcbuselibrary{breakable,skins,theorems}
 
+\newlength{\saveparindent}
+\setlength{\saveparindent}{\parindent}
 
-% try this for \begin{example}/\end{example}
-\newcommand{\drawexampleline}{}
-%\renewcommand{\examplestarred}[3]{%
-% \begin{exampleEnv}[#2]\label{#1}
-%  #3%
-% \end{exampleEnv}
-%}
 \tcolorboxenvironment{example}{
     empty,
     size=minimal,
     breakable,
     parbox=false,
-    beforeafter skip=\bigskipamount,
+    beforeafter skip=\boxskipamount,
     enlargepage flexible=3\baselineskip,
     lines before break=5,
     before upper={\setlength{\parindent}{\saveparindent}\noindent},
     boxsep=0pt,
-    bottom=2pt,
+    bottom=.5ex,
     overlay unbroken={
      \node[xshift=-2\marginlinelength,yshift=-.5\baselineskip]
       (start\arabic{example})at(frame.north west){};
-     \node[xshift=10pt](stop\arabic{example})at(frame.south west){};
+     \node[xshift=1em](stop\arabic{example})at(frame.south west){};
      \draw[thick,\thelinecolor](start\arabic{example})|-(stop\arabic{example});
     },
     overlay first={
@@ -337,117 +315,76 @@
     overlay last={
      \node[xshift=-2\marginlinelength,yshift=.5\baselineskip]
       (start\arabic{example})at(frame.north west){};
-     \node[xshift=10pt](stop\arabic{example})at(frame.south west){};
+     \node[xshift=1em](stop\arabic{example})at(frame.south west){};
      \draw[thick,\thelinecolor](start\arabic{example})|-(stop\arabic{example});
     },
 }
 
+% large shrinkable space can conspire with a bad page break to cause text to overlap
+% see https://tex.stackexchange.com/a/551585/107497 by Thomas F. Sturm
+\makeatletter
+\def\tcb@split@force@last{%
+  \tcb@split@setstate@last%
+  \ifdim\tcb@h@total>\tcb@h@page\relax%
+    \gdef\tcb@after@lastbox{\clearpage}%
+    \tcbdimto\kvtcb@bbbottom{\kvtcb@bbbottom+\tcb@h@page-\tcb@h@total}%
+  \fi%
+}
+\makeatother
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Define style for Definitions, Theorems and Key Ideas
+%% Definitions, Theorems and Key Ideas
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%\newlength{\specialboxlength}
-%\newlength{\specialboxinnerseplength}
-%\newlength{\specialboxinnerseplengthx}
-%\newlength{\specialboxinnerseplengthy}
-%
-%\setlength{\specialboxinnerseplength}{15pt}
-%\setlength{\specialboxinnerseplengthx}{15pt}
-%\setlength{\specialboxinnerseplengthy}{10pt}
-%
-%\newcommand{\setboxwidth}[1]{%
-%\setlength{\specialboxlength}{\textwidth+#1-2.3\specialboxinnerseplength}}
-%
-%\newcommand{\restoreboxwidth}{\setboxwidth{0pt}}
-%\restoreboxwidth
-
-% can't get these to work
-%\newcommand*{\specialboxcoloroptions}[1]{%
-%     rectangle, text width = \specialboxlength,
-%     inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
-%     draw=border#1, top color=top#1, bottom color=bottom#1,
-%     text justified, very thick
-%}
-%\newcommand{\specialboxbwoptions}{%
-%     draw=black, thick, rectangle, text width=\specialboxlength,
-%     inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
-%     draw, text justified, very thick
-%}
 
 \newcommand{\newspecialbox}[3]{%
  \AtBeginDocument{\makeStyles{#1}{#3}}%
-% \ifthenelse{\equal{#1}{}}{%
-  \expandafter\newcommand\csname colorize#1\endcsname{
-   \definecolor{top#1}{Hsb}{#3,.05,1}% = hsl(#4,100,97.5)
-   \ifthenelse{#3=60}{%
-    \definecolor{border#1}{Hsb}{#3,.59,.97}% = hsl(#4,90.5,68.4)
-    \definecolor{bottom#1}{Hsb}{#3,.28,.97}% = hsl(#4,81.9,83.4)
-   }{%
-    \definecolor{border#1}{Hsb}{#3,.23,.65}% = hsl(#4,17.6,57.5)
-    \definecolor{bottom#1}{Hsb}{#3,.13,.92}% = hsl(#4,42.8,86)
-   }%
-  }
-  \expandafter\newcommand\csname bwize#1\endcsname{
-   \colorlet{top#1}{white}
-   \colorlet{bottom#1}{white}
-   \colorlet{border#1}{black}
-  }
-  \newtheorem{#1}{#2}[section]%
-  \expandafter\newcommand\csname #1autorefname\endcsname{#2}
-  \tcolorboxenvironment{#1}{
-    sharp corners=all,
-    enhanced,
-    colframe=border#1,
-    interior style={top color=top#1, bottom color=bottom#1},
-    breakable=true,
-    overlay first={\continue{bottom}{#1}},
-    overlay middle={\continue{bottom}{#1}\continue{top}{#1}},
-    overlay last={\continue{top}{#1}},
-    enlargepage flexible=3\baselineskip,
-    toggle enlargement=evenpage,
-    lines before break=8,
-  }
-%  \expandafter\newcommand\csname #2\endcsname[4][]{%
-%   \bigbreak%
-%   \noindent%
-%   \flushinner{%
-%    \noindent%
-%    \coloredbox{%
-%     rectangle, text width = \specialboxlength,
-%     inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
-%     draw=border#2, top color=top#2, bottom color=bottom#2,
-%     text justified, very thick
-%    }{%
-%     draw=black, thick, rectangle, text width=\specialboxlength,
-%     inner xsep=\specialboxinnerseplengthx, inner ysep=\specialboxinnerseplengthy,
-%     draw, text justified, very thick
-%    }{%
-%     \noindent\begin{#2Env}[{##3}##1]\label{##2}\noindent ##4\end{#2Env}%
-%    }%
-%   }%
-%   \bigbreak%
-%   \restoreboxwidth%
-%  }%
-% }{% else #1 != '' means we're in exvideo (aka, a qr code to youtube)
-%%%%% this is no longer used
-% }% ends ifthenelse #1=''
+ \expandafter\newcommand\csname colorize#1\endcsname{
+  \definecolor{top#1}{Hsb}{#3,.05,1}% = hsl(#4,100,97.5)
+  \ifnumequal{#3}{60}{%
+   \definecolor{border#1}{Hsb}{#3,.59,.97}% = hsl(#4,90.5,68.4)
+   \definecolor{bottom#1}{Hsb}{#3,.28,.97}% = hsl(#4,81.9,83.4)
+  }{%
+   \definecolor{border#1}{Hsb}{#3,.23,.65}% = hsl(#4,17.6,57.5)
+   \definecolor{bottom#1}{Hsb}{#3,.13,.92}% = hsl(#4,42.8,86)
+  }%
+ }
+ \expandafter\newcommand\csname bwize#1\endcsname{
+  \colorlet{top#1}{white}
+  \colorlet{bottom#1}{white}
+  \colorlet{border#1}{black}
+ }
+ \newtheorem{#1}{#2}[section]%
+ \expandafter\newcommand\csname #1autorefname\endcsname{#2}
+ \tcolorboxenvironment{#1}{
+   sharp corners=all,
+   enhanced,
+   colframe=border#1,
+   beforeafter skip=\boxskipamount,
+   interior style={top color=top#1, bottom color=bottom#1},
+   breakable=true,
+   overlay first={\continue{bottom}{#1}},
+   overlay middle={\continue{bottom}{#1}\continue{top}{#1}},
+   overlay last={\continue{top}{#1}},
+   enlargepage flexible=3\baselineskip,
+   toggle enlargement=evenpage,
+   lines before break=8,
+ }
 }
 
 \newcommand{\continue}[1]{%
  \csname continue#1\endcsname{#1}%
 }
 \newcommand{\continuetext}[2]{%
- \ifthenelse{\equal{#1}{top}}{%
+ \ifstrequal{#1}{top}{%
   \csname #2autorefname\endcsname\ \csname the#2\endcsname\ continued%
  }{%
   (continued)
  }%
 }
 % can't get this to work
-%\newcommand{\northsouth}[2][]{\ifthenelse{\equal{#2}{top}}{#1north}{#1south}}
+%\newcommand{\northsouth}[2][]{\if thenelse{\equal{#2}{top}}{#1north}{#1south}}
 
 % adapted from https://tex.stackexchange.com/a/545324/107497 by Schrödinger's cat
 \newcommand{\continuebottom}[2]{
@@ -481,7 +418,6 @@
    \end{scope} 
 }
 
-
 \newspecialbox{definition}{Def\-i\-ni\-tion}{60}
 % draw = yellow!95!black!60 = Hsb( 60,.59,.97)
 % topc = white!95!yellow    = Hsb( 60,.05,1)
@@ -512,8 +448,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Begins the exercise section, containing all commands
-%% related to creating problem sections.
+%% Exercises
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setlength{\columnsep}{20pt}
@@ -532,28 +467,25 @@
 	\renewcommand{\printconcepts}{}%
 	\renewcommand{\printproblems}{}%
 	\renewcommand{\printreview}{}%
-	\renewcommand{\exerciseset}[3]{##3}%
-%	\renewenvironment{exerciseset}[2]{}{}
+	\renewenvironment{exerciseset}[2]{}{}
 	\renewcommand{\openenumerate}{}%
-	\renewcommand{\closeenumerate}{}%
+	\renewcommand{\closeenumerateinquestions}{}
 	\renewcommand{\questioncolumnbreak}{}%
 	\packageinanswersection%
 	\showexerciseanswers%
 }%
 
-\newboolean{printoddanswersonly}
+\newtoggle{printoddanswersonly}
 
-\setboolean{printoddanswersonly}{true}
-\newcommand{\printallanswers}{\setboolean{printoddanswersonly}{false}}
+\toggletrue{printoddanswersonly}
+\newcommand{\printallanswers}{\togglefalse{printoddanswersonly}}
 
-\newcount\numberofexercises
+%\newcount\numberofexercises
 
 
 \newwrite\answrite %write the answers file
 % give the answers file the name ``jobname.answers''
 \openout\answrite=\jobname.answers
-
-
 
 % \writeToAnsFile (was?) in the style file b/c latexml was copying in ``noexpand''
 \newcommand{\writeToAnsFile}[1]{%
@@ -563,10 +495,9 @@
 }
 
 
-
-%%%%%%%%%%%%% Used to automate the answer production at
-%%%%%%%%%%%%% end the text.
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Answers
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\printsolutions}[2][\jobname]{%
  %\showans\answrite
@@ -575,15 +506,14 @@
  \immediate\closeout\answrite%
  \inanswersection\exercisegeometry%
  \pagestyle{exercise}%
- \chapter*{#2}%
- \addcontentsline{toc}{chapter}{#2}%
  %\thispagestyle{empty}%
- \ifthenelse{\equal{#1}{\jobname}}{}{%
-  {% to localize the next line
-   \let\thefootnote\relax%
-   \footnotetext{Revised \today}%
+ \ifstrequal{#1}{\jobname}{}{%
+  {% localize the next line
+   \renewcommand{\thefootnote}{}
+   \chapter*{#2\footnote{Revised \today}}%
   }%
  }%
+ \addcontentsline{toc}{chapter}{#2}%
  \begin{multicols}{2}%
   \small\raggedright%
   \input{#1.answers}%
@@ -594,17 +524,13 @@
  \eendgeometry%
 }%
 
-
-\newcounter{saveexerciseenum}[section]
 \newcounter{exercisesetcounter}[section]
 \renewcommand{\theexercisesetcounter}{\thesection.\arabic{exercisesetcounter}}
-\newboolean{enumopen}
-\setboolean{enumopen}{false}
 
 \makeatletter
 % the usual \subsection definition has stretchable space in arguments 3-5
 \newcommand{\exercisesubsection}[1]{%
-\@startsection{subsection}{2}{-.7em}{0pt}{2pt}{\huge\textbf}{\texorpdfstring{\hyperref[sol#1]{Exercises #1}}{Exercises}}%
+\@startsection{subsection}{2}{-.7em}{0pt}{.5ex}{\huge\textbf}{\texorpdfstring{\hyperref[sol#1]{Exercises #1}}{Exercises}}%
 \hrule\vspace{-1.5ex}%
 }
 \makeatother
@@ -618,7 +544,6 @@
 % doesn't work?
 }
 
-%\newcommand{\inputexercises}[1]{}%
 \newcommand{\printexercises}[1]{%
  \writeToAnsFile{#1}% writeToAnsFile in sty
  \exercisegeometry% includes a clearpage
@@ -629,6 +554,7 @@
  \bigskip%
  \begin{multicols}{2}%
   \restartlist{enumerate}
+  \setcounter{enumi}{0}
   \renewcommand{\Itemautorefname}{Ex\-er\-cise}% local b/c multicols = good
   \input{#1}%
   \closeenumerate%
@@ -639,21 +565,15 @@
  \setlength{\hoffset}{0pt} \rmfamily\normalsize \bigbreak%
 }
 
-\newcounter{answerchapter}
-\newcounter{answersection}[answerchapter]
-\renewcommand{\theanswersection}{\theanswerchapter.\arabic{answersection}}
+%\newcounter{answerchapter}
+%\newcounter{answersection}[answerchapter]
+%\renewcommand{\theanswersection}{\theanswerchapter.\arabic{answersection}}
 \newcommand{\lastanswerchapter}{-1}
 
-% only called by the prerequisite sections
-%\newcommand*{\allAnswersForSection}[3]{
-% \subsection*{\hyperref[exer#1.#2]{Exercises #1.#2}}\label{sol#1.#2}
-% \loadAllAnswers{#3}
-%}
 \newcommand*{\answersForSection}[3]{%
- \ifthenelse{\equal{#1}{\lastanswerchapter}}{}{%
+ \ifnumequal{#1}{\lastanswerchapter}{}{%
   \renewcommand{\lastanswerchapter}{#1}% apparently global. who knew?
-  \ifthenelse{\boolean{latexml}}{%
-  }{%
+  \ifbool{latexml}{}{%
    \belowpdfbookmark{Chapter #1}{solsol#1}%
   }
   % commandeer chapter and section numbering
@@ -663,7 +583,7 @@
  \setcounter{section}{#2}
  \subsection*{\hyperref[exer\thesection]{Exercises \thesection}}%
  \label{sol\thesection}
- \ifthenelse{\equal{#2}{0}}{%
+ \ifnumequal{#2}{0}{%
   \loadAllAnswers{#3}
  }{%
   \loadAnswers{#3}
@@ -672,17 +592,17 @@
 
 % only called by the prerequisite sections
 \newcommand*{\loadAllAnswers}[1]{%
-	\setcounter{answersection}{-1}%
-	\ifthenelse{\boolean{printoddanswersonly}}{%
-		\setboolean{printoddanswersonly}{false}%
+%	\setcounter{answersection}{-1}%
+	\iftoggle{printoddanswersonly}{%
+		\togglefalse{printoddanswersonly}%
 		\loadAnswers{#1}%
-		\setboolean{printoddanswersonly}{true}%
+		\toggletrue{printoddanswersonly}%
 	}{%
 		\loadAnswers{#1}%
 	}%
 }
 \newcommand*{\loadAnswers}[1]{%
-	\stepcounter{answersection}%
+%	\stepcounter{answersection}%
 	\begin{enumerate}[leftmargin=1.5em]\input{#1}\end{enumerate}%
 	\bigbreak%
 }
@@ -701,32 +621,34 @@
  \fi%
 }
 \makeatother
+\newcommand{\closeenumerateinquestions}{\closeenumerate}
 
-% I'd like to convert this to an environment, but then
-% (1) @currenvir==exerciseset and
-% (2) the \closeenumerate comes after the \begin{exerciseset}, so that the nesting gets disordered
-\newcommand{\exerciseset}[3]{%
- \closeenumerate%
+\newenvironment{exerciseset}[2]{%
  \stepcounter{enumi}%
  \stepcounter{exercisesetcounter}%
- \ifthenelse{\isodd{\value{enumi}}}{}{%
+ \ifnumodd{\value{enumi}}{}{%
   \PackageInfo{apex}{%
    Exercise set \theexercisesetcounter\space begins with \arabic{enumi}%
   }%
  }%
  \pagebreak[1]%
+ {%
+ \setlist[enumerate,1]{label=(\alph*)}%
  \noindent#1 \arabic{enumi}--\ref*{enumiatendof\theexercisesetcounter}#2%
+ }%
  \addtocounter{enumi}{-1}\ignorespaces%
  \nopagebreak%
- #3%
+}{%
  \label{enumiatendof\theexercisesetcounter}%
+ \closeenumerate%
  \pagebreak[1]%
- \ifthenelse{\isodd{\value{enumi}}}{%
+ \ifnumodd{\value{enumi}}{%
   \PackageInfo{apex}{%
    Exercise set \theexercisesetcounter\space ends with \arabic{enumi}%
   }%
  }{}%
 }
+\BeforeBeginEnvironment{exerciseset}{\closeenumerateinquestions}
 
 \newcommand{\exercise}[2]{%
  \openenumerate%
@@ -734,12 +656,37 @@
 }
 \newcommand{\showexerciseanswers}{%
  \renewcommand{\exercise}[2]{%
-  \ifthenelse{\boolean{printoddanswersonly}\AND\isodd{\value{enumi}}}{%
+  \ifboolexpr{ togl{printoddanswersonly} and test{\ifnumodd{\value{enumi}}} }{%
    \stepcounter{enumi}%
   }{%
-   \item \parbox[t]{\linewidth}{##2}%
+   \item \parbox[t]{\linewidth}{\raggedright ##2}%
   }%
  }%
 }
 
 \newcommand{\questioncolumnbreak}{\columnbreak}
+
+
+% The following creates a ``List of Theorems'', ``Definitions'', and ``Key Ideas''.
+% See http://tex.stackexchange.com/q/74857/107497
+%\usepackage{thmtools} % continuing theorems and ``List of Theorems''
+%\patchcmd\thmtlo@chaptervspacehack
+%  {\addtocontents{loe}{\protect\addvspace{10\p@}}}
+%  {\addtocontents{loe}{\protect\thmlopatch@endchapter\protect\thmlopatch@chapter{\thechapter}}}
+%  {}{failed thmtlo@chaptervspacehack}
+%\AtEndDocument{\addtocontents{loe}{\protect\thmlopatch@endchapter}}
+%\long\def\thmlopatch@chapter#1#2\thmlopatch@endchapter{%
+%  \setbox\z@=\vbox{#2}%
+%  \ifdim\ht\z@>\z@
+%    \hbox{\bfseries\chaptername\ #1}\nobreak
+%    #2
+%    \addvspace{10\p@}
+%  \fi
+%}
+%\def\thmlopatch@endchapter{}
+%\patchcmd\thmt@mklistcmd
+%  {\protect\numberline{\csname the\thmt@envname\endcsname}%
+%      \thmt@thmname}{}{}{failed thmt@mklistcmd}
+%%\makeatother
+%\renewcommand\thmtformatoptarg[1]{#1}
+

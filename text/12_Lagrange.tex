@@ -12,9 +12,10 @@ The area $A$ of a rectangle with width $x$ and height $y$ is $A = xy$. The perim
 The reader is probably familiar with a simple method, using single-variable calculus, for solving this problem. Since we must have $2x+2y=20$, then we can solve for, say, $y$ in terms of $x$ using that equation. This gives $y = 10 - x$, which we then substitute into $f$ to get $f(x,y) = xy = x(10-x) = 10x - x^2$. This is now a function of $x$ alone, so we now just have to maximize the function $f(x) = 10x - x^2$ on the interval $[0,10]$. Since $\fp(x) = 10-2x = 0 \Rightarrow x =5$ and $\fpp(5) = -2 < 0$, then the Second Derivative Test tells us that $x=5$ is a local maximum for $f$, and hence $x=5$ must be the global maximum on the interval $[0,10]$ (since $f = 0$ at the endpoints of the interval). So since $y=10-x =5$, then the maximum area occurs for a rectangle whose width and height both are $5$ m.
 \end{example}
 
-\mnote{\textbf{Note:} Joseph Louis Lagrange (1736--1813) was a French mathematician and astronomer.}
-
 Notice in the above example that the ease of the solution depended on being able to solve for one variable in terms of the other in the equation $2x+2y=20$. But what if that were not possible (which is often the case)? In this section we will use a general method, called the \emph{Lagrange multiplier method}, for solving \emph{constrained optimization} problems:
+%
+\mnote{\textbf{Note:} Joseph Louis Lagrange (1736--1813) was a French mathematician and astronomer.}
+%
 \[
  \text{Maximize (or minimize) }f(x,y)\text{ subject to }g(x,y) = c
 % \text{ or} \\
@@ -37,7 +38,7 @@ A rigorous proof of the above theorem is well beyond the scope of this text.
 %requires use of the Implicit Function Theorem, which is beyond the scope of this text. See \cite[\S\,6.8]{tm} for more detail.
 Note that the theorem only gives a \emph{necessary} condition for a point to be a constrained maximum or minimum. Whether a point $(x,y)$ that satisfies $\nabla f(x,y) = \lambda \nabla g(x,y)$ for some $\lambda$ actually \emph{is} a constrained maximum or minimum can \emph{sometimes} be determined by the nature of the problem itself. For instance, in \autoref{exmp_consimple} it was clear that there had to be a global maximum.
 
-So how can you tell when a point that satisfies the condition in \autoref{thm:lagrange} really is a constrained maximum or minimum? The answer is that it depends on the constraint function $g(x,y)$, together with any implicit constraints. It can be shown
+How can one tell when a point that satisfies the condition in \autoref{thm:lagrange} is a constrained maximum or minimum? The answer is that it depends on the constraint function $g(x,y)$ and any implicit constraints. It can be shown
 % Again, see \cite{tm}.
 that if the constraint equation $g(x,y)=c$ (plus any hidden constraints) describes a bounded set $B$ in $\mathbb{R}^2$, then the constrained maximum or minimum of $f(x,y)$ will occur either at a point $(x,y)$ satisfying $\nabla f(x,y) = \lambda \nabla g(x,y)$ or at a ``boundary'' point of the set $B$.
 
@@ -62,17 +63,17 @@ As we saw in \autoref{exmp_consimple}, with $x$ and $y$ representing the width a
  There must be a maximum area, since the minimum area is $0$ and $f(5,5) = 25 > 0$, so the point $(5,5)$ that we found (called a \emph{constrained critical point}) must be the constrained maximum. Therefore, the maximum area occurs for a rectangle whose width and height both are $5$ m.
 \end{example}
 
-% todo give a different example than example 3 so that the objective function doesn't immediately simplify because of the constraint
+% todo give a different example than example 13.9.3 so that the objective function doesn't immediately simplify because of the constraint
 \begin{example}[Extreme Values on a Circle]\label{ex_lagr_circle}
 Find the points on the circle $x^2 + y^2 = 80$ which are closest to and farthest from the point $(1,2)$.
 \solution
 The distance $d$ from any point $(x,y)$ to the point $(1,2)$ is
   \[d=\sqrt{(x-1)^2 + (y-2)^2},\]
  and minimizing the distance is equivalent to minimizing the square of the distance. Thus the problem can be stated as:
- \[
- \text{Maximize (and minimize) }f(x,y) = (x-1)^2 + (y-2)^2
- \text{ subject to }g(x,y) = x^2 + y^2 = 80.
- \]
+ \begin{align*}
+ &\text{Maximize (and minimize)}\quad f(x,y) = (x-1)^2 + (y-2)^2\\
+ &\text{ subject to}\quad g(x,y) = x^2 + y^2 = 80.
+ \end{align*}
  Solving $\nabla f(x,y) = \lambda \nabla g(x,y)$ means solving the following equations:
  \begin{align*}
   2(x-1) &= 2\lambda x ,\\
@@ -138,7 +139,7 @@ is satisfied when $\nabla f(x,y,z)=\lambda\nabla g(x,y,z)+\mu\nabla h(x,y,z)$.
 \begin{example}[Optimizing with Two Constraints]\label{ex_lang_two_const}
 The plane $x-y+z=2$ intersects the cylinder $x^2+y^2=4$ in an ellipse. Find the points on the ellipse closest to and farthest from the origin.
 \solution
-We can optimize the distance $\sqrt{x^2+y^2+z^2}$ by optimizing the function $f(x,y,z)=x^2+y^2+z^2$, which has a simpler derivative.  Let $g(x,y,z)=x-y+z$ be the plane constraint, and $h(x,y,z)=x^2+y^2$ be the cylinder constraint.  We see that
+We can optimize the distance $\sqrt{x^2+y^2+z^2}$ by optimizing the function $f(x,y,z)=x^2+y^2+z^2$, which has a simpler derivative.  We let $g(x,y,z)=x-y+z$ be the plane constraint, and $h(x,y,z)=x^2+y^2$ be the cylinder constraint.  We see that
 \begin{align*}
  \nabla f(x,y,z)&=\bracket{2x,2y,2z} \\
  \nabla g(x,y,z)&=\bracket{1,-1,1} \\

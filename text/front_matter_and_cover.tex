@@ -1,4 +1,4 @@
-\ifthenelse{\boolean{latexml}}{%
+\ifbool{latexml}{%
  \label{lxApexTOC}
  \tableofcontents
  \input{text/title_page}
@@ -12,8 +12,14 @@
  \phantomsection
  \pdfbookmark[chapter]{Table of Contents}{tocbookmarklabel}
  \thispagestyle{empty}
- \tableofcontents
+ \prefacegeometry
+ {
+  \raggedbottom
+  \tableofcontents
+ }
 }
+
+\addtocontents{toc}{\protect\thispagestyle{empty}}%
 
 %\cleardoublepage
 %\renewcommand{\listtheoremname}{List of Theorems\protect\thispagestyle{empty}}

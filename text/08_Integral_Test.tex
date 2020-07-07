@@ -26,6 +26,7 @@ We can demonstrate the truth of the Integral Test with two simple graphs. In \au
 \begin{equation}
 \int_1^\infty a(x)\ dx < \sum_{n=1}^\infty a_n.\label{eq:integral_testa}
 \end{equation}
+%
 \mtable{Illustrating the truth of the Integral Test.}{fig:integral_test}{%
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -58,7 +59,8 @@ ytick={1,2},ymin=-.1,ymax=2.5,xmin=-.5,xmax=5.6]
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}
-\\(b)}
+\\(b)}%
+%
 In \autoref{fig:integral_test}(b), we draw rectangles under $y=a(x)$ with the Right-Hand rule, starting with $n=2$. This time, the area of the rectangles is less than the area under $y=a(x)$, so $\ds\sum_{n=2}^\infty a_n < \int_1^\infty a(x)\ dx$. Note how this summation starts with $n=2$; adding $a_1$ to both sides lets us rewrite the summation starting with $n=1$:
 \begin{equation}\sum_{n=1}^\infty a_n < a_1 +\int_1^\infty a(x)\ dx.\label{eq:integral_testb}
 \end{equation} 
@@ -67,9 +69,10 @@ In \autoref{fig:integral_test}(b), we draw rectangles under $y=a(x)$ with the Ri
 Combining Equations \eqref{eq:integral_testa} and \eqref{eq:integral_testb}, we have
 \begin{equation}\sum_{n=1}^\infty a_n< a_1 +\int_1^\infty a(x)\ dx < a_1 + \sum_{n=1}^\infty a_n.\label{eq:integral_testc}\end{equation}
 From \autoeqref{eq:integral_testc} we can make the following two statements:
+% todo Tim etal are these statements backwards?  should the prior equation be rearranged?
 \begin{enumerate}
-	\item If $\ds \sum_{n=1}^\infty a_n$ diverges, so does $\ds\int_1^\infty a(x)\ dx$ \quad (because $\ds \sum_{n=1}^\infty a_n < a_1 +\int_1^\infty a(x)\ dx$)
-	\item	If $\ds \sum_{n=1}^\infty a_n$ converges, so does $\ds\int_1^\infty a(x)\ dx$ \quad (because $\ds \ds \int_1^\infty a(x)\ dx < \sum_{n=1}^\infty a_n$.)
+	\item If $\ds \sum_{n=1}^\infty a_n$ diverges, so does $\ds\int_1^\infty a(x)\ dx$ \\\hfill(because $\ds \sum_{n=1}^\infty a_n < a_1 +\int_1^\infty a(x)\ dx$)
+	\item	If $\ds \sum_{n=1}^\infty a_n$ converges, so does $\ds\int_1^\infty a(x)\ dx$ \\\hfill(because $\ds \ds \int_1^\infty a(x)\ dx < \sum_{n=1}^\infty a_n$.)
 \end{enumerate}
 Therefore the series and integral either both converge or both diverge. \autoref{thm:series_behavior} allows us to extend this theorem to series where $a(n)$ is positive and decreasing on $[b,\infty)$ for some $b>1$.
 
@@ -80,7 +83,7 @@ Determine the convergence of $\ds\sum_{n=1}^\infty \frac{\ln n}{n^2}$.  (The ter
 \solution
 \autoref{fig:itest1}
 \mtable{Plotting the sequence and series in \autoref{ex_itest1}.}{fig:itest1}{\begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={2,4,...,20},
 ymin=-.05,ymax=.85,xmin=-1,xmax=20.9]
 \addplot [only marks,draw={\colortwo},mark size={1.5pt}] coordinates{(1.,0)(2.,0.1733)(3.,0.2954)(4.,0.382)(5.,0.4464)(6.,0.4961)(7.,0.5359)(8.,0.5684)(9.,0.5955)(10.,0.6185)(11.,0.6383)(12.,0.6556)(13.,0.6708)(14.,0.6842)(15.,0.6963)(16.,0.7071)(17.,0.7169)(18.,0.7258)(19.,0.734)(20.,0.7415)};
@@ -114,14 +117,14 @@ Since $\ds \int_1^\infty \frac{\ln x}{x^2}\ dx$ converges, so does $\ds \sum_{n=
 Another important type of series is the \emph{p-series}.
 
 \begin{definition}[$p$-Series, General $p$-Series]\label{def:pseries}
-\index{series!p@$p$-series}\index{p@$p$-series}\mbox{}\\[-2\baselineskip]
+\index{series!p@$p$-series}\index{p@$p$-series}\mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{%
 \begin{enumerate}
 \item	A \textbf{$p$-series} is a series of the form
 \qquad$\ds\sum_{n=1}^\infty \frac{1}{n^p}$.
 \item	A \textbf{general $p$-series} is a series of the form 
 \qquad$\ds\sum_{n=1}^\infty \frac{1}{(an+b)^p}$,\medskip\\
 where $a>0$, $b$ is a real number, and $an+b\neq 0$ for all $n$.
-\end{enumerate}
+\end{enumerate}}
 \end{definition}
 
 Like geometric series, one of the nice things about $p$-series is that they have easy to determine convergence properties.
@@ -147,7 +150,7 @@ Therefore $\ds \sum_{n=1}^\infty \frac 1{(an+b)^p}$ converges if, and only if, $
 \end{proof}
 
 \begin{example}[Determining convergence of series]\label{ex_series6}
-Determine the convergence of the following series.\\
+Determine the convergence of the following series.
 \begin{multicols}{3}
 \begin{enumerate}
 \item		$\ds\sum_{n=1}^\infty \frac{1}{n}$

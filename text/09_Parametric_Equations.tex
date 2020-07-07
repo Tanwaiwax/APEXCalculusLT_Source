@@ -16,7 +16,7 @@ In the rectangular coordinate system, the \textbf{rectangular equation} $y=f(x)$
 
 In this section we introduce a new sketching procedure:
 
-\ifthenelse{\boolean{latexml}}{
+\ifbool{latexml}{
 \[
 \begin{gathered}\text{Choose}\\t\end{gathered}
 \begin{gathered}\nearrow\\\\\searrow\end{gathered}
@@ -223,7 +223,7 @@ Applying the Pythagorean Identity, $\cos^2t+\sin^2t=1$, we set $\cos^2 t=\dfrac{
 \begin{example}[Converting from rectangular to parametric]\label{ex_para_hyper}
 Find a parameterization for the hyperbola $\dfrac{(x-2)^2}{9}-\dfrac{(y-3)^2}{4}=1$.
 \solution
-We use an alternative form of the Pythagorean Identity, $\sec^2t-\tan^2t=1$. We let  $\ds \sec^2 t=\frac{(x-2)^2}{9}$ and $\tan^2 t=\dfrac{(y-3)^2}{4}$. Solving these equations for $x$ and $y$ we have $x=3\sec t +2$ and $y=2\tan t +3$ for $0\leq t\leq 2\pi$ and $t\neq\frac\pi2,\frac{3\pi}2$.
+We use the form of the Pythagorean Identity $\sec^2t-\tan^2t=1$. We let  $\ds \sec^2 t=\frac{(x-2)^2}{9}$ and $\tan^2 t=\dfrac{(y-3)^2}{4}$. Solving these equations for $x$ and $y$ we have $x=3\sec t +2$ and $y=2\tan t +3$ for $0\leq t\leq 2\pi$ and $t\neq\frac\pi2,\frac{3\pi}2$.
 \end{example}
 
 \begin{example}[Converting from rectangular to parametric]\label{ex_pareq6}
@@ -232,7 +232,7 @@ An object is fired from a height of 0ft and lands 6 seconds later, 192ft away. A
 Physics tells us that the horizontal motion of the projectile is linear; that is, the horizontal speed of the projectile is constant. Since the object travels 192ft in 6s, we deduce that the object is moving horizontally at a rate of 32ft/s, giving the equation $x=32t$. As $y=-x^2/64+3x$, we find $y= -16t^2+96t$. We can quickly verify that $y\primeskip''=-32$ft/s$^2$, the acceleration due to gravity, and that the projectile reaches its maximum at $t=3$, halfway along its path.
 
 \mtable{Graphing projectile motion in \autoref{ex_pareq6}.}{fig:pareq6}{\begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
 ymin=0,ymax=160,xmin=0,xmax=210]
 \addplot [thick, draw={\colorone},smooth,domain=0:6] ({32*x},{-16*x^2+96*x});
@@ -259,13 +259,14 @@ Find a rectangular equation for the curve described by
 There is not a set way to eliminate a parameter. One method is to solve for $t$ in one equation and then substitute that value in the second. We use that technique here, then show a second, simpler method.
 
 Starting with $x= 1/(t^2+1)$, solve for $t$: $ t = \pm\sqrt{1/x-1}$. Substitute this value for $t$ in the equation for $y$:
+{\allowdisplaybreaks
 \begin{align*}
  y &= \frac{t^2}{t^2 +1} \\
 		&= \frac{1/x-1}{1/x-1+1} \\
 		&= \frac{1/x - 1}{1/x} \\
 		&= \left(\frac1x-1\right)\cdot x \\
 		&= 1-x.
-\end{align*}
+\end{align*}}
 
 \mtable{Graphing parametric and rectangular equations for a graph in \autoref{ex_pareq7}.}{fig:pareq7}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -308,10 +309,8 @@ The Pythagorean Theorem gives $\cos^2t+\sin^2t=1$, so:
 \left(\frac{x-3}{4}\right)^2 +\left(\frac{y-1}{2}\right)^2 &=1\\
 \frac{(x-3)^2}{16}+\frac{(y-1)^2}{4} &=1
 \end{align*}
-This final equation should look familiar --- it is the equation of an ellipse. \autoref{fig:pareq8} plots the parametric equations, demonstrating that the graph is indeed of an ellipse with a horizontal major axis and center at $(3,1)$.
-\end{example}
-
-\mtable[-3\baselineskip]{Graphing the parametric equations $x=4\cos t+3$, $y=2\sin t+1$ in \autoref{ex_pareq8}.}{fig:pareq8}{\begin{tikzpicture}
+%
+\mtable{Graphing the parametric equations $x=4\cos t+3$, $y=2\sin t+1$ in \autoref{ex_pareq8}.}{fig:pareq8}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,minor x tick num=1,
 minor y tick num=1,ymin=-3.1,ymax=5.1,xmin=-1.1,xmax=8.5]
@@ -321,6 +320,9 @@ minor y tick num=1,ymin=-3.1,ymax=5.1,xmin=-1.1,xmax=8.5]
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
+%
+This final equation should look familiar --- it is the equation of an ellipse. \autoref{fig:pareq8} plots the parametric equations, demonstrating that the graph is indeed of an ellipse with a horizontal major axis and center at $(3,1)$.
+\end{example}
 
 %The Pythagorean Theorem can also be used to identify parametric equations for hyperbolas. We give the parametric equations for ellipses and hyperbolas in the following Key Idea.
 
@@ -401,7 +403,7 @@ ymin=-2.6,ymax=6.5,xmin=-.6,xmax=10.5]
 \\(b)}
 %
 \solution
-The graph of the parametric equations is given in \autoref{fig:pareq3} (a). It is a parabola with an axis of symmetry along the line $y=x$; the vertex is at $(0,0)$. It should be noted that finding the vertex is not a trivial matter and not something you will be asked to do in this text.
+We see the graph in \autoref{fig:pareq3}(a). It is a parabola with an axis of symmetry along the line $y=x$; the vertex is at $(0,0)$. It should be noted that finding the vertex is not a trivial matter and not something you will be asked to do in this text.
 
 In order to shift the graph to the right 3 units, we need to increase the $x$-value by 3 for every point. The straightforward way to accomplish this is simply to add 3 to the function defining $x$: $x = t^2+t+3$. To shift the graph down by 2 units, we wish to decrease each $y$-value by 2, so we subtract 2 from the function defining $y$: $y = t^2-t-2$. Thus our parametric equations for the shifted graph are $x=t^2+t+3$, $y=t^2-t-2$. This is graphed in \autoref{fig:pareq3} (b). Notice how the vertex is now at $(3,-2)$.
 \end{example}
@@ -440,14 +442,11 @@ Solving this system is not trivial but involves only algebra. Using the quadrati
 
 We now present a small gallery of ``interesting'' and ``famous'' curves along with parametric equations that produce them.\bigskip\vfill
 
-%\clearpage
-
-\noindent\begin{minipage}[t]{\linewidth}\noindent%
-\captionsetup{type=figure}%
-\flushinner{%
+\noindent\flushinner{%
+\newcommand{\scalefactor}{1.16}
  \begin{tabular}{ccc}
 \begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\scalefactor\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,xtick={-1,1},ytick={-1,1},
 ymin=-1.1,ymax=1.1,xmin=-1.1,xmax=1.1,axis equal]
 \addplot [thick,draw={\colorone}, smooth,domain=0:360,samples=360]
@@ -458,10 +457,10 @@ ymin=-1.1,ymax=1.1,xmin=-1.1,xmax=1.1,axis equal]
 \end{tikzpicture}
   &
   \begin{tikzpicture}
-   \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
+   \begin{axis}[width=\scalefactor\marginparwidth,tick label style={font=\scriptsize},
                 axis y line=middle,axis x line=middle,name=myplot,
                 xtick={3.14,6.28},xticklabels={$\pi$,$2\pi$},
-                ymin=-.2,ymax=6.2,xmin=-.1,xmax=6.3,axis equal]
+                ymin=-.2,ymax=4.2,xmin=-.1,xmax=6.3,axis equal image]
     \addplot [thick,draw={\colorone}, smooth,domain=0:6.28,samples=20]
      ({x-sin(deg(x))},{1-cos(deg(x))});
    \end{axis}
@@ -469,10 +468,10 @@ ymin=-1.1,ymax=1.1,xmin=-1.1,xmax=1.1,axis equal]
    \node [above] at (myplot.above origin) {\scriptsize $y$};
   \end{tikzpicture} &
   \begin{tikzpicture}
-   \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
+   \begin{axis}[width=\scalefactor\marginparwidth,tick label style={font=\scriptsize},
                 axis y line=middle,axis x line=middle,name=myplot,
                 %xtick={-1,1},ytick={-1,1},
-                ymin=-.1,ymax=6.1,xmin=-3.1,xmax=3.1,axis equal]
+                ymin=-.1,ymax=4.1,xmin=-3.1,xmax=3.1,axis equal image]
     \addplot [thick,draw={\colorone}, smooth,domain=-1.55:1.55,samples=20]
      ({2*x},{2/(1+x^2)});
    \end{axis}
@@ -484,7 +483,7 @@ ymin=-1.1,ymax=1.1,xmin=-1.1,xmax=1.1,axis equal]
   \parbox{150pt}{\centering Witch of Agnesi\\$x=2at$\\$y=2a/(1+t^2)$} \\
   \\
 \begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\scalefactor\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
 ymin=-7.1,ymax=7.1,xmin=-7.1,xmax=7.5,axis equal]
 \addplot [thick, draw={\colorone},smooth,domain=0:1440,samples=120]
@@ -495,7 +494,7 @@ ymin=-7.1,ymax=7.1,xmin=-7.1,xmax=7.5,axis equal]
 \end{tikzpicture}
   &
 \begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\scalefactor\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
 ymin=-7.1,ymax=7.1,xmin=-7.1,xmax=7.5,axis equal]
 \addplot [thick,draw={\colorone}, smooth,domain=0:720,samples=240]
@@ -506,7 +505,7 @@ ymin=-7.1,ymax=7.1,xmin=-7.1,xmax=7.5,axis equal]
 \end{tikzpicture}
   &
   \begin{tikzpicture}
-   \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
+   \begin{axis}[width=\scalefactor\marginparwidth,tick label style={font=\scriptsize},
                 axis y line=middle,axis x line=middle,name=myplot,
                 ymin=-2.1,ymax=2.1,xmin=-2.1,xmax=2.1,axis equal]
     \addplot [thick,draw={\colorone}, smooth,domain=-40:130,samples=20]
@@ -519,7 +518,7 @@ ymin=-7.1,ymax=7.1,xmin=-7.1,xmax=7.5,axis equal]
   \parbox{150pt}{\centering Epicycloid\\$x=4\cos(t)-\cos(4t)$\\$y=4\sin(t)-\sin(4t)$} &
   \parbox{150pt}{\centering Folium of Descartes\\$x=3at/(1+t^3)$\\$y=3at^2/(1+t^3)$}
  \end{tabular}}
-\end{minipage}\bigskip
+\bigskip
 
 One might note a feature shared by three of these graphs: ``sharp corners,'' or \textbf{cusps}. We have seen graphs with cusps before and determined that such functions are not differentiable at these points. This leads us to a definition.
 

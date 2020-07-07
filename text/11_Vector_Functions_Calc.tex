@@ -18,7 +18,7 @@ Note how the measurement of distance between real numbers is the absolute value 
 
 \begin{theorem}[Limits of Vector-Valued Functions]\label{thm:vvf_limit}
 \index{vector-valued function!limits}\index{limit!of vector-valued functions}%
-\mbox{}\\[-2\baselineskip]\begin{enumerate}
+\mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{\begin{enumerate}
 	\item Let $\vec r(t) =\bracket{\,f(t),g(t)\,}$ be a vector-valued function in $\mathbb{R}^2$ defined on an open interval $I$ containing $c$. Then
 \[\lim_{t\to c} \vec r(t) =\bracket{\lim_{t\to c}f(t)\, , \,\lim_{t\to c} g(t)}.\]
 	\item Let $\vec r(t) =\bracket{\,f(t),g(t),h(t)\,}$ be a vector-valued function in $\mathbb{R}^3$ defined on an open interval $I$ containing $c$. Then 
@@ -26,7 +26,7 @@ Note how the measurement of distance between real numbers is the absolute value 
 \lim_{t\to c} \vec r(t)
 =\bracket{\lim_{t\to c}f(t)\, , \,\lim_{t\to c} g(t)\,, \,\lim_{t\to c} h(t)}
 \]
-\end{enumerate}
+\end{enumerate}}
 If any of the component limits do not exist, then $\ds\lim_{t\to c} \vec r(t)$ does not exist.
 \end{theorem}
 
@@ -137,12 +137,12 @@ Once again we might view this definition as intimidating, but recall that we can
 
 \begin{theorem}[Derivatives of Vector-Valued Functions]\label{thm:vvf_deriv}
 \index{vector-valued function!derivatives}\index{derivative!vector-valued functions}
-\mbox{}\\[-2\baselineskip]\begin{enumerate}
+\mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{\begin{enumerate}
 	\item Let $\vec r(t) =\bracket{\, f(t), g(t)\,}$. Then 
 	\[\vrp(t) =\bracket{\, \fp(t), g\primeskip'(t)\,}.\]
 	\item Let $\vec r(t) =\bracket{\, f(t), g(t), h(t)\,}$. Then
 	\[\vrp(t) =\bracket{\, \fp(t), g\primeskip'(t), h\primeskip'(t)\,}.\]
-\end{enumerate}
+\end{enumerate}}
 If any of the component derivatives do not exist, then $\vrp(t)$ does not exist.
 \end{theorem}
 
@@ -196,7 +196,7 @@ $\vec r(t)$ and $\vrp(t)$ are graphed together in \autoref{fig:vvflimit3}(a). No
 \end{enumerate}
 \end{example}
 
-\ifthenelse{\boolean{in_threeD}}{%
+\iftoggle{in_threeD}{%
 \mtable{Viewing a vector-valued function and its derivative at one point.}{fig:vvflimit4}{%
 \myincludeasythree{width=.7\marginparwidth,
 3Droll=-0.5856992334166129,
@@ -210,13 +210,13 @@ $\vec r(t)$ and $\vrp(t)$ are graphed together in \autoref{fig:vvflimit3}(a). No
 \\(a)\\
 \myincludegraphics[width=.7\marginparwidth]{figures/figvvflimit4a_3D}
 \\(b)}%
-}% ends whole if-then-else
+}% ends whole if-toggle
 
 \begin{example}[Derivatives of vector-valued functions]\label{ex_vvflimit4}
 Let $\vec r(t) =\bracket{\cos t, \sin t, t}$. Compute $\vrp(t)$ and $\vrp(\pi/2)$. Sketch $\vrp(\pi/2)$ with its initial point at the origin and at $\vec r(\pi/2)$.
 \solution
 We compute $\vrp$ as $\vrp(t) =\bracket{-\sin t, \cos t, 1}$. At $t= \pi/2$, we have $\vrp(\pi/2) =\bracket{-1,0,1}$. \autoref{fig:vvflimit4}
-\ifthenelse{\boolean{in_threeD}}{shows a graph of $\vec r(t)$,}{shows two graphs of $\vec r(t)$, from different perspectives,}
+\iftoggle{in_threeD}{shows a graph of $\vec r(t)$,}{shows two graphs of $\vec r(t)$, from different perspectives,}
 with $\vrp(\pi/2)$ plotted with its initial point at the origin and at $\vec r(\pi/2)$.
 \end{example}
 
@@ -233,29 +233,31 @@ Let $\vec r(t)$ be a differentiable vector-valued function on an open interval $
 \end{definition}
 
 \begin{example}[Finding tangent lines to curves in space]\label{ex_vvfderiv1}
-Let $\vec r(t) =\bracket{t,t^2,t^3}$ on $[-1.5,1.5]$. Find the vector equation of the line tangent to the graph of $\vec r$ at $t=-1$.
+Let
+%
+\iftoggle{in_threeD}{% in threeD
+ \mtable{Graphing a curve in space with its tangent line.}{fig:vvfderiv1}{%
+ \myincludeasythree{width=\marginparwidth,
+ 3Droll=0.5961816528018784,
+ 3Dortho=0.00514203542843461,
+ 3Dc2c=0.8352102637290955 0.5152699947357178 0.19214747846126556,
+ 3Dcoo=-5.658682346343994 19.23411750793457 0.2712952494621277,
+ 3Droo=149.99999927774635}{width=\marginparwidth}{figures/figvvfderiv1_3D}}
+}{% not in three D
+ \mtable{Graphing a curve in space with its tangent line.}{fig:vvfderiv1}{%
+ \myincludegraphics[width=\marginparwidth]{figures/figvvfderiv1_3D}
+ \\(a)\\[10pt]
+ \myincludegraphics[width=\marginparwidth]{figures/figvvfderiv1b_3D}
+ \\(b)}% end mtable
+}% ends all of the if-toggle statements
+%
+$\vec r(t) =\bracket{t,t^2,t^3}$ on $[-1.5,1.5]$. Find the vector equation of the line tangent to the graph of $\vec r$ at $t=-1$.
 \solution
 To find the equation of a line, we need a point on the line and the line's direction. The point is given by $\vec r(-1) =\bracket{-1,1,-1}$. (To be clear, $\bracket{-1,1,-1}$ is a \emph{vector}, not a point, but we use the point ``pointed to'' by this vector.)
 
-\ifthenelse{\boolean{in_threeD}}{% in threeD
-\mtable{Graphing a curve in space with its tangent line.}{fig:vvfderiv1}{%
-\myincludeasythree{width=\marginparwidth,
-3Droll=0.5961816528018784,
-3Dortho=0.00514203542843461,
-3Dc2c=0.8352102637290955 0.5152699947357178 0.19214747846126556,
-3Dcoo=-5.658682346343994 19.23411750793457 0.2712952494621277,
-3Droo=149.99999927774635}{width=\marginparwidth}{figures/figvvfderiv1_3D}}
-}{% not in three D
-\mtable{Graphing a curve in space with its tangent line.}{fig:vvfderiv1}{%
-\myincludegraphics[width=\marginparwidth]{figures/figvvfderiv1_3D}
-\\(a)\\[10pt]
-\myincludegraphics[width=\marginparwidth]{figures/figvvfderiv1b_3D}
-\\(b)}% end mtable
-}% ends all of the if-then-else statements
-
 The direction comes from $\vrp(-1)$. We compute, component-wise, $\vrp(t) =\bracket{1,2t, 3t^2}$. Thus $\vrp(-1) =\bracket{1,-2,3}$. 
 
-The vector equation of the line is $\ell(t) =\bracket{-1,1,-1}+ t\bracket{1,-2,3}$. \ifthenelse{\boolean{in_threeD}}{This line and $\vec r(t)$ are sketched in \autoref{fig:vvfderiv1}.}{This line and $\vec r(t)$ are sketched, from two perspectives, in \autoref{fig:vvfderiv1} (a) and (b).}
+The vector equation of the line is $\ell(t) =\bracket{-1,1,-1}+ t\bracket{1,-2,3}$. \iftoggle{in_threeD}{This line and $\vec r(t)$ are sketched in \autoref{fig:vvfderiv1}.}{This line and $\vec r(t)$ are sketched, from two perspectives, in \autoref{fig:vvfderiv1} (a) and (b).}
 \end{example}
 
 \begin{example}[Finding tangent lines to curves]\label{ex_vvfderiv3}
@@ -307,12 +309,12 @@ Let $\vec r$ and $\vec s$ be differentiable vector-valued functions, let $f$ be 
 	\item \parbox{200pt}{$\ds \frac{d}{dt}\Bigl(f(t)\vec r(t)\Bigr) = \fp(t)\vec r(t) + f(t)\vrp(t)$} \textbf{Product Rule}
 	\item \parbox{200pt}{$\ds \frac{d}{dt}\Bigl(\vec r(t)\cdot \vec s(t) \Bigr) = \vrp(t)\cdot \vec s(t) + \vec r(t)\cdot \vec s\,'(t)$} \textbf{Product Rule}
 	\item\label{crossprodrule} \parbox{200pt}{$\ds \frac{d}{dt}\Bigl(\vec r(t)\times \vec s(t) \Bigr) = \vrp(t)\times \vec s(t) + \vec r(t)\times \vec s\,'(t)$} \textbf{Product Rule}
+	%
+\mnote{\textbf{Note:} Because the order is important when computing a cross product, we must maintain the correct order of the functions in rule \ref*{crossprodrule}.}
+%
 	\item \parbox{200pt}{$\ds \frac{d}{dt}\Bigl(\vec r\bigl(f(t)\bigr)\Bigr) = \vrp\bigl(f(t)\bigr)\fp(t)$}  \textbf{Chain Rule}
 \end{enumerate}
 \end{theorem}
-
-% apparently we need it on the next page
-\mnote[-5\baselineskip]{\textbf{Note:} Because the order is important when computing a cross product, we must maintain the correct order of the functions in rule \ref*{crossprodrule}.}
 
 \begin{example}[Using derivative properties of vector-valued functions]\label{ex_vvfderiv2}
 Let $\vec r(t) =\bracket{t, t^2-1}$ and let $\vec u(t)$ be the unit vector that points in the direction of $\vec r(t)$.
@@ -407,7 +409,7 @@ Then $\vec r(t)\cdot\vrp(t) = 0$ for all $t$ in $I$.\index{vector-valued functio
 
 Indefinite and definite integrals of vector-valued functions are also defined to be evaluated component-wise.
 
-\begin{definition}[{\parbox[t]{200pt}{Indefinite and Definite Integrals of Vector-Valued Functions}}]\label{thm:vvf_integration}
+\begin{definition}[Indefinite and Definite Integrals of Vector-Valued Functions]\label{thm:vvf_integration}
 Let $\vec r(t) =\bracket{f(t),g(t)}$ be a vector-valued function in $\mathbb{R}^2$.
 \index{vector-valued function!integration}\index{integration!of vector-valued functions}
 \begin{enumerate}

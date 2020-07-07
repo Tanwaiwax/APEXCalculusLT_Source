@@ -101,7 +101,7 @@ xtick={1,2,3},ytick={1,2,3},ymin=-.5,ymax=3.5,xmin=-.5,xmax=3.5]
 3Dc2c=0.6257953643798828 0.642341136932373 0.44246822595596313,
 3Dcoo=-11.887701988220215 -11.637335777282715 52.40430450439453,
 3Droo=399.9999800778292,
-3Dlights=Headlamp}{width=1.16\marginparwidth}{figures/figparsurf3_3D}
+3Dlights=Headlamp}{width=\marginparwidth}{figures/figparsurf3_3D}
 \\(b)}
 
 \begin{example}[Parameterizing a surface over a triangle]\label{ex_parsurf3}
@@ -112,10 +112,10 @@ We may begin by letting $x=u$, $0\leq u\leq 3$,  and $y = 2-2u/3$. This gives on
 Still letting $x = u$, $0\leq u\leq 3$, we let $y = v(2-2u/3)$, $0\leq v\leq 1$. When $v=0$, all $y$-values are 0, and we get the portion of the $x$-axis between $x=0$ and $x=3$. When $v=1$, we get the upper side of the triangle. When $v=1/2$, we get the line $y=1/2(2-2u/3) = 1-u/3$, which is the line ``halfway up'' the triangle, shown in the figure with a dashed line.
 
 Letting $z = f(x,y) = x^2+2y^2$, we have
-\[
-\vec r(u,v) =\bracket{u, v(2-2u/3), u^2+2\bigl(v(2-2u/3)\bigr)^2},
-\qquad 0\leq u\leq 3,\quad 0\leq v\leq 1.
-\]
+\begin{multline*}
+\vec r(u,v) =\bracket{u, v(2-2u/3), u^2+2\bigl(v(2-2u/3)\bigr)^2},\\
+0\leq u\leq 3,\quad 0\leq v\leq 1.
+\end{multline*}
 This surface is graphed in \autoref{fig:parsurf3}(b). Again, when one looks from above, we can see the scaling effects of $v$: the series of lines that run to the point $(3,0)$ each represent a different value of $v$.
 
 Another common way to parameterize the surface is to begin with $y=u$, $0\leq u\leq 2$. Solving the equation of the line $y=2-2x/3$ for $x$, we have $x = 3-3y/2$, leading to using $x=v(3-3u/2)$, $0\leq v\leq 1$. With $z=x^2+2y^2$, we have $\vec r(u,v) =\bracket{v(3-3u/2),u, \bigl(v(3-3u/2)\bigr)^2+2v^2}$, $0\leq u\leq 2$, $0\leq v\leq 1$.
@@ -128,7 +128,7 @@ While the region $R$ in this example is very similar to the region $R$ in the pr
 
 \mtable{Part (a) shows a graph of the region $R$, and part (b) shows the surface over $R$, as defined in \autoref{ex_parsurf4}.}{fig:parsurf4}
 {\begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
 xtick={1,2,3},ytick={1,2,3},ymin=-.5,ymax=3.5,xmin=-.5,xmax=3.5]
 \filldraw [thick,draw={\colorone},fill={\coloronefill}] (axis cs: 0,1) -- (axis cs: 0,3) -- (axis cs: 3,1) node [pos=.5,sloped,above] {\scriptsize $y = 3-2x/3$} -- cycle;
@@ -138,13 +138,13 @@ xtick={1,2,3},ytick={1,2,3},ymin=-.5,ymax=3.5,xmin=-.5,xmax=3.5]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}
 \\[-5pt](a)\\[10pt]
-\myincludeasythree{width=1.16\marginparwidth,
+\myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.005000247620046139,
 3Dc2c=0.6257953643798828 0.642341136932373 0.44246822595596313,
 3Dcoo=-11.887701988220215 -11.637335777282715 52.40430450439453,
 3Droo=399.9999800778292,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{width=1.16\marginparwidth}{figures/figparsurf4_3D}
+3Dlights=Headlamp,add3Djscript=asylabels.js}{width=\marginparwidth}{figures/figparsurf4_3D}
 \\(b)}
 
 We begin with letting $x=u$, $0\leq u\leq 3$. We may be tempted to let $y = v(3-2u/3)$, $0\leq v\leq 1$, but this is incorrect. When $v = 1$, we obtain the upper line of the triangle as desired. However, when $v=0$, the $y$-value is 0, which does not lie in the region $R$. 
@@ -200,7 +200,10 @@ While the cylinder $x^2+z^2/4=1$ is satisfied by any $y$ value, the problem stat
 \]
 \end{example}
 
-\mtable{The elliptic cone as described in \autoref{ex_parsurf6}.}{fig:parsurf6a}{%
+\begin{example}[Parameterizing an elliptic cone]\label{ex_parsurf6}
+Find
+%
+\mtable[-\baselineskip]{The elliptic cone as described in \autoref{ex_parsurf6}.}{fig:parsurf6a}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.00452691363170743,
@@ -208,15 +211,14 @@ While the cylinder $x^2+z^2/4=1$ is satisfied by any $y$ value, the problem stat
 3Dcoo=0.0026521924883127213 4.370458126068115 12.347787857055664,
 3Droo=399.9999637774216,
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figparsurf6a_3D}}
-
-\begin{example}[Parameterizing an elliptic cone]\label{ex_parsurf6}
-Find a parameterization of the elliptic cone $z^2 = \frac{x^2}{4}+\frac{y^2}{9}$, where $-2\leq z\leq 3$, as shown in \autoref{fig:parsurf6a}.
+%
+a parameterization of the elliptic cone $z^2 = \frac{x^2}{4}+\frac{y^2}{9}$, where $-2\leq z\leq 3$, as shown in \autoref{fig:parsurf6a}.
 \solution
 One way to parameterize this cone is to recognize that given a $z$ value, the cross section of the cone at that $z$ value is an ellipse with equation $\frac{x^2}{(2z)^2} + \frac{y^2}{(3z)^2}=1$. We can let $z=v$, for $-2\leq v\leq 3$ and then parameterize the above ellipses using sines, cosines and $v$.
 
 We can parameterize the $x$ component of our surface with $x=2z\cos u$ and the $y$ component with $y=3z\sin u$, where $0\leq u\leq 2\pi$. Putting all components together, we have
 %
-\mtable{The elliptic cone as described in  \autoref{ex_parsurf6} with restricted domain.}{fig:parsurf6b}{%
+\mtable[6\baselineskip]{The elliptic cone as described in  \autoref{ex_parsurf6} with restricted domain.}{fig:parsurf6b}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.00452691363170743,
@@ -234,17 +236,21 @@ When $v$ takes on negative values, the radii of the cross-sectional ellipses bec
 \end{example}
 
 \begin{example}[Parameterizing an ellipsoid]\label{ex_parsurf7}
-Find a parameterization of the ellipsoid $\frac{x^2}{25}+y^2+\frac{z^2}{4}=1$ as shown in \autoref{fig:parsurf7}(a).
+Find a parameterization of the ellipsoid $\frac{x^2}{25}+y^2+\frac{z^2}{4}=1$ as shown in \autoref{fig:parsurf7}(a).\\
 %
-\mtable[1.1in]{An ellipsoid in (a), drawn again in (b) with its domain restricted, as described in \autoref{ex_parsurf7}.}{fig:parsurf7}
-{\myincludeasythree{width=\marginparwidth,
+\begin{minipage}{\linewidth}\centering\addtolength{\tabcolsep}{-1pt}
+\captionsetup{type=figure}
+\begin{tabular}{cc}
+%\mtable[.5in]{An ellipsoid in (a), drawn again in (b) with its domain restricted, as described in \autoref{ex_parsurf7}.}{fig:parsurf7}{%
+\myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.00452691363170743,
 3Dc2c=0.625795304775238 0.642341136932373 0.44246816635131836,
 3Dcoo=0.0026521924883127213 4.370458126068115 12.347787857055664,
 3Droo=399.9999637774216,
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figparsurf7a_3D}
-\\(a)\\[10pt]
+%\\(a)\\[10pt]
+&
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.00452691363170743,
@@ -252,12 +258,19 @@ Find a parameterization of the ellipsoid $\frac{x^2}{25}+y^2+\frac{z^2}{4}=1$ as
 3Dcoo=0.0026521924883127213 4.370458126068115 12.347787857055664,
 3Droo=399.9999637774216,
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figparsurf7b_3D}
-\\(b)}
+%\\(b)}
+\\(a)&(b)
+\end{tabular}
+\caption{An ellipsoid in (a), drawn again in (b) with its domain restricted, as described in \autoref{ex_parsurf7}.}
+\label{fig:parsurf7}
+\end{minipage}
 %
 \solution
 Recall \autoref{idea:unit_vectors} from \autoref{sec:vector_intro}, which states that all unit vectors in space have the form $\bracket{\sin\theta\cos\varphi,\sin\theta\sin\varphi,\cos\theta}$ for some angles $\theta$ and $\varphi$. If we choose our angles appropriately, this allows us to draw the unit sphere. To get an ellipsoid, we need only scale each component of the sphere appropriately.
 
-The $x$-radius of the given ellipsoid is 5, the $y$-radius is 1 and the $z$-radius is 2. Substituting $u$ for $\theta$ and $v$ for $\varphi$, we have $\vec r(u,v) =\bracket{5\sin u\cos v, \sin u\sin v,2\cos u}$, where we still need to determine the ranges of $u$ and $v$. 
+The $x$-radius of the given ellipsoid is 5, the $y$-radius is 1 and the $z$-radius is 2. Substituting $u$ for $\theta$ and $v$ for $\varphi$, we have
+\[\vec r(u,v) =\bracket{5\sin u\cos v, \sin u\sin v,2\cos u},\]
+where we still need to determine the ranges of $u$ and $v$. 
 
 Note how the $x$ and $y$ components of $\vec r$ have  $\cos v$ and $\sin v$ terms, respectively. This hints at the fact that ellipses are drawn parallel to the $x$-$y$ plane as $v$ varies, which implies we should have $v$ range from $0$ to $2\pi$. 
 
@@ -278,7 +291,13 @@ Just as we could parameterize curves in more than one way, there will always be 
 
 \subsection{Surface Area}
 
-\mtable{Illustrating the process of finding surface area by approximating with planes.}{fig:parsurfarea}
+It will become important in the following sections to be able to compute the surface area of a surface \surfaceS\ given a smooth parameterization $\vec r(u,v)$, $a\leq u\leq b$, $c\leq v\leq d$. Following the principles given in the integration review at the beginning of this chapter, we can say that\index{surface area!of parameterized surface}
+\[\text{Surface Area of \surfaceS}=S = \iint_{\surfaceS}\ dS,\]
+where $dS$ represents a small amount of surface area. That is, to compute total surface area $S$, add up lots of small amounts of surface area $dS$ across the entire surface \surfaceS. The key to finding surface area is knowing how to compute $dS$. We begin by approximating.
+
+In \autoref{sec:surface_area} we used the area of a plane to approximate the surface area of a small portion of a surface. We will do the same here.
+
+\mtable[-5\baselineskip]{Illustrating the process of finding surface area by approximating with planes.}{fig:parsurfarea}
 {\begin{tikzpicture}
 \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
@@ -317,12 +336,6 @@ ymin=-.1,ymax=2.5,xmin=-.1,xmax=2.5]
 3Droo=135.59128411404498,
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figparsurfareaB_3D}
 \\(c)}
-
-It will become important in the following sections to be able to compute the surface area of a surface \surfaceS\ given a smooth parameterization $\vec r(u,v)$, $a\leq u\leq b$, $c\leq v\leq d$. Following the principles given in the integration review at the beginning of this chapter, we can say that\index{surface area!of parameterized surface}
-\[\text{Surface Area of \surfaceS}=S = \iint_{\surfaceS}\ dS,\]
-where $dS$ represents a small amount of surface area. That is, to compute total surface area $S$, add up lots of small amounts of surface area $dS$ across the entire surface \surfaceS. The key to finding surface area is knowing how to compute $dS$. We begin by approximating.
-
-In \autoref{sec:surface_area} we used the area of a plane to approximate the surface area of a small portion of a surface. We will do the same here.
 
 Let $R$ be the region of the $u$-$v$ plane bounded by $a\leq u\leq b$, $c\leq v\leq d$ as shown in \autoref{fig:parsurfarea}(a). Partition $R$ into rectangles of width $\Delta u = \frac{b-a}n$ and height $\Delta v = \frac{d-c}n$, for some $n$. Let $p=(u_0,v_0)$ be the lower left corner of some rectangle in the partition, and let $m$ and $q$ be neighboring corners as shown.
 

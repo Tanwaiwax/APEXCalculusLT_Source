@@ -43,7 +43,7 @@ These functions are sometimes referred to as the ``hyperbolic trigonometric func
 We begin with their definitions.
 
 \begin{definition}[Hyperbolic Functions]\label{def:hyperbolic_functions}
-\mbox{}\\[-\baselineskip]
+\mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{%
 \begin{multicols}{2}\index{hyperbolic function!definition}%
 \begin{enumerate}
 \item		$\ds \cosh x = \frac{e^x+e^{-x}}2$
@@ -53,7 +53,7 @@ We begin with their definitions.
 \item		$\ds \csch x = \frac{1}{\sinh x}$
 \item		$\ds \coth x = \frac{\cosh x}{\sinh x}$
 \end{enumerate}
-\end{multicols}
+\end{multicols}}
 \end{definition}
 
 The hyperbolic functions are graphed in \autoref{fig:hyperbolic}. In the graphs of $\cosh x$ and $\sinh x$, graphs of $e^x/2$ and $e^{-x}/2$ are included with dashed lines. As $x$ gets ``large,'' $\cosh x$ and $\sinh x$ each act like $e^x/2$; when $x$ is a large negative number, $\cosh x$ acts like $e^{-x}/2$ whereas $\sinh x$ acts like $-e^{-x}/2$.
@@ -66,12 +66,13 @@ The hyperbolic functions are graphed in \autoref{fig:hyperbolic}. In the graphs 
 %``coth'' rhymes with ``moth.''
 }
 
-\begin{figure}[!ht]
+Notice the domains of $\tanh x$ and $\sech x$ are $(-\infty,\infty)$, whereas both $\coth x$ and $\csch x$ have vertical asymptotes at $x=0$. Also note the ranges of these functions, especially $\tanh x$: as $x\to\infty$, both $\sinh x$ and $\cosh x$ approach $e^x/2$, hence $\tanh x$ approaches $1$.
+
+\noindent
+\begin{minipage}{\linewidth}
 \centering
-\addtolength{\tabcolsep}{6pt}
-\begin{tabular}{cc}
 \begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=.55\textwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,ymin=-10.9,ymax=10.9,
 xmin=-3.5,xmax=3.5,scaled ticks=false]
 \addplot [draw={\colorone},thick,smooth,domain=-3:3] {cosh(x)};
@@ -81,10 +82,10 @@ xmin=-3.5,xmax=3.5,scaled ticks=false]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}
-&
+\end{tikzpicture}%
+\qquad
 \begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=.55\textwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,ymin=-10.9,ymax=10.9,
 xmin=-3.5,xmax=3.5,scaled ticks=false]
 \addplot [draw={\colorone},thick,smooth,domain=-3:3] {sinh(x)};
@@ -97,7 +98,7 @@ xmin=-3.5,xmax=3.5,scaled ticks=false]
 \end{tikzpicture}
 \\[20pt]
 \begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=.55\textwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,ytick={-2,2},
 ymin=-3.5,ymax=3.5,xmin=-3.5,xmax=3.5,scaled ticks=false]
 \addplot [draw={\colorone},thick,smooth,domain=-3:3] {tanh(x)};
@@ -111,10 +112,10 @@ ymin=-3.5,ymax=3.5,xmin=-3.5,xmax=3.5,scaled ticks=false]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}
-&
+\end{tikzpicture}%
+\qquad
 \begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=.55\textwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,ytick={-3,-2,-1,1,2,3},
 ymin=-3.5,ymax=3.5,xmin=-3.5,xmax=3.5,scaled ticks=false]
 \addplot [draw={\colorone},thick,smooth,domain=-3:3] {1/cosh(x)};
@@ -126,14 +127,10 @@ ymin=-3.5,ymax=3.5,xmin=-3.5,xmax=3.5,scaled ticks=false]
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}
-\end{tabular}
 \captionsetup{type=figure}
 \caption{Graphs of the hyperbolic functions.}
 \label{fig:hyperbolic}
-\end{figure}
-\bigskip
-
-Notice the domains of $\tanh x$ and $\sech x$ are $(-\infty,\infty)$, whereas both $\coth x$ and $\csch x$ have vertical asymptotes at $x=0$. Also note the ranges of these functions, especially $\tanh x$: as $x\to\infty$, both $\sinh x$ and $\cosh x$ approach $e^x/2$, hence $\tanh x$ approaches $1$.
+\end{minipage}
 
 \youtubeVideo{G1C1Z5aTZSQ}{Hyperbolic Functions --- The Basics}
 
@@ -154,59 +151,53 @@ Use \autoref{def:hyperbolic_functions} to rewrite the following expressions.
 \end{multicols}
 \solution
 \begin{enumerate}
-\item \mbox{}\\*[-3\baselineskip]
-\begin{align*}
+\item \hfill$\begin{aligned}[t]
  \cosh^2x-\sinh^2x
  &= \left(\frac{e^x+e^{-x}}2\right)^2 -\left(\frac{e^x-e^{-x}}2\right)^2\\
  &= \frac{e^{2x}+2e^xe^{-x} + e^{-2x}}4 - \frac{e^{2x}-2e^xe^{-x} + e^{-2x}}4\\
  &= \frac44=1.
-\end{align*}
+\end{aligned}$\hfill\null\\
 So $\cosh^2 x-\sinh^2x=1$.
 
-\item	\mbox{}\\[-3\baselineskip]
-\begin{align*}
+\item \hfill$\begin{aligned}[t]
  \tanh^2 x+\sech^2 x
  &=\frac{\sinh^2x}{\cosh^2 x} + \frac{1}{\cosh^2 x} \\
  &= \frac{\sinh^2x+1}{\cosh^2 x}\qquad \text{\small Now use identity from \#1.}\\
  &= \frac{\cosh^2 x}{\cosh^2 x} = 1.
-\end{align*}
+\end{aligned}$\hfill\null\\
 So $\tanh^2 x+\sech^2 x=1$.
 
-\item \mbox{}\\[-3\baselineskip]
-\begin{align*}
+\item \hfill$\begin{aligned}[t]
 	2\cosh x\sinh x
 	&= 2\left(\frac{e^x+e^{-x}}2\right)\left(\frac{e^x-e^{-x}}2\right) \\
 	&= 2 \cdot\frac{e^{2x} - e^{-2x}}4\\
 	&= \frac{e^{2x} - e^{-2x}}2 = \sinh (2x).\\
-\end{align*}
+\end{aligned}$\hfill\null\\
 Thus $2\cosh x\sinh x = \sinh (2x)$.
 
-\item \mbox{}\\[-3\baselineskip]
-\begin{align*}
+\item \hfill$\begin{aligned}[t]
 	\frac{d}{dx}\bigl(\cosh x\bigr)
 	&= \frac{d}{dx}\left(\frac{e^x+e^{-x}}2\right) \\
 	&= \frac{e^x-e^{-x}}2\\
 	&= \sinh x.
-\end{align*}
+\end{aligned}$\hfill\null\\
 So $\frac{d}{dx}\bigl(\cosh x\bigr) = \sinh x.$
 	
-\item  \mbox{}\\[-3\baselineskip]
-\begin{align*}
+\item \hfill$\begin{aligned}[t]
 	\frac{d}{dx}\bigl(\sinh x\bigr)
 	&= \frac{d}{dx}\left(\frac{e^x-e^{-x}}2\right) \\
 	&= \frac{e^x+e^{-x}}2\\
 	&= \cosh x.
-\end{align*}
+\end{aligned}$\hfill\null\\
 So $\frac{d}{dx}\bigl(\sinh x\bigr) = \cosh x.$
 
-\item  \mbox{}\\[-3\baselineskip]
-\begin{align*}
+\item \hfill$\begin{aligned}[t]
 	\frac{d}{dx}\bigl(\tanh x\bigr)
 	&= \frac{d}{dx}\left(\frac{\sinh x}{\cosh x}\right) \\
 	&= \frac{\cosh x \cosh x - \sinh x \sinh x}{\cosh^2 x}\\
 	&= \frac{1}{\cosh^2 x}\\
 	&= \sech^2 x.
-\end{align*}
+\end{aligned}$\hfill\null\\
 So $\frac{d}{dx}\bigl(\tanh x\bigr) = \sech^2 x.$
 \end{enumerate}
 \end{example}
@@ -214,7 +205,7 @@ So $\frac{d}{dx}\bigl(\tanh x\bigr) = \sech^2 x.$
 The following Key Idea summarizes many of the important identities relating to hyperbolic functions. Each can be verified by referring back to \autoref{def:hyperbolic_functions}.
 
 {
-\tcbset{grow to right by=160pt}
+\tcbset{grow to right by=16em}
 \begin{keyidea}[Useful Hyperbolic Function Properties]\label{idea:hyperbolic_identities}
 \begin{minipage}[t]{.33\linewidth}
 \textbf{Basic Identities}\par
@@ -404,20 +395,15 @@ Finally, interchange the variable to find that
 In a similar manner we find that the inverses of the other hyperbolic functions are given by:
 
 {
-\tcbset{grow to right by=30pt}
+\tcbset{grow to right by=5em} % 5 sufficient
 \begin{keyidea}[Logarithmic definitions of Inverse Hyperbolic Functions]\label{idea:hyperbolic_log}
-\mbox{}\\[-\baselineskip]
-%\noindent%
-\index{hyperbolic function!inverse!logarithmic def.}
+\mbox{}\\[-2\baselineskip]%
+\index{hyperbolic function!inverse!logarithmic def.}%
 \begin{multicols}{2}
 \begin{enumerate}
 \item $\ds\cosh^{-1}x=\ln\bigl(x+\sqrt{x^2-1}\bigr)$;\\\null\qquad $x\geq1$
 \item $\ds\tanh^{-1}x=\frac12\ln\left(\frac{1+x}{1-x}\right)$;\\\null\qquad$\abs x<1$
 \item $\ds\sech^{-1}x=\ln\left(\frac{1+\sqrt{1-x^2}}x\right)$;\\\null\qquad$0<x\leq1$
-%\end{enumerate}
-%\end{minipage}%
-%\begin{minipage}[t]{.5\linewidth}
-%\begin{enumerate}\addtocounter{enumi}{3}
 \item $\ds\sinh^{-1}x=\ln\bigl(x+\sqrt{x^2+1}\bigr)$\\\mbox{}
 \item $\ds\coth^{-1}x=\frac12\ln\left(\frac{x+1}{x-1}\right)$;\\\null\qquad$\abs x>1$
 \item $\ds\csch^{-1}x=\ln\left(\frac1x+\frac{\sqrt{1+x^2}}{\abs x}\right)$;\\\null\qquad $x\neq0$
@@ -443,10 +429,10 @@ The following Key Ideas give the derivatives and integrals relating to the inver
 %}
 
 {
-\tcbset{grow to right by=30pt}
+\tcbset{grow to right by=3em}
 \begin{keyidea}[Derivatives Involving Inverse Hyperbolic Functions]\label{idea:hyperbolic_inverse_derivatives}
 \index{hyperbolic function!inverse!derivative}\index{derivative!inverse hyper.}
-\mbox{}\\[-\baselineskip]
+\mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{%
 \begin{multicols}{2}
 \begin{enumerate}
 \item $\ds\frac d{dx}\bigl(\cosh^{-1}x\bigr)=\frac1{\sqrt{x^2-1}}$;\\\null\qquad$x>1$
@@ -456,12 +442,11 @@ The following Key Ideas give the derivatives and integrals relating to the inver
 \item $\ds\frac d{dx}\bigl(\csch^{-1}x\bigr)=\frac{-1}{\abs x\sqrt{1+x^2}}$;\\\null\qquad$x\neq0$
 \item $\ds\frac d{dx}\bigl(\coth^{-1}x\bigr)=\frac1{1-x^2}$;\\\null\qquad$\abs x>1$
 \end{enumerate}
-\end{multicols}
-\end{keyidea}
-}
+\end{multicols}}
+\end{keyidea}}
 
 {
-\tcbset{grow to right by=120pt}
+\tcbset{grow to right by=12em}
 \begin{keyidea}[Integrals Involving Inverse Hyperbolic Functions]\label{idea:hyperbolic_inverse_integrals}
 \index{integration!inverse hyper.}\index{hyperbolic function!inverse!integration}%
 \begin{anywhereenum}
@@ -477,13 +462,12 @@ The following Key Ideas give the derivatives and integrals relating to the inver
 \item $\ds\int\frac1{x\sqrt{x^2+a^2}}\ dx$ & $\ds{}=-\frac1a\csch^{-1}\abs{\frac xa}+C$; $x\neq 0,\ a>0$ & $\ds{}=\frac1a\ln\abs{\frac{x}{a+\sqrt{a^2+x^2}}}+C$
 \end{tabular}
 \end{anywhereenum}
-\end{keyidea}
-}
+\end{keyidea}}
 
 We practice using the derivative and integral formulas in the following example.
 
 \begin{example}[Derivatives and integrals involving inverse hyperbolic functions]\label{ex_hf3}
-Evaluate the following.\\
+Evaluate the following.
 \begin{multicols}{2}
 \begin{enumerate}
 \item	$\ds \frac{d}{dx}\left[\cosh^{-1}\left(\frac{3x-2}{5}\right)\right]$
@@ -497,7 +481,9 @@ Evaluate the following.\\
 \item	Applying \autoref{idea:hyperbolic_inverse_derivatives} with the Chain Rule gives:
 		\[\frac{d}{dx}\left[\cosh^{-1}\left(\frac{3x-2}5\right)\right] = \frac{1}{\sqrt{\left(\frac{3x-2}5\right)^2-1}}\cdot\frac35.\]
 
-\item		Multiplying the numerator and denominator by $(-1)$ gives: $\ds \int \frac{1}{x^2-1}\ dx = \int \frac{-1}{1-x^2}\ dx$. The second integral can be solved with a direct application of item \#3 from \autoref{idea:hyperbolic_inverse_integrals}, with $a=1$. Thus
+\item		Multiplying the numerator and denominator by $(-1)$ gives 
+a %: $\ds \int \frac{1}{x^2-1}\ dx = \int \frac{-1}{1-x^2}\ dx$. The
+second integral can be solved with a direct application of item \#3 from \autoref{idea:hyperbolic_inverse_integrals}, with $a=1$. Thus
 \begin{align}
 \int \frac{1}{x^2-1}\ dx &= -\int \frac{1}{1-x^2}\ dx \notag \\
 		&= \begin{cases}-\tanh^{-1}\left(x\right)+C & x^2<1 \\

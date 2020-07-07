@@ -142,9 +142,11 @@ verifying \autoref{thm:deriv_inverse_functions} yet again: at corresponding poin
 
 Using similar techniques, we can find the derivatives of all the inverse trigonometric functions after first restricting their domains according to \autoref{fig:domain_trig} to allow them to be invertible.
 
+{\tcbset{grow to right by=3em}
+% 2 em is sufficient, but 3em shortens the paragraph by a line
 \begin{theorem}[Derivatives of Inverse Trigonometric Functions]\label{thm:deriv_inverse_trig}
-The inverse trigonometric functions are differentiable on all open sets contained in their domains (as listed in \autoref{fig:domain_trig}) and their derivatives are as follows:\\\index{derivative!inverse trig.}
-\begin{multicols}{2}\small
+The inverse trigonometric functions are differentiable on all open sets contained in their domains (as listed in \autoref{fig:domain_trig}) and their derivatives are as follows:\index{derivative!inverse trig.}
+\begin{multicols}{2}
 	\begin{enumerate}
 		\item	$\ds\frac d{dx}\bigl(\sin^{-1}x\bigr)= \frac1{\sqrt{1-x^2}}$ 
 		\item	$\ds\frac d{dx}\bigl(\sec^{-1}x\bigr)= \frac1{\abs{x}\sqrt{x^2-1}}$
@@ -154,7 +156,7 @@ The inverse trigonometric functions are differentiable on all open sets containe
 		\item	$\ds\frac d{dx}\bigl(\cot^{-1}x\bigr)=-\frac1{1+x^2}$
 	\end{enumerate}
 \end{multicols}
-\end{theorem}			
+\end{theorem}}
 
 Note how the last three derivatives are merely the negatives of the first three, respectively. Because of this, the first three are used almost exclusively throughout this text.
 
@@ -202,14 +204,15 @@ Find the derivatives of the following functions:
 \[\int\frac{dx}{\sqrt{1-x^2}}=\sin^{-1}x+C.\]
 Combining these formulas with $u$-substitution yields the following:
 
+{\tcbset{grow to right by=1em}
 \begin{theorem}[Integrals Involving Inverse Trigonometric Functions]\label{thm:int_inverse_trig}
-Let $a>0$.
+Let $a>0$.  Then
 \begin{enumerate}
 	\item	$\ds\int\frac1{a^2+x^2}\ dx=\frac1a\tan^{-1}\left(\frac xa\right) + C$
 	\item	$\ds\int\frac1{\sqrt{a^2-x^2}}\ dx=\sin^{-1}\left(\frac xa\right)+C$
 	\item	$\ds\int\frac1{x\sqrt{x^2-a^2}}\ dx=\frac1a\sec^{-1}\left(\frac{\abs x}a\right)+C$
 \end{enumerate}
-\end{theorem}
+\end{theorem}}
 
 We will look at the second part of this theorem. The other parts are similar and are left as exercises.
 
@@ -231,7 +234,7 @@ Find the following integrals.
 \[
  \text{1.}\quad\int\frac{dx}{100+x^2}\qquad
  \text{2.}\quad\int\frac{\sin^{-1} x}{\sqrt{1-x^2}}\ dx\qquad
- \text{3.}\int\frac{dx}{x^2+2x+5}
+ \text{3.}\quad\int\frac{dx}{x^2+2x+5}
 \]
 \solution
 \begin{enumerate}
@@ -241,7 +244,10 @@ Find the following integrals.
 \item This does not immediately look like one of the forms in \autoref{thm:int_inverse_trig}, but we can complete the square in the denominator to see that
 \[\int\frac{dx}{x^2+2x+5} =\int\frac{dx}{(x^2+2x+1)+4}=\int\frac{dx}{4+(x+1)^2}\]
 We now use the substitution $u=x+1$ and $du=dx$ to find:
-\[\int\frac{dx}{4+(x+1)^2} =\int\frac{du}{4+u^2}=\frac12 \tan^{-1}(u/2)+C =\frac 12\tan^{-1}\left(\frac{x+1}2\right)+C.\]
+\begin{multline*}
+ \int\frac{dx}{4+(x+1)^2} =\int\frac{du}{4+u^2}\\
+ =\frac12 \tan^{-1}(u/2)+C =\frac 12\tan^{-1}\left(\frac{x+1}2\right)+C.
+\end{multline*}
 \end{enumerate}
 \end{example}
 

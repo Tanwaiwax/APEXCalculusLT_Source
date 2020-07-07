@@ -16,7 +16,7 @@ The previous two sections introduced and studied a new way of plotting points in
 	\draw [rotate=27.5] (1,0) node {$\theta$};
 \end{tikzpicture}}
 
-Start with a point $O$ in the plane called the \textbf{pole} (we will always identify this point with the origin). From the pole, draw a ray, called the \textbf{initial ray} (we will always draw this ray horizontally, identifying it with the positive $x$-axis). A point $P$ in the plane is determined by the distance $r$ that $P$ is from $O$, and the angle $\theta$ formed between the initial ray and the segment $\overline{OP}$ (measured counter-clockwise). We record the distance and angle as an ordered pair $(r,\theta)$. %To avoid confusion with rectangular coordinates, we will denote polar coordinates with the letter $P$, as in $P(r,\theta)$. This is illustrated in \autoref{fig:polar_intro1}
+Start with a point $O$ in the plane called the \textbf{pole} (we will always identify this point with the origin). From the pole, draw a ray, called the \textbf{initial ray} (we will always draw this ray horizontally, identifying it with the positive $x$-axis). A point $P$ in the plane is determined by the distance $r$ that $P$ is from $O$, and the angle $\theta$ formed between the initial ray and the segment $\overline{OP}$ (measured counter-clockwise). We record the distance and angle as an ordered pair $(r,\theta)$.%To avoid confusion with rectangular coordinates, we will denote polar coordinates with the letter $P$, as in $P(r,\theta)$. This is illustrated in \autoref{fig:polar_intro1}
 \index{polar coordinates}\index{polar!coordinates}
 
 \youtubeVideo{r0fv9V9GHdo}{Polar Coordinates --- The Basics}
@@ -33,7 +33,8 @@ To aid in the drawing, a polar grid is provided
 \iflatexml
  \begin{tikzpicture}[remember picture,overlay,scale=.8]
 \else
- \ifthenelse{\isodd{\pageref{ex_polar1}}}{%
+ \checkoddpage%
+ \ifbool{oddpage}{%
   \begin{tikzpicture}[remember picture,overlay,scale=.8,shift=(current page.south),shift={+(.5in,1.7in)}]
  }{%
   \begin{tikzpicture}[remember picture,overlay,scale=.8,shift=(current page.south),shift={+(-.5in,1.7in)}]
@@ -48,7 +49,7 @@ To aid in the drawing, a polar grid is provided
   \draw (\x,0) node [below right] {\x};
  }
 \end{tikzpicture}}%
-\ifthenelse{\boolean{latexml}}{here.}{at the bottom of this page.}%
+\ifbool{latexml}{here.}{at the bottom of this page.}%
 %
 \mtable{Plotting polar points in \autoref{ex_polar1}.}{fig:polar1}{\begin{tikzpicture}[scale=.75,>=latex]
 	\draw[thick,->] (0,0) node [below] {$O$} -- (3.5,0) ;
@@ -90,7 +91,7 @@ This ability to identify a point in the plane with multiple polar coordinates is
 
 It is useful to recognize both the rectangular (or, Cartesian) coordinates of a point in the plane and its polar coordinates. \autoref{fig:polar_intro2} shows a point $P$ in the plane with rectangular coordinates $(x,y)$ and polar coordinates $(r,\theta)$. Using trigonometry, we can make the identities given in the following Key Idea.
 
-\begin{keyidea}[{\parbox[t]{185pt}{Converting Between Rectangular and Polar Coordinates}}]\label{idea:polarconvert}
+\begin{keyidea}[Converting Between Rectangular and Polar Coordinates]\label{idea:polarconvert}
 Given the polar point $P(r,\theta)$, the rectangular coordinates are determined by \[x=r\cos \theta\qquad y=r\sin \theta.\]
 
 Given the rectangular coordinates $(x,y)$, the polar coordinates are determined by
@@ -98,11 +99,11 @@ Given the rectangular coordinates $(x,y)$, the polar coordinates are determined 
 \end{keyidea}
 
 \begin{example}[Converting Between Polar and Rectangular Coordinates]\label{ex_polar2}
-\mbox{}\\[-2\baselineskip]
+\mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{%
 \begin{enumerate}
 \item		Convert the polar coordinates $A(2,2\pi/3)$ and $B(-1,5\pi/4)$ to rectangular coordinates.
 \item		Convert the rectangular coordinates $(1,2)$ and $(-1,1)$ to polar coordinates.
-\end{enumerate}
+\end{enumerate}}
 \solution
 \begin{enumerate}
 	\item \begin{enumerate}
@@ -215,7 +216,7 @@ We sketch these functions much like we sketch rectangular and parametric functio
 \begin{example}[Sketching Polar Functions]\label{ex_polar4}
 Sketch
 %
-\mtable{Graph of the polar function in \autoref{ex_polar4} by plotting points.}{fig:polar4}{%
+\mtable[-1in]{Graph of the polar function in \autoref{ex_polar4} by plotting points.}{fig:polar4}{%
 \begin{tabular}{c}
  $\begin{array}{cc}
 	\theta & r=1+\cos\theta \\ \midrule
@@ -236,7 +237,7 @@ Sketch
 	7 \pi /4 & 1+1/\sqrt2 \\
 	11\pi/6 & 1+\sqrt{3}/2 \\
  \end{array}$ \\ \\
- \begin{tikzpicture}[scale=1]
+ \begin{tikzpicture}[scale=.95]
   \draw [dashed,gray] (-2.1,0) -- (0,0);
   \draw[thick,->,>=stealth] (0,0) node [below] {$O$} -- (2.5,0) ;
   \filldraw (0,0) circle (1.5pt);
@@ -257,7 +258,7 @@ Sketch
 %
 the polar function $r=1+\cos \theta$ on $[0,2\pi]$ by plotting points.
 \solution
-A common question when sketching curves by plotting points is ``Which points should I plot?'' With rectangular equations, we often chose ``easy'' values --- integers, then added more if needed. When plotting polar equations, start with the ``common'' angles --- multiples of $\pi/6$ and $\pi/4$. \autoref{fig:polar4} gives a table of just a few values of $\theta$ in $[0,\pi]$. 
+A common question when sketching curves by plotting selected points is ``Which points should I plot?'' With rectangular equations, we often chose ``easy'' values --- integers, then added more if needed. When plotting polar equations, start with the ``common'' angles --- multiples of $\pi/6$ and $\pi/4$. \autoref{fig:polar4} gives a table of just a few values of $\theta$ in $[0,\pi]$. 
 
 Consider the point $(2,0)$ determined by the first line of the table. The angle is 0 radians --- we do not rotate from the initial ray -- then we go out 2 units from the pole. When $\theta=\pi/6$, $r = 1+\sqrt{3}/2$; so rotate by $\pi/6$ radians and go out $1+\sqrt{3}/2$ units.
 \end{example}
@@ -284,7 +285,26 @@ Sketch the polar function $r=\cos (2\theta)$ on $[0,2\pi]$ by plotting points.
 \solution
 We start by making a table of $\cos (2\theta)$ evaluated at common angles $\theta$, as shown in \autoref{fig:polar5table}. These points are then plotted in \autoref{fig:polar5}. This particular graph ``moves'' around quite a bit and one can easily forget which points should be connected to each other. To help us with this, we numbered each point in the table and on the graph. 
 
-\mtable[2in]{Polar plots from \autoref{ex_polar5}.}{fig:polar5}{%
+{\centering
+\captionsetup{type=figure}%
+$\begin{array}{ccl @{\hspace{4em}} ccl}\toprule
+\text{Pt.} & \theta & \cos (2\theta) & \text{Pt.} & \theta & \cos (2\theta) \\
+ \cmidrule(r{4em}){1-3}\cmidrule(l{-1em}){4-6}
+ 1 & 0 & \phantom{-}1 & 10 & 7 \pi /6 & \phantom{-}0.5 \\
+ 2 & \pi /6 & \phantom{-}0.5 & 11 & 5 \pi /4 & \phantom{-}0 \\
+ 3 & \pi /4 & \phantom{-}0 & 12 & 4 \pi /3 & -0.5 \\
+ 4 & \pi /3 & -0.5 & 13 & 3 \pi /2 & -1 \\
+ 5 & \pi /2 & -1 & 14 & 5 \pi /3 & -0.5 \\
+ 6 & 2 \pi /3 & -0.5 & 15 & 7 \pi /4 & \phantom{-}0 \\
+ 7 & 3 \pi /4 & \phantom{-}0 & 16 & 11 \pi /6 & \phantom{-}0.5 \\
+ 8 & 5 \pi /6 & \phantom{-}0.5 & 17 & 2 \pi & \phantom{-}1 \\
+ 9 & \pi  & \phantom{-}1 \\\bottomrule
+\end{array}$
+\caption{Tables of points for plotting a polar curve.}
+\label{fig:polar5table}
+}% end centering
+
+\mtable[-2in]{Polar plots from \autoref{ex_polar5}.}{fig:polar5}{%
  \begin{tikzpicture}[scale=1]
   \draw [dashed,gray] (-2.1,0) -- (0,0);
   \draw[thick,->,>=latex] (0,0) node [below] {} -- (2.5,0) ;
@@ -304,25 +324,6 @@ We start by making a table of $\cos (2\theta)$ evaluated at common angles $\thet
   \draw [thick,draw={\colorone},domain=0:360,samples=60,smooth]
    plot ({\x}:{2*cos(2*\x)});
 \end{tikzpicture}}
-
-{\centering
-\captionsetup{type=figure}%
-$\begin{array}{ccl @{\hspace{4em}} ccl}\toprule
-\text{Pt.} & \theta & \cos (2\theta) & \text{Pt.} & \theta & \cos (2\theta) \\
- \cmidrule(r{4em}){1-3}\cmidrule(l{-1em}){4-6}
- 1 & 0 & \phantom{-}1 & 10 & 7 \pi /6 & \phantom{-}0.5 \\
- 2 & \pi /6 & \phantom{-}0.5 & 11 & 5 \pi /4 & \phantom{-}0 \\
- 3 & \pi /4 & \phantom{-}0 & 12 & 4 \pi /3 & -0.5 \\
- 4 & \pi /3 & -0.5 & 13 & 3 \pi /2 & -1 \\
- 5 & \pi /2 & -1 & 14 & 5 \pi /3 & -0.5 \\
- 6 & 2 \pi /3 & -0.5 & 15 & 7 \pi /4 & \phantom{-}0 \\
- 7 & 3 \pi /4 & \phantom{-}0 & 16 & 11 \pi /6 & \phantom{-}0.5 \\
- 8 & 5 \pi /6 & \phantom{-}0.5 & 17 & 2 \pi & \phantom{-}1 \\
- 9 & \pi  & \phantom{-}1 \\\bottomrule
-\end{array}$
-\caption{Tables of points for plotting a polar curve.}
-\label{fig:polar5table}
-}% end centering
 
 %Using more points (and the aid of technology) a smoother plot can be made as shown in \autoref{fig:polar5} (b).
 This plot is an example of a \emph{rose curve}.
@@ -409,6 +410,8 @@ $x^4+y^4+2x^2y^2-2xy^2-2x^3-y^2=0.$ The conversion is not ``hard,'' but takes se
 There are a number of basic and ``classic'' polar curves, famous for their beauty and/or applicability to the sciences. \index{polar!function!gallery of graphs} This section ends with a small gallery of some of these graphs. We encourage the reader to understand how these graphs are formed, and to investigate with technology other types of polar functions.
 
 \newlength{\gallerywidth}
+%\setlength{\gallerywidth}{.25\textwidth}
+% no.  the textwidth doesn't change until \exercisegeometry in 50 lines
 \setlength{\gallerywidth}{(0pt+\marginparwidth+\textwidth)/4}
 
 \noindent
@@ -460,6 +463,7 @@ $r=a\sec\theta$ & $\ds r=\frac{b}{\sin\theta-m\cos\theta}$ \medskip\\
 
 \thispagestyle{empty}
 %
+\noindent\flushinner{%
 \begin{tabular}{p{\gallerywidth}p{\gallerywidth}p{\gallerywidth}p{\gallerywidth}}
 %
 \textbf{\large Circles} &&& \textbf{\large Spiral} \\
@@ -605,11 +609,9 @@ $r^2=a^2\cos (2\theta)$ & $r^2=a^2\sec^4\theta\cos (2\theta)$ \medskip\\
 	  {-sin(\x)*1.9*sec(\x)*sec(\x)*sqrt(cos(2*\x))});
 \end{tikzpicture}
 %
-\end{tabular}
+\end{tabular}}
 
 \restoregeometry
-
-\clearpage
 
 Earlier we discussed how each point in the plane does not have a unique representation in polar form. This can be a ``good'' thing, as it allows for the beautiful and interesting curves seen in the preceding gallery. However, it can also be a ``bad'' thing, as it can be difficult to determine where two curves intersect.
 

@@ -20,20 +20,21 @@ We use this definition to find the \textbf{force} exerted on a horizontal sheet 
 
 % todo Tim should this be redone? or not, because Larry Green isn't on Youtube?
 % this doesn't work for latexml.  it needs an updated flash
-\ifthenelse{\boolean{latexml}}{%
+\ifbool{latexml}{%
  Watch the video:\\
  Fluid Force on a Vertical Plane at\\
  \url{http://www.ltcconline.net/greenl/courses/106/videos/fluidSemiCircle/fluidSemiCircle1.htm}
 
- \iframe{http://www.ltcconline.net/greenl/courses/106/videos/fluidSemiCircle/fluidSemiCircle1.htm}{640}{582}
+\iframe{http://www.ltcconline.net/greenl/courses/106/videos/fluidSemiCircle/fluidSemiCircle1.htm}{640}{582}
 }{%
  \exvideo{%
-  \begin{minipage}[t]{2cm}%
+  \begin{minipage}[t]{.18\linewidth}%
    \vspace{-.5\baselineskip}%
-\qrcode{http://www.ltcconline.net/greenl/courses/106/videos/fluidSemiCircle/fluidSemiCircle1.htm}%
+\qrcode{http://www.ltcconline.net/greenl/courses/106/videos/fluidSemiCircle/fluidSemiCircle1.htm}
   \end{minipage}
   \quad
-  \begin{minipage}[t]{.74\linewidth}%
+  \begin{minipage}[t]{.64\linewidth}%
+   \RaggedRight%
    Watch the video:\\
    Fluid Force on a Vertical Plane at\\
    \url{http://www.ltcconline.net/greenl/courses/106/videos/fluidSemiCircle/fluidSemiCircle1.htm}
@@ -43,9 +44,9 @@ We use this definition to find the \textbf{force} exerted on a horizontal sheet 
 
 \mtable[-.5in]{A cylindrical tank in \autoref{ex_fluid1}.}{fig:fluid1a}{\begin{tikzpicture}[x=.3cm,y=.3cm,>=stealth]
 \begin{scope}[xscale=2]
- \ifthenelse{\boolean{latexml}}{\draw[thick,fill=\coloronefill!60]}{\draw[thick,left color={\coloronefill},right color={\coloronefill!20}]}
+ \ifbool{latexml}{\draw[thick,fill=\coloronefill!60]}{\draw[thick,left color={\coloronefill},right color={\coloronefill!20}]}
  (-2,10) -- (-2,0) arc (180:360:2) -- (2,10);
- \ifthenelse{\boolean{latexml}}{\draw[thick,fill=\coloronefill!65]}{\draw[thick,left color={\coloronefill!30},right color={\coloronefill}]}
+ \ifbool{latexml}{\draw[thick,fill=\coloronefill!65]}{\draw[thick,left color={\coloronefill!30},right color={\coloronefill}]}
  (0,10)circle(2);
 \draw [thick] (0,12) circle (2);
 \draw [thick](-2,12)--(-2,10) (2,12)--(2,10);
@@ -60,7 +61,7 @@ We use this definition to find the \textbf{force} exerted on a horizontal sheet 
 % todo Tim convert the cylindrical tank into a 3d image?
 
 \begin{example}[Computing fluid force]\label{ex_fluid1}
-\mbox{}\\[-2\baselineskip]
+\mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{%
 \begin{enumerate}
 	\item	A cylindrical storage tank has a radius of 2 ft and holds 10 ft of a fluid with a weight-density of 50 lb/ft$^3$. (See \autoref{fig:fluid1a}.) What is the force exerted on the base of the cylinder by the fluid?
 	\item	A rectangular tank whose base is a 5 ft square has a circular hatch at the bottom with a radius of 2 ft. The tank holds 10 ft of a fluid with a weight-density of 50 lb/ft$^3$. (See \autoref{fig:fluid1b}.) What is the force exerted on the hatch by the fluid?
@@ -91,10 +92,10 @@ We use this definition to find the \textbf{force} exerted on a horizontal sheet 
                   (-2.5,5) node (DD) {};
    \end{scope}
   \end{scope}
-  \ifthenelse{\boolean{latexml}}{\draw[thick,fill=\coloronefill!60]}{\draw[thick,left color={\coloronefill},right color={\coloronefill!20}]}
+  \ifbool{latexml}{\draw[thick,fill=\coloronefill!60]}{\draw[thick,left color={\coloronefill},right color={\coloronefill!20}]}
   (AAA.center) -- (A.center)-- node [pos=.5,rotate=-15,below] {\scriptsize 5 ft} (B.center)
    --node [pos=.5,rotate=45,below] {\scriptsize 5 ft}(C.center)--(CCC.center);
-  \ifthenelse{\boolean{latexml}}{\draw[thick,fill=\coloronefill!60]}{\draw[thick,right color={\coloronefill},left color={\coloronefill!20}]}
+  \ifbool{latexml}{\draw[thick,fill=\coloronefill!60]}{\draw[thick,right color={\coloronefill},left color={\coloronefill!20}]}
    (AAA.center) -- (BBB.center) -- (CCC.center)--(DDD.center) -- cycle;
   \draw [thick] (AA.center) -- (BB.center) -- (CC.center)--(DD.center) -- cycle
    (AA.center) -- (AAA.center)
@@ -114,7 +115,7 @@ We use this definition to find the \textbf{force} exerted on a horizontal sheet 
 \end{tikzpicture}}
 % todo Tim simplify this tikz? maybe convert it to 3d anyway?
 %
-\end{enumerate}
+\end{enumerate}}\vspace{0pt}
 \solution
 %
 \begin{enumerate}
@@ -132,7 +133,7 @@ The previous example demonstrates that computing the force exerted on a horizont
 
 Pascal's Principle states  that the pressure exerted by a fluid at a depth is equal in all directions. Thus the pressure on any portion of a plate that is 1 ft below the surface of water is the same no matter how the plate is oriented. (Thus a hollow cube submerged at a great depth will not simply be ``crushed'' from above, but the sides will also crumple in. The fluid will exert force on \emph{all} sides of the cube.)
 
-\mtable{A thin, vertically oriented plate submerged in a fluid with weight-density $w$.}{fig:fluid_intro1}{\begin{tikzpicture}[x=1.25cm,y=1.25cm,>=stealth]
+\mtable{A thin, vertically oriented plate submerged in a fluid with weight-density $w$.}{fig:fluid_intro1}{\begin{tikzpicture}[x=1cm,y=1cm,>=stealth]
  \begin{scope}
   \draw [thick] (0,0) -- (1,2) -- (2,2) -- (4,0)--cycle;
   \draw [draw={\colortwo},fill={\colortwofill},thick] (.5,.9) rectangle (3,1.1);

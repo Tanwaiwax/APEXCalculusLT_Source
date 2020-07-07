@@ -1,6 +1,6 @@
 \section{Introduction to Line Integrals}\label{sec:line_int_intro}
 
-\mtable[-8\baselineskip]{Finding area under a curve in space.}{fig:lineint0}{%
+\mtable[-3in]{Finding area under a curve in space.}{fig:lineint0}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.005003686994314194,
@@ -91,12 +91,12 @@ We restate this as a theorem, along with its three-dimensional analogue, followe
 
 \begin{theorem}[Evaluating a Line Integral Over A Scalar Field]\label{thm:line1}
 \index{line integral!over scalar field}%
-\mbox{}\\[-2\baselineskip]\begin{itemize}
+\mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{\begin{itemize}
 	\item Let $C$ be a curve parameterized by $\vrt =\bracket{g(t),h(t)}$, $a\leq t\leq b$, where $g$ and $h$ are continuously differentiable, and let $z=f(x,y)$, where $f$ is continuous over $C$. Then
 \[\int_Cf(s)\ ds = \int_a^bf\bigl(g(t),h(t)\bigr)\norm{\vec r\,'(t)}\ dt.\]
 	\item Let $C$ be a curve parameterized by $\vrt =\bracket{g(t),h(t),k(t)}$, $a\leq t\leq b$, where $g$, $h$ and $k$ are continuously differentiable, and let $w=f(x,y,z)$, where $f$ is continuous over $C$. Then
 \[\int_Cf(s)\ ds = \int_a^bf\bigl(g(t),h(t),k(t)\bigr)\norm{\vec r\,'(t)}\ dt.\]
-\end{itemize}
+\end{itemize}}
 \end{theorem}
 
 %\mnote{\textbf{Notation:} We often write $f\bigl(\vec r(t)\bigr)$ to represent $f\bigl(g(t),h(t)\bigr)$ or $f\bigl(g(t),h(t),k(t)\bigr)$. As the input of $f$ are points, it is an abuse of notation to use a vector, $\vec r(t)$, as $f$\,'s input. As this notation is concise and intuitive, this notational abuse is common practice and used extensively in subsequent sections.} Removed as already explained in 14.3
@@ -107,7 +107,13 @@ To be clear, the first point of \autoref{thm:line1} can be used to find the area
 
 Let's do an example where we actually compute an area.
 
-\mtable[-6\baselineskip]{Finding area under a curve in \autoref{ex_linescalarfield2}.}{fig:linescalarfield2}{%
+\begin{example}[Evaluating a line integral: area under a surface over a curve.]\label{ex_linescalarfield2}
+Find the area under the surface $f(x,y) =\cos(x)+\sin(y)+2$ over the curve $C$, which is the segment of the line $y=2x+1$ on $-1\leq x\leq 1$, as shown in \autoref{fig:linescalarfield2}.\\
+%
+\begin{minipage}{\linewidth}\centering\addtolength{\tabcolsep}{-1pt}
+\captionsetup{type=figure}
+\begin{tabular}{cc}
+%\mtable[-\baselineskip]{Finding area under a curve in \autoref{ex_linescalarfield2}.}{fig:linescalarfield2}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.004519370850175619,
@@ -115,7 +121,8 @@ Let's do an example where we actually compute an area.
 3Dcoo=36.11199951171875 39.69871139526367 85.62228393554688,
 3Droo=149.9999948024772,
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figlinescalarfield2_3D}
-\\(a)\\[10pt]
+&
+%\\(a)\\[10pt]
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.004519370850175619,
@@ -123,10 +130,13 @@ Let's do an example where we actually compute an area.
 3Dcoo=36.11199951171875 39.69871139526367 85.62228393554688,
 3Droo=149.9999948024772,
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figlinescalarfield2b_3D}
-\\(b)}
-
-\begin{example}[Evaluating a line integral: area under a surface over a curve.]\label{ex_linescalarfield2}
-Find the area under the surface $f(x,y) =\cos(x)+\sin(y)+2$ over the curve $C$, which is the segment of the line $y=2x+1$ on $-1\leq x\leq 1$, as shown in \autoref{fig:linescalarfield2}.
+%\\(b)}
+\\(a)&(b)
+\end{tabular}
+\caption{Finding area under a curve in \autoref{ex_linescalarfield2}.}
+\label{fig:linescalarfield2}
+\end{minipage}
+%
 \solution
 Our first step is to represent $C$ with a vector-valued function. Since $C$ is a simple line, and we have a explicit relationship between $y$ and $x$ (namely, that $y$ is $2x+1$), we can let $x = t$, $y = 2t+1$, and write $\vrt =\bracket{t,2t+1}$ for $-1\leq t\leq 1$. 
 
@@ -143,7 +153,10 @@ The area we seek is
 
 We will practice setting up and evaluating a line integral in another example, then find the area described at the beginning of this section.
 
-\mtable{Finding area under a curve in \autoref{ex_linescalarfield3}.}{fig:linescalarfield3}{%
+\begin{example}[Evaluating a line integral: area under a surface over a curve.]\label{ex_linescalarfield3}
+Find
+%
+\mtable[-\baselineskip]{Finding area under a curve in \autoref{ex_linescalarfield3}.}{fig:linescalarfield3}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.004519370850175619,
@@ -160,9 +173,8 @@ We will practice setting up and evaluating a line integral in another example, t
 3Droo=149.9999948024772,
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figlinescalarfield3b_3D}
 \\(b)}
-
-\begin{example}[Evaluating a line integral: area under a surface over a curve.]\label{ex_linescalarfield3}
-Find the area over the unit circle in the $x$-$y$ plane and under the surface $f(x,y) = x^2-y^2+3$, shown in \autoref{fig:linescalarfield3}.
+%
+the area over the unit circle in the $x$-$y$ plane and under the surface $f(x,y) = x^2-y^2+3$, shown in \autoref{fig:linescalarfield3}.
 \solution
 The curve $C$ is the unit circle, which we will describe with the parameterization $\vrt =\bracket{\cos t,\sin t}$ for $0\leq t\leq 2\pi$. We find $\norm{\vrp(t)} = 1$, so $ds = 1 dt$.  
 
@@ -193,7 +205,10 @@ Replacing $x$ and $y$ with their respective functions of $t$, we have $f(x,y) = 
 
 We give one more example of finding area.
 
-\mtable{Finding area under a curve in \autoref{ex_linescalarfield4}.}{fig:linescalarfield4}{%
+\begin{example}[Evaluating a line integral: area under a curve in space.]\label{ex_linescalarfield4}
+Find
+%
+\mtable[-\baselineskip]{Finding area under a curve in \autoref{ex_linescalarfield4}.}{fig:linescalarfield4}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.004994507879018784,
@@ -201,9 +216,8 @@ We give one more example of finding area.
 3Dcoo=1.7807315587997437 0.9528753757476807 54.982017517089844,
 3Droo=141.8977232410902,
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figlinescalarfield4_3D}}
-
-\begin{example}[Evaluating a line integral: area under a curve in space.]\label{ex_linescalarfield4}
-Find the area above the $x$-$y$ plane and below the helix parameterized by $\vrt =\bracket{\cos t,2\sin t,t/\pi}$, for $0\leq t\leq 2\pi$, as shown in \autoref{fig:linescalarfield4}.
+%
+the area above the $x$-$y$ plane and below the helix parameterized by $\vrt =\bracket{\cos t,2\sin t,t/\pi}$, for $0\leq t\leq 2\pi$, as shown in \autoref{fig:linescalarfield4}.
 \solution
 Note how this is problem is different than the previous examples: here, the height is not given by a surface, but by the curve itself. 
 
@@ -220,11 +234,6 @@ where the approximation was obtained using numerical methods.
 Note how in each of the previous examples we are effectively finding ``area under a curve'', just as we did when first learning of integration. We have used the phrase ``area \emph{over} a curve $C$ and under a surface,'' but that is because of the important role $C$ plays in the integral. The figures show how the curve $C$ defines another curve on the surface $z=f(x,y)$, and we are finding the area under that curve.
 
 \subsection{Properties of Line Integrals}
-
-Many properties of line integrals can be inferred from general integration properties. For instance, if $k$ is a scalar, then $\int_C k\,f(s)ds = k\int_Cf(s)ds$.
-
-One property in particular of line integrals is worth noting. If $C$ is a curve composed of subcurves $C_1$ and $C_2$, where they share only one point in common (see \autoref{fig:line_int_prop}(a)), then the line integral over $C$ is the sum of the line integrals over $C_1$ and $C_2$: 
-\[\int_Cf(s)\ ds = \int_{C_1}f(s)\ ds+\int_{C_2}f(s)\ ds.\]
 
 \mtable{Illustrating properties of line integrals.}{fig:line_int_prop}{%
 \begin{tikzpicture}
@@ -270,6 +279,11 @@ ymin=-1.1,ymax=1.1,xmin=-1.1,xmax=1.1]
 \end{tikzpicture}
 \\(b)}
 
+Many properties of line integrals can be inferred from general integration properties. For instance, if $k$ is a scalar, then $\int_C k\,f(s)ds = k\int_Cf(s)ds$.
+
+One property in particular of line integrals is worth noting. If $C$ is a curve composed of subcurves $C_1$ and $C_2$, where they share only one point in common (see \autoref{fig:line_int_prop}(a)), then the line integral over $C$ is the sum of the line integrals over $C_1$ and $C_2$: 
+\[\int_Cf(s)\ ds = \int_{C_1}f(s)\ ds+\int_{C_2}f(s)\ ds.\]
+
 This property allows us to evaluate line integrals over some curves $C$ that are not smooth. Note how in \autoref{fig:line_int_prop}(b) the curve is not smooth at $D$, so by our definition of the line integral we cannot evaluate $\int_C f(s)ds$. However, one can evaluate line integrals over $C_1$ and $C_2$ and their sum will be the desired quantity.
 
 A curve $C$ that is composed of two or more smooth curves is said to be \textbf{piecewise smooth}. In this chapter, any statement that is made about smooth curves also holds for piecewise smooth curves.\index{smooth curve!piecewise}\index{piecewise smooth curve}
@@ -280,12 +294,12 @@ We state these properties as a theorem.
 
 \begin{theorem}[Properties of Line Integrals Over Scalar Fields]\label{thm:line_int_properties_scalar}
 \index{line integral!properties over a scalar field}%
-\mbox{}\\[-2\baselineskip]\begin{enumerate}
+\mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{\begin{enumerate}
 	\item	Let $C$ be a smooth curve parameterized by the arc-length parameter $s$, let $f$ and $g$ be continuous functions of $s$, and let $k_1$ and $k_2$ be scalars. Then
 \[\ds \int_C\bigl(k_1f(s)+k_2g(s)\bigr)\ ds = k_1\int_Cf(s)\ ds +k_2\int_Cg(s)\ ds.\]
 	\item Let $C$ be piecewise smooth, composed of smooth components $C_1$ and $C_2$. Then
 \[\int_Cf(s)\ ds = \int_{C_1}f(s)\ ds + \int_{C_2}f(s)\ ds.\]
-\end{enumerate}
+\end{enumerate}}
 \end{theorem}
 
 \subsection{Mass and Center of Mass}
@@ -343,13 +357,14 @@ Thus the mass is
 M = \oint_C \delta(s)\ ds = \int_0^{2\pi} \bigl(2+\sin t+\sin(2t)\bigr)\sqrt{1+4\cos^2(2t)}\ dt
 \approx 21.08\text{gm}.
 \]
-We compute the moments about the coordinate planes:\small
+We compute the moments about the coordinate planes:
+{\small
 \begin{align*}
-M_{yz} &= \oint_C x\delta(s)\ ds = \int_0^{2\pi}(1+\cos t)\bigl(2+\sin t+\sin(2t)\bigr)\sqrt{1+4\cos^2(2t)}\ dt \approx 21.08. \\
-M_{xz} &= \oint_C y\delta(s)\ ds = \int_0^{2\pi}(1+\sin t)\bigl(2+\sin t+\sin(2t)\bigr)\sqrt{1+4\cos^2(2t)}\ dt \approx
+M_{yz} &= \oint_C x\delta(s)\ ds = \int_0^{2\pi}\!\!(1+\cos t)\bigl(2+\sin t+\sin(2t)\bigr)\sqrt{1+4\cos^2(2t)}\ dt \approx 21.08. \\
+M_{xz} &= \oint_C y\delta(s)\ ds = \int_0^{2\pi}\!\!(1+\sin t)\bigl(2+\sin t+\sin(2t)\bigr)\sqrt{1+4\cos^2(2t)}\ dt \approx
 26.35\\
-M_{xy} &= \oint_C z\delta(s)\ ds = \int_0^{2\pi}\bigl(1+\sin(2 t)\bigr)\bigl(2+\sin t+\sin(2t)\bigr)\sqrt{1+4\cos^2(2t)}\ dt \approx 25.40
-\end{align*}\normalsize
+M_{xy} &= \oint_C z\delta(s)\ ds = \int_0^{2\pi}\!\!\bigl(1+\sin(2 t)\bigr)\bigl(2+\sin t+\sin(2t)\bigr)\sqrt{1+4\cos^2(2t)}\ dt \approx 25.40
+\end{align*}}
 Thus the center of mass of the wire is located at 
 \[
 (\overline{x},\overline{y},\overline{z})

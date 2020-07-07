@@ -276,15 +276,15 @@ The sum of the areas of all 5 trapezoids is:
 We approximate $\ds \int_0^1 e^{-x^2}\ dx \approx 0.7445$.
 \end{example}
 
-There are many things to observe in this example. Note how each term in the final summation was multiplied by both 1/2 and by $\Delta x = 0.2$. We can factor these coefficients out, leaving a more concise summation as:\\
-\flushinnerequ{\small
-\[
-\frac12(0.2)\Bigl[(1+0.961) + (0.961+0.852) + (0.852+0.698) + ( 0.698+ 0.527) +(0.527 + 0.368)\Bigr].
-\]}\\
+There are many things to observe in this example. Note how each term in the final summation was multiplied by both 1/2 and by $\Delta x = 0.2$. We can factor these coefficients out, leaving a more concise summation as:
+\begin{multline*}
+\frac12(0.2)\Bigl[(1+0.961) + (0.961+0.852) +\\
+ (0.852+0.698) + ( 0.698+ 0.527) +(0.527 + 0.368)\Bigr].
+\end{multline*}
 Now notice that all numbers except for the first and the last are added twice. Therefore we can write the summation even more concisely as
 \[\frac{0.2}{2}\Bigl[1 + 2(0.961+0.852+0.698+0.527) + 0.368\Bigr].\]
 
-This is the heart of the \textbf{Trapezoidal Rule}, wherein a definite integral $\ds \int_a^b f(x) \ dx$ is approximated by using trapezoids of equal widths to approximate the corresponding area under $f$. Using $n$ equally spaced subintervals with endpoints $x_0$, $x_1$, \dots, $x_n$, we again have $\ds \Delta x = \frac{b-a}n$. Thus:
+This is the heart of the \textbf{Trapezoidal Rule}, where a definite integral $\ds \int_a^b f(x) \ dx$ is approximated by using trapezoids of equal widths to approximate the corresponding area under $f$. Using $n$ equally spaced subintervals with endpoints $x_0$, $x_1$, \dots, $x_n$, we again have $\ds \Delta x = \frac{b-a}n$. Thus:
 \begin{align*}
 	\int_a^b f(x)\ dx
 	& \approx \sum_{i=1}^n \frac{f(x_{i-1})+f(x_i)}2\Delta x \\
@@ -354,9 +354,6 @@ Note how the coefficients of the terms in the summation have the pattern 1, 4, 2
 
 Let's demonstrate Simpson's Rule with a concrete example.
 
-\begin{example}[Using Simpson's Rule]\label{ex_num5}
-Approximate $\ds\int_0^1 e^{-x^2}\ dx$ using Simpson's Rule and 4 equally spaced subintervals.
-%
 \mtable{A table of values to approximate $\int_0^1e^{-x^2}\ dx$ in \autoref{ex_num5}, along with a graph of the function.}{fig:num5a}{%
 \begin{tabular}{ll}\lxBeginTableHead
 $x_i$ & $e^{-x_i^2}$ \\\lxEndTableHead\midrule
@@ -388,7 +385,9 @@ ymin=-.2,ymax=1.2,xmin=-.2,xmax=1.1]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}
 \\ (b)}
-%
+
+\begin{example}[Using Simpson's Rule]\label{ex_num5}
+Approximate $\ds\int_0^1 e^{-x^2}\ dx$ using Simpson's Rule and 4 equally spaced subintervals.
 \solution
 We begin by making a table of values as we have in the past, as shown in \autoref{fig:num5a}(a). Simpson's Rule states that
 \[
@@ -402,12 +401,7 @@ Recall in \autoref{ex_num1} we stated that the correct answer, accurate to 4 pla
 \autoref{fig:num5a}(b) shows $f(x) = e^{-x^2}$ along with its approximating parabolas, demonstrating how good our approximation is. The approximating curves are nearly indistinguishable from the actual function.
 \end{example}
 
-\begin{example}[Using Simpson's Rule]\label{ex_num6}
-Approximate $\ds\int_{-\frac{\pi}4}^{\frac{\pi}2} \sin (x^3)\ dx$ using Simpson's Rule and 10 equally spaced intervals.
-\solution
-\autoref{fig:num6a}(a) shows the table of values that we used in the past for this problem, shown here again for convenience. Again, $\Delta x = (\pi/2+\pi/4)/10 \approx 0.236$.
-
-\mtable{A table of values to approximate $\int_{-\frac{\pi}4}^{\frac{\pi}2}\sin(x^3)\ dx$ in \autoref{ex_num6}, along with a graph of the function.}{fig:num6a}{%
+\mtable[3\baselineskip]{A table of values to approximate $\int_{-\frac{\pi}4}^{\frac{\pi}2}\sin(x^3)\ dx$ in \autoref{ex_num6}, along with a graph of the function.}{fig:num6a}{%
 \begin{tabular}{ll}\lxBeginTableHead
   $x_i$ & $\sin(x_i^3)$ \\\lxEndTableHead\midrule
   $-0.785$ & $-0.466$ \\
@@ -457,15 +451,20 @@ ymin=-.7,ymax=1.2,xmin=-1,xmax=1.7]
 \end{tikzpicture}
 \\ (b)}%
 
+\begin{example}[Using Simpson's Rule]\label{ex_num6}
+Approximate $\ds\int_{-\frac{\pi}4}^{\frac{\pi}2} \sin (x^3)\ dx$ using Simpson's Rule and 10 equally spaced intervals.
+\solution
+\autoref{fig:num6a}(a) shows the table of values that we used in the past for this problem, shown here again for convenience. Again, $\Delta x = (\pi/2+\pi/4)/10 \approx 0.236$.
+
 Simpson's Rule states that
 {\small\begin{align*}
 	\int_{-\frac{\pi}4}^{\frac{\pi}2} \sin (x^3)\ dx
 	&\approx \frac{0.236}3\Bigl[(-0.466)+4(-0.165)+2(-0.031) + \dotsb \\
-	&\qquad\qquad \dotsb + 2(0.971) + 4(0.69) + (-0.67)\Bigr]\\
+	&\qquad\qquad\qquad \dotsb + 2(0.971) + 4(0.69) + (-0.67)\Bigr]\\
 	&= 0.4701
 \end{align*}}
 
-Recall that the actual value, accurate to 3 decimal places, is 0.460. Our approximation is within one 1/100$^\text{th}$ of the correct value. The graph in \autoref{fig:num6a}(b) shows how closely the parabolas match the shape of the graph.
+Recall that the actual value, accurate to 3 decimal places, is 0.460. Our approximation is within $0.01$ of the correct value. The graph in \autoref{fig:num6a}(b) shows how closely the parabolas match the shape of the graph.
 \end{example}
 
 %\noindent\begin{minipage}[t]{\linewidth}\noindent%
@@ -480,23 +479,23 @@ Recall that the actual value, accurate to 3 decimal places, is 0.460. Our approx
 We summarize the key concepts of this section thus far in the following Key Idea.
 
 {
-\tcbset{grow to right by=140pt}
+\tcbset{grow to right by=14em}
 \begin{keyidea}[Numerical Integration]\label{idea:numerical}
 Let $f$ be a continuous function on $[a,b]$, let $n$ be a positive integer, and let $\ds\Delta x = \frac{b-a}{n}$.
 Set $x_0=a$, $x_1=a+\Delta x$, \dots, $x_i = a+i\Delta x$, $x_n=b$.
 Consider $\ds\int_a^b f(x)\ dx$.\\
-\index{integration!numerical!Left Hand Rule}
-\index{integration!numerical!Right Hand Rule}
-\index{integration!numerical!Midpoint Rule}
-\index{integration!numerical!Trapezoidal Rule}
-\index{integration!numerical!Simpson's Rule}
-\index{Left/Right Hand Rule}\index{Midpoint Rule}
-\index{Trapezoidal Rule}\index{Simpson's Rule}
-\index{numerical integration!Left Hand Rule}
-\index{numerical integration!Right Hand Rule}
-\index{numerical integration!Midpoint Rule}
-\index{numerical integration!Trapezoidal Rule}
-\index{numerical integration!Simpson's Rule}
+\index{integration!numerical!Left Hand Rule}%
+\index{integration!numerical!Right Hand Rule}%
+\index{integration!numerical!Midpoint Rule}%
+\index{integration!numerical!Trapezoidal Rule}%
+\index{integration!numerical!Simpson's Rule}%
+\index{Left/Right Hand Rule}\index{Midpoint Rule}%
+\index{Trapezoidal Rule}\index{Simpson's Rule}%
+\index{numerical integration!Left Hand Rule}%
+\index{numerical integration!Right Hand Rule}%
+\index{numerical integration!Midpoint Rule}%
+\index{numerical integration!Trapezoidal Rule}%
+\index{numerical integration!Simpson's Rule}%
 \begin{tabular}{ll}
 Left Hand Rule: &
 $\ds\int_a^b f(x)\ dx \approx \Delta x\Bigl[f(x_0) + f(x_1) + \dotsb + f(x_{n-1})\Bigr]$.\\

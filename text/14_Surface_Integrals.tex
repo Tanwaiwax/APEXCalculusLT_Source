@@ -8,7 +8,7 @@ What if the density were not constant, but variable, described by a function $\d
 \[\text{mass} = \iint_\surfaceS \ dm,\]
 where $dm$ represents ``a little bit of mass.'' That is, to find the total mass of the object, sum up lots of little masses over the surface.
 
-How do we find the ``little bit of mass'' $dm$? On a small portion of the surface with surface area $\Delta S$, the density is approximately constant, hence $dm \approx \delta(x,y,z)\Delta S$. As we use limits to shrink the size of $\Delta S$ to 0, we get $dm = \delta(x,y,z)dS$; that is, a little bit of mass is equal to a density times a small amount of surface area. Thus the total mass of the thin sheet is
+How do we find the ``little bit of mass'' $dm$? On a small portion of the surface with surface area $\Delta S$, the density is approximately constant, hence $dm \approx \delta(x,y,z)\Delta S$. As we use limits to shrink the size of $\Delta S$ to 0, we see that $dm = \delta(x,y,z)dS$; that is, a little bit of mass is equal to a density times a small amount of surface area. Thus the total mass of the thin sheet is
 \begin{equation}
 \text{mass} =\iint_\surfaceS \delta(x,y,z)\ dS.\label{eq:surface_int}
 \end{equation}
@@ -28,13 +28,13 @@ Surface integrals can be used to measure a variety of quantities beyond mass. If
 \youtubeVideo{pAWLCFYsrVs}{Ex: Evaluate a Surface Integral (Parametric Surface --- Helicoid)}
 
 \mtable{The surface whose mass is computed in \autoref{ex_surfint1}.}{fig:surfint1}{%
-\myincludeasythree{width=1.16\marginparwidth,
+\myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.004853160586208105,
 3Dc2c=0.7228285670280457 0.5212869644165039 0.45362839102745056,
 3Dcoo=-2.5405526161193848 7.828289031982422 42.677555084228516,
 3Droo=399.9999621232421,
-3Dlights=Headlamp}{width=1.16\marginparwidth}{figures/figsurfint1_3D}}
+3Dlights=Headlamp}{width=\marginparwidth}{figures/figsurfint1_3D}}
 
 \begin{example}[Finding the mass of a thin sheet]\label{ex_surfint1}
 Find the mass of a thin sheet modeled by the plane $2x+y+z=3$ over the triangular region of the $x$-$y$ plane bounded by the coordinate axes and the line $y=2-2x$, as shown in \autoref{fig:surfint1}, with density function $\delta(x,y,z) = x^2+5y+z$, where all distances are measured in cm and the density is given as gm/cm$^2$.
@@ -114,9 +114,9 @@ We demonstrate the computation of flux, and its interpretation, in the following
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figsurfflux1_3D}}
 
 \begin{example}[Finding flux across a surface]\label{ex_surfflux1}
-Let \surfaceS\ be the surface given in \autoref{ex_surfint1}, where \surfaceS\ is parameterized by $\vec r(u,v) =\bracket{u, v(2-2u),3-2u-v(2-2u)}$ on $0\leq u\leq 1$, $0\leq v\leq 1$, and let $\vec F =\bracket{1, x,-y}$, as shown in \autoref{fig:surfflux1}. Find the flux of $\vec F$ across \surfaceS.
+Let \surfaceS\ be the surface from \autoref{ex_surfint1}, which we parameterize by $\vec r(u,v) =\bracket{u, v(2-2u),3-2u-v(2-2u)}$ on $0\leq u\leq 1$, $0\leq v\leq 1$, and let $\vec F =\bracket{1, x,-y}$, as shown in \autoref{fig:surfflux1}. Find the flux of $\vec F$ across \surfaceS.
 \solution
-Using our work from the previous example, we have $\vec n = \vec r_u\times\vec r_v =\bracket{4-4u,2-2u,2-2u}$. We also need $\vec F\bigl(\vec r(u,v)\bigr) =\bracket{1, u, -v(2-2u)}$. 
+Using our work from the previous example, we have $\vec n = \vec r_u\times\vec r_v =\bracket{4-4u,2-2u,2-2u}$. Also, $\vec F\bigl(\vec r(u,v)\bigr) =\bracket{1, u, -v(2-2u)}$. 
 
 Thus the flux of $\vec F$ across \surfaceS\ is:
 \begin{align*}
@@ -226,31 +226,30 @@ In the previous example, the surfaces $\surfaceS_1$ and $\surfaceS_2$ form a clo
 In this chapter, we've introduced four new types of integrals, which we gather in \autoref{integral_types}.
 
 {
-\tcbset{grow to right by=80pt}
+\tcbset{grow to right by=16em}
 \begin{keyidea}[Integrating Parameterized Curves and Surfaces]\label{integral_types}
-\renewcommand{\arraystretch}{1.4}
- \begin{tabular}{|l|p{.32\linewidth}|p{.43\linewidth}|}\hline
+\renewcommand{\arraystretch}{2}
+\setlength{\tabcolsep}{1.5em}
+ \begin{tabular}{lp{13em}p{17em}}\toprule
   & $\vec c:\mathbb{R}\to\mathbb{R}^3$\par parameterizes a curve $C$
-  & $\vec r:\mathbb{R}^2\to\mathbb{R}^3$\par parameterizes a surface $\surfaceS$ \\\hline
+  & $\vec r:\mathbb{R}^2\to\mathbb{R}^3$\par parameterizes a surface $\surfaceS$ \\\cmidrule(lr){2-2}\cmidrule(lr){3-3}
   $f:\mathbb{R}^3\to\mathbb{R}$
   & scalar line integral:\par
-  $\int_{\vec c(D)} f ds$\par
-  \qquad$=\int_D f(\vec c(t))\norm{\vec c\,'(t)}dt$
+  $\ds\int_{\vec c(D)} f ds=\int_D f(\vec c(t))\norm{\vec c\,'(t)}dt$
   & scalar surface integral:\par
-  $\iint_{\vec r(D)} f\ dS$\par
-  \qquad$=\iint_D f(\vec r(u,v))\norm{\vec r_u\times\vec r_v}dA$
-  \\\hline
+  $\ds\iint_{\vec r(D)} f\ dS=\iint_D f(\vec r(u,v))\norm{\vec r_u\times\vec r_v}dA$
+  \\
   $\vec F:\mathbb{R}^3\to\mathbb{R}^3$
   & vector line integral:\par
-  $\int_{\vec c(D)}\vec F\cdot d\vec r$\par
-  \qquad$=\int_D\vec F(\vec c(t))\cdot\vec c\,'(t)dt$
+  $\ds\int_{\vec c(D)}\vec F\cdot d\vec r=\int_D\vec F(\vec c(t))\cdot\vec c\,'(t)dt$
   & vector surface integral:\par
-  $\iint_{\vec r(D)}\vec F\cdot\vec n\ dS$\par
-  \qquad$=\iint_D\vec F(\vec r(u,v))\cdot(\vec r_u\times\vec r_v)dA$
-  \\\hline
+  $\ds\iint_{\vec r(D)}\vec F\cdot\vec n\ dS
+  =\iint_D\vec F(\vec r(u,v))\cdot(\vec r_u\times\vec r_v)dA$
+%  \\\bottomrule
  \end{tabular}
 \end{keyidea}
 }
+
 %If we are in the bottom left entry, where $\vec c:\mathbb{R}\to\mathbb{R}^3$ and $\vec F:\mathbb{R}^3\to\mathbb{R}^3$, we may be able to use the Fundamental Theorem for Gradient Vector Fields: $\int_C\nabla\phi\cdot d\vec s=\phi(Q)-\phi(P)$.
 
 \printexercises{exercises/14_06_exercises}

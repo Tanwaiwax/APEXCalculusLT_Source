@@ -251,61 +251,45 @@ Let the numbers $\{a_i\}$ be defined as $a_i = 2i-1$ for integers $i$, where $i\
 \[ 1.\ \sum_{i=1}^6 a_i \qquad\qquad\qquad 2.\ \sum_{i=3}^7 (3a_i-4)\qquad\qquad \qquad 3.\ \sum_{i=1}^4 (a_i)^2\]
 \solution
 \begin{enumerate}
-	\item	\mbox{}\\[-2\baselineskip]
-		\begin{align*}
+	\item \hfill$\begin{aligned}[t]
 			\sum_{i=1}^6 a_i &= a_1+a_2+a_3+a_4+a_5+a_6\\
 			&=	1+3+5+7+9+11 \\
 			&=	36.
-		\end{align*}
+		\end{aligned}$\hfill\null
 	\item	Note the starting value is different than 1:
 		\begin{align*}
-			\sum_{i=3}^7 (3a_i-4) &= (3a_3-4)+(3a_4-4)+(3a_5-4)+(3a_6-4)+(3a_7-4) \\
+			\sum_{i=3}^7 &(3a_i-4)\\
+			&= (3a_3-4)+(3a_4-4)+(3a_5-4)+(3a_6-4)+(3a_7-4) \\
 			&= 11+17+23+29+35 \\
 			&= 115.
 		\end{align*}
-	\item	\mbox{}\\[-2\baselineskip]
-		\begin{align*}
+	\item \hfill$\begin{aligned}[t]
 			\sum_{i=1}^4 (a_i)^2 &=	(a_1)^2+(a_2)^2+(a_3)^2+(a_4)^2\\
 			&=	1^2+3^2+5^2+7^2 \\
 			&=	84
-		\end{align*}
+		\end{aligned}$\hfill\null
 \end{enumerate}
 \end{example}
 
 It might seem odd to stress a new, concise way of writing summations only to write each term out as we add them up. It is. The following theorem gives some of the properties of summations that allow us to work with them without writing individual terms. Examples will follow.
 
 {
-\tcbset{grow to right by=75pt}
+\tcbset{grow to right by=7.5em}
 \begin{theorem}[Properties of Summations]\label{thm:summation}
+\mbox{}\\[-\baselineskip]\parbox[t]{\linewidth}{%
 \begin{multicols}{2}
-%~\\[-\baselineskip]\noindent\begin{minipage}[t]{200pt}
 \index{summation!properties}
-%\iflatexml
 \begin{enumerate}
-%\lxAddClass{twoColumnList}\else\begin{enumerate}[series=summationprop]\fi
 	\item	$\ds \sum_{i=1}^n c = c\cdot n$, where $c$ is a constant.
 	\item	$\ds \sum_{i=m}^n (a_i\pm b_i) = \sum_{i=m}^n a_i \pm \sum_{i=m}^n b_i$
 	\item	$\ds \sum_{i=m}^n c\cdot a_i = c\cdot\sum_{i=m}^n a_i$
 	\item	$\ds \sum_{i=m}^j a_i + \sum_{i=j+1}^n  a_i = \sum_{i=m}^n a_i$
-%%	\item	$\ds \sum_{i=1}^n i = \frac{n(n+1)}2$
-%%	\item	$\ds \sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}6$
-%%	\item	$\ds \sum_{i=1}^n i^3 = \left(\frac{n(n+1)}2\right)^2$
-%\iflatexml\else
-%\end{enumerate}
-%\end{minipage}%
-%\begin{minipage}[t]{150pt}
-%\begin{enumerate}[resume=summationprop]
-%\fi
-%%	\item	$\ds \sum_{i=1}^n c = c\cdot n$, where $c$ is a constant.
-%%	\item	$\ds \sum_{i=m}^n (a_i\pm b_i) = \sum_{i=m}^n a_i \pm \sum_{i=m}^n b_i$
-%%	\item	$\ds \sum_{i=1}^n c\cdot a_i = c\cdot\sum_{i=1}^n a_i$
-%%	\item	$\ds \sum_{i=m}^j a_i + \sum_{i=j+1}^n  a_i = \sum_{i=m}^n a_i$
 	\item	$\ds \sum_{i=1}^n i = \frac{n(n+1)}2$
 	\item	$\ds \sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}6$
 	\item	$\ds \sum_{i=1}^n i^3 = \left(\frac{n(n+1)}2\right)^2$
-	\item[]
+	\item[] $\vphantom{\ds\sum_i^n}$
 	\end{enumerate}
-\end{multicols}
+\end{multicols}}
 \end{theorem}
 }
 
@@ -434,22 +418,20 @@ Approximate $\ds\int_0^4 (4x-x^2)\,dx$ using the Right Hand Rule and summation f
 Using the formula derived before, using 16 equally spaced intervals and the Right Hand Rule, we can approximate the definite integral as
 \[\sum_{i=1}^{16} f(x_i)\Delta x.\]
 We have $\Delta x=4/16=0.25$, $x_i=0+i\Delta x=i\Delta x$, and $f(x_i)=f(i\Delta x)=4i\Delta x-i^2\Delta x^2$. Using the summation formulas, we see:
-%\flushinner{%
+{\allowdisplaybreaks
 \begin{flalign*}
-\int_0^4 (4x-x^2)\,dx %\\
+\int_0^4 &(4x-x^2)\,dx \\
 &\approx \sum_{i=1}^{16} f(x_i)\Delta x\\
 &=\sum_{i=1}^{16} f(i\Delta x)\Delta x\\
 &=\sum_{i=1}^{16}(4i\Delta x-i^2(\Delta x)^2)\Delta x &&\text{(from above)}\\
 &=\sum_{i=1}^{16}(4i(\Delta x)^2-i^2(\Delta x)^3)\\
-&=\sum_{i=1}^{16}4i(\Delta x)^2-\sum_{i=1}^{16}i^2(\Delta x)^3 &&\text{(\autoref{thm:summation}(2))}
-\end{flalign*}%\\
-\begin{flalign*}\phantom{\int_0^4 (4x-x^2)\,dx}
+&=\sum_{i=1}^{16}4i(\Delta x)^2-\sum_{i=1}^{16}i^2(\Delta x)^3 &&\text{(\autoref{thm:summation}(2))}\\
 &\omit$\ds=4(\Delta x)^2\sum_{i=1}^{16}i
 -(\Delta x)^3\sum_{i=1}^{16}i^2$\hfill(*) % omit makes the hfill work
 &&\text{(\autoref{thm:summation}(3))}\\
 &=4\left(\frac14\right)^2\left(\frac{(16)(17)}{2}\right) -\left(\frac14\right)^3\left(\frac{(16)(17)(33)}{6}\right)&&\text{(\autoref{thm:summation}(5,6))}\\
 &=34-\frac{187}{8}=\frac{85}{8}=10.625
-\end{flalign*}%}
+\end{flalign*}}
 % not \ds because of line break
 \mtable[-3\baselineskip]{Approximating $\int_0^4(4x-x^2)\ dx$ with the Right Hand Rule and 16 evenly spaced subintervals.}{fig:rie7}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,
@@ -474,7 +456,7 @@ We were able to sum up the areas of 16 rectangles with very little computation. 
 
 Notice  Equation (*); by changing the 16's to 1000's and changing the value of $\Delta x$ to $4/1000=0.004$, we can use the equation to sum up the areas of 1000 rectangles. We do so here, skipping from the original summand to the equivalent of Equation (*) to save space.
 \begin{align*}
-\int_0^4 (4x-x^2)\,dx %\\
+\int_0^4 &(4x-x^2)\,dx \\
 &\approx \sum_{i=1}^{1000} f(x_i)\Delta x\\
 &=4(\Delta x)^2\sum_{i=1}^{1000} i -(\Delta x)^3\sum_{i=1}^{1000} i^2\\
 &=4(.004)^2\left(\frac{(1000)(1001)}{2}\right) -(0.004)^3\left(\frac{(1000)(1001)(2001)}{6}\right)\\
@@ -528,7 +510,7 @@ ytick={1,2,3,4},ymin=-1,ymax=5,xmin=-.5,xmax=4.5]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-\autoref{fig:riedef} shows the approximating rectangles of a Riemann sum of $\ds\int_0^4(4x-x^2)\ dx$. While the rectangles in this example do not approximate well the shaded area, they demonstrate that the subinterval widths may vary and the heights of the rectangles can be determined without following a particular rule.
+In \autoref{fig:riedef}, we see the approximating rectangles of a Riemann sum of $\ds\int_0^4(4x-x^2)\ dx$. While the rectangles in this example do not approximate well the shaded area, they demonstrate that the subinterval widths may vary and the heights of the rectangles can be determined without following a particular rule.
 
 Usually, Riemann sums are calculated using one of the three methods we have introduced. The uniformity of construction makes computations easier. We have $\Delta x_i = \Delta x = \dfrac{b-a}n$ and the $i^\text{ th}$ term of the partition is $x_i = a + i\Delta x$.  Then the Left Hand Rule uses $c_i=x_{i-1}$, the Right Hand Rule uses $c_i=x_i$, and the Midpoint Rule uses $c_i=\dfrac{x_{i-1}+x_i}{2}$.
 
@@ -607,6 +589,7 @@ We see that %Using \autoref{idea:riemann}, we know
 $\Delta x = \dfrac{4-0}{n} = \dfrac4n$. We also find $x_i = 0 + \Delta xi = \dfrac{4i}n$.
 
 We construct the Right Hand Rule Riemann sum as follows. Be sure to follow each step carefully. If you get stuck, and do not understand how one line proceeds to the next, you may skip to the result and consider how this result is used. You should come back, though, and work through each step for full understanding.
+{\allowdisplaybreaks
 \begin{flalign*}
 	\int_0^4 (4x-x^2)\ dx %\\
 	&\approx \sum_{i=1}^n f(x_i)\Delta x \\
@@ -615,12 +598,10 @@ We construct the Right Hand Rule Riemann sum as follows. Be sure to follow each 
 	&=	\sum_{i=1}^n \left(\frac{64}{n^2}\right)i - \sum_{i=1}^n \left(\frac{64}{n^3}\right)i^2 \\
 	&=	\left(\frac{64}{n^2}\right)\sum_{i=1}^n i - \left(\frac{64}{n^3}\right)\sum_{i=1}^n i^2  \\
 	&= \left(\frac{64}{n^2}\right)\cdot \frac{n(n+1)}{2} - \left(\frac{64}{n^3}\right)\frac{n(n+1)(2n+1)}{6} \\
-%\end{flalign*}
-%\begin{flalign*}\phantom{\int_0^4 (4x-x^2)\ dx}
 	&=\frac{32(n+1)}{n} - \frac{32(n+1)(2n+1)}{3n^2}
 	\qquad\text{\small(now simplify)} \\
 	&= \frac{32}{3}\left(1-\frac{1}{n^2}\right)
-\end{flalign*}
+\end{flalign*}}
 
 The result is an amazing, easy to use formula. To approximate the definite integral with 10 equally spaced subintervals and the Right Hand Rule, set $n=10$ and compute 
 \[\int_0^4 (4x-x^2)\ dx \approx \frac{32}{3}\left(1-\frac{1}{10^2}\right) = 10.56.\]
@@ -716,6 +697,7 @@ The theorem goes on to state that the rectangles do not need to be of the same w
 \[\lim_{\norm{\Delta x}\to 0}\ \sum_{i=1}^n f(c_i)\Delta x_i\]
 as ``the limit of the sum of rectangles, where the width of each rectangle can be different but getting small, and the height of each rectangle is not necessarily determined by a particular rule.'' The theorem states that this Riemann Sum also gives the value of the definite integral of $f$ over $[a,b]$.
 
+{\tcbset{grow to right by=1em}
 \begin{theorem}[Definite Integrals and the Limit of Riemann Sums]\label{thm:riemannSum}
 Let $f$ be continuous on the closed interval $[a,b]$  and let $S_L(n)$, $S_R(n)$ and $S_M(n)$ be defined as before. Then:\index{Riemann Sum!and definite integral}\index{integration!definite!Riemann Sums}
 \begin{enumerate}
@@ -723,7 +705,7 @@ Let $f$ be continuous on the closed interval $[a,b]$  and let $S_L(n)$, $S_R(n)$
 	\item	$\ds \lim_{n\to\infty}\sum_{i=1}^n f(c_i)\Delta x = \int_a^b f(x)\ dx$, and
 	\item	$\ds \lim_{\norm{\Delta x}\to 0}\ \sum_{i=1}^n f(c_i)\Delta x_i = \int_a^b f(x)\ dx$.
 \end{enumerate}
-\end{theorem}
+\end{theorem}}
 
 Now that we have more tools to work with, we can now justify the remaining properties in \autoref{thm:defintprop}. 
 
@@ -767,16 +749,17 @@ When we compute $\ds\int_b^a f(x)\,dx$, we can use the same partitions and the s
 \item This property was justified previously.
 
 \item To see why this property holds, we again use Theorems \ref{thm:summation} and \ref{thm:riemannSum}. In this case we have:
+{\allowdisplaybreaks
 \begin{align*}
 \int_a^b(f(x)+g(x))\,dx
-&=\lim_{n\to\infty}(f(c_i)+g(c_i))\Delta x\\
+&=\lim_{n\to\infty}\sum_{i=1}^n(f(c_i)+g(c_i))\Delta x\\
 &=\lim_{n\to\infty} \sum_{i=1}^n (f(c_i)\Delta x+g(c_i)\Delta x)\\
 &=\lim_{n\to\infty}\left(\sum_{i=1}^n f(c_i)\Delta x
 +\sum_{i=0}^{n-1} g(c_i)\Delta x\right)\\
 &=\lim_{n\to\infty}\sum_{i=1}^n f(c_i)\Delta x
 +\lim_{n\to\infty}\sum_{i=1}^n g(c_i)\Delta x\\
 &=\int_a^b f(x)\,dx+\int_a^bg(x)\,dx
-\end{align*}
+\end{align*}}
 
 \item The justification of this property is left as an exercise.\qedhere
 \end{enumerate}

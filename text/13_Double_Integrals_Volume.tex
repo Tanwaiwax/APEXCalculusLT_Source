@@ -111,7 +111,7 @@ Note that the bounds of integration follow a ``curve to curve, point to point'' 
 \begin{example}[Evaluating a double integral]\label{ex_double1}
 Let $f(x,y) = xy+e^y$. Find the signed volume under $f$ on the region $R$, which is the rectangle with corners $(3,1)$ and $(4,2)$ pictured in \autoref{fig:double1}, using Fubini's Theorem and both orders of integration.
 \solution
-We wish to evaluate $\iint_R \bigl(xy+e^y\bigr)\ dA$. As $R$ is a rectangle, the bounds are easily described as $3\leq x\leq 4$ and $1\leq y\leq 2$.\\
+We wish to evaluate $\iint_R \bigl(xy+e^y\bigr)\ dA$. As $R$ is a rectangle, the bounds are easily described as $3\leq x\leq 4$ and $1\leq y\leq 2$.\bigskip
 
 \mtable{Finding the signed volume under a surface in \autoref{ex_double1}.}{fig:double1}{%
 \myincludeasythree{width=\marginparwidth,
@@ -199,13 +199,15 @@ The bounds on $y$ go from ``curve to curve,'' i.e., $0\leq y\leq 1-x/2$, and the
 \end{align*}
 
 Now lets consider the order $dx \ dy$. Here $x$ goes from ``curve to curve,'' $0\leq x\leq 2-2y$, and $y$ goes from ``point to point,'' $0\leq y\leq 1$:
+{\allowdisplaybreaks
 \begin{align*}
-\iint_R \bigl(3xy-x^2-y^2+6\bigr)\ dA &= \int_0^1\int_0^{2-2y} \bigl(3xy-x^2-y^2+6\bigr)\ dx\ dy\\
-		&= \int_0^1\left.\left(\frac32x^2y-\frac13x^3-xy^2+6x\right)\right|_0^{2-2y} dy\\
-		&= \int_0^1\left(\frac{32}3y^3-22y^2+2y+\frac{28}3\right)dy\\
-		&=\left.\left(\frac83y^4-\frac{22}3y^3+y^2+\frac{28}3y\right)\right|_0^1\\
-		&=\frac{17}3=5.\overline{6}.
-\end{align*}
+\iint_R \bigl(3xy-x^2-y^2+6\bigr)\ dA
+	&= \int_0^1\int_0^{2-2y} \bigl(3xy-x^2-y^2+6\bigr)\ dx\ dy\\
+	&= \int_0^1\left.\left(\frac32x^2y-\frac13x^3-xy^2+6x\right)\right|_0^{2-2y} dy\\
+	&= \int_0^1\left(\frac{32}3y^3-22y^2+2y+\frac{28}3\right)dy\\
+	&=\left.\left(\frac83y^4-\frac{22}3y^3+y^2+\frac{28}3y\right)\right|_0^1\\
+	&=\frac{17}3=5.\overline{6}.
+\end{align*}}
 We obtained the same result using both orders of integration.
 \end{example}
 
@@ -225,11 +227,7 @@ Let $f$ and $g$ be continuous functions over a closed, bounded plane region $R$,
 	\item	$\ds \iint_R \bigl(f(x,y)\pm g(x,y)\bigr)\ dA = \iint_R f(x,y)\ dA \pm \iint_R g(x,y)\ dA $
 	\item	If $f(x,y)\geq 0$ on $R$, then $\ds \iint_R f(x,y)\ dA\geq 0$.
 	\item	If $f(x,y)\geq g(x,y)$ on $R$, then $\ds \iint_R f(x,y)\ dA\geq \iint_R g(x,y)\ dA$.
-	\item \label{thm:double_prop_regions}	Let $R$ be the union of two nonoverlapping regions, $R = R_1\bigcup R_2$ (see \autoref{fig:double_region}). Then 
-	\[\iint_R f(x,y)\ dA = \iint_{R_1}f(x,y)\ dA+ \iint_{R_2}f(x,y)\ dA.\]
-\end{enumerate}
-\end{theorem}
-
+%
 % todo parameterize this instead of a bunch of coordinates
 \mtable[-2in]{$R$ is the union of two nonoverlapping regions, $R_1$ and $R_2$.}{fig:double_region}{\begin{tikzpicture}[xscale=.85,yscale=.6]
 \draw [draw={\colorone},thick,fill={\coloronefill},smooth] plot coordinates {(0,2.)
@@ -246,6 +244,11 @@ Let $f$ and $g$ be continuous functions over a closed, bounded plane region $R$,
 \draw (5,.5) node {$R_2$};
 \draw (1,-2) node {$R$};
 \end{tikzpicture}}
+%
+	\item \label{thm:double_prop_regions}	Let $R$ be the union of two nonoverlapping regions, $R = R_1\bigcup R_2$ (see \autoref{fig:double_region}). Then 
+	\[\iint_R f(x,y)\ dA = \iint_{R_1}f(x,y)\ dA+ \iint_{R_2}f(x,y)\ dA.\]
+\end{enumerate}
+\end{theorem}
 
 \begin{example}[Evaluating a double integral]\label{ex_double3}
 Let $f(x,y) = \sin x\cos y$ and $R$ be the triangle with vertices $(-1,0)$, $(1,0)$ and $(0,1)$ (see \autoref{fig:double3}). Evaluate the double integral $\iint_Rf(x,y)\ dA$.
@@ -299,11 +302,12 @@ We now choose an order of integration: $dy\ dx$ or $dx\ dy$? Either order works;
 
 Thus we have the following ``curve to curve, point to point'' bounds: $y^2/4\leq x\leq 2\sqrt y$, and $0\leq y\leq 4$. 
 \begin{align*}
-\iint_R (4-y)\ dA &= \int_0^4\int_{y^2/4}^{2\sqrt{y}}(4-y)\ dx\ dy\\
-				&= \int_0^4 \bigl(x(4-y)\bigr)\Big|_{y^2/4}^{2\sqrt{y}} dy\\
-				&= \int_0^4 \Bigl(\bigl(2\sqrt{y}-\frac{y^2}{4}\bigr)\bigl(4-y\bigr)\Bigr)\ dy = \int_0^4 \Bigl( \frac{y^3}{4}-y^2-2y^{3/2}+8y^{1/2}\Bigr)\ dy\\
-				&= \left.\left(\frac{y^4}{16}-\frac{y^3}{3}-\frac{4y^{5/2}}5+\frac{16y^{3/2}}3\right)\right|_0^4\\
-				&= \frac{176}{15} = 11.7\overline{3}.
+\iint_R &(4-y)\ dA \\
+	&= \int_0^4\int_{y^2/4}^{2\sqrt{y}}(4-y)\ dx\ dy\\
+	&= \int_0^4 \bigl(x(4-y)\bigr)\Big|_{y^2/4}^{2\sqrt{y}} dy\\
+	&= \int_0^4 \Bigl(\bigl(2\sqrt{y}-\frac{y^2}{4}\bigr)\bigl(4-y\bigr)\Bigr)\ dy = \int_0^4 \Bigl( \frac{y^3}{4}-y^2-2y^{3/2}+8y^{1/2}\Bigr)\ dy\\
+	&= \left.\left(\frac{y^4}{16}-\frac{y^3}{3}-\frac{4y^{5/2}}5+\frac{16y^{3/2}}3\right)\right|_0^4\\
+	&= \frac{176}{15} = 11.7\overline{3}.
 \end{align*}
 The signed volume under the surface $f$ is about 11.7 cubic units.
 \end{example}

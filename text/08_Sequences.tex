@@ -5,27 +5,28 @@ We commonly refer to a set of events that occur one after the other as a \emph{s
 
 For instance, the numbers $2, 4, 6, 8, \dotsc$, form a sequence. The order is important; the first number is 2, the second is 4, etc. It seems natural to seek a formula that describes a given sequence, and often this can be done. For instance, the sequence above could be described by the function $a(n) = 2n$, for the values of $n = 1, 2, \dotsc$ (it could also be described by $n^4-10 n^3+35 n^2-48n+24$, to give one of infinitely many other options). To find the 10$^\text{th}$ term in the sequence, we would compute $a(10)$. This leads us to the following, formal definition of a sequence.
 
-\mnote{\textbf{Notation:} We use $\mathbb{N}$ to describe the set of natural numbers, that is, the integers $1, 2, 3, \dotsc$}
-
 \begin{definition}[Sequence]\label{def:sequence}
+%
+\mnote{\textbf{Notation:} We use $\mathbb{N}$ to describe the set of natural numbers, that is, the integers $1, 2, 3, \dotsc$}
+%
 A \textbf{sequence} is a function $a(n)$ whose domain is $\mathbb{N}$. The \textbf{range} of a sequence is the set of all distinct values of $a(n)$.
-\index{sequences!definition}\\
+\index{sequences!definition}\bigskip
 
-The \textbf{terms} of a sequence are the values $a(1), a(2), \dotsc$, which are usually denoted with subscripts as $a_1, a_2, \dotsc$.\\
+The \textbf{terms} of a sequence are the values $a(1), a(2), \dotsc$, which are usually denoted with subscripts as $a_1, a_2, \dotsc$.\bigskip
 
 A sequence $a(n)$ is often denoted as $\{a_n\}$.
 \end{definition}
 
 \youtubeVideo{9K1xx6wfN-U}{Sequences --- Examples showing convergence or divergence}
 
-\mnote[-1in]{\textbf{Factorial:} The expression $3!$ refers to the number $3\cdot2\cdot1 = 6$.
+\mnote[-1.2in]{\textbf{Factorial:} The expression $3!$ refers to the number $3\cdot2\cdot1 = 6$.
 \index{factorial}\bigskip\\
 In general, $n! = n\cdot (n-1)\cdot(n-2)\dotsm 2\cdot1$, where $n$ is a natural number.\bigskip\\
 We define $0! = 1$. While this does not immediately make sense, it makes many mathematical formulas work properly.}
 
 \mtable[.7in]{Plotting sequences in \autoref{ex_seq1}.}{fig:seq1b}{%
 \begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2,3,4},
 ytick={1,2,3,4,5},ymin=-.1,ymax=5.5,xmin=-.1,xmax=4.5]
 \addplot [only marks,draw={\colorone},fill={\colorone},mark size={1.75pt}] coordinates {(1,3)(2,4.5)(3,4.5)(4,3.375)};
@@ -36,7 +37,7 @@ ytick={1,2,3,4,5},ymin=-.1,ymax=5.5,xmin=-.1,xmax=4.5]
 \end{tikzpicture}
 \\(a)\\
 \begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2,3,4},
 ytick={1,2,3,4,5},ymin=-.1,ymax=5.5,xmin=-.1,xmax=4.5]
 \addplot [only marks,draw={\colorone},fill={\colorone},mark size={1.75pt},domain=1:4] {4+(-1)^x};
@@ -47,7 +48,7 @@ ytick={1,2,3,4,5},ymin=-.1,ymax=5.5,xmin=-.1,xmax=4.5]
 \end{tikzpicture}
 \\(b)\\
 \begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2,3,4,5},
 ytick={-1},extra y ticks={.5,.25},extra y tick labels={$1/2$,$1/4$},
 ymin=-1.1,ymax=0.6,xmin=-.1,xmax=5.5]
@@ -116,7 +117,7 @@ When $n=1$, we see that we indeed get $5/2$ as desired. When $n=2$, we get $10/4
 
 A common mathematical endeavor is to create a new mathematical object (for instance, a sequence) and then apply previously known mathematics to the new object. We do so here. The fundamental concept of calculus is the limit, so we will investigate what it means to find the limit of a sequence.
 
-%{\tcbset{grow to right by=80pt}}
+%{\tcbset{grow to right by=8em}}
 \begin{definition}[Limit of a Sequence, Convergent, Divergent]\label{def:seq_limit}
 Let $\{a_n\}$ be a sequence and let $L$ be a real number. Given any $\epsilon>0$, if an $m$ can be found such that $\abs{a_n-L}<\epsilon$ for all $n>m$, then we say the \textbf{limit of $\{a_n\}$, as $n$ approaches infinity, is $L$}, denoted \[\lim_{n\to\infty}a_n = L.\]
 
@@ -127,9 +128,9 @@ This definition states, informally, that if the limit of a sequence is $L$, then
 
 This definition is reminiscent of the $\epsilon$-$\delta$ proofs of \autoref{chapter:limits}. In that chapter we developed other tools to evaluate limits apart from the formal definition; we do so here as well.
 
-%{\tcbset{grow to right by=30pt}}
+%{\tcbset{grow to right by=3em}}
 \begin{theorem}[Limit of a Sequence]\label{thm:seq_limit}
-Let $\{a_n\}$ be a sequence and let $f(x)$ be a function whose domain contains the positive real numbers where $f(n) = a_n$ for all $n$ in $\mathbb{N}$. \\
+Let $\{a_n\}$ be a sequence and let $f(x)$ be a function whose domain contains the positive real numbers where $f(n) = a_n$ for all $n$ in $\mathbb{N}$.\bigskip
 
 If $\ds \lim_{x\to\infty} f(x) = L$, then $\ds\lim_{n\to\infty} a_n = L$.
 %\begin{enumerate}
@@ -154,14 +155,14 @@ If $\ds \lim_{x\to\infty} f(x) = L$, then $\ds\lim_{n\to\infty} a_n = L$.
 
 %\autoref{thm:seq_limit} states that this restriction of the domain does not affect the outcome of the limit and whatever tools we developed in \autoref{chapter:limits} to evaluate limits can be applied here as well.\\
 
-%Considering again \autoref{ex_seq3}, we can now state when $\{a_n\} = \{\frac1n\}$, \mbox{$\ds \lim_{n\to\infty} a_n = 0$}.\\
+%Considering again \autoref{ex_seq3}, we can now state when $\{a_n\} = \{\frac1n\}$, $\ds \lim_{n\to\infty} a_n = 0$.\\
 
 \begin{example}[Determining convergence/divergence of a sequence]\label{ex_seq4}
 Determine the convergence or divergence of the following sequences.
 %
 \mtable{Scatter plots of the sequences in \autoref{ex_seq4}.}{fig:seq4}{%
  \begin{tikzpicture}
-  \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+  \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
     axis y line=middle,axis x line=middle,name=myplot,axis on top,%
     xtick={20,40,60,80,100},ymin=-11,ymax=11,xmin=-.1,xmax=110]
    \addplot [only marks,draw={\colorone},mark size={.75pt},domain=1:100,samples=21]
@@ -173,7 +174,7 @@ Determine the convergence or divergence of the following sequences.
  \end{tikzpicture}
 \\(a)\\
 \begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
 xtick={20,40,60,80,100},ymin=-1.1,ymax=1.1,xmin=-.1,xmax=110]
 \addplot [only marks,draw={\colorone},mark size={.75pt},domain=1:100,samples=100]
@@ -185,7 +186,7 @@ xtick={20,40,60,80,100},ymin=-1.1,ymax=1.1,xmin=-.1,xmax=110]
 \end{tikzpicture}
 \\(b)\\
 \begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
 ymin=-1.1,ymax=1.1,xmin=-.1,xmax=22]
 \addplot [only marks,draw={\colorone},mark size={.75pt},domain=1:20,samples=20] {((-1)^x)/x};
@@ -205,7 +206,7 @@ ymin=-1.1,ymax=1.1,xmin=-.1,xmax=22]
 \begin{enumerate}
 \item		Using \autoref{thm:lim_rational_fn_at_infty}, we can state that $\ds\lim_{x\to\infty} \frac{3x^2-2x+1}{x^2-1000} = 3$. (We could have also directly applied L'Hôpital's Rule.) Thus the sequence $\{a_n\}$ converges, and its limit is 3. A scatter plot of every 5 values of $a_n$ is given in \autoref{fig:seq4} (a). The values of $a_n$ vary widely near $n=30$, ranging from about $-73$ to $125$, but as $n$ grows, the values approach 3.
 
-\item		The limit $\ds\lim_{x\to\infty}\cos x$ does not exist, as $\cos x$ oscillates (and takes on every value in $[-1,1]$ infinitely many times). Thus we cannot apply \autoref{thm:seq_limit}. 
+\item		The limit $\ds\lim_{x\to\infty}\cos x$ does not exist, as $\cos x$ oscillates (and takes on every value in $[-1,1]$ infinitely many times). This means that we cannot apply \autoref{thm:seq_limit}. 
 
 The fact that the cosine function oscillates strongly hints that $\cos n$, when $n$ is restricted to $\mathbb{N}$, will also oscillate. \autoref{fig:seq4} (b), where the sequence is plotted, shows that this is true. Because only discrete values of cosine are plotted, it does not bear strong resemblance to the familiar cosine wave.
 
@@ -229,7 +230,7 @@ Let $\{a_n\}$ be a sequence. If $\ds \lim_{n\to\infty}\abs{a_n}= 0$, then $\ds \
 We know $-\abs{a_n}\leq a_n\leq\abs{a_n}$ and $\ds \lim_{n\to \infty} (-\abs{a_n})=-\lim_{n\to\infty}\abs{a_n}=0$. Thus by the Squeeze Theorem $\ds \lim_{n\to\infty} a_n =0$.
 \end{proof}
 
-\begin{example}[Determining the convergence/divergence of a sequence]\label{ex_seq5}
+\begin{example}[Determining the convergence / divergence of a sequence]\label{ex_seq5}
 Determine the convergence or divergence of the following sequences.
 \[
  \text{1. }\{a_n\} = \left\{\frac{(-1)^n}{n}\right\}\qquad
@@ -254,7 +255,7 @@ Since this limit is 0, we can apply \autoref{thm:abs_val_seq} and state that $\d
 \end{align*}
 %
 \mtable{A plot of a sequence in \autoref{ex_seq5}, part 2.}{fig:seq5}{\begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,ytick={-1,-2,1,2},
 ymin=-2.5,ymax=2.5,xmin=-.1,xmax=22]
 \addplot [only marks,draw={\colorone},mark size={1.5pt},domain=1:20,samples=20]
@@ -265,7 +266,7 @@ ymin=-2.5,ymax=2.5,xmin=-.1,xmax=22]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}%
 %
-We have concluded that when we ignore the alternating sign, the sequence approaches 1. This means we cannot apply \autoref{thm:abs_val_seq}; it states the the limit must be 0 in order to conclude anything.
+We have concluded that when we ignore the sign, the sequence approaches 1. This means we cannot apply \autoref{thm:abs_val_seq}; it states the the limit must be 0 in order to conclude anything.
 
 Since we know that the signs of the terms alternate \emph{and} we know that the limit of $\abs{a_n}$ is 1, we know that as $n$ approaches infinity, the terms will alternate between values close to 1 and $-1$, meaning the sequence diverges. A plot of this sequence is given in \autoref{fig:seq5}.
 \end{enumerate}
@@ -343,9 +344,9 @@ We also know that $\ds  \lim_{x\to \infty} 1^n=1$ and $\ds  \lim_{x\to \infty} 0
 There is more to learn about sequences than just their limits. We will also study their range and the relationships terms have with the terms that follow. We start with some definitions describing properties of the range.
 
 \begin{definition}[Bounded and Unbounded Sequences]\label{def:bounded}
-A sequence $\{a_n\}$ is said to be \textbf{bounded} if there exist real numbers $m$ and $M$ such that $m < a_n < M$ for all $n$ in $\mathbb{N}$.\\
+A sequence $\{a_n\}$ is said to be \textbf{bounded} if there exist real numbers $m$ and $M$ such that $m < a_n < M$ for all $n$ in $\mathbb{N}$.\bigskip
 
-A sequence $\{a_n\}$ is said to be \textbf{unbounded} if it is not bounded.\\
+A sequence $\{a_n\}$ is said to be \textbf{unbounded} if it is not bounded.\bigskip
 
 A sequence $\{a_n\}$ is said to be \textbf{bounded above} if there exists an $M$ such that $a_n < M$ for all $n$ in $\mathbb{N}$; it is \textbf{bounded below} if there exists an $m$ such that $m<a_n$ for all $n$ in $\mathbb{N}$.
 \index{sequences!boundedness}\index{bounded sequence}\index{unbounded sequence}
@@ -362,7 +363,7 @@ Determine the boundedness of the following sequences.
 %
 \mtable{A plot of $\{a_n\} = \{1/n\}$ and $\{a_n\} = \{2^n\}$ from \autoref{ex_seq3}.}{fig:seq3}{%
 \begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,...,10},
 ytick={1},extra y ticks={.5,.25,.1},extra y tick labels={$1/2$,$1/4$,$1/10$},
 ymin=-.1,ymax=1.1,xmin=-.1,xmax=11]
@@ -374,7 +375,7 @@ ymin=-.1,ymax=1.1,xmin=-.1,xmax=11]
 \end{tikzpicture}
 \\(a)\\[10pt]
 \begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
 ymin=-.1,ymax=275,xmin=-.1,xmax=9]
 \addplot [only marks,draw={\colorone},mark size={1.75pt},domain=1:8,samples=8]  {2^x};
@@ -436,15 +437,14 @@ In each of the following, we will examine $a_{n+1}-a_n$. If $a_{n+1}-a_n \ge0$, 
 We also give a scatter plot of each sequence. These are useful as they suggest a pattern of monotonicity, but analytic work should be done to confirm a graphical trend.
 
 \begin{enumerate}
-\item\mbox{}\\*[-2.5\baselineskip]
-\begin{align*}
+\item \hfill$\begin{aligned}[t]
 a_{n+1}-a_n &= \frac{n+2}{n+1} - \frac{n+1}{n} \\		
 	&= \frac{(n+2)(n)-(n+1)^2}{(n+1)n} \\
 	&=	\frac{-1}{n(n+1)} \\
 	&<0 \quad\text{ for all $n$.}
-\end{align*}
+\end{aligned}$\hfill\null\\
 %
-\mtable[-8\baselineskip]{A plot of $\{a_n\}=\{\frac{n+1}n\}$ in \autoref{ex_seq7}(a).}{fig:seq7a}{\begin{tikzpicture}
+\mtable[-7\baselineskip]{A plot of $\{a_n\}=\{\frac{n+1}n\}$ in \autoref{ex_seq7}(a).}{fig:seq7a}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,ytick={-1,-2,1,2},
 ymin=-.1,ymax=2.5,xmin=-1,xmax=11]
@@ -457,9 +457,9 @@ ymin=-.1,ymax=2.5,xmin=-1,xmax=11]
 %
 Since $a_{n+1}-a_n<0$ for all $n$, we conclude that the sequence is decreasing.
 
-\item\mbox{}\\[-2.5\baselineskip]
+\item
 %
-\mtable[2.5\baselineskip]{A plot of $\{a_n\}=\{\frac{n^2+1}{n+1}\}$ in \autoref{ex_seq7}(b).}{fig:seq7b}{\begin{tikzpicture}
+\mtable[5\baselineskip]{A plot of $\{a_n\}=\{\frac{n^2+1}{n+1}\}$ in \autoref{ex_seq7}(b).}{fig:seq7b}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
 ymin=-1,ymax=11,xmin=-1,xmax=11]
@@ -471,19 +471,19 @@ ymin=-1,ymax=11,xmin=-1,xmax=11]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 %
-\begin{align*}
+\hfill$\begin{aligned}[t]
 	a_{n+1}-a_n &= \frac{(n+1)^2+1}{n+2} - \frac{n^2+1}{n+1} \\		
 	&= \frac{\bigl((n+1)^2+1\bigr)(n+1)- (n^2+1)(n+2)}{(n+1)(n+2)}\\
 	&=	\frac{n(n+3)}{(n+1)(n+2)} \\
 	&> 0 \quad \text{ for all $n$.}
-\end{align*}
+\end{aligned}$\hfill\null
 
 Since $a_{n+1}-a_n>0$ for all $n$, we conclude the sequence is increasing.
 
 \item%
 %
-\mtable[4\baselineskip]{A plot of $\{a_n\}=\{\frac{n^2-9}{n^2-10n+26}\}$ in \autoref{ex_seq7}(c).}{fig:seq7c}{\begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\mtable[10\baselineskip]{A plot of $\{a_n\}=\{\frac{n^2-9}{n^2-10n+26}\}$ in \autoref{ex_seq7}(c).}{fig:seq7c}{\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
 ymin=-1,ymax=16,xmin=-1,xmax=11]
 \addplot [only marks,draw={\colorone},mark size={1.5pt},domain=1:10,samples=10]

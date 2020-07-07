@@ -1,126 +1,94 @@
-\exerciseset{In Exercises}{, describe in words and sketch the level curves for the function and given $c$ values.}{
+\begin{exerciseset}{In Exercises}{, describe in words and sketch the level curves for the function and given $c$ values.}
 
 \exercise{$\ds f(x,y) = 3x-2y$; $c = -2,0,2$}{Level curves are lines $y = (3/2)x-c/2$.\\
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
 ymin=-3.1,ymax=3.1,xmin=-2.1,xmax=2.1]
-
 \addplot [draw={\colorone},smooth,thick,] {3/2*x+1};
-
 \addplot [draw={\colorone},smooth,thick,] {3/2*x};
-
 \addplot [draw={\colorone},smooth,thick,] {3/2*x-1};
-
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}
-}
+\end{tikzpicture}}
 
 \exercise{$\ds f(x,y) = x^2-y^2$; $c = -1,0,1$}{Level curves are hyperbolas $\frac{x^2}{c}-\frac{y^2}{c}=1$, except for $c=0$, where the level curve is the pair of lines $y=x$, $y=-x$.\\
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
 ymin=-4.1,ymax=4.1,xmin=-4.1,xmax=4.1]
-
 \addplot [draw={\colorone},smooth,thick,] {x};
-
 \addplot [draw={\colorone},smooth,thick,] {-x};
-
 \addplot [draw={\colorone},smooth,thick,domain=-80:80] ({tan(x)},{sec(x)});
 \addplot [draw={\colorone},smooth,thick,domain=-80:80] ({tan(x)},{-sec(x)});
-
 \addplot [draw={\colorone},smooth,thick,domain=-80:80] ({sec(x)},{tan(x)});
 \addplot [draw={\colorone},smooth,thick,domain=-80:80] ({-sec(x)},{tan(x)});
-
 \draw (axis cs:2,.5) node {\scriptsize $c=-1$};
 \draw (axis cs:-2,.5) node {\scriptsize $c=-1$};
-
-
 \draw (axis cs:1,2.1) node {\scriptsize $c=1$};
 \draw (axis cs:1,-2.1) node {\scriptsize $c=1$};
-
 \draw (axis cs:-1,-3) node  (A) {\scriptsize $c=0$};
 \draw[->,thick,>=stealth] (A) -- (axis cs: .4,-.41);
 \draw[->,thick,>=stealth] (A) -- (axis cs: -.4,-.41);
-
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}
-}
+\end{tikzpicture}}
 
 \exercise{$\ds f(x,y) = x-y^2$; $c = -2,0,2$}{Level curves are parabolas $x=y^2+c$.\\
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
 ymin=-4.1,ymax=4.1,xmin=-4.1,xmax=4.1]
-
 \addplot [draw={\colorone},smooth,thick,] ({x^2-2},{x});
 \addplot [draw={\colorone},smooth,thick,] ({x^2},{x});
 \addplot [draw={\colorone},smooth,thick,] ({x^2+2},{x});
-
-
 \draw (axis cs:3,.5) node {\scriptsize $c=2$};
 \draw (axis cs:1,.5) node {\scriptsize $c=0$};
-
-
 \draw (axis cs:-2.3,1) node {\scriptsize $c=-2$};
-
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}
-}
+\end{tikzpicture}}
 
 \exercise{$\ds f(x,y) = \frac{1-x^2-y^2}{2y-2x}$; $c = -2,0,2$}{Level curves are hyperbolas $(x-c)^2-(y-c)^2=1$, drawn in graph in different styles to differentiate the curves.\\
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
 ymin=-4.1,ymax=4.1,xmin=-4.1,xmax=4.1]
-
 \addplot [draw={\colorone},smooth,thick,domain=-80:80] ({tan(x)+2},{sec(x)+2});
 \addplot [draw={\colorone},smooth,thick,domain=-80:80] ({tan(x)+2},{-sec(x)+2});
-
 \addplot [draw={\colorone},smooth,thick,dashed,domain=-80:80] ({tan(x)},{sec(x)});
 \addplot [draw={\colorone},smooth,thick,dashed,domain=-80:80] ({tan(x)},{-sec(x)});
-
 \addplot [draw={\colorone},smooth,very thick,dotted,domain=-80:80] ({tan(x)-2},{sec(x)-2});
 \addplot [draw={\colorone},smooth,very thick,dotted,domain=-80:80] ({tan(x)-2},{-sec(x)-2});
-
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}
-}
+\end{tikzpicture}}
 
 \exercise{$\ds f(x,y) = \frac{2x-2y}{x^2+y^2+1}$; $c = -1,0,1$}{Level curves are circles, centered at $(1/c,-1/c)$ with radius $\sqrt{2/c^2-1}$. When $c=0$, the level curve is the line $y=x$.\\
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
 ymin=-4.1,ymax=4.1,xmin=-4.1,xmax=4.1]
-
 \addplot [draw={\colorone},smooth,thick,domain=0:360] ({cos(x)+1},{sin(x)-1});
 \addplot [draw={\colorone},smooth,thick,domain=0:360] ({cos(x)-1},{sin(x)+1});
-
 \addplot [draw={\colorone},smooth,thick,] ({x},{x});
 \draw (axis cs:1.5,-2.5) node {\scriptsize $c=1$};
 \draw (axis cs:-1.5,2.5) node {\scriptsize $c=-1$};
-
 \draw (axis cs:3,2) node {\scriptsize $c=0$};
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}
-}
+\end{tikzpicture}}
 
 \exercise{$\ds f(x,y) = \frac{y-x^3-1}{x}$; $c = -3,-1,0,1,3$}{Level curves are cubics of the form $y=x^3+cx+1$. Note how each curve passes through $(0,1)$ and that the function is not defined at $x=0$.\\
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
 ymin=-4.1,ymax=4.1,xmin=-4.1,xmax=4.1]
-
 \addplot [draw={\colorone},smooth,thick,] ({x},{x^3-3*x+1});
 \addplot [draw={\colorone},smooth,thick,] ({x},{x^3-x+1});
 \addplot [draw={\colorone},smooth,thick,] ({x},{x^3+1});
@@ -129,15 +97,13 @@ ymin=-4.1,ymax=4.1,xmin=-4.1,xmax=4.1]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}
-}
+\end{tikzpicture}}
 
 \exercise{$\ds f(x,y) = \sqrt{x^2+4y^2}$; $c = 1,2,3,4$\label{12_01_ex_21}}{Level curves are ellipses of the form $\frac{x^2}{c^2}+\frac{y^2}{c^2/4}=1$, i.e., $a=c$ and $b=c/2$.\\
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
 ymin=-4.1,ymax=4.1,xmin=-4.1,xmax=4.1]
-
 \addplot [draw={\colorone},smooth,thick,domain=0:360] ({cos(x)},{.5*sin(x)});
 \addplot [draw={\colorone},smooth,thick,domain=0:360] ({2*cos(x)},{sin(x)});
 \addplot [draw={\colorone},smooth,thick,domain=0:360] ({3*cos(x)},{1.5*sin(x)});
@@ -145,24 +111,20 @@ ymin=-4.1,ymax=4.1,xmin=-4.1,xmax=4.1]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}
-}
+\end{tikzpicture}}
 
 \exercise{$\ds f(x,y) = x^2+4y^2$; $c = 1,2,3,4$\label{12_01_ex_22}}{Level curves are ellipses of the form $\frac{x^2}{c}+\frac{y^2}{c/4}=1$, i.e., $a=\sqrt{c}$ and $b=\sqrt{c}/2$.\\
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
 ymin=-4.1,ymax=4.1,xmin=-4.1,xmax=4.1]
-
 \addplot [draw={\colorone},smooth,thick,domain=0:360] ({cos(x)},{.5*sin(x)});
 \addplot [draw={\colorone},smooth,thick,domain=0:360] ({2*cos(x)},{sin(x)});
 \addplot [draw={\colorone},smooth,thick,domain=0:360] ({3*cos(x)},{1.5*sin(x)});
 \addplot [draw={\colorone},smooth,thick,domain=0:360] ({4*cos(x)},{2*sin(x)});
-
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}
-}
+\end{tikzpicture}}
 
-}
+\end{exerciseset}

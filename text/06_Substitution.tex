@@ -28,9 +28,9 @@ One might well look at this and think ``I (sort of) followed how that worked, bu
 
 We stated before that integration by substitution ``undoes'' the Chain Rule. Specifically, let $F(x)$ and $g(x)$ be differentiable functions and consider the derivative of their composition:
 \[\frac{d}{dx}\Bigl(F\bigl(g(x)\bigr)\Bigr) = \Fp(g(x))g\primeskip'(x).\]
-Thus 
+Thus\vspace{-.3\baselineskip}
 \[\int \Fp(g(x))g\primeskip'(x)\ dx = F(g(x)) + C.\]
-Integration by substitution works by recognizing the ``inside'' function $g(x)$ and replacing it with a variable. By setting $u=g(x)$, we can rewrite the derivative as
+Integration by substitution works by recognizing the ``inside'' function $g(x)$ and replacing it with a variable. By setting $u=g(x)$, we can rewrite the derivative as\vspace{-.3\baselineskip}
 \[\frac{d}{dx}\Bigl(F\bigl(u\bigr)\Bigr) = \Fp(u)u\primeskip'.\]
 Since $du = g\primeskip'(x)dx$, we can rewrite the above integral as
 \[\int \Fp(g(x))g\primeskip'(x)\ dx = \int \Fp(u) du = F(u)+C = F(g(x))+ C.\]
@@ -58,7 +58,7 @@ Let $u = x^2+5$, hence $du = 2x\,dx$. The integrand has an $x\,dx$ term, but not
 We can now substitute.
 \begin{align*}
 	\int x\sin(x^2+5)\ dx
-	&= \int \sin(\underbrace{x^2+5}_u) \underbrace{x\ dx}_{\frac12du}\\
+	&= \int \sin(\underbrace{x^2+5}_u) \underbrace{x\ dx}_{\frac12du}\\[-.3\baselineskip]
 	&= \int \frac12\sin u\ du \\
 	&= -\frac12\cos u + C \quad \text{\scriptsize (now replace $u$ with $x^2+5$)}\\
 	&=-\frac12\cos(x^2+5) + C.
@@ -72,7 +72,7 @@ Evaluate $\ds \int \cos(5x)\ dx$.
 Again let $u$ replace the ``inside'' function. Letting $u = 5x$, we have $du = 5dx$. Since our integrand does not have a $5dx$ term, we can divide the previous equation by $5$ to obtain $\frac15du = dx$. We can now substitute.
 \begin{align*}
 	\int \cos(5x)\ dx
-	&= \int \cos(\underbrace{5x}_u) \underbrace{dx}_{\frac15du} \\
+	&= \int \cos(\underbrace{5x}_u) \underbrace{dx}_{\frac15du} \\[-.3\baselineskip]
 	&=	\int \frac15\cos u \ du \\
 	&= \frac15\sin u + C \\
 	&= \frac15\sin (5x)+C.
@@ -80,7 +80,7 @@ Again let $u$ replace the ``inside'' function. Letting $u = 5x$, we have $du = 5
 We can again check our work through differentiation.
 \end{example}
 
-The previous example exhibited a common, and simple, type of substitution. The ``inside'' function was a linear function (in this case, $y = 5x$). When the inside function is linear, the resulting integration is very predictable, so that we can say
+The previous example exhibited a common, and simple, type of substitution. The ``inside'' function was a linear function (in this case, $y = 5x$). When the inside function is linear, the resulting integration is very predictable, so that we can say\vspace{-.3\baselineskip}
 \[\int \Fp(ax+b)\ dx = \frac{1}{a}F(ax+b) + C.\]
 
 For example, $\int \sin (7x-4)\ dx = -\frac17\cos(7x-4)+C$. Our next example can use this idea, but we will only employ it after going through all of the steps.
@@ -88,7 +88,7 @@ For example, $\int \sin (7x-4)\ dx = -\frac17\cos(7x-4)+C$. Our next example can
 \begin{example}[Integrating by substituting a linear function]\label{ex_sub3}
 Evaluate $\ds \int \frac{7}{-3x+1}\ dx$.
 \solution
-View this as a composition of functions $f(g(x))$, where $f(x) = 7/x$ and $g(x) = -3x+1$. Employing our understanding of substitution, we let $u = -3x+1$, the inside function. Thus $du = -3dx$. The integrand lacks a $-3$; hence divide the previous equation by $-3$ to obtain $-du/3 = dx$. We can now evaluate the integral through substitution.
+We can view this as a composition of the functions $f(g(x))$, where $f(x) = 7/x$ and $g(x) = -3x+1$. Employing our understanding of substitution, we let $u = -3x+1$, the inside function. Thus $du = -3dx$. The integrand lacks a $-3$; hence divide the previous equation by $-3$ to obtain $-du/3 = dx$. We can now evaluate the integral through substitution.
 \begin{align*}
 	\int \frac{7}{-3x+1}\ dx
 	&= \int\left(\frac{7}{u}\right)\left(\frac{du}{-3}\right) \\
@@ -120,7 +120,7 @@ Our examples so far have required ``basic substitution.'' The next example demon
 \begin{example}[Integrating by substitution]\label{ex_sub4}
 Evaluate $\ds\int x\sqrt{x+3}\ dx$.
 \solution
-Recognizing the composition of functions, set $u = x+3$. Then $du = dx$, giving what seems initially to be a simple substitution. But at this stage, we have:
+Recognizing the composition of functions, set $u = x+3$. Then $du = dx$, giving what seems initially to be a simple substitution. But at this stage, we have:\vspace{-.3\baselineskip}
 	\[\int x\sqrt{x+3}\ dx = \int x\sqrt{u}\ du.\]
 We cannot evaluate an integral that has both an $x$ and an $u$ in it. We need to convert the $x$ to an expression involving just $u$.
 
@@ -201,25 +201,21 @@ This may seem like it came out of left field, but it works beautifully. Consider
 
 We can use similar techniques to those used in Examples \ref{ex_sub6} and \ref{ex_sub7} to find antiderivatives of $\cot x$ and $\csc x$ (which the reader can explore in the exercises.) We summarize our results here.
 
-{
-\tcbset{grow to right by=20pt}
+{%
+\tcbset{grow to right by=5em}% 4 insufficient; 5 sufficient
 \begin{theorem}[Antiderivatives of Trigonometric Functions]\label{thm:triganti}
-\mbox{}\\[-\baselineskip]
+\mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{%
 \begin{multicols}{2}\index{integration!of trig. functions}\small
 	\begin{enumerate}
 	\item	$\ds \int \sin x \ dx = -\cos x +C$
 	\item	$\ds\int \cos x\ dx = \phantom{-}\sin x + C$
 	\item	$\ds \int \tan x\ dx = \ln\abs{\sec x}+C$
-%\end{enumerate}
-%\end{minipage}%
-%\begin{minipage}{.55\linewidth}\small
-%	\begin{enumerate}\addtocounter{enumi}{3}
 	\item	$\ds \int \csc x \ dx = -\ln\abs{\csc x+\cot x} +C$
 	\item	$\ds\int \sec x\ dx = \phantom{-}\ln\abs{\sec x+\tan x} + C$
 	\item	$\ds \int \cot x\ dx = \ln\abs{\sin x}+C$
 \end{enumerate}
-\end{multicols}
-\end{theorem}
+\end{multicols}}
+\end{theorem}%
 }
 
 
@@ -274,8 +270,6 @@ Observing the composition of functions, let $u=3x-1$, hence $du = 3dx$. As $3dx$
 
 By setting $u = 3x-1$, we are implicitly stating that $g(x) = 3x-1$. \autoref{thm:subst_def_int} states that the new lower bound is $g(0) = -1$; the new upper bound is $g(2) = 5$. We now evaluate the definite integral:
 
-\clearpage
-
 \mtable{Graphing the areas defined by the definite integrals of \autoref{ex_sub12}.}{fig:subst12}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={-1,1,2,3,4,5},
@@ -300,6 +294,7 @@ ymin=-1.1,ymax=1.1,xmin=-1.5,xmax=5.5]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}
 \\(b)}
+
 \begin{align*}
 	\int_1^2 \cos(3x-1) \ dx
 	&= \int_{-1}^5 \cos u \frac{du}{3} \\

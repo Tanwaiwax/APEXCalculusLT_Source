@@ -1,7 +1,7 @@
 List Of Changes
 =====================
 
-Changes for the 2020-06 version:
+Changes for the 2020-07 version:
 --------------------
 
 * A careful reading of Definition 3.3.1 shows that intervals of increasing and decreasing are usually closed within their domain.  We often had open intervals instead.
@@ -10,7 +10,9 @@ Changes for the 2020-06 version:
 
 * Anthony Bevelacqua and John Collings contributed several exercises.
 
-* All known errata (29+) have been fixed.
+* All known errata (31+) have been fixed.
+
+* After a fair bit of work (and some sweeping under the rug), we are down to two overfull hboxes and 10 undervull vboxes.
 
 Changes for the 2019-06 version:
 --------------------

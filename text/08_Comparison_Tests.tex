@@ -73,8 +73,6 @@ Consider $\ds\sum_{n=1}^\infty \frac{n^3}{n^4+1}$. It is very similar to the div
 
 Fortunately, we can apply another test to the given series to determine its convergence.
 
-\clearpage
-
 \subsection{Limit Comparison Test}
 
 \begin{theorem}[Limit Comparison Test]\label{thm:series_limit_compare}
@@ -87,17 +85,17 @@ Let $\{a_n\}$ and $\{b_n\}$ be positive sequences.
 \end{enumerate}
 \end{theorem}
 
-\begin{proof}
+\begin{proof}\vspace{-.5\baselineskip}
 \begin{enumerate}
-\item We have $0<L<\infty$ so we can find two positive numbers, $m$ and $M$ such that $m<L<M$. Because $\ds L=\lim_{n\to\infty} \frac{a_n}{b_n}$ we know that for large enough $n$ the quotient $\frac{a_n}{b_n}$ must be close to $L$. So there must be a positive integer $N$ such that if $n>N$ we also have $\ds m<\frac{a_n}{b_n}<M$. Multiply by $b_n$ and we have $mb_n<a_n<Mb_n$ for $n>N$. If $\ds \sum_{n=1}^\infty b_n$ diverges, then so does $\ds \sum_{n=1}^\infty mb_n$. Also since $mb_n<a_n$ for sufficiently large $n$, by the Comparison Test $\ds \sum_{n=1}^\infty a_n$ also diverges. \\
+\item We have $0<L<\infty$ so we can find two positive numbers, $m$ and $M$ such that $m<L<M$. Because $\ds L=\lim_{n\to\infty} \frac{a_n}{b_n}$ we know that for large enough $n$ the quotient $\frac{a_n}{b_n}$ must be close to $L$. So there must be a positive integer $N$ such that if $n>N$ we also have $\ds m<\frac{a_n}{b_n}<M$. Multiply by $b_n$ and we have $mb_n<a_n<Mb_n$ for $n>N$. If $\ds\sum_{n=1}^\infty b_n$\vspace{-.5\baselineskip} diverges, then so does $\ds \sum_{n=1}^\infty mb_n$\vspace{-.3\baselineskip}. Also since $mb_n<a_n$ for sufficiently large $n$, by the Comparison Test $\ds \sum_{n=1}^\infty a_n$\vspace{-.5\baselineskip} also diverges. \\
 Similarly, if $\ds \sum_{n=1}^\infty b_n$ converges, then so does $\ds \sum_{n=1}^\infty Mb_n$. Since $a_n<Mb_n$ for sufficiently large $n$, by the Comparison Test $\ds \sum_{n=1}^\infty a_n$ also converges.
-\item Since $\ds \lim_{n\to\infty}\frac{a_n}{b_n}=0$, there is a number $N>0$ such that 
+\item Since $\ds \lim_{n\to\infty}\frac{a_n}{b_n}=0$, there is a number $N>0$ such that\vspace{-.3\baselineskip}
 \begin{align*}
 \abs{\frac{a_n}{b_n}-0}&<1\text{ for all }n>N \\
 a_n&<b_n\text{ since }a_n\text{ and }b_n\text{ are positive}
 \end{align*}
 Now since $\ds \sum_{n=1}^\infty b_n$ converges, $\ds \sum_{n=1}^\infty a_n$ converges by the Comparison Test.
-\item Since $\ds \lim_{n\to\infty}\frac{a_n}{b_n}=\infty$, there is a number $N>0$ such that 
+\item Since $\ds \lim_{n\to\infty}\frac{a_n}{b_n}=\infty$, there is a number $N>0$ such that\vspace{-.5\baselineskip}
 \begin{align*}
 \frac{a_n}{b_n}&>1\text{ for all }n>N \\
 a_n&>b_n\text{ for all }n>N 
@@ -106,10 +104,9 @@ Now since $\ds \sum_{n=1}^\infty b_n$ diverges, $\ds \sum_{n=1}^\infty a_n$ dive
 \end{enumerate}
 \end{proof}
 
-
 \autoref{thm:series_limit_compare} is most useful when the convergence of the series from $\{b_n\}$ is known and we are trying to determine the convergence of the series from $\{a_n\}$. 
 
-We use the Limit Comparison Test in the next example to examine the series $\ds\sum_{n=1}^\infty \frac{n^3}{n^4+1}$ which motivated this new test.\\
+We use the Limit Comparison Test in the next example to examine the series $\ds\sum_{n=1}^\infty \frac{n^3}{n^4+1}$ which motivated this new test.
 
 \begin{example}[Applying the Limit Comparison Test]\label{ex_lct1}
 Determine the convergence of $\ds\sum_{n=1}^\infty \frac{n^3}{n^4+1}$ using the Limit Comparison Test.
@@ -118,7 +115,7 @@ We compare the terms of $\ds\sum_{n=1}^\infty \frac{n^3}{n^4+1}$ to the terms of
 \begin{align*}
 	\lim_{n\to\infty}\frac{{n^3}/(n^4+1)}{1/n}
 	&= \lim_{n\to\infty} \frac{n^4}{n^4+1}= \lim_{n\to\infty} \frac{1}{1+1/n^4} \\
-	&= 1.
+	&= 1.\vspace{-.5\baselineskip}
 \end{align*}
 Since the Harmonic Series diverges, we conclude that $\ds\sum_{n=1}^\infty \frac{n^3}{n^4+1}$ diverges as well.
 \end{example}
@@ -128,7 +125,8 @@ Determine the convergence of $\ds\sum_{n=1}^\infty \frac1{3^n-n^2}$
 \solution
 This series is similar to the one in \autoref{ex_dct1}, but now we are considering ``$3^n-n^2$'' instead of ``$3^n+n^2$.'' This difference makes applying the Direct Comparison Test difficult.
 
-Instead, we use the Limit Comparison Test and compare with the series $\ds\sum_{n=1}^\infty \frac1{3^n}$:
+Instead, we use the Limit Comparison Test %and compare
+with the series $\ds\sum_{n=1}^\infty \frac1{3^n}$:
 \begin{align*}
 	\lim_{n\to\infty}\frac{1/(3^n-n^2)}{1/3^n}
 	&= \lim_{n\to\infty}\frac{3^n}{3^n-n^2} \\

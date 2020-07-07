@@ -97,7 +97,7 @@ Often, we do not know which function is greater (or they switch within the domai
 Find the area of the region bounded by $f(x) = \sin x+2$, $g(x) = \frac12\cos (2x)-1$, $x=0$ and $x=4\pi$, as shown in \autoref{fig:abc1}.
 \solution
 \mtable{Graphing an enclosed region in \autoref{ex_abc1}.}{fig:abc1}{\begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,extra x ticks={12.57},
 extra x tick labels={$4\pi$},ymin=-2,ymax=3.5,xmin=-.5,xmax=13.5]
 \addplot[smooth,draw={\coloronefill},fill={\coloronefill},area style,domain=0:4*pi]
@@ -129,7 +129,7 @@ Find the area of the region enclosed by $y=x^2+x-5$ and $y=3x-2$.
 \solution
 It will help to sketch these two functions, as done in \autoref{fig:ftc6}. 
 \mtable{Sketching the region enclosed by $y=x^2+x-5$ and $y=3x-2$ in \autoref{ex_ftc6}.}{fig:ftc6}{\begin{tikzpicture}
-\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={-2,-1,1,2,3,4},
 ytick={5,10,15},ymin=-10,ymax=16,xmin=-2.5,xmax=4.5]
 \addplot [smooth,thick, draw={\colorone},domain=-2:4] {x^2+x-5}; 
@@ -200,11 +200,6 @@ The previous example makes note that we are expecting area to be \emph{positive}
 
 The previous example also demonstrates that we often have to break a given region into subregions before applying \autoref{thm:areabetweencurves}. The following example shows another situation where this is applicable, along with an alternate view of applying the Theorem.
 
-\begin{example}[Finding area: integrating with respect to $y$]\label{ex_abc3}
-Find the area of the region enclosed by the functions $y=\sqrt{x}+2$, $y=-(x-1)^2+3$ and $y=2$, as shown in \autoref{fig:abc3}.
-\solution
-We give two approaches to this problem. In the first approach, we notice that the region's ``top'' is defined by two different curves. On $[0,1]$, the top function is $y=\sqrt{x}+2$; on $[1,2]$, the top function is $y=-(x-1)^2+3$. Thus we compute the area as the sum of two integrals:
-
 \mtable{Graphing a region for \autoref{ex_abc3}.}{fig:abc3}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2},
@@ -221,6 +216,11 @@ ymin=-.1,ymax=3.5,xmin=-.1,xmax=2.5]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
+\begin{example}[Finding area: integrating with respect to $y$]\label{ex_abc3}
+Find the area of the region enclosed by the functions $y=\sqrt{x}+2$, $y=-(x-1)^2+3$ and $y=2$, as shown in \autoref{fig:abc3}.
+\solution
+We give two approaches to this problem. In the first approach, we notice that the region's ``top'' is defined by two different curves. On $[0,1]$, the top function is $y=\sqrt{x}+2$; on $[1,2]$, the top function is $y=-(x-1)^2+3$. Thus we compute the area as the sum of two integrals:
+
 \begin{align*}
 	\text{Total Area}
 	&= \int_0^1 \Bigl(\bigl(\sqrt{x}+2\bigr)-2\Bigr)\ dx + \int_1^2 \Bigl(\bigl(-(x-1)^2+3\bigr)-2\Bigr)\ dx \\
@@ -235,11 +235,7 @@ y=\sqrt{x}+2 & \quad\Rightarrow\quad x=(y-2)^2 \\
 y=-(x-1)^2+3 & \quad\Rightarrow\quad x=\sqrt{3-y}+1.
 \end{align*}
 
-\autoref{fig:abc3b} shows the region with the boundaries relabeled. A
-% differential element, a
-horizontal rectangle is also pictured. The width of the rectangle is a small change in $y$: $\Delta y$. The height of the rectangle is a difference in $x$-values. The ``top'' $x$-value is the largest value, i.e., the rightmost. The ``bottom'' $x$-value is the smaller, i.e., the leftmost. Therefore the height of the rectangle is
-%
-\mtable[-4\baselineskip]{The region used in \autoref{ex_abc3} with boundaries relabeled as functions of $y$.}{fig:abc3b}{\begin{tikzpicture}
+\mtable{The region used in \autoref{ex_abc3} with boundaries relabeled as functions of $y$.}{fig:abc3b}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2},
 ymin=-.1,ymax=3.5,xmin=-.1,xmax=2.5]
@@ -255,7 +251,10 @@ ymin=-.1,ymax=3.5,xmin=-.1,xmax=2.5]
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}	
-%
+
+\autoref{fig:abc3b} shows the region with the boundaries relabeled. A
+% differential element, a
+horizontal rectangle is also pictured. The width of the rectangle is a small change in $y$: $\Delta y$. The height of the rectangle is a difference in $x$-values. The ``top'' $x$-value is the largest value, i.e., the rightmost. The ``bottom'' $x$-value is the smaller, i.e., the leftmost. Therefore the height of the rectangle is
 \[\bigl(\sqrt{3-y}+1\bigr) - (y-2)^2.\]
 
 The area is found by integrating the above function with respect to $y$ with the appropriate bounds. We determine these by considering the $y$-values the region occupies. It is bounded below by $y=2$, and bounded above by $y=3$. That is, both the ``top'' and ``bottom'' functions exist on the $y$ interval $[2,3]$. Thus

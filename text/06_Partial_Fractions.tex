@@ -51,7 +51,7 @@ Partial fraction decomposition is based on an algebraic theorem that guarantees 
 The following Key Idea states how to decompose a rational function into a sum of rational functions whose denominators are all of lower degree than $q$.
 
 {
-\tcbset{grow to right by=60pt}
+\tcbset{grow to right by=6em}
 \begin{keyidea}[Partial Fraction Decomposition]\label{idea:partial_fraction}
 Let $\dfrac{p(x)}{q(x)}$ be a rational function, where $\deg(p)<\deg(q)$.
 \begin{enumerate}
@@ -75,7 +75,7 @@ Let $\dfrac{p(x)}{q(x)}$ be a rational function, where $\deg(p)<\deg(q)$.
 		\]
 		\item Multiply this equation by the factored form of $q(x)$ and simplify to clear the denominators. 
 		\item Solve for the coefficients $A_i, B_i,$ and $C_i$ by
-		\lxenumerate{label=(\alph*)}
+		\begin{enumerate}
 			\item multiplying out the remaining terms and collecting like powers of $x$, equating the resulting coefficients and solving the resulting system of linear equations, \textbf{or}
 			\item substituting in values for $x$ that eliminate terms so the simplified equation can be solved for a coefficient.
 		\end{enumerate}
@@ -102,13 +102,12 @@ The $x^2+x+2$ term in the denominator results in a $\ds\frac{Ex+F}{x^2+x+2}$ ter
 
 Finally, the $(x^2+x+7)^2$ term results in the terms
 \[\frac{Gx+H}{x^2+x+7}\quad \text{and}\quad \frac{Ix+J}{(x^2+x+7)^2}.\]
-All together, we have\\
-\flushinnerequ{%
+All together, we have
 \begin{multline*}
 	\frac{1}{(x+5)(x-2)^3(x^2+x+2)(x^2+x+7)^2}= \\
-	\frac{A}{x+5} + \frac{B}{x-2}+ \frac{C}{(x-2)^2}+\frac{D}{(x-2)^3}+
+	\frac{A}{x+5} + \frac{B}{x-2}+ \frac{C}{(x-2)^2}+\frac{D}{(x-2)^3}+\\
 	\frac{Ex+F}{x^2+x+2}+\frac{Gx+H}{x^2+x+7}+\frac{Ix+J}{(x^2+x+7)^2}
-\end{multline*}}\\
+\end{multline*}
 Solving for the coefficients $A$, $B$, \dots, $J$ would be a bit tedious but not ``hard.''  In the next example we demonstrate solving for the coefficients using both methods given in \autoref{idea:partial_fraction}.
 \end{example}
 
@@ -264,7 +263,7 @@ The integrand $\dfrac{2x-1}{x^2+6x+11}$ has a quadratic in the denominator and a
 	\frac{2x-1}{x^2+6x+11} &= \frac{2x-1+7-7}{x^2+6x+11} \\
 	&= \frac{2x+6}{x^2+6x+11} - \frac{7}{x^2+6x+11}.
 \end{align*}
-We can now integrate the first term with substitution, leading to a $\ln\abs{x^2+6x+11}$ term. The final term can be integrated using arctangent. First, complete the square in the denominator:
+We can now integrate the first term with substitution, yielding $\ln\abs{x^2+6x+11}$. The final term can be integrated using arctangent. First, complete the square in the denominator:
 \[\frac{7}{x^2+6x+11} = \frac{7}{(x+3)^2+2}.\]
 An antiderivative of the latter term can be found using \autoref{idea:trigsub} and substitution:
 \[

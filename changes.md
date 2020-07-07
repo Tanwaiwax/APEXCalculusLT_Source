@@ -1,6 +1,8 @@
 List Of Changes
 =====================
 
+Individual errors are detailed in [the errata directory](errata/)
+
 Changes for the 2020-07 version:
 --------------------
 

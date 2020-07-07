@@ -3,6 +3,11 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{booktabs}
 \usepackage{url}
+\usepackage{refcount}
+\usepackage{etoolbox}
+
+\newtoggle{maketable}
+\toggletrue{maketable}
 
 \title{Errata to Apex LT}
 \date{\today}
@@ -14,28 +19,59 @@
 \DeclareMathOperator{\divv}{div}
 
 \makeatletter
-\newcommand{\errorcount}[1]{%
+\newcommand{\errorboxed}[1]{%
  \@ifundefined{r@#1plus}{%
   \@ifundefined{r@#1}{%
   }{% plusless defined
-   \makebox[2em][r]{\ref{#1}\phantom{+}}
+   \makebox[2em][r]{\ref{#1}\phantom{+}}%
+  }%
+ }{% plus defined
+  \makebox[2em][r]{\ref{#1plus}{+}}%
+ }%
+}
+% as part of a write, errortext needs to be expandable
+% getrefnumber is. ref isn't
+\newcommand{\errortext}[1]{%
+ \@ifundefined{r@#1plus}{%
+  \@ifundefined{r@#1}{%
+  }{% plusless defined
+   \getrefnumber{#1}%
   }
  }{% plus defined
-  \makebox[2em][r]{\ref{#1plus}{+}}
+   \getrefnumber{#1plus}+%
  }
-}
-\newcommand{\reforzero}[1]{%
- \@ifundefined{r@#1}{0}{\ref{#1}}%
 }
 \makeatother
 
 \newcommand{\errorrow}[1]{%
- #1 & \errorcount{#1I} & \errorcount{#1II} & \errorcount{#1III}
+ #1 & \errorboxed{#1I} & \errorboxed{#1II} & \errorboxed{#1III}
+ \iftoggle{maketable}{
+  \write\markdown{#1|\errortext{#1I}|\errortext{#1II}|\errortext{#1III}}
+ }{}
 }
+
+\iftoggle{maketable}{
+ \newwrite\markdown
+ \openout\markdown=README.md
+ \write\markdown{Errata Totals}
+ \write\markdown{=====================}
+ \write\markdown{}
+ \write\markdown{If you are interested in a particular error, you can look through [Errata.tex](Errata.tex) (or compile it to Errata.pdf).  That will also list the total number of errors for each edition, which we repeat here:}
+ \write\markdown{}
+ \write\markdown{Version | Calculus I | Calculus II | Calculuc III}
+ \write\markdown{---|---|---|---}
+ %
+ \AtEndDocument{
+  \write\markdown{}
+  \write\markdown{"+" indicates a systemic error.\space\space}
+  \write\markdown{(The totals for a row may be higher than what's listed in [changes.md](../changes.md) due to double counting.)}
+  \closeout\markdown
+ }
+}{}
 
 \begin{document}
 
-\vspace*{-.6in}
+%\vspace*{-.6in}
 
 \maketitle
 
@@ -90,7 +126,7 @@ The following errors exist in the in June 2019 printed version of Apex LT Calcul
 \label{2019-06-00IIIplus}
 \end{enumerate}
 
-\begin{table}[h]
+\begin{table}[ht]
 \caption{Errata Tally (``+'' indicates systemic errata)}
 \begin{tabular}{lccc}\toprule
 Version & Calculus I & Calculus II & Calculus III \\\midrule
@@ -116,8 +152,8 @@ The following errors exist in the July 13, 2018 printed version of Apex LT Calcu
 \label{2018-07-13}
 \end{enumerate}\bigskip
 
-In addition to 1--\ref{2018-07-13}, the following errors exist in the July 13, 2018 printed version of Apex LT Calculus I:\\[-2\baselineskip]
-\begin{enumerate}\setcounter{enumi}{\reforzero{2018-07-13}}
+In addition to 1--\ref{2018-07-13}, the following errors exist in the July 13, 2018 printed version of Apex LT Calculus I:
+\begin{enumerate}\setcounter{enumi}{\getrefnumber{2018-07-13}}
 \item \S1.1 p12 Line 8: $\sin(x)/x$ should be $\sin(1/x)$.
 \item \S2.0 p75 Example 2.0.5 Solution part 2: $(1+2(x-3))$ should be $(x+2(x-3))$, with subsequent appropriate changes.
 %\item \S2.3 p101 Line 6: ``linear function'' should be pluralized.
@@ -174,7 +210,7 @@ In addition to 1--\ref{2018-07-13}, the following errors exist in the July 13, 2
 %\newpage
 
 In addition to 1--\ref{2018-07-13}, the following errors exist in the July 13, 2018 printed version of Apex LT Calculus II:
-\begin{enumerate}\setcounter{enumi}{\reforzero{2018-07-13}}
+\begin{enumerate}\setcounter{enumi}{\getrefnumber{2018-07-13}}
 \item It turns out that the units newton and joule are not capitalized.
 \item \S7.2 Example 7.2.2 solution part 3: The derivative is $\dfrac{-\sin x}{\abs{\sin x}}$.
 \item \S7.2 Example 7.2.3 solution part 2: The first integral is missing its $dx$.
@@ -235,7 +271,7 @@ The proof needs $I$ to be an open interval.  The maximum is then over all $z$ be
 \end{enumerate}\bigskip
 
 In addition to 1--\ref{2018-07-13}, the following errors exist in the July 13, 2018 printed version of Apex LT Calculus III:
-\begin{enumerate}\setcounter{enumi}{\reforzero{2018-07-13}}
+\begin{enumerate}\setcounter{enumi}{\getrefnumber{2018-07-13}}
 \item It turns out that the units newton and joule are not capitalized.
 \item \S11.1\#29,30: The subsequent image has clipped the problem statement.\\
  \#29 should have (a) $\ds x=y^2+\frac{z^2}{9}$; (b) $\ds x=y^2+\frac{z^2}{3}$.\\
@@ -378,7 +414,7 @@ In addition to the previous, the following errors exist in the Summer 2017 print
 In addition to the previous, the following errors exist in the Summer 2017 printed version of Apex LT Calculus III:
 \begin{enumerate}
 \item The solution to \S11.1\#13 should also include where the coordinate is 0.
-\item The solution to \S11.1\#19 should be $x^2+z^2=\frac1{(1+y^2)^2}$.\\[-.8\baselineskip]
+\item The solution to \S11.1\#19 should be $x^2+z^2=\frac1{(1+y^2)^2}$.\vspace{-.2\baselineskip}
 \item The solution to \S11.2\#7 should be $4\hat\imath-4\hat\jmath$.
 \item \S11.4 p688 Line 3: ``face opposite face'' should be ``opposite face''.
 \item \S11.4 p690 Lines 4\&8: $\sin-15^\circ=\frac{5(1-\sqrt3)}{\sqrt2}$

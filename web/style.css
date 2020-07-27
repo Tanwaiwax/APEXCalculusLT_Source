@@ -29,7 +29,7 @@ notes.  We typeset them as figures in order to get captions to work.
 /* The blue line to the left of each example. We use a linear gradient to go a
  * little along the bottom. To truly match, we shouldn't have the line to the
  * left of the example title. But that seems to require nesting two divs. */
-.ltx_theorem_exampleEnv {
+.ltx_theorem_example {
     padding-left: 1em;
     border-width: 0 0 2px 2px;
     border-style: solid;
@@ -45,6 +45,9 @@ notes.  We typeset them as figures in order to get captions to work.
 
 .ltx_theorem .ltx_title {
     margin-top: .5em;
+}
+.ltx_theorem .ltx_title > span.ltx_text.ltx_parbox.ltx_font_bold.ltx_align_top:first-child {
+    margin-right: 2em;
 }
 
 /*.exampleNum,*/
@@ -62,16 +65,17 @@ a.permaLink {
     margin-left: .5em;
 }
 
-figure.marginnote:hover a.permaLink,
-h6.ltx_title.ltx_title_theorem:hover a.permaLink {
+/*figure.marginnote:hover a.permaLink,*/
+h6.ltx_title.ltx_title_theorem:hover a.permaLink,
+span.ltx_figure:hover span.ltx_caption a.permaLink {
     visibility: visible;
 }
 
+/*
 .marginbox table td {
     display: table-row;
 }
 
-/*
 .mnote > * {
     font-size: smaller;
 }
@@ -85,7 +89,8 @@ h6.ltx_title.ltx_title_theorem:hover a.permaLink {
     text-indent: 0;
 }
 
-figcaption {
+/*figcaption,*/
+span.ltx_caption {
     font-size: smaller;
 }
 

@@ -1,0 +1,120 @@
+% !TEX program = XeLaTeX
+%\errorcontextlines 10000
+
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass[10pt]{book}
+
+%\showthe\baselineskip % 12pt
+\input{headers/APEX_format}
+%\showthe\marginparwidth % 150pt
+\usepackage{headers/apex_style}
+\input{headers/Header_Calculus}
+%\showthe\defaultaddspace % 5pt
+
+\newcommand{\thetitle}{Standalone}
+
+\printallanswers
+\printincolor
+\usetwoDgraphics
+%\usethreeDgraphics
+
+\begin{document}
+
+\frontmatter
+
+\input{text/front_matter_and_cover}
+
+\mainmatter
+
+\part*{Calculus I}
+
+\apexchapter[text/01_Prerequisite]{Limits}{ch:label}
+
+Some intro stuff.
+\chapterautorefname
+\sectionautorefname
+\figureautorefname
+\appendixname
+
+\section{The section}
+
+\begin{tikzpicture}
+  \matrix[row sep=1mm,column sep=3mm,ampersand replacement=\&]{
+    \&\&\& \node (tp1) {$-2$}; \&\& \node (tp2) {$2$}; \\[-1ex]
+    \node(linestart) {$x$}; \&\&\&\&\&\&\& \node(lineend) {}; \\[-1ex]
+    \&\node (fstart) {$x^2-4$}; \& \node {$+$}; \&\& \node {$-$}; \&\& \node {$+$}; \\
+  };
+  \draw [<->] (linestart.east) -- (lineend);
+  \draw (fstart.south west) -- (lineend.west |- fstart.south);
+  \draw (fstart.east |- lineend) -- (fstart.east|-fstart.south);
+  \foreach \x in {1,2} {
+    \draw (tp\x|-linestart)+(0,5pt) -- (tp\x |- fstart.south);
+  }
+\end{tikzpicture}
+
+\[a+b=c\label{myeq}\]
+That was \autoeqref{myeq} aka Equation \eqref{myeq}.
+
+\begin{description}[leftmargin=0pt]
+\item[One] One.
+\end{description}
+
+\begin{tikzpicture}[x=.3cm,y=.3cm,>=stealth]
+\begin{scope}[xscale=2]
+ \ifbool{latexml}{\draw[thick,fill=\coloronefill!60]}{\draw[thick,left color={\coloronefill},right color={\coloronefill!20}]}
+ (-2,10) -- (-2,0) arc (180:360:2) -- (2,10);
+ \ifbool{latexml}{\draw[thick,fill=\coloronefill!65]}{\draw[thick,left color={\coloronefill!30},right color={\coloronefill}]}
+ (0,10)circle(2);
+\draw [thick] (0,12) circle (2);
+\draw [thick](-2,12)--(-2,10) (2,12)--(2,10);
+\draw [dashed,thick] (-2,0) arc (180:0:2);
+\draw (0,0) -- node [above,pos=.5] {\scriptsize 2 ft} (2,0);
+\end{scope}
+\begin{scope}[shift={(5,0)}]
+\draw (-.5,0) -- (.5,0) (-.5,10) -- (.5,10)
+ (0,0) -- node [pos=.5,fill=white,rotate=90] {\scriptsize 10 ft} (0,10);
+\end{scope}
+\end{tikzpicture}
+
+Compare: % see 09_Parametric_Equations.tex
+\[
+\begin{gathered}\text{Choose}\\t\end{gathered}
+\begin{gathered}\nearrow\\\\\searrow\end{gathered}
+\begin{gathered}
+\text{Use a function}\\f\text{ to find }x\\\bigl(x=f(t)\bigr)\\\\
+\text{Use a function}\\g\text{ to find }y\\\bigl(y=g(t)\bigr)
+\end{gathered}
+\begin{gathered}\searrow\\\\\nearrow\end{gathered}
+\begin{gathered}\text{Plot point}\\(x,y)\end{gathered}
+\]
+to:
+\begin{center}
+\begin{tikzpicture}[>=latex]
+\draw (0,0) node (A) [align=center] {Choose \\$t$} 
+      (3,1) node[align=center] (B1) {Use a function\\ $f$ to find $x$\\$\bigl(x=f(t)\bigr)$}
+			(3,-1) node[align=center] (B2) {Use a function\\ $g$ to find $y$\\$\bigl(y=g(t)\bigr)$}
+			(6.25,0) node [align=center] (C) {Plot point \\ $(x,y)$};
+\draw [->](A) --(B1);
+\draw [->](A) --(B2);
+\draw [->](B1) -- (C);
+\draw [->](B2) -- (C);
+\end{tikzpicture}
+\end{center}
+
+% in 11_Vector_Tangent_Normal.tex
+At one point we define $a_\mathrm{T}$
+\index{at@$a_{\mathrm{T}}$}\index{unit tangent vector!at@$a_{\mathrm{T}}$}%
+
+\printexercises{exercises/14_04_exercises}
+
+\appendix
+
+\printsolutions{Standalone Solutions To All Problems}
+
+\printindex
+
+%\backmatter
+%
+%\input{text/Inside_Cover_Of_The_Text_Material_Complete}
+
+\end{document}

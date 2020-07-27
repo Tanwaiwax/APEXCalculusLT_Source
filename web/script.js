@@ -21,7 +21,8 @@ function setup() {
     spaceOutMarginBoxes();
     addPermaLinkFor('.ltx_theorem[id]:has(>h6.ltx_title.ltx_title_theorem)',
 		    'h6.ltx_title.ltx_title_theorem');
-    addPermaLinkFor('figure.marginnote','figcaption');
+    //addPermaLinkFor('figure.marginnote','figcaption');
+    addPermaLinkFor('span.ltx_figure','span.ltx_caption')
     if ( $('section.ltx_index ul.ltx_indexlist').length ) {
 	// add an A-Z to the index
 	$('section.ltx_index ul.ltx_indexlist li.ltx_indexentry')
@@ -35,16 +36,18 @@ function setup() {
 }
 
 function addPermaLinkFor(parents,child) {
-    $(parents).each(function() {
+    $(parents+':has(>'+child+')').each(function() {
 	$(this).children(child).first()
 	    .append('<a class="permaLink" title="Permalink" href="#'+this.id+'">\u00B6</a>');
     });
 }
 
+/*
 function addPermaLink() {
     $(this).children('h6.ltx_title.ltx_title_theorem,figcaption').first()
 	.append('<a class="permaLink" title="Permalink" href="#'+this.id+'">\u00B6</a>');
 }
+*/
 
 function spaceOutMarginBoxes() {
     lastMarginBoxBottom = 0;

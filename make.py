@@ -324,7 +324,7 @@ def getlatexmlbin(exe):
     
 def getlatexmlcommandline(base='Calculus'):
     ret = [getlatexmlbin('latexml'),
-           '--verbose','--verbose',#'--quiet',#
+           #'--quiet',#'--verbose','--verbose',#
            '--destination='+base+'.xml',
            '--nocomments',
            base]
@@ -403,7 +403,8 @@ def minimizePdf(filename):
     print(message,'')
     loginfo.append(message)
 
-def lc(input:str) -> str:
+def lc(input):
+    # type (str) -> str
     return input[0].lower()+input[1:]
 
 def writemisspellings():

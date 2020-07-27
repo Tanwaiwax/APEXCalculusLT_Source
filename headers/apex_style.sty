@@ -47,6 +47,103 @@
 %   }%
 %}}
 
+
+\usepackage{titletoc}
+\titlecontents{part}[0pt]
+	{\vspace{3ex}}
+	{no numbered parts}
+	{\large\bfseries}
+	{\titlerule*[1em]{ }}
+
+% titlesec (and titleformat) is available to latexml,
+% but the formatting leaks into the TOC and the header
+\usepackage[newparttoc]{titlesec} % apparently conflicts with hyperref?  :(
+% but: ``unsolved is the anchor setting, missing with unnumbered section,
+% perhaps problems with page breaks with numbered ones''
+% if I'm not seeing those problems, maybe just continue
+
+\newcommand{\leftparbox}[2]{\parbox[t]{#1}{\raggedright#2}}
+% I couldn't get the raggedright to take otherwise
+
+\titleformat{\part}[block]
+   {\Huge\bfseries\filcenter} % commands on the entire thing
+   {} % don't use a label
+   {0em} % space between (non?)label and title
+   {\thispagestyle{empty}} % command for the page
+
+\titleformat{\chapter}[block]
+	{\hyphenpenalty=10000\relax\Huge\scshape\textsc} % commands on the entire thing
+	{\thechapter:} % the label
+	{.4em} % space between label and title
+	{\leftparbox{11em}} % command taking the title
+	[\addvspace{2ex}\titlerule] % afterward
+\titlespacing*{\chapter}{0pt}{0pt}{2ex}
+
+%\titleformat{\section}
+%  {\normalfont\Large\bfseries} % commands on the entire thing
+%  {\thesection} % the label
+%  {1em} % space between label and title
+%  {} % command taking the title (only actual difference)
+
+
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable,skins,theorems}
+
+\tcolorboxenvironment{example}{
+    empty,
+    size=minimal,
+    breakable,
+    parbox=false,
+    beforeafter skip=\boxskipamount,
+    enlargepage flexible=3\baselineskip,
+    lines before break=5,
+    before upper={\setlength{\parindent}{\saveparindent}\noindent},
+    boxsep=0pt,
+    bottom=.5ex,
+    overlay unbroken={
+     \node[xshift=-2\marginlinelength,yshift=-.5\baselineskip]
+      (start\arabic{example})at(frame.north west){};
+     \node[xshift=1em](stop\arabic{example})at(frame.south west){};
+     \draw[thick,\thelinecolor](start\arabic{example})|-(stop\arabic{example});
+    },
+    overlay first={
+     \node[xshift=-2\marginlinelength,yshift=-.5\baselineskip]
+      (start\arabic{example})at(frame.north west){};
+     \node[xshift=-2\marginlinelength,yshift=-2\baselineskip]
+      (stop\arabic{example})at(frame.south west){};
+     \draw[thick,\thelinecolor](start\arabic{example})--(stop\arabic{example});
+    },
+    overlay middle={
+     % a middle has only one on a page, so we don't need other suffixes
+     \node[xshift=-2\marginlinelength,yshift=.5\baselineskip]
+      (start)at(frame.north west){};
+     \node[xshift=-2\marginlinelength,yshift=-2\baselineskip]
+      (stop)at(frame.south west){};
+     \draw[thick,\thelinecolor](start)--(start|-stop);
+    },
+    overlay last={
+     \node[xshift=-2\marginlinelength,yshift=.5\baselineskip]
+      (start\arabic{example})at(frame.north west){};
+     \node[xshift=1em](stop\arabic{example})at(frame.south west){};
+     \draw[thick,\thelinecolor](start\arabic{example})|-(stop\arabic{example});
+    },
+}
+
+% large shrinkable space can conspire with a bad page break to cause text to overlap
+% see https://tex.stackexchange.com/a/551585/107497 by Thomas F. Sturm
+%\makeatletter
+\def\tcb@split@force@last{%
+  \tcb@split@setstate@last%
+  \ifdim\tcb@h@total>\tcb@h@page\relax%
+    \gdef\tcb@after@lastbox{\clearpage}%
+    \tcbdimto\kvtcb@bbbottom{\kvtcb@bbbottom+\tcb@h@page-\tcb@h@total}%
+  \fi%
+}
+%\makeatother
+
+
+
+
 % only in .ltxml
 \newcommand{\iframe}[3]{}
 \newcommand{\makeStyles}[2]{}
@@ -251,9 +348,7 @@
   \refstepcounter{chapter}%
   \pdfbookmark[chapter]{\thechapter\ #2}{#3}
   \addtocounter{section}{-1}%
-  \ifbool{latexml}{}{%
-   \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}%
-  }
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}%
   \let\oldsection=\section
   \bgroup
    \renewcommand{\section}[1]{%
@@ -262,9 +357,7 @@
    }
    \input{#1}%
   \egroup
-  \ifbool{latexml}{}{%
-   \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}%
-  }
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}%
   \restoregeometry
   % the grouping intercepted the restoregeometry at the end of the prereq's exercises
   \chapter*{\thechapter: #2}\label{#3}

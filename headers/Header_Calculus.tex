@@ -1,3 +1,21 @@
+
+\newspecialbox{definition}{Def\-i\-ni\-tion}{60}
+% draw = yellow!95!black!60 = Hsb( 60,.59,.97)
+% topc = white!95!yellow    = Hsb( 60,.05,1)
+% botc = yellow!90!black!30 = Hsb( 60,.28,.97)
+
+\newspecialbox{theorem}{The\-o\-rem}{120}
+% draw = green!30!black!50  = Hsb(120,.23,.65)
+% topc = white!95!green     = Hsb(120,.05,1)
+% botc = green!60!black!20  = Hsb(120,.13,.92)
+
+\newspecialbox{keyidea}{Key I\-dea}{0}
+% draw = red!30!black!50    = Hsb(  0,.23,.65)
+% topc = white!95!red       = Hsb(  0,.05,1)
+% botc = red!60!black!20    = Hsb(  0,.13,.92)
+
+
+
 \newtoggle{abridgeConics}
 \toggletrue{abridgeConics}
 
@@ -61,40 +79,6 @@
 }
 
 
-
-\usepackage[newparttoc]{titlesec} % apparently conflicts with hyperref?  :(
-% but: ``unsolved is the anchor setting, missing with unnumbered section,
-% perhaps problems with page breaks with numbered ones''
-% if I'm not seeing those problems, maybe just continue
-\usepackage{titletoc}
-
-\newcommand{\leftparbox}[2]{\parbox[t]{#1}{\raggedright#2}}
-% I couldn't get the raggedright to take otherwise
-
-\titleformat{\part}[block]
-   {\Huge\bfseries\filcenter} % commands on the entire thing
-   {} % don't use a label
-   {0em} % space between (non?)label and title
-   {\thispagestyle{empty}} % command for the page
-\titlecontents{part}[0pt]
-	{\vspace{3ex}}
-	{no numbered parts}
-	{\large\bfseries}
-	{\titlerule*[1em]{ }}
-
-\titleformat{\chapter}[block]
-	{\hyphenpenalty=10000\relax\Huge\scshape\textsc} % commands on the entire thing
-	{\thechapter:} % the label
-	{.4em} % space between label and title
-	{\leftparbox{11em}} % command taking the title
-	[\addvspace{2ex}\titlerule] % afterward
-\titlespacing*{\chapter}{0pt}{0pt}{2ex}
-
-%\titleformat{\section}
-%  {\normalfont\Large\bfseries} % commands on the entire thing
-%  {\thesection} % the label
-%  {1em} % space between label and title
-%  {} % command taking the title (only actual difference)
 
 \let\oldmainmatter\mainmatter
 \renewcommand{\mainmatter}{%
@@ -260,7 +244,12 @@
 		\caption{#2}\label{#3}}%
 }
 
-\usepackage[noadjust]{marginnote}
+\ifbool{latexml}{
+ \newcommand{\ignoreoptional}[1][]{}
+ \newcommand{\marginnote}[1]{\marginpar{#1}\ignoreoptional}
+}{
+ \usepackage[noadjust]{marginnote}
+}
 
 % \mnote[offset=0]{contents}
 \newcommand*{\mnote}[2][0pt]{%
@@ -331,48 +320,50 @@
 	}
 	{}
 
-%\usepackage[american]{babel}
-\usepackage{polyglossia}
-\setdefaultlanguage[variant=usmax]{english}
-\renewcommand*{\englishhyphenmins}{22}
-\AfterEndPreamble{
-\hyphenation{%
- an-ti-der-iv-a-tive
- an-ti-der-iv-a-tives
- app-rox-i-mate
- cen-tered
- chang-es
- con-struc-tions
- de-creas-es
- Der-iv-a-tive
- der-iv-a-tive
- dis-place-ment
- dis-tance
- e-qual-ly
- ex-am-ples
- Func-tions
-% Hô-pi-tal % doesn't hyphenate L'Hôpital's
- im-pli-cit
- in-dis-tin-guish-a-ble
- in-fall-i-ble
-% %L'Hô-pi-tal's % ' causes: ! Not a letter.
-% % see https://tex.stackexchange.com/a/165091/107497 for fix and pitfalls
- meth-od
- of-ten
- proc-ess
- re-fer-ring
- qua-dra-tic
- sa-li-ent
- se-quence
- sketch-ing
- smart-er
- sub-sti-tute
- The-o-rem
- Trig-o-no-me-tric
- trig-o-no-me-tric
- wheth-er
-}}
-
+\ifbool{latexml}{
+ \usepackage[american]{babel}
+}{
+ \usepackage{polyglossia}
+ \setdefaultlanguage[variant=usmax]{english}
+ \renewcommand*{\englishhyphenmins}{22}
+ \AfterEndPreamble{
+ \hyphenation{%
+  an-ti-der-iv-a-tive
+  an-ti-der-iv-a-tives
+  app-rox-i-mate
+  cen-tered
+  chang-es
+  con-struc-tions
+  de-creas-es
+  Der-iv-a-tive
+  der-iv-a-tive
+  dis-place-ment
+  dis-tance
+  e-qual-ly
+  ex-am-ples
+  Func-tions
+ % Hô-pi-tal % doesn't hyphenate L'Hôpital's
+  im-pli-cit
+  in-dis-tin-guish-a-ble
+  in-fall-i-ble
+ % %L'Hô-pi-tal's % ' causes: ! Not a letter.
+ % % see https://tex.stackexchange.com/a/165091/107497 for fix and pitfalls
+  meth-od
+  of-ten
+  proc-ess
+  re-fer-ring
+  qua-dra-tic
+  sa-li-ent
+  se-quence
+  sketch-ing
+  smart-er
+  sub-sti-tute
+  The-o-rem
+  Trig-o-no-me-tric
+  trig-o-no-me-tric
+  wheth-er
+ }}
+}
 
 % lets try to reduce bad boxes
 \usepackage{microtype}
@@ -417,7 +408,9 @@
 	unicode,
     pdflang=EN-US
 }
-\usepackage{bookmark}
+\ifbool{latexml}{}{
+ \usepackage{bookmark}
+}
 
 
 % hyperref changes these

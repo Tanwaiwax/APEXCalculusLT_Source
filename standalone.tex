@@ -1,7 +1,9 @@
 % !TEX program = XeLaTeX
 %\errorcontextlines 10000
 
-\RequirePackage[l2tabu, orthodox]{nag}
+% this is not standalone
+% this is latexmlAlts to test if we need alternative latexml commands
+
 \documentclass[10pt]{book}
 
 \input{headers/APEX_format}
@@ -15,36 +17,121 @@
 \usetwoDgraphics
 %\usethreeDgraphics
 
+\renewcommand{\printexercises}[1]{}
+\renewcommand{\printsolutions}[1]{}
+
 \begin{document}
 
-%\frontmatter
-%
+\frontmatter
+
 %\input{text/front_matter_and_cover}
+ \label{lxApexTOC}
+ \tableofcontents
+ \input{text/title_page}
+ \input{text/copyright_page}
+\addtocontents{toc}{\protect\thispagestyle{empty}}%
+\input{text/preface}
 
 \mainmatter
 
-\setcounter{chapter}{14}
+\part*{Calculus I}
+\ifbool{latexml}{\addcontentsline{toc}{part}{Calculus I}}{}
 
-\setcounter{section}{6}
+\apexchapter[text/01_Prerequisite]{Limits}{ch:label}
 
-%\apexchapter{Sequences and Series}{chapter:sequences_series}
-%
-%This chapter introduces \textbf{sequences} and \textbf{series}, important mathematical constructions that are useful when solving a large variety of mathematical problems. The content of this chapter is considerably different from the content of the chapters before it. While the material we learn here definitely falls under the scope of ``calculus,'' we will make very little use of derivatives or integrals. Limits are extremely important, though, especially limits that involve infinity. 
-%
-%One of the problems addressed by this chapter is this: suppose we know information about a function and its derivatives at a point, such as  $f(1) = 3$, $\fp(1) = 1$, $\fp'(1) = -2$, $\fp''(1) = 7$, and so on. What can I say about $f(x)$ itself? Is there any reasonable approximation of the value of $f(2)$? The topic of Taylor Series addresses this problem, and allows us to make excellent approximations of functions when limited knowledge of the function is available.
+Some intro stuff.
+\chapterautorefname
+\sectionautorefname
+\figureautorefname
+\appendixname
 
-\input{text/13_Cylindrical_Spherical}
+\section{The section}
 
-%\printexercises{exercises/14_04_exercises}
+\begin{keyidea}[My Key Idea Title]\label{ki:label}
+This is my key idea.
+\end{keyidea}
 
-%\printexercises{standalone/standalone_exercises}
+\mfigure[scale=.6]{0in}{A topographical map displays elevation by drawing contour lines, along with the elevation is constant.\\ \tiny Sample taken from the public domain USGS Digital Raster Graphics, \texttt{http://topmaps.usgs.gove/drg/}.}{fig:topomap}{figures/raw/MT_ChromeMountain_topo_smallx}
 
-%\appendix
-%
-%\printsolutions{Standalone Solutions To All Problems}
-%
-%\printindex
-%
+%\begin{tikzpicture}
+%  \matrix[row sep=1mm,column sep=3mm,ampersand replacement=\&]{
+%    \&\&\& \node (tp1) {$-2$}; \&\& \node (tp2) {$2$}; \\[-1ex]
+%    \node(linestart) {$x$}; \&\&\&\&\&\&\& \node(lineend) {}; \\[-1ex]
+%    \&\node (fstart) {$x^2-4$}; \& \node {$+$}; \&\& \node {$-$}; \&\& \node {$+$}; \\
+%  };
+%  \draw [<->] (linestart.east) -- (lineend);
+%  \draw (fstart.south west) -- (lineend.west |- fstart.south);
+%  \draw (fstart.east |- lineend) -- (fstart.east|-fstart.south);
+%  \foreach \x in {1,2} {
+%    \draw (tp\x|-linestart)+(0,5pt) -- (tp\x |- fstart.south);
+%  }
+%\end{tikzpicture}
+
+\begin{example}[Example Title]\label{ex:label}
+This is my example. This is my example.
+\solution
+This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example.
+\end{example}
+
+% this happens alot
+%\begin{tikzpicture}[x=.3cm,y=.3cm,>=stealth]
+%\begin{scope}[xscale=2]
+% \ifbool{latexml}{\draw[thick,fill=\coloronefill!60]}{
+% \draw[thick,left color={\coloronefill},right color={\coloronefill!20}]
+% }
+% (-2,10) -- (-2,0) arc (180:360:2) -- (2,10);
+% \ifbool{latexml}{\draw[thick,fill=\coloronefill!65]}{
+% \draw[thick,left color={\coloronefill!30},right color={\coloronefill}]
+% }
+% (0,10)circle(2);
+%\draw [thick] (0,12) circle (2);
+%\draw [thick](-2,12)--(-2,10) (2,12)--(2,10);
+%\draw [dashed,thick] (-2,0) arc (180:0:2);
+%\draw (0,0) -- node [above,pos=.5] {\scriptsize 2 ft} (2,0);
+%\end{scope}
+%\begin{scope}[shift={(5,0)}]
+%\draw (-.5,0) -- (.5,0) (-.5,10) -- (.5,10)
+% (0,0) -- node [pos=.5,fill=white,rotate=90] {\scriptsize 10 ft} (0,10);
+%\end{scope}
+%\end{tikzpicture}
+
+Compare: % see 09_Parametric_Equations.tex
+\[
+\begin{gathered}\text{Choose}\\t\end{gathered}
+\begin{gathered}\nearrow\\\\\searrow\end{gathered}
+\begin{gathered}
+\text{Use a function}\\f\text{ to find }x\\\bigl(x=f(t)\bigr)\\\\
+\text{Use a function}\\g\text{ to find }y\\\bigl(y=g(t)\bigr)
+\end{gathered}
+\begin{gathered}\searrow\\\\\nearrow\end{gathered}
+\begin{gathered}\text{Plot point}\\(x,y)\end{gathered}
+\]
+to:
+\begin{center}
+\begin{tikzpicture}[>=latex]
+\draw (0,0) node (A) [align=center] {Choose \\$t$} 
+      (3,1) node[align=center] (B1) {Use a function\\ $f$ to find $x$\\$\bigl(x=f(t)\bigr)$}
+			(3,-1) node[align=center] (B2) {Use a function\\ $g$ to find $y$\\$\bigl(y=g(t)\bigr)$}
+			(6.25,0) node [align=center] (C) {Plot point \\ $(x,y)$};
+\draw [->](A) --(B1);
+\draw [->](A) --(B2);
+\draw [->](B1) -- (C);
+\draw [->](B2) -- (C);
+\end{tikzpicture}
+\end{center}
+
+% this works fine
+At one point we define $a_\mathrm{T}$
+\index{at@$a_{\mathrm{T}}$}\index{unit tangent vector!at@$a_{\mathrm{T}}$}%
+
+\printexercises{exercises/14_04_exercises}
+
+\appendix
+
+\printsolutions{Standalone Solutions To All Problems}
+
+\printindex
+
 %\backmatter
 %
 %\input{text/Inside_Cover_Of_The_Text_Material_Complete}

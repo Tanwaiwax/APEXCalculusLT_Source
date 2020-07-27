@@ -274,63 +274,9 @@
 % blue: hsl(240,100,50)
 % line color: blue!95!black!30 = Hsb(240,.29,.98) = hsl(240,87.7,83.8)
 
-\usepackage{tcolorbox}
-\tcbuselibrary{breakable,skins,theorems}
-
 \newlength{\saveparindent}
 \setlength{\saveparindent}{\parindent}
 
-\tcolorboxenvironment{example}{
-    empty,
-    size=minimal,
-    breakable,
-    parbox=false,
-    beforeafter skip=\boxskipamount,
-    enlargepage flexible=3\baselineskip,
-    lines before break=5,
-    before upper={\setlength{\parindent}{\saveparindent}\noindent},
-    boxsep=0pt,
-    bottom=.5ex,
-    overlay unbroken={
-     \node[xshift=-2\marginlinelength,yshift=-.5\baselineskip]
-      (start\arabic{example})at(frame.north west){};
-     \node[xshift=1em](stop\arabic{example})at(frame.south west){};
-     \draw[thick,\thelinecolor](start\arabic{example})|-(stop\arabic{example});
-    },
-    overlay first={
-     \node[xshift=-2\marginlinelength,yshift=-.5\baselineskip]
-      (start\arabic{example})at(frame.north west){};
-     \node[xshift=-2\marginlinelength,yshift=-2\baselineskip]
-      (stop\arabic{example})at(frame.south west){};
-     \draw[thick,\thelinecolor](start\arabic{example})--(stop\arabic{example});
-    },
-    overlay middle={
-     % a middle has only one on a page, so we don't need other suffixes
-     \node[xshift=-2\marginlinelength,yshift=.5\baselineskip]
-      (start)at(frame.north west){};
-     \node[xshift=-2\marginlinelength,yshift=-2\baselineskip]
-      (stop)at(frame.south west){};
-     \draw[thick,\thelinecolor](start)--(start|-stop);
-    },
-    overlay last={
-     \node[xshift=-2\marginlinelength,yshift=.5\baselineskip]
-      (start\arabic{example})at(frame.north west){};
-     \node[xshift=1em](stop\arabic{example})at(frame.south west){};
-     \draw[thick,\thelinecolor](start\arabic{example})|-(stop\arabic{example});
-    },
-}
-
-% large shrinkable space can conspire with a bad page break to cause text to overlap
-% see https://tex.stackexchange.com/a/551585/107497 by Thomas F. Sturm
-\makeatletter
-\def\tcb@split@force@last{%
-  \tcb@split@setstate@last%
-  \ifdim\tcb@h@total>\tcb@h@page\relax%
-    \gdef\tcb@after@lastbox{\clearpage}%
-    \tcbdimto\kvtcb@bbbottom{\kvtcb@bbbottom+\tcb@h@page-\tcb@h@total}%
-  \fi%
-}
-\makeatother
 
 
 
@@ -357,19 +303,22 @@
  }
  \newtheorem{#1}{#2}[section]%
  \expandafter\newcommand\csname #1autorefname\endcsname{#2}
- \tcolorboxenvironment{#1}{
-   sharp corners=all,
-   enhanced,
-   colframe=border#1,
-   beforeafter skip=\boxskipamount,
-   interior style={top color=top#1, bottom color=bottom#1},
-   breakable=true,
-   overlay first={\continue{bottom}{#1}},
-   overlay middle={\continue{bottom}{#1}\continue{top}{#1}},
-   overlay last={\continue{top}{#1}},
-   enlargepage flexible=3\baselineskip,
-   toggle enlargement=evenpage,
-   lines before break=8,
+ \ifbool{latexml}{%
+ }{%
+  \tcolorboxenvironment{#1}{
+    sharp corners=all,
+    enhanced,
+    colframe=border#1,
+    beforeafter skip=\boxskipamount,
+    interior style={top color=top#1, bottom color=bottom#1},
+    breakable=true,
+    overlay first={\continue{bottom}{#1}},
+    overlay middle={\continue{bottom}{#1}\continue{top}{#1}},
+    overlay last={\continue{top}{#1}},
+    enlargepage flexible=3\baselineskip,
+    toggle enlargement=evenpage,
+    lines before break=8,
+  }%
  }
 }
 
@@ -418,21 +367,6 @@
    \end{scope} 
 }
 
-\newspecialbox{definition}{Def\-i\-ni\-tion}{60}
-% draw = yellow!95!black!60 = Hsb( 60,.59,.97)
-% topc = white!95!yellow    = Hsb( 60,.05,1)
-% botc = yellow!90!black!30 = Hsb( 60,.28,.97)
-
-\newspecialbox{theorem}{The\-o\-rem}{120}
-% draw = green!30!black!50  = Hsb(120,.23,.65)
-% topc = white!95!green     = Hsb(120,.05,1)
-% botc = green!60!black!20  = Hsb(120,.13,.92)
-
-\newspecialbox{keyidea}{Key I\-dea}{0}
-% draw = red!30!black!50    = Hsb(  0,.23,.65)
-% topc = white!95!red       = Hsb(  0,.05,1)
-% botc = red!60!black!20    = Hsb(  0,.13,.92)
-
 \newcommand{\colorizespecialboxes}{
  \colorizedefinition
  \colorizetheorem
@@ -463,36 +397,129 @@
 \newcommand{\printproblems}{\exercisesubsubsection{Problems}}
 \newcommand{\printreview}{\exercisesubsubsection{Review}}
 
-\newcommand{\inanswersection}{%
-	\renewcommand{\printconcepts}{}%
-	\renewcommand{\printproblems}{}%
-	\renewcommand{\printreview}{}%
-	\renewenvironment{exerciseset}[2]{}{}
-	\renewcommand{\openenumerate}{}%
-	\renewcommand{\closeenumerateinquestions}{}
-	\renewcommand{\questioncolumnbreak}{}%
-	\packageinanswersection%
-	\showexerciseanswers%
-}%
+%\newlist{sectionexercises}{enumerate}{1}
+%\setlist[sectionexercises]{label=\arabic*.,resume,leftmargin=1.5em}
 
-\newtoggle{printoddanswersonly}
-
-\toggletrue{printoddanswersonly}
-\newcommand{\printallanswers}{\togglefalse{printoddanswersonly}}
-
-%\newcount\numberofexercises
+\newcommand{\printexercises}[1]{%
+ \writeToAnsFile{#1}% writeToAnsFile in sty
+ \exercisegeometry% includes a clearpage
+ \pagestyle{exercise}%
+ \exercisesubsection{\thesection}%
+ \label{exer\thesection}%
+ \small%
+ \bigskip%
+ \begin{multicols}{2}%
+%  \restartlist{sectionexercises}
+%  \setcounter{sectionexercisesi}{0}
+  \restartlist{enumerate}
+  \setcounter{enumi}{0}
+  \renewcommand{\Itemautorefname}{Ex\-er\-cise}% local b/c multicols = good
+  \input{#1}%
+  \closeenumerate%
+ \end{multicols}%
+ \restoregeometry%
+ \pagestyle{prose}%
+ %	\easypagecheck
+ \setlength{\hoffset}{0pt} \rmfamily\normalsize \bigbreak%
+}
 
 
 \newwrite\answrite %write the answers file
 % give the answers file the name ``jobname.answers''
 \openout\answrite=\jobname.answers
 
-% \writeToAnsFile (was?) in the style file b/c latexml was copying in ``noexpand''
 \newcommand{\writeToAnsFile}[1]{%
  \immediate\write\answrite{%
   \noexpand\answersForSection{\arabic{chapter}}{\arabic{section}}{#1}%
  }%
 }
+
+\newcounter{exercisesetcounter}[section]
+\renewcommand{\theexercisesetcounter}{\thesection.\arabic{exercisesetcounter}}
+
+\makeatletter
+% the usual \subsection definition has stretchable space in arguments 3-5
+\newcommand{\exercisesubsection}[1]{%
+\@startsection{subsection}{2}{-.7em}{0pt}{.5ex}{\huge\textbf}{\texorpdfstring{\hyperref[sol#1]{Exercises #1}}{Exercises}}%
+\hrule\vspace{-1.5ex}%
+}
+\makeatother
+
+\newcommand{\exautoref}[1]{%
+ \hyperref[#1]{Ex\-er\-cise~\ref*{#1}}%
+% {%
+%  \renewcommand{\Itemautorefname}{Exercise}% localize the upcoming reference
+%  \autoref{#1}%
+% }%
+% doesn't work?
+}
+
+\newcommand*{\enumenv}{enumerate}
+%\newcommand*{\exerenv}{sectionexercises}
+
+\makeatletter
+\newcommand{\openenumerate}{%
+% \ifx\@currenvir\exerenv\else%
+% \begin{sectionexercises}
+ \ifx\@currenvir\enumenv\else%
+ \begin{enumerate}[leftmargin=1.5em,resume=exercises\thesection]%
+ \fi%
+}
+\newcommand{\closeenumerate}{
+% \ifx\@currenvir\exerenv%
+% \end{sectionexercises}
+ \ifx\@currenvir\enumenv%
+ \end{enumerate}%
+ \fi%
+}
+\makeatother
+\newcommand{\closeenumerateinquestions}{\closeenumerate}
+
+\newenvironment{exerciseset}[2]{%
+ \stepcounter{enumi}%
+% \stepcounter{sectionexercisesi}
+ \stepcounter{exercisesetcounter}%
+ \ifnumodd{\value{enumi}}{}{%
+  \PackageInfo{apex}{%
+   Exercise set \theexercisesetcounter\space begins with \arabic{enumi}%
+  }%
+ }%
+ \pagebreak[1]%
+ {%
+ \setlist[enumerate,1]{label=(\alph*)}%
+% \noindent#1 \arabic{sectionexercisesi}--\ref*{enumiatendof\theexercisesetcounter}#2%
+ \noindent#1 \arabic{enumi}--\ref*{enumiatendof\theexercisesetcounter}#2%
+ }%
+% \addtocounter{sectionexercisesi}{-1}\ignorespaces%
+ \addtocounter{enumi}{-1}\ignorespaces%
+ \nopagebreak%
+}{%
+ \label{enumiatendof\theexercisesetcounter}%
+ \closeenumerate%
+ \pagebreak[1]%
+ \ifnumodd{\value{enumi}}{%
+  \PackageInfo{apex}{%
+   Exercise set \theexercisesetcounter\space ends with \arabic{enumi}%
+  }%
+ }{}%
+}
+\BeforeBeginEnvironment{exerciseset}{\closeenumerateinquestions}
+
+\newcommand{\exercise}[2]{%
+ \openenumerate%
+ \item \parbox[t]{\linewidth}{#1}%
+}
+\newcommand{\showexerciseanswers}{%
+ \renewcommand{\exercise}[2]{%
+  \ifboolexpr{ togl{printoddanswersonly} and test{\ifnumodd{\value{enumi}}} }{%
+   \stepcounter{enumi}%
+  }{%
+   \item \parbox[t]{\linewidth}{\raggedright ##2}%
+  }%
+ }%
+}
+
+\newcommand{\questioncolumnbreak}{\columnbreak}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -524,46 +551,22 @@
  \eendgeometry%
 }%
 
-\newcounter{exercisesetcounter}[section]
-\renewcommand{\theexercisesetcounter}{\thesection.\arabic{exercisesetcounter}}
+\newcommand{\inanswersection}{%
+	\renewcommand{\printconcepts}{}%
+	\renewcommand{\printproblems}{}%
+	\renewcommand{\printreview}{}%
+	\renewenvironment{exerciseset}[2]{}{}
+	\renewcommand{\openenumerate}{}%
+	\renewcommand{\closeenumerateinquestions}{}
+	\renewcommand{\questioncolumnbreak}{}%
+	\packageinanswersection%
+	\showexerciseanswers%
+}%
 
-\makeatletter
-% the usual \subsection definition has stretchable space in arguments 3-5
-\newcommand{\exercisesubsection}[1]{%
-\@startsection{subsection}{2}{-.7em}{0pt}{.5ex}{\huge\textbf}{\texorpdfstring{\hyperref[sol#1]{Exercises #1}}{Exercises}}%
-\hrule\vspace{-1.5ex}%
-}
-\makeatother
+\newtoggle{printoddanswersonly}
 
-\newcommand{\exautoref}[1]{%
- \hyperref[#1]{Ex\-er\-cise~\ref*{#1}}%
-% {%
-%  \renewcommand{\Itemautorefname}{Exercise}% localize the upcoming reference
-%  \autoref{#1}%
-% }%
-% doesn't work?
-}
-
-\newcommand{\printexercises}[1]{%
- \writeToAnsFile{#1}% writeToAnsFile in sty
- \exercisegeometry% includes a clearpage
- \pagestyle{exercise}%
- \exercisesubsection{\thesection}%
- \label{exer\thesection}%
- \small%
- \bigskip%
- \begin{multicols}{2}%
-  \restartlist{enumerate}
-  \setcounter{enumi}{0}
-  \renewcommand{\Itemautorefname}{Ex\-er\-cise}% local b/c multicols = good
-  \input{#1}%
-  \closeenumerate%
- \end{multicols}%
- \restoregeometry%
- \pagestyle{prose}%
- %	\easypagecheck
- \setlength{\hoffset}{0pt} \rmfamily\normalsize \bigbreak%
-}
+\toggletrue{printoddanswersonly}
+\newcommand{\printallanswers}{\togglefalse{printoddanswersonly}}
 
 %\newcounter{answerchapter}
 %\newcounter{answersection}[answerchapter]
@@ -606,65 +609,6 @@
 	\begin{enumerate}[leftmargin=1.5em]\input{#1}\end{enumerate}%
 	\bigbreak%
 }
-
-\newcommand*{\enumenv}{enumerate}
-
-\makeatletter
-\newcommand{\openenumerate}{%
- \ifx\@currenvir\enumenv\else%
- \begin{enumerate}[leftmargin=1.5em,resume=exercises\thesection]%
- \fi%
-}
-\newcommand{\closeenumerate}{
- \ifx\@currenvir\enumenv%
- \end{enumerate}%
- \fi%
-}
-\makeatother
-\newcommand{\closeenumerateinquestions}{\closeenumerate}
-
-\newenvironment{exerciseset}[2]{%
- \stepcounter{enumi}%
- \stepcounter{exercisesetcounter}%
- \ifnumodd{\value{enumi}}{}{%
-  \PackageInfo{apex}{%
-   Exercise set \theexercisesetcounter\space begins with \arabic{enumi}%
-  }%
- }%
- \pagebreak[1]%
- {%
- \setlist[enumerate,1]{label=(\alph*)}%
- \noindent#1 \arabic{enumi}--\ref*{enumiatendof\theexercisesetcounter}#2%
- }%
- \addtocounter{enumi}{-1}\ignorespaces%
- \nopagebreak%
-}{%
- \label{enumiatendof\theexercisesetcounter}%
- \closeenumerate%
- \pagebreak[1]%
- \ifnumodd{\value{enumi}}{%
-  \PackageInfo{apex}{%
-   Exercise set \theexercisesetcounter\space ends with \arabic{enumi}%
-  }%
- }{}%
-}
-\BeforeBeginEnvironment{exerciseset}{\closeenumerateinquestions}
-
-\newcommand{\exercise}[2]{%
- \openenumerate%
- \item \parbox[t]{\linewidth}{#1}%
-}
-\newcommand{\showexerciseanswers}{%
- \renewcommand{\exercise}[2]{%
-  \ifboolexpr{ togl{printoddanswersonly} and test{\ifnumodd{\value{enumi}}} }{%
-   \stepcounter{enumi}%
-  }{%
-   \item \parbox[t]{\linewidth}{\raggedright ##2}%
-  }%
- }%
-}
-
-\newcommand{\questioncolumnbreak}{\columnbreak}
 
 
 % The following creates a ``List of Theorems'', ``Definitions'', and ``Key Ideas''.

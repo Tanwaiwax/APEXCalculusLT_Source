@@ -1,81 +1,82 @@
 \documentclass[openany]{book}
 
-\RequirePackage[nocomments]{latexml}
-\lxDocumentID{apex}
+\usepackage[nocomments]{latexml}
+\lxDocumentID{documentid}
 \begin{lxNavbar}
-\lxRef{lxApexTOC}{Table of Contents}\\
+\lxRef{lxMyTOC}{Table of Contents}\\
 \lxContextTOC
 \end{lxNavbar}
 
-\usepackage{ifthen}
-\usepackage{../../headers/apex_style}
+%\usepackage{../../headers/apex_style}
 
-\lxIncludeCssFile{LaTeXML-navbar-left.css}
+%\lxIncludeCssFile{LaTeXML-navbar-left.css}
 
 \usepackage{hyperref}
 
 \begin{document}
 
-\iflatexml
-\label{lxApexTOC}
+\label{lxMyTOC}
 \tableofcontents
-\chapter*{APEX Calculus}
-%\addcontentsline{toc}{chapter}{APEX Calculus}
-APEX Calculus
-\else
-APEX Calculus
-\tableofcontents
-\fi
+\chapter*{My Title}
+\addcontentsline{toc}{chapter}{My Title}
+%My Title
 
 \chapter*{Preface}
 \addcontentsline{toc}{chapter}{Preface}
 Preface text
 
-\part{Part One}
+\part*{Part One}
+\addcontentsline{toc}{part}{Part One}
 
 \chapter{Chapter One}
 
-\section{Section One dot One}
+\setcounter{section}{-1}
+\section{Section One dot Zero}
+prerequisite content
 
+\section*{Section One dot no number}
+\addcontentsline{toc}{section}{Section One dot no number}
+chapter introduction
+
+\section{Section One dot One}
 content
 
 \section{Section One dot Two}
-
 content
 
 \chapter{Chapter Two}
 
-\section{Section Two dot One}
+\section*{Section Two dot no number}
+chapter introduction
 
+\section{Section Two dot One}
 content
 
 \section{Section Two dot Two}
-
 content
 
-\part{Part Two}
+\part*{Part Two}
+\addcontentsline{toc}{part}{Part Two}
 
 \chapter{Chapter Three}
 
-\section{Section Three dot One}
+\section*{Section Three dot no number}
+chapter introduction
 
+\section{Section Three dot One}
 content
 
 \section{Section Three dot Two}
-
 content
 
 \chapter{Chapter Four}
-
 \section{Section Four dot One}
-
 content
 
 \section{Section Four dot Two}
-
 content
 
 \end{document}
 
 % ../../../LaTeXML/bin/latexml --quiet --destination=mybook.xml --nocomments mybook
-% ../../../LaTeXML/bin/latexmlpost --split --quiet --destination=mybook.html mybook.xml
+% ../../../LaTeXML/bin/latexmlpost --split --quiet --destination=mybook.html --css=LaTeXML-navbar-left.css mybook.xml

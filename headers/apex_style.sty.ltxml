@@ -15,7 +15,6 @@ use Scalar::Util qw(looks_like_number);
 
 # fix some bugs
 RawTeX('\setlength{\marginparwidth}{150pt}');
-RawTeX('\setlength{\baselineskip}{12pt}');
 RawTeX('\newlength{\defaultaddspace}');
 RawTeX('\setlength{\defaultaddspace}{5pt}');
 
@@ -59,7 +58,7 @@ DefConstructor('\makeStyles{}{}',
 	       '</ltx:resource>',
 	       properties => sub {
 		   return (
-		       selector => '.ltx_theorem_'.UnTeX($_[1]).'Env',
+		       selector => '.ltx_theorem_'.UnTeX($_[1]),
 		       styles => &boxStyles(UnTeX($_[2]))
 		       );
 	       }
@@ -95,17 +94,15 @@ sub boxStyles {
 }
 
 DefMacro('\apexchapter []{}{}',
-	 #'\setboolean{chapter_already_has_exercises}{false}'
 	 '\chapter{#2}\label{#3}'
 	 .'\ifx.#1.\else\addtocounter{section}{-1}\input{#1}\fi'
-	 .'\section*{Chapter Introduction}');
+	 .'\section*{Chapter Introduction}'
+	 .'\addcontentsline{toc}{section}{Chapter Introduction}');
 
 
 DefMacro('\myincludegraphicsthree{}{} Semiverbatim',
 	 '\myincludegraphics[#2]{#3_3D}');
 DefMacro('\myincludeasythree{}{} Semiverbatim','\myincludegraphics[#2]{#3}');
-
-DefMacro('\vv {}','\vec #1');
 
 DefMacro('\flushinner{}','{#1}');
 DefMacro('\flushouter{}','{#1}');
@@ -114,12 +111,14 @@ DefMacro('\flushouterequ{}','{#1}');
 
 # some Macros we do need
 
+DefMacro('\vv {}','\vec #1'); # provided by esvect
 DefMacroI('\textcent',undef,"\x{00A2}");
 DefMacro('\psBill'); # todo
 
 # some macros we don't need
 DefMacro('\testmargintop');
 DefMacro('\testmarginbottom');
+DefMacro('\packageinanswersection');
 
 
 if(0==1){

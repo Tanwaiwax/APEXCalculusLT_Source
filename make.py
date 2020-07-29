@@ -317,9 +317,10 @@ def getsuffix(args):
     return newsuffix
 
 def getlatexmlbin(exe):
-    if platform.mac_ver()[0]:
-        return os.path.join('..','LaTeXML','bin',exe)
-    if platform.win32_ver()[0]:
+    locallatexml = os.path.join('..','LaTeXML','bin',exe)
+    if os.path.isfile(locallatexml):
+        return locallatexml
+    else:
         return exe
     
 def getlatexmlcommandline(base='Calculus'):

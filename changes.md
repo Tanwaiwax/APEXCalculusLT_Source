@@ -12,6 +12,13 @@ Changes for the 2020-07 version:
 
 * Anthony Bevelacqua and John Collings contributed several exercises.
 
+* New exercises include: 5.4#65, 6.3#18,  
+  7.1#33-37, 7.3#31, 7.4#3-4, 7.4#41, 7.5#53-55,  
+  8.1#53-56, 8.2#41, 8.3#27, 8.4#33-34, 8.4#39, 8.6#47-48,  
+  9.1#52-53, 9.2#54-55, 9.3#15, 9.4#34, 9.5#27-28, 9.6#27, 10.3#51.  
+  Those in 6.3, 7.4, and 8.4 have subsequent exercises whose numbering has consequently changed.
+
+
 * All known errata (31+) have been fixed.
 
 * After a fair bit of work (and some sweeping under the rug), we are down to two overfull hboxes and 10 undervull vboxes.

@@ -17,20 +17,17 @@
 \usetwoDgraphics
 %\usethreeDgraphics
 
-\renewcommand{\printexercises}[1]{}
-\renewcommand{\printsolutions}[1]{}
-
 \begin{document}
 
 \frontmatter
 
-%\input{text/front_matter_and_cover}
- \label{lxApexTOC}
- \tableofcontents
- \input{text/title_page}
- \input{text/copyright_page}
-\addtocontents{toc}{\protect\thispagestyle{empty}}%
-\input{text/preface}
+\input{text/front_matter_and_cover}
+% \label{lxApexTOC}
+% \tableofcontents
+% \input{text/title_page}
+% \input{text/copyright_page}
+%\addtocontents{toc}{\protect\thispagestyle{empty}}%
+%\input{text/preface}
 
 \mainmatter
 
@@ -51,8 +48,7 @@ Some intro stuff.
 This is my key idea.
 \end{keyidea}
 
-\mfigure[scale=.6]{0in}{A topographical map displays elevation by drawing contour lines, along with the elevation is constant.\\ \tiny Sample taken from the public domain USGS Digital Raster Graphics, \texttt{http://topmaps.usgs.gove/drg/}.}{fig:topomap}{figures/raw/MT_ChromeMountain_topo_smallx}
-
+% todo tikz matrices see https://github.com/brucemiller/LaTeXML/issues/794
 %\begin{tikzpicture}
 %  \matrix[row sep=1mm,column sep=3mm,ampersand replacement=\&]{
 %    \&\&\& \node (tp1) {$-2$}; \&\& \node (tp2) {$2$}; \\[-1ex]
@@ -73,6 +69,7 @@ This is my example. This is my example.
 This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example.
 \end{example}
 
+% todo tikz left color see https://github.com/brucemiller/LaTeXML/issues/1168
 % this happens alot
 %\begin{tikzpicture}[x=.3cm,y=.3cm,>=stealth]
 %\begin{scope}[xscale=2]
@@ -120,13 +117,17 @@ to:
 \end{tikzpicture}
 \end{center}
 
-% this works fine
+% this works fine; I just want an index to make sure that shows correctly
 At one point we define $a_\mathrm{T}$
 \index{at@$a_{\mathrm{T}}$}\index{unit tangent vector!at@$a_{\mathrm{T}}$}%
 
 \printexercises{exercises/14_04_exercises}
 
 \appendix
+
+\showans\answrite
+% showans will write the contents of Calculus.answers to the log
+% in latexml, this needs to happen before closing
 
 \printsolutions{Standalone Solutions To All Problems}
 

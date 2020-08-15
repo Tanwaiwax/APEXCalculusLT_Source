@@ -397,8 +397,14 @@
 \newcommand{\printproblems}{\exercisesubsubsection{Problems}}
 \newcommand{\printreview}{\exercisesubsubsection{Review}}
 
-%\newlist{sectionexercises}{enumerate}{1}
-%\setlist[sectionexercises]{label=\arabic*.,resume,leftmargin=1.5em}
+\newlist{sectionexercises}{enumerate}{1}
+\newcounter{saveexercisenum}[section]
+\setlist[sectionexercises]{
+	label=\arabic*.,
+	leftmargin=1.5em,
+    before=\setcounter{sectionexercisesi}{\value{saveexercisenum}},
+    after=\setcounter{saveexercisenum}{\value{sectionexercisesi}},
+}
 
 \newcommand{\printexercises}[1]{%
  \writeToAnsFile{#1}% writeToAnsFile in sty
@@ -409,10 +415,6 @@
  \small%
  \bigskip%
  \begin{multicols}{2}%
-%  \restartlist{sectionexercises}
-%  \setcounter{sectionexercisesi}{0}
-  \restartlist{enumerate}
-  \setcounter{enumi}{0}
   \renewcommand{\Itemautorefname}{Ex\-er\-cise}% local b/c multicols = good
   \input{#1}%
   \closeenumerate%
@@ -429,8 +431,14 @@
 \openout\answrite=\jobname.answers
 
 \newcommand{\writeToAnsFile}[1]{%
- \immediate\write\answrite{%
-  \noexpand\answersForSection{\arabic{chapter}}{\arabic{section}}{#1}%
+ \ifbool{latexml}{%
+  \immediate\write\answrite{%
+   \answersForSection{\arabic{chapter}}{\arabic{section}}{#1}%
+  }%
+ }{% in LaTeXML, \noexpand\answersForSection becomes a literal \relax
+  \immediate\write\answrite{%
+   \noexpand\answersForSection{\arabic{chapter}}{\arabic{section}}{#1}%
+  }%
  }%
 }
 
@@ -454,52 +462,46 @@
 % doesn't work?
 }
 
-\newcommand*{\enumenv}{enumerate}
-%\newcommand*{\exerenv}{sectionexercises}
+\newcommand*{\exerenv}{sectionexercises}
 
 \makeatletter
 \newcommand{\openenumerate}{%
-% \ifx\@currenvir\exerenv\else%
-% \begin{sectionexercises}
- \ifx\@currenvir\enumenv\else%
- \begin{enumerate}[leftmargin=1.5em,resume=exercises\thesection]%
+ \ifx\@currenvir\exerenv\else%
+ \begin{sectionexercises}
+ \ifbool{latexml}{\setcounter{sectionexercisesi}{\value{saveexercisenum}}}{}%
  \fi%
 }
 \newcommand{\closeenumerate}{
-% \ifx\@currenvir\exerenv%
-% \end{sectionexercises}
- \ifx\@currenvir\enumenv%
- \end{enumerate}%
+ \ifx\@currenvir\exerenv%
+ \ifbool{latexml}{\setcounter{saveexercisenum}{\value{sectionexercisesi}}}{}%
+ \end{sectionexercises}
  \fi%
 }
 \makeatother
 \newcommand{\closeenumerateinquestions}{\closeenumerate}
 
 \newenvironment{exerciseset}[2]{%
- \stepcounter{enumi}%
-% \stepcounter{sectionexercisesi}
+ \stepcounter{sectionexercisesi}
  \stepcounter{exercisesetcounter}%
- \ifnumodd{\value{enumi}}{}{%
+ \ifnumodd{\value{sectionexercisesi}}{}{%
   \PackageInfo{apex}{%
-   Exercise set \theexercisesetcounter\space begins with \arabic{enumi}%
+   Exercise set \theexercisesetcounter\space begins with \arabic{sectionexercisesi}%
   }%
  }%
  \pagebreak[1]%
  {%
  \setlist[enumerate,1]{label=(\alph*)}%
-% \noindent#1 \arabic{sectionexercisesi}--\ref*{enumiatendof\theexercisesetcounter}#2%
- \noindent#1 \arabic{enumi}--\ref*{enumiatendof\theexercisesetcounter}#2%
+ \noindent#1 \arabic{sectionexercisesi}--\ref*{enumiatendof\theexercisesetcounter}#2%
  }%
-% \addtocounter{sectionexercisesi}{-1}\ignorespaces%
- \addtocounter{enumi}{-1}\ignorespaces%
+ \addtocounter{sectionexercisesi}{-1}\ignorespaces%
  \nopagebreak%
 }{%
  \label{enumiatendof\theexercisesetcounter}%
  \closeenumerate%
  \pagebreak[1]%
- \ifnumodd{\value{enumi}}{%
+ \ifnumodd{\value{sectionexercisesi}}{%
   \PackageInfo{apex}{%
-   Exercise set \theexercisesetcounter\space ends with \arabic{enumi}%
+   Exercise set \theexercisesetcounter\space ends with \arabic{sectionexercisesi}%
   }%
  }{}%
 }
@@ -527,9 +529,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\printsolutions}[2][\jobname]{%
- %\showans\answrite
- % showans will write the contents of Calculus.answers to the log
- % in latexml, this needs to happen before closing
  \immediate\closeout\answrite%
  \inanswersection\exercisegeometry%
  \pagestyle{exercise}%

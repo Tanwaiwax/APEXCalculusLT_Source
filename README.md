@@ -1,7 +1,7 @@
 APEXCalculusLT_Source
 ===================
 
-Source files for the APEX Calculus LT text, Version 3.1.
+Source files for the APEX Calculus LT text, Version 3.1.  The resulting pdfs (or recent versions thereof) are posted at https://arts-sciences.und.edu/academics/math/calc-1-texts.html
 
 The main file is Calculus.tex, intended to be run with XeLaTeX with the Calibri font. 
 (It will run without Calibri and with pdflatex, but the spacing will be different than intended.

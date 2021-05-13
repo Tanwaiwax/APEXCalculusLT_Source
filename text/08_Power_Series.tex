@@ -161,7 +161,7 @@ Let $\ds f(x) = \sum_{n=0}^\infty a_n(x-c)^n$ be a function defined by a power s
 \begin{enumerate}
 	\item $f(x)$ is continuous and differentiable on $(c-R,c+R)$.
 	\item	$\ds \fp(x) = \sum_{n=1}^\infty a_nn(x-c)^{n-1}$, with radius of convergence $R$.
-	\item	$\ds \int f(x)\ dx = C+\sum_{n=0}^\infty a_n\frac{(x-c)^{n+1}}{n+1}$, with radius of convergence $R$.
+	\item	$\ds \int f(x)\dd x = C+\sum_{n=0}^\infty a_n\frac{(x-c)^{n+1}}{n+1}$, with radius of convergence $R$.
 \end{enumerate}
 \end{theorem}
 
@@ -177,7 +177,7 @@ Let $\ds f(x) = \sum_{n=0}^\infty x^n$. Find the following along with their resp
 \[
  \text{1.}\quad\fp(x)
  \qquad\text{and}\qquad
- \text{2.}\quad\ds F(x) =\int f(x)\ dx
+ \text{2.}\quad\ds F(x) =\int f(x)\dd x
 \]
 \solution
 We find the derivative and indefinite integral of $f(x)$, following \autoref{thm:calc_power_series}.
@@ -200,7 +200,7 @@ which also diverges by the Test for Divergence. Therefore, the interval of conve
 
 \item\hfill$\begin{aligned}[t]
  f(x)&=\phantom{C+{}}1+\,x+\,x^2+\,x^3+\dotsb = \sum_{n=0}^\infty x^n\\
- F(x) = \int f(x)\ dx &= C+ x+\frac{x^2}{2}+\frac{x^3}3+\frac{x^4}4+\dotsb \\
+ F(x) = \int f(x)\dd x &= C+ x+\frac{x^2}{2}+\frac{x^3}3+\frac{x^4}4+\dotsb \\
  &= C+\sum_{n=0}^\infty \frac{x^{n+1}}{n+1}=C+\sum_{n=1}^\infty \frac{x^{n}}{n}  
 \end{aligned}$\hfill\null
 
@@ -241,7 +241,7 @@ In \autoref{ex_alt1} of \autoref{sec:alt_series} we said the Alternating Harmoni
 We use this type of analysis in the next example.
 
 \begin{example}[Analyzing power series functions]\label{ex_ps4}
-Let $\ds f(x) = \sum_{n=0}^\infty \frac{x^n}{n!}$. Find $\ds \fp(x)$ and $\ds \int f(x)\ dx$, and use these to analyze the behavior of $f(x)$.
+Let $\ds f(x) = \sum_{n=0}^\infty \frac{x^n}{n!}$. Find $\ds \fp(x)$ and $\ds \int f(x)\dd x$, and use these to analyze the behavior of $f(x)$.
 \solution
 We start by making two notes: first, in \autoref{ex_ps2}, we found the interval of convergence of this power series is $(-\infty,\infty)$. Second, we will find it useful later to have a  few terms of the series written out:
 \begin{equation}
@@ -261,9 +261,9 @@ We found the derivative of $f(x)$ is $f(x)$. The only functions for which this i
 \[f(x) = \sum_{n=0}^\infty \frac{x^n}{n!} = e^x\]% \quad\text{for all $x$}.
 for all $x$.
 
-We can also find $\ds \int f(x)\ dx$:
+We can also find $\ds \int f(x)\dd x$:
 \begin{align*}
-\int f(x)\ dx &= C+\sum_{n=0}^\infty \frac{x^{n+1}}{n!(n+1)} \\
+\int f(x)\dd x &= C+\sum_{n=0}^\infty \frac{x^{n+1}}{n!(n+1)} \\
 				&= C+ \sum_{n=0}^\infty \frac{x^{n+1}}{(n+1)!}
 \end{align*}
 We write out a few terms of this last series:
@@ -433,13 +433,13 @@ We now consider several examples where differentiation and integration of power 
 Find a power series representation for $g(x)=\dfrac1{(1-x)^2}$ and determine its radius of convergence.
 \solution
 We know that
-\[\frac1{(1-x)^2} = \frac{d}{dx} \left( \frac{1}{1-x} \right).\]
+\[\frac1{(1-x)^2} = \frac{\dd}{\dd x} \left( \frac{1}{1-x} \right).\]
 Since we have a power series  representation for $\dfrac1{1-x}$, we can differentiate that power series to get a power series representation for $g(x)$.  
 \begin{align*}
 	g(x)
 	& = \frac{1}{(1-x)^2} \\
-    & = \frac{d}{dx} \left( \frac{1}{1-x} \right) \\
-	& =  \frac{d}{dx} \left( \sum_{n=0}^{\infty} x^n \right)\\
+    & = \frac{\dd}{\dd x} \left( \frac{1}{1-x} \right) \\
+	& =  \frac{\dd}{\dd x} \left( \sum_{n=0}^{\infty} x^n \right)\\
     & =  \sum_{n=1}^{\infty} nx^{n-1}
 \end{align*}
 
@@ -450,12 +450,12 @@ Since the original power series had a radius of convergence of $R=1$ the derivat
 Find a power series representation for $h(x)=\ln(5-x)$ and determine its radius of convergence.
 \solution
 In this case we need the fact that
-\[\int\frac1{5-x}\ dx=-\ln(5-x).\]
+\[\int\frac1{5-x}\dd x=-\ln(5-x).\]
 Recall that we found a power series representation for $\dfrac1{5-x}$ in \autoref{ex_power_five}. We now have
 \begin{align*}
 	\ln(5-x)
-	& =  -\ds\int \frac{1}{5-x}\ dx \\
-    & =  -\ds\int \sum_{n=0}^{\infty} \frac{x^n}{5^{n+1}}\ dx \qquad\text{where $\abs x<5$}\\
+	& =  -\ds\int \frac{1}{5-x}\dd x \\
+    & =  -\ds\int \sum_{n=0}^{\infty} \frac{x^n}{5^{n+1}}\dd x \qquad\text{where $\abs x<5$}\\
 	& =  C - \sum_{n=0}^{\infty} \frac{x^{n+1}}{(n+1)5^{n+1}} \qquad\text{where $\abs x<5$}
 \end{align*}
 

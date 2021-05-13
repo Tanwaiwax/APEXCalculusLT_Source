@@ -35,5 +35,5 @@
 1. [text/12_Multivariable_Chain_Rule.tex line 98](../text/12_Multivariable_Chain_Rule.tex#L98): todo Find a better example 3 that doesn't obviously simplify
 1. [text/12_Multivariable_Limit.tex line 149](../text/12_Multivariable_Limit.tex#L149): todo do we need a version of theorem 2 (composition of functions) ?
 1. [text/12_Multivariable_Limit.tex line 52](../text/12_Multivariable_Limit.tex#L52): todo find some way to parameterize this so that we don't plot coordinates
-1. [text/12_Partial_Derivatives.tex line 351](../text/12_Partial_Derivatives.tex#L351): todo write an example where you find a function given the partial derivatives
+1. [text/12_Partial_Derivatives.tex line 352](../text/12_Partial_Derivatives.tex#L352): todo write an example where you find a function given the partial derivatives
 1. [text/13_Double_Integrals_Volume.tex line 231](../text/13_Double_Integrals_Volume.tex#L231): todo parameterize this instead of a bunch of coordinates

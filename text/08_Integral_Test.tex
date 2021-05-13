@@ -5,13 +5,13 @@ Knowing whether or not a series converges is very important, especially when we 
 
 \subsection{Integral Test}
 
-We stated in \autoref{sec:sequences} that a sequence $\{a_n\}$ is a function $a(n)$ whose domain is $\mathbb{N}$, the set of natural numbers. If we can extend $a(n)$ to have the domain of $\mathbb{R}$, the real numbers, and it is both positive and decreasing on $[1,\infty)$, then the convergence of $\ds \sum_{n=1}^\infty a_n$ is the same as $\ds\int_1^\infty a(x)\ dx$. 
+We stated in \autoref{sec:sequences} that a sequence $\{a_n\}$ is a function $a(n)$ whose domain is $\mathbb{N}$, the set of natural numbers. If we can extend $a(n)$ to have the domain of $\mathbb{R}$, the real numbers, and it is both positive and decreasing on $[1,\infty)$, then the convergence of $\ds \sum_{n=1}^\infty a_n$ is the same as $\ds\int_1^\infty a(x)\dd x$. 
 
 \begin{theorem}[Integral Test]\label{thm:integral_test}
-Let a sequence $\{a_n\}$ be defined by $a_n=a(n)$, where $a(n)$ is continuous, positive, and decreasing on $[1,\infty)$. Then $\ds \sum_{n=1}^\infty a_n$ converges, if, and only if, $\ds\int_1^\infty a(x)\ dx$ converges. In other words:
+Let a sequence $\{a_n\}$ be defined by $a_n=a(n)$, where $a(n)$ is continuous, positive, and decreasing on $[1,\infty)$. Then $\ds \sum_{n=1}^\infty a_n$ converges, if, and only if, $\ds\int_1^\infty a(x)\dd x$ converges. In other words:
 \begin{enumerate}
-\item If $\ds \int_1^\infty a(x)\ dx$ is convergent, then $\ds \sum_{n=1}^\infty a_n$ is convergent.
-\item If $\ds \int_1^\infty a(x)\ dx$ is divergent, then $\ds \sum_{n=1}^\infty a_n$ is divergent.
+\item If $\ds \int_1^\infty a(x)\dd x$ is convergent, then $\ds \sum_{n=1}^\infty a_n$ is convergent.
+\item If $\ds \int_1^\infty a(x)\dd x$ is divergent, then $\ds \sum_{n=1}^\infty a_n$ is divergent.
 \end{enumerate}
 \index{series!Integral Test}\index{Integral Test}\index{convergence!Integral Test}\index{divergence!Integral Test}
 \end{theorem}
@@ -24,7 +24,7 @@ Note that it is not necessary to start the series or the integral at $n=1$. We m
 
 We can demonstrate the truth of the Integral Test with two simple graphs. In \autoref{fig:integral_test}(a), the height of each rectangle is $a(n)=a_n$ for $n=1,2,\dotsc$, and clearly the rectangles enclose more area than the area under $y=a(x)$. Therefore we can conclude that
 \begin{equation}
-\int_1^\infty a(x)\ dx < \sum_{n=1}^\infty a_n.\label{eq:integral_testa}
+\int_1^\infty a(x)\dd x < \sum_{n=1}^\infty a_n.\label{eq:integral_testa}
 \end{equation}
 %
 \mtable{Illustrating the truth of the Integral Test.}{fig:integral_test}{%
@@ -61,18 +61,18 @@ ytick={1,2},ymin=-.1,ymax=2.5,xmin=-.5,xmax=5.6]
 \end{tikzpicture}
 \\(b)}%
 %
-In \autoref{fig:integral_test}(b), we draw rectangles under $y=a(x)$ with the Right-Hand rule, starting with $n=2$. This time, the area of the rectangles is less than the area under $y=a(x)$, so $\ds\sum_{n=2}^\infty a_n < \int_1^\infty a(x)\ dx$. Note how this summation starts with $n=2$; adding $a_1$ to both sides lets us rewrite the summation starting with $n=1$:
-\begin{equation}\sum_{n=1}^\infty a_n < a_1 +\int_1^\infty a(x)\ dx.\label{eq:integral_testb}
+In \autoref{fig:integral_test}(b), we draw rectangles under $y=a(x)$ with the Right-Hand rule, starting with $n=2$. This time, the area of the rectangles is less than the area under $y=a(x)$, so $\ds\sum_{n=2}^\infty a_n < \int_1^\infty a(x)\dd x$. Note how this summation starts with $n=2$; adding $a_1$ to both sides lets us rewrite the summation starting with $n=1$:
+\begin{equation}\sum_{n=1}^\infty a_n < a_1 +\int_1^\infty a(x)\dd x.\label{eq:integral_testb}
 \end{equation} 
 
 
 Combining Equations \eqref{eq:integral_testa} and \eqref{eq:integral_testb}, we have
-\begin{equation}\sum_{n=1}^\infty a_n< a_1 +\int_1^\infty a(x)\ dx < a_1 + \sum_{n=1}^\infty a_n.\label{eq:integral_testc}\end{equation}
+\begin{equation}\sum_{n=1}^\infty a_n< a_1 +\int_1^\infty a(x)\dd x < a_1 + \sum_{n=1}^\infty a_n.\label{eq:integral_testc}\end{equation}
 From \autoeqref{eq:integral_testc} we can make the following two statements:
 % todo Tim etal are these statements backwards?  should the prior equation be rearranged?
 \begin{enumerate}
-	\item If $\ds \sum_{n=1}^\infty a_n$ diverges, so does $\ds\int_1^\infty a(x)\ dx$ \\\hfill(because $\ds \sum_{n=1}^\infty a_n < a_1 +\int_1^\infty a(x)\ dx$)
-	\item	If $\ds \sum_{n=1}^\infty a_n$ converges, so does $\ds\int_1^\infty a(x)\ dx$ \\\hfill(because $\ds \ds \int_1^\infty a(x)\ dx < \sum_{n=1}^\infty a_n$.)
+	\item If $\ds \sum_{n=1}^\infty a_n$ diverges, so does $\ds\int_1^\infty a(x)\dd x$ \\\hfill(because $\ds \sum_{n=1}^\infty a_n < a_1 +\int_1^\infty a(x)\dd x$)
+	\item	If $\ds \sum_{n=1}^\infty a_n$ converges, so does $\ds\int_1^\infty a(x)\dd x$ \\\hfill(because $\ds \ds \int_1^\infty a(x)\dd x < \sum_{n=1}^\infty a_n$.)
 \end{enumerate}
 Therefore the series and integral either both converge or both diverge. \autoref{thm:series_behavior} allows us to extend this theorem to series where $a(n)$ is positive and decreasing on $[b,\infty)$ for some $b>1$.
 
@@ -99,17 +99,17 @@ ymin=-.05,ymax=.85,xmin=-1,xmax=20.9]
 \end{tikzpicture}} 
 implies that $a(n) = (\ln n)/n^2$ is positive and decreasing on $[2,\infty)$. We can determine this analytically, too. We know $a(n)$ is positive as both $\ln n$ and $n^2$ are positive on $[2,\infty)$. To determine that $a(n)$ is decreasing, consider $a'(n) = (1-2\ln n)/n^3$, which is negative for $n\geq 2$. Since $a'(n)$ is negative, $a(n)$ is decreasing.
 
-Applying the Integral Test, we test the convergence of $\ds \int_1^\infty \frac{\ln x}{x^2}\ dx$. Integrating this improper integral requires the use of Integration by Parts, with $u = \ln x$ and $dv = 1/x^2\ dx$. 
+Applying the Integral Test, we test the convergence of $\ds \int_1^\infty \frac{\ln x}{x^2}\dd x$. Integrating this improper integral requires the use of Integration by Parts, with $u = \ln x$ and $dv = 1/x^2\dd x$. 
 \begin{align*}
-	\int_1^\infty \frac{\ln x}{x^2}\ dx
-	&= \lim_{t\to\infty} \int_1^t \frac{\ln x}{x^2}\ dx\\
-	&= \lim_{t\to\infty}\biggl( -\frac1x\ln x\Big|_1^t + \int_1^t\frac1{x^2}\ dx \biggr)\\
+	\int_1^\infty \frac{\ln x}{x^2}\dd x
+	&= \lim_{t\to\infty} \int_1^t \frac{\ln x}{x^2}\dd x\\
+	&= \lim_{t\to\infty}\biggl( -\frac1x\ln x\Big|_1^t + \int_1^t\frac1{x^2}\dd x \biggr)\\
 	&= \lim_{t\to\infty} \biggl( \Bigl[-\frac1x\ln x -\frac 1x\Bigr]_1^t\biggr)\\
 	&= \lim_{t\to\infty}\biggl(1-\frac1t-\frac{\ln t}{t}\biggr).\quad \text{Apply L'Hôpital's Rule:}\\
 	&= 1-0- \lim_{t\to\infty} \frac1t\\
 	&=1
 \end{align*}
-Since $\ds \int_1^\infty \frac{\ln x}{x^2}\ dx$ converges, so does $\ds \sum_{n=1}^\infty \frac{\ln n}{n^2}$.
+Since $\ds \int_1^\infty \frac{\ln x}{x^2}\dd x$ converges, so does $\ds \sum_{n=1}^\infty \frac{\ln n}{n^2}$.
 \end{example}
 
 \subsection{\texorpdfstring{$p$}{p}-Series}
@@ -137,10 +137,10 @@ A general $p$-series $\ds\sum_{n=1}^\infty \frac{1}{(an+b)^p}$ will converge if,
 \end{theorem}
 
 \begin{proof}
-Consider the integral $\ds\int_1^\infty \frac1{(ax+b)^p}\ dx$; assuming $p\neq 1$,
+Consider the integral $\ds\int_1^\infty \frac1{(ax+b)^p}\dd x$; assuming $p\neq 1$,
 \begin{align*}
-	\int_1^\infty \frac1{(ax+b)^p}\ dx
-	&= \lim_{t\to\infty} \int_1^t \frac1{(ax+b)^p}\ dx \\
+	\int_1^\infty \frac1{(ax+b)^p}\dd x
+	&= \lim_{t\to\infty} \int_1^t \frac1{(ax+b)^p}\dd x \\
 	&= \lim_{t\to\infty} \frac{1}{a(1-p)}(ax+b)^{1-p}\Big|_1^t\\
 	&= \lim_{t\to\infty} \frac{1}{a(1-p)}\bigl((at+b)^{1-p}-(a+b)^{1-p}\bigr).
 \end{align*}

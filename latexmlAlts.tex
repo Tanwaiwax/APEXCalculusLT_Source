@@ -1,15 +1,15 @@
+% !TEX TS-program = XeLaTeX
 % !TEX program = XeLaTeX
 %\errorcontextlines 10000
 
-\RequirePackage[l2tabu, orthodox]{nag}
+% this is not standalone
+% this is latexmlAlts to test if we need alternative latexml commands
+
 \documentclass[10pt]{book}
 
-%\showthe\baselineskip % 12pt
 \input{headers/APEX_format}
-%\showthe\marginparwidth % 150pt
 \usepackage{headers/apex_style}
 \input{headers/Header_Calculus}
-%\showthe\defaultaddspace % 5pt
 
 \newcommand{\thetitle}{Standalone}
 
@@ -23,10 +23,17 @@
 \frontmatter
 
 \input{text/front_matter_and_cover}
+% \label{lxApexTOC}
+% \tableofcontents
+% \input{text/title_page}
+% \input{text/copyright_page}
+%\addtocontents{toc}{\protect\thispagestyle{empty}}%
+%\input{text/preface}
 
 \mainmatter
 
 \part*{Calculus I}
+\ifbool{latexml}{\addcontentsline{toc}{part}{Calculus I}}{}
 
 \apexchapter[text/01_Prerequisite]{Limits}{ch:label}
 
@@ -35,46 +42,35 @@ Some intro stuff.
 \sectionautorefname
 \figureautorefname
 \appendixname
+\the\marginparwidth
+\the\defaultaddspace
 
 \section{The section}
 
-\begin{tikzpicture}
-  \matrix[row sep=1mm,column sep=3mm,ampersand replacement=\&]{
-    \&\&\& \node (tp1) {$-2$}; \&\& \node (tp2) {$2$}; \\[-1ex]
-    \node(linestart) {$x$}; \&\&\&\&\&\&\& \node(lineend) {}; \\[-1ex]
-    \&\node (fstart) {$x^2-4$}; \& \node {$+$}; \&\& \node {$-$}; \&\& \node {$+$}; \\
-  };
-  \draw [<->] (linestart.east) -- (lineend);
-  \draw (fstart.south west) -- (lineend.west |- fstart.south);
-  \draw (fstart.east |- lineend) -- (fstart.east|-fstart.south);
-  \foreach \x in {1,2} {
-    \draw (tp\x|-linestart)+(0,5pt) -- (tp\x |- fstart.south);
-  }
-\end{tikzpicture}
+\begin{keyidea}[My Key Idea Title]\label{ki:label}
+This is my key idea.
+\end{keyidea}
 
-\[a+b=c\label{myeq}\]
-That was \autoeqref{myeq} aka Equation \eqref{myeq}.
+% todo tikz matrices see https://github.com/brucemiller/LaTeXML/issues/794
+%\begin{tikzpicture}
+%  \matrix[row sep=1mm,column sep=3mm,ampersand replacement=\&]{
+%    \&\&\& \node (tp1) {$-2$}; \&\& \node (tp2) {$2$}; \\[-1ex]
+%    \node(linestart) {$x$}; \&\&\&\&\&\&\& \node(lineend) {}; \\[-1ex]
+%    \&\node (fstart) {$x^2-4$}; \& \node {$+$}; \&\& \node {$-$}; \&\& \node {$+$}; \\
+%  };
+%  \draw [<->] (linestart.east) -- (lineend);
+%  \draw (fstart.south west) -- (lineend.west |- fstart.south);
+%  \draw (fstart.east |- lineend) -- (fstart.east|-fstart.south);
+%  \foreach \x in {1,2} {
+%    \draw (tp\x|-linestart)+(0,5pt) -- (tp\x |- fstart.south);
+%  }
+%\end{tikzpicture}
 
-\begin{description}[leftmargin=0pt]
-\item[One] One.
-\end{description}
-
-\begin{tikzpicture}[x=.3cm,y=.3cm,>=stealth]
-\begin{scope}[xscale=2]
- \ifbool{latexml}{\draw[thick,fill=\coloronefill!60]}{\draw[thick,left color={\coloronefill},right color={\coloronefill!20}]}
- (-2,10) -- (-2,0) arc (180:360:2) -- (2,10);
- \ifbool{latexml}{\draw[thick,fill=\coloronefill!65]}{\draw[thick,left color={\coloronefill!30},right color={\coloronefill}]}
- (0,10)circle(2);
-\draw [thick] (0,12) circle (2);
-\draw [thick](-2,12)--(-2,10) (2,12)--(2,10);
-\draw [dashed,thick] (-2,0) arc (180:0:2);
-\draw (0,0) -- node [above,pos=.5] {\scriptsize 2 ft} (2,0);
-\end{scope}
-\begin{scope}[shift={(5,0)}]
-\draw (-.5,0) -- (.5,0) (-.5,10) -- (.5,10)
- (0,0) -- node [pos=.5,fill=white,rotate=90] {\scriptsize 10 ft} (0,10);
-\end{scope}
-\end{tikzpicture}
+\begin{example}[Example Title]\label{ex:label}
+This is my example. This is my example.
+\solution
+This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example.
+\end{example}
 
 Compare: % see 09_Parametric_Equations.tex
 \[
@@ -101,13 +97,17 @@ to:
 \end{tikzpicture}
 \end{center}
 
-% in 11_Vector_Tangent_Normal.tex
+% this works fine; I just want an index to make sure that shows correctly
 At one point we define $a_\mathrm{T}$
 \index{at@$a_{\mathrm{T}}$}\index{unit tangent vector!at@$a_{\mathrm{T}}$}%
 
 \printexercises{exercises/14_04_exercises}
 
 \appendix
+
+\showans\answrite
+% showans will write the contents of Calculus.answers to the log
+% in latexml, this needs to happen before closing
 
 \printsolutions{Standalone Solutions To All Problems}
 

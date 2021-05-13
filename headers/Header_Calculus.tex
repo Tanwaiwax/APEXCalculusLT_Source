@@ -1,3 +1,48 @@
+\usepackage{amsthm}
+
+\newtheoremstyle{apexExample}% name
+  {0pt}% Space above, empty = `usual value'
+  {0pt}% Space below
+  {}% Body font
+  {}% Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {}% Punctuation after thm head
+  {\newline}% Space after thm head
+  {\parbox[t]{\ifbool{latexml}{10em}{8em}}{\bfseries\thmname{#1}~\thmnumber{#2}}%
+   \thmnote{\parbox[t]{.75\textwidth}{\bfseries\raggedright#3}}%
+  }
+
+\newtheoremstyle{apex}% name
+  {0pt}% Space above, empty = `usual value'
+  {0pt}% Space below
+  {}% Body font
+  {}% Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {}% Punctuation after thm head
+  {\newline}% Space after thm head
+  {\parbox[t]{\ifbool{latexml}{10em}{8em}}{\bfseries\thmname{#1}~\thmnumber{#2}}%
+   \thmnote{\parbox[t]{\ifbool{latexml}{.6\textwidth}{.7\textwidth}}{\bfseries\raggedright#3}}%
+  }% Thm head spec
+  % the padding for the box takes just a bit of room away from these that examples get to keep
+
+\theoremstyle{apexExample}
+\newtheorem{example}{Example}[section]
+\newcommand{\exampleautorefname}{Ex\-am\-ple}
+\theoremstyle{apex}
+
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\pagebreak[2]\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+        \bfseries
+    #1]\mbox{}\\* % something is needed to be able to get a newline
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+\renewcommand{\qedsymbol}{\ensuremath{\square}}
 
 \newspecialbox{definition}{Def\-i\-ni\-tion}{60}
 % draw = yellow!95!black!60 = Hsb( 60,.59,.97)
@@ -115,6 +160,7 @@
 % \pdfbookmark[part]{Appendices}{appendixbookmark}
 % \fi
 }
+\makeatother
 
 
 % an enumerate like environment that can be mixed into tabular, array, etc.
@@ -145,13 +191,14 @@
 \newcommand{\yp}{\ensuremath{y\primeskip'}}
 \newcommand{\gp}{\ensuremath{g\primeskip'}}
 
+\newcommand{\dd}{\operatorname{d}\!}
+
 \newcommand*{\abs}[1]{\ensuremath{\left\lvert #1 \right\rvert}}
 \newcommand*{\norm}[1]{\ensuremath{\left\lVert #1 \right\rVert}}
 \newcommand*{\vnorm}[1]{\ensuremath{\norm{\vec #1}}}
 \newcommand{\bracket}[1]{\left\langle #1\right\rangle}
-\newcommand*{\dotp}[2]{\ensuremath{\vec #1 \cdot \vec #2}}
 \newcommand*{\proj}[2]{\ensuremath{\text{proj}_{\,\vec #2}{\,\vec #1}}}
-\newcommand*{\crossp}[2]{\ensuremath{\vec #1 \times \vec #2}}
+
 \newcommand{\vecE}{\ensuremath{\vec E}}
 \newcommand{\vecF}{\ensuremath{\vec F}}
 \newcommand{\vecG}{\ensuremath{\vec G}}
@@ -176,10 +223,7 @@
 \newcommand{\vst}{\ensuremath{\vec s(t)}}
 \newcommand{\vvt}{\ensuremath{\vec v(t)}}
 \newcommand{\vat}{\ensuremath{\vec a(t)}}
-\newcommand{\px}{\ensuremath{\partial x}}
-\newcommand{\py}{\ensuremath{\partial y}}
-\newcommand{\pz}{\ensuremath{\partial z}}
-\newcommand{\pf}{\ensuremath{\partial f}}
+
 \newcommand{\underlinespace}{\underline{\phantom{xxxxxx}}}
 
 \newcommand{\zerooverzero}{\dfrac{\makebox[0pt]{\text{`` }0\text{ ''}}}0\ \ }
@@ -379,15 +423,16 @@
 \baselineskip=1\baselineskip plus .3\baselineskip
 
 
-\let\oldprintindex\printindex
-\renewcommand{\printindex}{%
- \cleardoublepage
-% \chapter{\indexname} % \printindex has its own heading
- \phantomsection
-% \iflatexml\chapter*{\indexname}\fi
- \addcontentsline{toc}{chapter}{\indexname}
- \oldprintindex
-}
+\usepackage[nottoc]{tocbibind}
+%\let\oldprintindex\printindex
+%\renewcommand{\printindex}{%
+% \cleardoublepage
+%% \chapter{\indexname} % \printindex has its own heading
+% \phantomsection
+%% \iflatexml\chapter*{\indexname}\fi
+% \addcontentsline{toc}{chapter}{\indexname}
+% \oldprintindex
+%}
 
 
 \newtoggle{bsc} % default false

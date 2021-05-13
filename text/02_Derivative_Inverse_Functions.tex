@@ -54,7 +54,7 @@
 %
 %We have discovered a relationship between $\fp$ and $g\primeskip'$ in a mostly graphical way. We can realize this relationship analytically as well. Let $y = g(x)$, where again $g = f\primeskip^{-1}$. We want to find $\ds y\primeskip'$. Since $y = g(x)$, we know that $f(y) = x$. Using the Chain Rule and Implicit Differentiation, take the derivative of both sides of this last equality.
 %		\begin{align*}
-%			\frac{d}{dx}\Bigl(f(y)\Bigr) &= \frac{d}{dx}\Bigl(x\Bigr) \\
+%			\frac{\dd}{\dd x}\Bigl(f(y)\Bigr) &= \frac{\dd}{\dd x}\Bigl(x\Bigr) \\
 %			\fp(y)\cdot y\primeskip' &= 1\\
 %			y\primeskip' &= \frac{1}{\fp(y)}\\
 %			y\primeskip' &= \frac{1}{\fp(g(x))}
@@ -102,7 +102,8 @@ Adopting our previously defined notation, let $g(x) = \sin^{-1} x$ and $f(x) = \
 
 This last expression is not immediately illuminating. Drawing a figure will help, as shown in \autoref{fig:inverse3}. Recall that the sine function can be viewed as taking in an angle and returning a ratio of sides of a right triangle, specifically, the ratio ``opposite over hypotenuse.'' This means that the arcsine function takes as input a ratio of sides and returns an angle. The equation $y=\sin^{-1} x$ can be rewritten as $y=\sin^{-1}(x/1)$; that is, consider a right triangle where the hypotenuse has length 1 and the side opposite of the angle with measure $y$ has length $x$. This means the final side has length $\sqrt{1-x^2}$, using the Pythagorean Theorem.
 
-Therefore $\cos (\sin^{-1} x) = \cos y = \sqrt{1-x^2}/1 = \sqrt{1-x^2}$, resulting in \[\frac d{dx}\bigl(\sin^{-1}x\bigr)=g\primeskip'(x)=\frac1{\sqrt{1-x^2}}.\]
+Therefore $\cos (\sin^{-1} x) = \cos y = \sqrt{1-x^2}/1 = \sqrt{1-x^2}$, resulting in
+\[\frac \dd{\dd x}\bigl(\sin^{-1}x\bigr)=g\primeskip'(x)=\frac1{\sqrt{1-x^2}}.\]
 \end{example}
 
 Remember that the input $x$ of the arcsine function is a ratio of a side of a right triangle to its hypotenuse; the absolute value of this ratio will be less than 1. Therefore $1-x^2$ will be positive.
@@ -148,22 +149,22 @@ Using similar techniques, we can find the derivatives of all the inverse trigono
 The inverse trigonometric functions are differentiable on all open sets contained in their domains (as listed in \autoref{fig:domain_trig}) and their derivatives are as follows:\index{derivative!inverse trig.}
 \begin{multicols}{2}
 	\begin{enumerate}
-		\item	$\ds\frac d{dx}\bigl(\sin^{-1}x\bigr)= \frac1{\sqrt{1-x^2}}$ 
-		\item	$\ds\frac d{dx}\bigl(\sec^{-1}x\bigr)= \frac1{\abs{x}\sqrt{x^2-1}}$
-		\item	$\ds\frac d{dx}\bigl(\tan^{-1}x\bigr)= \frac1{1+x^2}$
-		\item	$\ds\frac d{dx}\bigl(\cos^{-1}x\bigr)=-\frac1{\sqrt{1-x^2}}$ 
-		\item	$\ds\frac d{dx}\bigl(\csc^{-1}x\bigr)=-\frac1{\abs{x}\sqrt{x^2-1}}$
-		\item	$\ds\frac d{dx}\bigl(\cot^{-1}x\bigr)=-\frac1{1+x^2}$
+		\item	$\ds\frac \dd{\dd x}\bigl(\sin^{-1}x\bigr)= \frac1{\sqrt{1-x^2}}$ 
+		\item	$\ds\frac \dd{\dd x}\bigl(\sec^{-1}x\bigr)= \frac1{\abs{x}\sqrt{x^2-1}}$
+		\item	$\ds\frac \dd{\dd x}\bigl(\tan^{-1}x\bigr)= \frac1{1+x^2}$
+		\item	$\ds\frac \dd{\dd x}\bigl(\cos^{-1}x\bigr)=-\frac1{\sqrt{1-x^2}}$ 
+		\item	$\ds\frac \dd{\dd x}\bigl(\csc^{-1}x\bigr)=-\frac1{\abs{x}\sqrt{x^2-1}}$
+		\item	$\ds\frac \dd{\dd x}\bigl(\cot^{-1}x\bigr)=-\frac1{1+x^2}$
 	\end{enumerate}
 \end{multicols}
 \end{theorem}}
 
 Note how the last three derivatives are merely the negatives of the first three, respectively. Because of this, the first three are used almost exclusively throughout this text.
 
-%In \autoref{sec:basic_diff_rules}, we stated without proof or explanation that $\ds \frac{d}{dx}\bigl(\ln x\bigr) = \frac1x$. We can justify that now using \autoref{thm:deriv_inverse_functions}, as shown in the example.
+%In \autoref{sec:basic_diff_rules}, we stated without proof or explanation that $\ds \frac{\dd}{\dd x}\bigl(\ln x\bigr) = \frac1x$. We can justify that now using \autoref{thm:deriv_inverse_functions}, as shown in the example.
 %
 %\begin{example}[Finding the derivative of $y=\ln x$]\label{ex_deriv_lnx}
-%Use \autoref{thm:deriv_inverse_functions} to compute $\ds \frac{d}{dx}\bigl(\ln x\bigr)$.
+%Use \autoref{thm:deriv_inverse_functions} to compute $\ds \frac{\dd}{\dd x}\bigl(\ln x\bigr)$.
 %\solution
 %View $y= \ln x$ as the inverse of $y = e^x$. Therefore, using our standard notation, let $f(x) = e^x$ and $g(x) = \ln x$. We wish to find $g\primeskip'(x)$. \autoref{thm:deriv_inverse_functions} gives:
 %\begin{align*}
@@ -201,28 +202,28 @@ Find the derivatives of the following functions:
 \end{example}
 
 \autoref{thm:deriv_inverse_trig} allows us to integrate some functions that we could not integrate before. For example,
-\[\int\frac{dx}{\sqrt{1-x^2}}=\sin^{-1}x+C.\]
+\[\int\frac{\dd x}{\sqrt{1-x^2}}=\sin^{-1}x+C.\]
 Combining these formulas with $u$-substitution yields the following:
 
 {\tcbset{grow to right by=1em}
 \begin{theorem}[Integrals Involving Inverse Trigonometric Functions]\label{thm:int_inverse_trig}
 Let $a>0$.  Then
 \begin{enumerate}
-	\item	$\ds\int\frac1{a^2+x^2}\ dx=\frac1a\tan^{-1}\left(\frac xa\right) + C$
-	\item	$\ds\int\frac1{\sqrt{a^2-x^2}}\ dx=\sin^{-1}\left(\frac xa\right)+C$
-	\item	$\ds\int\frac1{x\sqrt{x^2-a^2}}\ dx=\frac1a\sec^{-1}\left(\frac{\abs x}a\right)+C$
+	\item	$\ds\int\frac1{a^2+x^2}\dd x=\frac1a\tan^{-1}\left(\frac xa\right) + C$
+	\item	$\ds\int\frac1{\sqrt{a^2-x^2}}\dd x=\sin^{-1}\left(\frac xa\right)+C$
+	\item	$\ds\int\frac1{x\sqrt{x^2-a^2}}\dd x=\frac1a\sec^{-1}\left(\frac{\abs x}a\right)+C$
 \end{enumerate}
 \end{theorem}}
 
 We will look at the second part of this theorem. The other parts are similar and are left as exercises.
 
 First we note that the integrand involves the number $a^2$, but does not explicitly involve $a$. We make the assumption that $a>0$ in order to simplify what follows. We can rewrite the integral as follows:
-\[\int\frac{dx}{\sqrt{a^2-x^2}}=\int\frac{dx}{\sqrt{a^2(1-(x/a)^2)}}=\int\frac{dx}{a\sqrt{1-(x/a)^2}}\]
-We next use the substitution $u=x/a$ and $du=dx/a$ to find: 
+\[\int\frac{\dd x}{\sqrt{a^2-x^2}}=\int\frac{\dd x}{\sqrt{a^2(1-(x/a)^2)}}=\int\frac{\dd x}{a\sqrt{1-(x/a)^2}}\]
+We next use the substitution $u=x/a$ and $\dd u=\dd x/a$ to find: 
 \begin{align*}
-\int\frac{dx}{a\sqrt{1-(x/a)^2}}
-&=\int\frac{a}{a\sqrt{1-u^2}}\ du\\
-&=\int \frac{du}{\sqrt{1-u^2}}\\
+\int\frac{\dd x}{a\sqrt{1-(x/a)^2}}
+&=\int\frac{a}{a\sqrt{1-u^2}}\dd u\\
+&=\int \frac{\dd u}{\sqrt{1-u^2}}\\
 &=\sin^{-1}u+C\\
 &=\sin^{-1}(x/a)+C
 \end{align*}
@@ -232,20 +233,20 @@ We conclude this section with several examples.
 \begin{example}[Finding antiderivatives involving inverse functions]\label{eg_inv_deriv_harder}
 Find the following integrals.
 \[
- \text{1.}\quad\int\frac{dx}{100+x^2}\qquad
- \text{2.}\quad\int\frac{\sin^{-1} x}{\sqrt{1-x^2}}\ dx\qquad
- \text{3.}\quad\int\frac{dx}{x^2+2x+5}
+ \text{1.}\quad\int\frac{\dd x}{100+x^2}\qquad
+ \text{2.}\quad\int\frac{\sin^{-1} x}{\sqrt{1-x^2}}\dd x\qquad
+ \text{3.}\quad\int\frac{\dd x}{x^2+2x+5}
 \]
 \solution
 \begin{enumerate}
-\item $\ds\int\frac{dx}{100+x^2}=\int\frac{dx}{10^2+x^2}=\frac1{10}\tan^{-1}(x/10)+C$
-\item We use the substitution $u=\sin^{-1}x$ and $du=\frac{dx}{\sqrt{1-x^2}}$ to find:
-\[\int\frac{\sin^{-1}x}{\sqrt{1-x^2}}\ dx=\int u\ du=\frac12 u^2+C=\frac 12\left(\sin^{-1}x\right)^2+C\]
+\item $\ds\int\frac{\dd x}{100+x^2}=\int\frac{\dd x}{10^2+x^2}=\frac1{10}\tan^{-1}(x/10)+C$
+\item We use the substitution $u=\sin^{-1}x$ and $\dd u=\frac{\dd x}{\sqrt{1-x^2}}$ to find:
+\[\int\frac{\sin^{-1}x}{\sqrt{1-x^2}}\dd x=\int u\dd u=\frac12 u^2+C=\frac 12\left(\sin^{-1}x\right)^2+C\]
 \item This does not immediately look like one of the forms in \autoref{thm:int_inverse_trig}, but we can complete the square in the denominator to see that
-\[\int\frac{dx}{x^2+2x+5} =\int\frac{dx}{(x^2+2x+1)+4}=\int\frac{dx}{4+(x+1)^2}\]
-We now use the substitution $u=x+1$ and $du=dx$ to find:
+\[\int\frac{\dd x}{x^2+2x+5} =\int\frac{\dd x}{(x^2+2x+1)+4}=\int\frac{\dd x}{4+(x+1)^2}\]
+We now use the substitution $u=x+1$ and $\dd u=\dd x$ to find:
 \begin{multline*}
- \int\frac{dx}{4+(x+1)^2} =\int\frac{du}{4+u^2}\\
+ \int\frac{\dd x}{4+(x+1)^2} =\int\frac{\dd u}{4+u^2}\\
  =\frac12 \tan^{-1}(u/2)+C =\frac 12\tan^{-1}\left(\frac{x+1}2\right)+C.
 \end{multline*}
 \end{enumerate}
@@ -259,30 +260,30 @@ We now use the substitution $u=x+1$ and $du=dx$ to find:
 %\begin{anywhereenum}
 %\renewcommand{\arraystretch}{1.6}
 %\begin{tabular}{ll}
-%	\item		$\frac{d}{dx}\bigl(cu\bigr) = cu'$ &
-%	\item		$\frac{d}{dx}\bigl(u\pm v\bigr) = u'\pm v'$ \\
-%	\item		$\frac{d}{dx}\bigl(u\cdot v\bigr) = uv'+u'v$ &
-%	\item		$\frac{d}{dx}\bigl(\frac uv\bigr) = \frac{u'v-uv'}{v^2}$ \\
-%	\item		$\frac{d}{dx}\bigl(u(v)\bigr) = u'(v)v'$ &
-%	\item		$\frac{d}{dx}\bigl(x^n\bigr) = nx^{n-1}$ \\
-%	\item		$\frac{d}{dx}\bigl(c\bigr) = 0$ &
-%	\item		$\frac{d}{dx}\bigl(x\bigr) = 1$ \\
-%	\item		$\frac{d}{dx}\bigl(\ln x\bigr) = \frac{1}{x}$ &
-%	\item		$\frac{d}{dx}\bigl(e^x\bigr) = e^x$ \\
-%	\item		$\frac{d}{dx}\bigl(\sin x\bigr) = \cos x$ &
-%	\item		$\frac{d}{dx}\bigl(\cos x\bigr) = -\sin x$ \\
-%	\item		$\frac{d}{dx}\bigl(\tan x\bigr) = \sec^2x$ &
-%	\item		$\frac{d}{dx}\bigl(\cot x\bigr) = -\csc^2x$ \\
-%	\item		$\frac{d}{dx}\bigl(\sec x\bigr) = \sec x\tan x$\qquad\null &
-%	\item		$\frac{d}{dx}\bigl(\csc x\bigr) = -\csc x\cot x$
-%%	\item		$\frac{d}{dx}\bigl(a^x\bigr) = \ln a\cdot a^x$ \\
-%%	\item		$\frac{d}{dx}\bigl(\log_a x\bigr) = \frac{1}{\ln a}\cdot\frac{1}{x}$ &
-%%	\item		$\frac{d}{dx}\bigl(\sin^{-1}x\bigr) = \frac{1}{\sqrt{1-x^2}}$ &
-%%	\item		$\frac{d}{dx}\bigl(\csc^{-1}x\bigr) = -\frac{1}{\abs{x}\sqrt{x^2-1}}$ \\
-%%	\item		$\frac{d}{dx}\bigl(\tan^{-1}x\bigr) = \frac{1}{1+x^2}$ &
-%%	\item		$\frac{d}{dx}\bigl(\cos^{-1}x\bigr) = -\frac{1}{\sqrt{1-x^2}}$
-%%	\item		$\frac{d}{dx}\bigl(\sec^{-1}x\bigr) = \frac{1}{\abs{x}\sqrt{x^2-1}}$
-%%	\item		$\frac{d}{dx}\bigl(\cot^{-1}x\bigr) = -\frac{1}{1+x^2}$
+%	\item		$\frac{\dd}{\dd x}\bigl(cu\bigr) = cu'$ &
+%	\item		$\frac{\dd}{\dd x}\bigl(u\pm v\bigr) = u'\pm v'$ \\
+%	\item		$\frac{\dd}{\dd x}\bigl(u\cdot v\bigr) = uv'+u'v$ &
+%	\item		$\frac{\dd}{\dd x}\bigl(\frac uv\bigr) = \frac{u'v-uv'}{v^2}$ \\
+%	\item		$\frac{\dd}{\dd x}\bigl(u(v)\bigr) = u'(v)v'$ &
+%	\item		$\frac{\dd}{\dd x}\bigl(x^n\bigr) = nx^{n-1}$ \\
+%	\item		$\frac{\dd}{\dd x}\bigl(c\bigr) = 0$ &
+%	\item		$\frac{\dd}{\dd x}\bigl(x\bigr) = 1$ \\
+%	\item		$\frac{\dd}{\dd x}\bigl(\ln x\bigr) = \frac{1}{x}$ &
+%	\item		$\frac{\dd}{\dd x}\bigl(e^x\bigr) = e^x$ \\
+%	\item		$\frac{\dd}{\dd x}\bigl(\sin x\bigr) = \cos x$ &
+%	\item		$\frac{\dd}{\dd x}\bigl(\cos x\bigr) = -\sin x$ \\
+%	\item		$\frac{\dd}{\dd x}\bigl(\tan x\bigr) = \sec^2x$ &
+%	\item		$\frac{\dd}{\dd x}\bigl(\cot x\bigr) = -\csc^2x$ \\
+%	\item		$\frac{\dd}{\dd x}\bigl(\sec x\bigr) = \sec x\tan x$\qquad\null &
+%	\item		$\frac{\dd}{\dd x}\bigl(\csc x\bigr) = -\csc x\cot x$
+%%	\item		$\frac{\dd}{\dd x}\bigl(a^x\bigr) = \ln a\cdot a^x$ \\
+%%	\item		$\frac{\dd}{\dd x}\bigl(\log_a x\bigr) = \frac{1}{\ln a}\cdot\frac{1}{x}$ &
+%%	\item		$\frac{\dd}{\dd x}\bigl(\sin^{-1}x\bigr) = \frac{1}{\sqrt{1-x^2}}$ &
+%%	\item		$\frac{\dd}{\dd x}\bigl(\csc^{-1}x\bigr) = -\frac{1}{\abs{x}\sqrt{x^2-1}}$ \\
+%%	\item		$\frac{\dd}{\dd x}\bigl(\tan^{-1}x\bigr) = \frac{1}{1+x^2}$ &
+%%	\item		$\frac{\dd}{\dd x}\bigl(\cos^{-1}x\bigr) = -\frac{1}{\sqrt{1-x^2}}$
+%%	\item		$\frac{\dd}{\dd x}\bigl(\sec^{-1}x\bigr) = \frac{1}{\abs{x}\sqrt{x^2-1}}$
+%%	\item		$\frac{\dd}{\dd x}\bigl(\cot^{-1}x\bigr) = -\frac{1}{1+x^2}$
 %\end{tabular}
 %\end{anywhereenum}
 %\end{theorem}

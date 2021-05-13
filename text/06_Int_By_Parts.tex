@@ -1,36 +1,36 @@
 \section{Integration by Parts}\label{sec:IBP}
 
 Here's a simple integral that we can't yet evaluate:
-\[\int x\cos x \,dx.\]
+\[\int x\cos x\dd x.\]
 It's a simple matter to take the derivative of the integrand using the Product Rule, but there is no Product Rule for integrals.  However, this section introduces \emph{Integration by Parts}, a method of integration that is based on the Product Rule for derivatives. It will enable us to evaluate this integral.
 
 The Product Rule says that if $u$ and $v$ are functions of $x$, then  $(uv)' = u\primeskip'v + uv\primeskip'$.  For simplicity, we've written $u$ for $u(x)$ and $v$ for $v(x)$.  Suppose we integrate both sides with respect to $x$.  This gives
-\[\int (uv)'\,dx = \int (u\primeskip'v+uv\primeskip')\,dx.\]
+\[\int (uv)'\dd x = \int (u\primeskip'v+uv\primeskip')\dd x.\]
 By the Fundamental Theorem of Calculus, the left side integrates to $uv$.  The right side can be broken up into two integrals, and we have
-\[uv = \int u\primeskip'v\,dx + \int uv\primeskip'\,dx.\]
-Solving for the second integral we have 
-\[\int uv\primeskip'\,dx = uv - \int u\primeskip'v\,dx.\]
+\[uv = \int u\primeskip'v\dd x + \int uv\primeskip'\dd x.\]
+Solving for the second integral we have
+\[\int uv\primeskip'\dd x = uv - \int u\primeskip'v\dd x.\]
 Using differential notation, we can write
 \[
 \begin{aligned}
- u\primeskip'&=\frac{du}{dx} \\
- v\primeskip'&=\frac{dv}{dx}
+ u\primeskip'&=\frac{\dd u}{\dd x} \\
+ v\primeskip'&=\frac{\dd v}{\dd x}
 \end{aligned}
 \qquad\Rightarrow\qquad
 \begin{aligned}
- du&=u\primeskip'dx \\
- dv&=v\primeskip'dx.
+ \dd u&=u\primeskip'\dd x \\
+ \dd v&=v\primeskip'\dd x.
 \end{aligned}
 \]
 Thus, the equation above can be written as follows:
-\[\int u\,dv = uv - \int v\,du.\]
+\[\int u\dd v = uv - \int v\dd u.\]
 This is the Integration by Parts formula. For reference purposes, we state this in a theorem.
 
 \begin{theorem}[Integration by Parts]\label{thm:IBP}
 Let $u$ and $v$ be differentiable functions of $x$ on an interval $I$ containing $a$ and $b$. Then 
-\[\int u\, dv = uv - \int v\, du,\]
+\[\int u\dd v = uv - \int v\dd u,\]
 and applying FTC part 2 we have \index{integration!by parts}
-\[\int_{x=a}^{x=b} u\, dv = uv\Big|_a^b - \int_{x=a}^{x=b}v\, du.\]
+\[\int_{x=a}^{x=b} u\dd v = uv\Big|_a^b - \int_{x=a}^{x=b}v\dd u.\]
 \end{theorem}
 
 \youtubeVideo{zGGI4PkHzhI}{Integration by Parts --- Definite Integral}
@@ -38,37 +38,37 @@ and applying FTC part 2 we have \index{integration!by parts}
 Let's try an example to understand our new technique.
 
 \begin{example}[Integrating using Integration by Parts]\label{ex_ibp1}
-Evaluate $\ds\int x\cos{x}\,dx$.
+Evaluate $\ds\int x\cos{x}\dd x$.
 \solution
-The key to Integration by Parts is to identify part of the integrand as ``$u$'' and part as ``$dv$.'' Regular practice will help one make good identifications, and later we will introduce some principles that help. For now, let  $u=x$ and $dv=\cos{x}\,dx$.
+The key to Integration by Parts is to identify part of the integrand as ``$u$'' and part as ``$\dd v$.'' Regular practice will help one make good identifications, and later we will introduce some principles that help. For now, let  $u=x$ and $\dd v=\cos x\dd x$.
 
 It is generally useful to make a small table of these values.
 \[
 \begin{aligned}
-u&= x & dv&=\cos x\, dx\\
-du&= \text{?} & v&=\text{?}
+u&= x & \dd v&=\cos x\dd x\\
+\dd u&= \text{?} & v&=\text{?}
 \end{aligned}
 \qquad\Rightarrow\qquad
 \begin{aligned}
-u&= x & dv&=\cos x\, dx\\
-du&= dx & v&=\sin x
+u&= x & \dd v&=\cos x\dd x\\
+\dd u&= \dd x & v&=\sin x
 \end{aligned}
 \]
-Right now we only know $u$ and $dv$ as shown on the left; on the right we fill in the rest of what we need. If $u = x$, then $du = dx$. Since $dv = \cos x\, dx$, $v$ is an antiderivative of $\cos x$, so $v = \sin x$.
+Right now we only know $u$ and $dv$ as shown on the left; on the right we fill in the rest of what we need. If $u = x$, then $\dd u = \dd x$. Since $\dd v = \cos x\dd x$, $v$ is an antiderivative of $\cos x$, so $v = \sin x$.
 
 Now substitute all of this into the Integration by Parts formula, giving
-\[\int x\cos x\,dx = x\sin x - \int \sin x \,dx.\]
+\[\int x\cos x\dd x = x\sin x - \int \sin x\dd x.\]
 We can then integrate $\sin x$ to get $-\cos x + C$ and overall our answer is
-\[\int x\cos x\, dx = x\sin x + \cos x + C.\]
-We have two important notes here: (1) notice how the antiderivative contains the product, $x\sin x$. This product is what makes integration by parts necessary. And (2) antidifferentiating $dv$ does result in $v+C$. The intermediate $+C$s are all added together and represented by one $+C$ in the final answer.
+\[\int x\cos x\dd x = x\sin x + \cos x + C.\]
+We have two important notes here: (1) notice how the antiderivative contains the product, $x\sin x$. This product is what makes integration by parts necessary. And (2) antidifferentiating $\dd v$ does result in $v+C$. The intermediate $+C$s are all added together and represented by one $+C$ in the final answer.
 \end{example}
 
-The example above demonstrates how Integration by Parts works in general.  We try to identify $u$ and $dv$ in the integral we are given, and the key is that we usually want to choose $u$ and $dv$ so that $du$ is simpler than $u$ and $v$ is hopefully not too much more complicated than $dv$.  This will mean that the integral on the right side of the Integration by Parts formula, $\int v\,du$ will be simpler to integrate than the original integral $\int u\,dv$.
+The example above demonstrates how Integration by Parts works in general.  We try to identify $u$ and $\dd v$ in the integral we are given, and the key is that we usually want to choose $u$ and $\dd v$ so that $\dd u$ is simpler than $u$ and $v$ is hopefully not too much more complicated than $\dd v$.  This will mean that the integral on the right side of the Integration by Parts formula, $\int v\dd u$ will be simpler to integrate than the original integral $\int u\dd v$.
 
-In the example above, we chose $u=x$ and $dv=\cos x\,dx$.  Then $du=dx$ was simpler than $u$ and $v=\sin x$ is no more complicated than $dv$.  Therefore, instead of integrating $x\cos x \,dx$, we could integrate $\sin x\,dx$, which we knew how to do.
+In the example above, we chose $u=x$ and $\dd v=\cos x\dd x$.  Then $\dd u=\dd x$ was simpler than $u$ and $v=\sin x$ is no more complicated than $\dd v$.  Therefore, instead of integrating $x\cos x\dd x$, we could integrate $\sin x\dd x$, which we knew how to do.
 
-If we had chosen $u=\cos x$ and $dv=x\, dx$, so that $du=-\sin x\,dx$ and $v=\frac12x^2$, then
-\[\int x\cos x\, dx=\frac12x^2\cos x-\left(-\frac12\right)\int x^2\sin x\, dx.\]
+If we had chosen $u=\cos x$ and $\dd v=x\dd x$, so that $\dd u=-\sin x\dd x$ and $v=\frac12x^2$, then
+\[\int x\cos x\dd x=\frac12x^2\cos x-\left(-\frac12\right)\int x^2\sin x\dd x.\]
 We then need to integrate $x^2\sin x$, which is more complicated than our original integral, making this an unproductive choice.
 
 %A useful mnemonic for helping to determine $u$ is ``LIATE,'' where 
@@ -81,154 +81,155 @@ We then need to integrate $x^2\sin x$, which is more complicated than our origin
 We now consider another example.
 
 \begin{example}[Integrating using Integration by Parts]\label{ex_ibp2}
-Evaluate $\ds\int x e^x\,dx$.
+Evaluate $\ds\int x e^x\dd x$.
 \solution
-Notice that $x$ becomes simpler when differentiated and $e^x$ is unchanged by differentiation or integration. This suggests that we should let $u=x$ and $dv=e^x\, dx$:
-%The integrand contains an \textbf{A}lgebraic term ($x$) and an \textbf{E}xponential term ($e^x$). Our mnemonic suggests letting $u$ be the algebraic term, so we choose $u=x$ and $dv=e^x\,dx$.  Then $du=dx$ and $v=e^x$ as indicated by the tables below.\\
+Notice that $x$ becomes simpler when differentiated and $e^x$ is unchanged by differentiation or integration. This suggests that we should let $u=x$ and $\dd v=e^x\dd x$:
+%The integrand contains an \textbf{A}lgebraic term ($x$) and an \textbf{E}xponential term ($e^x$). Our mnemonic suggests letting $u$ be the algebraic term, so we choose $u=x$ and $\dd v=e^x\dd x$.  Then $\dd u=\dd x$ and $v=e^x$ as indicated by the tables below.\\
 \[
 \begin{aligned}
-u&= x & dv&=e^x\, dx\\
-du&= \text{?} & v&=\text{?}
+u&= x & \dd v&=e^x\dd x\\
+\dd u&= \text{?} & v&=\text{?}
 \end{aligned}
 \qquad\Rightarrow\qquad
 \begin{aligned}
-u&= x & dv&=e^x\, dx\\
-du&= dx & v&=e^x
+u&= x & \dd v&=e^x\dd x\\
+\dd u&= \dd x & v&=e^x
 \end{aligned}
 \]
 
 %We see $du$ is simpler than $u$, while there is no change in going from $dv$ to $v$.  This is good.
 The Integration by Parts formula gives
-\[\int x e^x\,dx = xe^x - \int e^x\,dx.\]
+\[\int x e^x\dd x = xe^x - \int e^x\dd x.\]
 The integral on the right is simple; our final answer is
-\[\int xe^x\, dx = xe^x - e^x + C.\]
+\[\int xe^x\dd x = xe^x - e^x + C.\]
 Note again how the antiderivatives contain a product term.
 \end{example}
 
 \begin{example}[Integrating using Integration by Parts]\label{ex_ibp3}
-Evaluate $\ds\int x^2\cos x \,dx$.
+Evaluate $\ds\int x^2\cos x\dd x$.
 \solution
-Let $u=x^2$ instead of the trigonometric function, hence $dv=\cos x\,dx$.  Then $du=2x\,dx$ and $v=\sin x$ as shown below.
+Let $u=x^2$ instead of the trigonometric function, hence $\dd v=\cos x\dd x$.  Then $\dd u=2x\dd x$ and $v=\sin x$ as shown below.
 \[
 \begin{aligned}
-u&= x^2 & dv&=\cos x\, dx\\
-du&= \text{?} & v&=\text{?}
+u&= x^2 & \dd v&=\cos x\dd x\\
+\dd u&= \text{?} & v&=\text{?}
 \end{aligned}
 \qquad\Rightarrow\qquad
 \begin{aligned}
-u&= x^2 & dv&=\cos x\, dx\\
-du&= 2x\, dx & v&=\sin x
+u&= x^2 & \dd v&=\cos x\dd x\\
+\dd u&= 2x\dd x & v&=\sin x
 \end{aligned}
 \]
 
 The Integration by Parts formula gives
-\[\int x^2\cos x\,dx = x^2\sin x - \int 2x\sin x\,dx.\]
-At this point, the integral on the right is indeed simpler than the one we started with, but to evaluate it, we need to do Integration by Parts again. Here we choose $u=2x$ and $dv=\sin x$ and fill in the rest below.
+\[\int x^2\cos x\dd x = x^2\sin x - \int 2x\sin x\dd x.\]
+At this point, the integral on the right is indeed simpler than the one we started with, but to evaluate it, we need to do Integration by Parts again. Here we choose $u=2x$ and $\dd v=\sin x\dd x$ and fill in the rest below.
 \[
 \begin{aligned}
-u&= 2x & dv&=\sin x\, dx\\
-du&= \text{?} & v&=\text{?}
+u&= 2x & \dd v&=\sin x\dd x\\
+\dd u&= \text{?} & v&=\text{?}
 \end{aligned}
 \qquad\Rightarrow\qquad
 \begin{aligned}
-u&= 2x & dv&=\sin x\, dx\\
-du&= 2\, dx & v&=-\cos x
+u&= 2x & \dd v&=\sin x\dd x\\
+\dd u&= 2\dd x & v&=-\cos x
 \end{aligned}
 \]
 
 This means that
-\[\int x^2\cos x\,dx = x^2\sin x - \left(-2x\cos x - \int -2\cos x\,dx\right).\]
-The integral all the way on the right is now something we can evaluate.  It evaluates to $-2\sin{x}$.  Then going through and simplifying, being careful to keep all the signs straight, our answer is
-\[\int x^2\cos x\, dx = x^2\sin x  + 2x\cos x - 2\sin x + C.\]
+\[\int x^2\cos x\dd x = x^2\sin x - \left(-2x\cos x - \int -2\cos x\dd x\right).\]
+The integral all the way on the right is now something we can evaluate.  It evaluates to $-2\sin x$.  Then going through and simplifying, being careful to keep all the signs straight, our answer is
+\[\int x^2\cos x\dd x = x^2\sin x  + 2x\cos x - 2\sin x + C.\]
 \end{example}
 
 \begin{example}[Integrating using Integration by Parts]\label{ex_ibp4}
-Evaluate $\ds\int e^x\cos x \,dx$.
+Evaluate $\ds\int e^x\cos x\dd x$.
 \solution
 This is a classic problem.
 %  Our mnemonic suggests letting $u$ be the trigonometric function instead of the exponential.
 In this particular example, one can let $u$ be either $\cos x$ or $e^x$;
 %to demonstrate that we do not have to follow LIATE,
-we choose $u=e^x$ and hence $dv = \cos x\,dx$.  Then $du=e^x\,dx$ and $v=\sin x$ as shown below.
+we choose $u=e^x$ and hence $\dd v = \cos x\dd x$.  Then $\dd u=e^x\dd x$ and $v=\sin x$ as shown below.
 \[
 \begin{aligned}
-u&= e^x & dv&=\cos x\, dx\\
-du&= \text{?} & v&=\text{?}
+u&= e^x & \dd v&=\cos x\dd x\\
+\dd u&= \text{?} & v&=\text{?}
 \end{aligned}
 \qquad\Rightarrow\qquad
 \begin{aligned}
-u&= e^x& dv&=\cos x\, dx\\
-du&= e^x\, dx & v&=\sin x
+u&= e^x& \dd v&=\cos x\dd x\\
+\dd u&= e^x\dd x & v&=\sin x
 \end{aligned}
 \]
 
-Notice that $du$ is no simpler than $u$, going against our general rule (but bear with us). The Integration by Parts formula yields
-\[\int e^x\cos x\, dx = e^x\sin x - \int e^x\sin x\,dx.\]
-The integral on the right is not much different from the one we started with, so it seems like we have gotten nowhere. Let's  keep working and apply Integration by Parts to the new integral. So what should we use for $u$ and $dv$ this time? We may feel like letting the trigonometric function be $dv$ and the exponential be $u$ was a bad choice last time since we still can't integrate the new integral. However, if we let $u=\sin x$ and $dv=e^x\,dx$ this time we will reverse what we just did, taking us back to the beginning. So, we let $u=e^x$ and $dv = \sin x\,dx$. This leads us to the following:
+Notice that $\dd u$ is no simpler than $u$, going against our general rule (but bear with us). The Integration by Parts formula yields
+\[\int e^x\cos x\dd x = e^x\sin x - \int e^x\sin x\dd x.\]
+The integral on the right is not much different from the one we started with, so it seems like we have gotten nowhere. Let's keep working and apply Integration by Parts to the new integral. So what should we use for $u$ and $\dd v$ this time? We may feel like letting the trigonometric function be $\dd v$ and the exponential be $u$ was a bad choice last time since we still can't integrate the new integral. However, if we let $u=\sin x$ and $\dd v=e^x\dd x$ this time we will reverse what we just did, taking us back to the beginning. So, we let $u=e^x$ and $\dd v = \sin x\dd x$. This leads us to the following:
 \[
 \begin{aligned}
-u&= e^x & dv&=\sin x\, dx\\
-du&= \text{?} & v&=\text{?}
+u&= e^x & \dd v&=\sin x\dd x\\
+\dd u&= \text{?} & v&=\text{?}
 \end{aligned}
 \qquad\Rightarrow\qquad
 \begin{aligned}
-u&= e^x& dv&=\sin x\, dx\\
-du&= e^x\, dx & v&=-\cos x
+u&= e^x& \dd v&=\sin x\dd x\\
+\dd u&= e^x\dd x & v&=-\cos x
 \end{aligned}
 \]
 
 The Integration by Parts formula then gives:
 \begin{align*}
-\int e^x\cos x\,dx &= e^x\sin x - \left(-e^x\cos x - \int -e^x\cos x\,dx\right)\\
-					&= e^x\sin x+ e^x\cos x - \int e^x\cos x\, dx.
+ \int e^x\cos x\dd x
+ &= e^x\sin x - \left(-e^x\cos x - \int -e^x\cos x\dd x\right)\\
+ &= e^x\sin x+ e^x\cos x - \int e^x\cos x\dd x.
 \end{align*}
-It seems we are back right where we started, as the right hand side contains $\int e^x\cos x\,dx$.  But this is actually a good thing.  
+It seems we are back right where we started, as the right hand side contains $\int e^x\cos x\dd x$.  But this is actually a good thing.  
 
-Add $\ds\int e^x\cos x\, dx$ to both sides. This gives 
+Add $\ds\int e^x\cos x\dd x$ to both sides. This gives 
 \begin{align*}
-2\int e^x\cos x\, dx & = e^x\sin x + e^x\cos x \\
+2\int e^x\cos x\dd x & = e^x\sin x + e^x\cos x \\
 \intertext{Now divide both sides by 2:}
-\int e^x\cos x\, dx & = \frac{1}{2}\bigl(e^x\sin x + e^x\cos x\bigr).
+\int e^x\cos x\dd x & = \frac{1}{2}\bigl(e^x\sin x + e^x\cos x\bigr).
 \end{align*}
 
 Simplifying a little and adding the constant of integration, our answer is thus
-\[\int e^x\cos x\, dx = \frac12e^x\left(\sin x + \cos x\right)+C.\]
+\[\int e^x\cos x\dd x = \frac12e^x\left(\sin x + \cos x\right)+C.\]
 \end{example}
 
 % see Example 2.4.4.
 \begin{example}[Using Integration by Parts: antiderivative of $\ln x$]\label{ex_ibp5}
-Evaluate $\ds\int \ln x\,dx$.
+Evaluate $\ds\int \ln x\dd x$.
 \solution
-One may have noticed that we have rules for integrating the familiar trigonometric functions and $e^x$, but we have not yet given a rule for integrating $\ln x$.  That is because $\ln x$ can't easily be integrated with any of the rules we have learned up to this point.  But we can find its antiderivative by a clever application of Integration by Parts.  Set $u=\ln x$ and $dv=dx$.  This is a good strategy to learn as it can help in other situations. This determines $du=(1/x)\,dx$ and $v=x$ as shown below.
+One may have noticed that we have rules for integrating the familiar trigonometric functions and $e^x$, but we have not yet given a rule for integrating $\ln x$.  That is because $\ln x$ can't easily be integrated with any of the rules we have learned up to this point.  But we can find its antiderivative by a clever application of Integration by Parts.  Set $u=\ln x$ and $\dd v=\dd x$.  This is a good strategy to learn as it can help in other situations. This determines $\dd u=(1/x)\dd x$ and $v=x$ as shown below.
 \[
 \begin{aligned}
-u&= \ln x & dv&=dx\\
-du&= \text{?} & v&=\text{?}
+u&= \ln x & \dd v&=\dd x\\
+\dd u&= \text{?} & v&=\text{?}
 \end{aligned}
 \qquad\Rightarrow\qquad
 \begin{aligned}
-u&= \ln x& dv&=dx\\
-du&= 1/x\, dx & v&=x
+u&= \ln x& \dd v&=\dd x\\
+\dd u&= 1/x\dd x & v&=x
 \end{aligned}
 \]
 Putting this all together in the Integration by Parts formula, things work out very nicely:
 \begin{align*}
- \int \ln x\,dx
- &= x\ln x - \int x\,\frac1x\,dx \\
- &= x\ln x - \int 1\,dx \\
- &= x\ln{x} - x + C.
+ \int \ln x\dd x
+ &= x\ln x - \int x\,\frac1x\dd x \\
+ &= x\ln x - \int 1\dd x \\
+ &= x\ln x - x + C.
 \end{align*}
 \end{example}
 
 \begin{example}[Using Integration by Parts: antiderivative of $\tan^{-1} x$]\label{ex_ibp6}
-Evaluate $\displaystyle \int \tan^{-1} x  \,dx$.
+Evaluate $\displaystyle \int \tan^{-1} x\dd x$.
 \solution
-The same strategy of $dv=dx$ that we used above works here.  Let $u=\tan^{-1} x$ and $dv=dx$.  Then $du=1/(1+x^2)\,dx$ and $v=x$.  The Integration by Parts formula gives
-\[\int \tan^{-1} x \,dx = x\tan^{-1} x - \int \frac x{1+x^2}\,dx.\]
-The integral on the right can be solved by substitution.  Taking $t=1+x^2$, we get $dt=2x\,dx$.  The integral then becomes
-\[\int \tan^{-1} x \,dx = x\tan^{-1} x - \frac12\int \frac 1{t}\,dt.\]
+The same strategy of $\dd v=\dd x$ that we used above works here.  Let $u=\tan^{-1} x$ and $\dd v=\dd x$.  Then $\dd u=1/(1+x^2)\dd x$ and $v=x$.  The Integration by Parts formula gives
+\[\int \tan^{-1} x\dd x = x\tan^{-1} x - \int \frac x{1+x^2}\dd x.\]
+The integral on the right can be solved by substitution.  Taking $t=1+x^2$, we get $\dd t=2x\dd x$.  The integral then becomes
+\[\int \tan^{-1} x\dd x = x\tan^{-1} x - \frac12\int \frac 1{t}\dd t.\]
 The integral on the right evaluates to $\ln\abs t+C$, which becomes $\ln(1+x^2)+C$.  Therefore, the answer is
-\[\int \tan^{-1} x\, dx = x\tan^{-1} x - \frac12\ln(1+x^2) + C.\]
+\[\int \tan^{-1} x\dd x = x\tan^{-1} x - \frac12\ln(1+x^2) + C.\]
 Since $1+x^2>0$, we do not need to include the absolute value in the $\ln(1+x^2)$ term.
 \end{example}
 
@@ -237,20 +238,20 @@ Since $1+x^2>0$, we do not need to include the absolute value in the $\ln(1+x^2)
 When taking derivatives, it was common to employ multiple rules (such as using both the Quotient and the Chain Rules). It should then come as no surprise that some integrals are best evaluated by combining integration techniques. In particular, here we illustrate making an ``unusual'' substitution first before using Integration by Parts.
 
 \begin{example}[Integration by Parts after substitution]\label{ex_ibp8}
-Evaluate $\ds \int \cos(\ln x)\, dx$.
+Evaluate $\ds \int \cos(\ln x)\dd x$.
 \solution
-The integrand contains a composition of functions, leading us to think Substitution would be beneficial. Letting $u=\ln x$, we have $du = 1/x\, dx$. This seems problematic, as we do not have a $1/x$ in the integrand. But consider:
-\[du = \frac 1x\, dx \Rightarrow x\cdot du = dx.\]
+The integrand contains a composition of functions, leading us to think Substitution would be beneficial. Letting $u=\ln x$, we have $\dd u = 1/x\dd x$. This seems problematic, as we do not have a $1/x$ in the integrand. But consider:
+\[\dd u = \frac 1x\dd x \Rightarrow x\cdot\dd u = \dd x.\]
 Since $u = \ln x$, we can use inverse functions to solve for $x = e^u$. Therefore we have that
 \begin{align*}
-dx &= x\cdot du \\
-		&= e^u\, du.
+\dd x &= x\cdot \dd u \\
+		&= e^u\dd u.
 \end{align*}
-We can thus replace $\ln x$ with $u$ and $dx$ with $e^u\, du$. Thus we rewrite our integral as 
-\[\int \cos(\ln x)\, dx = \int e^u\cos u \, du.\]
+We can thus replace $\ln x$ with $u$ and $\dd x$ with $e^u\dd u$. Thus we rewrite our integral as 
+\[\int \cos(\ln x)\dd x = \int e^u\cos u\dd u.\]
 We evaluated this integral in \autoref{ex_ibp4}. Using the result there, we have:
 \begin{align*}
-\int \cos(\ln x)\, dx &= \int e^u\cos u \, du \\
+\int \cos(\ln x)\dd x &= \int e^u\cos u\dd u \\
 				&= \frac12e^u\bigl(\sin u + \cos u\bigr) + C \\
 				&= \frac12e^{\ln x} \bigl(\sin(\ln x) + \cos (\ln x)\bigr)+C\\
 				&= \frac12x \bigl(\sin(\ln x) + \cos (\ln x)\bigr)+C.
@@ -262,30 +263,30 @@ We evaluated this integral in \autoref{ex_ibp4}. Using the result there, we have
 So far we have focused only on evaluating indefinite integrals. Of course, we can use Integration by Parts to evaluate definite integrals as well, as \autoref{thm:IBP} states. We do so in the next example.
 
 \begin{example}[Definite integration using Integration by Parts]\label{ex_ibp7}
-Evaluate $\displaystyle \int_1^2 x^2 \ln x \,dx$.
+Evaluate $\displaystyle \int_1^2 x^2 \ln x\dd x$.
 \solution
-%Once again, our mnemonic suggests we let $u=\ln x$.  %(We could let $u = x^2$ and $dv = \ln x\, dx$, as we now know the antiderivatives of $\ln x$. However, letting $u = \ln x$ makes our next integral much simpler as it removes the logarithm from the integral entirely.)
-To simplify the integral we let $u=\ln x$ and $dv =x^2\,dx$. 
-%So we have $u=\ln x$ and $dv=x^2\,dx$.
-We then get $du = (1/x)\,dx$ and $v=x^3/3$ as shown below.
+%Once again, our mnemonic suggests we let $u=\ln x$.  %(We could let $u = x^2$ and $\dd v = \ln x\dd x$, as we now know the antiderivatives of $\ln x$. However, letting $u = \ln x$ makes our next integral much simpler as it removes the logarithm from the integral entirely.)
+To simplify the integral we let $u=\ln x$ and $\dd v =x^2\dd x$. 
+%So we have $u=\ln x$ and $\dd v=x^2\dd x$.
+We then get $\dd u = (1/x)\dd x$ and $v=x^3/3$ as shown below.
 \[
 \begin{aligned}
-u&= \ln x & dv&=x^2\, dx\\
-du&= \text{?} & v&=\text{?}
+u&= \ln x & \dd v&=x^2\dd x\\
+\dd u&= \text{?} & v&=\text{?}
 \end{aligned}
 \qquad\Rightarrow\qquad
 \begin{aligned}
-u&= \ln x& dv&=x^2\, dx\\
-du&= 1/x\, dx & v&=x^3/3
+u&= \ln x& \dd v&=x^2\dd x\\
+\dd u&= 1/x\dd x & v&=x^3/3
 \end{aligned}
 \]
 
 This may seem counterintuitive since the power on the algebraic factor has increased ($v=x^3/3$), but as we see this is a wise choice:
 %The Integration by Parts formula then gives
 \begin{align*}
-	\int_1^2 x^2 \ln x\,dx
-	&= \frac{x^3}3\ln x\bigg|_1^2 - \int_1^2 \frac{x^3}{3}\,\frac 1x\,dx \\
-	&=  \frac{x^3}3\ln x\bigg|_1^2 - \int_1^2 \frac{x^2}{3}\,dx \\
+	\int_1^2 x^2 \ln x\dd x
+	&= \frac{x^3}3\ln x\bigg|_1^2 - \int_1^2 \frac{x^3}{3}\,\frac 1x\dd x \\
+	&=  \frac{x^3}3\ln x\bigg|_1^2 - \int_1^2 \frac{x^2}{3}\dd x \\
 	&=  \frac{x^3}3\ln x\bigg|_1^2 - \frac{x^3}{9}\bigg|_1^2\\
 	&=  \left(\frac{x^3}3\ln x - \frac{x^3}{9}\right)\bigg|_1^2\\
 	&=	\left(\frac83\ln 2 - \frac89\right)-\left(\frac13\ln 1 - \frac19\right) \\
@@ -293,20 +294,20 @@ This may seem counterintuitive since the power on the algebraic factor has incre
 \end{align*}
 \end{example}
 
-In general, Integration by Parts is useful for integrating certain products of functions, like $\ds\int x e^x\,dx$ or $\ds\int x^3\sin x\,dx$.   It is also useful for integrals involving logarithms and inverse trigonometric functions.  
+In general, Integration by Parts is useful for integrating certain products of functions, like $\ds\int x e^x\dd x$ or $\ds\int x^3\sin x\dd x$.   It is also useful for integrals involving logarithms and inverse trigonometric functions.
 
 As stated before, integration is generally more difficult than differentiation. We are developing tools for handling a large array of integrals, and experience will tell us when one tool is preferable/necessary over another. For instance, consider the three similar-looking integrals 
 \[
-\int xe^x\,dx, \qquad  \int x e^{x^2}\,dx \qquad \text{and} \qquad \int xe^{x^3}\,dx.
+\int xe^x\dd x, \qquad  \int x e^{x^2}\dd x \qquad \text{and} \qquad \int xe^{x^3}\dd x.
 \]
 
-While the first is calculated easily with Integration by Parts, the second is best approached with Substitution.  Taking things one step further, the third integral has no answer in terms of elementary functions, so none of the methods we learn in calculus will get us the exact answer.  We will learn how to approximate this integral in \autoref{chapter:sequences_series}
+While the first is calculated easily with Integration by Parts, the second is best approached with Substitution.  Taking things one step further, the third integral has no answer in terms of elementary functions, so none of the methods we learn in calculus will get us the exact answer. We will learn how to approximate this integral in \autoref{chapter:sequences_series}
 
 Integration by Parts is a very useful method, second only to substitution. In the following sections of this chapter, we continue to learn other integration techniques. The next section focuses on handling integrals containing trigonometric functions.
 
 \printexercises{exercises/06_02_exercises}
 
-%maybe $\int \sin(\sqrt x )\,dx $
+%maybe $\int \sin(\sqrt x )\dd x $
 % If you're looking for a trickier example....
 
 %Maybe an example where Integration by Parts is useful in a theoretical context....

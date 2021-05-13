@@ -21,14 +21,14 @@ In this section (and in some sections to follow) we will learn some of what math
 \begin{theorem}[Derivatives of Common Functions]\label{thm:deriv_common}
 \noindent\index{derivative!basic rules}\index{derivative!Constant Rule}\index{derivative!Power Rule}\index{Power Rule!differentiation}%
 \begin{tabular}{ll}
-\item \textbf{Constant Rule:}	$\dfrac d{dx}\bigl( c\bigr) = 0$, &
-\item \textbf{Power Rule:} $\dfrac d{dx}\left(x^n\right) = nx^{n-1}$,\\
+\item \textbf{Constant Rule:}	$\dfrac \dd{\dd x}\bigl( c\bigr) = 0$, &
+\item \textbf{Power Rule:} $\dfrac \dd{\dd x}\left(x^n\right) = nx^{n-1}$,\\
 \null\qquad where $c$ is a constant. &
 \null\qquad where $n$ is any real number.\\
-\item $\dfrac d{dx}(\sin x) = \cos x$ &
-\item $\dfrac d{dx}(\cos x) = -\sin x$ \\[2ex]
-\item $\dfrac d{dx}\left(e^x\right) = e^x$ &
-\item $\dfrac d{dx}(\ln x) = \dfrac1x$
+\item $\dfrac \dd{\dd x}(\sin x) = \cos x$ &
+\item $\dfrac \dd{\dd x}(\cos x) = -\sin x$ \\[2ex]
+\item $\dfrac \dd{\dd x}\left(e^x\right) = e^x$ &
+\item $\dfrac \dd{\dd x}(\ln x) = \dfrac1x$
 \end{tabular}
 \end{theorem}
 \end{anywhereenum}
@@ -58,7 +58,7 @@ as claimed.  Now let $f(x)= x^n$, where $n \in \mathbb{Z}^+$. By the definition 
 We proved \autoref{thm:deriv_common} part 3 in \autoref{sec:derivative} and part 4 is left as an exercise.  In parts 5 and 6 we see something incredible about the functions $y=e^x$ and $y=\ln x$. We will use these rules freely, unfortunately their proofs will have to wait until we know a few more calculus techniques.
 % it is its own derivative.
 
-%One special case of the Power Rule is when $n=1$, i.e., when $f(x) = x$. What is $\fp(x)$? According to the Power Rule, \[\fp(x) = \frac{d}{dx}\bigl(x\bigr) = \frac{d}{dx}\bigl(x^1\bigr) = 1\cdot x^0 = 1.\] In words, we are asking ``At what rate does $f$ change with respect to $x$?'' Since $f$ \emph{is} $x$, we are asking ``At what rate does $x$ change with respect to $x$?'' The answer is: 1. They change at the same rate.\\
+%One special case of the Power Rule is when $n=1$, i.e., when $f(x) = x$. What is $\fp(x)$? According to the Power Rule, \[\fp(x) = \frac{\dd}{\dd x}\bigl(x\bigr) = \frac{\dd}{\dd x}\bigl(x^1\bigr) = 1\cdot x^0 = 1.\] In words, we are asking ``At what rate does $f$ change with respect to $x$?'' Since $f$ \emph{is} $x$, we are asking ``At what rate does $x$ change with respect to $x$?'' The answer is: 1. They change at the same rate.\\
 
 Let's practice using this theorem.
 
@@ -100,16 +100,16 @@ Let $f$ and $g$ be differentiable on an open interval $I$ and let $c$ be a real 
 \index{derivative!Sum/Difference Rule}\index{Sum/Difference Rule!of derivatives}
 \index{derivative!Constant Multiple Rule}\index{Constant Multiple Rule!of derivatives}\begin{enumerate}
 	\item	\textbf{Sum/Difference Rule:}\\
-	\qquad$\ds \frac{d}{dx}\Bigl(f(x) \pm g(x)\Bigr) = \frac{d}{dx}\Bigl(f(x)\Bigr) \pm \frac{d}{dx}\Bigl(g(x)\Bigr)=\fp(x)\pm g\primeskip'(x)$
+	\qquad$\ds \frac{\dd}{\dd x}\Bigl(f(x) \pm g(x)\Bigr) = \frac{\dd}{\dd x}\Bigl(f(x)\Bigr) \pm \frac{\dd}{\dd x}\Bigl(g(x)\Bigr)=\fp(x)\pm g\primeskip'(x)$
 	\item	\textbf{Constant Multiple Rule:}\\
-	\qquad$\ds \frac{d}{dx}\Bigl(c\cdot f(x)\Bigr) = c\cdot\frac{d}{dx}\Bigl(f(x)\Bigr) = c\cdot\fp(x)$.
+	\qquad$\ds \frac{\dd}{\dd x}\Bigl(c\cdot f(x)\Bigr) = c\cdot\frac{\dd}{\dd x}\Bigl(f(x)\Bigr) = c\cdot\fp(x)$.
 \end{enumerate}
 \end{theorem}
 
 \begin{proof}[Proof of Sum Rule for Differentiation]
 Let $f$ and $g$ be differentiable on an open interval $I$ and let $c$ be a real number,
 \begin{align*}
-\frac{d}{dx}( f(x) + g(x))
+\frac{\dd}{\dd x}( f(x) + g(x))
 &= \lim_{h\to 0} \frac{[f(x+h)+g(x+h)] - [f(x)+g(x)]}{h} \\
 &= \lim_{h\to 0} \frac{[f(x+h)-f(x)] + [g(x+h) - g(x)]}{h} \\
 &= \lim_{h\to 0} \frac{[f(x+h)-f(x)]}{h} + \lim_{h\to 0}\frac {g(x+h) - g(x)}{h}\\
@@ -121,13 +121,13 @@ Let $f$ and $g$ be differentiable on an open interval $I$ and let $c$ be a real 
 
 \autoref{thm:deriv_prop} allows us to find the derivatives of a wide variety of functions. It can be used in conjunction with the Power Rule to find the derivatives of any polynomial. Recall in \autoref{ex_deriv1} that we found, using the limit definition, the derivative of $f(x) = 3x^2+5x-7$. We can now find its derivative without expressly using limits:
 \begin{align*}
-	\frac{d}{dx}\Bigl(3x^2+5x+7\Bigr)
-	&= 3\frac{d}{dx}\Bigl(x^2\Bigr) + 5\frac{d}{dx}\Bigl(x\Bigr) + \frac{d}{dx}\Bigl(7\Bigr) \\
+	\frac{\dd}{\dd x}\Bigl(3x^2+5x+7\Bigr)
+	&= 3\frac{\dd}{\dd x}\Bigl(x^2\Bigr) + 5\frac{\dd}{\dd x}\Bigl(x\Bigr) + \frac{\dd}{\dd x}\Bigl(7\Bigr) \\
 	&= 3\cdot 2x+5\cdot 1+ 0\\
 	&= 6x+5.
 \end{align*}
 
-We were a bit pedantic here, showing every step. Normally we would do all the arithmetic and steps in our head and readily find $\ds \frac{d}{dx}\Bigl(3x^2+5x+7\Bigr) = 6x+5$.
+We were a bit pedantic here, showing every step. Normally we would do all the arithmetic and steps in our head and readily find $\ds \frac{\dd}{\dd x}\Bigl(3x^2+5x+7\Bigr) = 6x+5$.
 
 \begin{example}[Using Theorems \ref{thm:deriv_common} and \ref{thm:deriv_prop} to find derivatives]\label{ex_der15}
 Use Theorems \ref{thm:deriv_common} and \ref{thm:deriv_prop} to differentiate
@@ -173,11 +173,11 @@ The derivative of a function $f$ is itself a function, therefore we can take its
 Let $y=f(x)$ be a differentiable function on $I$. \index{derivative!higher order}\index{derivative!notation}
 		\begin{enumerate}
 		\item		The \emph{second derivative} of $f$ is: 
-						\[ \fp'(x) = \frac{d}{dx}\Bigl(\fp(x)\Bigr) = \frac{d}{dx}\left(\frac{dy}{dx}\right) = \frac{d\primeskip^2y}{dx^2}=y\primeskip''.\]
+						\[ \fp'(x) = \frac{\dd}{\dd x}\Bigl(\fp(x)\Bigr) = \frac{\dd}{\dd x}\left(\frac{\dd y}{\dd x}\right) = \frac{\dd^2y}{\dd x^2}=y\primeskip''.\]
 				\item		The \emph{third derivative} of $f$ is: 
-						\[ \fp''(x) = \frac{d}{dx}\Bigl(\fp'(x)\Bigr) = \frac{d}{dx}\left(\frac{d\primeskip^2y}{dx^2}\right) = \frac{d\primeskip^3y}{dx^3}=y\primeskip'''.\]
+						\[ \fp''(x) = \frac{\dd}{\dd x}\Bigl(\fp'(x)\Bigr) = \frac{\dd}{\dd x}\left(\frac{\dd^2y}{\dd x^2}\right) = \frac{\dd^3y}{\dd x^3}=y\primeskip'''.\]
 				\item		The \emph{n$^{\text{th}}$ derivative} of $f$ is:
-						\[ f\,^{(n)}(x) = \frac{d}{dx}\left(f\,^{(n-1)}(x)\right) = \frac{d}{dx}\left(\frac{d\primeskip^{n-1}y}{dx^{n-1}}\right) = \frac{d\primeskip^ny}{dx^n}=y^{(n)}.\]
+						\[ f\,^{(n)}(x) = \frac{\dd}{\dd x}\left(f\,^{(n-1)}(x)\right) = \frac{\dd}{\dd x}\left(\frac{\dd^{n-1}y}{\dd x^{n-1}}\right) = \frac{\dd^ny}{\dd x^n}=y^{(n)}.\]
 		\end{enumerate}
 \end{definition}
 
@@ -193,7 +193,7 @@ Find the first four derivatives of the following functions:
 \solution
 \begin{enumerate}
 	\item	Using the Power and Constant Multiple Rules, we have: $\fp(x) = 8x$. Continuing on, we have 
-	\[\fpp(x) = \frac{d}{dx}\bigl(8x\bigr) = 8;\qquad \fp''(x) = 0;\qquad f\,^{(4)}(x) = 0.\]
+	\[\fpp(x) = \frac{\dd}{\dd x}\bigl(8x\bigr) = 8;\qquad \fp''(x) = 0;\qquad f\,^{(4)}(x) = 0.\]
 Notice how all successive derivatives will also be 0.
 	\item	We employ \autoref{thm:deriv_common} repeatedly.
 	\[\fp(x) = \cos x;\quad \fp'(x) = -\sin x;\quad \fp''(x) = -\cos x;\quad f\,^{(4)}(x) = \sin x.\]

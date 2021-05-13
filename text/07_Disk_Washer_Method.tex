@@ -28,7 +28,7 @@ with $\Delta x=\frac{b-a}{n}$ and $x_i=a+i\Delta x$. We recognize this as a defi
 
 \begin{theorem}[Volume By Cross-Sectional Area]\label{thm:volume_by_cross_section}
 The volume $V$ of a solid, oriented along the $x$-axis with cross-sectional area $A(x)$ from $x=a$ to $x=b$, is \index{integration!volume!cross-sectional area}
-\[V = \int_a^b A(x)\ dx.\]
+\[V = \int_a^b A(x)\dd x.\]
 \end{theorem}
 
 \begin{example}[Finding the volume of a solid]\label{ex_disk0}
@@ -67,7 +67,7 @@ We have
 \begin{align*}
 	V
 	&= \lim_{n\to\infty} \sum_{i=1}^n (2x_i)^2\Delta x\\
-	&= \int_0^5 4x^2\ dx\\
+	&= \int_0^5 4x^2\dd x\\
 	&= \frac43x^3\Big|_0^5 \\
 	&=\frac{500}{3}\ %\text{in}^3 \approx 166.67
 	\ \text{in}^3.
@@ -86,7 +86,7 @@ Start with a function $y=f(x)$ from $x=a$ to $x=b$. Revolving this curve about a
 \begin{keyidea}[The Disk Method]\label{idea:disk_method}
 Let a solid be enclosed by revolving the curve $y=f(x)$ from $x=a$ to $x=b$ around a horizontal axis, and let $R(x)$ be the radius of the cross-sectional disk at $x$. The volume of the solid is
 \index{integration!volume!Disk Method}\index{Disk Method}
-\[V = \pi \int_a^b [R(x)]^2\ dx.\]
+\[V = \pi \int_a^b [R(x)]^2\dd x.\]
 \end{keyidea}
 
 \youtubeVideo{nZqOKc067Z8}{Longer Version --- Volumes using Disks/Washers}
@@ -136,8 +136,8 @@ Taking the limit of the above sum as $n\to\infty$ gives the actual volume; recog
 %Using \autoref{idea:disk_method}, we have 
 \begin{align*}
 	V &= \lim_{n\to\infty}\sum_{i=1}^n \pi \left(\frac1{x_i}\right)^2\Delta x\\
-		&= \pi\int_1^2 \left(\frac1x\right)^2\ dx \\
-		&= \pi\int_1^2 \frac1{x^2}\ dx \\
+		&= \pi\int_1^2 \left(\frac1x\right)^2\dd x \\
+		&= \pi\int_1^2 \frac1{x^2}\dd x \\
 		&= \pi\left[-\frac1x\right]\Big|_1^2 \\
 		&= \pi \left[-\frac12 - \left(-1\right)\right] \\
 		&= \frac{\pi}{2}\ \text{units}^3.
@@ -184,7 +184,7 @@ Since $y=1/x$ defines the curve, we rewrite it as $x=1/y$.% The bound $x=1$ corr
 
 Thus we are rotating about the $y$-axis the region bounded by the curves $x=1/y$, $y=1/2$, $y=1$, and the $y$-axis to form a solid. The region of revolution is sketched in \autoref{fig:disk2}(a), the curve and sample sample disk are sketched in \autoref{fig:disk2}(b), and a full sketch of the solid is in \autoref{fig:disk2}(b). We integrate to find the volume:
 \begin{align*}
-	V &= \pi\int_{1/2}^1 \frac{1}{y^2}\ dy \\
+	V &= \pi\int_{1/2}^1 \frac{1}{y^2}\dd y \\
 	&= -\frac{\pi}y\Big|_{1/2}^1 \\
 	&= \pi\ \text{units}^3.
 \end{align*}
@@ -197,8 +197,8 @@ Thus we are rotating about the $y$-axis the region bounded by the curves $x=1/y$
 
 We can also compute the volume of solids of revolution that have a hole in the center. The general principle is simple: compute the volume of the solid irrespective of the hole, then subtract the volume of the hole. If the outside radius of the solid is $R(x)$ and the inside radius (defining the hole) is $r(x)$, then the volume is 
 \[
-V = \pi\int_a^b [R(x)]^2 \ dx - \pi\int_a^b [r(x)]^2\ dx
-= \pi\int_a^b \left([R(x)]^2-[r(x)]^2\right)\ dx.
+V = \pi\int_a^b [R(x)]^2 \dd x - \pi\int_a^b [r(x)]^2\dd x
+= \pi\int_a^b \left([R(x)]^2-[r(x)]^2\right)\dd x.
 \]
 
 One can generate a solid of revolution with a hole in the middle by revolving a region about an axis. Consider \autoref{fig:washeridea}(a), where a region is sketched along with a dashed, horizontal axis of rotation. By rotating the region about the axis, a solid is formed. Each cross section of this solid will be a washer (a disk with a hole in the center) as sketched in \autoref{fig:washeridea}(b). The outside of the washer has radius $R(x)$, whereas the inside has radius $r(x)$. The entire solid is sketched in \autoref{fig:washeridea}(c).  This leads us to the Washer Method.
@@ -254,7 +254,7 @@ One can generate a solid of revolution with a hole in the middle by revolving a 
 \begin{keyidea}[The Washer Method]\label{idea:washermethod}
 Let a region bounded by $y=f(x)$, $y=g(x)$, $x=a$ and $x=b$ be rotated about a horizontal axis that does not intersect the region, forming a solid. Each cross section at $x$ will be a washer with outside radius $R(x)$ and inside radius $r(x)$. The volume of the solid is
 \index{integration!volume!Washer Method}\index{Washer Method}
-\[V = \pi\int_a^b \Bigl([R(x)]^2-[r(x)]^2\Bigr)\ dx.\]
+\[V = \pi\int_a^b \Bigl([R(x)]^2-[r(x)]^2\Bigr)\dd x.\]
 \end{keyidea}
 
 Even though we introduced it first, the Disk Method is just a special case of the Washer Method with an inside radius of $r(x)=0$.
@@ -307,8 +307,8 @@ Find the volume of the solid formed by rotating the region bounded by $y=x^2-2x+
 \solution
 A sketch of the region will help, as given in \autoref{fig:wash1}(a). Rotating about the $x$-axis will produce cross sections in the shape of washers, as shown in \autoref{fig:wash1}(b); the complete solid is shown in part (c). The outside radius of this washer is $R(x) = 2x+1$; the inside radius is $r(x) = x^2-2x+2$. As the region is bounded from $x=1$ to $x=3$, we integrate as follows to compute the volume.
 \begin{align*}
-V &= \pi\int_1^3 \Bigl((2x-1)^2-(x^2-2x+2)^2\Bigr)\ dx \\
-		&= \pi\int_1^3 \bigl(-x^4+4x^3-4x^2+4x-3\bigr)\ dx \\
+V &= \pi\int_1^3 \Bigl((2x-1)^2-(x^2-2x+2)^2\Bigr)\dd x \\
+		&= \pi\int_1^3 \bigl(-x^4+4x^3-4x^2+4x-3\bigr)\dd x \\
 		&= \pi\Bigl[-\frac{1}{5}x^5+x^4-\frac43x^3+2x^2-3x\Bigr]\Big|_1^3 \\
 		&=\frac{104}{15}\pi %\approx 21.78
 		\ \text{units}^3.
@@ -366,8 +366,8 @@ Find the volume of the solid formed by rotating the region bounded by $y=x^2$ an
 \solution
 In \autoref{fig:ex_sq_and_rt} we have a sketch of the region (a), a sample slice (b), and the solid (c). Rotating about the $y$-axis will produce cross sections in the shape of washers, as shown in (b); the complete solid is shown in  part (c). Since the axis of rotation is vertical, each radius is a function of $y$. The outside radius of this washer is $R(y)=\sqrt y$ and the inside radius is $r(y)=y^2$. As the region is bounded from $y=0$ to $y=1$, we integrate as follows to compute the volume. 
 \begin{align*}
-V&=\pi \int_0^1 \left((\sqrt y)^2-(y^2)^2\right) \ dy\\
-&=\pi \int_0^1 y-y^4 \ dy\\
+V&=\pi \int_0^1 \left((\sqrt y)^2-(y^2)^2\right) \dd y\\
+&=\pi \int_0^1 y-y^4 \dd y\\
 &=\pi\left.\left[\frac{1}{2} y^2-\frac{1}{5} y^5\right] \right|_0^1\\
 &=\frac{3\pi}{10} \text{units}^3.
 \end{align*}
@@ -426,8 +426,8 @@ The inside radius is formed by the line connecting $(1,1)$ and $(2,3)$. The equa
 
 We integrate over the $y$-bounds of $y=1$ to $y=3$. Thus the volume is
 \begin{align*}
-V 	&=	\pi\int_1^3\Bigl(2^2 - \bigl(\frac12(y+1)\bigr)^2\Bigr)\ dy \\
-		&=	\pi\int_1^3\Bigl(-\frac14y^2-\frac12y+\frac{15}4\Bigr)\ dy \\
+V 	&=	\pi\int_1^3\Bigl(2^2 - \bigl(\frac12(y+1)\bigr)^2\Bigr)\dd y \\
+		&=	\pi\int_1^3\Bigl(-\frac14y^2-\frac12y+\frac{15}4\Bigr)\dd y \\
 		&= 	\pi\Bigl[-\frac1{12}y^3-\frac14y^2+\frac{15}4y\Bigr]\Big|_1^3\\
 		&= \frac{10}3\pi %\approx 10.47
 		\ \text{units}^3.
@@ -476,9 +476,9 @@ Find the volume of the solid formed by rotating the region bounded by $y=\sqrt x
 \solution
 \autoref{fig:wash4} shows the region we are rotating (a), a sample slice (b) and the full solid (c). The axis of rotation is horizontal so the radii must be functions of $x$. The radii is the distance from the axis of rotation to the curve so the outside radius of this washer is $R(x)=2-x$ and the inside radius is $r(x)=2-\sqrt x$. The region is bounded from  $x=0$ to $x=1$, thus the volume is
 \begin{align*}
-V&=\pi \int_0^1 \left( (2-x)^2-(2-\sqrt x)^2\right) \ dx\\
-&=\pi \int_0^1 (4-4x+x^2)-(4-4\sqrt x+x)\ dx\\
-&=\pi \int_0^1 x^2 -5x+4\sqrt x \ dx\\
+V&=\pi \int_0^1 \left( (2-x)^2-(2-\sqrt x)^2\right) \dd x\\
+&=\pi \int_0^1 (4-4x+x^2)-(4-4\sqrt x+x)\dd x\\
+&=\pi \int_0^1 x^2 -5x+4\sqrt x \dd x\\
 &=\pi \left.\left[\frac13 x^3-\frac52 x^2+\frac83 x^{3/2}\right]\right|_0^1\\
 &=\frac{\pi}{2} \text{units}^3.
 \end{align*}

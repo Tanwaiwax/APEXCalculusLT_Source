@@ -2,14 +2,14 @@
 
 We begin this section by considering the following definite integrals:
 \begin{itemize}
-\item	$\ds \int_0^{100}\frac1{1+x^2}\ dx \approx 1.5608,$
-\item	$\ds \int_0^{1000}\frac1{1+x^2}\ dx \approx 1.5698,$
-\item	$\ds \int_0^{10,000}\frac1{1+x^2}\ dx \approx 1.5707.$
+\item	$\ds \int_0^{100}\frac1{1+x^2}\dd x \approx 1.5608,$
+\item	$\ds \int_0^{1000}\frac1{1+x^2}\dd x \approx 1.5698,$
+\item	$\ds \int_0^{10,000}\frac1{1+x^2}\dd x \approx 1.5707.$
 \end{itemize}
 
 Notice how the integrand is $1/(1+x^2)$ in each integral (which is sketched in \autoref{fig:improper1}). As the upper bound gets larger, one would expect the ``area under the curve'' would also grow. While the definite integrals do increase in value as the upper bound grows, they are not  increasing by much. In fact, consider:
-\[\int_0^b \frac{1}{1+x^2}\ dx = \tan^{-1}x\Big|_0^b = \tan^{-1}b-\tan^{-1}0 = \tan^{-1}b.\]
-As $b\rightarrow \infty$, $\tan^{-1}b \rightarrow \pi/2.$ Therefore it seems that as the upper bound $b$ grows, the value of the definite integral $\ds \int_0^b\frac{1}{1+x^2}\ dx$ approaches $\pi/2\approx 1.5708$. This should strike the reader as being a bit amazing: even though the curve extends ``to infinity,'' it has a finite amount of area underneath it.
+\[\int_0^b \frac{1}{1+x^2}\dd x = \tan^{-1}x\Big|_0^b = \tan^{-1}b-\tan^{-1}0 = \tan^{-1}b.\]
+As $b\rightarrow \infty$, $\tan^{-1}b \rightarrow \pi/2.$ Therefore it seems that as the upper bound $b$ grows, the value of the definite integral $\ds \int_0^b\frac{1}{1+x^2}\dd x$ approaches $\pi/2\approx 1.5708$. This should strike the reader as being a bit amazing: even though the curve extends ``to infinity,'' it has a finite amount of area underneath it.
 
 \mtable{Graphing $\ds f(x)=\frac{1}{1+x^2}$.}{fig:improper1}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -22,7 +22,7 @@ ymin=-.1,ymax=1.1,xmin=-1,xmax=11]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-When we defined the definite integral $\ds\int_a^b f(x)\ dx$, we made two stipulations:
+When we defined the definite integral $\ds\int_a^b f(x)\dd x$, we made two stipulations:
 	\begin{enumerate}
 	\item		The interval over which we integrated, $[a,b]$, was a finite interval, and
 	\item		The function $f(x)$ was continuous on $[a,b]$ (ensuring that the range of $f$ was finite).
@@ -44,15 +44,16 @@ In this section we consider integrals where one or both of the above conditions 
 \index{integration!improper}\index{improper integration}\index{convergence!of improper int.}\index{divergence!of improper int.}
 \mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{%
 \begin{enumerate}
-\item		Let $f$ be a continuous function on $[a,\infty)$. For $t \geq a$ let \[\int_a^\infty f(x)\ dx = \lim_{t\to\infty}\int_a^t f(x)\ dx.\]
+\item		Let $f$ be a continuous function on $[a,\infty)$. For $t \geq a$ let
+\[\int_a^\infty f(x)\dd x = \lim_{t\to\infty}\int_a^t f(x)\dd x.\]
 
 \item		Let $f$ be a continuous function on $(-\infty,b]$. For $t \leq b$ let
-\[\int_{-\infty}^b f(x)\ dx = \lim_{t\to-\infty}\int_t^b f(x)\ dx.\]
+\[\int_{-\infty}^b f(x)\dd x = \lim_{t\to-\infty}\int_t^b f(x)\dd x.\]
 
 \item		Let $f$ be a continuous function on $(-\infty,\infty)$. For any real number $c$ (which one doesn't matter), let
 \[
-\int_{-\infty}^\infty f(x)\ dx
-= \lim_{a\to-\infty}\int_a^c f(x)\ dx\ +\ \lim_{b\to\infty}\int_c^b f(x)\ dx.
+\int_{-\infty}^\infty f(x)\dd x
+= \lim_{a\to-\infty}\int_a^c f(x)\dd x\ +\ \lim_{b\to\infty}\int_c^b f(x)\dd x.
 \]
 \end{enumerate}}
 \end{definition}
@@ -65,14 +66,14 @@ An improper integral is said to \textbf{converge} if its corresponding limit exi
 Evaluate the following improper integrals.\\
 \begin{minipage}[t]{.5\textwidth}
 \begin{enumerate}
-\item		$\ds\int_1^\infty \frac1{x^2}\ dx$
-\item		$\ds\int_1^\infty \frac1x\ dx$
+\item		$\ds\int_1^\infty \frac1{x^2}\dd x$
+\item		$\ds\int_1^\infty \frac1x\dd x$
 \end{enumerate}
 \end{minipage}%
 \begin{minipage}[t]{.5\textwidth}
 \begin{enumerate}\addtocounter{enumi}{2}
-\item		$\ds\int_{-\infty}^0 e^x\ dx$
-\item		$\ds\int_{-\infty}^\infty \frac1{1+x^2}\ dx$
+\item		$\ds\int_{-\infty}^0 e^x\dd x$
+\item		$\ds\int_{-\infty}^\infty \frac1{1+x^2}\dd x$
 \end{enumerate}
 \end{minipage}%
 \solution
@@ -92,8 +93,8 @@ ymin=-.1,ymax=1.1,xmin=-1,xmax=11]
 \end{tikzpicture}}
 %
 	\hfill$\begin{aligned}[t]
-		\int_1^\infty \frac{1}{x^2}\ dx
-		& = \lim_{t\to\infty} \int_1^t\frac1{x^2}\ dx \\
+		\int_1^\infty \frac{1}{x^2}\dd x
+		& = \lim_{t\to\infty} \int_1^t\frac1{x^2}\dd x \\
 		& = \lim_{t\to\infty} \left.\frac{-1}{x}\right|_1^t \\ 
 		%&= \lim_{t\to\infty} \frac{-1}{x}\Big|_1^t \\
 		&= \lim_{t\to\infty} \frac{-1}{t} + 1\\
@@ -116,13 +117,13 @@ ymin=-.1,ymax=1.1,xmin=-1,xmax=11]
 \end{tikzpicture}}
 %
 	\hfill$\begin{aligned}[t]
-		\int_1^\infty \frac1x\ dx
-		& = \lim_{t\to\infty}\int_1^t\frac1x\ dx \\
+		\int_1^\infty \frac1x\dd x
+		& = \lim_{t\to\infty}\int_1^t\frac1x\dd x \\
 		&= \lim_{t\to\infty} \ln \abs{x}\Bigr|_1^t \\
 		&= \lim_{t\to\infty} \ln (t)\\
 		&= \infty.
 	\end{aligned}$\hfill\null\\
-	The limit does not exist, hence the improper integral $\ds\int_1^\infty\frac1x\ dx$ diverges. Compare the graphs in Figures \ref{fig:impint1a} and \ref{fig:impint1b}; notice how the values of $f(x) = 1/x$ are noticeably larger than those of $f(x)=1/x^2$. This difference is enough to cause the improper integral to diverge.
+	The limit does not exist, hence the improper integral $\ds\int_1^\infty\frac1x\dd x$ diverges. Compare the graphs in Figures \ref{fig:impint1a} and \ref{fig:impint1b}; notice how the values of $f(x) = 1/x$ are noticeably larger than those of $f(x)=1/x^2$. This difference is enough to cause the improper integral to diverge.
 
 	\item
 %
@@ -139,8 +140,8 @@ ytick={1},ymin=-.1,ymax=1.1,xmin=-11,xmax=1]
 \end{tikzpicture}}
 %
 	\hfill$\begin{aligned}[t]
-		\int_{-\infty}^0 e^x \ dx
-		&= \lim_{t\to-\infty} \int_t^0 e^x\ dx \\
+		\int_{-\infty}^0 e^x\dd x
+		&= \lim_{t\to-\infty} \int_t^0 e^x\dd x \\
 		&=  \lim_{t\to-\infty} e^x\Big|_t^0 \\
 		&= \lim_{t\to-\infty} \bigl(e^0-e^t\bigr) \\
 		&= 1.
@@ -162,8 +163,8 @@ ymin=-.1,ymax=1.1,xmin=-11,xmax=11]
 \end{tikzpicture}}
 %
 \begin{align*}
-	\int_{-\infty}^\infty \frac1{1+x^2}\ dx
-	&= \lim_{t\to-\infty} \int_t^0\frac{1}{1+x^2}\ dx + \lim_{t\to\infty} \int_0^t\frac{1}{1+x^2}\ dx \\
+	\int_{-\infty}^\infty \frac1{1+x^2}\dd x
+	&= \lim_{t\to-\infty} \int_t^0\frac{1}{1+x^2}\dd x + \lim_{t\to\infty} \int_0^t\frac{1}{1+x^2}\dd x \\
 	&= \lim_{t\to-\infty} \tan^{-1}x\Big|_t^0 + \lim_{t\to\infty} \tan^{-1}x\Big|_0^t\\
 	&= \lim_{t\to-\infty} \left(\tan^{-1}0-\tan^{-1}t\right) + \lim_{t\to\infty} \left(\tan^{-1}t-\tan^{-1}0\right)\\		
 	&= \left(0-\frac{-\pi}2\right) + \left(\frac{\pi}2-0\right).\\
@@ -176,9 +177,9 @@ A graph of the area defined by this integral is given in \autoref{fig:impint1d}.
 \autoref{sec:lhopitals_rule} introduced L'Hôpital's Rule, a method of evaluating limits that return indeterminate forms. It is not uncommon for the limits resulting from improper integrals to need this rule as demonstrated next.
 
 \begin{example}[Improper integration and L'Hôpital's Rule]\label{ex_impint2}
-Evaluate the improper integral $\ds \int_1^\infty \frac{\ln x}{x^2}\ dx$.
+Evaluate the improper integral $\ds \int_1^\infty \frac{\ln x}{x^2}\dd x$.
 \solution
-This integral will require the use of Integration by Parts. Let $u = \ln x$ and $dv = 1/x^2\ dx$. Then
+This integral will require the use of Integration by Parts. Let $u = \ln x$ and $dv = 1/x^2\dd x$. Then
 %
 \mtable{A graph of $f(x) = \frac{\ln x}{x^2}$ in \autoref{ex_impint2}.}{fig:impint2}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -193,9 +194,9 @@ ymin=-.1,ymax=.5,xmin=-1,xmax=11]
 \end{tikzpicture}}
 %
 \begin{align*}
-	\int_1^\infty\frac{\ln x}{x^2}\ dx
-	&= \lim_{t\to\infty}\int_1^t\frac{\ln x}{x^2}\ dx \\
-	&=  \lim_{t\to\infty}\left(-\frac{\ln x}{x}\Big|_1^t +\int_1^t \frac{1}{x^2} \ dx \right)\\
+	\int_1^\infty\frac{\ln x}{x^2}\dd x
+	&= \lim_{t\to\infty}\int_1^t\frac{\ln x}{x^2}\dd x \\
+	&=  \lim_{t\to\infty}\left(-\frac{\ln x}{x}\Big|_1^t +\int_1^t \frac{1}{x^2}\dd x \right)\\
 	&=  \lim_{t\to\infty} \left.\left(-\frac{\ln x}{x} -\frac1x\right)\right|_1^t\\
 	&=	\lim_{t\to\infty} \left(-\frac{\ln t}{t}-\frac1t - \left(-\ln 1-1\right)\right).
 \end{align*}
@@ -204,7 +205,7 @@ The $1/t$ goes to 0, and $\ln 1=0$, leaving
 $\ds \lim_{t\to\infty} \frac{\ln t}{t}$ with L'Hôpital's Rule. We have:
 \[\lim_{t\to\infty}\frac{\ln t}t \LHequals \lim_{t\to\infty} \frac{1/t}{1} = 0.\]
 Thus the improper integral evaluates as:
-\[\int_1^\infty\frac{\ln x}{x^2}\ dx = 1.\]
+\[\int_1^\infty\frac{\ln x}{x^2}\dd x = 1.\]
 \end{example}
 
 \subsection{Improper Integrals with Infinite Range}
@@ -213,7 +214,7 @@ We have just considered definite integrals where the interval of integration was
 
 \begin{definition}[Improper Integration with Infinite Range]\label{def:imp_int2}
 Let $f(x)$ be a continuous function on $[a,b]$ except at $c$, $a\leq c\leq b$, where $x=c$ is a vertical asymptote of $f$. Define\index{integration!improper}\index{improper integration}
-\[\int_a^b f(x)\ dx = \lim_{t\to c^-}\int_a^t f(x)\ dx + \lim_{t\to c^+}\int_t^b f(x)\ dx.\]
+\[\int_a^b f(x)\dd x = \lim_{t\to c^-}\int_a^t f(x)\dd x + \lim_{t\to c^+}\int_t^b f(x)\dd x.\]
 %The integral converges if both limits exist and diverges otherwise.
 \end{definition}
 
@@ -222,8 +223,8 @@ Note that $c$ can be one of the endpoints ($a$ or $b$). In that case, there is o
 \begin{example}[Improper integration of functions with infinite range]\label{ex_impint3}
 Evaluate the following improper integrals:
 \[
- \text{1. }\int_0^1\frac1{\sqrt{x}}\ dx\qquad\qquad
- \text{2. }\int_{-1}^1\frac{1}{x^2}\ dx.
+ \text{1. }\int_0^1\frac1{\sqrt{x}}\dd x\qquad\qquad
+ \text{2. }\int_{-1}^1\frac{1}{x^2}\dd x.
 \]
 \solution
 \begin{enumerate}
@@ -242,8 +243,8 @@ ymin=-.1,ymax=11,xmin=-.1,xmax=1.1]
 %
 Notice that $f$ has a vertical asymptote at $x=0$. In some sense, we are trying to compute the area of a region that has no ``top.'' Could this have a finite value? 
 \begin{align*}
-	\int_0^1 \frac{1}{\sqrt{x}}\ dx
-	&= \lim_{t\to0^+}\int_t^1 \frac1{\sqrt{x}}\ dx \\
+	\int_0^1 \frac{1}{\sqrt{x}}\dd x
+	&= \lim_{t\to0^+}\int_t^1 \frac1{\sqrt{x}}\dd x \\
 	&= \lim_{t\to0^+} 2\sqrt{x}\Big|_t^1 \\
 	&= \lim_{t\to0^+} 2\left(\sqrt{1}-\sqrt{t}\right)\\
 	&=	2.
@@ -252,7 +253,7 @@ It turns out that the region does have a finite area even though it has no upper
 
 \item		The function $f(x) = 1/x^2$ has a vertical asymptote at $x=0$, as shown in \autoref{fig:impint3b}, so this integral is an improper integral. Let's eschew using limits for a moment and proceed without recognizing the improper nature of the integral. This leads to:
 \begin{align*}
-\int_{-1}^1\frac1{x^2}\ dx &= -\frac1x\Big|_{-1}^1\\
+\int_{-1}^1\frac1{x^2}\dd x &= -\frac1x\Big|_{-1}^1\\
 			&= -1 - (1)\\
 			&=-2.
 \end{align*}
@@ -276,8 +277,8 @@ ymin=-.1,ymax=11,xmin=-1.1,xmax=1.1]
 %
 Clearly the area in question is above the $x$-axis, yet the area is supposedly negative. In this example we noted the discontinuity of the integrand on $[-1,1]$ (its improper nature) but continued anyway to apply the Fundamental Theorem of Calculus. Violating the hypothesis of the FTC led us to an incorrect area of $-2$. If we now evaluate the integral using \autoref{def:imp_int2} we will see that the area is unbounded.
 \begin{align*}
-	\int_{-1}^1\frac1{x^2}\ dx
-	&= \lim_{t\to0^-}\int_{-1}^t \frac1{x^2}\ dx + \lim_{t\to0^+}\int_t^1\frac1{x^2}\ dx \\
+	\int_{-1}^1\frac1{x^2}\dd x
+	&= \lim_{t\to0^-}\int_{-1}^t \frac1{x^2}\dd x + \lim_{t\to0^+}\int_t^1\frac1{x^2}\dd x \\
 	&= \lim_{t\to0^-}-\frac1x\Big|_{-1}^t + \lim_{t\to0^+}-\frac1x\Big|_t^1\\
 	&= \lim_{t\to0^-}\left(-\frac1t-1\right) + \lim_{t\to0^+}\left(-1+\frac1t\right).
 \end{align*}
@@ -292,13 +293,13 @@ Oftentimes we are interested in knowing simply whether or not an improper integr
 Our first tool is knowing the behavior of functions of the form $\dfrac1{x\primeskip^p}$.
 
 \begin{example}[Improper integration of $1/x^p$]\label{ex_impint4}
-Determine the values of $p$ for which $\ds \int_1^\infty \frac1{x^p}\ dx$ converges.
+Determine the values of $p$ for which $\ds \int_1^\infty \frac1{x^p}\dd x$ converges.
 \solution
 We begin by integrating and then evaluating the limit.
 \begin{align*}
-	\int_1^\infty \frac1{x\primeskip^p}\ dx
-	&= \lim_{t\to\infty}\int_1^t\frac1{x\primeskip^p}\ dx\\
-	&= \lim_{t\to\infty}\int_1^t x^{-p}\ dx \qquad \text{\small (assume $p\neq 1$)}\\
+	\int_1^\infty \frac1{x\primeskip^p}\dd x
+	&= \lim_{t\to\infty}\int_1^t\frac1{x\primeskip^p}\dd x\\
+	&= \lim_{t\to\infty}\int_1^t x^{-p}\dd x \qquad \text{\small (assume $p\neq 1$)}\\
 	&= \lim_{t\to\infty} \frac{1}{-p+1}x^{-p+1}\Big|_1^t\\
 	&= \lim_{t\to\infty} \frac{1}{1-p}\bigl(t^{1-p}-1^{1-p}\bigr).\\
 \end{align*}
@@ -320,21 +321,21 @@ ytick=\empty,ymin=-.1,ymax=6,xmin=-.1,xmax=2.1]
 %
 When does this limit converge --- i.e., when is this limit \emph{not} $\infty$? This limit converges precisely when the power of $t$ is less than 0: when $1-p<0 \Rightarrow 1<p$. 
 
-Our analysis shows that if $p>1$, then $\ds\int_1^\infty \frac1{x\primeskip^p}\ dx $ converges. When $p<1$ the improper integral diverges; we showed in \autoref{ex_impint1} that when $p=1$ the integral also diverges. 
+Our analysis shows that if $p>1$, then $\ds\int_1^\infty \frac1{x\primeskip^p}\dd x $ converges. When $p<1$ the improper integral diverges; we showed in \autoref{ex_impint1} that when $p=1$ the integral also diverges. 
 
 \autoref{fig:impint4} graphs $y=1/x$ with a dashed line, along with graphs of $y=1/x^p$, $p<1$, and $y=1/x^q$, $q>1$. Somehow the dashed line forms a dividing line between convergence and divergence. %A function of the form $1/x^q$ will be under the dashed line on $[1,\infty)$ when $q>1$. Even if $q$ is ``very close'' to 1, the difference will be enough to force convergence.
 \end{example}
 
-The result of \autoref{ex_impint4} provides an important tool in determining the convergence of other integrals. A similar result is proved in the exercises about improper integrals of the form $\ds \int_0^1\frac1{x\primeskip^p}\ dx$. These results are summarized in the following Key Idea.
+The result of \autoref{ex_impint4} provides an important tool in determining the convergence of other integrals. A similar result is proved in the exercises about improper integrals of the form $\ds \int_0^1\frac1{x\primeskip^p}\dd x$. These results are summarized in the following Key Idea.
 
 {
 \tcbset{grow to right by=8em}
-\begin{keyidea}[Convergence of Improper Integrals $\ds \int_1^\infty\frac1{x\primeskip^p}\ dx$ and $\ds \int_0^1\frac1{x\primeskip^p}\ dx$.]\label{idea:impint1}
+\begin{keyidea}[Convergence of Improper Integrals $\ds \int_1^\infty\frac1{x\primeskip^p}\dd x$ and $\ds \int_0^1\frac1{x\primeskip^p}\dd x$.]\label{idea:impint1}
 \index{convergence!of improper int.}\index{divergence!of improper int.}
 \mbox{}\\[-1.5\baselineskip]\parbox[t]{\linewidth}{%
 \begin{enumerate}
-\item		The improper integral $\ds \int_1^\infty\frac1{x\primeskip^p}\ dx$ converges when $p>1$ and diverges when $p\leq 1.$
-\item		The improper integral $\ds \int_0^1\frac1{x\primeskip^p}\ dx$ converges when $p<1$ and diverges when $p\geq 1.$
+\item		The improper integral $\ds \int_1^\infty\frac1{x\primeskip^p}\dd x$ converges when $p>1$ and diverges when $p\leq 1.$
+\item		The improper integral $\ds \int_0^1\frac1{x\primeskip^p}\dd x$ converges when $p<1$ and diverges when $p\geq 1.$
 \end{enumerate}}
 \end{keyidea}}
 
@@ -346,14 +347,14 @@ A basic technique in determining convergence of improper integrals is to compare
 Let $f$ and $g$ be continuous on $[a,\infty)$ where $0\leq f(x)\leq g(x)$ for all $x$ in $[a,\infty)$.
 \index{integration!improper}\index{convergence!Direct Comparison Test!for integration}\index{divergence!Direct Comparison Test!for integration}\index{Direct Comparison Test!for integration}\index{convergence!of improper int.}\index{divergence!of improper int.}
 	\begin{enumerate}
-	\item		If $\ds \int_a^\infty g(x)\ dx$ converges, then $\ds \int_a^\infty f(x)\ dx$ converges.
-	\item		If $\ds \int_a^\infty f(x)\ dx$ diverges, then $\ds \int_a^\infty g(x)\ dx$ diverges.
+	\item		If $\ds \int_a^\infty g(x)\dd x$ converges, then $\ds \int_a^\infty f(x)\dd x$ converges.
+	\item		If $\ds \int_a^\infty f(x)\dd x$ diverges, then $\ds \int_a^\infty g(x)\dd x$ diverges.
 	\end{enumerate}
 
 %\item		Let $f$ and $g$ be continuous functions on $[a,b]$ except at $x=c$, where each has a vertical asymptote, and $0\leq f(x)\leq g(x)$ for all $x$ in $[a,b]$, $x\neq c$.  
 %	\begin{itemize}
-%	\item		If $\ds \int_a^b g(x)\ dx$ converges, then $\ds \int_a^b f(x)\ dx$ converges.
-%	\item		If $\ds \int_a^b f(x)\ dx$ diverges, then $\ds \int_a^b g(x)\ dx$ diverges.
+%	\item		If $\ds \int_a^b g(x)\dd x$ converges, then $\ds \int_a^b f(x)\dd x$ converges.
+%	\item		If $\ds \int_a^b f(x)\dd x$ diverges, then $\ds \int_a^b g(x)\dd x$ diverges.
 %	\end{itemize}
 %\end{itemize}
 \end{theorem}
@@ -361,12 +362,12 @@ Let $f$ and $g$ be continuous on $[a,\infty)$ where $0\leq f(x)\leq g(x)$ for al
 \begin{example}[Determining convergence of improper integrals]\label{ex_impint5}
 Determine the convergence of the following improper integrals.
 \[
- \text{1. }\int_1^\infty e^{-x^2}\ dx\qquad\qquad
- \text{2. }\int_3^\infty \frac{1}{\sqrt{x^2-x}}\ dx
+ \text{1. }\int_1^\infty e^{-x^2}\dd x\qquad\qquad
+ \text{2. }\int_3^\infty \frac{1}{\sqrt{x^2-x}}\dd x
 \]
 \solution
 \begin{enumerate}
-\item		The function $f(x) = e^{-x^2}$ does not have an antiderivative expressible in terms of elementary functions, so we cannot integrate directly. It is comparable to $g(x)=1/x^2$, and as demonstrated in \autoref{fig:impint5}, $e^{-x^2} < 1/x^2$ on $[1,\infty)$. We know from \autoref{idea:impint1} that $\ds \int_1^\infty \frac{1}{x^2}\ dx$ converges, hence $\ds\int_1^\infty e^{-x^2}\ dx$ also converges.
+\item		The function $f(x) = e^{-x^2}$ does not have an antiderivative expressible in terms of elementary functions, so we cannot integrate directly. It is comparable to $g(x)=1/x^2$, and as demonstrated in \autoref{fig:impint5}, $e^{-x^2} < 1/x^2$ on $[1,\infty)$. We know from \autoref{idea:impint1} that $\ds \int_1^\infty \frac{1}{x^2}\dd x$ converges, hence $\ds\int_1^\infty e^{-x^2}\dd x$ also converges.
 
 \mtable{Graphs of $f(x) = e^{-x^2}$ and $f(x)= 1/x^2$ in \autoref{ex_impint5}.}{fig:impint5}{\begin{tikzpicture}
 \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
@@ -381,12 +382,12 @@ ymin=-.1,ymax=1.1,xmin=-.1,xmax=4.1]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-\item		Note that for large values of $x$, $\ds \frac{1}{\sqrt{x^2-x}} \approx \frac{1}{\sqrt{x^2}} =\frac{1}{x}$. We know from \autoref{idea:impint1} and the subsequent note that  $\ds \int_3^\infty \frac1x\ dx$ diverges, so we seek to compare the original integrand to $1/x$.
+\item		Note that for large values of $x$, $\ds \frac{1}{\sqrt{x^2-x}} \approx \frac{1}{\sqrt{x^2}} =\frac{1}{x}$. We know from \autoref{idea:impint1} and the subsequent note that  $\ds \int_3^\infty \frac1x\dd x$ diverges, so we seek to compare the original integrand to $1/x$.
 
 It is easy to see that when $x>0$, we have $x = \sqrt{x^2} > \sqrt{x^2-x}$. Taking reciprocals reverses the inequality, giving
 \[\frac1x < \frac1{\sqrt{x^2-x}}.\]
 
-Using \autoref{thm:impint_comparison}, we conclude that since $\ds\int_3^\infty\frac1x\ dx$ diverges, then $\ds\int_3^\infty\frac1{\sqrt{x^2-x}}\ dx$ diverges as well. \autoref{fig:impint5b} illustrates this.
+Using \autoref{thm:impint_comparison}, we conclude that since $\ds\int_3^\infty\frac1x\dd x$ diverges, then $\ds\int_3^\infty\frac1{\sqrt{x^2-x}}\dd x$ diverges as well. \autoref{fig:impint5b} illustrates this.
 
 \mtable{Graphs of $f(x) = 1/\sqrt{x^2-x}$ and $f(x)= 1/x$ in \autoref{ex_impint5}.}{fig:impint5b}{\begin{tikzpicture}
 \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
@@ -403,7 +404,7 @@ ymin=-.1,ymax=.5,xmin=-.1,xmax=6.2]
 \end{enumerate}
 \end{example}
 
-Being able to compare ``unknown'' integrals to ``known'' integrals is very useful in determining convergence. However, some of our examples were a little ``too nice.'' For instance, it was convenient that $\ds \frac{1}x < \frac{1}{\sqrt{x^2-x}}$, but what if the ``$-x$'' were replaced with a ``$+2x+5$''? That is, what can we say about the convergence of $\ds \int_3^\infty\frac{1}{\sqrt{x^2+2x+5}}\ dx$? We have $\ds \frac{1}{x} > \frac1{\sqrt{x^2+2x+5}}$, so we cannot use \autoref{thm:impint_comparison}.
+Being able to compare ``unknown'' integrals to ``known'' integrals is very useful in determining convergence. However, some of our examples were a little ``too nice.'' For instance, it was convenient that $\ds \frac{1}x < \frac{1}{\sqrt{x^2-x}}$, but what if the ``$-x$'' were replaced with a ``$+2x+5$''? That is, what can we say about the convergence of $\ds \int_3^\infty\frac{1}{\sqrt{x^2+2x+5}}\dd x$? We have $\ds \frac{1}{x} > \frac1{\sqrt{x^2+2x+5}}$, so we cannot use \autoref{thm:impint_comparison}.
 
 In cases like this (and many more) it is useful to employ the following theorem.
 
@@ -411,13 +412,13 @@ In cases like this (and many more) it is useful to employ the following theorem.
 Let $f$ and $g$ be continuous functions on $[a,\infty)$ where $f(x)>0$ and $g(x)>0$ for all $x$. If\vspace{-.5\baselineskip}
 \[\lim_{x\to\infty} \frac{f(x)}{g(x)} = L,\qquad 0<L<\infty,\]
 	then\vspace{-.5\baselineskip}
-	\[\int_a^\infty f(x)\ dx \quad \text{and} \quad \int_a^\infty g(x)\ dx\]
+	\[\int_a^\infty f(x)\dd x \quad \text{and} \quad \int_a^\infty g(x)\dd x\]
 	either both converge or both diverge.%
 	\index{integration!improper}\index{convergence!Limit Comparison Test!for integration}\index{divergence!Limit Comparison Test!for integration}\index{Limit Comparison Test!for integration}\index{convergence!of improper int.}\index{divergence!of improper int.}
 \end{theorem}
 
 \begin{example}[Determining convergence of improper integrals]\label{ex_impint6}
-Determine the convergence of $\ds \int_3^{\infty} \frac{1}{\sqrt{x^2+2x+5}}\ dx$.
+Determine the convergence of $\ds \int_3^{\infty} \frac{1}{\sqrt{x^2+2x+5}}\dd x$.
 \solution
 As $x$ gets large, the square root of a quadratic function will begin to behave much like $y=x$. So we compare \small$\ds\frac{1}{\sqrt{x^2+2x+5}}$\normalsize\ to \small$\ds\frac1x$\normalsize\ with the Limit Comparison Test:
 \[
@@ -451,7 +452,7 @@ ymin=-.1,ymax=.35,xmin=-.1,xmax=21]
  =\lim_{x\to\infty}\frac{\frac xx}{\sqrt{\frac{x^2+2x+5}{x^2}}}
  =\lim_{x\to\infty}\frac1{\sqrt{1+\frac2x+\frac5{x^2}}}=1
 \]
-Since we know that $\ds\int_3^{\infty} \tfrac1x\ dx$ diverges, by the Limit Comparison Test we know that $\ds\int_3^\infty\tfrac1{\sqrt{x^2+2x+5}}\ dx$ also diverges. \autoref{fig:impint6} graphs $f(x)=1/\sqrt{x^2+2x+5}$ and $f(x)=1/x$, illustrating that as $x$ gets large, the functions become indistinguishable.
+Since we know that $\ds\int_3^{\infty} \tfrac1x\dd x$ diverges, by the Limit Comparison Test we know that $\ds\int_3^\infty\tfrac1{\sqrt{x^2+2x+5}}\dd x$ also diverges. \autoref{fig:impint6} graphs $f(x)=1/\sqrt{x^2+2x+5}$ and $f(x)=1/x$, illustrating that as $x$ gets large, the functions become indistinguishable.
 \end{example}
 
 Both the Direct and Limit Comparison Tests were given in terms of integrals over an infinite interval. There are versions that apply to improper integrals with an infinite range, but as they are a bit wordy and a little more difficult to employ, they are omitted from this text.\bigskip

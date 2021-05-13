@@ -1,7 +1,7 @@
 % this was orphaned from u-substitution
 
 %\begin{example}[Integration by substitution: simplifying first]\label{ex_sub9}
-%Evaluate $\ds\int \frac{x^3+4x^2+8x+5}{x^2+2x+1}\ dx$.
+%Evaluate $\ds\int \frac{x^3+4x^2+8x+5}{x^2+2x+1}\dd x$.
 %\solution
 %One may try to start by setting $u$ equal to either the numerator or denominator; in each instance, the result is not workable. 
 %
@@ -9,12 +9,12 @@
 %
 %We skip the specifics of the steps, but note that when $x^2+2x+1$ is divided into $x^3+4x^2+8x+5$, it goes in $x+2$ times with a remainder of $3x+3$. Thus 
 %\[\frac{x^3+4x^2+8x+5}{x^2+2x+1} = x+2 + \frac{3x+3}{x^2+2x+1}.\]
-%Integrating $x+2$ is simple. The fraction can be integrated by setting $u = x^2+2x+1$, giving $du = (2x+2)\ dx$. This is very similar to the numerator. Note that $du/2 = (x+1)\ dx$ and then consider the following:
+%Integrating $x+2$ is simple. The fraction can be integrated by setting $u = x^2+2x+1$, giving $\dd u = (2x+2)\dd x$. This is very similar to the numerator. Note that $\dd u/2 = (x+1)\dd x$ and then consider the following:
 %\begin{align*} % this had ``rule'' commands scattered throughout
-%\int \frac{x^3+4x^2+8x+5}{x^2+2x+1}\ dx
-% & = \int \left(x+2 + \frac{3x+3}{x^2+2x+1}\right)\ dx \\
-% &= \int (x+2)\ dx + \int \frac{3(x+1)}{x^2+2x+1}\ dx \\
-% & = \frac12x^2+2x+C_1 + \int \frac{3}{u}\frac{du}{2} \\
+%\int \frac{x^3+4x^2+8x+5}{x^2+2x+1}\dd x
+% & = \int \left(x+2 + \frac{3x+3}{x^2+2x+1}\right)\dd x \\
+% &= \int (x+2)\dd x + \int \frac{3(x+1)}{x^2+2x+1}\dd x \\
+% & = \frac12x^2+2x+C_1 + \int \frac{3}{u}\frac{\dd u}{2} \\
 % &= \frac12x^2+2x+C_1 + \frac32\ln\abs u + C_2 \\
 % &= \frac12x^2+2x+\frac32\ln\abs{x^2+2x+1} + C.
 %\end{align*}
@@ -27,13 +27,13 @@
 
 In this section we investigate the antiderivatives of rational functions. Recall that rational functions are functions of the form $f(x)= \frac{p(x)}{q(x)}$, where $p(x)$ and $q(x)$ are polynomials and $q(x)\neq 0$. Such functions arise in many contexts, one of which is the solving of certain fundamental differential equations.
 
-We begin with an example that demonstrates the motivation behind this section. Consider the integral $\ds\int \frac{1}{x^2-1}\ dx$. We do not have a simple formula for this (if the denominator were $x^2+1$, we would recognize the antiderivative as being the arctangent function). It can be solved using Trigonometric Substitution, but note how the integral is easy to evaluate once we realize:
+We begin with an example that demonstrates the motivation behind this section. Consider the integral $\ds\int \frac{1}{x^2-1}\dd x$. We do not have a simple formula for this (if the denominator were $x^2+1$, we would recognize the antiderivative as being the arctangent function). It can be solved using Trigonometric Substitution, but note how the integral is easy to evaluate once we realize:
 
 %This integral is not difficult to evaluate once one realizes the following fact: 
 \[\frac{1}{x^2-1} = \frac{1/2}{x-1} - \frac{1/2}{x+1}.\]
 Thus 
 \begin{align*}
-\int\frac{1}{x^2-1}\ dx &= \int\frac{1/2}{x-1}\ dx - \int\frac{1/2}{x+1}\ dx \\
+\int\frac{1}{x^2-1}\dd x &= \int\frac{1/2}{x-1}\dd x - \int\frac{1/2}{x+1}\dd x \\
 			&= \frac12\ln\abs{x-1}-\frac12\ln\abs{x+1}+C.
 \end{align*}
 
@@ -161,7 +161,7 @@ Resulting in the same decomposition as above.
 In \autoref{ex_pf3}, we solve for the decomposition coefficients using the system of linear equations (method 2a). The margin note explains how to solve using substitution (method 2b).
 
 \begin{example}[Integrating using partial fractions]\label{ex_pf3}
-Use partial fraction decomposition to integrate $\ds\int\frac{1}{(x-1)(x+2)^2}\ dx$.
+Use partial fraction decomposition to integrate $\ds\int\frac{1}{(x-1)(x+2)^2}\dd x$.
 \solution
 We decompose the integrand as follows, as described by \autoref{idea:partial_fraction}:
 \begin{equation}\label{eq:decomp3}
@@ -186,16 +186,18 @@ leading to the equations
 These three equations of three unknowns lead to a unique solution:
 \[A = 1/9,\quad B = -1/9 \quad \text{and} \quad C = -1/3.\]
 Thus 
-\[\int\frac{1}{(x-1)(x+2)^2}\ dx = \int \frac{1/9}{x-1}\ dx + \int \frac{-1/9}{x+2}\ dx + \int \frac{-1/3}{(x+2)^2}\ dx.\]
+\[
+\int\frac{1}{(x-1)(x+2)^2}\dd x = \int \frac{1/9}{x-1}\dd x + \int \frac{-1/9}{x+2}\dd x + \int \frac{-1/3}{(x+2)^2}\dd x.
+\]
 
 Each can be integrated with a simple substitution with $u=x-1$ or $u=x+2$.
 % (or by directly applying \autoref{idea:linearsub} as the denominators are linear functions).
 The end result is
-\[\int\frac{1}{(x-1)(x+2)^2}\ dx = \frac19\ln\abs{x-1}-\frac19\ln\abs{x+2} +\frac1{3(x+2)}+C.\]
+\[\int\frac{1}{(x-1)(x+2)^2}\dd x = \frac19\ln\abs{x-1}-\frac19\ln\abs{x+2} +\frac1{3(x+2)}+C.\]
 \end{example}
 
 \begin{example}[Integrating using partial fractions]\label{ex_pf4}
-Use partial fraction decomposition to integrate $\ds \int \frac{x^3}{(x-5)(x+3)}\ dx$.
+Use partial fraction decomposition to integrate $\ds \int \frac{x^3}{(x-5)(x+3)}\dd x$.
 \solution
 \autoref{idea:partial_fraction} presumes that the degree of the numerator is less than the degree of the denominator. Since this is not the case here, we begin by using polynomial division to reduce the degree of the numerator. We omit the steps, but encourage the reader to verify that
 \[\frac{x^3}{(x-5)(x+3)} = x+2+\frac{19x+30}{(x-5)(x+3)}.\]
@@ -215,17 +217,17 @@ Next choose $x=5$:
 \end{align*}
 We can now integrate:
 \begin{align*}
-	\int \frac{x^3}{(x-5)(x+3)}\ dx
-	&= \int\left(x+2+\frac{125/8}{x-5}+\frac{27/8}{x+3}\right)\ dx \\
+	\int \frac{x^3}{(x-5)(x+3)}\dd x
+	&= \int\left(x+2+\frac{125/8}{x-5}+\frac{27/8}{x+3}\right)\dd x \\
 	&= \frac{x^2}2+2x+\frac{125}{8}\ln\abs{x-5}+\frac{27}8\ln\abs{x+3}+C.
 \end{align*}
 \end{example}
 
 Before the next example we remind the reader of a rational integrand evaluated by trigonometric substitution:
-\[\int\frac1{x^2+a^2}\ dx=\frac1a\tan^{-1}\left(\frac xa\right) + C.\]
+\[\int\frac1{x^2+a^2}\dd x=\frac1a\tan^{-1}\left(\frac xa\right) + C.\]
 
 \begin{example}[Integrating using partial fractions]\label{ex_pf5}
-Use partial fraction decomposition to evaluate $\ds \int\frac{7x^2+31x+54}{(x+1)(x^2+6x+11)}\ dx$.
+Use partial fraction decomposition to evaluate $\ds \int\frac{7x^2+31x+54}{(x+1)(x^2+6x+11)}\dd x$.
 \solution
 The degree of the numerator is less than the degree of the denominator so we begin by applying \autoref{idea:partial_fraction}. We have:
 \begin{align*}
@@ -252,13 +254,13 @@ Finally, choose $x=1$ (any value other than $-1$ and $0$ can be used, $1$ is eas
 \end{align*}
 Thus
 \[
- \int\frac{7x^2+31x+54}{(x+1)(x^2+6x+11)}\ dx
- = \int\left(\frac{5}{x+1} + \frac{2x-1}{x^2+6x+11}\right)\ dx.
+ \int\frac{7x^2+31x+54}{(x+1)(x^2+6x+11)}\dd x
+ = \int\left(\frac{5}{x+1} + \frac{2x-1}{x^2+6x+11}\right)\dd x.
 \]
 
 The first term of this new integrand is easy to evaluate; it leads to a $5\ln\abs{x+1}$ term. The second term is not hard, but takes several steps and uses substitution techniques.
 
-The integrand $\dfrac{2x-1}{x^2+6x+11}$ has a quadratic in the denominator and a linear term in the numerator. This leads us to try substitution. Let $u=x^2+6x+11$, so $du=(2x+6)\ dx$. The numerator is $2x-1$, not $2x+6$, but we can get a $2x+6$ term in the numerator by adding 0 in the form of ``$7-7$.''
+The integrand $\dfrac{2x-1}{x^2+6x+11}$ has a quadratic in the denominator and a linear term in the numerator. This leads us to try substitution. Let $u=x^2+6x+11$, so $du=(2x+6)\dd x$. The numerator is $2x-1$, not $2x+6$, but we can get a $2x+6$ term in the numerator by adding 0 in the form of ``$7-7$.''
 \begin{align*}
 	\frac{2x-1}{x^2+6x+11} &= \frac{2x-1+7-7}{x^2+6x+11} \\
 	&= \frac{2x+6}{x^2+6x+11} - \frac{7}{x^2+6x+11}.
@@ -267,14 +269,14 @@ We can now integrate the first term with substitution, yielding $\ln\abs{x^2+6x+
 \[\frac{7}{x^2+6x+11} = \frac{7}{(x+3)^2+2}.\]
 An antiderivative of the latter term can be found using \autoref{idea:trigsub} and substitution:
 \[
- \int \frac7{x^2+6x+11}\ dx=\frac7{\sqrt2}\tan^{-1}\left(\frac{x+3}{\sqrt2}\right)+C.
+ \int \frac7{x^2+6x+11}\dd x=\frac7{\sqrt2}\tan^{-1}\left(\frac{x+3}{\sqrt2}\right)+C.
 \]
 
 Let's start at the beginning and put all of the steps together.
 \begin{align*}
-	\int&\frac{7x^2+31x+54}{(x+1)(x^2+6x+11)}\ dx \\
-	&= \int\left(\frac{5}{x+1} + \frac{2x-1}{x^2+6x+11}\right)\ dx \\
-	&= \int\frac{5}{x+1}\ dx  + \int\frac{2x+6}{x^2+6x+11}\ dx -\int\frac{7}{x^2+6x+11}\ dx \\
+	\int&\frac{7x^2+31x+54}{(x+1)(x^2+6x+11)}\dd x \\
+	&= \int\left(\frac{5}{x+1} + \frac{2x-1}{x^2+6x+11}\right)\dd x \\
+	&= \int\frac{5}{x+1}\dd x  + \int\frac{2x+6}{x^2+6x+11}\dd x -\int\frac{7}{x^2+6x+11}\dd x \\
 	&= 5\ln\abs{x+1}+\ln\abs{x^2+6x+11}-\frac7{\sqrt2}\tan^{-1}\left(\frac{x+3}{\sqrt2}\right)+C.
 \end{align*}
 As with many other problems in calculus, it is important to remember that one is not expected to ``see'' the final answer immediately after seeing the problem. Rather, given the initial problem, we break it down into smaller problems that are easier to solve. The final answer is a combination of the answers of the smaller problems.

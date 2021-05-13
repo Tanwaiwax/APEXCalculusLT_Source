@@ -129,7 +129,7 @@ Let $\vec r(t)$ be continuous on an open interval $I$ containing $c$.
 \end{definition}
 
 \mnote{Alternate notations for the derivative of $\vec r$ include:
-\[\vrp(t) = \frac{d}{dt}\bigl(\,\vec r(t)\,\bigr) = \frac{d\vec r}{dt}.\]}
+\[\vrp(t) = \frac{\dd}{\dd t}\bigl(\,\vec r(t)\,\bigr) = \frac{\dd\vec r}{\dd t}.\]}
 
 If a vector-valued function has a derivative for all $c$ in an open interval $I$, we say that $\vec r(t)$ is \textbf{differentiable} on $I$.
 
@@ -304,15 +304,15 @@ Let $\vec r$ and $\vec s$ be differentiable vector-valued functions, let $f$ be 
 \index{vector-valued function!derivatives}\index{derivative!vector-valued functions}
 \index{dot product!and derivatives}\index{cross product!and derivatives}
 \begin{enumerate}
-	\item $\ds \frac{d}{dt}\Bigl(\vec r(t) \pm \vec s(t)\Bigr) = \vrp(t) \pm \vec s\,'(t)$
-	\item $\ds \frac{d}{dt}\Bigl(c\vec r(t)\Bigr) = c\vrp(t)$
-	\item \parbox{200pt}{$\ds \frac{d}{dt}\Bigl(f(t)\vec r(t)\Bigr) = \fp(t)\vec r(t) + f(t)\vrp(t)$} \textbf{Product Rule}
-	\item \parbox{200pt}{$\ds \frac{d}{dt}\Bigl(\vec r(t)\cdot \vec s(t) \Bigr) = \vrp(t)\cdot \vec s(t) + \vec r(t)\cdot \vec s\,'(t)$} \textbf{Product Rule}
-	\item\label{crossprodrule} \parbox{200pt}{$\ds \frac{d}{dt}\Bigl(\vec r(t)\times \vec s(t) \Bigr) = \vrp(t)\times \vec s(t) + \vec r(t)\times \vec s\,'(t)$} \textbf{Product Rule}
+	\item $\ds \frac{\dd}{\dd t}\Bigl(\vec r(t) \pm \vec s(t)\Bigr) = \vrp(t) \pm \vec s\,'(t)$
+	\item $\ds \frac{\dd}{\dd t}\Bigl(c\vec r(t)\Bigr) = c\vrp(t)$
+	\item \parbox{200pt}{$\ds \frac{\dd}{\dd t}\Bigl(f(t)\vec r(t)\Bigr) = \fp(t)\vec r(t) + f(t)\vrp(t)$} \textbf{Product Rule}
+	\item \parbox{200pt}{$\ds \frac{\dd}{\dd t}\Bigl(\vec r(t)\cdot \vec s(t) \Bigr) = \vrp(t)\cdot \vec s(t) + \vec r(t)\cdot \vec s\,'(t)$} \textbf{Product Rule}
+	\item\label{crossprodrule} \parbox{200pt}{$\ds \frac{\dd}{\dd t}\Bigl(\vec r(t)\times \vec s(t) \Bigr) = \vrp(t)\times \vec s(t) + \vec r(t)\times \vec s\,'(t)$} \textbf{Product Rule}
 	%
 \mnote{\textbf{Note:} Because the order is important when computing a cross product, we must maintain the correct order of the functions in rule \ref*{crossprodrule}.}
 %
-	\item \parbox{200pt}{$\ds \frac{d}{dt}\Bigl(\vec r\bigl(f(t)\bigr)\Bigr) = \vrp\bigl(f(t)\bigr)\fp(t)$}  \textbf{Chain Rule}
+	\item \parbox{200pt}{$\ds \frac{\dd}{\dd t}\Bigl(\vec r\bigl(f(t)\bigr)\Bigr) = \vrp\bigl(f(t)\bigr)\fp(t)$}  \textbf{Chain Rule}
 \end{enumerate}
 \end{theorem}
 
@@ -413,23 +413,23 @@ Indefinite and definite integrals of vector-valued functions are also defined to
 Let $\vec r(t) =\bracket{f(t),g(t)}$ be a vector-valued function in $\mathbb{R}^2$.
 \index{vector-valued function!integration}\index{integration!of vector-valued functions}
 \begin{enumerate}
-	\item $\ds \int \vec r(t)\ dt =\bracket{\int f(t)\ dt, \int g(t)\ dt}$
-	\item	$\ds \int_a^b \vec r(t)\ dt =\bracket{\int_a^b f(t)\ dt, \int_a^b g(t)\ dt}$
+	\item $\ds \int \vec r(t)\dd t =\bracket{\int f(t)\dd t, \int g(t)\dd t}$
+	\item	$\ds \int_a^b \vec r(t)\dd t =\bracket{\int_a^b f(t)\dd t, \int_a^b g(t)\dd t}$
 \end{enumerate}
 Let $\vec r(t) =\bracket{f(t),g(t),h(t)}$ be a vector-valued function in $\mathbb{R}^3$.
 \begin{enumerate}
-	\item $\ds \int \vec r(t)\ dt =\bracket{\int f(t)\ dt, \int g(t)\ dt, \int h(t)\ dt}$
-	\item	$\ds \int_a^b \vec r(t)\ dt =\bracket{\int_a^b f(t)\ dt, \int_a^b g(t)\ dt, \int_a^b h(t)\ dt}$
+	\item $\ds \int \vec r(t)\dd t =\bracket{\int f(t)\dd t, \int g(t)\dd t, \int h(t)\dd t}$
+	\item	$\ds \int_a^b \vec r(t)\dd t =\bracket{\int_a^b f(t)\dd t, \int_a^b g(t)\dd t, \int_a^b h(t)\dd t}$
 \end{enumerate}
 \end{definition}
 
 \begin{example}[Evaluating a definite integral of a vector-valued function]\label{ex_vvfint1}
-Let $\vec r(t) =\bracket{e^{2t},\sin t}$. Evaluate $\ds \int_0^1 \vec r(t) \ dt$.
+Let $\vec r(t) =\bracket{e^{2t},\sin t}$. Evaluate $\ds \int_0^1 \vec r(t) \dd t$.
 \solution
 We follow \autoref{thm:vvf_integration}.
 \begin{align*}
-\int_0^1 \vec r(t) \ dt &= \int_0^1\bracket{e^{2t},\sin t}\ dt \\
-				&=\bracket{\int_0^1 e^{2t}\ dt\ , \int_0^1 \sin t \ dt}\\
+\int_0^1 \vec r(t) \dd t &= \int_0^1\bracket{e^{2t},\sin t}\dd t \\
+				&=\bracket{\int_0^1 e^{2t}\dd t\ , \int_0^1 \sin t \dd t}\\
 				&=\bracket{\frac12e^{2t}\Big|_0^1\ , -\cos t\Big|_0^1}\\
 				&=\bracket{\frac12(e^2-1)\ , -\cos(1)+1}
 				%\\&\approx\bracket{3.19,0.460}
@@ -447,7 +447,7 @@ Find the function $\vec r(t)$ with the properties:
 \solution
 Knowing $\vrp'(t) =\bracket{2,\cos t, 12t}$, we find $\vrp(t)$ by evaluating the indefinite integral.
 \begin{align*}
-\int \vrp'(t)\ dt &=\bracket{\int 2\ dt\ , \int \cos t\ dt\ , \int 12t\ dt}\\
+\int \vrp'(t)\dd t &=\bracket{\int 2\dd t\ , \int \cos t\dd t\ , \int 12t\dd t}\\
 						&=\bracket{2t+C_1, \sin t+ C_2, 6t^2 + C_3}\\
 						&=\bracket{2t,\sin t,6t^2}+\bracket{C_1,C_2,C_3}\\
 						&=\bracket{2t,\sin t,6t^2}+ \vec C.
@@ -462,7 +462,7 @@ Note how each indefinite integral creates its own constant which we collect as o
 So $\vrp(t) =\bracket{2t,\sin t,6t^2}+\bracket{5,3,0}=\bracket{2t+5, \sin t + 3, 6t^2}$. To find $\vec r(t)$, we integrate once more.
 
 \begin{align*}
-\int \vrp(t)\ dt &=\bracket{\int 2t+5\ dt, \int \sin t + 3\ dt, \int 6t^2\ dt}\\
+\int \vrp(t)\dd t &=\bracket{\int 2t+5\dd t, \int \sin t + 3\dd t, \int 6t^2\dd t}\\
 							&=\bracket{t^2+5t, -\cos t + 3t, 2t^3}+ \vec C.
 \end{align*}
 With $\vec r(0) =\bracket{-7,-1,2}$, we solve for $\vec C$:
@@ -481,17 +481,17 @@ Therefore,
 
 What does the integration of a vector-valued function \emph{mean}? There are many applications, but none as direct as ``the area under the curve'' that we used in understanding the integral of a real-valued function.
 
-A key understanding for us comes from considering the integral of a derivative: \[\int_a^b \vrp(t)\ dt = \vec r(t)\Big|_a^b = \vec r(b)-\vec r(a).\]
+A key understanding for us comes from considering the integral of a derivative: \[\int_a^b \vrp(t)\dd t = \vec r(t)\Big|_a^b = \vec r(b)-\vec r(a).\]
 Integrating a \emph{rate of change} function gives \emph{displacement}.\index{displacement}
 
 Noting that vector-valued functions are closely related to parametric equations, we can describe the arc length of the graph of a vector-valued function as an integral. Given parametric equations $x=f(t)$, $y=g(t)$, the arc length on $[a,b]$ of the graph is
-\[\text{Arc Length} = \int_a^b\sqrt{\fp(t)^2+g\primeskip'(t)^2}\ dt,\]
+\[\text{Arc Length} = \int_a^b\sqrt{\fp(t)^2+g\primeskip'(t)^2}\dd t,\]
 as stated in \autoref{thm:arc_length_parametric} in \autoref{sec:par_calc}. If $\vrt =\bracket{f(t), g(t)}$, note that $\sqrt{\fp(t)^2+g\primeskip'(t)^2} = \norm{\vrp(t)}$. Therefore we can express the arc length of the graph of a vector-valued function as an integral of the magnitude of its derivative.
 
 \begin{theorem}[Arc Length of a Vector-Valued Function]\label{thm:vvf_arc_length}
 Let \vrt\ be a vector-valued function where $\vrp(t)$ is continuous on $[a,b]$. The arc length $L$ of the graph of \vrt\ is 
 \index{vector-valued function!arc length}\index{arc length}
-\[L = \int_a^b \norm{\vrp(t)}\ dt.\]
+\[L = \int_a^b \norm{\vrp(t)}\dd t.\]
 \end{theorem}
 
 Note that we are actually integrating a scalar-function here, not a vector-valued function.

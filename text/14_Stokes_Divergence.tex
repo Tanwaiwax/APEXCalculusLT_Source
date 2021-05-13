@@ -10,7 +10,7 @@ We now consider the three-dimensional version of the Divergence Theorem. It stat
 
 \begin{theorem}[The Divergence Theorem (in space)]\label{thm:divergence2}
 Let $D$ be a closed domain in space whose boundary is an orientable, piecewise smooth surface \surfaceS\ with outer unit normal vector $\vec n$, and let $\vec F$ be a vector field whose components are differentiable on $D$. Then\index{Divergence Theorem!in space}
-\[\iint_\surfaceS \vec F\cdot\vec n\ dS =\iiint_D \divv \vec F\ dV.\]
+\[\iint_\surfaceS \vec F\cdot\vec n\dd S =\iiint_D \divv \vec F\dd V.\]
 \end{theorem}
 
 \youtubeVideo{asyIsn59Lnc}{Divergence theorem example 1 | Divergence theorem | Multivariable Calculus | Khan Academy}
@@ -26,7 +26,7 @@ Let $D$ be a closed domain in space whose boundary is an orientable, piecewise s
 \begin{example}[Using the Divergence Theorem in space]\label{ex_divthm_space2}
 Let $D$ be the domain in space bounded by the planes $z=0$ and $z=2x$, along with the cylinder $x=1-y^2$, as graphed in \autoref{fig:divthm_space2}, let \surfaceS\ be the boundary of $D$, and let $\vec F =\bracket{x+y,y^2, 2z}$. 
 
-Verify the Divergence Theorem by finding the total outward flux of $\vec F$ across \surfaceS, and show this is equal to $\iiint_D \divv\vec F\ dV$.
+Verify the Divergence Theorem by finding the total outward flux of $\vec F$ across \surfaceS, and show this is equal to $\iiint_D \divv\vec F\dd V$.
 \solution
 The surface \surfaceS\ is piecewise smooth, comprising surfaces $\surfaceS_1$, which is part of the plane $z=2x$, surface $\surfaceS_2$, which is part of the cylinder $x=1-y^2$, and surface $\surfaceS_3$, which is part of the plane $z=0$. To find the total outward flux across \surfaceS, we need to compute the outward flux across each of these three surfaces.
 
@@ -38,41 +38,41 @@ We leave it to the reader to confirm that surfaces $\surfaceS_1$, $\surfaceS_2$ 
 \end{align*}
 where $-1\leq u\leq 1$ and $0\leq v\leq 1$ for all three functions.
 
-We compute a unit normal vector $\vec n$ for each as $\frac{\vec r_u\times\vec r_v}{\norm{\vec r_u\times\vec r_v}}$, though recall that as we are integrating $\vec F\cdot \vec n\ dS$, we actually only use $\vec r_u\times\vec r_v$. Finally, in previous flux computations, it did not matter which direction $\vec n$ pointed as long as we made note of its direction. When using the Divergence Theorem, we need $\vec n$ to point to the outside of the closed surface, so in practice this means we'll either use $\vec r_u\times\vec r_v$ or $\vec r_v\times\vec r_u$, depending on which points outside of the closed surface \surfaceS.
+We compute a unit normal vector $\vec n$ for each as $\frac{\vec r_u\times\vec r_v}{\norm{\vec r_u\times\vec r_v}}$, though recall that as we are integrating $\vec F\cdot \vec n\dd S$, we actually only use $\vec r_u\times\vec r_v$. Finally, in previous flux computations, it did not matter which direction $\vec n$ pointed as long as we made note of its direction. When using the Divergence Theorem, we need $\vec n$ to point to the outside of the closed surface, so in practice this means we'll either use $\vec r_u\times\vec r_v$ or $\vec r_v\times\vec r_u$, depending on which points outside of the closed surface \surfaceS.
 
 We leave it to the reader to confirm the following cross products and integrations are correct.
 
 For $\surfaceS_1$, we need to use $\vec r_{1v}\times\vec r_{1u} =\bracket{2(u^2-1),0,1-u^2}$. (Note the $z$-component is nonnegative as $u\leq 1$, therefore this vector always points up, meaning \emph{to the outside}, of \surfaceS.) The flux across $\surfaceS_1$ is:
 \begin{align*}
 %	\text{Flux across }\surfaceS_1:&= 
-	\iint_{\surfaceS_1} &\vec F\cdot \vec n_1\ dS
+	\iint_{\surfaceS_1} &\vec F\cdot \vec n_1\dd S
 	 \\
-	&= \int_0^1\int_{-1}^1 \vec F\bigl(\vec r_1(u,v)\bigr)\cdot \bigl(\vec r_{1v}\times\vec r_{1u}\bigr)\ du\ dv\\
-	&= \int_0^1\int_{-1}^1\bracket{v(1-u^2)+u, u^2,4v(1-u^2)}\cdot\bracket{2(u^2-1),0,1-u^2}\ du\ dv\\
-	&= \int_0^1\int_{-1}^1 \bigl(2u^4v+2u^3-4u^2v-2u+2v\bigr)\ du\ dv\\
+	&= \int_0^1\int_{-1}^1 \vec F\bigl(\vec r_1(u,v)\bigr)\cdot \bigl(\vec r_{1v}\times\vec r_{1u}\bigr)\dd u\dd v\\
+	&= \int_0^1\int_{-1}^1\bracket{v(1-u^2)+u, u^2,4v(1-u^2)}\cdot\bracket{2(u^2-1),0,1-u^2}\dd u\dd v\\
+	&= \int_0^1\int_{-1}^1 \bigl(2u^4v+2u^3-4u^2v-2u+2v\bigr)\dd u\dd v\\
 	&= \frac{16}{15}.
 \end{align*}
 
 For $\surfaceS_2$, we use $\vec r_{2u}\times\vec r_{2v} =\bracket{2(1-u^2), 4u(1-u^2),0}$. (Note that the first is always nonnegative, meaning this vector points outside \surfaceS.) The flux across $\surfaceS_2$ is:
 \begin{align*}
 %	\text{Flux across }\surfaceS_2:&= 
-	\iint_{\surfaceS_2} \vec F\cdot \vec n_2\ dS
+	\iint_{\surfaceS_2} \vec F\cdot \vec n_2\dd S
 %	 \\
-	&= \int_0^1\int_{-1}^1 \vec F\bigl(\vec r_2(u,v)\bigr)\cdot \bigl(\vec r_{2u}\times\vec r_{2v}\bigr)\ du\ dv\\
+	&= \int_0^1\int_{-1}^1 \vec F\bigl(\vec r_2(u,v)\bigr)\cdot \bigl(\vec r_{2u}\times\vec r_{2v}\bigr)\dd u\dd v\\
 	&= \int_0^1\int_{-1}^1\bracket{1-u^2+u, u^2, 4v(1-u^2)}\\
-	&\hphantom{=\int_0^1\int_{-1}^1}\cdot\bracket{2(1-u^2), 4u(1-u^2),0}\ du\ dv\\
-	&= \int_0^1\int_{-1}^1 \bigl(4u^5-2u^4-2u^3+4u^2-2u-2\bigr)\ du\ dv\\
+	&\hphantom{=\int_0^1\int_{-1}^1}\cdot\bracket{2(1-u^2), 4u(1-u^2),0}\dd u\dd v\\
+	&= \int_0^1\int_{-1}^1 \bigl(4u^5-2u^4-2u^3+4u^2-2u-2\bigr)\dd u\dd v\\
 	&= \frac{32}{15}.
 \end{align*}
 
 For $\surfaceS_3$, we use $\vec r_{3u}\times\vec r_{3v} =\bracket{0,0,u^2-1}$. (Note the $z$-component is never positive, meaning this vector points down, outside of \surfaceS.) The flux across $\surfaceS_3$ is:
 \begin{align*}
 %	\text{Flux across }\surfaceS_3:&= 
-	\iint_{\surfaceS_3} \vec F\cdot \vec n_3\ dS
+	\iint_{\surfaceS_3} \vec F\cdot \vec n_3\dd S
 %	\\
-	&= \int_0^1\int_{-1}^1 \vec F\bigl(\vec r_3(u,v)\bigr)\cdot \bigl(\vec r_{3u}\times\vec r_{3v}\bigr)\ du\ dv\\
-	&= \int_0^1\int_{-1}^1\bracket{v(1-u^2)+u,u^2,0}\cdot\bracket{0,0,u^2-1}\ du\ dv\\
-	&= \int_0^1\int_{-1}^1 0\ du\ dv\\
+	&= \int_0^1\int_{-1}^1 \vec F\bigl(\vec r_3(u,v)\bigr)\cdot \bigl(\vec r_{3u}\times\vec r_{3v}\bigr)\dd u\dd v\\
+	&= \int_0^1\int_{-1}^1\bracket{v(1-u^2)+u,u^2,0}\cdot\bracket{0,0,u^2-1}\dd u\dd v\\
+	&= \int_0^1\int_{-1}^1 0\dd u\dd v\\
 	&= 0.
 \end{align*}
 
@@ -82,8 +82,8 @@ Following the steps outlined in \autoref{sec:triple_int}, we see the bounds of $
 \[0\leq z\leq 2x;\quad 0\leq x\leq 1-y^2;\quad -1\leq y\leq 1.\]
 With $\divv \vec F = 1+2y+2 = 2y+3$, we find the total outward flux of $\vec F$ over \surfaceS\ as:
 \[
-\text{Flux} = \iiint_D\divv \vec F\ dV
-= \int_{-1}^1\int_0^{1-y^2}\int_0^{2x}\bigl(2y+3\bigr)\ dz\ dx\ dy = 16/5,
+\text{Flux} = \iiint_D\divv \vec F\dd V
+= \int_{-1}^1\int_0^{1-y^2}\int_0^{2x}\bigl(2y+3\bigr)\dd z\dd x\dd y = 16/5,
 \]
 the same result we obtained previously.
 \end{example}
@@ -110,7 +110,7 @@ We find the flux across \surfaceS\ first. As \surfaceS\ is piecewise-smooth, we 
 
 In \autoref{ex_surfflux2}, we found the flux across $\surfaceS_1$ is 0. We also found that the flux across $\surfaceS_2$ is $\pi/2$. (In that example, the normal vector had a positive $z$ component hence was an outer normal.) Thus the total outward flux is $0+\pi/2 = \pi/2$.
 
-We now compute $\iiint_D \divv \vec F\ dV$. We can describe $D$ as the domain bounded by (think ``surface to surface, curve to curve, point to point''):
+We now compute $\iiint_D \divv \vec F\dd V$. We can describe $D$ as the domain bounded by (think ``surface to surface, curve to curve, point to point''):
 \[
 0\leq z\leq 1-x^2-y^2,
 \quad -\sqrt{1-x^2}\leq y\leq \sqrt{1-x^2},
@@ -121,10 +121,10 @@ This description of $D$ is not very easy to integrate. With polar, we can do bet
 Thus $D$ can be described as the domain bounded by:
 \[0\leq z\leq 1-r^2,\quad 0\leq r\leq 1,\quad 0\leq \theta\leq 2\pi.\]
 
-With $\divv \vec F = 1$, we can integrate, recalling that $dV = r\ dz\ dr\ d\theta$:
+With $\divv \vec F = 1$, we can integrate, recalling that $\dd V = r\dd z\dd r\dd\theta$:
 \[
-\iiint_D\divv \vec F\ dV
-= \int_0^{2\pi}\int_0^1\int_0^{1-r^2} r\ dz\ dr\ d\theta = \frac{\pi}2,
+\iiint_D\divv \vec F\dd V
+= \int_0^{2\pi}\int_0^1\int_0^{1-r^2} r\dd z\dd r\dd\theta = \frac{\pi}2,
 \]
 which matches our flux computation above.
 \end{example}
@@ -144,16 +144,16 @@ Let a point light source be placed at the origin and let $\vec F$ be the vector 
 3Droo=399.9999533297849,
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figdivthm_space3_3D}}
 
-Consider the cube, centered at the origin, with sides of length $2a$ for some $a>0$ (hence corners of the cube lie at $(a,a,a)$, $(-a,-a,-a)$, etc., as shown in \autoref{fig:divthm_space3}). Find the flux across the six faces of the cube and compare this to $\iint_D \divv\vec F\ dV$.
+Consider the cube, centered at the origin, with sides of length $2a$ for some $a>0$ (hence corners of the cube lie at $(a,a,a)$, $(-a,-a,-a)$, etc., as shown in \autoref{fig:divthm_space3}). Find the flux across the six faces of the cube and compare this to $\iint_D \divv\vec F\dd V$.
 \solution
 Let $\surfaceS_1$ be the ``top'' face of the cube, which can be parameterized by $\vec r(u,v) =\bracket{u,v,a}$ for $-a\leq u\leq a$, $-a\leq v\leq a$. We leave it to the reader to confirm that $\vec r_u\times \vec r_v =\bracket{0,0,1}$, which points outside of the cube.
 
 The flux across this face is:
 \begin{align*}
 	\text{Flux}
-	&= \iint_{\surfaceS_1} \vec F\cdot \vec n\ dS\\
-	&= \int_{-a}^a\int_{-a}^a \vec F\bigl(\vec r(u,v)\bigr)\cdot \bigl(\vec r_u\times \vec r_v\bigr)\ du\ dv \\
-	&= \int_{-a}^a\int_{-a}^a \frac{k\ a}{(u^2+v^2+a^2)^{3/2}}\ du\ dv.
+	&= \iint_{\surfaceS_1} \vec F\cdot \vec n\dd S\\
+	&= \int_{-a}^a\int_{-a}^a \vec F\bigl(\vec r(u,v)\bigr)\cdot \bigl(\vec r_u\times \vec r_v\bigr)\dd u\dd v \\
+	&= \int_{-a}^a\int_{-a}^a \frac{k\ a}{(u^2+v^2+a^2)^{3/2}}\dd u\dd v.
 	\intertext{This double integral is \emph{not} trivial to compute, requiring multiple trigonometric substitutions. This example is not meant to stress integration techniques, so we leave it to the reader to confirm the result is}
 	&= \frac{2k\pi}3.
 \end{align*}
@@ -162,12 +162,12 @@ Note how the result is independent of $a$; no matter the size of the cube, the f
 An argument of symmetry shows that the flux through each of the six faces is $2k\pi/3$, thus the total flux through the faces of the cube is $6\times2k\pi/3 = 4k\pi$.
 
 It takes a bit of algebra, but we can show that $\divv\vec F = 0$. Thus the Divergence Theorem would seem to imply that the total flux through the faces of the cube should be 
-\[\text{Flux }=\iiint_D \divv \vec F\ dV = \iiint_D 0\ dV = 0,\]
+\[\text{Flux }=\iiint_D \divv \vec F\dd V = \iiint_D 0\dd V = 0,\]
 but clearly this does not match the result from above. What went wrong?
 
-Revisit the statement of the Divergence Theorem. One of the conditions is that the components of $\vec F$ must be differentiable on the domain enclosed by the surface. In our case, $\vec F$ is \emph{not} differentiable at the origin --- it is not even defined! As $\vec F$ does not satisfy the conditions of the Divergence Theorem, it does not apply, and we cannot expect $\iint_\surfaceS \vec F\cdot\vec n\ dA = \iiint_D \divv\vec F\ dV$.
+Revisit the statement of the Divergence Theorem. One of the conditions is that the components of $\vec F$ must be differentiable on the domain enclosed by the surface. In our case, $\vec F$ is \emph{not} differentiable at the origin --- it is not even defined! As $\vec F$ does not satisfy the conditions of the Divergence Theorem, it does not apply, and we cannot expect $\iint_\surfaceS \vec F\cdot\vec n\dd A = \iiint_D \divv\vec F\dd V$.
 
-Since $\vec F$ is differentiable everywhere except the origin, the Divergence Theorem does apply over any domain that does not include the origin. Let $\surfaceS_2$ be any surface that encloses the cube used before, and let $\hat D$ be the domain \emph{between} the cube and $\surfaceS_2$; note how $\hat D$ does not include the origin and so the Divergence Theorem does apply over this domain. The total outward flux over $\hat D$ is thus $\iint_{\hat D}\divv \vec F\ dV = 0$, which means the amount of flux coming out of $\surfaceS_2$ is the same as the amount of flux coming out of the cube. The conclusion: the flux across \emph{any} surface enclosing the origin will be $4k\pi$. 
+Since $\vec F$ is differentiable everywhere except the origin, the Divergence Theorem does apply over any domain that does not include the origin. Let $\surfaceS_2$ be any surface that encloses the cube used before, and let $\hat D$ be the domain \emph{between} the cube and $\surfaceS_2$; note how $\hat D$ does not include the origin and so the Divergence Theorem does apply over this domain. The total outward flux over $\hat D$ is thus $\iint_{\hat D}\divv \vec F\dd V = 0$, which means the amount of flux coming out of $\surfaceS_2$ is the same as the amount of flux coming out of the cube. The conclusion: the flux across \emph{any} surface enclosing the origin will be $4k\pi$. 
 
 This has an important consequence in electrodynamics. Let $q$ be a point charge at the origin. The electric field generated by this point charge is 
 \[\vec E = \frac{q}{4\pi \epsilon_0}\frac{\bracket{x,y,z}}{(x^2+y^2+z^2)^{3/2}},\]
@@ -182,7 +182,7 @@ Let \surfaceS\ be the cube bounded by the planes $x=\pm 1$, $y=\pm 1$, $z=\pm 1$
 We compute $\divv \vec F = 2xy+2z+3x^2z^2$. By the Divergence Theorem, the outward flux is the triple integral over the domain $D$ enclosed by \surfaceS:
 \[
 \text{Outward flux:}
-\quad \int_{-1}^1\int_{-1}^1\int_{-1}^1(2xy+2z+3x^2z^2)\ dz\ dy\ dx = \frac83.
+\quad \int_{-1}^1\int_{-1}^1\int_{-1}^1(2xy+2z+3x^2z^2)\dd z\dd y\dd x = \frac83.
 \]
 The direct flux computation requires six surface integrals, one for each face of the cube. The Divergence Theorem offers a much more simple computation.
 \end{example}
@@ -195,13 +195,13 @@ Green's Theorem dictated that the curve was to be traversed counterclockwise whe
 
 \begin{theorem}[Stokes' Theorem]\label{thm:stokes_thm}
 Let \surfaceS\ be a piecewise smooth, orientable surface whose boundary is a piecewise smooth curve $C$, let $\vec n$ be a unit vector normal to \surfaceS, let $C$ be traversed with respect to $\vec n$ according to the right hand rule, and let the components of $\vec F$ have continuous first partial derivatives over \surfaceS. Then\index{Stokes' Theorem}
-\[\oint_C \vec F\cdot \ d\vec r = \iint_\surfaceS (\curl\vec F)\cdot \vec n\ dS.\]
+\[\oint_C \vec F\cdot\dd\vec r = \iint_\surfaceS (\curl\vec F)\cdot \vec n\dd S.\]
 \end{theorem}
 
 In general, the best approach to evaluating the surface integral in Stokes' Theorem is to parameterize the surface \surfaceS\ with a function $\vec r(u,v)$. We can find a unit normal vector $\vec n$ as 
 \[\vec n = \frac{\vec r_u\times\vec r_v}{\norm{\vec r_u\times\vec r_v}}.\]
-Since $dS = \norm{\vec r_u\times\vec r_v}\ dA$, the surface integral in practice is evaluated as 
-\[\iint_\surfaceS (\curl \vec F)\cdot (\vec r_u\times\vec r_v)\ dA,\]
+Since $\dd S = \norm{\vec r_u\times\vec r_v}\dd A$, the surface integral in practice is evaluated as 
+\[\iint_\surfaceS (\curl \vec F)\cdot (\vec r_u\times\vec r_v)\dd A,\]
 where $\vec r_u\times\vec r_v$ may be replaced by $\vec r_v\times\vec r_u$ to properly match the direction of this vector with the orientation of the parameterization of $C$.
 
 \youtubeVideo{E2MRMdaPKcc}{Stokes example part 1 | Multivariable Calculus | Khan Academy}
@@ -216,17 +216,17 @@ where $\vec r_u\times\vec r_v$ may be replaced by $\vec r_v\times\vec r_u$ to pr
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figstokes1_3D}}
 
 \begin{example}[Verifying Stokes' Theorem]\label{ex_stokes1}
-Considering the planar surface $f(x,y) = 7-2x-2y$, let $C$ be the curve in space that lies on this surface above the circle of radius 1 and centered at $(1,1)$ in the $x$-$y$ plane, let \surfaceS\ be the planar region enclosed by $C$, as illustrated in \autoref{fig:stokes1}, and let $\vec F =\bracket{x+y,2y, y^2}$. Verify Stokes' Theorem by showing $\oint_C \vec F\cdot \ d\vec r = \iint_\surfaceS (\curl\vec F)\cdot \vec n\ dS$.
+Considering the planar surface $f(x,y) = 7-2x-2y$, let $C$ be the curve in space that lies on this surface above the circle of radius 1 and centered at $(1,1)$ in the $x$-$y$ plane, let \surfaceS\ be the planar region enclosed by $C$, as illustrated in \autoref{fig:stokes1}, and let $\vec F =\bracket{x+y,2y, y^2}$. Verify Stokes' Theorem by showing $\oint_C \vec F\cdot\dd\vec r = \iint_\surfaceS (\curl\vec F)\cdot \vec n\dd S$.
 \solution
 We begin by parameterizing $C$ and then find the circulation. A unit circle centered at $(1,1)$ can be parameterized with $x=\cos t+1$, $y=\sin t+1$ on $0\leq t\leq 2\pi$; to put this curve on the surface $f$, make the $z$ component equal $f(x,y)$: $z = 7-2(\cos t+1)-2(\sin t+1)  = 3-2\cos t - 2\sin t$. All together, we parameterize $C$ with $\vec r(t) =\bracket{\cos t+1, \sin t+1, 3-2\cos t-2\sin t}$. 
 
 The circulation of $\vec F$ around $C$ is
 \begin{align*}
-	\oint_C\vec F\cdot \ d\vec r
-	&= \int_0^{2\pi}\vec F\bigl(\vec r(t)\bigr)\cdot \vrp(t)\ dt \\
+	\oint_C\vec F\cdot\dd\vec r
+	&= \int_0^{2\pi}\vec F\bigl(\vec r(t)\bigr)\cdot \vrp(t)\dd t \\
 	%\quad \text{(which simplifies to)}\\
-	%&= \int_0^{2\pi}\bracket{\cos t+\sin t+2, 2\sin t+2, (\sin t+1)^2}\cdot\bracket{-\sin t,\cos t, -2\sin t+2\cos t}\ dt \\
-	&= \int_0^{2\pi}\bigl(2\sin^3t-2\cos t\sin^2t+3\sin^2t-3\cos t\sin t\bigr)\ dt \\
+	%&= \int_0^{2\pi}\bracket{\cos t+\sin t+2, 2\sin t+2, (\sin t+1)^2}\cdot\bracket{-\sin t,\cos t, -2\sin t+2\cos t}\dd t \\
+	&= \int_0^{2\pi}\bigl(2\sin^3t-2\cos t\sin^2t+3\sin^2t-3\cos t\sin t\bigr)\dd t \\
 	&= 3\pi.
 \end{align*}
 
@@ -236,15 +236,15 @@ We leave it to the reader to confirm that $\vec r_u\times \vec r_v =\bracket{2v,
 
 The surface integral of Stokes' Theorem is thus
 \begin{align*}
-	\iint_\surfaceS (\curl\vec F)\cdot \vec n\ dS
-	&= \iint_\surfaceS (\curl\vec F)\cdot (\vec r_u\times \vec r_v)\ dA \\
-	&= \int_0^1\int_0^{2\pi}\bracket{2v\sin u+2,0,-1}\cdot\bracket{2v,2v,v}\ du\ dv\\
+	\iint_\surfaceS (\curl\vec F)\cdot \vec n\dd S
+	&= \iint_\surfaceS (\curl\vec F)\cdot (\vec r_u\times \vec r_v)\dd A \\
+	&= \int_0^1\int_0^{2\pi}\bracket{2v\sin u+2,0,-1}\cdot\bracket{2v,2v,v}\dd u\dd v\\
 	&= 3\pi,
 \end{align*}
 which matches our previous result.
 \end{example}
 
-One of the interesting results of Stokes' Theorem is that if two surfaces $\surfaceS_1$ and $\surfaceS_2$ share the same boundary, then $\iint_{\surfaceS_1} (\curl \vec F)\cdot \vec n\ dS = \iint_{\surfaceS_2} (\curl \vec F)\cdot \vec n\ dS$. That is, the value of these two surface integrals is somehow independent of the interior of the surface. We demonstrate this principle in the next example.
+One of the interesting results of Stokes' Theorem is that if two surfaces $\surfaceS_1$ and $\surfaceS_2$ share the same boundary, then $\iint_{\surfaceS_1} (\curl \vec F)\cdot \vec n\dd S = \iint_{\surfaceS_2} (\curl \vec F)\cdot \vec n\dd S$. That is, the value of these two surface integrals is somehow independent of the interior of the surface. We demonstrate this principle in the next example.
 
 \mtable{As given in \autoref{ex_stokes2}, the surface \surfaceS\ is the portion of the plane bounded by the curve.}{fig:stokes2}
 {\myincludeasythree{width=\marginparwidth,
@@ -265,11 +265,11 @@ One of the interesting results of Stokes' Theorem is that if two surfaces $\surf
 \\(b)}
 
 \begin{example}[Stokes' Theorem and surfaces that share a boundary]\label{ex_stokes2}
-Let $C$ be the curve given in \autoref{ex_stokes1} and note that it lies on the surface $z = 6-x^2-y^2$. Let \surfaceS\ be the region of this surface bounded by $C$, and let $\vec F =\bracket{x+y,2y,y^2}$ as in the previous example. Compute $\iint_\surfaceS (\curl\vec F)\cdot \vec n\ dS $ to show it equals the result found in the previous example.
+Let $C$ be the curve given in \autoref{ex_stokes1} and note that it lies on the surface $z = 6-x^2-y^2$. Let \surfaceS\ be the region of this surface bounded by $C$, and let $\vec F =\bracket{x+y,2y,y^2}$ as in the previous example. Compute $\iint_\surfaceS (\curl\vec F)\cdot \vec n\dd S $ to show it equals the result found in the previous example.
 \solution
 We begin by demonstrating that $C$ lies on the surface $z=6-x^2-y^2$. We can parameterize the $x$ and $y$ components of $C$ with $x=\cos t+1$, $y=\sin t+1$ as before. Lifting these components to the surface $f$ gives the $z$ component as $z = 6-x^2-y^2 = 6-(\cos t+1)^2-(\sin t+1)^2 = 3-2\cos t-2\sin t$, which is the same $z$ component as found in \autoref{ex_stokes1}. Thus the curve $C$ lies on the surface $z=6-x^2-y^2$, as illustrated in \autoref{fig:stokes2}. 
 
-Since $C$ and $\vec F$ are the same as in the previous example, we already know that $\oint_C\vec F\cdot\ d\vec r = 3\pi$. We confirm that this is also the value of $\iint_\surfaceS (\curl\vec F)\cdot \vec n\ dS $.
+Since $C$ and $\vec F$ are the same as in the previous example, we already know that $\oint_C\vec F\cdot\ d\vec r = 3\pi$. We confirm that this is also the value of $\iint_\surfaceS (\curl\vec F)\cdot \vec n\dd S$.
 
 We parameterize \surfaceS\ with
 \[\vec r(u,v) =\bracket{v\cos u+1,v\sin u+1, 6-(v\cos u+1)^2-(v\sin u+1)^2},\]
@@ -279,9 +279,9 @@ where $0\leq u\leq 2\pi$ and $0\leq v\leq 1$, and leave it to the reader to conf
 \]
 which also conforms to the right-hand rule with regard to the orientation of $C$. With $\curl \vec F =\bracket{2y,0,-1}$ as before, we have
 \begin{multline*}
-	\iint_\surfaceS (\curl\vec F)\cdot \vec n\ dS = \\ 
-	\int_0^1\int_0^{2\pi}\bracket{2v\sin u+2,0,-1}\cdot\bracket{2v\bigl(v\cos u+1\bigr), 2v\bigl(v\sin u+1\bigr),v}\ du\ dv =\\
-	3\pi.
+	\iint_\surfaceS (\curl\vec F)\cdot \vec n\dd S\\ 
+	=\int_0^1\int_0^{2\pi}\bracket{2v\sin u+2,0,-1}\cdot\bracket{2v\bigl(v\cos u+1\bigr), 2v\bigl(v\sin u+1\bigr),v}\dd u\dd v\\
+	=3\pi.
 \end{multline*}
 Even though the  surfaces used in this example and in \autoref{ex_stokes1} are very different, because they share the same boundary, Stokes' Theorem guarantees they have equal ``sum of curls'' across their respective surfaces.
 \end{example}
@@ -296,16 +296,16 @@ There is yet one more reason of interest in the major theorems of this chapter. 
 These important theorems also all share an important principle with the Fundamental Theorem of Calculus, introduced in \autoref{chapter:integration}. 
 
 Revisit this fundamental theorem, adopting the notation used heavily in this chapter. Let $I$ be the interval $[a,b]$ and let $y=F(x)$ be differentiable on $I$, with $F\,'(x) = f(x)$. The Fundamental Theorem of Calculus states that 
-\[\int_I f(x)\ dx = F(b) - F(a).\]
+\[\int_I f(x)\dd x = F(b) - F(a).\]
 That is, the sum of the rates of change of a function $F$ over an interval $I$ can also be calculated with a certain sum of $F$ itself on the boundary of $I$ (in this case, at the points $x=a$ and $x=b$).
 
 Each of the named theorems above can be expressed in similar terms. Consider the Fundamental Theorem of Line Integrals: given a function $z=f(x,y)$, the gradient $\nabla f$ is a type of rate of change of $f$. Given a curve $C$ with initial and terminal points $A$ and $B$, respectively, this fundamental theorem states that 
-\[\int_C \nabla f\ ds = f(B) - f(A),\]
+\[\int_C \nabla f\dd s = f(B) - f(A),\]
 where again the sum of a rate of change of $f$ along a curve $C$ can also be evaluated by a certain sum of $f$ at the boundary of $C$ (i.e., the points $A$ and $B$).
 
 Green's Theorem is essentially a special case of Stokes' Theorem, so we consider just Stokes' Theorem here. Recalling that the curl of a vector field $\vec F$ is a measure of a rate of change of $\vec F$, Stokes' Theorem states that over a surface \surfaceS\ bounded by a closed curve $C$,
 \[
-\iint_\surfaceS \bigl(\curl \vec F\bigr)\cdot \vec n\ dS = \oint_C \vec F\cdot d\vec r,
+\iint_\surfaceS \bigl(\curl \vec F\bigr)\cdot \vec n\dd S = \oint_C \vec F\cdot\dd\vec r,
 \]
 i.e., the sum of a rate of change of $\vec F$ can be calculated with a certain sum of $\vec F$ itself over the boundary of \surfaceS. In this case, the latter sum is also an infinite sum, requiring an integral. 
 
@@ -325,12 +325,12 @@ In fact, mathematicians occasionally use the symbol $\partial$ to indicate the b
 \renewcommand{\arraystretch}{1.4}
  \begin{tabular}{p{10em} l l}
   Theorem & Equation & Orientation \\\midrule
-  Fundamental Theorem\par of Calculus & $\ds\left.f\right|_a^b=\int_a^b \fp(x)d x$ &\\
-  Fundamental Theorem\par of Gradient Fields & $\ds\left.\phi\right|_P^Q=\int_C\nabla\phi\cdot d s$ & $C$ goes from $P$ to $Q$ \\
-  Green's Theorem & $\ds\oint_{\partial R}\vecF\cdot d\vecr=\iint_R\curl F d A$ & $\partial D$ oriented counterclockwise \medskip\\
-  Stokes' Theorem & $\ds\oint_{\partial S}\vec F\cdot d\vec r=\iint_S\curl\vec F\cdot \vecn dS$ & $\partial S$ oriented with $S$ to the left \medskip\\
-  $\mathbb{R}^2$ Divergence Theorem & $\ds\iint_{\partial R}\vec F\cdot\vec n d s=\iint_R\divv\vec Fd A$ & $\partial R$ oriented outwards \medskip\\
-  $\mathbb{R}^3$ Divergence Theorem & $\ds\iint_{\partial D}\vec F\cdot d \vec\sigma=\iiint_D\divv\vec Fd V$ & $\partial W$ oriented outwards
+  Fundamental Theorem\par of Calculus & $\ds\left.f\right|_a^b=\int_a^b \fp(x)\dd x$ &\\
+  Fundamental Theorem\par of Gradient Fields & $\ds\left.\phi\right|_P^Q=\int_C\nabla\phi\cdot\dd s$ & $C$ goes from $P$ to $Q$ \\
+  Green's Theorem & $\ds\oint_{\partial R}\vecF\cdot\dd\vecr=\iint_R\curl F\dd A$ & $\partial D$ oriented counterclockwise \medskip\\
+  Stokes' Theorem & $\ds\oint_{\partial S}\vec F\cdot\dd\vec r=\iint_S\curl\vec F\cdot \vecn\dd S$ & $\partial S$ oriented with $S$ to the left \medskip\\
+  $\mathbb{R}^2$ Divergence Theorem & $\ds\iint_{\partial R}\vec F\cdot\vec n\dd s=\iint_R\divv\vec F\dd A$ & $\partial R$ oriented outwards \medskip\\
+  $\mathbb{R}^3$ Divergence Theorem & $\ds\iint_{\partial D}\vec F\cdot\dd\vec\sigma=\iiint_D\divv\vec F\dd V$ & $\partial W$ oriented outwards
  \end{tabular}
 \end{keyidea}
 }

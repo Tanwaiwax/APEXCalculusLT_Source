@@ -5,9 +5,9 @@
 Given two non-parallel, nonzero vectors $\vec u$ and $\vec v$ in space, it is very useful to find a vector $\vec w$ that is perpendicular to both $\vec u$ and $\vec v$. There is a operation, called the \textbf{cross product}, that creates such a vector. This section defines the cross product, then explores its properties and applications.
 
 \begin{definition}[Cross Product]\label{def:cross_product}
-Let $\vec u =\bracket{u_1,u_2,u_3}$ and $\vec v = \bracket{v_1,v_2,v_3}$ be vectors in $\mathbb{R}^3$. The \textbf{cross product of $\vec u$ and $\vec v$}, denoted $\crossp uv$, is the vector
+Let $\vec u =\bracket{u_1,u_2,u_3}$ and $\vec v = \bracket{v_1,v_2,v_3}$ be vectors in $\mathbb{R}^3$. The \textbf{cross product of $\vec u$ and $\vec v$}, denoted $\vec u\times\vec v$, is the vector
 \index{vectors!cross product}\index{cross product!definition}
-\[\crossp uv = \bracket{u_2v_3-u_3v_2,-(u_1v_3-u_3v_1),u_1v_2-u_2v_1}.\]
+\[\vec u\times\vec v = \bracket{u_2v_3-u_3v_2,-(u_1v_3-u_3v_1),u_1v_2-u_2v_1}.\]
 \end{definition}
 
 This definition can be a bit cumbersome to remember. After an example we will give a convenient method for computing the cross product. For now, careful examination of the products and differences given in the definition should reveal a pattern that is not too difficult to remember. (For instance, in the first component only 2 and 3 appear as subscripts; in the second component, only 1 and 3 appear as subscripts. Further study reveals the order in which they appear.)
@@ -17,22 +17,22 @@ This definition can be a bit cumbersome to remember. After an example we will gi
 Let's practice using this definition by computing a cross product.
 
 \begin{example}[Computing a cross product]\label{ex_crossp1}
-Let $\vec u = \bracket{2,-1,4}$ and $\vec v = \bracket{3,2,5}$. Find $\crossp uv$, and verify that it is orthogonal to both $\vec u$ and $\vec v$.
+Let $\vec u = \bracket{2,-1,4}$ and $\vec v = \bracket{3,2,5}$. Find $\vec u\times\vec v$, and verify that it is orthogonal to both $\vec u$ and $\vec v$.
 \solution
 Using \autoref{def:cross_product}, we have
 \[
-\crossp uv = \bracket{(-1)5-(4)2,-\bigl((2)5-(4)3\bigr), (2)2-(-1)3}=\bracket{-13,2,7}.
+\vec u\times\vec v = \bracket{(-1)5-(4)2,-\bigl((2)5-(4)3\bigr), (2)2-(-1)3}=\bracket{-13,2,7}.
 \] 
 (We encourage the reader to compute this product on their own, then verify their result.)
 
-We test whether or not $\crossp uv$ is orthogonal to $\vec u$ and $\vec v$ using the dot product:
+We test whether or not $\vec u\times\vec v$ is orthogonal to $\vec u$ and $\vec v$ using the dot product:
 \begin{align*}
-\bigl(\crossp uv\bigr) \cdot \vec u
+\bigl(\vec u\times\vec v\bigr) \cdot \vec u
  &=\bracket{-13,2,7}\cdot\bracket{2,-1,4}=-13\cdot2+2\cdot(-1)+7\cdot4=0, \\
-\bigl(\crossp uv\bigr) \cdot \vec v
+\bigl(\vec u\times\vec v\bigr) \cdot \vec v
  &=\bracket{-13,2,7}\cdot\bracket{3,2,5}=-13\cdot3+2\cdot2+7\cdot5=0.
 \end{align*}
-Since both dot products are zero, $\crossp uv$ is indeed orthogonal to both $\vec u$ and $\vec v$.
+Since both dot products are zero, $\vec u\times\vec v$ is indeed orthogonal to both $\vec u$ and $\vec v$.
 \end{example}
 
 \subsection{Additional Material on \texorpdfstring{$2\times2$ and $3\times3$}{2x2 and 3x3} determinants}
@@ -114,7 +114,7 @@ This gives three full ``upper left to lower right'' diagonals, and three full ``
 \draw[->, thin] (.7,.4) -- (-1.3,-.8) node[below left ] {8\veci};
 \draw[->, thin] (1.3,.4) -- (-.5,-.8) node[below left] {10\vecj};
 \end{tikzpicture}\end{center}
-\[\crossp uv = \bigl(-5\veci+12\vecj+4\veck\,\bigr) - \bigl(-3\veck+8\veci+10\vecj\,\bigr) = -13\veci+2\vecj+7\veck =\bracket{-13,2,7}.\]
+\[\vec u\times\vec v = \bigl(-5\veci+12\vecj+4\veck\,\bigr) - \bigl(-3\veck+8\veci+10\vecj\,\bigr) = -13\veci+2\vecj+7\veck =\bracket{-13,2,7}.\]
 
 This is equivalent to evaluating the determinant
 \begin{align*}
@@ -129,24 +129,24 @@ This is equivalent to evaluating the determinant
 We practice using this method.
 
 \begin{example}[Computing a cross product]\label{ex_crossp2}
-Let $\vecu=\bracket{1,3,6}$ and $\vec v = \bracket{-1,2,1}$. Compute both $\crossp uv$ and $\crossp vu$.
+Let $\vecu=\bracket{1,3,6}$ and $\vec v = \bracket{-1,2,1}$. Compute both $\vec u\times\vec v$ and $\vec v\times\vec u$.
 \solution
-To compute $\crossp uv$, we form the matrix as prescribed above, complete with repeated first columns:
+To compute $\vec u\times\vec v$, we form the matrix as prescribed above, complete with repeated first columns:
 \[\begin{array}{ccccc} \ \veci\ &\ \vecj\ &\ \veck\ &\ \veci\ &\ \vecj\ \\  1&3&6&1&3\\ -1&2&1&-1&2\end{array}\]
 We let the reader compute the products of the diagonals; we give the result:
-\[\crossp uv = \bigl(3\veci-6\vecj+2\veck\,\bigr) - \bigl(-3\veck + 12\veci+\vecj\,\bigr) = \bracket{-9,-7,5}.\]
+\[\vec u\times\vec v = \bigl(3\veci-6\vecj+2\veck\,\bigr) - \bigl(-3\veck + 12\veci+\vecj\,\bigr) = \bracket{-9,-7,5}.\]
 
-To compute $\crossp vu$, we switch the second and third rows of the above matrix, then multiply along diagonals and subtract:
+To compute $\vec v\times\vec u$, we switch the second and third rows of the above matrix, then multiply along diagonals and subtract:
 
 \[\begin{array}{ccccc} \ \veci\ &\ \vecj\ &\ \veck\ &\ \veci\ &\ \vecj\ \\ -1&2&1&-1&2\\  1&3&6&1&3\end{array}\]
 Note how with the rows being switched, the products that once appeared on the right now appear on the left, and vice-versa. Thus the result is:
-\[\crossp vu = \bigl(12\veci+\vecj-3\veck\,\bigr) - \bigl(2\veck + 3\veci-6\vecj\,\bigr) = \bracket{9,7,-5},\]
-which is the opposite of $\crossp uv$. We leave it to the reader to verify that each of these vectors is orthogonal to $\vec u$ and $\vec v$.
+\[\vec v\times\vec u = \bigl(12\veci+\vecj-3\veck\,\bigr) - \bigl(2\veck + 3\veci-6\vecj\,\bigr) = \bracket{9,7,-5},\]
+which is the opposite of $\vec u\times\vec v$. We leave it to the reader to verify that each of these vectors is orthogonal to $\vec u$ and $\vec v$.
 \end{example}
 
 \subsection{Properties of the Cross Product}
 
-It is not coincidence that $\crossp vu = -(\crossp uv)$ in the preceding example; one can show using \autoref{def:cross_product} that this will always be the case. The following theorem states several useful properties of the cross product, each of which can be verified by referring to the definition.
+It is not coincidence that $\vec v\times\vec u = -(\vec u\times\vec v)$ in the preceding example; one can show using \autoref{def:cross_product} that this will always be the case. The following theorem states several useful properties of the cross product, each of which can be verified by referring to the definition.
 
 {
 \tcbset{grow to right by=1.5em}
@@ -154,19 +154,19 @@ It is not coincidence that $\crossp vu = -(\crossp uv)$ in the preceding example
 Let $\vecu$, $\vecv$ and $\vecw$ be vectors in $\mathbb{R}^3$ and let $c$ be a scalar. The following identities hold:
 \index{vectors!cross product}\index{cross product!properties}
 \begin{enumerate}
-	\item \parbox{167pt}{$\crossp uv = -(\crossp vu)$} Anticommutative Property
+	\item \parbox{167pt}{$\vec u\times\vec v = -(\vec v\times\vec u)$} Anticommutative Property
 	\item	\begin{enumerate}
-		\item \parbox{145pt}{$(\vec u+\vec v)\times \vecw = \crossp uw+\crossp vw$} Distributive Properties
-		\item	$\vec u \times (\vec v+\vec w) = \crossp uv+\crossp uw$
+		\item \parbox{145pt}{$(\vec u+\vec v)\times \vecw = \vec u\times\vec w+\vec v\times\vec w$} Distributive Properties
+		\item	$\vec u \times (\vec v+\vec w) = \vec u\times\vec v+\vec u\times\vec w$
 	\end{enumerate}
-	\item		$c(\crossp uv) = (c\vecu) \times \vec v = \vecu \times (c\vecv)$
+	\item		$c(\vec u\times\vec v) = (c\vecu) \times \vec v = \vecu \times (c\vecv)$
 	\item		\begin{enumerate}
-		\item \parbox{145pt}{$(\crossp uv)\cdot \vecu = 0$} Orthogonality Properties
-		\item	$(\crossp uv)\cdot \vecv = 0$
+		\item \parbox{145pt}{$(\vec u\times\vec v)\cdot \vecu = 0$} Orthogonality Properties
+		\item	$(\vec u\times\vec v)\cdot \vecv = 0$
 	\end{enumerate}
-	\item		$\crossp uu = \vec 0$
-	\item		$\crossp u0 = \vec 0$
-	\item		\parbox{167pt}{$\vecu \cdot (\vecv\times\vecw) = (\crossp uv)\cdot \vecw$} Scalar Triple Product
+	\item		$\vec u\times\vec u = \vec 0$
+	\item		$\vec u\times\vec0 = \vec 0$
+	\item		\parbox{167pt}{$\vecu \cdot (\vecv\times\vecw) = (\vec u\times\vec v)\cdot \vecw$} Scalar Triple Product
 \end{enumerate}
 \end{theorem}
 }
@@ -175,9 +175,9 @@ We introduced the cross product as a way to find a vector orthogonal to two give
 
 Property 5 from the theorem is also left to the reader to prove in \exautoref{cross_self}, but it reveals something more interesting than ``the cross product of a vector with itself is $\vec 0$.'' Let $\vec u$ and $\vec v$ be parallel vectors; that is, let there be a scalar $c$ such that $\vecv = c\vecu$. Consider their cross product:
 \begin{align*}
-	\crossp uv
+	\vec u\times\vecv
 	&= \vecu \times (c\vec u) \\
-	&= c(\crossp uu) & \text{(by Property 3 of \autoref{thm:cross_prod_prop})} \\
+	&= c(\vec u\times\vec u) & \text{(by Property 3 of \autoref{thm:cross_prod_prop})} \\
 	&= \vec 0. & \text{(by Property 5 of \autoref{thm:cross_prod_prop})}
 \end{align*}
 
@@ -185,7 +185,7 @@ We have just shown that the cross product of parallel vectors is $\vec 0$. This 
 
 \begin{theorem}[The Cross Product and Angles]\label{thm:cross_product}
 Let $\vec u$ and $\vec v$ be vectors in $\mathbb{R}^3$. Then
-\[\norm{\crossp uv} = \vnorm u\, \vnorm v \sin\theta,\]
+\[\norm{\vec u\times\vec v} = \vnorm u\, \vnorm v \sin\theta,\]
 where $\theta$, $0\leq \theta \leq \pi$, is the angle between $\vecu$ and $\vecv$.
 \index{vectors!cross product}\index{cross product!properties}
 \end{theorem}
@@ -203,7 +203,7 @@ Note that this theorem makes a statement about the \emph{magnitude} of the cross
 We demonstrate the truth of this theorem in the following example.
 
 \begin{example}[The cross product and angles]\label{ex_crossp3}
-Let $\vec u =\bracket{1,3,6}$ and $\vec v = \bracket{-1,2,1}$ as in \autoref{ex_crossp2}. Verify \autoref{thm:cross_product} by finding $\theta$, the angle between $\vecu$ and $\vecv$, and the magnitude of $\crossp uv$.
+Let $\vec u =\bracket{1,3,6}$ and $\vec v = \bracket{-1,2,1}$ as in \autoref{ex_crossp2}. Verify \autoref{thm:cross_product} by finding $\theta$, the angle between $\vecu$ and $\vecv$, and the magnitude of $\vec u\times\vecv$.
 \solution
 We use \autoref{thm:dot_product} to find the angle between $\vecu$ and $\vecv$. 
 \begin{align*}
@@ -212,9 +212,9 @@ We use \autoref{thm:dot_product} to find the angle between $\vecu$ and $\vecv$.
 			&\approx 0.8471 = 48.54^\circ.
 \end{align*}
 
-Our work in \autoref{ex_crossp2} showed that $\crossp uv = \bracket{-9,-7,5}$, which has norm $\sqrt{155}.$ Is $\norm{\crossp uv} = \vnorm u\, \vnorm v\sin\theta$? Using numerical approximations, we find:
+Our work in \autoref{ex_crossp2} showed that $\vec u\times\vecv = \bracket{-9,-7,5}$, which has norm $\sqrt{155}.$ Is $\norm{\vec u\times\vecv} = \vnorm u\, \vnorm v\sin\theta$? Using numerical approximations, we find:
 \begin{align*}
-\norm{\crossp uv}
+\norm{\vec u\times\vecv}
  &=\sqrt{155}  & \vnorm u\,\vnorm v \sin\theta & = \sqrt{46}\sqrt{6}\sin 0.8471\\
  &\approx 12.45. & &\approx 12.45.
 \end{align*}
@@ -225,7 +225,7 @@ which allows us to verify the theorem exactly.
 
 \subsection{Right Hand Rule}
 
-The anticommutative property of the cross product demonstrates that $\crossp uv$ and $\crossp vu$ differ only by a sign --- these vectors have the same magnitude but point in the opposite direction. When seeking a vector perpendicular to $\vec u$ and $\vec v$, we essentially have two directions to choose from, one in the direction of $\crossp uv$ and one in the direction of $\crossp vu$. Does it matter which we choose? How can we tell which one we will get without graphing, etc.?
+The anticommutative property of the cross product demonstrates that $\vec u\times\vecv$ and $\vec v\times\vec u$ differ only by a sign --- these vectors have the same magnitude but point in the opposite direction. When seeking a vector perpendicular to $\vec u$ and $\vec v$, we essentially have two directions to choose from, one in the direction of $\vec u\times\vec v$ and one in the direction of $\vec v\times\vec u$. Does it matter which we choose? How can we tell which one we will get without graphing, etc.?
 
 % todo Figure 11.4.1 is not helpful. Why is the plane there? It's not possible to discern where vectors u and v lie.  A right hand would also help.
 \mtable{Illustrating the Right Hand Rule of the cross product.}{fig:crossp_rhr}{
@@ -236,7 +236,7 @@ The anticommutative property of the cross product demonstrates that $\crossp uv$
 3Dcoo=0 0 34,
 3Droo=150}{width=\marginparwidth}{figures/figcrossp_rhr_3D}}
 
-Another property of the cross product, as defined, is that it follows the \textbf{right hand rule.} Given $\vec u$ and $\vec v$ in $\mathbb{R}^3$ with the same initial point, point the index finger of your right hand in the direction of $\vecu$ and let your middle finger point in the direction of $\vecv$ (much as we did when establishing the right hand rule for the 3-dimensional coordinate system). Your thumb will naturally extend in the direction of $\crossp uv$. One can ``practice'' this using \autoref{fig:crossp_rhr}. If you switch, and point the index finder in the direction of $\vecv$ and the middle finger in the direction of $\vecu$, your thumb will now point in the opposite direction, allowing you to ``visualize'' the anticommutative property of the cross product.  In fact, we can use this property to define the cross product, which we summarize in the next key idea.
+Another property of the cross product, as defined, is that it follows the \textbf{right hand rule.} Given $\vec u$ and $\vec v$ in $\mathbb{R}^3$ with the same initial point, point the index finger of your right hand in the direction of $\vecu$ and let your middle finger point in the direction of $\vecv$ (much as we did when establishing the right hand rule for the 3-dimensional coordinate system). Your thumb will naturally extend in the direction of $\vec u\times\vec v$. One can ``practice'' this using \autoref{fig:crossp_rhr}. If you switch, and point the index finder in the direction of $\vecv$ and the middle finger in the direction of $\vecu$, your thumb will now point in the opposite direction, allowing you to ``visualize'' the anticommutative property of the cross product.  In fact, we can use this property to define the cross product, which we summarize in the next key idea.
 
 \begin{keyidea}[Alternate Definition of the Cross Product]\label{ki:cross_prod_alt}
 For vectors $\vecu$ and $\vecv$, the cross product $\vecu\times\vecv$ is the unique vector such that
@@ -272,7 +272,7 @@ There are a number of ways in which the cross product is useful in mathematics, 
 \\(b)}
 
 It is a standard geometry fact that the area of a parallelogram is $A = bh$, where $b$ is the length of the base and $h$ is the height of the parallelogram, as illustrated in \autoref{fig:crossp_parallelogram}(a). As shown when defining the Parallelogram Law of vector addition, two vectors $\vecu$ and $\vecv$ define a parallelogram when drawn from the same initial point, as illustrated in \autoref{fig:crossp_parallelogram}(b). Trigonometry tells us that $h = \vnorm u \sin \theta$, hence the area of the parallelogram is 
-\begin{equation}A = \vnorm u\,\vnorm v\sin\theta = \norm{\crossp uv},\label{eq:crossp1}\end{equation}
+\begin{equation}A = \vnorm u\,\vnorm v\sin\theta = \norm{\vec u\times\vec v},\label{eq:crossp1}\end{equation}
 where the second equality comes from \autoref{thm:cross_product}.
 We illustrate using \autoeqref{eq:crossp1} in the following example.
 \index{cross product!applications!area of parallelogram}
@@ -310,7 +310,7 @@ ytick={1,2,3,4,5},ymin=-.5,ymax=5.5,xmin=-.5,xmax=4.5]
 %
 \solution
 \mbox{}\\[-1.5\baselineskip]\parbox[t]{\linewidth}{\begin{enumerate}
-	\item \autoref{fig:crossp4}(a) sketches the parallelogram defined by the vectors $\vec u$ and $\vec v$. We have a slight problem in that our vectors exist in $\mathbb{R}^2$, not $\mathbb{R}^3$, and the cross product is only defined on vectors in $\mathbb{R}^3$. We skirt this issue by viewing $\vec u$ and $\vecv$ as vectors in the $x-y$ plane of $\mathbb{R}^3$, and rewrite them as $\vec u = \bracket{2,1,0}$ and $\vecv =\bracket{1,3,0}$. We can now compute the cross product. It is easy to show that $\crossp uv = \bracket{0,0,5}$; therefore the area of the parallelogram is $A = \norm{\crossp uv} = 5$.
+	\item \autoref{fig:crossp4}(a) sketches the parallelogram defined by the vectors $\vec u$ and $\vec v$. We have a slight problem in that our vectors exist in $\mathbb{R}^2$, not $\mathbb{R}^3$, and the cross product is only defined on vectors in $\mathbb{R}^3$. We skirt this issue by viewing $\vec u$ and $\vecv$ as vectors in the $x-y$ plane of $\mathbb{R}^3$, and rewrite them as $\vec u = \bracket{2,1,0}$ and $\vecv =\bracket{1,3,0}$. We can now compute the cross product. It is easy to show that $\vec u\times\vec v = \bracket{0,0,5}$; therefore the area of the parallelogram is $A = \norm{\vec u\times\vec v} = 5$.
 	\item		To show that the quadrilateral $ABCD$ is a parallelogram (shown in \autoref{fig:crossp4}(b)), we need to show that the opposite sides are parallel. We can quickly show that $\vv{AB} =\vv{DC} = \bracket{1,2,1}$ and $\vv{BC} = \vv{AD} = \bracket{2,2,1}$. We find the area by computing the magnitude of the cross product of $\vv{AB}$ and $\vv{BC}$:
 	\[
 	\vv{AB} \times \vv{BC} = \bracket{0,1,-2}\quad \Rightarrow \quad
@@ -370,13 +370,13 @@ Each face is parallel to the opposite face, as illustrated in \autoref{fig:cross
 
 Thus the volume of a parallelepiped defined by vectors $\vecu$, $\vecv$ and $\vec w$ is
 \begin{equation}
-V = \abs{\vecu\cdot (\crossp vw)}.\label{eq:crossp2}
+V = \abs{\vecu\cdot (\vec v\times\vec w)}.\label{eq:crossp2}
 \end{equation}
 Note how this is the Scalar Triple Product, first seen in \autoref{thm:cross_prod_prop}. Applying the identities given in the theorem shows that we can apply the Scalar Triple Product in any ``order'' we choose to find the volume. That is,
-\[V = \abs{\vecu\cdot(\crossp vw)} = \abs{\vec u\cdot (\crossp wv)} = \abs{(\crossp uv)\cdot \vecw},\quad \text{etc.}\]
-As with the cross product, we can also write $\vecu\cdot(\crossp vw)$ in terms of a determinant:
+\[V = \abs{\vecu\cdot(\vec v\times\vec w)} = \abs{\vec u\cdot (\vec w\times\vec v)} = \abs{(\vec u\times\vec v)\cdot \vecw},\quad \text{etc.}\]
+As with the cross product, we can also write $\vecu\cdot(\vec v\times\vec w)$ in terms of a determinant:
 \[
- \vecu\cdot(\crossp vw)=
+ \vecu\cdot(\vec v\times\vec w)=
  \begin{vmatrix}u_1&u_2&u_3\\v_1&v_2&v_3\\w_1&w_2&w_3\end{vmatrix}.
 \]
 Because
@@ -394,8 +394,8 @@ the volume is the absolute value of the determinant, changing the order of the r
 \begin{example}[Finding the volume of parallelepiped]\label{ex_crossp6}
 Find the volume of the parallelepiped defined by the vectors $\vecu = \bracket{1,1,0}$, $\vecv = \bracket{-1,1,0}$ and $\vecw = \bracket{0,1,1}$.
 \solution
-We apply \autoeqref{eq:crossp2}. We first find $\crossp vw =\bracket{1,1,-1}$. Then
-\[\abs{\vec u\cdot(\crossp vw)} = \abs{\bracket{1,1,0}\cdot \bracket{1,1,-1}} = 2.\]
+We apply \autoeqref{eq:crossp2}. We first find $\vec v\times\vec w =\bracket{1,1,-1}$. Then
+\[\abs{\vec u\cdot(\vec v\times\vec w)} = \abs{\bracket{1,1,0}\cdot \bracket{1,1,-1}} = 2.\]
 So the volume of the parallelepiped is 2 cubic units.  In terms of determinants, we have
 \begin{multline*}
  \begin{vmatrix}1&1&0\\ -1&1&0\\0&1&1\end{vmatrix}
@@ -417,7 +417,7 @@ and the absolute value of this determinant is again 2.
 
 \textbf{Torque} is a measure of the turning force applied to an object. A classic scenario involving torque is the application of a wrench to a bolt. When a force is applied to the wrench, the bolt turns. When we represent the force and wrench with vectors $\vec F$ and $\vec \ell$, we see that the bolt moves (because of the threads) in a  direction orthogonal to $\vec F$ and $\vec \ell$. Torque is usually represented by the Greek letter $\tau$, or tau, and has units of N$\cdot$m, a newton-meter, or ft$\cdot$lb, a foot-pound.\index{cross product!applications!torque}
 
-While a full understanding of torque is beyond the purposes of this book, when a force $\vec F$ is applied to a lever arm $\vec \ell$, the resulting torque is \begin{equation}\vec \tau = \crossp \ell F.\label{eq:crossp3}\end{equation}
+While a full understanding of torque is beyond the purposes of this book, when a force $\vec F$ is applied to a lever arm $\vec \ell$, the resulting torque is \begin{equation}\vec \tau = \vec \ell\times\vec F.\label{eq:crossp3}\end{equation}
 
 \begin{example}[Computing torque]\label{ex_crossp7}
 A lever of length 2ft makes an angle with the horizontal of $45^\circ$. Find the resulting torque when a force of 10lb is applied to the end of the level where:
@@ -457,7 +457,7 @@ A lever of length 2ft makes an angle with the horizontal of $45^\circ$. Find the
 	
 	Using \autoeqref{eq:crossp3} to find the torque requires a cross product. We again let the third component of each vector be 0  and compute the cross product:
 	\begin{align*}
-	\vec\tau &= \crossp \ell F \\
+	\vec\tau &= \vec \ell\times\vec F \\
 				&= \bracket{\sqrt2,\sqrt2,0}\times \bracket{5\sqrt2,-5\sqrt2,0}\\
 				&= \bracket{0,0,-20}
 	\end{align*}
@@ -473,7 +473,7 @@ A lever of length 2ft makes an angle with the horizontal of $45^\circ$. Find the
 	
 	We again make the third component 0 and take the cross product to find the torque:
 	\begin{align*}
-	\vec\tau &= \crossp \ell F\\
+	\vec\tau &= \vec \ell\times\vec F\\
 	&= \bracket{\sqrt2,\sqrt2,0}\times  \bracket{\frac{5(1+\sqrt3)}{\sqrt2},\frac{5(1-\sqrt3)}{\sqrt2},0}\\
 	&= \bracket{0,0,-10\sqrt3}
 	%\\&\approx \bracket{0,0,-17.321}

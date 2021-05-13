@@ -50,6 +50,7 @@ The bigger change is to the section ordering.
 |10.0|9.1|
 |10.1|7.4|
 |13.9||
+
 With the noted exceptions, the introduction of LT chapter 7 means that ET chapter n = LT chapter (n+1), once n is at least 8.
 
 #### Supporting programs

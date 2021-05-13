@@ -6,20 +6,20 @@ Recall that when moving in a straight line, if $\vec F$ represents a constant fo
 
 As we have practiced many times before, we can calculate work by first approximating, then refining our approximation through a limit that leads to integration. 
 
-Assume as we did in \autoref{sec:line_int_intro} that $C$ can be parameterized by the arc length parameter $s$. Over a short piece of the curve with length $ds$, the curve is approximately straight and our force is approximately constant. The straight-line direction of this short length of curve is given by $\vec T$, the unit tangent vector;   let $\vec d = \vec T\ ds$, which gives  the direction and magnitude of a small section of $C$. Thus work over this small section of $C$ is $\vec F \cdot \vec d = \vec F\cdot \vec T\ ds$. 
+Assume as we did in \autoref{sec:line_int_intro} that $C$ can be parameterized by the arc length parameter $s$. Over a short piece of the curve with length $\dd s$, the curve is approximately straight and our force is approximately constant. The straight-line direction of this short length of curve is given by $\vec T$, the unit tangent vector;   let $\vec d = \vec T\dd s$, which gives  the direction and magnitude of a small section of $C$. Thus work over this small section of $C$ is $\vec F \cdot \vec d = \vec F\cdot \vec T\dd s$. 
 
-Summing up all the work over these small segments gives an approximation of the work performed. By taking the limit as $ds$ goes to zero, and hence the number of segments approaches infinity, we can obtain the exact amount of work. Following the logic presented at the beginning of this chapter in the Integration Review, we see that 
-\[W = \int_C \vec F\cdot \vec T\ ds,\]
+Summing up all the work over these small segments gives an approximation of the work performed. By taking the limit as $\dd s$ goes to zero, and hence the number of segments approaches infinity, we can obtain the exact amount of work. Following the logic presented at the beginning of this chapter in the Integration Review, we see that 
+\[W = \int_C \vec F\cdot \vec T\dd s,\]
 a line integral.
 
-This line integral is beautiful in its simplicity, yet is not so useful in making actual computations (largely because the arc length parameter is so difficult to work with). To compute actual work, we need to parameterize $C$ with another parameter  $t$ via a vector-valued function $\vec r(t)$. As stated in \autoref{sec:line_int_intro}, $ds = \norm{\vrp(t)}\ dt$, and recall that $\vec T = \vrp(t)/\norm{\vrp(t)}$. Thus
+This line integral is beautiful in its simplicity, yet is not so useful in making actual computations (largely because the arc length parameter is so difficult to work with). To compute actual work, we need to parameterize $C$ with another parameter  $t$ via a vector-valued function $\vec r(t)$. As stated in \autoref{sec:line_int_intro}, $\dd s = \norm{\vrp(t)}\dd t$, and recall that $\vec T = \vrp(t)/\norm{\vrp(t)}$. Thus
 \begin{equation}
-W = \int_C \vec F\cdot\vec T\ ds
-= \int_C \vec F\cdot \frac{\vrp(t)}{\norm{\vrp(t)}}\norm{\vrp(t)}\ dt
-= \int_C\vec F\cdot \vrp(t)\ dt = \int_C \vec F\cdot d\vec r,
+W = \int_C \vec F\cdot\vec T\dd s
+= \int_C \vec F\cdot \frac{\vrp(t)}{\norm{\vrp(t)}}\norm{\vrp(t)}\dd t
+= \int_C\vec F\cdot \vrp(t)\dd t = \int_C \vec F\cdot\dd\vec r,
 \label{eq:line_integral}
 \end{equation}
-where the final integral uses the differential $d\vec r$ for $\vrp(t)\,dt$.
+where the final integral uses the differential $\dd\vec r$ for $\vrp(t)\dd t$.
 
 These integrals are known as \textbf{line integrals over vector fields}. By contrast, the line integrals we dealt with in \autoref{sec:line_int_intro} are sometimes referred to as \textbf{line integrals over scalar fields}.\index{line integral!over scalar field} Just as a vector field is defined by a function that returns a vector, a scalar field is a function that returns a scalar, such as $z = f(x,y)$. We waited until now to introduce this terminology so we could contrast the concept with vector fields. 
 
@@ -27,19 +27,19 @@ We formally define this line integral, then give examples and applications.
 
 \begin{definition}[Line Integral Over A Vector Field]\label{def:line_integral2}
 Let $\vec F$ be a vector field with continuous components defined on a smooth curve $C$, parameterized by $\vrt$, and let $\vec T$ be the unit tangent vector of $\vrt$. The \textbf{line integral over $\vec F$ along $C$} is\index{line integral!over vector field}
-\[\int_C \vec F\cdot d\vec r = \int_C \vec F\cdot\vec T\ ds.\]
+\[\int_C \vec F\cdot\dd\vec r = \int_C \vec F\cdot\vec T\dd s.\]
 \end{definition}
 
-\mnote{\textbf{Note:} When $\vec F=\bracket{g,h}$ and $\vec r=\bracket{x,y}$ parameterizes $C$, other common notations for the line integral over $\vec F$ along $C$ are $\int_C gdx+\int_C hdy$ and $\int_C gdx+hdy$.}
+\mnote{\textbf{Note:} When $\vec F=\bracket{g,h}$ and $\vec r=\bracket{x,y}$ parameterizes $C$, other common notations for the line integral over $\vec F$ along $C$ are $\int_C g\dd x+\int_C h\dd y$ and $\int_C g\dd x+h\dd y$.}
 
 In \autoref{def:line_integral2}, note how the dot product $\vec F \cdot \vec T$ is just a scalar. %Note how on the right-hand side of the equation in \autoref{def:line_integral2}, the dot product $\vec F\cdot\vec T$ is just a scalar. 
-Therefore, this new line integral is really just a special kind of line integral found in \autoref{sec:line_int_intro}; letting $f(s) = \vec F(s)\cdot \vec T(s)$, the right-hand side simply becomes $\int_C f(s)\ ds$, and we can use the techniques of that section to evaluate the integral. We combine those techniques, along with parts of \autoeqref{eq:line_integral}, to clearly state how to evaluate a line integral over a vector field in the following Key Idea. 
+Therefore, this new line integral is really just a special kind of line integral found in \autoref{sec:line_int_intro}; letting $f(s) = \vec F(s)\cdot \vec T(s)$, the right-hand side simply becomes $\int_C f(s)\dd s$, and we can use the techniques of that section to evaluate the integral. We combine those techniques, along with parts of \autoeqref{eq:line_integral}, to clearly state how to evaluate a line integral over a vector field in the following Key Idea. 
 
 \begin{keyidea}[Evaluating a Line Integral Over A Vector Field]\label{idea:line2}
 Let $\vec F$ be a vector field with continuous components defined on a smooth curve $C$, parameterized by $\vrt$, $a\leq t\leq b$, where $\vec r$ is continuously differentiable. Then\index{vector field!over vector field}
 	\[
-	\int_C\vec F\cdot\vec T\ ds = \int_C \vec F\cdot d\vec r
-	=\int_a^b \vec F\bigl(\vec r(t)\bigr) \cdot \vrp(t)\ dt.
+	\int_C\vec F\cdot\vec T\dd s = \int_C \vec F\cdot\dd\vec r
+	=\int_a^b \vec F\bigl(\vec r(t)\bigr) \cdot \vrp(t)\dd t.
 	\]
 \end{keyidea}
 
@@ -79,17 +79,17 @@ To compute work, we need to parameterize each path. We use $\vec r_1(t) =\bracke
 
 Along the straight-line path, $\vec F\bigl(\vec r_1(t)\bigr) =\bracket{x,x+y}=\bracket{t,t+t}=\bracket{t,2t}$. We find $\vrp_1(t) =\bracket{1,1}$. The integral that computes work is:
 \begin{align*}
-	\int_{C_1} \vec F\cdot d\vec r
-	&= \int_0^1\bracket{t,2t}\cdot\bracket{1,1}\ dt \\
-	&= \int_0^1 3t\ dt \\
+	\int_{C_1} \vec F\cdot\dd\vec r
+	&= \int_0^1\bracket{t,2t}\cdot\bracket{1,1}\dd t \\
+	&= \int_0^1 3t\dd t \\
 	&= \frac32t^2\Big|_0^1 = 1.5 \text{ joules}.
 \end{align*}
 
 Along the curve $y = x^4$, $\vec F\bigl(\vec r_2(t)\bigr) =\bracket{x,x+y}=\bracket{t,t+t^4}$. We find $\vrp_2(t) =\bracket{1,4t^3}$. The work performed along this path is
 \begin{align*}
-	\int_{C_2} \vec F\cdot d\vec r
-	&= \int_0^1\bracket{t,t+t^4}\cdot\bracket{1,4t^3}\ dt\\
-	&= \int_0^1 \bigl(t + 4t^4+ 4t^7\bigr)\ dt \\
+	\int_{C_2} \vec F\cdot\dd\vec r
+	&= \int_0^1\bracket{t,t+t^4}\cdot\bracket{1,4t^3}\dd t\\
+	&= \int_0^1 \bigl(t + 4t^4+ 4t^7\bigr)\dd t \\
 	&= \bigl(\frac12t^2 + \frac45t^5 + \frac12t^8\bigr)\Big|_0^1 =  1.8 \text{ joules}.
 \end{align*}
 
@@ -126,18 +126,18 @@ We start by parameterizing $C_1$: the parameterization $\vec r_1(t) =\bracket{t,
 
 Computing the work along $C_1$, we have:
 \begin{align*}
-	\int_{C_1} \vec F\cdot d\vec r_1
-	& = \int_{-1}^1\bracket{2t^2-1,t}\cdot\bracket{1,4t}\ dt \\
-	&= \int_{-1}^1 \bigl(2t^2-1+4t^2\bigr)\ dt = 2 \text{ ft-lbs}.
+	\int_{C_1} \vec F\cdot\dd\vec r_1
+	& = \int_{-1}^1\bracket{2t^2-1,t}\cdot\bracket{1,4t}\dd t \\
+	&= \int_{-1}^1 \bigl(2t^2-1+4t^2\bigr)\dd t = 2 \text{ ft-lbs}.
 \end{align*}
 
 For $C_2$, it is probably simplest to parameterize the half circle using sine and cosine. Recall that $\vec r(t) =\bracket{\cos t,\sin t}$ is a parameterization of the unit circle on $0\leq t\leq 2\pi$; we add 1 to the second component to shift the circle up one unit, then restrict the domain to $\pi\leq t\leq 2\pi$  to obtain only the lower half, giving $\vec r_2(t) =\bracket{\cos t,\sin t+1}$, $\pi\leq t\leq 2\pi$, and hence $\vrp_2(t) =\bracket{-\sin t,\cos t}$ and $\vec F\bigl(\vec r_2(t)\bigr) =\bracket{y,x}=\bracket{\sin t+1,\cos t}$.
 
 Computing the work along $C_2$, we have:
 \begin{align*}
-	\int_{C_2} \vec F\cdot d\vec r_2
-	& = \int_{\pi}^{2\pi}\bracket{\sin t+1,\cos t}\cdot\bracket{-\sin t,\cos t}\ dt \\
-	&= \int_{\pi}^{2\pi} \bigl(-\sin^2t-\sin t+\cos^2t\bigr)\ dt = 2 \text{ ft-lbs}.
+	\int_{C_2} \vec F\cdot\dd\vec r_2
+	& = \int_{\pi}^{2\pi}\bracket{\sin t+1,\cos t}\cdot\bracket{-\sin t,\cos t}\dd t \\
+	&= \int_{\pi}^{2\pi} \bigl(-\sin^2t-\sin t+\cos^2t\bigr)\dd t = 2 \text{ ft-lbs}.
 \end{align*}
 Note how the work along $C_1$ and $C_2$ in this example is the same. We'll address why later in this section when \emph{conservative fields} and \emph{path independence} are discussed.
 \end{example}
@@ -153,16 +153,16 @@ It is relatively easy to see why. Let $C$ be the unit circle. The area under a s
 \begin{enumerate}
 	\item	Let $\vec F$ and $\vec G$ be  vector fields with continuous components defined on a smooth curve $C$, parameterized by $\vrt$, and let $k_1$ and $k_2$ be scalars. Then
 	\[
-	\ds \int_C\bigl(k_1\vec F+k_2\vec G\bigr)\cdot d\vec r
-	= k_1\int_C\vec F\cdot d\vec r +k_2\int_C\vec G\cdot d\vec r.
+	\ds \int_C\bigl(k_1\vec F+k_2\vec G\bigr)\cdot\dd\vec r
+	= k_1\int_C\vec F\cdot\dd\vec r +k_2\int_C\vec G\cdot\dd\vec r.
 	\]
 	\item Let $C$ be piecewise smooth, composed of smooth components $C_1$ and $C_2$. Then
 	\[
-	\int_C\vec F\cdot d\vec r
-	= \int_{C_1}\vec F\cdot d\vec r + \int_{C_2}\vec F\cdot d\vec r.
+	\int_C\vec F\cdot\dd\vec r
+	= \int_{C_1}\vec F\cdot\dd\vec r + \int_{C_2}\vec F\cdot\dd\vec r.
 	\]
 	\item	Let $C^*$ be the curve $C$ with opposite orientation, parameterized by $\vec r\,^*$. Then
-	\[\int_C\vec F\cdot d\vec r = -\int_{C^*}\vec F\cdot d\vec r\,^*.\]
+	\[\int_C\vec F\cdot\dd\vec r = -\int_{C^*}\vec F\cdot\dd\vec r\,^*.\]
 	\end{enumerate}}
 \end{theorem}
 
@@ -192,7 +192,7 @@ ymin=-.2,ymax=1.2,xmin=-.2,xmax=1.2]
 \end{tikzpicture}}
 
 \begin{example}[Using properties of line integrals over vector fields]\label{ex_livf3}
-Let $\vec F =\bracket{3(y-1/2),1}$ and let $C$ be the path that starts at $(0,0)$, goes to $(1,1)$ along the curve $y=x^3$, then returns to $(0,0)$ along the line $y=x$, as shown in \autoref{fig:livf3}. Evaluate $\oint_C \vec F\cdot d\vec r$.
+Let $\vec F =\bracket{3(y-1/2),1}$ and let $C$ be the path that starts at $(0,0)$, goes to $(1,1)$ along the curve $y=x^3$, then returns to $(0,0)$ along the line $y=x$, as shown in \autoref{fig:livf3}. Evaluate $\oint_C \vec F\cdot\dd\vec r$.
 \solution
 As $C$ is piecewise smooth, we break it into two components $C_1$ and $C_2$, where $C_1$ follows the curve $y=x^3$ and $C_2$ follows the curve $y=x$. 
 
@@ -206,11 +206,11 @@ Either choice is fine; we choose $\vec r_2(t)$ to practice using line integral p
 
 Evaluating the line integral (note how we subtract the integral over $C_2$ as the orientation of $\vec r_2(t)$ is opposite):
 \begin{align*}
-	\oint_C \vec F\cdot d\vec r
-	&= \int_{C_1}\vec F\cdot d\vec r_1 - \int_{C_2}\vec F\cdot d\vec r_2 \\
-	&= \int_0^1\bracket{3(t^3-1/2),1}\cdot\bracket{1,3t^2} dt
-	- \int_0^1\bracket{3(t-1/2),1}\cdot\bracket{1,1}dt \\
-	&= \int_0^1\Bigl(3t^3+3t^2-3/2\Bigr)\ dt - \int_0^1 \Bigl(3t-1/2\Bigr)\ dt\\
+	\oint_C \vec F\cdot\dd\vec r
+	&= \int_{C_1}\vec F\cdot\dd\vec r_1 - \int_{C_2}\vec F\cdot\dd\vec r_2 \\
+	&= \int_0^1\bracket{3(t^3-1/2),1}\cdot\bracket{1,3t^2}\dd t
+	- \int_0^1\bracket{3(t-1/2),1}\cdot\bracket{1,1}\dd t \\
+	&= \int_0^1\Bigl(3t^3+3t^2-3/2\Bigr)\dd t - \int_0^1 \Bigl(3t-1/2\Bigr)\dd t\\
 	&= \bigl(1/4 \bigr) - \bigl(1\bigr)\\
 	&=	-3/4.
 \end{align*}
@@ -228,15 +228,15 @@ If we interpret this integral as computing work, the negative work implies that 
 
 \begin{example}[Evaluating a line integral over a vector field in space]\label{ex_livf4}
 Let $\vec F =\bracket{-y,x,1}$, and let $C$ be the portion of the helix given by \[\vrt = \bracket{ \cos t,\sin t, t/(2\pi)}\text{ on }[0,2\pi],\]
-as shown in \autoref{fig:livf4}. Evaluate $\int_C\vec F\cdot d\vec r$.
+as shown in \autoref{fig:livf4}. Evaluate $\int_C\vec F\cdot\dd\vec r$.
 \solution
 A parameterization is already given for $C$, so we just need to find $\vec F\bigl(\vec r(t)\bigr)$ and \vrp(t). 
 
 We have $\vec F\bigl(\vec r(t)\bigr) =\bracket{-\sin t, \cos t, 1}$ and $\vrp(t) =\bracket{-\sin t, \cos t, 1/(2\pi)}$. Thus
 \begin{align*}
-	\int_C \vec F\cdot d\vec r
-	&= \int_0^{2\pi}\bracket{-\sin t, \cos t, 1}\cdot\bracket{-\sin t, \cos t, 1/(2\pi)}dt\\
-	&= \int_0^{2\pi} \Bigl(\sin^2t+\cos^2t + \frac1{2\pi}\Bigr)dt\\
+	\int_C \vec F\cdot\dd\vec r
+	&= \int_0^{2\pi}\bracket{-\sin t, \cos t, 1}\cdot\bracket{-\sin t, \cos t, 1/(2\pi)}\dd t\\
+	&= \int_0^{2\pi} \Bigl(\sin^2t+\cos^2t + \frac1{2\pi}\Bigr)\dd t\\
 	&= 2\pi + 1 \approx 7.28.
 \end{align*}
 \end{example}
@@ -296,25 +296,25 @@ We will use the terms connected and simply connected in subsequent definitions a
 
 Recall how in \autoref{ex_livf2} particles moved from $A = (-1,1)$ to $B = (1,1)$ along two different paths, wherein the same amount of work was performed along each path. It turns out that regardless of the choice of path from $A$ to $B$, the amount of work performed under the field $\vec F =\bracket{y, x}$ is the same. Since our expectation is that differing amounts of work are performed along different paths, we give such special fields a name. %(We give the following definitions in terms of fields in space, but each definition also applies for fields in the plane.)
 
-\definition{def:conservative}{Conservative Field, Path Independent}
-{Let $\vec F$ be a vector field defined on an open, connected domain $D$ in the plane or in space  containing points $A$ and $B$. If the line integral
-$\int_C \vec F\cdot d\vec r$\ \ has the same value for all choices of paths $C$ starting at $A$ and ending at $B$, then\index{conservative field}\index{vector field!conservative}\index{path independent}\index{line integral!path independent}
+\begin{definition}[Conservative Field, Path Independent]\label{def:conservative}
+Let $\vec F$ be a vector field defined on an open, connected domain $D$ in the plane or in space containing points $A$ and $B$. If the line integral
+$\int_C \vec F\cdot\dd\vec r$\ \ has the same value for all choices of paths $C$ starting at $A$ and ending at $B$, then\index{conservative field}\index{vector field!conservative}\index{path independent}\index{line integral!path independent}
 \begin{itemize}
 	\item $\vec F$ is a \textbf{conservative field} and
-	\item	The line integral $\int_C \vec F\cdot d\vec r$ is \textbf{path independent} and can be written as
-	\[\int_C \vec F\cdot d\vec r = \int_A^B \vec F\cdot \ d\vec r.\] 
+	\item	The line integral $\int_C \vec F\cdot\dd\vec r$ is \textbf{path independent} and can be written as
+	\[\int_C \vec F\cdot\dd\vec r = \int_A^B \vec F\cdot \ d\vec r.\] 
 \end{itemize}
-}
+\end{definition}
 
-When $\vec F$ is a conservative field, the line integral from points $A$ to $B$ is sometimes written as $\int_A^B\vec F\cdot d\vec r$ to emphasize the independence of its value from the choice of path; all that matters are the beginning and ending points of the path.
+When $\vec F$ is a conservative field, the line integral from points $A$ to $B$ is sometimes written as $\int_A^B\vec F\cdot\dd\vec r$ to emphasize the independence of its value from the choice of path; all that matters are the beginning and ending points of the path.
 
 How can we tell if a field is conservative? To show a field $\vec F$ is conservative using the definition, we need to show that \emph{all} line integrals from points $A$ to $B$ have the same value. It is equivalent to show that \emph{all} line integrals over closed paths $C$ are 0. Each of these tasks are generally nontrivial.
 
 There is a simpler method. Consider the surface defined by $z = f(x,y) = xy$. We can compute the gradient of this function: $\nabla f =\bracket{f_x, f_y}=\bracket{y, x}$. Note that this is the field from \autoref{ex_livf2}, which we have claimed is conservative. We will soon give a theorem that states that a field $\vec F$ is conservative if, and only if, it is the gradient of some scalar function $f$. To show $\vec F$ is conservative, we need to determine whether or not $\vec F = \nabla f$ for some function $f$. (We'll later see that there is a yet simpler method). To recognize the special relationship between $\vec F$ and $f$ in this situation, $f$ is given a name.
 
-\definition{def:potential}{Potential Function}
-{Let $f$ be a differentiable function defined on a  domain $D$ in the plane or in space (i.e., $z = f(x,y)$ or $w = f(x,y,z)$) and let $\vec F = \nabla f$, the gradient of $f$. Then $f$ is a \textbf{potential function} of $\vec F$.\index{potential function}\index{vector field!potential function of}
-}
+\begin{definition}[Potential Function]\label{def:potential}
+Let $f$ be a differentiable function defined on a  domain $D$ in the plane or in space (i.e., $z = f(x,y)$ or $w = f(x,y,z)$) and let $\vec F = \nabla f$, the gradient of $f$. Then $f$ is a \textbf{potential function} of $\vec F$.\index{potential function}\index{vector field!potential function of}
+\end{definition}
 
 We now state the Fundamental Theorem of Line Integrals, which connects conservative fields and path independence to fields with potential functions. 
 
@@ -323,7 +323,7 @@ Let $\vec F$ be a vector field whose components are continuous on a connected do
 \begin{enumerate}
 	\item $\vec F$ is conservative if and only if there exists a differentiable function $f$ such that $\vec F = \nabla f$. 
 	\item	If $\vec F$ is conservative, then 
-	\[\int_C\vec F\cdot d\vec r = \int_A^B \vec F\cdot d\vec r = f(B) - f(A).\]
+	\[\int_C\vec F\cdot\dd\vec r = \int_A^B \vec F\cdot\dd\vec r = f(B) - f(A).\]
 \end{enumerate}
 \end{theorem}
 
@@ -339,14 +339,14 @@ We practice using this theorem again in the next example.
 Let $\vec F =\bracket{3x^2y+2x, x^3+1}$, $A = (0,1)$ and $B = (1,4)$. Use the first part of the Fundamental Theorem of Line Integrals to show that $\vec F$ is conservative, then choose any path from $A$ to $B$ and confirm the second part of the theorem.
 \solution
 To show $\vec F$ is conservative, we need to find $z = f(x,y)$ such that $\vec F = \nabla f =\bracket{f_x, f_y}$. That is, we need to find $f$ such that $f_x = 3x^2y+2x$ and $f_y = x^3+1$. As all we know about $f$ are its partial derivatives, we recover $f$ by integration:
-\[\int \frac{\partial f}{\partial x}\ dx = f(x,y) + C(y).\]
+\[\int \frac{\partial f}{\partial x}\dd x = f(x,y) + C(y).\]
 Note how the constant of integration is more than ``just a constant'': it is anything that acts as a constant when taking a derivative with respect to $x$. Any function that is a function of $y$ (containing no $x$'s) acts as a constant when deriving with respect to $x$.
 
 Integrating $f_x$ in this example gives:
-\[\int \frac{\partial f}{\partial x}\ dx = \int (3x^2y+2x)\ dx = x^3y+x^2 + C(y).\]
+\[\int \frac{\partial f}{\partial x}\dd x = \int (3x^2y+2x)\dd x = x^3y+x^2 + C(y).\]
 
 Likewise, integrating $f_y$ with respect to $y$ gives:
-\[\int \frac{\partial f}{\partial y}\ dy = \int( x^3+1)\ dy = x^3y+ y + C(x).\]
+\[\int \frac{\partial f}{\partial y}\dd y = \int( x^3+1)\dd y = x^3y+ y + C(x).\]
 
 These two results should be equal with appropriate choices of $C(x)$ and $C(y)$:
 \[
@@ -359,16 +359,16 @@ We find $f(x,y) = x^3y+x^2+y$, a potential function of $\vec F$. (If $\vec F$ we
 
 By the Fundamental Theorem of Line Integrals, regardless of the path from $A$ to $B$, 
 \begin{align*}
-	\int_A^B\vec F\cdot d\vec r
+	\int_A^B\vec F\cdot\dd\vec r
 	&= f(B) - f(A) \\
 	&= f(1,4) - f(0,1) \\
 	&= 9 - 1 = 8.
 \end{align*}
 To illustrate the validity of the Fundamental Theorem, we pick a path from $A$ to $B$. The line between these two points would be simple to construct; we choose a slightly more complicated path by choosing the parabola $y = x^2+2x+1$. This leads to the parameterization $\vrt =\bracket{t, t^2+2t+1}$, $0\leq t\leq 1$, with $\vrp(t) =\bracket{t, 2t+2}$. Thus
 \begin{align*}
-	\int_C \vec F\cdot d\vec r &= \int_C\vec F\bigl(\vrt\bigr)\cdot\vrp(t)\ dt\\
-	&= \int_0^1\bracket{3(t)(t^2+2t+1)+2t, t^3+1}\cdot\bracket{t,2t+2}\ dt\\
-	&= \int_0^1 \bigl(5t^4+8t^3+3t^2+4t+2\bigr)\ dt\\
+	\int_C \vec F\cdot\dd\vec r &= \int_C\vec F\bigl(\vrt\bigr)\cdot\vrp(t)\dd t\\
+	&= \int_0^1\bracket{3(t)(t^2+2t+1)+2t, t^3+1}\cdot\bracket{t,2t+2}\dd t\\
+	&= \int_0^1 \bigl(5t^4+8t^3+3t^2+4t+2\bigr)\dd t\\
 	&= \bigl(t^5+2t^4+t^3+2t^2+2t\bigr)\Big|_0^1\\
 	&= 8,
 \end{align*}

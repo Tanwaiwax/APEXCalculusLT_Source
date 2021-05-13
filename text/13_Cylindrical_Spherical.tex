@@ -62,9 +62,9 @@ All three surfaces are graphed in \autoref{fig:cylindrical1}. Note how their int
 
 Cylindrical coordinates are useful when describing certain domains in space, allowing us to evaluate triple integrals over these domains more easily than if we used rectangular coordinates.
 
-\autoref{thm:triple_integration2} shows how to evaluate $\iiint_Dh(x,y,z)\ dV$ using rectangular coordinates. In that evaluation, we use $dV = dz\,dy\,dx$ (or one of the other five orders of integration). Recall how, in this order of integration, the bounds on $y$ are ``curve to curve'' and the bounds on $x$ are ``point to point'': these bounds describe a region $R$ in the $x$-$y$ plane. We could describe $R$ using polar coordinates as done in \autoref{sec:double_int_polar}. In that section, we saw how we used $dA = r\,dr\,d\theta$ instead of $dA = dy\,dx$. 
+\autoref{thm:triple_integration2} shows how to evaluate $\iiint_Dh(x,y,z)\dd V$ using rectangular coordinates. In that evaluation, we use $\dd V = \dd z\dd y\dd x$ (or one of the other five orders of integration). Recall how, in this order of integration, the bounds on $y$ are ``curve to curve'' and the bounds on $x$ are ``point to point'': these bounds describe a region $R$ in the $x$-$y$ plane. We could describe $R$ using polar coordinates as done in \autoref{sec:double_int_polar}. In that section, we saw how we used $\dd A = r\dd r\dd\theta$ instead of $\dd A = \dd y\dd x$. 
 
-Considering the above thoughts, we have $dV = dz\bigl(r\,dr\,d\theta\bigr) = r\,dz\,dr\,d\theta$. We set bounds on $z$ as ``surface to surface'' as done in the previous section, and then use ``curve to curve'' and ``point to point'' bounds on $r$ and $\theta$, respectively. Finally, using the identities given above, we change the integrand $h(x,y,z)$ to $h(r,\theta,z)$.
+Considering the above thoughts, we have $\dd V = \dd z\bigl(r\dd r\dd\theta\bigr) = r\dd z\dd r\dd\theta$. We set bounds on $z$ as ``surface to surface'' as done in the previous section, and then use ``curve to curve'' and ``point to point'' bounds on $r$ and $\theta$, respectively. Finally, using the identities given above, we change the integrand $h(x,y,z)$ to $h(r,\theta,z)$.
 
 This process should sound plausible; the following theorem states it is truly a way of evaluating a triple integral.
 
@@ -72,7 +72,7 @@ This process should sound plausible; the following theorem states it is truly a 
 %
 Let $w=h(r,\theta,z)$ be a continuous function on a closed, bounded region $D$ in space, bounded in cylindrical coordinates by $\alpha \leq \theta \leq \beta$, $g_1(\theta)\leq r \leq g_2(\theta)$ and $f_1(r,\theta) \leq z \leq f_2(r,\theta)$. Then \index{integration!with cylindrical coordinates} 
 \[
-\iiint_D h(r,\theta,z)\ dV = \int_\alpha^\beta\int_{g_1(\theta)}^{g_2(\theta)}\int_{f_1(r,\theta)}^{f_2(r,\theta)}h(r,\theta,z) r\,dz\,dr\,d\theta.
+\iiint_D h(r,\theta,z)\dd V = \int_\alpha^\beta\int_{g_1(\theta)}^{g_2(\theta)}\int_{f_1(r,\theta)}^{f_2(r,\theta)}h(r,\theta,z) r\dd z\dd r\dd\theta.
 \]
 \end{theorem}
 
@@ -94,8 +94,8 @@ To describe this solid with the bounds of a triple integral, we bound $z$ with $
 
 Using \autoref{def:mass_3d} and \autoref{thm:triple_int_cylindrical}, we have the mass of the solid is
 \begin{align*}
-M=\iiint_D\delta(x,y,z)\ dV &= \int_0^{2\pi}\int_0^2\int_0^{\sqrt{4-r^2}+3}\bigl(r^2+z+1\bigr)r\,dz\,dr\,d\theta \\
-&= \int_0^{2\pi}\int_0^2\bigl((r^3+4r)\sqrt{4-r^2}+\frac52r^3+\frac{19}2r\bigr)\,dr\,d\theta \\
+M=\iiint_D\delta(x,y,z)\dd V &= \int_0^{2\pi}\int_0^2\int_0^{\sqrt{4-r^2}+3}\bigl(r^2+z+1\bigr)r\dd z\dd r\dd\theta \\
+&= \int_0^{2\pi}\int_0^2\bigl((r^3+4r)\sqrt{4-r^2}+\frac52r^3+\frac{19}2r\bigr)\dd r\dd\theta \\
 &= \frac{1318\pi}{15} \approx 276.04\text{ gm},
 \end{align*}
 where we leave the details of the remaining double integral to the reader.
@@ -118,19 +118,19 @@ We convert the equation of the plane to use cylindrical coordinates: $z= 1-r\cos
 
 Since density is constant, we set $\delta = 1$ and finding the mass is equivalent to finding the volume of the solid. We set up the triple integral to compute this but do not evaluate it; we leave it to the reader to confirm it evaluates to the same result found in \autoref{ex_doublepol4}.
 \[
-M = \iiint_D\delta \, dV = \int_0^{\pi}\int_0^{\cos(3\theta)}\int_0^{1-r\cos\theta+0.1r\sin\theta} r\,dz\,dr\,d\theta \approx 0.785.
+M = \iiint_D\delta \dd V = \int_0^{\pi}\int_0^{\cos(3\theta)}\int_0^{1-r\cos\theta+0.1r\sin\theta} r\dd z\dd r\dd\theta \approx 0.785.
 \]
 
 From \autoref{def:mass_3d} we set up the triple integrals to compute the moments about the three coordinate planes. The computation of each is left to the reader (using technology is recommended):
 \begin{align*}
-M_{yz} = \iiint_D x\,dV &= \int_0^{\pi}\int_0^{\cos(3\theta)}\int_0^{1-r\cos\theta+0.1r\sin\theta} (r\cos\theta) r\,dz\,dr\,d\theta\\
+M_{yz} = \iiint_D x\dd V &= \int_0^{\pi}\int_0^{\cos(3\theta)}\int_0^{1-r\cos\theta+0.1r\sin\theta} (r\cos\theta) r\dd z\dd r\dd\theta\\
 &= -0.147.
 \\
 %\end{align*}
 %\begin{align*}
-M_{xz} = \iiint_D y\,dV &= \int_0^{\pi}\int_0^{\cos(3\theta)}\int_0^{1-r\cos\theta+0.1r\sin\theta} (r\sin\theta) r\,dz\,dr\,d\theta\\
+M_{xz} = \iiint_D y\dd V &= \int_0^{\pi}\int_0^{\cos(3\theta)}\int_0^{1-r\cos\theta+0.1r\sin\theta} (r\sin\theta) r\dd z\dd r\dd\theta\\
 &= 0.015.\\
-M_{xy} = \iiint_D z\,dV &= \int_0^{\pi}\int_0^{\cos(3\theta)}\int_0^{1-r\cos\theta+0.1r\sin\theta} (z) r\,dz\,dr\,d\theta\\
+M_{xy} = \iiint_D z\dd V &= \int_0^{\pi}\int_0^{\cos(3\theta)}\int_0^{1-r\cos\theta+0.1r\sin\theta} (z) r\dd z\dd r\dd\theta\\
  &= 0.467.
 \end{align*}
 The center of mass %, in rectangular coordinates,  
@@ -238,17 +238,18 @@ Considering \autoref{fig:sphericalwedge}, we can make a small ``spherical wedge'
 
 Given a region $D$ in space, we can approximate the volume of $D$ with many such wedges. As the size of each of $\Delta\rho$, $\Delta\theta$ and $\Delta\varphi$ goes to zero, the number of wedges increases to infinity and the volume of $D$ is more accurately approximated, giving
 \[
-dV = d\rho\ \times\ \rho\ d\varphi\ \times\ \rho\sin(\varphi)d\theta = \rho^2\sin(\varphi)\ d\rho\ d\theta\ d\varphi.
+\dd V = \dd\rho\ \times\ \rho\dd\varphi\ \times\ \rho\sin(\varphi)\dd\theta
+=\rho^2\sin(\varphi)\dd\rho\dd\theta\dd\varphi.
 \]
 
-Again, this development of $dV$ should sound reasonable, and the following theorem states it is the appropriate manner by which triple integrals are to be evaluated in spherical coordinates.
+Again, this development of $\dd V$ should sound reasonable, and the following theorem states it is the appropriate manner by which triple integrals are to be evaluated in spherical coordinates.
 
-\mnote[3\baselineskip]{\textbf{Note:} It is often most intuitive to evaluate the triple integral in \autoref{thm:triple_int_spherical} by integrating with respect to $\rho$ first; it often does not matter whether we next integrate with respect to $\theta$ or $\varphi$. Different texts present different standard orders, some preferring $d\varphi\ d\theta$ instead of $d\theta\ d\varphi$. As the bounds for these variables are usually constants in practice, it generally is a matter of preference.}
+\mnote[3\baselineskip]{\textbf{Note:} It is often most intuitive to evaluate the triple integral in \autoref{thm:triple_int_spherical} by integrating with respect to $\rho$ first; it often does not matter whether we next integrate with respect to $\theta$ or $\varphi$. Different texts present different standard orders, some preferring $\dd\varphi\dd\theta$ instead of $\dd\theta\dd\varphi$. As the bounds for these variables are usually constants in practice, it generally is a matter of preference.}
 
 \begin{theorem}[Triple Integration in Spherical Coordinates]\label{thm:triple_int_spherical}
 Let $w=h(\rho,\theta,\varphi)$ be a continuous function on a closed, bounded region $D$ in space, bounded in spherical coordinates by $\alpha_1 \leq \varphi \leq \alpha_2$, $\beta_1 \leq \theta \leq \beta_2$ and $f_1(\theta,\varphi) \leq \rho \leq f_2(\theta,\varphi)$. Then \index{integration!with spherical coordinates}
 \[
-\iiint_D h(\rho,\theta,\varphi)\ dV = \int_{\alpha_1}^{\alpha_2}\int_{\beta_1}^{\beta_2}\int_{f_1(\theta,\varphi)}^{f_2(\theta,\varphi)} h(\rho,\theta,\varphi) \rho^2\sin(\varphi)\ d\rho\ d\theta\ d\varphi.
+\iiint_D h(\rho,\theta,\varphi)\dd V = \int_{\alpha_1}^{\alpha_2}\int_{\beta_1}^{\beta_2}\int_{f_1(\theta,\varphi)}^{f_2(\theta,\varphi)} h(\rho,\theta,\varphi) \rho^2\sin(\varphi)\dd\rho\dd\theta\dd\varphi.
 \]
 \end{theorem}
 
@@ -257,11 +258,11 @@ Let $D$ be the region in space bounded by the sphere, centered at the origin, of
 \solution
 The sphere of radius $r$, centered at the origin, has equation $\rho = r$. To obtain the full sphere, the bounds on $\theta$ and $\varphi$ are $0\leq \theta \leq 2\pi$ and $0 \leq \varphi \leq \pi$. This leads us to:
 \begin{align*}
-V &= \iiint_D\ dV\\
-	&= \int_0^{\pi}\int_0^{2\pi}\int_0^r\bigl(\rho^2\sin(\varphi)\bigr)\ d\rho\ d\theta\ d\varphi\\
-	&= \int_0^\pi\int_0^{2\pi}\left(\frac13\rho^3\sin(\varphi)\Big|_0^r\right)\ d\theta\ d\varphi\\
-	&= \int_0^\pi\int_0^{2\pi} \left(\frac13r^3\sin(\varphi)\right)\ d\theta\ d\varphi\\
-	&= \int_0^\pi \left(\frac{2\pi}3r^3\sin(\varphi)\right)\ d\varphi\\
+V &= \iiint_D\dd V\\
+	&= \int_0^{\pi}\int_0^{2\pi}\int_0^r\bigl(\rho^2\sin(\varphi)\bigr)\dd\rho\dd\theta\dd\varphi\\
+	&= \int_0^\pi\int_0^{2\pi}\left(\frac13\rho^3\sin(\varphi)\Big|_0^r\right)\dd\theta\dd\varphi\\
+	&= \int_0^\pi\int_0^{2\pi} \left(\frac13r^3\sin(\varphi)\right)\dd\theta\dd\varphi\\
+	&= \int_0^\pi \left(\frac{2\pi}3r^3\sin(\varphi)\right)\dd\varphi\\
 	&= \left.\left(-\frac{2\pi}3r^3\cos(\varphi)\right)\right|_0^{\pi}\\
 	&= \frac{4\pi}3r^3,
 \end{align*}
@@ -286,38 +287,38 @@ While the surfaces describing the solid are given in the statement of the proble
 
 The mass of the solid:
 \begin{align*}
-M &= \iiint_D\ dm = \iiint_D\ dV\\
-	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4\bigl(\rho^2\sin(\varphi)\bigr)\ d\rho\ d\theta\ d\varphi\\
+M &= \iiint_D\dd m = \iiint_D\dd V\\
+	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4\bigl(\rho^2\sin(\varphi)\bigr)\dd\rho\dd\theta\dd\varphi\\
 	&= \frac{64}3\bigl(2-\sqrt{3}\bigr)\pi \approx 17.958.
 \end{align*}
 
 To compute $M_{yz}$, the integrand is $x$; using \autoref{idea:convert_coords}, we have $x = \rho\sin\varphi\cos\theta$. This gives:
 \begin{align*}
-M_{yz} &= \iiint_D x\ dm \\
-	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4 \bigl((\rho\sin(\varphi)\cos(\theta))\rho^2\sin(\varphi)\bigr) \ d\rho\ d\theta\ d\varphi\\
-	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4 \bigl(\rho^3\sin^2(\varphi)\cos(\theta)\bigr) \ d\rho\ d\theta\ d\varphi\\
+M_{yz} &= \iiint_D x\dd m \\
+	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4 \bigl((\rho\sin(\varphi)\cos(\theta))\rho^2\sin(\varphi)\bigr) \dd\rho\dd\theta\dd\varphi\\
+	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4 \bigl(\rho^3\sin^2(\varphi)\cos(\theta)\bigr) \dd\rho\dd\theta\dd\varphi\\
 	&=0,
 \end{align*}
 which we expected as we expect $\overline{x} = 0$.
 
 To compute $M_{xz}$, the integrand is $y$; using \autoref{idea:convert_coords}, we have $y = \rho\sin\varphi\sin\theta$. This gives:
 \begin{align*}
-M_{xz} &= \iiint_D y\ dm \\
-	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4 \bigl((\rho\sin(\varphi)\sin(\theta))\rho^2\sin(\varphi)\bigr) \ d\rho\ d\theta\ d\varphi\\
-	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4 \bigl(\rho^3\sin^2(\varphi)\sin(\theta)\bigr) \ d\rho\ d\theta\ d\varphi\\
+M_{xz} &= \iiint_D y\dd m \\
+	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4 \bigl((\rho\sin(\varphi)\sin(\theta))\rho^2\sin(\varphi)\bigr) \dd\rho\dd\theta\dd\varphi\\
+	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4 \bigl(\rho^3\sin^2(\varphi)\sin(\theta)\bigr) \dd\rho\dd\theta\dd\varphi\\
 	&=0,
 \end{align*}
 which we also expected as we expect $\overline{y} = 0$.
 
 To compute $M_{xy}$, the integrand is $z$; using \autoref{idea:convert_coords}, we have $z = \rho\cos\varphi$. This gives:
 \begin{align*}
-M_{xy} &= \iiint_D z\ dm \\
-	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4 \bigl((\rho\cos(\varphi))\rho^2\sin(\varphi)\bigr) \ d\rho\ d\theta\ d\varphi\\
-	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4 \bigl(\rho^3\cos(\varphi)\sin(\varphi)\bigr) \ d\rho\ d\theta\ d\varphi\\
+M_{xy} &= \iiint_D z\dd m \\
+	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4 \bigl((\rho\cos(\varphi))\rho^2\sin(\varphi)\bigr) \dd\rho\dd\theta\dd\varphi\\
+	&= \int_0^{\pi/6}\int_0^{2\pi}\int_0^4 \bigl(\rho^3\cos(\varphi)\sin(\varphi)\bigr) \dd\rho\dd\theta\dd\varphi\\
 	&=16\pi \approx 50.266.
 \end{align*}
 
-Thus the center of mass is $(0,0,M_{xy}/M) \approx (0,0,2.799)$, as indicated in \autoref{fig:spherical3}.
+Thus the center of mass is $(0,0,M_{xy}/M)=(0,0,3(2+\sqrt3)/4) \approx (0,0,2.799)$, as indicated in \autoref{fig:spherical3}.
 \end{example}
 
 \input{text/13_Jacobian}

@@ -36,8 +36,8 @@ Let $z=f(x,y)$ be differentiable at $(x_0,y_0)$, and let $\vec u =\bracket{u_1,u
 We will use \autoref{thm:multi_chain}, with $x=g(t)=u_1t+x_0$ and $y=h(t)=u_2t+y_0$.  This means that
 \begin{align*}
 D_{\vec u\,}f(x_0,y_0)
-&=\frac{df}{dt}(x_0,y_0)\\
-&=f_x(x_0,y_0)\frac{dx}{dt}(0)+f_y(x_0,y_0)\frac{dy}{dt}(0)\\
+&=\frac{\dd f}{\dd t}(x_0,y_0)\\
+&=f_x(x_0,y_0)\frac{\dd x}{\dd t}(0)+f_y(x_0,y_0)\frac{\dd y}{\dd t}(0)\\
 &=f_x(x_0,y_0)u_1 + f_y(x_0,y_0)u_2.\qedhere
 \end{align*}
 \end{proof}
@@ -93,7 +93,9 @@ Let $z=f(x,y)$ be differentiable on an open set $S$ that contains the point $(x_
 \mnote{\textbf{Note:} The symbol ``$\nabla$'' is named ``nabla,'' derived from the Greek name of a Jewish harp. Oddly enough, in mathematics the expression $\nabla f$ is pronounced ``del $f$.''}
 
 To simplify notation, we often express the gradient as $\nabla f =\bracket{f_x, f_y}$. It is often useful to think of the gradient $\nabla$ as an operator:\index{del operator}
-\[\nabla=\bracket{\frac\partial{\partial x},\frac\partial{\partial y}}.\]
+\[
+\nabla=\bracket{\frac\partial{\partial x},\frac\partial{\partial y}}.
+\]
 The operator $\nabla$ only has any meaning when it operates on a function; it doesn't mean anything by itself.  But this notation does help us to apply it correctly to find the gradient. The gradient allows us to compute directional derivatives in terms of a dot product.
 
 \begin{keyidea}[The Gradient and Directional Derivatives]\label{idea:gradient_direct}
@@ -126,9 +128,9 @@ This result is rather amazing. Once again imagine standing in a rolling meadow a
 
 Recall that a level curve is defined as a curve in the $x$-$y$ plane along which the $z$-values of a function do not change. Let a surface $z=f(x,y)$ be given, and let's represent one such level curve as a vector-valued function, $\vrt =\bracket{x(t), y(t)}$. As the output of $f$ does not change along this curve, $f\bigl(x(t),y(t)\bigr) = c$ for all $t$, for some constant $c$.
 
-Since $f$ is constant for all $t$, $\frac{df}{dt} = 0$. By the Multivariable Chain Rule, we also know
+Since $f$ is constant for all $t$, $\frac{\dd f}{\dd t} = 0$. By the Multivariable Chain Rule, we also know
 \begin{align*}
-\frac{df}{dt} &= f_x(x,y)x\primeskip'(t) + f_y(x,y)y\primeskip'(t)\\
+\frac{\dd f}{\dd t} &= f_x(x,y)x\primeskip'(t) + f_y(x,y)y\primeskip'(t)\\
 	&=\bracket{f_x(x,y),f_y(x,y)}\cdot\bracket{x\primeskip'(t),y\primeskip'(t)}\\
 						&= \nabla f \cdot \vrp(t)\\
 						&=0.
@@ -212,22 +214,22 @@ Consider the surface given by $f(x,y)= 20-x^2-2y^2$. Water is poured on the surf
 \solution
 Let $\vrt =\bracket{x(t), y(t)}$ be the vector-valued function describing the path of the water in the $x$-$y$ plane; we seek $x(t)$ and $y(t)$. We know that water will always flow downhill in the steepest direction; therefore, at any point on its path, it will be moving in the direction of $-\nabla f$. (We ignore the physical effects of momentum on the water.) Thus $\vrp(t)$ will be parallel to $\nabla f$, and there is some constant $c$ such that $c\nabla f = \vrp(t) =\bracket{x\primeskip'(t), y\primeskip'(t)}$. 
 
-We find $\nabla f =\bracket{-2x, -4y}$ and write $x\primeskip'(t)$ as $\frac{dx}{dt}$ and $y\primeskip'(t)$ as $\frac{dy}{dt}$. Then 
+We find $\nabla f =\bracket{-2x, -4y}$ and write $x\primeskip'(t)$ as $\frac{\dd x}{\dd t}$ and $y\primeskip'(t)$ as $\frac{\dd y}{\dd t}$. Then 
 \begin{align*}
 c\nabla f &=\bracket{x\primeskip'(t), y\primeskip'(t)}\\
-\bracket{-2cx, -4cy}& =\bracket{\frac{dx}{dt}, \frac{dy}{dt}}.
+\bracket{-2cx, -4cy}& =\bracket{\frac{\dd x}{\dd t}, \frac{\dd y}{\dd t}}.
 \end{align*}
 This implies
 \begin{gather*}
--2cx = \frac{dx}{dt} \quad \text{and} \quad  -4cy =\frac{dy}{dt}, \text{ i.e.,}\\
-c = -\frac{1}{2x}\frac{dx}{dt} \quad \text{and} \quad  c =-\frac{1}{4y}\frac{dy}{dt}.
+-2cx = \frac{\dd x}{\dd t} \quad \text{and} \quad  -4cy =\frac{\dd y}{\dd t}, \text{ i.e.,}\\
+c = -\frac{1}{2x}\frac{\dd x}{\dd t} \quad \text{and} \quad  c =-\frac{1}{4y}\frac{\dd y}{\dd t}.
 \end{gather*}
 As $c$ equals both expressions, we have
-\[\frac{1}{2x}\frac{dx}{dt} =\frac{1}{4y}\frac{dy}{dt}.\]
-To find an explicit relationship between $x$ and $y$, we can integrate both sides with respect to $t$. Recall from our study of differentials that $\ds \frac{dx}{dt}dt = dx$. Thus:
+\[\frac{1}{2x}\frac{\dd x}{\dd t} =\frac{1}{4y}\frac{\dd y}{\dd t}.\]
+To find an explicit relationship between $x$ and $y$, we can integrate both sides with respect to $t$. Recall from our study of differentials that $\ds \frac{\dd x}{\dd t}\dd t = \dd x$. Thus:
 \begin{align*}
-\int \frac{1}{2x}\frac{dx}{dt}\ dt &=\int \frac{1}{4y}\frac{dy}{dt}\ dt \\
-\int \frac{1}{2x}\ dx &=\int\frac{1}{4y}\ dy \\
+\int \frac{1}{2x}\frac{\dd x}{\dd t}\dd t &=\int \frac{1}{4y}\frac{\dd y}{\dd t}\dd t \\
+\int \frac{1}{2x}\dd x &=\int\frac{1}{4y}\dd y \\
 \frac 12\ln\abs x &= \frac14\ln\abs y +C_1\\
 2\ln\abs x &= \ln\abs y +C_1\\
 \ln \abs{x^2} &= \ln\abs y+C_1% &= y,

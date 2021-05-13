@@ -1,4 +1,5 @@
 1. [exercises/02_06_exset_04.tex line 1](../exercises/02_06_exset_04.tex#L1): todo Tim check line break of directions in 2.6
+1. [exercises/05_02_exset_02.tex line 27](../exercises/05_02_exset_02.tex#L27): todo Tim check counters on #11-14
 1. [exercises/08_01_exset_03.tex line 19](../exercises/08_01_exset_03.tex#L19): todo Tim 9.1#25 was mentioned 5 pages prior, just after Theorem 9.1.5
 1. [exercises/09_02_exset_05.tex line 1](../exercises/09_02_exset_05.tex#L1): todo Tim check the column break on Exercises 10.2 page 2
 1. [exercises/09_04_exset_02.tex line 3](../exercises/09_04_exset_02.tex#L3): todo Tim this is the same as Example 10.4.6#4.
@@ -12,14 +13,17 @@
 1. [figures/figtrip5d_3D.asy line 37](../figures/figtrip5d_3D.asy#L37): // todo find a better way to shade this in
 1. [figures/figtrip5e_3D.asy line 26](../figures/figtrip5e_3D.asy#L26): // todo find a better way to shade this in
 1. [headers/APEX_format.tex line 47](../headers/APEX_format.tex#L47): \usepackage{amssymb} % todo ? https://tex.stackexchange.com/a/3000/107497 recommends dropping amssymb in favor of unicode-math
-1. [headers/apex_style.sty.ltxml line 118](../headers/apex_style.sty.ltxml#L118): DefMacro('\psBill'); # todo
+1. [headers/apex_style.sty.ltxml line 152](../headers/apex_style.sty.ltxml#L152): DefMacro('\psBill'); # todo
+1. [latexmlAlts.tex line 54](../latexmlAlts.tex#L54): todo tikz matrices see https://github.com/brucemiller/LaTeXML/issues/794
+1. [standalone.tex line 84](../standalone.tex#L84): todo tikz matrices see https://github.com/brucemiller/LaTeXML/issues/794
 1. [text/02_Derivative.tex line 541](../text/02_Derivative.tex#L541): todo Tim : iframe ?
 1. [text/03_Curve_Sketching.tex line 235](../text/03_Curve_Sketching.tex#L235): todo Tim Fig 3.5.5 (sin x according to \textit{Mathematica}) take a while to render.  could we use tikz to fake it?
 1. [text/03_Mean_Value_Theorem.tex line 133](../text/03_Mean_Value_Theorem.tex#L133): todo Tim does the next example need an introduction?
 1. [text/04_NewtonsMethod.tex line 265](../text/04_NewtonsMethod.tex#L265): todo Tim include the Fast Inverse Square Root question?
 1. [text/05_Antiderivatives.tex line 14](../text/05_Antiderivatives.tex#L14): todo Tim should involve an interval in some way
+1. [text/05_Antiderivatives.tex line 161](../text/05_Antiderivatives.tex#L161): todo Tim check T3 page break
 1. [text/05_Numerical_Integration.tex line 62](../text/05_Numerical_Integration.tex#L62): todo Tim maybe use \pi/4 to \pi/2 in (b) instead?
-1. [text/06_Hyperbolic_Functions.tex line 381](../text/06_Hyperbolic_Functions.tex#L381): todo Tim once we have an example of finding an inverse in text/07_Inverse_Functions.tex
+1. [text/06_Hyperbolic_Functions.tex line 384](../text/06_Hyperbolic_Functions.tex#L384): todo Tim once we have an example of finding an inverse in text/07_Inverse_Functions.tex
 1. [text/06_LHopitals_Rule.tex line 219](../text/06_LHopitals_Rule.tex#L219): todo Tim do we want to add a hierarchy of function growth to the end of LH section?
 1. [text/07_Arc_Length.tex line 198](../text/07_Arc_Length.tex#L198): todo Tim should this be 3D at all?
 1. [text/07_Arc_Length.tex line 225](../text/07_Arc_Length.tex#L225): todo Tim does this (and prev KI) only need f' continuous on (a,b)?
@@ -47,4 +51,4 @@
 1. [text/14_Line_Integral_Vector_Fields.tex line 274](../text/14_Line_Integral_Vector_Fields.tex#L274): todo Tim maybe separate these into four files for the prc?
 1. [text/14_Parametrized_Surfaces.tex line 6](../text/14_Parametrized_Surfaces.tex#L6): todo Tim surely we can find a better serif S ?
 1. [text/14_Surface_Integrals.tex line 20](../text/14_Surface_Integrals.tex#L20): todo Tim should def:surface_integral be equal to something?
-1. [text/Inside_Cover_Of_The_Text_Material_Complete.tex line 50](../text/Inside_Cover_Of_The_Text_Material_Complete.tex#L50): todo Tim - Hartman includes \int\ln x dx after \int e^x dx.  Do we want to?
+1. [text/Inside_Cover_Of_The_Text_Material_Complete.tex line 63](../text/Inside_Cover_Of_The_Text_Material_Complete.tex#L63): todo Tim - Hartman includes \int\ln x \dd x after \int e^x \dd x.  Do we want to?

@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+#!/usr/bin/python3
 
 '''
     pdfsizeopt must use Python 2 because it uses old style print statements.
@@ -24,8 +24,9 @@ import subprocess
 import sys
 import time
 
-ignorelist = frozenset(['Georg','LHR','NonCommercial',
-    'myplot','num','pos','proj',
+ignorelist = frozenset(['Bernhard',"Darboux's",
+    'Friedrich',"Fubini's",'Georg','LHR',"Rolle's",
+    'myplot','num','pos','proj','sinh','sqrt','tanh',
     'xlabel','xmajorgrids','xmax','xmin','xscale','xshift','xtick','xticklabels',
     'ylabel','ymajorgrids','ymax','ymin','yscale','yshift','ytick','yticklabels',
     'ztick',
@@ -34,7 +35,7 @@ ignorelist = frozenset(['Georg','LHR','NonCommercial',
 loginfo = []
 
 @atexit.register
-def printlogino():
+def printloginfo():
     if loginfo:
         print('\n'.join(loginfo),'')
 
@@ -73,8 +74,6 @@ parser.add_argument('--spelling',action='store_true',help='Run spellcheck')
 parser.add_argument('--justprint',action='store_true',
                     help='Print  the  commands  that  would  be executed, but do not execute them')
 
-#parser.add_argument('--misspell',action='store_true',help='Write misspelled words to misspell.txt')
-
 group = parser.add_mutually_exclusive_group()
 addboolarg('blackwhite','Print static graphics in black and white (default is color).',parser=group)
 addboolarg('static','Print static color graphics (default is interactive).',parser=group)
@@ -83,7 +82,7 @@ if len(sys.argv)==1:
     parser.print_help()
     quit()
 
-for dir in ('ApexPDFs','logs','prc','todo','web'):
+for dir in ('ApexPDFs','ApexPDFs/bigpdfs','logs','prc','todo','web'):
     try:
         os.mkdir(dir)
     except OSError:
@@ -128,23 +127,24 @@ def makefigs():
                 # -user apexbw=true runs that command in apexconfig.asy
                 # using -bw instead causes the figure to be blacked out (?!)
                 #'BW.pdf': ['-noprc','-user','apexbw=true','-outname',asyfile+'BW','-outformat','pdf'],
-                'BW.png': ['-noprc','-user','apexbw=true','-outname',asyfile+'BW','-outformat','png'],#['-render','4'],
-                '.png':   ['-noprc','-outformat','png'],#['-render','4'],
+                'BW.png': ['-noprc','-user','apexbw=true','-outname',asyfile+'BW','-outformat','png','-render','4'],
+                '.png':   ['-noprc','-outformat','png','-render','4'],
+                '.html': ['-outformat','html']
             # for some reason, -render kills the png output
             }
-            asyexe = '/usr/local/bin/asy'
+            asyexe = 'asy' #'/usr/local/bin/asy'
             # version 2.44 has problems with the png
             # * it doesn't look as nice
             # * -render 4 causes the compilation to fail (https://github.com/vectorgraphics/asymptote/issues/96)
             # * the z-index is based on when they appear in the file, not the camera view
+            # fixed by version 2.65?
             for ext,opt in extops.items():
+                shouldrun = True
                 try:
-                    if os.path.getmtime(asyfile+ext) <= os.path.getmtime(asyfile+'.asy'):
-                        if args.justprint:
-                            print('run:',[asyexe]+opt+[asyfile])
-                        else:
-                            subprocess.check_call([asyexe]+opt+[asyfile])
+                    shouldrun = os.path.getmtime(asyfile+ext) <= os.path.getmtime(asyfile+'.asy')
                 except OSError:
+                    pass # file not found. leave shouldrun as True
+                if shouldrun:
                     if args.justprint:
                         print('run:',[asyexe]+opt+[asyfile])
                     else:
@@ -325,7 +325,7 @@ def getlatexmlbin(exe):
     
 def getlatexmlcommandline(base='Calculus'):
     ret = [getlatexmlbin('latexml'),
-           #'--quiet',#'--verbose','--verbose',#
+            '--quiet','--quiet',#'--verbose','--verbose',##
            '--destination='+base+'.xml',
            '--nocomments',
            base]

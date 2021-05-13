@@ -44,9 +44,9 @@ We use this definition to find the \textbf{force} exerted on a horizontal sheet 
 
 \mtable[-.5in]{A cylindrical tank in \autoref{ex_fluid1}.}{fig:fluid1a}{\begin{tikzpicture}[x=.3cm,y=.3cm,>=stealth]
 \begin{scope}[xscale=2]
- \ifbool{latexml}{\draw[thick,fill=\coloronefill!60]}{\draw[thick,left color={\coloronefill},right color={\coloronefill!20}]}
+ \draw[thick,left color={\coloronefill},right color={\coloronefill!20}]
  (-2,10) -- (-2,0) arc (180:360:2) -- (2,10);
- \ifbool{latexml}{\draw[thick,fill=\coloronefill!65]}{\draw[thick,left color={\coloronefill!30},right color={\coloronefill}]}
+ \draw[thick,left color={\coloronefill!30},right color={\coloronefill}]
  (0,10)circle(2);
 \draw [thick] (0,12) circle (2);
 \draw [thick](-2,12)--(-2,10) (2,12)--(2,10);
@@ -92,10 +92,10 @@ We use this definition to find the \textbf{force} exerted on a horizontal sheet 
                   (-2.5,5) node (DD) {};
    \end{scope}
   \end{scope}
-  \ifbool{latexml}{\draw[thick,fill=\coloronefill!60]}{\draw[thick,left color={\coloronefill},right color={\coloronefill!20}]}
+  \draw[thick,left color={\coloronefill},right color={\coloronefill!20}]
   (AAA.center) -- (A.center)-- node [pos=.5,rotate=-15,below] {\scriptsize 5 ft} (B.center)
    --node [pos=.5,rotate=45,below] {\scriptsize 5 ft}(C.center)--(CCC.center);
-  \ifbool{latexml}{\draw[thick,fill=\coloronefill!60]}{\draw[thick,right color={\coloronefill},left color={\coloronefill!20}]}
+  \draw[thick,right color={\coloronefill},left color={\coloronefill!20}]
    (AAA.center) -- (BBB.center) -- (CCC.center)--(DDD.center) -- cycle;
   \draw [thick] (AA.center) -- (BB.center) -- (CC.center)--(DD.center) -- cycle
    (AA.center) -- (AAA.center)
@@ -176,9 +176,9 @@ Let a vertically oriented plate be submerged in a fluid with weight-density $w$ 
 \index{fluid pressure/force}\index{integration!fluid force}
 \begin{enumerate}
 	\item	If $y=0$ corresponds to the surface of the fluid, then the force exerted on the plate by the fluid is
-	\[F=\int_a^b w\cdot(-y)\cdot\ell(y)\ dy.\]
+	\[F=\int_a^b w\cdot(-y)\cdot\ell(y)\dd y.\]
 	\item	In general, let $d(y)$ represent the distance between the surface of the fluid and the plate at $y$. Then the force exerted on the plate by the fluid is 
-	\[F=\int_a^b w\cdot d(y)\cdot\ell(y)\ dy.\]
+	\[F=\int_a^b w\cdot d(y)\cdot\ell(y)\dd y.\]
 \end{enumerate}
 \end{keyidea}
 
@@ -226,7 +226,7 @@ xlabel={\scriptsize$x$},ylabel={\scriptsize$y$},xlabel style=right,ylabel style=
 	
 The total fluid force is then:
 \begin{align*}
-	F 	&=	\int_{-10}^{-6} 62.4(-y)(y+10)\ dy \\
+	F 	&=	\int_{-10}^{-6} 62.4(-y)(y+10)\dd y \\
 		&=	62.4\cdot \frac{176}{3} \approx	3660.8\text{ lb}.
 \end{align*}	
 
@@ -255,7 +255,7 @@ xlabel={\scriptsize$x$},ylabel={\scriptsize$y$},xlabel style=right,ylabel style=
 
 	As the surface of the water is 10 ft above the base of the plate, we have that the surface of the water is at $y=10$. Thus the depth function is the distance between $y=10$ and $y$; $d(y) = 10-y$. We compute the total fluid force as:
 	\begin{align*}
-	F	&=\int_0^4 62.4(10-y)(y)\ dy \\
+	F	&=\int_0^4 62.4(10-y)(y)\dd y \\
 		&\approx 3660.8\text{ lb}.
 	\end{align*}
 \end{enumerate}
@@ -285,8 +285,8 @@ The car door, as a rectangle, is drawn in \autoref{fig:fluid3}. Its length is $1
 \end{tikzpicture}}
 %
 \begin{align*}
-	F &=	\int_{-2.25}^0 62.4(-y)10/3\ dy \\
-	&= 	\int_{-2.25}^0 -208y\ dy\\
+	F &=	\int_{-2.25}^0 62.4(-y)10/3\dd y \\
+	&= 	\int_{-2.25}^0 -208y\dd y\\
 	&= -104y^2\Big|_{-2.25}^0 \\
 	&=	526.5 \text{ lb.}
 \end{align*}
@@ -324,11 +324,11 @@ We place the center of the porthole at the origin, meaning the surface of the wa
 The equation of a circle with a radius of 1.5 is $x^2+y^2=2.25$; solving for $x$ we have $x=\pm \sqrt{2.25-y^2}$, where the positive square root corresponds to the right side of the circle and the negative square root corresponds to the left side of the circle. Thus the length function at depth $y$ is $\ell(y) = 2\sqrt{2.25-y^2}$. Integrating on $[-1.5,1.5]$ we have:
 \begin{align*}
 	F
-	&= 62.4\int_{-1.5}^{1.5} 2(50-y)\sqrt{2.25-y^2}\ dy \\
-	&= 62.4\int_{-1.5}^{1.5} \bigl(100\sqrt{2.25-y^2} - 2y\sqrt{2.25-y^2}\bigr)\ dy \\
-	&= 6240\int_{-1.5}^{1.5} \bigl(\sqrt{2.25-y^2}\bigr)\ dy - 62.4\int_{-1.5}^{1.5} \bigl(2y\sqrt{2.25-y^2}\bigr)\ dy.
+	&= 62.4\int_{-1.5}^{1.5} 2(50-y)\sqrt{2.25-y^2}\dd y \\
+	&= 62.4\int_{-1.5}^{1.5} \bigl(100\sqrt{2.25-y^2} - 2y\sqrt{2.25-y^2}\bigr)\dd y \\
+	&= 6240\int_{-1.5}^{1.5} \bigl(\sqrt{2.25-y^2}\bigr)\dd y - 62.4\int_{-1.5}^{1.5} \bigl(2y\sqrt{2.25-y^2}\bigr)\dd y.
 \end{align*}			
-The second integral above can be evaluated using Substitution. Let $u=2.25-y^2$ with $du = -2y\,dy$. The new bounds are: $u(-1.5)=0$ and $u(1.5)=0$; the new integral will integrate from $u=0$ to $u=0$, hence the integral is 0.
+The second integral above can be evaluated using Substitution. Let $u=2.25-y^2$ with $\dd u = -2y\dd y$. The new bounds are: $u(-1.5)=0$ and $u(1.5)=0$; the new integral will integrate from $u=0$ to $u=0$, hence the integral is 0.
 
 The first integral above finds the area of half a circle of radius 1.5, thus the first integral evaluates to $6240\cdot\pi\cdot1.5^2/2 = 22,054$. Thus the total fluid force on a vertically oriented porthole is $22,054$ lb.
 

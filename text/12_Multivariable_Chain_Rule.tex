@@ -1,44 +1,44 @@
 \section{The Multivariable Chain Rule}\label{sec:multi_chain}
 
 The Chain Rule, as learned in \autoref{sec:chainrule}, states that
-\[\dfrac{d}{dx}\Bigl(f\bigl(g(x)\bigr)\Bigr) = \fp\bigl(g(x)\bigr)g\primeskip'(x).\]
+\[\dfrac{\dd}{\dd x}\Bigl(f\bigl(g(x)\bigr)\Bigr) = \fp\bigl(g(x)\bigr)g\primeskip'(x).\]
 If $t=g(x)$, we can express the Chain Rule as 
-\[\frac{df}{dx} = \frac{df}{dt}\frac{dt}{dx}.\]
+\[\frac{\dd f}{\dd x} = \frac{\dd f}{\dd t}\frac{\dd t}{\dd x}.\]
 In this section we extend the Chain Rule to functions of more than one variable.
 
 \begin{theorem}[Multivariable Chain Rule, Part I]\label{thm:multi_chain}
 Let $z=f(x,y)$, $x=g(t)$ and $y=h(t)$, where $f$, $g$ and $h$ are differentiable functions. Then $z = f(x,y) = f\bigl(g(t),h(t)\bigr)$ is a function of $t$, and 
 \index{derivative!Chain Rule}\index{Chain Rule!multivariable}
 \[
-	\frac{dz}{dt} = \frac{df}{dt}
-	= f_x(x,y)\frac{dx}{dt}+f_y(x,y)\frac{dy}{dt}
-	= \frac{\partial f}{\partial x}\frac{dx}{dt}
-	+\frac{\partial f}{\partial y}\frac{dy}{dt}.
+	\frac{\dd z}{\dd t} = \frac{\dd f}{\dd t}
+	= f_x(x,y)\frac{\dd x}{\dd t}+f_y(x,y)\frac{\dd y}{\dd t}
+	= \frac{\partial f}{\partial x}\frac{\dd x}{\dd t}
+	+\frac{\partial f}{\partial y}\frac{\dd y}{\dd t}.
 \]
 \end{theorem}
 
 \begin{proof}
 By definition,
-\[\frac{df}{dt}(x,y)=\lim_{h\to0}\frac{f(x(t+h),y(t+h))-f(x,y)}h.\]
+\[\frac{\dd f}{\dd t}(x,y)=\lim_{h\to0}\frac{f(x(t+h),y(t+h))-f(x,y)}h.\]
 Let
 \begin{align*}
  \Delta f&=f(x(t+h),y(t+h))-f(x,y), \\
- dx&=x(t+h)-x(t),\qquad\text{and} \\
- dy&=y(t+h)-y(t).
+ \dd x&=x(t+h)-x(t),\qquad\text{and} \\
+ \dd y&=y(t+h)-y(t).
 \end{align*}
 Because $f$ is differentiable, \autoref{def:multi_differentiability} gives us functions $E_1$ and $E_2$ so that
 \begin{gather*}
- E_1 dx+E_2 dy = \Delta f-f_x(x,y)dx-f_y(x,y)dy,\\
- \lim_{(dx,dy)\to0}E_1=0,\qquad\text{and}\qquad
- \lim_{(dx,dy)\to0}E_2=0.
+ E_1\dd x+E_2\dd y = \Delta f-f_x(x,y)\dd x-f_y(x,y)\dd y,\\
+ \lim_{(\dd x,\dd y)\to0}E_1=0,\qquad\text{and}\qquad
+ \lim_{(\dd x,\dd y)\to0}E_2=0.
 \end{gather*}
 This means that
 \begin{align*}
- \frac{df}{dt}(x,y)
- &=\lim_{h\to0}\frac{f_x(x,y)dx+f_y(x,y)dy+E_1 dx+E_2 dy}h \\
- &=f_x(x,y)\lim_{h\to0}\frac{dx}h+f_y(x,y)\lim_{h\to0}\frac{dy}h \\
+ \frac{\dd f}{\dd t}(x,y)
+ &=\lim_{h\to0}\frac{f_x(x,y)\dd x+f_y(x,y)\dd y+E_1\dd x+E_2\dd y}h \\
+ &=f_x(x,y)\lim_{h\to0}\frac{\dd x}h+f_y(x,y)\lim_{h\to0}\frac{\dd y}h \\
  &\qquad\qquad{}
- +\lim_{h\to0}E_1\lim_{h\to0}\frac{dx}h+\lim_{h\to0}E_2\lim_{h\to0}\frac{dy}h \\
+ +\lim_{h\to0}E_1\lim_{h\to0}\frac{\dd x}h+\lim_{h\to0}E_2\lim_{h\to0}\frac{\dd y}h \\
  &=f_x(x,y)x'(t)+f_y(x,y)y'(t)+0x'(t)+0y'(t).\qedhere
 \end{align*}
 \end{proof}
@@ -53,25 +53,25 @@ It is good to understand what the situation of $z=f(x,y)$, $x=g(t)$ and $y=h(t)$
 3Dcoo=-1.2457355260849 0.0923926830291748 4.189182281494141,
 3Droo=130.00000264534413}{width=\marginparwidth}{figures/figmchain_intro_3D}}
 
-Consider \autoref{fig:mchain_intro} in which a surface is drawn, along with a dashed curve in the $x$-$y$ plane. Restricting $f$ to just the points on this circle gives the curve shown on the surface. The derivative $\frac{df}{dt}$ gives the instantaneous rate of change of $f$ with respect to $t$. If we consider an object traveling along this path, $\frac{df}{dt}$ gives the rate at which the object rises/falls.
+Consider \autoref{fig:mchain_intro} in which a surface is drawn, along with a dashed curve in the $x$-$y$ plane. Restricting $f$ to just the points on this circle gives the curve shown on the surface. The derivative $\frac{\dd f}{\dd t}$ gives the instantaneous rate of change of $f$ with respect to $t$. If we consider an object traveling along this path, $\frac{\dd f}{\dd t}$ gives the rate at which the object rises/falls.
 
 We now practice applying the Multivariable Chain Rule.
 
 \begin{example}[Using the Multivariable Chain Rule]\label{ex_mchain1}
-Let $z=x^2y+x$, where $x=\sin t$ and $y=e^{5t}$. Find $\ds \frac{dz}{dt}$ using the Chain Rule.
+Let $z=x^2y+x$, where $x=\sin t$ and $y=e^{5t}$. Find $\ds \frac{\dd z}{\dd t}$ using the Chain Rule.
 \solution
 Following \autoref{thm:multi_chain}, we find
-\[f_x(x,y) = 2xy+1,\qquad f_y(x,y) = x^2,\qquad \frac{dx}{dt} = \cos t,\qquad \frac{dy}{dt}= 5e^{5t}.\]
+\[f_x(x,y) = 2xy+1,\qquad f_y(x,y) = x^2,\qquad \frac{\dd x}{\dd t} = \cos t,\qquad \frac{\dd y}{\dd t}= 5e^{5t}.\]
 Applying the theorem, we have
-\[\frac{dz}{dt} = (2xy+1)\cos t+ 5x^2e^{5t}.\]
-This may look odd, as it seems that $\frac{dz}{dt}$ is a function of $x$, $y$ and $t$. Since $x$ and $y$ are functions of $t$, $\frac{dz}{dt}$ is really just a function of $t$, and we can replace $x$ with $\sin t$ and $y$ with $e^{5t}$:
-\[\frac{dz}{dt} = (2xy+1)\cos t+ 5x^2e^{5t} = (2\sin (t)e^{5t}+1)\cos t+5e^{5t}\sin^2t.\]
+\[\frac{\dd z}{\dd t} = (2xy+1)\cos t+ 5x^2e^{5t}.\]
+This may look odd, as it seems that $\frac{\dd z}{\dd t}$ is a function of $x$, $y$ and $t$. Since $x$ and $y$ are functions of $t$, $\frac{\dd z}{\dd t}$ is really just a function of $t$, and we can replace $x$ with $\sin t$ and $y$ with $e^{5t}$:
+\[\frac{\dd z}{\dd t} = (2xy+1)\cos t+ 5x^2e^{5t} = (2\sin (t)e^{5t}+1)\cos t+5e^{5t}\sin^2t.\]
 \end{example}
 
-The previous example can make us wonder: if we substituted for $x$ and $y$ at the end to show that $\frac{dz}{dt}$ is really just a function of $t$, why not substitute before differentiating, showing clearly that $z$ is a function of $t$?
+The previous example can make us wonder: if we substituted for $x$ and $y$ at the end to show that $\frac{\dd z}{\dd t}$ is really just a function of $t$, why not substitute before differentiating, showing clearly that $z$ is a function of $t$?
 
 That is, $z = x^2y+x = (\sin t)^2e^{5t}+\sin t.$ Applying the Chain and Product Rules, we have 
-\[\frac{dz}{dt} = 2\sin t\cos t\, e^{5t}+ 5\sin^2t\,e^{5t}+\cos t,\]
+\[\frac{\dd z}{\dd t} = 2\sin t\cos t\, e^{5t}+ 5\sin^2t\,e^{5t}+\cos t,\]
 which matches the result from the example.
 
 This may now make one wonder ``What's the point? If we could already find the derivative, why learn another way of finding it?'' In some cases, applying this rule makes deriving simpler, but this is hardly the power of the Chain Rule. Rather, in the case where $z=f(x,y)$, $x=g(t)$ and $y=h(t)$, the Chain Rule is extremely powerful when \emph{we do not know what $f$, $g$ and/or $h$ are}. It may be hard to believe, but often in ``the real world'' we know rate-of-change information (i.e., information about derivatives) without explicitly knowing the underlying functions. The Chain Rule allows us to combine several rates of change to find another rate of change. The Chain Rule also has theoretic use, giving us insight into the behavior of certain constructions (as we'll see in the next section).
@@ -81,12 +81,12 @@ We demonstrate this in the next example.
 % todo Find a better example 2 where we don't know the functions, but do know the values of the derivatives
 \begin{example}[Applying the Multivariable Chain Rule]\label{ex_mchain100}
 An object travels along a path on a surface. The exact path and surface are not known, but at time $t=t_0$ it is known that :
-\[\frac{\partial z}{\partial x} = 5,\qquad \frac{\partial z}{\partial y}=-2,\qquad \frac{dx}{dt}=3\qquad \text{and}\qquad \frac{dy}{dt}=7.\]
-Find $\frac{dz}{dt}$ at time $t_0$.
+\[\frac{\partial z}{\partial x} = 5,\qquad \frac{\partial z}{\partial y}=-2,\qquad \frac{\dd x}{\dd t}=3\qquad \text{and}\qquad \frac{\dd y}{\dd t}=7.\]
+Find $\frac{\dd z}{\dd t}$ at time $t_0$.
 \solution
 The Multivariable Chain Rule states that 
 \begin{align*}
-\frac{dz}{dt} &= \frac{\partial z}{\partial x}\frac{dx}{dt} + \frac{\partial z}{\partial y}\frac{dy}{dt} \\
+\frac{\dd z}{\dd t} &= \frac{\partial z}{\partial x}\frac{\dd x}{\dd t} + \frac{\partial z}{\partial y}\frac{\dd y}{\dd t} \\
 				&= 5(3)+(-2)(7) \\
 				&=1.
 \end{align*}
@@ -97,14 +97,14 @@ We next apply the Chain Rule to solve a max/min problem.
 
 % todo Find a better example 3 that doesn't obviously simplify
 \begin{example}[Applying the Multivariable Chain Rule]\label{ex_mchain2}
-Consider the surface $z=x^2+y^2-xy$, a paraboloid, on which a particle moves with $x$ and $y$ coordinates given by $x=\cos t$ and $y=\sin t$. Find $\frac{dz}{dt}$ when $t=0$, and find where the particle reaches its maximum/minimum $z$-values.
+Consider the surface $z=x^2+y^2-xy$, a paraboloid, on which a particle moves with $x$ and $y$ coordinates given by $x=\cos t$ and $y=\sin t$. Find $\frac{\dd z}{\dd t}$ when $t=0$, and find where the particle reaches its maximum/minimum $z$-values.
 \solution
 It is straightforward to compute
-\[f_x(x,y) = 2x-y,\qquad f_y(x,y) = 2y-x,\qquad \frac{dx}{dt} = -\sin t,\qquad \frac{dy}{dt} = \cos t.\]
+\[f_x(x,y) = 2x-y,\qquad f_y(x,y) = 2y-x,\qquad \frac{\dd x}{\dd t} = -\sin t,\qquad \frac{\dd y}{\dd t} = \cos t.\]
 Combining these according to the Chain Rule gives:
-\[\frac{dz}{dt} = -(2x-y)\sin t + (2y-x)\cos t.\]
+\[\frac{\dd z}{\dd t} = -(2x-y)\sin t + (2y-x)\cos t.\]
 
-When $t=0$, $x=1$ and $y=0$. Thus $\ds\frac{dz}{dt} = -(2)(0)+ (-1)(1) = -1$. When $t=0$, the particle is moving down, as shown in \autoref{fig:mchain2}. 
+When $t=0$, $x=1$ and $y=0$. Thus $\ds\frac{\dd z}{\dd t} = -(2)(0)+ (-1)(1) = -1$. When $t=0$, the particle is moving down, as shown in \autoref{fig:mchain2}. 
 
 \mtable{Plotting the path of a particle on a surface in \autoref{ex_mchain2}.}{fig:mchain2}{%
 \myincludeasythree{width=\marginparwidth,
@@ -114,9 +114,9 @@ When $t=0$, $x=1$ and $y=0$. Thus $\ds\frac{dz}{dt} = -(2)(0)+ (-1)(1) = -1$. Wh
 3Dcoo=-7.264009952545166 -8.125178337097168 66.59317779541016,
 3Droo=130.0000024373742}{width=\marginparwidth}{figures/figmchain2_3D}}
 
-To find where $z$-value is maximized/minimized on the particle's path, we set $\frac{dz}{dt}=0$ and solve for $t$:
+To find where $z$-value is maximized/minimized on the particle's path, we set $\frac{\dd z}{\dd t}=0$ and solve for $t$:
 \begin{align*}
-\frac{dz}{dt} =0
+\frac{\dd z}{\dd t} =0
 	&= -(2x-y)\sin t + (2y-x)\cos t\\
 	0&= -(2\cos t-\sin t)\sin t+(2\sin t-\cos t)\cos t\\
 	0&= \sin^2t-\cos^2t\\
@@ -201,33 +201,33 @@ When $s=0$ and $t=\pi$, we have $x=\pi^2$, $y=\pi$ and $z=0$. Thus
 
 \subsection{Implicit Differentiation}
 
-We studied finding $\frac{dy}{dx}$ when $y$ is given as an implicit function of $x$ in detail in \autoref{sec:imp_deriv}. We find here that the Multivariable Chain Rule gives a simpler method of finding $\frac{dy}{dx}$.
+We studied finding $\frac{\dd y}{\dd x}$ when $y$ is given as an implicit function of $x$ in detail in \autoref{sec:imp_deriv}. We find here that the Multivariable Chain Rule gives a simpler method of finding $\frac{\dd y}{\dd x}$.
 
-For instance, consider the implicit function $x^2y-xy^3=3.$ We learned to use the following steps to find $\frac{dy}{dx}$:
+For instance, consider the implicit function $x^2y-xy^3=3.$ We learned to use the following steps to find $\frac{\dd y}{\dd x}$:
 \begin{align}
-\frac{d}{dx}\Bigl(x^2y-xy^3\Bigr) &= \frac{d}{dx}\Bigl(3\Bigr) \notag\\
-2xy + x^2\frac{dy}{dx}-y^3-3xy^2\frac{dy}{dx} &= 0\notag \\
-\frac{dy}{dx} = -\frac{2xy-y^3}{x^2-3xy^2}.\label{eq:mchain2}
+\frac{\dd}{\dd x}\Bigl(x^2y-xy^3\Bigr) &= \frac{\dd}{\dd x}\Bigl(3\Bigr) \notag\\
+2xy + x^2\frac{\dd y}{\dd x}-y^3-3xy^2\frac{\dd y}{\dd x} &= 0\notag \\
+\frac{\dd y}{\dd x} = -\frac{2xy-y^3}{x^2-3xy^2}.\label{eq:mchain2}
 \end{align}
 
 Instead of using this method, consider $z=x^2y-xy^3$. The implicit function above describes the level curve $z=3$. Considering $x$ and $y$ as functions of $x$, the Multivariable Chain Rule states that
-\begin{equation}\frac{dz}{dx} = \frac{\partial z}{\partial x}\frac{dx}{dx}+\frac{\partial z}{\partial y}\frac{dy}{dx}.\label{eq:mchain1}\end{equation}
-Since $z$ is constant (in our example, $z=3$), $\frac{dz}{dx} = 0$. We also know $\frac{dx}{dx} = 1$. \autoeqref{eq:mchain1} becomes
+\begin{equation}\frac{\dd z}{\dd x} = \frac{\partial z}{\partial x}\frac{\dd x}{\dd x}+\frac{\partial z}{\partial y}\frac{\dd y}{\dd x}.\label{eq:mchain1}\end{equation}
+Since $z$ is constant (in our example, $z=3$), $\frac{\dd z}{\dd x} = 0$. We also know $\frac{\dd x}{\dd x} = 1$. \autoeqref{eq:mchain1} becomes
 \begin{align*}
-0 &= \frac{\partial z}{\partial x}(1) + \frac{\partial z}{\partial y}\frac{dy}{dx} %\quad \Rightarrow
+0 &= \frac{\partial z}{\partial x}(1) + \frac{\partial z}{\partial y}\frac{\dd y}{\dd x} %\quad \Rightarrow
 \\[5pt]
-\frac{dy}{dx} &= -\frac{\partial z}{\partial x}\Big/\frac{\partial z}{\partial y}\\[5pt]
+\frac{\dd y}{\dd x} &= -\frac{\partial z}{\partial x}\Big/\frac{\partial z}{\partial y}\\[5pt]
 			&= -\frac{\,f_x\,}{f_y}.
 \end{align*}
 
-Note how our solution for $\frac{dy}{dx}$ in \autoeqref{eq:mchain2} is just the negative of the partial derivative of $z$ with respect to $x$, divided by the partial derivative of $z$ with respect to $y$.
+Note how our solution for $\frac{\dd y}{\dd x}$ in \autoeqref{eq:mchain2} is just the negative of the partial derivative of $z$ with respect to $x$, divided by the partial derivative of $z$ with respect to $y$.
 
 We state the above as a theorem for two and three variables.
 
 \begin{theorem}[Implicit Differentiation]\label{thm:implicit_deriv_chain}
 If $f$ is a differentiable function of $x$ and $y$, where $f(x,y)=c$ defines $y$ as  an implicit function of $x$ for some constant $c$, then
 \index{derivative!implicit}\index{implicit differentiation}
-\[\frac{dy}{dx} = - \frac{f_x(x,y)}{f_y(x,y)}.\]
+\[\frac{\dd y}{\dd x} = - \frac{f_x(x,y)}{f_y(x,y)}.\]
 If $f$ is a differentiable function of $x$, $y$, and $z$, where $f(x,y,z)=c$ defines $z$ as an implicit function of $x$ and $y$ for some constant $c$, then
 \[
 \frac{\partial z}{\partial x}=-\frac{f_x(x,y,z)}{f_z(x,y,z)}
@@ -241,10 +241,10 @@ We practice using \autoref{thm:implicit_deriv_chain} by applying it to a problem
 \begin{example}[Implicit Differentiation]\label{ex_mchain5}
 Given the implicitly defined function $\sin(x^2y^2)+y^3=x+y$, find $y\primeskip'$. Note: this is the same problem as given in \autoref{ex_implicit5} of \autoref{sec:imp_deriv}.
 \solution
-Let $f(x,y) = \sin(x^2y^2)+y^3-x-y$; the implicitly defined function above is equivalent to $f(x,y)=0$. We find $\frac{dy}{dx}$ by applying \autoref{thm:implicit_deriv_chain}. We find 
+Let $f(x,y) = \sin(x^2y^2)+y^3-x-y$; the implicitly defined function above is equivalent to $f(x,y)=0$. We find $\frac{\dd y}{\dd x}$ by applying \autoref{thm:implicit_deriv_chain}. We find 
 \[f_x(x,y) = 2xy^2\cos(x^2y^2)-1\qquad \text{and}\qquad f_y(x,y) = 2x^2y\cos(x^2y^2)+3y^2-1,\]
 so 
-\[\frac{dy}{dx} = -\frac{2xy^2\cos(x^2y^2)+3y^2-1}{2x^2y\cos(x^2y^2)-1},\]
+\[\frac{\dd y}{\dd x} = -\frac{2xy^2\cos(x^2y^2)+3y^2-1}{2x^2y\cos(x^2y^2)-1},\]
 which matches our solution from \autoref{ex_implicit5}.
 \end{example}
 

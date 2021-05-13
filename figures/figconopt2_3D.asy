@@ -10,7 +10,8 @@ currentprojection=orthographic(176,-2075,580);
 // setup and draw the axes
 real[] myxchoice={20};
 real[] myychoice={50,100};
-real[] myzchoice={20,40,60,80};
+//real[] myzchoice={20,40,60,80}; // causes "illegal hardware instruction"
+real[] myzchoice={25,50,75};
 
 pair xbounds=(-5,40);
 pair ybounds=(-2,150);

@@ -1,3 +1,4 @@
+1. [exercises/02_05_exercises.tex line 43](../exercises/02_05_exercises.tex#L43): todo tim check 2.5#50 spacing
 1. [exercises/02_06_exset_03.tex line 21](../exercises/02_06_exset_03.tex#L21): todo use functions instead of coordinates in 2.6 set 3
 1. [exercises/02_06_exset_05.tex line 37](../exercises/02_06_exset_05.tex#L37): todo write more logarithmic differentiation problems
 1. [text/01_Continuity.tex line 437](../text/01_Continuity.tex#L437): todo Find an interactive example of the bisection method where you specify the function and endpoints
@@ -13,7 +14,7 @@
 1. [text/03_Curve_Sketching.tex line 251](../text/03_Curve_Sketching.tex#L251): todo write more problems
 1. [text/03_Increasing_Decreasing.tex line 354](../text/03_Increasing_Decreasing.tex#L354): todo write more increasing / decreasing problems
 1. [text/04_Differentials.tex line 212](../text/04_Differentials.tex#L212): todo Find the related and absolute errors in the examples, ask for the errors in the exercises
-1. [text/04_NewtonsMethod.tex line 264](../text/04_NewtonsMethod.tex#L264): todo find and write application problems
+1. [text/04_NewtonsMethod.tex line 264](../text/04_NewtonsMethod.tex#L264): todo find and write application problems for Newton's method
 1. [text/04_Optimization.tex line 287](../text/04_Optimization.tex#L287): todo write more optimization problems and examples, especially where the domain is not a closed interval
 1. [text/04_Related_Rates.tex line 182](../text/04_Related_Rates.tex#L182): todo write an example with similar triangles
 1. [text/04_Related_Rates.tex line 189](../text/04_Related_Rates.tex#L189): todo write a problem with water in & water out

@@ -3,7 +3,7 @@ List Of Changes
 
 Individual errors are detailed in [the errata directory](errata/)
 
-Changes for the 2021-05 version:
+Changes for the 2021-06 version:
 --------------------
 
 * The html version now includes 3d images that can be manipulated within the browser.  Chrome doesn't seem to handle MathJax well, so Firefox seems to be the way to go.

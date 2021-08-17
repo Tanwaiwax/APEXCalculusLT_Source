@@ -5,10 +5,10 @@ The previous section introduced vectors and described how to add them together a
 \begin{definition}[Dot Product]\label{def:dot_product}
 \index{dot product!definition}\index{vectors!dot product}
 \mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{\begin{enumerate}
-	\item Let $\vec u =\bracket{u_1,u_2}$ and $\vec v = \bracket{v_1,v_2}$  in $\mathbb{R}^2$. The \textbf{dot product} of $\vec u$ and $\vec v$, denoted \dotp uv, is 
-	\[\dotp uv = u_1v_1+u_2v_2.\]
-	\item Let $\vec u = \bracket{u_1,u_2,u_3}$ and $\vec v = \bracket{v_1,v_2,v_3}$  in $\mathbb{R}^3$. The \textbf{dot product} of $\vec u$ and $\vec v$, denoted \dotp uv, is 
-	\[\dotp uv = u_1v_1+u_2v_2+u_3v_3.\]
+	\item Let $\vec u =\bracket{u_1,u_2}$ and $\vec v = \bracket{v_1,v_2}$  in $\mathbb{R}^2$. The \textbf{dot product} of $\vec u$ and $\vec v$, denoted $\vec u\cdot\vec v$, is 
+	\[\vec u\cdot\vec v = u_1v_1+u_2v_2.\]
+	\item Let $\vec u = \bracket{u_1,u_2,u_3}$ and $\vec v = \bracket{v_1,v_2,v_3}$  in $\mathbb{R}^3$. The \textbf{dot product} of $\vec u$ and $\vec v$, denoted $\vec u\cdot \vec v$, is 
+	\[\vec u\cdot\vec v = u_1v_1+u_2v_2+u_3v_3.\]
 \end{enumerate}}
 \end{definition}
 
@@ -19,15 +19,15 @@ We practice evaluating a dot product in the following example, then we will disc
 \begin{example}[Evaluating dot products]\label{ex_dotp1}
 \mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{%
 \begin{enumerate}
-	\item Let $\vec u=\bracket{1,2}$, $\vec v=\bracket{3,-1}$ in $\mathbb{R}^2$. Find \dotp uv.
-	\item Let $\vec x = \bracket{2,-2,5}$ and $\vec y = \bracket{-1, 0, 3}$ in $\mathbb{R}^3$. Find \dotp xy.
+	\item Let $\vec u=\bracket{1,2}$, $\vec v=\bracket{3,-1}$ in $\mathbb{R}^2$. Find $\vec u\cdot\vec v$.
+	\item Let $\vec x = \bracket{2,-2,5}$ and $\vec y = \bracket{-1, 0, 3}$ in $\mathbb{R}^3$. Find $\vec x\cdot\vec y$.
 \end{enumerate}}\vspace{0pt}
 \solution
 \begin{enumerate}
 	\item Using \autoref{def:dot_product}, we have
-	\[\dotp uv = 1(3)+2(-1) = 1.\]
+	\[\vec u\cdot\vec v = 1(3)+2(-1) = 1.\]
 	\item	Using the definition, we have
-	\[\dotp xy = 2(-1)  -2(0) + 5(3) = 13.\]
+	\[\vec x\cdot\vec y = 2(-1)  -2(0) + 5(3) = 13.\]
 \end{enumerate}
 \end{example}
 
@@ -36,11 +36,11 @@ The dot product, as shown by the preceding example, is very simple to evaluate. 
 \begin{theorem}[Properties of the Dot Product]\label{thm:dot_product_properties}
 Let $\vec u$, $\vec v$ and $\vec w$ be vectors in $\mathbb{R}^2$ or $\mathbb{R}^3$ and let $c$ be a scalar.\index{dot product!properties}\index{vectors!dot product}
 \begin{enumerate}
-	\item \parbox{150pt}{$\dotp uv = \dotp vu$}{Commutative Property}
-	\item \parbox{150pt}{$\vec u\cdot(\vec v+\vec w) = \dotp uv + \dotp uw$}{Distributive Property}
-	\item	$c(\dotp uv) = (c\vec u)\cdot \vec v = \vec u \cdot (c\vec v)$
-	\item	$\dotp 0v = 0$
-	\item	$\dotp vv=\norm{\vec v}^2 $
+	\item \parbox{150pt}{$\vec u\cdot\vec v = \vec v\cdot\vec u$}{Commutative Property}
+	\item \parbox{150pt}{$\vec u\cdot(\vec v+\vec w) = \vec u\cdot\vec v + \vec u\cdot\vec w$}{Distributive Property}
+	\item	$c(\vec u\cdot\vec v) = (c\vec u)\cdot \vec v = \vec u \cdot (c\vec v)$
+	\item	$\vec 0\cdot\vec v = 0$
+	\item	$\vec v\cdot\vec v=\norm{\vec v}^2 $
 \end{enumerate}
 \end{theorem}
 
@@ -70,7 +70,7 @@ The following theorem connects this angle $\theta$ to the dot product of $\vec u
 
 \begin{theorem}[The Dot Product and Angles]\label{thm:dot_product}
 Let $\vec u$ and $\vec v$ be vectors in $\mathbb{R}^2$ or $\mathbb{R}^3$. Then 
-\[\dotp uv = \norm{\vec u}\,\norm{\vec v} \cos\theta,\]
+\[\vec u\cdot\vec v = \norm{\vec u}\,\norm{\vec v} \cos\theta,\]
 where $\theta$, $0\leq\theta\leq \pi$, is the angle between $\vec u$ and $\vec v$.
 \index{dot product!properties}\index{vectors!dot product}
 \end{theorem}
@@ -108,7 +108,7 @@ When $\theta$ is an acute angle (i.e., $0\leq \theta <\pi/2$), $\cos \theta$ is 
 \end{minipage}
 
 We \emph{can} use \autoref{thm:dot_product} to compute the dot product, but generally this theorem is used to find the angle between known vectors (since the dot product is generally easy to compute). To this end, we rewrite the theorem's equation as\vspace{-.3\baselineskip}
-\[\cos \theta = \frac{\dotp uv}{\norm{\vec u}\norm{\vec v}} \quad \Leftrightarrow \quad \theta = \cos^{-1}\left(\frac{\dotp uv}{\norm{\vec u}\norm{\vec v}}\right).\]
+\[\cos \theta = \frac{\vec u\cdot\vec v}{\norm{\vec u}\norm{\vec v}} \quad \Leftrightarrow \quad \theta = \cos^{-1}\left(\frac{\vec u\cdot\vec v}{\norm{\vec u}\norm{\vec v}}\right).\]
 
 \youtubeVideo{98C7iv8OcnI}{Vectors: The Dot Product}
 
@@ -141,12 +141,12 @@ We start by computing the magnitude of each vector.
 \]
 We now apply \autoref{thm:dot_product} to find the angles.
 \begin{align*}
-	\alpha &= \cos^{-1}\left(\frac{\dotp uv}{(\sqrt{10})(2\sqrt{10})}\right) \\
+	\alpha &= \cos^{-1}\left(\frac{\vec u\cdot\vec v}{(\sqrt{10})(2\sqrt{10})}\right) \\
 	&= \cos^{-1}(0) = \frac{\pi}2 = 90^\circ.\displaybreak[0]\\[10pt]
-	\beta &= \cos^{-1}\left(\frac{\dotp vw}{(2\sqrt{10})(5)}\right) \\
+	\beta &= \cos^{-1}\left(\frac{\vec v\cdot\vec w}{(2\sqrt{10})(5)}\right) \\
 	&= \cos^{-1}\left(\frac{26}{10\sqrt{10}}\right) \\
 	&\approx 0.6055 \approx 34.7^\circ.\displaybreak[0]\\[10pt]
-	\theta &= \cos^{-1}\left(\frac{\dotp uw}{(\sqrt{10})(5)}\right) \\
+	\theta &= \cos^{-1}\left(\frac{\vec u\cdot\vec w}{(\sqrt{10})(5)}\right) \\
 	&= \cos^{-1}\left(\frac{-9}{5\sqrt{10}}\right) \\
 	&\approx 2.1763 \approx 124.7^\circ
 \end{align*}
@@ -170,19 +170,19 @@ Let $\vec u = \bracket{1,1,1}$, $\vec v = \bracket{-1,3,-2}$ and $\vec w = \brac
 \begin{enumerate}
 	\item Between $\vec u$ and $\vec v$:\vspace{-\baselineskip}
 	\begin{align*}
-		\theta &= \cos^{-1}\left(\frac{\dotp uv}{\norm{\vec u}\norm{\vec v}}\right)\\
+		\theta &= \cos^{-1}\left(\frac{\vec u\cdot\vec v}{\norm{\vec u}\norm{\vec v}}\right)\\
 		&= \cos^{-1}\left(\frac{0}{\sqrt{3}\sqrt{14}}\right)\\
 		&= \frac{\pi}2.
 	\end{align*}
 	\item	Between $\vec u$ and $\vec w$:\vspace{-\baselineskip}
 	\begin{align*}
-		\theta &= \cos^{-1}\left(\frac{\dotp uw}{\norm{\vec u}\norm{\vec w}}\right)\\
+		\theta &= \cos^{-1}\left(\frac{\vec u\cdot\vec w}{\norm{\vec u}\norm{\vec w}}\right)\\
 		&= \cos^{-1}\left(\frac{0}{\sqrt{3}\sqrt{42}}\right)\\
 		&= \frac{\pi}2.
 	\end{align*}
 	\item	Between $\vec v$ and $\vec w$:\vspace{-\baselineskip}
 	\begin{align*}
-		\theta &= \cos^{-1}\left(\frac{\dotp vw}{\norm{\vec v}\norm{\vec w}}\right)\\
+		\theta &= \cos^{-1}\left(\frac{\vec v\cdot\vec w}{\norm{\vec v}\norm{\vec w}}\right)\\
 		&= \cos^{-1}\left(\frac{0}{\sqrt{14}\sqrt{42}}\right)\\
 		&= \frac{\pi}2.
 	\end{align*}
@@ -255,10 +255,10 @@ We also know that $\vec w$ is parallel to to $\vec v$\,; that is, the direction 
 \begin{align*}
 \vec w &= \Bigl(\norm{\vec u}\cos\theta \Bigr)\frac{1}{\norm{\vec v}}\vec v.
 \intertext{Replace $\cos\theta$ using \autoref{thm:dot_product}:}
-			&= \left(\norm{\vec u}\frac{\dotp uv}{\norm{\vec u}\norm{\vec v}}\right)\frac{1}{\norm{\vec v}} \vec v\\ 
-			&= \frac{\dotp uv}{\norm{\vec v}^2}\vec v.
+			&= \left(\norm{\vec u}\frac{\vec u\cdot\vec v}{\norm{\vec u}\norm{\vec v}}\right)\frac{1}{\norm{\vec v}} \vec v\\ 
+			&= \frac{\vec u\cdot\vec v}{\norm{\vec v}^2}\vec v.
 			\intertext{Now apply \autoref{thm:dot_product_properties}.}
-			&= \frac{\dotp uv}{\dotp vv}\vec v.
+			&= \frac{\vec u\cdot\vec v}{\vec v\cdot\vec v}\vec v.
 \end{align*}
 
 Since this construction is so important, it is given a special name.
@@ -266,7 +266,7 @@ Since this construction is so important, it is given a special name.
 \begin{definition}[Orthogonal Projection]\label{def:orthogonal_projection}
 Let $\vec u$ and $\vec v$ be given, where $\vec v\neq\vec 0$. The \textbf{orthogonal projection of $\vec u$ onto $\vec v$}, denoted $\proj uv$, is 
 \index{orthogonal projection}\index{vectors!orthogonal projection}
-\[\proj uv = \frac{\dotp uv}{\dotp vv}\vec v.\]
+\[\proj uv = \frac{\vec u\cdot\vec v}{\vec v\cdot\vec v}\vec v.\]
 \end{definition}
 
 \mtable[-1in]{Graphing the vectors used in \autoref{ex_dotp4}.}{fig:dotp4}{%
@@ -308,7 +308,7 @@ ytick={1,2,-1,-2},ymin=-2.8,ymax=2.8,xmin=-2.9,xmax=3.9]
 	\item Applying \autoref{def:orthogonal_projection}, we have
 	\begin{align*}
 		\proj uv
-		&= \frac{\dotp uv}{\dotp vv}\vec v \\
+		&= \frac{\vec u\cdot\vec v}{\vec v\cdot\vec v}\vec v \\
 		&= \frac{-5}{10}\bracket{3,1}\\
 		&=\bracket{-\frac32,-\frac12}.
 	\end{align*}
@@ -317,7 +317,7 @@ ytick={1,2,-1,-2},ymin=-2.8,ymax=2.8,xmin=-2.9,xmax=3.9]
 	\item	Apply the definition:
 	\begin{align*}
 		\proj wx
-		&= \frac{\dotp wx}{\dotp xx}\vec x \\
+		&= \frac{\vec w\cdot\vec x}{\vec x\cdot\vec x}\vec x \\
 		&= \frac{6}{3}\bracket{1,1,1}\\
 		&=\bracket{2,2,2}.
 	\end{align*}
@@ -369,7 +369,7 @@ We illustrate the use of this equality in the following example.
 	\item In \autoref{ex_dotp4}, we found that $\proj uv =\bracket{-1.5,-0.5}$. Let
 	\[\vec z = \vec u - \proj uv =\bracket{-2,1}-\bracket{-1.5,-0.5}=\bracket{-0.5, 1.5}.\]
 	Is $\vec z$ orthogonal to $\vec v$\,? (I.e, is $\vec z \perp\vec v$\ ?) We check for orthogonality with the dot product:
-	\[\dotp zv =\bracket{-0.5,1.5}\cdot\bracket{3,1}=0.\]
+	\[\vec z\cdot\vec v =\bracket{-0.5,1.5}\cdot\bracket{3,1}=0.\]
 	Since the dot product is 0, we know $\vec z \perp \vec v$. Thus:
 	\begin{align*}
 	\vec u &= \proj uv\ +\ (\vec u - \proj uv) \\
@@ -378,7 +378,7 @@ We illustrate the use of this equality in the following example.
 	
 	\item	We found in \autoref{ex_dotp4} that $\proj wx =\bracket{2,2,2}$. Applying the \autoref{idea:orthog_proj}, we have:
 	\[\vec z = \vec w - \proj wx =\bracket{2,1,3}-\bracket{2,2,2}=\bracket{0,-1,1}.\] We check to see if $\vec z \perp \vec x$:
-	\[\dotp zx =\bracket{0,-1,1}\cdot\bracket{1,1,1}= 0.\]
+	\[\vec z\cdot\vec x =\bracket{0,-1,1}\cdot\bracket{1,1,1}= 0.\]
 	Since the dot product is 0, we know the two vectors are orthogonal.
 	We now write $\vec w$ as the sum of two vectors, one parallel and one orthogonal to $\vec x$:
 	\begin{align*}
@@ -426,7 +426,7 @@ As the ramp rises 5 ft over a horizontal distance of 20 ft, we can represent the
 \begin{enumerate}
 	\item To find the force of gravity in the direction of the ramp, we compute the projection $\proj gr$:\vspace{-.5\baselineskip}
 	\begin{align*}
-	\proj gr &= \frac{\dotp gr}{\dotp rr}\vec r\\
+	\proj gr &= \frac{\vec g\cdot\vec r}{\vec r\cdot\vec r}\vec r\\
 	&=  \frac{-250}{425}\bracket{20,5}\\
 	&=\bracket{-\frac{200}{17},-\frac{50}{17}}%\approx\bracket{-11.76,-2.94}
 	.
@@ -459,16 +459,16 @@ Consider \autoref{fig:dotpwork}, where a force $\vec F$ is being applied to an o
 
 \begin{align*}
 \norm{\proj Fd}\cdot\vnorm d
- &= \norm{\frac{\dotp Fd}{\dotp dd}\vec d}\cdot \vnorm d \\
-		&= \abs{\frac{\dotp Fd}{\vnorm d^2}}\cdot \vnorm d\cdot\vnorm d\\
-		&= \frac{\abs{\dotp Fd}}{\vnorm d^2}\vnorm d^2\\
-		&= \abs{\dotp Fd}.
+ &= \norm{\frac{\vec F\cdot\vec d}{\vec d\cdot\vec d}\vec d}\cdot \vnorm d \\
+		&= \abs{\frac{\vec F\cdot\vec d}{\vnorm d^2}}\cdot \vnorm d\cdot\vnorm d\\
+		&= \frac{\abs{\vec F\cdot\vec d}}{\vnorm d^2}\vnorm d^2\\
+		&= \abs{\vec F\cdot\vec d}.
 \end{align*}
 
-The expression $\dotp Fd$ will be positive if the angle between $\vec F$ and $\vec d$ is acute; when the angle is obtuse (hence $\dotp Fd$ is negative), the force is causing motion in the opposite direction of $\vec d$, resulting in ``negative work.'' We want to capture this sign, so we drop the absolute value and find that $W = \dotp Fd$.
+The expression $\vec F\cdot\vec d$ will be positive if the angle between $\vec F$ and $\vec d$ is acute; when the angle is obtuse (hence $\vec F\cdot\vec d$ is negative), the force is causing motion in the opposite direction of $\vec d$, resulting in ``negative work.'' We want to capture this sign, so we drop the absolute value and find that $W = \vec F\cdot\vec d$.
 
 \begin{definition}[Work]\label{def:work}
-Let $\vec F$ be a constant force that moves an object in a straight line from point $P$ to point $Q$. Let $\vec d = \vv{PQ}$. The \textbf{work} $W$ done by $\vec F$ along $\vec d$ is $W = \dotp Fd$.\index{work}
+Let $\vec F$ be a constant force that moves an object in a straight line from point $P$ to point $Q$. Let $\vec d = \vv{PQ}$. The \textbf{work} $W$ done by $\vec F$ along $\vec d$ is $W = \vec F\cdot\vec d$.\index{work}
 \end{definition}
 
 \mtable{Computing work when sliding a box up a ramp in \autoref{ex_dotp7}.}{fig:dotp7}{\begin{tikzpicture}[>=stealth,scale=.3]
@@ -488,7 +488,7 @@ A man slides a box along a ramp that rises 3 ft over a distance of 15 ft by appl
 \solution
 The figure indicates that the force applied makes a $30^\circ$ angle with the horizontal, so $\vec F = 50\bracket{\cos 30^\circ,\sin 30^\circ}\bracket{25\sqrt3,25}%\approx\bracket{43.3,25}
 $. The ramp is represented by $\vec d  =\bracket{15,3}$. The work done is simply
-\[\dotp Fd = \bracket{25\sqrt3,25}\cdot\bracket{15,3}=375\sqrt3+75%\approx 724.5
+\[\vec F\cdot\vec d = \bracket{25\sqrt3,25}\cdot\bracket{15,3}=375\sqrt3+75%\approx 724.5
 \text{ ft-lb}.\]
 
 Note how we did not actually compute the distance the object traveled, nor the magnitude of the force in the direction of travel; this is all inherently computed by the dot product.

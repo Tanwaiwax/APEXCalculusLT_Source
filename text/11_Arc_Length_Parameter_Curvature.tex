@@ -54,10 +54,10 @@ Now consider \autoref{fig:vvfarc_intro1}(b), where the same graph is parameteriz
 How do we find the arc length parameter? 
 
 Start with any parameterization of $\vec r$. We can compute the arc length of the graph of $\vec r$ on the interval $[0,t]$ with
-\[\text{arc length } = \int_0^t\norm{\vec r\,'(u)}\ du.\]
+\[\text{arc length } = \int_0^t\norm{\vec r\,'(u)}\dd u.\]
 We can turn this into a function: as $t$ varies, we find the arc length $s$ from $0$ to $t$. This function is
 \begin{equation}
-s(t) = \int_0^t \norm{\vec r\,'(u)}\ du.\label{eq:vvfarc}
+s(t) = \int_0^t \norm{\vec r\,'(u)}\dd u.\label{eq:vvfarc}
 \end{equation}
 
 This establishes a relationship between $s$ and $t$. Knowing this relationship explicitly, we can rewrite $\vec r(t)$ as a function of $s$: $\vec r(s)$. We demonstrate this in an example.
@@ -68,12 +68,12 @@ This establishes a relationship between $s$ and $t$. Knowing this relationship e
 Let $\vec r(t) =\bracket{3t-1,4t+2}$. Parameterize $\vec r$ with the arc length parameter $s$.
 \solution
 Using \autoeqref{eq:vvfarc}, we write
-\[s(t) = \int_0^t \norm{\vec r\,'(u)}\ du.\]
+\[s(t) = \int_0^t \norm{\vec r\,'(u)}\dd u.\]
 We can integrate this, explicitly finding a relationship between $s$ and $t$:
 \begin{align*}
-s(t) &= \int_0^t \norm{\vec r\,'(u)}\ du \\
-			&= \int_0^t \sqrt{3^2+4^2}\ du\\
-			&= \int_0^t 5\ du\\
+s(t) &= \int_0^t \norm{\vec r\,'(u)}\dd u \\
+			&= \int_0^t \sqrt{3^2+4^2}\dd u\\
+			&= \int_0^t 5\dd u\\
 			&= 5t.
 \end{align*}
 Since $s=5t$, we can write $t=s/5$ and replace $t$ in $\vec r(t)$ with $s/5$:
@@ -110,13 +110,13 @@ Things worked out very nicely in \autoref{ex_vvfarc1}; we were able to establish
 First, %consider \autoeqref{eq:vvfarc} and 
 take the derivative of $s$ with respect to $t$. The Fundamental Theorem of Calculus (see \autoref{thm:FTC1}) states that
 \begin{equation}
-\frac{ds}{dt}=s\,'(t) = \norm{\vrp(t)}.\label{eq:vvfarc3}
+\frac{\dd s}{\dd t}=s\,'(t) = \norm{\vrp(t)}.\label{eq:vvfarc3}
 \end{equation}
 Letting $t$ represent time and $\vec r(t)$ represent position, we see that the rate of change of $s$ with respect to $t$ is speed; that is, the rate of change of ``distance traveled'' is speed, which should match our intuition.
 
 The Chain Rule states that 
 \begin{align*}
-\frac{d\vec r}{dt} &= \frac{d\vec r}{ds}\cdot\frac{ds}{dt}\\
+\frac{\dd\vec r}{\dd t} &= \frac{\dd\vec r}{\dd s}\cdot\frac{\dd s}{\dd t}\\
 \vrp(t) &= \vrp(s)\cdot \norm{\vrp(t)}.
 \end{align*}
 Solving for $\vrp(s)$, we have\vspace{-.3\baselineskip}
@@ -172,7 +172,7 @@ We derive this number in the following way. Consider \autoref{fig:curvatureintro
 \begin{definition}[Curvature]\label{def:curvature}
 Let $\vec r(s)$ be a vector-valued function where $s$ is the arc length parameter. The curvature $\kappa$ of the graph of $\vec r(s)$ is
 \index{curvature}\index{unit tangent vector!and curvature}
-\[\kappa = \norm{\frac{d\vec T}{ds}} = \norm{\vec T\,'(s)}.\]
+\[\kappa = \norm{\frac{\dd\vec T}{\dd s}} = \norm{\vec T\,'(s)}.\]
 \end{definition}
 
 If $\vec r(s)$ is parameterized by the arc length parameter, then 
@@ -218,15 +218,15 @@ Let $C$ be a smooth curve on an open interval $I$ in the plane or in space.
 \begin{proof}
 We'll prove statement 3; statements 1 and 2 are applications that we leave to the exercises.  By the chain rule and then \autoeqref{eq:vvfarc3},
 \[
-\frac{d\vec T(t)}{dt}
-=\frac{d\vec T(s)}{ds}\frac{ds}{dt}
-=\frac{d\vec T(s)}{ds}\norm{\vrp(t)},
+\frac{\dd\vec T(t)}{\dd t}
+=\frac{\dd\vec T(s)}{\dd s}\frac{\dd s}{\dd t}
+=\frac{\dd\vec T(s)}{\dd s}\norm{\vrp(t)},
 \]
 so that\vspace{-.3\baselineskip}
 \[
-\kappa=\norm{\frac{d\vec T(s)}{ds}}
-=\norm{\frac{\frac{d\vec T(t)}{dt}}{\norm{\vrp(t)}}}
-=\frac{\norm{\frac{d\vec T(t)}{dt}}}{\norm{\vrp(t)}}
+\kappa=\norm{\frac{\dd\vec T(s)}{\dd s}}
+=\norm{\frac{\frac{\dd\vec T(t)}{\dd t}}{\norm{\vrp(t)}}}
+=\frac{\norm{\frac{\dd\vec T(t)}{\dd t}}}{\norm{\vrp(t)}}
 =\frac{\norm{\vec T\,'(t)}}{\norm{\vrp(t)}}.
 \]
 Now, $\vrp(t)=\norm{\vrp(t)}\vec T(t)$ so that
@@ -337,7 +337,7 @@ We use the third formula in \autoref{thm:curvature_formulas} as $\vrt$ is define
 \begin{align*}
  \vrp(t) &=\bracket{1,2t,6t^2},\\
  \vrp'(t) &=\bracket{0,2,12t},\qquad \text{and}\\
- \vrp(t)\times \vrp'(t) =\bracket{12t^2,-12t,2}.
+ \vrp(t)\times \vrp'(t) &=\bracket{12t^2,-12t,2}.
 \end{align*}
 Thus 
 \begin{align*}
@@ -375,13 +375,13 @@ Let $\vec r(t)$ be a position function of an object, with velocity $\vvt = \vrp(
 \index{an@$a_{\mathrm{N}}$}\index{unit normal vector!and curvature}%
 \[\vat = a_{\mathrm{T}}\vec T(t) + a_{\mathrm{N}}\vec N(t).\]
 \autoref{thm:acc_plane} gives formulas for $a_{\mathrm{T}}$ and $a_{\mathrm{N}}$:
-\[a_{\mathrm{T}} = \frac{d}{dt}\Bigl(\norm{\vvt}\Bigr) \quad \text{and} \quad a_{\mathrm{N}} = \frac{\norm{\vvt\times \vat}}{\norm{\vvt}}.\]
+\[a_{\mathrm{T}} = \frac{\dd}{\dd t}\Bigl(\norm{\vvt}\Bigr) \quad \text{and} \quad a_{\mathrm{N}} = \frac{\norm{\vvt\times \vat}}{\norm{\vvt}}.\]
 We understood that the amount of acceleration in the direction of $\vec T$ relates only to how the speed of the object is changing, and that the amount of acceleration in the direction of $\vec N$ relates to how the direction of travel of the object is changing. (That is, if the object travels at constant speed, $a_{\mathrm{T}}=0$; if the object travels in a constant direction, $a_{\mathrm{N}}=0$.)
 
 
 In \autoeqref{eq:vvfarc3} at the beginning of this section, we found
 $s\,'(t) = \norm{\vvt}$. We can combine this fact with the above formula for $a_{\mathrm{T}}$ to write
-\[a_{\mathrm{T}} = \frac{d}{dt}\Bigl(\norm{\vvt}\Bigr) = \frac{d}{dt}\bigl( s\,'(t)\bigr) = s\,''(t).\]
+\[a_{\mathrm{T}} = \frac{\dd}{\dd t}\Bigl(\norm{\vvt}\Bigr) = \frac{\dd}{\dd t}\bigl( s\,'(t)\bigr) = s\,''(t).\]
 Since $s\,'(t)$ is speed, $s\,''(t)$ is the rate at which speed is changing with respect to time. We see once more that the component of acceleration in the direction of travel relates only to speed, not to a change in direction.
 
 Now compare the formula for $a_{\mathrm{N}}$ above to the formula for curvature in \autoref{thm:curvature_formulas}:

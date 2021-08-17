@@ -71,14 +71,14 @@ Replacing $f(c+\Delta x)$ with its tangent line approximation, we have
 
 This final equation is important; we'll come back to it in \autoref{idea:differential}.
 
-We introduce two new variables, $dx$ and $dy$ in the context of a formal definition. %We defined $dx = \Delta x$; that is, it is a small change in $x$. We define
+We introduce two new variables, $\dd x$ and $\dd y$ in the context of a formal definition. %We defined $\dd x = \Delta x$; that is, it is a small change in $x$. We define
 
 \begin{definition}[Differentials of $x$ and $y$.]\label{def:differential}
-Let $y=f(x)$ be differentiable. The \textbf{differential of $x$}, denoted $dx$, is any nonzero real number (usually taken to be a small number).\index{differential}\index{derivative!differential} The \textbf{differential of $y$}, denoted $dy$, is
-\[dy = \fp(x)dx.\]
+Let $y=f(x)$ be differentiable. The \textbf{differential of $x$}, denoted $\dd x$, is any nonzero real number (usually taken to be a small number).\index{differential}\index{derivative!differential} The \textbf{differential of $y$}, denoted $\dd y$, is
+\[\dd y = \fp(x)\dd x.\]
 \end{definition}
 
-We can solve for $\fp(x)$ in the above equation: $\fp(x) = dy/dx$. This states that the derivative of $f$ with respect to $x$ is the differential of $y$ divided by the differential of $x$; this is \textbf{not} the alternate notation for the derivative, $\frac{dy}{dx}$. This latter notation was chosen because of the fraction-like qualities of the derivative, but again, it is one symbol and not a fraction.
+We can solve for $\fp(x)$ in the above equation: $\fp(x) = \dd y/\dd x$. This states that the derivative of $f$ with respect to $x$ is the differential of $y$ divided by the differential of $x$; this is \textbf{not} the alternate notation for the derivative, $\frac{\dd y}{\dd x}$. This latter notation was chosen because of the fraction-like qualities of the derivative, but again, it is one symbol and not a fraction.
 
 It is helpful to organize our new concepts and notations in one place and an accompanying figure.
 
@@ -90,8 +90,8 @@ It is helpful to organize our new concepts and notations in one place and an acc
 %  \draw(axis cs:.3,.09)circle(2pt);
   \addplot[draw=\colortwo,thick,domain=0:1]{.6*(x-.3)+.09};
   \draw(axis cs:.3,.09)
-   --node[pos=.6,above,yshift=-.5ex]{\scriptsize $dx=\Delta x$}(axis cs:.8,.09)
-   --node[pos=.3,right,xshift=-.3em]{$\Big\}\scriptstyle dy$}
+   --node[pos=.6,above,yshift=-.5ex]{\scriptsize $\dd x=\Delta x$}(axis cs:.8,.09)
+   --node[pos=.3,right,xshift=-.3em]{$\Big\}\scriptstyle \dd y$}
      node[pos=.5,right,xshift=1em]{$\left.\rule{0pt}{5ex}\right\}\scriptstyle \Delta y$}(axis cs:.8,.64);
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
@@ -102,10 +102,10 @@ It is helpful to organize our new concepts and notations in one place and an acc
 Let $y = f(x)$ be a differentiable function. \index{differential!notation}
 \begin{enumerate}
 	\item $\Delta x$ represents a small, nonzero change in $x$ value.
-	\item	$dx$ represents a small, nonzero change in $x$ value (i.e., $\Delta x = dx$).
+	\item	$\dd x$ represents a small, nonzero change in $x$ value (i.e., $\Delta x = \dd x$).
 	\item	$\Delta y$ is the change in $y$ value as $x$ changes by $\Delta x$; hence
 	\[\Delta y = f(x+\Delta x)-f(x).\]
-	\item		$dy = \fp(x)dx$ which, by \autoeqref{eq:differential}, is an \emph{approximation} of the change in $y$ value as $x$ changes by $\Delta x$; $dy \approx \Delta y$.
+	\item		$\dd y = \fp(x)\dd x$ which, by \autoeqref{eq:differential}, is an \emph{approximation} of the change in $y$ value as $x$ changes by $\Delta x$; $\dd y \approx \Delta y$.
 \end{enumerate}
 \end{keyidea}
 
@@ -116,10 +116,10 @@ What is the value of differentials? Like many mathematical concepts, differentia
 \begin{example}[Finding and using differentials]\label{ex_diffal1}
 Consider $f(x) = x^2$. Knowing $f(3) = 9$, approximate $f(3.1)$.
 \solution
-The $x$ value is changing from $x=3$ to $x=3.1$; therefore, we see that $dx=0.1$. If we know how much the $y$ value changes from $f(3)$ to $f(3.1)$ (i.e., if we know $\Delta y$), we will know exactly what $f(3.1)$ is (since we already know $f(3)$). We can approximate $\Delta y$ with $dy$.
+The $x$ value is changing from $x=3$ to $x=3.1$; therefore, we see that $\dd x=0.1$. If we know how much the $y$ value changes from $f(3)$ to $f(3.1)$ (i.e., if we know $\Delta y$), we will know exactly what $f(3.1)$ is (since we already know $f(3)$). We can approximate $\Delta y$ with $\dd y$.
 \begin{align*}
-	\Delta y &\approx dy \\
-	&= \fp(3)dx \\
+	\Delta y &\approx \dd y \\
+	&= \fp(3)\dd x \\
 	&= 2\cdot 3\cdot 0.1 = 0.6.
 \end{align*}
 
@@ -143,19 +143,19 @@ Approximate $\sqrt{4.5}$.
 \solution
 We expect $\sqrt{4.5} \approx 2$, yet we can do better. Let $f(x) = \sqrt{x}$, and let $c=4$. Thus $f(4) = 2$. We can compute $\fp(x) = 1/(2\sqrt{x})$, so $\fp(4) = 1/4$. 
 
-We approximate the difference between $f(4.5)$ and $f(4)$ using differentials, with $dx = 0.5$:
-\[f(4.5)-f(4) = \Delta y \approx dy = \fp(4)\cdot dx = 1/4 \cdot 1/2 = 1/8 = 0.125.\]
+We approximate the difference between $f(4.5)$ and $f(4)$ using differentials, with $\dd x = 0.5$:
+\[f(4.5)-f(4) = \Delta y \approx \dd y = \fp(4)\cdot \dd x = 1/4 \cdot 1/2 = 1/8 = 0.125.\]
 The approximate change in $f$ from $x=4$ to $x=4.5$ is $0.125$, so we approximate $\sqrt{4.5} \approx 2.125$.
 \end{example}
 
 Differentials are important when we discuss \emph{integration}. When we study that topic, we will use notation such as
-\[\int f(x)\ dx\]
-quite often. While we don't discuss here what all of that notation means, note the existence of the differential $dx$. Proper handling of \emph{integrals} comes with proper handling of differentials. 
+\[\int f(x)\dd x\]
+quite often. While we don't discuss here what all of that notation means, note the existence of the differential $\dd x$. Proper handling of \emph{integrals} comes with proper handling of differentials. 
 
 In light of that, we practice finding differentials in general.
 
 \begin{example}[Finding differentials]\label{ex_diffal3}
-In each of the following, find the differential $dy$.
+In each of the following, find the differential $\dd y$.
 \[
 \text{1.}\quad y = \sin x\qquad\qquad
 \text{2.}\quad y = e^x(x^2+2)\qquad\qquad
@@ -164,41 +164,41 @@ In each of the following, find the differential $dy$.
 \solution
 \begin{enumerate}
 	\item	$y = \sin x$:	\quad As $f(x) = \sin x$, $\fp(x) = \cos x$. Thus
-	\[dy = \cos (x)dx.\]
+	\[\dd y = \cos(x)\dd x.\]
 	\item	$y = e^x(x^2+2)$:\quad Let $f(x) = e^x(x^2+2)$. We need $\fp(x)$, requiring the Product Rule. 
 
 We have $\fp(x) = e^x(x^2+2) + 2xe^x$, so
-\[dy = \bigl(e^x(x^2+2) + 2xe^x\bigr)dx.\]
+\[\dd y = \bigl(e^x(x^2+2) + 2xe^x\bigr)\dd x.\]
 
 	\item	$y = \sqrt{x^2+3x-1}$:\quad	Let $f(x) = \sqrt{x^2+3x-1}$; we need $\fp(x)$, requiring the Chain Rule.
 
 We have $\ds \fp(x) = \frac{1}{2}(x^2+3x-1)^{-\frac12}(2x+3) = \frac{2x+3}{2\sqrt{x^2+3x-1}}.$ Thus 
-\[dy = \frac{(2x+3)dx}{2\sqrt{x^2+3x-1}}.\]
+\[\dd y = \frac{(2x+3)\dd x}{2\sqrt{x^2+3x-1}}.\]
 \end{enumerate}
 \end{example}
 
-Finding the differential $dy$ of $y=f(x)$ is really no harder than finding the derivative of $f$; we just \emph{multiply} $\fp(x)$ by $dx$. It is important to remember that we are not simply adding the symbol ``$dx$'' at the end.\bigskip
+Finding the differential $\dd y$ of $y=f(x)$ is really no harder than finding the derivative of $f$; we just \emph{multiply} $\fp(x)$ by $\dd x$. It is important to remember that we are not simply adding the symbol ``$\dd x$'' at the end.\bigskip
 
 We have seen a practical use of differentials as they offer a good method of making certain approximations. Another use is \emph{error propagation.} Suppose a length is measured to be $x$, although the actual value is $x+\Delta x$ (where we hope $\Delta x$ is small). This measurement of $x$ may be used to compute some other value; we can think of this as $f(x)$ for some function $f$. As the true length is $x+\Delta x$, one really should have computed $f(x+\Delta x)$. The difference between $f(x)$ and $f(x+\Delta x)$ is the propagated error. 
 
 How close are $f(x)$ and $f(x+\Delta x)$? This is a difference in ``y'' values;
-\[f(x+\Delta x)-f(x) = \Delta y \approx dy.\]
+\[f(x+\Delta x)-f(x) = \Delta y \approx \dd y.\]
 We can approximate the propagated error using differentials.
 
 \begin{example}[Using differentials to approximate propagated error]\label{ex_diffal4}
 A steel ball bearing is to be manufactured with a diameter of 2cm. The manufacturing process has a tolerance of $\pm 0.1$mm in the diameter. Given that the density of steel is about 7.85g/cm$^3$, estimate the propagated error in the mass of the ball bearing.
 \solution
 The mass of a ball bearing is found using the equation ``mass = volume $\times$ density.'' In this situation the mass function is a product of the radius of the ball bearing, hence it is $m = 7.85\frac43\pi r^3$. The differential of the mass is
-\[dm = 31.4\pi r^2 dr.\]
+\[\dd m = 31.4\pi r^2 \dd r.\]
 The radius is to be 1cm; the manufacturing tolerance in the radius is $\pm 0.05$mm, or $\pm 0.005$cm. The propagated error is approximately:
 \begin{align*}
-\Delta m & \approx dm \\
+\Delta m & \approx \dd m \\
 				&= 31.4\pi (1)^2 (\pm 0.005) \\
 				&= \pm 0.493\text{g}
 \end{align*}
 Is this error significant? It certainly depends on the application, but we can get an idea by computing the \emph{relative error}. The ratio between amount of error to the total mass is
 \begin{align*}
-\frac{dm}{m} &= \pm \frac{0.493}{7.85\frac43\pi} \\
+\frac{\dd m}{m} &= \pm \frac{0.493}{7.85\frac43\pi} \\
 							&=\pm \frac{0.493}{32.88}\\
 							&=\pm 0.015,
 \end{align*}

@@ -1,3 +1,4 @@
+% !TEX TS-program = XeLaTeX
 % !TEX program = XeLaTeX
 %\errorcontextlines 10000
 
@@ -36,11 +37,43 @@
 
 \apexchapter[text/01_Prerequisite]{Limits}{ch:label}
 
+% see 09_Parametric_Equations.tex
+\noindent\begin{minipage}[t]{\linewidth}\noindent%
+\captionsetup{type=figure}%
+ \centering
+  \begin{tikzpicture}
+   \begin{axis}[axis lines=none,xmin=-1,xmax=4*pi+1,ymin=-.5,ymax=3,axis equal,
+     width=\textwidth,height=\ifbool{latexml}{.3}{}\textwidth]
+    \foreach \x in { 0, 2*pi/3, 4*pi/3, 2*pi, 8*pi/3, 10*pi/3, 4*pi} {
+     \edef\temp{%
+      \noexpand\draw [draw={\colorone}] (axis cs:\x,1) circle (1);
+      \noexpand\draw [draw={\colorone},fill={\colorone}] (axis cs:\x,1)circle (1.5pt)
+       -- (axis cs:{\x-sin(deg(\x))},{1-cos(deg(\x))}) circle (1.5pt);
+     }\temp
+    }
+    \draw (axis cs:0,2.5) node {$t=0$};
+    \draw (axis cs:2*pi,2.5) node {$t=2\pi$};
+    \draw (axis cs:4*pi,2.5) node {$t=4\pi$};
+    \foreach \t in { 2, 4, 8, 10} {
+     \edef\temp{%
+      \noexpand\draw (axis cs:\t*pi/3,2.5) node {$t=\frac{\t\pi}3$};
+     }\temp
+    }
+    \addplot[draw={\colortwo},smooth,thick,domain=0:4*pi]
+     ({\x-sin(deg(\x))},{1-cos(deg(\x))});
+   \end{axis}
+  \end{tikzpicture}
+ \caption{A cycloid traced through two revolutions.}
+ \label{fig_cycloid}
+\end{minipage}
+ 
 Some intro stuff.
 \chapterautorefname
 \sectionautorefname
 \figureautorefname
 \appendixname
+\the\marginparwidth
+\the\defaultaddspace
 
 \section{The section}
 
@@ -68,29 +101,6 @@ This is my example. This is my example.
 \solution
 This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example.
 \end{example}
-
-% todo tikz left color see https://github.com/brucemiller/LaTeXML/issues/1168
-% this happens alot
-%\begin{tikzpicture}[x=.3cm,y=.3cm,>=stealth]
-%\begin{scope}[xscale=2]
-% \ifbool{latexml}{\draw[thick,fill=\coloronefill!60]}{
-% \draw[thick,left color={\coloronefill},right color={\coloronefill!20}]
-% }
-% (-2,10) -- (-2,0) arc (180:360:2) -- (2,10);
-% \ifbool{latexml}{\draw[thick,fill=\coloronefill!65]}{
-% \draw[thick,left color={\coloronefill!30},right color={\coloronefill}]
-% }
-% (0,10)circle(2);
-%\draw [thick] (0,12) circle (2);
-%\draw [thick](-2,12)--(-2,10) (2,12)--(2,10);
-%\draw [dashed,thick] (-2,0) arc (180:0:2);
-%\draw (0,0) -- node [above,pos=.5] {\scriptsize 2 ft} (2,0);
-%\end{scope}
-%\begin{scope}[shift={(5,0)}]
-%\draw (-.5,0) -- (.5,0) (-.5,10) -- (.5,10)
-% (0,0) -- node [pos=.5,fill=white,rotate=90] {\scriptsize 10 ft} (0,10);
-%\end{scope}
-%\end{tikzpicture}
 
 Compare: % see 09_Parametric_Equations.tex
 \[

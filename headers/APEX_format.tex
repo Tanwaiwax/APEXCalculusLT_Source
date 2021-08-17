@@ -66,53 +66,7 @@
 \numberwithin{figure}{section}
 \numberwithin{equation}{section}
 
-\usepackage{amsthm}
-
-\newtheoremstyle{apexExample}% name
-  {0pt}% Space above, empty = `usual value'
-  {0pt}% Space below
-  {}% Body font
-  {}% Indent amount (empty = no indent, \parindent = para indent)
-  {\bfseries}% Thm head font
-  {}% Punctuation after thm head
-  {\newline}% Space after thm head
-  {\parbox[t]{8em}{\bfseries\thmname{#1} \thmnumber{#2}}%
-   \thmnote{\parbox[t]{.75\textwidth}{\bfseries\raggedright#3}}%
-  }
-
-\newtheoremstyle{apex}% name
-  {0pt}% Space above, empty = `usual value'
-  {0pt}% Space below
-  {}% Body font
-  {}% Indent amount (empty = no indent, \parindent = para indent)
-  {\bfseries}% Thm head font
-  {}% Punctuation after thm head
-  {\newline}% Space after thm head
-  {\parbox[t]{8em}{\bfseries\thmname{#1} \thmnumber{#2}}%
-   \thmnote{\parbox[t]{.7\textwidth}{\bfseries\raggedright#3}}%
-  }% Thm head spec
-  % the padding for the box takes just a bit of room away from these that examples get to keep
-
-\theoremstyle{apexExample}
-\newtheorem{example}{Example}[section]
-\newcommand{\exampleautorefname}{Example}
-\theoremstyle{apex}
-
-
-\makeatletter
-\renewenvironment{proof}[1][\proofname]{\pagebreak[2]\par
-  \pushQED{\qed}%
-  \normalfont \topsep6\p@\@plus6\p@\relax
-  \trivlist
-  \item[\hskip\labelsep
-        \bfseries
-    #1]\mbox{}\\* % something is needed to be able to get a newline
-}{%
-  \popQED\endtrivlist\@endpefalse
-}
-\makeatother
-\renewcommand{\qedsymbol}{\ensuremath{\square}}
-
+%%%%%%%%%%%%%%%%%%%%%
 
 \makeindex
 
@@ -399,8 +353,10 @@
 
 \newlist{sectionexercises}{enumerate}{1}
 \newcounter{saveexercisenum}[section]
+\counterwithin*{sectionexercisesi}{section} % in case we have a exercise set before any exercises that would reset the save exercise enum
 \setlist[sectionexercises]{
 	label=\arabic*.,
+	ref=\arabic*,
 	leftmargin=1.5em,
     before=\setcounter{sectionexercisesi}{\value{saveexercisenum}},
     after=\setcounter{saveexercisenum}{\value{sectionexercisesi}},
@@ -509,6 +465,7 @@
 
 \newcommand{\exercise}[2]{%
  \openenumerate%
+ \setlist[enumerate,1]{label=(\alph*)}%
  \item \parbox[t]{\linewidth}{#1}%
 }
 \newcommand{\showexerciseanswers}{%
@@ -539,6 +496,7 @@
    \chapter*{#2\footnote{Revised \today}}%
   }%
  }%
+ \phantomsection
  \addcontentsline{toc}{chapter}{#2}%
  \begin{multicols}{2}%
   \small\raggedright%

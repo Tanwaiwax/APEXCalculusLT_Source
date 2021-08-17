@@ -2,11 +2,11 @@
 
 In this section we will find connections between differential calculus (derivatives and antiderivatives) and integral calculus (definite integrals). These connections between the major ideas of calculus are important enough to be called the Fundamental Theorem of Calculus. These connections will also explain why we use the term indefinite integral for the set of all antiderivatives, and why we use such similar notations for antiderivatives and definite integrals.
 
-Let $f(t)$ be a continuous function defined on $[a,b]$. The definite integral $\int_a^b f(x)\ dx$ is the ``area under $f\ $'' on $[a,b]$. We can turn this concept into a function by letting the upper (or lower) bound vary.
+Let $f(t)$ be a continuous function defined on $[a,b]$. The definite integral $\int_a^b f(x)\dd x$ is the ``area under $f\ $'' on $[a,b]$. We can turn this concept into a function by letting the upper (or lower) bound vary.
 
-Let $F(x) = \int_a^x f(t)\ dt$. It computes the area under $f$ on $[a,x]$ as illustrated in \autoref{fig:ftc1}. We can study this function using our knowledge of the definite integral. For instance, $F(a)=0$ since $\int_a^af(t)\ dt=0$. %If $f(t)>0$, then $F(x)>0$ when $x>a$ (consider the figure for a visual understanding). If $f$ is defined for values less than $a
+Let $F(x) = \int_a^x f(t)\dd t$. It computes the area under $f$ on $[a,x]$ as illustrated in \autoref{fig:ftc1}. We can study this function using our knowledge of the definite integral. For instance, $F(a)=0$ since $\int_a^af(t)\dd t=0$. %If $f(t)>0$, then $F(x)>0$ when $x>a$ (consider the figure for a visual understanding). If $f$ is defined for values less than $a$
 
-\mtable{The area of the shaded region is $F(x) = \int_a^x f(t)\ dt$.}{fig:ftc1}{\begin{tikzpicture}
+\mtable{The area of the shaded region is $F(x) = \int_a^x f(t)\dd t$.}{fig:ftc1}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick=\empty,
 extra x ticks={1,2.5,3},extra x tick labels={$a$,$x$,$b$},ytick=\empty,
@@ -21,48 +21,51 @@ ymin=-.5,ymax=2,xmin=-.5,xmax=3.5]
 The first part of the Fundamental Theorem of Calculus tells us how to find derivatives of these kinds of functions.
 
 \begin{theorem}[The Fundamental Theorem of Calculus, Part 1]\label{thm:FTC1}
-Let $f$ be continuous on $[a,b]$ and let $F(x) = \int_a^x f(t)\ dt$. Then $F$ is a continuous function on $[a,b]$, differentiable on $(a,b)$, and\index{Fundamental Theorem of Calculus}\index{integration!Fun. Thm. of Calc.}
+Let $f$ be continuous on $[a,b]$ and let $F(x) = \int_a^x f(t)\dd t$. Then $F$ is a continuous function on $[a,b]$, differentiable on $(a,b)$, and\index{Fundamental Theorem of Calculus}\index{integration!Fun. Thm. of Calc.}
 \[\Fp(x)=f(x).\]
 \end{theorem}
 
 \begin{proof}
 In order to see why this is true, we must compute $\ds\lim_{h\to 0}\frac{F(x+h)-F(x)}{h}$. Suppose $x$ and $x+h$ are in $[a,b]$. \autoref{thm:defintprop} implies that
-\[\int_a^{x+h}f(t)\,dt =\int_a^x f(t)\,dt+\int_x^{x+h} f(t)\,dt,\]
+\[\int_a^{x+h}f(t)\dd t =\int_a^x f(t)\dd t+\int_x^{x+h} f(t)\dd t,\]
 which we can rewrite as
-\[\int_x^{x+h} f(t)\,dt=\int_a^{x+h} f(t)\,dt-\int_a^x f(t)\,dt.\]
+\[\int_x^{x+h} f(t)\dd t=\int_a^{x+h} f(t)\dd t-\int_a^x f(t)\dd t.\]
 This allows us to simplify the numerator of the difference quotient in our limit as follows:
 \begin{align*}
 F(x+h)-F(x)
-&=\int_a^{x+h} f(t)\,dt-\int_a^x f(t)\,dt \quad\text{(by the definition of $F$)}\\
-&=\int_x^{x+h} f(t)\,dt,
+&=\int_a^{x+h} f(t)\dd t-\int_a^x f(t)\dd t \quad\text{(by the definition of $F$)}\\
+&=\int_x^{x+h} f(t)\dd t,
 \end{align*}
 so we see that
-\[\lim_{h\to 0}\frac{F(x+h)-F(x)}{h}=\lim_{h\to 0}\frac 1h\int_x^{x+h} f(t)\,dt.\]
+\[\lim_{h\to 0}\frac{F(x+h)-F(x)}{h}=\lim_{h\to 0}\frac 1h\int_x^{x+h} f(t)\dd t.\]
 
 % begin current argument
 Assume for the moment that $h>0$. Since $x$ and $x+h$ are both in $[a,b]$ and $f$ is continuous on $[a,b]$, $f$ is also continuous on $[x,x+h]$. Applying the Extreme Value Theorem (\autoref{thm:extremeVal}), we know that $f$ must have an absolute minimum value $f(u)=m$ and an absolute maximum value $f(v)=M$ on this interval. In other words, $m\leq f(t)\leq M$ whenever $x\leq t\leq x+h$. Using \autoref{thm:further_def_int_props},
 we can now say that
-\[\int_x^{x+h} m\,dt \leq \int_x^{x+h} f(t)\,dt \leq \int_x^{x+h} M\,dt.\]
+\[\int_x^{x+h} m\dd t \leq \int_x^{x+h} f(t)\dd t \leq \int_x^{x+h} M\dd t.\]
 Computing the outer integrals, this becomes 
 \begin{align*}
-m(x+h-x)\leq \int_x^{x+h} f(t)&\,dt \leq M(x+h-x),\quad\text{or}\\
-mh\leq \int_x^{x+h} f(t)&\,dt \leq Mh.
+m(x+h-x)\leq \int_x^{x+h} f(t)&\dd t \leq M(x+h-x),\quad\text{or}\\
+mh\leq \int_x^{x+h} f(t)&\dd t \leq Mh.
 \end{align*}
 Since $h>0$, we may divide by $h$ to obtain
-\[f(u)=m\leq \frac1h\int_x^{x+h} f(t)\,dt \leq M=f(v).\]
+\[f(u)=m\leq \frac1h\int_x^{x+h} f(t)\dd t \leq M=f(v).\]
 
-Now suppose that $h<0$. Preceding as before, we know that $f$ has an absolute minimum value $f(u)=m$ and an absolute maximum value $f(v)=M$ on the interval $[x+h,x]$. We know that $m\leq f(t)\leq M$ whenever $x+h\leq t\leq x$, so we have \[\int_{x+h}^x m\,dt\leq\int_{x+h}^x f(t)\,dt\leq \int_{x+h}^x M\,dt.\] Once again we compute to obtain \[ -mh\leq \int_{x+h}^x f(t)\,dt \leq -Mh.\]
+Now suppose that $h<0$. Preceding as before, we know that $f$ has an absolute minimum value $f(u)=m$ and an absolute maximum value $f(v)=M$ on the interval $[x+h,x]$. We know that $m\leq f(t)\leq M$ whenever $x+h\leq t\leq x$, so we have
+\[\int_{x+h}^x m\dd t\leq\int_{x+h}^x f(t)\dd t\leq \int_{x+h}^x M\dd t.\]
+Once again we compute to obtain
+\[ -mh\leq \int_{x+h}^x f(t)\dd t \leq -Mh.\]
 Since $-h>0$, we can divide by $-h$ to obtain:
 \begin{align*}
-m\leq -\frac1h\int_{x+h}^x f(t)&\,dt \leq M\\
-f(u)=m\leq \frac1h \int_x^{x+h} f(t)&\,dt \leq M=f(v)
+m\leq -\frac1h\int_{x+h}^x f(t)&\dd t \leq M\\
+f(u)=m\leq \frac1h \int_x^{x+h} f(t)&\dd t \leq M=f(v)
 \quad\text{(using \autoref{thm:defintprop}(2))}\\
 \end{align*}
 
 We are now ready to compute the desired limit,
-\[\lim_{h\to 0}\frac{F(x+h)-F(x)}{h}=\lim_{h\to 0}\frac1h\int_x^{x+h} f(t)\,dt.\]
+\[\lim_{h\to 0}\frac{F(x+h)-F(x)}{h}=\lim_{h\to 0}\frac1h\int_x^{x+h} f(t)\dd t.\]
 Whether $h>0$ or $h<0$, we know that
-\[f(u)\leq \frac1h\int_x^{x+h} f(t)\,dt\leq f(v),\]
+\[f(u)\leq \frac1h\int_x^{x+h} f(t)\dd t\leq f(v),\]
 where $u$ and $v$ are both between $x$ and $x+h$. Note that 
 \[\lim_{h\to 0} (x+h)=x \text{\quad and \quad} \lim_{h\to 0} x=x,\]
 so the Squeeze Theorem (\autoref{thm:sqz}) says that
@@ -70,19 +73,19 @@ so the Squeeze Theorem (\autoref{thm:sqz}) says that
 Since $f$ is continuous at $x$, we know that
 \[\lim_{h\to 0} f(u)=f(x)\text{\quad and \quad} \lim_{h\to 0}f(v)=f(x).\]
 Finally, we know that
-\[f(u)\leq \frac1h \int_x^{x+h} f(t)\,dt\leq f(v)\text{,}\]
+\[f(u)\leq \frac1h \int_x^{x+h} f(t)\dd t\leq f(v)\text{,}\]
 so applying the Squeeze Theorem again tells us that
-\[\lim_{h\to 0}\frac1h\int_x^{x+h} f(t)\,dt=f(x).\] 
+\[\lim_{h\to 0}\frac1h\int_x^{x+h} f(t)\dd t=f(x).\] 
 % end current argument. begin alternate argument
 %By the definition of limit, this will be equal to $f(x)$ if for any $\epsilon>0$, we can find a $\delta>0$ so that $\abs h<\delta$ implies that
-%\[\abs{\frac1h\int_x^{x+h}f(t)\ dt-f(x)}<\epsilon.\]
+%\[\abs{\frac1h\int_x^{x+h}f(t)\dd t-f(x)}<\epsilon.\]
 %% pulling out the epsilon-delta definition may be confusing
-%Because $x$ is fixed, $f(x)$ is a constant and is equal to $\frac1h\int_x^{x+h}f(x)\ dt$.  Because $f$ is continuous at $x$, for any $\epsilon>0$, we can find a $\delta>0$ so that $\abs{x-t}<\delta$ implies $\abs{f(x)-f(t)}<\epsilon$.  In this case,
+%Because $x$ is fixed, $f(x)$ is a constant and is equal to $\frac1h\int_x^{x+h}f(x)\dd t$.  Because $f$ is continuous at $x$, for any $\epsilon>0$, we can find a $\delta>0$ so that $\abs{x-t}<\delta$ implies $\abs{f(x)-f(t)}<\epsilon$.  In this case,
 %\begin{multline*}
-% \abs{\frac1h\int_x^{x+h}f(t)\ dt-f(x)}
-% =\abs{\frac1h\int_x^{x+h}f(t)-f(x)\ dt} \\ % this step may be confusing
-% \le\frac1h\int_x^{x+h}\abs{f(t)-f(x)}\ dt
-% <\frac1h\int_x^{x+h}\epsilon\ dt
+% \abs{\frac1h\int_x^{x+h}f(t)\dd t-f(x)}
+% =\abs{\frac1h\int_x^{x+h}f(t)-f(x)\dd t} \\ % this step may be confusing
+% \le\frac1h\int_x^{x+h}\abs{f(t)-f(x)}\dd t
+% <\frac1h\int_x^{x+h}\epsilon\dd t
 % =\epsilon.
 %\end{multline*}
 % end alternate argument
@@ -95,7 +98,7 @@ Therefore $\Fp(x)=f(x)$ as desired.  Because the limit exists, \exautoref{diffim
 Initially this seems simple, as demonstrated in the following example.
 
 \begin{example}[Using the Fundamental Theorem of Calculus, Part 1]\label{ex_ftc2}
-Let $\ds F(x) = \int_{-5}^x (t^2+\sin t)\ dt$. What is $\Fp(x)$?
+Let $\ds F(x) = \int_{-5}^x (t^2+\sin t)\dd t$. What is $\Fp(x)$?
 \solution
 Using the Fundamental Theorem of Calculus, we have\\
 $\Fp(x) = x^2+\sin x$.
@@ -103,18 +106,19 @@ $\Fp(x) = x^2+\sin x$.
 
 This simple example reveals something incredible: $F(x)$ is an antiderivative of $x^2+\sin x$. Therefore, $F(x) = \frac13x^3-\cos x+C$ for some value of $C$. (We can find $C$, but generally we do not care. We know that $F(-5)=0$, which allows us to compute $C$. In this case, $C=\cos(-5)+\frac{125}3$.)
 
-We have done more than found a complicated way of computing an antiderivative. Consider a function $f$ defined on an open interval containing $a$, $b$ and $c$. Suppose we want to compute $\int_a^b f(t)\ dt$. First, let $F(x) = \int_c^x f(t)\ dt$. Using the properties of the definite integral found in \autoref{thm:defintprop}, we know 
+We have done more than found a complicated way of computing an antiderivative. Consider a function $f$ defined on an open interval containing $a$, $b$ and $c$. Suppose we want to compute $\int_a^b f(t)\dd t$. First, let $F(x) = \int_c^x f(t)\dd t$. Using the properties of the definite integral found in \autoref{thm:defintprop}, we know 
 \begin{align*}
-	\int_a^b f(t)\ dt
-	&= \int_a^c f(t)\ dt + \int_c^b f(t)\ dt \\
-	&= -\int_c^a f(t)\ dt + \int_c^b f(t)\ dt \\
+	\int_a^b f(t)\dd t
+	&= \int_a^c f(t)\dd t + \int_c^b f(t)\dd t \\
+	&= -\int_c^a f(t)\dd t + \int_c^b f(t)\dd t \\
 	&=-F(a) + F(b)\\
 	&= F(b) - F(a).
 \end{align*}
 We now see how indefinite integrals and definite integrals are related: we can evaluate a definite integral using antiderivatives.  Furthermore, \autoref{thm:antideriv_const} told us that any other antiderivative $G$ differs from $F$ by a constant: $G(x)=F(x)+C$.  This means that $G(b)-G(a)=(F(b)+C)-(F(a)+C)=F(b)-F(a)$, and the formula we've just found holds for any antiderivative.  Consequently, it does not matter what value of $C$ we use, and we might as well let $C=0$. This proves the second part of the Fundamental Theorem of Calculus.
 
 \begin{theorem}[The Fundamental Theorem of Calculus, Part 2]\label{thm:FTC2}
-Let $f$ be continuous on $[a,b]$ and let $F$ be \emph{any} antiderivative of $f$. Then\index{Fundamental Theorem of Calculus}\index{integration!Fun. Thm. of Calc.} \[\int_a^b f(x)\ dx = F(b) - F(a).\]
+Let $f$ be continuous on $[a,b]$ and let $F$ be \emph{any} antiderivative of $f$. Then\index{Fundamental Theorem of Calculus}\index{integration!Fun. Thm. of Calc.}
+\[\int_a^b f(x)\dd x = F(b) - F(a).\]
 \end{theorem}
 
 %\paragraph{The Constant $C$:}\emph{Any} antiderivative $F(x)$ can be chosen when using the Fundamental Theorem of Calculus to evaluate a definite integral, meaning any value of $C$ can be picked. The constant \emph{always} subtracts out of the expression when evaluating $F(b)-F(a)$, so it does not matter what value is picked. This being the case, we might as well let $C=0$.
@@ -122,13 +126,13 @@ Let $f$ be continuous on $[a,b]$ and let $F$ be \emph{any} antiderivative of $f$
 \youtubeVideo{nHnZVFeQvNQ}{The Fundamental Theorem of Calculus. Part 2}
 
 \begin{example}[Using the Fundamental Theorem of Calculus, Part 2]\label{ex_ftc3}
-We spent a great deal of time in the previous section studying $\int_0^4(4x-x^2)\ dx$. Using the Fundamental Theorem of Calculus, evaluate this definite integral.
+We spent a great deal of time in the previous section studying $\int_0^4(4x-x^2)\dd x$. Using the Fundamental Theorem of Calculus, evaluate this definite integral.
 \solution
 We need an antiderivative of $f(x)=4x-x^2$. All antiderivatives of $f$ have the form $F(x) = 2x^2-\frac13x^3+C$; for simplicity, choose $C=0$.
 
 The Fundamental Theorem of Calculus states
 \[
-\int_0^4(4x-x^2)\ dx = F(4)-F(0)
+\int_0^4(4x-x^2)\dd x = F(4)-F(0)
 = \bigl(2(4)^2-\frac134^3\bigr)-\bigl(0-0\bigr) = 32-\frac{64}3 = 32/3.
 \]
 This is the same answer we obtained using limits in the previous section, just with much less work.
@@ -137,49 +141,49 @@ This is the same answer we obtained using limits in the previous section, just w
 \paragraph{Notation:}\index{integration!notation}%
 A special notation is often used in the process of evaluating definite integrals using the Fundamental Theorem of Calculus. Instead of explicitly writing $F(b)-F(a)$, the notation $F(x)\Big|_a^b$ is used. Thus the solution to \autoref{ex_ftc3} would be written as:
 \[
-\int_0^4(4x-x^2)\ dx = \left.\left(2x^2-\frac13x^3\right)\right|_0^4
+\int_0^4(4x-x^2)\dd x = \left.\left(2x^2-\frac13x^3\right)\right|_0^4
 = \bigl(2(4)^2-\frac134^3\bigr)-\bigl(0-0\bigr) =  32/3.
 \]
 
 \begin{example}[Using the Fundamental Theorem of Calculus, Part 2]\label{ex_ftc4}
 Evaluate the following definite integrals.
 \[
-1.\ \int_{-2}^2 x^3\ dx \quad 2.\ \int_0^\pi \sin x\ dx \qquad
-3.\ \int_0^5 e^t\ dt \qquad 4.\ \int_4^9 \sqrt{u}\ du\qquad 5.\ \int_1^5 2\ dx
+1.\ \int_{-2}^2 x^3\dd x \qquad 2.\ \int_0^\pi \sin x\dd x \qquad
+3.\ \int_0^5 e^t\dd t \qquad 4.\ \int_4^9 \sqrt{u}\dd u\qquad 5.\ \int_1^5 2\dd x
 \]
 \vspace{-10pt}
 \solution
 \begin{enumerate}
-\item	$\ds \int_{-2}^2 x^3\ dx = \left.\frac14x^4\right|_{-2}^2 = \left(\frac142^4\right) - \left(\frac14(-2)^4\right) = 0.$
-\item	$\ds \int_0^\pi \sin x\ dx = -\cos x\Big|_0^\pi = -\cos \pi- \bigl(-\cos 0\bigr) = 1+1=2.$ \\
+\item	$\ds \int_{-2}^2 x^3\dd x = \left.\frac14x^4\right|_{-2}^2 = \left(\frac142^4\right) - \left(\frac14(-2)^4\right) = 0.$
+\item	$\ds \int_0^\pi \sin x\dd x = -\cos x\Big|_0^\pi = -\cos \pi- \bigl(-\cos 0\bigr) = 1+1=2.$ \\
 (This is interesting; it says that the area under one ``hump'' of a sine curve is 2.)
-\item	$\ds \int_0^5e^t\ dt = e^t\Big|_0^5 = e^5 - e^0 = e^5-1 \approx 147.41.$
-\item	$\ds \int_4^9 \sqrt{u}\ du = \int_4^9 u^\frac12\ du = \left.\frac23u^\frac32\right|_4^9 = \frac23\left(9^\frac32-4^\frac32\right) = \frac23\bigl(27-8\bigr) =\frac{38}3.$
-\item	$\ds \int_1^5 2\ dx = 2x\Big|_1^5 = 2(5)-2=2(5-1)=8.$ 
+\item	$\ds \int_0^5e^t\dd t = e^t\Big|_0^5 = e^5 - e^0 = e^5-1 \approx 147.41.$
+\item	$\ds \int_4^9 \sqrt{u}\dd u = \int_4^9 u^\frac12\ du = \left.\frac23u^\frac32\right|_4^9 = \frac23\left(9^\frac32-4^\frac32\right) = \frac23\bigl(27-8\bigr) =\frac{38}3.$
+\item	$\ds \int_1^5 2\dd x = 2x\Big|_1^5 = 2(5)-2=2(5-1)=8.$ 
 
 This integral is interesting; the integrand is a constant function, hence we are finding the area of a rectangle with width $(5-1)=4$ and height 2. Notice how the evaluation of the definite integral led to $2(4)=8$. 
 
-In general, if $c$ is a constant, then $\int_a^b c\ dx = c(b-a)$.
+In general, if $c$ is a constant, then $\int_a^b c\dd x = c(b-a)$.
 \end{enumerate}
 \end{example}
 
 \subsection{The Fundamental Theorem of Calculus and the Chain Rule}
 
-Part 1 of the Fundamental Theorem of Calculus (FTC) states that given $\ds F(x) = \int_a^x f(t)\ dt$,  $\Fp(x) = f(x)$. Using other notation, $\ds \frac{d}{dx}\bigl(F(x)\bigr) = f(x)$. While we have just practiced evaluating definite integrals, sometimes finding antiderivatives is impossible and we need to rely on other techniques to approximate the value of a definite integral. Functions written as $F(x) = \int_a^x f(t)\ dt$ are useful in such situations.
+Part 1 of the Fundamental Theorem of Calculus (FTC) states that given $\ds F(x) = \int_a^x f(t)\dd t$,  $\Fp(x) = f(x)$. Using other notation, $\ds \frac{\dd}{\dd x}\bigl(F(x)\bigr) = f(x)$. While we have just practiced evaluating definite integrals, sometimes finding antiderivatives is impossible and we need to rely on other techniques to approximate the value of a definite integral. Functions written as $F(x) = \int_a^x f(t)\dd t$ are useful in such situations.
 
 It may be of further use to compose such a function with another. As an example, we may compose $F(x)$ with $g(x)$ to get
-\[F\bigl(g(x)\bigr) = \int_a^{g(x)} f(t)\ dt.\]
+\[F\bigl(g(x)\bigr) = \int_a^{g(x)} f(t)\dd t.\]
 What is the derivative of such a function?\index{Fundamental Theorem of Calculus!and Chain Rule} The Chain Rule can be employed to state
 \[
-\frac{d}{dx}\Bigl(F\bigl(g(x)\bigr)\Bigr) = \Fp\bigl(g(x)\bigr)g\primeskip'(x)
+\frac{\dd}{\dd x}\Bigl(F\bigl(g(x)\bigr)\Bigr) = \Fp\bigl(g(x)\bigr)g\primeskip'(x)
 = f\bigl(g(x)\bigr)g\primeskip'(x).
 \]
 An example will help us understand this.
 
 \begin{example}[The FTC, Part 1, and the Chain Rule]\label{ex_ftc11}
-Find the derivative of $\ds F(x) = \int_2^{x^2} \ln t\ dt$.
+Find the derivative of $\ds F(x) = \int_2^{x^2} \ln t\dd t$.
 \solution
-We can view $F(x)$ as being the function $\ds G(x) = \int_2^x \ln t\ dt$ composed with $g(x) = x^2$; that is, $F(x) = G\bigl(g(x)\bigr)$. The Fundamental Theorem of Calculus states that $G\primeskip'(x) = \ln x$. The Chain Rule gives us 
+We can view $F(x)$ as being the function $\ds G(x) = \int_2^x \ln t\dd t$ composed with $g(x) = x^2$; that is, $F(x) = G\bigl(g(x)\bigr)$. The Fundamental Theorem of Calculus states that $G\primeskip'(x) = \ln x$. The Chain Rule gives us 
 \begin{align*}
 F\primeskip'(x) &= G\primeskip'\bigl(g(x)\bigr) g\primeskip'(x) \\
  			&= \ln (g(x)) g\primeskip'(x) \\
@@ -192,31 +196,31 @@ Normally, the steps defining $G(x)$ and $g(x)$ are skipped.
 Practice this once more.
 
 \begin{example}[The FTC, Part 1, and the Chain Rule]\label{ex_ftc12}
-Find the derivative of $\ds F(x) = \int_{\cos x}^5 t^3\ dt$.
+Find the derivative of $\ds F(x) = \int_{\cos x}^5 t^3\dd t$.
 \solution
-Note that $\ds F(x) = -\int_5^{\cos x} t^3\ dt$. Viewed this way, the derivative of $F$ is straightforward:
+Note that $\ds F(x) = -\int_5^{\cos x} t^3\dd t$. Viewed this way, the derivative of $F$ is straightforward:
 \[F\primeskip'(x) = \sin x \cos^3 x.\]
 \end{example}
 
 \subsection{Understanding Motion with the Fundamental Theorem of Calculus}
 
-We established, starting with \autoref{idea:motion}, that the derivative of a position function is a velocity function, and the derivative of a velocity function is an acceleration function. Now consider definite integrals of velocity and acceleration functions. Specifically, if $v(t)$ is a velocity function, what does $\ds \int_a^b v(t)\ dt$ mean?\index{integration!displacement}\index{displacement}
+We established, starting with \autoref{idea:motion}, that the derivative of a position function is a velocity function, and the derivative of a velocity function is an acceleration function. Now consider definite integrals of velocity and acceleration functions. Specifically, if $v(t)$ is a velocity function, what does $\ds \int_a^b v(t)\dd t$ mean?\index{integration!displacement}\index{displacement}
 
 The Fundamental Theorem of Calculus states that
-\[\int_a^b v(t)\ dt = V(b) - V(a),\]
+\[\int_a^b v(t)\dd t = V(b) - V(a),\]
 where $V(t)$ is any antiderivative of $v(t)$. Since $v(t)$ is a velocity function, $V(t)$ must be a position function, and $V(b) - V(a)$ measures a change in position, or \textbf{displacement}.
 
 How would we measure total distance traveled? We have to consider the intervals when $v(t)\geq 0$ and when $v(t)\leq 0$. Therefore,
-\[\text{total distance traveled}=\int_a^b\abs{v(t)}\ dt.\]\bigskip
+\[\text{total distance traveled}=\int_a^b\abs{v(t)}\dd t.\]\bigskip
 
 \begin{example}[Finding displacement and total distance traveled]\label{ex_ftcmotion1}
 A ball is thrown straight up with velocity given by $v(t) = -32t+20$ft/s, where $t$ is measured in seconds. Find, and interpret,
-\[1.\ \int_0^1 v(t)\ dt\qquad\text{and}\qquad 2.\ \int_0^1\abs{v(t)}\ dt.\]
+\[1.\ \int_0^1 v(t)\dd t\qquad\text{and}\qquad 2.\ \int_0^1\abs{v(t)}\dd t.\]
 \solution
 \begin{enumerate}
 \item Using the Fundamental Theorem of Calculus, we have 
 \begin{align*}
-	\int_0^1 v(t)\ dt &= \int_0^1 (-32t+20)\ dt \\
+	\int_0^1 v(t)\dd t &= \int_0^1 (-32t+20)\dd t \\
 	&= -16t^2 + 20t\Big|_0^1 \\
 	&= 4\text{ ft}.
 \end{align*}
@@ -231,9 +235,9 @@ t&=\frac{5}{8}
 
 This means $v(t)>0$ for $t<\frac{5}{8}$ and $v(t)<0$ for $t>\frac{5}{8}$ so we have 
 \begin{align*}
-\int_0^1 \abs{v(t)}\ dt
-&=\int_0^{5/8} v(t)\ dt + \int_{5/8}^1 -v(t)\ dt\\
-&=\int_0^{5/8} -32t+20\ dt + \int_{5/8}^1 32t-20\ dt\\
+\int_0^1 \abs{v(t)}\dd t
+&=\int_0^{5/8} v(t)\dd t + \int_{5/8}^1 -v(t)\dd t\\
+&=\int_0^{5/8} -32t+20\dd t + \int_{5/8}^1 32t-20\dd t\\
 &=\frac{34}{4}=8.5 \text{ ft}.
 \end{align*}
 \end{enumerate}
@@ -247,10 +251,10 @@ Integrating a speed function gives a similar, though different, result. Speed is
 
 %Velocity is ``speed and direction,'' so by taking the direction information away, speed 
 As acceleration is the rate of velocity change, integrating an acceleration function gives total change in velocity. We do not have a simple term for this analogous to displacement. If $a(t) = 5$miles/h$^2$ and $t$ is measured in hours, then 
-\[\int_0^3 a(t)\ dt = 15\]
+\[\int_0^3 a(t)\dd t = 15\]
 means the velocity has increased by 15m/h from $t=0$ to $t=3$.
 
-\mtable[-3.5in]{A graph of a function $f$ to introduce the Mean Value Theorem and differently sized rectangles giving upper and lower bounds on $\int_1^4 f(x)\ dx$; the last rectangle matches the area exactly.}{fig:ftc7b}%
+\mtable[-3.5in]{A graph of a function $f$ to introduce the Mean Value Theorem and differently sized rectangles giving upper and lower bounds on $\int_1^4 f(x)\dd x$; the last rectangle matches the area exactly.}{fig:ftc7b}%
 {\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={1,2,3,4},
@@ -300,31 +304,31 @@ ytick=\empty,ymin=-.5,ymax=1.75,xmin=-.5,xmax=4.5]
 
 \subsection{The Mean Value Theorem and Average Value}
 
-Consider the graph of a function $f$ in \autoref{fig:ftc7b}(a) and the area defined by $\int_1^4 f(x)\ dx$. Three rectangles are then drawn; in (b), the height of the rectangle is greater than $f$ on $[1,4]$, hence the area of this rectangle is is greater than $\int_1^4 f(x)\ dx$. 
+Consider the graph of a function $f$ in \autoref{fig:ftc7b}(a) and the area defined by $\int_1^4 f(x)\dd x$. Three rectangles are then drawn; in (b), the height of the rectangle is greater than $f$ on $[1,4]$, hence the area of this rectangle is is greater than $\int_1^4 f(x)\dd x$.
 
-In (c), the height of the rectangle is smaller than $f$ on $[1,4]$, hence the area of this rectangle is less than $\int_1^4 f(x)\ dx$.
+In (c), the height of the rectangle is smaller than $f$ on $[1,4]$, hence the area of this rectangle is less than $\int_1^4 f(x)\dd x$.
 
-Finally, in (d) the height of the rectangle is such that the area of the rectangle is \emph{exactly} that of $\int_1^4 f(x)\ dx$. Since rectangles that are ``too big\primeskip'', as in (b), and rectangles that are ``too little,'' as in (c), give areas greater/lesser than $\int_1^4 f(x)\ dx$, it makes sense that there is a rectangle, whose top intersects $f(x)$ somewhere on $[1,4]$, whose area is \emph{exactly} that of the definite integral.
+Finally, in (d) the height of the rectangle is such that the area of the rectangle is \emph{exactly} that of $\int_1^4 f(x)\dd x$. Since rectangles that are ``too big\primeskip'', as in (b), and rectangles that are ``too little,'' as in (c), give areas greater/lesser than $\int_1^4 f(x)\dd x$, it makes sense that there is a rectangle, whose top intersects $f(x)$ somewhere on $[1,4]$, whose area is \emph{exactly} that of the definite integral.
 
 We state this idea formally in a theorem.
 
 \begin{theorem}[The Mean Value Theorem of Integration]\label{thm:mvt2}
 Let $f$ be continuous on $[a,b]$.\index{Mean Value Theorem!of integration}\index{integration!Mean Value Theorem} There exists a value $c$ in $(a,b)$ such that
-\[\int_a^bf(x)\ dx = f(c)(b-a).\]
+\[\int_a^bf(x)\dd x = f(c)(b-a).\]
 \end{theorem}
 
 This is an \emph{existential} statement; $c$ exists, but we do not provide a method of finding it. \autoref{thm:mvt2} is directly connected to the Mean Value Theorem of Differentiation, given %in \autoref{sec:mvt} 
 as \autoref{thm:mvt}. %; we leave it to the reader to see how.
 
 \begin{proof}
-If $a=b$, then $\int_a^a f(x)\,dx =0=f(a)(a-a)$. Otherwise, we define the following for $x$ in $[a,b]$:
-\[ F(x)=\int_a^x f(t)\,dt.\]
+If $a=b$, then $\int_a^a f(x)\dd x =0=f(a)(a-a)$. Otherwise, we define the following for $x$ in $[a,b]$:
+\[ F(x)=\int_a^x f(t)\dd t.\]
 Applying \autoref{thm:FTC1}, we know $F$ is differentiable on $(a,b)$ and that $\Fp(x)=f(x)$ for any $x$ in $(a,b)$. We may now apply the Mean Value Theorem for Differentiation (\autoref{thm:mvt}) to see that there is a value $c$ in $(a,b)$ such that
 \[F'(c)=\frac{F(b)-F(a)}{b-a}.\]
-Note that $F'(c)=f(c)$ and that $F(b)-F(a)=\int_a^b f(x)\,dx$ by \autoref{thm:FTC2}. Therefore we can rewrite our equation as: 
+Note that $F'(c)=f(c)$ and that $F(b)-F(a)=\int_a^b f(x)\dd x$ by \autoref{thm:FTC2}. Therefore we can rewrite our equation as: 
 \begin{align*}
-f(c)&=\frac{\int_a^b f(x)\,dx}{b-a},\text{ or}\\
-f(c)(b-a)&=\int_a^b f(x)\,dx.\qedhere
+f(c)&=\frac{\int_a^b f(x)\dd x}{b-a},\text{ or}\\
+f(c)(b-a)&=\int_a^b f(x)\dd x.\qedhere
 \end{align*}
 \end{proof}
 
@@ -345,10 +349,10 @@ ymin=-.25,ymax=1.25,xmin=-.5,xmax=3.5]
 \end{tikzpicture}}
 
 \begin{example}[Using the Mean Value Theorem]\label{ex_ftc8}
-Consider $\ds\int_0^\pi \sin x\ dx$. Find a value $c$ guaranteed by the Mean Value Theorem.
+Consider $\ds\int_0^\pi \sin x\dd x$. Find a value $c$ guaranteed by the Mean Value Theorem.
 \solution
-We first need to evaluate $\ds\int_0^\pi \sin x\ dx$. (This was previously done in \autoref{ex_ftc4}.)
-\[\int_0^\pi\sin x\ dx = -\cos x \Big|_0^\pi = 2.\]
+We first need to evaluate $\ds\int_0^\pi \sin x\dd x$. (This was previously done in \autoref{ex_ftc4}.)
+\[\int_0^\pi\sin x\dd x = -\cos x \Big|_0^\pi = 2.\]
 Thus we seek a value $c$ in $[0,\pi]$ such that $\pi\sin c =2$. 
 \[
  \pi\sin c = 2\quad \Rightarrow\quad
@@ -359,10 +363,10 @@ Thus we seek a value $c$ in $[0,\pi]$ such that $\pi\sin c =2$.
 In \autoref{fig:ftc8} $\sin x$ is sketched along with a rectangle with height $\sin (0.69)$. The area of the rectangle is the same as the area under $\sin x$ on $[0,\pi]$.
 \end{example}
 
-Let $f$ be a function on $[a,b]$ with $c$ such that $f(c)(b-a) = \int_a^bf(x)\ dx$. Consider $\int_a^b\bigl(f(x)-f(c)\bigr)\ dx$:
+Let $f$ be a function on $[a,b]$ with $c$ such that $f(c)(b-a) = \int_a^bf(x)\dd x$. Consider $\int_a^b\bigl(f(x)-f(c)\bigr)\dd x$:
 \begin{align*}
-	\int_a^b\bigl(f(x)-f(c)\bigr)\ dx
-	&= \int_a^b f(x) - \int_a^b f(c)\ dx\\
+	\int_a^b\bigl(f(x)-f(c)\bigr)\dd x
+	&= \int_a^b f(x) - \int_a^b f(c)\dd x\\
 	&= f(c)(b-a) - f(c)(b-a) \\
 	&= 0.
 \end{align*}
@@ -400,7 +404,7 @@ ymin=-1,ymax=3.5,xmin=-.5,xmax=4.25]
 When $f(x)$ is shifted by $-f(c)$, the amount of area under $f$ above the $x$-axis on $[a,b]$ is the same as the amount of area below the $x$-axis above $f$; see \autoref{fig:ftc9} for an illustration of this. In this sense, we can say that $f(c)$ is the \emph{average value} of $f$ on $[a,b]$. 
 
 The value $f(c)$ is the average value in another sense. First, recognize that the Mean Value Theorem can be rewritten as
-\[f(c) = \frac{1}{b-a}\int_a^b f(x)\ dx,\]
+\[f(c) = \frac{1}{b-a}\int_a^b f(x)\dd x,\]
 for some value of $c$ in $[a,b]$. Next, partition the interval $[a,b]$ into $n$ equally spaced subintervals, $a=x_1 < x_2 < \dots < x_{n+1}=b$ and choose any $c_i$ in $[x_i,x_{i+1}]$. The average of the numbers $f(c_1)$, $f(c_2)$, \dots, $f(c_n)$ is:
 \[\frac1n\Bigl(f(c_1) + f(c_2) + \dots + f(c_n)\Bigr) = \frac1n\sum_{i=1}^n f(c_i).\]
 Multiply this last expression by 1 in the form of $\frac{(b-a)}{(b-a)}$:
@@ -415,7 +419,7 @@ Multiply this last expression by 1 in the form of $\frac{(b-a)}{(b-a)}$:
 Now take the limit as $n\to\infty$:
 \[
  \lim_{n\to\infty} \frac{1}{b-a} \sum_{i=1}^n f(c_i)\Delta x\quad
- = \quad \frac{1}{b-a} \int_a^b f(x)\ dx\quad = \quad  f(c).
+ = \quad \frac{1}{b-a} \int_a^b f(x)\dd x\quad = \quad  f(c).
 \]
 This tells us this: when we evaluate $f$ at $n$ (somewhat) equally spaced points in $[a,b]$, the average value of these samples is $f(c)$ as $n\to\infty$.
 
@@ -423,20 +427,20 @@ This leads us to a definition.
 
 \begin{definition}[The Average Value of $f$ on {$[a,b]$}]\label{def:av_val}
 Let $f$ be continuous on $[a,b]$. The \textbf{average value of\ \ $\mathbf{f}$\ \ on $\mathbf{[a,b]}$} is $f(c)$, where $c$ is a value in $[a,b]$ guaranteed by the Mean Value Theorem.\index{integration!average value}\index{average value of function} I.e., 
-\[\text{Average Value of $f$ on $[a,b]$} = \frac{1}{b-a}\int_a^b f(x)\ dx.\]
+\[\text{Average Value of $f$ on $[a,b]$} = \frac{1}{b-a}\int_a^b f(x)\dd x.\]
 \end{definition}
 
 An application of this definition is given in the following example.
 
 \begin{example}[Finding the average value of a function]\label{ex_ftc10}
-An object moves back and forth along a straight line with a velocity given by $v(t) = (t-1)^2$ on $[0,3]$, where $t$ is measured in seconds and $v(t)$ is measured in ft/s. 
+An object moves back and forth along a straight line with a velocity given by $v(t) = (t-1)^2$ on $[0,3]$, where $t$ is measured in seconds and $v(t)$ is measured in ft/s.
 
 What is the average velocity of the object?
 \solution
 By our definition, the average velocity is:
 \[
-\frac1{3-0}\int_0^3 (t-1)^2\ dt
-= \frac13 \int_0^3 \bigl(t^2-2t+1\bigr)\ dt
+\frac1{3-0}\int_0^3 (t-1)^2\dd t
+= \frac13 \int_0^3 \bigl(t^2-2t+1\bigr)\dd t
 = \left.\frac13\left(\frac13t^3-t^2+t\right)\right|_0^3
 = 1\text{ ft/s}.
 \]
@@ -444,7 +448,7 @@ By our definition, the average velocity is:
 
 We can understand the above example through a simpler situation. Suppose you drove 100 miles in 2 hours. What was your average speed? The answer is simple: displacement/time = 100 miles/2 hours = 50 mph.
 
-What was the displacement of the object in \autoref{ex_ftc10}? We calculate this by integrating its velocity function: $\int_0^3 (t-1)^2\ dt = 3$ ft. Its final position was 3 feet from its initial position after 3 seconds: its average velocity was 1 ft/s.\bigskip
+What was the displacement of the object in \autoref{ex_ftc10}? We calculate this by integrating its velocity function: $\int_0^3 (t-1)^2\dd t = 3$ ft. Its final position was 3 feet from its initial position after 3 seconds: its average velocity was 1 ft/s.\bigskip
 
 This section has laid the groundwork for a lot of great mathematics to follow. The most important lesson is this: definite integrals can be evaluated using antiderivatives. Since the previous section established that definite integrals are the limit of Riemann sums, we can later create Riemann sums to approximate values other than ``area under the curve,'' convert the sums to definite integrals, then evaluate these using the Fundamental Theorem of Calculus. This will allow us to compute the work done by a variable force, the volume of certain solids, the arc length of curves, and more.
 

@@ -7,6 +7,8 @@
 # | License:     Creative Commons Attribution 4.0 Unported License      | #
 # |    http://creativecommons.org/licenses/by/4.0/                      | #
 # \=====================================================================/ #
+
+package apex;
 use strict;
 use warnings;
 use LaTeXML::Package;
@@ -34,13 +36,24 @@ DefMacro('\genVideo [] Verbatim Verbatim {}',
 
 DefMacro('\embedVideo Verbatim','\iframe{#1}{560}{355}');
 DefConstructor('\iframe Verbatim {}{}',
-	       '<ltx:rawhtml>'.
-	       '<xhtml:iframe width="560" height="355" '.
-	       'src="#1" frameborder="0" scrolling="no" seamless="seamless" '.
-	       'allowfullscreen="allowfullscreen" '.
-	       'webkitallowfullscreen="webkitallowfullscreen" '.
-	       'mozallowfullscreen="mozallowfullscreen">'.
-	       '</xhtml:iframe></ltx:rawhtml>');
+           '<ltx:rawhtml>'.
+           '<xhtml:iframe %&apex::getEmbeddedVideoAttr(#1,#2,#3) />'.
+           '</ltx:rawhtml>');
+sub getEmbeddedVideoAttr {
+    return {
+        src                  => $_[0],
+        width                => $_[1],
+        height               => $_[2],
+        title                =>'Embedded video',
+        frameborder          =>0,
+        scrolling            =>'no',
+        seamless             =>'seamless',
+        allow                =>'fullscreen',
+        allowfullscreen      =>'allowfullscreen',
+        mozallowfullscreen   =>'mozallowfullscreen',
+        webkitallowfullscreen=>'webkitallowfullscreen'
+    };
+}
 
 DefMacro('\lxIncludeJavascriptFile{}',
 	 '\AtBeginDocument{\lx@include@file{javascript}{#1}}');
@@ -100,9 +113,32 @@ DefMacro('\apexchapter []{}{}',
 	 .'\addcontentsline{toc}{section}{Chapter Introduction}');
 
 
-DefMacro('\myincludegraphicsthree{}{} Semiverbatim',
-	 '\myincludegraphics[#2]{#3_3D}');
-DefMacro('\myincludeasythree{}{} Semiverbatim','\myincludegraphics[#2]{#3}');
+DefConstructor('\myincludeasythree{}{} Semiverbatim',
+    '<ltx:rawhtml>'.
+    '<xhtml:iframe %&apex::getIframeAttr(#3)/>'.
+    '</ltx:rawhtml><ltx:break/>'.
+    '(<ltx:ref class="ltx_href" href="#3.html">fullscreen</ltx:ref>)');
+
+sub getIframeAttr {
+    my $filename = $_[0];
+    my %iframeAttr;
+    $filename = ToString($filename).'.html';
+    open(HTML,'<',$filename) or Error('missing_file',$filename,undef,"Can't find file.");
+    $filename =~ s[figures/][];
+    while(<HTML>) {
+        if ( /iframe/ ) {
+            s[iframe|<|>|/|"][]g;
+            s/^ //;
+            s[$filename][figures/$filename];
+            chomp;
+            %iframeAttr = split / +|=/;
+            last;
+        }
+    }
+    close(HTML);
+    return \%iframeAttr;
+}
+
 
 DefMacro('\flushinner{}','{#1}');
 DefMacro('\flushouter{}','{#1}');

@@ -57,7 +57,7 @@ The velocity of an object moving straight up/down under the acceleration of grav
 It is straightforward to find the initial velocity; at time $t=0$, $v(0) =-32\cdot 0+48 = 48 $ ft/s.
 
 To answer questions about the height of the object, we need to find the object's position function $s(t)$. This is an initial value problem, which we studied in the previous section. We are told the initial height is 0, i.e., $s(0) = 0$. We know $s\primeskip'(t) = v(t) = -32t+48$. To find $s$, we find the indefinite integral of $v(t)$:
-\[s(t)=\int v(t)\ dt = \int (-32t+48)\ dt = -16t^2+48t+C.\]
+\[s(t)=\int v(t)\dd t = \int (-32t+48)\dd t = -16t^2+48t+C.\]
 Since $s(0) = 0$, we conclude that $C=0$ and $s(t) = -16t^2+48t$.
 
 To find the maximum height of the object, we need to find the maximum of $s$. Recalling our work finding extreme values, we find the critical points of $s$ by setting its derivative equal to 0 and solving for $t$:
@@ -110,7 +110,7 @@ While \autoref{fig:defint2} shows the graph of a function that has a jump discon
 
 \begin{definition}[The Definite Integral]\label{def:def_int}
 Let $y=f(x)$ be continuous on a closed interval $[a,b]$. The \textbf{definite integral of $f$ on $[a,b]$} is the total signed area of $f$ on $[a,b]$, denoted
-\[\int_a^b f(x)\ dx,\]
+\[\int_a^b f(x)\dd x,\]
 where $a$ and $b$ are the \textbf{bounds of integration.}%
 \index{integration!definite}\index{definite integral}%
 \index{integration!notation}\index{integration!area}
@@ -139,20 +139,20 @@ xtick={1,2,3,4,5},ytick={-1,1},ymin=-1.1,ymax=1.1,xmin=-.5,xmax=5.5]
 %
 \begin{multicols}{2}
 \begin{enumerate}
-	\item	$\ds \int_0^3 f(x)\ dx$
-	\item	$\ds \int_3^5 f(x)\ dx$
-	\item	$\ds \int_0^5 f(x)\ dx$
-	\item	$\ds \int_0^3 5f(x)\ dx$
-	\item	$\ds \int_1^1 f(x) \ dx$
+	\item	$\ds \int_0^3 f(x)\dd x$
+	\item	$\ds \int_3^5 f(x)\dd x$
+	\item	$\ds \int_0^5 f(x)\dd x$
+	\item	$\ds \int_0^3 5f(x)\dd x$
+	\item	$\ds \int_1^1 f(x)\dd x$
 	\item[]
 \end{enumerate}
 \end{multicols}
 \solution
 \begin{enumerate}
-	\item	$ \int_0^3 f(x)\ dx$ is the area under $f$ on the interval $[0,3]$. This region is a triangle, so the area is $\int_0^3 f(x)\ dx=\frac12(3)(1) = 1.5$. 
-	\item	$\int_3^5 f(x)\ dx$ represents the area of the triangle found under the $x$-axis on $[3,5]$. The area is $\frac12(2)(1) = 1$; since it is found \emph{under} the $x$-axis, this is ``negative area.'' Therefore $ \int_3^5 f(x)\ dx = -1$.
-	\item	$ \int_0^5f(x)\ dx$ is the total signed area under $f$ on $[0,5]$. This is $1.5 + (-1) = 0.5$.
-	\item	$ \int_0^35f(x)\ dx$ is the area under $5f$ on $[0,3]$. This is sketched in \autoref{fig:defint4a}. Again, the region is a triangle, with height 5 times that of the height of the original triangle. Thus the area is $ \int_0^35f(x)\ dx = 15/2 = 7.5.$
+	\item	$ \int_0^3 f(x)\dd x$ is the area under $f$ on the interval $[0,3]$. This region is a triangle, so the area is $\int_0^3 f(x)\dd x=\frac12(3)(1) = 1.5$. 
+	\item	$\int_3^5 f(x)\dd x$ represents the area of the triangle found under the $x$-axis on $[3,5]$. The area is $\frac12(2)(1) = 1$; since it is found \emph{under} the $x$-axis, this is ``negative area.'' Therefore $ \int_3^5 f(x)\dd x = -1$.
+	\item	$ \int_0^5f(x)\dd x$ is the total signed area under $f$ on $[0,5]$. This is $1.5 + (-1) = 0.5$.
+	\item	$ \int_0^35f(x)\dd x$ is the area under $5f$ on $[0,3]$. This is sketched in \autoref{fig:defint4a}. Again, the region is a triangle, with height 5 times that of the height of the original triangle. Thus the area is $ \int_0^35f(x)\dd x = 15/2 = 7.5.$
 		
 \mtable{A graph of $5f$ in \autoref{ex_defint4}. (Yes, it looks just like the graph of $f$ in \autoref{fig:defint4}, just with a different $y$-scale.)}{fig:defint4a}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -166,22 +166,22 @@ ytick={-5,5},ymin=-5.5,ymax=5.5,xmin=-.5,xmax=5.5]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 		
-	\item	$\int_1^1f(x)\ dx$ is the area under $f$ on the ``interval'' $[1,1]$. This describes a line segment, not a region; it has no width. Therefore the area is 0.
+	\item	$\int_1^1f(x)\dd x$ is the area under $f$ on the ``interval'' $[1,1]$. This describes a line segment, not a region; it has no width. Therefore the area is 0.
 \end{enumerate}
 \end{example}
 
 This example illustrates some of the properties of the definite integral, given in \autoref{thm:defintprop}.
 
-So far, when we have computed a definite integral $\int_a^b f(x)\,dx$, we have required that $a\leq b$. In practice, it is sometimes convenient to be able to compute $\int_a^b f(x)\,dx$ for $a>b$. To do so, we introduce the convention that for any $a$ and $b$, $\int_a^b f(x)\,dx=-\int_b^a f(x)\,dx$. It will be clear why this makes sense after we introduce Riemann sums.
+So far, when we have computed a definite integral $\int_a^b f(x)\dd x$, we have required that $a\leq b$. In practice, it is sometimes convenient to be able to compute $\int_a^b f(x)\dd x$ for $a>b$. To do so, we introduce the convention that for any $a$ and $b$, $\int_a^b f(x)\dd x=-\int_b^a f(x)\dd x$. It will be clear why this makes sense after we introduce Riemann sums.
 
 \begin{theorem}[Properties of the Definite Integral]\label{thm:defintprop}
 Let $f$ and $g$ be continuous on a closed interval $I$ that contains the values $a$, $b$, and $c$, and let $k$ be a constant. The following hold:
 \begin{enumerate}
-	\item $\ds\int_a^a f(x)\,dx=0$
-	\item $\ds\int_a^b f(x)\,dx=-\int_b^a f(x)\,dx$
-	\item $\ds\int_a^b f(x)\,dx+\int_b^c f(x)\,dx=\int_a^c f(x)\,dx$
-	\item $\ds\int_a^b (f(x)\pm g(x))\,dx =\int_a^b f(x)\,dx \pm \int_a^b g(x)\,dx$
-	\item $\ds\int_a^b k\cdot f(x)\,dx =k\cdot \int_a^b f(x)\,dx$
+	\item $\ds\int_a^a f(x)\dd x=0$
+	\item $\ds\int_a^b f(x)\dd x=-\int_b^a f(x)\dd x$
+	\item $\ds\int_a^b f(x)\dd x+\int_b^c f(x)\dd x=\int_a^c f(x)\dd x$
+	\item $\ds\int_a^b (f(x)\pm g(x))\dd x =\int_a^b f(x)\dd x \pm \int_a^b g(x)\dd x$
+	\item $\ds\int_a^b k\cdot f(x)\dd x =k\cdot \int_a^b f(x)\dd x$
 \end{enumerate}%
 %~\hfill\hyperref[pf:defintprop]{(see the proof)}
 \end{theorem}
@@ -223,11 +223,11 @@ What if the picture were like the following?
 \end{tikzpicture}
 
 Then we have
-\[\int_a^b f(x)\,dx=\int_a^c f(x)\,dx+\int_c^b f(x)\,dx\]
+\[\int_a^b f(x)\dd x=\int_a^c f(x)\dd x+\int_c^b f(x)\dd x\]
 and we can apply property 2.
 \begin{align*}
-\int_a^c f(x)\,dx &=\int_a^b f(x)\,dx-\int_c^b f(x)\,dx, \qquad \text{so property 2 yields}\\
-\int_a^c f(x)\,dx &=\int_a^b f(x)\,dx+\int_b^c f(x)\,dx 
+\int_a^c f(x)\dd x &=\int_a^b f(x)\dd x-\int_c^b f(x)\dd x, \qquad \text{so property 2 yields}\\
+\int_a^c f(x)\dd x &=\int_a^b f(x)\dd x+\int_b^c f(x)\dd x 
 \end{align*}
 
 %We give a brief justification of \autoref{thm:defintprop} here.
@@ -237,15 +237,15 @@ and we can apply property 2.
 %		
 %	It is important to note that this still holds true even if $a<b<c$ is not true. We discuss this in the next point.
 %	\item	This property can be viewed a merely a convention to make other properties work well. (Later we will see how this property has a justification all its own, not necessarily in support of other properties.) Suppose $b<a<c$. The discussion from the previous point clearly justifies 
-%	\begin{equation}\int_b^a f(x)\ dx + \int_a^c f(x)\ dx = \int_b^c f(x)\ dx.\label{eq:defint1}\end{equation}
+%	\begin{equation}\int_b^a f(x)\dd x + \int_a^c f(x)\dd x = \int_b^c f(x)\dd x.\label{eq:defint1}\end{equation}
 %	However, we still claim that, as originally stated, 
-%	\begin{equation}\int_a^b f(x)\ dx + \int_b^c f(x)\ dx = \int_a^c f(x)\ dx.\label{eq:defint2}\end{equation}
+%	\begin{equation}\int_a^b f(x)\dd x + \int_b^c f(x)\dd x = \int_a^c f(x)\dd x.\label{eq:defint2}\end{equation}
 %	How do Equations \eqref{eq:defint1} and \eqref{eq:defint2} relate? Start with \autoeqref{eq:defint1}:
 %	\begin{align*}
-%		\int_b^a f(x)\ dx + \int_a^c f(x)\ dx &= \int_b^c f(x)\ dx\\
-%		\int_a^c f(x)\ dx &= -\int_b^a f(x)\ dx + \int_b^c f(x)\ dx\\
+%		\int_b^a f(x)\dd x + \int_a^c f(x)\dd x &= \int_b^c f(x)\dd x\\
+%		\int_a^c f(x)\dd x &= -\int_b^a f(x)\dd x + \int_b^c f(x)\dd x\\
 %	\end{align*}
-%Property $(3)$ justifies changing the sign and switching the bounds of integration on the $\ds -\int_b^a f(x)\ dx$ term; when this is done, Equations \eqref{eq:defint1} and \eqref{eq:defint2} are equivalent.
+%Property $(3)$ justifies changing the sign and switching the bounds of integration on the $\ds -\int_b^a f(x)\dd x$ term; when this is done, Equations \eqref{eq:defint1} and \eqref{eq:defint2} are equivalent.
 %
 %The conclusion is this: by adopting the convention of Property (3), Property (2) holds no matter the order of $a$, $b$ and $c$. Again, in the next section we will see another justification for this property.
 %	\item[4,5.]	Each of these may be non-intuitive. Property (5) states that when one scales a function by, for instance, 7, the area of the enclosed region also is scaled by a factor of 7. Both Properties (4) and (5)  can be proved using geometry. The details are not complicated but are not discussed here.
@@ -268,15 +268,15 @@ ymin=-1.1,ymax=1.1,xmin=-.2,xmax=3.5]
 \end{tikzpicture}}
 %
 \begin{enumerate}
-	\item	Which value is greater: $\ds \int_a^b f(x)\ dx$ or $\ds \int_b^c f(x)\ dx$?
-	\item	Is $\ds \int_a^c f(x)\ dx$ greater or less than 0?
-	\item	Which value is greater: $\ds \int_a^b f(x)\ dx$ or $\ds \int_c^b f(x)\ dx$?
+	\item	Which value is greater: $\ds \int_a^b f(x)\dd x$ or $\ds \int_b^c f(x)\dd x$?
+	\item	Is $\ds \int_a^c f(x)\dd x$ greater or less than 0?
+	\item	Which value is greater: $\ds \int_a^b f(x)\dd x$ or $\ds \int_c^b f(x)\dd x$?
 \end{enumerate}
 \solution
 \begin{enumerate}
-	\item	$\int_a^b f(x)\ dx$ has a positive value (since the area is above the $x$-axis) whereas $\int_b^c f(x)\ dx$ has a negative value. Hence $\int_a^b f(x)\ dx$ is bigger.
-	\item	$\int_a^c f(x)\ dx$ is the total signed area under $f$ between $x=a$ and $x=c$. Since the region below the $x$-axis looks to be larger than the region above, we conclude that the definite integral has a value less than 0.
-	\item	Notice how the second integral has the bounds ``reversed.'' Therefore $\int_c^b f(x)\ dx$ represents a positive number, greater than the area described by the first definite integral. Hence $\int_c^b f(x)\ dx$ is greater.
+	\item	$\int_a^b f(x)\dd x$ has a positive value (since the area is above the $x$-axis) whereas $\int_b^c f(x)\dd x$ has a negative value. Hence $\int_a^b f(x)\dd x$ is bigger.
+	\item	$\int_a^c f(x)\dd x$ is the total signed area under $f$ between $x=a$ and $x=c$. Since the region below the $x$-axis looks to be larger than the region above, we conclude that the definite integral has a value less than 0.
+	\item	Notice how the second integral has the bounds ``reversed.'' Therefore $\int_c^b f(x)\dd x$ represents a positive number, greater than the area described by the first definite integral. Hence $\int_c^b f(x)\dd x$ is greater.
 \end{enumerate}
 \end{example}
 
@@ -318,15 +318,15 @@ ymin=-.5,ymax=5.5,xmin=-3.5,xmax=3.5]
 \\(b)}
 %
 Evaluate the following definite integrals:
-\[1.\quad\int_{-2}^5 (2x-4)\ dx \qquad\qquad 2.\quad\int_{-3}^3 \sqrt{9-x^2}\ dx.\]
+\[1.\quad\int_{-2}^5 (2x-4)\dd x \qquad\qquad 2.\quad\int_{-3}^3 \sqrt{9-x^2}\dd x.\]
 \solution
 \begin{enumerate}
 	\item	It is always useful to sketch the function in the integrand, as shown in \autoref{fig:defint8}(a). We see we need to compute the areas of two regions, which we have labeled $R_1$ and $R_2$. Both are triangles, so the area computation is straightforward:
 	\[R_1: \frac12(4)(8) = 16 \qquad R_2: \frac12(3)6 = 9.\]
 	Region $R_1$ lies under the $x$-axis, hence it is counted as negative area (we can think of the triangle's height as being ``$-8$''), so
-	\[\int_{-2}^5(2x-4)\ dx = -16+9 = -7.\]
+	\[\int_{-2}^5(2x-4)\dd x = -16+9 = -7.\]
 	\item	Recognize that the integrand of this definite integral describes a half circle, as sketched in \autoref{fig:defint8}(b), with radius 3. Thus the area is:
-	\[\int_{-3}^3 \sqrt{9-x^2}\ dx = \frac12\pi r^2 = \frac 92\pi.\]
+	\[\int_{-3}^3 \sqrt{9-x^2}\dd x = \frac12\pi r^2 = \frac 92\pi.\]
 \end{enumerate}
 \end{example}
 

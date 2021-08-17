@@ -1,38 +1,38 @@
 \section{Differentiability and the Total Differential}\label{sec:total_differential}
 
-We studied \textbf{differentials} in \autoref{sec:differentials}, where \autoref{def:differential}  states that if $y=f(x)$ and $f$ is differentiable, then $dy=\fp(x)dx$. One important use of this differential is in Integration by Substitution. Another important application is approximation. Let $\Delta x = dx$ represent a change in $x$. When $dx$ is small, $dy\approx \Delta y$, the change in $y$ resulting from the change in $x$. Fundamental in this understanding is this: as $dx$ gets small, the difference between $\Delta y$ and $dy$ goes to 0. Another way of stating this: as $dx$ goes to 0, the \emph{error} in approximating $\Delta y$ with $dy$ goes to 0.
+We studied \textbf{differentials} in \autoref{sec:differentials}, where \autoref{def:differential}  states that if $y=f(x)$ and $f$ is differentiable, then $\dd y=\fp(x)\dd x$. One important use of this differential is in Integration by Substitution. Another important application is approximation. Let $\Delta x = \dd x$ represent a change in $x$. When $\dd x$ is small, $\dd y\approx \Delta y$, the change in $y$ resulting from the change in $x$. Fundamental in this understanding is this: as $\dd x$ gets small, the difference between $\Delta y$ and $\dd y$ goes to 0. Another way of stating this: as $\dd x$ goes to 0, the \emph{error} in approximating $\Delta y$ with $\dd y$ goes to 0.
 
-We extend this idea to functions of two variables. Let $z=f(x,y)$, and let $\Delta x = dx$ and $\Delta y=dy$ represent changes in $x$ and $y$, respectively. Let $\Delta z = f(x+dx,y+dy) - f(x,y)$ be the change in $z$ over the change in $x$ and $y$. Recalling that $f_x$ and $f_y$ give the instantaneous rates of $z$-change in the $x$- and $y$-directions, respectively, we can approximate $\Delta z$ with $dz = f_xdx+f_ydy$; in words, the total change in $z$ is approximately the change caused by changing $x$ plus the change caused by changing $y$. In a moment we give an indication of whether or not this approximation is any good. First we give a name to $dz$.
+We extend this idea to functions of two variables. Let $z=f(x,y)$, and let $\Delta x = \dd x$ and $\Delta y=\dd y$ represent changes in $x$ and $y$, respectively. Let $\Delta z = f(x+\dd x,y+\dd y) - f(x,y)$ be the change in $z$ over the change in $x$ and $y$. Recalling that $f_x$ and $f_y$ give the instantaneous rates of $z$-change in the $x$- and $y$-directions, respectively, we can approximate $\Delta z$ with $\dd z = f_x\dd x+f_y\dd y$; in words, the total change in $z$ is approximately the change caused by changing $x$ plus the change caused by changing $y$. In a moment we give an indication of whether or not this approximation is any good. First we give a name to $\dd z$.
 
 \begin{definition}[Total Differential]\label{def:total_differential}
-Let $z=f(x,y)$ be continuous on an open set $S$. Let $dx$ and $dy$ represent changes in $x$ and $y$, respectively. Where the partial derivatives $f_x$ and $f_y$ exist, the \textbf{total differential of $z$} is \index{total differential}\index{partial derivative!total differential}
-\[dz = f_x(x,y)dx + f_y(x,y)dy.\]
+Let $z=f(x,y)$ be continuous on an open set $S$. Let $\dd x$ and $\dd y$ represent changes in $x$ and $y$, respectively. Where the partial derivatives $f_x$ and $f_y$ exist, the \textbf{total differential of $z$} is \index{total differential}\index{partial derivative!total differential}
+\[\dd z = f_x(x,y)\dd x + f_y(x,y)\dd y.\]
 \end{definition}
 
 \youtubeVideo{C1Xcj5Xmngc}{Differentials of Functions of Two Variables}
 
 \begin{example}[Finding the total differential]\label{ex_total_diff_10}
-Let $z = x^4e^{3y}$. Find $dz$.
+Let $z = x^4e^{3y}$. Find $\dd z$.
 \solution
 We compute the partial derivatives: $f_x = 4x^3e^{3y}$ and $f_y = 3x^4e^{3y}$. Following \autoref{def:total_differential}, we have
-\[dz = 4x^3e^{3y}dx+3x^4e^{3y}dy.\]
+\[\dd z = 4x^3e^{3y}\dd x+3x^4e^{3y}\dd y.\]
 \end{example}
 
-We \emph{can} approximate $\Delta z$ with $dz$, but as with all approximations, there is error involved. A good approximation is one in which the error is small. At a given point $(x_0,y_0)$, let $E_1$ and $E_2$ be functions of $dx$ and $dy$ such that $E_1dx+E_2dy$ describes this error. Then
+We \emph{can} approximate $\Delta z$ with $\dd z$, but as with all approximations, there is error involved. A good approximation is one in which the error is small. At a given point $(x_0,y_0)$, let $E_1$ and $E_2$ be functions of $\dd x$ and $\dd y$ such that $E_1\dd x+E_2\dd y$ describes this error. Then
 \begin{align*}
-\Delta z &= dz + E_1dx+ E_2dy \\
-		&= f_x(x_0,y_0)dx+f_y(x_0,y_0)dy + E_1dx+E_2dy.
+\Delta z &= \dd z + E_1\dd x+ E_2\dd y \\
+		&= f_x(x_0,y_0)\dd x+f_y(x_0,y_0)\dd y + E_1\dd x+E_2\dd y.
 \end{align*}
-If the approximation of $\Delta z$ by $dz$ is good, then as $dx$ and $dy$ get small,  so does $E_1dx+E_2dy$. The approximation of $\Delta z$ by $dz$ is even better if, as $dx$ and $dy$ go to 0, so do $E_1$ and $E_2$. This leads us to our definition of differentiability.
+If the approximation of $\Delta z$ by $\dd z$ is good, then as $\dd x$ and $\dd y$ get small,  so does $E_1\dd x+E_2\dd y$. The approximation of $\Delta z$ by $\dd z$ is even better if, as $\dd x$ and $\dd y$ go to 0, so do $E_1$ and $E_2$. This leads us to our definition of differentiability.
 
 \begin{definition}[Multivariable Differentiability]\label{def:multi_differentiability}
-Let $z=f(x,y)$ be defined on an open set $S$ containing $(x_0,y_0)$ where $f_x(x_0,y_0)$ and $f_y(x_0,y_0)$ exist. Let $dz$ be the total differential of $z$ at $(x_0,y_0)$, let $\Delta z = f(x_0+dx,y_0+dy) - f(x_0,y_0)$, and let $E_1$ and $E_2$ be functions of $dx$ and $dy$  such that 
-\[\Delta z = dz + E_1dx + E_2dy.\]
+Let $z=f(x,y)$ be defined on an open set $S$ containing $(x_0,y_0)$ where $f_x(x_0,y_0)$ and $f_y(x_0,y_0)$ exist. Let $\dd z$ be the total differential of $z$ at $(x_0,y_0)$, let $\Delta z = f(x_0+\dd x,y_0+\dd y) - f(x_0,y_0)$, and let $E_1$ and $E_2$ be functions of $\dd x$ and $\dd y$ such that 
 \index{differentiable}\index{derivative!multivariable differentiability}\index{multivariable function!differentiability}
+\[\Delta z = \dd z + E_1\dd x + E_2\dd y.\]
 \begin{enumerate}
-	\item $f$ is \textbf{differentiable at $(x_0,y_0)$} if%, given $\epsilon >0$, there is a $\delta >0$ such that if $\norm{\bracket{dx,dy}}< \delta$, then $\norm{\bracket{E_1,E_2}}< \epsilon$. That is, as $dx$ and $dy$ go to 0, so do $E_1$ and $E_2$.
-%	\[\lim_{(dx,dy)\to(0,0)}\norm{\bracket{E_1,E_2}}=0.\]
-	\[\lim_{(dx,dy)\to(0,0)}E_1=0\qquad\text{and}\qquad\lim_{(dx,dy)\to(0,0)}E_2=0.\]
+	\item $f$ is \textbf{differentiable at $(x_0,y_0)$} if%, given $\epsilon >0$, there is a $\delta >0$ such that if $\norm{\bracket{\dd x,\dd y}}< \delta$, then $\norm{\bracket{E_1,E_2}}< \epsilon$. That is, as $\dd x$ and $\dd y$ go to 0, so do $E_1$ and $E_2$.
+%	\[\lim_{(\dd x,\dd y)\to(0,0)}\norm{\bracket{E_1,E_2}}=0.\]
+	\[\lim_{(\dd x,\dd y)\to(0,0)}E_1=0\qquad\text{and}\qquad\lim_{(\dd x,\dd y)\to(0,0)}E_2=0.\]
 	\item $f$ is \textbf{differentiable on $S$} if $f$ is differentiable at every point in $S$. If $f$ is differentiable on $\mathbb{R}^2$, we say that $f$ is \textbf{differentiable everywhere}.
 \end{enumerate}
 \end{definition}
@@ -40,21 +40,21 @@ Let $z=f(x,y)$ be defined on an open set $S$ containing $(x_0,y_0)$ where $f_x(x
 \begin{example}[Showing a function is differentiable]\label{ex_totaldiff1}
 Show $f(x,y) = xy+3y^2$ is differentiable using \autoref{def:multi_differentiability}.
 \solution
-We begin by finding $f(x+dx,y+dy)$, $\Delta z$, $f_x$ and $f_y$.
+We begin by finding $f(x+\dd x,y+\dd y)$, $\Delta z$, $f_x$ and $f_y$.
 \begin{align*}
-f(x+dx,y+dy) &= (x+dx)(y+dy) + 3(y+dy)^2 \\
-						&= xy + xdy+ydx+dx dy + 3y^2+6ydy+3dy^2.
+f(x+\dd x,y+\dd y) &= (x+\dd x)(y+\dd y) + 3(y+\dd y)^2 \\
+						&= xy + x\dd y+y\dd x+\dd x \dd y + 3y^2+6y\dd y+3\dd y^2.
 \end{align*}
-$\Delta z = f(x+dx,y+dy) - f(x,y)$, so
-\[\Delta z = xdy + ydx + dx dy + 6ydy+3dy^2.\]
+$\Delta z = f(x+\dd x,y+\dd y) - f(x,y)$, so
+\[\Delta z = x\dd y + y\dd x + \dd x \dd y + 6y\dd y+3\dd y^2.\]
 It is straightforward to compute $f_x = y$ and $f_y = x+6y$. Consider once more $\Delta z$:
 \begin{align*}
-\Delta z &= xdy + ydx + dx dy + 6ydy+3dy^2 \qquad \text{ (now reorder)}\\
-		&= ydx + xdy+6ydy+ dx dy + 3dy^2\\
-		&= \underbrace{(y)}_{f_x}dx + \underbrace{(x+6y)}_{f_y}dy + \underbrace{(dy)}_{E_1}dx+\underbrace{(3dy)}_{E_2}dy\\
-		&= f_xdx + f_ydy + E_1dx+E_2dy.
+\Delta z &= x\dd y + y\dd x + \dd x \dd y + 6y\dd y+3\dd y^2 \qquad \text{ (now reorder)}\\
+		&= y\dd x + x\dd y+6y\dd y+ \dd x \dd y + 3\dd y^2\\
+		&= \underbrace{(y)}_{f_x}\dd x + \underbrace{(x+6y)}_{f_y}\dd y + \underbrace{(\dd y)}_{E_1}\dd x+\underbrace{(3\dd y)}_{E_2}\dd y\\
+		&= f_x\dd x + f_y\dd y + E_1\dd x+E_2\dd y.
 \end{align*}
-With $E_1 = dy$ and $E_2 = 3dy$, it is clear that as $dx$ and $dy$ go to 0, $E_1$ and $E_2$ also go to 0. Since this did not depend on a specific point $(x_0,y_0)$, we can say that $f(x,y)$ is differentiable for all pairs $(x,y)$ in $\mathbb{R}^2$, or, equivalently, that $f$ is differentiable everywhere.
+With $E_1 = \dd y$ and $E_2 = 3\dd y$, it is clear that as $\dd x$ and $\dd y$ go to 0, $E_1$ and $E_2$ also go to 0. Since this did not depend on a specific point $(x_0,y_0)$, we can say that $f(x,y)$ is differentiable for all pairs $(x,y)$ in $\mathbb{R}^2$, or, equivalently, that $f$ is differentiable everywhere.
 \end{example}
 
 Our intuitive understanding of differentiability of functions $y=f(x)$ of one variable was that the graph of $f$ was ``smooth.'' A similar intuitive understanding of functions $z=f(x,y)$ of two variables is that the surface defined by $f$ is also ``smooth,'' not containing cusps, edges, breaks,  etc. The following theorem
@@ -95,29 +95,29 @@ The theorems assure us that essentially all functions that we see in the course 
 
 \subsection{Approximating with the Total Differential}
 
-By the definition, when $f$ is differentiable $dz$ is a good approximation for $\Delta z$ when $dx$ and $dy$ are small. We give some simple examples of how this is used here.
+By the definition, when $f$ is differentiable $\dd z$ is a good approximation for $\Delta z$ when $\dd x$ and $\dd y$ are small. We give some simple examples of how this is used here.
 
 \begin{example}[Approximating with the total differential]\label{ex_totaldiff2}
 Let $f(x,y)=\sqrt{x}\sin y$. Approximate $f(4.1,0.2)$.
 \solution
 We can approximate $f(4.1,0.2)$ using $f(4,0)=0$. Without calculus, this is the best approximation we could reasonably come up with. The total differential gives us a way of adjusting this initial approximation to hopefully get a more accurate answer.
 
-We let $\Delta z = f(4.1,0.2) - f(4,0)$. The total differential $dz$ is approximately equal to $\Delta z$, so
+We let $\Delta z = f(4.1,0.2) - f(4,0)$. The total differential $\dd z$ is approximately equal to $\Delta z$, so
 \begin{equation}
-f(4.1,0.2) - f(4,0) \approx dz
+f(4.1,0.2) - f(4,0) \approx \dd z
 \quad \Rightarrow \quad
-f(4.1,0.2) \approx dz + f(4,0).\label{eq:totaldiff2}
+f(4.1,0.2) \approx \dd z + f(4,0).\label{eq:totaldiff2}
 \end{equation}
-To find $dz$, we need $f_x$ and $f_y$.
+To find $\dd z$, we need $f_x$ and $f_y$.
 \begin{align*}
 f_x(x,y) &= \frac{\sin y}{2\sqrt{x}} \quad\Rightarrow&
 f_x(4,0) &= \frac{\sin0}{2\sqrt{4}}=0 \\
 f_y(x,y) &= \sqrt{x}\cos y \quad\Rightarrow&
 f_y(4,0) &= \sqrt{4}\cos0=2
 \end{align*}
-Approximating $4.1$ with 4 gives $dx = 0.1$; approximating $0.2$ with $0$ gives $dy=0.2$. Thus
+Approximating $4.1$ with 4 gives $\dd x = 0.1$; approximating $0.2$ with $0$ gives $\dd y=0.2$. Thus
 \[
-dz(4,0) = f_x(4,0)(0.1) + f_y(4,0)(0.2)
+\dd z(4,0) = f_x(4,0)(0.1) + f_y(4,0)(0.2)
 =0(0.1) + 2(0.2)
 =0.4.
 \]
@@ -139,9 +139,9 @@ It may be surprising to learn that it is not uncommon to know the values of $f$,
 \begin{example}[Approximating an unknown function]\label{ex_totaldiff3}
 Given that $f(2,-3) = 6$, $f_x(2,-3) = 1.3$ and $f_y(2,-3) = -0.6$, approximate $f(2.1,-3.03)$.
 \solution
-The total differential approximates how much $f$ changes from the point $(2,-3)$ to the point $(2.1,-3.03)$. With $dx = 0.1$ and $dy = -0.03$, we have
+The total differential approximates how much $f$ changes from the point $(2,-3)$ to the point $(2.1,-3.03)$. With $\dd x = 0.1$ and $\dd y = -0.03$, we have
 \begin{align*}
-dz &= f_x(2,-3)dx + f_y(2,-3)dy\\
+\dd z &= f_x(2,-3)\dd x + f_y(2,-3)\dd y\\
 		&= 1.3(0.1) + (-0.6)(-0.03) \\
 		&= 0.148.
 \end{align*}
@@ -158,9 +158,9 @@ A cylindrical steel storage tank is to be built that is 10ft tall and 4ft across
 \solution
 A cylindrical solid with height $h$ and radius $r$ has volume $V = \pi r^2h$. We can view $V$ as a function of two variables, $r$ and $h$. We can compute partial derivatives of $V$:
 \[\frac{\partial V}{\partial r} = V_r(r,h) = 2\pi rh \qquad \text{and}\qquad \frac{\partial V}{\partial h} = V_h(r,h) = \pi r^2.\]
-The total differential is $dV = (2\pi rh)dr + (\pi r^2)dh.$ When $h = 10$ and $r = 2$, we have $dV = 40\pi dr + 4\pi dh$.
-Note that the coefficient of $dr$ is $40\pi%\approx 125.7
-$; the coefficient of $dh$ is a tenth of that%, approximately $12.57$
+The total differential is $\dd V = (2\pi rh)\dd r + (\pi r^2)\dd h.$ When $h = 10$ and $r = 2$, we have $\dd V = 40\pi \dd r + 4\pi \dd h$.
+Note that the coefficient of $\dd r$ is $40\pi%\approx 125.7
+$; the coefficient of $\dd h$ is a tenth of that%, approximately $12.57$
 . A small change in radius will be multiplied by $40\pi$, whereas a small change in height will be multiplied by $4\pi$. Thus the volume of the tank is more sensitive to changes in radius than in height.
 \end{example}
 
@@ -173,23 +173,23 @@ One could make a chart of small changes in radius and height and find exact chan
 The definition of differentiability for functions of three variables is very similar to that of functions of two variables. We again start with the total differential.
 
 \begin{definition}[Total Differential]\label{def:total_differential3}
-Let $w=f(x,y,z)$ be continuous on an open set $S$. Let $dx$, $dy$ and $dz$ represent changes in $x$, $y$ and  $z$, respectively. Where the partial derivatives $f_x$, $f_y$ and $f_z$ exist, the \textbf{total differential of $w$} is
+Let $w=f(x,y,z)$ be continuous on an open set $S$. Let $\dd x$, $\dd y$ and $\dd z$ represent changes in $x$, $y$ and  $z$, respectively. Where the partial derivatives $f_x$, $f_y$ and $f_z$ exist, the \textbf{total differential of $w$} is
 \index{total differential}\index{partial derivative!total differential} 
-\[dw = f_x(x,y,z)dx + f_y(x,y,z)dy+f_z(x,y,z)dz.\]
+\[\dd w = f_x(x,y,z)\dd x + f_y(x,y,z)\dd y+f_z(x,y,z)\dd z.\]
 \end{definition}
 
 This differential can be a good approximation of the change in $w$ when $w = f(x,y,z)$ is \textbf{differentiable}.
 
 \begin{definition}[Multivariable Differentiability]\label{def:multi_differentiability3}
-Let $w=f(x,y,z)$ be defined on an open set $S$ containing $(x_0,y_0,z_0)$ where $f_x(x_0,y_0,z_0)$, $f_y(x_0,y_0,z_0)$ and $f_z(x_0,y_0,z_0)$ exist. Let $dw$ be the total differential of $w$ at $(x_0,y_0,z_0)$, let $\Delta w = f(x_0+dx,y_0+dy,z_0+dz) - f(x_0,y_0,z_0)$, and let $E_1$, $E_2$ and $E_3$ be functions of $dx$, $dy$ and $dz$  such that
+Let $w=f(x,y,z)$ be defined on an open set $S$ containing $(x_0,y_0,z_0)$ where $f_x(x_0,y_0,z_0)$, $f_y(x_0,y_0,z_0)$ and $f_z(x_0,y_0,z_0)$ exist. Let $\dd w$ be the total differential of $w$ at $(x_0,y_0,z_0)$, let $\Delta w = f(x_0+\dd x,y_0+\dd y,z_0+\dd z) - f(x_0,y_0,z_0)$, and let $E_1$, $E_2$ and $E_3$ be functions of $\dd x$, $\dd y$ and $\dd z$  such that
 \index{differentiable}\index{derivative!multivariable differentiability}\index{multivariable function!differentiability}
-\[\Delta w = dw + E_1dx + E_2dy + E_3dz.\]
+\[\Delta w = \dd w + E_1\dd x + E_2\dd y + E_3\dd z.\]
 \begin{enumerate}
-	\item $f$ is \textbf{differentiable at $(x_0,y_0,z_0)$} if%, given $\epsilon >0$, there is a $\delta >0$ such that if $\norm{\bracket{dx,dy,dz}}< \delta$, then $\norm{\bracket{E_1,E_2,E_3}}<\epsilon$. 
+	\item $f$ is \textbf{differentiable at $(x_0,y_0,z_0)$} if%, given $\epsilon >0$, there is a $\delta >0$ such that if $\norm{\bracket{\dd x,\dd y,\dd z}}< \delta$, then $\norm{\bracket{E_1,E_2,E_3}}<\epsilon$. 
 	\begin{align*}
-	 \lim_{(dx,dy,dz)\to(0,0,0)}E_1 &=0,\\
-	 \lim_{(dx,dy,dz)\to(0,0,0)}E_2 &=0,\qquad\text{and}\\
-	 \lim_{(dx,dy,dz)\to(0,0,0)}E_3 &=0.
+	 \lim_{(\dd x,\dd y,\dd z)\to(0,0,0)}E_1 &=0,\\
+	 \lim_{(\dd x,\dd y,\dd z)\to(0,0,0)}E_2 &=0,\qquad\text{and}\\
+	 \lim_{(\dd x,\dd y,\dd z)\to(0,0,0)}E_3 &=0.
 	\end{align*}
 	\item	$f$ is \textbf{differentiable on $S$} if $f$ is differentiable at every point in $S$. If $f$ is differentiable on $\mathbb{R}^3$, we say that $f$ is \textbf{differentiable everywhere}.
 \end{enumerate}

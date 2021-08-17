@@ -18,7 +18,7 @@ This, of course, is a Riemann sum. Taking a limit as the subinterval lengths go 
 \begin{keyidea}[Work]\label{idea:work}
 Let $F(x)$ be a continuous function on $[a,b]$ describing the amount of force being applied to an object in the direction of travel from distance $x=a$ to distance $x=b$. The total work $W$ done on $[a,b]$ is
 \index{integration!work}\index{work}
-\[W = \int_a^b F(x)\ dx.\]
+\[W = \int_a^b F(x)\dd x.\]
 \end{keyidea}
 
 \youtubeVideo{2pbInn9PkHQ}{Finding Work using Calculus --- The Cable/Rope Problem}
@@ -33,7 +33,7 @@ As $x$ is the amount of rope pulled in, the amount of rope still hanging is $60-
 \[F(x) = (9.8)(0.066)(60-x) = 0.6468(60-x).\]
 
 Thus the total work performed in pulling up the rope is 
-\[W = \int_0^{60} 0.6468(60-x)\ dx = 1,164.24\ \text{J}.\]
+\[W = \int_0^{60} 0.6468(60-x)\dd x = 1,164.24\ \text{J}.\]
 
 By comparison, consider the work done in lifting the entire rope 60 meters. The rope weights $60\times 0.066 \times 9.8 = 38.808$ N, so the work applying this force for 60 meters is $60\times 38.808 = 2,328.48$ J. This is exactly twice the work calculated before (and we leave it to the reader to understand why.)
 \end{example}
@@ -42,11 +42,11 @@ By comparison, consider the work done in lifting the entire rope 60 meters. The 
 Consider again pulling a 60 m rope up a cliff face, where the rope has a mass of 66 g/m. At what point is exactly half the work performed?
 \solution
 From \autoref{ex_work1} we know the total work performed is $1,164.24$ J. We want to find a height $h$ such that the work in pulling the rope from a height of $x=0$ to a height of $x=h$ is 582.12, half the total work. Thus we want to solve for $h$ in the equation
-\[\int_0^h 0.6468(60-x)\ dx = 582.12.\]
+\[\int_0^h 0.6468(60-x)\dd x = 582.12.\]
 
 We see that
 \begin{align*}
-	\int_0^h 0.6468(60-x)\ dx &= 582.12 \\
+	\int_0^h 0.6468(60-x)\dd x &= 582.12 \\
 	\left(38.808x-0.3234x^2\right)\Big|_0^h &=582.12 \\
 	38.808h-0.3234h^2 &=582.12 \\
 	-0.3234h^2+38.808h-582.12 &=0 \qquad\qquad\text{\small(Apply the Quadratic Formula)} \\
@@ -67,17 +67,17 @@ A box of 100 lb of sand is being pulled up at a uniform rate a distance of 50 ft
 \solution
 \begin{enumerate}
 	\item	We start by forming the force function $F_r(x)$ for the rope (where the subscript denotes we are considering the rope). As in the previous example, let $x$ denote the amount of rope, in feet, pulled in. (This is the same as saying $x$ denotes the height of the box.) The weight of the rope with $x$ feet pulled in is $F_r(x) = 0.2(50-x) = 10-0.2x$. (Note that we do not have to include the acceleration of gravity here, for the \emph{weight} of the rope per foot is given, not its \emph{mass} per meter as before.) The work performed lifting the rope is 
-	\[W_r = \int_0^{50} (10-0.2x)\ dx = 250\ \text{ft-lb}.\]
+	\[W_r = \int_0^{50} (10-0.2x)\dd x = 250\ \text{ft-lb}.\]
 	
 	\item	The sand is leaving the box at a rate of 1 lb/s. As the vertical trip is to take one minute, we know that 60 lb will have left when the box reaches its final height of 50 ft. Again letting $x$ represent the height of the box, we have two points on the line that describes the weight of the sand: when $x=0$, the sand weight is 100 lb, producing the point $(0,100)$; when $x=50$, the sand in the box weighs 40 lb, producing the point $(50,40)$. The slope of this line is $\frac{100-40}{0-50} = -1.2$, giving the equation of the weight of the sand at height $x$ as $w(x) = -1.2x+100$. The box itself weighs a constant 5 lb, so the total force function is $F_b(x) = -1.2x+105$. Integrating from $x=0$ to $x=50$ gives the work performed in lifting box and sand:
-	\[W_b = \int_0^{50} (-1.2x+105)\ dx = 3750\ \text{ft-lb.}\]
+	\[W_b = \int_0^{50} (-1.2x+105)\dd x = 3750\ \text{ft-lb.}\]
 	
 	\item	The total work is the sum of $W_r$ and $W_b$: $250+3750=4000$ ft-lb. We can also arrive at this via integration:
 	\begin{align*}
 	W
-	&= \int_0^{50} (F_r(x)+F_b(x))\ dx \\
-	&= \int_0^{50} (10-0.2x-1.2x+105)\ dx \\
-	&= \int_0^{50} (-1.4x+115) \ dx \\
+	&= \int_0^{50} (F_r(x)+F_b(x))\dd x \\
+	&= \int_0^{50} (10-0.2x-1.2x+105)\dd x \\
+	&= \int_0^{50} (-1.4x+115) \dd x \\
 	&= 4000 \ \text{ft-lb.}
 	\end{align*}	
 \end{enumerate}
@@ -106,7 +106,7 @@ In many ways, we are not at all concerned with the actual length of the spring, 
    \draw [thick,draw={\colorone}] (0,0) --(1,1) --(1.5,.5)--(2,.5);
   \end{scope}
  \end{scope}
- \ifbool{latexml}{\draw [shift={(.9,0)},thick,{\colorone},fill=\colorone!40]}{\draw [shift={(.9,0)},thick,{\colorone},left color={\colorone!70},right color={\coloronefill}]}
+ \draw [shift={(.9,0)},thick,{\colorone},left color={\colorone!70},right color={\coloronefill}]
  (2,0) rectangle (2.5,.5);
  \draw [shift={(.9,0)},->,>=stealth]
   (2.75,.15)-= node [pos=.5,above] {$F$} (3.25,.15);
@@ -134,7 +134,7 @@ In many ways, we are not at all concerned with the actual length of the spring, 
     \draw (\x*.4+2.8,.1)--(\x*.4+2.8,-.1) node [below] {\scriptsize $\x$};
    }
   \end{scope}
-  \ifbool{latexml}{\draw [shift={(2.9,0)},thick,{\colorone},fill=\colorone!40]}{\draw [shift={(2.9,0)},thick,{\colorone},left color={\colorone!70},right color={\coloronefill}]}
+  \draw [shift={(2.9,0)},thick,{\colorone},left color={\colorone!70},right color={\coloronefill}]
   (2,0) rectangle (2.5,.5);
  \end{scope}             
 \end{tikzpicture}
@@ -150,7 +150,7 @@ Thus $k = 48$ lb/ft and $F(x) = 48x$.
 We compute the total work performed by integrating $F(x)$ from $x=0$ to $x=5/12$:
 \begin{align*}
 	W
-	&= 	\int_0^{5/12} 48x \ dx \\
+	&= 	\int_0^{5/12} 48x \dd x \\
 	&=	24x^2\Big|_0^{5/12} \\
 	&=  25/6 %\approx 4.1667
 	\ \text{ft-lb.}
@@ -199,9 +199,9 @@ We will refer often to \autoref{fig:pump1a} which illustrates the salient aspect
     \draw [dashed] (3,\y) arc (0:180:3);
 }
 \draw (5.1,14) node {\scriptsize $\left.\rule{0pt}{.3cm}\right\}\Delta y_i$};
-\ifbool{latexml}{\draw [thick,fill=\colorone!60]}{\draw [thick,left color={\colorone},right color={\coloronefill}]}
+\draw [thick,left color={\colorone},right color={\coloronefill}]
  (0,16) circle (3);
-\ifbool{latexml}{\draw [thick,fill=\colorone!60]}{\draw [thick,left color={\colorone},right color={\coloronefill}]}
+\draw [thick,left color={\colorone},right color={\coloronefill}]
  (-3,16) -- (-3,12)  arc (180:360:3) -- (3,16) arc (360:180:3);
 \end{scope}
 \end{tikzpicture}}
@@ -220,7 +220,7 @@ To approximate the total work performed in pumping out all the water from the ta
 \[W \approx \sum_{i=1}^n W_i = \sum_{i=1}^n 6240\pi\Delta y_i(35-y_i).\]
 This is a Riemann sum. Taking the limit as the subinterval length goes to 0 gives 
 \begin{align*}
-W 	&=	\int_0^{30} 6240\pi(35-y)\ dy \\
+W 	&=	\int_0^{30} 6240\pi(35-y)\dd y \\
 		&=  6240\pi\left(35y-\frac{y^2}2\right)\Big|_0^{30} \\
 		&= 	11,762,123 \ \text{ft-lb}\\
 		&\approx  1.176 \times 10^7 \ \text{ft-lb}.
@@ -240,9 +240,9 @@ W 	&=	\int_0^{30} 6240\pi(35-y)\ dy \\
 \draw [thick](3,30) --(3,0) arc (0:-180:3) -- (-3,30);
 \draw [thick] (0,30) circle (3);
 \draw [thick,dashed] (3,0) arc (0:180:3);
-\ifbool{latexml}{\draw [thick,draw={\colorone},fill=\colorone!60]}{\draw [thick,draw={\colorone},left color={\colorone},right color={\coloronefill}]}
+\draw [thick,draw={\colorone},left color={\colorone},right color={\coloronefill}]
  (0,14) circle (3);
-\draw [->] (5.25,16) node [above] {\scriptsize $V(y)=100\pi dy$} -- (2,14);
+\draw [->] (5.25,16) node [above] {\scriptsize $V(y)=100\pi\dd y$} -- (2,14);
 \end{scope}
 \end{tikzpicture}}
 % todo Tim make the simplified water tank into 3d?
@@ -268,21 +268,21 @@ The conical tank is sketched in \autoref{fig:pump2}. We can orient the tank in a
 \draw (0,30) -- node [pos=.5,above] {\scriptsize $2$} (2.9,29.22);                              
 \draw [thick](3,30) --(0,0) -- (-3,30);
 \draw [thick] (0,30) circle (3);
-\ifbool{latexml}{\draw [thick,draw={\colorone},fill=\colorone!60]}{\draw [thick,draw={\colorone},left color={\colorone},right color={\coloronefill}]}
+\draw [thick,draw={\colorone},left color={\colorone},right color={\coloronefill}]
  (0,14) circle (1.4);
-\draw [->] (3.4,6) node [below] {\scriptsize $V(y)=\pi(\frac y5+2)^2 dy$} -- (0,14);
+\draw [->] (3.4,6) node [below] {\scriptsize $V(y)=\pi(\frac y5+2)^2\dd y$} -- (0,14);
 \end{scope}
 \end{tikzpicture}}
 % todo Tim make the water cone into 3d?
 
 The figure also sketches %a differential element,
-a cross-sectional circle. The radius of this circle is variable, depending on $y$. When $y=-10$, the circle has radius 0; when $y=0$, the circle has radius 2. These two points, $(-10,0)$ and $(0,2)$, allow us to find the equation of the line that gives the radius of the cross-sectional circle, which is $r(y) = y/5+2$. Hence the volume of water at this height is $V(y)=\pi(y/5+2)^2dy$, where $dy$ represents a very small height of the slice. The force required to move the water at height $y$ is $F(y) = 62.4\times V(y)$.
+a cross-sectional circle. The radius of this circle is variable, depending on $y$. When $y=-10$, the circle has radius 0; when $y=0$, the circle has radius 2. These two points, $(-10,0)$ and $(0,2)$, allow us to find the equation of the line that gives the radius of the cross-sectional circle, which is $r(y) = y/5+2$. Hence the volume of water at this height is $V(y)=\pi(y/5+2)^2\dd y$, where $\dd y$ represents a very small height of the slice. The force required to move the water at height $y$ is $F(y) = 62.4\times V(y)$.
 
 The distance the water at height $y$ travels is given by $h(y)=3-y$. Thus the total work done in pumping the water from the tank is 
 \begin{align*}
 	W
-	&= \int_{-10}^0 62.4\pi(y/5+2)^2(3-y)\ dy\\
-	&= 62.4\pi\int_{-10}^0\left(-\frac1{25}y^3-\frac{17}{25}y^2-\frac85y+12\right)\ dy\\
+	&= \int_{-10}^0 62.4\pi(y/5+2)^2(3-y)\dd y\\
+	&= 62.4\pi\int_{-10}^0\left(-\frac1{25}y^3-\frac{17}{25}y^2-\frac85y+12\right)\dd y\\
 	&= 62.2\pi\cdot\frac{220}{3} %\approx 14,376
 	\text{ ft-lb.}
 \end{align*}
@@ -322,15 +322,15 @@ For the purposes of this problem we choose to set $y=0$ to represent the bottom 
 \end{tabular}}
 \autoref{fig:pump3}(b) shows the pool oriented with this $y$-axis, along with 2 sample slices as the pool must be split into two different regions. 
 
-The top region lies in the $y$-interval of $[3,6]$, where the length of the sample slice is $25$ ft as shown. As the pool is 20 ft wide, this sample slice of water has a volume of $V(y) = 20\cdot25\cdot dy$.  The water is to be pumped to a height of $y=8$, so the height function is $h(y) = 8-y$. The work done in pumping this top region of water is 
-\[W_t = 62.4\int_3^6 500(8-y)\ dy = 327,600 \text{ ft-lb}.\]
+The top region lies in the $y$-interval of $[3,6]$, where the length of the sample slice is $25$ ft as shown. As the pool is 20 ft wide, this sample slice of water has a volume of $V(y) = 20\cdot25\cdot\dd y$.  The water is to be pumped to a height of $y=8$, so the height function is $h(y) = 8-y$. The work done in pumping this top region of water is 
+\[W_t = 62.4\int_3^6 500(8-y)\dd y = 327,600 \text{ ft-lb}.\]
 
 The bottom region lies in the $y$-interval of $[0,3]$; we need to compute the length of the sample slice in this interval.
 
 One end of the sample slice is at $x=0$ and the other is along the line segment joining the points $(10,0)$ and $(15,3)$. The equation of this line is $y= 3(x-10)/5$; as we will be integrating with respect to $y$, we rewrite this equation as $x=5y/3+10$. So the length of the sample slice is a difference of $x$-values: $x=0$ and $x=5y/3+10$, giving a length of $x=5y/3+10$. 
 
-Again, as the pool is 20 ft wide, this slice of water has a volume of $V(y) = 20\cdot(5y/3+10)\cdot dy$; the height function is the same as before at $h(y)=8-y$. The work performed in emptying this part of the pool is
-\[W_b = 62.4\int_0^3 20(5y/3+10)(8-y)\ dy = 299,520\ \text{ft-lb}.\]
+Again, as the pool is 20 ft wide, this slice of water has a volume of $V(y) = 20\cdot(5y/3+10)\cdot\dd y$; the height function is the same as before at $h(y)=8-y$. The work performed in emptying this part of the pool is
+\[W_b = 62.4\int_0^3 20(5y/3+10)(8-y)\dd y = 299,520\ \text{ft-lb}.\]
 The total work in emptying the pool is 
 \[W = W_b+W_t = 327,600+299,520 = 627,120\ \text{ft-lb}.\]
 Notice how the emptying of the bottom of the pool performs almost as much work as emptying the top. The top portion travels a shorter distance but has more water. In the end, this extra water produces more work.

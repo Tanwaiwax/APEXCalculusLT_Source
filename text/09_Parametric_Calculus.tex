@@ -4,16 +4,16 @@ The previous section defined curves based on parametric equations. In this secti
 
 We are still interested in lines tangent to points on a curve. They describe how the $y$-values are changing with respect to the $x$-values, they are useful in making approximations, and they indicate instantaneous direction of travel.
 
-The slope of the tangent line is still $\frac{dy}{dx}$, and the Chain Rule allows us to calculate this in the context of parametric equations. If $x=f(t)$ and $y=g(t)$, the Chain Rule states that
-\[\frac{dy}{dt} = \frac{dy}{dx}\cdot\frac{dx}{dt}.\]
-Solving for $\frac{dy}{dx}$, we get 
-\[\frac{dy}{dx} = \frac{dy/dt}{dx/dt} = \frac{g\primeskip'(t)}{\fp(t)},\]
+The slope of the tangent line is still $\frac{\dd y}{\dd x}$, and the Chain Rule allows us to calculate this in the context of parametric equations. If $x=f(t)$ and $y=g(t)$, the Chain Rule states that
+\[\frac{\dd y}{\dd t} = \frac{\dd y}{\dd x}\cdot\frac{\dd x}{\dd t}.\]
+Solving for $\frac{\dd y}{\dd x}$, we get 
+\[\frac{\dd y}{\dd x} = \frac{\dd y/\dd t}{\dd x/\dd t} = \frac{g\primeskip'(t)}{\fp(t)},\]
 provided that $\fp(t)\neq 0$. This is important so we label it a Key Idea.
 
-\begin{keyidea}[Finding $\frac{dy}{dx}$ with Parametric Equations.]\label{idea:dydxpar}
-Let $x=f(t)$ and $y=g(t)$, where $f$ and $g$ are differentiable on some open interval $I$ and $\fp(t)\neq 0$ on $I$. Then \index{parametric equations!finding $\frac{dy}{dx}$}\index{derivative!parametric equations}
+\begin{keyidea}[Finding $\frac{\dd y}{\dd x}$ with Parametric Equations.]\label{idea:dydxpar}
+Let $x=f(t)$ and $y=g(t)$, where $f$ and $g$ are differentiable on some open interval $I$ and $\fp(t)\neq 0$ on $I$. Then \index{parametric equations!finding $\frac{\dd y}{\dd x}$}\index{derivative!parametric equations}
 \[
-\frac{dy}{dx}=\frac{dy/dt}{dx/dt}=\frac{g\primeskip'(t)}{\fp(t)}.
+\frac{\dd y}{\dd x}=\frac{\dd y/\dd t}{\dd x/\dd t}=\frac{g\primeskip'(t)}{\fp(t)}.
 \]
 \end{keyidea}
 
@@ -26,13 +26,13 @@ Let a curve $C$ be parameterized by $x=f(t)$ and $y=g(t)$, where $f$ and $g$ are
 \index{tangent line}\index{parametric equations!tangent line}
 \end{definition}
 
-Notice that the tangent line goes through the point $(f(t_0),g(t_0))$.  It is possible for parametric curves to have horizontal and vertical tangents. As expected a horizontal tangent occurs whenever $\frac{dy}{dx} = 0$ or when $\frac{dy}{dt} = 0$ (provided $\frac{dx}{dt} \neq 0$). Similarly, a vertical tangent occurs whenever $\frac{dy}{dx}$ is undefined or when $\frac{dx}{dt} = 0$ (provided $\frac{dy}{dt} \neq 0$).  When $\frac{dy}{dx}$ is defined, however, the tangent line has slope $\frac{g'(t_0)}{\fp(t_0)}$.
+Notice that the tangent line goes through the point $(f(t_0),g(t_0))$.  It is possible for parametric curves to have horizontal and vertical tangents. As expected a horizontal tangent occurs whenever $\frac{\dd y}{\dd x} = 0$ or when $\frac{\dd y}{\dd t} = 0$ (provided $\frac{\dd x}{\dd t} \neq 0$). Similarly, a vertical tangent occurs whenever $\frac{\dd y}{\dd x}$ is undefined or when $\frac{\dd x}{\dd t} = 0$ (provided $\frac{\dd y}{\dd t} \neq 0$).  When $\frac{\dd y}{\dd x}$ is defined, however, the tangent line has slope $\frac{g'(t_0)}{\fp(t_0)}$.
 
 \begin{definition}[Normal Lines]\label{def:normal_par}
 The \textbf{normal line} to a curve $C$ at a point $P$ is the line through $P$ and perpendicular to the tangent line at $P$. For $t=t_0$ the normal line is the line through $(f(t_0), g(t_0))$ with slope $m=-\frac{\fp(t_0)}{g'(t_0)}$, provided $g'(t_0) \neq 0$.\index{normal line}\index{parametric equations!normal line}
 \end{definition}
 
-As with the tangent line we note that it is possible for a normal line to be vertical or horizontal. A horizontal normal line occurs whenever $\frac{dy}{dx}$ is undefined or when $\frac{dx}{dt} = 0$ (provided $\frac{dy}{dt} \neq 0$). Similarly, a vertical normal line occurs whenever $\frac{dy}{dx} = 0$ or when $\frac{dy}{dt} = 0$ (provided $\frac{dx}{dt} \neq 0$). In other words, if the curve $C$ has a vertical tangent  at $(f(t_0), g(t_0))$ the normal line will be horizontal and if the tangent is horizontal the normal line will be a vertical line.
+As with the tangent line we note that it is possible for a normal line to be vertical or horizontal. A horizontal normal line occurs whenever $\frac{\dd y}{\dd x}$ is undefined or when $\frac{\dd x}{\dd t} = 0$ (provided $\frac{\dd y}{\dd t} \neq 0$). Similarly, a vertical normal line occurs whenever $\frac{\dd y}{\dd x} = 0$ or when $\frac{\dd y}{\dd t} = 0$ (provided $\frac{\dd x}{\dd t} \neq 0$). In other words, if the curve $C$ has a vertical tangent  at $(f(t_0), g(t_0))$ the normal line will be horizontal and if the tangent is horizontal the normal line will be a vertical line.
 
 \youtubeVideo{k5QnaGVk1JI}{Derivatives of Parametric Functions}
 
@@ -44,8 +44,8 @@ Let $x=5t^2-6t+4$ and $y=t^2+6t-1$, and let $C$ be the curve defined by these eq
 \end{enumerate}
 \solution
 \begin{enumerate}
-	\item We start by computing $\fp(t) = 10t-6$ and $g\primeskip'(t) =2t+6$. Thus \[\frac{dy}{dx} = \frac{2t+6}{10t-6}.\]
-	Make note of something that might seem unusual: $\frac{dy}{dx}$ is a function of $t$, not $x$. Just as points on the curve are found in terms of $t$, so are the slopes of the tangent lines.
+	\item We start by computing $\fp(t) = 10t-6$ and $g\primeskip'(t) =2t+6$. Thus \[\frac{\dd y}{\dd x} = \frac{2t+6}{10t-6}.\]
+	Make note of something that might seem unusual: $\frac{\dd y}{\dd x}$ is a function of $t$, not $x$. Just as points on the curve are found in terms of $t$, so are the slopes of the tangent lines.
 
 	The point on $C$ at $t=3$ is $(31,26)$. The slope of the tangent line is $m=1/2$ and the slope of the normal line is $m=-2$. Thus,
 	\begin{itemize}
@@ -70,7 +70,7 @@ minor y tick num=1,ymin=-20,ymax=55,xmin=-5,xmax=90]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-	\item	To find where $C$ has a horizontal tangent line, we set $\frac{dy}{dx}=0$ and solve for $t$. In this case, this amounts to setting $g\primeskip'(t)=0$ and solving for $t$ (and making sure that $\fp(t)\neq 0$). 
+	\item	To find where $C$ has a horizontal tangent line, we set $\frac{\dd y}{\dd x}=0$ and solve for $t$. In this case, this amounts to setting $g\primeskip'(t)=0$ and solving for $t$ (and making sure that $\fp(t)\neq 0$). 
 \[g\primeskip'(t)=0 \quad \Rightarrow \quad 2t+6=0 \quad \Rightarrow \quad t=-3.\]
 	The point on $C$ corresponding to $t=-3$ is $(67,-10)$; the tangent line at that point is horizontal (hence with equation $y=-10$).
 		
@@ -90,7 +90,7 @@ minor y tick num=1,ymin=-20,ymax=55,xmin=-5,xmax=90]
 \solution
 \begin{enumerate}
 	\item We compute the derivative following \autoref{idea:dydxpar}:
-	\[\frac{dy}{dx} = \frac{g\primeskip'(t)}{\fp(t)} = -\frac{\cos t}{\sin t}.\]
+	\[\frac{\dd y}{\dd x} = \frac{g\primeskip'(t)}{\fp(t)} = -\frac{\cos t}{\sin t}.\]
 	The derivative is $0$ when $\cos t= 0$; that is, when $t=\pi/2,\ 3\pi/2$. These are the points $(0,1)$ and $(0,-1)$ on the circle.
 
 	The normal line is horizontal (and hence, the tangent line is vertical) when $\sin t=0$; that is, when $t= 0,\ \pi,\ 2\pi$, corresponding to the points $(-1,0)$ and $(0,1)$ on the circle. These results should make intuitive sense.
@@ -116,7 +116,7 @@ as long as $\cos t_0\neq 0$. It is an important fact to recognize that the norma
 \end{enumerate}
 \end{example}
 
-\begin{example}[Tangent lines when $\frac{dy}{dx}$ is not defined]\label{ex_parcalc3}
+\begin{example}[Tangent lines when $\frac{\dd y}{\dd x}$ is not defined]\label{ex_parcalc3}
 Find the equation of the tangent line to the astroid $x=\cos^3 t$, $y=\sin^3t$ at $t=0$, shown in \autoref{fig:parcalc3}.
 \solution
 We start by finding $x\primeskip'(t)$ and $y\primeskip'(t)$:
@@ -133,10 +133,10 @@ ymin=-1.1,ymax=1.1,xmin=-1.1,xmax=1.1,axis equal]
 \end{tikzpicture}}
 %
 \[x\primeskip'(t) = -3\sin t\cos^2t, \qquad y\primeskip'(t) = 3\cos t\sin^2t.\]
-Note that both of these are 0 at $t=0$; the curve is not smooth at $t=0$ forming a cusp on the graph. Evaluating $\frac{dy}{dx}$ at this point returns the indeterminate form of ``0/0''. 
-%$\frac{dy}{dx}$:
-%\[\frac{dy}{dx} = \frac{-3\sin t\cos^2t}{3\cos t\sin^2t} = -\frac{\sin t}{\cos t},\] as long as $\cos t\neq 0$ and $\sin t\neq 0$. When $t=0$, it is tempting to declare that
-%\[\frac{dy}{dx} = -\frac{\sin 0}{\cos 0} = 0,\]
+Note that both of these are 0 at $t=0$; the curve is not smooth at $t=0$ forming a cusp on the graph. Evaluating $\frac{\dd y}{\dd x}$ at this point returns the indeterminate form of ``0/0''. 
+%$\frac{\dd y}{\dd x}$:
+%\[\frac{\dd y}{\dd x} = \frac{-3\sin t\cos^2t}{3\cos t\sin^2t} = -\frac{\sin t}{\cos t},\] as long as $\cos t\neq 0$ and $\sin t\neq 0$. When $t=0$, it is tempting to declare that
+%\[\frac{\dd y}{\dd x} = -\frac{\sin 0}{\cos 0} = 0,\]
 %but this overlooks the fact that we divided earlier with the stipulation that $\sin t\neq 0$. In fact, the graph of the curve has a cusp at $t=0$, as both $x\primeskip'=0$ and $y\primeskip'=0$. 
 
 We can, however, examine the slopes of tangent lines near $t=0$, and take the limit as $t\to 0$. 
@@ -147,36 +147,36 @@ We can, however, examine the slopes of tangent lines near $t=0$, and take the li
 	&= \lim_{t\to0}\left(-\frac{\sin t}{\cos t}\right)\\
 	&= 0.
 \end{align*}
-We have accomplished something significant. When the derivative $\frac{dy}{dx}$ returns an indeterminate form at $t=t_0$, we can define its value by setting it to be $\ds \lim_{t\to t_0}\frac{dy}{dx}$, if that limit exists. This allows us to find slopes of tangent lines at cusps, which can be very beneficial. 
+We have accomplished something significant. When the derivative $\frac{\dd y}{\dd x}$ returns an indeterminate form at $t=t_0$, we can define its value by setting it to be $\ds \lim_{t\to t_0}\frac{\dd y}{\dd x}$, if that limit exists. This allows us to find slopes of tangent lines at cusps, which can be very beneficial. 
 
 We found the slope of the tangent line at $t=0$ to be 0; therefore the tangent line is $y=0$, the $x$-axis.
 \end{example}
 
 \subsection{Concavity}
 
-We continue to analyze curves in the plane by considering their concavity; that is, we are interested in $\frac{d^2y}{dx^2}$, ``the second derivative of $y$ with respect to $x$.'' To find this, we need to find the derivative of $\frac{dy}{dx}$ with respect to $x$; that is,
-\[\frac{d^2y}{dx^2}=\frac{d}{dx}\left[\frac{dy}{dx}\right],\]
-but recall that $\frac{dy}{dx}$ is a function of $t$, not $x$, making this computation not straightforward. \index{concavity}\index{parametric equations!concavity}
+We continue to analyze curves in the plane by considering their concavity; that is, we are interested in $\frac{\dd^2y}{\dd x^2}$, ``the second derivative of $y$ with respect to $x$.'' To find this, we need to find the derivative of $\frac{\dd y}{\dd x}$ with respect to $x$; that is,
+\[\frac{\dd^2y}{\dd x^2}=\frac{\dd}{\dd x}\left[\frac{\dd y}{\dd x}\right],\]
+but recall that $\frac{\dd y}{\dd x}$ is a function of $t$, not $x$, making this computation not straightforward. \index{concavity}\index{parametric equations!concavity}
 
-To make the upcoming notation a bit simpler, let $h(t) = \frac{dy}{dx}$. We want $\frac{d}{dx}[h(t)]$; that is, we want $\frac{dh}{dx}$. We again appeal to the Chain Rule. Note:
+To make the upcoming notation a bit simpler, let $h(t) = \frac{\dd y}{\dd x}$. We want $\frac{\dd}{\dd x}[h(t)]$; that is, we want $\frac{\dd h}{\dd x}$. We again appeal to the Chain Rule. Note:
 \[
-\frac{dh}{dt} = \frac{dh}{dx}\cdot\frac{dx}{dt}
+\frac{\dd h}{\dd t} = \frac{\dd h}{\dd x}\cdot\frac{\dd x}{\dd t}
 \quad \Rightarrow \quad
-\frac{dh}{dx} = \frac{dh/dt}{dx/dt}.
+\frac{\dd h}{\dd x} = \frac{\dd h/\dd t}{\dd x/\dd t}.
 \]
 
-In words, to find $\dfrac{d^2y}{dx^2}$, we first take the derivative of $\dfrac{dy}{dx}$ \emph{with respect to $t$}, then divide by $x\primeskip'(t)$. We restate this as a Key Idea.
+In words, to find $\dfrac{\dd^2y}{\dd x^2}$, we first take the derivative of $\dfrac{\dd y}{\dd x}$ \emph{with respect to $t$}, then divide by $x\primeskip'(t)$. We restate this as a Key Idea.
 % should this be in terms of f and g?
 
-\begin{keyidea}[Finding $\frac{d^2y}{dx^2}$ with Parametric Equations]\label{idea:second_der_par}
+\begin{keyidea}[Finding $\frac{\dd^2y}{\dd x^2}$ with Parametric Equations]\label{idea:second_der_par}
 Let $x=f(t)$ and $y=g(t)$ be twice differentiable functions on an open interval $I$, where $\fp(t)\neq 0$ on $I$. Then 
-\index{parametric equations!finding $\frac{d^2y}{dx^2}$}
+\index{parametric equations!finding $\frac{\dd^2y}{\dd x^2}$}
 \[
-\frac{d^2y}{dx^2}
+\frac{\dd^2y}{\dd x^2}
 \quad = \quad
-\frac{\dfrac{d}{dt}\left[\dfrac{dy}{dx}\right]}{\dfrac{dx}{dt}}
+\frac{\dfrac{\dd}{\dd t}\left[\dfrac{\dd y}{\dd x}\right]}{\dfrac{\dd x}{\dd t}}
 \quad=\quad
-\frac{\dfrac{d}{dt}\left[\dfrac{dy}{dx}\right]}{\fp(t)}.
+\frac{\dfrac{\dd}{\dd t}\left[\dfrac{\dd y}{\dd x}\right]}{\fp(t)}.
 \] 
 \end{keyidea}
 
@@ -185,12 +185,12 @@ Examples will help us understand this Key Idea.
 \begin{example}[Concavity of Plane Curves]\label{ex_parcalc4}
 Let $x=5t^2-6t+4$ and $y=t^2+6t-1$ as in \autoref{ex_parcalc1}. Determine the $t$-intervals on which the graph is concave up/down.
 \solution
-Concavity is determined by the second derivative of $y$ with respect to $x$, $\frac{d^2y}{dx^2}$, so we compute that here following \autoref{idea:second_der_par}.
+Concavity is determined by the second derivative of $y$ with respect to $x$, $\frac{\dd^2y}{\dd x^2}$, so we compute that here following \autoref{idea:second_der_par}.
 
-In \autoref{ex_parcalc1}, we found $\ds\frac{dy}{dx} = \frac{2t+6}{10t-6}$ and $\fp(t) = 10t-6$. So:
+In \autoref{ex_parcalc1}, we found $\ds\frac{\dd y}{\dd x} = \frac{2t+6}{10t-6}$ and $\fp(t) = 10t-6$. So:
 \begin{align*}
-	\frac{d^2y}{dx^2}
-	&= \frac{\frac{d}{dt}\left[\frac{2t+6}{10t-6}\right]}{10t-6} \\
+	\frac{\dd^2y}{\dd x^2}
+	&= \frac{\frac{\dd}{\dd t}\left[\frac{2t+6}{10t-6}\right]}{10t-6} \\
 	&= \frac{-\frac{72}{(10t-6)^2}}{10t-6}\\
 	&= -\frac{72}{(10t-6)^3} \\&= -\frac{9}{(5t-3)^3}
 \end{align*}
@@ -210,9 +210,9 @@ minor y tick num=1,ymin=-20,ymax=55,xmin=-5,xmax=90]
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 
-The graph of the parametric functions is concave up when $\frac{d^2y}{dx^2} > 0$ and concave down when $\frac{d^2y}{dx^2} <0$. We determine the intervals when the second derivative is greater/less than 0 by first finding when it is 0 or undefined.
+The graph of the parametric functions is concave up when $\frac{\dd^2y}{\dd x^2} > 0$ and concave down when $\frac{\dd^2y}{\dd x^2} <0$. We determine the intervals when the second derivative is greater/less than 0 by first finding when it is 0 or undefined.
 
-As the numerator of $\ds -\frac{9}{(5t-3)^3}$ is never 0, $\frac{d^2y}{dx^2} \neq 0$ for all $t$. It is undefined when $5t-3=0$; that is, when $t= 3/5$. Following the work established in \autoref{sec:concavity}, we look at values of $t$ greater or less than $3/5$ on a number line:
+As the numerator of $\ds -\frac{9}{(5t-3)^3}$ is never 0, $\frac{\dd^2y}{\dd x^2} \neq 0$ for all $t$. It is undefined when $5t-3=0$; that is, when $t= 3/5$. Following the work established in \autoref{sec:concavity}, we look at values of $t$ greater or less than $3/5$ on a number line:
 \begin{center}
 \includecodegraphics{figures/matrices/paramcalc}
 \end{center}
@@ -223,15 +223,15 @@ Reviewing \autoref{ex_parcalc1}, we see that when $t=3/5=0.6$, the graph of the 
 \begin{example}[Concavity of Plane Curves]\label{ex_parcalc5}
 Find the points of inflection of the graph of the parametric equations $x=\sqrt{t}$, $y=\sin t$, for $0\leq t\leq 16$.
 \solution
-We need to compute $\frac{dy}{dx}$ and $\frac{d^2y}{dx^2}$. 
+We need to compute $\frac{\dd y}{\dd x}$ and $\frac{\dd^2y}{\dd x^2}$. 
 \begin{gather*}
-\frac{dy}{dx} = \frac{y\primeskip'(t)}{x\primeskip'(t)}
+\frac{\dd y}{\dd x} = \frac{y\primeskip'(t)}{x\primeskip'(t)}
 = \frac{\cos t}{1/(2\sqrt{t})} = 2\sqrt{t}\cos t.\\
-\frac{d^2y}{dx^2} = \frac{\frac{d}{dt}\left[\frac{dy}{dx}\right]}{x\primeskip'(t)} = \frac{\cos t/\sqrt{t}-2\sqrt{t}\sin t}{1/(2\sqrt{t})}=2\cos t-4t\sin t.
+\frac{\dd^2y}{\dd x^2} = \frac{\frac{\dd}{\dd t}\left[\frac{\dd y}{\dd x}\right]}{x\primeskip'(t)} = \frac{\cos t/\sqrt{t}-2\sqrt{t}\sin t}{1/(2\sqrt{t})}=2\cos t-4t\sin t.
 \end{gather*}
-The possible points of inflection are found by setting $\frac{d^2y}{dx^2}=0$. This is not trivial, as equations that mix polynomials and trigonometric functions generally do not have ``nice'' solutions. 
+The possible points of inflection are found by setting $\frac{\dd^2y}{\dd x^2}=0$. This is not trivial, as equations that mix polynomials and trigonometric functions generally do not have ``nice'' solutions. 
 
-\mtable{In (a), a graph of $\frac{d^2y}{dx^2}$, showing where it is approximately 0. In (b), graph of the parametric equations in \autoref{ex_parcalc5} along with the points of inflection.}{fig:parcalc5}{%
+\mtable{In (a), a graph of $\frac{\dd^2y}{\dd x^2}$, showing where it is approximately 0. In (b), graph of the parametric equations in \autoref{ex_parcalc5} along with the points of inflection.}{fig:parcalc5}{%
 \begin{tikzpicture}
 \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,minor x tick num=4,
@@ -278,22 +278,22 @@ We will also need to further add in the assumption that the curve is traced out 
 %
 %We will do this in much the same way that we found the first derivative.  We will
 First, recall how to find the area under $y=F(x)$ on $a\le x\le b$:
-\[A=\int_a^b F(x)\ dx.\]
+\[A=\int_a^b F(x)\dd x.\]
 Now think of the parametric equation $x=f(t)$ as a substitution in the integral, assuming that $a=f(\alpha)$ and $b=f(\beta)$ for the purposes of this formula.  (There is actually no reason to assume that this will always be the case and so we'll give a corresponding formula later if it's the opposite case ($b=f(\alpha)$ and $a=f(\beta)$).)
 
-In order to substitute, we'll need $dx=\fp(t)\ dt$. Plugging this into the area formula above and making sure to change the limits to their corresponding $t$ values gives us
-\[A=\int_\alpha^\beta F(f(t))\fp(t)\ dt.\]
+In order to substitute, we'll need $\dd x=\fp(t)\dd t$. Plugging this into the area formula above and making sure to change the limits to their corresponding $t$ values gives us
+\[A=\int_\alpha^\beta F(f(t))\fp(t)\dd t.\]
 Since we don't know what $F(x)$ is, we'll use the fact that
 \[y=F(x)=F(f(t))=g(t)\]
 and arrive at the formula that we want.
 
 \begin{keyidea}[Area Under a Parametric Curve]\label{ki_param_area}
 The area under the parametric curve given by $x=f(t)$, $y=g(t)$, for $f(\alpha)=a<x<b=f(\beta)$ is
-\[A=\int_\alpha^\beta g(t)\fp(t)\ dt.\]
+\[A=\int_\alpha^\beta g(t)\fp(t)\dd t.\]
 \end{keyidea}
 
 On the other hand, if we should happen to have $b=f(\alpha)$ and $a=f(\beta)$, then the formula would be
-\[A=\int_\beta^\alpha g(t)\fp(t)\ dt.\]
+\[A=\int_\beta^\alpha g(t)\fp(t)\dd t.\]
 
 Let's work an example.
 
@@ -306,13 +306,13 @@ First, notice that we've switched the parameter to $\theta$ for this problem.  T
 Now, we could graph this to verify that the curve is traced out exactly once for the given range if we wanted to.
  
 There really isn't too much to this example other than plugging the parametric equations into the formula.  We'll first need the derivative of the parametric equation for $x$ however.
-\[\frac{dx}{d\theta}=6(1-\cos\theta).\]
+\[\frac{\dd x}{\dd\theta}=6(1-\cos\theta).\]
 The area is then
 \begin{align*}
 A
-&=\int_0^{2\pi}36(1-\cos\theta)^2\ d\theta\\
-&=36\int_0^{2\pi}1-2\cos\theta+\cos^2\theta\ d\theta\\
-&=36\int_0^{2\pi}\frac32-2\cos\theta+\frac12\cos(2\theta)\ d\theta\\
+&=\int_0^{2\pi}36(1-\cos\theta)^2\dd\theta\\
+&=36\int_0^{2\pi}1-2\cos\theta+\cos^2\theta\dd\theta\\
+&=36\int_0^{2\pi}\frac32-2\cos\theta+\frac12\cos(2\theta)\dd\theta\\
 &=36\left[\frac32\theta-2\sin\theta+\frac14\sin(2\theta)\right]_0^{2\pi}\\
 &=108\pi.
 \end{align*}
@@ -324,23 +324,23 @@ A
 We continue our study of the features of the graphs of parametric equations by computing their arc length.
 
 Recall in \autoref{sec:arc_length} we found the arc length of the graph of a function, from $x=a$ to $x=b$, to be
-\[L = \int_a^b\sqrt{1+\left(\frac{dy}{dx}\right)^2}\ dx.\]
-We can use this equation and convert it to the parametric equation context. Letting $x=f(t)$ and $y=g(t)$, we know that $\frac{dy}{dx} = g\primeskip'(t)/\fp(t)$. Suppose that $f'(t)>0$, and calculate the differential of $x$:
-\[dx = \fp(t)dt \qquad \Rightarrow \qquad dt = \frac{1}{\fp(t)}\cdot dx.\]
+\[L = \int_a^b\sqrt{1+\left(\frac{\dd y}{\dd x}\right)^2}\dd x.\]
+We can use this equation and convert it to the parametric equation context. Letting $x=f(t)$ and $y=g(t)$, we know that $\frac{\dd y}{\dd x} = g\primeskip'(t)/\fp(t)$. Suppose that $f'(t)>0$, and calculate the differential of $x$:
+\[\dd x = \fp(t)\dd t \qquad \Rightarrow \qquad \dd t = \frac{1}{\fp(t)}\cdot \dd x.\]
 Starting with the arc length formula above, consider:
 \begin{align*}
-	L &= \int_a^b\sqrt{1+\left(\frac{dy}{dx}\right)^2}\ dx\\
-	&= \int_a^b \sqrt{1+\frac{[g\primeskip'(t)]^2}{[\fp(t)]^2}}\ dx \\
+	L &= \int_a^b\sqrt{1+\left(\frac{\dd y}{\dd x}\right)^2}\dd x\\
+	&= \int_a^b \sqrt{1+\frac{[g\primeskip'(t)]^2}{[\fp(t)]^2}}\dd x \\
 %		\intertext{Factor out the $\fp(t)^2$:}
-	&= \int_a^b \sqrt{[\fp(t)]^2+[g\primeskip'(t)]^2}\cdot\underbrace{\frac1{\fp(t)}\ dx}_{=dt} \qquad\text{Factor out the $[\fp(t)]^2$} \\
-	&= \int_{t_1}^{t_2} \sqrt{[\fp(t)]^2+[g\primeskip'(t)]^2}\ dt.\\
+	&= \int_a^b \sqrt{[\fp(t)]^2+[g\primeskip'(t)]^2}\cdot\underbrace{\frac1{\fp(t)}\dd x}_{=\dd t} \qquad\text{Factor out the $[\fp(t)]^2$} \\
+	&= \int_{t_1}^{t_2} \sqrt{[\fp(t)]^2+[g\primeskip'(t)]^2}\dd t.\\
 \end{align*}
 Note the new bounds (no longer ``$x$'' bounds, but ``$t$'' bounds). They are found by finding $t_1$ and $t_2$ such that $a= f(t_1)$ and $b=f(t_2)$. This formula holds even when $f'$ isn't positive and we restate it as a theorem.
 
 \begin{theorem}[Arc Length of Parametric Curves]\label{thm:arc_length_parametric}
 Let $x=f(t)$ and $y=g(t)$ be parametric equations with $\fp$ and $g\primeskip'$ continuous on some open interval $I$ containing $t_1$ and $t_2$ on which the graph traces itself only once. The arc length of the graph, from $t=t_1$ to $t=t_2$, is
 \index{parametric equations!arc length}\index{arc length}
-\[L = \int_{t_1}^{t_2} \sqrt{[\fp(t)]^2+[g\primeskip'(t)]^2}\ dt.\]
+\[L = \int_{t_1}^{t_2} \sqrt{[\fp(t)]^2+[g\primeskip'(t)]^2}\dd t.\]
 \end{theorem}
 
 As before, these integrals are often not easy to compute. We start with a simple example, then give  another where we approximate the solution.
@@ -350,9 +350,9 @@ Find the arc length of the circle parameterized by $x=3\cos t$, $y=3\sin t$ on $
 \solution
 By direct application of \autoref{thm:arc_length_parametric}, we have
 \begin{align*}
-L &= \int_0^{3\pi/2} \sqrt{(-3\sin t)^2 +(3\cos t)^2} \ dt.\\
+L &= \int_0^{3\pi/2} \sqrt{(-3\sin t)^2 +(3\cos t)^2} \dd t.\\
 \intertext{Apply the Pythagorean Theorem.}
-	&= \int_0^{3\pi/2} 3 \ dt\\
+	&= \int_0^{3\pi/2} 3 \dd t\\
 	&= 3t\Big|_0^{3\pi/2} = 9\pi/2.
 	\end{align*}
 	
@@ -374,8 +374,8 @@ ymin=-1.1,ymax=1.1,xmin=-1.1,xmax=1.1]
 \solution
 We can see by the parameterizations of $x$ and $y$ that when $t=\pm 1$, $x=0$ and $y=0$. This means we'll integrate from $t=-1$ to $t=1$. Applying \autoref{thm:arc_length_parametric}, we have
 \begin{align*}
-L 	&= \int_{-1}^1\sqrt{(3t^2-1)^2+(2t)^2}\ dt\\
-		&=	\int_{-1}^1 \sqrt{9t^4-2t^2+1} \ dt.
+L 	&= \int_{-1}^1\sqrt{(3t^2-1)^2+(2t)^2}\dd t\\
+		&=	\int_{-1}^1 \sqrt{9t^4-2t^2+1} \dd t.
 \end{align*}
 Unfortunately, the integrand does not have an antiderivative expressible by elementary functions. We turn to numerical integration to approximate its value. Using 4 subintervals, Simpson's Rule approximates the value of the integral as $2.65051$. Using a computer, more subintervals are easy to employ, and $n=20$ gives a value of $2.71559$. Increasing $n$ shows that this value is stable and a good approximation of the actual value.
 \end{example}
@@ -392,13 +392,13 @@ Consider the graph of the parametric equations $x=f(t)$ and $y=g(t)$, where $\fp
 	\item	The surface area of the solid formed by revolving the graph about the $x$-axis is (where $g(t)\geq0$ on $[t_1,t_2]$):
 \[
 \text{Surface Area}
-= 2\pi\int_{t_1}^{t_2} g(t)\sqrt{[\fp(t)]^2+[g\primeskip'(t)]^2}\ dt.
+= 2\pi\int_{t_1}^{t_2} g(t)\sqrt{[\fp(t)]^2+[g\primeskip'(t)]^2}\dd t.
 \]
 	
 	\item	The surface area of the solid formed by revolving the graph about the $y$-axis is (where $f(t)\geq0$ on $[t_1,t_2]$):
 \[
 \text{Surface Area}
-= 2\pi\int_{t_1}^{t_2} f(t)\sqrt{[\fp(t)]^2+[g\primeskip'(t)]^2}\ dt.
+= 2\pi\int_{t_1}^{t_2} f(t)\sqrt{[\fp(t)]^2+[g\primeskip'(t)]^2}\dd t.
 \]
 \end{enumerate}
 \end{keyidea}
@@ -418,8 +418,8 @@ Consider the teardrop shape formed by the parametric equations $x=t(t^2-1)$, $y=
 \solution
 The teardrop shape is formed between $t=-1$ and $t=1$. Using \autoref{idea:surface_area_parametric}, we see we need for $g(t)\geq 0$ on $[-1,1]$, and this is not the case. To fix this, we simplify replace $g(t)$ with $-g(t)$, which flips the whole graph about the $x$-axis (and does not change the surface area of the resulting solid). The surface area is: 
 \begin{align*}
-\text{Area}\ S &= 2\pi\int_{-1}^1 (1-t^2)\sqrt{(3t^2-1)^2+(2t)^2}\ dt\\
-		&=	2\pi\int_{-1}^1 (1-t^2)\sqrt{9t^4-2t^2+1} \ dt.
+\text{Area}\ S &= 2\pi\int_{-1}^1 (1-t^2)\sqrt{(3t^2-1)^2+(2t)^2}\dd t\\
+		&=	2\pi\int_{-1}^1 (1-t^2)\sqrt{9t^4-2t^2+1} \dd t.
 		\end{align*}
 Once again we arrive at an integral that we cannot compute in terms of elementary functions. Using Simpson's Rule with $n=20$, we find the area to be $S=9.44$. Using larger values of $n$ shows this is accurate to 2 places after the decimal.
 \end{example}

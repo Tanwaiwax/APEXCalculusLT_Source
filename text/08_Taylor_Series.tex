@@ -233,7 +233,7 @@ While this is not strictly a power series because of the $\sqrt x$, it is a seri
 \end{example}
 
 \begin{example}[Using Taylor series to evaluate definite integrals]\label{ex_ts7}
-Use the Taylor series of $e^{-x^2}$ to evaluate $\ds \int_0^1e^{-x^2}\ dx$.
+Use the Taylor series of $e^{-x^2}$ to evaluate $\ds \int_0^1e^{-x^2}\dd x$.
 \solution
 We learned, when studying Numerical Integration, that $e^{-x^2}$ does not have an antiderivative expressible in terms of elementary functions. This means any definite integral of this function must have its value approximated, and not computed exactly.
 
@@ -246,13 +246,13 @@ e^{-x^2} &= \sum_{n=0}^\infty \frac{(-x^2)^n}{n!} \\
 				&= 1-x^2+\frac{x^4}{2!}-\frac{x^6}{3!}+\dotsb.
 \end{align*}
 We use \autoref{thm:calc_power_series} to integrate:
-\[\int e^{-x^2}\ dx = C + x - \frac{x^3}{3}+\frac{x^5}{5\cdot2!}-\frac{x^7}{7\cdot3!}+\dotsb +(-1)^n\frac{x^{2n+1}}{(2n+1)n!}+\dotsb\]
-This \emph{is} the antiderivative of $e^{-x^2}$; while we can write it out as a series, we cannot write it out in terms of elementary functions. We can evaluate the definite integral $\ds \int_0^1e^{-x^2}\ dx$ using this antiderivative; substituting 1 and 0 for $x$ and subtracting gives
-\[\int_0^1e^{-x^2}\ dx = 1-\frac{1}{3}+\frac{1}{5\cdot 2!}-\frac{1}{7\cdot3!} + \frac{1}{9\cdot4!}-\dotsb.\]
+\[\int e^{-x^2}\dd x = C + x - \frac{x^3}{3}+\frac{x^5}{5\cdot2!}-\frac{x^7}{7\cdot3!}+\dotsb +(-1)^n\frac{x^{2n+1}}{(2n+1)n!}+\dotsb\]
+This \emph{is} the antiderivative of $e^{-x^2}$; while we can write it out as a series, we cannot write it out in terms of elementary functions. We can evaluate the definite integral $\ds \int_0^1e^{-x^2}\dd x$ using this antiderivative; substituting 1 and 0 for $x$ and subtracting gives
+\[\int_0^1e^{-x^2}\dd x = 1-\frac{1}{3}+\frac{1}{5\cdot 2!}-\frac{1}{7\cdot3!} + \frac{1}{9\cdot4!}-\dotsb.\]
 Summing the 5 terms shown above gives the approximation of $0.74749.$ Since this is an alternating series, we can use the Alternating Series Approximation Theorem, (\autoref{thm:alt_series_approx}), to determine how accurate this approximation is. The next term of the series is $ 1/(11\cdot5!) \approx 0.00075758$. Thus we know our approximation is within $0.00075758$ of the actual value of the integral. This is arguably much less work than using Simpson's Rule to approximate the value of the integral.
 \end{example}
 
-Another advantage to using Taylor series instead of Simpson's Rule is for making subsequent approximations.  We found in \autoref{ex_num7} that the error in using Simpson's Rule for $\ds\int_0^1 e^{-x^2}\ dx$ with four intervals was $0.00026$.  If we wanted to decrease that error, we would need to use more intervals, essentially starting the problem over.  Using a Taylor series, if we wanted a more accurate approximation, we can just subtract the next term $1/(11\cdot5!)$ to get an approximation of $0.7467$, with an error of at most $1/(13\cdot6!)\approx0.0001$.\bigskip
+Another advantage to using Taylor series instead of Simpson's Rule is for making subsequent approximations.  We found in \autoref{ex_num7} that the error in using Simpson's Rule for $\ds\int_0^1 e^{-x^2}\dd x$ with four intervals was $0.00026$.  If we wanted to decrease that error, we would need to use more intervals, essentially starting the problem over.  Using a Taylor series, if we wanted a more accurate approximation, we can just subtract the next term $1/(11\cdot5!)$ to get an approximation of $0.7467$, with an error of at most $1/(13\cdot6!)\approx0.0001$.\bigskip
 
 %\begin{example}[Using Taylor series to solve differential equations]\label{ex_ts8}
 %Solve the differential equation $y\primeskip'=2y$ in terms of a power series, and use the theory of Taylor series to recognize the solution in terms of an elementary function.

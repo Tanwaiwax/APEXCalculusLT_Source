@@ -2,9 +2,9 @@
 
 We have used iterated integrals to find areas of plane regions and signed volumes under surfaces. A brief recap of these uses will be useful in this section as we apply iterated integrals to compute the \textbf{mass} and \textbf{center of mass} of planar regions.
 
-To find the area of a planar region, we evaluated the double integral $\iint_R\ dA$. That is, summing up the areas of lots of little subregions of $R$ gave us the total area. Informally, we think of $\iint_R\ dA$ as meaning ``sum up lots of little areas over $R$.''
+To find the area of a planar region, we evaluated the double integral $\iint_R\dd A$. That is, summing up the areas of lots of little subregions of $R$ gave us the total area. Informally, we think of $\iint_R\dd A$ as meaning ``sum up lots of little areas over $R$.''
 
-To find the signed volume under a surface, we evaluated the double integral $\iint_R f(x,y)\ dA$. Recall that the ``$dA$'' is not just a ``bookend'' at the end of an integral; rather, it is multiplied by $f(x,y)$. We regard $f(x,y)$ as giving a height, and $dA$ still giving an area: $f(x,y)\ dA$ gives a volume. Thus, informally, $\iint_Rf(x,y)\ dA$ means ``sum up lots of little volumes over $R$.''
+To find the signed volume under a surface, we evaluated the double integral $\iint_R f(x,y)\dd A$. Recall that the ``$dA$'' is not just a ``bookend'' at the end of an integral; rather, it is multiplied by $f(x,y)$. We regard $f(x,y)$ as giving a height, and $dA$ still giving an area: $f(x,y)\dd A$ gives a volume. Thus, informally, $\iint_Rf(x,y)\dd A$ means ``sum up lots of little volumes over $R$.''
 
 We now extend these ideas to other contexts.
 
@@ -52,10 +52,10 @@ ymin=-.1,ymax=3.5,xmin=-.1,xmax=3.5]
 Consider a thin sheet of material with constant thickness and finite area. Mathematicians (and physicists and engineers) call such a sheet a \textbf{lamina}. So consider a lamina, as shown in \autoref{fig:mass_intro}(a),  with the shape of some planar region $R$, as shown in part (b).
 \index{lamina}\index{mass}
 
-We can write a simple double integral that represents the mass of the lamina: $\iint_R\ dm$, where ``$dm$'' means ``a little mass.'' That is, the double integral states the total mass of the lamina can be found by ``summing up lots of little masses over $R$.''
+We can write a simple double integral that represents the mass of the lamina: $\iint_R\dd m$, where ``$dm$'' means ``a little mass.'' That is, the double integral states the total mass of the lamina can be found by ``summing up lots of little masses over $R$.''
 
 To evaluate this double integral, partition $R$ into $n$ subregions as we have done in the past. The $i^{\,\text{th}}$ subregion has area $\Delta A_i$. 
-A fundamental property of mass is that ``mass=density$\times$area.'' If the lamina has a constant density $\delta$, then the mass of this $i^{\,\text{th}}$ subregion is $\Delta m_i=\delta\Delta A_i$. %then $dm=\delta\ dA$. 
+A fundamental property of mass is that ``mass=density$\times$area.'' If the lamina has a constant density $\delta$, then the mass of this $i^{\,\text{th}}$ subregion is $\Delta m_i=\delta\Delta A_i$. %then $dm=\delta\dd A$. 
 That is, we can compute a small amount of mass by multiplying a small amount of area by the density.
 
 If density is variable, with density function $\delta= \delta(x,y)$, then we can approximate the mass of the $i^{\,\text{th}}$ subregion of $R$ by multiplying $\Delta A_i$ by $\delta(x_i,y_i)$, where $(x_i,y_i)$ is a point in that subregion. That is, for a small enough subregion of $R$, the density across that region is almost constant. 
@@ -69,7 +69,7 @@ Taking the limit as the size of the subregions shrinks to 0 gives us the actual 
 
 \begin{definition}[Mass of a Lamina with Variable Density]\label{def:mass}
 Let $\delta(x,y)$ be a continuous density function of a lamina corresponding to a plane region $R$. The mass $M$ of the lamina is\index{mass}
-\[\text{mass } M = \iint_R\ dm = \iint_R \delta(x,y)\ dA.\]
+\[\text{mass } M = \iint_R\dd m = \iint_R \delta(x,y)\dd A.\]
 \end{definition}
 
 \youtubeVideo{5CmgNCjRVFE}{Center of Mass for a Rectangle of Variable Density}
@@ -90,7 +90,7 @@ We represent the lamina with a square region in the plane as shown in \autoref{f
 \end{tikzpicture}}
 
 Following \autoref{def:mass}, the mass $M$ of the lamina is
-\[M = \iint_R 3\ dA = \int_0^1\int_0^1 3\ dx\ dy = 3\int_0^1\int_0^1 \ dx\ dy=3\text{g}.\]
+\[M = \iint_R 3\dd A = \int_0^1\int_0^1 3\dd x\dd y = 3\int_0^1\int_0^1 \dd x\dd y=3\text{g}.\]
 
 This is all very straightforward; note that all we really did was find the area of the lamina and multiply it by the constant density of 3g/cm$^2$.
 \end{example}
@@ -100,11 +100,11 @@ Find the mass of a square lamina, represented by the unit square with lower left
 \solution
 The variable density $\delta$, in this example, is very uniform, giving a density of 3 in the center of the square and changing linearly. A graph of $\delta(x,y)$ can be seen in \autoref{fig:mass2}; notice how ``same amount'' of density is above $z=3$ as below. We'll comment on the significance of this momentarily.
 
-The mass $M$ is found by integrating $\delta(x,y)$ over $R$. The order of integration is not important; we choose $dx\ dy$ arbitrarily. Thus:
+The mass $M$ is found by integrating $\delta(x,y)$ over $R$. The order of integration is not important; we choose $\dd x\dd y$ arbitrarily. Thus:
 \begin{align*}
-M = \iint_R(x+y+2)\ dA &= \int_0^1\int_0^1 (x+y+2)\ dx\ dy\\
-		&= \int_0^1\left.\left(\frac 12x^2+x(y+2)\right)\right|_0^1dy\\
-		&= \int_0^1 \left(\frac52+y\right)\ dy\\
+M = \iint_R(x+y+2)\dd A &= \int_0^1\int_0^1 (x+y+2)\dd x\dd y\\
+		&= \int_0^1\left.\left(\frac 12x^2+x(y+2)\right)\right|_0^1\dd y\\
+		&= \int_0^1 \left(\frac52+y\right)\dd y\\
 		&= \left.\left(\frac52y+\frac12y^2\right)\right|_0^1\\
 		&= 3\text{ g}.
 \end{align*}
@@ -120,22 +120,22 @@ It turns out that since since the density of the lamina is so uniformly distribu
 \begin{example}[Finding the weight of a lamina with variable density]\label{ex_mass3}
 Find the weight of the lamina represented by the circle with radius 2ft, centered at the origin, with density function $\delta(x,y) = (x^2+y^2+1)$lb/ft$^2$. Compare this to the weight of the same lamina with density $\delta(x,y) = (2\sqrt{x^2+y^2}+1)$lb/ft$^2$.
 \solution
-\autoref{def:mass} tells us that the weight of the lamina is $\iint_R\delta(x,y)\ dA$. Since our lamina is in the shape of a circle, it makes sense to approach the double integral using polar coordinates.
+\autoref{def:mass} tells us that the weight of the lamina is $\iint_R\delta(x,y)\dd A$. Since our lamina is in the shape of a circle, it makes sense to approach the double integral using polar coordinates.
 
 The density function $\delta(x,y) = x^2+y^2+1$ becomes $\delta(r,\theta) = (r\cos\theta)^2+(r\sin\theta)^2+1 = r^2+1$. The circle is bounded by $0\leq r\leq 2$ and $0\leq\theta\leq2\pi$. Thus the weight $W$ is:
 \begin{align*}
-W &= \int_0^{2\pi}\int_0^2 (r^2+1)r\ dr\ d\theta\\
-	&= \int_0^{2\pi} \left.\left(\frac14r^4+\frac12r^2\right)\right|_0^2d\theta\\
-	&= \int_0^{2\pi} \left(6\right) d\theta\\
+W &= \int_0^{2\pi}\int_0^2 (r^2+1)r\dd r\dd\theta\\
+	&= \int_0^{2\pi} \left.\left(\frac14r^4+\frac12r^2\right)\right|_0^2\dd\theta\\
+	&= \int_0^{2\pi} \left(6\right)\dd\theta\\
 	&= 12\pi %\approx 37.70
 	\text{lb}.
 \end{align*}
 
 Now compare this with the density function $\delta(x,y) = 2\sqrt{x^2+y^2}+1$. Converting this to polar coordinates gives $\delta(r,\theta) = 2\sqrt{(r\cos\theta)^2+(r\sin\theta)^2}+1 = 2r+1$. Thus the weight $W$ is:
 \begin{align*}
-W &= \int_0^{2\pi}\int_0^2 (2r+1)r\ dr\ d\theta\\
-	&= \int_0^{2\pi} (\frac23r^3+\frac12r^2)\Big|_0^2d\theta\\
-	&= \int_0^{2\pi} \left(\frac{22}3\right)\ d\theta\\
+W &= \int_0^{2\pi}\int_0^2 (2r+1)r\dd r\dd\theta\\
+	&= \int_0^{2\pi} (\frac23r^3+\frac12r^2)\Big|_0^2\dd\theta\\
+	&= \int_0^{2\pi} \left(\frac{22}3\right)\dd\theta\\
 	&= \frac{44}3\pi %\approx 46.08
 	\text{lb}.
 \end{align*}
@@ -165,7 +165,7 @@ One would expect different density functions to return different weights, as we 
 Notice how $x^2+y^2+1 \leq 2\sqrt{x^2+y^2}+1$ over the circle; this results in less weight.
 \end{example}
 
-Plotting the density functions can be useful as our understanding of mass can be related to our understanding of ``volume under a surface.'' We interpreted $\iint_R f(x,y)\ dA$ as giving the volume under $f$ over $R$; we can understand $\iint_R\delta(x,y)\ dA$ in the same way. The ``volume'' under $\delta$ over $R$ is actually mass; by compressing the ``volume'' under $\delta$ onto the $x$-$y$ plane, we get ``more mass'' in some areas than others --- i.e., areas of greater density.
+Plotting the density functions can be useful as our understanding of mass can be related to our understanding of ``volume under a surface.'' We interpreted $\iint_R f(x,y)\dd A$ as giving the volume under $f$ over $R$; we can understand $\iint_R\delta(x,y)\dd A$ in the same way. The ``volume'' under $\delta$ over $R$ is actually mass; by compressing the ``volume'' under $\delta$ onto the $x$-$y$ plane, we get ``more mass'' in some areas than others --- i.e., areas of greater density.
 
 Knowing the mass of a lamina is one of several important measures. Another is the \textbf{center of mass}, which we discuss next.
 
@@ -313,9 +313,9 @@ By taking limits, where size of each subregion shrinks to 0 in both the $x$ and 
 \begin{theorem}[Center of Mass of a Planar Lamina, Moments]\label{thm:center_of_mass}
 Let a planar lamina be represented by a region $R$ in the $x$-$y$ plane with density function $\delta(x,y)$. \index{center of mass}\index{moment}
 \begin{enumerate}
-	\item $\ds \text{mass: } M = \iint_R\delta(x,y)\ dA$
-	\item	$\ds \text{moment about the $x$-axis: } M_x = \iint_Ry\delta(x,y)\ dA$
-	\item	$\ds \text{moment about the $y$-axis: } M_y = \iint_Rx\delta(x,y)\ dA$
+	\item $\ds \text{mass: } M = \iint_R\delta(x,y)\dd A$
+	\item	$\ds \text{moment about the $x$-axis: } M_x = \iint_Ry\delta(x,y)\dd A$
+	\item	$\ds \text{moment about the $y$-axis: } M_y = \iint_Rx\delta(x,y)\dd A$
 	\item The center of mass  of the lamina is
 	\[(\overline{x},\overline{y}) = \left(\frac{M_y}{M},\frac{M_x}M\right).\]
 \end{enumerate}
@@ -342,9 +342,9 @@ Following \autoref{thm:center_of_mass}, we find $M$, $M_x$ and $M_y$:
 \end{tikzpicture}}
 %
 \begin{align*}
-M &= \iint_R 3\ dA = \int_0^1\int_0^1 3\ dx\ dy =3\text{g}.\\
-M_x &= \iint_R 3y\ dA = \int_0^1\int_0^1 3y\ dx\ dy =3/2 = 1.5.\\
-M_y &= \iint_R 3x\ dA = \int_0^1\int_0^1 3x\ dx\ dy =3/2 = 1.5.
+M &= \iint_R 3\dd A = \int_0^1\int_0^1 3\dd x\dd y =3\text{g}.\\
+M_x &= \iint_R 3y\dd A = \int_0^1\int_0^1 3y\dd x\dd y =3/2 = 1.5.\\
+M_y &= \iint_R 3x\dd A = \int_0^1\int_0^1 3x\dd x\dd y =3/2 = 1.5.
 \end{align*}
 Thus the center of mass is $\ds (\overline{x},\overline{y}) = \left(\frac{M_y}M,\frac{M_x}M\right) = (1.5/3,1.5/3) = (0.5,0.5).$ This is what we should have expected: the center of mass of a square with constant density is the center of the square.
 \end{example}
@@ -354,9 +354,9 @@ Find the center of mass of a square lamina, represented by the unit square with 
 \solution
 We follow \autoref{thm:center_of_mass}, to find $M$, $M_x$ and $M_y$:
 \begin{align*}
-M &= \iint_R (x+y+2)\ dA = \int_0^1\int_0^1 (x+y+2)\ dx\ dy =3\text{g}.\\
-M_x &= \iint_R y(x+y+2)\ dA = \int_0^1\int_0^1 y(x+y+2)\ dx\ dy =\frac{19}{12}.\\
-M_y &= \iint_R x(x+y+2)\ dA = \int_0^1\int_0^1 x(x+y+2)\ dx\ dy =\frac{19}{12}.
+M &= \iint_R (x+y+2)\dd A = \int_0^1\int_0^1 (x+y+2)\dd x\dd y =3\text{g}.\\
+M_x &= \iint_R y(x+y+2)\dd A = \int_0^1\int_0^1 y(x+y+2)\dd x\dd y =\frac{19}{12}.\\
+M_y &= \iint_R x(x+y+2)\dd A = \int_0^1\int_0^1 x(x+y+2)\dd x\dd y =\frac{19}{12}.
 \end{align*}
 Thus the center of mass is $\ds (\overline{x},\overline{y}) = \left(\frac{M_y}M,\frac{M_x}M\right) = \left(\frac{19}{36},\frac{19}{36}\right)% \approx (0.528,0.528)
 .$ While the mass of this lamina is the same as the lamina in the previous example, the greater density found with greater $x$ and $y$ values pulls the center of mass from the center slightly towards the upper righthand corner.
@@ -368,10 +368,10 @@ Find the center of mass of the lamina represented by the circle with radius 2ft,
 As done in \autoref{ex_mass3}, it is best to describe $R$ using polar coordinates.
 Thus when we compute $M_y$, we will integrate not $x\delta(x,y) = x(x^2+y^2+1)$, but rather $\bigl(r\cos\theta\bigr)\delta(r\cos\theta,r\sin\theta) = \bigl(r\cos\theta\bigr)\bigl(r^2+1\bigr).$ We compute $M$, $M_x$ and $M_y$:
 \begin{align*}
-M &= \int_0^{2\pi}\int_0^2 (r^2+1)r\ dr\ d\theta = 12\pi%\approx 37.7
+M &= \int_0^{2\pi}\int_0^2 (r^2+1)r\dd r\dd\theta = 12\pi%\approx 37.7
 \text{lb}.\\
-M_x &= \int_0^{2\pi}\int_0^2 (r\sin\theta)(r^2+1)r \ dr\ d\theta = 0.\\
-M_y &= \int_0^{2\pi}\int_0^2 (r\cos\theta)(r^2+1)r \ dr\ d\theta = 0.\\
+M_x &= \int_0^{2\pi}\int_0^2 (r\sin\theta)(r^2+1)r \dd r\dd\theta = 0.\\
+M_y &= \int_0^{2\pi}\int_0^2 (r\cos\theta)(r^2+1)r \dd r\dd\theta = 0.\\
 \end{align*}
 Since $R$ and the density of $R$ are both symmetric about the $x$ and $y$ axes, it should come as no big surprise that the moments about each axis is 0. Thus the center of mass is $(\overline{x},\overline{y})=(0,0)$.
 \end{example}
@@ -395,10 +395,10 @@ Once again it will be useful to represent $R$ in polar coordinates. Using the de
  \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
 \begin{align*}
-M &= \int_0^{\pi}\int_5^6 (2)r\ dr\ d\theta = 11\pi\text{lb}.\\
-M_x &= \int_0^{\pi}\int_5^6 (r\sin\theta)(2)r\ dr\ d\theta = \frac{364}3%\approx 121.33 
+M &= \int_0^{\pi}\int_5^6 (2)r\dd r\dd\theta = 11\pi\text{lb}.\\
+M_x &= \int_0^{\pi}\int_5^6 (r\sin\theta)(2)r\dd r\dd\theta = \frac{364}3%\approx 121.33 
 .\\
-M_y &= \int_0^{\pi}\int_5^6 (r\cos\theta)(2)r\ dr\ d\theta = 0.\\
+M_y &= \int_0^{\pi}\int_5^6 (r\cos\theta)(2)r\dd r\dd\theta = 0.\\
 \end{align*}
 Thus the center of mass is $(\overline{x},\overline{y}) = \left(0,\frac{364}{33\pi}\right) \approx (0,3.51).$ The center of mass is indicated in \autoref{fig:mass9}; note how it lies outside of $R$.
 \end{example}

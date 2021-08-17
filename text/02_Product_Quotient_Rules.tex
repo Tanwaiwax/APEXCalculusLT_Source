@@ -5,19 +5,20 @@ The previous section showed that, in some ways, derivatives behave nicely. The C
 We begin with the Product Rule.
 
 \begin{theorem}[Product Rule]\label{thm:ProductRule}
-Let $f$ and $g$ be differentiable functions on an open interval $I$.\index{Product Rule!differentiation}\index{derivative!Product Rule} Then $f\cdot g$ is a differentiable function on $I$, and \[\frac{d}{dx}\Bigl(f(x)g(x)\Bigr) = f(x)g\primeskip'(x) + \fp(x)g(x).\]
+Let $f$ and $g$ be differentiable functions on an open interval $I$.\index{Product Rule!differentiation}\index{derivative!Product Rule} Then $f\cdot g$ is a differentiable function on $I$, and
+\[\frac{\dd}{\dd x}\Bigl(f(x)g(x)\Bigr) = f(x)g\primeskip'(x) + \fp(x)g(x).\]
 \end{theorem}
 
-\textbf{Important:} $\ds\frac{d}{dx}\Bigl(f(x)g(x)\Bigr) \neq \fp(x)g\primeskip'(x)$. While this answer is simpler than the Product Rule, it is wrong.  We can show that this is wrong by considering the functions
+\textbf{Important:} $\ds\frac{\dd}{\dd x}\Bigl(f(x)g(x)\Bigr) \neq \fp(x)g\primeskip'(x)$. While this answer is simpler than the Product Rule, it is wrong.  We can show that this is wrong by considering the functions
 $f(x)=x^2$ and $g(x)=x^5$. \\
-Using the WRONG rule we get $\dfrac{d}{dx}[f(x)g(x)] =2x \cdot 5x^4 = 10x^5$. However, when we simplify the product first and apply the Power Rule, $f \cdot g = x^2 \cdot x^5 = x^7$ and 
-\[\frac{d}{dx}[f(x)g(x)] = 7x^6 \neq 10x^5.\]
+Using the WRONG rule we get $\dfrac{\dd}{\dd x}[f(x)g(x)] =2x \cdot 5x^4 = 10x^5$. However, when we simplify the product first and apply the Power Rule, $f \cdot g = x^2 \cdot x^5 = x^7$ and 
+\[\frac{\dd}{\dd x}[f(x)g(x)] = 7x^6 \neq 10x^5.\]
 
 Applying the \textbf{real} Product Rule we see that,
 \begin{align*}
-\frac{d}{dx}[f(x)g(x)]
-& = x^2 \frac{d}{dx} (x^5) + \frac{d}{dx} (x^2) \cdot x^5 \\ 
-& = x^2 \cdot 5x^4+2x \cdot x^5 \\ 
+\frac{\dd}{\dd x}[f(x)g(x)]
+& = x^2 \frac{\dd}{\dd x} (x^5) + \frac{\dd}{\dd x} (x^2) \cdot x^5 \\
+& = x^2 \cdot 5x^4+2x \cdot x^5 \\
 &= 7x^6
 \end{align*}
 
@@ -29,7 +30,7 @@ We practice using this new rule in an example, followed by a proof of the theore
 Use the Product Rule to compute the derivative of $y=5x^2\sin x$. Evaluate the derivative at $x=\pi/2$.
 \solution
 To make our use of the Product Rule explicit, let's set $f(x) = 5x^2$ and $g(x) = \sin x$. We easily compute/recall that $\fp(x) = 10x$ and $g\primeskip'(x) = \cos x$. Employing the rule, we have
-\[\frac{d}{dx}\Bigl(5x^2\sin x\Bigr) = 5x^2\cos x + 10x\sin x.\]
+\[\frac{\dd}{\dd x}\Bigl(5x^2\sin x\Bigr) = 5x^2\cos x + 10x\sin x.\]
 
 \mtable[1in]{A graph of $y = 5x^2\sin x$ and its tangent line at $x=\pi/2$.}{fig:5xsquaredsinx}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -50,11 +51,11 @@ We graph $y$ and its tangent line at $x=\pi/2$, which has a slope of $5\pi$, in 
 
 \begin{proof}[Proof of the Product Rule]
 By the limit definition, we have 
-\[\frac{d}{dx}\Bigl(f(x)g(x)\Bigr) =\lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x)}{h}.\]
+\[\frac{\dd}{\dd x}\Bigl(f(x)g(x)\Bigr) =\lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x)}{h}.\]
 We now do something a bit unexpected; add 0 to the numerator (so that nothing is changed) in the form of $-f(x+h)g(x)+f(x+h)g(x)$, and then do some regrouping as shown.
 
 \begin{align*}
-	\dfrac{d}{dx}&\Bigl(f(x)g(x)\Bigr) \\
+	\dfrac{\dd}{\dd x}&\Bigl(f(x)g(x)\Bigr) \\
 	&=\lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x)}{h}
 	\qquad\text{\small(now add 0 to the numerator)}\\
 	&=\lim_{h\to0} \frac{f(x+h)g(x+h)-f(x+h)g(x)+f(x+h)g(x)-f(x)g(x)}{h} \\
@@ -77,7 +78,7 @@ We first expand the expression for $y$; a little algebra shows that $y = 2x^4+3x
 Now apply the Product Rule.
 \begin{align*}
 	y\primeskip'
-	&=(x^2+3x+1)\cdot\frac{d}{dx}(2x^2-3x+1)+\frac{d}{dx}(x^2+3x+1)\cdot(2x^2-3x+1)\\
+	&=(x^2+3x+1)\cdot\frac{\dd}{\dd x}(2x^2-3x+1)+\frac{\dd}{\dd x}(x^2+3x+1)\cdot(2x^2-3x+1)\\
 	&=(x^2+3x+1)(4x-3)+(2x+3)(2x^2-3x+1) \\
 	&=\bigl(4x^3+9x^2-5x-3\bigr) + \bigl(4x^3-7x+3\bigr) \\
 	&=8x^3+9x^2-12x.
@@ -107,9 +108,9 @@ Find the derivatives of the following functions.
 \solution
 Recalling that the derivative of $\ln x$ is $1/x$, we use the Product Rule to find our answers.
 \begin{enumerate}
-	\item	$\ds \frac{d}{dx}\Bigl(x\ln x\Bigr) = x\cdot 1/x + 1\cdot \ln x = 1+\ln x$. 
+	\item	$\ds \frac{\dd}{\dd x}\Bigl(x\ln x\Bigr) = x\cdot 1/x + 1\cdot \ln x = 1+\ln x$. 
 	\item	Using the result from above, we compute
-	\[\ds \frac{d}{dx}\Bigl(x\ln x-x\Bigr) = 1+\ln x-1 = \ln x.\]
+	\[\ds \frac{\dd}{\dd x}\Bigl(x\ln x-x\Bigr) = 1+\ln x-1 = \ln x.\]
 \end{enumerate}
 This seems significant; if the natural log function $\ln x$ is an important function (it is), it seems worthwhile to know a function whose derivative is $\ln x$. We have found one. (We leave it to the reader to find others; a correct answer will be \emph{very} similar to this one.)
 \end{example}
@@ -117,15 +118,16 @@ This seems significant; if the natural log function $\ln x$ is an important func
 We have learned how to compute the derivatives of sums, differences, and products of functions. We now learn how to find the derivative of a quotient of functions.\bigskip
 
 \begin{theorem}[Quotient Rule]\label{thm:QuotientRule}
-Let $f$ and $g$ be differentiable functions defined on an open interval $I$, where $g(x) \neq 0$ on $I$.\index{derivative!Quotient Rule}\index{Quotient Rule} Then $f/g$ is differentiable on $I$, and \[\frac{d}{dx}\left(\frac{f(x)}{g(x)}\right) = \frac{g(x)\fp(x) - f(x)g\primeskip'(x)}{[g(x)]^2}.\]
+Let $f$ and $g$ be differentiable functions defined on an open interval $I$, where $g(x) \neq 0$ on $I$.\index{derivative!Quotient Rule}\index{Quotient Rule} Then $f/g$ is differentiable on $I$, and
+\[\frac{\dd}{\dd x}\left(\frac{f(x)}{g(x)}\right) = \frac{g(x)\fp(x) - f(x)g\primeskip'(x)}{[g(x)]^2}.\]
 \end{theorem}
 
-%The Quotient Rule is not hard to use, although it might be a bit tricky to remember. A useful mnemonic works as follows. Consider a fraction's numerator and denominator as ``HI'' and ``LO'', respectively. Then \[\frac{d}{dx}\left(\frac{\text{HI}}{\text{LO}}\right) = \frac{\text{LO$\cdot$ dHI -- HI$\cdot$ dLO}}{\text{LOLO}},\] read ``low dee high minus high dee low, over low low.'' Said fast, that phrase can roll off the tongue, making it easy to memorize. The ``dee high'' and ``dee low'' parts refer to the derivatives of the numerator and denominator, respectively.\\
+%The Quotient Rule is not hard to use, although it might be a bit tricky to remember. A useful mnemonic works as follows. Consider a fraction's numerator and denominator as ``HI'' and ``LO'', respectively. Then \[\frac{\dd}{\dd x}\left(\frac{\text{HI}}{\text{LO}}\right) = \frac{\text{LO$\cdot$ \dd HI -- HI$\cdot$ \dd LO}}{\text{LOLO}},\] read ``low dee high minus high dee low, over low low.'' Said fast, that phrase can roll off the tongue, making it easy to memorize. The ``dee high'' and ``dee low'' parts refer to the derivatives of the numerator and denominator, respectively.\\
 
 \begin{proof}[Proof of the Quotient Rule]
 Let the functions $f$ and $g$ be defined and $g(x) \neq 0$ on an open interval $I$. By the definition of derivative,
 \begin{align*}
-\frac{d}{dx}\left(\frac {f(x)}{g(x)}\right)
+\frac{\dd}{\dd x}\left(\frac {f(x)}{g(x)}\right)
 &=\lim_{h\to 0}\frac{\frac{f(x+h)}{g(x+h)}-\frac{f(x)}{g(x)}}{h} \\
 &=\lim_{h\to 0}
 \left[\left(\frac{f(x+h)}{g(x+h)}-\frac{f(x)}{g(x)}\right)\cdot\frac1h\right]\\[.5\baselineskip]
@@ -136,7 +138,7 @@ Let the functions $f$ and $g$ be defined and $g(x) \neq 0$ on an open interval $
 Adding and subtracting the term $f(x)g(x)$ in the numerator does not change the value of the expression and allows us to separate $f$ and $g$ so that
 {\small\allowdisplaybreaks
 \begin{align*}
-\frac{d}{dx}\left(\frac{f(x)}{g(x)}\right)
+\frac{\dd}{\dd x}\left(\frac{f(x)}{g(x)}\right)
 &=\lim_{h\to 0}\left[\left(\frac{f(x+h)g(x)-f(x)g(x)+f(x)g(x)-f(x)g(x+h)}{g(x+h)g(x)}\right)\cdot\frac1h\right] \\[.5\baselineskip]
 &=\lim_{h\to 0}\left[\frac{f(x+h)g(x)-f(x)g(x)}{hg(x+h)g(x)}+\frac{f(x)g(x)-f(x)g(x+h)}{hg(x+h)g(x)}\right] \\[.5\baselineskip]
 &=\lim_{h\to 0}\left[g(x)\frac{f(x+h)-f(x)}{hg(x+h)g(x)}+f(x)\frac{g(x)-g(x+h)}{hg(x+h)g(x)}\right] \\[.5\baselineskip]
@@ -153,8 +155,8 @@ Let $\ds f(x) = \frac{5x^2}{\sin x}$. Find $\fp(x)$.
 \solution
 Directly applying the Quotient Rule gives:
 \begin{align*}
-	\frac{d}{dx}\left(\frac{5x^2}{\sin x}\right)
-	& = \frac{\sin x\frac{d}{dx}(5x^2)-5x^2\frac{d}{dx}(\sin x)}{(\sin x)^2} \\
+	\frac{\dd}{\dd x}\left(\frac{5x^2}{\sin x}\right)
+	& = \frac{\sin x\frac{\dd}{\dd x}(5x^2)-5x^2\frac{\dd}{\dd x}(\sin x)}{(\sin x)^2} \\
 	&= \frac{\sin x\cdot 10x - 5x^2\cdot \cos x}{\sin^2x} \\
 	&= \frac{10x\sin x - 5x^2\cos x}{\sin^2 x}.
 \end{align*}
@@ -162,14 +164,14 @@ Directly applying the Quotient Rule gives:
 
 The Quotient Rule allows us to fill in holes in our understanding of derivatives of the common trigonometric functions. We start with finding the derivative of the tangent function.
 
-\begin{example}[Using the Quotient Rule to find $\frac{d}{dx}\bigl(\tan x\bigr)$.]\label{ex_der_tan}
+\begin{example}[Using the Quotient Rule to find $\frac{\dd}{\dd x}\bigl(\tan x\bigr)$.]\label{ex_der_tan}
 Find the derivative of $y=\tan x$.
 \solution
 At first, one might feel unequipped to answer this question. But recall that $\tan x = \sin x/\cos x$, so we can apply the Quotient Rule.
 \begin{align*}
-	\frac{d}{dx}\Bigl(\tan x\Bigr)
-	&= \frac{d}{dx}\left(\frac{\sin x}{\cos x}\right) \\
-	& = \frac{\cos x\frac{d}{dx}(\sin x)-\sin x\frac{d}{dx}(\cos x)}{(\cos x)^2} \\
+	\frac{\dd}{\dd x}\Bigl(\tan x\Bigr)
+	&= \frac{\dd}{\dd x}\left(\frac{\sin x}{\cos x}\right) \\
+	& = \frac{\cos x\frac{\dd}{\dd x}(\sin x)-\sin x\frac{\dd}{\dd x}(\cos x)}{(\cos x)^2} \\
 	&= \frac{\cos x \cos x - \sin x (-\sin x)}{\cos^2 x} \\
 	&= \frac{\cos^2x+\sin^2x}{\cos^2x}\\
 	&= \frac{1}{\cos^2x} \\
@@ -196,12 +198,12 @@ We include this result in the following theorem about the derivatives of the tri
 \begin{anywhereenum}
 \renewcommand{\arraystretch}{2.2}
 	\begin{tabular}{ll}
-		\item	$\dfrac{d}{dx}\bigl(\sin x\bigr) = \cos x$ &
-		\item	$\dfrac{d}{dx}\bigl(\cos x\bigr) = -\sin x$ \\
-		\item	$\dfrac{d}{dx}\bigl(\tan x\bigr) = \sec^2 x$ \qquad\quad\null&
-		\item	$\dfrac{d}{dx}\bigl(\cot x\bigr) = -\csc^2 x$ \\
-		\item	$\dfrac{d}{dx}\bigl(\sec x\bigr) = \sec x\tan x$ &
-		\item	$\dfrac{d}{dx}\bigl(\csc x\bigr) = -\csc x\cot x$
+		\item	$\dfrac{\dd}{\dd x}\bigl(\sin x\bigr) = \cos x$ &
+		\item	$\dfrac{\dd}{\dd x}\bigl(\cos x\bigr) = -\sin x$ \\
+		\item	$\dfrac{\dd}{\dd x}\bigl(\tan x\bigr) = \sec^2 x$ \qquad\quad\null&
+		\item	$\dfrac{\dd}{\dd x}\bigl(\cot x\bigr) = -\csc^2 x$ \\
+		\item	$\dfrac{\dd}{\dd x}\bigl(\sec x\bigr) = \sec x\tan x$ &
+		\item	$\dfrac{\dd}{\dd x}\bigl(\csc x\bigr) = -\csc x\cot x$
 	\end{tabular}
 \end{anywhereenum}
 \end{theorem}
@@ -214,8 +216,8 @@ In \autoref{ex_quot1} the derivative of $\ds f(x) = \frac{5x^2}{\sin x}$ was fou
 We found $\ds \fp(x) = \frac{10x\sin x - 5x^2\cos x}{\sin^2 x}$ in \autoref{ex_quot1}. We now find $\fp$ using the Product Rule, considering $f$ as $f(x) = 5x^2\csc x$.
 \begin{align*}
 	\fp(x)
-	&= \frac{d}{dx}\Bigl(5x^2\csc x\Bigr) \\
-	& = 5x^2 \frac{d}{dx} (\csc x) - \csc x \frac{d}{dx}(5x^2) \\
+	&= \frac{\dd}{\dd x}\Bigl(5x^2\csc x\Bigr) \\
+	& = 5x^2 \frac{\dd}{\dd x} (\csc x) - \csc x \frac{\dd}{\dd x}(5x^2) \\
 	&= 5x^2(-\csc x\cot x) + 10x\csc x && \text{\small (now rewrite trig functions)}\\
 	&= 5x^2\cdot \frac{-1}{\sin x}\cdot \frac{\cos x}{\sin x} + \frac{10x}{\sin x}\\
 	&= \ds\frac{-5x^2\cos x}{\sin ^2x}+\frac{10x}{\sin x} && \text{\small (get common denominator)}\\
@@ -242,8 +244,8 @@ We employ the Quotient Rule.
 
 The derivative of $\ds y=\frac{1}{x^n}$ turned out to be rather nice. It gets better. Consider:
 \begin{align*}
-	\frac{d}{dx}\left(\frac{1}{x^n}\right)
-	&= \parbox{60pt}{$\ds\frac{d}{dx}\Bigl(x^{-n}\Bigr)$}
+	\frac{\dd}{\dd x}\left(\frac{1}{x^n}\right)
+	&= \parbox{60pt}{$\ds\frac{\dd}{\dd x}\Bigl(x^{-n}\Bigr)$}
 	\text{\small (apply result from \autoref{ex_deriv_power})}\\
 	&= \parbox{60pt}{$\ds-\frac{n}{x^{n+1}}$}\text{\small (rewrite algebraically)} \\
 	&= -nx^{-(n+1)} \\

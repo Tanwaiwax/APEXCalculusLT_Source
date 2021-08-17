@@ -1,6 +1,6 @@
 \section{Implicit Differentiation}\label{sec:imp_deriv}
 
-In the previous sections we learned to find the derivative, $ \frac{dy}{dx}$, or $y\primeskip'$, when $y$ is given \emph{explicitly} as a function of $x$. That is, if we know $y=f(x)$ for some function $f$, we can find $y\primeskip'$. For example, given  $y=3x^2-7$, we can easily find $y\primeskip'=6x$. (Here we explicitly state how $x$ and $y$ are related. Knowing $x$, we can directly find $y$.)
+In the previous sections we learned to find the derivative, $ \frac{\dd y}{\dd x}$, or $y\primeskip'$, when $y$ is given \emph{explicitly} as a function of $x$. That is, if we know $y=f(x)$ for some function $f$, we can find $y\primeskip'$. For example, given  $y=3x^2-7$, we can easily find $y\primeskip'=6x$. (Here we explicitly state how $x$ and $y$ are related. Knowing $x$, we can directly find $y$.)
 
 Sometimes the relationship between $y$ and $x$ is not explicit; rather, it is \emph{implicit}. For instance, we might know that $x^2-y=4$. This equality defines a relationship between $x$ and $y$; if we know $x$, we could figure out $y$. Can we still find $y\primeskip'$?  In this case, sure; we  solve for $y$ to get $y=x^2-4$ (hence we now know $y$ explicitly)  and then differentiate to get $y\primeskip'=2x$.
 
@@ -19,11 +19,12 @@ ymin=-3.2,ymax=3.2,xmin=-3.2,xmax=3.2,axis equal,name=myplot]
 
 Implicit differentiation is a technique based on the Chain Rule that is used to find a derivative when the relationship between the variables is given implicitly rather than explicitly (solved for one variable in terms of the other).\bigskip
 
-We begin by reviewing the Chain Rule. Let $f$ and $g$ be functions of $x$. Then \[\frac{d}{dx}\Bigl(f(g(x))\Bigr) = \fp(g(x))\cdot g'(x).\]
+We begin by reviewing the Chain Rule. Let $f$ and $g$ be functions of $x$. Then
+\[\frac{\dd}{\dd x}\Bigl(f(g(x))\Bigr) = \fp(g(x))\cdot g'(x).\]
 Suppose now that $y=g(x)$. We can rewrite the above as
 \begin{equation}
-\frac{d}{dx}\Bigl(f(y)\Bigr) = \fp(y)\cdot y\primeskip', \quad \text{or}\quad
-\frac{d}{dx}\Bigl(f(y)\Bigr) = \fp(y)\cdot \frac{dy}{dx} .\label{eq:implicit1}
+\frac{\dd}{\dd x}\Bigl(f(y)\Bigr) = \fp(y)\cdot y\primeskip', \quad \text{or}\quad
+\frac{\dd}{\dd x}\Bigl(f(y)\Bigr) = \fp(y)\cdot \frac{\dd y}{\dd x} .\label{eq:implicit1}
 \end{equation}
 These equations look strange; the key concept to learn here is that we can find $y\primeskip'$ even if we don't exactly know how $y$ and $x$ relate.
 
@@ -35,16 +36,16 @@ We demonstrate this process in the following example.
 Find $y\primeskip'$ given that $\sin(y) + y^3=6-x^3$.
 \solution
 We start by taking the derivative of both sides (thus maintaining the equality). We have:
-\[\frac{d}{dx}\Bigl(\sin(y) + y^3\Bigr)=\frac{d}{dx}\Bigl(6-x^3\Bigr).\]
+\[\frac{\dd}{\dd x}\Bigl(\sin(y) + y^3\Bigr)=\frac{\dd}{\dd x}\Bigl(6-x^3\Bigr).\]
 The right hand side is easy; it returns $-3x^2$. 
 
 The left hand side requires more consideration. We take the derivative term-by-term.  Using the technique derived from \autoeqref{eq:implicit1} above, we can see that
 \vspace{-.3\baselineskip}
-\[\frac{d}{dx}\Bigl(\sin y\Bigr) = \cos y \cdot y\primeskip'.\] %The derivative of $\sin(y)$ is $\cos(y)y\primeskip'$.  The reason for this is the chain rule. Since $y$ itself depends on $x$, the term $\sin(y)$ is really a function inside of a function, $y$ being a function of $x$.
+\[\frac{\dd}{\dd x}\Bigl(\sin y\Bigr) = \cos y \cdot y\primeskip'.\] %The derivative of $\sin(y)$ is $\cos(y)y\primeskip'$.  The reason for this is the chain rule. Since $y$ itself depends on $x$, the term $\sin(y)$ is really a function inside of a function, $y$ being a function of $x$.
 
 We apply the same process to the $y^3$ term. 
 \[
-\frac{d}{dx}\Bigl(y^3\Bigr) = \frac{d}{dx}\Bigl((y)^3\Bigr) = 3(y)^2\cdot y\primeskip'.
+\frac{\dd}{\dd x}\Bigl(y^3\Bigr) = \frac{\dd}{\dd x}\Bigl((y)^3\Bigr) = 3(y)^2\cdot y\primeskip'.
 \]
 %Similarly, the derivative of $y^3$ is $3y^2y\primeskip'$.  
 Putting this together with the right hand side, we have
@@ -95,16 +96,16 @@ This suggests a general method for implicit differentiation.  For the steps belo
 \item Factor out $y\primeskip'$;  solve for $y\primeskip'$ by dividing.
 \end{enumerate}
 
-\paragraph{Practical Note:}When working by hand, it may be beneficial to use the symbol $\frac{dy}{dx}$ instead of $y\primeskip'$, as the latter can be easily confused for $y$ or $y^1$.
+\paragraph{Practical Note:}When working by hand, it may be beneficial to use the symbol $\frac{\dd y}{\dd x}$ instead of $y\primeskip'$, as the latter can be easily confused for $y$ or $y^1$.
 
 \begin{example}[Using Implicit Differentiation]\label{ex_implicit3}
 Given the implicitly defined function $y^3+x^2y^4=1+2x$, find $y\primeskip'$.
 \solution
 We will take the implicit derivatives term by term. Using the Chain Rule the derivative of $y^3$ is $3y^2 y\primeskip'$.
 
-The second term, $x^2y^4$ is a little more work. It requires the Product Rule as it is the product of two functions of $x$: $x^2$ and $y^4$. We see that $\dfrac{d}{dx}(x^2y^4)$ is
+The second term, $x^2y^4$ is a little more work. It requires the Product Rule as it is the product of two functions of $x$: $x^2$ and $y^4$. We see that $\dfrac{\dd}{\dd x}(x^2y^4)$ is
 \begin{gather*}
-x^2 \cdot \frac{d}{dx}(y^4) + \frac{d}{dx}(x^2) \cdot y^4 \\
+x^2 \cdot \frac{\dd}{\dd x}(y^4) + \frac{\dd}{\dd x}(x^2) \cdot y^4 \\
 x^2 \cdot (4y^3y') + 2x \cdot y^4 
 \end{gather*}
 The first part of this expression requires a $y\primeskip'$ because we are taking the derivative of a $y$ term. The second part does not require it because we are taking the derivative of $x^2$.
@@ -143,10 +144,10 @@ Given the implicitly defined curve $\sin(x^2y^2)+y^3=x+y$, find $y\primeskip'$.
 \solution
 Differentiating term by term, we find the most difficulty in the first term.  It requires both the Chain and Product Rules.
 \begin{align*}
-	\frac{d}{dx}\left(\sin (x^2y^2)\right)
-	&= \cos(x^2y^2) \cdot \frac{d}{dx} (x^2y^2)\\
-	&= \cos(x^2y^2) \cdot \left(x^2 \frac{d}{dx} (y^2)
-	+ \frac{d}{dx} (x^2) \cdot y^2\right)\\
+	\frac{\dd}{\dd x}\left(\sin (x^2y^2)\right)
+	&= \cos(x^2y^2) \cdot \frac{\dd}{\dd x} (x^2y^2)\\
+	&= \cos(x^2y^2) \cdot \left(x^2 \frac{\dd}{\dd x} (y^2)
+	+ \frac{\dd}{\dd x} (x^2) \cdot y^2\right)\\
 	&= \cos(x^2y^2) \cdot (x^2 \cdot 2yy\primeskip'+2xy^2)\\
 	&= 2(x^2yy\primeskip'+xy^2)\cos(x^2y^2). \\
 \end{align*}
@@ -234,12 +235,12 @@ ymin=-1.2,ymax=1.2,xmin=-1.2,xmax=1.2,name=myplot,axis equal]
 
 This section has shown how to find the derivatives of implicitly defined functions, whose graphs include a wide variety of interesting and unusual shapes. Implicit differentiation can also be used to further our understanding of ``regular'' differentiation. 
 
-%% the following derives d/dx x^r, but implicit derivation assumes that the derivative already exists
+%% the following derives \dd/\dd x x^r, but implicit derivation assumes that the derivative already exists
 %One hole in our current understanding of derivatives is this: what is the derivative of the square root function? That is,
-%\[\frac{d}{dx}\bigl(\sqrt{x}\bigr) = \frac{d}{dx}\bigl(x^{1/2}\bigr) = \text{?}\]
+%\[\frac{\dd}{\dd x}\bigl(\sqrt{x}\bigr) = \frac{\dd}{\dd x}\bigl(x^{1/2}\bigr) = \text{?}\]
 %
 %We allude to a possible solution, as we can write the square root function as a power function with a rational (or, fractional) power. We are then tempted to apply the Power Rule and obtain
-%\[\frac{d}{dx}\bigl(x^{1/2}\bigr) = \frac12x^{-1/2} = \frac{1}{2\sqrt{x}}.\]
+%\[\frac{\dd}{\dd x}\bigl(x^{1/2}\bigr) = \frac12x^{-1/2} = \frac{1}{2\sqrt{x}}.\]
 %
 %The trouble with this is that the Power Rule was initially defined only for positive integer powers, $n>0$. While we did not justify this at the time, generally the Power Rule is proved using something called the Binomial Theorem, which deals only with positive integers. The Quotient Rule allowed us to extend the Power Rule to negative integer powers. Implicit Differentiation allows us to extend the Power Rule to rational powers, as shown below.
 %
@@ -248,7 +249,7 @@ This section has shown how to find the derivatives of implicitly defined functio
 %\begin{align*}
 %	y &= x^{m/n} \\
 %	y^n &= x^m \\
-%	\frac{d}{dx}\bigl(y^n\bigr) &= \frac{d}{dx}\bigl(x^m\bigr) \\
+%	\frac{\dd}{\dd x}\bigl(y^n\bigr) &= \frac{\dd}{\dd x}\bigl(x^m\bigr) \\
 %	n\cdot y^{n-1}\cdot y\primeskip' &= m\cdot x^{m-1} \\
 %	y\primeskip' &= \frac{m}{n} \frac{x^{m-1}}{y^{n-1}} && \mbox{\small (now substitute $x^{m/n}$ for $y$)} \\
 %	&= \frac{m}{n} \frac{x^{m-1}}{(x^{m/n})^{n-1}} && \mbox{\small (apply lots of algebra)}\\
@@ -314,17 +315,17 @@ This section has shown how to find the derivatives of implicitly defined functio
 
 \subsection{Implicit Differentiation and the Second Derivative}
 
-We can use implicit differentiation to find higher order derivatives. In theory, this is simple: first find $\frac{dy}{dx}$, then take its derivative with respect to $x$. In practice, it is not hard, but it often requires a bit of algebra. We demonstrate this in an example.
+We can use implicit differentiation to find higher order derivatives. In theory, this is simple: first find $\frac{\dd y}{\dd x}$, then take its derivative with respect to $x$. In practice, it is not hard, but it often requires a bit of algebra. We demonstrate this in an example.
 
 \begin{example}[Finding the second derivative]\label{ex_implicit9}
-Given $x^2+y^2=1$, find $\ds\frac{d^2y}{dx^2} = y\primeskip''$.
+Given $x^2+y^2=1$, find $\ds\frac{\dd^2y}{\dd x^2} = y\primeskip''$.
 \solution
-We found that $y\primeskip' = \frac{dy}{dx} = -x/y$ in \autoref{ex_implicit7}. To find $y\primeskip''$, we apply implicit differentiation to $y\primeskip'$.
+We found that $y\primeskip' = \frac{\dd y}{\dd x} = -x/y$ in \autoref{ex_implicit7}. To find $y\primeskip''$, we apply implicit differentiation to $y\primeskip'$.
 {\allowdisplaybreaks
 \begin{align*}
 	y\primeskip''
-	&= \frac{d}{dx}\bigl(y\primeskip'\bigr) \\
-	&= \frac{d}{dx}\left(-\frac xy\right) && \text{\small now use the Quotient Rule} \\
+	&= \frac{\dd}{\dd x}\bigl(y\primeskip'\bigr) \\
+	&= \frac{\dd}{\dd x}\left(-\frac xy\right) && \text{\small now use the Quotient Rule} \\
 	&= -\frac{y(1) - x(y\primeskip')}{y^2} && \text{\small replace $y\primeskip'$ with $-x/y$} \\
 	&= -\frac{y-x(-x/y)}{y^2}\\
 %	&= -\frac{y+x^2/y}{y^2} \\
@@ -460,30 +461,30 @@ Let $u$ and $v$ be differentiable functions, and let $c$ and $n$ be real numbers
 \begin{anywhereenum}
 \renewcommand{\arraystretch}{1.6}
 \begin{tabular}{ll}
-	\item		$\frac{d}{dx}\bigl(cu\bigr) = cu'$ &
-	\item		$\frac{d}{dx}\bigl(u\pm v\bigr) = u'\pm v'$ \\
-	\item		$\frac{d}{dx}\bigl(u\cdot v\bigr) = uv'+u'v$ &
-	\item		$\frac{d}{dx}\bigl(\frac uv\bigr) = \frac{u'v-uv'}{v^2}$ \\
-	\item		$\frac{d}{dx}\bigl(u(v)\bigr) = u'(v)v'$ &
-	\item		$\frac{d}{dx}\bigl(x^n\bigr) = nx^{n-1}$ \\
-	\item		$\frac{d}{dx}\bigl(c\bigr) = 0$ &
-	\item		$\frac{d}{dx}\bigl(x\bigr) = 1$ \\
-	\item		$\frac{d}{dx}\bigl(\ln x\bigr) = \frac{1}{x}$ &
-	\item		$\frac{d}{dx}\bigl(e^x\bigr) = e^x$ \\
-	\item		$\frac{d}{dx}\bigl(\sin x\bigr) = \cos x$ &
-	\item		$\frac{d}{dx}\bigl(\cos x\bigr) = -\sin x$ \\
-	\item		$\frac{d}{dx}\bigl(\tan x\bigr) = \sec^2x$ &
-	\item		$\frac{d}{dx}\bigl(\cot x\bigr) = -\csc^2x$ \\
-	\item		$\frac{d}{dx}\bigl(\sec x\bigr) = \sec x\tan x$\qquad\null &
-	\item		$\frac{d}{dx}\bigl(\csc x\bigr) = -\csc x\cot x$
-%	\item		$\frac{d}{dx}\bigl(a^x\bigr) = \ln a\cdot a^x$ \\
-%	\item		$\frac{d}{dx}\bigl(\log_a x\bigr) = \frac{1}{\ln a}\cdot\frac{1}{x}$ &
-%	\item		$\frac{d}{dx}\bigl(\sin^{-1}x\bigr) = \frac{1}{\sqrt{1-x^2}}$ &
-%	\item		$\frac{d}{dx}\bigl(\csc^{-1}x\bigr) = -\frac{1}{\abs{x}\sqrt{x^2-1}}$ \\
-%	\item		$\frac{d}{dx}\bigl(\tan^{-1}x\bigr) = \frac{1}{1+x^2}$ &
-%	\item		$\frac{d}{dx}\bigl(\cos^{-1}x\bigr) = -\frac{1}{\sqrt{1-x^2}}$
-%	\item		$\frac{d}{dx}\bigl(\sec^{-1}x\bigr) = \frac{1}{\abs{x}\sqrt{x^2-1}}$
-%	\item		$\frac{d}{dx}\bigl(\cot^{-1}x\bigr) = -\frac{1}{1+x^2}$
+	\item		$\frac{\dd}{\dd x}\bigl(cu\bigr) = cu'$ &
+	\item		$\frac{\dd}{\dd x}\bigl(u\pm v\bigr) = u'\pm v'$ \\
+	\item		$\frac{\dd}{\dd x}\bigl(u\cdot v\bigr) = uv'+u'v$ &
+	\item		$\frac{\dd}{\dd x}\bigl(\frac uv\bigr) = \frac{u'v-uv'}{v^2}$ \\
+	\item		$\frac{\dd}{\dd x}\bigl(u(v)\bigr) = u'(v)v'$ &
+	\item		$\frac{\dd}{\dd x}\bigl(x^n\bigr) = nx^{n-1}$ \\
+	\item		$\frac{\dd}{\dd x}\bigl(c\bigr) = 0$ &
+	\item		$\frac{\dd}{\dd x}\bigl(x\bigr) = 1$ \\
+	\item		$\frac{\dd}{\dd x}\bigl(\ln x\bigr) = \frac{1}{x}$ &
+	\item		$\frac{\dd}{\dd x}\bigl(e^x\bigr) = e^x$ \\
+	\item		$\frac{\dd}{\dd x}\bigl(\sin x\bigr) = \cos x$ &
+	\item		$\frac{\dd}{\dd x}\bigl(\cos x\bigr) = -\sin x$ \\
+	\item		$\frac{\dd}{\dd x}\bigl(\tan x\bigr) = \sec^2x$ &
+	\item		$\frac{\dd}{\dd x}\bigl(\cot x\bigr) = -\csc^2x$ \\
+	\item		$\frac{\dd}{\dd x}\bigl(\sec x\bigr) = \sec x\tan x$\qquad\null &
+	\item		$\frac{\dd}{\dd x}\bigl(\csc x\bigr) = -\csc x\cot x$
+%	\item		$\frac{\dd}{\dd x}\bigl(a^x\bigr) = \ln a\cdot a^x$ \\
+%	\item		$\frac{\dd}{\dd x}\bigl(\log_a x\bigr) = \frac{1}{\ln a}\cdot\frac{1}{x}$ &
+%	\item		$\frac{\dd}{\dd x}\bigl(\sin^{-1}x\bigr) = \frac{1}{\sqrt{1-x^2}}$ &
+%	\item		$\frac{\dd}{\dd x}\bigl(\csc^{-1}x\bigr) = -\frac{1}{\abs{x}\sqrt{x^2-1}}$ \\
+%	\item		$\frac{\dd}{\dd x}\bigl(\tan^{-1}x\bigr) = \frac{1}{1+x^2}$ &
+%	\item		$\frac{\dd}{\dd x}\bigl(\cos^{-1}x\bigr) = -\frac{1}{\sqrt{1-x^2}}$
+%	\item		$\frac{\dd}{\dd x}\bigl(\sec^{-1}x\bigr) = \frac{1}{\abs{x}\sqrt{x^2-1}}$
+%	\item		$\frac{\dd}{\dd x}\bigl(\cot^{-1}x\bigr) = -\frac{1}{1+x^2}$
 \end{tabular}
 \end{anywhereenum}
 \end{theorem}

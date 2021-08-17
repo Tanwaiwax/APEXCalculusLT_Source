@@ -12,10 +12,9 @@
 1. [exercises/08_08_exercises.tex line 23](../exercises/08_08_exercises.tex#L23): todo add some problems about turning a sum into a closed expression via using a series
 1. [exercises/08_09_exercises.tex line 1](../exercises/08_09_exercises.tex#L1): todo write problems that force parts 2/3 of the Limit Comparison Test.  maybe 1/(n^2-1000)ln n
 1. [exercises/09_03_exercises.tex line 27](../exercises/09_03_exercises.tex#L27): todo write area enclosed by parametric curves problems
-1. [text/05_Numerical_Integration.tex line 616](../text/05_Numerical_Integration.tex#L616): todo write an example of ``find the n so that the estimate is within ? of the actual''
 1. [text/06_Integration_Strategies.tex line 161](../text/06_Integration_Strategies.tex#L161): todo write exercises using reduction formulas
 1. [text/07_Disk_Washer_Method.tex line 193](../text/07_Disk_Washer_Method.tex#L193): todo create and work out an example where the same region is rotated about the x axis and y axis but the disk method (for both) shows that they have different volumes
-1. [text/07_Exp_Log_Functions.tex line 300](../text/07_Exp_Log_Functions.tex#L300): todo write another logarithmic differentiation example
+1. [text/07_Exp_Log_Functions.tex line 301](../text/07_Exp_Log_Functions.tex#L301): todo write another logarithmic differentiation example
 1. [text/07_Inverse_Functions.tex line 250](../text/07_Inverse_Functions.tex#L250): todo write an example of finding the inverse of a function
 1. [text/07_Inverse_Functions.tex line 252](../text/07_Inverse_Functions.tex#L252): todo write more exercises for 7.1
 1. [text/08_Power_Series.tex line 473](../text/08_Power_Series.tex#L473): todo write a transition paragraph from this section to the next

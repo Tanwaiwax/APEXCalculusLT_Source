@@ -5,22 +5,22 @@ Consider a smooth surface \surfaceS\ that represents a thin sheet of metal. How 
 If the density of this object is constant, then we can find mass via ``mass$=$ density $\times$ surface area,'' and we could compute the surface area using the techniques of the previous section. 
 
 What if the density were not constant, but variable, described by a function $\delta(x,y,z)$? We can describe the mass using our general integration techniques as
-\[\text{mass} = \iint_\surfaceS \ dm,\]
-where $dm$ represents ``a little bit of mass.'' That is, to find the total mass of the object, sum up lots of little masses over the surface.
+\[\text{mass} = \iint_\surfaceS \dd m,\]
+where $\dd m$ represents ``a little bit of mass.'' That is, to find the total mass of the object, sum up lots of little masses over the surface.
 
-How do we find the ``little bit of mass'' $dm$? On a small portion of the surface with surface area $\Delta S$, the density is approximately constant, hence $dm \approx \delta(x,y,z)\Delta S$. As we use limits to shrink the size of $\Delta S$ to 0, we see that $dm = \delta(x,y,z)dS$; that is, a little bit of mass is equal to a density times a small amount of surface area. Thus the total mass of the thin sheet is
+How do we find the ``little bit of mass'' $\dd m$? On a small portion of the surface with surface area $\Delta S$, the density is approximately constant, hence $\dd m \approx \delta(x,y,z)\Delta S$. As we use limits to shrink the size of $\Delta S$ to 0, we see that $\dd m = \delta(x,y,z)\dd S$; that is, a little bit of mass is equal to a density times a small amount of surface area. Thus the total mass of the thin sheet is
 \begin{equation}
-\text{mass} =\iint_\surfaceS \delta(x,y,z)\ dS.\label{eq:surface_int}
+\text{mass} =\iint_\surfaceS \delta(x,y,z)\dd S.\label{eq:surface_int}
 \end{equation}
 
-To evaluate the above integral, we would seek $\vec r(u,v)$, a smooth parameterization of \surfaceS\ over a region $R$ of the $u$-$v$ plane. The density would become a function of $u$ and $v$, and we would integrate $\iint_R \delta(u,v)\norm{\vec r_u\times \vec r_v}\ dA.$
+To evaluate the above integral, we would seek $\vec r(u,v)$, a smooth parameterization of \surfaceS\ over a region $R$ of the $u$-$v$ plane. The density would become a function of $u$ and $v$, and we would integrate $\iint_R \delta(u,v)\norm{\vec r_u\times \vec r_v}\dd A.$
 
 The integral in \autoeqref{eq:surface_int} is a specific example of a more general construction defined below.
 
 % todo Tim should def:surface_integral be equal to something?
 \begin{definition}[Surface Integral]\label{def:surface_integral}
 Let $G(x,y,z)$ be a continuous function defined on a surface \surfaceS. The \textbf{surface integral of $G$ on \surfaceS} is\index{surface integral}
-\[\iint_\surfaceS G(x,y,z)\ dS.\]
+\[\iint_\surfaceS G(x,y,z)\dd S.\]
 \end{definition}
 
 Surface integrals can be used to measure a variety of quantities beyond mass. If $G(x,y,z)$ measures the static charge density at a point, then the surface integral will compute the total static charge of the sheet. If $G$ measures the amount of fluid passing through a screen (represented by \surfaceS) at a point, then the surface integral gives the total amount of fluid going through the screen.
@@ -42,14 +42,14 @@ Find the mass of a thin sheet modeled by the plane $2x+y+z=3$ over the triangula
 We begin by parameterizing the planar surface \surfaceS. Using the techniques of the previous section, we can let $x=u$ and $y=v(2-2u)$, where $0\leq u\leq 1$ and $0\leq v\leq 1$. Solving for $z$ in the equation of the plane, we have $z=3-2x-y$, hence $z = 3-2u-v(2-2u)$, giving the parameterization
 $\vec r(u,v) =\bracket{u, v(2-2u), 3-2u-v(2-2u)}$.
 
-We need $dS=\norm{\vec r_u\times \vec r_v}dA$, so we need to compute $\vec r_u$, $\vec r_v$ and the norm of their cross product. We leave it to the reader to confirm the following:
+We need $\dd S=\norm{\vec r_u\times \vec r_v}\dd A$, so we need to compute $\vec r_u$, $\vec r_v$ and the norm of their cross product. We leave it to the reader to confirm the following:
 \begin{gather*}
 \vec r_u =\bracket{1,-2v,2v-2},\quad \vec r_v =\bracket{0,2-2u, 2u-2},\\
 \vec r_u\times \vec r_v =\bracket{4-4u,2-2u,2-2u}
 \quad \text{and}\quad
 \norm{\vec r_u\times \vec r_v} = 2\sqrt{6}\sqrt{(u-1)^2}.
 \end{gather*}
-We need to be careful to not ``simplify'' $\norm{\vec r_u\times \vec r_v} = 2\sqrt{6}\sqrt{(u-1)^2}$ as $2\sqrt{6}(u-1)$; rather, it is $2\sqrt{6}\abs{u-1}$. In this example, $u$ is bounded by $0\leq u\leq 1$, and on this interval $\abs{u-1}= 1-u$. Thus $dS = 2\sqrt{6}(1-u)dA$. 
+We need to be careful to not ``simplify'' $\norm{\vec r_u\times \vec r_v} = 2\sqrt{6}\sqrt{(u-1)^2}$ as $2\sqrt{6}(u-1)$; rather, it is $2\sqrt{6}\abs{u-1}$. In this example, $u$ is bounded by $0\leq u\leq 1$, and on this interval $\abs{u-1}= 1-u$. Thus $\dd S = 2\sqrt{6}(1-u)\dd A$. 
 
 The density is given as a function of $x$, $y$ and $z$, for which we'll substitute the corresponding components of $\vec r$ (with the slight abuse of notation that we used in previous sections): 
 \begin{align*}
@@ -60,9 +60,9 @@ The density is given as a function of $x$, $y$ and $z$, for which we'll substitu
 \end{align*}
 Thus the mass of the sheet is:
 \begin{align*}
-	M &= \iint_\surfaceS\ dm\\
-	&= \iint_R \delta\bigl(\vec r(u,v)\bigr)\norm{\vec r_u\times \vec r_v}\ dA\\
-	&= \int_0^1\int_0^1 \bigl(u^2-8uv-2u+8v+3\bigr)\bigl(2\sqrt{6}(1-u)\bigr)\ du\ dv\\
+	M &= \iint_\surfaceS\dd m\\
+	&= \iint_R \delta\bigl(\vec r(u,v)\bigr)\norm{\vec r_u\times \vec r_v}\dd A\\
+	&= \int_0^1\int_0^1 \bigl(u^2-8uv-2u+8v+3\bigr)\bigl(2\sqrt{6}(1-u)\bigr)\dd u\dd v\\
 	&= \frac{31}{\sqrt{6}} \approx 12.66 \text{ gm.}
 \end{align*}
 \end{example}
@@ -77,24 +77,24 @@ Given a smooth parameterization $\vec r(u,v)$ of \surfaceS, the work in the prev
 \[\vec n = \frac{\vec r_u\times \vec r_v}{\norm{\vec r_u\times \vec r_v}},\]
 which is a unit vector normal to \surfaceS\ at $\vec r(u,v)$.
 
-The measurement of flux across a surface is a surface integral; that is, to measure total flux we sum the product of $\vec F\cdot\vec n$ times a small amount of surface area: $\vec F\cdot \vec n\ dS$. 
+The measurement of flux across a surface is a surface integral; that is, to measure total flux we sum the product of $\vec F\cdot\vec n$ times a small amount of surface area: $\vec F\cdot \vec n\dd S$. 
 
 A nice thing happens with the actual computation of flux: the $\norm{\vec r_u\times \vec r_v}$ terms go away. Consider:
 \begin{align*}
 	\text{Flux}
-	&= \iint_\surfaceS \vec F\cdot \vec n\ dS \\
-	&= \iint_R \vec F\cdot \frac{\vec r_u\times \vec r_v}{\norm{\vec r_u\times \vec r_v}}\norm{\vec r_u\times \vec r_v}\ dA \\
-	&= \iint_R \vec F\cdot (\vec r_u\times \vec r_v)\ dA.
+	&= \iint_\surfaceS \vec F\cdot \vec n\dd S \\
+	&= \iint_R \vec F\cdot \frac{\vec r_u\times \vec r_v}{\norm{\vec r_u\times \vec r_v}}\norm{\vec r_u\times \vec r_v}\dd A \\
+	&= \iint_R \vec F\cdot (\vec r_u\times \vec r_v)\dd A.
 \end{align*}
 
 The above only makes sense if \surfaceS\ is orientable; the normal vectors $\vec n$ must vary continuously across \surfaceS. We assume that $\vec n$ does vary continuously. (If the parameterization $\vec r$ of \surfaceS\ is smooth, then our above definition of $\vec n$ will vary continuously.)
 
 \begin{definition}[Flux over a surface]\label{def:surfflux}
 Let $\vec F$ be a vector field with continuous components defined on an orientable surface \surfaceS\ with normal vector $\vec n$. The \textbf{flux} of $\vec F$ across \surfaceS\ is\index{flux}
-\[\text{Flux} = \iint_\surfaceS \vec F\cdot \vec n\ dS.\]
+\[\text{Flux} = \iint_\surfaceS \vec F\cdot \vec n\dd S.\]
 If \surfaceS\ is parameterized by $\vec r(u,v)$, which is smooth on its domain $R$, then
 \[
-\text{Flux} = \iint_R \vec F\bigl(\vec r(u,v)\bigr)\cdot (\vec r_u\times \vec r_v)\ dA.
+\text{Flux} = \iint_R \vec F\bigl(\vec r(u,v)\bigr)\cdot (\vec r_u\times \vec r_v)\dd A.
 \]
 \end{definition}
 
@@ -121,9 +121,9 @@ Using our work from the previous example, we have $\vec n = \vec r_u\times\vec r
 Thus the flux of $\vec F$ across \surfaceS\ is:
 \begin{align*}
 	\text{Flux}
-	&= \iint_\surfaceS \vec F\cdot \vec n\ dS\\
-	&= \iint_R\bracket{1,u,-v(2-2u)}\cdot\bracket{4-4u,2-2u,2-2u}\ dA \\
-	&= \int_0^1\int_0^1 \bigl(-4u^2v-2u^2+8uv-2u-4v+4\bigr)\ du\ dv\\
+	&= \iint_\surfaceS \vec F\cdot \vec n\dd S\\
+	&= \iint_R\bracket{1,u,-v(2-2u)}\cdot\bracket{4-4u,2-2u,2-2u}\dd A \\
+	&= \int_0^1\int_0^1 \bigl(-4u^2v-2u^2+8uv-2u-4v+4\bigr)\dd u\dd v\\
 	&= 5/3.
 \end{align*}
 To make full use of this numeric answer, we need to know the direction in which the field is passing across \surfaceS. The graph in \autoref{fig:surfflux1} helps, but we need a method that is not dependent on a graph.
@@ -181,14 +181,14 @@ We are now set to compute flux. Over field $\vec F_1=\bracket{0,0,1}$:
 
 \begin{align*}
 	\text{Flux across }\surfaceS_1
-	&= \iint_{\surfaceS_1} \vec F_1\cdot \vec n_1\ dS \\
-	&= \iint_R\bracket{0,0,1}\cdot\bracket{0,0,v}\ dA\\
-	&= \int_0^1\int_0^{2\pi} (v)\ du\ dv\\
+	&= \iint_{\surfaceS_1} \vec F_1\cdot \vec n_1\dd S \\
+	&= \iint_R\bracket{0,0,1}\cdot\bracket{0,0,v}\dd A\\
+	&= \int_0^1\int_0^{2\pi} (v)\dd u\dd v\\
 	&= \pi.\displaybreak[0]\\
 	\text{Flux across }\surfaceS_2
-	&= \iint_{\surfaceS_2} \vec F_1\cdot \vec n_2\ dS \\
-	&= \iint_R\bracket{0,0,1}\cdot\bracket{2v^2\cos u,2v^2\sin u,v}\ dA\\
-	&= \int_0^1\int_0^{2\pi} (v)\ du\ dv\\
+	&= \iint_{\surfaceS_2} \vec F_1\cdot \vec n_2\dd S \\
+	&= \iint_R\bracket{0,0,1}\cdot\bracket{2v^2\cos u,2v^2\sin u,v}\dd A\\
+	&= \int_0^1\int_0^{2\pi} (v)\dd u\dd v\\
 	&= \pi.
 \end{align*}
 
@@ -202,19 +202,19 @@ We now compute the flux across each surface with $\vec F_2=\bracket{0,0,z}$:
 
 \begin{align*}
 	\text{Flux across }\surfaceS_1
-	&= \iint_{\surfaceS_1} \vec F_2\cdot \vec n_1\ dS .
+	&= \iint_{\surfaceS_1} \vec F_2\cdot \vec n_1\dd S .
 	\intertext{Over $\surfaceS_1$, $\vec F_2 = \vec F_2\bigl(\vec r_2(u,v)\bigr) =\bracket{0,0,0}.$ Therefore,}
-	&= \iint_R\bracket{0,0,0}\cdot\bracket{0,0,v}\ dA\\
-	&= \int_0^1\int_0^{2\pi} (0)\ du\ dv\\
+	&= \iint_R\bracket{0,0,0}\cdot\bracket{0,0,v}\dd A\\
+	&= \int_0^1\int_0^{2\pi} (0)\dd u\dd v\\
 	&= 0.
 \end{align*}
 
 \begin{align*}
 	\text{Flux across }\surfaceS_2
-	&= \iint_{\surfaceS_2} \vec F_2\cdot \vec n_2\ dS .
+	&= \iint_{\surfaceS_2} \vec F_2\cdot \vec n_2\dd S .
 	\intertext{Over $\surfaceS_2$, $\vec F_2 = \vec F_2\bigl(\vec r_2(u,v)\bigr) =\bracket{0,0,1-v^2}.$ Therefore,}
-	&= \iint_R\bracket{0,0,1-v^2}\cdot\bracket{2v^2\cos u,2v^2\sin u,v}\ dA\\
-	&= \int_0^1\int_0^{2\pi} (v^3-v)\ du\ dv\\
+	&= \iint_R\bracket{0,0,1-v^2}\cdot\bracket{2v^2\cos u,2v^2\sin u,v}\dd A\\
+	&= \int_0^1\int_0^{2\pi} (v^3-v)\dd u\dd v\\
 	&= \pi/2.
 \end{align*}
 
@@ -230,26 +230,26 @@ In this chapter, we've introduced four new types of integrals, which we gather i
 \begin{keyidea}[Integrating Parameterized Curves and Surfaces]\label{integral_types}
 \renewcommand{\arraystretch}{2}
 \setlength{\tabcolsep}{1.5em}
- \begin{tabular}{lp{13em}p{17em}}\toprule
+ \begin{tabular}{ l p{13em} p{17em} }\toprule
   & $\vec c:\mathbb{R}\to\mathbb{R}^3$\par parameterizes a curve $C$
   & $\vec r:\mathbb{R}^2\to\mathbb{R}^3$\par parameterizes a surface $\surfaceS$ \\\cmidrule(lr){2-2}\cmidrule(lr){3-3}
   $f:\mathbb{R}^3\to\mathbb{R}$
   & scalar line integral:\par
-  $\ds\int_{\vec c(D)} f ds=\int_D f(\vec c(t))\norm{\vec c\,'(t)}dt$
+  $\ds\int_{\vec c(D)} f\dd s=\int_D f(\vec c(t))\norm{\vec c\,'(t)}\dd t$
   & scalar surface integral:\par
-  $\ds\iint_{\vec r(D)} f\ dS=\iint_D f(\vec r(u,v))\norm{\vec r_u\times\vec r_v}dA$
+  $\ds\iint_{\vec r(D)} f\dd S=\iint_D f(\vec r(u,v))\norm{\vec r_u\times\vec r_v}\dd A$
   \\
   $\vec F:\mathbb{R}^3\to\mathbb{R}^3$
   & vector line integral:\par
-  $\ds\int_{\vec c(D)}\vec F\cdot d\vec r=\int_D\vec F(\vec c(t))\cdot\vec c\,'(t)dt$
+  $\ds\int_{\vec c(D)}\vec F\cdot\dd\vec r=\int_D\vec F(\vec c(t))\cdot\vec c\,'(t)\dd t$
   & vector surface integral:\par
-  $\ds\iint_{\vec r(D)}\vec F\cdot\vec n\ dS
-  =\iint_D\vec F(\vec r(u,v))\cdot(\vec r_u\times\vec r_v)dA$
+  $\ds\iint_{\vec r(D)}\vec F\cdot\vec n\dd S
+  =\iint_D\vec F(\vec r(u,v))\cdot(\vec r_u\times\vec r_v)\dd A$
 %  \\\bottomrule
  \end{tabular}
 \end{keyidea}
 }
 
-%If we are in the bottom left entry, where $\vec c:\mathbb{R}\to\mathbb{R}^3$ and $\vec F:\mathbb{R}^3\to\mathbb{R}^3$, we may be able to use the Fundamental Theorem for Gradient Vector Fields: $\int_C\nabla\phi\cdot d\vec s=\phi(Q)-\phi(P)$.
+%If we are in the bottom left entry, where $\vec c:\mathbb{R}\to\mathbb{R}^3$ and $\vec F:\mathbb{R}^3\to\mathbb{R}^3$, we may be able to use the Fundamental Theorem for Gradient Vector Fields: $\int_C\nabla\phi\cdot\dd\vec s=\phi(Q)-\phi(P)$.
 
 \printexercises{exercises/14_06_exercises}

@@ -128,7 +128,7 @@ For $a>0$ and $a\ne1$ the logarithmic function $f(x)=\log_a x$ satisfies:
 Using the inverse of the natural exponential function, we can determine what the value of $\fp(0)$ is in the formula $(a^x)'=\fp(0)a^x$. To do so, we note that $a=e^{\ln a}$ since the exponential and logarithm functions are inverses. Hence we can write:
 \[a^x=\left(e^{\ln a}\right)^x=e^{x\ln a}\]
 Now since $\ln a$ is a constant, we can use the Chain Rule to see that:
-\[\frac d{dx} a^x=\frac d{dx} e^{x\ln a} =e^{x\ln a}(\ln a) =a^x\ln a\]
+\[\frac d{\dd x} a^x=\frac d{\dd x} e^{x\ln a} =e^{x\ln a}(\ln a) =a^x\ln a\]
 Comparing this to our previous result, we can restate our theorem:
 
 \begin{theorem}[Derivative of Exponential Functions]\label{thm_exp_deriv}
@@ -149,12 +149,12 @@ This change of base formula allows us to use facts about the natural logarithm t
 
 \subsection{Derivatives of logarithmic functions}
 
-Since the natural logarithm function is the inverse of the natural exponential function, we can use the formula $(f^{-1}(x))'=\dfrac1{\fp(f^{-1}(x))}$ to find the derivative of $y=\ln x$. We know that $\dfrac d{dx}e^x=e^x$, so we get:
-\[\frac d{dx}\ln x=\frac1{e^y}=\frac1{e^{\ln x}}=\frac1x.\]
+Since the natural logarithm function is the inverse of the natural exponential function, we can use the formula $(f^{-1}(x))'=\dfrac1{\fp(f^{-1}(x))}$ to find the derivative of $y=\ln x$. We know that $\dfrac\dd{\dd x}e^x=e^x$, so we get:
+\[\frac\dd{\dd x}\ln x=\frac1{e^y}=\frac1{e^{\ln x}}=\frac1x.\]
 Now we
-%In \autoref{sec:deriv_inverse_function}, \autoref{ex_deriv_lnx}, we found that $\frac{d}{dx}\ln x=\frac1x$. We
+%In \autoref{sec:deriv_inverse_function}, \autoref{ex_deriv_lnx}, we found that $\frac{\dd}{\dd x}\ln x=\frac1x$. We
 can apply the change of base formula to find the derivative of a general logarithmic function:
-\[\frac{d}{dx}\log_ax=\frac{d}{dx}\left(\frac{\ln x}{\ln a}\right) =\frac 1{\ln a}\left(\frac{d}{dx}\ln x\right)=\frac 1{x\ln a}.\]
+\[\frac{\dd}{\dd x}\log_ax=\frac{\dd}{\dd x}\left(\frac{\ln x}{\ln a}\right) =\frac 1{\ln a}\left(\frac{\dd}{\dd x}\ln x\right)=\frac 1{x\ln a}.\]
 
 \begin{example}[Finding Derivatives of Logs and Exponentials]\label{ex_find_d_exp_log}
 Find derivatives of the following functions.
@@ -179,8 +179,8 @@ Find the derivative of the function $y=\ln\abs x$.
 \solution
 We can rewrite our function as
 \[y=\begin{cases} \ln x & \text{if $x>0$}\\ \ln(-x) & \text{if $x<0$}\\ \end{cases}\]
-Applying the Chain Rule, we see that $\frac{dy}{dx}=\frac 1x$ for $x>0$, and $\frac{dy}{dx}=\frac{-1}{-x}=\frac 1x$ for $x<0$. Hence we have
-\[\frac{d}{dx}\ln\abs x=\frac 1x \quad\text{ for $x\neq0$.}\]
+Applying the Chain Rule, we see that $\frac{\dd y}{\dd x}=\frac 1x$ for $x>0$, and $\frac{\dd y}{\dd x}=\frac{-1}{-x}=\frac 1x$ for $x<0$. Hence we have
+\[\frac{\dd}{\dd x}\ln\abs x=\frac 1x \quad\text{ for $x\neq0$.}\]
 \end{example}
 
 \subsection{Antiderivatives}
@@ -188,16 +188,16 @@ Applying the Chain Rule, we see that $\frac{dy}{dx}=\frac 1x$ for $x>0$, and $\f
 Combining these new results, we arrive at the following theorem:
 
 \begin{theorem}[Derivatives and Antiderivatives of Exponentials and Logarithms]\label{thm_int_exp_log}
-Given a base $a>0$ and $a\neq 1$, the following hold:
+Given a base $a>0$ and $a\neq 1$, the following hold:\\[-1.5\baselineskip]
 \begin{multicols}{2}
 \begin{enumerate}
-\item $\dfrac d{dx}e^x=e^x$
-\item $\dfrac d{dx}a^x=a^x\ln a$
-\item $\dfrac d{dx}\ln x=\dfrac1x$
-\item $\dfrac d{dx}\log_a x=\dfrac1{x\ln a}$
-\item $\ds\int e^x\,dx=e^x+C$
-\item $\ds\int a^x\,dx=\frac{a^x}{\ln a}+C$
-\item $\ds\int \frac{dx}{x}=\ln\abs x+C$
+\item $\dfrac\dd{\dd x}e^x=e^x$
+\item $\dfrac\dd{\dd x}a^x=a^x\ln a$
+\item $\dfrac\dd{\dd x}\ln x=\dfrac1x$
+\item $\dfrac\dd{\dd x}\log_a x=\dfrac1{x\ln a}$
+\item $\ds\int e^x\dd x=e^x+C$
+\item $\ds\int a^x\dd x=\frac{a^x}{\ln a}+C$
+\item $\ds\int \frac{\dd x}{x}=\ln\abs x+C$
 \item[]
 \end{enumerate}
 \end{multicols}
@@ -206,22 +206,23 @@ Given a base $a>0$ and $a\neq 1$, the following hold:
 \begin{example}[Finding Antiderivatives]\label{ex_exp_log_anti}
 Find the following antiderivatives.
 \[
- \text{1. }\int 3^x\,dx\qquad
- \text{2. }\int x^2 e^{x^3}\,dx\qquad
- \text{3. }\int \frac{x\,dx}{x^2+1}
+ \text{1. }\int 3^x\dd x\qquad
+ \text{2. }\int x^2 e^{x^3}\dd x\qquad
+ \text{3. }\int \frac{x\dd x}{x^2+1}
 \]
 \solution
 \begin{enumerate}
-\item Applying our theorem, \[\int 3^x\, dx=\frac{3^x}{\ln 3}+C\]
-\item We use the substitution $u=x^3$, $du=3x^2\,dx$:
+\item Applying our theorem,
+\[\int 3^x\dd x=\frac{3^x}{\ln 3}+C\]
+\item We use the substitution $u=x^3$, $\dd u=3x^2\dd x$:
 \begin{align*}
-\int x^2e^{x^3}\,dx &=\frac13 \int e^u\,du\\
+\int x^2e^{x^3}\dd x &=\frac13 \int e^u\dd u\\
 &=\frac 13 e^u+C\\
 &=\frac 13 e^{x^3}+C\\
 \end{align*}
-\item Using the substitution $u=x^2+1$, $du=2x\,dx$:
+\item Using the substitution $u=x^2+1$, $\dd u=2x\dd x$:
 \begin{align*}
-\int \frac{x\,dx}{x^2+1}&=\frac 12 \int \frac{du}{u}\\
+\int \frac{x\dd x}{x^2+1}&=\frac 12 \int \frac{\dd u}{u}\\
 &=\frac 12 \ln\abs u+C\\
 &=\frac 12 \ln\abs{x^2+1}+C\\
 &=\frac 12 \ln(x^2+1)+
@@ -234,12 +235,12 @@ Note that we do not yet have an antiderivative for the function $f(x)=\ln x$. We
 
 %with the following example.
 %
-%example: Compute $\int \ln x\,dx$.
+%example: Compute $\int \ln x\dd x$.
 %
-%\solution While this does not look like a product of functions, we find integration by parts useful. In particular we use $u=\ln x$, $du=dx/x$, $dv=dx$, and $v=x$:
+%\solution While this does not look like a product of functions, we find integration by parts useful. In particular we use $u=\ln x$, $\dd u=\dd x/x$, $\dd v=\dd x$, and $v=x$:
 %\begin{align*}
-%\int \ln x\,dx &=x\ln x-\int (x)\left(\frac{dx}x\right)\\
-%&=x\ln x-\int dx\\
+%\int \ln x\dd x &=x\ln x-\int (x)\left(\frac{\dd x}x\right)\\
+%&=x\ln x-\int \dd x\\
 %&=x\ln x-x+C\\
 %\end{align*}
 
@@ -270,7 +271,7 @@ As suggested above, we start by taking the natural log of both sides then applyi
 y &= x^x \\
 \ln (y) &= \ln (x^x) && \text{\small (apply logarithm rule)}\\
 \ln (y) &= x\ln x && \text{\small (now use implicit differentiation)}\\
-\frac{d}{dx}\Bigl(\ln (y)\Bigr) &= \frac{d}{dx}\Bigl(x\ln x\Bigr) \\
+\frac{\dd}{\dd x}\Bigl(\ln (y)\Bigr) &= \frac{\dd}{\dd x}\Bigl(x\ln x\Bigr) \\
 \frac{y\primeskip'}{y} &= \ln x + x\cdot\frac1x\\
 \frac{y\primeskip'}{y} &= \ln x + 1\\
 y\primeskip'

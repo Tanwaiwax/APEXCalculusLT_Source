@@ -3,6 +3,20 @@ List Of Changes
 
 Individual errors are detailed in [the errata directory](errata/)
 
+Changes for the 2021-06 version:
+--------------------
+
+* The html version now includes 3d images that can be manipulated within the browser.  Chrome doesn't seem to handle MathJax well, so Firefox seems to be the way to go.
+
+* Within 5.3, "Riemann Sums", $\Delta x$ usually represents the width of a subinterval.  It also occasionally represented a partition of the interval.  A partition is now represented by $P$.
+
+* Example 8.7.8 has been introduced, showing how to calculate n in order to achieve a desired accuracy in the Trapezoidal Rule.
+
+* New exercises include: 2.1#31-32, 2.5#39-46, 4.4#24, 6.1#21-24, 7.3#21-24, 8.3#13-26, 9.2#53-58, 9.8#33-44&46.
+Except for 4.4, each has subsequent exercises whose numbering has consequently changed.  9.8 is the only section also involving a change in parity of problem numbers.
+
+* (Due to various reasons, the 2020-07 version did not have wide adoption.  You may want to also look at the changes for that version.)
+
 Changes for the 2020-07 version:
 --------------------
 
@@ -17,7 +31,6 @@ Changes for the 2020-07 version:
   8.1#53-56, 8.2#41, 8.3#27, 8.4#33-34, 8.4#39, 8.6#47-48,  
   9.1#52-53, 9.2#54-55, 9.3#15, 9.4#34, 9.5#27-28, 9.6#27, 10.3#51.  
   Those in 6.3, 7.4, and 8.4 have subsequent exercises whose numbering has consequently changed.
-
 
 * All known errata (31+) have been fixed.
 

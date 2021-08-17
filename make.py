@@ -24,6 +24,7 @@ import subprocess
 import sys
 import time
 
+# misspellings that aren't
 ignorelist = frozenset(['Georg','LHR','NonCommercial',
     'myplot','num','pos','proj',
     'xlabel','xmajorgrids','xmax','xmin','xscale','xshift','xtick','xticklabels',
@@ -128,15 +129,17 @@ def makefigs():
                 # -user apexbw=true runs that command in apexconfig.asy
                 # using -bw instead causes the figure to be blacked out (?!)
                 #'BW.pdf': ['-noprc','-user','apexbw=true','-outname',asyfile+'BW','-outformat','pdf'],
-                'BW.png': ['-noprc','-user','apexbw=true','-outname',asyfile+'BW','-outformat','png'],#['-render','4'],
-                '.png':   ['-noprc','-outformat','png'],#['-render','4'],
-            # for some reason, -render kills the png output
+                'BW.png': ['-noprc','-user','apexbw=true','-outname',asyfile+'BW','-outformat','png','-render','4'],
+                '.png':   ['-noprc','-outformat','png','-render','4'],
+                '.html': ['-outformat','html'],
+            # for some reason, -render kills the png output.  that's been fixed
             }
             asyexe = '/usr/local/bin/asy'
             # version 2.44 has problems with the png
             # * it doesn't look as nice
             # * -render 4 causes the compilation to fail (https://github.com/vectorgraphics/asymptote/issues/96)
             # * the z-index is based on when they appear in the file, not the camera view
+            # fixed in version 2.65?
             for ext,opt in extops.items():
                 try:
                     if os.path.getmtime(asyfile+ext) <= os.path.getmtime(asyfile+'.asy'):

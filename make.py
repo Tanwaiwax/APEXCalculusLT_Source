@@ -72,7 +72,7 @@ addboolarg('todo','Update todo lists.');
 addboolarg('quit','Write options.tex and quit.')
 parser.add_argument('--spelling',action='store_true',help='Run spellcheck')
 parser.add_argument('--justprint',action='store_true',
-                    help='Print  the  commands  that  would  be executed, but do not execute them')
+                    help='Print the commands that would be executed, but do not execute them')
 
 group = parser.add_mutually_exclusive_group()
 addboolarg('blackwhite','Print static graphics in black and white (default is color).',parser=group)

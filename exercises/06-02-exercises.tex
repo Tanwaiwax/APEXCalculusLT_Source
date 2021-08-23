@@ -1,0 +1,95 @@
+\printconcepts
+
+\exercise{T/F: Integration by Parts is useful in evaluating integrands that contain products of functions.}{T}
+
+\exercise{T/F: Integration by Parts can be thought of as the ``opposite of the Chain Rule.''}{F}
+
+% we're not a fan of this question
+%\exercise{For what is ``LIATE'' useful?}{Determining which functions in the integrand to set equal to ``$u$'' and which to set equal to ``$dv$''.}
+
+% cut for parity
+%\exercise{T/F: If the integral that results from Integration by Parts appears to also need Integration by Parts, then a mistake was made in the original choice of ``u''.}{F}
+
+\printproblems
+
+\input{exercises/06-02-exset-01}
+
+\input{exercises/06-02-exset-02}
+
+\input{exercises/06-02-exset-03}
+
+\exercise{\mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{\begin{enumerate}
+ \item  For $n\geq2$ show that
+ \[
+  \int_0^{\pi/2}\sin^n x\dd x = \frac{n-1}n \int_0^{\pi/2}\sin^{n-2} x\dd x.
+ \]
+ Hint:  Begin by writing $\sin^n x$ as $(\sin^{n-1} x) \sin x$ and using Integration by Parts.
+ \item  For $k \geq 1$ show that
+ \begin{align*}
+  \int_0^{\pi/2}\sin^{2k}x\dd x&=\frac{1\cdot3\cdot5\dotsm(2k-1)}{2\cdot4\cdot6\dotsm(2k)}\frac\pi2\qquad\text{and}\\
+  \int_0^{\pi/2}\sin^{2k+1}x\dd x&=\frac{2\cdot4\cdot6\dotsm(2k)}{1\cdot3\cdot5\cdot7\dotsm(2k+1)}.
+ \end{align*}
+\end{enumerate}}}{}
+
+\exercise{Find the volume of the solid of revolution obtained by rotating the region bounded by $y=0$, $y=\ln x$, $x=1$, and $x=e$:
+\begin{enumerate}
+ \item About the $x$-axis, using the disk method.
+ \item About the $y$-axis, using the shell method.
+\end{enumerate}}{\mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{\begin{enumerate}
+\item $\pi(e-2)$
+\item $\frac\pi2(e^2+1)$
+\end{enumerate}}}
+
+\exercise{Let $f(x)=x$ for $-\pi\le x<\pi$ and extend this function so that it is periodic with period $2\pi$.  This function is known as a \emph{sawtooth wave}\index{sawtooth wave} and looks like
+\begin{minipage}{\linewidth}\centering
+\begin{tikzpicture}
+ \begin{axis}[width=\textwidth,tick label style={font=\scriptsize},
+  axis y line=middle, axis x line=middle, name=myplot, axis on top,
+  xmin=-7,xmax=7,ymin=-5,ymax=5,axis equal image]
+  \draw[thick,draw={\colorone}](axis cs:-9.42,-3.14)--(axis cs:-3.14,3.14)
+    (axis cs:-3.14,-3.14)--(axis cs:3.14,3.14)
+    (axis cs:3.14,-3.14)--(axis cs:9.42,3.14);
+  \draw(axis cs:-3.14,-3.14)circle[\colorone,fill={\colorone},radius=.1];
+  \draw(axis cs:3.14,-3.14)circle[\colorone,fill={\colorone},radius=.1];
+  \draw(axis cs:-3.14,3.14)circle[\colorone,fill={\colorone},radius=.1];
+  \draw(axis cs:3.14,3.14)circle[\colorone,fill={\colorone},radius=.1];
+ \end{axis}
+ \node [right] at (myplot.right of origin) {\scriptsize $x$};
+ \node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\end{minipage}
+For a positive integer $n$, define $\ds b_n=\frac1\pi\int_{-\pi}^\pi f(x)\sin(nx)\dd x$.
+\begin{enumerate}
+\item Find $b_n$.
+\item Graph $\ds\sum_{n=1}^N b_n\sin(nx)$ for various values of $N$.  What do you observe?
+\end{enumerate}}{\mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{\begin{enumerate}
+\item $b_n=(-1)^{n+1} 2/n$
+\item answers will vary
+\end{enumerate}}}
+
+\exercise{Let $f(x)=\begin{cases}-x-\pi&-\pi\le x<-\frac\pi2\\x&-\frac\pi2\le x<\phantom{-}\frac\pi2\\\pi-x&\phantom{-}\frac\pi2\le x<\phantom{-}\pi\end{cases}$ and extend this function so that it is periodic with period $2\pi$.  This function is known as a \emph{triangle wave}\index{triangle wave} and looks like
+\begin{minipage}{\linewidth}\centering
+\begin{tikzpicture}
+ \begin{axis}[width=\textwidth,tick label style={font=\scriptsize},
+  axis y line=middle, axis x line=middle, name=myplot, axis on top,
+  xmin=-7,xmax=7,ymin=-3,ymax=3,axis equal image]
+  \draw[thick,draw={\colorone}](axis cs:-9.42,0)--(axis cs:-7.85,-1.57)
+    --(axis cs:-4.71, 1.57)--(axis cs:-1.57,-1.57)--(axis cs:1.57,1.57)
+    --(axis cs: 4.71,-1.57)--(axis cs: 7.85, 1.57)--(axis cs:9.42,0);
+ \end{axis}
+ \node [right] at (myplot.right of origin) {\scriptsize $x$};
+ \node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+\end{minipage}
+For a positive integer $n$, define $\ds b_n=\frac1\pi\int_{-\pi}^\pi f(x)\sin(nx)\dd x$.
+\begin{enumerate}
+\item Find $b_n$.
+\item Graph $\ds\sum_{n=1}^N b_n\sin(nx)$ for various values of $N$.  What do you observe?
+\end{enumerate}}{\mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{\begin{enumerate}
+\item $b_n=(-1)^{(n-1)/2}4/\pi n^2$ for odd $n$ and $b_n=0$ for even $n$
+\item answers will vary
+\end{enumerate}}}
+
+%\printreview
+
+%\input{exercises/05-04-exset-07}

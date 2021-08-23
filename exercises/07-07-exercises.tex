@@ -1,0 +1,117 @@
+\printconcepts
+
+\exercise{T/F: Every function has an inverse.}{F}
+
+\exercise{In your own words explain what it means for a function to be ``one to one.''}{Answers will vary.}
+
+\exercise{If $(1,10)$ lies on the graph of $y=f(x)$, what can be said about the graph of $y=f^{-1}(x)$?}{The point $(10,1)$ lies on the graph of $y=f^{-1}(x)$ (assuming $f$ is invertible).}
+
+%\exercise{If $(1,10)$ lies on the graph of $y=f(x)$ and $\fp(1) = 5$, what can be said about $y=f^{-1}(x)$?}{The point $(10,1)$ lies on the graph of $y=f^{-1}(x)$ (assuming $f$ is invertible) and $(f^{-1})'(10) = 1/5$.}
+
+\exercise{If a function doesn't have an inverse, what can we do to help it have an inverse?}{Restrict the domain of the original function so that it is one to one.}
+
+\printproblems
+
+\begin{exerciseset}{In Exercises}{, given the graph of $f$, sketch the graph of $f^{-1}$.}
+
+\exercise{%
+\begin{tikzpicture}
+\begin{axis}[width=\linewidth, axis equal,axis x line=middle, axis y line=middle,xmin=-9, xmax=9, ymin=-8.25, ymax=8.25,name=myplot,yticklabel style={{font=\scriptsize}},xticklabel style={{font=\scriptsize}}, xtick={-9,-8,-7,-6,-5,-4,...,5,6,7,8,9}, ytick={-8,-7,-6,-5,-4,...,5,6,7,8},%xticklabel={-8,-7,-6,-5,-4,...,5,6,7,8},
+,ymajorgrids=true, xmajorgrids=true, yminorgrids=true, xminorgrids=true,major grid style={line width=.2pt,draw=gray!90}]
+\draw[draw={\colorone},thick] (axis cs:-6,1)--(axis cs:-4,4)--(axis cs:-2,5)--(axis cs:0,7);
+\addplot[draw={\colorone},mark=*,only marks] coordinates {(-6,1)(-4,4)(-2,5)(0,7)};
+\node[above] at (axis cs:-4,5) {$f(x)$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}%
+}{%
+\begin{tikzpicture}
+\begin{axis}[width=.8\linewidth, axis equal,axis x line=middle, axis y line=middle,xmin=-9, xmax=9, ymin=-8.25, ymax=8.25,name=myplot,yticklabel style={{font=\scriptsize}},xticklabel style={{font=\scriptsize}}, xtick={-9,-8,-7,-6,-5,-4,...,5,6,7,8,9}, ytick={-8,-7,-6,-5,-4,...,5,6,7,8},%xticklabel={-8,-7,-6,-5,-4,...,5,6,7,8},
+,ymajorgrids=true, xmajorgrids=true, yminorgrids=true, xminorgrids=true,major grid style={line width=.2pt,draw=gray!90}]
+\draw[draw={\colorone},thick] (axis cs:-6,1)--(axis cs:-4,4)--(axis cs:-2,5)--(axis cs:0,7);
+\addplot[draw={\colorone},mark=*,only marks] coordinates {(-6,1)(-4,4)(-2,5)(0,7)};
+
+\draw[draw={\colortwo},thick] (axis cs:1,-6)--(axis cs:4,-4)--(axis cs:7,0);
+\addplot[mark=*,only marks,draw={\colortwo}] coordinates {(1,-6)(4,-4)(5,-2)(7,0)};
+\addplot[domain=-9:9,black, thick,smooth,dashed] {x};
+\node[above] at (axis cs:-4,5) {$f(x)$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}%
+}
+
+\exercise{%
+\begin{tikzpicture}
+\begin{axis}[width=\linewidth, axis equal,axis x line=middle, axis y line=middle,xmin=-9, xmax=9, ymin=-8.25, ymax=8.25,name=myplot,yticklabel style={{font=\scriptsize}},xticklabel style={{font=\scriptsize}}, xtick={-9,-8,-7,-6,-5,-4,...,5,6,7,8,9}, ytick={-8,-7,-6,-5,-4,...,5,6,7,8},%xticklabel={-8,-7,-6,-5,-4,...,5,6,7,8},
+,ymajorgrids=true, xmajorgrids=true, yminorgrids=true, xminorgrids=true,major grid style={line width=.2pt,draw=gray!90}]
+\draw[draw={\colorone},thick] (axis cs:-7,7)--(axis cs:-5,4)--(axis cs:-3,3)--(axis cs:-1,1);
+\addplot[draw={\colorone},mark=*,only marks] coordinates {(-7,7)(-5,4)(-3,3)(-1,1)};
+
+\node[above] at (axis cs:-4,5) {$f(x)$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}%
+}{%
+\begin{tikzpicture}
+\begin{axis}[width=.8\linewidth, axis equal,axis x line=middle, axis y line=middle,xmin=-9, xmax=9, ymin=-8.25, ymax=8.25,name=myplot,yticklabel style={{font=\scriptsize}},xticklabel style={{font=\scriptsize}}, xtick={-9,-8,-7,-6,-5,-4,...,5,6,7,8,9}, ytick={-8,-7,-6,-5,-4,...,5,6,7,8},%xticklabel={-8,-7,-6,-5,-4,...,5,6,7,8},
+,ymajorgrids=true, xmajorgrids=true, yminorgrids=true, xminorgrids=true,major grid style={line width=.2pt,draw=gray!90}]
+\draw[draw={\colortwo},thick] (axis cs:-7,7)--(axis cs:-5,4)--(axis cs:-3,3)--(axis cs:-1,1);
+\addplot[mark=*,only marks] coordinates {(-7,7)(-5,4)(-3,3)(-1,1)};
+
+\addplot[domain=-9:9,black, thick,smooth,dashed] {x};
+\draw[draw={\colortwo},thick] (axis cs:7,-7)--(axis cs:4,-5)--(axis cs:3,-3)--(axis cs:1,-1);
+\addplot[draw={\colorone},mark=*,only marks] coordinates {(7,-7)(4,-5)(3,-3)(1,-1)};
+\node[above] at (axis cs:-4,5) {$f(x)$};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}%
+}
+
+\end{exerciseset}
+
+\input{exercises/02-07-exset-01}
+
+\input{exercises/07-07-exset-02}
+
+\begin{exerciseset}{In Exercises}{, simplify the expression.}
+
+\exercise{$\sin\Bigl(\tan^{-1}\frac{x}{\sqrt{4-x^2}}\Bigr)$}{$x/2$}
+
+\exercise{$\tan\Bigl(\sin^{-1}\frac{x}{\sqrt{x^2+4}}\Bigr)$}{$x/2$}
+
+\exercise{$\cos\Bigl(\sin^{-1}\frac{5}{\sqrt{x^2+25}}\Bigr)$}{$x/\sqrt{x^2+25}$}
+
+\exercise{$\cot\Bigl(\cos^{-1}\frac{3}{\sqrt{x}}\Bigr)$}{$3/\sqrt{x-3}$}
+
+\end{exerciseset}
+
+\exercise{Show that for any $x$ in the domain of $\sec^{-1}$ we have $\sec^{-1}x=\cos^{-1}\frac1x$.}{}
+
+\exercise{Show that for $\abs x\le1$ we have $\cos^{-1}x=\frac\pi2-\sin^{-1}x$.\\
+Hint: Recall the cofunction identity $\cos\theta=\sin(\frac\pi2-\theta)$ for all $\theta$.}{}
+
+\exercise{Show that for any $x$ we have $\cot^{-1}x=\frac\pi2-\tan^{-1}x$.}{}
+
+\exercise{Show that for $\abs x\ge1$ we have $\csc^{-1}x=\frac\pi2-\sec^{-1}x$.}{}
+
+\exercise{A mass attached to a spring oscillates vertically about the equilibrium position $y=0$ according to the function $y(t)=e^{-t}(\cos(\sqrt3t)+\frac1{\sqrt3}\sin(\sqrt3t))$. Find the first positive time $t$ for which $y(t)=0$.}{$2\pi/3\sqrt3$}
+
+
+%\input{exercises/02-07-exset-02}
+%\input{exercises/02-07-exset-03}
+%\input{exercises/02-07-exset-04}
+%\input{exercises/02-07-exset-05}
+%%\input{exercises/02-04-exset-06}
+%%\input{exercises/02-04-exset-07}
+%\printreview
+%\exercise{Find $\dfrac{\dd y}{\dd x}$, where $x^2y-y^2x = 1$. }{ $\frac{\dd y}{\dd x} = \frac{y (y-2 x)}{x (x-2 y)}$}
+
+%\exercise{Find the equation of the line tangent to the graph of $x^2+y^2+xy=7$ at the point $(1,2)$. }{ $y=-\frac45(x-1)+2$}
+
+%\exercise{Let $f(x) = x^3+x$. Evaluate $\ds \lim_{s\to 0} \frac{f(x+s)-f(x)}{s}$.}{ $3x^2+1$}
+
+%%\exercise{Approximate the value of $(3.01)^4$ using the tangent line to $f(x) = x^4$ at $x=3$.}{The tangent line to $f(x) = x^4$ at $x=3$ is $y=108(x-3)+81$; thus $(3.01)^4 \approx y(3.01) = 108(.01)+81 = 82.08$. }

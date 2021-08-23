@@ -2,7 +2,7 @@
 
 import re
 from os import rename
-from glob import iglob
+from glob import glob
 
 def replaceexinputs(lines):
     def exfilecontents(matchobj):
@@ -26,7 +26,11 @@ def replaceexinputs(lines):
     return lines
 
 
-for setfilename in iglob('*exset*.tex'):
+for exfilename in glob('*.tex'):
+    if '_' in exfilename:
+        rename(exfilename,exfilename.replace('_','-'))
+
+'''
     lines = r'\exerciseset'
     with open(setfilename) as exsetfile:
         lines = lines+exsetfile.read()
@@ -55,3 +59,4 @@ for sectexername in iglob('*exercises*'):
         newsectexfile.write(lines)
     rename(sectexername,'hidden/'+sectexername)
     rename(newfilename,sectexername)
+'''

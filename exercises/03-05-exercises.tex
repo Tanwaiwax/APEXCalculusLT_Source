@@ -1,0 +1,96 @@
+\printconcepts
+
+\exercise{Why is sketching curves by hand beneficial even though technology is readily available?}{Answers will vary.}
+
+\exercise{T/F: When sketching graphs of functions, it is useful to find the critical points.}{T}
+
+\exercise{T/F: When sketching graphs of functions, it is useful to find the possible points of inflection.}{T}
+
+\exercise{T/F: When sketching graphs of functions, it is useful to find the horizontal and vertical asymptotes.}{T}
+
+\printproblems
+
+\exercise{Given the graph of $f$, identify the concavity of $f$, its inflection points, its regions of increasing and decreasing, and its relative extrema.\\
+\begin{tikzpicture}
+\begin{axis}[width=.4\textwidth,tick label style={font=\scriptsize },
+	axis y line=middle,axis x line=middle,
+    ymin=-5,ymax=5,
+	xmin=-3,xmax=3,name=myplot]
+\addplot [draw={\colorone},smooth,thick,domain=-3:3] {x^2*(x^2-6)+4};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}{concave up on $(-\infty,-1)$; $(1,\infty)$\\
+concave down on $(-1,1)$\\
+inflection points when $x=\pm1$\\
+increasing on $(-2,0)$; $(2,\infty)$\\
+decreasing on $(-\infty,-2)$; $(0,2)$\\
+relative maximum when $x=0$\\
+relative minima when $x=\pm2$}
+
+\exercise{Given the graph of $\fp$, identify the concavity of $f$, its inflection points, its regions of increasing and decreasing, and its relative extrema.\\
+\begin{tikzpicture}
+\begin{axis}[width=.4\textwidth,tick label style={font=\scriptsize },
+	axis y line=middle,axis x line=middle,
+    ymin=-5,ymax=5,
+	xmin=-3,xmax=3,name=myplot]
+\addplot [draw={\colorone},smooth,thick,domain=-3:3] {x^2*(x^2-6)+4};
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}}{concave up on $(-2,0)$; $(2,\infty)$\\
+concave down on $(-\infty,-2)$; $(0,2)$\\
+inflection points when $x=0,\pm2$\\
+increasing on $(-\infty,-2.3)$; $(-1,1)$; $(2.3,\infty)$\\
+decreasing on $(-2.3,-1)$; $(1,2.3)$\\
+relative maximum when $x=-2.3,1$\\
+relative minima when $x=-1,2.3$}
+
+\input{exercises/03-05-exset-01}
+
+\input{exercises/03-05-exset-02}
+
+\begin{exerciseset}{In Exercises}{, sketch the graph of a function that satisfies all of the given conditions.}
+
+\exercise{$\fp(0)=\fp(2)=\fp(4)=0$,\\
+$\fp(x)>0$ if $x<0$ or $2<x<4$,\\
+$\fp(x)<0$ if $0<x<2$ or $x>4$,\\
+$\fpp(x)>0$ if $1<x<3$, $\fpp(x)<0$ if $x<1$ or $x>4$}{various possibilities}
+
+\exercise{$\fp(5)=0$, $\fp(x)<0$ when $x<5$,\\
+$\fp(x)>0$ if $x>5$, $\fpp(2)=0$, $\fpp(8)=0$,\\
+$\fpp(x)<0$ if $x<2$ or $x>8$,\\
+$\fpp(x)>0$ if $2<x<8$}{various possibilities}
+
+\exercise{$f(0)=0$, $\fp(-2)=\fp(1)=\fp(9)=0$,\\
+$\ds \lim_{x\to\infty}f(x)=0$, $\ds \lim_{x\to 6}f(x)=-\infty$,\\
+$\fp(x)<0$ on $(-\infty,-2),(1,6),(9,\infty)$,\\
+$\fp(x)>0$ on $(-2,1),(6,9)$,\\
+$\fpp(x)>0$ on $(-\infty,0),(12,\infty)$,\\
+$\fpp(x)<0$ on $(0,6),(6,12)$}{various possibilities}
+
+\exercise{$f$ is odd, $\fp(x)<0$ on $(0,2)$,\\
+$\fp(x)>0$ on $(2,\infty)$, $\fpp(x)>0$ on $(0,3)$,\\
+$\fpp(x)<0$ on $(3,\infty)$, $\ds \lim_{x\to\infty}f(x)=-2$}{various possibilities}
+
+\exercise{concave up on $(-\infty,-1)$, $(1,\infty)$;\\
+concave down on $(-1,1)$;\\
+increasing on $(-\infty,0)$; and\\
+decreasing on $(0,\infty)$.}{various possibilities}
+
+\exercise{$\ds\lim_{x\to-\infty}f(x)=1$, $\ds\lim_{x\to3^-}f(x)=\infty$,\\
+$\ds\lim_{x\to\infty}f(x)=-1$, $\ds\lim_{x\to3^+}f(x)=-\infty$;\\
+$\fp(x)>0$ on $(-\infty,-2)$, $(-1,0)$, $(2,3)$, $(3,\infty)$;\\
+$\fp(x)<0$ on $(-2,-1)$, $(0,2)$;\\
+$\fpp(x)>0$ on $(-\infty,-3)$, $(1,3)$; and\\
+$\fpp(x)<0$ on $(-3,-1)$, $(-1,1)$, $(3,\infty)$.}{various possibilities}
+
+\end{exerciseset}
+
+
+\input{exercises/03-05-exset-03}
+
+\exercise{Given $x^2+y^2=1$, use implicit differentiation to find $\dfrac{\dd y}{\dd x}$ and $\dfrac{\dd^2y}{\dd x^2}$. Use this information to justify the sketch of the unit circle.
+}{$\dfrac{\dd y}{\dd x} = -x/y$, so the function is increasing in second and fourth quadrants, decreasing in the first and third quadrants.
+
+$\dfrac{\dd^2y}{\dd x^2} = -1/y^3$, which is positive when $y<0$ and is negative when $y>0$. Hence the function is concave down in the first and second quadrants and concave up in the third and fourth quadrants.}

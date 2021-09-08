@@ -46,16 +46,17 @@ echo ""
 
 export LATEXML_KPSEWHICH=/home/timothy.prescott/.tex/texlive/2021/bin/x86_64-linux/kpsewhich
 
-apexdir="../git/APEXCalculusLT_Source"
-latexmldir="../.cpan/sources/authors/id/B/BR/BRMILLER/LaTeXML-0.8.5/blib/script/"
-printf '\\newcommand{\\thetitle}{Calculus}\n\\printincolor\n\\usethreeDgraphics\n\\renewcommand{\\monthYear}{June 2021}\n' > $apexdir/options.tex
-singularity exec latexml.sif $latexmldir/latexml --quiet --destination=$apexdir/standalone.xml --nocomments $apexdir/standalone
+#apexdir="../git/APEXCalculusLT_Source"
+latexmldir="../../.cpan/sources/authors/id/B/BR/BRMILLER/LaTeXML-0.8.5/blib/script/"
+singularitydir="../../latexml"
+printf '\\newcommand{\\thetitle}{Calculus}\n\\printincolor\n\\usethreeDgraphics\n\\renewcommand{\\monthYear}{June 2021}\n' > options.tex
+singularity exec $singularitydir/latexml.sif $latexmldir/latexml --quiet --destination=standalone.xml --nocomments standalone
 
 echo ""
 echo "Job intermission at $(date)"
 echo ""
 
-singularity exec latexml.sif $latexmldir/latexmlpost --split --destination=$apexdir/standaloneweb/index.html $apexdir/standalone.xml
+singularity exec $singularitydir/latexml.sif $latexmldir/latexmlpost --split --destination=standaloneweb/index.html standalone.xml
 
 echo ""
 echo "Job ended at $(date)"

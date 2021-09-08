@@ -1,7 +1,10 @@
+% !TEX TS-program = XeLaTeX
 % !TEX program = XeLaTeX
 %\errorcontextlines 10000
 
-\RequirePackage[l2tabu, orthodox]{nag}
+% this is not standalone
+% this is latexmlAlts to test if we need alternative latexml commands
+
 \documentclass[10pt]{book}
 
 \input{headers/APEX_format}
@@ -17,36 +20,99 @@
 
 \begin{document}
 
-%\frontmatter
-%
-%\input{text/front_matter_and_cover}
+\frontmatter
+
+\input{text/front_matter_and_cover}
+% \label{lxApexTOC}
+% \tableofcontents
+% \input{text/title_page}
+% \input{text/copyright_page}
+%\addtocontents{toc}{\protect\thispagestyle{empty}}%
+%\input{text/preface}
 
 \mainmatter
 
-\setcounter{chapter}{10}
+\part*{Calculus I}
+\ifbool{latexml}{\addcontentsline{toc}{part}{Calculus I}}{}
 
-\setcounter{section}{1}
+\apexchapter[text/01_Prerequisite]{Limits}{ch:label}
 
-%\apexchapter[text/01_Prerequisite]{Limits}{ch:label}
+Some intro stuff.
+\chapterautorefname
+\sectionautorefname
+\figureautorefname
+\appendixname
+\the\marginparwidth
+\the\defaultaddspace
 
-%This chapter introduces \textbf{sequences} and \textbf{series}, important mathematical constructions that are useful when solving a large variety of mathematical problems. The content of this chapter is considerably different from the content of the chapters before it. While the material we learn here definitely falls under the scope of ``calculus,'' we will make very little use of derivatives or integrals. Limits are extremely important, though, especially limits that involve infinity. 
-%
-%One of the problems addressed by this chapter is this: suppose we know information about a function and its derivatives at a point, such as  $f(1) = 3$, $\fp(1) = 1$, $\fp'(1) = -2$, $\fp''(1) = 7$, and so on. What can I say about $f(x)$ itself? Is there any reasonable approximation of the value of $f(2)$? The topic of Taylor Series addresses this problem, and allows us to make excellent approximations of functions when limited knowledge of the function is available.
+\section{The section}
 
-\input{text/09_Parametric_Equations}
+\begin{keyidea}[My Key Idea Title]\label{ki:label}
+This is my key idea.
+\end{keyidea}
 
-%\printexercises{exercises/14_04_exercises}
+% todo tikz matrices see https://github.com/brucemiller/LaTeXML/issues/794
+\begin{tikzpicture}
+  \matrix[row sep=1mm,column sep=3mm,ampersand replacement=\&]{
+    \&\&\& \node (tp1) {$-2$}; \&\& \node (tp2) {$2$}; \\[-1ex]
+    \node(linestart) {$x$}; \&\&\&\&\&\&\& \node(lineend) {}; \\[-1ex]
+    \&\node (fstart) {$x^2-4$}; \& \node {$+$}; \&\& \node {$-$}; \&\& \node {$+$}; \\
+  };
+  \draw [<->] (linestart.east) -- (lineend);
+  \draw (fstart.south west) -- (lineend.west |- fstart.south);
+  \draw (fstart.east |- lineend) -- (fstart.east|-fstart.south);
+  \foreach \x in {1,2} {
+    \draw (tp\x|-linestart)+(0,5pt) -- (tp\x |- fstart.south);
+  }
+\end{tikzpicture}
 
-%\printexercises{standalone/standalone_exercises}
+\begin{example}[Example Title]\label{ex:label}
+This is my example. This is my example.
+\solution
+This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example.
+\end{example}
+
+Compare: % see 09_Parametric_Equations.tex
+\[
+\begin{gathered}\text{Choose}\\t\end{gathered}
+\begin{gathered}\nearrow\\\\\searrow\end{gathered}
+\begin{gathered}
+\text{Use a function}\\f\text{ to find }x\\\bigl(x=f(t)\bigr)\\\\
+\text{Use a function}\\g\text{ to find }y\\\bigl(y=g(t)\bigr)
+\end{gathered}
+\begin{gathered}\searrow\\\\\nearrow\end{gathered}
+\begin{gathered}\text{Plot point}\\(x,y)\end{gathered}
+\]
+to:
+\begin{center}
+\begin{tikzpicture}[>=latex]
+\draw (0,0) node (A) [align=center] {Choose \\$t$} 
+      (3,1) node[align=center] (B1) {Use a function\\ $f$ to find $x$\\$\bigl(x=f(t)\bigr)$}
+			(3,-1) node[align=center] (B2) {Use a function\\ $g$ to find $y$\\$\bigl(y=g(t)\bigr)$}
+			(6.25,0) node [align=center] (C) {Plot point \\ $(x,y)$};
+\draw [->](A) --(B1);
+\draw [->](A) --(B2);
+\draw [->](B1) -- (C);
+\draw [->](B2) -- (C);
+\end{tikzpicture}
+\end{center}
+
+% this works fine; I just want an index to make sure that shows correctly
+At one point we define $a_\mathrm{T}$
+\index{at@$a_{\mathrm{T}}$}\index{unit tangent vector!at@$a_{\mathrm{T}}$}%
+
+\printexercises{exercises/14_04_exercises}
 
 \appendix
 
 \showans\answrite
+% showans will write the contents of Calculus.answers to the log
+% in latexml, this needs to happen before closing
 
 \printsolutions{Standalone Solutions To All Problems}
 
-%\printindex
-%
+\printindex
+
 %\backmatter
 %
 %\input{text/Inside_Cover_Of_The_Text_Material_Complete}

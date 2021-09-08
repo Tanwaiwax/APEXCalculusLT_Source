@@ -25,13 +25,25 @@ function setup() {
     addPermaLinkFor('span.ltx_figure','span.ltx_caption')
     if ( $('section.ltx_index ul.ltx_indexlist').length ) {
 	// add an A-Z to the index
-	$('section.ltx_index ul.ltx_indexlist li.ltx_indexentry')
+        // the first few entries are math, and shouldn't be counted with the A-Z
+        // we'll find the first non-math entry, and then add the others
+        // then we need to remove sub entries
+	$('section.ltx_index ul.ltx_indexlist li.ltx_indexentry:not(:has(.ltx_Math))')
+        .eq(0)
+        .nextAll('section.ltx_index ul.ltx_indexlist li.ltx_indexentry')
+        .addBack()
 	    .not('li.ltx_indexentry ul.ltx_indexlist li.ltx_indexentry')
 	    .each(readIndexEntry);
 	$('<div id="indexContents"></div>')
 	    .insertAfter('h1.ltx_title.ltx_title_index');
 	$.each(entriesIn,wrapEntries);
+        // todo latexml
+        $('.ltx_indexentry span[style="font-size:90%;"]').removeAttr('style');
     }
+    // todo latexml
+    $('.ltx_note.ltx_role_margin > .ltx_note_outer > .ltx_note_content > .ltx_inline-para > .ltx_para > .ltx_p')
+        .filter(function() { return $(this).text()==='\u039B'; })
+        .remove();
     fixFirefoxAnchorBug();
 }
 
@@ -76,7 +88,7 @@ function readIndexEntry(ignoreIndex,indexEntry) {
 
 function wrapEntries(firstLetter,indexEntries) {
     $("#indexContents").append('<a href="#'+firstLetter+'_entries">'+firstLetter+'</a>');
-    indexEntries.wrapAll('<li id="'+firstLetter+'_entries"><ul></ul></li>');
+    indexEntries.wrapAll('<li id="'+firstLetter+'_entries" class="entry_wrapper"><ul></ul></li>');
     indexEntries.parent().before('<span>'+firstLetter+'</span>');
 }
 

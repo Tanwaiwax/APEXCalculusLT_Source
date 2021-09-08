@@ -74,7 +74,7 @@ Changes for the 2018-07 version:
 
 * By request of Chemistry, Section 13.7 has a short subsection on Taylor polynomials for f:R^2 -> R.
 
-* Suppose f'(c)=0. Previously, we defined (c,f(c)) as the critical point, but were inconsistent about using point, value, or number.  To match 265, we are defining c as the critical point, and f(c) as the critical value.
+* Suppose f'(c)=0. Previously, we defined (c,f(c)) as the critical point, but were inconsistent about using point, value, or number.  To match Calc 3, we are defining c as the critical point, and f(c) as the critical value.
 
 * The previous numbering was:
   * Theorem/Key Idea/Definition: #

@@ -389,13 +389,18 @@
 \newcommand{\writeToAnsFile}[1]{%
  \ifbool{latexml}{%
   \immediate\write\answrite{%
-  % this didn't used to have \noexpand
-   \noexpand\answersForSection{\arabic{chapter}}{\arabic{section}}{#1}%
+   %\answersForSection{\arabic{chapter}}{\arabic{section}}{#1}% expands
+   %\noexpand\answersForSection{\arabic{chapter}}{\arabic{section}}{#1}% \n\a -> \relax
+   \string\answersForSection{\arabic{chapter}}{\arabic{section}}{#1}%
   }%
  }{% in LaTeXML, \noexpand\answersForSection becomes a literal \relax
   \immediate\write\answrite{%
    \noexpand\answersForSection{\arabic{chapter}}{\arabic{section}}{#1}%
   }%
+%   \message{ - - - - - - - - - - - ^^J}
+%   \message{\noexpand\answersForSection^^J}
+%   \message{\string\answersForSection^^J}
+%   \message{ - - - - - - - - - - - ^^J}
  }%
 }
 

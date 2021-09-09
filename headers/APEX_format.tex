@@ -387,22 +387,13 @@
 \openout\answrite=\jobname.answers
 
 \newcommand{\writeToAnsFile}[1]{%
- \ifbool{latexml}{%
-  \immediate\write\answrite{%
-   %\answersForSection{\arabic{chapter}}{\arabic{section}}{#1}% expands
-   %\noexpand\answersForSection{\arabic{chapter}}{\arabic{section}}{#1}% \n\a -> \relax
-   \string\answersForSection{\arabic{chapter}}{\arabic{section}}{#1}%
-  }%
- }{% in LaTeXML, \noexpand\answersForSection becomes a literal \relax
-  \immediate\write\answrite{%
-   \noexpand\answersForSection{\arabic{chapter}}{\arabic{section}}{#1}%
-  }%
-%   \message{ - - - - - - - - - - - ^^J}
-%   \message{\noexpand\answersForSection^^J}
-%   \message{\string\answersForSection^^J}
-%   \message{ - - - - - - - - - - - ^^J}
+ \immediate\write\answrite{%
+  \string\answersForSection{\arabic{chapter}}{\arabic{section}}{#1}%
+%  \noexpand\answersForSection{\arabic{chapter}}{\arabic{section}}{#1}%
  }%
 }
+% \noexpand\answersForSection becomes \relax in LaTeXML
+% \string works with both
 
 \newcounter{exercisesetcounter}[section]
 \renewcommand{\theexercisesetcounter}{\thesection.\arabic{exercisesetcounter}}

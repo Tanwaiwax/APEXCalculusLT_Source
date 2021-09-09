@@ -363,7 +363,7 @@
 }
 
 \newcommand{\printexercises}[1]{%
- \writeToAnsFile{#1}% writeToAnsFile in sty
+ \writeToAnsFile{#1}% writeToAnsFile in sty (actually, down below)
  \exercisegeometry% includes a clearpage
  \pagestyle{exercise}%
  \exercisesubsection{\thesection}%
@@ -389,7 +389,8 @@
 \newcommand{\writeToAnsFile}[1]{%
  \ifbool{latexml}{%
   \immediate\write\answrite{%
-   \answersForSection{\arabic{chapter}}{\arabic{section}}{#1}%
+  % this didn't used to have \noexpand
+   \noexpand\answersForSection{\arabic{chapter}}{\arabic{section}}{#1}%
   }%
  }{% in LaTeXML, \noexpand\answersForSection becomes a literal \relax
   \immediate\write\answrite{%

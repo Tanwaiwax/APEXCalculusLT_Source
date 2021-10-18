@@ -11,8 +11,6 @@
 \usepackage{headers/apex_style}
 \input{headers/Header_Calculus}
 
-\usepackage{makecell}
-
 \newcommand{\thetitle}{Standalone}
 
 \printallanswers
@@ -56,14 +54,14 @@ This is my key idea.
 % todo tikz matrices see https://github.com/brucemiller/LaTeXML/issues/794
 \begin{tikzpicture}
   \matrix[row sep=1mm,column sep=3mm,ampersand replacement=\&]{
-    \&\&\& \node (tp1) {$-2$}; \&\& \node (tp2) {$2$}; \\[-1ex]
-    \node(linestart) {$x$}; \&\&\&\&\&\&\& \node(lineend) {}; \\[-1ex]
-    \&\node (fstart) {$x^2-4$}; \& \node {$+$}; \&\& \node {$-$}; \&\& \node {$+$}; \\
+    \&\&\& \node (tp1) {$0$}; \&\& \node (tp2) {$1$}; \&\& \node (tp3) {$2$}; \&\& \node (tp4) {$3$}; \\[-1ex]
+    \node(linestart) {$x$}; \&\&\&\&\&\&\&\&\&\&\& \node(lineend) {}; \\[-1ex]
+    \&\node (fstart) {$x^{\underline{4}}$}; \& \node {$+$}; \&\& \node {$-$}; \&\& \node {$+$}; \&\& \node {$-$}; \&\& \node {$+$}; \\
   };
   \draw [<->] (linestart.east) -- (lineend);
   \draw (fstart.south west) -- (lineend.west |- fstart.south);
   \draw (fstart.east |- lineend) -- (fstart.east|-fstart.south);
-  \foreach \x in {1,2} {
+  \foreach \x in {1,2,3,4} {
     \draw (tp\x|-linestart)+(0,5pt) -- (tp\x |- fstart.south);
   }
 \end{tikzpicture}

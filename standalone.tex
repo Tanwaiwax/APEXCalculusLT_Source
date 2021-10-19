@@ -22,13 +22,7 @@
 
 \frontmatter
 
-\input{text/front_matter_and_cover}
-% \label{lxApexTOC}
-% \tableofcontents
-% \input{text/title_page}
-% \input{text/copyright_page}
-%\addtocontents{toc}{\protect\thispagestyle{empty}}%
-%\input{text/preface}
+%\input{text/front_matter_and_cover}
 
 \mainmatter
 
@@ -37,26 +31,22 @@
 
 \apexchapter[text/01_Prerequisite]{Limits}{ch:label}
 
-Some intro stuff.
-\chapterautorefname
-\sectionautorefname
-\figureautorefname
-\appendixname
-\the\marginparwidth
-\the\defaultaddspace
+Some intro stuff.\\
+Chapter:\chapterautorefname:\\
+Section:\sectionautorefname:\\
+Figure:\figureautorefname:\\
+Appendix:\appendixname:\\
+150.0pt:\the\marginparwidth:\\
+5.0pt:\the\defaultaddspace:
 
 \section{The section}
-
-\begin{keyidea}[My Key Idea Title]\label{ki:label}
-This is my key idea.
-\end{keyidea}
 
 % todo tikz matrices see https://github.com/brucemiller/LaTeXML/issues/794
 \begin{tikzpicture}
   \matrix[row sep=1mm,column sep=3mm,ampersand replacement=\&]{
     \&\&\& \node (tp1) {$0$}; \&\& \node (tp2) {$1$}; \&\& \node (tp3) {$2$}; \&\& \node (tp4) {$3$}; \\[-1ex]
     \node(linestart) {$x$}; \&\&\&\&\&\&\&\&\&\&\& \node(lineend) {}; \\[-1ex]
-    \&\node (fstart) {$x^{\underline{4}}$}; \& \node {$+$}; \&\& \node {$-$}; \&\& \node {$+$}; \&\& \node {$-$}; \&\& \node {$+$}; \\
+    \&\node (fstart) {$\operatorname{sign}x^{\underline{4}}$}; \& \node {$+$}; \&\& \node {$-$}; \&\& \node {$+$}; \&\& \node {$-$}; \&\& \node {$+$}; \\
   };
   \draw [<->] (linestart.east) -- (lineend);
   \draw (fstart.south west) -- (lineend.west |- fstart.south);
@@ -66,21 +56,22 @@ This is my key idea.
   }
 \end{tikzpicture}
 
-\begin{example}[Example Title]\label{ex:label}
-This is my example. This is my example.
-\solution
-This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example. This is my example.
-\end{example}
+\begin{tikzpicture}
+ \matrix[row sep=1mm,column sep=3mm,ampersand replacement=\&]{
+  \node(left){L}; \&\&\&\&\&\&\&\&\& \node(right){R}; \\
+ };
+ \draw[<->](left)--(right);
+\end{tikzpicture}
 
 Compare: % see 09_Parametric_Equations.tex
 \[
-\begin{gathered}\text{Choose}\\t\end{gathered}
-\begin{gathered}\nearrow\\\\\searrow\end{gathered}
+\begin{gathered}\text{Choose}\\t\end{gathered}\quad
+\begin{gathered}\nearrow\\\\\searrow\end{gathered}\quad
 \begin{gathered}
 \text{Use a function}\\f\text{ to find }x\\\bigl(x=f(t)\bigr)\\\\
 \text{Use a function}\\g\text{ to find }y\\\bigl(y=g(t)\bigr)
-\end{gathered}
-\begin{gathered}\searrow\\\\\nearrow\end{gathered}
+\end{gathered}\quad
+\begin{gathered}\searrow\\\\\nearrow\end{gathered}\quad
 \begin{gathered}\text{Plot point}\\(x,y)\end{gathered}
 \]
 to:
@@ -101,13 +92,9 @@ to:
 At one point we define $a_\mathrm{T}$
 \index{at@$a_{\mathrm{T}}$}\index{unit tangent vector!at@$a_{\mathrm{T}}$}%
 
-\printexercises{exercises/14-04-exercises}
+\printexercises{exercises/14-03-exercises}
 
 \appendix
-
-\showans\answrite
-% showans will write the contents of Calculus.answers to the log
-% in latexml, this needs to happen before closing
 
 \printsolutions{Standalone Solutions To All Problems}
 

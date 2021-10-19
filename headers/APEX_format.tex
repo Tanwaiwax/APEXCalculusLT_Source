@@ -420,14 +420,18 @@
 \makeatletter
 \newcommand{\openenumerate}{%
  \ifx\@currenvir\exerenv\else%
- \begin{sectionexercises}
- \ifbool{latexml}{\setcounter{sectionexercisesi}{\value{saveexercisenum}}}{}%
+  \ifbool{latexml}{%
+   \begin{sectionexercises}[label=\arabic*.,ref=\arabic*]
+   \setcounter{sectionexercisesi}{\value{saveexercisenum}}%
+  }{%
+   \begin{sectionexercises}
+  }%
  \fi%
 }
 \newcommand{\closeenumerate}{
  \ifx\@currenvir\exerenv%
- \ifbool{latexml}{\setcounter{saveexercisenum}{\value{sectionexercisesi}}}{}%
- \end{sectionexercises}
+  \ifbool{latexml}{\setcounter{saveexercisenum}{\value{sectionexercisesi}}}{}%
+  \end{sectionexercises}
  \fi%
 }
 \makeatother
@@ -443,8 +447,8 @@
  }%
  \pagebreak[1]%
  {%
- \setlist[enumerate,1]{label=(\alph*)}%
- \noindent#1 \arabic{sectionexercisesi}--\ref*{enumiatendof\theexercisesetcounter}#2%
+  \setlist[enumerate,1]{label=(\alph*)}%
+  \noindent#1 \arabic{sectionexercisesi}--\ref*{enumiatendof\theexercisesetcounter}#2%
  }%
  \addtocounter{sectionexercisesi}{-1}\ignorespaces%
  \nopagebreak%

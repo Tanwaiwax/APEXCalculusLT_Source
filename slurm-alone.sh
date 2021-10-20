@@ -34,7 +34,7 @@
 
 # Job events (mail-type): begin, end, fail, all.
 #SBATCH --mail-type=all
-###SBATCH --mail-user=[userid]@und.edu
+#SBATCH --mail-user=$USER@und.edu
 
 # load required modules here
 module load singularity
@@ -45,11 +45,11 @@ echo ""
 echo "Job started at $(date)"
 echo ""
 
-export LATEXML_KPSEWHICH=/home/timothy.prescott/.tex/texlive/2021/bin/x86_64-linux/kpsewhich
+export LATEXML_KPSEWHICH=$HOME/.tex/texlive/2021/bin/x86_64-linux/kpsewhich
 
-#apexdir="../git/APEXCalculusLT_Source"
-latexmldir="~/.cpan/sources/authors/id/B/BR/BRMILLER/LaTeXML-0.8.6/blib/script/"
-singularitydir="~/latexml"
+#apexdir="$HOME/APEXCalculusLT_Source"
+latexmldir="$HOME/.cpan/sources/authors/id/B/BR/BRMILLER/LaTeXML-0.8.6/blib/script"
+singularitydir="$HOME/latexml"
 printf '\\newcommand{\\thetitle}{Calculus}\n\\printincolor\n\\usethreeDgraphics\n\\renewcommand{\\monthYear}{June 2021}\n' > options.tex
 
 singularity exec $singularitydir/latexml.sif $latexmldir/latexml --quiet --destination=standalone.xml --nocomments standalone

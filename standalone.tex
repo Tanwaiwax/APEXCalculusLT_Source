@@ -7,18 +7,19 @@
 
 \documentclass[10pt]{book}
 
+% LaTeXML's hyperref overwrites these?
+\newcommand{\chapterautorefname}{Chap\-ter} % the default is lowercase
+\newcommand{\sectionautorefname}{Sec\-tion} % the default is lowercase
+\newcommand{\figureautorefname}{Fig\-ure} % the default is missing hyphenation
+\renewcommand{\appendixname}{Ap\-pen\-di\-ces} % the default is missing hyphenation and singular
+
 \usepackage[marginparwidth=150pt]{geometry}
 \usepackage{amsmath}
 \usepackage{booktabs}
 \usepackage{tikz}
 \usepackage{enumitem}
-\usepackage{latexml}
+%\usepackage{latexml}
 \usepackage{hyperref}
-
-\renewcommand{\chapterautorefname}{Chap\-ter} % the default is lowercase
-\renewcommand{\sectionautorefname}{Sec\-tion} % the default is lowercase
-\renewcommand{\figureautorefname}{Fig\-ure} % the default is missing hyphenation
-\renewcommand{\appendixname}{Ap\-pen\-di\-ces} % the default is missing hyphenation
 
 \begin{document}
 
@@ -32,7 +33,7 @@
 % todo tikz matrix spacing see https://github.com/brucemiller/LaTeXML/issues/794
 \noindent before\\
 \begin{tikzpicture}
-  \matrix {
+  \matrix[row sep=3mm,column sep=3mm]{
     & \node (A) {A}; \\
     \node{B};&& \node(C){C}; \\
   };
@@ -44,10 +45,12 @@ Compare: % see 09_Parametric_Equations.tex
 \[
 \begin{gathered}\text{Choose}\\t\end{gathered}\quad
 \tikz[>=latex,baseline=(current bounding box.center)]{\draw[->](0,.3)--(1,.6);\draw[->](0,-.3)--(1,-.6);}\quad
+{\addtolength{\jot}{-.5ex}
 \begin{gathered}
-\text{Use a function}\\f\text{ to find }x\\\bigl(x=f(t)\bigr)\\\\
+\text{Use a function}\\f\text{ to find }x\\\bigl(x=f(t)\bigr)\\\mbox{}\\
 \text{Use a function}\\g\text{ to find }y\\\bigl(y=g(t)\bigr)
-\end{gathered}\quad
+\end{gathered}
+}\quad
 \tikz[>=latex,baseline=(current bounding box.center)]{\draw[->](0,.6)--(1,.3);\draw[->](0,-.6)--(1,-.3);}\quad
 \begin{gathered}\text{Plot point}\\(x,y)\end{gathered}
 \]
@@ -55,10 +58,12 @@ to:
 \[
 \begin{gathered}\text{Choose}\\t\end{gathered}\quad
 \begin{gathered}\scalebox{3}[1]{$\nearrow$}\\\\\scalebox{3}[1]{$\searrow$}\end{gathered}\quad
+{\addtolength{\jot}{-.5ex}
 \begin{gathered}
 \text{Use a function}\\f\text{ to find }x\\\bigl(x=f(t)\bigr)\\\\
 \text{Use a function}\\g\text{ to find }y\\\bigl(y=g(t)\bigr)
-\end{gathered}\quad
+\end{gathered}
+}\quad
 \begin{gathered}\scalebox{3}[1]{$\searrow$}\\\\\scalebox{3}[1]{$\nearrow$}\end{gathered}\quad
 \begin{gathered}\text{Plot point}\\(x,y)\end{gathered}
 \]
@@ -66,9 +71,9 @@ to:
 \begin{center}
 \begin{tikzpicture}[>=latex]
 \draw (0,0) node (A) [align=center] {Choose \\$t$} 
-      (3,1) node[align=center] (B1) {Use a function\\ $f$ to find $x$\\$\bigl(x=f(t)\bigr)$}
-			(3,-1) node[align=center] (B2) {Use a function\\ $g$ to find $y$\\$\bigl(y=g(t)\bigr)$}
-			(6.25,0) node [align=center] (C) {Plot point \\ $(x,y)$};
+    (3,1) node[align=center] (B1) {Use a function\\ $f$ to find $x$\\$\bigl(x=f(t)\bigr)$}
+	(3,-1) node[align=center] (B2) {Use a function\\ $g$ to find $y$\\$\bigl(y=g(t)\bigr)$}
+	(6.25,0) node [align=center] (C) {Plot point \\ $(x,y)$};
 \draw [->](A) --(B1);
 \draw [->](A) --(B2);
 \draw [->](B1) -- (C);
@@ -76,16 +81,26 @@ to:
 \end{tikzpicture}
 \end{center}
 
-\setlist[enumerate,1]{label=((\arabic*.))}
-\setlist[enumerate,2]{label=((\alph*))}
+\newlist{sectionexercises}{enumerate}{1}
+\newcounter{saveexercisenum}[section]
+\setlist[sectionexercises]{
+    label=((\arabic*.)),
+    before=\setcounter{sectionexercisesi}{\value{saveexercisenum}},
+    after=\setcounter{saveexercisenum}{\value{sectionexercisesi}},
+}
+%\setlist[enumerate,1]{label=((\arabic*.))}
+\setlist[enumerate,1]{label=((\alph*))}
 
-\begin{enumerate}
+\begin{sectionexercises}
 \item problem should be ((1.)) Has parts:
 \begin{enumerate}
 \item should be ((a))
 \item should be ((b))
 \end{enumerate}
+\end{sectionexercises}
+in between
+\begin{sectionexercises}
 \item problem should be ((2.))
-\end{enumerate}
+\end{sectionexercises}
 
 \end{document}

@@ -7,71 +7,59 @@
 
 \documentclass[10pt]{book}
 
-\input{headers/APEX_format}
-\usepackage{headers/apex_style}
-\input{headers/Header_Calculus}
+\usepackage[marginparwidth=150pt]{geometry}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{latexml}
+\usepackage{hyperref}
 
-\newcommand{\thetitle}{Standalone}
-
-\printallanswers
-\printincolor
-\usetwoDgraphics
-%\usethreeDgraphics
+\renewcommand{\chapterautorefname}{Chap\-ter} % the default is lowercase
+\renewcommand{\sectionautorefname}{Sec\-tion} % the default is lowercase
+\renewcommand{\figureautorefname}{Fig\-ure} % the default is missing hyphenation
+\renewcommand{\appendixname}{Ap\-pen\-di\-ces} % the default is missing hyphenation
 
 \begin{document}
 
-\frontmatter
+\framebox[.14\linewidth][l]{\parbox{1pt}{Chapter\\\chapterautorefname}}
+\framebox[.14\linewidth][l]{\parbox{1pt}{Section\\\sectionautorefname}}
+\framebox[.14\linewidth][l]{\parbox{1pt}{Figure\\\figureautorefname}}
+\framebox[.14\linewidth][l]{\parbox{1pt}{Appendices\\\appendixname}}
+\framebox[.14\linewidth][l]{\parbox{1pt}{150.0pt\\\the\marginparwidth}}
+\framebox[.14\linewidth][l]{\parbox{1pt}{5.0pt\\\the\defaultaddspace}}
 
-%\input{text/front_matter_and_cover}
-
-\mainmatter
-
-\part*{Calculus I}
-\ifbool{latexml}{\addcontentsline{toc}{part}{Calculus I}}{}
-
-\apexchapter[text/01_Prerequisite]{Limits}{ch:label}
-
-Some intro stuff.\\
-Chapter:\chapterautorefname:\\
-Section:\sectionautorefname:\\
-Figure:\figureautorefname:\\
-Appendix:\appendixname:\\
-150.0pt:\the\marginparwidth:\\
-5.0pt:\the\defaultaddspace:
-
-\section{The section}
-
-% todo tikz matrices see https://github.com/brucemiller/LaTeXML/issues/794
+% todo tikz matrix spacing see https://github.com/brucemiller/LaTeXML/issues/794
+\noindent before\\
 \begin{tikzpicture}
-  \matrix[row sep=1mm,column sep=3mm,ampersand replacement=\&]{
-    \&\&\& \node (tp1) {$0$}; \&\& \node (tp2) {$1$}; \&\& \node (tp3) {$2$}; \&\& \node (tp4) {$3$}; \\[-1ex]
-    \node(linestart) {$x$}; \&\&\&\&\&\&\&\&\&\&\& \node(lineend) {}; \\[-1ex]
-    \&\node (fstart) {$\operatorname{sign}x^{\underline{4}}$}; \& \node {$+$}; \&\& \node {$-$}; \&\& \node {$+$}; \&\& \node {$-$}; \&\& \node {$+$}; \\
+  \matrix {
+    & \node (A) {A}; \\
+    \node{B};&& \node(C){C}; \\
   };
-  \draw [<->] (linestart.east) -- (lineend);
-  \draw (fstart.south west) -- (lineend.west |- fstart.south);
-  \draw (fstart.east |- lineend) -- (fstart.east|-fstart.south);
-  \foreach \x in {1,2,3,4} {
-    \draw (tp\x|-linestart)+(0,5pt) -- (tp\x |- fstart.south);
-  }
-\end{tikzpicture}
-
-\begin{tikzpicture}
- \matrix[row sep=1mm,column sep=3mm,ampersand replacement=\&]{
-  \node(left){L}; \&\&\&\&\&\&\&\&\& \node(right){R}; \\
- };
- \draw[<->](left)--(right);
-\end{tikzpicture}
+  \draw (A.south) -- (A|- C.south);
+\end{tikzpicture}\\
+after
 
 Compare: % see 09_Parametric_Equations.tex
 \[
 \begin{gathered}\text{Choose}\\t\end{gathered}\quad
-\begin{gathered}\nearrow\\\\\searrow\end{gathered}\quad
+\tikz[>=latex,baseline=(current bounding box.center)]{\draw[->](0,.3)--(1,.6);\draw[->](0,-.3)--(1,-.6);}\quad
 \begin{gathered}
 \text{Use a function}\\f\text{ to find }x\\\bigl(x=f(t)\bigr)\\\\
 \text{Use a function}\\g\text{ to find }y\\\bigl(y=g(t)\bigr)
 \end{gathered}\quad
-\begin{gathered}\searrow\\\\\nearrow\end{gathered}\quad
+\tikz[>=latex,baseline=(current bounding box.center)]{\draw[->](0,.6)--(1,.3);\draw[->](0,-.6)--(1,-.3);}\quad
+\begin{gathered}\text{Plot point}\\(x,y)\end{gathered}
+\]
+to:
+\[
+\begin{gathered}\text{Choose}\\t\end{gathered}\quad
+\begin{gathered}\scalebox{3}[1]{$\nearrow$}\\\\\scalebox{3}[1]{$\searrow$}\end{gathered}\quad
+\begin{gathered}
+\text{Use a function}\\f\text{ to find }x\\\bigl(x=f(t)\bigr)\\\\
+\text{Use a function}\\g\text{ to find }y\\\bigl(y=g(t)\bigr)
+\end{gathered}\quad
+\begin{gathered}\scalebox{3}[1]{$\searrow$}\\\\\scalebox{3}[1]{$\nearrow$}\end{gathered}\quad
 \begin{gathered}\text{Plot point}\\(x,y)\end{gathered}
 \]
 to:
@@ -88,20 +76,16 @@ to:
 \end{tikzpicture}
 \end{center}
 
-% this works fine; I just want an index to make sure that shows correctly
-At one point we define $a_\mathrm{T}$
-\index{at@$a_{\mathrm{T}}$}\index{unit tangent vector!at@$a_{\mathrm{T}}$}%
+\setlist[enumerate,1]{label=((\arabic*.))}
+\setlist[enumerate,2]{label=((\alph*))}
 
-\printexercises{exercises/14-03-exercises}
-
-\appendix
-
-\printsolutions{Standalone Solutions To All Problems}
-
-\printindex
-
-%\backmatter
-%
-%\input{text/Inside_Cover_Of_The_Text_Material_Complete}
+\begin{enumerate}
+\item problem should be ((1.)) Has parts:
+\begin{enumerate}
+\item should be ((a))
+\item should be ((b))
+\end{enumerate}
+\item problem should be ((2.))
+\end{enumerate}
 
 \end{document}

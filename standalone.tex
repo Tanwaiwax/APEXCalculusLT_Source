@@ -7,27 +7,27 @@
 
 \documentclass[10pt]{book}
 
-\input{headers/APEX_format}
-\usepackage{headers/apex_style}
-\input{headers/Header_Calculus}
+%\input{headers/APEX_format}
+%\usepackage{headers/apex_style}
+%\input{headers/Header_Calculus}
 
-%% LaTeXML's hyperref overwrites these
-%\newcommand{\chapterautorefname}{Chap\-ter} % the default is lowercase
-%\newcommand{\sectionautorefname}{Sec\-tion} % the default is lowercase
-%
-%\usepackage[marginparwidth=150pt]{geometry}
-%\usepackage{amsmath}
-%\usepackage{graphicx}
-%\usepackage{tikz}
-%\usepackage{enumitem}
-%\usepackage{hyperref}
-%\newlist{sectionexercises}{enumerate}{1}
-%\newcounter{saveexercisenum}[section]
-%\setlist[sectionexercises]{
-%    label=\arabic*.,
-%    before=\setcounter{sectionexercisesi}{\value{saveexercisenum}},
-%    after=\setcounter{saveexercisenum}{\value{sectionexercisesi}},
-%}
+% LaTeXML's hyperref overwrites these
+\newcommand{\chapterautorefname}{Chap\-ter} % the default is lowercase
+\newcommand{\sectionautorefname}{Sec\-tion} % the default is lowercase
+
+\usepackage[marginparwidth=150pt]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\newlist{sectionexercises}{enumerate}{1}
+\newcounter{saveexercisenum}[section]
+\setlist[sectionexercises]{
+    label=\arabic*.,
+    before=\setcounter{sectionexercisesi}{\value{saveexercisenum}},
+    after=\setcounter{saveexercisenum}{\value{sectionexercisesi}},
+}
 
 \begin{document}
 
@@ -45,6 +45,13 @@
    \node(bottom){B};\\
   };
   \draw(left)--(right)(left)--(bottom);
+\end{tikzpicture}\quad
+\begin{tikzpicture}
+  \matrix {
+    & \node (A) {A}; \\
+    \node{B};&& \node(C){C}; \\
+  };
+  \draw (A.south) -- (A|- C.south);
 \end{tikzpicture}\\
 after
 
@@ -94,41 +101,12 @@ to:
 \end{tikzpicture}
 \end{center}
 
-\begingroup
-\setlist[enumerate,1]{label=((\alph*))}
-instructions
-\begin{enumerate}
-\item should be ((a))
-\end{enumerate}
-\begin{sectionexercises}
-\item problem should have decimal after number. Has parts:
-\begin{enumerate}
-\item should be ((a))
-\end{enumerate}
-\end{sectionexercises}
-in between
 \begin{sectionexercises}
 \item problem should have decimal after number.
 \end{sectionexercises}
-\endgroup
-\closeenumerate
-
-\begingroup
-\setlist[enumerate,1]{label=((\alph*))}
-instructions
-\begin{enumerate}
-\item should be ((a))
-\end{enumerate}
+in between
 \begin{sectionexercises}
-\exercise{problem should have decimal after number. Has parts:
-\setlist[enumerate,1]{label=((\alph*))}
-\begin{enumerate}
-\item should be ((a))
-\end{enumerate}}{}
-\endgroup
-\exercise{problem should be 3.?}{}
-\closeenumerate
-
-\printexercises{exercises/14-03-exercises}
+\item problem should have decimal after number.  Should continue numbering.
+\end{sectionexercises}
 
 \end{document}

@@ -36,10 +36,6 @@
 #SBATCH --mail-type=all
 #SBATCH --mail-user=timothy.prescott@und.edu
 
-echo "mailed"
-echo "$USER@und.edu"
-echo ""
-
 # load required modules here
 module load singularity
 # print the loaded modules

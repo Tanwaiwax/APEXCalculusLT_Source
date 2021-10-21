@@ -34,7 +34,7 @@
 
 # Job events (mail-type): begin, end, fail, all.
 #SBATCH --mail-type=all
-#SBATCH --mail-user=$USER@und.edu
+#SBATCH --mail-user=timothy.prescott@und.edu
 
 # load required modules here
 module load singularity

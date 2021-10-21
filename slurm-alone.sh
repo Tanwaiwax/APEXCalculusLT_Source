@@ -59,7 +59,7 @@ echo ""
 echo "Job intermission at $(date)"
 echo ""
 
-singularity exec $singularitydir/latexml.sif $latexmldir/latexmlpost --split --destination=standaloneweb/index.html $base.xml
+singularity exec $singularitydir/latexml.sif $latexmldir/latexmlpost --split --destination=standaloneweb/index.html --javscript=LaTeXML-maybeMathJax.js $base.xml
 
 echo ""
 echo "Job ended at $(date)"

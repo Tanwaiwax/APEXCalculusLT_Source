@@ -356,10 +356,12 @@
 \counterwithin*{sectionexercisesi}{section} % in case we have a exercise set before any exercises that would reset the save exercise enum
 \setlist[sectionexercises]{
 	label=\arabic*.,
-	ref=\arabic*,
 	leftmargin=1.5em,
     before=\setcounter{sectionexercisesi}{\value{saveexercisenum}},
     after=\setcounter{saveexercisenum}{\value{sectionexercisesi}},
+}
+\ifbool{latexml}{}{
+ \setlist*[sectionexercises]{ref=\arabic*}
 }
 
 \newcommand{\printexercises}[1]{%

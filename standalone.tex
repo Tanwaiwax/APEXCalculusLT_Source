@@ -7,37 +7,44 @@
 
 \documentclass[10pt]{book}
 
-% LaTeXML's hyperref overwrites these?
-\newcommand{\chapterautorefname}{Chap\-ter} % the default is lowercase
-\newcommand{\sectionautorefname}{Sec\-tion} % the default is lowercase
-\newcommand{\figureautorefname}{Fig\-ure} % the default is missing hyphenation
-\renewcommand{\appendixname}{Ap\-pen\-di\-ces} % the default is missing hyphenation and singular
+\input{headers/APEX_format}
+\usepackage{headers/apex_style}
+\input{headers/Header_Calculus}
 
-\usepackage[marginparwidth=150pt]{geometry}
-\usepackage{amsmath}
-\usepackage{booktabs}
-\usepackage{tikz}
-\usepackage{enumitem}
-%\usepackage{latexml}
-\usepackage{hyperref}
+%% LaTeXML's hyperref overwrites these
+%\newcommand{\chapterautorefname}{Chap\-ter} % the default is lowercase
+%\newcommand{\sectionautorefname}{Sec\-tion} % the default is lowercase
+%
+%\usepackage[marginparwidth=150pt]{geometry}
+%\usepackage{amsmath}
+%\usepackage{graphicx}
+%\usepackage{tikz}
+%\usepackage{enumitem}
+%\usepackage{hyperref}
+%\newlist{sectionexercises}{enumerate}{1}
+%\newcounter{saveexercisenum}[section]
+%\setlist[sectionexercises]{
+%    label=((\arabic*.)),
+%    before=\setcounter{sectionexercisesi}{\value{saveexercisenum}},
+%    after=\setcounter{saveexercisenum}{\value{sectionexercisesi}},
+%}
 
 \begin{document}
 
+\pagestyle{empty}
+
 \framebox[.14\linewidth][l]{\parbox{1pt}{Chapter\\\chapterautorefname}}
 \framebox[.14\linewidth][l]{\parbox{1pt}{Section\\\sectionautorefname}}
-\framebox[.14\linewidth][l]{\parbox{1pt}{Figure\\\figureautorefname}}
-\framebox[.14\linewidth][l]{\parbox{1pt}{Appendices\\\appendixname}}
 \framebox[.14\linewidth][l]{\parbox{1pt}{150.0pt\\\the\marginparwidth}}
-\framebox[.14\linewidth][l]{\parbox{1pt}{5.0pt\\\the\defaultaddspace}}
 
 % todo tikz matrix spacing see https://github.com/brucemiller/LaTeXML/issues/794
 \noindent before\\
 \begin{tikzpicture}
   \matrix[row sep=3mm,column sep=3mm]{
-    & \node (A) {A}; \\
-    \node{B};&& \node(C){C}; \\
+   \node(left){L}; &&&&&& \node(right){R};\\\\\\\\
+   \node(bottom){B};\\
   };
-  \draw (A.south) -- (A|- C.south);
+  \draw(left)--(right)(left)--(bottom);
 \end{tikzpicture}\\
 after
 
@@ -57,14 +64,20 @@ Compare: % see 09_Parametric_Equations.tex
 to:
 \[
 \begin{gathered}\text{Choose}\\t\end{gathered}\quad
-\begin{gathered}\scalebox{3}[1]{$\nearrow$}\\\\\scalebox{3}[1]{$\searrow$}\end{gathered}\quad
+\begin{gathered}
+\rotatebox{20}{$\xrightarrow{\hspace{1cm}}$}\\\\
+\rotatebox{-20}{$\xrightarrow{\hspace{1cm}}$}
+\end{gathered}\quad
 {\addtolength{\jot}{-.5ex}
 \begin{gathered}
 \text{Use a function}\\f\text{ to find }x\\\bigl(x=f(t)\bigr)\\\\
 \text{Use a function}\\g\text{ to find }y\\\bigl(y=g(t)\bigr)
 \end{gathered}
 }\quad
-\begin{gathered}\scalebox{3}[1]{$\searrow$}\\\\\scalebox{3}[1]{$\nearrow$}\end{gathered}\quad
+\begin{gathered}
+\rotatebox{-20}{$\xrightarrow{\hspace{1cm}}$}\\\\
+\rotatebox{20}{$\xrightarrow{\hspace{1cm}}$}
+\end{gathered}\quad
 \begin{gathered}\text{Plot point}\\(x,y)\end{gathered}
 \]
 to:
@@ -81,16 +94,8 @@ to:
 \end{tikzpicture}
 \end{center}
 
-\newlist{sectionexercises}{enumerate}{1}
-\newcounter{saveexercisenum}[section]
-\setlist[sectionexercises]{
-    label=((\arabic*.)),
-    before=\setcounter{sectionexercisesi}{\value{saveexercisenum}},
-    after=\setcounter{saveexercisenum}{\value{sectionexercisesi}},
-}
-%\setlist[enumerate,1]{label=((\arabic*.))}
+\bgroup
 \setlist[enumerate,1]{label=((\alph*))}
-
 \begin{sectionexercises}
 \item problem should be ((1.)) Has parts:
 \begin{enumerate}
@@ -102,5 +107,17 @@ in between
 \begin{sectionexercises}
 \item problem should be ((2.))
 \end{sectionexercises}
+\egroup
+
+\begingroup
+\setlist[enumerate,1]{label=((\alph*))}
+\exercise{problem should be ((3.)) Has parts:
+\begin{enumerate}
+\item should be ((a))
+\item should be ((b))
+\end{enumerate}}{}
+\endgroup
+\exercise{problem should be ((3?))}{}
+\closeenumerate
 
 \end{document}

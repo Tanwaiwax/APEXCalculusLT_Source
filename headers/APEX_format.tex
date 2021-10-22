@@ -422,17 +422,17 @@
 \makeatletter
 \newcommand{\openenumerate}{%
  \ifx\@currenvir\exerenv\else%
+  \begin{sectionexercises}
   \ifbool{latexml}{%
-   \begin{sectionexercises}%[label=\arabic*.,ref=\arabic*]
    \setcounter{sectionexercisesi}{\value{saveexercisenum}}%
-  }{%
-   \begin{sectionexercises}
-  }%
+  }{}%
  \fi%
 }
 \newcommand{\closeenumerate}{
  \ifx\@currenvir\exerenv%
-  \ifbool{latexml}{\setcounter{saveexercisenum}{\value{sectionexercisesi}}}{}%
+  \ifbool{latexml}{%
+   \setcounter{saveexercisenum}{\value{sectionexercisesi}}%
+  }{}%
   \end{sectionexercises}
  \fi%
 }
@@ -523,6 +523,8 @@
 	\renewcommand{\questioncolumnbreak}{}%
 	\packageinanswersection%
 	\showexerciseanswers%
+	\setlist[enumerate,1]{label=\arabic*.}% for solutions
+	% LaTeX already does this, but LaTeXML doesn't
 }%
 
 \newtoggle{printoddanswersonly}
@@ -568,8 +570,10 @@
 }
 \newcommand*{\loadAnswers}[1]{%
 %	\stepcounter{answersection}%
-	\begin{enumerate}[leftmargin=1.5em]\input{#1}\end{enumerate}%
-	\bigbreak%
+ \begin{enumerate}[leftmargin=1.5em]%
+  \input{#1}
+ \end{enumerate}%
+ \bigbreak%
 }
 
 

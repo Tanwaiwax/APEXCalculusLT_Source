@@ -49,8 +49,8 @@ A \textbf{parabola} is the locus of all points equidistant from a point (called 
 	\filldraw [black] (0,1) circle (1.5pt) node [above left] {\scriptsize Focus};
 	\draw [thick,draw={\colortwo}](-3,2.25) parabola bend (0,0) (3,2.25);
 	\filldraw (0,0) circle (1.5pt) node [below left] {\scriptsize Vertex};
-	\draw (.3,.5) node[] {\scriptsize $\left.\rule{0pt}{12pt}\right\}p$};
-	\draw (.3,-.5) node[] {\scriptsize $\left.\rule{0pt}{12pt}\right\}p$};
+	\draw (.3,.5) node[] {$\biggr\}\scriptstyle p$};
+	\draw (.3,-.5) node[] {$\biggr\}\scriptstyle p$};
 	\coordinate (A) at (2.5,1.5625);
 	\filldraw [black] (A) circle (1.5pt) node [right] {\scriptsize $(x,y)$};
 	\draw [thick,dashed](0,1) -- (A) node [pos=.5,above] {\scriptsize $d$}
@@ -62,7 +62,10 @@ A \textbf{parabola} is the locus of all points equidistant from a point (called 
 
 \autoref{fig:parabola_def} illustrates this definition. The point halfway between the focus and the directrix is the \textbf{vertex}. The line through the focus, perpendicular to the directrix, is the \textbf{axis of symmetry}, as the portion of the parabola on one side of this line is the mirror-image of the portion on the opposite side.
 
-\iftoggle{abridgeConics}{}{%
+\iftoggle{abridgeConics}{%
+The geometric definition of the parabola and distance formula can be used to derive the quadratic function whose graph is a parabola with vertex at the origin.
+\[y=\frac{1}{4p}x^2.\]
+}{%
 The definition leads us to an algebraic formula for the parabola. Let $P=(x,y)$ be a point on a parabola whose focus is at $F=(0,p)$ and whose directrix is at $y=-p$. (We'll assume for now that the focus lies on the $y$-axis; by placing the focus $p$ units above the $x$-axis and the directrix $p$ units below this axis, the vertex will be at $(0,0)$.)
 
 We use the Distance Formula to find the distance $d_1$ between $F$ and $P$:
@@ -80,8 +83,6 @@ These two distances are equal. Setting $d_1=d_2$, we can solve for $y$ in terms 
 	y&= \frac{1}{4p}x^2.
 \end{align*}%
 }
-The geometric definition of the parabola and distance formula can be used to derive the quadratic function whose graph is a parabola with vertex at the origin.
-\[y=\frac{1}{4p}x^2.\]
 Applying transformations of functions we get the following standard form of the parabola.
 
 \begin{keyidea}[General Equation of a Parabola]\label{idea:parabola}
@@ -209,16 +210,17 @@ An easy way to visualize this construction of an ellipse is to pin both ends of 
 	\end{scope}
 \end{tikzpicture}}
 
+We can again find an algebraic equation for an ellipse using this geometric definition.
 \iftoggle{abridgeConics}{}{%
-We can again find an algebraic equation for an ellipse using this geometric definition. Let the foci be located along the $x$-axis, $c$ units from the origin. Let these foci be labeled as $F_1 = (-c,0)$ and $F_2=(c,0)$. Let $P=(x,y)$ be a point on the ellipse. The sum of distances from $F_1$ to $P$ ($d_1$) and from $F_2$ to $P$ ($d_2$) is a constant $d$. That is, $d_1+d_2=d$. Using the Distance Formula, we have 
+Let the foci be located along the $x$-axis, $c$ units from the origin. Let these foci be labeled as $F_1 = (-c,0)$ and $F_2=(c,0)$. Let $P=(x,y)$ be a point on the ellipse. The sum of distances from $F_1$ to $P$ ($d_1$) and from $F_2$ to $P$ ($d_2$) is a constant $d$. That is, $d_1+d_2=d$. Using the Distance Formula, we have 
 \[\sqrt{(x+c)^2+y^2} + \sqrt{(x-c)^2+y^2} = d.\]
 Using a fair amount of algebra can produce the following equation of an ellipse (note that the equation is an implicitly defined function; it has to be, as an ellipse fails the Vertical Line Test):
 \[
 \frac{x^2}{\left(\frac d2\right)^2} + \frac{y^2}{\left(\frac d2\right)^2-c^2} = 1.
 \]
-This is not particularly illuminating, but by making the substitution $a=d/2$ and $b=\sqrt{a^2-c^2}$, we can rewrite the above equation as 
-\[\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1.\]
+This is not particularly illuminating, but by making the substitution $a=d/2$ and $b=\sqrt{a^2-c^2}$, we can rewrite the above equation as
 }
+\[\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1.\]
 
 As shown in \autoref{fig:ellipse_label}, the values of $a$ and $b$ have
 % geometric
@@ -237,9 +239,13 @@ meaning. In general, the two foci of an ellipse lie on the \textbf{major axis} o
  \draw [->,>=latex] (2,2)  -- (-1.2,.1);
  \draw [->,>=latex] (2,2) node [fill=white] {\scriptsize Foci} -- (1.3,.1);
  \filldraw [draw={\colorone}] (2,0) circle (1.5pt) (-2,0) circle (1.5pt);
- \draw (-1,-.25) node {\scriptsize $\underbrace{\makebox[1.8cm]{}}_a$};
- \draw (.65,-.25) node {\scriptsize $\underbrace{\makebox[1.1cm]{}}_c$};
- \draw (-.25,.75) node [] {\scriptsize $b\left\{\rule[-.65cm]{0pt}{1.3cm}\right.$};
+ \draw (-1,-.25) node {$\underbrace{\makebox[1.8cm]{}}_a$};
+ \draw (.65,-.25) node {$\underbrace{\makebox[1.1cm]{}}_c$};
+ \ifbool{latexml}{
+  \draw (-.25,.75) node [] {${\scriptstyle b}\Biggl\{$};
+ }{
+  \draw (-.25,.75) node [] {\scriptsize $b\left\{\rule[-.65cm]{0pt}{1.3cm}\right.$};
+ }
 \end{tikzpicture}}
 
 Allowing for the shifting of the ellipse gives the following standard equations.

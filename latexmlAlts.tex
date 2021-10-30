@@ -20,6 +20,7 @@
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{enumitem}
+\usepackage{multicol}
 \usepackage{hyperref}
 \newlist{sectionexercises}{enumerate}{1}
 \newcounter{saveexercisenum}[section]
@@ -112,11 +113,28 @@ in between
 
 A reference to \ref{probone} should have no decimal after number.
 
+% see Eg1.3.8
+\[a+b=c\quad\text{because \ref{probone}}\]
+
 Stuff $\left\{\rule{0pt}{12pt}\right\}$.  $\underbrace{\makebox[1.8cm]{}}_a$.
 
 \begin{tabular}{cc}
 here & \multirow{1.5}{*}{should be at the bottom}
 % see https://tex.stackexchange.com/a/364935/107497
 \end{tabular}
+
+\parbox[t]{\linewidth}{\begin{multicols}{2}
+\begin{enumerate}
+\item\label{thm:d_const_mult_rule} $\frac{\dd}{\dd x}\bigl(cf(x) \bigr) = c\cdot \fp(x)$
+\item\label{thm:d_sum_diff_rule} $\frac{\dd}{\dd x}\bigl(f(x)\pm g(x) \bigr) =$ \\
+\null\qquad$\fp(x)\pm g'(x)$
+\item $\frac{\dd}{\dd x}\bigl(C \bigr) = 0$
+\setcounter{enumi}{0}
+\item $\int c\cdot f(x)\dd x = c\cdot \int f(x)\dd x$
+\item $\int \bigl(f(x)\pm g(x)\bigr)\dd x =$ \\
+\null\qquad$\int f(x)\dd x\pm \int g(x)\dd x$
+\item $\int 0\dd x = C$
+\end{enumerate}
+\end{multicols}}
 
 \end{document}

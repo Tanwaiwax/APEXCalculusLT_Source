@@ -55,12 +55,28 @@ printf '\\newcommand{\\thetitle}{Calculus}\n\\printincolor\n\\usethreeDgraphics\
 
 singularity exec $singularitydir/latexml.sif $latexmldir/latexml --quiet --destination=$base.xml --nocomments $base
 
+exit_code=$?
+
 echo ""
 echo "Job intermission at $(date)"
 echo ""
 
+if [ "$exit_code" -ne "0" ]; then
+    echo "latexml failed"
+    exit "$exit_code"
+fi
+
 singularity exec $singularitydir/latexml.sif $latexmldir/latexmlpost --split --destination=web/index.html $base.xml
+
+exit_code=$?
 
 echo ""
 echo "Job ended at $(date)"
 echo ""
+
+if [ "$exit_code" -ne "0" ]; then
+    echo "latexmlpost failed"
+    exit "$exit_code"
+fi
+
+tar czf web.tar.gz web/

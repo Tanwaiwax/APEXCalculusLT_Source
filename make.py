@@ -25,7 +25,7 @@ import sys
 import time
 
 ignorelist = frozenset(['Bernhard',"Darboux's",
-    'Friedrich',"Fubini's",'Georg','LHR',"Rolle's",
+    'Friedrich',"Fubini's",'Georg','Iiams','LHR',"Rolle's",
     'myplot','num','pos','proj','sinh','sqrt','tanh',
     'xlabel','xmajorgrids','xmax','xmin','xscale','xshift','xtick','xticklabels',
     'ylabel','ymajorgrids','ymax','ymin','yscale','yshift','ytick','yticklabels',
@@ -176,10 +176,10 @@ def updateprc():
         # sorting 'A' to the end and continuing seems redundant. 
         chapters = sorted( prcdict.keys() , key=lambda x:float('inf') if x=='A' else int(x) )
         for chapter in chapters:
-            if chapter=='A':
-                continue
+#            if chapter=='A':
+#                continue
             writechapterprc(prcdict,prchtml,chapter)
-        writechapterprc(prcdict,prchtml,'A')
+#        writechapterprc(prcdict,prchtml,'A')
         prchtml.write('</div>\n')
         prchtml.write('</div>\n'
                       '<p>\n'
@@ -410,6 +410,7 @@ def lc(input):
 
 def writemisspellings():
     with open('misspell.txt','w+') as misspellings:
+        runningTotal = collections.Counter()
         texcommands = {
             'addplot': 'op',
             'autoeqref': 'p',
@@ -445,9 +446,13 @@ def writemisspellings():
                 filemisspellings = collections.Counter(output.stdout.strip().split('\n'))
                 filtered = collections.Counter({w:c for w,c in filemisspellings.items() if w and w not in ignorelist and lc(w) not in ignorelist})
                 if filtered:
+                    runningTotal += filtered
                     print('\n'+texfile+':',file=misspellings)
                     for word in sorted(filtered.keys()):
                         print(word+':',filtered[word],'time(s)',file=misspellings)
+        print('\n\nMost common:\n',file=misspellings)
+        for word,count in runningTotal.most_common(10):
+            print(word+':',count,'time(s)',file=misspellings)
 
 def compilewith(commands=False):
     print('running:',commands)

@@ -144,12 +144,16 @@
  \pagestyle{prose}
 }
 
+\newtoggle{inappendix}
+% todo Tim
+% \appto\appendix{stuff}
 \let\oldappendix\appendix
 \makeatletter
 \renewcommand{\appendix}{%
  \let\ps@plain=\ps@oldplain% restore the pagestyle
  \cleardoublepage
  \oldappendix
+ \toggletrue{inappendix}
  \setcounter{secnumdepth}{-1}
  \pagenumbering{arabic}
  \renewcommand{\thepage}{A.\arabic{page}}

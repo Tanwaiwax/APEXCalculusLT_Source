@@ -264,6 +264,9 @@
  \renewcommand{\prc@section@autoref}{Section A.\thechapter}%
 }
 
+%\newcommand{\@chap@app@test}{Chapter}
+%\newcommand{\Itemautorefname@test}{item}
+
 \newcommand{\myincludeasythree}[3]{%
  % We want a library of 3d images
  % Each call here also leaves a marker in the aux file, which Python can then find.
@@ -272,9 +275,11 @@
 % \immediate\write\@auxout{%
 %  \@percentchar\space prc file #3 used in \prc@section@autoref\space as \prc@autoref%
 % }%
- \ifboolexpr{ test{\ifstrequal{\@chapapp}{chapter}}
- 		  and test{\ifstrequal{\Itemautorefname}{item}} }{
-% \if thenelse{\equal{\@chapapp}{chapter}\AND\equal{\Itemautorefname}{item}}{}%
+ \ifboolexpr{ togl {inappendix} or togl {inexercises} }{%
+  \immediate\write\@auxout{%
+   \@percentchar\space prc file #3 used in \prc@section@autoref\space as \thesection\@hashchar\arabic{enumi}%
+  }%
+ }{%
   % not in solutions and not in exercises
   % therefore, regular text
   \stepcounter{figure}%
@@ -282,10 +287,6 @@
    \@percentchar\space prc file #3 used in \prc@section@autoref\space as Figure \thefigure%
   }%
   \addtocounter{figure}{-1}%
- }{% else in exercises or solutions
-  \immediate\write\@auxout{%
-   \@percentchar\space prc file #3 used in \prc@section@autoref\space as \thesection\@hashchar\arabic{enumi}%
-  }%
  }%
  \iftoggle{in_threeD}{%
   \includemedia[3Dmenu,activate=onclick,deactivate=onclick,3Dlights=Headlamp,

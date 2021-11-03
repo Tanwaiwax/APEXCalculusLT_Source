@@ -115,14 +115,25 @@ in between
 % see Eg1.3.8
 \[a+b=c\quad\text{because \ref{probone}}\]
 
-$\underbrace{\makebox[1.8cm]{}}_a$.  Stuff $\left\{\rule{0pt}{12pt}\right\}$.
+Stuff $\left(\rule{0pt}{12pt}\right)$.
+
+$\underbrace{\makebox[1.8cm]{}}_a$.
 
 \tikz{\node{$\underbrace{\makebox[1.8cm]{}}_a$}}
 
-\begin{tabular}{cc}
-here & \multirow{1.5}{*}{should be at the bottom}
-% see https://tex.stackexchange.com/a/364935/107497
-\end{tabular}
+\begingroup
+This should not be centered.
+
+\bgroup
+This should not be centered.
+
+{\centering \includegraphics[width=1cm]{example-image}\\This box and text should be the only things centered on this page.\\}
+\egroup
+\endgroup
+
+\begin{centering}
+This should be centered.\\
+\end{centering}
 
 \parbox[t]{\linewidth}{\begin{multicols}{2}
 \begin{enumerate}
@@ -137,5 +148,10 @@ here & \multirow{1.5}{*}{should be at the bottom}
 \item $\int 0d x = C$
 \end{enumerate}
 \end{multicols}}
+
+\begin{tabular}{cc}
+here & \multirow{3.5}{*}{should be at the bottom}
+% see https://tex.stackexchange.com/a/364935/107497
+\end{tabular}
 
 \end{document}

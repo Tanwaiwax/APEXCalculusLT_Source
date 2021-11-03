@@ -240,54 +240,26 @@
 \gdef\@hashchar{#}%
 \endgroup
 
-% this would simplify myincludeasythree a bit, but I can't pull it off
-% maybe https://tex.stackexchange.com/a/163691/107497
-%\newcommand{\Item@auto@ref@name}{item}
-%\newcommand{\prc@autoref}{%
-% \ifx\Itemautorefname\Item@auto@ref@name% not in exercises
-%% \ifstrequal{\Itemautorefname}{item}{% not in exercises
-%  % therefore, regular text
-%  \stepcounter{figure}%
-%  Figure \thefigure%
-%  \addtocounter{figure}{-1}%
-% \else%
-%% }{% else in exercises
-%  \thesection\@hashchar\arabic{enumi}%
-%% }%
-% \fi%
-%}
-
 \newcommand{\prc@section@autoref}{Section \thesection}
+\newcommand{\prc@figure@autoref}{\iftoggle{inexercises}{%
+ \thesection\@hashchar\arabic{sectionexercisesi}%
+}{%
+ Figure \thefigure%
+}}
 
 \newcommand{\packageinanswersection}{%
-% \renewcommand{\prc@autoref}{\thesection\@hashchar\arabic{enumi}}%
  \renewcommand{\prc@section@autoref}{Section A.\thechapter}%
+ \renewcommand{\prc@figure@autoref}{\thesection\@hashchar\arabic{enumi}}%
 }
-
-%\newcommand{\@chap@app@test}{Chapter}
-%\newcommand{\Itemautorefname@test}{item}
 
 \newcommand{\myincludeasythree}[3]{%
  % We want a library of 3d images
  % Each call here also leaves a marker in the aux file, which Python can then find.
- % This works if the above are etoolbox's, but not ifthen's, maybe
- % e.g.: \typeout{find me \if thenelse{\boolean{true}}{a}{b}}
-% \immediate\write\@auxout{%
-%  \@percentchar\space prc file #3 used in \prc@section@autoref\space as \prc@autoref%
-% }%
- \ifboolexpr{ togl {inappendix} or togl {inexercises} }{%
-  \immediate\write\@auxout{%
-   \@percentchar\space prc file #3 used in \prc@section@autoref\space as \thesection\@hashchar\arabic{enumi}%
-  }%
- }{%
-  % not in solutions and not in exercises
-  % therefore, regular text
-  \stepcounter{figure}%
-  \immediate\write\@auxout{%
-   \@percentchar\space prc file #3 used in \prc@section@autoref\space as Figure \thefigure%
-  }%
-  \addtocounter{figure}{-1}%
+ \stepcounter{figure}%
+ \immediate\write\@auxout{%
+  \@percentchar\space prc file #3 used in \prc@section@autoref\space as \prc@figure@autoref%
  }%
+ \addtocounter{figure}{-1}%
  \iftoggle{in_threeD}{%
   \includemedia[3Dmenu,activate=onclick,deactivate=onclick,3Dlights=Headlamp,
    add3Djscript=asylabels.js,#1
@@ -297,19 +269,6 @@
  }%
 }
 
-%\newcommand{\myincludegraphicsthree}{\@ifstar \myincludegraphicsthreestarred \myincludegraphicsthreenostar}
-%
-%\newcommand{\myincludegraphicsthreenostar}[3]{\iftoggle{in_threeD}{%
-%	\includemedia[#1]{\myincludegraphics{#3_3D}}{#3_3D.prc}%
-%}{%
-%	\myincludegraphics[#2]{#3}
-%}}
-%
-%\newcommand{\myincludegraphicsthreestarred}[3]{\iftoggle{in_threeD}{%
-%	\includemedia[#1]{\myincludegraphics{#3}}{#3_3D.prc}%
-%}{%
-%	\myincludegraphics[#2]{#3}
-%}}
 
 
 

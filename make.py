@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 
+# prc and web can be edited on und.edu by going to
+# http://a.ou.und.edu/10/#oucampus/UND/sites/browse/staging/timothy.prescott
+
 '''
     pdfsizeopt must use Python 2 because it uses old style print statements.
     This file should be version agnostic.  We generally have
@@ -24,12 +27,12 @@ import subprocess
 import sys
 import time
 
-ignorelist = frozenset(['Bernhard',"Darboux's",
-    'Friedrich',"Fubini's",'Georg','Iiams','LHR',"Rolle's",
-    'myplot','num','pos','proj','sinh','sqrt','tanh',
-    'xlabel','xmajorgrids','xmax','xmin','xscale','xshift','xtick','xticklabels',
-    'ylabel','ymajorgrids','ymax','ymin','yscale','yshift','ytick','yticklabels',
-    'ztick',
+ignorelist = frozenset(['AntiAbuse','AmericInn','Arial','Bernhard','Calc','CrossTenant','CrossTenantHeadersStamped',"Darboux's",
+    'Friedrich',"Fubini's",'Georg','Hostname','Iiams','LHR',"Rolle's",'Schwarz',
+    'antispam','myplot','nbsp','num','pos','proj','sinh','sqrt','tahoma','tanh','tdots',
+    'xdots','xlabel','xmajorgrids','xmax','xmin','xminorgrids','xscale','xshift','xtick','xticklabel','xticklabels',
+    'ylabel','ymajorgrids','ymax','ymin','yminorgrids','yscale','yshift','ytick','yticklabels',
+    'zlabel','zmax','ztick',
 ])
 
 loginfo = []
@@ -171,24 +174,12 @@ def updateprc():
                       '<style>.box{display:inline-block;text-align:center;margin:1em}img{width:2in;}</style>\n'
                       '</head>\n'
                       '<body>\n'
-                      '<h1>3d Images From APEX Calculus LT</h1>\n'
+                      '<h1>Interactive 3d Images From APEX Calculus LT</h1>\n'
                       '<div id="accordion">\n')
-        # sorting 'A' to the end and continuing seems redundant. 
         chapters = sorted( prcdict.keys() , key=lambda x:float('inf') if x=='A' else int(x) )
         for chapter in chapters:
-#            if chapter=='A':
-#                continue
             writechapterprc(prcdict,prchtml,chapter)
-#        writechapterprc(prcdict,prchtml,'A')
-        prchtml.write('</div>\n')
         prchtml.write('</div>\n'
-                      '<p>\n'
-                      'The linked prc files can be viewed with Adobe Acrobat Pro.<br>\n'
-                      'The mobile app &ldquo;3D PDF Reader&rdquo; by Tech Soft 3D for '
-                      '<a href="https://play.google.com/store/apps/details?id=com.techsoft3d.hps.pdf.reader">Android</a> or '
-                      '<a href="https://itunes.apple.com/us/app/3d-pdf-reader/id569307672?mt=8">iOS</a>'
-                      ' can also view prc files.\n'
-                      '</p>\n'
                       '<script>$("#accordion").accordion({collapsible:true,active:false,heightStyle:"content"});</script>\n'
                       '</body>\n'
                       '</html>\n')
@@ -196,7 +187,7 @@ def updateprc():
 def writechapterprc(prcdict,prchtml,chapter):
     # solutions are recorded differently in the aux as well as the dict
     if chapter=='A':
-        prchtml.write('<h3>Solutions<h3>\n')
+        prchtml.write('<h3>Solutions</h3>\n')
     else:
         prchtml.write('<h3>Chapter '+str(chapter)+'</h3>\n')
     prchtml.write('<div>\n')
@@ -204,14 +195,13 @@ def writechapterprc(prcdict,prchtml,chapter):
     for section in sections:
         if chapter=='A':
             # section is really chapter because of \prc@section@autoref in style file
-            prchtml.write('<h4>Chapter '+section+'</h4><div>\n')
+            prchtml.write('<h4>Chapter '+section+'</h4>\n<ul>\n')
         else:
-            prchtml.write('<h4>Section {}.{}</h4>'.format(chapter,section)+'<div>\n')
+            prchtml.write(f'<h4>Section {chapter}.{section}</h4>\n<ul>\n')
         for figure in prcdict[chapter][section]:
-            prchtml.write('<div class="box"><a href="{0.file}.prc"><img src="{0.file}.png"><br>{0.num}</a></div>\n'.format(figure))
-            shutil.copy('figures/'+figure.file+'.prc','prc')
-            shutil.copy('figures/'+figure.file+'.png','prc')
-        prchtml.write('</div>\n')
+            prchtml.write(f'<li><a href="{figure.file}.html">{figure.num}</a></li>\n')
+            shutil.copy('figures/'+figure.file+'.html','prc')
+        prchtml.write('</ul>\n')
     prchtml.write('</div>\n')
 
 def prcfromfile(filename):
@@ -221,7 +211,7 @@ def prcfromfile(filename):
         for line in filein:
             if line.startswith(r'\@input{'):
                 prcdict.update(prcfromfile(line[len('\@input{'):-2]))
-            if line.startswith('% prc '):
+            if line.startswith('% prc file figures'):
                 match = re.match('% prc file figures/(\S+) used in Section (A|\d+).(\d+) as ((Figure )?[.#\d+]+)\s*$',line)
                 # in Python 3.4+, this would be fullmatch
                 if match:
@@ -424,18 +414,20 @@ def writemisspellings():
             'ifbool': 'pPP',
             'iftoggle': 'pPP',
             'includecodegraphics': 'p',
-            'label': 'p',
             'hyperref': 'oP',
+            'label': 'p',
+            'lxAddClass': 'p',
             'mfigure': 'opPpp',
             'mtable': 'PpP',
             'myincludeasythree': 'ppp',
             'myincludegraphics': 'op',
             'pdfbookmark': 'OPp',
+            'pgfkeysvalueof': 'p',
             'ref': 'p',
             'youtubeVideo': 'pP'
         }
         print('Possible misspellings in tex files in this directory:',file=misspellings)
-        for texfile in glob.glob('text/*.tex'):
+        for texfile in glob.glob('text/*.tex')+glob.glob('exercises/*.tex'):
             #if 'preface.tex' in texfile:
             #    continue
             with open(texfile) as filehandle:

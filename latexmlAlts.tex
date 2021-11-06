@@ -117,25 +117,18 @@ in between
 
 Stuff $\left(\rule{0pt}{30pt}\right)$.
 
-$\underbrace{\makebox[1.8cm]{}}_a$.
+$\underbrace{\makebox[1.8cm]{}}_a$
 
 \tikz{\node{$\underbrace{\makebox[1.8cm]{}}_a$}}
 
-\begingroup
+%{\centering \includegraphics[width=1cm]{example-image}\\This box and text should be the only things centered on this page.\\}
+
 This should not be centered.
+\begin{center}
+This should be centered.
+\end{center}
 
-\bgroup
-This should not be centered.
-
-{\centering \includegraphics[width=1cm]{example-image}\\This box and text should be the only things centered on this page.\\}
-\egroup
-\endgroup
-
-\begin{centering}
-This should be centered.\\
-\end{centering}
-
-\parbox[t]{\linewidth}{\begin{multicols}{2}
+\begin{multicols}{2}
 \begin{enumerate}
 \item\label{thm:d_const_mult_rule} $\frac{d}{d x}\bigl(cf(x) \bigr) = c\cdot f'(x)$
 \item\label{thm:d_sum_diff_rule} $\frac{d}{d x}\bigl(f(x)\pm g(x) \bigr) =$ \\
@@ -147,12 +140,13 @@ This should be centered.\\
 \null\qquad$\int f(x)d x\pm \int g(x)d x$
 \item $\int 0d x = C$
 \end{enumerate}
-\end{multicols}}
+\end{multicols}
 
-The beginning of a sentence.  $\makebox[0pt]{I should appear.}$
+The beginning of a sentence.  $\makebox[0pt][l]{I should appear.}$
 
 \begin{tabular}{cc}
-here & \multirow{15}{*}{should be at the bottom}
+row 1 & \multirow{15}{*}{should be at the bottom} \\
+row 2
 % see https://tex.stackexchange.com/a/364935/107497
 \end{tabular}
 

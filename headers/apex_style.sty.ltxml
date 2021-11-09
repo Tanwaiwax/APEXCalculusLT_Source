@@ -114,10 +114,12 @@ DefMacro('\apexchapter []{}{}',
 
 
 DefConstructor('\myincludeasythree{}{} Semiverbatim',
+    '<ltx:inline-block class="includedAsy">'.
     '<ltx:rawhtml>'.
     '<xhtml:iframe %&apex::getIframeAttr(#3)/>'.
     '</ltx:rawhtml><ltx:break/>'.
-    '(<ltx:ref class="ltx_href" href="#3.html">fullscreen</ltx:ref>)');
+    '(<ltx:ref class="ltx_href" href="#3.html">fullscreen</ltx:ref>)'.
+    '</ltx:inline-block>');
 
 sub getIframeAttr {
     my $filename = $_[0];
@@ -167,7 +169,7 @@ DefMacro('\flushouterequ{}','{#1}');
 
 DefMacro('\vv {}','\vec #1'); # provided by esvect
 DefMacroI('\textcent',undef,"\x{00A2}");
-DefMacro('\psBill'); # todo
+DefMacro('\psBill'); # todo (found in package pst-fun)
 
 # some macros we don't need
 DefMacro('\testmargintop');

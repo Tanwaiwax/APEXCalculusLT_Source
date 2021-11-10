@@ -22,8 +22,6 @@
 \usepackage{enumitem}
 \usepackage{multicol}
 \usepackage{multirow}
-\usepackage[font=small,justification=RaggedRight]{caption}
-\usepackage{booktabs}
 \usepackage{hyperref}
 \newlist{sectionexercises}{enumerate}{1}
 \newcounter{saveexercisenum}[section]
@@ -34,13 +32,16 @@
     after=\setcounter{saveexercisenum}{\value{sectionexercisesi}},
 }
 
+\setlength{\parskip}{2\baselineskip}
+
 \begin{document}
 
 \pagestyle{empty}
 
-\framebox[.14\linewidth][l]{\parbox{1pt}{Chapter\\\chapterautorefname}}
-\framebox[.14\linewidth][l]{\parbox{1pt}{Section\\\sectionautorefname}}
-\framebox[.14\linewidth][l]{\parbox{1pt}{150.0pt\\\the\marginparwidth}}
+\framebox[.14\linewidth][l]{\parbox{1pt}{Chap\-ter\\\chapterautorefname}}
+\framebox[.14\linewidth][l]{\parbox{1pt}{Sec\-tion\\\sectionautorefname}}
+
+150.0pt:\the\marginparwidth
 
 % todo tikz matrix spacing see https://github.com/brucemiller/LaTeXML/issues/794
 \noindent before\\
@@ -107,7 +108,7 @@ to:
 \end{center}
 
 \begin{sectionexercises}
-\item\label{probone} Label should have a decimal point.
+\item Label should have a decimal point.
 \end{sectionexercises}
 in between
 \begin{sectionexercises}
@@ -115,7 +116,9 @@ in between
 \end{sectionexercises}
 
 % see Eg1.3.8
-\[a+b=c\quad\text{because \ref{probone}}\]
+\begin{equation}\label{eqlabel}
+\text{my label is \ref{eqlabel}}
+\end{equation}
 
 Stuff $\left(\rule{0pt}{30pt}\right)$.
 
@@ -125,10 +128,12 @@ $\underbrace{\makebox[1.8cm]{}}_a$
 
 %{\centering \includegraphics[width=1cm]{example-image}\\This box and text should be the only things centered on this page.\\}
 
+\begin{minipage}{\linewidth}
 \begin{centering}
-This should be centered.\\
+This is the only thing that should be centered.\\
 \end{centering}
 This should not be centered.
+\end{minipage}
 
 \begin{multicols}{2}
 \begin{enumerate}
@@ -157,6 +162,18 @@ f\,^{(n)}(x) &=  &\Rightarrow & & f\,^{(n)}(1) &= \smallskip\\
 \makebox[0pt]{$\dfrac{(-1)^{n+1}(n-1)!}{x^n}$} &&&& \makebox[0pt]{$(-1)^{n+1}(n-1)!$}
 \end{align*}}
 
+\parbox{\marginparwidth}{%
+\begin{align*}
+f\,^{(n)}(x) &=  &\Rightarrow & & f\,^{(n)}(1) &= \smallskip\\
+\makebox[0pt]{$\dfrac{(-1)^{n+1}(n-1)!}{x^n}$} &&&& \makebox[0pt]{$(-1)^{n+1}(n-1)!$}
+\end{align*}}
+
+\parbox{\marginparwidth}{%
+\begin{gather*}
+\mbox{now you see me}\\
+\makebox[0pt]{now you still see me}
+\end{gather*}}
+
 \noindent
 \begin{minipage}{\linewidth}
  \begin{minipage}{.35\linewidth}
@@ -170,8 +187,20 @@ f\,^{(n)}(x) &=  &\Rightarrow & & f\,^{(n)}(1) &= \smallskip\\
  \end{minipage}
 \end{minipage}
 
+\noindent\begin{minipage}{\linewidth}\noindent%
+\begin{tabular}{ c c c }
+item 1 & item 2 & \multirow{12.6}{*}{item 3}
+% see https://tex.stackexchange.com/a/364935/107497
+\smallskip\\(a)&(b)\smallskip\\
+item 4 & item 5
+\smallskip\\(c)&(d)&(e)
+\end{tabular}\\
+My caption
+\end{minipage}%
+\bigskip
+
 \begin{tabular}{cc}
-row 1 & \multirow{15}{*}{should be at the bottom} \\
+row 1 & \multirow{12.6}{*}{should be at the bottom} \\
 row 2
 % see https://tex.stackexchange.com/a/364935/107497
 \end{tabular}

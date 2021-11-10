@@ -117,7 +117,7 @@ in between
 
 % see Eg1.3.8
 \begin{equation}\label{eqlabel}
-\text{my label is \ref{eqlabel}}
+a+b=c\quad\text{my label is \ref{eqlabel}}
 \end{equation}
 
 Stuff $\left(\rule{0pt}{30pt}\right)$.
@@ -129,9 +129,12 @@ $\underbrace{\makebox[1.8cm]{}}_a$
 %{\centering \includegraphics[width=1cm]{example-image}\\This box and text should be the only things centered on this page.\\}
 
 \begin{minipage}{\linewidth}
+this should not be centered.
+
 \begin{centering}
-This is the only thing that should be centered.\\
+This is the only thing that should be centered.
 \end{centering}
+
 This should not be centered.
 \end{minipage}
 
@@ -149,30 +152,23 @@ This should not be centered.
 \end{enumerate}
 \end{multicols}
 
-\parbox{\marginparwidth}{%
-\begin{align*}
-f(x) &= \ln x &\Rightarrow & &f(1) &= \phantom-0\\
-f'(x) &= \phantom-1/x &\Rightarrow & &f'(1) &= \phantom-1\\
-f''(x) &= -1/x^2 &\Rightarrow & &f''(1) &= -1\\
-f'''(x) &= \phantom-2/x^3 &\Rightarrow & &f'''(1) &= \phantom-2\\
-f\,^{(4)}(x) &= -6/x^4 &\Rightarrow & &f\,^{(4)}(1) &= -6\\
-f\,^{(5)}(x) &= 24/x^5 &\Rightarrow & &f\,^{(5)}(1) &= 24\\
-\ \vdots & &\ \vdots\\
-f\,^{(n)}(x) &=  &\Rightarrow & & f\,^{(n)}(1) &= \smallskip\\
-\makebox[0pt]{$\dfrac{(-1)^{n+1}(n-1)!}{x^n}$} &&&& \makebox[0pt]{$(-1)^{n+1}(n-1)!$}
-\end{align*}}
-
-\parbox{\marginparwidth}{%
-\begin{align*}
-f\,^{(n)}(x) &=  &\Rightarrow & & f\,^{(n)}(1) &= \smallskip\\
-\makebox[0pt]{$\dfrac{(-1)^{n+1}(n-1)!}{x^n}$} &&&& \makebox[0pt]{$(-1)^{n+1}(n-1)!$}
-\end{align*}}
+\begin{multicols}{2}
+\begin{enumerate}
+\item item one in two columns
+\item item two in two columns
+\end{enumerate}
+\end{multicols}
 
 \parbox{\marginparwidth}{%
 \begin{gather*}
 \mbox{now you see me}\\
 \makebox[0pt]{now you still see me}
 \end{gather*}}
+
+\begin{gather*}
+\mbox{now you see me}\\
+\makebox[0pt]{now you still see me}
+\end{gather*}
 
 \noindent
 \begin{minipage}{\linewidth}
@@ -187,9 +183,16 @@ f\,^{(n)}(x) &=  &\Rightarrow & & f\,^{(n)}(1) &= \smallskip\\
  \end{minipage}
 \end{minipage}
 
+\noindent
+\begin{minipage}{\linewidth}
+ \parbox{.35\linewidth}{all}%
+ \parbox{.2\linewidth}{one}%
+ \parbox{.45\linewidth}{line}
+\end{minipage}
+
 \noindent\begin{minipage}{\linewidth}\noindent%
 \begin{tabular}{ c c c }
-item 1 & item 2 & \multirow{12.6}{*}{item 3}
+item 1 & item 2 & \multirow{12.6}{*}{item 3 should be at the bottom}
 % see https://tex.stackexchange.com/a/364935/107497
 \smallskip\\(a)&(b)\smallskip\\
 item 4 & item 5
@@ -197,7 +200,15 @@ item 4 & item 5
 \end{tabular}\\
 My caption
 \end{minipage}%
-\bigskip
+
+\noindent\begin{minipage}{\linewidth}\noindent%
+\begin{tabular}{ c c c }
+item 6 & item 7 & \multirow{12.6}{*}{item 8 should be at the bottom} \\
+% see https://tex.stackexchange.com/a/364935/107497
+item 9 & item 10
+\end{tabular}\\
+My caption
+\end{minipage}%
 
 \begin{tabular}{cc}
 row 1 & \multirow{12.6}{*}{should be at the bottom} \\

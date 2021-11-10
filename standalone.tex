@@ -119,13 +119,8 @@ in between
 \end{sectionexercises}
 
 % see Eg1.3.8
-\begin{gather}\label{eqlabel}
+\begin{equation}\label{eqlabel}
 a+b=c\quad\text{my label is \ref{eqlabel}}
-\end{gather}
-
-% see Eg1.3.8
-\begin{equation}\label{eqlabell}
-a+b=c\quad\text{my label is \ref{eqlabell}}
 \end{equation}
 
 Stuff $\left(\rule{0pt}{30pt}\right)$.
@@ -136,9 +131,9 @@ $\underbrace{\makebox[1.8cm]{}}_a$
 
 %{\centering \includegraphics[width=1cm]{example-image}\\This box and text should be the only things centered on this page.\\}
 
-{\centering
-This is the only thing that should be centered.
-}
+%{\centering
+%This is the only thing that should be centered.
+%}
 
 \begin{multicols}{2}
 \begin{enumerate}
@@ -152,6 +147,17 @@ This is the only thing that should be centered.
 \makebox[0pt]{now you still see me}
 \end{gather*}
 
+\begin{equation*}
+\mbox{now you see me}\qquad
+\makebox[0pt][l]{now you still see me}
+\end{equation*}
+
+$\mbox{now you see me}\qquad
+\makebox[0pt][l]{now you still see me}$
+
+now you see me\qquad
+\makebox[0pt][l]{now you still see me}
+
 \noindent
 \begin{minipage}{\linewidth}
 \noindent
@@ -161,9 +167,9 @@ This is the only thing that should be centered.
 \end{minipage}
 
 \noindent
- \parbox{.35\linewidth}{all}%
- \parbox{.2\linewidth}{one}%
- \parbox{.45\linewidth}{line}
+\parbox{.35\linewidth}{all}%
+\parbox{.2\linewidth}{one}%
+\parbox{.45\linewidth}{line}
 
 \noindent\begin{minipage}{\linewidth}\noindent%
 \begin{tabular}{ c c c }
@@ -172,6 +178,14 @@ item 1 & item 2 & \multirow{12.6}{*}{item 3 should be at the bottom} \\
 item 4 & item 5
 \end{tabular}\\
 My caption
+\end{minipage}%
+
+\noindent\begin{minipage}{\linewidth}\noindent%
+\begin{tabular}{ c c }
+item 6 & \multirow{12.6}{*}{item 7 should be at the bottom} \\
+% see https://tex.stackexchange.com/a/364935/107497
+item 8
+\end{tabular}
 \end{minipage}%
 
 \begin{tabular}{cc}

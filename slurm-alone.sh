@@ -53,7 +53,7 @@ latexmldir="$HOME/.cpan/sources/authors/id/B/BR/BRMILLER/LaTeXML-0.8.6/blib/scri
 singularitydir="$HOME/latexml"
 printf '\\newcommand{\\thetitle}{Calculus}\n\\printincolor\n\\usethreeDgraphics\n\\renewcommand{\\monthYear}{June 2021}\n' > options.tex
 
-singularity exec $singularitydir/latexml.sif $latexmldir/latexml --quiet --destination=$base.xml --nocomments $base
+singularity exec $singularitydir/latexml.sif $latexmldir/latexml --destination=$base.xml --nocomments $base
 
 exit_code=$?
 

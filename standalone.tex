@@ -17,14 +17,14 @@
 
 \usepackage[marginparwidth=150pt]{geometry}
 \usepackage{amsmath}
-\usepackage{graphicx}
 \usepackage{tikz}
+\usepackage{pgfplots}
 \usepackage{enumitem}
 \usepackage{multicol}
 \usepackage{multirow}
 \usepackage{hyperref}
 \newlist{sectionexercises}{enumerate}{1}
-\newcounter{saveexercisenum}[section]
+\newcounter{saveexercisenum}
 \setlist[sectionexercises]{
     label=\arabic*.,
     ref=\arabic*, % ref overrides label
@@ -47,6 +47,7 @@
 150.0pt:\the\marginparwidth
 
 % todo tikz matrix spacing see https://github.com/brucemiller/LaTeXML/issues/794
+% see also issue 1196 - positioning is hard because it's combining tex and browser
 \noindent before\\
 \begin{tikzpicture}
   \matrix[row sep=3mm,column sep=3mm]{
@@ -125,16 +126,36 @@ a+b=c\quad\text{my label is \ref{eqlabel}}
 
 Stuff $\left(\rule{0pt}{30pt}\right)$.
 
+\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,axis y line=middle,axis x line=middle,
+ymin=-.1,ymax=3.1,xmin=-.1,xmax=7.1,xtick={2,4,6},ytick={1,2},name=myplot]
+\draw (axis cs:3.125,.1) node [above,align=center,text width = 45pt] {\tiny width\\[-2pt] = 1.75\\[-3pt] $\overbrace{\makebox[20pt]{}}$};
+\end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth,ymin=0,ymax=3,xmin=0,xmax=7]
+\draw (axis cs:3,1) node [align=center,text width = 45pt] {\tiny width\\= 1.75\\$\overbrace{\makebox[20pt]{}}$};
+\end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth,ymin=0,ymax=3,xmin=0,xmax=7]
+\draw (axis cs:3,1) node {$\overbrace{\makebox[20pt]{}}$};
+\end{axis}
+\end{tikzpicture}
+
 $\underbrace{\makebox[1.8cm]{}}_a$
 
 \tikz{\node{$\underbrace{\makebox[1.8cm]{}}_a$}}
-
-%{\centering \includegraphics[width=1cm]{example-image}\\This box and text should be the only things centered on this page.\\}
 
 %{\centering
 %This is the only thing that should be centered.
 %}
 
+% https://github.com/brucemiller/LaTeXML/blob/master/lib/LaTeXML/Package/multicol.sty.ltxml
+% latexml intentionally does nothing, since this is a styling question
 \begin{multicols}{2}
 \begin{enumerate}
 \item item one in two columns
@@ -149,22 +170,13 @@ $\underbrace{\makebox[1.8cm]{}}_a$
 
 \begin{equation*}
 \mbox{now you see me}\qquad
-\makebox[0pt][l]{now you still see me}
+\makebox[0pt]{now you still see me}
 \end{equation*}
 
-$\mbox{now you see me}\qquad
-\makebox[0pt][l]{now you still see me}$
-
-now you see me\qquad
+\begin{equation*}
+\mbox{now you see me}\qquad
 \makebox[0pt][l]{now you still see me}
-
-\noindent
-\begin{minipage}{\linewidth}
-\noindent
- \parbox{.35\linewidth}{all}%
- \parbox{.2\linewidth}{one}%
- \parbox{.45\linewidth}{line}
-\end{minipage}
+\end{equation*}
 
 \noindent
 \parbox{.35\linewidth}{all}%
@@ -172,21 +184,20 @@ now you see me\qquad
 \parbox{.45\linewidth}{line}
 
 \noindent\begin{minipage}{\linewidth}\noindent%
-\begin{tabular}{ c c c }
-item 1 & item 2 & \multirow{12.6}{*}{item 3 should be at the bottom} \\
-% see https://tex.stackexchange.com/a/364935/107497
-item 4 & item 5
-\end{tabular}\\
-My caption
-\end{minipage}%
-
-\noindent\begin{minipage}{\linewidth}\noindent%
 \begin{tabular}{ c c }
-item 6 & \multirow{12.6}{*}{item 7 should be at the bottom} \\
+item 1 & \multirow{12.6}{*}{item 2 should be at the bottom} \\
 % see https://tex.stackexchange.com/a/364935/107497
-item 8
+item 3
 \end{tabular}
 \end{minipage}%
+
+\begin{minipage}{.5\linewidth}%
+\begin{tabular}{ c c }
+item 1 & \multirow{12.6}{*}{item 2 should be at the bottom} \\
+% see https://tex.stackexchange.com/a/364935/107497
+item 3
+\end{tabular}
+\end{minipage}
 
 \begin{tabular}{cc}
 row 1 & \multirow{12.6}{*}{should be at the bottom} \\

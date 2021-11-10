@@ -38,6 +38,9 @@
 
 \pagestyle{empty}
 
+% https://github.com/latex3/hyperref/blob/main/hyperref.dtx
+% we use lines 5316ff
+% but line 5757(?) makes the defs act like provide command
 \framebox[.14\linewidth][l]{\parbox{1pt}{Chap\-ter\\\chapterautorefname}}
 \framebox[.14\linewidth][l]{\parbox{1pt}{Sec\-tion\\\sectionautorefname}}
 
@@ -116,8 +119,13 @@ in between
 \end{sectionexercises}
 
 % see Eg1.3.8
-\begin{equation}\label{eqlabel}
+\begin{gather}\label{eqlabel}
 a+b=c\quad\text{my label is \ref{eqlabel}}
+\end{gather}
+
+% see Eg1.3.8
+\begin{equation}\label{eqlabell}
+a+b=c\quad\text{my label is \ref{eqlabell}}
 \end{equation}
 
 Stuff $\left(\rule{0pt}{30pt}\right)$.
@@ -128,29 +136,9 @@ $\underbrace{\makebox[1.8cm]{}}_a$
 
 %{\centering \includegraphics[width=1cm]{example-image}\\This box and text should be the only things centered on this page.\\}
 
-\begin{minipage}{\linewidth}
-this should not be centered.
-
-\begin{centering}
+{\centering
 This is the only thing that should be centered.
-\end{centering}
-
-This should not be centered.
-\end{minipage}
-
-\begin{multicols}{2}
-\begin{enumerate}
-\item\label{thm:d_const_mult_rule} $\frac{d}{d x}\bigl(cf(x) \bigr) = c\cdot f'(x)$
-\item\label{thm:d_sum_diff_rule} $\frac{d}{d x}\bigl(f(x)\pm g(x) \bigr) =$ \\
-\null\qquad$f'(x)\pm g'(x)$
-\item $\frac{d}{d x}\bigl(C \bigr) = 0$
-\setcounter{enumi}{0}
-\item $\int c\cdot f(x)d x = c\cdot \int f(x)d x$
-\item $\int \bigl(f(x)\pm g(x)\bigr)d x =$ \\
-\null\qquad$\int f(x)d x\pm \int g(x)d x$
-\item $\int 0d x = C$
-\end{enumerate}
-\end{multicols}
+}
 
 \begin{multicols}{2}
 \begin{enumerate}
@@ -159,12 +147,6 @@ This should not be centered.
 \end{enumerate}
 \end{multicols}
 
-\parbox{\marginparwidth}{%
-\begin{gather*}
-\mbox{now you see me}\\
-\makebox[0pt]{now you still see me}
-\end{gather*}}
-
 \begin{gather*}
 \mbox{now you see me}\\
 \makebox[0pt]{now you still see me}
@@ -172,40 +154,22 @@ This should not be centered.
 
 \noindent
 \begin{minipage}{\linewidth}
- \begin{minipage}{.35\linewidth}
- all
- \end{minipage}%
- \begin{minipage}{.2\linewidth}
- one
- \end{minipage}%
- \begin{minipage}{.45\linewidth}
- line
- \end{minipage}
-\end{minipage}
-
 \noindent
-\begin{minipage}{\linewidth}
  \parbox{.35\linewidth}{all}%
  \parbox{.2\linewidth}{one}%
  \parbox{.45\linewidth}{line}
 \end{minipage}
 
-\noindent\begin{minipage}{\linewidth}\noindent%
-\begin{tabular}{ c c c }
-item 1 & item 2 & \multirow{12.6}{*}{item 3 should be at the bottom}
-% see https://tex.stackexchange.com/a/364935/107497
-\smallskip\\(a)&(b)\smallskip\\
-item 4 & item 5
-\smallskip\\(c)&(d)&(e)
-\end{tabular}\\
-My caption
-\end{minipage}%
+\noindent
+ \parbox{.35\linewidth}{all}%
+ \parbox{.2\linewidth}{one}%
+ \parbox{.45\linewidth}{line}
 
 \noindent\begin{minipage}{\linewidth}\noindent%
 \begin{tabular}{ c c c }
-item 6 & item 7 & \multirow{12.6}{*}{item 8 should be at the bottom} \\
+item 1 & item 2 & \multirow{12.6}{*}{item 3 should be at the bottom} \\
 % see https://tex.stackexchange.com/a/364935/107497
-item 9 & item 10
+item 4 & item 5
 \end{tabular}\\
 My caption
 \end{minipage}%

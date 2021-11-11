@@ -5,7 +5,7 @@
 % this is not standalone
 % this is latexmlAlts to test if we need alternative latexml commands
 
-\documentclass[10pt]{book}
+\documentclass[oneside]{book}
 
 %\input{headers/APEX_format}
 %\usepackage{headers/apex_style}
@@ -46,7 +46,7 @@
 
 150.0pt:\the\marginparwidth
 
-% todo tikz matrix spacing see https://github.com/brucemiller/LaTeXML/issues/794
+% see https://github.com/brucemiller/LaTeXML/issues/794
 % see also issue 1196 - positioning is hard because it's combining tex and browser
 \noindent before\\
 \begin{tikzpicture}
@@ -202,6 +202,13 @@ $\overbrace{\makebox[1.8cm]{}}_a$
 in between
 
 \begin{gather*}
+\mbox{now~you~see~me}\\
+\mbox{}\makebox[0pt]{now~you~still~see~me}
+\end{gather*}
+
+in between
+
+\begin{gather*}
 \mbox{now~you~see~me}\qquad\qquad\qquad
 \makebox[0pt]{now~you~still~see~me}
 \end{gather*}
@@ -217,17 +224,19 @@ in between
 \parbox{.2\linewidth}{one}%
 \parbox{.4\linewidth}{line}
 
-\noindent\begin{minipage}{.5\linewidth}%
+\noindent
+\begin{minipage}{.5\linewidth}%
 \begin{tabular}{ c c }
-item 1 & \multirow{12.6}{*}{item 2 should be at the bottom} \\
+item 1 & \multirow{3}{*}{item 2 should be at the bottom} \\
 % see https://tex.stackexchange.com/a/364935/107497
 item 3
 \end{tabular}
 \end{minipage}%
 
-\noindent\begin{minipage}{.5\linewidth}%
+\noindent
+\begin{minipage}{.5\linewidth}%
 \begin{tabular}{ c c }
-item 7 & \multirow{3}{*}{item 8 should be at the bottom} \\
+item 7 & \multirow{2}{*}{item 8 should be at the bottom} \\
 % see https://tex.stackexchange.com/a/364935/107497
 item 9
 \end{tabular}
@@ -235,7 +244,7 @@ item 9
 
 \begin{minipage}{.5\linewidth}%
 \begin{tabular}{ c c }
-item 4 & \multirow{12.6}{*}{item 5 should be at the bottom} \\
+item 4 & \multirow{3}{*}{item 5 should be at the bottom} \\
 % see https://tex.stackexchange.com/a/364935/107497
 item 6
 \end{tabular}

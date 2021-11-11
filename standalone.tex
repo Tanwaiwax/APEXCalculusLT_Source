@@ -112,7 +112,7 @@ to:
 \end{center}
 
 \begin{sectionexercises}
-\item Label should have a decimal point.
+\item\label{myitem} Label should have a decimal point.  This ref: \ref*{myitem} should not have a decimal point and should not be linked.
 \end{sectionexercises}
 in between
 \begin{sectionexercises}
@@ -134,7 +134,7 @@ Stuff $\left(\rule{0pt}{30pt}\right)$.
 \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-.1,ymax=3.1,xmin=-.1,xmax=7.1,xtick={2,4,6},ytick={1,2},name=myplot]
-\addplot[draw={blue},smooth,thick,domain=0:7] ({\x},{sqrt(\x)});
+\addplot[draw={blue},smooth,thick,domain=0:2.7] ({\x*\x},{\x});
 \fill[black] (axis cs:4,2) circle (1pt);
 \draw[thin,dashed,gray,thick] (axis cs:0,1.5) -- (axis cs:2.25,1.5);
 \draw[thin,dashed,gray,thick] (axis cs:0,2.5) -- (axis cs:6.25,2.5);
@@ -195,25 +195,29 @@ $\overbrace{\makebox[1.8cm]{}}_a$
 \end{multicols}
 
 \begin{gather*}
-\mbox{now you see me}\\
-\makebox[0pt]{now you still see me}
+\mbox{now~you~see~me}\\
+\makebox[0pt]{now~you~still~see~me}
 \end{gather*}
 
+in between
+
+\begin{gather*}
+\mbox{now~you~see~me}\qquad\qquad\qquad
+\makebox[0pt]{now~you~still~see~me}
+\end{gather*}
+
+in between
+
 \begin{equation*}
-\mbox{now you see me}\qquad\qquad\qquad
-\makebox[0pt]{now you still see me}
+\mbox{now~you~see~me}\qquad\qquad\qquad
+\makebox[0pt]{now~you~still~see~me}
 \end{equation*}
 
-\noindent
 \parbox{.3\linewidth}{all}%
 \parbox{.2\linewidth}{one}%
 \parbox{.4\linewidth}{line}
 
-\parbox{.3\linewidth}{all}%
-\parbox{.2\linewidth}{one}%
-\parbox{.4\linewidth}{line}
-
-\noindent\begin{minipage}{.5\linewidth}\noindent%
+\noindent\begin{minipage}{.5\linewidth}%
 \begin{tabular}{ c c }
 item 1 & \multirow{12.6}{*}{item 2 should be at the bottom} \\
 % see https://tex.stackexchange.com/a/364935/107497
@@ -221,19 +225,11 @@ item 3
 \end{tabular}
 \end{minipage}%
 
-\begin{minipage}{.5\linewidth}\noindent%
-\begin{tabular}{ c c }
-item 7 & \multirow{12.6}{*}{item 8 should be at the bottom} \\
-% see https://tex.stackexchange.com/a/364935/107497
-item 9
-\end{tabular}
-\end{minipage}%
-
 \noindent\begin{minipage}{.5\linewidth}%
 \begin{tabular}{ c c }
-item a & \multirow{12.6}{*}{item b should be at the bottom} \\
+item 7 & \multirow{3}{*}{item 8 should be at the bottom} \\
 % see https://tex.stackexchange.com/a/364935/107497
-item c
+item 9
 \end{tabular}
 \end{minipage}%
 

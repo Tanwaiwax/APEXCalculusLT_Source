@@ -131,7 +131,7 @@ ymin=-.2,ymax=1.25,xmin=-.15,xmax=1.1,]
 \addplot [draw={\coloronefill},thick,smooth,domain=0:1,fill={\coloronefill}] plot {(1/(1+x^2))} -- (axis cs:1,0) -- (axis cs:0,0) -- cycle;
 \addplot [draw={\colorone},thick,smooth,domain=0:1] plot {(1/(1+x^2))};
 \draw [thick,draw={\colortwo}] (axis cs:.4,0) -- (axis cs:.4,.86);
-\draw (axis cs:.4,.45) node [left] {$\scriptstyle h(x)\ifbool{latexml}{\Bigg\{}{\left\{\rule{0pt}{33pt}\right.}$}
+\draw (axis cs:.4,.45) node [left] {$\scriptstyle h(x)\left\{\rule{0pt}{33pt}\right.$}
       (axis cs:.2,-.12) node {\scriptsize $\underbrace{\makebox[35pt]{}}_{r(x)}$}
       (axis cs: .7,1) node {\scriptsize $\ds y=\frac{1}{1+x^2}$};
 \end{axis}
@@ -168,7 +168,7 @@ ymin=-.2,ymax=3.25,xmin=-.15,xmax=3.2,]
 \draw [draw={\colorone},thick,smooth,,fill={\coloronefill}] (axis cs:0,1) -- node [black,rotate=57,pos=.5,above]  {\scriptsize $y=2x+1$} (axis cs:1,3) --  (axis cs: 1,1) -- cycle;
 \draw [dashed] (axis cs:3,0) -- (axis cs:3,3.2);
 \draw [thick,draw={\colortwo}] (axis cs: .4,1) -- (axis cs:.4,1.8);
-\draw(axis cs:1,1.4)node [right] {$\scriptstyle\ifbool{latexml}{\bigg\}}{\left.\rule{0pt}{14pt}\right\}} h(x).$}
+\draw(axis cs:1,1.4)node [right] {$\scriptstyle\left.\rule{0pt}{14pt}\right\} h(x).$}
      (axis cs:1.7,.7) node { $\underbrace{\makebox[100pt]{}}_{r(x)}$};
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
@@ -216,7 +216,7 @@ ytick={1,2,3},extra y ticks={1.8},extra y tick labels={$y$},
 ymin=-.2,ymax=3.25,xmin=-.15,xmax=1.5,]
 \draw [draw={\colorone},thick,smooth,,fill={\coloronefill}] (axis cs:0,1) -- node [black,rotate=41,pos=.5,above]  {\scriptsize $x=\frac12y-\frac12$} (axis cs:1,3) --  (axis cs: 1,1) -- cycle;
 \draw [thick,draw={\colortwo}] (axis cs: .4,1.8) -- node [black,pos=.5,below] {$\underbrace{\makebox[42pt]{}}_{h(y)}$} (axis cs:1,1.8);
-\draw (axis cs:1,.9) node [right] {$\scriptstyle\ifbool{latexml}{\Bigg\}}{\left.\rule{0pt}{29pt}\right\}} r(y)$};
+\draw (axis cs:1,.9) node [right] {$\scriptstyle\left.\rule{0pt}{29pt}\right\} r(y)$};
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
@@ -278,7 +278,7 @@ At the beginning of this section it was stated that ``it is good to have options
 \addplot [draw={\colorone},smooth,thick,domain=0:3] {3*x-x^2};
 \addplot[draw={\colorone},smooth,thick,domain=0:3] {x};
 \draw [thick,draw={\colortwo}] (axis cs: 1,1) -- (axis cs:1,2);
-\draw (axis cs: .9,1.5) node[right]{$\scriptstyle\ifbool{latexml}{\Bigg\}}{\left.\rule{0pt}{20pt}\right\}} h(x)$};
+\draw (axis cs: .9,1.5) node[right]{$\scriptstyle\left.\rule{0pt}{20pt}\right\} h(x)$};
 \draw (axis cs:.5,1.1) node [below] {$\underbrace{\makebox[30pt]{}}_{r(x)}$} ;
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
@@ -373,7 +373,7 @@ We are reassured to find the same answer using either method.
 \node at(axis cs:.25,2){$\underbrace{\makebox[30pt]{}}_{r(x)}$};
 \addplot[draw={\colorone},smooth,thick,domain=0:1] {x^2+3};
 \draw[thick,draw={\colortwo}] (axis cs: .5,2) -- (axis cs:.5,3.25)%;
-node[color=black,right,pos=.5]{$\scriptstyle\ifbool{latexml}{\Bigg\}}{\left.\rule{0pt}{12pt}\right\}} h(x)$};
+node[color=black,right,pos=.5]{$\scriptstyle\left.\rule{0pt}{12pt}\right\} h(x)$};
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
@@ -395,6 +395,7 @@ node[color=black,right,pos=.5]{$\scriptstyle\ifbool{latexml}{\Bigg\}}{\left.\rul
    3Dcoo=-5.416632652282715 90.77053833007812 -22.686864852905273,
    3Droo=150}{width=\marginparwidth}{figures/shellwash_b}%%
  }
+ % see https://github.com/brucemiller/LaTeXML/issues/1709
  \ifbool{latexml}{
   \localimage
  }{

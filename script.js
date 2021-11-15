@@ -5,15 +5,27 @@ const minSepPixels = 20;
 var lastMarginBoxBottom;
 var entriesIn = {};
 
-if ( typeof window.MathJax === 'undefined' ) {
-    window.MathJax = {
+MathJax = {
 	AuthorInit: function() {
+        // see https://github.com/brucemiller/LaTeXML/issues/1708
+        // and https://github.com/mathjax/MathJax/issues/487
+        // MathJax can't handle any tags within mtext
+        // change struts to mspace
+        $('mtext').has('span.ltx_rule[style*="width:0.0pt"][style*="height"]').each(function() {
+            const jThis = $(this),
+                height = jThis
+                    .children('span.ltx_rule[style*="width:0.0pt"][style*="height"]')
+                    .get(0).style.height;
+            jThis.replaceWith('<mspace height="'+height+'" />');
+        });
+        // remove all other tags from within mtext
+        $('mtext').has('*').each(function() {
+            const jThiss = $(this);
+            jThiss.html(jThiss.text());
+        });
 	    MathJax.Hub.Register.StartupHook('End',spaceOutMarginBoxes);
 	}
-    };
-} else {
-    MathJax.Hub.Register.StartupHook('End',spaceOutMarginBoxes);
-}
+};
 // onload, spaceOut is ok.  It needs to run after MathJax is done,
 // but that is noticeably longer, and tricky to hook into
 

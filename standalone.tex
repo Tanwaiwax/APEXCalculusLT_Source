@@ -185,12 +185,25 @@ $\overbrace{\makebox[1.8cm]{}}_a$
 
 \tikz{\node{$\overbrace{\makebox[1.8cm]{}}_a$}}
 
-%{\centering
-%This is the only thing that should be centered.
-%}
+\begin{minipage}{\linewidth}
+This should not be centered
+
+\begin{centering}
+This is the only thing that should be centered.
+\end{centering}
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+This should not be centered
+
+{\centering
+This is the only thing that should be centered.
+}
+\end{minipage}
 
 % https://github.com/brucemiller/LaTeXML/blob/master/lib/LaTeXML/Package/multicol.sty.ltxml
 % latexml intentionally does nothing, since this is a styling question
+% see https://github.com/brucemiller/LaTeXML/issues/1711
 \begin{multicols}{2}
 \begin{enumerate}
 \item item one in two columns
@@ -198,29 +211,29 @@ $\overbrace{\makebox[1.8cm]{}}_a$
 \end{enumerate}
 \end{multicols}
 
-\begin{equation*}
-\mbox{now~you~see~me}\qquad\qquad\qquad
-\makebox[0pt]{now~you~still~see~me~1}
-\end{equation*}
+%\begin{equation*}
+%\mbox{now~you~see~me}\qquad\qquad\qquad
+%\makebox[0pt]{now~you~still~see~me~1}
+%\end{equation*}
+%
+%\begin{gather*}
+%\mbox{now~you~see~me}\\
+%\quad\makebox[0pt]{now~you~still~see~me~2}
+%\end{gather*}
+%
+%\begin{gather*}
+%\mbox{now~you~see~me}\qquad\qquad\qquad
+%\makebox[0pt]{now~you~still~see~me~3}
+%\end{gather*}
 
 \begin{gather*}
-\mbox{now~you~see~me}\\
-\quad\makebox[0pt]{now~you~still~see~me~2}
+\mbox{now you see me}\\
+\makebox[1pt]{now you still see me 4}
 \end{gather*}
 
 \begin{gather*}
-\mbox{now~you~see~me}\qquad\qquad\qquad
-\makebox[0pt]{now~you~still~see~me~3}
-\end{gather*}
-
-\begin{gather*}
-\mbox{now~you~see~me}\\
-\makebox[1pt]{now~you~still~see~me~4}
-\end{gather*}
-
-\begin{gather*}
-\mbox{now~you~see~me}\\
-\makebox[0pt]{now~you~still~see~me~5}
+\mbox{now you see me}\\
+\makebox[0pt]{now you still see me 5}
 \end{gather*}
 
 \parbox{.3\linewidth}{all}%

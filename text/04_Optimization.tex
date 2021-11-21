@@ -149,10 +149,14 @@ Keep in mind as we do these problems that we are practicing a \emph{process}; th
 %\mnote{\textbf{Note:} \autoref{ex_opt3} is another classic calculus example. The underlying principle is given in a variety of contexts; Google ``calculus dog'' to find articles where }
 
 \mtable{Running a power line from the power station to an offshore facility with minimal cost in \autoref{ex_opt3}.}{fig:opt3b}{\begin{tikzpicture}[>=latex]
-\begin{scope}
-\clip (0,0) rectangle (120pt,50pt);
-\draw [inner color={\colorone},draw = white] (-10,-25pt) rectangle (160pt,70pt);
-\end{scope}
+\ifbool{latexml}{
+ \draw[inner color={\colorone},draw=white](0,0)rectangle(120pt,50pt);
+}{%
+ \begin{scope}
+  \clip (0,0) rectangle (120pt,50pt);
+  \draw [inner color={\colorone},draw = white] (-10,-25pt) rectangle (160pt,70pt);
+ \end{scope}
+}
 \draw [top color=brown, bottom color=white,draw=white] (0,0) rectangle (120pt,-15pt);
 \draw (0,0) -- (140pt,0);
 \filldraw [fill=white] (10pt,-5pt) rectangle (20pt,5pt);
@@ -176,10 +180,14 @@ There are two immediate solutions that we could consider, each of which we will 
 The optimal solution likely has the line being run along the ground for a while, then underwater, as the figure implies. We need to label our unknown distances --- the distance run along the ground and the distance run underwater. Recognizing that the underwater distance can be measured as the hypotenuse of a right triangle, we choose to label the distances as shown in \autoref{fig:opt3c}.
 
 \mtable{Labeling unknown distances in \autoref{ex_opt3}.}{fig:opt3c}{\begin{tikzpicture}[>=latex]
-\begin{scope}
-\clip (0,0) rectangle (120pt,50pt);
-\draw [inner color={\colorone},draw = white] (-10,-25pt) rectangle (160pt,70pt);
-\end{scope}
+\ifbool{latexml}{
+ \draw[inner color={\colorone},draw=white](0,0)rectangle(120pt,50pt);
+}{%
+ \begin{scope}
+  \clip (0,0) rectangle (120pt,50pt);
+  \draw [inner color={\colorone},draw = white] (-10,-25pt) rectangle (160pt,70pt);
+ \end{scope}
+}
 \draw [top color=brown, bottom color=white,draw=white] (0,0) rectangle (120pt,-15pt);
 \draw (0,0) -- (130pt,0);
 \filldraw [fill=white] (10pt,-5pt) rectangle (20pt,5pt);

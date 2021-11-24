@@ -20,7 +20,7 @@
   <xsl:element name="img" namespace="{$html_ns}">
    <xsl:attribute name="src">
     <xsl:value-of select="substring-before($filename,'.html')" />
-    <xsl:text>.png</xls:text>
+    <xsl:text>.png</xsl:text>
    </xsl:attribute>
    <xsl:attribute name="width">
     <xsl:value-of select="ltx:rawhtml/xhtml:iframe/@width" />

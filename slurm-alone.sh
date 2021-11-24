@@ -83,7 +83,7 @@ singularity exec $singularitydir/latexml.sif $latexmldir/blib/script/latexmlpost
 exit_code=$?
 
 echo ""
-echo "latexmlpost ended at $(date)"
+echo "latexmlpost epub ended at $(date)"
 echo ""
 
 if [ "$exit_code" -ne "0" ]; then

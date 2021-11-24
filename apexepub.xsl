@@ -18,7 +18,7 @@
  -->
  <xsl:template match="ltx:rawhtml[xhtml:iframe/@title='Embedded video']"/>
 
- <xsl:template match="ltx:inline-block[@class='includedAsy']">
+ <xsl:template match="ltx:inline-block[contains(@class,'includedAsy')]">
   <xsl:variable name="filename" select="ltx:rawhtml/xhtml:iframe/@src" />
   <xsl:element name="img" namespace="{$html_ns}">
    <xsl:attribute name="src">
@@ -31,6 +31,24 @@
    <xsl:attribute name="height">
     <xsl:value-of select="ltx:rawhtml/xhtml:iframe/@height" />
    </xsl:attribute>
+   <xsl:attribute name="fromltx">fromltx</xsl:attribute>
+  </xsl:element>
+ </xsl:template>
+
+ <xsl:template match="xhtml:span[contains(@class,'includedAsy')]">
+  <xsl:variable name="filename" select="xhtml:iframe/@src" />
+  <xsl:element name="img" namespace="{$html_ns}">
+   <xsl:attribute name="src">
+    <xsl:value-of select="substring-before($filename,'.html')" />
+    <xsl:text>.png</xsl:text>
+   </xsl:attribute>
+   <xsl:attribute name="width">
+    <xsl:value-of select="xhtml:iframe/@width" />
+   </xsl:attribute>
+   <xsl:attribute name="height">
+    <xsl:value-of select="xhtml:iframe/@height" />
+   </xsl:attribute>
+   <xsl:attribute name="fromxhtml">fromxhtml</xsl:attribute>
   </xsl:element>
  </xsl:template>
 

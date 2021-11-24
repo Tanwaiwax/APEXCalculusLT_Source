@@ -80,7 +80,7 @@ fi
 
 tar czf web.tar.gz web/
 
-singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost --destination=epub/index.html --stylesheet=apexepub.xsl $base.xml
+singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost --split --destination=epub/index.html --stylesheet=apexepub.xsl $base.xml
 
 exit_code=$?
 

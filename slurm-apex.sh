@@ -58,7 +58,7 @@ singularity exec $singularitydir/latexml.sif $latexmldir/latexml --quiet --desti
 exit_code=$?
 
 echo ""
-echo "Job intermission at $(date)"
+echo "latexml finished at $(date)"
 echo ""
 
 if [ "$exit_code" -ne "0" ]; then
@@ -71,7 +71,7 @@ singularity exec $singularitydir/latexml.sif $latexmldir/latexmlpost --quiet --s
 exit_code=$?
 
 echo ""
-echo "Job ended at $(date)"
+echo "latexmlpost finished at $(date)"
 echo ""
 
 if [ "$exit_code" -ne "0" ]; then

@@ -3,11 +3,11 @@
 
 (function() {
     var mathjax_url =
-        "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=MML_HTMLorMML";
+        "https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js";
 
     function refreshMath() {
         // Maybe unnecessary, or overkill, but...
-        if (typeof MathJax != "undefined") {
+        if (typeof MathJax != "undefined" && MathJax.Hub && MathJax.Hub.Queue) {
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         }
     }

@@ -48,17 +48,16 @@ echo ""
 export LATEXML_KPSEWHICH=$HOME/.tex/texlive/2021/bin/x86_64-linux/kpsewhich
 
 base="standalone"
-#apexdir="$HOME/git/APEXCalculusLT_Source"
 latexmldir="$HOME/.cpan/sources/authors/id/B/BR/BRMILLER/LaTeXML-0.8.6/blib/script"
 singularitydir="$HOME/latexml"
 printf '\\newcommand{\\thetitle}{Calculus}\n\\printincolor\n\\usethreeDgraphics\n\\renewcommand{\\monthYear}{June 2021}\n' > options.tex
 
-singularity exec $singularitydir/latexml.sif $latexmldir/latexml --destination=$base.xml --nocomments $base
+singularity exec $singularitydir/latexml.sif $latexmldir/blib/script/latexml --destination=$base.xml --nocomments $base
 
 exit_code=$?
 
 echo ""
-echo "Job intermission at $(date)"
+echo "latexml ended at $(date)"
 echo ""
 
 if [ "$exit_code" -ne "0" ]; then
@@ -66,16 +65,29 @@ if [ "$exit_code" -ne "0" ]; then
     exit "$exit_code"
 fi
 
-singularity exec $singularitydir/latexml.sif $latexmldir/latexmlpost --split --destination=standaloneweb/index.html --javascript=LaTeXML-maybeMathJax.js $base.xml
+singularity exec $singularitydir/latexml.sif $latexmldir/blib/script/latexmlpost --split --destination=standaloneweb/index.html --javascript=LaTeXML-maybeMathJax.js $base.xml
 
 exit_code=$?
 
 echo ""
-echo "Job ended at $(date)"
+echo "latexmlpost ended at $(date)"
 echo ""
 
 if [ "$exit_code" -ne "0" ]; then
     echo "latexmlpost failed"
+    exit "$exit_code"
+fi
+
+singularity exec $singularitydir/latexml.sif $latexmldir/blib/script/latexmlpost --destination=standaloneweb/epub.html --stylesheet=apexepub.xsl --xsltparameter=latexmldir:$latexmldir $base.xml
+
+exit_code=$?
+
+echo ""
+echo "latexmlpost ended at $(date)"
+echo ""
+
+if [ "$exit_code" -ne "0" ]; then
+    echo "latexmlpost epub failed"
     exit "$exit_code"
 fi
 

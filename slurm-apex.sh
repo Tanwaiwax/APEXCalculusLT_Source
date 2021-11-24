@@ -48,12 +48,11 @@ echo ""
 export LATEXML_KPSEWHICH=$HOME/.tex/texlive/2021/bin/x86_64-linux/kpsewhich
 
 base="Calculus"
-#apexdir="$HOME/git/APEXCalculusLT_Source"
-latexmldir="$HOME/.cpan/sources/authors/id/B/BR/BRMILLER/LaTeXML-0.8.6/blib/script"
+latexmlscripts="$HOME/.cpan/sources/authors/id/B/BR/BRMILLER/LaTeXML-0.8.6/blib/script"
 singularitydir="$HOME/latexml"
 printf '\\newcommand{\\thetitle}{Calculus}\n\\printincolor\n\\usethreeDgraphics\n\\renewcommand{\\monthYear}{June 2021}\n' > options.tex
 
-singularity exec $singularitydir/latexml.sif $latexmldir/latexml --quiet --destination=$base.xml --nocomments $base
+#singularity exec $singularitydir/latexml.sif $latexmlscripts/latexml --quiet --destination=$base.xml --nocomments $base
 
 exit_code=$?
 
@@ -66,7 +65,7 @@ if [ "$exit_code" -ne "0" ]; then
     exit "$exit_code"
 fi
 
-singularity exec $singularitydir/latexml.sif $latexmldir/latexmlpost --quiet --split --destination=web/index.html $base.xml
+#singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost --split --destination=web/index.html --quiet $base.xml
 
 exit_code=$?
 
@@ -80,3 +79,18 @@ if [ "$exit_code" -ne "0" ]; then
 fi
 
 tar czf web.tar.gz web/
+
+singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost --destination=epub/index.html --stylesheet=apexepub.xsl $base.xml
+
+exit_code=$?
+
+echo ""
+echo "latexmlpost epub finished at $(date)"
+echo ""
+
+if [ "$exit_code" -ne "0" ]; then
+    echo "latexmlpost epub failed"
+    exit "$exit_code"
+fi
+
+tar czf epub.tar.gz epub/

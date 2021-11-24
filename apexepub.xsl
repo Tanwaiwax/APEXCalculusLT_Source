@@ -1,10 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
     This code is licensed under a
     Creative Commons Attribution 4.0 Unported License,
     available at http://creativecommons.org/licenses/by/4.0/
     (C) 2021 by Timothy Prescott
  -->
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ltx="http://dlmf.nist.gov/LaTeXML" version="1.0" exclude-result-prefixes="ltx">
+<xsl:stylesheet version="1.0"
+    xmlns:xsl = "http://www.w3.org/1999/XSL/Transform"
+    xmlns:ltx = "http://dlmf.nist.gov/LaTeXML"
+    xmlns:xhtml = "http://www.w3.org/1999/xhtml"
+    exclude-result-prefixes="ltx">
  <xsl:import href="/home/timothy.prescott/.cpan/sources/authors/id/B/BR/BRMILLER/LaTeXML-0.8.6/lib/LaTeXML/resources/XSLT/LaTeXML-html5.xsl"/>
 
  <!--

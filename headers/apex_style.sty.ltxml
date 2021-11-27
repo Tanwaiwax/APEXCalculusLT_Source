@@ -15,16 +15,12 @@ use LaTeXML::Package;
 use Data::Dumper;
 use Scalar::Util qw(looks_like_number);
 
-# fix some bugs
+# fix a bug
 RawTeX('\setlength{\marginparwidth}{150pt}');
-#RawTeX('\newlength{\defaultaddspace}');
-#RawTeX('\setlength{\defaultaddspace}{5pt}');
 
 DefMacro('\includecodegraphics{}','\includegraphics{#1}');
 
 RequirePackage('ifluatex');
-
-#DefMacro('\exvideo Verbatim','\bigbreak\noindent#1\bigbreak');
 
 # same definition, but we need "Verbatim" to get it to work with _
 DefMacro('\youtubeVideo Verbatim {}','\genVideo{#1}{https://youtu.be/#1}{#2}');
@@ -57,13 +53,20 @@ sub getEmbeddedVideoAttr {
 
 DefMacro('\lxIncludeJavascriptFile{}',
 	 '\AtBeginDocument{\lx@include@file{javascript}{#1}}');
-DefMacro('\lxIncludeCssFile{}',
-	 '\AtBeginDocument{\lx@include@file{css}{#1}}');
+DefMacro('\lxIncludeCssFile[]{}',
+	 '\AtBeginDocument{\lx@include@file{css}[#1]{#2}}');
 
-DefConstructor('\lx@include@file{}{}',
-	       '<ltx:resource type="text/#1" src="#2" />');
-# or maybe use
-# addResource($LaTeXML::DOCUMENT, #2, {type=>'text/#1',media=>1});
+DefConstructor('\lx@include@file{}[]{}',
+#           '<ltx:resource type="text/#1" src="#3" ?#2(media="#2") />');
+    sub {
+        if ( $_[2] ) {
+            RequireResource(#3, {type=>'text/#1',media=>'#2'} );
+        } else {
+            RequireResource(#3, {type=>'text/#1'} );
+        }
+        return;
+    }
+);
 
 DefConstructor('\makeStyles{}{}',
 	       '<ltx:resource type="text/css">'.

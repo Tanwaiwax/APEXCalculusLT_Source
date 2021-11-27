@@ -56,8 +56,10 @@ DefMacro('\lxIncludeJavascriptFile{}',
 DefMacro('\lxIncludeCssFile[]{}',
 	 '\AtBeginDocument{\lx@include@file{css}[#1]{#2}}');
 
-#           '<ltx:resource type="text/#1" src="#3" ?#2(media="#2") />');
 DefConstructor('\lx@include@file{}[]{}',
+           '<ltx:resource type="text/#1" src="#3" ?#2(media="#2") />');
+if ( 0 ) {
+(
     sub {
         if ( $_[2] ) {
             RequireResource($_[3], {type=>"text/$_[1]",media=>$_[2]} );
@@ -67,6 +69,7 @@ DefConstructor('\lx@include@file{}[]{}',
         return;
     }
 );
+}
 
 DefConstructor('\makeStyles{}{}',
 	       '<ltx:resource type="text/css">'.

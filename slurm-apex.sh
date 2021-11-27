@@ -52,7 +52,7 @@ latexmlscripts="$HOME/.cpan/sources/authors/id/B/BR/BRMILLER/LaTeXML-0.8.6/blib/
 singularitydir="$HOME/latexml"
 printf '\\newcommand{\\thetitle}{Calculus}\n\\printincolor\n\\usethreeDgraphics\n\\renewcommand{\\monthYear}{June 2021}\n' > options.tex
 
-singularity exec $singularitydir/latexml.sif $latexmlscripts/latexml --quiet --destination=$base.xml --nocomments $base
+#singularity exec $singularitydir/latexml.sif $latexmlscripts/latexml --quiet --destination=$base.xml --nocomments $base
 
 exit_code=$?
 
@@ -80,7 +80,7 @@ fi
 
 tar czf web.tar.gz web/
 
-singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost --split --destination=epub/index.html --stylesheet=apexepub.xsl $base.xml
+singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost --split --destination=epub/index.epub --stylesheet=apexepub.xsl $base.xml
 
 exit_code=$?
 

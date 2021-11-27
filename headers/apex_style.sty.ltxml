@@ -60,9 +60,9 @@ DefMacro('\lxIncludeCssFile[]{}',
 DefConstructor('\lx@include@file{}[]{}',
     sub {
         if ( $_[2] ) {
-            RequireResource('#3', {type=>'text/#1',media=>'#2'} );
+            RequireResource($_[3], {type=>"text/$_[1]",media=>$_[2]} );
         } else {
-            RequireResource('#3', {type=>'text/#1'} );
+            RequireResource($_[3], {type=>"text/$_[1]"} );
         }
         return;
     }

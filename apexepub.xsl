@@ -10,8 +10,16 @@
     xmlns:ltx = "http://dlmf.nist.gov/LaTeXML"
     xmlns:xhtml = "http://www.w3.org/1999/xhtml"
     exclude-result-prefixes="ltx">
- <xsl:import href="/home/timothy.prescott/.cpan/sources/authors/id/B/BR/BRMILLER/LaTeXML-0.8.6/lib/LaTeXML/resources/XSLT/LaTeXML-html5.xsl"/>
+ <xsl:import href="/home/timothy.prescott/.cpan/sources/authors/id/B/BR/BRMILLER/LaTeXML-0.8.6/lib/LaTeXML/resources/XSLT/LaTeXML-epub3.xsl"/>
 
+ <!-- exeternal javascript is not allowed -->
+ <xsl:template
+    match="ltx:resource[@type='text/javascript'][starts-with(@src,'http')]" />
+ <xsl:template
+    match="ltx:resource[@type='text/javascript'][@src='LaTeXML-maybeMathJax.js']"
+ />
+ 
+ <xsl:template match="ltx:resource[@src='style-narrow.css']/@media" />
  <!--
  "Watch the video: hyperlink" already comes before the iframe.
  We'll just delete the iframe.
@@ -34,4 +42,10 @@
   </xsl:element>
  </xsl:template>
 
+ <!-- maybe not necessary: https://www.w3.org/TR/epub-33/#sec-data-urls
+ <xsl:template match="xhtml:footer[@class='ltx_page_footer']/xhtml:div[@class='ltx_page_logo']/xhtml:a/xhtml:img[@alt='[LOGO]']/@src">
+  <xls:attribute name="src" value='figures/raw/latexml-logo.png' />
+ </xsl:template>
+ -->
+ 
 </xsl:stylesheet>

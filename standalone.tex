@@ -1,46 +1,272 @@
+% !TEX TS-program = XeLaTeX
 % !TEX program = XeLaTeX
 %\errorcontextlines 10000
 
-\RequirePackage[l2tabu, orthodox]{nag}
-\documentclass[10pt]{book}
+% this is not standalone
+% this is latexmlAlts to test if we need alternative latexml commands
 
-\input{headers/APEX_format}
-\usepackage{headers/apex_style}
-\input{headers/Header_Calculus}
+\documentclass[oneside]{book}
 
-\newcommand{\thetitle}{Standalone}
+%\input{headers/APEX_format}
+%\usepackage{headers/apex_style}
+%\input{headers/Header_Calculus}
 
-\printallanswers
-\printincolor
-\usetwoDgraphics
-%\usethreeDgraphics
+% LaTeXML's hyperref overwrites these
+\newcommand{\chapterautorefname}{Chap\-ter} % the default is lowercase
+\newcommand{\sectionautorefname}{Sec\-tion} % the default is lowercase
+
+\usepackage[marginparwidth=150pt]{geometry}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage[noadjust]{marginnote}
+\usepackage{makeidx}
+\usepackage{hyperref}
+\newlist{sectionexercises}{enumerate}{1}
+\newcounter{saveexercisenum}
+\setlist[sectionexercises]{
+    label=\arabic*.,
+    ref=\arabic*, % ref overrides label
+    before=\setcounter{sectionexercisesi}{\value{saveexercisenum}},
+    after=\setcounter{saveexercisenum}{\value{sectionexercisesi}},
+}
+
+\setlength{\parskip}{2\baselineskip}
+
+\makeindex
 
 \begin{document}
 
-%\frontmatter
+\pagestyle{empty}
+
+% https://github.com/latex3/hyperref/blob/main/hyperref.dtx
+% we use lines 5316ff
+% but line 5757(?) makes the defs act like provide command
+\framebox[.14\linewidth][l]{\parbox{1pt}{Chap\-ter\\\chapterautorefname}}
+\framebox[.14\linewidth][l]{\parbox{1pt}{Sec\-tion\\\sectionautorefname}}
+
+150.0pt:\the\marginparwidth
+
+\marginnote{I'm a margin note}
+
+This is a paragraph
+\index{paragraph}
+
+{\small This is a small paragraph\index{small paragraph}}
+
+% see https://github.com/brucemiller/LaTeXML/issues/794
+% see also issue 1196 - positioning is hard because it's combining tex and browser
+\noindent before\\
+\begin{tikzpicture}
+  \matrix[row sep=3mm,column sep=3mm]{
+   \node(left){L}; &&&&&& \node(right){R};\\\\\\\\
+   \node(bottom){B};\\
+  };
+  \draw(left)--(right)(left)--(bottom);
+\end{tikzpicture}\quad
+\begin{tikzpicture}
+  \matrix {
+    & \node (A) {A}; \\
+    \node{B};&& \node(C){C}; \\
+  };
+  \draw (A.south) -- (A|- C.south);
+\end{tikzpicture}\\
+after
+
+Compare: % see 09_Parametric_Equations.tex
+\[
+\begin{gathered}\text{Choose}\\t\end{gathered}\quad
+\tikz[>=latex,baseline=(current bounding box.center)]{\draw[->](0,.3)--(1,.6);\draw[->](0,-.3)--(1,-.6);}\quad
+{\addtolength{\jot}{-.5ex}
+\begin{gathered}
+\text{Use a function}\\f\text{ to find }x\\\bigl(x=f(t)\bigr)\\~\\
+\text{Use a function}\\g\text{ to find }y\\\bigl(y=g(t)\bigr)
+\end{gathered}
+}\quad
+\tikz[>=latex,baseline=(current bounding box.center)]{\draw[->](0,.6)--(1,.3);\draw[->](0,-.6)--(1,-.3);}\quad
+\begin{gathered}\text{Plot point}\\(x,y)\end{gathered}
+\]
+to:
+\[
+\begin{gathered}\text{Choose}\\t\end{gathered}\quad
+\begin{gathered}
+\rotatebox{-20}{\scalebox{2}{$\nearrow$}}\\
+\rotatebox{20}{\scalebox{2}{$\searrow$}}
+\end{gathered}\quad
+{\addtolength{\jot}{-.5ex}
+\begin{gathered}
+\text{Use a function}\\f\text{ to find }x\\\bigl(x=f(t)\bigr)\\~\\
+\text{Use a function}\\g\text{ to find }y\\\bigl(y=g(t)\bigr)
+\end{gathered}
+}\quad
+\begin{gathered}
+\rotatebox{20}{\scalebox{2}{$\searrow$}}\\
+\rotatebox{-20}{\scalebox{2}{$\nearrow$}}
+\end{gathered}\quad
+\begin{gathered}\text{Plot point}\\(x,y)\end{gathered}
+\]
+to:
+\begin{center}
+\begin{tikzpicture}[>=latex]
+\draw (0,0) node (A) [align=center] {Choose \\$t$} 
+    (3,1) node[align=center] (B1) {Use a function\\ $f$ to find $x$\\$\bigl(x=f(t)\bigr)$}
+	(3,-1) node[align=center] (B2) {Use a function\\ $g$ to find $y$\\$\bigl(y=g(t)\bigr)$}
+	(6.25,0) node [align=center] (C) {Plot point \\ $(x,y)$};
+\draw [->](A) --(B1);
+\draw [->](A) --(B2);
+\draw [->](B1) -- (C);
+\draw [->](B2) -- (C);
+\end{tikzpicture}
+\end{center}
+
+\begin{sectionexercises}
+\item\label{myitem} Label should have a decimal point.  This ref: \ref*{myitem} should not have a decimal point and should not be linked.
+\end{sectionexercises}
+in between
+\begin{sectionexercises}
+\item Should continue numbering. Label should have a decimal point.
+\end{sectionexercises}
+
+% see Eg1.3.8
+% see https://github.com/brucemiller/LaTeXML/issues/1477
+% and https://github.com/mathjax/MathJax/issues/487
+% MathJax can't handle anything inside of text (<a> in this case)
+\begin{equation}\label{eqlabel}
+a+b=c\quad\text{my label is \ref{eqlabel}}\quad\text{I am \autoref*{eqlabel}}
+\end{equation}
+
+\begin{equation*}
+a^2+b^2=c^2\quad\text{is the \href{https://en.wikipedia.org/wiki/Pythagorean_theorem}{Pythagorean theorem}}
+\end{equation*}
+
+% https://github.com/brucemiller/LaTeXML/issues/1708
+My strut $\left(\rule{0pt}{30pt}\right)$.
+
+\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,axis y line=middle,axis x line=middle,
+ymin=-.1,ymax=3.1,xmin=-.1,xmax=7.1,xtick={2,4,6},ytick={1,2},name=myplot]
+\addplot[draw={blue},smooth,thick,domain=0:2.7] ({\x*\x},{\x});
+\fill[black] (axis cs:4,2) circle (1pt);
+\draw[thin,dashed,gray,thick] (axis cs:0,1.5) -- (axis cs:2.25,1.5);
+\draw[thin,dashed,gray,thick] (axis cs:0,2.5) -- (axis cs:6.25,2.5);
+\draw[thin,dashed,draw={red},thick] (axis cs:2.25,0) -- (axis cs:2.25,1.5);
+\draw[thin,dashed,draw={red},thick] (axis cs:6.25,0) -- (axis cs:6.25,2.5);
+\draw (axis cs:-.1,1.75) node [right]{$\big\}\scriptstyle\epsilon = .5$};
+\draw (axis cs:-.1,2.25) node [right]{$\big\}\scriptstyle\epsilon = .5$};
+\fill[fill={red},draw={red}] (axis cs:2.25,1.5) circle (1pt);
+\fill[fill={red},draw={red}] (axis cs:6.25,2.5) circle (1pt);
+\draw (axis cs:3.125,.1) node [above,align=center,text width = 45pt] {\tiny width\\[-2pt] = 1.75\\[-3pt] $\overbrace{\makebox[20pt]{}}$};
+\draw (axis cs:5.125,.1) node [above,align=center,text width = 45pt] {\tiny width\\[-2pt] = 2.25\\[-3pt] $\overbrace{\makebox[30pt]{}}$};
+\draw (axis cs:4.3,1.35)        node [align=center,text width = 80pt] {\footnotesize ... choose $\delta$ smaller than each of these};
+\draw [->,thin] (axis cs:4,1) -- (axis cs:3,.8);
+\draw [->,thin] (axis cs:4,1) -- (axis cs:5,.8);
+\end{axis}
+\node [right] at (myplot.right of origin) {\scriptsize $x$};
+\node [above] at (myplot.above origin) {\scriptsize $y$};
+\end{tikzpicture}
+
+\begin{tikzpicture}[>=stealth]
+\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
+minor x tick num=1,axis y line=middle,axis x line=middle,
+ymin=-.1,ymax=3.1,xmin=-.1,xmax=7.1,xtick={2,4,6},ytick={1,2},name=myplot]
+\draw (axis cs:3.125,.1) node [above,align=center,text width = 45pt] {\tiny width\\[-2pt] = 1.75\\[-3pt] $\overbrace{\makebox[20pt]{}}$};
+\draw (axis cs:3,2) node{stuff};
+\end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth,ymin=0,ymax=3,xmin=0,xmax=7]
+\draw (axis cs:3,1) node [align=center,text width = 45pt] {\tiny width\\= 1.75\\$\overbrace{\makebox[20pt]{}}$};
+\draw (axis cs:3,2) node{stuff};
+\end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\begin{axis}[width=\marginparwidth,ymin=0,ymax=3,xmin=0,xmax=7]
+\draw (axis cs:3,1) node {$\overbrace{\makebox[20pt]{}}$};
+\draw (axis cs:3,2) node{stuff};
+\end{axis}
+\end{tikzpicture}
+
+$\overbrace{\makebox[1.8cm]{}}_a$
+
+\tikz{\node{$\overbrace{\makebox[1.8cm]{}}_a$}}
+
+% https://github.com/brucemiller/LaTeXML/issues/1712
+\begin{minipage}{\linewidth}
+This should not be centered\\
+This should not be centered
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+This should not be centered
+\begin{center}
+This is the only thing that should be centered.
+\end{center}
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+This should not be centered
+
+\begin{centering}
+This is the only thing that should be centered.\\
+\end{centering}
+\end{minipage}
+
+\begin{minipage}{\linewidth}
+This should not be centered
+
+{\centering
+This is the only thing that should be centered.\\
+}
+\end{minipage}
+
+% https://github.com/brucemiller/LaTeXML/blob/master/lib/LaTeXML/Package/multicol.sty.ltxml
+% latexml intentionally does nothing, since this is a styling question
+% see https://github.com/brucemiller/LaTeXML/issues/1711
+\begin{multicols}{2}
+\begin{enumerate}
+\item item one in two columns
+\item item two in two columns
+\end{enumerate}
+\end{multicols}
+
+
 %
-%\input{text/front_matter_and_cover}
+\begin{gather*}
+\mbox{now you see me}\\
+\makebox[1pt]{now you still see me 4}
+\end{gather*}
 
-\mainmatter
+\begin{gather*}
+\mbox{now you see me}\\
+\makebox[0pt]{now you still see me 5}
+\end{gather*}
 
-\setcounter{chapter}{6}
+% https://github.com/brucemiller/LaTeXML/issues/1720
+\parbox{.3\linewidth}{all}%
+\parbox{.2\linewidth}{one}%
+\parbox{.4\linewidth}{line}
 
-\setcounter{section}{1}
+% https://github.com/brucemiller/LaTeXML/issues/1709
+% see https://tex.stackexchange.com/a/364935/107497
+\noindent
+\begin{minipage}{.5\linewidth}%
+\begin{tabular}{ c c }
+item 1 & \multirow{2}{*}{item 2 should be at the bottom} \\
+item 3
+\end{tabular}
+\end{minipage}%
 
-\input{text/07_Disk_Washer_Method}
-
-%\printexercises{exercises/14-03-exercises}
-
-%\printexercises{standalone/standalone_exercises}
-
-\appendix
-
-\printsolutions{Standalone Solutions To All Problems}
-
-%\printindex
-%
-%\backmatter
-%
-%\input{text/Inside_Cover_Of_The_Text_Material_Complete}
+\begin{minipage}{.5\linewidth}%
+\begin{tabular}{ c c }
+item 4 & \multirow{2}{*}{item 5 should be at the bottom} \\
+item 6
+\end{tabular}
+\end{minipage}
 
 \end{document}

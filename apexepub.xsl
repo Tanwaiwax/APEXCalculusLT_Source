@@ -18,8 +18,14 @@
  <xsl:template
     match="ltx:resource[@type='text/javascript'][@src='LaTeXML-maybeMathJax.js']"
  />
+ <xsl:template
+    match="xhtml:script[@type='text/javascript'][starts-with(@src,'http')]" />
+ <xsl:template
+    match="xhtml:script[@type='text/javascript'][@src='LaTeXML-maybeMathJax.js']"
+ />
  
  <xsl:template match="ltx:resource[@src='style-narrow.css']/@media" />
+ <xsl:template match="xhtml:link[@rel='stylesheet'][@href='style-narrow.css']/@media" />
  <!--
  "Watch the video: hyperlink" already comes before the iframe.
  We'll just delete the iframe.

@@ -1,12 +1,10 @@
-$(setup);
+
+document.addEventListener('DOMContentLoaded',setup);
 
 const minSepPixels = 20;
 
-var lastMarginBoxBottom;
-var entriesIn = {};
-
-// consider
-// MathJax.Hub.Config({'HTML-CSS': {linebreaks:{automatic:true}}})
+let lastMarginBoxBottom;
+const entriesIn = {};
 
 MathJax = {
     startup: {
@@ -40,86 +38,103 @@ MathJax = {
 
 function setup() {
     spaceOutMarginBoxes();
+    // todo latexml
+    Array.from(document.querySelectorAll('.ltx_note.ltx_role_margin > .ltx_note_outer > .ltx_note_content > .ltx_inline-para > .ltx_para > .ltx_p'))
+        .filter( span => span.textContent==='\u039B' )
+        .forEach( function(span) {
+            span.parentNode.removeChild(span);
+        });
     addPermaLinkFor('.ltx_theorem[id]:has(>h6.ltx_title.ltx_title_theorem)',
 		    'h6.ltx_title.ltx_title_theorem');
     //addPermaLinkFor('figure.marginnote','figcaption');
     addPermaLinkFor('span.ltx_figure','span.ltx_caption')
-    if ( $('section.ltx_index ul.ltx_indexlist').length ) {
-	// add an A-Z to the index
-        // the first few entries are math, and shouldn't be counted with the A-Z
-        // we'll find the first non-math entry, and then add the others
-        // then we need to remove sub entries
-	$('section.ltx_index ul.ltx_indexlist li.ltx_indexentry:not(:has(.ltx_Math))')
-        .eq(0)
-        .nextAll('section.ltx_index ul.ltx_indexlist li.ltx_indexentry')
-        .addBack()
-	    .not('li.ltx_indexentry ul.ltx_indexlist li.ltx_indexentry')
-	    .each(readIndexEntry);
-	$('<div id="indexContents"></div>')
-	    .insertAfter('h1.ltx_title.ltx_title_index');
-	$.each(entriesIn,wrapEntries);
-        // todo latexml
-        $('.ltx_indexentry span[style="font-size:90%;"]').removeAttr('style');
-    }
-    // todo latexml
-    $('.ltx_note.ltx_role_margin > .ltx_note_outer > .ltx_note_content > .ltx_inline-para > .ltx_para > .ltx_p')
-        .filter(function() { return $(this).text()==='\u039B'; })
-        .remove();
+    addAtoZindex();
     fixFirefoxAnchorBug();
 }
 
 function addPermaLinkFor(parents,child) {
-    $(parents+':has(>'+child+')').each(function() {
-	$(this).children(child).first()
-	    .append('<a class="permaLink" title="Permalink" href="#'+this.id+'">\u00B6</a>');
-    });
+    if ( window.$ && window.jQuery && $===jQuery ) {
+        $(parents+':has(>'+child+')').each(function() {
+            $(this).children(child).first()
+                .append('<a class="permaLink" title="Permalink" href="#'+this.id+'">\u00B6</a>');
+            });
+    }
 }
 
-/*
-function addPermaLink() {
-    $(this).children('h6.ltx_title.ltx_title_theorem,figcaption').first()
-	.append('<a class="permaLink" title="Permalink" href="#'+this.id+'">\u00B6</a>');
+function addAtoZindex() {
+    if ( document.querySelector('section.ltx_index ul.ltx_indexlist') ) {
+        const indexEntries = Array.from(document.querySelectorAll('section.ltx_index > ul.ltx_indexlist > li.ltx_indexentry'));
+        // the first few entries are math, and shouldn't be counted with the A-Z
+        while ( indexEntries[0].querySelector('.ltx_Math') ) {
+            indexEntries.shift();
+        }
+        indexEntries.forEach(readIndexEntry);
+        const divTag = document.createElement('div');
+        divTag.id = 'indexAtoZ';
+        document.querySelector('h1.ltx_title.ltx_title_index')
+            .insertAdjacentElement('afterend',divTag);
+        Object.entries(entriesIn).forEach(wrapEntries);
+        // todo latexml https://github.com/brucemiller/LaTeXML/issues/1731
+        Array.from(document.querySelectorAll('.ltx_indexentry span[style="font-size:90%;"]'))
+            .forEach( function(span) {
+                span.removeAttribute('style');
+            });
+    }
 }
-*/
+
+function readIndexEntry(indexEntry) {
+    const firstLetter = indexEntry.id.charAt(0).toLocaleUpperCase();
+    if ( entriesIn[firstLetter] ) {
+        entriesIn[firstLetter].push(indexEntry);
+    } else {
+        entriesIn[firstLetter] = [indexEntry];
+    }
+}
+
+function wrapEntries([firstLetter,indexEntriesForLetter]) {
+    const aTag = document.createElement('a');
+    aTag.setAttribute('href','#'+firstLetter+'_entries');
+    aTag.textContent = firstLetter;
+    document.getElementById('indexAtoZ').appendChild(aTag);
+    const liTag = document.createElement('li');
+    liTag.id = firstLetter+'_entries';
+    liTag.className = 'entry_wrapper';
+    const spanTag = document.createElement('span');
+    spanTag.textContent = firstLetter;
+    liTag.appendChild(spanTag);
+    const ulTag = document.createElement('ul');
+    liTag.appendChild(ulTag);
+    indexEntriesForLetter[0].insertAdjacentElement('beforebegin',liTag);
+    indexEntriesForLetter.forEach( function(entry) {
+        ulTag.appendChild(entry);
+    })
+}
 
 function spaceOutMarginBoxes() {
-    lastMarginBoxBottom = 0;
-    $('span.ltx_note.ltx_role_margin span.ltx_note_content').each(spaceOutBox);
+    if ( window.$ && window.jQuery && $===jQuery ) {
+        lastMarginBoxBottom = 0;
+        $('span.ltx_note.ltx_role_margin span.ltx_note_content').each(spaceOutBox);
+    }
 }
 
 function spaceOutBox() {
-    var thisJq = $(this);
-    var offset = thisJq.offset();
+    const thisJq = $(this);
+    const offset = thisJq.offset();
     if ( offset.top < lastMarginBoxBottom+minSepPixels ) {
-	offset.top = lastMarginBoxBottom+minSepPixels;
-	thisJq.offset(offset);
+        offset.top = lastMarginBoxBottom+minSepPixels;
+        thisJq.offset(offset);
     }
     lastMarginBoxBottom = offset.top + thisJq.height();
 }
 
-function readIndexEntry(ignoreIndex,indexEntry) {
-    //return;
-    var firstLetter = this.id.charAt(0).toLocaleUpperCase();
-    if ( entriesIn[firstLetter] ) {
-	entriesIn[firstLetter] = entriesIn[firstLetter].add(this);
-    } else {
-	entriesIn[firstLetter] = $(this);
-    }
-}
-
-function wrapEntries(firstLetter,indexEntries) {
-    $("#indexContents").append('<a href="#'+firstLetter+'_entries">'+firstLetter+'</a>');
-    indexEntries.wrapAll('<li id="'+firstLetter+'_entries" class="entry_wrapper"><ul></ul></li>');
-    indexEntries.parent().before('<span>'+firstLetter+'</span>');
-}
-
 /** Taken from Python docs
- *  workaround a firefox stupidity
- *  see: https://bugzilla.mozilla.org/show_bug.cgi?id=645075 */
+ *  workaround a firefox bug
+ *  see: https://bugzilla.mozilla.org/show_bug.cgi?id=645075
+ *  this has been closed as fixed, but doesn't seem fixed */
 function fixFirefoxAnchorBug() {
     if (document.location.hash) {
-	window.setTimeout(function() {
-            document.location.href += '';
-	}, 10);
+        window.setTimeout(function() {
+                document.location.href += '';
+        }, 10);
     }
 }

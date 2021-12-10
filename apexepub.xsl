@@ -21,6 +21,7 @@
     match="ltx:resource[@type='text/javascript' and @src='LaTeXML-maybeMathJax.js']"
     mode="inhead" />
  
+ <!-- todo latexml -->
  <xsl:template match="ltx:resource[@type='text/css' and @src='style-narrow.css']" mode="inhead">
    <xsl:text>&#x0A;</xsl:text>
    <xsl:element name="link" namespace="{$html_ns}">

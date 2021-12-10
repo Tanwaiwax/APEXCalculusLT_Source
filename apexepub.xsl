@@ -25,7 +25,7 @@
    <xsl:text>&#x0A;</xsl:text>
    <xsl:element name="link" namespace="{$html_ns}">
      <xsl:attribute name="rel">stylesheet</xsl:attribute>
-     <xsl:attribute name="href"><xsl:value-of select="f:url(@src)"/></xsl:attribute>
+     <xsl:attribute name="href">style-narrow.css</xsl:attribute>
      <xsl:apply-templates select="@type | @media" />
    </xsl:element>
  </xsl:template>

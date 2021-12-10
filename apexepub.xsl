@@ -8,6 +8,7 @@
 <xsl:stylesheet version="1.0"
     xmlns:xsl = "http://www.w3.org/1999/XSL/Transform"
     xmlns:ltx = "http://dlmf.nist.gov/LaTeXML"
+    xmlns:html = "http://www.w3.org/1999/xhtml"
     xmlns:xhtml = "http://www.w3.org/1999/xhtml"
     exclude-result-prefixes="ltx">
  <xsl:import href="/home/timothy.prescott/.cpan/sources/authors/id/B/BR/BRMILLER/LaTeXML-0.8.6/lib/LaTeXML/resources/XSLT/LaTeXML-epub3.xsl"/>
@@ -19,7 +20,7 @@
     match="ltx:resource[@type='text/javascript'][@src='LaTeXML-maybeMathJax.js']"
  />
  <xsl:template
-    match="xhtml:script[@type='text/javascript'][starts-with(@src,'http')]" />
+    match="html:script[@type='text/javascript'][starts-with(@src,'http')]" />
  <xsl:template
     match="xhtml:script[@type='text/javascript'][@src='LaTeXML-maybeMathJax.js']"
  />

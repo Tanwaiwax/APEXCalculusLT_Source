@@ -5,28 +5,27 @@
     available at http://creativecommons.org/licenses/by/4.0/
     (C) 2021 by Timothy Prescott
  -->
-<xsl:stylesheet version="1.0"
+<xsl:stylesheet
+    version="1.0"
     xmlns:xsl = "http://www.w3.org/1999/XSL/Transform"
     xmlns:ltx = "http://dlmf.nist.gov/LaTeXML"
-    xmlns:html = "http://www.w3.org/1999/xhtml"
-    xmlns:xhtml = "http://www.w3.org/1999/xhtml"
     exclude-result-prefixes="ltx">
  <xsl:import href="/home/timothy.prescott/.cpan/sources/authors/id/B/BR/BRMILLER/LaTeXML-0.8.6/lib/LaTeXML/resources/XSLT/LaTeXML-epub3.xsl"/>
 
  <!-- exeternal javascript is not allowed -->
  <xsl:template
-    match="//ltx:resource[@type='text/javascript' and starts-with(@src,'http')]" />
+    match="ltx:resource[@type='text/javascript' and starts-with(@src,'http')]" />
  <xsl:template
-    match="//ltx:resource[@type='text/javascript' and @src='LaTeXML-maybeMathJax.js']"
+    match="ltx:resource[@type='text/javascript' and @src='LaTeXML-maybeMathJax.js']"
  />
- <xsl:template
-    match="html:script[@type='text/javascript' and starts-with(@src,'http')]" />
- <xsl:template
-    match="xhtml:script[@type='text/javascript' and @src='LaTeXML-maybeMathJax.js']"
- />
+<!-- <xsl:template-->
+<!--    match="html:script[@type='text/javascript' and starts-with(@src,'http')]" />-->
+<!-- <xsl:template-->
+<!--    match="xhtml:script[@type='text/javascript' and @src='LaTeXML-maybeMathJax.js']"-->
+<!-- />-->
  
- <xsl:template match="//ltx:resource[@src='style-narrow.css']/@media" />
- <xsl:template match="xhtml:link[@rel='stylesheet' and @href='style-narrow.css']/@media" />
+ <xsl:template match="ltx:resource[@src='style-narrow.css']/@media" />
+<!-- <xsl:template match="xhtml:link[@rel='stylesheet' and @href='style-narrow.css']/@media" />-->
  <!--
  "Watch the video: hyperlink" already comes before the iframe.
  We'll just delete the iframe.

@@ -14,35 +14,16 @@
  <xsl:import href="/home/timothy.prescott/.cpan/sources/authors/id/B/BR/BRMILLER/LaTeXML-0.8.6/lib/LaTeXML/resources/XSLT/LaTeXML-epub3.xsl"/>
 
  <!-- exeternal javascript is not allowed -->
- <xsl:template match="ltx:resource">1</xsl:template>
- <xsl:template match="resource">2</xsl:template>
- <xsl:template match="ltx:document/ltx:resource">3</xsl:template>
- <xsl:template match="document/resource">4</xsl:template>
- <xsl:template match="/ltx:document/ltx:resource">5</xsl:template>
- <xsl:template match="/document/resource">6</xsl:template>
- <xsl:template match="//ltx:resource">7</xsl:template>
- <xsl:template match="//resource">8</xsl:template>
- <xsl:template match="ltx:resource" mode="inhead">1</xsl:template>
- <xsl:template match="resource" mode="inhead">2</xsl:template>
- <xsl:template match="ltx:document/ltx:resource" mode="inhead">3</xsl:template>
- <xsl:template match="document/resource" mode="inhead">4</xsl:template>
- <xsl:template match="/ltx:document/ltx:resource" mode="inhead">5</xsl:template>
- <xsl:template match="/document/resource" mode="inhead">6</xsl:template>
- <xsl:template match="//ltx:resource" mode="inhead">7</xsl:template>
- <xsl:template match="//resource" mode="inhead">8</xsl:template>
  <xsl:template
-    match="ltx:resource[@type='text/javascript' and starts-with(@src,'http')]" />
+    match="ltx:resource[@type='text/javascript' and starts-with(@src,'http')]"
+    mode="inhead"/>
  <xsl:template
     match="ltx:resource[@type='text/javascript' and @src='LaTeXML-maybeMathJax.js']"
- />
-<!-- <xsl:template-->
-<!--    match="html:script[@type='text/javascript' and starts-with(@src,'http')]" />-->
-<!-- <xsl:template-->
-<!--    match="xhtml:script[@type='text/javascript' and @src='LaTeXML-maybeMathJax.js']"-->
-<!-- />-->
+    mode="inhead" />
  
- <xsl:template match="ltx:resource[@src='style-narrow.css']/@media" />
-<!-- <xsl:template match="xhtml:link[@rel='stylesheet' and @href='style-narrow.css']/@media" />-->
+ <xsl:template match="ltx:resource[@src='style-narrow.css']/@media"
+    mode="inhead" />
+
  <!--
  "Watch the video: hyperlink" already comes before the iframe.
  We'll just delete the iframe.

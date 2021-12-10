@@ -21,6 +21,15 @@
     match="ltx:resource[@type='text/javascript' and @src='LaTeXML-maybeMathJax.js']"
     mode="inhead" />
  
+ <xsl:template match="ltx:resource[@type='text/css' and @src='style-narrow.css']" mode="inhead">
+   <xsl:text>&#x0A;</xsl:text>
+   <xsl:element name="link" namespace="{$html_ns}">
+     <xsl:attribute name="rel">stylesheet</xsl:attribute>
+     <xsl:attribute name="href"><xsl:value-of select="f:url(@src)"/></xsl:attribute>
+     <xsl:apply-templates select="@type | @media" />
+   </xsl:element>
+ </xsl:template>
+
  <xsl:template match="ltx:resource[@src='style-narrow.css']/@media"
     mode="inhead" />
 

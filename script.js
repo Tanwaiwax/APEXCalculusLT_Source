@@ -38,12 +38,6 @@ MathJax = {
 
 function setup() {
     spaceOutMarginBoxes();
-    // todo latexml
-    Array.from(document.querySelectorAll('.ltx_note.ltx_role_margin > .ltx_note_outer > .ltx_note_content > .ltx_inline-para > .ltx_para > .ltx_p'))
-        .filter( span => span.textContent==='\u039B' )
-        .forEach( function(span) {
-            span.parentNode.removeChild(span);
-        });
     addPermaLinkFor('.ltx_theorem[id]:has(>h6.ltx_title.ltx_title_theorem)',
 		    'h6.ltx_title.ltx_title_theorem');
     //addPermaLinkFor('figure.marginnote','figcaption');
@@ -65,6 +59,7 @@ function addAtoZindex() {
     if ( document.querySelector('section.ltx_index ul.ltx_indexlist') ) {
         const indexEntries = Array.from(document.querySelectorAll('section.ltx_index > ul.ltx_indexlist > li.ltx_indexentry'));
         // the first few entries are math, and shouldn't be counted with the A-Z
+        // this wouldn't work if the first non-math entry also had some math in it
         while ( indexEntries[0].querySelector('.ltx_Math') ) {
             indexEntries.shift();
         }

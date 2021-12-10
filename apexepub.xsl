@@ -14,6 +14,7 @@
  <xsl:import href="/home/timothy.prescott/.cpan/sources/authors/id/B/BR/BRMILLER/LaTeXML-0.8.6/lib/LaTeXML/resources/XSLT/LaTeXML-epub3.xsl"/>
 
  <!-- exeternal javascript is not allowed -->
+ <xsl:template match="ltx:resource" />
  <xsl:template
     match="ltx:resource[@type='text/javascript' and starts-with(@src,'http')]" />
  <xsl:template

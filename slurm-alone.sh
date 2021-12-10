@@ -65,7 +65,8 @@ if [ "$exit_code" -ne "0" ]; then
     exit "$exit_code"
 fi
 
-singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost --split --destination=standaloneweb/index.html --javascript=LaTeXML-maybeMathJax.js -css=LaTeXML-marginpar.css $base.xml
+singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost --split --destination=standaloneweb/index.html $base.xml
+# --javascript=LaTeXML-maybeMathJax.js -css=LaTeXML-marginpar.css
 
 exit_code=$?
 
@@ -79,8 +80,6 @@ if [ "$exit_code" -ne "0" ]; then
 fi
 
 singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost --destination=standaloneweb/epub.xhtml --stylesheet=apexepub.xsl $base.xml
-
-singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost --destination=standaloneepub/index.epub $base.xml
 
 exit_code=$?
 

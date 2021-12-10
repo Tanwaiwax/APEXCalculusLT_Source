@@ -17,11 +17,19 @@
  <xsl:template match="ltx:resource">1</xsl:template>
  <xsl:template match="resource">2</xsl:template>
  <xsl:template match="ltx:document/ltx:resource">3</xsl:template>
- <xsl:template match="//ltx:resource">4</xsl:template>
+ <xsl:template match="document/resource">4</xsl:template>
  <xsl:template match="/ltx:document/ltx:resource">5</xsl:template>
- <xsl:template match="document/resource">6</xsl:template>
- <xsl:template match="//resource">7</xsl:template>
- <xsl:template match="/document/resource">8</xsl:template>
+ <xsl:template match="/document/resource">6</xsl:template>
+ <xsl:template match="//ltx:resource">7</xsl:template>
+ <xsl:template match="//resource">8</xsl:template>
+ <xsl:template match="ltx:resource" mode="inhead">1</xsl:template>
+ <xsl:template match="resource" mode="inhead">2</xsl:template>
+ <xsl:template match="ltx:document/ltx:resource" mode="inhead">3</xsl:template>
+ <xsl:template match="document/resource" mode="inhead">4</xsl:template>
+ <xsl:template match="/ltx:document/ltx:resource" mode="inhead">5</xsl:template>
+ <xsl:template match="/document/resource" mode="inhead">6</xsl:template>
+ <xsl:template match="//ltx:resource" mode="inhead">7</xsl:template>
+ <xsl:template match="//resource" mode="inhead">8</xsl:template>
  <xsl:template
     match="ltx:resource[@type='text/javascript' and starts-with(@src,'http')]" />
  <xsl:template

@@ -25,14 +25,16 @@
     mode="inhead" />
  
  <!-- todo latexml? -->
-<!-- <xsl:template match="ltx:resource[@type='text/css' and @src='style-narrow.css']" mode="inhead">-->
-<!--   <xsl:text>&#x0A;</xsl:text>-->
-<!--   <xsl:element name="link" namespace="{$html_ns}">-->
-<!--     <xsl:attribute name="rel">stylesheet</xsl:attribute>-->
-<!--     <xsl:attribute name="href"><xsl:value-of select="@src" /></xsl:attribute>-->
-<!--     <xsl:attribute name="type"><xsl:value-of select="@type" /></xsl:attribute>-->
-<!--   </xsl:element>-->
-<!-- </xsl:template>-->
+ <!-- Mac's Books app doesn't seem to apply the media attribute,
+ so lets remove it -->
+ <xsl:template match="ltx:resource[@type='text/css' and @src='style-narrow.css']" mode="inhead">
+   <xsl:text>&#x0A;</xsl:text>
+   <xsl:element name="link" namespace="{$html_ns}">
+     <xsl:attribute name="rel">stylesheet</xsl:attribute>
+     <xsl:attribute name="href"><xsl:value-of select="@src" /></xsl:attribute>
+     <xsl:attribute name="type"><xsl:value-of select="@type" /></xsl:attribute>
+   </xsl:element>
+ </xsl:template>
 
  <!--
  "Watch the video: hyperlink" already comes before the iframe.

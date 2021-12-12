@@ -13,26 +13,26 @@
     exclude-result-prefixes="ltx">
  <xsl:import href="/home/timothy.prescott/.cpan/sources/authors/id/B/BR/BRMILLER/LaTeXML-0.8.6/lib/LaTeXML/resources/XSLT/LaTeXML-epub3.xsl"/>
 
- <!-- exeternal javascript is not allowed -->
+ <!-- todo latexml: exeternal javascript is not allowed -->
  <xsl:template
-    match="ltx:resource[@type='text/javascript' and starts-with(@src,'http')]"
+    match="ltx:resource[@type='text/javascript' and starts-with(@src,'https:')]"
+    mode="inhead"/>
+ <xsl:template
+    match="ltx:resource[@type='text/javascript' and starts-with(@src,'http:')]"
     mode="inhead"/>
  <xsl:template
     match="ltx:resource[@type='text/javascript' and @src='LaTeXML-maybeMathJax.js']"
     mode="inhead" />
  
- <!-- todo latexml -->
- <xsl:template match="ltx:resource[@type='text/css' and @src='style-narrow.css']" mode="inhead">
-   <xsl:text>&#x0A;</xsl:text>
-   <xsl:element name="link" namespace="{$html_ns}">
-     <xsl:attribute name="rel">stylesheet</xsl:attribute>
-     <xsl:attribute name="href">style-narrow.css</xsl:attribute>
-     <xsl:apply-templates select="@type | @media" />
-   </xsl:element>
- </xsl:template>
-
- <xsl:template match="ltx:resource[@src='style-narrow.css']/@media"
-    mode="inhead" />
+ <!-- todo latexml? -->
+<!-- <xsl:template match="ltx:resource[@type='text/css' and @src='style-narrow.css']" mode="inhead">-->
+<!--   <xsl:text>&#x0A;</xsl:text>-->
+<!--   <xsl:element name="link" namespace="{$html_ns}">-->
+<!--     <xsl:attribute name="rel">stylesheet</xsl:attribute>-->
+<!--     <xsl:attribute name="href"><xsl:value-of select="@src" /></xsl:attribute>-->
+<!--     <xsl:attribute name="type"><xsl:value-of select="@type" /></xsl:attribute>-->
+<!--   </xsl:element>-->
+<!-- </xsl:template>-->
 
  <!--
  "Watch the video: hyperlink" already comes before the iframe.

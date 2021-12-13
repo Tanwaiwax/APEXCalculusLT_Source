@@ -7,6 +7,7 @@
  -->
 <xsl:stylesheet
     version="1.0"
+    xmlns:f = "http://dlmf.nist.gov/LaTeXML/functions"
     xmlns:xsl = "http://www.w3.org/1999/XSL/Transform"
     xmlns:ltx = "http://dlmf.nist.gov/LaTeXML"
     xmlns:xhtml = "http://www.w3.org/1999/xhtml"
@@ -24,8 +25,10 @@
     match="ltx:resource[@type='text/javascript' and @src='LaTeXML-maybeMathJax.js']"
     mode="inhead" />
  
- <!-- todo latexml? -->
- <!-- Mac's Books app doesn't seem to apply the media attribute,
+ <!-- todo latexml?
+ if @type and @media inherited by default, then we'd just need to drop media
+ -->
+ <!-- Mac's Books.app doesn't seem to apply the media attribute,
  so lets remove it -->
  <xsl:template match="ltx:resource[@type='text/css' and @src='style-narrow.css']" mode="inhead">
    <xsl:text>&#x0A;</xsl:text>
@@ -35,6 +38,22 @@
      <xsl:attribute name="type"><xsl:value-of select="@type" /></xsl:attribute>
    </xsl:element>
  </xsl:template>
+ 
+ <!-- todo latexml -->
+ <func:function name="f:url">
+   <xsl:param name="url"/>
+   <func:result>
+       <xsl:value-of select="f:if($url='./','index.xhtml',$url)"/>
+   </func:result>
+<!--   <xsl:choose>-->
+<!--       <xsl:when test="$url='./'">-->
+<!--           <func:result>index.xhtml</func:result>-->
+<!--       </xsl:when>-->
+<!--       <xsl:otherwise>-->
+<!--           <func:result><xsl:value-of select="$url"/></func:result>-->
+<!--        </xsl:otherwise>-->
+<!--    </xsl:choose>-->
+ </func:function>
 
  <!--
  "Watch the video: hyperlink" already comes before the iframe.
@@ -58,10 +77,4 @@
   </xsl:element>
  </xsl:template>
 
- <!-- maybe not necessary: https://www.w3.org/TR/epub-33/#sec-data-urls
- <xsl:template match="xhtml:footer[@class='ltx_page_footer']/xhtml:div[@class='ltx_page_logo']/xhtml:a/xhtml:img[@alt='[LOGO]']/@src">
-  <xls:attribute name="src" value='figures/raw/latexml-logo.png' />
- </xsl:template>
- -->
- 
 </xsl:stylesheet>

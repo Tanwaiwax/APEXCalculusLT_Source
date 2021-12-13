@@ -26,7 +26,9 @@
     mode="inhead" />
  
  <!-- todo latexml
- we aren't allowed to have span[@colspan], which latexml likes to do in display math
+ we aren't allowed to have span[@colspan],
+ which latexml likes to do in display math if there aren't enough & in a row:
+ \begin{align*}1,1&1,2\\2,1\end{align*} % missing &2,2
  how to remove?
  -->
  

@@ -25,6 +25,11 @@
     match="ltx:resource[@type='text/javascript' and @src='LaTeXML-maybeMathJax.js']"
     mode="inhead" />
  
+ <!-- todo latexml
+ we aren't allowed to have span[@colspan], which latexml likes to do in display math
+ how to remove?
+ -->
+ 
  <!-- todo latexml?
  if @type and @media inherited by default, then we'd just need to drop media
  -->

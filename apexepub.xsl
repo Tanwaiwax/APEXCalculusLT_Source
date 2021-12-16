@@ -8,11 +8,14 @@
 <xsl:stylesheet
     version="1.0"
     xmlns:f = "http://dlmf.nist.gov/LaTeXML/functions"
+    xmlns:func  = "http://exslt.org/functions"
     xmlns:xsl = "http://www.w3.org/1999/XSL/Transform"
     xmlns:ltx = "http://dlmf.nist.gov/LaTeXML"
     xmlns:xhtml = "http://www.w3.org/1999/xhtml"
-    exclude-result-prefixes="ltx">
+    extension-element-prefixes="func f"
+    exclude-result-prefixes = "ltx f func">
  <xsl:import href="/home/timothy.prescott/.cpan/sources/authors/id/B/BR/BRMILLER/LaTeXML-0.8.6/lib/LaTeXML/resources/XSLT/LaTeXML-epub3.xsl"/>
+ <!-- <xsl:import href="../LaTeXML/lib/LaTeXML/resources/XSLT/LaTeXML-epub3.xsl"/> -->
 
  <!-- todo latexml: exeternal javascript is not allowed -->
  <xsl:template
@@ -36,7 +39,8 @@
  if @type and @media inherited by default, then we'd just need to drop media
  -->
  <!-- Mac's Books.app doesn't seem to apply the media attribute,
- so lets remove it -->
+ so lets remove it.
+ or maybe they only work in epub3?
  <xsl:template match="ltx:resource[@type='text/css' and @src='style-narrow.css']" mode="inhead">
    <xsl:text>&#x0A;</xsl:text>
    <xsl:element name="link" namespace="{$html_ns}">
@@ -44,22 +48,15 @@
      <xsl:attribute name="href"><xsl:value-of select="@src" /></xsl:attribute>
      <xsl:attribute name="type"><xsl:value-of select="@type" /></xsl:attribute>
    </xsl:element>
- </xsl:template>
+ </xsl:template> -->
  
  <!-- todo latexml -->
+ <!-- the validator wasn't liking links to ./ -->
  <func:function name="f:url">
    <xsl:param name="url"/>
    <func:result>
        <xsl:value-of select="f:if($url='./','index.xhtml',$url)"/>
    </func:result>
-<!--   <xsl:choose>-->
-<!--       <xsl:when test="$url='./'">-->
-<!--           <func:result>index.xhtml</func:result>-->
-<!--       </xsl:when>-->
-<!--       <xsl:otherwise>-->
-<!--           <func:result><xsl:value-of select="$url"/></func:result>-->
-<!--        </xsl:otherwise>-->
-<!--    </xsl:choose>-->
  </func:function>
 
  <!--

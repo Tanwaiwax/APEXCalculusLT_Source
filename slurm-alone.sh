@@ -79,7 +79,7 @@ if [ "$exit_code" -ne "0" ]; then
     exit "$exit_code"
 fi
 
-singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost --destination=standaloneweb/epub.xhtml --stylesheet=apexepub.xsl $base.xml
+singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost --split --destination=standaloneweb/epub.xhtml --stylesheet=apexepub.xsl $base.xml
 
 exit_code=$?
 

@@ -65,8 +65,8 @@ if [ "$exit_code" -ne "0" ]; then
     exit "$exit_code"
 fi
 
-singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost --split --destination=standaloneweb/index.html $base.xml
-# --javascript=LaTeXML-maybeMathJax.js -css=LaTeXML-marginpar.css
+singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost --split --destination=standaloneweb/index.html --javascript=LaTeXML-maybeMathJax.js $base.xml
+# --javascript=LaTeXML-maybeMathJax.js
 
 exit_code=$?
 

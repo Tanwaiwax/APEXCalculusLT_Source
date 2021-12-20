@@ -23,6 +23,7 @@
 \usepackage{multicol}
 \usepackage{multirow}
 \usepackage{makeidx}
+\usepackage[font=small,justification=RaggedRight]{caption}
 \usepackage{hyperref}
 \newlist{sectionexercises}{enumerate}{1}
 \newcounter{saveexercisenum}
@@ -49,15 +50,37 @@
 
 150.0pt:\the\marginparwidth
 
+\setlength{\marginparwidth}{150pt}
+
 % https://github.com/brucemiller/LaTeXML/issues/1731
 This is a paragraph\index{paragraph}
 
 {\small This is a small paragraph\index{small paragraph}}
 
 % epubs (and xhtml?) aren't allowed to have span[@colspan],
-% which latexml likes to do in display math if there aren't enough & in a row:
-\begin{align*}1,1&1,2\\2,1\end{align*} % missing &2,2
+% which latexml likes to do in display math if there aren't enough & in a row
+\marginpar{\begin{minipage}[c]{\marginparwidth}%
+\captionsetup{type=figure}%
+\RaggedRight%
+\begin{align*}1,1&1,2\\2,1\end{align*}% missing &2,2%
+\end{minipage}}
 
+\begin{minipage}[c]{\marginparwidth}%
+\captionsetup{type=figure}%
+\RaggedRight%
+\begin{align*}1,1&1,2\\2,1\end{align*}% missing &2,2%
+\end{minipage}
+
+\begin{minipage}[c]{\marginparwidth}%
+\RaggedRight%
+\begin{align*}1,1&1,2\\2,1\end{align*}% missing &2,2%
+\end{minipage}
+
+\begin{minipage}[c]{\marginparwidth}%
+\begin{align*}1,1&1,2\\2,1\end{align*}% missing &2,2%
+\end{minipage}
+
+\begin{align*}1,1&1,2\\2,1\end{align*} % missing &2,2
 
 % see https://github.com/brucemiller/LaTeXML/issues/794
 % see also issue 1196 - positioning is hard because it's combining tex and browser

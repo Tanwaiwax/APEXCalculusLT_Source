@@ -17,17 +17,26 @@
  <xsl:import href="/home/timothy.prescott/.cpan/sources/authors/id/B/BR/BRMILLER/LaTeXML-0.8.6/lib/LaTeXML/resources/XSLT/LaTeXML-epub3.xsl"/>
  <!-- <xsl:import href="../LaTeXML/lib/LaTeXML/resources/XSLT/LaTeXML-epub3.xsl"/> -->
 
- <!-- todo latexml: exeternal javascript is not allowed -->
- <xsl:template
-    match="ltx:resource[@type='text/javascript' and starts-with(@src,'https:')]"
-    mode="inhead"/>
- <xsl:template
-    match="ltx:resource[@type='text/javascript' and starts-with(@src,'http:')]"
-    mode="inhead"/>
- <xsl:template
-    match="ltx:resource[@type='text/javascript' and @src='LaTeXML-maybeMathJax.js']"
-    mode="inhead" />
- 
+ <!-- todo latexml: exeternal files are not allowed -->
+ <xsl:template match="ltx:resource[starts-with(@src,'https:') or starts-with(@src,'http:')]" mode="inhead">
+  <xsl:message>Removing external resource: <xsl:value-of select="@src" /></xsl:message>
+ </xsl:template>
+ <xsl:template mode="inhead"
+    match="ltx:resource[@type='text/javascript' and @src='LaTeXML-maybeMathJax.js']">
+  <xsl:message>
+   Removing external loading resource: <xsl:value-of select="@src" />
+  </xsl:message>
+ </xsl:template>
+
+ <!-- todo latexml -->
+ <!-- the validator wasn't liking links to ./ -->
+ <func:function name="f:url">
+   <xsl:param name="url"/>
+   <func:result>
+       <xsl:value-of select="f:if($url='./','index.xhtml',$url)"/>
+   </func:result>
+ </func:function>
+
  <!-- todo latexml
  we aren't allowed to have span[@colspan],
  which latexml likes to do in display math if there aren't enough & in a row:
@@ -50,15 +59,6 @@
    </xsl:element>
  </xsl:template> -->
  
- <!-- todo latexml -->
- <!-- the validator wasn't liking links to ./ -->
- <func:function name="f:url">
-   <xsl:param name="url"/>
-   <func:result>
-       <xsl:value-of select="f:if($url='./','index.xhtml',$url)"/>
-   </func:result>
- </func:function>
-
  <!--
  "Watch the video: hyperlink" already comes before the iframe.
  We'll just delete the iframe.

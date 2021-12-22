@@ -14,8 +14,8 @@
     xmlns:xhtml = "http://www.w3.org/1999/xhtml"
     extension-element-prefixes="func f"
     exclude-result-prefixes = "ltx f func">
- <xsl:import href="/home/timothy.prescott/.cpan/sources/authors/id/B/BR/BRMILLER/LaTeXML-0.8.6/lib/LaTeXML/resources/XSLT/LaTeXML-epub3.xsl"/>
- <!-- <xsl:import href="../LaTeXML/lib/LaTeXML/resources/XSLT/LaTeXML-epub3.xsl"/> -->
+<!-- <xsl:import href="/home/timothy.prescott/.cpan/sources/authors/id/B/BR/BRMILLER/LaTeXML-0.8.6/lib/LaTeXML/resources/XSLT/LaTeXML-epub3.xsl"/>-->
+  <xsl:import href="../LaTeXML/lib/LaTeXML/resources/XSLT/LaTeXML-epub3.xsl"/>
 
  <!-- todo latexml: exeternal files are not allowed -->
  <xsl:template match="ltx:resource[starts-with(@src,'https:') or starts-with(@src,'http:')]" mode="inhead">

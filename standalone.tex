@@ -67,11 +67,13 @@ If I skip an entry in an align environment, LaTeXML fills it out with a colspan:
 If this is in a marginpar, however, LaTeXML uses span in place of td, but span is not allowed to have a colspan attribute:
 \marginpar{\begin{align*}1R&1L\\1R\end{align*}} % missing &2L
 
-This can be fixed by adding the missing ampersand:
+This can be fixed by adding the missing ampersand (although the alignment in the margin is off):
 \begin{align*}1R&1L\\1R&\end{align*} % missing 2L
 \marginpar{\begin{align*}1R&1L\\1R&\end{align*}} % missing 2L
 
 But if I'm using (abusing?) the ampersands to get a different alignment, then adding the extra ampersands doesn't avoid the colspan, and the marginpar version can't validate:
+\begin{align*}1R&1L&2R&&3R&3L\\1R&1L&2R&&3R&\end{align*}
+
 \begin{align*}1R&&2R\\1R&&\end{align*}
 \marginpar{\begin{align*}1R&&2R\\1R&&\end{align*}}
 \begin{align*}1R&&2R\\1R&&2R\end{align*}

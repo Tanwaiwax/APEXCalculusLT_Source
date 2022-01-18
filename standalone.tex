@@ -70,27 +70,27 @@ If this is in a marginpar, however, LaTeXML uses span in place of td, causing th
 \marginpar{\begin{align*}1R&1L\\1R\end{align*}} % missing &2L
 
 This can be fixed by adding the missing ampersand (although the alignment in the margin is off):
-\begin{align*}1R&1L\\1R&\end{align*} % missing 2L
 \marginpar{\begin{align*}1R&1L\\1R&\end{align*}} % missing 2L
+\begin{align*}1R&1L\\1R&\end{align*} % missing 2L
 
 But if I'm using (abusing?) the ampersands to get a different alignment, then adding the missing ampersand doesn't avoid the colspan, and the marginpar version can't validate:
+\marginpar{\begin{align*}1R&&2R&2L\\1R&&2R&\end{align*}}
 \begin{align*}1R&&2R&2L\\1R&&2R&\end{align*}
-\begin{align*}1R&1L&2R&&3R&3L\\1R&1L&2R&&3R&\end{align*}
-
-\begin{align*}1R&&2R\\1R&&\end{align*}
-\marginpar{\begin{align*}1R&&2R\\1R&&\end{align*}}
-\begin{align*}1R&&2R\\1R&&2R\end{align*}
-\marginpar{\begin{align*}1R&&2R\\1R&&2R\end{align*}}
 
 Things I've tried to avoid the colspan:\\
 inserting space:
-\begin{align*}1R&\,&2R\\1R&\,&2R\end{align*}
+\marginpar{\begin{align*}1R&\,&2R&2L\\1R&\,&2R&\end{align*}}
+\begin{align*}1R&\,&2R&2L\\1R&\,&2R&\end{align*}
 adding a makebox:
-\begin{align*}1R&\makebox[1pt]{}&2R\\1R&\makebox[1pt]{}&2R\end{align*}
+\marginpar{\begin{align*}1R&\makebox[1pt]{}&2R&2L\\1R&\makebox[1pt]{}&2R&\end{align*}}
+\begin{align*}1R&\makebox[1pt]{}&2R&2L\\1R&\makebox[1pt]{}&2R&\end{align*}
 
-The best I can do is remove the ampersands altogether and get the spacing some other way:
-\begin{align*}1R\qquad2R\\1R\qquad2R\end{align*}
-\marginpar{\begin{align*}1R\qquad2R\\1R\qquad2R\end{align*}}
+The best I can do is remove the extra ampersands altogether and get the spacing some other way:
+\marginpar{\begin{align*}1R\qquad2R&2L\\1R\qquad2R&\end{align*}}
+\begin{align*}1R\qquad2R&2L\\1R\qquad2R&\end{align*}
+(This also wouldn't work if $2R$ were changing its width, but that's not something I'm having to worry about at the moment, and if it were, I could put it into a makebox.)
+
+Ideally, instead of span[colspan] we would just use a few more spans (and possibly a few more td instead of colspan to maintain consistency).  But until then, is there a better hack I can use to get the alignments I want in an align environment?
 
 \end{document}
 

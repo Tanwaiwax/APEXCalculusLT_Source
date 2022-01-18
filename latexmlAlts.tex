@@ -24,6 +24,7 @@
 \usepackage{multirow}
 \usepackage{makeidx}
 \usepackage[font=small,justification=RaggedRight]{caption}
+\usepackage{marginnote}
 \usepackage{hyperref}
 \newlist{sectionexercises}{enumerate}{1}
 \newcounter{saveexercisenum}
@@ -57,15 +58,30 @@ This is a paragraph\index{paragraph}
 
 {\small This is a small paragraph\index{small paragraph}}
 
-% epubs (and xhtml?) aren't allowed to have span[@colspan],
+% html isn't allowed to have span[@colspan],
 % which latexml likes to do in display math in marginpar if there aren't enough & in a row
-\marginpar{\begin{align*}1,1&1,2\\2,1\end{align*}} % missing &2,2%
+% https://github.com/brucemiller/LaTeXML/issues/1763
 
-\marginpar{\begin{align*}1,1&1,2\\2,1&\end{align*}} % missing text for 2,2%
+\marginpar{\begin{align*}1R&1L\\1R\end{align*}} % missing &2L
+\begin{align*}1R&1L\\1R\end{align*} % missing &2L
 
-\marginpar{\begin{align*}1,1&1,2\\2,1&2,2\end{align*}}
+\marginpar{\begin{align*}1R&1L\\1R&\end{align*}} % missing 2L
+\begin{align*}1R&1L\\1R&\end{align*} % missing 2L
 
-\begin{align*}1,1&1,2\\2,1\end{align*} % missing &2,2
+\marginpar{\begin{align*}1R&&2R&2L\\1R&&2R&\end{align*}}
+\begin{align*}1R&&2R&2L\\1R&&2R&\end{align*}
+
+%inserting space:
+\marginpar{\begin{align*}1R&\,&2R&2L\\1R&\,&2R&\end{align*}}
+\begin{align*}1R&\,&2R&2L\\1R&\,&2R&\end{align*}
+
+%adding a makebox:
+\marginpar{\begin{align*}1R&\makebox[1pt]{}&2R&2L\\1R&\makebox[1pt]{}&2R&\end{align*}}
+\begin{align*}1R&\makebox[1pt]{}&2R&2L\\1R&\makebox[1pt]{}&2R&\end{align*}
+
+% get the spacing some other way:
+\marginpar{\begin{align*}1R\qquad2R&2L\\1R\qquad2R&\end{align*}}
+\begin{align*}1R\qquad2R&2L\\1R\qquad2R&\end{align*}
 
 % see https://github.com/brucemiller/LaTeXML/issues/794
 % see also issue 1196 - positioning is hard because it's combining tex and browser
@@ -250,13 +266,13 @@ This is the only thing that should be centered.\\
 
 %
 \begin{gather*}
-\mbox{now you see me}\\
-\makebox[1pt]{now you still see me 4}
+\text{now you see me}\\
+\makebox[1pt]{now you still see me}
 \end{gather*}
 
 \begin{gather*}
-\mbox{now you see me}\\
-\makebox[0pt]{now you still see me 5}
+\text{now you see me}\\
+\makebox[0pt]{now you don't}
 \end{gather*}
 
 % https://github.com/brucemiller/LaTeXML/issues/1720

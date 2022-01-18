@@ -24,7 +24,7 @@
 %\usepackage{multirow}
 %\usepackage{makeidx}
 %\usepackage[font=small,justification=RaggedRight]{caption}
-\usepackage{marginnote}
+%\usepackage{marginnote}
 %\usepackage{hyperref}
 %\newlist{sectionexercises}{enumerate}{1}
 %\newcounter{saveexercisenum}
@@ -60,17 +60,34 @@
 
 % epubs (and xhtml?) aren't allowed to have span[@colspan],
 % which latexml likes to do in display math in marginpar if there aren't enough & in a row
-\marginpar{\begin{align*}1-1&1-2\\2-1\end{align*}} % missing &2-2%
 
-\marginpar{\begin{align*}1-1&1-2\\2-1&\end{align*}} % missing text for 2-2%
+If I skip an entry in an align environment, LaTeXML fills it out with a colspan:
+\begin{align*}1R&1L\\1R\end{align*} % missing &2L
 
-\marginpar{\begin{align*}1-1&1-2\\2-1&2-2\end{align*}}
+If this is in a marginpar, however, LaTeXML uses span in place of td, but span is not allowed to have a colspan attribute:
+\marginpar{\begin{align*}1R&1L\\1R\end{align*}} % missing &2L
 
-\begin{align*}1-1&1-2\\2-1\end{align*} % missing &2-2
+This can be fixed by adding the missing ampersand:
+\begin{align*}1R&1L\\1R&\end{align*} % missing 2L
+\marginpar{\begin{align*}1R&1L\\1R&\end{align*}} % missing 2L
 
-\begin{align*}1-1&1-2\\2-1&\end{align*} % missing &2-2
+But if I'm using (abusing?) the ampersands to get a different alignment, then adding the extra ampersands doesn't avoid the colspan, and the marginpar version can't validate:
+\begin{align*}1R&&2R\\1R&&\end{align*}
+\marginpar{\begin{align*}1R&&2R\\1R&&\end{align*}}
+\begin{align*}1R&&2R\\1R&&2R\end{align*}
+\marginpar{\begin{align*}1R&&2R\\1R&&2R\end{align*}}
 
-\begin{align*}1-1&1-2&1-3\\2-1&2-2&\end{align*}
+Things I've tried to avoid the colspan:\\
+inserting space:
+\begin{align*}1R&\,&2R\\1R&\,&2R\end{align*}
+adding a makebox:
+\begin{align*}1R&\makebox[1pt]{}&2R\\1R&\makebox[1pt]{}&2R\end{align*}
+
+The best I can do is remove the ampersands altogether and get the spacing some other way:
+\begin{align*}1R\qquad2R\\1R\qquad2R\end{align*}
+\marginpar{\begin{align*}1R\qquad2R\\1R\qquad2R\end{align*}}
+
+\end{document}
 
 \begin{align*}1-1&1-2&1-3&1-4\\2-1&2-2&2-3&\end{align*}
 

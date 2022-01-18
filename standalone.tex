@@ -61,17 +61,20 @@
 % epubs (and xhtml?) aren't allowed to have span[@colspan],
 % which latexml likes to do in display math in marginpar if there aren't enough & in a row
 
+This post is about the align environment.  I'm going to identify columns by $nR$ or $nL$ to indicate the $n\textsuperscript{th}$ column that should be Right or Left justified.
+
 If I skip an entry in an align environment, LaTeXML fills it out with a colspan:
 \begin{align*}1R&1L\\1R\end{align*} % missing &2L
 
-If this is in a marginpar, however, LaTeXML uses span in place of td, but span is not allowed to have a colspan attribute:
+If this is in a marginpar, however, LaTeXML uses span in place of td, causing the colspan to fail the html validation:
 \marginpar{\begin{align*}1R&1L\\1R\end{align*}} % missing &2L
 
 This can be fixed by adding the missing ampersand (although the alignment in the margin is off):
 \begin{align*}1R&1L\\1R&\end{align*} % missing 2L
 \marginpar{\begin{align*}1R&1L\\1R&\end{align*}} % missing 2L
 
-But if I'm using (abusing?) the ampersands to get a different alignment, then adding the extra ampersands doesn't avoid the colspan, and the marginpar version can't validate:
+But if I'm using (abusing?) the ampersands to get a different alignment, then adding the missing ampersand doesn't avoid the colspan, and the marginpar version can't validate:
+\begin{align*}1R&&2R&2L\\1R&&2R&\end{align*}
 \begin{align*}1R&1L&2R&&3R&3L\\1R&1L&2R&&3R&\end{align*}
 
 \begin{align*}1R&&2R\\1R&&\end{align*}

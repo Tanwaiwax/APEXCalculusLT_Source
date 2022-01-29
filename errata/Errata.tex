@@ -6,9 +6,6 @@
 \usepackage{refcount}
 \usepackage{etoolbox}
 
-\newtoggle{maketable}
-\toggletrue{maketable}
-
 \title{Errata to Apex LT}
 \date{\today}
 
@@ -45,12 +42,10 @@
 
 \newcommand{\errorrow}[1]{%
  #1 & \errorboxed{#1I} & \errorboxed{#1II} & \errorboxed{#1III}
- \iftoggle{maketable}{
-  \write\markdown{#1|\errortext{#1I}|\errortext{#1II}|\errortext{#1III}}
- }{}
+ \write\markdown{#1|\errortext{#1I}|\errortext{#1II}|\errortext{#1III}}
 }
 
-\iftoggle{maketable}{
+\newcommand{\startMarkdownTable}{
  \newwrite\markdown
  \openout\markdown=README.md
  \write\markdown{Errata Totals}
@@ -67,7 +62,7 @@
   \write\markdown{(The totals for a row may be higher than what's listed in [changes.md](../changes.md) due to double counting.)}
   \closeout\markdown
  }
-}{}
+}
 
 \begin{document}
 
@@ -76,10 +71,19 @@
 \maketitle
 
 \noindent
-The following error exists in the in June 2021 printed version of Apex LT Calculus II:
+The following error exists in the in June 2021 printed version of Apex LT Calculus I:
+\begin{enumerate}
+\item \S1.5 p57 Example 7\#3a: The limit should be $-\infty$.
+\item At the back of the book, integration rule \#2 should enclose its integrand in parentheses, and \#23 should have $a>0$ or use $|a|$.
+\label{2021-06-00I}
+\end{enumerate}
+
+\noindent
+The following errors exist in the in June 2021 printed version of Apex LT Calculus II:
 \begin{enumerate}
 \item \S7.1\#5 p348: The solution's line segment should go through $(5,-2)$.
 \item \S8.7 p456 Theorem 1: The variable $n$ is representing two different things.  For that matter, so is $M$.
+\item At the back of the book, integration rule \#2 should enclose its integrand in parentheses, and \#23 should have $a>0$ or use $|a|$.
 \label{2021-06-00II}
 \end{enumerate}
 
@@ -87,11 +91,13 @@ The following error exists in the in June 2021 printed version of Apex LT Calcul
 The following error exists in the in June 2021 printed version of Apex LT Calculus III:
 \begin{enumerate}
 \item \S13.5 p815 Example 6: In the final fraction, the ``$+3y^2$'' should be in the denominator, not the numerator.
+\item At the back of the book, integration rule \#2 should enclose its integrand in parentheses, and \#23 should have $a>0$ or use $|a|$.
 \label{2021-06-00III}
 \end{enumerate}
 
 \end{document}
 
+\startMarkdownTable
 \begin{table}[ht]
 \caption{Errata Tally (``+'' indicates systemic errata)}
 \begin{tabular}{lccc}\toprule
@@ -158,7 +164,7 @@ The following errors exist in the in June 2019 printed version of Apex LT Calcul
 \item \S15.6 p1012\#5: The mass function should be $\delta(x,y,z)=z+10$ in order to give the book's answer and maintain a positive mass density.
 \item \S15.7 p1024 solution: The flux through the plane is 22.
 \item In the integration formulas at the back of the book, \#13 is missing its $dx$.
-\label{2019-06-00IIIplus}
+\label{2019-06-00III}
 \end{enumerate}
 
 %\newpage

@@ -51,13 +51,13 @@ sub getEmbeddedVideoAttr {
     };
 }
 
-DefMacro('\lxIncludeJavascriptFile{}',
-	 '\AtBeginDocument{\lx@include@file{javascript}{#1}}');
-DefMacro('\lxIncludeCssFile[]{}',
-	 '\AtBeginDocument{\lx@include@file{css}[#1]{#2}}');
+#DefMacro('\lxIncludeJavascriptFile{}',
+#	 '\AtBeginDocument{\lx@include@file{javascript}{#1}}');
+#DefMacro('\lxIncludeCssFile[]{}',
+#	 '\AtBeginDocument{\lx@include@file{css}[#1]{#2}}');
 
-DefConstructor('\lx@include@file{}[]{}',
-           '<ltx:resource type="text/#1" src="#3" ?#2(media="#2") />');
+#DefConstructor('\lx@include@file{}[]{}',
+#           '<ltx:resource type="text/#1" src="#3" ?#2(media="#2") />');
 if ( 0 ) {
 (
     sub {
@@ -71,17 +71,31 @@ if ( 0 ) {
 );
 }
 
+open(CSS,'>','style-theorems.css') or Error('missing_file','style-theorems.css',undef,"Can't truncate file.");
+close(CSS);
+
+DefPrimitive('\makeStyles{}{}',undef,
+    afterDigest => sub {
+        my ($stomach, $whatsit) = @_;
+        my $selector = '.ltx_theorem_'.$whatsit->getArg(1);
+        my $styles = &boxStyles($whatsit->getArg(2));
+        open(CSS,'>>','style-theorems.css') or
+            Error('missing_file','style-theorems.css',undef,"Can't append to file.");
+        print CSS "\n$selector $styles\n";
+        close(CSS);
+    });
+
+if (0) {
 DefConstructor('\makeStyles{}{}',
-	       '<ltx:resource type="text/css">'.
-	       '#selector #styles'.
-	       '</ltx:resource>',
+	       '<ltx:resource type="text/css">'.'#selector #styles'.'</ltx:resource>',
 	       properties => sub {
-		   return (
-		       selector => '.ltx_theorem_'.UnTeX($_[1]),
-		       styles => &boxStyles(UnTeX($_[2]))
-		       );
+               return (
+                   selector => '.ltx_theorem_'.UnTeX($_[1]),
+                   styles => &boxStyles(UnTeX($_[2]))
+                   );
 	       }
     );
+}
 
 sub boxStyles {
     my $hue = shift;
@@ -102,6 +116,7 @@ sub boxStyles {
       border-width: 1px;
       border-style: solid;
       border-color: $border;
+      color: black; /* if dark mode, color switches to washed out white */
       background-color: $middle; /* old browsers */
       background-image: -moz-linear-gradient(top,$start 0%,$stop); /* FF 3.6+ */
       background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start), color-stop(100%,$stop)); /* Chrome, Safari 4+ */

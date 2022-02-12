@@ -74,18 +74,19 @@ if ( 0 ) {
 open(CSS,'>','style-theorems.css') or Error('missing_file','style-theorems.css',undef,"Can't truncate file.");
 close(CSS);
 
-DefPrimitive('\makeStyles{}{}',undef,
-    afterDigest => sub {
-        #print STDERR "\nmakeStyles: array _\n";
-        #print STDERR Dumper(@_);
-        #print STDERR "\n:makeStyles array _\n";
-        my ($stomach, $whatsit) = @_;
+DefPrimitive('\makeStyles{}{}',sub {
+    my $stomach = shift;
+        print STDERR "\nmakeStyles: array _\n";
+        print STDERR Dumper(@_);
+        print STDERR "\n:makeStyles array _\n";
+        #my ($stomach, $whatsit) = @_;
         my $selector = '.ltx_theorem_'.UnTeX($_[1]); #$whatsit->getArg(1);
         my $styles = &boxStyles(UnTeX($_[2])); #($whatsit->getArg(2));
         open(CSS,'>>','style-theorems.css') or
             Error('missing_file','style-theorems.css',undef,"Can't append to file.");
         print CSS "\n$selector $styles\n";
         close(CSS);
+    return;
     });
 
 if (0) {

@@ -75,6 +75,19 @@ open(CSS,'>','style-theorems.css') or Error('missing_file','style-theorems.css',
 close(CSS);
 
 DefPrimitive('\makeStyles{}{}',sub {
+    my $selector = '.ltx_theorem_'.UnTeX($_[1]);
+    my $styles = &boxStyles(UnTeX($_[2]));
+    open(CSS,'>>','style-theorems.css') or
+        Error('missing_file','style-theorems.css',undef,"Can't append to file.");
+    print CSS "\n$selector $styles\n";
+    close(CSS);
+    return;
+});
+
+if (0) {
+DefConstructor('\makeStyles{}{}',
+	       '<ltx:resource type="text/css">'.'#selector #styles'.'</ltx:resource>',
+	       properties => sub {
     #my $stomach = shift;
     #    print STDERR "\nmakeStyles: array _\n";
     #    print STDERR Dumper(@_);
@@ -84,20 +97,6 @@ DefPrimitive('\makeStyles{}{}',sub {
         print STDERR UnTeX($_[1]);
     print STDERR "\nmakeStyles: _[2]\n";
         print STDERR Dumper($_[2]);
-        my $selector = '.ltx_theorem_'.UnTeX($_[1]); #$whatsit->getArg(1);
-        my $styles = &boxStyles(UnTeX($_[2])); #($whatsit->getArg(2));
-        open(CSS,'>>','style-theorems.css') or
-            Error('missing_file','style-theorems.css',undef,"Can't append to file.");
-        print CSS "\n$selector $styles\n";
-        close(CSS);
-        die();
-    return;
-    });
-
-if (0) {
-DefConstructor('\makeStyles{}{}',
-	       '<ltx:resource type="text/css">'.'#selector #styles'.'</ltx:resource>',
-	       properties => sub {
                return (
                    selector => '.ltx_theorem_'.UnTeX($_[1]),
                    styles => &boxStyles(UnTeX($_[2]))

@@ -51,34 +51,15 @@ sub getEmbeddedVideoAttr {
     };
 }
 
-#DefMacro('\lxIncludeJavascriptFile{}',
-#	 '\AtBeginDocument{\lx@include@file{javascript}{#1}}');
-#DefMacro('\lxIncludeCssFile[]{}',
-#	 '\AtBeginDocument{\lx@include@file{css}[#1]{#2}}');
-
-#DefConstructor('\lx@include@file{}[]{}',
-#           '<ltx:resource type="text/#1" src="#3" ?#2(media="#2") />');
-if ( 0 ) {
-(
-    sub {
-        if ( $_[2] ) {
-            RequireResource($_[3], {type=>"text/$_[1]",media=>$_[2]} );
-        } else {
-            RequireResource($_[3], {type=>"text/$_[1]"} );
-        }
-        return;
-    }
-);
-}
-
-open(CSS,'>','style-theorems.css') or Error('missing_file','style-theorems.css',undef,"Can't truncate file.");
+open(CSS,'>','style-theorems.css')
+    or Error('missing_file','style-theorems.css',undef,"Can't truncate file.");
 close(CSS);
 
 DefPrimitive('\makeStyles{}{}',sub {
     my $selector = '.ltx_theorem_'.UnTeX($_[1]);
     my $styles = &boxStyles(UnTeX($_[2]));
-    open(CSS,'>>','style-theorems.css') or
-        Error('missing_file','style-theorems.css',undef,"Can't append to file.");
+    open(CSS,'>>','style-theorems.css')
+        or Error('missing_file','style-theorems.css',undef,"Can't append to file.");
     print CSS "\n$selector $styles\n";
     close(CSS);
     return;
@@ -194,16 +175,16 @@ DefMacro('\packageinanswersection');
 DefMacro('\tcbset {}');
 
 
-if(0==1){
-# have to keep it here because .sty has \noexpand, which gets written
-# it appears to now be working.  I'll keep this for now
-DefMacro('\writeToAnsFile {}',sub {
-    #    print STDERR Dumper($_[1]);
-    (Tokenize('\immediate\write\answrite{\answersForSection{'
-	      . CounterValue('chapter')->toString . '}{'
-	      . CounterValue('section')->toString . '}{'),
-     $_[1],
-     Tokenize('}}'));});
+if ( 0==1 ) {
+    # have to keep it here because .sty has \noexpand, which gets written
+    # it appears to now be working.  I'll keep this for now
+    DefMacro('\writeToAnsFile {}',sub {
+        #    print STDERR Dumper($_[1]);
+        (Tokenize('\immediate\write\answrite{\answersForSection{'
+              . CounterValue('chapter')->toString . '}{'
+              . CounterValue('section')->toString . '}{'),
+         $_[1],
+         Tokenize('}}'));});
 }
 
 DefPrimitive('\showans Number',sub {
@@ -214,6 +195,6 @@ DefPrimitive('\showans Number',sub {
     my $contents = LookupValue($handle);
     print STDERR "\n\nCurrent $filename contents:\n$contents\n\n";
     return;
-	     });
+});
 
 1;

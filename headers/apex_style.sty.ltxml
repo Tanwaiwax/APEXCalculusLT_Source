@@ -76,6 +76,9 @@ close(CSS);
 
 DefPrimitive('\makeStyles{}{}',undef,
     afterDigest => sub {
+        print STDERR "\nmakeStyles: array _\n";
+        print STDERR Dumper(@_);
+        print STDERR "\n:makeStyles array _\n";
         my ($stomach, $whatsit) = @_;
         my $selector = '.ltx_theorem_'.$whatsit->getArg(1);
         my $styles = &boxStyles($whatsit->getArg(2));

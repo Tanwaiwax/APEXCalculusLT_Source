@@ -19,7 +19,8 @@
   <xsl:import href="../LaTeXML/lib/LaTeXML/resources/XSLT/LaTeXML-epub3.xsl"/>
 
   <!-- todo latexml: exeternal files are not allowed -->
-  <xsl:template match="ltx:resource[starts-with(@src,'https:') or starts-with(@src,'http:')]" mode="inhead">
+  <xsl:template mode="inhead"
+      match="ltx:resource[starts-with(@src,'https:') or starts-with(@src,'http:')]">
     <xsl:message>Removing external resource: <xsl:value-of select="@src" /></xsl:message>
   </xsl:template>
   <xsl:template mode="inhead"

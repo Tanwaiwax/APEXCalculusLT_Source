@@ -55,9 +55,11 @@ printf '\\newcommand{\\thetitle}{Calculus}\n\\printincolor\n\\usethreeDgraphics\
 
 #singularity exec $singularitydir/latexml.sif $latexmlscripts/latexml --destination=lab/moverMunder/moverMunder.xml --nocomments lab/moverMunder/moverMunder
 
-singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost --destination=lab/moverMunder/moverMunder.html lab/moverMunder/moverMunder.xml
+#singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost --destination=lab/moverMunder/moverMunder.html lab/moverMunder/moverMunder.xml
 
-singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost --destination=lab/moverMunder/moverMunder.xhtml lab/moverMunder/moverMunder.xml
+singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost --destination=lab/moverMunder/moverMunder.xhtml --stylesheet=apexepub.xsl lab/moverMunder/moverMunder.xml
+
+singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost --destination=lab/moverMunder/moverMunder.epub lab/moverMunder/moverMunder.xml
 
 exit 0
 

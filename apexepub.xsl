@@ -47,10 +47,10 @@
   -->
  
   <!-- todo latexml
-  several epub readers don't like <mpadded width="(length)">
+  several epub readers don't like <mpadded width="(negativelength)">
   (which can come from, eg, \!).
   -->
-  <xsl:template match="m:mpadded[@width]">
+  <xsl:template match="m:mpadded[starts-with(@width,'-')]">
      <xsl:apply-templates />
   </xsl:template>
 

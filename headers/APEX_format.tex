@@ -450,7 +450,8 @@
    Exercise set \theexercisesetcounter\space begins with \arabic{sectionexercisesi}%
   }%
  }%
- \pagebreak[1]%
+ % todo see https://github.com/brucemiller/LaTeXML/issues/1802
+ \ifbool{latexml}{}{\pagebreak[1]}%
  {%
   \setlist[enumerate,1]{label=(\alph*)}% for exercise set instructions
   \noindent#1 \arabic{sectionexercisesi}--\ref*{enumiatendof\theexercisesetcounter}#2%
@@ -460,7 +461,8 @@
 }{%
  \label{enumiatendof\theexercisesetcounter}%
  \closeenumerate%
- \pagebreak[1]%
+ % todo see https://github.com/brucemiller/LaTeXML/issues/1802
+ \ifbool{latexml}{}{\pagebreak[1]}%
  \ifnumodd{\value{sectionexercisesi}}{%
   \PackageInfo{apex}{%
    Exercise set \theexercisesetcounter\space ends with \arabic{sectionexercisesi}%

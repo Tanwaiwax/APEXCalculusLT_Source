@@ -1,5 +1,27 @@
 \documentclass{article}
 
+\typeout{\meaning\pagebreak.}
+\typeout{\meaning\nopagebreak.}
+
+\makeatletter
+\typeout{\expandafter\meaning\csname pagebreak \endcsname.}
+\typeout{\expandafter\meaning\csname nopagebreak \endcsname.}
+\typeout{testopt:\meaning\@testopt}
+\typeout{no pgbk:\meaning\@no@pgbk}
+\typeout{no pgbk -:\expandafter\meaning\csname @no@pgbk -\endcsname.}
+\typeout{getpen:\meaning\@getpen}
+\typeout{penalty:\meaning\penalty}
+\typeout{z:\meaning\z@}
+\typeout{lowpenalty:\meaning\@lowpenalty}
+\typeout{medpenalty:\meaning\@medpenalty}
+\typeout{highpenalty:\meaning\@highpenalty}
+\typeout{M:\meaning\@M}
+% \pagebreak[0]
+% \@testopt {\@no@pgbk -}4[0]
+% \@no@pgbk[0]
+% \penalty
+\makeatother
+
 \begin{document}
 
 0\pagebreak[0]

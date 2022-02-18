@@ -53,7 +53,7 @@ latexmlscripts="$HOME/git/LaTeXML/blib/script"
 singularitydir="$HOME/latexml"
 printf '\\newcommand{\\thetitle}{Calculus}\n\\printincolor\n\\usethreeDgraphics\n\\renewcommand{\\monthYear}{June 2021}\n' > options.tex
 
-#singularity exec $singularitydir/latexml.sif $latexmlscripts/latexml --destination=lab/moverMunder/moverMunder.xml --nocomments lab/moverMunder/moverMunder
+singularity exec $singularitydir/latexml.sif $latexmlscripts/latexml --destination=lab/moverMunder/moverMunder.xml --nocomments lab/moverMunder/moverMunder
 
 #singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost --destination=lab/moverMunder/moverMunder.html lab/moverMunder/moverMunder.xml
 

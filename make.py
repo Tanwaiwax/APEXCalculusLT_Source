@@ -18,6 +18,7 @@ import argparse
 import atexit
 import collections
 import glob
+import html
 import itertools
 import os
 import platform
@@ -63,15 +64,16 @@ addboolarg('matrices','Create matrix figures for LaTeXML.')
 addboolarg('prc','Update 3D html.')
 addboolarg('instructor','Create instructor solution manual.')
 addboolarg('internet','Create interNet version (options x & w).',shortkey='n')
-addboolarg('xml','Create xml version. (2 or 5 hours)'); # 120, 90, 107
-addboolarg('web','Convert xml version to html. (5 min)');
+addboolarg('xml','Create xml version. (2 or 5 hours)') # 120, 90, 107
+addboolarg('web','Convert xml version to html. (5 min)')
 parser.add_argument('--standalonen',action='store_true',
                     help='Create interNet version for standalone.tex')
 parser.add_argument('--standalonex',action='store_true',
                     help='Create xml version for standalone.tex')
 parser.add_argument('--standalonew',action='store_true',
                     help='Convert xml version to html for standalone.tex')
-addboolarg('todo','Update todo lists.');
+addboolarg('todo','Update todo lists.')
+addboolarg('overview','Create overview file.')
 addboolarg('quit','Write options.tex and quit.')
 parser.add_argument('--spelling',action='store_true',help='Run spellcheck')
 parser.add_argument('--justprint',action='store_true',
@@ -157,6 +159,106 @@ def makefigs():
                 os.remove(outfile)
     finally:
         os.chdir('..')
+
+labeltypes = ('definition','example','figure','keyidea','theorem')
+depths = {
+    'Calc': 0,
+    'C': 1,
+    'S': 2
+}
+
+def get_depth(overview):
+    for start,depth in depths.items():
+        if overview.startswith(start):
+            return depth
+    return 3
+
+def create_overview():
+    overviewlist = shuffle_prereqs(overviewfromfile('Calculus.aux'))
+    previous,previous_depth = None,-1
+    with open('overview.html','w+') as overviewhtml:
+        overviewhtml.write('<!doctype html>\n'
+        '<html lang="en-US">\n'
+        ' <head>\n'
+        '  <meta charset="utf-8">\n'
+        '  <title>Calculus Overview</title>\n'
+        '  <style>\n'
+        '   li { list-style-type: none; }\n'
+        '   ul ul { display: none; }\n'
+        '   li input:checked ~ ul { display: block; }\n'
+        '   .overviewitem { display: none; }\n'
+        +'\n'.join(f' #{labeltype[0].upper()}:checked ~ ul .{labeltype[0].upper()} {{ display: block; }}'
+                   for labeltype in labeltypes )
+        +'\n  </style>\n'
+        ' </head>\n'
+        ' <body>\n'
+        '  <h1>Calculus Overview</h1>\n'
+        +'\n'.join(f'  <input type="checkbox" value="{labeltype}" id="{labeltype[0].upper()}" />'
+                   f'<label for="{labeltype[0].upper()}">{labeltype.title()}</label>'
+                   for labeltype in labeltypes) )
+        for overview in overviewlist:
+            depth = get_depth(overview)
+            if depth <= previous_depth:
+                overviewhtml.write('</li>\n'+('</ul>\n</li>\n'*(previous_depth-depth)))
+            else: #if previous_depth < depth:
+                overviewhtml.write('<ul>\n'+('<li><input type="checkbox"><ul>\n'*(depth-previous_depth-1)))
+            if depth == 3:
+                overviewhtml.write(f'<li class="overviewitem {overview[0]}">\n{overview}')
+            elif depth == 0:
+                overviewhtml.write('<li>\n'
+                    f'<input type="checkbox" id="{overview.replace(" ","_")}">'
+                    f'<label for="{overview.replace(" ","_")}">{overview}</label>')
+            else:
+                overviewhtml.write('<li>\n'
+                    f'<input type="checkbox" id="{overview.split()[0]}">'
+                    f'<label for="{overview.split()[0]}">{overview}</label>')
+            previous,previous_depth = overview,depth
+        overviewhtml.write('</ul></li></ul></li></ul></li></ul></body></html>')
+
+def shuffle_prereqs(overviewlist):
+    ret = []
+    delayqueue = []
+    while overviewlist:
+        nextitem = overviewlist.pop(0)
+        if 'Chapter Prerequisites' in nextitem:
+            while not nextitem.startswith('C'):
+                delayqueue.append(nextitem)
+                nextitem = overviewlist.pop(0)
+        ret.append(nextitem)
+        if delayqueue:
+            ret.extend(delayqueue)
+            delayqueue = []
+    return ret
+
+def overviewfromfile(filename):
+    with open(filename) as filein:
+        overviewlist = []
+        for line in filein:
+            linepieces = re.split(r'\s*(?:{|})\s*',line)
+            # I'm not sure why ?: is needed.  Without it, the { } show up in the matches
+            if line.startswith(r'\@input{'): # }
+                overviewlist.extend(overviewfromfile(linepieces[1]))
+            if line.startswith(r'\@writefile{toc}{\contentsline {'): # } }
+                if linepieces[4]=='part':
+                    # eg: \@writefile {toc}
+                    # { \contentsline {part}{Calculus I}{1}{part*.10}\protected@file@percent }
+                    overviewlist.append( f'{linepieces[6]}: p{linepieces[8]}' )
+                elif linepieces[4] in ('section','chapter') and 'numberline' in line:
+                    # eg: \@writefile {toc}
+                    # { \contentsline {section}{\numberline {8.7}Numerical Integration}{447}{section.8.7}\protected@file@percent }
+                    overviewlist.append( f'{linepieces[4][0].upper()}{linepieces[7]}: p{linepieces[10]}: {linepieces[8]}' )
+            if line.startswith(r'\newlabel{') and any( linepieces[-5].startswith(labeltype) for labeltype in labeltypes ): # }
+                # eg: \newlabel {ex_der_num_approx}
+                # { {2.1.3}{84}{Numerical Approximation of the Tangent Line}{example.2.1.3}{} }
+                resplit = re.split(r'\s*(?:{|})\s*',line,maxsplit=8) # split again, with maxsplit
+                rightsplit = [ piece.strip(' {') for piece in resplit[-1].rsplit('}',maxsplit=4) ]
+                text = rightsplit[0]
+                if text.endswith(r'\relax'):
+                    text = text.rstrip('relax').rstrip('\\')
+                overviewlist.append( f'{rightsplit[1][0].upper()}{resplit[4]}: p{resplit[6]}: {html.escape(rightsplit[0])}' )
+            #elif  line.startswith(r'\newlabel{'):
+            #    breakpoint()
+        return overviewlist
 
 Figure = collections.namedtuple('Figure',['num','file'])
 
@@ -446,6 +548,15 @@ def writemisspellings():
         for word,count in runningTotal.most_common(10):
             print(word+':',count,'time(s)',file=misspellings)
 
+option_func = {
+    'figures': makefigs,
+    'matrices': makematrices,
+    'todo': updatetodo,
+    'prc': updateprc,
+    'spelling': writemisspellings,
+    'overview': create_overview
+}
+
 def compilewith(commands=False):
     print('running:',commands)
     #quit()
@@ -453,21 +564,10 @@ def compilewith(commands=False):
         args = parser.parse_args([''.join(commands)])
     else:
         args = parser.parse_args()
-    if args.figures:
-        makefigs()
-        return
-    if args.matrices:
-        makematrices()
-        return
-    if args.todo:
-        updatetodo()
-        return
-    if args.prc:
-        updateprc()
-        return
-    if args.spelling:
-        writemisspellings()
-        return
+    for option,func in option_func.items():
+        if getattr(args,option):
+            func()
+            return
     if args.calculus == 4:
         args.calculus = 0
     writeoptions(args)

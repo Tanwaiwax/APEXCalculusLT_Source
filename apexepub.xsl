@@ -40,6 +40,7 @@
   </func:function>
 
   <!-- todo latexml
+  see https://github.com/brucemiller/LaTeXML/issues/1763
   we aren't allowed to have span[@colspan],
   which latexml likes to do in display math if there aren't enough & in a row:
   \begin{align*}1,1&1,2\\2,1\end{align*} % missing &2,2
@@ -57,9 +58,8 @@
   <!-- todo latexml?
   if @type and @media inherited by default, then we'd just need to drop media
   -->
-  <!-- Mac's Books.app doesn't seem to apply the media attribute,
-  so lets remove it.
-  or maybe they only work in epub3?
+  <!-- Mac's Books.app seems to think the width is the width of however many pages exist,
+  so lets remove it. -->
   <xsl:template match="ltx:resource[@type='text/css' and @src='style-narrow.css']" mode="inhead">
     <xsl:text>&#x0A;</xsl:text>
     <xsl:element name="link" namespace="{$html_ns}">
@@ -67,7 +67,7 @@
       <xsl:attribute name="href"><xsl:value-of select="@src" /></xsl:attribute>
       <xsl:attribute name="type"><xsl:value-of select="@type" /></xsl:attribute>
     </xsl:element>
-  </xsl:template> -->
+  </xsl:template>
  
   <!--
   "Watch the video: hyperlink" already comes before the iframe.

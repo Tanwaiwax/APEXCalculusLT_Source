@@ -12,4 +12,4 @@ If you want to roll up your sleeves and look for other things to do, those are g
 * [notes to myself](todo_tim.md)
 * [TeX commands](todo_tex.txt) that might not be necessary if we did things correctly
 
-If tackle one of these, let me know which file you're looking at, as well as what your contribution is.
+If you tackle one of these, let me know which file you're looking at, as well as what your contribution is.

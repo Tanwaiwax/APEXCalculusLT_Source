@@ -5,7 +5,7 @@ If you are interested in a particular error, you can look through [Errata.tex](E
 
 Version | Calculus I | Calculus II | Calculuc III
 ---|---|---|---
-2021-06-00|2  |4  |4  
+2021-06-00|2  |33  |5  
 2019-06-00|6+ |7  |22  
 2018-07-13|47  |56+ |13+ 
 2017-11-13|  |  |12+ 

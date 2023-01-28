@@ -15,16 +15,17 @@
     xmlns:m="http://www.w3.org/1998/Math/MathML"
     extension-element-prefixes="func f"
     exclude-result-prefixes = "ltx f func">
-<!-- <xsl:import href="/home/timothy.prescott/.cpan/sources/authors/id/B/BR/BRMILLER/LaTeXML-0.8.6/lib/LaTeXML/resources/XSLT/LaTeXML-epub3.xsl"/>-->
   <xsl:import href="../LaTeXML/lib/LaTeXML/resources/XSLT/LaTeXML-epub3.xsl"/>
 
   <!-- todo latexml: exeternal files are not allowed -->
+<!--  if xslt v 2:-->
+<!--  <xsl:template mode="inhead" match="ltx:resource[matches(@src,'^(https?:)?//')]">-->
   <xsl:template mode="inhead"
-      match="ltx:resource[starts-with(@src,'https:') or starts-with(@src,'http:')]">
+      match="ltx:resource[starts-with(@src,'https://') or starts-with(@src,'http://') or starts-with(@src,'//')]">
     <xsl:message>Removing external resource: <xsl:value-of select="@src" /></xsl:message>
   </xsl:template>
   <xsl:template mode="inhead"
-      match="ltx:resource[@type='text/javascript' and @src='LaTeXML-maybeMathJax.js']">
+      match="ltx:resource[@type='text/javascript' and @src='LaTeXML-maybeMathjax.js']">
     <xsl:message>
         Removing external loading resource: <xsl:value-of select="@src" />
     </xsl:message>
@@ -75,6 +76,7 @@
   -->
   <xsl:template match="ltx:rawhtml[xhtml:iframe/@title='Embedded video']"/>
 
+  <!-- replace 3d images with their png counterparts -->
   <xsl:template match="ltx:inline-block[contains(@class,'includedAsy')]">
     <xsl:variable name="filename" select="ltx:rawhtml/xhtml:iframe/@src" />
     <xsl:element name="img" namespace="{$html_ns}">

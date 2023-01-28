@@ -22,7 +22,7 @@ label("$y$",(0,ybounds.y+0.05*(ybounds.y-ybounds.x),0));
 label("$z$",(0,0,zbounds.y+0.05*(zbounds.y-zbounds.x)));
 
 triple f(pair t) {
-	return (t.x,2*t.x+1,t.y*(-sin(t.x*2+1)+cos(t.x)+2));
+	return (t.x,2*t.x+1,t.y*(sin(t.x*2+1)+cos(t.x)+2));
 }
 surface s=surface(f,(-1,0),(1,1),8,8,
 usplinetype=new splinetype[] {notaknot,notaknot,monotonic},
@@ -30,7 +30,7 @@ vsplinetype=new splinetype[] {notaknot,notaknot,monotonic});
 pen p=colorone;
 draw(s,emissive(coloronefill),meshpen=p);
 
-triple g(real t) {return (t,2*t+1,-sin(2t+1)+cos(t)+2);}
+triple g(real t) {return (t,2*t+1,sin(2t+1)+cos(t)+2);}
 path3 mypath=graph(g,-1,1,operator ..);
 draw(mypath,colorone+linewidth(2));
 

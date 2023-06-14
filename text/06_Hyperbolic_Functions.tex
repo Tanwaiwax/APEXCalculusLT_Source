@@ -58,7 +58,7 @@ We begin with their definitions.
 
 The hyperbolic functions are graphed in \autoref{fig:hyperbolic}. In the graphs of $\cosh x$ and $\sinh x$, graphs of $e^x/2$ and $e^{-x}/2$ are included with dashed lines. As $x$ gets ``large,'' $\cosh x$ and $\sinh x$ each act like $e^x/2$; when $x$ is a large negative number, $\cosh x$ acts like $e^{-x}/2$ whereas $\sinh x$ acts like $-e^{-x}/2$.
 
-\mnote[1in]{\textbf{Pronunciation Note:} \\
+\mnote{\textbf{Pronunciation Note:} \\
 ``cosh'' rhymes with ``gosh,'' \\
 ``sinh'' rhymes with ``pinch,'' and\\
 ``tanh'' rhymes with ``ranch,'' \\
@@ -286,7 +286,7 @@ We can simplify this last expression as $\sinh x$ is based on exponentials:
 
 Just as the inverse trigonometric functions are useful in certain integrations, the inverse hyperbolic functions are useful with others. \autoref{fig:hfinverse2} shows the restrictions on the domains to make each function one-to-one and the resulting domains and ranges of their inverse functions. Their graphs are shown in \autoref{fig:hfinverse1}.\index{hyperbolic function!inverse}
 
-Because the hyperbolic functions are defined in terms of exponential functions, their inverses can be expressed in terms of logarithms as shown in \autoref{idea:hyperbolic_log}. It is often more convenient to refer to $\sinh^{-1}x$ than to $\ln\bigl(x+\sqrt{x^2+1}\bigr)$, especially when one is working on theory and does not need to compute actual values. On the other hand, when computations are needed, technology is often helpful but many hand-held calculators lack a \emph{convenient} $\sinh^{-1}x$ button. (Often it can be accessed under a menu system, but not conveniently.) In such a situation, the logarithmic representation is useful. The reader is not encouraged to memorize these, but rather know they exist and know how to use them when needed.
+Because the hyperbolic functions are defined in terms of exponential functions, their inverses can be expressed in terms of logarithms as shown in \autoref{idea:hyperbolic_log}. It is often more convenient to use $\sinh^{-1}x$ than $\ln\bigl(x+\sqrt{x^2+1}\bigr)$, especially when one is working on theory and does not need to compute actual values. On the other hand, when computations are needed, technology is often helpful but many hand-held calculators lack a \emph{convenient} $\sinh^{-1}x$ button. (Often it can be accessed under a menu system, but not conveniently.) In such a situation, the logarithmic representation is useful. The reader is not encouraged to memorize these, but rather know they exist and know how to use them when needed.
 
 \noindent\begin{minipage}[t]{\linewidth}\noindent%
 \captionsetup{type=figure}%
@@ -450,7 +450,7 @@ The following Key Ideas give the derivatives and integrals relating to the inver
 \end{keyidea}}
 
 {
-\tcbset{grow to right by=9.5em}
+\tcbset{grow to right by=8.1em}
 \addtolength{\tabcolsep}{-.2em}
 % 9.5em / -.2em sufficient
 \begin{keyidea}[Integrals Involving Inverse Hyperbolic Functions]\label{idea:hyperbolic_inverse_integrals}
@@ -458,16 +458,21 @@ The following Key Ideas give the derivatives and integrals relating to the inver
 \begin{anywhereenum}
 \renewcommand{\arraystretch}{2.5}
 \begin{tabular}{lll}
-\item $\ds\int\frac1{\sqrt{x^2-a^2}}\dd x$ & $\ds{}=\cosh^{-1}\left(\frac xa\right)+C$; $0<a<\abs x$ & $\ds{}=\ln\abs{x+\sqrt{x^2-a^2}}+C$ \\
+\item $\ds\int\frac1{\sqrt{x^2-a^2}}\dd x$ & $\ds{}=\cosh^{-1}\left(\frac xa\right)+C$; $0<a<x$ & $\ds{}=\ln\left(x+\sqrt{x^2-a^2}\right)+C$ \\
 \item $\ds\int\frac1{\sqrt{x^2+a^2}}\dd x$ & $\ds{}=\sinh^{-1}\left(\frac xa\right)+C$; $a>0$ & $\ds{}=\ln\left(x+\sqrt{x^2+a^2}\right)+C$ \\
 \item $\ds\int\frac1{a^2-x^2}\dd x$ & $\ds{}=\begin{cases}
 \frac1a\tanh^{-1}\left(\frac xa\right)+C & \abs x<\abs a \\
 \frac1a\coth^{-1}\left(\frac xa\right)+C & \abs a<\abs x
 \end{cases}$ & $\ds{}=\frac1{2a}\ln\abs{\frac{a+x}{a-x}}+C$ \\
-\item $\ds\int\frac1{x\sqrt{a^2-x^2}}\dd x$ & $\ds{}=-\frac1a\sech^{-1}\left(\frac xa\right)+C$; $0<x<a$ & $\ds{}=\frac1a\ln\left(\frac{x}{a+\sqrt{a^2-x^2}}\right)+C$ \\
-%\item $\ds\int\frac1{x\sqrt{a^2-x^2}}\dd x$ & $\ds{}=-\frac1a\sech^{-1}\left(\frac xa\right)+C$ & $\ds{}=\frac1a\ln\left(\frac{x}{a+\sqrt{a^2-x^2}}\right)+C$ \\[\defaultaddspace]
+\item $\ds\int\frac1{x\sqrt{a^2-x^2}}\dd x$ &
+$\ds{}=-\frac1a\sech^{-1}\frac{\abs x}a+C$; $0<\abs x<a$ & $\ds{}=\frac1a\ln\abs{\frac x{a+\sqrt{a^2-x^2}}}+C$ \\
+% $\ds{}=-\frac1a\sech^{-1}\left(\frac xa\right)+C$ & $\ds{}=\frac1a\ln\left(\frac{x}{a+\sqrt{a^2-x^2}}\right)+C$ \\[\defaultaddspace]
 %&\null\hfill{$\scriptstyle0<x<a$}\\[\defaultaddspace]
-\item $\ds\int\frac1{x\sqrt{x^2+a^2}}\dd x$ & $\ds{}=-\frac1a\csch^{-1}\abs{\frac xa}+C$; $x\neq 0,\ a>0$ & $\ds{}=\frac1a\ln\abs{\frac{x}{a+\sqrt{a^2+x^2}}}+C$\\
+\item $\ds\int\frac1{x\sqrt{x^2+a^2}}\dd x$ & $\ds{}=-\frac1a\csch^{-1}\frac{\abs x}a+C$; $x\neq 0,\ a>0$ & $\ds{}=
+\frac1a\ln\abs{\frac x{a+\sqrt{a^2+x^2}}}
+%-\frac1a\ln\left(\frac ax+\frac{\sqrt{x^2+a^2}}{a\abs x}\right)
+% sqrt(1+(x/a)^2)/|x/a| = sqrt(a^2+x^2)/|ax|
++C$\\
 %\item $\ds\int\frac1{x\sqrt{x^2+a^2}}\dd x$ & $\ds{}=-\frac1a\csch^{-1}\abs{\frac xa}+C$ & $\ds{}=\frac1a\ln\abs{\frac{x}{a+\sqrt{a^2+x^2}}}+C$\\[\defaultaddspace]
 %&\null\hfill{$\scriptstyle x\neq 0,\ a>0$}
 \end{tabular}

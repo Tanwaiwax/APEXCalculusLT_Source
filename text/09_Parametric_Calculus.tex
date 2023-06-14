@@ -29,7 +29,10 @@ Let a curve $C$ be parameterized by $x=f(t)$ and $y=g(t)$, where $f$ and $g$ are
 Notice that the tangent line goes through the point $(f(t_0),g(t_0))$.  It is possible for parametric curves to have horizontal and vertical tangents. As expected a horizontal tangent occurs whenever $\frac{\dd y}{\dd x} = 0$ or when $\frac{\dd y}{\dd t} = 0$ (provided $\frac{\dd x}{\dd t} \neq 0$). Similarly, a vertical tangent occurs whenever $\frac{\dd y}{\dd x}$ is undefined or when $\frac{\dd x}{\dd t} = 0$ (provided $\frac{\dd y}{\dd t} \neq 0$).  When $\frac{\dd y}{\dd x}$ is defined, however, the tangent line has slope $\frac{g'(t_0)}{\fp(t_0)}$.
 
 \begin{definition}[Normal Lines]\label{def:normal_par}
-The \textbf{normal line} to a curve $C$ at a point $P$ is the line through $P$ and perpendicular to the tangent line at $P$. For $t=t_0$ the normal line is the line through $(f(t_0), g(t_0))$ with slope $m=-\frac{\fp(t_0)}{g'(t_0)}$, provided $g'(t_0) \neq 0$.\index{normal line}\index{parametric equations!normal line}
+The \textbf{normal line} to a curve $C$ at a point $P$ is the line through $P$ and perpendicular to the tangent line at $P$. This has equation
+\[g'(t_0)(y-g(t_0))=-\fp(t_0)(x-f(t_0)).\]
+%For $t=t_0$ the normal line is the line through $(f(t_0), g(t_0))$ with slope $m=-\frac{\fp(t_0)}{g'(t_0)}$, provided $g'(t_0) \neq 0$.
+\index{normal line}\index{parametric equations!normal line}
 \end{definition}
 
 As with the tangent line we note that it is possible for a normal line to be vertical or horizontal. A horizontal normal line occurs whenever $\frac{\dd y}{\dd x}$ is undefined or when $\frac{\dd x}{\dd t} = 0$ (provided $\frac{\dd y}{\dd t} \neq 0$). Similarly, a vertical normal line occurs whenever $\frac{\dd y}{\dd x} = 0$ or when $\frac{\dd y}{\dd t} = 0$ (provided $\frac{\dd x}{\dd t} \neq 0$). In other words, if the curve $C$ has a vertical tangent  at $(f(t_0), g(t_0))$ the normal line will be horizontal and if the tangent is horizontal the normal line will be a vertical line.
@@ -257,7 +260,7 @@ ymin=-1.1,ymax=1.1,xmin=-.5,xmax=4.5]
 					(axis cs: 2.52223, 0.0783547) circle (1.5pt)
 					(axis cs: 3.07855, -0.0526833) circle (1.5pt)
 					(axis cs: 3.55049, 0.0396324) circle (1.5pt)
-					(axis cs:3.96733, -0.0317508) circle (1.5pt);;
+					(axis cs:3.96733, -0.0317508) circle (1.5pt);
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
@@ -359,9 +362,6 @@ L &= \int_0^{3\pi/2} \sqrt{(-3\sin t)^2 +(3\cos t)^2} \dd t.\\
 This should make sense; we know from geometry that the circumference of a circle with radius 3 is $6\pi$; since we are finding the arc length of $3/4$ of a circle, the arc length is $3/4\cdot 6\pi = 9\pi/2$.
 \end{example}
 
-\begin{example}[Arc Length of a Parametric Curve]\label{ex_parcalc7}
-The graph of the parametric equations $x=t(t^2-1)$, $y=t^2-1$ crosses itself as shown in \autoref{fig:parcalc7}, forming a ``teardrop.'' Find the arc length of the teardrop.
-%
 \mtable{A graph of the parametric equations in \autoref{ex_parcalc7}, where the arc length of the teardrop is calculated.}{fig:parcalc7}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,xtick={1,-1},ytick={-1,1},
@@ -371,6 +371,9 @@ ymin=-1.1,ymax=1.1,xmin=-1.1,xmax=1.1]
 \node [right] at (myplot.right of origin) {\scriptsize $t$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
+
+\begin{example}[Arc Length of a Parametric Curve]\label{ex_parcalc7}
+The graph of the parametric equations $x=t(t^2-1)$, $y=t^2-1$ crosses itself as shown in \autoref{fig:parcalc7}, forming a ``teardrop.'' Find the arc length of the teardrop.
 \solution
 We can see by the parameterizations of $x$ and $y$ that when $t=\pm 1$, $x=0$ and $y=0$. This means we'll integrate from $t=-1$ to $t=1$. Applying \autoref{thm:arc_length_parametric}, we have
 \begin{align*}
@@ -403,6 +406,8 @@ Consider the graph of the parametric equations $x=f(t)$ and $y=g(t)$, where $\fp
 \end{enumerate}
 \end{keyidea}
 
+\begin{example}[Surface Area of a Solid of Revolution]\label{ex_parcalc8}
+%
 \mtable{Rotating a teardrop shape about the $x$-axis in \autoref{ex_parcalc8}.}{fig:parcalc8}{
 \myincludeasythree{width=\marginparwidth,%deactivate=pageinvisible,
 3Droll=0,
@@ -412,8 +417,7 @@ Consider the graph of the parametric equations $x=f(t)$ and $y=g(t)$, where $\fp
 3Droo=120.71813597868993}{width=\marginparwidth}{figures/figparcalc8_3D}
 %{scale=1.5,trim=5mm 5mm 5mm 5mm,clip}{0in}{figures/figparcalc8}
 }
-
-\begin{example}[Surface Area of a Solid of Revolution]\label{ex_parcalc8}
+%
 Consider the teardrop shape formed by the parametric equations $x=t(t^2-1)$, $y=t^2-1$ as seen in \autoref{ex_parcalc7}. Find the surface area if this shape is rotated about the $x$-axis, as shown in \autoref{fig:parcalc8}.
 \solution
 The teardrop shape is formed between $t=-1$ and $t=1$. Using \autoref{idea:surface_area_parametric}, we see we need for $g(t)\geq 0$ on $[-1,1]$, and this is not the case. To fix this, we simplify replace $g(t)$ with $-g(t)$, which flips the whole graph about the $x$-axis (and does not change the surface area of the resulting solid). The surface area is: 

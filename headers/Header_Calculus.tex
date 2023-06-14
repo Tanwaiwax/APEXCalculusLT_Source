@@ -231,6 +231,8 @@
 \newcommand{\vvt}{\ensuremath{\vec v(t)}}
 \newcommand{\vat}{\ensuremath{\vec a(t)}}
 
+\newcommand{\grad}{\vec\nabla}
+
 \newcommand{\underlinespace}{\underline{\phantom{xxxxxx}}}
 
 \newcommand{\zerooverzero}{\dfrac{\makebox[0pt]{\text{`` }0\text{ ''}}}0\ \ }
@@ -239,7 +241,7 @@
 \DeclareMathOperator{\sech}{sech}
 \DeclareMathOperator{\csch}{csch}
 \DeclareMathOperator{\Div}{div}
-\DeclareMathOperator{\grad}{grad}
+%\DeclareMathOperator{\grad}{grad}
 \DeclareMathOperator{\curl}{curl}
 \DeclareMathOperator{\divv}{div}
 
@@ -282,18 +284,41 @@
 %\newcommand{\khanVideo}[3]{\genVideo[?utm_campaign=embed]{#1}{https://www.khanacademy.org/video/#2}{#3}}
 
 
+\makeatletter
 % \mfigure[graphicsoptions]{offset}{caption}{label}{file}
 \newcommand{\mfigure}[5][]{%
-	\mnote[#2]{%
+	\mnote@pex{\iffalse}{#2}{%
 		\centering\myincludegraphics[#1]{#5}%
-		\captionsetup{type=figure}\caption{#3}\label{#4}}%
+		\captionsetup{type=figure}\caption{#3}\label{#4}%
+	}%
 }
 
 % \mtable[offset=0]{caption}{label}{contents}
 \newcommand{\mtable}[4][0ex]{%
-	\mnote[#1]{\centering\small#4\captionsetup{type=figure}%
-		\caption{#2}\label{#3}}%
+	\mnote@pex{\iffalse}{#1}{%
+		\centering\small#4\captionsetup{type=figure}%
+		\caption{#2}\label{#3}%
+	}%
 }
+
+% \mnote[offset=0]{contents}
+\newcommand*{\mnote}[2][0pt]{%
+	\mnote@pex{\iftrue}{#1}{#2}%
+}
+
+\newcommand*{\mnote@pex}[3]{%
+	\marginnote{%
+		\begin{minipage}[c]{\marginparwidth}
+			\captionsetup{type=figure}%
+			\testmargintop%
+			\mbox{}%\makebox[0pt]{\tikz\draw(0,0)circle(1pt);}%
+			\\[-\baselineskip]%
+			#1\RaggedRight\fi#3\ifhmode\unskip\fi%
+			\testmarginbottom%\makebox[0pt]{\tikz\draw(0,0)circle(2pt);}
+		\end{minipage}%
+	}[#2]%
+}
+\makeatother
 
 
 %\newenvironment{lxfigure}{%
@@ -424,7 +449,8 @@
 \newtoggle{bsc} % default false
 \newcommand{\forwhom}{\iftoggle{bsc}{ for Bismarck State College}{}}
 
-
+\title{APEX Calculus LT}
+\author{Greg Hartman, VMI \and UND Math Dept}
 \usepackage[
 	bookmarksnumbered,
 	hidelinks,
@@ -439,6 +465,7 @@
 	unicode,
     pdflang=EN-US
 }
+\usepackage{hyperxmp}
 \ifbool{latexml}{}{
  \usepackage{bookmark}
 }

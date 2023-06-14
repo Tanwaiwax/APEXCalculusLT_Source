@@ -88,7 +88,7 @@ ymin=-3.3,ymax=3.3,xmin=-3.3,xmax=3.3]
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}
-\\[-5pt](a)\\[10pt]
+\\(a)\\[10pt]
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,height=1.16\marginparwidth,
 tick label style={font=\scriptsize},
@@ -108,7 +108,7 @@ ymin=-3.3,ymax=3.3,xmin=-3.3,xmax=3.3]
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}
-\\[-5pt](b)}
+\\(b)}
 
 A common way to address this problem is limit the length of each arrow, and represent long vectors with thick arrows, as done in \autoref{fig:vectorfieldintrob}(a). Usually we do not use a graph of a vector field to determine exactly the magnitude of a particular vector. Rather, we are more concerned with the relative magnitudes of vectors: which are bigger than others? Thus limiting the length of the vectors is not problematic.
 
@@ -141,23 +141,23 @@ That is, the components of $\vec F$ are each functions of $x$ and $y$ (and also 
 \[\vec F =\bracket{M, N}\quad \text{and} \quad \vec F  =\bracket{M,N,P},\]
 respectively, as this shorthand is quite convenient.
 
-Another item of notation will become useful: the ``del operator.''\index{del operator} Recall in \autoref{sec:directional_derivative} how we used the symbol $\nabla$ (pronounced ``del'') to represent the gradient of a function of two variables. That is, if $z = f(x,y)$, then ``del $f$\,'' $= \nabla f =\bracket{f_x, f_y}$. 
+Another item of notation will become useful: the ``del operator.''\index{del operator} Recall in \autoref{sec:directional_derivative} how we used the symbol $\grad$ (pronounced ``del'') to represent the gradient of a function of two variables. That is, if $z = f(x,y)$, then ``del $f$\,'' $= \grad f =\bracket{f_x, f_y}$. 
 
-We now define $\nabla$ to be the ``del operator.'' It is a vector whose components are partial derivative operations. 
+We now define $\grad$ to be the ``del operator.'' It is a vector whose components are partial derivative operations. 
 
-In the plane, $\ds\nabla =\bracket{\frac{\partial}{\partial x}, \frac{\partial}{\partial y}}$; in space, $\ds\nabla =\bracket{\frac{\partial}{\partial x}, \frac{\partial}{\partial y},\frac{\partial}{\partial z}}$. 
+In the plane, $\ds\grad =\bracket{\frac{\partial}{\partial x}, \frac{\partial}{\partial y}}$; in space, $\ds\grad =\bracket{\frac{\partial}{\partial x}, \frac{\partial}{\partial y},\frac{\partial}{\partial z}}$. 
 
-With this definition of $\nabla$, we can better understand the gradient $\nabla f$. As $f$ returns a scalar, the properties of scalar and vector multiplication gives
+With this definition of $\grad$, we can better understand the gradient $\grad f$. As $f$ returns a scalar, the properties of scalar and vector multiplication gives
 \[
-\nabla f
+\grad f
 =\bracket{\frac{\partial}{\partial x}, \frac{\partial}{\partial y}}f
 =\bracket{\frac{\partial}{\partial x}\,f, \frac{\partial}{\partial y}\,f}
 =\bracket{f_x, f_y}.
 \]
 
-Now apply the del operator $\nabla$ to vector fields. Let $\vec F =\bracket{x+\sin y,y^2+z,x^2}$. We can use vector operations and find the dot product of $\nabla$ and $\vec F$:
+Now apply the del operator $\grad$ to vector fields. Let $\vec F =\bracket{x+\sin y,y^2+z,x^2}$. We can use vector operations and find the dot product of $\grad$ and $\vec F$:
 \begin{align*}
-	\nabla \cdot \vec F
+	\grad \cdot \vec F
 	&=\bracket{\frac{\partial}{\partial x}, \frac{\partial}{\partial y},\frac{\partial}{\partial z}}\cdot \bracket{x+\sin y,y^2+z,x^2}\\
 	&= \frac{\partial}{\partial x}(x+\sin y)+ \frac{\partial}{\partial y}(y^2+z) + \frac{\partial}{\partial z}(x^2) \\
 	&=1+2y.
@@ -165,7 +165,7 @@ Now apply the del operator $\nabla$ to vector fields. Let $\vec F =\bracket{x+\s
 
 We can also compute their cross products:\small
 \begin{align*}
-	&\nabla\times \vec F\\
+	&\grad\times \vec F\\
 	&= {\bracket{\frac{\partial}{\partial y}\bigl(x^2\bigr)-\frac{\partial}{\partial z}\bigl(y^2+z\bigr),\frac{\partial}{\partial z}\bigl(x+\sin y\bigr)-\frac{\partial}{\partial x}\bigl(x^2\bigr),\frac{\partial}{\partial x}\bigl(y^2+z\bigr)-\frac{\partial}{\partial y}\bigl(x+\sin y\bigr)}}\\
 	&=\bracket{-1,-2x,-\cos y}.
 \end{align*}\normalsize
@@ -178,11 +178,11 @@ Two properties of vector fields will prove themselves to be very important: dive
 
 If the vector field represents the velocity of a fluid or gas, then the \textbf{divergence}\index{divergence}\index{vector field!divergence of} of the field is a measure of the ``compressibility'' of the fluid. If the divergence is negative at a point, it means that the fluid is compressing: more fluid is going into the point than is going out. If the divergence is positive, it means the fluid is expanding: more fluid is going out at that point than going in. A divergence of zero means the same amount of fluid is going in as is going out. If the divergence is zero at all points, we say the field is \textbf{incompressible}.\index{incompressible vector field}
 
-It turns out that the proper measure of divergence is simply $\nabla \cdot \vec F$, as stated in the following definition.
+It turns out that the proper measure of divergence is simply $\grad \cdot \vec F$, as stated in the following definition.
 
 \begin{definition}[Divergence of a Vector Field]\label{def:divergence}
 The \textbf{divergence} of a vector field $\vec F$ is\index{divergence}\index{vector field!divergence of}
-\[\divv \vec F = \nabla \cdot \vec F.\]
+\[\divv \vec F = \grad \cdot \vec F.\]
 \begin{itemize}
 	\item In the plane, with $\vec F =\bracket{M,N}$, $\divv \vec F = M_x+N_y$.
 	\item	In space, with $\vec F =\bracket{M,N,P}$, $\divv \vec F = M_x+N_y+P_z$.
@@ -195,20 +195,45 @@ The \textbf{divergence} of a vector field $\vec F$ is\index{divergence}\index{ve
 
 In space, things are a bit more complicated. Again let $\vec F$ represent the flow of water, and imagine suspending a tennis ball in one location in this flow. The water may cause the ball to spin along an axis. If so, the curl of the vector field is a \emph{vector} (not a \emph{scalar}, as before), parallel to the axis of rotation, following a right hand rule: when the thumb of one's right hand points in the direction of the curl, the ball will spin in the direction of the curling fingers of the hand.
 
-In space, it turns out the proper measure of curl is $\nabla \times \vec F$, as stated in the following definition. To find the curl of a planar vector field $\vec F =\bracket{M,N}$, embed it into space as $\vec F =\bracket{M, N, 0}$ and apply the cross product definition. Since $M$ and $N$ are functions of just $x$ and $y$ (and not $z$), all partial derivatives with respect to $z$ become 0 and the result is simply $\bracket{0,0,N_x-M_y}$. The third component is the measure of curl of a planar vector field. 
+In space, it turns out the proper measure of curl is $\grad \times \vec F$, as stated in the following definition. To find the curl of a planar vector field $\vec F =\bracket{M,N}$, embed it into space as $\vec F =\bracket{M, N, 0}$ and apply the cross product definition. Since $M$ and $N$ are functions of just $x$ and $y$ (and not $z$), all partial derivatives with respect to $z$ become 0 and the result is simply $\bracket{0,0,N_x-M_y}$. The third component is the measure of curl of a planar vector field. 
 
 \begin{definition}[Curl of a Vector Field]\label{def:curl}
 \index{curl}\mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{\begin{itemize}
 	\item Let $\vec F =\bracket{M,N}$ be a vector field in the plane. The \textbf{curl} of $\vec F$ is $\curl \vec F = N_x - M_y$.
-	\item Let $\vec F =\bracket{M,N,P}$ be a vector field in space. The \textbf{curl} of $\vec F$ is $\curl \vec F = \nabla \times \vec F =\bracket{P_y-N_z,M_z-P_x,N_x - M_y}$.
+	\item Let $\vec F =\bracket{M,N,P}$ be a vector field in space. The \textbf{curl} of $\vec F$ is $\curl \vec F = \grad \times \vec F =\bracket{P_y-N_z,M_z-P_x,N_x - M_y}$.
 \end{itemize}}
 \end{definition}
 
-We adopt the convention of referring to curl as $\nabla \times \vec F$, regardless of whether $\vec F$ is a vector field in two or three dimensions. 
+We adopt the convention of referring to curl as $\grad \times \vec F$, regardless of whether $\vec F$ is a vector field in two or three dimensions. 
 
 We now practice computing these quantities.
 
-\mtable{The vector fields in parts (a) and (b) in \autoref{ex_vectorfield1}.}{fig:vectorfield1a}{%
+\begin{example}[Computing divergence and curl of planar vector fields]\label{ex_vectorfield1}
+For each of the planar vector fields given below, view its graph and try to visually determine if its divergence and curl are 0. Then compute the divergence and curl.
+
+%\noindent\begin{minipage}[t]{.48\linewidth}
+%\begin{enumerate}
+	%\item $\vec F =\bracket{y,0}$ (see \autoref{fig:vectorfield1a}(a))
+	%\item $\vec F =\bracket{-y,x}$ (see \autoref{fig:vectorfield1a}(b))
+%\end{enumerate}
+%\end{minipage}\begin{minipage}[t]{.6\linewidth}
+%\begin{enumerate}\addtocounter{enumi}{2}
+	%\item $\vec F =\bracket{x,y}$ (see \autoref{fig:vectorfield1b}(a))
+	%\item $\vec F =\bracket{\cos y, \sin x}$ 
+		%(see \autoref{fig:vectorfield1b}(b))
+%\end{enumerate}
+%\end{minipage}
+\begin{enumerate}
+	\item $\vec F =\bracket{y,0}$% (see \autoref{fig:vectorfield1a}(a))
+	\item $\vec F =\bracket{-y,x}$% (see \autoref{fig:vectorfield1a}(b))
+	\item $\vec F =\bracket{x,y}$% (see \autoref{fig:vectorfield1b}(a))
+	\item $\vec F =\bracket{\cos y, \sin x}$% (see \autoref{fig:vectorfield1b}(b))
+\end{enumerate}
+\solution
+\begin{enumerate}
+	\item
+%
+\mtable{The vector fields in part \arabic{enumi} in \autoref{ex_vectorfield1}.}{fig:vectorfield1a}{%
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,height=1.16\marginparwidth,
 tick label style={font=\scriptsize},
@@ -227,8 +252,24 @@ ymin=-1.2,ymax=1.2,xmin=-1.2,xmax=1.2]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}
-\\[-5pt](a)\\[10pt]
+\end{tikzpicture}}
+%
+	 The arrow sizes are constant along any horizontal line, so if one were to draw a small box anywhere on the graph, it would seem that the same amount of fluid would enter the box as exit. Therefore it seems the divergence is zero; it is, as 
+	\[
+	\divv\vec F
+	= \grad \cdot \vec F
+	= M_x + N_y
+	= \frac{\partial}{\partial x}(y) + \frac{\partial}{\partial y}(0) = 0.
+	\]
+	At any point on the $x$-axis, arrows above it move to the right and arrows below it move to the left, indicating that a cork placed on the axis would spin clockwise. A cork placed anywhere above the $x$-axis would have water above it moving to the right faster than the water below it, also creating a clockwise spin. A clockwise spin also appears to be created at points below the $x$-axis. Thus it seems the curl should be negative (and not zero). Indeed, it is:
+	\[
+	\curl \vec F = \grad\times\vec F
+	= N_x-M_y = \frac{\partial}{\partial x}(0) - \frac{\partial}{\partial y}(y) = -1.
+	\]
+	
+	\item
+%
+\mtable{The vector fields in part \arabic{enumi} in \autoref{ex_vectorfield1}.}{fig:vectorfield1b}{%
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,height=1.16\marginparwidth,
 tick label style={font=\scriptsize},
@@ -247,60 +288,25 @@ ymin=-1.2,ymax=1.2,xmin=-1.2,xmax=1.2]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}
-\\[-5pt](b)}
-
-\begin{example}[Computing divergence and curl of planar vector fields]\label{ex_vectorfield1}
-For each of the planar vector fields given below, view its graph and try to visually determine if its divergence and curl are 0. Then compute the divergence and curl.
-
-%\noindent\begin{minipage}[t]{.48\linewidth}
-%\begin{enumerate}
-	%\item $\vec F =\bracket{y,0}$ (see \autoref{fig:vectorfield1a}(a))
-	%\item $\vec F =\bracket{-y,x}$ (see \autoref{fig:vectorfield1a}(b))
-%\end{enumerate}
-%\end{minipage}\begin{minipage}[t]{.6\linewidth}
-%\begin{enumerate}\addtocounter{enumi}{2}
-	%\item $\vec F =\bracket{x,y}$ (see \autoref{fig:vectorfield1b}(a))
-	%\item $\vec F =\bracket{\cos y, \sin x}$ 
-		%(see \autoref{fig:vectorfield1b}(b))
-%\end{enumerate}
-%\end{minipage}
-\begin{enumerate}
-	\item $\vec F =\bracket{y,0}$ (see \autoref{fig:vectorfield1a}(a))
-	\item $\vec F =\bracket{-y,x}$ (see \autoref{fig:vectorfield1a}(b))
-	\item $\vec F =\bracket{x,y}$ (see \autoref{fig:vectorfield1b}(a))
-	\item $\vec F =\bracket{\cos y, \sin x}$ (see \autoref{fig:vectorfield1b}(b))
-\end{enumerate}
-\solution
-\begin{enumerate}
-	\item The arrow sizes are constant along any horizontal line, so if one were to draw a small box anywhere on the graph, it would seem that the same amount of fluid would enter the box as exit. Therefore it seems the divergence is zero; it is, as 
+\end{tikzpicture}}
+%
+	 It appears that all vectors that lie on a circle of radius $r$, centered at the  origin, have the same length (and indeed this is true). That implies that the divergence should be zero: draw any box on the graph, and any fluid coming in will lie along a circle that takes the same amount of fluid out. Indeed, the divergence is zero, as
 	\[
-	\divv\vec F
-	= \nabla \cdot \vec F
-	= M_x + N_y
-	= \frac{\partial}{\partial x}(y) + \frac{\partial}{\partial y}(0) = 0.
-	\]
-	At any point on the $x$-axis, arrows above it move to the right and arrows below it move to the left, indicating that a cork placed on the axis would spin clockwise. A cork placed anywhere above the $x$-axis would have water above it moving to the right faster than the water below it, also creating a clockwise spin. A clockwise spin also appears to be created at points below the $x$-axis. Thus it seems the curl should be negative (and not zero). Indeed, it is:
-	\[
-	\curl \vec F = \nabla\times\vec F
-	= N_x-M_y = \frac{\partial}{\partial x}(0) - \frac{\partial}{\partial y}(y) = -1.
-	\]
-	
-	\item It appears that all vectors that lie on a circle of radius $r$, centered at the  origin, have the same length (and indeed this is true). That implies that the divergence should be zero: draw any box on the graph, and any fluid coming in will lie along a circle that takes the same amount of fluid out. Indeed, the divergence is zero, as
-	\[
-	\divv\vec F = \nabla \cdot \vec F
+	\divv\vec F = \grad \cdot \vec F
 	= M_x + N_y = \frac{\partial}{\partial x}(-y) + \frac{\partial}{\partial y}(x)
 	= 0.
 	\]
 	
 		Clearly this field moves objects in a circle, but would it induce a cork to spin? It appears that yes, it would: place a cork anywhere in the flow, and the point of the cork closest to the origin would feel less flow than the point on the cork farthest from the origin, which would induce a counterclockwise flow. Indeed, the curl is positive:
 	\[
-	\curl \vec F = \nabla\times\vec F = N_x-M_y
+	\curl \vec F = \grad\times\vec F = N_x-M_y
 	= \frac{\partial}{\partial x}(x) - \frac{\partial}{\partial y}(-y) = 1-(-1) = 2.
 	\]
 	Since the curl is constant, we conclude the induced spin is the same no matter where one is in this field.
 	
-	\mtable{The vector fields in parts (c) and (d) in \autoref{ex_vectorfield1}.}{fig:vectorfield1b}{%
+		\item
+%
+	\mtable{The vector fields in part \arabic{enumi} in \autoref{ex_vectorfield1}.}{fig:vectorfield1c}{%
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,height=1.16\marginparwidth,
 tick label style={font=\scriptsize},
@@ -320,8 +326,24 @@ ymin=-1.2,ymax=1.2,xmin=-1.2,xmax=1.2]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}
-	\\[-5pt](a)\\[10pt]
+\end{tikzpicture}}
+%
+		 At the origin, there are many arrows pointing out but no arrows pointing in. We conclude that at the origin, the divergence must be positive (and not zero). If one were to draw a box anywhere in the field, the edges farther from the origin would have larger arrows passing through them than the edges close to the origin, indicating that more is going from a point than going in. This indicates a positive (and not zero) divergence. This is correct:
+	\[
+	\divv\vec F = \grad \cdot \vec F
+	= M_x + N_y = \frac{\partial}{\partial x}(x) + \frac{\partial}{\partial y}(y)
+	= 1+1=2.
+	\]
+	
+	One may find this curl to be harder to determine visually than previous examples. One might note that any arrow that induces a clockwise spin on a cork will have an equally sized arrow inducing a counterclockwise spin on the other side, indicating no spin and no curl. This is correct, as
+	\[
+	\curl \vec F = \grad\times\vec F
+	= N_x-M_y = \frac{\partial}{\partial x}(y) - \frac{\partial}{\partial y}(x) = 0.
+	\]
+	
+	\item
+%
+	\mtable{The vector fields in part \arabic{enumi} in \autoref{ex_vectorfield1}.}{fig:vectorfield1d}{%
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,height=1.16\marginparwidth,
 tick label style={font=\scriptsize},
@@ -341,32 +363,18 @@ ymin=-7,ymax=7,xmin=-7,xmax=7]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}
-	\\[-5pt](b)}
-
-		\item At the origin, there are many arrows pointing out but no arrows pointing in. We conclude that at the origin, the divergence must be positive (and not zero). If one were to draw a box anywhere in the field, the edges farther from the origin would have larger arrows passing through them than the edges close to the origin, indicating that more is going from a point than going in. This indicates a positive (and not zero) divergence. This is correct:
+\end{tikzpicture}}
+%
+		One might find this divergence hard to determine visually as large arrows appear in close proximity to small arrows, each pointing in different directions. Instead of trying to rationalize a guess, we compute the divergence:
 	\[
-	\divv\vec F = \nabla \cdot \vec F
-	= M_x + N_y = \frac{\partial}{\partial x}(x) + \frac{\partial}{\partial y}(y)
-	= 1+1=2.
-	\]
-	
-	One may find this curl to be harder to determine visually than previous examples. One might note that any arrow that induces a clockwise spin on a cork will have an equally sized arrow inducing a counterclockwise spin on the other side, indicating no spin and no curl. This is correct, as
-	\[
-	\curl \vec F = \nabla\times\vec F
-	= N_x-M_y = \frac{\partial}{\partial x}(y) - \frac{\partial}{\partial y}(x) = 0.
-	\]
-	
-	\item	One might find this divergence hard to determine visually as large arrows appear in close proximity to small arrows, each pointing in different directions. Instead of trying to rationalize a guess, we compute the divergence:
-	\[
-	\divv\vec F = \nabla \cdot \vec F = M_x + N_y
+	\divv\vec F = \grad \cdot \vec F = M_x + N_y
 	= \frac{\partial}{\partial x}(\cos y) + \frac{\partial}{\partial y}(\sin x) = 0.
 	\] 
 	Perhaps surprisingly, the divergence is 0.
 	
 	With all the loops of different directions in the field, one is apt to reason the curl is variable. Indeed, it is:
 	\[
-	\curl \vec F = \nabla\times\vec F = N_x-M_y
+	\curl \vec F = \grad\times\vec F = N_x-M_y
 	= \frac{\partial}{\partial x}(\sin x) - \frac{\partial}{\partial y}(\cos y)
 	= \cos x + \sin y.
 	\]
@@ -383,15 +391,15 @@ Compute the divergence and curl of each of the following vector fields.
 \solution
 We compute the divergence and curl of each field following the definitions.
 \begin{enumerate}
-	\item $\divv \vec F = \nabla \cdot \vec F = M_x+N_y+P_z = 2x+0+0= 2x.$
+	\item $\divv \vec F = \grad \cdot \vec F = M_x+N_y+P_z = 2x+0+0= 2x.$
 	
-	$\begin{aligned}\curl\vec F = \nabla \times \vec F &=\bracket{P_y-N_z,M_z-P_x,N_x - M_y}\\ &=\bracket{1 - (-1), 1-1,-1-(1)}=\bracket{2,0,-2}.
+	$\begin{aligned}\curl\vec F = \grad \times \vec F &=\bracket{P_y-N_z,M_z-P_x,N_x - M_y}\\ &=\bracket{1 - (-1), 1-1,-1-(1)}=\bracket{2,0,-2}.
 	\end{aligned}$
 	
 	For this particular field, no matter the location in space, a spin is induced with axis parallel to $\bracket{2,0,-2}.$
-	\item $\divv \vec F = \nabla \cdot \vec F = M_x+N_y+P_z = ye^{xy}+0+0= ye^{xy}.$
+	\item $\divv \vec F = \grad \cdot \vec F = M_x+N_y+P_z = ye^{xy}+0+0= ye^{xy}.$
 		
-	$\begin{aligned}\curl\vec F = \nabla \times \vec F &=\bracket{P_y-N_z,M_z-P_x,N_x - M_y}\\ &=\bracket{1-\cos(x+z), -2x, \cos(x+z) - xe^{xy}}.\end{aligned}$
+	$\begin{aligned}\curl\vec F = \grad \times \vec F &=\bracket{P_y-N_z,M_z-P_x,N_x - M_y}\\ &=\bracket{1-\cos(x+z), -2x, \cos(x+z) - xe^{xy}}.\end{aligned}$
 \end{enumerate}
 \end{example}
 
@@ -433,11 +441,11 @@ We leave it to the reader to confirm that $\divv \vec F = 0$ and $\curl \vec F =
 The analogous planar vector field is given in \autoref{fig:vectorfield3}. Note how all arrows point to the origin, and the magnitude gets very small when ``far'' from the origin.
 \end{example}
 
-A function $z=f(x,y)$ naturally induces a vector field, $\vec F = \nabla f =\bracket{f_x,f_y}$. Given what we learned of the gradient in \autoref{sec:directional_derivative}, we know that the vectors of $\vec F$ point in the direction of greatest increase of $f$. Because of this, $f$ is said to be the \textbf{potential function}\index{potential function}\index{vector field!potential function of} of $\vec F$. Vector fields that are the gradient of potential functions will play an important role in the next section.
+A function $z=f(x,y)$ naturally induces a vector field, $\vec F = \grad f =\bracket{f_x,f_y}$. Given what we learned of the gradient in \autoref{sec:directional_derivative}, we know that the vectors of $\vec F$ point in the direction of greatest increase of $f$. Because of this, $f$ is said to be the \textbf{potential function}\index{potential function}\index{vector field!potential function of} of $\vec F$. Vector fields that are the gradient of potential functions will play an important role in the next section.
 
-\mtable{The vector field $\vec F = \nabla f$ and a graph of a function $z=f(x,y)$ in \autoref{ex_vectorfield4}.}{fig:vectorfield4}{%
+\mtable[-2\baselineskip]{The vector field $\vec F = \grad f$ and a graph of a function $z=f(x,y)$ in \autoref{ex_vectorfield4}.}{fig:vectorfield4}{%
 \begin{tikzpicture}
-\begin{axis}[width=\marginparwidth,height=1.16\marginparwidth,
+\begin{axis}[width=\marginparwidth,height=\marginparwidth,
 tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,axis equal,
 xtick={-1,1},ytick={-1,1},
@@ -453,26 +461,26 @@ ymin=-1.2,ymax=1.2,xmin=-1.2,xmax=1.2]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}
-\\[-5pt](a)\\[10pt]
+\end{tikzpicture}\\(a)\\[10pt]
+%}
+%\mtable{The vector field $\vec F = \grad f$ and a graph of a function $z=f(x,y)$ in \autoref{ex_vectorfield4}.}{fig:vectorfield5}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.004781691357493401,
 3Dc2c=0.7686017751693726 -0.47064894437789917 0.4332907199859619,
 3Dcoo=0.000002273424570375937 -0.0000013264116205391474 56.08348083496094,
 3Droo=117.22547128132403,
-3Dlights=Headlamp}{width=\marginparwidth}{figures/figvectorfield4b_3D}
-\\(b)}
+3Dlights=Headlamp}{width=\marginparwidth}{figures/figvectorfield4b_3D}\\(b)}
 
 \begin{example}[A vector field that is the gradient of a potential function]\label{ex_vectorfield4}
-Let $f(x,y) = 3-x^2-2y^2$ and let $\vec F = \nabla f$. Graph $\vec F$, and find the divergence and curl of $\vec F$.
+Let $f(x,y) = 3-x^2-2y^2$ and let $\vec F = \grad f$. Graph $\vec F$, and find the divergence and curl of $\vec F$.
 \solution
-Given $f$, we find $\vec F = \nabla f =\bracket{-2x,-4y}$. A graph of $\vec F$ is given in \autoref{fig:vectorfield4}(a). In part (b) of the figure, the vector field is given along with a graph of the surface itself; one can see how each vector is pointing in the direction of ``steepest uphill'', which, in this case, is not simply just ``toward the origin.''
+Given $f$, we find $\vec F = \grad f =\bracket{-2x,-4y}$. A graph of $\vec F$ is given in \autoref{fig:vectorfield4}(a). In \autoref{fig:vectorfield4}(b), the vector field is given along with a graph of the surface itself; one can see how each vector is pointing in the direction of ``steepest uphill'', which, in this case, is not simply just ``toward the origin.''
 
 We leave it to the reader to confirm that $\divv \vec F = -6$ and $\curl \vec F = 0$.
 \end{example}
 
-There are some important concepts visited in this section that will be revisited in subsequent sections and again at the very end of this chapter. One is: given a vector field $\vec F$, both $\divv\vec F$ and $\curl\vec F$ are measures of rates of change of $\vec F$. The divergence measures how much the field spreads (diverges) at a point, and the curl measures how much the field twists (curls) at a point. Another important concept is this: given $z=f(x,y)$, the gradient $\nabla f$ is also a measure of a rate of change of $f$. We will see how the integrals of these rates of change produce meaningful results.
+There are some important concepts visited in this section that will be revisited in subsequent sections and again at the very end of this chapter. One is: given a vector field $\vec F$, both $\divv\vec F$ and $\curl\vec F$ are measures of rates of change of $\vec F$. The divergence measures how much the field spreads (diverges) at a point, and the curl measures how much the field twists (curls) at a point. Another important concept is this: given $z=f(x,y)$, the gradient $\grad f$ is also a measure of a rate of change of $f$. We will see how the integrals of these rates of change produce meaningful results.
 
 This section introduces the concept of a vector field. The next section ``applies calculus'' to vector fields. A common application is this: let $\vec F$ be a vector field representing a force (hence it is called a ``force field,'' though this name has a decidedly comic-book feel) and let a particle move along a curve $C$ under the influence of this force. What work is performed by the field on this particle? The solution lies in correctly applying the concepts of line integrals in the context of vector fields.
 

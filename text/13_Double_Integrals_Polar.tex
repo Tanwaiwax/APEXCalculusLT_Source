@@ -102,9 +102,9 @@ Finally, we replace $dA$ in the double integral with $r\dd r\dd\theta$. This giv
 \iint_Rf(x,y)\dd A
  &= \int_0^{2\pi}\int_0^1\bigl(4-r\cos\theta-2r\sin\theta\bigr)r\dd r\dd\theta\\
  &= \int_0^{2\pi}\int_0^1\bigl(4r-r^2(\cos\theta-2\sin\theta)\bigr)\dd r\dd\theta\\
- &= \int_0^{2\pi}\left.\left(2r^2-\frac13r^3(\cos\theta-2\sin\theta)\right)\right|_0^1\dd\theta\\
+ &= \int_0^{2\pi}\left.\left(2r^2-\frac13r^3(\cos\theta-2\sin\theta)\right)\right|_{r=0}^{r=1}\dd\theta\\
  &= \int_0^{2\pi} \left(2-\frac13\bigl(\cos\theta-2\sin\theta\bigr)\right)\dd\theta\\
- &= \left.\left(2\theta -\frac13\bigl(\sin\theta+2\cos\theta\bigr)\right)\right|_0^{2\pi} \\
+ &= \left.\left(2\theta -\frac13\bigl(\sin\theta+2\cos\theta\bigr)\right)\right|_{\theta=0}^{\theta=2\pi} \\
  &= 4\pi %\approx 12.566
  .
 \end{align*}
@@ -146,7 +146,7 @@ Replacing $x$ with $r\cos\theta$ in the integrand, along with replacing $y$ with
 	&= \int_0^{\pi}\int_{2\cos\theta}^{4\cos\theta} \Bigl(4-\bigl(r\cos\theta-2\bigr)^2-\bigl(r\sin\theta\bigr)^2\Bigr)r\dd r\dd\theta\\
 	%&=\int_0^{\pi}\int_{2\cos\theta}^{4\cos\theta} \bigl(r^3\cos^2\theta + r^3\sin^2\theta -4r^2\cos \theta+4r\bigr)\dd r\dd\theta\\
 	&= \int_0^{\pi}\int_{2\cos\theta}^{4\cos\theta} \bigl(-r^3+4r^2\cos \theta\bigr)\dd r\dd\theta\\
-	&= \int_0^\pi \left.\left(-\frac14r^4+\frac43r^3\cos\theta\right)\right|_{2\cos\theta}^{4\cos\theta}\dd\theta\\
+	&= \int_0^\pi \left.\left(-\frac14r^4+\frac43r^3\cos\theta\right)\right|_{r=2\cos\theta}^{r=4\cos\theta}\dd\theta\\
 	&=\int_0^\pi \left(\left[-\frac14(256\cos^4\theta)+\frac43(64\cos^4\theta)\right]-\right.\\
 	&\qquad\qquad\left.\left[-\frac14(16\cos^4\theta)+\frac43(8\cos^4\theta)\right]\right)\dd\theta\\
 	&=\int_0^\pi\frac{44}3\cos^4\theta\dd\theta.
@@ -163,16 +163,13 @@ Picking up from where we left off above, we have
 \begin{align*}
 \iint_Rf(x,y)\dd A &=\int_0^\pi\frac{44}3\cos^4\theta\dd\theta\\
 	&=\int_0^\pi \frac{44}3\left(\frac38+\frac12\cos(2\theta)+\frac18\cos(4\theta)\right)\dd\theta\\
-	&= \left.\frac{44}3\left(\frac{3}8\theta+\frac14\sin(2\theta)+\frac{1}{32}\sin(4\theta)\right)\right|_0^\pi\\
+	&= \left.\frac{44}3\left(\frac{3}8\theta+\frac14\sin(2\theta)+\frac{1}{32}\sin(4\theta)\right)\right|_{\theta=0}^{\theta=\pi}\\
 	&=\frac{11}2\pi%\approx 17.279
 	.
 \end{align*}
 While this example was not trivial, the double integral would have been \emph{much} harder to evaluate had we used rectangular coordinates.
 \end{example}
 
-\begin{example}[Evaluating a double integral with polar coordinates]\label{ex_doublepol5}
-Find the volume under the surface $\ds f(x,y) =\frac1{x^2+y^2+1}$ over the  sector of the circle with radius $a$ centered at the origin in the first quadrant, as shown in \autoref{fig:doublepol5}.
-\solution
 \mtable{The surface and region $R$ used in \autoref{ex_doublepol5}.}{fig:doublepol5}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
@@ -180,7 +177,10 @@ Find the volume under the surface $\ds f(x,y) =\frac1{x^2+y^2+1}$ over the  sect
 3Dc2c=0.3594517111778259 -0.6955419182777405 0.6221060752868652,
 3Dcoo=40.99066925048828 90.0008544921875 16.713821411132812,
 3Droo=150.00000057205966}{width=\marginparwidth}{figures/figdoublepol5_3D}}
-%
+
+\begin{example}[Evaluating a double integral with polar coordinates]\label{ex_doublepol5}
+Find the volume under the surface $\ds f(x,y) =\frac1{x^2+y^2+1}$ over the  sector of the circle with radius $a$ centered at the origin in the first quadrant, as shown in \autoref{fig:doublepol5}.
+\solution
 The region $R$ we are integrating over is a circle with radius $a$, restricted to the first quadrant. Thus, in polar, the bounds on $R$ are $0\leq r\leq a$, $0\leq\theta\leq\pi/2$. The integrand is rewritten in polar as 
 \[
 \frac{1}{x^2+y^2+1} \Rightarrow
@@ -189,9 +189,9 @@ The region $R$ we are integrating over is a circle with radius $a$, restricted t
 We find the volume as follows:
 \begin{align*}
 \iint_Rf(x,y)\dd A &= \int_0^{\pi/2}\int_0^a\frac{r}{r^2+1}\dd r\dd\theta\\
-		&= \int_0^{\pi/2} \frac12\bigl(\ln|r^2+1|\bigr)\Big|_0^a\dd\theta\\
+		&= \int_0^{\pi/2} \frac12\bigl(\ln|r^2+1|\bigr)\Big|_{r=0}^{r=a}\dd\theta\\
 		&=\int_0^{\pi/2} \frac12\ln(a^2+1)\dd\theta\\
-		&= \left.\left(\frac12\ln(a^2+1)\theta\right)\right|_0^{\pi/2}\\
+		&= \left.\left(\frac12\ln(a^2+1)\theta\right)\right|_{\theta=0}^{\theta=\pi/2}\\
 		&= \frac{\pi}{4}\ln(a^2+1).
 \end{align*}
 \autoref{fig:doublepol5}  shows that $f$ shrinks to near 0 very quickly. Regardless, as $a$ grows, so does the volume, without bound. 
@@ -211,9 +211,9 @@ All together, the volume of a sphere with radius $a$ is:
 		&=2\int_0^{2\pi}\int_0^ar\sqrt{a^2-r^2}\dd r\dd\theta.
 \intertext{We can evaluate this inner integral with substitution. With $u=a^2-r^2$, $du = -2r\dd r$. The new bounds of integration are $u(0) = a^2$ to $u(a)=0$. Thus we have:}
 	&= \int_0^{2\pi}\int_{a^2}^0\bigl(-u^{1/2}\bigr)\dd u\dd\theta\\
-	&= \int_0^{2\pi}\left.\left(-\frac23u^{3/2}\right)\right|_{a^2}^0\dd\theta\\
+	&= \int_0^{2\pi}\left.\left(-\frac23u^{3/2}\right)\right|_{u=a^2}^{u=0}\dd\theta\\
 	&= \int_0^{2\pi}\left(\frac23a^3\right)\dd\theta\\
-	&= \left.\left(\frac23a^3\theta\right)\right|_0^{2\pi}\\
+	&= \left.\left(\frac23a^3\theta\right)\right|_{\theta=0}^{\theta=2\pi}\\
 	&= \frac43\pi a^3.
 \end{align*}
 Generally, the formula for the volume of a sphere with radius $r$ is given as $4/3\pi r^3$; we have justified this formula with our calculation.

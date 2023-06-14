@@ -27,20 +27,20 @@ The equation $g(x,y) = c$ is called the \emph{constraint equation}, and we say t
 The previous section optimized a function on a set $S$.  In this section, ``subject to $g(x,y)=c$'' is the same as saying that the set $S$ is given by $\{(x,y)|g(x,y)=c\}$. The Lagrange multiplier method for solving such problems can now be stated:
 
 \begin{theorem}[Lagrange Multipliers]\label{thm:lagrange}
-Let $f(x,y)$ and $g(x,y)$ be functions with continuous partial derivatives of all orders, and suppose that $c$ is a scalar constant such that $\nabla g(x,y) \ne \vec0$ for all $(x,y)$ that satisfy the equation $g(x,y) = c$. Then to solve the constrained optimization problem
+Let $f(x,y)$ and $g(x,y)$ be functions with continuous partial derivatives of all orders, and suppose that $c$ is a scalar constant such that $\grad g(x,y) \ne \vec0$ for all $(x,y)$ that satisfy the equation $g(x,y) = c$. Then to solve the constrained optimization problem
 \[\text{Maximize (or minimize) }f(x,y)\text{ subject to }g(x,y) = c ,\]
-find the points $(x,y)$ that solve the equation $\nabla f(x,y) = \lambda \nabla g(x,y)$ for some constant $\lambda$ (the number $\lambda$ is called the \emph{Lagrange multiplier}). If there is a constrained maximum or minimum, then it must be at such a point.
+find the points $(x,y)$ that solve the equation $\grad f(x,y) = \lambda \grad g(x,y)$ for some constant $\lambda$ (the number $\lambda$ is called the \emph{Lagrange multiplier}). If there is a constrained maximum or minimum, then it must be at such a point.
 \end{theorem}
 
 A rigorous proof of the above theorem is well beyond the scope of this text.
 % todo include a proof sketch of Theorem 13.9.1 Lagrange Multipliers?
 % todo refer to Extreme Value Theorem after Lagrange Multipliers?
 %requires use of the Implicit Function Theorem, which is beyond the scope of this text. See \cite[\S\,6.8]{tm} for more detail.
-Note that the theorem only gives a \emph{necessary} condition for a point to be a constrained maximum or minimum. Whether a point $(x,y)$ that satisfies $\nabla f(x,y) = \lambda \nabla g(x,y)$ for some $\lambda$ actually \emph{is} a constrained maximum or minimum can \emph{sometimes} be determined by the nature of the problem itself. For instance, in \autoref{exmp_consimple} it was clear that there had to be a global maximum.
+Note that the theorem only gives a \emph{necessary} condition for a point to be a constrained maximum or minimum. Whether a point $(x,y)$ that satisfies $\grad f(x,y) = \lambda \grad g(x,y)$ for some $\lambda$ actually \emph{is} a constrained maximum or minimum can \emph{sometimes} be determined by the nature of the problem itself. For instance, in \autoref{exmp_consimple} it was clear that there had to be a global maximum.
 
 How can one tell when a point that satisfies the condition in \autoref{thm:lagrange} is a constrained maximum or minimum? The answer is that it depends on the constraint function $g(x,y)$ and any implicit constraints. It can be shown
 % Again, see \cite{tm}.
-that if the constraint equation $g(x,y)=c$ (plus any hidden constraints) describes a bounded set $B$ in $\mathbb{R}^2$, then the constrained maximum or minimum of $f(x,y)$ will occur either at a point $(x,y)$ satisfying $\nabla f(x,y) = \lambda \nabla g(x,y)$ or at a ``boundary'' point of the set $B$.
+that if the constraint equation $g(x,y)=c$ (plus any hidden constraints) describes a bounded set $B$ in $\mathbb{R}^2$, then the constrained maximum or minimum of $f(x,y)$ will occur either at a point $(x,y)$ satisfying $\grad f(x,y) = \lambda \grad g(x,y)$ or at a ``boundary'' point of the set $B$.
 
 \youtubeVideo{ry9cgNx1QV8}{LaGrange Multipliers}
 
@@ -51,7 +51,7 @@ For a rectangle whose perimeter is $20$ m, use the Lagrange multiplier method to
 \solution
 As we saw in \autoref{exmp_consimple}, with $x$ and $y$ representing the width and height, respectively, of the rectangle, this problem can be stated as:
  \[\text{Maximize }f(x,y) = xy\text{ subject to }g(x,y) = 2x + 2y = 20.\]
- Then solving the equation $\nabla f(x,y) = \lambda \nabla g(x,y)$ for some $\lambda$ means solving the equations $\dfrac{\partial f}{\partial x} = \lambda \dfrac{\partial g}{\partial x}$ and $\dfrac{\partial f}{\partial y} = \lambda \dfrac{\partial g}{\partial y}$, namely:
+ Then solving the equation $\grad f(x,y) = \lambda \grad g(x,y)$ for some $\lambda$ means solving the equations $\dfrac{\partial f}{\partial x} = \lambda \dfrac{\partial g}{\partial x}$ and $\dfrac{\partial f}{\partial y} = \lambda \dfrac{\partial g}{\partial y}$, namely:
  \begin{align*}
   y &= 2\lambda ,\\
   x &= 2\lambda
@@ -74,7 +74,7 @@ The distance $d$ from any point $(x,y)$ to the point $(1,2)$ is
  &\text{Maximize (and minimize)}\quad f(x,y) = (x-1)^2 + (y-2)^2\\
  &\text{ subject to}\quad g(x,y) = x^2 + y^2 = 80.
  \end{align*}
- Solving $\nabla f(x,y) = \lambda \nabla g(x,y)$ means solving the following equations:
+ Solving $\grad f(x,y) = \lambda \grad g(x,y)$ means solving the following equations:
  \begin{align*}
   2(x-1) &= 2\lambda x ,\\
   2(y-2) &= 2\lambda y
@@ -105,7 +105,7 @@ The Lagrange multiplier method can be extended to functions of three variables.
 \begin{example}[Maximizing a Function of Three Variables]\label{ex_lagr_3var}
 Maximize (and minimize) $f(x,y,z) = x+z$ subject to $g(x,y,z) = x^2 + y^2 + z^2 = 1$.
 \solution
-Solve the equation $\nabla f(x,y,z) = \lambda \nabla g(x,y,z)$:
+Solve the equation $\grad f(x,y,z) = \lambda \grad g(x,y,z)$:
  \begin{align*}
   1 &= 2\lambda x\\
   0 &= 2\lambda y\\
@@ -134,18 +134,18 @@ When we have two constraints, we can still use Lagrange multipliers once we've m
  \text{Maximize (or minimize) }f(x,y,z)\text{ subject to }
  g(x,y,z)=c_1\text{ and }h(x,y,z)=c_2
 \]
-is satisfied when $\nabla f(x,y,z)=\lambda\nabla g(x,y,z)+\mu\nabla h(x,y,z)$.
+is satisfied when $\grad f(x,y,z)=\lambda\grad g(x,y,z)+\mu\grad h(x,y,z)$.
 
 \begin{example}[Optimizing with Two Constraints]\label{ex_lang_two_const}
 The plane $x-y+z=2$ intersects the cylinder $x^2+y^2=4$ in an ellipse. Find the points on the ellipse closest to and farthest from the origin.
 \solution
 We can optimize the distance $\sqrt{x^2+y^2+z^2}$ by optimizing the function $f(x,y,z)=x^2+y^2+z^2$, which has a simpler derivative.  We let $g(x,y,z)=x-y+z$ be the plane constraint, and $h(x,y,z)=x^2+y^2$ be the cylinder constraint.  We see that
 \begin{align*}
- \nabla f(x,y,z)&=\bracket{2x,2y,2z} \\
- \nabla g(x,y,z)&=\bracket{1,-1,1} \\
- \nabla h(x,y,z)&=\bracket{2x,2y,0}.
+ \grad f(x,y,z)&=\bracket{2x,2y,2z} \\
+ \grad g(x,y,z)&=\bracket{1,-1,1} \\
+ \grad h(x,y,z)&=\bracket{2x,2y,0}.
 \end{align*}
-The equation $\nabla f=\lambda\nabla g+\mu\nabla h$ means that 
+The equation $\grad f=\lambda\grad g+\mu\grad h$ means that 
 \begin{align*}
  2x&=\lambda+2\mu x\\
  2y&=-\lambda+2\mu y\\
@@ -171,6 +171,6 @@ $\sqrt{2+2+(2\mp2\sqrt2)^2}
 =\sqrt{16\mp8\sqrt2}$, which are both greater than 2.  Therefore, the closest points are $(2,0,0)$ and $(0,-2,0)$, while the furthest point is $(-\sqrt2,\sqrt2,2+\sqrt2)$.
 \end{example}
 
-Finally, note that solving the equation $\nabla f(x,y) = \lambda \nabla g(x,y)$ means having to solve a system of two (possibly nonlinear) equations in three unknowns, which as we have seen before, may not be possible to do. And the 3-variable case can get even more complicated. All of this somewhat restricts the usefulness of Lagrange's method to relatively simple functions. Luckily there are many numerical methods for solving constrained optimization problems, though we will not discuss them here.
+Finally, note that solving the equation $\grad f(x,y) = \lambda \grad g(x,y)$ means having to solve a system of two (possibly nonlinear) equations in three unknowns, which as we have seen before, may not be possible to do. And the 3-variable case can get even more complicated. All of this somewhat restricts the usefulness of Lagrange's method to relatively simple functions. Luckily there are many numerical methods for solving constrained optimization problems, though we will not discuss them here.
 
 \printexercises{exercises/12-Lagrange-exercises}

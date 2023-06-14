@@ -167,16 +167,16 @@
 
 \newcommand{\myincludegraphics}[2][]{%
  \IfFileExists{./#2\colornamesuffix.png}{%
-  \includegraphics[#1]{#2\colornamesuffix.png}%
+  \includegraphics[#1]{#2\colornamesuffix}%
  }{%
-  \IfFileExists{./#2.png}{%
-   \includegraphics[#1]{#2.png}%
+  \IfFileExists{./#2\colornamesuffix.pdf}{%
+   \includegraphics[#1]{#2\colornamesuffix}%
   }{%
-   \IfFileExists{./#2\colornamesuffix.pdf}{%
-    \includegraphics[#1]{#2\colornamesuffix.pdf}%
+   \IfFileExists{./#2.png}{%
+    \includegraphics[#1]{#2}%
    }{%
     \IfFileExists{./#2.pdf}{%
-     \includegraphics[#1]{#2.pdf}%
+     \includegraphics[#1]{#2}%
     }{%
      \includegraphics[#1]{#2\colornamesuffix}%
     }%
@@ -451,7 +451,7 @@
   }%
  }%
  % todo see https://github.com/brucemiller/LaTeXML/issues/1802
- \ifbool{latexml}{}{\pagebreak[1]}%
+ %\ifbool{latexml}{}{\pagebreak[1]}%
  {%
   \setlist[enumerate,1]{label=(\alph*)}% for exercise set instructions
   \noindent#1 \arabic{sectionexercisesi}--\ref*{enumiatendof\theexercisesetcounter}#2%
@@ -462,7 +462,7 @@
  \label{enumiatendof\theexercisesetcounter}%
  \closeenumerate%
  % todo see https://github.com/brucemiller/LaTeXML/issues/1802
- \ifbool{latexml}{}{\pagebreak[1]}%
+ %\ifbool{latexml}{}{\pagebreak[1]}%
  \ifnumodd{\value{sectionexercisesi}}{%
   \PackageInfo{apex}{%
    Exercise set \theexercisesetcounter\space ends with \arabic{sectionexercisesi}%

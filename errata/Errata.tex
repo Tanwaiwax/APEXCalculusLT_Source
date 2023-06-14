@@ -4,7 +4,7 @@
 \usepackage{booktabs}
 \usepackage{url}
 \usepackage{refcount}
-\usepackage{etoolbox}
+\usepackage{comment}
 
 \title{Errata to Apex LT}
 \date{\today}
@@ -15,34 +15,49 @@
 \DeclareMathOperator{\sech}{sech}
 \DeclareMathOperator{\divv}{div}
 
+\newcounter{totalsI}\setcounter{totalsI}{0}
+\newcounter{totalsII}\setcounter{totalsII}{0}
+\newcounter{totalsIII}\setcounter{totalsIII}{0}
+
 \makeatletter
-\newcommand{\errorboxed}[1]{%
- \@ifundefined{r@#1plus}{%
-  \@ifundefined{r@#1}{%
+\newcommand{\errorboxed}[2]{%
+ \@ifundefined{r@#1#2plus}{%
+  \@ifundefined{r@#1#2}{%
   }{% plusless defined
-   \makebox[2em][r]{\ref{#1}\phantom{+}}%
+   \makebox[2em][r]{\ref{#1#2}\phantom{+}}%
+   \addtocounter{totals#2}{\getrefnumber{#1#2}}%
   }%
  }{% plus defined
-  \makebox[2em][r]{\ref{#1plus}{+}}%
+  \makebox[2em][r]{\ref{#1#2plus}{+}}%
+  \addtocounter{totals#2}{\getrefnumber{#1#2plus}}%
  }%
 }
 % as part of a write, errortext needs to be expandable
 % getrefnumber is. ref isn't
-\newcommand{\errortext}[1]{%
- \@ifundefined{r@#1plus}{%
-  \@ifundefined{r@#1}{%
+\newcommand{\errortext}[2]{%
+ \@ifundefined{r@#1#2plus}{%
+  \@ifundefined{r@#1#2}{%
   }{% plusless defined
-   \getrefnumber{#1}%
-  }
+   \getrefnumber{#1#2}%
+  }%
  }{% plus defined
-   \getrefnumber{#1plus}+%
- }
+   \getrefnumber{#1#2plus}+%
+ }%
 }
 \makeatother
 
+\newcommand{\errorTotals}{%
+ Total &
+ \makebox[2em][r]{\arabic{totalsI}{+}} &
+ \makebox[2em][r]{\arabic{totalsII}{+}} &
+ \makebox[2em][r]{\arabic{totalsIII}{+}}%
+ \write\markdown{---|---|---|---}%
+ \write\markdown{Total|\arabic{totalsI}+|\arabic{totalsII}+|\arabic{totalsIII}+}%
+}
+
 \newcommand{\errorrow}[1]{%
- #1 & \errorboxed{#1I} & \errorboxed{#1II} & \errorboxed{#1III}
- \write\markdown{#1|\errortext{#1I}|\errortext{#1II}|\errortext{#1III}}
+ #1 & \errorboxed{#1}{I} & \errorboxed{#1}{II} & \errorboxed{#1}{III}%
+ \write\markdown{#1|\errortext{#1}{I}|\errortext{#1}{II}|\errortext{#1}{III}}%
 }
 
 \newcommand{\startMarkdownTable}{
@@ -71,72 +86,66 @@
 \maketitle
 
 \noindent
-The following error exists in the in June 2021 printed version of Apex LT Calculus I:
+The following errors exist in the in June 2021 printed version of Apex LT Calculus I:
 \begin{enumerate}
 \item \S1.5 p57 Example 7\#3a: The limit should be $-\infty$.
-\item At the back of the book, integration rule \#2 should enclose its integrand in parentheses, and \#23 should have $a>0$ or use $|a|$.
+\item At the back of the book, integration rule \#2 should enclose its integrand in parentheses, \#23 should have $a>0$ or use $|a|$, and \#31 should have its result in absolute values.
 \label{2021-06-00I}
 \end{enumerate}
 
 \noindent
 The following errors exist in the in June 2021 printed version of Apex LT Calculus II:
 \begin{enumerate}
-\item \S7.1\#5 p348: The solution's line segment should go through $(5,-2)$.
+\item \S7.1 p348 \#5: The solution's line segment should go through $(5,-2)$.
 \item \S7.3 Example 7.3.3\#3 p361: The $C$ disappears at the end.
-\item \S7.4 Key Idea 7.4.4\#1 p371: $\cosh^{-1}$ is only defined for positive arguments, so we don't need the absolute value. % todo
+\item \S7.4 Key Idea 7.4.4\#1 p371: $\cosh^{-1}$ is only defined for positive arguments, so we don't need the absolute value.
 \item \S7.5 Example 7.5.1\#3 p377: We need to have a $\lim_{x\to 0}$ in front of the $\frac2{\cos x}$.
-%\item \S8.2 p397: ``only by a constant ... $+C$ for some constant $C$.'' Check the spacing between ``C'' and ``for''. % todo 
 \item \S8.2 Key Idea 8.2.2\#4 p400: $\tan^{m-2}x$ is missing its $x$.
-\item \S8.3 Example 8.3.2 p409: ``Key Idea 8.3.1(b)'' should be ``8.3.1(2)''. % todo
-\item \S8.3 Example 8.3.3 p410: ``Key Idea 8.3.1(c)'' should be ``8.3.1(3)''. % todo
-\item \S8.3 Example 8.3.5 p412: ``Key Idea 8.3.1(b)'' should be ``8.3.1(2)''. % todo
+\item \S8.3 Key Idea 8.3.1 identifies its cases by 1, 2, and 3, but subsequent examples refer to a, b, and c.
 \item \S8.6 p436: ``An improper integral is said to \textbf{converge} if its corresponding limit exists'' \emph{and is finite}.
 \item \S8.7 p456 Theorem 1: The variable $n$ is representing two different things.  For that matter, so is $M$.
-%\item \S9.1 p464: From Larry, at bottom of page: you could put in a sentence that says that theorems on limits at infinity from Calculus I have obvious analogues that apply to sequences.  (But we need to state the theorems on limits at infinity.)
-\item \S9.1 p466: We haven't stated a Squeeze Theorem for sequences. % todo (but see previous note from Larry).
 \item \S9.2 Theorem 9.2.1 p479: We need to specify that $a\neq 0$.
 \item \S9.3 p490: $[n,\infty]$ should be $[n,\infty)$.
-\item \S9.4 p497: ``For $n\ge N$, We're now'' should be lowercased. % p496?
+\item \S9.4 p496: ``For $n\ge N$, We're now'' should be lowercased.
 \item \S9.4 Example 9.4.2 p498: The stated inequality should be for all $n\ge 2$.
 \item \S9.4 Example 9.4.3 p500: ``Harmonic Sequence'' should be ``Harmonic Series''.
-\item \S9.7 p523 \#6: If the terms contain a factorial, then the divergence test might work.  (The root test is also a possibility, if you believe Knewton.) % todo
+\item \S9.7 p523 \#6: If the terms contain a factorial, then the divergence test might work.  (The root test is also a possibility, if you believe Knewton.)
 \item \S9.9 p546: ``pattern that make their formation'' should be ``makes''.
-\item \S9.9 Theorem 9.9.1 p549: The theorem defines $R_n(x)$ and should be stated as such. % todo
+\item \S9.9 Theorem 9.9.1 p549: The theorem defines $R_n(x)$ and should be stated as such.
 \item \S9.9 Example 9.9.3\#1 p550: The seventh derivative is $y=+6!/x^7$.
 \item \S9.9 Example 9.9.3\#2 p550: ``[1,2] again'' should be ``[1,2] is again''.
-\item \S9.9 Example 9.9.3\#2 p550: $720/5040\approx1/7$, with subsequent changes. % todo
+\item \S9.9 Example 9.9.3\#2 p550: $720/5040\approx1/7$, with subsequent changes.
 \item \S9.9 Example 9.9.4 p552: ``guarantee'' should be ``guarantees''.
+\item \S9.9 p554 \#28: We want to approximate $\sin\pi$, not $\cos\pi$.
 \item \S9.10 p557: ``not the case'' should be ``not necessarily the case''.
-\item \S9.10 Example 9.10.6 p562: The Taylor expansion for $\ln x$ given in Key Idea 9.10.1 is centered at $x=0$.  We can use Theorem 9.10.2 with $h(x)=x-1$. % todo
-\item \S10.1 p580: The surface area approximation is not actually a Riemann Sum, because we use two different points in the same interval. % todo: omit or look into the gory details
+\item \S9.10 Example 9.10.6 p562: The Taylor expansion for $\ln x$ given in Key Idea 9.10.1 is centered at $x=0$.  We can use Theorem 9.10.2 with $h(x)=x-1$.
+\item \S10.1 p580: The surface area approximation is not actually a Riemann Sum, because we use two different points in the same interval.
 \item \S10.2 Example 10.2.13 p594: ``on a wheel of radius $r$ as starts rolling" should be ``as it starts rolling''.
-%\item \S10.3 p605: There's some bad spacing on $f'$ (twice).
 \item \S10.3 p608: ``the parametric equation defining these curves'' should be ``equations''.
-\item \S10.4 Figure 10.4.4: A ray for $-\pi/4$ should be in the fourth quadrant. % todo
 \item \S10.4 Example 10.4.3 p615: $\tan\pi/4$ should be $\tan(\pi/4)$.
-%\item \S10.4 Figure 10.4.7: move this outside of the example. % todo
-%\item \S10.4 Example 10.4.6\#2 p617: There's a space in front of ``This function is valid only when''. % todo?
 \item \S10.5 Example 10.5.2 p627: ``in polar,'' should be ``in polar coordinates,''.
 \item \S10.5 Example 10.5.7 p632: $1+2\cos\theta+\cos\theta$ should have $\cos^2\theta$.
-\item At the back of the book, integration rule \#2 should enclose its integrand in parentheses, and \#23 should have $a>0$ or use $|a|$.
-%\item We should include $\int\sec^3xdx$ in the table of integration rules. % todo (or $\int\sec^{2k+1}xdx$)
+\item At the back of the book, integration rule \#2 should enclose its integrand in parentheses, \#23 should have $a>0$ or use $|a|$, and \#31 should have its result in absolute values.
 \label{2021-06-00II}
 \end{enumerate}
 
+\clearpage
+
 \noindent
-The following error exists in the in June 2021 printed version of Apex LT Calculus III:
+The following errors exist in the in June 2021 printed version of Apex LT Calculus III:
 \begin{enumerate}
 \item \S12.1 p717 Example 3: In the last displayed equation, ``Multiplying $\vec r(t)$ by 5'' should produce $5\vec r(t)=\langle5\cos t+t,5\sin t+\frac32t\rangle$.
 \item \S13.5 p815 Example 6: In the final fraction, the ``$+3y^2$'' should be in the denominator, not the numerator.
+\item \S14.7 p928, 931: ``So that each point in space that does not lie on the $z$-axis is defined uniquely'', we need $0\le\theta<2\pi$, not $0\le\theta\le2\pi$.
 \item \S14.7 p931 Example 4: We need to divide by $M$.  It also turns out that we can compute these integrals exactly.
+\item \S15.1 p949 line 5: We should have $\beta^{-1}$ instead of $\alpha$.
 \item \S15.1 p951 Example 3: $\sqrt{1+t^2}$ should be $\sqrt{1+4t^2}$.  The final answer is correct.
+\item \S15.4 p986 Example 3: In the last line, $\vec Fd\vec r$ should be $\vec F\cdot d\vec r$.
 \item \S15.4\#27 p 989: $\vec f$ should be $\vec F$.
 \item \S15.7 p 1021 Key Idea 15.7.1: In the $\mathbb{R}^2$ Divergence Theorem, the left hand side should have $\oint_{\partial R}$, not a double integral.  In Green's Theorem, $\vec F$ is missing its vector arrow.
-\item At the back of the book, integration rule \#2 should enclose its integrand in parentheses, and \#23 should have $a>0$ or use $|a|$.
+\item At the back of the book, integration rule \#2 should enclose its integrand in parentheses, \#23 should have $a>0$ or use $|a|$, and \#31 should have its result in absolute values.
 \label{2021-06-00III}
 \end{enumerate}
-
-%\end{document}
 
 \startMarkdownTable
 \begin{table}[ht]
@@ -151,6 +160,8 @@ Version & Calculus I & Calculus II & Calculus III \\\midrule
 \errorrow{2017-05-00} \\
 \errorrow{2017-01-00} \\
 \errorrow{2016-08-00} \\
+\midrule
+\errorTotals \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -464,7 +475,7 @@ In addition to the previous, the following errors exist in the July 27, 2017 pri
 
 In addition to the previous, the following error exists in the Summer 2017 printed version of Apex LT Calculus I:
 \begin{enumerate}
-\item \S4.2 p204 \#4\&5: The question should specify that the desired numbers are positive.
+\item \S4.2 p204 \#4\&5: The questions should specify that the desired numbers are positive.
 \label{2017-05-00I}
 \end{enumerate}
 \vspace{1in}

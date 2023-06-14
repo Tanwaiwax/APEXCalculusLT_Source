@@ -14,7 +14,7 @@ Just as polar coordinates gave us a new way of describing curves in the plane, i
 \subsection{Cylindrical Coordinates}
 
 In short, cylindrical coordinates can be thought of as a combination of the polar and rectangular coordinate systems. %One can identify a location in the $x$-$y$ plane using polar coordinates (i.e., using $(r,\theta)$), then use a $z$-value to determine the distance
-One can identify a point $(x_0,y_0,z_0)$, given in rectangular coordinates, with the point $(r_0,\theta_0,z_0)$, given in cylindrical coordinates, where the $z$-value in both systems is the same, and the point $(x_0,y_0)$ in the $x$-$y$ plane is identified with the polar point $P(r_0,\theta_0)$; see \autoref{fig:cylindricalintro}. So that each point in space that does not lie on the $z$-axis is defined uniquely, we will restrict $r\geq 0$ and $0\leq \theta\leq 2\pi$.
+One can identify a point $(x_0,y_0,z_0)$, given in rectangular coordinates, with the point $(r_0,\theta_0,z_0)$, given in cylindrical coordinates, where the $z$-value in both systems is the same, and the point $(x_0,y_0)$ in the $x$-$y$ plane is identified with the polar point $P(r_0,\theta_0)$; see \autoref{fig:cylindricalintro}. So that each point in space that does not lie on the $z$-axis is defined uniquely, we will restrict $r\geq 0$ and $0\leq \theta< 2\pi$.
 \index{cylindrical coordinates}\index{coordinates!cylindrical}
 
 We use the identity $z=z$ along with the identities found in \autoref{idea:polarconvert} to convert between the  rectangular coordinate $(x,y,z)$ and the  cylindrical coordinate $(r,\theta,z)$, namely:
@@ -129,18 +129,21 @@ M_{yz} = \iiint_D x\dd V &= \int_0^{\pi}\int_0^{\cos(3\theta)}\int_0^{1-r\cos\th
 %\end{align*}
 %\begin{align*}
 M_{xz} = \iiint_D y\dd V &= \int_0^{\pi}\int_0^{\cos(3\theta)}\int_0^{1-r\cos\theta+0.1r\sin\theta} (r\sin\theta) r\dd z\dd r\dd\theta\\
-&= \frac{3\pi}{640}. %0.015.\\
+&= \frac{3\pi}{640}. %0.015.
+\\
 M_{xy} = \iiint_D z\dd V &= \int_0^{\pi}\int_0^{\cos(3\theta)}\int_0^{1-r\cos\theta+0.1r\sin\theta} (z) r\dd z\dd r\dd\theta\\
  &= \frac{1903\pi}{12800}. %0.467.
 \end{align*}
 The center of mass %, in rectangular coordinates,  
-is located at $(-3/16, 3/160, 1903/3200)=(-0.1875,0.01875,0.5946875)$, which lies outside the bounds of the solid.
+is located at
+\[(-3/16, 3/160, 1903/3200)=(-0.1875,0.01875,0.5946875),\]
+which lies outside the bounds of the solid.
 \end{example}
 
 \subsection{Spherical Coordinates}
 \index{spherical coordinates}\index{coordinates!spherical}
 
-\mtable[-1in]{Illustrating the principles behind spherical coordinates.}{fig:sphericalintro}{%
+\mtable{Illustrating the principles behind spherical coordinates.}{fig:sphericalintro}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.0045,
@@ -149,12 +152,12 @@ is located at $(-3/16, 3/160, 1903/3200)=(-0.1875,0.01875,0.5946875)$, which lie
 3Droo=150,
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figsphericalintro_3D}}
 
-In short, spherical coordinates can be thought of as a ``double application'' of the polar coordinate system. In spherical coordinates, a point $P$ is identified with $(\rho,\theta,\varphi)$, where $\rho$ is the distance from the origin to $P$, $\theta$ is the same angle as would be used to describe $P$ in the cylindrical coordinate system, and $\varphi$ is the angle between the positive $z$-axis and the ray from the origin to $P$; see \autoref{fig:sphericalintro}. So that each point in space that does not lie on the $z$-axis is defined uniquely, we will restrict $\rho \geq 0$, $0 \leq \theta \leq 2\pi$ and $0 \leq \varphi \leq \pi$.
-
-\mnote[-\baselineskip]{\textbf{Note:} The symbol $\rho$ is the Greek letter ``rho.'' Traditionally it is used in the spherical coordinate system, while $r$ is used in the polar and cylindrical coordinate systems.% In space, $r$ and $\rho$ play different roles. In spherical coordinates, $\rho$ is the dist
-}
+In short, spherical coordinates can be thought of as a ``double application'' of the polar coordinate system. In spherical coordinates, a point $P$ is identified with $(\rho,\theta,\varphi)$, where $\rho$ is the distance from the origin to $P$, $\theta$ is the same angle as would be used to describe $P$ in the cylindrical coordinate system, and $\varphi$ is the angle between the positive $z$-axis and the ray from the origin to $P$; see \autoref{fig:sphericalintro}. So that each point in space that does not lie on the $z$-axis is defined uniquely, we will restrict $\rho \geq 0$, $0 \leq \theta < 2\pi$ and $0 \leq \varphi \leq \pi$.
 
 The following Key Idea gives conversions to/from our three spatial coordinate systems.
+
+\mnote[1.5in]{\textbf{Note:} The symbol $\rho$ is the Greek letter ``rho.'' Traditionally it is used in the spherical coordinate system, while $r$ is used in the polar and cylindrical coordinate systems.% In space, $r$ and $\rho$ play different roles. In spherical coordinates, $\rho$ is the dist
+}
 
 {\tcbset{grow to right by=2em}
 \begin{keyidea}[Converting Between Rectangular, Cylindrical and\\Spherical Coordinates]\label{idea:convert_coords}
@@ -260,10 +263,10 @@ The sphere of radius $r$, centered at the origin, has equation $\rho = r$. To ob
 \begin{align*}
 V &= \iiint_D\dd V\\
 	&= \int_0^{\pi}\int_0^{2\pi}\int_0^r\bigl(\rho^2\sin(\varphi)\bigr)\dd\rho\dd\theta\dd\varphi\\
-	&= \int_0^\pi\int_0^{2\pi}\left(\frac13\rho^3\sin(\varphi)\Big|_0^r\right)\dd\theta\dd\varphi\\
+	&= \int_0^\pi\int_0^{2\pi}\left(\frac13\rho^3\sin(\varphi)\Bigr|_{\rho=0}^{\rho=r}\right)\dd\theta\dd\varphi\\
 	&= \int_0^\pi\int_0^{2\pi} \left(\frac13r^3\sin(\varphi)\right)\dd\theta\dd\varphi\\
 	&= \int_0^\pi \left(\frac{2\pi}3r^3\sin(\varphi)\right)\dd\varphi\\
-	&= \left.\left(-\frac{2\pi}3r^3\cos(\varphi)\right)\right|_0^{\pi}\\
+	&= \left.\left(-\frac{2\pi}3r^3\cos(\varphi)\right)\right|_{\varphi=0}^{\varphi=\pi}\\
 	&= \frac{4\pi}3r^3,
 \end{align*}
 the familiar formula for the volume of a sphere. Note how the integration steps were easy, not using square-roots nor integration steps such as Substitution.

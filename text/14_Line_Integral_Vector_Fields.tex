@@ -311,10 +311,10 @@ When $\vec F$ is a conservative field, the line integral from points $A$ to $B$ 
 
 How can we tell if a field is conservative? To show a field $\vec F$ is conservative using the definition, we need to show that \emph{all} line integrals from points $A$ to $B$ have the same value. It is equivalent to show that \emph{all} line integrals over closed paths $C$ are 0. Each of these tasks are generally nontrivial.
 
-There is a simpler method. Consider the surface defined by $z = f(x,y) = xy$. We can compute the gradient of this function: $\nabla f =\bracket{f_x, f_y}=\bracket{y, x}$. Note that this is the field from \autoref{ex_livf2}, which we have claimed is conservative. We will soon give a theorem that states that a field $\vec F$ is conservative if, and only if, it is the gradient of some scalar function $f$. To show $\vec F$ is conservative, we need to determine whether or not $\vec F = \nabla f$ for some function $f$. (We'll later see that there is a yet simpler method). To recognize the special relationship between $\vec F$ and $f$ in this situation, $f$ is given a name.
+There is a simpler method. Consider the surface defined by $z = f(x,y) = xy$. We can compute the gradient of this function: $\grad f =\bracket{f_x, f_y}=\bracket{y, x}$. Note that this is the field from \autoref{ex_livf2}, which we have claimed is conservative. We will soon give a theorem that states that a field $\vec F$ is conservative if, and only if, it is the gradient of some scalar function $f$. To show $\vec F$ is conservative, we need to determine whether or not $\vec F = \grad f$ for some function $f$. (We'll later see that there is a yet simpler method). To recognize the special relationship between $\vec F$ and $f$ in this situation, $f$ is given a name.
 
 \begin{definition}[Potential Function]\label{def:potential}
-Let $f$ be a differentiable function defined on a  domain $D$ in the plane or in space (i.e., $z = f(x,y)$ or $w = f(x,y,z)$) and let $\vec F = \nabla f$, the gradient of $f$. Then $f$ is a \textbf{potential function} of $\vec F$.\index{potential function}\index{vector field!potential function of}
+Let $f$ be a differentiable function defined on a  domain $D$ in the plane or in space (i.e., $z = f(x,y)$ or $w = f(x,y,z)$) and let $\vec F = \grad f$, the gradient of $f$. Then $f$ is a \textbf{potential function} of $\vec F$.\index{potential function}\index{vector field!potential function of}
 \end{definition}
 
 We now state the Fundamental Theorem of Line Integrals, which connects conservative fields and path independence to fields with potential functions. 
@@ -322,7 +322,7 @@ We now state the Fundamental Theorem of Line Integrals, which connects conservat
 \begin{theorem}[Fundamental Theorem of Line Integrals]\label{thm:FTofLineIntegrals}
 Let $\vec F$ be a vector field whose components are continuous on a connected domain $D$ in the plane or in space, let $A$ and $B$ be any points in $D$, and let $C$ be any path in $D$ starting at $A$ and ending at $B$.\index{line integral!Fundamental Theorem}\index{Fundamental Theorem of Line Integrals}\index{conservative field}\index{vector field!conservative}\index{path independent}\index{line integral!path independent}
 \begin{enumerate}
-	\item $\vec F$ is conservative if and only if there exists a differentiable function $f$ such that $\vec F = \nabla f$. 
+	\item $\vec F$ is conservative if and only if there exists a differentiable function $f$ such that $\vec F = \grad f$. 
 	\item	If $\vec F$ is conservative, then 
 	\[\int_C\vec F\cdot\dd\vec r = \int_A^B \vec F\cdot\dd\vec r = f(B) - f(A).\]
 \end{enumerate}
@@ -339,24 +339,24 @@ We practice using this theorem again in the next example.
 \begin{example}[Using the Fundamental Theorem of Line Integrals]\label{ex_livf5}
 Let $\vec F =\bracket{3x^2y+2x, x^3+1}$, $A = (0,1)$ and $B = (1,4)$. Use the first part of the Fundamental Theorem of Line Integrals to show that $\vec F$ is conservative, then choose any path from $A$ to $B$ and confirm the second part of the theorem.
 \solution
-To show $\vec F$ is conservative, we need to find $z = f(x,y)$ such that $\vec F = \nabla f =\bracket{f_x, f_y}$. That is, we need to find $f$ such that $f_x = 3x^2y+2x$ and $f_y = x^3+1$. As all we know about $f$ are its partial derivatives, we recover $f$ by integration:
-\[\int \frac{\partial f}{\partial x}\dd x = f(x,y) + C(y).\]
+To show $\vec F$ is conservative, we need to find $z = f(x,y)$ such that $\vec F = \grad f =\bracket{f_x, f_y}$. That is, we need to find $f$ such that $f_x = 3x^2y+2x$ and $f_y = x^3+1$. As all we know about $f$ are its partial derivatives, we recover $f$ by integration:
+\[\int \frac{\partial f}{\partial x}\dd x = f(x,y) + C_1(y).\]
 Note how the constant of integration is more than ``just a constant'': it is anything that acts as a constant when taking a derivative with respect to $x$. Any function that is a function of $y$ (containing no $x$'s) acts as a constant when deriving with respect to $x$.
 
 Integrating $f_x$ in this example gives:
-\[\int \frac{\partial f}{\partial x}\dd x = \int (3x^2y+2x)\dd x = x^3y+x^2 + C(y).\]
+\[\int \frac{\partial f}{\partial x}\dd x = \int (3x^2y+2x)\dd x = x^3y+x^2 + C_1(y).\]
 
 Likewise, integrating $f_y$ with respect to $y$ gives:
-\[\int \frac{\partial f}{\partial y}\dd y = \int( x^3+1)\dd y = x^3y+ y + C(x).\]
+\[\int \frac{\partial f}{\partial y}\dd y = \int( x^3+1)\dd y = x^3y+ y + C_2(x).\]
 
 These two results should be equal with appropriate choices of $C(x)$ and $C(y)$:
 \[
-x^3y+x^2 + C(y) = x^3y+ y + C(x)
+x^3y+x^2 + C_1(y) = x^3y+ y + C_2(x)
 \quad \Rightarrow\quad
-C(x) = x^2 \quad \text{and}\quad C(y) = y.
+C_2(x) = x^2 \quad \text{and}\quad C_1(y) = y.
 \]
 
-We find $f(x,y) = x^3y+x^2+y$, a potential function of $\vec F$. (If $\vec F$ were not conservative, no choice of $C(x)$ and $C(y)$ would give equality.)
+We find $f(x,y) = x^3y+x^2+y$, a potential function of $\vec F$. (If $\vec F$ were not conservative, no choice of $C_2(x)$ and $C_1(y)$ would give equality.)
 
 By the Fundamental Theorem of Line Integrals, regardless of the path from $A$ to $B$, 
 \begin{align*}

@@ -3,12 +3,45 @@ List Of Changes
 
 Individual errors are detailed in [the errata directory](errata/)
 
+Changes for the 2023-06 version:
+--------------------
+
+* Definition 10.3.2 (Normal line to a parametric curve) has been rearranged to no longer have an unnecessary "provided y'≠0".
+
+* 13.6 and 15.2 both talked about how it's useful to think of del as an operator.  This isn't all that useful in 13.6, so we leave that discussion to 15.2.
+
+* In 13.8, the definition of a critical point has been tightened from "grad=0 or one component undefined" to "each component is zero or undefined" (for example, x+|y| now has no cricital points instead of a continuum of critical points)
+
+* Chapter 14 opened by talking about how the constant of integration in ∫ f_x(x,y) dx is an arbitrary function of y.  Since the chapter is about definite integration, and indefinite integration doesn't occur until 15.3 (which already commented about the arbitrary function), we have removed this remark.
+
+* The formulas in the back of the book have been adjusted to include the formulas we have been distributing in Calc II.  A few more were added as well.
+
+* Notes and notation:
+
+	* In 1.5, a note has been added that theorems 1.3.1, 1.3.2, and 1.3.5 also hold in the case c=±infty.
+
+	* In 9.6, a note has been added that n^(1/n) approaches 1 while (n!)^(1/n) approaches infinity (Knewton Alta likes to use the root test with factorials).
+
+	* In 11.2, a note has been added that a vector can be freely scaled before normalizing.
+
+	* In 13.3, a note has been added that ḟ (ie, $\dot f$) is an alternate notation for differentation with respect to time.
+
+	* We now have a vector arrow over the del operator.
+
+	* In Chapter 14, when evaluating the result of a multiple integral, we now have "x=" to indicate which variable is being evaluated.
+
+* In 6.5, a different video is now being used.
+
+* New exercises: 1.3#55, 3.3#25 (renumbering some subsequent review exercises), 12.5#37
+
+* All known errata (42) have been fixed.
+
 Changes for the 2021-06 version:
 --------------------
 
 * The html version now includes 3d images that can be manipulated within the browser.  Chrome doesn't seem to handle MathJax well, so Firefox seems to be the way to go.
 
-* Within 5.3, "Riemann Sums", $\Delta x$ usually represents the width of a subinterval.  It also occasionally represented a partition of the interval.  A partition is now represented by $P$.
+* Within 5.3, "Riemann Sums", ∆x usually represents the width of a subinterval.  It also occasionally represented a partition of the interval.  A partition is now represented by P.
 
 * Example 8.7.8 has been introduced, showing how to calculate n in order to achieve a desired accuracy in the Trapezoidal Rule.
 

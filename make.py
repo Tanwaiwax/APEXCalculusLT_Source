@@ -613,8 +613,8 @@ def runcommands(args,commands):
         print(message,'')
         loginfo.append(message)
     if args.instructor:
-        shutil.copy('Answers.pdf','ApexPDFs/bigpdfs/')
-        minimizePdf('Answers.pdf')
+        shutil.copy('Answers.pdf','ApexPDFs/bigpdfs/answers.pdf')
+        minimizePdf('answers.pdf')
     elif not args.xml and not args.web and not args.standalonex and not args.standalonew:
         shutil.copy('Calculus.pdf','ApexPDFs/bigpdfs/calculus'+newsuffix+'.pdf')
         minimizePdf('calculus'+newsuffix+'.pdf')
@@ -622,10 +622,11 @@ def runcommands(args,commands):
 if args.all:
     print('all true')
     #suffix = ' --justprint' if args.justprint else ''
-    compilewith('-f')
+    compilewith('--figures')
     # having this first makes sure the index and toc are up to date
     compilewith('-c0')
-    compilewith('-i')
+    compilewith('--instructor')
+    compilewith('--prc')
     # having '123' first means that doesn't change everytime, which may speed compilation
     for part,size in itertools.product('123',['s','b']):
         compilewith('-'+size+'c'+part)

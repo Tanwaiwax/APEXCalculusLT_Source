@@ -1,6 +1,14 @@
 \section{Arc Length and Surface Area}\label{sec:arc_length}
 
-\mtable[-.5in]{Graphing $y=\sin x$ on $[0,\pi]$ and approximating the curve with line segments.}{fig:arcintro}{%
+In previous sections we have used integration to answer the following questions:
+\begin{enumerate}
+	\item	Given a region, what is its area?
+	\item	Given a solid, what is its volume?
+\end{enumerate}
+
+In this section, we address a related question: Given a curve, what is its length? This is often referred to as \textbf{arc length}. 
+
+\mtable{Graphing $y=\sin x$ on $[0,\pi]$ and approximating the curve with line segments.}{fig:arcintro}{%
 \begin{tikzpicture}
  \begin{axis}[width=\marginparwidth,%height=.46\marginparwidth,
    tick label style={font=\scriptsize},axis equal,
@@ -34,14 +42,6 @@
 \end{tikzpicture}
 \\(b)}
 
-In previous sections we have used integration to answer the following questions:
-\begin{enumerate}
-	\item	Given a region, what is its area?
-	\item	Given a solid, what is its volume?
-\end{enumerate}
-
-In this section, we address a related question: Given a curve, what is its length? This is often referred to as \textbf{arc length}. 
-
 Consider the graph of $y=\sin x$ on $[0,\pi]$ given in \autoref{fig:arcintro} (a). How long is this curve? That is, if we were to use a piece of string to exactly match the shape of this curve, how long would the string be?
 
 As we have done in the past, we start by approximating; later, we will refine our answer using limits to get an exact solution.
@@ -54,6 +54,8 @@ In \autoref{fig:arcintro} (b), the curve $y=\sin x$ has been approximated with 4
 
 In general,  we can approximate the arc length of $y=f(x)$ on $[a,b]$ in the following manner. Let $a=x_0 < x_1 < \dotso < x_{n-1}< x_n=b$ be a partition of $[a,b]$ into $n$ subintervals. Let $\Delta x_i$ represent the length of the $i\,^\text{th}$ subinterval $[x_{i-1},x_i]$.
 
+\autoref{fig:arcintro2} zooms in on the $i^{\text{th}}$ subinterval where $y=f(x)$ is approximated by a straight line segment. The dashed lines show that we can view this line segment as the hypotenuse of a right triangle whose sides have length $\Delta x_i$ and $\Delta y_i$. Using the Pythagorean Theorem, the length of this line segment is $\ds \sqrt{(\Delta x_i)^2 + (\Delta y_i)^2}.$ Summing over all subintervals gives an arc length approximation
+%
 \mtable{Zooming in on the $i^{\text{th}}$ subinterval $[x_{i-1},x_i]$ of a partition of $[a,b]$.}{fig:arcintro2}{\begin{tikzpicture}
  \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
    axis y line=middle,axis x line=middle,name=myplot,axis on top,
@@ -76,8 +78,7 @@ In general,  we can approximate the arc length of $y=f(x)$ on $[a,b]$ in the fol
  \node [right] at (myplot.right of origin) {\scriptsize $x$};
  \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
-
-\autoref{fig:arcintro2} zooms in on the $i^{\text{th}}$ subinterval where $y=f(x)$ is approximated by a straight line segment. The dashed lines show that we can view this line segment as the hypotenuse of a right triangle whose sides have length $\Delta x_i$ and $\Delta y_i$. Using the Pythagorean Theorem, the length of this line segment is $\ds \sqrt{(\Delta x_i)^2 + (\Delta y_i)^2}.$ Summing over all subintervals gives an arc length approximation
+%
 \[L \approx \sum_{i=1}^n \sqrt{(\Delta x_i)^2 + (\Delta y_i)^2}.\]
 
 As it is written, this is \emph{not} a Riemann Sum. While we could conclude that taking a limit as the subinterval length goes to zero gives the exact arc length, we would not be able to compute the answer with a definite integral. We need first to do a little algebra.
@@ -104,6 +105,9 @@ Let $f$ be differentiable on an open interval containing $[a,b]$, where $\fp$ is
 
 As the integrand contains a square root, it is often difficult to use the formula in \autoref{idea:arclength} to find the length exactly. When exact answers are difficult to come by, we resort to using numerical methods of approximating definite integrals. The following examples will demonstrate this.
 
+\begin{example}[Finding arc length]\label{ex_arc1}
+Find the arc length of $f(x) = x^{3/2}$ from $x=0$ to $x=4$.
+%
 \mtable{A graph of $f(x) = x^{3/2}$ from \autoref{ex_arc1}.}{fig:arc1}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
@@ -114,9 +118,7 @@ ymin=-.2,ymax=8.5,xmin=-.1,xmax=4.5,]
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
-
-\begin{example}[Finding arc length]\label{ex_arc1}
-Find the arc length of $f(x) = x^{3/2}$ from $x=0$ to $x=4$.
+%
 \solution
 A graph of $f$ is given in \autoref{fig:arc1}.
 We begin by finding $\fp(x)= \frac32x^{1/2}$. Using the formula, we find the arc length $L$ as
@@ -218,7 +220,7 @@ Since $f$ is a continuous function, the Intermediate Value Theorem states there 
 \[2\pi f(d_i)\sqrt{1+[\fp(c_i)]^2}\Delta x_i.\]
 Summing over all the subintervals we get the total surface area to be approximately 
 \[\text{Surface Area}\approx \sum_{i=1}^n 2\pi f(d_i)\sqrt{1+[\fp(c_i)]^2}\Delta x_i,\]
-which is a Riemann Sum. Taking the limit as the subinterval lengths go to zero gives us the exact surface area, given in the upcoming Key Idea.
+which is almost a Riemann Sum (we would need $d_i=c_i$ to remove the ``almost''). Taking the limit as the subinterval lengths go to zero gives us the exact surface area, given in the upcoming Key Idea.
 
 If instead we revolve $y=f(x)$ about the $y$-axis, the radii of the resulting frustum are $x_{i-1}$ and $x_i$; their average value is simply the midpoint of the interval. In the limit, this midpoint is just $x$. This gives the second part of \autoref{idea:surface_area}.
 
@@ -302,8 +304,6 @@ Find the surface area of the solid formed by revolving the curve $y=x^2$ on $[0,
 
 Our final example is a famous mathematical ``paradox.''
 
-\begin{example}[The surface area and volume of Gabriel's Horn]\label{ex_gabriel}
-Consider the solid formed by revolving $y=1/x$ about the $x$-axis on $[1,\infty)$. Find the volume and surface area of this solid. (This shape, as graphed in \autoref{fig:gabriel}, is known as ``Gabriel's Horn'' since it looks like a very long horn that only a supernatural person, such as an angel, could play.)\index{Gabriel's Horn}
 \mtable{A graph of Gabriel's Horn.}{fig:gabriel}{%
 \myincludeasythree{width=\marginparwidth,
 3Droll=107.09033109095482,
@@ -311,6 +311,8 @@ Consider the solid formed by revolving $y=1/x$ about the $x$-axis on $[1,\infty)
 3Dc2c=0.4647676646709442 0.1565970778465271 0.8714748024940491,
 3Dcoo=72.58285522460938 2.8911631107330322 -26.545440673828125,
 3Droo=149.99999776925813}{width=\marginparwidth}{figures/figgabriel_3D}}
+\begin{example}[The surface area and volume of Gabriel's Horn]\label{ex_gabriel}
+Consider the solid formed by revolving $y=1/x$ about the $x$-axis on $[1,\infty)$. Find the volume and surface area of this solid. (This shape, as graphed in \autoref{fig:gabriel}, is known as ``Gabriel's Horn'' since it looks like a very long horn that only a supernatural person, such as an angel, could play.)\index{Gabriel's Horn}
 \solution
 To compute the volume it is natural to use the Disk Method. We have:
 \begin{align*}

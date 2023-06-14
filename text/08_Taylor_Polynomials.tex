@@ -232,7 +232,7 @@ This approximation is not terribly impressive: a hand held calculator shows that
 The graph in \autoref{fig:taypoly2b} shows that $p_6(x)$ provides less accurate approximations of $\ln x$ as $x$ gets close to 0 or 2. 
 
 % todo use 20th degree polynomial instead of coordinates in Figure 9.9.8 fig:taypoly2c
-\mtable{A plot of $y=\ln x$ and its 20$^\text{th}$ degree Taylor polynomial at $x=1$.}{fig:taypoly2c}{\begin{tikzpicture}
+\mtable[-.5in]{A plot of $y=\ln x$ and its 20$^\text{th}$ degree Taylor polynomial at $x=1$.}{fig:taypoly2c}{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
 ymin=-4.5,ymax=2.4,xmin=-.5,xmax=3.2]
@@ -272,13 +272,14 @@ In both situations, a critical piece of information to have is ``How good is my 
 
 We had the same problem with Numerical Integration. \autoref{thm:numerical_error} provided bounds on the error when using, say, Simpson's Rule to approximate a definite integral. These bounds allowed us to determine that, for example, using $10$ subintervals provided an approximation within $\pm .01$ of the exact value. The following theorem gives similar bounds for Taylor (and hence Maclaurin) polynomials.
 
-{\tcbset{grow to right by=2em}
+{\tcbset{grow to right by=.5em}
 \begin{theorem}[Taylor's Theorem]\label{thm:taylorthm}
 \mbox{}\\[-2\baselineskip]\index{Taylor Polynomial!Taylor's Theorem}\index{Taylor's Theorem}
 \begin{enumerate}
 	\item	Let $f$ be a function whose $(n+1)^{\text{th}}$ derivative exists on an open interval $I$ and let $c$ be in $I$. Then, for each $x$ in $I$, there exists $z_x$ between $x$ and $c$ such that\vspace{-.3\baselineskip}
-\[f(x) = \sum_{k=0}^n\frac{f\,^{(k)}(c)}{k!}(x-c)^k+R_n(x),\]
-where $\ds R_n(x) = \frac{f\,^{(n+1)}(z_x)}{(n+1)!}(x-c)^{n+1}.$
+\[R_n(x) = f(x) - \sum_{k=0}^n\frac{f\,^{(k)}(c)}{k!}(x-c)^k = \frac{f\,^{(n+1)}(z_x)}{(n+1)!}(x-c)^{n+1}.\]
+%\[f(x) = \sum_{k=0}^n\frac{f\,^{(k)}(c)}{k!}(x-c)^k+R_n(x),\]
+%where $\ds R_n(x) = \frac{f\,^{(n+1)}(z_x)}{(n+1)!}(x-c)^{n+1}.$
 	\item	$\abs{R_n(x)}\leq\dfrac{\max_z\abs{\,f\,^{(n+1)}(z)}}{(n+1)!}\abs{x-c}^{n+1}$, where $z$ is between $x$ and $c$.
 \end{enumerate}
 \end{theorem}}
@@ -310,9 +311,9 @@ We computed $p_6(1.5) = 0.404688$; using a calculator, we find $\ln 1.5 \approx 
 	\abs{R_6(2)}
 	&\leq \frac{\max\abs{f\,^{(7)}(z)}}{7!}\abs{2-1}^7\\
 	&\leq \frac{720}{5040}\cdot1^7\\
-	&\approx 0.28.
+	&\approx0.15.
 \end{align*}
-This bound is not as nearly as good as before. Using the degree 6 Taylor polynomial at $x =1$ will bring us within 0.3 of the correct answer. As $p_6(2)\approx 0.61667$, our error estimate guarantees that the actual value of $\ln 2$ is somewhere between $0.33667$ and $0.89667$. These bounds are not particularly useful.
+This bound is not as nearly as good as before. Using the degree 6 Taylor polynomial at $x =1$ will bring us within 0.15 of the correct answer. As $p_6(2)\approx 0.61667$, our error estimate guarantees that the actual value of $\ln 2$ is somewhere between $0.46$ and $0.76$. These bounds are not particularly useful.
 
 In reality, our approximation was only off by about $0.07$ (or $11\%$). However, we are approximating ostensibly because we do not know the real answer. In order to be assured that we have a good approximation, we would have to resort to using a polynomial of higher degree.
 \end{enumerate}

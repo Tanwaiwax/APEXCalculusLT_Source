@@ -137,16 +137,16 @@ We now describe in detail Trigonometric Substitution. This method excels when de
 % Each right triangle acts as a reference to help us understand the relationships between $x$ and $\theta$.
 
 \begin{keyidea}[Trigonometric Substitution]\label{idea:trigsub}
-\mbox{}\\[-2\baselineskip]\index{integration!trig. subst.}\begin{enumerate}
-	\item For integrands containing $\sqrt{a^2-x^2}$:\smallskip\\
+\mbox{}\\[-2\baselineskip]\index{integration!trig. subst.}\begin{enumerate}[label=(\alph*)]
+	\item\label{trigsubsin} For integrands containing $\sqrt{a^2-x^2}$:\smallskip\\
 		Let $x=a\sin\theta$, \quad for $-\pi/2\leq \theta\leq \pi/2$ and $a>0$. \smallskip\\
 	On this interval, $\cos\theta\geq 0$, so	$\sqrt{a^2-x^2} = a\cos\theta$
 		
-	\item For integrands containing $\sqrt{x^2+a^2}$:\smallskip\\
+	\item\label{trigsubtan} For integrands containing $\sqrt{x^2+a^2}$:\smallskip\\
 		Let $x=a\tan\theta$, \quad for $-\pi/2 < \theta < \pi/2$ and $a>0$. \smallskip\\
 	On this interval, $\sec\theta> 0$, so $\sqrt{x^2+a^2} = a\sec\theta$
 		
-	\item For integrands containing $\sqrt{x^2-a^2}$:\smallskip\\
+	\item\label{trigsubsec} For integrands containing $\sqrt{x^2-a^2}$:\smallskip\\
 		Let $x=a\sec\theta$, \quad restricting our work to where $x\geq a>0$,\\
 		so $x/a\geq 1$, and $0\leq\theta<\pi/2$. \smallskip\\
 	On this interval, $\tan\theta\geq 0$, so	$\sqrt{x^2-a^2} = a\tan\theta$
@@ -156,7 +156,7 @@ We now describe in detail Trigonometric Substitution. This method excels when de
 \begin{example}[Using Trigonometric Substitution]\label{ex_trigsub3}
 Evaluate $\ds \int \frac{1}{\sqrt{5+x^2}}\dd x$.
 \solution
-Using \autoref{idea:trigsub}(b), we recognize $a=\sqrt{5}$ and  set $x= \sqrt{5}\tan \theta$. This makes $\dd x = \sqrt{5}\sec^2\theta\dd\theta$. We will use the fact that $\sqrt{5+x^2} = \sqrt{5+5\tan^2\theta} = \sqrt{5\sec^2\theta} = \sqrt{5}\sec\theta.$ Substituting, we have:
+Using \autoref{idea:trigsub}\ref*{trigsubtan}, we recognize $a=\sqrt{5}$ and  set $x= \sqrt{5}\tan \theta$. This makes $\dd x = \sqrt{5}\sec^2\theta\dd\theta$. We will use the fact that $\sqrt{5+x^2} = \sqrt{5+5\tan^2\theta} = \sqrt{5\sec^2\theta} = \sqrt{5}\sec\theta.$ Substituting, we have:
 \begin{align*}
 \int \frac{1}{\sqrt{5+x^2}}\dd x &= \int \frac{1}{\sqrt{5+5\tan^2\theta}}\sqrt{5}\sec^2\theta\dd\theta \\
 			&= \int \frac{\sqrt{5}\sec^2\theta}{\sqrt{5}\sec\theta} \dd\theta\\
@@ -198,7 +198,7 @@ We start by rewriting the integrand so that it has the form $\sqrt{x^2-a^2}$ for
 \sqrt{4x^2-1} &= \sqrt{4\left(x^2-\frac14\right)}\\
 		&= 2\sqrt{x^2-\left(\frac12\right)^2}.
 \end{align*}
-So we have $a=1/2$, and following \autoref{idea:trigsub}(c), we set $x= \frac12\sec\theta$, and hence $\dd x = \frac12\sec\theta\tan\theta\dd\theta$. %The Key Idea also shows that $\sqrt{x^2-1/2^2} = \frac12\tan\theta$. 
+So we have $a=1/2$, and following \autoref{idea:trigsub}\ref*{trigsubsec}, we set $x= \frac12\sec\theta$, and hence $\dd x = \frac12\sec\theta\tan\theta\dd\theta$. %The Key Idea also shows that $\sqrt{x^2-1/2^2} = \frac12\tan\theta$. 
 We now rewrite the integral with these substitutions:\vspace{-.3\baselineskip}
 \begin{align*}
 	\int \sqrt{4x^2-1}\dd x &= \int 2\sqrt{x^2-\left(\frac12\right)^2}\dd x\\
@@ -247,19 +247,21 @@ Therefore,
 \begin{example}[Using Trigonometric Substitution]\label{ex_trigsub4}
 Evaluate $\ds \int \frac{\sqrt{4-x^2}}{x^2}\dd x$.
 \solution
-We use \autoref{idea:trigsub}(a) with $a=2$, $x=2\sin \theta$, $\dd x = 2\cos \theta d\theta$ and hence $\sqrt{4-x^2} = 2\cos\theta$. This gives
+We use \autoref{idea:trigsub}\ref*{trigsubsin} with $a=2$, $x=2\sin \theta$, $\dd x = 2\cos \theta d\theta$ and hence $\sqrt{4-x^2} = 2\cos\theta$. This gives
 \begin{align*}
 \int \frac{\sqrt{4-x^2}}{x^2}\dd x &= \int \frac{2\cos\theta}{4\sin^2\theta}(2\cos\theta)\dd\theta\\
 		&= \int \cot^2\theta\dd\theta\\
 		&=	\int (\csc^2\theta -1)\dd\theta\\
 		&= -\cot\theta -\theta + C.
 \end{align*}
+%
 \mtable{A reference triangle for \autoref{ex_trigsub4}}{fig:sin_tri}{\begin{tikzpicture}
 	\draw [very thick] (0,0) -- node[below,pos=.5] {$\sqrt{4-x^2}$} (3,0)
 	 -- node [right,pos=.5] {$x$} (3,2) -- node [pos=.5,above] {$2$} cycle;
     \draw [thick] (2.7,0) -- (2.7,.3) -- (3,.3);
 	\draw (.75,.25) node {$\theta$};
-\end{tikzpicture}}
+\end{tikzpicture}}%
+%
 We need to rewrite our answer in terms of $x$. Using the Pythagorean Theorem we determine the lengths of the sides of the reference triangle in \autoref{fig:sin_tri}. We have $\cot\theta = \sqrt{4-x^2}/x$ and $\theta = \sin^{-1}(x/2)$. Thus
 \[\int \frac{\sqrt{4-x^2}}{x^2}\dd x = -\frac{\sqrt{4-x^2}}x-\sin^{-1}\left(\frac x2\right) + C.\]
 \end{example}
@@ -271,7 +273,7 @@ Evaluate $\ds \int\frac1{x^2+1}\dd x$.
 \solution
 We know the answer already as $\tan^{-1}x+C$. We apply Trigonometric Substitution here to show that we get the same answer without inherently relying on knowledge of the derivative of the arctangent function.
 
-Using \autoref{idea:trigsub}(b), let $x=\tan\theta$, $\dd x=\sec^2\theta\dd\theta$ and note that $x^2+1 = \tan^2\theta+1 = \sec^2\theta$. Thus
+Using \autoref{idea:trigsub}\ref*{trigsubtan}, let $x=\tan\theta$, $\dd x=\sec^2\theta\dd\theta$ and note that $x^2+1 = \tan^2\theta+1 = \sec^2\theta$. Thus
 \begin{align*}
 \int \frac1{x^2+1}\dd x &= \int \frac{1}{\sec^2\theta}\sec^2\theta\dd\theta \\
 			&= \int 1\dd\theta\\
@@ -304,7 +306,8 @@ They are often needed for writing your final answer in terms of $x$.}
 	&= \int \left(\frac12 +\frac12\cos(2\theta)\right)\dd\theta \notag\\
 	&= \frac12\theta + \frac14\sin(2\theta) + C.\label{eq:extrigsub7}
 \end{align}
-We need to return to the variable $x$. As $u=\tan\theta$, $\theta = \tan^{-1}u$. Using the identity $\sin(2\theta) = 2\sin\theta\cos\theta$ and using the reference triangle found in \autoref{idea:trigsub}(b), we have 
+We need to return to the variable $x$. As $u=\tan\theta$, $\theta = \tan^{-1}u$. Using the identity $\sin(2\theta) = 2\sin\theta\cos\theta$ and using a reference triangle, %found in \autoref{idea:trigsub}(b),
+we have 
 \[\frac14\sin(2\theta) = \frac12\frac u{\sqrt{u^2+1}}\cdot\frac 1{\sqrt{u^2+1}} = \frac12\frac u{u^2+1}.\]
 Finally, we return to $x$ with the substitution $u=x+3$. We start with the expression in \autoeqref{eq:extrigsub7}:
 \begin{align*}
@@ -323,7 +326,7 @@ Our last example returns us to definite integrals, as seen in our first example.
 \begin{example}[Definite integration and Trigonometric Substitution]\label{ex_trigsub6}
 Evaluate $\ds\int_0^5\frac{x^2}{\sqrt{x^2+25}}\dd x$.
 \solution
-Using \autoref{idea:trigsub}(b), we set $x=5\tan\theta$, $\dd x = 5\sec^2\theta\dd\theta$, and note that $\sqrt{x^2+25} = 5\sec\theta$. As we substitute, we change the bounds of integration.
+Using \autoref{idea:trigsub}\ref*{trigsubtan}, we set $x=5\tan\theta$, $\dd x = 5\sec^2\theta\dd\theta$, and note that $\sqrt{x^2+25} = 5\sec\theta$. As we substitute, we change the bounds of integration.
 
 The lower bound of the original integral is $x=0$. As $x=5\tan\theta$, we solve for $\theta$ and find $\theta = \tan^{-1}(x/5)$. Thus the new lower bound is $\theta = \tan^{-1}(0) = 0$. The original upper bound is $x=5$, thus the new upper bound is $\theta = \tan^{-1}(5/5) = \pi/4$. 
 

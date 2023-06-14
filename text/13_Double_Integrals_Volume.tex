@@ -125,9 +125,9 @@ Using the order $\dd y\dd x$:
 \begin{align*}
 \iint_R\bigl(xy+e^y\bigr) \dd A
 	&= \int_3^4\int_1^2\bigl(xy+e^y\bigr)\dd y \dd x \\
-	&= \int_3^4 \left(\left.\left[\frac12xy^2+e^y\right]\right|_1^2\ \right)\dd x \\
+	&= \int_3^4 \left[\frac12xy^2+e^y\right]_{y=1}^{y=2}\ \dd x \\
 	&= \int_3^4\left(\frac 32x + e^2-e\right)\dd x \\
-	&= \left.\left(\frac 34x^2 + \bigl(e^2-e\bigr)x\right)\right|_3^4 \\
+	&= \left.\left(\frac 34x^2 + \bigl(e^2-e\bigr)x\right)\right|_{x=3}^{x=4} \\
 	&= \frac {21}4+ e^2-e%\approx 9.92
 	.
 \end{align*}
@@ -136,9 +136,9 @@ Now we check the validity of Fubini's Theorem by using the order $\dd x\dd y$:
 \allowdisplaybreaks
 \begin{align*}
 \iint_R\bigl(xy+e^y\bigr) \dd A &= \int_1^2\int_3^4\bigl(xy+e^y\bigr)\dd x \dd y \\
-		&= \int_1^2\left(\left.\left[\frac12x^2y+xe^y\right]\right|_3^4\right)\dd y\\
+		&= \int_1^2\left[\frac12x^2y+xe^y\right]_{x=3}^{x=4}\ \dd y\\
 		&= \int_1^2\left(\frac72y+e^y\right)\dd y\\
-		&= \left.\left(\frac74y^2+e^y\right)\right|_1^2\\
+		&= \left.\left(\frac74y^2+e^y\right)\right|_{y=1}^{y=2}\\
 		&=\frac{21}4+e^2-e%\approx 9.92
 		.
 \end{align*}
@@ -154,9 +154,9 @@ Both orders of integration return the same result, as expected.
 %The bounds on $y$ go from ``curve to curve,'' i.e., $0\leq y\leq 1-x/2$, and the bounds on $x$ go from ``point to point,'' i.e., $0\leq x\leq 2$.
 %\begin{align*}
 %\iint_R e^{2x+3y}\dd A &= \int_0^2\int_0^{-\frac x2+1} e^{2x+3y}\dd y\dd x\\
-		%&= \int_0^2\left.\left(\frac13e^{2x+3y}\right)\right|_0^{-\frac x2+1}\dd x\\
+		%&= \int_0^2\left.\left(\frac13e^{2x+3y}\right)\right|_{y=0}^{y=-\frac x2+1}\dd x\\
 		%&= \int_0^2 \left(\frac13\left(e^{\frac x2+3}-e^{2x}\right)\right)\dd x \\
-		%&= \frac13\left.\left(2e^{\frac x2+3}-\frac12e^{2x}\right)\right|_0^2\\
+		%&= \frac13\left.\left(2e^{\frac x2+3}-\frac12e^{2x}\right)\right|_{x=0}^{x=2}\\
 		%&= \frac13\left(\frac32e^4-2e^3+\frac12\right)\\
 		%&= \frac12e^4-\frac23e^3+\frac16%\approx  14.08
 		%.
@@ -164,10 +164,10 @@ Both orders of integration return the same result, as expected.
 %
 %Now lets consider the order $\dd x \dd y$. Here $x$ goes from ``curve to curve,'' $0\leq x\leq 2-2y$, and $y$ goes from ``point to point,'' $0\leq y\leq 1$:
 %\begin{align*}
-%\iint_R e^{2x+3y}\dd A &= \int_0^1\int_0^{2-2y} e^{2x+3y}\dd y\dd x\\
-		%&= \int_0^1\left.\left(\frac12e^{2x+3y}\right)\right|_0^{2-2y}\dd y\\
+%\iint_R e^{2x+3y}\dd A &= \int_0^1\int_0^{2-2y} e^{2x+3y}\dd y\dd x\\ %%%% dx dy ?
+		%&= \int_0^1\left.\left(\frac12e^{2x+3y}\right)\right|_{x=0}^{x=2-2y}\dd y\\
 		%&= \int_0^1\left(\frac12\bigl(e^{4-y}-e^{3y}\bigr)\right)\dd y\\
-		%&=\left.\frac12\left(-e^{4-y}-\frac13e^{3y}\right)\right|_0^1\\
+		%&=\left.\frac12\left(-e^{4-y}-\frac13e^{3y}\right)\right|_{y=0}^{y=1]\\
 		%&=\frac12\left(-\frac43e^3+e^4+\frac13\right)\\
 		%&= \frac12e^4-\frac23e^3+\frac16%\approx  14.08
 		%.
@@ -192,9 +192,9 @@ Using the order $\dd y\dd x$:
 The bounds on $y$ go from ``curve to curve,'' i.e., $0\leq y\leq 1-x/2$, and the bounds on $x$ go from ``point to point,'' i.e., $0\leq x\leq 2$.
 \begin{align*}
 \iint_R (3xy-x^2-y^2+6\bigl)\dd A &= \int_0^2\int_0^{-\frac x2+1} (3xy-x^2-y^2+6\bigr)\dd y\dd x\\
-		&= \int_0^2\left.\left(\frac32xy^2-x^2y-\frac13y^3+6y\right)\right|_0^{-\frac x2+1}\dd x\\
+		&= \int_0^2\left.\left(\frac32xy^2-x^2y-\frac13y^3+6y\right)\right|_{y=0}^{y=-\frac x2+1}\dd x\\
 		&= \int_0^2 \left(\frac{11}{12}x^3-\frac{11}{4}x^2-x+\frac{17}3\right)\dd x \\
-		&= \left.\left(\frac{11}{48}x^4-\frac{11}{12}x^3-\frac12x^2+\frac{17}3x\right)\right|_0^2\\
+		&= \left.\left(\frac{11}{48}x^4-\frac{11}{12}x^3-\frac12x^2+\frac{17}3x\right)\right|_{x=0}^{x=2}\\
 		&= \frac{17}3=5.\overline{6}.
 \end{align*}
 
@@ -203,9 +203,9 @@ Now lets consider the order $\dd x \dd y$. Here $x$ goes from ``curve to curve,'
 \begin{align*}
 \iint_R \bigl(3xy-x^2-y^2+6\bigr)\dd A
 	&= \int_0^1\int_0^{2-2y} \bigl(3xy-x^2-y^2+6\bigr)\dd x\dd y\\
-	&= \int_0^1\left.\left(\frac32x^2y-\frac13x^3-xy^2+6x\right)\right|_0^{2-2y}\dd y\\
+	&= \int_0^1\left.\left(\frac32x^2y-\frac13x^3-xy^2+6x\right)\right|_{x=0}^{x=2-2y}\dd y\\
 	&= \int_0^1\left(\frac{32}3y^3-22y^2+2y+\frac{28}3\right)\dd y\\
-	&=\left.\left(\frac83y^4-\frac{22}3y^3+y^2+\frac{28}3y\right)\right|_0^1\\
+	&=\left.\left(\frac83y^4-\frac{22}3y^3+y^2+\frac{28}3y\right)\right|_{y=0}^{y=1}\\
 	&=\frac{17}3=5.\overline{6}.
 \end{align*}}
 We obtained the same result using both orders of integration.
@@ -228,7 +228,7 @@ Let $f$ and $g$ be continuous functions over a closed, bounded plane region $R$,
 	\item	If $f(x,y)\geq 0$ on $R$, then $\ds \iint_R f(x,y)\dd A\geq 0$.
 	\item	If $f(x,y)\geq g(x,y)$ on $R$, then $\ds \iint_R f(x,y)\dd A\geq \iint_R g(x,y)\dd A$.
 %
-% todo parameterize this instead of a bunch of coordinates
+% todo parameterize Fig 14.2.5 instead of a bunch of coordinates
 \mtable[-2in]{$R$ is the union of two nonoverlapping regions, $R_1$ and $R_2$.}{fig:double_region}{\begin{tikzpicture}[xscale=.85,yscale=.6]
 \draw [draw={\colorone},thick,fill={\coloronefill},smooth] plot coordinates {(0,2.)
 (0.06639,2.527)(0.2407,2.839)(0.4857,3.009)(0.7641,3.112)(1.039,3.221)(1.294,3.367)
@@ -266,7 +266,7 @@ If we attempt to integrate using an iterated integral with the order $\dd y\dd x
 Instead, let's use the order $\dd x\dd y$. The curves bounding $x$ are $y-1\leq x\leq 1-y$; the bounds on $y$ are $0\leq y\leq 1$. This gives us:
 \begin{align*}
 \iint_R f(x,y)\dd A &= \int_0^1\int_{y-1}^{1-y}\sin x\cos y\dd x\dd y\\
-		&= \int_0^1\left.\Bigl( -\cos x\cos y\Bigr)\right|_{y-1}^{1-y}\dd y\\
+		&= \int_0^1\left.\Bigl( -\cos x\cos y\Bigr)\right|_{x=y-1}^{x=1-y}\dd y\\
 		&= \int_0^1 \cos y\Bigl(-\cos (1-y) + \cos(y-1)\Bigr)\dd y.
 \end{align*}
 Recall that the cosine function is an even function; that is, $\cos x = \cos (-x)$. Therefore, from the last integral above, we have $\cos (y-1) = \cos (1-y)$. Thus the integrand simplifies to 0, and we have 
@@ -304,10 +304,10 @@ Thus we have the following ``curve to curve, point to point'' bounds: $y^2/4\leq
 \begin{align*}
 \iint_R &(4-y)\dd A \\
 	&= \int_0^4\int_{y^2/4}^{2\sqrt{y}}(4-y)\dd x\dd y\\
-	&= \int_0^4 \bigl(x(4-y)\bigr)\Big|_{y^2/4}^{2\sqrt{y}}\dd y\\
+	&= \int_0^4 \bigl(x(4-y)\bigr)\Big|_{x=y^2/4}^{x=2\sqrt{y}}\dd y\\
 	&= \int_0^4 \Bigl(\bigl(2\sqrt{y}-\frac{y^2}{4}\bigr)\bigl(4-y\bigr)\Bigr)\dd y\\
 	&= \int_0^4 \Bigl( \frac{y^3}{4}-y^2-2y^{3/2}+8y^{1/2}\Bigr)\dd y\\
-	&= \left.\left(\frac{y^4}{16}-\frac{y^3}{3}-\frac{4y^{5/2}}5+\frac{16y^{3/2}}3\right)\right|_0^4\\
+	&= \left.\left(\frac{y^4}{16}-\frac{y^3}{3}-\frac{4y^{5/2}}5+\frac{16y^{3/2}}3\right)\right|_{y=0}^{y=4}\\
 	&= \frac{176}{15} = 11.7\overline{3}.
 \end{align*}
 The signed volume under the surface $f$ is about 11.7 cubic units.

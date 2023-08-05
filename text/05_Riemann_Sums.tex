@@ -222,21 +222,28 @@ Lets analyze this notation.\\
 \noindent\begin{minipage}[t]{\linewidth}\noindent
 \captionsetup{type=figure}
 \centering
+\tikzset{textnode/.style={align=center, execute at begin node=\setlength{\baselineskip}{7pt},font=\scriptsize}}
 \begin{tikzpicture}[>=latex]
-\draw  (1,1) node {$\displaystyle \sum_{i=1}^9 a_i$.};
-\draw [draw={\colorone}] (-.2,0) node [text width=45pt,align=center](a)
- {\scriptsize \centering $i$=index \\[-5pt] of~summation};
+\iflatexml
+ \draw (1.2,1.2) node {$\displaystyle \sum_{i=1}^9 a_i.$};
+ \draw (-.5,0) node [text width=45pt,textnode](a) {$i$=index of~summation};
+ \draw (2,0) node [text width=20pt,textnode] (b) {lower bound};
+ \draw (0,2.5) node [text width=32pt,textnode] (c) {upper bound};
+ \draw (2,2) node [text width=32pt,textnode] (d) {summand};
+ \draw (-1.5,2) node [text width=50pt,textnode] (e) {summation symbol (an~upper~case sigma)};
+ \draw [draw={\colorone},->] (b) -- (1.2,.5);
+\else
+ \draw (1,1) node {$\displaystyle \sum_{i=1}^9 a_i.$};
+ \draw (-.2,0) node [text width=45pt,textnode](a) {$i$=index of~summation};
+ \draw (2,0) node [text width=20pt,textnode] (b) {lower bound};
+ \draw (0,2) node [text width=32pt,textnode] (c) {upper bound};
+ \draw (2,2) node [text width=32pt,textnode] (d) {summand};
+ \draw (-1,1) node [text width=50pt,textnode] (e) {summation symbol \mbox{(an~upper~case} sigma)};
+ \draw [draw={\colorone},->] (b) -- (1.05,.5);
+\fi
 \draw [draw={\colorone},->] (a) -- (.6,.5);
-\draw [draw={\colorone}] (2,0) node [text width=20pt,align=center] (b)
- {\scriptsize \centering lower\\[-5pt] bound};
-\draw [draw={\colorone},->] (b) -- (1.05,.5);
-\draw [draw={\colorone}] (0,2) node [text width=32pt,align=center] (c)
- {\scriptsize \centering upper\\[-5pt] bound};
 \draw [draw={\colorone},->] (c) -- (.7,1.5);
-\draw [draw={\colorone}] (2,2) node [text width=32pt,align=center] (d)
- {\scriptsize \centering summand};
 \draw [draw={\colorone},->] (d) -- (1.4,1.2);
-\draw [draw={\colorone}] (-1,1) node [text width=50pt,align=center] (e) {\scriptsize \centering summation \\[-1pt] symbol \\[-1pt] (an~upper~case\\[-5pt] sigma)};
 \draw [draw={\colorone},->] (e) -- (.6,1);
 \end{tikzpicture}
 \caption{Understanding summation notation.}\label{fig:rie_notation}

@@ -65,27 +65,6 @@ DefPrimitive('\makeStyles{}{}',sub {
     return;
 });
 
-if (0) {
-DefConstructor('\makeStyles{}{}',
-	       '<ltx:resource type="text/css">'.'#selector #styles'.'</ltx:resource>',
-	       properties => sub {
-    #my $stomach = shift;
-    #    print STDERR "\nmakeStyles: array _\n";
-    #    print STDERR Dumper(@_);
-    #    print STDERR "\n:makeStyles array _\n";
-        #my ($stomach, $whatsit) = @_;
-    print STDERR "\nmakeStyles: _[1]\n";
-        print STDERR UnTeX($_[1]);
-    print STDERR "\nmakeStyles: _[2]\n";
-        print STDERR Dumper($_[2]);
-               return (
-                   selector => '.ltx_theorem_'.UnTeX($_[1]),
-                   styles => &boxStyles(UnTeX($_[2]))
-                   );
-	       }
-    );
-}
-
 sub boxStyles {
     my $hue = shift;
     my $start = "hsl($hue,100%,97%)";
@@ -152,11 +131,6 @@ sub getIframeAttr {
 }
 
 DefMacro('\marginnote []{}[]','\marginpar{#2}');
-
-#DefMacro('\mnote []{}',
-#    '\marginpar{\begin{minipage}[c]{\marginparwidth}'.
-#    '\captionsetup{type=figure}\RaggedRight#2'.
-#    '\end{minipage}}');
 
 
 DefMacro('\flushinner{}','{#1}');

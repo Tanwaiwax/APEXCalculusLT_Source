@@ -51,9 +51,9 @@ base="Calculus"
 latexmlscripts="$HOME/git/LaTeXML/blib/script"
 #latexmlscripts="$HOME/.cpan/sources/authors/id/B/BR/BRMILLER/LaTeXML-0.8.6/blib/script"
 singularitydir="$HOME/latexml"
-printf '\\newcommand{\\thetitle}{Calculus}\n\\printincolor\n\\usethreeDgraphics\n\\renewcommand{\\monthYear}{June 2021}\n' > options.tex
+printf '\\newcommand{\\thetitle}{Calculus}\n\\printincolor\n\\usethreeDgraphics\n\\renewcommand{\\monthYear}{June 2023}\n' > options.tex
 
-singularity exec $singularitydir/latexml.sif $latexmlscripts/latexml --quiet --destination=$base.xml --nocomments $base
+singularity exec $singularitydir/latexml.sif $latexmlscripts/latexml --destination=$base.xml --nocomments $base
 
 exit_code=$?
 
@@ -66,7 +66,7 @@ if [ "$exit_code" -ne "0" ]; then
     exit "$exit_code"
 fi
 
-singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost --split --destination=web/index.html --quiet $base.xml
+singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost --split --destination=web/index.html $base.xml
 
 exit_code=$?
 
@@ -79,7 +79,22 @@ if [ "$exit_code" -ne "0" ]; then
     exit "$exit_code"
 fi
 
+singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlc --destination=web/$base.epub --nocomments --timeout=36000 --css=style-narrow.css $base
+
+exit_code=$?
+
+echo ""
+echo "latexmlc finished at $(date)"
+echo ""
+
+if [ "$exit_code" -ne "0" ]; then
+    echo "latexmlc failed"
+    exit "$exit_code"
+fi
+
 tar czf web.tar.gz web/
+
+exit 0
 
 singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost --split --destination=epub/index.xhtml --stylesheet=apexepub.xsl $base.xml
 

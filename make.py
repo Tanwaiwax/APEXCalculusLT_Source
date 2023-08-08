@@ -66,12 +66,15 @@ addboolarg('instructor','Create instructor solution manual.')
 addboolarg('internet','Create interNet version (options x & w).',shortkey='n')
 addboolarg('xml','Create xml version. (2 or 5 hours)') # 120, 90, 107
 addboolarg('web','Convert xml version to html. (5 min)')
+addboolarg('epub','Create epub version. (6 hours)')
 parser.add_argument('--standalonen',action='store_true',
                     help='Create interNet version for standalone.tex')
 parser.add_argument('--standalonex',action='store_true',
                     help='Create xml version for standalone.tex')
 parser.add_argument('--standalonew',action='store_true',
                     help='Convert xml version to html for standalone.tex')
+parser.add_argument('--standalonee',action='store_true',
+                    help='Create epub version for standalone.tex')
 addboolarg('todo','Update todo lists.')
 addboolarg('overview','Create overview file.')
 addboolarg('quit','Write options.tex and quit.')
@@ -396,6 +399,8 @@ def getsuffix(args):
         return '_web'
     elif args.standalonew:
         return '_sweb'
+    elif args.standalonee:
+        return '_sepub'
     elif args.instructor:
         return '_answers'
     newsuffix = ''
@@ -419,6 +424,21 @@ def getlatexmlcommandline(base='Calculus'):
     ret = [getlatexmlbin('latexml'),
             '--quiet','--quiet',#'--verbose','--verbose',##
            '--destination='+base+'.xml',
+           '--nocomments',
+           base]
+    if platform.mac_ver()[0]:
+        return ['caffeinate','-s'] + ret
+        # prevent sleeping, if plugged in, until command finished
+    if platform.win32_ver()[0]:
+        ret[0] += '.bat'
+    return ret
+
+def getlatexmlepubcommandline(base='Calculus',destdir='web'):
+    ret = [getlatexmlbin('latexmlc'),
+            '--quiet','--quiet',#'--verbose','--verbose',##
+           '--destination='+destdir+'/'+base+'.epub',
+           '--timeout=36000',
+           '--css=style-narrow.css',
            '--nocomments',
            base]
     if platform.mac_ver()[0]:
@@ -455,6 +475,10 @@ def getcommandline(args):
         raise 'args.internet does not need a command line'
     if args.instructor:
         return ['latexmk','-xelatex','Answers']
+    if args.epub:
+        return getlatexmlepubcommandline()
+    if args.standalonee:
+        return getlatexmlepubcommandline('standalone','standaloneweb')
     return ['latexmk','-xelatex','Calculus']
 
 def minimizePdf(filename):
@@ -615,7 +639,7 @@ def runcommands(args,commands):
     if args.instructor:
         shutil.copy('Answers.pdf','ApexPDFs/bigpdfs/answers.pdf')
         minimizePdf('answers.pdf')
-    elif not args.xml and not args.web and not args.standalonex and not args.standalonew:
+    elif not any((args.xml,args.web,args.standalonex,args.standalonew,args.epub,args.standalonee)):
         shutil.copy('Calculus.pdf','ApexPDFs/bigpdfs/calculus'+newsuffix+'.pdf')
         minimizePdf('calculus'+newsuffix+'.pdf')
 

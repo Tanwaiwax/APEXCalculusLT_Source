@@ -17,6 +17,8 @@ Running `./make.py -n` will use latexml to make a complete website version of th
 (Unfortunately, latexmk appears to be a little too agressive in ignoring compilation errors.
 I recommend compiling using your regular method first, and once you know it compiles, then use latexmk.)
 
+A solutions manual is available upon request.
+
 This work is covered with a Creative Commons 4.0 By-NC copyright.
 
 #### Rearrangements from ET

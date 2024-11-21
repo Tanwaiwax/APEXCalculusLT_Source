@@ -53,10 +53,10 @@ latexmlscripts="$HOME/git/LaTeXML/blib/script"
 singularitydir="$HOME/latexml"
 printf '\\newcommand{\\thetitle}{Calculus}\n\\printincolor\n\\usethreeDgraphics\n\\renewcommand{\\monthYear}{June 2023}\n' > options.tex
 
-#singularity exec $singularitydir/latexml.sif $latexmlscripts/latexml \
-#    --destination=$base.xml \
-#    --nocomments \
-#    $base
+singularity exec $singularitydir/latexml.sif $latexmlscripts/latexml \
+    --destination=$base.xml \
+    --nocomments \
+    $base
 
 exit_code=$?
 
@@ -69,10 +69,10 @@ if [ "$exit_code" -ne "0" ]; then
     exit "$exit_code"
 fi
 
-#singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost \
-#    --split \
-#    --destination=web/index.html \
-#    $base.xml
+singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost \
+    --split \
+    --destination=web/index.html \
+    $base.xml
 
 exit_code=$?
 
@@ -91,6 +91,7 @@ singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlc \
     --split \
     --timeout=36000 \
     --css=style-narrow.css \
+    --stylesheet=apexepub.xsl \
     $base
 
 exit_code=$?

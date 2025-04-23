@@ -307,7 +307,8 @@
 }
 
 \newcommand*{\mnote@pex}[3]{%
-	\marginnote{%
+	\marginalia[yshift=#2]{%
+%	\marginnote{%
 		\begin{minipage}[c]{\marginparwidth}
 			\captionsetup{type=figure}%
 			\testmargintop%
@@ -316,7 +317,8 @@
 			#1\RaggedRight\fi#3\ifhmode\unskip\fi%
 			\testmarginbottom%\makebox[0pt]{\tikz\draw(0,0)circle(2pt);}
 		\end{minipage}%
-	}[#2]%
+%	}[#2]%
+	}%
 }
 \makeatother
 
@@ -370,8 +372,13 @@
 	%\setallmainfonts[Mapping=tex-text]{Calibri}
 	\setmainfont{Calibri}
 	%\setsansfont[Mapping=tex-text]{Calibri}
-	\setmathfont[range=\mathup]{Calibri}
-	\setmathfont[range=\mathit]{Calibri Italic}
+	\setmathfont{latinmodern-math.otf}
+	% Calibri doesn't quite seem set for math
+%	\setmathfont[range=\mathup]{Calibri}
+%	\setmathfont[range=\mathit]{Calibri Italic} % missing characters
+	\let\pdfsavepos=\savepos
+	\let\pdflastxpos=\lastxpos
+	\let\pdflastypos=\lastypos
 	}
 	{}
 
@@ -465,7 +472,7 @@
 	unicode,
     pdflang=EN-US
 }
-\usepackage{hyperxmp}
+%\usepackage{hyperxmp}
 \ifbool{latexml}{}{
  \usepackage{bookmark}
 }

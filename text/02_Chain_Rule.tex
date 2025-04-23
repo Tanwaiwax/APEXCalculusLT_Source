@@ -130,14 +130,14 @@ The tangent line goes through the point $(1,f(1)) \approx (1,0.54)$ with slope $
 
 $\fp(x) = -\sin(x^2) \cdot(2x) = -2x\sin x^2$. Evaluated at $x=1$, we have $\fp(1) = -2\sin 1\approx -1.68$. Thus the equation of the tangent line is approximately
 %
-\mtable{$f(x) = \cos x^2$ sketched along with its tangent line at $x=1$.}{fig:chain7}{\begin{tikzpicture}
+\mtable{$f(x) = \cos x^2$ sketched along with its tangent line at $x=1$.}{fig:chain7}{\pdftooltip{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,height=1.16\marginparwidth,tick label style={font=\scriptsize},minor x tick num=1,minor y tick num=1,axis y line=middle,axis x line=middle,ymin=-1.1,ymax=1.1,xmin=-3.1,xmax=3.1,name=myplot]
-\addplot [draw={\colorone},smooth,thick,domain=-3.14:3.14,samples=40] {cos(deg(x*x))};
+\addplot [draw={\colorone},smooth,thick,domain=-3.14:3.14,samples=60] {cos(deg(x*x))};
 \addplot [draw={\colortwo},smooth,thick,domain=.1:1.9] {-1.68*(x-1)+0.54};
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}
+\end{tikzpicture}}{The curve begins near (-3,-1), rises quickly to (-2.5,1), falls quickly to (-1.8,-1), rises to flatten out near (0,1), and then repeats the process reflected across the y axis.  The line tangent near (1,0.5) is steep.}}
 %
 \[y = -1.68(x-1)+0.54.\]
 
@@ -401,7 +401,7 @@ where $\Box$ and $\triangle$ are any variables you'd like to use.
 
 %After a while, you get better at recognizing the pattern and may take the short cut of not actually writing down the functions that make up the composition when you apply the Chain Rule.  We simply recommend caution and point out that's where errors in work can (and often do) occur.\bigskip
 
-\mtable[-.5in]{A series of gears to demonstrate the Chain Rule. Note how $\frac{\dd y}{\dd x} = \frac{\dd y}{\dd u}\cdot\frac{\dd u}{\dd x}$}{fig:chainrulegears}{\begin{tikzpicture}[>=latex,scale=.8]
+\mtable[-.5in]{A series of gears to demonstrate the Chain Rule. Note how $\frac{\dd y}{\dd x} = \frac{\dd y}{\dd u}\cdot\frac{\dd u}{\dd x}$}{fig:chainrulegears}{\pdftooltip{\begin{tikzpicture}[>=latex,scale=.8]
 \begin{scope}[shift={(0,-200pt)}]
 \begin{scope}
 \foreach \x in {0,1,2,...,35} {
@@ -431,7 +431,7 @@ where $\Box$ and $\triangle$ are any variables you'd like to use.
 \draw (0,0) node {$y$};
 \end{scope}
 \end{scope}
-\end{tikzpicture}}
+\end{tikzpicture}}{A large gear labeled x is twice as big as a medium sized gear labeled u, which is in turn three times as big as a small gear labeled y.}}
 %
 One of the most common ways of ``visualizing'' the Chain Rule is to consider a set of gears, as shown in \autoref{fig:chainrulegears}. The gears have 36, 18, and 6 teeth, respectively. That means for every revolution of the $x$ gear, the $u$ gear revolves twice. That is, the rate at which the $u$ gear makes a revolution is twice as fast as the rate at which the $x$ gear makes a revolution. Using the terminology of calculus, the rate of $u$-change, with respect to $x$, is $\frac{\dd u}{\dd x} = 2$. 
 

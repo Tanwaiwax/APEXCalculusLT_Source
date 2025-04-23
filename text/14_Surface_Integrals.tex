@@ -5,12 +5,12 @@ Consider a smooth surface \surfaceS\ that represents a thin sheet of metal. How 
 If the density of this object is constant, then we can find mass via ``mass$=$ density $\times$ surface area,'' and we could compute the surface area using the techniques of the previous section. 
 
 What if the density were not constant, but variable, described by a function $\delta(x,y,z)$? We can describe the mass using our general integration techniques as
-\[\text{mass} = \iint_\surfaceS \dd m,\]
+\[\text{mass} = \iint_{\surfaceS} \dd m,\]
 where $\dd m$ represents ``a little bit of mass.'' That is, to find the total mass of the object, sum up lots of little masses over the surface.
 
 How do we find the ``little bit of mass'' $\dd m$? On a small portion of the surface with surface area $\Delta S$, the density is approximately constant, hence $\dd m \approx \delta(x,y,z)\Delta S$. As we use limits to shrink the size of $\Delta S$ to 0, we see that $\dd m = \delta(x,y,z)\dd S$; that is, a little bit of mass is equal to a density times a small amount of surface area. Thus the total mass of the thin sheet is
 \begin{equation}
-\text{mass} =\iint_\surfaceS \delta(x,y,z)\dd S.\label{eq:surface_int}
+\text{mass} =\iint_{\surfaceS} \delta(x,y,z)\dd S.\label{eq:surface_int}
 \end{equation}
 
 To evaluate the above integral, we would seek $\vec r(u,v)$, a smooth parameterization of \surfaceS\ over a region $R$ of the $u$-$v$ plane. The density would become a function of $u$ and $v$, and we would integrate $\iint_R \delta(u,v)\norm{\vec r_u\times \vec r_v}\dd A.$
@@ -20,7 +20,7 @@ The integral in \autoeqref{eq:surface_int} is a specific example of a more gener
 % todo Tim should def:surface_integral be equal to something?
 \begin{definition}[Surface Integral]\label{def:surface_integral}
 Let $G(x,y,z)$ be a continuous function defined on a surface \surfaceS. The \textbf{surface integral of $G$ on \surfaceS} is\index{surface integral}
-\[\iint_\surfaceS G(x,y,z)\dd S.\]
+\[\iint_{\surfaceS} G(x,y,z)\dd S.\]
 \end{definition}
 
 Surface integrals can be used to measure a variety of quantities beyond mass. If $G(x,y,z)$ measures the static charge density at a point, then the surface integral will compute the total static charge of the sheet. If $G$ measures the amount of fluid passing through a screen (represented by \surfaceS) at a point, then the surface integral gives the total amount of fluid going through the screen.
@@ -60,7 +60,7 @@ The density is given as a function of $x$, $y$ and $z$, for which we'll substitu
 \end{align*}
 Thus the mass of the sheet is:
 \begin{align*}
-	M &= \iint_\surfaceS\dd m\\
+	M &= \iint_{\surfaceS}\dd m\\
 	&= \iint_R \delta\bigl(\vec r(u,v)\bigr)\norm{\vec r_u\times \vec r_v}\dd A\\
 	&= \int_0^1\int_0^1 \bigl(u^2-8uv-2u+8v+3\bigr)\bigl(2\sqrt{6}(1-u)\bigr)\dd u\dd v\\
 	&= \frac{31}{\sqrt{6}} \approx 12.66 \text{ gm.}
@@ -82,7 +82,7 @@ The measurement of flux across a surface is a surface integral; that is, to meas
 A nice thing happens with the actual computation of flux: the $\norm{\vec r_u\times \vec r_v}$ terms go away. Consider:
 \begin{align*}
 	\text{Flux}
-	&= \iint_\surfaceS \vec F\cdot \vec n\dd S \\
+	&= \iint_{\surfaceS} \vec F\cdot \vec n\dd S \\
 	&= \iint_R \vec F\cdot \frac{\vec r_u\times \vec r_v}{\norm{\vec r_u\times \vec r_v}}\norm{\vec r_u\times \vec r_v}\dd A \\
 	&= \iint_R \vec F\cdot (\vec r_u\times \vec r_v)\dd A.
 \end{align*}
@@ -91,7 +91,7 @@ The above only makes sense if \surfaceS\ is orientable; the normal vectors $\vec
 
 \begin{definition}[Flux over a surface]\label{def:surfflux}
 Let $\vec F$ be a vector field with continuous components defined on an orientable surface \surfaceS\ with normal vector $\vec n$. The \textbf{flux} of $\vec F$ across \surfaceS\ is\index{flux}
-\[\text{Flux} = \iint_\surfaceS \vec F\cdot \vec n\dd S.\]
+\[\text{Flux} = \iint_{\surfaceS} \vec F\cdot \vec n\dd S.\]
 If \surfaceS\ is parameterized by $\vec r(u,v)$, which is smooth on its domain $R$, then
 \[
 \text{Flux} = \iint_R \vec F\bigl(\vec r(u,v)\bigr)\cdot (\vec r_u\times \vec r_v)\dd A.
@@ -121,7 +121,7 @@ Using our work from the previous example, we have $\vec n = \vec r_u\times\vec r
 Thus the flux of $\vec F$ across \surfaceS\ is:
 \begin{align*}
 	\text{Flux}
-	&= \iint_\surfaceS \vec F\cdot \vec n\dd S\\
+	&= \iint_{\surfaceS} \vec F\cdot \vec n\dd S\\
 	&= \iint_R\bracket{1,u,-v(2-2u)}\cdot\bracket{4-4u,2-2u,2-2u}\dd A \\
 	&= \int_0^1\int_0^1 \bigl(-4u^2v-2u^2+8uv-2u-4v+4\bigr)\dd u\dd v\\
 	&= 5/3.

@@ -179,7 +179,7 @@ Before stating this theorem formally, suppose we have functions $f$, $g$ and $h$
 \[f(x) \leq g(x) \leq h(x).\]
 If $f$ and $h$ have the same limit at $c$, and $g$  is always ``squeezed'' between them, then $g$ must have the same limit as well. That is what the Squeeze Theorem states, as illustrated in \autoref{fig:squeeze_thm}.
 
-\mtable[-1.5in]{The situation of the squeeze theorem}{fig:squeeze_thm}{\begin{tikzpicture}
+\mtable[-1.5in]{The situation of the squeeze theorem}{fig:squeeze_thm}{\pdftooltip{\begin{tikzpicture}
 \begin{axis}[width=\marginparwidth, ticks=none, axis y line=middle,axis x line=middle,ymin=-1.5,ymax=1.5,xmin=-1,xmax=1.5,name=myplot]
 \addplot [draw=black, dashed, domain=-1.5:1.5, thick,smooth] {cos(deg(x-.5))} ;
 \addplot[draw={\colortwo},domain=-1:1.5, thick, smooth] {cos(deg(2*(x-.5))};
@@ -192,7 +192,7 @@ If $f$ and $h$ have the same limit at $c$, and $g$  is always ``squeezed'' betwe
 \node[\colorone] at (0.2,2.4 ){\scriptsize $h(x)$};
 \node[\colortwo] at (.15,.75){\scriptsize $f(x)$};
 \node[\colorone] at (2.2,1.35) {\scriptsize $c$};
-\end{tikzpicture}}
+\end{tikzpicture}}{A blue h(x) above a dashed g(x) above a red f(x).  All three come together when x=c.}}
 
 \begin{theorem}[Squeeze Theorem]\label{thm:sqz}
 Let $f$, $g$ and $h$ be functions on open intervals $I$ and $J$ on either side of $c$ such that for all $x$ in $I$ and $J$,\vspace{-.3\baselineskip}
@@ -215,8 +215,8 @@ Use the Squeeze Theorem to show that
 \solution
 We will begin by considering the unit circle. Each point on the unit circle has coordinates $(\cos \theta,\sin \theta)$ for some angle $\theta$ as shown in \autoref{fig:squeeze_sinx}. Using similar triangles, we can extend the line from the origin through the point to the point $(1,\tan \theta)$, as shown. (Here we are assuming that $0\leq \theta \leq \pi/2$. Later we will show that we can also consider $\theta \leq 0$.)
 
-\mtable[-1in]{The unit circle and related triangles.}{fig:squeeze_sinx}{
-\begin{tikzpicture}[x=.4\marginparwidth,y=.4\marginparwidth,>=stealth]
+\mtable[-1in]{The unit circle and related triangles.}{fig:squeeze_sinx}{%
+\pdftooltip{\begin{tikzpicture}[x=.4\marginparwidth,y=.4\marginparwidth,>=stealth]
  \draw [draw={\colorone},thick] (0,0)
   node [shift={(10pt,4pt)},color=black] {\scriptsize$\theta$} circle (1);
  \draw [<->,thick] (-1.1,0) -- (1.1,0);
@@ -227,33 +227,33 @@ We will begin by considering the unit circle. Each point on the unit circle has 
  \fill [black] (.766,.643)
   node [left] {\scriptsize$(\cos \theta,\sin \theta)$} circle (1.5pt);
  \fill [black] (1,0) node [below right] {\scriptsize$(1,0)$} circle (1.5pt);
-\end{tikzpicture}}
+\end{tikzpicture}}{The unit circle with a ray at angle 𝜃 intersecting the circle at (cos𝜃,sin𝜃) and the line x=1 at (1,tan𝜃).  The point (cos𝜃,sin𝜃) is also connected to (1,0).}}
 
 \autoref{fig:squeeze_sinx} shows three regions have been constructed in the first quadrant, two triangles and a sector of a circle, which are also drawn below. The area of the large triangle is $\frac12\tan\theta$; the area of the sector is $\theta/2$; the area of the triangle contained inside the sector is $\frac12\sin\theta$. It is then clear from the diagram that 
 
 \begin{center}
 \begin{tabular}{ c c c c c }
-\begin{tikzpicture}[x=.2\textwidth,y=.5\marginparwidth,>=stealth]
+\pdftooltip{\begin{tikzpicture}[x=.2\textwidth,y=.5\marginparwidth,>=stealth]
 \fill [draw=black,thick,fill={\coloronefill}] (0,0) node [shift={(10pt,4pt)}] {\scriptsize$\theta$} -- (1,.839) -- node [pos=.5,right] {\scriptsize$\tan \theta$} (1,0) -- cycle;
 \draw (.5,0) node [below] {\scriptsize$1$};
 \draw [black,dashed,thick] (1,0) arc (0:40:1);
 \draw [black,dashed,thick] (1,0) -- (.766,.643);
-\end{tikzpicture}
+\end{tikzpicture}}{The triangle (0,0), (1,0), (1,tan𝜃), completely shaded in.}
 & &
-\begin{tikzpicture}[x=.2\textwidth,y=.5\marginparwidth,>=stealth]
+\pdftooltip{\begin{tikzpicture}[x=.2\textwidth,y=.5\marginparwidth,>=stealth]
 \fill [draw=black,thick,fill={\coloronefill}] (0,0) node [shift={(10pt,4pt)}] {\scriptsize$\theta$} -- (1,0) arc(0:40:1) -- cycle;
 \draw (.5,0) node [below] {\scriptsize$1$};
 \draw [black,dashed,thick] (1,0) arc (0:40:1);
 \draw [black,dashed,thick] (1,0) -- (.766,.643) -- (1,.839) -- cycle;
-\end{tikzpicture}
+\end{tikzpicture}}{The triangle (0,0), (1,0), (1,tan𝜃), with only the points within 1 of the origin shaded in.}
 & &
-\begin{tikzpicture}[x=.2\textwidth,y=.5\marginparwidth,>=stealth]
+\pdftooltip{\begin{tikzpicture}[x=.2\textwidth,y=.5\marginparwidth,>=stealth]
 \fill [draw=black,thick,fill={\coloronefill}] (0,0) node [shift={(10pt,4pt)}] {\scriptsize$\theta$} -- (1,0) --(.766,.643) -- cycle;
 \draw [dashed,thick] (.766,0)  -- node [pos=.4,left] {\scriptsize$\sin \theta$}(.766,.643);
 \draw (.766,5pt) -- ++(5pt,0) -- ++(0,-5pt);
 \draw (.5,0) node [below] {\scriptsize$1$};
 \draw [black,dashed,thick] (1,0) arc(0:40:1) --  (1,.839) -- cycle;
-\end{tikzpicture}
+\end{tikzpicture}}{The triangle (0,0), (1,0), (1,tan𝜃).  A line segment connects (1,0) to (cos𝜃,sin𝜃), and everything in the triangle left of this line segment is shaded in.}
 \\
 $\dfrac{\tan\theta}{2}$ & $\geq$ &
 $\dfrac{\theta}{2}$ & $\geq$ &
@@ -312,7 +312,7 @@ We would like to apply Theorems \ref{thm:limit_algebra} and \ref{thm:poly_rat} a
 an indeterminate form. We cannot apply the \autoref{thm:limit_algebra} because the denominator is 0.
 
 \mtable{Graphing $f$ in \autoref{ex_limit_onept} to understand a limit.}{fig:limitxplus1}{%
-\begin{tikzpicture}
+\pdftooltip{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-.1,ymax=3.2,xmin=-.1,xmax=2.2,name=myplot]
@@ -321,7 +321,7 @@ ymin=-.1,ymax=3.2,xmin=-.1,xmax=2.2,name=myplot]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}
+\end{tikzpicture}}{A blue line segment connecting (0,1) to (2,3).  There is a red circle around a hole in the line at (1,2).}}
 
 By graphing the function, as in \autoref{fig:limitxplus1}, we see that the function seems to be linear, implying that the limit should be easy to evaluate. Recognize that the numerator of our quotient can be factored:
 \[\text{Let \ } f(x)=\frac{x^2-1}{x-1} = \frac{(x-1)(x+1)}{x-1}.\]

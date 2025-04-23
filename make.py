@@ -315,10 +315,9 @@ def prcfromfile(filename):
         prcdict = collections.defaultdict(lambda:collections.defaultdict(list))
         for line in filein:
             if line.startswith(r'\@input{'):
-                prcdict.update(prcfromfile(line[len('\@input{'):-2]))
+                prcdict.update(prcfromfile(line[len(r'\@input{'):-2]))
             if line.startswith('% prc file figures'):
-                match = re.match('% prc file figures/(\S+) used in Section (A|\d+).(\d+) as ((Figure )?[.#\d+]+)\s*$',line)
-                # in Python 3.4+, this would be fullmatch
+                match = re.fullmatch(r'% prc file figures/(\S+) used in Section (A|\d+).(\d+) as ((Figure )?[.#\d+]+)\s*',line)
                 if match:
                     prcdict[ match.group(2) ][ match.group(3) ].append(Figure(match.group(4),match.group(1)))
                 else:
@@ -338,11 +337,11 @@ def updatetodo():
         if ' Tim ' in todo:
             key = 'tim'
         # put the next backwards, so that CalcII-UND gets sorted appropriately 
-        elif re.match('\S*/1[0-4]',todo) or 'CalculusIII' in todo:
+        elif re.match(r'\S*/1[0-4]',todo) or 'CalculusIII' in todo:
             key = 'calc3'
-        elif re.match('\S*/0[5-9]',todo) or 'CalculusII' in todo:
+        elif re.match(r'\S*/0[5-9]',todo) or 'CalculusII' in todo:
             key = 'calc2'
-        elif re.match('\S*/0[1-4]',todo) or 'CalculusI' in todo:
+        elif re.match(r'\S*/0[1-4]',todo) or 'CalculusI' in todo:
             key = 'calc1'
         else:
             key = 'tim'

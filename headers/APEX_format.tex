@@ -256,7 +256,7 @@
   \colorlet{border#1}{black}
  }
  \newtheorem{#1}{#2}[section]%
- \expandafter\newcommand\csname #1autorefname\endcsname{#2}
+ \expandafter\providecommand\csname #1autorefname\endcsname{#2}
  \ifbool{latexml}{%
  }{%
   \tcolorboxenvironment{#1}{
@@ -337,6 +337,9 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Exercises
+%% We would like to make better use of enumitem to put implementation
+%% details here instead of repeating them, but the pdftagging
+%% doesn't deal well with that.  So we'll need to repeat everything every time.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setlength{\columnsep}{20pt}
@@ -403,9 +406,13 @@
 \newcounter{exercisesetcounter}[section]
 \renewcommand{\theexercisesetcounter}{\thesection.\arabic{exercisesetcounter}}
 
+%\counterwithin*{enumi}{subsection}
+% does not work because \exercisesubsection is a fake \subsection
+
 \makeatletter
 % the usual \subsection definition has stretchable space in arguments 3-5
 \newcommand{\exercisesubsection}[1]{%
+\setcounter{enumi}{0}%
 \@startsection{subsection}{2}{-.7em}{0pt}{.5ex}{\huge\textbf}{\texorpdfstring{\hyperref[sol#1]{Exercises #1}}{Exercises}}%
 \hrule\vspace{-1.5ex}%
 }
@@ -420,27 +427,53 @@
 % doesn't work?
 }
 
-\newcommand*{\exerenv}{sectionexercises}
+%\newcommand*{\exerenv}{sectionexercises}
+\newcommand*{\exerenv}{enumerate}
 
 \makeatletter
 \newcommand{\openenumerate}{%
  \ifx\@currenvir\exerenv\else%
-  \begin{sectionexercises}
-  \ifbool{latexml}{%
-   \setcounter{sectionexercisesi}{\value{saveexercisenum}}%
-  }{}%
+  \begin{enumerate}[resume]
+%  \begin{sectionexercises}
+%  \ifbool{latexml}{%
+%   \setcounter{sectionexercisesi}{\value{saveexercisenum}}%
+%  }{}%
  \fi%
 }
 \newcommand{\closeenumerate}{
  \ifx\@currenvir\exerenv%
-  \ifbool{latexml}{%
-   \setcounter{saveexercisenum}{\value{sectionexercisesi}}%
-  }{}%
-  \end{sectionexercises}
+%  \ifbool{latexml}{%
+%   \setcounter{saveexercisenum}{\value{sectionexercisesi}}%
+%  }{}%
+  \end{enumerate}
+%  \end{sectionexercises}
  \fi%
 }
 \makeatother
 \newcommand{\closeenumerateinquestions}{\closeenumerate}
+
+\newcommand{\exercisesetinstructions}[2][In Exercises]{%
+ \closeenumerateinquestions
+ \stepcounter{enumi}%
+ \stepcounter{exercisesetcounter}%
+ \ifnumodd{\value{enumi}}{}{%
+  \PackageInfo{apex}{%
+   Exercise set \theexercisesetcounter\space begins with \arabic{enumi}%
+  }%
+ }%
+ \noindent#1 \arabic{enumi}--\ref*{enumiatendof\theexercisesetcounter}#2%
+ \addtocounter{enumi}{-1}\ignorespaces%
+ \nopagebreak%
+}
+\newcommand{\exercisesetend}{%
+ \label{enumiatendof\theexercisesetcounter}%
+ \closeenumerate%
+ \ifnumodd{\value{enumi}}{%
+  \PackageInfo{apex}{%
+   Exercise set \theexercisesetcounter\space ends with \arabic{enumi}%
+  }%
+ }{}%
+}
 
 \newenvironment{exerciseset}[2]{%
  \stepcounter{sectionexercisesi}
@@ -450,8 +483,6 @@
    Exercise set \theexercisesetcounter\space begins with \arabic{sectionexercisesi}%
   }%
  }%
- % todo see https://github.com/brucemiller/LaTeXML/issues/1802
- %\ifbool{latexml}{}{\pagebreak[1]}%
  {%
   \setlist[enumerate,1]{label=(\alph*)}% for exercise set instructions
   \noindent#1 \arabic{sectionexercisesi}--\ref*{enumiatendof\theexercisesetcounter}#2%
@@ -461,8 +492,6 @@
 }{%
  \label{enumiatendof\theexercisesetcounter}%
  \closeenumerate%
- % todo see https://github.com/brucemiller/LaTeXML/issues/1802
- %\ifbool{latexml}{}{\pagebreak[1]}%
  \ifnumodd{\value{sectionexercisesi}}{%
   \PackageInfo{apex}{%
    Exercise set \theexercisesetcounter\space ends with \arabic{sectionexercisesi}%
@@ -473,7 +502,7 @@
 
 \newcommand{\exercise}[2]{%
  \openenumerate%
- \setlist[enumerate,1]{label=(\alph*)}% for exercise instructions
+% \setlist[enumerate,1]{label=(\alph*)}% for exercise instructions
  \item \parbox[t]{\linewidth}{#1}%
 }
 \newcommand{\showexerciseanswers}{%
@@ -522,13 +551,15 @@
 	\renewcommand{\printconcepts}{}%
 	\renewcommand{\printproblems}{}%
 	\renewcommand{\printreview}{}%
-	\renewenvironment{exerciseset}[2]{}{}
+	\renewenvironment{exerciseset}[2]{}{}%
+	\renewcommand{\exercisesetinstructions}[2][]{}%
+	\renewcommand{\exercisesetend}{}%
 	\renewcommand{\openenumerate}{}%
-	\renewcommand{\closeenumerateinquestions}{}
+	\renewcommand{\closeenumerateinquestions}{}%
 	\renewcommand{\questioncolumnbreak}{}%
 	\packageinanswersection%
 	\showexerciseanswers%
-	\setlist[enumerate,1]{label=\arabic*.}% for solutions
+%	\setlist[enumerate,1]{label=\arabic*.}% for solutions
 	% LaTeX already does this, but LaTeXML doesn't
 }%
 
@@ -580,6 +611,7 @@
  \end{enumerate}%
  \bigbreak%
 }
+
 
 
 % The following creates a ``List of Theorems'', ``Definitions'', and ``Key Ideas''.

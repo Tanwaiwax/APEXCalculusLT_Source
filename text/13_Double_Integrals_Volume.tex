@@ -9,9 +9,10 @@ We use a similar approach in this section to find volume under a surface.\bigski
 Let $R$ be a closed, bounded region in the $x$-$y$ plane and let $z=f(x,y)$ be a continuous function defined on $R$. We wish to find the signed volume under the surface of $f$ over $R$. (We use the term ``signed volume'' to denote that space above the $x$-$y$ plane, under $f$, will have a positive volume; space above $f$ and under the $x$-$y$ plane will have a ``negative'' volume, similar to the notion of signed area used before.)
 
 \mtable{Developing a method for finding signed volume under a surface.}{fig:double_intro}{%
+\pdftooltip{%
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
-axis y line=middle,axis x line=middle,name=myplot,axis on top,
+axis y line=middle,axis x line=middle,name=myplot,axis on top,axis equal image,
 ymin=-.85,ymax=.85,xmin=-.3,xmax=2.2]
 \addplot [smooth,very thick, draw={\colorone},samples=40,domain=-90:90]
  ({cos(x)*(1+cos(2*x))},{sin(x)*(1+cos(2*x))});
@@ -24,14 +25,14 @@ ymin=-.85,ymax=.85,xmin=-.3,xmax=2.2]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}
+\end{tikzpicture}}{A region R in the x-y plane, covered with uniform rectangles.}
 \\(a)\\
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.005025407765060663,
 3Dc2c=0.6666666865348816 0.6666666865348816 0.3333333730697632,
 3Dcoo=5.279583930969238 -29.517940521240234 48.47616195678711,
-3Droo=150.0000012715658}{width=\marginparwidth}{figures/figdouble_intro2_3D}
+3Droo=150.0000012715658}{width=\marginparwidth,alt={The same region R, but now with a surface above. A rectangular prism goes from one rectangle up to the surface.}}{figures/figdouble_intro2_3D}
 \\(b)}
 
 We start by partitioning $R$ into $n$ rectangular subregions as shown in \autoref{fig:double_intro}(a). For simplicity's sake, we let all widths be $\Delta x$ and all heights be $\Delta y$. Note that the sum of the areas of the rectangles is not equal to the area of $R$, but rather is a close approximation. Arbitrarily number the rectangles 1 through $n$, and pick a point $(x_i,y_i)$ in the $i^\text{ th}$ subregion. 
@@ -82,7 +83,7 @@ Remember that though the integrand contains $x$, we are viewing $x$ as fixed. Al
 3Dortho=0.005067072808742523,
 3Dc2c=0.5451613068580627 0.7846456170082092 0.29517868161201477,
 3Dcoo=9.929030418395996 -41.68748092651367 56.98992919921875,
-3Droo=200.99999858350685}{width=\marginparwidth}{figures/figdouble_intro3_3D}}
+3Droo=200.99999858350685}{width=\marginparwidth,alt={For a particular x value, the portion under the surface z over the region R with that x value is a two dimensional region with area A(x).}}{figures/figdouble_intro3_3D}}
 
 As $A(x)$ is a cross-sectional area function, we can find the signed volume $V$ under $f$ by integrating it:
 \[
@@ -108,7 +109,7 @@ Note that the bounds of integration follow a ``curve to curve, point to point'' 
 
 \youtubeVideo{NG2UcXdwzfk}{Ex: Evaluate a Double Integral to Determine Volume (Basic)}
 
-\begin{example}[Evaluating a double integral]\label{ex_double1}
+\begin{example}[Evaluating a double integral]\label{ex_double1}%
 Let $f(x,y) = xy+e^y$. Find the signed volume under $f$ on the region $R$, which is the rectangle with corners $(3,1)$ and $(4,2)$ pictured in \autoref{fig:double1}, using Fubini's Theorem and both orders of integration.
 \solution
 We wish to evaluate $\iint_R \bigl(xy+e^y\bigr)\dd A$. As $R$ is a rectangle, the bounds are easily described as $3\leq x\leq 4$ and $1\leq y\leq 2$.\bigskip
@@ -119,7 +120,7 @@ We wish to evaluate $\iint_R \bigl(xy+e^y\bigr)\dd A$. As $R$ is a rectangle, th
 3Dortho=0.0046491301618516445,
 3Dc2c=0.5071550607681274 -0.7884454131126404 0.3480626046657562,
 3Dcoo=34.443328857421875 108.33967590332031 55.163639068603516,
-3Droo=149.99999646067835}{width=\marginparwidth}{figures/figdouble1_3D}}
+3Droo=149.99999646067835}{width=\marginparwidth,alt={The volume under f on the region R.}}{figures/figdouble1_3D}}
 
 Using the order $\dd y\dd x$:
 \begin{align*}
@@ -186,7 +187,7 @@ While it is not specified which order we are to use, we will evaluate the double
 3Dortho=0.0046491301618516445,
 3Dc2c=0.3019719421863556 -0.9206370115280151 0.24746793508529663,
 3Dcoo=45.67414093017578 112.43929290771484 56.7108039855957,
-3Droo=200.99999432688844}{width=\marginparwidth}{figures/figdouble2_3D}}
+3Droo=200.99999432688844}{width=\marginparwidth,alt={The volume under f over the triangular region R.}}{figures/figdouble2_3D}}
 
 Using the order $\dd y\dd x$:
 The bounds on $y$ go from ``curve to curve,'' i.e., $0\leq y\leq 1-x/2$, and the bounds on $x$ go from ``point to point,'' i.e., $0\leq x\leq 2$.
@@ -259,7 +260,7 @@ Let $f(x,y) = \sin x\cos y$ and $R$ be the triangle with vertices $(-1,0)$, $(1,
 3Dortho=0.0046491301618516445,
 3Dc2c=0.08563969284296036 0.8920179605484009 0.44381290674209595,
 3Dcoo=-0.3899505138397217 30.125946044921875 17.537517547607422,
-3Droo=200.9999927619444}{width=\marginparwidth}{figures/figdouble3_3D}}
+3Droo=200.9999927619444}{width=\marginparwidth,alt={The surface and region of integration.}}{figures/figdouble3_3D}}
 \solution
 If we attempt to integrate using an iterated integral with the order $\dd y\dd x$, note how there are two upper bounds on $R$ meaning we'll need to use two iterated integrals. We would need to split the triangle into two regions along the $y$-axis, then use \autoref{thm:double_prop}, part \ref{thm:double_prop_regions}.
 
@@ -286,7 +287,7 @@ Evaluate $\iint_R (4-y)\dd A$, where $R$ is the region bounded by the parabolas 
 3Dortho=0.004656145814806223,
 3Dc2c=0.9017289280891418 0.24087461829185486 0.35897672176361084,
 3Dcoo=-13.985211372375488 45.56017303466797 41.332950592041016,
-3Droo=201.0000081559461}{width=\marginparwidth}{figures/figdouble4_3D}}
+3Droo=201.0000081559461}{width=\marginparwidth,alt={The region of integration forms a fish shape.}}{figures/figdouble4_3D}}
 %
 \solution
 Graphing each curve can help us find their points of intersection. Solving analytically, the second equation tells us that $y=x^2/4$. Substituting this value in for $y$ in the first equation gives us $x^4/16 = 4x$. Solving for $x$:
@@ -411,7 +412,7 @@ Changing the order of integration makes a big difference here. In the second ite
 3Dortho=0.005074724089354277,
 3Dc2c=0.3949831426143646 0.8441238403320312 0.3625510632991791,
 3Dcoo=41.500732421875 17.729557037353516 46.038082122802734,
-3Droo=201.00002888349545}{width=\marginparwidth}{figures/figdouble6b_3D}}%
+3Droo=201.00002888349545}{width=\marginparwidth,alt={The surface and region of integration.}}{figures/figdouble6b_3D}}%
 %
 Thus 
 \[
@@ -448,7 +449,7 @@ We find the area of $R$ by computing $\iint_R \dd A$:
 3Dortho=0.004656145814806223,
 3Dc2c=0.9017289280891418 0.24087461829185486 0.35897672176361084,
 3Dcoo=-13.985211372375488 45.56017303466797 41.332950592041016,
-3Droo=201.0000081559461}{width=\marginparwidth}{figures/figdouble4_3D}}%
+3Droo=201.0000081559461}{width=\marginparwidth,alt={The region of integration forms a fish shape.}}{figures/figdouble4_3D}}%
 %
 Dividing the volume under the surface by the area gives the average value:
 \[\text{average value of $f$ on $R$} = \frac{176/15}{16/3} = \frac{11}5 = 2.2.\]
@@ -465,7 +466,7 @@ This new understanding allows us to revisit what we did in the previous section.
 3Dortho=0.004656150005757809,
 3Dc2c=0.6877317428588867 0.6239246726036072 0.3711375296115875,
 3Dcoo=7.870043754577637 -27.81243896484375 55.69517135620117,
-3Droo=201.00001586839815}{width=\marginparwidth}{figures/figdouble_summary_3D}}
+3Droo=201.00001586839815}{width=\marginparwidth,alt={The volume over the region R under the surface z=1 is the same calculation as the area of R.}}{figures/figdouble_summary_3D}}
 
 The next section extends our abilities to find ``volumes under surfaces.'' Currently, some integrals are hard to compute because either the region $R$ we are integrating over is hard to define with rectangular curves, or the integrand itself is hard to deal with. Some of these problems can be solved by converting everything into polar coordinates.
 

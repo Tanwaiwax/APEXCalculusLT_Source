@@ -4,14 +4,14 @@ We motivate this section with the following question: Suppose you leave your hou
 
 In answering this question, it is clear that the \emph{average} speed for the entire trip is 50 mph (i.e. 100 miles in 2 hours), but the question is whether or not your \emph{instantaneous} speed is ever exactly 50 mph. More simply, does your speedometer ever read exactly 50 mph?  \autoref{fig:mvt_ex} shows a graphical interpretation of this question.  The answer, under some very reasonable assumptions, is ``yes.''
 
-\mtable[-.5in]{Distance traveled as a function of time.  Must there be a tangent line parallel to the average slope?}{fig:mvt_ex}{\begin{tikzpicture}
+\mtable[-.5in]{Distance traveled as a function of time.  Must there be a tangent line parallel to the average slope?}{fig:mvt_ex}{\pdftooltip{\begin{tikzpicture}
 \begin{axis}[width=\marginparwidth, tick label style={font=\scriptsize},
 			ymajorgrids=true, xmajorgrids=true, xmin=0, xmax=2, ymin=0, ymax=100,
 			xlabel={Time (hours)}, ylabel={Distance (miles)}]
 \addplot [draw={\colorone},thick,smooth] coordinates {(0,0)(.5,10)(1,50)(1.5,90)(2,100)};
 \addplot [draw={\colortwo},thick,smooth] coordinates {(0,0)(2,100)};
 \end{axis}
-\end{tikzpicture}}
+\end{tikzpicture}}{A straight line from the origin to the point (2,100).  A different curve begins at the origin, and starts out below the straight line.  Then it curves up to cross the line at (1,50) and is above the line before finishing at the same (2,100).}}
 
 Let's now see why this situation is in a calculus text by translating it into mathematical symbols.\bigbreak
 
@@ -33,7 +33,7 @@ Let's look at two functions in an example.
 Consider functions
 %
 \mtable[-2in]{A graph of $f_1(x) = 1/x^2$ and $f_2(x) = \abs{x}$ in \autoref{ex_mvt1}.}{fig:mvt1}%
-{\begin{tikzpicture}
+{\pdftooltip{\begin{tikzpicture}
  \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
    minor x tick num=1,axis y line=middle,axis x line=middle,
    ymin=-.6,ymax=3.9,xmin=-1.95,xmax=1.95,name=myplot]
@@ -45,9 +45,9 @@ Consider functions
  \end{axis}
  \node [right] at (myplot.right of origin) {\scriptsize $x$};
  \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}
+\end{tikzpicture}}{A curve beginning near (-2,.25) and curving upward to get arbitrarily large as x nears zero.  Afterward, the curve is a mirror image across the y-axis, decreasing to finish near (2,.25).  There is a dashed line joining the points (-1,1) and (1,1).}
 \smallskip\\(a)\\
-\begin{tikzpicture}
+\pdftooltip{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-.1,ymax=1.2,ytick={.5,1},xmin=-1.4,xmax=1.4,name=myplot,axis equal]
@@ -59,7 +59,7 @@ ymin=-.1,ymax=1.2,ytick={.5,1},xmin=-1.4,xmax=1.4,name=myplot,axis equal]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}
+\end{tikzpicture}}{A line segment from (-1.2,1.2) to the origin and then up to (1.2,1.2).  There is a dashed line joining the points (-1,1) and (1,1).}
 \\(b)}
 %
 \[f_1(x)=\frac{1}{x^2}\quad \text{and} \quad f_2(x) = \abs{x}\]
@@ -68,7 +68,7 @@ with $a=-1$ and $b=1$ as shown in \autoref{fig:mvt1}(a) and (b), respectively. B
 
 So what went ``wrong\primeskip''?  It may not be surprising to find that the discontinuity of $f_1$ and the corner of $f_2$ play a role.  If our functions had been continuous and differentiable, would we have been able to find that special value $c$? This is our motivation for the following theorem.
 
-\mtable{A graph of illustrating the Mean Value Theorem of Differentiation}{fig:mvt_illus}{\begin{tikzpicture}
+\mtable{A graph of illustrating the Mean Value Theorem of Differentiation}{fig:mvt_illus}{\pdftooltip{\begin{tikzpicture}
  \begin{axis}[width=1.16\marginparwidth,axis equal,
    axis x line=middle, axis y line=middle, xmin=-.2, xmax=2.2, ymin=-.2, ymax=1.5,
    xtick={.5, 1.1, 2}, ytick={.3,.75,1.02},
@@ -85,7 +85,7 @@ So what went ``wrong\primeskip''?  It may not be surprising to find that the dis
  \end{axis}
  \node [right] at (myplot.right of origin) {$x$};
  \node [above] at (myplot.above origin) {$y$};
-\end{tikzpicture}}
+\end{tikzpicture}}{A curve starting at a solid dot at (0.5,0.3), going up to a solid dot at (2,0.75), and finishing at a solid dot near (1.1,1).  A secant line goes through the first and third dots.  A tangent line goes through the middle dot and is tangent to the curve.}}
 
 \begin{theorem}[The Mean Value Theorem of Differentiation]\label{thm:mvt}
 Let $y=f(x)$ be a continuous function on the closed interval $[a,b]$ and differentiable on the open interval $(a,b)$. There exists a value $c$, $a < c < b$, such that \index{Mean Value Theorem!of differentiation}\index{derivative!Mean Value Theorem}
@@ -101,7 +101,7 @@ We will give a proof of the Mean Value Theorem below. To do so, we use Rolle's T
 Let $f$ be continuous on $[a,b]$ and differentiable on $(a,b)$, where $f(a) = f(b)$. There is some $c$ in $(a,b)$ such that $\fp(c) = 0.$\index{Rolle's Theorem}
 \end{theorem}
 
-\mtable{A graph of $f(x) = x^3-5x^2+3x+5$, where $f(a) = f(b)$. Note the existence of $c$, where $a<c<b$, where $\fp(c)=0$.}{fig:mvt3}{\begin{tikzpicture}
+\mtable{A graph of $f(x) = x^3-5x^2+3x+5$, where $f(a) = f(b)$. Note the existence of $c$, where $a<c<b$, where $\fp(c)=0$.}{fig:mvt3}{\pdftooltip{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,xtick={-1,1,2},
 extra x ticks={-.39,1.22,.333},extra x tick labels={$a$,$b$,$c$},
@@ -115,7 +115,7 @@ ymin=-5.2,ymax=8,xmin=-1.5,xmax=2.5]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}
+\end{tikzpicture}}{A curve beginning near (-1.1,-5.7) increasing to cross the x-axis and then the y-axis, peaking near (.3,5.5), and then descending to cross the x axis and finish near (2.5,-3.1).  There is a dashed horizontal line touching the peak, and another dashed horizontal line below that intersecting the curve at two points where x equals a and b.}}
 
 Consider \autoref{fig:mvt3} where the graph of a function $f$ is given, where $f(a) = f(b)$. It should make intuitive sense that if $f$ is differentiable (and hence, continuous) that there would be a value $c$ in $(a,b)$ where $\fp(c)=0$; that is, there would be a relative maximum or minimum of $f$ in $(a,b)$. Rolle's Theorem guarantees at least one; there may be more. 
 
@@ -184,7 +184,7 @@ We want to find $c$ such that $\fp(c) = 14$. We find $\fp(x) = 3x^2+5$. We set t
 		x &= \pm \sqrt{3} \approx \pm 1.732
 		\end{align*}
 		
-\mtable{Demonstrating the Mean Value Theorem in \autoref{ex_mvt2}.}{fig:mvt4}{\begin{tikzpicture}
+\mtable{Demonstrating the Mean Value Theorem in \autoref{ex_mvt2}.}{fig:mvt4}{\pdftooltip{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,xtick={-3,-2,-1,1,2,3},
 ymin=-45,ymax=51,xmin=-3.2,xmax=3.2]
@@ -199,7 +199,7 @@ ymin=-45,ymax=51,xmin=-3.2,xmax=3.2]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}
+\end{tikzpicture}}{A curve beginning at (-3,-37), increasing quickly and then more slowly to cross the x axis near x=-1 and then the y-axis at y=5 before increasing quickly again to finish at (3,47).  A dashed line connects the starting and ending points.  Another dashed line is tangent the curve above the first dashed line, while a third dashed line is tangent to the curve below the first dashed line.  All three dashed lines are parallel.}}
 
 We have found 2 values $c$ in $[-3,3]$ where the instantaneous rate of change is equal to the average rate of change; the Mean Value Theorem guaranteed at least one. In \autoref{fig:mvt4} $f$ is graphed with a dashed line representing the average rate of change; the lines tangent to $f$ at $x=\pm \sqrt{3}$ are also given. Note how these lines are parallel (i.e., have the same slope) as the dashed line.
 \end{example}

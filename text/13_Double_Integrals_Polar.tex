@@ -6,7 +6,7 @@ Some regions $R$ are easy to describe using rectangular coordinates --- that is,
 
 The basic form of the double integral is $\iint_R f(x,y)\dd A$. We interpret this integral as follows: over the region $R$, sum up lots of products of heights (given by $f(x_i,y_i)$) and areas (given by $\Delta A_i$). That is, $dA$ represents ``a little bit of area.'' In rectangular coordinates, we can describe a small rectangle as having area $\dd x\dd y$ or $\dd y\dd x$ --- the area of a rectangle is simply length$\times$width --- a small change in $x$ times a small change in $y$. Thus we replace $\dd A$ in the double integral with $\dd x\dd y$ or $\dd y\dd x$.
 
-\mtable{Approximating a region $R$ with portions of sectors of circles.}{fig:double_pol_intro}{
+\mtable{Approximating a region $R$ with portions of sectors of circles.}{fig:double_pol_intro}{\pdftooltip{%
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis equal,
@@ -38,8 +38,9 @@ ymin=-.1,ymax=1.1,xmin=-.2,xmax=1.24]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $0$};
 \node [above] at (myplot.above origin) {\scriptsize $\pi/2$};
-\end{tikzpicture}
+\end{tikzpicture}}{A region in the first quadrant, divided by circular arcs centered at the origin and rays from the origin outward.}
 \\(a)\\
+\pdftooltip{%
 \begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=none,axis x line=none,name=myplot,ymin=-.05,ymax=0.65,xmin=-.1,xmax=.74]
@@ -54,7 +55,7 @@ axis y line=none,axis x line=none,name=myplot,ymin=-.05,ymax=0.65,xmin=-.1,xmax=
 \draw [thick,->,>=stealth,rotate=24] (axis cs:.45,0) arc (0:13:80pt);
 \draw (axis cs: .4,.3) node {\scriptsize $\Delta \theta$};
 \end{axis}
-\end{tikzpicture}
+\end{tikzpicture}}{One particular subregion from the previous image, with two rays having similar angles and two arcs with similar distance from the origin.}
 \\(b)}
 
 Now consider representing a region $R$ with polar coordinates. Consider \autoref{fig:double_pol_intro}(a). Let $R$ be the region in the first quadrant bounded by the curve. We can approximate this region using the natural shape of polar coordinates: portions of sectors of circles. In the figure, one such region is shaded, shown again in part (b) of the figure.
@@ -71,8 +72,8 @@ Taking a limit, where the number of subregions goes to infinity and both $r_2-r_
 
 So to evaluate $\iint_Rf(x,y)\dd A$, replace $\dd A$ with $r\dd r\dd\theta$. Convert the function $z=f(x,y)$ to a function with polar coordinates with the substitutions $x=r\cos\theta$, $y=r\sin\theta$. Finally, find bounds $g_1(\theta)\leq r\leq g_2(\theta)$ and $\alpha\leq\theta\leq\beta$ that describe $R$. This is the key principle of this section, so we restate it here as a Key Idea.
 
-{\tcbset{grow to right by=3em}
-\begin{keyidea}[Evaluating Double Integrals with Polar Coordinates]\label{idea:doublepol}
+{\tcbset{grow to right by=1em}
+\begin{keyidea}[Evaluating Double Integrals with Polar Coordinates]\label{idea:doublepol}%
 Let $R$ be a plane region bounded by the polar equations $\alpha\leq\theta\leq\beta$ and  $g_1(\theta)\leq r\leq g_2(\theta)$. Then
 \index{double integral!in polar}
 \[\iint_Rf(x,y)\dd A = \int_\alpha^\beta\int_{g_1(\theta)}^{g_2(\theta)} f\bigl(r\cos\theta,r\sin\theta\bigr)\ r\dd r\dd\theta.\]
@@ -91,7 +92,7 @@ Find the signed volume under the plane $z=4-x-2y$ over the disk with equation $x
 3Dortho=0.0046491301618516445,
 3Dc2c=0.8617081642150879 -0.29301872849464417 0.4142450988292694,
 3Dcoo=-13.165555000305176 3.489872455596924 52.97535705566406,
-3Droo=149.99999574342704}{width=\marginparwidth}{figures/figdoublepol1_3D}}%
+3Droo=149.99999574342704}{width=\marginparwidth,alt={A plane over the unit circle.}}{figures/figdoublepol1_3D}}%
 %
 The bounds of the integral are determined solely by the region $R$ over which we are integrating. The surface and boundary of the region are shown in \autoref{fig:doublepol1}. In this case the boundary of the region is the circle with equation $x^2+y^2=1$. We need to find polar bounds for this region. It may help to review \autoref{sec:polar}; bounds for this circle are $0\leq r\leq 1$ and $0\leq \theta\leq 2\pi$.
 
@@ -111,7 +112,7 @@ Finally, we replace $dA$ in the double integral with $r\dd r\dd\theta$. This giv
 \end{example}
 
 \mtable{Showing the region $R$ and surface used in \autoref{ex_doublepol2}.}{fig:doublepol2}{%
-\begin{tikzpicture}
+\pdftooltip{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={2,1,3,4},
 ymin=-2.1,ymax=2.1,xmin=-.54,xmax=4.5]
@@ -123,14 +124,14 @@ ymin=-2.1,ymax=2.1,xmin=-.54,xmax=4.5]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}
+\end{tikzpicture}}{The circle of radius 2 centered at (2,0) without the circle of radius 1 centered at (1,0).}
 \\(a)\\
 \myincludeasythree{width=\marginparwidth,
 3Droll=0,
 3Dortho=0.004967421758919954,
 3Dc2c=-0.21277226507663727 -0.7507773041725159 0.6253489851951599,
 3Dcoo=76.34239196777344 13.4976167678833 40.79242706298828,
-3Droo=149.9999981182509}{width=\marginparwidth}{figures/figdoublepol2b_3D}
+3Droo=149.9999981182509}{width=\marginparwidth,alt={The volume under the paraboloid and above the previous region.}}{figures/figdoublepol2b_3D}
 \\(b)}
 
 \begin{example}[Evaluating a double integral with polar coordinates]\label{ex_doublepol2}
@@ -176,7 +177,7 @@ While this example was not trivial, the double integral would have been \emph{mu
 3Dortho=0.005125566851347685,
 3Dc2c=0.3594517111778259 -0.6955419182777405 0.6221060752868652,
 3Dcoo=40.99066925048828 90.0008544921875 16.713821411132812,
-3Droo=150.00000057205966}{width=\marginparwidth}{figures/figdoublepol5_3D}}
+3Droo=150.00000057205966}{width=\marginparwidth,alt={The surface is at one at the origin, but decreases further from the origin.}}{figures/figdoublepol5_3D}}
 
 \begin{example}[Evaluating a double integral with polar coordinates]\label{ex_doublepol5}
 Find the volume under the surface $\ds f(x,y) =\frac1{x^2+y^2+1}$ over the  sector of the circle with radius $a$ centered at the origin in the first quadrant, as shown in \autoref{fig:doublepol5}.
@@ -225,7 +226,7 @@ Generally, the formula for the volume of a sphere with radius $r$ is given as $4
 3Dortho=0.003775296732783318,
 3Dc2c=0.5381587743759155 0.7346906065940857 0.41305553913116455,
 3Dcoo=-13.062450408935547 -3.628488063812256 70.90967559814453,
-3Droo=300}{width=\marginparwidth}{figures/figdoublepol4_3D}}
+3Droo=300}{width=\marginparwidth,alt={Three loops joined together, with one loop tapering down to a point away from the joint.}}{figures/figdoublepol4_3D}}
 
 \begin{example}[Finding the volume of a solid]\label{ex_doublepol4}
 A sculptor wants to make a solid bronze cast of the solid shown in \autoref{fig:doublepol4}, where the base of the solid has boundary, in polar coordinates, $r=\cos(3\theta)$, and the top is defined by the plane $z=1-x+0.1y$. Find the volume of the solid.

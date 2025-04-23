@@ -6,7 +6,18 @@
 \usepackage[strict]{changepage} % for \checkoddpage and \ifoddpage
 %\usepackage{layout} % defines \layout which produces an overview of the layout of the current document
 \usepackage[noplaybutton]{media9} % for embedding 3d images
-\usepackage{qrcode}
+\usepackage[nolinks]{qrcode}
+
+\PassOptionsToPackage{
+	bookmarksnumbered,
+	hidelinks,
+	pdfstartview=FitH,
+	linktoc=all,
+	pdfdisplaydoctitle,
+	bookmarksdepth=2,
+}{hyperref}
+% pdfcomment loads hyperref
+\usepackage{pdfcomment} % for \pdftooltip{object}{alt text}
 
 % make the space in the toc wide enough for 4 digit numbers
 \renewcommand\@pnumwidth{2.5em}
@@ -23,7 +34,7 @@
  \begin{minipage}[t]{.64\linewidth}%
   \RaggedRight%
   \noindent Watch the video:\\%
-  \href{#3#1}{#4 at\\\nolinkurl{#3}}%
+  \href{#3#1}{#4 at\newline\nolinkurl{#3}}%
  \end{minipage}%
 }%
 }
@@ -123,8 +134,8 @@
 %\makeatother
 
 
-\usepackage[noadjust]{marginnote}
-
+%\usepackage[noadjust]{marginnote}
+\usepackage{marginalia}
 
 
 % only in .ltxml

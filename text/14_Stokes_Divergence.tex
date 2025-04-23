@@ -10,7 +10,7 @@ We now consider the three-dimensional version of the Divergence Theorem. It stat
 
 \begin{theorem}[The Divergence Theorem (in space)]\label{thm:divergence2}
 Let $D$ be a closed domain in space whose boundary is an orientable, piecewise smooth surface \surfaceS\ with outer unit normal vector $\vec n$, and let $\vec F$ be a vector field whose components are differentiable on $D$. Then\index{Divergence Theorem!in space}
-\[\iint_\surfaceS \vec F\cdot\vec n\dd S =\iiint_D \divv \vec F\dd V.\]
+\[\iint_{\surfaceS} \vec F\cdot\vec n\dd S =\iiint_D \divv \vec F\dd V.\]
 \end{theorem}
 
 \youtubeVideo{asyIsn59Lnc}{Divergence theorem example 1 | Divergence theorem | Multivariable Calculus | Khan Academy}
@@ -165,7 +165,7 @@ It takes a bit of algebra, but we can show that $\divv\vec F = 0$. Thus the Dive
 \[\text{Flux }=\iiint_D \divv \vec F\dd V = \iiint_D 0\dd V = 0,\]
 but clearly this does not match the result from above. What went wrong?
 
-Revisit the statement of the Divergence Theorem. One of the conditions is that the components of $\vec F$ must be differentiable on the domain enclosed by the surface. In our case, $\vec F$ is \emph{not} differentiable at the origin --- it is not even defined! As $\vec F$ does not satisfy the conditions of the Divergence Theorem, it does not apply, and we cannot expect $\iint_\surfaceS \vec F\cdot\vec n\dd A = \iiint_D \divv\vec F\dd V$.
+Revisit the statement of the Divergence Theorem. One of the conditions is that the components of $\vec F$ must be differentiable on the domain enclosed by the surface. In our case, $\vec F$ is \emph{not} differentiable at the origin --- it is not even defined! As $\vec F$ does not satisfy the conditions of the Divergence Theorem, it does not apply, and we cannot expect $\iint_{\surfaceS} \vec F\cdot\vec n\dd A = \iiint_D \divv\vec F\dd V$.
 
 Since $\vec F$ is differentiable everywhere except the origin, the Divergence Theorem does apply over any domain that does not include the origin. Let $\surfaceS_2$ be any surface that encloses the cube used before, and let $\hat D$ be the domain \emph{between} the cube and $\surfaceS_2$; note how $\hat D$ does not include the origin and so the Divergence Theorem does apply over this domain. The total outward flux over $\hat D$ is thus $\iint_{\hat D}\divv \vec F\dd V = 0$, which means the amount of flux coming out of $\surfaceS_2$ is the same as the amount of flux coming out of the cube. The conclusion: the flux across \emph{any} surface enclosing the origin will be $4k\pi$. 
 
@@ -195,13 +195,13 @@ Green's Theorem dictated that the curve was to be traversed counterclockwise whe
 
 \begin{theorem}[Stokes' Theorem]\label{thm:stokes_thm}
 Let \surfaceS\ be a piecewise smooth, orientable surface whose boundary is a piecewise smooth curve $C$, let $\vec n$ be a unit vector normal to \surfaceS, let $C$ be traversed with respect to $\vec n$ according to the right hand rule, and let the components of $\vec F$ have continuous first partial derivatives over \surfaceS. Then\index{Stokes' Theorem}
-\[\oint_C \vec F\cdot\dd\vec r = \iint_\surfaceS (\curl\vec F)\cdot \vec n\dd S.\]
+\[\oint_C \vec F\cdot\dd\vec r = \iint_{\surfaceS} (\curl\vec F)\cdot \vec n\dd S.\]
 \end{theorem}
 
 In general, the best approach to evaluating the surface integral in Stokes' Theorem is to parameterize the surface \surfaceS\ with a function $\vec r(u,v)$. We can find a unit normal vector $\vec n$ as 
 \[\vec n = \frac{\vec r_u\times\vec r_v}{\norm{\vec r_u\times\vec r_v}}.\]
 Since $\dd S = \norm{\vec r_u\times\vec r_v}\dd A$, the surface integral in practice is evaluated as 
-\[\iint_\surfaceS (\curl \vec F)\cdot (\vec r_u\times\vec r_v)\dd A,\]
+\[\iint_{\surfaceS} (\curl \vec F)\cdot (\vec r_u\times\vec r_v)\dd A,\]
 where $\vec r_u\times\vec r_v$ may be replaced by $\vec r_v\times\vec r_u$ to properly match the direction of this vector with the orientation of the parameterization of $C$.
 
 \youtubeVideo{E2MRMdaPKcc}{Stokes example part 1 | Multivariable Calculus | Khan Academy}
@@ -216,7 +216,7 @@ where $\vec r_u\times\vec r_v$ may be replaced by $\vec r_v\times\vec r_u$ to pr
 3Dlights=Headlamp}{width=\marginparwidth}{figures/figstokes1_3D}}
 
 \begin{example}[Verifying Stokes' Theorem]\label{ex_stokes1}
-Considering the planar surface $f(x,y) = 7-2x-2y$, let $C$ be the curve in space that lies on this surface above the circle of radius 1 and centered at $(1,1)$ in the $x$-$y$ plane, let \surfaceS\ be the planar region enclosed by $C$, as illustrated in \autoref{fig:stokes1}, and let $\vec F =\bracket{x+y,2y, y^2}$. Verify Stokes' Theorem by showing $\oint_C \vec F\cdot\dd\vec r = \iint_\surfaceS (\curl\vec F)\cdot \vec n\dd S$.
+Considering the planar surface $f(x,y) = 7-2x-2y$, let $C$ be the curve in space that lies on this surface above the circle of radius 1 and centered at $(1,1)$ in the $x$-$y$ plane, let \surfaceS\ be the planar region enclosed by $C$, as illustrated in \autoref{fig:stokes1}, and let $\vec F =\bracket{x+y,2y, y^2}$. Verify Stokes' Theorem by showing $\oint_C \vec F\cdot\dd\vec r = \iint_{\surfaceS} (\curl\vec F)\cdot \vec n\dd S$.
 \solution
 We begin by parameterizing $C$ and then find the circulation. A unit circle centered at $(1,1)$ can be parameterized with $x=\cos t+1$, $y=\sin t+1$ on $0\leq t\leq 2\pi$; to put this curve on the surface $f$, make the $z$ component equal $f(x,y)$: $z = 7-2(\cos t+1)-2(\sin t+1)  = 3-2\cos t - 2\sin t$. All together, we parameterize $C$ with $\vec r(t) =\bracket{\cos t+1, \sin t+1, 3-2\cos t-2\sin t}$. 
 
@@ -236,8 +236,8 @@ We leave it to the reader to confirm that $\vec r_u\times \vec r_v =\bracket{2v,
 
 The surface integral of Stokes' Theorem is thus
 \begin{align*}
-	\iint_\surfaceS (\curl\vec F)\cdot \vec n\dd S
-	&= \iint_\surfaceS (\curl\vec F)\cdot (\vec r_u\times \vec r_v)\dd A \\
+	\iint_{\surfaceS} (\curl\vec F)\cdot \vec n\dd S
+	&= \iint_{\surfaceS} (\curl\vec F)\cdot (\vec r_u\times \vec r_v)\dd A \\
 	&= \int_0^1\int_0^{2\pi}\bracket{2v\sin u+2,0,-1}\cdot\bracket{2v,2v,v}\dd u\dd v\\
 	&= 3\pi,
 \end{align*}
@@ -265,11 +265,11 @@ One of the interesting results of Stokes' Theorem is that if two surfaces $\surf
 \\(b)}
 
 \begin{example}[Stokes' Theorem and surfaces that share a boundary]\label{ex_stokes2}
-Let $C$ be the curve given in \autoref{ex_stokes1} and note that it lies on the surface $z = 6-x^2-y^2$. Let \surfaceS\ be the region of this surface bounded by $C$, and let $\vec F =\bracket{x+y,2y,y^2}$ as in the previous example. Compute $\iint_\surfaceS (\curl\vec F)\cdot \vec n\dd S $ to show it equals the result found in the previous example.
+Let $C$ be the curve given in \autoref{ex_stokes1} and note that it lies on the surface $z = 6-x^2-y^2$. Let \surfaceS\ be the region of this surface bounded by $C$, and let $\vec F =\bracket{x+y,2y,y^2}$ as in the previous example. Compute $\iint_{\surfaceS} (\curl\vec F)\cdot \vec n\dd S $ to show it equals the result found in the previous example.
 \solution
 We begin by demonstrating that $C$ lies on the surface $z=6-x^2-y^2$. We can parameterize the $x$ and $y$ components of $C$ with $x=\cos t+1$, $y=\sin t+1$ as before. Lifting these components to the surface $f$ gives the $z$ component as $z = 6-x^2-y^2 = 6-(\cos t+1)^2-(\sin t+1)^2 = 3-2\cos t-2\sin t$, which is the same $z$ component as found in \autoref{ex_stokes1}. Thus the curve $C$ lies on the surface $z=6-x^2-y^2$, as illustrated in \autoref{fig:stokes2}. 
 
-Since $C$ and $\vec F$ are the same as in the previous example, we already know that $\oint_C\vec F\cdot\ d\vec r = 3\pi$. We confirm that this is also the value of $\iint_\surfaceS (\curl\vec F)\cdot \vec n\dd S$.
+Since $C$ and $\vec F$ are the same as in the previous example, we already know that $\oint_C\vec F\cdot\ d\vec r = 3\pi$. We confirm that this is also the value of $\iint_{\surfaceS} (\curl\vec F)\cdot \vec n\dd S$.
 
 We parameterize \surfaceS\ with
 \[\vec r(u,v) =\bracket{v\cos u+1,v\sin u+1, 6-(v\cos u+1)^2-(v\sin u+1)^2},\]
@@ -279,7 +279,7 @@ where $0\leq u\leq 2\pi$ and $0\leq v\leq 1$, and leave it to the reader to conf
 \]
 which also conforms to the right-hand rule with regard to the orientation of $C$. With $\curl \vec F =\bracket{2y,0,-1}$ as before, we have
 \begin{multline*}
-	\iint_\surfaceS (\curl\vec F)\cdot \vec n\dd S\\ 
+	\iint_{\surfaceS} (\curl\vec F)\cdot \vec n\dd S\\ 
 	=\int_0^1\int_0^{2\pi}\bracket{2v\sin u+2,0,-1}\cdot\bracket{2v\bigl(v\cos u+1\bigr), 2v\bigl(v\sin u+1\bigr),v}\dd u\dd v\\
 	=3\pi.
 \end{multline*}
@@ -305,7 +305,7 @@ where again the sum of a rate of change of $f$ along a curve $C$ can also be eva
 
 Green's Theorem is essentially a special case of Stokes' Theorem, so we consider just Stokes' Theorem here. Recalling that the curl of a vector field $\vec F$ is a measure of a rate of change of $\vec F$, Stokes' Theorem states that over a surface \surfaceS\ bounded by a closed curve $C$,
 \[
-\iint_\surfaceS \bigl(\curl \vec F\bigr)\cdot \vec n\dd S = \oint_C \vec F\cdot\dd\vec r,
+\iint_{\surfaceS} \bigl(\curl \vec F\bigr)\cdot \vec n\dd S = \oint_C \vec F\cdot\dd\vec r,
 \]
 i.e., the sum of a rate of change of $\vec F$ can be calculated with a certain sum of $\vec F$ itself over the boundary of \surfaceS. In this case, the latter sum is also an infinite sum, requiring an integral. 
 

@@ -1,58 +1,63 @@
 \newgeometry{right=2in,top=2in} % this is an even numbered page, so left <-> right
 
+\begingroup
+
+\newlength{\cellwidth}
+\settowidth{\cellwidth}{\small\emph{Department of Applied Mathematics}\quad}
+
 \ifbool{latexml}{
  \chapter*{Contributing Authors}
  \addcontentsline{toc}{chapter}{Contributing Authors}
-}{}
-
-\renewcommand{\cellalign}{tl}
-\ifbool{latexml}{}{\textit{Contributing Authors}\\}
-
-\begin{tabular}{@{}ll}
-\makecell{Troy Siemers, Ph.D.\\\small
+ \noindent
+}{%
+ \noindent\emph{Contributing Authors}\\[\baselineskip]%
+}%
+\parbox[t]{\cellwidth}{Troy Siemers, Ph.D.\\\small
 \emph{Department of Applied Mathematics}\\
 \emph{Virginia Military Institute}}
-&
-\makecell{Michael Corral\\\small
+\parbox[t]{\cellwidth}{Michael Corral\\\small
 \emph{Mathematics}\\
 \emph{Schoolcraft College}}
-\\\addlinespace[2\defaultaddspace]
-\makecell{Brian Heinold, Ph.D.\\\small
+\\[\baselineskip]
+\parbox[t]{\cellwidth}{Brian Heinold, Ph.D.\\\small
 \emph{Department of Mathematics}\\
 \emph{and Computer Science}\\
 \emph{Mount Saint Mary's University}}
-&
-\makecell{Paul Dawkins, Ph.D.\\\small
+\parbox[t]{\cellwidth}{Paul Dawkins, Ph.D.\\\small
 \emph{Department of Mathematics}\\
 \emph{Lamar University}}
-\\\addlinespace[2\defaultaddspace]
-\makecell{Dimplekumar Chalishajar, Ph.D.\\\small
+\\[\baselineskip]
+\parbox[t]{\cellwidth}{Dimplekumar Chalishajar, Ph.D.\\\small
 \emph{Department of Applied Mathematics}\\
 \emph{Virginia Military Institute}}
-\\\addlinespace[4\defaultaddspace]
-\makecell{\textit{Editor}\\
+\\[2\baselineskip]
+\parbox[t]{\cellwidth}{\emph{Editor}\\
 Jennifer Bowen, Ph.D.\\\small
 \emph{Department of Mathematics}\\
 \emph{and Computer Science}\\
 \emph{The College of Wooster}}
-\end{tabular}
+%\end{tabular}
 
 \vspace{1in}
 
-\begin{minipage}[t]{2in}\mbox{}\\
-\href{http://creativecommons.org/licenses/by-nc/4.0/}{\includegraphics{figures/raw/by-nc}}
+\noindent
+\begin{minipage}[t]{\cellwidth}\mbox{}\\
+\href{http://creativecommons.org/licenses/by-nc/4.0/}{\includegraphics[alt={Creative Commons by-nc license}]{figures/raw/by-nc}}
 \end{minipage}%
 \begin{minipage}[t]{.5\linewidth}\raggedright\mbox{}\\
 \noindent Copyright\\
 \copyright~2015 Gregory Hartman\\
-\copyright~2021 Department of Mathematics,\\
+\copyright~2025 Department of Mathematics,\\
 University of North Dakota\medskip
 
 \noindent
-This work is licensed under a\iflatexml\ \else\\\fi \href{http://creativecommons.org/licenses/by-nc/4.0/}{Creative Commons\iflatexml\ \else\\\fi
+This work is licensed under a\iflatexml\ \else\\\fi
+\href{http://creativecommons.org/licenses/by-nc/4.0/}{Creative Commons\iflatexml\ \else\\\fi
 Attribution-NonCommercial\iflatexml\ \else\\\fi
 4.0 International License}.\\
 Resale and reproduction restricted.
 \end{minipage}
+
+\endgroup
 
 \restoregeometry

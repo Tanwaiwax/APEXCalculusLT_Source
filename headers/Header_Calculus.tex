@@ -32,19 +32,26 @@
 \newcommand{\exampleautorefname}{Ex\-am\-ple}
 \theoremstyle{apex}
 
-\makeatletter
-\renewenvironment{proof}[1][\proofname]{\pagebreak[2]\par
-  \pushQED{\qed}%
-  \normalfont \topsep6\p@\@plus6\p@\relax
-  \trivlist
-  \item[\hskip\labelsep
-        \bfseries
-    #1]\mbox{}\\* % something is needed to be able to get a newline
-}{%
-  \popQED\endtrivlist\@endpefalse
-}
-\makeatother
-\renewcommand{\qedsymbol}{\ensuremath{\square}}
+%\makeatletter
+%\renewenvironment{proof}[1][\proofname]{\pagebreak[2]\par
+%  \pushQED{\qed}%
+%  \normalfont \topsep6\p@\@plus6\p@\relax
+%  \trivlist
+%  \item[\hskip\labelsep
+%        \bfseries
+%    #1]\mbox{}\\* % something is needed to be able to get a newline
+%}{%
+%  \popQED\endtrivlist\@endpefalse
+%}
+%\makeatother
+% this was causing: The number of automatic begin and end text-unit para hooks differ!
+
+%\renewcommand{\qedsymbol}{\ensuremath{\square}}
+% this was causing
+%%%%Text line contains an invalid character.
+%%%%l.10  <mi mathvariant="normal">^^03
+%%%%                                   </mi>
+% in the luamml-mathml.html file
 
 \newspecialbox{definition}{Def\-i\-ni\-tion}{60}
 % draw = yellow!95!black!60 = Hsb( 60,.59,.97)
@@ -265,7 +272,7 @@
  \definecolor{borderexvideo}{Hsb}{0,1,0}% black
 }
 \newcommand{\exvideo}[1]{%
- \tcbox[
+ \begin{tcolorbox}[
    colframe=borderexvideo,
    beforeafter skip=\boxskipamount,
    interior style={top color=topexvideo, bottom color=bottomexvideo},
@@ -274,7 +281,9 @@
    width=\textwidth,
    enhanced,
    tcbox width=forced left
-  ]{#1}%
+  ]%
+  #1%
+ \end{tcolorbox}%
 }
 
 
@@ -307,9 +316,9 @@
 }
 
 \newcommand*{\mnote@pex}[3]{%
-	\marginalia[yshift=#2]{%
+	\marginalia[ysep page bottom=.7in]{%[yshift=#2]
 %	\marginnote{%
-		\begin{minipage}[c]{\marginparwidth}
+		\begin{minipage}[t]{\marginparwidth}
 			\captionsetup{type=figure}%
 			\testmargintop%
 			\mbox{}%\makebox[0pt]{\tikz\draw(0,0)circle(1pt);}%
@@ -376,6 +385,8 @@
 	% Calibri doesn't quite seem set for math
 %	\setmathfont[range=\mathup]{Calibri}
 %	\setmathfont[range=\mathit]{Calibri Italic} % missing characters
+%	\usepackage[default]{lato} % Lato/lete does not give a valid unicode vector arrow
+	\usepackage{lete-sans-math}
 	\let\pdfsavepos=\savepos
 	\let\pdflastxpos=\lastxpos
 	\let\pdflastypos=\lastypos
@@ -429,19 +440,19 @@
 
 % lets try to reduce bad boxes
 \usepackage{microtype}
-\hfuzz=2pt
+\hfuzz=2pt\relax
 \vfuzz=1.5\baselineskip
 % ignore overfull < this amount
 %\newdimen\hfuzz % lock it in?
 %\newdimen\vfuzz % lock it in?
 %\hbadness=10000
-\vbadness=9999
+\vbadness=9999\relax
 % ignore underfull > this amount
 \parskip=0pt plus \baselineskip
 \baselineskip=1\baselineskip plus .3\baselineskip
 
 
-\usepackage[nottoc]{tocbibind}
+\usepackage{tocbibind}
 %\let\oldprintindex\printindex
 %\renewcommand{\printindex}{%
 % \cleardoublepage
@@ -510,3 +521,11 @@ https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js}
 % set the defaults, just in case
 \printincolor
 \usetwoDgraphics
+
+\InputIfFileExists{./options}{}{%
+ \newcommand{\thetitle}{Standalone}
+ \printallanswers
+ \printincolor
+ \usetwoDgraphics
+ %\usethreeDgraphics
+}

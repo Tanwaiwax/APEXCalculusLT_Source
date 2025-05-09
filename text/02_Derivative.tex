@@ -30,7 +30,9 @@ What we really want is for $h=0$, but this, of course, returns the familiar ``$0
 indeterminate form. So we employ a limit, as we did in \autoref{sec:limit_intro}.
 
 \mtable{Approximating the instantaneous velocity with average velocities over a small time period $h$.}{table:falling}%
-{\noindent\begin{tabular}{lc}		
+{\noindent
+\tagpdfsetup{table/header-rows={1}}
+\begin{tabular}{lc}		
 	$h$ & \parbox[b]{75pt}{\centering Average Velocity\\ft/s}\\ \midrule
 	$1$ & \makebox[3em][l]{$-80$} \\
 	$0.5$ & \makebox[3em][l]{$-72$} \\
@@ -52,7 +54,9 @@ Graphically, we can view the average velocities we computed numerically as the s
 \mtable{Computing the difference quotient.}{fig:diff_quotient}{\pdftooltip{\begin{tikzpicture}
 \begin{axis}[tick label style={font=\scriptsize},minor x tick num=1,
 axis y line=middle,axis x line=middle,ymin=-50,ymax=160,xmin=-.5,xmax=3.49,
-name=myplot, extra x ticks={2.4}, extra x tick labels={\begin{tabular}{c}$\uparrow$\\$2+h$\end{tabular}},width=\marginparwidth]
+name=myplot, extra x ticks={2.4},
+extra x tick labels={\tagpdfsetup{table/tagging=presentation}%
+\begin{tabular}{c}$\uparrow$\\$2+h$\end{tabular}},width=\marginparwidth]
 \addplot [draw={\colorone},domain=0:3.5,thick] {150-16*x*x};
 \addplot [draw={\colortwo},domain=1:3.5,thick] {(90.75-28.16*x)/.4};
 \draw[draw={\colorthree}] (axis cs:2,0)--(axis cs:2,86);
@@ -60,7 +64,8 @@ name=myplot, extra x ticks={2.4}, extra x tick labels={\begin{tabular}{c}$\uparr
 \draw[gray] (axis cs:2,25)--(axis cs:2.4,25) node[pos=0.5, below]{\scriptsize $h$};
 \node[label={180:{\scriptsize $(2,f(2))$}},circle,fill,inner sep=1pt] at (axis cs:2,86) {};
 \node[label={180:{\scriptsize $(2+h,f(2+h))$}},circle,fill,inner sep=1pt] at (axis cs:2.4,57.84) {};
-%\node[label={90:{\begin{tabular}{c}\scriptsize $(2+h,f(2+h))$\\$\Big\downarrow$\end{tabular}}},circle,fill,inner sep=1pt] at (axis cs:2.4,57.84) {};
+%\node[label={90:{\tagpdfsetup{table/tagging=presentation}
+%\begin{tabular}{c}\scriptsize $(2+h,f(2+h))$\\$\Big\downarrow$\end{tabular}}},circle,fill,inner sep=1pt] at (axis cs:2.4,57.84) {};
 %\node[label={270:{\scriptsize $2+h$}},circle,fill,inner sep=0pt] at (axis cs:2.4,0) {};
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
@@ -72,6 +77,7 @@ In \autoref{fig:derivfalling}, the secant line corresponding to $h=1$ is shown i
 As $h\to 0$, these secant lines approach the \emph{tangent line}, a line that goes through the point $(2,f(2))$ with the special slope of $-64$. In parts (c) and (d) of \autoref{fig:derivfalling}, we zoom in around the point $(2,86)$. In (c) we see the secant line, which approximates $f$ well, but not as well the tangent line shown in (d).
 
 \begin{figure}[!ht]
+\tagpdfsetup{table/header-rows={2,4}}
 	\begin{tabular}{cc}
 \pdftooltip{\begin{tikzpicture}
 \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
@@ -275,10 +281,13 @@ Recall from \autoref{sec:limit_analytically} that $\ds \lim_{x\to 0}\frac{\sin x
 
 Consider again \autoref{ex_derv_point1}. To find the derivative of $f$ at $x=1$, we needed to evaluate a limit. To find the derivative of $f$ at $x=3$, we needed to again evaluate a limit. We have this process:
 \[
+\tagpdfsetup{table/tagging=presentation}
 \begin{tabular}{c}input specific\\number $c$\end{tabular}
 \longrightarrow
-\fbox{\begin{tabular}{c}do something\\to $f$ and $c$\end{tabular}}
+\fbox{\tagpdfsetup{table/tagging=presentation}
+\begin{tabular}{c}do something\\to $f$ and $c$\end{tabular}}
 \longrightarrow
+\tagpdfsetup{table/tagging=presentation}
 \begin{tabular}{c}return\\number $\fp(c)$\end{tabular}
 \]
 
@@ -288,8 +297,10 @@ Instead of applying this function repeatedly for different values of $c$, let us
 \[
 \text{input variable x}
 \longrightarrow
-\fbox{\begin{tabular}{c}do something\\to $f$ and $x$\end{tabular}}
+\fbox{\tagpdfsetup{table/tagging=presentation}
+\begin{tabular}{c}do something\\to $f$ and $x$\end{tabular}}
 \longrightarrow
+\tagpdfsetup{table/tagging=presentation}
 \begin{tabular}{c}return\\function $\fp(x)$\end{tabular}
 \]
 

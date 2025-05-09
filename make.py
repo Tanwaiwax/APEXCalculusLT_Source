@@ -114,7 +114,7 @@ def makematrices():
             except:
                 pass
             with open('../../logs/compilationmatrix.log','w+') as mystdout:
-                command = ['xelatex','-synctex=0','-jobname='+root,'matrix']
+                command = ['lualatex','-synctex=0','-jobname='+root,'matrix']
                 if args.justprint:
                     print('run:',command,'2>','logs/compilationmatrix.log')
                 else:
@@ -473,12 +473,12 @@ def getcommandline(args):
     if args.internet or args.standalonen:
         raise 'args.internet does not need a command line'
     if args.instructor:
-        return ['latexmk','-xelatex','Answers']
+        return ['latexmk','-lualatex','Answers']
     if args.epub:
         return getlatexmlepubcommandline()
     if args.standalonee:
         return getlatexmlepubcommandline('standalone','standaloneweb')
-    return ['latexmk','-xelatex','Calculus']
+    return ['latexmk','-lualatex','Calculus']
 
 def minimizePdf(filename):
     '''

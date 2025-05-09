@@ -12,10 +12,11 @@
 
 \bgroup
 \footnotesize
-\renewcommand{\arraystretch}{2.5}
-\setlength{\columnsep}{6pt}
-\noindent\lxAddClass{columns4}
-\parbox{.26\linewidth}{%
+\renewcommand{\arraystretch}{2.5}%
+\setlength{\columnsep}{6pt}%
+\noindent\lxAddClass{columns4}%
+\hspace{-1.5em}%
+\parbox{.29\linewidth}{% too narrow: 28
 \begin{enumerate}
 \item $\dfrac\dd{\dd x}(cx)=c$
 \item $\dfrac\dd{\dd x}(u\pm v)=u'\pm v'$
@@ -28,7 +29,7 @@
 \item $\dfrac\dd{\dd x}(x^n)=nx^{n-1}$
 \item $\dfrac\dd{\dd x}((f(x))^n)=n(f(x))^{n-1}\fp(x)$
 \end{enumerate}}\hfill
-\parbox{.22\linewidth}{%
+\parbox{.23\linewidth}{% too narrow: 22, wide enough: 23
 \begin{enumerate}\setcounter{enumi}{10}
 \item $\dfrac\dd{\dd x}(e^x)=e^x$
 \item $\dfrac\dd{\dd x}(e^{f(x)})=e^{f(x)}\fp(x)$
@@ -41,7 +42,7 @@
 \item $\dfrac\dd{\dd x}(\csc x)=-\csc x\cot x$%\qquad\null
 \item $\dfrac\dd{\dd x}(\sec x)=\sec x\tan x$
 \end{enumerate}}\hfill
-\parbox{.22\linewidth}{%
+\parbox{.22\linewidth}{% too narrow: 21, wide enough: 22
 \begin{enumerate}\setcounter{enumi}{20}
 \item $\dfrac\dd{\dd x}(\tan x)=\sec^2x$
 \item $\dfrac\dd{\dd x}(\cot x)=-\csc^2x$
@@ -54,7 +55,7 @@
 \item $\dfrac\dd{\dd x}(\cosh x)=\sinh x$
 \item $\dfrac\dd{\dd x}(\sinh x)=\cosh x$
 \end{enumerate}}\hfill
-\parbox{.24\linewidth}{%
+\parbox{.25\linewidth}{% too narrow: 24, wide enough: 25
 \begin{enumerate}\setcounter{enumi}{30}
 \item $\dfrac\dd{\dd x}(\tanh x)=\sech^2x$
 \item $\dfrac\dd{\dd x}(\sech x)=-\sech x\tanh x$
@@ -72,8 +73,10 @@
 
 \subsection{Integration Rules}
 
-\newcommand{\intRuleStrut}{\vphantom{\dfrac1{\sqrt{x^2}}}}
-\noindent\lxAddClass{columns3}\parbox[t]{.34\linewidth}{%
+\newcommand{\intRuleStrut}{\vphantom{\dfrac1{\sqrt{x^2}}}}%
+\noindent\lxAddClass{columns3}%
+\hspace{-1.5em}%
+\parbox[t]{.37\linewidth}{% too narrow: 36
 \begin{enumerate}
 \item $\intRuleStrut\ds\int c\cdot f(x)\dd x=c\int f(x)\dd x$
 \item $\intRuleStrut\ds\int\left(f(x)\pm g(x)\right)\dd x=\int f(x)\dd x\pm\int g(x)\dd x$
@@ -114,7 +117,7 @@
 \item $\intRuleStrut\ds\int\tanh x\dd x=\ln(\cosh x)+C$
 \item $\intRuleStrut\ds\int\coth x\dd x=\ln\abs{\sinh x}+C$
 \\$\intRuleStrut$
-\end{enumerate}}
+\end{enumerate}}%
 \begin{enumerate}\setcounter{enumi}{30}
 \item $\intRuleStrut\ds\int\sec^3 x\dd x=\frac12(\sec x\tan x+\ln\abs{\sec x+\tan x})+C$
 \item\label{intRuleRtSmSq} $\intRuleStrut\ds\int\sqrt{x^2+a^2}\dd x=\frac x2\sqrt{x^2+a^2}+\frac{a^2}2\ln\left(x+\sqrt{x^2+a^2}\right)+C$
@@ -317,9 +320,10 @@
 \vfill
 
 \subsection*{Domains and ranges of inverse trigonometric functions}\vspace{-.5\baselineskip}
+\tagpdfsetup{table/header-rows={1}}
 \begin{tabular}{ccc @{\hspace{3em}} ccc}
 Inverse Function & Domain & Range &
-Inverse Function & Domain & Range \\
+Inverse Function & Domain & Range \\\midrule
 $\sin^{-1}x$ & $[-1,1]$ & $[-\pi/2,\pi/2]$ & % ([
 $\csc^{-1}x$ & $(-\infty,-1]\cup[1,\infty)$ & $[-\pi/2,0)\cup(0,\pi/2]$ \\ % )]
 $\cos^{-1}x$ & $[-1,1]$ & $[0,\pi]$ & % ([
@@ -334,40 +338,41 @@ $\cot^{-1}x$ & $(-\infty,\infty)$ & $(0,\pi)$
 
 \subsection{Areas and Volumes}
 
-\vfill
+%\vfill
 
 \bgroup
 \renewcommand{\arraystretch}{5}
-\newcommand{\cellwidth}{\ifbool{latexml}{.4}{}\linewidth}
+%\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\cellwidth}{\ifbool{latexml}{.4}{}\linewidth}
+\tagpdfsetup{table/tagging=presentation}
 \begin{tabular}{
 	p{.22\linewidth}p{.2\linewidth} @{\hskip 4em}
 	p{.22\linewidth}p{.2\linewidth}
 }
-	\parbox[t]{\cellwidth}{\begin{flalign*}
-		&\textbf{Triangles}\\
-		&h=a\sin\theta &\\
-		&\text{Area} = \frac12bh \\
-		&\text{Law of Cosines:} \\
-		&c^2=a^2+b^2-2ab\cos\theta
-	\end{flalign*}}
+	\parbox[t]{\cellwidth}{%
+		\textbf{Triangles}\\
+		$h=a\sin\theta$\\
+		Area ${}=\frac12bh$ \\
+		Law of Cosines: \\
+		$c^2=a^2+b^2-2ab\cos\theta$%
+	}
 	&
-	\begin{tikzpicture}[x=30pt,y=30pt,thick,
-				baseline={([yshift=2\baselineskip]current bounding box.north)}]
+	\begin{tikzpicture}[x=30pt,y=30pt,thick,baseline={(current bounding box.north)}]
 		\draw (0,0) -- node [below]  { $b$} (3,0) node [shift={(-15pt,8pt)}] {$\theta$} -- node [above right] { $a$} (2,1.5) -- node [above left] { $c$} (0,0);
 		\draw (2.7,0) arc (180:125:.3);
 		\draw [dashed] (2,1.5) -- (2,0) node [pos=.5,left] {$h$};
 		\draw (2,.2) -- (1.8,.2) -- (1.8,0);
 	\end{tikzpicture}
 	&
-	\parbox[t]{\cellwidth}{\begin{flalign*}
-		&\textbf{Right Circular Cone}\\
-		&\text{Volume} = \frac 13 \pi r^2h &\\
-		&\text{Surface Area} = \\
-		&\pi r\sqrt{r^2+h^2} +\pi r^2
-	\end{flalign*}}
+	\parbox[t]{\cellwidth}{%
+		\textbf{Right Circular Cone}\\
+		Volume ${} = \frac 13 \pi r^2h $\\
+		Surface Area = \\
+		$\pi r\sqrt{r^2+h^2} +\pi r^2$%
+	}
 	&
 	\begin{tikzpicture}[x=13pt,y=15pt,thick,
-				baseline={([yshift=2\baselineskip]current bounding box.north)}]
+				baseline={(current bounding box.north)}]
 		\begin{scope}[xscale=2]
 			\draw (-1,0) arc (-180:0:1);
 			\draw [dashed] (1,0) arc (0:180:1);
@@ -378,27 +383,27 @@ $\cot^{-1}x$ & $(-\infty,\infty)$ & $(0,\pi)$
 		\draw [fill=black] (0,0) circle (1pt);
 	\end{tikzpicture}
 	\\
-	\parbox[t]{\cellwidth}{\begin{flalign*}
-		&\textbf{Parallelograms}\\
-		&\text{Area} = bh &
-	\end{flalign*}}
+	\parbox[t]{\cellwidth}{%
+		\textbf{Parallelograms}\\
+		Area ${} = bh$%
+	}
 	&
 	\begin{tikzpicture}[x=30pt,y=25pt,thick,
-				baseline={([yshift=2\baselineskip]current bounding box.north)}]
+				baseline={(current bounding box.north)}]
 		\draw (0,0) -- node [below]  { $b$} (2,0) -- (3,1.5) -- (1,1.5) -- (0,0);
 		\draw [dashed] (1,1.5) -- node [right] {$h$} (1,0);
 		\draw (.8,0) -- (.8,.2) -- (1,.2);
 	\end{tikzpicture}
 	&
-	\parbox[t]{\cellwidth}{\begin{flalign*}
-		&\textbf{Right Circular Cylinder}\\
-		&\text{Volume} = \pi r^2h &\\
-		&\text{Surface Area} = \\
-		&2\pi rh  +2\pi r^2
-	\end{flalign*}}
+	\parbox[t]{\cellwidth}{%
+		\textbf{Right Circular Cylinder}\\
+		Volume ${} = \pi r^2h $\\
+		Surface Area = \\
+		$2\pi rh  +2\pi r^2$%
+	}
 	&
 	\begin{tikzpicture}[x=13pt,y=14pt,thick,
-				baseline={([yshift=2\baselineskip]current bounding box.north)}]
+				baseline={(current bounding box.north)}]
 		\begin{scope}[xscale=2]
 			\draw (-1,0) arc (-180:0:1);
 			\draw [dashed] (1,0) arc (0:180:1);
@@ -409,26 +414,26 @@ $\cot^{-1}x$ & $(-\infty,\infty)$ & $(0,\pi)$
 		\draw [fill=black] (0,2.5) circle (1pt);
 	\end{tikzpicture}
 	\\
-	\parbox[t]{\cellwidth}{\begin{flalign*}
-		&\textbf{Trapezoids}\\
-		& \text{Area} = \frac12(a+b)h &
-	\end{flalign*}}
+	\parbox[t]{\cellwidth}{%
+		\textbf{Trapezoids}\\
+		Area ${} = \frac12(a+b)h $%
+	}
 	&
 	\begin{tikzpicture}[x=30pt,y=25pt,thick,
-				baseline={([yshift=2\baselineskip]current bounding box.north)}]
+				baseline={(current bounding box.north)}]
 		\draw (0,0) -- node [below,pos=.7]  { $b$} (3,0) -- (2.5,1.5) -- node [above] {$a$} (1.5,1.5) -- (0,0);
 		\draw [dashed] (1.5,1.5) -- node [right] {$h$} (1.5,0);
 		\draw (1.3,0) -- (1.3,.2) -- (1.5,.2);
 	\end{tikzpicture}
 	&
-	\parbox[t]{\cellwidth}{\begin{flalign*}
-		&\textbf{Sphere}\\
-		&\text{Volume} = \frac43\pi r^3 &\\
-		&\text{Surface Area} = 4\pi r^2
-	\end{flalign*}}
+	\parbox[t]{\cellwidth}{%
+		\textbf{Sphere}\\
+		Volume ${} = \frac43\pi r^3 $\\
+		Surface Area ${} = 4\pi r^2$%
+	}
 	&
 	\begin{tikzpicture}[x=13pt,y=13pt,thick,
-				baseline={([yshift=2\baselineskip]current bounding box.north)}]
+				baseline={(current bounding box.north)}]
 		\begin{scope}[xscale=2]
 			\draw (-1,0) arc (-180:0:1);
 			\draw [dashed] (1,0) arc (0:180:1);
@@ -438,27 +443,27 @@ $\cot^{-1}x$ & $(-\infty,\infty)$ & $(0,\pi)$
 		\draw [fill=black] (0,0) circle (1pt);
 	\end{tikzpicture}
 	\\
-	\parbox[t]{\cellwidth}{\begin{flalign*}
-		&\textbf{Circles}\\
-		&\text{Area} = \pi r^2 &\\
-		&\text{Circumference} = 2\pi r
-	\end{flalign*}}
+	\parbox[t]{\cellwidth}{%
+		\textbf{Circles}\\
+		Area ${} = \pi r^2 $\\
+		Circumference ${} = 2\pi r$%
+	}
 	&
 	\begin{tikzpicture}[x=30pt,y=30pt,thick,
-				baseline={([yshift=2\baselineskip]current bounding box.north)}]
+				baseline={(current bounding box.north)}]
 		\draw (0,0) circle (1);
 		\draw [dashed] (0,0) -- node [above] {$r$} (1,0);
 		\draw [fill=black] (0,0) circle (1pt);
 	\end{tikzpicture}
 	&
-	\parbox[t]{\cellwidth}{\begin{flalign*}
-		&\textbf{General Cone}\\
-		&\text{Area of Base} = A &\\
-		&\text{Volume} = \frac13Ah
-	\end{flalign*}}
+	\parbox[t]{\cellwidth}{%
+		\textbf{General Cone}\\
+		Area of Base ${} = A $\\
+		Volume ${} = \frac13Ah$%
+	}
 	&
 	\begin{tikzpicture}[x=13pt,y=10pt,thick,
-				baseline={([yshift=2\baselineskip]current bounding box.north)}]
+				baseline={(current bounding box.north)}]
 		\begin{scope}
 			\clip (0,0) rectangle (4,-2.5);
 			\draw [smooth] plot coordinates {(0,0) (1,1.5) (2,1.5) (4,0) (3,-1) (2,-1.5) (1,-2) (0,0)};
@@ -473,15 +478,15 @@ $\cot^{-1}x$ & $(-\infty,\infty)$ & $(0,\pi)$
 		\draw (1.5,-.75) node {$A$};
 	\end{tikzpicture}
 	\\
-	\parbox[t]{\cellwidth}{\begin{flalign*}
-		&\textbf{Sectors of Circles}\\
-		&\theta \text{ in radians} &\\
-		&\text{Area} = \frac12\theta r^2 \\
-		&s=r\theta
-	\end{flalign*}}
+	\parbox[t]{\cellwidth}{%
+		\textbf{Sectors of Circles}\\
+		$\theta$ in radians \\
+		Area ${} = \frac12\theta r^2$ \\
+		$s=r\theta$%
+	}
 	&
 	\begin{tikzpicture}[x=30pt,y=30pt,thick,
-				baseline={([yshift=2\baselineskip]current bounding box.north)}]
+				baseline={(current bounding box.north)}]
 		\draw (2,0) arc (0:50:2) -- (0,0);
 		\draw [] (0,0) -- node [below] {$r$} (2,0);
 		\draw [fill=black] (0,0) circle (1pt);
@@ -489,14 +494,14 @@ $\cot^{-1}x$ & $(-\infty,\infty)$ & $(0,\pi)$
 		\draw (0,0) node [shift={(15pt,8pt)}] {$\theta$};
 	\end{tikzpicture}
 	&
-	\parbox[t]{\cellwidth}{\begin{flalign*}
-		&\textbf{General Right Cylinder}\\
-		&\text{Area of Base} = A &\\
-		&\text{Volume} = Ah
-	\end{flalign*}}
+	\parbox[t]{\cellwidth}{%
+		\textbf{General Right Cylinder}\\
+		Area of Base ${} = A $\\
+		Volume ${} = Ah$%
+	}
 	&
 	\begin{tikzpicture}[x=13pt,y=10pt,thick,
-				baseline={([yshift=2\baselineskip]current bounding box.north)}]
+				baseline={(current bounding box.north)}]
 		\begin{scope}
 			\clip (0,0) rectangle (4,-2.5);
 			\draw [smooth] plot coordinates {(0,0) (1,1.5) (2,1.5) (4,0) (3,-1) (2,-1.5) (1,-2) (0,0)};
@@ -661,6 +666,7 @@ $\ds L = \int_a^b{\sqrt{1+ \fp(x)^2}}\dd x$
 \subsubsection*{Standard Form of Conic Sections}
 
 {\addtolength{\tabcolsep}{6pt}
+\tagpdfsetup{table/header-rows={1,2,3}}
 \begin{tabular}{ c c c c c }
 \multicolumn{2}{c}{Parabola} & \hspace{5em}Ellipse\hspace{5em} & \multicolumn{2}{c}{Hyperbola} \\
 Vertical axis & Horizontal axis & & Foci and vertices & Foci and vertices \\
@@ -677,7 +683,8 @@ Notation: Infinite series $\ds\sum_{n=1}^\infty a_n$ with sequence of partial su
 \begin{center}
 \renewcommand{\arraystretch}{3.8}
 \addtolength{\tabcolsep}{5pt}
-\begin{tabular}{ p{.7in} p{1.2in} @{} p{2.5in} p{1.5in} }
+\tagpdfsetup{table/header-rows={1}}
+\begin{tabular}{ p{.7in} p{1.2in} @{} p{2.5in} p{1.6in} }
 
 %\toprule% this leaves too much space afterward
 \specialrule{\heavyrulewidth}{0pt}{-2ex}

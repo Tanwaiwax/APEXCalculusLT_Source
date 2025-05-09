@@ -2,9 +2,9 @@
 
 ``Orthogonality'' is immensely important. A quick scan of your current environment will undoubtedly reveal numerous surfaces and edges that are perpendicular to each other (including the edges of this page). The dot product provides a quick test for orthogonality:  vectors $\vec u$ and $\vec v$ are perpendicular if, and only if, $\vec u\cdot\vec v=0$. 
 
-Given two non-parallel, nonzero vectors $\vec u$ and $\vec v$ in space, it is very useful to find a vector $\vec w$ that is perpendicular to both $\vec u$ and $\vec v$. There is a operation, called the \textbf{cross product}, that creates such a vector. This section defines the cross product, then explores its properties and applications.
+Given two non-parallel, nonzero vectors $\vec u$ and $\vec v$ in space, it is very useful to find a vector $\vec w$ that is perpendicular to both $\vec u$ and $\vec v$. There is an operation, called the \textbf{cross product}, that creates such a vector. This section defines the cross product, then explores its properties and applications.
 
-\begin{definition}[Cross Product]\label{def:cross_product}
+\begin{definition}[Cross Product]\label{def:cross_product}%
 Let $\vec u =\bracket{u_1,u_2,u_3}$ and $\vec v = \bracket{v_1,v_2,v_3}$ be vectors in $\mathbb{R}^3$. The \textbf{cross product of $\vec u$ and $\vec v$}, denoted $\vec u\times\vec v$, is the vector
 \index{vectors!cross product}\index{cross product!definition}
 \[\vec u\times\vec v = \bracket{u_2v_3-u_3v_2,-(u_1v_3-u_3v_1),u_1v_2-u_2v_1}.\]
@@ -16,7 +16,7 @@ This definition can be a bit cumbersome to remember. After an example we will gi
 
 Let's practice using this definition by computing a cross product.
 
-\begin{example}[Computing a cross product]\label{ex_crossp1}
+\begin{example}[Computing a cross product]\label{ex_crossp1}%
 Let $\vec u = \bracket{2,-1,4}$ and $\vec v = \bracket{3,2,5}$. Find $\vec u\times\vec v$, and verify that it is orthogonal to both $\vec u$ and $\vec v$.
 \solution
 Using \autoref{def:cross_product}, we have
@@ -128,7 +128,7 @@ This is equivalent to evaluating the determinant
 
 We practice using this method.
 
-\begin{example}[Computing a cross product]\label{ex_crossp2}
+\begin{example}[Computing a cross product]\label{ex_crossp2}%
 Let $\vecu=\bracket{1,3,6}$ and $\vec v = \bracket{-1,2,1}$. Compute both $\vec u\times\vec v$ and $\vec v\times\vec u$.
 \solution
 To compute $\vec u\times\vec v$, we form the matrix as prescribed above, complete with repeated first columns:
@@ -137,7 +137,7 @@ We let the reader compute the products of the diagonals; we give the result:
 \[\vec u\times\vec v = \bigl(3\veci-6\vecj+2\veck\,\bigr) - \bigl(-3\veck + 12\veci+\vecj\,\bigr) = \bracket{-9,-7,5}.\]
 
 To compute $\vec v\times\vec u$, we switch the second and third rows of the above matrix, then multiply along diagonals and subtract:
-
+%
 \[\begin{array}{ c c c c c } \ \veci\ &\ \vecj\ &\ \veck\ &\ \veci\ &\ \vecj\ \\ -1&2&1&-1&2\\  1&3&6&1&3\end{array}\]
 Note how with the rows being switched, the products that once appeared on the right now appear on the left, and vice-versa. Thus the result is:
 \[\vec v\times\vec u = \bigl(12\veci+\vecj-3\veck\,\bigr) - \bigl(2\veck + 3\veci-6\vecj\,\bigr) = \bracket{9,7,-5},\]
@@ -150,7 +150,7 @@ It is not coincidence that $\vec v\times\vec u = -(\vec u\times\vec v)$ in the p
 
 {
 \tcbset{grow to right by=1.5em}
-\begin{theorem}[Properties of the Cross Product]\label{thm:cross_prod_prop}
+\begin{theorem}[Properties of the Cross Product]\label{thm:cross_prod_prop}%
 Let $\vecu$, $\vecv$ and $\vecw$ be vectors in $\mathbb{R}^3$ and let $c$ be a scalar. The following identities hold:
 \index{vectors!cross product}\index{cross product!properties}
 \begin{enumerate}
@@ -183,7 +183,7 @@ Property 5 from the theorem is also left to the reader to prove in \exautoref{cr
 
 We have just shown that the cross product of parallel vectors is $\vec 0$. This hints at something deeper. \autoref{thm:dot_product} related the angle between two vectors and their dot product; there is a similar relationship relating the cross product of two vectors and the angle between them, given by the following theorem.
 
-\begin{theorem}[The Cross Product and Angles]\label{thm:cross_product}
+\begin{theorem}[The Cross Product and Angles]\label{thm:cross_product}%
 Let $\vec u$ and $\vec v$ be vectors in $\mathbb{R}^3$. Then
 \[\norm{\vec u\times\vec v} = \vnorm u\, \vnorm v \sin\theta,\]
 where $\theta$, $0\leq \theta \leq \pi$, is the angle between $\vecu$ and $\vecv$.
@@ -202,7 +202,7 @@ Note that this theorem makes a statement about the \emph{magnitude} of the cross
 
 We demonstrate the truth of this theorem in the following example.
 
-\begin{example}[The cross product and angles]\label{ex_crossp3}
+\begin{example}[The cross product and angles]\label{ex_crossp3}%
 Let $\vec u =\bracket{1,3,6}$ and $\vec v = \bracket{-1,2,1}$ as in \autoref{ex_crossp2}. Verify \autoref{thm:cross_product} by finding $\theta$, the angle between $\vecu$ and $\vecv$, and the magnitude of $\vec u\times\vecv$.
 \solution
 We use \autoref{thm:dot_product} to find the angle between $\vecu$ and $\vecv$. 
@@ -238,7 +238,7 @@ The anticommutative property of the cross product demonstrates that $\vec u\time
 
 Another property of the cross product, as defined, is that it follows the \textbf{right hand rule.} Given $\vec u$ and $\vec v$ in $\mathbb{R}^3$ with the same initial point, point the index finger of your right hand in the direction of $\vecu$ and let your middle finger point in the direction of $\vecv$ (much as we did when establishing the right hand rule for the 3-dimensional coordinate system). Your thumb will naturally extend in the direction of $\vec u\times\vec v$. One can ``practice'' this using \autoref{fig:crossp_rhr}. If you switch, and point the index finder in the direction of $\vecv$ and the middle finger in the direction of $\vecu$, your thumb will now point in the opposite direction, allowing you to ``visualize'' the anticommutative property of the cross product.  In fact, we can use this property to define the cross product, which we summarize in the next key idea.
 
-\begin{keyidea}[Alternate Definition of the Cross Product]\label{ki:cross_prod_alt}
+\begin{keyidea}[Alternate Definition of the Cross Product]\label{ki:cross_prod_alt}%
 For vectors $\vecu$ and $\vecv$, the cross product $\vecu\times\vecv$ is the unique vector such that
 \begin{enumerate}
 \item $\norm{\vecu\times\vecv}=\norm{\vecu}\norm{\vecv}\sin\theta$ where $\theta$ is the angle between $\vecu$ and $\vecv$,
@@ -324,7 +324,7 @@ ytick={1,2,3,4,5},ymin=-.5,ymax=5.5,xmin=-.5,xmax=4.5]
 
 This application is more commonly used to find the area of a triangle (because triangles are used more often than parallelograms). We illustrate this in the following example.
 
-\begin{example}[Area of a triangle]\label{ex_crossp5}
+\begin{example}[Area of a triangle]\label{ex_crossp5}%
 Find the area of the triangle with vertices $A=(1,2)$, $B=(2,3)$ and $C=(3,1)$, as pictured in \autoref{fig:crossp5}.
 %
 \mtable[1in]{Finding the area of a triangle in \autoref{ex_crossp5}.}{fig:crossp5}{\begin{tikzpicture}
@@ -391,7 +391,7 @@ Because
 %
 the volume is the absolute value of the determinant, changing the order of the rows can only change the sign of this determinant, which doesn't change the final answer.
 
-\begin{example}[Finding the volume of parallelepiped]\label{ex_crossp6}
+\begin{example}[Finding the volume of parallelepiped]\label{ex_crossp6}%
 Find the volume of the parallelepiped defined by the vectors $\vecu = \bracket{1,1,0}$, $\vecv = \bracket{-1,1,0}$ and $\vecw = \bracket{0,1,1}$.
 \solution
 We apply \autoeqref{eq:crossp2}. We first find $\vec v\times\vec w =\bracket{1,1,-1}$. Then
@@ -419,7 +419,7 @@ and the absolute value of this determinant is again 2.
 
 While a full understanding of torque is beyond the purposes of this book, when a force $\vec F$ is applied to a lever arm $\vec \ell$, the resulting torque is \begin{equation}\vec \tau = \vec \ell\times\vec F.\label{eq:crossp3}\end{equation}
 
-\begin{example}[Computing torque]\label{ex_crossp7}
+\begin{example}[Computing torque]\label{ex_crossp7}%
 A lever of length 2ft makes an angle with the horizontal of $45^\circ$. Find the resulting torque when a force of 10lb is applied to the end of the level where:
 
 \mtable{Showing a force being applied to a lever in \autoref{ex_crossp7}.}{fig:crossp7}{\begin{tikzpicture}[>=stealth]

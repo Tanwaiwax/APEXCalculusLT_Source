@@ -346,15 +346,16 @@
 
 \newtoggle{inexercises}
 
-\makeatletter
-\newcommand{\exercisesubsubsection}{%
- \closeenumerate%
- \@startsection{subsubsection}{3}{-1em}{\bigskipamount}{\bigskipamount}{\Large\textit}*}
-\makeatother
+%\makeatletter
+%\newcommand{\exercisesubsubsection}{%
+% \closeenumerate%
+% \@startsection{subsubsection}{3}{-1em}{\bigskipamount}{\bigskipamount}{\Large\textit}*}
+%\makeatother
 
-\newcommand{\printconcepts}{\exercisesubsubsection{Terms and Concepts}}
-\newcommand{\printproblems}{\exercisesubsubsection{Problems}}
-\newcommand{\printreview}{\exercisesubsubsection{Review}}
+% I'd like to move the \closeenumerate into the \exercisesubsubsection, but I can't figure it out
+\newcommand{\printconcepts}{\noindent\closeenumerate\exercisesubsubsection*{\noindent Terms and Concepts}}
+\newcommand{\printproblems}{\noindent\closeenumerate\exercisesubsubsection*{\noindent Problems}}
+\newcommand{\printreview}{\noindent\closeenumerate\exercisesubsubsection*{\noindent Review}}
 
 \newlist{sectionexercises}{enumerate}{1}
 \newcounter{saveexercisenum}[section]
@@ -406,17 +407,21 @@
 \newcounter{exercisesetcounter}[section]
 \renewcommand{\theexercisesetcounter}{\thesection.\arabic{exercisesetcounter}}
 
+\newcounter{saveenumi}
+
 %\counterwithin*{enumi}{subsection}
 % does not work because \exercisesubsection is a fake \subsection
 
-\makeatletter
-% the usual \subsection definition has stretchable space in arguments 3-5
-\newcommand{\exercisesubsection}[1]{%
-\setcounter{enumi}{0}%
-\@startsection{subsection}{2}{-.7em}{0pt}{.5ex}{\huge\textbf}{\texorpdfstring{\hyperref[sol#1]{Exercises #1}}{Exercises}}%
-\hrule\vspace{-1.5ex}%
-}
-\makeatother
+\newcommand{\exercisesubsectiontitle}[1]{\huge\textbf{\texorpdfstring{\hyperref[sol#1]{Exercises #1}}{Exercises}}\hrule}
+
+%\makeatletter
+%% the usual \subsection definition has stretchable space in arguments 3-5
+%\newcommand{\exercisesubsection}[1]{%
+%\setcounter{enumi}{0}%
+%\@startsection{subsection}{2}{-.7em}{0pt}{.5ex}{\huge\textbf}{\texorpdfstring{\hyperref[sol#1]{Exercises #1}}{Exercises}}%
+%\hrule\vspace{-1.5ex}%
+%}
+%\makeatother
 
 \newcommand{\exautoref}[1]{%
  \hyperref[#1]{Ex\-er\-cise~\ref*{#1}}%
@@ -453,6 +458,7 @@
 \newcommand{\closeenumerateinquestions}{\closeenumerate}
 
 \newcommand{\exercisesetinstructions}[2][In Exercises]{%
+ \setcounter{saveenumi}{\value{enumi}}
  \closeenumerateinquestions
  \stepcounter{enumi}%
  \stepcounter{exercisesetcounter}%
@@ -461,8 +467,12 @@
    Exercise set \theexercisesetcounter\space begins with \arabic{enumi}%
   }%
  }%
- \noindent#1 \arabic{enumi}--\ref*{enumiatendof\theexercisesetcounter}#2%
- \addtocounter{enumi}{-1}\ignorespaces%
+ \noindent#1 \arabic{enumi}--\ref*{enumiatendof\theexercisesetcounter}\bgroup
+ \renewcommand{\theenumi}{(\alph{enumi})}%
+ #2\egroup%
+ % can't \addtocounter{enumi}{-1} because #2 may have an enumerate
+ \setcounter{enumi}{\value{saveenumi}}
+ \ignorespaces%
  \nopagebreak%
 }
 \newcommand{\exercisesetend}{%
@@ -475,30 +485,30 @@
  }{}%
 }
 
-\newenvironment{exerciseset}[2]{%
- \stepcounter{sectionexercisesi}
- \stepcounter{exercisesetcounter}%
- \ifnumodd{\value{sectionexercisesi}}{}{%
-  \PackageInfo{apex}{%
-   Exercise set \theexercisesetcounter\space begins with \arabic{sectionexercisesi}%
-  }%
- }%
- {%
-  \setlist[enumerate,1]{label=(\alph*)}% for exercise set instructions
-  \noindent#1 \arabic{sectionexercisesi}--\ref*{enumiatendof\theexercisesetcounter}#2%
- }%
- \addtocounter{sectionexercisesi}{-1}\ignorespaces%
- \nopagebreak%
-}{%
- \label{enumiatendof\theexercisesetcounter}%
- \closeenumerate%
- \ifnumodd{\value{sectionexercisesi}}{%
-  \PackageInfo{apex}{%
-   Exercise set \theexercisesetcounter\space ends with \arabic{sectionexercisesi}%
-  }%
- }{}%
-}
-\BeforeBeginEnvironment{exerciseset}{\closeenumerateinquestions}
+%\newenvironment{exerciseset}[2]{%
+% \stepcounter{sectionexercisesi}
+% \stepcounter{exercisesetcounter}%
+% \ifnumodd{\value{sectionexercisesi}}{}{%
+%  \PackageInfo{apex}{%
+%   Exercise set \theexercisesetcounter\space begins with \arabic{sectionexercisesi}%
+%  }%
+% }%
+% {%
+%  \setlist[enumerate,1]{label=(\alph*)}% for exercise set instructions
+%  \noindent#1 \arabic{sectionexercisesi}--\ref*{enumiatendof\theexercisesetcounter}#2%
+% }%
+% \addtocounter{sectionexercisesi}{-1}\ignorespaces%
+% \nopagebreak%
+%}{%
+% \label{enumiatendof\theexercisesetcounter}%
+% \closeenumerate%
+% \ifnumodd{\value{sectionexercisesi}}{%
+%  \PackageInfo{apex}{%
+%   Exercise set \theexercisesetcounter\space ends with \arabic{sectionexercisesi}%
+%  }%
+% }{}%
+%}
+%\BeforeBeginEnvironment{exerciseset}{\closeenumerateinquestions}
 
 \newcommand{\exercise}[2]{%
  \openenumerate%
@@ -551,7 +561,7 @@
 	\renewcommand{\printconcepts}{}%
 	\renewcommand{\printproblems}{}%
 	\renewcommand{\printreview}{}%
-	\renewenvironment{exerciseset}[2]{}{}%
+%	\renewenvironment{exerciseset}[2]{}{}%
 	\renewcommand{\exercisesetinstructions}[2][]{}%
 	\renewcommand{\exercisesetend}{}%
 	\renewcommand{\openenumerate}{}%

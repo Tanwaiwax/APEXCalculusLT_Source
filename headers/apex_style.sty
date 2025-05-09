@@ -1,6 +1,42 @@
 % not available in LaTeXML
 \usepackage{pst-fun} % for psBill in 4.1#13, 7.2#31
-\usepackage[h]{esvect} % helps with typesetting vectors
+%\usepackage[h]{esvect} % helps with typesetting vectors % causes problems with taggins
+%\newcommand{\vv}[1]{\vec{#1}}
+\newcommand{\vv}{\xvec}
+% from https://tex.stackexchange.com/a/44071/107497
+\newlength\xvec@height%
+\newlength\xvec@depth%
+\newlength\xvec@width%
+\newcommand{\xvec}[2][]{%
+  \ifmmode%
+    \settoheight{\xvec@height}{$#2$}%
+    \settodepth{\xvec@depth}{$#2$}%
+    \settowidth{\xvec@width}{$#2$}%
+  \else%
+    \settoheight{\xvec@height}{#2}%
+    \settodepth{\xvec@depth}{#2}%
+    \settowidth{\xvec@width}{#2}%
+  \fi%
+  \def\xvec@arg{#1}%
+  \def\xvec@dd{:}%
+  \def\xvec@d{.}%
+  \raisebox{.2ex}{\raisebox{\xvec@height}{\rlap{%
+    \kern.05em%  (Because left edge of drawing is at .05em)
+    \begin{tikzpicture}[scale=1]
+    \pgfsetroundcap
+    \draw (.05em,0)--(\xvec@width-.05em,0);
+    \draw (\xvec@width-.05em,0)--(\xvec@width-.15em, .075em);
+    \draw (\xvec@width-.05em,0)--(\xvec@width-.15em,-.075em);
+    \ifx\xvec@arg\xvec@d%
+      \fill(\xvec@width*.45,.5ex) circle (.5pt);%
+    \else\ifx\xvec@arg\xvec@dd%
+      \fill(\xvec@width*.30,.5ex) circle (.5pt);%
+      \fill(\xvec@width*.65,.5ex) circle (.5pt);%
+    \fi\fi%
+    \end{tikzpicture}%
+  }}}%
+  #2%
+}
 
 % required only for what happens in this file
 \usepackage[strict]{changepage} % for \checkoddpage and \ifoddpage
@@ -26,19 +62,23 @@
 % \youtubeVideo{youtube code}{actual title}
 \newcommand{\youtubeVideo}[2]{\genVideo{#1}{https://youtu.be/#1}{#2}}
 
-\newcommand{\genVideo}[4][]{\exvideo{%
- \begin{minipage}[t]{.18\linewidth}%
- \vspace{-.5\baselineskip}\qrcode{#3}%
- \end{minipage}
- \quad
- \begin{minipage}[t]{.64\linewidth}%
-  \RaggedRight%
-  \noindent Watch the video:\\%
-  \href{#3#1}{#4 at\newline\nolinkurl{#3}}%
- \end{minipage}%
-}%
+\newcommand{\genVideo}[4][]{%
+ \AddToHookNext{env/tcolorbox/begin}{\tagpdfparaOff \tcbset{before upper=\tagpdfparaOn}}
+ \exvideo{%
+  \begin{minipage}[t]{.18\linewidth}%
+   \vspace{-.5\baselineskip}\qrcode{#3}%
+  \end{minipage}
+  \qquad
+  \begin{minipage}[t]{.64\linewidth}%
+   \RaggedRight%
+   \noindent Watch the video:\\%
+   \href{#3#1}{#4 at}\newline
+   \url{#3#1}%
+  \end{minipage}%
+ }%
 }
-
+\providecommand{\tagpdfparaOn}{}
+\providecommand{\tagpdfparaOff}{}
 
 \usepackage{titletoc}
 \titlecontents{part}[0pt]
@@ -53,6 +93,22 @@
 % but: ``unsolved is the anchor setting, missing with unnumbered section,
 % perhaps problems with page breaks with numbered ones''
 % if I'm not seeing those problems, maybe just continue
+
+\titleclass{\exercisesubsection}{straight}[\section]
+\titleformat{\exercisesubsection}[block]{\clearpage\setcounter{enumi}{0}}%format
+ {}%label
+ {0pt}%sep
+ {\exercisesubsectiontitle}%before
+ %after
+\titlespacing*{\exercisesubsection}{0pt}{0pt}{-7ex}
+
+\titleclass{\exercisesubsubsection}{straight}[\exercisesubsection]
+\titleformat{\exercisesubsubsection}[block]{\noindent}%format
+ {is not labeled}%label
+ {0pt}%sep
+ {\noindent\Large\textit}%before
+ %after
+\titlespacing*{\exercisesubsubsection}{0pt}{.5\bigskipamount}{0pt}
 
 \newcommand{\leftparbox}[2]{\parbox[t]{#1}{\raggedright#2}}
 % I couldn't get the raggedright to take otherwise
@@ -80,6 +136,12 @@
 
 \usepackage{tcolorbox}
 \tcbuselibrary{breakable,skins,theorems}
+\AddToHook{env/tcolorbox/before}{\par\tagstructbegin{tag=Div}}
+%\AddToHook{env/tcolorbox/begin}{\tagpdfparaOff \tcbset{before upper=\tagpdfparaOn}} % only for unbreakable boxes
+\AddToHook{env/tcolorbox/after}{\par\tagstructend}
+
+\providecommand{\tagstructbegin}[1]{}
+\providecommand{\tagstructend}
 
 \tcolorboxenvironment{example}{
     empty,
@@ -123,15 +185,16 @@
 
 % large shrinkable space can conspire with a bad page break to cause text to overlap
 % see https://tex.stackexchange.com/a/551585/107497 by Thomas F. Sturm
-%\makeatletter
-\def\tcb@split@force@last{%
-  \tcb@split@setstate@last%
-  \ifdim\tcb@h@total>\tcb@h@page\relax%
-    \gdef\tcb@after@lastbox{\clearpage}%
-    \tcbdimto\kvtcb@bbbottom{\kvtcb@bbbottom+\tcb@h@page-\tcb@h@total}%
-  \fi%
-}
-%\makeatother
+% appears to be fixed
+%%\makeatletter
+%\def\tcb@split@force@last{%
+%  \tcb@split@setstate@last%
+%  \ifdim\tcb@h@total>\tcb@h@page\relax%
+%    \gdef\tcb@after@lastbox{\clearpage}%
+%    \tcbdimto\kvtcb@bbbottom{\kvtcb@bbbottom+\tcb@h@page-\tcb@h@total}%
+%  \fi%
+%}
+%%\makeatother
 
 
 %\usepackage[noadjust]{marginnote}
@@ -209,6 +272,21 @@
 \providecommand{\testmargintopwith}[4]{}%
 \providecommand{\testmarginbottomwith}[3]{}%
 
+
+% see https://tex.stackexchange.com/q/64036/107497 for why this shouldn't be done and how to do it
+\ExplSyntaxOn
+\cs_new:Npn \apex_provide_counter:n #1 {
+ \cs_if_free:cT { c @ #1 } { \newcounter{#1} }
+}
+%\hook_gput_next_code:nn { begindocument } {
+% \apex_provide_counter:n { g__tag_MCID_abs_int }
+% \apex_provide_counter:n { g__tag_struct_abs_int }
+% \apex_provide_counter:n { g__tag_parenttree_obj_int }
+% \apex_provide_counter:n { maxblocklevels }
+% \apex_provide_counter:n { Hfootnote }
+% \apex_provide_counter:n { bookmark@seq@number }
+%}
+\ExplSyntaxOff
 
 % I need to do this for the next part
 % the group is so that the catcode redefinition is local

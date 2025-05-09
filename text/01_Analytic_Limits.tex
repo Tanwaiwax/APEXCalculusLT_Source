@@ -9,19 +9,19 @@ Suppose that $\ds\lim_{x\to 2} f(x)=2$ and $\ds\lim_{x\to 2} g(x) = 3$. What is 
 \begin{theorem}[Basic Limit Properties]\label{thm:limit_algebra}
 Let $b$, $c$, $L$ and $K$ be real numbers, let $n$ be a positive integer, and let $f$ and $g$ be functions with the following limits: \index{limit!properties}
 \[\lim_{x\to c}f(x) = L \text{\ and\ } \lim_{x\to c} g(x) = K.\]
-The following limits hold.\\
-\begin{anywhereenum}\renewcommand{\arraystretch}{1.8}
-\begin{tabular}{ll}
-\item Constants: & $\ds\lim_{x\to c} b = b$ \\
-\item Identity: & $\ds\lim_{x\to c} x = c$ \\
-\item Sums/Differences: & $\ds\lim_{x\to c}(f(x)\pm g(x)) = L\pm K$ \\
-\item Scalar Multiples: & $\ds\lim_{x\to c} b\cdot f(x) = bL$ \\
-\item Products: & $\ds\lim_{x\to c} f(x)\cdot g(x) = LK$ \\
-\item Quotients: & $\ds\lim_{x\to c} f(x)/g(x) = L/K$, ($K\neq 0$) \\
-\item Powers: & $\ds\lim_{x\to c} [f(x)]^n = L^n$ \\
-\item Roots: & $\ds\lim_{x\to c} \sqrt[n]{f(x)} = \sqrt[n]{L}$ \quad {\small (when $n$ is odd or $L\ge0$)}
-\end{tabular}
-\end{anywhereenum}
+The following limits hold.
+\begin{enumerate}
+\newlength{\widest}
+\settowidth{\widest}{Sums/Differences:}
+\item \makebox[\widest][l]{Constants:} $\ds\lim_{x\to c} b = b$
+\item \makebox[\widest][l]{Identity:} $\ds\lim_{x\to c} x = c$
+\item Sums/Differences: $\ds\lim_{x\to c}(f(x)\pm g(x)) = L\pm K$
+\item \makebox[\widest][l]{Scalar Multiples:} $\ds\lim_{x\to c} b\cdot f(x) = bL$
+\item \makebox[\widest][l]{Products:} $\ds\lim_{x\to c} f(x)\cdot g(x) = LK$
+\item \makebox[\widest][l]{Quotients:} $\ds\lim_{x\to c} f(x)/g(x) = L/K$, ($K\neq 0$)
+\item \makebox[\widest][l]{Powers:} $\ds\lim_{x\to c} [f(x)]^n = L^n$
+\item \makebox[\widest][l]{Roots:} $\ds\lim_{x\to c} \sqrt[n]{f(x)} = \sqrt[n]{L}$ \quad {\small (when $n$ is odd or $L\ge0$)}
+\end{enumerate}
 \end{theorem}
 
 We will now prove the Sum Property using the formal definition of a limit from the previous section. We know that $\ds \lim_{x\to c}f(x) = L$ and  $\ds\lim_{x\to c} g(x) = K$. We want to show that $\ds \lim_{x\to c}(f(x)+g(x))=L+K$.
@@ -188,10 +188,10 @@ If $f$ and $h$ have the same limit at $c$, and $g$  is always ``squeezed'' betwe
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\node at (0,1.8) {\scriptsize $g(x)$};
-\node[\colorone] at (0.2,2.4 ){\scriptsize $h(x)$};
-\node[\colortwo] at (.15,.75){\scriptsize $f(x)$};
-\node[\colorone] at (2.2,1.35) {\scriptsize $c$};
+\node at (0,1.8)  {\scriptsize $g(x)$};
+\node at (0.2,2.4){\scriptsize $h(x)$};
+\node at (.15,.9) {\scriptsize $f(x)$};
+\node at (2.2,1.35) {\scriptsize $c$};
 \end{tikzpicture}}{A blue h(x) above a dashed g(x) above a red f(x).  All three come together when x=c.}}
 
 \begin{theorem}[Squeeze Theorem]\label{thm:sqz}
@@ -232,6 +232,7 @@ We will begin by considering the unit circle. Each point on the unit circle has 
 \autoref{fig:squeeze_sinx} shows three regions have been constructed in the first quadrant, two triangles and a sector of a circle, which are also drawn below. The area of the large triangle is $\frac12\tan\theta$; the area of the sector is $\theta/2$; the area of the triangle contained inside the sector is $\frac12\sin\theta$. It is then clear from the diagram that 
 
 \begin{center}
+\tagpdfsetup{table/tagging=presentation}
 \begin{tabular}{ c c c c c }
 \pdftooltip{\begin{tikzpicture}[x=.2\textwidth,y=.5\marginparwidth,>=stealth]
 \fill [draw=black,thick,fill={\coloronefill}] (0,0) node [shift={(10pt,4pt)}] {\scriptsize$\theta$} -- (1,.839) -- node [pos=.5,right] {\scriptsize$\tan \theta$} (1,0) -- cycle;

@@ -6,9 +6,14 @@ from glob import glob
 for exfilename in glob('*.tex'):
     with open(exfilename) as exfile:
         lines = exfile.read()
-    lines = re.sub(r'\\begin{exerciseset}{In Exercises}', r'\\exercisesetinstructions', lines)
-    if re.match(r'\\begin{exerciseset}', lines):
-        print(exfilename)
-    lines = re.sub(r'\\end{exerciseset}', r'\\exercisesetend', lines)
+    if not re.search(r'(?<!\\pdftooltip{)\\begin{tikzpicture}', lines):
+        continue
+    print(exfilename)
+#    if not re.search(r'(?<!\\pdftooltip{)\\begin{tikzpicture}(.*?)\\end{tikzpicture}', lines, re.DOTALL):
+#        breakpoint()
+#    quit()
+    lines = re.sub(r'(?<!\\pdftooltip{)\\begin{tikzpicture}(.*?)\\end{tikzpicture}',
+                    r'\\pdftooltip{\\begin{tikzpicture}\1\\end{tikzpicture}}{ALT-TEXT-TO-BE-DETERMINED}',
+                    lines, flags=re.DOTALL)
     with open(exfilename, 'w') as exfile:
         exfile.write(lines)

@@ -46,22 +46,18 @@ The basic idea behind \autoref{thm:alt_series_test} is illustrated in \autoref{f
 \[S_n = \sum_{i=1}^n(-1)^{i+1}b_i =b_1-b_2+b_3-b_4+\dotsb+(-1)^{n+1}b_n.\]
 Because $\{b_n\}$ is decreasing, the amount by which $S_n$ bounces up and down decreases. Moreover, the odd terms of $S_n$ form a decreasing, bounded sequence, while the even terms of $S_n$ form an increasing, bounded sequence. Since bounded, monotonic sequences converge (see \autoref{thm:monotonic_converge}) and the terms of $\{b_n\}$ approach 0, we will show below that the odd and even terms of $S_n$ converge to the same common limit $L$, the sum of the series.
 
-% todo Tim unnest tikzpicture
 \mtable{Illustrating convergence with the Alternating Series Test.}{fig:alt_series_converge}{\pdftooltip{\begin{tikzpicture}
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={2,4,6,8,10},
-ymin=-.25,ymax=1.25,xmin=-1,xmax=11]
+ymin=-.25,ymax=1.25,xmin=-1,xmax=11,legend columns=-1,legend style={at={(.5,0)},anchor=north}]
 \draw [thick, dashed] (axis cs: -.1,.614) node [left] {\scriptsize $L$} -- (axis cs: 10.25,.614);
 \addplot [only marks,draw={\colorone},mark size={1.5pt},domain=1:10,samples=10] {2/(x+1)};
+\addlegendentry{\scriptsize$b_n$\quad\mbox{}}
 \addplot [only marks,draw={\colortwo},mark size={1.5pt},domain=1:10,samples=10]coordinates {(1., 1.)(2., 0.333333)(3., 0.833333)(4., 0.433333)(5.,0.766667)(6., 0.480952)(7., 0.730952)(8., 0.50873)(9.,0.70873)(10., 0.526912)};
+\addlegendentry{\scriptsize$S_n$}
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $n$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\node[shift={(0,-10pt)},draw] at (myplot.south) {
- \begin{tikzpicture} 
- \fill [\colorone] (0,0) circle (1.5pt) node [right,black] {\scriptsize $b_n$};
- \fill [\colortwo] (1,0) circle (1.5pt) node [right, black] {\scriptsize $S_n$};
- \end{tikzpicture}};
 \end{tikzpicture}}{ALT-TEXT-TO-BE-DETERMINED}}
 
 \begin{proof}

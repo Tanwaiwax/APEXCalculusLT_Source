@@ -81,22 +81,18 @@ Therefore the series and integral either both converge or both diverge. \autoref
 \begin{example}[Using the Integral Test]\label{ex_itest1}
 Determine the convergence of $\ds\sum_{n=1}^\infty \frac{\ln n}{n^2}$.  (The terms of the sequence $\{a_n\} = \{(\ln n)/n^2\}$ and the n$^{\text{th}}$ partial sums are given in \autoref{fig:itest1}.)
 \solution
-% todo Tim unnest tikzpicture
 \autoref{fig:itest1}
 \mtable{Plotting the sequence and series in \autoref{ex_itest1}.}{fig:itest1}{\pdftooltip{\begin{tikzpicture}
 \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,xtick={2,4,...,20},
-ymin=-.05,ymax=.85,xmin=-1,xmax=20.9]
+ymin=-.05,ymax=.85,xmin=-1,xmax=20.9,legend columns=-1,legend style={at={(.5,-.1)},anchor=north}]
 \addplot [only marks,draw={\colortwo},mark size={1.5pt}] coordinates{(1.,0)(2.,0.1733)(3.,0.2954)(4.,0.382)(5.,0.4464)(6.,0.4961)(7.,0.5359)(8.,0.5684)(9.,0.5955)(10.,0.6185)(11.,0.6383)(12.,0.6556)(13.,0.6708)(14.,0.6842)(15.,0.6963)(16.,0.7071)(17.,0.7169)(18.,0.7258)(19.,0.734)(20.,0.7415)};
+\addlegendentry{\scriptsize$a_n$\quad\mbox{}}
 \addplot [only marks,draw={\colorone},mark size={1.5pt},domain=1:10,samples=10]coordinates {(1.,0)(2.,0.1733)(3.,0.1221)(4.,0.08664)(5.,0.06438)(6.,0.04977)(7.,0.03971)(8.,0.03249)(9.,0.02713)(10.,0.02303)(11.,0.01982)(12.,0.01726)(13.,0.01518)(14.,0.01346)(15.,0.01204)(16.,0.01083)(17.,0.009804)(18.,0.008921)(19.,0.008156)(20.,0.007489)};
+\addlegendentry{\scriptsize$S_n$}
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $n$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\node[shift={(0,-20pt)},draw] at (myplot.south) {
- \begin{tikzpicture} 
-  \fill [\colorone] (0,0) circle (1.5pt) node [right,black] {\scriptsize $a_n$};
-  \fill [\colortwo] (1,0) circle (1.5pt) node [right, black] {\scriptsize $S_n$};
- \end{tikzpicture}};
 \end{tikzpicture}}{ALT-TEXT-TO-BE-DETERMINED}} 
 implies that $a(n) = (\ln n)/n^2$ is positive and decreasing on $[2,\infty)$. We can determine this analytically, too. We know $a(n)$ is positive as both $\ln n$ and $n^2$ are positive on $[2,\infty)$. To determine that $a(n)$ is decreasing, consider $a'(n) = (1-2\ln n)/n^3$, which is negative for $n\geq 2$. Since $a'(n)$ is negative, $a(n)$ is decreasing.
 

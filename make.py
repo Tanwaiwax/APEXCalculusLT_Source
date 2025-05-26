@@ -478,7 +478,7 @@ def getcommandline(args):
         return getlatexmlepubcommandline()
     if args.standalonee:
         return getlatexmlepubcommandline('standalone','standaloneweb')
-    return ['latexmk','-lualatex','Calculus']
+    return ['latexmk','-lualatex','--cnf-line="max_strings=1000000"','--cnf-line="hash_extra=1000000"','Calculus']
 
 def minimizePdf(filename):
     '''

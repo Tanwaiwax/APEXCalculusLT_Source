@@ -307,20 +307,19 @@
  \renewcommand{\prc@figure@autoref}{\thesection\@hashchar\arabic{enumi}}%
 }
 
-\newcommand{\myincludeasythree}[3]{%
+\newcommand{\myincludeasythree}[4]{%
  % We want a library of 3d images
  % Each call here also leaves a marker in the aux file, which Python can then find.
  \stepcounter{figure}%
  \immediate\write\@auxout{%
-  \@percentchar\space prc file #3 used in \prc@section@autoref\space as \prc@figure@autoref%
+  \@percentchar\space prc file #4 used in \prc@section@autoref\space as \prc@figure@autoref%
  }%
  \addtocounter{figure}{-1}%
  \iftoggle{in_threeD}{%
-  \includemedia[3Dmenu,activate=onclick,deactivate=onclick,3Dlights=Headlamp,
-   add3Djscript=asylabels.js,#1
-  ]{\myincludegraphics{#3}}{#3\colornamesuffix.prc}%
+  \includemedia[3Dmenu,activate=onclick,deactivate=onclick,3Dlights=Headlamp,add3Djscript=asylabels.js,#1,width=#2]
+  {\myincludegraphics[width=#2,alt={#3}]{#4}}{#4\colornamesuffix.prc}%
  }{%
-  \myincludegraphics[#2]{#3}%
+  \myincludegraphics[width=#2,alt={#3}]{#4}%
  }%
 }
 

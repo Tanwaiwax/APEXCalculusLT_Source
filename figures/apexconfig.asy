@@ -1,7 +1,7 @@
 // begin the asy file with
 // include apexconfig;
 //settings.outformat = settings.prc ? "prc" : "pdf";
-settings.tex = "xelatex";
+settings.tex = "lualatex";
 settings.embed = true;
 
 // using the command line switch -bw causes the entire image to be blacked out

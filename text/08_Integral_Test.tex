@@ -7,7 +7,7 @@ Knowing whether or not a series converges is very important, especially when we 
 
 We stated in \autoref{sec:sequences} that a sequence $\{a_n\}$ is a function $a(n)$ whose domain is $\mathbb{N}$, the set of natural numbers. If we can extend $a(n)$ to have the domain of $\mathbb{R}$, the real numbers, and it is both positive and decreasing on $[1,\infty)$, then the convergence of $\ds \sum_{n=1}^\infty a_n$ is the same as $\ds\int_1^\infty a(x)\dd x$. 
 
-\begin{theorem}[Integral Test]\label{thm:integral_test}
+\begin{theorem}[Integral Test]\label{thm:integral_test}%
 Let a sequence $\{a_n\}$ be defined by $a_n=a(n)$, where $a(n)$ is continuous, positive, and decreasing on $[1,\infty)$. Then $\ds \sum_{n=1}^\infty a_n$ converges, if, and only if, $\ds\int_1^\infty a(x)\dd x$ converges. In other words:
 \begin{enumerate}
 \item If $\ds \int_1^\infty a(x)\dd x$ is convergent, then $\ds \sum_{n=1}^\infty a_n$ is convergent.
@@ -62,12 +62,15 @@ ytick={1,2},ymin=-.1,ymax=2.5,xmin=-.5,xmax=5.6]
 \\(b)}%
 %
 In \autoref{fig:integral_test}(b), we draw rectangles under $y=a(x)$ with the Right-Hand rule, starting with $n=2$. This time, the area of the rectangles is less than the area under $y=a(x)$, so $\ds\sum_{n=2}^\infty a_n < \int_1^\infty a(x)\dd x$. Note how this summation starts with $n=2$; adding $a_1$ to both sides lets us rewrite the summation starting with $n=1$:
-\begin{equation}\sum_{n=1}^\infty a_n < a_1 +\int_1^\infty a(x)\dd x.\label{eq:integral_testb}
+\begin{equation}
+\sum_{n=1}^\infty a_n < a_1 +\int_1^\infty a(x)\dd x.\label{eq:integral_testb}
 \end{equation} 
 
 
 Combining Equations \eqref{eq:integral_testa} and \eqref{eq:integral_testb}, we have
-\begin{equation}\sum_{n=1}^\infty a_n< a_1 +\int_1^\infty a(x)\dd x < a_1 + \sum_{n=1}^\infty a_n.\label{eq:integral_testc}\end{equation}
+\begin{equation}
+\sum_{n=1}^\infty a_n< a_1 +\int_1^\infty a(x)\dd x < a_1 + \sum_{n=1}^\infty a_n.\label{eq:integral_testc}
+\end{equation}
 From \autoeqref{eq:integral_testc} we can make the following two statements:
 % todo Tim etal are these statements backwards?  should the prior equation be rearranged?
 \begin{enumerate}
@@ -78,7 +81,7 @@ Therefore the series and integral either both converge or both diverge. \autoref
 
 \youtubeVideo{ObiRjUFHJHo}{Integral Test for Series: Why It Works}
 
-\begin{example}[Using the Integral Test]\label{ex_itest1}
+\begin{example}[Using the Integral Test]\label{ex_itest1}%
 Determine the convergence of $\ds\sum_{n=1}^\infty \frac{\ln n}{n^2}$.  (The terms of the sequence $\{a_n\} = \{(\ln n)/n^2\}$ and the n$^{\text{th}}$ partial sums are given in \autoref{fig:itest1}.)
 \solution
 \autoref{fig:itest1}
@@ -113,7 +116,7 @@ Since $\ds \int_1^\infty \frac{\ln x}{x^2}\dd x$ converges, so does $\ds \sum_{n
 
 Another important type of series is the \emph{p-series}.
 
-\begin{definition}[$p$-Series, General $p$-Series]\label{def:pseries}
+\begin{definition}[$p$-Series, General $p$-Series]\label{def:pseries}%
 \index{series!p@$p$-series}\index{p@$p$-series}\mbox{}\\[-2\baselineskip]\parbox[t]{\linewidth}{%
 \begin{enumerate}
 \item	A \textbf{$p$-series} is a series of the form
@@ -126,7 +129,7 @@ where $a>0$, $b$ is a real number, and $an+b\neq 0$ for all $n$.
 
 Like geometric series, one of the nice things about $p$-series is that they have easy to determine convergence properties.
 
-\begin{theorem}[Convergence of General $p$-Series]\label{thm:pseries}
+\begin{theorem}[Convergence of General $p$-Series]\label{thm:pseries}%
 Assume $a$ and $b$ are real numbers and  $an+b\neq 0$ for all $n$.\\
 A general $p$-series $\ds\sum_{n=1}^\infty \frac{1}{(an+b)^p}$ will converge if, and only if, $p>1$.
 \index{series!p@$p$-series}\index{p@$p$-series}
@@ -146,7 +149,7 @@ This limit converges if and only if, $p>1$. It is easy to show that the integral
 Therefore $\ds \sum_{n=1}^\infty \frac 1{(an+b)^p}$ converges if, and only if, $p>1$.
 \end{proof}
 
-\begin{example}[Determining convergence of series]\label{ex_series6}
+\begin{example}[Determining convergence of series]\label{ex_series6}%
 Determine the convergence of the following series.
 \begin{multicols}{3}
 \begin{enumerate}\lxAddClass{columns2}

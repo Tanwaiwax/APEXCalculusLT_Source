@@ -4,7 +4,7 @@
 
 Given a smooth vector-valued function \vrt, we defined in \autoref{def:vector_tangent} that any vector parallel to $\vrp(t_0)$ is \emph{tangent} to the graph of \vrt\ at $t=t_0$. It is often useful to consider just the \emph{direction} of $\vrp(t)$ and not its magnitude. Therefore we are interested in the unit vector in the direction of $\vrp(t)$. This leads to a definition.
 
-\begin{definition}[Unit Tangent Vector]\label{def:unit_tangent}
+\begin{definition}[Unit Tangent Vector]\label{def:unit_tangent}%
 Let \vrt\ be a smooth function on an open interval $I$. The unit tangent vector $\vec T(t)$ is
 \index{unit tangent vector!definition} \index{unit vector!unit tangent vector}
 \[\vec T(t) = \frac1{\norm{\vrp(t)}}\vrp(t).\]
@@ -12,7 +12,7 @@ Let \vrt\ be a smooth function on an open interval $I$. The unit tangent vector 
 
 \youtubeVideo{39LA5WyVgKY}{Tangent Line to a Parametrized Curve} % sic
 
-\begin{example}[Computing the unit tangent vector]\label{ex_tannorm1}
+\begin{example}[Computing the unit tangent vector]\label{ex_tannorm1}%
 Let $\vrt =\bracket{3\cos t, 3\sin t, 4t}$. Find $\vec T(t)$ and compute $\vec T(0)$ and $\vec T(1)$.
 \solution
 We apply \autoref{def:unit_tangent} to find $\vec T(t)$. 
@@ -44,7 +44,7 @@ These are plotted in \autoref{fig:tannorm1} with their initial points at $\vec r
 
 In many ways, the previous example was ``too nice.'' It turned out that $\vrp(t)$ was always of length 5. In the next example the length of $\vrp(t)$ is variable, leaving us with a formula that is not as clean.
 
-\begin{example}[Computing the unit tangent vector]\label{ex_tannorm2}
+\begin{example}[Computing the unit tangent vector]\label{ex_tannorm2}%
 Let $\vrt=\bracket{t^2-t,t^2+t}$. Find $\vec T(t)$ and compute $\vec T(0)$ and $\vec T(1)$.
 \solution
 We find $\vrp(t) =\bracket{2t-1,2t+1}$, and
@@ -95,13 +95,13 @@ We'll see that $\vec T\,'(t)$ is more than just a convenient choice of vector th
 
 \mnote{\textbf{Note:} $\vec T(t)$ is a unit vector, by definition. This \emph{does not} imply that $\vec T\,'(t)$ is also a unit vector.}
 
-\begin{definition}[Unit Normal Vector]\label{def:unit_normal}
+\begin{definition}[Unit Normal Vector]\label{def:unit_normal}%
 Let \vrt\ be a vector-valued function where the unit tangent vector, $\vec T(t)$, is smooth on an open interval $I$. The \textbf{unit normal vector} $\vec N(t)$ is
 \index{unit normal vector!definition}\index{unit vector!unit normal vector}
 \[\vec N(t) = \frac1{\norm{\vec T\,'(t)}}\vec T\,'(t).\]
 \end{definition}
 
-\begin{example}[Computing the unit normal vector]\label{ex_tannorm3}
+\begin{example}[Computing the unit normal vector]\label{ex_tannorm3}%
 Let $\vrt =\bracket{3\cos t, 3\sin t, 4t}$ as in \autoref{ex_tannorm1}. Sketch both $\vec T(\pi/2)$ and $\vec N(\pi/2)$ with initial points at $\vec r(\pi/2)$.
 \solution
 In \autoref{ex_tannorm1}, we found $\vec T(t)=\bracket{-\frac35\sin t,\frac35\cos t,4/5}$. Therefore 
@@ -122,7 +122,7 @@ We compute $\vec T(\pi/2) =\bracket{-3/5,0,4/5}$ and $\vec N(\pi/2) =\bracket{0,
 
 The previous example was once again ``too nice.'' In general, the expression for $\vec T(t)$ contains fractions of square-roots, hence the expression of $\vec T\,'(t)$ is very messy. We demonstrate this in the next example.
 
-\begin{example}[Computing the unit normal vector]\label{ex_tannorm4}
+\begin{example}[Computing the unit normal vector]\label{ex_tannorm4}%
 Let $\vrt=\bracket{t^2-t,t^2+t}$ as in \autoref{ex_tannorm2}. Find $\vec N(t)$ and sketch $\vrt$ with the unit tangent and normal vectors at $t=-1,0$ and 1.
 \solution
 In \autoref{ex_tannorm2}, we found
@@ -176,7 +176,7 @@ The final result for $\vec N(t)$ in \autoref{ex_tannorm4} is suspiciously simila
 Consider again \autoref{fig:tannorm4}, where we have plotted some unit tangent and normal vectors. Note how $\vec N(t)$ always points ``inside'' the curve, or to the concave side of the curve. This is not a coincidence; this is true in general. Knowing the direction that $\vec r(t)$ ``turns'' allows us to quickly find $\vec N(t)$.
 
 
-\begin{theorem}[Unit Normal Vectors in $\mathbb{R}^2$]\label{thm:concave}
+\begin{theorem}[Unit Normal Vectors in $\mathbb{R}^2$]\label{thm:concave}%
 Let $\vec r(t)$ be a vector-valued function in $\mathbb{R}^2$ where $\vec T\,'(t)$ is smooth on an open interval $I$. Let $t_0$ be in $I$ and $\vec T(t_0) =\bracket{t_1,t_2}$ Then $\vec N(t_0)$ is either
 \[\vec N(t_0) =\bracket{-t_2,t_1}\quad \text{or}\quad \vec N(t_0) =\bracket{t_2,-t_1},\]
 whichever is the vector that points to the concave side of the graph of $\vec r$.
@@ -202,7 +202,7 @@ While this is a fine way of computing $a_{\mathrm{T}}$, there are simpler ways o
 
 {
 \tcbset{grow to right by=2em}
-\begin{theorem}[Acceleration in the Plane Defined by $\vec T$ and $\vec N$]\label{thm:acc_plane}
+\begin{theorem}[Acceleration in the Plane Defined by $\vec T$ and $\vec N$]\label{thm:acc_plane}%
 Let \vrt\ be a position function with acceleration \vat\ and unit tangent and normal vectors $\vec T(t)$ and $\vec N(t)$. Then $\vat$ lies in the plane defined by $\vec T(t)$ and $\vec N(t)$; that is, there exists scalars $a_{\mathrm{T}}$ and $a_{\mathrm{N}}$ such that
 \[\vat = a_{\mathrm{T}}\vec T(t) + a_{\mathrm{N}}\vec N(t).\]
 Moreover,
@@ -246,7 +246,7 @@ Also, the Pythagorean theorem tells us that
 \]
 \end{proof}
 
-\begin{example}[Computing $a_\mathrm{T}$ and $a_\mathrm{N}$]\label{ex_tannorm5}
+\begin{example}[Computing $a_\mathrm{T}$ and $a_\mathrm{N}$]\label{ex_tannorm5}%
 Let $\vrt =\bracket{3\cos t, 3\sin t, 4t}$ as in Examples \ref{ex_tannorm1} and \ref{ex_tannorm3}. Find $a_\mathrm{T}$ and $a_\mathrm{N}$.
 \solution
 The previous examples give $\vat =\bracket{-3\cos t,-3\sin t,0}$ and 
@@ -261,7 +261,7 @@ Thus $\vat = 0\vec T(t) + 3\vec N(t) = 3\vec N(t)$, which is clearly the case.
 What is the practical interpretation of these numbers? $a_\mathrm{T}=0$ means the object is moving at a constant speed, and hence all acceleration comes in the form of direction change.
 \end{example}
 
-\begin{example}[Computing $a_\mathrm{T}$ and $a_\mathrm{N}$]\label{ex_tannorm6}
+\begin{example}[Computing $a_\mathrm{T}$ and $a_\mathrm{N}$]\label{ex_tannorm6}%
 Let $\vrt=\bracket{t^2-t,t^2+t}$ as in Examples \ref{ex_tannorm2} and \ref{ex_tannorm4}. Find $a_\mathrm{T}$ and $a_\mathrm{N}$.
 \solution
 The previous examples give $\vat =\bracket{2,2}$ and
@@ -294,7 +294,7 @@ Contrast this with $t=0$, where $a_{\mathrm{T}}=0$ and $a_{\mathrm{N}}=4/\sqrt2=
 $. Here the particle's speed is not changing and all acceleration is in the form of direction change.
 \end{example}
 
-\begin{example}[Analyzing projectile motion]\label{ex_tannorm7}
+\begin{example}[Analyzing projectile motion]\label{ex_tannorm7}%
 A ball is thrown from a height of 240ft with an initial speed of 64ft/s and an angle of elevation of $30^\circ$. Find the position function \vrt\ of the ball and analyze $a_\mathrm{T}$ and $a_\mathrm{N}$.\index{projectile motion}
 \solution
 Using \autoeqref{idea:projectile} of \autoref{sec:vvf_motion} we form the position function of the ball:

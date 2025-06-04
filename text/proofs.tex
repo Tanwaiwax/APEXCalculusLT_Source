@@ -2,7 +2,7 @@
 
 We now present some of the proofs of the theorems in the text.  If you need a reminder about sequences, you should (re)read \autoref{sec:sequences}.  The first thing we will do is state some important properties of the real numbers.
 
-\begin{theorem}[Completeness of the Real Numbers]\label{thm:realscomplete}
+\begin{theorem}[Completeness of the Real Numbers]\label{thm:realscomplete}%
 \hspace{0pt}\\[-5ex]\begin{itemize}
 \item Suppose that $A$ is a nonempty subset of the real numbers that is bounded above.  Then there is a unique real number $a^*$ that is the least upper bound of $A$: $A$ is bounded above by $a^*$, and any real number less than $a^*$ has some number from $A$ that is above $a^*$.
 \item Suppose that $a_n$ is a sequence of real numbers that converges to $a_\infty$.  Then $a_\infty$ is also a real number.
@@ -13,7 +13,7 @@ We now present some of the proofs of the theorems in the text.  If you need a re
 The first thing you should think is that these properties are obviously true for the real numbers.  The next thing you should realize is that these properties do not hold for the rational numbers: the set $\{q\in\mathbb{Q}:q^2<2\}$ is nonempty and bounded above, but it does not have a least upper bound that is a rational number.  Similarly, we can find a sequence of rational numbers that approaches a limiting value that isn't rational (for example, the rational numbers 3, 3.1, 3.14, 3.141, 3.1415, 3.14159, \dotsc\ approaches a limiting value that isn't rational).  This means that any of our theorems that use this property could fail if we use the rational numbers instead of the real numbers.  It turns out that proving this theorem is quite difficult, and depends on how you actually define the real numbers (most definitions are tailored so that one of the first two properties is obviously true).  This theorem is usually proved in a more advanced course with an intimidating name like ``Real Analysis'' or ``Advanced Calculus'' and is far beyond anything we will present here.
 
 \begin{proof}[Proof of the {\hyperref[thm:IVT]{Intermediate Value Theorem}}]
-\label{pf:IVT}
+\label{pf:IVT}%
 Let $X$ be the subset of real numbers $x\in[a,b]$ so that $f(x)<y$.  Then $a\in X$ and $b$ is an upper bound for $X$.  Therefore, $X$ has a least upper bound, which we will show is the desired $c$.
 
 Given $\epsilon>0$, let $\delta$ be given by the continuity of $f$ at $c$.  Because $c-\delta$ is not an upper bound of $X$, there must be some $x\in(c-\delta,c]$ so that $f(x)<y$, so that $f(c)<f(x)+\epsilon<y+\epsilon$.  On the other hand, $c+\delta/2\notin X$ so $f(c+\delta/2)\ge y$ and $f(c)>f(c+\delta/2)-\epsilon>y-\epsilon$.  Therefore, $\abs{f(c)-y}<\epsilon$.  But since $\epsilon$ is arbitrary, this means that $f(c)=y$.
@@ -22,7 +22,7 @@ Given $\epsilon>0$, let $\delta$ be given by the continuity of $f$ at $c$.  Beca
 The theorem (and the proof) do not hold if we use the rational numbers in place of the real numbers.  For example, $f(x)=x^2-2$ on $[0,2]$ gives a counterexample.
 
 %\begin{proof}[Proof of {\hyperref[thm:chainRule]{The Chain Rule}}]
-%\label{pf:chainRule}
+%\label{pf:chainRule}%
 %We'll start with an incorrect proof of the chain rule, see why it's wrong, and then back up to fix what we've written.  By the definition of the derivative,
 %\begin{align*}
 % \yp
@@ -33,7 +33,7 @@ The theorem (and the proof) do not hold if we use the rational numbers in place 
 % &= \fp(g(x))\gp(x).
 %\end{align*}
 %The problem is that $g(x+h)-g(x)$ could be zero, which would mean we're multiplying and dividing by 0 and invalidating everything.  The solution is to rewrite everything so that we're no longer dividing.  Instead of showing
-%\begin{equation}\label{eq:chainRulePfOrg}
+%\begin{equation}\label{eq:chainRulePfOrg}%
 % \lim_{h\to 0}\frac{f(g(x+h))-f(g(x))}h=\fp(g(x))\gp(x),
 %\end{equation}
 %we will rearrange the equation and show that
@@ -43,7 +43,7 @@ The theorem (and the proof) do not hold if we use the rational numbers in place 
 
 Before proving our next theorem, we'll first define an extension of an idea we saw (or will see) in \autoref{sec:sequences}.
 
-\begin{definition}[Subsequence]\label{def:subsequence}
+\begin{definition}[Subsequence]\label{def:subsequence}%
 Suppose that $\{x_n\}$ is a sequence of numbers.  Then $\{y_n\}$ is a \textbf{subsequence} if $g:\mathbb{N}^+\to\mathbb{N}^+$ is a strictly increasing function and $y_n=x_{g(n)}$.
 \end{definition}
 
@@ -60,7 +60,7 @@ We can take a subsequence of a subsequence, which is sometimes called a subsubse
 
 If the original sequence converges, then so does any subsequence.  On the other hand, if the original sequence diverges, then we may be able to find a subsequence that still converges.  For example, $\{(-1)^n\}$ diverges, but if we take every other term, then we get a subsequence that converges.  Our next theorem is a powerful tool that gives conditions to guarantee that we'll be able to find a convergent subsequence.
 
-\begin{theorem}[The Bolzano-Weierstrass Theorem]\label{thm:bolzanoWeierstrass}
+\begin{theorem}[The Bolzano-Weierstrass Theorem]\label{thm:bolzanoWeierstrass}%
 Suppose that $\{x_n\}$ is a bounded sequence or real numbers.  Then $\{x_n\}$ has a subsequence that converges.
 \end{theorem}
 
@@ -75,7 +75,7 @@ By \autoref{thm:realscomplete}, this limit must be a real number.
 
 % Let $f$ be a continuous function defined on a closed interval $I$. Then $f$ has both a maximum and minimum value on $I$.
 \begin{proof}[Proof of {\hyperref[thm:extremeVal]{The Extreme Value Theorem}}]
-\label{pf:extremeVal}
+\label{pf:extremeVal}%
 We will prove that $f$ has a maximum.  The proof that $f$ has a minimum is identical.  Let $M$ be the least upper bound of the range of $f$, and choose $x_n\in[a,b]$ so that $f(x_n)\to M$.  By \autoref{thm:bolzanoWeierstrass}, we can find a subsequence $y_n$ that converges to a limit $y$.  Because each $y_n\in[a,b]$, their limit $y\in[a,b]$.  Then
 \[
  f(y)=f(\lim_{n\to\infty}y_n)=\lim_{n\to\infty} f(y_n)=M
@@ -86,7 +86,7 @@ We will prove that $f$ has a maximum.  The proof that $f$ has a minimum is ident
 This theorem (and the proof) do not hold if we have a function from rational numbers to rational numbers.  For example, $f(x)=x^3-6x$ on $[-2,2]$ gives a counterexample.
 
 % Let a function $f$ have a relative extrema at the point $(c,f(c))$. Then $c$ is a critical point of $f$.
-\begin{proof}[Proof of {\hyperref[thm:criticalpts]{Relative Extreme and Critical Points}}]\label{pf:criticalpts}
+\begin{proof}[Proof of {\hyperref[thm:criticalpts]{Relative Extreme and Critical Points}}]\label{pf:criticalpts}%
 If $\fp(c)$ does not exist, then $c$ is a critical point of $f$.  Therefore, we may assume that $\fp(c)$ exists.  Without loss of generality, we will assume that $f(c)$ is a relative maximum.  This means that $\dfrac{f(c+h)-f(c)}h$ is positive when $h<0$ and negative when $h>0$.  Since we know that the limit as $h\to0$ exists, it must be zero because it is a limit of both positive and negative numbers.  Therefore, $\fp(c)=0$, and $c$ is a critical point of $f$.
 \end{proof}
 
@@ -98,7 +98,7 @@ If $\fp(c)$ does not exist, then $c$ is a critical point of $f$.  Therefore, we 
 %\item $\ds \lim_{\norm{\Delta x}\to 0} \sum_{i=1}^n f(c_i)\Delta x_i = \int_a^b f(x)\dd x$.%, where the latter sum is any Riemann sum of $f$ on $[a,b]$, and
 %\end{enumerate}
 % proof
-%\begin{proof}[Proof of {\hyperref[thm:riemannSum]{Definite Integrals and the Limit of Riemann Sums}}]\label{pf:riemannSum}
+%\begin{proof}[Proof of {\hyperref[thm:riemannSum]{Definite Integrals and the Limit of Riemann Sums}}]\label{pf:riemannSum}%
 %On the $i^\text{th}$ subinterval $[x_i,x_{i+1}]$, let $m_i$ be the extreme minimum of $f$, and let $M_i$ be the extreme maximum.  Then the signed area over $[x_i,x_{i+1}]$ is between $m_i\Delta x_i$ and $M_i\Delta x_i$.  Therefore, every expression in the theorem is bounded below by $\sum_{i=1}^n m_i\Delta x_i$ and bounded above by $\sum_{i=1}^n M_i\Delta x_i$.
 %
 %Given $\epsilon>0$, we want to find a $\delta$ so that $\abs{x-y}<\delta$ implies $\abs{f(x)-f(y)}<\epsilon/(b-a)$.  (This is stronger than our usual notion of continuity, since we want the same $\delta$ to work for all possible values of $x$ and $y$.)  Because $f$ is continuous, for each $x$, we can find a $\delta$ that depends on $x$ so that $\abs{x-y}<\delta$ implies $\abs{f(x)-f(y)}<\frac\epsilon{b-a}$.  Let $\delta(x)$ be the largest value of $\delta$ that makes this statement work for a particular $x$, so that there is some $y$ so that $\abs{x-y}<\delta$ but $\abs{f(x)-f(y)}\ge\frac\epsilon{b-a}$.  We want to show that there is a $\delta>0$ that is smaller than all the $\delta(x)$.

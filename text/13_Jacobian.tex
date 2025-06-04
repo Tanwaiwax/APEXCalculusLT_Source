@@ -49,9 +49,9 @@ In general, if $x = g(u)$ is a one-to-one, differentiable function from an inter
 This is called the \emph{change of variable} formula for integrals of single-variable functions, and it is what you were implicitly using when doing integration by substitution. This formula turns out to be a special case of a more general formula which can be used to evaluate multiple integrals. We will state the formulas for double and triple integrals involving real-valued functions of two and three variables, respectively. We will assume that all the functions involved are continuously differentiable and that the regions and solids involved all have ``reasonable'' boundaries. The proof of the following theorem is beyond the scope of the text.% See \cite[\S\,15.32 and \S\,15.62]{tm} for all the details.
 
 {\tcbset{grow to right by=2em}
-\begin{theorem}[Change of Variables Formula for Multiple Integrals]\label{thm:changevarint}
+\begin{theorem}[Change of Variables Formula for Multiple Integrals]\label{thm:changevarint}%
 Let $x=x(u,v)$ and $y=y(u,v)$ define a one-to-one mapping of a region $R'$ in the $uv$-plane onto a region $R$ in the $xy$-plane such that the determinant\index{change of variable}
-  \begin{equation}\label{eqn:jacob2}
+  \begin{equation}\label{eqn:jacob2}%
    J(u,v) =
     \begin{vmatrix}
      \dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v}\vspace{2mm}\\
@@ -59,14 +59,14 @@ Let $x=x(u,v)$ and $y=y(u,v)$ define a one-to-one mapping of a region $R'$ in th
     \end{vmatrix}
   \end{equation}
   is never $0$ in $R'$. Then
-  \begin{equation}\label{eqn:changevarint2}
+  \begin{equation}\label{eqn:changevarint2}%
    \iint_{R} f(x,y)\dd A(x,y)
    = \iint_{R'} f(x(u,v),y(u,v))\,\abs{J(u,v)}\dd A(u,v) .
   \end{equation}
   We use the notation $\dd A(x,y)$ and $\dd A(u,v)$ to denote the area element in the $(x,y)$ and $(u,v)$ coordinates, respectively.
 
   Similarly, if $x=x(u,v,w)$, $y=y(u,v,w)$ and $z=z(u,v,w)$ define a one-to-one mapping of a solid $S'$ in $uvw$-space onto a solid $S$ in $xyz$-space such that the determinant
-  \begin{equation}\label{eqn:jacob3}
+  \begin{equation}\label{eqn:jacob3}%
    J(u,v,w) =
     \begin{vmatrix}
      \dfrac{\partial x}{\partial u} & \dfrac{\partial x}{\partial v} & \dfrac{\partial x}{\partial w}\vspace{2mm}\\
@@ -75,7 +75,7 @@ Let $x=x(u,v)$ and $y=y(u,v)$ define a one-to-one mapping of a region $R'$ in th
     \end{vmatrix}
   \end{equation}
   is never $0$ in $S'$, then
-  \begin{multline}\label{eqn:changevarint3}
+  \begin{multline}\label{eqn:changevarint3}%
    \iiint_{S} f(x,y,z)\dd V(x,y,z) =\\
    \iiint_{S'} f(x(u,v,w),y(u,v,w),z(u,v,w))\,\abs{J(u,v,w)}\dd V(u,v,w).
   \end{multline}
@@ -93,7 +93,7 @@ Notice that \autoeqref{eqn:changevarint2} is saying that $\dd A(x,y) = \abs{J(u,
 
 The following example shows how the change of variables formula is used.
 
-\begin{example}[Change of Variables]\label{ex_simple_Jacobian}
+\begin{example}[Change of Variables]\label{ex_simple_Jacobian}%
 Evaluate $\ds\iint_{R} e^{\frac{x-y}{x+y}} \dd A$, where $R= \{(x,y): x \ge 0, y \ge 0, x + y \le 1 \}$.
 \solution
 First, note that evaluating this double integral \emph{without} using substitution is probably impossible, at least in a closed form. By looking at the numerator and denominator of the exponent of $e$, we will try the substitution $u=x-y$ and $v=x+y$. To use the change of variables \autoeqref{eqn:changevarint2}, we need to write both $x$ and $y$ in terms of $u$ and $v$. So solving for $x$ and $y$ gives $x=\frac12(u+v)$ and $y=\frac12(v-u)$. In \autoref{fig:exyint} below, we see how the mapping $x=x(u,v)=\frac12(u+v)$,
@@ -178,15 +178,15 @@ we have
 which verifies \autoref{idea:doublepol}.
 %so we have the following formula:
 %
-%\begin{keyidea}[Double Integral in Polar Coordinates]\label{idea_polar_int}
-% \begin{equation}\label{eqn:polarint}
+%\begin{keyidea}[Double Integral in Polar Coordinates]\label{idea_polar_int}%
+% \begin{equation}\label{eqn:polarint}%
 %  \iint_{R} f(x,y)\dd x\dd y
 %  = \iint_{R'} f(r\cos \theta,r\sin \theta)\,r\,dr\,d\theta ,
 % \end{equation}\index{double integral!polar coordinates}\index{coordinates!polar}
 % where the mapping $x=r\cos \theta$, $y=r\sin \theta$ maps the region $R'$ in the $r\theta$-plane onto the region $R$ in the $xy$-plane in a one-to-one manner.
 %\end{keyidea}
 %
-%\begin{example}[Integrating in Polar Coordinates]\label{ex_polar_parab}
+%\begin{example}[Integrating in Polar Coordinates]\label{ex_polar_parab}%
 %Find the volume $V$ inside the paraboloid $z=x^2 + y^2$ for $0 \le z \le 1$.
 %\solution
 %Using vertical slices, we see that
@@ -230,7 +230,7 @@ which verifies \autoref{idea:doublepol}.
 % \end{align*}
 %\end{example}
 %
-%\begin{example}[Integrating in Polar Coordinates]\label{ex_polar_cone}
+%\begin{example}[Integrating in Polar Coordinates]\label{ex_polar_cone}%
 %Find the volume $V$ inside the cone $z=\sqrt{x^2 + y^2}$ for $0 \le z \le 1$.
 %\solution
 % \mtable{$z=\sqrt{x^2 + y^2}$ for \autoref{ex_polar_cone}}{fig_cone}{\pdftooltip{\begin{tikzpicture}
@@ -279,16 +279,16 @@ Exercises \ref{pr_cyl_jac} and \ref{pr_sph_jac}
 ask you to verify Theorems \ref{thm:triple_int_cylindrical} and \ref{thm:triple_int_spherical} by computing the appropriate Jacobian.\bigskip
 %) that triple integrals in cylindrical and spherical coordinates take the following forms:
 
-%\begin{keyidea}[Triple Integral in Cylindrical Coordinates]\label{idea_cylin_int}
-% \begin{equation}\label{eqn:cylinderint}
+%\begin{keyidea}[Triple Integral in Cylindrical Coordinates]\label{idea_cylin_int}%
+% \begin{equation}\label{eqn:cylinderint}%
 %  \iiint_{S} f(x,y,z)\dd x\dd y\dd z = \iiint_{S'} f(r\cos \theta,r\sin \theta,z)\,r\,dr\,d\theta\,dz ,
 % \end{equation}\index{triple integral!cylindrical coordinates}
 % where the mapping $x=r\cos \theta$, $y=r\sin \theta$, $z=z$ maps the solid $S'$ in  $r\theta z$-space onto the solid $S$ in $xyz$-space in a one-to-one manner.
 %\end{keyidea}
 %
-%\begin{keyidea}[Triple Integral in Spherical Coordinates]\label{idea_sphere_int}
+%\begin{keyidea}[Triple Integral in Spherical Coordinates]\label{idea_sphere_int}%
 %\mbox{}\\[-2\baselineskip]
-% \begin{multline}\label{eqn:sphereint}
+% \begin{multline}\label{eqn:sphereint}%
 %  \iiint_S f(x,y,z)\dd x\dd y\dd z =\\
 %  \iiint_{S'} f(\rho\sin \phi\,\cos \theta,\rho\sin \phi\,\sin \theta,\rho\cos \phi)
 %  \,\rho^2 \,\sin \phi \,d\rho\,d\phi\,d\theta ,
@@ -296,7 +296,7 @@ ask you to verify Theorems \ref{thm:triple_int_cylindrical} and \ref{thm:triple_
 % where the mapping $x=\rho\sin \phi\,\cos \theta$, $y=\rho\sin \phi\,\sin \theta$, $z=\rho\cos \phi$ maps the solid $S'$ in $\rho\phi\theta$-space onto the solid $S$ in $xyz$-space in a one-to-one manner.
 %\end{keyidea}
 %
-%\begin{example}[Triple Integral over a Region in Cylindrical Coordinates]\label{exmp_cyl_cone_octant}
+%\begin{example}[Triple Integral over a Region in Cylindrical Coordinates]\label{exmp_cyl_cone_octant}%
 %Evaluate $\iiint_D x\dd V$ where $D$ is the region bounded by the first octant, the cone $z=\sqrt{x^2+y^2}$, and $z=3$.
 %\solution
 %In cylindrical coordinates $D$ is given by $0\le\theta\leq\frac\pi2$, $0\leq r\leq3$, and $r\leq z\leq3$.  Now we have
@@ -312,7 +312,7 @@ ask you to verify Theorems \ref{thm:triple_int_cylindrical} and \ref{thm:triple_
 %\end{align*}
 %\end{example}
 %
-%\begin{example}[Finding the Volume of a Sphere]\label{exmp_volsphere}
+%\begin{example}[Finding the Volume of a Sphere]\label{exmp_volsphere}%
 %For $a > 0$, find the volume $V$ inside the sphere $S = x^2 + y^2 + z^2 = a^2$.
 %We see that $S$ is the set $\rho = a$ in spherical coordinates, so
 % \begin{align*}

@@ -53,10 +53,10 @@ latexmlscripts="$HOME/git/LaTeXML/blib/script"
 singularitydir="$HOME/latexml"
 printf '\\newcommand{\\thetitle}{Calculus}\n\\printincolor\n\\usethreeDgraphics\n\\renewcommand{\\monthYear}{June 2023}\n' > options.tex
 
-singularity exec $singularitydir/latexml.sif $latexmlscripts/latexml \
-    --destination=$base.xml \
-    --nocomments \
-    $base
+#singularity exec $singularitydir/latexml.sif $latexmlscripts/latexml \
+#    --destination=$base.xml \
+#    --nocomments \
+#    $base
 
 exit_code=$?
 

@@ -34,7 +34,7 @@
 
 # Job events (mail-type): begin, end, fail, all.
 #SBATCH --mail-type=all
-#SBATCH --mail-user=timothy.prescott@und.edu
+#SBATCH --mail-user=teepeemm@gmail.com
 
 # load required modules here
 module load apptainer
@@ -45,7 +45,9 @@ echo ""
 echo "Job started at $(date)"
 echo ""
 
-singularity exec python make.py --all
+source ~/.venv/bin/activate
+python3 make.py --all
+deactivate
 
 exit_code=$?
 

@@ -478,7 +478,8 @@ def getcommandline(args):
         return getlatexmlepubcommandline()
     if args.standalonee:
         return getlatexmlepubcommandline('standalone','standaloneweb')
-    return ['latexmk','-lualatex','--cnf-line="max_strings=1000000"','--cnf-line="hash_extra=1000000"','Calculus']
+    return ['latexmk','-lualatex','--cnf-line="max_strings=1000000"','--cnf-line="hash_extra=1000000"','Calculus',
+                   ';','lualatex','--cnf-line="max_strings=1000000"','--cnf-line="hash_extra=1000000"','Calculus']
 
 def minimizePdf(filename):
     '''
@@ -650,9 +651,11 @@ if args.all:
     compilewith('-c0')
     compilewith('--instructor')
     compilewith('--prc')
+    for part in range(1,4):
+        compilewith(f'-bc{part}')
     # having '123' first means that doesn't change everytime, which may speed compilation
-    for part,size in itertools.product('123',['s','b']):
-        compilewith('-'+size+'c'+part)
+    #for part,size in itertools.product('123',['s','b']):
+    #    compilewith('-'+size+'c'+part)
 else:
     print('all false')
     compilewith()

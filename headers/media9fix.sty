@@ -42,6 +42,7 @@
 
 \RemoveFromHook{shipout/background}[pdfbase]
 
+% u-fischer
 \AddToHook{shipout/background}{
   % workaround for curious AR bug (pdf annot or link placed on
   % OCG remains active although OCG is hidden)
@@ -50,6 +51,7 @@
   \bool_if:NT\g_pbs_ocgbase_loaded_bool{
     \put(1,-1){
 %      \tag_struct_begin:n{tag=Form} % added
+    \tag_mc_begin:n{artifact} % teepeemm
       \tl_if_exist:NF\g_pbs_blank_xform_tl{
         \hbox_set:Nn\l_tmpa_box{\phantom{\rule{1pt}{1pt}}}
         \pbs_pdfxform:nnnnn{0}{1}{}{}{\l_tmpa_box}
@@ -67,6 +69,7 @@
       }
 %      \exp_args:Nee \tag_struct_insert_annot:nn {\pdfannot_box_ref_last: }{ \tag_struct_parent_int: } % added
 %      \tag_struct_end: % added
+    \tag_mc_end: % teepeemm
     }
   }
 }
@@ -319,22 +322,22 @@
     \tl_if_empty:NF\g_mix_usrlabel_tl{
       \tl_gset_eq:NN\g_mix_label_tl\g_mix_usrlabel_tl
     }
-    \tag_struct_begin:n{tag=Form} % added
+    \tag_struct_begin:n{tag=Form} % teepeemm
     % #1:width, #2:height, #3:depth, #4:content (key-value)
     \mix_pdfannot:nnnn{\g_mix_wd_tl}{\g_mix_ht_tl}{\g_mix_dp_tl}{
       /Subtype/Widget
-      /F~6
-%      /F~4
+      /F~6 % UA-1 needs F & 2 == 2 (or a TU or an Alt key) (rule 7.18.1(3))
+%      /F~4 % A-4F needs F & (1+2+4+32+256) == 4 (rule 6.3.2)
       /BS~<</W~0/S/S>>
       /Contents~(media~embedded~by~media9~[\g_mix_version_tl~(\g_mix_date_tl)])
       /NM~(\g_mix_label_tl)
       /AP~<</N~\g_mix_appearance_tl>>
       /RichMediaSettings~\l_mix_settings_tl
       /RichMediaContent~\l_mix_content_tl
-      /StructParent\c_space_tl \tag_struct_parent_int: % added
+      /StructParent\c_space_tl \tag_struct_parent_int: % teepeemm
     }
-    \exp_args:Nee \tag_struct_insert_annot:nn {\pdfannot_box_ref_last: }{ \tag_struct_parent_int: } % added
-    \tag_struct_end: % added
+    \exp_args:Nee \tag_struct_insert_annot:nn {\pdfannot_box_ref_last: }{ \tag_struct_parent_int: } % teepeemm
+    \tag_struct_end: % teepeemm
     \tl_if_empty:NF\g_mix_usrlabel_tl{
       \mix_keytoaux_now:nn{ann@\g_mix_usrlabel_tl}{\mix_pdflastann:}
       \mix_keytoaux_shipout:nn{page@\g_mix_usrlabel_tl}{
@@ -371,17 +374,17 @@
         this.dirty=false;
       )
     }
-	% something in here is violating a-4f 6.2.5 that forbids the TR key in a graphics state parameter dictionary
-    \tag_mc_begin:n{artifact} % added
+	% something in here is violating a-4f 6.2.5(1) that forbids the TR key in a graphics state parameter dictionary
+    \tag_mc_begin:n{artifact} % teepeemm
     \mix_pdfannot:nnnn{0pt}{0pt}{0pt}{
       /Subtype/Widget
       /FT/Btn/Ff~65537/F~2
       /BS~<</W~0>>
       /T~(fd@\g_mix_label_tl)
       /AA~<</PO~\mix_pdflastobj:~/PV~\mix_pdflastobj:>>
-      /Contents~(media~embedded~by~media9~[\g_mix_version_tl~(\g_mix_date_tl)]) % added for VeraPDF
+      /Contents~(media~embedded~by~media9~[\g_mix_version_tl~(\g_mix_date_tl)]) % teepeemm
     }
-    \tag_mc_end: % added
+    \tag_mc_end: % teepeemm
     \mix_appendtofields:n{\mix_pdflastann:}
     \hbox_overlap_right:n{\box_use:N\l_mix_poster_box}
     \str_if_eq:eeTF{\g_mix_usrpbtn_tl}{none}{
@@ -483,15 +486,11 @@
       }
       %create FileSpec for current file name if not yet existent
       \cs_if_exist:cF{fileSpec_#1}{
-      % 6.9
-%      \typeout{FINDME:#1}
-        % to pass 6.9, this needs (1) /Subtype~mimetype and (4) /AFRelationship~Unspecified
-        % (or some other value from https://pdfa.org/how-to-get-started-with-pdf-2-0/#Associated_Files)
+        % to pass A-4F 6.9, this needs (1) /Subtype~mimetype and (4) /AFRelationship~Unspecified
+        % (or some other AFR value from https://pdfa.org/how-to-get-started-with-pdf-2-0/#Associated_Files)
+        % but I can't get either of those to work in either \mix_pdf command
         \mix_pdfobj:nnn{}{dict}{
           /Type/Filespec/F~(#1)/UF~(#1) % /UF had been commented out % teepeemm
-%      /AFRelationship~Unspecified
-%      /Subtype~text/javascript % maybe?
-%      /Subtype~application/octet-stream % maybe?
           /EF~<</F~\tl_use:c{fileEmb_\file_mdfive_hash:n{\l_mix_file_tl}}>>
         }
         \tl_gset:cx{fileSpec_#1}{\mix_pdflastobj:}
@@ -501,6 +500,7 @@
             /F~2\cs_if_exist_use:N % this doesn't seem right
 %      /AFRelationship~Unspecified
 %      /Subtype~text/javascript % maybe?
+%      /Subtype~application/octet-stream % maybe?
             /Subtype/FileAttachment
             /FS~\mix_pdflastobj:
           }

@@ -69,10 +69,10 @@ if [ "$exit_code" -ne "0" ]; then
     exit "$exit_code"
 fi
 
-singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost \
-    --split \
-    --destination=web/index.html \
-    $base.xml
+#singularity exec $singularitydir/latexml.sif $latexmlscripts/latexmlpost \
+#    --split \
+#    --destination=web/index.html \
+#    $base.xml
 
 exit_code=$?
 

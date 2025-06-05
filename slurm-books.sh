@@ -45,7 +45,7 @@ echo ""
 echo "Job started at $(date)"
 echo ""
 
-singularity exec python3 make.py --all
+singularity exec python make.py --all
 
 exit_code=$?
 

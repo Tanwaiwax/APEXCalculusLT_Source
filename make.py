@@ -552,6 +552,7 @@ def writemisspellings():
             'myincludegraphics': 'op',
             'pdfbookmark': 'OPp',
             'pgfkeysvalueof': 'p',
+            'pdftooltip': 'pP',
             'ref': 'p',
             'youtubeVideo': 'pP'
         }

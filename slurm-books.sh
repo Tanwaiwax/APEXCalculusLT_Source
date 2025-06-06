@@ -47,9 +47,8 @@ echo ""
 
 source ~/.venv/bin/activate
 python3 make.py --all
-deactivate
-
 exit_code=$?
+deactivate
 
 echo ""
 echo "Job finished at $(date)"

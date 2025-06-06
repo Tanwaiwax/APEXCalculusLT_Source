@@ -37,7 +37,7 @@
 #SBATCH --mail-user=timothy.prescott@und.edu
 
 # load required modules here
-module load apptainer
+#module load apptainer
 # print the loaded modules
 #module list
 

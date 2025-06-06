@@ -478,8 +478,8 @@ def getcommandline(args):
         return getlatexmlepubcommandline()
     if args.standalonee:
         return getlatexmlepubcommandline('standalone','standaloneweb')
-    return ['latexmk','-lualatex','--cnf-line="max_strings=1000000"','--cnf-line="hash_extra=1000000"','Calculus',
-                   ';','lualatex','--cnf-line="max_strings=1000000"','--cnf-line="hash_extra=1000000"','Calculus']
+    return [['latexmk','-lualatex','--cnf-line="max_strings=1000000"','--cnf-line="hash_extra=1000000"','Calculus'],
+                       ['lualatex','--cnf-line="max_strings=1000000"','--cnf-line="hash_extra=1000000"','Calculus']]
 
 def minimizePdf(filename):
     '''
@@ -618,6 +618,9 @@ def runcommands(args,commands):
             #breakpoint()
             if args.justprint:
                 print('now run')
+            elif isinstance(commandline[0], list):
+                for command in commandline:
+                    subprocess.check_call(command,stdout=mystdout,stderr=subprocess.STDOUT)
             else:
                 subprocess.check_call(commandline,stdout=mystdout,stderr=subprocess.STDOUT)
         except:

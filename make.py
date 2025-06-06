@@ -479,7 +479,9 @@ def getcommandline(args):
     if args.standalonee:
         return getlatexmlepubcommandline('standalone','standaloneweb')
     # see https://tex.stackexchange.com/a/741777/107497
-    return [['max_strings=1000000','hash_extra=1000000','latexmk','-g','-lualatex','Calculus'],
+    # check_call(shell=False) tries to interpret the first thing as the program or file,
+    # and fails with latexmk.  We use shell=True.  See file lab/testCheck/testCheck.py
+    return [['max_strings=1000000 hash_extra=1000000 latexmk -g -lualatex Calculus'],
         ['lualatex','--cnf-line="max_strings=1000000"','--cnf-line="hash_extra=1000000"','Calculus']]
 
 def minimizePdf(filename):
@@ -621,7 +623,10 @@ def runcommands(args,commands):
                 print('now run')
             elif isinstance(commandline[0], list):
                 for command in commandline:
-                    subprocess.check_call(command,stdout=mystdout,stderr=subprocess.STDOUT)
+                    if len(command) == 1:
+                        subprocess.check_call(command,stdout=mystdout,stderr=subprocess.STDOUT,shell=True)
+                    else:
+                        subprocess.check_call(command,stdout=mystdout,stderr=subprocess.STDOUT)
             else:
                 subprocess.check_call(commandline,stdout=mystdout,stderr=subprocess.STDOUT)
         except:

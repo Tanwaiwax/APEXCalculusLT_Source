@@ -12,45 +12,51 @@
 %\providecommand{\tagpdfsetup}[1]{}
 %\nonstopmode
 %\RequirePackage[l2tabu, orthodox]{nag}
-\documentclass{article}
-%\documentclass[10pt]{book}
-\usepackage{graphicx}
-\usepackage[noplaybutton]{media9}
-\usepackage{headers/media9fix}
-\title{My Title}
+%\documentclass{article}
+\documentclass[10pt]{book}
+%\usepackage{graphicx}
+%\usepackage[noplaybutton]{media9}
+%\usepackage{headers/media9fix}
+%\title{My Title}
 
-%\input{headers/APEX_format}
-%\usepackage{headers/apex_style}
-%\input{headers/Header_Calculus}
+\input{headers/APEX_format}
+\usepackage{headers/apex_style}
+\input{headers/Header_Calculus}
 
-%\printincolor
-%\usethreeDgraphics
+%\addmediapath{/usr/local/texlive/2025/texmf-dist/source/latex/media9/files}
 
-\addmediapath{/usr/local/texlive/2025/texmf-dist/source/latex/media9/files}
+\begin{document}%\pagestyle{empty}
 
-\begin{document}\pagestyle{empty}
+%An embedded prc file:\bigskip
+%
+%\includemedia[
+%width=0.4\linewidth,height=0.4\linewidth,
+%add3Djscript=asylabels.js, %upright text labels
+%add3Djscript=3Dspintool.js, %let scene rotate about z-axis
+%% 3Dcoo, 3Droo values found with `Generate Default View' from
+%% context menu
+%3Dmenu,
+%3Dc2c=4 2 3,
+%3Dcoo=4.413303375244141 2.195653200149536 -0.000011444091796875,
+%3Droo=429.49035778293376,
+%]
+%{\includegraphics[width=.4\linewidth,alt={Some alt text}]{epixposter}}
+%{epix.prc}
 
-An embedded prc file:\bigskip
+\frontmatter
 
-\includemedia[
-width=0.4\linewidth,height=0.4\linewidth,
-add3Djscript=asylabels.js, %upright text labels
-add3Djscript=3Dspintool.js, %let scene rotate about z-axis
-% 3Dcoo, 3Droo values found with `Generate Default View' from
-% context menu
-3Dmenu,
-3Dc2c=4 2 3,
-3Dcoo=4.413303375244141 2.195653200149536 -0.000011444091796875,
-3Droo=429.49035778293376,
-]
-{\includegraphics[width=.4\linewidth,alt={Some alt text}]{epixposter}}
-{epix.prc}
+\tableofcontents
 
-%\frontmatter
-
+\chapter{A chapter}\label{ch:1}
+\section{A section}\label{sec:1}
+Some text
 %\input{text/front_matter_and_cover}
 
-%\mainmatter
+\mainmatter\setcounter{page}{1000}
+
+\apexchapter{Another chapter}{ch:2}
+\section{Another section}\label{sec:2}
+Some more text
 
 %\setcounter{chapter}{3}
 

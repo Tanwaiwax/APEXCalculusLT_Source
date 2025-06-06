@@ -479,7 +479,7 @@ def getcommandline(args):
     if args.standalonee:
         return getlatexmlepubcommandline('standalone','standaloneweb')
     # the max-strings option for latexmk is not main-memory
-    return [['latexmk','-lualatex','-max-strings=1000000','-hash-extra=1000000','Calculus'],
+    return [['latexmk','-g','-lualatex','-max-strings=1000000','-hash-extra=1000000','Calculus'],
         ['lualatex','--cnf-line="max_strings=1000000"','--cnf-line="hash_extra=1000000"','Calculus']]
 
 def minimizePdf(filename):

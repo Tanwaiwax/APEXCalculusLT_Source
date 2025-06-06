@@ -45,6 +45,8 @@ echo ""
 echo "Job started at $(date)"
 echo ""
 
+latexmk -lualatex --cnf-line="max_strings=1000000" --cnf-line="hash_extra=1000000" Calculus
+
 source ~/.venv/bin/activate
 python3 make.py --all
 deactivate

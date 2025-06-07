@@ -624,6 +624,7 @@ def runcommands(args,commands):
                 print('now run')
             elif isinstance(commandline[0], list):
                 for command in commandline:
+                    print('starting command:',command)
                     if len(command) == 1:
                         subprocess.check_call(command,stdout=mystdout,stderr=subprocess.STDOUT,shell=True)
                     else:

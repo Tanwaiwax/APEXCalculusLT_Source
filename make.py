@@ -12,6 +12,8 @@
     the empty string.
     A different approach would be to use bash to invoke pdfsizeopt
     via Python 2 (I think)
+    
+    I'm also no longer using pdfsizeopt
 '''
 
 import argparse
@@ -35,6 +37,8 @@ ignorelist = frozenset(['AntiAbuse','AmericInn','Arial','Bernhard','Calc','Cross
     'ylabel','ymajorgrids','ymax','ymin','yminorgrids','yscale','yshift','ytick','yticklabels',
     'zlabel','zmax','ztick',
 ])
+
+failed_compilations = 0
 
 loginfo = []
 
@@ -88,7 +92,7 @@ addboolarg('static','Print static color graphics (default is interactive).',pars
 
 if len(sys.argv)==1:
     parser.print_help()
-    quit()
+    sys.exit()
 
 for dir in ('ApexPDFs','ApexPDFs/bigpdfs','logs','prc','todo','web'):
     try:
@@ -492,6 +496,9 @@ def minimizePdf(filename):
         It also makes several calls to os.system, which prints to stderr in a way
         we can't intercept.  We intercept those calls by redefining os.system to
         use subprocess.check_call.  And even so, some calls get through.
+        
+        I'm going to drop this for now.  I'm mostly confident that pdfsizeopt would
+        not preserve pdf accessibility.
     '''
     if (3, 0) <= sys.version_info[:2]:
         print('python 3 precludes pdfsizeopt','')
@@ -633,11 +640,12 @@ def runcommands(args,commands):
                 subprocess.check_call(commandline,stdout=mystdout,stderr=subprocess.STDOUT)
         except:
             time = "{0[0]:02d}:{0[1]:02d}".format(getTime())
+            failed_compilations += 1
             if commands:
                 loginfo.append('At '+time+' failing command: '+commands)
             else:
                 loginfo.append('At '+time+' failing command line')
-            raise
+            # raise
     time = "{0[0]:02d}:{0[1]:02d}".format(getTime())
     if commands:
         message = 'Command line: '+commands+' finished at '+time
@@ -649,10 +657,10 @@ def runcommands(args,commands):
         loginfo.append(message)
     if args.instructor:
         shutil.copy('Answers.pdf','ApexPDFs/bigpdfs/answers.pdf')
-        minimizePdf('answers.pdf')
+#        minimizePdf('answers.pdf')
     elif not any((args.xml,args.web,args.standalonex,args.standalonew,args.epub,args.standalonee)):
         shutil.copy('Calculus.pdf','ApexPDFs/bigpdfs/calculus'+newsuffix+'.pdf')
-        minimizePdf('calculus'+newsuffix+'.pdf')
+#        minimizePdf('calculus'+newsuffix+'.pdf')
 
 if args.all:
     print('all true')
@@ -670,3 +678,5 @@ if args.all:
 else:
     print('all false')
     compilewith()
+
+sys.exit(failed_compilations)

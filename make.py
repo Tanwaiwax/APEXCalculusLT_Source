@@ -436,6 +436,9 @@ def getlatexmlcommandline(base='Calculus'):
         ret[0] += '.bat'
     return ret
 
+def getlatexmllog(base='Calculus'):
+    return f'{base}.latexml.log'
+
 def getlatexmlepubcommandline(base='Calculus',destdir='web'):
     ret = [getlatexmlbin('latexmlc'),
             '--quiet','--quiet',#'--verbose','--verbose',##
@@ -451,6 +454,9 @@ def getlatexmlepubcommandline(base='Calculus',destdir='web'):
         ret[0] += '.bat'
     return ret
 
+def getlatexmlepublog(base='Calculus'):
+    return f'{base}.latexmlc.log'
+
 def getlatexmlpostcommandline(base='Calculus',destdir='web'):
     #fixRefs()
     #shutil.copyfile('web/script.js','script.js')
@@ -464,7 +470,10 @@ def getlatexmlpostcommandline(base='Calculus',destdir='web'):
     if platform.win32_ver()[0]:
         ret[0] += '.bat'
     return ret
-    
+
+def getlatexmlpostlog(base='Calculus'):
+    return f'{base}.latexmlpost.log'
+
 def getcommandline(args):
     if args.xml:
         return getlatexmlcommandline()
@@ -477,7 +486,7 @@ def getcommandline(args):
     if args.internet or args.standalonen:
         raise 'args.internet does not need a command line'
     if args.instructor:
-        return ['latexmk','-lualatex','Answers']
+        return ['latexmk','-lualatex','-interaction=batchmode','Answers']
     if args.epub:
         return getlatexmlepubcommandline()
     if args.standalonee:
@@ -485,8 +494,27 @@ def getcommandline(args):
     # see https://tex.stackexchange.com/a/741777/107497
     # check_call(shell=False) tries to interpret the first thing as the program or file,
     # and fails with latexmk.  We use shell=True.  See file lab/testCheck/testCheck.py
-    return [['max_strings=1000000 hash_extra=1000000 latexmk -g -lualatex Calculus'],
-        ['lualatex','--cnf-line="max_strings=1000000"','--cnf-line="hash_extra=1000000"','Calculus']]
+    return [['max_strings=1000000 hash_extra=1000000 latexmk -g -lualatex -interaction=batchmode Calculus'],
+        ['lualatex','--cnf-line="max_strings=1000000"','--cnf-line="hash_extra=1000000"','-interaction=batchmode','Calculus']]
+
+def getlog(args):
+    if args.xml:
+        return getlatexmllog()
+    if args.standalonex:
+        return getlatexmllog('standalone')
+    if args.web:
+        return getlatexmlpostlog()
+    if args.standalonew:
+        return getlatexmlpostlog('standalone')
+    if args.internet or args.standalonen:
+        raise 'args.internet does not need a command line'
+    if args.instructor:
+        return 'Answers.log'
+    if args.epub:
+        return getlatexmlepublog()
+    if args.standalonee:
+        return getlatexmlepublog('standalone')
+    return 'Calculus.log'
 
 def minimizePdf(filename):
     '''
@@ -622,30 +650,33 @@ def compilewith(commands=False):
 
 def runcommands(args,commands):
     newsuffix = getsuffix(args)
-    with open('logs/compilation'+newsuffix+'.log','w+') as mystdout:
-        try:
-            commandline = getcommandline(args)
-            print('commandline is:',commandline)
-            #breakpoint()
-            if args.justprint:
-                print('now run')
-            elif isinstance(commandline[0], list):
-                for command in commandline:
-                    print('starting command:',command)
-                    if len(command) == 1:
-                        subprocess.check_call(command,stdout=mystdout,stderr=subprocess.STDOUT,shell=True)
-                    else:
-                        subprocess.check_call(command,stdout=mystdout,stderr=subprocess.STDOUT)
-            else:
-                subprocess.check_call(commandline,stdout=mystdout,stderr=subprocess.STDOUT)
-        except:
-            time = "{0[0]:02d}:{0[1]:02d}".format(getTime())
-            failed_compilations += 1
-            if commands:
-                loginfo.append('At '+time+' failing command: '+commands)
-            else:
-                loginfo.append('At '+time+' failing command line')
-            # raise
+    log = getlog(args)
+    try:
+        commandline = getcommandline(args)
+        print('commandline is:',commandline)
+        #breakpoint()
+        if args.justprint:
+            print('now run')
+        elif isinstance(commandline[0], list):
+            for command in commandline:
+                print('starting command:',command)
+                if len(command) == 1:
+                    subprocess.check_call(command,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,shell=True)
+                else:
+                    subprocess.check_call(command,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+        else:
+            subprocess.check_call(commandline,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+    except:
+        print('Exception caught')
+        time = "{0[0]:02d}:{0[1]:02d}".format(getTime())
+        failed_compilations += 1
+        if commands:
+            loginfo.append('At '+time+' failing command: '+commands)
+        else:
+            loginfo.append('At '+time+' failing command line')
+        # raise
+    finally:
+        shutil.copy(log,'logs/compilation'+newsuffix+'.log')
     time = "{0[0]:02d}:{0[1]:02d}".format(getTime())
     if commands:
         message = 'Command line: '+commands+' finished at '+time

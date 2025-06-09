@@ -44,6 +44,7 @@ loginfo = []
 
 @atexit.register
 def printloginfo():
+    print('Now in printloginfo')
     if loginfo:
         print('\n'.join(loginfo),'')
 

@@ -364,33 +364,43 @@
 % but the link was out of order, so it doesn't work
 % instead, we fake the chapter title bookmark depending on the location
 % and then the left and right mark at the top of the pages was off
+% and now this is messing with tagpdf and the bookmarks
+%\newcommand*{\apexchapter}[3][]{%
+% \setcounter{figure}{0}% in case there are figures before the first section
+% \clearpage\thispagestyle{empty}\cleardoublepage%
+% \ifstrempty{#1}{% no prereq section
+%  \chapter{#2}\label{#3}%
+% }{% else, there is a #1 argument
+%  \pagestyle{prose}%
+%  \refstepcounter{chapter}%
+%  \pdfbookmark[chapter]{\thechapter\ #2}{#3}
+%  \addtocounter{section}{-1}%
+%  \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}%
+%  \let\oldsection=\section
+%  \bgroup
+%   \renewcommand{\section}[1]{%
+%    \markboth{\chaptername\ \thechapter\ \ \ \ {#2}}{\thechapter.0.\ ##1}% \rightmark
+%    \oldsection{##1}\label{prereq#3}
+%   }
+%   \input{#1}%
+%  \egroup
+%  \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}%
+%  \restoregeometry
+%  % the grouping intercepted the restoregeometry at the end of the prereq's exercises
+%  \chapter*{\thechapter: #2}\label{#3}
+%  \hypersetup{bookmarksdepth=-2}% make the next line not appear in the pdf bookmarks
+%  \addcontentsline{toc}{chapter}{\string\numberline{\arabic{chapter}}#2}
+%  \hypersetup{bookmarksdepth=2}
+% }%
+%}
 \newcommand*{\apexchapter}[3][]{%
- \setcounter{figure}{0}% in case there are figures before the first section
- \clearpage\thispagestyle{empty}\cleardoublepage%
- \ifstrempty{#1}{% no prereq section
-  \chapter{#2}\label{#3}%
- }{% else, there is a #1 argument
-  \pagestyle{prose}%
-  \refstepcounter{chapter}%
-  \pdfbookmark[chapter]{\thechapter\ #2}{#3}
+ \chapter{#2}\label{#3}%
+ \ifstrempty{#1}{}{%
   \addtocounter{section}{-1}%
   \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}%
-  \let\oldsection=\section
-  \bgroup
-   \renewcommand{\section}[1]{%
-    \markboth{\chaptername\ \thechapter\ \ \ \ {#2}}{\thechapter.0.\ ##1}% \rightmark
-    \oldsection{##1}\label{prereq#3}
-   }
-   \input{#1}%
-  \egroup
+  \input{#1}%
   \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}%
-  \restoregeometry
-  % the grouping intercepted the restoregeometry at the end of the prereq's exercises
-  \chapter*{\thechapter: #2}\label{#3}
-  \hypersetup{bookmarksdepth=-2}% make the next line not appear in the pdf bookmarks
-  \addcontentsline{toc}{chapter}{\string\numberline{\arabic{chapter}}#2}
-  \hypersetup{bookmarksdepth=2}
- }%
+ }
 }
 
 

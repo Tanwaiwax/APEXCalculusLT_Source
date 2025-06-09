@@ -13,7 +13,7 @@ for exfilename in glob('*.tex'):
 #        breakpoint()
 #    quit()
     lines = re.sub(r'(?<!\\pdftooltip{)\\begin{tikzpicture}(.*?)\\end{tikzpicture}',
-                    r'\\pdftooltip{\\begin{tikzpicture}\1\\end{tikzpicture}}{ALT-TEXT-TO-BE-DETERMINED}',
+                    r'\\pdftooltip{\\begin{tikzpicture}\1\\end{tikzpicture}}{ALT- TEXT-TO-BE-DETERMINED}',
                     lines, flags=re.DOTALL)
     with open(exfilename, 'w') as exfile:
         exfile.write(lines)

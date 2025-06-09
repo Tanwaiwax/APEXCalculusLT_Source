@@ -621,6 +621,7 @@ option_func = {
 }
 
 def compilewith(commands=False):
+    local_failed_compilations = 0
     print('running:',commands)
     #quit()
     if commands:
@@ -630,27 +631,28 @@ def compilewith(commands=False):
     for option,func in option_func.items():
         if getattr(args,option):
             func()
-            return
+            return local_failed_compilations
     if args.calculus == 4:
         args.calculus = 0
     writeoptions(args)
     if args.quit:
-        return
+        return local_failed_compilations
     if args.instructor:
         compilewith('-qsc0')
     elif args.internet:
-        compilewith('-x')
-        compilewith('-w')
-        return
+        local_failed_compilations += compilewith('-x')
+        local_failed_compilations += compilewith('-w')
+        return local_failed_compilations
     elif args.standalonen:
-        compilewith('--standalonex')
-        compilewith('--standalonew')
-        return
-    runcommands(args,commands)
+        local_failed_compilations += compilewith('--standalonex')
+        local_failed_compilations += compilewith('--standalonew')
+        return local_failed_compilations
+    local_failed_compilations += runcommands(args,commands)
 
 def runcommands(args,commands):
     newsuffix = getsuffix(args)
     log = getlog(args)
+    local_failed_compilations = 0
     try:
         commandline = getcommandline(args)
         print('commandline is:',commandline)
@@ -669,7 +671,7 @@ def runcommands(args,commands):
     except:
         print('Exception caught')
         time = "{0[0]:02d}:{0[1]:02d}".format(getTime())
-        failed_compilations += 1
+        local_failed_compilations += 1
         if commands:
             loginfo.append('At '+time+' failing command: '+commands)
         else:
@@ -692,22 +694,23 @@ def runcommands(args,commands):
     elif not any((args.xml,args.web,args.standalonex,args.standalonew,args.epub,args.standalonee)):
         shutil.copy('Calculus.pdf','ApexPDFs/bigpdfs/calculus'+newsuffix+'.pdf')
 #        minimizePdf('calculus'+newsuffix+'.pdf')
+    return local_failed_compilations
 
 if args.all:
     print('all true')
     #suffix = ' --justprint' if args.justprint else ''
-    compilewith('--figures')
+    failed_compilations += compilewith('--figures')
     # having this first makes sure the index and toc are up to date
-    compilewith('-c0')
-    compilewith('--instructor')
-    compilewith('--prc')
+    failed_compilations += compilewith('-c0')
+    failed_compilations += compilewith('--instructor')
+    failed_compilations += compilewith('--prc')
     for part in range(1,4):
-        compilewith(f'-bc{part}')
+        failed_compilations += compilewith(f'-bc{part}')
     # having '123' first means that doesn't change everytime, which may speed compilation
     #for part,size in itertools.product('123',['s','b']):
     #    compilewith('-'+size+'c'+part)
 else:
     print('all false')
-    compilewith()
+    failed_compilations += compilewith()
 
 sys.exit(failed_compilations)

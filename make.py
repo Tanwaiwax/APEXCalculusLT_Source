@@ -495,8 +495,10 @@ def getcommandline(args):
     # see https://tex.stackexchange.com/a/741777/107497
     # check_call(shell=False) tries to interpret the first thing as the program or file,
     # and fails with latexmk.  We use shell=True.  See file lab/testCheck/testCheck.py
-    return [['max_strings=1000000 hash_extra=1000000 latexmk -g -lualatex -interaction=batchmode Calculus'],
-        ['lualatex','--cnf-line="max_strings=1000000"','--cnf-line="hash_extra=1000000"','-interaction=batchmode','Calculus']]
+    return #[
+    ['max_strings=1000000 hash_extra=1000000 latexmk -g -lualatex -interaction=batchmode Calculus']
+#    ,
+#        ['lualatex','--cnf-line="max_strings=1000000"','--cnf-line="hash_extra=1000000"','-interaction=batchmode','Calculus']]
 
 def getlog(args):
     if args.xml:

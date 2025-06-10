@@ -436,12 +436,12 @@
 }
 
 %\newcommand*{\exerenv}{sectionexercises}
-\newcommand*{\exerenv}{enumerate}
+\newcommand*{\exerenv}{enumext}
 
 \makeatletter
 \newcommand{\openenumerate}{%
  \ifx\@currenvir\exerenv\else%
-  \begin{enumerate}[resume]
+  \begin{enumext}[resume]
 %  \begin{sectionexercises}
 %  \ifbool{latexml}{%
 %   \setcounter{sectionexercisesi}{\value{saveexercisenum}}%
@@ -453,7 +453,7 @@
 %  \ifbool{latexml}{%
 %   \setcounter{saveexercisenum}{\value{sectionexercisesi}}%
 %  }{}%
-  \end{enumerate}
+  \end{enumext}
 %  \end{sectionexercises}
  \fi%
 }
@@ -619,7 +619,7 @@
 }
 \newcommand*{\loadAnswers}[1]{%
 %	\stepcounter{answersection}%
- \begin{enumerate}[leftmargin=1.5em]%
+ \begin{enumerate}%[leftmargin=1.5em]%
   \input{#1}
  \end{enumerate}%
  \bigbreak%

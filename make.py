@@ -29,6 +29,7 @@ import shutil
 import subprocess
 import sys
 import time
+from typing import Literal, Sequence
 
 ignorelist = frozenset(['AntiAbuse','AmericInn','Arial','Bernhard','Calc','CrossTenant','CrossTenantHeadersStamped',"Darboux's",
     'Friedrich',"Fubini's",'Georg','Hostname','Iiams','LHR',"Rolle's",'Schwarz',
@@ -40,10 +41,10 @@ ignorelist = frozenset(['AntiAbuse','AmericInn','Arial','Bernhard','Calc','Cross
 
 failed_compilations = 0
 
-loginfo = []
+loginfo: list[str] = []
 
 @atexit.register
-def printloginfo():
+def printloginfo() -> None:
     print('Now in printloginfo')
     if loginfo:
         print('\n'.join(loginfo),'')
@@ -54,7 +55,7 @@ parser = argparse.ArgumentParser(description='Compile document to a pdf.',
                                  epilog='If no options are given, '
                                  '--help is assumed.')
 
-def addboolarg(key,help,parser=parser,shortkey=None):
+def addboolarg(key: str, help: str, parser=parser, shortkey: str|None=None) -> None:
     shortkey = shortkey or key[0]
     parser.add_argument('-'+shortkey,'--'+key,action='store_true',help=help)
 
@@ -103,12 +104,12 @@ for dir in ('ApexPDFs','ApexPDFs/bigpdfs','logs','prc','todo','web'):
 
 args = parser.parse_args()
 
-def getTime():
+def getTime() -> tuple[int, int]:
     end = time.time()
     seconds = int(end-start)
     return (seconds//60,seconds%60)
 
-def makematrices():
+def makematrices() -> None:
     try:
         os.chdir('figures/matrices')
         for srcfile in glob.glob('*Src.tex'):
@@ -127,7 +128,7 @@ def makematrices():
     finally:
         os.chdir('../../')
 
-def makefigs():
+def makefigs() -> None:
     try:
         os.chdir('figures')
         for asyfile in glob.glob('*.asy'):
@@ -175,13 +176,13 @@ depths = {
     'S': 2
 }
 
-def get_depth(overview):
+def get_depth(overview: str) -> int:
     for start,depth in depths.items():
         if overview.startswith(start):
             return depth
     return 3
 
-def create_overview():
+def create_overview() -> None:
     overviewlist = shuffle_prereqs(overviewfromfile('Calculus.aux'))
     previous,previous_depth = None,-1
     with open('overview.html','w+') as overviewhtml:
@@ -223,7 +224,7 @@ def create_overview():
             previous,previous_depth = overview,depth
         overviewhtml.write('</ul></li></ul></li></ul></li></ul></body></html>')
 
-def shuffle_prereqs(overviewlist):
+def shuffle_prereqs(overviewlist: list[str]) -> list[str]:
     ret = []
     delayqueue = []
     while overviewlist:
@@ -238,7 +239,7 @@ def shuffle_prereqs(overviewlist):
             delayqueue = []
     return ret
 
-def overviewfromfile(filename):
+def overviewfromfile(filename: str) -> list[str]:
     with open(filename) as filein:
         overviewlist = []
         for line in filein:
@@ -270,7 +271,7 @@ def overviewfromfile(filename):
 
 Figure = collections.namedtuple('Figure',['num','file'])
 
-def updateprc():
+def updateprc() -> None:
     prcdict = prcfromfile('Calculus.aux')
     with open('prc/index.html','w+') as prchtml:
         prchtml.write('<!doctype html>\n'
@@ -294,7 +295,7 @@ def updateprc():
                       '</body>\n'
                       '</html>\n')
 
-def writechapterprc(prcdict,prchtml,chapter):
+def writechapterprc(prcdict: dict, prchtml, chapter: str) -> None:
     # solutions are recorded differently in the aux as well as the dict
     if chapter=='A':
         prchtml.write('<h3>Solutions</h3>\n')
@@ -314,10 +315,10 @@ def writechapterprc(prcdict,prchtml,chapter):
         prchtml.write('</ul>\n')
     prchtml.write('</div>\n')
 
-def prcfromfile(filename):
+def prcfromfile(filename: str) -> dict:
     with open(filename) as filein:
         print('opening',filename)
-        prcdict = collections.defaultdict(lambda:collections.defaultdict(list))
+        prcdict: dict[str, dict[str, list[Figure]]] = collections.defaultdict(lambda:collections.defaultdict(list))
         for line in filein:
             if line.startswith(r'\@input{'):
                 prcdict.update(prcfromfile(line[len(r'\@input{'):-2]))
@@ -329,7 +330,7 @@ def prcfromfile(filename):
                     print('no match',line)
         return prcdict
 
-def updatetodo():
+def updatetodo() -> None:
     output = subprocess.check_output(['grep','todo','-I','--recursive','--line-number',
                                       '--exclude-dir=ApexPDFs','--exclude-dir=.git','--exclude-dir=todo',
                                       '--exclude-dir=hidden','--exclude-dir=mecmath','--exclude-dir=completed','.'])
@@ -376,7 +377,7 @@ def updatetodo():
                 pass
         mystdout.write('\n')
 
-def writeoptions(args):
+def writeoptions(args) -> None:
     with open('options.tex','w+') as options:
         title = 'Calculus'
         if args.calculus in (1,2,3):
@@ -394,7 +395,7 @@ def writeoptions(args):
             options.write('\\printincolor\n')
             options.write('\\usethreeDgraphics\n')
 
-def getsuffix(args):
+def getsuffix(args) -> str:
     if args.xml:
         return '_xml'
     elif args.standalonex:
@@ -417,14 +418,14 @@ def getsuffix(args):
         newsuffix += '-color'
     return newsuffix
 
-def getlatexmlbin(exe):
+def getlatexmlbin(exe: str) -> str:
     locallatexml = os.path.join('..','LaTeXML','bin',exe)
     if os.path.isfile(locallatexml):
         return locallatexml
     else:
         return exe
     
-def getlatexmlcommandline(base='Calculus'):
+def getlatexmlcommandline(base: str ='Calculus') -> list[str]:
     ret = [getlatexmlbin('latexml'),
             '--quiet','--quiet',#'--verbose','--verbose',##
            '--destination='+base+'.xml',
@@ -437,10 +438,10 @@ def getlatexmlcommandline(base='Calculus'):
         ret[0] += '.bat'
     return ret
 
-def getlatexmllog(base='Calculus'):
+def getlatexmllog(base: str ='Calculus') -> str:
     return f'{base}.latexml.log'
 
-def getlatexmlepubcommandline(base='Calculus',destdir='web'):
+def getlatexmlepubcommandline(base: str ='Calculus', destdir: str ='web') -> list[str]:
     ret = [getlatexmlbin('latexmlc'),
             '--quiet','--quiet',#'--verbose','--verbose',##
            '--destination='+destdir+'/'+base+'.epub',
@@ -455,10 +456,10 @@ def getlatexmlepubcommandline(base='Calculus',destdir='web'):
         ret[0] += '.bat'
     return ret
 
-def getlatexmlepublog(base='Calculus'):
+def getlatexmlepublog(base: str ='Calculus') -> str:
     return f'{base}.latexmlc.log'
 
-def getlatexmlpostcommandline(base='Calculus',destdir='web'):
+def getlatexmlpostcommandline(base: str ='Calculus', destdir: str ='web') -> list[str]:
     #fixRefs()
     #shutil.copyfile('web/script.js','script.js')
     #shutil.copyfile('web/style.css','style.css')
@@ -472,10 +473,10 @@ def getlatexmlpostcommandline(base='Calculus',destdir='web'):
         ret[0] += '.bat'
     return ret
 
-def getlatexmlpostlog(base='Calculus'):
+def getlatexmlpostlog(base: str ='Calculus') -> str:
     return f'{base}.latexmlpost.log'
 
-def getcommandline(args):
+def getcommandline(args) -> list[str] | list[list[str]]:
     if args.xml:
         return getlatexmlcommandline()
     if args.standalonex:
@@ -485,7 +486,7 @@ def getcommandline(args):
     if args.standalonew:
         return getlatexmlpostcommandline('standalone','standaloneweb')
     if args.internet or args.standalonen:
-        raise 'args.internet does not need a command line'
+        raise NotImplementedError('args.internet does not need a command line')
     if args.instructor:
         return ['latexmk','-lualatex','-interaction=batchmode','Answers']
     if args.epub:
@@ -494,12 +495,11 @@ def getcommandline(args):
         return getlatexmlepubcommandline('standalone','standaloneweb')
     # see https://tex.stackexchange.com/a/741777/107497
     # check_call(shell=False) tries to interpret the first thing as the program or file,
-    # and fails with latexmk.  We use shell=True.  See file lab/testCheck/testCheck.py
-    return [ ['max_strings=1000000 hash_extra=1000000 latexmk -g -lualatex -interaction=batchmode Calculus']
-#    , ['lualatex','--cnf-line="max_strings=1000000"','--cnf-line="hash_extra=1000000"','-interaction=batchmode','Calculus']
-    ]
+    # and fails with latexmk.  We use shell=True.  See file lab/maxstrings/maxstrings.py
+    return [ ['max_strings=1000000 hash_extra=1000000 latexmk -g -lualatex -interaction=batchmode Calculus'],
+        ['lualatex --cnf-line="max_strings=1000000" --cnf-line="hash_extra=1000000" -interaction=batchmode Calculus'] ]
 
-def getlog(args):
+def getlog(args) -> str:
     if args.xml:
         return getlatexmllog()
     if args.standalonex:
@@ -509,7 +509,7 @@ def getlog(args):
     if args.standalonew:
         return getlatexmlpostlog('standalone')
     if args.internet or args.standalonen:
-        raise 'args.internet does not need a command line'
+        raise NotImplementedError('args.internet does not need a command line')
     if args.instructor:
         return 'Answers.log'
     if args.epub:
@@ -518,7 +518,7 @@ def getlog(args):
         return getlatexmlepublog('standalone')
     return 'Calculus.log'
 
-def minimizePdf(filename):
+def minimizePdf(filename: str) -> None:
     '''
         pdfsizeopt forces Python 2 by using the old style print statement.
         It also prints to sys.stderr, which we can intercept using
@@ -535,7 +535,7 @@ def minimizePdf(filename):
         shutil.copy('ApexPDFs/bigpdfs/'+filename,'ApexPDFs/smallpdfs/')
         return
     sys.path[:0] = ['../pdfsizeopt/lib']
-    from pdfsizeopt import main
+    from pdfsizeopt import main  # type: ignore
     oldossystem = os.system
     try:
         os.remove('logs/ossystemerr.log')
@@ -560,13 +560,12 @@ def minimizePdf(filename):
     print(message,'')
     loginfo.append(message)
 
-def lc(input):
-    # type (str) -> str
+def lc(input: str) -> str:
     return input[0].lower()+input[1:]
 
-def writemisspellings():
+def writemisspellings() -> None:
     with open('misspell.txt','w+') as misspellings:
-        runningTotal = collections.Counter()
+        runningTotal: collections.Counter[str] = collections.Counter()
         texcommands = {
             'addplot': 'op',
             'autoeqref': 'p',
@@ -622,7 +621,7 @@ option_func = {
     'overview': create_overview
 }
 
-def compilewith(commands=False):
+def compilewith(commands: str|Literal[False] =False) -> int:
     local_failed_compilations = 0
     print('running:',commands)
     #quit()
@@ -650,8 +649,9 @@ def compilewith(commands=False):
         local_failed_compilations += compilewith('--standalonew')
         return local_failed_compilations
     local_failed_compilations += runcommands(args,commands)
+    return local_failed_compilations
 
-def runcommands(args,commands):
+def runcommands(args, commands: str|Literal[False]) -> int:
     newsuffix = getsuffix(args)
     log = getlog(args)
     local_failed_compilations = 0
@@ -669,7 +669,9 @@ def runcommands(args,commands):
                 else:
                     subprocess.check_call(command,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
         else:
-            subprocess.check_call(commandline,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+#            assert isinstance(commandline, list)
+#            assert isinstance(commandline, Sequence)
+            subprocess.check_call(commandline,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)  # type: ignore
     except:
         print('Exception caught')
         time = "{0[0]:02d}:{0[1]:02d}".format(getTime())

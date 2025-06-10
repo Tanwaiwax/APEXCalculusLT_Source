@@ -29,7 +29,7 @@ import shutil
 import subprocess
 import sys
 import time
-from typing import Literal, Sequence
+from typing import Literal, Sequence, Union
 
 ignorelist = frozenset(['AntiAbuse','AmericInn','Arial','Bernhard','Calc','CrossTenant','CrossTenantHeadersStamped',"Darboux's",
     'Friedrich',"Fubini's",'Georg','Hostname','Iiams','LHR',"Rolle's",'Schwarz',
@@ -55,7 +55,7 @@ parser = argparse.ArgumentParser(description='Compile document to a pdf.',
                                  epilog='If no options are given, '
                                  '--help is assumed.')
 
-def addboolarg(key: str, help: str, parser=parser, shortkey: str|None=None) -> None:
+def addboolarg(key: str, help: str, parser=parser, shortkey: Union[str,None]=None) -> None:
     shortkey = shortkey or key[0]
     parser.add_argument('-'+shortkey,'--'+key,action='store_true',help=help)
 
@@ -476,7 +476,7 @@ def getlatexmlpostcommandline(base: str ='Calculus', destdir: str ='web') -> lis
 def getlatexmlpostlog(base: str ='Calculus') -> str:
     return f'{base}.latexmlpost.log'
 
-def getcommandline(args) -> list[str] | list[list[str]]:
+def getcommandline(args) -> Union[list[str], list[list[str]]]:
     if args.xml:
         return getlatexmlcommandline()
     if args.standalonex:
@@ -621,7 +621,7 @@ option_func = {
     'overview': create_overview
 }
 
-def compilewith(commands: str|Literal[False] =False) -> int:
+def compilewith(commands: Union[str, Literal[False]] =False) -> int:
     local_failed_compilations = 0
     print('running:',commands)
     #quit()
@@ -651,7 +651,7 @@ def compilewith(commands: str|Literal[False] =False) -> int:
     local_failed_compilations += runcommands(args,commands)
     return local_failed_compilations
 
-def runcommands(args, commands: str|Literal[False]) -> int:
+def runcommands(args, commands: Union[str, Literal[False]]) -> int:
     newsuffix = getsuffix(args)
     log = getlog(args)
     local_failed_compilations = 0

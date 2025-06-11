@@ -384,6 +384,8 @@
  \begin{multicols}{2}%
   \toggletrue{inexercises}%
   \renewcommand{\Itemautorefname}{Ex\-er\-cise}% local b/c multicols = good
+%  \begin{enumext}[series=section\thesection]
+%  \end{enumext}
   \input{#1}%
   \closeenumerate%
  \end{multicols}%
@@ -412,10 +414,13 @@
 
 \newcounter{saveenumi}
 
-%\counterwithin*{enumi}{subsection}
+%\counterwithin*{enumXi}{subsection}
 % does not work because \exercisesubsection is a fake \subsection
 
-\newcommand{\exercisesubsectiontitle}[1]{\huge\textbf{\texorpdfstring{\hyperref[sol#1]{Exercises #1}}{Exercises}}\hrule}
+\newcommand{\exercisesubsectiontitle}[1]{%
+ \huge\textbf{\texorpdfstring{\hyperref[sol#1]{Exercises #1}}{Exercises}}\hrule
+ \setcounter{enumXi}{0}%
+}
 
 %\makeatletter
 %% the usual \subsection definition has stretchable space in arguments 3-5
@@ -441,7 +446,7 @@
 \makeatletter
 \newcommand{\openenumerate}{%
  \ifx\@currenvir\exerenv\else%
-  \begin{enumext}[resume]
+  \begin{enumext}[resume,widest=22]
 %  \begin{sectionexercises}
 %  \ifbool{latexml}{%
 %   \setcounter{sectionexercisesi}{\value{saveexercisenum}}%
@@ -461,29 +466,29 @@
 \newcommand{\closeenumerateinquestions}{\closeenumerate}
 
 \newcommand{\exercisesetinstructions}[2][In Exercises]{%
- \setcounter{saveenumi}{\value{enumi}}
+ \setcounter{saveenumi}{\value{enumXi}}
  \closeenumerateinquestions
- \stepcounter{enumi}%
+ \stepcounter{enumXi}%
  \stepcounter{exercisesetcounter}%
- \ifnumodd{\value{enumi}}{}{%
+ \ifnumodd{\value{enumXi}}{}{%
   \PackageInfo{apex}{%
-   Exercise set \theexercisesetcounter\space begins with \arabic{enumi}%
+   Exercise set \theexercisesetcounter\space begins with \arabic{enumXi}%
   }%
  }%
- \noindent#1 \arabic{enumi}--\ref*{enumiatendof\theexercisesetcounter}\bgroup
- \renewcommand{\theenumi}{(\alph{enumi})}%
+ \noindent#1 \arabic{enumXi}--\ref*{enumiatendof\theexercisesetcounter}\bgroup
+% \renewcommand{\theenumi}{(\alph{enumi})}%
  #2\egroup%
- % can't \addtocounter{enumi}{-1} because #2 may have an enumerate
- \setcounter{enumi}{\value{saveenumi}}
+ % can't \addtocounter{enumXi}{-1} because #2 may have an enumerate
+ \setcounter{enumXi}{\value{saveenumi}}
  \ignorespaces%
  \nopagebreak%
 }
 \newcommand{\exercisesetend}{%
  \label{enumiatendof\theexercisesetcounter}%
  \closeenumerate%
- \ifnumodd{\value{enumi}}{%
+ \ifnumodd{\value{enumXi}}{%
   \PackageInfo{apex}{%
-   Exercise set \theexercisesetcounter\space ends with \arabic{enumi}%
+   Exercise set \theexercisesetcounter\space ends with \arabic{enumXi}%
   }%
  }{}%
 }
@@ -520,8 +525,8 @@
 }
 \newcommand{\showexerciseanswers}{%
  \renewcommand{\exercise}[2]{%
-  \ifboolexpr{ togl{printoddanswersonly} and test{\ifnumodd{\value{enumi}}} }{%
-   \stepcounter{enumi}%
+  \ifboolexpr{ togl{printoddanswersonly} and test{\ifnumodd{\value{enumXi}}} }{%
+   \stepcounter{enumXi}%
   }{%
    \item \parbox[t]{\linewidth}{\raggedright ##2}%
   }%
@@ -594,10 +599,10 @@
   }
   % commandeer chapter and section numbering
   \setcounter{chapter}{#1}
-  \section*{Chapter \thechapter}
+  \section*{Chapter~\thechapter}
  }%
  \setcounter{section}{#2}
- \subsection*{\hyperref[exer\thesection]{Exercises \thesection}}%
+ \subsection*{\hyperref[exer\thesection]{Exercises~\thesection}}%
  \label{sol\thesection}
  \ifnumequal{#2}{0}{%
   \loadAllAnswers{#3}

@@ -396,12 +396,13 @@
 %}
 \newcommand*{\apexchapter}[3][]{%
  \chapter{#2}\label{#3}%
- \ifstrempty{#1}{}{%
+ \ifstrempty{#1}{}{\inputprereq{#1}}%
+}
+\newcommand*{\inputprereq}[1]{%
   \addtocounter{section}{-1}%
   \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}%
   \input{#1}%
   \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}%
- }
 }
 
 

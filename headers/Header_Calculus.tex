@@ -526,17 +526,33 @@ https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js}
 \usetwoDgraphics
 
 
+\newcommand*{\pdftooltip}[2]{%
+ \tagstructbegin{tag=Figure,alt={#2}}\tagmcbegin{}%
+ \SuspendTagging{tikz}%
+ #1%
+ \par
+ \ResumeTagging{tikz}%
+ \tagmcend\tagstructend
+}
+
+
 % these allow us to skip pdf tagging for the speedup
 \ExplSyntaxOn
 \providecommand{\tag_struct_begin:n}[1]{}
+\providecommand{\tagstructbegin}[1]{}
 \providecommand{\tag_struct_parent_int:}{}
 \providecommand{\pdfannot_box_ref_last:}{}
 \providecommand{\tag_struct_insert_annot:nn}[2]{}
 \providecommand{\tag_struct_end:}{}
+\providecommand{\tagstructend}{}
 \providecommand{\tag_mc_begin:n}[1]{}
+\providecommand{\tagmcbegin}[1]{}
 \providecommand{\tag_mc_end:}{}
+\providecommand{\tagmcend}{}
 \ExplSyntaxOff
 \providecommand{\tagpdfsetup}[1]{}
+\providecommand{\ResumeTagging}[1]{}
+\providecommand{\SuspendTagging}[1]{}
 
 \tagpdfsetup{math/alt/use = true}
 

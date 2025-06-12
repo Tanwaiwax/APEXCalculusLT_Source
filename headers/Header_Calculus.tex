@@ -318,16 +318,17 @@
 	\mnote@pex{\iftrue}{#1}{#2}%
 }
 
+% testmargin[top|bottom] was interferring with the tagging, as was the mbox
 \newcommand*{\mnote@pex}[3]{%
 	\marginalia[ysep page bottom=.7in]{%[yshift=#2]
 %	\marginnote{%
 		\begin{minipage}[t]{\marginparwidth}
 			\captionsetup{type=figure}%
-			\testmargintop%
-			\mbox{}%\makebox[0pt]{\tikz\draw(0,0)circle(1pt);}%
-			\\[-\baselineskip]%
+%			\testmargintop%
+%			\mbox{}%\makebox[0pt]{\tikz\draw(0,0)circle(1pt);}%
+%			\\[-\baselineskip]%
 			#1\RaggedRight\fi#3\ifhmode\unskip\fi%
-			\testmarginbottom%\makebox[0pt]{\tikz\draw(0,0)circle(2pt);}
+%			\testmarginbottom%\makebox[0pt]{\tikz\draw(0,0)circle(2pt);}
 		\end{minipage}%
 %	}[#2]%
 	}%

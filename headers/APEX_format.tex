@@ -373,11 +373,13 @@
 % \setlist*[sectionexercises]{ref=\arabic*}
 %}
 
+\makeatletter
 \newcommand{\printexercises}[1]{%
  \writeToAnsFile{#1}% writeToAnsFile in sty (actually, down below)
  \exercisegeometry% includes a clearpage
  \pagestyle{exercise}%
- \exercisesubsection{\thesection}%
+ \bookmarksetupnext{level=\toclevel@subsection}% otherwise, the level is "section" and everything is messed up
+ \exercisesubsection{Exercises \thesection}%
  \label{exer\thesection}%
  \small%
  \bigskip%
@@ -394,6 +396,7 @@
  %	\easypagecheck
  \setlength{\hoffset}{0pt} \rmfamily\normalsize \bigbreak%
 }
+\makeatother
 
 
 \newwrite\answrite %write the answers file
@@ -417,9 +420,10 @@
 %\counterwithin*{enumXi}{subsection}
 % does not work because \exercisesubsection is a fake \subsection
 
+% #1 is "Exercises \thesection"
 \newcommand{\exercisesubsectiontitle}[1]{%
- \huge\textbf{\texorpdfstring{\hyperref[sol#1]{Exercises #1}}{Exercises}}\hrule
- \setcounter{enumXi}{0}%
+ \huge\textbf{\texorpdfstring{\hyperref[sol#1]{#1}}{Exercises}}\hrule
+% \setcounter{enumXi}{0}%
 }
 
 %\makeatletter
@@ -599,11 +603,11 @@
   }
   % commandeer chapter and section numbering
   \setcounter{chapter}{#1}
-  \section*{Chapter~\thechapter}
+  \section*{Chapter~\thechapter\hfill\null}
  }%
  \setcounter{section}{#2}
- \subsection*{\hyperref[exer\thesection]{Exercises~\thesection}}%
- \label{sol\thesection}
+ \subsection*{\hyperref[exer\thesection]{Exercises~\thesection\hfill\null}}%
+ \label{solExercises \thesection}
  \ifnumequal{#2}{0}{%
   \loadAllAnswers{#3}
  }{%

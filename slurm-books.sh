@@ -54,9 +54,9 @@ echo ""
 echo "Job finished at $(date)"
 echo ""
 
+cd ApexPDFs ; tar czf bigpdfs.tar.gz bigpdfs/
+
 if [ "$exit_code" -ne "0" ]; then
     echo "job failed"
     exit "$exit_code"
 fi
-
-cd ApexPDFs ; tar czf bigpdfs.tar.gz bigpdfs/

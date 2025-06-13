@@ -29,6 +29,7 @@ import shutil
 import subprocess
 import sys
 import time
+import traceback
 from typing import Literal, Sequence, Union
 
 ignorelist = frozenset(['AntiAbuse','AmericInn','Arial','Bernhard','Calc','CrossTenant','CrossTenantHeadersStamped',"Darboux's",
@@ -494,10 +495,7 @@ def getcommandline(args) -> Union[list[str], list[list[str]]]:
     if args.standalonee:
         return getlatexmlepubcommandline('standalone','standaloneweb')
     # see https://tex.stackexchange.com/a/741777/107497
-    # check_call(shell=False) tries to interpret the first thing as the program or file,
-    # and fails with latexmk.  We use shell=True.  See file lab/maxstrings/maxstrings.py
-    return [ ['max_strings=1000000 hash_extra=1000000 latexmk -g -lualatex -interaction=batchmode Calculus'],
-        ['lualatex --cnf-line="max_strings=1000000" --cnf-line="hash_extra=1000000" -interaction=batchmode Calculus'] ]
+    return ['max_strings=1000000 hash_extra=1000000 latexmk -g -lualatex -interaction=batchmode Calculus']
 
 def getlog(args) -> str:
     if args.xml:
@@ -661,26 +659,27 @@ def runcommands(args, commands: Union[str, Literal[False]]) -> int:
         #breakpoint()
         if args.justprint:
             print('now run')
-        elif isinstance(commandline[0], list):
-            for command in commandline:
-                print('starting command:',command)
-                if len(command) == 1:
-                    subprocess.check_call(command,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,shell=True)
-                else:
-                    subprocess.check_call(command,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+        # check_call(shell=False) tries to interpret the first thing as the program or file,
+        # and fails with latexmk.  We use shell=True.  See file lab/maxstrings/maxstrings.py
+        elif len(commandline) == 1:
+            subprocess.check_call(commandline,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,shell=True)
         else:
 #            assert isinstance(commandline, list)
 #            assert isinstance(commandline, Sequence)
             subprocess.check_call(commandline,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)  # type: ignore
-    except:
-        print('Exception caught')
+    except Exception as exception:
+        print(f'Exception caught: {type(exception}; {exception}')
         time = "{0[0]:02d}:{0[1]:02d}".format(getTime())
         local_failed_compilations += 1
+        loginfomessage = 'At '+time+' failing command'
         if commands:
-            loginfo.append('At '+time+' failing command: '+commands)
+            loginfomessage += ': '+commands
         else:
-            loginfo.append('At '+time+' failing command line')
-        # raise
+            loginfomessage += ' line'
+        loginfo.append(loginfomessage)
+        with open(log, 'a') as texlogfile:
+            texlogfile.write('\n\n{loginfomessage}\n\n')
+            traceback.print_exc(file=texlogfile)
     finally:
         shutil.copy(log,'logs/compilation'+newsuffix+'.log')
     time = "{0[0]:02d}:{0[1]:02d}".format(getTime())

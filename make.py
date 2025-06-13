@@ -668,7 +668,7 @@ def runcommands(args, commands: Union[str, Literal[False]]) -> int:
 #            assert isinstance(commandline, Sequence)
             subprocess.check_call(commandline,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)  # type: ignore
     except Exception as exception:
-        print(f'Exception caught: {type(exception}; {exception}')
+        print(f'Exception caught: {type(exception)}; {exception}')
         time = "{0[0]:02d}:{0[1]:02d}".format(getTime())
         local_failed_compilations += 1
         loginfomessage = 'At '+time+' failing command'

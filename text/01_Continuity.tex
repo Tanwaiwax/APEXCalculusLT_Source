@@ -23,7 +23,7 @@ If $f$ is defined near $c$ but is not continuous at $c$, then we say that $f$ is
 \captionsetup{type=figure}%
 \centering
 \tagpdfsetup{table/header-rows={2}}
-\begin{tabular}{ c c c }
+\begin{tabular}{ccc}
 \begin{tikzpicture}[alt={A line segment from (-3,-1) to (3,2) with a hollow dot at (1,1).  There is also a solid dot at (1,2).}]
 \begin{axis}[width=.8\marginparwidth, axis y line=middle,axis x line=middle, ymin=-3, ymax=3, xmin=-3, xmax=3, name=myplot]
 \addplot[draw={\colorone}, domain=-3:3, thick, smooth] {(x+1)/2};
@@ -107,7 +107,7 @@ We conclude that $f$ is continuous at every point of $(0,3)$ except at $x=1$. Th
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-2.4,ymax=2.4,xmin=-2.4,xmax=3.4,name=myplot]
-\foreach \x in {-2,-1,...,2} {
+\foreach \x in {-2,-1,...,2} {%
  \edef\temp{
   \noexpand\draw[draw={\colorone},smooth,thick](axis cs:\x,\x)--(axis cs:{\x+1},\x);
   \noexpand\fill[black,draw=black](axis cs:\x,\x)circle(1pt);
@@ -165,7 +165,7 @@ We can make the appropriate adjustments to talk about continuity on half-open in
 %
 %Continuous functions are important as they behave in a predictable fashion: functions attain the value they approach. Because continuity is so important, most of the functions you have likely seen in the past are continuous on their domains. This is demonstrated in the following example where we examine the intervals of continuity of a variety of common functions.\\
 
-Continuity is inherently tied to the properties of limits. Because of this, the properties of limits found in Theorems \ref{thm:limit_algebra} and \ref{thm:poly_rat}
+Continuity is inherently tied to the properties of limits. Because of this, the properties of limits found in Theorems~\ref{thm:limit_algebra} and~\ref{thm:poly_rat}
 apply to continuity as well. We will utilize these properties in the following example.
 
 \begin{example}[Determining intervals on which a function is continuous]\label{ex_cont_funct1}%
@@ -186,7 +186,7 @@ We examine each in turn.
 	\item	The domain of $f(x) = 1/x$ is $(-\infty,0) \cup (0,\infty)$. As it is a rational function, we apply \autoref{thm:poly_rat} to recognize that $f$ is continuous on all of its domain.
 	\item	The domain of $f(x) = \sin x$ is all real numbers, or $(-\infty,\infty)$. Applying \autoref{thm:lim_continuous} shows that $\sin x$ is continuous everywhere.
 	\item	The domain of $f(x) = \sqrt{x}$ is $[0,\infty)$. Applying \autoref{thm:lim_continuous} shows that $f(x) = \sqrt{x}$ is continuous on its domain of $[0,\infty)$.
-	\item	The domain of $f(x) = \sqrt{1-x^2}$ is $[-1,1]$. Applying Theorems \ref{thm:limit_algebra} and \ref{thm:lim_continuous} shows that $f$ is continuous on all of its domain, $[-1,1]$.
+	\item	The domain of $f(x) = \sqrt{1-x^2}$ is $[-1,1]$. Applying Theorems~\ref{thm:limit_algebra} and~\ref{thm:lim_continuous} shows that $f$ is continuous on all of its domain, $[-1,1]$.
 	\item	The domain of $f(x) = \abs x$ is $(-\infty,\infty)$. We can define the absolute value function as $\ds f(x) = \begin{cases}-x & x<0 \\ x & x\geq 0\end{cases}$. Each ``piece'' of this piecewise defined function is continuous on all of its domain, giving that $f$ is continuous on $(-\infty,0)$ and $[0,\infty)$. We cannot assume this implies that $f$ is continuous on $(-\infty,\infty)$; we need to check that $\ds \lim_{x\to 0}f(x) = f(0)$, as $x=0$ is the point where $f$ transitions from one ``piece'' of its definition to the other. It is easy to verify that this is indeed true, hence we conclude that $f(x) = \abs{x}$ is continuous everywhere.
 \end{enumerate}
 \end{example}
@@ -267,7 +267,7 @@ State the interval(s) on which each of the following functions is continuous.
 	\end{enumerate}
 \end{multicols}
 \solution
-We examine each in turn, applying Theorems \ref{thm:continuity_algebra} and \ref{thm:continuous_functions} as appropriate.
+We examine each in turn, applying Theorems~\ref{thm:continuity_algebra} and~\ref{thm:continuous_functions} as appropriate.
 
 \mtable{A graph of $f$ in\\\autoref{ex_cont_funct}(1).}{fig_continuous3}{\begin{tikzpicture}[alt={An upside down U shape, connecting solid dots at (1,2) and (5,2).}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
@@ -306,8 +306,8 @@ While this notion seems intuitive, it is not trivial to prove and its importance
 \addplot[draw={\colorone}, domain=0:5, thick, smooth] {.2*(x-2)*(x-2)*(x-2)-2*(x-2)+2};
 \draw[draw={\colortwo},thick] (axis cs:1.5,0) -- (axis cs: 1.5,2.98);
 \draw[draw={\colortwo},thick] (axis cs:1.5,2.98) -- (axis cs: 0,2.98);
-\draw[dashed,thin](axis cs: .7,0)--(axis cs:.7,4.16);
-\draw[dashed,thin](axis cs: .7,4.16)--(axis cs:0,4.16);
+\draw[dashed,thin](axis cs: 0.7,0)--(axis cs:.7,4.16);
+\draw[dashed,thin](axis cs: 0.7,4.16)--(axis cs:0,4.16);
 \draw[dashed,thin](axis cs: 4.7,0)--(axis cs:4.7,.54);
 \draw[dashed,thin](axis cs: 4.7,.54)--(axis cs:0,.54);
 \end{axis}
@@ -385,7 +385,7 @@ Consider the graph of $f(x) = x-\cos x$, shown in \autoref{fig:xminuscosx}. It i
 \mtable{Iterations of the Bisection Method of Root Finding}{table:rootfinding}%
 	{\footnotesize\noindent
 	\tagpdfsetup{table/header-rows={1}}
-	 \begin{tabular}{ c c c }
+	 \begin{tabular}{ccc}
 		\hspace{-1em}\parbox{2.3em}{Itera-\\tion~\#}\hspace{-1em} & Interval & Midpoint Sign \\ \midrule
 		1 & $[0.7,0.9]$ & $f(0.8) >0$ \\
 		2 & $[0.7,0.8] $ & $f(0.75) >0$ \\
@@ -417,7 +417,7 @@ In \autoref{sec:newton} another equation solving method will be introduced, call
 
 This section formally defined what it means to be a continuous function. ``Most'' functions that we deal with are continuous, so often it feels odd to have to formally define this concept. Regardless, it is important, and forms the basis of the next chapter.
 
-\ifbool{latexml}{
+\ifbool{latexml}{%
 \printexercises{exercises/01-05-exercises}
 }{}
 
@@ -439,7 +439,7 @@ Later, we will want to add up an infinite list of numbers. We will do so by firs
 
 These are just two quick examples of why we are interested in limits. Many students dislike this topic when they are first introduced to it, but over time an appreciation is often formed based on the scope of its applicability.
 
-\ifbool{latexml}{}{
+\ifbool{latexml}{}{%
 \printexercises{exercises/01-05-exercises}
 }
 

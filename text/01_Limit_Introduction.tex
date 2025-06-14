@@ -5,7 +5,7 @@ We begin our study of \emph{limits} by considering examples that demonstrate key
 Consider the function $y = \frac{\sin x}{x}$. When $x$ is near the value 1, what value (if any) is $y$ near?
 
 \mtable{$\sin(x)/x$ near $x=1$ (top) and $x=0$ (bottom).}{fig:sinx_over_x}%
-{\pdftooltip{\begin{tikzpicture}
+{\begin{tikzpicture}[alt={A blue segment of a curve in the first quadrant.}]
  \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize },
    minor x tick num=1,minor y tick num=1,axis y line=middle,axis x line=middle,
    ytick={.6,.8,1},ymin=.4,ymax=1.1,xmin=.3,xmax=1.6,name=myplot]
@@ -13,9 +13,9 @@ Consider the function $y = \frac{\sin x}{x}$. When $x$ is near the value 1, what
  \end{axis}
  \node [right] at (myplot.right of origin) {\scriptsize $x$};
  \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{A blue segment of a curve in the first quadrant.}
+\end{tikzpicture}
 \\(a)\\
-\pdftooltip{\begin{tikzpicture}
+\begin{tikzpicture}[alt={An upside down U shape with a hole at the point (0,1).}]
  \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize },
    minor x tick num=1,axis y line=middle,axis x line=middle,ytick={.8,.9,1},
    ymin=.75,ymax=1.05,xmin=-1.1,xmax=1.2,name=myplot]
@@ -25,7 +25,7 @@ Consider the function $y = \frac{\sin x}{x}$. When $x$ is near the value 1, what
  \end{axis}
  \node [right] at (myplot.right of origin) {\scriptsize $x$};
  \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{An upside down U shape with a hole at the point (0,1).}
+\end{tikzpicture}
 \\(b)}
 
 While our question is not precisely formed (what constitutes ``near the value 1''?), the answer does not seem difficult to find. One might think first to look at a graph of this function to approximate the appropriate $y$ values. Consider \autoref{fig:sinx_over_x}(a), where $y = \frac{\sin x}{x}$ is graphed. For values of $x$ near 1, it seems that $y$ takes on values near $0.85$. In fact, when $x=1$, then $y=\frac{\sin 1}{1} \approx 0.84$, so it makes sense that when $x$ is ``near'' 1, $y$ will be ``near'' $0.84$.
@@ -96,7 +96,7 @@ To graphically approximate the limit, graph
 on a small interval that contains 3. To numerically approximate the limit, create a table of values where the $x$ values are near 3. This is done in \autoref{fig:limit1}.
 
 \mtable{Graphically and numerically approximating a limit in \autoref{ex_limit1}.}{fig:limit1}{%
-\pdftooltip{\begin{tikzpicture}
+\begin{tikzpicture}[alt={A blue segment of a curve in the first quadrant with a hole near the point (3,0.3).}]
 \begin{axis}[clip=false,width=\marginparwidth,
 tick label style={font=\scriptsize},minor x tick num=1,axis y line=middle,
 axis x line=middle,ymin=.25,ymax=.35,extra y tick labels={},
@@ -106,7 +106,7 @@ xmin=2.3,xmax=3.7,name=myplot]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{A blue segment of a curve in the first quadrant with a hole near the point (3,0.3).}
+\end{tikzpicture}
 \\ (a) \smallskip\\
 \tagpdfsetup{table/header-rows={1}}
 \begin{tabular}{lc}
@@ -137,7 +137,7 @@ Graphs are useful since they give a visual understanding concerning the behavior
 Since tables and graphs are used only to \emph{approximate} the value of a limit, there is not a firm answer to how many data points are ``enough.'' Include enough so that a trend is clear, and use values (when possible) both less than and greater than the value in question. In \autoref{ex_limit1}, we used both values less than and greater than 3. Had we used just $x=3.001$, we might have been tempted to conclude that the limit had a value of $0.3$. While this is not far off, we could do better. Using values ``on both sides of 3'' helps us identify trends.
 
 \mtable{Graphically and numerically approximating a limit in \autoref{ex_limit2}.}{fig:limit2}{%
-\pdftooltip{\begin{tikzpicture}
+\begin{tikzpicture}[alt={A blue segment from (-1,0) to a hole at (0,1), and then a curve to (1,0).}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-.1,ymax=1.1,xmin=-1.1,xmax=1.1,name=myplot]
@@ -149,7 +149,7 @@ ymin=-.1,ymax=1.1,xmin=-1.1,xmax=1.1,name=myplot]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{A blue segment from (-1,0) to a hole at (0,1), and then a curve to (1,0).}
+\end{tikzpicture}
 \\ (a) \\
 \tagpdfsetup{table/header-rows={1}}
 \begin{tabular}{ll}
@@ -186,7 +186,7 @@ A function may not have a limit for all values of $x$. That is, we may not be ab
 We'll explore each of these in turn.\bigskip
 
 \mtable{Graphically and numerically observing no limit as $x\to 1$ in \autoref{ex_no_limit1}.}{fig:nolimit1}{%
-\pdftooltip{\begin{tikzpicture}
+\begin{tikzpicture}[alt={A blue curve from (0,3) to a filled dot at (1,2).  Then it jumps to a line segment from a hollow dot at (1,1) to (2,2).}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-.1,ymax=3.2,xmin=-.1,xmax=2.1,name=myplot]
@@ -197,7 +197,7 @@ ymin=-.1,ymax=3.2,xmin=-.1,xmax=2.1,name=myplot]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{A blue curve from (0,3) to a filled dot at (1,2).  Then it jumps to a line segment from a hollow dot at (1,1) to (2,2).}
+\end{tikzpicture}
 \\ (a) \\
 \tagpdfsetup{table/header-rows={1}}
 \begin{tabular}{ll}
@@ -226,7 +226,7 @@ Both show that as $x$ approaches 1, $f(x)$ grows larger and larger.
 We can deduce this on our own, without the aid of the graph and table. If $x$ is near 1, then $(x-1)^2$ is very small, and:
 %
 \mtable{Graphically and numerically observing no limit as $x\to 1$ in \autoref{ex_no_limit2}.}{fig:nolimit2}{%
-\pdftooltip{\begin{tikzpicture}
+\begin{tikzpicture}[alt={A blue curve along the x axis that spikes upward at x=1.}]
 \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},minor x tick num=1,axis y line=middle,axis x line=middle,ymin=-1,ymax=110,xmin=-.1,xmax=2.1,name=myplot]
 \addplot [draw={\colorone},thick, smooth,domain=0:.9,samples=20] {1/(x*x-2*x+1)};
 \addplot [draw={\colorone},thick, smooth,domain=1.1:2,samples=20] {1/(x*x-2*x+1)};
@@ -234,7 +234,7 @@ We can deduce this on our own, without the aid of the graph and table. If $x$ is
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{A blue curve along the x axis that spikes upward at x=1.}
+\end{tikzpicture}
 \\ (a) \smallskip\\
 \tagpdfsetup{table/header-rows={1}}
 \begin{tabular}{lr}
@@ -266,7 +266,7 @@ $\ds\lim_{x\to 0}\sin(\frac1x)$ does not exist.
 \flushinner{%
 \tagpdfsetup{table/tagging=presentation}
 \begin{tabular}{ c c c }
-\pdftooltip{\begin{tikzpicture}
+\begin{tikzpicture}[alt={A blue curve that wiggles wildly near the origin.}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\footnotesize},
 minor x tick num=1,axis y line=middle,axis x line=middle,set layers,axis on top,
 ymin=-1.1,ymax=1.1,xmin=-1.1,xmax=1.1,name=myplot]
@@ -276,9 +276,9 @@ ymin=-1.1,ymax=1.1,xmin=-1.1,xmax=1.1,name=myplot]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{A blue curve that wiggles wildly near the origin.}
+\end{tikzpicture}
 &
-\pdftooltip{\begin{tikzpicture}
+\begin{tikzpicture}[alt={Zooming in, the blue curve is even more wild.}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\footnotesize},
 minor x tick num=1,axis y line=middle,axis x line=middle,set layers,axis on top,
 ymin=-1.1,ymax=1.1,xmin=-.11,xmax=.11,name=myplot]
@@ -288,7 +288,7 @@ ymin=-1.1,ymax=1.1,xmin=-.11,xmax=.11,name=myplot]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{Zooming in, the blue curve is even more wild.}
+\end{tikzpicture}
 &
 \tagpdfsetup{table/header-rows={1}}
 \begin{tabular}[b]{lr}
@@ -310,7 +310,7 @@ ymin=-1.1,ymax=1.1,xmin=-.11,xmax=.11,name=myplot]
 \subsection{Limits of Difference Quotients}
 
 \mtable[2\baselineskip]{We can interpret a difference quotient as the slope of a secant line.}{fig:diffquot1}{%
-\pdftooltip{\begin{tikzpicture}
+\begin{tikzpicture}[alt={A blue upside down arc, with a red line cutting through it.}]
 \begin{axis}[clip=false,width=1.16\marginparwidth,minor x tick num=1,
 tick label style={font=\scriptsize},axis y line=middle,axis x line=middle,
 ymin=-1,ymax=25,extra y tick labels={},xmin=-1,xmax=6.5,name=myplot]
@@ -321,7 +321,7 @@ ymin=-1,ymax=25,extra y tick labels={},xmin=-1,xmax=6.5,name=myplot]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $f$};
-\end{tikzpicture}}{A blue upside down arc, with a red line cutting through it.}}% ideally, this would go on the next page.
+\end{tikzpicture}}% ideally, this would go on the next page.
 % but that already has four margin figures, and five is too many
 
 We have approximated limits of functions as $x$ approached a particular number. We will consider another important kind of limit after explaining a few key ideas.\index{limit!difference quotient}
@@ -332,7 +332,7 @@ Since the particle traveled 10 feet in 4 seconds, we can say the particle's \emp
 \[\frac{f(5) - f(1)}{5-1} = \frac{10}4 = 2.5 \text{ft/s}.\]
 
 \mtable[\baselineskip]{Secant lines of $f(x)$ at $x=1$ and $x=1+h$, for shrinking values of $h$ (i.e., $h\rightarrow 0$).}{fig:diff_quot_small_h}{%
-\pdftooltip{\begin{tikzpicture}
+\begin{tikzpicture}[alt={A blue upside down arc with a red line cutting off a small portion.}]
 \begin{axis}[clip=false,width=1.16\marginparwidth,tick label style={font=\scriptsize},minor x tick num=1,axis y line=middle,axis x line=middle,ymin=-1,ymax=25,extra y tick labels={},xmin=-1,xmax=6.5,name=myplot]
 \addplot [draw={\colorone},smooth,thick,domain=0:6] {11.5*x-1.5*x*x};
 \addplot [draw={\colortwo},smooth,thick] coordinates {(0,4.5) (4,26.5)};
@@ -341,9 +341,9 @@ Since the particle traveled 10 feet in 4 seconds, we can say the particle's \emp
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $f$};
-\end{tikzpicture}}{A blue upside down arc with a red line cutting off a small portion.}
+\end{tikzpicture}
 	\\ (a) \\
-\pdftooltip{\begin{tikzpicture}
+\begin{tikzpicture}[alt={A blue upside down arc with a red line cutting off a tiny portion.}]
 \begin{axis}[clip=false,width=1.16\marginparwidth,
 tick label style={font=\scriptsize},minor x tick num=1,axis y line=middle,
 axis x line=middle,ymin=-1,ymax=25,extra y tick labels={},
@@ -355,9 +355,9 @@ xmin=-1,xmax=6.5,name=myplot]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $f$};
-\end{tikzpicture}}{A blue upside down arc with a red line cutting off a tiny portion.}
+\end{tikzpicture}
 	\\ (b) \\
-\pdftooltip{\begin{tikzpicture}
+\begin{tikzpicture}[alt={A blue upside down arc with a red line cutting off a miniscule portion.}]
 \begin{axis}[clip=false,width=1.16\marginparwidth,
 tick label style={font=\scriptsize},minor x tick num=1,axis y line=middle,
 axis x line=middle,ymin=-1,ymax=25,extra y tick labels={},
@@ -369,7 +369,7 @@ xmin=-1,xmax=6.5,name=myplot]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $f$};
-\end{tikzpicture}}{A blue upside down arc with a red line cutting off a miniscule portion.}
+\end{tikzpicture}
 	\\(c)}
 
 This difference quotient can be thought of as the familiar ``rise over run'' used to compute the slopes of lines. In fact, that is essentially what we are doing: given two points on the graph of $f$, we are finding the slope of the \emph{secant line} through those two points. See \autoref{fig:diffquot1}.

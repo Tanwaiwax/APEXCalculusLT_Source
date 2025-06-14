@@ -24,7 +24,7 @@ If $f$ is defined near $c$ but is not continuous at $c$, then we say that $f$ is
 \centering
 \tagpdfsetup{table/header-rows={2}}
 \begin{tabular}{ c c c }
-\pdftooltip{\begin{tikzpicture}
+\begin{tikzpicture}[alt={A line segment from (-3,-1) to (3,2) with a hollow dot at (1,1).  There is also a solid dot at (1,2).}]
 \begin{axis}[width=.8\marginparwidth, axis y line=middle,axis x line=middle, ymin=-3, ymax=3, xmin=-3, xmax=3, name=myplot]
 \addplot[draw={\colorone}, domain=-3:3, thick, smooth] {(x+1)/2};
 \fill[thick] (axis cs:1,2) circle (1.5pt);
@@ -32,9 +32,9 @@ If $f$ is defined near $c$ but is not continuous at $c$, then we say that $f$ is
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{A line segment from (-3,-1) to (3,2) with a hollow dot at (1,1).  There is also a solid dot at (1,2).}
+\end{tikzpicture}
 &
-\pdftooltip{\begin{tikzpicture}
+\begin{tikzpicture}[alt={A curve starting near (-3,0) and then going upward as x approaches 1 from the left.  A separate line segment connects a solid dot at (1,2) to (3,0).}]
 \begin{axis}[width=.8\marginparwidth, axis y line=middle,axis x line=middle, ymin=-3, ymax=3, xmin=-3, xmax=3, name=myplot]
 \addplot[draw={\colorone}, domain=-3:.9, thick, smooth] {1/(1-x)};
 \addplot[draw={\colorone}, domain=1:3, thick, smooth] {3-x};
@@ -42,9 +42,9 @@ If $f$ is defined near $c$ but is not continuous at $c$, then we say that $f$ is
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{A curve starting near (-3,0) and then going upward as x approaches 1 from the left.  A separate line segment connects a solid dot at (1,2) to (3,0).}
+\end{tikzpicture}
 &
-\pdftooltip{\begin{tikzpicture}
+\begin{tikzpicture}[alt={A line segment connecting (-3,-1) to a hollow dot at (1,1).  A separate line segment connects a solid dot at (1,2) to (3,0).}]
 \begin{axis}[width=.8\marginparwidth, axis y line=middle,axis x line=middle, ymin=-3, ymax=3, xmin=-3, xmax=3, name=myplot]
 \addplot[draw={\colorone}, domain=-3:1, thick, smooth] {(x+1)/2};
 \addplot[draw={\colorone}, domain=1:3, thick, smooth] {3-x};
@@ -53,7 +53,7 @@ If $f$ is defined near $c$ but is not continuous at $c$, then we say that $f$ is
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{A line segment connecting (-3,-1) to a hollow dot at (1,1).  A separate line segment connects a solid dot at (1,2) to (3,0).}
+\end{tikzpicture}
 \\
 Removable & Infinite & Jump
 \end{tabular}
@@ -75,7 +75,7 @@ Removable & Infinite & Jump
 \begin{example}[Finding intervals of continuity]\label{ex_contint1}%
 Let $f$ be defined as shown in \autoref{fig_continuous1}. Give the interval(s) on which $f$ is continuous.
 %
-\mtable{A graph of $f$ in \autoref{ex_contint1}.}{fig_continuous1}{\pdftooltip{\begin{tikzpicture}
+\mtable{A graph of $f$ in \autoref{ex_contint1}.}{fig_continuous1}{\begin{tikzpicture}[alt={A curve from a solid dot at (0,1.5) to a hollow dot at (1,1), then a horizontal line to (2,1), then a curve to (3,1).}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-.4,ymax=1.7,xmin=-.4,xmax=3.4,name=myplot]
@@ -90,7 +90,7 @@ ymin=-.4,ymax=1.7,xmin=-.4,xmax=3.4,name=myplot]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{A curve from a solid dot at (0,1.5) to a hollow dot at (1,1), then a horizontal line to (2,1), then a curve to (3,1).}}
+\end{tikzpicture}}
 %
 \solution
 We proceed by examining the three criteria for continuity.
@@ -103,7 +103,7 @@ We proceed by examining the three criteria for continuity.
 We conclude that $f$ is continuous at every point of $(0,3)$ except at $x=1$. Therefore $f$ is continuous on $(0,1)\cup(1,3)$.
 \end{example}
 
-\mtable{A graph of the step function in \autoref{ex_contint2}.}{fig:continuous2}{\pdftooltip{\begin{tikzpicture}
+\mtable{A graph of the step function in \autoref{ex_contint2}.}{fig:continuous2}{\begin{tikzpicture}[alt={For each integer from -2 to 2 inclusive, a horizontal line segment from a solid dot at (n,n) to a hollow dot at (n+1,n).}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-2.4,ymax=2.4,xmin=-2.4,xmax=3.4,name=myplot]
@@ -118,7 +118,7 @@ ymin=-2.4,ymax=2.4,xmin=-2.4,xmax=3.4,name=myplot]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{For each integer from -2 to 2 inclusive, a horizontal line segment from a solid dot at (n,n) to a hollow dot at (n+1,n).}}
+\end{tikzpicture}}
 
 \begin{example}[Finding intervals of continuity]\label{ex_contint2}%
 The \emph{floor function},
@@ -269,7 +269,7 @@ State the interval(s) on which each of the following functions is continuous.
 \solution
 We examine each in turn, applying Theorems \ref{thm:continuity_algebra} and \ref{thm:continuous_functions} as appropriate.
 
-\mtable{A graph of $f$ in\\\autoref{ex_cont_funct}(1).}{fig_continuous3}{\pdftooltip{\begin{tikzpicture}
+\mtable{A graph of $f$ in\\\autoref{ex_cont_funct}(1).}{fig_continuous3}{\begin{tikzpicture}[alt={An upside down U shape, connecting solid dots at (1,2) and (5,2).}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-.4,ymax=3.2,xmin=-.4,xmax=5.4,name=myplot]
@@ -279,7 +279,7 @@ ymin=-.4,ymax=3.2,xmin=-.4,xmax=5.4,name=myplot]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{An upside down U shape, connecting solid dots at (1,2) and (5,2).}}
+\end{tikzpicture}}
 
 \begin{enumerate}
 	\item	The two square-root terms are continuous on the intervals $[1,\infty)$ and $(-\infty,5]$, respectively. As $f$ is continuous only where each term is continuous, $f$ is continuous on the intersection of these two intervals: $[1,5]$. A graph of $f$ is displayed in \autoref{fig_continuous3}.
@@ -301,7 +301,7 @@ This intuitive notion of continuity does help us understand another important co
 While this notion seems intuitive, it is not trivial to prove and its importance is profound. Therefore the concept is stated in the form of a theorem and illustrated in \autoref{fig_ivt}.
 
 \mtable[-1in]{A situation where the Intermediate Value Theorem applies (top) and does not (bottom).}{fig_ivt}{%
-\pdftooltip{\begin{tikzpicture}
+\begin{tikzpicture}[alt={A curve that goes through the points (a,f(a), (c,L), and then (b,f(b))}]
 \begin{axis}[width=\marginparwidth, xtick={.7, 1.5, 4.7}, xticklabels={\scriptsize{$a$},\scriptsize{$c$},\scriptsize{$b$}}, ytick={.54, 2.98,4.16},yticklabels={\scriptsize{$f(b)$},\scriptsize{$L$},\scriptsize{$f(a)$}}, axis y line=middle,axis x line=middle, ymin=-.5, ymax=5.5, xmin=-.5, xmax=5.2, name=myplot]
 \addplot[draw={\colorone}, domain=0:5, thick, smooth] {.2*(x-2)*(x-2)*(x-2)-2*(x-2)+2};
 \draw[draw={\colortwo},thick] (axis cs:1.5,0) -- (axis cs: 1.5,2.98);
@@ -314,9 +314,9 @@ While this notion seems intuitive, it is not trivial to prove and its importance
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \node[\colorone] at (3.5,1.1){\scriptsize $y=f(x)$};
-\end{tikzpicture}}{A curve that goes through the points (a,f(a), (c,L), and then (b,f(b))}
+\end{tikzpicture}
 \\ (a) \\
-\pdftooltip{\begin{tikzpicture}
+\begin{tikzpicture}[alt={A line segment connecting (a,f(a)) to a point that is below the line y=L.  A separate line segment starts above the line y=L (but at the same x coordinate where the previous line ended) and ends at the point (b,f(b)).}]
 \begin{axis}[width=\marginparwidth, axis y line=middle, axis x line=middle, name=myplot, ymin=-.5, ymax=5.5, xmin=-.5, xmax=4.2, xtick={1,2,3.5}, xticklabels={\scriptsize{$a$},\scriptsize{?},\scriptsize{$b$}}, ytick={.5,1.5,3.5},yticklabels={\scriptsize{$f(a)$}, \scriptsize{$L$}, \scriptsize{$f(b)$}}]
 \addplot[draw={\colorone}, domain=0:2, thick, smooth] {x/2};
 \addplot[draw={\colorone}, domain=2:4, thick, smooth] {x};
@@ -332,7 +332,7 @@ While this notion seems intuitive, it is not trivial to prove and its importance
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \node[\colorone] at (3,2.3){\scriptsize $y=f(x)$};
-\end{tikzpicture}}{A line segment connecting (a,f(a)) to a point that is below the line y=L.  A separate line segment starts above the line y=L (but at the same x coordinate where the previous line ended) and ends at the point (b,f(b)).}
+\end{tikzpicture}
 \\ (b)}
 
 \begin{theorem}[Intermediate Value Theorem]\label{thm:IVT}%
@@ -362,7 +362,7 @@ There is a technique that produces a good approximation of $c$. Let $d$ be the m
 Successively applying this technique is called the \textbf{Bisection Method} \index{Bisection Method} of root finding. We continue until the interval is sufficiently small. We demonstrate this in the following example.
 
 \mtable{Graphing a root of\\
-$f(x) = x-\cos x$.}{fig:xminuscosx}{\pdftooltip{\begin{tikzpicture}
+$f(x) = x-\cos x$.}{fig:xminuscosx}{\begin{tikzpicture}[alt={A curve starting at (0,-1) and going to (1,0.5).}]
 \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=4,axis y line=middle,axis x line=middle,
 ymin=-1.1,ymax=.7,xmin=-.05,xmax=1.07,name=myplot]
@@ -370,7 +370,7 @@ ymin=-1.1,ymax=.7,xmin=-.05,xmax=1.07,name=myplot]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{A curve starting at (0,-1) and going to (1,0.5).}}
+\end{tikzpicture}}
 
 \begin{example}[Using the Bisection Method]\label{ex_bisect_method}%
 Approximate the root of $f(x) = x-\cos x$, accurate to three places after the decimal.

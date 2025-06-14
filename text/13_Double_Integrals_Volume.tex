@@ -9,7 +9,7 @@ We use a similar approach in this section to find volume under a surface.\bigski
 Let $R$ be a closed, bounded region in the $x$-$y$ plane and let $z=f(x,y)$ be a continuous function defined on $R$. We wish to find the signed volume under the surface of $f$ over $R$. (We use the term ``signed volume'' to denote that space above the $x$-$y$ plane, under $f$, will have a positive volume; space above $f$ and under the $x$-$y$ plane will have a ``negative'' volume, similar to the notion of signed area used before.)
 
 \mtable{Developing a method for finding signed volume under a surface.}{fig:double_intro}{%
-\pdftooltip{\begin{tikzpicture}
+\begin{tikzpicture}[alt={A region R in the x-y plane, covered with uniform rectangles.}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,axis equal image,
 ymin=-.85,ymax=.85,xmin=-.3,xmax=2.2]
@@ -24,7 +24,7 @@ ymin=-.85,ymax=.85,xmin=-.3,xmax=2.2]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{A region R in the x-y plane, covered with uniform rectangles.}
+\end{tikzpicture}
 \\(a)\\
 \myincludeasythree{
 3Droll=0,
@@ -229,7 +229,7 @@ Let $f$ and $g$ be continuous functions over a closed, bounded plane region $R$,
 	\item	If $f(x,y)\geq g(x,y)$ on $R$, then $\ds \iint_R f(x,y)\dd A\geq \iint_R g(x,y)\dd A$.
 %
 % todo parameterize Fig 14.2.5 instead of a bunch of coordinates
-\mtable[-2in]{$R$ is the union of two nonoverlapping regions, $R_1$ and $R_2$.}{fig:double_region}{\pdftooltip{\begin{tikzpicture}[xscale=.85,yscale=.6]
+\mtable[-2in]{$R$ is the union of two nonoverlapping regions, $R_1$ and $R_2$.}{fig:double_region}{\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED},xscale=.85,yscale=.6]
 \draw [draw={\colorone},thick,fill={\coloronefill},smooth] plot coordinates {(0,2.)
 (0.06639,2.527)(0.2407,2.839)(0.4857,3.009)(0.7641,3.112)(1.039,3.221)(1.294,3.367)
 (1.532,3.53)(1.759,3.689)(1.98,3.823)(2.2,3.915)(2.42,3.967)(2.64,3.992)(2.86,4.)
@@ -243,7 +243,7 @@ Let $f$ and $g$ be continuous functions over a closed, bounded plane region $R$,
 \draw (2,1) node {$R_1$};
 \draw (5,.5) node {$R_2$};
 \draw (1,-2) node {$R$};
-\end{tikzpicture}}{ALT-TEXT-TO-BE-DETERMINED}}
+\end{tikzpicture}}
 %
 	\item \label{thm:double_prop_regions}	Let $R$ be the union of two nonoverlapping regions, $R = R_1\bigcup R_2$ (see \autoref{fig:double_region}). Then 
 	\[\iint_R f(x,y)\dd A = \iint_{R_1}f(x,y)\dd A+ \iint_{R_2}f(x,y)\dd A.\]
@@ -332,7 +332,7 @@ The signed volume under the surface $f$ is about 11.7 cubic units.
 %We need to use the bounds of integration to determine the region we are integrating over. Recall \autoref{idea:bounds_on_double}: the region $R$ is completely determined by these bounds, and not influenced at all by the integrand. Therefore, to rewrite the integral, we ignore the integrand.
 %
 %The bounds tell us that $y$ is bounded by $0$ and $x/3$; $x$ is bounded by 0 and 6. We plot these four curves: $y=0$, $y=x/3$, $x=0$ and $x=6$ to find the region described by the bounds. \autoref{fig:double5} shows these curves, indicating that $R$ is a triangle.
-%\mtable{Sketching the region $R$ described by the iterated integral in \autoref{ex_double5}.}{fig:double5}{\pdftooltip{\begin{tikzpicture}
+%\mtable{Sketching the region $R$ described by the iterated integral in \autoref{ex_double5}.}{fig:double5}{\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED}]
 %\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 %axis y line=middle,axis x line=middle,name=myplot,axis on top,
 %ymin=-.5,ymax=2.5,xmin=-.5,xmax=6.9]
@@ -345,7 +345,7 @@ The signed volume under the surface $f$ is about 11.7 cubic units.
 %\end{axis}
 %\node [right] at (myplot.right of origin) {\scriptsize $x$};
 %\node [above] at (myplot.above origin) {\scriptsize $y$};
-%\end{tikzpicture}}{ALT-TEXT-TO-BE-DETERMINED}}
+%\end{tikzpicture}}
 %
 %To change the order of integration, we need to consider the curves that bound the $x$-values. We see that the lower bound is $x=3y$ and the upper bound is $x=6$. The bounds on $y$ are $0$ to $2$. Thus we can rewrite the integral as 
 %$\ds \int_0^2\int_{3y}^6 \frac{x}{x^2+y^2+1}\dd x \dd y.$
@@ -355,7 +355,7 @@ The signed volume under the surface $f$ is about 11.7 cubic units.
 %Change the order of integration of $\ds\int_0^2\int_{y^2/4}^{(y+4)/2}f(x,y)\dd x\dd y$.
 %\solution
 %We sketch the region described by the bounds to help us change the integration order. We see $x$ is bounded below and above (i.e., to the left and right) by $x=y^2/4$ and $x=(y+4)/2$ respectively, and $y$ is bounded between 0 and 2. Graphing the previous curves, we find the region $R$ to be that shown in \autoref{fig:double7}. 
-%\mtable{Drawing the region determined by the bounds of integration in \autoref{ex_double7}.}{fig:double7}{\pdftooltip{\begin{tikzpicture}
+%\mtable{Drawing the region determined by the bounds of integration in \autoref{ex_double7}.}{fig:double7}{\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED}]
 %\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 %axis y line=middle,axis x line=middle,name=myplot,axis on top,
 %ymin=-.5,ymax=4.5,xmin=-.5,xmax=4.5]
@@ -369,7 +369,7 @@ The signed volume under the surface $f$ is about 11.7 cubic units.
 %\end{axis}
 %\node [right] at (myplot.right of origin) {\scriptsize $x$};
 %\node [above] at (myplot.above origin) {\scriptsize $y$};
-%\end{tikzpicture}}{ALT-TEXT-TO-BE-DETERMINED}}
+%\end{tikzpicture}}
 %
 %To change the order of integration, we need to establish curves that bound $y$. The figure makes it clear that there are two lower bounds for $y$: $y=0$ on $0\leq x\leq 2$, and $y=2x-4$ on $2\leq x\leq 4$. Thus we need two double integrals. The upper bound for each is $y=2\sqrt{x}$. Thus we have
 %\[\int_0^2\int_{y^2/4}^{(y+4)/2}f(x,y)\dd x\dd y = \int_0^2\int_0^{2\sqrt{x}} f(x,y)\dd y\dd x + \int_2^4\int_{2x-4}^{2\sqrt{x}}f(x,y)\dd y\dd x.\]
@@ -383,7 +383,7 @@ Rewrite the iterated integral $\ds \int_0^3\int_y^3 e^{-x^2}\dd x\dd y$ with the
 \solution
 Once again we make a sketch of the region over which we are integrating to facilitate changing the order. The bounds on $x$ are from $x=y$ to $x=3$; the bounds on $y$ are from $y=0$ to $y=3$. These curves are sketched in \autoref{fig:double6}, enclosing the region $R$.
 
-\mtable{Determining the region $R$ determined by the bounds of integration in \autoref{ex_double6}.}{fig:double6}{\pdftooltip{\begin{tikzpicture}
+\mtable{Determining the region $R$ determined by the bounds of integration in \autoref{ex_double6}.}{fig:double6}{\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},axis equal image,
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
 ymin=-.5,ymax=3.5,xmin=-.5,xmax=3.5]
@@ -396,7 +396,7 @@ ymin=-.5,ymax=3.5,xmin=-.5,xmax=3.5]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{ALT-TEXT-TO-BE-DETERMINED}}
+\end{tikzpicture}}
 
 To change the bounds, note that the curves bounding $y$ are $y=0$ up to $y=x$; the triangle is enclosed between $x=0$ and $x=3$. Thus the new bounds of integration are $0\leq y\leq x$ and $0\leq x\leq 3$, giving the iterated integral $\ds \int_0^3\int_0^x e^{-x^2}\dd y\dd x$.
 

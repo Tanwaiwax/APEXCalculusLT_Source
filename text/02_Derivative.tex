@@ -51,7 +51,7 @@ We can approximate the value of this limit numerically with small values of $h$ 
 
 Graphically, we can view the average velocities we computed numerically as the slopes of secant lines on the graph of $f$ going through the points $(2,f(2))$ and $(2+h,f(2+h))$, as in \autoref{fig:diff_quotient}.
 %
-\mtable{Computing the difference quotient.}{fig:diff_quotient}{\pdftooltip{\begin{tikzpicture}
+\mtable{Computing the difference quotient.}{fig:diff_quotient}{\begin{tikzpicture}[alt={A curve from (0,150) to (3,0), with a line segment meeting this curve near (2,100) and (2.4,80).  These intersections differ by h in the x direction, and f(2+h)-f(2) in the y direction.}]
 \begin{axis}[tick label style={font=\scriptsize},minor x tick num=1,
 axis y line=middle,axis x line=middle,ymin=-50,ymax=160,xmin=-.5,xmax=3.49,
 name=myplot, extra x ticks={2.4},
@@ -70,7 +70,7 @@ extra x tick labels={\tagpdfsetup{table/tagging=presentation}%
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{A curve from (0,150) to (3,0), with a line segment meeting this curve near (2,100) and (2.4,80).  These intersections differ by h in the x direction, and f(2+h)-f(2) in the y direction.}}
+\end{tikzpicture}}
 %
 In \autoref{fig:derivfalling}, the secant line corresponding to $h=1$ is shown in three contexts. \autoref{fig:derivfalling}(a) shows a ``zoomed out'' version of $f$ with its secant line. In (b), we zoom in around the points of intersection between $f$ and the secant line. Notice how well this secant line approximates $f$ between those two points --- it is a common practice to approximate functions with straight lines.
 
@@ -79,7 +79,7 @@ As $h\to 0$, these secant lines approach the \emph{tangent line}, a line that go
 \begin{figure}[!ht]
 \tagpdfsetup{table/header-rows={2,4}}
 	\begin{tabular}{cc}
-\pdftooltip{\begin{tikzpicture}
+\begin{tikzpicture}[alt={The same curve from (0,150) to (3,0), with a line segment meeting this curve near (2,100) and (3,0).}]
 \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-50,ymax=160,xmin=-.5,xmax=3.49,name=myplot]
@@ -90,9 +90,9 @@ ymin=-50,ymax=160,xmin=-.5,xmax=3.49,name=myplot]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{The same curve from (0,150) to (3,0), with a line segment meeting this curve near (2,100) and (3,0).}
+\end{tikzpicture}
 		&
-\pdftooltip{\begin{tikzpicture}
+\begin{tikzpicture}[alt={The same as the previous picture, but zoomed in on the two intersection points.}]
 \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-10,ymax=129,xmin=1.8,xmax=3.4,name=myplot]
@@ -103,9 +103,9 @@ ymin=-10,ymax=129,xmin=1.8,xmax=3.4,name=myplot]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{The same as the previous picture, but zoomed in on the two intersection points.}
+\end{tikzpicture}
 \\(a) & (b) \\\addlinespace
-\pdftooltip{\begin{tikzpicture}
+\begin{tikzpicture}[alt={The same as the previous picture, but zoomed in on the first intersection point.}]
 \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-10,ymax=129,xmin=1.4,xmax=2.6,name=myplot]
@@ -115,9 +115,9 @@ ymin=-10,ymax=129,xmin=1.4,xmax=2.6,name=myplot]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{The same as the previous picture, but zoomed in on the first intersection point.}
+\end{tikzpicture}
 &
-\pdftooltip{\begin{tikzpicture}
+\begin{tikzpicture}[alt={The same curve with a tangent line at x=2.}]
 \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-10,ymax=129,xmin=1.4,xmax=2.6,name=myplot]
@@ -127,7 +127,7 @@ ymin=-10,ymax=129,xmin=1.4,xmax=2.6,name=myplot]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{The same curve with a tangent line at x=2.}
+\end{tikzpicture}
 \\(c) & (d)\\
 	\end{tabular}
 	\caption{Parts (a), (b) and (c) show the secant line to $f(x)$ with $h=1$, zoomed in different amounts. Part (d) shows the tangent line to $f$ at $x=2$.}\label{fig:derivfalling}
@@ -181,7 +181,7 @@ Let $f(x) = 3x^2+5x-7$. Find:
 	\item The tangent line at $x=3$ has slope $23$ and goes through the point $(3,f(3))$, which is $(3,35)$. Thus the tangent line has equation $y=23(x-3)+35 = 23x-34$.
 	\end{enumerate}
 
-\mtable{A graph of $f(x) = 3x^2+5x-7$ and its tangent lines at $x=1$ and $x=3$.}{fig:tangent1}{\pdftooltip{\begin{tikzpicture}
+\mtable{A graph of $f(x) = 3x^2+5x-7$ and its tangent lines at $x=1$ and $x=3$.}{fig:tangent1}{\begin{tikzpicture}[alt={A curve from (0,-7) up to (4,61) with two tangent lines.}]
 \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-11,ymax=66,xmin=-.1,xmax=4.1,name=myplot]
@@ -193,7 +193,7 @@ ymin=-11,ymax=66,xmin=-.1,xmax=4.1,name=myplot]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{A curve from (0,-7) up to (4,61) with two tangent lines.}}
+\end{tikzpicture}}
 
 A graph of $f$ is given in \autoref{fig:tangent1} along with the tangent lines at $x=1$ and $x=3$.
 \end{example}
@@ -211,7 +211,7 @@ A graph of $f$ is given in \autoref{fig:tangent1} along with the tangent lines a
 %\solution
 %In \autoref{ex_derv_point1}, we found that $\fp(1)=11$. Hence at $x=1$, the normal line will have slope $-1/11$. An equation for the normal line is \[n(x) = \frac{-1}{11}(x-1)+1.\]
 %The normal line is plotted with $y=f(x)$ in \autoref{fig:normal1}. Note how the line looks perpendicular to $f$. (A key word here is ``looks.'' Mathematically, we say that the normal line \emph{is} perpendicular to $f$ at $x=1$ as the slope of the normal line is the opposite-reciprocal of the slope of the tangent line. However, normal lines may not always \emph{look} perpendicular. The aspect ratio of the picture of the graph plays a big role in this.)
-%\mtable{A graph of $f(x)=3x^2+5x-7$, along with its normal line at $x=1$.}{fig:normal1}{\pdftooltip{\begin{tikzpicture}
+%\mtable{A graph of $f(x)=3x^2+5x-7$, along with its normal line at $x=1$.}{fig:normal1}{\begin{tikzpicture}[alt={A line increasing steeply up and right, intersected at right angles by another line decreasing slowly down and right.  The intersection occurs at (1,1).}]
 %\begin{axis}[width=1.16\marginparwidth,x=1cm,y=1cm,tick label style={font=\scriptsize},
 %minor x tick num=1,axis y line=middle,axis x line=middle,
 %ymin=-.1,ymax=3.5,xmin=-0.1,xmax=4.3,name=myplot]
@@ -222,7 +222,7 @@ A graph of $f$ is given in \autoref{fig:tangent1} along with the tangent lines a
 %\end{axis}
 %\node [right] at (myplot.right of origin) {\scriptsize $x$};
 %\node [above] at (myplot.above origin) {\scriptsize $y$};
-%\end{tikzpicture}}{A line increasing steeply up and right, intersected at right angles by another line decreasing slowly down and right.  The intersection occurs at (1,1).}}
+%\end{tikzpicture}}
 %
 %We also found that $\fp(3) = 23$, so the normal line to the graph of $f$ at $x=3$ will have slope $-1/23$. An equation for the normal line is \[n(x) = \frac{-1}{23}(x-3)+35.\]
 %\end{example}
@@ -260,7 +260,7 @@ In order to find the equation of the tangent line, we need a slope and a point. 
 \[\fp(0) \approx \frac{\sin(0+h)- \sin 0}{h}\]
 for a small value of $h$. We choose (somewhat arbitrarily) to let $h=0.1$. Thus
 %
-\mtable{$f(x) = \sin x$ graphed with an approximation to its tangent line at $x=0$.}{fig:tangentsinx}{\pdftooltip{\begin{tikzpicture}
+\mtable{$f(x) = \sin x$ graphed with an approximation to its tangent line at $x=0$.}{fig:tangentsinx}{\begin{tikzpicture}[alt={A wave that starts at (-π,0), goes down to (-π/2,-1), up to the origin and then (π/2,1), and back down to (π,0).  There is also a line similar to y=x that passes through the origin.}]
 \begin{axis}[width=1.16\marginparwidth,axis equal image,tick label style={font=\scriptsize},
 minor x tick num=1,xtick={-3.14,-1.57,1.57,3.14},
 xticklabels={$-\pi$,$-\frac{\pi}2$,$\frac{\pi}2$,$\pi$},axis y line=middle,
@@ -271,7 +271,7 @@ axis x line=middle,ymin=-1.9,ymax=1.9,xmin=-3.5,xmax=3.5,name=myplot]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{A wave that starts at (-π,0), goes down to (-π/2,-1), up to the origin and then (π/2,1), and back down to (π,0).  There is also a line similar to y=x that passes through the origin.}}
+\end{tikzpicture}}
 %
 \[\fp(0) \approx \frac{\sin(0.1)-\sin 0}{0.1} \approx 0.9983.\]
 Thus our approximation of the equation of the tangent line is $y = 0.9983(x-0) +0 = 0.9983x$; it is graphed in \autoref{fig:tangentsinx}. The graph seems to imply the approximation is rather good.
@@ -379,7 +379,7 @@ We have found that when $f(x) = \sin x$, $\fp(x) = \cos x$ (see \autoref{fig:sin
 
 \begin{\ifbool{latexml}{center}{centering}}
 \captionsetup{type=figure}%
-\pdftooltip{\begin{tikzpicture}
+\begin{tikzpicture}[alt={Two wave functions overlapping.}]
 \begin{axis}[tick label style={font=\scriptsize}, axis y line=middle,axis x line=middle, ymin=-1.5, ymax=1.9,xmin=-7,xmax=7,name=myplot,axis equal image,
   xtick={-6.28318, -4.7123889, -3.14159, -1.5708, 1.5708, 3.14159, 4.7123889, 6.28318}, xticklabels={-$2\pi$, $-\frac{3\pi}{2}$,$-\pi$, $-\frac{\pi}{2}$, $\frac{\pi}{2}$,$\pi$, $\frac{3\pi}{2}$, $2\pi$},width=\textwidth ] % xscale=1.4,
   % w/h = 14/2.3 => h = 2.3*w/14 = .164 w
@@ -398,7 +398,7 @@ We have found that when $f(x) = \sin x$, $\fp(x) = \cos x$ (see \autoref{fig:sin
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{Two wave functions overlapping.}
+\end{tikzpicture}
 \caption{The function $f(x)=\sin x$ and its derivative $\fp(x)=\cos x$.}
 \label{fig:sin_and_dsin}
 \end{\ifbool{latexml}{center}{centering}}
@@ -421,7 +421,7 @@ See \autoref{fig:absolutevalue}.
 \solution
 We need to evaluate $\ds \lim_{h\to0}\frac{f(x+h)-f(x)}{h}.$ As $f$ is piecewise-defined, we need to consider separately the limits when $x<0$ and when $x>0$.
 
-\mtable{The absolute value function, $f(x) = \abs{x}$. Notice how the slope of the lines (and hence the tangent lines) abruptly changes at $x=0$.}{fig:absolutevalue}{\pdftooltip{\begin{tikzpicture}
+\mtable{The absolute value function, $f(x) = \abs{x}$. Notice how the slope of the lines (and hence the tangent lines) abruptly changes at $x=0$.}{fig:absolutevalue}{\begin{tikzpicture}[alt={A line segment from (-1,1) down to the origin and then up to (1,1).}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 minor tick num=1,axis y line=middle,axis x line=middle,axis equal,
 ymin=-.2,ymax=1.1,xmin=-1.1,xmax=1.1,name=myplot]
@@ -429,7 +429,7 @@ ymin=-.2,ymax=1.1,xmin=-1.1,xmax=1.1,name=myplot]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{A line segment from (-1,1) down to the origin and then up to (1,1).}}
+\end{tikzpicture}}
 
 When $x<0$:
 	\begin{align*}
@@ -460,7 +460,7 @@ Since $x=0$ is the point where our function's definition switches from one piece
 \end{align*}
 \end{minipage}\\
 %
-\mtable{A graph of the derivative of $f(x) = \abs{x}$.}{fig:absolutevalueprime}{\pdftooltip{\begin{tikzpicture}
+\mtable{A graph of the derivative of $f(x) = \abs{x}$.}{fig:absolutevalueprime}{\begin{tikzpicture}[alt={A horizontal line segment from (-1,-1) to a hollow dot at (0,-1), and then another horizontal line segment from a hollow dot at (0,1) to (1,1).}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,axis y line=middle,axis x line=middle,
 ymin=-1.4,ymax=1.4,xmin=-1.1,xmax=1.1,name=myplot]
@@ -471,7 +471,7 @@ ymin=-1.4,ymax=1.4,xmin=-1.1,xmax=1.1,name=myplot]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{A horizontal line segment from (-1,-1) to a hollow dot at (0,-1), and then another horizontal line segment from a hollow dot at (0,1) to (1,1).}}
+\end{tikzpicture}}
 %
 \noindent
 The last lines of each column tell the story: the left and right hand limits are not equal. Therefore the limit does not exist at 0, and $f$ is not differentiable at 0; see \autoref{fig:absolutevalueprime}.\vspace{-.3\baselineskip}
@@ -487,7 +487,7 @@ Find the derivative of $f(x)$, where $\ds f(x) = \begin{cases}\sin x & x\leq \pi
 \solution
 Using \autoref{ex_deriv_sinx}, we know that when $x<\pi/2$, $\fp(x) = \cos x$. It is easy to verify that when $x>\pi/2$, $\fp(x) = 0$; consider:
 %
-\mtable{A graph of $f(x)$ as defined in \autoref{ex_diff_piecewise}.}{fig:piecewisesinx1}{\pdftooltip{\begin{tikzpicture}
+\mtable{A graph of $f(x)$ as defined in \autoref{ex_diff_piecewise}.}{fig:piecewisesinx1}{\begin{tikzpicture}[alt={A curve starting at the origin, going upward to (π/2,1) where it flattens out and becomes horizontal.}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,xtick={1.57},xticklabels={$\frac{\pi}2$},axis y line=middle,
 axis x line=middle,ymin=-.4,ymax=1.4,xmin=-.1,xmax=2.1,name=myplot]
@@ -496,7 +496,7 @@ axis x line=middle,ymin=-.4,ymax=1.4,xmin=-.1,xmax=2.1,name=myplot]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{A curve starting at the origin, going upward to (π/2,1) where it flattens out and becomes horizontal.}}
+\end{tikzpicture}}
 %
 \[
  \lim_{h\to0}\frac{f(x+h) - f(x)}{h}
@@ -533,7 +533,7 @@ Being more rigorous, we can again evaluate the difference quotient limit at $x=\
 \end{minipage}
 }
 
-\mtable{A graph of $\fp(x)$ in \autoref{ex_diff_piecewise}.}{fig:piecewisecosx1}{\pdftooltip{\begin{tikzpicture}
+\mtable{A graph of $\fp(x)$ in \autoref{ex_diff_piecewise}.}{fig:piecewisecosx1}{\begin{tikzpicture}[alt={A curve starting at (0,1) moving downward to (π/2,0) where it abruptly changes direction to become horizontal.}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 minor x tick num=1,xtick={1.57},xticklabels={$\frac{\pi}2$},axis y line=middle,
 axis x line=middle,ymin=-.4,ymax=1.4,xmin=-.1,xmax=2.1,name=myplot]
@@ -542,7 +542,7 @@ axis x line=middle,ymin=-.4,ymax=1.4,xmin=-.1,xmax=2.1,name=myplot]
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
-\end{tikzpicture}}{A curve starting at (0,1) moving downward to (π/2,0) where it abruptly changes direction to become horizontal.}}
+\end{tikzpicture}}
 
 Since both the left and right hand limits are 0 at $x=\pi/2$, the limit exists and $\fp(\pi/2)$ exists (and is 0). Therefore we can fully write $\fp$ as
 \[\fp(x) = \begin{cases}\cos x & x\leq\pi/2\\ 0 & x>\pi/2\end{cases}.\]

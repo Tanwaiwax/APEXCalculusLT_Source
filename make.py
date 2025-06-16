@@ -702,11 +702,11 @@ def runcommands(args, commands: Union[str, Literal[False]]) -> int:
 if args.all:
     print('all true')
     #suffix = ' --justprint' if args.justprint else ''
-#    failed_compilations += compilewith('--figures')
-#    # having this first makes sure the index and toc are up to date
-#    failed_compilations += compilewith('-c0')
-#    failed_compilations += compilewith('--instructor')
-#    failed_compilations += compilewith('--prc')
+    failed_compilations += compilewith('--figures')
+    # having this first makes sure the index and toc are up to date
+    failed_compilations += compilewith('-c0')
+    failed_compilations += compilewith('--instructor')
+    failed_compilations += compilewith('--prc')
     for part in range(1,4):
         failed_compilations += compilewith(f'-bc{part}')
     # having '123' first means that doesn't change everytime, which may speed compilation

@@ -678,7 +678,7 @@ def runcommands(args, commands: Union[str, Literal[False]]) -> int:
             loginfomessage += ' line'
         loginfo.append(loginfomessage)
         with open(log, 'a') as texlogfile:
-            texlogfile.write('\n\n{loginfomessage}\n\n')
+            texlogfile.write(f'\n\n{loginfomessage}\n\n')
             traceback.print_exc(file=texlogfile)
     finally:
         shutil.copy(log,'logs/compilation'+newsuffix+'.log')

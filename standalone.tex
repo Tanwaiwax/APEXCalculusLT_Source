@@ -2,18 +2,17 @@
 %\errorcontextlines 10000
 \DocumentMetadata{
   lang        = en,
-%  pdfversion  = 1.7,
-%  pdfstandard = ua-1,
-  pdfversion  = 2.0,
-  pdfstandard = ua-2,
-%  pdfstandard = a-4e,
+  pdfversion  = 1.7,
+  pdfstandard = ua-1,
+%  pdfversion  = 2.0,
+%  pdfstandard = ua-2,
+%  pdfstandard = a-4f,
   testphase   = latest
 }
-%\providecommand{\tagpdfsetup}[1]{}
-%\nonstopmode
 %\RequirePackage[l2tabu, orthodox]{nag}
-%\documentclass{article}
 \documentclass[10pt]{book}
+%\documentclass{article}
+
 %\usepackage{graphicx}
 %\usepackage[noplaybutton]{media9}
 %\usepackage{headers/media9fix}
@@ -22,10 +21,12 @@
 \input{headers/APEX_format}
 \usepackage{headers/apex_style}
 \input{headers/Header_Calculus}
+%\usepackage{tikz}
 
 %\addmediapath{/usr/local/texlive/2025/texmf-dist/source/latex/media9/files}
+%For my use, I needed to modify `\includemedia` and `\mix_embedasset:n`.  Since they're ~350 and ~100 lines long, I created a separate style file that modifies those functions and incorporates your change.
 
-\begin{document}%\pagestyle{empty}
+\begin{document}
 
 %An embedded prc file:\bigskip
 %
@@ -43,6 +44,8 @@
 %{\includegraphics[width=.4\linewidth,alt={Some alt text}]{epixposter}}
 %{epix.prc}
 
+%\chapter{First}
+
 \frontmatter
 
 %\tableofcontents
@@ -51,17 +54,19 @@
 
 \mainmatter
 
-%\setcounter{chapter}{2}
-%
-%\setcounter{section}{2}
+\setcounter{chapter}{10}
 
-\input{text/06_Hyperbolic_Functions.tex}
+\setcounter{section}{3}
+
+\input{text/09_Polar_Intro.tex}
+
+%\printexercises{exercises/11-03-exercises}
 
 %%\printexercises{standalone_exercises}
 
-%\appendix
+\appendix
 
-%\printsolutions{Standalone Solutions To All Problems}
+\printsolutions{Standalone Solutions To All Problems}
 
 %\printindex
 

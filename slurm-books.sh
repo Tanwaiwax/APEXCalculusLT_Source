@@ -46,8 +46,9 @@ echo "Job started at $(date)"
 echo ""
 
 source ~/.venv/bin/activate
+python3 make.py -bc1
 python3 make.py -bc2
-#python3 make.py --all
+python3 make.py --all
 exit_code=$?
 deactivate
 

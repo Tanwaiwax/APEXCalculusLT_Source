@@ -88,6 +88,7 @@ addboolarg('quit','Write options.tex and quit.')
 parser.add_argument('--spelling',action='store_true',help='Run spellcheck')
 parser.add_argument('--justprint',action='store_true',
                     help='Print the commands that would be executed, but do not execute them')
+parser.add_argument('--causeerror',action='store_true',help='Try to cause the error in 09_Polar_Intro')
 
 group = parser.add_mutually_exclusive_group()
 addboolarg('blackwhite','Print static graphics in black and white (default is color).',parser=group)
@@ -616,8 +617,26 @@ option_func = {
     'todo': updatetodo,
     'prc': updateprc,
     'spelling': writemisspellings,
-    'overview': create_overview
+    'overview': create_overview,
+    'causeerror': cause_error
 }
+
+def cause_error() -> int:
+    local_failed_compilations = 0
+    print('attempting to cause error')
+    compilewith('-qbc2')
+    commandline = ['lualatex','-interaction=batchmode','standalone']
+    subprocess.check_call(commandline,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)  # type: ignore
+    shutil.copy('standalone.log','logs/compilation-lua.log')
+    print('lua completed')
+    commandline = ['latexmk','-g','-lualatex','-interaction=batchmode','standalone']
+    subprocess.check_call(commandline,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)  # type: ignore
+    shutil.copy('standalone.log','logs/compilation-mk.log')
+    print('mk completed')
+    commandline = ['max_strings=1000000 hash_extra=1000000 latexmk -g -lualatex -interaction=batchmode standalone']
+    subprocess.check_call(commandline,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,shell=True)
+    shutil.copy('standalone.log','logs/compilation-mk-mem.log')
+    print('mk memory completed')
 
 def compilewith(commands: Union[str, Literal[False]] =False) -> int:
     local_failed_compilations = 0

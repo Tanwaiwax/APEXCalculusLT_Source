@@ -48,25 +48,38 @@ echo ""
 source ~/.venv/bin/activate
 python3 make.py -bc1
 python3 make.py -qbc2
+python3 make.py --causeerror
+exit_code=$?
+if [ "$exit_code" ne "0" ]; then
+    echo "failed standalone"
+    exit 4
+fi
+
+python3 make.py -bc1
+python3 make.py -qbc2
 lualatex -interaction=batchmode Calculus
 cp Calculus.log logs/compilation-lua.log
 grep -l 'Fatal error occurred, no output PDF file produced' Calculus.log
-if [ $? ne "0" ]; then
+exit_code=$?
+if [ "$exit_code" ne "0" ]; then
     echo "failed lua"
-    exit
+    exit 1
 fi
+
 python3 make.py -bc1
 python3 make.py -qbc2
 max_strings=1000000 hash_extra=1000000 latexmk -g -lualatex -interaction=batchmode Calculus
 cp Calculus.log logs/compilation-mk.log
 grep -l 'Fatal error occurred, no output PDF file produced' Calculus.log
-if [ $? ne "0" ]; then
+if [ "$exit_code" ne "0" ]; then
     echo "failed mk"
-    exit
+    exit 2
 fi
+
 python3 make.py -bc1
 python3 make.py -bc2
 exit_code=$?
+
 deactivate
 
 echo ""
@@ -78,6 +91,6 @@ cd ApexPDFs
 tar czf bigpdfs.tar.gz bigpdfs/
 
 if [ "$exit_code" -ne "0" ]; then
-    echo "failed make"
-    exit "$exit_code"
+    echo "failed make: $exit_code"
+    exit 3
 fi

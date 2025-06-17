@@ -60,11 +60,11 @@ def addboolarg(key: str, help: str, parser=parser, shortkey: Union[str,None]=Non
     shortkey = shortkey or key[0]
     parser.add_argument('-'+shortkey,'--'+key,action='store_true',help=help)
 
-addboolarg('all','Creates all versions. (Ignores other options. 20 min)')
+addboolarg('all','Creates all versions. (Ignores other options. 6 hours.)')
 
 parser.add_argument('-c','--calculus', type=int, choices=[0,1,2,3,4],
                     default=0,
-                    help='Calculus semester 1, 2, 3, or (default) all. (5 or 8 min)')
+                    help='Calculus semester 1, 2, 3, or (default) all. 2 or 4 hours.')
 
 addboolarg('figures','Create 3D figures using Asymptote.')
 addboolarg('matrices','Create matrix figures for LaTeXML.')

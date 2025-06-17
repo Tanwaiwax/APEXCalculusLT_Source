@@ -30,32 +30,31 @@ Plot the following polar coordinates:\index{polar coordinates!plotting points}
 To aid in the drawing, a polar grid is provided
 %
 \parbox[t][0pt]{0pt}{%
-\pdftooltip{%
-\iflatexml
- \begin{tikzpicture}[remember picture,overlay,scale=.8]
-\else
+\tikzset{gridshift/.style={}}
+\iflatexml\else
  \checkoddpage%
  \ifbool{oddpage}{%
-  \begin{tikzpicture}[remember picture,overlay,scale=.8,shift=(current page.south),shift={+(.5in,1.7in)}]
+  \tikzset{gridshift/.append style={shift=(current page.south),shift={+(.5in,1.7in)}}}
  }{%
-  \begin{tikzpicture}[remember picture,overlay,scale=.8,shift=(current page.south),shift={+(-.5in,1.7in)}]
+  \tikzset{gridshift/.append style={shift=(current page.south),shift={+(.5in,1.7in)}}}
  }%
 \fi
- \foreach \x in { 0,30,45,60, 90,120,135,150, 180,210,225,240, 270,300,315,330 }
-  { \draw [dashed,gray] (0,0) -- (\x:3.1); }
+\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED},remember picture,overlay,scale=.8,gridshift]
+ \foreach \x in {0,30,45,60,90,120,135,150,180,210,225,240,270,300,315,330}
+  {\draw [dashed,gray] (0,0) -- (\x:3.1);}
  \draw[thick,->,>=stealth] (0,0) node [below] {$O$} -- (3.5,0) ;
  \filldraw (0,0) circle (1.5pt);
- \foreach \x in {1,2,3} {
+ \foreach \x in {1,2,3} {%
   \draw (0,0) circle (\x cm);
   \draw (\x,0) node [below right] {\x};
  }
-\end{tikzpicture}}{ALT-TEXT-TO-BE-DETERMINED}}%
+\end{tikzpicture}}%
 \ifbool{latexml}{here.\\}{at the bottom of this page.}%
 %
 \mtable{Plotting polar points in \autoref{ex_polar1}.}{fig:polar1}{\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED},scale=.75,>=latex]
 	\draw[thick,->] (0,0) node [below] {$O$} -- (3.5,0) ;
 	\filldraw (0,0) circle (1.5pt);
-	\foreach \x in {1,2,3} {
+	\foreach \x in {1,2,3} {%
 		\draw (0,0) circle (\x cm);
 		\draw (\x,0) node [below right] {\x};
 	}
@@ -123,7 +122,7 @@ Given the rectangular coordinates $(x,y)$, the polar coordinates are determined 
 \begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED},>=latex]
  \draw [thin,gray] (-2.5,-2.5) grid (2.5,2.5);
  \draw [thick,->] (0,0) node [below] {$O$} -- (2.5,0);
- \foreach \x in {1,2}{
+ \foreach \x in {1,2}{%
   \draw [very thick] (0,0) circle (\x cm);
  }
  \filldraw (0,0) circle (1.5pt);
@@ -134,7 +133,7 @@ Given the rectangular coordinates $(x,y)$, the polar coordinates are determined 
 \begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED},>=latex]
 \draw [very thick] (-2.5,-2.5) grid (2.5,2.5);
 \draw [thin,->] (0,0) node [below left,black] {\scriptsize$(0,0)$} -- (2.5,0);
-\foreach \x in {1,2} {
+\foreach \x in {1,2} {%
  \draw [thin] (0,0) circle (\x cm);
 }
 \filldraw (0,0) circle (1.5pt);
@@ -173,7 +172,7 @@ These points are plotted in \autoref{fig:polar2} (b). The polar system is drawn 
 
 \subsection{Polar Functions and Polar Graphs}
 
-Defining a new coordinate system allows us to create a new kind of function, a \textbf{polar function.} Rectangular coordinates lent themselves well to creating functions that related $x$ and $y$, such as $y=x^2.$ Polar coordinates allow us to create functions that relate $r$ and $\theta$. Normally these functions look like $r=f(\theta)$, although we can create functions of the form $\theta = f(r)$. The following examples introduce us to this concept.\index{polar!functions}\index{polar!functions!graphing}
+Defining a new coordinate system allows us to create a new kind of function, a \textbf{polar function.} Rectangular coordinates lent themselves well to creating functions that related $x$ and $y$, such as $y=x^2$. Polar coordinates allow us to create functions that relate $r$ and $\theta$. Normally these functions look like $r=f(\theta)$, although we can create functions of the form $\theta = f(r)$. The following examples introduce us to this concept.\index{polar!functions}\index{polar!functions!graphing}
 
 \begin{example}[Introduction to Graphing Polar Functions]\label{ex_polar3}%
 Describe the graphs of the following polar functions.
@@ -251,10 +250,10 @@ Sketch
    {\draw [rotate=\x,dashed,gray] (-2.3,0) -- (2.3,0);}
   \draw [thick,draw={\colorone},domain=0:360,samples=60,smooth] plot
    ({cos(\x)*(1+cos(\x))},{sin(\x)*(1+cos(\x))});
-  \foreach \x in { 0,30,45,60, 90,120,135,150, 180,210,225,240, 270,300,315,330 }
-   { \filldraw ({\x}:{1+cos(\x)}) circle (1pt); }
-  \foreach \x/\y in { 45/{\pi/4}, 90/{\pi/2}, 135/{3\pi/4}, 180/{\pi}, 225/{5\pi/4}, 270/{3\pi/2}, 315/{7\pi/4} }
-   { \draw({\x}:{2.3}) node{$\scriptstyle\y$}; }
+  \foreach \x in {0,30,45,60, 90,120,135,150, 180,210,225,240, 270,300,315,330}
+   {\filldraw ({\x}:{1+cos(\x)}) circle (1pt); }
+  \foreach \x/\y in {45/{\pi/4}, 90/{\pi/2}, 135/{3\pi/4}, 180/{\pi}, 225/{5\pi/4}, 270/{3\pi/2}, 315/{7\pi/4} }
+   {\draw({\x}:{2.3}) node{$\scriptstyle\y$}; }
 \end{tikzpicture}
 \end{tabular}}
 %
@@ -287,7 +286,7 @@ Sketch the polar function $r=\cos (2\theta)$ on $[0,2\pi]$ by plotting points.
 \solution
 We start by making a table of $\cos (2\theta)$ evaluated at common angles $\theta$, as shown in \autoref{fig:polar5table}. These points are then plotted in \autoref{fig:polar5}. This particular graph ``moves'' around quite a bit and one can easily forget which points should be connected to each other. To help us with this, we numbered each point in the table and on the graph. 
 
-\begin{\ifbool{latexml}{center}{centering}}
+\begin{center}
 \captionsetup{type=figure}%
 $\begin{array}{ccl @{\hspace{4em}} ccl}\toprule
 \text{Pt.} & \theta & \cos (2\theta) & \text{Pt.} & \theta & \cos (2\theta) \\
@@ -308,7 +307,7 @@ $\begin{array}{ccl @{\hspace{4em}} ccl}\toprule
 \end{array}$
 \caption{Tables of points for plotting a polar curve.}
 \label{fig:polar5table}
-\end{\ifbool{latexml}{center}{centering}}
+\end{center}
 
 \mtable[-2in]{Polar plots from \autoref{ex_polar5}.}{fig:polar5}{%
  \begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED},scale=1]
@@ -409,7 +408,7 @@ minor y tick num=4,ymin=-5.3,ymax=5.3,xmin=-5.3,xmax=5.3,axis equal]
 \end{example}
 
 Some curves have very simple polar equations but rather complicated rectangular ones. For instance, the equation $r=1+\cos\theta$ describes a \emph{cardioid} (a shape important to the sensitivity of microphones, among other things; one is graphed in the gallery in the Limaçon section). Its rectangular form is not nearly as simple; it is the implicit equation
-$x^4+y^4+2x^2y^2-2xy^2-2x^3-y^2=0.$ The conversion is not ``hard,'' but takes several steps, and is left as an exercise.
+$x^4+y^4+2x^2y^2-2xy^2-2x^3-y^2=0$. The conversion is not ``hard,'' but takes several steps, and is left as an exercise.
 
 \subsection{Gallery of Polar Curves}
 

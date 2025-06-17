@@ -495,6 +495,8 @@ def getcommandline(args) -> Union[list[str], list[list[str]]]:
         return getlatexmlepubcommandline()
     if args.standalonee:
         return getlatexmlepubcommandline('standalone','standaloneweb')
+    if args.calculus:
+        return ['latexmk','-g','-lualatex','-interaction=batchmode','Calculus']
     # see https://tex.stackexchange.com/a/741777/107497
     return ['max_strings=1000000 hash_extra=1000000 latexmk -g -lualatex -interaction=batchmode Calculus']
 
@@ -611,6 +613,24 @@ def writemisspellings() -> None:
         for word,count in runningTotal.most_common(10):
             print(word+':',count,'time(s)',file=misspellings)
 
+def cause_error():
+    local_failed_compilations = 0
+    print('attempting to cause error')
+    compilewith('-bc1')
+    compilewith('-qbc2')
+    commandline = ['lualatex','-interaction=batchmode','Calculus']
+    subprocess.check_call(commandline,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)  # type: ignore
+    shutil.copy('Calculus.log','logs/Calculus-lua.log')
+    print('lua completed')
+    commandline = ['latexmk','-g','-lualatex','-interaction=batchmode','Calculus']
+    subprocess.check_call(commandline,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)  # type: ignore
+    shutil.copy('Calculus.log','logs/Calculus-mk.log')
+    print('mk completed')
+    commandline = ['max_strings=1000000 hash_extra=1000000 latexmk -g -lualatex -interaction=batchmode Calculus']
+    subprocess.check_call(commandline,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,shell=True)
+    shutil.copy('Calculus.log','logs/Calculus-mk-mem.log')
+    print('mk memory completed')
+
 option_func = {
     'figures': makefigs,
     'matrices': makematrices,
@@ -620,23 +640,6 @@ option_func = {
     'overview': create_overview,
     'causeerror': cause_error
 }
-
-def cause_error() -> int:
-    local_failed_compilations = 0
-    print('attempting to cause error')
-    compilewith('-qbc2')
-    commandline = ['lualatex','-interaction=batchmode','standalone']
-    subprocess.check_call(commandline,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)  # type: ignore
-    shutil.copy('standalone.log','logs/compilation-lua.log')
-    print('lua completed')
-    commandline = ['latexmk','-g','-lualatex','-interaction=batchmode','standalone']
-    subprocess.check_call(commandline,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)  # type: ignore
-    shutil.copy('standalone.log','logs/compilation-mk.log')
-    print('mk completed')
-    commandline = ['max_strings=1000000 hash_extra=1000000 latexmk -g -lualatex -interaction=batchmode standalone']
-    subprocess.check_call(commandline,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,shell=True)
-    shutil.copy('standalone.log','logs/compilation-mk-mem.log')
-    print('mk memory completed')
 
 def compilewith(commands: Union[str, Literal[False]] =False) -> int:
     local_failed_compilations = 0
@@ -719,7 +722,7 @@ def runcommands(args, commands: Union[str, Literal[False]]) -> int:
     return local_failed_compilations
 
 if args.all:
-    print('all true')
+    print('--all is true')
     #suffix = ' --justprint' if args.justprint else ''
     failed_compilations += compilewith('--figures')
     # having this first makes sure the index and toc are up to date
@@ -731,8 +734,9 @@ if args.all:
     # having '123' first means that doesn't change everytime, which may speed compilation
     #for part,size in itertools.product('123',['s','b']):
     #    compilewith('-'+size+'c'+part)
+    cause_error()
 else:
-    print('all false')
+    print('--all is false')
     failed_compilations += compilewith()
 
 sys.exit(failed_compilations)

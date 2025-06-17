@@ -46,8 +46,8 @@ echo "Job started at $(date)"
 echo ""
 
 source ~/.venv/bin/activate
-python3 make.py -bc1
-python3 make.py -bc2
+#python3 make.py -bc1
+#python3 make.py -bc2
 python3 make.py --all
 exit_code=$?
 deactivate
@@ -56,8 +56,9 @@ echo ""
 echo "Job finished at $(date)"
 echo ""
 
-cd ApexPDFs ; tar czf bigpdfs.tar.gz bigpdfs/
 tar czf talon-logs.tar.gz logs/
+cd ApexPDFs
+tar czf bigpdfs.tar.gz bigpdfs/
 
 if [ "$exit_code" -ne "0" ]; then
     echo "job failed"

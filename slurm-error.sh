@@ -46,39 +46,20 @@ echo "Job started at $(date)"
 echo ""
 
 source ~/.venv/bin/activate
-python3 make.py -bc1
-python3 make.py -qbc2
-python3 make.py --causeerror
+python3 make.py --all
 exit_code=$?
 if [ "$exit_code" ne "0" ]; then
-    echo "failed standalone"
+    echo "failed all"
     exit 4
 fi
 
-python3 make.py -bc1
-python3 make.py -qbc2
-lualatex -interaction=batchmode Calculus
-cp Calculus.log logs/compilation-lua.log
+python3 make.py --causeerror
 grep -l 'Fatal error occurred, no output PDF file produced' Calculus.log
 exit_code=$?
 if [ "$exit_code" ne "0" ]; then
-    echo "failed lua"
+    echo "failed make"
     exit 1
 fi
-
-python3 make.py -bc1
-python3 make.py -qbc2
-max_strings=1000000 hash_extra=1000000 latexmk -g -lualatex -interaction=batchmode Calculus
-cp Calculus.log logs/compilation-mk.log
-grep -l 'Fatal error occurred, no output PDF file produced' Calculus.log
-if [ "$exit_code" ne "0" ]; then
-    echo "failed mk"
-    exit 2
-fi
-
-python3 make.py -bc1
-python3 make.py -bc2
-exit_code=$?
 
 deactivate
 

@@ -618,18 +618,28 @@ def cause_error():
     print('attempting to cause error')
     compilewith('-bc1')
     compilewith('-qbc2')
-    commandline = ['lualatex','-interaction=batchmode','Calculus']
-    subprocess.check_call(commandline,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)  # type: ignore
-    shutil.copy('Calculus.log','logs/Calculus-lua.log')
-    print('lua completed')
-    commandline = ['latexmk','-g','-lualatex','-interaction=batchmode','Calculus']
-    subprocess.check_call(commandline,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)  # type: ignore
-    shutil.copy('Calculus.log','logs/Calculus-mk.log')
-    print('mk completed')
-    commandline = ['max_strings=1000000 hash_extra=1000000 latexmk -g -lualatex -interaction=batchmode Calculus']
-    subprocess.check_call(commandline,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,shell=True)
-    shutil.copy('Calculus.log','logs/Calculus-mk-mem.log')
-    print('mk memory completed')
+    try:
+        commandline = ['lualatex','-interaction=batchmode','Calculus']
+        subprocess.check_call(commandline,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)  # type: ignore
+        shutil.copy('Calculus.log','logs/Calculus-lua.log')
+        print('lua completed')
+    except:
+        local_failed_compilations += 1
+    try:
+        commandline = ['latexmk','-g','-lualatex','-interaction=batchmode','Calculus']
+        subprocess.check_call(commandline,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)  # type: ignore
+        shutil.copy('Calculus.log','logs/Calculus-mk.log')
+        print('mk completed')
+    except:
+        local_failed_compilations += 1
+    try:
+        commandline = ['max_strings=1000000 hash_extra=1000000 latexmk -g -lualatex -interaction=batchmode Calculus']
+        subprocess.check_call(commandline,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,shell=True)
+        shutil.copy('Calculus.log','logs/Calculus-mk-mem.log')
+        print('mk memory completed')
+    except:
+        local_failed_compilations += 1
+    return local_failed_compilations
 
 option_func = {
     'figures': makefigs,

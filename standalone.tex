@@ -1,45 +1,46 @@
 % !TEX program = LuaLaTeX
 %\errorcontextlines 10000
 \DocumentMetadata{lang=en,testphase=latest,
-  pdfversion=1.7,pdfstandard=ua-1,
-%  pdfversion=2.0,pdfstandard=ua-2,
-%  pdfstandard=a-4f,
+%  pdfversion=1.7,pdfstandard=ua-1,
+  pdfversion=2.0,pdfstandard=ua-2,
+  pdfstandard=a-4f,
 }
 %\RequirePackage[l2tabu, orthodox]{nag}
 \documentclass[10pt]{book}
 %\documentclass{article}
 
-%\usepackage{graphicx}
-%\usepackage[noplaybutton]{media9}
-%\usepackage{headers/media9fix}
-%\title{My Title}
+\usepackage{graphicx}
+\usepackage[noplaybutton]{media9}
+\usepackage{headers/media9fix}
+\title{My Title}
 
-\input{headers/APEX_format}
-\usepackage{headers/apex_style}
-\input{headers/Header_Calculus}
+%\input{headers/APEX_format}
+%\usepackage{headers/apex_style}
+%\input{headers/Header_Calculus}
 %\usepackage{tikz}
 
-%\addmediapath{/usr/local/texlive/2025/texmf-dist/source/latex/media9/files}
-%For my use, I needed to modify `\includemedia` and `\mix_embedasset:n`.  Since they're ~350 and ~100 lines long, I created a separate style file that modifies those functions and incorporates your change.
+\addmediapath{/usr/local/texlive/2025/texmf-dist/source/latex/media9/files}
+%For my use, I needed to modify `\includemedia` and `\mix_embedasset:n`.  Since they're ~350 and ~100 lines long, I created a separate style file that modifies those functions and incorporates your changes.  My example now validates under 1.7/UA-1 and 2.0/UA-2.  It does not validate under A-4 nor A-4F, which is probably to be expected.
 
 \begin{document}
 
-%An embedded prc file:\bigskip
-%
-%\includemedia[
-%width=0.4\linewidth,height=0.4\linewidth,
-%add3Djscript=asylabels.js, %upright text labels
-%add3Djscript=3Dspintool.js, %let scene rotate about z-axis
-%% 3Dcoo, 3Droo values found with `Generate Default View' from
-%% context menu
-%3Dmenu,
-%3Dc2c=4 2 3,
-%3Dcoo=4.413303375244141 2.195653200149536 -0.000011444091796875,
-%3Droo=429.49035778293376,
-%]
-%{\includegraphics[width=.4\linewidth,alt={Some alt text}]{epixposter}}
-%{epix.prc}
+An embedded prc file:\bigskip
 
+\includemedia[
+width=0.4\linewidth,height=0.4\linewidth,
+add3Djscript=asylabels.js, %upright text labels
+add3Djscript=3Dspintool.js, %let scene rotate about z-axis
+% 3Dcoo, 3Droo values found with `Generate Default View' from
+% context menu
+3Dmenu,
+3Dc2c=4 2 3,
+3Dcoo=4.413303375244141 2.195653200149536 -0.000011444091796875,
+3Droo=429.49035778293376,
+]
+{\includegraphics[width=.4\linewidth,alt={Some alt text}]{epixposter}}
+{epix.prc}
+
+\end{document}
 %\chapter{First}
 
 \frontmatter

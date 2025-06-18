@@ -46,13 +46,6 @@ echo "Job started at $(date)"
 echo ""
 
 source ~/.venv/bin/activate
-python3 make.py --all
-exit_code=$?
-if [ "$exit_code" ne "0" ]; then
-    echo "failed all"
-    exit 4
-fi
-
 python3 make.py --causeerror
 grep -l 'Fatal error occurred, no output PDF file produced' Calculus.log
 exit_code=$?

@@ -616,7 +616,7 @@ def writemisspellings() -> None:
 def cause_error():
     local_failed_compilations = 0
     print('attempting to cause error')
-    compilewith('-bc1')
+#    compilewith('-bc1')
     compilewith('-qbc2')
     try:
         commandline = ['lualatex','-interaction=batchmode','Calculus']
@@ -629,6 +629,7 @@ def cause_error():
         commandline = ['latexmk','-g','-lualatex','-interaction=batchmode','Calculus']
         subprocess.check_call(commandline,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)  # type: ignore
         shutil.copy('Calculus.log','logs/Calculus-mk.log')
+        shutil.copy('Calculus.pdf','ApexPDFs/bigpdfs/calculus-2-bw.pdf')
         print('mk completed')
     except:
         local_failed_compilations += 1
@@ -739,13 +740,15 @@ if args.all:
     failed_compilations += compilewith('-c0')
     failed_compilations += compilewith('--instructor')
     failed_compilations += compilewith('--prc')
+    failed_compilations += compilewith('-bc1')
+    failed_compilations += compilewith('-bc3')
+    cause_error()
     for part in range(1,4):
         failed_compilations += compilewith(f'-bc{part}')
     print('--all completed, now causing error')
     # having '123' first means that doesn't change everytime, which may speed compilation
     #for part,size in itertools.product('123',['s','b']):
     #    compilewith('-'+size+'c'+part)
-    cause_error()
 else:
     print('--all is false')
     failed_compilations += compilewith()

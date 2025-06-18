@@ -495,7 +495,7 @@ def getcommandline(args) -> Union[list[str], list[list[str]]]:
         return getlatexmlepubcommandline()
     if args.standalonee:
         return getlatexmlepubcommandline('standalone','standaloneweb')
-    if args.calculus:
+    if args.calculus == 2:
         return ['latexmk','-g','-lualatex','-interaction=batchmode','Calculus']
     # see https://tex.stackexchange.com/a/741777/107497
     return ['max_strings=1000000 hash_extra=1000000 latexmk -g -lualatex -interaction=batchmode Calculus']
@@ -741,6 +741,7 @@ if args.all:
     failed_compilations += compilewith('--prc')
     for part in range(1,4):
         failed_compilations += compilewith(f'-bc{part}')
+    print('--all completed, now causing error')
     # having '123' first means that doesn't change everytime, which may speed compilation
     #for part,size in itertools.product('123',['s','b']):
     #    compilewith('-'+size+'c'+part)

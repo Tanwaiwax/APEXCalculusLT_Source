@@ -204,7 +204,12 @@
 
 %\usepackage[noadjust]{marginnote}
 \usepackage{marginalia}
-
+% so that if we don't have marginalia, it still compiles
+% without \immediate, the \write doesn't happen until after the first \marginalia@pagedata in begindocument/end
+\AddToHook{begindocument}{%
+ \immediate\write\@auxout{\string\providecommand\string\marginalia@pagedata[1]{}}%
+ \immediate\write\@auxout{\string\providecommand\string\marginalia@itemdata[1]{}}%
+}
 
 % only in .ltxml
 \newcommand{\iframe}[3]{}

@@ -1,0 +1,119 @@
+\def\ltlabtbldate{2025-05-10}
+\def\ltlabtblversion{0.85s}
+\ProvidesExplPackage {tagpdf-table-headers} {\ltlabtbldate} {\ltlabtblversion}
+  {Code related to the tagging of table headers}
+
+%\cs_generate_variant:Nn \exp_args:NNe { cNe }
+\cs_generate_variant:Nn \__tag_struct_prop_gput:nnn { Vne }
+\cs_generate_variant:Nn \int_set:Nn { Ne }
+\cs_generate_variant:Nn \str_range:nnn { een }
+
+\clist_new:N \l__tbl_headerattribute_clist
+\int_new:N \l__tbl_row_int
+\int_new:N \l__tbl_row_neg_int
+\int_new:N \l__tbl_column_int
+\int_new:N \l__tbl_column_neg_int
+\bool_new:N \l__tbl_found_header_bool
+%\int_new:N \c__tbl_id_size
+%\str_new:N \c__tbl_zero_prefix_str
+
+%\hook_gput_code:nnn { cmd / after / __tbl_set_header_rows: } { latex-lab-testphase-table } { \__tbl_set_td_headers: }
+\let \__old__tbl_set_header_rows: = \__tbl_set_header_rows:
+\cs_set_protected:Npn \__tbl_set_header_rows:
+  {
+    \__old__tbl_set_header_rows:
+    \__tbl_set_td_headers:
+  }
+
+\tagpdfsetup{role/new-attribute={TD}{/A~/Headers}}
+\tagpdfsetup{role/new-attribute={TD}{/A~/O}}
+
+\cs_new:Npn \__tbl_zero_pad:N #1
+  {
+    \str_range:een { \c__tbl_zero_prefix_str #1 } { - \c__tbl_id_size } { -1 }
+  }
+
+\cs_new:Npn \__tbl_set_td_headers:
+  {
+    \int_if_exist:NF \c__tbl_id_size
+      {
+        \str_set:Ne \l_tmpa_str { \tag_get:n { struct_id } }
+        \int_const:Nn \c__tbl_id_size { \str_count:N \l_tmpa_str - 5 } % remove (ID. and )
+		\str_const:Ne \c__tbl_zero_prefix_str { \prg_replicate:nn { \c__tbl_id_size } { 0 } }
+      }
+	\int_step_function:nN { \seq_count:N \g__tbl_struct_cells_seq } \__tbl_set_row_td_headers:n
+  }
+
+\cs_new:Npn \__tbl_set_row_td_headers:n #1
+  {
+    \int_set:Nn \l__tbl_row_int { #1 }
+    \int_set:Nn \l__tbl_row_neg_int { #1 - 1 - \seq_count:N \g__tbl_struct_cells_seq }
+    \exp_args:NNx \clist_set:Nn \l_tmpa_clist { \seq_item:Nn \g__tbl_struct_cells_seq { #1 } }
+    \int_step_function:nN { \clist_count:N \l_tmpa_clist } \__tbl_set_td_headers:n
+  }
+
+\cs_new:Npn \__tbl_set_td_headers:n #1
+  {
+    \exp_args:NNx \clist_set:Nn \l_tmpa_clist { \seq_item:NV \g__tbl_struct_cells_seq \l__tbl_row_int }
+    \int_set:Nn \l__tbl_column_int { #1 }
+    \int_set:Nn \l__tbl_column_neg_int { #1 - 1 - \clist_count:N \l_tmpa_clist }
+    \clist_clear:N \l__tbl_headerattribute_clist
+    \clist_if_in:NVF \l__tbl_header_rows_clist \l__tbl_row_int
+      {
+        \clist_if_in:NVF \l__tbl_header_rows_clist \l__tbl_row_neg_int
+          {
+	        \clist_if_in:NVF \l__tbl_header_columns_clist \l__tbl_column_int
+	          {
+		        \clist_if_in:NVF \l__tbl_header_columns_clist \l__tbl_column_neg_int
+			      { % not a header cell.  find the appropriate headers
+			        \__tbl_set_td_some_headers:Vnn \l__tbl_row_int        { -1 } { rows    }
+			        \__tbl_set_td_some_headers:Vnn \l__tbl_row_neg_int    {  1 } { rows    }
+			        \__tbl_set_td_some_headers:Vnn \l__tbl_column_int     { -1 } { columns }
+			        \__tbl_set_td_some_headers:Vnn \l__tbl_column_neg_int {  1 } { columns }
+			      }
+			  }
+	      }
+      }
+    \clist_if_empty:NF \l__tbl_headerattribute_clist
+      { % if we found some headers
+        \__tbl_get_struct_cell:VVnnN \l__tbl_row_int \l__tbl_column_int { rows } \l__tbl_row_int \l_tmpa_int
+        \__tag_struct_prop_gput:Vne \l_tmpa_int { A } { <</O~(Table)~/Headers~[~\clist_use:Nn \l__tbl_headerattribute_clist { ~ }~]~>> }
+      }
+  }
+
+\cs_new:Npn \__tbl_set_td_some_headers:Vnn #1#2#3 % #1: start, #2: step, #3: rows|columns
+  {
+    \bool_set_false:N \l__tbl_found_header_bool
+    % decr/incr a positively/negatively indexed cell
+    % if we find a positively/negatively indexed header row/column,
+    % record it and all subsequent header cells
+    % but stop when we find a non-header cell
+    \int_step_inline:nnnn { #1 } { #2 } { 0 }
+      {
+        \clist_if_in:cnTF { l__tbl_header_ #3 _clist } { ##1 }
+          {
+            \bool_set_true:N \l__tbl_found_header_bool
+            \__tbl_get_struct_cell:VVnnN \l__tbl_row_int \l__tbl_column_int { #3 } { ##1 } \l_tmpa_int
+            \str_set:NV \l_tmpa_str \l_tmpa_int
+            \str_set:Ne \l_tmpa_str { ( ID . \__tbl_zero_pad:N \l_tmpa_str ) }
+            \use:c { clist_put_ \int_compare:nNnTF{#2}={1}{right}{left} :NV }
+              \l__tbl_headerattribute_clist
+              \l_tmpa_str
+          }
+          { \bool_if:NT \l__tbl_found_header_bool { \prg_break: } }
+      }
+  }
+
+\cs_new:Npn \__tbl_get_struct_cell:VVnnN #1#2#3#4#5
+  % #1&2: starting row&column, #3: change rows|columns, #4: change to ..., #5: result
+  {
+    \str_if_eq:nnTF { #3 } { rows }
+      {
+	    \clist_set:Ne \l_tmpb_clist { \seq_item:Nn \g__tbl_struct_cells_seq { #4 } }
+	    \int_set:Ne #5 { \int_abs:n { \clist_item:Nn \l_tmpb_clist { #2 } } }
+      }
+      {
+	    \clist_set:Ne \l_tmpb_clist { \seq_item:Nn \g__tbl_struct_cells_seq { #1 } }
+	    \int_set:Ne #5 { \int_abs:n { \clist_item:Nn \l_tmpb_clist { #4 } } }
+      }
+  }

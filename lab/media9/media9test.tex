@@ -1,0 +1,27 @@
+\DocumentMetadata{lang=en,testphase=latest,
+  pdfversion=1.7,pdfstandard=ua-1,
+%  pdfversion=2.0,pdfstandard=ua-2,
+  pdfstandard=a-4f
+}
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[noplaybutton]{media9}
+\usepackage{../../headers/media9fix}
+\title{My Title}
+\addmediapath{/usr/local/texlive/2025/texmf-dist/source/latex/media9/files}
+
+\begin{document}
+An embedded prc file:\bigskip
+
+\includemedia[
+width=0.8\linewidth,height=0.8\linewidth,
+add3Djscript=asylabels.js, %upright text labels
+add3Djscript=3Dspintool.js, %let scene rotate about z-axis
+% 3Dcoo, 3Droo values found with `Generate Default View' from
+% context menu
+3Dmenu,
+3Dc2c=4 2 3,
+3Dcoo=4.413303375244141 2.195653200149536 -0.000011444091796875,
+3Droo=429.49035778293376,
+]{\includegraphics[alt={Some alt text}]{epixposter}}{epix.prc}
+\end{document}

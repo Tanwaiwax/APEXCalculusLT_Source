@@ -1,0 +1,52 @@
+% !TEX program = LuaLaTeX
+%\errorcontextlines 10000
+\DocumentMetadata{lang=en,pdfversion=1.7,pdfstandard=UA-1,testphase=latest,uncompress}
+\documentclass{article}
+\usepackage{multirow}
+\usepackage{tagpdf-table-headers}
+\title{Title}
+\begin{document}
+one row, simple
+\tagpdfsetup{table/header-columns={2}}
+\begin{tabular}{ccc}
+a&B&c
+\end{tabular}
+\end{document}
+one row, lots of header columns
+\tagpdfsetup{table/header-columns={1,2,4,-1,-2,-4}}
+\begin{tabular}{ccccccccc}
+A&B&c&D&e&F&g&H&I
+\end{tabular}
+
+simple header row and column
+\tagpdfsetup{table/header-rows={1,-1},table/header-columns={1,-1}}
+\begin{tabular}{cccc}
+&Name&Value\\
+Nombre & This& 11&Nombre2 \\
+Valor & That & 2 &Valor2\\
+&Name2&Value2
+\end{tabular}
+
+multicol in multiple header rows and
+multirow in multiple header columns
+\tagpdfsetup{table/header-columns={1,2,-1,-2},table/header-rows={1,2,-1,-2}}
+\begin{tabular}{cccccc}
+&&\multicolumn{2}{c}{Example} \\
+&& Name & Value \\
+\tagpdfsetup{table/multirow={2}}\multirow{2}{*}{Ejemplo} & Nombre & This & 11 & Nombre2 & \tagpdfsetup{table/multirow={2}}\multirow{2}{*}{Ejemplo2}\\
+& Valor & That & 2 & Valor2 & \\
+&& Name2 & Value2 \\
+&&\multicolumn{2}{c}{Example2}
+\end{tabular}
+
+multicol and multirow in data
+\tagpdfsetup{table/header-rows={1,-1},table/header-columns={1,-1}}
+\begin{tabular}{ccccc}
+&Name&Value&Type\\
+Nombre & This& \multicolumn{2}{c}{11} & Nombre2\\
+Valor & That & \tagpdfsetup{table/multirow={2}}\multirow{2}{*}{2} & 8 & Valor2 \\
+Typo & Other & & 5 & Typo2\\
+&Name2&Value2&Type2
+\end{tabular}
+
+\end{document}

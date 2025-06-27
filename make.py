@@ -740,12 +740,12 @@ if args.all:
     failed_compilations += compilewith('-c0')
     failed_compilations += compilewith('--instructor')
     failed_compilations += compilewith('--prc')
-    failed_compilations += compilewith('-bc1')
-    failed_compilations += compilewith('-bc3')
-    cause_error()
+#    failed_compilations += compilewith('-bc1')
+#    failed_compilations += compilewith('-bc3')
+#    cause_error()
     for part in range(1,4):
         failed_compilations += compilewith(f'-bc{part}')
-    print('--all completed, now causing error')
+#    print('--all completed, now causing error')
     # having '123' first means that doesn't change everytime, which may speed compilation
     #for part,size in itertools.product('123',['s','b']):
     #    compilewith('-'+size+'c'+part)

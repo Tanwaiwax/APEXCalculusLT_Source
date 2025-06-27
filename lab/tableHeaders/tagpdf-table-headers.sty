@@ -7,12 +7,13 @@
 \cs_generate_variant:Nn \__tag_struct_prop_gput:nnn { Vne }
 \cs_generate_variant:Nn \int_set:Nn { Ne }
 \cs_generate_variant:Nn \str_range:nnn { een }
+\cs_generate_variant:Nn \tl_log:n { V }
 
-\clist_new:N \l__tbl_headerattribute_clist
-\int_new:N \l__tbl_row_int
-\int_new:N \l__tbl_row_neg_int
-\int_new:N \l__tbl_column_int
-\int_new:N \l__tbl_column_neg_int
+\clist_new:N \g__tbl_headerattribute_clist
+\int_new:N \g__tbl_row_index_int
+\int_new:N \g__tbl_row_neg_index_int
+\int_new:N \g__tbl_column_index_int
+\int_new:N \g__tbl_column_neg_index_int
 \int_new:N \l__tbl_next_column_int
 \int_new:N \l__tbl_cell_id_int
 \bool_new:N \l__tbl_found_header_bool
@@ -28,22 +29,6 @@
   {
     \__tbl__old_set_header_rows:
     \__tbl_set_table_td_headers:
-  }
-
-\AddToHook{begindocument}
-  {
-    \tag_if_active:T
-      {
-        \tagpdfsetup
-          {
-            role/new-attribute={TD}{/A},
-            role/new-attribute={A}{/Headers},
-            role/new-attribute={A}{/O},
-%            role/new-attribute={A}{/O/Table},
-%            role/new-attribute={TD}{/A~/Headers},
-%            role/new-attribute={TD}{/A~/O}
-          }
-      }
   }
 
 \cs_new:Npn \__tbl_zero_pad:N #1
@@ -64,54 +49,56 @@
 
 \cs_new:Npn \__tbl_set_row_td_headers:n #1
   {
-    \int_set:Nn \l__tbl_row_int { #1 }
-    \int_set:Nn \l__tbl_row_neg_int { #1 - 1 - \seq_count:N \g__tbl_struct_cells_seq }
+    \int_gset:Nn \g__tbl_row_index_int { #1 }
+    \int_gset:Nn \g__tbl_row_neg_index_int { #1 - 1 - \seq_count:N \g__tbl_struct_cells_seq }
     \exp_args:NNx \clist_set:Nn \l_tmpa_clist { \seq_item:Nn \g__tbl_struct_cells_seq { #1 } }
     \int_step_function:nN { \clist_count:N \l_tmpa_clist } \__tbl_set_td_headers:n
   }
 
 \cs_new:Npn \__tbl_set_td_headers:n #1
   {
-    \exp_args:NNx \clist_set:Nn \l_tmpa_clist { \seq_item:NV \g__tbl_struct_cells_seq \l__tbl_row_int }
-    \int_set:Nn \l__tbl_column_int { #1 }
-    \int_set:Nn \l__tbl_column_neg_int { #1 - 1 - \clist_count:N \l_tmpa_clist }
-    \clist_clear:N \l__tbl_headerattribute_clist
-    \__tbl_set_td_headers:
-    \clist_if_empty:NF \l__tbl_headerattribute_clist
-      { % if we found some headers
-        \__tbl_get_struct_cell:VVN \l__tbl_row_int \l__tbl_column_int \l_tmpa_int
-        \clist_remove_duplicates:N \l__tbl_headerattribute_clist
-        \__tag_struct_prop_gput:Vne \l_tmpa_int { A } { <</O/Table/Headers~[~\clist_use:Nn \l__tbl_headerattribute_clist { ~ }~]~>> }
+    \exp_args:NNx \clist_set:Nn \l_tmpa_clist { \seq_item:NV \g__tbl_struct_cells_seq \g__tbl_row_index_int }
+    \int_gset:Nn \g__tbl_column_index_int { #1 }
+    \__tbl_get_struct_cell:VVN \g__tbl_row_index_int \g__tbl_column_index_int \l__tbl_cell_id_int
+    \int_compare:nNnT { 0 } < { \l__tbl_cell_id_int }
+      { % otherwise, we're in a multicol, which was already handled
+        \int_gset:Nn \g__tbl_column_neg_index_int { #1 - 1 - \clist_count:N \l_tmpa_clist }
+        \clist_gclear:N \g__tbl_headerattribute_clist
+        \__tbl_set_td_headers:
+        \clist_if_empty:NF \g__tbl_headerattribute_clist
+          { % if we found some headers
+            \__tbl_get_struct_cell:VVN \g__tbl_row_index_int \g__tbl_column_index_int \l_tmpa_int
+            \clist_remove_duplicates:N \g__tbl_headerattribute_clist
+            \__tag_struct_prop_gput:Vne \l_tmpa_int { A } { <</O/Table/Headers~[~\clist_use:Nn \g__tbl_headerattribute_clist { ~ }~]~>> }
+          }
       }
   }
 
 \cs_new:Npn \__tbl_set_td_headers:
   {
-%    \__tbl_get_struct_cell:VVN \l__tbl_row_int \l__tbl_column_int \l__tbl_cell_id_int
-    \clist_if_in:NVF \l__tbl_header_rows_clist \l__tbl_row_int
+    \clist_if_in:NVF \l__tbl_header_rows_clist \g__tbl_row_index_int
       {
-        \clist_if_in:NVF \l__tbl_header_rows_clist \l__tbl_row_neg_int
+        \clist_if_in:NVF \l__tbl_header_rows_clist \g__tbl_row_neg_index_int
           {
-            \clist_if_in:NVF \l__tbl_header_columns_clist \l__tbl_column_int
-	          {
- 	            \clist_if_in:NVF \l__tbl_header_columns_clist \l__tbl_column_neg_int
-		          { % not a header cell.  find the appropriate headers
-		            \__tbl_set_td_some_headers:Vnn \l__tbl_row_int        { -1 } { rows    }
-		            \__tbl_set_td_some_headers:Vnn \l__tbl_row_neg_int    {  1 } { rows    }
-		            \__tbl_set_td_some_headers:Vnn \l__tbl_column_int     { -1 } { columns }
-		            \__tbl_set_td_some_headers:Vnn \l__tbl_column_neg_int {  1 } { columns }
-	    	      }
-    		  }
+            \__tbl_set_td_some_headers:Vnn \g__tbl_row_index_int        { -1 } { rows }
+            \__tbl_set_td_some_headers:Vnn \g__tbl_row_neg_index_int    {  1 } { rows }
           }
       }
-    \int_set:Nn \l__tbl_next_column_int { \l__tbl_column_int + 1 }
-    \__tbl_get_struct_cell:VVN \l__tbl_row_int \l__tbl_next_column_int \l__tbl_cell_id_int
-    \int_compare:nT { \l__tbl_cell_id_int < 0 }
-      % We're in a multicolumn.  Also grab headers for cells to the right.
+    \clist_if_in:NVF \l__tbl_header_columns_clist \g__tbl_column_index_int
       {
-        \int_incr:N \l__tbl_column_int
+        \clist_if_in:NVF \l__tbl_header_columns_clist \g__tbl_column_neg_index_int
+          {
+            \__tbl_set_td_some_headers:Vnn \g__tbl_column_index_int     { -1 } { columns }
+            \__tbl_set_td_some_headers:Vnn \g__tbl_column_neg_index_int {  1 } { columns }
+   	      }
+      }
+    \int_set:Nn \l__tbl_next_column_int { \g__tbl_column_index_int + 1 }
+    \__tbl_get_struct_cell:VVN \g__tbl_row_index_int \l__tbl_next_column_int \l__tbl_cell_id_int
+    \int_compare:nT { \l__tbl_cell_id_int < 0 }
+      { % The next column is a multicolumn continuing this one.  Also grab its headers.
+        \int_gincr:N \g__tbl_column_index_int
         \__tbl_set_td_headers: % recurse
-        \int_decr:N \l__tbl_column_int
+        \int_gdecr:N \g__tbl_column_index_int
       }
   }
 
@@ -128,19 +115,18 @@
         \clist_if_in:cnTF { l__tbl_header_ #3 _clist } { ##1 }
           {
             \bool_set_true:N \l__tbl_found_header_bool
-            \__tbl_get_struct_cell:VVnnN \l__tbl_row_int \l__tbl_column_int { #3 } { ##1 } \l__tbl_cell_id_int
+            \__tbl_get_struct_cell:VVnnN \g__tbl_row_index_int \g__tbl_column_index_int { #3 } { ##1 } \l__tbl_cell_id_int
             \int_set:Nn \l_tmpb_int { \int_abs:n { \l__tbl_cell_id_int } }
             \str_set:NV \l_tmpa_str \l_tmpb_int
             \str_set:Ne \l_tmpa_str { ( ID . \__tbl_zero_pad:N \l_tmpa_str ) }
-            \clist_put_right:NV \l__tbl_headerattribute_clist \l_tmpa_str
+            \clist_put_right:NV \g__tbl_headerattribute_clist \l_tmpa_str
           }
           { \bool_if:NT \l__tbl_found_header_bool { \prg_break: } }
       }
   }
 
 \cs_new:Npn \__tbl_get_struct_cell:nnN #1#2#3 % #1: row, #2: column, #3: result
-  % If we look for an index that is too large, we get 0.
-  {
+  { % If we look for an index that is too large, we get 0.
     \clist_set:Ne \l_tmpb_clist { \seq_item:Nn \g__tbl_struct_cells_seq { #1 } }
     \clist_if_exist:NTF \l_tmpb_clist
       {

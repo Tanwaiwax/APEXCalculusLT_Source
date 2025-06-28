@@ -108,8 +108,10 @@ args = parser.parse_args()
 
 def getTime() -> tuple[int, int]:
     end = time.time()
-    seconds = int(end-start)
-    return (seconds//60,seconds%60)
+    totalSeconds = int(end-start)
+    totalMinutes,seconds = totalSeconds//60,totalSeconds%60
+    hours,minutes = totalMinutes//60,totalMinutes%60
+    return (hours,minutes,seconds)
 
 def makematrices() -> None:
     try:
@@ -557,7 +559,7 @@ def minimizePdf(filename: str) -> None:
     os.system = oldossystem
     for tmpfile in glob.iglob('ApexPDFs/smallpdfs/psotmp.*.parse.png'):
         os.remove(tmpfile)
-    message = 'Minimizing pdf finished at '+"{0[0]:02d}:{0[1]:02d}".format(getTime())
+    message = 'Minimizing pdf finished at '+"{0[0]:02d}:{0[1]:02d}:{0[2]:02d}".format(getTime())
     print(message,'')
     loginfo.append(message)
 
@@ -702,7 +704,7 @@ def runcommands(args, commands: Union[str, Literal[False]]) -> int:
             subprocess.check_call(commandline,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)  # type: ignore
     except Exception as exception:
         print(f'Exception caught: {type(exception)}; {exception}')
-        time = "{0[0]:02d}:{0[1]:02d}".format(getTime())
+        time = "{0[0]:02d}:{0[1]:02d}:{0[2]:02d}".format(getTime())
         local_failed_compilations += 1
         loginfomessage = 'At '+time+' failing command'
         if commands:
@@ -715,7 +717,7 @@ def runcommands(args, commands: Union[str, Literal[False]]) -> int:
             traceback.print_exc(file=texlogfile)
     finally:
         shutil.copy(log,'logs/compilation'+newsuffix+'.log')
-    time = "{0[0]:02d}:{0[1]:02d}".format(getTime())
+    time = "{0[0]:02d}:{0[1]:02d}:{0[2]:02d}".format(getTime())
     if commands:
         message = 'Command line: '+commands+' finished at '+time
         print(message,'')

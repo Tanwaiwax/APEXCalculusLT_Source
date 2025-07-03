@@ -9,7 +9,7 @@ In previous sections we have used integration to answer the following questions:
 In this section, we address a related question: Given a curve, what is its length? This is often referred to as \textbf{arc length}. 
 
 \mtable{Graphing $y=\sin x$ on $[0,\pi]$ and approximating the curve with line segments.}{fig:arcintro}{%
-\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED}]
+\begin{tikzpicture}[alt={Blue y = sin x arch on 0 < x < pi, peak at (pi⁄2 , 1); ticks at pi⁄4, π⁄2, 3pi⁄4.}]
  \begin{axis}[width=\marginparwidth,%height=.46\marginparwidth,
    tick label style={font=\scriptsize},axis equal,
    axis y line=middle,axis x line=middle,name=myplot,axis on top,
@@ -23,7 +23,7 @@ In this section, we address a related question: Given a curve, what is its lengt
  \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}
 \\(a)\\
-\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED}]
+\begin{tikzpicture}[alt={Same sin curve; red polyline through five black nodes approximates it on 0 < x < pi.}]
  \begin{axis}[width=\marginparwidth,%height=.46\marginparwidth,
    tick label style={font=\scriptsize},
    axis y line=middle,axis x line=middle,name=myplot,axis on top,%
@@ -56,7 +56,7 @@ In general,  we can approximate the arc length of $y=f(x)$ on $[a,b]$ in the fol
 
 \autoref{fig:arcintro2} zooms in on the $i^{\text{th}}$ subinterval where $y=f(x)$ is approximated by a straight line segment. The dashed lines show that we can view this line segment as the hypotenuse of a right triangle whose sides have length $\Delta x_i$ and $\Delta y_i$. Using the Pythagorean Theorem, the length of this line segment is $\ds \sqrt{(\Delta x_i)^2 + (\Delta y_i)^2}.$ Summing over all subintervals gives an arc length approximation
 %
-\mtable{Zooming in on the $i^{\text{th}}$ subinterval $[x_{i-1},x_i]$ of a partition of $[a,b]$.}{fig:arcintro2}{\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED}]
+\mtable{Zooming in on the $i^{\text{th}}$ subinterval $[x_{i-1},x_i]$ of a partition of $[a,b]$.}{fig:arcintro2}{\begin{tikzpicture}[alt={Zoom on x_{i−1} < x < x_i: blue arc, red chord, labeled delta x horizontal and delta y vertical.}]
  \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
    axis y line=middle,axis x line=middle,name=myplot,axis on top,
    xtick=\empty,extra x ticks={.3,1.37},extra x tick labels={$x_{i-1}$,$x_i$},
@@ -108,7 +108,7 @@ As the integrand contains a square root, it is often difficult to use the formul
 \begin{example}[Finding arc length]\label{ex_arc1}%
 Find the arc length of $f(x) = x^{3/2}$ from $x=0$ to $x=4$.
 %
-\mtable{A graph of $f(x) = x^{3/2}$ from \autoref{ex_arc1}.}{fig:arc1}{\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED}]
+\mtable{A graph of $f(x) = x^{3/2}$ from \autoref{ex_arc1}.}{fig:arc1}{\begin{tikzpicture}[alt={Blue y = x^3/2 curve on 0 < x < 4 rises steeply, reaching about 8 at x = 4.}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
 ymin=-.2,ymax=8.5,xmin=-.1,xmax=4.5,]
@@ -136,7 +136,7 @@ We begin by finding $\fp(x)= \frac32x^{1/2}$. Using the formula, we find the arc
 Find the arc length of $\ds f(x) =\frac18x^2-\ln x$ from $x=1$ to $x=2$.
 \solution
 A graph of $f$ is given in \autoref{fig:arc2}; the portion of the curve measured in this problem is in bold.
-\mtable{A graph of $f(x) =\frac18x^2-\ln x$ from \autoref{ex_arc2}.}{fig:arc2}{\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED}]
+\mtable{A graph of $f(x) =\frac18x^2-\ln x$ from \autoref{ex_arc2}.}{fig:arc2}{\begin{tikzpicture}[alt={Blue y = 1/8x^2 − ln x on 0 < x < 3 dives from 1, bottoms near (2, -0.2), then turns upward.}]
 \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
 ymin=-.26,ymax=1.2,xmin=-.1,xmax=3.1]
@@ -191,20 +191,20 @@ Using a computer with $n=100$ the approximation is $L\approx 3.8202$; our approx
 \subsection{Surface Area of Solids of Revolution}
 
 \mtable[-1in]{Establishing the formula for surface area.}{fig:surface_intro}{%
-\myincludeasythree{
+\myincludeasythree{Blue arc y = f(x) between x = a and x = b; short red chord shows one sample slice}.
 3Droll=126.0060482236849,
 3Dortho=0.004875946324318647,
 3Dc2c=0.44462037086486816 0.39410829544067383 0.8043577671051025,
 3Dcoo=67.21983337402344 3.5258262157440186 -29.566415786743164,
-3Droo=150.00000160608386}{\marginparwidth}{ALT-TEXT-TO-BE-DETERMINED}{figures/figarc4_b_3D}
+3Droo=150.00000160608386}{\marginparwidth}{Revolving that slice about the x-axis gives a purple band on a blue tubular surface.}{figures/figarc4_b_3D}
 % todo Tim should this be 3D at all?
 \\(a)\\
-\myincludeasythree{
+\myincludeasythree{Blue band on blue tube: frustum formed when the red chord of the slice is revolved about the x-axis}
 3Droll=126.0060482236849,
 3Dortho=0.004875946324318647,
 3Dc2c=0.44462037086486816 0.39410829544067383 0.8043577671051025,
 3Dcoo=67.21983337402344 3.5258262157440186 -29.566415786743164,
-3Droo=150.00000160608386}{\marginparwidth}{ALT-TEXT-TO-BE-DETERMINED}{figures/figarc4_3D}
+3Droo=150.00000160608386}{\marginparwidth}{Blue band on blue tube: frustum formed when the red chord of the slice is revolved about the x-axis}}{figures/figarc4_3D}
 \\(b)}
 
 We have already seen how a curve $y=f(x)$ on $[a,b]$ can be revolved around an axis to form a solid. Instead of computing its volume, we now consider its surface area.
@@ -240,12 +240,12 @@ Find the surface area of the solid formed by revolving $y=\sin x$ on $[0,\pi]$ a
 \solution
 The setup turns out to be easier than the resulting integral. Using \autoref{idea:surface_area}, we have the surface area $SA$ is:
 \mtable[-3\baselineskip]{Revolving $y=\sin x$ on $[0,\pi]$ about the $x$-axis.}{fig:sa1}{%
-\myincludeasythree{
+\myincludeasythree{Blue sinus-shaped surface: y = sin x (0 < x < pi) revolved about the x-axis, axes shown}
 3Droll=121.00092658103458,
 3Dortho=0.0048407199792563915,
 3Dc2c=0.2899017035961151 0.17925968766212463 0.9401186108589172,
 3Dcoo=72.58285522460938 2.891160011291504 -26.545438766479492,
-3Droo=149.99998703790175}{\marginparwidth}{ALT-TEXT-TO-BE-DETERMINED}{figures/figsa1_3D}}
+3Droo=149.99998703790175}{\marginparwidth}{Blue sinus-shaped surface: y = sin x (0 < x < pi) revolved about the x-axis, axes shown.}{figures/figsa1_3D}}
 \begin{align*}
 	\text{SA}
 	&=	2\pi\int_0^\pi \sin x\sqrt{1+\cos^2x}\dd x \\
@@ -262,19 +262,19 @@ It is interesting to see that the surface area of a solid, whose shape is define
 \end{example}
 
 \mtable[-4\baselineskip]{The solids used in \autoref{ex_sa2}.}{fig:sa2}{%
-\myincludeasythree{
+\myincludeasythree{Blue horn-like surface: y = x^2 (0 < x < 1) rotated about x-axis, tip at (0,0,0) flaring to x = 1}
 3Droll=138.26595091591264,
 3Dortho=0.0048407199792563915,
 3Dc2c=0.16831636428833008 0.19470007717609406 0.966313362121582,
 3Dcoo=81.32470703125 3.403531074523926 -28.20997428894043,
-3Droo=149.9999886313645}{\marginparwidth}{ALT-TEXT-TO-BE-DETERMINED}{figures/figsa2a_3D}
+3Droo=149.9999886313645}{\marginparwidth}{Blue horn-like surface: y = x^2 (0 < x < 1) rotated about x-axis, tip at (0,0,0) flaring to x = 1.}{figures/figsa2a_3D}
 \\(a)\\[15pt]
-\myincludeasythree{
+\myincludeasythree{Blue parabolic bowl: y = x^2 (0 < x < 1) revolved about the y-axis; vertex at origin, rim near y = 1}
 3Droll=138.26595091591264,
 3Dortho=0.0048407199792563915,
 3Dc2c=0.16831637918949127 0.19470007717609406 0.966313362121582,
 3Dcoo=0.013853734359145164 79.42704010009766 -29.364774703979492,
-3Droo=149.99998895240248}{\marginparwidth}{ALT-TEXT-TO-BE-DETERMINED}{figures/figsa2b_3D}\\
+3Droo=149.99998895240248}{\marginparwidth}{Blue parabolic bowl: y = x^2 (0 < x < 1) revolved about the y-axis; vertex at origin, rim near y = 1.}{figures/figsa2b_3D}\\
 (b)}
 
 \begin{example}[Finding surface area of a solid of revolution]\label{ex_sa2}%
@@ -305,12 +305,12 @@ Find the surface area of the solid formed by revolving the curve $y=x^2$ on $[0,
 Our final example is a famous mathematical ``paradox.''
 
 \mtable{A graph of Gabriel's Horn.}{fig:gabriel}{%
-\myincludeasythree{
+\myincludeasythree{Infinite blue trumpet (Gabriel’s Horn): surface from rotating y = 1 / x, 1 < x < infty, about the x-axis}
 3Droll=107.09033109095482,
 3Dortho=0.0048407199792563915,
 3Dc2c=0.4647676646709442 0.1565970778465271 0.8714748024940491,
 3Dcoo=72.58285522460938 2.8911631107330322 -26.545440673828125,
-3Droo=149.99999776925813}{\marginparwidth}{ALT-TEXT-TO-BE-DETERMINED}{figures/figgabriel_3D}}
+3Droo=149.99999776925813}{\marginparwidth}{Infinite blue trumpet (Gabriel’s Horn): surface from rotating y = 1 / x, 1 < x < infty, about the x-axis.}{figures/figgabriel_3D}}
 \begin{example}[The surface area and volume of Gabriel's Horn]\label{ex_gabriel}%
 Consider the solid formed by revolving $y=1/x$ about the $x$-axis on $[1,\infty)$. Find the volume and surface area of this solid. (This shape, as graphed in \autoref{fig:gabriel}, is known as ``Gabriel's Horn'' since it looks like a very long horn that only a supernatural person, such as an angel, could play.)\index{Gabriel's Horn}
 \solution

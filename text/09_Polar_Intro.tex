@@ -7,7 +7,7 @@ The previous two sections introduced and studied a new way of plotting points in
 \subsection{Polar Coordinates}
 
 \mtable{Illustrating polar coordinates.}{fig:polar_intro1}{%
-\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED},>=latex]
+\begin{tikzpicture}[alt={Origin, initial ray on x-axis 0; second ray makes angle θ (counter-clockwise) marked on arc to point (r, θ)..},>=latex]
 	\draw[thick,->] (0,0) node [below] {$O$} -- (3,0) node [below] {initial ray} ;
 	\filldraw (0,0) circle (1.5pt);
 	\filldraw [rotate=55] (2,0) circle (1.5pt);
@@ -39,7 +39,7 @@ To aid in the drawing, a polar grid is provided
   \tikzset{gridshift/.append style={shift=(current page.south),shift={+(.5in,1.7in)}}}
  }%
 \fi
-\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED},remember picture,overlay,scale=.8,gridshift]
+\begin{tikzpicture}[alt={Three concentric circles (r = 1, 2, 3); points: A at 30 deg (pi / 6), B at 210 deg (7pi / 6), C at 315 deg (7pi / 4), D at 240 deg (4pi / 3).}]
  \foreach \x in {0,30,45,60,90,120,135,150,180,210,225,240,270,300,315,330}
   {\draw [dashed,gray] (0,0) -- (\x:3.1);}
  \draw[thick,->,>=stealth] (0,0) node [below] {$O$} -- (3.5,0) ;
@@ -51,7 +51,7 @@ To aid in the drawing, a polar grid is provided
 \end{tikzpicture}}%
 \ifbool{latexml}{here.\\}{at the bottom of this page.}%
 %
-\mtable{Plotting polar points in \autoref{ex_polar1}.}{fig:polar1}{\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED},scale=.75,>=latex]
+\mtable{Plotting polar points in \autoref{ex_polar1}.}{fig:polar1}{\begin{tikzpicture}[alt={Concentric polar grid: circles at radii 1, 2, 3 with dashed 30 deg spokes and a bold initial ray pointing right from O.},scale=.75,>=latex]
 	\draw[thick,->] (0,0) node [below] {$O$} -- (3.5,0) ;
 	\filldraw (0,0) circle (1.5pt);
 	\foreach \x in {1,2,3} {%
@@ -79,7 +79,8 @@ This ability to identify a point in the plane with multiple polar coordinates is
 
 \subsection{Polar to Rectangular Conversion}
 
-\mtable{Converting between rectangular and polar coordinates.}{fig:polar_intro2}{\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED},scale=.75,>=latex]
+\mtable{Converting between rectangular and polar coordinates.}{fig:polar_intro2}{\begin{tikzpicture}[alt={Right triangle: legs x and y meet at origin, hypotenuse r to point P, angle θ at origin.
+},scale=.75,>=latex]
 	\draw [thick] (0,0) -- node [below,pos=.5] {$x$} (4,0)
 	 -- node [right,pos=.5] {$y$} (4,2)
 	 -- node [above,rotate=26.57,pos=.5] {$r$} (0,0);
@@ -119,7 +120,7 @@ Given the rectangular coordinates $(x,y)$, the polar coordinates are determined 
 	These points are plotted in \autoref{fig:polar2} (a). The rectangular coordinate system is drawn lightly under the polar coordinate system so that the relationship between the two can be seen.
 	
 \mtable{Plotting rectangular and polar points in \autoref{ex_polar2}.}{fig:polar2}{%
-\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED},>=latex]
+\begin{tikzpicture}[alt={Polar grid with bold circles r = 1 and 2; A at 120 deg (2pi / 3) on r = 2, B at 225 deg (5pi / 4) on r = 1.},>=latex]
  \draw [thin,gray] (-2.5,-2.5) grid (2.5,2.5);
  \draw [thick,->] (0,0) node [below] {$O$} -- (2.5,0);
  \foreach \x in {1,2}{%
@@ -130,7 +131,7 @@ Given the rectangular coordinates $(x,y)$, the polar coordinates are determined 
  \filldraw [rotate=225] (-1,0) circle (1.5pt) node [shift={(0pt,12pt)}] {\scriptsize$B(-1,\frac{5\pi}{4})$};
 \end{tikzpicture}
 \smallskip\\(a)\bigskip\\
-\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED},>=latex]
+\begin{tikzpicture}[alt={Rectangular grid over light polar circles; dashed lines show angle 135 deg (3pi / 4) to locate (1, 2) and (–1, 1).},>=latex]
 \draw [very thick] (-2.5,-2.5) grid (2.5,2.5);
 \draw [thin,->] (0,0) node [below left,black] {\scriptsize$(0,0)$} -- (2.5,0);
 \foreach \x in {1,2} {%
@@ -188,7 +189,7 @@ Describe the graphs of the following polar functions.
 
 We can consider the rectangular equivalent of this equation; using $r^2=x^2+y^2$, we see that $1.5^2=x^2+y^2$, which we recognize as the equation of a circle centered at $(0,0)$ with radius 1.5. This is sketched in \autoref{fig:polar3}.
 
-\mtable{Plotting standard polar plots.}{fig:polar3}{\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED},>=latex]
+\mtable{Plotting standard polar plots.}{fig:polar3}{\begin{tikzpicture}[alt={Concentric polar rings r = 0.5, 1 (bold), 1.5 with a thick ray at θ = pi⁄4 crossing r = 1.5.},>=latex]
  \draw [thick,->] (0,0) node [below] {$O$} -- (2.5,0);
  \foreach \x in {1,2}
   {\draw [thin,gray] (0,0) circle (\x cm);
@@ -238,7 +239,7 @@ Sketch
 	7 \pi /4 & 1+1/\sqrt2 \\
 	11\pi/6 & 1+\sqrt{3}/2 \\
  \end{array}$} \\ \\
- \begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED},scale=.95]
+ \begin{tikzpicture}[alt={Table then polar grid; right-facing cardioid r = 1 + cos θ touches r = 0 at pi and peaks at 2 on initial ray.},scale=.95]
   \draw [dashed,gray] (-2.1,0) -- (0,0);
   \draw[thick,->,>=stealth] (0,0) node [below] {$O$} -- (2.5,0) ;
   \filldraw (0,0) circle (1.5pt);
@@ -266,7 +267,7 @@ Consider the point $(2,0)$ determined by the first line of the table. The angle 
 
 %\paragraph{Technology Note:} Plotting functions in this way can be tedious, just as it was with rectangular functions. To obtain very accurate graphs, technology is a great aid. Most graphing calculators can plot polar functions; in the menu, set the plotting mode to something like \texttt{polar} or \texttt{POL}, depending on one's calculator. As with plotting parametric functions, the viewing ``window'' no longer determines the $x$-values that are plotted, so additional information needs to be provided. Often with the ``window'' settings are the settings for  the beginning and ending $\theta$ values (often called \texttt{$\theta_{\text{min}}$} and \texttt{$\theta_{\text{max}}$}) as well as the \texttt{$\theta_{\text{step}}$} --- that is, how far apart the $\theta$ values are spaced. The smaller the \texttt{$\theta_{\text{step}}$} value, the more accurate the graph (which also increases plotting time). Using technology, we graphed the polar function $r=1+\cos \theta$ from \autoref{ex_polar4} in \autoref{fig:polar4b}.
 %
-%\mtable{Using  technology to graph a polar function.}{fig:polar4b}{\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED},scale=1]
+%\mtable{Using  technology to graph a polar function.}{fig:polar4b}{\begin{tikzpicture}[alt={Four-petal polar rose; dots 1–17 trace one full loop through symmetric petals about the origin.},scale=1]
 %	\draw [dashed,gray] (-2.1,0) -- (0,0);
 %	\draw[thick,->,>=stealth] (0,0) node [below] {$O$} -- (2.5,0) ;
 %	\filldraw (0,0) circle (1.5pt);
@@ -310,7 +311,7 @@ $\begin{array}{ccl @{\hspace{4em}} ccl}\toprule
 \end{center}
 
 \mtable[-2in]{Polar plots from \autoref{ex_polar5}.}{fig:polar5}{%
- \begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED},scale=1]
+ \begin{tikzpicture}[alt={Rectangular plot of xy=1; hyperbola branches in quadrants I and III approach both coordinate axes.},scale=1]
   \draw [dashed,gray] (-2.1,0) -- (0,0);
   \draw[thick,->,>=latex] (0,0) node [below] {} -- (2.5,0) ;
   \filldraw (0,0) circle (1.5pt);

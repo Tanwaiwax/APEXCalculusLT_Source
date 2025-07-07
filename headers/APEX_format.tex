@@ -375,6 +375,9 @@
 % \setlist*[sectionexercises]{ref=\arabic*}
 %}
 
+\setenumext[enumext,2]{start=1}
+\resetenumext[1]{subsection} % reset the resumed counter for exercises
+
 \makeatletter
 \newcommand{\printexercises}[1]{%
  \writeToAnsFile{#1}% writeToAnsFile in sty (actually, down below)
@@ -382,17 +385,13 @@
  \pagestyle{exercise}%
  \bookmarksetupnext{level=\toclevel@subsection}% otherwise, the level is "section" and everything is messed up
  \exercisesubsection{Exercises \thesection}%
+ \stepcounter{subsection}% subsections aren't numbered, but this triggers resetenumext
  \label{exer\thesection}%
  \small%
  \bigskip%
  \begin{multicols}{2}%
   \toggletrue{inexercises}%
   \renewcommand{\Itemautorefname}{Ex\-er\-cise}% local b/c multicols = good
-%  \begin{enumext}[series=section\thesection]
-%  \end{enumext}
-  % we need to reset the counter after all.  this seems to be a bad way to do it
-  % see https://tex.stackexchange.com/q/746415/107497
-  \sbox0{\parbox{0pt}{\begin{enumext}[start=0]\item ignore\end{enumext}}}%
   \input{#1}%
   \closeenumerate%
  \end{multicols}%

@@ -9,6 +9,12 @@ Changes for the 2025-07 version:
 * The biggest change is that the pdf is now accessible according to Ally, VeraPDF, PDFix, and PAC.  To make this happen, we needed several superficial changes.  Among the more notable
 
     * Prerequisite sections 1.0, 2.0, and 10.0 now come after the chapter heading and introduction, not before.
+    
+    * Adjusted page breaks means that the new version is a bit over 5% longer than the old.
+    
+    * We changed the font from Calibri to Lato and Lete Sans Math.
+
+* All known errata (3) have been fixed.
 
 Changes for the 2023-06 version:
 --------------------

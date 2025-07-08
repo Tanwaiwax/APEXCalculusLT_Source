@@ -483,9 +483,12 @@
    Exercise set \theexercisesetcounter\space begins with \arabic{enumXi}%
   }%
  }%
- \noindent#1 \arabic{enumXi}--\ref*{enumiatendof\theexercisesetcounter}\bgroup
+ \bgroup
+ \setenumext[enumext,1]{label=\alph*,wrap-label={(#1)}}% pretend it is level 2
+ \noindent#1 \arabic{enumXi}--\ref*{enumiatendof\theexercisesetcounter}%
 % \renewcommand{\theenumi}{(\alph{enumi})}%
- #2\egroup%
+ #2%
+ \egroup%
  % can't \addtocounter{enumXi}{-1} because #2 may have an enumerate
  \setcounter{enumXi}{\value{saveenumi}}
  \ignorespaces%

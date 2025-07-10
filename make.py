@@ -703,7 +703,7 @@ def runcommands(args, commands: Union[str, Literal[False]]) -> int:
 #            assert isinstance(commandline, Sequence)
             subprocess.check_call(commandline,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)  # type: ignore
     except Exception as exception:
-        print(f'Exception caught: {type(exception)}; {exception}')
+        print(f'Exception caught: {type(exception)}; {exception}', file=sys.stderr)
         time = "{0[0]:02d}:{0[1]:02d}:{0[2]:02d}".format(getTime())
         local_failed_compilations += 1
         loginfomessage = 'At '+time+' failing command'
@@ -712,9 +712,8 @@ def runcommands(args, commands: Union[str, Literal[False]]) -> int:
         else:
             loginfomessage += ' line'
         loginfo.append(loginfomessage)
-        with open(log, 'a') as texlogfile:
-            texlogfile.write(f'\n\n{loginfomessage}\n\n')
-            traceback.print_exc(file=texlogfile)
+        print(loginfomessage, file=sys.stderr)
+        traceback.print_exc()
     finally:
         shutil.copy(log,'logs/compilation'+newsuffix+'.log')
     time = "{0[0]:02d}:{0[1]:02d}:{0[2]:02d}".format(getTime())

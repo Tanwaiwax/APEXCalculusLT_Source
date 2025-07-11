@@ -19,7 +19,7 @@
 # git pull origin master
 # to make sure the code is up to date
 
-#SBATCH --job-name=latex-books
+#SBATCH --job-name=books
 #SBATCH --partition=talon
 
 # Sets the maximum time the job can run (hh:mm:ss).
@@ -35,6 +35,9 @@
 # Job events (mail-type): begin, end, fail, all.
 #SBATCH --mail-type=all
 #SBATCH --mail-user=timothy.prescott@und.edu
+
+# megabytes needed, default is 5000
+#SBATCH --mem 6000
 
 # load required modules here
 #module load apptainer

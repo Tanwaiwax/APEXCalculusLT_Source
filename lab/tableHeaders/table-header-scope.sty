@@ -5,20 +5,6 @@
 
 % See the discussion at https://github.com/latex3/tagging-project/discussions/930
 
-%\cs_generate_variant:Nn \exp_args:NNe { cNe }
-%\cs_generate_variant:Nn \__tag_struct_prop_gput:nnn { Vne }
-%\cs_generate_variant:Nn \int_set:Nn { Ne }
-%\cs_generate_variant:Nn \str_range:nnn { een }
-
-%\clist_new:N \g__tbl_headerattribute_clist
-%\int_new:N \g__tbl_row_int % already defined
-%\int_new:N \g__tbl_row_neg_int
-%\int_new:N \g__tbl_column_int
-%\int_new:N \g__tbl_column_neg_int
-%\int_new:N \l__tbl_next_column_int
-%\int_new:N \l__tbl_cell_id_int
-%\bool_new:N \l__tbl_found_header_bool
-
 % these hooks aren't called?
 %\hook_gput_code:nnn { cmd / after / __tbl_set_header_rows: } { latex-lab-testphase-table } { \__tbl_set_td_headers: }
 %\AddToHook{ cmd / after / __tbl_set_header_rows: } { \__tbl_set_td_headers: }
@@ -61,7 +47,7 @@
                 \tl_if_empty:NF \l_tmpa_tl
                   {
                     \__tag_struct_prop_gput:nne { #1 } { A }
-                      { <</O~(Table)~/Scope~(\l_tmpa_tl)>> }
+                      { <</O/Table/Scope/\l_tmpa_tl>> }
                   }
               }
           }

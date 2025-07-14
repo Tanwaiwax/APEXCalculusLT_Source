@@ -343,22 +343,24 @@
 %	\makebox[0pt]{\label{flushlabel\theflushcounter}}%
 	\ifbool{oddpage}{% 
 	%{\pageref{flushlabel\theflushcounter}}{}{}%
-%		\makebox[.99\linewidth][l]{#1}%
+		\makebox[.99\linewidth][l]{#1}%
 %		\makebox[.99\linewidth][l]{\parbox{.99\linewidth}{#1}}%
-		\makebox[.99\linewidth][l]{\begin{tabular}{c}#1\end{tabular}}%
+%		\makebox[.99\linewidth][l]{\begin{tabular}{c}#1\end{tabular}}%
 	}{%
-%		\makebox[.99\linewidth][r]{#1}%
+		\makebox[.99\linewidth][r]{#1}%
 %		\makebox[.99\linewidth][r]{\parbox{\textwidth}{#1}}%
-		\makebox[.99\linewidth][r]{\begin{tabular}{c}#1\end{tabular}}%
+%		\makebox[.99\linewidth][r]{\begin{tabular}{c}#1\end{tabular}}%
 	}}
 \newcommand{\flushouter}[1]{%
 	\checkoddpage%
 %	\stepcounter{flushcounter}%
 %	\makebox[0pt]{\label{flushlabel\theflushcounter}}%
 	\ifbool{oddpage}{%{{ref{flushlabel\theflushcounter}}}{}%
-		\makebox[.99\linewidth][r]{\begin{tabular}{c}#1\end{tabular}}%
+		\makebox[.99\linewidth][r]{#1}%
+%		\makebox[.99\linewidth][r]{\begin{tabular}{c}#1\end{tabular}}%
 	}{%
-		\makebox[.99\linewidth][l]{\begin{tabular}{c}#1\end{tabular}}%
+		\makebox[.99\linewidth][l]{#1}%
+%		\makebox[.99\linewidth][l]{\begin{tabular}{c}#1\end{tabular}}%
 	}}
 \newcommand{\flushinnerequ}[1]{\flushinner{\vtop{#1}}}
 \newcommand{\flushouterequ}[1]{\flushouter{\vtop{#1}}}

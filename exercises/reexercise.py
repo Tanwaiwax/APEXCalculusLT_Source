@@ -6,15 +6,13 @@ from glob import glob
 for exfilename in glob('*.tex'):
     with open(exfilename) as exfile:
         lines = exfile.read()
-    if r'begin{enumext}' not in lines:
-        continue
-    if r'begin{enumext}[' in lines:
+    if r'begin{enumext}[start=1]' not in lines:
         continue
 #    print(exfilename)
 #    if not re.search(r'(?<!\\pdftooltip{)\\begin{tikzpicture}(.*?)\\end{tikzpicture}', lines, re.DOTALL):
 #        breakpoint()
 #    quit()
-    lines = re.sub(r'\\begin{enumext}', r'\\begin{enumext}[start=1]', lines)
+    lines = re.sub(r'begin{enumext}\[start=1\]', r'begin{enumext}', lines)
 #    lines = re.sub(r'\\pdftooltip{\\begin{tikzpicture}\[(.*?)\\end{tikzpicture}}{(.*?)}',
 #                    r'\\begin{tikzpicture}[alt={\2},\1\\end{tikzpicture}',
 #                    lines, flags=re.DOTALL)

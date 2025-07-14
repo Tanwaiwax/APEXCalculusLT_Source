@@ -475,24 +475,34 @@
 \makeatother
 \newcommand{\closeenumerateinquestions}{\closeenumerate}
 
+ % if the instructions have an enumerate, we want to use the second level
+ % we can't have another enumext, because that closed before the instructions
+ % so this would happen at level 1.  we could monkey around to make enumext
+ % thinks it's at level 2, but this seems easier
+\makeatletter
+\newcommand{\stepenumeratedepth}{\advance\@enumdepth\@ne}
+\makeatother
+
 \newcommand{\exercisesetinstructions}[2][In Exercises]{%
- \setcounter{saveenumi}{\value{enumXi}}
+ \setcounter{saveenumi}{\value{enumXi}}%
  \closeenumerateinquestions
- \stepcounter{enumXi}%
+ \pagebreak[2]%
+ \stepcounter{saveenumi}%
  \stepcounter{exercisesetcounter}%
- \ifnumodd{\value{enumXi}}{}{%
+ \ifnumodd{\value{saveenumi}}{}{%
   \PackageInfo{apex}{%
-   Exercise set \theexercisesetcounter\space begins with \arabic{enumXi}%
+   Exercise set \theexercisesetcounter\space begins with \arabic{saveenumi}%
   }%
  }%
  \bgroup
- \setenumext[enumext,1]{label=\alph*,wrap-label={(#1)}}% pretend it is level 2
- \noindent#1 \arabic{enumXi}--\ref*{enumiatendof\theexercisesetcounter}%
+ \stepenumeratedepth
+% \setenumext[enumext,1]{label=\alph*,wrap-label={(#1)}}% pretend it is level 2
+ \noindent#1 \arabic{saveenumi}--\ref*{enumiatendof\theexercisesetcounter}%
 % \renewcommand{\theenumi}{(\alph{enumi})}%
  #2%
  \egroup%
  % can't \addtocounter{enumXi}{-1} because #2 may have an enumerate
- \setcounter{enumXi}{\value{saveenumi}}
+% \setcounter{enumXi}{\value{saveenumi}}
  \ignorespaces%
  \nopagebreak%
 }

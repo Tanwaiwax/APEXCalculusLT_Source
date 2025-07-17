@@ -51,7 +51,7 @@ We use an example to practice evaluating line integrals over vector fields.
 
 \begin{example}[Evaluating a line integral over a vector field: computing work]\label{ex_livf1}%
 %
-\mtable{Paths through a vector field in \autoref{ex_livf1}.}{fig:livf1}{\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED}]
+\mtable{Paths through a vector field in \autoref{ex_livf1}.}{fig:livf1}{\begin{tikzpicture}[alt={The curves y=x and y=x^4 for 0≤x≤1, along with a field that is pointing up and right.}]
 \begin{axis}[width=1.16\marginparwidth,height=1.16\marginparwidth,
 tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,axis equal,
@@ -97,7 +97,7 @@ Along the curve $y = x^4$, $\vec F\bigl(\vec r_2(t)\bigr) =\bracket{x,x+y}=\brac
 Note how differing amounts of work are performed along the different paths. This should not be too surprising: the force is variable, one path is longer than the other, etc.
 \end{example}
 
-\mtable{Paths through a vector field in \autoref{ex_livf2}.}{fig:livf2}{\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED}]
+\mtable{Paths through a vector field in \autoref{ex_livf2}.}{fig:livf2}{\begin{tikzpicture}[alt={A parabola y=2x^2-1 and a lower unit semicircle centered at (0,1).  A continuously varying vector field is pointing up and right in the first quadrant, down in the second quadrant, down and left in the third quadrant, and up in the fourth quadrant.}]
 \begin{axis}[width=1.16\marginparwidth,height=1.16\marginparwidth,
 tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,axis equal,
@@ -105,8 +105,8 @@ xtick={-1,1},ytick={-1,1},
 ymin=-1.1,ymax=1.1,xmin=-1.1,xmax=1.1]
 \foreach \x in {-1,-.8,...,1.01} {
     \foreach \y in {-1,-.8,...,1.01} {
-		\edef\vx{((\y)/50)}
-		\edef\vy{((\x)/50)}
+		\edef\vx{((\y)/25)}
+		\edef\vy{((\x)/25)}
         \edef\temp{\noexpand\draw[->,lightgray](axis cs:{\x-\vx},{\y-\vy})--(axis cs:{\x+\vx},{\y+\vy});}
         \temp
     }
@@ -169,7 +169,10 @@ It is relatively easy to see why. Let $C$ be the unit circle. The area under a s
 
 We demonstrate using these properties in the following example.
 
-\mtable{The vector field and curve in \autoref{ex_livf3}.}{fig:livf3}{\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED}]
+\begin{example}[Using properties of line integrals over vector fields]\label{ex_livf3}%
+Let $\vec F =\bracket{3(y-1/2),1}$ and let $C$ be the path that starts at $(0,0)$, goes to $(1,1)$ along the curve $y=x^3$, then returns to $(0,0)$ along the line $y=x$, as shown in \autoref{fig:livf3}. Evaluate $\oint_C \vec F\cdot\dd\vec r$.
+%
+\mtable{The vector field and curve in \autoref{ex_livf3}.}{fig:livf3}{\begin{tikzpicture}[alt={The curve y=x^3 for 0≤x≤1 with an arrow pointing for an increasing x, and then the line y=x with an arrow back to the origin.  There is also a field pointing upward that starts leftward and then changes to rightward.}]
 \begin{axis}[width=1.16\marginparwidth,height=1.16\marginparwidth,
 tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,axis equal,
@@ -191,9 +194,7 @@ ymin=-.2,ymax=1.2,xmin=-.2,xmax=1.2]
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
-
-\begin{example}[Using properties of line integrals over vector fields]\label{ex_livf3}%
-Let $\vec F =\bracket{3(y-1/2),1}$ and let $C$ be the path that starts at $(0,0)$, goes to $(1,1)$ along the curve $y=x^3$, then returns to $(0,0)$ along the line $y=x$, as shown in \autoref{fig:livf3}. Evaluate $\oint_C \vec F\cdot\dd\vec r$.
+%
 \solution
 As $C$ is piecewise smooth, we break it into two components $C_1$ and $C_2$, where $C_1$ follows the curve $y=x^3$ and $C_2$ follows the curve $y=x$. 
 
@@ -225,7 +226,7 @@ If we interpret this integral as computing work, the negative work implies that 
 3Dc2c=0.7812440395355225 0.4906015396118164 0.38596370816230774,
 3Dcoo=12.9679536819458 12.412303924560547 19.615886688232422,
 3Droo=399.99998637870164,
-3Dlights=Headlamp}{\marginparwidth}{ALT-TEXT-TO-BE-DETERMINED}{figures/figlivf4_3D}}
+3Dlights=Headlamp}{\marginparwidth}{A spiral making one loop around the z axis as it increases, surrounded by a complicated vector field.}{figures/figlivf4_3D}}
 
 \begin{example}[Evaluating a line integral over a vector field in space]\label{ex_livf4}%
 Let $\vec F =\bracket{-y,x,1}$, and let $C$ be the portion of the helix given by \[\vrt = \bracket{ \cos t,\sin t, t/(2\pi)}\text{ on }[0,2\pi],\]
@@ -246,7 +247,7 @@ We have $\vec F\bigl(\vec r(t)\bigr) =\bracket{-\sin t, \cos t, 1}$ and $\vrp(t)
 
 We are preparing to make important statements about the value of certain line integrals over special vector fields. Before we can do that, we need to define some terms that describe the domains over which a vector field is defined.\index{line integral!Fundamental Theorem}\index{Fundamental Theorem of Line Integrals}
 
-\mtable{$R_1$ is simply connected; $R_2$ is connected, but not simply connected; $R_3$ is not connected.}{fig:simply_connected_plane}{\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED}]
+\mtable{$R_1$ is simply connected; $R_2$ is connected, but not simply connected; $R_3$ is not connected.}{fig:simply_connected_plane}{\begin{tikzpicture}[alt={R1 is a blob. R2 is a blob with a hole in it.  R3 is two blobs.}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=none,axis x line=none,name=myplot,ymin=-.75,ymax=3,xmin=-2,xmax=2]
 \draw (axis cs: -1.6,1.4) node {$R_1$}
@@ -280,7 +281,7 @@ A region is \textbf{simply connected}\index{simply connected}\index{connected!si
 3Dc2c=-0.040020350366830826 -0.8586178421974182 0.511051595211029,
 3Dcoo=0.47741085290908813 38.61087417602539 -23.2408390045166,
 3Droo=149.999998390057,
-3Dlights=Headlamp}{\marginparwidth}{ALT-TEXT-TO-BE-DETERMINED}{figures/figsimply_connected_1_3D}
+3Dlights=Headlamp}{\marginparwidth}{A sphere and a sphere with a missing center.}{figures/figsimply_connected_1_3D}
 \\(a)\\[10pt]
 \myincludeasythree{
 3Droll=0,
@@ -288,7 +289,7 @@ A region is \textbf{simply connected}\index{simply connected}\index{connected!si
 3Dc2c=-0.040020350366830826 -0.8586178421974182 0.511051595211029,
 3Dcoo=0.47741085290908813 38.61087417602539 -23.2408390045166,
 3Droo=149.999998390057,
-3Dlights=Headlamp}{\marginparwidth}{ALT-TEXT-TO-BE-DETERMINED}{figures/figsimply_connected_2_3D}
+3Dlights=Headlamp}{\marginparwidth}{A sphere with a hole through it and a donut.}{figures/figsimply_connected_2_3D}
 \\(b)}
 
 We have applied these terms to regions of the plane, but they can be extended intuitively to domains in space (and hyperspace). In \autoref{fig:simply_connected_space}(a), the domain bounded by the sphere (at left) and the domain with a subsphere removed (at right) are both simply connected. Any simple closed path that lies entirely within these domains can be continuously deformed into a single point. In \autoref{fig:simply_connected_space}(b), neither domain is simply connected. A left, the ball has a hole that extends its length and the pictured closed path cannot be deformed to a point. At right, two paths are illustrated on the torus that cannot be shrunk to a point. 

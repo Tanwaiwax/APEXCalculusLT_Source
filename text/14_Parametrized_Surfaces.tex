@@ -5,7 +5,7 @@ Thus far we have focused mostly on 2-dimensional vector fields, measuring flow a
 \mnote{\textbf{Note:} We use the letter $S$ to denote Surface Area. This section begins a study into surfaces, and it is natural to label a surface with the letter ``S''. We distinguish a surface from its surface area by using a calligraphic S to denote a surface: \surfaceS. When writing this letter by hand, it may be useful to add serifs to the letter, such as: % 
 % todo Tim surely we can find a better serif S ?
 % possibly {\fontfamily{lmr}\selectfont S or \emph{S}}
-\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED},x={(.55ex,0)},y={(0,.55ex)}]
+\begin{tikzpicture}[actualtext={S},x={(.55ex,0)},y={(0,.55ex)}]
 	\draw[smooth, line width=.6pt] (0.9667,0.545) -- (0.8273,0.6541) -- (0.6696,0.7624) -- (0.5,0.866) -- (0.3254,0.961) -- (0.1528,1.043) -- (-0.01133,1.11) -- (-0.1607,1.156) -- (-0.2899,1.181) -- (-0.3945,1.181) -- (-0.471,1.155) -- (-0.5173,1.103) -- (-0.5326,1.025) -- (-0.5173,0.9226) -- (-0.4734,0.7971) -- (-0.4038,0.6515) -- (-0.3127,0.4894) -- (-0.2051,0.3147) -- (-0.08684,0.1318) -- (0.03595,-0.05447) -- (0.1569,-0.2394) -- (0.2696,-0.418) -- (0.3682,-0.5859) -- (0.4473,-0.7388) -- (0.5024,-0.873) -- (0.5299,-0.9855) -- (0.5274,-1.074) -- (0.494,-1.137) -- (0.4299,-1.173) -- (0.3366,-1.184) -- (0.2172,-1.169) -- (0.07558,-1.132) -- (-0.08312,-1.073) -- (-0.253,-0.9971) -- (-0.4276,-0.9068) -- (-0.6001,-0.8063) -- (-0.7635,-0.6994) -- (-0.9113,-0.5902);
 	\draw[ line width=.6pt] (-1.18431, -0.959643)--(-0.638322, -0.220787)
 								(0.693671, 0.175596)--(1.23965, 0.914452);
@@ -33,7 +33,7 @@ A surface \surfaceS\ is said to be \textbf{orientable}\index{orientable} if a fi
 3Dc2c=0.8152862191200256 -0.5019875168800354 0.28864675760269165,
 3Dcoo=11.086544036865234 -8.5783109664917 -7.167413711547852,
 3Droo=399.99997970940404,
-3Dlights=Headlamp}{\marginparwidth}{ALT-TEXT-TO-BE-DETERMINED}{figures/mobius_strip_3D}}
+3Dlights=Headlamp}{\marginparwidth}{A strip making a loop, but the strip makes a half twist before completing.  There are arrows in the strip that point to one side, but as they go around the strip, they return to the other side.}{figures/mobius_strip_3D}}
 
 It is enlightening to examine a classic non-orientable surface: the Möbius band\index{Mobius band@Möbius band}, shown in \autoref{fig:mobius}. Vectors normal to the surface are given, starting at the point indicated in the figure. These normal vectors ``vary continuously'' as they move along the surface. Letting each vector indicate the ``top'' side of the band, we can easily see near any vector which side is the ``top''.
 
@@ -48,7 +48,7 @@ We now practice parameterizing surfaces.
 3Dc2c=0.6257953643798828 0.642341136932373 0.44246822595596313,
 3Dcoo=-11.887701988220215 -11.637335777282715 52.40430450439453,
 3Droo=399.9999800778292,
-3Dlights=Headlamp}{\marginparwidth}{ALT-TEXT-TO-BE-DETERMINED}{figures/figparsurf1_3D}}
+3Dlights=Headlamp}{\marginparwidth}{In the xy plane is the rectangle -3≤x≤3 and -1≤y≤1.  Above this is an inverted dome.}{figures/figparsurf1_3D}}
 
 \begin{example}[Parameterizing a surface over a rectangle]\label{ex_parsurf1}%
 Parameterize the surface $z=x^2+2y^2$ over the rectangular region $R$ defined by $-3\leq x\leq 3$, $-1\leq y\leq 1$.
@@ -59,9 +59,7 @@ We  let $x=u$ and $y=v$, and let $\vec r(u,v) =\bracket{u,v, f(u,v)}$. In this i
 
 \begin{example}[Parameterizing a surface over a circular disk]\label{ex_parsurf2}%
 Parameterize the surface $z=x^2+2y^2$ over the circular region $R$ enclosed by the circle of radius 2 that is centered at the origin.
-\solution
-We can parameterize the circular boundary of $R$ with the vector-valued function $\bracket{2\cos u,2\sin u}$, where $0\leq u\leq 2\pi$. We can obtain the interior of $R$ by scaling this function by a variable amount, i.e., by multiplying by $v$: $\bracket{2v\cos u,2v\sin u}$, where $0\leq v\leq 1$.
-
+%
 \mtable{The surface parameterized in \autoref{ex_parsurf2}.}{fig:parsurf2}{%
 \myincludeasythree{
 3Droll=0,
@@ -69,7 +67,10 @@ We can parameterize the circular boundary of $R$ with the vector-valued function
 3Dc2c=0.6257953643798828 0.642341136932373 0.44246822595596313,
 3Dcoo=-11.887701988220215 -11.637335777282715 52.40430450439453,
 3Droo=399.9999800778292,
-3Dlights=Headlamp}{\marginparwidth}{ALT-TEXT-TO-BE-DETERMINED}{figures/figparsurf2_3D}}
+3Dlights=Headlamp}{\marginparwidth}{In the xy plane is a disc of radius 2 centered at the origin.  Above this is an inverted dome that reaches a bit higher when x=0 than when y=0.}{figures/figparsurf2_3D}}
+%
+\solution
+We can parameterize the circular boundary of $R$ with the vector-valued function $\bracket{2\cos u,2\sin u}$, where $0\leq u\leq 2\pi$. We can obtain the interior of $R$ by scaling this function by a variable amount, i.e., by multiplying by $v$: $\bracket{2v\cos u,2v\sin u}$, where $0\leq v\leq 1$.
 
 It is important to understand the role of $v$ in the above function. When $v=1$, we get the boundary of $R$, a circle of radius 2. When $v=0$, we simply get the point $(0,0)$, the center of $R$ (which can be thought of as a circle with radius of 0). When $v=1/2$, we get the circle of radius $1$ that is centered at the origin, which is the circle \emph{halfway} between the boundary and the center. As $v$ varies from 0 to 1, we create a series of concentric circles that fill out all of $R$.
 
@@ -83,7 +84,7 @@ Examples \ref{ex_parsurf1} and \ref{ex_parsurf2} demonstrate an important princi
 In the following two examples, we parameterize the same surface over triangular regions. Each will use $v$ as a ``scaling factor'' as done in \autoref{ex_parsurf2}.
 
 \mtable{Part (a) shows a graph of the region $R$, and part (b) shows the surface over $R$, as defined in \autoref{ex_parsurf3}.}{fig:parsurf3}
-{\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED}]
+{\begin{tikzpicture}[alt={A triangle in the plane with vertices at the origin, (3,0), and (0,2).  The sloped side is given by y=2-2x/3.  A dashed line labeled R connects (3,0) and (0,1).}]
 \begin{axis}[width=\marginparwidth,height=\marginparwidth,
 tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis equal,
@@ -102,7 +103,7 @@ xtick={1,2,3},ytick={1,2,3},ymin=-.5,ymax=3.5,xmin=-.5,xmax=3.5]
 3Dc2c=0.6257953643798828 0.642341136932373 0.44246822595596313,
 3Dcoo=-11.887701988220215 -11.637335777282715 52.40430450439453,
 3Droo=399.9999800778292,
-3Dlights=Headlamp}{\marginparwidth}{ALT-TEXT-TO-BE-DETERMINED}{figures/figparsurf3_3D}
+3Dlights=Headlamp}{\marginparwidth}{The same triangle as before, with z=0.  Above this is a surface sloping upward above the non-origin vertices.}{figures/figparsurf3_3D}
 \\(b)}
 
 \begin{example}[Parameterizing a surface over a triangle]\label{ex_parsurf3}%
@@ -128,7 +129,7 @@ Parameterize the surface $z=x^2+2y^2$ over the triangular region $R$ enclosed by
 While the region $R$ in this example is very similar to the region $R$ in the previous example, and our method of parameterizing the surface is fundamentally the same, it will feel as though our answer is much different than before.
 
 \mtable{Part (a) shows a graph of the region $R$, and part (b) shows the surface over $R$, as defined in \autoref{ex_parsurf4}.}{fig:parsurf4}
-{\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED}]
+{\begin{tikzpicture}[alt={A triangle labeled R in the plane with vertices (0,1), (3,1), and (0,3).  The sloped side is labeled y=3-2x/3.}]
 \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
 xtick={1,2,3},ytick={1,2,3},ymin=-.5,ymax=3.5,xmin=-.5,xmax=3.5]
@@ -145,7 +146,7 @@ xtick={1,2,3},ytick={1,2,3},ymin=-.5,ymax=3.5,xmin=-.5,xmax=3.5]
 3Dc2c=0.6257953643798828 0.642341136932373 0.44246822595596313,
 3Dcoo=-11.887701988220215 -11.637335777282715 52.40430450439453,
 3Droo=399.9999800778292,
-3Dlights=Headlamp,add3Djscript=asylabels.js}{\marginparwidth}{ALT-TEXT-TO-BE-DETERMINED}{figures/figparsurf4_3D}
+3Dlights=Headlamp,add3Djscript=asylabels.js}{\marginparwidth}{The same triangle in space with z=0.  Above this is a surface that is high above the (0,3,0) vertex.}{figures/figparsurf4_3D}
 \\(b)}
 
 We begin with letting $x=u$, $0\leq u\leq 3$. We may be tempted to let $y = v(3-2u/3)$, $0\leq v\leq 1$, but this is incorrect. When $v = 1$, we obtain the upper line of the triangle as desired. However, when $v=0$, the $y$-value is 0, which does not lie in the region $R$. 
@@ -178,6 +179,9 @@ Let $R$ be bounded by $a\leq x\leq b$, $g_1(x)\leq y\leq g_2(x)$, i.e., the area
 \]
 \end{keyidea}
 
+\begin{example}[Parameterizing a cylindrical surface]\label{ex_parsurf5}%
+Find a parameterization of the cylinder $x^2 + z^2/4=1$, where $-1\leq y\leq 2$, as shown in \autoref{fig:parsurf5}.
+%
 \mtable{The cylinder parameterized in \autoref{ex_parsurf5}.}{fig:parsurf5}{%
 \myincludeasythree{
 3Droll=0,
@@ -185,10 +189,8 @@ Let $R$ be bounded by $a\leq x\leq b$, $g_1(x)\leq y\leq g_2(x)$, i.e., the area
 3Dc2c=0.8313615918159485 0.5262497067451477 0.17860320210456848,
 3Dcoo=1.6293458938598633 13.199743270874023 -3.546671152114868,
 3Droo=399.9999708739728,
-3Dlights=Headlamp}{\marginparwidth}{ALT-TEXT-TO-BE-DETERMINED}{figures/figparsurf5_3D}}
-
-\begin{example}[Parameterizing a cylindrical surface]\label{ex_parsurf5}%
-Find a parameterization of the cylinder $x^2 + z^2/4=1$, where $-1\leq y\leq 2$, as shown in \autoref{fig:parsurf5}.
+3Dlights=Headlamp}{\marginparwidth}{An elliptic cylinder along the y axis where z reaches ±2 and x reaches ±1.}{figures/figparsurf5_3D}}
+%
 \solution
 The equation $x^2+z^2/4=1$ can be envisioned to describe an ellipse in the $x$-$z$ plane; as the equation lacks a $y$-term, the equation describes a cylinder (recall \autoref{def:cylinder}) that extends without bound parallel to the $y$-axis. This ellipse has a vertical major axis of length 4, a horizontal minor axis of length 2, and is centered at the origin. We can parameterize this ellipse using sines and cosines; our parameterization can begin with
 \[\vec r(u,v) = \bracket{\cos u, \text{???}, 2\sin u},\quad 0\leq u\leq 2\pi,\]
@@ -211,7 +213,7 @@ Find
 3Dc2c=0.625795304775238 0.642341136932373 0.44246816635131836,
 3Dcoo=0.0026521924883127213 4.370458126068115 12.347787857055664,
 3Droo=399.9999637774216,
-3Dlights=Headlamp}{\marginparwidth}{ALT-TEXT-TO-BE-DETERMINED}{figures/figparsurf6a_3D}}
+3Dlights=Headlamp}{\marginparwidth}{Two cones with vertices touching at the origin, oriented along the z axis.  They spread more in the y direction than the x direction.}{figures/figparsurf6a_3D}}
 %
 a parameterization of the elliptic cone $z^2 = \frac{x^2}{4}+\frac{y^2}{9}$, where $-2\leq z\leq 3$, as shown in \autoref{fig:parsurf6a}.
 \solution
@@ -226,7 +228,7 @@ We can parameterize the $x$ component of our surface with $x=2z\cos u$ and the $
 3Dc2c=0.625795304775238 0.642341136932373 0.44246816635131836,
 3Dcoo=0.0026521924883127213 4.370458126068115 12.347787857055664,
 3Droo=399.9999637774216,
-3Dlights=Headlamp}{\marginparwidth}{ALT-TEXT-TO-BE-DETERMINED}{figures/figparsurf6b_3D}}
+3Dlights=Headlamp}{\marginparwidth}{Parts of the same cone as seen previously, so that y and z have the same sign.}{figures/figparsurf6b_3D}}
 %
 \[
 \vec r(u,v) = \bracket{2v\cos u, 3v\sin u, v},
@@ -250,7 +252,7 @@ Find a parameterization of the ellipsoid $\frac{x^2}{25}+y^2+\frac{z^2}{4}=1$ as
 3Dc2c=0.625795304775238 0.642341136932373 0.44246816635131836,
 3Dcoo=0.0026521924883127213 4.370458126068115 12.347787857055664,
 3Droo=399.9999637774216,
-3Dlights=Headlamp}{\marginparwidth}{ALT-TEXT-TO-BE-DETERMINED}{figures/figparsurf7a_3D}
+3Dlights=Headlamp}{\marginparwidth}{An ellipsoid where x reaches ±5, y reaches ±1, and z reaches ±2.}{figures/figparsurf7a_3D}
 %\\(a)\\[10pt]
 &
 \myincludeasythree{
@@ -259,7 +261,7 @@ Find a parameterization of the ellipsoid $\frac{x^2}{25}+y^2+\frac{z^2}{4}=1$ as
 3Dc2c=0.625795304775238 0.642341136932373 0.44246816635131836,
 3Dcoo=0.0026521924883127213 4.370458126068115 12.347787857055664,
 3Droo=399.9999637774216,
-3Dlights=Headlamp}{\marginparwidth}{ALT-TEXT-TO-BE-DETERMINED}{figures/figparsurf7b_3D}
+3Dlights=Headlamp}{\marginparwidth}{A portion of the previous ellipsoid, where the top and bottom have been removed, as well as a portion where x>0 and y<0.}{figures/figparsurf7b_3D}
 %\\(b)}
 \\(a)&(b)
 \end{tabular}
@@ -300,7 +302,7 @@ where $\dd S$ represents a small amount of surface area. That is, to compute tot
 In \autoref{sec:surface_area} we used the area of a plane to approximate the surface area of a small portion of a surface. We will do the same here.
 
 \mtable[-5\baselineskip]{Illustrating the process of finding surface area by approximating with planes.}{fig:parsurfarea}
-{\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED}]
+{\begin{tikzpicture}[alt={A large rectangle in the plane where a<x<b and c<y<d.  Inside is a smaller rectangle where u0<x<u0+∆u and v0<y<v0+∆v.}]
 \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
 xtick=\empty,ytick=\empty,extra x ticks={.5,2.25,1,1.5},
@@ -328,7 +330,7 @@ ymin=-.1,ymax=2.5,xmin=-.1,xmax=2.5]
 3Dc2c=0.6291605234146118 0.6371588706970215 0.4451805353164673,
 3Dcoo=84.20735168457031 80.18836212158203 107.64490509033203,
 3Droo=133.06991885752157,
-3Dlights=Headlamp}{\marginparwidth}{ALT-TEXT-TO-BE-DETERMINED}{figures/figparsurfareaA_3D}
+3Dlights=Headlamp}{\marginparwidth}{A surface in three dimensions, with the smaller rectangle from before trying to align with the surface.}{figures/figparsurfareaA_3D}
 \\(b)\\[10pt]
 \myincludeasythree{
 3Droll=0,
@@ -336,7 +338,7 @@ ymin=-.1,ymax=2.5,xmin=-.1,xmax=2.5]
 3Dc2c=0.5666888952255249 0.6642887592315674 0.48742610216140747,
 3Dcoo=145.19125366210938 160.48304748535156 209.22018432617188,
 3Droo=135.59128411404498,
-3Dlights=Headlamp}{\marginparwidth}{ALT-TEXT-TO-BE-DETERMINED}{figures/figparsurfareaB_3D}
+3Dlights=Headlamp}{\marginparwidth}{The same picture as before, zoomed in.  The smaller rectangle is bending to lie on the surface.}{figures/figparsurfareaB_3D}
 \\(c)}
 
 Let $R$ be the region of the $u$-$v$ plane bounded by $a\leq u\leq b$, $c\leq v\leq d$ as shown in \autoref{fig:parsurfarea}(a). Partition $R$ into rectangles of width $\Delta u = \frac{b-a}n$ and height $\Delta v = \frac{d-c}n$, for some $n$. Let $p=(u_0,v_0)$ be the lower left corner of some rectangle in the partition, and let $m$ and $q$ be neighboring corners as shown.

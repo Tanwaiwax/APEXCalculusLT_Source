@@ -1,7 +1,7 @@
 \exercisesetinstructions{, find the area of the shaded region in the given graph.}
 
 \exercise{\mbox{}\\[-2\baselineskip]%\begin{minipage}{\linewidth}\centering
-\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED}]
+\begin{tikzpicture}[alt={The region above y=1+(1/2)cos x}, below y=3+x/2, with 0≤x≤2π.]
 \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
 xtick=\empty,extra x ticks={3.14,6.28},extra x tick labels={$\pi$,$2\pi$},
@@ -11,7 +11,7 @@ ymin=-.2,ymax=6.5,xmin=-1,xmax=7]
 \draw[draw={\coloronefill},fill={\coloronefill}]plot[smooth,domain=0:6.28]
  (axis cs:\x,{.5*\x+3}) |-(axis cs:0,2);
 \addplot [smooth,thick, draw={\colorone},domain=-.9:6.5,samples=40] {.5*cos(deg(x))+1} node [shift={(-25pt,7pt)} ,black] {\scriptsize $y=\frac12\cos x+1$};
-\addplot [smooth,thick, draw={\colorone},domain=-.9:6.5,samples=40] {.5*x+3}node [shift={(-30pt,0pt)} ,black] {\scriptsize $y=\frac12x+3$};
+\addplot [smooth,thick, draw={\colorone},domain=-.9:6.5,samples=40] {.5*x+3}node [near end,above left,black] {\scriptsize $y=\frac12x+3$};
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
@@ -20,7 +20,7 @@ ymin=-.2,ymax=6.5,xmin=-1,xmax=7]
 }{$4\pi+\pi^2\approx 22.436$}
 
 \exercise{\mbox{}\\[-2\baselineskip]%\begin{minipage}{\linewidth}\centering
-\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED}]
+\begin{tikzpicture}[alt={The region above y=x^2+x-1, below y=-3x^3+3x+2, and -1≤x≤1.}]
 \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
 xtick={-1,1},ytick={-1,1,2,3},ymin=-1.5,ymax=3.5,xmin=-1.1,xmax=1.1]
@@ -44,14 +44,14 @@ xtick={-1,1},ytick={-1,1,2,3},ymin=-1.5,ymax=3.5,xmin=-1.1,xmax=1.1]
 }{$16/3$}
 
 \exercise{\mbox{}\\[-2\baselineskip]%\begin{minipage}{\linewidth}\centering
-\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED}]
+\begin{tikzpicture}[alt={The region where 1≤y≤2 and 0≤x≤p}]
 \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
 xtick=\empty,extra x ticks={3.14,1.57},extra x tick labels={$\pi$,$\pi/2$},
 ytick={-1,1,2,3},ymin=-.5,ymax=2.2,xmin=-.1,xmax=3.5]
 \draw[fill={\coloronefill},draw={\coloronefill}] (axis cs:0,1)--(axis cs:3.14,1)--(axis cs:3.14,2)--(axis cs:0,2)--cycle;
 \addplot [smooth,thick, draw={\colorone},samples=40] {1} node [shift={(-70pt,5pt)} ,black] {\scriptsize $y=1$};
-\addplot [smooth,thick, draw={\colorone},samples=40] {2} node [shift={(-70pt,5pt)} ,black] {\scriptsize $y=2$};
+\addplot [smooth,thick, draw={\colorone},samples=40] {2} node [below, near end,black] {\scriptsize $y=2$};
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
@@ -60,7 +60,7 @@ ytick={-1,1,2,3},ymin=-.5,ymax=2.2,xmin=-.1,xmax=3.5]
 }{$\pi$}
 
 \exercise{\mbox{}\\[-2\baselineskip]%\begin{minipage}{\linewidth}\centering
-\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED}]
+\begin{tikzpicture}[alt={The region above y=sin x, below y=1+sin x, where 0≤x≤π.}]
 \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
 xtick=\empty,extra x ticks={3.14,1.57},extra x tick labels={$\pi$,$\pi/2$},
@@ -70,7 +70,7 @@ ytick={-1,1,2,3},ymin=-.5,ymax=2.2,xmin=-.1,xmax=3.5]
 \draw[draw={\coloronefill},fill={\coloronefill}]plot[domain=0:3.14]
  (axis cs:\x,{1+sin(deg(\x))}) |- (axis cs:0,1);
 \addplot [smooth,thick, draw={\colorone},samples=40] {sin(deg(x))} node [shift={(-100pt,70pt)} ,black] {\scriptsize $y=\sin x$};
-\addplot [smooth,thick, draw={\colorone},samples=40] {sin(deg(x))+1} node [shift={(-75pt,70pt)} ,black] {\scriptsize $y=\sin x+1$};
+\addplot [smooth,thick, draw={\colorone},samples=40] {sin(deg(x))+1} node [near end,above,black] {\scriptsize $y=\sin x+1$};
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
@@ -79,7 +79,7 @@ ytick={-1,1,2,3},ymin=-.5,ymax=2.2,xmin=-.1,xmax=3.5]
 }{$\pi$}
 
 \exercise{\mbox{}\\[-2\baselineskip]%\begin{minipage}{\linewidth}\centering
-\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED}]
+\begin{tikzpicture}[alt={The region above y=sin(4x), below y=(sec x)^2, where 0≤x≤π/4.}]
 \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
 xtick=\empty,extra x ticks={.785,.392},extra x tick labels={$\pi/4$,$\pi/8$},
@@ -98,7 +98,7 @@ ytick={-1,1,2,3},ymin=-.2,ymax=2.2,xmin=-.1,xmax=1]
 }{$1/2$}
 
 \exercise{\mbox{}\\[-2\baselineskip]%\begin{minipage}{\linewidth}\centering
-\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED}]
+\begin{tikzpicture}[alt={The region above y=cos x and below y=sin x where π/4≤x≤5π/4.}]
 \begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis on top,
 xtick=\empty,extra x ticks={.785,1.57,2.36,3.14,3.92},
@@ -125,20 +125,15 @@ ymin=-1.1,ymax=1.1,xmin=-.1,xmax=4.1]
 %%%%% see the previous problems for how to avoid doing that
 % cut b/c 2^x
 %\exercise{\begin{minipage}{\linewidth}\centering
-%\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED}]
+%\begin{tikzpicture}[alt={The region above y=2^x and below y=4^x where 0≤x≤1.}]
 %\begin{axis}[width=\marginparwidth,tick label style={font=\scriptsize},
 %axis y line=middle,axis x line=middle,name=myplot,axis on top,
 %ymin=-.1,ymax=4.1,xmin=-.1,xmax=1.1]
-%
 %\addplot [draw={\coloronefill},stack plots=y,samples=40,domain=0:1] {2^x};
 %\addplot [draw={\coloronefill},thick,fill=\coloronefill,area style,stack plots=y,samples=40,domain=0:1] {4^x-(2^x)} \closedcycle;
-%
 %\addplot [smooth,thick, draw={\colorone},domain=-.1:1.1,samples=40] {2^x} node [shift={(-25pt,-20pt)} ,black] {\scriptsize $y=2^x$};
-%
 %\addplot [smooth,thick, draw={\colorone},domain=-.1:1.1,samples=40] {4^x} node [shift={(-40pt,-20pt)} ,black] {\scriptsize $y=4^x$};
-%
 %\end{axis}
-%
 %\node [right] at (myplot.right of origin) {\scriptsize $x$};
 %\node [above] at (myplot.above origin) {\scriptsize $y$};
 %\end{tikzpicture}
@@ -146,7 +141,7 @@ ymin=-1.1,ymax=1.1,xmin=-.1,xmax=4.1]
 
 % cut for parity
 %\exercise{\mbox{}\\[-2\baselineskip]%\begin{minipage}{\linewidth}\centering
-%\begin{tikzpicture}[alt={ALT-TEXT-TO-BE-DETERMINED}]
+%\begin{tikzpicture}[alt={The region above y=1 and below (on the left) y=1+√x and below (on the right) y=1+√(2-x).}]
 %\begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 %axis y line=middle,axis x line=middle,name=myplot,axis on top,
 %ymin=-.1,ymax=2.5,xmin=-.1,xmax=2.25]

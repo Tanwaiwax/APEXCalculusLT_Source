@@ -358,6 +358,19 @@
 
 \newcommand{\prereqIntro}{The material in this section provides a basic review of and practice problems for pre-calculus skills essential to your success in Calculus. You should take time to review this section and work the suggested problems (checking your answers against those in the back of the book). Since this content is a pre-requisite for Calculus, reviewing and mastering these skills are considered your responsibility. This means that minimal, and in some cases no, class time will be devoted to this section. When you identify areas that you need help with we strongly urge you to seek assistance outside of class from your instructor or other student tutoring service.\bigskip}
 
+% lets try to reduce bad boxes
+\usepackage{microtype}
+\hfuzz=2pt\relax
+\vfuzz=1.5\baselineskip
+% ignore overfull < this amount
+%\newdimen\hfuzz % lock it in?
+%\newdimen\vfuzz % lock it in?
+%\hbadness=10000
+\vbadness=9999\relax
+% ignore underfull > this amount
+\parskip=0pt plus \baselineskip
+\baselineskip=1\baselineskip plus .3\baselineskip
+
 \ifbool{xetex}%
 	{%
 	\sffamily
@@ -391,6 +404,8 @@
 	\usepackage{lete-sans-math}
 	\usepackage[default,defaultsans]{lato}
 	\usepackage{realscripts}
+	% Todo bug See https://tex.stackexchange.com/a/748076/107497
+	\DeclareMicrotypeAlias{LeteSansMath.otf}{TU-basic}
 	\let\pdfsavepos=\savepos
 	\let\pdflastxpos=\lastxpos
 	\let\pdflastypos=\lastypos
@@ -441,19 +456,6 @@
   wheth-er
  }}
 }
-
-% lets try to reduce bad boxes
-\usepackage{microtype}
-\hfuzz=2pt\relax
-\vfuzz=1.5\baselineskip
-% ignore overfull < this amount
-%\newdimen\hfuzz % lock it in?
-%\newdimen\vfuzz % lock it in?
-%\hbadness=10000
-\vbadness=9999\relax
-% ignore underfull > this amount
-\parskip=0pt plus \baselineskip
-\baselineskip=1\baselineskip plus .3\baselineskip
 
 
 \usepackage{tocbibind}

@@ -43,7 +43,7 @@ A \textbf{parabola} is the locus of all points equidistant from a point (called 
 \index{conic sections!parabola}\index{parabola!definition}\index{directrix}\index{focus}
 \end{definition}
 
-\mtable{Illustrating the definition of the parabola and establishing an algebraic formula.}{fig:parabola_def}{\begin{tikzpicture}[alt={Red upward parabola, vertex at origin; focus above on axis; blue directrix y = −p; dashed equal d from (x,y) to focus and line.},scale=.75]
+\mtable{Illustrating the definition of the parabola and establishing an algebraic formula.}{fig:parabola_def}{\begin{tikzpicture}[alt={Upward parabola, vertex at origin; focus above on axis; directrix y = −p; dashed equal d from (x,y) to focus and line.},scale=.75]
 	\draw [thick,draw={\colorone}] (-3,-1)
 	 node [above,black,shift={(12pt,0pt)}] {\scriptsize Directrix}
 	 -- (3,-1);
@@ -99,7 +99,7 @@ Note: $p$ is not necessarily a positive number.\index{parabola!general equation}
 Give the equation of the parabola with focus at $(1,2)$ and directrix at $y=3$.
 \solution
 %
-\mtable{The parabola described in \autoref{ex_conic1}.}{fig:conic1}{\begin{tikzpicture}[alt={Blue downward parabola peaks at y = 2; symmetric about y-axis, crosses x-axis and; axes shown to x = 5 and y = −6.}]
+\mtable{The parabola described in \autoref{ex_conic1}.}{fig:conic1}{\begin{tikzpicture}[alt={Downward parabola peaks at y = 2; symmetric about y-axis, crosses x-axis and; axes shown to x = 5 and y = −6.}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,axis equal,
 ymin=-6.5,ymax=2.9,xmin=-3.5,xmax=5.5]
@@ -128,7 +128,7 @@ We need to put the equation of the parabola in its general form. This requires u
 \end{align*}
 Hence the vertex is located at $(-1,4)$.  We have $\frac18=\frac1{4p}$, so $p=2$. We conclude that the focus is located at $(1,4)$ and the directrix is  $x=-3$. The parabola is graphed in \autoref{fig:conic2}, along with its focus and directrix.\bigskip
 
-\mtable{The parabola described in \autoref{ex_conic2}. The distances from a point on the parabola to the focus and directrix is given.}{fig:conic2}{\begin{tikzpicture}[alt={Dashed ellipse drawn by string loop on two fixed pins (foci); pencil keeps string taut so d_1+d_2 is constant along curve.}]
+\mtable{The parabola described in \autoref{ex_conic2}. The distances from a point on the parabola to the focus and directrix is given.}{fig:conic2}{\begin{tikzpicture}[alt={Parabola opening to the right with vertex at (-1,4) and focus at (1,4).  The directrix is x=-3.  There are dashed lines of length 10 from (7,12) to the focus and directrix.}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,xtick={-10,-5,5,10},
 ymin=-5.5,ymax=14.5,xmin=-11,xmax=14,axis equal]
@@ -137,7 +137,7 @@ ymin=-5.5,ymax=14.5,xmin=-11,xmax=14,axis equal]
 \draw [dashed,draw={\colorone!70},thick] (axis cs:-3,12)
  -- node [above,pos=.5,black] {\scriptsize 10} (axis cs:7,12)
  -- node [pos=.6,right,black] {\scriptsize 10} (axis cs: 1,4);
-\filldraw [draw={\colortwo}] (axis cs: 1,4) circle (1.5pt)
+\filldraw [draw={\colortwo},fill={\colortwo}] (axis cs: 1,4) circle (1.5pt)
  (axis cs: 7,12) circle (1.5pt);
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
@@ -159,7 +159,7 @@ One of the fascinating things about the nondegenerate conic sections is their re
 
 This is illustrated in \autoref{fig:conic_reflect}. The following theorem states this more rigorously.
 
-\mtable{Illustrating the parabola's reflective property.}{fig:conic_reflect}{\begin{tikzpicture}[alt={Ellipse with dashed major/minor axes; red dots mark foci, endpoints mark vertices; distances a, b, c labelled inside.}]
+\mtable{Illustrating the parabola's reflective property.}{fig:conic_reflect}{\begin{tikzpicture}[alt={Parabola opening to the right.  Several horitonal lines come from the right, reflect off the parabola, and meet at the focus.}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=none,axis x line=none,name=myplot,axis equal,
 ymin=-6.5,ymax=14.5,xmin=-4,xmax=12]
@@ -171,7 +171,7 @@ ymin=-6.5,ymax=14.5,xmin=-4,xmax=12]
 			(axis cs: 12,3) -- (axis cs: -.875,3)
 			(axis cs: -.875,3)-- (focus)
 			(axis cs: 12,-3) -- (axis cs: 5.125,-3) -- (focus);
-\filldraw [draw={\colortwo}] (focus) circle (1.5pt);
+\filldraw [draw={\colortwo},fill={\colortwo}] (focus) circle (1.5pt);
 \end{axis}
 \end{tikzpicture}}
 	
@@ -198,7 +198,8 @@ An \textbf{ellipse} is the locus of all points whose sum of distances from two f
 
 An easy way to visualize this construction of an ellipse is to pin both ends of a string to a board. The pins become the foci. Holding a pencil tight against the string places the pencil on the ellipse; the sum of distances from the pencil to the pins is constant: the length of the string. See \autoref{fig:ellipse_def}.
 
-\mtable[-2\baselineskip]{Illustrating the construction of an ellipse with pins, pencil and string.}{fig:ellipse_def}{\begin{tikzpicture}[alt={Tall blue ellipse centered near (−3, 1); plotted on axes with ticks −6<x<6 and −4<y<6, black dot marks focus location.}]
+
+\mtable[-2\baselineskip]{Illustrating the construction of an ellipse with pins, pencil and string.}{fig:ellipse_def}{\begin{tikzpicture}[alt={Dashed ellipse drawn by string loop on two fixed pins (foci); pencil keeps string taut so d_1+d_2 is constant along curve.}]
 	\draw [thick,dashed] (0,0) circle [x radius=2,y radius=1.5];
 	\filldraw (1.3,0)circle(1.5pt) (-1.3,0)circle(1.5pt);
 	\draw  (1.3,0) -- node [right,pos=.5] {\scriptsize $d_1$}
@@ -227,10 +228,10 @@ As shown in \autoref{fig:ellipse_label}, the values of $a$ and $b$ have
 % geometric
 meaning. In general, the two foci of an ellipse lie on the \textbf{major axis} of the ellipse, and the midpoint of the segment joining the two foci is the \textbf{center}. The major axis intersects the ellipse at two points, each of which is a \textbf{vertex}. The line segment through the center and perpendicular to the major axis is the \textbf{minor axis}. The ``constant sum of distances'' that defines the ellipse is the length of the major axis, i.e., $2a$.
 
-\mtable[5\baselineskip]{Labeling the significant features of an ellipse.}{fig:ellipse_label}{\begin{tikzpicture}[alt={Blue ellipse centered (1 , 2); vertices (−1 , 2) and (3 , 2); black foci at (0 , 2) and (2 , 2); axes −2 < x < 4, 0 < y < 4.}]
+\mtable[5\baselineskip]{Labeling the significant features of an ellipse.}{fig:ellipse_label}{\begin{tikzpicture}[alt={Ellipse with dashed major/minor axes; red dots mark foci, endpoints mark vertices; distances a, b, c labelled inside.}]
  \draw [thick,draw={\colorone}] (0,0) circle [x radius=2,y radius=1.5];
  \draw [thick,dashed] (-2.4,0) -- (2.4,0) (0,1.8) -- (0,-1.9);
- \filldraw [draw={\colortwo}] (1.3,0) circle (1.5pt) (-1.3,0) circle (1.5pt);
+ \filldraw [draw={\colortwo},fill={\colortwo}] (1.3,0) circle (1.5pt) (-1.3,0) circle (1.5pt);
  \draw [->,>=latex] (-2,-2) node [fill=white] {\scriptsize Major axis}
   -- (-2.2,-.1);
  \draw [->,>=latex] (2,-2) node [fill=white] {\scriptsize Minor axis}
@@ -239,7 +240,7 @@ meaning. In general, the two foci of an ellipse lie on the \textbf{major axis} o
  \draw [->,>=latex] (-2,2) node [fill=white] {\scriptsize Vertices} -- (1.9,.1);
  \draw [->,>=latex] (2,2)  -- (-1.2,.1);
  \draw [->,>=latex] (2,2) node [fill=white] {\scriptsize Foci} -- (1.3,.1);
- \filldraw [draw={\colorone}] (2,0) circle (1.5pt) (-2,0) circle (1.5pt);
+ \filldraw [draw={\colorone},fill={\colorone}] (2,0) circle (1.5pt) (-2,0) circle (1.5pt);
  \draw (-1,-.25) node {$\underbrace{\makebox[1.8cm]{}}_a$};
  \draw (.65,-.25) node {$\underbrace{\makebox[1.1cm]{}}_c$};
  \draw (-.25,.75) node [] {\scriptsize $b\left\{\rule[-.65cm]{0pt}{1.3cm}\right.$};
@@ -260,7 +261,7 @@ The foci lie along the major axis, $c$ units from the center, where $c^2=a^2-b^2
 \begin{example}[Finding the equation of an ellipse]\label{ex_conic3}%
 Find the general equation of the ellipse graphed in \autoref{fig:conic3}.
 %
-\mtable{The ellipse used in \autoref{ex_conic3}.}{fig:conic3}{\begin{tikzpicture}[alt={Blue hyperbola opening left-right, center at origin; black vertices, red foci farther out; dashed transverse, conjugate axes and asymptote guides.}]
+\mtable{The ellipse used in \autoref{ex_conic3}.}{fig:conic3}{\begin{tikzpicture}[alt={Tall blue ellipse centered near (−3, 1); plotted on axes with ticks −6<x<6 and −4<y<6, black dot marks center.}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,xtick={-6,-4,-2,2,4,6},
 ytick={-4,-2,2,4,6},ymin=-4.9,ymax=6.9,xmin=-6.9,xmax=6.9]
@@ -292,7 +293,7 @@ Now we complete the squares.
 	\frac{(x-1)^2}{9} + \frac{(y-2)^2}{4} &= 1.
 \end{align*}
 %
-\mtable{Graphing the ellipse in \autoref{ex_conic4}.}{fig:conic4}{\begin{tikzpicture}[alt={Horizontal ellipse; endpoints marked at left and right, two interior foci, and central point on major axis.}]
+\mtable{Graphing the ellipse in \autoref{ex_conic4}.}{fig:conic4}{\begin{tikzpicture}[alt={Horizontal ellipse; endpoints marked at (--2,2) and (4,2), two interior foci near (-1.2,2) and (3.2,2), and center at (1,2).  The range of values is -2<x<4 and 0<y<4.}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,xtick={-2,-1,1,2,3,4},
 ytick={-1,1,2,3,4},ymin=-2,ymax=5,xmin=-3,xmax=5]
@@ -301,7 +302,7 @@ ytick={-1,1,2,3,4},ymin=-2,ymax=5,xmin=-3,xmax=5]
 \filldraw (axis cs:1,2)  circle (1.5pt)
 		(axis cs:3.24,2) circle (1pt)
 		(axis cs:-1.24,2) circle (1pt);
-\filldraw [draw={\colorone}] (axis cs: 4,2) circle (1.5pt) (axis cs: -2,2) circle (1.5pt);
+\filldraw [draw={\colorone},fill={\colorone}] (axis cs: 4,2) circle (1.5pt) (axis cs: -2,2) circle (1.5pt);
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
@@ -438,8 +439,8 @@ ymin=-3.2,ymax=3.2,xmin=-3.2,xmax=3.2]
  (axis cs:0,-3.2)
  -- node [below,rotate=90,pos=.8] {\scriptsize  axis }
  node [above,rotate=90,pos=.8] {\scriptsize Conjugate}(axis cs:0,3.2);
-\filldraw [draw={\colorone}] (axis cs:1,0)circle(1.5pt) (axis cs:-1,0)circle(1.5pt);
-\filldraw [draw={\colortwo}] (axis cs:1.4,0)circle(1.5pt) node (f1) {}
+\filldraw [draw={\colorone},fill={\colorone}] (axis cs:1,0)circle(1.5pt) (axis cs:-1,0)circle(1.5pt);
+\filldraw [draw={\colortwo},fill={\colortwo}] (axis cs:1.4,0)circle(1.5pt) node (f1) {}
 						(axis cs:-1.4,0)  circle (1.5pt) node (f2) {};
 \draw [->,>=latex] (axis cs: 1.25,-2.8) -- (axis cs: -1.35,-.1);
 \draw [->,>=latex] (axis cs: 1.25,-2.8) node [fill=white] {\scriptsize Foci }
@@ -495,8 +496,8 @@ extra y tick labels={$k-b$, $k$, $k+b$},ymin=-2.2,ymax=10.2,xmin=-3.2,xmax=13.2]
 \addplot [thick,dashed,draw={\colortwo},domain=-3:13] {2*(x-5)/3+4};
 \addplot [thick,dashed,draw={\colortwo},domain=-3:13] {-2*(x-5)/3+4};
 \filldraw (axis cs:5,4) circle (1.5pt);
-\filldraw [draw={\colorone}] (axis cs:2,4) circle (1.5pt);
-\filldraw [draw={\colorone}] (axis cs:8,4) circle (1.5pt);
+\filldraw [draw={\colorone},fill={\colorone}] (axis cs:2,4) circle (1.5pt);
+\filldraw [draw={\colorone},fill={\colorone}] (axis cs:8,4) circle (1.5pt);
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
@@ -514,6 +515,9 @@ $\ds y=\pm\frac ba(x-h)+k$  &$\ds  y=\pm\frac ab(x-h)+k.$
 \end{tabular}
 \end{center}
 
+\begin{example}[Graphing a hyperbola]\label{ex_conic5}%
+Sketch the hyperbola given by $\ds \frac{(y-2)^2}{25}-\frac{(x-1)^2}{4}=1$.
+%
 \mtable[.5in]{Graphing the hyperbola in \autoref{ex_conic5}.}{fig:conic5}{\begin{tikzpicture}[alt={Blue hyperbola; central dashed box and red asymptotes crossing at origin; axes about −5 < x < 5, −1 < y < 7.}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,minor x tick num=4,
@@ -527,17 +531,15 @@ minor y tick num=4,ymin=-7.2,ymax=11.2,xmin=-5.2,xmax=7.2]
 \addplot [thick,dashed,draw={\colortwo},domain=-3:13] {5*(x-1)/2+2};
 \addplot [thick,dashed,draw={\colortwo},domain=-3:13] {-5*(x-1)/2+2};
 \filldraw (axis cs:1,2) circle (1.5pt);
-\filldraw [draw={\colorone}] (axis cs:1,7) circle (1.5pt);
-\filldraw [draw={\colorone}] (axis cs:1,-3) circle (1.5pt);
-\filldraw [draw={\colortwo}] (axis cs:1,7.4) circle (1.5pt);
-\filldraw [draw={\colortwo}] (axis cs:1,-3.4) circle (1.5pt);
+\filldraw [draw={\colorone},fill={\colorone}] (axis cs:1,7) circle (1.5pt);
+\filldraw [draw={\colorone},fill={\colorone}] (axis cs:1,-3) circle (1.5pt);
+\filldraw [draw={\colortwo},fill={\colortwo}] (axis cs:1,7.4) circle (1.5pt);
+\filldraw [draw={\colortwo},fill={\colortwo}] (axis cs:1,-3.4) circle (1.5pt);
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
 \end{tikzpicture}}
-
-\begin{example}[Graphing a hyperbola]\label{ex_conic5}%
-Sketch the hyperbola given by $\ds \frac{(y-2)^2}{25}-\frac{(x-1)^2}{4}=1$.
+%
 \solution
 The hyperbola is centered at $(1,2)$; $a=5$ and $b=2$.
 In \autoref{fig:conic5} we draw the prescribed rectangle centered at $(1,2)$ along with the asymptotes defined by its diagonals. The hyperbola has a vertical transverse axis, so the vertices are located at $(1,7)$ and $(1,-3)$. This is enough to make a good sketch.
@@ -545,7 +547,7 @@ In \autoref{fig:conic5} we draw the prescribed rectangle centered at $(1,2)$ alo
 We also find the location of the foci: as $c^2= a^2+b^2$, we have $c=\sqrt{29}\approx 5.4$. Thus the foci are located at $(1,2\pm 5.4)$ as shown in the figure.
 \end{example}
 
-\mtable{Graphing the hyperbola in \autoref{ex_conic6}.}{fig:conic6}{\begin{tikzpicture}[alt={Blue vertical-opening hyperbola with vertices at (+/-1 , 0); red dashed asymptotes form “X” through origin; gray dashed box and black-dot foci at (+/-3 , 0); axes −4 < x < 4, −10 < y < 10.}]
+\mtable{Graphing the hyperbola in \autoref{ex_conic6}.}{fig:conic6}{\begin{tikzpicture}[alt={Blue horizontal-opening hyperbola with vertices at (±1,1); red dashed asymptotes form “X” through center (0,1); foci at (±3,1); dashed guide box for -1<x<1 and -2<y<4.}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,minor x tick num=1,
 minor y tick num=4,ymin=-10.9,ymax=11.9,xmin=-4.2,xmax=4.2]
@@ -555,13 +557,13 @@ minor y tick num=4,ymin=-10.9,ymax=11.9,xmin=-4.2,xmax=4.2]
  ({-sec(x)},{3*tan(x)+1});
 \draw [thick,dashed] (axis cs: -1,4) -- (axis cs:1,4) -- (axis cs:1,-2)
  -- (axis cs: -1,-2) -- cycle;
-\addplot [thick,dashed,draw={\colortwo},domain=-4:4] {3*(x-0)/1+1};
-\addplot [thick,dashed,draw={\colortwo},domain=-4:4] {-3*(x-0)/1+1};
+\addplot [thick,dashed,draw={\colortwo},fill={\colortwo},domain=-4:4] {3*(x-0)/1+1};
+\addplot [thick,dashed,draw={\colortwo},fill={\colortwo},domain=-4:4] {-3*(x-0)/1+1};
 \filldraw (axis cs:0,1) circle (1.5pt);
-\filldraw [draw={\colorone}] (axis cs:-1,1) circle (1.5pt);
-\filldraw [draw={\colorone}] (axis cs:1,1) circle (1.5pt);
-\filldraw [draw={\colortwo}] (axis cs:3.2,1) circle (1.5pt);
-\filldraw [draw={\colortwo}] (axis cs:-3.2,1) circle (1.5pt);
+\filldraw [draw={\colorone},fill={\colorone}] (axis cs:-1,1) circle (1.5pt);
+\filldraw [draw={\colorone},fill={\colorone}] (axis cs:1,1) circle (1.5pt);
+\filldraw [draw={\colortwo},fill={\colortwo}] (axis cs:3.2,1) circle (1.5pt);
+\filldraw [draw={\colortwo},fill={\colortwo}] (axis cs:-3.2,1) circle (1.5pt);
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
 \node [above] at (myplot.above origin) {\scriptsize $y$};
@@ -606,10 +608,10 @@ ymin=-11.9,ymax=11.9,xmin=-11.9,xmax=11.9,axis equal]
 \addplot [thick, draw={\colorone},smooth,domain=-85:85,samples=60]
  ({-sec(x)},{.32*tan(x)});
 \filldraw (axis cs:0,0) circle (1.5pt);
-\filldraw [draw={\colorone}] (axis cs:-1,0) circle (1.5pt);
-\filldraw [draw={\colorone}] (axis cs:1,0) circle (1.5pt);
-\filldraw [draw={\colortwo}] (axis cs:1.05,0) circle (1.5pt);
-\filldraw [draw={\colortwo}] (axis cs:-1.05,0) circle (1.5pt);
+\filldraw [draw={\colorone},fill={\colorone}] (axis cs:-1,0) circle (1.5pt);
+\filldraw [draw={\colorone},fill={\colorone}] (axis cs:1,0) circle (1.5pt);
+\filldraw [draw={\colortwo},fill={\colortwo}] (axis cs:1.05,0) circle (1.5pt);
+\filldraw [draw={\colortwo},fill={\colortwo}] (axis cs:-1.05,0) circle (1.5pt);
 \draw (axis cs: 9,-6) node {\scriptsize $e = 1.05$};					
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
@@ -626,10 +628,10 @@ ymin=-11.9,ymax=11.9,xmin=-11.9,xmax=11.9,axis equal]
 \addplot [thick, draw={\colorone},smooth,domain=-85:85,samples=60]
  ({-sec(x)},{1.12*tan(x)});
 \filldraw (axis cs:0,0) circle (1.5pt);
-\filldraw [draw={\colorone}] (axis cs:-1,0) circle (1.5pt);
-\filldraw [draw={\colorone}] (axis cs:1,0) circle (1.5pt);
-\filldraw [draw={\colortwo}] (axis cs:1.5,0) circle (1.5pt);
-\filldraw [draw={\colortwo}] (axis cs:-1.5,0) circle (1.5pt);
+\filldraw [draw={\colorone},fill={\colorone}] (axis cs:-1,0) circle (1.5pt);
+\filldraw [draw={\colorone},fill={\colorone}] (axis cs:1,0) circle (1.5pt);
+\filldraw [draw={\colortwo},fill={\colortwo}] (axis cs:1.5,0) circle (1.5pt);
+\filldraw [draw={\colortwo},fill={\colortwo}] (axis cs:-1.5,0) circle (1.5pt);
 \draw (axis cs: 9,-6) node {\scriptsize $e = 1.5$};					
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
@@ -646,10 +648,10 @@ ymin=-11.9,ymax=11.9,xmin=-11.9,xmax=11.9,axis equal]
 \addplot [thick, draw={\colorone},smooth,domain=-85:85,samples=60]
  ({-sec(x)},{2.83*tan(x)});
 \filldraw (axis cs:0,0) circle (1.5pt);
-\filldraw [draw={\colorone}] (axis cs:-1,0) circle (1.5pt);
-\filldraw [draw={\colorone}] (axis cs:1,0) circle (1.5pt);
-\filldraw [draw={\colortwo}] (axis cs:3,0) circle (1.5pt);
-\filldraw [draw={\colortwo}] (axis cs:-3,0) circle (1.5pt);
+\filldraw [draw={\colorone},fill={\colorone}] (axis cs:-1,0) circle (1.5pt);
+\filldraw [draw={\colorone},fill={\colorone}] (axis cs:1,0) circle (1.5pt);
+\filldraw [draw={\colortwo},fill={\colortwo}] (axis cs:3,0) circle (1.5pt);
+\filldraw [draw={\colortwo},fill={\colortwo}] (axis cs:-3,0) circle (1.5pt);
 \draw (axis cs: 9,-6) node {\scriptsize $e = 3$};					
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
@@ -664,10 +666,10 @@ ymin=-11.9,ymax=11.9,xmin=-11.9,xmax=11.9,axis equal]
 \addplot [thick, draw={\colorone},smooth,domain=-85:85,samples=60] ({sec(x)},{9.95*tan(x)});
 \addplot [thick, draw={\colorone},smooth,domain=-85:85,samples=60] ({-sec(x)},{9.95*tan(x)});
 \filldraw (axis cs:0,0) circle (1.5pt);
-\filldraw [draw={\colorone}] (axis cs:-1,0) circle (1.5pt);
-\filldraw [draw={\colorone}] (axis cs:1,0) circle (1.5pt);
-\filldraw [draw={\colortwo}] (axis cs:10,0) circle (1.5pt);
-\filldraw [draw={\colortwo}] (axis cs:-10,0) circle (1.5pt);
+\filldraw [draw={\colorone},fill={\colorone}] (axis cs:-1,0) circle (1.5pt);
+\filldraw [draw={\colorone},fill={\colorone}] (axis cs:1,0) circle (1.5pt);
+\filldraw [draw={\colortwo},fill={\colortwo}] (axis cs:10,0) circle (1.5pt);
+\filldraw [draw={\colortwo},fill={\colortwo}] (axis cs:-10,0) circle (1.5pt);
 \draw (axis cs: 9,-6) node {\scriptsize $e = 10$};					
 \end{axis}
 \node [right] at (myplot.right of origin) {\scriptsize $x$};
@@ -699,15 +701,15 @@ To determine the location of an earthquake's epicenter, seismologists use \emph{
 
 A key to this method is knowing distances. What if this information is not available? Consider three microphones at positions $A$, $B$ and $C$ which all record a noise (a person's voice, an explosion, etc.) created at unknown location $D$. The microphone does not ``know'' when the sound was \emph{created}, only when the sound was \emph{detected}. How can the location be determined in such a situation?
 
-\mtable{Illustrating the reflective property of a hyperbola.}{fig:hyperbola_reflect}{\begin{tikzpicture}[alt={Twin hyperbola arms; foci F1, F2; grey ray from F1 strikes curve, reflected arrow aims toward F2.}]
+\mtable{Illustrating the reflective property of a hyperbola.}{fig:hyperbola_reflect}{\begin{tikzpicture}[alt={Twin hyperbola arms; foci F1, F2; grey ray from F1 strikes curve, reflected arrow aims away from F2.}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=none,axis x line=none,name=myplot,
 ymin=-11.9,ymax=11.9,xmin=-5,xmax=5]
 \addplot [thick, smooth,domain=-85:85,samples=60] ({sec(x)},{2.83*tan(x)});
 \addplot [thick,smooth,domain=-85:85,samples=60] ({-sec(x)},{2.83*tan(x)});
 \filldraw (axis cs:0,0) circle (1.5pt);
-\filldraw [draw={\colorone}] (axis cs:-1,0) circle (1.5pt);
-\filldraw [draw={\colorone}] (axis cs:1,0) circle (1.5pt);
+\filldraw [draw={\colorone},fill={\colorone},] (axis cs:-1,0) circle (1.5pt);
+\filldraw [draw={\colorone},fill={\colorone},] (axis cs:1,0) circle (1.5pt);
 \draw [draw={\colortwo},thick,->,>=latex] (axis cs:-3,0) -- (axis cs: 1.4,2.83);
 \draw [draw={\colortwo},thick,->,>=latex] (axis cs:1.4,2.83)--(axis cs: -1.8,8.49);
 \draw [dashed,draw={\colortwo},thick] (axis cs:1.4,2.83)--(axis cs: 3,0);
@@ -728,7 +730,7 @@ We can also find the hyperbola defined by positions $B$ and $C$. In this case, $
 \flushinner{%
 \tagpdfsetup{table/header-rows={2}}
 \begin{tabular}{c @{\hspace{1em}} c @{\hspace{1em}} c}
-\begin{tikzpicture}[alt={Baseline setup: sensor B at −500, sensor A at 500 on x-axis; reference point C sits at (0, 1000) above.}]
+\begin{tikzpicture}[alt={Baseline setup: sensor B at −500, sensor A at 500 on x-axis; reference point C sits at (-500, 1000) above.}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
 ymin=-1100,ymax=1100,xmin=-1100,xmax=1100]
@@ -738,7 +740,7 @@ ymin=-1100,ymax=1100,xmin=-1100,xmax=1100]
 \end{axis}
 \end{tikzpicture}
  &
-\begin{tikzpicture}[alt={Dashed left hyperbola branch through C marks points with equal range-difference to A and B.}]
+\begin{tikzpicture}[alt={Baseline setup with hyperbola between A and B to mark points with equal range difference.  Left is dashed; right is solid.}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
 ymin=-1100,ymax=1100,xmin=-1100,xmax=1100]
@@ -750,7 +752,7 @@ ymin=-1100,ymax=1100,xmin=-1100,xmax=1100]
 \end{axis}
 \end{tikzpicture}
  &
-\begin{tikzpicture}[alt={Solid hyperbola meets dashed circle at D, pinpointing the source relative to sensors A and B.}]
+\begin{tikzpicture}[alt={Previous picture with dashed branch removed.  New hyperbola between B and C marks points with equal range difference.  Top is dashed; bottom is solid.  Solid hyperbolas meet at D, pinpointing the source relative to sensors A and B.}]
 \begin{axis}[width=1.16\marginparwidth,tick label style={font=\scriptsize},
 axis y line=middle,axis x line=middle,name=myplot,
 ymin=-1100,ymax=1100,xmin=-1100,xmax=1100]

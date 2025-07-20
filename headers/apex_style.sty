@@ -95,14 +95,22 @@
 % perhaps problems with page breaks with numbered ones''
 % if I'm not seeing those problems, maybe just continue
 
-\titleclass{\exercisesubsection}{straight}[\section]
-\titleformat{\exercisesubsection}[block]{\clearpage\setcounter{enumXi}{0}}%format
- {}%label
- {0pt}%sep
- {\exercisesubsectiontitle}%before
- %after
-\titlespacing*{\exercisesubsection}{0pt}{0pt}{-7ex}
-\dottedcontents{exercisesubsection}[6.1em]{}{3.2em}{1pc}
+\newcommand{\exercisesubsection}[1]{%
+ \bgroup
+  \titleformat{\subsection}{\huge\bfseries}{}{0pt}{}[\hrule\vspace{-\baselineskip}]%
+  \subsection*{\texorpdfstring{\hyperref[sol#1]{#1}}{Exercises}}%
+ \egroup
+}
+
+% this seems higher level, but tagpdf isn't liking the spare /Refs running around
+%\titleclass{\exercisesubsection}{straight}[\section]
+%\titleformat{\exercisesubsection}[block]{\clearpage\setcounter{enumXi}{0}}%format
+% {}%label
+% {0pt}%sep
+% {\exercisesubsectiontitle}%before
+% %after
+%\titlespacing*{\exercisesubsection}{0pt}{0pt}{-7ex}
+%\dottedcontents{exercisesubsection}[6.1em]{}{3.2em}{1pc}
 % exercisesubsection doesn't appear in the toc (so I don't care about the numbers), but without this the subsequent section gets messed up
 
 \titleclass{\exercisesubsubsection}{straight}[\exercisesubsection]

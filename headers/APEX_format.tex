@@ -380,12 +380,13 @@
 \setenumext[enumext,1]{resume}
 \resetenumext[1]{subsection} % reset the resumed counter for exercises
 
-\makeatletter
+%\makeatletter
 \newcommand{\printexercises}[1]{%
  \writeToAnsFile{#1}% writeToAnsFile in sty (actually, down below)
  \exercisegeometry% includes a clearpage
  \pagestyle{exercise}%
- \bookmarksetupnext{level=\toclevel@subsection}% otherwise, the level is "section" and everything is messed up
+% \bookmarksetupnext{level=\toclevel@subsection}% otherwise, the level is "section" and everything is messed up
+ % not needed with a manual subsection
  \exercisesubsection{Exercises \thesection}%
  \stepcounter{subsection}% subsections aren't numbered, but this triggers resetenumext
  \label{exer\thesection}%
@@ -402,7 +403,7 @@
  %	\easypagecheck
  \setlength{\hoffset}{0pt} \rmfamily\normalsize \bigbreak%
 }
-\makeatother
+%\makeatother
 
 
 \newwrite\answrite %write the answers file

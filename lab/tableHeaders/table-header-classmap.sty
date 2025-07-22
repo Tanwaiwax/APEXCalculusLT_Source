@@ -1,0 +1,14 @@
+\ExplSyntaxOn
+\AddToHook{begindocument}
+  {
+    \tag_if_active:T
+      {
+        \prop_gput:Nnn \g__tag_attr_entries_prop {TH-col } {/O /Table /Scope /Column}
+        \prop_gput:Nnn \g__tag_attr_entries_prop {TH-row } {/O /Table /Scope /Row   }
+        \prop_gput:Nnn \g__tag_attr_entries_prop {TH-both} {/O /Table /Scope /Both  }
+        \prop_gput:Nnn \g__tag_attr_class_used_prop {TH-col } {/O /Table /Scope /Column}
+        \prop_gput:Nnn \g__tag_attr_class_used_prop {TH-row } {/O /Table /Scope /Row   }
+        \prop_gput:Nnn \g__tag_attr_class_used_prop {TH-both} {/O /Table /Scope /Both  }
+      }
+  }
+\ExplSyntaxOff
